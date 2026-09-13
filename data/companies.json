@@ -9430,7 +9430,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add; PSHRA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NEOGOV sells human resources software for government agencies, built around public sector hiring, onboarding, and compliance. The platform is described as purpose-built for government agencies, municipalities, and the broader public sector, with forms, workflows, and reporting aligned to public sector regulations. Products named on the site include Insight for applicant tracking, Attract for candidate relationship management, and Onboard for employee onboarding.",
+    "Insight is presented as an applicant tracking system that automates and centralizes recruitment activities for public sector hiring. Insight supports civil service requirements such as minimum qualifications screening, canvassing letters, and ranked eligibility lists, according to that page. Attract is a candidate relationship management system for agencies to engage candidates who have expressed interest in government jobs.",
+    "GovernmentJobs.com is offered as a job board built for public sector recruitment, with jobs posted in Insight published there automatically. The site also lists onboarding, performance management, learning management, custom forms, background investigations, and compliance management among the functions covered."
+   ],
+   "quote": {
+    "text": "NEOGOV is purpose-built for government agencies, municipalities, and the broader public sector.",
+    "url": "https://www.neogov.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.neogov.com",
+     "quote": "Streamline everyday government HR processes with an AI-supported platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.neogov.com",
+     "quote": "NEOGOV is purpose-built for government agencies, municipalities, and the broader public sector."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.neogov.com",
+     "quote": "NEOGOV offers solutions that cover multiple HR functions, including applicant tracking ( Insight ), candidate relationship management ( Attract ), onboarding ( Onboard )"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.neogov.com/products/insight",
+     "quote": "Insight is an applicant tracking system (ATS) that automates and centralizes recruitment activities"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.neogov.com/products/insight",
+     "quote": "Insight supports civil service requirements such as minimum qualifications screening, canvassing letters, and ranked eligibility lists."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.neogov.com/products/attract",
+     "quote": "Attract is a candidate relationship management (CRM) system that allows public sector agencies to proactively engage with candidates who have expressed interest in government jobs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.neogov.com/products/gjobs",
+     "quote": "GovernmentJobs.com is a job board purpose-built for public sector recruitment"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.neogov.com",
+     "quote": "performance management ( Perform ), learning management ( Learn ), custom forms ( eForms ), Human Resources Information System ( HRIS ), background investigations ( Vetted ), and compliance management ( Policy )."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.neogov.com",
+     "sha": "d29e1fa3ce53d5de",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neogov.com/products/insight",
+     "sha": "026d7feed11a244a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neogov.com/products/attract",
+     "sha": "2d4cfb140a353b80",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neogov.com/products/gjobs",
+     "sha": "ee0eff5a9b66281e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ukg",
@@ -16626,7 +16713,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Neumo sells government automation and cloud software to state and local agencies across North America. Product lines listed on the site cover revenue compliance, justice, public administration, payments, and DMV. The company describes coverage running from revenue compliance and court management to DMV services and integrated payments.",
+    "The revenue compliance page covers tax and licensing, short-term rental compliance, compliance auditing, and unclaimed property in one system. Neumo says it connects with current financial platforms, ERP systems, and legacy databases through an API-first design, without requiring a full replacement.",
+    "The Tax & Licensing product manages multiple tax types, registrations, renewals, and payments for governments in one system. An online taxpayer portal provides access for filing, payments, and renewals, and reduces paper processing. The same page says businesses can register, renew, and pay online."
+   ],
+   "quote": {
+    "text": "Neumo provides software that powers transactions and interactions between government and the communities they serve.",
+    "url": "https://neumo.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://neumo.com",
+     "quote": "state and local agencies across North America"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://neumo.com",
+     "quote": "Products Revenue Compliance Justice Public Administration Payments DMV Platform All Products"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://neumo.com",
+     "quote": "From revenue compliance and court management to DMV services and integrated payments"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://neumo.com/products/revenue-compliance-solutions/",
+     "quote": "covering tax and licensing, short-term rental compliance, compliance auditing, and unclaimed property in one system"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://neumo.com/products/revenue-compliance-solutions/",
+     "quote": "through an API-first design that connects with current financial platforms, ERP systems, and legacy databases without requiring a full replacement"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://neumo.com/products/revenue-compliance-solutions/tax-licensing/",
+     "quote": "empowers governments to efficiently manage and account for multiple tax types, registrations, renewals, and payments"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://neumo.com/products/revenue-compliance-solutions/tax-licensing/",
+     "quote": "Provide 24/7 access for filing, payments, and renewals, reducing paper processing"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://neumo.com/products/revenue-compliance-solutions/tax-licensing/",
+     "quote": "Enable businesses to register, renew, and pay online anytime."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://neumo.com",
+     "sha": "201f02120eb59675",
+     "fetched_on": null
+    },
+    {
+     "url": "https://neumo.com/products/",
+     "sha": "3f8dc60b8f442878",
+     "fetched_on": null
+    },
+    {
+     "url": "https://neumo.com/products/revenue-compliance-solutions/",
+     "sha": "21acd64b2f20939c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://neumo.com/products/revenue-compliance-solutions/tax-licensing/",
+     "sha": "3f7ca0e37372dccb",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cloudpermit",
@@ -21518,7 +21692,93 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026; NatCon 2026; NACCHO 360 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Netsmart sells healthcare software to community-based care providers, offering an integrated platform of healthcare technology and services meant to simplify workflows. The Netsmart CareFabric platform is presented as the framework of care solutions and services available to those providers. CareRecord solutions are tailored EHRs for human services, post-acute, physical therapy and geriatric care communities. Care Administration covers revenue cycle management, collection management, payment portals and clearinghouse work.",
+    "The pages name human services, post-acute, public sector, physical therapy and PALTC organizations as the communities served. Within human services, the platform scales across behavioral health, addiction treatment, autism, I/DD, child and family services, public health and integrated care. Public Sector EHR software is described as coordinating care across city, state, county and community agencies. The addiction treatment page describes substance use records supporting SAMHSA Opioid Treatment Programs and medication-assisted treatment."
+   ],
+   "quote": {
+    "text": "Helping people live better lives sits at the center of our mission at Netsmart.",
+    "url": "https://www.ntst.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ntst.com",
+     "quote": "We deliver an integrated platform of healthcare technology and services to community-based care providers, helping to simplify workflows with the goal of improving outcomes for those they serve."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ntst.com",
+     "quote": "The Netsmart CareFabric platform serves as the framework of integrated care solutions and services available to community-based care providers."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ntst.com",
+     "quote": "CareRecord solutions are tailored EHRs designed to meet the specific needs of human services, post-acute, physical therapy and geriatric care communities."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.ntst.com",
+     "quote": "Care Administration covers the broad and varied logistics on the business side of healthcare: revenue cycle management (RCM), collection management, payment portals, clearinghouse and more."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ntst.com",
+     "quote": "Netsmart serves Human Services, Post-Acute, Public Sector, Physical Therapy and PALTC organizations doing essential, high-impact work every day."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ntst.com/solutions/by-community/human-services",
+     "quote": "Scales with your organization across behavioral health, addiction treatment, autism, I/DD, child and family services, public health and integrated care."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ntst.com/solutions/by-community/human-services",
+     "quote": "Public Sector EHR software designed to coordinate care across city, state, county and community agencies."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.ntst.com/solutions/by-community/human-services/addiction-treatment",
+     "quote": "Netsmart substance use EMR recovery solutions are designed to empower SAMHSA Opioid Treatment Programs and aim to support the unique challenges of medication-assisted treatment (MAT)."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ntst.com",
+     "sha": "a1055e9900dd0d4c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ntst.com/company/careers-and-culture",
+     "sha": "873d54f59a2c0aba",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ntst.com/solutions/by-community/human-services",
+     "sha": "b67491591aa96d82",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ntst.com/solutions/by-community/human-services/addiction-treatment",
+     "sha": "0e966b84d76c42ff",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "unite-us",
@@ -23856,7 +24116,100 @@
     "sector": "Public Works",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Novotx sells Elements XS, a GIS-driven platform that its homepage says helps local governments and utilities manage infrastructure, assets, and public services. With Elements XS Asset Management, agencies can maintain roads, water systems, fleets, facilities, and more. Connect is a public-facing portal for residents to report issues, request services, and interact with an agency.",
+    "Connect can also be customized to handle payments and permit applications, according to the same page. Elements XS is presented as purpose-built for public works and utilities, simplifying asset and work management. The company describes Elements XS as a platform where GIS is the single source of truth for everything spatial, shared through ArcGIS as live maps.",
+    "The site names County of Kauai, HI, Sunriver Utilities, OR, City of Orem, UT, and Lake Apopka Natural Gas District, FL, among its customers. Novotx says it has helped public works teams modernize their operations for over 20 years. A headline on the site reads that Novotx joins Accela to expand value across the asset lifecycle."
+   ],
+   "quote": {
+    "text": "Asset management, permits, citizen requests and more for utilities and local government infrastructure.",
+    "url": "https://novotx.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://novotx.com",
+     "quote": "Novotx\u2019s Elements XS is a GIS-driven platform that helps local governments and utilities manage infrastructure, assets, and public services with confidence."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://novotx.com",
+     "quote": "With Elements XS Asset Management, agencies can proactively maintain roads, water systems, fleets, facilities, and more"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://novotx.com",
+     "quote": "Connect is a public-facing portal that makes it easy for residents to report issues, request services, and interact with your agency"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://novotx.com",
+     "quote": "This flexible platform can be customized to handle payments, permit applications, and just about any inbound process your agency relies on"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://novotx.com",
+     "quote": "purpose-built for public works and utilities. It simplifies asset and work management"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://novotx.com/about/partners/",
+     "quote": "With Elements XS, your GIS is the single source of truth for everything spatial."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://novotx.com",
+     "quote": "Real stories from the teams we\u2019re proud to support."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://novotx.com",
+     "quote": "For over 20 years, we\u2019ve helped public works teams modernize their operations with intuitive, reliable software"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://novotx.com",
+     "quote": "Novotx Joins Accela to Expand Value Across the Asset Lifecycle"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://novotx.com",
+     "sha": "df59493008cb33f9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novotx.com/about/",
+     "sha": "a1eaf67f28ef3b31",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novotx.com/about/our-team/",
+     "sha": "3d9d5f5188e82dd8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novotx.com/about/partners/",
+     "sha": "458df858ba1397c2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vueworks",
@@ -33391,7 +33744,81 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; Maryland Municipal League 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NovoaGlobal sells photo enforcement systems, including red light and school zone speed enforcement, which the company describes as designed to improve traffic safety and reduce road injuries and fatalities. Public Safety products add real time tracking and monitoring, and Vision Zero products cover crosswalk, railroad, and stop sign driver education. Named systems on the site include School Zone Speed-Safe, Crosswalk-Safe, RedLight-Safe, StopSign-Safe, and Railroad-Safe.",
+    "A post listed under Solutions describes automated oversize vehicle detection provided to Belle Isle, Florida. One post says Sensys America developed Railroad-Safe in response to a request by the City of Orlando for a rail-highway grade crossing detection system. The affiliations page states a Strategic Partner relationship with NLETS and MBE certification in various States, Counties and Cities."
+   ],
+   "quote": {
+    "text": "NovoaGlobal's mission is to provide non-complex solutions that help organizations to make better use of technology.",
+    "url": "https://novoaglobal.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://novoaglobal.com/solutions/",
+     "quote": "NovoaGlobal's photo enforcement solutions such as red light and school zone speed enforcement designed to improve traffic safety, reduce road injuries and fatalities."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://novoaglobal.com/solutions/",
+     "quote": "We also provide our Public Safety real time tracking and monitoring, and Vision Zero solutions including crosswalk, railroad, and stop sign driver education."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://novoaglobal.com",
+     "quote": "Our red light camera enforcement, RedLight-Safe System, relies"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://novoaglobal.com/category/solutions/",
+     "quote": "provides automated oversize vehicle detection to Belle Isle, Florida. The City of Belle Isle leads"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://novoaglobal.com/category/solutions/",
+     "quote": "in response to a request by the City of Orlando for a rail-highway grade crossing detection system"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://novoaglobal.com/why-us/",
+     "quote": "MBE - We are a MBE (Minority Business Enterprise) with certifications in various States, Counties and Cities."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://novoaglobal.com",
+     "sha": "9c26cad42bc9c1d9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novoaglobal.com/why-us/",
+     "sha": "e1f8cf648285da93",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novoaglobal.com/solutions/",
+     "sha": "cad73fdb1b02152c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novoaglobal.com/category/solutions/",
+     "sha": "d79f4c8c5861e6cd",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "jenoptik-smart-mobility",
@@ -54974,7 +55401,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "New in Blue sells technology platforms for law enforcement. The company is led by a retired chief of police and municipal executive.",
+    "Tickets On The Go is an eCitation smartphone app that fills in a citation form and lets officers share tickets with a defendant by print, email or text message. Review the Blue is a system for bridging the gap between public sentiment and Law Enforcement Officers. Blue Trace is a cloud-based SAAS process for officer safety, offered to agencies of all sizes with no start-up costs.",
+    "Goldline RMS is a record management system with integration to Goldline CAD and Tickets On The Go. Goldline CAD is listed with tight integration to Goldline RMS and Silent Dispatch. seQRsmart is a security inspection app for managing security checkpoints. The pages state that the solutions are compliant with state and federal reporting mandates and provide public safety agencies real-time information."
+   ],
+   "quote": {
+    "text": "Technology Built by Cops for Cops",
+    "url": "https://www.newinblue.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.newinblue.com",
+     "quote": "New in Blue develops comprehensive technology platforms with the power to shape the future of law enforcement"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.newinblue.com",
+     "quote": "Led by a retired chief of police and municipal executive, New In Blue possesses a unique understanding of the challenges that our first responders face."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.newinblue.com",
+     "quote": "TOTG is a secure eCitation smartphone app that auto-populates a citation form and allows officers to share tickets with a defendant via print, email or text message"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.newinblue.com",
+     "quote": "Review The Blue is a system that helps bridge the gap between the public sentiment / perception and Law Enforcement Officers (LEOs)"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.newinblue.com",
+     "quote": "Blue Trace is a modernized, cloud-based SAAS process that enhances officer safety and is affordable for agencies of all sizes with NO start-up costs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.newinblue.com",
+     "quote": "Tight Integration with Tickets On The Go"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.newinblue.com",
+     "quote": "Tight Integration with Goldline RMS & Silent Dispatch"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.newinblue.com",
+     "quote": "seQRsmart is a comprehensive security inspection app that allows you to manage your security checkpoints with ease"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.newinblue.com",
+     "quote": "Our solutions are compliant with state and federal reporting mandates, providing public safety agencies real-time information at their fingertips"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.newinblue.com",
+     "sha": "c3fc3803eee95be1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ninjaone",
@@ -55012,7 +55517,89 @@
   "sells_to_gov": "yes",
   "founded_source": "https://www.ninjaone.com/ai-info-page/ \u2014 established in 2013 by Sal Sferlazza and Chris Matarese, launched publicly in 2015 (as NinjaRMM). Built In Austin also lists 2013.",
   "acquisition_note": "Acquired Dropsuite (SaaS backup and data protection), completed June 2, 2025, about US$270M (ninjaone.com/press/ninjaone-completes-acquistion-of-dropsuite/). Not itself acquired: founder-led, co-founders retain majority control (ai-info-page, June 9, 2026 release).",
-  "acquisitions_checked_on": "2026-09-11"
+  "acquisitions_checked_on": "2026-09-11",
+  "profile": {
+   "paragraphs": [
+    "NinjaOne sells a unified IT operations platform covering endpoint management, autonomous patching, backup, and remote access. Products listed include endpoint management, mobile device management, patch management, backup, remote control, service desk, and integrations. Devices covered include Windows, Mac, and Linux end-user devices, servers, VMs, and networking devices managed from a single interface.",
+    "Buyers named on these pages are IT teams and managed service providers. Customer stories on the platform page name Kansas City, Carahsoft, Flash, and Rare. The home page also reports Kansas City cutting IT costs and accelerating patching.",
+    "A FedRAMP mark on the platform page states use in U.S. federal agencies and government supply chains. Other compliance marks listed there include SOC 2 Type II, ISO/IEC 27001, GDPR, and HIPAA."
+   ],
+   "quote": {
+    "text": "One platform to manage every device, protect every endpoint, and support every employee.",
+    "url": "https://www.ninjaone.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ninjaone.com",
+     "quote": "NinjaOne is the unified IT operations platform for endpoint management, autonomous patching, backup, and remote access."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ninjaone.com",
+     "quote": "Endpoint Management Mobile Device Management Patch Management Backup Remote Control Service Desk Integrations"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ninjaone.com/platform/",
+     "quote": "Monitor, support, and control all Windows, Mac, and Linux end-user devices, servers, VMs, and networking devices from a single easy-to-use interface."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ninjaone.com",
+     "quote": "Trusted by IT teams and MSPs worldwide"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ninjaone.com/platform/",
+     "quote": "Kansas City Unifies IT and Gets Super Upgrade with NinjaOne"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ninjaone.com",
+     "quote": "Kansas City cuts IT costs and accelerates patching"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ninjaone.com/platform/",
+     "quote": "Trusted for use in U.S. federal agencies and government supply chains"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ninjaone.com/platform/",
+     "quote": "Verified controls for security, availability, and confidentiality"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ninjaone.com",
+     "sha": "cf139cfd6860a2ee",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ninjaone.com/platform/",
+     "sha": "740ced91c994e3c4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ninjaone.com/about-us/",
+     "sha": "1dde67269c61a2e2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "noti-fly-inc",
@@ -55060,7 +55647,87 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "NueGOV sells modular software for managing assets, infrastructure, inspections, work zones, and projects across government departments. The homepage states the platform is built for law enforcement, fire, OEM, DOTs, MPOs and cities and counties. Buyers take only the modules they need, with assets and inspections for public safety and infrastructure, work zones and projects for transportation.",
+    "One case study describes the Decatur Police Department, which manages uniforms, body-worn cameras, radios, and patrol vehicle equipment. That department reported a 13% reduction in asset-related expenditures in the first year. Another case study covers digitizing a form for temporary speed limit reductions at the Colorado Department of Transportation. A third case study covers a guardrail validation and assessment, with the resulting inventory held in the NueGOV platform."
+   ],
+   "quote": {
+    "text": "NueGOV built the product specific to our workflows and our requirements. This partnership has been beneficial.",
+    "url": "https://nuegov.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://nuegov.com",
+     "quote": "Manage Assets, Infrastructure, Inspections, Work Zones and Projects"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://nuegov.com",
+     "quote": "Built for Law Enforcement, Fire, OEM, DOTs, MPOs and Cities & Counties."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://nuegov.com",
+     "quote": "Use only the modules you need - assets and inspections for public safety, infrastructure, work zones, and projects for transportation."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nuegov.com/case-studies/asset-management",
+     "quote": "The Decatur Police Department serves the City of Decatur and surrounding communities, managing high-value law enforcement assets including uniforms, body-worn cameras, radios, and patrol vehicle equipment."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nuegov.com/case-studies/asset-management",
+     "quote": "Cost Savings \u2014 13% reduction in asset-related expenditures in year one"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nuegov.com/case-studies/form-568",
+     "quote": "Streamlining Temporary Speed Limit Reductions at the Colorado Department of Transportation (CDOT)"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://nuegov.com/case-studies/guard-rail",
+     "quote": "Provided CDOT with a complete, photo-documented, GIS-ready inventory in the proprietary NueGOV platform"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://nuegov.com",
+     "sha": "323497e83330abf4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuegov.com/case-studies/form-568",
+     "sha": "a0b97b45bc9488d9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuegov.com/case-studies/guard-rail",
+     "sha": "57c62a134862e7bc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuegov.com/case-studies/asset-management",
+     "sha": "2a6dfa30c991a506",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "nutanix",
@@ -59590,7 +60257,101 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "nCase Technologies sells nCase Lite, a silicone carry case that holds one dose of naloxone nasal spray. Naloxone nasal spray is not included with the case. The case clips to keys, bags, or belts, and a QR sticker on it links to naloxone administration instructions. The case is compatible with emergency nasal sprays including naloxone, NARCAN, neffy, and VALTOCO.",
+    "Smaller orders go through the website, and bulk pricing is tiered by unit volume. Bulk purchasing is offered for public health programs, universities, hospitals, and other organizations. Discounts go to nonprofits, public health departments, government agencies, and first responder teams. Accepted payment methods include credit card, purchase orders, ACH, and wire transfer, with Net 30 terms for health departments and government agencies.",
+    "nCase was founded by Dani Wilder and Matt Bitner-Glindzicz, whose backgrounds are in healthcare, research, and mechanical design. The company states that the case is not a medical device and is not regulated by the FDA."
+   ],
+   "quote": {
+    "text": "nCase is a protective carrying case to carry your naloxone.",
+    "url": "https://www.ncasetechnologies.com/products/ncase-lite"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ncasetechnologies.com/products/ncase-lite",
+     "quote": "a durable silicone Naloxone keychain carry case that keeps a dose protected and within reach"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ncasetechnologies.com/products/ncase-lite",
+     "quote": "NALOXONE NOT INCLUDED WITH PURCHASE"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ncasetechnologies.com/products/ncase-lite",
+     "quote": "a QR sticker on the case links straight to administration instructions for whoever's holding it"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.ncasetechnologies.com",
+     "quote": "Compatible with all emergency nasal sprays (naloxone, NARCAN\u00ae, neffy\u00ae, VALTOCO\u00ae, and more)"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ncasetechnologies.com",
+     "quote": "Smaller orders can be placed directly through our website"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ncasetechnologies.com/products/ncase-lite",
+     "quote": "nCase is available for bulk purchasing for public health programs, universities, hospitals, and other organizations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ncasetechnologies.com",
+     "quote": "We extend discounts to mission-aligned organizations \u2013 nonprofits, public health departments, government agencies, and first responder teams."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.ncasetechnologies.com",
+     "quote": "For health departments and government agencies, we also offer Net 30 terms."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ncasetechnologies.com/pages/about-us",
+     "quote": "nCase was founded by Dani Wilder and Matt Bitner-Glindzicz"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ncasetechnologies.com",
+     "quote": "nCase Lite is not a medical device and not regulated by the FDA."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ncasetechnologies.com",
+     "sha": "c92c0acf5231ae18",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ncasetechnologies.com/pages/about-us",
+     "sha": "a743a33defb9d9c2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ncasetechnologies.com/products/ncase-lite",
+     "sha": "4ebd58e1bb876e0e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "earthdaily",
@@ -76289,7 +77050,87 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Nexar sells dash cams for cars, paired with a phone app that saves and backs up the footage. The range is sorted by how much of the car is covered, from front only to front, cabin and rear. Recording runs from Full HD to 4K, and models with built-in LTE send alerts and live video without a paired phone.",
+    "Pages for each camera name the drivers it is for: rideshare and delivery drivers, parents with kids in the back seat, and daily commuters. The smallest model is aimed at compact-car owners, parents passing a car down to a teen driver, and first-time buyers. The 4K model is pitched at long-distance commuters, rideshare drivers, and owners of newer or higher-value cars. Live alerts, vehicle tracking and cloud backup sit behind a subscription the pages price at $9.99 a month."
+   ],
+   "quote": {
+    "text": "Nexar is more than a dashcam. It watches, warns, and proves so you never face the road alone.",
+    "url": "https://www.getnexar.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.getnexar.com",
+     "quote": "Nexar Pro GPS Dash Cam For drivers who want the road and cabin in one classic two-camera setup. Records in 1080p with built-in GPS and saves accident clips through the free Nexar Classic app."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.getnexar.com",
+     "quote": "Every Nexar camera protects what's in front of you. The question is how much of your journey you want covered."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.getnexar.com/products/beam-2",
+     "quote": "It features built-in LTE connectivity with a multi-carrier SIM, enabling remote live streaming, real-time alerts, and 24/7 parking mode without needing your phone."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.getnexar.com/products/beam-2",
+     "quote": "Rideshare and delivery drivers (the cabin camera records inside the car)"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.getnexar.com/products/beam-2-mini",
+     "quote": "Parents passing a car down to a teen driver"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.getnexar.com/products/nexar-one",
+     "quote": "Long-distance commuters and road-trippers"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.getnexar.com/products/beam-2",
+     "quote": "The Nexar Connect subscription is $9.99/month. You can save 20% by choosing annual billing. Your first month is free when you activate your dash cam."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.getnexar.com",
+     "sha": "7c7dcdef9376b4d2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getnexar.com/products/beam-2-mini",
+     "sha": "7d5deb839fee2c59",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getnexar.com/products/beam-2",
+     "sha": "7a1b87d9aa0922e9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getnexar.com/products/nexar-one",
+     "sha": "bea82fdeba48b0c8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "compass-iot",
@@ -77547,7 +78388,89 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Novo Solutions sells an operations management system called NovoGov, described on its site as a web and mobile cloud-based software solution for streamlining operations. The homepage lists the software as tracking and maintaining assets, receiving and processing work orders and inspections, providing customer support, and reporting on outcomes and progress. Other functions on that page include viewing assets on a map with maintenance history, and mobile or website access for citizens to submit requests and receive notifications.",
+    "The about page states that Novo Solutions has provided customer-driven web solutions since 1999, with technology and pricing scaled to a single department or across multiple departments. The same page names ShareNet as a cloud based information management system launched in 2013, with apps for work order management, asset management, and inventory management.",
+    "The case studies page describes public works and utilities departments adopting NovoGov for asset tracking, work order history, and citizen complaints. One case study describes a police department that adopted NovoGov to modernize asset and inventory management after a surprise audit revealed gaps in real-time inventory and historical records. Another describes a township road department that gained maps of assets, digital pre-trip inspections, and automated preventive maintenance."
+   ],
+   "quote": {
+    "text": "The NovoGov Operations Management system is an easy-to-use, highly flexible web and mobile cloud-based software solution designed to help organizations streamline their operations.",
+    "url": "https://novosolutions.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://novosolutions.com",
+     "quote": "The NovoGov Operations Management system is an easy-to-use, highly flexible web and mobile cloud-based software solution designed to help organizations streamline their operations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://novosolutions.com",
+     "quote": "Receive and Process Work Orders & Inspections,"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://novosolutions.com",
+     "quote": "Mobile/website access for citizens to submit requests and receive notifications."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://novosolutions.com/about-us/",
+     "quote": "Since 1999 Novo Solutions\u2019 focus has been to provide customer-driven web solutions that are robust and easy to implement and use."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://novosolutions.com/about-us/",
+     "quote": "In 2013 we launched ShareNet \u2013 a very flexible, easy to use, cloud based information management system."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://novosolutions.com/case-studies/",
+     "quote": "The City of Rockland, Maine\u2019s Public Works and Transfer Station, led by Public Works Director Todd Philbrook, transitioned to NovoGov for streamlined work order management, fleet operations, and citizen complaints."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://novosolutions.com/case-studies/",
+     "quote": "The Stafford Township Police Department managed millions of dollars in vehicles, gear, and equipment using spreadsheets and an outdated CAD system, leaving them unprepared for audits."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://novosolutions.com/case-studies/",
+     "quote": "After implementing NovoGov, the department gained clear GIS-based maps of assets, digital pre-trip inspections, automated preventive maintenance, and a centralized, map-based to-do list for work orders and complaints."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://novosolutions.com",
+     "sha": "a695aaf14a6aedb6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novosolutions.com/about-us/",
+     "sha": "27cd37266044c80d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://novosolutions.com/case-studies/",
+     "sha": "df0c44a897d57b20",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "greensight",
@@ -79247,7 +80170,71 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Nimble sells software for K-12 hiring, and its home page describes partnering with states to connect schools and teachers. The home page says Nimble supports states, districts, and teachers in one platform, with sections addressing Teachers, State DOEs, Districts, and Principals. Five products are named: Nimble Insight, Nimble Discover, Nimble Navigate, Nimble Connect, and Nimble Hire. Nimble Insight tracks teacher vacancies statewide for education leaders, and Nimble Hire brings districts and teachers into one connected system.",
+    "The case studies page names Nebo School District, School City of East Chicago, and Wawasee. It credits Nimble with faster hiring at School City of East Chicago and at Wawasee, and says Nebo School District implemented the applicant tracking system in 2022."
+   ],
+   "quote": {
+    "text": "Nimble brings clarity, speed, and confidence to K-12 hiring by partnering with states to connect schools and teachers",
+    "url": "https://www.hirenimble.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.hirenimble.com",
+     "quote": "Nimble brings clarity, speed, and confidence to K-12 hiring by partnering with states to connect schools and teachers"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.hirenimble.com",
+     "quote": "how Nimble supports states, districts, and teachers in one flexible platform"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.hirenimble.com",
+     "quote": "Nimble Insight gives education leaders the visibility to spot shortages early"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.hirenimble.com",
+     "quote": "Nimble Hire brings districts and teachers into one connected system"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.hirenimble.com/case-studies",
+     "quote": "Since implementing the Nimble applicant tracking system in 2022, Nebo School District"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.hirenimble.com/case-studies",
+     "quote": "That momentum delivered faster hiring and near-full staffing."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.hirenimble.com",
+     "sha": "43221a7b2db9ed51",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.hirenimble.com/case-studies",
+     "sha": "bb5537f5a617eb7e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "facilitron",
@@ -79455,7 +80442,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Navigate360 sells a health and safety management platform for K-12 schools, combining safety, student behavior, operations, and training in one ecosystem. The platform is organized into four solution areas: safety and emergency response, student behavior and well-being, school operations and movement, and staff training and certification.",
+    "Campus360 groups emergency management, panic buttons and alerting, and visitor and volunteer management into one system for preparing for and responding to incidents. Emergency Management covers digital site maps, one-tap alerts to staff and 911, drill scheduling and logging, and accountability and reunification. Visitor and volunteer management screens visitors against sex offender databases and blocklists and tracks who is on campus.",
+    "Staff training and certification covers active shooter response, threat assessment, and suicide awareness and prevention. The pages name K-12 schools and school districts as the users of these solutions, along with public safety agencies that use the safety training. State-required drill scheduling, compliance records, and real-time map access for police and fire are described on the emergency management page."
+   ],
+   "quote": {
+    "text": "Navigate360 brings safety, student behavior, operations, and training together in a single ecosystem.",
+    "url": "https://navigate360.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://navigate360.com",
+     "quote": "Navigate360 is a health and safety management platform for K-12 schools that offers a complete suite of integrated school safety solutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://navigate360.com",
+     "quote": "Navigate360 is built around four interconnected solution areas that work together to create layered, proactive protection."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://navigate360.com/solutions/campus360/",
+     "quote": "Emergency management, advanced panic buttons and alerting, and visitor and volunteer oversight all work together in a single system so schools can prepare, respond, and recover from any incident."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://navigate360.com/solutions/emergency-management/",
+     "quote": "From digital site maps and one-tap alerts to reunification, Emergency Management unifies preparation, response, and recovery"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://navigate360.com/solutions/campus360/",
+     "quote": "Screen visitors against sex offender databases and blocklists"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://navigate360.com/solutions/",
+     "quote": "ALICE Active Shooter Response Training"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://navigate360.com",
+     "quote": "public safety agencies use Navigate360 safety training"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://navigate360.com/solutions/emergency-management/",
+     "quote": "Give police and fire real-time access to maps and live incident status."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://navigate360.com",
+     "sha": "9fbaa863d3df82de",
+     "fetched_on": null
+    },
+    {
+     "url": "https://navigate360.com/solutions/",
+     "sha": "1fa40e6c0cd94f9d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://navigate360.com/solutions/campus360/",
+     "sha": "71cb16f7e7e682d8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://navigate360.com/solutions/emergency-management/",
+     "sha": "4c0033a9a2686c08",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "classlink",
@@ -84514,7 +85588,96 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Neology sells toll collection systems for tolling networks, along with revenue assurance and tools road users need to manage travel. A second line is vehicle-related enforcement technology for authorities working on safety and congestion. A third line is operations and maintenance for local and state transportation agencies.",
+    "One product is the neoRide Mobile Payments Application. It covers toll payment services, parking, and road user charging. neoFleet is a toll and violation management platform for commercial fleets.",
+    "Neology serves global Transportation and Law Enforcement Agencies. The company is headquartered in Carlsbad, CA with 650+ employees and operations in NAM, LATAM, EMEA, and APAC. It holds over 200 granted and pending patents and is certified SOC 1 and SOC 2 compliant. Neology is a privately held company governed by a Board of Directors."
+   ],
+   "quote": {
+    "text": "Solutions that enhance mobility, increase sustainability, improve safety, and increase revenue.",
+    "url": "https://neology.net"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://neology.net",
+     "quote": "operations of their tolling networks, enable high revenue assurance, and offer road users convenient, accurate tools for managing their travel."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://neology.net",
+     "quote": "vehicle-related enforcement technology solutions that empower authorities to improve safety, reduce congestion, and enhance sustainability."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://neology.net",
+     "quote": "local and state transportation agencies, bringing reliability, and operational efficiency to the job."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://neology.net",
+     "quote": "neoRide Mobile Payments Application"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://neology.net",
+     "quote": "Toll payment services, parking, road user charging, and more"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://neology.net",
+     "quote": "Toll and Violation Management Platform for Commercial Fleets"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://neology.net/about/",
+     "quote": "serve global Transportation and Law Enforcement Agencies."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://neology.net/about/",
+     "quote": "Headquartered in Carlsbad, CA with 650+ employees and operations in NAM, LATAM, EMEA, and APAC."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://neology.net/about/",
+     "quote": "hold over 200 granted and pending patents and are certified SOC 1 and SOC 2 compliant."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://neology.net/about/",
+     "quote": "Neology is a privately held company governed by a Board of Directors."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://neology.net",
+     "sha": "365a460d6af5b1f3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://neology.net/about/",
+     "sha": "20fc977e1eaf777a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rezcomm",
@@ -85164,7 +86327,78 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; APHSA 2026"
+  "source": "competitor sweep; APHSA 2026",
+  "profile": {
+   "paragraphs": [
+    "Northwoods sells Traverse, cloud-based software for health and human services professionals, alongside Grove, an operational support service formerly called Case Aide Services. Traverse covers digital forms and case notes, e-signatures, document upload, compliance tracking, and access that works offline. Grove is described as trained professionals who reduce administrative workload and support case-related tasks.",
+    "The buyers are health and human services agencies, and the programs named are child welfare, adult and aging, child support, and economic assistance. Northwoods has focused on health and human services since 2003, and describes an expansion from document management into cloud-based software and support services.",
+    "Named customers are government agencies, including Wood County Department of Job and Family Services in Ohio as the first economic assistance customer. Later entries record statewide child support solutions sold in Nevada and West Virginia and county projects in Minnesota."
+   ],
+   "quote": {
+    "text": "Less Paperwork. More Peoplework.",
+    "url": "https://teamnorthwoods.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://teamnorthwoods.com",
+     "quote": "we offer Traverse \u2014 cloud-based , AI-powered software for health and human services professionals \u2014and Grove (formerly Case Aide Services)"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://teamnorthwoods.com",
+     "quote": "Complete digital forms and case notes"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://teamnorthwoods.com",
+     "quote": "Trained professionals help reduce administrative workload and support critical case-related tasks."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://teamnorthwoods.com",
+     "quote": "Empower your child welfare, adult & aging, child support, and economic assistance teams with Traverse and Grove."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.teamnorthwoods.com/about-us/",
+     "quote": "Northwoods has focused on health and human services since 2003."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.teamnorthwoods.com/about-us/",
+     "quote": "Wood County Department of Job and Family Services in Ohio became our first customer in economic assistance"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.teamnorthwoods.com/about-us/",
+     "quote": "Sold statewide child support solutions in Nevada and West Virginia, while beginning to implement county projects in Minnesota."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://teamnorthwoods.com",
+     "sha": "eee4437659b74ddd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.teamnorthwoods.com/about-us/",
+     "sha": "1dca547af2bdec17",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "merative",
@@ -102530,7 +103764,84 @@
     "sector": "K-12 Schools",
     "category": "Transportation"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Nuvve sells battery energy storage, energy hubs that combine batteries and electric vehicle charging with solar panels, and vehicle-to-grid smart charging. The home page describes the company as one that powers the future of flexible energy by turning buildings, batteries, and even electric vehicles (EV) into dynamic grid resources. Products and services listed in the site navigation include energy management, batteries and V2G, fleet charging management, chargers, procurement, and funding and financing.",
+    "The about page says Nuvve serves fleets and sites on their electrification journey, utilities engaged in grid modernization, electricity suppliers, automakers, and businesses seeking electricity optimization and resiliency. The same page states that Nuvve provides solutions to School Districts, Municipalities, Utilities, Cooperatives, Electricity Suppliers, Commercial and Industrial customers. Home page copy addresses businesses or coops exposed to electricity pricing volatility, businesses that produce their own energy, and fleet operators.",
+    "The about page states that Nuvve today operates over 700 EV chargers and stationary batteries on three continents. The same page dates the first commercial service to Denmark in 2016 and says Nuvve became a public company in 2021."
+   ],
+   "quote": {
+    "text": "Nuvve's advanced platform for distributed grid assets management and vehicle-to-grid (V2G), orchestrates in real-time distributed energy resources such as batteries, bidirectional charging, load optimization, and grid services.",
+    "url": "https://nuvve.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://nuvve.com",
+     "quote": "Combine batteries and electric vehicle charging with solar panels"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://nuvve.com",
+     "quote": "Nuvve powers the future of flexible energy by turning buildings, batteries, and even electric vehicles (EV) into dynamic grid resources"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://nuvve.com",
+     "quote": "Energy Management, Batteries & V2G"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nuvve.com/about/",
+     "quote": "Nuvve serves fleets and sites on their electrification journey, utilities engaged in grid modernization"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nuvve.com/about/",
+     "quote": "We provide our solutions to School Districts, Municipalities, Utilities, Cooperatives, Electricity Suppliers, Commercial and Industrial customers."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nuvve.com",
+     "quote": "For businesses or coops exposed to electricity pricing volatility and the risks of blackouts."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://nuvve.com/about/",
+     "quote": "Nuvve today operates over 700 EV chargers and stationary batteries on three continents."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://nuvve.com/about/",
+     "quote": "The first commercial service was launched in Denmark in 2016."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://nuvve.com",
+     "sha": "e5e77eafc9c831f0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuvve.com/about/",
+     "sha": "3b5fdd14ae7c13ec",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "opusxenta",
@@ -106116,7 +107427,106 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Cities/transit programs for passenger shuttle deployments and airports/ports/industrial operators for cargo tractors (Charlatte Autonom line) \u2014 a mixed public/private customer base, with recent news s",
   "acquisition_note": "navya.tech/about-us names Macnica and NTT WEST, Inc. (Japan) as major shareholders, and the site's own news feed covers an NTT West investment in \"GAUSSIN MACNICA MOBILITY.\" External sources (Gaussin press release, sustainable-bus.com \u2014 not opened as primary evidence here beyond the search snippet) describe Navya undergoing a 2023 insolvency/asset sale to Gaussin and Macnica, but navya.tech itself",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "Navya Mobility sells turnkey autonomous mobility solutions for the transportation of goods and people, supported by a full range of services. Since 2014 the company has worked on autonomous and zero-emission transport for passengers and goods. Navya Mobility names four key markets: passenger transport, logistics, ports, and airports.",
+    "One product is the Autonom Shuttle Evo 3, a turnkey autonomous mobility solution designed for cities and private sites. That shuttle offers wheelchair access and capacity for up to 15 passengers. It is described as 100% electric and completely emission-free. The other product is the Autonom Tract AT135, a self-driving tow tractor for industrial and luggage flows.",
+    "The AT135 comes from Charlatte Autonom, a joint venture created in 2018 by Navya Mobility and Charlatte Manutention. Cities, companies and industrial players are the parties these pages invite to deploy autonomous transport solutions. Deployments are described as running in multiple countries worldwide."
+   ],
+   "quote": {
+    "text": "Navya Mobility delivers turnkey autonomous mobility solutions",
+    "url": "https://www.navya.tech"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.navya.tech",
+     "quote": "As a pioneer in autonomous mobility, Navya provides turnkey solutions for the transportation of goods and people, supported by a full range of services."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.navya.tech/about-us",
+     "quote": "Since 2014, Navya Mobility has been shaping the future of autonomous and zero-emission transport."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.navya.tech/about-us",
+     "quote": "Today, Navya Mobility stands ready to meet the growing demand for sustainable and intelligent mobility across four key markets: passenger transport, logistics, ports, and airports"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.navya.tech/products/autonom-r-shuttle-evo-3",
+     "quote": "Designed for both cities and private sites, the Autonom\u00ae Shuttle Evo is a versatile, sustainable and intelligent vehicle providing safe, comfortable and efficient ride."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.navya.tech/products/autonom-r-shuttle-evo-3",
+     "quote": "With wheelchair access , capacity for up to 15 passengers, and a bi-directional design"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.navya.tech/products/autonom-r-shuttle-evo-3",
+     "quote": "the shuttle is 100% electric and completely emission-free"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.navya.tech/products/autonom-r-tract---at135",
+     "quote": "The safe, performant, self-driving tow tractor solution for industrial and luggage flows."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.navya.tech/products/autonom-r-tract---at135",
+     "quote": "CHARLATTE AUTONOM is a joint venture created in 2018 by NAVYA MOBILITY"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.navya.tech/about-us",
+     "quote": "Are you a city, a company, or an industrial player? Navya is ready to support you in deploying autonomous transport solutions tailored to your needs."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.navya.tech",
+     "quote": "Our expertise turns into real projects, already running in multiple countries worldwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.navya.tech",
+     "sha": "dc12144da5bb46de",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.navya.tech/products/autonom-r-shuttle-evo-3",
+     "sha": "c3b00104aa24799d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.navya.tech/products/autonom-r-tract---at135",
+     "sha": "d81410c71527e819",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.navya.tech/about-us",
+     "sha": "21d37d47bb3e325d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "holon",
@@ -107007,7 +108417,89 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Nordsense sells smart sensors and data for waste management, and the company states a mission of redefining that industry. The about page describes a complete end-to-end waste optimization solution based on IoT sensor technology, from a start-up established in 2015 in Denmark.",
+    "That same sentence names cities, municipalities, waste operators, collectors, haulers, facility management, and campuses in Europe, Israel, and North America. One homepage case study describes San Francisco facing street cleaning requests and unsanitary streets before a smart sensor journey in 2019. Another case study names Local Government Economic Services, a non-profit organization in Israel that works with municipalities, and 9 Israeli municipalities using smart sensors.",
+    "The homepage lists advantages including cutting carbon emissions from collections, along with fuel consumption and driving distances. Another stated advantage is preventing overflowing bins and illegal dumping. The pages also offer understanding of waste generation behavior so that participation in recycling programs can increase."
+   ],
+   "quote": {
+    "text": "We need more than yesterday's data to build tomorrow's waste cycles",
+    "url": "https://nordsense.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://nordsense.com/about-us/",
+     "quote": "Nordsense is on a mission to redefine the waste management industry with smart sensors and data."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://nordsense.com/about-us/",
+     "quote": "The Silicon Valley funded start-up was established in 2015 in Denmark and offers a complete end-to-end waste optimization solution based on IoT sensor technology"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nordsense.com/about-us/",
+     "quote": "offers a complete end-to-end waste optimization solution based on IoT sensor technology for cities, municipalities, waste operators, collectors, haulers, facility management, and campuses in Europe, Israel, and North America."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nordsense.com",
+     "quote": "With +10,000 annual street cleaning requests, unhappy residents, and unsanitary streets, San Francisco was facing some serious waste challenges. In 2019, they embarked on a smart sensor journey."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nordsense.com",
+     "quote": "A non-profit organization in Israel, Local Government Economic Services (LGES) works closely with municipalities to implement smart city technology and optimize waste services. 9 Israeli municipalities started using smart sensors to gain more transparency of waste generation behavior."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://nordsense.com",
+     "quote": "Cut down on carbon emissions from your collections, incl. fuel consumption and driving distances."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://nordsense.com",
+     "quote": "Prevent overflowing bins and illegal dumping while contributing to higher standards of living."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://nordsense.com",
+     "quote": "Understand waste generation behavior so you can increase participation in recycling programs."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://nordsense.com",
+     "sha": "cc9ba630869bec28",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nordsense.com/about-us/",
+     "sha": "8deb7283d3563135",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nordsense.com/company/",
+     "sha": "8deb7283d3563135",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "enevo",
@@ -107795,7 +109287,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "New Way Trucks builds refuse trucks in a range of sizes and models. Each build can be customized to the customer's team. Parts and service experts work with customers to keep a fleet maintained and ready to roll.",
+    "Manufacturing facilities are in Iowa and Mississippi, and the company states that it serves fleets in all 50 states, plus Canada, Latin America, and more. Distributors across North America provide support to those fleets. New Way Trucks is a Federal Signal Corporation company.",
+    "The pages describe solid waste haulers as the operators these trucks are built for. One blog post names distributors, private and public waste haulers, and municipal sanitation departments among the groups the company works closely with. Refuse collection equipment can also be procured through Sourcewell contracts."
+   ],
+   "quote": {
+    "text": "We build the trucks you want, in the size you need, with the features that keep you moving efficiently and safely.",
+    "url": "https://www.newwaytrucks.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "We offer more options on every size and model"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "Each of our high-quality builds can be customized to your team to help make their work easier, faster, and safer."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "Every minute of every day you can count on our parts and service experts to work with you to keep your fleet maintained and ready to roll."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.newwaytrucks.com/about/",
+     "quote": "Now, with manufacturing facilities in Iowa and Mississippi, New Way proudly serves fleets in all 50 states, plus Canada, Latin America, and more."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "New Way experts, through our team of distributors across North America, are ready to support you day in and day out"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.newwaytrucks.com/news/",
+     "quote": "New Way Trucks, a Federal Signal Corporation company"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "See how New Way helps solid waste haulers work safer and faster to keep our planet clean."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.newwaytrucks.com/blog/confidence-in-stocking-part-1-a-smart-approach-to-spare-parts-inventory/",
+     "quote": "Based on years of working closely with distributors, private and public waste haulers and municipal sanitation departments"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.newwaytrucks.com",
+     "quote": "Save time and money procuring your refuse collection equipment using New Way\u2019s Sourcewell contracts"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.newwaytrucks.com",
+     "sha": "d26d4c364d1cd182",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.newwaytrucks.com/about/",
+     "sha": "efe07c90651dee60",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "battle-motors",
@@ -111359,7 +112934,87 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Neubrain sells pre-packaged budgeting, planning and business analytics software applications, and describes its work as linking budget decisions with strategic outcomes. The solutions are organized by initiative and cover performance-based budgeting, pay and personnel budgeting, operating budget, capital budget, forecasting, performance measurement and cost allocation. Under technology, the pages list business analytics software, performance management software, interactive visualization and dashboards, and data integration software.",
+    "The pages group buyers by industry, naming the Department of Defense, federal, state and local government, nonprofits and authorities, and manufacturing. The company says it has collaborated with federal, state, and local governments, as well as Global 5000 and medium-sized companies. Case studies on the customers page name the Housing Authority of Baltimore City, the Pennsylvania Turnpike Commission, North Collier Fire Rescue District and the State of Hawaii. The same page also lists private-sector customers, among them Buffalo Wild Wings, JJ Haines & Company."
+   ],
+   "quote": {
+    "text": "Whenever you need to analyze, budget, forecast, measure, and report, Neubrain can help.",
+    "url": "https://www.neubrain.com/company/neubrain-customers"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.neubrain.com",
+     "quote": "With pre-packaged software applications powered by cutting-edge and easy-to-use technology, Neubrain helps link budget decisions with strategic outcomes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.neubrain.com",
+     "quote": "Our Capital Budget software solution automates the creation, budgeting, analysis, and reporting of the capital project budgeting tasks."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.neubrain.com",
+     "quote": "Our Business Analytics solution is robust and nimble, delivering powerful all-in-one analytics without unneeded processing overhead and with the flexibility to serve all your business functions."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.neubrain.com",
+     "quote": "Optimize your manual and Excel-supported processes and modernize existing custom or rigid tools used in budget and reporting tasks, including Programming, Budgeting and Execution (PPBE), and Congressional Budget Justification (J-Book)."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.neubrain.com/company/about-neubrain?hsLang=en-us",
+     "quote": "For more than 20 years, Neubrain has collaborated with federal, state, and local governments, as well as Global 5000 and medium-sized companies, to enhance their decision-making processes."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.neubrain.com/company/neubrain-customers",
+     "quote": "The Pennsylvania Turnpike Commission"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.neubrain.com/company/neubrain-customers",
+     "quote": "Neubrain\u2019s analytics solution helped J.J. Haines & Company empower"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.neubrain.com",
+     "sha": "7f20a367252b85e4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neubrain.com/company/neubrain-careers",
+     "sha": "2a30fbc2e19239a3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neubrain.com/company/neubrain-customers",
+     "sha": "1daf24a9028ab903",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.neubrain.com/company/about-neubrain?hsLang=en-us",
+     "sha": "400e0cf12617a953",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "unit4",
@@ -115030,7 +116685,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NJBSoft sells SAMS, a platform the homepage presents as Compliance Software Management for utilities. Modules include stormwater inspection and MS4 compliance software for SWPPP management, BMP tracking, mobile field audits, and annual report generation.",
+    "SAMS integrates field, process, and lab data in a secure, centralized system, where entries are audit-ready and historical records are preserved. The platform also tracks metrics, generates reports such as DMRs and MORs, and configures custom alerts.",
+    "Customer stories on the homepage name the City of Phoenix, where NJBSoft is described as helping streamline municipal workflows. A second story names the City of Peoria. The homepage groups its audience by role, naming compliance managers, operators, executives, and field teams."
+   ],
+   "quote": {
+    "text": "Unify your data, strengthen operations, and protect public trust",
+    "url": "https://www.njbsoft.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.njbsoft.com",
+     "quote": "Compliance Software Management"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://njbsoft.com/about-us/",
+     "quote": "Those modules include stormwater inspection and MS4 compliance software for SWPPP management, BMP tracking, mobile field audits, and annual report generation."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.njbsoft.com",
+     "quote": "SAMS integrates field, process, and lab data in a secure, centralized system."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.njbsoft.com",
+     "quote": "Visualize trends, track critical metrics, generate reports (DMRs, MORs, etc.), and configure custom alerts."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.njbsoft.com",
+     "quote": "See how NJBSoft helps the City of Phoenix streamline municipal"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.njbsoft.com",
+     "quote": "Discover how NJBSoft supports the City of Peoria with flexible"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.njbsoft.com",
+     "quote": "No matter your role or workflow, SAMS adapts to you."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.njbsoft.com",
+     "sha": "d8dbdb3f12623b3b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://njbsoft.com/about-us/",
+     "sha": "691260b9819a9ac7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "silverblaze",
@@ -120540,7 +122266,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NACUBO 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Nelnet Campus Commerce sells payment technology to higher education institutions for use online and on campus. One group of products handles the tuition payment process through Payment Plans, Billing & Payments, and Refunds. Another group covers Cashiering, Storefront, and Payment Forms.",
+    "The company states it has offered payment solutions for over 25 years to over 1,300 institutions. Products are described as integrating with systems already in place on campus. Stated aims include keeping students enrolled and on track while making staff more efficient.",
+    "Kansas City Kansas Community College is named as an institution that partnered with Nelnet Campus Commerce. A case study describes how College of the Mainland delayed payment plans for students after Hurricane Harvey. Another case study covers Cornell and student refunds."
+   ],
+   "quote": {
+    "text": "Online and on-campus payment technology built for every level of higher education.",
+    "url": "https://campuscommerce.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://campuscommerce.com",
+     "quote": "Online and on-campus payment technology built for every level of higher education."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://campuscommerce.com",
+     "quote": "Streamline the tuition payment process with Payment Plans, Billing & Payments, and Refunds."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://campuscommerce.com",
+     "quote": "Increase revenue opportunities and create a unified payment experience with Cashiering, Storefront, and Payment Forms."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://campuscommerce.com",
+     "quote": "For over 25 years, we have offered powerful, payment solutions that have given our over 1,300 institutions unlimited opportunities"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://campuscommerce.com",
+     "quote": "Maintain the highest levels of payment security and integrate with systems already in place on campus."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://campuscommerce.com",
+     "quote": "Help students stay enrolled and on track, while allowing your staff to be more efficient."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://campuscommerce.com",
+     "quote": "Kansas City Kansas Community College partnered with Nelnet Campus Commerce to remove barriers for students"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://campuscommerce.com/case-studies/",
+     "quote": "Andrea Fillip, bursar at College of the Mainland, explains how Nelnet Campus Commerce were able to help their students delay payment plans"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://campuscommerce.com/case-studies/",
+     "quote": "Cornell chose to take a new approach to student refunds."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://campuscommerce.com",
+     "sha": "8ecfd2a1f562e954",
+     "fetched_on": null
+    },
+    {
+     "url": "https://campuscommerce.com/about-us/",
+     "sha": "00f0ad16667255d9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://campuscommerce.com/about-us/our-team/",
+     "sha": "692f057eb95340e6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://campuscommerce.com/case-studies/",
+     "sha": "3cfb574b050e612c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "unimarket",
@@ -121116,7 +122935,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NorthStar Utilities Solutions sells customer information and billing software for utilities, together with a web-based customer portal and mobile workforce management software. The NorthStar Cloud is a hosted, managed cloud solution for the complete NorthStar CIS suite. SilverBlaze is a web portal designed specifically for utilities.",
+    "The customer information system is designed for small to medium-sized utilities and municipalities. Billing can be customized to cover multiple utilities on one statement, including deregulated or alternate energy sources. The system can be hosted on the utility's own server or on the NorthStar Cloud.",
+    "NorthStar Utilities Solutions was founded in 1976 as the original business unit of Harris Computer Systems. The company reports serving over 200 utility providers and municipalities across North America and the Caribbean. Case studies on the site name the City of Shelby, NC, the Town of Bedford, VA, the City of Newark, DE, and the City of Concord, NC."
+   ],
+   "quote": {
+    "text": "We designed the Northstar customer information system for small to medium-sized utilities and municipalities to put your customers first, enhance your office productivity, and lower your operating costs.",
+    "url": "https://www.northstarutilities.com/solutions"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.northstarutilities.com",
+     "quote": "Whether you need a cloud-based or on-premise CIS, a web-based customer portal, or digital mobile workforce management software"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.northstarutilities.com",
+     "quote": "the NorthStar Cloud is a fully hosted, managed cloud solution designed for the complete NorthStar CIS suite"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.northstarutilities.com",
+     "quote": "SilverBlaze prioritizes your customer\u2019s needs with a web portal designed specifically for utilities."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.northstarutilities.com/solutions",
+     "quote": "We designed the Northstar customer information system for small to medium-sized utilities and municipalities"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.northstarutilities.com/solutions",
+     "quote": "We can customize our software to bill multiple utilities on one statement, and no matter how complex your billing is, even deregulated or alternate energy sources"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.northstarutilities.com/solutions",
+     "quote": "No matter if you host our customer information system on your server or on our NorthStar Cloud"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.northstarutilities.com/about",
+     "quote": "Founded in 1976, NorthStar Utilities Solutions began as the original business unit of Harris Computer Systems"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.northstarutilities.com/about",
+     "quote": "we proudly serve over 200 diverse utility providers and municipalities"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.northstarutilities.com/case-studies",
+     "quote": "The City of Shelby, NC enjoys a long-standing partnership with NorthStar Utilities Solutions."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.northstarutilities.com",
+     "sha": "c9d97bb67f256263",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.northstarutilities.com/case-studies",
+     "sha": "e93b273f7fb6b436",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.northstarutilities.com/about",
+     "sha": "ea52bd16cfcd66bf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.northstarutilities.com/solutions",
+     "sha": "f6a8185cf31305db",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "specific-energy",
@@ -124059,7 +125971,73 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: Animal Care Expo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NoiseNet sells a noise monitoring service built around a unit that is shipped to a site and set up there by the client. The unit keeps an always on connection using 4G LTE, processes data on board, and sends it to servers for further analysis. Reports, dashboards and alerts go back to the client, with a dashboard sent each day.",
+    "The pages describe the technology as suitable for monitoring of industrial noise, environmental noise and workplace noise applications. Barking dog complaints are given as the largest source of noise complaints for most local governments, and the monitoring gathers evidence around the clock to resolve them.",
+    "The pages name noise regulators as the users who need the knowledge and evidence to resolve and enforce noise breaches. The site states that the smart noise monitoring is in use by over 40 government authorities across 2 continents."
+   ],
+   "quote": {
+    "text": "Solve NOISE complaints: with faster, comprehensive and precision data.",
+    "url": "https://www.noisenet.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.noisenet.com",
+     "quote": "Unit is shipped to site and setup by the client in the field."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.noisenet.com",
+     "quote": "Data is processed on unit and sent to servers for further analysis and faster results."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.noisenet.com",
+     "quote": "Unit can provide reports, dashboards and alerts to keep you up to date on progress."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.noisenet.com",
+     "quote": "This makes our technology suitable for monitoring of industrial noise, environmental noise, OH&S noise applications."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.noisenet.com",
+     "quote": "Barking dogs are the largest source of noise complaints for most local governments."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.noisenet.com",
+     "quote": "Giving them the knowledge and evidence to resolve and if necessary enforce noise breaches."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.noisenet.com",
+     "quote": "NoiseNet smart noise monitoring is in use by over 40 government authorities across 2 continents."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.noisenet.com",
+     "sha": "f40398e326420583",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "autoagent",
@@ -125320,7 +127298,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APHSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "NCT sells CaseWorks, which its site describes as an Electronic Document Management System (EDMS) for Health and Human Services teams. The site states that the software streamlines case workflow processes for local, state, and tribal nations Health and Human Services teams.",
+    "CaseWorks interfaces with the customer System of Record, and the editions listed interface with MAXIS, Curam (MNsure), PRISM, SSIS, Workforce One, and Integrated Financial Systems (IFS). Documents can be scanned directly into the system, auto filled with client information, and routed to the Case Owner assigned in the System of Record. Auto-Fill Forms pull information from the System of Record, and the site counts over 850 widely used Auto-Fill Forms developed for users.",
+    "Named editions include a Child Support Edition for Child Support Investigators and Officers who collaborate with County Attorneys, and a Social Services Edition for Social Workers and Case Managers. The about page states that the company specializes exclusively in streamlining processes for Health and Human Services teams. It describes six interoperable solutions that automate document management for every program area."
+   ],
+   "quote": {
+    "text": "Our six interoperable solutions expedite business processes and automate document management for every program area, improving caseload capacity, cutting costs, and eliminating errors.",
+    "url": "https://nctinc.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://nctinc.com",
+     "quote": "CaseWorks is an Electronic Document Management System (EDMS)."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://nctinc.com",
+     "quote": "streamlines the case workflow processes for local, state, & tribal nations Health and Human Services teams"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nctinc.com",
+     "quote": "Our CaseWorks Editions currently interface with MAXIS, Curam (MNsure), PRISM, SSIS, Workforce One, and Integrated Financial Systems (IFS)."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nctinc.com",
+     "quote": "Documents can be scanned directly into CaseWorks, auto filled with client information and routed directly to the"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nctinc.com",
+     "quote": "CaseWorks has over 850 widely used Auto-Fill Forms developed for our users."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://nctinc.com",
+     "quote": "Child Support Edition helps Child Support Investigators and Officers collaborate with County Attorneys"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://nctinc.com/about-us/",
+     "quote": "We specialize exclusively in streamlining processes for Health and Human Services teams."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://nctinc.com/about-us/",
+     "quote": "Our six interoperable solutions expedite business processes and automate document management for every program area"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://nctinc.com",
+     "sha": "144335ffef470539",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nctinc.com/about-us/",
+     "sha": "1a6bf088f1be9c52",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nctinc.com/who-we-are/",
+     "sha": "f6ca57f93118076e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sacs-software",
@@ -126363,7 +128423,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Nuventive sells planning and improvement software for higher education institutions, covering strategic planning, accreditation, learning outcomes, and program review. The product is the Nuventive Improvement Platform, which combines planning, measurement, and outcomes information in the same screen.",
+    "The platform is used by institutions large and small to drive planning and progress for strategic, assessment, and improvement initiatives. Listed initiatives include overall strategic planning, accreditation, program review, learning outcomes assessment, and administrative outcomes assessment. It is built and hosted on Microsoft Azure and is offered as a fully configurable, cloud-based solution. Customer stories and webinars on that page name Arcadia University, Oklahoma State University, Skyline College, and HACC: Central Pennsylvania's Community College.",
+    "Nuventive has helped higher education institutions across the country since 2000. Its software and services solutions are used by large and small institutions and by stakeholders from cabinet members to faculty and staff."
+   ],
+   "quote": {
+    "text": "Nuventive gives faculty and staff access to the best available information, a continuous feedback loop and a platform for delivering results.",
+    "url": "https://nuventive.com/products/improvement-platform/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.nuventive.com",
+     "quote": "delivers planning and improvement software that helps higher education institutions use information to innovate and continuously advance their most pressing initiatives, from strategic planning to accreditation, learning outcomes, program review, and more."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.nuventive.com",
+     "quote": "The Nuventive Improvement Platform combines traditionally siloed planning, measurement, and outcomes information"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nuventive.com/products/improvement-platform/",
+     "quote": "Institutions large and small use the Nuventive Improvement Platform to drive planning and progress for strategic, assessment, and improvement initiatives."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nuventive.com/products/improvement-platform/",
+     "quote": "The Nuventive Improvement Platform helps turn your plans into progress for such initiatives as:"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nuventive.com/products/improvement-platform/",
+     "quote": "the Nuventive Improvement Platform is a fully configurable, cloud-based solution."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://nuventive.com/products/improvement-platform/",
+     "quote": "Webinar: Configuring the Nuventive Improvement Platform for Student Affairs Assessment featuring HACC: Central Pennsylvania\u2019s Community College"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://nuventive.com/about-us/",
+     "quote": "Since 2000, Nuventive, the data-informed improvement company"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://nuventive.com/about-us/",
+     "quote": "software and services solutions are used by large and small institutions, and are trusted by stakeholders at all levels"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.nuventive.com",
+     "sha": "f2078f64e559ec23",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuventive.com/products/",
+     "sha": "c11f07a2b98eb33c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuventive.com/products/improvement-platform/",
+     "sha": "a0dbdaf794b908d1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nuventive.com/about-us/",
+     "sha": "19cb16c70621e8d6",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "respondus",
@@ -132674,7 +134821,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: SNA ANC 2027",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Nutri-Link Technologies sells school nutrition software to public and private K-12 schools, districts, and food service providers. The cloud-based school payment products cover meal ordering, fee collection, free and reduced processing, and dismissal management.",
+    "MyMealLine is a cloud-based school cafeteria POS system designed for K-12 school nutrition operations. It runs on devices a district already has, with no client software to install. Pricing is a site-based annual subscription.",
+    "Nutri-Cloud manages the National School Lunch Program eligibility process, covering online application collection, automated processing, status notifications, and integration with the cafeteria point-of-sale. The application is available in 33 languages. Online School Fees can also be used by a district for other fees, activities, and events."
+   ],
+   "quote": {
+    "text": "Nutri-Cloud is a form management system for Free & Reduced priced meal applications or income surveys which provide benefits to parents and guardians in your school or school district.",
+    "url": "https://nutrilinktechnologies.com/products/free-and-reduced/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://nutrilinktechnologies.com",
+     "quote": "partnered with public and private K-12 schools, districts, and food service providers to deliver school nutrition software"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://nutrilinktechnologies.com",
+     "quote": "cloud-based school payment solutions simplify meal ordering, fee collection, free and reduced processing, and dismissal management"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://nutrilinktechnologies.com/products/pointofsale/",
+     "quote": "MyMealLine is a modern, cloud-based school cafeteria POS system, designed specifically for K-12 School Nutrition Operations."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://nutrilinktechnologies.com/products/pointofsale/",
+     "quote": "it runs on the devices you already have, with no client software to install"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://nutrilinktechnologies.com/products/pointofsale/",
+     "quote": "MyMealLine is a software-as-a-service site-based annual subscription"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://nutrilinktechnologies.com/products/free-and-reduced/",
+     "quote": "Nutri-Cloud manages every step of the National School Lunch Program eligibility process"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://nutrilinktechnologies.com/products/free-and-reduced/",
+     "quote": "Available in 33 languages"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://nutrilinktechnologies.com/products/pointofsale/",
+     "quote": "Online School Fees can also be used by the district for other fees, activities, and events if desired."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://nutrilinktechnologies.com",
+     "sha": "10bec24942387ce9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nutrilinktechnologies.com/solutions/",
+     "sha": "362cec9bad5d627c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nutrilinktechnologies.com/products/pointofsale/",
+     "sha": "9b82f1d3db788e8e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://nutrilinktechnologies.com/products/free-and-reduced/",
+     "sha": "9aede238bb3a4d7f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "hansen-technologies",
@@ -137835,7 +140069,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Niche Academy sells an online training platform that libraries, municipalities, and other organizations use to deliver training and track progress. The platform combines an LMS, authoring tools, and ready-made tutorials that staff can use without building training from scratch. Users start with curated tutorials, create custom content to match their policies and procedures, and track completions for compliance and internal reporting.",
+    "The company began in 2014 as a learning platform for libraries and later expanded to support nonprofits and other organizations facing similar challenges. Named audiences include public libraries, academic libraries, municipalities, and direct care providers. The pages also list volunteer and board orientation, and community programs a library can embed on its own website.",
+    "Niche Academy reports serving more than 1,700 libraries, nonprofits, and other mission-driven organizations around the world. Published case studies name public libraries and parks and recreation departments. Access starts with a free trial that the site says requires no credit card."
+   ],
+   "quote": {
+    "text": "We provide tools that inspire learning and drive team success.",
+    "url": "https://www.nicheacademy.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.nicheacademy.com",
+     "quote": "a turnkey learning solution with ready-to-use tutorials and a platform that lets libraries, municipalities, and other organizations deliver training and track progress anywhere"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.nicheacademy.com",
+     "quote": "Deliver consistent training for staff, volunteers, board members, and your community"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.nicheacademy.com",
+     "quote": "Create custom content to match your policies and procedures."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.nicheacademy.com/about-us",
+     "quote": "We began our journey as a learning platform for libraries."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.nicheacademy.com",
+     "quote": "Direct Care Providers that use Niche Academy see:"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.nicheacademy.com",
+     "quote": "Give volunteers and board members a consistent orientation"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.nicheacademy.com/about-us",
+     "quote": "We serve more than 1,700 libraries, nonprofits, and other mission-driven organizations around the world."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.nicheacademy.com/case-studies",
+     "quote": "libraries, parks and recreations departments, and other mission-driven organizations"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.nicheacademy.com",
+     "quote": "Start a Free 30-Day Trial"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.nicheacademy.com",
+     "sha": "2431b2d9095c5135",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.nicheacademy.com/about-us",
+     "sha": "d19a41254aa07f3e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.nicheacademy.com/case-studies",
+     "sha": "be5024cf71f7a4af",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "reader-zone",
