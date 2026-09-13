@@ -4798,7 +4798,88 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Rubicon sells waste and recycling services, along with sustainability and specialty services, to customers that range from national brands to households. The company describes itself as a waste sciences and recycling solutions partner that helps businesses of all sizes simplify, optimize, and improve their environmental operations. Waste and recycling services run through a network of vendor and hauler partners, and subject matter experts manage commodity markets and zero-waste programs.",
+    "Buyers named on these pages include enterprises, small and independent businesses, and contractors, DIYers, and home remodelers. Programs listed cover cardboard, plastic, paper, metal, glass, electronics recycling, construction and demolition, and organics recycling including food waste and composting services.",
+    "A single platform is offered for tracking service levels, equipment, pickups, and costs across locations. The pages also describe advisory work covering site audits, material recovery plans, and zero waste program design."
+   ],
+   "quote": {
+    "text": "Ending waste, one relationship at a time",
+    "url": "https://www.rubicon.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rubicon.com",
+     "quote": "Rubicon provides waste and recycling services to customers ranging from national brands to households, making it easier to manage waste, control costs, and access dependable, full-service support."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rubicon.com/about/",
+     "quote": "Rubicon is a waste sciences and recycling solutions partner that helps businesses of all sizes simplify, optimize, and improve their environmental operations."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rubicon.com/about/",
+     "quote": "We manage all waste and recycling services through an extensive network of more than 8,000 vendor and hauler partners."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rubicon.com",
+     "quote": "On-demand support for contractors, DIYers, and home remodelers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rubicon.com/about/",
+     "quote": "Our programs span cardboard (OCC), plastic, paper, metal, glass, electronics recycling, construction and demolition (C&D), organics recycling (including food waste and composting services), and single-stream recycling (SSR)."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rubicon.com",
+     "quote": "Track service levels, equipment, pickups, and costs across all locations in one platform."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rubicon.com",
+     "quote": "From site audits and material recovery plans to zero waste program design and education."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rubicon.com",
+     "sha": "d28d50bc0cb52056",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rubicon.com/about/",
+     "sha": "cb990a25e087ea2a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rubicon.com/about/culture/",
+     "sha": "6587bfa2c7624c18",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rubicon.com/about/leadership/",
+     "sha": "acc6f4ef26aa0fc3",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "routeware",
@@ -5671,7 +5752,102 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Rekor Systems sells software platforms for roadway intelligence to customers in both the government and commercial sectors. One of those platforms captures traffic and vehicle analytics. Another detects license plates and vehicles and pinpoints their location. A third identifies events and highlights zones at risk.",
+    "Rekor Command is presented as a source of alerts for Transportation Management Centers. Public officials are addressed for automating manual processes and enabling contactless compliance. Investigative tools combining vehicle recognition and LPR are offered for identifying vehicles of interest. The same page addresses architects and engineers, pointing them to infrastructure data for the framework of a smart city.",
+    "Data, data services, and micro-services are also offered through standalone applications, APIs, and SDKs. The about page says clients range from engineering firms to government agencies. That page puts the global HQ in Columbia, Maryland, with additional offices in Texas, Colorado, Florida, and Israel."
+   ],
+   "quote": {
+    "text": "Our clients range from engineering firms to government agencies",
+    "url": "https://www.rekor.ai/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rekor.ai",
+     "quote": "Our software platforms are purpose built to deliver intelligent insights necessary for customers in both the government and commercial sectors"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rekor.ai",
+     "quote": "Capture comprehensive traffic and vehicle analytics for transformative insights."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rekor.ai",
+     "quote": "Detect license plates and vehicles with characteristics and pinpoint location."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.rekor.ai",
+     "quote": "Identify effecting events and highlight zones at risk to create better roads."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rekor.ai",
+     "quote": "provides Transportation Management Centers with quality, timely alerts that keep everyone moving safely and on time."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rekor.ai",
+     "quote": "Whether it be automating manual processes or enabling contactless compliance, Rekor equips you with the tools and intelligence to create a better, safer tomorrow"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.rekor.ai",
+     "quote": "advanced investigative tools combine vehicle recognition, LPR, and other data sources to identify vehicles of interest and help deploy personnel faster"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.rekor.ai",
+     "quote": "carefully curated intelligent infrastructure data to establish the framework of a smart city"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rekor.ai",
+     "quote": "data, data services, and micro-services through our standalone applications, APIs, and SDKs"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rekor.ai/about",
+     "quote": "clients range from engineering firms to government agencies"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.rekor.ai/about",
+     "quote": "global HQ is in Columbia, Maryland, with additional offices in Texas, Colorado, Florida, and Israel"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rekor.ai",
+     "sha": "a582519de0ae68f0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rekor.ai/about",
+     "sha": "f58f3172b06b34a5",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "miovision",
@@ -7606,7 +7782,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add; AWWA ACE 2026; WEFTEC 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "RedZone Robotics sells robotic sewer inspection, large-diameter cleaning, and asset management for underground wastewater infrastructure. Robots carrying cameras and sensors are sent into pipes to perform pipeline and sewer assessments. The data collected is uploaded to cloud-based software that the customer accesses to assess an entire pipeline and decide on maintenance.",
+    "The pages date the company to 1987 and say it pivoted in 2003 to focus exclusively on wastewater, beginning work with the City of Pittsburgh on a tool for inspecting large-diameter pipe. Later development produced Vertue, described as a vertical manhole inspection unit providing customers with comprehensive asset data. Services listed run from small and mid-sized pipe to large-diameter MSI inspection, siphons, and interceptors.",
+    "Buyers named on the pages are asset managers at large and small municipalities and agencies, along with regional and national engineering firms. The employment page adds contractors and engineering firms across North America to that list."
+   ],
+   "quote": {
+    "text": "Healthier, safer, stronger communities, one pipe at a time.",
+    "url": "https://redzone.com/company/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.redzone.com",
+     "quote": "Robotic sewer inspection, large-diameter cleaning, and asset management for smarter infrastructure decisions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.redzone.com",
+     "quote": "We unleash the power of unmanned robots, equipped with cameras and sensors, designed to thoroughly perform advanced pipeline & sewer assessments in mere minutes."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.redzone.com",
+     "quote": "We collect the data and upload it to secure cloud-based software for you to conveniently access and assess your entire pipeline"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://redzone.com/company/",
+     "quote": "In 2003, the company pivoted to focus exclusively on wastewater and began work with the City of Pittsburgh to develop a tool for the inspection of large-diameter pipe."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://redzone.com/company/",
+     "quote": "RedZone has continued its history of research and development with the launch of Vertue\u2122, a vertical manhole inspection unit, providing customers with comprehensive asset data"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://redzone.com/company/",
+     "quote": "From small and mid-sized pipe to large-diameter MSI inspection, siphons, and interceptors"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://redzone.com/company/",
+     "quote": "We serve asset managers around the globe, spanning large and small municipalities and agencies, including regional and national engineering firms."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://redzone.com/company/employment/",
+     "quote": "We deliver high performance pipeline inspection products and services for municipalities, contractors, and engineering firms across North America."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.redzone.com",
+     "sha": "8e720222ae61992e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://redzone.com/company/employment/",
+     "sha": "ca577a469bf29ab9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://redzone.com/company/",
+     "sha": "9b33e5e33c09616c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.redzone.com/company/carbon-bootprint/",
+     "sha": "d364ece4e54ffbea",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "esri",
@@ -19594,7 +19857,78 @@
     "sector": "General Gov",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Revize sells a content management system for government websites, described on its homepage as a Government CMS designed for government only. The websites carry citizen engagement web applications that let residents take part in their government and their community. Revize states it was the first to introduce responsive web design to the government website industry.",
+    "Revize also handles data migration, transferring content from a client's old site to the new one. Client data is stored on servers on premises with card-reader access, and network activity is monitored by web and network administrators.",
+    "The company describes itself as specializing in meeting the needs of municipalities, educational institutions and non-profit organizations. Revize states it serves governments and other public sector agencies, working on the experience between a website visitor and the serving agency."
+   ],
+   "quote": {
+    "text": "Revize was the first to introduce responsive web design to the government website industry",
+    "url": "https://www.revize.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.revize.com",
+     "quote": "providing easy to use Government CMS designed for government only"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.revize.com",
+     "quote": "Revize websites come with Citizen Engagement Web Applications that allow residents to be part of their government"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.revize.com",
+     "quote": "Revize was the first to introduce responsive web design to the government website industry"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.revize.com/about",
+     "quote": "takes great care in transferring content to your new Revize website"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.revize.com/about",
+     "quote": "your data is stored securely on servers located on premises equipped with card-reader access"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.revize.com/about",
+     "quote": "specializing in meeting the needs of municipalities, educational institutions and non-profit organizations"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.revize.com/about",
+     "quote": "We offer governments and other public sector agencies the ability to explore"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.revize.com",
+     "sha": "0042c7ba47fe256c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.revize.com/about",
+     "sha": "ebdb1d5ec4c2310d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "loop",
@@ -19849,7 +20183,96 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; NIGP 2026; ICMA 2026; NLC City Summit 2026; 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Readyly sells agentic AI for local government, which the company describes as making citizen service faster, easier, and more human. The homepage frames the problem as routine questions, residents lost in websites and phone menus, and staff at peak capacity during busy times. Stated capabilities include responding to residents 24/7, routing complex issues to the right team, and working in any language, on any channel.",
+    "The site says the platform is built for government and integrates with 40+ platforms. Listed functions include automating permits, requests, utility start/stop service, inspection scheduling, and code enforcement. Compliance benchmarks named on the same page are SOC 2 Type 2, HIPAA, GDPR, ISO 27001, and NIST AI RMF.",
+    "Case studies on the site describe how Los Altos Hills, California, used the platform for 24/7 resident support. One case study describes Mount Vernon New York's Building Department using the platform for permit updates and zoning questions. Another names Sloomoo Institute, which the page says resolves over 83% of visitor chats and emails without staff intervention. The same page asks whether Readyly could work for a city, county, or agency."
+   ],
+   "quote": {
+    "text": "Readyly delivers Agentic AI for local government\u2014making citizen service faster, easier, and more human.",
+    "url": "https://www.readyly.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.readyly.com",
+     "quote": "Readyly delivers Agentic AI for local government\u2014making citizen service faster, easier, and more human."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.readyly.com",
+     "quote": "Residents get lost in websites and phone menus\u2014then wait days for answers"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.readyly.com",
+     "quote": "Works in any language, on any channel"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.readyly.com",
+     "quote": "Built for government: integrates with 40+ platforms"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.readyly.com",
+     "quote": "Go beyond answering questions\u2014automate complex tasks like permit requests, utility start/stop service, inspection scheduling, and code enforcement with high accuracy and full system integration."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.readyly.com",
+     "quote": "Our Agentic AI for local government meets the strictest compliance benchmarks\u2014SOC 2 Type 2, HIPAA, GDPR, ISO 27001, and NIST AI RMF\u2014because we understand the risks and take them seriously."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.readyly.com/case-studies/",
+     "quote": "Discover how Los Altos Hills, California, used Readyly\u2019s AI platform to provide 24/7 resident support, raise the standard for digital services, and meet the expectations of its tech-savvy community."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.readyly.com/case-studies/",
+     "quote": "Discover how Mount Vernon New York\u2019s Building Department used Readyly\u2019s AI platform to provide instant permit updates, answer complex zoning questions, and deliver faster, more efficient service to residents."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.readyly.com/case-studies/",
+     "quote": "Learn how Sloomoo Institute uses Readyly\u2019s AI Agents to resolve over 83% of all visitor chats and emails without staff intervention\u2014reducing human support volume, speeding up response times, and creating a smoother guest experience."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.readyly.com/case-studies/",
+     "quote": "Curious if Readyly could work for your city, county, or agency?"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.readyly.com",
+     "sha": "7ed1fccdef591e8a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.readyly.com/case-studies/",
+     "sha": "7b703659ad6caf35",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "madison-ai",
@@ -26259,7 +26682,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026; NACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "RTVision sells configurable cloud software for managing infrastructure work. The site groups that software for transportation, government, water and utilities, and consultants. Products named on the site cover construction project management, right of way, capital improvement planning, asset management, invoice management, time and attendance, and online permits.",
+    "The construction project management product provides agencies, consultants, and contractors with access to project information from early planning through inspections and payments. The permit product automates the permit process for both the applicant and the agency, in or out of the office. Time tracking records labor, project costs, and payroll for county or city departments.",
+    "RTVision has worked since 1999 on paper-intensive management processes for its customers. Products are hosted in the cloud through Amazon Web Services, and the company states it is SOC 2 Type II certified. Case studies on the site describe county permitting, right-of-way and construction management, and capital program oversight for a regional wastewater district."
+   ],
+   "quote": {
+    "text": "Our mission is to advance the ability to manage, plan, construct, and maintain infrastructure through innovative software solutions.",
+    "url": "https://rtvision.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rtvision.com",
+     "quote": "Automate and simplify processes with configurable cloud solutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://rtvision.com",
+     "quote": "Transportation | Government | Water & Utilities | Consultants"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://rtvision.com",
+     "quote": "Time Basic / Time Plus Web-based time, attendance and expense management solutions."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://rtvision.com",
+     "quote": "Manages projects from early planning phases through inspections and payments while providing agencies, consultants, and contractors access to real-time information."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://rtvision.com",
+     "quote": "Automates the permit process for both the applicant and agency for faster and easier permit management and approval whether you\u2019re in or out of the office."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://rtvision.com",
+     "quote": "Saves time and reduce expenses by electronically tracking time and attendance as well as labor, project costs, payroll, and more for all county or city departments."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://rtvision.com/about/",
+     "quote": "Since 1999, RTVision has helped its customers be more efficient with their paper-intensive management processes."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://rtvision.com/about/",
+     "quote": "securely hosted in the cloud through Amazon Web Services (AWS), and we are proud to be SOC 2 Type II certified"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://rtvision.com/case-studies/",
+     "quote": "Clark Regional Wastewater District Strengthens Capital Program Oversight with OneOffice"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://rtvision.com",
+     "sha": "ae1bdec23314d13c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rtvision.com/case-studies/",
+     "sha": "d4239b0ea0b42416",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rtvision.com/about/",
+     "sha": "323caed4415fab4a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "atlasview",
@@ -27265,7 +27776,100 @@
   "vendor_type": "GovTech Product",
   "source": "PWX 2026; AWWA ACE 2026; SWANA WASTECON 2025",
   "researched": true,
-  "ats_note": "confirmed by hand in admin 2026-08-28"
+  "ats_note": "confirmed by hand in admin 2026-08-28",
+  "profile": {
+   "paragraphs": [
+    "RouteSmart Technologies sells software that plans and optimizes vehicle routes for service and delivery fleets. Its routing solutions are sold for newspaper, postal and parcel, public works, and utilities operations. Waste collection work is split into residential, commercial, and roll-off routing, and the same solutions cover street sweeping, snow removal, work orders and inspections.",
+    "The software is built on Esri mapping products, and RouteSmart for ArcGIS connects the routing algorithms to that platform. Clients can also reach the solvers through a hosted environment under the name Routing-as-a-Service. FedEx acquired RouteSmart Technologies.",
+    "Named clients include the U.S. Postal Service, for which letter carrier route planning began through Electronic Data Systems. A roll-off waste solution serves commercial and municipal Public Works clients. Other named clients are Southern California Gas Company in utilities and, in newspaper distribution, the Wall Street Journal and the New York Times."
+   ],
+   "quote": {
+    "text": "RouteSmart\u2019s dynamic solutions solved what other routing tools could not.",
+    "url": "https://www.routesmart.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.routesmart.com",
+     "quote": "Optimize service and delivery routes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.routesmart.com/about/operations-research/",
+     "quote": "route optimization solutions for newspaper, postal/parcel, public works and utilities clients around the globe"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.routesmart.com/about/operations-research/",
+     "quote": "Outside of waste management, we have extensive experience in street sweeping, snow removal, work orders and inspections."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "RouteSmart for ArcGIS introduced and builds upon the relationship with Esri"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "Routing-as-a-Service (RaaS) debuts and allows clients to access RouteSmart solvers via a hosted, scalable, environment"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "FedEx acquires RouteSmart Technologies"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "Bowne and DMC begin working with Electronic Data Systems on letter carrier route planning for the U.S. Postal Service (USPS), marking our first work with a postal sector client"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "begins helping commercial and municipal Public Works clients streamline daily scheduling"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.routesmart.com/about/our-story/",
+     "quote": "Bowne Distinct begins working with its first U.S. newspaper distribution client, the Wall Street Journal, as well as the New York Times, offering optimization for home delivery distribution operations"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.routesmart.com",
+     "sha": "09c20015b3b88dfa",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.routesmart.com/about/",
+     "sha": "660724dad9ab8aa7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.routesmart.com/about/operations-research/",
+     "sha": "54fd14ea998f5c74",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.routesmart.com/about/our-story/",
+     "sha": "f70b96f0e8320951",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "greehill",
@@ -37692,7 +38296,88 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "RFP360.AI sells software for the RFP and proposal lifecycle, built for the organization issuing a request and for the company responding to it. Buyer tools cover creating RFPs, RFIs, and RFQs from dynamic templates, gathering supplier responses in one dashboard, and running approval workflows across procurement, legal, and technical teams. Supplier tools generate first-draft responses from a centralized knowledge base and rank opportunities with Go/No-Go decision matrices.",
+    "A pricing plan on the same page is offered to procurement teams, government agencies, or enterprises managing multiple sourcing events. A separate solutions page covers public procurement and says sourcing must adhere to federal, state, and local regulations, including CJIS, FISMA, and FAR.",
+    "One named customer on the site is Tri-Force Consulting Services, described as a company responding to many government and enterprise RFPs. Pricing runs from a pay-per-RFP option for individual suppliers, consultants, or small teams who respond occasionally to a custom enterprise plan."
+   ],
+   "quote": {
+    "text": "Whether you manage procurement for a government agency or run a proposal team at a growing saas company, RFP360.AI simplifies every stage of your workflow.",
+    "url": "https://www.rfp360.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rfp360.ai",
+     "quote": "Whether you\u2019re a buyer or a contractor, our platform leverages Generative AI for RFP responses to provide everything you need to achieve success in one unified platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rfp360.ai",
+     "quote": "1. Create RFPs, RFIs, and RFQs effortlessly with dynamic templates and approval workflows."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rfp360.ai",
+     "quote": "4. Score, prioritize, and manage opportunities with Go/No-Go decision matrices."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rfp360.ai",
+     "quote": "Procurement teams, government agencies, or enterprises managing multiple sourcing events."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rfp360.ai/solutions/",
+     "quote": "Ensure every sourcing process adheres to federal, state, and local regulations, including CJIS, FISMA, and FAR."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rfp360.ai",
+     "quote": "As a company responding to many government and enterprise RFPs, speed, accuracy, compliance, and team coordination are critical for us."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rfp360.ai",
+     "quote": "Individual suppliers, consultants, or small teams who respond occasionally"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rfp360.ai",
+     "sha": "1909537078326320",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rfp360.ai/solutions/",
+     "sha": "4d0d13d4b65e156c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rfp360.ai/case-studies/",
+     "sha": "db1a7093c6394ae7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rfp360.ai/about/",
+     "sha": "699d1a6fbe53d65e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "bid-locker",
@@ -42927,7 +43612,91 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Rep'd describes itself as the AI communications platform for local government. The platform offers short video messages that staff send to residents, with built-in CRM tools and email templates. Residents submit questions, and typeahead suggestions route them to answers that already exist.",
+    "Recording runs through a teleprompter mode meant for one take. A question can be shared with any staff member, which the site presents as a way to highlight experts on staff. The pages also list a real-time analytics dashboard for seeing what residents care about. A social media management suite is listed for creating, sharing and tracking posts.",
+    "Rep'd was built by Mike Baumwoll and Mark Friese, who worked together at Twitter. The founders describe the product as an AI-powered video chatbot that humanizes local government. Officials quoted in the case studies include a city manager and a mayor."
+   ],
+   "quote": {
+    "text": "Rep'd is built on the belief that vibrant, trusting communities are created not through anonymous posts or walls of text, but by enabling real people-names, faces, and voices-to engage directly, honestly, and respectfully.",
+    "url": "https://www.repd.us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.repd.us",
+     "quote": "The AI communications platform for local government."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.repd.us",
+     "quote": "Share any short video message with residents with built-in CRM tools and email templates."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.repd.us",
+     "quote": "Typeahead suggestions route residents to existing answers."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.repd.us",
+     "quote": "Teleprompter mode makes it easy to record in one take."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.repd.us",
+     "quote": "Share a Question with any staff member in seconds."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.repd.us",
+     "quote": "with a real-time analytics dashboard."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.repd.us",
+     "quote": "with a social media management suite."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.repd.us",
+     "quote": "While working together at Twitter, Mike Baumwoll and Mark Friese noticed that social media-originally meant to improve public discourse-was instead damaging it."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.repd.us",
+     "quote": "In response, Mike and Mark built Rep'd: an AI-powered video chatbot that humanizes local government to create lasting trust between dedicated community leaders and the residents they serve."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.repd.us",
+     "quote": "Marc Mondell, City Manager, Tulare CA"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.repd.us",
+     "sha": "cf4eec9c15633c02",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "unstackr",
@@ -43640,7 +44409,107 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Reassurance Solutions sells ReassureHub, a cloud-based correctional health monitoring platform that aggregates data from contactless vital sign sensors and wearable devices into a single real-time dashboard. The contactless ReassureSense (XK300) sensor monitors heart rate, respiratory rate, motion, and presence without a wearable or physical contact. The ReassureBand adds a wearable option for individuals who may move throughout the facility, and its data streams into the same dashboard. ReassureAID is an overdose response kit integrated with ReassureHub for teams responding to abnormal vital-sign readings.",
+    "Reassurance Solutions says the platform is deployed in county jails, state correctional facilities, and regional detention centers across the United States. The site states deployment in over 200 correctional facilities across the United States. The platform is described as giving jail administrators and medical staff continuous visibility into inmate health. It is also described as built for the way correctional facilities actually operate and designed to be used by officers, not just medical staff.",
+    "Listed features include cell-level and block-level monitoring views and automated incident logs with timestamped response records. The platform is presented as integration-ready for jail management systems, with HIPAA-compliant data storage and role-based access controls. Pricing is presented on the site as inmate vital sign tracking beginning at just $1 a day."
+   ],
+   "quote": {
+    "text": "One platform. Multiple monitoring technologies. Built for the correctional environment.",
+    "url": "https://reassurancesolutions.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://reassurancesolutions.com",
+     "quote": "ReassureHub is a cloud-based correctional health monitoring platform that aggregates data from contactless vital sign sensors and wearable devices into a single real-time dashboard."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://reassurancesolutions.com",
+     "quote": "Contactless ReassureSense (XK300) sensors monitor heart rate, respiratory rate, motion, and presence without requiring a wearable or physical contact."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://reassurancesolutions.com",
+     "quote": "The ReassureBand extends monitoring through a wearable option for individuals who may move throughout the facility."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://reassurancesolutions.com",
+     "quote": "ReassureAID Emergency overdose response kit integrated with ReassureHub."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://reassurancesolutions.com",
+     "quote": "Our platform is deployed in county jails, state correctional facilities, and regional detention centers across the United States."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://reassurancesolutions.com",
+     "quote": "Deployed in over 200 correctional facilities across the United States."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://reassurancesolutions.com",
+     "quote": "It gives jail administrators and medical staff continuous visibility into inmate health, automates emergency alerts, and generates documentation for compliance and legal purposes."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://reassurancesolutions.com",
+     "quote": "Built for the way correctional facilities actually operate, ReassureHub is designed to be used by officers, not just medical staff."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://reassurancesolutions.com",
+     "quote": "Automated incident logs with timestamped response records"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://reassurancesolutions.com",
+     "quote": "HIPAA-compliant data storage and role-based access controls"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://reassurancesolutions.com",
+     "quote": "With Reassurance Solutions, your facility can track inmate vital signs beginning at just $1 a day."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://reassurancesolutions.com",
+     "sha": "b4bcff8c32bd1479",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reassurancesolutions.com/about",
+     "sha": "c29549731dda53b4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reassurancesolutions.com/about-us",
+     "sha": "c29549731dda53b4",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "iris-intel",
@@ -47695,7 +48564,100 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Fleet operators broadly \u2014 public safety and school (pupil) transportation are named buyer segments, alongside large commercial delivery fleets (Amazon, UPS, FedEx, USPS) which the site features most p",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Rosco Vision sells vehicle camera equipment for fleets, grouped on its shop into backup camera kits, sensors and audio kits, and surround camera kits. Rosco D\u2022CAMS is described as a mirrorless camera and monitoring system that replaces exterior rear vision mirrors. The DV6 dash camera kit records the driver and the road and sends alerts inside the cab when risky behaviors are detected.",
+    "Video recorded on the device is kept on a 128GB SD card and event video is transmitted to RoscoLive Cloud. The homepage puts the count at more than 1,000 commercial-grade fleets, described as the buyers of the cameras and telematics. Industries listed on the site include public safety, refuse and waste.",
+    "The shop page describes the company as a New York company since 1907. The homepage claims US manufacturing for more than 115 years. Products are described as assembled and shipped in the USA and supported under warranty."
+   ],
+   "quote": {
+    "text": "Protecting more than 1,000 fleets across America",
+    "url": "https://www.roscovision.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "quote": "STS Surround Camera Kits"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.roscovision.com",
+     "quote": "Introducing Rosco D\u2022CAMS, the revolutionary mirrorless camera and monitoring system designed to replace traditional exterior rear vision mirrors."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "quote": "Rosco's DV6 captures and processes full HD footage of the driver and the road with local and cloud storage options."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "quote": "128GB SD card standard local storage, scalable to 1TB and 2,000 hours maximum. Event videos transmitted to RoscoLive Cloud are stored for 1 year."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.roscovision.com",
+     "quote": "Our cameras and telematics make us the partner of choice for more than 1,000 commercial-grade fleets."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.roscovision.com",
+     "quote": "Industry Public Safety"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "quote": "New York company since 1907"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.roscovision.com",
+     "quote": "US manufacturing for more than 115 years"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "quote": "All products supported under warranty"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.roscovision.com",
+     "sha": "db60d6f63a000eed",
+     "fetched_on": null
+    },
+    {
+     "url": "https://shop.roscovision.com/products/ai-powered-dv6-dash-camera-kit",
+     "sha": "ac1bc99ed1d49907",
+     "fetched_on": null
+    },
+    {
+     "url": "https://shop.roscovision.com/products/10-1080p-hd-monitor-backup-camera-kit-1",
+     "sha": "affb8c09898ec821",
+     "fetched_on": null
+    },
+    {
+     "url": "https://shop.roscovision.com/products/backup-camera-system-with-7-color-monitor-1",
+     "sha": "2e9bba59aeeb18fc",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "gatekeeper-systems",
@@ -49340,7 +50302,88 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as transit agencies and municipalities (customers named on site include Houston METRO, SEPTA, RTC Las Vegas, MARTA, Kansas City)",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "RideCo sells on-demand transit software that agencies use to plan, operate, and optimize service productivity while reducing transit costs. The software covers paratransit and microtransit, and the company attributes it to patented technology.",
+    "Products listed on the site include the Passenger App, the Driver App, Operations Center, Data Insights, Profile Manager, and Flex Fleets. The Passenger App lets riders request on-demand trips, preschedule them, or book recurring rides, and it is available on smartphones and on a standard web browser. Operations Center is a dashboard suite for streamlining operations and service monitoring in a transit dispatch center, with standardized and custom reports inside it.",
+    "Customers named on the site include MTA New York City Transit, which awarded a contract for its Access-A-Ride paratransit service. Other agencies named include the Regional Transportation Commission of Southern Nevada and Metropolitan Atlanta Rapid Transit Authority, both for paratransit service."
+   ],
+   "quote": {
+    "text": "Together with RideCo, transit agencies can transform mobility for today and tomorrow.",
+    "url": "https://www.rideco.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rideco.com/products",
+     "quote": "Our software is designed to help you plan, operate, and optimize service productivity while reducing your transit costs."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rideco.com",
+     "quote": "With patented technology, RideCo\u2019s on-demand paratransit and microtransit software is changing the way agencies deliver mobility to their communities."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rideco.com/products",
+     "quote": "In-vehicle driver facing application for automated vehicle location, mobile data communication, and real-time dispatch and data collection."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rideco.com/products/passenger-app",
+     "quote": "Using the Passenger App, riders can request on-demand trips or preschedule them in advance, book recurring rides, or schedule multiple trips at a time."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.rideco.com/products/operations-center",
+     "quote": "Reporting within Operations Center provides user-driven access to both standardized and custom reports."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rideco.com",
+     "quote": "announced today it has been awarded a contract with MTA New York City Transit (NYCT)"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rideco.com",
+     "quote": "RideCo and Metropolitan Atlanta Rapid Transit Authority (MARTA) Develop Plan for Modernized Paratransit Service for Atlanta"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rideco.com",
+     "sha": "cb852e6467ea7085",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rideco.com/products",
+     "sha": "7e109a1e0a07c382",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rideco.com/products/passenger-app",
+     "sha": "8243b5e7961a2261",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rideco.com/products/operations-center",
+     "sha": "eda4385b77719216",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "the-routing-company",
@@ -49995,7 +51038,78 @@
   "buyer": "general government (countries, states/provinces, municipalities) alongside corporate and campus customers; site lists government as one of three co-equal segments, not clearly primary",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "RideShark sells a commute management platform that its pages call Unified Mobility, defined as integrated technology that connects people to transportation options within their community. Listed features include a transit trip planner with multimodal results, parking platform integration, dynamic and passive trip logging, a reward program, and reporting with auditable data. Solutions are grouped on the site as Government Solution, Corporate Solution and Campus Solution.",
+    "Three buyer groups are named on the homepage: Countries, States/Provinces, Municipalities; Fortune 500 Companies, Business Parks, Enterprises; and Universities, Colleges, Private Institutions. The platform is described as helping enterprise customers reduce costs, improve employee engagement and increase transportation options.",
+    "The about page states that the platform is built and customized with the features a client wants, including control over incentives, rewards, communication and content. A news item on the homepage describes a partnership with the County of Renfrew and Ontario on a winterized on-demand community transit network."
+   ],
+   "quote": {
+    "text": "Unified Mobility is defined as integrated technology that connects people to transportation options within their community.",
+    "url": "https://www.rideshark.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rideshark.com",
+     "quote": "Unified Mobility is defined as integrated technology that connects people to transportation options within their community."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rideshark.com",
+     "quote": "Deliver a transit trip planner that includes multimodal results, based on real-time dynamic scheduling."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rideshark.com",
+     "quote": "Offering full-service and customized solutions for your organization"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rideshark.com",
+     "quote": "Countries \u2013 States/Provinces \u2013 Municipalities"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rideshark.com",
+     "quote": "platform helps enterprise customers reduce costs, improve employee engagement and increase transportation options"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rideshark.com/about",
+     "quote": "We build and customize the platform that you want, with the features you want"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rideshark.com",
+     "quote": "Partners with County of Renfrew and Ontario to Develop"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rideshark.com",
+     "sha": "44189d1e42952382",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rideshark.com/about",
+     "sha": "72e0663fc0c8497d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "applied-information",
@@ -60899,7 +62013,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Renvizon sells public safety software that covers dispatch, records, e-ticketing, and analytics on one platform. The named products are Renvizon CAD, Renvizon RMS, Renvizon TicketWorks, and Renvizon Crash, which are described as the core systems for dispatch, records, and enforcement. A second group of products, the Renvizon AI Suite, answers policy and case data questions from a department's own documents.",
+    "Alongside the software, the company sells consulting covering procurement and RFP advisory, system integration, smart cities and NG911 readiness, data analysis, GIS services, and AI enablement. The pages name public safety agencies and law enforcement agencies as the customers, and state that the platform is CJIS compliant.",
+    "According to the about page, Renvizon is a subsidiary of 22nd Century Technologies, Inc. and unifies the capabilities of QED and Mobizent under one brand. The site says the company was formerly QED and gives its founding year as 1974."
+   ],
+   "quote": {
+    "text": "Unified CAD, RMS, E-Ticketing, and Analytics \u2013 AI-enabled, secure, configurable, and mission ready.",
+    "url": "https://renvizon.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://renvizon.com",
+     "quote": "One secure platform for dispatch, records, e-ticketing, and analytics, built"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://renvizon.com",
+     "quote": "The core systems that run your agency: dispatch, records, and enforcement."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://renvizon.com",
+     "quote": "Secure, source-cited AI that stays inside your environment. Add it to the systems you already run."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://renvizon.com",
+     "quote": "Our services and consulting practice helps agencies turn data into action. Linking people, platforms, and partners so responders get the right information at the right moment."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://renvizon.com",
+     "quote": "Built from the ground up for mission-critical public safety operations. CJIS compliant and trusted by law enforcement agencies nationwide."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://renvizon.com/about-us",
+     "quote": "As a subsidiary of 22nd Century Technologies, Inc. (TSCTI), Renvizon unifies the proven capabilities of QED and Mobizent under one brand"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://renvizon.com",
+     "quote": "Renvizon, formerly QED. Founded 1974."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://renvizon.com",
+     "sha": "49a7154cb33dfda7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://renvizon.com/about-us",
+     "sha": "b8b24e127710cb26",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "roadway-management-technologies",
@@ -60928,7 +62113,93 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"provides government agencies and engineering firms with a unique integrated solution for roadway and infrastructure management\" Fetched https://roadman.tech. Live and fully operational - working navigation, login portals, demo booking forms, blog and detailed product pages; not parked, not for sale, no redirect to another company. The quoted line names the company's business in the description's own terms ('roadway and infrastructure management'), and the site further claims 'the only real-time solution for pavement performance analytics'. The stated buyer, 'government agencies and engineering firms', is a direct state and local fit - roadway and pavement management is a city, county and state DOT function. Short domain does not resemble the full name, but 'roadman.tech' is a plain contraction of Roadway Management Technologies and the site self-identifies under the full name. Standalone company, no parent-domain issue."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Roadway Management Technologies provides government agencies and engineering firms with an integrated solution for roadway and infrastructure management. The pavement analytics product uses proprietary sensors mounted on an agency's vehicles, which collect road quality data while those vehicles are driven in daily routine. Hardware is mounted underneath city-owned or county-owned vehicles rather than on a survey vehicle sent out for the purpose. Stretches of road are then compared and ranked by quality, and color-coded on the web-based platform.",
+    "Alongside the surveying functionality, the company sells a work order management and record-keeping system integrated with the online map. Work orders can be created for tasks such as pothole repairs, ditch cleanouts, and sign repairs. Crews record maintenance information, photos, and related expenditures on the platform from any internet-connected device. A fleet management service covers driver safety and activity reporting along with vehicle preventative maintenance notifications."
+   ],
+   "quote": {
+    "text": "Your agency\u2019s vehicles already cover every road in your network.",
+    "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://roadman.tech",
+     "quote": "Roadway Management Technologies provides government agencies and engineering firms with a unique integrated solution for roadway and infrastructure management."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/",
+     "quote": "While your agency\u2019s vehicles are used in daily routine, our proprietary mounted sensors passively collect quality data for each road traveled."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/",
+     "quote": "We begin by mounting proprietary hardware systems underneath your city- or county-owned vehicles."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/",
+     "quote": "Stretches of road are compared, ranked by quality, and color-coded on our web-based platform."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://roadman.tech/solutions/work-order-management/",
+     "quote": "we\u2019ve built a work order management and record-keeping system that is integrated with the online map"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://roadman.tech/solutions/work-order-management/",
+     "quote": "custom work orders can be created for tasks such as pothole repairs, ditch cleanouts, sign repairs"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://roadman.tech/solutions/work-order-management/",
+     "quote": "crews can record all maintenance information, photos, and related expenditures directly on our platform from any internet-connected device"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://roadman.tech/solutions/fleet-management/",
+     "quote": "we provide a full fleet management service that includes driver safety and activity reporting, as well as vehicle preventative maintenance notifications"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://roadman.tech",
+     "sha": "7d2eb946f4ed527a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/",
+     "sha": "baf72d4d55d63a06",
+     "fetched_on": null
+    },
+    {
+     "url": "https://roadman.tech/solutions/work-order-management/",
+     "sha": "7fa71287a988ee8e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://roadman.tech/solutions/fleet-management/",
+     "sha": "3f06bec3c4aee33c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "route4me",
@@ -66722,7 +67993,78 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "ReBokeh Vision Technologies sells a mobile app for people with low vision, built to use the sight they have rather than to route around it. The app runs on the camera of a device the user already owns and enables adjustments to contrast, brightness, colors and inversion filters. The about page traces the company to a founder who was offered audio only tools despite having significant residual vision.",
+    "The app is offered in two forms, ReBokeh for Organizations and ReBokeh for Individuals. ReBokeh All-Access uses geofencing technology to unlock the full set of features for anyone in a partner space, on their own personal device.",
+    "The home page carries testimonials naming MIA, the Houston Museum of Natural Science and the Art Museum of South Texas. A quote from the Miami-Dade County Mayor says that MIA is the first airport in the world to provide the app to travelers with vision challenges."
+   ],
+   "quote": {
+    "text": "Re-Bokeh is re-clarifying of what is out of focus.",
+    "url": "https://www.rebokeh.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rebokeh.com",
+     "quote": "ReBokeh was developed specifically for individuals with low vision, to enable them to make the most of their functional vision in any environment."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rebokeh.com",
+     "quote": "The ReBokeh app makes use of the camera on your existing iOS device and enables adjustments to contrast, brightness, colors, inversion filters and more"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rebokeh.com/about",
+     "quote": "Despite having significant residual vision, she was only offered tools that attempted to bypass her vision altogether"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rebokeh.com",
+     "quote": "ReBokeh for Organizations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rebokeh.com",
+     "quote": "ReBokeh All-Access uses geofencing technology to unlock the full extent of ReBokeh's features to anyone in your space, automatically and on their own personal device"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rebokeh.com",
+     "quote": "Matti Wallin, Accessibility Programs Manager, Houston Museum of Natural Science"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rebokeh.com",
+     "quote": "I am thrilled that MIA is now the first airport in the world to provide ReBokeh's groundbreaking innovation to our travelers with vision challenges."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rebokeh.com",
+     "sha": "43126bb3d95913e1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rebokeh.com/about",
+     "sha": "90394ed8f8d8eece",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "reunitus",
@@ -66746,7 +68088,100 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "Reunitus sells lost and found management and baggage resolution through software and managed service offerings. The offering is grouped into baggage resolution, lost item resolution, and unclaimed item monetization. Items that cannot be reunited are resold, and the company says it pays upfront based on full retail value.",
+    "NetTracer is a web-based tracing and resolution system that gained broad market adoption in North America. BagCentral launched as a baggage managed service for the airline industry, handling outsourced tasks such as baggage resolution and claims processing. Virtual services vBSO and vBagAgent were created to support airline partners.",
+    "Named partners include airlines, casinos, public venues, resorts, car rental providers, theme parks, cruise lines, and ground transportation companies. Airports and ground transportation also appear under the heading for who the company serves. The about page describes that work as streamlining lost item tracing, management, and resolution for airlines, airports, casinos, resorts, and theme parks."
+   ],
+   "quote": {
+    "text": "we turn what was once a costly challenge into a positive customer experience and profitable operation",
+    "url": "https://reunitus.com/who-we-are/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://reunitus.com",
+     "quote": "Reunitus redefines lost and found management and baggage resolution with advanced software and managed service solutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://reunitus.com",
+     "quote": "Reunitus is the only omni-channel retail solution for unclaimed item monetization."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://reunitus.com",
+     "quote": "We pay upfront based on full retail value, with no hidden fees"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://reunitus.com/who-we-are/about-us/",
+     "quote": "the first web-based tracing and resolution system, quickly gained broad market adoption in North America"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://reunitus.com/who-we-are/about-us/",
+     "quote": "launched as a baggage managed service for the airline industry, performing outsourced tasks such as baggage resolution and claims processing"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://reunitus.com/who-we-are/about-us/",
+     "quote": "virtual services were created to support airline partners"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://reunitus.com",
+     "quote": "Reunitus partners with the world\u2019s biggest airlines, casinos, public venues, resorts, car rental providers, theme parks, cruise lines, and ground transportation companies"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://reunitus.com",
+     "quote": "Airports & Ground Transportation"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://reunitus.com/who-we-are/about-us/",
+     "quote": "airlines, airports, casinos, resorts, theme parks, and more to help them streamline their lost item tracing, management, and resolution"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://reunitus.com",
+     "sha": "6354108a0fdc1aa0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reunitus.com/who-we-are/about-us/",
+     "sha": "4d8c6167a84f6fdd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reunitus.com/who-we-are/our-leadership",
+     "sha": "240527d11c492a8f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reunitus.com/who-we-are/reclaimed-for-good/",
+     "sha": "e2ddc47c13909d18",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "runwaystats",
@@ -66770,7 +68205,79 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "RunwayStats sells an airport traffic tracking system built on a receiver placed on the airfield and a dashboard, so that every aircraft touching the airport is counted, identified, and stored. Every takeoff, landing, touch and go, go around, helicopter operation, and airspace transition at the airport is detected automatically and logged in real time. Each logged operation carries the time, registration, callsign, runway used, weather conditions, aircraft make and model, and owner, and the data can be filtered, searched, and downloaded to CSV.",
+    "Reports run for any day, month, or year on demand or on a schedule, with delivery to an inbox, a board, or a state DOT. Noise complaints are handled by a complaint management add on that logs, investigates, and tracks each complaint through resolution. A separate add on covers commercial operations, tracking scheduled, estimated, and actual times for arrivals and departures along with on-time performance, gate usage, and taxi times.",
+    "Multiple Airports is built for engineering firms, counties, port authorities, and airport groups with more than one airport under their wing. Subscriptions are sold in Essentials and Platinum tiers, and features from any tier can be mixed into one package."
+   ],
+   "quote": {
+    "text": "The Clearest View Of Your Airport's Activity",
+    "url": "https://www.runwaystats.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.runwaystats.com",
+     "quote": "Every aircraft that touches your airport gets counted , identified , and stored ."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.runwaystats.com",
+     "quote": "Every takeoff, landing, touch and go, go around, helicopter operation, and airspace transition at your airport"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.runwaystats.com",
+     "quote": "Each operation includes the time, registration, callsign, runway used, weather conditions, aircraft make and model, and owner"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.runwaystats.com",
+     "quote": "Run a report for any day, month, or year, or schedule automatic delivery straight to any inbox"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.runwaystats.com",
+     "quote": "Every complaint is logged, investigated, and tracked through resolution in one place, so nothing lives in an inbox or a sticky note."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.runwaystats.com",
+     "quote": "Scheduled, estimated, and actual times for every arrival and departure, with on-time performance, gate usage, and taxi times calculated automatically"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.runwaystats.com",
+     "quote": "Built for engineering firms, counties, port authorities, and airport groups with more than one airport under their wing."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.runwaystats.com",
+     "quote": "The tiers are just starting points. Pick and choose the features your airport actually needs"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.runwaystats.com",
+     "sha": "8911d85764242482",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "saab-inc",
@@ -66794,7 +68301,94 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "Saab, Inc. sells products, services and solutions to the U.S. government, industry, and commercial customers, covering military and civil security. The company states that its solutions and technologies are central to U.S. defense and homeland security. The U.S. portfolio is based on technology developed both in the United States and in Sweden.",
+    "Supplied solutions named on the site include radars and sensors to the U.S. Army, U.S. Navy, and U.S. State Department. Other listed supplies include the T-7A Advanced Pilot Training System for the U.S. Air Force, in partnership with Boeing. Named products include the AN/SPN-50 Shipboard Air Traffic Radar and the XM919 Individual Assault Munition.",
+    "Reported figures include around $552M USD in total annual U.S. sales, over 1,100 employees, and 11 U.S. locations. A separate products page states that products and services are provided within four different domains, from military defence to civil security."
+   ],
+   "quote": {
+    "text": "We provide solutions and technologies that are central to U.S. defense and homeland security.",
+    "url": "https://www.saab.com/markets/united-states/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "Saab, Inc. serves the U.S. government, industry, and commercial customers with world-leading products, services and solutions including military and civil security."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "We provide solutions and technologies that are central to U.S. defense and homeland security."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "Saab's U.S. portfolio is based on technology developed both in the United States and in Sweden."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.saab.com/markets/united-states",
+     "quote": "Radars and sensors to the U.S. Army, U.S. Navy, and U.S. State Department (as prime or in partnership with major U.S. OEMs)"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "T-7A Advanced Pilot Training System for the U.S. Air Force, in partnership with Boeing"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "AN/SPN-50 Shipboard Air Traffic Radar"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.saab.com/markets/united-states/about",
+     "quote": "With around $552M USD in total annual U.S. sales, Saab has over 1,100 employees, and operates out of 11 U.S. locations"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.saab.com/products",
+     "quote": "We provide products and services within four different domains."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.saab.com/markets/united-states",
+     "sha": "615697936a3cfcdd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saab.com/about",
+     "sha": "0748b5b29a81fe59",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saab.com/products",
+     "sha": "e3143271372a5f9b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saab.com/markets/united-states/about",
+     "sha": "f7745a15410e075e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sita-information-networking-computing-usa-inc",
@@ -70815,7 +72409,100 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Public-sector fleets \u2014 government agencies, transit authorities, and K-12/higher-ed fleets; the site claims 750+ public-sector fleet customers",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "RTA Fleet360 is a fleet maintenance and management system built to centralize work orders, streamline preventive maintenance, and manage parts and fuel. Asset management in Fleet360 covers vehicles, equipment and tools, with digital profiles tracking availability, repairs, warranties and costs across shops. Parts and inventory features let parts managers track usage, automate inventory and warranty tracking, and simplify ordering.",
+    "Budgeting and cost tools cover asset lifecycle planning, maintenance and repair costs, inventory cost, fuel cost per mile, and technician labor hours. Reporting includes business intelligence dashboards, a Fleet Success Scorecard, and customizable reporting tools for fleet managers. A mobile app brings Fleet360 to a device so managers and technicians can handle work orders, inventory, inspections and fleet performance on the go.",
+    "The homepage describes the product as an FMIS for public sector fleets. Beyond the software, the company offers fleet consulting and training delivered online or in person. Purchasing is offered through purchasing partners, where members qualify for pricing on software, hardware and consulting services."
+   ],
+   "quote": {
+    "text": "RTA Fleet360 is the fleet management software (FMIS) run by former fleet managers",
+    "url": "https://www.rtafleet.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rtafleet.com/solutions",
+     "quote": "designed to centralize work orders, streamline preventive maintenance, manage parts and fuel"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://rtafleet.com/solutions/asset-equipment-tools-management",
+     "quote": "a centralized asset management software for all your vehicles, equipment, and tools"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://rtafleet.com/solutions",
+     "quote": "Parts managers can stay ahead of parts usage, automate tracking for inventory and warranties, and simplify ordering"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://rtafleet.com/solutions/fleet-cost-management",
+     "quote": "capital and budget needs efficiently and identify opportunities for cost savings"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://rtafleet.com/solutions",
+     "quote": "Dashboards, a one-of-a-kind Fleet Success Scorecard, and customizable reporting tools"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://rtafleet.com/solutions",
+     "quote": "The RTA Fleet Mobile App brings Fleet360 to your device, enabling managers and technicians to handle work orders, inventory, inspections, and fleet performance on the go."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rtafleet.com",
+     "quote": "THE #1 FMIS FOR PUBLIC SECTOR FLEETS"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rtafleet.com",
+     "quote": "provide support both online or in-person to help your team learn fast"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.rtafleet.com",
+     "quote": "Members qualify for special pricing on software, hardware, and consulting services"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rtafleet.com",
+     "sha": "43224b9c4835269f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rtafleet.com/solutions",
+     "sha": "b933748b5504231a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rtafleet.com/solutions/asset-equipment-tools-management",
+     "sha": "777b12c5e042217f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rtafleet.com/solutions/fleet-cost-management",
+     "sha": "128cfdb9880fa18d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "chevin-fleet-solutions",
@@ -74461,7 +76148,77 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Sabre Industries supplies highly-engineered critical infrastructure for power utilities, telecom, and data centers. Products listed under power and utility infrastructure include engineered transmission structures, light duty structures, substation structures, solar structures, and coatings and finishes. Telecom infrastructure listings include self-supporting structures, monopoles, guyed structures, concealed and decorative structures, small cell solutions, and mounts and components.",
+    "Building systems listings include uninterruptable power supply pods, integrated equipment skids and platforms, battery energy storage, fiber access hubs, telecom equipment enclosures, and a substation control house. The site credits 200+ engineers and drafters with the design challenges facing custodians of mission-critical infrastructure. Manufacturing and office space runs to more than 2.3 million square feet. The company page puts the same three markets together as power and utility, telecom, and data center structures."
+   ],
+   "quote": {
+    "text": "Infrastructure to match the scale of American ambition",
+    "url": "https://www.sabreindustries.com/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sabreindustries.com",
+     "quote": "As a leading provider of highly-engineered critical infrastructure for power utilities, telecom, and data centers, we are a key partner underpinning the backbone of America."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sabreindustries.com",
+     "quote": "Engineered Transmission Structures"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sabreindustries.com",
+     "quote": "Concealed & Decorative Structures"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sabreindustries.com",
+     "quote": "Uninterruptable Power Supply (UPS) Pods"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sabreindustries.com",
+     "quote": "200+ engineers and drafters take on the most complex design challenges facing custodians of mission-critical infrastructure."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sabreindustries.com/company",
+     "quote": "With more than 2.3 million square feet of manufacturing and office space, our footprint is vast and optimized for delivering on the partnerships we hold across the mission-critical ecosystem."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sabreindustries.com/company",
+     "quote": "providing best-in-class power and utility, telecom, and data center structures enabling our communities to flourish, now and in the future."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sabreindustries.com",
+     "sha": "653b8e9ed34641d4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sabreindustries.com/company",
+     "sha": "6a89dd5d2a02a233",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "hapco",
@@ -80676,7 +82433,71 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Rhythm Engineering sells In|Sync, an adaptive traffic signal control system that the company says is deployed at more than 3,000 intersections nationwide. The product line also includes CYCLOPS, a vehicle recognition system powered by AI algorithms. A third product, code|GREEN, combines vehicle detection, data collection, timing plan generation, and deployment.",
+    "Rhythm Engineering was founded in 2005 by Dr. Reggie Chandra, a traffic engineer who worked in the public sector. In|Sync has since been installed in 31 states and by 140 public agencies. Testimonials on the homepage come from a City Council Member in San Diego, CA and a Principal Traffic Engineer in West des Moines, IA."
+   ],
+   "quote": {
+    "text": "It is the most-deployed automated traffic signal optimization system in North America.",
+    "url": "https://rhythmtraffic.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rhythmtraffic.com",
+     "quote": "In|Sync is the only true, real-time adaptive solution available on the market. It is deployed at more than 3,000 intersections nationwide."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://rhythmtraffic.com",
+     "quote": "vehicle recognition system powered by AI algorithms: Neural Networks and Deep Learning."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://rhythmtraffic.com",
+     "quote": "code|GREEN is a 4-in-1 solution. It integrates vehicle detection, data collection, timing plan generation, and deployment."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://rhythmtraffic.com/about-us/",
+     "quote": "Rhythm Engineering was founded in 2005 by a traffic engineer who worked in the public sector."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://rhythmtraffic.com/about-us/",
+     "quote": "Since its launch, In|Sync has been installed in 31 states and by 140 public agencies."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://rhythmtraffic.com",
+     "quote": "The installation of these new adaptive traffic signals means less time spent on the road and more time for commuters to spend with their families."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://rhythmtraffic.com",
+     "sha": "2210a9fa7ac854df",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rhythmtraffic.com/about-us/",
+     "sha": "f65da7e16ab47af9",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sensys-networks",
@@ -90627,7 +92448,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Rezcomm sells an ecommerce marketplace platform that unites ecommerce, CRM, reservations, BI and marketing for travel hubs, venues and service providers. The platform brings unlimited products together in a single checkout for customers who manage parking, travel, events or retail. Security certification listed on the site covers PCI DSS Level 1 v4.0 and Cyber Essentials Plus.",
+    "For airports, the platform covers parking and ancillary services, digital engagement and loyalty, with the aim of optimising non-aeronautical income. Parking operators are offered parking and upgrades from a single platform built to support multi-site operations, including city-centre and off-airport locations. Cruise terminals are offered digital bookings and integrated services covering port arrival and check-in.",
+    "The clients page names airports, venues and travel hubs worldwide as the organisations Rezcomm supports. Belfast International Airport is described as creating a marketplace for selling parking and other ancillaries in partnership with Rezcomm. Sentinel Car Parks, located near Leeds Bradford Airport, partnered with Rezcomm to work on customer experience and revenue streams."
+   ],
+   "quote": {
+    "text": "Originally built for airports, Rezcomm now powers travel hubs, venues, and service providers of all kinds.",
+    "url": "https://rezcomm.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rezcomm.com",
+     "quote": "Originally built for airports, Rezcomm now powers travel hubs, venues, and service providers of all kinds. The modular, AI-driven toolkit unites ecommerce, CRM, reservations, BI and marketing in a single platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://rezcomm.com",
+     "quote": "Whether you manage parking, travel, events or retail, the platform brings unlimited products together in a single checkout, unlocking deeper customer insight and long-term loyalty."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://rezcomm.com",
+     "quote": "Rely on certified security with PCI DSS Level 1 v4.0 and Cyber Essentials Plus"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://rezcomm.com",
+     "quote": "From parking and ancillary services to digital engagement and loyalty, airports of all sizes can optimise non-aeronautical income, personalise experiences, and stay connected throughout the journey."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://rezcomm.com",
+     "quote": "Sell parking and upgrades from a single platform built to support multi-site operations. Ideal for city-centre and off-airport locations, operators can drive pre-book revenue, increase yield with upsells, and manage customer relationships with one joined-up system."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://rezcomm.com",
+     "quote": "From port arrival to check-in, cruise terminals can simplify logistics and elevate guest experiences with streamlined parking, upgrades, and tailored communications."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://rezcomm.com/clients",
+     "quote": "A collection of global success stories and partnerships showcasing how Rezcomm supports airports, venues and travel hubs worldwide to increase revenue, strengthen customer engagement and streamline their services."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://rezcomm.com/clients",
+     "quote": "BFS committed to innovating and expanding its ecommerce presence and created a user-friendly marketplace for selling parking and other ancillaries in partnership with Rezcomm."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://rezcomm.com/clients",
+     "quote": "Located near Leeds Bradford Airport, Sentinel Car Parks is well-known for providing secure and convenient parking solutions to travelers. To achieve their strategic goals of enhancing the customer experience and optimising revenue streams, they partnered with Rezcomm."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://rezcomm.com",
+     "sha": "667e71bccd167905",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rezcomm.com/about-us",
+     "sha": "bbe177027bc4aeb3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rezcomm.com/clients",
+     "sha": "c106aea15d5c03d4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://rezcomm.com/case-studies",
+     "sha": "a1ba15e42df52332",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "maximus",
@@ -100313,7 +102227,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Responserack sells fire department records software whose core is incident reporting exported to NFIRS/NERIS. The company describes the product as a replacement for legacy reporting systems. Delivery is cloud-based and managed, with nothing for a department to install on its own computers.",
+    "Firefighters reach the system from their phones, and departments can use apparatus tablets they already have. A mobile application is offered for iPhone and Android. Alongside incident reports, the listed features include training records, member hour reports, apparatus checks, and computer aided dispatch integration.",
+    "The stated audience is volunteer fire departments rather than career departments. The about page credits the product to Adam Jack, named there as founder and a volunteer firefighter. Responserack is identified as a registered trade name of Neukadye LLC."
+   ],
+   "quote": {
+    "text": "Simple technology for volunteer firefighters",
+    "url": "https://www.responserack.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.responserack.com/about/",
+     "quote": "Responserack provides incident reporting (with export to NFIRS/NERIS) for volunteer departments and keeps track of department data"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.responserack.com",
+     "quote": "Responserack Fire Department Software is a modern replacement to legacy reporting systems."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.responserack.com",
+     "quote": "cloud-based solution managed for you, with nothing to install on department computers"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.responserack.com",
+     "quote": "Access Responserack from your existing apparatus tablets, and your firefighters can access Responserack from their phones."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.responserack.com",
+     "quote": "Responserack App for iPhone and Android"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.responserack.com",
+     "quote": "Computer Aided Dispatch (CAD) Integration"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.responserack.com",
+     "quote": "developed for volunteer fire departments only"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.responserack.com/about/",
+     "quote": "Adam Jack , Responserack Founder & Volunteer Firefighter."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.responserack.com/about/",
+     "quote": "Responserack is a registered trade name of Neukadye LLC"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.responserack.com",
+     "sha": "f7bec66b69d6a3e5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.responserack.com/about/",
+     "sha": "52b457f47d8cea87",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "apx-data",
@@ -113980,7 +115977,101 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Recycleye builds AI-powered sorting equipment and analytics for waste management businesses. Its equipment includes retrofittable 6-axis robots designed to target and pick DMR. An optical sorter provides high-volume air jet sorting at speed. Recycleye Vision AI scans 100% of objects to provide QA and trend insights.",
+    "The AI is based on WasteNet, a database of billions of images, and powers high-volume and targeted sorting automation. Recycleye describes sorting across DMR, WEEE, and C&D applications throughout Europe and the USA. The company reports installations in locations across Europe and the United States.",
+    "Case studies on the solutions page name FCC Environment, Panda Ireland and Bryson Recycling as clients. The about page names a UK partnership with FANUC. Recycleye states a mission to serve the waste and materials management sectors."
+   ],
+   "quote": {
+    "text": "Turning the world\u2019s waste into resource.",
+    "url": "https://recycleye.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://recycleye.com",
+     "quote": "AI-powered sorting equipment and analytics for waste management businesses globally."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://recycleye.com/solutions/",
+     "quote": "Retrofittable 6-axis robots designed to target and pick DMR"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://recycleye.com/solutions/",
+     "quote": "High-volume air jet sorting at speed"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://recycleye.com/solutions/",
+     "quote": "100% of objects are scanned by Recycleye Vision AI to provide QA and trend insights"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://recycleye.com/solutions/",
+     "quote": "our AI technology powers both our high-volume and targeted sorting automation solutions"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://recycleye.com",
+     "quote": "Recycleye is transforming waste sorting across DMR, WEEE, and C&D applications throughout Europe and the USA."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://recycleye.com/about/",
+     "quote": "We\u2019re already installed in locations across Europe and the United States"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://recycleye.com/solutions/",
+     "quote": "Panda Ireland was looking for technology to support plant efficiency and to manage costs."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://recycleye.com/about/",
+     "quote": "Our UK partnership with FANUC means we innovate together to bring the best solutions to waste sorting."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://recycleye.com/about/",
+     "quote": "making us the trusted partner for the waste and materials management sectors"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://recycleye.com",
+     "sha": "28864b28cd69875c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://recycleye.com/about/",
+     "sha": "bfc027af30ece223",
+     "fetched_on": null
+    },
+    {
+     "url": "https://recycleye.com/solutions/",
+     "sha": "72b0f1ccabb3b0f7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "everestlabs",
@@ -116055,7 +118146,101 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Regrid sells standardized parcel data covering North America and Europe under a single schema. Those parcel boundaries carry ownership details, zoning rules, building footprints, and demographics in one view. Coverage runs to every county in the United States. Canadian parcels and European parcel data across 20 countries extend the same land data beyond one market.",
+    "Delivery options include enterprise file delivery, an API with tiles and an MCP server, and self-serve county and state downloads from the data store. A hosted Feature Service connects the parcel layers into ArcGIS Pro and ArcGIS Online. A property app for desktop and mobile handles parcel lookup, fieldwork, saved places, notes, and parcel tracking.",
+    "Regrid states that the parcel layer supports enterprise teams across real estate, infrastructure, government, energy, conservation, research, and technology. Government use described on the same page covers planning, public services, community development, transparency, research, and land-related decision-making. The customers page describes the audience as enterprise teams that depend on parcel data across jurisdictions."
+   ],
+   "quote": {
+    "text": "Regrid makes parcel data easier to access, understand, and use, so people can make better decisions about land across communities, markets, and borders.",
+    "url": "https://regrid.com/about/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://regrid.com",
+     "quote": "Standardized parcel data across North America and Europe"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://regrid.com",
+     "quote": "Precise parcel boundaries enriched with ownership details, zoning rules, building footprints, and demographics in one unified view."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://regrid.com",
+     "quote": "Parcel boundaries and matched data layers for every US county"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://regrid.com",
+     "quote": "Scale across borders with standardized European parcel data across 20 countries and counting, built for teams that need reliable land data beyond one market."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://regrid.com",
+     "quote": "Whether you need a national enterprise dataset, a developer-ready API, a self-serve download, an Esri-compatible service, or an AI-ready MCP connection, Regrid meets your workflow where it is."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://regrid.com",
+     "quote": "Connect to hosted parcel data through a secure Feature Service URL and work with Regrid layers in ArcGIS Pro, ArcGIS Online, and supported Esri applications, without maintaining large static files."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://regrid.com",
+     "quote": "For fast parcel lookup, fieldwork, property research, saved places, notes, and parcel tracking."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://regrid.com/about/company",
+     "quote": "Today, that foundation supports enterprise teams across real estate, infrastructure, government, energy, conservation, research, and technology, along with millions of Regrid app users and the wider public."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://regrid.com/about/company",
+     "quote": "Use parcel data to support planning, public services, community development, transparency, research, and land-related decision-making."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://regrid.com/customers",
+     "quote": "Regrid supports enterprise teams that depend on accurate, standardized parcel data across jurisdictions."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://regrid.com",
+     "sha": "3af6c7ea34190e7d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://regrid.com/customers",
+     "sha": "201f5728890eb711",
+     "fetched_on": null
+    },
+    {
+     "url": "https://regrid.com/about/company",
+     "sha": "9b0e0e4d834ec25d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "planet-labs",
@@ -119975,7 +122160,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Render Networks sells construction management software for telecom and utility network infrastructure. The platform converts network designs into verified field work, captures proof of what was built, and reconciles that record to financial milestones. The pages describe coverage of every phase of infrastructure deployment, from design through construction and long term operations.",
+    "A blueprinting engine converts fiber and electric network designs, in any format, into sequenced task level field instructions. Task workflow releases work only once dependencies clear, including confirmed permits, available materials and verified prior tasks. As crews complete work, closeout data passes to downstream systems such as OSS/BSS, GIS, payment and permitting.",
+    "The pages name buyers by category, addressing operators and builders working on fiber, electric and critical infrastructure. The company page sets the work against spending on fiber and wireless infrastructure projects, where productivity and risk drive the case for the software."
+   ],
+   "quote": {
+    "text": "Render empowers everyone in the network deployment process through one connected platform",
+    "url": "https://rendernetworks.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rendernetworks.com",
+     "quote": "The industry\u2019s most advanced construction management platform for telecom and utility network infrastructure."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://rendernetworks.com",
+     "quote": "Converting network designs into verified field work, capturing real-time proof of what was built, and reconciling that truth to financial milestones automatically."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://rendernetworks.com",
+     "quote": "Fueling every phase of critical infrastructure deployment"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rendernetworks.com/platform",
+     "quote": "Render's blueprinting engine converts fiber and electric network designs, in any format, into sequenced, task-level field instructions automatically."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rendernetworks.com/platform",
+     "quote": "Render's task workflow only releases work when dependencies are cleared: permits confirmed, materials available, prior tasks verified."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.rendernetworks.com/platform",
+     "quote": "passes structured closeout data to downstream systems like OSS/BSS, GIS, payment, and permitting, all in real time"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rendernetworks.com/platform",
+     "quote": "gives operators and builders a single, verified source of truth from design through operations"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rendernetworks.com/company",
+     "quote": "With billions of dollars being spent on fiber and wireless infrastructure projects, finding new ways to maximize productivity and minimize risk has never been more critical."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://rendernetworks.com",
+     "sha": "d71f26f321969356",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rendernetworks.com/platform",
+     "sha": "ecf60633db97aad7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rendernetworks.com/company",
+     "sha": "faa46823b1ff1957",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rendernetworks.com/platform/blueprinting",
+     "sha": "10d0be91a80d3cd9",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "costquest-associates",
@@ -122578,7 +124850,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APPA Probation 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Reconnect, Inc. sells software and hardware that connect specialty courts, pretrial, and community supervision programs with their participants. The pages say the solutions are used by drug courts, probation, parole, and TPAs.",
+    "The Client Mobile App provides daily tasks for clients. Case managers create calendar events for participants in Reconnect Manager. Location monitoring is sold as an add-on feature named HardwareFreeEM. The solutions page states that location monitoring is not a default feature and is available only when ordered by a court program.",
+    "Drug test randomization can run automatically or be adapted to weekly program needs. Smartphone leasing is offered for clients who do not have a phone. Reconnect eSignature covers electronic forms and document workflows for behavioral health and human services programs."
+   ],
+   "quote": {
+    "text": "Software and hardware to connect specialty courts, pretrial, and community supervision programs with their participants.",
+    "url": "https://reconnect.io/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://reconnect.io/about-us/",
+     "quote": "Software and hardware to connect specialty courts, pretrial, and community supervision programs with their participants."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://reconnect.io/about-us/",
+     "quote": "Our solutions are used by drug courts, probation, parole, and TPAs."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://reconnect.io",
+     "quote": "Reconnect\u2019s Client Mobile App provides personalized daily tasks for clients"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://reconnect.io/solutions",
+     "quote": "Case managers can create calendar events for participants in Reconnect Manager."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://reconnect.io/solutions",
+     "quote": "Reconnect offers effortless 24/7 location monitoring as an add-on feature, HardwareFreeEM"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://reconnect.io/solutions",
+     "quote": "Note, location monitoring is not a default feature of Reconnect\u2019s platform. It is only available when ordered by a court program."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://reconnect.io/solutions",
+     "quote": "Reconnect\u2019s drug test randomization can be fully automated or adapted to meet weekly program needs."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://reconnect.io",
+     "quote": "Reconnect offers smartphone leasing when clients don\u2019t have a phone."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://reconnect.io/solutions",
+     "quote": "Reconnect eSignature helps organizations reduce paperwork, improve efficiency, and streamline compliance-driven workflows across behavioral health and human services programs."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://reconnect.io",
+     "sha": "ad8f9ec2603aedf3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reconnect.io/about-us/",
+     "sha": "bb9294b3227a45a5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://reconnect.io/solutions",
+     "sha": "450fe7464746fe7e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "outreach-smartphone-monitoring",
@@ -124897,7 +127257,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Recollect sells a cloud-based Collection Management System for galleries, libraries, archives, museums, academic institutions and heritage sites. The product is presented as management and discovery for a digital collection, held in a single digital repository built to support staff, students, and researchers. Metadata and contextual information configure the site and link assets together, and content of any format is reached from any device.",
+    "The about page lists the organisations the platform supports, beginning with libraries, archives and museums wanting to digitise and share their collections. That list also names local government bodies preserving public records. It further names indigenous and marginalised communities seeking tools for managing culturally sensitive materials, and educational institutions providing students and researchers with accessible resources.",
+    "The same page states that by 2020 the company became a standalone entity, expanding into the USA, UK, Australia, Singapore and Hong Kong. It reports support for over 160 sites globally. Case studies name the Museum of Flight, Palos Verdes Library District, the State Library of Oregon and Denver Public Library."
+   ],
+   "quote": {
+    "text": "With Recollect's cloud-based platform, build your identity, enrich your collections, capture and manage new content, as well as discuss new ideas from anywhere in the world",
+    "url": "https://www.recollectcms.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "The Recollect platform is a powerful, cloud-based Collection Management System that removes the stress and complexity of managing digital archives."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.recollectcms.com",
+     "quote": "Manage, organize, preserve, and showcase your collections with a single digital repository built to support staff, students, and researchers."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.recollectcms.com",
+     "quote": "Access to all types of content, in any format, anytime, in one platform, from any device"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "Libraries, archives and museums wanting to digitise and share their collections"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "Local government bodies preserving public records"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "Indigenous and marginalised communities seeking secure, respectful tools for managing culturally sensitive materials"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "By 2020, Recollect became a standalone entity, expanding into the USA, UK, Australia, Singapore and Hong Kong."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.recollectcms.com/about-us/",
+     "quote": "Today, we support over 160 sites globally, enabling organisations to ensure their collections are discoverable, secure, and future-ready."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.recollectcms.com/case-studies",
+     "quote": "The Museum of Flight is the largest independent, non-profit air and space museum in the world"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.recollectcms.com",
+     "sha": "34aeb10bbfd39ad7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.recollectcms.com/case-studies",
+     "sha": "bd943278324c2bd5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.recollectcms.com/about-us/",
+     "sha": "d0070efec0fa090c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tind",
@@ -135753,7 +138201,71 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Respondus describes its products as assessment tools for learning systems, and the site splits them into solutions for higher education and solutions for K-12. The company states that each year hundreds of millions of exams use LockDown Browser and Respondus Monitor to ensure academic integrity at educational institutions. Respondus 4 and StudyMate Campus create exam questions, self-assessments and learning games across thousands of universities and school districts.",
+    "Respondus technology is also embedded in 70+ third-party assessment platforms, ranging from homework systems to certification testing. The site groups that side of the business under partnerships and SDK, and lists learning system partners on the home page. The same page states that Respondus has been a pioneer of online testing for two decades."
+   ],
+   "quote": {
+    "text": "Assessment Tools for Learning Systems",
+    "url": "https://web.respondus.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://web.respondus.com",
+     "quote": "Assessment Tools for Learning Systems"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://web.respondus.com",
+     "quote": "Each year hundreds of millions of exams use LockDown Browser and Respondus Monitor to ensure academic integrity at educational institutions."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://web.respondus.com",
+     "quote": "Respondus 4 and StudyMate Campus are used to create exam questions, self-assessments and learning games across thousands of universities and school districts."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://web.respondus.com",
+     "quote": "also find Respondus technology embedded in 70+ third-party assessment platforms, ranging from homework systems to certification testing."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://web.respondus.com",
+     "quote": "Learning System Partners"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://web.respondus.com",
+     "quote": "Respondus has been a pioneer of online testing for two decades."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://web.respondus.com",
+     "sha": "3e9d960e068c4180",
+     "fetched_on": null
+    },
+    {
+     "url": "https://web.respondus.com/about/",
+     "sha": "513d3318f8c28576",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "timelygrader",
@@ -148255,7 +150767,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Reader Zone sells reading program software for teachers, schools, and public libraries, with program creation, reading progress tracking, and participation views in real time. For public libraries, the pages describe summer and year-round programs that are simple for patrons and practical for staff.",
+    "For schools and districts, the product runs school-wide reading challenges and tracks participation across classrooms and groups from one place. For individual teachers, it runs classroom reading challenges without paper logs and shows who needs a nudge.",
+    "Readers log books, minutes, pages, and activities through the app or web, and organizers track participation and reading progress from one dashboard. Readers join a program with a Program Code and log reading through the app or web. The about page states that the software works for any size and type of organization, from a single family to an entire school district or library system."
+   ],
+   "quote": {
+    "text": "Make reading programs succeed in any community.",
+    "url": "https://www.readerzone.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.readerzone.com",
+     "quote": "Reader Zone is reading program software for teachers, schools, and public libraries. Create programs, track reading progress, motivate readers, and see participation in real time."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.readerzone.com",
+     "quote": "Run summer and year-round programs that are simple for patrons and practical for staff."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.readerzone.com",
+     "quote": "Run school-wide reading challenges and programs. Track participation across classrooms and groups from one place."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.readerzone.com",
+     "quote": "Run classroom reading challenges without paper logs. Motivate students, involve families, and see who needs a nudge."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.readerzone.com",
+     "quote": "Readers log books, minutes, pages, and activities through the app or web, while teachers, librarians, and other organizers track participation and reading progress from one dashboard."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.readerzone.com",
+     "quote": "Readers join with a Program Code and log reading through the app or web."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.readerzone.com/about",
+     "quote": "Reader Zone works for any size and type of organization. From a single family to an entire school district or library system."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.readerzone.com",
+     "sha": "a9bc78f4025307c5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.readerzone.com/about",
+     "sha": "e8204d46688f0e54",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "a-m-simpkins-and-associates",
