@@ -51527,8 +51527,8 @@
     "category": "HR & Workforce",
     "description": "HR, policy and training software for government - exhibited at NRPA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.neogov.com/about-us/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -67176,8 +67176,12 @@
     "category": "HR & Workforce",
     "description": "Employee benefits, enrollment and HR services for public sector employers",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workday",
+      "ref": [
+        "americanfidelity",
+        "wd5",
+        "External"
+      ]
     },
     "hiring": {
       "status": "Unknown",
@@ -126619,8 +126623,8 @@
     "category": "IT & AI Platforms",
     "description": "IT consulting and low-code case management (CaseXellence) for public sector agencies, including state health and human services programmes, alongside banking, insurance and retail practices - exhibited at MESC 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.speridian.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -126643,8 +126647,8 @@
     "category": "Public Health",
     "description": "Immunization information systems (STC|ONE) and vaccine data exchange for state and local public health immunization programs, pharmacies and providers - exhibited at AIRA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://stchealth.com/stccareers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -126667,8 +126671,8 @@
     "category": "Public Health",
     "description": "Casetivity-based public health software - immunization information systems, electronic disease surveillance, early intervention, lead poisoning prevention and vital records - for state and local public health agencies - exhibited at AIRA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.ssg-llc.com/about/careers-ssg/"
     },
     "hiring": {
       "status": "Unknown",
@@ -126739,8 +126743,8 @@
     "category": "Public Health",
     "description": "WebIZ immunization information system for state and local immunization registries, now sold as part of InductiveHealth's public health platform - exhibited at AIRA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "lever",
+      "ref": "inductivehealth"
     },
     "hiring": {
       "status": "Unknown",
@@ -126894,8 +126898,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "AI-driven fraud, waste and abuse detection and payment integrity (Alivia 360) for state Medicaid agencies and commercial health plans - exhibited at MESC 2026, NHCAA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.aliviaanalytics.com/about/culture-careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -127003,8 +127007,8 @@
     "category": "Public Health",
     "description": "Syntropi, modular cloud software that automates immunization provider enrollment and daily workflows alongside a state's immunization information system, sold to state public health departments - exhibited at AIRA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.amciweb.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -127027,8 +127031,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "Generative-AI payment integrity, fraud-waste-and-abuse detection, provider education and audit case management for healthcare payers, PBMs and state and federal agencies - exhibited at NAMPI 2026, NHCAA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.codoxo.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
