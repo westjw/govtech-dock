@@ -11609,6 +11609,93 @@
    "ruled_by": "owner",
    "on": "2026-09-09",
    "source": "parks-rec vendor research"
+  },
+  "profile": {
+   "paragraphs": [
+    "SportsEngine sells technology for youth sports organizations. Products are grouped into clubs, teams, and leagues, class-based businesses and swimming, livestreaming and a program directory, tournaments and brackets, and volleyball events. Two of those product lines carry former names, GoMotion and TeamUnify for class-based businesses and Tourney Machine for tournaments.",
+    "For clubs and associations, the platform collects athlete information, waivers, and payments, runs custom reports on club finances, and confirms coach credentials. It also builds team rosters and schedules, delivers uniforms and team gear, and connects families through a club website and a mobile app. For clubs the platform also covers background checks on coaches and volunteers, athlete safety training, live streaming, fundraising with spirit wear and apparel, team sponsorships, and membership programs.",
+    "SportsEngine Motion is aimed at owners of class-based gyms and studios. That product handles class and lesson schedules, invoicing, registration, member messaging, and a website, with private lessons and bookings among the features."
+   ],
+   "quote": {
+    "text": "SportsEngine technology platforms include everything youth sports leaders need to grow and manage a club or association.",
+    "url": "https://www.sportsengine.com/solutions/organizations/clubs-and-associations"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sportsengine.com",
+     "quote": "Smarter tech for youth sports"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sportsengine.com",
+     "quote": "Livestreaming & program directory"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sportsengine.com",
+     "quote": "Formerly GoMotion & TeamUnify"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sportsengine.com/solutions/organizations/clubs-and-associations",
+     "quote": "Collect athlete information, waivers, and payments online"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sportsengine.com/solutions/organizations/clubs-and-associations",
+     "quote": "Build team rosters and schedules in just a few clicks"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sportsengine.com/solutions/organizations/clubs-and-associations",
+     "quote": "Build and sell membership programs for coaches, athletes, and boosters"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sportsengine.com/solutions/organizations/gyms-and-studios",
+     "quote": "SportsEngine Motion keeps you in control of your class-based gym or studio from an all-inclusive dashboard and mobile app."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sportsengine.com/solutions/organizations/gyms-and-studios",
+     "quote": "Create schedules, message members, check payments, and find anything you need in a flash."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sportsengine.com",
+     "sha": "4f84a5ee41460773",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sportsengine.com/company/about-us/",
+     "sha": "f9d9cd6ff419c7f2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sportsengine.com/solutions/organizations/clubs-and-associations",
+     "sha": "618b743995f719ed",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sportsengine.com/solutions/organizations/gyms-and-studios",
+     "sha": "3f8561ac5c009eda",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -18423,7 +18510,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NRPA 2026; GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Software Solutions, Inc. sells cloud-based ERP software for public accounting, HR, payroll, and utility billing. The VIP Suite begins with VIP Accounting, which the company calls the core of the Visual Intelligence Portfolio. Other modules listed include budgeting, accounts payable automation, payroll and human resources, employee self-service, and utility billing.",
+    "The company has served local governments and utilities since 1978. It became 100% employee-owned in 2004 through an Employee Stock Ownership Plan. The VIP platform launched in 2009. VIP Cloud, a hosted version, was introduced in 2020.",
+    "The solutions page says the software is built for the public sector and used by counties, cities, special districts, libraries, and utilities. Utility billing is offered to water districts, electric utilities, and public and private utility companies. The accounting page names the city of Euclid, which it says was outgrowing a spreadsheet bank reconciliation process."
+   ],
+   "quote": {
+    "text": "Built to handle utilities of all sizes. Our products are a complete solution from complex electric billing to simple flat-rate billing.",
+    "url": "https://www.mysoftwaresolutions.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.mysoftwaresolutions.com",
+     "quote": "Cloud-based ERP Software for Public Accounting, HR, Payroll, and Utility Billing"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.mysoftwaresolutions.com/solutions",
+     "quote": "It is the core of the Visual Intelligence Portfolio and is relied upon by customers with budgets both large and small."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "quote": "such as cloud-based accounting , budgeting , accounts payable automation , payroll and human resources , employee self-service , and utility billing"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "quote": "We have been serving this specialized sector since 1978, so we understand the unique demands and challenges you face."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "quote": "2004: SSI becomes a 100% employee-owned company through an Employee Stock Ownership Plan (ESOP)."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "quote": "2009: The VIP platform is launched, providing a modern, integrated approach to financial management for the public sector."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "quote": "2020: The VIP Cloud platform is introduced, offering scalable cloud solutions."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.mysoftwaresolutions.com/solutions",
+     "quote": "our cloud-based software solutions are trusted by counties, cities, special districts, libraries, and utilities across the country"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.mysoftwaresolutions.com",
+     "quote": "is perfect for water districts, electric utilities, and all other public and private utility companies"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.mysoftwaresolutions.com/solutions/accounting",
+     "quote": "The city of Euclid was quickly outgrowing their excel spreadsheet bank reconciliation process."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.mysoftwaresolutions.com",
+     "sha": "d5f1d42f5f7c676d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysoftwaresolutions.com/about-us",
+     "sha": "4f1c01188f8ecd8e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysoftwaresolutions.com/solutions",
+     "sha": "411e790ca7bb41d0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysoftwaresolutions.com/solutions/accounting",
+     "sha": "4bdc36b5dfd49147",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "schneider-geospatial",
@@ -22085,7 +22271,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; CoSN 2026; EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Softdocs sells a document management and process automation platform used by schools and government agencies. The platform digitizes documents and forms and automates daily constituent, student, and business processes. It integrates with ERP, SIS, and CRM systems to give staff and faculty access to information held in those systems.",
+    "Softdocs document management handles capture, organization, search, review, and editing of documents in a cloud-based repository. Etrieve Flow is the workflow product, built for designing no-code workflows with a drag-and-drop designer. The platform includes a workflow monitor that identifies bottlenecks and reassigns packages stuck at a step.",
+    "Security claims on the platform page cite Microsoft Azure, NIST 800-53, and SOC 2 Type I & II compliance. The platform is described as WCAG 2.1 AA compliant and web and mobile friendly. Buyers named on the pages are schools, colleges, and government agencies across the public sector."
+   ],
+   "quote": {
+    "text": "No more paper. No more lost documents. No more frustration.",
+    "url": "https://softdocs.com/platform/document-management"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://softdocs.com",
+     "quote": "The Softdocs document management and process automation platform powers digital transformation in more than 1,000 schools and government agencies"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://softdocs.com/platform",
+     "quote": "Eliminate the costs, inefficiencies, and risks of paper and manual business activities by digitizing documents and forms, and automating your daily constituent, student, and business processes."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://softdocs.com/platform",
+     "quote": "By integrating with your ERP, SIS or CRM, Softdocs breaks down information silos to provide your staff and faculty with easy, secure access to the information they need when they need it."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://softdocs.com/platform/document-management",
+     "quote": "Softdocs document management empowers your team to capture, organize, search, review, and edit documents within a secure, cloud-based repository."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://softdocs.com/platform/workflow-automation",
+     "quote": "Design digital, no-code workflows to transform, simplify, and enforce key business processes with Etrieve Flow from Softdocs."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://softdocs.com/platform/workflow-automation",
+     "quote": "Workflow Monitor analyzes performance, identifies bottlenecks, moves stuck packages, and provides compliance-ready audit trails."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://softdocs.com/platform",
+     "quote": "Data is protected using Microsoft Azure, with NIST 800-53 and SOC 2 Type I & II compliance."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://softdocs.com/platform",
+     "quote": "The platform is WCAG 2.1 AA compliant, web/mobile-friendly, and built with accessibility in mind."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://softdocs.com",
+     "quote": "1,000 Happy Customers (and Growing) Across the Public Sector"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://softdocs.com",
+     "sha": "a2062347c0042176",
+     "fetched_on": null
+    },
+    {
+     "url": "https://softdocs.com/platform",
+     "sha": "5f934bb9573fbe10",
+     "fetched_on": null
+    },
+    {
+     "url": "https://softdocs.com/platform/document-management",
+     "sha": "48baf2f94981ba68",
+     "fetched_on": null
+    },
+    {
+     "url": "https://softdocs.com/platform/workflow-automation",
+     "sha": "bf8fb1926132a7f1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rollkall",
@@ -23773,7 +24052,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Social Explorer sells a subscription web application for community analysis, built so that data is acquired and processed before the customer arrives. The application couples a data library with an AI-enabled Data Navigator that takes natural-language questions and returns dataset-specific analysis. Output takes the form of maps, charts, tables, and reports, and data can be exported to Excel, CSV, PDF, PNG, SAS, or SPSS formats.",
+    "The mapping product, SE Research, covers location-based community data at every geographic level and is positioned for users without a data science background. A subscription includes a library of crime, demographic, economic, environmental, equity, health, housing, political, and transportation data drawn from public and private sources.",
+    "SE Transform, a data pipeline management product, launches as a managed service and is built on Apache Airflow infrastructure. SE AI is sold as a domain-specific data chat interface, with a conversational front end, an API layer, and an admin panel. The homepage says the customer base includes educational and research institutions, government agencies, non-profits, healthcare systems, and businesses."
+   ],
+   "quote": {
+    "text": "Most of the time spent on community analysis involves acquiring and processing data.",
+    "url": "https://www.socialexplorer.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.socialexplorer.com",
+     "quote": "Get instant access to all the community data you need through one integrated application."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.socialexplorer.com",
+     "quote": "Prompt our AI-enabled Data Navigator with a general question using natural language and get dataset-specific analysis in minutes."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.socialexplorer.com",
+     "quote": "Export data to Excel, CSV, PDF, PNG, SAS, or SPSS formats."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.socialexplorer.com/home/products/demographic-mapping-software",
+     "quote": "Our demographic mapping software is designed to make demographic data accessible to everyone who wants to be data-driven."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.socialexplorer.com/home/products/demographic-mapping-software",
+     "quote": "Every subscription to SE Research comes with access to our vast library of structured crime, demographic, economic, environmental, equity, health, housing, political, and transportation data assembled from dozens of reputable public and private sources."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.socialexplorer.com/home/products/data-pipeline-management-tools",
+     "quote": "SE Transform launches as a managed service combining expert data engineering with platform technology."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.socialexplorer.com/home/products/ai-chat-tools-for-data-analysis",
+     "quote": "Instead of navigating complex menus or writing SQL, they ask questions in plain English."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.socialexplorer.com",
+     "quote": "We help hundreds of educational and research institutions, government agencies, non-profits, healthcare systems, and businesses understand their communities every day."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.socialexplorer.com",
+     "sha": "44f50c5ebd77d558",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.socialexplorer.com/home/products/demographic-mapping-software",
+     "sha": "9faecc04373adff0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.socialexplorer.com/home/products/data-pipeline-management-tools",
+     "sha": "28715e0bfc7f9f6e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.socialexplorer.com/home/products/ai-chat-tools-for-data-analysis",
+     "sha": "70e1b323e45eea7c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "meridian-knowledge-solutions",
@@ -28411,7 +28777,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026; PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Sol sells solar lighting systems for outdoor spaces. The EverGen Series covers streets and roadways, trails, parks, parking lots, and commercial and industrial facilities. The UP Series is an all-in-two range using a NiMH battery and an Energy Management System.",
+    "The iSSL Series is an all-in-one range combining a horizontal solar panel, an LED module, and a NiMH battery in one enclosure. The Alto is a solar-powered bollard for parks and pathways. The EverGen 3 is offered for streets, trails, parks, and commercial sites.",
+    "Buyers described on these pages range from local governments to international corporations. Funding routes listed for projects include government grants, tax credits, and subscription-based pricing."
+   ],
+   "quote": {
+    "text": "clients of all sizes and descriptions, from local governments to international corporations",
+    "url": "https://www.solarlighting.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.solarlighting.com",
+     "quote": "MORE SUSTAINABLE OUTDOOR SPACES WITH SOLAR LIGHTING."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.solarlighting.com",
+     "quote": "The EverGen Series is a range of high power solar lighting solutions designed to illuminate projects across a wide variety of applications, including streets and roadways, trails, parks, parking lots, and commercial and industrial facilities"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.solarlighting.com",
+     "quote": "The UP Series is a range of unique all-in-two solar lights that deliver unrivaled performance in a diverse range of environments, thanks to its high-density NiMH battery and advanced Energy Management System (EMS)"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://solarlighting.com/products/all-in-one-solar-street-light/",
+     "quote": "iSSL systems feature a horizontal solar panel , high-efficacy LED module , and NiMH battery , all contained in a sleek and durable enclosure"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.solarlighting.com",
+     "quote": "The Alto is a sleek, self-contained solar-powered bollard designed to bring safety, sustainability , and style to parks, pathways, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://solarlighting.com/products/high-power-solar-lighting-system/",
+     "quote": "The EverGen 3 provides reliable, affordable, and sustainable lighting for streets, trails, parks, and commercial sites."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.solarlighting.com",
+     "quote": "clients of all sizes and descriptions, from local governments to international corporations"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.solarlighting.com",
+     "quote": "From government grants to tax credits to subscription-based pricing, there\u2019s no shortage of ways to fund your project and start reaping the benefits of solar."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.solarlighting.com",
+     "sha": "f479ff1155efe2c4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://solarlighting.com/products/high-power-solar-lighting-system/",
+     "sha": "78e926d8c13793b0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://solarlighting.com/products/all-in-two-solar-street-light/",
+     "sha": "b5b83514835f07e2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://solarlighting.com/products/all-in-one-solar-street-light/",
+     "sha": "b7cd002cac0d072e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "geocivix",
@@ -38581,7 +39034,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SmartDocs sells an AI-powered spend management platform for public sector procurement that brings sourcing, contracts, procurement, payables and documents into one place. The platform spans Smart Sourcing, Smart Procurement, Smart Payables and Smart Planning, covering vendor onboarding and solicitation through purchasing, invoices and payments.",
+    "Buyers named on the pages are state and local public procurement teams, from CFOs and controllers to procurement officers and AP managers. Sector headings on the home page cover state government, counties, cities, special districts, public utilities and tolling. An about page states that the company serves enterprises and public procurement teams nationwide.",
+    "The company sells software subscriptions with implementation and support services. Deployment is offered as cloud SaaS or on-premise. The platform offers deep SAP integration and connects with other ERPs, storage systems and business tools."
+   ],
+   "quote": {
+    "text": "Serving public buyers across every level of government and regulated industry.",
+    "url": "https://www.smartdocs.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.smartdocs.ai",
+     "quote": "SmartDocs is a govtech company that builds an intelligent, AI-powered spend management platform for public sector procurement, unifying sourcing, contracts, procurement, payables and documents in one place, so teams manage spend end to end with AI-assisted workflows."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.smartdocs.ai",
+     "quote": "SmartDocs spans Smart Sourcing, Smart Procurement, Smart Payables and Smart Planning, covering the full spend management lifecycle from vendor onboarding and solicitation to purchasing, invoices and payments."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.smartdocs.ai",
+     "quote": "State and local public procurement teams \u2014 including agencies, counties, cities, special districts, public utilities and tolling authorities \u2014 from CFOs and controllers to procurement officers and AP managers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.smartdocs.ai",
+     "quote": "As a govtech company, SmartDocs adapts to how every public-sector buyer runs procurement \u2014 from state agencies to special districts."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.smartdocs.ai/about/",
+     "quote": "Serving enterprises and public procurement teams nationwide"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.smartdocs.ai/about/",
+     "quote": "Software subscriptions with implementation & support services"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.smartdocs.ai",
+     "quote": "Both. SmartDocs supports flexible deployment: cloud SaaS for scalability and accessibility, or on-premise for organizations that need more control and customization."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.smartdocs.ai",
+     "quote": "Yes. SmartDocs offers deep SAP integration (ECC and S/4HANA) and connects with other ERPs, storage systems and business tools, keeping your data transparent and accurate across your existing stack."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.smartdocs.ai",
+     "sha": "b3f8f80c541253bd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smartdocs.ai/about/",
+     "sha": "ed28ef9eb48eb2c3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smartdocs.ai/about/leadership/",
+     "sha": "295841c289b10330",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smartdocs.ai/about/process/",
+     "sha": "434da8ba31705bb3",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sysoft-getall",
@@ -63572,7 +64112,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Simsi sells what its site calls the operating platform for place-based prevention partnerships, where law enforcement, city agencies, and community organizations work the same problem from the same plan. The platform keeps the shared priority, place evidence, partner commitments, responsible owners, status, and review measures together, while each organization keeps its own internal systems and authority. The pages state that partners work from an approved problem brief and action plan, that source-level police data stays in agency systems, and that Simsi is not dispatch, records, surveillance, or predictive policing.",
+    "Three parts make up the model: RTMDx provides the place evidence, ActionHub keeps the plan and follow-through organized, and DICE helps partners establish the meetings and routines. Partners move through four steps, from an agreed priority to results, covering scanning, analysis, response, and assessment. The about page calls Risk Terrain Modeling the analytic engine. That modeling focuses on environmental conditions at places, not demographic profiles.",
+    "ActionHub is offered to law enforcement, city departments, non-profits, and community organizations as one place to manage the partnership's work. Free browser-based tools, including a Crime Pattern Brief Builder and Public Safety Quadrants, are offered for breaking down problems and aligning partners."
+   ],
+   "quote": {
+    "text": "Keep every prevention partner working from the same plan.",
+    "url": "https://simsi.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://simsi.com",
+     "quote": "The operating platform for place-based prevention partnerships."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://simsi.com",
+     "quote": "Simsi keeps the shared priority, place evidence, partner commitments, responsible owners, status, and review measures together. Each organization keeps its own internal systems and authority."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://simsi.com",
+     "quote": "Partners work from an approved problem brief and action plan. Source-level police data stays in agency systems. Simsi is not dispatch, records, surveillance, or predictive policing."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://simsi.com",
+     "quote": "RTMDx provides the place evidence. ActionHub keeps the plan and follow-through organized. DICE\u2122 helps partners establish the meetings and routines."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://simsi.com",
+     "quote": "Four steps from an agreed priority to results."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://simsi.com/about",
+     "quote": "Risk Terrain Modeling (RTM) is the analytic engine."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://simsi.com/about",
+     "quote": "RTM focuses on environmental conditions at places, not demographic profiles."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://simsi.com/about",
+     "quote": "ActionHub gives law enforcement, city departments, non-profits, and community organizations one place to manage the partnership's work."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://simsi.com",
+     "quote": "Free, browser-based tools for breaking down problems and aligning partners."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://simsi.com",
+     "sha": "3cebb04f81428bc4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://simsi.com/about",
+     "sha": "bdd28438810dbdb6",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "smartforce",
@@ -63668,7 +64291,96 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026; Michigan Sheriffs Association 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "StackBench develops custom mobile applications for law enforcement and government agencies. Clients are described as running from police departments to municipal bodies across the nation. One product line is named UCP For Police Departments.",
+    "The product broadcasts real-time information to citizens, covering road closures, active shooter situations, wrecks and events. Automated translation supports US English, Spanish and Vietnamese. Internal communication for police departments replaces pagers, memos, and email. Fire departments are addressed with internal communication that can be accessed from anywhere. Citizens can use customizable informational tabs covering Crime Trends, Most Wanted, and Zone Check Requests.",
+    "StackBench is a subsidiary of Confianz Global, Inc., and Anoop Menon is President and CEO. Ken Schul, a retired Captain from the Charlotte-Mecklenburg Police Department, serves as the Director at StackBench."
+   ],
+   "quote": {
+    "text": "Founded by a team of technology enthusiasts who deeply respect public service",
+    "url": "https://stackbench.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://stackbench.com/about-us",
+     "quote": "develop custom mobile applications that empower these vital institutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://stackbench.com/about-us",
+     "quote": "meet the unique needs of our clients, from police departments to municipal bodies across the nation."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://stackbench.com",
+     "quote": "UCP For Police Departments"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://stackbench.com",
+     "quote": "Broadcast real-time information to citizens - Road Closure, Active Shooter Situations, Wrecks, Events, etc."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://stackbench.com",
+     "quote": "Multiple language support with automated translation. US English, Spanish and Vietnamese support."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://stackbench.com",
+     "quote": "The days of pagers, memos, and email for internal communications in police departments are over."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://stackbench.com",
+     "quote": "Fire departments today need fast, secure internal communication that can be accessed from anywhere."
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://stackbench.com",
+     "quote": "Customizable informational tabs for citizens - Know your Chief/Department, Praise/Complaint, Crime Trends, Most Wanted, Employment/Career, Crime Prevention, Resources, Zone Check Requests, etc."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://stackbench.com/about-us",
+     "quote": "Anoop Menon, as the President and CEO of StackBench, a subsidiary of Confianz Global, Inc."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://stackbench.com/about-us",
+     "quote": "Ken Schul is a retired Captain from the Charlotte-Mecklenburg Police Department who now serves as the Director at StackBench"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://stackbench.com",
+     "sha": "d71a4e54637b9224",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stackbench.com/about-us",
+     "sha": "955c3735121f714b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "status-solutions-network",
@@ -69434,7 +70146,88 @@
     "sector": "Airports & Aviation",
     "category": "Security & Screening"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "SITA sells airport passenger processing software that moves a traveler from check-in through to boarding on common-use systems. The range covers Smart Path for identity management, Smart Path Kiosks, Smart Path Bag Drop and Smart Path Gates used for self-boarding, lounge access, security and border control. Flex Essentials is a common-use option for small and regional airports, and Flex as a Service is an API-based module for airlines.",
+    "A second group of products handles operations at airports, including flight information display, airport management and passenger information. Baggage products include Bag Journey for locating a bag, Bag Manager for reconciliation and WorldTracer for tracing mishandled bags.",
+    "These pages name airlines, airports and ground handlers as the users of the baggage and passenger products, and list governments among the industries served. Customer stories on the same page name Philadelphia International Airport, Geneva Airport and Shymkent International Airport."
+   ],
+   "quote": {
+    "text": "SITA Maestro provides airports, airlines and ground handlers with a more automated and cost-effective way for their agents to process an airline\u2019s passengers",
+    "url": "https://www.sita.aero/solutions/sita-at-airports/sita-passenger-processing/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-passenger-processing/",
+     "quote": "Providing comprehensive self-service solutions which automate and facilitate the passenger journey from secure check-in to boarding. Built on proven common-use systems, delivering a low-touch, seamless, secure and cost-effective customer experience."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-passenger-processing/",
+     "quote": "A state-of-the-art self-service passenger processing solution that can be used for self-boarding, lounge access, security and border control"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-passenger-processing/",
+     "quote": "SITA Flex Essentials is a cost-effective, common-use solution designed for small and regional airports requiring up to 50 workstations."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-operations-at-airports/",
+     "quote": "Efficiently manage flight operations, optimize fixed and mobile resources as well as facilitate collaborative decision making"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-baggage-management/",
+     "quote": "Real-time baggage management and reconciliation system to help airlines, airports and ground handlers reconcile, track, and manage baggage"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sita.aero",
+     "quote": "Explore industry-specific solutions designed to meet the unique challenges of airlines, airports, governments, and more."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sita.aero",
+     "quote": "Philadelphia International Airport partners with SITA for US biometric exit"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sita.aero",
+     "sha": "b3f2f28596a92eb1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-passenger-processing/",
+     "sha": "f63fced009524355",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-operations-at-airports/",
+     "sha": "c2639e5b608258ac",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sita.aero/solutions/sita-at-airports/sita-baggage-management/",
+     "sha": "3533dcf067ae3e5a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tadera",
@@ -69920,7 +70713,87 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "Broadband Nation 2026"
+  "source": "Broadband Nation 2026",
+  "profile": {
+   "paragraphs": [
+    "Sitetracker sells one platform for planning, building, operating, and maintaining critical infrastructure. The company describes itself as a global software company that helps organizations do that work faster and more profitably. Functions listed across the lifecycle include site management, project management, financial management, and field work management.",
+    "Sitetracker describes the product as asset lifecycle management for asset owners and operators, spanning planning and development, construction, operations and maintenance, and asset management. Solutions are grouped by industry, among them digital infrastructure, data centers, construction and engineering, and real estate. Energy pages cover clean energy deployment across EV, solar, energy efficiency, DERs, and utilities. Named customers on the about page are British Telecom, KPN, Ericsson, and Chargepoint, which the company says manage millions of sites and assets."
+   ],
+   "quote": {
+    "text": "Managing critical infrastructure projects demands precision, efficiency, and a comprehensive approach.",
+    "url": "https://www.sitetracker.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sitetracker.com",
+     "quote": "One Complete Platform to Plan, Build, Operate and Maintain Critical Infrastructure"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sitetracker.com/company/about-us/",
+     "quote": "A global software company committed to helping organizations plan, build, operate, and maintain the next generation of critical infrastructure faster and more profitably."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sitetracker.com",
+     "quote": "Capabilities across the lifecycle"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sitetracker.com",
+     "quote": "empowering asset owners and operators to streamline every phase of their assets"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sitetracker.com",
+     "quote": "Construction and engineering firms that support industries like telecom and energy need scalable deployment solutions."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sitetracker.com",
+     "quote": "Accelerate clean energy and grow your business with a deployment operations cloud platform designed to manage the increased volume of distributed energy projects across EV, solar, energy efficiency, DERs, and utilities."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sitetracker.com/company/about-us/",
+     "quote": "manage millions of sites and assets representing over $150 billion in portfolio holdings"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sitetracker.com",
+     "sha": "d2146abf9b786ce0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sitetracker.com/company/about-us/",
+     "sha": "ced195a7825d54be",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sitetracker.com/company/investors/",
+     "sha": "3fcd4338a712a697",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sitetracker.com/company/our-partners/",
+     "sha": "f4108aaf16d0c8b0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "airworks",
@@ -75030,7 +75903,94 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities, municipalities, and airports on the government/public side; also ski resorts, stadiums, and entertainment venues commercially",
   "acquisition_note": "Acquired by ASSA ABLOY Group (2024); previously became part of the Kudelski Group in 2001",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "SKIDATA sells access systems for people and vehicles, covering entry to car parks, mountain destinations and stadiums. Alongside the equipment the company markets SKIDATA Connect, a platform that links visitors, existing infrastructure and integrated partner solutions and apps.",
+    "For parking and mobility the same platform is described as handling access, EV-Charging, reporting, analytics and payments, digital and on-site. Access control manages vehicle entry and exit in car parks, with license plate recognition offered alongside ticket-based parking. A separate monitoring and control product runs car parks from one central point instead of local on-site management at each site.",
+    "The parking pages name the settings the systems are sold into, including airports, cities, hotels, hospitals, educational buildings, shopping centers, and office buildings. Cities and municipalities are listed as a segment, with car parks turned into mobility hubs for last-mile parking or park-and-ride. Parking operators are listed separately, monitoring and controlling all their car parks from one point."
+   ],
+   "quote": {
+    "text": "Smart access. Genuine welcome.",
+    "url": "https://www.skidata.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.skidata.com",
+     "quote": "smooth, safe and convenient entry into car parks, mountain destinations or stadiums"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.skidata.com",
+     "quote": "This solution makes interactions between your visitors, your current infrastructure, and a rich array of integrated partner solutions and apps a breeze."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.skidata.com/solutions/mobility-parking",
+     "quote": "It handles everything, from access and EV-Charging to reporting, analytics, and payments, both digital and on-site."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.skidata.com/solutions/mobility-parking/access-control-lpr",
+     "quote": "SKIDATA access control helps manage vehicle entry and exit in car parks using reliable hardware and future-oriented digital options."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.skidata.com/solutions/mobility-parking/monitoring-control",
+     "quote": "Teams can monitor and run facilities remotely rather than relying on local on-site management at each individual car park."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.skidata.com/solutions/mobility-parking",
+     "quote": "Our single-source parking and mobility solutions cater to a wide range of needs, including airports, cities, hotels, hospitals, educational buildings, shopping centers, and office buildings."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.skidata.com/solutions/mobility-parking",
+     "quote": "Cities & Municipality : Transform car parks into mobility hubs for last-mile parking or park-and-ride."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.skidata.com/solutions/mobility-parking",
+     "quote": "Parking Operator : Centrally monitor and control all car parks for enhanced flexibility and convenience."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.skidata.com",
+     "sha": "d3ec62d9cfeb65f2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skidata.com/solutions/mobility-parking",
+     "sha": "4e2d95b6e9ded6ce",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skidata.com/solutions/mobility-parking/access-control-lpr",
+     "sha": "2a781b8504cfdebf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skidata.com/solutions/mobility-parking/monitoring-control",
+     "sha": "cad347dc80301e88",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "amano-mcgann",
@@ -76079,7 +77039,97 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SportsPlus sells software for running sports organizations, with registration, payments, scheduling, teams and a shop handled on one platform. The product opens and controls online registration and collects payments online. Scheduling generates league games and tournament brackets and manages seasons, games, practices and events.",
+    "A website builder publishes a sports website and provides a mobile app for everyone in the organization. Facility scheduling is streamlined in the same platform, and facilities can be opened for booking online. Teams get a team app and players and families get a portal. Tryout registration, player evaluation, live scoring and game stats sit under the player performance features. Fundraising runs through an online shop that collects donations and sponsorships.",
+    "The home page lists sport governing bodies among the organizations it serves. One customer quote on the home page comes from a park and recreation asst director. Customer quotes on the same page also come from an athletics organization and a softball association."
+   ],
+   "quote": {
+    "text": "Everything you need to run your sports organization effectively.",
+    "url": "https://www.sportsplus.app"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sportsplus.app",
+     "quote": "Effortlessly manage registrations, payments, shop, scheduling, teams, and more with the most advanced and flexible platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sportsplus.app",
+     "quote": "Registration Open and control online registration Collect payments online"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sportsplus.app",
+     "quote": "Scheduling Generate & distribute league games & tourney brackets Manage seasons, games, practices and events"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sportsplus.app",
+     "quote": "Website Builder Publish a modern sports website Provide mobile app for everyone"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sportsplus.app",
+     "quote": "Facilities Streamline sports facility scheduling Open facilities for booking online"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sportsplus.app",
+     "quote": "Teams & Players Provide a fully functional team app for all teams Provide a portal for players and families"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sportsplus.app",
+     "quote": "Player Performance Tryout registration & player evaluation with mobile app Live score games & broadcast scores. Track game stats"
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://www.sportsplus.app",
+     "quote": "Fundraising Fundraise with healthy competition among team members Open online shop. Collect donations and sponsorships"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sportsplus.app",
+     "quote": "Sport Governing Bodies"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sportsplus.app",
+     "quote": "Jeannine K. Park and Recreation Asst Director"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sportsplus.app",
+     "quote": "Mat-Su Softball Association"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sportsplus.app",
+     "sha": "01bbac1f55bbbb03",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "spond",
@@ -80969,7 +82019,88 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; GFOA 2026"
+  "source": "competitor sweep; GFOA 2026",
+  "profile": {
+   "paragraphs": [
+    "Springbrook sells Cirrus, a multi-tenant SaaS finance platform that users reach from a web browser. The platform is fully integrated with modules including Finance, Payroll, HR, Budgeting, Utility Billing, Tax, Cashless Payments, and Tableau.",
+    "The finance product is cloud-based fund accounting software for government. An AI tool links invoices to the appropriate vendor records and removes manual searches and data entry.",
+    "Utility billing covers water, sewer, electric, refuse and allocation water billing, connected in real time to an online payment system. The allocation water billing product was designed with the input of California water authorities. These pages describe the buyers as local governments and small to mid sized agencies across the country."
+   ],
+   "quote": {
+    "text": "Enterprise class Finance Platform software for local government agencies.",
+    "url": "https://springbrooksoftware.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://springbrooksoftware.com",
+     "quote": "Springbrook\u2019s Cirrus is a modern multi-tenant SaaS financial Finance Platform that allows users to access always up to date cloud-based solutions from any web browser, anywhere."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://springbrooksoftware.com",
+     "quote": "Cirrus is fully integrated with all the critical modules an agency needs, including Finance, Payroll, HR, Budgeting, Utility Billing, Tax, Cashless Payments, and Tableau"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://springbrooksoftware.com/solutions/finance/",
+     "quote": "Springbrook brings cloud-based fund accounting software for government"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://springbrooksoftware.com/solutions/finance/",
+     "quote": "The AI-powered tool also links invoices to the appropriate vendor records, eliminating the need for manual searches and data entry."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://springbrooksoftware.com/solutions/utility-billing/",
+     "quote": "Springbrook offers the only government utility billing software connected in real time to an online payment system, with comprehensive water, sewer, electric, refuse and allocation water billing capabilities."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://springbrooksoftware.com/solutions/utility-billing/allocation-billing/",
+     "quote": "Designed with the input of California water authorities"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://springbrooksoftware.com",
+     "quote": "Springbrook serves over 2800 small to mid sized agencies across the country."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://springbrooksoftware.com",
+     "sha": "6865dfcdd41ae2c0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://springbrooksoftware.com/solutions/finance/",
+     "sha": "8e20767b6c8e709f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://springbrooksoftware.com/solutions/utility-billing/",
+     "sha": "fcd2ff787c937ec0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://springbrooksoftware.com/solutions/utility-billing/allocation-billing/",
+     "sha": "c11bc3aa6089e99a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "edmunds-govtech",
@@ -81387,7 +82518,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SkillSmart sells compliance software for construction and workforce programs under the name InSight IQ. The homepage describes InSight as a product created to capture, store and report project, workforce, wage and business compliance data. A second product, Seeker, is presented as a community engagement platform for building a skilled workforce pipeline.",
+    "On prevailing wage, the pages say SkillSmart automates Davis-Bacon, state prevailing wage, and multi-tier subcontractor compliance in one configurable platform. The certified payroll pages describe generating, validating and submitting WH-347 forms across every subcontractor, every week. The apprenticeship pages describe tracking apprentice-to-journeyman ratios, utilization hours, and IRA prevailing wage requirements across every project, every trade, and every subcontractor tier.",
+    "The pages name contractors, developers, and public agencies as the buyers that rely on the prevailing wage product. The certified payroll page addresses questions that general contractors, trade contractors, and public agencies ask about that software."
+   ],
+   "quote": {
+    "text": "InSight was created to capture, store and report project, workforce, wage and business compliance data.",
+    "url": "https://skillsmart.us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://skillsmart.us",
+     "quote": "InSight IQ brings together Prevailing Wage, Apprenticeship, and Contract Compliance in one streamlined system"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://skillsmart.us",
+     "quote": "InSight was created to capture, store and report project, workforce, wage and business compliance data."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://skillsmart.us",
+     "quote": "Seeker is a community engagement platform to build a skilled workforce pipeline for your business."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+     "quote": "SkillSmart automates Davis-Bacon, state prevailing wage, and multi-tier subcontractor compliance in one configurable platform."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.skillsmart.us/solutions/certified-payroll-oversight/",
+     "quote": "Generate, validate, and submit WH-347 (old and new) certified payroll forms across every subcontractor, every week"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.skillsmart.us/solutions/apprenticeship-workforce-compliance/",
+     "quote": "SkillSmart tracks apprentice-to-journeyman ratios, utilization hours, and IRA prevailing wage requirements across every project, every trade, and every subcontractor tier"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+     "quote": "Trusted by leading contractors, developers, and public agencies"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.skillsmart.us/solutions/certified-payroll-oversight/",
+     "quote": "Answers to the questions GCs, trade contractors, and public agencies ask most about certified payroll software"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://skillsmart.us",
+     "sha": "3a6ea04c74de8c96",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+     "sha": "b5c99264738297c3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skillsmart.us/solutions/certified-payroll-oversight/",
+     "sha": "8b7146470c0270fe",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.skillsmart.us/solutions/apprenticeship-workforce-compliance/",
+     "sha": "097d1aa7513a4443",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "careers-in-government",
@@ -82562,7 +83780,102 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Simply Voting Inc. sells hosted online elections, described on its site as a full-service, web-based online voting tool. Established in 2003, the company presents itself as a comprehensive provider of secure, hosted online elections. The homepage describes Simply Voting Inc. as an eDemocracy provider based in Canada (Montreal).",
+    "Voters log in at a branded voting website using an authentication method chosen during setup. Each vote is encrypted and a receipt is issued to the voter, who cannot vote in the same election again. Results are tabulated at the end of the voting period and can be reviewed in the Election Manager before release. Buyers can configure an election themselves in the Election Manager, or hand the voting event to a team that runs it for them.",
+    "Telephone voting and a hybrid internet and paper ballot option are offered alongside the online system. The about page counts over 5000 organizations in 74 countries, from municipalities and universities to unions. That page also states that Simply Voting is SOC 2 Type 1 compliant. Voting website interfaces are audited against Section 508 and WCAG 2.1 accessibility requirements by AccessiBe."
+   ],
+   "quote": {
+    "text": "Advance democracy by powering elections people can trust.",
+    "url": "https://www.simplyvoting.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.simplyvoting.com",
+     "quote": "Simply Voting is a full-service, web-based online voting tool"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.simplyvoting.com/about-us/",
+     "quote": "Established in 2003, Simply Voting Inc. takes pride in its credentials as a comprehensive provider of secure, hosted online elections."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.simplyvoting.com",
+     "quote": "Simply Voting Inc. is a trusted eDemocracy provider based in Canada (Montreal)."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.simplyvoting.com",
+     "quote": "At your branded voting website, voters will log into the online voting system according to the authentication method chosen during set-up."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.simplyvoting.com",
+     "quote": "Each vote is encrypted to ensure anonymity. A receipt is then issued to the voter, who cannot vote in the same election again."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.simplyvoting.com",
+     "quote": "Upon conclusion of the voting period, results are instantaneously tabulated. These can be swiftly reviewed in the Election Manager, alongside an array of reports on voting activities, prior to their release."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.simplyvoting.com",
+     "quote": "Your voting event will be handled comprehensively and impartially by a dedicated team that specializes in online voting solutions."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.simplyvoting.com",
+     "quote": "An alternative to web-based voting, Simply Voting offers an automated telephone voting service that lets voters dial in and cast their ballot using their phone keypad."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.simplyvoting.com/about-us/",
+     "quote": "our satisfaction footprint has since grown to include over 5000 organizations in 74 countries. From municipalities and universities to unions, these diverse bodies entrust their electoral processes to our robust platform."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.simplyvoting.com/about-us/",
+     "quote": "Simply Voting is SOC 2 Type 1 compliant. The SOC 2 is a widely recognized auditing standard."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.simplyvoting.com/about-us/",
+     "quote": "regularly audited against Section 508 and WCAG 2.1 accessibility requirements by AccessiBe"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.simplyvoting.com",
+     "sha": "7febd00b402e73ca",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.simplyvoting.com/about-us/",
+     "sha": "ebdbb6e2331ecf01",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ballottrax",
@@ -100296,7 +101609,101 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Singlewire Software develops safety software that helps detect threats, notify everyone, and manage incidents. The InformaCast platform sends intrusive audio and visual alerts that can go broadly or to selected people. Paging carries live and recorded audio to IP phones, speakers and analog paging systems.",
+    "Text, email, and push notifications can be sent from a mobile device, which also manages incidents. CallAware was added for 911 alerting. Staff can know when 911 is called, listen to calls in progress, and extend alerts to the PSAP.",
+    "Visitor Aware was acquired to add visitor and student management capabilities. It screens visitors and volunteers in seconds, checks them against national databases, and preregisters guests. A wearable alert badge powered by InformaCast serves as a panic button for schools. Published case studies include Sioux Falls School District using Visitor Aware at school entrances."
+   ],
+   "quote": {
+    "text": "Instant alerts. Rapid response. Safer people.",
+    "url": "https://singlewire.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://singlewire.com/our-story",
+     "quote": "Singlewire Software is dedicated to developing reliable solutions that help detect threats, notify everyone, and manage incidents."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://singlewire.com",
+     "quote": "Intrusive audio and visual alerts can be sent broadly or strategically to reach the right people."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://singlewire.com",
+     "quote": "Utilize intrusive audio to send live and recorded audio pages to IP phones, speakers and analog paging systems."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://singlewire.com",
+     "quote": "Send mass text, email, and push notifications and manage incidents directly from your mobile device."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://singlewire.com/our-story",
+     "quote": "Added CallAware for 911 alerting"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://singlewire.com",
+     "quote": "Know when 911 is called, record and listen to in-progress calls, extend alerts to the PSAP, and coordinate with first responders."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://singlewire.com/our-story",
+     "quote": "Acquired Visitor Aware to add visitor and student management capabilities"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://singlewire.com",
+     "quote": "Screen visitors and volunteers in seconds, check against national databases, preregister guests, and use the hardware you already own."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://singlewire.com",
+     "quote": "The InformaCast Wearable Alert Badge is the only wireless panic button directly powered by InformaCast, helping schools create safe environments with:"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://singlewire.com/case-study",
+     "quote": "Sioux Falls School District Enhances Entrance Safety with Visitor Aware"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://singlewire.com",
+     "sha": "646d97933f41da5e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://singlewire.com/case-study",
+     "sha": "ae59a7ae7e804a31",
+     "fetched_on": null
+    },
+    {
+     "url": "https://singlewire.com/our-story",
+     "sha": "c210239d8ec71bf9",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "alertus-technologies",
@@ -100488,7 +101895,106 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Soter Technologies sells sensor technology and software. The FS286 unit is a vape smoke detection, cigarette smoke detection, and anti-bullying product. The FS300 is the 8th generation of that product and adds a cloud-based portal. A partnership with Airthings for Business supplies Indoor Air Quality monitors.",
+    "The detectors go into schools and other public spaces, including restrooms and locker rooms where monitoring is harder. They flag vaping, bullying, and device tampering in areas where cameras are prohibited. Notifications carry the time and location of the event and reach staff by text or email. Device sensitivity and the subscriber list are changed through the FlySense Dashboard.",
+    "The buyers named on these pages are school districts, in partnerships counted across all 50 states and 30 countries. The alerts are routed to school administrators, security personnel, or other designated authorities."
+   ],
+   "quote": {
+    "text": "Gain control of areas where you cannot place a camera or microphone.",
+    "url": "https://www.sotertechnologies.com/solutions/flysense/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sotertechnologies.com/solutions/flysense/",
+     "quote": "Soter Technologies, Inc. is a provider of sensor technology and software solutions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://sotertechnologies.com",
+     "quote": "The FlySense\u00ae FS286 is a vape smoke detection, cigarette smoke detection, and anti-bullying solution."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://sotertechnologies.com",
+     "quote": "The FlySense\u00ae FS300 is our 8th generation vape smoke detection, cigarette smoke detection, and anti-bullying solution, with a newly enhanced cloud-based portal."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://sotertechnologies.com",
+     "quote": "Soter Technologies has partnered with Airthings for Business to provide Indoor Air Quality monitors."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sotertechnologies.com/solutions/flysense/",
+     "quote": "FlySense\u00ae vape detectors are designed to address the issue of vaping in schools and other public spaces, especially in concealed areas like restrooms and locker rooms where monitoring may be challenging."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sotertechnologies.com/solutions/flysense/",
+     "quote": "FlySense\u00ae identifies and then alerts you of vaping, bullying, and device tampering activities. Enabling you to monitor vaping and bullying 24/7 in areas where cameras are prohibited."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://sotertechnologies.com",
+     "quote": "Receive instant vape alert notifications that provide the time and location when vaping or potential bullying occurs via text and or email."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://sotertechnologies.com",
+     "quote": "Change your vape detector settings such as device sensitivity and also add subscribers through the FlySense\u00ae Dashboard."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://sotertechnologies.com",
+     "quote": "We take great pride in the lasting partnerships with school districts across all 50 states and 30 countries."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sotertechnologies.com/solutions/flysense/",
+     "quote": "This allows for a swift response from school administrators, security personnel, or other designated authorities."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://sotertechnologies.com",
+     "sha": "abcf0ddafefdadd9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sotertechnologies.com/solutions/",
+     "sha": "1b6b6aa6513a82b4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sotertechnologies.com/solutions/flysense/",
+     "sha": "02ea73ddc36efbdb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sotertechnologies.com/solutions/flysense/flysense-series/",
+     "sha": "ffd49ed7cea7bf03",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "zeptive",
@@ -103651,7 +105157,96 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Southern Folger Detention Equipment Company designs, engineers and manufactures high-security locks, slider device locking systems and detention hardware. That company is dated to 1897 on the homepage, which calls it a designer and manufacturer of certified security and detention locking systems. The homepage places the company in San Antonio, Texas, within the Coastal Detention Holdings, LLC consortium, alongside American Steel Products and Trussbilt.",
+    "Three brands stand behind the name: Southern Steel, Folger Adam, and RR Brink Locking Systems. Southern Steel is dated to 1897 and described as the pioneer of detention equipment manufacturing. In 2023 the company acquired RR Brink Locking Systems.",
+    "Products are built to ASTM Certification standards, according to the about page. The same page places that equipment in correctional and detention facilities across the United States and around the world. Project management teams are described as working with architects, engineers, contractors, and facility managers on retrofits and larger facility projects. Southern Folger equipment is described as in use at state, federal, and private correctional institutions worldwide."
+   ],
+   "quote": {
+    "text": "At\u00a0 Southern Folger , we specialize in the design, engineering, and manufacturing of\u00a0 high-security locks, slider device\u00a0locking systems, and detention hardware.",
+    "url": "https://www.southernfolger.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "we specialize in the design, engineering, and manufacturing of\u00a0 high-security locks, slider device\u00a0locking systems, and detention hardware."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.southernfolger.com",
+     "quote": "Southern Folger Detention Equipment Company, founded in 1897, is the foremost designer and manufacturer of certified security/detention locking systems in the world."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.southernfolger.com",
+     "quote": "Southern\u00a0Folger Detention Equipment Company - San Antonio, Texas,\u00a0 American Steel Products - Swainsboro, Georgia , and\u00a0 Trussbilt - Huron, South Dakota"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "legacy is\u00a0built on three trusted brands that have each left an indelible mark on the industry"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "Southern Steel\u00ae \u00a0 (est. 1897) \u00a0\u2013 The pioneer of detention equipment manufacturing, setting the foundation for reliability and innovation more than 125 years ago."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "In 2023, Southern Folger expanded its capabilities with the acquisition of RR Brink Locking Systems"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "Every product is built to ASTM\u00a0Certification standards, to\u00a0withstand the most\u00a0rigorous and\u00a0demanding environments"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "has set the standard for\u00a0excellence in detention equipment for correctional and detention facilities across the United States\u00a0and around the world."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "Our\u00a0project management\u00a0teams work\u00a0hand-in-hand\u00a0with\u00a0 architects, engineers, contractors, and facility managers"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.southernfolger.com/about-us",
+     "quote": "Today,\u00a0 Southern Folger \u00a0equipment is trusted by\u00a0 state, federal, and private \u00a0 correctional institutions worldwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.southernfolger.com",
+     "sha": "acb6bf3c3ce19269",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.southernfolger.com/about-us",
+     "sha": "3b4e97650c5a2be7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "norix-group",
@@ -103915,7 +105510,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Station Boss sells fire department software, a NERIS-ready fire RMS for incident reporting, dispatch, scheduling, personnel, training, and 20+ connected modules. The platform brings NERIS reporting, RMS records, dispatch notifications, scheduling, training, preplans, inspections, equipment, documents, and administration into one system. Pricing is published, starting at $150/mo, and departments can evaluate the full platform without a long-term contract.",
+    "Their pages name fire departments as the buyer, and the software is built for career, volunteer, and combination departments. A case study on Mowbray Fire Department describes a volunteer department that needed incident reporting, training, equipment, and dispatch tools in one place. A second case study covers Greenfield Township Fire Department, where reporting, records, personnel, and operational data lived in one connected system.",
+    "A third case study covers Cedar Falls Fire Protection District, where historical data moved into the new platform in about three weeks. The same page states that Station Boss handled the migration process with the department instead of leaving it as an internal IT project."
+   ],
+   "quote": {
+    "text": "Fire department software should do more than store incident reports.",
+    "url": "https://stationboss.net"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://stationboss.net",
+     "quote": "A NERIS-ready fire RMS for incident reporting, dispatch, scheduling, personnel, training, and 20+ connected modules, one platform, one price."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://stationboss.net",
+     "quote": "Station Boss gives departments a single place for NERIS reporting, RMS records, dispatch notifications, scheduling, training, preplans, inspections, equipment, documents, and administration."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://stationboss.net",
+     "quote": "Every core module is included, pricing starts at $150/mo, and departments can evaluate the full platform without a long-term contract."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://stationboss.net",
+     "quote": "Built for career, volunteer, and combination departments"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://stationboss.net/case-studies/mowbray-fire-department/",
+     "quote": "The department needed incident reporting, training, equipment, and dispatch tools in one place."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://stationboss.net/case-studies/greenfield-township-fire-department/",
+     "quote": "Reporting, records, personnel, and operational data lived in one connected system."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://stationboss.net/case-studies/cedar-falls-fire-protection-district/",
+     "quote": "Historical data moved into the new platform in about three weeks."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://stationboss.net/case-studies/cedar-falls-fire-protection-district/",
+     "quote": "Station Boss handled the migration process with the department instead of leaving it as an internal IT project."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://stationboss.net",
+     "sha": "facf76d19355f37c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stationboss.net/case-studies/mowbray-fire-department/",
+     "sha": "223d671a9c5d59f5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stationboss.net/case-studies/greenfield-township-fire-department/",
+     "sha": "82b1d9967e7ed46a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stationboss.net/case-studies/cedar-falls-fire-protection-district/",
+     "sha": "d9c92ab8d284c119",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "responserack",
@@ -109059,7 +110741,106 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SmartCover sells remote monitoring and controls for sewer, lift stations and stormwater infrastructure. The company describes the offering as turning real-time remote infrastructure data into insights for utility customers who want to minimize OpEx and reduce CapEx. Stated uses include overflow prevention, cleaning schedules, I&I identification, and chemical optimization.",
+    "The pages present satellite communication as what keeps the system visible. Alarms and notifications are described as giving advance notice so staff can prepare and respond. Installation is described as needing no confined space entry, with the work done in shop. A mobile app is offered, with system insights available wherever the user is.",
+    "A published case study covers the City of Kelowna in British Columbia. That city is described as using the technology for overflow prevention, optimization of high frequency cleaning, and ongoing I&I studies. Other departments in the city are described as using it for H2S monitoring, leachate at the solid waste facility, and stream level monitoring."
+   ],
+   "quote": {
+    "text": "Uninterrupted visibility of the system reduces risks, avoids damages and fees, and encourages efficiencies.",
+    "url": "https://www.smartcoversystems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "Our remote monitoring and controls for sewer, lift stations and stormwater infrastructure enable utilities to eliminate overflows"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "SmartCover\u00ae transforms real-time remote infrastructure data into insights helping utility customers minimize OpEx, reduce CapEx and improve environmental performance."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "Information drives overflow prevention, cleaning schedules, I&I identification, and chemical optimization."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "Satellite Communication Delivers Constant System Visibility"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "Alarms and notifications provide advanced notice to prepare and respond."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "No confined space entry and in-shop installation limit field resources and safety hazards."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.smartcoversystems.com",
+     "quote": "Gain system insights wherever you are, whenever you need it."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://smartcoversystems.com/case-studies/smartcover-innovations-city-of-kelowna/",
+     "quote": "The City of Kelowna is leveraging many of SmartCover\u2019s unique features, including the off grid aspect of satellite communications"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://smartcoversystems.com/case-studies/smartcover-innovations-city-of-kelowna/",
+     "quote": "overflow prevention, optimization of high frequency cleaning, and ongoing I&I studies"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://smartcoversystems.com/case-studies/smartcover-innovations-city-of-kelowna/",
+     "quote": "In addition, other departments in the city were able to take advantage of SmartCover technology for H2S monitoring, leachate at the solid waste facility, and stream level monitoring."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.smartcoversystems.com",
+     "sha": "2857cac766d0cb66",
+     "fetched_on": null
+    },
+    {
+     "url": "https://smartcoversystems.com/case-study/",
+     "sha": "32b2828e5d2b8704",
+     "fetched_on": null
+    },
+    {
+     "url": "https://smartcoversystems.com/case-studies/smartcover-innovations-city-of-kelowna/",
+     "sha": "c553a10cd2ef85f4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://smartcoversystems.com/case-studies/smartclean-reduces-cost-padre-dam-municipal-water-district/",
+     "sha": "5fb0bad4a9737711",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ads-environmental-services",
@@ -118509,7 +120290,96 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Soft-Pak sells a suite of operational software built for waste hauling companies. The software keeps customer service, billing, routing and operational information in one system, and it runs either on a hauler's own server or on the cloud. Mobile-Pak is the in-cab computing product for hauler fleets. Map-Pak is the product named for waste hauler routing.",
+    "Buyers named on the site range from a small, privately owned garbage company to a large corporate waste company or a roll-off hauler. Municipal operations appear in the same list, next to an industry-top hauler and a mid-size hauler with a single facility. A testimonial on the homepage carries the name Gina Moore, City of Glenndale, CA.",
+    "The about page dates i-Pak to 2001 and the move of the application to the cloud to 2005. Terex Corporation acquired Environmental Solutions Group. Connected Collections is presented as work from Environmental Solutions Group companies."
+   ],
+   "quote": {
+    "text": "THE software solution created specifically for waste haulers.",
+    "url": "https://www.soft-pak.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.soft-pak.com",
+     "quote": "The Soft-Pak \u00ae suite of products is a complete operational software solution that delivers the power and flexibility to succeed"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.soft-pak.com",
+     "quote": "Operating on your own server or on the cloud, you choose what is best for your operation."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.soft-pak.com",
+     "quote": "Meet Mobile-Pak In-Cab Computing For Waste Haulers"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.soft-pak.com",
+     "quote": "Waste Hauler Routing Solutions"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.soft-pak.com",
+     "quote": "Whether you are a small, privately-owned garbage company, large corporate waste company, or roll-off hauler, Soft-Pak has solutions"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.soft-pak.com",
+     "quote": "Whether you are an industry-top 20, a municipal operation, or a mid-size hauler with a single facility"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.soft-pak.com",
+     "quote": "Gina Moore City of Glenndale, CA"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://soft-pak.com/about-us/",
+     "quote": "releasing i-Pak in 2001 and migrating our application to the cloud in 2005"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://soft-pak.com/about-us/",
+     "quote": "Terex Corporation acquired Environmental Solutions Group on October 8, 2024."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.soft-pak.com",
+     "quote": "Introducing Connected Collections from Environmental Solutions Group companies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.soft-pak.com",
+     "sha": "fdd92e3b8868fd9e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://soft-pak.com/about-us/",
+     "sha": "833180312e25f301",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ivy-computer",
@@ -119647,7 +121517,96 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Spider Strategies sells Spider Impact, a strategy management product that its homepage says can gather data in one place, update it automatically, and provide insights toward shared goals. The homepage describes connecting top-level strategy to departmental priorities and team-level performance so that work at each tier is visible. Listed capabilities include visibility into key performance indicators and strategic initiatives, with tracking of progress and trends. The site also describes visualization tools that turn strategic data into charts, graphs, and interactive maps.",
+    "The homepage places the product across industry, government, and nonprofit. The about page states a mission to help businesses, governments, and nonprofits improve their performance. A customer story on the homepage credits Spider Impact with providing a transparent Common Operating Picture for the U.S. Army.",
+    "Spider Strategies began as a software consulting company and entered the Corporate Performance Management market in April 2004 with a product called Scoreboard. In September 2020, the company released Spider Impact, bringing QuickScore and Scoreboard together into one performance management solution. The company describes a worldwide network of partners, some of whom resell the software."
+   ],
+   "quote": {
+    "text": "We\u2019re a team of performance management enthusiasts, software developers, and support staff.",
+    "url": "https://www.spiderstrategies.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "Spider Impact\u2019s business strategy software can gather your data in one place, update it automatically, and provide insights to keep everyone working toward the same goals."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "Connect top-level strategy (Tier 1) to departmental priorities (Tier 2) and team-level performance (Tier 3), so everyone can see how their work ladders up to the bigger picture."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "Gain comprehensive visibility into your key performance indicators (KPIs) and strategic initiatives with our software."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "Create dynamic charts, graphs, and interactive maps that make complex data easy to understand."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "Trusted across industry, government, and nonprofit"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.spiderstrategies.com/about/",
+     "quote": "Our mission is to help businesses, governments, and nonprofits improve their performance."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.spiderstrategies.com",
+     "quote": "U.S. Army Uses Spider Impact to Provide a Transparent Common Operating Picture"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.spiderstrategies.com/about/",
+     "quote": "In April 2004, Spider Strategies entered the Corporate Performance Management (CPM) market with our first off-the-shelf software product, Scoreboard."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.spiderstrategies.com/about/",
+     "quote": "In September 2020, Spider Strategies released Spider Impact, bringing QuickScore and Scoreboard together into one robust performance management solution."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.spiderstrategies.com/about/",
+     "quote": "Some resell our software and help customers achieve great success with it."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.spiderstrategies.com",
+     "sha": "00d60b9a727ac394",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.spiderstrategies.com/about/",
+     "sha": "c4d2ab58d308ddf0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "corporater",
@@ -130956,7 +132915,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SmartWorks sells SmartWorks Compass, a platform that helps electric, water, and gas utilities improve data accuracy, automate operational workflows, and uncover insight through analytics and AI. The platform covers data management, operational intelligence, analytics, automation, and AI capabilities, and its modular structure lets a utility begin with one priority and add capabilities as requirements change. Compass is built to sit alongside systems a utility already runs, and SmartWorks integrates with CIS, AMI, AMR, customer engagement, and other utility environments.",
+    "SmartWorks Athena is the AI line, letting utility staff explore operational information in everyday language rather than through custom reports or technical queries. Athena reaches meter-to-cash, AMI, CIS, and operational data through plain-English questions, and it can also support compatible CIS and MDM environments outside SmartWorks Compass.",
+    "SmartWorks Connect is a separate portal line that utilities use to give residential and commercial customers self-service access, usage insights, billing details, alerts, and service tools. These pages name electric, water, gas, and multi-commodity utilities as the customers for all of it, and place that work across North America and the Caribbean. The company describes itself as part of Harris Utilities, working alongside established CIS, customer engagement, and complementary utility technology providers."
+   ],
+   "quote": {
+    "text": "SmartWorks solutions reflect the data, operational, and customer-service requirements of electric, water, gas, and multi-commodity utilities.",
+    "url": "https://harrissmartworks.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://harrissmartworks.com",
+     "quote": "SmartWorks Compass helps electric, water, and gas utilities improve data accuracy, automate operational workflows, and uncover actionable insight through analytics and practical AI."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://harrissmartworks.com",
+     "quote": "Its modular structure allows utilities to start with an immediate priority and introduce additional capabilities as their operational requirements evolve."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://harrissmartworks.com",
+     "quote": "SmartWorks integrates with CIS, AMI, AMR, customer engagement, and other utility environments."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://harrissmartworks.com/solutions/athena-ai-for-utilities/",
+     "quote": "SmartWorks Athena makes utility data more accessible by helping users explore relevant operational information using familiar, everyday language."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://harrissmartworks.com/solutions/athena-ai-for-utilities/",
+     "quote": "Athena can also support compatible CIS and MDM environments, giving utility teams a conversational way to explore customer, billing, usage, and operational data without SQL, custom reports, or public AI tools."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://harrissmartworks.com/solutions/customer-engagement/",
+     "quote": "SmartWorks Connect customer portal solutions help utilities deliver secure, self-service digital experiences for residential and commercial customers."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://harrissmartworks.com",
+     "quote": "SmartWorks supports electric, water, gas, and multi-commodity utilities with technology designed around real operational requirements."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://harrissmartworks.com",
+     "quote": "As part of Harris Utilities, SmartWorks works alongside established CIS, customer engagement, and complementary utility technology providers."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://harrissmartworks.com",
+     "sha": "deaffca8b9ca44ef",
+     "fetched_on": null
+    },
+    {
+     "url": "https://harrissmartworks.com/solutions/",
+     "sha": "1b7df3db78679231",
+     "fetched_on": null
+    },
+    {
+     "url": "https://harrissmartworks.com/solutions/athena-ai-for-utilities/",
+     "sha": "9275b8e2198892f0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://harrissmartworks.com/solutions/customer-engagement/",
+     "sha": "30ce85cc59174904",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pairin",
@@ -139012,7 +141058,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "simpledu sells dismissal and discipline systems for K-12 schools. simpldiscipline is a behavior referral and discipline management system built to make discipline reporting, management, and oversight easier for schools. simpldismissal covers afternoon dismissal, with students dismissed from an interactive dismissal board direct from their classroom.",
+    "Buyers named on these pages are schools and school districts. simpledu supports schools across 14 states, and simpldiscipline serves over 50% of school districts in South Carolina. Customer testimonials name Chesterfield County Schools (SC), Darlington County School District (SC), and School District of Pickens County (SC).",
+    "simpledu began in 2020 as a side project and has stayed bootstrapped, with no shareholders and no outside investors. The team is described as coming from K-12 backgrounds, including teachers, technologists, and data specialists."
+   ],
+   "quote": {
+    "text": "Making K-12 simple \u2014 one data sync at a time.",
+    "url": "https://www.simpledu.com/company/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.simpledu.com/company/",
+     "quote": "building dismissal and discipline systems designed for automatic rostering"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.simpledu.com",
+     "quote": "behavior referral and discipline management system purpose built to make discipline reporting, management, and oversight easier for schools."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.simpledu.com",
+     "quote": "Students are dismissed from an interactive dismissal board, direct from their classroom"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.simpledu.com/company/",
+     "quote": "flexible solutions that scale to meet school, district, and state requirements"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.simpledu.com/company/",
+     "quote": "now serves over 50% of school districts in South Carolina"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.simpledu.com",
+     "quote": "Darlington County School District (SC)"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.simpledu.com/company/",
+     "quote": "we would stay bootstrapped. No shareholders. No outside investors."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.simpledu.com/company/",
+     "quote": "Our entire team comes from K-12 backgrounds \u2014 teachers, technologists, data specialists"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.simpledu.com",
+     "sha": "82d8ae8974999f02",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.simpledu.com/company/",
+     "sha": "93584c7f6e94a671",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vimo",
@@ -141231,7 +143354,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SpryPoint sells cloud software for utility customer service and operations across the meter-to-cash lifecycle. That platform is sold to water and sewer, electric, and gas utilities as a business transformation partner from meter-to-cash. SpryCIS is the customer information system at the core of that lifecycle, unifying customer service and operations.",
+    "SpryEngage is the customer portal, giving customers access to account information, billing, usage trends, and analytics. SpryWallet is payment processing built into SpryCIS and SpryEngage, and SpryMobile connects the back office to field operations. SpryBackflow covers equipment verification, testing, and regulatory compliance tracking in one place.",
+    "Testimonials on the home page come from LOGIS, Conway Corp, and Hometown Connections. A client story on the products page is attributed to a deputy city treasurer at the City of Hamilton, Canada. Other client quotes name Aurora Water Colorado, Oro Valley Utility Arizona, and Marana Arizona."
+   ],
+   "quote": {
+    "text": "SpryPoint is your long-term business transformation partner from meter-to-cash for water and sewer, electric, and gas utilities as you modernize to keep pace with rapid change and customer demands.",
+    "url": "https://www.sprypoint.com/products/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sprypoint.com",
+     "quote": "SpryPoint is a modern customer and operations software built by utility people for utility people."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "SpryPoint is your long-term business transformation partner from meter-to-cash for water and sewer, electric, and gas utilities as you modernize to keep pace with rapid change and customer demands."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "SpryCIS is the core of your meter-to-cash lifecycle that unifies customer service and operations to drive productivity in today\u2019s evolving utility."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "SpryEngage is your all-in-one omnichannel customer portal that empowers customers with real-time insights, personalized data, and proactive alerts to manage utility relationships on their terms."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "SpryWallet is your secure and seamless payment processing feature within SpryCIS and SpryEngage, making payment flows and reconciliation a first-class citizen in your meter-to-cash processes."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "SpryBackflow is the platform for your teams, customers, and testers to verify equipment, manage testing, and track regulatory compliance all in one place."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sprypoint.com",
+     "quote": "SpryPoint emerged as the only product that would replace our legacy system and provide enhanced capabilities that we had sought for many years."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sprypoint.com/products/",
+     "quote": "Deputy City Treasurer, City of Hamilton, Canada"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sprypoint.com",
+     "quote": "Amanda Jones Water Business Coordinator, Marana Arizona"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sprypoint.com",
+     "sha": "88f7913988e45526",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sprypoint.com/products/",
+     "sha": "43c43b39298a0231",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sprypoint.com/company/",
+     "sha": "71c1d5473e067fde",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "menulogic-k12",
@@ -142289,7 +144500,82 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NAHRO 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SocialBridge Technologies sells case management and performance tracking software for public service programs, and is an MPACT Strategic Consulting company. The company's main platform is Tracking At-A-Glance, or TAAG, a web-based, HUD-compliant tool used to manage PHA grants and HUD programs.",
+    "A second platform, BridgeEze, is aimed at non-profits and social service agencies working in areas such as Aging, Corrections Reentry, Disaster Relief and Work Force Development. MyBridgeEze is the counterpart for service recipients, who use it to find services and complete applications.",
+    "The about page states that these products serve government agencies, public housing authorities, non-profit and social service organizations, and disaster relief agencies nationwide. A separate solutions page covers disaster recovery case management and lists FEMA and HUD-compliant data reporting among its features."
+   ],
+   "quote": {
+    "text": "SocialBridge Technologies\u2019 mission is to serve those who serve others.",
+    "url": "https://socialbridgetec.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://socialbridgetec.com",
+     "quote": "SocialBridge Technologies, an MPACT Strategic Consulting company, specializes in advanced software platforms designed to streamline processes and improve program outcomes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://socialbridgetec.com",
+     "quote": "Tracking At-A-Glance\u00ae (TAAG) is a web-based, HUD-compliant, case management and performance tracking tool. TAAG is used to manage PHA grants and HUD programs."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://socialbridgetec.com",
+     "quote": "BridgeEze caters to non-profits and social service agencies that work with Aging, Corrections Reentry, Disaster Relief, Work Force Development"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://socialbridgetec.com",
+     "quote": "MyBridgeEze assists your service recipients in finding needed services, guides them through completing applications"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://socialbridgetec.com/about-us/",
+     "quote": "serve the needs of government agencies, public housing authorities, non-profit, social service organizations, along with disaster relief agencies nationwide."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://socialbridgetec.com/solutions/disaster-recovery-case-management-system/",
+     "quote": "FEMA and HUD-compliant data reporting: Meet federal requirements"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://socialbridgetec.com",
+     "sha": "6c3b3e01b2ba4b4f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://socialbridgetec.com/about-us/",
+     "sha": "e786a7c62f941f5d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://socialbridgetec.com/solutions/disaster-recovery-case-management-system/",
+     "sha": "f66adadaec160762",
+     "fetched_on": null
+    },
+    {
+     "url": "https://socialbridgetec.com/solutions/domestic-violence-solutions-domestic-violence-case-management/",
+     "sha": "579d640783bde7df",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "giv",
@@ -146218,7 +148504,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Springshare sells cloud software built for libraries, spanning subject guides, websites, calendars, room booking, virtual reference, forms and data analysis. The product list on the homepage includes LibGuides for content management, LibCal for event calendars and room reservations, LibAnswers for chat and FAQs, LibStaffer for staff scheduling and LibInsight for data collection.",
+    "Buyers named on these pages are libraries and educational institutions, with the company page claiming 8,000+ institutions served in 100+ countries. Product copy on the homepage names public libraries as the setting for its patron engagement and marketing automation software. Four customer quotations on the homepage come from Queens University of Charlotte, Western Washington University, Georgia State University and State College of Florida.",
+    "Springshare also runs a chat cooperative staffed by librarians, which the homepage says assists hundreds of libraries with round-the-clock online chat coverage. The company page dates the founding to 2007 and describes the business as a cloud software vendor for libraries."
+   ],
+   "quote": {
+    "text": "Our mission is to help libraries provide great service to users and enhance their online services.",
+    "url": "https://www.springshare.com/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.springshare.com",
+     "quote": "From subject guides and data analysis to event calendars and chat-with-a-librarian services, our software is designed with both the user and librarian in mind."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.springshare.com",
+     "quote": "The most popular and flexible content management system for libraries."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.springshare.com/company",
+     "quote": "Today we serve 8,000+ institutions in 100+ countries around the world."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.springshare.com",
+     "quote": "The marketing automation platform driving patron engagement in public libraries."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.springshare.com",
+     "quote": "Queens University of Charlotte"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.springshare.com",
+     "quote": "The Co-Op's MLS-degreed librarians from around the world assist hundreds of libraries in providing round-the-clock 24/7/365 online chat coverage."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.springshare.com/company",
+     "quote": "With a 19-year history of impressing and serving libraries, we have become a go-to cloud software vendor for libraries."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.springshare.com",
+     "sha": "8f1dd566c4b4f31b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.springshare.com/company",
+     "sha": "61f905a8b38930b9",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "brickfield-education-labs",
@@ -149629,7 +151986,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "StackMap sells indoor mapping software for libraries, described on its own pages as a unified platform of indoor mapping tools shaped to a library community's needs. The Collection Mapping product connects to a library catalog, discovery and mobile search to provide a map and written directions to any item. Explore puts a library's physical space and resources on a kiosk, mobile device, or web browser.",
+    "Room Mapping shows where study rooms, lecture halls, conference spaces, and offices sit in a facility, with custom integrations offered for an existing room reservation system, event calendar, library website, and mobile app. Computer Availability Mapping shows which computers are available in real-time, and the computer maps can be embedded on digital displays and the library's website. Library staff can update the layout when items move, through a process designed to match existing workflows and limit overhead.",
+    "StackMap describes its market as running from community public libraries to research and national institutions around the world. Librarians make up over half of the team, according to the about page."
+   ],
+   "quote": {
+    "text": "Our unified platform of indoor mapping tools creates a custom StackMap experience for your library community\u2019s specific needs.",
+    "url": "https://www.stackmap.io/products"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.stackmap.io/products",
+     "quote": "Our unified platform of indoor mapping tools creates a custom StackMap experience for your library community\u2019s specific needs."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.stackmap.io/products",
+     "quote": "StackMap Collection Mapping connects directly to your library\u2019s catalog, discovery and mobile search to provide users with a map and written directions to any item."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.stackmap.io/products",
+     "quote": "StackMap Explore enables users to experience your library's physical space and resources on a kiosk, mobile device, or web browser."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.stackmap.io/products",
+     "quote": "StackMap Room Mapping helps your users see where rooms are located in a facility: study rooms, lecture halls, conference spaces, offices\u2013you name it. We offer custom integrations to enhance your existing room reservation system, event calendar, library website, and mobile app."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.stackmap.io/products",
+     "quote": "StackMap Computer Availability Mapping allows your users to see which computers are available in real-time while highlighting workstation-specific details and technologies. The computer maps can be embedded anywhere, including digital displays and the library\u2019s website."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.stackmap.io/products",
+     "quote": "Library staff can easily update the layout when items move. The update process is designed to match existing workflows and limit overhead."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.stackmap.io",
+     "quote": "From the smallest community public libraries to the largest research and national institutions, StackMap is trusted around the world for premier digital wayfinding through online mapping software."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.stackmap.io/about-us",
+     "quote": "Built by Librarians, for Libraries: Over 50% of our team are librarians, ensuring our products focus on the real needs of libraries and their patrons"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.stackmap.io",
+     "sha": "2399664abb155f2d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.stackmap.io/products",
+     "sha": "66a78e5f7aa0b4bb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.stackmap.io/about-us",
+     "sha": "d99eeb007c7e3945",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "campusmind",
@@ -150359,7 +152798,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Simple Higher Ed sells a connected suite of three products for colleges and universities: Simple Syllabus, Simple Prep, and Simple TA. Simple Syllabus is a template-driven platform that lets instructors personalize and publish interactive class syllabi within the LMS. Simple Prep is a course readiness tool for institutions, covering course quality in and outside of the LMS. Simple TA is an AI teaching assistant that delivers real-time, course-aligned support powered by syllabus and LMS data.",
+    "The company was founded in 2017 to solve the challenge of syllabus publishing and now counts more than 600 colleges and universities nationwide. Simple Syllabus is used by more than 5,000,000 students a year to reach their class syllabus across web, mobile, and print formats. The about page describes a team of more than 30 professionals behind that suite. Simple Higher Ed designs, develops, and supports its technology in Tampa, Florida.",
+    "Institutions are the stated market, and the events listed on the home page cover syllabus management, course readiness, and course support."
+   ],
+   "quote": {
+    "text": "Trusted by over 600 colleges and universities, Simple Higher Ed helps institutions solve complex challenges",
+    "url": "https://simplehighered.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "we offer a connected suite of solutions: Simple Syllabus, the leading syllabus management platform in North America; Simple Prep, a course readiness tool designed to ensure every course is fully prepared for delivery; and Simple TA, an AI teaching assistant"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://simplehighered.com",
+     "quote": "Simple Syllabus is a centralized, template-driven platform that enables"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://simplehighered.com",
+     "quote": "Simple Prep is a centralized course readiness tool that helps institutions"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "Simple TA, an AI teaching assistant that delivers real-time, course-aligned support powered by syllabus and LMS data."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "Founded in 2017 to solve the challenge of simple, effective syllabus publishing, Simple Higher Ed has grown into a trusted partner for more than 600 colleges and universities nationwide."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "Simple Syllabus is used by more than 5,000,000 students a year to access their class syllabus across web, mobile, and print formats."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "With a team of more than 30 dedicated professionals, we offer a connected suite of solutions"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://simplehighered.com/about-us/",
+     "quote": "Simple Higher Ed is proud to design, develop, and support our technology in Tampa, Florida."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://simplehighered.com",
+     "quote": "See how institutions are simplifying syllabus management, improving course readiness, and strengthening course support."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://simplehighered.com",
+     "sha": "54eda4884da3f7e1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://simplehighered.com/about-us/",
+     "sha": "ed85c0adea06be75",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "stellic",
@@ -154002,7 +156524,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "research pass: HHS conference exhibitor research 2026-08-25; MESC 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Speridian Technologies is a consulting and technology services firm that works with enterprises and public sector organizations on modernizing operations and digital transformation. The work spans advisory, implementation, and managed services, with capabilities in AI, automation, cloud, analytics, and enterprise platforms. Featured offerings listed on the site include AI enablement, application modernization, cloud infrastructure, customer experience solutions, digital services, and lending and mortgage services.",
+    "CaseXellence is a process automation platform serving government, housing, education, and child welfare sectors. It handles benefits assistance, grant management, workers compensation, and license and permitting workflows. Beacon is a banking suite covering core banking, loan management, loan origination, credit monitoring, collections, analytics, and financial inclusion.",
+    "Speridian describes itself as an information technology consulting and services company that helps clients modernize their businesses through digital transformation. Certifications named on the about page include ISO 9001 for quality management, ISO 27001 for information security management, and CMMI."
+   ],
+   "quote": {
+    "text": "CaseXellence is an AI-powered process automation platform serving government, housing, education, and child welfare sectors.",
+    "url": "https://www.speridian.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.speridian.com",
+     "quote": "a global consulting and technology services firm that helps enterprises and public sector organizations modernize operations"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.speridian.com",
+     "quote": "accelerate digital transformation through advisory, implementation, and managed services. With deep industry expertise and capabilities spanning AI, automation, cloud, analytics, and enterprise platforms"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.speridian.com",
+     "quote": "AI enablement | Application Modernization | Cloud Infrastructure"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.speridian.com",
+     "quote": "CaseXellence is an AI-powered process automation platform serving government, housing, education, and child welfare sectors."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.speridian.com",
+     "quote": "It handles Benefits Assistance, Grant Management, Workers Compensation, License & Permitting, and any workflow-driven solution"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.speridian.com",
+     "quote": "banking suite covering Core Banking, Loan Management, Loan Origination, Credit Monitoring, Collections, Analytics, and Financial Inclusion"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.speridian.com/about-us",
+     "quote": "As a global Information Technology Consulting Company, we help clients modernize their businesses through Digital Transformation."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.speridian.com/about-us",
+     "quote": "ISO 9001 (Certificate No: FM 558838) for quality management, ISO 27001 (Certificate No: IS 568305) for information security management"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.speridian.com",
+     "sha": "a9ae42ebd80d882d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.speridian.com/products",
+     "sha": "3b2f60a16b559f4d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.speridian.com/about-us",
+     "sha": "a7b5e3d3bc7c340e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "stchealth",
