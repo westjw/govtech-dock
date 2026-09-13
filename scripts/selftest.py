@@ -4935,6 +4935,96 @@ def check_a_proposal_is_about_the_company_it_was_asked_about() -> int:
     return errors
 
 
+# Federal is out of scope for this board (owner, 2026-09-12). Each case is a
+# title and whether FEDERAL_ROLE should read it as federal. The four that must
+# NOT match are place names: Federal Way is a city of 100,000 in Washington,
+# Federal Heights one in Colorado, Federal Hill a Baltimore neighbourhood -
+# all of them exactly the state-and-local buyers this board exists for.
+FEDERAL_CASES = [
+    ("Federal Account Executive", True),
+    ("Enterprise Account Executive, Federal Civilian Sales", True),
+    ("Federal Account Director, Intelligence Community", True),
+    ("Applied AI Architect, Public Sector (National Security)", True),
+    ("USAF Sales Executive - DoD", True),
+    ("Presales Business Manager: DoD SkillBridge", True),
+    ("Senior Software Engineer, Federal Platform", True),
+    ("Account Executive - Department of Defense", True),
+    # THE PLACE NAMES. None is on the board today; the guard is here so the
+    # day one is, a state-and-local role is not deleted as a federal one.
+    ("Account Executive - Federal Way", False),
+    ("Sales Director, Federal Heights", False),
+    ("Account Executive - Federal Hill Baltimore", False),
+    ("Territory Manager, Federal Way, WA", False),
+    # and the ordinary public-sector titles this board is FOR
+    ("Account Executive, Public Sector", False),
+    ("State and Local Account Executive", False),
+    ("K-12 Sales Director", False),
+    ("Municipal Account Manager", False),
+]
+
+
+def check_federal_is_out_and_a_city_is_not_federal() -> int:
+    """Federal roles are dropped on EVERY company, counted, and a person wins.
+
+    THE OWNER RULED ON 2026-09-12 that federal is out of scope here -
+    solesourcejobs.com is becoming a separate federal board and these roles
+    belong there. What that ruling touches is the one mistake this board
+    cannot see: "a wrong 'out of scope' is invisible: the company stops
+    appearing, nothing errors, no count looks odd, and nothing ever
+    contradicts it."
+
+    So three things are asserted, not one:
+
+      1. THE PATTERN. Federal Way is a city of 100,000 in Washington State and
+         Federal Heights one in Colorado - the exact state-and-local buyers
+         this board exists for, and `\bfederal\b` matches both. Same shape as
+         the two capitals that were not a US state.
+      2. IT DROPS ON EVERY COMPANY, not only flagged ones. 27 of the 40
+         federal roles were at companies carrying no sled_only flag - Motorola
+         eight, Workday five - where the whole board loaded and nothing looked
+         at a title. A federal account executive is federal whoever employs
+         them.
+      3. A PERSON'S RULING STILL WINS, in both directions. The pattern must
+         not override somebody who looked at the role and said it belongs.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_board as bb
+    errors = 0
+    for title, want in FEDERAL_CASES:
+        got = bool(bb.FEDERAL_ROLE.search(title))
+        if got != want:
+            errors += fail(
+                f"FEDERAL_ROLE reads {title!r} as "
+                f"{'federal' if got else 'not federal'}; it is the other one."
+                + ("  A state-and-local role deleted as federal is invisible: "
+                   "the company just stops appearing." if got else ""))
+    # 2 and 3, driven through the real filter rather than the regex alone.
+    src = _code_only(ROOT / "scripts" / "build_board.py")
+    if not re.search(r"if\s+ruling\s+is\s+None\s+and\s+FEDERAL_ROLE\.search",
+                     src):
+        errors += fail("the federal drop no longer reads `ruling is None` "
+                       "first, so a person who looked at a role and said it "
+                       "belongs is overruled by a regex")
+    body = src.split("FEDERAL_ROLE.search(title)", 1)[-1][:400]
+    if "dropped_federal" not in body:
+        errors += fail("federal roles are dropped without being counted. A "
+                       "wrong 'out of scope' is the one mistake this board "
+                       "cannot see, and a number per company is the cheapest "
+                       "thing that contradicts it")
+    # THE DROP MUST NOT SIT INSIDE THE sled_only BRANCH, which is where it
+    # would reach 13 of the 40 and miss Motorola's eight entirely.
+    gate = src.find("if ruling is None and FEDERAL_ROLE.search")
+    sled = src.find("if sled_only or ruling:")
+    if gate < 0 or sled < 0 or gate > sled:
+        errors += fail("the federal drop runs inside or after the sled_only "
+                       "branch, so it never reaches the 27 federal roles at "
+                       "companies carrying no flag")
+    if "federal_dropped" not in (ROOT / "scripts" / "build_board.py").read_text():
+        errors += fail("the per-company federal count never reaches the board, "
+                       "so nothing downstream can show what was removed")
+    return errors
+
+
 def check_the_buyer_door_holds() -> int:
     """The scope door, case by case, and the shape of the answer it protects.
 
@@ -20811,6 +20901,7 @@ def main() -> int:
     errors += check_every_workflow_command_would_parse()
     errors += check_both_asks_reach_the_door_with_an_answer_in_them()
     errors += check_a_proposal_is_about_the_company_it_was_asked_about()
+    errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_the_buyer_door_holds()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()

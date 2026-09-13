@@ -369,11 +369,28 @@ SLED_ROLE = re.compile(
 # ...but not another country's public sector. "Account Executive - Public
 # Sector (ASEAN)" and "Account Director, Public Sector - Tokyo" both matched,
 # and neither is this market. This board is US state and local.
-# Kept by the filter, but not confidently in scope. These go to the admin's
-# Scope review queue rather than being decided by a regex.
-AMBIGUOUS_SCOPE = re.compile(
-    r"federal|national security|intelligence community|\bDoD\b|"
-    r"civilian agenc|\bCONUS\b|department of defen[cs]e", re.I)
+# FEDERAL IS OUT OF SCOPE FOR THIS BOARD (owner, 2026-09-12). This used to be
+# AMBIGUOUS_SCOPE and the name was honest: a federal role is selling tech to
+# government and it is not state and local, and only a person could settle
+# which of those this board is about. That is settled - solesourcejobs.com is
+# becoming a separate federal board, and these roles belong there.
+#
+# A PERSON'S RULING STILL BEATS IT IN BOTH DIRECTIONS. Nothing here overrides
+# a scope ruling somebody made, in either direction, and the drop is COUNTED
+# per company rather than silently applied: a wrong "out of scope" is the one
+# mistake this board cannot see, because the company simply stops appearing.
+#
+# "FEDERAL WAY" IS A CITY OF 100,000 IN WASHINGTON STATE, and Federal Heights
+# is one in Colorado. Both are exactly the state-and-local buyers this board
+# exists for, and `\bfederal\b` matches both - the same shape as the two
+# capitals that were not a US state and the city that was called "in-office
+# preferred in San Mateo". None is on the board today; the guard is here so
+# the day one is, it is not deleted as a federal role.
+FEDERAL_ROLE = re.compile(
+    r"\bfederal\b(?!\s+(way|heights|hill|hts\b))|national security|"
+    r"intelligence community|\bDoD\b|civilian agenc|\bCONUS\b|"
+    r"department of defen[cs]e", re.I)
+AMBIGUOUS_SCOPE = FEDERAL_ROLE        # the old name, for anything still reading it
 
 NOT_OUR_GOV = re.compile(
     r"\bASEAN\b|\bEMEA\b|\bAPAC\b|\bLATAM\b|\bUK\b|Tokyo|Japan|Singapore|"
@@ -1248,7 +1265,15 @@ def main() -> int:
 
         sled_only = bool(c.get("sled_only"))
         dropped_offtopic = 0
-        pending = 0
+        # FEDERAL ROLES ARE COUNTED, NOT JUST DROPPED. "A wrong 'out of scope'
+        # is invisible: the company stops appearing, nothing errors, no count
+        # looks odd, and nothing ever contradicts it." A number per company is
+        # the cheapest thing that contradicts it.
+        dropped_federal = 0
+        # `pending` counted the federal roles that used to go to a person. The
+        # question they were waiting on is answered, so nothing increments it
+        # any more - and a counter that can only ever be zero is dead code
+        # shaped like a measurement, so it is gone rather than left at 0.
         for j in jobs:
             title = (j.get("title") or "").strip()
             if roles.is_junk(title) or roles.is_evergreen(title):
@@ -1265,7 +1290,15 @@ def main() -> int:
             ruling = scope.get(rid)
             if ruling is None:
                 ruling = scope.get(oid)
-            scope_pending = False
+            # FEDERAL FIRST, AND ON EVERY COMPANY. A federal account executive
+            # is a federal role whoever employs them, so this cannot sit inside
+            # the sled_only branch: 27 of the 40 federal roles on the board are
+            # at companies carrying no flag at all - Motorola's eight, Workday's
+            # five - where nothing looked at a title and the whole board loaded.
+            # A ruling still wins, which is why this reads `ruling is None`.
+            if ruling is None and FEDERAL_ROLE.search(title):
+                dropped_federal += 1
+                continue
             if sled_only or ruling:
                 if ruling is not None:
                     # A person has already decided. Their ruling beats the
@@ -1276,13 +1309,6 @@ def main() -> int:
                 elif not SLED_ROLE.search(title) or NOT_OUR_GOV.search(title):
                     dropped_offtopic += 1
                     continue
-                elif AMBIGUOUS_SCOPE.search(title):
-                    # Kept by the pattern, but the pattern is not sure. Federal
-                    # is the live case: it is selling tech to government and it
-                    # is not state and local, and only a person settles which
-                    # of those this board is about.
-                    pending += 1
-                    scope_pending = True
             fam = roles.family(title)
             geo = roles.geography(loc, title)
             # THE BOARD'S OWN STATEMENT BEATS OUR READING OF ITS PROSE, where
@@ -1325,7 +1351,15 @@ def main() -> int:
                     # sentence in a country field cannot assert "not US".
                     us = False
             postings.append({
-                "scope_pending": scope_pending or None,
+                # `scope_pending` USED TO RIDE HERE. It meant "kept by the
+                # pattern, but the pattern is not sure", and federal was the
+                # only case it ever held. That question is answered, so nothing
+                # can set it - and a field that is always None is dead code
+                # shaped like a measurement, which the next reader counts as
+                # protection. The admin's Scope review queue reads it and is
+                # now permanently empty; the mechanism comes back the day
+                # there is a second genuinely ambiguous case, with whatever
+                # sets it written at the same time.
                 "id": rid,
                 # what this row is one advertisement OF. Rows sharing it are
                 # one opening; the site groups on this to count and to say
@@ -1439,6 +1473,7 @@ def main() -> int:
             "roles_from_storage": from_storage or None,
             "sled_only": sled_only or None,
             "offtopic_dropped": dropped_offtopic or None,
+            "federal_dropped": dropped_federal or None,
             "shares_board_with": owns.get(c["id"]),
             "board_owner_unverified": c["id"] in unowned or None,
             # A company with nothing on file has not failed; it has never been
@@ -1751,6 +1786,26 @@ def main() -> int:
             # so the kept side has to be postings too or the pair reads wrong.
             print(f"   {o['name'][:26]:<26} kept {o['open_postings']:>3}, "
                   f"dropped {o['offtopic_dropped']}")
+
+    # FEDERAL, SAID OUT LOUD EVERY BUILD. The owner ruled federal out of scope
+    # on 2026-09-12 and these roles are removed silently otherwise - which is
+    # exactly the mistake this board cannot see. A company that loses EVERY
+    # posting to the rule is named separately, because it then renders as "not
+    # hiring" when what is true is "hiring, for a market this board is not
+    # about": Granicus' only two roles are both federal account executives.
+    fed = [o for o in orgs if o.get("federal_dropped")]
+    if fed:
+        tot = sum(o["federal_dropped"] for o in fed)
+        print(f"{tot} federal posting(s) dropped from {len(fed)} compan(y/ies) "
+              f"- federal is out of scope here (owner, 2026-09-12):")
+        for o in sorted(fed, key=lambda x: -x["federal_dropped"])[:8]:
+            print(f"   {o['name'][:26]:<26} kept {o['open_postings']:>3}, "
+                  f"dropped {o['federal_dropped']}")
+        blank = [o for o in fed if not o.get("open_postings")]
+        if blank:
+            print(f"   {len(blank)} of them now show NO open roles at all, and "
+                  f"that is a fact about this board's scope, not about their "
+                  f"hiring: " + ", ".join(o["name"] for o in blank[:6]))
 
     no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "

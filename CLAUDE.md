@@ -439,6 +439,58 @@ because the profile gate review reads refusals and a door nobody can see being
 wrong is a door nobody fixes. Every `promote_*.py` is covered by
 `check_writes_name_their_author` by glob.
 
+### Federal is out of scope (owner, 2026-09-12)
+
+This file used to say federal was "the live case: it is selling tech to
+government and it is not state and local, and only a person settles which of
+those this board is about." **It is settled: federal is out.**
+`solesourcejobs.com` is becoming a separate federal hiring board and those
+roles belong there.
+
+**`AMBIGUOUS_SCOPE` is now `FEDERAL_ROLE`**, because the old name said "we
+have not decided" and we have. The old name is kept as an alias.
+
+Three things changed in `build_board`, and the second is the one that mattered:
+
+1. A federal role is **dropped**, not routed to a person. Nobody had ever
+   ruled on the 7 rows the Scope review queue held - `scope_rulings.json` is
+   empty.
+2. **It drops on EVERY company, not only `sled_only` ones.** 27 of the 40
+   federal roles sat at companies carrying no flag at all - Motorola's eight,
+   Workday's five, Palantir's two - where the whole board loads and nothing
+   ever looked at a title. A federal account executive is federal whoever
+   employs them.
+3. **A person's ruling still wins in both directions.** The drop reads
+   `ruling is None` first, so anyone who looks at a federal role and says it
+   belongs is not overruled by a regex.
+
+**`scope_pending` is gone from the posting shape.** It meant "kept by the
+pattern, but the pattern is not sure" and federal was the only case it ever
+held; a field that can only ever be None is dead code shaped like a
+measurement. **The admin's Scope review queue is therefore permanently
+empty** - decide whether to drop the tab. The mechanism comes back the day
+there is a second genuinely ambiguous case, with whatever sets it written at
+the same time.
+
+**"FEDERAL WAY" IS A CITY OF 100,000 IN WASHINGTON STATE.** Federal Heights is
+one in Colorado, Federal Hill a Baltimore neighbourhood - all of them exactly
+the state-and-local buyers this board exists for, and `\bfederal\b` matches
+every one. Same shape as the two capitals that were not a US state and the
+city called "in-office preferred in San Mateo". None is on the board today;
+`FEDERAL_CASES` in selftest holds them so that the day one is, a state-and-
+local role is not deleted as a federal one.
+
+**What it removes, measured before it ran: 40 of 5,582 postings (0.7%) across
+14 companies, 38 distinct openings, and ZERO quota-carrying sales roles** - so
+the "sellers wanted" headline does not move. Every drop is counted per company
+as `federal_dropped` and printed in the build summary, because a wrong "out of
+scope" is the one mistake this board cannot see: the company stops appearing,
+nothing errors and no count looks odd.
+
+**One company loses every posting: Granicus.** Both its roles are federal
+account executives, so it renders as having none. That is a fact about this
+board's scope and not about their hiring, and the build says so by name.
+
 ### Two questions off one set of pages: the `buyer` kind, added 2026-09-12
 
 Every write-up answered *what does this company sell*. Nothing ever asked
