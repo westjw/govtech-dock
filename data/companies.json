@@ -18068,7 +18068,90 @@
   "sled_only": true,
   "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (county and city manager's offices, IT) and water districts (utilities). Public sector only; no private-sector line was seen.",
   "acquisitions_checked_on": "2026-09-11",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Madison AI sells a platform that turns a government's own files and systems into an AI assistant for staff. The pages describe drafting staff reports, looking up code and zoning by parcel, researching voting history, and analyzing contracts against procurement standards. The homepage states that the product makes work easier in local government and water districts.",
+    "The site says the engine was created by Washoe County and OnStrategy. The about page names Washoe County as a co-founder and an equity partner rather than only a customer. The site names the City of Reno, Washoe County, and the Northern Nevada Regional Transportation Commission among government clients.",
+    "Deployment is described as taking about four weeks, with full deployment in less than sixty days. The homepage says the product is used by 65+ local governments and counting. A time study by the City of Reno is cited as reducing staff report production by more than 75%."
+   ],
+   "quote": {
+    "text": "Off-the-shelf tools have value, but only purpose-built AI from their data and records can actually tackle the specialized and nuanced work governments complete every day.",
+    "url": "https://www.madisonai.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.madisonai.com",
+     "quote": "The Madison AI\u2122 engine transform decades of files and disconnected systems into an AI built to support your staff\u2019s knowledge work. Fast, accurate, and cited."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.madisonai.com",
+     "quote": "Analyze contracts against procurement standards."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.madisonai.com",
+     "quote": "We make work easier in local government and water districts."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.madisonai.com",
+     "quote": "The Madison AI\u2122 engine was created by Washoe County and OnStrategy. Why?"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.madisonai.com/about-us",
+     "quote": "Madison AI was co-founded with Washoe County, NV, making them not just a customer, but an equity partner shaping every decision. The result is a platform designed only for local government, by the very people who live its challenges every day."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.madisonai.com",
+     "quote": "The Madison AI\u2122 engine has been deployed within the City of Reno, Washoe County, Northern Nevada Regional Transportation Commission, and other government clients."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.madisonai.com",
+     "quote": "The Madison AI\u2122 platform\u2019s setup, data science, and deployment can be completed and ready for your team in about four weeks. We can fully deploy in less than sixty days."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.madisonai.com",
+     "quote": "Used and trusted by 65+ local governments and counting"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.madisonai.com",
+     "quote": "In a time study by the City of Reno, the Madison AI\u2122 platform reduced staff report production by more than 75%."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.madisonai.com",
+     "sha": "71760752117bff2d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.madisonai.com/about-us",
+     "sha": "99abf6387148c995",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "common-sense-ai",
@@ -23557,7 +23640,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MaintStar builds public works, community development, and customer relationship software suites for mid-to-large population public sector organizations. The pages describe systems purpose-built for government so they work the way a customer already works. Mobile apps that automatically sync with office systems are listed among the features.",
+    "The Public Works Suite is described as fully-configurable, single-platform, AI-powered, and cloud-based software covering horizontal and vertical assets. The Community Development Suite is GIS-enabled, updated in real-time, and managed from highly configurable dashboards. A public portal lets residents and businesses report a broken streetlight, pay a business license fee, and check the status of a building permit from the same login and interface.",
+    "The suites and modules are built to integrate with each other at the native code level. Implementation services are performed solely by MaintStar employees rather than a third party consultant."
+   ],
+   "quote": {
+    "text": "Systems purpose-built for government so they work the way you do",
+    "url": "https://www.maintstar.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.maintstar.com",
+     "quote": "we build seamlessly-integrated and fully-configurable public works, community development, and customer relationship software suites for mid-to-large population public sector organizations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.maintstar.com",
+     "quote": "Systems purpose-built for government so they work the way you do"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.maintstar.com",
+     "quote": "Mobile apps that automatically sync with office systems"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.maintstar.com",
+     "quote": "Our fully-configurable, single-platform, AI-powered, cloud-based software lets you see all your horizontal and vertical assets"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.maintstar.com",
+     "quote": "updated in real-time, and easily managed from highly configurable dashboards"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.maintstar.com",
+     "quote": "where they can report a broken streetlight, pay a business license fee, and check the status of a building permit all from the same login and interface"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.maintstar.com",
+     "quote": "And when we say integrate, we mean at the native code level."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.maintstar.com",
+     "quote": "All implementation services are performed solely by MaintStar employees"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.maintstar.com",
+     "sha": "b89534a9d6b68c50",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "maintainx",
@@ -23581,7 +23736,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026; PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MaintainX sells a maintenance and asset management platform that its homepage describes as an AI-powered CMMS and enterprise asset management platform. The platform covers work orders, preventive and predictive maintenance, inspections, reporting, and parts inventory, with mobile access for frontline teams. Homepage copy also presents safety and compliance procedure enforcement as a use of the product across sites.",
+    "The homepage states that over 14,000 companies use MaintainX. One case study describes Cintas implementing the platform across 200 sites in 9 weeks. Another case study describes the Michaels maintenance team reducing mean time to repair by 70% and increasing mean time between failures by 20%.",
+    "The case study index names buyers by role and organization, including a facilities manager at the Cayman Islands Public Works Department and an operations manager at Redimix. The homepage also lists SOC2 Type 2 Compliant among the security claims for the platform."
+   ],
+   "quote": {
+    "text": "Over 14,000 companies rely on MaintainX to keep the physical world running",
+    "url": "https://www.getmaintainx.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.getmaintainx.com",
+     "quote": "Increase equipment uptime, reduce costs, and boost frontline productivity with the leading AI-powered CMMS and enterprise asset management platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.getmaintainx.com",
+     "quote": "Create, assign, and track work orders across all sites."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.getmaintainx.com",
+     "quote": "Ensure everyone follows the right safety and operating procedures, every time."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.getmaintainx.com",
+     "quote": "Over 14,000 companies rely on MaintainX to keep the physical world running"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.getmaintainx.com/case-studies/cintas",
+     "quote": "Cintas successfully implemented MaintainX across 200 sites in just 9 weeks."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.getmaintainx.com/case-studies/michaels",
+     "quote": "the Michaels maintenance team has reduced MTTR by 70% and increased MTBF by 20%"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.getmaintainx.com/case-studies",
+     "quote": "Facilities Manager, Cayman Islands Public Works Department"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.getmaintainx.com",
+     "quote": "SOC2 Type 2 Compliant"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.getmaintainx.com",
+     "sha": "18352ef81568b044",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getmaintainx.com/case-studies/cintas",
+     "sha": "a9e21b76f4ac6ed0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getmaintainx.com/case-studies",
+     "sha": "d51cc9d7c3f5043e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getmaintainx.com/case-studies/michaels",
+     "sha": "8fbf84310d001465",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "novotx",
@@ -36756,7 +36998,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "LINEV Systems US, Inc. was founded in 2006 and is the exclusive source for LINEV products in the US, Canada, Mexico, and Latin America. The company presents itself as a certified small business working in the security and non-destructive testing industries.",
+    "Products on the homepage include X-ray screening systems for people, baggage, cargo and vehicles. One body scanner listed there is described as scanning an inmate from two different angles. Battery sorting systems are listed for recycling lines. A forensic radiography system and benchtop spectrometers for laboratories are listed as well.",
+    "The about page states that 98% of clients are City, County, and State Corrections. Case studies on the homepage name county jails, sheriff offices and state corrections departments. Field service is based out of Conroe, Texas, with nine direct field service engineers supporting regional engineers nationally."
+   ],
+   "quote": {
+    "text": "Additionally, 98% of our clients are City, County, and State Corrections.",
+    "url": "https://linevsystems.us/about/linev-systems-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://linevsystems.us/about/linev-systems-us/",
+     "quote": "Founded in 2006, LINEV \u00ae Systems US, Inc. is a certified small business and the exclusive source for LINEV \u00ae products in the US, Canada, Mexico, and Latin America."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://linevsystems.us/about/linev-systems-us/",
+     "quote": "LINEV Systems \u00ae US, Inc. is globally recognized as an innovative engineering design company in the security and non-destructive testing industries."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://linevsystems.us",
+     "quote": "advanced X-ray screening solutions for baggage, people, cargo and vehicles"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://linevsystems.us",
+     "quote": "Scanning an inmate from two different angles"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://linevsystems.us",
+     "quote": "AI-powered multi-sensor battery sorting system for high-capacity industrial recycling lines"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://linevsystems.us",
+     "quote": "Outstanding performance meets the needs of scientific and industrial laboratories"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://linevsystems.us/about/linev-systems-us/",
+     "quote": "Additionally, 98% of our clients are City, County, and State Corrections."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://linevsystems.us",
+     "quote": "Iroquois County Sheriff\u2019s Office implemented CLEARPASS C.i. to strengthen intake screening"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://linevsystems.us/about/linev-systems-us/",
+     "quote": "Based out of Conroe, Texas, and supporting a network of regional engineers nationally"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://linevsystems.us",
+     "sha": "dd998867033cfc07",
+     "fetched_on": null
+    },
+    {
+     "url": "https://linevsystems.us/about/",
+     "sha": "c72dd98c4f87eff6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://linevsystems.us/about/linev-systems-us/",
+     "sha": "a77c3539bcdca869",
+     "fetched_on": null
+    },
+    {
+     "url": "https://linevsystems.us/about/linev-systems/",
+     "sha": "81f807592a1ad912",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "neuralguard",
@@ -43636,7 +43971,67 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, fire/EMS, police departments, and city DOTs/public works (customers named include MBTA, LA Metro, TRIMET, SEPTA, King County, City of Seattle)",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "LYT sells signal priority software that gives buses and emergency vehicles a green light at intersections, and it runs on the signal controllers and vehicle equipment an agency already has. The platform is described as cloud-based software billed as an operating expense, with predictable annual costs rather than a capital purchase.",
+    "For transit agencies, the platform models traffic and adjusts signal timing so that buses keep to schedule. For fire departments and for EMS and police, it preempts the signals ahead of responding vehicles as they approach an intersection.",
+    "LYT states that it maintains SOC 2 Type 2 compliance and that the platform is purpose-built for public agencies. Procurement routes listed on the page include a cooperative contract in Washington, a rider contract with LA Metro, and NEORide for member agencies."
+   ],
+   "quote": {
+    "text": "LYT is purpose-built for cities that need reliable, real-time priority control without the hardware headaches.",
+    "url": "https://lyt.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://lyt.ai",
+     "quote": "LYT connects to your existing signal controllers and vehicle equipment. Nothing to install at the intersection."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://lyt.ai",
+     "quote": "As a cloud-based software platform, LYT is an operating expense. Predictable annual costs."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://lyt.ai",
+     "quote": "LYT uses dynamic modeling to predict and prioritize signal timing in real time, so buses run on schedule"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://lyt.ai",
+     "quote": "LYT preempts signals ahead of your vehicles"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://lyt.ai",
+     "quote": "LYT maintains SOC 2 Type 2 compliance and is purpose-built for public agencies."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://lyt.ai",
+     "quote": "LYT holds a competitively awarded contract with LA Metro. Eligible agencies can use a rider contract to procure LYT directly"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://lyt.ai",
+     "sha": "698e2c80926f0528",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sahay-ai",
@@ -44087,7 +44482,94 @@
   "buyer": "Primarily private commercial customers (1,730+ financial institutions, 675+ retailers, 735+ commercial/industrial clients); transit agencies and government are also served through a dedicated transit product line (RideSafe mobile video recorders)",
   "sells_to_gov": "yes",
   "acquisition_note": "Now part of Delta Group (Delta Electronics); its branded video-security business has been integrated with VIVOTEK",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "March Networks sells video surveillance systems for multi-site organizations, built from IP cameras, recorders, encoders and other hardware sold as one portfolio. Command Enterprise Software is the management layer for deploying and maintaining those video surveillance resources across a customer site. Searchlight, sold on premise or as a cloud service, turns the recorded video into loss prevention and business intelligence reporting.",
+    "The analytics catalogue covers people counting, heatmaps, dwell time, license plate recognition, and alerts for loitering, intrusion and blocked emergency exits. Detection runs on the AI Series cameras and on X-Series recorders built with NVIDIA system-on-chip technology, with alerts sent as mobile push notifications.",
+    "The company dates its founding to 2000 and puts retail, banking and transportation at the front of the industries it serves. The homepage counts more than 1,730 financial institutions, over 675 retailers and more than 735 commercial and industrial customers in over 75 countries. March Networks and VIVOTEK have merged their branded video security businesses, and the merged portfolio is presented across cloud, hybrid and on premise environments."
+   ],
+   "quote": {
+    "text": "Our flexible platform supports multi-site deployments across industries like retail, banking, and transportation",
+    "url": "https://www.marchnetworks.com/solutions/physical-security/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.marchnetworks.com/solutions/physical-security/",
+     "quote": "Choose from our portfolio of high-quality IP cameras, NVRs, encoders, and other hardware for the most reliable surveillance solution for any application."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.marchnetworks.com/solutions/physical-security/",
+     "quote": "Easily deploy and maintain all your video surveillance resources with March Networks Command Enterprise Software."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.marchnetworks.com/solutions/physical-security/",
+     "quote": "Available as an on-premise or cloud-based solution, Searchlight transforms your video surveillance system into a powerful source of real-time business intelligence."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.marchnetworks.com/solutions/video-analytics/",
+     "quote": "Promotes fire and safety compliance and prevents costly fines by sending real-time alerts when emergency exits are blocked."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.marchnetworks.com/solutions/video-analytics/",
+     "quote": "X-Series Network Video Recorders (NVRs) leverage advanced analytics and NVIDIA system-on-chip technology"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.marchnetworks.com",
+     "quote": "Since its founding in 2000, the company has become a trusted partner for thousands of organizations across retail, banking, transportation, and other industries."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.marchnetworks.com",
+     "quote": "More than 1,730 financial institutions, over 675 retailers, and more than 735 commercial and industrial customers in over 75 countries around the world rely on our advanced, AI-driven video surveillance and business intelligence solutions."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.marchnetworks.com",
+     "quote": "Explore how this merger strengthens enterprise surveillance capabilities across cloud, hybrid, and"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.marchnetworks.com",
+     "sha": "230b1fb1b747e556",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.marchnetworks.com/solutions/physical-security/",
+     "sha": "99c6ea20953a1abf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.marchnetworks.com/solutions/loss-prevention/",
+     "sha": "95a45ad2e3b656f3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.marchnetworks.com/solutions/video-analytics/",
+     "sha": "5d500848a2057089",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "streamax-america",
@@ -53315,6 +53797,77 @@
    "note": null,
    "on": "2026-09-08",
    "by": "owner"
+  },
+  "profile": {
+   "paragraphs": [
+    "LeoSight describes a unified command platform that connects law enforcement, fire, EMS, and emergency management across jurisdictions. The platform integrates CAD, cameras, ALPR, drones/DFR, gunshot acoustic detection, and field systems into one connected operational network. A second function covers cross-agency communication and shared workflows, from the initial call through investigation and case closure.",
+    "The technology was originally developed under the Live Earth brand to support special operations forces. That capability now powers a suite of solutions purpose-built for law enforcement, fire, rescue, and emergency response teams.",
+    "Rollout is described as learning an agency's systems and external agency collaborators, configuring integrations including CAD, AVL, LPR, RMS, VMS, and DFR, then launch, training, and continuing support. Agencies building a command center and agencies just getting started are both named, across law enforcement, fire, EMS, and emergency services."
+   ],
+   "quote": {
+    "text": "Whether you're building a command center or responding in the field, LeoSight helps you see more, share faster, and act with confidence.",
+    "url": "https://www.leosight.com/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.leosight.com",
+     "quote": "Our unified command platform connects law enforcement, fire, EMS, and emergency management across jurisdictions, enabling agencies to share live data, align response strategies, and lead with clarity in high-pressure situations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.leosight.com",
+     "quote": "Integrate CAD, cameras, ALPR, drones/DFR, gunshot acoustic detection, and field systems into one connected operational network."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.leosight.com",
+     "quote": "Enable secure cross-agency communication and shared workflows, from the initial call through investigation and case closure."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.leosight.com/company",
+     "quote": "Originally developed under the Live Earth brand to support special operations forces, our technology was designed to deliver real-time intelligence in the world\u2019s most demanding environments."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.leosight.com/company",
+     "quote": "That same mission-critical capability now powers LeoSight, a suite of solutions purpose-built for law enforcement, fire, rescue, and emergency response teams."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.leosight.com",
+     "quote": "LeoSight is tailored to your environment\u2014integrating CAD, AVL, LPR, RMS, VMS, and DFR capabilities for real-time operational impact."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.leosight.com",
+     "quote": "Whether you're building a command center or just getting started, LeoSight scales to your agency\u2019s needs\u2014across law enforcement, fire, EMS, and emergency services."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.leosight.com",
+     "sha": "64fc46f3e0843278",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.leosight.com/company",
+     "sha": "569078bf1325424e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -53390,7 +53943,87 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026; NASCIO 2026; AIRA 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "LexisNexis Risk Solutions sells information-based analytics, decisioning tools and data management services that customers use to reduce risk and improve operations. The company is headquartered in metro-Atlanta, Georgia, and operates within the Risk market segment of RELX. Its pages describe detecting fraud and money laundering, and delivering actionable insights to insurance companies and healthcare networks.",
+    "The about page states that the company works with more than 8,000 federal, state, and local government and law enforcement agencies. The same page also counts business with 85% of the Fortune 500 and 90% of the Fortune 100. Insurance buyers listed there include 23 of the world's top 25 insurers. Healthcare buyers listed there include 150 U.S. commercial payers and over 50% of the top 100 U.S. health systems."
+   ],
+   "quote": {
+    "text": "We believe in the power of data and analytics to manage risk & uncover opportunity.",
+    "url": "https://risk.lexisnexis.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "provides customers with innovative technologies, information-based analytics, decisioning tools and data management services that help them solve problems, make better decisions, stay compliant, reduce risk and improve operations"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "Headquartered in metro-Atlanta, Georgia it operates within the Risk market segment of RELX"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "We help detect and prevent online fraud and money laundering and deliver actionable insights to insurance companies and healthcare networks."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "We work with more than 8,000 federal, state, and local government and law enforcement agencies."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "We do business with 85% of the Fortune 500 and 90% of the Fortune 100."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "We work with 23 of the world's top 25 insurers."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://risk.lexisnexis.com/about-us",
+     "quote": "We work with 150 U.S. commercial payers, over 50% of the top 100 U.S. health systems"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://risk.lexisnexis.com",
+     "sha": "b4025110ae7b7005",
+     "fetched_on": null
+    },
+    {
+     "url": "https://risk.lexisnexis.com/products",
+     "sha": "d3918610c1891286",
+     "fetched_on": null
+    },
+    {
+     "url": "https://risk.lexisnexis.com/about-us",
+     "sha": "01ae9801926a828f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://risk.lexisnexis.com/about-us/leadership",
+     "sha": "9da2d5877308fbbf",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "lexisnexis-risk-solutions-government",
@@ -64458,7 +65091,94 @@
   "buyer": "Primarily private commercial fleets (trucking, distribution, retail, field services \u2014 e.g. Walmart, Ryder); also serves public-sector transit and government fleets (e.g. Pierce Transit) as a named vertical",
   "sells_to_gov": "yes",
   "acquisition_note": "Acquired the Surfsight product line to expand global distribution (year not stated)",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "Lytx sells video safety and telematics products to fleets. The platform identifies distracted, drowsy, and risky driving behaviors before collisions. Alerts and coaching workflows are offered to reduce incidents and insurance costs. The company states that it has helped more than 7,000 organizations over more than 27 years.",
+    "A separate line covers Department of Transportation compliance, including electronic logging devices, hours of service records, driver vehicle inspection reports, and driver qualification file audits. The Surfsight line is sold to fleet technology providers that build video safety into their own product portfolios.",
+    "Customer references on these pages include a safety manager at Pierce Transit. Another reference comes from a safety manager at A.D. Transport Express."
+   ],
+   "quote": {
+    "text": "Safety is core. Data informs. Video transforms.",
+    "url": "https://www.lytx.com/about-us/our-company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.lytx.com",
+     "quote": "Video Safety and Telematics for Fleets"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.lytx.com",
+     "quote": "Identify distracted, drowsy, and risky driving behaviors before they lead to collisions."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.lytx.com",
+     "quote": "AI-powered alerts and coaching workflows help reduce incidents and insurance costs."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.lytx.com",
+     "quote": "For more than 27 years, Lytx has helped more than 7,000 organizations make lasting changes."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.lytx.com/dot-compliance/solutions",
+     "quote": "Our Department of Transportation (DOT) compliance services can help you improve Compliance, Safety, Accountability (CSA) scores, reduce risk, comply with Electronic Logging Device (ELD) mandates, and lower operating costs."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.lytx.com",
+     "quote": "Our Lytx Surfsight \u2122 solution enables fleet technology providers to incorporate and leverage video safety as part of their existing product portfolio."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.lytx.com",
+     "quote": "Safety Manager, Pierce Transit"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.lytx.com/dot-compliance/solutions",
+     "quote": "Safety Manager, A.D. Transport Express"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.lytx.com",
+     "sha": "2b03dd65feb47ff6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lytx.com/surfsight/solutions",
+     "sha": "049190d5ca71bcc1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lytx.com/dot-compliance/solutions",
+     "sha": "fc32a5047bcd894c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lytx.com/about-us/our-company",
+     "sha": "0449b7c589461dff",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "netradyne",
@@ -68019,7 +68739,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "LEOTEK sells LED street lights and LED area lights for roadway and outdoor spaces. The company also sells EV charging systems and traffic signals. The RenAI platform connects streetlights, signals, and assets with AI to optimize performance. The Interlux AI traffic signal system combines AI perception, connected vehicle technology, and real-time decision-making.",
+    "LEOTEK is headquartered in Silicon Valley and Taipei and provides roadway lighting, traffic signal, and connected infrastructure solutions for cities and transportation agencies worldwide. Since 1992 the company has supported infrastructure projects across the Americas, Europe, the Middle East, Australasia, and Asia-Pacific.",
+    "Lighting from the company is used by cities and transportation authorities across the United States. Roadway and traffic lighting products are designed and manufactured to support compliance with the Build America, Buy America provisions and the Buy American Act."
+   ],
+   "quote": {
+    "text": "From local streets to major transportation corridors, LEOTEK lighting is trusted by cities and transportation authorities across the United States.",
+    "url": "https://www.leotek.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.leotek.com",
+     "quote": "Our LED area lights deliver uniform brightness, energy savings, and long-lasting performance for safer outdoor environments."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.leotek.com",
+     "quote": "LEOTEK\u2019s EV charging systems combine smart technology and durable design to support sustainable transportation growth."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.leotek.com",
+     "quote": "The RenAI platform connects streetlights, signals, and assets with AI to optimize performance and enable smart city integration."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.leotek.com/about/sustainability/",
+     "quote": "The Interlux AI traffic signal system combines AI perception, connected vehicle technology, and real-time decision-making."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.leotek.com/about/",
+     "quote": "Headquartered in Silicon Valley and Taipei, LEOTEK provides roadway lighting, traffic signal, and connected infrastructure solutions for cities and transportation agencies worldwide."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.leotek.com/about/",
+     "quote": "Since 1992, we have supported infrastructure projects across the Americas, Europe, the Middle East, Australasia, and Asia-Pacific, bringing more than 30 years of experience in roadway safety, lighting performance, and transportation technology."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.leotek.com",
+     "quote": "From local streets to major transportation corridors, LEOTEK lighting is trusted by cities and transportation authorities across the United States."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.leotek.com",
+     "quote": "All LEOTEK roadway and traffic lighting products are designed and manufactured to support compliance with the Build America, Buy America (BABA) provisions and the Buy American Act"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.leotek.com",
+     "sha": "c360f0b13dfb6ea4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.leotek.com/about/",
+     "sha": "83283b319e1000d3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.leotek.com/about/cases/",
+     "sha": "0cf197210abaa061",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.leotek.com/about/sustainability/",
+     "sha": "da697e1371c2d5f1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "evluma",
@@ -68455,7 +69262,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Lucy Zodion is a British electrical manufacturer of lighting control, power distribution and electrical safety equipment for highways and street lighting infrastructure. The product range covers power management and control equipment for street lighting. Hardware includes photocells offered in NEMA and conduit options. Other hardware covers steel and cast iron pillars, in-ground units and power distribution enclosures.",
+    "Alongside the hardware, Ki. is presented as an ecosystem of smart city hardware and software backed by a UK based service team. Ki. nodes connect with other assets in that ecosystem over LoRaWAN or Narrow-Band IoT.",
+    "The pages name Luminaire Manufacturers as one group offered street lighting control gear. One case study describes feeder pillars supplied for a Nottinghamshire County Council street-lighting project. The photocell range is grouped by solution, one of which is Public Sector & Local Authorities."
+   ],
+   "quote": {
+    "text": "Our product range spans power management and control equipment for street lighting",
+    "url": "https://www.lucyzodion.com/products/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.lucyzodion.com",
+     "quote": "Reliable lighting control, power distribution, and electrical safety solutions for smarter, safer highways and street lighting infrastructure"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.lucyzodion.com/products/",
+     "quote": "Our product range spans power management and control equipment for street lighting"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.lucyzodion.com/products/",
+     "quote": "Zhaga, one part, two part, miniature and amenity photocells in NEMA and conduit options"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.lucyzodion.com/products/",
+     "quote": "Steel and cast iron pillars, in-ground units, pre-wired and custom power distribution enclosures"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.lucyzodion.com/products/ki-gen-3-hardware/",
+     "quote": "Ki. is a secure and interoperable ecosystem of smart city hardware and software backed by a UK based service team with extensive industry knowledge."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.lucyzodion.com/products/ki-gen-3-hardware/",
+     "quote": "The internal antenna enables the Ki. Node to connect with other assets in the ecosystem via LoRaWAN or/and Narrow-Band IoT (NB-IoT), creating a two-way digital data flow."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.lucyzodion.com/products/",
+     "quote": "street lighting control gear for Luminaire Manufacturers"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.lucyzodion.com",
+     "quote": "When Nottinghamshire County Council required 27 feeder pillars for a major street-lighting project"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.lucyzodion.com/products/lucy-zodion-photocells-2/",
+     "quote": "Public Sector & Local Authorities"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.lucyzodion.com",
+     "sha": "d9ad7bdc94a065c9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lucyzodion.com/products/",
+     "sha": "c06654e3802eb23a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lucyzodion.com/products/ki-gen-3-hardware/",
+     "sha": "54d04673009c8b8c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lucyzodion.com/products/lucy-zodion-photocells-2/",
+     "sha": "54b37136c39d896d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "schreder",
@@ -79403,7 +80303,79 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Manage My Market sells online software for running farmers markets, described on the site as a solution designed to simplify vendor management for farmers market operators. The company is based in Portland, Oregon. The site dates the work with market managers to 2003, and says the platform began when a market manager teamed up with a developer.",
+    "The platform covers vendor application processing, stall assignments, accounting, analytics, interactive maps, and product search. Market managers approve vendors, assign stalls, enter sales and payments, send invoices, track licenses, send emails, and run reports. Accounting records PayPal, Square, and Stripe transactions automatically, and license reporting flags vendors with missing, expired or current licenses.",
+    "Vendors create a company profile, upload licenses and other documentation, and apply to markets in their area. The site says farmers markets across all 50 states, as well as in Canada, the UK, and Australia, are supported."
+   ],
+   "quote": {
+    "text": "Everything you need to efficiently manage your market in one secure place.",
+    "url": "https://managemymarket.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://managemymarket.com",
+     "quote": "solution designed to simplify vendor management for farmers market operators."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://managemymarket.com",
+     "quote": "Located in Portland, Oregon, Manage My Market is a locally-driven, accessible"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://managemymarket.com",
+     "quote": "2003, we've been helping market managers eliminate paperwork, streamline operations, and"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://managemymarket.com",
+     "quote": "application processing, stall assignments, accounting, analytics, interactive maps, and"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://managemymarket.com",
+     "quote": "Approve vendors, assign stalls, enter sales and payments, send invoices,"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://managemymarket.com",
+     "quote": "Automatically records PayPal, Square, and Stripe transactions"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://managemymarket.com",
+     "quote": "Vendors create a company profile, which may be edited as needed"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://managemymarket.com",
+     "quote": "Today, Manage My Market proudly supports farmers markets across all 50 states, as"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://managemymarket.com",
+     "sha": "b624fb46f6224cf2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "galaxy-digital",
@@ -85322,7 +86294,83 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Marketplace.city runs a sourcing and procurement platform for local governments buying technology. The platform offers market intelligence, vendor comparisons, and a repository of vendor contracts, references and pricing. The company is based in Chicago, IL, and the platform is open to local governments and vendors globally.",
+    "Clearbox Source is sold as an annual subscription for market research and vendor engagement. Clearbox Procure is a managed service that guides stakeholders through sourcing and validation toward a match between vendor and customer.",
+    "Technology providers make up the other side of the platform, registering companies and products at no cost so government users can see them during procurement. Case studies on the site name the City of Mesa, the City of Alexandria, and Dallas County."
+   ],
+   "quote": {
+    "text": "Marketplace enables key stakeholders to spend less time sifting through vendors and more time making purchasing decisions.",
+    "url": "https://marketplace.city"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://marketplace.city/about/",
+     "quote": "simplify the process for local governments to source, validate, and procure new technology"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://marketplace.city",
+     "quote": "Accelerate your procurement process with real-time market intelligence, detailed vendor comparisons, and a rich repository of vendor contracts, references, pricing and much more."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://marketplace.city/about/",
+     "quote": "based in Chicago, IL and open to local governments and vendors to use globally"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://marketplace.city/about/",
+     "quote": "Clearbox Source to our product line as an annual subscription option to maximize your market research"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://marketplace.city/about/",
+     "quote": "guides key stakeholders through a sourcing and validation managed service that ensures the right match between vendor and customer."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://marketplace.city",
+     "quote": "Register your company for free and make sure all of your products, services and case studies are visible to our government users at every step of the procurement process."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://marketplace.city/case-studies",
+     "quote": "Learn more about the City of Mesa"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://marketplace.city",
+     "sha": "1bf8929e13af132e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://marketplace.city/case-studies",
+     "sha": "c6bd44983805b584",
+     "fetched_on": null
+    },
+    {
+     "url": "https://marketplace.city/about/",
+     "sha": "400fb218ce6cbda4",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ivalua",
@@ -92288,7 +93336,85 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "LION Group sells fire training equipment and facilities, and its own pages describe it as the largest provider of that equipment for first responders. The training catalogue runs from live fire props such as the Vehicle Fire Training Prop and the Dumpster Fire Training Prop to digital systems and smoke generators. Protective equipment covers turnout gear, helmets, hoods, gloves, boots and coveralls, with hoods sold under the RedZone name.",
+    "Uniforms are listed as Fire Uniforms, Law Enforcement Uniforms and EMS Uniforms. Gear care is sold as TotalCare, covering cleaning, inspection and repair, and the pages also list a PPE rental program. A supply chain arm is named as LVI Military Logistics.",
+    "On who buys, the site says LION is big enough to deliver on the largest fire department contracts. The same sentence names every emergency responder and firefighter that uses the equipment. Buyers are pointed to a sales rep by state, and the page also lists a dealer finder and an online shop."
+   ],
+   "quote": {
+    "text": "LION is the largest provider of fire training equipment and facilities for first responders, having built the last three largest first responder training facilities in the world.",
+    "url": "https://www.lionprotects.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.lionprotects.com",
+     "quote": "LION is the largest provider of fire training equipment and facilities for first responders"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.lionprotects.com",
+     "quote": "Vehicle Fire Training Prop"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.lionprotects.com",
+     "quote": "Structural Protective Gloves"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.lionprotects.com",
+     "quote": "Law Enforcement Uniforms"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.lionprotects.com",
+     "quote": "CHOOSE LION TOTALCARE FOR ANNUAL CLEANING, INSPECTION, AND REPAIR."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.lionprotects.com",
+     "quote": "LVI Military Logistics"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.lionprotects.com",
+     "quote": "LION is big enough to deliver on the largest fire department contracts"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.lionprotects.com",
+     "quote": "every emergency responder and firefighter that uses our equipment"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.lionprotects.com",
+     "quote": "Find Your Sales Contact"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.lionprotects.com",
+     "sha": "6e17737704bba3b1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "task-force-tips",
@@ -99782,7 +100908,118 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "LineVision sells an integrated intelligence platform that delivers Dynamic Line Ratings and Situational Awareness for transmission networks. Dynamic Line Ratings covers real-time and forecasted transmission capacity at every span across networks. Forecasted ratings extend hourly up to 240 hours, or 10 days. Items listed under Dynamic Line Ratings include FERC 881 and NERC FAC-008 compliance.",
+    "Situational Awareness provides real-time monitoring of physical risks and environmental conditions on critical transmission lines. That monitoring runs on RS-1 sensors that gather continuous, hyperlocal data around critical transmission rights-of-way. Detection and alerting cover conductor hazards including galloping, clashing, asynchronous motion, and unusual sag. Other alerts listed cover conductor icing, fallen trees, and unauthorized people or equipment in the ROW.",
+    "LineVision states that it works with 7 to the 10 largest utilities in the US. Named customers on these pages include National Grid, Xcel Energy, Avangrid, and New York Transco. Service capabilities listed include 24/7 customer support for operational DLR and EMS integration described as NERC-CIP compliant. The home page states that LineVision solutions are US-domiciled and NERC-CIP approved, with the SMS certified to ISO 27001:2022."
+   ],
+   "quote": {
+    "text": "Our integrated intelligence platform delivers Dynamic Line Ratings and Situational Awareness to unlock operational flexibility and enable efficient capital allocation.",
+    "url": "https://www.linevisioninc.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.linevisioninc.com",
+     "quote": "Our integrated intelligence platform delivers Dynamic Line Ratings and Situational Awareness to unlock operational flexibility and enable efficient capital allocation."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.linevisioninc.com/solutions/dynamic-line-ratings",
+     "quote": "Accurate real-time and forecasted transmission capacity at every span across networks"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.linevisioninc.com/solutions/dynamic-line-ratings",
+     "quote": "Forecasted Dynamic Line Ratings hourly up to 240 hours (10 days)"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.linevisioninc.com/solutions/dynamic-line-ratings",
+     "quote": "FERC 881 & NERC FAC-008 compliance"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+     "quote": "Real-time monitoring of physical risks and environmental conditions on critical transmission lines"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+     "quote": "which gather continuous, hyperlocal data to monitor conditions around critical transmission rights-of-way"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+     "quote": "Detection and alerting on conductor hazards like galloping, clashing, asynchronous motion, unusual sag and failure"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+     "quote": "Detection and alerting of unauthorized people or equipment in the ROW"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.linevisioninc.com/customers",
+     "quote": "LineVision works with 7 to the 10 largest utilities in the US and is the market leader in the UK"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.linevisioninc.com/customers",
+     "quote": "Avangrid partnered with LineVision to pilot DLR on two congested 230 kV transmission lines, supplying 500 megawatts of wind generation in New York."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.linevisioninc.com",
+     "quote": "24/7 customer support for operational DLR, ensuring stable rapid response in the event of any disruptions."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.linevisioninc.com",
+     "quote": "Our solutions are 100% US-domiciled, nationally-contained and NERC-CIP approved, with our SMS certified to ISO 27001:2022 and following NIST and CIS best practices."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.linevisioninc.com",
+     "sha": "f6f7d2b5be45a84e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linevisioninc.com/solutions/dynamic-line-ratings",
+     "sha": "7b6db2980c6e4580",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+     "sha": "593c380da0dbd022",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linevisioninc.com/customers",
+     "sha": "dbc8a196efa0f1c5",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "heimdall-power",
@@ -107972,7 +109209,84 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "LegalServer sells case management software for civil legal aid, public defense, and government law offices. Intake, workflows, and case types are configured for an organization without writing code. Built-in reports with manager-specific views are generated without manual data compiling.",
+    "The product is web-based, with data hosted at Amazon Web Services and a Government Cloud option. Listed security items include SOC 2 Type II, CJIS, and NIST compliance, role based access control with audit logging, and daily data back-up.",
+    "The clients page lists sections for civil legal aid, public defenders, government law offices, immigration clinics, disability rights, pro bono agencies, and law schools and universities. Named clients on that page include Legal Aid Chicago, New York County Defender Services, El Dorado County, Shasta County, OneJustice, and Chicago Volunteer Legal Services. The homepage states over 550 implementations since 2002, with thousands of attorneys managing cases each day."
+   ],
+   "quote": {
+    "text": "helping non-profit and government agencies make a difference in society",
+    "url": "https://www.legalserver.org"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.legalserver.org",
+     "quote": "LegalServer is built exclusively for civil legal aid , public defense , and government law offices"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.legalserver.org",
+     "quote": "Intake, workflows, and case types configured specific to you, without writing code"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.legalserver.org",
+     "quote": "Easily generate built-in reports with manager-specific views, without manual data compiling"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.legalserver.org",
+     "quote": "Amazon Web Services data hosting with Government Cloud option"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.legalserver.org",
+     "quote": "SOC 2 Type II, CJIS, NIST Compliance"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.legalserver.org/customers/",
+     "quote": "Public Defenders using LegalServer"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.legalserver.org/customers/",
+     "quote": "New York County Defender Services"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.legalserver.org",
+     "quote": "With over 550 implementations since 2002, each day LegalServer helps thousands of attorneys manage tens of thousands of cases."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.legalserver.org",
+     "sha": "4503abcc3f6b2c0c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.legalserver.org/customers/",
+     "sha": "167a17559ca59f23",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "frequentis",
@@ -113011,7 +114325,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: IEDC 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Localintel sells an AI-powered platform that turns data about a community into charts, maps, dashboards, stories, reports, and website embeds. The catalog includes formatted reports on economy, workforce, housing, demographics, and quality of life, exportable as PDFs or share web links. It also produces plain-language narratives that explain what the data means, editable in Word for newsletters, reports, blogs, and board packs.",
+    "A separate products page lists interactive data visualization tools that a customer embeds on a website to show a location's strengths. One of those tools helps businesses find commercial properties that are currently for sale or lease. Another shows the universities and colleges supplying talent to businesses in a location.",
+    "The pages present the platform to public-sector teams in economic development, planning, communications, parks and recreation, public works, grants, finance, and IT. A case study names Norfolk County, whose team published a data-rich news article in its first week with the platform. The about page says hundreds of communities across the US and Canada use Localintel products."
+   ],
+   "quote": {
+    "text": "Ready-to-publish location content for government teams",
+    "url": "https://www.localintel.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.localintel.com",
+     "quote": "Localintel\u2019s AI-powered platform turns trusted data about your community into ready-to-use charts, maps, dashboards, stories, reports, and website embeds \u2013 so every department can publish and respond faster, without extra steps or delays."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.localintel.com",
+     "quote": "Professionally formatted, sourced, and ready to share reports on your economy, workforce, housing, demographics, quality of life, and more \u2013 exportable as polished PDFs or share web links."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.localintel.com",
+     "quote": "Plain\u2011English narratives that explain what the data means, editable in Word for newsletters, reports, communications, blogs, and board packs."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.localintel.com/products",
+     "quote": "Embed Localintel\u2019s interactive data visualization tools throughout your website to showcase your location's strengths more effectively, keep visitors engaged on your website longer and share crucial data-driven insights."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.localintel.com/products",
+     "quote": "Help businesses find commercial properties that are currently for sale or lease."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.localintel.com/products",
+     "quote": "Showcase the universities and colleges supplying talent to businesses in your location."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.localintel.com",
+     "quote": "One ready-to-use platform for every public-sector team that needs to communicate clear, credible, place-based information."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.localintel.com",
+     "quote": "Everyone is talking about using AI for economic development, but Norfolk County has already put it to work. In their first week with Localintel\u2019s location content platform, the team published a data-rich news article and responded to stakeholder questions in minutes, not days."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.localintel.com/about",
+     "quote": "Fast forward to 2023 and hundreds of communities across the US and Canada use Localintel products to identify and showcase what makes their communities a desirable place for businesses to operate and talent to live."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.localintel.com",
+     "sha": "d6a363958dc6a574",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.localintel.com/products",
+     "sha": "2ed2b9a11b4d16dc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.localintel.com/about",
+     "sha": "2c32d1356cdd18c0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "propel",
@@ -113828,7 +115230,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Library Ideas, LLC distributes e-content, builds its own products, and handles customer service directly. The company describes itself as a global media company supplying digital solutions and ideas to libraries around the world.",
+    "VOX Books are print books with a permanently attached VOX Reader that turns them into read-alongs. Freegal Music is a streaming and download music service reaching listeners through participating public libraries. Freading offers libraries over 200,000 titles from top publishers on a cost-per-circ basis with no simultaneous user limits.",
+    "Rocket Languages supports 14 languages, including American Sign Language, through lessons, games, and tutorials. Fiero Code, built with Fiero Learning, is a computer programming education product for public libraries and schools. Library Ideas states over 5,000 customers in over 20 countries around the world."
+   ],
+   "quote": {
+    "text": "We proudly distribute e-content, design and build innovative products, and directly handle customer service to ensure optimal satisfaction.",
+    "url": "https://www.libraryideas.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.libraryideas.com",
+     "quote": "We proudly distribute e-content, design and build innovative products, and directly handle customer service to ensure optimal satisfaction."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.libraryideas.com",
+     "quote": "a global media company with an unwavering focus and desire to provide innovative digital solutions and ideas to libraries around the world"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.libraryideas.com",
+     "quote": "The permanently attached VOX Reader transforms an ordinary print book into an all-in-one read-along"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.libraryideas.com",
+     "quote": "streaming and download music service provided to over 2.5 million listeners worldwide"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.libraryideas.com",
+     "quote": "offers libraries a vast collection of over 200,000 titles from top publishers"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.libraryideas.com",
+     "quote": "Rocket Languages supports 14 of the most requested languages, including American Sign Language, with interactive lessons, games, and tutorials."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.libraryideas.com",
+     "quote": "Library Ideas has partnered with Fiero Learning to transform lives through Fiero Code, a computer programming education solution for public libraries and schools."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.libraryideas.com",
+     "quote": "has over 5,000 customers in over 20 countries around the world"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.libraryideas.com",
+     "sha": "96ad221d6633a040",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.libraryideas.com/about",
+     "sha": "63135832031d127c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "medici-tv",
@@ -118347,7 +119826,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "ManagedMethods sells cybersecurity and student safety monitoring products built for K-12 schools. The products look for cyber safety and security risks in Google Workspace, Microsoft 365, and in the browser. Cloud Monitor is described as a centralized command center for managing Google Workspace and Microsoft 365 cybersecurity and student safety risks.",
+    "Content Filter is a cloud-based web filtering platform that applies browser-level URL blocking and artificial intelligence toward student safety, security, and CIPA compliance. It ships with support for over 30 website categories representing over 300,000 websites. Classroom Manager is a browser-extension-based classroom management tool for teachers and students.",
+    "Cloud Monitor can be deployed in minutes without extensions, proxies, or agents. The platform uses deep API integrations to monitor district Google Workspace and Microsoft 365 accounts. The platforms are aimed at IT teams in K-12 school districts on a limited budget."
+   ],
+   "quote": {
+    "text": "No appliances, gateways, proxies, or agents required. Content Filter stays with the users\u2019 district account, no matter what network they\u2019re on",
+    "url": "https://managedmethods.com/products/content-filter/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://managedmethods.com",
+     "quote": "ManagedMethods provides easy, affordable cybersecurity and student safety monitoring for technology leaders who need to secure online learning on a tight budget."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://managedmethods.com",
+     "quote": "Identify cyber safety and security risks in Google Workspace, Microsoft 365, and in the browser"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://managedmethods.com/products/cloud-monitor/",
+     "quote": "Cloud Monitor is a centralized command center for managing Google Workspace and Microsoft 365 cybersecurity and student safety risks."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://managedmethods.com",
+     "quote": "Content Filter is a cloud-based web filtering platform that uses browser-level URL blocking and artificial intelligence to provide internet student safety, security, and CIPA compliance."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://managedmethods.com/products/content-filter/",
+     "quote": "Out-of-box support for over 30 website categories representing over 300,000 websites."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://managedmethods.com/products/",
+     "quote": "Classroom Manager is a browser-extension-based classroom management tool designed to make online instruction and learning more effective for teachers and students."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://managedmethods.com/products/cloud-monitor/",
+     "quote": "Cloud Monitor can be deployed in minutes without extensions, proxies, or agents, and does not require extensive training."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://managedmethods.com/products/cloud-monitor/",
+     "quote": "The platform uses deep API integrations to continuously monitor for these risks in district Google Workspace and Microsoft 365."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://managedmethods.com",
+     "quote": "ManagedMethods provides enterprise-grade cloud security and web content filtering platforms built specifically for the unique needs of IT teams in K-12 school districts."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://managedmethods.com",
+     "sha": "4ee87603c05a4df5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://managedmethods.com/products/",
+     "sha": "92f6581037ae843a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://managedmethods.com/products/cloud-monitor/",
+     "sha": "9198270633b24254",
+     "fetched_on": null
+    },
+    {
+     "url": "https://managedmethods.com/products/content-filter/",
+     "sha": "38ef5d9c982e8746",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "steadyiq",
@@ -118721,7 +120293,83 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Lyssn sells AI software for quality improvement and training in health and human services. The platform provides session transcription and evaluations, and reports fidelity to evidence-based practices. A separate set of training modules covers evidence-based practices and uses AI to evaluate skill growth in real time and provide personalized feedback.",
+    "The company describes itself as founded by Ph.D-level clinical researchers and data scientists whose platform uses natural language processing. The about page states that the company was initially backed by funding from the National Institutes of Health.",
+    "The about page names the organizations served as child welfare and human services agencies, CCBHCs, crisis response and 988 systems, and behavioral provider systems including telehealth systems and payors. The home page lists state and local governments and HHS agencies among the groups Lyssn serves."
+   ],
+   "quote": {
+    "text": "Lyssn\u2019s AI platform is purpose-built for organizations caring for people and building healthier communities.",
+    "url": "https://www.lyssn.io"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.lyssn.io",
+     "quote": "Research-backed AI solutions to measure what matters in health & human services"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.lyssn.io",
+     "quote": "AI trained by experts to provide session transcription, comprehensive evaluations"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.lyssn.io",
+     "quote": "training modules for a variety of evidence-based practices that leverage AI to evaluate skill growth in real time and provide personalized feedback"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.lyssn.io",
+     "quote": "Founded by Ph.D-level clinical researchers and data scientists"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.lyssn.io/about-us/",
+     "quote": "initially backed by funding from the National Institutes of Health"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.lyssn.io/about-us/",
+     "quote": "including child welfare and human services agencies, CCBHCs, and crisis response/988 systems"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.lyssn.io",
+     "quote": "How We Service State & Local Governments and HHS Agencies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.lyssn.io",
+     "sha": "5e8b5d943dc93fc1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lyssn.io/about-us/",
+     "sha": "d74ae54c29b820ca",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.lyssn.io/about-us/our-team/",
+     "sha": "43bc5c42335b2f89",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "modality",
@@ -123770,7 +125418,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: IMLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "LegalEdge Software sells case management systems to city and county attorneys, prosecutors, public defenders, government agencies, school districts, and tribal governments across the United States. The software is web-based and is designed for the demands of government legal agencies, usable from a mainstream browser on a desktop, notebook or tablet.",
+    "The LegalEdge application handles case intake, document generation from templates, discovery management, time tracking and reporting. CityLaw NG and CountyLaw NG are built for city and county legal departments and hosted in Microsoft Azure or Microsoft Azure Government. Prosecutor Dialog organizes evidence, court dates, witnesses and legal documents for a prosecutor's caseload. A case-aware AI assistant called LEA summarizes police reports, claim files and transcripts and drafts first-pass motions, contracts and correspondence.",
+    "The current company combines LegalEdge Software, Judicial Dialog Systems and Cycom Data Systems, which merged into one team. Implementations span more than 150 jurisdictions nationwide, ranging in size up to 500 users."
+   ],
+   "quote": {
+    "text": "LegalEdge Software delivers a comprehensive ecosystem for modern judicial agencies to manage cases, automate workflows, and access critical data anytime, anywhere.",
+    "url": "https://www.legaledge.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://legaledge.com/about-us/",
+     "quote": "Serving city and county attorneys, prosecutors, public defenders, government agencies, school districts, and tribal governments across the United States"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://legaledge.com/products/",
+     "quote": "Our web-based software packages are designed to accommodate the unique demands of government legal agencies on-the-go."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://legaledge.com/products/",
+     "quote": "Key functions include time-saving tools like case reassignment, duplicate record consolidation, docket pad, Office documents integration, discovery management"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://legaledge.com/products/",
+     "quote": "Hosted in Microsoft Azure or Microsoft Azure Government"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://legaledge.com/products/",
+     "quote": "serves as a central hub for managing all aspects of a prosecutor's caseload, offering tools for organizing evidence, tracking court dates, managing witnesses, and generating legal documents"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.legaledge.com",
+     "quote": "She summarizes police reports, claim files, and transcripts; drafts first-pass motions, contracts, and correspondence"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://legaledge.com/about-us/",
+     "quote": "LegalEdge Software, Judicial Dialog Systems, and Cycom Data Systems"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://legaledge.com/about-us/",
+     "quote": "implementations across more than 150 jurisdictions nationwide, ranging in size up to 500 users"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.legaledge.com",
+     "sha": "482af171dafbf158",
+     "fetched_on": null
+    },
+    {
+     "url": "https://legaledge.com/products/",
+     "sha": "a8f95dbb95acf434",
+     "fetched_on": null
+    },
+    {
+     "url": "https://legaledge.com/about-us/",
+     "sha": "b71289c0032a947f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tcare-inc",
@@ -124981,7 +126711,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "LocalHop sells library software that puts event programming, room reservations, calendars and activity passes in one system. On the room reservation side, patrons book rooms themselves and staff get automated confirmations, buffer times and PIN door access. The calendar product publishes once across all branches, and activity passes let a library card reach local venues and cultural experiences.",
+    "The case studies name public libraries, academic institutions and statewide networks, including East Baton Rouge Parish Library and Rochester Hills Public Library. A county parks department is there as well, in a website project for Genesee County Parks & Recreation. Their pages describe single branches and multi-location systems in urban, suburban and rural communities.",
+    "Founded in 2015 in Pontiac, Michigan, the company started as a free events app before libraries became its market. The about page describes a platform built exclusively for public libraries, with 70+ custom ILS integrations and ten years in the market."
+   ],
+   "quote": {
+    "text": "Born by libraries. Built for the community.",
+    "url": "https://www.getlocalhop.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.getlocalhop.com",
+     "quote": "LocalHop is one system for everything your library coordinates."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.getlocalhop.com",
+     "quote": "Patrons book rooms themselves. Staff get automated confirmations, buffer times, and PIN door access"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.getlocalhop.com",
+     "quote": "Give patrons access to local venues and cultural experiences"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.getlocalhop.com/case-studies/",
+     "quote": "Real case studies from public libraries, academic institutions, and statewide networks"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.getlocalhop.com/case-studies/",
+     "quote": "When Genesee County Parks & Recreation set out to redesign its website, the goal was clear"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.getlocalhop.com",
+     "quote": "Single branches and multi-location systems. Urban, suburban, and rural communities."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.getlocalhop.com/about-us/",
+     "quote": "LocalHop launched in 2015 as a free events discovery app."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.getlocalhop.com/about-us/",
+     "quote": "A platform built exclusively for public libraries"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.getlocalhop.com",
+     "sha": "0353b7654d9a7588",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getlocalhop.com/case-studies/",
+     "sha": "656ae67d16ebcf4a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getlocalhop.com/about-us/",
+     "sha": "5b7f002405828653",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pressreader",
@@ -129726,7 +131538,112 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Linewize sells filtering and student safety software to schools and districts. These pages describe a suite of child cyber safety and wellbeing solutions. Those solutions are grouped under three pillars: prevention and enablement, early detection and intervention, and education and engagement.",
+    "Linewize Filter is content-aware, hybrid filtering that gives IT granular control and flexible rule configuration. Linewize Classroom Manager gives teachers control in the modern digital classroom. EdTech Manager reports on a district's app usage, student screen time, compliance and adoption. Linewize Monitor alerts designated staff to students whose digital behaviors indicate they may be at risk, using human moderated threat detection.",
+    "Linewize Pulse offers school-wide wellbeing insights and a channel for students to speak up if they need support. Qustodio enables parents to see and supervise their child's online activity on school-issued devices. School districts are named on these pages as the customers choosing Linewize. Linewize North America is part of Qoria, described as a family of child digital safety technology providers."
+   ],
+   "quote": {
+    "text": "We're not just a vendor, we're a long term, strategic partner to our customers.",
+    "url": "https://www.linewize.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.linewize.com",
+     "quote": "We help schools, districts and the communities they serve to keep children safe and thriving in their digital lives"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.linewize.com/about-us",
+     "quote": "Linewize provides the world's most comprehensive suite of child cyber safety and wellbeing solutions."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.linewize.com",
+     "quote": "Our solutions are organized around three fundamental health and safety pillars."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.linewize.com",
+     "quote": "Linewize Filter - Content-aware, hybrid filtering that gives IT granular control and flexible rule configuration to meet evolving safety needs."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.linewize.com",
+     "quote": "Linewize Classroom Manager - Empower teachers with control in the modern digital classroom to keep students safe and focused on learning."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.linewize.com",
+     "quote": "EdTech Manager - Get full visibility into your district's app usage, student screen time, compliance, adoption, and more to make confident, data-driven decisions."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.linewize.com",
+     "quote": "Linewize Monitor - Alert designated staff to students whose digital behaviors indicate they may be at risk with real-time, human moderated threat detection."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.linewize.com",
+     "quote": "Linewize Pulse - Gain school-wide insights to make wellbeing decisions, and offer your students a channel to speak up if they need support."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.linewize.com",
+     "quote": "Qustodio - Enable parents to see and supervise their child\u2019s online activity on school-issued devices."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.linewize.com/why-us",
+     "quote": "There are many different reasons why school districts choose Linewize."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.linewize.com/our-story",
+     "quote": "Linewize North America is part of Qoria, a family of world-leading child digital safety technology providers."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.linewize.com",
+     "sha": "ca6f271c2dd6ee79",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linewize.com/about-us",
+     "sha": "d56893c7d9ffd648",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linewize.com/why-us",
+     "sha": "54f0db60c63ce82f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.linewize.com/our-story",
+     "sha": "636f34b58b4e74fa",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "itopia",
@@ -130614,7 +132531,102 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "LibLime sells Bibliovation, a Library Services Platform offered as a SaaS solution. The platform is presented as 100% web-based and cloud-hosted open development software. Buyers can select individual system components such as Acquisitions, MARC21 Cataloging Editor, Discovery Layer and the Digital Content Management module, or take the entire suite of services. The Digital Content Management module delivers a digital document repository that ingests scanned and born digital documents.",
+    "LibLime provides complete hosting of the application and database in its dedicated space within the FedRAMP-compliant Amazon EC2 cloud. That arrangement means no software installed on desktops and no servers required in the libraries. LibLime also provides consulting, development, implementation, and support and hosting for libraries of all types and sizes. Its implementation team covers data migration, union catalog creation, onsite and web-based training, PMP-certified project management, and complete system configuration.",
+    "LibLime states that it has provided library software and service solutions to public, academic and special libraries. Types of libraries listed as using Bibliovation include public library consortia. School district union catalogs appear on the same list."
+   ],
+   "quote": {
+    "text": "No software installed on desktops and no servers required in the libraries.",
+    "url": "https://liblime.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://liblime.com",
+     "quote": "Bibliovation\u2122 is a highly flexible Library Services Platform (LSP) offered as a SaaS solution."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://liblime.com",
+     "quote": "100% web-based and cloud-hosted open development Library Services Platform (LSP)"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://liblime.com",
+     "quote": "Users can select individual system components (i.e., Acquisitions, MARC21 Cataloging Editor, Discovery Layer, Digital Content Management module, etc.), or the entire suite of services can be provided for a complete Library Services Platform."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://liblime.com",
+     "quote": "Bibliovation\u2019s Digital Content Management module delivers a digital document repository capable of ingesting scanned and \u2018born digital\u2019 documents"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://liblime.com",
+     "quote": "LibLime provides complete hosting of the application and database in our dedicated space within the highly secure FedRAMP-compliant Amazon EC2 cloud."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://liblime.com/about-us/",
+     "quote": "No software installed on desktops and no servers required in the libraries."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://liblime.com",
+     "quote": "LibLime facilitates open development solutions by providing consulting, development, implementation, and support and hosting for libraries of all types & sizes."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://liblime.com/about-us/",
+     "quote": "Our implementation team provides superior services related to data migration, union catalog creation, onsite and web-based training, PMP-certified project management, and complete system configuration."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://liblime.com/about-us/",
+     "quote": "library software and service solutions to public, academic and special libraries"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://liblime.com/about-us/",
+     "quote": "Public library consortia"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://liblime.com/about-us/",
+     "quote": "School district union catalogs"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://liblime.com",
+     "sha": "1f91d3fffc4e3f35",
+     "fetched_on": null
+    },
+    {
+     "url": "https://liblime.com/about-us/",
+     "sha": "13ef50c9a1f91183",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "makemake",
