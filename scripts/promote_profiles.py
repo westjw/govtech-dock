@@ -827,7 +827,7 @@ def main() -> int:
     if a.land_all:
         gates = _read_gates()
         by = _by_category(store, seq)
-        done, skipped, total, unread = [], [], 0, []
+        done, skipped, total, unread, batch = [], [], 0, [], []
         for cat in sorted(by):
             rows = [(k, p) for k, p in by[cat]
                     if p.get("status") == "pending"
@@ -847,12 +847,22 @@ def main() -> int:
                 # name.
                 skipped.append((cat, len(rows)))
                 continue
-            if not keys:
-                continue
-            n = land(store, seq, keys, a.by,
-                     a.why or f"landed {cat} after gate review")
-            if n:
-                done.append((cat, n)); total += n
+            if keys:
+                done.append((cat, len(keys)))
+                batch.extend(keys)
+        # ONE LANDING, ONE JOURNAL ENTRY, and not for tidiness. `land` saves
+        # the WHOLE companies file on every call, and this loop mutates one
+        # in-memory list across categories - so calling it per category makes
+        # each save's diff the RUNNING TOTAL. journal.BLAST refuses anything
+        # over 25 records without force, and `land` forces on that category's
+        # own count, which stops matching the sixth time round: five categories
+        # landed and then sixteen were refused at 26, 27, 28... records. The
+        # guard was right every time. Landing once makes the count the caller
+        # forces on the count the journal sees, and it is what the rule asks
+        # for anyway - "a bulk action recorded as ONE entry so undoing restores
+        # all of it or none".
+        total = land(store, seq, batch, a.by,
+                     a.why or "landed after gate review") if batch else 0
         for cat, n in done:
             print(f"  {cat}: {n}")
         print(f"\n  {total} write-up(s) on the map, across {len(done)} "

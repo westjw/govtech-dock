@@ -125032,7 +125032,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:intellicene": {
   "kind": "profile",
@@ -125132,7 +125135,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:labrie-group": {
   "kind": "profile",
@@ -125241,7 +125247,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:md-ally": {
   "kind": "profile",
@@ -125560,7 +125569,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:nedap-identification-systems": {
   "kind": "profile",
@@ -125789,7 +125801,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:parkhub": {
   "kind": "profile",
@@ -125973,7 +125988,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:recycle-coach": {
   "kind": "profile",
@@ -126095,7 +126113,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:skyward": {
   "kind": "profile",
@@ -126212,7 +126233,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:sparkrock": {
   "kind": "profile",
@@ -126322,7 +126346,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:tagmaster": {
   "kind": "profile",
@@ -126429,7 +126456,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:trilliant": {
   "kind": "profile",
@@ -126638,7 +126668,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:tyler-technologies": {
   "kind": "profile",
@@ -126873,7 +126906,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:veovo": {
   "kind": "profile",
@@ -126990,7 +127026,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T10:07:53-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "buyer:intellicene": {
   "kind": "buyer",
@@ -127514,7 +127553,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:collectionhq": {
   "kind": "profile",
@@ -127631,7 +127673,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:door2door": {
   "kind": "profile",
@@ -127865,7 +127910,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:ecivis": {
   "kind": "profile",
@@ -127982,7 +128030,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:ecourtdate": {
   "kind": "profile",
@@ -128082,7 +128133,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:emaint": {
   "kind": "profile",
@@ -128186,7 +128240,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:epermithub": {
   "kind": "profile",
@@ -128298,7 +128355,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:equivant": {
   "kind": "profile",
@@ -128410,7 +128470,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:esleuth-ai": {
   "kind": "profile",
@@ -128509,7 +128572,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:etrak-recreation-software": {
   "kind": "profile",
@@ -128719,7 +128785,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:gtechna": {
   "kind": "profile",
@@ -128841,7 +128910,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:gworks": {
   "kind": "profile",
@@ -128963,7 +129035,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:i-probe": {
   "kind": "profile",
@@ -129073,7 +129148,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:i3-verticals": {
   "kind": "profile",
@@ -129277,7 +129355,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:ikegps": {
   "kind": "profile",
@@ -129386,7 +129467,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:infobase": {
   "kind": "profile",
@@ -129630,7 +129714,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:infor": {
   "kind": "profile",
@@ -129737,7 +129824,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:infotech": {
   "kind": "profile",
@@ -129849,7 +129939,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:infrahub": {
   "kind": "profile",
@@ -129959,7 +130052,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:inhance-utilities-solutions": {
   "kind": "profile",
@@ -130076,7 +130172,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:inlogic": {
   "kind": "profile",
@@ -130180,7 +130279,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:innosoft-canada": {
   "kind": "profile",
@@ -130395,7 +130497,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:inseer-inc": {
   "kind": "profile",
@@ -130514,7 +130619,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:insight-robotics": {
   "kind": "profile",
@@ -130833,7 +130941,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:intellicampus": {
   "kind": "profile",
@@ -131055,7 +131166,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:intellisafe-analytics": {
   "kind": "profile",
@@ -131369,7 +131483,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:invoke-learning": {
   "kind": "profile",
@@ -131486,7 +131603,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:ionwave-technologies": {
   "kind": "profile",
@@ -131703,7 +131823,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:issured-mea-digital-evidence-integrity": {
   "kind": "profile",
@@ -131807,7 +131930,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:44-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:istrike-alerts": {
   "kind": "profile",
@@ -132014,7 +132140,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:itopia": {
   "kind": "profile",
@@ -132114,7 +132243,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:itron": {
   "kind": "profile",
@@ -132214,7 +132346,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:jacobs": {
   "kind": "profile",
@@ -132331,7 +132466,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:jailcore": {
   "kind": "profile",
@@ -132759,7 +132897,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:jersey-watch": {
   "kind": "profile",
@@ -132863,7 +133004,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T11:08:46-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "buyer:bids-tenders": {
   "kind": "buyer",
@@ -135868,7 +136012,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:johnson-controls-openblue": {
   "kind": "profile",
@@ -136212,7 +136359,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:jsg-monitoring": {
   "kind": "profile",
@@ -136320,7 +136470,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:judicial-systems": {
   "kind": "profile",
@@ -136433,7 +136586,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:juganu": {
   "kind": "profile",
@@ -136604,7 +136760,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:jupiter-intelligence": {
   "kind": "profile",
@@ -136716,7 +136875,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:juryq": {
   "kind": "profile",
@@ -136820,7 +136982,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:justfoia": {
   "kind": "profile",
@@ -136923,7 +137088,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:justice-av-solutions": {
   "kind": "profile",
@@ -137032,7 +137200,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:justice-systems-by-long": {
   "kind": "profile",
@@ -137141,7 +137312,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:justiceone": {
   "kind": "profile",
@@ -137240,7 +137414,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:justicetext": {
   "kind": "profile",
@@ -137377,7 +137554,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kahua": {
   "kind": "profile",
@@ -137494,7 +137674,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:kajeet": {
   "kind": "profile",
@@ -137611,7 +137794,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kale-logistics-solutions": {
   "kind": "profile",
@@ -137933,7 +138119,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kanso": {
   "kind": "profile",
@@ -138233,7 +138422,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:karsan": {
   "kind": "profile",
@@ -138443,7 +138635,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:keefe-group": {
   "kind": "profile",
@@ -138550,7 +138745,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:keenious": {
   "kind": "profile",
@@ -138654,7 +138852,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:ketos": {
   "kind": "profile",
@@ -138763,7 +138964,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kinotek-inc": {
   "kind": "profile",
@@ -139109,7 +139313,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:knarrtek-inc": {
   "kind": "profile",
@@ -139219,7 +139426,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:knowink": {
   "kind": "profile",
@@ -139319,7 +139529,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kofile": {
   "kind": "profile",
@@ -139431,7 +139644,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:konnech": {
   "kind": "profile",
@@ -139531,7 +139747,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:konveio": {
   "kind": "profile",
@@ -139654,7 +139873,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kova-corp": {
   "kind": "profile",
@@ -139761,7 +139983,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:kuali": {
   "kind": "profile",
@@ -139873,7 +140098,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:17-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "profile:kuba": {
   "kind": "profile",
@@ -140186,7 +140414,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:landapp-by-landgate": {
   "kind": "profile",
@@ -140291,7 +140522,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:landis-gyr": {
   "kind": "profile",
@@ -140403,7 +140637,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:laserfiche": {
   "kind": "profile",
@@ -140525,7 +140762,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: every one re-run through check_profile immediately before landing (84 of 84 passed), a sample of eight read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:lazarus-cemetery-mapping": {
   "kind": "profile",
@@ -140737,7 +140977,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:leagueapps": {
   "kind": "profile",
@@ -140854,7 +141097,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:leaguelobster": {
   "kind": "profile",
@@ -141087,7 +141333,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence write-ups only, reviewed by Claude on the owner's instruction: all re-run through check_profile immediately before landing, a sample read sentence-against-quote. Medium, low and unsure were NOT reviewed and do not land here."
  },
  "profile:learnwise-ai": {
   "kind": "profile",
@@ -141204,7 +141453,10 @@
   "sled_eligible": null,
   "by": "agent:write-profiles",
   "at": "2026-09-13T12:16:18-04:00",
-  "status": "pending"
+  "status": "accepted",
+  "ruled_by": "agent:claude",
+  "ruled_on": "2026-09-13",
+  "ruled_why": "high-confidence only, reviewed by Claude on the owner's instruction"
  },
  "buyer:job-machine": {
   "kind": "buyer",
