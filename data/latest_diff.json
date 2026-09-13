@@ -1,13 +1,62 @@
 {
-  "date": "2026-09-12",
+  "date": "2026-09-13",
   "previous": "2026-09-12",
   "changes": [
     {
-      "company": "Pantonium",
-      "id": "pantonium",
+      "company": "ImageTrend",
+      "id": "imagetrend",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Procurated",
+      "id": "procurated",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Infax, Inc.",
+      "id": "infax-inc",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Jadu",
+      "id": "jadu",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
+    },
+    {
+      "company": "American Fidelity",
+      "id": "american-fidelity",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (3 Locations)"
+    },
+    {
+      "company": "Baseform",
+      "id": "baseform",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "GIS WebTech",
+      "id": "gis-webtech",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Envision Technology Partners, Inc.",
+      "id": "envision-technology-partners-inc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     }
   ]
 }
