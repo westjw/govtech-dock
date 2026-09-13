@@ -8510,7 +8510,94 @@
   "sled_only": true,
   "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government, led by finance (ERP, budgeting, procurement); also public works (asset management), community development (permitting), utilities (utility billing), and some school districts and t",
   "acquisition_note": "Acquired: Cartegraph (operations/asset management; announced 2022, Cox-financed), iGovServices ('Tax & Revenue', May 1, 2024), Ignatius (low-code forms/workflow, Feb 11, 2025). Itself: Cox Enterprises acquired majority ownership, Feb 27, 2024, at a $1.8B valuation.",
-  "acquisitions_checked_on": "2026-09-11"
+  "acquisitions_checked_on": "2026-09-11",
+  "profile": {
+   "paragraphs": [
+    "OpenGov sells a cloud platform for cities, counties, and state agencies that connects budgeting, finance, permitting, and asset management in one system. The Public Service Platform brings ERP and Community Operations products together, spanning Financial Management, Budgeting & Performance, Procurement & Contract Management, Permitting & Licensing, 311 Request Management, Utility Billing, and Payroll. OG Assist is the AI assistant built into every product, helping staff find answers, draft documents, and complete guided actions across the platform.",
+    "Software is built specifically for cities, counties, and state agencies, and the pages say over 2,000 governments run day-to-day operations on it. The buyers named are cities, counties, townships, special districts, school districts, utilities, and state agencies across the United States. Compliance controls built in cover GASB, FEMA, HUD, ARPA, and FLSA, and the platform is stated to be SOC 2 compliant.",
+    "OpenGov states 4,500+ government software implementations completed, with timelines that vary by product and organizational complexity, typically ranging from 3 to 6 months. Government App Builder is a no-code platform that lets IT teams build custom forms, workflows, and citizen-facing apps, with permissions, audit logs, and version history."
+   ],
+   "quote": {
+    "text": "The Public Service Platform is the one-stop-shop for government software.",
+    "url": "https://www.opengov.com/platform/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.opengov.com/platform/",
+     "quote": "The OpenGov Public Service Platform connects budgeting, finance, permitting, asset management, and more in one system built for state and local government, so departments run on the same data instead of disconnected tools."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.opengov.com/platform/",
+     "quote": "The Public Service Platform brings OpenGov\u2019s ERP and Community Operations products together in one place, so your teams, data, and workflows finally connect."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.opengov.com/platform/",
+     "quote": "OG Assist \u2014 AI built into every product, helping staff find answers, draft documents, and complete guided actions across the platform."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.opengov.com",
+     "quote": "Software built specifically for cities, counties, and state agencies."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.opengov.com",
+     "quote": "OpenGov serves cities, counties, townships, special districts, school districts, utilities, and state agencies across the United States."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.opengov.com/platform/",
+     "quote": "Compliance controls built in for GASB, FEMA, HUD, ARPA, FLSA"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.opengov.com",
+     "quote": "Implementation timelines vary by product and organizational complexity, typically ranging from 3 to 6 months."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.opengov.com/platform/government-app-builder/",
+     "quote": "OpenGov Government App Builder is a no-code platform that lets IT teams build custom forms, workflows, and citizen-facing apps in days instead of months"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.opengov.com",
+     "sha": "a8939a631b6dd639",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opengov.com/platform/",
+     "sha": "859567324ffd2948",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opengov.com/platform/government-app-builder/",
+     "sha": "9d24cb9aea4143bb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opengov.com/platform/enterprise-resource-planning/",
+     "sha": "740194a2dd66de78",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "clariti",
@@ -11969,7 +12056,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add; CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "ParentSquare sells a K-12 family engagement platform that brings communications, attendance, payments, and websites into one system. Alerts go out across channels with district-level control, and messages are auto-translated. Two-way messaging is offered so families and staff can connect and respond.",
+    "Packages are sold by tier, with an entry tier for districts establishing districtwide communication. Payments let families pay for field trips, fees, donations, and school activities in one place. Attendance add-ons cover notifications, outreach, and interventions, with SIS integration and tiered analytics.",
+    "Customers named on the pages are public school systems such as Boston Public Schools (MA) and Beaverton School District (OR). The platform is described as designed specifically for K-12 environments, with security, privacy, and accessibility built in."
+   ],
+   "quote": {
+    "text": "ParentSquare is the family engagement infrastructure that brings together school communication, attendance, websites, payments, and more into one secure, easy-to-use system, helping schools replace multiple disconnected tools with a single solution.",
+    "url": "https://www.parentsquare.com/platform/make-the-switch/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.parentsquare.com/platform/overview/",
+     "quote": "Unify communications, attendance, payments, and websites to strengthen family engagement, simplify school operations, and maximize student success."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.parentsquare.com/platform/overview/",
+     "quote": "Send fast, reliable alerts across channels with district-level control. Messages are auto-translated so everyone can stay updated and engaged."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.parentsquare.com/platform/overview/",
+     "quote": "Enable two-way messaging that makes it easier for families and staff to connect and respond quickly."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.parentsquare.com/platform/compare-packages/",
+     "quote": "Best for districts establishing consistent, districtwide communication."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.parentsquare.com/platform/compare-packages/",
+     "quote": "Make it easy for families to pay for everything from field trips and fees to donations and school activities, all in one convenient place."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.parentsquare.com/platform/compare-packages/",
+     "quote": "Actionable data insights with SIS integration and tiered analytics"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.parentsquare.com",
+     "quote": "Boston Public Schools (MA)"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.parentsquare.com",
+     "quote": "ParentSquare is designed specifically for K-12 environments, with security, privacy, and accessibility built in."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.parentsquare.com",
+     "sha": "21ae66af6522caaa",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parentsquare.com/platform/overview/",
+     "sha": "2a5a5cfb41569883",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parentsquare.com/platform/compare-packages/",
+     "sha": "41b4d34a7b4d71a7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parentsquare.com/platform/make-the-switch/",
+     "sha": "f477ff661836b01b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cubic-transportation-systems",
@@ -12734,7 +12908,88 @@
   "buyer": "municipalities and transit/airport authorities (general government / transit) primary for on-street and facility parking payment; also serves event venues, private operators, college campuses, and individual consumers",
   "sells_to_gov": "yes",
   "acquisition_note": "Part of Arrive \u2014 careers.arrive.com states Arrive \"includes brands like EasyPark, Flowbird, RingGo, ParkMobile and Parkopedia,\" and arrive.com/about names ParkWhiz and BestParking as Arrive-owned consumer apps; this parent relationship is not stated on parkmobile.io itself",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "ParkMobile sells a parking app that drivers use to find and pay for parking or to reserve a space in advance. The company is described as part of Arrive, which that page calls a global mobility platform. An improved payment center is described as supporting Apple Pay, Google Pay and ParkMobile Wallet as well as all major credit cards.",
+    "ParkMobile for Business is offered to companies for handling vehicles and users, tracking expenses, and pulling monthly reports from one portal. The site also addresses parking providers with a garage to fill, an event to run or a fleet to manage.",
+    "The app is now available in the City of Buffalo, covering on-street and off-street parking spaces there. ParkMobile Insights gives the city dashboards with anonymized data on parking behavior, demand trends, and space utilization."
+   ],
+   "quote": {
+    "text": "ParkMobile puts the power to park in your hands. Whether you're looking for a spot now or reserving a spot for later, ParkMobile has you covered.",
+    "url": "https://www.parkmobile.io"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.parkmobile.io",
+     "quote": "Easily find and pay for parking without running back to feed the meter, or reserve stress-free parking in advance, all on the free ParkMobile app."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/the-future-of-parking-starts-now-parkmobile-unveils-enhanced-app-experience",
+     "quote": "part of the global mobility platform Arrive , is rolling out a redesigned app built for simplicity, speed and smarter parking."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/the-future-of-parking-starts-now-parkmobile-unveils-enhanced-app-experience",
+     "quote": "An improved payment center will provide a central location for both personal and business accounts, supporting Apple Pay, Google Pay and ParkMobile Wallet as well as all major credit cards."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.parkmobile.io",
+     "quote": "Simplify how your company manages parking. ParkMobile for Business helps you handle vehicles and users, track expenses, and pull detailed monthly reports from one easy-to-use portal."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.parkmobile.io",
+     "quote": "got a garage to fill, a big event to run, a large fleet to manage or anything in between, our parking experts are ready to help."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/mayor-christopher-p-scanlon-announces-launch-of-parkmobile-in-buffalo-ny-bringing-smart-parking-and-",
+     "quote": "is now available in the City of Buffalo. Residents and visitors can use the ParkMobile app to find and pay for parking digitally at over 4,300 on-street and off-street parking spaces."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/mayor-christopher-p-scanlon-announces-launch-of-parkmobile-in-buffalo-ny-bringing-smart-parking-and-",
+     "quote": "The solution provides real-time dashboards with anonymized data on parking behavior, demand trends, and space utilization to help the city make the right decisions for its drivers."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.parkmobile.io",
+     "sha": "7f0626238cf49e8c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/the-future-of-parking-starts-now-parkmobile-unveils-enhanced-app-experience",
+     "sha": "846193bae71ddddc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/mayor-christopher-p-scanlon-announces-launch-of-parkmobile-in-buffalo-ny-bringing-smart-parking-and-",
+     "sha": "c9bf27b3c4487fa3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkmobile.io/about-us/newsroom/articles/1-in-6-americans-planning-road-trips-for-2026-fifa-world-cup",
+     "sha": "fee7b22a63fe3673",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ips-group",
@@ -13840,7 +14095,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "TechConnect 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Partage Club sells an app for sharing everyday items, and the site pitches it as a way to borrow what a household needs instead of buying it. Joining is free, and the site says a member creates a profile, finds an item nearby, requests it, and returns it. Coverage is described in terms of reimbursement up to a set amount if something happens during a share.",
+    "The homepage sorts visitors into paths for citizens, cities and municipalities, business and organization, and building your own platform. For cities, the offer is described as a fully supported, turnkey sharing solution that empowers citizens to share, save, and connect. A parallel offer aims at employees and members inside businesses and organizations. The platform option is a customized sharing platform powered by the company's technology, with infrastructure, a safety framework, and expertise supplied for deploying a sharing ecosystem tailored to an industry.",
+    "The mission page states the goal as making sharing the obvious choice so every community can unlock its collective abundance. The frequently asked questions page shows question headings for damage, late returns, giving items away, selling items, and account deletion."
+   ],
+   "quote": {
+    "text": "You don\u2019t need to own it all.",
+    "url": "https://www.partage.club/en-ca/about/our-mission"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.partage.club",
+     "quote": "The app for sharing everyday items."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.partage.club",
+     "quote": "Create your profile for free and discover your local hub."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.partage.club",
+     "quote": "If something happens, we reimburse up to a set amount."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.partage.club",
+     "quote": "Citizen Cities & Municipalities Business & Organization Build your own platform"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.partage.club",
+     "quote": "Empower citizens to share, save, and connect with a fully supported, turnkey sharing solution for your community."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.partage.club",
+     "quote": "Empower employees and members to share, save, and connect with a fully supported, turnkey sharing solution."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.partage.club",
+     "quote": "Launch a customized sharing platform powered by our technology. We provide the infrastructure, safety framework, and expertise so you can deploy a sharing ecosystem tailored to your industry."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.partage.club/en-ca/about/our-mission",
+     "quote": "Make sharing the obvious choice* so every community can unlock its collective abundance."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.partage.club/en-ca/about/frequently-asked-questions",
+     "quote": "What happens if an item is damaged or broken?"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.partage.club",
+     "sha": "6e8cab020a1d5ced",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.partage.club/en-ca/about/our-mission",
+     "sha": "9ee547d84a78b461",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.partage.club/en-ca/about/frequently-asked-questions",
+     "sha": "6341caeaabd475ab",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.partage.club/about/our-mission",
+     "sha": "9ee547d84a78b461",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "line-mobility",
@@ -14748,7 +15096,87 @@
     "sector": "Parks & Rec",
     "category": "Grounds, Irrigation & Turf"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Outdoorlink sells remote monitoring and control for outdoor electrical systems and displays, managed from one central platform. The homepage names a Smart Controller for remote asset monitoring, Vantage for detecting screen issues on digital ads, and an LED Luminaire sold on reduced energy cost. The listed uses run to lights, locks, signs, water features, Wifi and digital out-of-home displays.",
+    "The industries named are Parks & Recreation, Campus, Transit, Commercial Properties, Smart Asset Management, and Digital Place Based. Case studies on the site cover a county parks and recreation department, four transit agencies, three outdoor advertising companies, and a historic landmark. Those studies name Hillsborough County Parks and Recreation Department, Kansas City Area Transportation Authority, Long Beach Transit, Orange County Transportation Authority, Lamar Advertising Company, Stott Outdoor Advertising, and Circle City Outdoor. The homepage puts the count at 1,200+ organizations that rely on Outdoorlink to manage and monitor lighting and assets."
+   ],
+   "quote": {
+    "text": "Take control of your electrical systems and displays with Outdoorlink. Manage, monitor, and adjust lighting, signs, water features, OOH ads, and more from one central platform in real-time.",
+    "url": "https://outdoorlink.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://outdoorlink.com",
+     "quote": "Take control of your electrical systems and displays with Outdoorlink. Manage, monitor, and adjust lighting, signs, water features, OOH ads, and more from one central platform in real-time."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://outdoorlink.com",
+     "quote": "Detect screen issues in real time with Vantage by Outdoorlink, trusted for monitoring and verifying digital ads."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://outdoorlink.com",
+     "quote": "Energy efficient lighting solutions designed to reduce costs and extend the lifespan of your infrastructure."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://outdoorlink.com",
+     "quote": "Outdoorlink\u2019s smart technology is tailored to optimize operations and meet the unique needs of a wide range of industries. Whether you\u2019re overseeing billboards, digital screens, public parks, campus facilities, or commercial spaces, our solutions empower you with real-time control and monitoring to reduce costs and enhance performance."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://outdoorlink.com/case-studies/",
+     "quote": "Hillsborough County Athletics, managed by the Hillsborough County Parks and Recreation Department"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://outdoorlink.com/case-studies/",
+     "quote": "The Kansas City Area Transportation Authority (KCATA) is a transit agency"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://outdoorlink.com",
+     "quote": "Discover why 1,200+ organizations rely on Outdoorlink to manage and monitor their lighting and assets, saving valuable time and money."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://outdoorlink.com",
+     "sha": "3da26a1c1dbcec2b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://outdoorlink.com/products/",
+     "sha": "7209247d34385a61",
+     "fetched_on": null
+    },
+    {
+     "url": "https://outdoorlink.com/case-studies/",
+     "sha": "1160b8e5067e6e20",
+     "fetched_on": null
+    },
+    {
+     "url": "https://outdoorlink.com/company/",
+     "sha": "351c5b0610b3900f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "playground-guardian",
@@ -37088,7 +37516,72 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "OffenderWatch sells sex offender registry software to law enforcement agencies, hosted so records can be shared between jurisdictions and published to the public. The company says it works in partnership with more than 15,000 law enforcement officers, agency staff, and community members, and that the software monitors hundreds of thousands of sex offenders nationwide. The site describes the product as a configurable SOR monitoring platform that agencies use to improve efficiency and maintain compliance.",
+    "Agencies named on the site include Oklahoma City Police Department and Corpus Christi Police Department, with testimonials attributed to Sedgwick County, KS and Wakulla County, FL. Officers quoted there describe running statewide or nationwide investigative searches and sharing offender records with other agencies within minutes. The site also lists a Family Safety App for the public, alongside FAQs and a page on talking to children about sex offenders. The company states that the platform is backed by over 25 years of expertise and is built for public safety."
+   ],
+   "quote": {
+    "text": "In partnership with more than 15,000 law enforcement officers, agency staff, and community members, OffenderWatch\u00ae helps monitor hundreds of thousands of sex offenders nationwide.",
+    "url": "https://www.offenderwatch.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.offenderwatch.com",
+     "quote": "OffenderWatch \u00ae maintains the most comprehensive sex offender registry network available today and provides a secure hosted environment for agencies to collaborate between jurisdictions, share a common record, and automatically update the public."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.offenderwatch.com",
+     "quote": "In partnership with more than 15,000 law enforcement officers, agency staff, and community members, OffenderWatch\u00ae helps monitor hundreds of thousands of sex offenders nationwide. We collect, maintain, and share comprehensive, up-to-date records to ensure offenders are closely tracked and communities receive the most accurate information about their status and location."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.offenderwatch.com",
+     "quote": "As the most configurable SOR monitoring platform available, OffenderWatch\u00ae empowers agencies to:"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.offenderwatch.com",
+     "quote": "Corpus Christi Police Department loves OffenderWatch!"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.offenderwatch.com",
+     "quote": "OffenderWatch\u00ae helps us share detailed offender information with other agencies in minutes!"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.offenderwatch.com",
+     "quote": "Getting Started with Family Safety App Safety Tips for your Family"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.offenderwatch.com",
+     "quote": "Backed by over 25 years of proven expertise, OffenderWatch\u00ae delivers secure, reliable solutions built specifically for the evolving needs of public safety."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.offenderwatch.com",
+     "sha": "341ea8be3556a900",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "scram-systems",
@@ -40787,7 +41280,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Orange Data sells three services to local government departments, described on its own site as a way to automate third-party data requests, reduce manual work, and improve fee collection. The first, Lien Search Fulfillment, covers the lien search process from request to delivery. A second service, Lien Settlement, works with property owners to settle code liens. Public Records Management accepts, tracks, and delivers public records requests through a single portal.",
+    "The pages name cities and counties of all sizes as the customers served, and name public or private utilities as well. Departments listed include tax collectors, code enforcement, building departments, utility departments, and law enforcement. Each service runs on a per-transaction model where the fees are paid by the requester, and collected funds are remitted directly to the agency.",
+    "Orange Data was founded by Stewart Holley, a veteran and former local government elected official, and David Harrington, a Title Insurance industry expert. The about page states the aim as helping local governments do more with less, at no cost to taxpayers."
+   ],
+   "quote": {
+    "text": "We help local governments automate third-party data requests, reduce manual work, and improve fee collection.",
+    "url": "https://www.orangedata.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.orangedata.com",
+     "quote": "We help local governments automate third-party data requests, reduce manual work, and improve fee collection."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.orangedata.com",
+     "quote": "Let us simplify your lien search process. We handle everything from request to delivery."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.orangedata.com",
+     "quote": "We work with property owners to settle liens without adding more work for your staff."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.orangedata.com",
+     "quote": "Accept, track, and deliver public records requests through a single portal."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.orangedata.com",
+     "quote": "We serve cities and counties of all sizes"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.orangedata.com",
+     "quote": "We work with tax collectors, code enforcement, building departments, utility departments, law enforcement, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.orangedata.com",
+     "quote": "each operating on a per-transaction model, where the fees are paid by the requester"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.orangedata.com/about",
+     "quote": "Founded by Stewart Holley, a veteran and former local government elected official, and David Harrington, a Title Insurance industry expert"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.orangedata.com/about",
+     "quote": "Helping Local Governments Do More with Less"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.orangedata.com",
+     "sha": "0f0a5879b478a8e7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.orangedata.com/about",
+     "sha": "5a1ed23ae25df6a7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rep-d",
@@ -40883,7 +41459,91 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "OfferioRFP sells a secure, AI-powered platform that helps small and mid-sized businesses generate compliant and professional proposals. The platform works from documents a customer supplies, and the site tells users to upload past proposals and corporate documents so the tool follows an organization's own language. The pages state that the tool improves as a proposal library grows without exposing customer data to public AI models.",
+    "The work it covers is grouped on the page as government RFPs and tenders, grants and funding programs, and standing offers and RFQs. Customers use it to respond to municipal, provincial/state, federal, and agency RFPs with requirement analysis and compliance alignment. An assistant inside the product interprets requirements, drafts evaluator-ready responses, validates compliance, and surfaces supporting materials. A monitoring feature surfaces public-sector RFPs so a team spends its time on qualification rather than searching.",
+    "OfferioRFP runs on OfferioAI, which the page calls a purposefully built Business AI Engine. The site claims the platform saves on average 70% of time spent on custom proposal creations. A published set of questions says the product automates both RFP discovery and response generation using existing business documents."
+   ],
+   "quote": {
+    "text": "OfferioRFP is built to support the full spectrum of public-sector and institutional proposals",
+    "url": "https://offeriorfp.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://offeriorfp.com",
+     "quote": "a secure, AI-powered platform that helps small and mid-sized businesses generate compliant and professional proposals"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://offeriorfp.com",
+     "quote": "Upload your past proposals and corporate documents so OfferioRFP understands your organization"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://offeriorfp.com",
+     "quote": "without exposing your data to public AI models"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://offeriorfp.com",
+     "quote": "Track, respond, and manage standing offers, RFQs, and vendor"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://offeriorfp.com",
+     "quote": "Respond to municipal, provincial/state, federal, and agency RFPs with"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://offeriorfp.com",
+     "quote": "requirements, drafts evaluator-ready responses, validates compliance, and surfaces the right"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://offeriorfp.com",
+     "quote": "continuously monitors and curates public-sector RFPs"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://offeriorfp.com",
+     "quote": "harnesses the power of OfferioAI, our purposefully built Business AI Engine"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://offeriorfp.com",
+     "quote": "saves on average 70% of time spent on custom proposal creations"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://offeriorfp.com",
+     "quote": "automates both RFP discovery and response generation using your existing business documents"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://offeriorfp.com",
+     "sha": "f8ce3903fcf5e870",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "etrak-recreation-software",
@@ -41172,7 +41832,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Oversite sells a construction inspection and project management platform for unit-priced contracts, aimed at civil engineering inspection teams, public agencies, and contractors. The about page says the platform handles the work CEI firms actually do, including DWRs, pay estimates, retainage, and change orders.",
+    "Three roles are named on the homepage: inspection firms running the CEI process on public infrastructure projects, agencies overseeing delivery, and contractors in the field. For agencies the homepage describes overseeing project delivery across firms with real-time dashboards, audit-ready trails, and compliance. For contractors it describes submitting work reports and pay requests from the field and getting paid faster with fewer billing corrections.",
+    "The about page says the platform was built by people who ran CEI projects for a living, and that the company is based in Nashville, TN. The same page calls the product the platform of record for firms and agencies managing hundreds of public infrastructure projects."
+   ],
+   "quote": {
+    "text": "By CEIs, for CEIs.",
+    "url": "https://www.addoversite.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.addoversite.com",
+     "quote": "Oversite is the modern platform for civil engineering inspection teams, public agencies, and contractors."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.addoversite.com/about",
+     "quote": "Oversite handles the work CEI firms actually do, DWRs"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.addoversite.com",
+     "quote": "Built for the inspectors, PMs, and Resident Engineers running the CEI process on public infrastructure projects."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.addoversite.com",
+     "quote": "Oversee project delivery across firms with real-time dashboards, audit-ready trails, and compliance baked in."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.addoversite.com",
+     "quote": "Submit work reports and pay requests from the field. Get paid faster, with fewer billing corrections."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.addoversite.com/about",
+     "quote": "Built by CEI and tech founders Based in Nashville, TN"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.addoversite.com/about",
+     "quote": "platform of record for firms and agencies managing hundreds of"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.addoversite.com",
+     "sha": "0213cd795b6500cf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.addoversite.com/about",
+     "sha": "fdc9025744ce0a09",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "modelve",
@@ -41244,7 +41975,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "OD Security North America, a Women-Owned Small Business, is the North American distributor of the SOTER RS Full Body Security Scanning System and a strategic R&D partner to OD Security BV. The company was established in late 2012, is based out of College Station, Texas, and grew its team from the Healthcare and Medical X-Ray industry. The company describes the SOTER RS as a contact-free search procedure with no safety risk to Staff.",
+    "Contraband detection for Law Enforcement, Corrections and Community Justice Agencies is the stated market, and the company says the challenges those agencies face constantly increase. OD Security North America says it was awarded a contract by the Texas Department of Criminal Justice to provide SOTER RS Full Body Security Scanning Systems into TDCJ State Prison Facilities. The system can interface directly with a Jail Management System, which the company presents as a way to reduce processing time.",
+    "THEIA, the automatic threat recognition software, uses Artificial Intelligence to highlight and identify anomalies in scan images and flag them to the Operator. THEIA was trained on large collections of negative body scan images so that it can recognize anything that should not be part of a full body scan."
+   ],
+   "quote": {
+    "text": "The challenges facing Law Enforcement, Corrections and Community Justice Agencies constantly increase. The nature and type of contraband continues to change.",
+    "url": "https://odsecurityna.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "OD Security North America, a Women-Owned Small Business, is the North American Distributor of the SOTER RS Full Body Security Scanning System, and strategic R&D partner to OD Security BV."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "Established in late 2012, based out of College Station, Texas we have uniquely grown our Team from the Healthcare and Medical X-Ray industry."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "Contact-free search procedure with proven success and no safety risk to Staff."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://odsecurityna.com",
+     "quote": "The challenges facing Law Enforcement, Corrections and Community Justice Agencies constantly increase."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://odsecurityna.com",
+     "quote": "OD Security North America awarded contract by the Texas Department of Criminal Justice to provide SOTER RS Full Body Security Scanning Systems into TDCJ State Prison Facilities."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "Reduce processing time with a fast-scanning process, a user-friendly interface, and the ability to interface directly with your Jail Management System."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "THEIA uses complex Artificial Intelligence (AI) Software, to automatically highlight and identify anomalies in scan images."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://odsecurityna.com/about-us/",
+     "quote": "These scans have taught THEIA what a negative scan should look like, and it has learnt therefore to recognize anything that should not be part of a full body scan and highlight the anomaly to the Operator."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://odsecurityna.com",
+     "sha": "862115b20c290d2d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://odsecurityna.com/about-us/",
+     "sha": "d4eb2f4f8d8817dc",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vitalsense-technologies",
@@ -42274,7 +43082,100 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, municipalities, and parking/toll authorities (public sector primary); site also mentions merchants as a customer segment",
   "acquisition_note": "O-CITY is described on its own site as a platform built on payment technology from parent company BPC; not framed as an acquisition, more a product/brand of BPC",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "O-CITY is an automated fare collection platform for public transport operators and municipalities, and the payment technology behind it comes from BPC. The platform digitalises the payment process end-to-end, and travellers use a mobile or a payment card rather than paper tickets. Citizens and tourists can pay with smart cards, contactless Visa, MasterCard or UnionPay, mobile wallets, and QR codes.",
+    "These pages say the platform is sold to transport agencies, governments and merchants for self-service digital ticketing across their cities. For operators, account-based ticketing is described as reduced costs, improved efficiency and easier fare management. Fares can be based on route, type of transport or service, or traveller status such as student or senior.",
+    "Deployment options include on-premise, PaaS, SaaS or fully managed operations, on existing transport or merchant terminals. A case study on the platform page describes Bishkek moving away from the use of cash. Another case study describes a Ministry of Transport automating public transport fare collection."
+   ],
+   "quote": {
+    "text": "To empower transport operators and governments to provide an easy, secure and transparent city payment experience.",
+    "url": "https://www.o-city.com/about-us?hsLang=en"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.o-city.com",
+     "quote": "Adopted by more than 130 cities worldwide, O-CITY is an innovative automated fare collection solution for public transport operators and municipalities."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.o-city.com",
+     "quote": "O-CITY is an automated fare collection platform which has been designed with both transport operators and travellers in mind, digitalising the payment process end-to-end."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "Citizens and tourists alike can choose the payment method of their choice, including smart cards, contactless Visa, MasterCard or UnionPay, mobile wallets, and QR codes."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "O-CITY enables transport agencies, governments and merchants to roll out easy to use, self-service digital ticketing across their cities."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "For operators, account-based ticketing means reduced costs, improved efficiency and easier fare management."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.o-city.com",
+     "quote": "personalised fares can be based on route, type of transport or service, or traveller status (student or senior, for example)."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "O-CITY offers multiple models of deployment: on-premise, PaaS, SaaS or fully managed operations by O-CITY's team of experts."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "As part of its drive toward digital transformation and smart city programmes, Bishkek embarked on an innovative project to move away from the use of cash."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "quote": "The Ministry of Transport decided to engage in an ambitious digital transformation programme to automate public transport fare collection."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.o-city.com",
+     "sha": "b2085aed6ecfc273",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.o-city.com/en/platform?hsLang=en",
+     "sha": "aece464177ae354a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.o-city.com/about-us?hsLang=en",
+     "sha": "9aff1bc79c0b99ea",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.o-city.com/en/platform",
+     "sha": "aece464177ae354a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tmoney",
@@ -45604,7 +46505,94 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (bus, rail) primary, buying real-time passenger info displays; also airports, highways, and event venues",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Papercast sells battery and solar powered e-paper displays for sharing digital content with the public. The displays are updated through a content management system that can carry real-time or static information. Power options include rechargeable battery for indoor use and solar for outdoor use, with mains powered also available.",
+    "The homepage lists bus stop passenger information displays, rail arrival and station wayfinding, airport wayfinding, highways and car parks, and event panels among the applications. On the product page the company describes itself as developing e-paper display solutions for public transportation systems such as bus stops and train stations. That page names public transport operators and authorities as the organisations enabled to give passengers real-time arrival and departure information.",
+    "The software platform gives transportation operators an interface to manage displays, covering monitoring and diagnostics through to content management. It can be integrated with existing transit data systems so that display content is updated remotely."
+   ],
+   "quote": {
+    "text": "The world leader in battery and solar powered e-paper displays",
+    "url": "https://www.papercast.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.papercast.com",
+     "quote": "The world leader in battery and solar powered e-paper displays"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.papercast.com",
+     "quote": "Share a wide range of simple or complex, real-time or static information with the public using our powerful, easy-to-use content management system."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.papercast.com",
+     "quote": "rechargeable battery powered digital signage technology for inside and solar powered for outside use. Mains powered also available."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.papercast.com",
+     "quote": "Bus stop passenger information displays"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+     "quote": "developing e-paper display solutions for public transportation systems, such as bus stops and train stations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+     "quote": "We enable public transport operators and authorities to adopt next generation, sustainable technologies to provide clear, easy-to-read real-time arrival and departure information to passengers"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+     "quote": "Provides a user-friendly interface for transportation operators to manage their displays"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+     "quote": "Can be integrated with existing transit data systems, allowing operators to provide real-time information to passengers and make updates to the display content remotely."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.papercast.com",
+     "sha": "a559de885e5f8ae4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.papercast.com/case-studies/",
+     "sha": "a6af42c30e384f60",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+     "sha": "d880463077e94ba6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.papercast.com/company/a-bigger-space-for-a-growing-business-papercast-opens-new-trzin-office/",
+     "sha": "3e76eebdf9959113",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "connectpoint",
@@ -47026,7 +48014,100 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and city departments of transportation \u2014 named clients include DC Department of Transportation, Madera Metro, City of Fresno, and a Transit Tech Lab partnership with MTA NYCT and LIRR",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Ontra Mobility sells a planning platform that transit agencies use to model travel demand and generate optimized routes and on-demand zones before committing to service changes. The platform encodes budget, fleet, service standards, and agency feedback as constraints, and builds phased rollout plans for pilots and long-term planning. Analysis tools in the platform map origin-destination trip flows, load factors by route and time period, isochrone coverage, and census data.",
+    "A second product is a white-labeled trip planner app that carries the operator's branding and ingests GTFS and GTFS-RT feeds for schedules, vehicle positions, and service alerts. Ontra also sells operations software for bus, shuttle, and paratransit services, with a monitor app for fleet visibility, a driver app, and a rider app for on-demand trips. The operations stack also includes rider and driver applications for iOS and Android plus dashboard, analysis, and admin tools.",
+    "The white-label app is aimed at transit agencies, universities and campuses, hospitals and medical centers, corporate campuses, events and conferences, and apartment complexes. Ontra Mobility partners with the City of Fresno on a Transit On-Demand Feasibility Study. Ontra was selected for Transit Tech Lab to conduct a proof of concept with agency partners including MTA NYCT and LIRR."
+   ],
+   "quote": {
+    "text": "The AI Platform for Transit Planning.",
+    "url": "https://www.ontramobility.com/solutions/planning"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ontramobility.com/solutions/planning",
+     "quote": "Automatically generate new routes and zones and recommend the best changes for the existing network."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ontramobility.com/solutions/planning",
+     "quote": "Incorporate budget, fleet, service standards, and agency feedback to narrow feasible options."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ontramobility.com/solutions/planning",
+     "quote": "Understand where riders want to go with origin-destination flow maps."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ontramobility.com/solutions/white-label",
+     "quote": "The app ingests your agency's GTFS and GTFS-RT feeds to deliver accurate schedules, real-time vehicle positions, and service alerts."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ontramobility.com/solutions/operations",
+     "quote": "Revolutionize your transit system with our platform for planning, integrating, and operating your bus, shuttle, and paratransit services."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ontramobility.com/solutions/operations",
+     "quote": "Driver application for iOS and Android"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ontramobility.com/solutions/white-label",
+     "quote": "Built for organizations that run mobility programs and need a fast path to a rider-ready app."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ontramobility.com",
+     "quote": "Ontra Mobility partners with the City of Fresno"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.ontramobility.com",
+     "quote": "Ontra will conduct a proof of concept with agency partners, including MTA NYCT and LIRR"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ontramobility.com",
+     "sha": "f8b354348decf5db",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ontramobility.com/solutions/planning",
+     "sha": "3441e332f66f7038",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ontramobility.com/solutions/white-label",
+     "sha": "e61bea9862e013a3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ontramobility.com/solutions/operations",
+     "sha": "1f7bc48fed9d5648",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rideshark",
@@ -56077,7 +57158,100 @@
   "researched": false,
   "also_known_as": [
    "Operator XR LLC"
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Operator XR sells virtual reality training and simulation systems for law enforcement and military users. The company states that those systems are integrated, secure, and immersive, and that they enhance human performance in high-risk situations. Their solutions are delivered through the OP-2 platform, available in portable or large-scale fixed training environments with Sentinel.",
+    "Operator XR systems are presented as a way for military personnel and law enforcement officers to train operational tactics and procedures inside a portable virtual reality environment. The customers page states that law enforcement and military units are integrating the virtual reality technology into their training and mission rehearsal programmes. The solutions page describes officers interacting in scenarios such as virtual vehicle stops, crisis interventions, or active shooters inside school buildings.",
+    "Listed system features include compatibility with rifle, pistol, CEW and spray. Offline operation with no external internet is another feature the customers page names. The homepage news list states that Texas DPS selected the VR training system."
+   ],
+   "quote": {
+    "text": "Operator XR systems enable Military personnel and Law Enforcement Officers to train operational tactics and procedures within a portable, virtual reality environment.",
+    "url": "https://operatorxr.com/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://operatorxr.com",
+     "quote": "Virtual Reality Training Systems for Law Enforcement and Military"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://operatorxr.com",
+     "quote": "Operator XR specializes in providing uniquely integrated, secure, and highly immersive virtual reality law enforcement training and military simulation systems that enhance human performance in high-risk situations."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://operatorxr.com",
+     "quote": "Operator XR\u2019s solutions are delivered through the OP-2 platform, available in portable or large-scale fixed training environments with Sentinel."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://operatorxr.com/company",
+     "quote": "Operator XR systems enable Military personnel and Law Enforcement Officers to train operational tactics and procedures within a portable, virtual reality environment."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://operatorxr.com/customers",
+     "quote": "Operator XR is expanding globally, with Law Enforcement and Military units now integrating our leading virtual reality technology into their training and mission rehearsal programmes."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://operatorxr.com/solutions",
+     "quote": "Officers can fully interact in scenarios in situations such as virtual vehicle stops, crisis interventions, or active shooters inside school buildings."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://operatorxr.com/customers",
+     "quote": "Compatible with multiple use-of-force options including rifle, pistol, CEW and spray"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://operatorxr.com/customers",
+     "quote": "Offline operation and no external internet ensuring privacy and security"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://operatorxr.com",
+     "quote": "Texas DPS Selects Operator XR\u2019s VR Training System"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://operatorxr.com",
+     "sha": "eedf9df2eaa755c7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://operatorxr.com/customers",
+     "sha": "25c77b97d6600ab5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://operatorxr.com/company",
+     "sha": "dfb1ba826890ad35",
+     "fetched_on": null
+    },
+    {
+     "url": "https://operatorxr.com/solutions",
+     "sha": "6ef6104737a25b74",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "oracle",
@@ -60866,7 +62040,72 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2026; NLC City Summit 2026"
+  "source": "ICMA 2026; NLC City Summit 2026",
+  "profile": {
+   "paragraphs": [
+    "Omicron Technology Solutions lists Focus Identity Management as tools to manage identity for students, staff, and visitors. TransitME is offered as Configurable Software as a Service to digitally transform special fare administration. ConnectNow covers teacher collaboration and communication for IEPs, 504, and ISP plans. Custom Software Development and Customer Service & Back Office are also listed, the latter covering call center support and back office application processing.",
+    "Schools and universities are named for campus safety, where Focus is a web and cloud-based SaaS platform to maximize school safety for every student, teacher, and administrator. Public Transit Agencies are named as an industry, with TransitME described as eliminating manual, legacy, and paper processes that hinder access to riders with special fares. Cities and municipalities are named as another industry, and the CityID Platform allows a city to create custom CityIDs for residents."
+   ],
+   "quote": {
+    "text": "Developing Modern, Flexible, & Scalable Software to Simplify Complex Problems",
+    "url": "https://www.omicrontech.net"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.omicrontech.net",
+     "quote": "Flexible & scalable tools to manage identity for students, staff, & visitors."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.omicrontech.net",
+     "quote": "Configurable Software as a Service to digitally transform special fare administration."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.omicrontech.net",
+     "quote": "Teacher collaboration and communication for IEPs, 504, and ISP plans."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.omicrontech.net",
+     "quote": "Call center support and back office application processing."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.omicrontech.net",
+     "quote": "Focus is a web & cloud-based SaaS platform to maximize school safety for every student, teacher, and\u00a0administrator."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.omicrontech.net",
+     "quote": "TransitME digitally transforms transit programs by eliminating manual, legacy, and paper\u00a0processes that hinder access to riders with special fares."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.omicrontech.net",
+     "quote": "CityID Platform allows you to create custom CityIDs for residents."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.omicrontech.net",
+     "sha": "ac52cd3fc0e5e44e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "summer",
@@ -70632,7 +71871,81 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Paradox Engineering designs Internet of Things solutions that cities use to control and monitor street lighting. Energy efficiency, installation and maintenance cost, and cybersecurity are the problems the product pages put in front of cities and utilities. Interoperability and multi-vendor systems are offered as a counter to relying on one single vendor.",
+    "Established in 2005 and headquartered in Switzerland, the company started in industrial data transportation before extending that model to urban applications. Since 2015 it has been part of the Japanese Group MinebeaMitsumi, which the same page ties to development of Smart Lighting and Smart City solutions. A quality policy states the objective of growing as MinebeaMitsumi Group's IoT excellence centre, and the pages record ISO 9001:2015 certification."
+   ],
+   "quote": {
+    "text": "We make cities thrive on lighting.",
+    "url": "https://www.pdxeng.ch"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pdxeng.ch",
+     "quote": "We design IoT solutions for cities to control and monitor street lighting."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pdxeng.ch",
+     "quote": "We support cities and utilities in improving the cybersecurity levels of their IoT networks, devices, and applications."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pdxeng.ch",
+     "quote": "Interoperability and multi-vendor solutions are key to meet these needs."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pdxeng.ch/about-us/",
+     "quote": "Established in 2005 and headquartered in Switzerland, we were born as a telecommunication company, serving the market of industrial data transportation."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pdxeng.ch/about-us/",
+     "quote": "Since 2015 we are part of the Japanese Group MinebeaMitsumi, accelerating the development of Smart Lighting and Smart City solutions"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pdxeng.ch/about-us/quality/",
+     "quote": "The main objective of Paradox Engineering is to grow as MinebeaMitsumi Group's IoT excellence centre"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pdxeng.ch",
+     "sha": "6a2a03fd67a601e0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pdxeng.ch/about-us/",
+     "sha": "00239f9e02aff9f3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pdxeng.ch/about-us/join-our-team/",
+     "sha": "41378c8e3085a36b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pdxeng.ch/about-us/quality/",
+     "sha": "884674e321a468b7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "st-engineering-telematics-wireless",
@@ -81448,6 +82761,111 @@
    "ruled_by": "owner",
    "on": "2026-09-09",
    "source": "parks-rec vendor research"
+  },
+  "profile": {
+   "paragraphs": [
+    "OpenCounter sells permit discovery software that answers applicants' questions before they reach City Hall. The platform tells applicants where a project is allowed, which permits it needs and how much they cost, without asking city staff. Pricing depends on the population size of a jurisdiction and the number of portals procured.",
+    "The Business Portal is aimed at entrepreneurs working out the costs and requirements of starting a business. A use code search lets applicants enter simple terms rather than code language. Zoning maps show where a project is permitted, conditionally permitted, or prohibited in the jurisdiction. Fees are calculated as applicants enter project details, and a summary page lists required permits by department or in the order to apply.",
+    "The Residential Portal applies the same permit discovery to home improvement projects. The Special Events Portal handles event permitting from discovery through issuance, with applicants paying online and downloading permits after approval. Configuration and implementation are done by the company, which asks the jurisdiction for data such as ArcGIS shapefiles, a permit catalog and overlay districts. Zoning and municipal code updates are made for the duration of a subscription at no charge."
+   ],
+   "quote": {
+    "text": "OpenCounter helps applicants answer pre-application questions without calls, emails, or visits to City Hall, while streamlining staff processes for increased efficiency.",
+    "url": "https://www.opencounter.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.opencounter.com",
+     "quote": "Answer applicants\u2019 permitting questions before they get to City Hall."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.opencounter.com",
+     "quote": "Applicants learn where their project is allowed, which permits they need, and how much they cost, without even having to ask city staff."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.opencounter.com",
+     "quote": "Costs will vary depending on the population size of your jurisdiction and the number of portals you procure."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.opencounter.com/products/business/",
+     "quote": "Help entrepreneurs understand the costs and requirements of starting a business."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.opencounter.com/products/business/",
+     "quote": "Our use code search allows applicants to enter simple terms"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.opencounter.com/products/business/",
+     "quote": "The zoning maps reveal where the project is permitted, conditionally permitted, and prohibited in the jurisdiction."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.opencounter.com/products/business/",
+     "quote": "Fees are calculated in real-time as applicants enter project details."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.opencounter.com/products/residential/",
+     "quote": "OpenCounter\u2019s Residential Portal makes the process quick, easy to understand, and efficient for applicants and City Hall alike."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.opencounter.com/products/special-events/",
+     "quote": "OpenCounter takes care of everything from permit discovery to issuance within the portal. Applicants simply complete their applications and pay online, then download their permits and receipts after their applications have been approved."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.opencounter.com/products/residential/",
+     "quote": "OpenCounter will perform 99 percent of the work involved in configuration and implementation."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.opencounter.com/products/business/",
+     "quote": "We'll handle all of your zoning and municipal code updates for the duration of your OpenCounter subscription, completely free of charge."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.opencounter.com",
+     "sha": "b934beff34cf4d6c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opencounter.com/products/business/",
+     "sha": "8428404615656ea2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opencounter.com/products/residential/",
+     "sha": "945e3cb76e3a4412",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opencounter.com/products/special-events/",
+     "sha": "44b62409fc309bdf",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -85507,7 +86925,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Parking BOXX designs and builds parking control systems and parking equipment for surface lots, parking garages, hospitals, hotels, universities, airports, and municipal facilities across North America. A complete parking control system includes barrier gates, ticket machines or pay stations, LPR cameras, access control readers, and management software. The CloudEASE software platform provides real-time dashboards, remote access control, online reservations, pay-by-plate, and automated reporting.",
+    "Parking BOXX serves every US state and Canadian province, with systems in operation from Los Angeles to Newfoundland and from Alaska to Key West. The company states over 85 years of combined parking industry experience, with roots dating to 1939. Buyers purchase directly from the company that designed and built the equipment rather than from a reseller.",
+    "For operators removing booth staff, Parking BOXX describes an unattended parking system of barrier gates, pay stations, LPR cameras, and CloudEASE software that manages the operation remotely. Pages on parking revenue describe LPR cameras that eliminate tailgating, barrier gates that close cleanly after every vehicle, and pay stations that accept every payment method."
+   ],
+   "quote": {
+    "text": "Parking BOXX manufactures every major category of parking equipment in-house.",
+    "url": "https://www.parkingboxx.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.parkingboxx.com",
+     "quote": "Parking BOXX manufactures parking control systems and parking equipment for surface lots, parking garages, hospitals, hotels, universities, airports, and municipal facilities across North America."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.parkingboxx.com",
+     "quote": "A complete parking control system includes barrier gates, ticket machines or pay stations, LPR cameras, access control readers, and management software."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.parkingboxx.com",
+     "quote": "Real-time dashboards, remote access control, online reservations, pay-by-plate, and automated reporting"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.parkingboxx.com/about-us",
+     "quote": "Parking BOXX serves every US state and Canadian province, with systems in operation from Los Angeles to Newfoundland, from Alaska to Key West."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.parkingboxx.com/about-us",
+     "quote": "Parking BOXX has over 85 years of combined parking industry experience, with roots dating to 1939."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.parkingboxx.com/about-us",
+     "quote": "You buy directly from the company that designed and built the equipment."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.parkingboxx.com/solutions/reduce-staffing",
+     "quote": "Parking BOXX designs and manufactures the complete unattended parking system: barrier gates, pay stations, LPR cameras, and CloudEASE software that manages the entire operation remotely."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.parkingboxx.com/solutions/grow-revenue",
+     "quote": "LPR cameras that eliminate tailgating, barrier gates that close cleanly after every vehicle, pay stations that accept every payment method"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.parkingboxx.com",
+     "sha": "b6dd9ecead286ca5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkingboxx.com/about-us",
+     "sha": "50c0ff54ba56bd24",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkingboxx.com/solutions/grow-revenue",
+     "sha": "7fafbd39e7384846",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.parkingboxx.com/solutions/reduce-staffing",
+     "sha": "fcabeb3c243d6b73",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "smart-parking",
@@ -90853,7 +92358,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Omnilert sells an AI gun detection system that analyzes live video from existing security cameras and flags firearms before shots are fired. The system is built to run on cameras a site already owns rather than on new hardware. A detection is passed to a person for verification before the response is engaged.",
+    "Alert notifications carry event details such as time, location and photos, and the platform can automate responses across connected security systems, from locking doors to sounding alarms and notifying authorities. Alongside detection, the company sells emergency notification systems, mass notification systems and security workflow automation on one platform.",
+    "Omnilert lists the environments the system supports, including enterprises, hospitals, schools, higher education campuses, casinos, public transportation, stadiums and houses of worship. The same pages list government buildings and universities among the sensitive environments the solution suits. A school resource officer at EAWR High School in Wood River, Illinois is quoted on the site."
+   ],
+   "quote": {
+    "text": "It\u2019s a huge advantage to have Omnilert monitor 90 cameras all at once and notify me on any critical incident where somebody has a weapon.",
+    "url": "https://omnilert.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.omnilert.com/solutions/gun-detection-system",
+     "quote": "Omnilert\u2019s AI Gun Detection System empowers security teams with a proactive visual system that helps detect firearms before gunshots are fired"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.omnilert.com/solutions/gun-detection-system",
+     "quote": "organizations can enhance their current security infrastructure without replacing cameras or installing specialized hardware"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://omnilert.com",
+     "quote": "Rapid, accurate decisions start with human-verified intelligence"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://omnilert.com",
+     "quote": "complete with event details like time, location, and photos \u2014 while automating critical responses across your existing security ecosystem, from locking doors to sounding alarms and notifying authorities in seconds"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.omnilert.com/solutions",
+     "quote": "Omnilert offers the most comprehensive array of emergency communications solutions, spanning prevention, notification, engagement, and incident management."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.omnilert.com/solutions/gun-detection-system",
+     "quote": "including enterprises, hospitals, K\u201312 schools, higher education campuses, corporate campuses, distribution facilities, casinos, public transportation, stadiums, venues, houses of worship, public spaces, and more."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.omnilert.com/solutions/ai-gun-detection",
+     "quote": "making it suitable for sensitive environments such as enterprises, hospitals, government buildings, schools, universities, casinos, houses of worship, and many more."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://omnilert.com",
+     "quote": "Chris Johnson \u2013 School Resource Officer, EAWR High School"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://omnilert.com",
+     "sha": "4d2505c4267913a9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.omnilert.com/solutions",
+     "sha": "1bbab3fe40340e8d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.omnilert.com/solutions/gun-detection-system",
+     "sha": "de72f7a51ee5cd0b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.omnilert.com/solutions/ai-gun-detection",
+     "sha": "b2a3cdd22f1b3be5",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "actuate-ai",
@@ -100256,7 +101848,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Pani Energy is a global software company focused on utility and industrial water and wastewater operations intelligence. Its offering is described as one platform holding a complete intelligence toolbox for a plant. An agent called Agent Zed is described as an AI process engineer that does analysis, answers questions, and performs recurring jobs.",
+    "The software works with SCADA data, spreadsheets, paper logs, and plant documents, and can ingest data from a system like Hach WIMS. The company says its team supports operators across North America, Europe and Asia-Pacific. Applications are grouped by plant type: wastewater, drinking water, industrial, food and beverage, desalination, and reuse.",
+    "The case studies page describes real deployments and what each plant needed, what Pani did, and what it was worth. Entries include a 280 MLD municipal wastewater plant in Washington State and a county water treatment plant in Washington State. Other entries name a beverage bottling plant in Asia and a groundwater replenishment system in California."
+   ],
+   "quote": {
+    "text": "Pani is a global software company focused on utility and industrial water and wastewater operations intelligence.",
+    "url": "https://www.pani.global/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pani.global/about",
+     "quote": "Pani is a global software company focused on utility and industrial water and wastewater operations intelligence."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pani.global",
+     "quote": "One platform. A complete intelligence toolbox for your plant."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pani.global",
+     "quote": "Agent Zed does any analysis, answers any question, performs recurring jobs"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pani.global",
+     "quote": "Pani can work with your SCADA data, spreadsheets, paper logs, and plant documents."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pani.global/about",
+     "quote": "Our team spans product, engineering, implementation and customer success, supporting operators across North America, Europe and Asia-Pacific."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pani.global/case-studies",
+     "quote": "All Wastewater Drinking Water Industrial Food & Beverage Desalination Reuse"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pani.global/case-studies",
+     "quote": "What the plant needed, what Pani did, and what it was worth."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pani.global/case-studies",
+     "quote": "280 MLD municipal wastewater plant, Washington State"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.pani.global/case-studies",
+     "quote": "Groundwater replenishment system, California \u00b7 27 RO trains"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pani.global",
+     "sha": "eee66a65c0a6850d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pani.global/case-studies",
+     "sha": "9fcc1a889131b9b2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pani.global/about",
+     "sha": "493d775f86a46648",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "transcend",
@@ -100539,7 +102219,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Opti sells a cloud-based platform for stormwater management. Its Continuous Monitoring and Adaptive Control solution optimizes the collection, storage, and treatment of stormwater runoff. The home page describes real-time sensor data and forecast information feeding automated controls on stormwater infrastructure.",
+    "The products page lists browser-based dashboards with real-time and historic data, event separation for reporting, and third-party data integrations. Automated predictive control is listed with 90+ adjustable configuration settings, together with coordinated release that controls upstream releases based on downstream environmental conditions. Services listed there include feasibility assessments, design support, hydrologic and hydraulic modeling, software configurations, and site management, inspection, and maintenance for certified hardware.",
+    "The featured project on the home page names the City of Albany and Albany Water Supply. The about page states that by 2020 the company was helping cities like Albany, NY, reduce sewage overflows using a coordinated system. Regulatory compliance covering MS4, CSO, and development is listed among the challenges the company addresses."
+   ],
+   "quote": {
+    "text": "Opti technology helps us identify existing conditions and develop strategies to adapt to a changing environment.",
+    "url": "https://optirtc.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://optirtc.com",
+     "quote": "Optimize, Adapt, and Save with Opti\u2019s Cloud-Based Platform for Smart Stormwater Management"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://optirtc.com",
+     "quote": "Opti\u2019s Continuous Monitoring and Adaptive Control (CMAC) solution optimizes the collection, storage, and treatment of stormwater runoff."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://optirtc.com",
+     "quote": "Real-Time Sensor Data and Forecast Information"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://optirtc.com/products",
+     "quote": "Browser-based dashboards with real-time/historic data and event separation for easy reporting and analysis"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://optirtc.com/products",
+     "quote": "Automated, forecast-predictive control with 90+ adjustable configuration settings"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://optirtc.com/products",
+     "quote": "Feasibility assessments, design support, hydrologic and hydraulic (H&H) modeling, and software configurations"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://optirtc.com",
+     "quote": "Opti Featured Project: The City of Albany and Albany Water Supply"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://optirtc.com/about-us",
+     "quote": "By 2020, Opti was helping cities like Albany, NY, reduce sewage overflows using a coordinated system."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://optirtc.com",
+     "quote": "(MS4, CSO, Development)"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://optirtc.com",
+     "sha": "4ea32281dbf038b4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://optirtc.com/about-us",
+     "sha": "69c6063aa018a6ee",
+     "fetched_on": null
+    },
+    {
+     "url": "https://optirtc.com/products",
+     "sha": "0cd1f37c62c9be5c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "2ndnature",
@@ -107779,7 +109547,94 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Primarily industrial businesses (ports, airports, manufacturing, solar-farm monitoring) per their own site's stated customer description; also involved in government-linked projects such as a Dubai Fu",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Oxa sells self-driving software for industrial vehicles, together with modular autonomy hardware and fleet management software. The company describes that work as the automation of repetitive industrial driving tasks, including towing and carrying goods and monitoring assets and perimeters. Existing vehicles built by OEMs are up-fitted with autonomy hardware so they can run that software.",
+    "The customer stories page names DHL Supply Chain, where autonomy is deployed in live airport traffic. It names bp, where the self-driving software runs across refineries and wind and solar farms. It also names Vantec Europe, in autonomous trailer and container shunting.",
+    "Alongside the software, Oxa offers services to plan, deploy, manage and scale self-driving fleets. The settings named for these fleets are ports, airports, yards and industrial environments."
+   ],
+   "quote": {
+    "text": "The universal AI driver for industrial vehicles",
+    "url": "https://www.oxa.tech"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.oxa.tech",
+     "quote": "Safe, explainable and configurable self-driving software for any industrial vehicle."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.oxa.tech/about/",
+     "quote": "the automation of repetitive industrial driving tasks, such as the towing and carrying of goods in locations like ports, airports, and manufacturing facilities"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.oxa.tech/solutions/",
+     "quote": "existing vehicles produced by OEMs, which are up-fitted with autonomy hardware, ready to run our self-driving software"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.oxa.tech/customers/",
+     "quote": "We\u2019ve partnered with DHL Supply Chain to deploy autonomy in live airport traffic."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.oxa.tech/customers/",
+     "quote": "We\u2019ve teamed up with bp to deploy our self-driving software across its refineries and wind and solar farms."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.oxa.tech/customers/",
+     "quote": "Autonomous trailer and container shunting with Vantec"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.oxa.tech/solutions/",
+     "quote": "we collaborate to plan, deploy, manage and scale self-driving fleets"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.oxa.tech",
+     "quote": "change the way fleets move in ports, airports, yards, and industrial environments worldwide"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.oxa.tech",
+     "sha": "7ce044ecf37d5e1a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.oxa.tech/solutions/",
+     "sha": "e61e455a6c20cafc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.oxa.tech/customers/",
+     "sha": "8d1fccaf0a560093",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.oxa.tech/about/",
+     "sha": "b3c3a488f73be933",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "auve-tech",
@@ -109886,7 +111741,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "OnStrategy describes itself as a consulting firm and software provider focused on strategic planning, AI, and organizational performance. The services side covers building strategic plans and OKRs, with onsite facilitation, over a stated 25+ years of building strategic plans. The software side is described as strategic planning software for aligning a team, designing a strategy, executing with clarity, and engaging a board of directors.",
+    "A third line of work is AI strategy and roadmap services, described as creating a roadmap of prioritized AI opportunities for organizations. The about page states that the company is both a strategic services firm and a software company rather than one or the other. That page also states nearly two decades in strategic planning services and facilitation.",
+    "The customers page lists case studies for Washoe County, City and County of San Francisco, and County of San Bernardino. Other case studies on that page name Patagonia, Make-A-Wish, and Ohio University Credit Union. The homepage addresses leaders who need a strategic plan, an AI strategy and roadmap, or support with implementation."
+   ],
+   "quote": {
+    "text": "We\u2019re not just a strategic services firm. We\u2019re not just a software company. We\u2019re both.",
+    "url": "https://onstrategyhq.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://onstrategyhq.com",
+     "quote": "We\u2019re a consulting firm and software provider focused on strategic planning, AI, and organizational performance."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://onstrategyhq.com",
+     "quote": "We have 25+ years building strategic plans."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://onstrategyhq.com",
+     "quote": "Strategic planning software that helps you align your team to a bold direction, design a strategy, execute with clarity, and engage your board of directors."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://onstrategyhq.com",
+     "quote": "Our AI experts help leaders create a roadmap of prioritized AI opportunities to help organizations realize the promise of artificial intelligence."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://onstrategyhq.com/about-us/",
+     "quote": "We\u2019re not just a strategic services firm. We\u2019re not just a software company. We\u2019re both."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://onstrategyhq.com/about-us/",
+     "quote": "We\u2019ve been in the business of strategic planning services and facilitation for nearly two decades."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://onstrategyhq.com/customers/",
+     "quote": "Getting focused has an impact. Read how we helped these clients accomplish their vision of success."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://onstrategyhq.com/customers/",
+     "quote": "Case Study \u2013 Ohio University Credit Union"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://onstrategyhq.com",
+     "quote": "If you need a strategic plan, an AI strategy and roadmap, or support with implementation, we\u2019re here to champion your success."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://onstrategyhq.com",
+     "sha": "8750f4f074d7edff",
+     "fetched_on": null
+    },
+    {
+     "url": "https://onstrategyhq.com/customers/",
+     "sha": "a633411b05e3c965",
+     "fetched_on": null
+    },
+    {
+     "url": "https://onstrategyhq.com/about-us/",
+     "sha": "9bcaf1333b7ccdb9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://onstrategyhq.com/about-us/team/",
+     "sha": "5a423a63aa1f8fdd",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "spider-strategies",
@@ -110323,7 +112271,83 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Huwise designs and deploys tailored data product marketplaces for organizations. The company describes the product as a data marketplace solution that lets data leaders open their data and data products to business teams and partners.",
+    "Listed capabilities on the homepage include assigning access rights based on user roles in line with governance policies. Other capabilities cover data sharing and reuse through APIs, and analytics that track data consumption and user behavior.",
+    "The about page states that the company has enabled governments, cities, municipalities, public institutions, and businesses to open up their data. In 2025, Opendatasoft became Huwise, a change the about page attributes to the range of use cases the marketplace now supports. The same page cites over 350 clients across more than 25 countries."
+   ],
+   "quote": {
+    "text": "The only solution designed to drive data consumption, enabling all users (experts, business teams, and AI agents) to manage and use data products.",
+    "url": "https://www.opendatasoft.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "quote": "Huwise designs and deploys tailored data product marketplaces"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "quote": "data leaders within organizations unlock the value of their data and data products for business teams and partners"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.opendatasoft.com",
+     "quote": "Easily and securely assign access rights based on user roles within your project"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.opendatasoft.com",
+     "quote": "Effectively track data consumption with analytics tools designed to monitor and understand user behavior at every step of the journey."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "quote": "enabled governments, cities, municipalities, public institutions, and businesses to open up their data for greater transparency and collaboration"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "quote": "In 2025, Opendatasoft became Huwise (Human+Wise) to better reflect the richness and diversity of the use cases"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "quote": "over 350 clients across more than 25 countries"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.opendatasoft.com",
+     "sha": "e67c8559b60a34c7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opendatasoft.com/en/customers/",
+     "sha": "67c5c555659b7fa7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.opendatasoft.com/en/about-us/",
+     "sha": "ff5fd49b1b930b13",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "junar",
@@ -116400,7 +118424,96 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APPA Probation 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Outreach Smartphone Monitoring sells a smartphone service that monitors client locations and blood alcohol content for supervision agencies. Clients are monitored with active or passive GPS and blood alcohol content readings taken on a compact portable breathalyzer paired with a smartphone app. An integrated calendar sends reminders for court dates and other events. Violations are sent immediately by text message or email. A monitoring center reviews check-ins from electronic devices at all hours.",
+    "The product is aimed at criminal justice agencies. A video conferencing feature lets supervising officers hold virtual meetings and home visits and verify participant locations. Named settings for the service include parole, probation, pretrial, re-entry courts, drug courts, treatment facilities and a private probation company.",
+    "Client data for probation and pretrial services is stored with Amazon Web Services. The app replaces older monitoring hardware with a phone the person under supervision already owns."
+   ],
+   "quote": {
+    "text": "Outreach is more than just a tool to show compliance.",
+    "url": "https://osmnow.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://osmnow.com",
+     "quote": "Outreach not only monitors client locations and blood alcohol content via smartphones, but interacts and engages individuals throughout the monitoring process."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "Monitor clients with Active or Passive GPS and BAC using our compact portable breathalyzer and smartphone app."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "OSM\u2019s integrated calendar allows you to send reminders for important events."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://osmnow.com",
+     "quote": "All violations are sent immediately via text messages (SMS) or Email."
+    },
+    {
+     "p": 0,
+     "s": 4,
+     "url": "https://osmnow.com",
+     "quote": "Outreach offers 24/7/365 live monitoring of check-ins from electronic devices"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "providing criminal justice agencies worldwide with advanced technology designed to reduce recidivism"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "enabling supervising officers to conveniently communicate in real-time and verify participant locations securely"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "It doesn\u2019t matter if you work with Parole, Probation, Pretrial, Re-entry Courts, Drug Courts, Treatment Facilities or a Private Probation Company."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://osmnow.com",
+     "quote": "Secure data storage with Amazon Web Services (AWS)"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://osmnow.com/why-us/",
+     "quote": "By removing the hardware of old technology and replacing it with modern technology that they already own and use everyday"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://osmnow.com",
+     "sha": "126950b029091a30",
+     "fetched_on": null
+    },
+    {
+     "url": "https://osmnow.com/why-us/",
+     "sha": "30330afebbd6f0d2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cayenta",
@@ -120115,7 +122228,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASWA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PAIRIN sells My Journey, a platform for personalized workforce and education connections for students and job seekers. The company describes career and education matching, labor exchange and case management that connect the people an organization serves to careers, programs and jobs. My Journey is presented as connecting user data across systems for a unified learning and employment record with customizable workflows.",
+    "Packages include My Job Center, described as a one stop shop for employers and job seekers to connect. My Pro Center covers case management of eligibility, outcome tracking and warm hand off referrals to services and education programs. Within My Professional Center, career and academic counselors manage student career and academic plans, including college and career planning.",
+    "The home page places this work across workforce development, government and educational institutions. The about page describes workforce programs, government and education organizations delivering training, career guidance, job placement and community services through the platform."
+   ],
+   "quote": {
+    "text": "PAIRIN facilitates personalized workforce and education connections to foster rewarding and relevant journeys for students and job seekers.",
+    "url": "https://www.pairin.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "The My Journey platform facilitates personalized workforce and education connections to foster rewarding and relevant journeys for students and job seekers."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "AI-personalized career and education matching, labor exchange and case management enable workforce organizations to intelligently connect the people they serve to careers, programs and jobs."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "My Journey is the only platform that connects user data across systems for a unified learning and employment record and customizable workflows to personalize the experience for each person."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "A one stop shop for employers and job seekers to connect."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "Comprehensive case management of eligibility, outcome tracking and warm hand off referrals to services and education programs, reducing the administrative burden on professionals."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pairin.com/products/my-journey/",
+     "quote": "Education: Career and academic counselors can easily manage student career and academic plans, including college and career planning."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pairin.com",
+     "quote": "supporting skill development and career services across workforce development, government and educational institutions."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pairin.com/about/",
+     "quote": "PAIRIN\u2019s AI-driven My Journey platform enables these organizations to more effectively deliver training, career guidance, job placement and tailored community services through one easy-to-implement and simple-to-understand solution"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pairin.com",
+     "sha": "cc4f5f8f346bbff0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pairin.com/products/my-journey/",
+     "sha": "a182711d4d322f53",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pairin.com/about/",
+     "sha": "41db0c6655ecd203",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pairin.com/about/team/",
+     "sha": "eb1ae1a84546c1f9",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "saraworks",
@@ -121253,7 +123453,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "OverDrive distributes digital content to libraries and schools, with a catalog of ebooks, audiobooks and other digital media. Formats offered to library and school customers include ebooks, audiobooks, magazines and streaming video reaching beyond an organization's physical walls. School use runs from interactive Read-Along ebooks for a kindergartner to digital class sets for ELA for middle and high schoolers to career and test prep for college hopefuls.",
+    "Readers borrow ebooks, audiobooks and magazines from their library through the Libby app. A separate line of the business serves publishers, managing, protecting, fulfilling and promoting their ebooks and audiobooks. A company profile page puts the base served at more than 92,000 public libraries, K-12 schools, colleges and universities, and corporations in 115 countries.",
+    "The same page dates the founding to 1986 and describes a move from digitizing law books to distributing ebooks on floppy diskettes. That page also states that OverDrive is a Certified B Corporation."
+   ],
+   "quote": {
+    "text": "Global distributor of digital content for libraries & schools",
+    "url": "https://company.overdrive.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://company.overdrive.com",
+     "quote": "delivering the industry's largest catalog of ebooks, audiobooks and other digital media to a growing network of 92,000 libraries and schools in 115 countries"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://company.overdrive.com",
+     "quote": "Expand your reach and engagement by extending beyond your physical walls and offering anytime, anywhere access to ebooks, audiobooks, magazines and streaming video."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://company.overdrive.com",
+     "quote": "From introducing a kindergartner to reading with an interactive Read-Along ebook to serving middle and high schoolers with digital class sets for ELA to providing college hopefuls with career and test prep"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://company.overdrive.com",
+     "quote": "for readers to enjoy ebooks, audiobooks, and magazines from their library."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://company.overdrive.com",
+     "quote": "securely manage, enhance, protect, fulfill and promote their ebooks, audiobooks and more to maximize revenue."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://company.overdrive.com/company-profile/who-we-are/",
+     "quote": "more than 92,000 public libraries, K-12 schools, colleges and universities, and corporations in 115 countries worldwide."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://company.overdrive.com/company-profile/who-we-are/",
+     "quote": "Steve Potash founded OverDrive in 1986 with a mission to deliver content in new and innovative ways, evolving from digitizing law books to distributing ebooks on floppy diskettes."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://company.overdrive.com/company-profile/who-we-are/",
+     "quote": "We are a Certified B Corporation\u2122"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://company.overdrive.com",
+     "sha": "5ecb8e967ffa49fe",
+     "fetched_on": null
+    },
+    {
+     "url": "https://company.overdrive.com/company-profile/who-we-are/",
+     "sha": "ca8e70aef0dc7af5",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "the-library-corporation",
@@ -123100,7 +125377,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Open Point sells one platform that combines community engagement with stakeholder relationship management. The company states that the platform brings community voices and stakeholder relationships into one place across the project lifecycle. Stakeholder records centralize contact details, project context, relationships, and engagement history in one connected profile.",
+    "The platform is sold as two products, Community Engagement and Stakeholder Relationship Management. Social Point by Open Point brings participation tools, visual project pages, and built-in reporting together for running engagement. Engagement tools listed include interactive maps, budget simulations, surveys, polls, and idea boards.",
+    "The reporting product processes consultation responses, submissions, emails, transcripts and stakeholder communications. Open Point states that the reporting product is designed for government, infrastructure, utilities, energy and planning organizations. An industries section on the homepage lists Local & State Government among the markets named."
+   ],
+   "quote": {
+    "text": "Open Point brings all community voices and stakeholder relationships into one place, so you can understand perspectives, build trust, and drive delivery across the full project lifecycle.",
+    "url": "https://www.openpoint.com/platform/what-is-open-point/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.openpoint.com/platform/what-is-open-point/",
+     "quote": "One platform for community engagement and stakeholder relationship management"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.openpoint.com/platform/what-is-open-point/",
+     "quote": "Open Point brings all community voices and stakeholder relationships into one place, so you can understand perspectives, build trust, and drive delivery across the full project lifecycle."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.openpoint.com",
+     "quote": "Centralize contact details, project context, relationships, and engagement history in one connected profile."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.openpoint.com",
+     "quote": "Open Point brings Community Engagement and Stakeholder Relationships together in one platform."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.openpoint.com/products/community-engagement/",
+     "quote": "Social Point by Open Point brings together participation tools, visual project pages, and built-in reporting in one place."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.openpoint.com/products/community-engagement/",
+     "quote": "A dynamic suite of engagement tools, from interactive maps and budget simulations to surveys, polls, and idea boards, built to reach and involve every corner of your community."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.openpoint.com/products/advanced-reporting-and-analytics/",
+     "quote": "Process thousands of consultation responses, submissions, emails, transcripts and stakeholder communications in minutes rather than weeks."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.openpoint.com/products/advanced-reporting-and-analytics/",
+     "quote": "Advanced Reporting & Analytics is designed for government, infrastructure, utilities, energy and planning organizations."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.openpoint.com",
+     "quote": "Local & State Government"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.openpoint.com",
+     "sha": "1a78fad34b83cb78",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.openpoint.com/platform/what-is-open-point/",
+     "sha": "da35aff653baf522",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.openpoint.com/products/advanced-reporting-and-analytics/",
+     "sha": "8a52464d29f2bd36",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.openpoint.com/products/community-engagement/",
+     "sha": "94ef9852c2b78796",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "follett-software",
@@ -125707,7 +128077,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Ovation sells an AI-powered speaking simulator for practicing presentations, interviews, roleplay, and difficult conversations. The same application is offered two ways, on a computer without specialized hardware and in VR. Practice takes place in venues that recreate rooms such as a classroom, a lecture hall, a courtroom and a press room.",
+    "After a session, learners review transcripts, filler words, pacing, and AI-generated coaching notes. Reporting and analytics measure practice, participation, and improvement for individuals and programs.",
+    "The homepage names institutions, businesses, students, professionals, colleges, professors, universities and coaches as those who choose Ovation. More than 10,000 students use Ovation each semester, and educators around the globe bring the practice into classrooms, VR labs, and training programs. Ovation launched in 2016 with an initial focus on VR, and later expanded to desktop and AI."
+   ],
+   "quote": {
+    "text": "Speak confidently in the moments that matter",
+    "url": "https://www.ovationvr.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ovationvr.com",
+     "quote": "Practice presentations, interviews, roleplay, and difficult conversations in an AI-powered speaking simulator with realistic avatars and actionable feedback after every session."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ovationvr.com",
+     "quote": "Same AI-powered communication app. Two ways to improve."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ovationvr.com",
+     "quote": "Ovation venues recreate the spaces where communication happens"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ovationvr.com",
+     "quote": "Review transcripts, filler words, pacing, and customizable AI-generated coaching notes so you know exactly what to improve next."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ovationvr.com",
+     "quote": "Measure practice, participation, and improvement with insights that help individuals grow and programs stay informed."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ovationvr.com",
+     "quote": "Why Ovation is chosen by institutions businesses students professionals colleges professors universities coaches"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ovationvr.com/about",
+     "quote": "Ovation has already helped educators around the globe bring realistic, repeatable speaking practice into classrooms, VR labs, and training programs."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.ovationvr.com/about",
+     "quote": "Ovation launched in 2016, with our initial focus on VR."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ovationvr.com",
+     "sha": "54bf2da133073fb9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ovationvr.com/about",
+     "sha": "f86f5b8eb4b44f10",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "potential-ly",
@@ -132768,7 +135215,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Orlo sells a community engagement platform for the public sector, bringing social media management, social media listening, media monitoring and surveying together with responsible AI. Orlo works with over 400 public sector organisations, including local government and central government, NHS trusts, charities, universities and the UK Police Force. The platform is set out in three areas: social media management, voice of the community, and customer service.",
+    "Social media management covers scheduling and posting to channels including Nextdoor, Facebook, LinkedIn, Instagram, TikTok and YouTube, with analytics and a content calendar. Voice of the community combines surveys, social listening, consultations and media monitoring. Customer service handles resident enquiries through chatbots, live chat and a centralised inbox.",
+    "Orlo Insights builds on social listening and media monitoring with AI developed for the public sector. Orlo's trust indicator is described as measuring the driving factors of trust and distrust amongst citizens. Insights draws on sources reached through a partnership with LexisNexis, including online news sites, blogs and forums as well as print media."
+   ],
+   "quote": {
+    "text": "The only community engagement platform designed for the public sector",
+    "url": "https://orlo.tech"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://orlo.tech",
+     "quote": "Bringing Social Media Management , Social Media Listening , Media Monitoring , and Surveying together with responsible AI, to help public sector organisations build and measure public trust ."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://orlo.tech",
+     "quote": "Orlo works with over 400 public sector organisations, including local government and central government, NHS trusts, charities, universities and, 90% of the UK Police Force"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://orlo.tech",
+     "quote": "supporting them across three key areas."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://orlo.tech",
+     "quote": "Orlo integrates with a range of social media platforms & business software so you have everything you need in one place."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://orlo.tech",
+     "quote": "Combine surveys, social listening, consultations and media monitoring to understand what your communities are really saying."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://orlo.tech",
+     "quote": "Handle resident enquiries faster and more efficiently with chatbots, live chat and a centralised inbox all in one platform."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://orlo.tech/solutions/insights/",
+     "quote": "Combine the power of Social Listening, Media Monitoring and AI developed with the Public Sector in mind, to really understand the Voice of your Community."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://orlo.tech/solutions/insights/",
+     "quote": "Orlo\u2019s Trust Indicator allows you to research and measure the driving factors of trust and distrust amongst your citizens"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://orlo.tech/solutions/insights/",
+     "quote": "We\u2019ve partnered with LexisNexis to give you access to over 2.5 million sources including online news sites, blogs and forums, as well as print media, using Orlo Insights."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://orlo.tech",
+     "sha": "9e2e9ca407910321",
+     "fetched_on": null
+    },
+    {
+     "url": "https://orlo.tech/solutions/",
+     "sha": "8c2e01c82ae085ab",
+     "fetched_on": null
+    },
+    {
+     "url": "https://orlo.tech/solutions/social-media-management-tools/",
+     "sha": "3247445690e397d6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://orlo.tech/solutions/insights/",
+     "sha": "b8724f76e51d084c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "magicschool",
@@ -132928,7 +135468,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Panorama sells software for K-12 school districts that connects student data and AI with district policies across MTSS, pathways, surveys, and instruction. Panorama Student Success unifies data from a student information system, assessments, and surveys in one place to support MTSS. Panorama Surveys and Engagement collects student, staff, and family feedback.",
+    "Panorama Solara is a district-wide AI platform that draws on district student data and materials to generate intervention plans, family letters, and more. Solara includes ready-made prompts and tools to create lesson plans, rubrics, and grade-level texts. Panorama says district data is not used to train models. The platform is described as complying with SOC 2, FERPA, COPPA, and 1EdTech standards.",
+    "Panorama Solara with Class Companion delivers rubric-aligned feedback to students on their assignments. Panorama says 2,000 districts power their student supports with the platform. Districts use it to track attendance, behavior, and coursework for student support teams."
+   ],
+   "quote": {
+    "text": "Turn your data into what you do next.",
+    "url": "https://www.panoramaed.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.panoramaed.com",
+     "quote": "Panorama connects student data and AI with your district policies, then helps you take the right action across MTSS, pathways, surveys, and instruction."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.panoramaed.com/products/student-success",
+     "quote": "Panorama Student Success helps you overcome key MTSS challenges by unifying data from your student information system (SIS), assessments, surveys, and more in one user-friendly place."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.panoramaed.com",
+     "quote": "Collect student, staff, and family feedback that informs action."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara",
+     "quote": "By securely drawing from your district's student data and materials, Solara instantly generates intervention plans, family letters, and more"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara",
+     "quote": "Panorama Solara includes ready-made prompts and tools to create lesson plans, rubrics, grade-level texts, and more"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara/class-companion",
+     "quote": "Your district data is safe and secure and not used to train models."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara",
+     "quote": "Panorama prioritizes data security and privacy and fully complies with SOC 2, FERPA, COPPA, and 1EdTech standards."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara/class-companion",
+     "quote": "Class Companion personalizes learning with instant, rubric-aligned feedback that fuels revision, builds confidence, and motivates students to improve."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.panoramaed.com/products/student-success",
+     "quote": "2,000 districts power their student supports with Panorama."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.panoramaed.com/products/student-success",
+     "quote": "Panorama tracks the ABCs (attendance, behavior, and coursework), providing a single source of truth for student support teams."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.panoramaed.com",
+     "sha": "3c5ef46af6847594",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara",
+     "sha": "63ca1c09671610c0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.panoramaed.com/products/ai/panorama-solara/class-companion",
+     "sha": "5280ebf95df057cd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.panoramaed.com/products/student-success",
+     "sha": "5608766489bf6d81",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sergeant-laboratories",
@@ -139134,7 +141773,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Onflo sells a service operations platform for K-12 school districts, bringing IT, asset management, facilities, transportation, HR, telephony and workflow automation onto one platform. The pitch is consolidation, since districts are described as running dozens of separate service systems, one per department. The core product is a service desk that captures a request on any channel, routes it to the responsible team, and measures the outcome.",
+    "The platform pages describe IT service management with automated ticket routing, self-service resolution and SLA tracking. A separate asset management product holds a central record of district hardware and tracks each device from setup to retirement. The pages also list integrations with SIS, HRIS, MDM, finance and ERP systems.",
+    "The stated buyer is the school district, and the pages say the product is built for districts rather than adapted from generic enterprise software. Requests handled are not limited to IT, and include transportation, HR and facilities work."
+   ],
+   "quote": {
+    "text": "Onflo replaces fragmented service delivery with one connected operating platform for the entire district.",
+    "url": "https://www.onflo.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.onflo.com",
+     "quote": "Bring IT, Asset Management, Facilities, Transportation, HR, Telephony, AI Phone Agents, AI Chatbots, and Workflow Automation together on one unified platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.onflo.com",
+     "quote": "Most districts operate dozens of disconnected service systems for IT, Facilities, HR, Transportation, and constituent services."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.onflo.com/platform/unified-service-desk/",
+     "quote": "However people reach out, Onflo captures it, routes it to the right team, and measures the outcome"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.onflo.com/platform/it-service-management/",
+     "quote": "AI-powered automated ticket routing and self-service resolution"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.onflo.com/platform/asset-management/",
+     "quote": "Central repository for managing all IT hardware assets"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.onflo.com/platform/unified-service-desk/",
+     "quote": "Supercharge your service operations by integrating Onflo with all enterprise systems: SIS, HRIS, MDM, Finance, ERP & more."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.onflo.com",
+     "quote": "Unlike generic enterprise platforms adapted for education, Onflo is built specifically for how school districts deliver service."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.onflo.com/platform/it-service-management/",
+     "quote": "Grow synergies and split tickets across IT and non-IT requests covering transportation, HR, facilities and more."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.onflo.com",
+     "sha": "3c9821921924c61b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.onflo.com/platform/unified-service-desk/",
+     "sha": "7f20202ca7c058ef",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.onflo.com/platform/it-service-management/",
+     "sha": "6bef0696b6118528",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.onflo.com/platform/asset-management/",
+     "sha": "74b2d90a576c4c2f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "scrible",
