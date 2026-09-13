@@ -1084,6 +1084,15 @@ def check_no_person_in_the_repo() -> int:
                                  timeout=180).stdout.split("\0")
     except Exception as exc:                                    # noqa: BLE001
         return fail(f"could not list tracked files, so this proved nothing: {exc}")
+    # DEDUPED, BECAUSE `git ls-files` LISTS A CONFLICTED PATH ONCE PER STAGE.
+    # During an unresolved merge or rebase it emits data/companies.json three
+    # times - base, ours, theirs - and this check counts the file's addresses
+    # once per listing. It reported "3 address(es), up from 1" against a file
+    # holding exactly one, which had been there for weeks. A guard that cries
+    # wolf whenever somebody runs selftest mid-rebase is a guard people learn
+    # to wave through, and this one exists to stop a personal mailbox reaching
+    # a public repository.
+    tracked = list(dict.fromkeys(tracked))
     if len(tracked) < 50:
         return fail(f"git ls-files returned {len(tracked)} paths; this check "
                     f"only means anything against the real tree")
