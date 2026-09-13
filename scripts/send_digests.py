@@ -16,6 +16,22 @@ Three rules that keep this from becoming a spam cannon:
   3. last_sent ADVANCES ONLY ON A SUCCESSFUL SEND. If the mail API is down,
      those roles ride along to the next digest instead of vanishing into a
      window nobody received.
+  4. AND THE THIRD STATE, which rule 3 alone could not represent: the mail
+     LEFT and last_sent could not be written. Rule 3 guards one direction -
+     send fails, nothing is recorded, roles carry - and this is the inverse.
+     It happened on 2026-09-10: a transient 401 from Cloudflare KV raised out
+     of the loop and took the whole run down at the last step. Two harms, both
+     invisible. Every subscriber after that one got nothing and was never
+     told. And last_sent stayed stale, so the next digest clearing their
+     volume floor repeats a window they already received. No duplicate
+     actually went out, and only because the digest did not clear the floor on
+     either following day - luck, not a guard.
+
+     So: the KV write RETRIES, it never raises, one subscriber's failure never
+     ends the loop, and a send we could not record is named on stderr and
+     fails the step AFTER everybody has been served. There is nowhere safe to
+     write it down - CI is ephemeral, and no address or token may enter a
+     tracked file - so saying it plainly is the honest limit.
 
 No address is ever printed in full: this runs in CI and CI logs are forever.
 
@@ -79,11 +95,54 @@ class KV:
         except ValueError:
             return None
 
-    def put(self, key: str, value: dict) -> None:
-        r = requests.put(f"{self.base}/values/{key}", headers=self.h, timeout=30,
-                         files={"value": (None, json.dumps(value)),
-                                "metadata": (None, "{}")})
-        r.raise_for_status()
+    def put(self, key: str, value: dict) -> bool:
+        """Write a subscription back. True on success; NEVER raises.
+
+        IT RETURNS A VERDICT BECAUSE THE CALLER HAS ALREADY SENT THE MAIL.
+        `send_mail` has retried and returned True by the time this runs, so an
+        exception out of here is not "the write failed" - it is "a person has
+        the email and we cannot record that they do". Raising took the whole
+        run down mid-loop on 2026-09-10, which is two separate harms: every
+        subscriber after that one in the list got nothing and was never told,
+        and `last_sent` stayed stale so the same window would send again.
+
+        RETRIED ON 401, WHICH LOOKS WRONG AND IS NOT. A 401 is normally a real
+        auth failure and retrying it is pointless. The one this exists for was
+        transient: the same CF_API_TOKEN worked on 09-09 and again on 09-11,
+        and failed once in between. Two more attempts cost two seconds and
+        would have saved that run. A token that is genuinely revoked still
+        fails all three and is reported.
+        """
+        for attempt in range(3):
+            try:
+                r = requests.put(f"{self.base}/values/{key}", headers=self.h,
+                                 timeout=30,
+                                 files={"value": (None, json.dumps(value)),
+                                        "metadata": (None, "{}")})
+                if r.ok:
+                    return True
+                if r.status_code in (401, 429) or r.status_code >= 500:
+                    time.sleep(2 ** attempt)
+                    continue
+                print(f"    KV refused the write: {r.status_code}", flush=True)
+                return False
+            except requests.RequestException as exc:
+                print(f"    KV {type(exc).__name__}", flush=True)
+                time.sleep(2 ** attempt)
+        return False
+
+    def get_or_none(self, key: str) -> tuple[dict | None, bool]:
+        """(subscription, could_we_read_it). A read we could not make is not
+        an empty subscription: returning None for both would silently skip a
+        real subscriber and count them as "nothing to send"."""
+        for attempt in range(3):
+            try:
+                return self.get(key), True
+            except requests.RequestException:
+                time.sleep(2 ** attempt)
+            except Exception:
+                time.sleep(2 ** attempt)
+        return None, False
 
 
 def send_mail(key: str, to: str, subject: str, text: str, html: str) -> bool:
@@ -140,8 +199,22 @@ def main() -> int:
           + ("" if a.send else "  [DRY RUN - no mail will be sent]"), flush=True)
 
     sent = skipped = failed = 0
+    unreadable = 0
+    # SENT, BUT NOT RECORDED. The one state the old code could not represent:
+    # the mail left and `last_sent` could not be written. Those subscribers may
+    # receive the same window again, and the run must say so by name.
+    at_risk: list[str] = []
     for key in tokens:
-        sub = kv.get(key)
+        sub, could_read = kv.get_or_none(key)
+        if not could_read:
+            # A SUBSCRIBER WE COULD NOT READ IS NOT A SUBSCRIBER WITH NOTHING
+            # TO SEND. Skipping is the safe side - no mail goes out on prefs
+            # and a last_sent we do not have - but it is a skip somebody has to
+            # know happened, not a silent `continue`.
+            unreadable += 1
+            print(f"  [unreadable subscription - skipped, not 'nothing to send']",
+                  flush=True)
+            continue
         if not sub or not sub.get("email"):
             continue
         who = mask(sub["email"])
@@ -161,16 +234,41 @@ def main() -> int:
         if not a.send:
             continue
         if send_mail(resend, sub["email"], subject, text, html):
-            sub["last_sent"] = today.isoformat()
-            kv.put(key, sub)          # only after the mail actually left
             sent += 1
+            sub["last_sent"] = today.isoformat()
+            # ONLY AFTER THE MAIL ACTUALLY LEFT - and the count above is
+            # incremented BEFORE this, because it counts mail that left, which
+            # is now true whatever the write does next.
+            if not kv.put(key, sub):
+                at_risk.append(who)
         else:
             failed += 1
 
     print(f"\n{sent} sent, {skipped} skipped, {failed} failed"
+          + (f", {unreadable} unreadable" if unreadable else "")
           + ("" if a.send else "  (dry run)"))
-    # A failed send is not a broken build - the roles carry to the next digest.
-    return 0
+    if at_risk:
+        # NAMED, LOUD, AND THE RUN FAILS - after everybody has been served.
+        # These people have the email; we could not record that they do, so
+        # the next digest that clears their volume floor will send the same
+        # window again. There is nowhere safe to write this down: CI is
+        # ephemeral, and no address or token may enter a tracked file. Saying
+        # it plainly and failing the step is the honest limit.
+        print(f"\n{len(at_risk)} subscriber(s) WERE SENT MAIL that could not be "
+              f"recorded: {', '.join(at_risk)}", file=sys.stderr)
+        print(f"  Their last_sent is stale, so the next digest clearing their "
+              f"floor repeats this window. Re-running this script does NOT fix "
+              f"it - it would send again. Advance last_sent in KV by hand, or "
+              f"accept the repeat.", file=sys.stderr)
+    if unreadable:
+        print(f"\n{unreadable} subscription(s) could not be READ and got "
+              f"nothing. That is a fact about the KV API today, not about "
+              f"whether they had roles waiting.", file=sys.stderr)
+    # A FAILED SEND IS STILL NOT A BROKEN BUILD - the roles carry to the next
+    # digest, which is what `failed` counts and why it is not here. A send we
+    # could not RECORD is different: nothing carries it, and a person has to
+    # know. Same for a subscriber we could not read at all.
+    return 1 if (at_risk or unreadable) else 0
 
 
 if __name__ == "__main__":

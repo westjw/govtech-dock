@@ -5025,6 +5025,148 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
     return errors
 
 
+def check_one_subscriber_never_silences_the_rest() -> int:
+    """A KV write that fails after the mail left must not end the run.
+
+    THE 2026-09-10 REFRESH DIED HERE, at the last step, on a transient 401
+    from Cloudflare KV. `kv.put` called raise_for_status() and the exception
+    went straight out of main(), which is two harms and both are invisible:
+
+      1. EVERY SUBSCRIBER AFTER THAT ONE IN THE LIST GOT NOTHING, and was
+         never told. The line two below the crash reads "A failed send is not
+         a broken build - the roles carry to the next digest", which is
+         exactly what does not happen when the loop is gone.
+      2. last_sent STAYED STALE, so the next digest clearing that person's
+         volume floor sends the window again. No duplicate actually went out,
+         and only because the digest did not clear the floor on either
+         following day. Luck, not a guard.
+
+    DRIVEN THROUGH main(), not through KV.put. A guard that drives the helper
+    proves nothing about the caller, and the caller is the whole defect: put()
+    could return a verdict correctly while the loop still `continue`d past the
+    subscriber or still died. The transport is stubbed so no request leaves
+    and no address exists outside this function.
+    """
+    import types
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import send_digests as sd
+    import digest as dg
+    errors = 0
+
+    class Resp:
+        def __init__(self, code=200, body=None):
+            self.status_code, self._b, self.ok = code, body or {}, code < 400
+        def json(self): return self._b
+        def raise_for_status(self):
+            if not self.ok:
+                raise sd.requests.HTTPError(f"{self.status_code}")
+
+    class Fake:
+        """Cloudflare KV and Resend, with every PUT refused."""
+        HTTPError = sd.requests.HTTPError
+        RequestException = sd.requests.RequestException
+        def __init__(self):
+            self.mailed, self.puts = [], 0
+        def get(self, url, **kw):
+            if "/keys" in url:
+                return Resp(200, {"result": [{"name": "sub:aaa"},
+                                             {"name": "sub:bbb"},
+                                             {"name": "sub:ccc"}],
+                                  "result_info": {}})
+            if url.endswith("ccc"):
+                # A SUBSCRIPTION WE CANNOT READ. Without one in the fixture the
+                # unreadable branch is never driven, and a mutation deleting it
+                # walks straight past - which is exactly what happened the
+                # first time this guard was written.
+                raise Fake.RequestException("KV unreachable")
+            # example.org, because the address guard knows RFC 2606 reserves it.
+            # A fixture address must never be one the guard has to make an
+            # exception for - an exception is how a real mailbox eventually
+            # arrives in a file allowed to hold business ones.
+            who = ("alpha@example.org" if url.endswith("aaa")
+                   else "beta@example.org")
+            return Resp(200, {"email": who, "confirmed": True,
+                              "last_sent": "2026-09-01", "prefs": {}})
+        def put(self, url, **kw):
+            self.puts += 1
+            return Resp(401)                     # the 2026-09-10 failure
+        def post(self, url, **kw):
+            self.mailed.append(kw.get("json", {}).get("to", [None])[0])
+            return Resp(200, {"id": "msg"})
+
+    fake = Fake()
+    keep = (sd.requests, dg.build, dg.render, sys.argv,
+            {k: os.environ.get(k) for k in
+             ("CF_ACCOUNT_ID", "CF_KV_NAMESPACE_ID", "CF_API_TOKEN", "RESEND_KEY")})
+    try:
+        sd.requests = types.SimpleNamespace(
+            get=fake.get, put=fake.put, post=fake.post,
+            HTTPError=Fake.HTTPError, RequestException=Fake.RequestException)
+        sd.time = types.SimpleNamespace(sleep=lambda *_: None)   # no real backoff
+        dg.build = lambda board, s, today: {"send": True, "why": "", "rows": []}
+        dg.render = lambda d, s, board: ("subject", "text", "<p>html</p>")
+        for k in ("CF_ACCOUNT_ID", "CF_KV_NAMESPACE_ID", "CF_API_TOKEN", "RESEND_KEY"):
+            os.environ[k] = "test"
+        sys.argv = ["send_digests.py", "--send", "--today", "2026-09-12"]
+        out = io.StringIO(); err = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            rc = sd.main()
+        text = out.getvalue() + err.getvalue()
+        # THE REPORT IS STDERR, AND IT HAS TO BE READ ALONE. The loop already
+        # prints a masked name per subscriber to stdout, so asking "does the
+        # output contain the name" is answered by a line that has nothing to do
+        # with the warning. A mutation that stripped the names out of the
+        # at-risk sentence passed the first version of this check for exactly
+        # that reason.
+        warn = err.getvalue()
+
+        # 1. THE SECOND SUBSCRIBER WAS STILL SERVED. This is the whole defect.
+        if len(fake.mailed) != 2:
+            errors += fail(
+                f"a KV write failure on the first subscriber left "
+                f"{len(fake.mailed)} of 2 served. One person's bookkeeping "
+                f"failure must never silence everybody after them in the list")
+        # 2. IT RETRIED before giving up - a transient 401 cleared on a retry
+        #    the day this happened, and two seconds would have saved the run.
+        if fake.puts < 4:
+            errors += fail(f"only {fake.puts} KV write attempt(s) for 2 "
+                           f"subscribers; the write does not retry, and the "
+                           f"401 that caused this was transient")
+        # 3. THE RUN FAILS, so nobody finds out from a quiet green tick
+        if rc == 0:
+            errors += fail("mail went out that could not be recorded and the "
+                           "run reported success. The next digest clearing "
+                           "their floor repeats the window and nothing said so")
+        # 4. AND IT SAYS WHO, because a count nobody can act on is not a report
+        if "a****@example.org" not in warn or "b****@example.org" not in warn:
+            errors += fail(f"the at-risk subscribers are not named (masked) in "
+                           f"the WARNING, so nobody can fix their last_sent by "
+                           f"hand: {warn[-200:]!r}")
+        # 6. AND A SUBSCRIPTION WE COULD NOT READ IS REPORTED AS THAT, not as
+        #    a quiet skip. It got no mail, and whether it had roles waiting is
+        #    unknown - which is a fact about the KV API, not about them.
+        if "could not be read" not in warn.lower():
+            errors += fail(f"a subscription that could not be read at all was "
+                           f"skipped without being reported. A read we could "
+                           f"not make is not an empty subscription: "
+                           f"{warn[-200:]!r}")
+        if len(fake.mailed) != 2:
+            errors += fail(f"an unreadable subscription changed who got mail: "
+                           f"{fake.mailed}")
+        # 5. NO ADDRESS IN FULL, ever - this runs in CI and CI logs are forever
+        if "alpha@example.org" in text or "beta@example.org" in text:
+            errors += fail("a subscriber's full address reached the log")
+    finally:
+        sd.requests, dg.build, dg.render, sys.argv = keep[0], keep[1], keep[2], keep[3]
+        sd.time = __import__("time")
+        for k, v in keep[4].items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+    return errors
+
+
 def check_the_buyer_door_holds() -> int:
     """The scope door, case by case, and the shape of the answer it protects.
 
@@ -20902,6 +21044,7 @@ def main() -> int:
     errors += check_both_asks_reach_the_door_with_an_answer_in_them()
     errors += check_a_proposal_is_about_the_company_it_was_asked_about()
     errors += check_federal_is_out_and_a_city_is_not_federal()
+    errors += check_one_subscriber_never_silences_the_rest()
     errors += check_the_buyer_door_holds()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
