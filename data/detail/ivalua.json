@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "KI in der Beschaffung",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://de.ivalua.com/blog/ki-im-vertragsmanagement/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Gestione dei rischi dell\u2019IA agentica negli acquisti: una guida completa",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://it.ivalua.com/blog/gestione-dei-rischi-dellia-agentica-negli-acquisti/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Materiali diretti negli acquisti: la guida definitiva",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://it.ivalua.com/blog/materiali-diretti-negli-acquisti-la-guida-definitiva/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +35,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ivalua.com/press-releases/ivalua-achieves-ecovadis-gold-medal-for-second-consecutive-year/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Source-to-Contract (S2C) Process Guide: Steps, Stages, And How To Map It",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.ivalua.com/blog/source-contract-process/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Ivalua with Dun & Bradstreet: Setting the S2P Intelligence Standard via API + MCP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/ivalua-dun-bradstreet-supplier-risk-intelligence-api-mcp/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "AI in Strategic Sourcing: Benefits, Use Cases & Implementation Guide for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/ai-sourcing/"
   },
   {
    "date": "2026-09-03",
@@ -49,64 +103,10 @@
    "date": "2026-08-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "strategie di gestione dei fornitori",
+   "headline": "Guida completa alla gestione dei fornitori: strategie e best practice per il 2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://it.ivalua.com/blog/gestione-dei-fornitori/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Direct vs. Indirect Sourcing: A Complete Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/direct-vs-indirect-sourcing-guide/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Vendor Risk Management: The Complete Guide to Mitigate Third-Party Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/vendor-risk-management/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Direct Materials in Procurement: The Ultimate Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/direct-materials-procurement/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Deloitte and Ivalua Form Alliance to Modernize Global Source-to-Pay and Supply Chain Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/press-releases/deloitte-and-ivalua-form-alliance-to-modernize-global-source-to-pay-and-supply-chain-management/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Chemelex Successfully Goes Live with Ivalua to Streamline Procurement",
-   "kind": "contract",
-   "kind_rule": "Goes Live",
-   "url": "https://www.ivalua.com/press-releases/chemelex-successfully-goes-live-with-ivalua-to-streamline-procurement/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI-First Procurement: Closing the Gap Between Ambition and Execution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/ai-first-procurement/"
   }
  ]
 }

@@ -55,6 +55,15 @@
    "url": "https://www.sentinelone.com/blog/the-early-returns-of-ai-what-it-means-for-cybersecurity/"
   },
   {
+   "date": "2026-08-21",
+   "date_source": "index-text",
+   "first_seen": "2026-09-12",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 34 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-34-8/"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -62,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/professor-james-mickens-katie-moussouris-christiaan-triebert-and-dino-dai-zovi-to-keynote-sentinelones-labscon-2026/"
+  },
+  {
+   "date": "2026-08-07",
+   "date_source": "index-text",
+   "first_seen": "2026-09-12",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 32 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-32-8/"
   },
   {
    "date": "2026-08-04",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/sentinelone-expands-collaboration-with-aws-to-deliver-unified-ai-governance/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SentinelOne Expands Wayfinder Frontier AI Services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-expands-wayfinder-frontier-ai-services/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Triage Grind to Strategic Operator: The New AI SOC Career Path",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/from-triage-grind-to-strategic-operator-the-new-ai-soc-career-path/"
   }
  ]
 }

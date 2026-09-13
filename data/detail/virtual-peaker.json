@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "What is Peak Shaving?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/what-is-peak-shaving/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/smart-thermostats-demand-flexibility-what-utilities-should-know-before-launching-a-program/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Team Q&A: Sierra Milosh \u2013 Client Success IT Implementation Lead",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/team-qa-sierra-milosh-client-success-it-implementation-lead/"
   }
  ],
  "profile": {

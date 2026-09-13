@@ -1,25 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "What it takes to get RHTP compliance right",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/rhtp-compliance"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Government Grantmakers Create a Positive Citizen Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/citizen-experience"
-  },
-  {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "The Keys to Nonprofit Corporate Partnerships",
@@ -28,7 +10,7 @@
    "url": "https://submittable.com/blog/the-keys-to-nonprofit-corporate-partnerships"
   },
   {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Impact Over Volume: Crafting Transformative Corporate Volunteering Programs",
@@ -37,34 +19,7 @@
    "url": "https://submittable.com/blog/transformative-corporate-volunteering"
   },
   {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Submittable\u2019s Responsible AI Principles",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://submittable.com/blog/responsible-ai-principles-blog"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Use This Framework to Modernize Your Government Grant Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/modernize-your-government-grant-program"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How grant management software can make or break your career",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/grant-management-software-can-make-your-career"
-  },
-  {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "2024: Our Year in Review",
@@ -73,7 +28,7 @@
    "url": "https://submittable.com/blog/2024-our-year-in-review"
   },
   {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What We Learned Applying a Trust-Based Approach to Our Corporate Grants Program in 2023",
@@ -82,7 +37,7 @@
    "url": "https://submittable.com/blog/submittable-gives-2023"
   },
   {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Grant management in 2026: Everything you need to know",
@@ -91,22 +46,67 @@
    "url": "https://submittable.com/blog/grant-management-how-to"
   },
   {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Pass-through Grants: Everything You Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://submittable.com/blog/pass-through-grant"
-  },
-  {
-   "date": "2026-09-09",
+   "date": "2026-09-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "See the relationship as the outcome.",
+   "headline": "How to Track the Impact of Unrestricted Funding",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://submittable.com/blog/impact-of-unrestricted-funding"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-11",
+   "headline": "How to Choose the Right Grant Application Requirements",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://submittable.com/blog/impact-of-unrestricted-funding"
+   "url": "https://submittable.com/blog/how-to-choose-the-right-grant-application-requirements"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The 6 keys to a strong CSR strategy [Updated for 2026]",
+   "kind": "product",
+   "kind_rule": "Updated",
+   "url": "https://submittable.com/blog/csr-strategy"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "How to Measure the Impact of Corporate Volunteering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/impact-of-corporate-volunteering"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "The Win-Win-Win of Skills-Based Volunteering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/the-win-win-win-of-skills-based-volunteering"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "2025: Our Year in Review",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/contentful-blog-2025-our-year-in-review"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The Role of a CSR Professional: Be a Bridge-Builder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://submittable.com/blog/role-of-csr"
   }
  ]
 }

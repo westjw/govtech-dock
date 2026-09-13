@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Salesforce Expands Agentforce With a New Portfolio of AI Agents Built for High-Value Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/agentforce-job-ready-ai-agents/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Salesforce Introduces the Trusted Enterprise AI Harness",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.salesforce.com/news/stories/enterprise-ai-harness/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "New Research: CFOs Turn to AI and Agents to Tame Growing Revenue Complexity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/cfos-ai-agents-to-tame-revenue-complexity/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -17,6 +44,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.salesforce.com/blog/agentforce-marketing-a-practical-framework-for-successful-implementation/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "New Salesforce Editions Bundle Everything Businesses Need for Agentic Transformation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/salesforce-simplifies-editions-2026/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "What It Takes to Make AI Customer Service Actually Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/customer-success-award-winners-2026/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Salesforce Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Healthcare Provider Industry Cloud Platforms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/gartner-magic-quadrant-healthcare-provider-industry-cloud-platforms-2026/"
   },
   {
    "date": "2026-08-31",
@@ -37,6 +91,15 @@
    "url": "https://www.salesforce.com/blog/the-gift-of-subscriber-signals/"
   },
   {
+   "date": "2026-08-31",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Top Innovations in the Winter \u201927 Release: AI Agents Run the Work, Freeing the Enterprise to Work Smarter and Faster",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/winter-2027-product-release-announcement/"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.salesforce.com/blog/three-perfect-days-at-dreamforce-a-marketers-guide/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "What Does Salesforce Do?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/what-does-salesforce-do/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "How Tom Tailor Revamped and Future-Proofed Its Loyalty Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/tom-tailor-loyalty-program/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Why Data Privacy and Archiving Are the New Marketing Growth Engines",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/data-privacy-marketing/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Why Marketers Need to Move Beyond Attribution and Embrace Agentic Optimization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/agentic-marketing-optimization/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Trust Shouldn\u2019t Be a Product Feature. It Has to Be the Foundation.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/data-trust-foundation/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Breaking Down the Stack: Browser-Bound vs. Headless Architecture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/headless-architecture-vs-browser-bound/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Simplify Security Visibility with Security Center Essentials",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/simplify-security-visibility-with-security-center-essentials/"
   }
  ]
 }

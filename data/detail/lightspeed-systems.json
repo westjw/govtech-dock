@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "10 Questions to Ask Your Edtech Vendor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/10-questions-to-ask-your-edtech-vendor/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "10 Questions to Ask Your Edtech Vendor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/en_uk/blog/10-questions-to-ask-your-edtech-vendor/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,6 +64,42 @@
    "url": "https://www.lightspeedsystems.com/blog/florida-rule-6a-1-0957-what-k-12-districts-need-to-know-about-the-proposed-ai-requirements/"
   },
   {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Technology Magazine: How One CTO Manages AI and Cyber Risks for 12,700 Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/news/technology-magazine-how-one-cto-manages-ai-and-cyber-risks-for-12700-students/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Lightspeed Systems Launches Multi-OS Device Management, Giving K-12 IT Teams One Console for Every Major School Device",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.lightspeedsystems.com/news/lightspeed-systems-launches-multi-os-device-management-giving-k-12-it-teams-one-console-for-every-major-school-device/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Technology Magazine: How One CTO Manages AI and Cyber Risks for 12,700 Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/en_uk/news/technology-magazine-how-one-cto-manages-ai-and-cyber-risks-for-12700-students/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Lightspeed Systems Launches Multi-OS Device Management, Giving K-12 IT Teams One Console for Every Major School Device",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.lightspeedsystems.com/en_uk/news/lightspeed-systems-launches-multi-os-device-management-giving-k-12-it-teams-one-console-for-every-major-school-device/"
+  },
+  {
    "date": "2026-03-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/resources/screen-time-audit/"
-  },
-  {
-   "date": "2024-12-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "See Live Training Options",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/resources/live-training/"
-  },
-  {
-   "date": "2024-12-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Grants & Funding | Federal and State Grants and Funding Programs",
-   "kind": "funding",
-   "kind_rule": "Funding",
-   "url": "https://www.lightspeedsystems.com/resources/education-funding-source/"
-  },
-  {
-   "date": "2024-12-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How does Lightspeed stack up against its competitors?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/resources/lightspeed-vs-alternatives/"
-  },
-  {
-   "date": "2024-12-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Grants & Funding | Federal and State Grants and Funding Programs",
-   "kind": "funding",
-   "kind_rule": "Funding",
-   "url": "https://www.lightspeedsystems.com/en_uk/resources/education-funding-source/"
-  },
-  {
-   "date": "2024-12-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How does Lightspeed stack up against its competitors?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/en_uk/resources/lightspeed-vs-alternatives/"
-  },
-  {
-   "date": "2024-03-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building Collaboration Between IT and Teachers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/blog/building-collaboration-between-it-and-teachers/"
   }
  ],
  "profile": {

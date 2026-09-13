@@ -1,7 +1,52 @@
 {
  "news": [
   {
-   "date": "2026-09-02",
+   "date": "2026-09-12",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Enable Class Writing Feedback using Microsoft OneDrive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/15033384-enable-class-writing-feedback-using-microsoft-onedrive"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "time",
+   "first_seen": "2026-09-10",
+   "headline": "Class Writing Feedback: Canvas & Schoology Integrations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/15235553-class-writing-feedback-canvas-schoology-integrations"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "How to Schedule Start/End Times for Student Rooms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/12512177-how-to-schedule-start-end-times-for-student-rooms"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "How Do Students Join a Student Room?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/10344633-how-do-students-join-a-student-room"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "How to Download Feedback as PDF in Class Writing Feedback",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/15465325-how-to-download-feedback-as-pdf-in-class-writing-feedback"
+  },
+  {
+   "date": "2026-09-11",
    "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "Which Tools Have Access to Web Search?",
@@ -10,7 +55,7 @@
    "url": "https://help.magicschool.ai/en/articles/10972042-which-tools-have-access-to-web-search"
   },
   {
-   "date": "2026-09-02",
+   "date": "2026-09-11",
    "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "Features That Can Be Enabled/Disabled for Your Organization",
@@ -19,13 +64,31 @@
    "url": "https://help.magicschool.ai/en/articles/16786795-features-that-can-be-enabled-disabled-for-your-organization"
   },
   {
-   "date": "2026-09-01",
+   "date": "2026-09-11",
    "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Enable Class Writing Feedback using Microsoft OneDrive",
+   "first_seen": "2026-09-11",
+   "headline": "Browsing and Searching the Tool Library",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15033384-enable-class-writing-feedback-using-microsoft-onedrive"
+   "url": "https://help.magicschool.ai/en/articles/16738794-browsing-and-searching-the-tool-library"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Tool Calling in Raina",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/15635358-tool-calling-in-raina"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Content Filters Blocking MagicSchool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/16764998-content-filters-blocking-magicschool"
   },
   {
    "date": "2026-09-01",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/16738030-student-tools-teacher-tools-overview"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Creating A Student Room",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/10197821-creating-a-student-room"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Class Writing Feedback: PDF Feedback Exports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15235365-class-writing-feedback-pdf-feedback-exports"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Class Writing Feedback: Canvas & Schoology Integrations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15235553-class-writing-feedback-canvas-schoology-integrations"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-11",
-   "headline": "Browsing and Searching the Tool Library",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16738794-browsing-and-searching-the-tool-library"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-11",
-   "headline": "Student Tools & Teacher Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16738836-student-tools-teacher-tools"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Introduction to MagicSchool with Students: Fostering Joyful Learning Experience with MagicStudent - Training Deck",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/10841767-introduction-to-magicschool-with-students-fostering-joyful-learning-experience-with-magicstudent-training-deck"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "What\u2019s New: Tools & Features",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/12386023-what-s-new-tools-features"
   }
  ],
  "profile": {

@@ -2,12 +2,21 @@
  "news": [
   {
    "date": "2026-09-10",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-11",
    "headline": "What Is DisasterLAN (DLAN) Incident Management Software?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/disasterlan-incident-management-software-uses"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-09-12",
+   "headline": "What Is DisasterLAN (DLAN) Incident Management Software?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/content/images/blog/pexels-rdne-6520052_c418535a273b52b9dddf11687dcdf81a_1600.jpg"
   },
   {
    "date": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/practice-makes-perfect-how-buffalo-computer-graphics-transforms-emergency-preparedness-through-realistic-training"
-  },
-  {
-   "date": "2025-12-03",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Tired of Per-Seat Pricing? How Buffalo Computer Graphics' Flexible Licensing Saves You Money",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/tired-of-per-seat-pricing-how-buffalo-computer-graphics-flexible-licensing-saves-you-money"
   }
  ]
 }

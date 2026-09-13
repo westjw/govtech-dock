@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "The Complete Guide to School Routing at District Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/the-complete-guide-to-school-routing-at-district-scale"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/9-criteria-for-student-transportation-safety-software"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "7 Barriers to Adopting School Bus Dispatch Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/7-barriers-to-adopting-school-bus-dispatch-software"
   }
  ],
  "profile": {

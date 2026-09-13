@@ -1,19 +1,46 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "how overlapping requirements work in a double major",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/can-you-double-major"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "what happens if you drop a class in college",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/what-happens-if-you-drop-a-class"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "what happens to your credits when you change your major",
+   "headline": "What Happens to Your Credits When You Change Your Major?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/what-happens-to-credits-when-you-change-your-major"
   },
   {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "how to apply for graduation and what degree clearance checks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/how-to-apply-for-graduation"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "how many credits you need to graduate",
+   "headline": "How Many Credits Do You Need to Graduate College?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/how-many-credits-to-graduate-college"
@@ -22,7 +49,7 @@
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "degree audit vs. unofficial transcript",
+   "headline": "Degree Audit vs. Unofficial Transcript: What's the Difference?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/degree-audit-vs-unofficial-transcript"
@@ -40,73 +67,46 @@
    "date": "2026-08-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "the catalog year an audit runs on",
+   "headline": "What Is a Catalog Year, and Why Does It Control Your Degree Requirements?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/what-is-a-catalog-year"
   },
   {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "How Transfer Credit Equivalency Works (and Why Credits Get Denied)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/how-transfer-credit-equivalency-works"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Persistence Rate vs. Retention Rate: What Is the Difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/persistence-rate-vs-retention-rate"
+  },
+  {
+   "date": "2026-07-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "SAP is measured across GPA, pace, and maximum timeframe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/how-is-sap-measured"
+  },
+  {
    "date": "2026-07-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "how early alert systems work",
+   "headline": "What Is an Early Alert System in Higher Ed (and How Does It Actually Work)?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/what-is-an-early-alert-system"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Supporting First-Generation Students: From Access to Completion",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/supporting-first-generation-students"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Comparing Notes on Adopting AI across Campus Offices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/ai-across-offices-webinar"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "What Is a Degree Audit, and How Do You Actually Read One?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/what-is-a-degree-audit"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What's New in Advising Tech (And How to Put It to Work Next Term)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/care-webinar"
-  },
-  {
-   "date": "2026-05-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Future-Ready Registrar: Preparing for Microcredentials, Non-Traditional Students, and Alternative Pathways",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/future-ready-registrar-microcredentials"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "9 Critical Questions to Ask to Find the Best Platforms for Degree Planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/9-critical-questions-best-platforms-degree-planning"
   }
  ],
  "profile": {

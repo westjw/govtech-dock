@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Introducing Mobile Purchase Orders: Order Parts From Any Work Order, Right From the Field",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.upkeep.com/blog/mobile-purchase-orders/"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/maintenance-knowledge-loss-why-hiring-does-not-replace-a-retiring-technician/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Your Sensor Data Rarely Answers the Question You Actually Have",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/why-your-sensor-data-rarely-answers-the-question-you-actually-have/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-12",
+   "headline": "Say Hello to Canvas Lite",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/say-hello-canvas-lite"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "near-h1",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.instructure.com/resources/blog/ai-equity-and-agency-3-big-areas-education-leaders-are-focused-right-now"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "The Disease and the Cure: Technology and Academic Fraud in the Generative Age",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/disease-and-cure-technology-and-academic-fraud-generative-age"
   }
  ]
 }

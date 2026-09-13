@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Suicide Prevention Month: The Digital Warning Signs Parents Often Miss",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.bark.us/blog/suicide-prevention-digital-warning-signs/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bark.us/blog/reset-family-tech-rules-back-to-school/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When to Move Your Kid From a Watch to a Phone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bark.us/blog/moving-from-watch-to-phone/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Camera Health vs. Camera Status: Why \u201cOnline\u201d Doesn\u2019t Mean \u201cReady\u201d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnilert.com/blog/camera-health-vs-camera-status"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnilert.com/blog/emergency-notifications"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Cost of Gun Violence: Proactive Solutions Reduce the Risk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnilert.com/blog/cost-of-gun-violence"
   }
  ]
 }

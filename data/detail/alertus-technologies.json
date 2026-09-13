@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "Three Benefits of Implementing Mobile Notification Into Your MNS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://alertus.com/blog/three-benefits-of-implementing-mobile-notification-into-your-mns"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://alertus.com/blog/what-west-virginia-house-bill-4798-means-for-school-safety"
-  },
-  {
-   "date": "2026-05-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Three Steps to Prepare for Hurricane Season",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://alertus.com/blog/how-to-prepare-your-organization-for-hurricane-season"
   }
  ],
  "profile": {

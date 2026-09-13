@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-12",
+   "headline": "HEat Index, Issue 122 \u2013 Disappearing Humanities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/heat-index-issue-122-disappearing-humanities/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Now Available",
    "url": "https://www.evisions.com/blog/invoke-learning-starter-pack-1-0-now-available/"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "HEat Index, Issue 114 \u2013 A Coming Worker Shortage vs Collapsing Confidence in Higher Ed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/heat-index-issue-114-a-coming-worker-shortage-vs-collapsing-confidence-in-higher-ed/"
   }
  ],
  "profile": {
