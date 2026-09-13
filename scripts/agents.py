@@ -2270,6 +2270,33 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     kept, refused = 0, []
     for p in proposals:
         key = p.get("key") or f"{kind}:{p.get('id')}"
+        # A PROPOSAL MUST BE ABOUT THE COMPANY IT WAS ASKED ABOUT. The key is
+        # built by the brief, from the company we chose; the id is whatever the
+        # model echoed back. When they disagree the answer is about something
+        # else, and every downstream reader trusts the id: _profile_texts
+        # fetches THAT company's pages to check the quotes against, and
+        # promote_profiles writes the record onto THAT company. A model that
+        # answered "ascento-ai" to a brief about "ascento-ag" got this far on
+        # the first real run; had the invented id named a company we hold, one
+        # company's claims would have been verified against another's pages and
+        # published under another's name. Refused rather than silently
+        # corrected: a disagreement means the answer was about something else,
+        # and which half is wrong is not ours to guess.
+        want = key.split(":", 1)[1] if ":" in key else None
+        if want and p.get("id") and p["id"] != want:
+            refused.append({"key": key, "why": (
+                f"0. this answer names {p['id']!r} and was asked about "
+                f"{want!r}. An answer about another company cannot be checked "
+                f"against these pages or written onto this record.")})
+            store[key] = {"kind": kind, "id": want, "name": p.get("name"),
+                          "status": "refused",
+                          "refused_why": refused[-1]["why"],
+                          "confidence": p.get("confidence"),
+                          "why": (p.get("why") or "").strip(),
+                          "proposal": {k: v for k, v in p.items()
+                                       if k not in ("roster", "pages")},
+                          "by": model or "agent", "at": now}
+            continue
         bad = (check_bucket(p, schema) if kind == "bucket"
                else check_read(p) if kind == "read"
                else check_board(p) if kind == "board"

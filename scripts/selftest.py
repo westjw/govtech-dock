@@ -4804,6 +4804,29 @@ def check_both_asks_reach_the_door_with_an_answer_in_them() -> int:
                                f"right, and every symptom points at the model")
         if sc.get("id") != "acme":
             errors += fail(f"{label}: the split answer carries no company id")
+    # AND THE ID IS OURS EVEN WHEN THE MODEL DISAGREES. A reply about
+    # "ascento-ai" to a brief about "ascento-ag" reached the store on the first
+    # 169-company run, because the splitter filled the id in only when ABSENT.
+    # ingest refuses a mismatch now, but the splitter must not manufacture one:
+    # we know which company we asked about, and an id echoed back is not
+    # evidence. Driven with a reply that names somebody else outright.
+    for label, buyer_only, got in (
+            ("--buyer-only", True, dict(answer, id="somebody-else")),
+            ("the combined ask", False, {"id": "somebody-else",
+                                         "confidence": "high",
+                                         "paragraphs": [],
+                                         "buyer": dict(answer, id="somebody-else")})):
+        prof, sc = wp.split_answer(got, "acme", buyer_only)
+        if sc.get("id") != "acme":
+            errors += fail(f"{label}: split_answer kept the model's id "
+                           f"{sc.get('id')!r} over the company we asked about. "
+                           f"Its quotes are then checked against that "
+                           f"company's pages and its record written onto that "
+                           f"company")
+        if not buyer_only and prof.get("id") != "acme":
+            errors += fail(f"{label}: the WRITE-UP half kept the model's id "
+                           f"{prof.get('id')!r}; promote_profiles.land writes "
+                           f"the record onto whatever company that names")
         why = agents.check_buyer(sc, texts)
         if why:
             errors += fail(f"{label}: a sound reply was refused after the "
@@ -4817,6 +4840,98 @@ def check_both_asks_reach_the_door_with_an_answer_in_them() -> int:
         errors += fail(f"a combined reply carrying no buyer object was not "
                        f"refused as an unanswered question: {why!r}. A person "
                        f"reading that in the gate cannot act on it")
+    return errors
+
+
+def check_a_proposal_is_about_the_company_it_was_asked_about() -> int:
+    """An answer naming another company is refused, on EVERY kind.
+
+    FOUND ON THE FIRST 169-COMPANY RUN. One reply came back about
+    "ascento-ai" when the brief had asked about "ascento-ag". Nothing refused
+    it: the door's rule 1 wanted a non-empty id, not the RIGHT one.
+
+    WHY THAT IS SERIOUS RATHER THAN UNTIDY. Every reader downstream trusts the
+    id and not the key. agents._profile_texts fetches THAT company's pages to
+    check the quotes against, so an answer can be verified against a different
+    company's site; promote_profiles writes the record onto THAT company, so a
+    claim about one company can be published under another's name. In the live
+    case the invented id named nobody, so the pages came back empty and the
+    landing would have skipped it - silently, which is its own defect and is
+    fixed here too. Had it named a real company, none of that would have shown.
+
+    THE WRITE-UP PATH IS THE ONE THAT MATTERS MOST and it was latent there for
+    weeks: 674 write-ups have landed through promote_profiles.land, which does
+    `index[p["id"]]["profile"] = ...`. So this is asserted on profile as well
+    as buyer, and it is asserted through the REAL ingest, which is where the
+    key and the id meet.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, promote_profiles
+    errors = 0
+    companies = [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                  "category": "Police", "description": "CAD for police",
+                  "website": "https://acme.example",
+                  "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+                  "govtech": True, "vendor_type": "product"},
+                 {"id": "other", "name": "Other", "sector": "Public Safety",
+                  "category": "Police", "description": "Something else",
+                  "website": "https://other.example",
+                  "ats": {"type": "unknown", "ref": None}, "hiring": "Unknown",
+                  "govtech": True, "vendor_type": "product"}]
+    files = {"companies.json": companies, "agent_proposals.json": {},
+             "manual.json": {"checks": {}, "postings": []},
+             "admin_dismissed.json": {}, "placement_rulings.json": {}}
+    with _sandbox_admin(files) as tmp:
+        keep_store, keep_texts = agents.STORE, agents._profile_texts
+        agents.STORE = tmp / "agent_proposals.json"
+        agents._profile_texts = lambda p: {"https://acme.example": BUYER_PAGE}
+        try:
+            # asked about acme, answered about other - on both kinds
+            mis_buyer = {
+                "kind": "buyer", "key": "buyer:acme", "id": "other",
+                "name": "Acme", "confidence": "high", "why": "x",
+                "sells_to_gov": "yes", "names_other_buyers": "no",
+                "buyer": "Cities and counties buy it.",
+                "buyer_url": "https://acme.example",
+                "buyer_quote": "serving cities, counties and school districts"}
+            mis_prof = {
+                "kind": "profile", "key": "profile:acme", "id": "other",
+                "name": "Acme", "confidence": "high", "why": "x",
+                "paragraphs": [[{"text": "Acme builds dispatch software.",
+                                 "url": "https://acme.example",
+                                 "quote": "We build computer-aided dispatch software."}]]}
+            for kind, prop in (("buyer", mis_buyer), ("profile", mis_prof)):
+                rep = agents.ingest(kind, [prop], model="selftest")
+                if rep["kept"]:
+                    errors += fail(
+                        f"a {kind} answer naming another company was ACCEPTED. "
+                        f"Its evidence is checked against that company's pages "
+                        f"and its record is written onto that company")
+                why = (rep["refused"] or [{}])[0].get("why", "")
+                if "other" not in why or "acme" not in why:
+                    errors += fail(f"the {kind} mismatch refusal does not name "
+                                   f"both companies: {why!r}")
+                row = agents.load().get(f"{kind}:acme") or {}
+                if row.get("id") != "acme":
+                    errors += fail(f"the refused {kind} row is filed under the "
+                                   f"model's id, not the one we asked about: "
+                                   f"{row.get('id')!r}")
+            # AND A MIS-KEYED ROW ALREADY ON FILE IS NAMED, not skipped. The
+            # landing used to drop it with a bare `continue` inside a loop that
+            # then reported success.
+            st = agents.load()
+            st["buyer:ghost"] = {"kind": "buyer", "id": "ghost", "name": "Ghost",
+                                 "status": "pending", "confidence": "medium",
+                                 "sells_to_gov": "yes", "buyer": "Cities buy it."}
+            rep = promote_profiles.land_buyer(st, admin.read_companies(),
+                                              ["buyer:ghost"], "selftest",
+                                              "fixture")
+            named = " ".join(f"{n} {r}" for n, r in rep["held"])
+            if rep["wrote"] or "Ghost" not in named:
+                errors += fail(f"a row whose id names no company on file was "
+                               f"not held back and named: {rep}")
+        finally:
+            agents.STORE, agents._profile_texts = keep_store, keep_texts
     return errors
 
 
@@ -20695,6 +20810,7 @@ def main() -> int:
     errors += check_the_key_never_reaches_the_repository()
     errors += check_every_workflow_command_would_parse()
     errors += check_both_asks_reach_the_door_with_an_answer_in_them()
+    errors += check_a_proposal_is_about_the_company_it_was_asked_about()
     errors += check_the_buyer_door_holds()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()

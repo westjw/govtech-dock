@@ -168,15 +168,24 @@ def split_answer(got: dict, bid: str, buyer_only: bool = False) -> tuple[dict, d
     model had answered correctly and the splitter threw it away. Found on the
     first live call, for three cents, which is what that call was for.
     """
+    # THE ID IS OURS, NOT THE MODEL'S, and this is not tidiness. On the 169-
+    # company run one reply came back about "ascento-ai" when the brief asked
+    # about "ascento-ag" - a company that does not exist. `setdefault` kept the
+    # model's spelling, so the door checked that answer's quotes against a
+    # company we hold no pages for, and land_buyer would have SILENTLY skipped
+    # the row. Had the invented id belonged to a real company, the answer would
+    # have been verified against the wrong company's pages and written onto the
+    # wrong company's record. We know which company we asked about; an id
+    # echoed back is not evidence of anything.
     if buyer_only:
         sc = dict(got)
-        sc["id"] = sc.get("id") or bid
+        sc["id"] = bid
         return {}, sc
     prof = {k: v for k, v in got.items() if k != "buyer"}
-    prof.setdefault("id", bid)
+    prof["id"] = bid
     raw = got.get("buyer")
     sc = dict(raw) if isinstance(raw, dict) else {}
-    sc["id"] = prof["id"]
+    sc["id"] = bid
     return prof, sc
 
 
@@ -251,9 +260,16 @@ def tonight(category: str | None, ids: list[str], limit: int,
         # the rule that matters - no scope proposal on file, no sells_to_gov
         # on the company - and it is the same rule the brief will apply in a
         # moment, so asking it here is not a second opinion about who is due.
-        want = {r["id"] for r in agents.brief_buyer(ids=ids or None,
-                                                    category=category)}
-        return [c for c in companies if c.get("id") in want][:limit]
+        # BRIEF_BUYER'S ORDER, NOT THE FILE'S. It sorts hiring-first, and the
+        # whole point of that is which companies a capped run reaches: a
+        # company with live postings is one whose buyer decides what the board
+        # publishes. Taking a set here and slicing companies.json order threw
+        # that away - `--limit 20` asked the first twenty alphabetically and
+        # then sorted those twenty, which is sorting after the choice is made.
+        want = [r["id"] for r in agents.brief_buyer(ids=ids or None,
+                                                    category=category)]
+        byid = {c["id"]: c for c in companies if c.get("id")}
+        return [byid[i] for i in want if i in byid][:limit]
     if retry_refused:
         # THE NINE. Refusals stay in the store so the gate review can read
         # them, which also means brief_profile will never offer them again.
@@ -307,6 +323,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--category")
     ap.add_argument("--id", action="append", default=[])
+    ap.add_argument("--ids-file", metavar="PATH",
+                    help="a file of company ids, one per line, added to --id. "
+                         "A run over a hundred companies has an INPUT, and a "
+                         "shell expansion is not one a person can re-read or "
+                         "re-run - which is this project's own rule about "
+                         "storing the input beside the answer")
     ap.add_argument("--limit", type=int, default=20)
     ap.add_argument("--model", default=llm.DEFAULT_MODEL)
     ap.add_argument("--write", action="store_true",
@@ -331,6 +353,14 @@ def main() -> int:
     ap.add_argument("--no-repair", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if a.ids_file:
+        extra = [ln.strip() for ln in
+                 pathlib.Path(a.ids_file).read_text().split("\n") if ln.strip()]
+        if not extra:
+            print(f"{a.ids_file} names no companies; nothing asked, nothing "
+                  f"spent.", file=sys.stderr)
+            return 1
+        a.id = list(a.id) + extra
 
     if a.recheck_refused:
         return recheck_refused(a.limit or 10 ** 6, a.write)

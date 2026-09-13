@@ -296,7 +296,15 @@ def land_buyer(store: dict, companies: list, keys: list[str], by: str,
         n = 0
         for k in chunk:
             p = store.get(k)
-            if not p or p.get("status") != "pending" or p.get("id") not in index:
+            if not p or p.get("status") != "pending":
+                continue
+            if p.get("id") not in index:
+                # NEVER SILENTLY SKIP. A row whose id names no company on file
+                # is the mis-keyed shape ingest now refuses at the door; one
+                # already on file must still be counted and named rather than
+                # vanishing out of a landing that reports success.
+                held.append((p.get("name") or p.get("id"),
+                             f"id {p.get('id')!r} is not a company on file"))
                 continue
             c = index[p["id"]]
             if not p.get("sells_to_gov") or not p.get("buyer"):
