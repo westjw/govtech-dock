@@ -115570,8 +115570,8 @@
   "name": "Labrie Group",
   "sector": "Public Works",
   "category": "Waste & Recycling",
-  "confidence": "medium",
-  "why": "The pages describe customers ranging from private waste haulers to municipalities and cities, explicitly naming both government and non-government buyers.",
+  "confidence": "high",
+  "why": "The about page states its own customer base in one sentence, naming both private waste haulers and towns, counties, municipalities and cities, though it names no individual customer.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -115606,16 +115606,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Small towns, counties, major municipalities and cities, as well as private waste hauling entrepreneurs and national waste management service providers.",
+  "buyer": "These pages say the buyers run from private entrepreneurs in the waste hauling sector and national waste management service providers to hundreds of small towns and counties and to major municipalities and cities.",
   "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "counts hundreds of small towns and counties, as well as, major municipalities and cities in its customer base",
+  "buyer_quote": "counts hundreds of small towns and counties, as well as, major municipalities and cities in its customer base.",
   "buyer_url": "https://labriegroup.com/about-us",
-  "other_quote": "small to large, private entrepreneurs in the waste hauling sector to national waste management service providers",
+  "other_quote": "private entrepreneurs in the waste hauling sector to national waste management service providers",
   "other_url": "https://labriegroup.com/about-us",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:30-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:agiloft": {
@@ -115918,8 +115918,8 @@
   "name": "greehill",
   "sector": "Parks & Rec",
   "category": "Park Assets, Forestry & Visitor Data",
-  "confidence": "medium",
-  "why": "The pages repeatedly describe cities as the customers and users of greehill's tree inventory system, including a named city director quote, but no non-government commercial buyer is named.",
+  "confidence": "high",
+  "why": "Both pages name cities as the customer in their own words, and neither page names any buyer that is not a city.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -115954,16 +115954,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Cities (municipal governments) worldwide buy and use greehill's urban tree intelligence system.",
+  "buyer": "These pages say cities buy it, with arborists, commissioners who approve budgets, and infrastructure teams inside those cities using the tree data.",
   "sells_to_gov": "yes",
   "names_other_buyers": "no",
-  "buyer_quote": "Trusted by cities building the future of urban forest intelligence",
-  "buyer_url": "https://greehill.com",
+  "buyer_quote": "Today, greehill works with cities across nearly all continents, creating verified, citywide tree inventories and keeping them continuously updated.",
+  "buyer_url": "https://www.greehill.com/about/",
   "other_quote": "",
   "other_url": "",
-  "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:30-04:00",
+  "sled_eligible": true,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:hapco": {
@@ -116081,7 +116081,7 @@
   "sector": "Airports & Aviation",
   "category": "Parking & Ground Transport",
   "confidence": "medium",
-  "why": "The pages describe airport, parking, and access-control applications and mention universities and municipalities as application contexts, but no specific customer entity is named as buying, aside from testimonials from private companies.",
+  "why": "The products and UHF pages name universities and municipalities among the markets the UHF RFID line is sold into, which is a government buyer named as a market, but no page names an individual agency or a signed contract.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -116124,16 +116124,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Pages mention parking/access applications for gated communities, universities and municipalities, plus commercial clients like DESIGNA Mexico, Parkimo, and ATS Traffic Group.",
+  "buyer": "These pages name commercial or mixed use parking applications, gated communities, universities and municipalities for the UHF line, airports, hospitals, industrial applications and military installations for the microwave line, and airport operators for the GTMS software.",
   "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "convenient and secure access for commercial or mixed use parking applications, gated communities, universities and municipalities",
-  "buyer_url": "https://tagmasterna.com/products/xt-series/",
-  "other_quote": "- VP of Technology at Parkimo",
-  "other_url": "https://tagmasterna.com",
+  "buyer_quote": "including commercial or mixed use parking applications, gated communities, universities and municipalities",
+  "buyer_url": "https://tagmasterna.com/products/",
+  "other_quote": "convenient and secure access for commercial or mixed use parking applications, gated communities",
+  "other_url": "https://tagmasterna.com/products/xt-series/",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:30-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:truleo": {
@@ -117933,7 +117933,7 @@
   "sector": "Public Safety",
   "category": "EMS",
   "confidence": "medium",
-  "why": "The page describes MD Ally partnering with Lee County, FL (a public safety agency) and also mentions payers as a market, but no commercial payer is named specifically.",
+  "why": "The page names the two markets MD Ally partners with and one county it works with, but it never says who pays, on what terms, or at what price.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -117964,16 +117964,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "The pages name Lee County, FL (public safety/EMS) as a buyer/partner, and also reference 'Payors' as a market, though no specific payer is named.",
+  "buyer": "These pages name Public Safety and payers as the two markets MD Ally partners with, each with its own solutions section, and Lee County, FL as the only partner named.",
   "sells_to_gov": "yes",
-  "names_other_buyers": "unclear",
-  "buyer_quote": "The largest county in Southwest Florida will now be able to respond more efficiently to incoming 9-1-1 calls through the use of real-time telemedicine, thanks to a partnership with MD Ally.",
+  "names_other_buyers": "yes",
+  "buyer_quote": "MD Ally partners with Public Safety and payers to expand the scope of 911 and EMS services",
   "buyer_url": "https://www.mdally.com",
-  "other_quote": "",
+  "other_quote": "MD Ally partners with Public Safety and payers to expand the scope of 911 and EMS services",
   "other_url": "https://www.mdally.com",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:31-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:off-duty-management": {
@@ -120140,8 +120140,8 @@
   "name": "Sparkrock",
   "sector": "K-12 Schools",
   "category": "Operations & SIS",
-  "confidence": "medium",
-  "why": "The pages describe school boards, nonprofits, health units, and tribal governments as users of Sparkrock's software, explicitly naming tribal governments as a government buyer.",
+  "confidence": "high",
+  "why": "The homepage names public sector and K-12 schools among the organizations it builds software for and names not-for-profit organizations separately, so both questions are settled by quotes on one page.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -120172,16 +120172,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "K-12 school boards/districts, nonprofits, health and human services organizations, and tribal governments buy Sparkrock's ERP, HR, SIS, and finance software.",
+  "buyer": "These pages say the buyers are mission-driven organizations: nonprofits, human services, public sector, and K-12 schools, along with health units, care facilities, and tribal governments.",
   "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "Tribal governments can manage their communities in secure, cloud-based environments with Sparkrock Impact ERP.",
+  "buyer_quote": "Sparkrock builds the software that powers mission-driven organizations: nonprofits, human services, public sector, and K-12 schools.",
   "buyer_url": "https://www.sparkrock.com",
   "other_quote": "Sparkrock Impact ERP is for not-for-profit organizations that need to focus on their mission, not manual processes.",
   "other_url": "https://www.sparkrock.com",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:31-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:willowglen-systems": {
@@ -122238,8 +122238,8 @@
   "name": "Skyward",
   "sector": "K-12 Schools",
   "category": "Operations & SIS",
-  "confidence": "medium",
-  "why": "The pages describe K-12 school districts as customers (public school districts like Deer Park ISD, Garden City Public Schools) but do not explicitly frame this as 'government' sales, though school districts are public entities.",
+  "confidence": "high",
+  "why": "The pages name school districts as the customers and quote several of them by name, so the government question is settled, though the pages do not name any other kind of buyer.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -122263,6 +122263,10 @@
      "sha": "52106201f55e39a7"
     },
     {
+     "url": "https://www.skyward.com/products/student-information-system",
+     "sha": "34363ebe55c424d0"
+    },
+    {
      "url": "https://www.skyward.com/products/student-information-system/office-and-administration",
      "sha": "cad4d9fd45506308"
     }
@@ -122278,16 +122282,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "K-12 public school districts, such as Deer Park ISD, Garden City Public Schools, Lewisville ISD, and Rapid City Area Schools, buy Skyward's SIS and ERP software.",
+  "buyer": "These pages say school districts buy the software, with over 2,500 school districts named as entrusting their data to the company and more than 2,000 districts around the world using one or both suites.",
   "sells_to_gov": "yes",
   "names_other_buyers": "no",
-  "buyer_quote": "Over 2,500 school districts entrust their data to us because our experience is manifested in our solutions.",
+  "buyer_quote": "Over 2,500 school districts entrust their data to us",
   "buyer_url": "https://www.skyward.com",
-  "other_quote": "",
-  "other_url": "",
-  "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:32-04:00",
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": true,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:social-news-desk": {
@@ -122463,7 +122467,7 @@
   "sector": "Utilities & Energy",
   "category": "Street Lighting & Poles",
   "confidence": "medium",
-  "why": "The page repeatedly names utilities as the customer for Trilliant's grid platform, but never mentions a city, municipality, or other government body as a buyer.",
+  "why": "The page names utilities worldwide as the market served, but it never says whether any of those utilities is a government body, and it names no individual buyer of any kind.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -122494,16 +122498,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Utilities are named as the customers who use Trilliant's platform for AMI, grid connectivity, and data intelligence.",
+  "buyer": "These pages describe utilities worldwide as the market served, without naming any individual buyer or saying whether any of them is publicly owned.",
   "sells_to_gov": "unclear",
-  "names_other_buyers": "yes",
-  "buyer_quote": "",
-  "buyer_url": "",
-  "other_quote": "Trilliant enables utilities to gain real-time visibility and optimize performance across an increasingly dynamic, distributed energy environment",
-  "other_url": "https://www.trilliant.com",
+  "names_other_buyers": "unclear",
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:32-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:tybera-development-group": {
@@ -122512,8 +122516,8 @@
   "name": "Tybera Development Group",
   "sector": "Courts & Justice",
   "category": "Courts & Case Management",
-  "confidence": "medium",
-  "why": "The About page explicitly states the company provides its solutions to attorneys, courts, and government agencies, and the homepage lists a court system (Utah State Bar eFiling) as a customer, settling that government is a buyer while attorneys are named as a non-government buyer.",
+  "confidence": "high",
+  "why": "The about page states in one sentence who the products are provided for, which settles both that a government is among the buyers and that a non-government buyer is named alongside them.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -122548,16 +122552,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "The pages say attorneys, courts, and government agencies buy the company's electronic filing, case management, and document management solutions.",
+  "buyer": "These pages say the electronic filing, case management and document management products are provided for attorneys, courts and government agencies.",
   "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "provides electronic filing, case management and document management solution for attorneys, courts and government agencies",
+  "buyer_quote": "electronic filing, case management and document management solution for attorneys, courts and government agencies",
   "buyer_url": "https://www.tybera.com/about/",
-  "other_quote": "provides electronic filing, case management and document management solution for attorneys, courts and government agencies",
+  "other_quote": "document management solution for attorneys, courts and government agencies",
   "other_url": "https://www.tybera.com/about/",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:32-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:van-dyk-recycling-solutions": {
@@ -122617,7 +122621,7 @@
   "sector": "Airports & Aviation",
   "category": "Terminal & Passenger Experience",
   "confidence": "medium",
-  "why": "The pages describe airport operators, airlines, and transport providers as Veovo's customers, with airports like Manchester Airports Group and Perth Airport named, but no government entity is explicitly identified as a buyer.",
+  "why": "The pages name airports and transport providers as the customers, with case studies on Manchester Airports Group, Sydney Airport and Perth Airport, but they never say whether any of those buyers is a government body.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -122643,6 +122647,10 @@
     {
      "url": "https://www.veovo.com/platform/flight-management",
      "sha": "b41224ab7686e71e"
+    },
+    {
+     "url": "https://www.veovo.com/platform/fids",
+     "sha": "6954ecc0b643935d"
     }
    ]
   },
@@ -122656,16 +122664,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "The pages say airports, airport operators, and transport providers (e.g. Manchester Airports Group, Perth Airport) buy Veovo's software.",
+  "buyer": "These pages say the buyers are airports and transport providers, with named customers including Manchester Airports Group, Sydney Airport and Perth Airport.",
   "sells_to_gov": "unclear",
   "names_other_buyers": "yes",
-  "buyer_quote": "",
-  "buyer_url": "",
+  "buyer_quote": null,
+  "buyer_url": null,
   "other_quote": "Manchester Airports Group selects Veovo as strategic partner for flow management technology",
   "other_url": "https://www.veovo.com",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:32-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:virtual-peaker": {
@@ -124298,8 +124306,8 @@
   "name": "Nutrislice",
   "sector": "K-12 Schools",
   "category": "Operations & SIS",
-  "confidence": "medium",
-  "why": "The pages describe K-12 schools, higher ed, and corporate cafeterias as markets served, including a named school district customer, but do not explicitly frame a government agency as a buyer using government terminology.",
+  "confidence": "high",
+  "why": "The homepage names a school district and a food management company by name as customers, which settles that a government is among the buyers, though the pages say nothing about how those buyers contract or what they pay.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -124342,16 +124350,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "The pages name K-12 schools/school districts, higher education institutions, and corporate cafeterias as buyers.",
-  "sells_to_gov": "unclear",
+  "buyer": "These pages name Norfolk City Public Schools and Opaa! Food Management as customers, and list corporate, higher education, K-12 and healthcare foodservice as the groups served.",
+  "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "",
-  "buyer_url": "",
-  "other_quote": "Norfolk City Public Schools",
+  "buyer_quote": "Norfolk City Public Schools",
+  "buyer_url": "https://www.nutrislice.com",
+  "other_quote": "Opaa! Food Management",
   "other_url": "https://www.nutrislice.com",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:32-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:recycle-coach": {
@@ -124360,8 +124368,8 @@
   "name": "Recycle Coach",
   "sector": "Public Works",
   "category": "Waste & Recycling",
-  "confidence": "medium",
-  "why": "The pages describe partnerships with municipalities (cities, counties, shires) as well as businesses/haulers, giving clear evidence of both government and non-government buyers.",
+  "confidence": "high",
+  "why": "The solutions page names cities, haulers and organizations as who these products are sold to, and the homepage names municipalities, haulers and businesses, though the pages give no contract terms.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -124404,16 +124412,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Municipalities (cities, counties, shires), haulers, businesses, and workplaces/universities are named as buyers.",
+  "buyer": "These pages say the buyers are cities, municipalities, haulers, businesses and workplaces, with the partnerships page naming the City of Kelowna as one municipal customer.",
   "sells_to_gov": "yes",
   "names_other_buyers": "yes",
-  "buyer_quote": "Proud partner to 1,700+ municipalities",
+  "buyer_quote": "Custom waste & recycling solutions for cities, haulers, and organizations",
   "buyer_url": "https://recyclecoach.com/solutions/home",
-  "other_quote": "I highly recommend Recycle Coach to any hauler, municipality, or agency that\u2019s trying to drive proper curbside recycling.",
-  "other_url": "https://recyclecoach.com/solutions/partnerships-white-label",
+  "other_quote": "Are you a municipality, hauler, or business looking to work with Recycle Coach?",
+  "other_url": "https://recyclecoach.com",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:33-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:simplyanalytics": {
@@ -124759,7 +124767,7 @@
   "sector": "Parks & Rec",
   "category": "Youth Sports & Leagues",
   "confidence": "medium",
-  "why": "The pages describe sports facilities, academies, coaches, and trainers as customers with named case studies, but no government entity is mentioned as a buyer.",
+  "why": "The pages say who buys in their own words and name a dozen customers by name, all of them private sports businesses, and no page names a government body as a buyer.",
   "evidence": "",
   "postings": null,
   "ats_type": null,
@@ -124798,16 +124806,16 @@
   "url": null,
   "where": null,
   "board_owner": null,
-  "buyer": "Sports facilities, academies, coaching businesses, trainers, and coaches (e.g., Sogility, D-BAT, EYG Basketball) buy Upper Hand's software.",
-  "sells_to_gov": "unclear",
+  "buyer": "These pages say the buyers are sports facilities, academies, coaching and training businesses and their owners, with named customers including EYG Basketball, SpeedSkills Hockey and D-BAT Newark; no government body is named.",
+  "sells_to_gov": "no",
   "names_other_buyers": "yes",
-  "buyer_quote": "",
-  "buyer_url": "",
-  "other_quote": "Sports facilities, academies, and coaching businesses of all sizes can benefit from Upper Hand\u2019s comprehensive sports business management software.",
-  "other_url": "https://upperhand.com",
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": "With Upper Hand, EYG Basketball has grown their athlete base to 2,500 and saved over 10 hours per week on administrative tasks.",
+  "other_url": "https://upperhand.com/customers",
   "sled_eligible": false,
-  "by": "claude-sonnet-5:write-profiles",
-  "at": "2026-09-12T22:25:33-04:00",
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  },
  "buyer:votingworks": {
@@ -124920,6 +124928,2482 @@
   "sled_eligible": false,
   "by": "claude-sonnet-5:write-profiles",
   "at": "2026-09-12T22:41:46-04:00",
+  "status": "pending"
+ },
+ "profile:greehill": {
+  "kind": "profile",
+  "id": "greehill",
+  "name": "greehill",
+  "sector": "Parks & Rec",
+  "category": "Park Assets, Forestry & Visitor Data",
+  "confidence": "high",
+  "why": "Both pages state what greehill builds and that cities are the customer, so the write-up rests on their own wording; nothing on the pages gives pricing or contract terms.",
+  "evidence": "https://www.greehill.com/about/",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "greehill turns an urban forest into a continuously updated, predictive system that reveals the condition of every tree and anticipates risk early.",
+     "url": "https://greehill.com",
+     "quote": "greehill turns your urban forest into a continuously updated, predictive system that reveals the condition of every tree, anticipates risk early, and supports confident, evidence-based decisions."
+    },
+    {
+     "text": "The company captures street-level tree data, builds verified digital twins, and turns them into operational metrics and predictive signals across streets, parks, and districts.",
+     "url": "https://www.greehill.com/about/",
+     "quote": "greehill captures street-level tree data, builds verified digital twins, and turns them into operational metrics and predictive signals across streets, parks, and districts."
+    },
+    {
+     "text": "LiDAR scanning, AI analysis, and operational workflows connect in one system for predicting change and managing trees every day.",
+     "url": "https://greehill.com",
+     "quote": "LiDAR scanning, AI analysis, and operational workflows connect in one continuously updated system for predicting change and managing trees every day."
+    }
+   ],
+   [
+    {
+     "text": "Cities are the buyer named on these pages, and greehill works with cities across nearly all continents, creating verified, citywide tree inventories.",
+     "url": "https://www.greehill.com/about/",
+     "quote": "Today, greehill works with cities across nearly all continents, creating verified, citywide tree inventories and keeping them continuously updated."
+    },
+    {
+     "text": "Within those cities the pages name arborists who inspect trees every day, commissioners who approve budgets and answer to the public, and infrastructure teams who need facts.",
+     "url": "https://www.greehill.com/about/",
+     "quote": "Arborists who inspect trees every day. Commissioners who approve budgets and answer to the public. Infrastructure teams who need facts, not estimates."
+    },
+    {
+     "text": "The output is described as more than 70 measurable metrics, from field operations to city-level planning, reporting, and infrastructure investment.",
+     "url": "https://greehill.com",
+     "quote": "Urban forest data becomes more than 70 measurable metrics your teams can act on to anticipate change, from field operations to city-level planning, reporting, and infrastructure investment."
+    }
+   ],
+   [
+    {
+     "text": "Cities choose how to execute: in-house, with existing partners, or with regional greehill partners, while the system, the data standard, and quality assurance remain with greehill.",
+     "url": "https://www.greehill.com/about/",
+     "quote": "Cities choose how to execute: in-house, with existing partners, or with regional greehill partners. The system, the data standard, and quality assurance always remain with greehill."
+    },
+    {
+     "text": "Cities worldwide use it in daily operations to manage urban infrastructure from capitals to regional districts.",
+     "url": "https://greehill.com",
+     "quote": "Used in daily operations by cities worldwide to manage urban infrastructure from capitals to regional districts"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "What if your city could understand every tree as part of a living system?",
+   "url": "https://www.greehill.com/about/"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://greehill.com",
+     "sha": "9663dc74f50a0b33"
+    },
+    {
+     "url": "https://www.greehill.com/about/",
+     "sha": "fce0f66ae80481cc"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:intellicene": {
+  "kind": "profile",
+  "id": "intellicene",
+  "name": "Intellicene",
+  "sector": "Transit & Parking",
+  "category": "Suppliers & Services",
+  "confidence": "high",
+  "why": "The homepage states what the software does and names each product area in the company's own words, but the customer counts render as zeros, so the write-up describes the categories counted and no figure.",
+  "evidence": "https://intellicene.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Intellicene sells software for security operations, described on its site as connecting the people, systems, and information behind a security operation.",
+     "url": "https://intellicene.com",
+     "quote": "We help you connect the people, systems, and information behind your security operation, turning complexity into clarity."
+    },
+    {
+     "text": "The site groups that work under the heading Intelligent Security Operations and says the products are built for environments where simple is not an option.",
+     "url": "https://intellicene.com",
+     "quote": "Built for environments where simple isn't an option."
+    }
+   ],
+   [
+    {
+     "text": "Control is presented as security orchestration for situational awareness across any size operation, with multiple sites, devices, and assets managed from any location.",
+     "url": "https://intellicene.com",
+     "quote": "Security orchestration for complete situational awareness across any size operation."
+    },
+    {
+     "text": "Insight is described as data intelligence for finding operational gaps and generating data tables, dashboards, and reports.",
+     "url": "https://intellicene.com",
+     "quote": "Empower your long-term business and security decisions with intelligent data. Use data intelligence to find the operational gaps and increase device and on-site efficiency."
+    },
+    {
+     "text": "FaceDetect is described as detecting, tracking, and alerting on persons of interest appearing in video surveillance streams across multiple sites and cameras.",
+     "url": "https://intellicene.com",
+     "quote": "Detect, track and alert-on persons-of-interest appearing in video surveillance streams in real-time, across multiple sites and thousands of cameras simultaneously"
+    },
+    {
+     "text": "Intellicene VMS is described as a video management suite for video surveillance, incident management, forensic analysis, and operator review.",
+     "url": "https://intellicene.com",
+     "quote": "Intellicene VMS is a fully integrated video management suite of tools for comprehensive video surveillance, empowering your security operations with proactive threat detection"
+    }
+   ],
+   [
+    {
+     "text": "A section headed By The Numbers introduces the counts by saying the company is not a traditional security company and points to its customers and capabilities.",
+     "url": "https://intellicene.com",
+     "quote": "Intellicene isn\u2019t your traditional security company. Our customers and our capabilities are a testament to our success over the last 25+ years."
+    },
+    {
+     "text": "The counts listed there name government and agencies worldwide, international airports, global retailers, and subway and rail systems.",
+     "url": "https://intellicene.com",
+     "quote": "Government and Agencies Worldwide"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "SECURITY OPERATIONS ARE COMPLEX. UNDERSTANDING THEM SHOULDN\u2019T BE.",
+   "url": "https://intellicene.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://intellicene.com",
+     "sha": "f532c756a1a8fd71"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:labrie-group": {
+  "kind": "profile",
+  "id": "labrie-group",
+  "name": "Labrie Group",
+  "sector": "Public Works",
+  "category": "Waste & Recycling",
+  "confidence": "high",
+  "why": "The two pages state what the company builds, the brands it builds under, the distributor and service network behind it, and who its customer base is, but they name no individual customer and no contract.",
+  "evidence": "https://labriegroup.com/about-us",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Labrie Group designs and manufactures waste collection vehicles for the solid waste industry in North America.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "The Labrie Environmental Group is a top manufacturer of equipment for the solid waste industry in North America"
+    },
+    {
+     "text": "The trucks are sold under the Labrie, Leach, and Wittke brands.",
+     "url": "https://www.labriegroup.com",
+     "quote": "DRIVE EXCELLENCE Find your Labrie\u2122, Leach\u2122 or Wittke\u2122"
+    },
+    {
+     "text": "Since 1971 the company has distributed and supported those products through a distributor network spanning the United States and Canada.",
+     "url": "https://www.labriegroup.com",
+     "quote": "Since 1971, The Labrie Group distributes and supports its Labrie\u2122, Leach\u2122 & Wittke\u2122 products via a strong distributor network that spans the United States and Canada"
+    }
+   ],
+   [
+    {
+     "text": "Their clientele ranges from private entrepreneurs in the waste hauling sector to national waste management service providers.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "clientele ranges from small to large, private entrepreneurs in the waste hauling sector to national waste management service providers"
+    },
+    {
+     "text": "The customer base also counts hundreds of small towns and counties, as well as major municipalities and cities.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "counts hundreds of small towns and counties, as well as, major municipalities and cities in its customer base."
+    },
+    {
+     "text": "The company describes servicing millions of citizens in cities and municipalities all over North America.",
+     "url": "https://www.labriegroup.com",
+     "quote": "Servicing millions of citizens in cities & municipalities all over North America."
+    }
+   ],
+   [
+    {
+     "text": "Labrie Group supports over 30 distributors across the United States and Canada, and those distributors have over 50 individual locations across North America.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "Labrie Group supports over 30 distributors across the United States and Canada."
+    },
+    {
+     "text": "Maintenance, repairs, and retrofits are handled by technicians in St-Romuald, Quebec, CA, and Lafayette, GA, USA.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "Our expert technicians in St-Romuald, Quebec, CA, and Lafayette, GA, USA, are equipped with the latest tools and technology to diagnose and repair any issues with your equipment efficiently."
+    },
+    {
+     "text": "Labrie Environmental Group is part of Hiab.",
+     "url": "https://labriegroup.com/about-us",
+     "quote": "Labrie Environmental Group is part of Hiab."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Labrie Environmental Group\u2019s clientele ranges from small to large, private entrepreneurs in the waste hauling sector to national waste management service providers",
+   "url": "https://labriegroup.com/about-us"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.labriegroup.com",
+     "sha": "470041310e14b77c"
+    },
+    {
+     "url": "https://labriegroup.com/about-us",
+     "sha": "985eb241867876d6"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:md-ally": {
+  "kind": "profile",
+  "id": "md-ally",
+  "name": "MD Ally",
+  "sector": "Public Safety",
+  "category": "EMS",
+  "confidence": "medium",
+  "why": "The home page states what MD Ally sells and the two markets it partners with, and names one county partner, but it is the only page held and it carries no pricing, contract terms or other customers.",
+  "evidence": "https://www.mdally.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "MD Ally sells a virtual response tier that public safety systems and payors add to 911 and EMS services.",
+     "url": "https://www.mdally.com",
+     "quote": "MD Ally partners with Public Safety and payers to expand the scope of 911 and EMS services"
+    },
+    {
+     "text": "The pathway is for patients with low-acuity health concerns better cared for via telehealth.",
+     "url": "https://www.mdally.com",
+     "quote": "A safe, easy-to-implement pathway to virtual care for patients with low-acuity health concerns better cared for via telehealth."
+    },
+    {
+     "text": "Dispatchers and first responders use it to connect people deemed non-emergent to telehealth, in-network resources and social services in real-time.",
+     "url": "https://www.mdally.com",
+     "quote": "MD Ally allows dispatchers and first responders to connect people deemed non-emergent to telehealth, in-network resources, social services and more in real-time."
+    }
+   ],
+   [
+    {
+     "text": "The home page names Lee County, FL as a partner, under a heading about expanding public safety services.",
+     "url": "https://www.mdally.com",
+     "quote": "The largest county in Southwest Florida will now be able to respond more efficiently to incoming 9-1-1 calls through the use of real-time telemedicine, thanks to a partnership with MD Ally."
+    },
+    {
+     "text": "The same story says it will save costs for Lee County and its residents and reduce the time to see a physician.",
+     "url": "https://www.mdally.com",
+     "quote": "This will not only save substantial costs for both Lee County and its residents, but also improve the patient experience by reducing the time to see a physician"
+    },
+    {
+     "text": "An EMS Coordinator at Lee County EMS is quoted on the same page about long-term care for one man.",
+     "url": "https://www.mdally.com",
+     "quote": "the outstanding teamwork between Lee County and MD Ally"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "MD Ally partners with Public Safety and payers to expand the scope of 911 and EMS services and get patients to \u201cthe Right Care, at the Right Time, and in the Right Place.\u201d",
+   "url": "https://www.mdally.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.mdally.com",
+     "sha": "36b89d03f743c65a"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:momentus-technologies": {
+  "kind": "profile",
+  "id": "momentus-technologies",
+  "name": "Momentus Technologies",
+  "sector": "Parks & Rec",
+  "category": "Events, Venues & Ticketing",
+  "confidence": "medium",
+  "why": "The two pages state what the software does, which venue types it is sold for, and how many of each are counted as customers, but they do not say what it costs or whether any named customer is a public body.",
+  "evidence": "https://gomomentus.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Momentus Technologies sells event and venue management software, which the company says organizations use to increase bookings, streamline event operations, and improve venue revenue.",
+     "url": "https://gomomentus.com",
+     "quote": "increase bookings, streamline event operations, and improve venue revenue"
+    },
+    {
+     "text": "One product line, Momentus Enterprise, is described for corporate campuses, universities, and convention centers.",
+     "url": "https://gomomentus.com",
+     "quote": "Discover Momentus Enterprise For corporate campuses, universities, and convention centers"
+    },
+    {
+     "text": "A second, Momentus Elite, is described for performing arts centers, stadiums, arenas, and conference centers.",
+     "url": "https://gomomentus.com",
+     "quote": "Discover Momentus Elite For performing arts centers, stadiums, arenas, and conference centers"
+    }
+   ],
+   [
+    {
+     "text": "The homepage states that more than 700 performing arts centers, theaters, museums, and cultural centers use the venue management software.",
+     "url": "https://gomomentus.com",
+     "quote": "More than 700 performing arts centers, theaters, museums, and cultural centers"
+    },
+    {
+     "text": "It cites over 550 stadiums and arenas globally for the stadium and arena event management software.",
+     "url": "https://gomomentus.com",
+     "quote": "Over 550 stadiums and arenas globally"
+    },
+    {
+     "text": "More than 85% of the largest convention centers in the world are described as managing scheduling, operations, and exhibitions on the platform.",
+     "url": "https://gomomentus.com",
+     "quote": "More than 85% of the largest convention centers in the world manage scheduling, operations, and exhibitions"
+    },
+    {
+     "text": "The same page counts more than 175 higher education institutions as users of the college and university event management software.",
+     "url": "https://gomomentus.com",
+     "quote": "higher education institutions rely on our college and university event management software"
+    }
+   ],
+   [
+    {
+     "text": "In January 2023, Ungerboeck rebranded to Momentus Technologies to unify the organization and its vertical-specific software, the company page states.",
+     "url": "https://gomomentus.com/about-us",
+     "quote": "In January 2023, Ungerboeck rebranded to Momentus Technologies to unify the organization"
+    },
+    {
+     "text": "The same page says the company has empowered 60,000 users in thousands of venues worldwide over more than 30 years.",
+     "url": "https://gomomentus.com/about-us",
+     "quote": "empowered 60,000 users in thousands of venues worldwide"
+    },
+    {
+     "text": "It ties that rebrand to the acquisitions of EventBooking, Priava, Showorks and Risk Manager two years prior.",
+     "url": "https://gomomentus.com/about-us",
+     "quote": "the acquisitions of EventBooking, Priava, Showorks and Risk Manager two years prior"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Make every moment momentus.",
+   "url": "https://gomomentus.com/about-us"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://gomomentus.com",
+     "sha": "bca271ed9e54d9ea"
+    },
+    {
+     "url": "https://gomomentus.com/about-us",
+     "sha": "31884833bc1d58c8"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:nearmap": {
+  "kind": "profile",
+  "id": "nearmap",
+  "name": "Nearmap",
+  "sector": "General Gov",
+  "category": "Strategy & Performance",
+  "confidence": "high",
+  "why": "The pages state what Nearmap captures, how the property intelligence is delivered, and which buyer groups it names, but they do not describe pricing, contracts, or procurement.",
+  "evidence": "https://www.nearmap.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Nearmap sells property intelligence drawn from its own aerial imagery, AI analytics, and workflow applications.",
+     "url": "https://www.nearmap.com",
+     "quote": "Nearmap answers every question across the property lifecycle with proprietary data, AI analytics, and workflow applications."
+    },
+    {
+     "text": "A patented HyperCamera3 system captures aerial imagery at 1.57-2.95 in/4.4-7.5 cm or better per pixel, refreshed up to 3x per year.",
+     "url": "https://www.nearmap.com",
+     "quote": "Patented HyperCamera3 system captures high-resolution aerial imagery available, up to 1.57-2.95 in/4.4-7.5 cm or better per pixel and refreshed up to 3x per year."
+    },
+    {
+     "text": "One global AI model generates 130+ semantic property layers.",
+     "url": "https://www.nearmap.com",
+     "quote": "One global AI model that generates 130+ semantic property layers with superior accuracy"
+    },
+    {
+     "text": "Property intelligence reaches customers through workflow applications, direct integrations into existing systems, and APIs.",
+     "url": "https://www.nearmap.com",
+     "quote": "Property intelligence delivered via workflow applications, direct integrations into existing systems, and APIs."
+    }
+   ],
+   [
+    {
+     "text": "MapBrowser is a mapping app that brings project data into one place, with vertical, panoramic, and oblique views.",
+     "url": "https://www.nearmap.com/products/mapbrowser",
+     "quote": "MapBrowser is the powerful mapping app that brings your project data into one place."
+    },
+    {
+     "text": "The app gives access to more than a decade of archived content and takes height, pitch, and length measurements.",
+     "url": "https://www.nearmap.com/products/mapbrowser",
+     "quote": "See how the past impacts the present with access to more than a decade of archived content."
+    }
+   ],
+   [
+    {
+     "text": "Nearmap states that all 10 of the top 10 P&C carriers choose it, alongside 8 of the top 10 U.S. architecture engineering firms and 1,500 government agencies worldwide.",
+     "url": "https://www.nearmap.com",
+     "quote": "All 10 of the top 10 P&C carriers choose Nearmap, alongside 8 of the top 10 U.S. architecture engineering firms and 1,500 government agencies worldwide."
+    },
+    {
+     "text": "Customer quotes on the customers page come from Stantec, Kin Insurance, Utica First, and the City of Melrose.",
+     "url": "https://www.nearmap.com/customers",
+     "quote": "Chief Assessor, City of Melrose"
+    },
+    {
+     "text": "For insurance, the pages describe underwriting and claims served together rather than separately.",
+     "url": "https://www.nearmap.com/solutions/insurance",
+     "quote": "Most property intelligence providers serve underwriting or claims, but not both."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "See truth. Assess risk. Act with certainty.",
+   "url": "https://www.nearmap.com/products/mapbrowser"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.nearmap.com",
+     "sha": "d0367cebe76518cc"
+    },
+    {
+     "url": "https://www.nearmap.com/customers",
+     "sha": "d2ca36068864ac64"
+    },
+    {
+     "url": "https://www.nearmap.com/solutions/insurance",
+     "sha": "a7428a683762c494"
+    },
+    {
+     "url": "https://www.nearmap.com/products/mapbrowser",
+     "sha": "166c26047ce31a7f"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:nedap-identification-systems": {
+  "kind": "profile",
+  "id": "nedap-identification-systems",
+  "name": "Nedap Identification Systems",
+  "sector": "Airports & Aviation",
+  "category": "Parking & Ground Transport",
+  "confidence": "medium",
+  "why": "The pages state what the readers do, their read ranges and the settings they are used in, but they name no customer and no market beyond those application settings.",
+  "evidence": "https://www.nedapidentification.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Nedap Identification Systems sells long-range vehicle identification and vehicle access control equipment aimed at security professionals.",
+     "url": "https://www.nedapidentification.com",
+     "quote": "We help security professionals with secure and convenient perimeter access"
+    },
+    {
+     "text": "The homepage groups the offering into semi-active RFID readers, passive UHF readers, license plate recognition cameras, and mobile and card based access.",
+     "url": "https://www.nedapidentification.com",
+     "quote": "Find out our portfolio of technologies for automatic long-range identification that enable security professionals to implement optimal vehicle access control processes."
+    },
+    {
+     "text": "It claims more than 30 years of experience in automatic vehicle identification.",
+     "url": "https://www.nedapidentification.com",
+     "quote": "With more than 30 years of experience in automatic vehicle identification, we can help you to find a solid solution for the challenge you face."
+    }
+   ],
+   [
+    {
+     "text": "TRANSIT Ultimate, a semi-active RFID reader, identifies a vehicle and its driver at once at a stated range of up to 15 meters.",
+     "url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+     "quote": "The reader sends a signal to the tag, which simultaneously identifies the vehicle and the driver."
+    },
+    {
+     "text": "The page lists typical applications as vehicle access at airports, seaports, mines, military bases and factories, and at tank and loading facilities for flammable gases, liquids and solids.",
+     "url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+     "quote": "Highly secure vehicle access at airports, seaports, mines, military bases and factories"
+    }
+   ],
+   [
+    {
+     "text": "uPASS Go is a passive UHF RFID reader for vehicle access points, with an adjustable read range of up to 10 meters.",
+     "url": "https://www.nedapidentification.com/products/upass/upass-go/",
+     "quote": "uPASS Go is a cost-effective UHF RFID reader for long-range vehicle identification at vehicle access points."
+    },
+    {
+     "text": "Its listed applications are office car parks, gated communities, staff parking zones and university campuses, and it supports Wiegand and OSDP interfaces.",
+     "url": "https://www.nedapidentification.com/products/upass/upass-go/",
+     "quote": "It supports industry-standard interfaces like Wiegand and OSDP, alongside a broad spectrum of communication protocols including TCP-IP."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Readers using RFID technology can be used to identify vehicles and drivers quickly and automatically from a distance.",
+   "url": "https://www.nedapidentification.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.nedapidentification.com",
+     "sha": "ff5489bd1492c4e0"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/",
+     "sha": "cce4e6d67c6ce219"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+     "sha": "e23a0814f00704c9"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/upass/upass-go/",
+     "sha": "1a790892f49379bd"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:nutrislice": {
+  "kind": "profile",
+  "id": "nutrislice",
+  "name": "Nutrislice",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "confidence": "high",
+  "why": "The four pages state the products, the two mobile apps and the groups served plainly enough for a write-up, but they say nothing about pricing, contracts, headcount or where the company is based.",
+  "evidence": "https://www.nutrislice.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Nutrislice sells digital menus, signage, food labels, and ordering on one platform for foodservice.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Digital menus, signage, food labels, and ordering all in one, streamlined platform for foodservice."
+    },
+    {
+     "text": "Nutrislice Spotlight covers wireless digital food labels that go everywhere and update from anywhere.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Long-lasting, wireless, digital food labels that go everywhere and update from anywhere."
+    },
+    {
+     "text": "Nutrislice Showcase puts menus on the big screen, with a look-and-feel that can be customized for a brand.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Put your menus on the big screen! Customize the look-and-feel for your brand, or have us do it!"
+    },
+    {
+     "text": "Nutrislice Pro offers a contactless ordering experience meant to speed up lines and increase ticket sizes.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Offer a contactless experience, speed up lines, increase ticket sizes and keep customers on site all while streamlining your workflow and operations."
+    }
+   ],
+   [
+    {
+     "text": "Guests and staff use the Nutrislice Menus app to browse daily menu items, view nutrition information, and plan for dietary and allergy restrictions.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Browse daily menu items, view nutrition information, and plan for dietary and allergy restrictions in 50+ languages with the Nutrislice Menus app."
+    },
+    {
+     "text": "Operators can update menus from the dining floor with the Nutrislice Sidekick app, which is available on iOS and Android.",
+     "url": "https://www.nutrislice.com",
+     "quote": "Update menus right from the dining floor with the Nutrislice Sidekick app. Available on iOS and Android."
+    }
+   ],
+   [
+    {
+     "text": "Schools are offered online menus, digital signage, mobile ordering, and digital labels for students, parents, and staff.",
+     "url": "https://nutrislice.com/solutions/k12/",
+     "quote": "Engage students, parents, and staff with online menus, digital signage, mobile ordering, and digital labels."
+    },
+    {
+     "text": "Nutrislice integrates with K12 systems and turns data into ADA compliant menus.",
+     "url": "https://nutrislice.com/solutions/k12/",
+     "quote": "Nutrislice integrates seamlessly with K12 systems, transforming data into ADA compliant menus for your guests."
+    },
+    {
+     "text": "On campus the offer is integrated mobile menus, contactless ordering options, dynamic onsite display marketing, and easy-to-update digital food labels.",
+     "url": "https://nutrislice.com/solutions/higher-ed/",
+     "quote": "Bring a complete and streamlined digital dining experience to campus with integrated mobile menus, contactless ordering options, dynamic onsite display marketing and sustainable, easy-to-update digital food labels."
+    },
+    {
+     "text": "Corporate cafeterias are a stated market, with the same ordering, menus, and signage aimed at cafeteria guests.",
+     "url": "https://nutrislice.com/solutions/corporate/",
+     "quote": "With so many tools to understand the food they\u2019re eating, you can create healthy, informed, positive outcomes for cafeteria guests."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Modern experiences. Way less work.",
+   "url": "https://www.nutrislice.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.nutrislice.com",
+     "sha": "134914a0ac83c6f5"
+    },
+    {
+     "url": "https://nutrislice.com/solutions/corporate/",
+     "sha": "7994775164b7b8a8"
+    },
+    {
+     "url": "https://nutrislice.com/solutions/higher-ed/",
+     "sha": "4fd472f7454257dd"
+    },
+    {
+     "url": "https://nutrislice.com/solutions/k12/",
+     "sha": "a2219115f0717fb2"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:parkhub": {
+  "kind": "profile",
+  "id": "parkhub",
+  "name": "ParkHub",
+  "sector": "Airports & Aviation",
+  "category": "Parking & Ground Transport",
+  "confidence": "unsure",
+  "why": "All seven cached urls return one identical page that names JustPark twelve times and never names this company once, so it supports a description of whoever owns that page and nothing that could be published under this company's name.",
+  "evidence": "https://parkhub.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [],
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://parkhub.com",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/reservations",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/on-demand",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/passes",
+     "sha": "de7d5b1a51fe60ec"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:rain-bird": {
+  "kind": "profile",
+  "id": "rain-bird",
+  "name": "Rain Bird",
+  "sector": "Parks & Rec",
+  "category": "Grounds, Irrigation & Turf",
+  "confidence": "high",
+  "why": "The three pages state what Rain Bird sells, from sprinkler and drip hardware to the IQ4 central control service, and name the sites using it, but they do not state company size, ownership or pricing.",
+  "evidence": "https://www.rainbird.com/products/iq4",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Rain Bird sells irrigation equipment and control systems, and its home page presents commercial projects as a separate demand on those systems.",
+     "url": "https://www.rainbird.com",
+     "quote": "Commercial projects demand more from an irrigation system."
+    },
+    {
+     "text": "Products and replacement parts also ship from the Rain Bird Online Store to homes and businesses.",
+     "url": "https://www.rainbird.com",
+     "quote": "Visit the Rain Bird Online Store anytime day or night for a wide selection of genuine Rain Bird products and replacement parts, delivered right to your door."
+    },
+    {
+     "text": "The same page also points homeowners to free referrals to local contractors who help select and install a sprinkler system.",
+     "url": "https://www.rainbird.com",
+     "quote": "Let Rain Bird help you with a FREE referral to top local contractors near you who can help select and install the best sprinkler system for your yard."
+    }
+   ],
+   [
+    {
+     "text": "IQ4 is a central control product for irrigation controllers, and its map places controller locations and shows watered areas by station.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Start small with placing Controller locations on the Map, or use the Map to understand watered areas per Station and the location of every system component."
+    },
+    {
+     "text": "Reports can be pulled for one, some, or all of a site's irrigation controllers.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Extract key information about one, some, or all of your irrigation controllers."
+    },
+    {
+     "text": "Batch editing applies a common setting to many items at once, such as stations or programs.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Batch editing allows you to apply a common setting to a few, many, or even hundreds of items (like stations or programs) with only a few clicks of a mouse."
+    },
+    {
+     "text": "IQ4 also captures data that an API can pass on to generate work orders and customer reports.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Because of API integration, this valuable data can be repurposed and used to help your business generate work orders, customer reports, and more!"
+    }
+   ],
+   [
+    {
+     "text": "A separate agriculture page covers drip irrigation, with pressure compensating dripline, anti-clog emitters, polyethylene tubing and micro sprays.",
+     "url": "https://www.rainbird.com/agriculture/products/drip-irrigation",
+     "quote": "with anti-clog technology to accurately and consistently deliver water to plants"
+    },
+    {
+     "text": "Case studies on the IQ4 page name a city recreation and parks department in Bakersfield, California.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Recreation and Parks Department, Bakersfield, California"
+    },
+    {
+     "text": "A corporate campus in College Park is among the other sites listed on that page.",
+     "url": "https://www.rainbird.com/products/iq4",
+     "quote": "Corporate Campus Expansion, College Park, GA"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Commercial projects demand more from an irrigation system.",
+   "url": "https://www.rainbird.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.rainbird.com",
+     "sha": "105fbc06c0697292"
+    },
+    {
+     "url": "https://www.rainbird.com/agriculture/products/drip-irrigation",
+     "sha": "198577c3cb07f55e"
+    },
+    {
+     "url": "https://www.rainbird.com/products/fg100",
+     "sha": "4837f2e7e6777fcc"
+    },
+    {
+     "url": "https://www.rainbird.com/products/iq4",
+     "sha": "417a35c96da5c714"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:recycle-coach": {
+  "kind": "profile",
+  "id": "recycle-coach",
+  "name": "Recycle Coach",
+  "sector": "Public Works",
+  "category": "Waste & Recycling",
+  "confidence": "high",
+  "why": "The pages state the products, the client portal and the analytics, and they name cities, haulers and organizations as the market, but they give no pricing or contract terms.",
+  "evidence": "https://recyclecoach.com/solutions/home",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Recycle Coach sells mobile and web app technology that municipalities use to give residents local waste and recycling information.",
+     "url": "https://recyclecoach.com/solutions/home",
+     "quote": "Reach your residents wherever they are and put trusted information at their fingertips through our mobile and web app technology."
+    },
+    {
+     "text": "The company describes its offering as custom waste and recycling solutions for cities, haulers, and organizations.",
+     "url": "https://recyclecoach.com/solutions/home",
+     "quote": "Custom waste & recycling solutions for cities, haulers, and organizations"
+    },
+    {
+     "text": "Alongside the resident app, a Client Portal lets staff edit disposal requirements and send reminder messages.",
+     "url": "https://recyclecoach.com/solutions/home",
+     "quote": "From editing disposal requirements to sending out reminder messages, keeping your residents informed has never been easier with the help of our intuitive Client Portal."
+    },
+    {
+     "text": "Analytics show which materials residents are searching for and where they need help, which the pages position as input to outreach campaigns.",
+     "url": "https://recyclecoach.com/solutions/home",
+     "quote": "See which materials residents are searching for, how they\u2019re engaging, and where they need a little bit of help."
+    }
+   ],
+   [
+    {
+     "text": "The about page dates the business to 2001, when it began with wall recycling calendars for municipalities without extra budget for education.",
+     "url": "https://recyclecoach.com/solutions/about",
+     "quote": "We began our journey in 2001 helping communities educate residents through traditional wall recycling calendars, an inexpensive solution for municipalities that didn\u2019t have extra budget for education."
+    },
+    {
+     "text": "A decade later it launched a mobile app for local waste and recycling programs called My Waste.",
+     "url": "https://recyclecoach.com/solutions/about",
+     "quote": "we developed the world\u2019s first mobile app for local waste and recycling programs, My Waste."
+    },
+    {
+     "text": "The same page states that the company now supports 1,700+ municipalities and millions of people.",
+     "url": "https://recyclecoach.com/solutions/about",
+     "quote": "officially supporting 1,700+ municipalities and millions of people."
+    }
+   ],
+   [
+    {
+     "text": "Through the partnerships page, the same technology is offered white labeled, with a customizable web app adapted to a partner brand identity.",
+     "url": "https://recyclecoach.com/solutions/partnerships-white-label",
+     "quote": "Our customizable Web App can be adapted to reflect your brand identity and customized to display specific information as needed."
+    },
+    {
+     "text": "That page also describes integration with digital 311 software so resident submissions about missed pick-ups or broken carts can be routed to the right teams.",
+     "url": "https://recyclecoach.com/solutions/partnerships-white-label",
+     "quote": "Countless cities have adopted digital 311 software to engage and empower residents to report civic issues."
+    },
+    {
+     "text": "Beyond municipal programs, the pages describe a workplace product for teaching employees how to dispose of items in the office.",
+     "url": "https://recyclecoach.com/solutions/home",
+     "quote": "Teach employees how to dispose of items in the workplace with ease through our custom Recycle Coach at Work mobile and web app."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "With more than two decades in the waste and recycling industry, our mission remains the same: to help all organizations modernize communication and better their communities.",
+   "url": "https://recyclecoach.com/solutions/home"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://recyclecoach.com",
+     "sha": "13b8ab676547d5f6"
+    },
+    {
+     "url": "https://recyclecoach.com/solutions/home",
+     "sha": "f14c204c0c7b33ca"
+    },
+    {
+     "url": "https://recyclecoach.com/solutions/about",
+     "sha": "55a6d3dbae77d9df"
+    },
+    {
+     "url": "https://recyclecoach.com/solutions/partnerships-white-label",
+     "sha": "29e39aa3e57c2250"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:skyward": {
+  "kind": "profile",
+  "id": "skyward",
+  "name": "Skyward",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "confidence": "high",
+  "why": "The three pages state plainly what the two software suites are, what feature areas they cover, and that school districts are the customers, but they do not give pricing, contract terms, or a full customer list.",
+  "evidence": "https://www.skyward.com/products",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Skyward sells a student information system and a school ERP suite to school districts.",
+     "url": "https://www.skyward.com/products",
+     "quote": "Student information system and school ERP"
+    },
+    {
+     "text": "The products page says more than 2,000 districts around the world use one or both of the company's software suites.",
+     "url": "https://www.skyward.com/products",
+     "quote": "More than 2,000 districts around the world are enjoying a better experience with one or both of our software suites."
+    },
+    {
+     "text": "Feature categories listed for the student information system include classroom tools, family engagement, and student services.",
+     "url": "https://www.skyward.com/products",
+     "quote": "Office & Administration Classroom Tools Family Engagement Student Services"
+    }
+   ],
+   [
+    {
+     "text": "The school business suite groups features for human resources, fiscal management, payroll and timeclock, an employee portal, and asset management.",
+     "url": "https://www.skyward.com/products",
+     "quote": "Human Resources Fiscal Management Payroll & Timeclock Employee Portal Asset Management"
+    },
+    {
+     "text": "Financial management, human resources tools, and analytics for a board sit under enterprise resource planning.",
+     "url": "https://www.skyward.com/products",
+     "quote": "Financial management. Human resources tools. Analytics for your board."
+    },
+    {
+     "text": "The office and administration features cover curriculum, reporting, tracking, enrollment, and scheduling.",
+     "url": "https://www.skyward.com/products/student-information-system/office-and-administration",
+     "quote": "From curriculum to reporting, tracking, enrollment, and scheduling"
+    }
+   ],
+   [
+    {
+     "text": "The homepage says over 2,500 school districts entrust their data to the company.",
+     "url": "https://www.skyward.com",
+     "quote": "Over 2,500 school districts entrust their data to us"
+    },
+    {
+     "text": "The homepage dates the company's work with schools to 1980.",
+     "url": "https://www.skyward.com",
+     "quote": "Serving schools since 1980"
+    },
+    {
+     "text": "The office and administration page invites readers to request school pricing.",
+     "url": "https://www.skyward.com/products/student-information-system/office-and-administration",
+     "quote": "Request school pricing"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Switching to Skyward shouldn't mean you have to give up other data systems your organization uses.",
+   "url": "https://www.skyward.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.skyward.com",
+     "sha": "f231e0cba7ec61c8"
+    },
+    {
+     "url": "https://www.skyward.com/products",
+     "sha": "52106201f55e39a7"
+    },
+    {
+     "url": "https://www.skyward.com/products/student-information-system",
+     "sha": "34363ebe55c424d0"
+    },
+    {
+     "url": "https://www.skyward.com/products/student-information-system/office-and-administration",
+     "sha": "cad4d9fd45506308"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:sparkrock": {
+  "kind": "profile",
+  "id": "sparkrock",
+  "name": "Sparkrock",
+  "sector": "K-12 Schools",
+  "category": "Operations & SIS",
+  "confidence": "high",
+  "why": "The homepage names the products, the operational areas they cover, and the organizations they are built for, but it does not state pricing, contract terms, or deployment detail.",
+  "evidence": "https://www.sparkrock.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Sparkrock builds the software that powers mission-driven organizations, naming nonprofits, human services, public sector, and K-12 schools as the groups it serves.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock builds the software that powers mission-driven organizations: nonprofits, human services, public sector, and K-12 schools."
+    },
+    {
+     "text": "The operational areas the software covers include finance, procurement, HR management, and payroll.",
+     "url": "https://www.sparkrock.com",
+     "quote": "finance, procurement, HR management, and payroll"
+    },
+    {
+     "text": "Sparkrock Finance covers approvals, fund visibility, grant management, and automated workflows.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock Finance reduces manual work, eliminates errors, and improves budget control with built-in approvals, real-time fund visibility, grant management, and automated workflows."
+    }
+   ],
+   [
+    {
+     "text": "Sparkrock Ed provides ERP, SIS, and school-generated funds management tools to educators.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock Ed provides ERP, SIS, and school-generated funds management tools to educators."
+    },
+    {
+     "text": "Sparkrock SIS offers student record, attendance, and achievement management in a cloud environment.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock SIS offers student record, attendance, and achievement management in a secure and compliant cloud environment."
+    },
+    {
+     "text": "The SchoolDay platform handles forms, digital permission slips, activities management, and online payments for educators.",
+     "url": "https://www.sparkrock.com",
+     "quote": "helps educators manage forms, digital permission slips, activities management, and online payments"
+    },
+    {
+     "text": "Sparkrock Impact ERP is aimed at not-for-profit organizations, and tribal governments are named as users of the same product.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Tribal governments can manage their communities in secure, cloud-based environments with Sparkrock Impact ERP."
+    }
+   ],
+   [
+    {
+     "text": "Sparkrock Finance and Sparkrock Impact HRP are built on the Microsoft Dynamics 365 Business Central platform.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock Finance and Sparkrock Impact HRP are built on top of the security and stability of the Microsoft Dynamics 365 Business Central platform."
+    },
+    {
+     "text": "Sparkrock Finance users have built-in Microsoft Copilot AI for analytics, predictive modeling, and forecasting of budgets and cash flow.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock Finance users can use built-in Microsoft Copilot AI for advanced analytics, predictive modeling, and proactive insights."
+    },
+    {
+     "text": "The company states that it helps schools and nonprofits manage over 100,000 employees and $15 billion in finances every year.",
+     "url": "https://www.sparkrock.com",
+     "quote": "Sparkrock helps schools and nonprofits manage over 100,000 employees and $15 billion in finances every year."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Sparkrock Finance reduces manual work, eliminates errors, and improves budget control with built-in approvals, real-time fund visibility, grant management, and automated workflows.",
+   "url": "https://www.sparkrock.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.sparkrock.com",
+     "sha": "a2e1441b948c8c14"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:tagmaster": {
+  "kind": "profile",
+  "id": "tagmaster",
+  "name": "TagMaster",
+  "sector": "Airports & Aviation",
+  "category": "Parking & Ground Transport",
+  "confidence": "high",
+  "why": "The products page set out the dual RFID and LPR technologies, the ACTS and GTMS software, and the two RFID platforms, and the platform pages named the markets each one is offered for; no page names a signed customer or a deployment site.",
+  "evidence": "https://tagmasterna.com/products/",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "TagMaster North America sells vehicle identification technology that pairs long-range RFID with license plate recognition.",
+     "url": "https://tagmasterna.com/products/",
+     "quote": "offering dual technologies including long-range radio frequency identification (RFID) and license plate recognition (LPR)"
+    },
+    {
+     "text": "The product line includes RFID readers and tags, LPR cameras, and software supplied as standalone or turnkey packages.",
+     "url": "https://tagmasterna.com/products/",
+     "quote": "We offer a diverse product line of RFID readers and tags, LPR cameras, and turnkey and standalone software for all of our technologies"
+    },
+    {
+     "text": "Two long-range RFID platforms are offered: the microwave LR-series at 2.45GHz, and the XT-series at UHF frequencies of 902-928 MHz.",
+     "url": "https://tagmasterna.com/products/",
+     "quote": "Microwave 2.45GHz long range RFID technology is a semi-passive technology designed to withstand the most demanding environments"
+    }
+   ],
+   [
+    {
+     "text": "The Access Control Tracking System, or ACTS, is software for managing, reporting and tracking vehicles, with feature tiers from basic reporting to asset tracking and logistics management.",
+     "url": "https://tagmasterna.com/products/",
+     "quote": "Access Control Tracking System (ACTS) software provides standalone and turnkey solutions to efficiently manage, report and track vehicles"
+    },
+    {
+     "text": "A second product, the Ground Transportation Management System, helps airport operators identify and manage curbside commercial vehicles and streamline landside operations.",
+     "url": "https://tagmasterna.com/products/",
+     "quote": "GTMS solutions helps airport operators identify and manage curbside commercial vehicles and streamlines landside operations"
+    }
+   ],
+   [
+    {
+     "text": "The UHF line is described for commercial or mixed use parking applications, gated communities, universities and municipalities.",
+     "url": "https://tagmasterna.com/products/xt-series/",
+     "quote": "provide convenient and secure access for commercial or mixed use parking applications, gated communities, universities and municipalities"
+    },
+    {
+     "text": "The microwave LR-series is described as optimal for operations including airports, hospitals, industrial applications, military installations, and Parking Access and Revenue Control installations.",
+     "url": "https://tagmasterna.com/products/lr-series/",
+     "quote": "including airports, hospitals, industrial applications, military installations, and Parking Access and Revenue Control (PARCS) installations"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "TagMaster NA addresses a wide range of challenges in the parking, access, and security industry with over 20 years of experience and technical knowledge.",
+   "url": "https://tagmasterna.com/products/"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://tagmasterna.com",
+     "sha": "76eb063d4330c960"
+    },
+    {
+     "url": "https://tagmasterna.com/products/",
+     "sha": "d2ee63e1d759deda"
+    },
+    {
+     "url": "https://tagmasterna.com/products/lr-series/",
+     "sha": "e5c3b4c28a01349a"
+    },
+    {
+     "url": "https://tagmasterna.com/products/xt-series/",
+     "sha": "91f5494406bb5115"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:trilliant": {
+  "kind": "profile",
+  "id": "trilliant",
+  "name": "Trilliant",
+  "sector": "Utilities & Energy",
+  "category": "Street Lighting & Poles",
+  "confidence": "medium",
+  "why": "The homepage says what the company sells and the market it addresses, and lists product areas in its navigation, but it names no customer, contract or deployment.",
+  "evidence": "https://www.trilliant.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Trilliant describes itself as a technology platform partner for utilities worldwide, selling communications that carry grid data and turn it into operational intelligence.",
+     "url": "https://www.trilliant.com",
+     "quote": "A technology platform partner for utilities worldwide, that provides scalable, interoperable, future-proof communications, and enables grid decisions while turning data into operational intelligence."
+    },
+    {
+     "text": "The platform is presented as a way for utilities to gain real-time visibility and optimize performance across a distributed energy environment, from AMI to grid-edge intelligence.",
+     "url": "https://www.trilliant.com",
+     "quote": "Trilliant enables utilities to gain real-time visibility and optimize performance across an increasingly dynamic, distributed energy environment, from AMI to grid-edge intelligence."
+    }
+   ],
+   [
+    {
+     "text": "Site navigation groups the connectivity and grid edge products as wide area networks, a neighborhood area network, low-power wide area networks, cellular integration, edge and device integration, meter integration, utility IoT, and sub-metering.",
+     "url": "https://www.trilliant.com",
+     "quote": "Connectivity and Grid Edge Wide Area Networks Neighborhood Area Network Low-Power Wide Area Networks Cellular Integration Edge and Device Integration Meter Integration Utility IoT Sub-Metering"
+    },
+    {
+     "text": "Under smart utility, the listed applications are AMI for Electricity, AMI for Smart Water, Demand Response, Distribution Automation, and Analytics as a Service.",
+     "url": "https://www.trilliant.com",
+     "quote": "Smart Utility AMI for Electricity AMI for Smart Water Demand Response Distribution Automation Analytics as a Service"
+    },
+    {
+     "text": "A head-end system, Prime Energy Suite, also appears in the platform navigation.",
+     "url": "https://www.trilliant.com",
+     "quote": "Head-End System (HES) Prime Energy Suite"
+    }
+   ],
+   [
+    {
+     "text": "The pages describe a device-independent platform framed as the Power of Choice, offering flexibility and interoperability.",
+     "url": "https://www.trilliant.com",
+     "quote": "Our Power of Choice device-independent platform means you have flexibility and interoperability."
+    },
+    {
+     "text": "Customers are addressed only in general terms, with the power to choose the solutions they need, and no individual customer is named on this page.",
+     "url": "https://www.trilliant.com",
+     "quote": "Trilliant is dedicated to providing our valued customers with the power to choose only the solutions you need"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Our Power of Choice device-independent platform means you have flexibility and interoperability.",
+   "url": "https://www.trilliant.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.trilliant.com",
+     "sha": "629c0a1587534307"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:tybera-development-group": {
+  "kind": "profile",
+  "id": "tybera-development-group",
+  "name": "Tybera Development Group",
+  "sector": "Courts & Justice",
+  "category": "Courts & Case Management",
+  "confidence": "high",
+  "why": "The about page states what the company sells and who it is for, and the homepage describes the three named products, but neither page gives pricing figures or a customer count.",
+  "evidence": "https://www.tybera.com/about/",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Tybera Development Group is a Utah-based company that provides electronic filing, case management and document management software for attorneys, courts and government agencies.",
+     "url": "https://www.tybera.com/about/",
+     "quote": "We are a Utah-based company founded in 2001 that provides electronic filing, case management and document management solution for attorneys, courts and government agencies."
+    },
+    {
+     "text": "The about page says the company was founded in 2001 and supports all court types and all filing types.",
+     "url": "https://www.tybera.com/about/",
+     "quote": "We support all court types and all filing types."
+    },
+    {
+     "text": "Its technology may be acquired by license, subscription, or per transaction.",
+     "url": "https://www.tybera.com/about/",
+     "quote": "Our technology may be acquired by license, subscription, or per transaction, offering the most versatile eSuite of products at an affordable price."
+    }
+   ],
+   [
+    {
+     "text": "The eFlex filing system consists of two modules, the Filer Interface or Electronic Filing Service Provider, and the Review Interface or the E-Filing Manager.",
+     "url": "https://tybera.com",
+     "quote": "eFlex consist of two modules; the Filer Interface or Electronic Filing Service Provider (EFSP), and the Review Interface or the E-Filing Manager (EFM)."
+    },
+    {
+     "text": "Alpine is a browser-based case management system that handles cases, parties, events and calendaring across the lifecycle of a case.",
+     "url": "https://tybera.com",
+     "quote": "Alpine is a browser-based case management system that manages cases, parties, events and calendaring through the complete lifecycle of a case."
+    },
+    {
+     "text": "CEDAR is document archiving and storage technology designed to fit the needs of courts and government agencies.",
+     "url": "https://tybera.com",
+     "quote": "CEDAR is document archiving and storage technology designed to fit the needs of courts and government agencies."
+    },
+    {
+     "text": "It maintains index information about where documents are stored in relation to the case and for revision control.",
+     "url": "https://tybera.com",
+     "quote": "CEDAR maintains the index information that manages where documents are stored in relation to the case and for revision control and the movement and replacement of documents."
+    }
+   ],
+   [
+    {
+     "text": "The homepage says support is provided to customers, with a link to get product support.",
+     "url": "https://tybera.com",
+     "quote": "We pride ourselves in providing top-tier support to our customers."
+    },
+    {
+     "text": "News headlines on that page name Cumberland County Courts and Fort Bragg as partners offering a domestic violence eFiling system.",
+     "url": "https://tybera.com",
+     "quote": "Cumberland County Courts and Fort Bragg Partner to Offer Domestic Violence eFiling System to Increase Victim Safety"
+    },
+    {
+     "text": "Another headline says Tybera Development Group achieved SOC 2 Type II compliance.",
+     "url": "https://tybera.com",
+     "quote": "Tybera Development Group Achieves SOC 2 Type II Compliance"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "We are a Utah-based company founded in 2001 that provides electronic filing, case management and document management solution for attorneys, courts and government agencies.",
+   "url": "https://www.tybera.com/about/"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://tybera.com",
+     "sha": "98799bf1dcdf66d6"
+    },
+    {
+     "url": "https://www.tybera.com/about/",
+     "sha": "cd055e05185e1578"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:tyler-technologies": {
+  "kind": "profile",
+  "id": "tyler-technologies",
+  "name": "Tyler Technologies",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "confidence": "medium",
+  "why": "The homepage states the market in general terms and the appraisal and tax page sets out one product line in detail, so the write-up stays on those two and does not describe the other offerings the homepage only lists by name.",
+  "evidence": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Tyler Technologies sells software and services designed for government and schools.",
+     "url": "https://www.tylertech.com",
+     "quote": "Software and services designed for government and schools"
+    },
+    {
+     "text": "One product line the pages set out in detail is appraisal and tax, which covers property assessment and computer-assisted mass appraisal software.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "Computer-Assisted Mass Appraisal (CAMA) Software for Easy Property Data Management"
+    },
+    {
+     "text": "The same line covers tax billing and collection software for processing bills, payments, and property information.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "Our user-friendly software solutions empower you to process bills, payments, and property information quickly and efficiently."
+    }
+   ],
+   [
+    {
+     "text": "Alongside software, the pages offer mass appraisal services ranging from data collection to appeal support.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "We can help you execute specific areas of your reassessment initiative or provide you with complete, turnkey services that include everything from scratch data collection to appeal support."
+    },
+    {
+     "text": "The property and recording business launched in 1938.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "Tyler's property and recording business launched in 1938 and quickly established industrywide appraisal practices that are still in use today."
+    },
+    {
+     "text": "The pages state work in 49 states, 26 state capitals, and four Canadian provinces.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "We have more than 85 years of property and recording work in 49 states, 26 state capitals, four Canadian provinces, The Commonwealth of the Bahamas, and other international locations."
+    }
+   ],
+   [
+    {
+     "text": "Buyers are described as ranging from small rural counties to large metropolitan cities.",
+     "url": "https://www.tylertech.com",
+     "quote": "From small rural counties to large metropolitan cities, we've got you covered."
+    },
+    {
+     "text": "The client base is stated as more than 750, totaling more than 1,220 jurisdictions.",
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "quote": "We also have eight statewide software adoptions or implementations, and our client base is more than 750 strong, totaling more than 1,220 jurisdictions relying on our property and recording software."
+    },
+    {
+     "text": "The homepage names the public sector as the market served.",
+     "url": "https://www.tylertech.com",
+     "quote": "We Serve the Public Sector"
+    }
+   ]
+  ],
+  "quote": {
+   "text": "From small rural counties to large metropolitan cities, we've got you covered.",
+   "url": "https://www.tylertech.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.tylertech.com",
+     "sha": "d510cc44289ed602"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions",
+     "sha": "3b44d2936c522078"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "sha": "4c9901d3c4da52c8"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax/appraisal-services",
+     "sha": "51061a1fdf8fbae4"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:upper-hand": {
+  "kind": "profile",
+  "id": "upper-hand",
+  "name": "Upper Hand",
+  "sector": "Parks & Rec",
+  "category": "Youth Sports & Leagues",
+  "confidence": "high",
+  "why": "The three pages state plainly what the software does, who it is sold to, and when the company started and renamed itself, but they state no pricing and name no buyer outside sports businesses.",
+  "evidence": "https://upperhand.com",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Upper Hand sells sports business management software that covers scheduling, registration, payment processing, team management, marketing, and payroll in one place.",
+     "url": "https://upperhand.com",
+     "quote": "From scheduling and registration to payment processing, team management, marketing, payroll, and more, Upper Hand gives you all the tools you need to manage every aspect of your sports business."
+    },
+    {
+     "text": "Programs can be built as private lessons, classes, teams, and clinics, with registration options, capacity controls, and waitlists.",
+     "url": "https://upperhand.com",
+     "quote": "Run private lessons, classes, teams, and clinics with flexible registration, capacity controls, and built-in waitlists all in one place."
+    },
+    {
+     "text": "Billing covers payments, memberships, pricing plans, discounts, and recurring billing.",
+     "url": "https://upperhand.com",
+     "quote": "Accept payments, offer memberships and pricing plans, apply discounts, and automate recurring billing without extra tools."
+    },
+    {
+     "text": "Staff and facility tools handle instructors, access levels, payroll reporting, and facility availability.",
+     "url": "https://upperhand.com",
+     "quote": "Manage instructors, access levels, payroll reporting, and facility availability to avoid conflicts and double bookings."
+    }
+   ],
+   [
+    {
+     "text": "The pages describe the market as sports facilities, academies, and coaching businesses of all sizes.",
+     "url": "https://upperhand.com",
+     "quote": "Sports facilities, academies, and coaching businesses of all sizes can benefit from Upper Hand\u2019s comprehensive sports business management software."
+    },
+    {
+     "text": "The company page states that Upper Hand serves the sports training industry and helps facilities, academies, and trainers grow their businesses.",
+     "url": "https://upperhand.com/company/",
+     "quote": "Upper Hand serves the sports training industry, helping facilities, academies, and trainers grow their businesses."
+    },
+    {
+     "text": "Customer stories name businesses such as EYG Basketball, SpeedSkills Hockey, and D-BAT Newark.",
+     "url": "https://upperhand.com/customers",
+     "quote": "With Upper Hand, EYG Basketball has grown their athlete base to 2,500 and saved over 10 hours per week on administrative tasks."
+    }
+   ],
+   [
+    {
+     "text": "The company page dates the business to 2012, when a baseball coach started a platform connecting athletes with private coaches.",
+     "url": "https://upperhand.com/company/",
+     "quote": "In 2012, baseball coach Kevin MacCauley saw the need for a platform connecting athletes with private coaches."
+    },
+    {
+     "text": "The name Upper Hand dates from 2015, when the team rebranded and described the product as a sports training management platform.",
+     "url": "https://upperhand.com/company/",
+     "quote": "In 2015, the team rebranded as Upper Hand, the first sports training management platform."
+    },
+    {
+     "text": "A mobile app is available to both the sports business and its clients.",
+     "url": "https://upperhand.com",
+     "quote": "The Upper Hand mobile app is free to download for both the sports business and its clients."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Upper Hand was created by sports coaches to make sports training easier.",
+   "url": "https://upperhand.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://upperhand.com",
+     "sha": "accb8e9d42ac3443"
+    },
+    {
+     "url": "https://upperhand.com/customers",
+     "sha": "c5d090892f51baef"
+    },
+    {
+     "url": "https://upperhand.com/company/",
+     "sha": "f002e6b38587ae98"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "profile:veovo": {
+  "kind": "profile",
+  "id": "veovo",
+  "name": "Veovo",
+  "sector": "Airports & Aviation",
+  "category": "Terminal & Passenger Experience",
+  "confidence": "high",
+  "why": "The three pages state what Veovo sells, the products it groups under one platform and the airports it names as customers; they do not state ownership, pricing or contract terms.",
+  "evidence": "https://www.veovo.com/platform/flight-management",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": [
+   [
+    {
+     "text": "Veovo sells airport management software built around what it calls the Intelligent Airport Platform.",
+     "url": "https://www.veovo.com/platform",
+     "quote": "Introducing the Intelligent Airport Platform"
+    },
+    {
+     "text": "The platform connects flight operations with passenger flow and uses real-time data and AI predictions for resourcing and capacity decisions.",
+     "url": "https://www.veovo.com",
+     "quote": "Veovo connects flight operations and passenger flow, using real-time data and AI predictions to guide resourcing, optimise capacity and keep teams aligned."
+    },
+    {
+     "text": "Its modular design is described as joining people, processes and information across the airport, with a view for every role.",
+     "url": "https://www.veovo.com/platform",
+     "quote": "modular platform connects people, processes, and information throughout the airport, providing a personalised view for every role"
+    }
+   ],
+   [
+    {
+     "text": "Flight Management runs on a cloud hosted airport operational database.",
+     "url": "https://www.veovo.com/platform/flight-management",
+     "quote": "Run your airport on complete, contextual flight data from"
+    },
+    {
+     "text": "It automates data exchange with airport systems and industry data feeds, including IATA, Euro-control, AIDX, and Type B.",
+     "url": "https://www.veovo.com/platform/flight-management",
+     "quote": "Automate data exchange with airport critical systems, 3rd party tools and industry data feeds, including IATA, Euro-control, AIDX, and Type B."
+    },
+    {
+     "text": "Deployment is offered on premise or in the cloud, with SaaS or Managed Service options.",
+     "url": "https://www.veovo.com/platform/flight-management",
+     "quote": "Deploy with flexibility, on-premise or in the cloud with SaaS or Managed Service options"
+    }
+   ],
+   [
+    {
+     "text": "These pages describe the customers as airports and transport providers.",
+     "url": "https://www.veovo.com",
+     "quote": "airports and transport providers rely on us to power-up their operational performance, flex to live events and redefine journeys in a new era of travel."
+    },
+    {
+     "text": "A case study names Manchester Airports Group as a strategic partner for flow management technology.",
+     "url": "https://www.veovo.com",
+     "quote": "Manchester Airports Group selects Veovo as strategic partner for flow management technology"
+    },
+    {
+     "text": "Another names Perth Airport, where a new operational system covers airline and ground handler flight management processes.",
+     "url": "https://www.veovo.com/platform/flight-management",
+     "quote": "Veovo has delivered a new operational system for Perth Airport that will streamline airline and ground handler flight management processes."
+    }
+   ]
+  ],
+  "quote": {
+   "text": "Our Intelligent Airport Platform joins up data, predictions and decisions across landside and airside.",
+   "url": "https://www.veovo.com"
+  },
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.veovo.com",
+     "sha": "d64ca99d4a215110"
+    },
+    {
+     "url": "https://www.veovo.com/platform",
+     "sha": "0b425de60737572f"
+    },
+    {
+     "url": "https://www.veovo.com/platform/flight-management",
+     "sha": "b41224ab7686e71e"
+    },
+    {
+     "url": "https://www.veovo.com/platform/fids",
+     "sha": "6954ecc0b643935d"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:53-04:00",
+  "status": "pending"
+ },
+ "buyer:intellicene": {
+  "kind": "buyer",
+  "id": "intellicene",
+  "name": "Intellicene",
+  "sector": "Transit & Parking",
+  "category": "Suppliers & Services",
+  "confidence": "medium",
+  "why": "The homepage counts government and agencies worldwide among the customers it points to, but the counter values render as zeros and no individual buyer is named on the page.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://intellicene.com",
+     "sha": "f532c756a1a8fd71"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "A By The Numbers section, introduced as a statement about the company's customers, counts Government and Agencies Worldwide, together with international airports, global retailers, and subway and rail systems.",
+  "sells_to_gov": "yes",
+  "names_other_buyers": "unclear",
+  "buyer_quote": "Government and Agencies Worldwide",
+  "buyer_url": "https://intellicene.com",
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:momentus-technologies": {
+  "kind": "buyer",
+  "id": "momentus-technologies",
+  "name": "Momentus Technologies",
+  "sector": "Parks & Rec",
+  "category": "Events, Venues & Ticketing",
+  "confidence": "medium",
+  "why": "The pages name customers and venue types at length, but not one of them is identified as a city, county, state, district, or other public body, so whether a government is among the buyers is not settled here.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://gomomentus.com",
+     "sha": "bca271ed9e54d9ea"
+    },
+    {
+     "url": "https://gomomentus.com/about-us",
+     "sha": "31884833bc1d58c8"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages say convention centers, corporate and university campuses, stadiums and arenas, performing arts centers and conference centers use the platform, naming Google, Microsoft, Nike, SoFi Stadium, Excel London and the Apollo Theater.",
+  "sells_to_gov": "unclear",
+  "names_other_buyers": "yes",
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": "What do SoFi Stadium , Google , Excel London , and the Apollo Theater have in common? They all use Momentus venue & event management software.",
+  "other_url": "https://gomomentus.com",
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:nearmap": {
+  "kind": "buyer",
+  "id": "nearmap",
+  "name": "Nearmap",
+  "sector": "General Gov",
+  "category": "Strategy & Performance",
+  "confidence": "high",
+  "why": "The home page names government agencies among the organizations that choose Nearmap and the customers page names a city assessor, so the pages settle that a government buys, though they do not describe how any agency contracts.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.nearmap.com",
+     "sha": "d0367cebe76518cc"
+    },
+    {
+     "url": "https://www.nearmap.com/customers",
+     "sha": "d2ca36068864ac64"
+    },
+    {
+     "url": "https://www.nearmap.com/solutions/insurance",
+     "sha": "a7428a683762c494"
+    },
+    {
+     "url": "https://www.nearmap.com/products/mapbrowser",
+     "sha": "166c26047ce31a7f"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages name P&C carriers, U.S. architecture engineering firms, and 1,500 government agencies worldwide as buyers, with named customers including Stantec, Kin Insurance, Utica First, and the City of Melrose.",
+  "sells_to_gov": "yes",
+  "names_other_buyers": "yes",
+  "buyer_quote": "All 10 of the top 10 P&C carriers choose Nearmap, alongside 8 of the top 10 U.S. architecture engineering firms and 1,500 government agencies worldwide.",
+  "buyer_url": "https://www.nearmap.com",
+  "other_quote": "All 10 of the top 10 P&C carriers use Nearmap.",
+  "other_url": "https://www.nearmap.com/solutions/insurance",
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:nedap-identification-systems": {
+  "kind": "buyer",
+  "id": "nedap-identification-systems",
+  "name": "Nedap Identification Systems",
+  "sector": "Airports & Aviation",
+  "category": "Parking & Ground Transport",
+  "confidence": "medium",
+  "why": "The pages name military bases and military sites among the settings where the readers are deployed, which is the only government market they name, and they name no purchasing organisation of any kind.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.nedapidentification.com",
+     "sha": "ff5489bd1492c4e0"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/",
+     "sha": "cce4e6d67c6ce219"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+     "sha": "e23a0814f00704c9"
+    },
+    {
+     "url": "https://www.nedapidentification.com/products/upass/upass-go/",
+     "sha": "1a790892f49379bd"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages name no purchasing organisation, and give the settings as airports, seaports, ports, mines, military bases, factories, office car parks, gated communities, staff parking zones and university campuses.",
+  "sells_to_gov": "yes",
+  "names_other_buyers": "yes",
+  "buyer_quote": "TRANSIT Ultimate readers are deployed in high-security environments and under extreme conditions, such as airports, ports, factories, mines, or military sites.",
+  "buyer_url": "https://www.nedapidentification.com/products/transit/transit-ultimate/",
+  "other_quote": "It is the perfect solution for efficiently managing vehicle entry in car parks, gated communities, and staff parking zones.",
+  "other_url": "https://www.nedapidentification.com/products/upass/upass-go/",
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:parkhub": {
+  "kind": "buyer",
+  "id": "parkhub",
+  "name": "ParkHub",
+  "sector": "Airports & Aviation",
+  "category": "Parking & Ground Transport",
+  "confidence": "low",
+  "why": "The page lists seven industries it addresses and a hotel testimonial, but its footer states it is the trading name of JustPark Parking Limited and it never names this company, so nothing on it settles who buys this company's product.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://parkhub.com",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/reservations",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/on-demand",
+     "sha": "de7d5b1a51fe60ec"
+    },
+    {
+     "url": "https://parkhub.com/uk/business/solutions/passes",
+     "sha": "de7d5b1a51fe60ec"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages name Local Authorities & Public Sector, Property Owners & Managers, Hotel & Retail, Transport, Community & Education and Event Venues as industries addressed, but they carry JustPark's name and never this company's, so who buys its product is not stated.",
+  "sells_to_gov": "unclear",
+  "names_other_buyers": "unclear",
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:rain-bird": {
+  "kind": "buyer",
+  "id": "rain-bird",
+  "name": "Rain Bird",
+  "sector": "Parks & Rec",
+  "category": "Grounds, Irrigation & Turf",
+  "confidence": "high",
+  "why": "The IQ4 page names municipal parks departments among the sites running its central control, and the same pages also name homeowners and a corporate campus, so a government buyer is stated but is not the only one.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.rainbird.com",
+     "sha": "105fbc06c0697292"
+    },
+    {
+     "url": "https://www.rainbird.com/agriculture/products/drip-irrigation",
+     "sha": "198577c3cb07f55e"
+    },
+    {
+     "url": "https://www.rainbird.com/products/fg100",
+     "sha": "4837f2e7e6777fcc"
+    },
+    {
+     "url": "https://www.rainbird.com/products/iq4",
+     "sha": "417a35c96da5c714"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages name a Recreation and Parks Department in Bakersfield, California and a Department of Parks and Recreation in Washington, D.C. among the sites running IQ4 central control, alongside homeowners, golf courses and a corporate campus in College Park.",
+  "sells_to_gov": "yes",
+  "names_other_buyers": "yes",
+  "buyer_quote": "Recreation and Parks Department, Bakersfield, California",
+  "buyer_url": "https://www.rainbird.com/products/iq4",
+  "other_quote": "Corporate Campus Expansion, College Park, GA",
+  "other_url": "https://www.rainbird.com/products/iq4",
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
+  "status": "pending"
+ },
+ "buyer:tyler-technologies": {
+  "kind": "buyer",
+  "id": "tyler-technologies",
+  "name": "Tyler Technologies",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "confidence": "high",
+  "why": "The homepage names government as who the software and services are designed for and names the public sector, counties and cities, which settles that a government buys, while whether the schools it names beside government are government ones is not settled by these pages.",
+  "evidence": "",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": null,
+  "roster_size": null,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {
+   "pages": [
+    {
+     "url": "https://www.tylertech.com",
+     "sha": "d510cc44289ed602"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions",
+     "sha": "3b44d2936c522078"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax",
+     "sha": "4c9901d3c4da52c8"
+    },
+    {
+     "url": "https://www.tylertech.com/solutions/public-administration/appraisal-tax/appraisal-services",
+     "sha": "51061a1fdf8fbae4"
+    }
+   ]
+  },
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": "These pages say the buyers are government and schools, the public sector, counties and cities, and jurisdictions relying on the property and recording software.",
+  "sells_to_gov": "yes",
+  "names_other_buyers": "unclear",
+  "buyer_quote": "Software and services designed for government and schools",
+  "buyer_url": "https://www.tylertech.com",
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": false,
+  "by": "agent:write-profiles",
+  "at": "2026-09-13T10:07:54-04:00",
   "status": "pending"
  }
 }

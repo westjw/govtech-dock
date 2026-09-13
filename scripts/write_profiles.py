@@ -319,6 +319,78 @@ def _buyer_verdict(sc: dict, got: dict, buyer_only: bool) -> str | None:
     return agents.check_buyer(sc, agents._profile_texts(sc))
 
 
+def ingest_answers(a) -> int:
+    """Land answers somebody else wrote, through the identical door.
+
+    THE GENERATOR WAS NEVER THE PART DOING THE WORK. brief_profile decides
+    which company, off which pages, under which rules; check_profile and
+    check_buyer decide what is true enough to store; the gate decides what a
+    person sees. A model behind the metered API and an agent on a Claude Code
+    plan are interchangeable in the middle of that, and the bill is not.
+
+    So this takes a file of answers in TASK's own shape and runs them through
+    the same split, the same two doors and the same two ingests a live run
+    uses. No repair loop: whoever wrote the answers had the door available to
+    them (scripts/check_answer.py) and a refusal here is a refusal a person
+    reads in the gate, exactly as it would be at 3am.
+    """
+    rows = json.loads(pathlib.Path(a.answers_file).read_text())
+    if isinstance(rows, dict):
+        rows = rows.get("answers") or rows.get("proposals") or [rows]
+    if not rows:
+        print(f"{a.answers_file} holds no answers", file=sys.stderr)
+        return 1
+    companies = {c["id"]: c for c in admin.read_companies() if c.get("id")}
+    kept, scoped, no_company = [], [], []
+    for got in rows:
+        cid = got.get("id")
+        if cid not in companies:
+            # NEVER SILENTLY SKIP. An answer about a company that is not on
+            # file cannot be checked against its pages or written onto its
+            # record, and the id-mismatch door would refuse it at ingest
+            # anyway - but it is named here rather than counted at the end.
+            no_company.append(cid)
+            continue
+        c = companies[cid]
+        prof, sc = split_answer(got, cid, a.buyer_only)
+        common = dict(name=c.get("name"), sector=c.get("sector"),
+                      category=c.get("category"))
+        # `saw` IS OUR RECORD, NOT THE WRITER'S CLAIM. It says which bytes the
+        # prose was checked against, and a ruling six months from now reads it
+        # to know what was in front of whoever wrote this. Taking it from the
+        # answer would let the writer describe its own evidence - the same
+        # reason the id is pinned rather than echoed.
+        rec = fp.load(cid) or {}
+        saw = {"pages": [{"url": pg["url"], "sha": pg.get("sha")}
+                         for pg in (rec.get("about") or [])
+                         if pg.get("url")][:agents.PROFILE_PAGES]}
+        if not a.buyer_only:
+            kept.append(dict(prof, kind="profile", key=f"profile:{cid}",
+                             also_known_as=c.get("also_known_as") or [],
+                             saw=saw, **common))
+        scoped.append(dict(sc, kind="buyer", key=f"buyer:{cid}", saw=saw,
+                           **common))
+    if no_company:
+        print(f"  {len(no_company)} answer(s) name a company that is not on "
+              f"file and went nowhere: {no_company[:6]}", file=sys.stderr)
+    for i in range(0, len(kept), INGEST_BATCH):
+        rep = agents.ingest("profile", kept[i:i + INGEST_BATCH],
+                            model="agent:write-profiles")
+        print(f"  write-up ingest: {rep['kept']} through, "
+              f"{len(rep['refused'])} refused")
+        for r in rep["refused"][:6]:
+            print(f"     REFUSED {r['key']}: {r['why'][:96]}")
+    for i in range(0, len(scoped), INGEST_BATCH):
+        rep = agents.ingest("buyer", scoped[i:i + INGEST_BATCH],
+                            model="agent:write-profiles")
+        print(f"  buyer ingest: {rep['kept']} through, "
+              f"{len(rep['refused'])} refused")
+        for r in rep["refused"][:6]:
+            print(f"     REFUSED {r['key']}: {r['why'][:96]}")
+    print(f"\nPending in the admin. Nothing was asked and nothing was spent.")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--category")
@@ -350,6 +422,13 @@ def main() -> int:
     ap.add_argument("--fetch", dest="force_fetch", action="store_true",
                     help="with --buyer-only: re-fetch anyway, for a company "
                          "whose cached pages are stale enough to matter")
+    ap.add_argument("--answers-file", metavar="PATH",
+                    help="a JSON list of answers already written, ingested "
+                         "through the SAME split, the SAME two doors and the "
+                         "SAME two ingests as a live run. Nothing is asked and "
+                         "nothing is spent on the metered API - which is the "
+                         "whole point: the generator was never the part doing "
+                         "the work, the brief and the door were")
     ap.add_argument("--no-repair", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
@@ -364,6 +443,9 @@ def main() -> int:
 
     if a.recheck_refused:
         return recheck_refused(a.limit or 10 ** 6, a.write)
+
+    if a.answers_file:
+        return ingest_answers(a)
 
     # BEFORE THE FETCH. See the docstring: a run that fetches a hundred sites
     # and then finds it cannot ask anything has spent goodwill for nothing.
