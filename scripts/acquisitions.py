@@ -188,6 +188,25 @@ def evidence_for(cid: str) -> dict:
             out.setdefault("identity_why", row.get("identity_why"))
             out.setdefault("postings", row.get("postings"))
             out["titles"] = row.get("titles") or []
+    # A FIFTH DIRECTION: THE COMPANY'S OWN SITE NAMES SOMEBODY ELSE. The four
+    # above all read the BOARD - whose slug, whose redirect, whose logo. This
+    # one reads the company's own pages, which is a different question arriving
+    # at the same answer: cartegraph.com says OpenGov 154 times and Cartegraph
+    # none, ecivis.com says Euna 294 times, parkhub.com says JustPark 84.
+    #
+    # IT IS EVIDENCE, NOT A VERDICT, and it is deliberately the weakest of the
+    # five for ranking: a rebrand, a shared parent marketing site and a genuine
+    # acquisition all look like this, and only a person can tell them apart.
+    # site_identity.py holds the measurement and its own reasons for refusing
+    # the rows where nothing readable dominates.
+    for row in _read(DATA / "site_identity.json", {}).get("rows", []):
+        if row.get("id") != cid or row.get("kind") != "names_another_company":
+            continue
+        named = row.get("names_instead") or []
+        if named:
+            out["site_names"] = {"who": named[0][0], "times": named[0][1],
+                                 "also": [w for w, _ in named[1:]],
+                                 "fetched_on": row.get("fetched_on")}
     return out
 
 

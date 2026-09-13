@@ -73,6 +73,33 @@ contact careers login sign search menu skip content page site privacy policy
 terms cookie cookies accept close open next back top let we us it is be as at
 by on or an a in to of""".split())
 
+# THE WORDS EVERY VENDOR SITE SHOUTS, and the reason the first version of this
+# reported Cartegraph as being about "Management". A page that says Management
+# 252 times and OpenGov 154 times is a page about OpenGov; the frequency
+# ranking alone picks the product noun and buries the only token that answers
+# the question. Same for ResourceX ("PRODUCT", "NAME" - literal unfilled
+# template placeholders) and Syrinix ("Monitor", "Chlorine").
+FURNITURE = set("""management managed software solutions solution platform
+product products service services government governments public sector data
+cloud security support customers customer overview features feature pricing
+resources resource company contact careers blog news events webinar webinars
+learn more demo request login signin signup free trial team teams partner
+partners industry industries case studies study whitepaper ebook guide
+technology technologies system systems tools tool app apps mobile web online
+digital smart automated integration integrations api dashboard report
+reports analytics insights training education school schools city cities
+county counties state states agency agencies department departments
+monitor monitoring monitors sensor sensors network networks water
+error errors severity notice warning exception failed failure page
+# LITERAL UNFILLED TEMPLATE PLACEHOLDERS, which is not a metaphor: resourcex.net
+# serves the string NAME 252 times and PRODUCT 378, burying Tyler at 182 - the
+# only token on the page that answers the question.
+name names product title description placeholder lorem ipsum undefined
+null none filename message string value default example sample test
+based opens started explore type mass continue information
+instagram facebook linkedin twitter youtube tiktok cookie cookies accept
+english espanol francais deutsch""".split())
+
 
 def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
@@ -111,8 +138,17 @@ def dominant(text: str, own: set) -> list:
     """
     cap = collections.Counter(
         w for w in re.findall(r"\b[A-Z][A-Za-z0-9]{3,}\b", text)
-        if w.lower() not in STOP and w.lower() not in own)
+        if w.lower() not in STOP and w.lower() not in own
+        and w.lower() not in FURNITURE)
     return cap.most_common(3)
+
+
+# HOW OFTEN A NAME HAS TO APPEAR BEFORE IT IS THE PAGE'S SUBJECT. Measured
+# against what the sweep actually returned: every genuine case names its new
+# owner in the dozens or hundreds - Euna 294, AMCS 210, OpenGov 154, JustPark
+# 84 - while the pages with nothing to say top out in single figures on a
+# social-media link or a random token from a JS bundle.
+OWNER_MIN = 8
 
 
 def measure(companies: list) -> list:
@@ -135,6 +171,19 @@ def measure(companies: list) -> list:
             continue
         own = {t.lower() for n in names for t in _core(n)}
         spam = len(SPAM.findall(text))
+        named = dominant(text, own)
+        top = named[0] if named else None
+        # THREE KINDS, AND THE THIRD IS THE HONEST ONE. A page whose strongest
+        # remaining name is a social link or a token out of a JS bundle is not
+        # evidence that somebody bought them - it is a page we could not read.
+        # Reporting it as an acquisition would send a person to rule on
+        # nothing, which is how a queue teaches people to skim it.
+        if spam >= SPAM_MIN:
+            kind = "spam"
+        elif top and top[1] >= OWNER_MIN:
+            kind = "names_another_company"
+        else:
+            kind = "unreadable"
         rows.append({
             "id": cid, "name": c.get("name"), "website": c.get("website"),
             "fetched_on": rec.get("fetched_on"), "pages": len(pages),
@@ -142,9 +191,8 @@ def measure(companies: list) -> list:
             # THE LINK IS THE HARM. A stale cache on a company with no website
             # on file is a fact about data/site_pages/ and reaches no reader.
             "linked": bool(c.get("website")),
-            "kind": ("spam" if spam >= SPAM_MIN
-                     else "names_another_company"),
-            "names_instead": dominant(text, own),
+            "kind": kind,
+            "names_instead": named,
         })
     rows.sort(key=lambda r: (-r["spam_markers"], not r["linked"], r["name"] or ""))
     return rows
@@ -169,12 +217,19 @@ def main() -> int:
         if not r["linked"]:
             print(f"  {str(r['name'])[:28]:30} spam, but no website on file - "
                   f"stale cache only, reaches no reader")
-    other = [r for r in rows if r["kind"] != "spam"]
-    print(f"\n  {len(other)} name somebody else instead - mostly acquisitions, "
-          f"which is the Acquisitions queue's question:")
-    for r in other[:12]:
+    other = [r for r in rows if r["kind"] == "names_another_company"]
+    print(f"\n  {len(other)} name somebody else instead - the Acquisitions "
+          f"queue's question, not this one's:")
+    for r in other:
         who = ", ".join(f"{w}x{n}" for w, n in r["names_instead"]) or "(nothing)"
         print(f"     {str(r['name'])[:26]:28} -> {who[:54]}")
+    dead = [r for r in rows if r["kind"] == "unreadable"]
+    print(f"\n  {len(dead)} carry no name at all we can read - an error page, a "
+          f"JS bundle, a name that lives only in a logo. NOT a finding about "
+          f"the company:")
+    for r in dead:
+        print(f"     {str(r['name'])[:26]:28} {r['pages']}p  "
+              f"fetched {r.get('fetched_on')}")
     if not a.write:
         print("\ndry run: nothing written")
         return 0

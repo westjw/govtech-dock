@@ -5167,6 +5167,110 @@ def check_one_subscriber_never_silences_the_rest() -> int:
     return errors
 
 
+def check_a_site_that_names_somebody_else_is_read_correctly() -> int:
+    """The identity sweep names the right company, or says it cannot.
+
+    AN AGENT FOUND THE DEFECT THIS GUARDS. Asked to describe ParkHub from
+    ParkHub's own pages, it answered "unsure": parkhub.com serves JustPark's
+    site, JustPark twelve times and ParkHub zero. find_websites.identifies()
+    asks exactly that question at DISCOVERY and never again, so a domain that
+    was theirs in March and is a casino in September passes every check here.
+
+    TWO THINGS GO WRONG IN THE READING AND BOTH DID:
+
+      THE PRODUCT NOUN BURIES THE NAME. Frequency alone reported Cartegraph as
+      being about "Management" (252) rather than OpenGov (154), and Syrinix as
+      "Chlorine". Every vendor site shouts Management, Solutions, Platform.
+      FURNITURE is what makes the ranking answer the question asked.
+
+      A TEMPLATE PLACEHOLDER IS NOT A COMPANY. resourcex.net serves the literal
+      string NAME 252 times and PRODUCT 378, burying Tyler at 182 - the only
+      token on the page that answers anything.
+
+    AND THE THIRD KIND IS THE HONEST ONE: a page whose strongest remaining name
+    is a social link or a token out of a JS bundle is not evidence somebody
+    bought them. It is a page we could not read, and reporting it as an
+    acquisition sends a person to rule on nothing.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import site_identity as si
+    errors = 0
+
+    # 1. THE NAME IS FOUND WHEN IT IS THERE, generously - a single distinctive
+    #    token, and every recorded alias, because a person already answered
+    #    that question and this must not re-litigate it.
+    for text, names, want, why in (
+            ("Cartegraph Asset Management for local government",
+             ["Cartegraph"], True, "the name in plain text"),
+            ("EagleView aerial imagery", ["EagleView Technologies"], True,
+             "the joined core, with the generic half dropped"),
+            # THE SINGLE-TOKEN BRANCH, which the case above never reaches:
+            # "eagleviewtechnologies" minus the generic half IS "eagleview",
+            # so it matches whole and returns before the token test runs. This
+            # one cannot match whole - "granicusgovdelivery" is nowhere on the
+            # page - and passes only if one distinctive token is enough.
+            ("GovDelivery communications for agencies",
+             ["Granicus GovDelivery"], True,
+             "one distinctive token of a multi-word name"),
+            ("Welcome to Acme", ["Beta Corp", "Acme"], True,
+             "a recorded alias counts as a name in its own right"),
+            ("OpenGov Asset Management and Permitting",
+             ["Cartegraph"], False, "somebody else's site entirely"),
+            ("Solutions for government agencies", ["Acme Technologies"], False,
+             "only the generic half of the name is present")):
+        got = si.names_itself(text, names)
+        if got != want:
+            errors += fail(f"names_itself says {got} for {why}; expected {want}")
+
+    # 2. THE DOMINANT NAME IS THE COMPANY, not the product noun or the
+    #    placeholder. Both real cases, in the words the pages actually use.
+    cases = [
+        ("Management " * 252 + "OpenGov " * 154 + "Asset " * 84,
+         {"cartegraph"}, "OpenGov", "a product noun outranking the new owner"),
+        ("NAME " * 252 + "PRODUCT " * 378 + "Tyler " * 182,
+         {"resourcex"}, "Tyler", "an unfilled template placeholder"),
+        ("JustPark " * 84 + "Parking " * 70, {"parkhub"}, "JustPark",
+         "the plain case"),
+    ]
+    for text, own, want, why in cases:
+        got = si.dominant(text, own)
+        if not got or got[0][0] != want:
+            errors += fail(f"dominant() reads {got[:1]} where the answer is "
+                           f"{want!r} - {why}. The queue then asks a person to "
+                           f"rule on a word instead of a company")
+
+    # 3. A PAGE WITH NOTHING READABLE IS NOT AN ACQUISITION. Social links and
+    #    JS-bundle tokens appear once or twice; a real new owner appears in
+    #    the dozens or hundreds - Euna 294, AMCS 210, OpenGov 154, JustPark 84.
+    if si.OWNER_MIN < 5:
+        errors += fail(f"OWNER_MIN is {si.OWNER_MIN}; a name appearing that "
+                       f"rarely is a footer link, and every genuine case "
+                       f"measured names its owner in the dozens")
+    weak = si.dominant("Instagram Facebook Basse Blcksprt", set())
+    if weak and weak[0][1] >= si.OWNER_MIN:
+        errors += fail("a page of social links reads as naming a new owner")
+
+    # 4. THE SPAM FLOOR. One mention is a coincidence; the pages this exists
+    #    for carried 84 and 51.
+    if si.SPAM_MIN < 3:
+        errors += fail(f"SPAM_MIN is {si.SPAM_MIN} - a single stray word would "
+                       f"pull a company's website down")
+    if not si.SPAM.search("Situs Slot Gacor Mahjong Ways Jackpot"):
+        errors += fail("the spam vocabulary no longer matches the title that "
+                       "was actually served to visitors from the board")
+
+    # 5. AND IT REACHES A READER. A sweep that writes a file nothing opens is
+    #    the shape this repo keeps finding - `promoted` written by
+    #    register_state_events and read by nothing for a month.
+    import acquisitions
+    src = _code_only(ROOT / "scripts" / "acquisitions.py")
+    if "site_identity.json" not in src:
+        errors += fail("acquisitions.evidence_for no longer reads "
+                       "site_identity.json, so 30 rows of evidence sit in a "
+                       "file with no reader")
+    return errors
+
+
 def check_the_buyer_door_holds() -> int:
     """The scope door, case by case, and the shape of the answer it protects.
 
@@ -21045,6 +21149,7 @@ def main() -> int:
     errors += check_a_proposal_is_about_the_company_it_was_asked_about()
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
+    errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_the_buyer_door_holds()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
