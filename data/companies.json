@@ -33599,7 +33599,101 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as cities, municipalities, and university systems (police/public works enforcement) primary \u2014 named deployments in Massachusetts, New Jersey, Albuquerque; also serves private lots and marinas",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "MPS sells smart parking technology products for cities, campuses, and marinas. The SafetyStick platform is built to enforce illegal parking, improve parking behavior, and keep streets safe at no cost. The MPS Meter uses LPR technology and charges only for the time used when a parker leaves.",
+    "The sticks run on solar-generated energy, and each stick has a solar panel designed to operate around the clock. Radar identifies a vehicle parked illegally and prompts the stick to capture an image for review by parking enforcement authorities. Enforcement personnel review and approve violations before citations are issued by mail. MPS operates through a service licensing fee, and installation and implementation are free.",
+    "Founded in 2013, MPS manages parking sessions across the U.S. and Canada. The platform is deployed on streets and in garages in cities across North America. Cities, higher ed, marinas, and property management companies are named as the groups the platform serves."
+   ],
+   "quote": {
+    "text": "A SafetyStick is designed to enforce safety regulations in designated areas such as no parking zones, bike lanes, crosswalks, bus stops, and designated fire and first responder lanes.",
+    "url": "https://municipalparkingservices.com/solutions"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://municipalparkingservices.com",
+     "quote": "MPS offers smart parking technology products that help keep cities, campuses, and marinas safer."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://municipalparkingservices.com",
+     "quote": "The MPS SafetyStick\u00ae technology is designed to enforce illegal parking, improve parking behavior, and keep your streets safe - at no cost."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://municipalparkingservices.com",
+     "quote": "The MPS Meter is the most advanced parking meter in the world with LPR technology and an intuitive interface."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://municipalparkingservices.com/solutions",
+     "quote": "The SafetyStick is powered fully by solar-generated energy. Each stick has a solar panel designed to collect energy and operate 24/7."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://municipalparkingservices.com/solutions",
+     "quote": "When a driver parks illegally the radar is activated and prompts the SafetyStick to capture an image of the vehicle for review by parking enforcement authorities."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://municipalparkingservices.com/solutions",
+     "quote": "Your enforcement personnel easily reviews and approves violations before issuing citations by mail."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://municipalparkingservices.com/solutions",
+     "quote": "We operate through a service licensing fee. Free installation, free implementation, and start earning more for keeping your streets and campuses safe."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://municipalparkingservices.com/about-us",
+     "quote": "Founded in 2013, MPS manages tens of millions of parking sessions annually across the U.S. and Canada."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://municipalparkingservices.com/about-us",
+     "quote": "patented technology platform is deployed on streets and in garages in cities across North America."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://municipalparkingservices.com/about-us",
+     "quote": "improve compliance and overall parking maintenance for cities, higher ed, marinas, and property management companies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://municipalparkingservices.com",
+     "sha": "671e594fa9490bf2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://municipalparkingservices.com/solutions",
+     "sha": "b23106ddc605e01c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://municipalparkingservices.com/about-us",
+     "sha": "c38decf57cd51f0f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "laserfiche",
@@ -34779,7 +34873,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Municibid runs an online auction service that government agencies, schools, authorities and utilities use to sell surplus and forfeitures directly to the public. All auctions run online and are open for bidding 24 hours a day. Homepage categories include Farm Equipment & Supplies, Police & Fire, Snow Removal and Water & Sewer.",
+    "Sellers named on the homepage include school districts, townships, boroughs, police departments and water authorities. The origin story on the about page places the start in early 2006 with Pottstown, PA councilman Greg Berry. The about page states that over 500 new government partners arrive each year.",
+    "Both pages state a figure of over 7,500 governments and schools. Bidding is open to the public, and a question on the about page says anyone can bid on a seller's auctions. The homepage also states that auction proceeds go back to the communities served."
+   ],
+   "quote": {
+    "text": "Municibid exists to turn government surplus into community value.",
+    "url": "https://info.municibid.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://municibid.com",
+     "quote": "Municibid is a convenient and easy-to-use online auction service for government agencies, schools, authorities and utilities to sell their surplus and forfeitures directly to the public."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://municibid.com",
+     "quote": "All auctions take place online and are available to bid 24 hours a day."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://municibid.com",
+     "quote": "Farm Equipment & Supplies 4"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://municibid.com",
+     "quote": "West Brandywine Township Police Department 2"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://info.municibid.com/about",
+     "quote": "In early 2006, Pottstown, PA councilman Greg Berry saw untapped potential where others saw routine disposal."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://info.municibid.com/about",
+     "quote": "We proudly welcome over 500 new government partners annually, connecting their valuable surplus items with a vast network of eager buyers ready to pay fair market value."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://municibid.com",
+     "quote": "Trusted by over 7,500 governments and schools"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://info.municibid.com/about",
+     "quote": "Anyone can bid on your auctions."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://municibid.com",
+     "quote": "100% of Auction Proceeds Go Back to the Communities We Serve"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://municibid.com",
+     "sha": "4eee1c43fa10a2bc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://info.municibid.com/about",
+     "sha": "df1f9c181596e513",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "bids-tenders",
@@ -40462,7 +40639,89 @@
     "sector": "Parks & Rec",
     "category": "Suppliers & Services"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "MyVolunteer is a volunteer management platform covering recruitment, scheduling, tracking, and reporting. Onboarding runs on customizable forms and automated processes, and the platform tracks volunteer hours and generates reports on impact and performance. Volunteers themselves get a self-service portal for managing their schedules, hours, and profiles.",
+    "In healthcare the platform is aimed at hospitals, clinics, and healthcare organizations, and handles background checks, ongoing criminal monitoring, and certification tracking. The K-12 school version manages parent volunteers, classroom aides, and event helpers, and checks that individuals meet background check requirements. Government agencies are named as a third market, with screening and volunteer tracking set against federal, state, and local regulations.",
+    "The product was developed by background screening experts and integrates with a background and criminal monitoring platform. The about page names nonprofits, schools, healthcare providers, and government agencies as the organizations the company works with."
+   ],
+   "quote": {
+    "text": "Streamline recruitment, scheduling, tracking, and reporting with MyVolunteer.",
+    "url": "https://myvolunteer.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://myvolunteer.com",
+     "quote": "Streamline recruitment, scheduling, tracking, and reporting with MyVolunteer."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://myvolunteer.com",
+     "quote": "Easily recruit and onboard volunteers with customizable forms and automated processes."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://myvolunteer.com",
+     "quote": "Provide a self-service portal for volunteers to manage their schedules, hours, and profiles."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.myvolunteer.com/solutions/",
+     "quote": "MyVolunteer is designed to support hospitals, clinics, and healthcare organizations in recruiting, onboarding, and managing volunteers"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.myvolunteer.com/solutions/",
+     "quote": "MyVolunteer empowers K-12 schools to efficiently manage parent volunteers, classroom aides, event helpers, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.myvolunteer.com/solutions/",
+     "quote": "Government agencies rely on volunteers to support a wide range of programs, from community outreach to emergency response."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.myvolunteer.com/about-us/",
+     "quote": "MyVolunteer was developed by industry-leading background screening experts with a mission to provide organizations with a robust, secure, and efficient volunteer management solution."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.myvolunteer.com/about-us/",
+     "quote": "From nonprofits and schools to healthcare providers and government agencies, we work closely with each organization to understand their unique needs and tailor MyVolunteer to meet their goals."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://myvolunteer.com",
+     "sha": "e7b43f68a6c33b95",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.myvolunteer.com/solutions/",
+     "sha": "6eba7bd31f733544",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.myvolunteer.com/about-us/",
+     "sha": "1ea14016eabd4d14",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "oversite",
@@ -54464,7 +54723,87 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Mitel sells business communications systems covering unified communications and collaboration, call centers, mission-critical systems, remote work, on-site deployment and cloud migration. Deployment is offered across public, private and hybrid cloud models, with on-premises options for organizations that require them. Offerings are grouped by organization size, from packages for small business teams up to large enterprise deployments with sovereign hosting and emergency dispatch tools.",
+    "The sectors named are education, healthcare, financial services, manufacturing, hospitality, cruising and government. For the public sector, the pages describe secure and compliant communications for government organizations, with deployment options meant to keep services available. Public sector examples given include carrier cost savings at Baltimore County and cost savings at Orion Township against a legacy system. Government material on the industries page lists FedRAMP-authorized cloud deployment, mass notification for critical events, and on-premise options for data sovereignty."
+   ],
+   "quote": {
+    "text": "Communications solutions for every business size, industry, and deployment model",
+    "url": "https://www.mitel.com/solutions"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "Mitel provides solutions for unified communications and collaboration, AI-powered innovation, call centers, mission-critical systems, remote work, and on-site deployment as well as cloud migration."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "Our solutions support public, private, and hybrid cloud models, enabling cost control, operational efficiency, and long-term scalability."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "Scale to more than 100,000 users, sovereign hosting, and role-based tools from the executive suite to emergency dispatch."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "Mitel serves a wide range of industries including education, healthcare, financial services, manufacturing, hospitality, cruising, and government."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "Mitel provides government organizations with secure, compliant communications that improve efficiency, resilience, and citizen trust."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.mitel.com/solutions",
+     "quote": "By providing greater internal control, Mitel saved Baltimore County 75% of their carrier costs."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.mitel.com/solutions/industries",
+     "quote": "FedRAMP-authorized cloud deployment with government-grade encryption keeps your agency compliant and your teams connected."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.mitel.com",
+     "sha": "adfef9645d021e9c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mitel.com/about/why-mitel",
+     "sha": "0302c34a5cd04d9e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mitel.com/solutions",
+     "sha": "61725443c4f6b40f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mitel.com/solutions/industries",
+     "sha": "8376aee15af397c1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "monday-com",
@@ -59649,7 +59988,100 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2026; NLC City Summit 2026"
+  "source": "ICMA 2026; NLC City Summit 2026",
+  "profile": {
+   "paragraphs": [
+    "Munibit sells a website platform built for local governments, described on the homepage as built exclusively for small municipalities and counties. The platform bundles documents, forms, alerts, notices and calendars as built-in tools rather than third-party plugins. Document management, public notices, online payments and accessibility support are listed as built in and included without third-party plugins.",
+    "The pages name small local governments as the customer, listing cities, towns, townships, villages, boroughs, and counties. Typical customers are municipalities serving populations under 10,000 and counties under 20,000 that cannot justify enterprise software costs. Plans start at $99 per month with no surprise fees, no design fees, and no long-term contracts.",
+    "Setup, design, migration, training and ongoing support are provided at no extra cost. Customers work with the same dedicated account manager, based in Missouri, every time they reach out. The platform is built to support WCAG 2.1 AA accessibility standards, which the about page says aligns with ADA Title II requirements for local government websites."
+   ],
+   "quote": {
+    "text": "Most website platforms were built for businesses. Munibit was built for local governments.",
+    "url": "https://www.munibit.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.munibit.com",
+     "quote": "Munibit is one of the only website platforms built exclusively for small municipalities and counties."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.munibit.com",
+     "quote": "Built-in tools for documents, forms, alerts, notices, calendars, and more. No third-party plugins. No extra fees."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.munibit.com/about-us",
+     "quote": "Document management, public notices, online payments, accessibility support, and more, all built in, all included, no third-party plugins required."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.munibit.com/about-us",
+     "quote": "Munibit serves small cities, towns, townships, villages, boroughs, and counties."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.munibit.com/about-us",
+     "quote": "We typically work with municipalities serving populations under 10,000 and counties under 20,000 that cannot justify enterprise software costs."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.munibit.com/about-us",
+     "quote": "Plans start at $99/month with no surprise fees, no design fees, and no long-term contracts."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.munibit.com",
+     "quote": "We help with setup, design, migration, training and ongoing support at no extra cost."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.munibit.com/solutions",
+     "quote": "Work directly with the same dedicated account manager, based in Missouri, every time you reach out."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.munibit.com/about-us",
+     "quote": "The platform is built to support WCAG 2.1 AA accessibility standards, which aligns with ADA Title II requirements for local government websites."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.munibit.com",
+     "sha": "11d10551fb53a1bd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munibit.com/solutions",
+     "sha": "c4f57db5891402f5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munibit.com/about-us",
+     "sha": "d4db1125c3f7368e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munibit.com/case-studies",
+     "sha": "79dfa447eb08b962",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "omicron-technology-solutions",
@@ -70101,7 +70533,88 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "mySidewalk sells a community data platform that combines datasets, visualization tools, and publishing features in one product. The platform page describes access to data on population, demographics, and housing, plus tools to combine an organization's own data. The visualization page states that turning raw data into maps and charts needs no technical training and no design software.",
+    "Reports and dashboards can be published publicly or kept private for internal review, according to the publication page. The platform page names Sidekick as an AI-powered community data assistant and CoWrite as an AI-powered writing assistant.",
+    "The platform page names customers including the Baltimore City Health Department, the Florida Department of Health in Duval County, and Broward Metropolitan Planning Organization. The publication page also names nonprofits and foundations among the organizations it works with."
+   ],
+   "quote": {
+    "text": "mySidewalk powers community work of all kinds, helping to drive missions across the country.",
+    "url": "https://www.mysidewalk.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.mysidewalk.com",
+     "quote": "Our community data platform brings everything together."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.mysidewalk.com/platform",
+     "quote": "Access billions of data on population, demographics, housing, and more."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.mysidewalk.com/platform/visualization",
+     "quote": "No technical training. No design software. No long wait."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.mysidewalk.com/platform/publication",
+     "quote": "Control who sees your work. Share interactive reports and dashboards publicly or keep them private for internal collaboration and review."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.mysidewalk.com/platform",
+     "quote": "Craft narratives tailored to any audience with the AI-powered writing assistant."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.mysidewalk.com/platform",
+     "quote": "Read more of what our customers say about us."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.mysidewalk.com/platform/publication",
+     "quote": "From health departments to nonprofits to foundations and every type of organization in between"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.mysidewalk.com",
+     "sha": "da91092467e938a6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysidewalk.com/platform",
+     "sha": "853f85536c044914",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysidewalk.com/platform/visualization",
+     "sha": "8d962a9993fff279",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mysidewalk.com/platform/publication",
+     "sha": "fcae16e04e7528d3",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "konveio",
@@ -84049,7 +84562,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; GFOA 2026; NCSEA 2026"
+  "source": "competitor sweep; GFOA 2026; NCSEA 2026",
+  "profile": {
+   "paragraphs": [
+    "Maximus sells technology and program operations to government agencies working in health, human services, veteran support, citizen experience, defense, and national security. Homepage headings group the work as technology services, customer experience, health and clinical services, and program delivery. Named offerings include omnichannel contact center solutions for federal and state agencies, tools to reduce SNAP error rates and case backlogs, and veteran services delivered through AI and digital transformation.",
+    "The case studies page lists state work, including a SNAP surge in Wisconsin and SNAP replacement benefits delivered in Texas after natural disasters. Another case study says the Texas Health and Human Services Commission contracted Maximus to integrate eligibility support services for TANF, SNAP, Medicaid, and CHIP. Other entries describe centralized credentialing for Medicaid provider networks in Ohio and a transition from the federal exchange to a state-based marketplace for Maine.",
+    "Federal examples on the same page include an AI-Powered Medical Records Processing System for disability benefits applications at the VA. The page also credits Maximus with supporting the modernization of HRSA\u2019s Organ Procurement and Transplantation Network. Another entry says automation helped CMS streamline No Surprises Act case processing."
+   ],
+   "quote": {
+    "text": "Government agencies choose Maximus because we deliver results where mission, technology, and operations intersect.",
+    "url": "https://www.maximus.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.maximus.com",
+     "quote": "Across health, human services, veteran support, citizen experience, defense, and national security, we help agencies modernize with confidence and deliver impact at scale."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.maximus.com",
+     "quote": "We support government agencies in modernizing health programs and infrastructure through robust business solutions, advanced analytics, and innovative technology."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.maximus.com",
+     "quote": "Elevate citizen services with our omnichannel contact center solutions designed for federal and state agencies to improve efficiency and satisfaction."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://maximus.com/case-studies",
+     "quote": "Maximus helped Wisconsin manage a SNAP E&T surge through staff optimization and automation to prevent referral backlogs."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://maximus.com/case-studies",
+     "quote": "The Texas Health and Human Services Commission contracted Maximus to integrate the eligibility support services for TANF, SNAP, Medicaid, and CHIP."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://maximus.com/case-studies",
+     "quote": "Ohio\u2019s Medicaid centralized credentialing streamlined provider enrollments, improved data accuracy, and enhanced care access."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://maximus.com/case-studies",
+     "quote": "empowers the VA to meet surges in demand for processing of disability benefits applications with improved efficiency, accuracy, consistency, and service delivery at scale."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://maximus.com/case-studies",
+     "quote": "Maximus supports HRSA\u2019s OPTN modernization, enhancing transparency, policymaking, and outcomes through data-driven insights and clinical expertise."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://maximus.com/case-studies",
+     "quote": "Maximus used AI and RPA to help CMS streamline No Surprises Act case processing, automating eligibility checks, notifications, and case management."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.maximus.com",
+     "sha": "1df0d560518b02b5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://maximus.com/case-studies",
+     "sha": "821beeecd20464da",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "gainwell-technologies",
@@ -85354,7 +85950,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "ModivCare sells non-emergency medical transportation, personal care services, and monitoring solutions. Listed services include transportation, chronic care management, and personal in-home assistance with activities of daily living. MyModivcare is described as a hub for members and caregivers to book and manage rides and find forms.",
+    "Clients listed include public and private payers, health systems, hospitals and universities. Patient populations served range from children to older adults, in urban areas and in rural communities. Value-based solutions are said to help customers manage risks, reduce costs, and improve health outcomes.",
+    "Security certifications listed include HITRUST, AICPA SOC 2 Type II, and HIPAA. Reports and attestations are offered to companies that sign a non-disclosure agreement."
+   ],
+   "quote": {
+    "text": "ModivCare is transforming healthcare by connecting people with the care they need, wherever they are.",
+    "url": "https://www.modivcare.com/company/about-modivcare/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.modivcare.com/company/about-modivcare/",
+     "quote": "Modivcare is a leading provider of non-emergency medical transportation , personal care services , and monitoring solutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.modivcare.com",
+     "quote": "to provide transportation , chronic care management, and personal in-home assistance with activities of daily living"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.modivcare.com",
+     "quote": "MyModivcare is your hub for reliable, personalized transportation"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.modivcare.com/company/about-modivcare/",
+     "quote": "We work with a range of clients: public and private payers, health systems, hospitals and universities."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.modivcare.com/company/about-modivcare/",
+     "quote": "Modivcare serves a diverse array of patient populations, from children to older adults"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.modivcare.com/company/about-modivcare/",
+     "quote": "helping its customers manage risks, reduce costs, and improve health outcomes"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.modivcare.com/company/security/",
+     "quote": "We proudly have the following security certifications and third-party attestations and reports:"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.modivcare.com/company/security/",
+     "quote": "your Company will be required to sign a non-disclosure agreement"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.modivcare.com",
+     "sha": "5051192f6404b042",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.modivcare.com/company/about-modivcare/",
+     "sha": "871cdc3f4b2b5f7a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.modivcare.com/company/leadership/",
+     "sha": "a890ab1c32fd787d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.modivcare.com/company/security/",
+     "sha": "517d5fa3c650c627",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "mtm",
@@ -85892,7 +86575,89 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "The pages describe SOVRA as a procurement platform for public agencies, spanning intake, solicitation authoring, proposal management, evaluation and contract creation. On the government buyer page, the same platform is described as covering procurement from intake through contract management, with a supplier network of more than 1 million suppliers. That page also lists three core areas, procurement management, spend optimization and supplier network, and says the platform is fully modular.",
+    "A second set of products is sold to suppliers, helping them discover relevant solicitations from thousands of public agencies across North America. Products named for that side include Bidnet Direct, Merx and Ontopical, which the supplier page ties to active bids and to earlier planning signals. The supplier page offers matching with opportunities from more than 90,000 government agencies.",
+    "On the government buyer page, the answer to who the platform serves names state and local governments, school districts and higher education. The same page says the platform supports more than 7,000 government agencies."
+   ],
+   "quote": {
+    "text": "Public procurement works best when buyers and suppliers operate in the same network. SOVRA powers both sides.",
+    "url": "https://mdfcommerce.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://mdfcommerce.com",
+     "quote": "SOVRA helps public agencies manage the entire procurement process, from the moment a need is identified to the entire contract lifecycle."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://mdfcommerce.com/government-buyers/solutions/",
+     "quote": "SOVRA transforms government procurement from intake through contract management, accelerating RFP development, increasing supplier participation through a network of more than 1 million suppliers"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://mdfcommerce.com/government-buyers/solutions/",
+     "quote": "Yes. Our platform is fully modular, so you can start with the area that matters most and scale as needed."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://mdfcommerce.com",
+     "quote": "SOVRA helps suppliers discover relevant solicitations from thousands of public agencies, evaluate which opportunities best match their expertise, and compete effectively throughout the procurement process."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://mdfcommerce.com/suppliers/solutions/",
+     "quote": "Ontopical helps you prioritize projects most aligned to your strengths, with insight into agency context and competitive dynamics. Together with Bidnet Direct and Merx, you can pursue public sector contracts"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://mdfcommerce.com/suppliers/solutions/",
+     "quote": "Discover and Match with Opportunities from 90,000+ Government Agencies Across the U.S. and Canada"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://mdfcommerce.com/government-buyers/solutions/",
+     "quote": "SOVRA works exclusively with the public sector, supporting state and local governments, school districts, higher education, and other public organizations."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://mdfcommerce.com/government-buyers/solutions/",
+     "quote": "purpose-built for the public sector and support more than 7,000 government agencies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://mdfcommerce.com",
+     "sha": "e7436fe8333b9448",
+     "fetched_on": null
+    },
+    {
+     "url": "https://mdfcommerce.com/government-buyers/solutions/",
+     "sha": "5acad41f6c28c50c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://mdfcommerce.com/suppliers/solutions/",
+     "sha": "a4239add85825ba2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ionwave-technologies",
@@ -87817,7 +88582,94 @@
   "buyer": "Transit agencies, cities, and government mobility departments (MaaS/B2B side); the consumer trip-planning app is free to riders and monetized separately",
   "sells_to_gov": "yes",
   "acquisition_note": "Became part of Mobileye (Nasdaq: MBLY), an Intel company, in 2022",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "Moovit sells Mobility-as-a-Service products to cities, which the homepage lists as branded apps, mobile fare payments, on-demand transit, and Big Data analytics. The about page says the company provides governments, cities, transit agencies and operators, and organizations with mobility challenges, with AI-powered mobility solutions covering planning, operations, and analytics.",
+    "The Moovit app launched in 2012 as a free app for iOS, Android, and web browsers. Over the years the company reports service in 3,500 cities across 112 countries, in 45 languages. In 2022, Moovit became part of Mobileye, and the two are bringing MoovitAV robotaxi services to cities worldwide.",
+    "Published case studies cover fare payments, on-demand transit, transit APIs, and data-driven analysis for transit networks. An accessibility page says those capabilities are built into the Moovit App and a White Label MaaS App. Moovit Ads is offered as geofencing mobile ads aimed at reaching users with an offer at a given time and place."
+   ],
+   "quote": {
+    "text": "Find Out How We Can Bring Your Mobility as a Service Project to Life",
+    "url": "https://moovit.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://moovit.com",
+     "quote": "Make getting from A to B a seamless and simple experience for your citizens with Moovit\u2019s Mobility-as-a-Service (MaaS) solutions: Branded apps, mobile fare payments, on-demand transit, Big Data analytics, and more"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://moovit.com/about-us/",
+     "quote": "We provide governments, cities, transit agencies/operators and all organizations with mobility challenges, with AI-powered mobility solutions covering planning, operations, and analytics, with proven value in reducing congestion, growing ridership, and increasing efficiency and asset utilization \u2013 ultimately shifting car drivers to consume public and shared mobility."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://moovit.com/about-us/",
+     "quote": "In 2012, Moovit launched as a free app for iOS , Android and for Web browsers to guide people in getting around town effectively and conveniently using any mode of transit."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://moovit.com/about-us/",
+     "quote": "Over the years we\u2019ve grown to now serve over 1.7B riders in 3,500 cities across 112 countries, in 45 languages."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://moovit.com/about-us/",
+     "quote": "In 2022, Moovit became part of Mobileye (Nasdaq: MBLY). Together, Moovit and Mobileye are accelerating the global adoption of autonomous transportation, bringing MoovitAV robotaxi services to cities worldwide."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://moovit.com/resources/case-studies/",
+     "quote": "Implementing a Country-Wide, Scalable Fare Payments Solution"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://moovit.com/resources/case-studies/enabling-developers-with-real-time-transit-data/",
+     "quote": "This commitment means that we\u2019ve built accessibility capabilities into the Moovit App and our White Label MaaS App."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://moovit.com",
+     "quote": "Geofencing mobile ads to reach users with the right offer, at the right time, and place"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://moovit.com",
+     "sha": "e2c8103c451869b6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://moovit.com/resources/case-studies/",
+     "sha": "e4accb2de0026a54",
+     "fetched_on": null
+    },
+    {
+     "url": "https://moovit.com/about-us/",
+     "sha": "2d9171bc6e9a5300",
+     "fetched_on": null
+    },
+    {
+     "url": "https://moovit.com/resources/case-studies/enabling-developers-with-real-time-transit-data/",
+     "sha": "26fc07255e9dcf51",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "lightspeed-systems",
@@ -102133,7 +102985,66 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Memorial Business Systems, or MBS, sells management software for cemeteries and funeral homes, delivered either from a cloud service or from an on-premises installation. Nexus is the office management system for cemeteries and funeral homes, and Nexus Web makes it available on the web, tablets, and phones. Add-ons include IMAP for cemetery mapping, DeedIt! for custom deeds, Blaze for cremains tracking, and MBS Report Writer for reports.",
+    "The company was formed by a cemeterian in 1983 to provide software for deathcare providers. Named clients quoted on the site include Catholic Cemeteries of Phoenix, the Diocese of Fresno, the Archdiocese of Seattle, and Sunset Memorial Park, Albuquerque, NM. MBS describes the suite as designed by members of the cemetery industry specifically for the industry."
+   ],
+   "quote": {
+    "text": "Nexus is the leading office management system for cemeteries and funeral homes.",
+    "url": "https://memorialbusinesssystems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "Whether you prefer the cloud or on-premises installations, MBS has you covered."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "The best cemetery management software is now available on the web, tablets, and phones."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "IMAP is the highest quality cemetery mapping system available today."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "was formed by a cemeterian in 1983 to provide an affordable, standardized, industry specific software package for deathcare providers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "Catholic Cemeteries of Phoenix"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://memorialbusinesssystems.com",
+     "quote": "MBS offers a software suite designed by members of the cemetery industry specifically for the industry."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://memorialbusinesssystems.com",
+     "sha": "2e257321a9c60ac1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "srs-computing",
@@ -102658,7 +103569,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "MuniLogic sells municipal management software to local governments in the United States. Its main product, MuniLogic CE+, is municipal management software for small to mid-sized local governments, built from integrated modules. MuniCitizen, an extension of that product, offers citizens online access to licenses, permits, updates and events.",
+    "Alongside the software, the company lists consulting services covering GIS, digital transformation, CIOaaS and custom solutions development. The about page says the company works with municipalities, counties, townships, boroughs, and cities to create digital solutions. MuniLogic is described there as a division of INVORG.",
+    "One case study covers the Central Keystone Council of Governments, a collective of central Pennsylvania municipalities. That study reports faster processing for permits and licenses. It also reports that the move to digital reduced paper usage."
+   ],
+   "quote": {
+    "text": "Digitally transforming small to mid-sized local governments in the USA",
+    "url": "https://munilogic.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://munilogic.com",
+     "quote": "MuniLogic transforms small to mid-sized local governments in the USA."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://munilogic.com",
+     "quote": "MuniLogic CE+ is a customizable innovative digital municipal management software that enables small to mid-sized local governments to achieve their goals and objectives."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://munilogic.com",
+     "quote": "Simplify service delivery with online access to licenses, permits, updates, events, and effortless citizen feedback."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://munilogic.com",
+     "quote": "At MuniLogic, we offer a range of digital solutions and enabling services designed to help small to mid-sized local governments to transform their digital landscape to provide services efficiently, effectively, and economically."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://munilogic.com/about-us",
+     "quote": "work closely with municipalities, counties, townships, boroughs, and cities to create personalized digital solutions to meet their unique needs."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://munilogic.com/about-us",
+     "quote": "MuniLogic is a division of INVORG, a purpose-driven company dedicated to uplifting communities through technology."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://munilogic.com/case-studies/case-study-of-ckcog-digital-transformation",
+     "quote": "The Central Keystone Council of Governments (CKCOG) is a collective of central Pennsylvania municipalities united to address common challenges and streamline municipal services"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://munilogic.com/case-studies/case-study-of-ckcog-digital-transformation",
+     "quote": "Faster processing for permits and licenses boosted service quality and customer satisfaction"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://munilogic.com/case-studies/case-study-of-ckcog-digital-transformation",
+     "quote": "The move to digital drastically reduced paper usage, supported environmental sustainability"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://munilogic.com",
+     "sha": "05a8ba3376a73344",
+     "fetched_on": null
+    },
+    {
+     "url": "https://munilogic.com/about-us",
+     "sha": "d50555662007a2b1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://munilogic.com/case-studies/case-study-of-ckcog-digital-transformation",
+     "sha": "bee28b6b89375965",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "bitco-software",
@@ -109688,7 +110687,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Nallian sells software for landside air cargo operations, aligning truck flows, dock capacity, and warehouse performance across cargo communities, ground handlers, freight forwarders, and airlines. The main product is Truck Visit Management, presented as capacity-driven truck scheduling, streamlined dock flows, and full operational visibility from a single platform designed for air cargo. A second product, Check-it, replaces paper-based inspection processes with guided digital workflows so a team captures complete, photo-backed data every time.",
+    "Buyers named on these pages are ground handlers and warehouse operators, airports and cargo communities, self-handling airlines, and freight forwarders and logistics companies. The same platform also runs as a Cargo Community System connecting handlers, forwarders, trucking companies, and airport operators in one coordinated environment. Named users on these pages include dnata, SATS, Brussels Airport Company, and Changi Airport Group.",
+    "TVM is also sold for off-airport sites, where the dock and yard page states it is proven in both air cargo hubs and off-airport. Check-it is offered as a monthly subscription that includes unlimited users, devices, and checklists, and it runs on phones and tablets."
+   ],
+   "quote": {
+    "text": "Landside orchestration. Not just truck slot booking.",
+    "url": "https://www.nallian.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.nallian.com",
+     "quote": "Nallian orchestrates landside operations. Fully dedicated to aligning truck flows, dock capacity, and warehouse performance across cargo communities, ground handlers, freight forwarders, and airlines."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.nallian.com/solutions/tvm-landside-management",
+     "quote": "Capacity-driven truck scheduling, streamlined dock flows, and full operational visibility. From a single platform designed for air cargo."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.nallian.com/solutions/check-it",
+     "quote": "Check-it replaces paper-based inspection processes with guided digital workflows."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.nallian.com",
+     "quote": "Freight forwarders and logistics companies"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.nallian.com/solutions/tvm-landside-management",
+     "quote": "TVM works as a Cargo Community System, connecting handlers, forwarders, trucking companies, and airport operators in a single coordinated environment"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.nallian.com",
+     "quote": "Chief Cargo and Real Estate | Brussels Airport Company"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.nallian.com/solutions/tvm-dock-and-yard-management",
+     "quote": "Proven in both air cargo hubs and off-airport."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.nallian.com/solutions/check-it",
+     "quote": "A flat monthly fee includes unlimited users, devices, and checklists"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.nallian.com",
+     "sha": "dab0071295114a87",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.nallian.com/solutions/tvm-landside-management",
+     "sha": "06b6f1db135ea8f0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.nallian.com/solutions/tvm-dock-and-yard-management",
+     "sha": "34da5831e5789aed",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.nallian.com/solutions/check-it",
+     "sha": "e9b6fbe34cda50f0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "kale-logistics-solutions",
@@ -113393,7 +114479,118 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Muni-Link sells cloud-based utility billing software for water and wastewater utilities. The platform brings customer accounts, billing, payments, service orders, and customer communications together in one system. Readings, estimates, reports, calculations, and printing are completed on a single page, and irregularities are flagged for review before bills go out.",
+    "Staff can view customer account details and usage history, dispatch service orders, take payments, manage delinquency, and send notifications from a single screen. Service orders are dispatched and tracked between office teams and technicians in real time, with updates logged on customer accounts. Automated notifications go to customers by phone call, email, or text. The software integrates with asset management, accounting, GIS, and AMR/AMI systems.",
+    "Muni-Link says it helps municipal utilities, utility authorities, water districts, and regulated utilities manage their accounts. The software is described as built for cities, towns, and the people who serve them. Unlimited support is built into the subscription fee at no extra cost. Muni-Link is headquartered in central Pennsylvania. Neptune Technology Group owns the company."
+   ],
+   "quote": {
+    "text": "Muni-Link was made for municipalities.",
+    "url": "https://muni-link.com/product/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://muni-link.com",
+     "quote": "Muni-Link provides cloud-based utility billing software for water and wastewater utilities."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://muni-link.com",
+     "quote": "manage customer accounts, billing, payments, service orders, and customer communications in one system"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://muni-link.com/product/",
+     "quote": "guides you through readings, estimates, reports, calculations, and printing all on a single page. Any irregularities get flagged for review, and bills don\u2019t go out until everything is verified."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://muni-link.com/product/",
+     "quote": "you can view customer account details and usage history, manage services, dispatch service orders, take payments, manage delinquency, send notifications"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://muni-link.com/product/",
+     "quote": "connects office teams and technicians in real time, making it simple to assign work"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://muni-link.com/product/",
+     "quote": "automated notifications delivered by phone call, email, or text"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://muni-link.com",
+     "quote": "integrating your asset management, accounting, GIS, and AMR/AMI systems with Muni-Link"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://muni-link.com",
+     "quote": "Muni-Link helps municipal utilities, utility authorities, water districts, and regulated utilities manage customer accounts"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://muni-link.com/company/",
+     "quote": "Built for cities, towns, and the people who serve them, Muni-Link connects departments with shared data and integrated systems"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://muni-link.com/product/",
+     "quote": "Unlimited support is built into your subscription fee at no extra cost."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://muni-link.com/company/",
+     "quote": "Muni-Link is headquartered in central Pennsylvania."
+    },
+    {
+     "p": 2,
+     "s": 4,
+     "url": "https://muni-link.com/company/",
+     "quote": "Muni-Link is a technology company owned by Neptune Technology Group"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://muni-link.com",
+     "sha": "59345d2300088481",
+     "fetched_on": null
+    },
+    {
+     "url": "https://muni-link.com/product/",
+     "sha": "ca6c688de97eef52",
+     "fetched_on": null
+    },
+    {
+     "url": "https://muni-link.com/case-studies/",
+     "sha": "2681cb492a1e4d22",
+     "fetched_on": null
+    },
+    {
+     "url": "https://muni-link.com/company/",
+     "sha": "d4edd5bcf36dbee8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "univerus",
@@ -113998,7 +115195,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASWA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "myOneFlow sells a case management platform that public service organizations use to centralize enrollment, document management, reporting, and financial tracking. Listed features include automated workflows, digital forms, real-time reporting, fiscal management, and tracking for enrollment, attendance, and program outcomes. Compliance reporting tools on the platform include templates for WIOA, PIRL, and NRS requirements.",
+    "Buyers named on the same page include workforce development agencies, adult education programs, apprenticeship programs, state and local governments, and other public service providers. Case studies describe organizations that run workforce development, adult education, and apprenticeship programs. One of them names the City of Richmond, which centralized case management and cut reporting time by 75%.",
+    "Houston City Colleges moved its operations onto myOneFlow and accelerated student enrollment by over 70%. Intake and enrollment there took an average of 24 days per student before the platform, and now take an average of fewer than seven days."
+   ],
+   "quote": {
+    "text": "myOneFlow is an AI-driven program management solution built for public service organizations.",
+    "url": "https://www.myoneflow.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.myoneflow.com",
+     "quote": "myOneFlow is a modern case management platform that simplifies workflows for public service organizations. It centralizes tasks like enrollment, document management, reporting, and financial tracking to improve efficiency and outcomes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.myoneflow.com",
+     "quote": "Key features include automated workflows, digital forms, real-time reporting, fiscal management, and tools for tracking enrollment, attendance, and program outcomes."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.myoneflow.com",
+     "quote": "myOneFlow provides built-in compliance reporting tools, including templates for WIOA, PIRL, and NRS requirements, ensuring organizations meet regulations with ease."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.myoneflow.com",
+     "quote": "The platform supports workforce development agencies, adult education programs, apprenticeship programs, state and local governments, and other public service providers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.myoneflow.com/case-studies",
+     "quote": "Organizations across the country use myOneFlow to modernize workforce development, adult education, and apprenticeship programs, increasing funding, improving enrollment speed, and serving more clients efficiently."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.myoneflow.com/case-studies",
+     "quote": "The City of Richmond Centralized Case Management, Cut Reporting Time by 75%, and Built Real-Time Accountability with myOneFlow"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.myoneflow.com/case-studies/hcc?hsLang=en",
+     "quote": "HCC transferred all its operations to myOneFlow and accelerated the student enrollment process by over 70%."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.myoneflow.com/case-studies/hcc?hsLang=en",
+     "quote": "Before myOneFlow, manual intake and enrollment took an average of 24 days per student"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.myoneflow.com",
+     "sha": "7c547ae06872513d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.myoneflow.com/case-studies",
+     "sha": "6c0cd220d15bf237",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.myoneflow.com/about-us",
+     "sha": "ec5c84b7dbb4c083",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.myoneflow.com/case-studies/hcc?hsLang=en",
+     "sha": "d682f97a9874e379",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "netacent",
@@ -115002,7 +116286,71 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Mission Driven Data sells Janet, a tool that automates replication of a Credible database into a standard SQL database format, updated every night or on demand. Hundreds of agencies use the Credible EHR to record information about services, schedule appointments, process billing and financial transactions, and e-prescribe. Janet adds a wraparound layer over that system, with reporting and analytics on Microsoft Power BI dashboards, data integration and warehousing, notifications and workflow optimization.",
+    "The agencies addressed on the homepage offer a wide range of mental health and social services, some supporting rural areas with a staff of a few dozen and others serving thousands of clients a year. Janet also delivers the WHO-5 Well-Being Index to agency clients weekly by automatic text message, connecting that survey data to the agency Credible data. The about page states that leaders at over 50 behavioral health agencies and organizations nationwide rely on Janet."
+   ],
+   "quote": {
+    "text": "Let\u2019s turn your Credible data into actionable information to understand the health of your agency and the needs of the people you serve.",
+    "url": "https://www.missiondrivendata.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.missiondrivendata.com",
+     "quote": "a tool that automates replication of your Credible database into a standard SQL database format, ready for you to use, updated every night or on demand."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.missiondrivendata.com",
+     "quote": "Hundreds of agencies use Credible to record information about services, schedule appointments, process billing and financial transactions, and e-prescribe."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.missiondrivendata.com",
+     "quote": "enhances your agency\u2019s investment in the Credible EHR with a wraparound layer that makes the system more effective."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.missiondrivendata.com",
+     "quote": "Some agencies support their rural areas with a staff of a few dozen, while other partners serve thousands of clients a year"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.missiondrivendata.com",
+     "quote": "We deliver this survey to your agency\u2019s clients weekly via automatic text messages, and that data is connected to your agency\u2019s Credible data."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://missiondrivendata.com/about/",
+     "quote": "Leaders at over 50 behavioral health agencies and organizations nationwide now rely on Janet\u2122 to amplify their mission and achieve their goals."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.missiondrivendata.com",
+     "sha": "3a3088d27a941afe",
+     "fetched_on": null
+    },
+    {
+     "url": "https://missiondrivendata.com/about/",
+     "sha": "2d4ba0dfc22c277e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pulse-for-good",
@@ -116445,7 +117793,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MuniPro sells a workstation for municipal finance built on the record of each issuer's debt, covering every series and maturity, every refunding and defeasance, and obligations that never carried a CUSIP. Fourteen named tools sit on one system of record, and market data is sourced and stamped so results are reproducible.",
+    "The workspace groups debt management, debt structuring, refunding scenarios, market data, option pricing and bond holders, each reading from the same record. Debt structuring toggles between level debt, wrap-around and ascending structures and layers reserve funds, capitalized interest and bond insurance. Option pricing runs a Black-Derman-Toy binomial tree for option-adjusted spreads with custom volatility, short-rate and curve assumptions.",
+    "Five roles share one workspace: investment bankers, underwriters, credit analysts, municipal advisors and portfolio managers. Each module replaces a single-purpose subscription on a typical desk, and bought together they are described as cheaper than any two of the legacy tools. Government finance officers are pointed to BondGov, a free sister platform for state and local issuers, with no charge for any government in the U.S."
+   ],
+   "quote": {
+    "text": "Fourteen named tools. One system of record.",
+    "url": "https://www.munipro.com/marketing/platform/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.munipro.com",
+     "quote": "Model, price, and publish from one record instead of five subscriptions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.munipro.com/marketing/platform/",
+     "quote": "Market data is sourced and stamped; results are reproducible."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.munipro.com",
+     "quote": "Six modules. One record. Built to work together."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.munipro.com",
+     "quote": "Level debt, level par, ascending, wrap-around to existing service, custom shape."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.munipro.com",
+     "quote": "A full Black-Derman-Toy binomial tree implementation for option-adjusted spreads."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.munipro.com",
+     "quote": "Five roles. One workspace. Your workflow."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.munipro.com/marketing/platform/",
+     "quote": "Each module above replaces a single-purpose subscription on a typical desk."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.munipro.com/marketing/solutions/",
+     "quote": "No charge, ever, for any government in the U.S."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.munipro.com",
+     "sha": "6ed7fb3218eba520",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munipro.com/marketing/platform/",
+     "sha": "2c27074425295508",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munipro.com/marketing/solutions/",
+     "sha": "58d8f0bdbbc96372",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.munipro.com/marketing/solutions/investment-bankers/",
+     "sha": "c477dd1867561376",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "velosimo",
@@ -117653,7 +119088,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MIYO Health delivers integrated services for special education and mental health in schools. The company was founded in 2019 and operates in 20+ states. Its about page counts over 5,000 providers and 500,000+ sessions delivered.",
+    "Products listed on the home page include an IEP Platform for compliance, documentation, and student management. The MIYO Pathways suite adds MIYO Connect, MIYO Care, MIYO Insights, a Universal Screener, and MIYO SUD.",
+    "The site groups solutions for School Districts, Provider Networks, and State Agencies. Case studies name a rural Kansas school district and an IL school district that partnered with MIYO Health. Districts can buy a single provider or a package with providers, technology and wraparound support."
+   ],
+   "quote": {
+    "text": "One integrated ecosystem for the entire student wellness journey.",
+    "url": "https://miyohealth.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.miyohealth.com/about-us/",
+     "quote": "MIYO Health delivers integrated solutions for both special education and mental health challenges in schools."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.miyohealth.com/about-us/",
+     "quote": "Founded in 2019 and operating in 20+ states"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.miyohealth.com/about-us/",
+     "quote": "With over 5,000 providers and 500,000+ sessions delivered"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://miyohealth.com",
+     "quote": "IEP Platform Compliance, documentation, and student management."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://miyohealth.com",
+     "quote": "One integrated ecosystem for the entire student wellness journey."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://miyohealth.com",
+     "quote": "State Agencies Population-level oversight and reporting."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://miyohealth.com/case-studies/",
+     "quote": "Solution The district partnered with a MIYO Health Speech-Language Pathologist"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://miyohealth.com",
+     "quote": "Whether you need a single provider, or a complete package with providers, technology and wraparound support"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://miyohealth.com",
+     "sha": "9166cb75da279876",
+     "fetched_on": null
+    },
+    {
+     "url": "https://miyohealth.com/case-studies/",
+     "sha": "94ec692724aec49e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.miyohealth.com/about-us/",
+     "sha": "92f305b806b4cf28",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "qualo",
@@ -117893,7 +119410,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Meescan sells a self-checkout system for libraries, aimed at librarians who spend too much time behind the checkout desk. The pages name the users as public, academic, school, museum, corporate and mobile libraries, of all kinds and sizes.",
+    "Checkout runs through a cloud-based app that lets patrons check out items on their own mobile device. The app works on iOS or Android devices and uses the camera to scan barcodes. Alongside checkout, the app carries security integration, receipt printing and fee collection. Configuration is set during implementation, and features can be added or reconfigured later as a library's needs change.",
+    "The solutions page also lists self-checkout for mobile libraries. A returns option allows patrons to check items in. Named customers on the homepage include Canton Public Library, Harris County Public Library and Stanford Law School."
+   ],
+   "quote": {
+    "text": "Simply put: libraries of all kinds and sizes benefit from our unique self-checkout system.",
+    "url": "https://www.meescan.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.meescan.com",
+     "quote": "For librarians who spend too much time behind the checkout desk, Meescan sets them free."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.meescan.com",
+     "quote": "Public libraries. Academic libraries. School libraries. Museum libraries. Corporate libraries. Big libraries. Small libraries. Teeny-tiny libraries. Mobile libraries."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://meescan.com/solutions/mobile-checkout/",
+     "quote": "the Meescan self-checkout app allows patrons to check out items on their mobile device"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://meescan.com/solutions/mobile-checkout/",
+     "quote": "Meescan works on any iOS or Android device, simply using the camera to scan barcodes."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://meescan.com/solutions/mobile-checkout/",
+     "quote": "Security integration, receipt printing, fee collection, and more"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://meescan.com/solutions/",
+     "quote": "During implementation, we'll configure Meescan to your requirements."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://meescan.com/solutions/",
+     "quote": "Self-checkout for mobile libraries"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://meescan.com/solutions/",
+     "quote": "Allow patrons to check items in"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.meescan.com",
+     "quote": "Harris County Public Library"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.meescan.com",
+     "sha": "497f5b1b2c8f8758",
+     "fetched_on": null
+    },
+    {
+     "url": "https://meescan.com/why-meescan/about-us/",
+     "sha": "39fa80729cbd7cc4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://meescan.com/solutions/",
+     "sha": "dd4fd58522ac3a04",
+     "fetched_on": null
+    },
+    {
+     "url": "https://meescan.com/solutions/mobile-checkout/",
+     "sha": "e349af5cfd77a2f3",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "overdrive",
@@ -122073,7 +123683,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "N2N Services Inc. was founded in 2010 around the insight that in higher education every problem is a data problem and every data problem is an integration problem. That insight became Illuminate, and Illuminate became the foundation for LightLeapAI. The homepage describes LightLeapAI as an agentic AI platform that catches fraud at the application layer and automates document processing.",
+    "The product family named around LightLeapAI is Orion for fraud intelligence, Prism for document intelligence, Polaris for student services, Atlas for data quality and migration, and Omnia as an executive intelligence hub. Meridian is the application platform, and the platform page states that it assembles a governed, multi-tenant app from a description written in one sentence. Helios is described as the integration spine, with pre-built connectors and a microservices runtime that moves campus data.",
+    "The platform page positions one Agentic Platform-as-a-Service against the fragmented stack of legacy SIS, ERP, and CRM systems on campus. The homepage frames the earlier work as the connective tissue between the systems that run colleges and universities, including student information, finance, document management and transcripts. The platform page counts 500+ higher-education institutions served by N2N."
+   ],
+   "quote": {
+    "text": "The AI platform for higher education.",
+    "url": "https://n2nservices.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://n2nservices.com/company/",
+     "quote": "N2N Services Inc. was founded in 2010 around a single insight: in higher education, every problem is a data problem"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://n2nservices.com/company/",
+     "quote": "That insight became Illuminate, and Illuminate became the foundation for LightLeapAI"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://n2nservices.com",
+     "quote": "agentic AI platform that catches fraud at the application layer, automates document processing"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://n2nservices.com",
+     "quote": "Orion (fraud intelligence), Prism (document intelligence), Polaris (student services), Atlas (data quality and migration), and Omnia (executive intelligence hub)."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://n2nservices.com/platform/",
+     "quote": "Meridian assembles a working, governed, multi-tenant app"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://n2nservices.com/platform/",
+     "quote": "hundreds of pre-built connectors and a microservices runtime that moves campus data"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://n2nservices.com/platform/",
+     "quote": "one Agentic Platform-as-a-Service that retires the fragmented stack of legacy SIS, ERP, and CRM systems"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://n2nservices.com",
+     "quote": "the connective tissue between the systems that run colleges and universities"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://n2nservices.com/platform/",
+     "quote": "500+ Higher-education institutions served by N2N."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://n2nservices.com",
+     "sha": "c11d00510c96e59f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://n2nservices.com/platform/",
+     "sha": "dba2ba4fc1186be4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://n2nservices.com/company/",
+     "sha": "c12f263fc5f84d9e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ovation",
@@ -125370,7 +127068,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: SNA ANC 2027",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MenuLogic K12 sells software that its homepage calls a decision support system for school nutrition teams. The product is presented around clarity for the menu, operations, and budget, and confidence for the team. The homepage says technology streamlines operations, enhances efficiency, and provides data-driven insights for better decision-making and resource utilization.",
+    "Customers named on the homepage are public school districts and school corporations. That list includes Aurora Public Schools, Perry Township Schools, and Montague Township School District. A school nutrition director quoted on the homepage says the program gives specific profit/loss information on every menu item.",
+    "A second page says the software was created by a school nutrition director who had more questions than answers from the data she had to work with. Lindsey Hill, RD, SNS is listed there as Founder and Chief Product Officer. The company says it does not answer to big tech or investors."
+   ],
+   "quote": {
+    "text": "School nutrition teams choose MenuLogic because it reduces unnecessary complexity, increases accuracy, and delivers the menu-based insight they\u2019ve been missing to manage both operations and budget with confidence.",
+    "url": "https://menulogic.io"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://menulogic.io",
+     "quote": "A Decision Support System for School Nutrition Teams"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://menulogic.io",
+     "quote": "Clarity for the Menu, Operations, and Budget. Confidence for the Team. Excellence in School Nutrition."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://menulogic.io",
+     "quote": "Technology streamlines operations, enhances efficiency, and provides data-driven insights, empowering better decision-making and resource utilization."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://menulogic.io",
+     "quote": "These highly productive teams have chosen MenuLogic K12"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://menulogic.io",
+     "quote": "Montague Township School District"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://menulogic.io",
+     "quote": "It gives you specific profit/loss information on every menu item"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://menulogic.io/our-story/",
+     "quote": "was created by a school nutrition Director, frustrated with always having more questions than answers from the data she had to work with"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://menulogic.io/our-story/",
+     "quote": "Founder / Chief Product Officer"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://menulogic.io/our-story/",
+     "quote": "We come from humble beginnings and don\u2019t answer to big tech or investors."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://menulogic.io",
+     "sha": "adef1e48b5926995",
+     "fetched_on": null
+    },
+    {
+     "url": "https://menulogic.io/our-story/",
+     "sha": "a3a2e8337a037607",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "diversified-computer-services",
@@ -128071,7 +129852,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: SNA ANC 2027",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MTW Solutions sells software products and information technology services to state government agencies in the United States. Those products are configurable commercial off-the-shelf software that the company says is in use by state agencies across the United States.",
+    "The product line targets three core areas: grant management, unemployment insurance tax audit, and child nutrition management. The Grant Management System supports allocation of funds, application, budgeting, review and approval, payments, reporting and closeout. COMPAS UI Tax Audit gives Unemployment Insurance Tax Auditors software tools to complete audits based on TPS guidelines. COMPAS - BAM is built on the same framework and is used to complete Benefit Accuracy Measurement investigations. Harvest is a child nutrition management system for state government agencies.",
+    "Named customers on the grant system page include the Illinois State Board of Education, the Montana Office of Public Instruction and the Vermont Agency of Education. The about page names the Alaska Department of Labor and Workforce Development as an early COMPAS customer."
+   ],
+   "quote": {
+    "text": "MTW Solutions provides specialized software products and information technology services to state government agencies in the United States.",
+    "url": "https://www.mtwsolutions.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.mtwsolutions.com",
+     "quote": "MTW Solutions provides specialized software products and information technology services to state government agencies in the United States."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.mtwsolutions.com",
+     "quote": "Our products are configurable commercial off-the-shelf software products that have been successfully implemented and are currently in use by state agencies across the United States."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.mtwsolutions.com/products/",
+     "quote": "MTW Solutions offers configurable commercial off-the-shelf products for state government agencies that target three core areas:"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.mtwsolutions.com/products/grant-management-system",
+     "quote": "provides complete support of the grant management process by integrating data throughout all workflow phases including allocation of funds, application, budgeting, review and approval, payments, reporting and closeout"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.mtwsolutions.com",
+     "quote": "provides Unemployment Insurance Tax Auditors with the essential software tools to complete audits that are consistent, accurate, and based on TPS guidelines"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.mtwsolutions.com/about/",
+     "quote": "which is based on the COMPAS framework, but is used to complete Benefit Accuracy Measurement investigations"
+    },
+    {
+     "p": 1,
+     "s": 4,
+     "url": "https://www.mtwsolutions.com",
+     "quote": "A Child Nutrition Management System that is changing how state government agencies manage their child nutrition programs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.mtwsolutions.com/products/grant-management-system",
+     "quote": "Illinois State Board of Education"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.mtwsolutions.com/about/",
+     "quote": "MTW implemented COMPAS V2.0 for the Alaska Department of Labor and Workforce Development"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.mtwsolutions.com",
+     "sha": "78ba497c97fae067",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mtwsolutions.com/products/",
+     "sha": "161d41b4d79d409a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mtwsolutions.com/about/",
+     "sha": "b85004cba97bfea0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.mtwsolutions.com/products/grant-management-system",
+     "sha": "aef46dc9a3e9c363",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ascend-analytics",
@@ -134437,7 +136311,83 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASWA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Metrix Learning delivers an online learning management system for the public workforce, provided as a custom SkillUpAmerica eLearning portal for each community. The catalog covers 7,000+ courses and 10 career pathways representing 200+ occupations, with training for industry-recognized certifications. The platform also includes integrated job search and integration with Geographic Solutions Virtual One Stop (VOS).",
+    "Metrix Learning works directly with state and local governments, non-profits, businesses, and corporations, and each partner relationship is served with a tailored plan. Workforce boards use the platform to support employers in need of talent, with candidate screening tools and skills assessments, customized course clusters, and incumbent worker training. Listed package elements include a custom website with a logo, an annual user license, automated monthly reports, and Mon-Fri 9am-5pm EST customer support.",
+    "Metrix Learning is part of Certus, an eLearning certification company, and started as NY Wired for Education with New York-based Workforce Development Boards at its 2008 launch."
+   ],
+   "quote": {
+    "text": "eLearning portal is designed to strengthen job prospects. Our goal is simple: to promote career pathways that drive economic prosperity.",
+    "url": "https://metrixlearning.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://metrixlearning.com/about/",
+     "quote": "Our custom SkillUpAmerica eLearning portal is unique to each community with a user-friendly, self-paced platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://metrixlearning.com",
+     "quote": "10 career pathways representing 200+ occupations"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://metrixlearning.com",
+     "quote": "Integration with Geographic Solutions Virtual One Stop (VOS)"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://metrixlearning.com",
+     "quote": "Working directly with state and local governments, non-profits, businesses, and corporations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://metrixlearning.com/solutions/",
+     "quote": "Workforce boards reinforce existing business service efforts with a Metrix Learning boost to further support employers in need of talent."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://metrixlearning.com",
+     "quote": "Annual user license, unlimited activities"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://metrixlearning.com/about/",
+     "quote": "NY Wired for Education/Metrix Learning elevated asynchronous learning during its 2008 launch."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://metrixlearning.com",
+     "sha": "598738c827bd2b19",
+     "fetched_on": null
+    },
+    {
+     "url": "https://metrixlearning.com/solutions/",
+     "sha": "ec19b0a8d1f62712",
+     "fetched_on": null
+    },
+    {
+     "url": "https://metrixlearning.com/about/",
+     "sha": "81ee7bdd05babcab",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "apply-government-solutions",
@@ -134608,7 +136558,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "MindMixer sells one platform that combines social media management, community engagement surveys, and archiving for government communications teams. Content and workflow features cover campaign planning, collaboration on content, approval tracking, and automatic archiving, so teams manage messages in one place. The social media tools schedule and publish across accounts, monitor and moderate comments, and capture every interaction for compliance.",
+    "Surveying and engagement tools gather community feedback and measure sentiment, with AI-powered survey creation and response analysis. Archiving runs automatically for public records requests and FOIA standards, with policy-based archiving, search and export options, and configurable retention schedules. The site states that Social Assurance for Government is now MindMixer by Social Assurance.",
+    "Buyers named on these pages are government offices and agencies, and the platform is described as built for the public sector. The site also names banking, financial services, and education among the markets served."
+   ],
+   "quote": {
+    "text": "Built for the public sector, MindMixer simplifies every part of your communication workflow so your team can focus on what matters most: informing, engaging, and earning public trust.",
+    "url": "https://mindmixer.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://mindmixer.com",
+     "quote": "Social Media Management, Community Engagement & Archival"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://mindmixer.com",
+     "quote": "From planning to publishing, MindMixer streamlines how government teams manage every message."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://mindmixer.com",
+     "quote": "Plan, schedule, and publish across all accounts, manage comments and responses, and automatically capture every interaction for compliance."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://mindmixer.com",
+     "quote": "integrated surveying and engagement tools make it easy to gather community feedback, measure sentiment, and turn insights into action."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://mindmixer.com",
+     "quote": "Every message, post, and update is automatically stored and archived for public records requests and FOIA standards."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://mindmixer.com",
+     "quote": "Social Assurance for Government is now MindMixer by Social Assurance"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://mindmixer.com",
+     "quote": "MindMixer helps government offices and agencies connect with their communities, create better content in less time, and stay fully compliant"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://mindmixer.com",
+     "quote": "Serving government, banking, financial services, and education with the social, engagement, and compliance tools they need."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://mindmixer.com",
+     "sha": "f0169d76b8a36ed8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "identity-automation",
@@ -134953,7 +136975,85 @@
   "researched": true,
   "also_known_as": [
    "HeyMirza"
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Mirza sells what its site calls public benefits infrastructure, a platform that matches, verifies, and enrolls people in the benefits they qualify for and keeps them covered as eligibility rules and verification requirements change. Benefits named on the site include Medicaid, Childcare (CCAP), SNAP, WIC, and Head Start. The site describes one engine that attaches to the eligibility systems an organization already runs, layered on that existing stack rather than sold as a replacement.",
+    "The site groups its audiences as State agencies, Health plans & MCOs, Health systems, and Employers & unions. For state agencies the stated pitch is getting H.R.1-ready without replacing the eligibility system already in place. Scale and timing are given as 200+ programs supported across all 50 states, and 8 weeks to launch a state, MCO, or institutional deployment.",
+    "Results from the field name the New York City Teachers Union (UFT) and Thrive by 5 Louisville (KY). The site ties demand to H.R.1's Medicaid community-engagement requirement, which it says takes effect January 1, 2027. Security claims listed on the page include AES-256 encryption at rest and TLS 1.3 in transit, with audited, least-privilege access controls."
+   ],
+   "quote": {
+    "text": "Benefits Continuity infrastructure that keeps families covered.",
+    "url": "https://heymirza.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://heymirza.com",
+     "quote": "Mirza matches, verifies, and enrolls people in the benefits they qualify for, and keeps them covered as eligibility rules and verification requirements keep changing."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://heymirza.com",
+     "quote": "a household's Medicaid coverage kept active, plus Childcare (CCAP) at $1,120/mo, SNAP at $291/mo, WIC at $74/mo, and Head Start enrollment"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://heymirza.com",
+     "quote": "Attach to the systems you have Layered on your existing eligibility stack, not a replacement."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://heymirza.com",
+     "quote": "Who we serve State agencies Health plans & MCOs Health systems Employers & unions"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://heymirza.com",
+     "quote": "Get H.R.1-ready without replacing your eligibility system."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://heymirza.com",
+     "quote": "8 weeks to launch your state, MCO, or institutional deployment"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://heymirza.com",
+     "quote": "New York City Teachers Union (UFT)"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://heymirza.com",
+     "quote": "H.R.1's Medicaid community-engagement requirement takes effect January 1, 2027."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://heymirza.com",
+     "quote": "AES-256 encryption at rest and TLS 1.3 in transit, with audited, least-privilege access controls"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://heymirza.com",
+     "sha": "4b2f114dfc83fca8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "civic-roundtable",
@@ -136137,7 +138237,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Modo Labs sells an experience platform that connects apps, portals, and enterprise systems into one digital experience across mobile and desktop. The pages say universities use it as a campus experience platform and enterprises use it as a workplace experience platform. Modo AI is presented as orchestrating actions across campus and workplace systems rather than only answering questions.",
+    "The platform is described as carrying 100+ integrations, out-of-the-box templates, and customizable modules delivered through a mobile app and a desktop portal. The integrations page describes connecting back-end systems so that data, information, and services reach people in one place as the founding mission. Integration categories listed there include the student information system, the learning management system, safety and security, and authentication.",
+    "The about page says the platform was founded in 2010 by MIT's chief mobile platform architect. That page also records recognition as a Leader in the 2026 Gartner Magic Quadrant for Workplace Experience Applications. Case studies name universities and colleges including SUNY Plattsburgh, KCTCS, and Northampton Community College, alongside Northern Trust."
+   ],
+   "quote": {
+    "text": "Integrating disparate back-end systems to bring the data, information, and services people need in one easy-to-use place is Modo\u2019s founding mission.",
+    "url": "https://modolabs.com/about-us/integrations-and-partnerships/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.modolabs.com",
+     "quote": "An experience platform connects apps, portals, and enterprise systems into one unified digital experience across mobile and desktop."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.modolabs.com",
+     "quote": "Universities use it as a\u00a0 campus experience platform ; enterprises use it as a\u00a0 workplace experience platform ."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.modolabs.com",
+     "quote": "It orchestrates actions across campus and workplace systems."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.modolabs.com",
+     "quote": "With 100+ integrations, out-of-the-box templates, and customizable modules"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://modolabs.com/about-us/integrations-and-partnerships/",
+     "quote": "Integrating disparate back-end systems to bring the data, information, and services people need in one easy-to-use place is Modo\u2019s founding mission."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://modolabs.com/about-us/integrations-and-partnerships/",
+     "quote": "Student Information System (SIS)"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://modolabs.com/about-us/",
+     "quote": "Founded in 2010 by MIT\u2019s chief mobile platform architect"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://modolabs.com/about-us/",
+     "quote": "Recognized as a Leader in the 2026\u00a0Gartner\u00ae Magic Quadrant for Workplace Experience Applications."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://modolabs.com/resources/case-studies/",
+     "quote": "SUNY Plattsburgh Builds a Smarter, Simpler Digital Front Door for Students and Staff"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.modolabs.com",
+     "sha": "8334194bbc140eb9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://modolabs.com/resources/case-studies/",
+     "sha": "21dfab08d9d5f243",
+     "fetched_on": null
+    },
+    {
+     "url": "https://modolabs.com/about-us/integrations-and-partnerships/",
+     "sha": "88cf88ae1d1362e5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://modolabs.com/about-us/",
+     "sha": "db9f581000b280c8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "schoolai",
