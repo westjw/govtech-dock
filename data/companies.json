@@ -745,7 +745,100 @@
    {
     "text": "Website corrected 2026-08-26. The stored address https://www.perimeterplatform.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Perimeter sells a public safety platform that pairs evacuation planning with situational awareness mapping, delivered through Perimeter Plan and Perimeter Map. Perimeter Plan is used before an incident to set safe points, evacuation routes, and critical infrastructure points. During an incident, hazards, road closures, and evacuation orders are published to a map that updates for every agency and the public.",
+    "The platform is aimed at emergency managers, public information officers, law enforcement agencies, and fire departments. The public facing map is shareable to anyone needing emergency information, with no download or sign up required. Agencies can grant access to neighboring jurisdictions and mutual aid partners.",
+    "Data created in Perimeter is stored for after action analysis. Saved detail is meant to be ready to share when records are requested by stakeholders. Perimeter exports KML and GeoJSON and integrates Esri data with existing tools."
+   ],
+   "quote": {
+    "text": "Perimeter provides everything needed to create, manage, and communicate zones, points, and routes for emergencies and planned events.",
+    "url": "https://perimeterplatform.com/platform"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://perimeterplatform.com",
+     "quote": "Validate your zones with Perimeter Plan, then deploy Perimeter Map to unite agencies and the public in a true Common Operating Picture."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://perimeterplatform.com",
+     "quote": "Set your safe points, evacuation routes, and critical infrastructure points before the call ever comes in."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://perimeterplatform.com",
+     "quote": "Publish hazards, road closures, and evacuation orders instantly. When you update the map, it updates for every agency and the public."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://perimeterplatform.com/platform",
+     "quote": "Perimeter empowers emergency managers, public information officers, law enforcement agencies and fire departments to plan and respond to events in real-time."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://perimeterplatform.com",
+     "quote": "Perimeter Map is fast, intuitive, and shareable to anyone in need of emergency information, no download or sign up required."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://perimeterplatform.com",
+     "quote": "Grant access to neighboring jurisdictions and mutual aid partners in seconds, not hours."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://perimeterplatform.com/solutions",
+     "quote": "Leverage Perimeter's stored data to support comprehensive after action analysis."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://perimeterplatform.com/solutions",
+     "quote": "Ensure you have every detail saved and ready to share when records are requested by your stakeholders."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://perimeterplatform.com",
+     "quote": "We export KML, GeoJSON, and bi-directionally integrate Esri data instantly so you can plug Perimeter into your existing tools with ease."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://perimeterplatform.com",
+     "sha": "bc6c24eeb88e348a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://perimeterplatform.com/solutions",
+     "sha": "c1c0bf697ba7dde2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://perimeterplatform.com/platform",
+     "sha": "df5ee09fb95ccbd4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://perimeterplatform.com/about-us",
+     "sha": "fdfd2c0a9c749a85",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "genasys",
@@ -8135,7 +8228,88 @@
   "sled_only": true,
   "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (city and county administration / clerk and resident-services offices), sometimes individual departments such as a county surrogate; public sector only as far as the site shows.",
   "acquisitions_checked_on": "2026-09-11",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Polimorphic sells a platform for government service delivery that the company describes as carrying work from intake to resolution in one connected system. The homepage describes a voice option that can answer questions, route calls, take voicemails, or resolve common issues instead of a phone tree. Alongside the voice and chat channels, the platform page describes a native CRM for case management and a drag-and-drop workflow builder that non-technical staff can modify.",
+    "The pages say the platform works across planning, public works, finance, recreation, and more, and that leadership gains real-time visibility across departments. Published case studies name city, county and special district customers, among them Suisun City, CA, Castle Pines, CO, Polk County, NC, and the City of Tangent, OR.",
+    "One case study reports that a water conservancy district handled over 600 seasonal inquiries through the platform without a single one being transferred to staff. The platform page states that the AI ingests local municipal codes and GIS layers to answer address-specific regulatory questions."
+   ],
+   "quote": {
+    "text": "Polimorphic unifies operations so residents get fast answers, staff reclaim focus, and leaders finally see what's happening.",
+    "url": "https://www.polimorphic.com/platform"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.polimorphic.com",
+     "quote": "From intake to resolution, manage the complicated demands of government services with one connected platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.polimorphic.com",
+     "quote": "Faster than a resident can navigate through a phone tree, Poli can answer questions, route calls, take voicemails, or resolve common issues."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.polimorphic.com/platform",
+     "quote": "let non-technical staff modify complex service flows without IT intervention"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.polimorphic.com",
+     "quote": "Works across planning, public works, finance, recreation, and more"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.polimorphic.com/case-studies",
+     "quote": "Recognizing the need to provide residents with easy access to information while maintaining compliance with Colorado's accessibility regulations, Castle Pines implemented Polimorphic's AI Search."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.polimorphic.com/case-studies/weber-basin-water-conservancy-district",
+     "quote": "Their newly launched platform absorbed their seasonal call surge, handling over 600 inquiries without a single one needing to be transferred to staff."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.polimorphic.com/platform",
+     "quote": "Ingests local municipal codes and GIS layers to answer address-specific regulatory questions"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.polimorphic.com",
+     "sha": "b84ba3ec93ba4f6a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.polimorphic.com/platform",
+     "sha": "05aab7af5e39f152",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.polimorphic.com/case-studies",
+     "sha": "19e5022e84fe4cc6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.polimorphic.com/case-studies/weber-basin-water-conservancy-district",
+     "sha": "3c0c823dc0cc0555",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "polco",
@@ -9364,7 +9538,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NIGP 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pavilion runs a search platform that public agencies use to find cooperative contracts and vendors that fit their compliance requirements. The public entities page describes searching cooperatives, state contracts, and an agency's own contracts in one place. That page says the platform aggregates contracts from 400+ cooperatives, state, and local contracts. The same page describes searching 300,000+ suppliers and sending quote requests to them.",
+    "Access is free for public entities, and listing is free for suppliers. Suppliers pay for premium features, which is how the pages account for the free access. The vendors page presents Pavilion Pro as the paid tier for supplier teams selling into the public sector.",
+    "For those suppliers the vendors page describes active purchase requests filtered by category, agency type, budget, and geography. The same page states that coverage is local and education agencies and not federal ones."
+   ],
+   "quote": {
+    "text": "Pavilion is the procurement platform 3,500+ public agencies use to plan their purchases.",
+    "url": "https://www.withpavilion.com/about/vendors"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.withpavilion.com",
+     "quote": "Cooperative contracts and quick quotes from vendors that meet your compliance needs,"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "quote": "Search the nation\u2019s largest database of cooperatives, state contracts, and your own agency's contracts in one place."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "quote": "Pavilion aggregates contracts from 400+ cooperatives, state, and local contracts, including:"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "quote": "Search 300,000+ suppliers, send quote requests, and get everything procurement needs to approve it"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "quote": "Pavilion is free for public entities to use, and free for suppliers to be listed."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "quote": "Suppliers pay for premium features that help them grow their public sector business."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.withpavilion.com/about/vendors",
+     "quote": "Pavilion Pro helps your team win more public sector business"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.withpavilion.com/about/vendors",
+     "quote": "Thousands of active purchase requests on Pavilion, filtered to your categories, agency types, budgets, and geographies."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.withpavilion.com/about/vendors",
+     "quote": "No federal coverage: Pavilion is built for local and education agencies"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.withpavilion.com",
+     "sha": "be6b58dac725c02a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.withpavilion.com/about/public-entities",
+     "sha": "d36699fb60febec4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.withpavilion.com/about/vendors",
+     "sha": "d082f4069921688e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.withpavilion.com/about/resources",
+     "sha": "6cada1cef45a71dd",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "govspend",
@@ -9458,6 +9725,94 @@
    "note": null,
    "on": "2026-09-08",
    "by": "owner"
+  },
+  "profile": {
+   "paragraphs": [
+    "Paymentus provides a billing, payment, and interaction platform for service providers across industries. Payment methods on the platform include credit card, debit card, ACH/eCheck, cash at retail locations, and digital wallets. Bill delivery options include paper suppression, eBilling via email, text, and mobile.",
+    "The billing and payments line names Utilities, Insurance, Government, Telecom, Higher Ed, Healthcare, and Property Management among the sectors it serves. A banking and fintech line covers bill pay, loan payments, P2P, and A2A for Banks, Credit Unions, and Consumer Finance lenders. Reporting and reconciliation run through an admin solution called Agent Dashboard, with visibility for transactions by payment method and channel.",
+    "Paymentus went public on the New York Stock Exchange in 2021. The company describes an Instant Payment Network of billers, financial institutions, and brand partners including PayPal, Walmart, CVS and Walgreens. Case studies on their industry insights pages include one about Sarasota County."
+   ],
+   "quote": {
+    "text": "Paymentus was founded as the answer to clunky, outdated billing and payment processes that made paying bills too complicated.",
+    "url": "https://www.paymentus.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.paymentus.com",
+     "quote": "billing, payment, and interaction platform provider that delivers purpose-built Service Commerce capabilities"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.paymentus.com",
+     "quote": "Provide maximum payment optionality by offering credit card (AMEX, Visa, Mastercard, Discover), debit card, ACH/eCheck, cash at retail locations and in person"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.paymentus.com",
+     "quote": "driving customers to receive bills digitally through our many presentment options including paper suppression, eBilling via email, text, and mobile"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.paymentus.com",
+     "quote": "increase engagement and on-time payments for Utilities, Insurance, Government, Telecom, Higher Ed, Healthcare, Property Management, and more"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.paymentus.com",
+     "quote": "Modern payment capabilities including bill pay, loan payments, P2P, and A2A for Banks, Credit Unions, and Consumer Finance lenders."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.paymentus.com",
+     "quote": "admin solution Agent Dashboard, offering real-time visibility for all transactions, regardless of payment method or channel"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.paymentus.com/about/",
+     "quote": "In 2021, Paymentus officially went public on the New York Stock Exchange (NYSE: PAY)."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.paymentus.com/about/",
+     "quote": "network of billers, financial institutions, and brand partners including PayPal, Walmart, CVS and Walgreens"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.paymentus.com/industry-insights/category/case-studies/",
+     "quote": "Case Study: How Sarasota County Increased Autopay Enrollment by 43% in Just Two Months"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.paymentus.com",
+     "sha": "a97369a849fc34ad",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.paymentus.com/about/",
+     "sha": "288cd832e78cfd7d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.paymentus.com/industry-insights/category/case-studies/",
+     "sha": "9d30b0c0f04e0345",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -12880,7 +13235,88 @@
   "buyer": "Municipal parking authorities and cities are named first and the site cites '800+ agencies' served; universities and private operators also buy, but government reads as primary.",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Passport provides digital infrastructure that cities use to manage and monetize the curb. The platform brings mobile pay parking, parking enforcement, digital permitting, and payments together in one place, with reporting for policy decisions.",
+    "Enforcement functions named on the homepage include monitoring, issuance, and license plate recognition integrations. The citation issuance page describes cloud-based parking enforcement that parking officials and enforcement officers reach in real time from a connected handheld device. Officers can create tickets or warnings, look up previous tickets and scofflaws, take photos, and report incidents.",
+    "The same page describes citation management software as helping cities and parking operators digitize the full citation lifecycle, from issuance through payment, adjudication, and revenue recovery. The homepage puts the client count at 800 or more cities and operators."
+   ],
+   "quote": {
+    "text": "Passport provides the digital infrastructure that cities need to manage and monetize their most valuable asset, their curb.",
+    "url": "https://www.passportinc.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.passportinc.com",
+     "quote": "Passport provides the digital infrastructure that cities need to manage and monetize their most valuable asset, their curb."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.passportinc.com",
+     "quote": "Passport\u2019s platform makes it easy to manage mobile pay parking, parking enforcement, digital permitting, payments, and more, in one place."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.passportinc.com",
+     "quote": "Monitoring, issuance and LPR integrations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.passportinc.com/product/enforcement/citation-issuance/",
+     "quote": "With online, cloud-based parking enforcement, parking officials and enforcement officers can access an enforcement system in real-time using a connected handheld device to effectively monitor and issue citations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.passportinc.com/product/enforcement/citation-issuance/",
+     "quote": "Look up previous tickets, scofflaws, and allow/deny lists in real-time"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.passportinc.com/product/enforcement/citation-issuance/",
+     "quote": "Citation management software helps cities and parking operators digitize the full citation lifecycle"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.passportinc.com",
+     "quote": "800+\u00a0cities and operators trust Passport"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.passportinc.com",
+     "sha": "be070007928633f4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.passportinc.com/product/enforcement/citation-issuance/",
+     "sha": "bae720ea2ed08045",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.passportinc.com/product/enforcement/license-plate-recognition/",
+     "sha": "192fbaa57589d39d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.passportinc.com/product/enforcement/citation-payments/",
+     "sha": "e4b41b5b399881b2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "parkmobile",
@@ -13161,7 +13597,106 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Municipal governments / city transportation departments \u2014 over 100 city partners named (Chicago, Oakland, Miami, Santa Monica, Hoboken); no commercial buyer is mentioned, so government is the sole sta",
   "acquisition_note": "Acquired by IPS Group, Inc. in Nov 2025, per Populus's own blog post: 'Populus has been acquired by IPS Group, Inc., a global leader in smart parking and curb management solutions.' Site states products/services and core teams continue unchanged.",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "Populus sells cities a software platform for managing streets, curbs, and shared mobility fleets. Populus states that it delivers data in over 100 cities around the world. The curb side of the platform covers data analysis, regulation inventorying, and active management tools.",
+    "Parking Insights pulls curb activity data from a city's meters, payment kiosks, mobile payment applications, sensors, and cameras into one platform for geospatial analysis. It includes Rate Analyzer, which projects the financial impact of rate adjustments and estimates revenue from new rates using historical parking data. Curb Regulations turns a city's existing curb and parking data into standardized formats such as the Curb Data Specification, and keeps that inventory up to date. Cities can then publish a Curbs API to delivery companies and autonomous vehicles, with Populus providing hosting and delivery of that API.",
+    "Digital Smart Zones let a city share dynamic curb policies with commercial and on-demand delivery vehicles and launch hardware-free permit programs that collect revenue from parking activity. Mobility Manager integrates and analyzes data from shared bikes, scooters, carshare, mopeds, and other shared fleets, with live data views of micromobility in a city. A policy toolkit lets staff create permanent and temporary rules, monitor compliance automatically, and calculate fees with fleet operators."
+   ],
+   "quote": {
+    "text": "Populus empowers cities to dynamically manage streets and curbs",
+    "url": "https://www.populus.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.populus.ai",
+     "quote": "Populus empowers cities around the world with the digital solutions they need to manage their streets, curbs, and new mobility fleets."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.populus.ai",
+     "quote": "Populus delivers data in over 100 cities around the world"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.populus.ai",
+     "quote": "Navigate the digitization of your curbs with a suite of powerful data analysis, regulation inventorying, and active management tools"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.populus.ai/products/parking-insights",
+     "quote": "Consolidate data from curb and parking vendors, including single space parking meters, multi-space payment kiosks, mobile payment applications, sensors, and cameras."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.populus.ai/products/parking-insights",
+     "quote": "Our Parking Insights includes Rate Analyzer to evaluate parking rate adjustments."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.populus.ai/products/curb-regulations",
+     "quote": "Populus partners with cities to collect, analyze, and transform curb and parking data into standardized formats, such as the Curb Data Specification, ensuring that it remains up-to-date and accessible to all stakeholders."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.populus.ai/products/curb-regulations",
+     "quote": "Populus provides technical leadership for cities to publish a Curbs API to key stakeholders such as delivery companies and autonomous vehicles."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.populus.ai/products/digital-smart-zones",
+     "quote": "With Digital Smart Zones, a city can share dynamic curb policies with commercial and on-demand delivery vehicles about when and where they can access curb space."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.populus.ai",
+     "quote": "Integrate and analyze data from shared bikes, both dockless and station-based systems, scooters, carshare, mopeds, and more."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.populus.ai",
+     "quote": "Easily identify, create, communicate, and enforce both metric and zone-based policies with fleet operators."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.populus.ai",
+     "sha": "fecd12cd3470e83a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.populus.ai/products/parking-insights",
+     "sha": "35188c1d7861ab7f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.populus.ai/products/curb-regulations",
+     "sha": "7e9a5d241e817eb8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.populus.ai/products/digital-smart-zones",
+     "sha": "4490a99aecd6f04f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ubicquia",
@@ -13991,7 +14526,91 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "TechConnect 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Placemetry drives a city and captures photos from the public right-of-way, then analyzes properties and roadways with AI so departments can get ahead of problems rather than react to them. Each vehicle is equipped with three high-resolution cameras, one facing forward and one facing to each side, capturing street-level imagery in a single drive. Forward-facing cameras deliver per-segment pavement condition, an asset inventory, and safety screening in a single pass.",
+    "Side cameras capture a wide view of the public right-of-way in one pass, including properties, yards, sidewalks, trees, and vegetation. The same dataset feeds Code Enforcement, Economic Development, and Forestry & Parks. All imagery is captured from the public right-of-way, faces and license plates are blurred, and the city owns the data.",
+    "One cadence is a single citywide survey with no subscription required. Another is a quarterly or bi-annual citywide sweep in which Placemetry teams drive every street and the AI scores properties. A third option puts cameras on city vehicles the city already operates, so garbage trucks and street sweepers capture passive citywide coverage. Delivery runs through direct API integrations, standard spreadsheet downloads, or a secure web app, with REST API Endpoints and Webhooks."
+   ],
+   "quote": {
+    "text": "If you can see it from the street, we can measure it.",
+    "url": "https://www.placemetry.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.placemetry.com",
+     "quote": "We drive your city, capturing photos from the public right-of-way. Our AI analyzes properties and roadways, providing actionable insights that help your departments shift from reacting to problems to getting ahead of them."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.placemetry.com",
+     "quote": "Each vehicle is equipped with three high-resolution cameras: one facing forward and one facing to each side. This setup captures comprehensive street-level imagery in a single drive: the road ahead, and both sides of the public right-of-way."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.placemetry.com",
+     "quote": "Forward-facing cameras optimized for roadways and infrastructure. In a single pass, we deliver per-segment pavement condition, an asset inventory, and safety screening, fully aligned with the standards your DOT and Public Works teams already use."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.placemetry.com",
+     "quote": "High-resolution side cameras capture a wide view of the public right-of-way in one pass, including properties, yards, sidewalks, trees, and vegetation."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.placemetry.com",
+     "quote": "One dataset powers Code Enforcement, Economic Development, Forestry & Parks, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.placemetry.com",
+     "quote": "All imagery is captured from the public right-of-way. Faces and license plates are blurred. Your city owns the data."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.placemetry.com",
+     "quote": "Best for roadway and housing inventory. A single citywide survey. The fastest way to see what\u2019s on the street. We make it easy: no subscription required."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.placemetry.com",
+     "quote": "Best for tracking program impact. Quarterly or bi-annual citywide sweeps. Our teams drive every street and our AI scores properties. You get the insights; we handle the mileage."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.placemetry.com",
+     "quote": "Best for supporting code compliance. Our cameras on city vehicles you already operate. Garbage trucks and street sweepers capture passive citywide coverage; code & parking enforcement vehicles cover priority areas on demand."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.placemetry.com",
+     "quote": "Access our platform via direct API integrations, standard spreadsheet downloads, or our secure web app to power every city department. Deploy via clean REST API Endpoints and Webhooks with zero local installation."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.placemetry.com",
+     "sha": "117a94c19dd0038b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "terrago-technologies",
@@ -15206,7 +15825,101 @@
     "sector": "Parks & Rec",
     "category": "Screening, Safety & Compliance"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Playground Guardian sells onsite safety inspection of playground equipment and surfacing, checking that they meet safety standards. The company also sells Park Protector, a playground inspection and asset management application that runs on a computer or mobile device. Playground Guardian is based in Charlotte, North Carolina.",
+    "Park Protector records inspections on any device with or without cell service, and is built to CPSC Publication 325 and ASTM standards. The surface testing module captures the data fields required by ASTM F1292 and F3313, including HIC, Gmax, impact velocity, and drop height. Inspections, surface tests, issues, work orders, and complaints export to PDF or Excel.",
+    "Park Protector is offered for managing inspections across city-owned play spaces and facilities. The software page names parks, school districts, and municipal facilities across the United States. Park Protector is presented for organizations ranging from solo CPSI inspectors to large municipal departments. Organizations that already have maintenance staff managing their facilities are offered the Park Protector app."
+   ],
+   "quote": {
+    "text": "Park Protector replaces clipboards, spreadsheets, and disconnected tools with a single app built around how inspection professionals actually work: in the field, across dozens of locations, with or without a signal.",
+    "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.playgroundguardian.com",
+     "quote": "Get a thorough assessment of playground equipment, surfacing, and more to ensure they meet safety standards."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.playgroundguardian.com",
+     "quote": "Park Protector is an easy-to-use playground inspection and asset management application. Manage, monitor, and inspect any municipal, neighborhood, or school playground system from your computer or mobile device."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://playgroundguardian.com/about/",
+     "quote": "Playground Guardian is a 3rd-generation American company based in Charlotte, North Carolina."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "Complete inspection documentation on any device, with or without cell service. Built to CPSC Publication 325 and ASTM standards, so your records hold up when it matters most."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "Park Protector captures every data field required by ASTM F1292 and F3313, including HIC, Gmax, impact velocity, and drop height."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "Export inspections, surface tests, issues, work orders, and complaints to PDF or Excel with flexible filtering."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "Manage inspections across every city-owned play space and facility."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "parks, school districts, and municipal facilities across the United States"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "quote": "From solo CPSI inspectors to large municipal departments, Park Protector"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://playgroundguardian.com/about/",
+     "quote": "If you already have a maintenance staff or people that manage your facilities and playgrounds"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.playgroundguardian.com",
+     "sha": "fa198cbad6b01ccb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.playgroundguardian.com/solutions/playground-inspection-software/",
+     "sha": "6639a04d19ecd9c2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://playgroundguardian.com/about/",
+     "sha": "5e54f763cdbca265",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "istrike-alerts",
@@ -19398,7 +20111,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Placer.ai sells location analytics describing physical locations, the people and businesses that interact with them, and the markets they inhabit. Customers can analyze a single property, an entire chain, a full industry category, or a regional market. True Trade Area is described as a behavior-based view of the geographic area visitors come from.",
+    "The platform reports visitation metrics, variance, and trends. Access methods include a self-service dashboard, an API, and Data Feeds. The API lets developers and analysts extract aggregated data for use in third-party applications, supporting custom dashboards, internal reporting, and competitive analysis.",
+    "Named buyers include retail chains, commercial real estate firms, restaurant groups, civic organizations, and financial services companies. Local governments and nonprofits are also named among the organizations served. A retail page describes a site selection report for identifying locations for expansion using demographic and psychographic characteristics and foot traffic analysis."
+   ],
+   "quote": {
+    "text": "Market Intelligence for the Physical World",
+    "url": "https://www.placer.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "describing physical locations, the people and businesses that interact with them, and the markets they inhabit"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "from a single property to an entire chain, a full industry category, or a regional market"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "a precise, behavior-based view of the geographic area visitors come from"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "Get accurate visitation metrics, variance, and trends."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "a self-service dashboard for exploring location and market dynamics, an API that lets developers extract Placer data programmatically to build internal applications and custom reporting tools, and Data Feeds"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.placer.ai/products/api",
+     "quote": "enables developers and analysts to extract Placer's aggregated data for use in any 3rd party application"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "retail chains, commercial real estate firms, restaurant groups, civic organizations, financial services companies"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.placer.ai/products/platform",
+     "quote": "from Fortune 100 companies to local governments and nonprofits"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.placer.ai/solutions/retail",
+     "quote": "Identify top locations for expansion based on demographic and psychographic characteristics and retail foot traffic analysis"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.placer.ai",
+     "sha": "129052f2cc7ee941",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.placer.ai/products/platform",
+     "sha": "478535fa0c14a61a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.placer.ai/products/api",
+     "sha": "eebca5bcc1212eef",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.placer.ai/solutions/retail",
+     "sha": "f21476a621a6b149",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "legislaide",
@@ -40640,7 +41446,84 @@
     "sector": "Parks & Rec",
     "category": "Facility Booking & Workforce"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "PlaySight sells a connected camera platform that turns courts, gyms, rinks and facilities into a SmartCourt venue. Fixed and portable camera systems record practices, games, matches and tournaments without cabling or network infrastructure. The platform adds live streaming, automated production, instant replay and player development tools on top of the cameras.",
+    "Its pages name athletes, coaches, teams and leagues as the users of that platform. The technology is installed on padel, pickleball and tennis courts around the world, alongside partners across professional and collegiate sports. Clients quoted on the homepage include the Boston Celtics, Auburn University and the Mountain West Conference.",
+    "The about page says the platform delivers the same experience to athletes and coaches in 30+ sports in over 35 countries. Examples on that page run from the Toronto Raptors to LakePoint Sports to Santa Margarita High School."
+   ],
+   "quote": {
+    "text": "Whether you are an NBA player, a college coach or an aspiring junior in tennis \u2013 the PlaySight platform was built for you.",
+    "url": "https://playsight.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://playsight.com",
+     "quote": "We turn sports courts, gyms, rinks and facilities into a permanent SmartCourt venue with our connected Pro platform."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://playsight.com",
+     "quote": "Record video, live stream and capture all practices, games, matches and tournaments without the need for cabling or network infrastructure."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://playsight.com",
+     "quote": "get connected with live streaming, automated production, instant replay, player development tools and much more."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://playsight.com",
+     "quote": "PlaySight SmartCourt AI technology powers athletes, coaches, teams and leagues all over the world with its connected camera platform used for broadcast, instant replay and player development."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://playsight.com",
+     "quote": "Its technology is installed on thousands of Padel, Pickleball and Tennis courts around the world (Reserve Padel, Padel Haus, IMG Academy, Ace Pickleball Club, Dill Dinkers) along with hundreds of partners across professional and collegiate sports (NBA, MLB, NHL, NCAA)."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://playsight.com",
+     "quote": "Here is what our clients have to say about PlaySight"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://playsight.com/about",
+     "quote": "deliver the same pro-level experience to athletes and coaches in 30+ sports in over 35 countries."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://playsight.com/about",
+     "quote": "From the Toronto Raptors to LakePoint Sports to Santa Margarita High School, our technology is making a difference each and every day."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://playsight.com",
+     "sha": "7a1b5c7cbe4ad193",
+     "fetched_on": null
+    },
+    {
+     "url": "https://playsight.com/about",
+     "sha": "c020757428dba12c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "onsight",
@@ -44987,7 +45870,95 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and freight rail operators",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Piper Networks is a rail engineering solutions provider and systems integrator working in transportation technologies. Five primary product lines cover Vital Train Positioning, Maintenance of Way (MOW) Protection, Automatic Train Protection (ATP), Grade Crossing Safety, and Passenger Information Display Systems (PIDS). Those systems combine real-time location technologies including UWB, BLE, GPS-RTK, LTE, RFID, HD cameras and LiDAR.",
+    "Amtrak selected the Limits Compliance and Collision Avoidance System (LCCAS) to protect and monitor Maintenance of Way vehicles. Piper is equipping Amtrak vehicles in the Northeast corridor with LCCAS devices and delivering real-time telematics data to the dispatch system. Piper developed the technology behind the MTA countdown clocks at B Division station platforms and mezzanines. Piper and Thales were awarded a Pilot Program for an Ultra-Wideband Based Train Control System to be installed on the 7 (Flushing) Line.",
+    "The UWB train control system received a CENELEC Safety Integrity Level 4 (SIL-4) Certification from independent safety assessor T\u00dcV S\u00dcD. Piper states that its multi-sensor system has an accuracy of less than 5cm."
+   ],
+   "quote": {
+    "text": "Piper provides advanced solutions for train navigation, MOW vehicle protection and railway safety.",
+    "url": "https://www.pipernetworks.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Piper Networks is an innovative rail engineering solutions provider and systems integrator specialising in the development of transportation technologies."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Piper has five primary product lines that serve the industry, including: Vital Train Positioning, Maintenance of Way (MOW) Protection, Automatic Train Protection (ATP), Grade Crossing Safety, and Passenger Information Display Systems (PIDS)."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pipernetworks.com",
+     "quote": "Piper has an existing suite of real-time location systems (RTLS) solutions that utilize various technologies, including: UWB, BLE, GPS-RTK, LTE, RFID, HD Cameras and LiDAR."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Amtrak selected Piper\u2019s innovative Limits Compliance and Collision Avoidance System (LCCAS) to protect and monitor their Maintenance of Way (MOW) vehicles to ensure safe operation."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Piper is equipping hundreds of Amtrak\u2019s rail-bound and hi-rail equipped vehicles in the Northeast corridor with Piper\u2019s advanced LCCAS devices and delivering real-time telematics data to Amtrak\u2019s dispatch system."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Piper developed the technology that runs the new MTA countdown clocks at B Division station platforms and mezzanines."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Piper, in partnership with Thales, was awarded a Pilot Program for an Ultra-Wideband Based Train Control System to be installed on the 7 (Flushing) Line."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pipernetworks.com/about/",
+     "quote": "Recently, Piper Networks received a CENELEC Safety Integrity Level 4 (SIL-4) Certification for its Ultra Wideband (UWB) train control system from independent safety assessor, T\u00dcV S\u00dcD."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pipernetworks.com",
+     "quote": "Piper\u2019s multi-sensor system has an accuracy of less than 5cm; ample precision for busy train yards and work zones."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pipernetworks.com",
+     "sha": "5892ed6a94a2890c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pipernetworks.com/about/",
+     "sha": "6ce1c26204914395",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pipernetworks.com/case-studies/",
+     "sha": "a0bd2708545fa267",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sil4-systems",
@@ -46652,7 +47623,84 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 municipal bus systems, plus university, airport, and hospital/healthcare shuttle operators",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Peak Transit sells fixed route transit software for agencies that need real-time vehicle tracking, transit dispatch tools, rider apps, and NTD reporting in one integrated platform. The platform covers CAD/AVL dispatch, in-vehicle operator tools, branded passenger apps, ridership data collection, ADA-compliant announcements, and real-time passenger information displays. Six tools share a unified data layer: CAD/AVL, MDTs, rider app, APC, AVAS, and digital signage.",
+    "The software is purpose-built for city transit, airport shuttles, university campuses, and hospital transportation. City transit work is described as municipal fixed route bus systems managing downtown routes, suburban connectors, and multi-jurisdictional service. Compliance items listed include ADA Section 37.167 AVAS compliance, NTD ridership reporting for FTA Sections 5307, 5311, and 5339, and SOC 2 Type II security.",
+    "Peak Transit gives a founding year of 2012 and over a decade of developing software and hardware tools for fixed route transit agencies. A customer story on the home page covers Muncie Indiana Transit System."
+   ],
+   "quote": {
+    "text": "Peak Transit serves fixed route bus operations across transit environments that run scheduled service on defined routes",
+    "url": "https://www.peaktransit.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.peaktransit.com",
+     "quote": "fixed route transit software for agencies that need real-time vehicle tracking, transit dispatch tools, rider apps, and NTD reporting"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.peaktransit.com",
+     "quote": "CAD/AVL dispatch, in-vehicle operator tools, branded passenger apps, ridership data collection, ADA-compliant announcements, and real-time passenger information displays"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.peaktransit.com",
+     "quote": "CAD/AVL, MDTs, rider app, APC, AVAS, and digital signage share a unified data layer."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.peaktransit.com",
+     "quote": "Purpose-built for city transit, airport shuttles, university campuses, and hospital transportation."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.peaktransit.com",
+     "quote": "Municipal fixed route bus systems managing downtown routes, suburban connectors, and multi-jurisdictional service"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.peaktransit.com",
+     "quote": "ADA Section 37.167 AVAS compliance, NTD ridership reporting for FTA Sections 5307, 5311, and 5339, and SOC 2 Type II security are built into the platform"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.peaktransit.com",
+     "quote": "Founded in 2012, Peak Transit has spent over a decade developing software and hardware tools purpose-built for fixed route transit agencies."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.peaktransit.com",
+     "quote": "Muncie Indiana Transit System ( MITS ) serves a community that depends on fixed route bus service every day."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.peaktransit.com",
+     "sha": "b0bb8591d35dc8ed",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.peaktransit.com/about",
+     "sha": "f8de74a1f752059f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "luminator-technology-group",
@@ -57505,7 +58553,100 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"The turnkey sharing infrastructure for your city.\" Fetched https://www.we-partake.com (HTTP 200, resolves to /en-us/home-page) and the city page https://www.we-partake.com/en-us/city-solution/why-partake. Homepage title \"Home | Partake\", tagline \"The app for sharing everyday items\" / \"Live more than you own\"; the site has a dedicated \"City solution\" section (Why Partake for Cities, What we offer, Pricing, Impact report, Book a demo) whose headline is the quote above, describing \"flexible licensing\" that gives residents free app access so \"cities don't need to build an app or manage operations\", bundled with citizen licenses, ambassador programs and impact dashboards. This is Partake's own primary domain (the French-language twin partage.club serves the same pages); no parent domain is involved and the domain is live, not parked. IMPORTANT CAVEAT the board should record: the description \"digital community engagement platform for cities\" is inaccurate as written \u2014 Partake is a peer-to-peer item-sharing app that municipalities license for residents, not a public-consultation/civic-engagement platform in the sense of PublicInput, Go Vocal or OpenGov. I searched for a separate civic-engagement vendor named Partake and found none, so the URL matches the company; only the description needs cor"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Partake sells a sharing platform built around an app that lets people borrow and lend household goods within a local area. The company describes the product as a turnkey solution that gives members access to what their community already owns. Onboarding is described as creating a profile for free and finding a local hub, with searching, requesting and returning items as the steps that follow.",
+    "The homepage sets out four paths: citizen, cities and municipalities, business and organization, and building a platform of your own. For cities and municipalities, the offer is a fully supported, turnkey sharing solution aimed at letting citizens share, save and connect. A parallel offer for business and organizations covers employees and members on the same supported, turnkey basis.",
+    "A separate platform offer lets an organization deploy a sharing ecosystem tailored to its industry, with the infrastructure, safety framework and expertise supplied by the company. The stated mission is to make sharing the obvious choice so that every community can unlock its collective abundance. The frequently asked questions page lists question headings, including what happens if an item is damaged or broken."
+   ],
+   "quote": {
+    "text": "The app for sharing everyday items.",
+    "url": "https://www.we-partake.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.we-partake.com",
+     "quote": "The app for sharing everyday items."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.we-partake.com",
+     "quote": "Whether you're looking to borrow or get involved, Partake is the turnkey solution to access the power of your community."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.we-partake.com",
+     "quote": "Create your profile for free and discover your local hub."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.we-partake.com",
+     "quote": "Citizen Cities & Municipalities Business & Organization Build your own platform"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.we-partake.com",
+     "quote": "Empower citizens to share, save, and connect with a fully supported, turnkey sharing solution for your community."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.we-partake.com",
+     "quote": "Empower employees and members to share, save, and connect with a fully supported, turnkey sharing solution."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.we-partake.com",
+     "quote": "Launch a customized sharing platform powered by our technology. We provide the infrastructure, safety framework, and expertise so you can deploy a sharing ecosystem tailored to your industry."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.we-partake.com/en-us/about/our-mission",
+     "quote": "Make sharing the obvious choice* so every community can unlock its collective abundance."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.we-partake.com/en-us/about/frequently-asked-questions",
+     "quote": "What happens if an item is damaged or broken?"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.we-partake.com",
+     "sha": "b3a50345128d03d2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.we-partake.com/en-us/about/our-mission",
+     "sha": "608526f94056eb6d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.we-partake.com/en-us/about/frequently-asked-questions",
+     "sha": "6eddf6eb889b4f73",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.we-partake.com/about/our-mission",
+     "sha": "608526f94056eb6d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "patch-retention",
@@ -57585,7 +58726,96 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"A peer support management software that automates, integrates, and sustains your internal peer support team and accompanying processes.\" Fetched https://firstresponsemh.com and the dedicated product page https://firstresponsemh.com/peerconnect/. Resolves the question asked: PeerConnect is NOT a separate company - it is a product of First Response Mental Health Inc., which is why the domain does not resemble the name. Homepage title is 'First Response Mental Health | Mobile First Responder Wellness Solutions' and describes PeerConnect as 'the leading pro-active peer support management system' whose users are police, fire rescue, paramedics and corrections - matching the description's 'first responder peer support and wellness app'. The product page states PeerConnect was 'launched...in 2019, and was developed with input from first responders.' Rule 3 checked and does not bite here: PeerConnect is First Response MH's ONLY product (site navigation shows Product Overview, Peer Reviewed Articles, Service Directory, Webinars, FAQ - all PeerConnect material, no second product line), so there is no parent whose unrelated job postings could be misread as PeerConnect roles. Every role at this company is a PeerConnect role. No standalone PeerConnect domain exists - searched and found only app-stor"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "PeerConnect is described on its own site as support management software to automate, integrate and help manage a support program. The site says the software makes it easy for members to request and receive peer support. It can integrate to a CAD system so that members are checked in on after a traumatic call, with live measurements, de-identified statistics and reporting.",
+    "Listed features include proactive interval check-ins and ad hoc recommendations when incidents occur. Self-assessments give front line staff a baseline understanding of how they are feeling. A service directory and library of wellness content covers community and EAP offerings. Reporting generates a snapshot of a wellness program's metrics as PDFs.",
+    "The company says PeerConnect was founded with a mission to support first responders in their mental health and well-being. The platform is described as helping departments and organizations provide the care and connection their teams need. Prospective customers are invited to book a demo of a web-based solution that complements an existing peer support program."
+   ],
+   "quote": {
+    "text": "PeerConnect makes it easy for members to request and receive peer support, ensuring no member walks alone.",
+    "url": "https://firstresponsemh.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://firstresponsemh.com",
+     "quote": "Support management software to automate, integrate and help manage your support program."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://firstresponsemh.com",
+     "quote": "PeerConnect makes it easy for members to request and receive peer support, ensuring no member walks alone."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://firstresponsemh.com",
+     "quote": "Integrate to your CAD system to ensure your members will be checked-in on after every traumatic call"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://firstresponsemh.com",
+     "quote": "Support those in need with proactive interval check-ins, and ad hoc recommendations when incidents occur."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://firstresponsemh.com",
+     "quote": "Assessments give front line staff baseline understanding of how they are feeling."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://firstresponsemh.com/our-story/",
+     "quote": "service directory and library of wellness content to access community and EAP offerings"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://firstresponsemh.com",
+     "quote": "Generate an instant snapshot of your wellness program's metrics with stylized PDFs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://firstresponsemh.com/our-story/",
+     "quote": "PeerConnect was founded with a mission to support first responders in their mental health and well-being."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://firstresponsemh.com/our-story/",
+     "quote": "helps departments and organizations provide the care and connection their teams need, when they need it most"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://firstresponsemh.com/our-story/",
+     "quote": "If you are looking for a web-based solution to compliment your peer support program"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://firstresponsemh.com",
+     "sha": "96fbef4a6697472e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://firstresponsemh.com/our-story/",
+     "sha": "26c19f5ec08a52a1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "peerless-vr",
@@ -57609,7 +58839,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Peerless VR is a U.S.-based virtual reality training company whose team includes former public safety professionals. The team develops simulators for law enforcement training. Peerless VR was founded by the original team behind Apex Officer and launched in January 2025.",
+    "The home page presents a VR and MR training simulator. It is described as built for Law Enforcement, Corrections, Military, and Commercial. The same page lists a law enforcement training platform. It also lists a shoot house and firearm simulator.",
+    "Testimonials on the home page are attributed to Winchester Police Department, the IUP Police Academy, and Mineral County Sheriff's Office. One of those comments describes the system as a purchase for the department."
+   ],
+   "quote": {
+    "text": "Rooted in U.S. public safety culture, practices, and real-world fieldwork",
+    "url": "https://www.peerlessvr.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.peerlessvr.com/about-us",
+     "quote": "Peerless VR is a U.S.-based virtual reality training company built by experienced VR innovators and former public safety professionals."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.peerlessvr.com/about-us",
+     "quote": "the team develops advanced, adaptable simulators purpose-built for real-world law enforcement training."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.peerlessvr.com/about-us",
+     "quote": "was founded by the original team behind"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.peerlessvr.com",
+     "quote": "The world's first VR & MR"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.peerlessvr.com",
+     "quote": "Built for Law Enforcement, Corrections, Military, and Commercial"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.peerlessvr.com",
+     "quote": "The Ultimate Law Enforcement Training Platform"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.peerlessvr.com",
+     "quote": "The Ultimate Shoot House and Firearm Simulator"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.peerlessvr.com",
+     "quote": "Winchester Police Department"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.peerlessvr.com",
+     "quote": "It has truly been a great purchase for our department"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.peerlessvr.com",
+     "sha": "586dc6c08081aa61",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.peerlessvr.com/about-us",
+     "sha": "c09b5d9788a3aa9c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pimloc-inc",
@@ -57807,7 +59120,91 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Transform voice recordings, bodycam footage, and interviews into professional reports written in your style in minutes, not hours.\" Fetched https://policenarratives.ai. Live, and the site is the company's own primary domain (name and domain match exactly). Ties directly to the description 'AI-assisted police report writing': the platform performs 'Transcription, narrative generation, quality scoring, and statute detection' on officer voice recordings and bodycam footage to produce police reports. Buyer base is state and local law enforcement - patrol officers, detectives, sergeants and command staff, up to whole departments - with customer testimonials from departments in Alaska, Colorado, New Hampshire, Indiana and Minnesota. No parent-company or product-line issue: this is a standalone vendor on its own domain. Good SLED fit."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Police Narratives AI sells software that turns voice recordings, bodycam footage, and interviews into written police reports. The system applies law enforcement terminology and formatting standards to the generated narrative. Transcription, narrative generation, quality scoring, and statute detection are described on the page as automatic steps.",
+    "The page states that the service works with bodycam systems including Axon, Motorola, and LensLock, and that data is encrypted on AWS GovCloud. Writing preferences such as perspective, time format, and name capitalization are set once and then applied to each report. Templates can be personal or agency-wide, pushed by admins, and switched per case type. A finished report transfers to an RMS or goes out as email.",
+    "Testimonials on the page attribute use to named agencies, including Anchorage Police Department, Alaska. Other testimonials name Greeley Police Department, Colorado and Jackson County Sheriff Department, Indiana. The page directs agencies to contact sales for agency pricing and states that every plan includes all features."
+   ],
+   "quote": {
+    "text": "Most report-writing software forces everyone into the same mold. With Police Narratives AI, you define the rules.",
+    "url": "https://policenarratives.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://policenarratives.ai",
+     "quote": "Transform voice recordings, bodycam footage, and interviews into professional reports written in your style in minutes, not hours."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://policenarratives.ai",
+     "quote": "AI understands law enforcement terminology, formatting standards, and your personal writing style."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://policenarratives.ai",
+     "quote": "Transcription, narrative generation, quality scoring, and statute detection happen automatically in seconds."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://policenarratives.ai",
+     "quote": "Works with all bodycam systems including Axon, Motorola, LensLock, and more. All data encrypted on AWS GovCloud."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://policenarratives.ai",
+     "quote": "Set your perspective, time format, name capitalization, subject references, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://policenarratives.ai",
+     "quote": "Create personal templates or use agency-wide ones pushed by admins. Switch per case type as needed."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://policenarratives.ai",
+     "quote": "Transfer your finished report directly to your RMS or send as email."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://policenarratives.ai",
+     "quote": "Anchorage Police Department, Alaska"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://policenarratives.ai",
+     "quote": "Jackson County Sheriff Department, Indiana"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://policenarratives.ai",
+     "quote": "Every plan includes all features. For agency pricing, contact sales"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://policenarratives.ai",
+     "sha": "029117a5b1f58f51",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "power-dms-by-neogov",
@@ -57842,7 +59239,85 @@
   ],
   "also_known_as": [
    "PowerDMS by NEOGOV"
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "PowerDMS by NEOGOV sells a public safety management system that brings policy, training, scheduling and compliance workflows onto one platform. Separate modules cover policy management, accreditation management, internal affairs, early intervention, field training, off duty scheduling, background investigations and text messaging surveys. The solution list carries both a public safety version and a healthcare version of policy management and of accreditation management.",
+    "Buyers named on the site include sworn officers, command staff and first responders who must meet state and federal reporting mandates. Named customers include the Lake Worth Police Department, the Cleveland Police Department and the Boulder Police Department. Testimonials also come from a county sheriff's office, a county communications center and a state law enforcement division.",
+    "Pricing is an annual subscription tailored to agency size, product selection and integrations. The software is cloud-based and requires no servers or maintenance. The site states that over 5,500 agencies use PowerDMS by NEOGOV."
+   ],
+   "quote": {
+    "text": "PowerDMS is a complete public safety management system, built with AI for public safety to bring critical workflows into one platform, helping agencies operate more efficiently and make better decisions.",
+    "url": "https://www.powerdms.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.powerdms.com",
+     "quote": "PowerDMS is a complete public safety management system, built with AI for public safety to bring critical workflows into one platform, helping agencies operate more efficiently and make better decisions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.powerdms.com",
+     "quote": "Explore our complete public safety management system \u2013 software solutions and digital tools designed to replace paper processes, simplify compliance, and strengthen community trust."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.powerdms.com",
+     "quote": "Accreditation Management for Healthcare"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.powerdms.com",
+     "quote": "Manage, maintain, and prove agency-wide compliance \u2013 helping sworn officers, command staff, and first responders meet state and federal reporting mandates with just a few clicks."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.powerdms.com",
+     "quote": "Learn how Lake Worth Police Department (TX) uses PowerEngage to better connect with their community and boost morale."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.powerdms.com",
+     "quote": "South Carolina Law Enforcement Division"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.powerdms.com",
+     "quote": "PowerDMS uses an annual subscription tailored to agency size, product selection, and integrations."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.powerdms.com",
+     "quote": "PowerDMS is cloud-based, requiring no servers or maintenance."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.powerdms.com",
+     "quote": "There's a reason over 5,500 agencies are using PowerDMS by NEOGOV to save time, stay compliant, and boost first responder morale."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.powerdms.com",
+     "sha": "2557e145a24f4092",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "powerdetails",
@@ -57866,7 +59341,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; NSA 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "PowerDetails sells a platform for law enforcement and public safety agencies to schedule, invoice, and report on off-duty jobs and overtime. The platform is configurable, with every site built from features based on each agency's rules and policies. A configurable Rules Engine can automatically enforce hour and job limits inside the platform.",
+    "Agencies take in job requests from local businesses, and officers sign up for jobs from anywhere through the mobile app. Invoices are generated automatically with employer information and the fees that apply, once the officer has logged hours and the job is marked complete. Payments can then be processed electronically via ACH and Credit Card.",
+    "Agencies named on these pages include Walton County Sheriff's Office, Palm Bay Police Department, and Vanderbilt University Police Department. The company also sells Managed Services, under which it takes over the daily administration of an agency's off-duty program, including job scheduling and billing."
+   ],
+   "quote": {
+    "text": "PowerDetails provides law enforcement agencies with the tools they need to efficiently organize, regulate, and communicate overtime and secondary employment details.",
+    "url": "https://www.powerdetails.com/solutions"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.powerdetails.com",
+     "quote": "for law enforcement and public safety agencies to schedule, invoice, and report on off-duty jobs and overtime."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.powerdetails.com/about",
+     "quote": "The PowerDetails platform was designed to be configurable. This means every PowerDetails site is built with specific features based on each agency's unique rules and policies."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.powerdetails.com/solutions",
+     "quote": "The rules engine can automatically enforce hour and job limits directly within the platform"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.powerdetails.com",
+     "quote": "Allow your officers to sign up for jobs from anywhere via our mobile app"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.powerdetails.com/solutions",
+     "quote": "PowerDetails will automatically generate invoices with your employer's information and the appropriate costs/fees, once the officer has logged his hours and the job has been marked complete."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.powerdetails.com",
+     "quote": "Process payments electronically via ACH and Credit Card"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.powerdetails.com",
+     "quote": "Off Duty Coordinator, Walton County Sheriff's Office"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.powerdetails.com/case-studies",
+     "quote": "With Managed Services, PowerDetails took over the daily administration of"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.powerdetails.com",
+     "sha": "2346d163f4fedecb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.powerdetails.com/case-studies",
+     "sha": "1e0890d45475b0fe",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.powerdetails.com/about",
+     "sha": "a144455aaf6ee0bb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.powerdetails.com/solutions",
+     "sha": "3b0f0045d6adeb13",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "precise-mrm-llc",
@@ -63775,7 +65337,88 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "PMWEB sells a web platform for capital program and construction project management, presented on its own site as the strategic control center for owner-operators. The platform is organized into three parts named Visibility & Analysis, Control & Execution, and Efficiency & Automation.",
+    "The control and execution pages list budgeting and funding management, estimate and cost control, contract and payment oversight, schedule and field management, and workflow and approval control. The visibility and analysis page says the system consolidates project, program, and asset data into a single platform for portfolio dashboards, forecasting, and risk monitoring.",
+    "Buyers described on the site are owner-operators running capital portfolios, with industries listed that include Airport, Data Centers, Education, Finance & Banking, Government, Healthcare, Hospitality, and Infrastructure & Transportation. Under that industry list, the Government entry says the product equips public agencies to deliver complex capital programs on time and on budget. A case study on the homepage says Carnegie Mellon University implemented PMWEB as a centralized platform for budgeting, procurement, and vendor oversight."
+   ],
+   "quote": {
+    "text": "Equipping public agencies with the tools to deliver complex capital programs on time and on budget.",
+    "url": "https://pmweb.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://pmweb.com/platform/",
+     "quote": "THE STRATEGIC CONTROL CENTER FOR OWNER-OPERATORS"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pmweb.com/platform/",
+     "quote": "Our integrated platform is organized across three powerful pillars"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pmweb.com/solutions/control-and-execution/",
+     "quote": "Build, revise, and manage budgets, forecasts, and funding sources across projects and portfolios."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pmweb.com/solutions/visibility-and-analysis/",
+     "quote": "PMWEB consolidates your project, program, and asset data into a single, real-time platform"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pmweb.com",
+     "quote": "The Strategic Control Center for Owner-Operators"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pmweb.com",
+     "quote": "Equipping public agencies with the tools to deliver complex capital programs on time and on budget."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://pmweb.com",
+     "quote": "Carnegie Mellon University modernized its capital program by implementing PMWEB as a centralized platform for budgeting, procurement, and vendor oversight."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://pmweb.com",
+     "sha": "a88c2656715e71a8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pmweb.com/platform/",
+     "sha": "a13059000ada0179",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pmweb.com/solutions/visibility-and-analysis/",
+     "sha": "e422b329145282df",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pmweb.com/solutions/control-and-execution/",
+     "sha": "cadf4bb9b8140d62",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "prodigiq-inc",
@@ -68672,7 +70315,84 @@
   "buyer": "Colleges/universities and municipalities are named first among served markets, alongside healthcare, corporate campuses, airports, paratransit, and residential communities \u2014 mixed public/private but public-sector transit/campus buyers are named first",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Passio Technologies sells transit and parking technology, offered as modular solutions to transit companies of any size and type. The homepage sets out real time passenger information drawn from GPS tracking, automated voice announcements, on-board LED smart signs, automated passenger counting and computer aided dispatch. Operations management and reporting run through Passio Navigator and Passio OpsView, with alerts for speeding, off route, out of boundary and idling.",
+    "Other named products include Passio GO for riders on smartphones, Passio BusBuzz for passenger feedback by text, and Passio Gateway for boarding access using tap, swipe or scan technology. The about page adds contact tracing, an in app bus request feature, and paratransit and NEMT solutions following the acquisition of ParaPlan in 2019.",
+    "The pages name transit customers in the university, municipal, corporate, healthcare, aviation, residential and hospitality industries. Industries listed on the homepage include colleges and universities, municipalities, paratransit and NEMT, healthcare, corporate campuses, airports, shopping, employee transit and residential. The about page also says the client base numbers over 250 after more than 10 years in the industry."
+   ],
+   "quote": {
+    "text": "Driving Ahead with Intelligent Transit Technology",
+    "url": "https://passiotech.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://passiotech.com/about-us",
+     "quote": "Passio provides modular and innovative solutions to transit companies of any size and type!"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://passiotech.com",
+     "quote": "Automated Voice Announcements, and on-board LED Smart Signs are coupled with Automated Passenger Counting and Computer Aided Dispatch/Automated Vehicle Locator (CAD/AVL) systems to provide detailed visibility and comprehensive insight into the transit system."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://passiotech.com",
+     "quote": "With Instant Alerts such as speeding, off route, out of boundary, and idling, dispatch and management can address transit issues in real time, correcting issues before they escalate."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://passiotech.com",
+     "quote": "validates passengers and limits boarding access to only authorized users using Tap, Swipe, or Scan Technology when passengers enter the bus."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://passiotech.com/about-us",
+     "quote": "We acquired ParaPlan in 2019, meaning we now offer solutions for paratransit/NEMT, and on-demand transit."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://passiotech.com",
+     "quote": "Passio provides innovative, modular, and customizable technology solutions for transit customers in the university, municipal, corporate, healthcare, aviation, residential and hospitality industries."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://passiotech.com",
+     "quote": "Passio Technologies understands that each industry has its own unique blend of operational procedures and requirements."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://passiotech.com/about-us",
+     "quote": "Over 10 years in the industry coupled with over 250 clients makes us the perfect solution."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://passiotech.com",
+     "sha": "4ff1e88086e3bb6a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://passiotech.com/about-us",
+     "sha": "3cd73f311a94c59b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vix-technology",
@@ -74623,7 +76343,85 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "PowerTime is scheduling and workforce management software built for public safety agencies. The software covers employee schedules, overtime, leave requests, and time tracking from one secure cloud platform. The stated audience is law enforcement agencies, corrections, fire departments, EMS organizations, emergency communications centers, and other public safety employers.",
+    "Overtime lists are built from agency rules, union agreements, FLSA requirements, employee availability, consecutive hours worked, and seniority. Supervisors review employee time, leave requests, overtime, and exceptions from a centralized dashboard. After time is approved, the platform exports payroll-ready data and reporting on schedules, overtime, leave balances, staffing, and labor costs.",
+    "Employees view schedules, request time off, swap shifts, clock in and out, and sign up for available overtime using the web or mobile app. Schedule building covers recurring patrol rotations, fire schedules, dispatcher shifts, and correctional staffing plans under configurable scheduling rules. The page positions the product against physical master boards, manual shift grids, and generic commercial calendars used inside first responder teams."
+   ],
+   "quote": {
+    "text": "PowerTime is scheduling and workforce management software built specifically for public safety agencies.",
+    "url": "https://www.planitschedule.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.planitschedule.com",
+     "quote": "PowerTime is scheduling and workforce management software built specifically for public safety agencies."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.planitschedule.com",
+     "quote": "It helps law enforcement, corrections, fire departments, and emergency communications centers manage employee schedules, overtime, leave requests, and time tracking from one secure cloud platform."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.planitschedule.com",
+     "quote": "PowerTime is designed for law enforcement agencies, corrections, fire departments, EMS organizations, emergency communications centers, and other public safety employers."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.planitschedule.com",
+     "quote": "Build overtime lists based on agency rules, union agreements, FLSA requirements, employee availability, consecutive hours worked, and seniority to ensure fair and compliant shift assignments."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.planitschedule.com",
+     "quote": "Supervisors review employee time, leave requests, overtime, and exceptions from a centralized dashboard."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.planitschedule.com",
+     "quote": "Once time is approved, PowerTime exports payroll-ready data and provides reporting on schedules, overtime, leave balances, staffing, and labor costs to help agencies improve efficiency and compliance."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.planitschedule.com",
+     "quote": "Employees can securely view schedules, request time off, swap shifts (if enabled), clock in and out, and sign up for available overtime using the web or mobile app."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.planitschedule.com",
+     "quote": "Create recurring patrol rotations, fire schedules, dispatcher shifts, or correctional staffing plans using configurable scheduling rules."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.planitschedule.com",
+     "quote": "Physical master boards, manual shift grids, and generic commercial calendars create bottlenecks and compliance gaps inside first responder teams."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.planitschedule.com",
+     "sha": "d132621ff163e771",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "authorium",
@@ -76943,7 +78741,78 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Phoenix Graphics Election Printing supplies ballot materials, election printing and fulfillment to election officials and boards of election. Pages for the company state that it supports 46 counties and nearly 13,000 election districts as the largest supplier of ballot materials in New York State. Services listed include early ballot layouts, certification updates, and MOVE Act file generation, alongside proprietary ballot layout software.",
+    "Election products described on the same page include voter information cards, secure envelopes, redistricting notices and polling place change notifications. Mailing work covers voter notifications, political mailings and outreach materials, with secure labeling, pre-printed shrink wrap and sealed cartons.",
+    "The about page states that the company holds two patents in ballot printing and proprietary ballot layout software. Both pages describe compliance with election laws and regulatory requirements as part of the work."
+   ],
+   "quote": {
+    "text": "For over 40 years, Phoenix Graphics Election Printing has been a trusted partner for election officials and boards of election.",
+    "url": "https://phoenixelectionprinting.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://phoenixelectionprinting.com",
+     "quote": "For over 40 years, Phoenix Graphics Election Printing has been a trusted partner for election officials and boards of election."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://phoenixelectionprinting.com",
+     "quote": "As the largest supplier of ballot materials in New York State, we proudly support 46 counties, covering nearly 13,000 election districts"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://phoenixelectionprinting.com",
+     "quote": "Our services include early ballot layouts, certification updates, and MOVE Act file generation."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://phoenixelectionprinting.com",
+     "quote": "From voter information cards and secure envelopes to redistricting notices and polling place change notifications, our products are tailored to meet the specific needs of election officials"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://phoenixelectionprinting.com",
+     "quote": "We specialize in voter notifications, political mailings, and outreach materials to ensure your electorate stays informed and engaged."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://phoenixelectionprinting.com/about",
+     "quote": "With two U.S. patents in ballot printing and proprietary ballot layout software, we help election officials navigate the complexities of election laws and evolving technology."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://phoenixelectionprinting.com/about",
+     "quote": "Our expertise in ballot printing, election materials, and secure voter mailings ensures every election runs smoothly, efficiently, and in full compliance with regulatory requirements."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://phoenixelectionprinting.com",
+     "sha": "639b8e67ae7511a1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://phoenixelectionprinting.com/about",
+     "sha": "5a8c508c8849687e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "seachange-print-innovations",
@@ -79913,6 +81782,70 @@
    "ruled_by": "owner",
    "on": "2026-09-09",
    "source": "parks-rec vendor research"
+  },
+  "profile": {
+   "paragraphs": [
+    "PlanIT Geo states that it is a global urban forestry software development and consulting firm, working on urban forestry, parks, and arboriculture since 2012. The products named are the TreePlotter Software Suite together with PlanIT Geo services for urban forestry, parks, and sustainability programs. Tree canopy data is described as subscription-based and driven by artificial intelligence.",
+    "The home page names greenspace managers and tree care companies around the world as the people this urban forestry and software provider serves. Separate paths on the same page point to community programs, to businesses seeking more work, and to corporate, university, medical campus, or HOA settings. A news item on the about page quotes a city planning director on an application named TreePlotter CANOPY."
+   ],
+   "quote": {
+    "text": "PlanIT Geo is a full service urban forestry and software provider for greenspace managers and tree care companies around the world.",
+    "url": "https://planitgeo.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://planitgeo.com",
+     "quote": "PlanIT Geo\u2122 is a global urban forestry software development and consulting firm."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://planitgeo.com",
+     "quote": "TreePlotter\u2122 Software Suite and PlanIT Geo services will take urban forestry, parks, and sustainability programs to the next level."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://planitgeo.com",
+     "quote": "Our subscription-based, artificial intelligence-driven tree canopy data is disrupting the traditional tree canopy mapping and assessment process"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://planitgeo.com",
+     "quote": "PlanIT Geo is a full service urban forestry and software provider for greenspace managers and tree care companies around the world."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://planitgeo.com",
+     "quote": "Prioritize environmental stewardship on your corporate, university, medical campus, or HOA ."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://planitgeo.com/about-us/",
+     "quote": "\u201cThis application (TreePlotter CANOPY) highlights our commitment to keeping our community informed and engaged in nurturing and preserving our vibrant tree canopy,\u201d said Alyson Craig, the city\u2019s planning director."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://planitgeo.com",
+     "sha": "20509d55bd1598fc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://planitgeo.com/about-us/",
+     "sha": "3b72eb5b1a53f603",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -81731,7 +83664,82 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Pikmykid sells a school safety and dismissal platform covering daily and emergency operations across the school day. Dismissal tools give staff real-time views of where students are meant to go and alert them when a parent has arrived at pickup.",
+    "A digital hall pass module creates timestamped passes so staff can see where students should be and locate them during emergencies. Attendance management integrates with Student Information Systems and lets parents record absences and absence reasons through the parent app.",
+    "The platform runs on a parent mobile app, a school portal for staff records and reports, and a dispatcher used in a browser. Buyers named on the pages are schools and districts, including a central district in New York whose deputy superintendent is quoted."
+   ],
+   "quote": {
+    "text": "The Pikmykid platform runs on the devices you already use so you can provide a seamless experience managing daily and emergency operations.",
+    "url": "https://www.pikmykid.com/solutions/school-safety-reimagined"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pikmykid.com",
+     "quote": "The All-In-One School Safety & Dismissal Platform"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pikmykid.com",
+     "quote": "Notifications when a parent has arrived at pickup"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pikmykid.com/solutions/digital-hall-pass",
+     "quote": "Create a timestamped, digital hall pass for students."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pikmykid.com/solutions/attendance-management",
+     "quote": "Parents can update attendance and absence reasons through the Parent App"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pikmykid.com/solutions/school-safety-reimagined",
+     "quote": "The dispatcher lets staff control real-time dismissals as parents arrive at school."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pikmykid.com",
+     "quote": "Dr. Tanya Wilson-Thevansan Deputy superintendent of fairport central district in new york"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pikmykid.com",
+     "sha": "cb9f606104c9d51e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pikmykid.com/solutions/school-safety-reimagined",
+     "sha": "4308072aa6fe384e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pikmykid.com/solutions/attendance-management",
+     "sha": "b3b912feb5845c39",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pikmykid.com/solutions/digital-hall-pass",
+     "sha": "cf92399dcaf6bf42",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "navigate360",
@@ -90723,7 +92731,84 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Payment Service Network, also called PSN, sells electronic bill presentment and payment services to business industries including utility, municipal and government, property management, funeral services, insurance, and financial. Customers can initiate payments online, by call-in, text, counter, cash payment location, bank bill payment system, credit card, eCheck, eSavings, paper check, cash or money order. PSN states that all payments are consolidated for one deposit, one posting to your software, and one reconciliation report.",
+    "The company was established in 1999, and its stated aim was to automate the recurring customer payment process by integrating the SaaS PSN system with account management software. As a result, PSN serves over 1,000 business accounts, and in 2020 it joined forces with InvoiceCloud.",
+    "PSN performs all work in-house, with security and customer service named as the highest priorities. A client has a Service Account Manager who provides training and support. Integration to the PSN platform is set up through a batch process, real-time data interchange, or a tokenization exchange."
+   ],
+   "quote": {
+    "text": "Simplifying Payments Through Consolidation",
+    "url": "https://paymentservicenetwork.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://paymentservicenetwork.com",
+     "quote": "specializes in providing electronic bill presentment and payment (EBPP) services to a variety of business industries including utility, municipal and government, property management, funeral services, insurance, and financial."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://paymentservicenetwork.com",
+     "quote": "online, call-in, text, counter, cash payment location, bank bill payment system, credit card, eCheck, eSavings, paper check, cash or money order"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://paymentservicenetwork.com",
+     "quote": "all payments are consolidated for one deposit, one posting to your software, and one reconciliation report"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "quote": "Established in 1999 as one of the earliest pioneers in the truly all-electronic payment industry, PSN's mission was to automate the recurring customer payment process by integrating the SaaS PSN system with account management (now CIS) software."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "quote": "As a result, we serve over 1,000 business accounts. In 2020, PSN joined forces with InvoiceCloud"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "quote": "With security and customer service as the highest priorities at PSN, we take pride in performing all work in-house."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "quote": "Your Service Account Manager is your go-to resource providing comprehensive training and support"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "quote": "Experts establish the integration of your system to the PSN platform through a batch process, real-time data interchange, or a tokenization exchange."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://paymentservicenetwork.com",
+     "sha": "4480770123ab819f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://info.paymentservicenetwork.com/about-us/",
+     "sha": "65f2bc98494d2228",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "core-business-technologies",
@@ -112077,7 +114162,106 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Planet sells Earth observation data products drawn from its own satellite constellations. Planet Monitoring supplies near daily coverage at 3.7 meter resolution in four multispectral bands, RGB and Near Infrared. Satellite Tasking adds site specific SkySat high resolution imagery, and Planetary Variables quantifies attributes like soil moisture, biomass, and land surface temperature.",
+    "Access runs on a subscription model, with images ordered through Planet's APIs, web application, and GIS integrations. The archive of high resolution images dates from 2009. Planet reports over 300 million square kilometers of imagery collected each day. Planet Insights Platform brings together applications, APIs, data layers, and GIS tools for querying, processing, and visualizing data.",
+    "The home page names Rural Payments Agency and Kazakhstan Space Agency among the organizations that work with Planet. The monitoring page describes the New Mexico State Land Office using Planet Monitoring to uncover 53 trespasses which yielded $2.7 million in back payments. Bayer and Pan Pac are named on the same page, Bayer for Planet Monitoring and Pan Pac for PlanetScope imagery."
+   ],
+   "quote": {
+    "text": "Our high-resolution daily Earth data, archive, and analytics give customers an unprecedented view, allowing them to cast further and wider in time, space, and frequency.",
+    "url": "https://www.planet.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.planet.com/products/",
+     "quote": "Our suite of Earth observation data products can transform the way you understand our planet."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "3.7 meter resolution images in four multispectral bands: RGB and Near Infrared"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.planet.com/products/",
+     "quote": "provide access to scientifically rigorous data, so you can quantify attributes like soil moisture, biomass, and land surface temperature"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "Access to these ready-to-use images is made simple with Planet\u2019s APIs, web application, and GIS integrations."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "Extensive archive of high-resolution images dating from 2009"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "Over 300 million square kilometers of imagery collected each day"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.planet.com/products/",
+     "quote": "Planet Insights Platform is a cloud-native set of applications, APIs, data layers, and GIS tools."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.planet.com",
+     "quote": "Kazakhstan Space Agency"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "Learn about how the New Mexico State Land Office used Planet Monitoring to uncover 53 trespasses which yielded $2.7 million in back payments."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "quote": "Learn how Bayer is leveraging Planet Monitoring to have the right seed, in the right place, at the right time to serve their growers worldwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.planet.com",
+     "sha": "9f25777191591de9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.planet.com/products/",
+     "sha": "450f4ff6afc0d07b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.planet.com/products/planet-insights-platform/",
+     "sha": "80b552852a24aaa9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.planet.com/products/satellite-monitoring/",
+     "sha": "a813e3f01c536781",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "maxar-intelligence",
@@ -118352,7 +120536,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: SNA ANC 2027",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PCS Revenue Control Systems sells school food and nutrition technology to the K-12 market, offering products and services across that one segment. The product offering covers prepayments on the web, free and reduced application processing, meal accountability, claims reporting, menu nutrition analysis, food purchases and inventory control. Services sold alongside the software include project management, training, webinars, continuing maintenance, upgrades, and support.",
+    "The stated market is the K-12 Nutrition community, served by a team of food service professionals, dietitians, engineers and computer scientists building cloud based business solutions. Software, hardware and services are offered for every type of user and task, and the pages say many customers have been with the company over twenty five years. Compliance with state and federal regulations is named as part of how the products and services are improved.",
+    "Products and services can be bought through buying co-ops, with the pages naming BuyBoard, PEPPM, and TIPS. Testimonials on the site are attributed to staff at Pampa ISD in Texas and at Ottumwa Community Schools in Iowa."
+   ],
+   "quote": {
+    "text": "We are 100% focused on student nutrition solutions.",
+    "url": "https://pcsrcs.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pcsrcs.com",
+     "quote": "PCS Revenue Control Systems is a leader in school food and nutrition technology providing a complete and fully integrated line of products and services to the K-12 market."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pcsrcs.com/about-us/",
+     "quote": "Our product offering includes prepayments on the web, free and reduced application processing, meal accountability, claims reporting, menu nutrition analysis, food purchases and inventory control, custom forms and workflows, plus services including project management, training, webinars, continuing maintenance, upgrades, and support."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pcsrcs.com",
+     "quote": "From prepayments on the web to free and reduced application processing, meal accountability, claims reporting, menu nutrition analysis, food purchases and inventory control we strive for the highest degree of customer satisfaction, providing project management, training, webinars, and continuing maintenance, upgrades, and support."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pcsrcs.com/about-us/",
+     "quote": "We are a team of food service professionals, dietitians, engineers and computer scientists dedicated to creating high tech, easy to learn and use cloud based business solutions for the K-12 Nutrition community."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pcsrcs.com/about-us/",
+     "quote": "We provide software, hardware, and services appropriate to every type of user and task. Many of our customers have been with us over twenty five years, due to our ongoing commitment to protecting the investment they have made in our products."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://pcsrcs.com/about-us/",
+     "quote": "Through continuing contact with our customers we endeavor to improve our products and services, generating best of breed technology solutions while complying with state and federal regulations."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pcsrcs.com/about-us/",
+     "quote": "PCS has contracts with several Buying Co-ops. You may be able to purchase PCS products and services and avoid the RFP/Bid process."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pcsrcs.com",
+     "quote": "Yvonne Johnson, FSD, Ottumwa Community Schools, IA"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pcsrcs.com",
+     "sha": "4f15c8dcd76737d8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pcsrcs.com/about-us/",
+     "sha": "27aa847d521c6ee2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "duett-inc",
@@ -119702,7 +121963,73 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NAHRO 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Patter COMPASS sells a branded mobile communication platform to community organizations, and the homepage states that it is built for CBOs, Housing, and Nonprofits. The site describes three connected components, the COMPASS App, the COMPASS Network, and COMPASS Analytics, which together combine communication, resources, and engagement tools into one app. Listed features include a custom-branded app, instant push notifications, a digital resource hub, smart member segments, a news feed, and an analytics dashboard.",
+    "COMPASS is described as designed for organizations that need a reliable way to reach communities, with audiences listed as workforce and training providers, housing organizations, and community-based nonprofits serving local areas. One post addresses housing authority leaders and CBO directors about whether mobile belongs in the communication strategy.",
+    "Another post says the Homes4Good name was retired and the work brought under a single brand at a conference session on resident outreach. The COMPASS Network is described as extending reach beyond the organization by connecting with partners so opportunities, resources, and information can flow across communities."
+   ],
+   "quote": {
+    "text": "Patter COMPASS helps CBOs communicate with the communities they serve clearly, securely, and efficiently.",
+    "url": "https://pattercompass.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://pattercompass.com",
+     "quote": "Built For CBOs, Housing, and Nonprofits"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pattercompass.com",
+     "quote": "Patter COMPASS is built on three connected components that work together to strengthen how you reach, engage, and support your community."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://pattercompass.com",
+     "quote": "Store and organize all your services, forms, contact directory, and information in one mobile-friendly location."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pattercompass.com",
+     "quote": "COMPASS is designed for organizations that need a reliable way to reach communities and guide them to opportunity"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pattercompass.com/resources/people-cant-use-resources-they-dont-know-exist",
+     "quote": "For housing authority leaders and CBO directors, the question is no longer whether mobile belongs in the communication strategy."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pattercompass.com/resources/stop-reacting-start-connecting-communication-has-become-housings-hot-button-issue",
+     "quote": "we retired the Homes4Good name and brought the work under a single brand, Patter COMPASS"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pattercompass.com",
+     "quote": "The COMPASS Network connects you with trusted partners so opportunities, resources, and information can flow across communities."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://pattercompass.com",
+     "sha": "df04dbacb4406c0f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "careloop-health",
@@ -124099,7 +126426,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pope Tech sells a web accessibility platform along with training and support. Automated testing scans pages for accessibility issues, and guided manual tests can be scheduled and tracked alongside it. Pope Tech for Courses is integrated directly inside Canvas LMS, where course content is scanned and instructors get an accessibility guide.",
+    "A higher education page presents the platform as a way to improve digital accessibility across a whole .edu. Services listed for colleges include combined automated and manual testing, training plans, document prioritization and video captioning. Client types named on the about page include higher ed institutions, government agencies, banks and credit unions, ecommerce websites and web agencies.",
+    "Pope Tech and WebAIM work together to bring the WAVE Suite of tools to more websites. Scanning runs on the WAVE testing engine at a stated volume of millions of pages each month. Support includes an accessibility help desk staffed by accessibility specialists, plus quarterly webinars and an annual WebAIM training for training seat users."
+   ],
+   "quote": {
+    "text": "Accessibility is possible. Compliance is possible. Any organization can start improving their web accessibility today.",
+    "url": "https://pope.tech"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://pope.tech/about",
+     "quote": "Pope Tech gives you the tools, training and support needed to achieve your web accessibility goals."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pope.tech",
+     "quote": "Manual Testing Guided Manual tests with scheduling and tracking"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://pope.tech",
+     "quote": "Accessibility Guide Built in Accessibility Guide to help instructors to create accessible content"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pope.tech/solutions/higher-ed",
+     "quote": "Whether you are just getting started with web accessibility or a veteran at it, Pope Tech has a suite of resources available to help you improve digital accessibility across your whole .edu."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pope.tech/solutions/higher-ed",
+     "quote": "Documents Identify, scan and prioritize documents for remediation or replacement."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://pope.tech/about",
+     "quote": "Our clients include hundreds of higher ed institutions, government agencies, banks and credit unions, ecommerce websites, web agencies and many other organization types."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pope.tech/about",
+     "quote": "Pope Tech and WebAIM are working together to bring the WAVE Suite of tools to more people and ultimately facilitate more websites to be accessible."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pope.tech",
+     "quote": "We scan millions of pages each month using the industry standard WAVE testing engine."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://pope.tech",
+     "quote": "Training seat users get access to our Accessibility Help Desk to ask questions, 4 quarterly webinars/open-office hours, an annual WebAIM 4 hour training, and an intro to web accessibility self-paced course."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://pope.tech",
+     "sha": "3843d4a8a50b2cd1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pope.tech/about",
+     "sha": "d2b499a9fdd8fef7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pope.tech/solutions/higher-ed",
+     "sha": "9396538cbc29ae42",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "teamdynamix",
@@ -125907,7 +128322,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NAHRO 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PHA-Web is web-based software that provides tenant, property, and financial management to housing authorities across the United States. The software comes from Management Computer Services, Inc., which was founded in 1968 and by 1970 had dedicated its services to public housing authorities. Company pages put the reach of the software at over 800 agencies nationwide and at over 25 percent of the housing authority industry.",
+    "Tenant, property, and financial components are described as the core of the software. Portals for applicants, tenants, and landlords sit alongside those components. A Document Imaging component stores tenant, landlord, and vendor files. An Executive Dashboard presents key performance indicators, metrics, and reports for executive staff.",
+    "Feature work described on the site covers use from any mobile device, reduced paper usage, and reporting for executive staff members. The careers page describes the company as a small business."
+   ],
+   "quote": {
+    "text": "By 1970, we dedicated our services exclusively to Public Housing Authorities.",
+    "url": "https://www.pha-web.com/public/about/company.aspx"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pha-web.com",
+     "quote": "PHA-Web is an affordable, fully integrated, and web-based software that provides solutions for Tenant, Property and Financial management to over 25 percent of the Housing Authority industry across the United States."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pha-web.com/public/about/company.aspx",
+     "quote": "MCS was founded in 1968 with the goal of providing high quality computer services for a variety of customers. By 1970, we dedicated our services exclusively to Public Housing Authorities."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pha-web.com/public/about/company.aspx",
+     "quote": "We proudly serve over 800 agencies nationwide, and we hope you consider joining the family."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pha-web.com",
+     "quote": "Take a deep dive into our tenant, property, and financial components that are the core of our software."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pha-web.com",
+     "quote": "Our seamlessly integrated portals help you provide the best experience to your applicants, tenants, and landlords."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pha-web.com",
+     "quote": "Save or access tenant, landlord, vendor, and other files"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.pha-web.com",
+     "quote": "Give your executive staff the ability to view key performance indicators, metrics, and reports, all powered by our interactive dashboards."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pha-web.com",
+     "quote": "to afford your agency the ability to work from any mobile device, to reduce paper usage, and to provide key insights and reporting to executive staff members"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pha-web.com/public/about/employment.aspx",
+     "quote": "We are a small business that prides itself on building an incredible staff that cares about our clients, our company, and most importantly, each other."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pha-web.com",
+     "sha": "d05294b05180193c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pha-web.com/public/about/company.aspx",
+     "sha": "7d1a7c242c7aa135",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pha-web.com/public/about/employment.aspx",
+     "sha": "3f515057ec51bc09",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pha-web.com/public/about/conference.aspx",
+     "sha": "07507ae676133828",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "anonymous-health",
@@ -126324,6 +128832,89 @@
    "note": null,
    "on": "2026-09-08",
    "by": "owner"
+  },
+  "profile": {
+   "paragraphs": [
+    "PlanStreet sells cloud-based case management software that organizations use to run programs, cases, and referrals. The software covers client registration, assessment, service delivery, and changes to case plans. Intake forms can be picked from a supplied database or designed by the organization, with data validation and conditionality.",
+    "Two groups are named on the homepage: nonprofits, and government and public sector organizations. For the public sector the page frames the work as public welfare programs, with the software described as secure and compliant. A case studies page profiles housing, residential treatment, reentry, veterans, and child services organizations.",
+    "Grant management, collaboration, and task management are offered alongside custom reports and configurable user interfaces. The stated aim of the analytics and reporting tools is to monitor program impact across the case management cycle. The site says the system integrates with the tools and technology stack an organization already uses."
+   ],
+   "quote": {
+    "text": "PlanStreet helps organize programs and develops reporting tools in a single software solution.",
+    "url": "https://www.planstreet.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.planstreet.com",
+     "quote": "PlanStreet\u2019s cloud-based case management software automates tasks and streamlines processes so that your team of case managers can spend more time with clients."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.planstreet.com",
+     "quote": "Register clients, assess their risks and needs, deliver and track services, and modify case plans to achieve their goals."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.planstreet.com",
+     "quote": "You can choose from our extensive database of relevant forms or design your own to simplify client intake."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.planstreet.com",
+     "quote": "Government & Public Sector Organizations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.planstreet.com",
+     "quote": "Our secure, compliant case management software supports client needs, streamlines workflows, and improves service delivery."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.planstreet.com/case-studies",
+     "quote": "Bermuda Housing Corporation manages public housing applications while also supporting residents with social case management services."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.planstreet.com",
+     "quote": "Highly customizable user interfaces, custom reports, and a full-scale offering of services that include grant management, collaboration, and task management allow for PlanStreet to optimize any part of your organization when you need it."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.planstreet.com",
+     "quote": "you can monitor the impact of your programs and interventions at every step of the case management cycle."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.planstreet.com",
+     "quote": "Our system can easily integrate with any software,"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.planstreet.com",
+     "sha": "d7c20c98ba4db651",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.planstreet.com/case-studies",
+     "sha": "ae0c3c0201af80dc",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -128178,7 +130769,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Potential.ly sells a platform that universities and learning organisations use to connect learning outcomes with evidence of competency. The pages describe portfolio assessment, AI-powered skills capture and longitudinal analytics as the parts of that platform. Buyers are addressed by role, with sections for teaching and learning leaders, for student success and engagement, and for career services leaders.",
+    "Institution-wide engagement and awards programmes track student development from pre-arrival through graduation. The case studies page describes integrations with other university systems such as SSO, Canvas, Blackboard and Zoom. That page names Loughborough University, University College Cork and Cardiff University as institutions it has written up.",
+    "Beyond higher education, the platform is also offered to membership organisations, SMEs and professional training providers. A continuing professional development platform is offered for academic staff and for professional learners across education and enterprise."
+   ],
+   "quote": {
+    "text": "Make Learning Visible. Make Skills Verifiable.",
+    "url": "https://www.potential.ly"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.potential.ly",
+     "quote": "Potential.ly partners with universities and learning organisations to connect learning outcomes with evidence of competency \u2014 through portfolio assessment, AI-powered skills capture, and longitudinal analytics."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.potential.ly",
+     "quote": "Potential.ly partners with universities and learning organisations to connect learning outcomes with evidence of competency \u2014 through portfolio assessment, AI-powered skills capture, and longitudinal analytics."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.potential.ly",
+     "quote": "Scale career readiness and make employability visible."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.potential.ly",
+     "quote": "Deliver institution-wide engagement and awards programmes that recognise involvement, strengthen belonging, and track development from pre-arrival through graduation."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.potential.ly/case-studies",
+     "quote": "Out-of-the box integrations to connect to your other university systems (SSO, Canvas, Blackboard, Zoom, etc.)"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.potential.ly/case-studies",
+     "quote": "Growing employability engagement to over 90% of incoming Loughborough University students."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.potential.ly",
+     "quote": "Potential.ly also supports membership organisations, SMEs, and professional training providers seeking to deliver scalable learning, CPD, and skills recognition."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.potential.ly",
+     "quote": "A scalable platform for continuing professional development \u2014 supporting academic staff, membership organisations, and professional learners across education and enterprise."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.potential.ly",
+     "sha": "816c8df33aff4b45",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.potential.ly/education/solutions/learning-teaching",
+     "sha": "840bae4ea5066bc5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.potential.ly/about-us",
+     "sha": "7a32f144f3e5ca03",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.potential.ly/case-studies",
+     "sha": "579d18ed6107695d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "seats-one",
@@ -131328,7 +134006,96 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: Animal Care Expo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pawlytics sells animal rescue software for foster based animal rescues and animal shelters. The product centralizes a group's pet and people records in one database. Custom forms and applications can be embedded into an organization's website, and completed applications arrive in the same database. Adoptable pet listings can be exported automatically to third party websites such as Petfinder, Adopt-A-Pet and Shelter Animals Count.",
+    "Adoptions can be processed electronically, and completed contracts are stored with the pet record. A matching feature named FosterFix is described as identifying available foster homes in a rescue or region and pairing them with pets. The software is sold in modules so that a non-profit pays only for what it needs. New users can start with a 14 day free trial.",
+    "The about page credits Lizz Whitacre, who ran her own rescue and found the record keeping and paperwork overwhelming. Pawlytics is a registered Public Benefit Corporation."
+   ],
+   "quote": {
+    "text": "Designed to suit the needs of animal rescue organizations of all sizes and forms through affordable pricing and features built to grow with your needs.",
+    "url": "https://pawlytics.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://pawlytics.com",
+     "quote": "modern software designed to reduce busy work for foster based animal rescues and animal shelters."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pawlytics.com",
+     "quote": "Centralize your organization\u2019s pet and people records."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://pawlytics.com",
+     "quote": "Create custom forms and applications that can be embedded into your website."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://pawlytics.com",
+     "quote": "automatic exports to third party websites such as Petfinder , Adopt-A-Pet , Shelter Animals Count , and more!"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pawlytics.com",
+     "quote": "Simply process the adoption electronically with our E-Contracts."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pawlytics.com",
+     "quote": "Our FosterFix algorithm\u00a0can identify available foster homes in your rescue or region and match them with the appropriate pets."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://pawlytics.com",
+     "quote": "This means building our software in modules to ensure your non-profit only pays for what you need"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://pawlytics.com",
+     "quote": "Sign Up For A 14 Day Free Trial"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pawlytics.com/about-us/",
+     "quote": "In running her own rescue, she realized how incredibly hard it was to manage the day-to-day operations that made the rescue tick."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pawlytics.com/about-us/",
+     "quote": "As a registered Public Benefit Corporation, this mission will ALWAYS be at the heart of Pawlytics."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://pawlytics.com",
+     "sha": "b6ca74c49ccaef69",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pawlytics.com/about-us/",
+     "sha": "e6ef6f82c496c68e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "azavar",
@@ -136869,7 +139636,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pathify sells a Campus Experience Platform, or CXP, to higher education institutions. The platform is described on the homepage as a centralized digital hub that acts as a front end for source systems such as SISs and CRMs. The same page says the CXP replaces fragmented portals, chatbots, intranets, and mobile apps with one integrated platform.",
+    "The audiences named for the hub are prospects, students, staff and faculty, alumni, and parents. The homepage puts the customer count at 200+ colleges and universities, and labels that figure Higher Ed Customers. The page attributes its budget and technology sprawl figures to a University of the Pacific case study, and two engagement figures to a student survey.",
+    "The about page describes the product as a unified, system-agnostic hub replacing individual, fragmented systems and link farms. That page gives the mission as technology that should empower rather than overwhelm."
+   ],
+   "quote": {
+    "text": "Connect every system, resource and person into a streamlined digital experience to future-proof your institution.",
+    "url": "https://pathify.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://pathify.com",
+     "quote": "Learn how the Campus Experience Platform transforms higher ed."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://pathify.com",
+     "quote": "Acting as a unified front end for SISs, CRMs, and other key source systems"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://pathify.com",
+     "quote": "The Campus Experience Platform (CXP) replaces fragmented portals, chatbots, intranets, and mobile apps with a single integrated platform"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://pathify.com",
+     "quote": "Elevate every journey, from prospects to alumni."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://pathify.com",
+     "quote": "Trusted by 200+ leading colleges and universities"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://pathify.com",
+     "quote": "verified institutional metrics from the University of the Pacific Case Study"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pathify.com/about/",
+     "quote": "Instead of managing individual, fragmented systems and link farms, our Campus Experience Platform (CXP) provides a unified, system-agnostic hub."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pathify.com/about/",
+     "quote": "Our mission is simple: Technology should empower, not overwhelm."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://pathify.com",
+     "sha": "82cfb88fe5e282c0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pathify.com/about/",
+     "sha": "36e70f4b08b1ab96",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pathify.com/about/leadership/",
+     "sha": "2994af6c52faaadb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pathify.com/about/media-coverage/",
+     "sha": "f03c4e3c3da78836",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sharestream",
@@ -137059,7 +139913,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: Animal Care Expo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Petstablished sells shelter software that keeps pet data, medical records, tasks, contacts, documents, applications, fosters and adopters in one system. The buyers named on the homepage are animal welfare organizations of all sizes, described as shelters and rescues. Listed features cover medical record storage, medical reminders, adoption and foster contracts signed online, permissions groups, activity logs, reports and cage cards.",
+    "Available pets can be exported automatically to Petfinder and Adopt-a-Pet, and to over 200 pet adoption sites nationwide. Organizations can process adoptions and payments in the system, with an adopter donation button offered at the point of payment. Donation management can store donations as currency or items and sync a bank account so users donate online.",
+    "A microchip program gives organizations free access to software, free chips, and more for each adoption processed through the payment system. The microchip registry is integrated with the system, and a lost and found line is described as staffed at all hours of every day. Data can be imported from AdoptAPet, Petfinder, Rescue Groups, spreadsheets or another software vendor."
+   ],
+   "quote": {
+    "text": "Embed a pet adoption widget on your website or design your own with our customizable API.",
+    "url": "https://www.petstablished.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.petstablished.com",
+     "quote": "Petstablished lets you manage, your pet data, medical records, tasks, contacts, documents, applications, fosters, adopters, and more, ALL IN ONE PLACE!"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.petstablished.com",
+     "quote": "Petstablished is a one stop solution for shelters and rescues"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.petstablished.com",
+     "quote": "Medical Records management. Store medical records and download full medical history for all pets."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.petstablished.com",
+     "quote": "Maximize the online exposure for your available pets! Petstablished can automatically export your available pets to Petfinder, Adopt-a-Pet, and through RescueGroups.org's Pet Adoption Portal, which will export to over 200 pet adoption sites nationwide!"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.petstablished.com",
+     "quote": "Process adoptions and payments in under 5 minutes"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.petstablished.com",
+     "quote": "Donation Management allows you to store donations as currency or items. You can also sync your bank account to allow users to donate directly online."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.petstablished.com",
+     "quote": "organizations get free access to software, earn free chips, and earn more for each adoption when processing adoption payments through our system"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.petstablished.com",
+     "quote": "Microchip Registry simplified to just 2 clicks. Completely integrated with the system."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.petstablished.com",
+     "quote": "Import current adoptable pets from AdoptAPet, Petfinder, Rescue Groups and your data from spreadsheets or your software vendor."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.petstablished.com",
+     "sha": "67373684ee4111be",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "can-am-technologies",
