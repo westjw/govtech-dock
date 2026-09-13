@@ -5468,7 +5468,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Sensoneo sells end-to-end solutions for data-driven waste management and a digitalised circular economy. Its ultrasonic bin sensor product line is offered to get control of waste fill-levels in bins, dumpsters and containers. The listed ultrasonic types are Single Sensor 5.0, Single Sensor 3.0 and Quatro Sensor, with connectivity over LoRaWAN, Sigfox, NB-IoT and CAT-M1.",
+    "A radar sensor covers liquid waste fill-level monitoring in fluid tanks. The Route Planning solution automates and optimizes the management of waste collection routes. The homepage attributes optimized collection frequency to an installation of sensors in the City of Prague.",
+    "A separate product is the DRS IT System, built for Deposit Return Schemes that the pages say are usually operated by governments. Its modules are described around producers, importers, retailers and logistics providers."
+   ],
+   "quote": {
+    "text": "Monitoring any type of waste in any type of bins",
+    "url": "https://www.sensoneo.com/products/ultrasonic-bin-sensor/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sensoneo.com",
+     "quote": "end-to-end solutions for data-driven waste management and a digitalised circular economy"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sensoneo.com/products/ultrasonic-bin-sensor/",
+     "quote": "Get control of waste fill-levels in your bins, dumpsters and containers"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sensoneo.com/products/ultrasonic-bin-sensor/",
+     "quote": "Connectivity LoRaWAN / Sigfox / NB-IoT / CAT-M1"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sensoneo.com/products/radar-sensor/",
+     "quote": "Liquid Waste Fill-Level Monitoring in Fluid Tanks"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sensoneo.com/products/radar-sensor/",
+     "quote": "Route Planning solution automates and optimizes the management of waste collection routes"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sensoneo.com",
+     "quote": "sensors in the City of Prague led to optimized collection frequency"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sensoneo.com/products/drs-it-system/",
+     "quote": "DRS schemes are usually operated by governments"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sensoneo.com/products/drs-it-system/",
+     "quote": "Producers, importers, retailers, and logistics providers face disconnected workflows"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sensoneo.com",
+     "sha": "5c106f24ec9973ce",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sensoneo.com/products/ultrasonic-bin-sensor/",
+     "sha": "0e78f9d3e454e4d5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sensoneo.com/products/radar-sensor/",
+     "sha": "943f5957258411bf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sensoneo.com/products/drs-it-system/",
+     "sha": "9859bbf48b55abaa",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ecube-labs",
@@ -18360,7 +18447,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; Iowa State Association of Counties 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Schneider Geospatial sells location-based software to local governments. The platform page groups the offering into parcel management, permitting and licensing, and asset management. Home page copy describes centralizing data from various systems and departments into one view, with integration to GIS.",
+    "Parcel management is presented as a centralized digital solution for appraisals, appeals, sales searches, and forms. Permitting and licensing covers managing and enforcing permits and registrations as a workflow. Asset management tools address mapping, inspection, maintenance, and management of water systems. Street and sewer systems and stormwater field operations are listed under the same asset management heading.",
+    "The parcel page names county and city governments as the audience for those tools. The permitting page uses the same wording for permitting and licensing tools. The platform page also describes citizen access to parcel data and submission of appeals and forms."
+   ],
+   "quote": {
+    "text": "Location-based solutions for local governments",
+    "url": "https://www.schneidergis.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.schneidergis.com",
+     "quote": "Location-based solutions for local governments"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.schneidergis.com/platform",
+     "quote": "Overview Parcel Management Permitting & Licensing Asset Management"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.schneidergis.com",
+     "quote": "data from various systems and departments into one user-friendly view, and integrates with GIS, to deliver accurate information, 24/7."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.schneidergis.com/solutions/parcel",
+     "quote": "Upgrade your workflows with a centralized, digital solution for appraisals, appeals, sales searches, forms, and much more."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.schneidergis.com/solutions/permitting-licensing",
+     "quote": "Transform your process for managing and enforcing permits and registrations into a fast, efficient workflow."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.schneidergis.com/platform",
+     "quote": "Streamline mapping, inspection, maintenance, and management of water systems."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.schneidergis.com/platform",
+     "quote": "Simplify compliance and field operations for stormwater systems."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.schneidergis.com/solutions/parcel",
+     "quote": "Indispensable parcel management tools for county and city governments"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.schneidergis.com/solutions/permitting-licensing",
+     "quote": "Highly efficient permitting and licensing tools for county and city governments"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.schneidergis.com/platform",
+     "quote": "Empower citizens with easy access to parcel data and tools for submitting appeals, forms, and more."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.schneidergis.com",
+     "sha": "8d83b62618095f8f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schneidergis.com/platform",
+     "sha": "493390970e60462e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schneidergis.com/solutions/parcel",
+     "sha": "48f065dc55e424c9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schneidergis.com/solutions/permitting-licensing",
+     "sha": "6d5ee162411dd729",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "aclarian",
@@ -23746,7 +23932,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Savi sells student loan and education benefits that employers and other partner organizations offer to their employees and members. The platform is described as AI-driven, paired with 1:1 expert support for navigating student loan repayment and forgiveness programs. The guidance product scans 150+ forgiveness and repayment plans, estimates savings, automates enrollment, and tracks ongoing updates.",
+    "A contribution program reduces employee loan debt, with paperwork handled and direct payments made to loan servicers. Retirement matching lets employers direct matches into employee retirement accounts based on student loan payments. A tuition reimbursement offering covers program management, tax compliance, and employee support for employees in college or job-related courses.",
+    "Savi states that it works with more than 10,000 partners, ranging from Fortune 500 companies and startups to associations, financial institutions, hospitals, local governments, membership groups, non-profit organizations, and universities. Savi describes itself as a public benefit company headquartered in D.C. Aaron Smith and Tobin Van Ostern launched Savi in 2017 as a Public Benefit Corporation."
+   ],
+   "quote": {
+    "text": "Savi is on a mission to help the middle class prosper by tackling the $1.8 trillion in student debt affecting more than 45 million borrowers.",
+    "url": "https://www.bysavi.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.bysavi.com",
+     "quote": "Whether your employees or members are still attending school or have graduated, we offer a suite of student loan and education benefits."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.bysavi.com",
+     "quote": "Our AI-driven benefits platform and 1:1 expert support help our users navigate student loan repayment and forgiveness programs, save for retirement, and discover new education options."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.bysavi.com",
+     "quote": "Savi's AI-driven platform helps employees manage student debt by scanning 150+ forgiveness and repayment plans, estimating savings, automating enrollment, and tracking ongoing updates."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.bysavi.com",
+     "quote": "Reduce employee loan debt with Savi's contribution program. We handle all paperwork and facilitate secure direct payments to loan servicers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.bysavi.com",
+     "quote": "Support retirement savings by matching student loan payments. Savi manages the administration so employers can easily direct matches into employee retirement accounts."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.bysavi.com",
+     "quote": "Simplify tuition reimbursement for employees in college or job-related courses. Savi streamlines program management, tax compliance, and employee support."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.bysavi.com/about",
+     "quote": "Today, Savi works with more than 10,000 partners, ranging from Fortune 500 companies and startups to associations, financial institutions, hospitals, local governments, membership groups, non-profit organizations, and universities."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.bysavi.com",
+     "quote": "As a public benefit company headquartered in D.C.,"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.bysavi.com/about",
+     "quote": "In 2017, Aaron and Tobin launched Savi as a Public Benefit Corporation."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.bysavi.com",
+     "sha": "6926aaa8a32c545b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.bysavi.com/about",
+     "sha": "d8267d5362842e2a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "govskills",
@@ -35955,7 +36224,71 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Shark Robotics designs and manufactures firefighting, security, demining and defense robots, and has done so from La Rochelle, France since 2016. The company states that it engineers, assembles and tests all its systems in-house, from robotics and AI software to battery technology. Assembly takes place in a workshop in La Rochelle, France, covering the entire production chain.",
+    "The stated purpose of the robots is to support first responders, defense and security forces in critical operations. The homepage lists a heavy firefighting robot, a medium firefighting robot, a mule robot, an advanced spike strip and a demining robot. A Singapore office has operated since 2019, and the La Rochelle site is described as the R&D hub."
+   ],
+   "quote": {
+    "text": "Our mission is clear: saving lives through technology by providing reliable robots for the world\u2019s most critical missions.",
+    "url": "https://www.shark-robotics.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.shark-robotics.com/about-us/",
+     "quote": "Since 2016 , Shark Robotics has been designing and manufacturing firefighting, security, demining and defense robots in La Rochelle, France."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.shark-robotics.com/about-us/",
+     "quote": "Since 2016, we engineer, assemble, and test all our systems entirely in-house. From robotics and AI software to battery technology."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.shark-robotics.com/about-us/",
+     "quote": "Manufactured in our workshop in La Rochelle, France to guarantee quality throughout the entire production chain."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.shark-robotics.com/about-us/",
+     "quote": "Our mission is to build adaptable and mission-ready robots that support first responders, defense and security forces in critical operations."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.shark-robotics.com",
+     "quote": "Heavy Firefighting Robot"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.shark-robotics.com/about-us/",
+     "quote": "Since 2019, our Singapore office powers faster support and closer ties with partners and clients across Asia."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.shark-robotics.com",
+     "sha": "f373e329eb0bcaf6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.shark-robotics.com/about-us/",
+     "sha": "fc7dfd6698b6229d",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "fotokite",
@@ -39753,7 +40086,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NSA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SCRAM Systems sells monitoring technology, drug testing, software, and services for supervision programs. The electronic monitoring side covers GPS, alcohol, and remote breath tools for programs that need added visibility or testing. The software side covers dashboards, alerts, reports, and workflows for managing caseload activity.",
+    "The solutions page groups the offerings by program, with monitoring offered to courts that manage pretrial risk and enforce supervision conditions. Probation and parole agencies are offered monitoring technology and automated reporting for caseload management and compliance. State and county DUI/DWI programs are another named audience for the alcohol monitoring.",
+    "The case studies page presents results from agencies using the technology in their supervision programs. Sheriffs, pretrial directors, and probation leaders are the roles that page says the company equips."
+   ],
+   "quote": {
+    "text": "SCRAM brings together monitoring technology, drug testing, software, services, and support so teams can manage compliance with more clarity.",
+    "url": "https://www.scramsystems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.scramsystems.com",
+     "quote": "SCRAM Systems helps supervision programs close gaps with connected monitoring, drug testing, and services that turn accountability into positive change."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.scramsystems.com",
+     "quote": "GPS, alcohol, and remote breath tools for programs that need added visibility, testing, or accountability."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.scramsystems.com",
+     "quote": "Dashboards, alerts, reports, and workflows that help teams manage activity across their caseload."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.scramsystems.com/solutions",
+     "quote": "Flexible monitoring solutions that help courts manage pretrial risk, enforce supervision conditions, and support public safety."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.scramsystems.com/solutions",
+     "quote": "Proven monitoring technology and automated reporting that help probation and parole agencies manage caseloads and strengthen compliance."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.scramsystems.com/solutions",
+     "quote": "Alcohol monitoring solutions to help state and county DUI/DWI programs enforce accountability and compliance."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.scramsystems.com/case-studies",
+     "quote": "Real-world results from agencies using SCRAM Systems technology to transform their supervision programs."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.scramsystems.com/case-studies",
+     "quote": "SCRAM Systems equips sheriffs, pretrial directors, and probation leaders with the framework to confidently divert low-risk populations, maintain absolute accountability, and protect county budgets."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.scramsystems.com",
+     "sha": "741410aaaaff2166",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.scramsystems.com/company/testimonials",
+     "sha": "04e0a1560b284f3d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.scramsystems.com/solutions",
+     "sha": "3bd7feeb43ced185",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.scramsystems.com/case-studies",
+     "sha": "7326ca8a0eb05069",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "orijin",
@@ -48298,7 +48718,94 @@
   "buyer": "Pursuing contracts with both public transit agencies and private freight railroads, per a Penn Center for Innovation writeup; no confirmed live customers named on their own site",
   "sells_to_gov": "unclear",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Sahay is an AI sales platform that captures enquiries arriving on WhatsApp, on phone calls and from website visitors. The home page lists six inbound channels feeding one system, among them WhatsApp messages, sales calls, IndiaMART leads and missed calls. Five jobs are described as run end to end by the AI, with a sixth covering call analytics for the human sales team.",
+    "The calling agent rings new leads back, asks qualifying questions and shares quotes on WhatsApp, speaking Hindi, English and natural Hinglish. Sales calls are recorded from the team's own SIMs, then transcribed, summarised and logged.",
+    "Case studies cover Heels on Wheels Originals, which runs motorcycle training for women across 12 Indian cities and captured 1,581 enquiries in 2 months. MSF, a non-profit running community services with a four-person team, reports roughly 70% less administrative work. JoyzAI, an outbound telecalling team with 11 reps, is listed with 97% of answered calls captured across 6,542 dials."
+   ],
+   "quote": {
+    "text": "Six channels, one brain. Nothing slips.",
+    "url": "https://www.sahay.io/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sahay.io/",
+     "quote": "Sahay captures every WhatsApp message, call and website visitor."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sahay.io/",
+     "quote": "WhatsApp messages, sales calls, IndiaMART leads, missed calls, whatever the channel, Sahay captures it, understands it, and acts."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sahay.io/",
+     "quote": "Five jobs Sahay's AI does end to end, and one that covers your human team."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sahay.io/",
+     "quote": "First questions asked, quote shared on WhatsApp, hot leads passed to your team with full context"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sahay.io/",
+     "quote": "Every sales call recorded from your reps' own SIMs"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sahay.io/case-studies/heels-on-wheels",
+     "quote": "Heels on Wheels Originals runs motorcycle training for women across 12 Indian cities."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sahay.io/case-studies/msf",
+     "quote": "MSF report roughly 70% less administrative work as a result."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sahay.io/case-studies",
+     "quote": "97% of answered calls captured across 6,542 dials"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sahay.io/",
+     "sha": "9f9b4a84e4512847",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sahay.io/case-studies",
+     "sha": "5aa2b8b1fcb83d43",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sahay.io/case-studies/heels-on-wheels",
+     "sha": "157cfb1ece943294",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sahay.io/case-studies/msf",
+     "sha": "814128c5e9146bfe",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "transify",
@@ -48504,7 +49011,100 @@
   "buyer": "School districts are the largest named segment (700+ districts, 30M+ bus route miles); also mass transit agencies (25M+ commuters), EMS/emergency services, and commercial trucking",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Safety Vision designs and delivers mobile video surveillance and fleet safety systems for organizations that run vehicles. The company says it designs, builds, installs and maintains solutions for virtually any mobile video surveillance application. Hardware spans recorders, interior and exterior cameras, monitors, sensors, battery backups and portable camera kits, alongside software for managing and viewing video.",
+    "The site groups the work by industry, listing student transportation, mass transit, public safety and commercial trucking. School districts get a platform meant to increase student safety both on and off the bus, and transit fleets get equipment protecting drivers, passengers and assets. For public safety, the pages say fire, EMS and law enforcement fleets use the mobile surveillance products, and commercial vehicle customers use them to protect trucks, drivers and assets.",
+    "Software includes SafetyNET 5, a video management system the company developed, and SafeDrive AI 2, a windshield camera and recorder combining driver assistance with driver behavior monitoring. A plugin for Milestone XProtect lets on-prem and mobile video surveillance be monitored in one place. The homepage states adherence to National Defense Authorization Act requirements in procurement and membership in the AWS Partner Network."
+   ],
+   "quote": {
+    "text": "SMARTER SOLUTIONS SUPPORT BETTER DECISIONS.",
+    "url": "https://www.safetyvision.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.safetyvision.com",
+     "quote": "Safety Vision designs and delivers AI-powered mobile video surveillance and fleet safety solutions that help fleet managers operate safely and efficiently."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.safetyvision.com/products",
+     "quote": "We design, build, install and maintain solutions for virtually any mobile video surveillance application."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.safetyvision.com/products",
+     "quote": "State-of-the-art sensors. Reliable battery backups. Safety Vision has everything you need to outfit your fleet."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.safetyvision.com",
+     "quote": "Safety Vision has wide-ranging expertise in every application using mobile video surveillance solutions, from public sector to private business and beyond."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.safetyvision.com",
+     "quote": "Our intelligent, expandable solutions allow for a single, integrated platform to increase student safety both on and off the bus."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.safetyvision.com",
+     "quote": "Whether fire, EMS or law enforcement, first responders rely on our mobile surveillance solutions to help perform their duties safely."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.safetyvision.com/solutions",
+     "quote": "SafeDrive AI 2 is an intelligent windshield Camera/ DVR that integrates the functions of an advanced driver assistance system (ADAS) and driver behavior monitoring into a single powerful solution."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.safetyvision.com/solutions",
+     "quote": "With Safety Vision\u2019s Milestone XProtect Plugin, you can monitor your on-prem and mobile video surveillance all in one place."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.safetyvision.com",
+     "quote": "We fully adhere to the National Defense Authorization Act (NDAA) requirements in our procurement processes, providing our customers with reliable, compliant, and trusted mobile video surveillance solutions."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.safetyvision.com",
+     "sha": "acf32b86ec055efa",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.safetyvision.com/solutions",
+     "sha": "596dfc44db4d5815",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.safetyvision.com/products",
+     "sha": "e1f200616a97a39a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.safetyvision.com/about-us",
+     "sha": "c46079187439d182",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "r2p",
@@ -49703,7 +50303,90 @@
   "buyer": "mixed \u2014 transit systems (Metra, Translink), airports, and municipal road signage on one side; private hospitals, universities, and commercial real estate on the other; no single primary evident from the site",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "SignAgent sells software for managing signs across built environments, described on its site as a single source of truth for every sign an operator owns. Through its three distinct interfaces, the platform covers design and planning, fabrication and installation, and ongoing management of signage and wayfinding. SignAgent Design is aimed at sign programming, with the stated aim of removing repetitive tasks, reducing costly errors, and speeding project delivery.",
+    "SignAgent Build and SignAgent Mobile cover order fulfillment, progress tracking, and completing installations. SignAgent Manage covers asset tracking, information updates, and cost management against sign standards over the long term. A phone and tablet app is listed for field work such as sign surveys, punch lists, and sign installation.",
+    "The spaces listed on the home page include Airports, Hospitals, Transit Systems, Higher Education, and Parks & Municipalities. Case studies name Metra Rail, Denver International Airport, and University of Chicago Medicine among clients. Alongside those operators, the site markets a vendor program to signage and wayfinding firms and to fabricators."
+   ],
+   "quote": {
+    "text": "Signs are everywhere. And every sign carries a vital message to keep people safe, share important information, or show them where to go.",
+    "url": "https://signagent.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://signagent.com",
+     "quote": "SignAgent gives operators of built environments ( and their vendors ) a live, single source of truth for every sign they own, ending spreadsheet chaos, design drift, and compliance worries."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://signagent.com",
+     "quote": "Through its three distinct interfaces, SignAgent covers every stage of the signage and wayfinding lifecycle, from design and planning, through fabrication and installation, to ongoing management and maintenance."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://signagent.com",
+     "quote": "With SignAgent Design, you can eliminate repetitive tasks, minimize costly errors, and accelerate project delivery"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://signagent.com",
+     "quote": "With SignAgent Build and SignAgent Mobile, you can fulfill orders, track progress, reduce waste, and complete installations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://signagent.com",
+     "quote": "With SignAgent Manage, you gain complete oversight of your entire sign program. Track assets, update information, manage costs, and ensure every sign meets exacting sign standards over the long term."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://signagent.com",
+     "quote": "Our smart phone/tablet app assists with faster completion of field work like sign surveys, punch lists, and sign installation."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://signagent.com",
+     "quote": "SignAgent is an excellent application for any built environment with a high number of informational, regulatory, and wayfinding signs."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://signagent.com/case-studies",
+     "quote": "Case Study How Metra Rail took control of sign assets across 243 Stations with SignAgent THE CLIENT Metra Rail"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://signagent.com",
+     "quote": "Grow your wayfinding or signage business with SignAgent - the platform trusted by the world's top design firms and fabricators."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://signagent.com",
+     "sha": "4fbad21aa2fbb234",
+     "fetched_on": null
+    },
+    {
+     "url": "https://signagent.com/case-studies",
+     "sha": "c82ededf861f8af6",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "basemap",
@@ -50887,7 +51570,78 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as primarily private/individual riders and healthcare (PACE) programs, with paratransit partnerships (e.g. King County Metro, SamTrans) as a secondary public-sector channel",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "SilverRide runs an assisted transportation platform for older adults and people with disabilities, licensed as a Transportation Network Company in 18 states. The driver network is made up of credentialed independent contractors using their own vehicles across 35+ major metro areas.",
+    "The company works three ways: paratransit partnerships with transit agencies, contract services for PACE and healthcare organizations, and direct booking for riders and their families. For transit agencies the service is ADA-compliant paratransit at scale, including complementary service, overflow capacity, premium tiers, and same-day trips. For PACE programs and healthcare organizations the service is door-through-door, with the driver escorting riders from inside the pickup location into the destination.",
+    "SilverRide was founded in 2006 by Jeff Maltz and Susan Steiner Saal. The company reports more than one million rides every year with 95% on-time performance."
+   ],
+   "quote": {
+    "text": "One platform. Three types of partnerships. The same standard of care on every ride.",
+    "url": "https://silverride.com/company"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://silverride.com/company",
+     "quote": "SilverRide is a licensed Transportation Network Company (TNC) in 18 states, operating a credentialed independent contractor driver network across 35+ major metro areas."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://silverride.com/company",
+     "quote": "Every SilverRide driver is an independent contractor who has chosen this work because it matters."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://silverride.com",
+     "quote": "We work three ways: paratransit partnerships with transit agencies, contract services for PACE and healthcare organizations, and direct booking for riders and their families."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://silverride.com/company",
+     "quote": "With transit agencies, we provide ADA-compliant paratransit at scale: complementary service, overflow capacity, premium tiers, and same-day trips."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://silverride.com",
+     "quote": "your driver escorts riders from inside the pickup location, through the door, into the vehicle, and all the way into the destination"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://silverride.com/company",
+     "quote": "SilverRide was founded in 2006 by Jeff Maltz and Susan Steiner Saal, who saw an opportunity to address the transportation challenges facing older adults."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://silverride.com/company",
+     "quote": "We deliver more than one million rides every year, with 95% on-time performance"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://silverride.com",
+     "sha": "9d5d2d582ca7af2d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://silverride.com/company",
+     "sha": "9fe5d0617fba2bde",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ontra-mobility",
@@ -62465,7 +63219,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Saltus Technologies sells digiTICKET, an eCitation solution designed for state and local government. digiTICKET replaces paper ticket books and transfers ticket data to Court and Records Management Systems. The software also provides photo capture, GPS mapping and enhanced reporting.",
+    "Agencies with only a few officers per shift use digiTICKET, as do departments such as the Kansas Highway Patrol and the New Orleans Police Department. Ticket formats include municipal ordinances, state statutes, traffic tickets, parking tickets and code enforcement violations. digiTICKET runs on devices using Windows, Android, and iOS operating systems, including ruggedized tablets and mobile phones.",
+    "The ticketing system can be interfaced with over 75 different CAD/RMS, State, and Court applications. It is configured to an agency's specific requirements and supported by a team of US based engineers. Saltus states that digiTICKET can be procured with zero up-front costs."
+   ],
+   "quote": {
+    "text": "digiTICKET is an eCitation solution designed for State and Local Government.",
+    "url": "https://saltustechnologies.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://saltustechnologies.com",
+     "quote": "An eCitation solution designed for state and local government."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://saltustechnologies.com",
+     "quote": "digiTICKET replaces paper ticket books while eliminating illegible handwriting and error-prone data entry - easily transferring ticket data to Court and Records Management Systems."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://saltustechnologies.com",
+     "quote": "police electronic ticketing software that also provides other functions such as photo capture, GPS mapping and enhanced reporting."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://saltustechnologies.com/products/",
+     "quote": "digiTICKET is used by agencies with only a few officers per shift, as well as major departments like the Kansas Highway Patrol and the New Orleans Police Department."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://saltustechnologies.com/products/",
+     "quote": "including municipal ordinances, state statutes, traffic tickets, parking tickets and code enforcement violations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://saltustechnologies.com",
+     "quote": "These eCitation solutions can be deployed on devices running Windows, Android, and iOS operating systems, including ruggedized tablets, existing laptops/MDCs, and mobile phones."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://saltustechnologies.com",
+     "quote": "can be interfaced with over 75 different CAD/RMS, State, and Court applications."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://saltustechnologies.com",
+     "quote": "digiTICKET can be configured to an agency\u2019s specific requirements and it is supported 24/7 by a team of US based engineers."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://saltustechnologies.com",
+     "quote": "digiTICKET can be procured with zero up-front costs!"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://saltustechnologies.com",
+     "sha": "15187eae066cff51",
+     "fetched_on": null
+    },
+    {
+     "url": "https://saltustechnologies.com/products/",
+     "sha": "a07be9209efa5360",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "schedule-express-by-safecities",
@@ -62494,7 +63331,89 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"\u00a9 Copyright 2026 SafeCities\u2122 | Schedule Express\" Fetched https://schedule-express.com. Title: \"Public Safety Scheduling Software | Schedule Express\"; headline \"Public Safety Scheduling Software Built for Real Operations\"; body copy \"Manage staffing, overtime, absences, trades, and workforce visibility\" for law enforcement, fire, EMS, 911 dispatch and jail operations. This is the product's OWN dedicated domain, not the parent SafeCities corporate site, so rule 3 is satisfied \u2014 SafeCities appears only as the copyright holder in the footer. Description match confirmed on both halves: public safety scheduling AND overtime."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Schedule Express sells public safety scheduling software that handles staffing, overtime, absences, trades, and workforce visibility in one platform. The pitch is against spreadsheets, disconnected tools, and constant follow-up, with a scheduling process meant to support both leadership and staff. Capabilities listed on the solutions page cover schedule management that enforces policies, CBAs, and MOUs, automated overtime intelligence, coverage plans, shift and vacation bidding, and payroll and time bank tracking.",
+    "The environments served are grouped as 911, Law, Jail, Fire, and EMS, alongside operations such as power, water, and transportation. For law enforcement the listed features include beat and sector assignments, fatigue management rules, and off-duty details. Customers named in testimonials include City of Houston, Texas, County of Santa Clara, California, and Montgomery County, Pennsylvania.",
+    "Buyers can purchase directly from the company, or through the Texas Department of Information Resources contract. A third route is the California Department of General Services Software Licensing Program."
+   ],
+   "quote": {
+    "text": "Built to meet the needs of 911, Schedule Express delivers.",
+    "url": "https://schedule-express.com/solutions/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://schedule-express.com",
+     "quote": "Manage staffing, overtime, absences, trades, and workforce visibility in one connected platform built for the daily demands of public safety."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://schedule-express.com",
+     "quote": "Instead of relying on spreadsheets, disconnected tools, and constant follow-up, teams get a more connected scheduling process"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://schedule-express.com/solutions/",
+     "quote": "Enforces your unique policies, CBAs, and MOUs with the depth and dimension needed for true scheduling automation."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://schedule-express.com",
+     "quote": "Schedule Express supports agencies with different staffing models, workflows, and operational demands."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://schedule-express.com/solutions/",
+     "quote": "Beat/Sector assignments built to align with your operations"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://schedule-express.com",
+     "quote": "Everything has gone great with Schedule Express here at Montgomery County."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://schedule-express.com/solutions/",
+     "quote": "Schedule Express can be purchased through the Texas Department of Information Resources (DIR) contract number DIR-CPO-5431."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://schedule-express.com/solutions/",
+     "quote": "Schedule Express can be purchased through the California Department of General Services Software Licensing Program."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://schedule-express.com",
+     "sha": "f3cb270ed85510f0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://schedule-express.com/solutions/",
+     "sha": "b6b66e59f5780954",
+     "fetched_on": null
+    },
+    {
+     "url": "https://schedule-express.com/about/",
+     "sha": "a6523bdf286e1e21",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sentinelone",
@@ -62518,7 +63437,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "SentinelOne sells cybersecurity software built around the Singularity Platform, which its own pages describe as one system for protection, security operations, and data. The platform covers endpoint, cloud, identity, and AI security through one agent and one console, and the pages list SaaS, on-premises, hybrid, and air-gapped deployment. A separate page describes extended detection and response that ingests and normalizes data across endpoint, identity, cloud, AI systems, and third-party tools into a single correlated view.",
+    "The industries page sorts buyers by sector, addressing patient records and clinical systems, trading floors and customer accounts, grid operations, campus networks, and classroom devices. One of those sections names FedRAMP High and federal mission assurance, and another describes protecting services, infrastructure, and citizens from disruption.",
+    "Customer quotes on the homepage come from staff at the Golden State Warriors, Norwegian Airlines, and Aston Martin Lagonda LTD. The page on extended detection and response carries a quote from a VP of IT at Sundt Construction. The homepage states that organizations from global enterprises to fast-moving teams rely on SentinelOne to reduce risk and simplify operations."
+   ],
+   "quote": {
+    "text": "One AI-native platform. Unified protection across endpoint, identity, AI, and cloud.",
+    "url": "https://www.sentinelone.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sentinelone.com/platform/",
+     "quote": "The Singularity Platform is SentinelOne's unified AI-driven security platform for protection, security operations, and data."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sentinelone.com",
+     "quote": "Deploy in SaaS, on-premises, hybrid, and air-gapped environments"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sentinelone.com/platform/singularity-xdr-protection/",
+     "quote": "Ingest and normalize data across endpoint, identity, cloud, AI systems, and third-party tools into a single correlated view."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sentinelone.com/solutions/industries/",
+     "quote": "Every industry faces distinct threats, compliance mandates, and operational constraints."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sentinelone.com/solutions/industries/",
+     "quote": "Meet FedRAMP High with autonomous endpoint and cloud protection built for secure enclaves and federal mission assurance."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sentinelone.com",
+     "quote": "Director of IT, Aston Martin Lagonda LTD"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sentinelone.com/platform/singularity-xdr-protection/",
+     "quote": "VP of IT at Sundt Construction"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sentinelone.com",
+     "quote": "From global enterprises to fast-moving teams, organizations rely on SentinelOne to reduce risk, simplify operations, and keep their security ahead of the threat."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sentinelone.com",
+     "sha": "309656359a6d9eb7",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sentinelone.com/platform/",
+     "sha": "06a1e943065f6848",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sentinelone.com/platform/singularity-xdr-protection/",
+     "sha": "ad6cf633c42d4b97",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sentinelone.com/solutions/industries/",
+     "sha": "f8c722b244efa362",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "simforge",
@@ -76527,7 +77533,82 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Schr\u00e9der sells outdoor lighting equipment, with a product menu listing luminaires, poles and brackets, control systems, smart poles, solar and retrofit solutions. The company also sells lighting control software, listing Schr\u00e9der EXEDRA Genius as a Smart Lighting Optimisation platform.",
+    "One solutions page describes smart lighting for cities and communities, covering urban and residential streets, squares and pedestrian areas, bike and pedestrian paths, and accent and architectural lighting. A second page covers sports lighting for local clubs through to large stadia, including football and rugby pitch lighting, multi-sports hall lighting, tennis and padel court lighting, and swimming pool lighting.",
+    "A third page covers transport hubs, naming railway stations and metros, ports and waterways, and airports as the applications for these lighting systems. On the sports page, the benefits described go to players, visitors and sports club managers."
+   ],
+   "quote": {
+    "text": "Light up your city, optimise your energy",
+    "url": "https://www.schreder.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.schreder.com",
+     "quote": "Durable poles and brackets tailored for safety and design harmony"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.schreder.com",
+     "quote": "Schr\u00e9der EXEDRA Genius launch, a Smart Lighting Optimisation platform"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.schreder.com/en/solutions/smart-lighting-solutions-cities-people-love-live",
+     "quote": "As more people choose to live, work and play in cities, communities need more from their public spaces."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.schreder.com/en/solutions/sports-lighting-comply-regulations-less-energy",
+     "quote": "sports lighting solutions for local clubs through to large stadia."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.schreder.com/en/solutions/lighting-solutions-railways-ports-airports",
+     "quote": "From bustling train stations and busy ports to international airports, our smart lighting solutions are designed to do more than just illuminate"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.schreder.com/en/solutions/sports-lighting-comply-regulations-less-energy",
+     "quote": "They deliver engaging experiences for players and visitors and operational benefits for sports club managers."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.schreder.com",
+     "sha": "3600581f7325bfdb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schreder.com/en/solutions/smart-lighting-solutions-cities-people-love-live",
+     "sha": "07d389e7acf9ac66",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schreder.com/en/solutions/sports-lighting-comply-regulations-less-energy",
+     "sha": "32c0901f82a2b7b3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schreder.com/en/solutions/lighting-solutions-railways-ports-airports",
+     "sha": "c62febd3bc2587e1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cimcon-lighting",
@@ -76933,7 +78014,101 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SEPCO, or Solar Electric Power Company, manufactures commercial solar LED lighting and off-grid solar power systems. The systems are made in the USA at a factory and headquarters in Stuart, FL. Manufacturing under the SEPCO name dates to 1994, and the company states over 31 years of experience with commercial solar LED lighting and off-grid power systems.",
+    "Systems are engineered for a specific location and application rather than sold as mass-produced all-in-one lighting. An in-house engineering and lighting specialist team provides lighting layouts, system sizing, and photometric studies. Applications named include streets, parking lots, pathways, signage, and transit shelters. Solar sizing uses local solar insolation reports for a worst-case scenario, with a minimum of five nights of backup and more in northern areas.",
+    "Poles are built to meet local AASHTO wind loads, including hurricane-prone areas. SEPCO lists municipalities, commercial sites, and remote areas among the settings where its systems have produced results. As of 2022, the company describes itself as a woman-owned and operated business."
+   ],
+   "quote": {
+    "text": "SEPCO has been providing Security, Savings, and Sustainability with Commercially Designed Off-Grid Solar Lighting and Power Systems - manufactured right here in Stuart, FL, USA",
+    "url": "https://www.sepco-solarlighting.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sepco-solarlighting.com/about-us",
+     "quote": "exclusively manufacturing commercial solar lighting and off-grid solar power systems under the SEPCO name since 1994"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "SEPCO solar LED lighting and off-grid power systems are made in the USA at our Stuart, FL factory/headquarters"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "SEPCO has over 31 years of experience manufacturing commercial solar LED lighting and off-grid power systems."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "SEPCO designs customized, performance-driven solar lighting systems built for your specific location, application, and lighting needs."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "Our in-house engineering and lighting specialists team provides complete lighting layouts, system sizing, and photometric studies"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "Whether you're lighting streets, parking lots, pathways, signage, or transit shelters, SEPCO has a solution"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sepco-solarlighting.com/products",
+     "quote": "The solar is sized accordingly with a minimum of five nights backup, more in northern areas."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sepco-solarlighting.com/products",
+     "quote": "with poles rated to meet local AASHTO wind loads, including hurricane-prone areas."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sepco-solarlighting.com",
+     "quote": "Proven results in municipalities, commercial sites, and remote areas"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sepco-solarlighting.com/about-us",
+     "quote": "As of 2022, SEPCO has now become a woman-owned and operated business."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sepco-solarlighting.com",
+     "sha": "d4cfe94299ec05f4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sepco-solarlighting.com/products",
+     "sha": "ae01f928780ebb1c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sepco-solarlighting.com/about-us",
+     "sha": "cadbc8dfbe743afe",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "greenshine-new-energy",
@@ -78725,7 +79900,101 @@
     "sector": "Health & Human Services",
     "category": "Workforce & Labor"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Sagitec describes itself as a global software provider focused on solving complex, business-rule-driven problems with proven technology. Its pension administration software, Neospin, is a browser-based system for administering pension benefits, and has served public and private pension funds since 2004. Neosurance covers unemployment insurance, disability insurance, and paid family medical leave tax, benefits, and appeals administration.",
+    "WorkforceNXT connects agencies, employers, and job seekers, and supports job matching, case management, and training programs. Neotrient handles meal eligibility, claims processing, and compliance tracking for child nutrition programs. A separate eligibility and enrollment system for Medicaid runs on the Xelence platform. Services listed alongside the products include training and development, enterprise content management, and hosting on Microsoft Azure Government.",
+    "Buyers named on these pages include state agencies, state workforce agencies, school districts, and Managed Care Organizations. One government customer is named, the Maine Public Employees Retirement System, whose project the company says it has been awarded. The company states a core focus on the public sector."
+   ],
+   "quote": {
+    "text": "A global software provider focused on solving complex, business-rule-driven problems with proven technology.",
+    "url": "https://www.sagitec.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sagitec.com/about",
+     "quote": "A global software provider focused on solving complex, business-rule-driven problems with proven technology."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sagitec.com/about",
+     "quote": "pension administration software is a fully integrated, browser-based software system with comprehensive functionality for administering pension benefits"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sagitec.com/about",
+     "quote": "providing comprehensive functionality for unemployment insurance (UI), disability insurance (DI), and paid family medical leave (PFML) tax, benefits, and appeals administration"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sagitec.com/about",
+     "quote": "WorkforceNXT enables state workforce agencies to streamline job matching, case management, and training programs"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sagitec.com/about",
+     "quote": "With comprehensive functionality for meal eligibility, claims processing, and compliance tracking, Neotrient helps state agencies and school districts improve efficiency"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sagitec.com",
+     "quote": "Sagitec's eligibility and enrollment system, powered by Xelence, solves these challenges."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sagitec.com/about",
+     "quote": "Our Microsoft Azure Government platform enables us to deliver software expeditiously, securely, flexibly and reliably."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sagitec.com",
+     "quote": "Empowering state agencies to simplify and modernize their Medicaid eligibility and enrollment systems."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sagitec.com",
+     "quote": "Sagitec has been awarded the Maine Public Employees Retirement System (MainePERS) project."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sagitec.com/about",
+     "quote": "with a core focus on the public sector"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sagitec.com",
+     "sha": "d05f13246f8d5968",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sagitec.com/about",
+     "sha": "2066d0e8ece0c181",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sagitec.com/about?hsLang=en-us",
+     "sha": "2066d0e8ece0c181",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "missionsquare-retirement",
@@ -86361,7 +87630,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SchoolStatus sells software that connects educators and families around attendance, reading progress and graduation rates. The homepage describes districts holding student data they cannot readily put to work, and offers products that turn that data into messages sent to families. Product lines named on the site include SchoolStatus Connect for messaging, SchoolStatus Attend for attendance and SchoolStatus Literacy for reading updates.",
+    "SchoolStatus Attend addresses chronic absenteeism by sending automated messages to families when absences start to accumulate. Early Warning Insights applies predictive analytics to flag students likely to become chronically absent while there is still time to act. Attend also syncs with SIS providers and carries two-way text messages to families in more than 130 languages.",
+    "SchoolStatus Connect pulls attendance, grades and behavior from a district SIS and targets announcements to specific schools, grade levels or a single bus route. SchoolStatus Literacy syncs with existing assessment platforms and sends families plain-language updates on a child's reading level along with activities for home. Testimonials on the Connect page come from a superintendent at Pass Christian Public Schools and an assistant superintendent at Lake Worth ISD."
+   ],
+   "quote": {
+    "text": "SchoolStatus helps you build them by connecting educators and families on the topics that matter.",
+    "url": "https://www.schoolstatus.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.schoolstatus.com",
+     "quote": "Improved attendance, higher graduation rates, and student reading progress don\u2019t happen without strong family partnerships."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.schoolstatus.com",
+     "quote": "Most districts are sitting on a mountain of student data they can\u2019t actually use to help kids."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.schoolstatus.com",
+     "quote": "SchoolStatus Connect ends the mass blasts by helping educators turn student data into personal updates that families actually want to read."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.schoolstatus.com/products/attend",
+     "quote": "SchoolStatus Attend sends automated messages to alert families the minute absences start to pile up."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.schoolstatus.com/products/attend",
+     "quote": "Early Warning Insights uses predictive analytics to show who\u2019s likely to become chronically absent after just 60 days."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.schoolstatus.com/products/attend",
+     "quote": "you can send two-way text messages in more than 130 languages"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.schoolstatus.com/products/connect",
+     "quote": "SchoolStatus Connect uses your student data to target announcements to specific schools, grade levels, or even a single bus route."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.schoolstatus.com/solutions/improve-literacy",
+     "quote": "SchoolStatus syncs with existing assessment platforms to bring in literacy scores and send personalized updates to families."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.schoolstatus.com/products/connect",
+     "quote": "Superintendent, Pass Christian Public Schools"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.schoolstatus.com",
+     "sha": "1e7b47a2235b140c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schoolstatus.com/products/attend",
+     "sha": "39eeb097a5579681",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schoolstatus.com/solutions/improve-literacy",
+     "sha": "6e1018387cb38e95",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schoolstatus.com/products/connect",
+     "sha": "42dc2c2112c5f866",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "talkingpoints",
@@ -90161,7 +91523,102 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Sawatch Labs sells fleet electrification software that uses mile-by-mile predictive analytics to determine EV suitability, cost modeling, infrastructure planning, vehicle management, and emissions reporting. The inputs are individual vehicle telematics data, which fleet managers use as the foundation for making data-driven decisions. Since 2017 the company has supported fleets in all 50 states.",
+    "The ezEV analytics use driving data to determine whether an EV would meet a fleet's operational needs. The ezIO analytics project charging load and show how EV charging will impact peak demand at each facility. EMIT lets fleet managers measure vehicle emissions, track progress toward sustainability goals, and generate automated monthly compliance reports from an online dashboard. The ionEV software reports whether EVs are saving money and whether PHEV's are charged and ready every morning.",
+    "Testimonials on the site come from public fleets, including an energy engineer for Denver Public Schools and a fleet supervisor with a municipal water district agency. The software is available through Sourcewell Cooperative Purchasing. In May 2024, Sawatch Labs joined WEX. WEX supplies fuel payment transparency, savings, and fraud controls for more than 600,000 fleet customers worldwide."
+   ],
+   "quote": {
+    "text": "Since 2017, we've been supporting data-driven fleet management, working with fleets around the US and worldwide.",
+    "url": "https://www.sawatchlabs.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "uses mile-by-mile predictive analytics to determine EV suitability, cost modeling, infrastructure planning, vehicle management, and emissions reporting"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "The top fleet managers use telematics as the foundation for making data-driven decisions."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sawatchlabs.com/about",
+     "quote": "we have supported fleets in all 50 states to meet their goals"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "Using your driving data, we can quickly determine if an EV would meet your drivers' operational needs and save you money."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "project your vehicle charging load and aggregates that data to show you how EV charging will impact your peak demand at each facility"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "enables fleet managers to measure vehicle emissions, track progress toward sustainability goals, generate automated monthly compliance reports"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "Are your EVs saving you money? Are your PHEV's charged and ready every morning?"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "Jacob Branch Energy Engineer for Denver Public Schools"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sawatchlabs.com",
+     "quote": "Available through Sourcewell Cooperative Purchasing"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sawatchlabs.com/about",
+     "quote": "In May 2024, Sawatch Labs officially joined WEX."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.sawatchlabs.com/about",
+     "quote": "WEX provides fuel payment transparency, savings, and fraud controls for more than 600,000 fleet customers worldwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sawatchlabs.com",
+     "sha": "34debb5ad09dc178",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sawatchlabs.com/about",
+     "sha": "599c8bdf77bbb545",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vertigis",
@@ -94654,7 +96111,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Sandata sells homecare software and services built around Electronic Visit Verification, which its homepage dates to 1994. The agency management product ties together EVV, scheduling, and billing, with data collection at the point of care. Its Electronic Visit Verification work is framed around Cures Act compliance data elements, member verification, group visits, and service location input.",
+    "A separate Revenue Cycle Management service covers authorization review, claim denials, rejection resolution, and resubmissions. The pages name homecare agencies, managed care organizations, and state organizations as the groups these solutions are built for. For state buyers, one line of solutions is described as designed specifically for state Medicaid programs, with oversight and accountability as the stated aim.",
+    "The homepage claims over 23 state Medicaid contracts. The same page describes serving homecare providers, payers, and states across what it calls the homecare continuum. The homepage also states that Sandata has been acquired by HHAeXchange."
+   ],
+   "quote": {
+    "text": "We are the company that invented EVV and have more successful state implementations than anyone in the industry.",
+    "url": "https://www.sandata.com/solutions/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sandata.com",
+     "quote": "Sandata first earned its position as the technology leader in homecare solutions when we pioneered Electronic Visit Verification (EVV) in 1994."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sandata.com/solutions/homecare-agency-management/",
+     "quote": "Our advanced integrations for EVV, scheduling, billing, and more ensure a seamless flow of accurate information, reducing duplicate data entry and minimizing the risk of errors."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sandata.com/solutions/homecare-agency-management/",
+     "quote": "Our solutions easily capture all Cures Act compliance data elements and support collecting tasks, member verification, group visits, multiple languages, and service location input."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sandata.com/solutions/revenue-cycle-management/",
+     "quote": "We review authorizations to prevent claims denials and take care of rejection resolutions and resubmissions."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sandata.com/solutions/",
+     "quote": "Our portfolio of industry-leading solutions does more for homecare and I/DD agencies, MCOs, and state organizations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sandata.com/solutions/",
+     "quote": "Sandata helps you increase oversight and accountability with solutions designed specifically for state Medicaid programs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sandata.com",
+     "quote": "With over 23 state Medicaid contracts and growing, our proven solutions are a testament to our commitment to Medicaid excellence."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sandata.com",
+     "quote": "Sandata empowers homecare providers, payers, and states by improving communications, reducing inefficiencies, facilitating workflows"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sandata.com",
+     "quote": "Sandata has been acquired by HHAeXchange."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sandata.com",
+     "sha": "0f0bb6ed08a0663b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sandata.com/solutions/",
+     "sha": "9b42d1fcfe9a3a1b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sandata.com/solutions/homecare-agency-management/",
+     "sha": "e951b343baa36852",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sandata.com/solutions/revenue-cycle-management/",
+     "sha": "4fbf87b9e2755318",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "hhaexchange",
@@ -97925,7 +99475,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "SchoolPass sells a K-12 campus operations and safety platform that combines student safety, attendance, dismissal and parent engagement in one system. The company describes the product as an all-in-one platform built for schools, covering campus security, operations and communication.",
+    "Attendance and hall pass management marks students late or absent in real time against rosters and pushes statuses to the front office and the school's student information system. Dismissal management identifies vehicles in the carline automatically and organizes students for pickup by car, bus or after-school activity. Visitor management screens and badges visitors, flags custody violations and campus watch list entries, and checks visitors against a national sex offender database. Emergency attendance sends customizable alerts and lets staff mark students accounted for during a drill or emergency.",
+    "The buyers named on these pages are K-12 schools, with reporting that can cover a single school or an entire district. SchoolPass partners with student information system platforms including Blackbaud, PowerSchool, Veracross and Senior Systems to sync parent, student and attendance data."
+   ],
+   "quote": {
+    "text": "SchoolPass is the complete K-12 campus operations & safety solution.",
+    "url": "https://schoolpass.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://schoolpass.com",
+     "quote": "SchoolPass is the complete K-12 campus operations & safety solution."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://schoolpass.com",
+     "quote": "An all-in-one, modern platform built for schools"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://schoolpass.com/solutions/",
+     "quote": "Attendance statuses are automatically sent to the front office and your SIS."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://schoolpass.com/solutions/",
+     "quote": "With our patented carline automation technology, vehicles are automatically identified in the carline and students are organized for dismissal to the carline, bus or after-school activities."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://schoolpass.com/solutions/visitor-management/",
+     "quote": "Visitors are screened against the most recent national sex offender database available."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://schoolpass.com/solutions/",
+     "quote": "Teachers and staff can quickly mark students and anyone else as accounted for."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://schoolpass.com/solutions/visitor-management/",
+     "quote": "Report and maintain visitor compliance for a single school or for an entire district."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://schoolpass.com",
+     "quote": "SchoolPass partners with Student Information System (SIS) platforms such as Blackbaud, PowerSchool, Veracross and Senior Systems to seamlessly sync parent, student, and attendance data."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://schoolpass.com",
+     "sha": "bdaf7cc56b88a248",
+     "fetched_on": null
+    },
+    {
+     "url": "https://schoolpass.com/solutions/",
+     "sha": "0dd5c4b11cc62639",
+     "fetched_on": null
+    },
+    {
+     "url": "https://schoolpass.com/solutions/attendance-automation/",
+     "sha": "469cd01910816e6b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://schoolpass.com/solutions/visitor-management/",
+     "sha": "7df28940e4936b20",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rhombus-systems",
@@ -101583,7 +103220,82 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Shadowtrack Technologies sells a corrections technology platform that combines institutional operations and community supervision on one connected record. Its pages say that corrections agencies, jails and prisons, sheriffs' offices, probation and parole departments, pretrial programs, courts, and attorneys use it for smartphone monitoring, wrist-worn and ankle-worn devices, case management, and officer safety.",
+    "The case management platform is presented as one connected record per justice participant, running from intake, classification, housing, and custody decisions through release and community supervision. The institutional operations suite is described as facility management software for jails and prisons that replaces paper movement passes with a Digital Master Pass, manages housing and bed assignments, and tracks transports in real time.",
+    "On the community side, the platform is described as letting courts, agencies, and supervising offices monitor enrollees on a smartphone app, a non-smartphone, or a landline. Shadowtrack SecureCheck is presented as direct enrollment for house arrest and electronic monitoring, with location and identity verification on a standard smartphone."
+   ],
+   "quote": {
+    "text": "One connected record for every Justice Participant, across institutional operations and community supervision, from intake to reentry.",
+    "url": "https://www.shadowtrack.com/solutions/case-management/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.shadowtrack.com",
+     "quote": "Shadowtrack is a corrections technology platform that unifies institutional operations and community supervision on one connected record."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.shadowtrack.com",
+     "quote": "Corrections agencies, jails and prisons, sheriffs' offices, probation and parole departments, pretrial programs, courts, and attorneys use it for smartphone monitoring, wrist-worn and ankle-worn devices, case management, and officer safety"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.shadowtrack.com/solutions/case-management/",
+     "quote": "keeps one connected record per justice participant across the entire justice lifecycle, from intake, classification, housing, and custody decisions through release and community supervision"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.shadowtrack.com/solutions/institutional-operations/",
+     "quote": "Shadowtrack's institutional operations suite is facility management software for jails and prisons. It replaces paper movement passes with a Digital Master Pass, manages housing and bed assignments, tracks transports in real time"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.shadowtrack.com/solutions/community/",
+     "quote": "lets courts, agencies, and supervising offices of every kind monitor enrollees on whatever technology fits the case: a smartphone app, a non-smartphone, or a landline"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.shadowtrack.com",
+     "quote": "Shadowtrack SecureCheck is direct enrollment for house arrest and electronic monitoring: court-grade location and identity verification on a standard smartphone"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.shadowtrack.com",
+     "sha": "bacd8648e50667f9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.shadowtrack.com/solutions/case-management/",
+     "sha": "a5a3683bb4ed6ad6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.shadowtrack.com/solutions/community/",
+     "sha": "77d66e43e45de23a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.shadowtrack.com/solutions/institutional-operations/",
+     "sha": "e00460582e2ee5da",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "jsg-monitoring",
@@ -114786,7 +116498,84 @@
   "buyer": "general government/transit agencies (cities, districts) primary, alongside corporate and accessibility-service operators",
   "sells_to_gov": "yes",
   "acquisition_note": "Shotl operates as part of Swvl (Nasdaq: SWVL), per Shotl's own news post: \"Shotl, as part of Swvl, has become a publicly listed company (NDAQ: SWVL)\"",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "Shotl sells an on-demand bus platform that pools riders travelling in the same direction into vans and minibuses. The product comes as three applications: a rider app for booking, a driver app for turn-by-turn navigation, and a management module for fleet supervision. Fleet and operation managers use a central console to watch demand, manage vehicle availability, and check the status of trips.",
+    "Routes are adjusted in real time on traffic and demand rather than fixed lines, and rides are shared between passengers heading in similar directions. Managers can add or remove virtual stops, resize the service area, and open or close street availability.",
+    "Cities and transport operators are the named users, with the same service pitched for suburbs, business parks, and recurring commutes for the physically challenged. Fares are set by the transport authority, and the platform can be integrated with the current public transport ticketing system. Shotl licenses the technology to local partners and operates services in seven European countries."
+   ],
+   "quote": {
+    "text": "Full seats, better streets.",
+    "url": "https://shotl.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://shotl.com",
+     "quote": "Shotl On-demand Buses is a mobility platform that matches multiple passengers headed in the same direction with a moving fleet of vans and minibuses."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://shotl.com",
+     "quote": "Drivers navigate the city following turn-by-turn directions towards the continuous pick-up and drop-off locations."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://shotl.com/platform",
+     "quote": "Fleet and operation managers have full access to a central console to supervise demand fluctuations, manage vehicle availability, and check the status of every trip."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://shotl.com/platform",
+     "quote": "All routes are fully dynamic and adjusted in real time, based on traffic and demand."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://shotl.com/platform",
+     "quote": "The Shotl Management Module allows managers to add or subtract new virtual stops, resize the extent of the operational area of service, or open and close street availability."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://shotl.com/platform",
+     "quote": "Shotl helps transport operators and cities make a better use of its bus system by replacing low-ridership routes with on-demand shuttles."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://shotl.com/platform",
+     "quote": "Fares are established by the transport authority."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://shotl.com/platform",
+     "quote": "Shotl operates on-demand transport services in seven European countries by licensing its technology to local partners."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://shotl.com",
+     "sha": "fa119a34e4372c1c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://shotl.com/platform",
+     "sha": "4a933c7c5b871a0b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "moia",
@@ -120318,7 +122107,107 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Searidge Technologies sells digital tower and airport systems, and says no one type of digital tower can meet all the different needs of an airport. The company describes five digital tower models, each designed for a different challenge and all operating on the same software platform. Its Chorus platform is described as a cloud-native, open digital platform that integrates real-time aviation data. Airfield Insights is presented as an AI-powered analytics solution that transforms data into real-time, actionable insights. Another product gives airport operators a live panoramic view of apron, de-icing, and aircraft parking areas.",
+    "The company says it has worked exclusively with Airports and Air Navigation Service Providers (ANSPs) worldwide for 20 years. Searidge is owned by NATS (UK), a tier one ANSP, and continues to operate as an independent business. Technology is in place at over 50 sites in 25 countries, according to the company.",
+    "The customers page says Searidge enables airports, airlines, and ANSPs to run airside operations. Named customers include Manchester Airport, Ottawa International Airport Authority, and Malta Air Traffic Services. Organisations listed on that page include the Civil Aviation Authority of Singapore and Bahrain Ministry of Transportation and Telecommunications."
+   ],
+   "quote": {
+    "text": "No one type of digital tower can meet all the different needs of an airport.",
+    "url": "https://searidgetech.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://searidgetech.com",
+     "quote": "No one type of digital tower can meet all the different needs of an airport."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://searidgetech.com",
+     "quote": "Searidge has created five models, each designed to address a different challenge, all operating on the same software platform"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://searidgetech.com",
+     "quote": "Chorus is a cloud-native, open digital platform that integrates real-time aviation data"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://searidgetech.com",
+     "quote": "AI-powered analytics solution transforms your data into real-time, actionable insights to enhance collaboration and drive smarter decisions"
+    },
+    {
+     "p": 0,
+     "s": 4,
+     "url": "https://searidgetech.com",
+     "quote": "Searidge gives airport operators a live panoramic view of one or more geographically dispersed apron, de-icing, and aircraft parking areas."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://searidgetech.com/our-story/",
+     "quote": "worked exclusively with Airports and Air Navigation Service Providers (ANSPs) worldwide for 20 years"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://searidgetech.com/our-story/",
+     "quote": "Searidge is now owned by NATS (UK), a tier one ANSP, and continues to operate as an independent business."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://searidgetech.com/our-story/",
+     "quote": "with technology at over 50 sites in 25 countries"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://searidgetech.com/customers/",
+     "quote": "enabling airports, airlines, and ANSPs to run more connected, collaborative, and intelligent airside operations."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://searidgetech.com/customers/",
+     "quote": "Customers such as Manchester Airport, John F. Kennedy Airport, Ottawa International Airport Authority, Farnborough Airport, Vigo Airport, Hamad International Airport, and Malta Air Traffic Services are transforming their operations with Searidge."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://searidgetech.com/customers/",
+     "quote": "Civil Aviation Authority of Singapore"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://searidgetech.com",
+     "sha": "d19ac317e75242b0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://searidgetech.com/our-story/",
+     "sha": "38bde8834fd8a850",
+     "fetched_on": null
+    },
+    {
+     "url": "https://searidgetech.com/customers/",
+     "sha": "9f89af89b678c868",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "uavionix",
@@ -121890,7 +123779,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Salamander sells accountability software that brings TAG, TRACK, and REPORT together as one integrated solution for managing events and day-to-day activity. The pages say the company provides businesses, organizations, and emergency management with tools to manage small and large events as well as ongoing day-to-day activity. Salamander states that resources can be accounted for with or without internet, and it also offers manual accountability products including cards, collection boards, and worksheets.",
+    "SalamanderLive is a cloud-based application for managing people, equipment, plans, and events from anywhere with internet connectivity. Its event features include an interactive ICS Chart, satellite map imagery with plotted resource locations, rostering, and a Resource Timer tied to an EVENTS PRO or PLANS subscription. Scans are verified against SalamanderLive through SALAMANDER IDENTIFICATION VERIFICATION, also known as SIV, to confirm that people entering the scene are active, vetted, and qualified.",
+    "Mobile apps for Android and iOS devices let personnel check in and out of an event, scan TAGs for on-scene accountability, and conduct PAR in the field. PC based applications include RAPID TAG EVAC, which creates evacuee IDs that track location, destination, special needs, and family connections. Those applications are described as deployed and proven on events by Salamander customers nationwide."
+   ],
+   "quote": {
+    "text": "Salamander links physical with digital, providing information to assure everyone goes home at the end of the day.",
+    "url": "https://salamanderlive.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://salamanderlive.com",
+     "quote": "Into One Integrated Solution: TAG TRACK REPORT"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://salamanderlive.com",
+     "quote": "Salamander provides businesses, organizations, and emergency management with the tools they need to manage small and large events"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://salamanderlive.com",
+     "quote": "you are also able to account for resources with or without internet, and even if no technology is available"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://salamanderlive.com/index.php/platform/cloud-app",
+     "quote": "SalamanderLive's cloud-based application allows you to manage your resources, both people and equipment, as well as plans and events from anywhere that has internet connectivity."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://salamanderlive.com/index.php/platform/cloud-app",
+     "quote": "The Resource Timer, activated with an EVENTS PRO or PLANS subscription, allows event managers to maintain scene safety"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://salamanderlive.com/index.php/platform/cloud-app",
+     "quote": "Every TRACK APP scan does a real-time verification with SalamanderLive to ensure that people entering the scene are active, vetted, and qualified."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://salamanderlive.com/index.php/platform/mobile-apps",
+     "quote": "Enhance situational awareness by tracking resources in the field, scanning TAGs for on-scene accountability, searching for resources via qualifications, and conducting PAR on any Android or iOS device."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://salamanderlive.com/index.php/platform/pc-based-apps",
+     "quote": "Quickly create evacuee IDs to automatically TRACK location, destination, special needs, and family connections."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://salamanderlive.com/index.php/platform/pc-based-apps",
+     "quote": "These applications have been deployed and proven on countless events over the years by Salamander customers nationwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://salamanderlive.com",
+     "sha": "2c327f75f14d17e9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://salamanderlive.com/index.php/platform/cloud-app",
+     "sha": "aeccd9e46a414ed3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://salamanderlive.com/index.php/platform/mobile-apps",
+     "sha": "dd5517d02676c97c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://salamanderlive.com/index.php/platform/pc-based-apps",
+     "sha": "301495a6ebc3e3ef",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "mutualink",
@@ -129109,7 +131091,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASWA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SaraWorks sells client communication software that brings texts, emails, appointment bookings and reminders, video calls, e-signatures and document uploads into one secure hub. SaraWorks automatically logs caseworker and client activity as case notes in the agency CMS or system of record. The same section lists service tracking, IEP/IPE meeting documentation, post-exit follow-up and employment outcomes, and RSA reporting and client surveys.",
+    "The homepage states that the product helps vocational rehabilitation, workforce development agencies and boards do more. Two sections invite readers to learn more about SaraWorks for vocational rehabilitation agencies and for workforce development agencies and WDBs. A testimonial on that page is attributed to a business process analyst at the Nevada Department of Employment, Training & Rehabilitation.",
+    "On security, the pages state that the software is 508-compliant, hosted in FedRAMP-approved AWS GovCloud, and NIST 800-53 and HIPAA-compliant. The same list states an Authority to Operate from the VA."
+   ],
+   "quote": {
+    "text": "Sara was the tool that we could use that allowed us to communicate without using personnel resources.",
+    "url": "https://saraworks.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://saraworks.com",
+     "quote": "SaraWorks brings all your client communication into one secure hub: HIPAA-compliant texts, emails, appointment bookings and reminders, video calls, e-signatures and document uploads."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://saraworks.com",
+     "quote": "SaraWorks automatically logs all caseworker and client activity"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://saraworks.com",
+     "quote": "Post-exit follow-up and employment outcomes"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://saraworks.com",
+     "quote": "Helping vocational rehabilitation, workforce development agencies & boards do more"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://saraworks.com",
+     "quote": "Workforce Development Agencies & WDBs"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://saraworks.com",
+     "quote": "Sheila Rasor, Business Process Analyst, Nevada Department of Employment, Training & Rehabilitation"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://saraworks.com",
+     "quote": "Hosted in the ultra-secure, FedRAMP-approved AWS GovCloud"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://saraworks.com",
+     "quote": "Authority to Operate (ATO) from the VA"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://saraworks.com",
+     "sha": "bb99af9e90dd71f8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ativion",
@@ -132416,7 +134470,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SchoolDay sells a zero-trust ecosystem orchestration platform that connects edtech apps without sharing student data. The platform covers discovery, assessment, procurement, provisioning, integration and governance of apps across the ecosystem. The about page describes a secure, private data exchange that safeguards the Personally Identifiable Information of students, educators, and staff across K-12 educational institutions.",
+    "For schools, the site describes regaining control, enhancing security, and streamlining data exchange across the edtech ecosystem. For vendors, the site describes minimizing data security risks, reducing costs and accelerating product deployment. A catalog lets apps and connectors be viewed, trialed and purchased without storing student data.",
+    "SchoolDay was founded in 2018 and was formerly known as Global Grid for Learning. The about page states that SchoolDay is already serving over 35,000 schools, 15 million students, and hundreds of EdTech vendors. Compliance with data protection regulations such as FERPA is stated on that page."
+   ],
+   "quote": {
+    "text": "Founded in 2018, SchoolDay, formerly known as Global Grid for Learning (GG4L), is on a mission to help reduce data sprawl, protect student privacy, and enhance data security in the education sector.",
+    "url": "https://www.schoolday.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.schoolday.com",
+     "quote": "SchoolDay is a zero-trust ecosystem orchestration platform that empowers"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.schoolday.com",
+     "quote": "Effortlessly discover, assess, procure, provision, integrate and govern apps across your ecosystem"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.schoolday.com/about/",
+     "quote": "The SchoolDay Platform provides a secure, private data exchange that safeguards the Personally Identifiable Information of students, educators, and staff across K-12 educational institutions."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.schoolday.com",
+     "quote": "Regain control, enhance security, and streamline data exchange across your edtech ecosystem."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.schoolday.com",
+     "quote": "Minimize data security risks, reduce costs and accelerate product deployment with seamless data exchange."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.schoolday.com",
+     "quote": "View, trial and purchase apps and connectors that empower educators and learners without storing student data."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.schoolday.com/about/",
+     "quote": "Founded in 2018, SchoolDay, formerly known as Global Grid for Learning (GG4L), is on a mission to help reduce data sprawl, protect student privacy, and enhance data security in the education sector."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.schoolday.com/about/",
+     "quote": "Already serving over 35,000 schools, 15 million students, and hundreds of EdTech vendors, SchoolDay champions open standards-based data integrations and governed data exchange"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.schoolday.com/about/",
+     "quote": "while maintaining strict compliance with data protection regulations such as FERPA"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.schoolday.com",
+     "sha": "ba809c858f2d830a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.schoolday.com/about/",
+     "sha": "4570c1989297f8da",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "classdojo",
@@ -136768,7 +138905,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: CoSN 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Secure Schools sells cybersecurity tools and services built for schools and trusts. The platform covers a free cyber score for benchmarking, phishing simulation, a policy builder and awareness training for staff. Phishing simulations mimic education-sector phishing emails and can be tailored by trust, school or department.",
+    "The policy builder offers document templates aimed at DfE, RPA and Cyber Essentials requirements, and schools can upload their own policies through the platform. A self-evaluation audit produces a gap analysis report against standards set by UK bodies such as the Department for Education. Testing services include an external vulnerability scan of school IT systems, assessor-led audits and penetration testing.",
+    "Packages run from a free tier called Foundations up to Verified, which adds discounted rates on services such as penetration testing and tabletop exercises. Case studies name trusts including White Woods Primary Academy Trust and The Rose Learning Trust. A school or trust registers on the platform and can purchase a package directly through it."
+   ],
+   "quote": {
+    "text": "Founded and built by educationalists - we only work with schools, and focus solely on reducing school and trust's cybersecurity risks",
+    "url": "https://www.secureschools.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.secureschools.com",
+     "quote": "Reduce cybersecurity risks with expert tools and services, built specifically for schools and trusts"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.secureschools.com",
+     "quote": "Identify the gaps in your cybersecurity approach and benchmark against the most common threats with our free cyber score."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.secureschools.com",
+     "quote": "Simulations closely mimic real education-sector phishing emails and can be tailored by trust, school and even department."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.secureschools.com",
+     "quote": "Access a library of cybersecurity document templates to support your school or multi-academy trust in meeting DfE, RPA, and Cyber Essentials requirements and expectations."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.secureschools.com",
+     "quote": "On completion, you receive a gap analysis report based on standards set by UK bodies such as the Department for Education."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.secureschools.com",
+     "quote": "Test the school's offensive security by scanning and analysing vulnerabilities existing in the IT systems."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.secureschools.com",
+     "quote": "Exclusively with our Verified tier, you will receive discounted rates on all of our cybersecurity services, such as penetration testing, tabletop exercises and one-to-one consultations."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.secureschools.com/en-gb/case-studies",
+     "quote": "The Rose Learning Trust is a multi-academy trust that has been established since 2016, spanning two local authorities in South Yorkshire and Lincolnshire."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.secureschools.com/en-gb/case-studies",
+     "quote": "You can also purchase directly through the platform if you'd prefer to get started right away."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.secureschools.com",
+     "sha": "be0678736f999316",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.secureschools.com/en-gb/case-studies",
+     "sha": "3cf69570e9d7316b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "simpledu",
@@ -143651,7 +145871,81 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Sigmund Software sells AURA, a cloud based electronic health record platform for behavioral health and addiction treatment providers. The platform is sold as a replacement for running separate systems for clinical documentation, billing, scheduling and compliance. Alongside the clinical record, Sigmund sells a billing platform for behavioral health billers that handles payer authorizations, claim generation and claim status through an EDI billing module.",
+    "These pages describe the buyers as behavioral health and addiction treatment organizations, and the billing platform is offered to organizations of all sizes, from small practices to multi site and multi specialty configurations. A patient portal carries digital intake forms, electronic signatures on consent documents, secure messaging and appointment reminders for the patients those organizations treat. Sigmund hosts the software and takes on the technology, data backups and software upgrades for the provider."
+   ],
+   "quote": {
+    "text": "Sigmund has developed, and continues to enhance, a platform meticulously designed to fulfill the EHR requirements of behavioral health and addiction treatment.",
+    "url": "https://www.sigmundsoftware.com/solutions/finance/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sigmundsoftware.com/solutions/clinical/",
+     "quote": "Sigmund AURA is a cloud-based, fully integrated, intuitive EHR that lets providers delegate work, document easily, and create reports quickly in order to stay focused on patient care."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sigmundsoftware.com",
+     "quote": "If you\u2019re managing multiple systems for clinical documentation, billing, scheduling, and compliance, it\u2019s time to transition to a unified, AI-powered behavioral health EHR."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sigmundsoftware.com/solutions/finance/",
+     "quote": "Effectively manage Payer Authorizations and streamline claim generation and validation with our Billing Rules engine."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sigmundsoftware.com/solutions/finance/",
+     "quote": "Our billing platform effortlessly supports organizations of all sizes, from small practices to multi-company, multi-site, and multi-specialty configurations, all within one comprehensive enterprise solution."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sigmundsoftware.com",
+     "quote": "Strengthen patient engagement and improve communication with a fully integrated patient portal built for behavioral health providers."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sigmundsoftware.com/solutions/medical/",
+     "quote": "Let Sigmund take care of the technology, data backups, and software upgrades."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sigmundsoftware.com",
+     "sha": "cca2c7cdd71a7d3a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sigmundsoftware.com/solutions/finance/",
+     "sha": "d8854183b9dae667",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sigmundsoftware.com/solutions/clinical/",
+     "sha": "6db4bec98275bdfa",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sigmundsoftware.com/solutions/medical/",
+     "sha": "016f43076f12ef01",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "willetts-technology",
@@ -144453,7 +146747,81 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "ShareStream sells the ShareStream Video Platform, a system for uploading, transcoding, editing, storing, managing and delivering media. The platform is built for educational institutions setting up an institution-wide video system that serves user groups and departments across campuses. Media Extensions for LMSs connect the platform to learning management systems including Blackboard Learn, Brightspace by D2L, Canvas by Instructure, Moodle and Sakai.",
+    "The platform was initially developed in collaboration with Georgetown University and is deployed at educational institutions and corporations around the world. ShareStream describes implementations at universities, colleges, K-12 schools and corporations. The California State University system selected the ShareStream Online Video Platform as one of two video-learning solutions for its campuses."
+   ],
+   "quote": {
+    "text": "ShareStream is the video platform for education.",
+    "url": "https://www.sharestream.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sharestream.com",
+     "quote": "The ShareStream Video Platform is a comprehensive, end-to-end system used worldwide for uploading, transcoding, editing, storing, managing and delivering media in a secure and auditable environment."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sharestream.com",
+     "quote": "It is designed specifically to address the unique challenges educational institutions face in establishing an institution-wide video system that services a wide variety of user groups and departments across campuses."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sharestream.com",
+     "quote": "Extend learning management systems\u2014including ANGEL\u00ae, all of the releases of Blackboard Learn\u2122, Brightspace\u00ae by D2L\u00ae, Canvas\u00ae by Instructure\u00ae, Moodle\u00ae and Sakai\u00ae\u2014with ShareStream\u2019s easy-to-use, interactive video solution."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sharestream.com",
+     "quote": "Our product, the ShareStream Online Video Platform, was initially developed in collaboration with Georgetown University and is now widely deployed at educational institutions and corporations around the world."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sharestream.com/about-us/company/",
+     "quote": "As CEO, David has led the growth of ShareStream Education from the company\u2019s launch with a project at Georgetown University to becoming one of the most widely deployed video-platform providers for education with implementations at universities, colleges, K-12 schools and corporations across the world."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sharestream.com/about-us/news-and-press/csu-selects-sharestream-video-learning-solution/",
+     "quote": "the California State University (CSU) system, the largest public university system in the U.S. with 23 campuses statewide , has selected the ShareStream Online Video Platform (OVP) as one of two video-learning solutions"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sharestream.com",
+     "sha": "89495f1a83c3bf68",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sharestream.com/about-us/news-and-press/csu-selects-sharestream-video-learning-solution/",
+     "sha": "693ef58747d3804d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sharestream.com/about-us/company/",
+     "sha": "cb3dc7a010f09aea",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sharestream.com/about-us/partners/",
+     "sha": "cac97c28aa91c4c0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "steelcloud",
@@ -146714,7 +149082,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SimCare sells an AI client simulation platform for counselor training, where students speak directly with avatars to practice counseling skills and get instant feedback. Sessions run with 500+ counselor-designed clients ranging from children to older adults, across a range of presenting problems. After a session, feedback covers tone, empathy, communication, nonverbal cues, diagnostic accuracy, and clinical skills.",
+    "Students keep working with the same client over time, scheduling follow-ups, sending messages, and getting updates about progress or setbacks. Automated scoring removes grading bottlenecks, so instructors can assign more practice without adding to their workload. Simulation can be embedded across the entire program, and programs can expose students to high-risk scenarios repeatedly without real-world harm.",
+    "The pages say the platform supports disciplines including psychology, psychiatry, clinical counseling, social work, school counseling, and behavioral health. The FAQ states that the platform is built to scale whether the program sits in a university, government agency, training organization, or private company. Billing is described as flexible, with some institutions paying directly and others passing the cost to students as a lab fee or tech fee."
+   ],
+   "quote": {
+    "text": "SimCare gives every student realistic, full counseling sessions with virtual clients, so they can practice skills and get feedback without needing a live partner.",
+    "url": "https://simcare.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://simcare.ai",
+     "quote": "Speak directly with avatars to practice counseling skills, explore different scenarios, and get instant feedback."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://simcare.ai",
+     "quote": "From children to older adults, practice real counseling sessions with 500+ counselor-designed clients across a range of unique presenting problems."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://simcare.ai",
+     "quote": "Get instant feedback on tone, empathy, communication, nonverbal cues, diagnostic accuracy, and clinical skills."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://simcare.ai",
+     "quote": "Keep working with the same client over time. Schedule follow-ups, send messages, and get updates from them about progress or setbacks."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://simcare.ai",
+     "quote": "Automated scoring removes grading bottlenecks, so instructors can assign more practice without adding to their workload."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://simcare.ai",
+     "quote": "Programs can expose students to high-risk scenarios repeatedly without real-world harm."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://simcare.ai",
+     "quote": "It supports a wide range of disciplines including psychology, psychiatry, clinical counseling, social work, school counseling, and behavioral health."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://simcare.ai",
+     "quote": "you're a university, government agency, training organization, or private company"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://simcare.ai",
+     "quote": "Some institutions pay directly. Others pass the cost to students as a lab fee or tech fee, a common model."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://simcare.ai",
+     "sha": "b7577764fd098d3e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "zoobook-systems",
@@ -147802,7 +150248,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Isora GRC is software that gives security teams one connected workspace to run assessments, manage vendors and assets, track risks, and prove compliance. It is positioned against spreadsheets and against enterprise GRC platforms that require months of setup, dedicated admins, and consultant-driven configuration. Questionnaires are structured and aligned to frameworks such as NIST, CIS, GLBA, and HECVAT, and contributors upload evidence inline and route responses for approval.",
+    "For third-party work, the platform connects vendor questionnaires, inventory records, risk findings, and reporting in one workspace. Vendor assessments cover HECVAT, SIG, and CAIQ, and a one-click HECVAT uploader imports completed spreadsheets, matches responses, and scores automatically. Findings flow into a collaborative risk register carrying lineage from questionnaire to control to risk, where owners are assigned and remediation is tracked.",
+    "The solutions index describes the product for public sector institutions, for financial institutions such as banks and credit unions, and for information security teams. Higher education institutions managing hundreds of vendors are described as using it as their primary vendor assessment platform."
+   ],
+   "quote": {
+    "text": "Isora GRC is the GRC Assessment Platform built for security teams.",
+    "url": "https://www.saltycloud.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.saltycloud.com",
+     "quote": "Isora GRC gives security teams one connected workspace to run assessments, manage vendors and assets, track risks, and prove compliance."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.saltycloud.com",
+     "quote": "Enterprise GRC platforms require months of setup, dedicated admins, and consultant-driven configuration."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.saltycloud.com",
+     "quote": "Launch structured questionnaires aligned to frameworks like NIST, CIS, GLBA, and HECVAT."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+     "quote": "Isora GRC connects vendor questionnaires, inventory records, risk findings, and reporting in one workspace."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+     "quote": "The one-click HECVAT uploader imports completed spreadsheets, matches responses, and scores automatically."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.saltycloud.com/isora-grc/solutions/information-security-risk-management-isrm/",
+     "quote": "Findings flow directly into a collaborative risk register with full lineage from questionnaire to control to risk."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.saltycloud.com/isora-grc/solutions/",
+     "quote": "Isora GRC empowers public sector institutions to manage internal assessments, track compliance across applications, and generate audit-ready reports, all within a single, unified platform."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+     "quote": "Higher education institutions managing hundreds of vendors use Isora as their primary vendor assessment platform."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.saltycloud.com",
+     "sha": "61e73940f2fa03b8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saltycloud.com/isora-grc/solutions/information-security-risk-management-isrm/",
+     "sha": "2aa4a91e67d35835",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+     "sha": "daa2b9d729432151",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.saltycloud.com/isora-grc/solutions/",
+     "sha": "abf4119c43b9b9bf",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "simple-higher-ed",
@@ -148914,7 +151447,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "ServiceLink sells field service management software for utilities, connecting dispatch, field crews, and back-office systems with real-time mobile workforce management. The product page states that water, gas, electric, fiber, and sanitation teams use it to streamline operations, optimize scheduling, enhance productivity, and deliver customer service. It ships as a web-based app optimized for larger screens and a mobile-based app optimized for phones and tablets.",
+    "Listed capabilities include real-time scheduling, optimization, routing, inventory, analytics, AVL, GIS, dispatching and communications. The product page also lists vehicle and crew location tracking, job completion forms, and field work that continues in areas with limited or no connectivity. The about page describes the tools as designed for managers, dispatchers, and field service representatives.",
+    "The about page says the platform serves 80+ clients across North America and the Caribbean, described there as cities and local governments. The home page names utilities, cities, and city governments, large and small, as the groups whose needs the product meets. The about page also places ServiceLink within Harris Computer Systems."
+   ],
+   "quote": {
+    "text": "Field Service Management Software for Utilities",
+    "url": "https://servicelinksoftware.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://servicelinksoftware.com",
+     "quote": "Connect dispatch, field crews, and back-office systems with real-time mobile workforce management built for water, gas, electric, fiber, and sanitation utilities."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://servicelinksoftware.com/product",
+     "quote": "ServiceLink enables water, gas, electric, fiber, and sanitation teams to streamline operations, optimize scheduling, enhance productivity, and deliver exceptional customer service."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://servicelinksoftware.com/product",
+     "quote": "Mobile-based app, optimized for phones & tablets"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://servicelinksoftware.com/product",
+     "quote": "Real-time scheduling, optimization, routing, inventory, analytics, AVL, GIS, dispatching and communications"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://servicelinksoftware.com/product",
+     "quote": "Continue field work without interruption in areas with limited or no connectivity."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://servicelinksoftware.com/about",
+     "quote": "designed for managers, dispatchers, and field service representatives."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://servicelinksoftware.com/about",
+     "quote": "platform serves 80+ clients across North America and the Caribbean"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://servicelinksoftware.com",
+     "quote": "Meeting the unique needs of utilities, cities, and city governments, large and small."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://servicelinksoftware.com/about",
+     "quote": "We\u2019re part of Harris Computer Systems"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://servicelinksoftware.com",
+     "sha": "21fcfc187ad6d287",
+     "fetched_on": null
+    },
+    {
+     "url": "https://servicelinksoftware.com/product",
+     "sha": "5f953b370f2840a8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://servicelinksoftware.com/about",
+     "sha": "8a6823195be07711",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tova-earth",
