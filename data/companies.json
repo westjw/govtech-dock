@@ -51,7 +51,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Rain adapts military and civil autonomous aircraft to perceive, understand, and suppress wildfires. The company says the technology equips fire agencies with a new layer of safety for human-piloted missions and supports command of a network of uncrewed aircraft prepositioned in remote areas. Its wildfire mission autonomy system perceives the fire, reads its behavior, size and direction of spread, and uses that information to design a suppression strategy.",
+    "Rain and Sikorsky, a Lockheed Martin company, have demonstrated autonomous wildfire suppression technology in a representative wildfire environment in California. That work included communication interoperability of an autonomous aircraft with a human-piloted helicopter in the same Fire Traffic Area, supervised by an Orange County Fire Authority air tactical group supervisor aircraft. The two companies also said they would explore how Sikorsky's MATRIX autonomy suite operating with Rain's Wildfire Mission Autonomy System can launch uncrewed helicopters to drop water on wildfires within minutes of detection.",
+    "Rain announced a partnership with Brothers Air Support, a private Black Hawk firefighting operator, to equip their helicopter with Rain's wildfire perception system. The work goes back to 2019, when Bryan, Ephraim and Max started building the MK1 prototype. That prototype produced a fully autonomous demonstration of a drone system detecting and suppressing a wildfire ignition in approximately 40 acres of forest."
+   ],
+   "quote": {
+    "text": "Rain\u2019s wildfire intelligence system builds a strategy that considers subsequent responding aircraft, incorporating their resources and arrival times into an optimal suppression strategy.",
+    "url": "https://www.rain.aero"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.rain.aero",
+     "quote": "Rain adapts military and civil autonomous aircraft with the intelligence to perceive, understand, and suppress wildfires."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.rain.aero",
+     "quote": "technology equips fire agencies with a new layer of safety for human-piloted missions"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.rain.aero",
+     "quote": "Rain\u2019s wildfire mission autonomy system perceives the fire, understands its behavior, size, direction of spread, and uses that information to design a suppression strategy."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.rain.aero",
+     "quote": "Rain and Sikorsky, a Lockheed Martin company, have demonstrated autonomous wildfire suppression technology in a representative wildfire environment for the first time in California."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.rain.aero",
+     "quote": "First demonstrated communication interoperability of an autonomous aircraft with a human-piloted helicopter in the same Fire Traffic Area, supervised by an Orange County Fire Authority air tactical group supervisor aircraft (HLCO)."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.rain.aero",
+     "quote": "Together, Rain and Sikorsky will explore how Sikorsky\u2019s MATRIX\u2122 autonomy suite operating with Rain\u2019s Wildfire Mission Autonomy System can launch uncrewed helicopters to drop water on wildfires within minutes of detection."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.rain.aero",
+     "quote": "a new partnership with Brothers Air Support, a private Black Hawk firefighting operator, to equip their helicopter with Rain\u2019s wildfire perception system"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.rain.aero/about-us",
+     "quote": "In 2019 Bryan, Ephraim and Max reflected on this experience and started building the MK1 prototype"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.rain.aero/about-us",
+     "quote": "which became the world\u2019s first fully autonomous demonstration of a drone system, detecting and suppressing a wildfire ignition in approximately 40 acres of forest"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.rain.aero",
+     "sha": "cf0281c4ac2b809b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.rain.aero/about-us",
+     "sha": "ce94b54d8c5a55b8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pano-ai",
@@ -3915,7 +3998,77 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pulsara sells a secure app that unites the entire care team across different departments or organizations. The company describes the app as replacing multiple phone calls, radio reports, faxes, and pagers with one unified patient channel. Users named on the site run from EMS and hospital staff to urgent cares, nursing homes, testing clinics, standalone EDs, Public Health, and FEMA Medical Operations Coordination Cells.",
+    "For EMS teams, the site lists integration with ECG monitors, EMS-to-EMS handoff, facility-to-EMS handoff, and the ability to consult specialists or medical control. The about page describes the process as creating a dedicated patient channel, building the team, and communicating using audio, live video, instant messaging, data, images, and key benchmarks. Clinicians can add a new organization, team, or specialist to any patient event as the patient condition and location change. The site states that Pulsara is SOC2 Type 2 and ISO 27001 certified and an approved vendor with many national health systems."
+   ],
+   "quote": {
+    "text": "Pulsara is the communications and logistics platform that unites distributed teams and fragmented technologies as dynamic events evolve.",
+    "url": "https://www.pulsara.com/about?hsLang=en-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pulsara.com",
+     "quote": "Pulsara is a secure, user-friendly app that unites the entire care team, even across different departments or organizations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pulsara.com",
+     "quote": "By replacing multiple phone calls, radio reports, faxes, and pagers with one unified patient channel, Pulsara streamlines workflows"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pulsara.com",
+     "quote": "From EMS and hospital staff to urgent cares, nursing homes, testing clinics, standalone EDs, Public Health, and even FEMA Medical Operations Coordination Cells, Pulsara connects all members of the care team"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pulsara.com",
+     "quote": "EMS teams enjoy integration with their favorite ECG monitors, EMS-to-EMS handoff, facility-to-EMS handoff, the ability to consult specialists, medical control or any other member of the care team"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pulsara.com/about?hsLang=en-us",
+     "quote": "COMMUNICATE using audio, live video, instant messaging, data, images, and key benchmarks."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pulsara.com/about?hsLang=en-us",
+     "quote": "clinicians can add a new organization, team, or specialist to any patient event, dynamically building a care team even as the patient condition and location constantly evolve"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.pulsara.com",
+     "quote": "Pulsara is SOC2 Type 2 and ISO 27001 certified and is an approved vendor with many national health systems."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pulsara.com",
+     "sha": "1766f969b27504f9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pulsara.com/about?hsLang=en-us",
+     "sha": "e63d575f96c490d1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "priority-dispatch",
@@ -3939,7 +4092,84 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "IACP 2026; IAFC FRI 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Priority Dispatch sells ProQA, software for the Emergency Dispatch process, and the protocols that software runs on. Those protocols come from the International Academies of Emergency Dispatch, and the homepage lists current versions of MPDS, FPDS, PPDS and ECNS.",
+    "Emergency Communications Centers are provided the technology, tools and training, within a single system. Other products include QPR, which supports existing quality assurance work with QA staff and solutions. A training product provides on-demand practice for Emergency Dispatchers using call simulations.",
+    "The Priority Dispatch System is used in 60 countries and fields over 100 million calls a year. The company says it invented structured Emergency Dispatch in 1978 and has been perfecting it since. The homepage puts ProQA in 160 of the 200 largest cities in the United States."
+   ],
+   "quote": {
+    "text": "The Priority Dispatch System is used in 60 countries around the world to confidently field over 100 million calls a year.",
+    "url": "https://www.prioritydispatch.net"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "BRING ORDER TO THE EMERGENCY DISPATCH PROCESS WITH ProQA"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "The Priority Dispatch System is a comprehensive approach to Emergency Dispatch built on the International Academies of Emergency Dispatch-approved unified protocol systems."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "We provide Emergency Communications Centers the vital technology, tools, and training needed to gather essential information"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "Backed by the International Academies of Emergency Dispatch, QPR helps support your existing QA work with expert QA staff and solutions."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "Provides on-demand training, real-world scenarios, and essential practice for Emergency Dispatchers using AI-powered call simulations."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "The Priority Dispatch System is used in 60 countries around the world to confidently field over 100 million calls a year."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.prioritydispatch.net/en/about",
+     "quote": "We invented structured Emergency Dispatch in 1978 and have been perfecting it ever since."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.prioritydispatch.net",
+     "quote": "ProQA is used by 160 of the 200 largest cities in the United States."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.prioritydispatch.net",
+     "sha": "33205a1e44341381",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.prioritydispatch.net/en/about",
+     "sha": "6384258178a27970",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "aurelian",
@@ -4310,7 +4540,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Rave Mobile Safety sells the Rave Mobile Safety Suite, software for improving emergency preparedness, response and communication for an organization and the people it protects. The page places the Rave Suite inside the Motorola Solutions safety and security ecosystem.",
+    "Rave Alert is described as a FedRAMP-authorized mass notification system sending multimodal messages in three clicks. Rave Panic Button is for rapid communication in an emergency, connecting on-site personnel and first responders at the same time. Rave 911 Suite is offered for 911 operations, with caller profiles, enhanced location data and a functional needs registry.",
+    "Industries listed for the suite include law enforcement, education, healthcare, hospitality and retail. The page says the suite helps protect some of the largest communities, companies, and colleges and universities. Testimonials on the page are attributed to a county central dispatch director, a school district superintendent and a county emergency communication operator."
+   ],
+   "quote": {
+    "text": "The right technology can help people be safer where they live, work, learn and play.",
+    "url": "https://www.ravemobilesafety.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "Improve emergency preparedness, response and communication for your organization and the people you protect."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "Bringing the Rave Suite into the Motorola Solutions safety and security ecosystem."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "A FedRAMP-authorized mass notification system that enables reliable, multimodal messages in just three clicks."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "Rapidly communicate in an emergency with the push of a button, simultaneously connecting to on-site personnel and first responders."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "Enhance your 911 operations with caller profiles, enhanced location data, functional needs registry and more."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "How can the Rave Suite help in my industry?"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "The Rave Mobile Safety Suite helps protect some of the largest communities, most respected companies and best known colleges and universities in the world."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.ravemobilesafety.com",
+     "quote": "Director, Eaton County Central Dispatch, Eaton County Michigan"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ravemobilesafety.com",
+     "sha": "f52dfa796cc90aff",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ravemobilesafety.com/en_us/solutions/safety-ecosystem.html",
+     "sha": "f52dfa796cc90aff",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ravemobilesafety.com/en_us/products/critical-communications.html",
+     "sha": "f52dfa796cc90aff",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ravemobilesafety.com/en_us/products/command-center-software.html",
+     "sha": "f52dfa796cc90aff",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "juvare",
@@ -5885,7 +6202,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "direct add",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Quarterhill designs, develops, and deploys technology systems for the intelligent transportation systems industry, with a presence throughout North America and Europe. Its tolling work covers toll collection, and its safety and enforcement work covers commercial vehicle enforcement, freight compliance, and active transportation management. Multi modal solutions cover container tracking and port planning, border crossings, and axle-load and track monitoring on rail lines and highway corridors.",
+    "Rail products built on Sensor Line fiber optic sensors cover speed measurement, weigh in motion, flat wheel detection, track bed analysis, axle and wagon counting, and vibration analysis. These sensors are used for predictive maintenance and for detecting changes to track and rolling stock.",
+    "Customers named on the site include government agencies, toll operators, and private sectors, along with Departments of Transportation, logistics providers, local governments, and law enforcement agencies. Enforcement agencies use the commercial vehicle inspection technologies in over 2000 lanes worldwide to prevent weigh station congestion. The company handles over 2 billion toll transactions each year for toll authorities in the United States."
+   ],
+   "quote": {
+    "text": "We proudly provide solutions for government agencies, toll operators, and private sectors.",
+    "url": "https://www.quarterhill.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.quarterhill.com",
+     "quote": "We specialize in designing, developing, and deploying technology systems for the intelligent transportation systems industry."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.quarterhill.com",
+     "quote": "commercial vehicle enforcement, freight compliance, and active transportation management that are unbeatable and unstoppable."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.quarterhill.com",
+     "quote": "From container tracking and port planning, to smoother and more secure border crossings, to axle-load and track monitoring on rail lines and highway corridors"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.quarterhill.com/products/rail",
+     "quote": "Powered by Sensor Line's proprietary fiber optic technology (SL FORPS), Quarterhill delivers analysis systems, sensors, and electronics for a wide range of applications across the rail sector."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.quarterhill.com/products/rail",
+     "quote": "forming the basis for predictive maintenance and helping avoid costly, sudden material failures and downtime."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.quarterhill.com",
+     "quote": "We proudly provide solutions for government agencies, toll operators, and private sectors."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.quarterhill.com/company",
+     "quote": "Enforcement agencies use our commercial vehicle inspection technologies in over 2000 lanes worldwide to prevent weigh station congestion and protect roads from premature damage."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.quarterhill.com/company",
+     "quote": "Catering to the foremost toll authorities in the United States, we handle over 2 billion toll transactions each year."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.quarterhill.com",
+     "sha": "65fff3ab3f5e94d6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.quarterhill.com/company",
+     "sha": "46ff0af5c16375dc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.quarterhill.com/products/rail",
+     "sha": "769d02e74af38acd",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "conduent",
@@ -18695,7 +19094,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; 3CMA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PublicInput sells a platform for running community engagement projects, public meetings, and resident communications from one system. The engagement product is described as a central hub for surveys, comment submissions, documents, and meetings. Engagement features named on that page include AI Comment Analysis, Equity Mapping, and Omni-channel Comment Collection.",
+    "A second product line, PublicInput Meetings, covers the meeting lifecycle for government clerks. The page lists a drag-and-drop agenda builder with templates and versioned packets, a single public meeting page, and hybrid integration with Zoom and Microsoft Teams. Minutes are drafted automatically from votes, motions, and public comments, and audit-ready PDFs, meeting packets, and CSV records can be exported in one click. Compliance material on that page cites state open meetings law requirements including the Brown Act and the Indiana Open Door Law.",
+    "The company describes itself as community engagement software that helps state and local government agencies. The same page lists Local Government, Transit Agencies, DOTs & MPOs, Consultants, and Councils of Government as groups served. PublicInput is software-as-a-service, and the engagement page lists ISO 27001 / 27018 / NIST 800 Series Alignment among the standards it says it meets."
+   ],
+   "quote": {
+    "text": "PublicInput was started with the goal of giving the average citizen a voice, on their schedule.",
+    "url": "https://publicinput.com/wp/our-story"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://publicinput.com",
+     "quote": "Run community engagement projects, public meetings, and resident communications from one system"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://publicinput.com/wp/solutions/engagement/",
+     "quote": "Give your community a central hub for surveys, comment submissions, documents, meetings, and more."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://publicinput.com/wp/solutions/engagement/",
+     "quote": "Quickly group and summarize public feedback with built-in natural language processing."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://publicinput.com/wp/solutions/meetings/",
+     "quote": "automates the full meeting lifecycle for government clerks"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://publicinput.com/wp/solutions/meetings/",
+     "quote": "Hybrid integration with Zoom and Microsoft Teams"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://publicinput.com/wp/solutions/meetings/",
+     "quote": "Generate a complete draft of meeting minutes automatically from votes, motions, and public comments"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://publicinput.com/wp/solutions/meetings/",
+     "quote": "State open meetings law requirements (Brown Act, Indiana Open Door Law, and more)"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://publicinput.com/wp/our-story",
+     "quote": "community engagement software that helps state and local government agencies"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://publicinput.com/wp/our-story",
+     "quote": "Who We Serve Local Government Transit Agencies DOTs & MPOs Consultants Councils of Government"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://publicinput.com/wp/solutions/engagement/",
+     "quote": "ISO 27001 / 27018 / NIST 800 Series Alignment"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://publicinput.com",
+     "sha": "c6df21be3b6f7257",
+     "fetched_on": null
+    },
+    {
+     "url": "https://publicinput.com/wp/solutions/engagement/",
+     "sha": "74b0df1a4e3f2a96",
+     "fetched_on": null
+    },
+    {
+     "url": "https://publicinput.com/wp/solutions/meetings/",
+     "sha": "8374c01522711073",
+     "fetched_on": null
+    },
+    {
+     "url": "https://publicinput.com/wp/our-story",
+     "sha": "c7eef9fb4e072482",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "go-vocal",
@@ -19640,7 +20138,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Prophecy Gov sells an internal AI tool for the staff of local governments. The product covers three functions: searching a municipality's ingested records, drafting documents, and comparing one government with others. The drafting function covers staff reports and resolutions, matched to how a local government writes.",
+    "A benchmarking function sets one government beside others to show what those governments did. The site says the product was built to integrate with tools a government already uses.",
+    "The pages describe the system as closed, reachable only by staff, with files and data specific to the government that uses it. The site names Vault as the place files are organized, with control over who can reach them. The site also states that queries, responses, and uploaded documents are not used to train underlying models."
+   ],
+   "quote": {
+    "text": "An internal, closed AI accessible only by staff. All files and data are specific to your government.",
+    "url": "https://www.prophecygov.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.prophecygov.com",
+     "quote": "Internal AI for staff, built by a team with decades of local gov experience and deep AI expertise."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.prophecygov.com",
+     "quote": "Quickly search across your municipality's ingested records to find the information you need in seconds."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.prophecygov.com",
+     "quote": "Draft staff reports, resolutions, and more. Our drafts are specific to how your local gov writes."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.prophecygov.com",
+     "quote": "See what others did. Rapidly glean best practices, make data-backed decisions, and save on consultants."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.prophecygov.com",
+     "quote": "Prophecy Gov was built with government-specific tools in mind, so that you can integrate with tools that you are already using."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.prophecygov.com",
+     "quote": "An internal, closed AI accessible only by staff. All files and data are specific to your government."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.prophecygov.com",
+     "quote": "Secure your files with Vault"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.prophecygov.com",
+     "quote": "We don\u2019t use queries, responses, or uploaded documents to train underlying models."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.prophecygov.com",
+     "sha": "bd4108802efc4a88",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "govinity",
@@ -21235,7 +21805,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PSD Citywide sells an enterprise SaaS platform to municipalities and public sector organizations, unifying asset management, maintenance, permitting, planning, licensing, budgeting, and GIS in one system. The Citywide Platform shares data across all modules rather than relying on third-party applications.",
+    "Citywide Assets tracks roads, water, fleet, facilities, and linear assets with condition assessments, GIS integration, and capital planning. Citywide Maintenance is a CMMS covering work orders, inspections, and preventive maintenance across roads, facilities, and utilities. Citywide EGIS is a managed GIS server environment with desktop and web access, and a viewer module inside the platform maps assets and starts service requests from a location.",
+    "Advisory services are aimed at asset-intensive organizations including local governments, water and wastewater authorities, and parks and conservation authorities. Departments named include public works, utilities, finance, parks, and facilities. PSD Citywide is listed as an approved Sourcewell vendor."
+   ],
+   "quote": {
+    "text": "Scalable, secure, and designed to share data seamlessly across all modules.",
+    "url": "https://www.psdcitywide.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.psdcitywide.com",
+     "quote": "PSD Citywide is an enterprise SaaS solution for municipalities and public sector organizations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.psdcitywide.com",
+     "quote": "The Citywide Platform was purpose-built to be scalable, secure, and support the seamless sharing of data across all modules."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://psdcitywide.com/solutions/asset-management-services/",
+     "quote": "Citywide Assets helps local governments track, maintain, and improve infrastructure across its full lifecycle."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://psdcitywide.com/solutions/cmms-system/",
+     "quote": "A computerized maintenance management system (CMMS) is software that helps municipalities organize, automate, and track work orders, inspections, and preventive maintenance"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://psdcitywide.com/solutions/gis-system/",
+     "quote": "With PSD Citywide EGIS, you get a fully integrated enterprise GIS platform delivered through a managed GIS server environment with desktop and web access."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.psdcitywide.com",
+     "quote": "We partner with asset-intensive organizations like local governments, water and wastewater authorities, parks and conservation authorities"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://psdcitywide.com/solutions/asset-management-services/",
+     "quote": "Improve cross-department collaboration across public works, utilities, finance, and leadership"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.psdcitywide.com",
+     "quote": "Approved Sourcewell Vendor"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.psdcitywide.com",
+     "sha": "e9b490cd801f0ea1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://psdcitywide.com/solutions/asset-management-services/",
+     "sha": "780d5ff59ed5189d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://psdcitywide.com/solutions/cmms-system/",
+     "sha": "d443dd35c419aad9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://psdcitywide.com/solutions/gis-system/",
+     "sha": "34d6034c7c927182",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cityreporter",
@@ -44327,7 +44984,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "APTA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Prodata PTexcellence provides AFC platforms, EMV/contactless payment equipment, ITS, and passenger information systems for public transport. The company positions itself as one supplier across the full transport stack, with validators in the field and an AFC platform in the backend. Delivery is described as hardware plus software in a modular approach, with integration through open APIs and standards.",
+    "PROXIMA connects validators, fare rules, payments, customer accounts, and reporting in one multi-tenant AFC platform. Field hardware covers on-board validators, gate validators, NFC/EMV readers, and secure field hardware designed for continuous transport operation. The software layer covers integrated transport systems, fleet telemetry, real-time predictions, passenger communication, displays, and operator monitoring.",
+    "The pages name public transport operators, authorities, infrastructure partners and smart cities as the buyers addressed. Listed project types run from validator rollouts to full AFC modernization. Specific certifications, deployment counts, and SLA terms are stated to be confirmed per project during scoping."
+   ],
+   "quote": {
+    "text": "Engineered for transport systems that must last.",
+    "url": "https://www.pptexcellence.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pptexcellence.com",
+     "quote": "Prodata PTexcellence provides AFC platforms, EMV/contactless payment equipment, ITS,"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pptexcellence.com",
+     "quote": "One supplier across the full transport stack: validators in the field"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.pptexcellence.com",
+     "quote": "Delivery model Hardware + Software, Modular Approach"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pptexcellence.com",
+     "quote": "PROXIMA connects validators, fare rules, payments, customer accounts, reporting, and"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pptexcellence.com",
+     "quote": "On-board validators, gate validators, NFC/EMV readers, and secure field hardware designed for continuous transport operation."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pptexcellence.com",
+     "quote": "Integrated transport systems, fleet telemetry, real-time predictions, passenger communication, displays, web/mobile channels, and operator monitoring."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pptexcellence.com",
+     "quote": "and passenger information systems for public transport operators, authorities, infrastructure partners and smart cities."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pptexcellence.com",
+     "quote": "from validator rollouts to full AFC modernization."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.pptexcellence.com",
+     "quote": "Specific certifications, deployment counts, and SLA terms are confirmed per project during scoping."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pptexcellence.com",
+     "sha": "fd028f4b858dc43e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "init",
@@ -45740,7 +46475,84 @@
   "buyer": "Train manufacturers (new-build and fleet-renewal projects) and transit authorities/operators (fleet management and operations) are both named as customer segments",
   "sells_to_gov": "yes",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Quester Tangent manufactures, supplies, and integrates passenger train technologies for new train build projects and for midlife renewal of existing fleets. The product line pairs Trainwise, an onboard train control and monitoring system (TCMS) and passenger information system (PIS), with Fleetwise, a wayside enterprise fleet management system (EFMS).",
+    "Train manufacturers fast-track production using integrated Trainwise TCMS and PIS technology tailored to the needs of each project. Transit authorities and operators use Fleetwise EFMS to connect from the wayside to the onboard Trainwise TCMS and PIS of every train in a fleet. The fleets named are subway, LRV, and commuter rail, and the systems serve drivers, operations, maintenance, and engineering teams.",
+    "Operations teams determine fleet readiness and see train faults in real-time, while maintenance teams triage service affecting repairs and automate system software updates. Quester Tangent states more than two decades of passenger train experience and thousands of units in revenue service with major transit authorities. Delivery covers hardware and software design, manufacturing, project management, and turnkey delivery with integration and in-house engineering services for all types of train networks."
+   ],
+   "quote": {
+    "text": "Our unique ecosystem unifies onboard Trainwise\u00ae TCMS and PIS with the wayside Fleetwise\u00ae enterprise fleet management system.",
+    "url": "https://www.questertangent.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "Quester Tangent manufactures, supplies, and integrates industry-leading passenger train technologies that adapt perfectly to the requirements of new train build projects or midlife renewal of existing fleets."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "Trainwise\u00ae onboard train control and monitoring system (TCMS) and passenger information system (PIS)"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "Train manufacturers will fast-track production using integrated Trainwise TCMS and PIS technology tailored to the unique needs of each project."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "Transit authorities and operators use Fleetwise EFMS to connect in real-time from the wayside to the onboard Trainwise TCMS and PIS of every train in the fleet."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.questertangent.com",
+     "quote": "The Quester Tangent enterprise solution keeps your teams connected to all of your subway, LRV, and commuter rail fleets."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.questertangent.com",
+     "quote": "Operations Determine fleet readiness, see train faults in real-time, enable remote support for drivers, maintain and report regulatory compliance."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "more than two decades of passenger train experience and thousands of units in revenue service with major transit authorities"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.questertangent.com/about/",
+     "quote": "We provide end-to-end hardware and software design, manufacturing, project management, and turnkey delivery with integration and in-house engineering services for all types of train networks."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.questertangent.com",
+     "sha": "b0fcb5077de56da8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.questertangent.com/about/",
+     "sha": "3e1ddc6ced90046f",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tracsis",
@@ -59476,7 +60288,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "ICMA 2025; PWX 2026; AAAE 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Procore sells construction project management software for projects from preconstruction to closeout. The products page lists capabilities to plan, prep, build, and operate construction projects on one platform. Those capabilities include bid management, budgets, drawings, daily logs, scheduling, and equipment tracking.",
+    "The platform page describes analytics and AI features that support decisions across a project. Procore for Government is offered for oversight of federal projects, with FedRAMP Class C certification named on the platform page. The platform page also names support for DoD contractors with CMMC Level 2 obligations and for U.S. government entities.",
+    "The about page points to construction companies such as Ferrovial that use Procore on their projects. Product pages address specialty contractors and general contractors as the teams using the scheduling and communication tools."
+   ],
+   "quote": {
+    "text": "Manage your construction projects from preconstruction to closeout with the insights you need to maximize safety, efficiency, and ROI.",
+    "url": "https://www.procore.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.procore.com",
+     "quote": "Manage your construction projects from preconstruction to closeout with the insights you need to maximize safety, efficiency, and ROI."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.procore.com/products",
+     "quote": "Discover every capability you need to plan, prep, build, and operate construction projects on one platform."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.procore.com/products",
+     "quote": "Save time throughout the bidding process with features that let you distribute information, collect bids and track coverage all in one place."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.procore.com/platform",
+     "quote": "An intelligent platform helps you make smarter decisions every step of the way. Improve operational visibility and see your projects clearly with advanced analytics and AI insights."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.procore.com/platform",
+     "quote": "Procore for Government helps you streamline the management and oversight of federal projects."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.procore.com/platform",
+     "quote": "built to help support DoD contractors who may have CMMC Level 2 obligations and U.S. government entities"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.procore.com/about",
+     "quote": "See how Ferrovial leverages Procore to build the impossible."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.procore.com/products",
+     "quote": "Get real-time visibility into workforce availability, skill sets and equipment assets with a centralized scheduling and communication hub for specialty contractors and general contractors."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.procore.com",
+     "sha": "e9641f3947b29a0b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.procore.com/products",
+     "sha": "5867056247ceab69",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.procore.com/platform",
+     "sha": "dbf708912e3bdb19",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.procore.com/about",
+     "sha": "9e62dbe52ef5acaa",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pronesis",
@@ -59529,7 +60428,82 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026; EDUCAUSE 2026",
-  "researched": false
+  "researched": false,
+  "profile": {
+   "paragraphs": [
+    "Proofpoint sells email security software that organizations deploy either through an API or through a secure email gateway. Core Email Protection is the email product on that page, described as blocking 99.999% of advanced email threats, including phishing attacks, BEC, and ransomware.",
+    "Collaboration Security Prime extends that protection beyond email to messaging and collaboration tools, cloud applications, and the supply chain on one platform. Email Fraud Defense is a separate product built on DMARC authentication, domain discovery, and supplier risk visibility through Supplier Risk Explorer.",
+    "The homepage and the email protection page name customers including Accenture, Wyndham, Goosehead Insurance, and Perrigo. A By Industry menu on those pages lists Federal Government, State and Local Government, Higher Education, and Healthcare."
+   ],
+   "quote": {
+    "text": "Email is today's most important business communications channel. It's also organizations' No. 1 threat vector.",
+    "url": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.proofpoint.com/us/products/email-protection",
+     "quote": "Match your deployment to your business priorities: get comprehensive protection and customization via SEG, or deploy via API for rapid, low-touch rollout."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.proofpoint.com/us/products/email-protection",
+     "quote": "Proofpoint Core Email Protection blocks 99.999% of advanced email threats, including phishing attacks, BEC, ransomware, and beyond."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.proofpoint.com/us/products/collaboration-security-prime",
+     "quote": "Prime extends protection beyond email to messaging and collaboration tools, cloud applications, and the supply chain"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense",
+     "quote": "Proofpoint Email Fraud Defense helps secure your email channel and restore trust in business communications."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.proofpoint.com/us",
+     "quote": "Accenture secures people, data, and operations, and stops advanced email threats with Proofpoint."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.proofpoint.com/us",
+     "quote": "Enable your agency with FedRAMP certified security"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.proofpoint.com/us",
+     "sha": "0592280568f6d717",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.proofpoint.com/us/products/collaboration-security-prime",
+     "sha": "7e9fc9d58949523e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.proofpoint.com/us/products/email-protection",
+     "sha": "20a24a37c25fcd1a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense",
+     "sha": "d68cde9ff9928a78",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pulse-transit-software",
@@ -59583,7 +60557,84 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Government and critical-infrastructure operators \u2014 airports, seaports, border security, military bases, and utility companies; holds a GSA contract (47QTCA21D009V), which suggests public-sector sales ",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "PureTech Systems sells automation software that protects facilities, critical infrastructure, and borders. PureActiv, the product line, delivers automated detection, verification, alerting, and deterrence of safety and security threats. Auto-verification covers intrusion detections taken from video, radar, and fence sensors.",
+    "At airports, transportation authorities are the stated users of that perimeter protection. Rail is a second transit application, with detection and notification of any object of concern on the rail tracks. Military authorities and law enforcement are the stated users at military bases.",
+    "The customers page reports deployments in critical infrastructure, government facilities, and commercial buildings. Named customer types there include Nuclear Power Plants, a Foreign Ministry of Defense, a U.S. Defense Contractor, and U.S. Military Seaports."
+   ],
+   "quote": {
+    "text": "AUTOMATED PERIMETER INTRUSION DETECTION SYSTEMS",
+    "url": "https://www.puretechsystems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.puretechsystems.com",
+     "quote": "PureTech is transforming perimeter security with advanced automation software to protect facilities, critical infrastructure, and borders."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.puretechsystems.com",
+     "quote": "PureActiv delivers automated detection, verification, alerting, and proactive deterrence of potential safety and security threats"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.puretechsystems.com",
+     "quote": "of intrusion detections from Video, Radar, Fence Sensors"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.puretechsystems.com",
+     "quote": "empowers transportation authorities to significantly enhance the safety and security of airports."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.puretechsystems.com",
+     "quote": "PureActiv automates the real-time detection and notification of any object of concern on the rail tracks"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.puretechsystems.com",
+     "quote": "PureActiv detects perimeter intrusions early, allowing military authorities and law enforcement to swiftly intervene"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.puretechsystems.com/customers",
+     "quote": "Our advanced technologies have been implemented in critical infrastructure, government facilities, commercial buildings, and more"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.puretechsystems.com/customers",
+     "quote": "U.S. Defense Contractor"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.puretechsystems.com",
+     "sha": "26ab2f60e15a1706",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.puretechsystems.com/customers",
+     "sha": "252523a2c238abf6",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "qualtrics",
@@ -59678,7 +60729,95 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Managed Cybersecurity & CMMC Compliance for DIB & Regulated Industries\" URL is correct - fetched https://radicl.com, live, company's own primary domain, and it matches the given description 'Cybersecurity for defense suppliers' precisely: 'Fully Managed Compliance and Cybersecurity-as-a-Service' built around CMMC and NIST 800-171. ANSWERING THE SLED QUESTION YOU ASKED, and the answer is no: RADICL's own site shows no state or local government market. Its stated mission is 'Giving SMBs that serve America's Defense Industrial Base(DIB) and Critical Infrastructure (CI) affordable access to strong, enterprise-grade cyber security protection', and its defense industry page says 'RADICL provides vSOC-led cybersecurity for defense contractors in the Defense Industrial Base'. The customer logos are defense and aerospace firms (ACS, Aerial Machine & Tool, Agile Space Industries) - no state or local agencies. The only 'government' association I found is a Carahsoft reseller page listing RADICL for federal/state/local buyers, but that is an aggregator/reseller listing (deprioritized per rule 6) and Carahsoft catalogs vendors for government purchasing generally; it is not evidence RADICL sells to SLED. RECOMMENDATION: the URL is right, but RADICL appears to be a federal-defense-supply-chain vendor "
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "RADICL sells managed compliance and cybersecurity together as one subscription service. Delivery runs through a virtual security operations center that combines automated workflows with staff analysts. A single platform carries detection analytics, incident response, vulnerability reduction and compliance evidence.",
+    "The compliance side is aimed at CMMC and NIST 800-171 readiness. It covers guided self-assessments, remediation instructions and evidence kept ready for an audit. Endpoint coverage is deployed on EDR products such as CrowdStrike, SentinelOne and Microsoft Defender.",
+    "The platform page describes the service as protection for SMBs. The mission page points at businesses serving the Defense Industrial Base and the nation's critical infrastructure. Statements on that page are attributed to VATN Systems and to Red6."
+   ],
+   "quote": {
+    "text": "It's time for a radical solution to protect regulated businesses from advanced cyberthreats",
+    "url": "https://radicl.com/mission"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://radicl.com",
+     "quote": "Fully Managed Compliance and Cybersecurity-as-a-Service. Delivered as One."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://radicl.com",
+     "quote": "Our autonomous virtual security operations center (vSOC) uses AI-driven workflows and human expertise"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://radicl.com/platform",
+     "quote": "Our platform unifies SIEM/XDR analytics, incident response, vulnerability reduction, and compliance evidence in one place"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://radicl.com/platform",
+     "quote": "CMMC and NIST 800-171 Readiness, Built Into Our Platform"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://radicl.com/platform",
+     "quote": "Weekly guided self-assessments with expert compliance consultants who provide remediation instructions, spot-check evidence, and ensure audit readiness."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://radicl.com",
+     "quote": "We deploy, optimize, and maintain leading EDR technologies (for example, CrowdStrike, SentinelOne, and Microsoft Defender)"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://radicl.com/platform",
+     "quote": "Enterprise-grade cyberthreat protection for SMBs."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://radicl.com/mission",
+     "quote": "Businesses serving America's Defense Industrial Base (DIB)"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://radicl.com/mission",
+     "quote": "VP of Information Technology | Red6"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://radicl.com",
+     "sha": "dd805f6f4bc72844",
+     "fetched_on": null
+    },
+    {
+     "url": "https://radicl.com/platform",
+     "sha": "949c978e7d25378f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://radicl.com/mission",
+     "sha": "c42e2a79ce366a33",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rfxpremier",
@@ -65466,7 +66605,100 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "QLESS sells queue management software that lets an organization replace a physical line with a virtual one. Customers join a wait list from a phone or the web and get a notification when their turn comes. The platform also books appointments, sends reminders, and offers open slots to other customers after a cancellation.",
+    "Walk-ins, appointments, virtual visits and callbacks run through one system rather than separate tools. Managers watch throughput in real time, see where the backlog sits, and survey customers after a visit. Locations can be shut down or appointments redirected, with customers notified by SMS or email.",
+    "Qless describes the buyers as organizations across government, healthcare, higher education, retail and enterprise services. Ownership sits with Palisades Equity, a private investment firm. Security material on the site lists encryption of data in transit and at rest and role based access controls."
+   ],
+   "quote": {
+    "text": "From the public to the private sector, QLESS is the go-to solution for organizations looking to level up their customer operations",
+    "url": "https://www.qless.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.qless.com/products/",
+     "quote": "Integrated Queue Management Software"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.qless.com/products/",
+     "quote": "Join the line from the comfort of your own home. With Mobile Queueing\u00ae and web sign-up, customers can join from anywhere"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.qless.com/products/",
+     "quote": "Automatically alert customers to open spots from cancellations or reschedules, so they can snag an earlier appointment."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.qless.com",
+     "quote": "All visit types (walk-ins, appointment, virtual, callback) in a unified engagement platform."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.qless.com",
+     "quote": "Improve customer satisfaction scores with native survey capabilities."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.qless.com/products/",
+     "quote": "Shut down locations or redirect appointments at a moment\u2019s notice while notifying customers via SMS or email."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.qless.com/about/",
+     "quote": "Qless supports thousands of organizations across government, healthcare, higher education, retail, and enterprise services."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.qless.com/about/",
+     "quote": "Qless is owned by Palisades Equity , a private investment firm focused on building durable, growth-oriented businesses."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.qless.com/about/",
+     "quote": "Encryption of data in transit and at rest, with strong data segmentation"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.qless.com",
+     "sha": "131b275c200098a0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qless.com/products/",
+     "sha": "645b685b972c7cba",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qless.com/case-studies/",
+     "sha": "6abe1dacd744aa62",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qless.com/about/",
+     "sha": "f340044f9892d8f2",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "rebokeh-vision-technologies",
@@ -74556,7 +75788,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "ProudCity sells a platform that local governments use to launch and manage digital government operations. The about page lists websites, meetings, online forms and payments among what the platform covers. A homepage heading describes the product as local government digital solutions.",
+    "The homepage introduces the organizations it features as local government partners. The same page states that the platform is WCAG 2.1 Level AA compliant and device responsive. Resources offered there include a guide to buying local government websites and a local government website buying template.",
+    "The about page frames the company as a government service provider with a duty to give governments sustainable, flexible technology. It also describes a network built with government partners to improve the platform for them and the people they serve. Both pages cite the GovTech 100 list from Government Technology as recognition the company has received."
+   ],
+   "quote": {
+    "text": "Open is at the core of ProudCity. As government service providers, it is our duty to ensure governments get the most sustainable, flexible technology available, so that they can best serve their communities.",
+    "url": "https://proudcity.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://proudcity.com/about/",
+     "quote": "ProudCity is a platform that makes it easy and cost-effective for local governments to launch and manage digital government operations"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://proudcity.com/about/",
+     "quote": "including websites , meetings , online forms , payments and more"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://proudcity.com",
+     "quote": "Local government digital solutions"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://proudcity.com",
+     "quote": "A selection of local government partners we serve."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://proudcity.com",
+     "quote": "WCAG 2.1 Level AA compliant"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://proudcity.com",
+     "quote": "Local government website buying template"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://proudcity.com/about/",
+     "quote": "Open is at the core of ProudCity. As government service providers, it is our duty to ensure governments get the most sustainable, flexible technology available"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://proudcity.com/about/",
+     "quote": "A collaboration between ProudCity and our government partners that helps us continuously improve our platform for them and the people they serve."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://proudcity.com/about/",
+     "quote": "Since our inception, ProudCity has been honored by Government Technology 's esteemed GovTech 100 list."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://proudcity.com",
+     "sha": "6d214b956225ca98",
+     "fetched_on": null
+    },
+    {
+     "url": "https://proudcity.com/about/",
+     "sha": "98402f2d985b33cd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://proudcity.com/solutions/",
+     "sha": "60398da5c75a6435",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "streamline",
@@ -87484,7 +88804,100 @@
   "sells_to_gov": "yes",
   "buyer_source": "https://www.purvis.com/clients/",
   "buyer_checked_on": "2026-09-11",
-  "scope_note": "Two distinct businesses. The SLED half is fire station alerting and dispatch for municipal and county public-safety agencies \u2014 'trusted advisor to FDNY for 45+ years', Charleston County covering '2 dispatch locations, and 75+ fire & EMS departments'. The defense half is federal: 'trusted partner to the U.S. Navy for over 40 years', NIH, Fort Detrick, and CMMC Level 2 certification. The only non-public buyer is on the defense page, which says PURVIS is 'Trusted by the U.S. Navy and Federal Agencies, as well as large prime contractors and small businesses' \u2014 those primes are private companies, w"
+  "scope_note": "Two distinct businesses. The SLED half is fire station alerting and dispatch for municipal and county public-safety agencies \u2014 'trusted advisor to FDNY for 45+ years', Charleston County covering '2 dispatch locations, and 75+ fire & EMS departments'. The defense half is federal: 'trusted partner to the U.S. Navy for over 40 years', NIH, Fort Detrick, and CMMC Level 2 certification. The only non-public buyer is on the defense page, which says PURVIS is 'Trusted by the U.S. Navy and Federal Agencies, as well as large prime contractors and small businesses' \u2014 those primes are private companies, w",
+  "profile": {
+   "paragraphs": [
+    "PURVIS Systems develops, implements, and maintains mission-critical solutions for federal and local governments. Its Fire Station Alerting System automates the process of dispatching fire and rescue personnel, enhancing communications, and decreasing response times. The same page lists engineering services covering the design, development, and modernization of hardware, software, and systems integration.",
+    "The clients page names the Department of Defense, the National Institutes of Health, and public safety organizations among those served. Named public safety clients include the Boston Fire Department, the City of Chicago's Office of Emergency Communications, and Charleston County, SC. The alerting system interfaces with computer aided dispatch and radio systems to automate the dispatching of fire and EMS calls in the District of Columbia.",
+    "Work for the Department of Defense began with sea trials and sonar experiments aboard the USS Hugh PURVIS in 1973. A partnership with the Fire Department of New York City followed two years later and continues to this day. The about page counts 125+ multi-disciplinary experts on the team."
+   ],
+   "quote": {
+    "text": "Whether it\u2019s integrating disparate systems, developing tailored software and hardware solutions, providing network engineering services, or implementing life-critical alerting technologies, PURVIS works with you to solve those challenges and right-size solutions for your organization.",
+    "url": "https://www.purvis.com/clients/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.purvis.com",
+     "quote": "We develop, implement, and maintain mission-critical solutions for federal and local governments."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.purvis.com",
+     "quote": "Automating the process of dispatching fire and rescue personnel, enhancing communications, and decreasing response times."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.purvis.com",
+     "quote": "Providing comprehensive engineering services including the design, development, and modernization of hardware, software, and systems integration."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.purvis.com/clients/",
+     "quote": "large enough to be trusted by the Department of Defense, National Institutes of Health, and some of the nation\u2019s most sophisticated public safety organizations"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.purvis.com/clients/",
+     "quote": "PURVIS provides the City of Chicago's Office of Emergency Communications with network engineering and support services."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.purvis.com/clients/",
+     "quote": "The FSAS interfaces with the District\u2019s Hexagon computer aided dispatch (CAD) and radio systems to fully automate the dispatching of fire and EMS calls."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.purvis.com/about-us/",
+     "quote": "We began our work aboard the U.S. destroyer USS Hugh PURVIS in 1973, conducting sea trials and sonar experiments"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.purvis.com/about-us/",
+     "quote": "Two years later, we expanded our focus into the public safety space and formed a partnership with the Fire Department of New York City (FDNY), providing technical services and system support that continues to this day."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.purvis.com/about-us/",
+     "quote": "125+ multi-disciplinary experts who are passionate about driving accurate results and empowered to do what's right for you."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.purvis.com",
+     "sha": "4a09b7c085464ef2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.purvis.com/clients/",
+     "sha": "c00db607a6e76ea2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.purvis.com/about-us/",
+     "sha": "d5a72dd3da6f11c0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.purvis.com/about-us/leadership/",
+     "sha": "89ee46eca00d81c1",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "zetron",
@@ -90499,7 +91912,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; NatCon 2026"
+  "source": "competitor sweep; NatCon 2026",
+  "profile": {
+   "paragraphs": [
+    "Qualifacts sells electronic health record software and data services for behavioral health. The homepage states that Qualifacts is the EHR partner for 2,200+ behavioral health agencies nationwide. The same page describes the company as serving organizations of every size, non-profit and for-profit.",
+    "Three EHR platforms are listed: Credible, CareLogic and InSync. Credible EHR is described as a cloud-based solution for large agencies including community mental health centers, CCBHCs, SUD, IDD, residential, and integrated primary care services. The CareLogic platform is presented for enterprise behavioral health and human services organizations, including multi-location and multi-state entities and agencies with multiple programs and specialties. InSync EHR and practice management software is described as configured especially with small and mid-size practices and agencies in mind.",
+    "The about page says the company has delivered technology, support, and services to the behavioral health and human services market for more than 25 years. Qualifacts has headquarters in Nashville and Tampa with employees across the globe."
+   ],
+   "quote": {
+    "text": "Built for Behavioral Health by Behavioral Health Professionals",
+    "url": "https://qualifacts.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://qualifacts.com",
+     "quote": "Behavioral Health EHR Software & Data Solutions"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://qualifacts.com",
+     "quote": "Qualifacts is the trusted EHR partner for 2,200+ behavioral health agencies nationwide"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://qualifacts.com",
+     "quote": "serving organizations of every size, non\u2011profit and for\u2011profit"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.qualifacts.com/about/",
+     "quote": "Three EHR Platforms for a Customizable Solution"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.qualifacts.com/about/credible-ehr-platform/",
+     "quote": "community mental health centers, CCBHCs, SUD, IDD, residential, and integrated"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.qualifacts.com/about/",
+     "quote": "The CareLogic EHR platform is ideal for enterprise behavioral health and human services organizations, including multi-location and multi-state entities"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.qualifacts.com/about/",
+     "quote": "Configured especially with small and mid-size practices and agencies in mind"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.qualifacts.com/about/",
+     "quote": "For more than 25 years, Qualifacts has delivered thoughtful innovation, technology, support, and services to the behavioral health and human services market"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.qualifacts.com/about/",
+     "quote": "Qualifacts has headquarters in Nashville and Tampa with employees across the globe"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://qualifacts.com",
+     "sha": "59d4d0767164baa5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qualifacts.com/about/",
+     "sha": "8eda3bb61543fb4b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qualifacts.com/about/leadership/",
+     "sha": "db570f324f29c279",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qualifacts.com/about/credible-ehr-platform/",
+     "sha": "b07e6156ebdda906",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "streamline-healthcare-solutions",
@@ -91133,7 +92639,84 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; NCSEA 2026"
+  "source": "competitor sweep; NCSEA 2026",
+  "profile": {
+   "paragraphs": [
+    "Protech Solutions, Inc. is headquartered in Little Rock, Arkansas, and has developed enterprise-level systems for large, statewide agencies for 30 years. The stated focus is child support systems, homelessness, corrections, and fatherhood programs, with enterprise-level systems provided to government agencies worldwide. The pages describe an international child support system built in collaboration with The Hague Convention.",
+    "In AR, the pages claim the first web-based child support platform in the nation. A complex 46-county CSE system in SC is presented as work taken on where larger vendors failed.",
+    "Analytics are credited with boosting child support collections in the State of Maine. Hawaii's CSE system is being replatformed to better serve children and families. Digital integration is credited with revitalizing NJ's SNAP & TANF systems."
+   ],
+   "quote": {
+    "text": "For 30 years, we\u2019ve transformed government technology across social services.",
+    "url": "https://www.protechsolutions.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.protechsolutions.com/about-us/",
+     "quote": "Protech Solutions, Inc., headquartered in Little Rock, Arkansas, has been at the forefront of GovTech for 30 years."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.protechsolutions.com/about-us/",
+     "quote": "We specialize in GovTech solutions, with a deep focus on child support systems, homelessness, corrections, fatherhood programs, and more. Our team has decades of experience, providing enterprise-level systems to government agencies worldwide."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.protechsolutions.com/about-us/",
+     "quote": "While we work with U.S. clients, our reach extends internationally, with notable projects like the international child support system in collaboration with The Hague Convention."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.protechsolutions.com",
+     "quote": "In AR, we built the Nation\u2019s first web-based Child Support platform."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.protechsolutions.com",
+     "quote": "Where larger vendors failed, we succeeded on a complex 46-county SC CSE System."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.protechsolutions.com",
+     "quote": "Our analytics helped boost child support collections in the State of Maine."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.protechsolutions.com",
+     "quote": "We are replatforming Hawaii\u2019s CSE system to better serve their children & families."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.protechsolutions.com",
+     "quote": "Our digital integration revitalized NJ\u2019s SNAP & TANF systems."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.protechsolutions.com",
+     "sha": "aa49ac66a7f9ace8",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.protechsolutions.com/about-us/",
+     "sha": "8784ca7203c49c14",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "sandata-technologies",
@@ -91629,7 +93212,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Quest sells an online bidding platform that connects project solicitors with the bidding community. The company describes it as a bid management SaaS tool built to maximize efficiency and communication. Project solicitors like municipalities, engineers, and architects post bid advertisements on it.",
+    "Solicitors post all bidding documents on the platform and set the download price, and bidders then download the documents. Bidders download complete project bidding documentation through the eBidDoc system for previewing, printing, bidding, or quoting. Bidders who have downloaded an eBidDoc are automatically alerted of addenda and bid results.",
+    "Since its launch in 1999, Quest has grown into a construction project bidding data network in the United States. Bid opportunities can be searched across all 50 US states. A Plan Holder list updates when a prospective bidder downloads documents."
+   ],
+   "quote": {
+    "text": "Quest was designed to digitize, automate, perfect communication and effectively serve as the information channel for project solicitors and the entire bidding community.",
+    "url": "https://questcdn.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://questcdn.com",
+     "quote": "Built by construction experts to streamline the bidding process, Quest has connected project solicitors with the bidding community"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://home.questcdn.com/about-us/",
+     "quote": "bid management SaaS (Software as a Service) tool to maximize efficiency and communication"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://questcdn.com",
+     "quote": "Quest provides project solicitors like municipalities, engineers, and architects access to post bid advertisements on our platform."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://questcdn.com",
+     "quote": "Solicitors can post all bidding documents on our platform. You set the download price for the bidding documents. Bidders then download the documents at no cost to you."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://questcdn.com",
+     "quote": "Bidders can download complete project bidding documentation (eBidDoc\u2122) for previewing, printing, bidding, or quoting purposes."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://home.questcdn.com/about-us/",
+     "quote": "Bidders who have downloaded an eBidDoc\u2122 are automatically alerted of addenda and bid results."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://home.questcdn.com/about-us/",
+     "quote": "Since its launch in 1999, Quest has grown to become the premier construction project bidding data network in the United States"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://home.questcdn.com/about-us/",
+     "quote": "Easily search our platform for relevant bid opportunities in all 50 US states."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://home.questcdn.com/about-us/",
+     "quote": "Automatically get a Plan Holder list that\u2019s updated when a prospective bidder downloads documents."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://questcdn.com",
+     "sha": "0ebe8b0cb3a87d4c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://home.questcdn.com/about-us/",
+     "sha": "df19c0ea9cb4e666",
+     "fetched_on": null
+    },
+    {
+     "url": "https://questcdn.com/about-us/",
+     "sha": null,
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "ebid-systems",
@@ -93790,7 +95461,95 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Qoria, formerly Family Zone, describes itself as a global technology company working to keep children safe in their digital lives. The homepage groups several brands under Qoria, including Linewize, Smoothwall, Qustodio, and ySafe. Smoothwall is described as a pioneer in digital safeguarding solutions for schools in the UK, while Qustodio sells parental control tools.",
+    "The solutions page sets out classroom internet management, content filtering, and a firewall as products that reduce exposure to risk. Monitor alerts pastoral teams to students at risk based on digital behaviours, and Pulse is a 60-second weekly check-in that asks students to speak up. Training and consultancy teams, the Online Safety Hub, and the Digital Experts Academy support school staff and students.",
+    "Granular reporting covers trends over time, and school district and MAT leaders can report organisation-wide or per school. The story page counts 650 people across 10 countries, 32,000 schools, 9 million parents and 30 million children. Aura has announced a binding agreement under which it proposes to acquire Qoria."
+   ],
+   "quote": {
+    "text": "Closing the gaps that children fall through",
+    "url": "https://qoria.com/our-story"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://qoria.com",
+     "quote": "We are a global technology company, dedicated to keeping children safe and well in their digital lives."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://qoria.com",
+     "quote": "We may not have the same name but we all share the same determination to keep children safe and thriving in their digital lives, wherever they are."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://qoria.com",
+     "quote": "A pioneer in digital safeguarding solutions for schools, Smoothwall has been the UK market leader for over two decades."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://qoria.com/solutions",
+     "quote": "Our digital classroom solutions give teachers full-screen visibility and control of school devices used in class."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://qoria.com/solutions",
+     "quote": "works in real-time to alert pastoral teams to students at risk - based on their digital behaviours."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://qoria.com/solutions",
+     "quote": "School staff are supported by our training and consultancy teams. Also by our Online Safety Hub."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://qoria.com/solutions",
+     "quote": "School district and MAT leaders can report organisation-wide or per schools and provide support at every level."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://qoria.com/our-story",
+     "quote": "now 650 people working across 10 countries, looking after 32,000 schools, supporting 9 million parents and helping to keep 30 million children safer than they were before."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://qoria.com/our-story",
+     "quote": "announces it has entered into a binding agreement under which Aura proposes to acquire Qoria."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://qoria.com",
+     "sha": "41a080cf78a0858c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://qoria.com/our-story",
+     "sha": "3e9e51ed051dc5f1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://qoria.com/solutions",
+     "sha": "cc9035637e044d68",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "impero-software",
@@ -100899,7 +102658,72 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "REI sells camera systems, fleet management software, video monitors, radios and accessories for transportation fleets. The company's in-house engineers create fleet camera systems and collision avoidance systems for trucks, buses, or commercial vehicles.",
+    "The homepage lists the markets served as School Bus, Motorcoach, Transit, Commercial Bus, Commercial Truck, and Agriculture & Construction. Support staff handle questions about school bus, transit bus, and commercial vehicle fleet camera systems and management software.",
+    "The about page describes REI as an engineering company focused on hardware and software for transportation, including 360 surround view cameras and driver assistance for school bus, transit, motorcoach and commercial vehicle fleets. A testimonial on the homepage is credited to a Director of Transportation at a school district."
+   ],
+   "quote": {
+    "text": "Six core principles guide and inspire REI employees to achieve greatness for our school bus, transit, motorcoach, and commercial vehicle fleet customers:",
+    "url": "https://www.radioeng.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.radioeng.com",
+     "quote": "camera systems, fleet management software, video monitors, radios and accessories to advance transportation."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.radioeng.com",
+     "quote": "Our team of in-house engineers uses the most advanced technology and testing methods available to create fleet camera systems , collision avoidance systems and more equipment for trucks, buses, or commercial vehicles."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.radioeng.com",
+     "quote": "REI serves the following markets:"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.radioeng.com",
+     "quote": "prepared to answer your questions about our school bus , transit bus, and commercial vehcile fleet camera systems, management software"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.radioeng.com/about/",
+     "quote": "camera systems, fleet management, 360 surround view cameras, and driver assistance for school bus , transit , motorcoach and commercial vehicle fleets."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.radioeng.com",
+     "quote": "Director of Transportation , The School District of the City of St. Charles"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.radioeng.com",
+     "sha": "a09b09713e84a7c9",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.radioeng.com/about/",
+     "sha": "9f83198bdc4c9844",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "blue-bird-corporation",
@@ -114090,7 +115914,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "QPR Software sells process intelligence software that combines process mining, process modeling, enterprise architecture and performance management. QPR ProcessAnalyzer is the process mining product, presented as a layer that turns enterprise data into operational context for enterprise AI and AI agents. QPR EnterpriseArchitect is an ArchiMate 3 certified enterprise architecture tool for modeling business, application and technology portfolios.",
+    "The product runs natively on Snowflake and also supports cloud, hybrid and on-premise deployment. Out-of-the-box connectors are listed for SAP, Oracle, ServiceNow and Salesforce, with an ETL engine for custom data sources. Conformance checking widgets compare execution data against target BPMN models to detect deviations, unauthorized steps and skipped approvals. Object-centric process mining tracks interactions between multiple objects at once, based on the OCEL 2.0 standard.",
+    "Industry sections on the homepage present the product for Pharma, Insurance, Manufacturing, retail and Banking. Named customer stories on the enterprise architecture page are St1 Nordic and YIT."
+   ],
+   "quote": {
+    "text": "QPR brings together process intelligence, process modeling, enterprise architecture and performance management to give AI the operational context it needs to understand your business and act with confidence.",
+    "url": "https://www.qpr.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.qpr.com",
+     "quote": "QPR brings together process intelligence, process modeling, enterprise architecture and performance management to give AI the operational context it needs to understand your business and act with confidence."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "quote": "QPR ProcessAnalyzer provides that missing layer by connecting enterprise data, process reality, and governance into one trusted operational context for AI-driven decisions and actions."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.qpr.com/products/qpr-enterprisearchitect",
+     "quote": "QPR EnterpriseArchitect is an ArchiMate\u00ae 3 certified enterprise architecture tool"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "quote": "Not on Snowflake? QPR ProcessAnalyzer also supports cloud, hybrid, and on-premise deployment models and connects to your existing enterprise systems and data architecture."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "quote": "Out-of-the-box connectors for SAP (S/4HANA), Oracle, ServiceNow, Salesforce , and more. Includes a high-performance ETL engine for custom data sources."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "quote": "Advanced Conformance Checking widgets that automatically detect deviations, unauthorized steps, or skipped approvals by comparing execution data to your target BPMN models."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "quote": "Native support for complex, multi-object process flows based on the OCEL 2.0 standard"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.qpr.com",
+     "quote": "Trusted by industries worldwide to make AI operational"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.qpr.com/products/qpr-enterprisearchitect",
+     "quote": "How St1 built a unified digital operating model to integrate acquisitions, launch new business models, and drive continuous business transformation with QPR EnterpriseArchitect."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.qpr.com",
+     "sha": "79d9172acb6c4613",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qpr.com/company/contact-us",
+     "sha": "46639823eb7e8366",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qpr.com/products/qpr-processanalyzer",
+     "sha": "58fc49bca40f97b5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.qpr.com/products/qpr-enterprisearchitect",
+     "sha": "95de9ecb97a3db29",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "urbanfootprint",
@@ -122571,7 +124488,85 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NatCon 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PRG Insight is a data management and visualization system built for organizations that receive federal grants. The system collects performance measure data and structures it in dashboards describing client characteristics, participation, and targeted behavior change. Dashboard tabs can be filtered by teams, sites, or dates for site-level performance analysis or funder inquiries about specific performance periods.",
+    "The pages address CSAT and CMHS grantees using GPRA and NOMS for client-level data collection who are required to use SUPRT. The Insight system is described as including an electronic SUPRT form, follow-up and tracking alerts, and automatic upload to SPARS. Automated uploads to federal performance measure portals are presented as removing duplicate data entry, with validation tools built into the data entry tools.",
+    "Training for the electronic data entry tools and dashboard system is offered through web-based tutorials, a user guide, and an email help desk. PRG Insight comes from The Policy & Research Group, a research and evaluation firm that conducts data collection and analysis for SAMHSA-funded grant projects. Partner Feedback on the page carries testimonials attributed to a Data Evaluation Coordinator at the Minnesota Department of Human Services and to a director at Odyssey House Louisiana."
+   ],
+   "quote": {
+    "text": "Reduce the burden of performance data reporting and visualize structured data",
+    "url": "https://www.prginsight.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.prginsight.com",
+     "quote": "PRG Insight is a data management and visualization system that empowers agencies to make data-informed decisions."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.prginsight.com",
+     "quote": "Insight simplifies performance measure data collection and structures data using dashboards that provide real-time descriptions of client characteristics, participation, and targeted behavior change."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.prginsight.com",
+     "quote": "Dashboards tabs can be filtered by teams, sites, or dates, giving program and administrative staff the instant ability to conduct site-level performance analysis or respond to funder inquiries about specific performance periods."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.prginsight.com",
+     "quote": "CSAT and CMHS grantees currently using GPRA and NOMS for client-level data collection are required to use SUPRT."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.prginsight.com",
+     "quote": "The Insight system includes an electronic SUPRT form for easy data collection; follow-up/tracking alerts; real-time data visualization; and automatic upload to SPARS."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.prginsight.com",
+     "quote": "Automated uploads to federal performance measure portals (such as SAMSHA SPARS) eliminate the need for duplicate data entry"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.prginsight.com",
+     "quote": "User training for the electronic data entry tool(s) and dashboard system provides support to users through on-demand web-based tutorials, a user guide, and an email help desk."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.prginsight.com",
+     "quote": "The Policy & Research Group (PRG) is a research and evaluation firm with over 20 years of experience conducting data collection and analysis for SAMHSA-funded grant projects."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.prginsight.com",
+     "quote": "Minnesota Department of Human Services"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.prginsight.com",
+     "sha": "b6234c8bdf4d7490",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "brainfuse",
@@ -131726,7 +133721,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Professional Computer Solutions, LLC sells software and technology aimed at utilities. The home page presents enterprise solutions for utilities of all sizes, with billing, financials, and workflow named among them. Solutions listed on that site include meter data management, mobile service orders, and third party payment processing.",
+    "Springboard is the product named on the home page as the central hub for a utility's modules and applications. That page says it uses a web-based user interface with secure access from any device. On-premises and hosted deployment models are both listed.",
+    "A security page describes protection for a utility's critical infrastructure and data. That page lists firewall sales and service under unified threat management. It also lists on-site and remote network security penetration testing. Testimonials on the home page name a municipal light department among the customers quoted."
+   ],
+   "quote": {
+    "text": "Springboard is the central hub for all the modules and applications you need to streamline operations, and enhance efficiency at your utility.",
+    "url": "https://www.pcs-csa.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pcs-csa.com",
+     "quote": "Utility Directed Software & Technology"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pcs-csa.com",
+     "quote": "Elevated billing, financials, and workflow to improve utility efficiencies."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://pcs-csa.com/solutions/",
+     "quote": "3rd Party Payment Processing"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pcs-csa.com",
+     "quote": "Springboard is the central hub for all the modules and applications you need to streamline operations, and enhance efficiency at your utility."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pcs-csa.com",
+     "quote": "Springboard harnesses the power of a web-based user interface, granting secure access from any device, anywhere, any time."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pcs-csa.com",
+     "quote": "On-premises and hosted deployment models designed to meet the needs of the ever-changing security landscape"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://pcs-csa.com/solutions/security/",
+     "quote": "prioritize the protection of your utility\u2019s critical infrastructure and data"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://pcs-csa.com/solutions/security/",
+     "quote": "Unified threat management via firewall sales and service."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://pcs-csa.com/solutions/security/",
+     "quote": "On-site and remote network security penetration testing."
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.pcs-csa.com",
+     "quote": "Norwood Municipal Light Department"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pcs-csa.com",
+     "sha": "4271bc29f5a57c14",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pcs-csa.com/solutions/",
+     "sha": "e8fa19e6810a218a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pcs-csa.com/solutions/analytics/",
+     "sha": "e3a31b9e66bf96f2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://pcs-csa.com/solutions/security/",
+     "sha": "55af7a4252808fac",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "spout",
@@ -135959,7 +138053,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "PressReader sells an all-you-can-read subscription to digital newspapers and magazines that organizations license for the people they serve. The catalog covers more than 8,000 newspapers and magazines from over 120 countries in 60+ languages, plus books, puzzles and audio and translation options. Content arrives in full, print-format editions published as close to the print release as possible, not a condensed or text-only version.",
+    "Public libraries are one market, and patrons reach the catalog with a library card, at the library or remotely on their own devices. Colleges and universities license it to support academic programs with current news and global perspectives. Hotels and other travel organizations offer it as a guest amenity, removing the sourcing, distributing and recycling of print publications.",
+    "Pricing is customized rather than one-size-fits-all, depending on industry, audience size and how access is planned. Most organizations start with a trial or pilot. Onboarding and setup guidance, marketing assets and ongoing support are part of what PressReader offers to launch the service and increase usage."
+   ],
+   "quote": {
+    "text": "PressReader uses an all-you-can-read subscription model, giving your library access to the full catalog while making collection management simpler and more predictable from a budgetary perspective.",
+    "url": "https://about.pressreader.com/solutions/public-libraries/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://about.pressreader.com",
+     "quote": "All-you-can-read digital newspapers, magazines and more"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://about.pressreader.com",
+     "quote": "PressReader provides access to more than 8,000 newspapers and magazines from over 120 countries, available in 60+ languages."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://about.pressreader.com",
+     "quote": "All content is delivered in full, print-format editions and published as close to the print release as possible"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://about.pressreader.com/solutions/public-libraries/",
+     "quote": "Patrons can access PressReader using their library card. They can access the PressReader catalog at your library location, or remotely on their own devices using a web browser or the PressReader mobile app."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://about.pressreader.com/solutions/education/",
+     "quote": "Trusted by leading colleges and universities worldwide"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://about.pressreader.com/solutions/travel-hospitality/",
+     "quote": "Digital access to newspapers and magazines eliminates the need for sourcing, distributing and recycling print publications."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://about.pressreader.com",
+     "quote": "Pricing depends on factors such as your industry, audience size and how you plan to offer access."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://about.pressreader.com",
+     "quote": "In fact, most organizations start with a trial or pilot and fall in love with PressReader from there."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://about.pressreader.com",
+     "quote": "PressReader offers hands-on support to help you launch successfully and drive ongoing engagement."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://about.pressreader.com",
+     "sha": "3e2f20178f444b39",
+     "fetched_on": null
+    },
+    {
+     "url": "https://about.pressreader.com/solutions/public-libraries/",
+     "sha": "f66f123eb2f9fe9b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://about.pressreader.com/solutions/education/",
+     "sha": "60263d632ea0029b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://about.pressreader.com/solutions/travel-hospitality/",
+     "sha": "8e19e475140c5818",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "solus",
@@ -142377,7 +144564,90 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PLA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Quipu Group sells library software that covers patron registration, card renewals, digital passes, and incident documentation. The homepage lists four products: digital library card registration, automated card renewals, museum and event pass management, and a Patron Incident Tracking System. The incident product is described as a secure internal tool for documenting incidents and policy infractions.",
+    "The registration product is presented as a way for librarians to issue digital cards and verify patron residency online. The site says the products connect with ILS platforms including Polaris, Sierra, Koha, and Evergreen. Deployments are described as custom-built for each library's policies, languages, and verification requirements, and as working across branches, districts, and consortia.",
+    "The story page states that custom products for libraries have been created since 2005. That page names the four products as eCARD, ePASS, eRENEW, and PITS. The client list described there includes consortia and public libraries of all sizes."
+   ],
+   "quote": {
+    "text": "Software Created with Libraries, for Libraries",
+    "url": "https://www.quipugroup.com/our-story"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.quipugroup.com",
+     "quote": "Quipu makes it easy to register & renew patrons, manage digital passes, and document incidents."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.quipugroup.com",
+     "quote": "Together, they help libraries expand access, reduce staff work, and apply custom policies consistently."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.quipugroup.com",
+     "quote": "Accurately document incidents and policy infractions with a secure internal tool designed for library safety."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.quipugroup.com",
+     "quote": "way for librarians to issue digital cards and verify patron residency instantly online."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.quipugroup.com",
+     "quote": "ILS platforms, including Polaris, Sierra, Koha, and Evergreen."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.quipugroup.com",
+     "quote": "Flexible for branches, districts, and consortia"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.quipugroup.com/our-story",
+     "quote": "created custom products for libraries that focus on staff empowerment through data collection, organization and communication"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.quipugroup.com/our-story",
+     "quote": "four products: eCARD, ePASS, eRENEW, and PITS"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.quipugroup.com/our-story",
+     "quote": "build a client list that includes consortia and public libraries of all sizes"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.quipugroup.com",
+     "sha": "3262b3e90437a5dc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.quipugroup.com/our-story",
+     "sha": "8fc5ff788a3defea",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "stackmap",
@@ -142932,7 +145202,71 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "QuickLaunch sells an identity and integration platform built only for higher education, covering students, faculty, staff, contractors and alumni. It gives institutions one place to secure those identities and to connect the systems a campus runs, from the SIS to the LMS to the cloud. Identity and access products include single sign-on, MFA options, passkey and facial-recognition passwordless access, first-time account claim and voice password reset.",
+    "A lifecycle product turns each enrollment change into an automatic provisioning, change or deprovisioning action, and adds access review campaigns, policy and role management, and analytics. An integration product connects campus systems, with an Agentic Design Studio that builds connectors from a description rather than from custom scripts. QuickLaunch is a Certified Ellucian Partner verified for SaaS integration on Banner and Colleague, and named clients include Pfeiffer University, Colorado Christian University, Alabama State University and CalArts."
+   ],
+   "quote": {
+    "text": "The identity and integration platform built only for higher education and the AI that runs and governs it.",
+    "url": "https://quicklaunch.io/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://quicklaunch.io",
+     "quote": "QuickLaunch is the AI-powered identity and integration platform built only for higher education securing every campus population"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://quicklaunch.io/about-us/",
+     "quote": "to connect every system they run, from the SIS to the LMS to the cloud"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://quicklaunch.io",
+     "quote": "Passkey & facial-recognition passwordless access"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://quicklaunch.io",
+     "quote": "Every enrollment change becomes an automatic, governed identity action - provision, change, deprovision."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://quicklaunch.io",
+     "quote": "Integrate, orchestrate, and automate every campus system with the Agentic Design Studio building your connectors by description, no custom scripts."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://quicklaunch.io",
+     "quote": "QuickLaunch is a Certified Ellucian Partner, verified in the Ellucian Partner Network for SaaS integration on both Banner and Colleague"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://quicklaunch.io",
+     "sha": "90266c760a48b7a1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://quicklaunch.io/about-us/",
+     "sha": "6a51d8af48f4e467",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "saltycloud",
@@ -145372,7 +147706,89 @@
    {
     "text": "Website corrected 2026-08-26. The stored address https://psyrin.com presented a TLS certificate that does not cover that hostname, so every probe recorded an SSLError and the company sat in the blocked queue unable to have its job board found. The other hostname form answers HTTP 200 and the page identifies as this company. The site was never down; we were asking for the wrong name."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Psyrin sells Mira, which its product page calls an AI voice agent that runs the pre-assessment, scribes the session, and lands structured notes in the clinic EHR. Clients reach Mira by phone or at a kiosk in the clinic, and the clinician walks into a session the agent has already begun. The stated gain is time, with the DA and first ITP completed in 30 minutes rather than the 120 minutes the pages describe.",
+    "The buyers these pages name are behavioral health clinics, with homepage testimonials attributed to a CCBHC, a Behavioral Health Clinic and a Private Addiction Center. Notes are generated in the Psyrin platform and pushed to CareLogic, SmartCare, or a custom EHR through RPA or API, with no manual re-entry. Risk disclosed during pre-assessment is routed to a person, with Mira flagging it and starting a warm handover to a clinician on the team.",
+    "Beyond the workflow, the pages describe voice biomarkers, where the platform analyses speech patterns during clinical sessions with consent. The kiosk is described as running the full pre-assessment and keeping the client seated for the session over integrated telehealth."
+   ],
+   "quote": {
+    "text": "The intelligence layer for psychiatry. Mira handles intake, structured psychiatric assessment and documentation \u2014 so clinics see more clients without adding staff.",
+    "url": "https://www.psyrin.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.psyrin.com/product",
+     "quote": "The AI voice agent that runs the pre-assessment, scribes the session, and lands structured notes in your EHR."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.psyrin.com/product",
+     "quote": "Accessible to clients by phone or on the Psyrin kiosk \u2014 wherever they are when the encounter begins."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.psyrin.com/product",
+     "quote": "The clinician walks in and completes the DA and first ITP in 30 minutes \u2014 instead of spending 120+ minutes on both."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.psyrin.com",
+     "quote": "Mira has become an essential part of our clinical workflow, and our patients appreciate the streamlined experience. \" COO , Private Addiction Center"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.psyrin.com/product",
+     "quote": "Notes are generated in the Psyrin platform, reviewed by your clinician, and pushed to CareLogic, SmartCare, or a custom EHR via RPA or API"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.psyrin.com",
+     "quote": "Mira flags immediately and initiates a warm handover to a clinician on the team."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.psyrin.com",
+     "quote": "the Psyrin platform passively analyses speech patterns during clinical sessions"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.psyrin.com",
+     "quote": "The Psyrin kiosk runs the full pre-assessment flow and stays with the client through the actual session via integrated telehealth."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.psyrin.com",
+     "sha": "193a718ebc5a2e6e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.psyrin.com/about",
+     "sha": "2dc909bc3c5f7d0c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.psyrin.com/product",
+     "sha": "f4ad2c9b5af5c97c",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "simplifyance",
@@ -146633,7 +149049,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "research pass: HHS conference exhibitor research 2026-08-25; NAMPI 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Pulselight is a software company based in Austin, TX that creates platform and analytic solutions and provides IT consulting services for government decision-makers. The about page says the company focuses on business needs shared across state agencies, including healthcare.",
+    "Pulselight offers SaaS products that it describes as ready for implementation and configuration to an organization's specific needs. The analytics engine fuses and links data from multiple sources so that users can find trends, patterns, and answers about individuals, providers, and programs. The products page names Electronic Visit Verification as one of the areas covered. Data named on the home page includes EVV, Medicaid, and Medicare.",
+    "Security topics listed on the products page run from HIPAA to PHI/PII data to StateRAMP and access controls. The stated mission is that government and commercial organizations make better decisions about the services they provide."
+   ],
+   "quote": {
+    "text": "A SaaS solution that integrates, fuses, and links multi-source data to give you instant access to answers and insight in a single system.",
+    "url": "https://www.pulselight.com/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.pulselight.com/about/",
+     "quote": "Pulselight is an Austin, TX-based software company that creates platform and analytic solutions, as well as provides IT consulting services, for government decision-makers."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.pulselight.com/about/",
+     "quote": "We focus on critical business needs shared across state agencies, including healthcare."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.pulselight.com/products",
+     "quote": "We offer three comprehensive SaaS products, each ready for implementation and configuration to your organization\u2019s specific needs."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.pulselight.com/products",
+     "quote": "fuses and links data from multiple sources in our proprietary analytics engine, empowering users to discover trends, patterns, and answers about individuals, providers, and programs"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.pulselight.com/products",
+     "quote": "Electronic Visit Verification"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.pulselight.com/",
+     "quote": "EVV, Medicaid, Medicare & other data"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.pulselight.com/products",
+     "quote": "From HIPAA to PHI/PII data to StateRAMP to access controls, security is always critical."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.pulselight.com/about/",
+     "quote": "Our Mission: To ensure government and commercial organizations make better decisions about the quality of critical and sensitive services they provide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.pulselight.com/",
+     "sha": "90111b1d1ee02e0e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pulselight.com/products",
+     "sha": "740565de542bf044",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pulselight.com/about/",
+     "sha": "e3d8f4dfe6afa9ad",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.pulselight.com/about/team/",
+     "sha": "7320e10a03721352",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "alivia-analytics",
