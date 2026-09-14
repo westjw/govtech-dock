@@ -16114,6 +16114,93 @@
    "ruled_by": "owner",
    "on": "2026-09-09",
    "source": "parks-rec vendor research"
+  },
+  "profile": {
+   "paragraphs": [
+    "SubItUp sells workforce scheduling and time-management software for shift-based teams. The platform builds staff schedules, lets employees swap and pick up shifts without manager intervention, tracks hours with a built-in time clock, and exports hours worked straight to payroll. A built-in time clock can turn any internet-enabled device into a clock-in point, and hours reconcile automatically before they reach payroll.",
+    "The pages name higher education, municipal parks and recreation, healthcare, retail and franchise, and live events among the settings the software is built for. Staff can add, drop, and swap their own shifts with peers, and a manager approves the swap once staff agree to it. Managers set the maximum hours staff can work by role and location, including across teams within one organization.",
+    "Payroll exports are built for platforms including ADP, Intuit QuickBooks, Oracle PeopleSoft, Workday, and Paychex. Pricing is based on the number of employees scheduled, with a 10-employee minimum."
+   ],
+   "quote": {
+    "text": "Social Scheduling\u2122 is SubItUp's answer to the extra time managers spend trying to find coverage after employees drop a shift.",
+    "url": "https://www.subitup.com/solutions/employee-scheduling"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.subitup.com",
+     "quote": "SubItUp is workforce scheduling and time-management software for shift-based teams."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.subitup.com",
+     "quote": "lets employees swap and pick up shifts without manager intervention, tracks hours with a built-in time clock, and exports hours worked straight to payroll"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.subitup.com",
+     "quote": "SubItUp includes a built-in time clock that can turn any internet-enabled device into a clock-in point. Hours reconcile automatically"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.subitup.com",
+     "quote": "That includes higher education, municipal parks and recreation, healthcare, retail and franchise, and live events."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.subitup.com/solutions/employee-scheduling",
+     "quote": "Staff can add, drop, and swap their own shifts with peers"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.subitup.com/solutions/employee-scheduling",
+     "quote": "Managers can control the hours staff can work by role and location."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.subitup.com/solutions/time-clock-software",
+     "quote": "like ADP, Intuit QuickBooks, Oracle PeopleSoft, Workday, Paychex, and more"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.subitup.com",
+     "quote": "SubItUp pricing is based on the number of employees you schedule, with a 10-employee minimum."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.subitup.com",
+     "sha": "ed8c3fe51f2ef623",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.subitup.com/solutions/go",
+     "sha": "c8e50628a8ed2aa2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.subitup.com/solutions/employee-scheduling",
+     "sha": "2b1e3fbbaeff6c70",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.subitup.com/solutions/time-clock-software",
+     "sha": "430ba4f5c2a06f24",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -23470,7 +23557,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NACo 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SwiftGov is presented as an AI-native operating system for local government, built to strengthen permit and plan review, compliance, knowledge, data, and service delivery. The platform automates intake processing, flags potential code conflicts before they become resubmittals, and standardizes reviewer comments. The products listed for the Hernando County engagement are SwiftGov, Development Services Transformation, GIS Services, and Swift Analytics.",
+    "The jurisdictions named on the SwiftGov page are Hernando County, Pasco County, Clay County, Walton County, City of Jacksonville, City of Titusville, and Hernando County Clerk of Court, all in Florida. The case studies page describes municipal development services teams using SwiftGov for regulatory review. The case study ties the deployment to the rebuild surge after Hurricane Helene and Hurricane Milton in 2024.",
+    "Initial plan review time at Hernando County is reported as 30 days to 15 minutes, a 93% reduction in single-family home zoning review times. The county estimates direct net savings of $1.5 million annually across four primary areas, including reduced reliance on temporary staff and third-party plan review."
+   ],
+   "quote": {
+    "text": "SwiftGov doesn't replace plan reviewers. It amplifies them.",
+    "url": "https://www.swiftbuild.ai/case-studies/hernando-county"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.swiftbuild.ai/swiftgov",
+     "quote": "SwiftGov is the AI-native operating system for local government. Built with local government to strengthen permit and plan review, compliance, knowledge, data, and service delivery."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.swiftbuild.ai/case-studies/hernando-county",
+     "quote": "The platform automates intake processing, flags potential code conflicts before they become costly resubmittals, and standardizes reviewer comments for consistency and clarity."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.swiftbuild.ai/case-studies/hernando-county",
+     "quote": "Products SwiftGov, Development Services Transformation, GIS Services, Swift Analytics"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.swiftbuild.ai/swiftgov",
+     "quote": "Hernando County Clerk of Court, Florida"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.swiftbuild.ai/case-studies",
+     "quote": "See how municipal development services teams are using SwiftGov to deliver faster, more consistent regulatory review."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.swiftbuild.ai/case-studies/hernando-county",
+     "quote": "The rebuild surge that followed was the catalyst for SwiftGov's deployment."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.swiftbuild.ai/swiftgov",
+     "quote": "93% Reduction in single-family home zoning review times, Hernando County"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.swiftbuild.ai/case-studies/hernando-county",
+     "quote": "Hernando County estimates a direct net savings of $1.5 million annually through measurable, documented improvements across four primary areas."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.swiftbuild.ai/swiftgov",
+     "sha": "63d14f9d37972095",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftbuild.ai/about",
+     "sha": "4e6825ec0fbb6a8e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftbuild.ai/case-studies",
+     "sha": "99348f3dc629783c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftbuild.ai/case-studies/hernando-county",
+     "sha": "26b588703b57285e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "verdant",
@@ -28050,7 +28224,96 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "PWX 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "StreetSaver is pavement and asset management software, described on its home page as tools to plan, forecast, budget and report. The home page says the software helps cities, counties, and private institutions manage and maintain pavements, roadways, and other infrastructure assets. It is delivered as web based software reachable across a variety of platforms.",
+    "Listed capabilities include projecting treatments and costs up to 30 years into the future. The site counts over 90 reports and graphs available to users. Condition data can be collected through a mobile option. The software also extends to non-pavement assets such as traffic signs and curb ramps.",
+    "A separate product page sells a PCI distress identification manual covering flexible and rigid pavements. That manual describes each pavement distress type used in StreetSaver and sets criteria for three levels of severity. The home page carries a copyright line naming the Metropolitan Transportation Commission."
+   ],
+   "quote": {
+    "text": "Our pavement management software delivers informed and timely solutions to implement an effective pavement management program.",
+    "url": "https://www.streetsaver.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.streetsaver.com",
+     "quote": "StreetSaver, Advanced Pavement Management Tools"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.streetsaver.com",
+     "quote": "it empowers cities, counties, and private institutions to efficiently manage and maintain pavements, roadways, and other infrastructure assets in the most cost-effective way"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.streetsaver.com",
+     "quote": "Web based software provides versatility and accessibility across a variety of platforms."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.streetsaver.com",
+     "quote": "Project treatments and costs up to 30 years in the future."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.streetsaver.com",
+     "quote": "Over 90 time-saving and high impact reports and graphs at your fingertips."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.streetsaver.com",
+     "quote": "Mobile solutions for collecting condition data."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.streetsaver.com",
+     "quote": "Let StreetSaver help you manage your non-pavement assets like Traffic Signs, Curb Ramps and more!"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://streetsaver.com/product/pci-distress-identification-manual-ac-5th-ed-pcc-4th-ed-march-2022-bundle-ac-and-pcc/",
+     "quote": "This comprehensive manual is designed to guide users in assessing flexible (AC) and rigid (PCC) pavements with precision and ease."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://streetsaver.com/product/pci-distress-identification-manual-ac-5th-ed-pcc-4th-ed-march-2022-bundle-ac-and-pcc/",
+     "quote": "It provides clear descriptions of each pavement distress type used in StreetSaver, along with detailed criteria for appearance, characteristics, and the identification of three levels of severity."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.streetsaver.com",
+     "quote": "Copyright 2015 | Metropolitan Transportation Commission"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.streetsaver.com",
+     "sha": "7450529cc063cce4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://streetsaver.com/product/pci-distress-identification-manual-ac-5th-ed-pcc-4th-ed-march-2022-bundle-ac-and-pcc/",
+     "sha": "1cde380c37c87618",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "edgital",
@@ -37277,7 +37540,95 @@
   "buyer": "Universities and municipalities are named first among client types (also airports, hospitals, corporate campuses, private operators); named clients include multiple public universities and the City of Houston, suggesting public-sector institutions are the primary buyer.",
   "sells_to_gov": "yes",
   "acquisition_note": "Acquired by Verra Mobility in 2021, per t2systems.com/about-us/, which describes T2 as \"a Verra Mobility Company\" (NASDAQ: VRRM).",
-  "acquisitions_checked_on": "2026-09-10"
+  "acquisitions_checked_on": "2026-09-10",
+  "profile": {
+   "paragraphs": [
+    "T2 Systems sells parking management software covering permits, enforcement, PARCS, pay stations, and mobile payments. Named solutions include T2 Flex Permit Management and Enforcement, the UPsafety PE solution by T2, T2 PARCS, and pay stations powered by T2 Iris. T2 Citation Services is offered as a collection administration solution.",
+    "Their pages list the industries served: universities and colleges, municipalities, private operators, corporate campuses, hospitals and healthcare systems, and airports. Customers range from large university campuses and municipalities to smaller destination towns, as well as private operators and healthcare facilities. Testimonials name Upper Darby Township, PA, and Allentown Parking Authority.",
+    "T2 Systems was founded in 1994. In 2021, T2 Systems was acquired by Verra Mobility. The company is described as the largest parking, mobility, and transportation provider in North America, with more than 25 years in the parking management industry."
+   ],
+   "quote": {
+    "text": "T2\u2019s end-to-end parking management solutions bring together the tools you need to keep your operations running smoothly.",
+    "url": "https://www.t2systems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.t2systems.com",
+     "quote": "T2 Systems provides powerful, flexible parking management software built for universities, municipalities, operators, and businesses."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.t2systems.com/solutions/",
+     "quote": "the proven T2 Flex\u00ae Permit Management and Enforcement solution and the UPsafety PE solution by T2"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.t2systems.com/solutions/",
+     "quote": "T2 Citation Services is a full-service, certified collection administration solution that allows your operation to increase revenue and create operational efficiency."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.t2systems.com",
+     "quote": "T2 Systems proudly supports a wide range of industries:"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.t2systems.com/about/",
+     "quote": "These range from large university campuses and municipalities to smaller destination towns, as well as private operators, healthcare facilities, and more."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.t2systems.com",
+     "quote": "Lt. Louis Garay, Parking Enforcement Division"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.t2systems.com/about/",
+     "quote": "T2 Systems was founded in 1994 with one goal:"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.t2systems.com/about/",
+     "quote": "In 2021, T2 Systems was acquired by Verra Mobility"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.t2systems.com/about/",
+     "quote": "T2 Systems is the largest parking, mobility, and transportation provider in North America, with more than 25 years in the parking management industry"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.t2systems.com",
+     "sha": "9a55995dda749eda",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.t2systems.com/solutions/",
+     "sha": "d6bc799255c0e6db",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.t2systems.com/about/",
+     "sha": "07b84a39a6fa49fe",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "municipal-parking-services",
@@ -37927,7 +38278,100 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "NRPA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "TeamLinkt sells sports registration, scheduling, and administration software to the organizations that run seasons. Registration forms are built inside the platform and payments are collected online, and schedules are published from the same place. An app puts schedules, scores, standings, and updates in front of athletes and their families, with team chat in place of scattered texts and email chains.",
+    "League operators get tools for building balanced schedules, tracking standings, assigning officials, and running game day operations across divisions. Clubs and associations get registration templates, rostering, scheduling across fields, courts, and ice times, and tracking of waivers, background checks, and certifications. Governing bodies register and manage their member clubs and associations, track compliance across them, and can run their own competitions.",
+    "Core features are free, with a paid bundle for organizations that want more advanced tools. An account is offered with no contract and no credit card. Support is offered over live chat rather than a ticket based queue."
+   ],
+   "quote": {
+    "text": "TeamLinkt brings every piece of your season into one platform, helping you deliver fair, on-time games with less manual work and fewer tools to juggle.",
+    "url": "https://teamlinkt.com/solutions/for-leagues"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://teamlinkt.com",
+     "quote": "Sports Registration, Scheduling, and Admin. Handled."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://teamlinkt.com",
+     "quote": "Your registration opens & payments come in quickly"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://teamlinkt.com",
+     "quote": "Schedules, scores, standings, and updates in the hands of your athletes and their families."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://teamlinkt.com/solutions/for-leagues",
+     "quote": "Running a league is complex \u2014 schedules, standings, officials, communication, and game operations all happening at once."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://teamlinkt.com/solutions/for-clubs-and-associations",
+     "quote": "Track member profiles, registration history, waiver forms, background checks, training certifications, and payments in one place."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://teamlinkt.com/solutions/for-governing-bodies",
+     "quote": "Register and manage clubs and associations with full visibility into their participants, coaches, officials, teams, and programs."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://teamlinkt.com/solutions/for-governing-bodies",
+     "quote": "Use core features for free or upgrade to a paid bundle when you need more advanced tools."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://teamlinkt.com",
+     "quote": "No contracts. No credit card required."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://teamlinkt.com",
+     "quote": "Get your inquiries resolved quickly with TeamLinkt\u2019s live chat support, not a ticket based queue."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://teamlinkt.com",
+     "sha": "1bef1ce941bbfae1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://teamlinkt.com/solutions/for-leagues",
+     "sha": "28586a85de76f62d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://teamlinkt.com/solutions/for-clubs-and-associations",
+     "sha": "486e8849f039fadc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://teamlinkt.com/solutions/for-governing-bodies",
+     "sha": "a26390388d868f68",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "peachjar",
@@ -63696,7 +64140,85 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"SWORN integrates with 12+ biometrics across all major platforms to track sleep, stress, movement, recovery, and nutrition in real time.\" Fetched https://www.sworn.ai. Title: \"SWORN.ai | Health and Wellness for Public Safety Professionals\". Audience stated as \"Police, Fire & EMS\" and first responders; the AI layer is named HOWARD, \"SWORN's mission-aware AI that detects stress in real time\". Corroborated independently: trade coverage of the company's $1.2M raise describes a Utah startup building \"biometric monitoring for law enforcement\" / a \"biometric intelligence platform\" for police, founded by former crime analyst and police officer Sean Bair. Description match: biometric monitoring for policing is confirmed. One nuance worth carrying into the board copy \u2014 the site positions this as officer wellness/readiness (wearables, stress detection, anonymized aggregate insights to leadership) and explicitly disclaims being a surveillance tool, so \"intelligence for policing\" should not be read as investigative or criminal intelligence."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "SWORN sells an AI-powered health and wellness platform built for professionals in high-stress roles, starting with first responders. The platform connects wearable devices and tracks sleep, stress, movement, recovery, and nutrition in real time, tying those readings to shifts and workload. Structured assessments, goal tracking, team challenges, and visual analytics sit alongside the biometric readings.",
+    "SWORN's AI, called HOWARD, detects stress in real time and delivers personalized, scenario-based support. Leaders see only anonymized, aggregated readiness rather than individual data. The pages describe the infrastructure as HIPAA-compliant with end-to-end encryption.",
+    "The site is addressed to police, fire, and EMS, and says that agencies get lower absenteeism, turnover, and liability. Departments can create custom challenges for their teams, while individual users set their own goals and priorities. SwornPulse, a public map of community safety and well-being, is offered free for everyone and free for agencies to join."
+   ],
+   "quote": {
+    "text": "SWORN unites the disparate data and practical tools your team needs to stay healthy, resilient, and ready.",
+    "url": "https://www.sworn.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sworn.ai",
+     "quote": "SWORN is an AI-powered health and wellness platform purpose-built for professionals in high-stress roles, starting with first responders."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sworn.ai",
+     "quote": "SWORN integrates with 12+ biometrics across all major platforms to track sleep, stress, movement, recovery, and nutrition in real time."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sworn.ai",
+     "quote": "Structured assessments support insight, progress, and self-awareness over time."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sworn.ai",
+     "quote": "HOWARD is SWORN's mission-aware AI that detects stress in real time and delivers personalized, scenario-based support."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sworn.ai",
+     "quote": "Leaders see only anonymized, aggregated readiness, never individual data."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sworn.ai",
+     "quote": "SWORN uses HIPAA-compliant infrastructure with end-to-end encryption."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sworn.ai",
+     "quote": "Agencies get lower absenteeism, turnover, and liability."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sworn.ai",
+     "quote": "Departments can create custom challenges that align with organizational goals"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sworn.ai",
+     "quote": "Free for everyone. Free for agencies to join."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sworn.ai",
+     "sha": "8d1ae13f3d0f2e42",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "salesforce",
@@ -64464,7 +64986,90 @@
   "researched": false,
   "also_known_as": [
    "Surety2000"
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Surety2000 operates a platform for electronic surety bonds, and states that it enables fully paperless eBond issuance, receipt, and verification across agents, contractors, and agencies. The company states that it has spent over 25 years building the infrastructure that makes electronic bonds possible. The site states that all parties to the bond must register with Surety2000 before a bond can be executed.",
+    "In the workflow described, the bonding agent executes the electronic eBond directly through the Surety2000 platform. The contractor obtains the eBond from Surety2000, and the bond is then submitted to the public agency for validation. Agencies receive the eBond and validate it through the Surety2000 platform.",
+    "The pages cite UETA and the ESign Act for the legal standing of electronic records and signatures. Surety2000 describes the Digital Staple as an addition to the security of electronic surety bonds. The home page states that Surety2000 is a member of the NIGP Business Council."
+   ],
+   "quote": {
+    "text": "Surety2000 replaces this manual process with a secure, real-time digital workflow.",
+    "url": "https://www.surety2000.com/about"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.surety2000.com",
+     "quote": "Surety2000 enables fully paperless eBond issuance, receipt, and verification across agents, contractors, and agencies"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.surety2000.com/about",
+     "quote": "For over 25 years, Surety2000 has been building the infrastructure that makes electronic bonds possible"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.surety2000.com",
+     "quote": "All parties to the bond must register with Surety2000 before a bond can be executed."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.surety2000.com",
+     "quote": "The bonding agent securely executes the electronic eBond directly through the Surety2000 platform."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.surety2000.com",
+     "quote": "The bond is then submitted to the public agency for validation."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.surety2000.com",
+     "quote": "Agencies receive the eBond and instantly validate the secure eBond through the Surety2000 platform."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.surety2000.com",
+     "quote": "UETA and ESign Act: Neither a signature nor a record may be denied legal effect solely because it is in electronic form."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.surety2000.com",
+     "quote": "Surety2000 enhances the security of electronic surety bonds by introducing the Digital Staple"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.surety2000.com",
+     "quote": "Surety2000 is a proud member of the NIGP Business Council."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.surety2000.com",
+     "sha": "78d5c4dd2aae9d6d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.surety2000.com/about",
+     "sha": "58df2ba39cb94411",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "systems-methods-inc",
@@ -64497,7 +65102,94 @@
    {
     "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"Systems & Methods, Inc. (SMI) is a family-led business in its second and third generations.\" Fetched https://www.smi-inc.com. Company named verbatim in the quote, matching the board name exactly including the ampersand form. Description match on both halves: child support \u2014 \"Through SMART\u2122, we disburse child support payments for 18 states and 16 Tribal Nations\"; and government payment processing \u2014 the site describes custom disbursement solutions for \"dozens of U.S. state and local agencies\" with \"20+ years in state disbursement unit (SDU) operations\". Independent company on its own domain, no parent-site issue."
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "Systems & Methods, Inc. sells government payment acceptance, processing, disbursement, and customer service, and its SMART child support solution disburses child support payments for 18 states and 16 Tribal Nations. The company operates state disbursement units in 16 states, processing more than 76 million payments annually with a 99.99% accuracy rate. Calls are not outsourced, and the service model ranges from full-service customer service centers and IVR functionality to collection and disbursement information only.",
+    "A second line is prepaid debit cards: the smiONE Visa Prepaid Card reaches more than two million families in 16 states and 15 Tribes. SMART Pay takes online payments from non-custodial parents, employers, and others by credit and debit card, ACH, digital wallet, text, and cash. Kudzu is an online banking app for individuals, with no monthly or overdraft fees, a budgeting and saving toolkit, and learning courses.",
+    "A third line, SMILE, is a government accounting system that has been the financial system of record for the Georgia Department of Human Resources for more than 40 years. Since 1978 it has covered budgeting, asset management, general ledger, employee payroll, travel and leave, child welfare, auditing, and payment processing for state, local, and client funds."
+   ],
+   "quote": {
+    "text": "For more than 50 years, we\u2019ve made it easier for families to access critical funds that improve the quality of their daily lives.",
+    "url": "https://www.smi-inc.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.smi-inc.com",
+     "quote": "Through SMART\u2122 , we disburse child support payments for 18 states and 16 Tribal Nations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.smi-inc.com/solutions/smart-child-support-solution",
+     "quote": "processing more than 76 million payments annually with a 99.99% accuracy rate"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.smi-inc.com/solutions/smart-child-support-solution",
+     "quote": "From full-service customer service centers and IVR functionality to collection and disbursement information only"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.smi-inc.com/solutions/fintech-for-families",
+     "quote": "The smiONE\u2122 Visa\u00ae Prepaid Card gives more than two million families in 16 states and 15 Tribes fast, secure access to their government payments."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.smi-inc.com/solutions/fintech-for-families",
+     "quote": "SMART\u2122 Pay lets non-custodial parents, employers, and others make safe, convenient online payments."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.smi-inc.com/solutions/fintech-for-families",
+     "quote": "Kudzu\u00ae is an online banking* app that equips individuals with the support and education they need to transform their financial futures."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.smi-inc.com/solutions/smile-financial-management",
+     "quote": "SMILE has served as the financial system of record for the Georgia Department of Human Resources (DHS) for more than 40 years."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.smi-inc.com/solutions/smile-financial-management",
+     "quote": "Since 1978, SMILE has provided a full-service financial management solution for state, local, and client funds that includes budgeting, asset management, general ledger, employee payroll, travel and leave, child welfare, month- and year-end processes, auditing, and payment processing."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.smi-inc.com",
+     "sha": "5093a2905241c5f4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smi-inc.com/solutions/smart-child-support-solution",
+     "sha": "c6f8efce55973fdf",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smi-inc.com/solutions/fintech-for-families",
+     "sha": "372137ac14ac9e69",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.smi-inc.com/solutions/smile-financial-management",
+     "sha": "4af8b8b5052a3156",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "tootris-child-care-solutions",
@@ -70251,7 +70943,88 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026"
+  "source": "AAAE 2026",
+  "profile": {
+   "paragraphs": [
+    "Tadera sells airport software, and its staff includes former airport leaders along with subject matter experts in security, accounting, safety, and human resources. The finance tools are aimed at airports and systems of airports, covering property management, contracts, lease terms, billing, receivable and reporting, as well as capital improvement programs. A separate Secure Credentials product handles biometric credentialing, badging, continuous vetting, auditing, and access management, and helps meet TSA security directives.",
+    "ABRM, the Airport Business and Revenue Manager, consolidates lease management, billing, revenue tracking, tenant communications, and financial reporting into one system, covering both aeronautical and non-aeronautical revenue streams. It supports lease terms including minimum annual guarantees, fixed rent escalations, CPIs, ceilings, and floors, and tracks lease data elements for GASB 87 compliance.",
+    "Airport Project Manager covers capital programs, with an AIP Management Module tracking applications, funding, and compliance for FAA, FEMA, and state and local grants. Airport System Manager is built for state departments of transportation, combining grant tracking, facility inspections, aircraft registration, licensing, project funding, and data analysis into one application."
+   ],
+   "quote": {
+    "text": "TADERA's finance tools help airports and systems of airports manage property and revenue, as well as capital improvement programs.",
+    "url": "https://www.tadera.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.tadera.com",
+     "quote": "Our staff includes former airport leaders, as well as subject matter experts in security, accounting, safety, human resources, and more."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.tadera.com",
+     "quote": "TADERA's finance tools help airports and systems of airports manage property and revenue, as well as capital improvement programs."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.tadera.com",
+     "quote": "TADERA's Secure Credentials solution manages biometric credentialing, badging, continuous vetting, auditing, access management, and helps meet TSA security directives"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.tadera.com/products/airport-business-revenue-manager",
+     "quote": "It consolidates lease management, billing, revenue tracking, tenant communications, and financial reporting into one system, helping airports manage both aeronautical and non-aeronautical revenue streams"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.tadera.com/products/airport-business-revenue-manager",
+     "quote": "ABRM supports complex lease terms including minimum annual guarantees (MAGs), fixed rent escalations, CPIs, ceilings, and floors."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.tadera.com/products/airport-capital-program-manager",
+     "quote": "APM includes an AIP Management Module to track applications, funding, and compliance for FAA, FEMA, and state/local grants."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.tadera.com/products/airport-system-manager",
+     "quote": "ASM is a centralized platform that helps state departments of transportation manage and administer their airport systems."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tadera.com",
+     "sha": "ac67e066a84e6d4b",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tadera.com/products/airport-business-revenue-manager",
+     "sha": "7fdcb97bc3465de2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tadera.com/products/airport-capital-program-manager",
+     "sha": "f20a421d79118b9f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tadera.com/products/airport-system-manager",
+     "sha": "c179ac2965a0ce25",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "the-weather-company",
@@ -76694,7 +77467,87 @@
     "sector": "Parks & Rec",
     "category": "Aquatics"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "SwimTopia sells web-based swim team management software covering credit card registration, calendar and signups, a custom website, online registration and store, and volunteer management. Meet Maestro is the meet software, which integrates with timing systems, runs swim meets, and collects times and generates reports. Subscribers to the mobile app have heat sheets, push notifications, personalized views and other data. Several product tiers are offered, and all of them include Meet Maestro meet software.",
+    "Buyers are swim teams and swim leagues, over two thousand teams and hundreds of leagues by the company's own count. Summer swim teams are the stated focus, with high school programs and year-round clubs named as fits as well. League boards are offered a SwimTopia website for free, regardless of how many of their teams use SwimTopia for team management."
+   ],
+   "quote": {
+    "text": "Meet Maestro comes with all SwimTopia accounts and can be accessed directly through the SwimTopia interface.",
+    "url": "https://www.swimtopia.com/products/meet-maestro/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.swimtopia.com",
+     "quote": "from credit card registration, calendar and signups to your own custom website, online registration and store, volunteer management"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.swimtopia.com",
+     "quote": "Meet Maestro is swim meet management that integrates with timing systems and runs the pool deck and swim meets, collecting times and generating reports."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.swimtopia.com",
+     "quote": "Subscribers have heat sheets, push notifications, personalized views and tons of other data at their fingertips."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.swimtopia.com/products/",
+     "quote": "We offer several product tiers to provide the features you need at a price that fits your budget."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.swimtopia.com/products/",
+     "quote": "Used by over two thousand swim teams, and hundreds of swim leagues"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.swimtopia.com",
+     "quote": "making it a great fit for high school programs and year-round clubs as well"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.swimtopia.com/products/meet-leagues/",
+     "quote": "We offer a SwimTopia website to league boards for free, regardless of how many of their teams use SwimTopia."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.swimtopia.com",
+     "sha": "1f2a78230143ba5d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swimtopia.com/products/",
+     "sha": "d7799866177be097",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swimtopia.com/products/meet-leagues/",
+     "sha": "04b8eba4f68686ac",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swimtopia.com/products/meet-maestro/",
+     "sha": "7ec988b5c0ca8ef4",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "leaguelobster",
@@ -77349,6 +78202,99 @@
    "ruled_by": "owner",
    "on": "2026-09-09",
    "source": "parks-rec vendor research"
+  },
+  "profile": {
+   "paragraphs": [
+    "Sterling Volunteers sells volunteer background screening services to nonprofits and volunteer programs across the country. The screening platform is described as tailor-made for volunteer managers, nonprofits and service organizations that want to avoid onboarding risky individuals. Volunteers who are screened and vetted join an online community and can connect with multiple service organizations.",
+    "Sectors named on the site include education, where volunteers are screened at colleges and universities, secondary schools, libraries, and research institutions. Healthcare screening covers volunteers working at hospitals, clinics, laboratories, nursing facilities and relief organizations. Sports screening covers youth coaches, referees, and others volunteering with amateur, Olympic and youth sports teams.",
+    "Pricing depends on the breadth and depth of the checks, and the cost may be as low as $10 per background check. Two screening packages are offered to clients, an Advanced Package and a Complete Package. The majority of searches are returned in 24 to 72 hours."
+   ],
+   "quote": {
+    "text": "Sterling Volunteers offers volunteer screening services to nonprofits and volunteer programs all across the country.",
+    "url": "https://www.sterlingvolunteers.com/about/faqs/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sterlingvolunteers.com/about/faqs/",
+     "quote": "Sterling Volunteers offers volunteer screening services to nonprofits and volunteer programs all across the country."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sterlingvolunteers.com",
+     "quote": "Our volunteer background screening platform is tailor-made for volunteer managers, nonprofits and service organizations helping them avoid onboarding risky individuals."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sterlingvolunteers.com",
+     "quote": "Volunteers join our online community where, once screened and vetted, they can connect with multiple service organizations to volunteer."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sterlingvolunteers.com",
+     "quote": "Screen volunteers at colleges and universities, preschool, elementary, secondary schools, libraries, and research institutions."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sterlingvolunteers.com",
+     "quote": "Screen volunteers working at hospitals, clinics, laboratories, nursing facilities and relief organizations."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sterlingvolunteers.com",
+     "quote": "Screen youth coaches, referees, and others volunteering with amateur, Olympic and youth sports teams."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.sterlingvolunteers.com/about/faqs/",
+     "quote": "the cost may be as low as $10 per background check"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.sterlingvolunteers.com/about/faqs/",
+     "quote": "We currently offer an Advanced Package as well as a Complete Package to our clients"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.sterlingvolunteers.com/about/faqs/",
+     "quote": "The majority of searches will be returned in 24 to 72 hours."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sterlingvolunteers.com",
+     "sha": "38eb7c75973edd72",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sterlingvolunteers.com/resources/case-studies/",
+     "sha": "399356580f9e5584",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sterlingvolunteers.com/about/",
+     "sha": "82e4b999faa7d3ac",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sterlingvolunteers.com/about/faqs/",
+     "sha": "1d30a0053ccd6355",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -78025,7 +78971,87 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Sternberg supplies decorative outdoor luminaires, poles and smart city solutions, and traces its founding to 1923. Its specification grade products are described as featured design elements in downtowns, parks, campuses, roadways and retail centers across North America. Precision optics, LEDs and controls are integrated to address environmental sustainability and energy conservation.",
+    "The about page says Sternberg serves the Municipal, Utility, DOT and Commercial markets. The home page directs visitors to find the official Sternberg representative for their area. Sternberg introduced its first commercial cast aluminium poles and lighting fixtures in the 1940s. Sternberg was acquired by LMPG in 2018, and LMPG is based in Montreal."
+   ],
+   "quote": {
+    "text": "Sternberg serves the Municipal, Utility, DOT and Commercial markets.",
+    "url": "https://www.sternberglighting.com/company/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.sternberglighting.com/company/about-us",
+     "quote": "decorative outdoor luminaires, poles and smart city solutions with a legacy of durability and craftsmanship dating back to the company's founding in 1923."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.sternberglighting.com/company/about-us",
+     "quote": "our specification grade products are featured design elements throughout downtowns, parks, campuses, roadways and retail centers across North America."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.sternberglighting.com/company/about-us",
+     "quote": "precision optics, LEDs and controls are integrated to deliver on the demands of environmental sustainability and energy conservation."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.sternberglighting.com/company/about-us",
+     "quote": "Sternberg serves the Municipal, Utility, DOT and Commercial markets."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.sternberglighting.com",
+     "quote": "Find the official Sternberg representative for your area."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.sternberglighting.com/company/history",
+     "quote": "Sternberg introduced its first commercial cast aluminium poles and lighting fixtures in the 1940s."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.sternberglighting.com/company/history",
+     "quote": "Sternberg was acquired by LMPG, a leading specification-grade LED lighting solutions group based in Montreal."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.sternberglighting.com",
+     "sha": "09f96a0f1febc2d6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sternberglighting.com/company/about-us",
+     "sha": "3955566989838256",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sternberglighting.com/company/management-team",
+     "sha": "0650fa86d3e5a4d3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.sternberglighting.com/company/history",
+     "sha": "7f9aa559479dee04",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "selux",
@@ -79882,7 +80908,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Streamline sells a website platform built for special districts. The platform covers compliant websites, marketing, intranet, and payment tools tailored for special districts. Websites are ADA compliant by default and include built-in accessibility assistants that resolve most issues.",
+    "A built-in regulatory compliance checklist presents state and federal legislation affecting a district in one dashboard. Payment collection is built into the websites and is backed by Stripe. Training and support are free and unlimited for all users.",
+    "Plans are sold as a monthly subscription with no long-term contracts or hidden fees. Streamline has been serving districts across America since 2015. DocAccess is a separate product for making public documents accessible."
+   ],
+   "quote": {
+    "text": "Streamline is the only platform dedicated exclusively to serving the unique needs of special districts",
+    "url": "https://www.getstreamline.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.getstreamline.com",
+     "quote": "Compliant Website Platform for Special Districts"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.getstreamline.com/about-us",
+     "quote": "a comprehensive platform featuring compliant websites, marketing, intranet, and payment tools tailored for special districts"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.getstreamline.com",
+     "quote": "Streamline websites are ADA compliant by default and have built-in accessibility assistants to automatically resolve most issues."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.getstreamline.com",
+     "quote": "regulatory compliance checklist presents all known state and federal legislation affecting your district in one dashboard."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.getstreamline.com",
+     "quote": "payment system is backed by Stripe"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.getstreamline.com",
+     "quote": "Streamline's unlimited training and support program is free for all users."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.getstreamline.com",
+     "quote": "Streamline is a low-cost monthly subscription. No long-term contracts or hidden fees."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.getstreamline.com/about-us",
+     "quote": "which has been serving districts across America since 2015."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.getstreamline.com/about-us",
+     "quote": "Streamline Unveils DocAccess: Making Digital Public Documents Accessible for All"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.getstreamline.com",
+     "sha": "0452fe9892c7bcc3",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.getstreamline.com/about-us",
+     "sha": "a7fc163a630df3a3",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "accesse11",
@@ -81441,6 +82550,93 @@
    "note": null,
    "on": "2026-09-08",
    "by": "owner"
+  },
+  "profile": {
+   "paragraphs": [
+    "TCP Software sells scheduling, time, and attendance solutions to organizations of any size or sector. The range covers automated time and attendance, employee scheduling, time clock hardware, and integrations for ERP, HCM, and payroll systems. TimeClock Plus covers time tracking, leave and accrual management, and K-12 resource management.",
+    "Humanity Schedule builds and adjusts shifts automatically, using AI to forecast demand and match qualified staff to shifts. It connects to payroll, ERP, or HCM software from providers including ADP, Oracle, Workday, and BambooHR, or through an open API. Humanity Time is offered to smaller teams for tracking time, attendance, and labor costs.",
+    "Aladtec is the public safety product, sold for 24/7 rotational scheduling to fire, EMS, law enforcement, and corrections agencies. Its schedules carry work, union, and fatigue rules so that an agency can answer an audit."
+   ],
+   "quote": {
+    "text": "24/7 automated staff scheduling built for the unique rotation patterns and union policies of public safety and government agencies.",
+    "url": "https://www.tcpsoftware.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.tcpsoftware.com",
+     "quote": "No matter your organization\u2019s size or sector, TCP has the scheduling, time, and attendance solutions you need to control labor costs, reduce compliance risk, and run your operations more effectively at any scale."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.tcpsoftware.com",
+     "quote": "Secure, scalable integrations for your ERP, HCM, and payroll systems to help your teams get more done."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.tcpsoftware.com/products/timeclock-plus/",
+     "quote": "K-12 time tracking and resource management"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.tcpsoftware.com/products/humanity/",
+     "quote": "Use Humanity Schedule\u2019s AI capabilities to forecast demand, auto-build compliant schedules, and match available, qualified staff to shifts."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.tcpsoftware.com/products/humanity/",
+     "quote": "Already use ADP, Oracle, Workday, BambooHR, or another provider? Humanity Schedule plugs right into the current payroll, ERP, or HCM software you already use. Or build your own with our open API."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.tcpsoftware.com",
+     "quote": "For smaller teams looking for scalable automation, Humanity Time helps you track time, attendance, and labor costs essential to small business workflows."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.tcpsoftware.com/products/aladtec/",
+     "quote": "Aladtec scheduling software helps fire, EMS, law enforcement, and corrections agencies ensure shift coverage, comply with union and labor rules, and retain employees."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.tcpsoftware.com/products/aladtec/",
+     "quote": "Aladtec builds your work, union, and fatigue rules right into every schedule, so you can walk into any audit knowing you\u2019re already covered."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tcpsoftware.com",
+     "sha": "80e2f535fb08bb72",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcpsoftware.com/products/timeclock-plus/",
+     "sha": "e242d928b5547155",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcpsoftware.com/products/humanity/",
+     "sha": "eaeb800a13a00e45",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcpsoftware.com/products/aladtec/",
+     "sha": "f453f86c79a796df",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
   }
  },
  {
@@ -85319,7 +86515,84 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "StreetLight sells transportation analytics built on a big data platform rather than on field counts. The platform covers roadway volumes, transportation modeling, congestion management and safety studies, with AADT and origin-destination metrics. Delivery runs three ways: self-serve software, bulk data through an API, and custom services from a data science team.",
+    "Products are grouped by industry, and the groupings named on the site are government, business, consultants and academics. Government users are pitched planning, operations and climate work; business users are pitched retail, fuel and electric vehicle charging applications. Work described on the about page covers hundreds of DOTs and engineering firms across North America.",
+    "StreetLight dates its founding to 2011 and became part of the professional services firm Jacobs in 2022. The platform is named StreetLight InSight, and the about page describes bicycle, pedestrian, bus and rail metrics added to its core measures."
+   ],
+   "quote": {
+    "text": "Better data means better decisions. What problem are you trying to solve?",
+    "url": "https://www.streetlightdata.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.streetlightdata.com",
+     "quote": "Transportation analytics for efficient, safe, and sustainable infrastructure"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.streetlightdata.com",
+     "quote": "Use empirical data to serve existing and future travel demand. AADT, O-D, and other standard metrics are now at your fingertips."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.streetlightdata.com",
+     "quote": "Get bulk insights, delivered via API, CSV, ArcGIS, or another integration."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.streetlightdata.com",
+     "quote": "Transportation data solutions by industry"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.streetlightdata.com",
+     "quote": "Get accurate insights without months of data collection. Respond to issues faster, plan smarter, and demonstrate impact."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.streetlightdata.com/about-us/",
+     "quote": "Working with hundreds of DOTs and engineering firms across North America"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.streetlightdata.com/about-us/",
+     "quote": "In 2022, we joined professional services firm Jacobs"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.streetlightdata.com/about-us/",
+     "quote": "StreetLight expands core metrics like O-D, ZA, trip, and traveler attributes to include Bus and Rail metrics."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.streetlightdata.com",
+     "sha": "5431face1914e1c1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.streetlightdata.com/about-us/",
+     "sha": "b9930305263c278b",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "replica",
@@ -89060,7 +90333,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "TalkingPoints sells a PreK-12 family engagement platform to school districts and schools. It is organized as a nonprofit education technology organization. The platform defaults to text messaging, so families do not need an app or a login to take part. Translation is offered in 150+ languages.",
+    "Products named on the site include daily messaging tools, emergency alerts and district communications, attendance tools, and professional learning for educators. The attendance tools are described as helping schools understand why students miss class, and the professional learning is aimed at building educator capacity for family partnerships.",
+    "Fairfax County Public Schools is named as a district whose schools all use the platform as a communication tool. Green Bay Area Public Schools adopted the platform when schools closed, and it is now described as a districtwide connector for all families."
+   ],
+   "quote": {
+    "text": "TalkingPoints partners with districts across the country",
+    "url": "https://talkingpts.org"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://talkingpts.org",
+     "quote": "the only PreK\u201312 family engagement platform purpose-built to make partnership easy, inclusive, and impactful."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://talkingpts.org/about-us/",
+     "quote": "nonprofit education technology organization on a mission to unlock every student\u2019s potential"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://talkingpts.org",
+     "quote": "Text-first, barrier-free reach"
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://talkingpts.org",
+     "quote": "translation in 150+ languages"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://talkingpts.org",
+     "quote": "Emergency Alerts & District Communications"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://talkingpts.org",
+     "quote": "Build educator capacity to strengthen family partnerships and improve student outcomes."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://talkingpts.org/case-study/westlawn-elementary-elevates-family-engagement-with-talkingpoints/",
+     "quote": "Fairfax County Public Schools is the 9th largest school district in the nation with over 223 schools, all of which use TalkingPoints as a communication tool."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://talkingpts.org/case-study/green-bay-success-story/",
+     "quote": "When schools closed, GBAPS adopted TalkingPoints to stay connected with multilingual families."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://talkingpts.org",
+     "sha": "3c2eab0c2d7f2f24",
+     "fetched_on": null
+    },
+    {
+     "url": "https://talkingpts.org/about-us/",
+     "sha": "b431706345db2dcc",
+     "fetched_on": null
+    },
+    {
+     "url": "https://talkingpts.org/case-study/westlawn-elementary-elevates-family-engagement-with-talkingpoints/",
+     "sha": "2a0e77bc093ebcbb",
+     "fetched_on": null
+    },
+    {
+     "url": "https://talkingpts.org/case-study/green-bay-success-story/",
+     "sha": "367840b8a85aa771",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "red-rover",
@@ -89208,7 +90568,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Swing Education sells a substitute staffing platform that school districts use to fill classroom absences. The platform works as a K-12 marketplace that matches each absence to a substitute. Roles covered include daily and long-term teachers, special education support, paraprofessionals, classified staff, and clerical work.",
+    "Districts can buy Swing as a full-service solution or as a supplement to an internal substitute pool. Swing integrates with absence management systems such as Frontline Absence Management, so districts sync absences rather than entering them twice. Administrators set budgets by funding source and get alerts before hitting a spending limit.",
+    "Substitutes are recruited locally, vetted, and measured on performance, with high performers given priority for job access. Swing states that it partners with hundreds of school districts and thousands of educators nationwide. Placements run from same-day subs to month-long long-term coverage, with staffing handled so that school admin teams can focus on students."
+   ],
+   "quote": {
+    "text": "From same-day subs to month-long long-term placements, Swing handles the staffing so your admin team can focus on students.",
+    "url": "https://swingeducation.com/about-us/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://swingeducation.com",
+     "quote": "Swing Education is a technology-driven substitute staffing platform that helps school districts fill absences quickly and reliably through a vetted marketplace of qualified substitutes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://swingeducation.com",
+     "quote": "Swing is the K-12 marketplace where every one of your absences is filled by a high-quality sub."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://swingeducation.com",
+     "quote": "Swing covers a wide range of roles, including but not limited to:"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://swingeducation.com",
+     "quote": "Swing can do both. Districts use Swing as a full-service solution or as a supplement to internal pools, especially for hard-to-fill roles and last-minute absences."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://swingeducation.com",
+     "quote": "Yes. Swing integrates with systems like Frontline Absence Management, allowing districts to sync absences automatically and avoid double entry."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://swingeducation.com",
+     "quote": "With the ability to set budgets by funding source and get automatic alerts before you hit your limit, you'll never open a surprise invoice again."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://swingeducation.com",
+     "quote": "Swing recruits locally, vets all substitutes, and continuously measures performance."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://swingeducation.com/about-us/",
+     "quote": "Today, Swing partners with hundreds of school districts and thousands of educators nationwide."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://swingeducation.com/about-us/",
+     "quote": "From same-day subs to month-long long-term placements, Swing handles the staffing so your admin team can focus on students."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://swingeducation.com",
+     "sha": "b9cf6f920d99c149",
+     "fetched_on": null
+    },
+    {
+     "url": "https://swingeducation.com/about-us/",
+     "sha": "8bda83783628bc76",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "nimble",
@@ -91763,7 +93206,94 @@
     "sector": "Parks & Rec",
     "category": "Park Assets, Forestry & Visitor Data"
    }
-  ]
+  ],
+  "profile": {
+   "paragraphs": [
+    "STQRY, formerly OnCell, is a storytelling platform used to create location-based tours, virtual tours, mobile and web apps, audio guides, games, and online collections. Images, audio, text and map information are added to a mobile guide app through a web-based tour builder. Tours built in STQRY Apps can be tested and published for mobile web, iOS and Android. Content in a published tour or audio guide can be changed later through the STQRY builder, with updates pushed to the app in real time.",
+    "STQRY Kiosk is a separate platform for creating digital labels and interactive storytelling elements for visitors. Kiosk content is offered in 30 different languages, including Arabic, Hebrew, M\u0101ori and Papiamento.",
+    "The about page dates the business to OnCell's inception in 2006 and describes the destinations served as museums, parks, cities, and historic sites. The apps pricing section states that a setup fee of USD 1,995 applies for native apps."
+   ],
+   "quote": {
+    "text": "The simple to use app builder for interactive visitor experiences.",
+    "url": "https://stqry.com/products/stqry-apps"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://stqry.com/about-us",
+     "quote": "STQRY (formerly OnCell) is a storytelling platform that helps visitors explore further, engage deeper, and discover more. You can choose from a range of amazing features to create location-based tours, virtual tours, mobile, and web apps, audio guides, games, and online collections."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://stqry.com/products/stqry-apps",
+     "quote": "Add images, audio, text, map info and custom features to your mobile guide app with our simple web-based tour builder."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://stqry.com/products/stqry-apps",
+     "quote": "Test and publish your guided tour app with the press of a button, sharing it instantly for mobile web, iOS and Android."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://stqry.com/products/stqry-apps",
+     "quote": "Something new to share? Make changes to your tour or audio guide content through the STQRY builder, and updates will be pushed to your app in real time."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://stqry.com/products/stqry-kiosk",
+     "quote": "Sharing your curation team\u2019s deep knowledge and engaging insights adds a whole new dimension to your visitor experience. With the simple to use STQRY Kiosk platform, you can create digital labels and richly interactive storytelling elements for your visitors."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://stqry.com/products/stqry-kiosk",
+     "quote": "STQRY Kiosk offers 30 different languages including RTL languages such as Arabic and Hebrew and indigenous languages like M\u0101ori and Papiamento."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://stqry.com/about-us",
+     "quote": "Since OnCell's inception in 2006, we have helped thousands of destinations around the world ranging from museums, parks, cities, and historic sites of all sizes to connect with their visitors."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://stqry.com/products/stqry-apps",
+     "quote": "A setup fee of USD 1,995 applies for native apps."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://stqry.com",
+     "sha": "7be650d876893567",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stqry.com/about-us",
+     "sha": "15d5483ac371dcd6",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stqry.com/products/stqry-apps",
+     "sha": "e3428b91f5ca4f75",
+     "fetched_on": null
+    },
+    {
+     "url": "https://stqry.com/products/stqry-kiosk",
+     "sha": "ab8c6bc24fc15e2a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "brandkit",
@@ -96713,7 +98243,100 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; NatCon 2026"
+  "source": "competitor sweep; NatCon 2026",
+  "profile": {
+   "paragraphs": [
+    "Streamline Healthcare Solutions sells SmartCare, an electronic health record platform for the Behavioral Health and Human Services market. SmartCare is hosted on the Azure cloud and is sold as a cloud-based EHR system. Each organization has its own instance of the application, and the application runs on any device with Google Chrome or Microsoft Edge.",
+    "The platform is sold as one application managing all types of services across all levels of care, rather than as connected separate systems. The solution areas listed include clinical care management, revenue cycle management, inpatient and residential care, day services, primary care, and reporting. Clinical care management covers intake, assessment, care planning, services, progress notes and results, with a validation system that flags requirements that are out of compliance.",
+    "The buyers described are behavioral health providers offering services that include foster care and adoption, substance abuse disorder care, and intellectual and developmental disabilities care. Certified Community Behavioral Health Clinics and Managed Behavioral Health Organizations are also named among them. Clients quoted on the site include Valley Oaks Health, George Junior Republic and The Nord Center."
+   ],
+   "quote": {
+    "text": "SmartCare\u2122 sets a new standard for Behavioral Health and Human Services EHRs.",
+    "url": "https://streamlinehealthcare.com/smartcare-ehr/platform/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://streamlinehealthcare.com",
+     "quote": "To mark our 20th anniversary, Streamline Healthcare Solutions is proud to unveil a new brand for the company and our SmartCare\u2122 Behavioral Health Electronic Health Record (EHR) platform"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://streamlinehealthcare.com/smartcare-ehr/platform/",
+     "quote": "Hosted on the Azure cloud, SmartCare\u2122 is a Cloud-based EHR system with a highly stable and secure infrastructure."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://streamlinehealthcare.com/smartcare-ehr/platform/",
+     "quote": "Fully Web-Based Application that runs on any device with Google Chrome or Microsoft Edge without the need for third-party software."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://streamlinehealthcare.com/smartcare-ehr/platform/",
+     "quote": "Single Platform that manages all types of services across all levels of care in a single application, which greatly reduces the need for organizations to purchase, connect with, maintain, and secure disparate systems."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://streamlinehealthcare.com/solutions/",
+     "quote": "Inpatient and Residential functionality that enables medication administration, bed management, and documentation all within one platform."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://streamlinehealthcare.com/solutions/clinical-care-management/",
+     "quote": "A validation system that can be configured to monitor clinical and reporting requirements at each stage of the process and alert the appropriate users when an aspect is out of compliance."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://streamlinehealthcare.com",
+     "quote": "SmartCare\u2122 has become a crucial component in the operations of behavioral health providers offering a wide range of services, including foster care and adoption, substance abuse disorder care, intellectual and developmental disabilities care"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://streamlinehealthcare.com",
+     "quote": "as well as Certified Community Behavioral Health Clinics and Managed Behavioral Health Organizations"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://streamlinehealthcare.com",
+     "quote": "We looked at many vendors before settling on Streamline."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://streamlinehealthcare.com",
+     "sha": "dc7119d9fb5bc658",
+     "fetched_on": null
+    },
+    {
+     "url": "https://streamlinehealthcare.com/smartcare-ehr/platform/",
+     "sha": "6ae0564764cac8a2",
+     "fetched_on": null
+    },
+    {
+     "url": "https://streamlinehealthcare.com/solutions/",
+     "sha": "9fb0f68a4848e37e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://streamlinehealthcare.com/solutions/clinical-care-management/",
+     "sha": "86677df744c32ce0",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "getinsured",
@@ -98611,7 +100234,94 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Submittable sells grant management software that covers a program from launch through closeout. The product includes a drag-and-drop form builder for custom logic and review workflows, collaboration tools, and financial tracking. Financial tracking reflects drawdowns and categorizes disbursements.",
+    "A second product line covers corporate social responsibility programs, which the page defines as workplace giving, employee volunteering, and community grantmaking. Employees can donate or sign up for volunteering inside Microsoft Teams. The Impact Wallet lets employees pool company rewards in a personal giving fund and choose where and when to give, drawing on a database of 9.6 million vetted nonprofits across 110 countries.",
+    "The homepage names government and the public sector, foundations and nonprofits, and corporations as the groups served. The grants page lists government grantmakers such as the City of Inglewood among the users of grant management software."
+   ],
+   "quote": {
+    "text": "Most Submittable customers launch new programs in two weeks or less.",
+    "url": "https://submittable.com/solutions/grants"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://submittable.com/solutions/grants",
+     "quote": "Grant management software to carry you from launch to closeout"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://submittable.com/solutions/grants",
+     "quote": "Create custom logic and review workflows with a form builder that anyone can handle."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://submittable.com/solutions/grants",
+     "quote": "Stay on top of the budget with real-time tracking that reflects drawdowns and categorizes disbursements."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://submittable.com/solutions/csr-software",
+     "quote": "CSR software is software companies use to launch, manage, and report on their CSR programs, which typically include workplace giving, employee volunteering, and community grantmaking."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://submittable.com/solutions/csr-software",
+     "quote": "Employees can give in Microsoft Teams"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://submittable.com/solutions/corporate-giving-platform",
+     "quote": "9.6 million vetted nonprofits across 110 countries"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://submittable.com",
+     "quote": "Government & Public Sector"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://submittable.com/solutions/grants",
+     "quote": "government grantmakers such as the City of Inglewood"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://submittable.com",
+     "sha": "f8395a4336b1907c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://submittable.com/solutions/grants",
+     "sha": "47d34956aa7ae207",
+     "fetched_on": null
+    },
+    {
+     "url": "https://submittable.com/solutions/csr-software",
+     "sha": "0d2f1317f2cd63cd",
+     "fetched_on": null
+    },
+    {
+     "url": "https://submittable.com/solutions/corporate-giving-platform",
+     "sha": "0e10ece969a863f5",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "fluxx",
@@ -106351,7 +108061,88 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Task Force Tips sells firefighting equipment, technical support and educational resources. A virtual patent marking page lists products including Blitzfire HE, Flex Monitors, Hydrant Master, Metro 0 with a trigger slide valve, and a forestry hose clamp.",
+    "An online store is offered to departments that know what they need, with the order sent straight to the station. A dealer network is also offered, guiding buyers from the demonstration through the purchase. The site also carries training video series on rural water supply and hydrant water supply tactics.",
+    "The domestic team serves fire departments across the United States, and the international team serves fire departments and safety professionals in other regions. International sales representatives are listed for Canada, Western Europe, the Middle East, Latin America, and Eastern Europe."
+   ],
+   "quote": {
+    "text": "Providing you with the best firefighting equipment, technical support & educational resources.",
+    "url": "https://www.tft.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.tft.com",
+     "quote": "Providing you with the best firefighting equipment, technical support & educational resources."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://tft.com/company/patents/",
+     "quote": "The following list of products may be covered by one or more of the following patents."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.tft.com",
+     "quote": "Our online store is built for departments that know what they need and want it now."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.tft.com",
+     "quote": "Our dealer network focuses entirely on you. From the demo through the purchase, knowledgeable and highly engaged professionals will guide you every step of the way."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.tft.com",
+     "quote": "Master the Skills: Tactical Firefighting Training Video Series"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://tft.com/company/team/",
+     "quote": "Our domestic team focuses on serving fire departments across the United States, ensuring they have access to the latest and most reliable water flow products and firefighting equipment."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://tft.com/company/team/",
+     "quote": "Our international team is committed to expanding our global footprint, providing innovative solutions to fire departments and safety professionals worldwide."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tft.com",
+     "sha": "ab31b3111da78a94",
+     "fetched_on": null
+    },
+    {
+     "url": "https://tft.com/company/team/",
+     "sha": "e49a1e20d069c1de",
+     "fetched_on": null
+    },
+    {
+     "url": "https://tft.com/company/patents/",
+     "sha": "3b27576b0307702a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://tft.com/company/philanthropy/",
+     "sha": "8f0365324bfe4990",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "pierce-manufacturing",
@@ -106697,7 +108488,100 @@
   "sled_only": true,
   "sled_only_why": "transit run 2026-09-10: buyer stated as Municipalities, universities, hospitals, and downtown authorities across the US and Canada \u2014 public-sector buyers are named exclusively alongside private parking operators.",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "profile": {
+   "paragraphs": [
+    "Tannery Creek Systems sells autoChalk, an automatic license plate recognition system built for parking enforcement work. The company describes patented size, shape, and color analysis that flags overstaying vehicles even when a license plate is not visible, presented as an alternative to tire chalking. autoChalk also verifies pay-by-plate sessions and permit-by-plate credentials in real-time as officers patrol, connecting to a customer's payment and permit providers.",
+    "The product line runs from vehicle-mounted units to a fixed camera solution for parking structures and surface lots, plus autoChalk Office for citation management and policy configuration. autoChalk Mobile scans 2 vehicles per second while driving up to 60 km/h and applies parking policy by zone using GPS and geofencing. autoChalk Handheld is an Android application for on-foot officers that issues citations in 6 steps and keeps working without cellular coverage. autoChalk Compact is a vehicle-mounted plate recognition system for operations that prefer a smaller visual footprint without the full LIDAR solution.",
+    "Tannery Creek Systems states that each customer gets a separate database on isolated infrastructure, with no shared plate network and no cross-agency search. Municipalities, downtown authorities, universities, hospitals, and private operators are named as the buyers for the product line, across the United States and Canada."
+   ],
+   "quote": {
+    "text": "Every customer gets their own database on their own isolated infrastructure, and nothing spans customers: no shared plate network, no cross-agency search, no aggregation.",
+    "url": "https://www.tannerycreeksystems.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "The only ALPR system designed specifically for the unique needs of parking enforcement professionals."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "Our patented size, shape, and color analysis detects overstaying vehicles even without a visible license plate"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "Verify pay-by-plate sessions and permit-by-plate credentials in real-time as you patrol."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "Powerful back office software for citation management and policy configuration."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.tannerycreeksystems.com/products/mobile.html",
+     "quote": "Scans 2 vehicles per second while driving up to 60 km/h"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.tannerycreeksystems.com/products/handheld.html",
+     "quote": "Issue tickets in just 6 steps with offline capability, pay-by-plate verification, and real-time hot list checking."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.tannerycreeksystems.com/products/compact.html",
+     "quote": "Ideal for pay-by-plate verification, permit enforcement, and scofflaw detection for operations that prefer a smaller visual footprint without the full LIDAR solution."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "Every customer gets their own database on their own isolated infrastructure, and nothing spans customers: no shared plate network, no cross-agency search, no aggregation."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.tannerycreeksystems.com",
+     "quote": "we have the right automated parking enforcement solution for municipalities, downtown authorities, universities, hospitals, and private operators."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tannerycreeksystems.com",
+     "sha": "dd82c4a8f3ed7720",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tannerycreeksystems.com/products/compact.html",
+     "sha": "359fdc6a803f2344",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tannerycreeksystems.com/products/mobile.html",
+     "sha": "99ac3002d243012f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tannerycreeksystems.com/products/handheld.html",
+     "sha": "8581c5af46b92b40",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "nwave-technologies",
@@ -107783,7 +109667,87 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep",
+  "profile": {
+   "paragraphs": [
+    "Student Transportation of America is a contracted student transportation company operating across North America. The company states that it employs 23,500 employees and operates more than 22,000 vehicles across North America. Pages describing the company say it transports 1.25 million students each day.",
+    "Founded in 1997, the company describes school districts as the customers it works for. STA describes growth through acquisitions and conversions of locally owned or publicly operated fleets into its own systems. In 2018 the company moved from listings on the NASDAQ and the Toronto Stock Exchange to private ownership with CDPQ. Company history records contracting with Meridian Public Schools in Idaho as the largest district conversion."
+   ],
+   "quote": {
+    "text": "Transportation for Students Across North America",
+    "url": "https://ridesta.com/about/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://rideSTA.com",
+     "quote": "Student Transportation of America provides uncompromising transportation services to our communities and their families."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://ridesta.com/about/",
+     "quote": "We employ 23,500 employees and operate more than 22,000 vehicles across North America, providing safe and dependable transportation for students and our customers"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://ridesta.com/about/who-we-are/",
+     "quote": "we are dedicated to fostering environments that support the 1.25 million students we transport each day"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://ridesta.com/about/our-history/",
+     "quote": "We work for our partners to find a customized solution that is right for the school district, its students, and their community."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://ridesta.com/about/who-we-are/",
+     "quote": "A key to our growth is the partnerships made through successful acquisitions and conversions of locally-owned or publicly-operated fleets into STA transportation systems."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://ridesta.com/about/our-history/",
+     "quote": "STA was publicly traded on the NASDAQ and the Toronto Stock Exchange, and in 2018 transitioned to being a privately held organization"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://ridesta.com/about/our-history/",
+     "quote": "Earns largest district conversion in company history, contracting with Meridian Public Schools in Idaho"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://rideSTA.com",
+     "sha": "a6e7c00ae89de1df",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ridesta.com/about/",
+     "sha": "8f6c90c63ecd5691",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ridesta.com/about/our-history/",
+     "sha": "1a6bb415723d1df5",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ridesta.com/about/who-we-are/",
+     "sha": "c0b2e1d4b87d874e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "durham-school-services",
@@ -124735,7 +126699,90 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; IAAO 2026"
+  "source": "competitor sweep; IAAO 2026",
+  "profile": {
+   "paragraphs": [
+    "Tax Management Associates, Inc. assists state and local taxing officials in their day to day duties of administering ad valorem taxation. Founded in 1979, the company works with state and local governments on revenue enhancement initiatives. Private auditing for local government started when its Business Personal Property Audit Division was founded in 1987.",
+    "The company page lists administrative support and personal property listing assessment, business personal property tax auditing, and homestead exemption fraud detection among its ad valorem tax solutions. Two further lines are discovery of non-reporting businesses and customization of ad valorem projects.",
+    "The homepage says the audit service has performed more BPP audits than any other company in the nation. Homestead work is presented as combating fraud and abuse through verifying homestead exemptions. An online portal provides real-time updates, statistics and detailed information for each service. Administrative support services supplement a local tax office with the firm's professionals."
+   ],
+   "quote": {
+    "text": "For 45 years, Tax Management Associates has been in the business of assisting state and local taxing officials to administer ad valorem taxation.",
+    "url": "https://www.tma1.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://tma1.com/company/",
+     "quote": "has been in the business of assisting state and local taxing officials in their day to day duties of administering ad valorem taxation"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://tma1.com/company/",
+     "quote": "Founded in 1979, Tax Management Associates, Inc. (TMA) is the leader in assisting state and local governments with their revenue enhancement initiatives."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://tma1.com/company/",
+     "quote": "having started the concept of private auditing for local government when its Business Personal Property Audit Division was founded in 1987"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://tma1.com/company/",
+     "quote": "No longer simply an auditing firm, TMA now offers our clients an entire line of ad valorem tax solutions including:"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://tma1.com/company/",
+     "quote": "Discovery of Non-Reporting Businesses"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.tma1.com",
+     "quote": "Performed more BPP audits than any other company in the nation"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.tma1.com",
+     "quote": "Combat fraud and abuse through verifying homestead exemptions"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.tma1.com",
+     "quote": "Real-time updates, statistics and detailed information for each service"
+    },
+    {
+     "p": 2,
+     "s": 3,
+     "url": "https://www.tma1.com",
+     "quote": "Supplement your local tax office with our experienced professionals"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tma1.com",
+     "sha": "9a1ddbd2b9e25a34",
+     "fetched_on": null
+    },
+    {
+     "url": "https://tma1.com/company/",
+     "sha": "232d4b6f014983b7",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vision-government-solutions",
@@ -136876,7 +138923,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APHSA 2026; Healthcare IT Connect 2026; MESC 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SteadyIQ sells Income Passport, a verification tool that applicants use to prove income, hours, and employment to a benefits agency. Applicants log in and connect the accounts where they earn income, including bank accounts, payroll providers, digital wallets, and gig platforms. Income Passport then surfaces income transactions, deduplicates the data, and checks for conflicting names and identities. The resulting income report is shown to the applicant for review and, once approved, submitted directly to the government agency. Covered income types include W2, 1099, gig, self-employment, and unearned income.",
+    "Missouri Department of Social Services is named as a customer, in a testimonial from its Chief Information Officer. Income Passport expanded beyond unemployment into SNAP, TANF, and Child Care programs in Missouri. Alabama and Louisiana are named as among the first states to use Income Passport for unemployment benefits. Agencies can take the tool through a range of integration options, including a no-code solution that requires zero development resources."
+   ],
+   "quote": {
+    "text": "Built for government. Designed for people.",
+    "url": "https://steadyiq.com/about-us"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://steadyiq.com",
+     "quote": "Verify income, hours, and employment with SteadyIQ."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://steadyiq.com/product",
+     "quote": "Applicants log into Income Passport and connect to the accounts where they earn income, including their bank accounts, payroll providers, digital wallets, and gig platforms."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://steadyiq.com/product",
+     "quote": "Income Passport surfaces income transactions, deduplicates the data, and checks for conflicting names and identities."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://steadyiq.com/product",
+     "quote": "Income Passport generates a total income report, which is shown to the applicant for review. Once approved, it is submitted directly to the government agency."
+    },
+    {
+     "p": 0,
+     "s": 4,
+     "url": "https://steadyiq.com/product",
+     "quote": "Verify all income types\u2014W2, 1099, gig, self-employment, and unearned\u2014in one place."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://steadyiq.com",
+     "quote": "Chief Information Officer, Missouri Department of Social Services"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://steadyiq.com/about-us",
+     "quote": "Income Passport expands beyond unemployment, partnering with Missouri to streamline income verification for SNAP, TANF, and Child Care programs."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://steadyiq.com/about-us",
+     "quote": "Alabama and Louisiana are among the first states to benefit."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://steadyiq.com",
+     "quote": "Get up and running quickly with our no-code solution that requires zero development resources."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://steadyiq.com",
+     "sha": "bc2b14d5476151d4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://steadyiq.com/product",
+     "sha": "063a278f4a0f1a44",
+     "fetched_on": null
+    },
+    {
+     "url": "https://steadyiq.com/about-us",
+     "sha": "e7661556abd191a8",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "givecard",
@@ -143703,7 +145837,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: USAging 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "TCARE sells a caregiver support service that combines data analysis with staff who work directly with family caregivers. The clinical protocol assesses over 90 burnout factors, scores burnout risk, and produces a care plan for each caregiver. Each caregiver is assigned a specialist who stays in contact and adjusts the plan over time.",
+    "The pages address four groups of organizations: health plans, government agencies, employers, and long-term care. For health plans, the members described are covered by Medicaid, Medicare Advantage and D-SNP plans, and some arrangements are value-based. For long-term care policies, the stated aim is aging-in-place for policyholders through support for the family members who provide their care.",
+    "For employers, the service is presented as an employee benefit for the family caregivers in a workforce. The employer page lists reduced absenteeism and use of FMLA, reduced turnover, and increased productivity among the results it claims."
+   ],
+   "quote": {
+    "text": "TCARE\u2019s goal is simple: prevent this burnout through better care for the caregiver.",
+    "url": "https://www.tcare.ai"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.tcare.ai",
+     "quote": "Powered by high-tech and human touch, TCARE supports caregivers through the complexities of caregiving to help health plans, employers, and families get to a place of better care."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.tcare.ai",
+     "quote": "We assess over 90 burnout factors to measure a caregiver\u2019s burnout risk against six proprietary burden scores and provide a tailored care plan"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.tcare.ai",
+     "quote": "Caregivers receive ongoing support whenever they need it from their dedicated TCARE\u00a0Specialist, including ongoing updates and adjustments to their care plans."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.tcare.ai",
+     "quote": "We partner with multiple types of organizations to deliver support to the caregivers that need it most."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.tcare.ai/customers/mco-health-plans",
+     "quote": "TCARE has over 20 years of combined experience in supporting members of Medicare, Medicaid LTSS, MPP, and D-SNP plans, including value-based arrangements"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.tcare.ai/customers/long-term-care-insurance",
+     "quote": "By combining deep data analytics and high-touch human support, our clinically-proven approach to assessing and mitigating caregiver burnout delivers real results for active and on-claim policyholders and their caregivers"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.tcare.ai",
+     "quote": "See how we help employers attract, retain and support the family caregivers in their population as an employee benefit."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.tcare.ai/customers/employers-group-benefits",
+     "quote": "Reduced absenteeism & use of FMLA"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.tcare.ai",
+     "sha": "bb7fa3dc813c3c32",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcare.ai/customers/mco-health-plans",
+     "sha": "0ca29c487b87fd7d",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcare.ai/customers/long-term-care-insurance",
+     "sha": "f62272226a45e82e",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.tcare.ai/customers/employers-group-benefits",
+     "sha": "a2f19aae4090a252",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "honest-jobs",
@@ -144244,7 +146465,79 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NCSEA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Stellarware Corporation was founded in 1997 as a web design firm and now builds web systems for government and private sector organizations. Core business areas listed are project management and operation for insurance intercept, Medicaid, financial institution data match (FIDM), real property data match, new hire reporting and web design. Stellarware operates the Child Support Lien Network, hosted by the State of Rhode Island, and works with the states of Rhode Island and Texas on the Medicaid Recovery Network.",
+    "New Hire Reporting projects are managed in the District of Columbia, Georgia, Minnesota, Rhode Island, Virginia and Wisconsin, among other states. Those projects help employers work with state government through Internet based systems, including a Child Support Portal. Plug-in solutions named on the site include a Lump Sum Payment Module and electronic distribution of Income Withholding Orders.",
+    "The Child Support Lien Network has assisted 32 U.S. state agencies in collecting over $2.4 billion in past-due child support. New Hire projects processed over 17 million new hire reports in the year 2023, and the Medicaid Recovery Network has collected over $33.8 million in Medicaid costs for State government."
+   ],
+   "quote": {
+    "text": "Serving Health and Human Services, Child Support Programs and Labor Departments across the country",
+    "url": "https://stellarware.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://stellarware.com",
+     "quote": "Stellarware Corporation was founded in 1997 as a unique web design firm that focuses on improving business and government communications"
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://stellarware.com",
+     "quote": "core business areas of project management and operation for insurance intercept, Medicaid, financial institution data match (FIDM), real property data match, new hire reporting and web design"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://stellarware.com",
+     "quote": "hosted by the State of Rhode Island. Stellarware is currently collaborating with the states of Rhode Island and Texas in the operation of the Medicaid Recovery Network"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://stellarware.com",
+     "quote": "Stellarware also manages New Hire Reporting projects in the District of Columbia , Georgia , Indiana , Louisiana , Maine , Minnesota , Mississippi , Nebraska , New Jersey , New Mexico , North Carolina , Rhode Island , Tennessee , Virginia , West Virginia , and Wisconsin"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://stellarware.com",
+     "quote": "helping thousands of employers work with state government through Internet based systems, including a 'one-stop shop' Child Support Portal"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://stellarware.com",
+     "quote": "such as our Lump Sum Payment Module and Electronic distribution of Income Withholding Orders (IWO)"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://stellarware.com",
+     "quote": "the Child Support Lien Network, has assisted 32 U.S. state agencies in collecting over $2.4 billion in past-due child support"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://stellarware.com",
+     "quote": "Our New Hire projects have processed over 17 million new hire reports in the year 2023 alone. Our Medicaid Recovery Network has collected over $33.8 million in Medicaid costs for State government."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://stellarware.com",
+     "sha": "207ebbbc9f94d47a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "cybernut",
@@ -146394,7 +148687,95 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SymPro sells treasury software for the public sector, covering investment, debt and cash accounting operations. The investment product provides investment portfolio accounting, reporting and analysis, and the pages state that it is GASB 31 compliant. Debt Manager creates a library of information on outstanding obligations for issuers. The Cash Management solution is a web-based system for public entities to manage and control their cash operations.",
+    "The about page counts more than 400 clients nationwide, with investment, debt and cash portfolios from 25 million to several billion dollars. Clients named on the home page include Snohomish County, Walla Walla County Treasurer and Whatcom County Treasurer's Office. The home page also lists over 50 standard reports covering performance, interest, portfolio analysis and compliance.",
+    "The about page dates the company to 1985 and to public sector financial experts in the SF Bay Area. Emphasys acquired SymPro from JP Morgan Chase & Co. in 2007, and Emphasys Software is a wholly-owned subsidiary of Constellation Software Inc."
+   ],
+   "quote": {
+    "text": "For over 30 years, Public Sector entities have depended on SymPro Solutions for their treasury management software.",
+    "url": "https://sympro.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://sympro.com/about/",
+     "quote": "For over 35 years, SymPro has provided integrated solutions for the public sector to automate and simplify core investment, debt and cash accounting operations."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://sympro.com",
+     "quote": "The SymPro Investment Management Software solution provides complete investment portfolio accounting, reporting, and analysis all while being GASB 31 compliant."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://sympro.com",
+     "quote": "With the Debt Manager, issuers now have a tool to create a comprehensive and easy-to-access library of information on outstanding obligations."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://sympro.com",
+     "quote": "The SymPro Cash Management solution is a web-based system designed for public entities to easily manage and control their cash operations."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://sympro.com/about/",
+     "quote": "Serving more than 400 clients nationwide, managing investment, debt and cash portfolios from 25 million to several billion dollars."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://sympro.com",
+     "quote": "\"I wish that all of the products that the county uses had the same level of support and functionality as SymPro.\" Walla Walla County Treasurer"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://sympro.com",
+     "quote": "Over 50 standard reports that cover performance, interest, portfolio analysis, and compliance."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://sympro.com/about/",
+     "quote": "story began in 1985, driven by a group of public sector financial experts in the SF Bay Area."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://sympro.com/about/",
+     "quote": "acquisition by Emphasys from JP Morgan Chase & Co., uniting two leaders in financial management solutions."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://sympro.com",
+     "sha": "ca5c5933c6f921b4",
+     "fetched_on": null
+    },
+    {
+     "url": "https://sympro.com/products/",
+     "sha": "3a849e5e24c0fde0",
+     "fetched_on": null
+    },
+    {
+     "url": "https://sympro.com/about/",
+     "sha": "d9916ed840869cab",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "mtw-solutions-llc",
@@ -146998,7 +149379,106 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: AWWA ACE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SwiftComply sells compliance management software for water, wastewater, and stormwater utilities, covering Backflow Prevention, Stormwater, Industrial Pretreatment, and FOG management. It replaces spreadsheet and paper based compliance tracking with one system for reporting, follow-up, and enforcement. Live dashboards show compliance rates, outstanding items, and trends across programs. Every inspection, report, and follow-up is timestamped and stored for a state audit or permit review.",
+    "These pages say the software is used by municipal water and wastewater utilities, public works departments, and water/sewer districts. Named customers include cities and counties such as Houston, Atlanta, Fort Worth, Charlotte Water, Dallas, Tampa, and Honolulu. The pages say 700+ organizations across North America run compliance programs on it.",
+    "Each solution is priced separately, typically as a one-time implementation fee plus an annual subscription. Backflow programs can also choose a tester-pay model, where a per-test fee is passed to testers instead of the utility funding the subscription. The software is available through cooperative purchasing vehicles such as Omnia Partners, NASPO, and Carahsoft, which many public agencies can use without running a separate competitive bid."
+   ],
+   "quote": {
+    "text": "Getting information from the whole city was tough. The only easy part was SwiftComply.",
+    "url": "https://www.swiftcomply.com/customers/waco-tx/"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.swiftcomply.com",
+     "quote": "SwiftComply is compliance management software for water, wastewater, and stormwater utilities, covering four programs: Backflow Prevention, Stormwater (MS4), Industrial Pretreatment, and FOG (Fats, Oils & Grease) management."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.swiftcomply.com",
+     "quote": "It replaces manual, spreadsheet- and paper-based compliance tracking with one system for reporting, follow-up, and enforcement"
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.swiftcomply.com",
+     "quote": "Live dashboards show compliance rates, outstanding items, and trends across all your programs."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.swiftcomply.com",
+     "quote": "Every inspection, report, and follow-up is timestamped and stored"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.swiftcomply.com",
+     "quote": "SwiftComply is used by municipal water and wastewater utilities, public works departments, and water/sewer districts"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.swiftcomply.com",
+     "quote": "Customers include cities and counties such as Houston, Atlanta, Fort Worth, Charlotte Water, Dallas, Tampa, and Honolulu."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.swiftcomply.com",
+     "quote": "used by 700+ organizations across North America"
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.swiftcomply.com",
+     "quote": "typically as a one-time implementation fee plus an annual subscription"
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.swiftcomply.com",
+     "quote": "Backflow programs can also choose a tester-pay model, where a small per-test fee is passed to testers"
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.swiftcomply.com",
+     "quote": "SwiftComply is available through cooperative purchasing vehicles (such as Omnia Partners, NASPO, Carahsoft), which many public agencies can use to purchase without running a separate competitive bid."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.swiftcomply.com",
+     "sha": "157620e2b1d38852",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftcomply.com/case-studies/",
+     "sha": "c4aff705a8144d47",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftcomply.com/about-us/",
+     "sha": "bec7c754bd91d8ac",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.swiftcomply.com/customers/waco-tx/",
+     "sha": "111ab929f0c619ca",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "wi-plat-co-ltd",
@@ -149768,7 +152248,89 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "System Innovators sells inovah, revenue management and cashiering software that consolidates payment channels and revenue streams across a government enterprise. The homepage presents the product as a central place to manage payments and receivable systems, and as a hub for revenue activity that reduces reconciliation hours and manual general ledger updates. Integration options on the homepage run from real-time interfaces to file imports and main-frame integration.",
+    "The homepage states that the company serves solely in the public sector and offers city, county and state level solutions. Client success stories on that page name the City of Sacramento, the City of Seattle and Dakota County.",
+    "The about page dates the company to 1980 and describes early utility billing systems with over-the-counter cashiering. In 2008 the company became part of N. Harris Computer, adding to a public sector solutions portfolio. The same page says inovah continues as one of the first POS applications to receive the new PCI-SSF certification."
+   ],
+   "quote": {
+    "text": "One Solution For The Public Sector",
+    "url": "https://www.systeminnovators.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.systeminnovators.com",
+     "quote": "inovah consolidates payment channels and revenue streams across the enterprise."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.systeminnovators.com",
+     "quote": "Manage your payments and receivable systems in one central place."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.systeminnovators.com",
+     "quote": "From complex real-time interfaces to file imports and main-frame integration"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.systeminnovators.com",
+     "quote": "Serving solely in the Public Sector."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.systeminnovators.com",
+     "quote": "Take a look on how the City of Seattle simplified reporting and eliminated entry errors with inovah."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.systeminnovators.com/about-us",
+     "quote": "System Innovators was founded in 1980 to provide computer-based solutions for utility companies and local government administration."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.systeminnovators.com/about-us",
+     "quote": "In 2008, System Innovators become part of the family at N. Harris Computer, adding Harris' expanding Public Sector Solutions portfolio."
+    },
+    {
+     "p": 2,
+     "s": 2,
+     "url": "https://www.systeminnovators.com/about-us",
+     "quote": "continues to set the standard as one of the first POS applications to receive the new PCI-SSF certification"
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.systeminnovators.com",
+     "sha": "70c7f849488fe852",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.systeminnovators.com/about-us",
+     "sha": "7e145b0a3d46054a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.systeminnovators.com/about-us?hsLang=en",
+     "sha": "7e145b0a3d46054a",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "edutrak-software",
@@ -150029,7 +152591,83 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: APPA Probation 2026; Michigan Sheriffs Association 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "SuperCom describes itself as a secure solutions integrator and technology provider for governments and other consumers facing organizations. Its offender products are grouped as a PureSecurity suite, which includes the PureTag RF bracelet for use across that suite. PureOne is a one-piece tracking bracelet for continuous location tracking of offenders both indoors and outdoors. The GPS Offender Tracking product is presented as alerting on tampering and out of zone activity and giving law enforcement the information it needs.",
+    "House Arrest is the home detention product, and it enforces scheduled and spontaneous biometric authentication while reducing the need for home visits. PureProtect is a smartphone app for victims that identifies and alerts of proximity violations. Inmate Monitoring reports zone-by-zone information on inmate movement at detention centers. SuperCom also supplies cloud-based software alongside the monitoring devices."
+   ],
+   "quote": {
+    "text": "House Arrest enforces scheduled and spontaneous biometric authentication and minimizes the need for home visits.",
+    "url": "https://www.supercom.com/solutions"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.supercom.com",
+     "quote": "We are a global secure solutions integrator and technology provider for governments and other consumers facing organizations around the world."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "PureTag is a highly secure compact RF bracelet that operates across the complete spectrum of the PureSecurity Suite."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "one-piece tracking bracelet designed for continuous location tracking of offenders both indoors and outdoors."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "Alerting on tampering and out of zone activities, GPS Offender Tracking gives Law Enforcement the knowledge they need when they need it."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "House Arrest enforces scheduled and spontaneous biometric authentication and minimizes the need for home visits."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "a smartphone app for victims that identifies and alerts of proximity violations"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "PureSecurity Inmate Monitoring provides crucial zone-by-zone information on inmate movement at detention centers."
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://www.supercom.com/solutions",
+     "quote": "SuperCom\u2019s cloud-based software designed to deliver the information you need when and where you need it."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.supercom.com",
+     "sha": "543b412d4732b872",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.supercom.com/solutions",
+     "sha": "7cee7e32a45fd08e",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "icev",
@@ -153462,7 +156100,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: GFOA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Systems & Software sells enQuesta, an integrated CIS for utility and property tax billing, customer engagement, field operations, and data intelligence. The billing engine is configured for tiered rates, demand charges, seasonal adjustments, consolidated multi-service billing, LIHEAP compliance and water conservation tiers. Other modules listed on the platform page cover metering and data, property tax billing and collections, contact center, field operations, reporting and analytics.",
+    "The homepage says enQuesta supports 250+ communities across North America, from small municipal utilities to large IOUs and multi-service providers. Utilities and municipalities named on the homepage include Anaheim Public Utilities, City of Azusa, City of Clarksville, City of Greensboro, Detroit Water & Sewerage and Village of Freeport. The same billing engine is offered for water, electric, gas and combined municipal operations, with refuse charges combined on one statement for cities and towns.",
+    "The homepage describes Systems & Software as part of Harris Computer. enQuesta Cloud is described as single-tenant, hosted by a US provider, and the same page lists SOC 1 and SOC 2 Type II certification."
+   ],
+   "quote": {
+    "text": "Water, electric, gas, and refuse charges combined on one statement for cities and towns.",
+    "url": "https://ssivt.com/platform/billing"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://ssivt.com",
+     "quote": "enQuesta is an integrated CIS for utility and property tax billing, customer engagement, field operations, and data intelligence."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://ssivt.com/platform/billing",
+     "quote": "Tiered rates, demand charges, seasonal adjustments, consolidated multi-service billing, LIHEAP compliance, water conservation tiers."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://ssivt.com/platform",
+     "quote": "Bill and collect property taxes on the same platform as utilities."
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://ssivt.com",
+     "quote": "enQuesta supports 250+ communities across North America, from small municipal utilities to large IOUs and multi-service providers."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://ssivt.com",
+     "quote": "Trusted by utilities across North America"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://ssivt.com/platform/billing",
+     "quote": "The same billing engine runs water, electric, gas, and combined municipal operations."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://ssivt.com",
+     "quote": "As part of Harris Computer, Systems & Software is backed by a long-term ownership model."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://ssivt.com",
+     "quote": "enQuesta Cloud is single-tenant, hosted by a top-tier US provider, and backed by disaster recovery that has been tested, not just documented."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://ssivt.com",
+     "sha": "39725e55ea915a5a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ssivt.com/platform",
+     "sha": "5078e346b58a6416",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ssivt.com/platform/cis",
+     "sha": "b82a1bce9b847322",
+     "fetched_on": null
+    },
+    {
+     "url": "https://ssivt.com/platform/billing",
+     "sha": "36c203db67237f86",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "harris-school-solutions",
@@ -156500,7 +159225,93 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: EDUCAUSE 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "StudyStash sells an adaptive learning layer that runs alongside a college's existing LMS. The platform converts course materials into study tools such as flashcards and practice tests, supported by an AI study tutor called StudyChat. StudyStash AI is described as grounded in the instructors' original materials and aligned with course objectives. StudyChat answers student queries, marks formative assessments and returns feedback, while instructors receive reports showing where students are struggling.",
+    "The pages address colleges, instructors and students, and describe universities as the institutions implementing the platform. A year-long pilot at the University of Birmingham was set up to involve over 5,000 students in taught modules across subjects including Computer Science, Medicine and Law. Case study pages name Loughborough University, Pikes Peak State College and Eastern Washington University among the institutions working with StudyStash. Entry is offered as a pilot program of 2-3 courses before scaling."
+   ],
+   "quote": {
+    "text": "Think of us as the missing link between what colleges deliver and what students achieve.",
+    "url": "https://studystash.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://studystash.com",
+     "quote": "StudyStash works alongside your existing LMS - adding a layer of adaptive learning intelligence that boosts student engagement and outcomes."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://studystash.com",
+     "quote": "Convert your course materials into personalised study tools, like flashcards and practice tests, with 24/7 support from our AI study tutor, StudyChat."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://studystash.com",
+     "quote": "Unlike generic AI tools, StudyStash AI is exclusively grounded in your Instructors' original materials, ensuring accurate and relevant learning aligned with course objectives."
+    },
+    {
+     "p": 0,
+     "s": 3,
+     "url": "https://studystash.com",
+     "quote": "StudyChat responds to student queries, produces and marks formative assessments, and delivers personalised feedback"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://studystash.com",
+     "quote": "When universities implement StudyStash, they see measurable improvements across key metrics that drive institutional success:"
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://studystash.com/en-us/about/case-studies/university-of-birmingham",
+     "quote": "The pilot will involve over 5,000 students in taught modules across a diverse range of subjects including Computer Science, Medicine, Law, Sports Science, Chemical Engineering and Politics."
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://studystash.com/en-us/about/case-studies",
+     "quote": "Pikes Peak State College partners with StudyStash to support student retention and academic success"
+    },
+    {
+     "p": 1,
+     "s": 3,
+     "url": "https://studystash.com",
+     "quote": "Choose 2-3 courses , witness the impact on student grades and lecturer insights, then scale what works."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://studystash.com",
+     "sha": "eb0db7f9f958bb1f",
+     "fetched_on": null
+    },
+    {
+     "url": "https://studystash.com/en-us/about/case-studies/university-of-birmingham",
+     "sha": "76e41361c8b1319a",
+     "fetched_on": null
+    },
+    {
+     "url": "https://studystash.com/en-us/about/case-studies",
+     "sha": "5b63c66cfe208436",
+     "fetched_on": null
+    },
+    {
+     "url": "https://studystash.com/en-us/about/blogs/9-to-thrive-podcast",
+     "sha": "41fc26c6b8542d43",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "speridian",
@@ -156654,7 +159465,94 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "research pass: HHS conference exhibitor research 2026-08-25; AIRA 2026",
-  "researched": true
+  "researched": true,
+  "profile": {
+   "paragraphs": [
+    "Strategic Solutions Group sells public health software applications for state and local agencies, built on a case management platform called Casetivity. The applications named on the site cover electronic disease surveillance, immunization information systems, lead poisoning prevention, early intervention and vital records. Delivery is described as cloud enabled, fully managed and sold on subscription.",
+    "The disease surveillance product ingests ELR and eCR data in real time and handles lab data management, including susceptibility, sequencing and negative findings. Pages for it claim coverage of 90+ reportable conditions. The same pages state that the product is HIPAA-compliant and SOC 2 Type II certified.",
+    "The immunization system page addresses state health departments and public health agencies. That page points to an implementation in the State of Massachusetts."
+   ],
+   "quote": {
+    "text": "SSG\u2019s overall mission is to support public sector organizations with IT solutions that enhance the services delivered to residents.",
+    "url": "https://www.ssg-llc.com"
+   },
+   "provenance": [
+    {
+     "p": 0,
+     "s": 0,
+     "url": "https://www.ssg-llc.com/solutions/",
+     "quote": "SSG offers public health software applications for state and local agencies looking to modernize workflows, reduce administrative burden, and improve program performance."
+    },
+    {
+     "p": 0,
+     "s": 1,
+     "url": "https://www.ssg-llc.com/solutions/",
+     "quote": "SSG offers a suite of fit-to-purpose applications built on its Casetivity platform, including Electronic Disease Surveillance, Immunization Information System (IIS), Lead Poisoning Prevention, and Early Intervention Part C Data System."
+    },
+    {
+     "p": 0,
+     "s": 2,
+     "url": "https://www.ssg-llc.com/solutions/",
+     "quote": "Cloud enabled, worry free, fully managed, subscription solution"
+    },
+    {
+     "p": 1,
+     "s": 0,
+     "url": "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/",
+     "quote": "Real-time ELR and eCR ingestion with advanced lab data management, including susceptibility, sequencing, and negative findings."
+    },
+    {
+     "p": 1,
+     "s": 1,
+     "url": "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/",
+     "quote": "Covers 90+ reportable conditions"
+    },
+    {
+     "p": 1,
+     "s": 2,
+     "url": "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/",
+     "quote": "HIPAA-compliant and SOC 2 Type II certified, with MFA, role-based access, and full data encryption in transit and at rest."
+    },
+    {
+     "p": 2,
+     "s": 0,
+     "url": "https://www.ssg-llc.com/solutions/immunization-information-system/",
+     "quote": "State health departments and public health agencies need faster, more reliable ways to manage immunization records, reduce manual work, adapt to changing needs and improve response achieve sustainability."
+    },
+    {
+     "p": 2,
+     "s": 1,
+     "url": "https://www.ssg-llc.com/solutions/immunization-information-system/",
+     "quote": "Successful implementation in the State of Massachusetts."
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.ssg-llc.com",
+     "sha": "83b68478443940b1",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ssg-llc.com/solutions/",
+     "sha": "935a473292fbcc2c",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/",
+     "sha": "bc88c328860b3a63",
+     "fetched_on": null
+    },
+    {
+     "url": "https://www.ssg-llc.com/solutions/immunization-information-system/",
+     "sha": "2fa8979075650557",
+     "fetched_on": null
+    }
+   ],
+   "written_on": "2026-09-13",
+   "by": "agent:write-profiles",
+   "ruled_by": "agent:claude",
+   "ruled_on": "2026-09-13"
+  }
  },
  {
   "id": "vault-technologies-inc",
