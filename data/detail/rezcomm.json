@@ -63,5 +63,47 @@
    "kind_rule": "Launches",
    "url": "https://rezcomm.com/news/ai-driven-technology-launch"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Rezcomm sells an ecommerce marketplace platform that unites ecommerce, CRM, reservations, BI and marketing for travel hubs, venues and service providers. The platform brings unlimited products together in a single checkout for customers who manage parking, travel, events or retail. Security certification listed on the site covers PCI DSS Level 1 v4.0 and Cyber Essentials Plus.",
+   "For airports, the platform covers parking and ancillary services, digital engagement and loyalty, with the aim of optimising non-aeronautical income. Parking operators are offered parking and upgrades from a single platform built to support multi-site operations, including city-centre and off-airport locations. Cruise terminals are offered digital bookings and integrated services covering port arrival and check-in.",
+   "The clients page names airports, venues and travel hubs worldwide as the organisations Rezcomm supports. Belfast International Airport is described as creating a marketplace for selling parking and other ancillaries in partnership with Rezcomm. Sentinel Car Parks, located near Leeds Bradford Airport, partnered with Rezcomm to work on customer experience and revenue streams."
+  ],
+  "quote": {
+   "text": "Originally built for airports, Rezcomm now powers travel hubs, venues, and service providers of all kinds.",
+   "url": "https://rezcomm.com"
+  },
+  "sources": [
+   {
+    "url": "https://rezcomm.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rezcomm.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rezcomm.com/clients",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rezcomm.com/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://rezcomm.com"
+   ],
+   [
+    "https://rezcomm.com"
+   ],
+   [
+    "https://rezcomm.com/clients"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

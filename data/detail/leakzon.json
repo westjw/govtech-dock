@@ -1,0 +1,42 @@
+{
+ "profile": {
+  "paragraphs": [
+   "LeakZon, established 2023, develops an analytical solution that reduces the water loss rate, also known as Non-Revenue Water. It collects and analyzes raw AMR, GIS maps, CIS and other relevant environmental data. Proprietary AI tools optimize the District Metered Areas and detect water anomalies such as leaks, metering inaccuracies, unauthorized consumption and abnormal usage.",
+   "Continuous analysis of meter and SCADA data flags leaks, bursts and night-flow anomalies as soon as they appear. The platform creates virtual DMAs that split a water network into virtual zones without physical works or new sensors. An onboarding wizard gathers data from GIS, meters, SCADA, billing and other sources and builds a digital picture of the network. Once onboarded, the platform monitors the network around the clock and turns each anomaly into a managed issue. The platform follows the AWWA M36 water audit methodology, classifying every drop from system input volume down to revenue and non-revenue water.",
+   "The homepage states that LeakZon serves the whole water ecosystem. Utilities are the audience for the alerts, dispatching crews to the locations the AI pinpoints. Water service providers are a second named segment, with LeakZon offered to them as a value-added service. LeakZon already operates across the United States, including Texas, California, Illinois, Pennsylvania and Florida."
+  ],
+  "quote": {
+   "text": "NRW is not only a water loss problem. It is a capital allocation failure caused by poor operational visibility.",
+   "url": "https://leakzon.com"
+  },
+  "sources": [
+   {
+    "url": "https://leakzon.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://leakzon.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://leakzon.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://leakzon.com/about"
+   ],
+   [
+    "https://leakzon.com",
+    "https://leakzon.com/solutions"
+   ],
+   [
+    "https://leakzon.com",
+    "https://leakzon.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

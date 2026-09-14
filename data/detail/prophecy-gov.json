@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Prophecy Gov sells an internal AI tool for the staff of local governments. The product covers three functions: searching a municipality's ingested records, drafting documents, and comparing one government with others. The drafting function covers staff reports and resolutions, matched to how a local government writes.",
+   "A benchmarking function sets one government beside others to show what those governments did. The site says the product was built to integrate with tools a government already uses.",
+   "The pages describe the system as closed, reachable only by staff, with files and data specific to the government that uses it. The site names Vault as the place files are organized, with control over who can reach them. The site also states that queries, responses, and uploaded documents are not used to train underlying models."
+  ],
+  "quote": {
+   "text": "An internal, closed AI accessible only by staff. All files and data are specific to your government.",
+   "url": "https://www.prophecygov.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.prophecygov.com",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.prophecygov.com"
+   ],
+   [
+    "https://www.prophecygov.com"
+   ],
+   [
+    "https://www.prophecygov.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

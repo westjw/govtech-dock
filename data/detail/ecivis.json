@@ -36,5 +36,47 @@
    "kind_rule": null,
    "url": "https://ecivis.com/resources/2026-state-of-grants-management-and-technology-report/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Euna Grants is grant management software that carries public funding work from discovery through closeout. The line is sold in three named parts, described on the page as Grants Research Software, Grant Seeking Software, and Grant Making Software. Research finds funding opportunities, seeking tracks tasks and deadlines through configurable workflows, and making covers application design, scoring, and award.",
+   "Listed capabilities include a research database of federal, state, municipal, local, and foundation funding opportunities, automatic deadline reminders, custom applications with field-level scoring criteria, and a reporting engine that pulls data from all fields in the system. Compliance and audit are stated as a focus, with audit trails described as FOIA-ready and public transparency tools listed as built in. Integration with a customer ERP is named as a way to move financial information.",
+   "The pages name government and the public sector as the market, and describe the grants product as purpose-built for government and public sector organizations. Named customers on that page include Mariposa County, CA, a statewide grant administrator in Arizona, and the California Department of Housing & Community Development. A frequently asked questions entry lists public sector agencies, nonprofits, educational institutions, and any organization that manages grants."
+  ],
+  "quote": {
+   "text": "Grant Management Software Purpose-built for Government and Public Sector Organizations",
+   "url": "https://ecivis.com"
+  },
+  "sources": [
+   {
+    "url": "https://ecivis.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecivis.com/solutions/financial-suite/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecivis.com/solutions/budget",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecivis.com/solutions/grants/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ecivis.com"
+   ],
+   [
+    "https://ecivis.com"
+   ],
+   [
+    "https://ecivis.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

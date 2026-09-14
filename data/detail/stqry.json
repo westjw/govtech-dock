@@ -90,5 +90,49 @@
    "kind_rule": null,
    "url": "https://stqry.com/blog/explore-paris-pere-lachaise-cemetery-with"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "STQRY, formerly OnCell, is a storytelling platform used to create location-based tours, virtual tours, mobile and web apps, audio guides, games, and online collections. Images, audio, text and map information are added to a mobile guide app through a web-based tour builder. Tours built in STQRY Apps can be tested and published for mobile web, iOS and Android. Content in a published tour or audio guide can be changed later through the STQRY builder, with updates pushed to the app in real time.",
+   "STQRY Kiosk is a separate platform for creating digital labels and interactive storytelling elements for visitors. Kiosk content is offered in 30 different languages, including Arabic, Hebrew, M\u0101ori and Papiamento.",
+   "The about page dates the business to OnCell's inception in 2006 and describes the destinations served as museums, parks, cities, and historic sites. The apps pricing section states that a setup fee of USD 1,995 applies for native apps."
+  ],
+  "quote": {
+   "text": "The simple to use app builder for interactive visitor experiences.",
+   "url": "https://stqry.com/products/stqry-apps"
+  },
+  "sources": [
+   {
+    "url": "https://stqry.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stqry.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stqry.com/products/stqry-apps",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stqry.com/products/stqry-kiosk",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://stqry.com/about-us",
+    "https://stqry.com/products/stqry-apps"
+   ],
+   [
+    "https://stqry.com/products/stqry-kiosk"
+   ],
+   [
+    "https://stqry.com/about-us",
+    "https://stqry.com/products/stqry-apps"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

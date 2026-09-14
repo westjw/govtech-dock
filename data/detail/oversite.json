@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.addoversite.com/blog/voice-to-text-inspection-notes"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Oversite sells a construction inspection and project management platform for unit-priced contracts, aimed at civil engineering inspection teams, public agencies, and contractors. The about page says the platform handles the work CEI firms actually do, including DWRs, pay estimates, retainage, and change orders.",
+   "Three roles are named on the homepage: inspection firms running the CEI process on public infrastructure projects, agencies overseeing delivery, and contractors in the field. For agencies the homepage describes overseeing project delivery across firms with real-time dashboards, audit-ready trails, and compliance. For contractors it describes submitting work reports and pay requests from the field and getting paid faster with fewer billing corrections.",
+   "The about page says the platform was built by people who ran CEI projects for a living, and that the company is based in Nashville, TN. The same page calls the product the platform of record for firms and agencies managing hundreds of public infrastructure projects."
+  ],
+  "quote": {
+   "text": "By CEIs, for CEIs.",
+   "url": "https://www.addoversite.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.addoversite.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.addoversite.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.addoversite.com",
+    "https://www.addoversite.com/about"
+   ],
+   [
+    "https://www.addoversite.com"
+   ],
+   [
+    "https://www.addoversite.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

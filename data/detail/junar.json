@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Junar sells a data platform that transforms data assets into dynamic tables, visualizations, maps, dashboards and APIs. The platform is aimed at making open data easy to re-use and interpret by many different audiences. Data is collected from sources including web pages, web services and files uploaded to the platform, then transformed and delivered as tables, graphs, maps and an API.",
+   "Junar describes governments as the users of the data platform. The National Energy Commission from Chile opened a data portal to reduce information asymmetries in the Chilean electricity sector. ARSAT from Argentina publishes service coverage and operation data so customers can choose services that fit their needs. The city of Bah\u00eda Blanca from Argentina publishes municipal, environmental, economic, infrastructure, local health, security and transport data.",
+   "The ARSAT portal carries affidavits of directors and managers, the list of suppliers, budgetary executions and tenders. Junar and CNE are working on the inclusion of blockchain technology to certify the quality of open data of the national energy sector."
+  ],
+  "quote": {
+   "text": "Junar data platform lets you transform your hard-to-find and useless data assets into dynamic tables, visualizations, maps, dashboards and APIs \u2013 so citizens, developers and companies can re-use them for their interests in a simple way.",
+   "url": "https://junar.com"
+  },
+  "sources": [
+   {
+    "url": "https://junar.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://junar.com/case-study/cne/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://junar.com/case-study/arsat/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://junar.com/case-study/bahia-blanca/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://junar.com",
+    "https://junar.com/case-study/cne/"
+   ],
+   [
+    "https://junar.com",
+    "https://junar.com/case-study/cne/",
+    "https://junar.com/case-study/bahia-blanca/"
+   ],
+   [
+    "https://junar.com/case-study/arsat/",
+    "https://junar.com/case-study/cne/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

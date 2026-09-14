@@ -90,5 +90,39 @@
    "kind_rule": null,
    "url": "https://help.keenious.com/en/articles/185073-how-to-subscribe-to-keenious-plus"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Keenious sells a research companion for exploring academic literature, aimed at finding published research and understanding how a field fits together. The product integrates with Microsoft Word and Google Docs so that relevant research sits beside whatever document is open. Recommendations draw on access to 250+ million academic works from OpenAlex, with open access identification through Unpaywall integration.",
+   "Universities buy it as an institutional license covering students and faculty across disciplines. Link resolver support for EBSCO, PRIMO and other platforms connects the tool to existing library systems and subscribed resources. Pricing separates a free tier with limited messages and conversations from a Plus tier described as effectively unlimited for practical research needs.",
+   "The company was founded in Norway and works globally as a distributed company. Keenious states that it is ISO 27001 certified and GDPR compliant, and that content submitted by users is not stored."
+  ],
+  "quote": {
+   "text": "A research companion for exploring academic literature",
+   "url": "https://keenious.com"
+  },
+  "sources": [
+   {
+    "url": "https://keenious.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://keenious.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://keenious.com"
+   ],
+   [
+    "https://keenious.com"
+   ],
+   [
+    "https://keenious.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

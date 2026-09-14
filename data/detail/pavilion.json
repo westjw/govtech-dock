@@ -108,5 +108,49 @@
    "kind_rule": "Names",
    "url": "https://www.withpavilion.com/about/resources/small-technology-reseller-4tech-competes-with-industry-names-and-grows-government-sales-with-pavilion-pro"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Pavilion runs a search platform that public agencies use to find cooperative contracts and vendors that fit their compliance requirements. The public entities page describes searching cooperatives, state contracts, and an agency's own contracts in one place. That page says the platform aggregates contracts from 400+ cooperatives, state, and local contracts. The same page describes searching 300,000+ suppliers and sending quote requests to them.",
+   "Access is free for public entities, and listing is free for suppliers. Suppliers pay for premium features, which is how the pages account for the free access. The vendors page presents Pavilion Pro as the paid tier for supplier teams selling into the public sector.",
+   "For those suppliers the vendors page describes active purchase requests filtered by category, agency type, budget, and geography. The same page states that coverage is local and education agencies and not federal ones."
+  ],
+  "quote": {
+   "text": "Pavilion is the procurement platform 3,500+ public agencies use to plan their purchases.",
+   "url": "https://www.withpavilion.com/about/vendors"
+  },
+  "sources": [
+   {
+    "url": "https://www.withpavilion.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.withpavilion.com/about/public-entities",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.withpavilion.com/about/vendors",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.withpavilion.com/about/resources",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.withpavilion.com",
+    "https://www.withpavilion.com/about/public-entities"
+   ],
+   [
+    "https://www.withpavilion.com/about/public-entities",
+    "https://www.withpavilion.com/about/vendors"
+   ],
+   [
+    "https://www.withpavilion.com/about/vendors"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://n2nservices.com/press/fortune-ghost-students"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "N2N Services Inc. was founded in 2010 around the insight that in higher education every problem is a data problem and every data problem is an integration problem. That insight became Illuminate, and Illuminate became the foundation for LightLeapAI. The homepage describes LightLeapAI as an agentic AI platform that catches fraud at the application layer and automates document processing.",
+   "The product family named around LightLeapAI is Orion for fraud intelligence, Prism for document intelligence, Polaris for student services, Atlas for data quality and migration, and Omnia as an executive intelligence hub. Meridian is the application platform, and the platform page states that it assembles a governed, multi-tenant app from a description written in one sentence. Helios is described as the integration spine, with pre-built connectors and a microservices runtime that moves campus data.",
+   "The platform page positions one Agentic Platform-as-a-Service against the fragmented stack of legacy SIS, ERP, and CRM systems on campus. The homepage frames the earlier work as the connective tissue between the systems that run colleges and universities, including student information, finance, document management and transcripts. The platform page counts 500+ higher-education institutions served by N2N."
+  ],
+  "quote": {
+   "text": "The AI platform for higher education.",
+   "url": "https://n2nservices.com"
+  },
+  "sources": [
+   {
+    "url": "https://n2nservices.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://n2nservices.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://n2nservices.com/company/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://n2nservices.com/company/",
+    "https://n2nservices.com"
+   ],
+   [
+    "https://n2nservices.com",
+    "https://n2nservices.com/platform/"
+   ],
+   [
+    "https://n2nservices.com/platform/",
+    "https://n2nservices.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

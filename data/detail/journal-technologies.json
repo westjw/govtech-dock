@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.journaltech.com/blog/utah-prosecution-council-standardizes-cms-offering-with-eprosecutor"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Journal Technologies Inc. is an enterprise software company and a subsidiary of Daily Journal Corporation. The company makes software for courts and the justice system. Headquarters are in downtown Los Angeles, with approximately 298 employees and a major office in Logan, Utah.",
+   "The eCourt case management system covers appellate, superior, municipal, traffic, probate, and drug courts. eDefender provides case management for public defenders. eProsecutor provides case management for state, county, and city prosecutors, as well as Medicaid fraud control units. eSupervision provides case management for probation, parole, court services, pretrial, and diversion offices. eProsecutor Online is a cloud-hosted version of eProsecutor for small to mid-sized prosecutors.",
+   "Ancillary offerings include eFile-it, which lets justice partners, organizations, attorneys, and self-represented litigants file cases, documents, and other information electronically. ePay-it is a cloud-hosted payment portal for online payments of court-associated fees. The case studies page says courts, justice agencies, and government leaders solve problems with Journal Technologies. Named case studies include the State of Connecticut, the City of Spokane, Mohave County, Riverside County, and Los Angeles Superior Court."
+  ],
+  "quote": {
+   "text": "Our mission is to make and implement technology that is so well-designed and adaptable to daily workflows that it fades into the background, so busy people can focus on their mandates and not the tools.",
+   "url": "https://journaltech.com"
+  },
+  "sources": [
+   {
+    "url": "https://journaltech.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.journaltech.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.journaltech.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.journaltech.com/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.journaltech.com/about"
+   ],
+   [
+    "https://journaltech.com"
+   ],
+   [
+    "https://journaltech.com",
+    "https://www.journaltech.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

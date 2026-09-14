@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/sentinelone-expands-collaboration-with-aws-to-deliver-unified-ai-governance/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SentinelOne sells cybersecurity software built around the Singularity Platform, which its own pages describe as one system for protection, security operations, and data. The platform covers endpoint, cloud, identity, and AI security through one agent and one console, and the pages list SaaS, on-premises, hybrid, and air-gapped deployment. A separate page describes extended detection and response that ingests and normalizes data across endpoint, identity, cloud, AI systems, and third-party tools into a single correlated view.",
+   "The industries page sorts buyers by sector, addressing patient records and clinical systems, trading floors and customer accounts, grid operations, campus networks, and classroom devices. One of those sections names FedRAMP High and federal mission assurance, and another describes protecting services, infrastructure, and citizens from disruption.",
+   "Customer quotes on the homepage come from staff at the Golden State Warriors, Norwegian Airlines, and Aston Martin Lagonda LTD. The page on extended detection and response carries a quote from a VP of IT at Sundt Construction. The homepage states that organizations from global enterprises to fast-moving teams rely on SentinelOne to reduce risk and simplify operations."
+  ],
+  "quote": {
+   "text": "One AI-native platform. Unified protection across endpoint, identity, AI, and cloud.",
+   "url": "https://www.sentinelone.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.sentinelone.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sentinelone.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sentinelone.com/platform/singularity-xdr-protection/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sentinelone.com/solutions/industries/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sentinelone.com/platform/",
+    "https://www.sentinelone.com",
+    "https://www.sentinelone.com/platform/singularity-xdr-protection/"
+   ],
+   [
+    "https://www.sentinelone.com/solutions/industries/"
+   ],
+   [
+    "https://www.sentinelone.com",
+    "https://www.sentinelone.com/platform/singularity-xdr-protection/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

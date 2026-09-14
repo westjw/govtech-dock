@@ -18,5 +18,35 @@
    "kind_rule": null,
    "url": "https://www.sworn.ai/blog/how-workforce-wellness-impacts-the-bottom-line"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SWORN sells an AI-powered health and wellness platform built for professionals in high-stress roles, starting with first responders. The platform connects wearable devices and tracks sleep, stress, movement, recovery, and nutrition in real time, tying those readings to shifts and workload. Structured assessments, goal tracking, team challenges, and visual analytics sit alongside the biometric readings.",
+   "SWORN's AI, called HOWARD, detects stress in real time and delivers personalized, scenario-based support. Leaders see only anonymized, aggregated readiness rather than individual data. The pages describe the infrastructure as HIPAA-compliant with end-to-end encryption.",
+   "The site is addressed to police, fire, and EMS, and says that agencies get lower absenteeism, turnover, and liability. Departments can create custom challenges for their teams, while individual users set their own goals and priorities. SwornPulse, a public map of community safety and well-being, is offered free for everyone and free for agencies to join."
+  ],
+  "quote": {
+   "text": "SWORN unites the disparate data and practical tools your team needs to stay healthy, resilient, and ready.",
+   "url": "https://www.sworn.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.sworn.ai",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sworn.ai"
+   ],
+   [
+    "https://www.sworn.ai"
+   ],
+   [
+    "https://www.sworn.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

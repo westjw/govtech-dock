@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.rainbird.com/news/rain-birds-ic-system-and-cirruspro-featured-turf-talk-magazine"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Rain Bird sells irrigation equipment and control systems, and its home page presents commercial projects as a separate demand on those systems. Products and replacement parts also ship from the Rain Bird Online Store to homes and businesses. The same page also points homeowners to free referrals to local contractors who help select and install a sprinkler system.",
+   "IQ4 is a central control product for irrigation controllers, and its map places controller locations and shows watered areas by station. Reports can be pulled for one, some, or all of a site's irrigation controllers. Batch editing applies a common setting to many items at once, such as stations or programs. IQ4 also captures data that an API can pass on to generate work orders and customer reports.",
+   "A separate agriculture page covers drip irrigation, with pressure compensating dripline, anti-clog emitters, polyethylene tubing and micro sprays. Case studies on the IQ4 page name a city recreation and parks department in Bakersfield, California. A corporate campus in College Park is among the other sites listed on that page."
+  ],
+  "quote": {
+   "text": "Commercial projects demand more from an irrigation system.",
+   "url": "https://www.rainbird.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.rainbird.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rainbird.com/agriculture/products/drip-irrigation",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rainbird.com/products/fg100",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rainbird.com/products/iq4",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.rainbird.com"
+   ],
+   [
+    "https://www.rainbird.com/products/iq4"
+   ],
+   [
+    "https://www.rainbird.com/agriculture/products/drip-irrigation",
+    "https://www.rainbird.com/products/iq4"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

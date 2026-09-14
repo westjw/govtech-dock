@@ -54,5 +54,50 @@
    "kind_rule": null,
    "url": "https://www.linewize.com/blog/text-analysis-for-linewize-filter"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Linewize sells filtering and student safety software to schools and districts. These pages describe a suite of child cyber safety and wellbeing solutions. Those solutions are grouped under three pillars: prevention and enablement, early detection and intervention, and education and engagement.",
+   "Linewize Filter is content-aware, hybrid filtering that gives IT granular control and flexible rule configuration. Linewize Classroom Manager gives teachers control in the modern digital classroom. EdTech Manager reports on a district's app usage, student screen time, compliance and adoption. Linewize Monitor alerts designated staff to students whose digital behaviors indicate they may be at risk, using human moderated threat detection.",
+   "Linewize Pulse offers school-wide wellbeing insights and a channel for students to speak up if they need support. Qustodio enables parents to see and supervise their child's online activity on school-issued devices. School districts are named on these pages as the customers choosing Linewize. Linewize North America is part of Qoria, described as a family of child digital safety technology providers."
+  ],
+  "quote": {
+   "text": "We're not just a vendor, we're a long term, strategic partner to our customers.",
+   "url": "https://www.linewize.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.linewize.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linewize.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linewize.com/why-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linewize.com/our-story",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.linewize.com",
+    "https://www.linewize.com/about-us"
+   ],
+   [
+    "https://www.linewize.com"
+   ],
+   [
+    "https://www.linewize.com",
+    "https://www.linewize.com/why-us",
+    "https://www.linewize.com/our-story"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

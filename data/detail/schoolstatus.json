@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/one-system-eighteen-schools-attendance"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SchoolStatus sells software that connects educators and families around attendance, reading progress and graduation rates. The homepage describes districts holding student data they cannot readily put to work, and offers products that turn that data into messages sent to families. Product lines named on the site include SchoolStatus Connect for messaging, SchoolStatus Attend for attendance and SchoolStatus Literacy for reading updates.",
+   "SchoolStatus Attend addresses chronic absenteeism by sending automated messages to families when absences start to accumulate. Early Warning Insights applies predictive analytics to flag students likely to become chronically absent while there is still time to act. Attend also syncs with SIS providers and carries two-way text messages to families in more than 130 languages.",
+   "SchoolStatus Connect pulls attendance, grades and behavior from a district SIS and targets announcements to specific schools, grade levels or a single bus route. SchoolStatus Literacy syncs with existing assessment platforms and sends families plain-language updates on a child's reading level along with activities for home. Testimonials on the Connect page come from a superintendent at Pass Christian Public Schools and an assistant superintendent at Lake Worth ISD."
+  ],
+  "quote": {
+   "text": "SchoolStatus helps you build them by connecting educators and families on the topics that matter.",
+   "url": "https://www.schoolstatus.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.schoolstatus.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schoolstatus.com/products/attend",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schoolstatus.com/solutions/improve-literacy",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schoolstatus.com/products/connect",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.schoolstatus.com"
+   ],
+   [
+    "https://www.schoolstatus.com/products/attend"
+   ],
+   [
+    "https://www.schoolstatus.com/products/connect",
+    "https://www.schoolstatus.com/solutions/improve-literacy"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

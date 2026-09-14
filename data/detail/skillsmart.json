@@ -9,5 +9,50 @@
    "kind_rule": null,
    "url": "https://www.skillsmart.us/resources/tax-credits/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SkillSmart sells compliance software for construction and workforce programs under the name InSight IQ. The homepage describes InSight as a product created to capture, store and report project, workforce, wage and business compliance data. A second product, Seeker, is presented as a community engagement platform for building a skilled workforce pipeline.",
+   "On prevailing wage, the pages say SkillSmart automates Davis-Bacon, state prevailing wage, and multi-tier subcontractor compliance in one configurable platform. The certified payroll pages describe generating, validating and submitting WH-347 forms across every subcontractor, every week. The apprenticeship pages describe tracking apprentice-to-journeyman ratios, utilization hours, and IRA prevailing wage requirements across every project, every trade, and every subcontractor tier.",
+   "The pages name contractors, developers, and public agencies as the buyers that rely on the prevailing wage product. The certified payroll page addresses questions that general contractors, trade contractors, and public agencies ask about that software."
+  ],
+  "quote": {
+   "text": "InSight was created to capture, store and report project, workforce, wage and business compliance data.",
+   "url": "https://skillsmart.us"
+  },
+  "sources": [
+   {
+    "url": "https://skillsmart.us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skillsmart.us/solutions/certified-payroll-oversight/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skillsmart.us/solutions/apprenticeship-workforce-compliance/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://skillsmart.us"
+   ],
+   [
+    "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+    "https://www.skillsmart.us/solutions/certified-payroll-oversight/",
+    "https://www.skillsmart.us/solutions/apprenticeship-workforce-compliance/"
+   ],
+   [
+    "https://www.skillsmart.us/solutions/prevailing-wage-compliance/",
+    "https://www.skillsmart.us/solutions/certified-payroll-oversight/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

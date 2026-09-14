@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://invokelearning.com/resources/blog/issue-of-data-without-data-management"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Invoke Learning sells data platforms and analytic solutions for colleges and universities. Its products are built around the systems colleges and universities use, including SIS, LMS, CRM, ERP, Advising and Facilities. The company describes three products: InvokeUnify, InvokeClarity and AlterEgo.",
+   "InvokeUnify is described as a datalake with 70+ connectors that load daily snapshots of raw data into Snowflake. InvokeClarity is a managed data lakehouse with a Snowflake environment included, pre-structured for higher education in Large Wide Table format. Each AlterEgo is purpose-built for academic advising, tutoring and help desk services for students, faculty and staff.",
+   "Pricing is stated as flat-rate regardless of data volume or connector count. One named client is Philadelphia College of Osteopathic Medicine, whose chief information officer is quoted on the Invoke Clarity page. Invoke Unify is offered with over 40 connectors to common higher education data systems, including generic database connectors."
+  ],
+  "quote": {
+   "text": "Built exclusively for higher education, they're designed around the systems, structures, and challenges colleges and universities actually face",
+   "url": "https://www.invokelearning.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.invokelearning.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.invokelearning.com/solutions?hsLang=en",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.invokelearning.com/solutions/invoke-clarity?hsLang=en",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.invokelearning.com/solutions/data-lakehouse/invokeunify?hsLang=en",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.invokelearning.com/solutions?hsLang=en",
+    "https://www.invokelearning.com"
+   ],
+   [
+    "https://www.invokelearning.com"
+   ],
+   [
+    "https://www.invokelearning.com",
+    "https://www.invokelearning.com/solutions/invoke-clarity?hsLang=en",
+    "https://www.invokelearning.com/solutions/data-lakehouse/invokeunify?hsLang=en"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Kova Corp sells communication, recording and alerting software for public safety organizations and for enterprises. The products page splits the catalogue into public safety solutions, enterprise workforce optimization solutions and an emergency alerting solution.",
+   "KEANS, the KOVA Emergency Alert Notification System, links multiple locations, agencies, business partners and public address systems such as loudspeakers, bull horns and audio distribution repeaters. KAMS, the Kova Alarm Monitoring Solution, handles hardware monitoring, captures SNMP alerts and OS events, and can monitor data streams such as CDR, P25 traffic and RTP.",
+   "The workforce optimization page offers contact centers a platform for multimedia recording, evaluation and archiving of calls, plus an Enterprise Feedback Management survey platform and a Workforce Management solution. The about page names 911 call centers and emergency responders as the people those public safety solutions serve. The about page also cites a recorder installed for the Port Authority of NY/NJ after the loss of its Emergency Operations Center."
+  ],
+  "quote": {
+   "text": "Whether your organization is searching for enterprise workforce optimization solutions, public safety solutions, or a emergency alerting solution, KOVA has the products and the know-how to customize a solution to fit your unique needs.",
+   "url": "https://www.kovacorp.com/products"
+  },
+  "sources": [
+   {
+    "url": "https://www.kovacorp.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kovacorp.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kovacorp.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kovacorp.com/products/workforce-optimization",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kovacorp.com",
+    "https://www.kovacorp.com/products"
+   ],
+   [
+    "https://www.kovacorp.com/products"
+   ],
+   [
+    "https://www.kovacorp.com/products/workforce-optimization",
+    "https://www.kovacorp.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

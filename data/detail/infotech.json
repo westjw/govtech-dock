@@ -108,5 +108,49 @@
    "kind_rule": "Unveils",
    "url": "https://www.infotechinc.com/news/infotech-unveils-ai-powered-bid-intelligence-suite-to-drive-precision-in-civil-construction-bidding/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Infotech sells digital software for planning, bidding, construction management, inspection, and paperless contracting. The products page describes a web-based construction administration and inspection system that tracks pay items, daily reports, payment, funding, and materials. A second product is a secure e-bidding platform that lets agencies and owners receive bids and proposals online, get instant bid tabs, and reduce bid submission costs.",
+   "Named buyers on the homepage include contractors, LPAs, MPOs, and DOTs across the infrastructure lifecycle. Services for DOTs cover market analysis, prompt payment, AASHTOWare Project implementation, and LPA program management. For local agencies, the same page points to hosting bids and managing projects.",
+   "The company page states that the products are used across the United States on job sites. The case studies page collects customer stories about that software in the infrastructure construction industry."
+  ],
+  "quote": {
+   "text": "Connectivity is at the core of what we do.",
+   "url": "https://www.infotechinc.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://www.infotechinc.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infotechinc.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infotechinc.com/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infotechinc.com/company/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.infotechinc.com",
+    "https://www.infotechinc.com/products/"
+   ],
+   [
+    "https://www.infotechinc.com"
+   ],
+   [
+    "https://www.infotechinc.com/company/",
+    "https://www.infotechinc.com/case-studies/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

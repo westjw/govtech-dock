@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.socialexplorer.com/home/post/disability-pride-month-data-resources-on-social-explorer"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Social Explorer sells a subscription web application for community analysis, built so that data is acquired and processed before the customer arrives. The application couples a data library with an AI-enabled Data Navigator that takes natural-language questions and returns dataset-specific analysis. Output takes the form of maps, charts, tables, and reports, and data can be exported to Excel, CSV, PDF, PNG, SAS, or SPSS formats.",
+   "The mapping product, SE Research, covers location-based community data at every geographic level and is positioned for users without a data science background. A subscription includes a library of crime, demographic, economic, environmental, equity, health, housing, political, and transportation data drawn from public and private sources.",
+   "SE Transform, a data pipeline management product, launches as a managed service and is built on Apache Airflow infrastructure. SE AI is sold as a domain-specific data chat interface, with a conversational front end, an API layer, and an admin panel. The homepage says the customer base includes educational and research institutions, government agencies, non-profits, healthcare systems, and businesses."
+  ],
+  "quote": {
+   "text": "Most of the time spent on community analysis involves acquiring and processing data.",
+   "url": "https://www.socialexplorer.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.socialexplorer.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.socialexplorer.com/home/products/demographic-mapping-software",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.socialexplorer.com/home/products/data-pipeline-management-tools",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.socialexplorer.com/home/products/ai-chat-tools-for-data-analysis",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.socialexplorer.com"
+   ],
+   [
+    "https://www.socialexplorer.com/home/products/demographic-mapping-software"
+   ],
+   [
+    "https://www.socialexplorer.com/home/products/data-pipeline-management-tools",
+    "https://www.socialexplorer.com/home/products/ai-chat-tools-for-data-analysis",
+    "https://www.socialexplorer.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

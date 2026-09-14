@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.panoramaed.com/blog/the-8-step-framework-special-ed-directors-use-to-build-custom-ai-tools"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Panorama sells software for K-12 school districts that connects student data and AI with district policies across MTSS, pathways, surveys, and instruction. Panorama Student Success unifies data from a student information system, assessments, and surveys in one place to support MTSS. Panorama Surveys and Engagement collects student, staff, and family feedback.",
+   "Panorama Solara is a district-wide AI platform that draws on district student data and materials to generate intervention plans, family letters, and more. Solara includes ready-made prompts and tools to create lesson plans, rubrics, and grade-level texts. Panorama says district data is not used to train models. The platform is described as complying with SOC 2, FERPA, COPPA, and 1EdTech standards.",
+   "Panorama Solara with Class Companion delivers rubric-aligned feedback to students on their assignments. Panorama says 2,000 districts power their student supports with the platform. Districts use it to track attendance, behavior, and coursework for student support teams."
+  ],
+  "quote": {
+   "text": "Turn your data into what you do next.",
+   "url": "https://www.panoramaed.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.panoramaed.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.panoramaed.com/products/ai/panorama-solara",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.panoramaed.com/products/ai/panorama-solara/class-companion",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.panoramaed.com/products/student-success",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.panoramaed.com",
+    "https://www.panoramaed.com/products/student-success"
+   ],
+   [
+    "https://www.panoramaed.com/products/ai/panorama-solara",
+    "https://www.panoramaed.com/products/ai/panorama-solara/class-companion"
+   ],
+   [
+    "https://www.panoramaed.com/products/ai/panorama-solara/class-companion",
+    "https://www.panoramaed.com/products/student-success"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

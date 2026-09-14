@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Mirza sells what its site calls public benefits infrastructure, a platform that matches, verifies, and enrolls people in the benefits they qualify for and keeps them covered as eligibility rules and verification requirements change. Benefits named on the site include Medicaid, Childcare (CCAP), SNAP, WIC, and Head Start. The site describes one engine that attaches to the eligibility systems an organization already runs, layered on that existing stack rather than sold as a replacement.",
+   "The site groups its audiences as State agencies, Health plans & MCOs, Health systems, and Employers & unions. For state agencies the stated pitch is getting H.R.1-ready without replacing the eligibility system already in place. Scale and timing are given as 200+ programs supported across all 50 states, and 8 weeks to launch a state, MCO, or institutional deployment.",
+   "Results from the field name the New York City Teachers Union (UFT) and Thrive by 5 Louisville (KY). The site ties demand to H.R.1's Medicaid community-engagement requirement, which it says takes effect January 1, 2027. Security claims listed on the page include AES-256 encryption at rest and TLS 1.3 in transit, with audited, least-privilege access controls."
+  ],
+  "quote": {
+   "text": "Benefits Continuity infrastructure that keeps families covered.",
+   "url": "https://heymirza.com"
+  },
+  "sources": [
+   {
+    "url": "https://heymirza.com",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://heymirza.com"
+   ],
+   [
+    "https://heymirza.com"
+   ],
+   [
+    "https://heymirza.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

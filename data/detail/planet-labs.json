@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Planet sells Earth observation data products drawn from its own satellite constellations. Planet Monitoring supplies near daily coverage at 3.7 meter resolution in four multispectral bands, RGB and Near Infrared. Satellite Tasking adds site specific SkySat high resolution imagery, and Planetary Variables quantifies attributes like soil moisture, biomass, and land surface temperature.",
+   "Access runs on a subscription model, with images ordered through Planet's APIs, web application, and GIS integrations. The archive of high resolution images dates from 2009. Planet reports over 300 million square kilometers of imagery collected each day. Planet Insights Platform brings together applications, APIs, data layers, and GIS tools for querying, processing, and visualizing data.",
+   "The home page names Rural Payments Agency and Kazakhstan Space Agency among the organizations that work with Planet. The monitoring page describes the New Mexico State Land Office using Planet Monitoring to uncover 53 trespasses which yielded $2.7 million in back payments. Bayer and Pan Pac are named on the same page, Bayer for Planet Monitoring and Pan Pac for PlanetScope imagery."
+  ],
+  "quote": {
+   "text": "Our high-resolution daily Earth data, archive, and analytics give customers an unprecedented view, allowing them to cast further and wider in time, space, and frequency.",
+   "url": "https://www.planet.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.planet.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.planet.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.planet.com/products/planet-insights-platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.planet.com/products/satellite-monitoring/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.planet.com/products/",
+    "https://www.planet.com/products/satellite-monitoring/"
+   ],
+   [
+    "https://www.planet.com/products/satellite-monitoring/",
+    "https://www.planet.com/products/"
+   ],
+   [
+    "https://www.planet.com",
+    "https://www.planet.com/products/satellite-monitoring/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

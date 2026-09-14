@@ -1,0 +1,37 @@
+{
+ "profile": {
+  "paragraphs": [
+   "StreetLight sells transportation analytics built on a big data platform rather than on field counts. The platform covers roadway volumes, transportation modeling, congestion management and safety studies, with AADT and origin-destination metrics. Delivery runs three ways: self-serve software, bulk data through an API, and custom services from a data science team.",
+   "Products are grouped by industry, and the groupings named on the site are government, business, consultants and academics. Government users are pitched planning, operations and climate work; business users are pitched retail, fuel and electric vehicle charging applications. Work described on the about page covers hundreds of DOTs and engineering firms across North America.",
+   "StreetLight dates its founding to 2011 and became part of the professional services firm Jacobs in 2022. The platform is named StreetLight InSight, and the about page describes bicycle, pedestrian, bus and rail metrics added to its core measures."
+  ],
+  "quote": {
+   "text": "Better data means better decisions. What problem are you trying to solve?",
+   "url": "https://www.streetlightdata.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.streetlightdata.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.streetlightdata.com/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.streetlightdata.com"
+   ],
+   [
+    "https://www.streetlightdata.com",
+    "https://www.streetlightdata.com/about-us/"
+   ],
+   [
+    "https://www.streetlightdata.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

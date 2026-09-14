@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.secureschools.com/en-gb/resources/are-your-accounts-secure"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Secure Schools sells cybersecurity tools and services built for schools and trusts. The platform covers a free cyber score for benchmarking, phishing simulation, a policy builder and awareness training for staff. Phishing simulations mimic education-sector phishing emails and can be tailored by trust, school or department.",
+   "The policy builder offers document templates aimed at DfE, RPA and Cyber Essentials requirements, and schools can upload their own policies through the platform. A self-evaluation audit produces a gap analysis report against standards set by UK bodies such as the Department for Education. Testing services include an external vulnerability scan of school IT systems, assessor-led audits and penetration testing.",
+   "Packages run from a free tier called Foundations up to Verified, which adds discounted rates on services such as penetration testing and tabletop exercises. Case studies name trusts including White Woods Primary Academy Trust and The Rose Learning Trust. A school or trust registers on the platform and can purchase a package directly through it."
+  ],
+  "quote": {
+   "text": "Founded and built by educationalists - we only work with schools, and focus solely on reducing school and trust's cybersecurity risks",
+   "url": "https://www.secureschools.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.secureschools.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.secureschools.com/en-gb/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.secureschools.com"
+   ],
+   [
+    "https://www.secureschools.com"
+   ],
+   [
+    "https://www.secureschools.com",
+    "https://www.secureschools.com/en-gb/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

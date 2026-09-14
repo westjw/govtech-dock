@@ -9,5 +9,50 @@
    "kind_rule": null,
    "url": "https://jobmachine.com/resources/workforce-pell"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Job Machine sells an AI service that runs the job search for the people an organization is responsible for placing. The service tailors each resume, searches job boards and company sites, applies on the candidate's behalf, schedules interviews, preps the candidate, and captures the offer letter and verification of employment. Onboarding is mostly text based, and each person completes a guided intake in under three minutes.",
+   "The buyers named on these pages are career colleges, community colleges, workforce boards, American Job Centers, veterans services and outplacement programs. For workforce boards, AJCs and one-stops, the stated outcome is placing more people without adding staff. Job Machine states that offer letters and verification are captured automatically and that proof of placement sits in the buyer's own system.",
+   "Pricing is consumption based, charged per activated candidate when someone onboards and applications begin. Job Machine states that it passed government security and IT review, with no long-term commitment and payment only for activations. The homepage reports a pilot where placement went from roughly 10% to over 55%, and an average of 28 days from onboarding to a job."
+  ],
+  "quote": {
+   "text": "We automate every step of getting a job. Except getting dressed for the interview.",
+   "url": "https://jobmachine.com"
+  },
+  "sources": [
+   {
+    "url": "https://jobmachine.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://jobmachine.com/product",
+    "fetched_on": null
+   },
+   {
+    "url": "https://jobmachine.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://jobmachine.com/solutions/workforce",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://jobmachine.com/product",
+    "https://jobmachine.com"
+   ],
+   [
+    "https://jobmachine.com",
+    "https://jobmachine.com/solutions/workforce"
+   ],
+   [
+    "https://jobmachine.com",
+    "https://jobmachine.com/solutions/workforce"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

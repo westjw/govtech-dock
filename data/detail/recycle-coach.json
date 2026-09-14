@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://recyclecoach.com/blog/the-recycling-journey-of-a-plastic-bottle-cap"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Recycle Coach sells mobile and web app technology that municipalities use to give residents local waste and recycling information. The company describes its offering as custom waste and recycling solutions for cities, haulers, and organizations. Alongside the resident app, a Client Portal lets staff edit disposal requirements and send reminder messages. Analytics show which materials residents are searching for and where they need help, which the pages position as input to outreach campaigns.",
+   "The about page dates the business to 2001, when it began with wall recycling calendars for municipalities without extra budget for education. A decade later it launched a mobile app for local waste and recycling programs called My Waste. The same page states that the company now supports 1,700+ municipalities and millions of people.",
+   "Through the partnerships page, the same technology is offered white labeled, with a customizable web app adapted to a partner brand identity. That page also describes integration with digital 311 software so resident submissions about missed pick-ups or broken carts can be routed to the right teams. Beyond municipal programs, the pages describe a workplace product for teaching employees how to dispose of items in the office."
+  ],
+  "quote": {
+   "text": "With more than two decades in the waste and recycling industry, our mission remains the same: to help all organizations modernize communication and better their communities.",
+   "url": "https://recyclecoach.com/solutions/home"
+  },
+  "sources": [
+   {
+    "url": "https://recyclecoach.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://recyclecoach.com/solutions/home",
+    "fetched_on": null
+   },
+   {
+    "url": "https://recyclecoach.com/solutions/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://recyclecoach.com/solutions/partnerships-white-label",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://recyclecoach.com/solutions/home"
+   ],
+   [
+    "https://recyclecoach.com/solutions/about"
+   ],
+   [
+    "https://recyclecoach.com/solutions/partnerships-white-label",
+    "https://recyclecoach.com/solutions/home"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

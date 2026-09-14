@@ -72,5 +72,49 @@
    "kind_rule": null,
    "url": "https://www.opengov.com/resources/opengov-university/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "OpenGov sells a cloud platform for cities, counties, and state agencies that connects budgeting, finance, permitting, and asset management in one system. The Public Service Platform brings ERP and Community Operations products together, spanning Financial Management, Budgeting & Performance, Procurement & Contract Management, Permitting & Licensing, 311 Request Management, Utility Billing, and Payroll. OG Assist is the AI assistant built into every product, helping staff find answers, draft documents, and complete guided actions across the platform.",
+   "Software is built specifically for cities, counties, and state agencies, and the pages say over 2,000 governments run day-to-day operations on it. The buyers named are cities, counties, townships, special districts, school districts, utilities, and state agencies across the United States. Compliance controls built in cover GASB, FEMA, HUD, ARPA, and FLSA, and the platform is stated to be SOC 2 compliant.",
+   "OpenGov states 4,500+ government software implementations completed, with timelines that vary by product and organizational complexity, typically ranging from 3 to 6 months. Government App Builder is a no-code platform that lets IT teams build custom forms, workflows, and citizen-facing apps, with permissions, audit logs, and version history."
+  ],
+  "quote": {
+   "text": "The Public Service Platform is the one-stop-shop for government software.",
+   "url": "https://www.opengov.com/platform/"
+  },
+  "sources": [
+   {
+    "url": "https://www.opengov.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opengov.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opengov.com/platform/government-app-builder/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opengov.com/platform/enterprise-resource-planning/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.opengov.com/platform/"
+   ],
+   [
+    "https://www.opengov.com",
+    "https://www.opengov.com/platform/"
+   ],
+   [
+    "https://www.opengov.com",
+    "https://www.opengov.com/platform/government-app-builder/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://muni-link.com/blog/utility-billing-regulations-by-state/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Muni-Link sells cloud-based utility billing software for water and wastewater utilities. The platform brings customer accounts, billing, payments, service orders, and customer communications together in one system. Readings, estimates, reports, calculations, and printing are completed on a single page, and irregularities are flagged for review before bills go out.",
+   "Staff can view customer account details and usage history, dispatch service orders, take payments, manage delinquency, and send notifications from a single screen. Service orders are dispatched and tracked between office teams and technicians in real time, with updates logged on customer accounts. Automated notifications go to customers by phone call, email, or text. The software integrates with asset management, accounting, GIS, and AMR/AMI systems.",
+   "Muni-Link says it helps municipal utilities, utility authorities, water districts, and regulated utilities manage their accounts. The software is described as built for cities, towns, and the people who serve them. Unlimited support is built into the subscription fee at no extra cost. Muni-Link is headquartered in central Pennsylvania. Neptune Technology Group owns the company."
+  ],
+  "quote": {
+   "text": "Muni-Link was made for municipalities.",
+   "url": "https://muni-link.com/product/"
+  },
+  "sources": [
+   {
+    "url": "https://muni-link.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://muni-link.com/product/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://muni-link.com/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://muni-link.com/company/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://muni-link.com",
+    "https://muni-link.com/product/"
+   ],
+   [
+    "https://muni-link.com/product/",
+    "https://muni-link.com"
+   ],
+   [
+    "https://muni-link.com",
+    "https://muni-link.com/company/",
+    "https://muni-link.com/product/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

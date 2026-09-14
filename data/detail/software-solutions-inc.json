@@ -108,5 +108,51 @@
    "kind_rule": "Chose",
    "url": "https://www.mysoftwaresolutions.com/news/why-mcdonough-county-il-chose-vip-to-replace-a-legacy-system"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Software Solutions, Inc. sells cloud-based ERP software for public accounting, HR, payroll, and utility billing. The VIP Suite begins with VIP Accounting, which the company calls the core of the Visual Intelligence Portfolio. Other modules listed include budgeting, accounts payable automation, payroll and human resources, employee self-service, and utility billing.",
+   "The company has served local governments and utilities since 1978. It became 100% employee-owned in 2004 through an Employee Stock Ownership Plan. The VIP platform launched in 2009. VIP Cloud, a hosted version, was introduced in 2020.",
+   "The solutions page says the software is built for the public sector and used by counties, cities, special districts, libraries, and utilities. Utility billing is offered to water districts, electric utilities, and public and private utility companies. The accounting page names the city of Euclid, which it says was outgrowing a spreadsheet bank reconciliation process."
+  ],
+  "quote": {
+   "text": "Built to handle utilities of all sizes. Our products are a complete solution from complex electric billing to simple flat-rate billing.",
+   "url": "https://www.mysoftwaresolutions.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.mysoftwaresolutions.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysoftwaresolutions.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysoftwaresolutions.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysoftwaresolutions.com/solutions/accounting",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.mysoftwaresolutions.com",
+    "https://www.mysoftwaresolutions.com/solutions",
+    "https://www.mysoftwaresolutions.com/about-us"
+   ],
+   [
+    "https://www.mysoftwaresolutions.com/about-us"
+   ],
+   [
+    "https://www.mysoftwaresolutions.com/solutions",
+    "https://www.mysoftwaresolutions.com",
+    "https://www.mysoftwaresolutions.com/solutions/accounting"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

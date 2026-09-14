@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://radicl.com/resources/signal-noise-volume-7"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "RADICL sells managed compliance and cybersecurity together as one subscription service. Delivery runs through a virtual security operations center that combines automated workflows with staff analysts. A single platform carries detection analytics, incident response, vulnerability reduction and compliance evidence.",
+   "The compliance side is aimed at CMMC and NIST 800-171 readiness. It covers guided self-assessments, remediation instructions and evidence kept ready for an audit. Endpoint coverage is deployed on EDR products such as CrowdStrike, SentinelOne and Microsoft Defender.",
+   "The platform page describes the service as protection for SMBs. The mission page points at businesses serving the Defense Industrial Base and the nation's critical infrastructure. Statements on that page are attributed to VATN Systems and to Red6."
+  ],
+  "quote": {
+   "text": "It's time for a radical solution to protect regulated businesses from advanced cyberthreats",
+   "url": "https://radicl.com/mission"
+  },
+  "sources": [
+   {
+    "url": "https://radicl.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://radicl.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://radicl.com/mission",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://radicl.com",
+    "https://radicl.com/platform"
+   ],
+   [
+    "https://radicl.com/platform",
+    "https://radicl.com"
+   ],
+   [
+    "https://radicl.com/platform",
+    "https://radicl.com/mission"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

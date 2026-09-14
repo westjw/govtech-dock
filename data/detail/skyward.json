@@ -36,5 +36,49 @@
    "kind_rule": null,
    "url": "https://www.skyward.com/about/newsroom/press-releases/panorama-named-preferred-partner-by-skyward-to-bring-best-in-class-ai-and-mtss-solution"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Skyward sells a student information system and a school ERP suite to school districts. The products page says more than 2,000 districts around the world use one or both of the company's software suites. Feature categories listed for the student information system include classroom tools, family engagement, and student services.",
+   "The school business suite groups features for human resources, fiscal management, payroll and timeclock, an employee portal, and asset management. Financial management, human resources tools, and analytics for a board sit under enterprise resource planning. The office and administration features cover curriculum, reporting, tracking, enrollment, and scheduling.",
+   "The homepage says over 2,500 school districts entrust their data to the company. The homepage dates the company's work with schools to 1980. The office and administration page invites readers to request school pricing."
+  ],
+  "quote": {
+   "text": "Switching to Skyward shouldn't mean you have to give up other data systems your organization uses.",
+   "url": "https://www.skyward.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.skyward.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skyward.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skyward.com/products/student-information-system",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.skyward.com/products/student-information-system/office-and-administration",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.skyward.com/products"
+   ],
+   [
+    "https://www.skyward.com/products",
+    "https://www.skyward.com/products/student-information-system/office-and-administration"
+   ],
+   [
+    "https://www.skyward.com",
+    "https://www.skyward.com/products/student-information-system/office-and-administration"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

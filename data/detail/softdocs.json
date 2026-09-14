@@ -63,5 +63,50 @@
    "kind_rule": "Deploy",
    "url": "https://softdocs.com/blog/saas-and-the-cloud-the-best-way-to-deploy-document-management-and-workflow"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Softdocs sells a document management and process automation platform used by schools and government agencies. The platform digitizes documents and forms and automates daily constituent, student, and business processes. It integrates with ERP, SIS, and CRM systems to give staff and faculty access to information held in those systems.",
+   "Softdocs document management handles capture, organization, search, review, and editing of documents in a cloud-based repository. Etrieve Flow is the workflow product, built for designing no-code workflows with a drag-and-drop designer. The platform includes a workflow monitor that identifies bottlenecks and reassigns packages stuck at a step.",
+   "Security claims on the platform page cite Microsoft Azure, NIST 800-53, and SOC 2 Type I & II compliance. The platform is described as WCAG 2.1 AA compliant and web and mobile friendly. Buyers named on the pages are schools, colleges, and government agencies across the public sector."
+  ],
+  "quote": {
+   "text": "No more paper. No more lost documents. No more frustration.",
+   "url": "https://softdocs.com/platform/document-management"
+  },
+  "sources": [
+   {
+    "url": "https://softdocs.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://softdocs.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://softdocs.com/platform/document-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://softdocs.com/platform/workflow-automation",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://softdocs.com",
+    "https://softdocs.com/platform"
+   ],
+   [
+    "https://softdocs.com/platform/document-management",
+    "https://softdocs.com/platform/workflow-automation"
+   ],
+   [
+    "https://softdocs.com/platform",
+    "https://softdocs.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

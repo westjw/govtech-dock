@@ -27,5 +27,51 @@
    "kind_rule": "Award",
    "url": "https://nallian.com/news/nallian-wins-air-cargo-innovation-award-at-the-world-air-cargo-awards-2025"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nallian sells software for landside air cargo operations, aligning truck flows, dock capacity, and warehouse performance across cargo communities, ground handlers, freight forwarders, and airlines. The main product is Truck Visit Management, presented as capacity-driven truck scheduling, streamlined dock flows, and full operational visibility from a single platform designed for air cargo. A second product, Check-it, replaces paper-based inspection processes with guided digital workflows so a team captures complete, photo-backed data every time.",
+   "Buyers named on these pages are ground handlers and warehouse operators, airports and cargo communities, self-handling airlines, and freight forwarders and logistics companies. The same platform also runs as a Cargo Community System connecting handlers, forwarders, trucking companies, and airport operators in one coordinated environment. Named users on these pages include dnata, SATS, Brussels Airport Company, and Changi Airport Group.",
+   "TVM is also sold for off-airport sites, where the dock and yard page states it is proven in both air cargo hubs and off-airport. Check-it is offered as a monthly subscription that includes unlimited users, devices, and checklists, and it runs on phones and tablets."
+  ],
+  "quote": {
+   "text": "Landside orchestration. Not just truck slot booking.",
+   "url": "https://www.nallian.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.nallian.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nallian.com/solutions/tvm-landside-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nallian.com/solutions/tvm-dock-and-yard-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nallian.com/solutions/check-it",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nallian.com",
+    "https://www.nallian.com/solutions/tvm-landside-management",
+    "https://www.nallian.com/solutions/check-it"
+   ],
+   [
+    "https://www.nallian.com",
+    "https://www.nallian.com/solutions/tvm-landside-management"
+   ],
+   [
+    "https://www.nallian.com/solutions/tvm-dock-and-yard-management",
+    "https://www.nallian.com/solutions/check-it"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

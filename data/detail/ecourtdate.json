@@ -1,0 +1,43 @@
+{
+ "profile": {
+  "paragraphs": [
+   "eCourtDate sells a cloud platform for court and justice operations, spanning communications, scheduling, supervision, payments, case management, filings, warrants, and analytics. The pages say it is built for courts and justice agencies that want to modernize without starting over, alongside the systems they already have. It runs on its own or connects to existing systems by REST API or SFTP.",
+   "Solutions pages address municipal and justice courts, county and district courts, state court administration, probation and pretrial services, prosecutors and public defenders, law enforcement, court collections and finance, and jails and corrections. Deployments range from single counties to statewide programs, with 24 states and 10,000+ courts and justice locations counted. Security on the pages rests on CJIS compliance, AWS GovCloud, and complete audit trails."
+  ],
+  "quote": {
+   "text": "eCourtDate runs justice operations end to end on one modern platform, from communications and payments to the case record, filings, and analytics.",
+   "url": "https://ecourtdate.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://ecourtdate.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecourtdate.com/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecourtdate.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ecourtdate.com/about/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ecourtdate.com/platform/",
+    "https://ecourtdate.com"
+   ],
+   [
+    "https://ecourtdate.com/solutions/",
+    "https://ecourtdate.com",
+    "https://ecourtdate.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

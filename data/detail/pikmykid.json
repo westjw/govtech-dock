@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.pikmykid.com/blog/how-schools-integrate-with-911-the-future-of-connected-emergency-response"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Pikmykid sells a school safety and dismissal platform covering daily and emergency operations across the school day. Dismissal tools give staff real-time views of where students are meant to go and alert them when a parent has arrived at pickup.",
+   "A digital hall pass module creates timestamped passes so staff can see where students should be and locate them during emergencies. Attendance management integrates with Student Information Systems and lets parents record absences and absence reasons through the parent app.",
+   "The platform runs on a parent mobile app, a school portal for staff records and reports, and a dispatcher used in a browser. Buyers named on the pages are schools and districts, including a central district in New York whose deputy superintendent is quoted."
+  ],
+  "quote": {
+   "text": "The Pikmykid platform runs on the devices you already use so you can provide a seamless experience managing daily and emergency operations.",
+   "url": "https://www.pikmykid.com/solutions/school-safety-reimagined"
+  },
+  "sources": [
+   {
+    "url": "https://www.pikmykid.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pikmykid.com/solutions/school-safety-reimagined",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pikmykid.com/solutions/attendance-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pikmykid.com/solutions/digital-hall-pass",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.pikmykid.com"
+   ],
+   [
+    "https://www.pikmykid.com/solutions/digital-hall-pass",
+    "https://www.pikmykid.com/solutions/attendance-management"
+   ],
+   [
+    "https://www.pikmykid.com/solutions/school-safety-reimagined",
+    "https://www.pikmykid.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

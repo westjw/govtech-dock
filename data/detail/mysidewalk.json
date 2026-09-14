@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.mysidewalk.com/blog/unlocking-990-data"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "mySidewalk sells a community data platform that combines datasets, visualization tools, and publishing features in one product. The platform page describes access to data on population, demographics, and housing, plus tools to combine an organization's own data. The visualization page states that turning raw data into maps and charts needs no technical training and no design software.",
+   "Reports and dashboards can be published publicly or kept private for internal review, according to the publication page. The platform page names Sidekick as an AI-powered community data assistant and CoWrite as an AI-powered writing assistant.",
+   "The platform page names customers including the Baltimore City Health Department, the Florida Department of Health in Duval County, and Broward Metropolitan Planning Organization. The publication page also names nonprofits and foundations among the organizations it works with."
+  ],
+  "quote": {
+   "text": "mySidewalk powers community work of all kinds, helping to drive missions across the country.",
+   "url": "https://www.mysidewalk.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.mysidewalk.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysidewalk.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysidewalk.com/platform/visualization",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mysidewalk.com/platform/publication",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.mysidewalk.com",
+    "https://www.mysidewalk.com/platform",
+    "https://www.mysidewalk.com/platform/visualization"
+   ],
+   [
+    "https://www.mysidewalk.com/platform/publication",
+    "https://www.mysidewalk.com/platform"
+   ],
+   [
+    "https://www.mysidewalk.com/platform",
+    "https://www.mysidewalk.com/platform/publication"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

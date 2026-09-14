@@ -9,5 +9,49 @@
    "kind_rule": null,
    "url": "https://lcptracker.com/resources/state-prevailing-wage-map"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "LCPtracker sells cloud-based software for certified payroll, construction site compliance, and workforce reporting. The products named on the site include LCPtracker Pro, LCPcertified, Daily Reporter, OnSite, Workforce Manager, VantagePoint, and CaseView. Product descriptions cover certified payroll collection, daily logs checked against certified payrolls, jobsite wage interviews, diversity management, and labor compliance investigations.",
+   "Buyers described on the solutions page are public agencies and municipalities, prime contractors, and subcontractors. For public agencies, the software standardizes collection of certified payroll reports and supports responses to USDOL or HUD requests. The agency page quotes the District of Columbia, Department of Employment Services, the Denver Auditor's Office, and the Chicago Transit Authority as clients.",
+   "Government agencies can procure the applications through federal, state, and county approved contract vehicles, according to the agency page. That page lists SOC 2 Type II, NIST 800-171, and FedRAMP Moderate as the security standards followed."
+  ],
+  "quote": {
+   "text": "Cloud-based solutions for certified payroll, Davis-Bacon compliance, and workforce reporting.",
+   "url": "https://lcptracker.com"
+  },
+  "sources": [
+   {
+    "url": "https://lcptracker.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://lcptracker.com/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://lcptracker.com/solutions/agency",
+    "fetched_on": null
+   },
+   {
+    "url": "https://lcptracker.com/solutions/contractor",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://lcptracker.com/solutions/",
+    "https://lcptracker.com"
+   ],
+   [
+    "https://lcptracker.com/solutions/",
+    "https://lcptracker.com/solutions/agency"
+   ],
+   [
+    "https://lcptracker.com/solutions/agency"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

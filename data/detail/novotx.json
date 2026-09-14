@@ -18,5 +18,48 @@
    "kind_rule": null,
    "url": "https://novotx.com/resources/events/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Novotx sells Elements XS, a GIS-driven platform that its homepage says helps local governments and utilities manage infrastructure, assets, and public services. With Elements XS Asset Management, agencies can maintain roads, water systems, fleets, facilities, and more. Connect is a public-facing portal for residents to report issues, request services, and interact with an agency.",
+   "Connect can also be customized to handle payments and permit applications, according to the same page. Elements XS is presented as purpose-built for public works and utilities, simplifying asset and work management. The company describes Elements XS as a platform where GIS is the single source of truth for everything spatial, shared through ArcGIS as live maps.",
+   "The site names County of Kauai, HI, Sunriver Utilities, OR, City of Orem, UT, and Lake Apopka Natural Gas District, FL, among its customers. Novotx says it has helped public works teams modernize their operations for over 20 years. A headline on the site reads that Novotx joins Accela to expand value across the asset lifecycle."
+  ],
+  "quote": {
+   "text": "Asset management, permits, citizen requests and more for utilities and local government infrastructure.",
+   "url": "https://novotx.com"
+  },
+  "sources": [
+   {
+    "url": "https://novotx.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://novotx.com/about/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://novotx.com/about/our-team/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://novotx.com/about/partners/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://novotx.com"
+   ],
+   [
+    "https://novotx.com",
+    "https://novotx.com/about/partners/"
+   ],
+   [
+    "https://novotx.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

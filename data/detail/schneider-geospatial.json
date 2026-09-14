@@ -9,5 +9,52 @@
    "kind_rule": null,
    "url": "https://www.schneidergis.com/resources/blog/why-asset-management-isn-t-just-for-big-cities-six-misconceptions-explained"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Schneider Geospatial sells location-based software to local governments. The platform page groups the offering into parcel management, permitting and licensing, and asset management. Home page copy describes centralizing data from various systems and departments into one view, with integration to GIS.",
+   "Parcel management is presented as a centralized digital solution for appraisals, appeals, sales searches, and forms. Permitting and licensing covers managing and enforcing permits and registrations as a workflow. Asset management tools address mapping, inspection, maintenance, and management of water systems. Street and sewer systems and stormwater field operations are listed under the same asset management heading.",
+   "The parcel page names county and city governments as the audience for those tools. The permitting page uses the same wording for permitting and licensing tools. The platform page also describes citizen access to parcel data and submission of appeals and forms."
+  ],
+  "quote": {
+   "text": "Location-based solutions for local governments",
+   "url": "https://www.schneidergis.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.schneidergis.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schneidergis.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schneidergis.com/solutions/parcel",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.schneidergis.com/solutions/permitting-licensing",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.schneidergis.com",
+    "https://www.schneidergis.com/platform"
+   ],
+   [
+    "https://www.schneidergis.com/solutions/parcel",
+    "https://www.schneidergis.com/solutions/permitting-licensing",
+    "https://www.schneidergis.com/platform"
+   ],
+   [
+    "https://www.schneidergis.com/solutions/parcel",
+    "https://www.schneidergis.com/solutions/permitting-licensing",
+    "https://www.schneidergis.com/platform"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

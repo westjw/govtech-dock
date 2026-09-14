@@ -1,0 +1,41 @@
+{
+ "profile": {
+  "paragraphs": [
+   "IntelliPay sells card and ACH payment processing together with a payment gateway. The platform handles in-person, online, mobile, and recurring payments for every location from a single dashboard. Accepted types include credit and debit cards, digital wallets, and ACH across in-person, online, and mobile channels.",
+   "The fee-based options are dual pricing, surcharging, convenience fees, and service fees, each shifting some or all card costs to the cardholder. Organizations that would rather absorb those costs are offered interchange-plus pricing and no junk fees. The network is PCI DSS Level 1, with tokenization, encryption, and fraud prevention protecting payment data.",
+   "Named verticals include governments and municipalities, healthcare providers and medical practices, and small and medium businesses. Payment processing has been provided for local government and education since 2004. Payments are processed annually for government agencies, educational institutions, property management companies, healthcare providers, non-profits, and businesses of all sizes."
+  ],
+  "quote": {
+   "text": "Since 2004, IntelliPay has helped organizations take control of their payment processing costs.",
+   "url": "https://intellipay.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://intellipay.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://intellipay.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://intellipay.com/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://intellipay.com"
+   ],
+   [
+    "https://intellipay.com/about-us/",
+    "https://intellipay.com"
+   ],
+   [
+    "https://intellipay.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

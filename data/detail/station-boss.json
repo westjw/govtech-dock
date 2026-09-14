@@ -99,5 +99,49 @@
    "kind_rule": null,
    "url": "https://stationboss.net/blog/station-checks-checklist-fire-departments/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Station Boss sells fire department software, a NERIS-ready fire RMS for incident reporting, dispatch, scheduling, personnel, training, and 20+ connected modules. The platform brings NERIS reporting, RMS records, dispatch notifications, scheduling, training, preplans, inspections, equipment, documents, and administration into one system. Pricing is published, starting at $150/mo, and departments can evaluate the full platform without a long-term contract.",
+   "Their pages name fire departments as the buyer, and the software is built for career, volunteer, and combination departments. A case study on Mowbray Fire Department describes a volunteer department that needed incident reporting, training, equipment, and dispatch tools in one place. A second case study covers Greenfield Township Fire Department, where reporting, records, personnel, and operational data lived in one connected system.",
+   "A third case study covers Cedar Falls Fire Protection District, where historical data moved into the new platform in about three weeks. The same page states that Station Boss handled the migration process with the department instead of leaving it as an internal IT project."
+  ],
+  "quote": {
+   "text": "Fire department software should do more than store incident reports.",
+   "url": "https://stationboss.net"
+  },
+  "sources": [
+   {
+    "url": "https://stationboss.net",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stationboss.net/case-studies/mowbray-fire-department/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stationboss.net/case-studies/greenfield-township-fire-department/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://stationboss.net/case-studies/cedar-falls-fire-protection-district/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://stationboss.net"
+   ],
+   [
+    "https://stationboss.net",
+    "https://stationboss.net/case-studies/mowbray-fire-department/",
+    "https://stationboss.net/case-studies/greenfield-township-fire-department/"
+   ],
+   [
+    "https://stationboss.net/case-studies/cedar-falls-fire-protection-district/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

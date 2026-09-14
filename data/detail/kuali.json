@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.kuali.co/post/choosing-the-right-curriculum-management-solution-for-your-institution-in-2026"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Kuali sells administrative and academic software to colleges and universities, with products spanning forms and workflow, research administration, curriculum, finance, advising, business continuity planning and student records. Kuali Build is a no-code forms and workflow tool the company says is designed specifically for higher education. Kuali Research is an enterprise research administration and compliance product suite, while Kuali Financials is a cloud-based finance product for the same market.",
+   "Kuali Academic Ops handles curriculum, catalog, syllabus and degree audit workflows in a single platform. That product page lists integration with Banner, Workday, PeopleSoft and Canvas. Kuali Advisor is a real-time degree audit and academic planning product for institutions that want to drive completions.",
+   "The buyers these pages name are higher education institutions, described as ranging from community colleges to four-year universities. Named customers on these pages include Utah State University, Point Park University and Southern New Hampshire University."
+  ],
+  "quote": {
+   "text": "Kuali is built in collaboration with registrars, faculty, and curriculum leaders to provide a solution that works the way institutions need it to.",
+   "url": "https://www.kuali.co/products/academic-operations"
+  },
+  "sources": [
+   {
+    "url": "https://www.kuali.co",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kuali.co/about-us/kuali-days-2026",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kuali.co/products/academic-operations",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kuali.co/products/kuali-advisor",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kuali.co"
+   ],
+   [
+    "https://www.kuali.co/products/academic-operations",
+    "https://www.kuali.co/products/kuali-advisor"
+   ],
+   [
+    "https://www.kuali.co/products/kuali-advisor",
+    "https://www.kuali.co"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

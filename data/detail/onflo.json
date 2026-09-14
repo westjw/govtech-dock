@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.onflo.com/news/ai-phone-agents-transportation-contact-center/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Onflo sells a service operations platform for K-12 school districts, bringing IT, asset management, facilities, transportation, HR, telephony and workflow automation onto one platform. The pitch is consolidation, since districts are described as running dozens of separate service systems, one per department. The core product is a service desk that captures a request on any channel, routes it to the responsible team, and measures the outcome.",
+   "The platform pages describe IT service management with automated ticket routing, self-service resolution and SLA tracking. A separate asset management product holds a central record of district hardware and tracks each device from setup to retirement. The pages also list integrations with SIS, HRIS, MDM, finance and ERP systems.",
+   "The stated buyer is the school district, and the pages say the product is built for districts rather than adapted from generic enterprise software. Requests handled are not limited to IT, and include transportation, HR and facilities work."
+  ],
+  "quote": {
+   "text": "Onflo replaces fragmented service delivery with one connected operating platform for the entire district.",
+   "url": "https://www.onflo.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.onflo.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.onflo.com/platform/unified-service-desk/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.onflo.com/platform/it-service-management/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.onflo.com/platform/asset-management/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.onflo.com",
+    "https://www.onflo.com/platform/unified-service-desk/"
+   ],
+   [
+    "https://www.onflo.com/platform/it-service-management/",
+    "https://www.onflo.com/platform/asset-management/",
+    "https://www.onflo.com/platform/unified-service-desk/"
+   ],
+   [
+    "https://www.onflo.com",
+    "https://www.onflo.com/platform/it-service-management/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

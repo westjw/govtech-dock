@@ -18,5 +18,43 @@
    "kind_rule": null,
    "url": "https://www.opendatasoft.com/en/resources/e-redes-increases-decarbonization-data-marketplace/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Huwise designs and deploys tailored data product marketplaces for organizations. The company describes the product as a data marketplace solution that lets data leaders open their data and data products to business teams and partners.",
+   "Listed capabilities on the homepage include assigning access rights based on user roles in line with governance policies. Other capabilities cover data sharing and reuse through APIs, and analytics that track data consumption and user behavior.",
+   "The about page states that the company has enabled governments, cities, municipalities, public institutions, and businesses to open up their data. In 2025, Opendatasoft became Huwise, a change the about page attributes to the range of use cases the marketplace now supports. The same page cites over 350 clients across more than 25 countries."
+  ],
+  "quote": {
+   "text": "The only solution designed to drive data consumption, enabling all users (experts, business teams, and AI agents) to manage and use data products.",
+   "url": "https://www.opendatasoft.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.opendatasoft.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opendatasoft.com/en/customers/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opendatasoft.com/en/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.opendatasoft.com/en/about-us/"
+   ],
+   [
+    "https://www.opendatasoft.com"
+   ],
+   [
+    "https://www.opendatasoft.com/en/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.eplansoft.com/resources/is-your-resubmittal-problem-actually-a-communication-problem"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "e-PlanSoft sells electronic plan review software, and its suite of products is offered to both public and private sectors. e-PlanREVIEW is a web-based electronic plan review solution on which several reviewers can mark up plans at the same time. goPost is a Citizen Self-Service portal where applicants apply for permits, submit plans for review, and download reviewed and approved plans.",
+   "e-PlanFORM converts paper or PDF forms into browser-based forms, and the data collected is available within goPost. PDF Scout is embedded into e-PlanREVIEW and goPost, and it identifies known issues in PDF files before assignments are created.",
+   "Its earlier product, e-PlanCHECK, was an electronic plan review application for city, county, and state permitting agencies. Integration into agency permitting systems is listed among the ways the plan check process is improved. Reviews can be conducted simultaneously across different disciplines and departments."
+  ],
+  "quote": {
+   "text": "online plan review software that was developed specifically to assist public agencies in reviewing, commenting on, and organizing documentation throughout multiple departments at once",
+   "url": "https://www.eplansoft.com/company?hsLang=en"
+  },
+  "sources": [
+   {
+    "url": "https://www.eplansoft.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.eplansoft.com/company?hsLang=en",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.eplansoft.com/company/events?hsLang=en",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.eplansoft.com/products?hsLang=en",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.eplansoft.com",
+    "https://www.eplansoft.com/products?hsLang=en"
+   ],
+   [
+    "https://www.eplansoft.com",
+    "https://www.eplansoft.com/products?hsLang=en"
+   ],
+   [
+    "https://www.eplansoft.com/company?hsLang=en",
+    "https://www.eplansoft.com/products?hsLang=en"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

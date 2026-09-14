@@ -63,5 +63,49 @@
    "kind_rule": null,
    "url": "https://veovo.com/insights/articles/flow-management-james-williamson"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Veovo sells airport management software built around what it calls the Intelligent Airport Platform. The platform connects flight operations with passenger flow and uses real-time data and AI predictions for resourcing and capacity decisions. Its modular design is described as joining people, processes and information across the airport, with a view for every role.",
+   "Flight Management runs on a cloud hosted airport operational database. It automates data exchange with airport systems and industry data feeds, including IATA, Euro-control, AIDX, and Type B. Deployment is offered on premise or in the cloud, with SaaS or Managed Service options.",
+   "These pages describe the customers as airports and transport providers. A case study names Manchester Airports Group as a strategic partner for flow management technology. Another names Perth Airport, where a new operational system covers airline and ground handler flight management processes."
+  ],
+  "quote": {
+   "text": "Our Intelligent Airport Platform joins up data, predictions and decisions across landside and airside.",
+   "url": "https://www.veovo.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.veovo.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.veovo.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.veovo.com/platform/flight-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.veovo.com/platform/fids",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.veovo.com/platform",
+    "https://www.veovo.com"
+   ],
+   [
+    "https://www.veovo.com/platform/flight-management"
+   ],
+   [
+    "https://www.veovo.com",
+    "https://www.veovo.com/platform/flight-management"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/company/news/king-countys-facilities-management-division-fmd-upgrades-to-maximo-application-suite-mas-9.01-with-interloc-solutions"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Interloc Solutions sells consulting and software for IBM Maximo, and the company describes a complete focus on Maximo across its services. Interloc also sells Mobile Informer, its own native app platform for Maximo mobility. A hosting service the pages call Maximo in the Cloud is offered alongside it. The consulting covers Maximo industry solutions and add-ons, among them Maximo Spatial Asset Management, Maximo Linear Asset Management, and the Maximo ERP Adapter.",
+   "Mobile Informer Work Management, shortened to iWM, runs on native applications and gives maintenance workers work orders, labor hours, meter readings and failure records on a device, online or offline. Mobile Informer Inventory Management, shortened to iIM, covers storeroom tasks such as issue, return, transfer, receipt and cycle count, and works with barcode readers and printers.",
+   "Testimonials on the home page are credited to Bay Area Rapid Transit (BART), to AUA Airport, and to Morgan Foods. The New York City Housing Authority is quoted on the work management page about staff recording data on mobile devices."
+  ],
+  "quote": {
+   "text": "Give your mobile workforce what they need, while enhancing operational effectiveness and maximizing your return on your asset management investment.",
+   "url": "https://www.interlocsolutions.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.interlocsolutions.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.interlocsolutions.com/products/ibm-maximo",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.interlocsolutions.com/products/maximo-mobile-work-manager",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.interlocsolutions.com/products/maximo-mobile-inventory-manager",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.interlocsolutions.com",
+    "https://www.interlocsolutions.com/products/ibm-maximo"
+   ],
+   [
+    "https://www.interlocsolutions.com/products/maximo-mobile-work-manager",
+    "https://www.interlocsolutions.com/products/maximo-mobile-inventory-manager"
+   ],
+   [
+    "https://www.interlocsolutions.com",
+    "https://www.interlocsolutions.com/products/maximo-mobile-work-manager"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

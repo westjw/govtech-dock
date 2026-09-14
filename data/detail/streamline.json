@@ -90,5 +90,41 @@
    "kind_rule": null,
    "url": "https://www.getstreamline.com/blog/the-digital-toolkit-for-fire-districts"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Streamline sells a website platform built for special districts. The platform covers compliant websites, marketing, intranet, and payment tools tailored for special districts. Websites are ADA compliant by default and include built-in accessibility assistants that resolve most issues.",
+   "A built-in regulatory compliance checklist presents state and federal legislation affecting a district in one dashboard. Payment collection is built into the websites and is backed by Stripe. Training and support are free and unlimited for all users.",
+   "Plans are sold as a monthly subscription with no long-term contracts or hidden fees. Streamline has been serving districts across America since 2015. DocAccess is a separate product for making public documents accessible."
+  ],
+  "quote": {
+   "text": "Streamline is the only platform dedicated exclusively to serving the unique needs of special districts",
+   "url": "https://www.getstreamline.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.getstreamline.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getstreamline.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.getstreamline.com",
+    "https://www.getstreamline.com/about-us"
+   ],
+   [
+    "https://www.getstreamline.com"
+   ],
+   [
+    "https://www.getstreamline.com",
+    "https://www.getstreamline.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

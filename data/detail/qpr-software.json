@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.qpr.com/news/qpr-software-recognized-visionary-fourth-consecutive-year-2026-gartner-magic-quadrant-process-intelligence-platforms"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "QPR Software sells process intelligence software that combines process mining, process modeling, enterprise architecture and performance management. QPR ProcessAnalyzer is the process mining product, presented as a layer that turns enterprise data into operational context for enterprise AI and AI agents. QPR EnterpriseArchitect is an ArchiMate 3 certified enterprise architecture tool for modeling business, application and technology portfolios.",
+   "The product runs natively on Snowflake and also supports cloud, hybrid and on-premise deployment. Out-of-the-box connectors are listed for SAP, Oracle, ServiceNow and Salesforce, with an ETL engine for custom data sources. Conformance checking widgets compare execution data against target BPMN models to detect deviations, unauthorized steps and skipped approvals. Object-centric process mining tracks interactions between multiple objects at once, based on the OCEL 2.0 standard.",
+   "Industry sections on the homepage present the product for Pharma, Insurance, Manufacturing, retail and Banking. Named customer stories on the enterprise architecture page are St1 Nordic and YIT."
+  ],
+  "quote": {
+   "text": "QPR brings together process intelligence, process modeling, enterprise architecture and performance management to give AI the operational context it needs to understand your business and act with confidence.",
+   "url": "https://www.qpr.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.qpr.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qpr.com/company/contact-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qpr.com/products/qpr-processanalyzer",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qpr.com/products/qpr-enterprisearchitect",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.qpr.com",
+    "https://www.qpr.com/products/qpr-processanalyzer",
+    "https://www.qpr.com/products/qpr-enterprisearchitect"
+   ],
+   [
+    "https://www.qpr.com/products/qpr-processanalyzer"
+   ],
+   [
+    "https://www.qpr.com",
+    "https://www.qpr.com/products/qpr-enterprisearchitect"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.passportinc.com/blog/what-were-hearing-from-cities-evaluating-parking-technology/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Passport provides digital infrastructure that cities use to manage and monetize the curb. The platform brings mobile pay parking, parking enforcement, digital permitting, and payments together in one place, with reporting for policy decisions.",
+   "Enforcement functions named on the homepage include monitoring, issuance, and license plate recognition integrations. The citation issuance page describes cloud-based parking enforcement that parking officials and enforcement officers reach in real time from a connected handheld device. Officers can create tickets or warnings, look up previous tickets and scofflaws, take photos, and report incidents.",
+   "The same page describes citation management software as helping cities and parking operators digitize the full citation lifecycle, from issuance through payment, adjudication, and revenue recovery. The homepage puts the client count at 800 or more cities and operators."
+  ],
+  "quote": {
+   "text": "Passport provides the digital infrastructure that cities need to manage and monetize their most valuable asset, their curb.",
+   "url": "https://www.passportinc.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.passportinc.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.passportinc.com/product/enforcement/citation-issuance/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.passportinc.com/product/enforcement/license-plate-recognition/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.passportinc.com/product/enforcement/citation-payments/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.passportinc.com"
+   ],
+   [
+    "https://www.passportinc.com",
+    "https://www.passportinc.com/product/enforcement/citation-issuance/"
+   ],
+   [
+    "https://www.passportinc.com/product/enforcement/citation-issuance/",
+    "https://www.passportinc.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

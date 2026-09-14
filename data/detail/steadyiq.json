@@ -36,5 +36,41 @@
    "kind_rule": null,
    "url": "https://steadyiq.com/resources/get-it-right-the-first-time-steadyiqs-purpose-built-verification-solution-is-designed-to-reduce-error-rates-and-deliver-benefits-faster"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SteadyIQ sells Income Passport, a verification tool that applicants use to prove income, hours, and employment to a benefits agency. Applicants log in and connect the accounts where they earn income, including bank accounts, payroll providers, digital wallets, and gig platforms. Income Passport then surfaces income transactions, deduplicates the data, and checks for conflicting names and identities. The resulting income report is shown to the applicant for review and, once approved, submitted directly to the government agency. Covered income types include W2, 1099, gig, self-employment, and unearned income.",
+   "Missouri Department of Social Services is named as a customer, in a testimonial from its Chief Information Officer. Income Passport expanded beyond unemployment into SNAP, TANF, and Child Care programs in Missouri. Alabama and Louisiana are named as among the first states to use Income Passport for unemployment benefits. Agencies can take the tool through a range of integration options, including a no-code solution that requires zero development resources."
+  ],
+  "quote": {
+   "text": "Built for government. Designed for people.",
+   "url": "https://steadyiq.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://steadyiq.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://steadyiq.com/product",
+    "fetched_on": null
+   },
+   {
+    "url": "https://steadyiq.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://steadyiq.com",
+    "https://steadyiq.com/product"
+   ],
+   [
+    "https://steadyiq.com",
+    "https://steadyiq.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

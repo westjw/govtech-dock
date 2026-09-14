@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://jenzabar.com/blog/tips-for-successfully-implementing-innovative-higher-education-software"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Jenzabar sells cloud ERP and student information systems for higher education. The ERP side brings finance, human resources and other management software into one solution to streamline business operations and increase visibility across departments. The student information system covers identifying, recruiting, enrolling, supporting and retaining students through a single end-to-end system.",
+   "Named products include Jenzabar One and Jenzabar SONIS. A student retention suite is offered to identify and support struggling students and to strengthen student and staff relationships. Alongside the software, the products page offers implementation and support work covering digital transformation, cloud implementation and other software initiatives.",
+   "The about page addresses private colleges and universities, which it describes as relying on tuition and private contributions rather than state legislatures. It also addresses state-supported colleges and universities, continuing education departments, consortia, online institutions and professional associations. The home page states that the software and services serve higher education exclusively."
+  ],
+  "quote": {
+   "text": "Every department on your campus has a mission. And for every mission, Jenzabar has a suite of tools to help you achieve it efficiently and economically.",
+   "url": "https://www.jenzabar.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.jenzabar.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jenzabar.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jenzabar.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jenzabar.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.jenzabar.com/products"
+   ],
+   [
+    "https://www.jenzabar.com",
+    "https://www.jenzabar.com/solutions",
+    "https://www.jenzabar.com/products"
+   ],
+   [
+    "https://www.jenzabar.com/about",
+    "https://www.jenzabar.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

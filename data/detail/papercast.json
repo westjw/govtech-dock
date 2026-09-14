@@ -45,5 +45,48 @@
    "kind_rule": null,
    "url": "https://www.papercast.com/insights/10-ways-that-real-time-passenger-information-enables-sustainable-urban-mobility/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Papercast sells battery and solar powered e-paper displays for sharing digital content with the public. The displays are updated through a content management system that can carry real-time or static information. Power options include rechargeable battery for indoor use and solar for outdoor use, with mains powered also available.",
+   "The homepage lists bus stop passenger information displays, rail arrival and station wayfinding, airport wayfinding, highways and car parks, and event panels among the applications. On the product page the company describes itself as developing e-paper display solutions for public transportation systems such as bus stops and train stations. That page names public transport operators and authorities as the organisations enabled to give passengers real-time arrival and departure information.",
+   "The software platform gives transportation operators an interface to manage displays, covering monitoring and diagnostics through to content management. It can be integrated with existing transit data systems so that display content is updated remotely."
+  ],
+  "quote": {
+   "text": "The world leader in battery and solar powered e-paper displays",
+   "url": "https://www.papercast.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.papercast.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.papercast.com/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.papercast.com/company/a-bigger-space-for-a-growing-business-papercast-opens-new-trzin-office/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.papercast.com"
+   ],
+   [
+    "https://www.papercast.com",
+    "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/"
+   ],
+   [
+    "https://www.papercast.com/product/the-e-ink-panel-behind-papercast-displays/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

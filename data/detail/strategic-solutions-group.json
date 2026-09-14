@@ -108,5 +108,47 @@
    "kind_rule": null,
    "url": "https://www.ssg-llc.com/news/healthcare-technology-innovator-ssg-rolls-out-digital-platforms-to-accelerate-the-fight-against-covid-19/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Strategic Solutions Group sells public health software applications for state and local agencies, built on a case management platform called Casetivity. The applications named on the site cover electronic disease surveillance, immunization information systems, lead poisoning prevention, early intervention and vital records. Delivery is described as cloud enabled, fully managed and sold on subscription.",
+   "The disease surveillance product ingests ELR and eCR data in real time and handles lab data management, including susceptibility, sequencing and negative findings. Pages for it claim coverage of 90+ reportable conditions. The same pages state that the product is HIPAA-compliant and SOC 2 Type II certified.",
+   "The immunization system page addresses state health departments and public health agencies. That page points to an implementation in the State of Massachusetts."
+  ],
+  "quote": {
+   "text": "SSG\u2019s overall mission is to support public sector organizations with IT solutions that enhance the services delivered to residents.",
+   "url": "https://www.ssg-llc.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.ssg-llc.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ssg-llc.com/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ssg-llc.com/solutions/immunization-information-system/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ssg-llc.com/solutions/"
+   ],
+   [
+    "https://www.ssg-llc.com/solutions/electronic-disease-surveillance/"
+   ],
+   [
+    "https://www.ssg-llc.com/solutions/immunization-information-system/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

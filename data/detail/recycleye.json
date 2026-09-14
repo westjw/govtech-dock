@@ -1,0 +1,44 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Recycleye builds AI-powered sorting equipment and analytics for waste management businesses. Its equipment includes retrofittable 6-axis robots designed to target and pick DMR. An optical sorter provides high-volume air jet sorting at speed. Recycleye Vision AI scans 100% of objects to provide QA and trend insights.",
+   "The AI is based on WasteNet, a database of billions of images, and powers high-volume and targeted sorting automation. Recycleye describes sorting across DMR, WEEE, and C&D applications throughout Europe and the USA. The company reports installations in locations across Europe and the United States.",
+   "Case studies on the solutions page name FCC Environment, Panda Ireland and Bryson Recycling as clients. The about page names a UK partnership with FANUC. Recycleye states a mission to serve the waste and materials management sectors."
+  ],
+  "quote": {
+   "text": "Turning the world\u2019s waste into resource.",
+   "url": "https://recycleye.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://recycleye.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://recycleye.com/about/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://recycleye.com/solutions/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://recycleye.com",
+    "https://recycleye.com/solutions/"
+   ],
+   [
+    "https://recycleye.com/solutions/",
+    "https://recycleye.com",
+    "https://recycleye.com/about/"
+   ],
+   [
+    "https://recycleye.com/solutions/",
+    "https://recycleye.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Knaq sells hardware sensors and cloud software that monitor industrial equipment which is not otherwise connected. The sensors are made in house, installed without invasive work, and send data over cellular connections. They capture vibration, temperature, runtime, and operational behavior, and the stated install time is 30 to 120 minutes on legacy and modern equipment. A cloud dashboard shows live status and asset health across a portfolio, and machine learning models identify early signs of degradation before failures occur.",
+   "Knaq describes the equipment it monitors as critical infrastructure across airports, transit systems, hospitals, universities, and industrial facilities. For transit agencies the stated value is early identification of failures that lead to station outages and accessibility violations. Large real estate portfolios are listed as another buyer group, with tenant disruption and contractor performance named as concerns.",
+   "The about page names Sound Transit as a client that paired the platform with its own maintenance operation to reduce elevator and escalator unreported time. The platform connects to CMMS platforms and BMS through the Knaq API, so equipment data reaches systems facilities teams already run."
+  ],
+  "quote": {
+   "text": "Knaq combines purpose-built hardware with cloud-based analytics to monitor previously disconnected industrial equipment.",
+   "url": "https://www.knaq.io/product"
+  },
+  "sources": [
+   {
+    "url": "https://www.knaq.io",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.knaq.io/solutions/solutions-template",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.knaq.io/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.knaq.io/product",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.knaq.io",
+    "https://www.knaq.io/product",
+    "https://www.knaq.io/solutions"
+   ],
+   [
+    "https://www.knaq.io/about",
+    "https://www.knaq.io"
+   ],
+   [
+    "https://www.knaq.io/about",
+    "https://www.knaq.io/product"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

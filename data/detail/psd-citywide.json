@@ -36,5 +36,50 @@
    "kind_rule": "Partners with",
    "url": "https://www.psdcitywide.com/announcements/psd-citywide-partners-norwest-fuel-growth-of-enterprise-asset-management-solutions-for-municipalities/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "PSD Citywide sells an enterprise SaaS platform to municipalities and public sector organizations, unifying asset management, maintenance, permitting, planning, licensing, budgeting, and GIS in one system. The Citywide Platform shares data across all modules rather than relying on third-party applications.",
+   "Citywide Assets tracks roads, water, fleet, facilities, and linear assets with condition assessments, GIS integration, and capital planning. Citywide Maintenance is a CMMS covering work orders, inspections, and preventive maintenance across roads, facilities, and utilities. Citywide EGIS is a managed GIS server environment with desktop and web access, and a viewer module inside the platform maps assets and starts service requests from a location.",
+   "Advisory services are aimed at asset-intensive organizations including local governments, water and wastewater authorities, and parks and conservation authorities. Departments named include public works, utilities, finance, parks, and facilities. PSD Citywide is listed as an approved Sourcewell vendor."
+  ],
+  "quote": {
+   "text": "Scalable, secure, and designed to share data seamlessly across all modules.",
+   "url": "https://www.psdcitywide.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.psdcitywide.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://psdcitywide.com/solutions/asset-management-services/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://psdcitywide.com/solutions/cmms-system/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://psdcitywide.com/solutions/gis-system/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.psdcitywide.com"
+   ],
+   [
+    "https://psdcitywide.com/solutions/asset-management-services/",
+    "https://psdcitywide.com/solutions/cmms-system/",
+    "https://psdcitywide.com/solutions/gis-system/"
+   ],
+   [
+    "https://www.psdcitywide.com",
+    "https://psdcitywide.com/solutions/asset-management-services/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

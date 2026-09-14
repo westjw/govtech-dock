@@ -108,5 +108,43 @@
    "kind_rule": null,
    "url": "https://www.justfoia.com/news/public-records-request-process-challenges-and-how-to-prevent-them/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "JustFOIA sells software for handling public records requests, from intake through delivery. The home page calls the product FOIA request management software. The same page lists product features including a public portal for submitting, tracking, and searching requests.",
+   "The case studies page addresses agencies saving time in their communities. Case study titles name Bay County, Greeley Police, Mead School District, and the City of Irving.",
+   "The home page says public-facing pages are audited for 508 compliance by a third-party. A form on that page invites a demo request, and the page states that the company does not process records requests for individuals."
+  ],
+  "quote": {
+   "text": "Public Records Requests, Simplified.",
+   "url": "https://justfoia.com"
+  },
+  "sources": [
+   {
+    "url": "https://justfoia.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://justfoia.com/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://justfoia.com/our-company/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://justfoia.com"
+   ],
+   [
+    "https://justfoia.com/case-studies/"
+   ],
+   [
+    "https://justfoia.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

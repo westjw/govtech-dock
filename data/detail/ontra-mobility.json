@@ -108,5 +108,49 @@
    "kind_rule": "Introducing",
    "url": "https://www.ontramobility.com/press/ontra-releases-favoriting"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ontra Mobility sells a planning platform that transit agencies use to model travel demand and generate optimized routes and on-demand zones before committing to service changes. The platform encodes budget, fleet, service standards, and agency feedback as constraints, and builds phased rollout plans for pilots and long-term planning. Analysis tools in the platform map origin-destination trip flows, load factors by route and time period, isochrone coverage, and census data.",
+   "A second product is a white-labeled trip planner app that carries the operator's branding and ingests GTFS and GTFS-RT feeds for schedules, vehicle positions, and service alerts. Ontra also sells operations software for bus, shuttle, and paratransit services, with a monitor app for fleet visibility, a driver app, and a rider app for on-demand trips. The operations stack also includes rider and driver applications for iOS and Android plus dashboard, analysis, and admin tools.",
+   "The white-label app is aimed at transit agencies, universities and campuses, hospitals and medical centers, corporate campuses, events and conferences, and apartment complexes. Ontra Mobility partners with the City of Fresno on a Transit On-Demand Feasibility Study. Ontra was selected for Transit Tech Lab to conduct a proof of concept with agency partners including MTA NYCT and LIRR."
+  ],
+  "quote": {
+   "text": "The AI Platform for Transit Planning.",
+   "url": "https://www.ontramobility.com/solutions/planning"
+  },
+  "sources": [
+   {
+    "url": "https://www.ontramobility.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ontramobility.com/solutions/planning",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ontramobility.com/solutions/white-label",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ontramobility.com/solutions/operations",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ontramobility.com/solutions/planning"
+   ],
+   [
+    "https://www.ontramobility.com/solutions/white-label",
+    "https://www.ontramobility.com/solutions/operations"
+   ],
+   [
+    "https://www.ontramobility.com/solutions/white-label",
+    "https://www.ontramobility.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

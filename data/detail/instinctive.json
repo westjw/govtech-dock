@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Instinctive sells Chromebook checkout, device inventory, and student login security to schools running Google Workspace. Students are prompted to check out a Chromebook during the initial login process, and the account and device are linked in Google Admin Console before the device is moved to the right OU. A device lock restricts students to their assigned Chromebook, and a student who picks up another one cannot log in and sees instructions to return it.",
+   "Login approvals let students pass straight through on school-owned devices while logins from bad actors are blocked. The service sits between an existing identity provider and Google, so students logging in with Microsoft Entra ID or ClassLink are covered without password sync. Listed pricing is $0.50 per student per year for Chromebook Checkout and $1.50 per student per year for the Student Login Security system.",
+   "Other parts of the site cover bulk Chromebook edits, exports of Google Admin settings, audits and certifications, and free tools including an extension checker. The site addresses districts and schools rather than any named customer, and configurations can be built separately for elementary, high school, and staff."
+  ],
+  "quote": {
+   "text": "Effortless Chromebook checkout, for the day or the year",
+   "url": "https://instinctive.app"
+  },
+  "sources": [
+   {
+    "url": "https://instinctive.app",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://instinctive.app"
+   ],
+   [
+    "https://instinctive.app"
+   ],
+   [
+    "https://instinctive.app"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

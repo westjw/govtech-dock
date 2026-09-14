@@ -72,5 +72,45 @@
    "kind_rule": "Acquire",
    "url": "https://www.ninjaone.com/press/ninjaone-announces-intent-to-acquire-dropsuite/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "NinjaOne sells a unified IT operations platform covering endpoint management, autonomous patching, backup, and remote access. Products listed include endpoint management, mobile device management, patch management, backup, remote control, service desk, and integrations. Devices covered include Windows, Mac, and Linux end-user devices, servers, VMs, and networking devices managed from a single interface.",
+   "Buyers named on these pages are IT teams and managed service providers. Customer stories on the platform page name Kansas City, Carahsoft, Flash, and Rare. The home page also reports Kansas City cutting IT costs and accelerating patching.",
+   "A FedRAMP mark on the platform page states use in U.S. federal agencies and government supply chains. Other compliance marks listed there include SOC 2 Type II, ISO/IEC 27001, GDPR, and HIPAA."
+  ],
+  "quote": {
+   "text": "One platform to manage every device, protect every endpoint, and support every employee.",
+   "url": "https://www.ninjaone.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.ninjaone.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ninjaone.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ninjaone.com/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ninjaone.com",
+    "https://www.ninjaone.com/platform/"
+   ],
+   [
+    "https://www.ninjaone.com",
+    "https://www.ninjaone.com/platform/"
+   ],
+   [
+    "https://www.ninjaone.com/platform/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

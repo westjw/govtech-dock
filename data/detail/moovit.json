@@ -90,5 +90,50 @@
    "kind_rule": null,
    "url": "https://moovit.com/blog/navigating-newark-airport-your-2026-guide-to-direct-bus-and-train-routes/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Moovit sells Mobility-as-a-Service products to cities, which the homepage lists as branded apps, mobile fare payments, on-demand transit, and Big Data analytics. The about page says the company provides governments, cities, transit agencies and operators, and organizations with mobility challenges, with AI-powered mobility solutions covering planning, operations, and analytics.",
+   "The Moovit app launched in 2012 as a free app for iOS, Android, and web browsers. Over the years the company reports service in 3,500 cities across 112 countries, in 45 languages. In 2022, Moovit became part of Mobileye, and the two are bringing MoovitAV robotaxi services to cities worldwide.",
+   "Published case studies cover fare payments, on-demand transit, transit APIs, and data-driven analysis for transit networks. An accessibility page says those capabilities are built into the Moovit App and a White Label MaaS App. Moovit Ads is offered as geofencing mobile ads aimed at reaching users with an offer at a given time and place."
+  ],
+  "quote": {
+   "text": "Find Out How We Can Bring Your Mobility as a Service Project to Life",
+   "url": "https://moovit.com"
+  },
+  "sources": [
+   {
+    "url": "https://moovit.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://moovit.com/resources/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://moovit.com/about-us/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://moovit.com/resources/case-studies/enabling-developers-with-real-time-transit-data/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://moovit.com",
+    "https://moovit.com/about-us/"
+   ],
+   [
+    "https://moovit.com/about-us/"
+   ],
+   [
+    "https://moovit.com/resources/case-studies/",
+    "https://moovit.com/resources/case-studies/enabling-developers-with-real-time-transit-data/",
+    "https://moovit.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

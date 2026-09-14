@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.powerdetails.com/blog/why-pd-coordinators-admins"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "PowerDetails sells a platform for law enforcement and public safety agencies to schedule, invoice, and report on off-duty jobs and overtime. The platform is configurable, with every site built from features based on each agency's rules and policies. A configurable Rules Engine can automatically enforce hour and job limits inside the platform.",
+   "Agencies take in job requests from local businesses, and officers sign up for jobs from anywhere through the mobile app. Invoices are generated automatically with employer information and the fees that apply, once the officer has logged hours and the job is marked complete. Payments can then be processed electronically via ACH and Credit Card.",
+   "Agencies named on these pages include Walton County Sheriff's Office, Palm Bay Police Department, and Vanderbilt University Police Department. The company also sells Managed Services, under which it takes over the daily administration of an agency's off-duty program, including job scheduling and billing."
+  ],
+  "quote": {
+   "text": "PowerDetails provides law enforcement agencies with the tools they need to efficiently organize, regulate, and communicate overtime and secondary employment details.",
+   "url": "https://www.powerdetails.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.powerdetails.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.powerdetails.com/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.powerdetails.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.powerdetails.com/solutions",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.powerdetails.com",
+    "https://www.powerdetails.com/about",
+    "https://www.powerdetails.com/solutions"
+   ],
+   [
+    "https://www.powerdetails.com",
+    "https://www.powerdetails.com/solutions"
+   ],
+   [
+    "https://www.powerdetails.com",
+    "https://www.powerdetails.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

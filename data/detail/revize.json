@@ -18,5 +18,39 @@
    "kind_rule": null,
    "url": "https://www.revize.com/blog/blog/government-websites-are-useful-for-navigating-through-the-november-election"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Revize sells a content management system for government websites, described on its homepage as a Government CMS designed for government only. The websites carry citizen engagement web applications that let residents take part in their government and their community. Revize states it was the first to introduce responsive web design to the government website industry.",
+   "Revize also handles data migration, transferring content from a client's old site to the new one. Client data is stored on servers on premises with card-reader access, and network activity is monitored by web and network administrators.",
+   "The company describes itself as specializing in meeting the needs of municipalities, educational institutions and non-profit organizations. Revize states it serves governments and other public sector agencies, working on the experience between a website visitor and the serving agency."
+  ],
+  "quote": {
+   "text": "Revize was the first to introduce responsive web design to the government website industry",
+   "url": "https://www.revize.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.revize.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.revize.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.revize.com"
+   ],
+   [
+    "https://www.revize.com/about"
+   ],
+   [
+    "https://www.revize.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

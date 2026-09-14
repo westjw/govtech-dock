@@ -81,5 +81,46 @@
    "kind_rule": null,
    "url": "https://servicelinksoftware.com/news/utilities-esri-gis-field-service-integration"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ServiceLink sells field service management software for utilities, connecting dispatch, field crews, and back-office systems with real-time mobile workforce management. The product page states that water, gas, electric, fiber, and sanitation teams use it to streamline operations, optimize scheduling, enhance productivity, and deliver customer service. It ships as a web-based app optimized for larger screens and a mobile-based app optimized for phones and tablets.",
+   "Listed capabilities include real-time scheduling, optimization, routing, inventory, analytics, AVL, GIS, dispatching and communications. The product page also lists vehicle and crew location tracking, job completion forms, and field work that continues in areas with limited or no connectivity. The about page describes the tools as designed for managers, dispatchers, and field service representatives.",
+   "The about page says the platform serves 80+ clients across North America and the Caribbean, described there as cities and local governments. The home page names utilities, cities, and city governments, large and small, as the groups whose needs the product meets. The about page also places ServiceLink within Harris Computer Systems."
+  ],
+  "quote": {
+   "text": "Field Service Management Software for Utilities",
+   "url": "https://servicelinksoftware.com"
+  },
+  "sources": [
+   {
+    "url": "https://servicelinksoftware.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://servicelinksoftware.com/product",
+    "fetched_on": null
+   },
+   {
+    "url": "https://servicelinksoftware.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://servicelinksoftware.com",
+    "https://servicelinksoftware.com/product"
+   ],
+   [
+    "https://servicelinksoftware.com/product",
+    "https://servicelinksoftware.com/about"
+   ],
+   [
+    "https://servicelinksoftware.com/about",
+    "https://servicelinksoftware.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

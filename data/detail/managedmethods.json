@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/google-docs-phishing-oauth-attack/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ManagedMethods sells cybersecurity and student safety monitoring products built for K-12 schools. The products look for cyber safety and security risks in Google Workspace, Microsoft 365, and in the browser. Cloud Monitor is described as a centralized command center for managing Google Workspace and Microsoft 365 cybersecurity and student safety risks.",
+   "Content Filter is a cloud-based web filtering platform that applies browser-level URL blocking and artificial intelligence toward student safety, security, and CIPA compliance. It ships with support for over 30 website categories representing over 300,000 websites. Classroom Manager is a browser-extension-based classroom management tool for teachers and students.",
+   "Cloud Monitor can be deployed in minutes without extensions, proxies, or agents. The platform uses deep API integrations to monitor district Google Workspace and Microsoft 365 accounts. The platforms are aimed at IT teams in K-12 school districts on a limited budget."
+  ],
+  "quote": {
+   "text": "No appliances, gateways, proxies, or agents required. Content Filter stays with the users\u2019 district account, no matter what network they\u2019re on",
+   "url": "https://managedmethods.com/products/content-filter/"
+  },
+  "sources": [
+   {
+    "url": "https://managedmethods.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://managedmethods.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://managedmethods.com/products/cloud-monitor/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://managedmethods.com/products/content-filter/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://managedmethods.com",
+    "https://managedmethods.com/products/cloud-monitor/"
+   ],
+   [
+    "https://managedmethods.com",
+    "https://managedmethods.com/products/content-filter/",
+    "https://managedmethods.com/products/"
+   ],
+   [
+    "https://managedmethods.com/products/cloud-monitor/",
+    "https://managedmethods.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -36,5 +36,35 @@
    "kind_rule": null,
    "url": "https://simcare.ai/blog/fieldx-is-free"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SimCare sells an AI client simulation platform for counselor training, where students speak directly with avatars to practice counseling skills and get instant feedback. Sessions run with 500+ counselor-designed clients ranging from children to older adults, across a range of presenting problems. After a session, feedback covers tone, empathy, communication, nonverbal cues, diagnostic accuracy, and clinical skills.",
+   "Students keep working with the same client over time, scheduling follow-ups, sending messages, and getting updates about progress or setbacks. Automated scoring removes grading bottlenecks, so instructors can assign more practice without adding to their workload. Simulation can be embedded across the entire program, and programs can expose students to high-risk scenarios repeatedly without real-world harm.",
+   "The pages say the platform supports disciplines including psychology, psychiatry, clinical counseling, social work, school counseling, and behavioral health. The FAQ states that the platform is built to scale whether the program sits in a university, government agency, training organization, or private company. Billing is described as flexible, with some institutions paying directly and others passing the cost to students as a lab fee or tech fee."
+  ],
+  "quote": {
+   "text": "SimCare gives every student realistic, full counseling sessions with virtual clients, so they can practice skills and get feedback without needing a live partner.",
+   "url": "https://simcare.ai"
+  },
+  "sources": [
+   {
+    "url": "https://simcare.ai",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://simcare.ai"
+   ],
+   [
+    "https://simcare.ai"
+   ],
+   [
+    "https://simcare.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Placemetry drives a city and captures photos from the public right-of-way, then analyzes properties and roadways with AI so departments can get ahead of problems rather than react to them. Each vehicle is equipped with three high-resolution cameras, one facing forward and one facing to each side, capturing street-level imagery in a single drive. Forward-facing cameras deliver per-segment pavement condition, an asset inventory, and safety screening in a single pass.",
+   "Side cameras capture a wide view of the public right-of-way in one pass, including properties, yards, sidewalks, trees, and vegetation. The same dataset feeds Code Enforcement, Economic Development, and Forestry & Parks. All imagery is captured from the public right-of-way, faces and license plates are blurred, and the city owns the data.",
+   "One cadence is a single citywide survey with no subscription required. Another is a quarterly or bi-annual citywide sweep in which Placemetry teams drive every street and the AI scores properties. A third option puts cameras on city vehicles the city already operates, so garbage trucks and street sweepers capture passive citywide coverage. Delivery runs through direct API integrations, standard spreadsheet downloads, or a secure web app, with REST API Endpoints and Webhooks."
+  ],
+  "quote": {
+   "text": "If you can see it from the street, we can measure it.",
+   "url": "https://www.placemetry.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.placemetry.com",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.placemetry.com"
+   ],
+   [
+    "https://www.placemetry.com"
+   ],
+   [
+    "https://www.placemetry.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

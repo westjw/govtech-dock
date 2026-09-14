@@ -99,5 +99,50 @@
    "kind_rule": null,
    "url": "https://www.jupiterintel.com/blog/the-winter-that-never-was-assessing-the-aftermath-of-colorados-warmest-winter"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Jupiter Intelligence sells physical and extreme weather risk analytics, presented on its homepage as decision-grade risk intelligence for financial institutions. The platform is ClimateScore Global, which the products page says provides transparency and scientific rigor required by banks, insurers, asset managers, and operators in regulated sectors. Delivery options include a SaaS application, enterprise API, and tailored analytics support.",
+   "Coverage runs from portfolio level to asset level, with 3 scenarios in 5-year increments and timescales reaching the year 2100. The RiskSignal product assesses multi-peril exposure for every asset in a portfolio, backed by more than 22,000 data points per location. Scenario-based outputs are described as revealing how risk evolves over time, supporting stress tests, credit reviews, and capital allocation decisions.",
+   "The homepage states that largest banks in the U.S. are Jupiter customers, and the products page describes the audience as Tier 1 banks and global financial leaders. Use cases listed for RiskSignal include due diligence and underwriting, supply chain risk assessment, and regulatory response and disclosure."
+  ],
+  "quote": {
+   "text": "Purpose-built for leading financial institutions.",
+   "url": "https://www.jupiterintel.com/products"
+  },
+  "sources": [
+   {
+    "url": "https://www.jupiterintel.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jupiterintel.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jupiterintel.com/products/risksignal",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.jupiterintel.com/products/adaptation-hub",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.jupiterintel.com",
+    "https://www.jupiterintel.com/products"
+   ],
+   [
+    "https://www.jupiterintel.com/products",
+    "https://www.jupiterintel.com/products/risksignal"
+   ],
+   [
+    "https://www.jupiterintel.com",
+    "https://www.jupiterintel.com/products/risksignal"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

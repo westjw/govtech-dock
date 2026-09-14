@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.omnilert.com/blog/emergency-notifications"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Omnilert sells an AI gun detection system that analyzes live video from existing security cameras and flags firearms before shots are fired. The system is built to run on cameras a site already owns rather than on new hardware. A detection is passed to a person for verification before the response is engaged.",
+   "Alert notifications carry event details such as time, location and photos, and the platform can automate responses across connected security systems, from locking doors to sounding alarms and notifying authorities. Alongside detection, the company sells emergency notification systems, mass notification systems and security workflow automation on one platform.",
+   "Omnilert lists the environments the system supports, including enterprises, hospitals, schools, higher education campuses, casinos, public transportation, stadiums and houses of worship. The same pages list government buildings and universities among the sensitive environments the solution suits. A school resource officer at EAWR High School in Wood River, Illinois is quoted on the site."
+  ],
+  "quote": {
+   "text": "It\u2019s a huge advantage to have Omnilert monitor 90 cameras all at once and notify me on any critical incident where somebody has a weapon.",
+   "url": "https://omnilert.com"
+  },
+  "sources": [
+   {
+    "url": "https://omnilert.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnilert.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnilert.com/solutions/gun-detection-system",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.omnilert.com/solutions/ai-gun-detection",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.omnilert.com/solutions/gun-detection-system",
+    "https://omnilert.com"
+   ],
+   [
+    "https://omnilert.com",
+    "https://www.omnilert.com/solutions"
+   ],
+   [
+    "https://www.omnilert.com/solutions/gun-detection-system",
+    "https://www.omnilert.com/solutions/ai-gun-detection",
+    "https://omnilert.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

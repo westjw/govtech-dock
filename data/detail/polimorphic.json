@@ -9,5 +9,50 @@
    "kind_rule": null,
    "url": "https://www.polimorphic.com/articles/got-questions-for-newport-city-hall-why-ai-is-helping-find-answers"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Polimorphic sells a platform for government service delivery that the company describes as carrying work from intake to resolution in one connected system. The homepage describes a voice option that can answer questions, route calls, take voicemails, or resolve common issues instead of a phone tree. Alongside the voice and chat channels, the platform page describes a native CRM for case management and a drag-and-drop workflow builder that non-technical staff can modify.",
+   "The pages say the platform works across planning, public works, finance, recreation, and more, and that leadership gains real-time visibility across departments. Published case studies name city, county and special district customers, among them Suisun City, CA, Castle Pines, CO, Polk County, NC, and the City of Tangent, OR.",
+   "One case study reports that a water conservancy district handled over 600 seasonal inquiries through the platform without a single one being transferred to staff. The platform page states that the AI ingests local municipal codes and GIS layers to answer address-specific regulatory questions."
+  ],
+  "quote": {
+   "text": "Polimorphic unifies operations so residents get fast answers, staff reclaim focus, and leaders finally see what's happening.",
+   "url": "https://www.polimorphic.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://www.polimorphic.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.polimorphic.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.polimorphic.com/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.polimorphic.com/case-studies/weber-basin-water-conservancy-district",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.polimorphic.com",
+    "https://www.polimorphic.com/platform"
+   ],
+   [
+    "https://www.polimorphic.com",
+    "https://www.polimorphic.com/case-studies"
+   ],
+   [
+    "https://www.polimorphic.com/case-studies/weber-basin-water-conservancy-district",
+    "https://www.polimorphic.com/platform"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

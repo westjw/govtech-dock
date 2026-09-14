@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://operatorxr.com/insights/virtual-reality-grant-opportunities"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Operator XR sells virtual reality training and simulation systems for law enforcement and military users. The company states that those systems are integrated, secure, and immersive, and that they enhance human performance in high-risk situations. Their solutions are delivered through the OP-2 platform, available in portable or large-scale fixed training environments with Sentinel.",
+   "Operator XR systems are presented as a way for military personnel and law enforcement officers to train operational tactics and procedures inside a portable virtual reality environment. The customers page states that law enforcement and military units are integrating the virtual reality technology into their training and mission rehearsal programmes. The solutions page describes officers interacting in scenarios such as virtual vehicle stops, crisis interventions, or active shooters inside school buildings.",
+   "Listed system features include compatibility with rifle, pistol, CEW and spray. Offline operation with no external internet is another feature the customers page names. The homepage news list states that Texas DPS selected the VR training system."
+  ],
+  "quote": {
+   "text": "Operator XR systems enable Military personnel and Law Enforcement Officers to train operational tactics and procedures within a portable, virtual reality environment.",
+   "url": "https://operatorxr.com/company"
+  },
+  "sources": [
+   {
+    "url": "https://operatorxr.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://operatorxr.com/customers",
+    "fetched_on": null
+   },
+   {
+    "url": "https://operatorxr.com/company",
+    "fetched_on": null
+   },
+   {
+    "url": "https://operatorxr.com/solutions",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://operatorxr.com"
+   ],
+   [
+    "https://operatorxr.com/company",
+    "https://operatorxr.com/customers",
+    "https://operatorxr.com/solutions"
+   ],
+   [
+    "https://operatorxr.com/customers",
+    "https://operatorxr.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -81,5 +81,40 @@
    "kind_rule": null,
    "url": "https://www.emaint.com/resources/blog/emaint-team-supports-clients-through-any-challenge"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "eMaint sells maintenance management software, described on its homepage as CMMS and EAM software from Fluke. The homepage puts work order creation, assignment and tracking in one system. Other functions it names are preventive and predictive maintenance, spare parts planning, and real-time dashboards, KPIs and reporting.",
+   "The about page says the software has served maintenance and reliability teams since 1986. That page dates a web-based CMMS platform to 1999 and an AI assistant to 2026. Backing from Fluke is described on the homepage as four decades of maintenance expertise with global resources.",
+   "Both pages carry an industries menu listing Government, described there as public sector compliance and procurement. The customer stories on the homepage name buyers in food production, automotive and beverage packaging."
+  ],
+  "quote": {
+   "text": "Enterprise-grade CMMS and EAM software for maintenance teams that need to scale operations and maximize asset uptime.",
+   "url": "https://www.emaint.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.emaint.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.emaint.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.emaint.com"
+   ],
+   [
+    "https://www.emaint.com/about",
+    "https://www.emaint.com"
+   ],
+   [
+    "https://www.emaint.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

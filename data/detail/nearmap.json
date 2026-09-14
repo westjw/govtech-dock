@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.nearmap.com/newsroom/nearmap-expands-roof-exterior-measurements"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nearmap sells property intelligence drawn from its own aerial imagery, AI analytics, and workflow applications. A patented HyperCamera3 system captures aerial imagery at 1.57-2.95 in/4.4-7.5 cm or better per pixel, refreshed up to 3x per year. One global AI model generates 130+ semantic property layers. Property intelligence reaches customers through workflow applications, direct integrations into existing systems, and APIs.",
+   "MapBrowser is a mapping app that brings project data into one place, with vertical, panoramic, and oblique views. The app gives access to more than a decade of archived content and takes height, pitch, and length measurements.",
+   "Nearmap states that all 10 of the top 10 P&C carriers choose it, alongside 8 of the top 10 U.S. architecture engineering firms and 1,500 government agencies worldwide. Customer quotes on the customers page come from Stantec, Kin Insurance, Utica First, and the City of Melrose. For insurance, the pages describe underwriting and claims served together rather than separately."
+  ],
+  "quote": {
+   "text": "See truth. Assess risk. Act with certainty.",
+   "url": "https://www.nearmap.com/products/mapbrowser"
+  },
+  "sources": [
+   {
+    "url": "https://www.nearmap.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nearmap.com/customers",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nearmap.com/solutions/insurance",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nearmap.com/products/mapbrowser",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nearmap.com"
+   ],
+   [
+    "https://www.nearmap.com/products/mapbrowser"
+   ],
+   [
+    "https://www.nearmap.com",
+    "https://www.nearmap.com/customers",
+    "https://www.nearmap.com/solutions/insurance"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

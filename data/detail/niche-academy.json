@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://www.nicheacademy.com/blog/in-person-vs-online-training"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Niche Academy sells an online training platform that libraries, municipalities, and other organizations use to deliver training and track progress. The platform combines an LMS, authoring tools, and ready-made tutorials that staff can use without building training from scratch. Users start with curated tutorials, create custom content to match their policies and procedures, and track completions for compliance and internal reporting.",
+   "The company began in 2014 as a learning platform for libraries and later expanded to support nonprofits and other organizations facing similar challenges. Named audiences include public libraries, academic libraries, municipalities, and direct care providers. The pages also list volunteer and board orientation, and community programs a library can embed on its own website.",
+   "Niche Academy reports serving more than 1,700 libraries, nonprofits, and other mission-driven organizations around the world. Published case studies name public libraries and parks and recreation departments. Access starts with a free trial that the site says requires no credit card."
+  ],
+  "quote": {
+   "text": "We provide tools that inspire learning and drive team success.",
+   "url": "https://www.nicheacademy.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.nicheacademy.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nicheacademy.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.nicheacademy.com/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.nicheacademy.com"
+   ],
+   [
+    "https://www.nicheacademy.com/about-us",
+    "https://www.nicheacademy.com"
+   ],
+   [
+    "https://www.nicheacademy.com/about-us",
+    "https://www.nicheacademy.com/case-studies",
+    "https://www.nicheacademy.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://rtafleet.com/blog/fleet-right-sizing-two-methods-every-government-fleet-manager-should-know"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "RTA Fleet360 is a fleet maintenance and management system built to centralize work orders, streamline preventive maintenance, and manage parts and fuel. Asset management in Fleet360 covers vehicles, equipment and tools, with digital profiles tracking availability, repairs, warranties and costs across shops. Parts and inventory features let parts managers track usage, automate inventory and warranty tracking, and simplify ordering.",
+   "Budgeting and cost tools cover asset lifecycle planning, maintenance and repair costs, inventory cost, fuel cost per mile, and technician labor hours. Reporting includes business intelligence dashboards, a Fleet Success Scorecard, and customizable reporting tools for fleet managers. A mobile app brings Fleet360 to a device so managers and technicians can handle work orders, inventory, inspections and fleet performance on the go.",
+   "The homepage describes the product as an FMIS for public sector fleets. Beyond the software, the company offers fleet consulting and training delivered online or in person. Purchasing is offered through purchasing partners, where members qualify for pricing on software, hardware and consulting services."
+  ],
+  "quote": {
+   "text": "RTA Fleet360 is the fleet management software (FMIS) run by former fleet managers",
+   "url": "https://www.rtafleet.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.rtafleet.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rtafleet.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rtafleet.com/solutions/asset-equipment-tools-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://rtafleet.com/solutions/fleet-cost-management",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://rtafleet.com/solutions",
+    "https://rtafleet.com/solutions/asset-equipment-tools-management"
+   ],
+   [
+    "https://rtafleet.com/solutions/fleet-cost-management",
+    "https://rtafleet.com/solutions"
+   ],
+   [
+    "https://www.rtafleet.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

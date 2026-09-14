@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://lyt.ai/blog/wbur-interviews-mbta"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "LYT sells signal priority software that gives buses and emergency vehicles a green light at intersections, and it runs on the signal controllers and vehicle equipment an agency already has. The platform is described as cloud-based software billed as an operating expense, with predictable annual costs rather than a capital purchase.",
+   "For transit agencies, the platform models traffic and adjusts signal timing so that buses keep to schedule. For fire departments and for EMS and police, it preempts the signals ahead of responding vehicles as they approach an intersection.",
+   "LYT states that it maintains SOC 2 Type 2 compliance and that the platform is purpose-built for public agencies. Procurement routes listed on the page include a cooperative contract in Washington, a rider contract with LA Metro, and NEORide for member agencies."
+  ],
+  "quote": {
+   "text": "LYT is purpose-built for cities that need reliable, real-time priority control without the hardware headaches.",
+   "url": "https://lyt.ai"
+  },
+  "sources": [
+   {
+    "url": "https://lyt.ai",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://lyt.ai"
+   ],
+   [
+    "https://lyt.ai"
+   ],
+   [
+    "https://lyt.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

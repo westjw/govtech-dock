@@ -108,5 +108,49 @@
    "kind_rule": "contract",
    "url": "https://perimeterplatform.com/newsroom/merced-county-begins-contract-with-perimeter"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Perimeter sells a public safety platform that pairs evacuation planning with situational awareness mapping, delivered through Perimeter Plan and Perimeter Map. Perimeter Plan is used before an incident to set safe points, evacuation routes, and critical infrastructure points. During an incident, hazards, road closures, and evacuation orders are published to a map that updates for every agency and the public.",
+   "The platform is aimed at emergency managers, public information officers, law enforcement agencies, and fire departments. The public facing map is shareable to anyone needing emergency information, with no download or sign up required. Agencies can grant access to neighboring jurisdictions and mutual aid partners.",
+   "Data created in Perimeter is stored for after action analysis. Saved detail is meant to be ready to share when records are requested by stakeholders. Perimeter exports KML and GeoJSON and integrates Esri data with existing tools."
+  ],
+  "quote": {
+   "text": "Perimeter provides everything needed to create, manage, and communicate zones, points, and routes for emergencies and planned events.",
+   "url": "https://perimeterplatform.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://perimeterplatform.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://perimeterplatform.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://perimeterplatform.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://perimeterplatform.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://perimeterplatform.com"
+   ],
+   [
+    "https://perimeterplatform.com/platform",
+    "https://perimeterplatform.com"
+   ],
+   [
+    "https://perimeterplatform.com/solutions",
+    "https://perimeterplatform.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Kajeet sells managed cellular connectivity as one stack covering devices, networks and locations. The Sentinel platform is the console where operators activate devices, apply policy and monitor a fleet across deployments. Connectivity itself runs on Kajeet smartSIM, a single eSIM that switches among carrier networks without a manual SIM swap.",
+   "SmartFailover is sold as a backup internet path that takes over when the primary wired connection drops. Kajeet fixed wireless covers sites that use cellular service as a primary connection, shipped preconfigured for self-install. Hotspots that can be signed out to students, along with kitting and provisioning services, round out what Kajeet offers.",
+   "Kajeet names school districts, health systems, transit agencies, public libraries and enterprise fleets among the deployments its platform reaches. Education connectivity is described as CIPA-compliant, for students wherever learning takes place. Resellers and managed service providers are offered the fixed wireless product to add to client portfolios."
+  ],
+  "quote": {
+   "text": "Kajeet brings connectivity, device management, network intelligence, and managed services together in one unified platform",
+   "url": "https://www.kajeet.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.kajeet.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kajeet.com/solutions/multi-network-iot-connectivity-sim",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kajeet.com/solutions/business-internet-failover",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kajeet.com/solutions/business-fixed-wireless-internet",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kajeet.com",
+    "https://www.kajeet.com/solutions/multi-network-iot-connectivity-sim"
+   ],
+   [
+    "https://www.kajeet.com/solutions/business-internet-failover",
+    "https://www.kajeet.com/solutions/business-fixed-wireless-internet",
+    "https://www.kajeet.com"
+   ],
+   [
+    "https://www.kajeet.com",
+    "https://www.kajeet.com/solutions/business-fixed-wireless-internet"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

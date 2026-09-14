@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://justicetext.com/blog/nacdl-milwaukee-2021"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "JusticeText sells evidence review software for criminal defense work, turning hours of audio and video discovery into searchable transcripts synced to the original media. The platform transcribes and translates media in more than 100 languages, including files where several languages are spoken. An assistant called MirandaAI works across every piece of evidence in a case to uncover connections. Attorneys can build case timelines, spot inconsistencies and flag key moments across the evidence.",
+   "Video clipping, redaction and closed captioning tools are offered for building court exhibits. Multiple camera angles can be synced into one timeline aligned by date and time of capture. Uploaded content is stored on encrypted servers in the United States, encrypted in transit and at rest. The product page states that evidence is never used to train third-party machine learning models. Account access is protected with multi-factor authentication and single sign-on support.",
+   "The buyers named on these pages are criminal defense teams, described as thousands of attorneys across the United States. The Kentucky Department of Public Advocacy brought on JusticeText in 2023 for digital evidence review. Harris County Public Defenders are described as drawing insights from large quantities of audiovisual evidence with it. Private defense practices appear as well, including Rossen Law Firm, whose founder uses it to review evidence and create exhibits for court."
+  ],
+  "quote": {
+   "text": "JusticeText helps you review discovery faster so you can spend more time on case strategy.",
+   "url": "https://justicetext.com/product"
+  },
+  "sources": [
+   {
+    "url": "https://justicetext.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://justicetext.com/product",
+    "fetched_on": null
+   },
+   {
+    "url": "https://justicetext.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://justicetext.com/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://justicetext.com/product",
+    "https://justicetext.com"
+   ],
+   [
+    "https://justicetext.com/product"
+   ],
+   [
+    "https://justicetext.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

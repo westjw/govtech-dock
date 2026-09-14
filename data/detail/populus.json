@@ -81,5 +81,49 @@
    "kind_rule": null,
    "url": "https://www.populus.ai/blog/driving-curbs-occupancy-insights"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Populus sells cities a software platform for managing streets, curbs, and shared mobility fleets. Populus states that it delivers data in over 100 cities around the world. The curb side of the platform covers data analysis, regulation inventorying, and active management tools.",
+   "Parking Insights pulls curb activity data from a city's meters, payment kiosks, mobile payment applications, sensors, and cameras into one platform for geospatial analysis. It includes Rate Analyzer, which projects the financial impact of rate adjustments and estimates revenue from new rates using historical parking data. Curb Regulations turns a city's existing curb and parking data into standardized formats such as the Curb Data Specification, and keeps that inventory up to date. Cities can then publish a Curbs API to delivery companies and autonomous vehicles, with Populus providing hosting and delivery of that API.",
+   "Digital Smart Zones let a city share dynamic curb policies with commercial and on-demand delivery vehicles and launch hardware-free permit programs that collect revenue from parking activity. Mobility Manager integrates and analyzes data from shared bikes, scooters, carshare, mopeds, and other shared fleets, with live data views of micromobility in a city. A policy toolkit lets staff create permanent and temporary rules, monitor compliance automatically, and calculate fees with fleet operators."
+  ],
+  "quote": {
+   "text": "Populus empowers cities to dynamically manage streets and curbs",
+   "url": "https://www.populus.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.populus.ai",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.populus.ai/products/parking-insights",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.populus.ai/products/curb-regulations",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.populus.ai/products/digital-smart-zones",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.populus.ai"
+   ],
+   [
+    "https://www.populus.ai/products/parking-insights",
+    "https://www.populus.ai/products/curb-regulations"
+   ],
+   [
+    "https://www.populus.ai/products/digital-smart-zones",
+    "https://www.populus.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

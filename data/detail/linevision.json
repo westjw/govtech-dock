@@ -108,5 +108,49 @@
    "kind_rule": "unveils",
    "url": "https://www.linevisioninc.com/news/linevision-enhances-transmission-line-monitoring-platform-to-help-utilities-mitigate-wildfire-risk"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "LineVision sells an integrated intelligence platform that delivers Dynamic Line Ratings and Situational Awareness for transmission networks. Dynamic Line Ratings covers real-time and forecasted transmission capacity at every span across networks. Forecasted ratings extend hourly up to 240 hours, or 10 days. Items listed under Dynamic Line Ratings include FERC 881 and NERC FAC-008 compliance.",
+   "Situational Awareness provides real-time monitoring of physical risks and environmental conditions on critical transmission lines. That monitoring runs on RS-1 sensors that gather continuous, hyperlocal data around critical transmission rights-of-way. Detection and alerting cover conductor hazards including galloping, clashing, asynchronous motion, and unusual sag. Other alerts listed cover conductor icing, fallen trees, and unauthorized people or equipment in the ROW.",
+   "LineVision states that it works with 7 to the 10 largest utilities in the US. Named customers on these pages include National Grid, Xcel Energy, Avangrid, and New York Transco. Service capabilities listed include 24/7 customer support for operational DLR and EMS integration described as NERC-CIP compliant. The home page states that LineVision solutions are US-domiciled and NERC-CIP approved, with the SMS certified to ISO 27001:2022."
+  ],
+  "quote": {
+   "text": "Our integrated intelligence platform delivers Dynamic Line Ratings and Situational Awareness to unlock operational flexibility and enable efficient capital allocation.",
+   "url": "https://www.linevisioninc.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.linevisioninc.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linevisioninc.com/solutions/dynamic-line-ratings",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linevisioninc.com/solutions/situational-awareness",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.linevisioninc.com/customers",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.linevisioninc.com",
+    "https://www.linevisioninc.com/solutions/dynamic-line-ratings"
+   ],
+   [
+    "https://www.linevisioninc.com/solutions/situational-awareness"
+   ],
+   [
+    "https://www.linevisioninc.com/customers",
+    "https://www.linevisioninc.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

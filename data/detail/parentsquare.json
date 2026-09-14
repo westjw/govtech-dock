@@ -108,5 +108,47 @@
    "kind_rule": null,
    "url": "https://www.parentsquare.com/blog/parentsquare-attendance-plus-new-capabilities/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ParentSquare sells a K-12 family engagement platform that brings communications, attendance, payments, and websites into one system. Alerts go out across channels with district-level control, and messages are auto-translated. Two-way messaging is offered so families and staff can connect and respond.",
+   "Packages are sold by tier, with an entry tier for districts establishing districtwide communication. Payments let families pay for field trips, fees, donations, and school activities in one place. Attendance add-ons cover notifications, outreach, and interventions, with SIS integration and tiered analytics.",
+   "Customers named on the pages are public school systems such as Boston Public Schools (MA) and Beaverton School District (OR). The platform is described as designed specifically for K-12 environments, with security, privacy, and accessibility built in."
+  ],
+  "quote": {
+   "text": "ParentSquare is the family engagement infrastructure that brings together school communication, attendance, websites, payments, and more into one secure, easy-to-use system, helping schools replace multiple disconnected tools with a single solution.",
+   "url": "https://www.parentsquare.com/platform/make-the-switch/"
+  },
+  "sources": [
+   {
+    "url": "https://www.parentsquare.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.parentsquare.com/platform/overview/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.parentsquare.com/platform/compare-packages/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.parentsquare.com/platform/make-the-switch/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.parentsquare.com/platform/overview/"
+   ],
+   [
+    "https://www.parentsquare.com/platform/compare-packages/"
+   ],
+   [
+    "https://www.parentsquare.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

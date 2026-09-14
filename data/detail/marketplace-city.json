@@ -108,5 +108,45 @@
    "kind_rule": null,
    "url": "https://go.marketplace.city/blog/cooperative-purchasing-vs-market-intelligence-local-government"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Marketplace.city runs a sourcing and procurement platform for local governments buying technology. The platform offers market intelligence, vendor comparisons, and a repository of vendor contracts, references and pricing. The company is based in Chicago, IL, and the platform is open to local governments and vendors globally.",
+   "Clearbox Source is sold as an annual subscription for market research and vendor engagement. Clearbox Procure is a managed service that guides stakeholders through sourcing and validation toward a match between vendor and customer.",
+   "Technology providers make up the other side of the platform, registering companies and products at no cost so government users can see them during procurement. Case studies on the site name the City of Mesa, the City of Alexandria, and Dallas County."
+  ],
+  "quote": {
+   "text": "Marketplace enables key stakeholders to spend less time sifting through vendors and more time making purchasing decisions.",
+   "url": "https://marketplace.city"
+  },
+  "sources": [
+   {
+    "url": "https://marketplace.city",
+    "fetched_on": null
+   },
+   {
+    "url": "https://marketplace.city/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://marketplace.city/about/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://marketplace.city/about/",
+    "https://marketplace.city"
+   ],
+   [
+    "https://marketplace.city/about/"
+   ],
+   [
+    "https://marketplace.city",
+    "https://marketplace.city/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

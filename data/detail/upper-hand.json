@@ -63,5 +63,46 @@
    "kind_rule": null,
    "url": "https://upperhand.com/resources/injury-incident-response-plan-template/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Upper Hand sells sports business management software that covers scheduling, registration, payment processing, team management, marketing, and payroll in one place. Programs can be built as private lessons, classes, teams, and clinics, with registration options, capacity controls, and waitlists. Billing covers payments, memberships, pricing plans, discounts, and recurring billing. Staff and facility tools handle instructors, access levels, payroll reporting, and facility availability.",
+   "The pages describe the market as sports facilities, academies, and coaching businesses of all sizes. The company page states that Upper Hand serves the sports training industry and helps facilities, academies, and trainers grow their businesses. Customer stories name businesses such as EYG Basketball, SpeedSkills Hockey, and D-BAT Newark.",
+   "The company page dates the business to 2012, when a baseball coach started a platform connecting athletes with private coaches. The name Upper Hand dates from 2015, when the team rebranded and described the product as a sports training management platform. A mobile app is available to both the sports business and its clients."
+  ],
+  "quote": {
+   "text": "Upper Hand was created by sports coaches to make sports training easier.",
+   "url": "https://upperhand.com"
+  },
+  "sources": [
+   {
+    "url": "https://upperhand.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://upperhand.com/customers",
+    "fetched_on": null
+   },
+   {
+    "url": "https://upperhand.com/company/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://upperhand.com"
+   ],
+   [
+    "https://upperhand.com",
+    "https://upperhand.com/company/",
+    "https://upperhand.com/customers"
+   ],
+   [
+    "https://upperhand.com/company/",
+    "https://upperhand.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

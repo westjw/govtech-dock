@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.procore.com/press/procore-announces-timing-of-second-quarter-fiscal-year-2026-earnings-call"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Procore sells construction project management software for projects from preconstruction to closeout. The products page lists capabilities to plan, prep, build, and operate construction projects on one platform. Those capabilities include bid management, budgets, drawings, daily logs, scheduling, and equipment tracking.",
+   "The platform page describes analytics and AI features that support decisions across a project. Procore for Government is offered for oversight of federal projects, with FedRAMP Class C certification named on the platform page. The platform page also names support for DoD contractors with CMMC Level 2 obligations and for U.S. government entities.",
+   "The about page points to construction companies such as Ferrovial that use Procore on their projects. Product pages address specialty contractors and general contractors as the teams using the scheduling and communication tools."
+  ],
+  "quote": {
+   "text": "Manage your construction projects from preconstruction to closeout with the insights you need to maximize safety, efficiency, and ROI.",
+   "url": "https://www.procore.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.procore.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.procore.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.procore.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.procore.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.procore.com",
+    "https://www.procore.com/products"
+   ],
+   [
+    "https://www.procore.com/platform"
+   ],
+   [
+    "https://www.procore.com/about",
+    "https://www.procore.com/products"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

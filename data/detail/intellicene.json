@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://intellicene.com/blog/to-a-retailer-security-goes-beyond-asset-protection/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Intellicene sells software for security operations, described on its site as connecting the people, systems, and information behind a security operation. The site groups that work under the heading Intelligent Security Operations and says the products are built for environments where simple is not an option.",
+   "Control is presented as security orchestration for situational awareness across any size operation, with multiple sites, devices, and assets managed from any location. Insight is described as data intelligence for finding operational gaps and generating data tables, dashboards, and reports. FaceDetect is described as detecting, tracking, and alerting on persons of interest appearing in video surveillance streams across multiple sites and cameras. Intellicene VMS is described as a video management suite for video surveillance, incident management, forensic analysis, and operator review.",
+   "A section headed By The Numbers introduces the counts by saying the company is not a traditional security company and points to its customers and capabilities. The counts listed there name government and agencies worldwide, international airports, global retailers, and subway and rail systems."
+  ],
+  "quote": {
+   "text": "SECURITY OPERATIONS ARE COMPLEX. UNDERSTANDING THEM SHOULDN\u2019T BE.",
+   "url": "https://intellicene.com"
+  },
+  "sources": [
+   {
+    "url": "https://intellicene.com",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://intellicene.com"
+   ],
+   [
+    "https://intellicene.com"
+   ],
+   [
+    "https://intellicene.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

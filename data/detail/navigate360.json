@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://navigate360.com/blog/what-are-cyber-predators-sextortion-schools/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Navigate360 sells a health and safety management platform for K-12 schools, combining safety, student behavior, operations, and training in one ecosystem. The platform is organized into four solution areas: safety and emergency response, student behavior and well-being, school operations and movement, and staff training and certification.",
+   "Campus360 groups emergency management, panic buttons and alerting, and visitor and volunteer management into one system for preparing for and responding to incidents. Emergency Management covers digital site maps, one-tap alerts to staff and 911, drill scheduling and logging, and accountability and reunification. Visitor and volunteer management screens visitors against sex offender databases and blocklists and tracks who is on campus.",
+   "Staff training and certification covers active shooter response, threat assessment, and suicide awareness and prevention. The pages name K-12 schools and school districts as the users of these solutions, along with public safety agencies that use the safety training. State-required drill scheduling, compliance records, and real-time map access for police and fire are described on the emergency management page."
+  ],
+  "quote": {
+   "text": "Navigate360 brings safety, student behavior, operations, and training together in a single ecosystem.",
+   "url": "https://navigate360.com"
+  },
+  "sources": [
+   {
+    "url": "https://navigate360.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://navigate360.com/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://navigate360.com/solutions/campus360/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://navigate360.com/solutions/emergency-management/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://navigate360.com"
+   ],
+   [
+    "https://navigate360.com/solutions/campus360/",
+    "https://navigate360.com/solutions/emergency-management/"
+   ],
+   [
+    "https://navigate360.com/solutions/",
+    "https://navigate360.com",
+    "https://navigate360.com/solutions/emergency-management/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

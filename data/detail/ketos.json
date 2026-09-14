@@ -108,5 +108,39 @@
    "kind_rule": "Tap",
    "url": "https://ketos.co/resources/is-tap-water-safe-to-drink"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "KETOS sells water quality monitoring as an integrated service rather than as standalone instruments. The KETOS SHIELD reports water quality data in real time across dozens of parameters, and the KETOS WAVE reports flow, pressure and volume. Sensor readings are aggregated in a data warehouse that feeds reporting, alerts and predictive analytics for water operators.",
+   "The platform is sold with no capital expenditure and an annual service fee in place of equipment purchase. Connectivity options include LoRa, WiFi and cellular, and the platform connects to public data and existing SCADA systems. Reports and alerts are offered as configurable and out of the box, without separate analytics staff.",
+   "Municipal, industrial and agricultural applications are each named on the site, and each carries an average customer rating. Case studies name a Fortune 500 consumer goods manufacturer that monitors three locations on a daily and by shift basis. Another case study describes a Midwest power plant that needed regular water testing for compliance."
+  ],
+  "quote": {
+   "text": "KETOS enables water operators to identify and solve mission-critical water efficiency and quality challenges in real-time",
+   "url": "https://www.ketos.co"
+  },
+  "sources": [
+   {
+    "url": "https://www.ketos.co",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ketos.co/platform",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ketos.co"
+   ],
+   [
+    "https://www.ketos.co"
+   ],
+   [
+    "https://www.ketos.co"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.katapultengineering.com/blog/squan-case-study?hsLang=en"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Katapult Engineering sells Katapult Pro, a platform that organizes the pole attachment process for utilities, engineers, and attachers. The platform brings application intake, field collection, engineering review, and approval into one record that each party can see. Stages in that workflow record entry and exit timestamps, and timeline tracking flags progress against FCC and PUC deadlines.",
+   "Field crews collect pole photos and measurements on a mobile device, and that record becomes the make ready plan. Engineering design runs pole loading analysis while a design is underway and flags clearance violations across a whole project. Clearances can be imported from NESC or GO95 and adjusted to a customer's own standards, and make ready reports separate simple work from complex work.",
+   "Utilities and co-ops, engineering firms, and telecom providers are the three audiences the homepage addresses. Subscriptions are month-to-month with fixed annual rates and no seat minimums. Onboarding usually starts with a pilot project scoped in a call with the customer's joint use lead."
+  ],
+  "quote": {
+   "text": "One workflow from application intake to post-construction inspection, with the utility, attacher and contractors seeing the same thing.",
+   "url": "https://www.katapultengineering.com/platform/joint-use-management"
+  },
+  "sources": [
+   {
+    "url": "https://www.katapultengineering.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.katapultengineering.com/platform/joint-use-management",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.katapultengineering.com/platform/engineering-design",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.katapultengineering.com/platform/data-collection",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.katapultengineering.com",
+    "https://www.katapultengineering.com/platform/joint-use-management"
+   ],
+   [
+    "https://www.katapultengineering.com/platform/joint-use-management",
+    "https://www.katapultengineering.com/platform/engineering-design"
+   ],
+   [
+    "https://www.katapultengineering.com",
+    "https://www.katapultengineering.com/platform/joint-use-management"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,47 @@
    "kind_rule": null,
    "url": "https://www.sepco-solarlighting.com/blog/the-importance-of-engineering-over-smart-controls-in-solar-lighting"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SEPCO, or Solar Electric Power Company, manufactures commercial solar LED lighting and off-grid solar power systems. The systems are made in the USA at a factory and headquarters in Stuart, FL. Manufacturing under the SEPCO name dates to 1994, and the company states over 31 years of experience with commercial solar LED lighting and off-grid power systems.",
+   "Systems are engineered for a specific location and application rather than sold as mass-produced all-in-one lighting. An in-house engineering and lighting specialist team provides lighting layouts, system sizing, and photometric studies. Applications named include streets, parking lots, pathways, signage, and transit shelters. Solar sizing uses local solar insolation reports for a worst-case scenario, with a minimum of five nights of backup and more in northern areas.",
+   "Poles are built to meet local AASHTO wind loads, including hurricane-prone areas. SEPCO lists municipalities, commercial sites, and remote areas among the settings where its systems have produced results. As of 2022, the company describes itself as a woman-owned and operated business."
+  ],
+  "quote": {
+   "text": "SEPCO has been providing Security, Savings, and Sustainability with Commercially Designed Off-Grid Solar Lighting and Power Systems - manufactured right here in Stuart, FL, USA",
+   "url": "https://www.sepco-solarlighting.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.sepco-solarlighting.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sepco-solarlighting.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sepco-solarlighting.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sepco-solarlighting.com/about-us",
+    "https://www.sepco-solarlighting.com"
+   ],
+   [
+    "https://www.sepco-solarlighting.com",
+    "https://www.sepco-solarlighting.com/products"
+   ],
+   [
+    "https://www.sepco-solarlighting.com/products",
+    "https://www.sepco-solarlighting.com",
+    "https://www.sepco-solarlighting.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

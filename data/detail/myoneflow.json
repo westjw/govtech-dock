@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.myoneflow.com/blog/acing-the-audit"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "myOneFlow sells a case management platform that public service organizations use to centralize enrollment, document management, reporting, and financial tracking. Listed features include automated workflows, digital forms, real-time reporting, fiscal management, and tracking for enrollment, attendance, and program outcomes. Compliance reporting tools on the platform include templates for WIOA, PIRL, and NRS requirements.",
+   "Buyers named on the same page include workforce development agencies, adult education programs, apprenticeship programs, state and local governments, and other public service providers. Case studies describe organizations that run workforce development, adult education, and apprenticeship programs. One of them names the City of Richmond, which centralized case management and cut reporting time by 75%.",
+   "Houston City Colleges moved its operations onto myOneFlow and accelerated student enrollment by over 70%. Intake and enrollment there took an average of 24 days per student before the platform, and now take an average of fewer than seven days."
+  ],
+  "quote": {
+   "text": "myOneFlow is an AI-driven program management solution built for public service organizations.",
+   "url": "https://www.myoneflow.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.myoneflow.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.myoneflow.com/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.myoneflow.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.myoneflow.com/case-studies/hcc?hsLang=en",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.myoneflow.com"
+   ],
+   [
+    "https://www.myoneflow.com",
+    "https://www.myoneflow.com/case-studies"
+   ],
+   [
+    "https://www.myoneflow.com/case-studies/hcc?hsLang=en"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

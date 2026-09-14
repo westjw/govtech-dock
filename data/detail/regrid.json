@@ -90,5 +90,44 @@
    "kind_rule": "update",
    "url": "https://regrid.com/blog/parcel-data-update-may-2026"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Regrid sells standardized parcel data covering North America and Europe under a single schema. Those parcel boundaries carry ownership details, zoning rules, building footprints, and demographics in one view. Coverage runs to every county in the United States. Canadian parcels and European parcel data across 20 countries extend the same land data beyond one market.",
+   "Delivery options include enterprise file delivery, an API with tiles and an MCP server, and self-serve county and state downloads from the data store. A hosted Feature Service connects the parcel layers into ArcGIS Pro and ArcGIS Online. A property app for desktop and mobile handles parcel lookup, fieldwork, saved places, notes, and parcel tracking.",
+   "Regrid states that the parcel layer supports enterprise teams across real estate, infrastructure, government, energy, conservation, research, and technology. Government use described on the same page covers planning, public services, community development, transparency, research, and land-related decision-making. The customers page describes the audience as enterprise teams that depend on parcel data across jurisdictions."
+  ],
+  "quote": {
+   "text": "Regrid makes parcel data easier to access, understand, and use, so people can make better decisions about land across communities, markets, and borders.",
+   "url": "https://regrid.com/about/company"
+  },
+  "sources": [
+   {
+    "url": "https://regrid.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://regrid.com/customers",
+    "fetched_on": null
+   },
+   {
+    "url": "https://regrid.com/about/company",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://regrid.com"
+   ],
+   [
+    "https://regrid.com"
+   ],
+   [
+    "https://regrid.com/about/company",
+    "https://regrid.com/customers"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

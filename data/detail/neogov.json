@@ -108,5 +108,49 @@
    "kind_rule": "Introduces",
    "url": "https://blog.neogov.com/press/neogov-introduces-vetted-background-investigation-software-for-public-safety-agencies"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "NEOGOV sells human resources software for government agencies, built around public sector hiring, onboarding, and compliance. The platform is described as purpose-built for government agencies, municipalities, and the broader public sector, with forms, workflows, and reporting aligned to public sector regulations. Products named on the site include Insight for applicant tracking, Attract for candidate relationship management, and Onboard for employee onboarding.",
+   "Insight is presented as an applicant tracking system that automates and centralizes recruitment activities for public sector hiring. Insight supports civil service requirements such as minimum qualifications screening, canvassing letters, and ranked eligibility lists, according to that page. Attract is a candidate relationship management system for agencies to engage candidates who have expressed interest in government jobs.",
+   "GovernmentJobs.com is offered as a job board built for public sector recruitment, with jobs posted in Insight published there automatically. The site also lists onboarding, performance management, learning management, custom forms, background investigations, and compliance management among the functions covered."
+  ],
+  "quote": {
+   "text": "NEOGOV is purpose-built for government agencies, municipalities, and the broader public sector.",
+   "url": "https://www.neogov.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.neogov.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.neogov.com/products/insight",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.neogov.com/products/attract",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.neogov.com/products/gjobs",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.neogov.com"
+   ],
+   [
+    "https://www.neogov.com/products/insight",
+    "https://www.neogov.com/products/attract"
+   ],
+   [
+    "https://www.neogov.com/products/gjobs",
+    "https://www.neogov.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

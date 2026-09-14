@@ -45,5 +45,40 @@
    "kind_rule": null,
    "url": "https://shotl.com/news/improving-mobility-in-smaller-towns"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Shotl sells an on-demand bus platform that pools riders travelling in the same direction into vans and minibuses. The product comes as three applications: a rider app for booking, a driver app for turn-by-turn navigation, and a management module for fleet supervision. Fleet and operation managers use a central console to watch demand, manage vehicle availability, and check the status of trips.",
+   "Routes are adjusted in real time on traffic and demand rather than fixed lines, and rides are shared between passengers heading in similar directions. Managers can add or remove virtual stops, resize the service area, and open or close street availability.",
+   "Cities and transport operators are the named users, with the same service pitched for suburbs, business parks, and recurring commutes for the physically challenged. Fares are set by the transport authority, and the platform can be integrated with the current public transport ticketing system. Shotl licenses the technology to local partners and operates services in seven European countries."
+  ],
+  "quote": {
+   "text": "Full seats, better streets.",
+   "url": "https://shotl.com"
+  },
+  "sources": [
+   {
+    "url": "https://shotl.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://shotl.com/platform",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://shotl.com",
+    "https://shotl.com/platform"
+   ],
+   [
+    "https://shotl.com/platform"
+   ],
+   [
+    "https://shotl.com/platform"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,47 @@
    "kind_rule": "adopts",
    "url": "https://www.singlewire.com/news/edgewood-adopts-informacast-wearable-to-speed-up-response"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Singlewire Software develops safety software that helps detect threats, notify everyone, and manage incidents. The InformaCast platform sends intrusive audio and visual alerts that can go broadly or to selected people. Paging carries live and recorded audio to IP phones, speakers and analog paging systems.",
+   "Text, email, and push notifications can be sent from a mobile device, which also manages incidents. CallAware was added for 911 alerting. Staff can know when 911 is called, listen to calls in progress, and extend alerts to the PSAP.",
+   "Visitor Aware was acquired to add visitor and student management capabilities. It screens visitors and volunteers in seconds, checks them against national databases, and preregisters guests. A wearable alert badge powered by InformaCast serves as a panic button for schools. Published case studies include Sioux Falls School District using Visitor Aware at school entrances."
+  ],
+  "quote": {
+   "text": "Instant alerts. Rapid response. Safer people.",
+   "url": "https://singlewire.com"
+  },
+  "sources": [
+   {
+    "url": "https://singlewire.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://singlewire.com/case-study",
+    "fetched_on": null
+   },
+   {
+    "url": "https://singlewire.com/our-story",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://singlewire.com/our-story",
+    "https://singlewire.com"
+   ],
+   [
+    "https://singlewire.com",
+    "https://singlewire.com/our-story"
+   ],
+   [
+    "https://singlewire.com/our-story",
+    "https://singlewire.com",
+    "https://singlewire.com/case-study"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

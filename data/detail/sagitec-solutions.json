@@ -108,5 +108,45 @@
    "kind_rule": null,
    "url": "https://www.sagitec.com/blog/bridging-design-and-deployment-making-process-reengineering-stick"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Sagitec describes itself as a global software provider focused on solving complex, business-rule-driven problems with proven technology. Its pension administration software, Neospin, is a browser-based system for administering pension benefits, and has served public and private pension funds since 2004. Neosurance covers unemployment insurance, disability insurance, and paid family medical leave tax, benefits, and appeals administration.",
+   "WorkforceNXT connects agencies, employers, and job seekers, and supports job matching, case management, and training programs. Neotrient handles meal eligibility, claims processing, and compliance tracking for child nutrition programs. A separate eligibility and enrollment system for Medicaid runs on the Xelence platform. Services listed alongside the products include training and development, enterprise content management, and hosting on Microsoft Azure Government.",
+   "Buyers named on these pages include state agencies, state workforce agencies, school districts, and Managed Care Organizations. One government customer is named, the Maine Public Employees Retirement System, whose project the company says it has been awarded. The company states a core focus on the public sector."
+  ],
+  "quote": {
+   "text": "A global software provider focused on solving complex, business-rule-driven problems with proven technology.",
+   "url": "https://www.sagitec.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.sagitec.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sagitec.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sagitec.com/about?hsLang=en-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sagitec.com/about"
+   ],
+   [
+    "https://www.sagitec.com/about",
+    "https://www.sagitec.com"
+   ],
+   [
+    "https://www.sagitec.com",
+    "https://www.sagitec.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

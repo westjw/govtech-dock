@@ -81,5 +81,48 @@
    "kind_rule": null,
    "url": "https://tagmasterna.com/news/press-releases/remote-gate-access-using-rfid-cellular-and-solar-power/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "TagMaster North America sells vehicle identification technology that pairs long-range RFID with license plate recognition. The product line includes RFID readers and tags, LPR cameras, and software supplied as standalone or turnkey packages. Two long-range RFID platforms are offered: the microwave LR-series at 2.45GHz, and the XT-series at UHF frequencies of 902-928 MHz.",
+   "The Access Control Tracking System, or ACTS, is software for managing, reporting and tracking vehicles, with feature tiers from basic reporting to asset tracking and logistics management. A second product, the Ground Transportation Management System, helps airport operators identify and manage curbside commercial vehicles and streamline landside operations.",
+   "The UHF line is described for commercial or mixed use parking applications, gated communities, universities and municipalities. The microwave LR-series is described as optimal for operations including airports, hospitals, industrial applications, military installations, and Parking Access and Revenue Control installations."
+  ],
+  "quote": {
+   "text": "TagMaster NA addresses a wide range of challenges in the parking, access, and security industry with over 20 years of experience and technical knowledge.",
+   "url": "https://tagmasterna.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://tagmasterna.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://tagmasterna.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://tagmasterna.com/products/lr-series/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://tagmasterna.com/products/xt-series/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://tagmasterna.com/products/"
+   ],
+   [
+    "https://tagmasterna.com/products/"
+   ],
+   [
+    "https://tagmasterna.com/products/xt-series/",
+    "https://tagmasterna.com/products/lr-series/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

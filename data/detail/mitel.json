@@ -108,5 +108,44 @@
    "kind_rule": "Awarded",
    "url": "https://www.mitel.com/blog/mitel-dect-wireless-handsets-awarded-business-phone-system-of-the-year"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Mitel sells business communications systems covering unified communications and collaboration, call centers, mission-critical systems, remote work, on-site deployment and cloud migration. Deployment is offered across public, private and hybrid cloud models, with on-premises options for organizations that require them. Offerings are grouped by organization size, from packages for small business teams up to large enterprise deployments with sovereign hosting and emergency dispatch tools.",
+   "The sectors named are education, healthcare, financial services, manufacturing, hospitality, cruising and government. For the public sector, the pages describe secure and compliant communications for government organizations, with deployment options meant to keep services available. Public sector examples given include carrier cost savings at Baltimore County and cost savings at Orion Township against a legacy system. Government material on the industries page lists FedRAMP-authorized cloud deployment, mass notification for critical events, and on-premise options for data sovereignty."
+  ],
+  "quote": {
+   "text": "Communications solutions for every business size, industry, and deployment model",
+   "url": "https://www.mitel.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://www.mitel.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mitel.com/about/why-mitel",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mitel.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.mitel.com/solutions/industries",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.mitel.com/solutions"
+   ],
+   [
+    "https://www.mitel.com/solutions",
+    "https://www.mitel.com/solutions/industries"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

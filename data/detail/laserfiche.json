@@ -99,5 +99,50 @@
    "kind_rule": null,
    "url": "https://www.laserfiche.com/resources/ebooks-guides-more/?post_types=videos&sf_paged=7"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Laserfiche sells an intelligent content platform that helps organizations manage documents, automate work, and make better decisions. The platform takes in invoices, contracts, handwritten forms or scanned permits, and processes structured and unstructured data from them. Documents are stored in a centralized repository with audit trails, granular access controls and cloud-based access from anywhere.",
+   "The product line covers intelligent data capture, low code business process automation, document and records management, information governance and integrations. Custom rules can be set for information retention, security, privacy protection, accessibility and auditing to meet legal and industry-specific requirements. AI Agents perform multi-step tasks such as scanning a repository to identify redundant or outdated information and suggesting what to archive or delete.",
+   "Industries named on the site include state and local government, K-12 schools and districts, higher education, financial services, insurance, manufacturing and logistics. Government is one of those industries, with the stated aim to control costs, increase efficiency and empower constituents. The homepage carries a customer story headed City of Acworth, GA, with a quote from Mike Brooks, Senior Systems Administrator. A featured success story on the document and records management page names Orano."
+  ],
+  "quote": {
+   "text": "Laserfiche is the backbone connecting hundreds of mission-critical applications.",
+   "url": "https://www.laserfiche.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.laserfiche.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.laserfiche.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.laserfiche.com/products/ai/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.laserfiche.com/products/document-and-records-management/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.laserfiche.com",
+    "https://www.laserfiche.com/products/document-and-records-management/"
+   ],
+   [
+    "https://www.laserfiche.com/products/",
+    "https://www.laserfiche.com/products/ai/"
+   ],
+   [
+    "https://www.laserfiche.com",
+    "https://www.laserfiche.com/products/document-and-records-management/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

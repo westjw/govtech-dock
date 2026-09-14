@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.proofpoint.com/fr/newsroom/press-releases/rapport-2026-voice-ciso-de-proofpoint-la-securisation-de-lia-generative"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Proofpoint sells email security software that organizations deploy either through an API or through a secure email gateway. Core Email Protection is the email product on that page, described as blocking 99.999% of advanced email threats, including phishing attacks, BEC, and ransomware.",
+   "Collaboration Security Prime extends that protection beyond email to messaging and collaboration tools, cloud applications, and the supply chain on one platform. Email Fraud Defense is a separate product built on DMARC authentication, domain discovery, and supplier risk visibility through Supplier Risk Explorer.",
+   "The homepage and the email protection page name customers including Accenture, Wyndham, Goosehead Insurance, and Perrigo. A By Industry menu on those pages lists Federal Government, State and Local Government, Higher Education, and Healthcare."
+  ],
+  "quote": {
+   "text": "Email is today's most important business communications channel. It's also organizations' No. 1 threat vector.",
+   "url": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense"
+  },
+  "sources": [
+   {
+    "url": "https://www.proofpoint.com/us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.proofpoint.com/us/products/collaboration-security-prime",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.proofpoint.com/us/products/email-protection",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.proofpoint.com/us/products/email-protection"
+   ],
+   [
+    "https://www.proofpoint.com/us/products/collaboration-security-prime",
+    "https://www.proofpoint.com/us/products/email-protection/email-fraud-defense"
+   ],
+   [
+    "https://www.proofpoint.com/us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

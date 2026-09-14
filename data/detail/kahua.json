@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://kahua.com/articles/kahua-vs-procore/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Kahua sells an enterprise construction platform for owners and delivery teams managing complex capital programs. The platform connects owners, contractors, and partners in one governed system of record that carries project data from planning through handover. Covered work includes capital planning, funding sources, bids and procurement, budgets and forecasts, contracts and changes, documents and approvals, schedules, and reporting across projects.",
+   "Kahua Analytics gives internal teams and external partners real-time dashboards drawn from a single source of truth. Noa, powered by Kahua AI, answers questions, finds project information, and automates routine tasks inside the platform. Teams can describe a process in plain language in kBuilder Canvas and create an app or workflow in minutes.",
+   "Listed markets include agencies, municipalities and public works teams aligning budgets, funding, and accountability. Other listed markets include retail, data centers, manufacturing, and real estate teams standardizing delivery across sites. Security credentials named for procurement and compliance reviews include ISO 27001, SOC 2 Type 2, FedRAMP Moderate, and GovRAMP."
+  ],
+  "quote": {
+   "text": "Kahua is an AI enterprise construction platform built for complex capital programs.",
+   "url": "https://www.kahua.com/solutions/platform/"
+  },
+  "sources": [
+   {
+    "url": "https://www.kahua.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kahua.com/company/partners/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kahua.com/solutions/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.kahua.com/solutions/ai/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.kahua.com",
+    "https://www.kahua.com/solutions/platform/"
+   ],
+   [
+    "https://www.kahua.com",
+    "https://www.kahua.com/solutions/ai/"
+   ],
+   [
+    "https://www.kahua.com",
+    "https://www.kahua.com/solutions/platform/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.collectionhq.com/resources/collectionhq-at-evanston-public-library/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "collectionHQ sells software that public libraries use to select, manage and promote their collections. Its stated point of difference is guidance on what action to take to improve the performance of a collection. The product rests on the Evidence Based Stock Management methodology, which the company says has been used in public libraries for over 21 years.",
+   "The company reports use in more than 8,000 public library branches worldwide. It reports managing more than 220 million items for public libraries in the United Kingdom, Ireland, U.S.A., Canada, Australia and New Zealand. Case studies name customers including Cuyahoga County Public Library and Marin County Free Library.",
+   "The company was founded in Glasgow, United Kingdom, and introduced to the public library market in 2008. It entered the academic library market in 2024 with cHQacademic. The pages describe it as a partner of public and academic libraries."
+  ],
+  "quote": {
+   "text": "collectionHQ innovates the way public libraries select, manage and promote their collections.",
+   "url": "https://www.collectionhq.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.collectionhq.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.collectionhq.com/about-us/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.collectionhq.com/resources/resource-categories/case-studies/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.collectionhq.com/product/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.collectionhq.com"
+   ],
+   [
+    "https://www.collectionhq.com",
+    "https://www.collectionhq.com/resources/resource-categories/case-studies/"
+   ],
+   [
+    "https://www.collectionhq.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

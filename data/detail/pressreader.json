@@ -36,5 +36,49 @@
    "kind_rule": null,
    "url": "https://about.pressreader.com/blog/insights/is-technology-bad-or-is-it-saving-our-planet/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "PressReader sells an all-you-can-read subscription to digital newspapers and magazines that organizations license for the people they serve. The catalog covers more than 8,000 newspapers and magazines from over 120 countries in 60+ languages, plus books, puzzles and audio and translation options. Content arrives in full, print-format editions published as close to the print release as possible, not a condensed or text-only version.",
+   "Public libraries are one market, and patrons reach the catalog with a library card, at the library or remotely on their own devices. Colleges and universities license it to support academic programs with current news and global perspectives. Hotels and other travel organizations offer it as a guest amenity, removing the sourcing, distributing and recycling of print publications.",
+   "Pricing is customized rather than one-size-fits-all, depending on industry, audience size and how access is planned. Most organizations start with a trial or pilot. Onboarding and setup guidance, marketing assets and ongoing support are part of what PressReader offers to launch the service and increase usage."
+  ],
+  "quote": {
+   "text": "PressReader uses an all-you-can-read subscription model, giving your library access to the full catalog while making collection management simpler and more predictable from a budgetary perspective.",
+   "url": "https://about.pressreader.com/solutions/public-libraries/"
+  },
+  "sources": [
+   {
+    "url": "https://about.pressreader.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://about.pressreader.com/solutions/public-libraries/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://about.pressreader.com/solutions/education/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://about.pressreader.com/solutions/travel-hospitality/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://about.pressreader.com"
+   ],
+   [
+    "https://about.pressreader.com/solutions/public-libraries/",
+    "https://about.pressreader.com/solutions/education/",
+    "https://about.pressreader.com/solutions/travel-hospitality/"
+   ],
+   [
+    "https://about.pressreader.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

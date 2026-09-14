@@ -108,5 +108,47 @@
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/it/news/behind-the-lens-august-2026/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "March Networks sells video surveillance systems for multi-site organizations, built from IP cameras, recorders, encoders and other hardware sold as one portfolio. Command Enterprise Software is the management layer for deploying and maintaining those video surveillance resources across a customer site. Searchlight, sold on premise or as a cloud service, turns the recorded video into loss prevention and business intelligence reporting.",
+   "The analytics catalogue covers people counting, heatmaps, dwell time, license plate recognition, and alerts for loitering, intrusion and blocked emergency exits. Detection runs on the AI Series cameras and on X-Series recorders built with NVIDIA system-on-chip technology, with alerts sent as mobile push notifications.",
+   "The company dates its founding to 2000 and puts retail, banking and transportation at the front of the industries it serves. The homepage counts more than 1,730 financial institutions, over 675 retailers and more than 735 commercial and industrial customers in over 75 countries. March Networks and VIVOTEK have merged their branded video security businesses, and the merged portfolio is presented across cloud, hybrid and on premise environments."
+  ],
+  "quote": {
+   "text": "Our flexible platform supports multi-site deployments across industries like retail, banking, and transportation",
+   "url": "https://www.marchnetworks.com/solutions/physical-security/"
+  },
+  "sources": [
+   {
+    "url": "https://www.marchnetworks.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.marchnetworks.com/solutions/physical-security/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.marchnetworks.com/solutions/loss-prevention/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.marchnetworks.com/solutions/video-analytics/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.marchnetworks.com/solutions/physical-security/"
+   ],
+   [
+    "https://www.marchnetworks.com/solutions/video-analytics/"
+   ],
+   [
+    "https://www.marchnetworks.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://www.pani.global/post/using-quick-logs-for-quick-and-easy-data-entry"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Pani Energy is a global software company focused on utility and industrial water and wastewater operations intelligence. Its offering is described as one platform holding a complete intelligence toolbox for a plant. An agent called Agent Zed is described as an AI process engineer that does analysis, answers questions, and performs recurring jobs.",
+   "The software works with SCADA data, spreadsheets, paper logs, and plant documents, and can ingest data from a system like Hach WIMS. The company says its team supports operators across North America, Europe and Asia-Pacific. Applications are grouped by plant type: wastewater, drinking water, industrial, food and beverage, desalination, and reuse.",
+   "The case studies page describes real deployments and what each plant needed, what Pani did, and what it was worth. Entries include a 280 MLD municipal wastewater plant in Washington State and a county water treatment plant in Washington State. Other entries name a beverage bottling plant in Asia and a groundwater replenishment system in California."
+  ],
+  "quote": {
+   "text": "Pani is a global software company focused on utility and industrial water and wastewater operations intelligence.",
+   "url": "https://www.pani.global/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.pani.global",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pani.global/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pani.global/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.pani.global/about",
+    "https://www.pani.global"
+   ],
+   [
+    "https://www.pani.global",
+    "https://www.pani.global/about",
+    "https://www.pani.global/case-studies"
+   ],
+   [
+    "https://www.pani.global/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

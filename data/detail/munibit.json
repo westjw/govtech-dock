@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.munibit.com/blog/common-legal-notice-errors-new-jersey"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Munibit sells a website platform built for local governments, described on the homepage as built exclusively for small municipalities and counties. The platform bundles documents, forms, alerts, notices and calendars as built-in tools rather than third-party plugins. Document management, public notices, online payments and accessibility support are listed as built in and included without third-party plugins.",
+   "The pages name small local governments as the customer, listing cities, towns, townships, villages, boroughs, and counties. Typical customers are municipalities serving populations under 10,000 and counties under 20,000 that cannot justify enterprise software costs. Plans start at $99 per month with no surprise fees, no design fees, and no long-term contracts.",
+   "Setup, design, migration, training and ongoing support are provided at no extra cost. Customers work with the same dedicated account manager, based in Missouri, every time they reach out. The platform is built to support WCAG 2.1 AA accessibility standards, which the about page says aligns with ADA Title II requirements for local government websites."
+  ],
+  "quote": {
+   "text": "Most website platforms were built for businesses. Munibit was built for local governments.",
+   "url": "https://www.munibit.com/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.munibit.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munibit.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munibit.com/about-us",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munibit.com/case-studies",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.munibit.com",
+    "https://www.munibit.com/about-us"
+   ],
+   [
+    "https://www.munibit.com/about-us"
+   ],
+   [
+    "https://www.munibit.com",
+    "https://www.munibit.com/solutions",
+    "https://www.munibit.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,45 @@
+{
+ "profile": {
+  "paragraphs": [
+   "LearnWise AI sells an AI layer for higher education that works inside the platforms an institution already uses. The company frames the product as AI that supports students, faculty, and campus teams. Named products include AI Campus Support, which the homepage describes as answering every question from enrollment to graduation on any platform.",
+   "The AI Student Tutor page describes LMS integration via LTI and API with Canvas, Blackboard, and Moodle. That page also says the tutor offers multilingual support in 107 languages, configurable by institution. The AI Feedback & Grader assistant embeds into Brightspace, Canvas and Moodle inside existing grading workflows.",
+   "The homepage states compliance with SOC 2 Type II and ISO 27001, and says a HECVAT report is available upon request. The same section says data is hosted in the institution's own region and that the university is the full owner. Case studies on the homepage name the University of Westminster, TU Delft Learning for Life, and NPTC Group of Colleges."
+  ],
+  "quote": {
+   "text": "LearnWise plugs into your existing platforms and learns from your own knowledge.",
+   "url": "https://learnwise.ai"
+  },
+  "sources": [
+   {
+    "url": "https://learnwise.ai",
+    "fetched_on": null
+   },
+   {
+    "url": "https://learnwise.ai/products/ai-chat-support",
+    "fetched_on": null
+   },
+   {
+    "url": "https://learnwise.ai/products/ai-tutor",
+    "fetched_on": null
+   },
+   {
+    "url": "https://learnwise.ai/products/ai-feedback-grader",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://learnwise.ai"
+   ],
+   [
+    "https://learnwise.ai/products/ai-tutor",
+    "https://learnwise.ai/products/ai-feedback-grader"
+   ],
+   [
+    "https://learnwise.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

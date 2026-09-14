@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.saltycloud.com/resources/nist-csf-scorecard/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Isora GRC is software that gives security teams one connected workspace to run assessments, manage vendors and assets, track risks, and prove compliance. It is positioned against spreadsheets and against enterprise GRC platforms that require months of setup, dedicated admins, and consultant-driven configuration. Questionnaires are structured and aligned to frameworks such as NIST, CIS, GLBA, and HECVAT, and contributors upload evidence inline and route responses for approval.",
+   "For third-party work, the platform connects vendor questionnaires, inventory records, risk findings, and reporting in one workspace. Vendor assessments cover HECVAT, SIG, and CAIQ, and a one-click HECVAT uploader imports completed spreadsheets, matches responses, and scores automatically. Findings flow into a collaborative risk register carrying lineage from questionnaire to control to risk, where owners are assigned and remediation is tracked.",
+   "The solutions index describes the product for public sector institutions, for financial institutions such as banks and credit unions, and for information security teams. Higher education institutions managing hundreds of vendors are described as using it as their primary vendor assessment platform."
+  ],
+  "quote": {
+   "text": "Isora GRC is the GRC Assessment Platform built for security teams.",
+   "url": "https://www.saltycloud.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.saltycloud.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.saltycloud.com/isora-grc/solutions/information-security-risk-management-isrm/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.saltycloud.com/isora-grc/solutions/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.saltycloud.com"
+   ],
+   [
+    "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/",
+    "https://www.saltycloud.com/isora-grc/solutions/information-security-risk-management-isrm/"
+   ],
+   [
+    "https://www.saltycloud.com/isora-grc/solutions/",
+    "https://www.saltycloud.com/isora-grc/solutions/third-party-security-risk-management/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

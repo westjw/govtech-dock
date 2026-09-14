@@ -9,5 +9,45 @@
    "kind_rule": null,
    "url": "https://reconnect.io/category/news/information/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Reconnect, Inc. sells software and hardware that connect specialty courts, pretrial, and community supervision programs with their participants. The pages say the solutions are used by drug courts, probation, parole, and TPAs.",
+   "The Client Mobile App provides daily tasks for clients. Case managers create calendar events for participants in Reconnect Manager. Location monitoring is sold as an add-on feature named HardwareFreeEM. The solutions page states that location monitoring is not a default feature and is available only when ordered by a court program.",
+   "Drug test randomization can run automatically or be adapted to weekly program needs. Smartphone leasing is offered for clients who do not have a phone. Reconnect eSignature covers electronic forms and document workflows for behavioral health and human services programs."
+  ],
+  "quote": {
+   "text": "Software and hardware to connect specialty courts, pretrial, and community supervision programs with their participants.",
+   "url": "https://reconnect.io/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://reconnect.io",
+    "fetched_on": null
+   },
+   {
+    "url": "https://reconnect.io/about-us/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://reconnect.io/solutions",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://reconnect.io/about-us/"
+   ],
+   [
+    "https://reconnect.io",
+    "https://reconnect.io/solutions"
+   ],
+   [
+    "https://reconnect.io/solutions",
+    "https://reconnect.io"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

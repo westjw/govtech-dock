@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://iii.com/resources/fact-sheet-sierra-lsp/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Library software is what these pages sell, aimed at public libraries and the patrons, staff and donors they serve. The products page lists Vega LX, Polaris ILS, Sierra LSP, Virtua, Encore, MyLibrary!, SkyRiver, Vital, INN-Reach and Mobile Worklists. Polaris ILS is presented as a way to streamline workflows, reduce systems overhead and improve patron services, while Sierra LSP automates workflows and integrates resource management.",
+   "Vega LX is described as one system that pairs with Polaris or Sierra and integrates with up to five different Vega modules. Named modules include Vega Discover for the catalog, Vega Promote for marketing campaigns, Vega WebBuilder for library websites and Vega Mobile for iOS and Android. The Vega Discover page adds format rollups, staff-curated showcases and connections to platforms such as Overdrive, Hoopla, Axis360, CloudLibrary and Syndetics Unbound.",
+   "Named users on those pages are public library systems and cooperatives, among them Allen County Public Library, Salt Lake City Public Library and Suburban Library Cooperative. Pricing is not published, and the pages direct product questions to a sales consultant."
+  ],
+  "quote": {
+   "text": "Connect your library to the world with Innovative solutions. Our products deliver intuitive, dynamic library experiences consistent with modern media and technology.",
+   "url": "https://iii.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://www.iii.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://iii.com/products/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://iii.com/products/vega/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://iii.com/products/vega/discover/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.iii.com",
+    "https://iii.com/products/"
+   ],
+   [
+    "https://iii.com/products/vega/",
+    "https://iii.com/products/vega/discover/"
+   ],
+   [
+    "https://www.iii.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

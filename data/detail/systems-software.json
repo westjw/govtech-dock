@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://ssivt.com/blog/meeting-customers-where-they-are"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Systems & Software sells enQuesta, an integrated CIS for utility and property tax billing, customer engagement, field operations, and data intelligence. The billing engine is configured for tiered rates, demand charges, seasonal adjustments, consolidated multi-service billing, LIHEAP compliance and water conservation tiers. Other modules listed on the platform page cover metering and data, property tax billing and collections, contact center, field operations, reporting and analytics.",
+   "The homepage says enQuesta supports 250+ communities across North America, from small municipal utilities to large IOUs and multi-service providers. Utilities and municipalities named on the homepage include Anaheim Public Utilities, City of Azusa, City of Clarksville, City of Greensboro, Detroit Water & Sewerage and Village of Freeport. The same billing engine is offered for water, electric, gas and combined municipal operations, with refuse charges combined on one statement for cities and towns.",
+   "The homepage describes Systems & Software as part of Harris Computer. enQuesta Cloud is described as single-tenant, hosted by a US provider, and the same page lists SOC 1 and SOC 2 Type II certification."
+  ],
+  "quote": {
+   "text": "Water, electric, gas, and refuse charges combined on one statement for cities and towns.",
+   "url": "https://ssivt.com/platform/billing"
+  },
+  "sources": [
+   {
+    "url": "https://ssivt.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ssivt.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ssivt.com/platform/cis",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ssivt.com/platform/billing",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ssivt.com",
+    "https://ssivt.com/platform/billing",
+    "https://ssivt.com/platform"
+   ],
+   [
+    "https://ssivt.com",
+    "https://ssivt.com/platform/billing"
+   ],
+   [
+    "https://ssivt.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

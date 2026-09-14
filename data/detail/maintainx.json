@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/g2-fall-2026-reports"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "MaintainX sells a maintenance and asset management platform that its homepage describes as an AI-powered CMMS and enterprise asset management platform. The platform covers work orders, preventive and predictive maintenance, inspections, reporting, and parts inventory, with mobile access for frontline teams. Homepage copy also presents safety and compliance procedure enforcement as a use of the product across sites.",
+   "The homepage states that over 14,000 companies use MaintainX. One case study describes Cintas implementing the platform across 200 sites in 9 weeks. Another case study describes the Michaels maintenance team reducing mean time to repair by 70% and increasing mean time between failures by 20%.",
+   "The case study index names buyers by role and organization, including a facilities manager at the Cayman Islands Public Works Department and an operations manager at Redimix. The homepage also lists SOC2 Type 2 Compliant among the security claims for the platform."
+  ],
+  "quote": {
+   "text": "Over 14,000 companies rely on MaintainX to keep the physical world running",
+   "url": "https://www.getmaintainx.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.getmaintainx.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getmaintainx.com/case-studies/cintas",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getmaintainx.com/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getmaintainx.com/case-studies/michaels",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.getmaintainx.com"
+   ],
+   [
+    "https://www.getmaintainx.com",
+    "https://www.getmaintainx.com/case-studies/cintas",
+    "https://www.getmaintainx.com/case-studies/michaels"
+   ],
+   [
+    "https://www.getmaintainx.com/case-studies",
+    "https://www.getmaintainx.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

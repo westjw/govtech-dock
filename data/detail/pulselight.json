@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Pulselight is a software company based in Austin, TX that creates platform and analytic solutions and provides IT consulting services for government decision-makers. The about page says the company focuses on business needs shared across state agencies, including healthcare.",
+   "Pulselight offers SaaS products that it describes as ready for implementation and configuration to an organization's specific needs. The analytics engine fuses and links data from multiple sources so that users can find trends, patterns, and answers about individuals, providers, and programs. The products page names Electronic Visit Verification as one of the areas covered. Data named on the home page includes EVV, Medicaid, and Medicare.",
+   "Security topics listed on the products page run from HIPAA to PHI/PII data to StateRAMP and access controls. The stated mission is that government and commercial organizations make better decisions about the services they provide."
+  ],
+  "quote": {
+   "text": "A SaaS solution that integrates, fuses, and links multi-source data to give you instant access to answers and insight in a single system.",
+   "url": "https://www.pulselight.com/"
+  },
+  "sources": [
+   {
+    "url": "https://www.pulselight.com/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pulselight.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pulselight.com/about/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.pulselight.com/about/team/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.pulselight.com/about/"
+   ],
+   [
+    "https://www.pulselight.com/products",
+    "https://www.pulselight.com/"
+   ],
+   [
+    "https://www.pulselight.com/products",
+    "https://www.pulselight.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

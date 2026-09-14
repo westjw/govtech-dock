@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Police Narratives AI sells software that turns voice recordings, bodycam footage, and interviews into written police reports. The system applies law enforcement terminology and formatting standards to the generated narrative. Transcription, narrative generation, quality scoring, and statute detection are described on the page as automatic steps.",
+   "The page states that the service works with bodycam systems including Axon, Motorola, and LensLock, and that data is encrypted on AWS GovCloud. Writing preferences such as perspective, time format, and name capitalization are set once and then applied to each report. Templates can be personal or agency-wide, pushed by admins, and switched per case type. A finished report transfers to an RMS or goes out as email.",
+   "Testimonials on the page attribute use to named agencies, including Anchorage Police Department, Alaska. Other testimonials name Greeley Police Department, Colorado and Jackson County Sheriff Department, Indiana. The page directs agencies to contact sales for agency pricing and states that every plan includes all features."
+  ],
+  "quote": {
+   "text": "Most report-writing software forces everyone into the same mold. With Police Narratives AI, you define the rules.",
+   "url": "https://policenarratives.ai"
+  },
+  "sources": [
+   {
+    "url": "https://policenarratives.ai",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://policenarratives.ai"
+   ],
+   [
+    "https://policenarratives.ai"
+   ],
+   [
+    "https://policenarratives.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

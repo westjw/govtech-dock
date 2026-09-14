@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://www.getnexar.com/blog/hardwiring-your-dash-cam-step-by-step-instructions-nexar"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Nexar sells dash cams for cars, paired with a phone app that saves and backs up the footage. The range is sorted by how much of the car is covered, from front only to front, cabin and rear. Recording runs from Full HD to 4K, and models with built-in LTE send alerts and live video without a paired phone.",
+   "Pages for each camera name the drivers it is for: rideshare and delivery drivers, parents with kids in the back seat, and daily commuters. The smallest model is aimed at compact-car owners, parents passing a car down to a teen driver, and first-time buyers. The 4K model is pitched at long-distance commuters, rideshare drivers, and owners of newer or higher-value cars. Live alerts, vehicle tracking and cloud backup sit behind a subscription the pages price at $9.99 a month."
+  ],
+  "quote": {
+   "text": "Nexar is more than a dashcam. It watches, warns, and proves so you never face the road alone.",
+   "url": "https://www.getnexar.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.getnexar.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getnexar.com/products/beam-2-mini",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getnexar.com/products/beam-2",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.getnexar.com/products/nexar-one",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.getnexar.com",
+    "https://www.getnexar.com/products/beam-2"
+   ],
+   [
+    "https://www.getnexar.com/products/beam-2",
+    "https://www.getnexar.com/products/beam-2-mini",
+    "https://www.getnexar.com/products/nexar-one"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

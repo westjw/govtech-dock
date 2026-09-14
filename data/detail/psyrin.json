@@ -1,0 +1,41 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Psyrin sells Mira, which its product page calls an AI voice agent that runs the pre-assessment, scribes the session, and lands structured notes in the clinic EHR. Clients reach Mira by phone or at a kiosk in the clinic, and the clinician walks into a session the agent has already begun. The stated gain is time, with the DA and first ITP completed in 30 minutes rather than the 120 minutes the pages describe.",
+   "The buyers these pages name are behavioral health clinics, with homepage testimonials attributed to a CCBHC, a Behavioral Health Clinic and a Private Addiction Center. Notes are generated in the Psyrin platform and pushed to CareLogic, SmartCare, or a custom EHR through RPA or API, with no manual re-entry. Risk disclosed during pre-assessment is routed to a person, with Mira flagging it and starting a warm handover to a clinician on the team.",
+   "Beyond the workflow, the pages describe voice biomarkers, where the platform analyses speech patterns during clinical sessions with consent. The kiosk is described as running the full pre-assessment and keeping the client seated for the session over integrated telehealth."
+  ],
+  "quote": {
+   "text": "The intelligence layer for psychiatry. Mira handles intake, structured psychiatric assessment and documentation \u2014 so clinics see more clients without adding staff.",
+   "url": "https://www.psyrin.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.psyrin.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.psyrin.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.psyrin.com/product",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.psyrin.com/product"
+   ],
+   [
+    "https://www.psyrin.com",
+    "https://www.psyrin.com/product"
+   ],
+   [
+    "https://www.psyrin.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

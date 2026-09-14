@@ -108,5 +108,43 @@
    "kind_rule": "Launches",
    "url": "https://municipalparkingservices.com/press/national-today-albuquerque-launches-safety-sticks-parking-cameras"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "MPS sells smart parking technology products for cities, campuses, and marinas. The SafetyStick platform is built to enforce illegal parking, improve parking behavior, and keep streets safe at no cost. The MPS Meter uses LPR technology and charges only for the time used when a parker leaves.",
+   "The sticks run on solar-generated energy, and each stick has a solar panel designed to operate around the clock. Radar identifies a vehicle parked illegally and prompts the stick to capture an image for review by parking enforcement authorities. Enforcement personnel review and approve violations before citations are issued by mail. MPS operates through a service licensing fee, and installation and implementation are free.",
+   "Founded in 2013, MPS manages parking sessions across the U.S. and Canada. The platform is deployed on streets and in garages in cities across North America. Cities, higher ed, marinas, and property management companies are named as the groups the platform serves."
+  ],
+  "quote": {
+   "text": "A SafetyStick is designed to enforce safety regulations in designated areas such as no parking zones, bike lanes, crosswalks, bus stops, and designated fire and first responder lanes.",
+   "url": "https://municipalparkingservices.com/solutions"
+  },
+  "sources": [
+   {
+    "url": "https://municipalparkingservices.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://municipalparkingservices.com/solutions",
+    "fetched_on": null
+   },
+   {
+    "url": "https://municipalparkingservices.com/about-us",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://municipalparkingservices.com"
+   ],
+   [
+    "https://municipalparkingservices.com/solutions"
+   ],
+   [
+    "https://municipalparkingservices.com/about-us"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.legalserver.org/news/snohomish-county-public-defender-software/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "LegalServer sells case management software for civil legal aid, public defense, and government law offices. Intake, workflows, and case types are configured for an organization without writing code. Built-in reports with manager-specific views are generated without manual data compiling.",
+   "The product is web-based, with data hosted at Amazon Web Services and a Government Cloud option. Listed security items include SOC 2 Type II, CJIS, and NIST compliance, role based access control with audit logging, and daily data back-up.",
+   "The clients page lists sections for civil legal aid, public defenders, government law offices, immigration clinics, disability rights, pro bono agencies, and law schools and universities. Named clients on that page include Legal Aid Chicago, New York County Defender Services, El Dorado County, Shasta County, OneJustice, and Chicago Volunteer Legal Services. The homepage states over 550 implementations since 2002, with thousands of attorneys managing cases each day."
+  ],
+  "quote": {
+   "text": "helping non-profit and government agencies make a difference in society",
+   "url": "https://www.legalserver.org"
+  },
+  "sources": [
+   {
+    "url": "https://www.legalserver.org",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.legalserver.org/customers/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.legalserver.org"
+   ],
+   [
+    "https://www.legalserver.org"
+   ],
+   [
+    "https://www.legalserver.org/customers/",
+    "https://www.legalserver.org"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

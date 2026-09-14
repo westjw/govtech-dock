@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Tannery Creek Systems sells autoChalk, an automatic license plate recognition system built for parking enforcement work. The company describes patented size, shape, and color analysis that flags overstaying vehicles even when a license plate is not visible, presented as an alternative to tire chalking. autoChalk also verifies pay-by-plate sessions and permit-by-plate credentials in real-time as officers patrol, connecting to a customer's payment and permit providers.",
+   "The product line runs from vehicle-mounted units to a fixed camera solution for parking structures and surface lots, plus autoChalk Office for citation management and policy configuration. autoChalk Mobile scans 2 vehicles per second while driving up to 60 km/h and applies parking policy by zone using GPS and geofencing. autoChalk Handheld is an Android application for on-foot officers that issues citations in 6 steps and keeps working without cellular coverage. autoChalk Compact is a vehicle-mounted plate recognition system for operations that prefer a smaller visual footprint without the full LIDAR solution.",
+   "Tannery Creek Systems states that each customer gets a separate database on isolated infrastructure, with no shared plate network and no cross-agency search. Municipalities, downtown authorities, universities, hospitals, and private operators are named as the buyers for the product line, across the United States and Canada."
+  ],
+  "quote": {
+   "text": "Every customer gets their own database on their own isolated infrastructure, and nothing spans customers: no shared plate network, no cross-agency search, no aggregation.",
+   "url": "https://www.tannerycreeksystems.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.tannerycreeksystems.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tannerycreeksystems.com/products/compact.html",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tannerycreeksystems.com/products/mobile.html",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tannerycreeksystems.com/products/handheld.html",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.tannerycreeksystems.com"
+   ],
+   [
+    "https://www.tannerycreeksystems.com",
+    "https://www.tannerycreeksystems.com/products/mobile.html",
+    "https://www.tannerycreeksystems.com/products/handheld.html",
+    "https://www.tannerycreeksystems.com/products/compact.html"
+   ],
+   [
+    "https://www.tannerycreeksystems.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

@@ -108,5 +108,45 @@
    "kind_rule": "Launches",
    "url": "https://www.ntst.com/company/news/netsmart-launches-alphacoding-ai-powered-coding-tool-with---embedded-coding-assistant"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Netsmart sells healthcare software to community-based care providers, offering an integrated platform of healthcare technology and services meant to simplify workflows. The Netsmart CareFabric platform is presented as the framework of care solutions and services available to those providers. CareRecord solutions are tailored EHRs for human services, post-acute, physical therapy and geriatric care communities. Care Administration covers revenue cycle management, collection management, payment portals and clearinghouse work.",
+   "The pages name human services, post-acute, public sector, physical therapy and PALTC organizations as the communities served. Within human services, the platform scales across behavioral health, addiction treatment, autism, I/DD, child and family services, public health and integrated care. Public Sector EHR software is described as coordinating care across city, state, county and community agencies. The addiction treatment page describes substance use records supporting SAMHSA Opioid Treatment Programs and medication-assisted treatment."
+  ],
+  "quote": {
+   "text": "Helping people live better lives sits at the center of our mission at Netsmart.",
+   "url": "https://www.ntst.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.ntst.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ntst.com/company/careers-and-culture",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ntst.com/solutions/by-community/human-services",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.ntst.com/solutions/by-community/human-services/addiction-treatment",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.ntst.com"
+   ],
+   [
+    "https://www.ntst.com",
+    "https://www.ntst.com/solutions/by-community/human-services",
+    "https://www.ntst.com/solutions/by-community/human-services/addiction-treatment"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

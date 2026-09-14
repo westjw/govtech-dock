@@ -81,5 +81,48 @@
    "kind_rule": null,
    "url": "https://www.tadera.com/blog/the-role-of-data-governance-in-airport-operations-efficiency-tadera"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Tadera sells airport software, and its staff includes former airport leaders along with subject matter experts in security, accounting, safety, and human resources. The finance tools are aimed at airports and systems of airports, covering property management, contracts, lease terms, billing, receivable and reporting, as well as capital improvement programs. A separate Secure Credentials product handles biometric credentialing, badging, continuous vetting, auditing, and access management, and helps meet TSA security directives.",
+   "ABRM, the Airport Business and Revenue Manager, consolidates lease management, billing, revenue tracking, tenant communications, and financial reporting into one system, covering both aeronautical and non-aeronautical revenue streams. It supports lease terms including minimum annual guarantees, fixed rent escalations, CPIs, ceilings, and floors, and tracks lease data elements for GASB 87 compliance.",
+   "Airport Project Manager covers capital programs, with an AIP Management Module tracking applications, funding, and compliance for FAA, FEMA, and state and local grants. Airport System Manager is built for state departments of transportation, combining grant tracking, facility inspections, aircraft registration, licensing, project funding, and data analysis into one application."
+  ],
+  "quote": {
+   "text": "TADERA's finance tools help airports and systems of airports manage property and revenue, as well as capital improvement programs.",
+   "url": "https://www.tadera.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.tadera.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tadera.com/products/airport-business-revenue-manager",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tadera.com/products/airport-capital-program-manager",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.tadera.com/products/airport-system-manager",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.tadera.com"
+   ],
+   [
+    "https://www.tadera.com/products/airport-business-revenue-manager"
+   ],
+   [
+    "https://www.tadera.com/products/airport-capital-program-manager",
+    "https://www.tadera.com/products/airport-system-manager"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

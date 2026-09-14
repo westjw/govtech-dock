@@ -72,5 +72,41 @@
    "kind_rule": "Appoints",
    "url": "https://esleuth.ai/press-releases/smitanairannoucement"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "eSleuth AI sells investigation software for law enforcement, built around virtual investigators that analyze case data and surface leads. The product is presented in two views, one built for investigators and one optimized for supervisors.",
+   "Listed functions include extracting entities, objects and activity from documents, images, audio and video. Open cases are ranked by solvability modeling. Integration is described as connecting through API to RMS, CAD, Cellebrite extractions, and other digital evidence sources, without rip and replace.",
+   "The platform is described as hosted in an Amazon AWS CJIS environment, with agency data segmented and not used to train public models. Funding pathways named for agencies include Byrne JAG, opioid settlement funds, and state and federal grants."
+  ],
+  "quote": {
+   "text": "Built for law enforcement by law enforcement",
+   "url": "https://esleuth.ai/company-pages/about"
+  },
+  "sources": [
+   {
+    "url": "https://esleuth.ai",
+    "fetched_on": null
+   },
+   {
+    "url": "https://esleuth.ai/company-pages/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://esleuth.ai/company-pages/about",
+    "https://esleuth.ai"
+   ],
+   [
+    "https://esleuth.ai"
+   ],
+   [
+    "https://esleuth.ai/company-pages/about",
+    "https://esleuth.ai"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

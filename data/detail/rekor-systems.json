@@ -54,5 +54,40 @@
    "kind_rule": null,
    "url": "https://www.rekor.ai/post/rekor-systems-expects-significant-improvement-in-second-quarter-2026-financial-performance"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Rekor Systems sells software platforms for roadway intelligence to customers in both the government and commercial sectors. One of those platforms captures traffic and vehicle analytics. Another detects license plates and vehicles and pinpoints their location. A third identifies events and highlights zones at risk.",
+   "Rekor Command is presented as a source of alerts for Transportation Management Centers. Public officials are addressed for automating manual processes and enabling contactless compliance. Investigative tools combining vehicle recognition and LPR are offered for identifying vehicles of interest. The same page addresses architects and engineers, pointing them to infrastructure data for the framework of a smart city.",
+   "Data, data services, and micro-services are also offered through standalone applications, APIs, and SDKs. The about page says clients range from engineering firms to government agencies. That page puts the global HQ in Columbia, Maryland, with additional offices in Texas, Colorado, Florida, and Israel."
+  ],
+  "quote": {
+   "text": "Our clients range from engineering firms to government agencies",
+   "url": "https://www.rekor.ai/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.rekor.ai",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rekor.ai/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.rekor.ai"
+   ],
+   [
+    "https://www.rekor.ai"
+   ],
+   [
+    "https://www.rekor.ai",
+    "https://www.rekor.ai/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

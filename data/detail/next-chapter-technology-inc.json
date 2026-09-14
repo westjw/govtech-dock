@@ -108,5 +108,44 @@
    "kind_rule": null,
    "url": "https://nctinc.com/blog/client-spotlight-caseworks-a-step-into-the-digital-future-for-olmsted-county-mn/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "NCT sells CaseWorks, which its site describes as an Electronic Document Management System (EDMS) for Health and Human Services teams. The site states that the software streamlines case workflow processes for local, state, and tribal nations Health and Human Services teams.",
+   "CaseWorks interfaces with the customer System of Record, and the editions listed interface with MAXIS, Curam (MNsure), PRISM, SSIS, Workforce One, and Integrated Financial Systems (IFS). Documents can be scanned directly into the system, auto filled with client information, and routed to the Case Owner assigned in the System of Record. Auto-Fill Forms pull information from the System of Record, and the site counts over 850 widely used Auto-Fill Forms developed for users.",
+   "Named editions include a Child Support Edition for Child Support Investigators and Officers who collaborate with County Attorneys, and a Social Services Edition for Social Workers and Case Managers. The about page states that the company specializes exclusively in streamlining processes for Health and Human Services teams. It describes six interoperable solutions that automate document management for every program area."
+  ],
+  "quote": {
+   "text": "Our six interoperable solutions expedite business processes and automate document management for every program area, improving caseload capacity, cutting costs, and eliminating errors.",
+   "url": "https://nctinc.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://nctinc.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://nctinc.com/about-us/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://nctinc.com/who-we-are/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://nctinc.com"
+   ],
+   [
+    "https://nctinc.com"
+   ],
+   [
+    "https://nctinc.com",
+    "https://nctinc.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

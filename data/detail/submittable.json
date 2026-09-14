@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://submittable.com/blog/role-of-csr"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Submittable sells grant management software that covers a program from launch through closeout. The product includes a drag-and-drop form builder for custom logic and review workflows, collaboration tools, and financial tracking. Financial tracking reflects drawdowns and categorizes disbursements.",
+   "A second product line covers corporate social responsibility programs, which the page defines as workplace giving, employee volunteering, and community grantmaking. Employees can donate or sign up for volunteering inside Microsoft Teams. The Impact Wallet lets employees pool company rewards in a personal giving fund and choose where and when to give, drawing on a database of 9.6 million vetted nonprofits across 110 countries.",
+   "The homepage names government and the public sector, foundations and nonprofits, and corporations as the groups served. The grants page lists government grantmakers such as the City of Inglewood among the users of grant management software."
+  ],
+  "quote": {
+   "text": "Most Submittable customers launch new programs in two weeks or less.",
+   "url": "https://submittable.com/solutions/grants"
+  },
+  "sources": [
+   {
+    "url": "https://submittable.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://submittable.com/solutions/grants",
+    "fetched_on": null
+   },
+   {
+    "url": "https://submittable.com/solutions/csr-software",
+    "fetched_on": null
+   },
+   {
+    "url": "https://submittable.com/solutions/corporate-giving-platform",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://submittable.com/solutions/grants"
+   ],
+   [
+    "https://submittable.com/solutions/csr-software",
+    "https://submittable.com/solutions/corporate-giving-platform"
+   ],
+   [
+    "https://submittable.com",
+    "https://submittable.com/solutions/grants"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,46 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Meescan sells a self-checkout system for libraries, aimed at librarians who spend too much time behind the checkout desk. The pages name the users as public, academic, school, museum, corporate and mobile libraries, of all kinds and sizes.",
+   "Checkout runs through a cloud-based app that lets patrons check out items on their own mobile device. The app works on iOS or Android devices and uses the camera to scan barcodes. Alongside checkout, the app carries security integration, receipt printing and fee collection. Configuration is set during implementation, and features can be added or reconfigured later as a library's needs change.",
+   "The solutions page also lists self-checkout for mobile libraries. A returns option allows patrons to check items in. Named customers on the homepage include Canton Public Library, Harris County Public Library and Stanford Law School."
+  ],
+  "quote": {
+   "text": "Simply put: libraries of all kinds and sizes benefit from our unique self-checkout system.",
+   "url": "https://www.meescan.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.meescan.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://meescan.com/why-meescan/about-us/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://meescan.com/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://meescan.com/solutions/mobile-checkout/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.meescan.com"
+   ],
+   [
+    "https://meescan.com/solutions/mobile-checkout/",
+    "https://meescan.com/solutions/"
+   ],
+   [
+    "https://meescan.com/solutions/",
+    "https://www.meescan.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

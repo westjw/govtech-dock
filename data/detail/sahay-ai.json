@@ -90,5 +90,49 @@
    "kind_rule": null,
    "url": "https://www.sahay.io/blog/track-telecalling-team-performance"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Sahay is an AI sales platform that captures enquiries arriving on WhatsApp, on phone calls and from website visitors. The home page lists six inbound channels feeding one system, among them WhatsApp messages, sales calls, IndiaMART leads and missed calls. Five jobs are described as run end to end by the AI, with a sixth covering call analytics for the human sales team.",
+   "The calling agent rings new leads back, asks qualifying questions and shares quotes on WhatsApp, speaking Hindi, English and natural Hinglish. Sales calls are recorded from the team's own SIMs, then transcribed, summarised and logged.",
+   "Case studies cover Heels on Wheels Originals, which runs motorcycle training for women across 12 Indian cities and captured 1,581 enquiries in 2 months. MSF, a non-profit running community services with a four-person team, reports roughly 70% less administrative work. JoyzAI, an outbound telecalling team with 11 reps, is listed with 97% of answered calls captured across 6,542 dials."
+  ],
+  "quote": {
+   "text": "Six channels, one brain. Nothing slips.",
+   "url": "https://www.sahay.io/"
+  },
+  "sources": [
+   {
+    "url": "https://www.sahay.io/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sahay.io/case-studies",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sahay.io/case-studies/heels-on-wheels",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sahay.io/case-studies/msf",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sahay.io/"
+   ],
+   [
+    "https://www.sahay.io/"
+   ],
+   [
+    "https://www.sahay.io/case-studies/heels-on-wheels",
+    "https://www.sahay.io/case-studies/msf",
+    "https://www.sahay.io/case-studies"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

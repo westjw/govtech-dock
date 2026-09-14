@@ -90,5 +90,45 @@
    "kind_rule": null,
    "url": "https://roadman.tech/blog/january-momentum-setting-the-pace-for-a-smarter-paving-season/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Roadway Management Technologies provides government agencies and engineering firms with an integrated solution for roadway and infrastructure management. The pavement analytics product uses proprietary sensors mounted on an agency's vehicles, which collect road quality data while those vehicles are driven in daily routine. Hardware is mounted underneath city-owned or county-owned vehicles rather than on a survey vehicle sent out for the purpose. Stretches of road are then compared and ranked by quality, and color-coded on the web-based platform.",
+   "Alongside the surveying functionality, the company sells a work order management and record-keeping system integrated with the online map. Work orders can be created for tasks such as pothole repairs, ditch cleanouts, and sign repairs. Crews record maintenance information, photos, and related expenditures on the platform from any internet-connected device. A fleet management service covers driver safety and activity reporting along with vehicle preventative maintenance notifications."
+  ],
+  "quote": {
+   "text": "Your agency\u2019s vehicles already cover every road in your network.",
+   "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/"
+  },
+  "sources": [
+   {
+    "url": "https://roadman.tech",
+    "fetched_on": null
+   },
+   {
+    "url": "https://roadman.tech/solutions/real-time-pavement-performance-analytics/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://roadman.tech/solutions/work-order-management/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://roadman.tech/solutions/fleet-management/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://roadman.tech",
+    "https://roadman.tech/solutions/real-time-pavement-performance-analytics/"
+   ],
+   [
+    "https://roadman.tech/solutions/work-order-management/",
+    "https://roadman.tech/solutions/fleet-management/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

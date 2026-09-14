@@ -1,0 +1,33 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Mission Driven Data sells Janet, a tool that automates replication of a Credible database into a standard SQL database format, updated every night or on demand. Hundreds of agencies use the Credible EHR to record information about services, schedule appointments, process billing and financial transactions, and e-prescribe. Janet adds a wraparound layer over that system, with reporting and analytics on Microsoft Power BI dashboards, data integration and warehousing, notifications and workflow optimization.",
+   "The agencies addressed on the homepage offer a wide range of mental health and social services, some supporting rural areas with a staff of a few dozen and others serving thousands of clients a year. Janet also delivers the WHO-5 Well-Being Index to agency clients weekly by automatic text message, connecting that survey data to the agency Credible data. The about page states that leaders at over 50 behavioral health agencies and organizations nationwide rely on Janet."
+  ],
+  "quote": {
+   "text": "Let\u2019s turn your Credible data into actionable information to understand the health of your agency and the needs of the people you serve.",
+   "url": "https://www.missiondrivendata.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.missiondrivendata.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://missiondrivendata.com/about/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.missiondrivendata.com"
+   ],
+   [
+    "https://www.missiondrivendata.com",
+    "https://missiondrivendata.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

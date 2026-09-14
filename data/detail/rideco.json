@@ -72,5 +72,50 @@
    "kind_rule": "Launch",
    "url": "https://www.rideco.com/post/rideco-and-septa-launch-north-americas-largest-modernized-paratransit-system-in-less-than-5-months"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "RideCo sells on-demand transit software that agencies use to plan, operate, and optimize service productivity while reducing transit costs. The software covers paratransit and microtransit, and the company attributes it to patented technology.",
+   "Products listed on the site include the Passenger App, the Driver App, Operations Center, Data Insights, Profile Manager, and Flex Fleets. The Passenger App lets riders request on-demand trips, preschedule them, or book recurring rides, and it is available on smartphones and on a standard web browser. Operations Center is a dashboard suite for streamlining operations and service monitoring in a transit dispatch center, with standardized and custom reports inside it.",
+   "Customers named on the site include MTA New York City Transit, which awarded a contract for its Access-A-Ride paratransit service. Other agencies named include the Regional Transportation Commission of Southern Nevada and Metropolitan Atlanta Rapid Transit Authority, both for paratransit service."
+  ],
+  "quote": {
+   "text": "Together with RideCo, transit agencies can transform mobility for today and tomorrow.",
+   "url": "https://www.rideco.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.rideco.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rideco.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rideco.com/products/passenger-app",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.rideco.com/products/operations-center",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.rideco.com/products",
+    "https://www.rideco.com"
+   ],
+   [
+    "https://www.rideco.com/products",
+    "https://www.rideco.com/products/passenger-app",
+    "https://www.rideco.com/products/operations-center"
+   ],
+   [
+    "https://www.rideco.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

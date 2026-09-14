@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://www.infor.com/blog/erp-to-erx-agentic-enterprise-infor"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Infor sells cloud enterprise software packaged as industry suites, with each Infor CloudSuite built for one industry and shipping with 60+ micro-vertical configurations out of the box. The product range runs from enterprise resource planning and supply chain management to human capital management, financial management, and sustainability and ESG.",
+   "For government, the site describes public sector software as FedRAMP-authorized and aimed at government efficiency, public services, and transparency. The products page carries an entry for ERP for Public Sector, and a separate entry for Government Operations & Regulations.",
+   "The about page states that over 60,000 organizations worldwide rely on Infor, and puts its reach at more than 170 countries. The platform page says the software runs on an open, multi-tenant cloud that combines AI, analytics, data, integration, and app development. Company history on the about page dates the founding to 2002 and records the company becoming a wholly-owned, standalone subsidiary of Koch Industries in 2020."
+  ],
+  "quote": {
+   "text": "Infor builds complete industry suites in the cloud and efficiently deploys technology that puts the user experience first, leverages data science, and integrates easily into existing systems.",
+   "url": "https://www.infor.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.infor.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infor.com/products",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infor.com/platform",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.infor.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.infor.com"
+   ],
+   [
+    "https://www.infor.com",
+    "https://www.infor.com/products"
+   ],
+   [
+    "https://www.infor.com/about",
+    "https://www.infor.com/platform"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

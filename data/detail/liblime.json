@@ -1,0 +1,37 @@
+{
+ "profile": {
+  "paragraphs": [
+   "LibLime sells Bibliovation, a Library Services Platform offered as a SaaS solution. The platform is presented as 100% web-based and cloud-hosted open development software. Buyers can select individual system components such as Acquisitions, MARC21 Cataloging Editor, Discovery Layer and the Digital Content Management module, or take the entire suite of services. The Digital Content Management module delivers a digital document repository that ingests scanned and born digital documents.",
+   "LibLime provides complete hosting of the application and database in its dedicated space within the FedRAMP-compliant Amazon EC2 cloud. That arrangement means no software installed on desktops and no servers required in the libraries. LibLime also provides consulting, development, implementation, and support and hosting for libraries of all types and sizes. Its implementation team covers data migration, union catalog creation, onsite and web-based training, PMP-certified project management, and complete system configuration.",
+   "LibLime states that it has provided library software and service solutions to public, academic and special libraries. Types of libraries listed as using Bibliovation include public library consortia. School district union catalogs appear on the same list."
+  ],
+  "quote": {
+   "text": "No software installed on desktops and no servers required in the libraries.",
+   "url": "https://liblime.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://liblime.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://liblime.com/about-us/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://liblime.com"
+   ],
+   [
+    "https://liblime.com",
+    "https://liblime.com/about-us/"
+   ],
+   [
+    "https://liblime.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

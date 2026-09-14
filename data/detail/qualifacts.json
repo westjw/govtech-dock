@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.qualifacts.com/resources/behavioral-health-ai-agentic-billing-clinical-documentation/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Qualifacts sells electronic health record software and data services for behavioral health. The homepage states that Qualifacts is the EHR partner for 2,200+ behavioral health agencies nationwide. The same page describes the company as serving organizations of every size, non-profit and for-profit.",
+   "Three EHR platforms are listed: Credible, CareLogic and InSync. Credible EHR is described as a cloud-based solution for large agencies including community mental health centers, CCBHCs, SUD, IDD, residential, and integrated primary care services. The CareLogic platform is presented for enterprise behavioral health and human services organizations, including multi-location and multi-state entities and agencies with multiple programs and specialties. InSync EHR and practice management software is described as configured especially with small and mid-size practices and agencies in mind.",
+   "The about page says the company has delivered technology, support, and services to the behavioral health and human services market for more than 25 years. Qualifacts has headquarters in Nashville and Tampa with employees across the globe."
+  ],
+  "quote": {
+   "text": "Built for Behavioral Health by Behavioral Health Professionals",
+   "url": "https://qualifacts.com"
+  },
+  "sources": [
+   {
+    "url": "https://qualifacts.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qualifacts.com/about/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qualifacts.com/about/leadership/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.qualifacts.com/about/credible-ehr-platform/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://qualifacts.com"
+   ],
+   [
+    "https://www.qualifacts.com/about/",
+    "https://www.qualifacts.com/about/credible-ehr-platform/"
+   ],
+   [
+    "https://www.qualifacts.com/about/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

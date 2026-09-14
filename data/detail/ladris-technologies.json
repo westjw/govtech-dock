@@ -108,5 +108,40 @@
    "kind_rule": "launches",
    "url": "https://ladris.com/press/ladris-launches-flood-real-time-ai-flood-forecasting-and-impact-assessment"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ladris sells disaster evacuation modeling software to planners, responders, and residents. The planning product, Core, simulates evacuations, wildfire, flooding, and other hazards, and carries mitigation plans and operational tactics into a live incident. Prime provides automated decision support for incident commanders, a fire-spread model, and an evacuation tactical plan. Sentinel delivers wildfire evacuation planning, notifications, and preparedness information free to the public through Ladris Ready.",
+   "The about page describes evacuation modeling as simulating how long it takes to move a population out of a hazard's path, producing a clearance time and the choke points that drive it. Agencies define evacuation zones, model the hazard, then simulate the evacuation across the road network to find clearance times and bottlenecks. Ladris states that these simulations run in seconds, so planners can test many scenarios instead of one.",
+   "Customer stories on the homepage name Pikes Peak Region, CO, Marin County, CA, Yuba County, CA, Jefferson County, CO, County of Maui, HI, and Town of Truckee, CA. The company works with local law, fire and emergency management to configure the platform for a jurisdiction, and says most agencies are live within days. Whether a county OES, a state agency, a fire district, or a sheriff's office, the about page invites jurisdictions to get in touch."
+  ],
+  "quote": {
+   "text": "No one should die in a disaster.",
+   "url": "https://ladris.com"
+  },
+  "sources": [
+   {
+    "url": "https://ladris.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://ladris.com/about",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ladris.com"
+   ],
+   [
+    "https://ladris.com/about"
+   ],
+   [
+    "https://ladris.com",
+    "https://ladris.com/about"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

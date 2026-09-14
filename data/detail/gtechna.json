@@ -72,5 +72,49 @@
    "kind_rule": null,
    "url": "https://www.gtechna.com/resources/whitepapers"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "gtechna sells parking, transportation, and moving violations software. The company describes automated digital citations and citation management solutions for traffic enforcement. A 311 module covers code enforcement with real-time enforcement and automation.",
+   "Ticket by Mail integrates automated direct mail citations with handheld enforcement or license plate recognition software. Digital Permits is described as a platform for permitting needs from commercial to residential, short-term and long. Online Services lets constituents handle payments, appeals, and online hearing self-scheduling in one place.",
+   "Organizations named on the home page include Cities and Municipalities. The same page also lists Universities and Colleges. Clients are described as ranging from small individual operators to some of the biggest cities in North America. The security page states that gtechna is certified SOC2 Type I and SOC2 Type II compliant."
+  ],
+  "quote": {
+   "text": "While our business is parking, transportation, and moving violations software, our goals focus on improving operations, building relationships, and enabling organizations and the people they serve with simpler, easier, and more helpful solutions.",
+   "url": "https://www.gtechna.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://www.gtechna.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.gtechna.com/about/why-gtechna",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.gtechna.com/about",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.gtechna.com/about/security",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.gtechna.com/about",
+    "https://www.gtechna.com"
+   ],
+   [
+    "https://www.gtechna.com"
+   ],
+   [
+    "https://www.gtechna.com",
+    "https://www.gtechna.com/about/security"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

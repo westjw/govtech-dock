@@ -99,5 +99,49 @@
    "kind_rule": null,
    "url": "https://www.opencounter.com/blog/is-permit-discovery-a-problem-in-your-city-here-are-5-ways-to-tell/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "OpenCounter sells permit discovery software that answers applicants' questions before they reach City Hall. The platform tells applicants where a project is allowed, which permits it needs and how much they cost, without asking city staff. Pricing depends on the population size of a jurisdiction and the number of portals procured.",
+   "The Business Portal is aimed at entrepreneurs working out the costs and requirements of starting a business. A use code search lets applicants enter simple terms rather than code language. Zoning maps show where a project is permitted, conditionally permitted, or prohibited in the jurisdiction. Fees are calculated as applicants enter project details, and a summary page lists required permits by department or in the order to apply.",
+   "The Residential Portal applies the same permit discovery to home improvement projects. The Special Events Portal handles event permitting from discovery through issuance, with applicants paying online and downloading permits after approval. Configuration and implementation are done by the company, which asks the jurisdiction for data such as ArcGIS shapefiles, a permit catalog and overlay districts. Zoning and municipal code updates are made for the duration of a subscription at no charge."
+  ],
+  "quote": {
+   "text": "OpenCounter helps applicants answer pre-application questions without calls, emails, or visits to City Hall, while streamlining staff processes for increased efficiency.",
+   "url": "https://www.opencounter.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.opencounter.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opencounter.com/products/business/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opencounter.com/products/residential/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.opencounter.com/products/special-events/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.opencounter.com"
+   ],
+   [
+    "https://www.opencounter.com/products/business/"
+   ],
+   [
+    "https://www.opencounter.com/products/residential/",
+    "https://www.opencounter.com/products/special-events/",
+    "https://www.opencounter.com/products/business/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://pmweb.com/news/pmweb-achieves-soc-1-type-2-and-soc-2-type-1-compliance"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "PMWEB sells a web platform for capital program and construction project management, presented on its own site as the strategic control center for owner-operators. The platform is organized into three parts named Visibility & Analysis, Control & Execution, and Efficiency & Automation.",
+   "The control and execution pages list budgeting and funding management, estimate and cost control, contract and payment oversight, schedule and field management, and workflow and approval control. The visibility and analysis page says the system consolidates project, program, and asset data into a single platform for portfolio dashboards, forecasting, and risk monitoring.",
+   "Buyers described on the site are owner-operators running capital portfolios, with industries listed that include Airport, Data Centers, Education, Finance & Banking, Government, Healthcare, Hospitality, and Infrastructure & Transportation. Under that industry list, the Government entry says the product equips public agencies to deliver complex capital programs on time and on budget. A case study on the homepage says Carnegie Mellon University implemented PMWEB as a centralized platform for budgeting, procurement, and vendor oversight."
+  ],
+  "quote": {
+   "text": "Equipping public agencies with the tools to deliver complex capital programs on time and on budget.",
+   "url": "https://pmweb.com"
+  },
+  "sources": [
+   {
+    "url": "https://pmweb.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://pmweb.com/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://pmweb.com/solutions/visibility-and-analysis/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://pmweb.com/solutions/control-and-execution/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://pmweb.com/platform/"
+   ],
+   [
+    "https://pmweb.com/solutions/control-and-execution/",
+    "https://pmweb.com/solutions/visibility-and-analysis/"
+   ],
+   [
+    "https://pmweb.com"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }

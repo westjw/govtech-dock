@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "MuniPro sells a workstation for municipal finance built on the record of each issuer's debt, covering every series and maturity, every refunding and defeasance, and obligations that never carried a CUSIP. Fourteen named tools sit on one system of record, and market data is sourced and stamped so results are reproducible.",
+   "The workspace groups debt management, debt structuring, refunding scenarios, market data, option pricing and bond holders, each reading from the same record. Debt structuring toggles between level debt, wrap-around and ascending structures and layers reserve funds, capitalized interest and bond insurance. Option pricing runs a Black-Derman-Toy binomial tree for option-adjusted spreads with custom volatility, short-rate and curve assumptions.",
+   "Five roles share one workspace: investment bankers, underwriters, credit analysts, municipal advisors and portfolio managers. Each module replaces a single-purpose subscription on a typical desk, and bought together they are described as cheaper than any two of the legacy tools. Government finance officers are pointed to BondGov, a free sister platform for state and local issuers, with no charge for any government in the U.S."
+  ],
+  "quote": {
+   "text": "Fourteen named tools. One system of record.",
+   "url": "https://www.munipro.com/marketing/platform/"
+  },
+  "sources": [
+   {
+    "url": "https://www.munipro.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munipro.com/marketing/platform/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munipro.com/marketing/solutions/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.munipro.com/marketing/solutions/investment-bankers/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.munipro.com",
+    "https://www.munipro.com/marketing/platform/"
+   ],
+   [
+    "https://www.munipro.com"
+   ],
+   [
+    "https://www.munipro.com",
+    "https://www.munipro.com/marketing/platform/",
+    "https://www.munipro.com/marketing/solutions/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
+}

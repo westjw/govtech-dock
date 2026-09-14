@@ -90,5 +90,47 @@
    "kind_rule": null,
    "url": "https://www.sigmundsoftware.com/blog/the-power-of-auras-billing-and-revenue-cycle-management-suite/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Sigmund Software sells AURA, a cloud based electronic health record platform for behavioral health and addiction treatment providers. The platform is sold as a replacement for running separate systems for clinical documentation, billing, scheduling and compliance. Alongside the clinical record, Sigmund sells a billing platform for behavioral health billers that handles payer authorizations, claim generation and claim status through an EDI billing module.",
+   "These pages describe the buyers as behavioral health and addiction treatment organizations, and the billing platform is offered to organizations of all sizes, from small practices to multi site and multi specialty configurations. A patient portal carries digital intake forms, electronic signatures on consent documents, secure messaging and appointment reminders for the patients those organizations treat. Sigmund hosts the software and takes on the technology, data backups and software upgrades for the provider."
+  ],
+  "quote": {
+   "text": "Sigmund has developed, and continues to enhance, a platform meticulously designed to fulfill the EHR requirements of behavioral health and addiction treatment.",
+   "url": "https://www.sigmundsoftware.com/solutions/finance/"
+  },
+  "sources": [
+   {
+    "url": "https://www.sigmundsoftware.com",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sigmundsoftware.com/solutions/finance/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sigmundsoftware.com/solutions/clinical/",
+    "fetched_on": null
+   },
+   {
+    "url": "https://www.sigmundsoftware.com/solutions/medical/",
+    "fetched_on": null
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.sigmundsoftware.com/solutions/clinical/",
+    "https://www.sigmundsoftware.com",
+    "https://www.sigmundsoftware.com/solutions/finance/"
+   ],
+   [
+    "https://www.sigmundsoftware.com/solutions/finance/",
+    "https://www.sigmundsoftware.com",
+    "https://www.sigmundsoftware.com/solutions/medical/"
+   ]
+  ],
+  "written_on": "2026-09-13",
+  "by_kind": "site"
+ }
 }
