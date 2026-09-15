@@ -2261,9 +2261,22 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
         for o in roster[:10]:
             n = o.get("open_roles") or 0
             place = " / ".join(x for x in (o.get("sector"), o.get("category")) if x)
+            # LINK ONLY WHERE A PAGE WAS WRITTEN. has_static_page is the one
+            # gate on whether /c/<id>.html exists, and this roster linked every
+            # exhibitor regardless: 147 links across the conference pages went
+            # to a page that was never built. A visitor clicked IBM on a
+            # conference floor and got a 404.
+            #
+            # It is the same defect has_static_page's own docstring describes
+            # for the sitemap - "a sitemap listing a page that was never
+            # written is a 404 submitted to Google as canonical" - and this
+            # roster was never brought onto the gate. A company with nothing
+            # to say still BELONGS on the floor; it just is not a link.
+            cell = (f'<a href="/c/{esc(o.get("id") or "")}.html">'
+                    f'{esc(o.get("name") or "")}</a>'
+                    if has_static_page(o) else esc(o.get("name") or ""))
             rows.append(
-                f'<tr><td><a href="/c/{esc(o.get("id") or "")}.html">'
-                f'{esc(o.get("name") or "")}</a></td>'
+                f'<tr><td>{cell}</td>'
                 f'<td>{esc(place)}</td>'
                 f'<td class="n">{n or "&mdash;"}</td></tr>')
         more = ""

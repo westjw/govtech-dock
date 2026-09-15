@@ -114,6 +114,13 @@
    "checked_on": "2026-09-09",
    "by": "capture",
    "source": "https://jobs.gusto.com/boards/city-detect-6e1a4cdf-356e-4986-9f1d-55d200b345e9"
+  },
+  "hayden-ai": {
+   "checked_on": "2026-09-15",
+   "by": "capture",
+   "found": true,
+   "note": null,
+   "source": "https://www.hayden.ai/careers"
   }
  },
  "postings": [
@@ -4924,6 +4931,26 @@
    "category": "Benefits & Medicaid Systems",
    "first_seen": "2026-09-08",
    "captured_from": "https://jobs.gainwelltechnologies.com/go/View-All-Jobs/8808000/75/?q=&sortColumn=referencedate&sortDirection=desc"
+  },
+  {
+   "id": "hayden-ai::Exciting opportunities await you.",
+   "company": "Hayden AI",
+   "company_id": "hayden-ai",
+   "jd_text": "Exciting opportunities await you. Empty heading We\u2019re looking for motivated people to join us on our mission. We\u2019re driving real change and making a difference in people's lives. And we\u2019re always curious, always ambitious, and always optimistic. See Current Openings We believe inclusion inspires innovation. Hayden AI is an equal opportunity employer; applicants are considered for all roles regardless of race, color, religion, sex, origin, citizenship, age, physical or mental disability, sexual orientation, marital, parental, veteran or military status, unfavorable military discharge, or any other status protected by applicable federal, state or local law. Don't see a position you're looking for? We're always looking for talented people. Send us your resume. Email Us",
+   "title": "Exciting opportunities await you.",
+   "family": "other",
+   "quota_carrying": false,
+   "seniority": "mid",
+   "states": [],
+   "region": null,
+   "work_mode": "not stated",
+   "location": "",
+   "is_us": null,
+   "url": "https://www.hayden.ai/careers",
+   "sector": "Transit & Parking",
+   "category": "Rider Experience",
+   "first_seen": "2026-09-15",
+   "captured_from": "https://www.hayden.ai/careers"
   }
  ]
 }

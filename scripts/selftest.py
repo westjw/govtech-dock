@@ -13709,21 +13709,45 @@ def check_a_page_never_links_to_a_file_that_is_not_there() -> int:
     404s. The sitemap half of this has a guard already; the pages did not.
 
     Deliberately narrow: only same-origin links to a file extension we build
-    (.ics, .xlsx, .json, .xml, .txt). Extensionless paths are Cloudflare's
-    prettified routes and .html is covered by the sitemap check.
+    (.ics, .xlsx, .json, .xml, .txt, .html). Extensionless paths are
+    Cloudflare's prettified routes and are not checked.
+
+    .html USED TO BE EXCLUDED HERE, "covered by the sitemap check", AND THAT
+    WAS FALSE. The sitemap check covers what the SITEMAP lists. It cannot see
+    a link from one page to another, and page-to-page links never appear in a
+    sitemap at all - so the two together left the largest class of local link
+    on the site unchecked by anything.
+
+    What it cost: 147 links on the conference pages pointed at company pages
+    that were never written. The exhibitor roster linked every company on a
+    floor, while has_static_page only writes a page for a company with open
+    roles, a write-up or a shortlist - so clicking IBM, Conduent, LexisNexis
+    or Salesforce from a conference floor gave a 404. Reported as "the company
+    pages do not work", which is what it looks like from the outside.
+
+    A guard that names the case it skips and is wrong about why is worse than
+    one that never mentioned it: the sentence reads as though somebody checked.
     """
     pub = ROOT / "public"
     if not pub.exists():
         note("public/ has not been built, so no page links were followed")
         return 0
     import re as _re
-    exts = (".ics", ".xlsx", ".xml", ".txt", ".json")
+    exts = (".ics", ".xlsx", ".xml", ".txt", ".json", ".html")
     dead: list[tuple[str, str]] = []
     pages = 0
     for f in pub.rglob("*.html"):
         pages += 1
         for href in _re.findall(r'(?:href|src)="(/[^"#?]+)"', f.read_text()):
             if not href.endswith(exts):
+                continue
+            # A TEMPLATE LITERAL IS NOT A LINK. index.html is the app's SOURCE
+            # and carries `href="/e/${esc(cfSlug(r.tag))}.html"`, which the
+            # browser only ever sees evaluated. Read as text it looks like a
+            # path to a file nobody built, and reporting it would teach a
+            # reader to skim this check's output - which is how the real 147
+            # would have been skimmed too.
+            if "${" in href:
                 continue
             if not (pub / href.lstrip("/")).exists():
                 dead.append((str(f.relative_to(pub)), href))
