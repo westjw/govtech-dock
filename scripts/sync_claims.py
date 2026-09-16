@@ -107,6 +107,14 @@ def pull(kv) -> tuple[dict, list, list]:
         rec = kv.get(key) or {}
         if isinstance(rec, dict) and rec.get("company_id"):
             props.append(dict(scrub(rec), _key=key))
+    # THE RELEASES, WHICH NO SURVIVING RECORD CAN REPORT. release() deletes
+    # the claim record, so a claim handed back leaves nothing in `trail` to
+    # project - it simply stops appearing, and an absence is not an event.
+    # The tombstone is what makes it one.
+    for key in kv.keys("claimrel:"):
+        rec = kv.get(key) or {}
+        if isinstance(rec, dict) and rec.get("company_id"):
+            trail.append(dict(scrub(rec), _released=True))
     return claims, props, trail
 
 
@@ -130,6 +138,18 @@ def log_trail(trail: list, props: list, write: bool) -> dict:
         cid, dom = rec.get("company_id"), rec.get("domain")
         tail = rec.get("token_tail") or ""
         if not (cid and dom and tail):
+            continue
+        if rec.get("_released"):
+            when = rec.get("at") or ""
+            if not write:
+                if ("claim_released", f"{cid}:{tail}:{when}") not in seen:
+                    added["claim_released"] = added.get("claim_released", 0) + 1
+            elif employer_log.record_once(
+                    "claim_released", cid, by="claimant",
+                    source_key=f"{cid}:{tail}:{when}", seen=seen,
+                    at=when or None, domain=dom, claim_tail=tail,
+                    token_tail=tail):
+                added["claim_released"] = added.get("claim_released", 0) + 1
             continue
         for kind, when in (("claim_started", rec.get("created")),
                            ("claim_confirmed", rec.get("confirmed_at"))):
@@ -174,8 +194,17 @@ def as_proposals(props: list, companies: list) -> list:
         cid = p["company_id"]
         if cid not in names:
             continue
+        # A TIMESTAMP IS NOT A KEY - the lesson claim.js already learned when
+        # three proposals sent in one click landed on the same millisecond and
+        # overwrote each other. Its KV key carries randomness for exactly that
+        # reason, and rebuilding the store key from company + `at` alone threw
+        # it away again: two proposals stamped the same millisecond would
+        # collapse to one row here, and the one that vanished would do so
+        # silently. The company id stays in the second segment, which is where
+        # agents.ingest's id check looks for it.
+        uniq = str(p.get("_key") or "").rsplit(":", 1)[-1]
         out.append({
-            "key": f"claim:{cid}:{p.get('at','')}",
+            "key": f"claim:{cid}:{p.get('at','')}" + (f":{uniq}" if uniq else ""),
             "kind": "claim", "id": cid, "name": names[cid],
             "confidence": "medium",
             "why": f"sent by somebody at {p.get('by_domain') or 'the company'}",

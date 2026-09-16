@@ -101,9 +101,11 @@
     <div class="row"><button id="go">Send me the link</button></div>
     <div class="msg" id="m1"></div>
   </div>
-  <div class="flag">A person reviews every change before it appears. Claiming a
-    page does not let you edit it directly, and it never lets you edit who your
-    competitors are.</div>
+  <div class="flag">Confirm your address, then we check you over by hand &mdash;
+    usually a day or two. After that your description, your write-up, your logo
+    and your roles go straight onto your page, and posting roles is free. What
+    never changes hands: who your competitors are, and which category you are
+    filed under.</div>
 </div>
 
 <!-- ── the claimant's page ─────────────────────────────────────────────── -->
@@ -135,6 +137,19 @@
       placeholder="Who uses it. Anything about the company itself."></textarea>
     <div class="row"><button data-send="profile">Send it for review</button></div>
     <div class="msg" id="m-profile"></div>
+  </div>
+
+  <div class="panel" id="pane-logo" hidden>
+    <h2>Your logo</h2>
+    <p class="note">Link an image on your own site and we will fetch it &mdash;
+      PNG, JPEG, GIF or WebP, under 512KB. Not SVG: an SVG is a document that
+      can carry script, and we serve it from our own pages. We read what the
+      bytes actually are rather than trusting the file name, and the new one
+      replaces whatever we had.</p>
+    <label for="f-logo">Link to the image</label>
+    <input id="f-logo" maxlength="400" placeholder="https://&hellip;/logo.png">
+    <div class="row"><button data-send="logo">Send it for review</button></div>
+    <div class="msg" id="m-logo"></div>
   </div>
 
   <div class="panel" id="pane-job" hidden>
@@ -261,15 +276,26 @@ async function load() {
   $("#cat-now").textContent = "Tell us where you belong and why.";
   const dl = $("#facts");
   dl.innerHTML = "";
+  /* THREE STANDINGS, NOT TWO. Telling a verified company "a person reviews
+     every change before it appears" is telling them to wait for something
+     that is not coming; telling an unverified one their edits are live is
+     worse. The endpoint answers which, and the buttons say it. */
+  const live = r.goes_live_without_review || [];
+  document.querySelectorAll("[data-send]").forEach((b) => {
+    if (live.indexOf(b.dataset.send) >= 0) b.textContent = "Save it";
+  });
   [["Company", r.company_id], ["Confirmed", r.confirmed ? "yes" : "not yet"],
-   ["Sent for review", String(r.proposals || 0)]].forEach(([k, v]) => {
+   ["Verified", r.verified ? "yes — your edits go live"
+                           : "not yet — we check every claim by hand"],
+   ["Sent", String(r.proposals || 0)]].forEach(([k, v]) => {
     const dt = document.createElement("dt"); dt.textContent = k;
     const dd = document.createElement("dd"); dd.textContent = v;
     dl.append(dt, dd);
   });
 
   const PANES = [["description", "Description"], ["profile", "Longer description"],
-                 ["job", "Post a role"], ["category", "Where you are filed"],
+                 ["logo", "Logo"], ["job", "Post a role"],
+                 ["category", "Where you are filed"],
                  ["contact", "Something else"]];
   const tabs = $("#tabs");
   PANES.forEach(([k, label], i) => {
@@ -297,6 +323,7 @@ async function load() {
         body.location = $("#f-location").value;
         body.url = $("#f-url").value;
       }
+      if (kind === "logo") body.url = $("#f-logo").value;
       if (kind === "category") {
         body.wants = $("#f-wants").value; body.why = $("#f-why").value;
       }

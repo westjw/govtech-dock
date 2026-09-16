@@ -9847,6 +9847,64 @@ def check_a_logo_is_what_its_bytes_say() -> int:
     if not res.get("error"):
         errors += fail("a 9-byte 'logo' was accepted")
 
+    # A URL THAT REDIRECTS IS NOT A URL WE CHECKED. check() binds https and
+    # the same-domain rule to one string; following a redirect would fetch
+    # somewhere nobody checked, and on a CI runner "somewhere" includes the
+    # metadata endpoint.
+    res = logos.install("acme", "https://acme.com/l.png", "acme.com", by="t",
+                        write=False,
+                        fetch=lambda u: (b"", "redirects, and we only check "
+                                             "the address you give us"))
+    if not res.get("error") or "redirect" not in res["error"].lower():
+        errors += fail(f"a redirecting logo URL was not refused: {res}")
+    src = (ROOT / "scripts" / "logos.py").read_text()
+    if "allow_redirects=False" not in src:
+        errors += fail("logos._fetch follows redirects, so the https and "
+                       "same-domain rules bind only the first hop")
+
+    # A URL WITH USERINFO IS NOT A URL WHOSE HOST IS WHAT IT LOOKS LIKE.
+    if not logos.check("acme", "https://acme.com:x@evil.com/l.png", "acme.com"):
+        errors += fail("https://acme.com:x@evil.com/l.png passed the "
+                       "same-domain rule; the part before the @ is not a host")
+
+    # THE SIZE FLOOR HAS ITS OWN CASE, with bytes that ARE a valid image -
+    # otherwise the sniff refuses first and MIN_BYTES is never exercised.
+    res = logos.install("acme", "https://acme.com/l.png", "acme.com", by="t",
+                        write=False,
+                        fetch=lambda u: (b"\x89PNG\r\n\x1a\n" + b"0" * 8, ""))
+    if not res.get("error") or "small" not in res["error"]:
+        errors += fail(f"a valid but 16-byte PNG was not refused for size: "
+                       f"{res}")
+
+    # THE RULING GOES THROUGH THIS DOOR, not around it. Every rule above -
+    # https, same-domain, the sniff, the sweep - lives in logos.install, so a
+    # logo branch that wrote the file itself would hold none of them, and
+    # nothing here would have noticed.
+    seen: list = []
+    store, cos, restore = _claim_sandbox()
+    real_install = logos.install
+    logos.install = lambda *a, **k: (seen.append((a, k)) or
+                                     {"ok": True, "message": "x.png (1KB)"})
+    try:
+        import agents
+        import proposal_rulings as _PR
+        import sync_claims
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("logo", "2026-09-16T10:00:00Z",
+                          url="https://acme.com/logo.png")], cos)
+        agents.ingest("claim", rows, model="claim:company")
+        res = _PR.rule(store, rows[0]["key"], True, why="ok", by="owner")
+        if res.get("error"):
+            errors += fail(f"a logo claim could not be ruled: {res['error']}")
+        elif not seen:
+            errors += fail("a logo ruling did not reach logos.install, so it "
+                           "holds none of that door's rules")
+        elif seen[0][0][:3] != ("acme", "https://acme.com/logo.png", "acme.com"):
+            errors += fail(f"the logo door was called with {seen[0][0][:3]}")
+    finally:
+        logos.install = real_install
+        restore()
+
     tmp = pathlib.Path(tempfile.mkdtemp())
     real = logos.LOGOS
     logos.LOGOS = tmp
@@ -9862,8 +9920,248 @@ def check_a_logo_is_what_its_bytes_say() -> int:
                            "shows now depends on directory order")
         elif not (tmp / "acme.png").exists():
             errors += fail("the logo door reported ok and wrote nothing")
+        # THE EXTENSION COMES FROM THE BYTES. Asserted with a case where the
+        # two DISAGREE - the one positive case above had a .png url carrying
+        # a PNG, so it passed whichever the code read.
+        gif = b"GIF89a" + b"0" * 400
+        res = logos.install("acme", "https://acme.com/brand.png", "acme.com",
+                            by="t", write=True, fetch=lambda u: (gif, ""))
+        if res.get("ext") != "gif" or not (tmp / "acme.gif").exists():
+            errors += fail(f"a GIF served at a .png address was filed by its "
+                           f"URL, not by what it is: {res.get('ext')!r}")
+        elif (tmp / "acme.png").exists():
+            errors += fail("the replaced file survived, so the glob decides "
+                           "which logo the page shows")
     finally:
         logos.LOGOS = real
+    return errors
+
+
+def check_the_gate_rules_each_person_not_each_company() -> int:
+    """The owner can rule the second person at a company, and the third.
+
+    waiting() first filtered on state(cid)["verified_domains"] - a set of
+    DOMAINS - while every ruling is per claim tail. startClaim requires every
+    claimant at one company to use that company's own domain, so the moment
+    the first person was verified, every colleague matched the filter and
+    disappeared: --verify answered "no claim waiting" while the claim had
+    never been ruled at all. It failed closed, so nothing could land, but the
+    gate was unusable for anybody but the first person - the per-company
+    collapse the module exists to refuse.
+
+    Drives verify_claims.waiting() over a fake KV, because nothing else did.
+    """
+    import employer_log as EL
+    import verify_claims as VC
+
+    class FakeKV:
+        def __init__(self, rows):
+            self.rows = rows
+
+        def keys(self, pre):
+            return [k for k in self.rows if k.startswith(pre)]
+
+        def get(self, k):
+            return self.rows.get(k)
+
+    errors = 0
+    real_log = EL.LOG
+    EL.LOG = pathlib.Path(tempfile.mkdtemp()) / "employer_events.jsonl"
+    try:
+        def rec(tail, when):
+            return {"company_id": "acme", "name": "Acme", "domain": "acme.com",
+                    "confirmed": True, "confirmed_at": when, "created": when}
+        kv = FakeKV({"claim:" + "z" * 34 + "aaa111": rec("aaa111", "2026-09-01T10:00:00Z"),
+                     "claim:" + "y" * 34 + "bbb222": rec("bbb222", "2026-09-05T10:00:00Z")})
+        tails = sorted(r["tail"] for r in VC.waiting(kv))
+        if tails != ["aaa111", "bbb222"]:
+            errors += fail(f"two confirmed claims at one company, and the gate "
+                           f"lists {tails}")
+        EL.record("claim_confirmed", "acme", by="script:t", domain="acme.com",
+                  claim_tail="aaa111")
+        EL.record("claim_verified", "acme", by="owner", domain="acme.com",
+                  claim_tail="aaa111")
+        left = [r["tail"] for r in VC.waiting(kv)]
+        if left != ["bbb222"]:
+            errors += fail(f"after verifying one person at a company the gate "
+                           f"lists {left}; a colleague who has never been "
+                           f"ruled can then be neither verified nor refused")
+        if VC._ruled("acme", "bbb222"):
+            errors += fail("an unruled claim reports as ruled")
+        EL.record("claim_refused", "acme", by="owner", domain="acme.com",
+                  claim_tail="bbb222", why="left the company")
+        if VC.waiting(kv):
+            errors += fail("a refused claim is still waiting on the owner")
+    finally:
+        EL.LOG = real_log
+    return errors
+
+
+def check_two_proposals_in_one_millisecond_are_two_rows() -> int:
+    """Two things sent in one click are two rows, all the way to the store.
+
+    claim.js learned this the hard way: three proposals sent together landed
+    on the same millisecond and overwrote each other, so two of the three
+    vanished silently, and its KV key grew a random tail. as_proposals then
+    rebuilt the store key from company + `at` alone and threw that back away.
+    """
+    import agents
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        same = "2026-09-16T10:00:00.500Z"
+        rows = sync_claims.as_proposals([
+            _kv_proposal("description", same, description="A new line for us."),
+            dict(_kv_proposal("job", same, title="Engineer",
+                              url="https://acme.com/jobs/1"),
+                 _key="claimprop:acme:1:bbbb2222"),
+        ], cos)
+        if len({r["key"] for r in rows}) != 2:
+            errors += fail("two proposals sent in one click collapsed to one "
+                           "store key; one of them is lost with nothing said")
+        rep = agents.ingest("claim", rows, model="claim:company")
+        if rep["kept"] != 2:
+            errors += fail(f"only {rep['kept']} of 2 same-millisecond "
+                           f"proposals reached the store")
+        kinds = sorted((r.get("edit") or {}).get("kind") for r in store.values())
+        if kinds != ["description", "job"]:
+            errors += fail(f"the store holds {kinds}, not both things sent")
+    finally:
+        restore()
+    return errors
+
+
+def check_the_logo_fetch_never_raises() -> int:
+    """A claimant's server cannot end the sync for everybody else.
+
+    _fetch's docstring promised it never raises while iter_content sat outside
+    the try, so a server that accepted the connection and then reset it mid
+    body would have raised out of _fetch, out of land_self_serve, and ended
+    sync_claims - holding up every other claimant's edits that night. The
+    guards that drive install() all inject `fetch`, so none of them ever
+    reached this function: it is driven here directly, against a stubbed
+    requests.
+    """
+    import types
+
+    import logos
+
+    errors = 0
+    saved = sys.modules.get("requests")
+
+    def fake(get):
+        m = types.ModuleType("requests")
+        m.get = get
+        return m
+
+    class Body:
+        status_code = 200
+
+        def iter_content(self, n):
+            raise ConnectionError("peer reset the connection")
+
+    cases = (
+        ("the connection is refused", lambda *a, **k: (_ for _ in ()).throw(
+            OSError("refused"))),
+        ("the body dies mid-stream", lambda *a, **k: Body()),
+    )
+    try:
+        for label, get in cases:
+            sys.modules["requests"] = fake(get)
+            try:
+                blob, err = logos._fetch("https://acme.com/l.png")
+            except Exception as e:                          # noqa: BLE001
+                errors += fail(f"logos._fetch raised when {label} "
+                               f"({type(e).__name__}); one claimant's server "
+                               f"can end the whole sync")
+                continue
+            if not err or blob:
+                errors += fail(f"_fetch reported success when {label}")
+    finally:
+        if saved is not None:
+            sys.modules["requests"] = saved
+        else:
+            sys.modules.pop("requests", None)
+    return errors
+
+
+def check_a_claim_handed_back_stops_landing() -> int:
+    """Releasing a claim ends the verification, through the real projection.
+
+    `claim_released` was declared in employer_log with NOTHING writing it:
+    claim.js's release() deletes the KV record, and sync_claims projects the
+    log from the records that exist, so a claim handed back simply stopped
+    appearing - and an absence is not an event. verified_claims() kept the
+    tail forever, the published meta-claims.json kept saying they were
+    verified, and the proposals they had already sent (90-day TTL, still in
+    KV) went on landing unreviewed after they had walked away.
+
+    Driven through pull() and log_trail() rather than by recording the event
+    by hand: the guard that fabricated its own claim_released was testing a
+    path the system could not enter, which is this repo's "a guard that
+    supplies what it is testing for is not a guard".
+    """
+    import agents
+    import employer_log as EL
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        tail = "aaa111"
+        claim_key = "claim:" + "z" * 34 + tail
+
+        class FakeKV:
+            def __init__(self):
+                self.rows = {
+                    claim_key: {"company_id": "acme", "name": "Acme",
+                                "domain": "acme.com", "confirmed": True,
+                                "created": "2026-09-01T09:00:00Z",
+                                "confirmed_at": "2026-09-01T10:00:00Z"},
+                }
+
+            def keys(self, pre):
+                return [k for k in self.rows if k.startswith(pre)]
+
+            def get(self, k):
+                return self.rows.get(k)
+
+        kv = FakeKV()
+        _, props, trail = sync_claims.pull(kv)
+        sync_claims.log_trail(trail, props, write=True)
+        EL.record("claim_verified", "acme", by="owner", domain="acme.com",
+                  claim_tail=tail)
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z", tail=tail,
+                          description="Acme sells dispatch to police.")], cos)
+        agents.ingest("claim", rows, model="claim:company")
+
+        # they hand it back: the record goes, the tombstone stays
+        del kv.rows[claim_key]
+        kv.rows[f"claimrel:acme:{tail}"] = {
+            "company_id": "acme", "domain": "acme.com", "token_tail": tail,
+            "at": "2026-09-17T08:00:00Z"}
+        _, props, trail = sync_claims.pull(kv)
+        if not any(r.get("_released") for r in trail):
+            errors += fail("sync_claims.pull does not read the release "
+                           "tombstones, so a claim handed back is invisible "
+                           "to the repo")
+        sync_claims.log_trail(trail, props, write=True)
+        if "claim_released" not in [e["kind"] for e in EL.events("acme")]:
+            errors += fail("a released claim left no transition; the kind is "
+                           "declared with nothing writing it")
+        if EL.verified_claims().get("acme"):
+            errors += fail("a claim handed back is still verified")
+        res = sync_claims.land_self_serve(write=True)
+        if res["landed"]:
+            errors += fail("an edit sent before the claim was handed back "
+                           "still landed unreviewed afterwards")
+        if cos[0]["description"] != "Old line about Acme.":
+            errors += fail("a released claimant rewrote the record")
+    finally:
+        restore()
     return errors
 
 
@@ -9893,6 +10191,18 @@ def check_the_two_self_serve_lists_agree() -> int:
         if k in py:
             errors += fail(f"{k} is self-serve, and it is the one thing "
                            f"claim.js promises a person decides")
+    # DECLARED IS NOT CONSULTED. A list both halves agree on and neither reads
+    # is two matching constants and no rule.
+    import inspect
+
+    import sync_claims
+    lander = inspect.getsource(sync_claims.land_self_serve)
+    if "SELF_SERVE_KINDS" not in lander:
+        errors += fail("land_self_serve does not consult SELF_SERVE_KINDS, so "
+                       "the list the two halves agree on decides nothing")
+    if "verified_claims" not in lander:
+        errors += fail("land_self_serve does not ask the employer log who is "
+                       "verified; the authorisation has moved somewhere else")
     return errors
 
 
@@ -9911,9 +10221,28 @@ def check_the_welcome_names_what_changed_and_what_did_not() -> int:
            "email": "someone@acme.com", "tail": "aaa111",
            "confirmed_at": "2026-09-16T10:00:00Z", "created": "", "proposals": 0}
     sub, text, html = VC.welcome(row)
-    for want in ("description", "logo", "role"):
-        if want not in text.lower():
-            errors += fail(f"the welcome never says {want} goes live")
+    # DERIVED, NOT THREE HARDCODED WORDS. `profile` was self-serve and unnamed
+    # in the welcome, so a claimant whose write-up appeared unreviewed had
+    # been told a person would read it first - and a guard listing the words
+    # it already knew about could never notice.
+    # NOT VC.live_now(), WHICH IS THE THING UNDER TEST. Deriving the
+    # expectation from the function being checked makes the guard agree with
+    # whatever that function currently returns: hardcoding the list back to
+    # three words passed, because the guard then only looked for those three.
+    # The source of truth is the applier's list, on the other side of the
+    # repo from the mail.
+    import proposal_rulings as _PR
+    for kind in _PR.SELF_SERVE_KINDS:
+        want = VC.PLAIN.get(kind)
+        if not want:
+            errors += fail(f"{kind} goes live without review and the welcome "
+                           f"has no words for it")
+            continue
+        if want.lower() not in text.lower():
+            errors += fail(f"{want} goes live without review and the welcome "
+                           f"never says so")
+        if want.lower() not in html.lower():
+            errors += fail(f"the HTML half of the welcome does not name {want}")
     for want in ("competitor", "category"):
         if want not in text.lower() or want not in html.lower():
             errors += fail(f"the welcome does not say {want} stays ours, so "
@@ -21721,6 +22050,10 @@ def main() -> int:
     errors += check_kv_cannot_certify_its_own_claimant()
     errors += check_an_unreviewed_edit_is_never_logged_as_accepted()
     errors += check_a_logo_is_what_its_bytes_say()
+    errors += check_a_claim_handed_back_stops_landing()
+    errors += check_the_gate_rules_each_person_not_each_company()
+    errors += check_two_proposals_in_one_millisecond_are_two_rows()
+    errors += check_the_logo_fetch_never_raises()
     errors += check_the_two_self_serve_lists_agree()
     errors += check_the_welcome_names_what_changed_and_what_did_not()
     errors += check_a_company_can_correct_its_own_record()

@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import pathlib
 import sys
+import urllib.parse as up
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LOGOS = ROOT / "assets" / "logos"
@@ -77,24 +78,45 @@ def sniff(blob: bytes) -> str:
 
 
 def _fetch(url: str) -> tuple[bytes, str]:
-    """(bytes, error). Never raises: a claimant's server is not ours."""
+    """(bytes, error). Never raises: a claimant's server is not ours.
+
+    REDIRECTS ARE NOT FOLLOWED, and that is the whole point. check() binds the
+    https rule and the same-domain rule to ONE url string. requests follows
+    redirects by default, so with them on those rules bound the first hop
+    only: https://acme.com/logo.png could 302 to http://169.254.169.254/ and
+    the request would be made - on the machine running the sync, which is a
+    CI runner with a metadata endpoint - before anything could re-check it.
+    Re-checking r.url afterwards does not help, because by then every hop has
+    already been fetched. So a redirect is refused and the claimant is asked
+    for the address it ends at, which is a URL we can actually check.
+
+    EVERYTHING IS INSIDE THE try. iter_content was outside it, and the
+    docstring above still said "never raises": a claimant's server resetting
+    the connection mid-body would have raised out of here, out of
+    land_self_serve, and ended the sync - so one broken server would hold up
+    every other claimant's edits.
+    """
     import requests
     try:
-        r = requests.get(url, timeout=20, stream=True,
+        r = requests.get(url, timeout=20, stream=True, allow_redirects=False,
                          headers={"user-agent": "sledjobs-logo/1.0"})
+        if 300 <= r.status_code < 400:
+            return b"", ("redirects, and we only check the address you give "
+                         "us. Send the address it ends at")
+        if r.status_code != 200:
+            return b"", f"answered {r.status_code}"
+        # READ WITH A CEILING, not r.content. A content-length header is the
+        # server's claim about itself; the cap has to bind on what actually
+        # arrives - decompressed, which is what iter_content yields - or a
+        # small gzip response becomes a large read.
+        blob = b""
+        for chunk in r.iter_content(8192):
+            blob += chunk
+            if len(blob) > MAX_BYTES:
+                return b"", f"is larger than {MAX_BYTES // 1024}KB"
+        return blob, ""
     except Exception as e:
         return b"", f"could not be fetched ({type(e).__name__})"
-    if r.status_code != 200:
-        return b"", f"answered {r.status_code}"
-    # READ WITH A CEILING, not r.content. A content-length header is the
-    # server's claim about itself; the cap has to bind on what actually
-    # arrives or a 4GB response is a 4GB read.
-    blob = b""
-    for chunk in r.iter_content(8192):
-        blob += chunk
-        if len(blob) > MAX_BYTES:
-            return b"", f"is larger than {MAX_BYTES // 1024}KB"
-    return blob, ""
 
 
 def check(cid: str, url: str, domain: str) -> str:
@@ -104,7 +126,21 @@ def check(cid: str, url: str, domain: str) -> str:
     u = str(url or "").strip()
     if not u.lower().startswith("https://"):
         return "a logo has to come over https from the company's own site"
-    host = u.split("//", 1)[-1].split("/")[0].split(":")[0]
+    # PARSED, NOT SPLIT. Hand-splitting on the first colon reads the USERINFO
+    # as the host: `https://acme.com:x@evil.com/l.png` came out as "acme.com"
+    # and passed the same-domain rule, while requests would have connected to
+    # evil.com. The endpoint's WHATWG `new URL()` gets this right and refuses
+    # it, so nothing reachable exercised the bug - but the repo is supposed to
+    # be the authority here, and an authority that is only correct because the
+    # half it does not trust happens to be correct is not one.
+    try:
+        bits = up.urlsplit(u)
+    except ValueError:
+        return "that is not a URL we can read"
+    if bits.username or bits.password:
+        return ("a logo URL with a username or password in it is not one we "
+                "will fetch; the part before the @ is not the host")
+    host = bits.hostname or ""
     if not registrable(host):
         return f"{host!r} is not a host we can check"
     if domain and registrable(host) != registrable(domain):

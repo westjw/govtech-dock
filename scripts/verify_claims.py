@@ -77,9 +77,18 @@ def waiting(kv) -> list[dict]:
         if not rec.get("confirmed"):
             continue          # not a claim yet; the funnel counts it, not this
         cid, tail = rec["company_id"], k.split(":", 1)[-1][-6:]
-        st = employer_log.state(cid)
-        if rec.get("domain") in st["verified_domains"]:
-            continue
+        # PER TAIL, AND ONLY PER TAIL. This first filtered on
+        # state(cid)["verified_domains"], which is a set of DOMAINS - and
+        # startClaim requires every claimant at one company to use the same
+        # domain as the company's website, so the moment the first person was
+        # verified every later colleague matched the filter and vanished from
+        # this queue. The owner could then neither verify nor refuse them:
+        # --verify selects from this same list and answered "no claim
+        # waiting", while _ruled() correctly said the claim had never been
+        # ruled at all. It failed closed - nothing of theirs could land - but
+        # the gate was unusable for anybody but the first person at a company,
+        # which is the per-company collapse _ruled()'s own comment exists to
+        # refuse. `_ruled` is the whole check; there is no second one.
         if _ruled(cid, tail):
             continue
         out.append({"company_id": cid, "name": rec.get("name") or cid,
@@ -154,6 +163,22 @@ def sync_claims_registrable(url: str) -> str:
     return ".".join(p[-2:])
 
 
+# WHAT EACH SELF-SERVE KIND IS CALLED IN THE ONE MAIL THAT EXPLAINS THEM.
+# Keyed off proposal_rulings.SELF_SERVE_KINDS so the welcome cannot quietly
+# fall behind what actually goes live: `profile` was self-serve and unnamed
+# here, so a claimant whose write-up appeared unreviewed had been told a
+# person would read it first. check_the_welcome_names_what_changed_and_what_
+# did_not walks the list rather than three hardcoded words.
+PLAIN = {"description": "description", "profile": "write-up",
+         "logo": "logo", "job": "open roles"}
+
+
+def live_now() -> list[str]:
+    """The self-serve kinds in plain words, in the order they are shown."""
+    import proposal_rulings
+    return [PLAIN.get(k, k) for k in proposal_rulings.SELF_SERVE_KINDS]
+
+
 def welcome(row: dict) -> tuple[str, str, str]:
     """(subject, text, html) for the one mail this gate sends.
 
@@ -165,11 +190,12 @@ def welcome(row: dict) -> tuple[str, str, str]:
     """
     page = f"{SITE}/c/{row['company_id']}"
     sub = f"You can edit {row['name']} on {brand.NAME}"
+    goes = live_now()
+    listed = ", ".join("your " + g for g in goes[:-1]) + " and your " + goes[-1]
     text = (
         f"{row['name']} is verified on {brand.NAME}.\n\n"
-        f"From now on your description, your logo and your open roles go "
-        f"straight onto your page - no review, no waiting on us. Posting "
-        f"roles is free and stays free.\n\n"
+        f"From now on {listed} go straight onto your page - no review, no "
+        f"waiting on us. Posting roles is free and stays free.\n\n"
         f"Three things stay ours, and they are worth saying out loud:\n"
         f"  - your competitors. Who a buyer shortlists you against is not "
         f"yours to edit, and a market map where vendors curate their own "
@@ -185,8 +211,8 @@ def welcome(row: dict) -> tuple[str, str, str]:
         f"{row['name']} is verified on {brand.NAME}",
         f"""<p style="margin:0 0 14px"><strong>{row['name']}</strong> is verified.
         We looked, and you are who you said you were.</p>
-        <p style="margin:0 0 14px">From now on your description, your logo and your
-        open roles go straight onto your page &mdash; no review, no waiting on us.
+        <p style="margin:0 0 14px">From now on {listed} go straight onto your page
+        &mdash; no review, no waiting on us.
         Posting roles is free and stays free.</p>
         <p style="margin:0 0 8px">Three things stay ours, and they are worth saying
         out loud:</p>

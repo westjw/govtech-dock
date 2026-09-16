@@ -621,7 +621,16 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     try:
         import employer_log
         ok = employer_log.verified_claims()
-    except Exception:
+    except Exception as e:                                  # noqa: BLE001
+        # NOT SILENT. Falling back to {} tells every verified company that a
+        # person reviews their edits, which stopped being true when the owner
+        # verified them - so the failure has to be visible in the build log
+        # rather than showing up as claimants waiting for a review that is
+        # not coming. The build still completes: a missing badge is a smaller
+        # loss than no site.
+        print(f"  meta-claims: could not read the employer log ({e}); every "
+              f"claimant will be told a person reviews their edits",
+              file=sys.stderr)
         ok = {}
     (out / "meta-claims.json").write_text(
         json.dumps({"generated": gen, "verified": ok}, separators=(",", ":")))

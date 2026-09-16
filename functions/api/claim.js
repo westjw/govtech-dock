@@ -405,6 +405,21 @@ async function release(body, env) {
   const held = JSON.parse((await env.ALERTS.get("claimco:" + rec.company_id)) || "[]");
   const left = held.filter((t) => t !== token);
   await env.ALERTS.put("claimco:" + rec.company_id, JSON.stringify(left));
+  /* A TOMBSTONE, BECAUSE THE DELETE BELOW IS INVISIBLE TO THE REPO.
+   * sync_claims projects the employer log from the KV records that EXIST, so
+   * a record that has been deleted cannot produce an event - and
+   * `claim_released` was declared in employer_log with nothing anywhere
+   * writing it. The consequences were not theoretical: verified_claims()
+   * keeps the tail forever, so the proposals this person already sent (90-day
+   * TTL, still in KV) would go on landing unreviewed after they had handed
+   * the claim back, and the published meta-claims.json would keep saying they
+   * were verified. Written BEFORE the delete: a tombstone that only appears
+   * if the delete succeeded is a tombstone that can be lost. */
+  await env.ALERTS.put(`claimrel:${rec.company_id}:${token.slice(-6)}`,
+    JSON.stringify({ company_id: rec.company_id, domain: rec.domain || "",
+                     token_tail: token.slice(-6),
+                     at: new Date().toISOString() }),
+    { expirationTtl: 60 * 60 * 24 * 400 });
   await env.ALERTS.delete("claim:" + token);
   return json({ ok: true, released: true });
 }

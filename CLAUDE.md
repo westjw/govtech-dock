@@ -1306,6 +1306,12 @@ board" would stop being true. `check_kv_cannot_certify_its_own_claimant` is
 the standing guard, and verification is per claim tail, not per company —
 two people at one company are two decisions.
 
+**Handing a claim back leaves a tombstone.** `release()` deletes the KV
+record, and sync_claims projects the log from the records that still exist —
+so a release produced no event at all and `verified_claims()` kept the tail
+forever, landing edits for somebody who had walked away. `claimrel:<id>:<tail>`
+is written *before* the delete and is what makes the release an event.
+
 **An unreviewed edit is logged as `proposal_self_served`, never
 `proposal_accepted`.** The second kind means a person read it. Folding
 self-serve into it would make every accept rate the employer log reports a
