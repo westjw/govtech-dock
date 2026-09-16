@@ -9471,6 +9471,467 @@ def check_a_company_can_correct_its_own_record() -> int:
     return errors
 
 
+def _claim_sandbox(companies=None):
+    """(store, companies, restore) with every writer stubbed and the log in tmp.
+
+    Shared by the claim-path checks below. The suite must not write to what it
+    checks, and these drive the REAL ingest, queue, lander and ruling - all of
+    which write in production.
+    """
+    import admin
+    import agents
+    import employer_log as EL
+    import proposal_rulings as PR
+
+    store: dict = {}
+    cos = companies or [{"id": "acme", "name": "Acme", "sector": "Public Safety",
+                         "category": "Police",
+                         "description": "Old line about Acme."}]
+    saved = {"agents.load": agents.load, "agents.save": agents.save,
+             "admin.read": admin.read, "admin.save_decisions": admin.save_decisions,
+             "admin.read_companies": admin.read_companies,
+             "admin.save_companies": admin.save_companies,
+             "admin.validate": admin.validate,
+             "admin.act_capture": getattr(admin, "act_capture", None),
+             "EL.LOG": EL.LOG}
+    real_read = admin.read
+    agents.load = lambda: store
+    agents.save = lambda st, *a, **k: None
+    admin.read = lambda n, d=None: (store if n == "agent_proposals.json"
+                                    else real_read(n, d))
+    admin.save_decisions = lambda *a, **k: None
+    admin.read_companies = lambda: cos
+    admin.save_companies = lambda *a, **k: None
+    admin.validate = lambda x: None
+    admin.act_capture = lambda body: {"ok": True, "message": "1 added"}
+    EL.LOG = pathlib.Path(tempfile.mkdtemp()) / "employer_events.jsonl"
+
+    def restore():
+        agents.load = saved["agents.load"]
+        agents.save = saved["agents.save"]
+        admin.read = saved["admin.read"]
+        admin.save_decisions = saved["admin.save_decisions"]
+        admin.read_companies = saved["admin.read_companies"]
+        admin.save_companies = saved["admin.save_companies"]
+        admin.validate = saved["admin.validate"]
+        if saved["admin.act_capture"] is not None:
+            admin.act_capture = saved["admin.act_capture"]
+        EL.LOG = saved["EL.LOG"]
+
+    return store, cos, restore
+
+
+def _kv_proposal(kind, at, cid="acme", tail="aaa111", **kw):
+    """One claimant proposal in the shape sync_claims.pull returns."""
+    return dict({"company_id": cid, "kind": kind, "at": at,
+                 "by_domain": "acme.com", "token_tail": tail,
+                 "_key": f"claimprop:{cid}:{at}"}, **kw)
+
+
+def check_a_claimants_words_survive_the_whole_path() -> int:
+    """A correction reaches the owner's screen, and can be ruled from it.
+
+    DRIVEN THROUGH THE REAL PIPELINE, which is the whole point:
+    sync_claims.as_proposals -> agents.ingest -> admin.q_proposals ->
+    proposal_rulings.rule. check_a_company_can_correct_its_own_record builds
+    the proposal dict by hand under the key "k" and injects it straight into
+    rule(), so it passed for months while the path was broken in three
+    independent places and no claimant correction could land at all:
+
+      - ingest read the key as `<kind>:<everything after the first colon>`, so
+        `claim:acme:<timestamp>` was refused as an answer about a company
+        called "acme:<timestamp>";
+      - the row ingest stored enumerated its fields and had no `edit`, so the
+        claimant's domain and words were dropped and the applier refused it
+        for "no claimant domain survived intake";
+      - q_proposals iterated .values() and rebuilt the key as `<kind>:<id>`,
+        which is not the key the row is stored under.
+
+    A guard that drives the applier proves nothing about the four things in
+    front of it.
+    """
+    import agents
+    import proposal_rulings as PR
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        import admin
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z",
+                          description="Acme sells computer-aided dispatch.")],
+            cos)
+        rep = agents.ingest("claim", rows, model="claim:company")
+        key = rows[0]["key"]
+        if rep["kept"] != 1:
+            errors += fail(f"a company's own correction was refused at intake: "
+                           f"{rep['refused']}")
+        row = store.get(key) or {}
+        if not (row.get("edit") or {}).get("by_domain"):
+            errors += fail("the claimant's domain did not survive intake; the "
+                           "applier refuses an unattributable correction, so "
+                           "nothing they send can ever land")
+        if (row.get("edit") or {}).get("description") != \
+                "Acme sells computer-aided dispatch.":
+            errors += fail("the words the company sent did not survive intake")
+        drawn = [r for r in admin.q_proposals(cos, {"companies": cos})
+                 if r.get("key") == key]
+        if not drawn:
+            errors += fail("a pending claim is not listed in the queue a "
+                           "person reads")
+        elif (drawn[0].get("edit") or {}).get("by_domain") != "acme.com":
+            errors += fail("the queue draws the claim without its `edit`, so "
+                           "the owner rules on 'unknown domain / Kind: "
+                           "undefined' - admin.html reads p.edit")
+        elif drawn[0]["key"] not in store:
+            errors += fail(f"the queue lists {drawn[0]['key']!r}, which is not "
+                           f"a key in the store, so ruling it answers 'no "
+                           f"proposal on file'")
+        else:
+            res = PR.rule(store, drawn[0]["key"], True, why="ok", by="owner")
+            if res.get("error"):
+                errors += fail(f"a claim listed in the queue could not be "
+                               f"ruled from it: {res['error']}")
+            elif cos[0]["description"] != "Acme sells computer-aided dispatch.":
+                errors += fail("the ruling reported ok and the record did not "
+                               "change")
+    finally:
+        restore()
+    return errors
+
+
+def check_a_ruling_is_not_reopened_by_the_next_sync() -> int:
+    """What a person ruled stays ruled when the same KV record is replayed.
+
+    sync_claims reads EVERY `claimprop:` key in KV on every run and the key is
+    stable, while ingest wrote `store[key] = {... "status": "pending"}`
+    unconditionally. So a correction the owner accepted on Monday came back
+    pending on Tuesday, could be applied to the map a second time, and again
+    every night after. rule()'s own once-only guard cannot see it: by the time
+    it looks, the status has already been reset.
+
+    Refused and pending rows stay replaceable - that is what --retry-refused
+    re-asks for. Only what a person actually ruled is left alone.
+    """
+    import agents
+    import proposal_rulings as PR
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z",
+                          description="Acme sells dispatch software.")], cos)
+        agents.ingest("claim", rows, model="claim:company")
+        key = rows[0]["key"]
+        PR.rule(store, key, False, why="not their page", by="owner")
+        if store[key].get("status") != "rejected":
+            errors += fail("the setup did not reject; the rest proves nothing")
+        rep = agents.ingest("claim", rows, model="claim:company")
+        if store[key].get("status") != "rejected":
+            errors += fail("a re-sync reopened a proposal the owner had "
+                           "already ruled; it can now be applied twice")
+        if not rep.get("already_ruled"):
+            errors += fail("the re-sync left a ruled row alone and did not say "
+                           "so - a row that quietly vanishes from an ingest "
+                           "report reads as a sync that did nothing")
+    finally:
+        restore()
+    return errors
+
+
+def check_every_queued_proposal_can_be_ruled() -> int:
+    """Every key the queue lists is a key the store holds. Over real data.
+
+    The row carries no `key` of its own, so q_proposals rebuilt one as
+    `<kind>:<id>`. That is right for `board:acme` and wrong for every key with
+    a third segment: 20 `fact:<field>:<id>` rows were listed under
+    `fact:<id>`, and ruling one answered "no proposal on file under ...".
+    Claim keys carry a timestamp and would have failed the same way.
+    """
+    import admin
+
+    errors = 0
+    raw = json.load(open(DATA / "agent_proposals.json"))
+    rows = raw.get("rows", raw) if isinstance(raw, dict) else raw
+    companies = json.load(open(DATA / "companies.json"))
+    board = json.load(open(DATA / "board.json"))
+    missing = [r["key"] for r in admin.q_proposals(companies, board)
+               if r.get("key") not in rows]
+    if missing:
+        errors += fail(f"{len(missing)} queued proposal(s) name a key the "
+                       f"store does not hold, so a person cannot rule what "
+                       f"the tab lists: {missing[:3]}")
+    return errors
+
+
+def check_the_owners_gate_stands_before_self_serve() -> int:
+    """A confirmed claim is not a verified one, and the gate is per person.
+
+    THIS IS THE ONLY ABUSE CONTROL THE FREE TIER HAS. Posting is free because
+    the owner looks once, by hand, before a company can write to its own page
+    unreviewed. A confirmed address proves somebody reads mail at the domain -
+    an intern, a leaver and a contractor all clear that bar. If this check
+    stops failing when the gate is removed, nothing else in the pipeline is
+    watching for one.
+    """
+    import agents
+    import employer_log as EL
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z",
+                          description="Acme sells dispatch to police.")], cos)
+        agents.ingest("claim", rows, model="claim:company")
+        EL.record("claim_confirmed", "acme", by="script:t",
+                  domain="acme.com", claim_tail="aaa111")
+        res = sync_claims.land_self_serve(write=True)
+        if res["landed"]:
+            errors += fail("a CONFIRMED but unverified claimant's edit landed "
+                           "unreviewed - the owner's gate is not in the path")
+        if cos[0]["description"] != "Old line about Acme.":
+            errors += fail("an unverified claimant rewrote the record")
+        if res["not_verified"] != 1:
+            errors += fail("the lander did not report what it left for the "
+                           "owner; a lander that prints only what it landed "
+                           "reads as though it landed everything")
+
+        # a DIFFERENT person at the same company is verified
+        EL.record("claim_verified", "acme", by="owner", domain="acme.com",
+                  claim_tail="bbb222")
+        if sync_claims.land_self_serve(write=True)["landed"]:
+            errors += fail("one verified person at a company carried an "
+                           "unverified colleague through the gate; two claims "
+                           "are two decisions")
+
+        EL.record("claim_verified", "acme", by="owner", domain="acme.com",
+                  claim_tail="aaa111")
+        res = sync_claims.land_self_serve(write=True)
+        if res["landed"] != 1 or res["failed"]:
+            errors += fail(f"a verified claimant's own correction did not "
+                           f"land: {res}")
+        elif cos[0]["description"] != "Acme sells dispatch to police.":
+            errors += fail("the lander reported a landing and the record did "
+                           "not change")
+
+        # handing the claim back ends it
+        EL.record("claim_released", "acme", by="claimant", domain="acme.com",
+                  claim_tail="aaa111")
+        left = EL.verified_claims().get("acme") or []
+        if "aaa111" in left:
+            errors += fail("a claim handed back is still verified; "
+                           "verification is the state of a claim, not a "
+                           "property the company keeps")
+        if "bbb222" not in left:
+            errors += fail("one person handing their claim back un-verified "
+                           "their colleague, who did nothing")
+    finally:
+        restore()
+    return errors
+
+
+def check_kv_cannot_certify_its_own_claimant() -> int:
+    """The Worker's word does not grant write access to the map.
+
+    The claim endpoint stamps `self_serve_expected` on the proposal so the
+    claimant can be told the truth about what happens next. If the lander read
+    THAT instead of the employer log, a bug in the endpoint - or anyone who
+    could write one KV record - would have edit access to 2,044 companies, and
+    "a bug in the claim endpoint cannot corrupt the board" would stop being
+    true. The authorisation is replayed from an append-only file in git that
+    only the owner's gate writes.
+    """
+    import agents
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z",
+                          description="Whatever KV says goes.",
+                          self_serve_expected=True, verified=True)], cos)
+        agents.ingest("claim", rows, model="claim:company")
+        res = sync_claims.land_self_serve(write=True)
+        if res["landed"]:
+            errors += fail("a proposal that CLAIMED to be self-serve landed "
+                           "with no verification in the employer log - KV is "
+                           "certifying its own claimant")
+        if cos[0]["description"] != "Old line about Acme.":
+            errors += fail("a KV flag rewrote a company record")
+    finally:
+        restore()
+    return errors
+
+
+def check_an_unreviewed_edit_is_never_logged_as_accepted() -> int:
+    """`proposal_accepted` means a person read it. Self-serve did not.
+
+    Recording an unreviewed edit under the same kind would make every accept
+    rate the employer log reports a statement about how much of the map a
+    person has seen that is simply false - and it would be unfixable later,
+    because the two would be indistinguishable on the record.
+    """
+    import agents
+    import employer_log as EL
+    import sync_claims
+
+    errors = 0
+    store, cos, restore = _claim_sandbox()
+    try:
+        rows = sync_claims.as_proposals(
+            [_kv_proposal("description", "2026-09-16T10:00:00Z",
+                          description="Acme sells dispatch to police.")], cos)
+        agents.ingest("claim", rows, model="claim:company")
+        EL.record("claim_verified", "acme", by="owner", domain="acme.com",
+                  claim_tail="aaa111")
+        sync_claims.land_self_serve(write=True)
+        kinds = [e["kind"] for e in EL.events("acme")]
+        if "proposal_accepted" in kinds:
+            errors += fail("an edit nobody read was logged as "
+                           "`proposal_accepted`, which says a person read it")
+        if "proposal_self_served" not in kinds:
+            errors += fail("a self-served edit left no transition at all; the "
+                           "log cannot say the map changed")
+        f = EL.funnel()
+        if f["proposals_accepted"]:
+            errors += fail("a self-served edit is counted in the accept rate")
+        if f.get("proposals_self_served") != 1:
+            errors += fail("the funnel does not report what landed unreviewed, "
+                           "so the share of the map no person has seen cannot "
+                           "be known")
+    finally:
+        restore()
+    return errors
+
+
+def check_a_logo_is_what_its_bytes_say() -> int:
+    """The one door that writes a binary from somebody else's server.
+
+    A logo is the only claimant edit that puts bytes we did not make into a
+    public repository, served from our own origin under the company's name.
+    The extension comes from the magic numbers, never the URL; SVG is refused
+    by name rather than silently downgraded; and landing replaces the other
+    extensions for that id, because build_board globs the directory and two
+    files for one company make the rendered src depend on directory order.
+    """
+    import logos
+
+    errors = 0
+    png = b"\x89PNG\r\n\x1a\n" + b"0" * 400
+
+    for url, must in (("http://acme.com/l.png", "https"),
+                      ("https://cdn.elsewhere.com/l.png", "elsewhere.com"),
+                      ("https://acme.com/logo.svg", "SVG")):
+        why = logos.check("acme", url, "acme.com")
+        if not why:
+            errors += fail(f"the logo door accepted {url}")
+        elif must.lower() not in why.lower():
+            errors += fail(f"{url} was refused without naming {must}: {why}")
+
+    # LONG ENOUGH TO CLEAR THE SIZE FLOOR. At 15 bytes it was refused for
+    # being small, which proved nothing about whether the bytes are read.
+    html_page = b"<!doctype html><html><body>404 not found</body></html>" * 20
+    res = logos.install("acme", "https://acme.com/l.png", "acme.com", by="t",
+                        write=False, fetch=lambda u: (html_page, ""))
+    if not res.get("error") or "not a PNG" not in res["error"]:
+        errors += fail(f"an HTML error page named .png was taken as an image: "
+                       f"{res}")
+    res = logos.install("acme", "https://acme.com/l.png", "acme.com", by="t",
+                        write=False, fetch=lambda u: (b"\x89PNG" + b"0" * 4, ""))
+    if not res.get("error"):
+        errors += fail("a 9-byte 'logo' was accepted")
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    real = logos.LOGOS
+    logos.LOGOS = tmp
+    try:
+        (tmp / "acme.svg").write_bytes(b"<svg/>")
+        res = logos.install("acme", "https://acme.com/l.png", "acme.com",
+                            by="t", write=True, fetch=lambda u: (png, ""))
+        if res.get("error"):
+            errors += fail(f"a real PNG on the right domain was refused: {res}")
+        elif (tmp / "acme.svg").exists():
+            errors += fail("landing a logo left the old file beside the new "
+                           "one; the manifest is a glob, so which one the page "
+                           "shows now depends on directory order")
+        elif not (tmp / "acme.png").exists():
+            errors += fail("the logo door reported ok and wrote nothing")
+    finally:
+        logos.LOGOS = real
+    return errors
+
+
+def check_the_two_self_serve_lists_agree() -> int:
+    """What goes live without review is one list, written down twice.
+
+    claim.js tells the claimant which of their edits appear without anybody
+    reading them; the repo decides which actually do. A kind that is
+    self-serve at the endpoint and queued here promises somebody something the
+    repo will not do, and the drift is silent - the same failure the two
+    applier lists are held together for.
+    """
+    import proposal_rulings as PR
+
+    errors = 0
+    src = (ROOT / "functions" / "api" / "claim.js").read_text()
+    m = re.search(r"const SELF_SERVE = new Set\(\[(.*?)\]\)", src, re.S)
+    if not m:
+        return fail("claim.js no longer declares SELF_SERVE, so nothing tells "
+                    "a claimant which edits skip the queue")
+    js = set(re.findall(r'"([a-z]+)"', m.group(1)))
+    py = set(PR.SELF_SERVE_KINDS)
+    if js != py:
+        errors += fail(f"the two self-serve lists disagree: claim.js says "
+                       f"{sorted(js)}, proposal_rulings says {sorted(py)}")
+    for k in ("category", "competitors"):
+        if k in py:
+            errors += fail(f"{k} is self-serve, and it is the one thing "
+                           f"claim.js promises a person decides")
+    return errors
+
+
+def check_the_welcome_names_what_changed_and_what_did_not() -> int:
+    """The one mail the gate sends says which edits now skip the queue.
+
+    Before verification a claimant is told "a person reviews every change
+    before it appears", and that is true. After it, it is not. A welcome that
+    only says "you're in" leaves them waiting for a review that is not coming,
+    and leaves the three refusals to be discovered by trying one.
+    """
+    import verify_claims as VC
+
+    errors = 0
+    row = {"company_id": "acme", "name": "Acme", "domain": "acme.com",
+           "email": "someone@acme.com", "tail": "aaa111",
+           "confirmed_at": "2026-09-16T10:00:00Z", "created": "", "proposals": 0}
+    sub, text, html = VC.welcome(row)
+    for want in ("description", "logo", "role"):
+        if want not in text.lower():
+            errors += fail(f"the welcome never says {want} goes live")
+    for want in ("competitor", "category"):
+        if want not in text.lower() or want not in html.lower():
+            errors += fail(f"the welcome does not say {want} stays ours, so "
+                           f"the claimant learns it by being refused")
+    if "acme" not in sub.lower():
+        errors += fail("the welcome subject does not name the company")
+    # NOT "no @ anywhere" - the mail shell carries @media in its CSS, and a
+    # guard that fails on that would be turned off rather than fixed. What
+    # must never appear is the claimant's own address.
+    if row["email"] in html or row["email"] in text:
+        errors += fail("the claimant's address was written into the welcome "
+                       "body, which is then quotable, forwardable and logged")
+    masked = VC.mask("somebody@acme.com")
+    if "somebody" in masked or "@acme.com" not in masked:
+        errors += fail(f"verify_claims.mask does not mask: {masked}")
+    return errors
+
+
 def check_the_employer_log_stores_transitions() -> int:
     """The employer trail must answer a question about a PAST date.
 
@@ -21253,6 +21714,15 @@ def main() -> int:
     errors += check_promotion_refuses_a_generated_name()
     errors += check_the_domain_lives_in_one_place()
     errors += check_the_employer_log_stores_transitions()
+    errors += check_a_claimants_words_survive_the_whole_path()
+    errors += check_a_ruling_is_not_reopened_by_the_next_sync()
+    errors += check_every_queued_proposal_can_be_ruled()
+    errors += check_the_owners_gate_stands_before_self_serve()
+    errors += check_kv_cannot_certify_its_own_claimant()
+    errors += check_an_unreviewed_edit_is_never_logged_as_accepted()
+    errors += check_a_logo_is_what_its_bytes_say()
+    errors += check_the_two_self_serve_lists_agree()
+    errors += check_the_welcome_names_what_changed_and_what_did_not()
     errors += check_a_company_can_correct_its_own_record()
     errors += check_the_two_applier_lists_agree()
     errors += check_the_claim_queue_draws_what_was_sent()

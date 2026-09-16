@@ -2267,9 +2267,23 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     asked = unclassified_titles() if kind == "family" else set()
     store = load()
     now = dt.datetime.now().astimezone().isoformat(timespec="seconds")
-    kept, refused = 0, []
+    kept, refused, already = 0, [], []
     for p in proposals:
         key = p.get("key") or f"{kind}:{p.get('id')}"
+        # A RULING IS NOT RE-OPENED BY THE NEXT SYNC. `store[key] = {...
+        # "status": "pending"}` below is unconditional, and sync_claims reads
+        # EVERY claimprop: key in KV on every run against a stable key. So a
+        # correction the owner accepted on Monday came back pending on
+        # Tuesday and could be applied to the map a second time, and again
+        # every night after that. Refused and pending rows are still
+        # replaceable - that is what --retry-refused re-asks for; only what a
+        # person actually ruled is left alone. NOT A SILENT SKIP: the count is
+        # returned and printed, because a row that quietly vanished from an
+        # ingest report is how somebody concludes the sync did nothing.
+        was = store.get(key) or {}
+        if was.get("status") in ("accepted", "rejected"):
+            already.append(key)
+            continue
         # A PROPOSAL MUST BE ABOUT THE COMPANY IT WAS ASKED ABOUT. The key is
         # built by the brief, from the company we chose; the id is whatever the
         # model echoed back. When they disagree the answer is about something
@@ -2282,8 +2296,20 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
         # published under another's name. Refused rather than silently
         # corrected: a disagreement means the answer was about something else,
         # and which half is wrong is not ours to guess.
-        want = key.split(":", 1)[1] if ":" in key else None
-        if want and p.get("id") and p["id"] != want:
+        #
+        # THE ID IS A SEGMENT OF THE KEY, NOT "EVERYTHING AFTER THE FIRST
+        # COLON". Written that way first, it read `claim:acme:<timestamp>` as
+        # a question about "acme:<timestamp>", so EVERY claim proposal a
+        # company sent about itself was refused as an answer about somebody
+        # else - a company correcting its own page was told, in the store, that
+        # it had named the wrong company. `fact:location:athletify` puts the id
+        # last and `claim:<id>:<at>` puts it second, so no fixed position is
+        # right. Membership is: the ascento-ag / ascento-ai case this guard
+        # exists for still refuses, because the other company's id is not a
+        # segment of the key we built.
+        segs = [s for s in key.split(":") if s]
+        want = segs[1] if len(segs) > 1 else None
+        if want and p.get("id") and p["id"] not in segs:
             refused.append({"key": key, "why": (
                 f"0. this answer names {p['id']!r} and was asked about "
                 f"{want!r}. An answer about another company cannot be checked "
@@ -2409,6 +2435,15 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
             # and it is still only eligibility, not the flag.
             "sled_eligible": (buyer_sled_eligible(p) if kind == "buyer"
                               else None),
+            # A CLAIM PROPOSAL *IS* ITS `edit`: the kind, the claimant's
+            # domain and the words they sent. This dict enumerates its fields
+            # and had no `edit`, so every claimant correction reached the
+            # store stripped of its entire content - _accept_claim then
+            # refused it for "no claimant domain survived intake", and the
+            # owner's queue drew "unknown domain / Kind: undefined". Only the
+            # REFUSED branch kept it, nested under `proposal`, so the one
+            # shape a person could read was the one nobody could accept.
+            "edit": p.get("edit") or None,
             "by": model or "agent",
             "at": now,
             "status": "pending",
@@ -2422,6 +2457,9 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     # four invented product names and a quote that is not on the page - are
     # thrown away with them. The count goes to stdout before the write, and
     # the journal still records it as one reversible entry.
+    if already:
+        print(f"  {len(already)} {kind} proposal(s) already ruled by a person; "
+              f"left as they are", file=sys.stderr)
     n = kept + len(refused)
     if n > 25:
         print(f"  ingesting {n} {kind} proposal(s) ({kept} through the door, "
@@ -2432,8 +2470,9 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
                by=model or "agent", force=n > 25)
     if bad:
         return {"kept": 0, "refused": refused + [{"key": "*", "why": bad}],
-                "total": len(store)}
-    return {"kept": kept, "refused": refused, "total": len(store)}
+                "already_ruled": already, "total": len(store)}
+    return {"kept": kept, "refused": refused, "already_ruled": already,
+            "total": len(store)}
 
 
 def summary() -> dict:

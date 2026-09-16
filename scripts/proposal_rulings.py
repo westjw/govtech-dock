@@ -73,6 +73,21 @@ ELSEWHERE = {"profile": "one at a time here, or a category at a time: promote_pr
              "buyer": "one at a time here, or a category at a time: promote_profiles.py --gate-buyer <category>"}
 NO_APPLIER = ("news",)
 
+# WHO LANDS A VERIFIED CLAIMANT'S OWN EDIT. Named once and shared, because two
+# places have to agree on it: sync_claims passes it as the ruling's author,
+# and _log_employer_ruling reads it to decide the log says `self_served`
+# rather than `accepted`. A literal in both is a literal that drifts, and the
+# drift would be silent and would only show up as an accept rate that is
+# quietly wrong.
+SELF_SERVE_BY = "script:claim-self-serve"
+
+# WHAT A VERIFIED CLAIMANT MAY LAND WITHOUT A PERSON. Mirrors SELF_SERVE in
+# functions/api/claim.js, and check_the_two_self_serve_lists_agree holds them
+# together for the reason the two applier lists are held together: a kind that
+# is self-serve at the endpoint and queued here promises a claimant something
+# the repo will not do.
+SELF_SERVE_KINDS = ("description", "profile", "logo", "job")
+
 
 def _log_employer_ruling(p: dict, key: str, accepted: bool, by: str,
                          why: str) -> None:
@@ -94,7 +109,23 @@ def _log_employer_ruling(p: dict, key: str, accepted: bool, by: str,
     cid = p.get("id")
     if not cid:
         return
-    kind = ((p.get("edit") or {}).get("kind")) or "unknown"
+    edit = p.get("edit") or {}
+    kind = edit.get("kind") or "unknown"
+    # AN UNREVIEWED EDIT IS NOT AN ACCEPTED ONE. `proposal_accepted` says a
+    # person read the proposal and applied it; a verified claimant's own
+    # correction lands with nobody reading it, and filing that under
+    # "accepted" would make every accept rate this log reports a claim about
+    # how much of the map a person has seen that is simply false. The gate
+    # moved to the claim, once - it did not stop existing.
+    if accepted and by == SELF_SERVE_BY:
+        try:
+            employer_log.record_once(
+                "proposal_self_served", cid, by=by, source_key=key,
+                proposal_kind=kind, domain=edit.get("by_domain") or "",
+                proposal_key=key)
+        except Exception as e:                              # noqa: BLE001
+            print(f"employer_log: could not record {key}: {e}", file=sys.stderr)
+        return
     try:
         employer_log.record_once(
             "proposal_accepted" if accepted else "proposal_rejected",
@@ -344,6 +375,21 @@ def _accept_claim(p: dict, by: str, why: str, force: bool) -> dict:
         return {"ok": True, "message": f"{c.get('name')}: {title} - "
                                        f"{res.get('message') or 'captured'}"}
 
+    if kind == "logo":
+        # THROUGH logos.install, not around it. That door holds the https
+        # rule, the same-domain rule, the size ceiling, the magic-byte sniff
+        # and the one-file-per-company sweep - and it is the only writer of
+        # assets/logos, so a second caller reimplementing any of them is a
+        # second set of rules. Not journalled, because the journal covers data
+        # files and this is a file in git: `git log assets/logos/<id>.*` is
+        # the before-image, and reverting is a checkout.
+        import logos as _logos
+        res = _logos.install(cid, (edit.get("url") or "").strip(), domain,
+                             by=by, write=True)
+        if res.get("error"):
+            return res
+        return {"ok": True, "message": f"{c.get('name')}: {res['message']}"}
+
     if kind == "contact":
         text = (edit.get("note") or "").strip()
         if not text:
@@ -357,8 +403,8 @@ def _accept_claim(p: dict, by: str, why: str, force: bool) -> dict:
                 {"ok": True, "message": f"noted against {c.get('name')}"})
 
     return {"error": f"a claim of kind {kind!r} has no door here. The kinds "
-                     f"claim.js sends are description, profile, job, category "
-                     f"and contact"}
+                     f"claim.js sends are description, profile, logo, job, "
+                     f"category and contact"}
 
 
 def _accept_where(p: dict, by: str, why: str, force: bool) -> dict:

@@ -91,6 +91,21 @@ KINDS = {
                 "moment a claim becomes real.",
         "needs": ("domain",),
     },
+    "claim_verified": {
+        "what": "The owner looked at a confirmed claim and let it through. THIS "
+                "IS THE ONLY ABUSE CONTROL THE FREE TIER HAS: posting is free "
+                "because the cost of a bad actor is paid once, here, by a "
+                "person, rather than metered forever as a posting fee. A "
+                "confirmed address proves somebody reads mail at the domain; "
+                "it does not prove the company wants them speaking for it.",
+        "needs": ("domain",),
+    },
+    "claim_refused": {
+        "what": "The owner looked and said no. The `why` is the whole value: a "
+                "gate that refuses without a reason cannot be audited, and the "
+                "next person to look at a similar claim learns nothing.",
+        "needs": ("domain", "why"),
+    },
     "claim_released": {
         "what": "They handed the claim back, or we took it back. Either way the "
                 "page stops saying the company stands behind it.",
@@ -110,6 +125,16 @@ KINDS = {
         "what": "A person read it and said no. The `why` is the training data - "
                 "a rejection with no reason teaches nothing later.",
         "needs": ("proposal_kind", "why"),
+    },
+    "proposal_self_served": {
+        "what": "A VERIFIED claimant changed their own page and NOBODY READ IT "
+                "FIRST. Deliberately not `proposal_accepted`: that kind says a "
+                "person read the proposal and applied it, and recording an "
+                "unreviewed edit under it would make every accept-rate this "
+                "log reports a lie about how much of the map a person has "
+                "actually seen. The gate moved to the claim, once; it did not "
+                "disappear.",
+        "needs": ("domain", "proposal_kind"),
     },
 }
 
@@ -283,8 +308,14 @@ def state(company_id: str, on: str | None = None) -> dict:
     st = {"company_id": company_id, "on": on or dt.date.today().isoformat(),
           "claim_domains": [], "claims_started": 0,
           "proposals_sent": 0, "proposals_accepted": 0, "proposals_rejected": 0,
+          "proposals_self_served": 0,
           "first_seen": None, "last_seen": None}
     held: set[str] = set()
+    # VERIFICATION IS PER DOMAIN, NOT PER COMPANY. Two people at one company
+    # hold separate claims and the owner rules on each; letting one person's
+    # pass carry the other's would make the gate a formality for anybody who
+    # could find a colleague already through it.
+    ok: set[str] = set()
     for ev in events(company_id, until=on):
         k = ev["kind"]
         st["first_seen"] = st["first_seen"] or ev["at"]
@@ -293,17 +324,64 @@ def state(company_id: str, on: str | None = None) -> dict:
             st["claims_started"] += 1
         elif k == "claim_confirmed":
             held.add(ev.get("domain", ""))
+        elif k == "claim_verified":
+            ok.add(ev.get("domain", ""))
+        elif k == "claim_refused":
+            ok.discard(ev.get("domain", ""))
         elif k == "claim_released":
             held.discard(ev.get("domain", ""))
+            ok.discard(ev.get("domain", ""))
         elif k == "proposal_sent":
             st["proposals_sent"] += 1
         elif k == "proposal_accepted":
             st["proposals_accepted"] += 1
         elif k == "proposal_rejected":
             st["proposals_rejected"] += 1
+        elif k == "proposal_self_served":
+            st["proposals_self_served"] += 1
     st["claim_domains"] = sorted(d for d in held if d)
     st["claimed"] = bool(st["claim_domains"])
+    # A DOMAIN THAT WAS VERIFIED AND THEN RELEASED IS NOT VERIFIED. Both sets
+    # are replayed, and this is their intersection rather than `ok` alone.
+    st["verified_domains"] = sorted(d for d in (held & ok) if d)
+    st["verified"] = bool(st["verified_domains"])
     return st
+
+
+def verified_claims() -> dict:
+    """{company_id: [claim_tail, ...]} for every claim the owner let through.
+
+    THE ONE ANSWER TO "MAY THIS EDIT LAND UNREVIEWED", and it is replayed from
+    the transitions like everything else here rather than read off a stored
+    flag. Two readers depend on it and they depend on it for different
+    reasons:
+
+      - sync_claims, to decide whether a correction goes to the queue or
+        straight onto the map. That is an authorisation decision, and it is
+        made HERE - from an append-only file in git that only the owner's gate
+        writes - and never from the `verified` flag the Worker keeps on its
+        own KV record. The Worker is allowed to be wrong; a Worker whose word
+        granted map access would make a bug in the claim endpoint into a way
+        to edit the board.
+      - build_site, to publish the tails so the endpoint can tell a verified
+        claimant their edit goes live rather than into a queue. That one is
+        only a message, which is why it is safe to publish.
+
+    A RELEASED OR REFUSED CLAIM DROPS OUT. Verification is not a property the
+    company keeps; it is the state of one claim, and handing the claim back
+    ends it.
+    """
+    out: dict = {}
+    for ev in events():
+        cid, tail = ev.get("company_id"), ev.get("claim_tail")
+        if not cid or not tail:
+            continue
+        held = out.setdefault(cid, set())
+        if ev["kind"] == "claim_verified":
+            held.add(tail)
+        elif ev["kind"] in ("claim_refused", "claim_released"):
+            held.discard(tail)
+    return {c: sorted(t) for c, t in out.items() if t}
 
 
 def funnel(since: str | None = None, until: str | None = None) -> dict:
@@ -317,12 +395,22 @@ def funnel(since: str | None = None, until: str | None = None) -> dict:
     by_kind = collections.Counter(e["kind"] for e in evs)
     started = {e["company_id"] for e in evs if e["kind"] == "claim_started"}
     confirmed = {e["company_id"] for e in evs if e["kind"] == "claim_confirmed"}
+    verified = {e["company_id"] for e in evs if e["kind"] == "claim_verified"}
+    refused = {e["company_id"] for e in evs if e["kind"] == "claim_refused"}
     proposed = {e["company_id"] for e in evs if e["kind"] == "proposal_sent"}
     ruled = by_kind["proposal_accepted"] + by_kind["proposal_rejected"]
     return {
         "events": len(evs),
         "companies_started": len(started),
         "companies_confirmed": len(confirmed),
+        # THE STAGE THAT IS A PERSON. Everything either side of it is a
+        # machine answering in milliseconds; this one waits on the owner
+        # opening a queue, so it is where the funnel will actually bend and
+        # the number worth watching is the WAIT, not the pass rate.
+        "companies_verified": len(verified),
+        "companies_refused": len(refused),
+        "companies_confirmed_awaiting_the_owner":
+            len(confirmed - verified - refused),
         "companies_that_sent_something": len(proposed),
         "proposals_sent": by_kind["proposal_sent"],
         "proposals_accepted": by_kind["proposal_accepted"],
@@ -334,6 +422,10 @@ def funnel(since: str | None = None, until: str | None = None) -> dict:
         "accept_rate": (round(by_kind["proposal_accepted"] / ruled, 3)
                         if ruled else None),
         "proposals_awaiting_a_person": by_kind["proposal_sent"] - ruled,
+        # NOT COUNTED AS ACCEPTED ANYWHERE ABOVE, on purpose. These landed
+        # without a person reading them, and folding them into the accept
+        # rate would inflate it with rulings nobody made.
+        "proposals_self_served": by_kind["proposal_self_served"],
     }
 
 

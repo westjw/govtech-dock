@@ -1244,11 +1244,78 @@ after every session.
 **On progress_pct honestly.** The scope the owner set is "free as a board,
 paid as a product". Report against BOTH halves, not just the half that is
 nearly done, and say which frame the number uses. The free board being
-shippable is not the project being 90% finished — the paid half currently has
-no pricing, no billing, no accounts and no employer side, and the only paid
-intent on record is "alerts, paid eventually" in the owner's spec. A number
-that quietly means "the free board" is the kind of stale fact this file exists
-to prevent.
+shippable is not the project being 90% finished — the paid half has a model
+now (below) but still no pricing, no billing and no accounts, and the employer
+side is built and dark. A number that quietly means "the free board" is the
+kind of stale fact this file exists to prevent.
+
+## The business model (settled 2026-09-16, by the owner)
+
+Written down because it was tribal knowledge and it decides what gets built.
+
+| | who pays | what they get |
+|---|---|---|
+| **free** | govtech companies | claim their page, write their own description, change their own logo, **post jobs — free** |
+| **paid** | *the same companies* | SLED HQ: council agendas, leadership, procurement vehicles |
+| **paid** | job seekers | the job reviewer — job-hunter productized |
+
+**Employers and sellers are one audience.** A company selling to cities is the
+same company hiring for it, and the board is the top of the funnel for the
+customer SLED HQ is sold to. Do not build two audiences, two logins or two
+funnels; a feature that only makes sense for "employers" as a separate market
+is a feature aimed at somebody who is not here.
+
+**Posting jobs is free, and abuse is handled by the verification gate rather
+than by a price.** A posting fee was considered and rejected: the owner
+verifies every claim by hand before a company can self-serve, so the cost of
+abuse is paid at the door once, not metered forever. This is why the gate is
+load-bearing and why nothing may route around it.
+
+**The claim ladder, in the owner's order:**
+
+1. Somebody at the company asks to claim the page.
+2. They confirm from an address at the company's own domain.
+3. **The owner verifies them by hand.** This is a person, not a rule, and it
+   is the only abuse control the free tier has.
+4. They get a welcome mail.
+5. From then on it is self-serve: their description, their logo, their job
+   posts, without the owner in the loop each time.
+
+Still refused after verification, for the reason `claim.js` already states:
+**competitors** (who a buyer shortlists you against is not yours to edit),
+**category** (a request, never an edit), and **any other company's record**.
+
+**Where the ladder lives, so nobody rebuilds it.** `functions/api/claim.js`
+takes the claim and the confirm and writes only to KV.
+`scripts/verify_claims.py` is the owner's gate: it lists what is waiting,
+re-checks the domain against the website on file, sends the one welcome mail
+and appends `claim_verified` (or `claim_refused`, which needs a `why`) to
+`data/employer_events.jsonl`. `scripts/sync_claims.py --write` pulls KV,
+ingests corrections and then lands the ones a verified claimant sent, through
+`proposal_rulings.rule()` — the same door the owner clicks.
+`scripts/logos.py` is the only writer of `assets/logos/`.
+
+**THE AUTHORISATION IS READ FROM THE REPO, NEVER FROM KV.** Whether an edit
+may land unreviewed is answered by `employer_log.verified_claims()`, replaying
+an append-only file in git that only the owner's gate writes. The claim
+endpoint stamps `self_serve_expected` on the proposal and publishes verified
+token tails in `meta-claims.json`, but both exist only so the claimant is told
+the truth about what happens next; nothing downstream believes either. If a
+KV flag decided who may write, "a bug in the claim endpoint cannot corrupt the
+board" would stop being true. `check_kv_cannot_certify_its_own_claimant` is
+the standing guard, and verification is per claim tail, not per company —
+two people at one company are two decisions.
+
+**An unreviewed edit is logged as `proposal_self_served`, never
+`proposal_accepted`.** The second kind means a person read it. Folding
+self-serve into it would make every accept rate the employer log reports a
+false claim about how much of the map a person has actually seen.
+
+**The no-password-store rule survives on the free tier.** "The subscription
+token IS the identity, and this project should never grow a password store"
+still governs employers. If the paid tiers need real accounts, that is a
+decision to take deliberately for those tiers — it is not licence to put a
+password behind a company page.
 
 ## Conventions
 

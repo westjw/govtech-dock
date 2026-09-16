@@ -3370,7 +3370,18 @@ def q_proposals(companies, board) -> list:
     # silently - which is exactly what it did on the first run of this, and is
     # the shape contract working rather than failing.
     raw = read("agent_proposals.json", {})
-    rows = list(raw.values()) if isinstance(raw, dict) else raw
+    # THE STORE KEY IS THE ROW'S IDENTITY, and .values() threw it away. The
+    # stored row carries no `key` of its own, so the fallback below rebuilt
+    # one as `<kind>:<id>` - right for `board:acme`, wrong for every key with
+    # a third segment. `fact:location:athletify` came back as `fact:athletify`
+    # and `claim:<id>:<at>` as `claim:<id>`, neither of which is in the store,
+    # so a ruling made from this tab answered "no proposal on file under ..."
+    # and 20 fact proposals could not be ruled from the queue that listed
+    # them. q_profiles already carried the key, by an identity map. Attached
+    # to a COPY: a key written into the value it is keyed by is a second copy
+    # of the same fact, and the one that can disagree.
+    rows = ([dict(v, key=k) for k, v in raw.items() if isinstance(v, dict)]
+            if isinstance(raw, dict) else raw)
     by_id = {c["id"]: c for c in companies}
     out = []
     for r in rows:
@@ -3423,6 +3434,13 @@ def q_proposals(companies, board) -> list:
             "rivals": r.get("rivals"),
             "ats_type": r.get("ats_type"), "ats_ref": r.get("ats_ref"),
             "rows": r.get("rows"), "sample": r.get("sample"),
+            # A CLAIM PROPOSAL IS ITS `edit` AND NOTHING ELSE. admin.html's
+            # claim renderer reads `p.edit` for the domain, the kind and the
+            # words; this row never carried it, so a claimant's correction
+            # drew as "Sent by somebody at: unknown domain / Kind: undefined"
+            # and the owner ruled on a blank. The renderer was right the whole
+            # time - it was never handed anything to draw.
+            "edit": r.get("edit"),
             "proposed_sector": r.get("sector") if r.get("kind") == "bucket" else None,
             "proposed_category": r.get("category") if r.get("kind") == "bucket" else None,
             "filed_now": (r.get("saw") or {}).get("filed_now"),

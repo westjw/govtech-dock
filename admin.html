@@ -2824,6 +2824,9 @@ const PROPOSAL_KINDS = {
       } else if (ed.kind === 'profile') {
         (ed.paragraphs || []).forEach(t => e.appendChild(el('div', 'kv', t)));
         e.appendChild(el('div', 'kv', 'Lands as their own words — the page will say so, and carry no citation.'));
+      } else if (ed.kind === 'logo') {
+        e.appendChild(line('New logo:', ed.url || ''));
+        e.appendChild(el('div', 'kv', 'Fetched from their own domain at landing, sniffed for what the bytes actually are, and it replaces any other file on this id. SVG is refused at the endpoint.'));
       } else if (ed.kind === 'job') {
         e.appendChild(line('Role:', (ed.title || '') + (ed.location ? ' · ' + ed.location : '')));
         e.appendChild(el('div', 'kv', ed.url || ''));

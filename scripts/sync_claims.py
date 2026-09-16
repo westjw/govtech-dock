@@ -37,6 +37,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                                    # noqa: E402
 import agents                                                   # noqa: E402
 import employer_log                                             # noqa: E402
+import proposal_rulings                                         # noqa: E402
 
 CLAIMS = "claims.json"
 EMAILY = re.compile(r"[^\s@]+@[^\s@]+\.[a-z]{2,}", re.I)
@@ -184,6 +185,68 @@ def as_proposals(props: list, companies: list) -> list:
     return out
 
 
+def land_self_serve(write: bool) -> dict:
+    """Land what a VERIFIED claimant sent, with nobody reading it first.
+
+    THE AUTHORISATION IS READ FROM THIS REPO, NEVER FROM KV. `verified` is a
+    field the Worker keeps on its own claim record, and the Worker is the half
+    of this system that is allowed to be wrong: the whole division of labour
+    is "a bug in the claim endpoint can record a wrong proposal, it cannot
+    corrupt the board". If a KV flag decided who may write to the map, that
+    sentence would stop being true - a bug, or anyone who could write one KV
+    record, would have edit access to 2,044 companies. So the question "may
+    this land unreviewed" is answered by employer_log.verified_claims(), which
+    replays an append-only file in git that only the owner's gate writes. The
+    endpoint's `self_serve_expected` is read by nothing here; it exists to
+    explain what the claimant was told.
+
+    PER TAIL, NOT PER COMPANY. Two people at one company are two claims and
+    two decisions. Keying on the company would let a verified colleague carry
+    an unverified one straight through the gate.
+
+    ONE RULING PER SAVE. Each `rule()` reads companies, changes one record and
+    saves, so the journal's blast limit binds at 1 rather than at the size of
+    the night's batch - the same lesson --land-all learned when a per-category
+    loop made every save's diff the running total.
+
+    NOTHING IS SKIPPED SILENTLY. Every proposal left for a person is counted
+    under the reason it was left, because a lander that prints only what it
+    landed reads as though it landed everything.
+    """
+    ok = employer_log.verified_claims()
+    store = agents.load()
+    out = {"landed": 0, "not_verified": 0, "not_self_serve": 0, "failed": []}
+    for key, row in list(store.items()):
+        if not isinstance(row, dict) or row.get("kind") != "claim":
+            continue
+        if row.get("status") != "pending":
+            continue
+        edit = row.get("edit") if isinstance(row.get("edit"), dict) else {}
+        cid, kind = row.get("id"), edit.get("kind")
+        tail = edit.get("token_tail") or ""
+        if kind not in proposal_rulings.SELF_SERVE_KINDS:
+            out["not_self_serve"] += 1
+            continue
+        if not tail or tail not in ok.get(cid, []):
+            out["not_verified"] += 1
+            continue
+        if not write:
+            out["landed"] += 1
+            continue
+        res = proposal_rulings.rule(
+            store, key, True,
+            why=f"self-serve: {cid} is verified and sent this itself",
+            by=proposal_rulings.SELF_SERVE_BY)
+        if res.get("error"):
+            # ONE BAD EDIT DOES NOT STOP THE NIGHT. It is named and left
+            # pending, which puts it in front of a person - the right place
+            # for something the automatic door could not land.
+            out["failed"].append({"key": key, "why": res["error"]})
+        else:
+            out["landed"] += 1
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
@@ -207,6 +270,13 @@ def main() -> int:
     print("  employer log: " + (", ".join(f"{v} {k}" for k, v in new.items())
                                 if new else "nothing new to record"))
     if not a.write:
+        # WHAT WOULD LAND WITHOUT A PERSON, shown in the dry run too. This is
+        # the one step that changes the public map with nobody reading it, so
+        # --write must not be the first time anybody sees its size.
+        pre = land_self_serve(write=False)
+        print(f"  would land unreviewed: {pre['landed']} "
+              f"({pre['not_verified']} waiting on the owner's gate, "
+              f"{pre['not_self_serve']} a person's call by design)")
         print("\ndry run: nothing written")
         return 0
     log_trail(trail, props, write=True)
@@ -221,6 +291,15 @@ def main() -> int:
         rep = agents.ingest("claim", rows, model="claim:company")
         print(f"  {rep['kept']} proposal(s) into the queue, "
               f"{len(rep['refused'])} refused at the door")
+        if rep.get("already_ruled"):
+            print(f"  {len(rep['already_ruled'])} already ruled by a person, "
+                  f"left alone")
+    land = land_self_serve(write=True)
+    print(f"  {land['landed']} landed unreviewed (verified claimants), "
+          f"{land['not_verified']} waiting on the owner's gate, "
+          f"{land['not_self_serve']} are a person's call by design")
+    for f in land["failed"]:
+        print(f"  COULD NOT LAND {f['key']}: {f['why']}", file=sys.stderr)
     print(f"  wrote data/{CLAIMS}")
     return 0
 

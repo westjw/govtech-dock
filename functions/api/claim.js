@@ -46,7 +46,13 @@ const PLATFORM = /(^|\.)(wixsite|squarespace|weebly|godaddysites|sites\.google|w
 /* What a claimant may send. `competitors` is deliberately absent and is
  * refused BY NAME below, because a silent drop would let somebody believe
  * they had edited it. */
-const KINDS = new Set(["description", "profile", "job", "category", "contact"]);
+const KINDS = new Set(["description", "profile", "logo", "job", "category",
+                       "contact"]);
+/* What a VERIFIED claimant changes without anybody reading it first. The
+ * other kinds stay a queue whatever their standing: `category` is a request
+ * by design, and `contact` is a message to a person, so "self-serve" would
+ * mean nothing for either. */
+const SELF_SERVE = new Set(["description", "profile", "logo", "job"]);
 
 const CAP = { description: 300, profile: 1600, note: 600, title: 120, location: 90 };
 const MAX_PER_COMPANY = 3;          // three people at one company is a team
@@ -80,6 +86,27 @@ const mask = (e) => {
 
 const clip = (v, n) => String(v == null ? "" : v).trim().slice(0, n);
 
+/* WHICH CLAIMS THE OWNER HAS LET THROUGH, read from the site we published
+ * rather than from anything this Worker holds. Same direction as
+ * companyFrom: the repo decides, the edge reads.
+ *
+ * THIS IS A MESSAGE, NOT A PERMISSION. What it changes is the sentence the
+ * claimant gets back. Whether the edit actually lands unreviewed is decided
+ * on the repo's side, in sync_claims, from the employer log - so a bug here,
+ * or a stale edge cache, cannot hand anybody write access to the map. It can
+ * only tell somebody the wrong thing about how long their edit will take. */
+async function verifiedTails(request, id) {
+  try {
+    const res = await fetch(new URL("/meta-claims.json", request.url));
+    if (!res.ok) return [];
+    const all = await res.json();
+    const v = (all.verified || {})[id];
+    return Array.isArray(v) ? v : [];
+  } catch (e) {
+    return [];      // unverified is the safe answer: it promises a review
+  }
+}
+
 async function companyFrom(request, id) {
   const res = await fetch(new URL("/meta-companies.json", request.url));
   if (!res.ok) return null;
@@ -98,14 +125,22 @@ export async function onRequestGet({ request, env }) {
   const raw = await env.ALERTS.get("claim:" + token);
   if (!raw) return json({ error: "bad_token" }, 400);
   const rec = JSON.parse(raw);
+  /* THREE STANDINGS, NOT TWO, and the page has to be able to tell them
+   * apart: unconfirmed (read the mail), confirmed (send it, a person reads
+   * it), verified (it goes live). Collapsing the last two is how somebody
+   * comes to believe an edit is live when it is sitting in a queue. */
+  const ok = (await verifiedTails(request, rec.company_id))
+    .includes(token.slice(-6));
   return json({
     ok: true,
     company_id: rec.company_id,
     name: rec.name,
     email: mask(rec.email),              // never the address itself
     confirmed: !!rec.confirmed,
+    verified: ok,
     created: rec.created,
-    may_edit: ["description", "profile", "job", "contact"],
+    may_edit: ["description", "profile", "logo", "job", "contact"],
+    goes_live_without_review: ok ? [...SELF_SERVE] : [],
     may_request: ["category"],
     may_not_edit: ["competitors"],
     proposals: rec.proposals || 0,
@@ -125,7 +160,7 @@ export async function onRequestPost({ request, env }) {
   const action = String(body.action || "");
   if (action === "claim") return startClaim(body, env, request);
   if (action === "confirm") return confirmClaim(body, env);
-  if (action === "propose") return propose(body, env);
+  if (action === "propose") return propose(body, env, request);
   if (action === "release") return release(body, env);
   return json({ error: "unknown action" }, 400);
 }
@@ -235,7 +270,7 @@ async function confirmClaim(body, env) {
   return json({ ok: true, company_id: rec.company_id, name: rec.name });
 }
 
-async function propose(body, env) {
+async function propose(body, env, request) {
   const token = cleanToken(body.token);
   if (!token) return json({ error: "bad_token" }, 400);
   const raw = await env.ALERTS.get("claim:" + token);
@@ -283,6 +318,35 @@ async function propose(body, env) {
                + `system. We cannot show a job we cannot check is yours.`,
       }, 400);
     }
+  } else if (kind === "logo") {
+    /* A LINK, NOT AN UPLOAD. This Worker never handles the bytes: the repo
+     * fetches them at landing, sniffs the magic numbers and writes the one
+     * file (scripts/logos.py). Held here anyway so a claimant hears "no"
+     * immediately instead of a week later from a queue - and because a guard
+     * that only runs in the repo proves nothing about what reaches KV. */
+    p.url = clip(body.url, 400);
+    if (!/^https:\/\//i.test(p.url)) {
+      return json({ error: "a logo has to come over https from your own site" }, 400);
+    }
+    let lh = "";
+    try { lh = registrable(new URL(p.url).hostname); } catch (e) { lh = ""; }
+    if (lh !== rec.domain) {
+      return json({
+        error: "off_domain",
+        message: `Host the logo on ${rec.domain}. We serve it from our own `
+               + `pages under your name, so it has to come from you.`,
+      }, 400);
+    }
+    if (/\.svg(\?|#|$)/i.test(p.url)) {
+      /* BY NAME, like competitors. Silently taking it and landing nothing
+       * would leave somebody believing their vector logo is on the page. */
+      return json({
+        error: "not_editable",
+        message: "We do not take SVG from a claimant. An SVG is a document "
+               + "that can carry script, and we serve it from our own origin. "
+               + "Send a PNG.",
+      }, 400);
+    }
   } else if (kind === "category") {
     /* A REQUEST, NOT AN EDIT. The taxonomy belongs to the board: a company
      * filing itself onto a busier shelf is the oldest trick in directory
@@ -304,16 +368,31 @@ async function propose(body, env) {
    * millisecond and overwrote each other, so two of the three vanished
    * silently. The token tail plus randomness makes the key unique per
    * proposal, and the timestamp stays in front so the listing sorts. */
+  /* WHAT WE PROMISE HAS TO BE WHAT HAPPENS. Before the owner's gate existed,
+   * every claimant was told "a person reviews every change before it appears"
+   * and that was true. For a verified claimant it is no longer true, and a
+   * message that says a person is reading is worse than no message: it is a
+   * reason to wait for something that is not coming. */
+  const live = SELF_SERVE.has(kind)
+    && (await verifiedTails(request, rec.company_id)).includes(token.slice(-6));
   const key = `claimprop:${rec.company_id}:${Date.now()}:${mintToken().slice(0, 8)}`;
   await env.ALERTS.put(key, JSON.stringify(Object.assign(p, {
     company_id: rec.company_id, token_tail: token.slice(-6),
+    /* A HINT, AND THE REPO DOES NOT BELIEVE IT. sync_claims re-derives this
+     * from the employer log before landing anything, so this field only ever
+     * explains what the claimant was told. Trusting it would make a bug in
+     * this endpoint into write access to the board. */
+    self_serve_expected: live,
   })), { expirationTtl: 60 * 60 * 24 * 90 });
   rec.proposals = (rec.proposals || 0) + 1;
   await env.ALERTS.put("claim:" + token, JSON.stringify(rec));
-  return json({ ok: true, queued: true, kind,
+  return json({ ok: true, queued: true, kind, goes_live: live,
                 message: kind === "category"
                   ? "Sent. A person reads category requests; we will not move a "
                     + "company onto a shelf because it asked."
+                  : live
+                  ? "Sent. It goes onto your page at the next build - nobody "
+                    + "has to read it first."
                   : "Sent. A person reviews every change before it appears." });
 }
 

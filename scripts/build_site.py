@@ -607,7 +607,25 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
         json.dumps({"generated": gen, "roles": roles}, separators=(",", ":")))
     (out / "meta-companies.json").write_text(
         json.dumps({"generated": gen, "companies": cos}, separators=(",", ":")))
-    return {"roles": len(roles), "companies": len(cos)}
+    # WHICH CLAIMS THE OWNER LET THROUGH, so the claim endpoint can tell a
+    # verified claimant their edit goes live instead of promising them a
+    # review that no longer happens. TAILS ONLY - six characters, which is
+    # what sync_claims already writes into this public repo beside every
+    # proposal. The full token is the whole of a claimant's identity here and
+    # is never published, never logged and never leaves KV.
+    #
+    # THIS FILE AUTHORISES NOTHING. It is a message: whether an edit may
+    # actually land unreviewed is decided in sync_claims, from the employer
+    # log, on the repo's own side. Published so a claimant sees the truth
+    # about what will happen, not so anything downstream can skip the check.
+    try:
+        import employer_log
+        ok = employer_log.verified_claims()
+    except Exception:
+        ok = {}
+    (out / "meta-claims.json").write_text(
+        json.dumps({"generated": gen, "verified": ok}, separators=(",", ":")))
+    return {"roles": len(roles), "companies": len(cos), "verified": len(ok)}
 
 
 def _default_css(brand: dict) -> str:
