@@ -55,8 +55,14 @@ const get = (t) =>
 const read = async (res) => ({ status: res.status, body: await res.json() });
 
 /* --- claiming ----------------------------------------------------------- */
+/* A REAL FREEMAIL DOMAIN, AND IT HAS TO BE. This case asserts that a personal
+   mailbox is refused with not_a_company_address, so the fixture must be an
+   address the freemail list actually matches. Swapping it to example.com
+   during a pre-flight for going public broke the test instantly: the endpoint
+   answered wrong_domain, which is the RIGHT answer for a non-freemail address
+   and the wrong one for this assertion. The domain is the test. */
 out.freeMail = await read(await post(
-  { action: "claim", company_id: "acme", email: "jane@example.com" }));
+  { action: "claim", company_id: "acme", email: "jane@gmail.com" }));
 out.platform = await read(await post(
   { action: "claim", company_id: "acme", email: "jane@thing.wixsite.com" }));
 out.wrongDomain = await read(await post(
