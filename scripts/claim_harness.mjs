@@ -56,7 +56,7 @@ const read = async (res) => ({ status: res.status, body: await res.json() });
 
 /* --- claiming ----------------------------------------------------------- */
 out.freeMail = await read(await post(
-  { action: "claim", company_id: "acme", email: "jane@gmail.com" }));
+  { action: "claim", company_id: "acme", email: "jane@example.com" }));
 out.platform = await read(await post(
   { action: "claim", company_id: "acme", email: "jane@thing.wixsite.com" }));
 out.wrongDomain = await read(await post(
