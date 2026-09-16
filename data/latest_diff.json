@@ -1,13 +1,90 @@
 {
-  "date": "2026-09-14",
-  "previous": "2026-09-13",
+  "date": "2026-09-16",
+  "previous": "2026-09-14",
   "changes": [
     {
-      "company": "Corporater",
-      "id": "corporater",
+      "company": "Glacier",
+      "id": "glacier",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Sentrycs",
+      "id": "sentrycs",
       "from": "Sales (non-AE)",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "BriefCam",
+      "id": "briefcam",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Whip Around",
+      "id": "whip-around",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Operations Manager, Customer Succe only"
+    },
+    {
+      "company": "Edupoint Educational Systems",
+      "id": "edupoint-educational-systems",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Highland Electric Fleets",
+      "id": "highland-electric-fleets",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Skedda",
+      "id": "skedda",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Minga",
+      "id": "minga",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Manager (INTERNAL APPLICAN"
+    },
+    {
+      "company": "Follett Software",
+      "id": "follett-software",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Clinically AI",
+      "id": "clinically-ai",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "VP of Revenue only"
     }
   ]
 }
