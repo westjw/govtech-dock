@@ -1,90 +1,41 @@
 {
-  "date": "2026-09-16",
-  "previous": "2026-09-14",
+  "date": "2026-09-17",
+  "previous": "2026-09-16",
   "changes": [
     {
-      "company": "Glacier",
-      "id": "glacier",
+      "company": "Raptor Technologies",
+      "id": "raptor-technologies",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Sales (non-AE)",
+      "note": "Senior Manager, Global Deal Desk only"
     },
     {
-      "company": "Sentrycs",
-      "id": "sentrycs",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "BriefCam",
-      "id": "briefcam",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Whip Around",
-      "id": "whip-around",
+      "company": "accesso Technology Group",
+      "id": "accesso-technology-group",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Operations Manager, Customer Succe only"
+      "note": "Head of Sales only"
     },
     {
-      "company": "Edupoint Educational Systems",
-      "id": "edupoint-educational-systems",
+      "company": "Embross",
+      "id": "embross",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "EMS LINQ",
-      "id": "ems-linq",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Highland Electric Fleets",
-      "id": "highland-electric-fleets",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Skedda",
-      "id": "skedda",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Sales (non-AE)",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 404 for https://www.embross.com/car"
     },
     {
-      "company": "Minga",
-      "id": "minga",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Manager (INTERNAL APPLICAN"
+      "company": "EBSCO Information Services",
+      "id": "ebsco-information-services",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Account Specialist, FOLIO only"
     },
     {
-      "company": "Follett Software",
-      "id": "follett-software",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Clinically AI",
-      "id": "clinically-ai",
+      "company": "SAND",
+      "id": "sand",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "VP of Revenue only"
+      "note": "Technical Sales Engineer only"
     }
   ]
 }
