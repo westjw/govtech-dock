@@ -5044,6 +5044,84 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
     return errors
 
 
+def check_a_failed_kv_write_says_which_failure_it_was() -> int:
+    """"Could not be recorded" is not a diagnosis. The status is.
+
+    KV.put retries 401/429/5xx three times and then returns False. The retry
+    branch used to `continue` without recording anything, so an exhausted
+    retry printed NOTHING - and the caller's message says only that a
+    subscriber was sent mail we could not record. The 2026-09-17 refresh
+    failed exactly that way and gave no reason.
+
+    The two reasons want opposite responses, which is why this matters: three
+    401s means CF_API_TOKEN is revoked and every run from here fails until
+    somebody rotates it; three 503s means Cloudflare wobbled and the right
+    move is to re-run. `put`'s own docstring reasons about which status it
+    saw - that reasoning is only available if the status is reported.
+
+    Drives the real KV.put against a stubbed transport, so no network.
+    """
+    import contextlib
+    import io
+    import types
+
+    import send_digests as sd
+
+    class Resp:
+        def __init__(self, code):
+            self.status_code, self.ok = code, code < 300
+
+    errors = 0
+    real_req, real_sleep = sd.requests, sd.time.sleep
+    try:
+        for code, must in ((401, "401"), (429, "429"), (503, "503"),
+                           (403, "403")):
+            sd.requests = types.SimpleNamespace(
+                put=lambda *a, **k: Resp(code), RequestException=Exception)
+            sd.time.sleep = lambda n: None
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                ok = sd.KV("a", "n", "t").put("sub:x", {"v": 1})
+            said = buf.getvalue()
+            if ok:
+                errors += fail(f"KV.put reported success on HTTP {code}")
+            if not said.strip():
+                errors += fail(
+                    f"KV.put gave up on HTTP {code} and printed nothing. The "
+                    f"caller can only say 'could not be recorded', which does "
+                    f"not distinguish a revoked token from a bad afternoon")
+            elif must not in said:
+                errors += fail(f"KV.put's failure message never names the "
+                               f"status it saw ({code}): {said.strip()[:80]}")
+        # AND AN EXCEPTION IS NOT A STATUS. A connection that never answered
+        # has to read differently from one that answered 401.
+        class Boom(Exception):
+            pass
+        sd.requests = types.SimpleNamespace(
+            put=lambda *a, **k: (_ for _ in ()).throw(Boom("no route")),
+            RequestException=Boom)
+        sd.time.sleep = lambda n: None
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            ok = sd.KV("a", "n", "t").put("sub:x", {"v": 1})
+        # THE GIVE-UP LINE, NOT THE WHOLE OUTPUT. The per-attempt branch prints
+        # the exception name on every try, so searching all of stdout passed
+        # even when the final summary said only "a problem" - the guard was
+        # reading a line it was not testing.
+        gave_up = [ln for ln in buf.getvalue().splitlines() if "gave up" in ln]
+        if ok:
+            errors += fail("KV.put reported success when nothing answered")
+        elif not gave_up:
+            errors += fail(f"a KV write that never reached Cloudflare printed "
+                           f"no summary: {buf.getvalue().strip()[:80]!r}")
+        elif "Boom" not in gave_up[-1]:
+            errors += fail(f"the give-up line does not name what went wrong: "
+                           f"{gave_up[-1].strip()!r}")
+    finally:
+        sd.requests, sd.time.sleep = real_req, real_sleep
+    return errors
+
+
 def check_one_subscriber_never_silences_the_rest() -> int:
     """A KV write that fails after the mail left must not end the run.
 
@@ -22107,6 +22185,7 @@ def main() -> int:
     errors += check_a_proposal_is_about_the_company_it_was_asked_about()
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
+    errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()

@@ -1067,9 +1067,18 @@ the mail half went in that night. `solesourcejobs.com` is a verified Resend
 sending domain (SPF and DKIM written into Cloudflare DNS by Resend's own
 auto-configure; DMARC deliberately not added yet), the API key is scoped to
 sending from that domain alone, and a real signup produced a real confirmation
-in a real inbox from `alerts@solesourcejobs.com`. What is still NOT done is
-the CI half: `send_digests.py` has no `RESEND_KEY` in repository secrets, so
-no digest has ever gone out. The endpoint works; the recurring job does not.
+in a real inbox from `alerts@solesourcejobs.com`.
+
+**THE CI HALF IS DONE TOO, and this section used to say it was not.** All four
+repository secrets are set — the 2026-09-17 refresh log shows `CF_ACCOUNT_ID`,
+`CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` all present — and a real
+digest went out that morning: "1 subscriptions ... 159 new govtech roles".
+Two consequences worth acting on. **`sync_claims.py` can run in CI today**:
+it needs exactly those three CF_* secrets and no workflow calls it yet, so the
+claim flow is dark for want of a cron line, not for want of credentials. And
+that same run **failed on exit 1** because the digest sent and the `last_sent`
+write-back to KV did not — `advance last_sent in KV by hand, or accept the
+repeat`, because re-running sends again.
 
 **The hour this cost, so nobody spends it twice.** The secret was first saved
 as `Resend_Key`, and the name was then corrected to `RESEND_KEY` by editing

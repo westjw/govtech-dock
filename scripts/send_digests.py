@@ -113,6 +113,16 @@ class KV:
         would have saved that run. A token that is genuinely revoked still
         fails all three and is reported.
         """
+        # AND IT SAYS WHY IT GAVE UP. The retry branch below used to `continue`
+        # without recording anything, so exhausting all three attempts
+        # returned False having printed nothing at all. The 2026-09-17 run
+        # reported "1 subscriber WERE SENT MAIL that could not be recorded"
+        # and gave no reason - and the two reasons want completely different
+        # responses: three 401s is a revoked CF_API_TOKEN, three 503s is
+        # Cloudflare being down and worth simply re-running. The docstring
+        # above reasons explicitly about which status it saw, which is only
+        # possible if the status is reported.
+        why = "no attempt was made"
         for attempt in range(3):
             try:
                 r = requests.put(f"{self.base}/values/{key}", headers=self.h,
@@ -122,13 +132,16 @@ class KV:
                 if r.ok:
                     return True
                 if r.status_code in (401, 429) or r.status_code >= 500:
+                    why = f"HTTP {r.status_code} on all attempts"
                     time.sleep(2 ** attempt)
                     continue
                 print(f"    KV refused the write: {r.status_code}", flush=True)
                 return False
             except requests.RequestException as exc:
+                why = f"{type(exc).__name__} on all attempts"
                 print(f"    KV {type(exc).__name__}", flush=True)
                 time.sleep(2 ** attempt)
+        print(f"    KV write gave up after 3 attempts: {why}", flush=True)
         return False
 
     def get_or_none(self, key: str) -> tuple[dict | None, bool]:
