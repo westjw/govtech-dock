@@ -1,189 +1,206 @@
 {
-  "sectors": [
-    {
-      "name": "Public Safety",
-      "categories": [
-        "Fire",
-        "Police",
-        "EMS",
-        "Emergency Mgmt",
-        "Corrections",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "C0392B",
-        "band": "FDEDEC"
-      }
-    },
-    {
-      "name": "Public Works",
-      "categories": [
-        "Waste & Recycling",
-        "Streets",
-        "Water",
-        "Fleet & Asset Mgmt",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "1F618D",
-        "band": "EBF5FB"
-      }
-    },
-    {
-      "name": "General Gov",
-      "categories": [
-        "Citizen Services",
-        "Permitting & Licensing",
-        "Finance & ERP",
-        "Procurement & Payments",
-        "HR & Workforce",
-        "Cemetery Management",
-        "IT & AI Platforms",
-        "Strategy & Performance",
-        "Elections",
-        "Elections & Voting",
-        "Libraries",
-        "Animal Services",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "1E8449",
-        "band": "E9F7EF"
-      }
-    },
-    {
-      "name": "Parks & Rec",
-      "categories": [
-        "Recreation Management",
-        "Youth Sports & Leagues",
-        "Camps & Youth Programs",
-        "Outdoor Rec & Reservations",
-        "Facility Booking & Workforce",
-        "Aquatics",
-        "Grounds, Irrigation & Turf",
-        "Park Assets, Forestry & Visitor Data",
-        "Weather & Outdoor Safety",
-        "Screening, Safety & Compliance",
-        "Destination Marketing & Tourism",
-        "Events, Venues & Ticketing",
-        "Volunteer Management",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "CA6F1E",
-        "band": "FDF2E9"
-      }
-    },
-    {
-      "name": "K-12 Schools",
-      "categories": [
-        "School Safety",
-        "Transportation",
-        "Operations & SIS",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "6C3483",
-        "band": "F4ECF7"
-      }
-    },
-    {
-      "name": "Transit & Parking",
-      "categories": [
-        "Fare & Payments",
-        "Fleet & Operations",
-        "Rider Experience",
-        "Demand-Response & AV",
-        "Parking & Curb",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "148F77",
-        "band": "E8F8F5"
-      }
-    },
-    {
-      "name": "Utilities & Energy",
-      "categories": [
-        "Street Lighting & Poles",
-        "Grid & Energy",
-        "Suppliers & Services",
-        "Billing & Customer Systems",
-        "Broadband & Connectivity"
-      ],
-      "xlsx": {
-        "head": "B7950B",
-        "band": "FEF9E7"
-      }
-    },
-    {
-      "name": "Airports & Aviation",
-      "categories": [
-        "Airfield & Operations",
-        "Terminal & Passenger Experience",
-        "Security & Screening",
-        "Parking & Ground Transport",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "5B2C6F",
-        "band": "F3EAF7"
-      }
-    },
-    {
-      "name": "Courts & Justice",
-      "categories": [
-        "Courts & Case Management",
-        "Prosecution & Defense",
-        "Probation & Supervision",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "884EA0",
-        "band": "F5EEF8"
-      }
-    },
-    {
-      "name": "Health & Human Services",
-      "categories": [
-        "Public Health",
-        "Benefits & Medicaid Systems",
-        "Child & Family Services",
-        "Behavioral Health",
-        "Case Management & Social Care",
-        "Aging & Veterans",
-        "Workforce & Labor",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "117A65",
-        "band": "E8F6F3"
-      }
-    },
-    {
-      "name": "Higher Education",
-      "categories": [
-        "IT & Administration",
-        "Business & Finance",
-        "Campus Safety",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "2471A3",
-        "band": "EAF2F8"
-      }
-    },
-    {
-      "name": "Housing & Community Dev",
-      "categories": [
-        "Housing & Assistance",
-        "Planning & Economic Development",
-        "Suppliers & Services"
-      ],
-      "xlsx": {
-        "head": "A04000",
-        "band": "FBEEE6"
-      }
-    }
-  ]
+ "sectors": [
+  {
+   "name": "Public Safety",
+   "categories": [
+    "Fire",
+    "Police",
+    "EMS",
+    "Emergency Mgmt",
+    "Corrections",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "C0392B",
+    "band": "FDEDEC"
+   }
+  },
+  {
+   "name": "Public Works",
+   "categories": [
+    "Waste & Recycling",
+    "Streets",
+    "Water",
+    "Fleet & Asset Mgmt",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "1F618D",
+    "band": "EBF5FB"
+   }
+  },
+  {
+   "name": "General Gov",
+   "categories": [
+    "Citizen Services",
+    "Permitting & Licensing",
+    "Finance & ERP",
+    "Procurement & Payments",
+    "HR & Workforce",
+    "Cemetery Management",
+    "IT & AI Platforms",
+    "Strategy & Performance",
+    "Elections",
+    "Elections & Voting",
+    "Libraries",
+    "Animal Services",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "1E8449",
+    "band": "E9F7EF"
+   }
+  },
+  {
+   "name": "Parks & Rec",
+   "categories": [
+    "Recreation Management",
+    "Youth Sports & Leagues",
+    "Camps & Youth Programs",
+    "Outdoor Rec & Reservations",
+    "Facility Booking & Workforce",
+    "Aquatics",
+    "Grounds, Irrigation & Turf",
+    "Park Assets, Forestry & Visitor Data",
+    "Weather & Outdoor Safety",
+    "Screening, Safety & Compliance",
+    "Destination Marketing & Tourism",
+    "Events, Venues & Ticketing",
+    "Volunteer Management",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "CA6F1E",
+    "band": "FDF2E9"
+   }
+  },
+  {
+   "name": "K-12 Schools",
+   "categories": [
+    "School Safety",
+    "Transportation",
+    "Operations & SIS",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "6C3483",
+    "band": "F4ECF7"
+   }
+  },
+  {
+   "name": "Transit & Parking",
+   "categories": [
+    "Fare & Payments",
+    "Fleet & Operations",
+    "Rider Experience",
+    "Demand-Response & AV",
+    "Parking & Curb",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "148F77",
+    "band": "E8F8F5"
+   }
+  },
+  {
+   "name": "Utilities & Energy",
+   "categories": [
+    "Street Lighting & Poles",
+    "Grid & Energy",
+    "Suppliers & Services",
+    "Billing & Customer Systems",
+    "Broadband & Connectivity"
+   ],
+   "xlsx": {
+    "head": "B7950B",
+    "band": "FEF9E7"
+   }
+  },
+  {
+   "name": "Airports & Aviation",
+   "categories": [
+    "Airfield & Operations",
+    "Terminal & Passenger Experience",
+    "Security & Screening",
+    "Parking & Ground Transport",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "5B2C6F",
+    "band": "F3EAF7"
+   }
+  },
+  {
+   "name": "Courts & Justice",
+   "categories": [
+    "Courts & Case Management",
+    "Prosecution & Defense",
+    "Probation & Supervision",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "884EA0",
+    "band": "F5EEF8"
+   }
+  },
+  {
+   "name": "Health & Human Services",
+   "categories": [
+    "Public Health",
+    "Benefits & Medicaid Systems",
+    "Child & Family Services",
+    "Behavioral Health",
+    "Case Management & Social Care",
+    "Aging & Veterans",
+    "Workforce & Labor",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "117A65",
+    "band": "E8F6F3"
+   }
+  },
+  {
+   "name": "Higher Education",
+   "categories": [
+    "IT & Administration",
+    "Business & Finance",
+    "Campus Safety",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "2471A3",
+    "band": "EAF2F8"
+   }
+  },
+  {
+   "name": "Housing & Community Dev",
+   "categories": [
+    "Housing & Assistance",
+    "Planning & Economic Development",
+    "Suppliers & Services"
+   ],
+   "xlsx": {
+    "head": "A04000",
+    "band": "FBEEE6"
+   }
+  }
+ ],
+ "tags": {
+  "_comment": "TWO DIMENSIONS, BOTH MULTI-VALUED, AND THEY ARE NOT THE SAME QUESTION. `sells` is what a company makes; `buyers` is who buys it. One word carrying both is the defect this file already names under 'a sector is never also a category'. A company can hold several of either.",
+  "_derived_comment": "EVERY TAG IS DERIVED, NEVER STORED ON A COMPANY. `sells` comes from vendor_type and `buyers` from the buyer verdict, so there is one writer per fact and no second copy to drift. To change a tag, change the fact underneath it - which is already gated. scripts/tags.py is the only place the derivation lives.",
+  "sells": {
+   "GovTech Product": "govtech-product",
+   "Equipment / Components": "equipment",
+   "Engineering / Consulting": "consulting",
+   "Services (non-tech)": "services",
+   "Distributor / Reseller / Co-op": "distributor",
+   "Association / Gov / Media": "association"
+  },
+  "buyers": {
+   "sled": "state, county, city or school district - read off their own pages",
+   "federal": "federal agencies. OUT OF SCOPE for this board and unassigned on every record: nothing in this dataset establishes it, and solesourcejobs.com is becoming the federal board.",
+   "private": "commercial buyers alongside government. Unassignable today: `names_other_buyers` is null on all 366 answered records, so there is no evidence to read it off."
+  }
+ }
 }

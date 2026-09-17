@@ -5044,6 +5044,94 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
     return errors
 
 
+def check_a_tag_is_derived_and_never_stored() -> int:
+    """Tags come off the fields, per build. Nothing writes them onto a record.
+
+    `sells` IS vendor_type and `buyers` IS the buyer verdict. A `tags` list on
+    a company would be a second copy of both, kept in step by hand, which is
+    the failure this repo names as "two databases with a sync produce drift,
+    and drift makes every downstream number a lie". So: the vocabulary is data
+    in schema.json, the derivation is one function, `validate()` refuses a
+    stored tag at the write, and build_board derives per build.
+
+    Drives the REAL build_board org row, not just tags.py - a derivation
+    nothing calls is a derivation the board does not carry.
+    """
+    import admin as _a
+    import build_board
+    import tags as T
+
+    errors = 0
+    vocab = T.vocabulary()
+    if not vocab.get("sells") or not vocab.get("buyers"):
+        return fail("schema.json carries no tag vocabulary, so every tag a "
+                    "build emits is a string nothing validates")
+    allowed = set(vocab["sells"].values()) | set(vocab["buyers"])
+
+    # every tag the live data can produce is in the vocabulary
+    cos = json.loads((DATA / "companies.json").read_text())
+    sup = json.loads((DATA / "suppliers.json").read_text())
+    for rec in cos + sup:
+        for t in T.tags_for(rec, vocab):
+            if t not in allowed:
+                errors += fail(f"{rec.get('id')} derives tag {t!r}, which the "
+                               f"schema's vocabulary does not hold")
+                break
+
+    # a stored tag is refused at the write
+    if not _a.validate([dict(cos[0], tags=["govtech-product"])]):
+        errors += fail("validate() accepted a company carrying a stored `tags` "
+                       "list; the second copy is now free to drift from the "
+                       "vendor_type it was derived from")
+
+    # THE VERDICT IS THE EVIDENCE. `no` and `unclear` are answers, and neither
+    # of them says sled - a tag read off them would be a claim the pages do
+    # not support.
+    for verdict in ("no", "unclear", None):
+        r = {"vendor_type": "GovTech Product", "sells_to_gov": verdict}
+        if "sled" in T.tags_for(r, vocab):
+            errors += fail(f"sells_to_gov={verdict!r} produced a `sled` tag; "
+                           f"only a `yes` is evidence of a government buyer")
+    if "sled" not in T.tags_for(
+            {"vendor_type": "GovTech Product", "sells_to_gov": "yes"}, vocab):
+        errors += fail("a `yes` buyer verdict produces no `sled` tag, so the "
+                       "dimension is dead")
+
+    # a vendor_type the vocabulary does not hold yields NO tag, not a guess
+    if T.tags_for({"vendor_type": "Something New"}, vocab):
+        errors += fail("an unknown vendor_type produced a tag anyway; the "
+                       "schema is supposed to decide what a tag can be")
+
+    # AND THE BOARD CARRIES THEM. A guard that drives the helper proves
+    # nothing about the caller.
+    src = (ROOT / "scripts" / "build_board.py").read_text()
+    if "tags.tags_for(" not in src:
+        errors += fail("build_board does not call tags.tags_for, so no board "
+                       "it writes carries a tag whatever tags.py can derive")
+    board = json.loads((DATA / "board.json").read_text())
+    orgs = board.get("organizations") or []
+    by_id = {c["id"]: c for c in cos}
+    checked = 0
+    drawn = 0
+    for o in orgs[:400]:
+        c = by_id.get(o.get("id"))
+        if c is None:
+            continue
+        checked += 1
+        if "tags" in o:
+            drawn += 1
+            if o["tags"] != T.tags_for(c, vocab):
+                errors += fail(f"{o['id']}: the board says {o['tags']} and the "
+                               f"derivation says {T.tags_for(c, vocab)}")
+                break
+    # board.json is only rebuilt by a 20-minute crawl, so a board written
+    # before this landed legitimately carries none. Say so rather than fail.
+    if checked and not drawn:
+        print(f"note: board.json predates tags ({checked} orgs checked, none "
+              f"carry one). The next build_board run adds them.")
+    return errors
+
+
 def check_a_failed_kv_write_says_which_failure_it_was() -> int:
     """"Could not be recorded" is not a diagnosis. The status is.
 
@@ -22186,6 +22274,7 @@ def main() -> int:
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
+    errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()

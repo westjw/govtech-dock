@@ -258,6 +258,17 @@ def validate(companies: list) -> str | None:
                                   and 1800 <= y <= this_year):
             return (f"{who}: year_founded must be a whole year between 1800 and "
                     f"{this_year}, or null - got {y!r}")
+        # A TAG IS DERIVED, NEVER STORED. `tags` on a company record would be
+        # a second copy of vendor_type and the buyer verdict, kept in step by
+        # hand - "two databases with a sync produce drift, and drift makes
+        # every downstream number a lie". build_board derives them per build
+        # through scripts/tags.py, so there is one writer per fact. To change
+        # a tag, change the fact underneath it.
+        if "tags" in c:
+            return (f"{who}: `tags` is derived at build time by scripts/tags.py "
+                    f"and must not be stored on a record. Change vendor_type or "
+                    f"the buyer verdict instead - that is the fact the tag "
+                    f"reads")
         for f in ("id", "name", "sector", "category", "ats", "hiring"):
             if c.get(f) in (None, ""):
                 return f"{who}: missing {f}"

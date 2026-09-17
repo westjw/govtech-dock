@@ -46,6 +46,11 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
 import roles          # noqa: E402
 import salary         # noqa: E402
+import tags           # noqa: E402
+
+# READ ONCE, not per company. 2,044 records would otherwise re-parse
+# schema.json 2,044 times to answer the same question.
+_TAG_VOCAB = tags.vocabulary()
 
 try:
     import render_fetch                            # noqa: E402  optional
@@ -1406,6 +1411,13 @@ def main() -> int:
             "ats": kind, "ats_ranks": ats_tier(kind),
             "tier": TIER.get(c["sector"]),
             "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
+            # WHAT THEY SELL AND WHO BUYS IT, derived rather than stored.
+            # tags.py reads vendor_type and the buyer verdict off this same
+            # record, so the board's tags cannot disagree with the fields they
+            # came from - there is no second copy to drift. The vocabulary
+            # sits in schema.json beside sectors and categories, for the same
+            # reason: a tag the schema does not hold files a company nowhere.
+            "tags": tags.tags_for(c, _TAG_VOCAB),
             "parent": c.get("parent"), "ats_note": c.get("ats_note"),
             # The sub-companies folded into this record by a family merge:
             # each keeps its own name, its own website and the research written
