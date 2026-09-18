@@ -206,6 +206,41 @@ jobs:
             echo "No new AE openings this run."
           fi
 
+      - name: Say if a claim is waiting on the owner
+        # The hand gate is the only abuse control the free tier has, and
+        # nothing told the hand: a company could claim its page, confirm an
+        # address at its own domain, and wait for the owner to happen to run
+        # verify_claims.py. Every other part of the ladder worked.
+        #
+        # ONE OPEN ISSUE AT A TIME. A nightly nag is a nightly nag; this
+        # reopens only after the previous one is closed, which happens when
+        # the owner has been through the queue.
+        #
+        # The body carries counts and waits, never a name, a domain or an
+        # address: this repository is public, so the issue is published, and
+        # who is claiming which page before a ruling is theirs. The detail
+        # stays behind verify_claims.py on the owner's own machine.
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          TITLE="Claims are waiting on your verification"
+          if [ "$(python scripts/claim_alert.py "$RUNNER_TEMP/claims.md")" = "alert" ]; then
+            OPEN=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq 'length')
+            if [ "$OPEN" = "0" ]; then
+              gh issue create \
+                --title "$TITLE" \
+                --body-file "$RUNNER_TEMP/claims.md" \
+                --assignee "${{ github.repository_owner }}"
+            else
+              echo "Claims are waiting and an issue is already open."
+            fi
+          else
+            echo "No claim is waiting on the gate."
+          fi
+
       # Digests go out AFTER the board is committed, so an email never links
       # to a role the site has not published yet. It runs on the refreshed data
       # in this checkout - the same JSON the site will serve - rather than

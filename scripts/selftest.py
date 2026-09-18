@@ -4594,6 +4594,93 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_the_claim_alert_names_nobody() -> int:
+    """The notification is published. It must say how many, never who.
+
+    westjw/govtech-dock is PUBLIC, and refresh.yml opens a GitHub issue from
+    this body - so every byte of it is world-readable the moment it is
+    written. Who is claiming which page BEFORE the owner has ruled is the
+    claimant's business and a live commercial signal about somebody else's
+    company; the address is forbidden in anything this repo touches by
+    check_no_addresses. A notification's job is to say "go and look".
+
+    So: counts and waits, and the detail stays behind verify_claims.py, which
+    reads KV on the owner's own machine.
+
+    Driven with a realistic waiting row - a name that is also a common word
+    would prove nothing, so the fixture uses strings that cannot appear by
+    accident.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import claim_alert
+    errors = 0
+    SECRET = {"name": "ZZQQXCOMPANY", "company_id": "zzqqxco",
+              "domain": "zzqqxdomain.example", "tail": "zq9x7v",
+              # TLD-less on purpose, like every other fixture address here:
+              # check_no_addresses counts address-shaped literals per file and
+              # a guard that raises that allowance to test itself has widened
+              # the thing it guards. It still carries an "@", which is what
+              # the leak check below looks for.
+              "email": "person@desk"}
+    rows = [dict(SECRET, confirmed_at="2026-09-12T10:00:00Z", created=""),
+            dict(SECRET, company_id="zzqqxtwo", tail="zq0000",
+                 confirmed_at="2026-09-17T10:00:00Z", created="")]
+    text = claim_alert.body(rows, "2026-09-18")
+    for k, v in SECRET.items():
+        if v in text:
+            errors += fail(f"the claim alert publishes the claimant's {k} "
+                           f"({v!r}) into a GitHub issue on a public repo")
+    if "@" in text:
+        errors += fail("an address reached the claim alert body")
+    # AND IT MUST STILL BE USEFUL. A body that says nothing is safe and
+    # pointless; the count is the whole reason the owner opens it.
+    if "2" not in text:
+        errors += fail("the claim alert does not say how many are waiting, "
+                       "which is the one thing it exists to say")
+    if "6 day" not in text:
+        errors += fail("the claim alert does not say how long the longest has "
+                       "waited; a gate nobody is told is stale reads as empty")
+    if "verify_claims.py" not in text:
+        errors += fail("the claim alert does not say what to run")
+
+    # QUIET WHEN NOTHING IS WAITING, AND QUIET WITH NO SECRETS. A refresh must
+    # never shout because nobody set up claiming.
+    import io as _io
+    import contextlib as _cl
+    import sync_claims
+    real_kv, real_waiting = sync_claims._kv, None
+    import verify_claims
+    real_waiting = verify_claims.waiting
+    try:
+        sync_claims._kv = lambda: None
+        buf = _io.StringIO()
+        with _cl.redirect_stdout(buf):
+            claim_alert.main()
+        if buf.getvalue().strip() != "quiet":
+            errors += fail(f"with no CF_* secrets the claim alert said "
+                           f"{buf.getvalue().strip()!r}; it must be quiet, "
+                           f"like every other optional secret here")
+        sync_claims._kv = lambda: object()
+        verify_claims.waiting = lambda kv: []
+        buf = _io.StringIO()
+        with _cl.redirect_stdout(buf):
+            claim_alert.main()
+        if buf.getvalue().strip() != "quiet":
+            errors += fail("the claim alert shouted with nothing waiting, "
+                           "which is a nightly issue nobody needs")
+        sync_claims._kv = lambda: object()
+        verify_claims.waiting = lambda kv: rows
+        buf = _io.StringIO()
+        with _cl.redirect_stdout(buf):
+            claim_alert.main()
+        if buf.getvalue().strip() != "alert":
+            errors += fail("the claim alert stayed quiet with claims waiting, "
+                           "which is the corridor closing again")
+    finally:
+        sync_claims._kv, verify_claims.waiting = real_kv, real_waiting
+    return errors
+
+
 def check_every_pipeline_script_has_a_caller() -> int:
     """A script nothing runs is indistinguishable from a script that does not work.
 
@@ -4634,7 +4721,11 @@ def check_every_pipeline_script_has_a_caller() -> int:
         "promote_candidates.py": "same",
         "discover_js.py": "needs Playwright; kept out of the run path on purpose",
     }
-    MUST_RUN = {"sync_claims.py": "the claim flow is dark without it"}
+    MUST_RUN = {
+        "sync_claims.py": "the claim flow is dark without it",
+        "claim_alert.py": "the hand gate is the only abuse control the free "
+                          "tier has, and without this nothing tells the hand",
+    }
     for name, why in sorted(MUST_RUN.items()):
         if name not in called:
             errors += fail(f"no workflow calls {name} - {why}. Every other "
@@ -23098,6 +23189,7 @@ def main() -> int:
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
+    errors += check_the_claim_alert_names_nobody()
     errors += check_every_pipeline_script_has_a_caller()
     errors += check_the_journal_is_read_once_per_file_state()
     errors += check_two_rulings_never_share_a_journal_id()
