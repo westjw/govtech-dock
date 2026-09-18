@@ -565,6 +565,9 @@ async function boot() {
   const sortBtn = el('button', null, 'Sort board');
   sortBtn.dataset.key = '__sort'; sortBtn.onclick = () => showSort();
   nav.appendChild(sortBtn);
+  const sweepBtn = el('button', null, 'Page sweep');
+  sweepBtn.dataset.key = '__sweep'; sweepBtn.onclick = () => showSweep();
+  nav.appendChild(sweepBtn);
   drawSectorPicker();
   const canFilter = new Set(META.filterable || []);
   Object.keys(META.labels).forEach(k => {
@@ -635,6 +638,126 @@ async function refreshCounts() {
 
 /* The landing view. Eleven tabs and two thousand rows is a wall; this says
    which handful of them changes anything today, and what is already done. */
+/* ── Page sweep ─────────────────────────────────────────────────────────
+   Reading one category's pages the way a visitor would, and signing each one
+   off. One category at a time by the owner's choice: a sweep is a reading
+   job, and 77 categories of rows at once is the queue nobody clicks through.
+
+   IT HANDS OFF RATHER THAN RULING. Every gap names the queue that closes it
+   and clicking it goes there, because a surface that both lists work and does
+   it is a second door onto the map. The ONE thing it writes is the sign-off,
+   which is the one fact no queue can answer: whether a person has read the
+   page.
+
+   Built with el() throughout. Company names and descriptions arrive here from
+   outside submissions, and this file already learned what happens when a
+   remote string reaches innerHTML. */
+let SWEEP_CAT = null;
+
+async function showSweep(cat) {
+  TAB = '__sweep';
+  beltOff();
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__sweep'));
+  const v = $('#view'); v.innerHTML = '';
+  SWEEP_CAT = cat || SWEEP_CAT;
+
+  if (!SWEEP_CAT) {
+    const r = await api('/api/sweep');
+    if (r.error) { v.appendChild(el('p', 'empty', r.error)); return; }
+    v.appendChild(el('h2', null, 'Page sweep'));
+    v.appendChild(el('p', 'kv', 'Pick a category. Ordered by open roles, '
+      + 'because that is who sees the page.'));
+    const list = el('div', 'rows');
+    (r.categories || []).forEach(c => {
+      const row = el('button', 'row');
+      row.style.textAlign = 'left';
+      row.appendChild(el('b', null, c.category));
+      row.appendChild(el('span', 'kv', ' ' + c.sector));
+      row.appendChild(el('span', 'kv', '  ' + c.companies + ' companies · '
+        + c.open_roles + ' open roles · ' + c.signed_off + ' signed off'));
+      row.onclick = () => showSweep(c.category);
+      list.appendChild(row);
+    });
+    v.appendChild(list);
+    return;
+  }
+
+  const r = await api('/api/sweep?category=' + encodeURIComponent(SWEEP_CAT));
+  if (r.error) { v.appendChild(el('p', 'empty', r.error)); return; }
+  const back = el('button', null, '← all categories');
+  back.onclick = () => { SWEEP_CAT = null; showSweep(); };
+  v.appendChild(back);
+  v.appendChild(el('h2', null, r.category));
+  /* THE THIRD NUMBER IS THE POINT. Signed off and stale are bookkeeping;
+     "complete and unread" is the set this sweep exists to find - pages with
+     nothing outstanding that nobody has actually looked at. */
+  v.appendChild(el('p', 'kv', r.total + ' companies · ' + r.signed_off
+    + ' signed off · ' + r.stale + ' changed since · '
+    + r.clean_unread + ' complete but unread'));
+
+  const rows = el('div', 'rows');
+  (r.items || []).forEach(it => {
+    const row = el('div', 'row');
+    if (it.reviewed && !it.stale.length) row.style.opacity = '.55';
+    const head = el('div');
+    head.appendChild(el('b', null, (it.open_roles || 0) + 'j  '));
+    head.appendChild(el('b', null, it.name || it.id));
+    if (it.description) head.appendChild(el('div', 'kv', it.description));
+    row.appendChild(head);
+
+    if (it.gaps.length) {
+      const chips = el('div', 'row');
+      chips.style.border = '0'; chips.style.padding = '0';
+      it.gaps.forEach(g => {
+        const b = el('button', null, g.gap);
+        b.title = g.what + (g.queue ? ' — opens ' + g.queue
+                                    : ' — no queue covers this yet');
+        if (g.queue) b.onclick = () => show(g.queue);
+        else b.disabled = true;
+        chips.appendChild(b);
+      });
+      row.appendChild(chips);
+    } else {
+      row.appendChild(el('div', 'kv', 'nothing outstanding'));
+    }
+
+    if (it.stale.length) {
+      row.appendChild(el('div', 'warn', 'changed since you read it: '
+        + it.stale.join(', ') + ' — read it again'));
+    } else if (it.reviewed) {
+      row.appendChild(el('div', 'kv', 'read ' + it.reviewed.on + ' by '
+        + it.reviewed.by + (it.reviewed.note ? ' · ' + it.reviewed.note : '')));
+    }
+
+    const acts = el('div');
+    const page = el('a', null, 'their page');
+    page.href = 'https://sledjobs.com/c/' + encodeURIComponent(it.id);
+    page.target = '_blank'; page.rel = 'noopener';
+    acts.appendChild(page);
+    if (it.website) {
+      const site = el('a', null, ' their site');
+      site.href = it.website; site.target = '_blank'; site.rel = 'noopener';
+      acts.appendChild(site);
+    }
+    const sign = el('button', null, it.reviewed ? 'Re-open' : 'I read this');
+    sign.onclick = async () => {
+      sign.disabled = true;
+      const body = {company_id: it.id, call: CALL};
+      if (it.reviewed) body.clear = true;
+      else body.note = prompt('Anything worth noting? (optional)') || '';
+      const res = await api('/api/page-review', body);
+      sign.disabled = false;
+      toast(res.error || res.message);
+      if (!res.error) showSweep(SWEEP_CAT);
+    };
+    acts.appendChild(sign);
+    row.appendChild(acts);
+    rows.appendChild(row);
+  });
+  v.appendChild(rows);
+}
+
 async function showStart() {
   TAB = '__start';
   beltOff();

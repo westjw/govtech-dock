@@ -5044,6 +5044,105 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
     return errors
 
 
+def check_a_page_sign_off_says_what_was_true() -> int:
+    """The sweep derives the gaps and stores only the reading.
+
+    Everything on this surface except one fact is derivable, and the one that
+    is not - whether a person has READ the page - is a ruling, so it carries
+    an author, a date and room for a reason like every other ruling here.
+
+    THE SIGN-OFF REMEMBERS THE GAPS IT WAS MADE OVER. A bare tick certifies
+    nothing: a page approved today whose write-up is retracted next month is
+    not still reviewed, it is a page somebody read in a state it is no longer
+    in. Same reasoning as `.profiles_read` storing WHEN a category was gated -
+    a marker that cannot say what it covered certifies work nobody did.
+
+    AND "CHECKED, NOTHING FOUND" IS NOT A GAP. 501 companies carry a news
+    record with an empty item list, which is an answer somebody got. Filing it
+    as missing is the false "no listings" this project refuses everywhere.
+    """
+    import admin as _a
+    import page_reviews as PR
+
+    errors = 0
+    # the sign-off carries its evidence
+    r = PR.record("acme", "owner", ["write-up"], "looked fine")
+    for f in ("by", "on", "gaps_then"):
+        if f not in r:
+            errors += fail(f"a page sign-off carries no {f}; it cannot be "
+                           f"audited or re-opened")
+    if r.get("gaps_then") != ["write-up"]:
+        errors += fail(f"the sign-off did not store the gaps it was made "
+                       f"over: {r.get('gaps_then')!r}. A bare tick certifies "
+                       f"nothing")
+    # BOTH DIRECTIONS. A gap that opened is the obvious one; a gap that closed
+    # means the page he approved is not the page a visitor sees.
+    if PR.stale_for(r, ["write-up"]):
+        errors += fail("an unchanged page reports as changed")
+    if "+buyer" not in PR.stale_for(r, ["write-up", "buyer"]):
+        errors += fail("a NEW gap does not re-open the sign-off")
+    if "-write-up" not in PR.stale_for(r, []):
+        errors += fail("a gap CLOSING does not re-open the sign-off; the page "
+                       "approved is no longer the page being served")
+    # NOT A REAL ADDRESS SHAPE. record() refuses any '@', and
+    # check_no_person_in_the_repo counts address-shaped strings per file with
+    # a stated number - writing one here to test the rule against addresses
+    # raises that count, which is how a personal mailbox eventually arrives in
+    # a file allowed to hold business ones. This exercises the same branch.
+    for bad, why in ((("acme", "owner@desk", []), "an address as author"),
+                     (("", "owner", []), "no company"),
+                     (("acme", "owner", "write-up"), "gaps that are not a list")):
+        try:
+            PR.record(*bad)
+            errors += fail(f"page_reviews.record accepted {why}")
+        except ValueError:
+            pass
+
+    # the derivation
+    news = {"has-news": {"items": [{"date": "2026-09-01"}]},
+            "looked-none": {"checked_on": "2026-09-12", "items": []}}
+    def gaps(c):
+        return {g["gap"] for g in _a.sweep_gaps(c, None, news, set())}
+    base = {"id": "has-news", "name": "X", "description": "sells things",
+            "vendor_type": "GovTech Product", "profile": {"paragraphs": ["a"]},
+            "sells_to_gov": "yes", "competitors": [{"id": "y"}],
+            "ats": {"type": "greenhouse"}}
+    if gaps(base):
+        errors += fail(f"a complete company reports gaps: {gaps(base)}")
+    if "news" in gaps(dict(base, id="looked-none")):
+        errors += fail("a company whose news was checked and came back empty "
+                       "is reported as missing news; that is an answer, not a "
+                       "hole")
+    if "news" not in gaps(dict(base, id="never-looked")):
+        errors += fail("a company nobody has checked for news reports no gap, "
+                       "so the sweep cannot tell unchecked from checked")
+    # A BOARD OR THE WORKFLOW. posts_at is the finished state for a company
+    # whose board a fetcher cannot read.
+    nob = dict(base, ats={"type": "unknown"})
+    if "board" not in gaps(nob):
+        errors += fail("no readable board and no posts_at reports no gap")
+    if "board" in gaps(dict(nob, posts_at=[{"where": "LinkedIn"}])):
+        errors += fail("a company with posts_at recorded still reports a board "
+                       "gap, which sends somebody hunting an ATS that does "
+                       "not exist")
+    # every gap hands off to a queue that exists, or honestly names none
+    for c in (base, nob, dict(base, id="never-looked")):
+        for g in _a.sweep_gaps(c, None, news, set()):
+            if g["queue"] is not None and g["queue"] not in _a.QUEUES:
+                errors += fail(f"gap {g['gap']!r} points at queue "
+                               f"{g['queue']!r}, which does not exist")
+    # A RULING, NOT AN OPEN ACTION. The console code is what says the author
+    # is the person at the terminal.
+    if "page-review" in _a.OPEN_ACTIONS:
+        errors += fail("page-review is in OPEN_ACTIONS; a ruling that names "
+                       "an author must not be callable without the console "
+                       "code")
+    if "page-review" not in _a.ACTIONS:
+        errors += fail("page-review is not registered, so the sweep's one "
+                       "write does nothing")
+    return errors
+
+
 def check_a_tag_is_derived_and_never_stored() -> int:
     """Tags come off the fields, per build. Nothing writes them onto a record.
 
@@ -22275,6 +22374,7 @@ def main() -> int:
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
+    errors += check_a_page_sign_off_says_what_was_true()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()

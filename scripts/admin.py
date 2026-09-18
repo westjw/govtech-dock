@@ -5025,6 +5025,143 @@ def act_proposal_ruling(body: dict) -> dict:
                                  force=bool(body.get("force")))
 
 
+def sweep_gaps(c: dict, board_org: dict | None, news: dict,
+               rival_pending: set) -> list:
+    """What is outstanding on one company's public page. [] when nothing is.
+
+    DERIVED EVERY TIME, never stored. A gap either exists in the file or it
+    does not, so asking the file is always current; a cached list would be one
+    more thing to keep in step. The only thing stored about a sweep is the
+    person's sign-off, because that is the one fact no file can answer.
+
+    EACH GAP NAMES THE QUEUE THAT CLOSES IT, so the sweep hands off rather
+    than growing its own writes. A surface that both lists work and does it is
+    a second door onto the map, and this repo has one door per fact.
+    """
+    out = []
+    if not (c.get("description") or "").strip():
+        out.append({"gap": "description", "queue": "miscategorized",
+                    "what": "no one-line description"})
+    if not c.get("vendor_type"):
+        out.append({"gap": "tags", "queue": "miscategorized",
+                    "what": "no vendor_type, so it carries no `sells` tag"})
+    if not c.get("profile"):
+        out.append({"gap": "write-up", "queue": "profiles",
+                    "what": "no write-up on the page"})
+    if "sells_to_gov" not in c:
+        out.append({"gap": "buyer", "queue": "proposals",
+                    "what": "nobody has read who buys it"})
+    if not (c.get("competitors") or c.get("competitors_none_found")):
+        out.append({"gap": "competitors", "queue": "proposals",
+                    "what": ("a shortlist is proposed and waiting"
+                             if c["id"] in rival_pending
+                             else "no competitors, and none proposed")})
+    # A BOARD OR THE WORKFLOW. `posts_at` is the answer for a company whose
+    # board a fetcher cannot read - "they post here and we are not counting
+    # it" is a finished state, not a hole. Filing it as a gap would send
+    # somebody looking for an ATS that does not exist.
+    if (c.get("ats") or {}).get("type") not in STRUCTURED_ATS \
+            and not c.get("posts_at"):
+        out.append({"gap": "board", "queue": "boards",
+                    "what": "no readable board and no note on where they post"})
+    # NEWS HAS THREE STATES AND ONLY ONE IS A GAP. "checked, none found" is an
+    # answer somebody got - 501 companies carry it - and reporting it as
+    # missing is the false "no listings" this project refuses everywhere else.
+    if c["id"] not in news:
+        out.append({"gap": "news", "queue": None,
+                    "what": "never checked for news"})
+    return out
+
+
+# The ats types coverage.py counts as a real API. One list, one place.
+STRUCTURED_ATS = {"ashby", "greenhouse", "lever", "workable", "recruitee",
+                  "breezy", "smartrecruiters", "bamboohr", "workday",
+                  "rippling", "jazzhr", "icims", "paylocity", "oracle",
+                  "jibe", "adp", "gusto", "gem"}
+
+
+def q_sweep(companies, board, category: str | None = None) -> list:
+    """One category's pages, worst-first, with what each one still needs.
+
+    ORDERED BY OPEN ROLES because that is who sees the page. A company with 32
+    live reqs and no write-up is a hole a visitor falls into today; the same
+    hole at zero reqs is bookkeeping.
+    """
+    import page_reviews
+    news = read("news.json", {})
+    reviews = page_reviews.load()
+    store = read("agent_proposals.json", {})
+    rival_pending = {v.get("id") for v in (store.values()
+                     if isinstance(store, dict) else [])
+                     if isinstance(v, dict) and v.get("kind") == "rival"
+                     and v.get("status") == "pending"}
+    jobs = {o.get("id"): o.get("open_roles", 0) or 0
+            for o in board.get("organizations", [])}
+    out = []
+    for c in companies:
+        if category and c.get("category") != category:
+            continue
+        gaps = sweep_gaps(c, None, news, rival_pending)
+        rev = reviews.get(c["id"])
+        out.append({
+            "id": c["id"], "name": c.get("name"),
+            "sector": c.get("sector"), "category": c.get("category"),
+            "open_roles": jobs.get(c["id"], 0),
+            "website": c.get("website"),
+            "description": c.get("description"),
+            "gaps": gaps,
+            "reviewed": rev or None,
+            "stale": page_reviews.stale_for(rev, [g["gap"] for g in gaps]),
+        })
+    out.sort(key=lambda r: (-r["open_roles"], r["name"] or ""))
+    return out
+
+
+def act_page_review(body: dict) -> dict:
+    """Sign one page off, or take the sign-off back.
+
+    Not in OPEN_ACTIONS: it is a ruling with an author, and the console code
+    is what says the author is the person at the terminal.
+    """
+    import page_reviews
+    cid = str(body.get("company_id") or "").strip()
+    if not cid:
+        return {"error": "which company?"}
+    companies = read_companies()
+    c = next((x for x in companies if x.get("id") == cid), None)
+    if c is None:
+        return {"error": f"no company {cid!r}"}
+    rows = page_reviews.load()
+    by = str(body.get("by") or "owner")
+    if body.get("clear"):
+        if cid not in rows:
+            return {"error": f"{c.get('name')} was not signed off"}
+        rows.pop(cid)
+        bad = page_reviews.save(rows, "page-review-clear",
+                                why=f"re-opened {cid}", by=by)
+        return {"error": bad} if bad else {
+            "ok": True, "message": f"{c.get('name')} re-opened"}
+    news = read("news.json", {})
+    store = read("agent_proposals.json", {})
+    pend = {v.get("id") for v in (store.values() if isinstance(store, dict) else [])
+            if isinstance(v, dict) and v.get("kind") == "rival"
+            and v.get("status") == "pending"}
+    gaps = [g["gap"] for g in sweep_gaps(c, None, news, pend)]
+    try:
+        rows[cid] = page_reviews.record(cid, by, gaps, body.get("note") or "")
+    except ValueError as e:
+        return {"error": str(e)}
+    bad = page_reviews.save(rows, "page-review",
+                            why=f"{cid} read by a person"
+                                + (f", {len(gaps)} still open" if gaps else
+                                   ", nothing missing"), by=by)
+    return {"error": bad} if bad else {
+        "ok": True,
+        "message": (f"{c.get('name')} signed off"
+                    + (f" with {len(gaps)} gap(s) noted" if gaps
+                       else " - nothing missing"))}
+
+
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
@@ -5040,6 +5177,7 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "confirm-founded": act_confirm_founded,
            "proposal-ruling": act_proposal_ruling,
            "dismiss": act_dismiss, "ask": act_ask,
+           "page-review": act_page_review,
            "user-grant": act_user_grant, "user-revoke": act_user_revoke}
 
 
@@ -5600,6 +5738,41 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 # on a record that stops existing. Ordering is the cheapest
                 # lever there is, and it is invisible unless somebody counts.
                 "unblocks": _unblocks(name, companies, board),
+            })
+        if path == "/api/sweep":
+            # ONE CATEGORY AT A TIME, by the owner's choice: a sweep is a
+            # reading job and 77 categories of rows at once is the queue
+            # nobody clicks through. With no category it answers the
+            # categories themselves, so the picker has something to draw.
+            companies, board = read_companies(), read("board.json", {})
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            cat = (qs.get("category") or [""])[0]
+            if not cat:
+                jobs = {o.get("id"): o.get("open_roles", 0) or 0
+                        for o in board.get("organizations", [])}
+                import page_reviews
+                seen = page_reviews.load()
+                cats: dict = {}
+                for c in companies:
+                    k = (c.get("sector"), c.get("category"))
+                    r = cats.setdefault(k, {"sector": k[0], "category": k[1],
+                                            "companies": 0, "open_roles": 0,
+                                            "signed_off": 0})
+                    r["companies"] += 1
+                    r["open_roles"] += jobs.get(c["id"], 0)
+                    r["signed_off"] += c["id"] in seen
+                return self._json({"categories": sorted(
+                    cats.values(), key=lambda r: -r["open_roles"])})
+            rows = q_sweep(companies, board, cat)
+            return self._json({
+                "category": cat, "items": rows, "total": len(rows),
+                "signed_off": sum(1 for r in rows if r["reviewed"]),
+                "stale": sum(1 for r in rows if r["stale"]),
+                # THE ROWS WITH NOTHING OUTSTANDING AND NO SIGN-OFF. The
+                # sweep's real question: pages that look complete and that
+                # nobody has actually read.
+                "clean_unread": sum(1 for r in rows
+                                    if not r["gaps"] and not r["reviewed"]),
             })
         if path == "/api/sort/companies":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
