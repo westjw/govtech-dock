@@ -548,8 +548,18 @@ def main() -> int:
               f"competitor.")
         print("  Accept one category at a time:")
         for cat, n in sorted(seen_cats.items(), key=lambda kv: -kv[1]):
+            # A CATEGORY THAT SPANS SECTORS NEEDS --sector, AND THE LINE
+            # PRINTED HERE HAS TO BE THE ONE THAT WORKS. Without this, a
+            # --sector "Public Works" read ended by printing
+            # `--accept-category 'Suppliers & Services'`, which the span
+            # check then refuses because 6 more of them sit in Parks & Rec.
+            # A suggested command that is rejected the moment it is run
+            # teaches people to distrust the refusal, not the command.
+            scoped = len({placed(q)[0] for q in pending(store, cat)
+                          if placed(q)[0]}) > 1
+            tail = f" --sector {a.sector!r}" if scoped else ""
             print(f"    python3 scripts/promote_rivals.py "
-                  f"--accept-category {cat!r}   # {n}")
+                  f"--accept-category {cat!r}{tail}   # {n}")
         return 0
 
     if a.category:

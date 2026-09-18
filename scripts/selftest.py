@@ -4799,6 +4799,23 @@ def check_a_shortlist_is_reachable_by_the_company_it_is_about() -> int:
         _, out = run(["--sector", "Public Works"])
         if "Aaa" not in out or "Ccc" not in out:
             errors += fail("--sector did not reach every category in the sector")
+        # THE COMMAND IT SUGGESTS MUST RUN. "Suppliers & Services" spans two
+        # sectors, so the accept line for it has to carry --sector or the
+        # span check refuses the very command this view just printed.
+        for line in out.splitlines():
+            if "--accept-category" in line and "Suppliers & Services" in line:
+                if "--sector" not in line:
+                    errors += fail("the sector view printed "
+                                   "`--accept-category 'Suppliers & Services'` "
+                                   "with no --sector; that command is refused "
+                                   "the moment it is run")
+                break
+        else:
+            errors += fail("the sector view printed no accept command for "
+                           "Suppliers & Services")
+        if "--accept-category 'Water' --sector" in out:
+            errors += fail("a category that sits in one sector was given a "
+                           "redundant --sector")
         if "Bbb" in out:
             errors += fail("--sector printed a company from another sector")
         # READING RULES ON NOTHING. --category and --sector print; a print that
