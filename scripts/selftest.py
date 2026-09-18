@@ -4594,6 +4594,181 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_a_supplier_lands_with_a_tag_read_off_its_own_words() -> int:
+    """Moving suppliers over is the owner's ruling; landing them untagged defeats it.
+
+    "we are going to have to move all suppliers over onto the system... if you
+    want to sell to government, this is the place" (2026-09-17), and then
+    "move suppliers over but put a tag". tags.tags_for DERIVES every tag and
+    stores none, off vendor_type - which is absent on all 5,143 supplier
+    records, so a straight merge lands `tags: []` on every one. The tag
+    dimension exists precisely so a janitorial contractor and a permitting
+    platform stay legible on one page; without it the move produces 1,578
+    indistinguishable cards.
+
+    FOUR THINGS HELD HERE, each of which has a way of being quietly wrong:
+
+    1. Nothing lands without a tag.
+    2. The class is read off the company's OWN words. conference_intake
+       appends "- exhibited at <event>" to a description, so classifying on
+       the raw string would file every exhibitor at one show as one kind of
+       business - 80 companies at EDUCAUSE reading as the same company.
+    3. A NAME ON AN EXHIBITOR LIST IS NOT A COMPANY. 2,569 of the 5,143 have
+       no description and no website. Publishing them is absence wearing
+       coverage's clothes, which is this repo's oldest rule.
+    4. The event tag moves to `source`, where build_board._event_tags counts
+       it. Landed with the event only in its prose, a supplier would exhibit
+       at a show the Conferences tab says nobody has mined.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    import stage_suppliers as ss
+    import tags as tagmod
+    errors = 0
+    SUP = [
+        # ready, classifiable, and carrying an event in its prose
+        {"id": "pipe-co", "name": "Pipe Co", "sector": "Public Works",
+         "category": "Suppliers & Services", "website": "https://pipe.example",
+         "description": "PVC pipe and stormwater castings - exhibited at WEFTEC 2026",
+         "ats": {"type": "unknown"}},
+        # ready, but no anchor anywhere in its own words
+        {"id": "chili-co", "name": "Chili Co", "sector": "K-12 Schools",
+         "category": "Suppliers & Services", "website": "https://chili.example",
+         "description": "Chili lime seasoning - exhibited at Ohio ASBO 2026",
+         "ats": {"type": "unknown"}},
+        # A NAME ON A FLOOR: no description of its own, no website. The
+        # exhibited-at text is the ONLY thing it carries, and it is a fact
+        # about a trade show, not about a company. THE EVENT NAME CARRIES AN
+        # ANCHOR WORD ON PURPOSE - "Michigan Sheriffs Association 2026" is a
+        # real tag on real records, and reading the raw description would
+        # file every exhibitor on that floor as an Association.
+        {"id": "floor-only", "name": "Floor Only", "sector": "General Gov",
+         "category": "Suppliers & Services", "website": "",
+         "description": "exhibited at Michigan Sheriffs Association 2026",
+         "ats": {"type": "unknown"}},
+        # HALF A CARD, BOTH WAYS. `d and w` is the rule; `d or w` would
+        # promote both of these and neither is a card.
+        {"id": "site-only", "name": "Site Only", "sector": "General Gov",
+         "category": "Suppliers & Services", "website": "https://site.example",
+         "description": "exhibited at GFOA 2026", "ats": {"type": "unknown"}},
+        {"id": "desc-only", "name": "Desc Only", "sector": "General Gov",
+         "category": "Suppliers & Services", "website": "",
+         "description": "Commercial cooking equipment", "ats": {"type": "unknown"}},
+        # already ruled: not a backlog, must never be offered
+        {"id": "settled", "name": "Settled", "sector": "General Gov",
+         "category": "Suppliers & Services", "website": "https://s.example",
+         "description": "Facility services", "govtech": False,
+         "ats": {"type": "unknown"}},
+    ]
+    wrote: list = []
+    real = (ss.load, admin.read_companies, admin.save_companies)
+    try:
+        ss.load = lambda: [dict(r) for r in SUP]
+        admin.read_companies = lambda: []
+        # RECORDS, NEVER RAISES. Written to raise first, and a mutation that
+        # dropped the --by refusal then surfaced as a traceback rather than as
+        # this check failing - so the guard "caught" it the way a crash
+        # catches anything. Recording lets the assertion below name the fault.
+        admin.save_companies = lambda cos, *a, **k: wrote.append((cos, a, k))
+        pops = ss.triage(ss.load())
+        if len(pops.get("ready", [])) != 2:
+            errors += fail(f"triage put {len(pops.get('ready', []))} in `ready`; "
+                           f"a supplier is a card only with a description AND a "
+                           f"website, and `govtech` already ruled is not a backlog")
+        for bad_id, what in (("floor-only", "a name on an exhibitor list"),
+                             ("site-only", "a website with no description"),
+                             ("desc-only", "a description with no website")):
+            if any(r["id"] == bad_id for r in pops.get("ready", [])):
+                errors += fail(f"{what} was offered as a card; 2,569 of the "
+                               f"5,143 have neither, and publishing them is "
+                               f"absence wearing coverage's clothes")
+        if any(r["id"] == "settled" for v in pops.values() for r in v):
+            errors += fail("a supplier already ruled govtech:false came back as "
+                           "a backlog item")
+
+        land, held = ss.proposals(ss.load())
+        if wrote:
+            errors += fail("building the proposals wrote to companies.json; "
+                           "staging is a dry run by construction")
+        ids = {r["id"] for r in land}
+        if ids != {"pipe-co"}:
+            errors += fail(f"proposals would land {sorted(ids)}; only the one "
+                           f"with an anchored phrase in its own words qualifies")
+        for r in land:
+            if not r.get("tags_would_be"):
+                errors += fail(f"{r['id']} would land with no tag at all, which "
+                               f"is the whole reason this path exists")
+            if not r.get("read_from"):
+                errors += fail(f"{r['id']} carries no evidence phrase, so a "
+                               f"person cannot disagree with the class")
+            if r.get("read_from", "") in r.get("description", "").lower() is False:
+                pass
+        if not any(h["id"] == "chili-co" for h in held):
+            errors += fail("a supplier with no anchored phrase was not held "
+                           "back; an unclassifiable supplier is one we have "
+                           "not classified, not one we may guess at")
+
+        # 2. THE EVENT IS NOT THE EVIDENCE.
+        for only in ("exhibited at Michigan Sheriffs Association 2026",
+                     "exhibited at County Commissioners Association of PA 2026",
+                     "exhibited at WEFTEC 2026"):
+            vt, phrase = ss.classify({"description": only})
+            if vt is not None:
+                errors += fail(f"a record whose only text is {only!r} "
+                               f"classified as {vt!r} off {phrase!r}; that "
+                               f"files every exhibitor on that floor as one "
+                               f"kind of business")
+        if ss.own_words({"description": "PVC pipe - exhibited at WEFTEC 2026"}) != "PVC pipe":
+            errors += fail("own_words did not strip the exhibited-at tag, so "
+                           "the show is being read as the company")
+
+        # 4. THE TAG REACHES `source`, WHICH IS WHERE THE TAB COUNTS IT.
+        import build_board as bb
+        got = land[0]
+        if "WEFTEC 2026" not in (got.get("source") or ""):
+            errors += fail("the event stayed in the description and never "
+                           "reached `source`; the Conferences tab counts from "
+                           "`source`, so this company would exhibit at a show "
+                           "the tab says nobody has mined")
+        elif "WEFTEC 2026" not in bb._event_tags(got.get("source")):
+            errors += fail("the event reached `source` in a shape "
+                           "_event_tags does not parse, which is the same "
+                           "invisibility one layer down")
+        # AND ONLY A TAG WITH A YEAR. _event_tags refuses a tag with no year -
+        # "a tag without one cannot be read back six months later" - so a
+        # yearless fragment in `source` is a string nothing will ever count.
+        multi = ss.proposals([dict(SUP[0], id="multi", description=
+            "PVC pipe - exhibited at WEFTEC 2026, Spring Preview")])[0]
+        if multi:
+            src = multi[0].get("source") or ""
+            if "Spring Preview" in src:
+                errors += fail("a fragment with no year reached `source`; "
+                               "_event_tags will never count it, so it is "
+                               "noise in the one field the tab reads")
+
+        # 5. LANDING NEEDS AN AUTHOR.
+        import io as _io
+        import contextlib as _cl
+        argv = sys.argv
+        try:
+            sys.argv = ["stage_suppliers.py", "--sector", "Public Works", "--land"]
+            buf = _io.StringIO()
+            with _cl.redirect_stdout(buf):
+                rc = ss.main()
+            if rc != 1 or "--by is required" not in buf.getvalue():
+                errors += fail("--land without --by did not refuse; the journal "
+                               "is what says whose judgment a ruling was")
+            if wrote:
+                errors += fail("--land without --by WROTE to companies.json; "
+                               "a ruling with no author cannot be reviewed, "
+                               "undone or learned from")
+        finally:
+            sys.argv = argv
+    finally:
+        ss.load, admin.read_companies, admin.save_companies = real
+    return errors
+
+
 def check_the_claim_alert_names_nobody() -> int:
     """The notification is published. It must say how many, never who.
 
@@ -23189,6 +23364,7 @@ def main() -> int:
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
+    errors += check_a_supplier_lands_with_a_tag_read_off_its_own_words()
     errors += check_the_claim_alert_names_nobody()
     errors += check_every_pipeline_script_has_a_caller()
     errors += check_the_journal_is_read_once_per_file_state()
