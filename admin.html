@@ -670,8 +670,11 @@ async function showSweep(cat) {
       + 'because that is who sees the page.'));
     const list = el('div', 'rows');
     (r.categories || []).forEach(c => {
-      const row = el('button', 'row');
-      row.style.textAlign = 'left';
+      const row = el('button', 'item');
+      row.style.textAlign = 'left'; row.style.width = '100%';
+      row.style.background = 'var(--panel)'; row.style.font = 'inherit';
+      row.style.color = 'inherit'; row.style.cursor = 'pointer';
+      row.style.display = 'block'; row.style.marginBottom = '7px';
       row.appendChild(el('b', null, c.category));
       row.appendChild(el('span', 'kv', ' ' + c.sector));
       row.appendChild(el('span', 'kv', '  ' + c.companies + ' companies · '
@@ -698,7 +701,8 @@ async function showSweep(cat) {
 
   const rows = el('div', 'rows');
   (r.items || []).forEach(it => {
-    const row = el('div', 'row');
+    const row = el('div', 'item');
+    row.style.marginBottom = '7px';
     if (it.reviewed && !it.stale.length) row.style.opacity = '.55';
     const head = el('div');
     head.appendChild(el('b', null, (it.open_roles || 0) + 'j  '));
@@ -708,7 +712,6 @@ async function showSweep(cat) {
 
     if (it.gaps.length) {
       const chips = el('div', 'row');
-      chips.style.border = '0'; chips.style.padding = '0';
       it.gaps.forEach(g => {
         const b = el('button', null, g.gap);
         b.title = g.what + (g.queue ? ' — opens ' + g.queue
@@ -730,7 +733,7 @@ async function showSweep(cat) {
         + it.reviewed.by + (it.reviewed.note ? ' · ' + it.reviewed.note : '')));
     }
 
-    const acts = el('div');
+    const acts = el('div', 'row');
     const page = el('a', null, 'their page');
     page.href = 'https://sledjobs.com/c/' + encodeURIComponent(it.id);
     page.target = '_blank'; page.rel = 'noopener';
