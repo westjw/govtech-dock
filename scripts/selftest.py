@@ -4501,6 +4501,102 @@ def check_one_oversized_write_up_cannot_stop_the_second_read() -> int:
     return errors
 
 
+def check_discovery_probes_the_oldest_first() -> int:
+    """discovery.yml says --limit takes the oldest first. The code sorted by sector.
+
+    Found by the 2026-09-18 pipeline review: `todo.sort` used the buyer-motion
+    sector order alone, then clipped to 300, so every sector outside that map
+    sat last on every Sunday, and the 1,426 companies probed on three August
+    days all come due in one October week - five runs to drain, with the
+    unmapped sectors starved for all five. Oldest first is what the workflow
+    promised; sector order is the tiebreak. A company never probed at all
+    sorts before any that was.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import discover_ats as da
+    errors = 0
+    log = {"old-airport": {"on": "2026-01-05"}, "new-gengov": {"on": "2026-06-01"},
+           "mid-hhs": {"on": "2026-03-01"}}
+    cos = [{"id": "new-gengov", "sector": "General Gov"},
+           {"id": "mid-hhs", "sector": "Health & Human Services"},
+           {"id": "old-airport", "sector": "Airports & Aviation"},
+           {"id": "never", "sector": "Housing"}]
+    got = [c["id"] for c in sorted(cos, key=lambda c: da.probe_order(c, log))]
+    if got != ["never", "old-airport", "mid-hhs", "new-gengov"]:
+        errors += fail(f"discovery would probe in the order {got}; the oldest "
+                       f"probe (and a never-probed company before it) must "
+                       f"come first, whatever the sector")
+    same_day = [{"id": "a", "sector": "K-12 Schools"}, {"id": "b", "sector": "General Gov"}]
+    log2 = {"a": {"on": "2026-02-02"}, "b": {"on": "2026-02-02"}}
+    if [c["id"] for c in sorted(same_day, key=lambda c: da.probe_order(c, log2))] != ["b", "a"]:
+        errors += fail("on the same probe date the buyer-motion sector order "
+                       "should break the tie, and does not")
+    # THE CALLER. A helper nobody sorts by proves nothing about the run.
+    src = _code_only(ROOT / "scripts" / "discover_ats.py")
+    if "todo.sort(key=lambda c: probe_order(c, log))" not in src:
+        errors += fail("discover_ats.main no longer sorts its worklist with "
+                       "probe_order, so the oldest-first promise in "
+                       "discovery.yml is not what runs")
+    return errors
+
+
+def check_a_no_web_rival_run_briefs_only_companies_with_an_edge_to_judge() -> int:
+    """Without the web, keep/drop on existing edges is all that can land.
+
+    honest() drops every `add` from a no-web run and `searches` is a note
+    for a routine with a browser. So a company with NO edges on file gets a
+    ~13.7k-char brief and can return nothing the door accepts. Measured on
+    2026-09-18: 968 of the 1,059-company queue, 91% of a full no-web run,
+    $10-16 spent on four query strings the brief itself templates. Driven
+    through main() with the model and the door stubbed: one company with an
+    edge, one without; the no-web run asks about one, --web asks about both,
+    and the held-back count is printed rather than swallowed.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import io as _io
+    import contextlib as _cl
+    import agents
+    import llm
+    import find_rivals as fr
+    errors = 0
+    briefs = [{"key": "rival:with", "id": "with", "name": "With", "existing": ["rival-a"],
+               "roster": [], "website": "https://with.example"},
+              {"key": "rival:bare", "id": "bare", "name": "Bare", "existing": [],
+               "roster": [], "website": "https://bare.example"}]
+    asked: list = []
+    real = (agents.brief_rival_web, agents.ingest, llm.ask, llm.key, llm.spent, sys.argv)
+
+    def run(argv):
+        asked.clear()
+        agents.brief_rival_web = lambda **kw: [dict(b) for b in briefs]
+        agents.ingest = lambda kind, out, model="": {"kept": len(out), "refused": []}
+        llm.ask = lambda sysm, user, kind, **kw: asked.append(json.loads(user)["id"]) or {
+            "confidence": "low", "why": "w", "keep": [], "drop": [], "add": [], "searches": []}
+        llm.key = lambda: "k"
+        llm.spent = lambda: (len(asked), 0.0)
+        sys.argv = ["find_rivals.py"] + argv
+        buf = _io.StringIO()
+        with _cl.redirect_stdout(buf):
+            fr.main()
+        return buf.getvalue()
+    try:
+        out = run(["--category", "Police", "--limit", "5"])
+        if asked != ["with"]:
+            errors += fail(f"a no-web rival run asked about {asked}; a company "
+                           f"with no edges on file has nothing a no-web run can "
+                           f"judge and is paid for anyway")
+        if "held back" not in out or "1 " not in out:
+            errors += fail("the company held back from a no-web run was not "
+                           "counted on screen; a silent skip reads as coverage")
+        run(["--category", "Police", "--limit", "5", "--web"])
+        if sorted(asked) != ["bare", "with"]:
+            errors += fail(f"a --web run asked about {asked}; with a browser "
+                           f"a company with no edges is exactly the one to ask about")
+    finally:
+        (agents.brief_rival_web, agents.ingest, llm.ask, llm.key, llm.spent, sys.argv) = real
+    return errors
+
+
 def check_the_second_reader_never_sees_the_first_answer() -> int:
     """The blinding IS the mechanism. A reader shown the answer agrees with it.
 
@@ -16623,7 +16719,10 @@ def check_mail_shell() -> int:
     (Word drops both), in either file.
     """
     errors = 0
-    js = (ROOT / "functions" / "api" / "alerts.js").read_text()
+    # _mail.js, not alerts.js: alerts.js carried a byte-identical copy of the
+    # shell until 2026-09-18 and this guard pinned the copy, so claim.js - the
+    # one caller that already imported _mail.js - was the unguarded path.
+    js = (ROOT / "functions" / "_mail.js").read_text()
     # digest.py builds its shell in an f-string, where a literal CSS brace has
     # to be written doubled. Comparing raw source would therefore report every
     # CSS rule as drift, which is the guard crying wolf rather than a finding -
@@ -16637,12 +16736,12 @@ def check_mail_shell() -> int:
     for name, mark in marks:
         in_js, in_py = mark in js, mark in py
         if not (in_js and in_py):
-            where = "alerts.js" if in_py else "digest.py"
+            where = "_mail.js" if in_py else "digest.py"
             print(f"  FAIL: the email shell's {name} ({mark!r}) is missing from "
                   f"{where} - the two mail shells have drifted")
             errors += 1
 
-    for label, src in (("alerts.js", js), ("digest.py", py)):
+    for label, src in (("_mail.js", js), ("digest.py", py)):
         # Only the mail shell is being judged here, so look at the part of the
         # file that builds email rather than the whole module.
         i = src.find("the shared email shell")
@@ -17945,11 +18044,17 @@ def check_mail_is_built_from_the_shell() -> int:
     # the harness had defined NAME itself. Only the specifier is rewritten;
     # the names the file asks for are the names it gets.
     src = (ROOT / "functions" / "api" / "alerts.js").read_text()
-    brand = (ROOT / "functions" / "_brand.js").resolve().as_uri()
-    src, n = re.subn(r'from\s*"\.\./_brand\.js"', f'from "{brand}"', src, count=1)
+    # The real _mail.js, which resolves ./_brand.js from its own location -
+    # so the whole import chain the deployed Worker walks is the one executed.
+    mail = (ROOT / "functions" / "_mail.js").resolve().as_uri()
+    src, n = re.subn(r'from\s*"\.\./_mail\.js"', f'from "{mail}"', src, count=1)
     if n != 1:
-        print("  FAIL: alerts.js no longer imports from ../_brand.js")
+        print("  FAIL: alerts.js no longer imports from ../_mail.js")
         return errors + 1
+    if "function shell(" in src or "async function send(" in src:
+        print("  FAIL: alerts.js carries its own copy of the mail shell again; "
+              "the copy is what drifts, and only _mail.js is guarded")
+        errors += 1
     src += ('\nconsole.log(JSON.stringify({confirm: confirmMail("t".repeat(48), '
             '{cadence: "weekly"}), settings: shell("pre", "<div>x</div>", '
             '[["Change", "https://x/1"]]), button: button("https://x/2", "Go")}));')
@@ -22566,6 +22671,8 @@ def main() -> int:
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
+    errors += check_discovery_probes_the_oldest_first()
+    errors += check_a_no_web_rival_run_briefs_only_companies_with_an_edge_to_judge()
     errors += check_the_second_reader_never_sees_the_first_answer()
     errors += check_the_gate_shows_the_exceptions_and_rules_on_nothing()
     errors += check_a_ruling_can_be_re_read()

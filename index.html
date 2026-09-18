@@ -8,9 +8,17 @@
 <link rel="apple-touch-icon" href="assets/mascot/favicon/favicon-180.png">
 <meta name="theme-color" content="#E8F1F7">
 <title>SLED JOBS — govtech sales roles</title>
+<!-- The font as a <link>, not an @import inside <style>: an @import is
+     discovered only after the whole 80 KB style block parses, and it is
+     render-blocking. claim.html already does it this way. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<!-- board.json is 600 KB compressed and boot() asks for it only after
+     440 KB of HTML has parsed. Preloaded here so the two downloads overlap.
+     `crossorigin` matches fetch()'s default mode or the preload is wasted. -->
+<link rel="preload" href="data/board.json" as="fetch" crossorigin>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
-
   /* ── The Modernist system from the deck, on the SLED palette ──
      Taken from admin.html rather than approximated, so the public board and
      the admin read as one product: Archivo at weight 800 for headings, a

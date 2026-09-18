@@ -82,6 +82,32 @@ const button = (href, label) =>
  font-weight:700;font-size:15px;font-family:${FONT}">${label}</a>
  </td></tr></table>`;
 
+/* --- the shared email shell --------------------------------------------
+ *
+ * Every email this project sends wears the site's own band: Penguin ground,
+ * the mascot's face on a Belly plate, the Beak rule beneath. Same identity,
+ * same reason index.html and alerts.html both restate it - there is no build
+ * step, and this is the one fixed thing across every surface.
+ *
+ * THE DESIGN IS BUILT AROUND A BLOCKED IMAGE, not around a loaded one.
+ * Outlook and much of Gmail suppress images by default, so everything that
+ * NAMES the product is colour and type: the Penguin bgcolor, the wordmark as
+ * live text, the Beak rule as a table cell, the Belly plate as a hard 52px
+ * cell with a background. Only the face is a pixel, and it is the only thing
+ * allowed to be optional. With images off the band keeps its full height and
+ * every cue except the penguin.
+ *
+ * WHY THE MSO CONDITIONAL EXISTS. Outlook 2007-2016 renders through Word,
+ * which does not walk a font stack: it takes the FIRST declared family and,
+ * finding Archivo not installed, falls back to Times New Roman - the whole
+ * email in a serif nobody chose. The conditional block below hands Word a
+ * font it has. The selector list must include div and p, because the type
+ * here is set on divs.
+ *
+ * NO TEMPLATE BRACES REACH A READER. Everything is a function argument;
+ * there is no {{TOKEN}} left for a caller to forget. selftest asserts it.
+ */
+
 function shell(preheader, body, links) {
   const foot = (links || [])
     .map(l => `<a href="${l[1]}" style="color:#556F82;text-decoration:underline">${l[0]}</a>`)
