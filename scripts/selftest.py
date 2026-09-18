@@ -4501,6 +4501,99 @@ def check_one_oversized_write_up_cannot_stop_the_second_read() -> int:
     return errors
 
 
+def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
+    """sanitize() strips keys from the object the static pages are then built from.
+
+    board.json carried 760 KB of keys index.html never reads. Stripping them
+    is worth 683,638 B raw - 9.8% less for every visitor's main thread to
+    parse - and only 15,575 B gzipped, because they are mostly repeated
+    "key":null. Say it as a parse cost, not a download.
+
+    THE RISK IS NOT THE SIZE, IT IS THE IN-PLACE MUTATION. sanitize() has no
+    deep copy (build_site.py:2970 passes board_src straight in) and
+    write_company_pages runs AFTER it at :3044, so a key stripped here is
+    also gone from the 812 static /c/ pages built from the same object. Two
+    keys were on the strip list when it was drafted and had to come off:
+    `claimed` is read at index.html:5372 and build_site.py:1646, `acquired`
+    by _co_acquired() at build_site.py:1318. Either would have blanked a real
+    sentence on a public page with nothing erroring - a wrong field is
+    invisible, which is this repo's whole asymmetric-error rule.
+
+    So this checks BOTH readers for every key on the list, and names the two
+    that nearly went.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+    html = (ROOT / "index.html").read_text()
+    src = _code_only(ROOT / "scripts" / "build_site.py")
+    # A BARE-WORD MATCH, WITH THE REVIEWED EXCEPTIONS COUNTED. A property-read
+    # regex would be the obvious check and it is the weaker one: index.html
+    # reaches fields as o.x, o["x"] and by destructuring, and the last of
+    # those is not reliably matchable. So the word must not appear at all,
+    # except where somebody has looked and written down what it was - and if
+    # the count MOVES, this fails until somebody looks again.
+    #   linkedin x2: POSTS_AT_LABEL's key at :2057 and the aggregator regex
+    #   at :2479. Neither is an organization's `linkedin` field.
+    REVIEWED = {"linkedin": 2}
+    for k in sorted(bs.DROP_ORG_DEAD | bs.DROP_POSTING):
+        seen = len(re.findall(rf"\b{re.escape(k)}\b", html))
+        if seen != REVIEWED.get(k, 0):
+            errors += fail(f"index.html mentions {k!r} {seen} time(s) and "
+                           f"sanitize() strips it ({REVIEWED.get(k, 0)} "
+                           f"reviewed as unrelated). Read each one: if any is "
+                           f"an organization's field the page renders a blank "
+                           f"and nothing errors; if none is, update REVIEWED")
+        reads = re.findall(rf"""\.get\(\s*["']{re.escape(k)}["']|"""
+                           rf"""\[\s*["']{re.escape(k)}["']\s*\]""", src)
+        # the two pops inside sanitize itself are the strip, not a read
+        if len(reads) > 0:
+            errors += fail(f"sanitize() strips {k!r} and build_site.py still "
+                           f"reads it ({len(reads)} site(s)) - the static "
+                           f"company pages are built from the stripped object")
+    for k, where in (("claimed", "index.html:5372 and build_site.py:1646"),
+                     ("acquired", "_co_acquired at build_site.py:1318")):
+        if k in bs.DROP_ORG_DEAD or k in bs.DROP_POSTING:
+            errors += fail(f"{k!r} is on the strip list and is read by {where}")
+
+    # BEHAVIOURAL. The source check above cannot see a loop that never runs.
+    org = {"id": "probe", "name": "Probe", "ats_note": None, "sled_only": True,
+           "board_owner": "someone", "linkedin": "https://x", "vendor_type": "v",
+           "claimed": {"on": "2026-09-01"}, "acquired": {"by": "Parent"}}
+    board = {"organizations": [dict(org)],
+             "postings": [{"id": "p", "title": "AE", "captured_from": "x",
+                           "opening_locations": ["a"], "opening_postings": 2}]}
+    out, _ = bs.sanitize(board)
+    o, pg = out["organizations"][0], out["postings"][0]
+    for k in bs.DROP_ORG_DEAD:
+        if k in o:
+            errors += fail(f"sanitize() left {k!r} on an organization; "
+                           f"ats_note was popped inside `if o.get(\"ats_note\")` "
+                           f"and 2,019 of 2,044 rows shipped \"ats_note\":null")
+    for k in bs.DROP_POSTING:
+        if k in pg:
+            errors += fail(f"sanitize() left {k!r} on a posting")
+    # PINNED BY NAME, NOT BY THE SET. The loop above iterates DROP_ORG_DEAD,
+    # so deleting a key from the set also deletes it from the check - which is
+    # how the conditional `if o.get("ats_note")` pop walked past a first
+    # version of this guard. ats_note is internal review notes about OTHER
+    # companies ("cleared on audit: quorum.com sells disaster recovery, not
+    # government affairs software") on a board those companies can read. It
+    # goes whatever the set says, and it goes when it is null, which is the
+    # 2,019 of 2,044 rows that shipped "ats_note":null.
+    for k in ("ats_note",):
+        if k in o:
+            errors += fail(f"a sanitized organization still carries {k!r}, "
+                           f"including when it is null - internal review "
+                           f"notes about other companies on a public board")
+    if "claimed" not in o or "acquired" not in o:
+        errors += fail("sanitize() dropped `claimed` or `acquired`, which the "
+                       "company page and the panel both render")
+    if "title" not in pg or "id" not in o:
+        errors += fail("sanitize() dropped a key the board is made of")
+    return errors
+
+
 def check_the_journal_is_read_once_per_file_state() -> int:
     """Eight full reads of a 25 MB file in one request, and a cache that must still see a writer.
 
@@ -22932,6 +23025,7 @@ def main() -> int:
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
+    errors += check_the_public_board_drops_only_what_the_page_never_reads()
     errors += check_the_journal_is_read_once_per_file_state()
     errors += check_two_rulings_never_share_a_journal_id()
     errors += check_a_shortlist_is_reachable_by_the_company_it_is_about()

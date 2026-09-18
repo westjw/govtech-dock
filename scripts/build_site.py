@@ -237,12 +237,36 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
 # degrades gracefully without it.
 DROP_ORG = {"vendor_type", "govtech"}
 
+# KEYS index.html NEVER READS, measured 2026-09-18 against the shipped
+# public/data/board.json. 760,538 B raw, and only 20.8 KB gzipped - they are
+# mostly repeated "key":null, so this is a PARSE cost on the main thread
+# rather than a transfer cost, which is the honest way to describe it.
+#
+# TWO KEYS WERE ON THIS LIST AND ARE NOT NOW, and the reason is the whole
+# risk of the change. sanitize() mutates board_src IN PLACE (no deep copy),
+# and write_company_pages runs AFTER it, so anything stripped here is also
+# gone from the 812 static /c/ pages built from the same object:
+#   `claimed` is read at index.html:5372 (`const claimed=o.claimed`) and at
+#     build_site.py:1646 - it renders "this page is claimed by the company".
+#   `acquired` is read by _co_acquired() at build_site.py:1318, reached from
+#     company_page_html - it renders "Part of X, acquired YYYY".
+# Dropping either would have blanked a real sentence on a public page with
+# nothing erroring. Anything added here must be checked against BOTH readers.
+DROP_ORG_DEAD = {
+    "board_owner_unverified", "shares_board_with", "offtopic_dropped",
+    "federal_dropped", "board_owner", "quota_postings", "open_postings",
+    "sled_only", "linkedin", "ats_note", "checked_by_hand",
+}
+DROP_POSTING = {"opening_locations", "opening_postings", "captured_from"}
+
 
 def sanitize(board: dict) -> dict:
     """Strip debugging detail out of the copy that goes public."""
     stripped = 0
     for o in board.get("organizations", []):
         for k in DROP_ORG:
+            o.pop(k, None)
+        for k in DROP_ORG_DEAD:
             o.pop(k, None)
         if o.get("unreadable"):
             # Keep the FACT (the site renders a chip from it) and drop the
@@ -253,10 +277,14 @@ def sanitize(board: dict) -> dict:
             o["unreadable"] = (f"the board returned HTTP {m.group(1)}" if m
                                else "the board could not be read automatically")
             stripped += 1
-        if o.get("ats_note"):
-            # Internal review notes, e.g. "cleared on audit: quorum.com sells
-            # disaster recovery, not government affairs software".
-            o.pop("ats_note", None)
+        # ats_note (internal review notes, e.g. "cleared on audit: quorum.com
+        # sells disaster recovery, not government affairs software") is popped
+        # by DROP_ORG_DEAD above. It used to be popped INSIDE `if
+        # o.get("ats_note")`, so a row whose note was null or "" kept the key
+        # and 2,019 of 2,044 organizations shipped "ats_note":null.
+    for pg in board.get("postings", []):
+        for k in DROP_POSTING:
+            pg.pop(k, None)
     board["_public"] = True
     return board, stripped
 
