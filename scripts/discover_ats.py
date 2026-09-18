@@ -187,6 +187,24 @@ def load_log() -> dict:
 RETRY_SOON_DAYS = 7
 
 
+# The buyer-motion order: the closest markets first. It is the TIEBREAK, not
+# the sort. discovery.yml promised "--limit takes the oldest first, so the
+# backlog drains in order" while this sorted by sector alone and clipped to
+# 300 - so every sector outside this map (Higher Education, Courts, HHS,
+# Housing) sat last on every Sunday, and 1,426 companies probed on three
+# August days all fall due in the same October week, five runs deep.
+# Oldest first drains that; a never-probed company sorts before any of them.
+SECTOR_ORDER = {"General Gov": 0, "Public Works": 1, "Parks & Rec": 2,
+                "Public Safety": 3, "Transit & Parking": 4, "K-12 Schools": 5,
+                "Utilities & Energy": 6, "Airports & Aviation": 7}
+
+
+def probe_order(c: dict, log: dict) -> tuple:
+    """Sort key: last probe date ascending (never probed = first), then sector."""
+    on = (log.get(c.get("id")) or {}).get("on") or ""
+    return (on, SECTOR_ORDER.get(c.get("sector"), 9))
+
+
 def stale(entry: dict | None) -> bool:
     if not entry:
         return True
@@ -750,12 +768,7 @@ def main() -> int:
         todo = [c for c in companies
                 if (c.get("ats") or {}).get("type") in (None, "unknown")
                 and c.get("website") and stale(log.get(c["id"]))]
-    # Sector order is the buyer-motion order: the closest markets first, so a
-    # partial run is still the most useful partial run.
-    order = {"General Gov": 0, "Public Works": 1, "Parks & Rec": 2,
-             "Public Safety": 3, "Transit & Parking": 4, "K-12 Schools": 5,
-             "Utilities & Energy": 6, "Airports & Aviation": 7}
-    todo.sort(key=lambda c: order.get(c.get("sector"), 9))
+    todo.sort(key=lambda c: probe_order(c, log))
     # An explicit id list is already the decision about scope. Clipping it to
     # --limit silently probed 300 of 768 and reported as though that were all
     # of them.
