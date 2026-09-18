@@ -115,13 +115,30 @@ def main() -> int:
                          "recorded in the proposal. This script never has one")
     a = ap.parse_args()
 
-    briefs = agents.brief_rival_web(limit=a.limit, category=a.category,
-                                    ids=a.id or None)
+    briefs = agents.brief_rival_web(limit=None if not a.web else a.limit,
+                                    category=a.category, ids=a.id or None)
     if not briefs:
         print("no company is ready for this. A company needs an ACCEPTED "
               "write-up first: the whole design is understand them, then "
               "search. promote_profiles.py --gate lands those.")
         return 0
+    # WITHOUT THE WEB, A COMPANY WITH NO EDGES HAS NOTHING TO ANSWER. The only
+    # thing that lands from a no-web run is keep/drop on edges already on
+    # file; `add` is dropped by honest() and `searches` is a note. Measured
+    # 2026-09-18: 968 of the 1,059-company queue carried no edge, so 91% of a
+    # full no-web run bought ~13.7k input chars a call for four query strings
+    # the brief itself templates. Held back by count, not silently.
+    if not a.web:
+        held = [b for b in briefs if not b.get("existing")]
+        briefs = [b for b in briefs if b.get("existing")][:a.limit]
+        if held:
+            print(f"{len(held)} company(ies) held back: no edges on file to "
+                  f"keep or drop, and this run has no web to find any. "
+                  f"They wait for --web.")
+        if not briefs:
+            print("nothing a no-web run can judge. Run with --web from a "
+                  "routine that has one.")
+            return 0
     print(f"{len(briefs)} company(ies) with a write-up and no web pass yet")
     if a.dry_run:
         b = dict(briefs[0])
