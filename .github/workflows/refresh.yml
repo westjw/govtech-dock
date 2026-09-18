@@ -88,6 +88,35 @@ jobs:
         # invariant stays pending and says why, rather than half-applying.
         run: python scripts/apply_web_rulings.py
 
+      - name: Land what verified claimants sent
+        # THE CLAIM FLOW WAS DARK FOR WANT OF THIS STEP. Every piece of it
+        # shipped on 2026-09-17 - the endpoint, the owner's hand gate in
+        # verify_claims.py, the self-serve lander - and all three CF_*
+        # secrets have been set since before that. Nothing called
+        # sync_claims.py, so a company could confirm its domain, be verified
+        # by hand, send a correction, and have it sit in KV for ever.
+        #
+        # It runs HERE, with the other rulings, because a landed description
+        # or logo has to be on companies.json before build_board reads it and
+        # before the commit step below picks it up.
+        #
+        # AUTHORISATION IS STILL READ FROM THE REPO. --write lands only what
+        # employer_log.verified_claims() says the owner verified by hand,
+        # replayed from an append-only file in git; KV cannot certify its own
+        # claimant. Without the secrets the script prints that claiming is not
+        # configured and exits 0 - a refresh must never fail because nobody
+        # set up claiming.
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_KV_NAMESPACE_ID: ${{ secrets.CF_KV_NAMESPACE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          if [ -n "$CF_API_TOKEN" ]; then
+            python scripts/sync_claims.py --write
+          else
+            python scripts/sync_claims.py
+          fi
+
       - name: Refresh hiring data
         # --force so a manual re-run on the same day still works; the previous
         # snapshot stays recoverable in git history, which is the audit trail here.

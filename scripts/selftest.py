@@ -4594,6 +4594,61 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_every_pipeline_script_has_a_caller() -> int:
+    """A script nothing runs is indistinguishable from a script that does not work.
+
+    The claim flow shipped whole on 2026-09-17 - the endpoint, the owner's
+    hand gate, the self-serve lander, all three CF_* secrets set - and stayed
+    DARK for want of one line in a workflow. A company could confirm its
+    domain, be verified by hand, send a correction, and have it sit in KV for
+    ever, with every part of the machinery passing its own tests.
+
+    This is the same shape as the Agent proposals tab that had a count and no
+    renderer for a month, and as `rule()` in acquisitions.py that nothing
+    called. The repo keeps building good doors and forgetting the corridor.
+
+    Scripts that are deliberately interactive (the admin, the gates a person
+    drives by hand) are named here with the reason, so adding one to the list
+    is a decision somebody wrote down rather than a silence.
+    """
+    errors = 0
+    # INVOCATIONS, NOT MENTIONS. Written as a substring search over the whole
+    # workflow text first, and it failed instantly on verify_claims.py -
+    # because the comment introducing the new step NAMES verify_claims.py
+    # while nothing runs it. That is this repo's oldest guard bug, written
+    # down twice already: a comment mentioning a path satisfied a check while
+    # the call was gone. Only a real `python scripts/<name>` counts.
+    called = set()
+    for f in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+        for m in re.finditer(r"python3?\s+scripts/([A-Za-z0-9_]+\.py)",
+                             f.read_text()):
+            called.add(m.group(1))
+    BY_HAND = {
+        # a person drives these; a cron that ran them would be the bug
+        "admin.py": "the owner's local admin server",
+        "admin_undo.py": "reversing a ruling is a person's decision",
+        "verify_claims.py": "the owner's hand gate on every claim - the one "
+                            "abuse control the free tier has",
+        "promote_rivals.py": "agents propose, people rule",
+        "promote_profiles.py": "same, and it gates on a category being read",
+        "promote_candidates.py": "same",
+        "discover_js.py": "needs Playwright; kept out of the run path on purpose",
+    }
+    MUST_RUN = {"sync_claims.py": "the claim flow is dark without it"}
+    for name, why in sorted(MUST_RUN.items()):
+        if name not in called:
+            errors += fail(f"no workflow calls {name} - {why}. Every other "
+                           f"piece of that flow works and nothing happens.")
+    # and the by-hand list must stay honest: a script named there that a
+    # workflow DOES call means the reason written down is no longer true
+    for name, why in sorted(BY_HAND.items()):
+        if name in called:
+            errors += fail(f"{name} is listed here as driven by hand ({why}) "
+                           f"and a workflow now calls it; update the reason "
+                           f"or the workflow, but do not leave both")
+    return errors
+
+
 def check_the_journal_is_read_once_per_file_state() -> int:
     """Eight full reads of a 25 MB file in one request, and a cache that must still see a writer.
 
@@ -23043,6 +23098,7 @@ def main() -> int:
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
+    errors += check_every_pipeline_script_has_a_caller()
     errors += check_the_journal_is_read_once_per_file_state()
     errors += check_two_rulings_never_share_a_journal_id()
     errors += check_a_shortlist_is_reachable_by_the_company_it_is_about()
