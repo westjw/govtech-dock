@@ -4594,6 +4594,105 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_a_logo_is_the_size_it_is_drawn_at() -> int:
+    """A 943x740 mark in a 44px tile, and a byte cap that could never see it.
+
+    fetch_logos caps at 220KB and logos.py at 512KB, both counting BYTES. A
+    photograph compresses badly and trips a byte cap; a flat mark exported at
+    1000px compresses beautifully and sails through. 361 marks were 256px or
+    larger, 5.02MB between them, while every surface that draws one draws it
+    at 44, 48, 64 or - once, on a company page - 96px.
+
+    TWO THINGS HELD HERE.
+
+    imgsize.dimensions IS BINARY PARSING, which is where quiet bugs live: a
+    JPEG's size is only in its start-of-frame marker and the naive walk
+    mistakes DHT and restart markers for it, a WebP states its size three
+    different ways, and a PNG that is not really a PNG must answer None
+    rather than a plausible pair of integers. Fixtures below are real headers.
+
+    AND THE PILE MUST NOT REGROW. The ceiling is on bytes rather than pixels
+    because 254 of the 262 marks still over 192px are under 20KB - their cost
+    is decode and memory, not bandwidth, and refusing them would be spending
+    a company's mark to buy nothing.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import struct
+    import imgsize
+    errors = 0
+
+    def png(w, h, colour=6):
+        ihdr = struct.pack(">II", w, h) + bytes([8, colour, 0, 0, 0])
+        return (b"\x89PNG\r\n\x1a\x0a" + struct.pack(">I", 13) + b"IHDR"
+                + ihdr + b"\x00\x00\x00\x00")
+    def jpeg(w, h, before=b""):
+        # padded past the 24-byte floor dimensions() requires; a real JPEG is
+        # never that short, but a fixture can be, and two of these were
+        return (b"\xff\xd8" + before + b"\xff\xc0" + struct.pack(">H", 17)
+                + b"\x08" + struct.pack(">HH", h, w) + b"\x03"
+                + b"\x00" * 9 + b"\xff\xd9" + b"\x00" * 24)
+    def gif(sig, w, h):
+        return sig + struct.pack("<HH", w, h) + b"\x00" * 24
+    def webp_lossy(w, h):
+        # RIFF(4) size(4) WEBP(4) "VP8 "(4) chunksize(4) frametag(3)
+        # sync(3) width(2) height(2) - width lands at 26, and a fixture with
+        # three spare bytes before the sync code reads (413, 11306)
+        return (b"RIFF" + b"\x00" * 4 + b"WEBP" + b"VP8 " + b"\x00" * 4
+                + b"\x00" * 3 + b"\x9d\x01\x2a"
+                + struct.pack("<HH", w, h) + b"\x00" * 8)
+
+    CASES = [
+        ("PNG 943x740", png(943, 740), (943, 740)),
+        ("PNG 1x1", png(1, 1), (1, 1)),
+        ("GIF87a", gif(b"GIF87a", 320, 200), (320, 200)),
+        ("GIF89a", gif(b"GIF89a", 64, 48), (64, 48)),
+        ("JPEG plain", jpeg(1200, 800), (1200, 800)),
+        # A HUFFMAN TABLE BEFORE THE FRAME. 0xC4 sits in the same numeric
+        # range as the SOF markers and is NOT one; a walk that accepts the
+        # range reads its table bytes as a size.
+        ("JPEG after a DHT", jpeg(640, 480,
+                                  b"\xff\xc4" + struct.pack(">H", 6) + b"\x00" * 4),
+         (640, 480)),
+        ("WebP lossy", webp_lossy(300, 200), (300, 200)),
+        ("not an image", b"<html><body>nope</body></html>" + b"\x00" * 40, None),
+        ("PNG magic, no IHDR", b"\x89PNG\r\n\x1a\x0a" + b"\x00" * 40, None),
+        ("truncated", b"\x89PNG", None),
+        # SHORTER THAN ANY REAL IMAGE. The header of a 20-byte blob claiming
+        # to be a GIF parses perfectly well into two plausible integers -
+        # dimensions() has a length floor precisely so garbage answers None
+        # instead of a number somebody downstream would believe.
+        ("GIF magic, 20 bytes", b"GIF89a" + b"\x40\x00\x30\x00" + b"\x00" * 10, None),
+    ]
+    for label, blob, want in CASES:
+        got = imgsize.dimensions(blob)
+        if got != want:
+            errors += fail(f"imgsize on {label}: read {got}, expected {want}")
+
+    # A REAL FILE OFF DISK, so the fixtures above cannot all be wrong together.
+    logos = ROOT / "assets" / "logos"
+    for ext in ("png", "jpg", "webp"):
+        real = next((p for p in sorted(logos.glob(f"*.{ext}"))), None)
+        if real is None:
+            continue
+        got = imgsize.of(real)
+        if not got or min(got) < 4:
+            errors += fail(f"imgsize read {got} from {real.name}, a real "
+                           f"{ext} on disk - the fixtures above are a "
+                           f"stand-in for exactly this")
+
+    # THE CEILING. 2,146,645 bytes came off this directory on 2026-09-18 and
+    # nothing should quietly put them back.
+    CEILING = 100_000
+    over = [(p.name, p.stat().st_size) for p in logos.iterdir()
+            if p.is_file() and p.stat().st_size > CEILING]
+    if over:
+        worst = ", ".join(f"{n} ({s:,} B)" for n, s in sorted(over, key=lambda x: -x[1])[:4])
+        errors += fail(f"{len(over)} logo(s) over {CEILING:,} bytes: {worst}. "
+                       f"Every surface draws a mark at 96px or less; run "
+                       f"scripts/shrink_logos.py --write")
+    return errors
+
+
 def check_a_supplier_lands_with_a_tag_read_off_its_own_words() -> int:
     """Moving suppliers over is the owner's ruling; landing them untagged defeats it.
 
@@ -23364,6 +23463,7 @@ def main() -> int:
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
+    errors += check_a_logo_is_the_size_it_is_drawn_at()
     errors += check_a_supplier_lands_with_a_tag_read_off_its_own_words()
     errors += check_the_claim_alert_names_nobody()
     errors += check_every_pipeline_script_has_a_caller()
