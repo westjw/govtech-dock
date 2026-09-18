@@ -4429,6 +4429,78 @@ def check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off() -> in
     return errors
 
 
+def check_one_oversized_write_up_cannot_stop_the_second_read() -> int:
+    """A write-up too big to send is held back BY NAME; the ones behind it still run.
+
+    Found by the 2026-09-18 spend review. A write-up whose `saw.pages` is
+    empty sends every cached page raw, one of those was over llm's input cap
+    at position 191 of 223 in Public Works, llm.ask raised Refused, and
+    self_read's loop did `break` - so 32 write-ups behind it were never
+    re-read and the run printed nothing about them. Two rules from CLAUDE.md
+    meet here: never silently skip, and a refusal about one item must not be
+    read as a refusal about the run.
+
+    Driven with the big one FIRST, so a loop that still stops on it loses
+    the small one; and the spy refuses an oversized prompt the way llm.ask
+    does at its own gate, because that refusal is the thing being handled.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import io as _io
+    import contextlib as _cl
+    import llm
+    import agents
+    import promote_profiles as pp
+    errors = 0
+    para = lambda who: [[{"text": f"{who} sells things.", "url": f"https://{who}.example/",
+                          "quote": "sells things"}]]
+    store = {
+        # dict order is category order; the big one leads on purpose
+        "profile:aaa-big": {"kind": "profile", "id": "aaa-big", "name": "Big",
+                            "status": "pending", "confidence": "high", "why": "w",
+                            "paragraphs": para("aaa-big"), "saw": {"pages": []}},
+        "profile:zzz-small": {"kind": "profile", "id": "zzz-small", "name": "Small",
+                              "status": "pending", "confidence": "high", "why": "w",
+                              "paragraphs": para("zzz-small"),
+                              "saw": {"pages": [{"url": "https://zzz-small.example/"}]}},
+    }
+    companies = [{"id": "aaa-big", "name": "Big", "category": "Water"},
+                 {"id": "zzz-small", "name": "Small", "category": "Water"}]
+    # each page is clipped to PROFILE_PAGE_CHARS on the way in, so one huge
+    # page can never be the oversize; MANY pages is the real shape - an
+    # empty saw.pages sends every cached page the company has
+    n_pages = llm.MAX_INPUT_CHARS // agents.PROFILE_PAGE_CHARS + 2
+    texts = {"aaa-big": {f"https://aaa-big.example/p{i}": "x" * agents.PROFILE_PAGE_CHARS
+                         for i in range(n_pages)},
+             "zzz-small": {"https://zzz-small.example/": "Small sells things."}}
+    asked = []
+
+    def spy(system, user, kind, **kw):
+        if len(system) + len(user) > llm.MAX_INPUT_CHARS:
+            raise llm.Refused("prompt over the cap")   # llm.ask's own gate
+        asked.append(user)
+        return {"answers": [{"id": "zzz-small", "confidence": "high",
+                             "paragraphs": para("zzz-small"), "why": "page"}]}
+    real_texts, real_ask = agents._profile_texts, llm.ask
+    agents._profile_texts = lambda p_: texts.get(p_.get("id"), {})
+    llm.ask = spy
+    err = _io.StringIO()
+    try:
+        with _cl.redirect_stderr(err), _cl.redirect_stdout(_io.StringIO()):
+            pp.self_read(store, companies, "Water", "m", None, False)
+    finally:
+        agents._profile_texts, llm.ask = real_texts, real_ask
+    if not any("zzz-small" in u for u in asked):
+        errors += fail("the write-up behind an oversized one was never sent: "
+                       "one lot over the cap stopped the whole second read, "
+                       "which is how 32 of 223 went unread in Public Works")
+    if any("aaa-big" in u for u in asked):
+        errors += fail("the oversized write-up was sent anyway")
+    if "aaa-big" not in err.getvalue() or "held back" not in err.getvalue():
+        errors += fail("the oversized write-up was skipped without being named "
+                       "on stderr; a silent skip is the failure, not the size")
+    return errors
+
+
 def check_the_second_reader_never_sees_the_first_answer() -> int:
     """The blinding IS the mechanism. A reader shown the answer agrees with it.
 
@@ -22493,6 +22565,7 @@ def main() -> int:
     errors += check_the_brief_never_makes_a_true_quote_look_false()
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
+    errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_second_reader_never_sees_the_first_answer()
     errors += check_the_gate_shows_the_exceptions_and_rules_on_nothing()
     errors += check_a_ruling_can_be_re_read()

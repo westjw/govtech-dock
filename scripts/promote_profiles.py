@@ -587,6 +587,24 @@ def self_read(store: dict, companies: list, category: str, model: str,
 
     seconds: dict = {}
     lots = [briefs[i:i + SELF_BATCH] for i in range(0, len(briefs), SELF_BATCH)]
+    # A LOT OVER THE CAP IS HELD BACK BY NAME, AND NEVER STOPS THE RUN.
+    # llm.ask refuses a prompt over MAX_INPUT_CHARS, and the loop below
+    # stops on Refused - which is right for the run-wide caps (calls, spend)
+    # and was wrong for a fact about one lot: a write-up whose `saw.pages`
+    # is empty sends every cached page raw, one of those sat at position
+    # 191 of 223 in Public Works, and the 32 behind it were never re-read
+    # and nothing said so. Measured before the loop, the same way llm
+    # measures it, so the only Refused left inside the loop is a cap.
+    held = []
+    fits = []
+    for lot in lots:
+        size = len(sysm) + len(json.dumps({"items": lot}, indent=1))
+        (held if size > llm.MAX_INPUT_CHARS else fits).append((lot, size))
+    for lot, size in held:
+        print(f"  held back, too large to re-read blind: "
+              f"{', '.join(str(b.get('id')) for b in lot)} ({size:,} chars, "
+              f"cap {llm.MAX_INPUT_CHARS:,})", file=sys.stderr)
+    lots = [lot for lot, _ in fits]
     for i, lot in enumerate(lots, 1):
         try:
             # THINKING OFF, MEASURED. With adaptive thinking on, 11 of 13
@@ -599,6 +617,7 @@ def self_read(store: dict, companies: list, category: str, model: str,
                           "profile-second-read", model=model,
                           max_tokens=llm.MAX_OUTPUT, thinking=False)
         except llm.Refused as e:
+            # only the run-wide caps reach here now; stopping is right
             print(f"  stopping at request {i}: {e}", file=sys.stderr)
             break
         for ans in ((got or {}).get("answers") or []):
