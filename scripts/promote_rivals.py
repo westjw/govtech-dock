@@ -4,6 +4,7 @@
     python3 scripts/promote_rivals.py                       # what is waiting
     python3 scripts/promote_rivals.py --show verkada
     python3 scripts/promote_rivals.py --category Police     # read the whole set
+    python3 scripts/promote_rivals.py --sector "Public Works"    # every category in it
     python3 scripts/promote_rivals.py --accept verkada --accept brinc
     python3 scripts/promote_rivals.py --reject auror --why "retail, not police"
     python3 scripts/promote_rivals.py --accept-category Police   # after reading
@@ -42,18 +43,69 @@ import agents                                                   # noqa: E402
 
 SEEN = DATA / ".rivals_read"          # which categories have been printed
 
+_PLACES: dict = {}
 
-def pending(store: dict, category: str | None = None) -> list[dict]:
-    out = [p for k, p in store.items()
-           if p.get("kind") == "rival" and p.get("status") == "pending"
-           and (not category or p.get("category") == category)]
-    out.sort(key=lambda p: (p.get("category") or "", p.get("id") or ""))
+
+def places() -> dict:
+    """{id: (sector, category)} from companies.json, read once per process."""
+    if not _PLACES:
+        cos = admin.read_companies()
+        seq = cos if isinstance(cos, list) else list(cos.values())
+        for c in seq:
+            if c.get("id"):
+                _PLACES[c["id"]] = (c.get("sector"), c.get("category"))
+    return _PLACES
+
+
+def placed(p: dict) -> tuple:
+    """(sector, category) for a proposal. THE COMPANY IS THE AUTHORITY.
+
+    These were read off the proposal, so a row ingested without them was
+    unreachable: --category is the only way to read a shortlist, and the 383
+    rows ingested in-session on 2026-09-17 carry `category: None` while the
+    132 Police rows carry "Police". Every one of the 383 answered "nothing
+    waiting", and a bare run printed "383  None / None" over a line telling
+    the reader to name a category. That is the same shape as the 131
+    proposals that sat behind a tab with no renderer for a month.
+
+    A company's sector and category are facts in companies.json. Read there,
+    they cannot be omitted by whoever built the proposal and cannot go stale
+    when a company moves between categories - which happens here weekly. The
+    stored value is the fallback, never the authority, so a proposal about a
+    company no longer on file still says where it used to sit.
+    """
+    sector, category = places().get(p.get("id") or "", (None, None))
+    return (sector or p.get("sector"), category or p.get("category"))
+
+
+def key_for(store: dict, cid: str) -> str | None:
+    """The stored key for a company's shortlist, whichever brief built it."""
+    for k in (f"rival:{cid}", f"rivweb:{cid}"):
+        if k in store:
+            return k
+    return None
+
+
+def pending(store: dict, category: str | None = None,
+            sector: str | None = None) -> list[dict]:
+    out = []
+    for k, p in store.items():
+        if p.get("kind") != "rival" or p.get("status") != "pending":
+            continue
+        sec, cat = placed(p)
+        if category and cat != category:
+            continue
+        if sector and sec != sector:
+            continue
+        out.append(p)
+    out.sort(key=lambda p: (placed(p)[1] or "", p.get("id") or ""))
     return out
 
 
 def show(p: dict, names: dict) -> None:
     who = names.get(p["id"], p["id"])
-    print(f"\n  {who}  [{p.get('confidence')}]  {p.get('sector')} / {p.get('category')}")
+    sec, cat = placed(p)
+    print(f"\n  {who}  [{p.get('confidence')}]  {sec} / {cat}")
     if p.get("why"):
         print(f"     thesis: {p['why'][:150]}")
     if not p.get("rivals"):
@@ -260,9 +312,15 @@ def write_accepted(store: dict, ids: list[str], by: str, why: str,
     index = {c["id"]: c for c in seq if c.get("id")}
     today = dt.date.today().isoformat()
     wrote = 0
+    missed = []
     for cid in ids:
-        p = store.get(f"rival:{cid}")
+        # BOTH KEY SHAPES. The unverified-source gate above already looks up
+        # `rivweb:` or `rival:`, so a rivweb row could clear the gate and be
+        # dropped here without a word - and "wrote 4 shortlist(s)" over six
+        # ids is a silent skip wearing a count.
+        p = store.get(key_for(store, cid) or "")
         if not p or cid not in index:
+            missed.append(f"{cid} ({'no proposal on file' if not p else 'not a company on file'})")
             continue
         # THE EDGE CARRIES ITS REASON ONTO THE PAGE. A competitor with no
         # stated overlap is the category listing again, and the page has a
@@ -302,12 +360,21 @@ def write_accepted(store: dict, ids: list[str], by: str, why: str,
             print(f"  REFUSED by the journal: {refused}")
             return 0
         agents.save(store)
+    if missed:
+        print(f"  NOT written ({len(missed)}), each named:", file=sys.stderr)
+        for m in missed:
+            print(f"    {m}", file=sys.stderr)
     return wrote
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--category")
+    ap.add_argument("--sector",
+                    help="read every category in a sector. Reading only - the "
+                         "bulk accept stays per category, because a one-click "
+                         "ruling over a whole sector is larger than the one "
+                         "journal.py exists to catch")
     ap.add_argument("--show")
     ap.add_argument("--accept", action="append", default=[])
     ap.add_argument("--reject", action="append", default=[])
@@ -383,7 +450,7 @@ def main() -> int:
     # link nobody opened.
     if (a.accept or a.accept_category) and not a.allow_unverified:
         wanted = list(a.accept) or [q.get("id") for q in
-                                    pending(store, a.accept_category)]
+                                    pending(store, a.accept_category, a.sector)]
         unver = []
         for cid in wanted:
             q = store.get(f"rivweb:{cid}") or store.get(f"rival:{cid}")
@@ -402,7 +469,7 @@ def main() -> int:
 
     if a.reject:
         for cid in a.reject:
-            p = store.get(f"rival:{cid}")
+            p = store.get(key_for(store, cid) or "")
             if not p:
                 print(f"  no proposal for {cid!r}")
                 continue
@@ -420,6 +487,25 @@ def main() -> int:
         return 0
 
     if a.accept_category:
+        # ONE CATEGORY NAME, SIX SECTORS. "Suppliers & Services" is a live
+        # category under Airports, General Gov, Parks & Rec, Public Safety,
+        # Public Works and Transit - so a bare --accept-category over it is a
+        # one-click ruling spanning six tabs, and reading one sector's rows
+        # would unlock all of them. The marker file records a bare category
+        # name, which cannot tell them apart, so the refusal lives here.
+        spans = sorted({placed(q)[0] for q in pending(store, a.accept_category)
+                        if placed(q)[0]})
+        if len(spans) > 1 and not a.sector:
+            print(f"  REFUSED. {a.accept_category!r} is a category under "
+                  f"{len(spans)} sectors:")
+            for sec in spans:
+                n = len(pending(store, a.accept_category, sec))
+                print(f"      {n:4}  {sec}")
+            print(f"\n  A bulk accept over all of them is larger than the "
+                  f"ruling you read.\n  Narrow it:  python3 "
+                  f"scripts/promote_rivals.py --accept-category "
+                  f"{a.accept_category!r} --sector <one of the above>")
+            return 1
         read = json.loads(SEEN.read_text()) if SEEN.exists() else []
         if a.accept_category not in read:
             print(f"  REFUSED. Nothing has printed the {a.accept_category} "
@@ -430,16 +516,40 @@ def main() -> int:
                   f"      python3 scripts/promote_rivals.py "
                   f"--category {a.accept_category}")
             return 1
-        ids = [p["id"] for p in pending(store, a.accept_category)]
+        ids = [p["id"] for p in pending(store, a.accept_category, a.sector)]
+        scope = (f"{a.accept_category} in {a.sector}" if a.sector
+                 else a.accept_category)
         n = write_accepted(store, ids, a.by,
-                           a.why or f"accepted all {a.accept_category} shortlists", with_drops=a.with_drops)
+                           a.why or f"accepted all {scope} shortlists", with_drops=a.with_drops)
         print(f"  wrote {n} shortlist(s), journalled as ONE entry. "
               f"Undo with:\n      python3 scripts/admin_undo.py")
         return 0
 
-    rows = pending(store, a.category)
+    rows = pending(store, a.category, a.sector)
     if not rows:
-        print("nothing waiting" + (f" in {a.category}" if a.category else ""))
+        where = a.category or a.sector
+        print("nothing waiting" + (f" in {where}" if where else ""))
+        return 0
+
+    if a.sector:
+        seen_cats: dict = {}
+        for p in rows:
+            show(p, names)
+            seen_cats[placed(p)[1] or "?"] = seen_cats.get(placed(p)[1] or "?", 0) + 1
+        read = json.loads(SEEN.read_text()) if SEEN.exists() else []
+        for cat in seen_cats:
+            if cat != "?" and cat not in read:
+                read.append(cat)
+        SEEN.write_text(json.dumps(read))
+        print(f"\n  {len(rows)} shortlist(s) across {len(seen_cats)} "
+              f"categories in {a.sector}, "
+              f"{sum(len(p.get('rivals') or []) for p in rows)} edges, "
+              f"{sum(1 for p in rows if not p.get('rivals'))} asserting no "
+              f"competitor.")
+        print("  Accept one category at a time:")
+        for cat, n in sorted(seen_cats.items(), key=lambda kv: -kv[1]):
+            print(f"    python3 scripts/promote_rivals.py "
+                  f"--accept-category {cat!r}   # {n}")
         return 0
 
     if a.category:
@@ -449,6 +559,11 @@ def main() -> int:
         if a.category not in read:
             read.append(a.category)
             SEEN.write_text(json.dumps(read))
+        spans = sorted({placed(p)[0] for p in rows if placed(p)[0]})
+        if len(spans) > 1:
+            print(f"\n  NOTE: {a.category!r} is a category under "
+                  f"{len(spans)} sectors ({', '.join(spans)}). Accepting the "
+                  f"set needs --sector to say which.")
         empties = sum(1 for p in rows if not p.get("rivals"))
         print(f"\n  {len(rows)} shortlist(s) in {a.category}, "
               f"{sum(len(p.get('rivals') or []) for p in rows)} edges, "
@@ -459,13 +574,15 @@ def main() -> int:
 
     by_cat: dict[str, int] = {}
     for p in rows:
-        by_cat[f"{p.get('sector')} / {p.get('category')}"] = \
-            by_cat.get(f"{p.get('sector')} / {p.get('category')}", 0) + 1
+        sec, cat = placed(p)
+        by_cat[f"{sec} / {cat}"] = by_cat.get(f"{sec} / {cat}", 0) + 1
     print(f"{len(rows)} competitor shortlist(s) waiting on a ruling\n")
     for cat, n in sorted(by_cat.items(), key=lambda kv: -kv[1]):
         print(f"  {n:4}  {cat}")
     print("\n  Read one category:  python3 scripts/promote_rivals.py "
           "--category <name>")
+    print("  Or a whole sector:  python3 scripts/promote_rivals.py "
+          "--sector <name>")
     return 0
 
 

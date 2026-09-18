@@ -4501,6 +4501,145 @@ def check_one_oversized_write_up_cannot_stop_the_second_read() -> int:
     return errors
 
 
+def check_a_shortlist_is_reachable_by_the_company_it_is_about() -> int:
+    """383 competitor shortlists answered "nothing waiting" because of a missing field.
+
+    --category is the only way to read a shortlist, and it filtered on the
+    category STORED ON THE PROPOSAL. The 132 Police rows carry "Police"; the
+    383 ingested in-session on 2026-09-17 carry None, so every one was
+    unreachable and a bare run printed "383  None / None" above a line telling
+    the reader to name a category. Same shape as the 131 proposals that sat
+    behind a tab with no renderer for a month: a door that is never reachable
+    reads exactly like a door with nothing behind it.
+
+    A company's sector and category are facts in companies.json. Read there,
+    they cannot be omitted by whoever built the proposal and cannot go stale
+    when a company changes category - which happens here weekly.
+
+    AND ONE CATEGORY NAME CAN SPAN SECTORS. "Suppliers & Services" is live
+    under six. A bare --accept-category over it is a one-click ruling across
+    six tabs, and reading one sector's rows would unlock all of them, so it
+    is refused by name until --sector narrows it.
+
+    Driven through main() with argv, not through pending(): main is what a
+    person types, and the marker file is pointed at a temp path because
+    writing the real one unlocks a bulk accept nobody read.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import io as _io
+    import contextlib as _cl
+    import admin
+    import agents
+    import promote_rivals as pr
+    errors = 0
+    COS = [{"id": "aaa", "name": "Aaa", "sector": "Public Works", "category": "Water"},
+           {"id": "bbb", "name": "Bbb", "sector": "Parks & Rec",
+            "category": "Suppliers & Services"},
+           {"id": "ccc", "name": "Ccc", "sector": "Public Works",
+            "category": "Suppliers & Services"}]
+    # every row carries NO placement, which is the state the 383 are in
+    STORE = {f"rival:{c['id']}": {"kind": "rival", "id": c["id"], "name": c["name"],
+                                  "status": "pending", "confidence": "medium",
+                                  "sector": None, "category": None,
+                                  "why": "thesis", "rivals": [], "add": []}
+             for c in COS}
+    WRITERS = ("read_companies", "save_companies", "save_decisions", "validate")
+    real = ({k: getattr(admin, k) for k in WRITERS},
+            agents.load, agents.save, pr.SEEN, sys.argv)
+    tmp = pathlib.Path(tempfile.mkdtemp()) / ".rivals_read"
+    wrote: list = []
+
+    # EVERY WRITER STUBBED, NOT JUST THE READER. Written the other way first,
+    # and it replaced the real data/companies.json with this three-company
+    # fixture: write_accepted calls admin.read_companies() (stubbed) and then
+    # admin.save_companies() (not), so 2,044 records were saved over with 3.
+    # CLAUDE.md's rule is "do not write to the owner's live admin" and this
+    # is the shape it takes inside the suite - a guard that stubs the read and
+    # leaves the write is not sandboxed, it is armed.
+    def run(argv):
+        pr._PLACES.clear()                      # the cache must not leak between runs
+        admin.read_companies = lambda: [dict(c) for c in COS]
+        admin.save_companies = lambda *a, **k: wrote.append(("companies", a, k))
+        admin.save_decisions = lambda *a, **k: wrote.append(("decisions", a, k))
+        admin.validate = lambda *a, **k: None
+        agents.load = lambda: {k: dict(v) for k, v in STORE.items()}
+        agents.save = lambda *a, **k: wrote.append(("proposals", a, k))
+        pr.SEEN = tmp
+        sys.argv = ["promote_rivals.py"] + argv
+        buf = _io.StringIO()
+        with _cl.redirect_stdout(buf), _cl.redirect_stderr(_io.StringIO()):
+            rc = pr.main()
+        return rc, buf.getvalue()
+    try:
+        _, out = run(["--category", "Water"])
+        if "nothing waiting" in out:
+            errors += fail("a shortlist whose proposal carries no category is "
+                           "unreachable by its company's real category - this "
+                           "is the 383 rows that answered 'nothing waiting'")
+        elif "Aaa" not in out:
+            errors += fail(f"--category Water did not print the company in it: {out[:160]!r}")
+        if "Bbb" in out or "Ccc" in out:
+            errors += fail("--category Water printed a company from another category")
+
+        _, out = run(["--sector", "Public Works"])
+        if "Aaa" not in out or "Ccc" not in out:
+            errors += fail("--sector did not reach every category in the sector")
+        if "Bbb" in out:
+            errors += fail("--sector printed a company from another sector")
+        # READING RULES ON NOTHING. --category and --sector print; a print that
+        # also writes is the shape that put 86 set-founded writes into the real
+        # companies.json on 2026-08-24.
+        if wrote:
+            errors += fail(f"reading a shortlist wrote to {wrote[0][0]}; "
+                           f"--category and --sector are read-only")
+
+        # THE CROSS-SECTOR BULK. Marked as read first, so the only thing that
+        # can refuse is the span check itself.
+        tmp.write_text(json.dumps(["Suppliers & Services"]))
+        rc, out = run(["--accept-category", "Suppliers & Services", "--by", "owner"])
+        if rc != 1 or "REFUSED" not in out:
+            errors += fail("a bulk accept over a category that spans two "
+                           "sectors was not refused; reading one sector's rows "
+                           "would rule on the other's")
+        elif not ("Public Works" in out and "Parks & Rec" in out):
+            errors += fail("the cross-sector refusal did not name the sectors "
+                           "it spans, so the reader cannot narrow it")
+        # and it must be acceptable once narrowed - a refusal with no way past
+        # it is a wall, not a door
+        wrote.clear()
+        rc, out = run(["--accept-category", "Suppliers & Services",
+                       "--sector", "Public Works", "--by", "owner"])
+        if rc == 1 and "REFUSED" in out:
+            errors += fail("--sector did not narrow the bulk accept, so the "
+                           "refusal cannot be answered")
+        elif not any(w[0] == "companies" for w in wrote):
+            errors += fail("the narrowed bulk accept wrote nothing, so the "
+                           "refusal has no answer and the door does not open")
+        else:
+            # ASSERT ON WHAT WAS PERSISTED, not on a fresh copy of the fixture.
+            # Written the other way first and it could not see a --sector that
+            # narrowed nothing: the accept took both sectors and the check
+            # re-derived from an untouched STORE and passed.
+            saved = next((w[1][0] for w in wrote if w[0] == "proposals"), None)
+            if saved is None:
+                errors += fail("the bulk accept never persisted its rulings")
+            else:
+                ruled = {p["id"] for p in saved.values()
+                         if p.get("status") == "accepted"}
+                if ruled != {"ccc"}:
+                    errors += fail(
+                        f"the narrowed bulk accept ruled on {sorted(ruled)}; "
+                        f"only the Public Works shortlist was in scope, and "
+                        f"--sector that does not narrow is a refusal that "
+                        f"pretends to")
+    finally:
+        for k, v in real[0].items():
+            setattr(admin, k, v)
+        (agents.load, agents.save, pr.SEEN, sys.argv) = real[1:]
+        pr._PLACES.clear()
+    return errors
+
+
 def check_discovery_probes_the_oldest_first() -> int:
     """discovery.yml says --limit takes the oldest first. The code sorted by sector.
 
@@ -22671,6 +22810,7 @@ def main() -> int:
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
+    errors += check_a_shortlist_is_reachable_by_the_company_it_is_about()
     errors += check_discovery_probes_the_oldest_first()
     errors += check_a_no_web_rival_run_briefs_only_companies_with_an_edge_to_judge()
     errors += check_the_second_reader_never_sees_the_first_answer()
