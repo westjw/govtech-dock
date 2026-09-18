@@ -5044,6 +5044,112 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
     return errors
 
 
+def check_posts_at_says_whether_anything_can_be_got() -> int:
+    """"They post here" contains a job, and one layer down it collapsed again.
+
+    posts_at exists because "advertises every opening on LinkedIn" and "hires
+    by word of mouth" were recorded identically, as a dismissal, and they are
+    opposite facts. That fix left the SAME collapse inside posts_at: 41 of the
+    45 companies carrying one have their openings on a page a person can open
+    right now, and exactly one is genuinely finished. Storing all 45 as "we
+    are not counting it" reads as a finished state for 41 rows that are a
+    worklist.
+
+    `reach` is the axis that separates them, and the interesting value is
+    `parent`. A person CAN read jobs.sap.com. What they cannot do is tell
+    which three of 4,000 openings are Concur's - so capturing it would file a
+    parent's requisitions as the subsidiary's, which is what the rule against
+    wiring a parent's board already exists to prevent. READABLE IS NOT
+    ATTRIBUTABLE.
+    """
+    import admin as _a
+    import posts_at as PA
+
+    errors = 0
+    # THE TWO LISTS ARE ONE LIST WRITTEN TWICE. Same reason check_brand holds
+    # _brand.js against brand.json: a place with no reach reads as unknown
+    # forever and its rows sit in no queue.
+    if set(PA.WHERE) != set(PA.REACH):
+        errors += fail(f"WHERE and REACH disagree: only in WHERE "
+                       f"{sorted(set(PA.WHERE) - set(PA.REACH))}, only in "
+                       f"REACH {sorted(set(PA.REACH) - set(PA.WHERE))}")
+    for k, v in PA.REACH.items():
+        if v not in ("capture", "none", "unknown"):
+            errors += fail(f"{k!r} reaches {v!r}, which is not one of the three")
+
+    if PA.REACH.get("parent") != "none":
+        errors += fail("a parent's board reaches 'capture'; capturing it files "
+                       "the parent's requisitions as the subsidiary's, which "
+                       "is the mistake the parent-board rule exists to stop")
+    for k in ("email", "recruiter"):
+        if PA.REACH.get(k) != "none":
+            errors += fail(f"{k!r} reaches {PA.REACH.get(k)!r}; there is no "
+                           f"public posting to read")
+    if PA.REACH.get("linkedin") != "capture":
+        errors += fail("LinkedIn does not reach 'capture', and the extension "
+                       "exists precisely for the places a fetcher may not go")
+
+    # the BEST of several, because one readable place is something to get
+    if PA.reach([{"where": "email"}, {"where": "linkedin"}]) != "capture":
+        errors += fail("a company posting by email AND on LinkedIn reports "
+                       "nothing to get")
+    if PA.reach([{"where": "email"}]) != "none":
+        errors += fail("email reports something to capture")
+    if PA.reach(None) != "unknown" or PA.reach([]) != "unknown":
+        errors += fail("no posts_at record reports a reach other than unknown")
+
+    # the gap, and what closes it
+    base = {"id": "acme", "name": "A", "description": "d",
+            "vendor_type": "GovTech Product", "profile": {"paragraphs": ["p"]},
+            "sells_to_gov": "yes", "competitors": [{"id": "z"}],
+            "ats": {"type": "unknown"}}
+    news = {"acme": {"items": [{"date": "2026-09-01"}]}}
+    def gaps(c, captured=set()):
+        return {g["gap"] for g in _a.sweep_gaps(c, None, news, set(), captured)}
+    if "board" not in gaps(base):
+        errors += fail("no readable board and no posts_at reports no gap")
+    onpage = dict(base, posts_at={"where": "own", "url": "https://a.example/jobs"})
+    if "capture" not in gaps(onpage):
+        errors += fail("a company whose openings sit on a readable page reports "
+                       "no capture gap; 41 rows read as finished")
+    # A GAP CLOSES ON EVIDENCE, not on somebody noting where the page is.
+    if "capture" in gaps(onpage, {"acme"}):
+        errors += fail("a company whose postings are already in manual.json "
+                       "still reports a capture gap")
+    if gaps(dict(base, posts_at={"where": "email"})) & {"board", "capture"}:
+        errors += fail("'by email only' reports a board or capture gap, which "
+                       "sends somebody hunting a page that does not exist")
+    if "where" not in gaps(dict(base, posts_at={"where": "other"})):
+        errors += fail("'somewhere else' reports nothing outstanding, though it "
+                       "says nothing about whether anything can be got")
+
+    # THE QUEUE, AND THE PAGE IT HANDS OVER. A capture row without the address
+    # sends a person to hunt for a page the board already holds.
+    cos = json.loads((DATA / "companies.json").read_text())
+    board = json.loads((DATA / "board.json").read_text())
+    rows = _a.q_capture(cos, board)
+    if not rows:
+        errors += fail("the capture queue is empty, though companies carry a "
+                       "posts_at that reaches 'capture'")
+    withurl = [r for r in rows if r.get("url")]
+    if len(withurl) < len(rows) * 0.5:
+        errors += fail(f"only {len(withurl)} of {len(rows)} capture rows carry "
+                       f"the page to open")
+    w = _a.act_worklist({"queue": "capture", "limit": 3})
+    if not (w.get("rows") and any(r.get("url") for r in w["rows"])):
+        errors += fail("the extension's capture rows carry no url, so the "
+                       "worklist sends somebody hunting for a page posts_at "
+                       "already recorded")
+    byid = {c["id"]: c for c in cos}
+    for r in rows:
+        c = byid.get(r["id"]) or {}
+        if (c.get("ats") or {}).get("type") in _a.STRUCTURED_ATS:
+            errors += fail(f"{r['id']} is on a readable ATS and is in the "
+                           f"capture queue")
+            break
+    return errors
+
+
 def check_a_page_sign_off_says_what_was_true() -> int:
     """The sweep derives the gaps and stores only the reading.
 
@@ -22375,6 +22481,7 @@ def main() -> int:
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
+    errors += check_posts_at_says_whether_anything_can_be_got()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()

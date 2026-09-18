@@ -4594,6 +4594,56 @@ def q_rescrub(companies, board) -> list:
     return out
 
 
+def q_capture(companies, board) -> list:
+    """Companies whose openings are on a page a person can read, uncaptured.
+
+    THE QUEUE posts_at WAS ALWAYS POINTING AT. `posts_at` records "they post
+    here and we are not counting it", and that sentence contains a job: 41 of
+    the 45 companies carrying one have their openings on a page somebody can
+    open right now, and the extension exists precisely for the places a
+    fetcher may not go - CLAUDE.md, on LinkedIn: "why this is usable on
+    LinkedIn when server-side scraping is not". Until now every one of those
+    45 read as a finished state.
+
+    A ROW LEAVES WHEN POSTINGS LAND, not when somebody notes where they are.
+    manual.json is the evidence; 7 of the 41 are already done that way.
+
+    Ordered by whether the board thinks they are hiring, then by name. A
+    company the board already shows as hiring is one whose page a reader is
+    most likely to open and find nothing on.
+    """
+    import posts_at as _pa
+    man = read("manual.json", {})
+    captured = {p.get("company_id") for p in (man.get("postings") or [])
+                if isinstance(p, dict) and p.get("company_id")}
+    hiring = {o.get("id"): o.get("open_roles", 0) or 0
+              for o in board.get("organizations", [])}
+    out = []
+    for c in companies:
+        if (c.get("ats") or {}).get("type") in STRUCTURED_ATS:
+            continue
+        if not c.get("posts_at") or c["id"] in captured:
+            continue
+        if _pa.reach(c["posts_at"]) != "capture":
+            continue
+        rows = c["posts_at"] if isinstance(c["posts_at"], list) else [c["posts_at"]]
+        where = [r.get("where") for r in rows if isinstance(r, dict)]
+        urls = [r.get("url") for r in rows if isinstance(r, dict) and r.get("url")]
+        out.append({
+            "id": c["id"], "name": c.get("name"),
+            "sector": c.get("sector"), "category": c.get("category"),
+            "website": c.get("website"),
+            "where": [_pa.WHERE.get(w, (w, None))[0] for w in where if w],
+            # THE PAGE TO OPEN. Whoever recorded posts_at pasted it; sending
+            # somebody to hunt for it again is the work done twice.
+            "url": urls[0] if urls else None,
+            "open_roles": hiring.get(c["id"], 0),
+            "note": (c.get("description") or "")[:120],
+        })
+    out.sort(key=lambda r: (-r["open_roles"], r["name"] or ""))
+    return out
+
+
 def act_worklist(body: dict) -> dict:
     """What to go and look at next, for the capture extension.
 
@@ -4625,7 +4675,7 @@ def act_worklist(body: dict) -> dict:
 
     builders = {"boards": q_boards, "founded": q_founded,
                 "blocked": q_blocked, "websites": q_websites,
-                "rescrub": q_rescrub}
+                "rescrub": q_rescrub, "capture": q_capture}
     if which not in builders:
         return {"error": f"unknown queue {which!r}",
                 "queues": sorted(builders)}
@@ -4645,6 +4695,14 @@ def act_worklist(body: dict) -> dict:
             # is worth working in this order, so it travels with the row.
             "events": (r.get("events") or [])[:3],
             "note": r.get("probe_note") or r.get("note") or r.get("why"),
+            # THE PAGE TO OPEN, for the capture queue. Whoever recorded
+            # posts_at already pasted the address; this row shape dropped it,
+            # so the extension sent somebody to hunt for a page the board
+            # already knew. `where` says which kind of place it is, because
+            # "their own careers page" and "LinkedIn" are opened differently.
+            "url": r.get("url"),
+            "where": r.get("where") or None,
+            "open_roles": r.get("open_roles"),
         })
     return {"queue": which, "total": len(rows), "rows": out,
             "counts": {k: len(v(companies, board)) for k, v in builders.items()}}
@@ -5026,7 +5084,7 @@ def act_proposal_ruling(body: dict) -> dict:
 
 
 def sweep_gaps(c: dict, board_org: dict | None, news: dict,
-               rival_pending: set) -> list:
+               rival_pending: set, captured: set | None = None) -> list:
     """What is outstanding on one company's public page. [] when nothing is.
 
     DERIVED EVERY TIME, never stored. A gap either exists in the file or it
@@ -5038,6 +5096,7 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
     than growing its own writes. A surface that both lists work and does it is
     a second door onto the map, and this repo has one door per fact.
     """
+    captured = captured if captured is not None else set()
     out = []
     if not (c.get("description") or "").strip():
         out.append({"gap": "description", "queue": "miscategorized",
@@ -5056,14 +5115,36 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
                     "what": ("a shortlist is proposed and waiting"
                              if c["id"] in rival_pending
                              else "no competitors, and none proposed")})
-    # A BOARD OR THE WORKFLOW. `posts_at` is the answer for a company whose
-    # board a fetcher cannot read - "they post here and we are not counting
-    # it" is a finished state, not a hole. Filing it as a gap would send
-    # somebody looking for an ATS that does not exist.
-    if (c.get("ats") or {}).get("type") not in STRUCTURED_ATS \
-            and not c.get("posts_at"):
-        out.append({"gap": "board", "queue": "boards",
-                    "what": "no readable board and no note on where they post"})
+    # A BOARD, A CAPTURE, OR NOTHING TO GET - three states, not two. `ats`
+    # means a fetcher reads it nightly. `posts_at` means "they post here and
+    # we are not counting it", which was written to stop "advertises on
+    # LinkedIn" being filed identically to "hires by word of mouth". That fix
+    # left the SAME collapse one layer down: 41 of the 45 companies carrying
+    # posts_at have their openings on a page a person can open right now, and
+    # exactly one is genuinely finished. Calling all 45 done hides a worklist.
+    #
+    # So `reach` decides. `capture` is a job somebody can do - open the page,
+    # click the extension - and it closes when postings actually land in
+    # manual.json. `none` is finished: an outside recruiter, an email address,
+    # a parent's board whose openings cannot be scoped to this company.
+    if (c.get("ats") or {}).get("type") not in STRUCTURED_ATS:
+        import posts_at as _pa
+        if not c.get("posts_at"):
+            out.append({"gap": "board", "queue": "boards",
+                        "what": "no readable board and no note on where they "
+                                "post"})
+        else:
+            r = _pa.reach(c["posts_at"])
+            if r == "capture" and c["id"] not in captured:
+                out.append({"gap": "capture", "queue": "boards",
+                            "what": "their openings are on a page a person "
+                                    "can read - open it and click the "
+                                    "extension"})
+            elif r == "unknown":
+                out.append({"gap": "where", "queue": "boards",
+                            "what": "recorded as posting 'somewhere else', "
+                                    "which says nothing about whether "
+                                    "anything can be got"})
     # NEWS HAS THREE STATES AND ONLY ONE IS A GAP. "checked, none found" is an
     # answer somebody got - 501 companies carry it - and reporting it as
     # missing is the false "no listings" this project refuses everywhere else.
@@ -5097,11 +5178,16 @@ def q_sweep(companies, board, category: str | None = None) -> list:
                      and v.get("status") == "pending"}
     jobs = {o.get("id"): o.get("open_roles", 0) or 0
             for o in board.get("organizations", [])}
+    # WHAT A PERSON HAS ALREADY GONE AND GOT. A capture gap closes when the
+    # postings land, not when somebody notes where they are.
+    man = read("manual.json", {})
+    captured = {p.get("company_id") for p in (man.get("postings") or [])
+                if isinstance(p, dict) and p.get("company_id")}
     out = []
     for c in companies:
         if category and c.get("category") != category:
             continue
-        gaps = sweep_gaps(c, None, news, rival_pending)
+        gaps = sweep_gaps(c, None, news, rival_pending, captured)
         rev = reviews.get(c["id"])
         out.append({
             "id": c["id"], "name": c.get("name"),
@@ -5146,7 +5232,10 @@ def act_page_review(body: dict) -> dict:
     pend = {v.get("id") for v in (store.values() if isinstance(store, dict) else [])
             if isinstance(v, dict) and v.get("kind") == "rival"
             and v.get("status") == "pending"}
-    gaps = [g["gap"] for g in sweep_gaps(c, None, news, pend)]
+    man = read("manual.json", {})
+    captured = {p.get("company_id") for p in (man.get("postings") or [])
+                if isinstance(p, dict) and p.get("company_id")}
+    gaps = [g["gap"] for g in sweep_gaps(c, None, news, pend, captured)]
     try:
         rows[cid] = page_reviews.record(cid, by, gaps, body.get("note") or "")
     except ValueError as e:

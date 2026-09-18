@@ -82,6 +82,67 @@ WHERE = {
     "other":     ("somewhere else", None),
 }
 
+# CAN SOMEBODY GO AND GET IT, and that is a different question from where
+# they post. This field exists because "advertises on LinkedIn" and "hires by
+# word of mouth" were recorded identically; they were, and fixing that left
+# the SAME collapse one layer down. `own` (39 companies today) means the
+# openings are sitting on a page a person can open right now. `email` means
+# there is nothing public to get, ever. Both currently store as "we are not
+# counting it", which reads as the same finished state and is not.
+#
+# The three values, and each names what would actually have to happen:
+#
+#   capture   A person opens the page and clicks the extension. This is what
+#             the extension is FOR - CLAUDE.md: "why this is usable on
+#             LinkedIn when server-side scraping is not". These rows are a
+#             worklist, not a finished state.
+#   none      There is no public posting to read. An outside recruiter, an
+#             email address, a parent's board whose 4,000 openings cannot be
+#             scoped to this company. Recording it is what stops the row
+#             being asked again forever, which was posts_at's whole point.
+#   unknown   Nobody has said. `other` means "somewhere else", which is an
+#             honest answer to WHERE and no answer at all to this.
+#
+# THE PARENT'S BOARD IS `none` AND THAT IS THE INTERESTING ONE. A person CAN
+# read jobs.sap.com. What they cannot do is tell which three of 4,000 are
+# Concur's - so capturing it would file a parent's requisitions as the
+# subsidiary's, which is the mistake the `ats` rule against parent boards
+# already exists to prevent. Readable is not the same as attributable.
+REACH = {
+    "linkedin": "capture",
+    "indeed": "capture",
+    "glassdoor": "capture",
+    "ziprecruiter": "capture",
+    "builtin": "capture",
+    "wellfound": "capture",
+    "govportal": "capture",
+    "own": "capture",
+    "parent": "none",
+    "recruiter": "none",
+    "email": "none",
+    "other": "unknown",
+}
+
+
+def reach(entry) -> str:
+    """'capture', 'none' or 'unknown' for one posts_at record.
+
+    A company with several places recorded reaches as far as its BEST one: if
+    any of them is capturable there is something to go and get, whatever else
+    is on the list.
+    """
+    rows = entry if isinstance(entry, list) else ([entry] if entry else [])
+    best = "unknown"
+    for r in rows:
+        w = (r.get("where") if isinstance(r, dict) else str(r)) or ""
+        v = REACH.get(w, "unknown")
+        if v == "capture":
+            return "capture"
+        if v == "none":
+            best = "none"
+    return best
+
+
 # A jobs page, not a company profile. linkedin.com/company/acme is a brochure;
 # linkedin.com/company/acme/jobs is the thing a job seeker wants. Sending
 # somebody to the brochure and calling it "where they post" is a small lie
