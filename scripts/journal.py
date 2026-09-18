@@ -190,9 +190,50 @@ def diff(before, after, name: str = "") -> dict:
     return out
 
 
+# READ ONCE PER FILE STATE, NOT ONCE PER CALLER.
+#
+# _entries() re-read and re-parsed 25 MB from disk on every call, and nothing
+# in the process remembered it. Measured 2026-09-18: one /api/triage - the
+# admin's Start tab, the first thing that draws - takes 2,979 ms, of which
+# 1,649 ms (55%) is EIGHT separate full reads of the same unchanged file in
+# one request. sessions(), reversals(), rulings_by_queue() via unlocks(),
+# receipt() three times, and two more from the queue builders through
+# founded_provenance(). None of them writes; all eight parse the same bytes.
+#
+# The fingerprint is (st_mtime_ns, st_size), so a write by ANOTHER process -
+# a CLI ruling while the server is up - is seen. It is a heuristic rather
+# than a guarantee: two writes inside one mtime tick landing on the same byte
+# count would be missed. APFS gives nanosecond mtimes and journal entries
+# differ in length, so that is not reachable in practice, and the fallback if
+# it ever were is a stale READ, never a lost write - every writer goes
+# through _write_entries, which invalidates.
+_CACHE: tuple | None = None
+
+
+def _fingerprint() -> tuple | None:
+    try:
+        st = LOG.stat()
+    except OSError:
+        return None
+    return (st.st_mtime_ns, st.st_size)
+
+
 def _entries() -> list[dict]:
+    """Every journal entry, oldest first. The list is a copy; the dicts are not.
+
+    admin_undo.py:112 mutates the dicts it gets back (`r["undo_of"] = ...`)
+    and immediately writes them through _write_entries, so sharing them is
+    correct there - the mutation is meant to be persisted. A caller that
+    mutates an entry WITHOUT writing it back would silently change what every
+    later reader sees in this process. Don't; copy the entry first.
+    """
+    global _CACHE
     if not LOG.exists():
+        _CACHE = None
         return []
+    fp = _fingerprint()
+    if _CACHE is not None and _CACHE[0] == fp:
+        return list(_CACHE[1])
     rows = []
     for line in LOG.read_text().splitlines():
         line = line.strip()
@@ -202,21 +243,47 @@ def _entries() -> list[dict]:
             rows.append(json.loads(line))
         except ValueError:
             continue          # a torn line is not a reason to lose the rest
-    return rows
+    # the fingerprint is taken AFTER the read: if the file moved under us,
+    # the next call re-reads rather than trusting a list from a state we
+    # never actually saw whole
+    _CACHE = (_fingerprint(), rows)
+    return list(rows)
 
 
 def _write_entries(rows: list[dict]) -> None:
+    global _CACHE
     fd, tmp = tempfile.mkstemp(dir=str(DATA), suffix=".tmp")
     with os.fdopen(fd, "w") as fh:
         for r in rows[-KEEP:]:
             fh.write(json.dumps(r) + "\n")
     os.replace(tmp, LOG)
+    # INVALIDATE, do not refresh from `rows`. Rebuilding the cache from what
+    # we meant to write would make the cache authoritative over the file, and
+    # the one thing this file must never do is disagree with its own disk.
+    #
+    # BELT, NOT BRACES, AND MEASURED AS SUCH: removing this line does not fail
+    # check_the_journal_is_read_once_per_file_state, because os.replace moves
+    # the fingerprint and the next read re-parses anyway. It is here for the
+    # one case the fingerprint cannot see - a rewrite landing on the same
+    # (mtime_ns, size) - and it is deliberately not claimed as guarded.
+    _CACHE = None
 
 
 def next_id(rows: list[dict] | None = None) -> str:
+    """The next free id for today. Never one already in the file.
+
+    This counted today's entries and added one, which collides the moment the
+    prune drops an early entry for the same day: the count falls, the number
+    is handed out again, and admin_undo --undo takes whichever the lookup
+    finds first. data/admin_journal.jsonl carries 2026-09-13#5 TWICE today -
+    two different rulings under one id, one of which cannot be addressed.
+    """
     rows = _entries() if rows is None else rows
     today = dt.date.today().isoformat()
-    n = sum(1 for r in rows if str(r.get("id", "")).startswith(today)) + 1
+    used = {str(r.get("id", "")) for r in rows}
+    n = sum(1 for i in used if i.startswith(today)) + 1
+    while f"{today}#{n}" in used:
+        n += 1
     return f"{today}#{n}"
 
 

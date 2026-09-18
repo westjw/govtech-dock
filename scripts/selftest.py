@@ -4501,6 +4501,128 @@ def check_one_oversized_write_up_cannot_stop_the_second_read() -> int:
     return errors
 
 
+def check_the_journal_is_read_once_per_file_state() -> int:
+    """Eight full reads of a 25 MB file in one request, and a cache that must still see a writer.
+
+    MEASURED 2026-09-18: /api/triage - the admin's Start tab, the first thing
+    that draws - took 2,979 ms, of which 1,649 ms was EIGHT separate full
+    reads of the same unchanged data/admin_journal.jsonl. None of the eight
+    writes. Memoized, the same eight cost one parse.
+
+    THE CACHE MUST STILL SEE ANOTHER WRITER. A CLI ruling lands while the
+    admin server is up; a stale journal would make admin_undo list, and
+    refuse, against history that has moved. The fingerprint is
+    (st_mtime_ns, st_size) and an append changes both.
+
+    AND THE LIST MUST BE A COPY. admin_undo mutates what it is handed and
+    writes it straight back, which is fine; a caller that mutated the list
+    without writing would otherwise change what every later reader in the
+    process sees.
+
+    Driven against a temp LOG. The suite must never write the real journal -
+    it is the only thing standing between a wrong bulk ruling and permanent
+    damage.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import journal
+    errors = 0
+    real_log, real_cache = journal.LOG, journal._CACHE
+    tmpdir = pathlib.Path(tempfile.mkdtemp())
+    journal.LOG = tmpdir / "admin_journal.jsonl"
+    reads = {"n": 0}
+    real_read = pathlib.Path.read_text
+
+    def counting_read(self, *a, **k):
+        if self == journal.LOG:
+            reads["n"] += 1
+        return real_read(self, *a, **k)
+    try:
+        journal._CACHE = None
+        rows = [{"id": f"2026-09-18#{i}", "at": "2026-09-18T10:00:00-04:00",
+                 "file": "companies.json", "action": "patch", "by": "owner",
+                 "why": "w", "n": 1, "changes": {}} for i in (1, 2)]
+        journal.LOG.write_text("".join(json.dumps(r) + "\n" for r in rows))
+        pathlib.Path.read_text = counting_read
+
+        first = journal._entries()
+        if len(first) != 2:
+            errors += fail(f"the journal read {len(first)} entries, expected 2")
+        for _ in range(7):
+            journal._entries()
+        if reads["n"] != 1:
+            errors += fail(f"eight reads of an unchanged journal parsed it "
+                           f"{reads['n']} times; this is the 1,649 ms of the "
+                           f"admin's 2,979 ms Start tab")
+
+        # A COPY - AND IT MUST BE TAKEN FROM A CACHED CALL. Written against
+        # `first` instead, this proved nothing: the first call goes down the
+        # parse path, which returns a fresh list whatever the cache branch
+        # does, so a mutation that handed out the cache walked straight past.
+        cached = journal._entries()
+        cached.append({"id": "ghost"})
+        if len(journal._entries()) != 2:
+            errors += fail("_entries() handed out its own cache; a caller "
+                           "that appends to it changes what every later "
+                           "reader in this process sees")
+
+        # ANOTHER WRITER. Appended by something that is not this process.
+        with journal.LOG.open("a") as fh:
+            fh.write(json.dumps({"id": "2026-09-18#3", "at": "x",
+                                 "file": "companies.json", "action": "patch",
+                                 "by": "cli", "why": "w", "n": 1,
+                                 "changes": {}}) + "\n")
+        if len(journal._entries()) != 3:
+            errors += fail("the journal cache did not notice another writer; "
+                           "admin_undo would list and refuse against history "
+                           "that has already moved")
+
+        # AND A WRITE THROUGH THE MODULE INVALIDATES.
+        got = journal._entries()
+        got.append({"id": "2026-09-18#4", "at": "y", "file": "companies.json",
+                    "action": "patch", "by": "owner", "why": "w", "n": 1,
+                    "changes": {}})
+        journal._write_entries(got)
+        if len(journal._entries()) != 4:
+            errors += fail("a write through _write_entries left a stale cache")
+    finally:
+        pathlib.Path.read_text = real_read
+        journal.LOG, journal._CACHE = real_log, real_cache
+    return errors
+
+
+def check_two_rulings_never_share_a_journal_id() -> int:
+    """data/admin_journal.jsonl carries 2026-09-13#5 twice. One of them cannot be undone.
+
+    next_id counted today's entries and added one. The journal is a ring
+    buffer (KEEP=500, pruned on every write), so the moment an early entry for
+    the same day is pruned the count falls and the number is handed out again.
+    admin_undo --undo then takes whichever the lookup finds first, and the
+    other ruling has no address at all - in a file whose entire purpose is
+    that every write can be taken back by name.
+
+    Driven through next_id with rows passed in, which is how record() calls
+    it, and with the real file's own defect as the fixture.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import journal
+    errors = 0
+    today = dt.date.today().isoformat()
+    # #1 and #2 pruned away; three of today's five remain
+    rows = [{"id": f"{today}#{i}"} for i in (3, 4, 5)]
+    got = journal.next_id(rows)
+    if got in {r["id"] for r in rows}:
+        errors += fail(f"next_id handed out {got!r}, which is already in the "
+                       f"journal - two rulings under one id, and admin_undo "
+                       f"can only reach one of them")
+    # and it must not skip forward forever on a normal day
+    if journal.next_id([{"id": f"{today}#1"}]) != f"{today}#2":
+        errors += fail("next_id no longer returns the next number on an "
+                       "ordinary day")
+    if journal.next_id([]) != f"{today}#1":
+        errors += fail("next_id does not start at #1 on an empty journal")
+    return errors
+
+
 def check_a_shortlist_is_reachable_by_the_company_it_is_about() -> int:
     """383 competitor shortlists answered "nothing waiting" because of a missing field.
 
@@ -22810,6 +22932,8 @@ def main() -> int:
     errors += check_data_writers_are_serialised()
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
+    errors += check_the_journal_is_read_once_per_file_state()
+    errors += check_two_rulings_never_share_a_journal_id()
     errors += check_a_shortlist_is_reachable_by_the_company_it_is_about()
     errors += check_discovery_probes_the_oldest_first()
     errors += check_a_no_web_rival_run_briefs_only_companies_with_an_edge_to_judge()
