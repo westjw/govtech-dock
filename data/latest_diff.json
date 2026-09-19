@@ -1,69 +1,83 @@
 {
-  "date": "2026-09-18",
-  "previous": "2026-09-17",
+  "date": "2026-09-19",
+  "previous": "2026-09-18",
   "changes": [
     {
-      "company": "Prepared",
-      "id": "prepared",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Miovision",
-      "id": "miovision",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Technical Customer Success Manager only"
+      "company": "Greyparrot",
+      "id": "greyparrot",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Samsara",
       "id": "samsara",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Off Duty Management",
-      "id": "off-duty-management",
       "from": "None found",
       "to": "Yes",
-      "note": "Business Development Manager - Mid (Charlotte, North C)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "AirDNA",
-      "id": "airdna",
-      "from": "Yes",
+      "company": "Clariti",
+      "id": "clariti",
+      "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Sales Manager - Uplisting only"
+      "note": "Business Development Representativ only"
     },
     {
-      "company": "Grant Street Group",
-      "id": "grant-street-group",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "company": "GoGuardian",
+      "id": "goguardian",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "New Business Executive - Strategic only"
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
+      "company": "Benchmark Analytics",
+      "id": "benchmark-analytics",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "company": "Tek84",
+      "id": "tek84",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "Embross",
-      "id": "embross",
+      "company": "Transoft Solutions",
+      "id": "transoft-solutions",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Representative only"
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "CampMinder",
+      "id": "campminder",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Campspot",
+      "id": "campspot",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Manager, Account Management only"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     }
   ]
 }
