@@ -5161,8 +5161,19 @@ STRUCTURED_ATS = {"ashby", "greenhouse", "lever", "workable", "recruitee",
                   "jibe", "adp", "gusto", "gem"}
 
 
-def q_sweep(companies, board, category: str | None = None) -> list:
+def q_sweep(companies, board, category: str | None = None,
+            sector: str | None = None) -> list:
     """One category's pages, worst-first, with what each one still needs.
+
+    THE SECTOR IS HALF THE ADDRESS. Filtering on the category name alone
+    read "Suppliers & Services" as one category and returned 180 pages from
+    SIX sectors - 76 Public Safety, 55 General Gov, 24 Transit, 17 Public
+    Works, 6 Parks & Rec, 2 Airports - under a heading naming one. The
+    picker one level up already keys on (sector, category) and had the right
+    answer; the drill-down threw the sector away. Somebody working Parks & Rec
+    page by page would have been handed six sectors and told it was one
+    category, which is the "a sector is never also a category" defect this
+    repo names, reached from the other side.
 
     ORDERED BY OPEN ROLES because that is who sees the page. A company with 32
     live reqs and no write-up is a hole a visitor falls into today; the same
@@ -5185,6 +5196,8 @@ def q_sweep(companies, board, category: str | None = None) -> list:
                 if isinstance(p, dict) and p.get("company_id")}
     out = []
     for c in companies:
+        if sector and c.get("sector") != sector:
+            continue
         if category and c.get("category") != category:
             continue
         gaps = sweep_gaps(c, None, news, rival_pending, captured)
@@ -5852,9 +5865,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     r["signed_off"] += c["id"] in seen
                 return self._json({"categories": sorted(
                     cats.values(), key=lambda r: -r["open_roles"])})
-            rows = q_sweep(companies, board, cat)
+            sec = (qs.get("sector") or [""])[0]
+            rows = q_sweep(companies, board, cat, sec or None)
             return self._json({
-                "category": cat, "items": rows, "total": len(rows),
+                "category": cat, "sector": sec, "items": rows,
+                "total": len(rows),
                 "signed_off": sum(1 for r in rows if r["reviewed"]),
                 "stale": sum(1 for r in rows if r["stale"]),
                 # THE ROWS WITH NOTHING OUTSTANDING AND NO SIGN-OFF. The

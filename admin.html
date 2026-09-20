@@ -652,15 +652,19 @@ async function refreshCounts() {
    Built with el() throughout. Company names and descriptions arrive here from
    outside submissions, and this file already learned what happens when a
    remote string reaches innerHTML. */
+/* THE PAIR, NOT THE NAME. "Suppliers & Services" is a live category under
+   six sectors, so a sweep keyed on the name alone handed back 180 pages from
+   all of them under a heading naming one. */
 let SWEEP_CAT = null;
+let SWEEP_SEC = null;
 
-async function showSweep(cat) {
+async function showSweep(cat, sec) {
   TAB = '__sweep';
   beltOff();
   document.querySelectorAll('nav button').forEach(b =>
     b.setAttribute('aria-selected', b.dataset.key === '__sweep'));
   const v = $('#view'); v.innerHTML = '';
-  SWEEP_CAT = cat || SWEEP_CAT;
+  if (cat) { SWEEP_CAT = cat; SWEEP_SEC = sec || null; }
 
   if (!SWEEP_CAT) {
     const r = await api('/api/sweep');
@@ -679,19 +683,22 @@ async function showSweep(cat) {
       row.appendChild(el('span', 'kv', ' ' + c.sector));
       row.appendChild(el('span', 'kv', '  ' + c.companies + ' companies · '
         + c.open_roles + ' open roles · ' + c.signed_off + ' signed off'));
-      row.onclick = () => showSweep(c.category);
+      row.onclick = () => showSweep(c.category, c.sector);
       list.appendChild(row);
     });
     v.appendChild(list);
     return;
   }
 
-  const r = await api('/api/sweep?category=' + encodeURIComponent(SWEEP_CAT));
+  const r = await api('/api/sweep?category=' + encodeURIComponent(SWEEP_CAT)
+    + (SWEEP_SEC ? '&sector=' + encodeURIComponent(SWEEP_SEC) : ''));
   if (r.error) { v.appendChild(el('p', 'empty', r.error)); return; }
   const back = el('button', null, '← all categories');
-  back.onclick = () => { SWEEP_CAT = null; showSweep(); };
+  back.onclick = () => { SWEEP_CAT = null; SWEEP_SEC = null; showSweep(); };
   v.appendChild(back);
-  v.appendChild(el('h2', null, r.category));
+  const h = el('h2', null, r.category);
+  if (r.sector) h.appendChild(el('span', 'kv', '  ' + r.sector));
+  v.appendChild(h);
   /* THE THIRD NUMBER IS THE POINT. Signed off and stale are bookkeeping;
      "complete and unread" is the set this sweep exists to find - pages with
      nothing outstanding that nobody has actually looked at. */
@@ -752,7 +759,7 @@ async function showSweep(cat) {
       const res = await api('/api/page-review', body);
       sign.disabled = false;
       toast(res.error || res.message);
-      if (!res.error) showSweep(SWEEP_CAT);
+      if (!res.error) showSweep(SWEEP_CAT, SWEEP_SEC);
     };
     acts.appendChild(sign);
     row.appendChild(acts);

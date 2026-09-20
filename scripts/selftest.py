@@ -4594,6 +4594,78 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_a_page_sweep_stays_inside_one_sector() -> int:
+    """The sweep is worked page by page. It must not hand over six sectors as one.
+
+    "Suppliers & Services" is a live category under SIX sectors. q_sweep
+    filtered on the category name alone, so picking it returned 180 pages -
+    76 Public Safety, 55 General Gov, 24 Transit, 17 Public Works, 6 Parks &
+    Rec, 2 Airports - under a heading naming one category. The picker one
+    level up already keys on (sector, category) and had the right answer; the
+    drill-down threw the sector away.
+
+    That is "a sector is never also a category" reached from the other side,
+    and it lands on the one workflow this tab exists for: somebody working a
+    department page by page, signing each one off, believing the list in
+    front of them is the department.
+
+    THREE HOPS, because the pair has to survive all of them: the query the
+    tab sends, the route that reads it, and the filter itself.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin
+    errors = 0
+    COS = [{"id": "pr-sup", "name": "PR Sup", "sector": "Parks & Rec",
+            "category": "Suppliers & Services", "ats": {"type": "unknown"}},
+           {"id": "ps-sup", "name": "PS Sup", "sector": "Public Safety",
+            "category": "Suppliers & Services", "ats": {"type": "unknown"}},
+           {"id": "pr-rec", "name": "PR Rec", "sector": "Parks & Rec",
+            "category": "Recreation Management", "ats": {"type": "unknown"}}]
+    board = {"organizations": [], "postings": []}
+
+    got = {r.get("id") for r in admin.q_sweep(COS, board,
+                                              "Suppliers & Services", "Parks & Rec")}
+    if got != {"pr-sup"}:
+        errors += fail(f"a sweep of Parks & Rec / Suppliers & Services returned "
+                       f"{sorted(got)}; the same category name lives under six "
+                       f"sectors and only one of them is the department being worked")
+    got = {r.get("id") for r in admin.q_sweep(COS, board, "Suppliers & Services")}
+    if got != {"pr-sup", "ps-sup"}:
+        errors += fail(f"a sweep with no sector returned {sorted(got)}; with no "
+                       f"sector named, every sector's rows is the honest answer")
+    got = {r.get("id") for r in admin.q_sweep(COS, board, None, "Parks & Rec")}
+    if got != {"pr-sup", "pr-rec"}:
+        errors += fail(f"a sweep of a whole sector returned {sorted(got)}")
+
+    # THE ROUTE MUST READ IT. A filter nothing passes a sector to is a filter
+    # that never narrows, which is where this started.
+    src = _code_only(ROOT / "scripts" / "admin.py")
+    i = src.find('if path == "/api/sweep"')
+    if i < 0:
+        errors += fail("the /api/sweep route is gone")
+    else:
+        # BOUNDED AT THE NEXT ROUTE, not at a character count. A 2,000-char
+        # window reached the /api/sort-companies handler 15 lines below,
+        # which reads a `sector` of its own - so a mutation that deleted the
+        # sweep's own read walked straight past this check.
+        j = src.find('if path == "/api/', i + 10)
+        route = src[i:j if j > i else i + 2000]
+        if 'qs.get("sector")' not in route:
+            errors += fail("/api/sweep never reads a sector from the query, so "
+                           "the tab cannot narrow the list however it asks")
+        if "q_sweep(companies, board, cat, sec" not in route:
+            errors += fail("/api/sweep does not pass the sector to q_sweep")
+
+    # AND THE TAB MUST SEND IT.
+    html = (ROOT / "admin.html").read_text()
+    if "&sector=" not in html:
+        errors += fail("admin.html never puts a sector on the sweep request")
+    if "showSweep(c.category, c.sector)" not in html:
+        errors += fail("the category picker drops the sector when it drills in, "
+                       "which is exactly how 180 pages arrived under one heading")
+    return errors
+
+
 def check_a_logo_is_the_size_it_is_drawn_at() -> int:
     """A 943x740 mark in a 44px tile, and a byte cap that could never see it.
 
@@ -23463,6 +23535,7 @@ def main() -> int:
     errors += check_the_profile_second_reader_is_blind_and_says_when_it_is_cut_off()
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
+    errors += check_a_page_sweep_stays_inside_one_sector()
     errors += check_a_logo_is_the_size_it_is_drawn_at()
     errors += check_a_supplier_lands_with_a_tag_read_off_its_own_words()
     errors += check_the_claim_alert_names_nobody()
