@@ -1,5 +1,41 @@
 {
-  "date": "2026-09-20",
-  "previous": "2026-09-19",
-  "changes": []
+  "date": "2026-09-21",
+  "previous": "2026-09-20",
+  "changes": [
+    {
+      "company": "Euna Solutions",
+      "id": "euna-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Acusensus",
+      "id": "acusensus",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Transoft Solutions",
+      "id": "transoft-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Manager (Sales)"
+    },
+    {
+      "company": "Fortem Technologies",
+      "id": "fortem-technologies",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Heron Power",
+      "id": "heron-power",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Head of Sales only"
+    }
+  ]
 }
