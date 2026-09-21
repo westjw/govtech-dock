@@ -4694,6 +4694,32 @@ def check_the_preview_route_serves_only_built_company_pages() -> int:
             if code != 404:
                 errors += fail(f"{why} answered {code}, not 404: {path}")
 
+        # AN UNBUILT COMPANY RENDERS; AN UNKNOWN ONE STILL 404s. The route
+        # falls through to company_page_html when no file exists, because 68
+        # of the 142 Parks & Rec companies have no page and those are exactly
+        # the ones needing work. That fall-through must not become a way to
+        # ask the admin to render anything at all.
+        import admin as _adm
+        _board = _adm.read("board.json", {})
+        _orgs = _board.get("organizations", [])
+        built = {p.stem for p in (ROOT / "public" / "c").glob("*.html")}
+        unbuilt = next((o.get("id") for o in _orgs
+                        if o.get("id") and o["id"] not in built), None)
+        if unbuilt:
+            code, hdrs, body = ask(f"/preview/c/{unbuilt}.html")
+            if code != 200 or len(body) < 400:
+                errors += fail(f"an unbuilt company answered {code} with "
+                               f"{len(body)} bytes; 68 of the 142 in Parks & "
+                               f"Rec have no built page and those are the ones "
+                               f"with work to do")
+            elif b"<html" not in body[:400].lower():
+                errors += fail("the rendered preview is not an HTML document")
+        code, _, _ = ask("/preview/c/no-such-company-at-all.html")
+        if code != 404:
+            errors += fail(f"an unknown company id answered {code}, not 404; "
+                           f"the render fall-through is for companies on the "
+                           f"board, not for anything that ends in .html")
+
         # AND EVERY OTHER ROUTE STILL REFUSES THE FRAME.
         for path in ("/", "/admin.html", "/api/queues"):
             _, hdrs, _ = ask(path)

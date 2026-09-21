@@ -5279,7 +5279,18 @@ def page_detail(companies, board, cid: str) -> dict:
         # the artifact, and when it was made
         "built": (dt.datetime.fromtimestamp(page.stat().st_mtime)
                   .isoformat(timespec="minutes") if page.exists() else None),
-        "preview": f"/preview/c/{cid}.html" if page.exists() else None,
+        # ALWAYS a preview: built if there is one, rendered if there is not.
+        "preview": f"/preview/c/{cid}.html" if org else None,
+        "published": page.exists(),
+        # what this company is short of before build_site will publish it -
+        # the same three facts has_static_page asks for, said out loud
+        "needs_to_publish": ([] if page.exists() else
+                             [w for w, ok in
+                              (("an open role", bool(org.get("open_roles"))),
+                               ("a write-up", bool((org.get("profile") or {}).get("paragraphs")
+                                                   if isinstance(org.get("profile"), dict) else False)),
+                               ("a competitor shortlist", bool(org.get("competitors"))))
+                              if not ok]),
         # THE DOMAIN LIVES IN ONE PLACE. brand.json owns it; a literal here is
         # what check_the_domain_lives_in_one_place refuses, and it refused
         # this one.
@@ -5848,9 +5859,48 @@ class Handler(http.server.BaseHTTPRequestHandler):
             f = (root / name).resolve()
         except (OSError, ValueError):
             return self._json({"error": "not found"}, 404)
-        if root not in f.parents or not f.is_file() or f.suffix.lower() != ".html":
+        if root not in f.parents or f.suffix.lower() != ".html":
             return self._json({"error": "not found"}, 404)
-        return self._send(f.read_bytes(), "text/html; charset=utf-8",
+        if f.is_file():
+            return self._send(f.read_bytes(), "text/html; charset=utf-8",
+                              framed=True)
+        # NOT BUILT IS NOT NOTHING TO WORK ON. build_site writes a page only
+        # for a company with open roles, a write-up or a shortlist - 68 of the
+        # 142 in Parks & Rec have none of those, which is precisely the gaps
+        # the sweep is for. So the page a person needs in order to DO that
+        # work is the one page that does not exist.
+        #
+        # Rendered here from the same company_page_html the build uses, so
+        # there is no second renderer to drift, and NOT written to disk:
+        # publishing 68 thin pages to make the admin convenient is the
+        # argument has_static_page's own docstring already rejects. The
+        # screen labels it unpublished and says what it is waiting for.
+        return self._preview_unbuilt(f.stem)
+
+    def _preview_unbuilt(self, cid: str):
+        """How the page WOULD look, for a company that has not earned one."""
+        try:
+            import build_site as bs
+            board = read("board.json", {})
+            orgs = board.get("organizations", [])
+            o = next((x for x in orgs if x.get("id") == cid), None)
+            if not o:
+                return self._json({"error": "not found"}, 404)
+            brand = read("brand.json", {})
+            mine = [x for x in board.get("postings", [])
+                    if x.get("company_id") == cid]
+            by_id = {x["id"]: x for x in orgs if x.get("id")}
+            by_name = {str(x["name"]).strip().lower(): x
+                       for x in orgs if x.get("name")}
+            in_cat = sum(1 for x in orgs
+                         if (x.get("sector"), x.get("category"))
+                         == (o.get("sector"), o.get("category")))
+            html_ = bs.company_page_html(o, mine, board, brand,
+                                         by_id, by_name, in_cat)
+        except Exception as exc:                            # noqa: BLE001
+            return self._json(
+                {"error": f"could not render: {type(exc).__name__}"}, 404)
+        return self._send(html_.encode(), "text/html; charset=utf-8",
                           framed=True)
 
     def _logo(self, name: str):

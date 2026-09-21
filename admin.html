@@ -1188,8 +1188,24 @@ async function showPage(id) {
 
   /* ---- left: what a stranger sees ---- */
   if (r.preview) {
-    left.appendChild(el('p', 'kv', 'The page as last BUILT — ' + r.built
-      + '. Edits on the right appear here after the next build, not now.'));
+    if (r.published) {
+      left.appendChild(el('p', 'kv', 'The page as last BUILT — ' + r.built
+        + '. Edits on the right appear here after the next build, not now.'));
+    } else {
+      /* NOT PUBLISHED, AND WHY. build_site writes a page for a company with
+         an open role, a write-up or a shortlist - 68 of the 142 in Parks &
+         Rec have none of the three, which is exactly what the sweep is for.
+         So the page a person needs in order to DO that work is the one page
+         that does not exist. This is the same renderer the build uses, so it
+         is a true preview; it is simply not on the site, and naming which of
+         the three is missing turns the preview into a to-do. */
+      left.appendChild(el('p', 'kv', 'NOT PUBLISHED — no page on the site '
+        + 'yet. This is how it would look, rendered from the record just now.'));
+      if ((r.needs_to_publish || []).length) {
+        left.appendChild(el('p', 'kv', 'It gets published once it has '
+          + r.needs_to_publish.join(', or ') + '.'));
+      }
+    }
     const fr = document.createElement('iframe');
     /* FETCHED AND INJECTED, NOT POINTED AT. `fr.src = r.preview` is the
        obvious version and it came back blank: the request was refused
