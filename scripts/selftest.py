@@ -4594,6 +4594,122 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_the_preview_route_serves_only_built_company_pages() -> int:
+    """The approval screen frames a company page. That is a hole until it is not.
+
+    The admin serves SIX static routes and everything else is 404 by
+    construction, because serving ROOT once handed out /.git/config and
+    /data/companies.json. This adds a seventh, so it is held to the same bar
+    as the logos: resolve the file and prove the directory is genuinely its
+    parent, rather than trusting the string.
+
+    AND IT IS THE ONE ROUTE ALLOWED TO BE FRAMED. Everything else answers
+    `frame-ancestors 'none'` and must keep doing so - the admin refuses to be
+    framed because a token is no defence against a click on our own UI. This
+    route answers 'self', which still refuses every other origin.
+
+    IT MUST NOT SEND A CSP `sandbox` DIRECTIVE. The first version did, and a
+    sandboxed document has an OPAQUE origin, so `frame-ancestors 'self'` no
+    longer matched its own parent. Asked on the wire, not read off the source,
+    because that combination looked completely correct in the code.
+
+    Loopback, no network, nothing written.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import http.client
+    import http.server
+    import threading
+    import urllib.error
+    import urllib.request
+    import admin
+    errors = 0
+
+    class Quiet(admin.Handler):
+        def log_message(self, *a):
+            pass
+
+    srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
+    base = f"http://127.0.0.1:{srv.server_address[1]}"
+    threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
+
+    def ask(path):
+        req = urllib.request.Request(base + path, method="GET")
+        try:
+            with urllib.request.urlopen(req, timeout=5) as r:
+                return r.status, dict(r.headers), r.read()
+        except urllib.error.HTTPError as e:
+            return e.code, dict(e.headers), e.read()
+        except (urllib.error.URLError, http.client.HTTPException, OSError) as e:
+            return None, {}, str(e).encode()
+    try:
+        page = next(iter(sorted((ROOT / "public" / "c").glob("*.html"))), None)
+        if page is None:
+            print("  SKIP: no built company pages on disk, so the preview "
+                  "route was not exercised")
+            return errors
+        code, hdrs, body = ask(f"/preview/c/{page.name}")
+        if code != 200 or len(body) < 200:
+            errors += fail(f"the preview route answered {code} with "
+                           f"{len(body)} bytes for a real built page")
+        csp = hdrs.get("Content-Security-Policy", "")
+        if "frame-ancestors 'self'" not in csp:
+            errors += fail(f"the preview route sends {csp!r}; the approval "
+                           f"screen cannot frame a page that refuses its own "
+                           f"parent")
+        if "sandbox" in csp:
+            errors += fail("the preview route sends a CSP `sandbox` directive. "
+                           "That gives the document an opaque origin, which "
+                           "then fails its own frame-ancestors check and the "
+                           "frame comes back blank with nothing in the console")
+        if hdrs.get("X-Frame-Options") != "SAMEORIGIN":
+            errors += fail(f"X-Frame-Options is "
+                           f"{hdrs.get('X-Frame-Options')!r} on the one route "
+                           f"that is meant to be framed")
+
+        # CONTAINMENT. Each of these is a real shape somebody has tried.
+        # A NON-HTML FILE THAT REALLY EXISTS. Without one, the suffix check
+        # cannot be exercised at all: every made-up name 404s because the file
+        # is missing, not because the suffix was refused, and a mutation that
+        # dropped `.html` walked straight past. public/ is a build output and
+        # gitignored, so this writes one, asks, and takes it away again.
+        planted = (ROOT / "public" / "c" / "__selftest_probe.json")
+        try:
+            planted.write_text('{"not":"a page"}')
+            code, _, _ = ask(f"/preview/c/{planted.name}")
+            if code != 404:
+                errors += fail(f"a real non-html file under public/c answered "
+                               f"{code}; the route serves built pages, not "
+                               f"whatever else the build leaves there")
+        finally:
+            planted.unlink(missing_ok=True)
+
+        for path, why in (
+                ("/preview/c/../../data/companies.json", "a traversal"),
+                ("/preview/c/..%2f..%2fdata%2fcompanies.json", "an encoded traversal"),
+                ("/preview/c/../../../etc/passwd", "a traversal off the repo"),
+                (f"/preview/c/{page.stem}", "an extensionless name"),
+                (f"/preview/c/{page.name}.bak", "a non-html suffix"),
+                ("/preview/c/", "the directory itself")):
+            code, _, _ = ask(path)
+            if code != 404:
+                errors += fail(f"{why} answered {code}, not 404: {path}")
+
+        # AND EVERY OTHER ROUTE STILL REFUSES THE FRAME.
+        for path in ("/", "/admin.html", "/api/queues"):
+            _, hdrs, _ = ask(path)
+            if hdrs.get("Content-Security-Policy") != "frame-ancestors 'none'":
+                errors += fail(f"{path} no longer refuses to be framed "
+                               f"({hdrs.get('Content-Security-Policy')!r}); "
+                               f"the framing exception must stay one route")
+            if hdrs.get("X-Frame-Options") != "DENY":
+                errors += fail(f"{path} sends X-Frame-Options "
+                               f"{hdrs.get('X-Frame-Options')!r}")
+    finally:
+        srv.shutdown()
+        srv.server_close()
+    return errors
+
+
 def check_a_page_sweep_stays_inside_one_sector() -> int:
     """The sweep is worked page by page. It must not hand over six sectors as one.
 
@@ -23536,6 +23652,7 @@ def main() -> int:
     errors += check_one_oversized_write_up_cannot_stop_the_second_read()
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
     errors += check_a_page_sweep_stays_inside_one_sector()
+    errors += check_the_preview_route_serves_only_built_company_pages()
     errors += check_a_logo_is_the_size_it_is_drawn_at()
     errors += check_a_supplier_lands_with_a_tag_read_off_its_own_words()
     errors += check_the_claim_alert_names_nobody()

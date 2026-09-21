@@ -5216,6 +5216,77 @@ def q_sweep(companies, board, category: str | None = None,
     return out
 
 
+def page_detail(companies, board, cid: str) -> dict:
+    """Everything the approval screen needs about ONE company, in one read.
+
+    THE SCREEN IS A FINAL APPROVAL, so it has to show the same gaps the sweep
+    counts, the same proposals the queues hold, and the page a stranger
+    actually gets - from the same functions, not from second copies of them.
+    A screen that computes "done" its own way will disagree with the queue it
+    came from, and the owner will be right to stop trusting both.
+
+    The built page is STALE BY CONSTRUCTION: it is what build_site last
+    wrote, so an edit made here does not appear in it until the next build.
+    `built` carries that timestamp so the screen can say so out loud rather
+    than letting last week's render read as live.
+    """
+    import brand as _brand
+    import page_reviews
+    c = next((x for x in companies if x.get("id") == cid), None)
+    if not c:
+        return {"error": "company not found"}
+    news = read("news.json", {})
+    store = read("agent_proposals.json", {})
+    rows = store.values() if isinstance(store, dict) else []
+    rival_pending = {v.get("id") for v in rows
+                     if isinstance(v, dict) and v.get("kind") == "rival"
+                     and v.get("status") == "pending"}
+    man = read("manual.json", {})
+    captured = {x.get("company_id") for x in (man.get("postings") or [])
+                if isinstance(x, dict) and x.get("company_id")}
+    jobs = {o.get("id"): o for o in board.get("organizations", [])}
+
+    # EVERY PENDING PROPOSAL ABOUT THIS COMPANY, carrying its store key, so
+    # the screen can rule it through proposal_rulings rather than editing the
+    # field behind the door's back.
+    pending = []
+    for k, v in (store.items() if isinstance(store, dict) else []):
+        if not isinstance(v, dict) or v.get("id") != cid:
+            continue
+        if v.get("status") != "pending":
+            continue
+        pending.append({"key": k, "kind": v.get("kind"),
+                        "confidence": v.get("confidence"),
+                        "why": v.get("why"), "value": v.get("value"),
+                        "field": v.get("field"),
+                        "rivals": v.get("rivals"), "add": v.get("add"),
+                        "paragraphs": v.get("paragraphs"),
+                        "verdict": v.get("verdict")})
+    pending.sort(key=lambda r: str(r.get("kind")))
+
+    page = (ROOT / "public" / "c" / f"{cid}.html")
+    rev = page_reviews.load().get(cid)
+    gaps = sweep_gaps(c, None, news, rival_pending, captured)
+    org = jobs.get(cid) or {}
+    return {
+        "company": c,
+        "gaps": gaps,
+        "pending": pending,
+        "reviewed": rev or None,
+        "stale": page_reviews.stale_for(rev, [g["gap"] for g in gaps]),
+        "open_roles": org.get("open_roles", 0) or 0,
+        "on_board": bool(org),
+        # the artifact, and when it was made
+        "built": (dt.datetime.fromtimestamp(page.stat().st_mtime)
+                  .isoformat(timespec="minutes") if page.exists() else None),
+        "preview": f"/preview/c/{cid}.html" if page.exists() else None,
+        # THE DOMAIN LIVES IN ONE PLACE. brand.json owns it; a literal here is
+        # what check_the_domain_lives_in_one_place refuses, and it refused
+        # this one.
+        "live": f"{_brand.SITE}/c/{cid}",
+    }
+
+
 def act_page_review(body: dict) -> dict:
     """Sign one page off, or take the sign-off back.
 
@@ -5654,7 +5725,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
     # token shim itself, and every button works. Then it only has to be made
     # to look like something else and clicked once. A custom header is no
     # defence against a click on our own UI; refusing to be framed is.
-    def _send(self, body: bytes, ctype: str, code: int = 200):
+    def _send(self, body: bytes, ctype: str, code: int = 200,
+              framed: bool = False):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
@@ -5665,8 +5737,28 @@ class Handler(http.server.BaseHTTPRequestHandler):
         # both, on purpose: frame-ancestors is the rule browsers still honour,
         # X-Frame-Options is what an older one reads. Nothing here is ever
         # meant to be embedded, so the answer is none rather than sameorigin.
-        self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
-        self.send_header("X-Frame-Options", "DENY")
+        #
+        # ONE EXCEPTION, AND IT IS NARROW. The approval screen frames a built
+        # company page so the owner can see what a stranger sees while ruling
+        # on it. `frame-ancestors 'none'` blocks that even same-origin, so
+        # that ONE route answers 'self' - which still refuses every other
+        # origin, and is the whole reason this is a parameter rather than a
+        # relaxation of the default.
+        #
+        # AND IT DOES NOT ALSO SEND A CSP `sandbox` DIRECTIVE, which the first
+        # version did. That directive gives the document an OPAQUE origin, and
+        # `frame-ancestors 'self'` is then evaluated against an origin that is
+        # no longer the admin's - so the page refused its own parent and the
+        # iframe came back ERR_BLOCKED_BY_CLIENT, blank, with nothing in the
+        # console to say why. The containment lives on the iframe's own
+        # `sandbox=""` attribute instead: same no-allowances sandbox, set by
+        # the document doing the framing, with no effect on origin.
+        if framed:
+            self.send_header("Content-Security-Policy", "frame-ancestors 'self'")
+            self.send_header("X-Frame-Options", "SAMEORIGIN")
+        else:
+            self.send_header("Content-Security-Policy", "frame-ancestors 'none'")
+            self.send_header("X-Frame-Options", "DENY")
         self.end_headers()
         self.wfile.write(body)
 
@@ -5713,6 +5805,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._logo(path[len("/assets/logos/"):])
         if path.startswith("/assets/mascot/"):
             return self._mascot(path[len("/assets/mascot/"):])
+        if path.startswith("/preview/c/"):
+            return self._company_page(path[len("/preview/c/"):])
         return self._json({"error": "not found"}, 404)
 
     # Logos are the one static directory the admin serves. Serving ROOT is what
@@ -5735,6 +5829,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not kind:
             return self._json({"error": "not found"}, 404)
         return self._send(f.read_bytes(), kind)
+
+    def _company_page(self, name: str):
+        """A built company page, for the approval screen's iframe only.
+
+        WHAT A STRANGER SEES, which is the point: this is the artifact
+        build_site wrote, not a second renderer that can drift from it. So it
+        is also STALE BY CONSTRUCTION - it shows the last build, not the edit
+        made ten seconds ago. The screen says so and prints the build time
+        rather than letting a stale page read as a live one.
+
+        Same resolve-and-contain check as _logo, and .html only: serving ROOT
+        is what once handed out /.git/config, and the fix there was to prove
+        the parent rather than trust the string.
+        """
+        root = (ROOT / "public" / "c").resolve()
+        try:
+            f = (root / name).resolve()
+        except (OSError, ValueError):
+            return self._json({"error": "not found"}, 404)
+        if root not in f.parents or not f.is_file() or f.suffix.lower() != ".html":
+            return self._json({"error": "not found"}, 404)
+        return self._send(f.read_bytes(), "text/html; charset=utf-8",
+                          framed=True)
 
     def _logo(self, name: str):
         root = (ROOT / "assets" / "logos").resolve()
@@ -5841,6 +5958,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 # lever there is, and it is invisible unless somebody counts.
                 "unblocks": _unblocks(name, companies, board),
             })
+        if path == "/api/page":
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            cid = (qs.get("id") or [""])[0]
+            if not cid:
+                return self._json({"error": "which company?"})
+            return self._json(page_detail(read_companies(),
+                                          read("board.json", {}), cid))
         if path == "/api/sweep":
             # ONE CATEGORY AT A TIME, by the owner's choice: a sweep is a
             # reading job and 77 categories of rows at once is the queue

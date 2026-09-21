@@ -67,6 +67,23 @@
   .item{border:1px solid var(--line);border-radius:0;padding:13px 15px;margin-bottom:10px}
   .item h3{margin:0;font-size:14.5px;font-weight:600}
   .kv{color:var(--dim);font-size:12.5px;margin:4px 0 0}
+/* ---- the approval screen -------------------------------------------------
+   Two panes: the built page on the left, the record that produced it on the
+   right. One column under 1000px - the admin is used on a laptop, and a
+   380px-wide iframe of a company page is not worth a column. */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+         gap: 16px; margin-top: 12px; align-items: start; }
+@media (max-width: 1000px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.pane { min-width: 0; }
+/* The iframe is a foreign document by intent - a border and a ground make it
+   read as a quotation of the site rather than as part of this page. */
+.copreview { width: 100%; height: 620px; border: 1px solid var(--line);
+             background: var(--bg); display: block; }
+.fld { margin: 8px 0; }
+.fld label { display: block; margin-bottom: 3px; }
+.fld .txt { width: 100%; }
+.fld textarea.txt { min-height: 54px; resize: vertical; font: inherit; }
+
   .chip{font-size:11px;padding:2px 8px;border-radius:0;background:var(--chip);
     color:var(--dim);white-space:nowrap;display:inline-block;margin-right:5px}
   .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:11px}
@@ -741,6 +758,9 @@ async function showSweep(cat, sec) {
     }
 
     const acts = el('div', 'row');
+    const open = el('button', 'act go', 'Open');
+    open.onclick = () => showPage(it.id);
+    acts.appendChild(open);
     const page = el('a', null, 'their page');
     page.href = 'https://sledjobs.com/c/' + encodeURIComponent(it.id);
     page.target = '_blank'; page.rel = 'noopener';
@@ -1121,6 +1141,207 @@ async function showStart() {
    deciding when a reward opened. It now reads the condition its own
    description always claimed: no company a visitor can see is filed in a
    bucket its record contradicts. */
+/* THE APPROVAL SCREEN. One company, everything needed to finish it, and the
+   page a stranger actually gets sitting beside the record that produced it.
+
+   THE IFRAME IS THE BUILT ARTIFACT, NOT A SECOND RENDERER. It is what
+   build_site wrote, which is the only thing that cannot drift from what
+   ships - and it is therefore STALE: an edit made here does not reach it
+   until the next build. The header says so and prints the build time, rather
+   than letting last week's render read as live.
+
+   EVERY FIELD LANDS ON BLUR, as its own journalled write, so nothing is lost
+   to a closed tab. Approve then means what Page sweep's sign-off has always
+   meant: a person read this page.
+
+   FIELDS WITH THEIR OWN DOOR ARE RULED, NOT TYPED. A competitor set, a
+   category and a founding year each have a queue that owns them, because a
+   wrong one is invisible once published. Their pending proposals are shown
+   here and accepted or rejected through proposal_rulings - the same door,
+   reached from one screen instead of four. */
+let PAGE_ID = null;
+
+async function showPage(id) {
+  PAGE_ID = id;
+  TAB = '__page';
+  beltOff();
+  const v = $('#view'); v.innerHTML = '';
+  const r = await api('/api/page?id=' + encodeURIComponent(id));
+  if (r.error) { v.appendChild(el('p', 'empty', r.error)); return; }
+  const c = r.company || {};
+
+  const back = el('button', null, '← back to the sweep');
+  back.onclick = () => { PAGE_ID = null; showSweep(SWEEP_CAT, SWEEP_SEC); };
+  v.appendChild(back);
+
+  const head = el('h2', null, c.name || id);
+  head.appendChild(el('span', 'kv', '  ' + (c.sector || '?') + ' / ' + (c.category || '?')));
+  v.appendChild(head);
+  v.appendChild(el('p', 'kv', r.open_roles + ' open role(s) · '
+    + (r.gaps.length ? r.gaps.length + ' gap(s) outstanding' : 'nothing outstanding')
+    + (r.reviewed ? ' · signed off ' + r.reviewed.on + ' by ' + r.reviewed.by
+                  : ' · not signed off')));
+
+  const split = el('div', 'split');
+  const left = el('div', 'pane'); const right = el('div', 'pane');
+  split.appendChild(left); split.appendChild(right);
+
+  /* ---- left: what a stranger sees ---- */
+  if (r.preview) {
+    left.appendChild(el('p', 'kv', 'The page as last BUILT — ' + r.built
+      + '. Edits on the right appear here after the next build, not now.'));
+    const fr = document.createElement('iframe');
+    /* FETCHED AND INJECTED, NOT POINTED AT. `fr.src = r.preview` is the
+       obvious version and it came back blank: the request was refused
+       ERR_BLOCKED_BY_CLIENT as a FRAME while the identical URL fetched 200
+       with 35,697 bytes from the same page. Something between us and the
+       socket objects to framing that address, and nothing in the console
+       says what - so this stops arguing with it and hands the bytes over
+       directly.
+
+       It is also the better containment. srcdoc with sandbox="" gives the
+       document an opaque origin BY CONSTRUCTION rather than by a header, so
+       there is no policy to get wrong. The built page is self-contained for
+       this purpose: its stylesheet is inline (the static pages must stand
+       alone - check_the_static_company_page_stands_alone), its font and logo
+       are absolute URLs, and its only relative refs are links a sandboxed
+       frame cannot follow anyway. */
+    fr.setAttribute('sandbox', '');
+    fr.className = 'copreview';
+    left.appendChild(fr);
+    fetch(r.preview).then(res => res.ok ? res.text() : null).then(html => {
+      if (html) fr.srcdoc = html;
+      else left.appendChild(el('p', 'empty', 'The built page could not be read.'));
+    }).catch(() => left.appendChild(el('p', 'empty',
+      'The built page could not be read.')));
+    const live = el('a', null, 'open the live page ↗');
+    live.href = r.live; live.target = '_blank'; live.rel = 'noopener';
+    left.appendChild(live);
+  } else {
+    left.appendChild(el('p', 'empty', 'No built page for this company yet. '
+      + 'build_site writes one for every company on the board; if this is new, '
+      + 'it appears after the next build.'));
+  }
+
+  /* ---- right: the record, editable, and the doors ---- */
+  right.appendChild(el('h3', null, 'What makes it work'));
+  if (r.gaps.length) {
+    const g = el('div', 'row');
+    r.gaps.forEach(x => {
+      const chip = el('span', 'chip', x.gap);
+      chip.title = x.what || '';
+      g.appendChild(chip);
+    });
+    right.appendChild(g);
+  }
+
+  const FIELDS = [
+    ['website', 'Website', 'https://…'],
+    ['description', 'Description', 'one line: what they sell + to whom'],
+    ['location', 'HQ', 'City, ST'],
+    ['year_founded', 'Year founded', 'a whole year, or leave blank'],
+    ['vendor_type', 'What they sell', 'GovTech Product, Equipment / Components…'],
+  ];
+  FIELDS.forEach(([key, label, ph]) => {
+    const wrap = el('div', 'fld');
+    wrap.appendChild(el('label', 'kv', label));
+    const inp = el(key === 'description' ? 'textarea' : 'input', 'txt');
+    if (inp.tagName === 'INPUT') inp.type = 'text';
+    inp.placeholder = ph;
+    inp.value = c[key] == null ? '' : String(c[key]);
+    const was = inp.value;
+    const said = el('span', 'kv', '');
+    /* ON BLUR, ONE FIELD, ONE JOURNALLED WRITE. A patch that changes nothing
+       is not sent - act_patch would refuse it anyway, and a toast saying
+       "updated" for an untouched record is the silent no-op this admin has
+       already been bitten by once. */
+    inp.onblur = async () => {
+      if (inp.value === was) return;
+      said.textContent = 'saving…';
+      const fields = {}; fields[key] = inp.value.trim();
+      const res = await api('/api/patch', {id: id, fields: fields, call: CALL});
+      said.textContent = res.error ? '' : 'saved';
+      if (res.error) { toast(res.error, true); inp.value = was; }
+      else setTimeout(() => showPage(id), 400);
+    };
+    wrap.appendChild(inp); wrap.appendChild(said);
+    right.appendChild(wrap);
+  });
+
+  /* job board: shown, never typed here - Detect board owns it */
+  const ats = c.ats || {};
+  const board = el('div', 'fld');
+  board.appendChild(el('label', 'kv', 'Job board (monitored)'));
+  board.appendChild(el('div', null,
+    ats.type && ats.type !== 'unknown'
+      ? ats.type + '  ' + (ats.ref || '')
+      : 'no board on file — the No board found queue owns this'));
+  if (c.hiring) {
+    board.appendChild(el('div', 'kv', 'hiring: ' + (c.hiring.status || '?')
+      + (c.hiring.note ? ' · ' + c.hiring.note : '')));
+  }
+  right.appendChild(board);
+
+  /* ---- the doors ---- */
+  right.appendChild(el('h3', null, 'Waiting on your ruling'));
+  if (!r.pending.length) {
+    right.appendChild(el('p', 'kv', 'Nothing proposed for this company. '
+      + 'A gap with no proposal behind it is research, not a decision.'));
+  }
+  r.pending.forEach(p => {
+    const card = el('div', 'item');
+    const t = el('div');
+    t.appendChild(el('b', null, p.kind));
+    if (p.confidence) t.appendChild(el('span', 'chip', p.confidence));
+    card.appendChild(t);
+    if (p.why) card.appendChild(el('div', 'kv', p.why));
+    if (p.field) card.appendChild(el('div', null, p.field + ': '
+      + (p.value == null ? '' : String(p.value))));
+    (p.rivals || []).forEach(x => card.appendChild(el('div', 'kv',
+      '– ' + (x.id || x.name || '') + (x.why ? '  ' + x.why : ''))));
+    (p.add || []).forEach(x => card.appendChild(el('div', 'kv',
+      '+ ' + (x.name || '') + (x.why ? '  ' + x.why : ''))));
+    const acts = el('div', 'row');
+    [['Accept', true], ['Reject', false]].forEach(([label, ok]) => {
+      const b = el('button', ok ? 'act go' : 'act', label);
+      b.onclick = async () => {
+        const why = prompt(label + ' — why? (goes in the journal)') || '';
+        if (!ok && !why) return toast('a rejection needs a reason', true);
+        b.disabled = true;
+        const res = await api('/api/proposal-ruling',
+          {key: p.key, accept: ok, why: why, call: CALL});
+        b.disabled = false;
+        toast(res.error || res.message);
+        if (!res.error) showPage(id);
+      };
+      acts.appendChild(b);
+    });
+    card.appendChild(acts);
+    right.appendChild(card);
+  });
+
+  /* ---- the sign-off ---- */
+  const sign = el('button', 'act go', r.reviewed ? 'Re-open this page' : 'Approve this page');
+  sign.onclick = async () => {
+    sign.disabled = true;
+    const body = {company_id: id, call: CALL};
+    if (r.reviewed) body.clear = true;
+    else body.note = prompt('Anything worth noting? (optional)') || '';
+    const res = await api('/api/page-review', body);
+    sign.disabled = false;
+    toast(res.error || res.message);
+    if (!res.error) showPage(id);
+  };
+  right.appendChild(el('h3', null, 'Final approval'));
+  right.appendChild(el('p', 'kv', r.gaps.length
+    ? 'Approving with ' + r.gaps.length + ' gap(s) open is allowed — it '
+      + 'records that you read the page, not that nothing is missing.'
+    : 'Nothing outstanding on this page.'));
+  right.appendChild(sign);
+
+  v.appendChild(split);
+}
+
 function unlockCard(u) {
   const n = el('div', 'unlock' + (u.open ? ' open' : ''));
   n.appendChild(el('div', 'uname', u.name));
