@@ -1,41 +1,118 @@
 {
-  "date": "2026-09-21",
-  "previous": "2026-09-20",
+  "date": "2026-09-22",
+  "previous": "2026-09-21",
   "changes": [
     {
-      "company": "Euna Solutions",
-      "id": "euna-solutions",
+      "company": "Technosylva",
+      "id": "technosylva",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Acusensus",
-      "id": "acusensus",
+      "company": "Prepared",
+      "id": "prepared",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Euna Solutions",
+      "id": "euna-solutions",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Solutions Consultant only"
+    },
+    {
+      "company": "GovInvest (TrueComp)",
+      "id": "govinvest",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "Edulog",
+      "id": "edulog",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Just Appraised",
+      "id": "just-appraised",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive"
+    },
+    {
+      "company": "EagleView",
+      "id": "eagleview",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "BlackRainbow Inc",
+      "id": "blackrainbow-inc",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Operations & GTM Systems Man only"
+    },
+    {
+      "company": "GameChanger",
+      "id": "gamechanger",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Transoft Solutions",
-      "id": "transoft-solutions",
+      "company": "Red Rover",
+      "id": "red-rover",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive (Remote Worker - N/)"
+    },
+    {
+      "company": "AirDNA",
+      "id": "airdna",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Manager (Sales)"
+      "note": "Account Manager (Barcelona)"
     },
     {
-      "company": "Fortem Technologies",
-      "id": "fortem-technologies",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Heron Power",
-      "id": "heron-power",
-      "from": "Unknown",
+      "company": "Corporater",
+      "id": "corporater",
+      "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Head of Sales only"
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Droplet",
+      "id": "droplet",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://boards-api.greenhou"
+    },
+    {
+      "company": "CHESS Health",
+      "id": "chess-health",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Senior Customer Success Consultant only"
+    },
+    {
+      "company": "BibliU",
+      "id": "bibliu",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Follett Software",
+      "id": "follett-software",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Inside Sales Account Executive only"
     }
   ]
 }
