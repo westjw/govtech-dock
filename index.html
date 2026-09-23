@@ -3473,6 +3473,22 @@ function currentSavedSearch(){
    sync endpoint learns the field this can move; until then it does not
    pretend to travel. */
 const APPLIED_KEY="solesource.applied.v1";
+/* SHOW OR HIDE THE ROLES THE BOARD STOPPED CARRYING. A display preference and
+   nothing more - BOTH settings keep every row. The one thing this must never
+   become is a delete: most of these carry "applied", and this list is the only
+   record the site holds that somebody sent an application.
+
+   Its own key rather than a field on a saved row, because it is a preference
+   about the VIEW. The sync endpoint accepts a fixed list of row fields, so a
+   flag put on a row would either be dropped in sync or travel as if it were a
+   fact about that role. */
+const SHOWGONE_KEY="solesource.saved.showgone.v1";
+function showGone(){
+  try{ return localStorage.getItem(SHOWGONE_KEY)!=="0" }catch{ return true }
+}
+function setShowGone(on){
+  try{ localStorage.setItem(SHOWGONE_KEY,on?"1":"0") }catch{}
+}
 function appliedAll(){
   try{return JSON.parse(localStorage.getItem(APPLIED_KEY)||"{}")}catch{return {}}
 }
@@ -3636,11 +3652,22 @@ function savedView(){
     <div class="sechead"><h3>Saved companies</h3>
       <div class="n">${cos.length} ${cos.length===1?"company":"companies"}</div></div>
     <div class="list" id="s-cos"></div>`;
+  /* THE COUNT IS PRINTED WHETHER OR NOT THE LIST IS. A section that vanishes
+     along with its number is a silent disappearance, and somebody who tidied
+     this away last Tuesday would have no way to know three applications are
+     sitting behind it. Hidden still says how many, and the button says how to
+     bring them back. */
+  const seeGone=showGone();
   const goneHTML=!gonelist.length?"":`
     <div class="sechead"><h3>No longer listed</h3>
       <div class="n">${gonelist.length} ${gonelist.length===1?"role":"roles"} the
-        board stopped carrying &middot; kept because you may have applied</div></div>
-    <div class="list" id="s-gone"></div>`;
+        board stopped carrying &middot; kept because you may have applied
+        <button class="pill" type="button" id="s-togglegone"
+          aria-pressed="${seeGone?"true":"false"}"
+          title="${seeGone?"Tidy these out of the way":"Show them again"}"
+          ><span class="v${seeGone?" on":""}">${seeGone?"Showing":"Hidden"}</span
+          ></button></div></div>`
+    + (seeGone?`<div class="list" id="s-gone"></div>`:"");
   $("#view").innerHTML=searchHTML+cosHTML
     + `<div class="sechead"><h3>Saved roles</h3>
       <div class="n">${open.length} ${linked?"kept with your subscription":"kept on this device"}${
@@ -3702,6 +3729,8 @@ function savedView(){
   };
   const oh=$("#s-open"); if(oh)open.forEach(p=>drawRole(p,oh));
   const gh=$("#s-gone"); if(gh)gonelist.forEach(p=>drawRole(p,gh));
+  const tg=$("#s-togglegone");
+  if(tg)tg.onclick=()=>{ setShowGone(!showGone()); savedView(); };
 }
 function drawJobs(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
