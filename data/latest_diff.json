@@ -1,118 +1,69 @@
 {
-  "date": "2026-09-22",
-  "previous": "2026-09-21",
+  "date": "2026-09-23",
+  "previous": "2026-09-22",
   "changes": [
     {
       "company": "Technosylva",
       "id": "technosylva",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "Prepared",
-      "id": "prepared",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Euna Solutions",
-      "id": "euna-solutions",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Solutions Consultant only"
+      "note": "Sr. Manager, FP&A & Sales Operatio only"
     },
     {
-      "company": "GovInvest (TrueComp)",
-      "id": "govinvest",
+      "company": "TeamSnap",
+      "id": "teamsnap",
       "from": "None found",
       "to": "Yes",
-      "note": "Account Executive"
+      "note": "Account Manager, Large Market (Remote)"
     },
     {
-      "company": "Edulog",
-      "id": "edulog",
-      "from": "None found",
+      "company": "Cubic Transportation Systems",
+      "id": "cubic-transportation-systems",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 520 for https://cubic.wd1.myworkday"
+    },
+    {
+      "company": "IPS Group",
+      "id": "ips-group",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Beep",
+      "id": "beep",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Just Appraised",
-      "id": "just-appraised",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive"
-    },
-    {
-      "company": "EagleView",
-      "id": "eagleview",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "BlackRainbow Inc",
-      "id": "blackrainbow-inc",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Operations & GTM Systems Man only"
-    },
-    {
-      "company": "GameChanger",
-      "id": "gamechanger",
+      "company": "ClassLink",
+      "id": "classlink",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Red Rover",
-      "id": "red-rover",
+      "company": "SiFi Networks",
+      "id": "sifi-networks",
       "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive (Remote Worker - N/)"
-    },
-    {
-      "company": "AirDNA",
-      "id": "airdna",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Manager (Barcelona)"
-    },
-    {
-      "company": "Corporater",
-      "id": "corporater",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "to": "Unknown",
+      "note": "HTTP 404 for https://sifinetworks.com/co"
     },
     {
       "company": "Droplet",
       "id": "droplet",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://boards-api.greenhou"
-    },
-    {
-      "company": "CHESS Health",
-      "id": "chess-health",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Senior Customer Success Consultant only"
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "BibliU",
       "id": "bibliu",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "Follett Software",
-      "id": "follett-software",
-      "from": "None found",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Inside Sales Account Executive only"
+      "note": "Sales Support - Keyholder only"
     }
   ]
 }
