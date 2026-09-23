@@ -3568,9 +3568,18 @@ function savedView(){
      to look up when they call - but the ones still to do belong at the top,
      because that is the only part of this list that is a worklist. */
   const ap=appliedAll();
-  const all=Object.values(savedAll()).sort((a,b)=>
+  const every=Object.values(savedAll()).sort((a,b)=>
     (!!ap[a.id]-!!ap[b.id]) || (b.saved_on||"").localeCompare(a.saved_on||""));
-  const nap=all.filter(p=>!ap[p.id]).length;
+  /* A COMPANY IS NOT A ROLE, and saying so is a correction not a layout.
+     toggleSaveCompany stores companies in this same map keyed "co:<id>" -
+     its own comment says "so the two never collide in one list" - and then
+     this view rendered every entry through the role row. A co: id is never
+     in D.postings, so `gone` was true for all of them and every saved
+     company carried "no longer on the board - it may have been filled".
+     A company cannot be filled. It was a false statement about somebody
+     else's company, printed on the reader's own list. */
+  const cos=every.filter(p=>p.kind==="company");
+  const roles=every.filter(p=>p.kind!=="company");
   /* A Map, not a Set: pay is read off the LIVE posting rather than the saved
      snapshot. The snapshot is a fixed list of fields the sync endpoint
      accepts, and comp is not one of them - a role saved here and opened on
@@ -3578,6 +3587,16 @@ function savedView(){
      the live row instead means the figure is whatever the board says today,
      and a role that has come down simply has none. */
   const live=new Map(D.postings.map(p=>[p.id,p]));
+  /* OFF THE WORKLIST, NOT OUT OF THE RECORD. A role the board stopped
+     listing is no longer something to do, so it leaves the list you work
+     from - but most of these carry "applied", and deleting them would erase
+     the only record this site holds of an application somebody sent. They
+     move to their own section at the bottom, where they are still there when
+     the phone rings. */
+  const open=roles.filter(p=>live.has(p.id));
+  const gonelist=roles.filter(p=>!live.has(p.id));
+  const all=roles;
+  const nap=open.filter(p=>!ap[p.id]).length;
   const linked=!!syncToken();
   const bar=linked
     ? `<div class="syncbar">${
@@ -3613,20 +3632,49 @@ function savedView(){
           title="Forget this search">forget</button>
       </div>`).join("")}</div>`;
 
-  $("#view").innerHTML=searchHTML+`<div class="sechead"><h3>Saved roles</h3>
-      <div class="n">${all.length} ${linked?"kept with your subscription":"kept on this device"}${
-        all.length&&nap<all.length?` &middot; ${nap} still to apply to`:""}</div></div>`
+  const cosHTML=!cos.length?"":`
+    <div class="sechead"><h3>Saved companies</h3>
+      <div class="n">${cos.length} ${cos.length===1?"company":"companies"}</div></div>
+    <div class="list" id="s-cos"></div>`;
+  const goneHTML=!gonelist.length?"":`
+    <div class="sechead"><h3>No longer listed</h3>
+      <div class="n">${gonelist.length} ${gonelist.length===1?"role":"roles"} the
+        board stopped carrying &middot; kept because you may have applied</div></div>
+    <div class="list" id="s-gone"></div>`;
+  $("#view").innerHTML=searchHTML+cosHTML
+    + `<div class="sechead"><h3>Saved roles</h3>
+      <div class="n">${open.length} ${linked?"kept with your subscription":"kept on this device"}${
+        open.length&&nap<open.length?` &middot; ${nap} still to apply to`:""}</div></div>`
     + bar + exportHTML
-    + (all.length?`<div class="list" id="s-list"></div>`
-       :`<div class="empty">Nothing saved yet. Use the bookmark on any role and it
-          waits here — on this browser, without an account.</div>`);
+    + (open.length?`<div class="list" id="s-open"></div>`
+       :`<div class="empty">${roles.length||cos.length
+          ?"Nothing here is still on the board."
+          :`Nothing saved yet. Use the bookmark on any role and it
+            waits here — on this browser, without an account.`}</div>`)
+    + goneHTML;
   $("#view").querySelectorAll(".applybtn[data-qs]").forEach(b=>{
     b.onclick=()=>dropSearch(b.dataset.qs);
   });
   const dl=$("#dlsaved"); if(dl)dl.onclick=downloadSaved;
-  if(!all.length)return;
-  const host=$("#s-list");
-  all.forEach(p=>{
+
+  /* A COMPANY ROW. No applied button - you do not apply to a company - and
+     no board chip, because the board never listed it in the first place. */
+  const cohost=$("#s-cos");
+  if(cohost)cos.forEach(o=>{
+    const row=document.createElement("div");
+    row.className="row clk";
+    row.onclick=()=>co(o.company_id);
+    row.innerHTML=`${tileHTML(o.company,o.company_id,"tile")}
+      <div class="main"><div class="t">${esc(o.title||o.company||"")}</div>
+        <div class="m">${esc(o.sector||"")}${
+          o.category?" / "+esc(o.category):""}</div></div>
+      <div class="when">saved ${esc(o.saved_on||"")}</div>`;
+    row.appendChild(saveButton(o));
+    cohost.appendChild(row);
+  });
+
+  if(!roles.length)return;
+  const drawRole=(p,host)=>{
     const [bg,fg]=tile(p.company);
     const gone=!live.has(p.id);
     const row=document.createElement("div");
@@ -3651,7 +3699,9 @@ function savedView(){
     const ab=row.querySelector(".applybtn");
     if(ab)ab.onclick=e=>{e.stopPropagation();markApplied(p.id,!appliedOn(p.id));savedView()};
     host.appendChild(row);
-  });
+  };
+  const oh=$("#s-open"); if(oh)open.forEach(p=>drawRole(p,oh));
+  const gh=$("#s-gone"); if(gh)gonelist.forEach(p=>drawRole(p,gh));
 }
 function drawJobs(){
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
