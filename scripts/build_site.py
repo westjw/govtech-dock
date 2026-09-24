@@ -79,9 +79,69 @@ a{{color:#0B57C4}}</style></head><body>
   who.textContent = me.handle ? "Signed in as " + me.handle + "." : "Signed in, but not on the list yet.";
   if (roles.includes("hunter") || roles.includes("owner")) {{
     body.innerHTML = '<div class="in"><b>You are in the beta.</b> Job Hunter reads the roles on this board, scores them against what you have told it about yourself, and drafts nothing on its own: every application is yours to send. The tool runs on the desk today; this page is where the browser version will live, and you will hear from the owner when it does.</div>';
-  }} else {{
-    body.innerHTML = '<div class="in">The beta is closed for now. The owner grants access from the Users board; ask and this page will change.</div>';
+    return;
   }}
+  /* A CODE, FOR SOMEBODY THE OWNER HAS MET. Access plus the Users board is
+     how the owner and anyone he has enrolled get in; a code is how everyone
+     else does, without being added to an Access policy first.
+
+     IT GATES THIS PAGE AND NOTHING ELSE. Nobody's resume, fact bank or
+     employment history sits behind it - job-hunter's server binds 127.0.0.1
+     deliberately - so the worst a forged localStorage flag buys is a look at
+     this paragraph. The day there is data behind it, this is NOT what should
+     be standing in front. */
+  const KEY = "sledjobs.beta.v1";
+  let held = null;
+  try {{ held = JSON.parse(localStorage.getItem(KEY) || "null"); }} catch (e) {{}}
+  const inBeta = (rec) => {{
+    body.innerHTML = '<div class="in"><b>You are on the beta list.</b> '
+      + 'Redeemed ' + (rec.on || "") + '.<br><br>' + esc(rec.consent_text || "")
+      + '</div>';
+  }};
+  const esc = (t) => String(t).replace(/[&<>"]/g, c =>
+    ({{ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }}[c]));
+  if (held && held.code) return inBeta(held);
+
+  body.innerHTML =
+    '<div class="in">The beta is closed. If the owner gave you a code, put it in.</div>'
+    + '<p><label for="bc">Beta code</label><br>'
+    + '<input id="bc" placeholder="JH-XXXX-XXXX" autocomplete="off" spellcheck="false"'
+    + ' style="font:inherit;padding:8px;width:220px;text-transform:uppercase">'
+    + ' <button id="bgo" style="font:inherit;padding:8px 14px">Redeem</button></p>'
+    + '<p class="kv" id="bmsg"></p>';
+  const go = document.getElementById("bgo"), inp = document.getElementById("bc"),
+        msg = document.getElementById("bmsg");
+  go.onclick = async () => {{
+    const code = (inp.value || "").trim().toUpperCase();
+    if (!code) return;
+    go.disabled = true; msg.textContent = "Checking\u2026";
+    let r = {{}};
+    try {{
+      const res = await fetch("/api/beta", {{ method: "POST",
+        headers: {{ "content-type": "application/json" }},
+        body: JSON.stringify({{ code }}) }});
+      r = await res.json();
+    }} catch (e) {{ r = {{ error: "unreachable" }}; }}
+    go.disabled = false;
+    if (r.ok) {{
+      const rec = {{ code, on: r.on, consent_text: (r.consent || {{}}).text }};
+      try {{ localStorage.setItem(KEY, JSON.stringify(rec)); }} catch (e) {{}}
+      return inBeta(rec);
+    }}
+    /* EVERY REFUSAL SAYS WHICH ONE IT IS. "That did not work" makes somebody
+       retype a code that is spent, and makes a real typo indistinguishable
+       from a code the owner revoked. */
+    msg.textContent =
+      r.why === "already_redeemed" ? "That code has already been used"
+        + (r.on ? " (on " + r.on + ")" : "") + ". Codes are one per person \u2014 "
+        + "ask the owner for another."
+      : r.why === "not_a_code" ? "That is not a code we minted, or it was revoked."
+      : r.error === "bad_code" ? "That does not look like a code. They read JH-XXXX-XXXX."
+      : r.error === "too_many" ? "Too many tries today. Try again tomorrow."
+      : r.error === "not_configured" ? "Redeeming is not switched on yet."
+      : "Could not reach the server. Nothing was sent.";
+  }};
+  inp.addEventListener("keydown", e => {{ if (e.key === "Enter") go.click(); }});
 }})();
 </script></body></html>"""
 

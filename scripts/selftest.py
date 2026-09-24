@@ -4594,6 +4594,160 @@ def check_the_public_board_drops_only_what_the_page_never_reads() -> int:
     return errors
 
 
+def check_a_beta_code_is_one_person_and_records_consent() -> int:
+    """The invitation to the Job Hunter beta, and the consent record under it.
+
+    A code is a BEARER token: whoever holds the string holds the code,
+    including anyone it was forwarded to. That is acceptable for handing
+    something to twelve people the owner has met, and it is NOT auth - so the
+    thing that has to hold is the bookkeeping around it.
+
+    ONE CODE, ONE PERSON. A shared code cannot be revoked for one holder, and
+    on the day somebody forwards it there is no way to tell whose it was. So a
+    second redemption is REFUSED and told why, rather than quietly let in
+    beside the first.
+
+    A REVOKED CODE IS NOT PUBLISHED. The log is append-only and replayed;
+    revocation is an event, not a deletion, so the reason survives. What
+    reaches KV is the live set only.
+
+    THE REDEMPTION CARRIES THE WORDS THAT WERE AGREED TO, not a pointer to a
+    page that has since been edited - which is a record of nothing.
+    SPEC-jobhunter.md (2026-09-18) asks for a consent record, a delete path
+    and a retention period before a real person is onboarded; this is the
+    first, and the text it stores is what makes it one.
+
+    AND NO ADDRESS. check_no_addresses refuses one in anything tracked here,
+    and a beta list is not a reason to start a contact database.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import beta_codes as bc
+    errors = 0
+
+    # --- the shape. I, L, O and U are OUT because a code is read off a screen
+    # and typed by somebody else, and those four are what a person gets wrong.
+    for _ in range(200):
+        c = bc.mint_one()
+        if not re.fullmatch(r"JH-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}", c):
+            errors += fail(f"minted a code the endpoint will refuse: {c!r}")
+            break
+        if set("ILOU") & set(c[3:]):
+            errors += fail(f"minted {c!r}, which carries a character this "
+                           f"alphabet leaves out precisely because it is "
+                           f"misread when somebody types it")
+            break
+    if len({bc.mint_one() for _ in range(300)}) < 300:
+        errors += fail("mint_one repeated a code in 300 draws; 40 bits should "
+                       "not collide, and a collision hands two people one code")
+
+    # --- the log replays: mint, then revoke, and the reason survives
+    real_log = bc.LOG
+    tmp = pathlib.Path(tempfile.mkdtemp()) / "beta_codes.jsonl"
+    try:
+        bc.LOG = tmp
+        bc.append([{"kind": "minted", "code": "JH-AAAA-BBBB", "on": "2026-09-01",
+                    "note": "a floor"},
+                   {"kind": "minted", "code": "JH-CCCC-DDDD", "on": "2026-09-02",
+                    "note": ""},
+                   {"kind": "revoked", "code": "JH-CCCC-DDDD", "on": "2026-09-03",
+                    "why": "asked to be removed"}])
+        st = bc.state()
+        if set(st) != {"JH-AAAA-BBBB", "JH-CCCC-DDDD"}:
+            errors += fail(f"the log replayed to {sorted(st)}")
+        if st.get("JH-CCCC-DDDD", {}).get("why") != "asked to be removed":
+            errors += fail("a revocation lost its reason; the log is "
+                           "append-only so that the reason survives, and a "
+                           "revoke nobody can review later is a deletion")
+
+        class FakeKV:
+            def __init__(self): self.store = {}
+            def put(self, k, v): self.store[k] = v
+        kv = FakeKV()
+        n, why = bc.push(kv, st)
+        if why:
+            errors += fail(f"push refused a good state: {why}")
+        live = kv.store.get("beta:codes") or {}
+        if "JH-CCCC-DDDD" in live:
+            errors += fail("a REVOKED code was published to KV, so revoking "
+                           "one turns nothing off")
+        if "JH-AAAA-BBBB" not in live:
+            errors += fail("a live code was not published, so the endpoint "
+                           "refuses a code the owner just handed out")
+    finally:
+        bc.LOG = real_log
+
+    # --- the endpoint, EXECUTED, because the consent text is the point
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed, so functions/api/beta.js was "
+              "NOT executed - the consent record is unverified here")
+        return errors
+    src = (ROOT / "functions" / "api" / "beta.js").read_text()
+    mail = (ROOT / "functions" / "_mail.js").resolve().as_uri()
+    src, n = re.subn(r'from\s*"\.\./_mail\.js"', f'from "{mail}"', src, count=1)
+    if n != 1:
+        return errors + fail("beta.js no longer imports json from ../_mail.js")
+    src += """
+const store = new Map();
+const env = { ALERTS: {
+  get: async k => store.has(k) ? store.get(k) : null,
+  put: async (k, v) => { store.set(k, v); },
+} };
+store.set("beta:codes", JSON.stringify({ "JH-AAAA-BBBB": { minted_on: "2026-09-01" } }));
+const post = (code) => onRequestPost({
+  request: { json: async () => ({ code }) }, env });
+const out = {};
+out.good = await (await post("jh-aaaa-bbbb ".trim())).json();
+out.twice = await (await post("JH-AAAA-BBBB")).json();
+out.unknown = await (await post("JH-ZZZZ-ZZZZ")).json();
+out.malformed = await (await post("JH-ILOU-1234")).json();
+out.stored = JSON.parse(store.get("betaredeem:JH-AAAA-BBBB") || "null");
+console.log(JSON.stringify(out));
+"""
+    with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False) as f:
+        f.write(src)
+        path = f.name
+    try:
+        import subprocess
+        r = subprocess.run(["node", "--input-type=module", "-e",
+                            pathlib.Path(path).read_text()],
+                           capture_output=True, text=True, timeout=30)
+    finally:
+        pathlib.Path(path).unlink(missing_ok=True)
+    if r.returncode:
+        tail = (r.stderr or "").strip().splitlines()
+        return errors + fail(f"beta.js threw: {tail[-1][:120] if tail else 'no output'}")
+    got = json.loads(r.stdout)
+
+    if not got["good"].get("ok"):
+        errors += fail(f"a live code was refused: {got['good']}")
+    # lowercase in, uppercase out - a code is typed by somebody reading it
+    if got["twice"].get("ok") or got["twice"].get("why") != "already_redeemed":
+        errors += fail(f"a code was redeemed twice: {got['twice']}. One code, "
+                       f"one person is the only thing that makes a revoke mean "
+                       f"something.")
+    if got["unknown"].get("ok") or got["unknown"].get("why") != "not_a_code":
+        errors += fail(f"an unminted code was not refused by name: {got['unknown']}")
+    if got["malformed"].get("error") != "bad_code":
+        errors += fail(f"a code carrying I/L/O/U was not refused: {got['malformed']}")
+
+    rec = got.get("stored") or {}
+    if not rec.get("consent_text"):
+        errors += fail("the redemption stored no consent TEXT - a record that "
+                       "points at a page which has since been edited is a "
+                       "record of nothing")
+    if not rec.get("consent_version") or not rec.get("on"):
+        errors += fail(f"the consent record is missing its version or date: {rec}")
+    if "@" in json.dumps(rec):
+        errors += fail("an address reached the beta redemption record")
+    # the words must say the thing that is actually true today
+    txt = (rec.get("consent_text") or "").lower()
+    if "not" not in txt or "deleted" not in txt:
+        errors += fail("the consent text does not say that nothing is "
+                       "processed yet and how deletion is handled, which is "
+                       "the only reason storing it is worth anything")
+    return errors
+
+
 def check_the_preview_route_serves_only_built_company_pages() -> int:
     """The approval screen frames a company page. That is a hole until it is not.
 
@@ -23679,6 +23833,7 @@ def main() -> int:
     errors += check_the_public_board_drops_only_what_the_page_never_reads()
     errors += check_a_page_sweep_stays_inside_one_sector()
     errors += check_the_preview_route_serves_only_built_company_pages()
+    errors += check_a_beta_code_is_one_person_and_records_consent()
     errors += check_a_logo_is_the_size_it_is_drawn_at()
     errors += check_a_supplier_lands_with_a_tag_read_off_its_own_words()
     errors += check_the_claim_alert_names_nobody()
