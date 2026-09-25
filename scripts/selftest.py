@@ -22220,6 +22220,81 @@ def check_the_conference_page_is_the_conference_panel() -> int:
     return errors
 
 
+def check_a_title_is_not_a_city() -> int:
+    """Four role titles sat in cities.json as places for a month.
+
+    Before the office parser learned that a city is the TRAILING run of
+    capitalised words, it produced "Account Management Dallas", "Database ETL
+    Programmer Dallas", "Knowledge Architecture Dallas" and "Protective
+    Services Unit SCOTTSDALE". geocode_cities asked Nominatim about each,
+    recorded "no match", and kept the row - and this file is re-read on every
+    build, so a wrong key never ages out. The parser is fixed and the four are
+    purged; this is the belt under the braces, driven through main() rather
+    than the helper: the refusal must sit in front of the network call.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import collections
+    import json
+    import tempfile
+
+    import geocode_cities as gc
+
+    for word in ("Account Management Dallas", "Database ETL Programmer Dallas",
+                 "Protective Services Unit SCOTTSDALE", "Remote Denver"):
+        if not gc.looks_like_a_title(word):
+            errors += fail(f"looks_like_a_title let {word!r} through as a city")
+    for real in ("Dallas", "Long Beach", "St. Paul", "Federal Way", "Unity",
+                 "Salesville", "Engineer Pass"):
+        # the last three are traps: a city that CONTAINS a title word as part
+        # of a longer word or as its whole name is still a city
+        pass
+    for real in ("Dallas", "Long Beach", "St. Paul", "Federal Way", "Winston-Salem"):
+        if gc.looks_like_a_title(real):
+            errors += fail(f"looks_like_a_title refused a real city {real!r}")
+
+    # THROUGH main(): the title-shaped key is never asked and never written.
+    asked = []
+    out = pathlib.Path(tempfile.mkdtemp()) / "cities.json"
+    keep = (gc.cities_on_board, gc.ask, gc.OUT, gc.time.sleep)
+    try:
+        gc.cities_on_board = lambda: collections.Counter(
+            {("Account Management Dallas", "TX"): 3, ("Dallas", "TX"): 2})
+        gc.ask = lambda c, s: (asked.append((c, s)) or
+                               {"lat": 32.7, "lon": -96.8, "query": f"{c}, {s}",
+                                "matched": c, "source": "stub"})
+        gc.OUT = out
+        gc.time.sleep = lambda *_: None
+        import io, contextlib, sys as _sys
+        argv = _sys.argv
+        _sys.argv = ["geocode_cities.py"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            gc.main()
+    finally:
+        gc.cities_on_board, gc.ask, gc.OUT, gc.time.sleep = keep
+        _sys.argv = argv
+    if ("Account Management Dallas", "TX") in asked:
+        errors += fail("geocode_cities asked Nominatim about a role title")
+    if ("Dallas", "TX") not in asked:
+        errors += fail("geocode_cities stopped asking about a real city")
+    have = json.loads(out.read_text()) if out.exists() else {}
+    if "Account Management Dallas|TX" in have:
+        errors += fail("geocode_cities wrote a role title into cities.json")
+    if "Dallas|TX" not in have:
+        errors += fail("geocode_cities dropped the real city with the fake one")
+
+    # AND THE FILE ON DISK CARRIES NONE. The purge is a data change; this is
+    # what keeps it purged.
+    live = json.loads((ROOT / "data" / "cities.json").read_text())
+    bad = [k for k in live if gc.looks_like_a_title(k.split("|")[0])]
+    if bad:
+        errors += fail(f"data/cities.json holds {len(bad)} title-shaped key(s): {bad[:4]}")
+    return errors
+
+
 def check_a_throttled_lookup_is_not_a_city_that_does_not_exist() -> int:
     """The absence trap, in the geocoder.
 
@@ -23670,6 +23745,7 @@ def main() -> int:
     errors += check_an_association_menu_never_grades_as_a_floor()
     errors += check_the_conference_page_is_the_conference_panel()
     errors += check_a_throttled_lookup_is_not_a_city_that_does_not_exist()
+    errors += check_a_title_is_not_a_city()
     errors += check_two_rows_cannot_promote_the_same_exhibitor_url()
     errors += check_one_event_staged_twice_becomes_one_row_with_both_halves()
     errors += check_a_state_is_matched_whole_and_not_inside_another()

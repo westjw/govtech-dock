@@ -57,12 +57,14 @@ and the eight-colour palette. Nothing may hardcode any of them.
   `functions/_brand.js`, then pointing the Pages custom domain at the new
   name, is the whole move: alert links, digest footers, the confirmation email
   and the submission form all read it from brand.json.
-- **THE SENDING ADDRESS IS DELIBERATELY STILL `alerts@solesourcejobs.com`.**
-  Resend has that domain verified with SPF and DKIM in Cloudflare DNS and has
-  never seen sledjobs.com. Moving `from_email` before the new domain is
-  verified makes every alert fail to send *while the endpoint still answers
-  200* - the silent failure this project keeps finding. It moves the day
-  Resend shows sledjobs.com verified, in brand.json and `_brand.js` together.
+- **The sending address moved to `alerts@sledjobs.com` on 2026-09-03**, the
+  day Resend showed sledjobs.com verified (SPF and DKIM in Cloudflare DNS).
+  `data/brand.json` and `functions/_brand.js` moved together and
+  `selftest::check_brand` refuses the pair disagreeing. This bullet said the
+  address was DELIBERATELY still on solesourcejobs.com for three weeks after
+  it was not; a reader following it would have reverted a live, correct
+  configuration. Keep the secret rule from that episode: never rename a
+  Pages secret in place, delete and re-add.
 - **Two strings on the site would not have followed the move**: the iCalendar
   UID and the description on every conference download had the domain typed
   into them. They read `location.hostname` now, and
@@ -205,10 +207,14 @@ rows all stay; only the counting changes.
 
 ## The admin backend
 
-`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Fourteen queues:
-boards we found, founding year, wrong bucket, vendor scope, scope review,
-submissions, duplicates, missing websites, no board found, blocked boards,
-wrong placement, unclassified roles, acquisitions, website review.
+`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Twenty queues, and
+`LABEL` in admin.py is the list (this paragraph said fourteen for a month):
+Users, Write-ups to check, Agent proposals, Warm leads, Boards we found,
+Founding year, Wrong bucket, Vendor scope, Scope review, Submissions,
+Duplicates, Missing websites, No board found, Blocked boards, Wrong placement,
+Unclassified roles, Acquisitions, Website review, Conference dates, Conference
+floors. Every key in `QUEUES` has a `RENDER.<key>` in admin.html and
+`check_the_two_applier_lists_agree` keeps the two sides honest.
 
 The two newest are both about boards that may not belong to the company they
 are filed under, and they are different questions. **Boards we found** holds a
@@ -426,9 +432,13 @@ disagree then cannot be compared. Every agent must be able to answer *unsure*,
 and intake refuses a proposal claiming high confidence without evidence,
 because that is the shape a guess takes when a model is trying to be helpful.
 
-Kinds on the spine, 2026-09-02: `bucket`, `read`, `board`, `rival` (competitors,
-built and trialled on Police), and `profile`, `news`, `claim` declared ahead of
-their appliers so the queue can show them. **The other end of the spine exists
+Kinds on the spine, 2026-09-25: twelve in `agents.KINDS` - `bucket`, `read`,
+`card`, `board`, `rival`, `profile`, `news`, `claim`, `family`, `fact`, `where`,
+`buyer`. Eleven have an applier in `proposal_rulings.rule()`; `news` is the one
+declared ahead of a producer, an applier and a renderer, deliberately, so the
+queue can show it the day it exists (`NO_APPLIER = ("news",)`). `card`,
+`family` and `where` render from raw fields in the proposals tab rather than
+from a drawn card, which is why the one pending `card` reads as JSON. **The other end of the spine exists
 now**: `scripts/proposal_rulings.py` is the one applier for every kind (the
 admin action, the CLI and the web admin's apply step all call it), and the
 admin's Agent proposals tab renders every kind from one table - it had a tab, a
@@ -453,8 +463,8 @@ have not decided" and we have. The old name is kept as an alias.
 Three things changed in `build_board`, and the second is the one that mattered:
 
 1. A federal role is **dropped**, not routed to a person. Nobody had ever
-   ruled on the 7 rows the Scope review queue held - `scope_rulings.json` is
-   empty.
+   ruled on the 7 rows the Scope review queue held - `scope_decisions.json`
+   (the file admin.py actually reads and writes) is empty.
 2. **It drops on EVERY company, not only `sled_only` ones.** 27 of the 40
    federal roles sat at companies carrying no flag at all - Motorola's eight,
    Workday's five, Palantir's two - where the whole board loads and nothing
@@ -1059,6 +1069,10 @@ Rules that hold here:
 Setup the owner does once, in this order: create the KV namespace and bind it
 as `ALERTS`; add `RESEND_KEY` to the Pages project; add `CF_ACCOUNT_ID`,
 `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` as repository secrets.
+A fifth repository secret, `ANTHROPIC_API_KEY`, is read by `write-profiles.yml`
+only; that workflow is `workflow_dispatch` and its cron line is a comment
+until the owner decides the nightly spend. (All five are set as of
+2026-09-17.)
 Every one is optional — with none set, the endpoint reports "not configured"
 and the CI step prints that and exits 0. A refresh must never fail because
 nobody set up email.
@@ -1073,10 +1087,13 @@ in a real inbox from `alerts@solesourcejobs.com`.
 repository secrets are set — the 2026-09-17 refresh log shows `CF_ACCOUNT_ID`,
 `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` all present — and a real
 digest went out that morning: "1 subscriptions ... 159 new govtech roles".
-Two consequences worth acting on. **`sync_claims.py` can run in CI today**:
-it needs exactly those three CF_* secrets and no workflow calls it yet, so the
-claim flow is dark for want of a cron line, not for want of credentials. And
-that same run **failed on exit 1** because the digest sent and the `last_sent`
+**`sync_claims.py --write` has run nightly in `refresh.yml` since 2026-09-18**,
+before build_board reads companies.json, and `claim_alert.py` in the same
+workflow opens one GitHub issue when a claim waits on the hand gate (counts and
+wait-age only; the repo is public). It has carried no real claim yet:
+`data/claims.json` is `{}` and `data/employer_events.jsonl` does not exist,
+because nobody has been verified. (This paragraph said "no workflow calls it"
+for a week after one did.) And that same run **failed on exit 1** because the digest sent and the `last_sent`
 write-back to KV did not — `advance last_sent in KV by hand, or accept the
 repeat`, because re-running sends again.
 
@@ -1112,18 +1129,18 @@ python3 scripts/coverage.py [--by-sector]
 "839 of 1,722 monitored" was wrong in both directions and it drove bad
 decisions for a while. It counted a careers page nothing can enumerate the
 same as a Greenhouse API, and it counted companies that have **no job board at
-all** as a gap to be closed. The honest split, re-derived 2026-08-24 across
-2,103 companies:
+all** as a gap to be closed. The honest split, re-derived 2026-09-25 across
+2,045 companies:
 
 ```
-structured   269  12.8%  a real API. Titles, locations, links. THIS is the number to move.
-page only    887  42.2%  a page a person can read and a fetcher mostly cannot.
-blocked      238  11.3%  a bot wall or transport error. We learned nothing. NOT a zero.
-absent       568  27.0%  checked, no public board exists. A finished state, not a gap.
-unchecked    141   6.7%  never probed, or probed before the current rules existed.
+structured   356  17.4%  a real API. Titles, locations, links. THIS is the number to move.
+page only    808  39.5%  a page a person can read and a fetcher mostly cannot.
+blocked      169   8.3%  a bot wall or transport error. We learned nothing. NOT a zero.
+absent       591  28.9%  checked, no public board exists. A finished state, not a gap.
+unchecked    121   5.9%  never probed, or probed before the current rules existed.
 ```
 
-285 companies currently show at least one open posting.
+327 companies currently show at least one open posting.
 
 **Run the script; do not quote this block.** These moved by one while this
 section was being written, because a discovery pass was running in another
@@ -1133,10 +1150,10 @@ believed for months.
 The two ratios the script prints mean different things and neither is
 "coverage":
 
-- **1,156/2,103 = 55%** — we have *some* board on file, against every company.
-- **1,156/1,535 = 75%** — the same numerator against companies that have a
+- **1,164/2,045 = 57%** — we have *some* board on file, against every company.
+- **1,164/1,454 = 80%** — the same numerator against companies that have a
   board to find (total minus `absent`). This is the denominator that can be
-  worked. It is **not** 75% readable: 887 of that 1,156 is the `page only`
+  worked. It is **not** 80% readable: 808 of that 1,164 is the `page only`
   pile, which is mostly not enumerable at all.
 
 A 15-agent field audit (n=90 random re-probe, plus 24 investigated by hand)
@@ -1163,8 +1180,11 @@ outranks anything that makes his own search easier.
 Practical reading of that when choosing what to do next:
 
 - A gap a visitor would notice beats a gap only the owner would notice.
-- Data completeness beats new features: `data/suppliers.json` holds 4,745
-  catalogued suppliers and `data/conference_intake/govtech_candidates.json`
+- Data completeness beats new features: `data/suppliers.json` holds 7,919
+  catalogued suppliers (5,143 unruled, 1,578 of them real cards with a
+  description and a website; `stage_suppliers.py` lands them per sector and
+  has never been run with `--land`) and
+  `data/conference_intake/govtech_candidates.json`
   holds 670 researched candidates, none of them on the board yet. That is
   worth more than another filter. (Counted 2026-08-24 — re-derive, don't
   quote.)
@@ -1374,6 +1394,11 @@ password behind a company page.
   small functions, no classes where a function does). Comments explain WHY.
 
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
+
+**Re-measured 2026-09-18: 7,919 records, 5,143 unruled, 1,578 card-ready
+(description and website), 2,569 bare names off an exhibitor floor.** The
+figures below are the 2026-08-25 measurement and are kept for the reasoning,
+not the counts.
 
 The audit line "promote 670 candidates + 4,745 suppliers, none on the board"
 reads as 4,745 companies waiting to be let in. Checked, and it is not that.

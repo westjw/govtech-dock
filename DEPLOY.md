@@ -81,14 +81,10 @@ it until step 1.
    200 then 302 means the site is live and the admin is behind Access. A 200
    on the second is the gap in step 2.
 
-**The sending address has NOT moved and must not yet.** Resend has
-`solesourcejobs.com` verified with SPF and DKIM in this same Cloudflare DNS
-and has never seen `sledjobs.com`. Moving `from_email` before the new domain
-is verified there makes every alert fail to send while the endpoint still
-answers 200. To move it: Resend → **Domains → Add Domain** → `sledjobs.com` →
-it prints DKIM and SPF records → add them in Cloudflare DNS for the new zone →
-wait for **Verified** → then change `from_email` in `data/brand.json` and
-`FROM` in `functions/_brand.js` together, and push.
+**The sending address moved on 2026-09-03.** Resend verified `sledjobs.com`
+(SPF and DKIM added in Cloudflare DNS for the new zone) and `from_email` in
+`data/brand.json` and `FROM` in `functions/_brand.js` were changed together
+and pushed. Nothing here still sends from solesourcejobs.com.
 
 **Later, when the federal board takes solesourcejobs.com**, remove it from
 this Pages project's custom domains first. Every alert link already mailed
@@ -141,8 +137,9 @@ back to the fallback link. The original instructions follow. The endpoint
 GitHub → Settings → Developer settings → Fine-grained tokens → one
 repository (`westjw/govtech-dock`), permission **Issues: Read and write**
 only. Then Cloudflare Pages → the project → Settings → Variables and
-Secrets → add **encrypted** variable `GITHUB_SUBMIT_TOKEN`. Redeploy is
-not needed for Functions variables. Verify:
+Secrets → add **encrypted** variable `GITHUB_SUBMIT_TOKEN`. Then push or
+redeploy: a Function reads a new variable only after the next deployment
+(measured 2026-09-03, above; an older line here said the opposite). Verify:
 `curl -s -X POST https://sledjobs.com/api/submit -H 'content-type: application/json' -d '{"website":"https://example.com/"}'`
 answers with an issue URL instead of `not_configured`. Until then the form's
 fallback link opens the same issue template by hand, which works.
@@ -251,7 +248,9 @@ read-only and every ruling is refused.
    Cloudflare Pages -> solesource -> Settings -> Variables and Secrets ->
    add `GITHUB_ADMIN_TOKEN`, encrypted, Production. Redeploy to take effect.
 
-Until step 1 is done the /admin page itself is publicly viewable. It shows
+Step 1 is done (1b, verified 2026-09-03), so this window is closed; the
+paragraph is kept for what it protected. Before it, the /admin page was
+publicly viewable. It shows
 only company names, descriptions and queue proposals - the same facts the
 public board serves - and nothing on it can write. Do step 1 promptly
 anyway.

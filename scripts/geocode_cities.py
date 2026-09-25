@@ -88,6 +88,25 @@ def cities_on_board() -> collections.Counter:
     return seen
 
 
+# A ROLE TITLE GLUED TO A CITY IS NOT A CITY. Before the office parser learned
+# that a city is the TRAILING run of capitalised words, it produced "Account
+# Management Dallas", "Database ETL Programmer Dallas", "Knowledge Architecture
+# Dallas" and "Protective Services Unit SCOTTSDALE", and every one was asked of
+# Nominatim, recorded as "no match", and kept for ever in cities.json. The
+# parser is fixed; this is the belt under the braces, because this file is
+# re-read on every build and a wrong key never ages out on its own.
+TITLE_WORDS = re.compile(
+    r"\b(Account|Management|Manager|Executive|Sales|Engineer|Engineering|"
+    r"Programmer|Developer|Architecture|Architect|Director|Representative|"
+    r"Analyst|Specialist|Coordinator|Services|Unit|Team|Remote|Hybrid|"
+    r"Preferred|Office|Onsite|On-site)\b", re.I)
+
+
+def looks_like_a_title(city: str) -> bool:
+    """True when the "city" carries a word no city name carries."""
+    return bool(TITLE_WORDS.search(city or ""))
+
+
 def venue_city(text: str | None) -> tuple | None:
     """("Denver", "CO") out of "Denver, CO". None when it is not that shape.
 
@@ -186,10 +205,17 @@ def main() -> int:
     print(f"{len(board)} cities on the board, {len(have)} already on file")
     print(f"asking about {len(todo)}, one a second\n", flush=True)
 
-    found = missed = unasked = 0
+    found = missed = unasked = refused = 0
     for i, (city, state) in enumerate(todo, 1):
-        got = ask(city, state)
         key = f"{city}|{state}"
+        if looks_like_a_title(city):
+            # NEVER ASKED, NEVER WRITTEN. A row for it would be re-read on
+            # every build as a place that does not exist.
+            refused += 1
+            print(f"  not a city: {city!r}, {state} (a title word; refused)",
+                  flush=True)
+            continue
+        got = ask(city, state)
         if got is None:
             # WE NEVER ASKED. Write nothing: an absent row is one the next run
             # picks up, and a "no match" row is one it skips forever.

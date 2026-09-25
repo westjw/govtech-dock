@@ -2,10 +2,10 @@ name: digest-check
 
 # WHO WOULD GET AN EMAIL, WITHOUT SENDING ONE.
 #
-# The digest has never sent: it runs inside daily-refresh, guarded on
-# CF_API_TOKEN and RESEND_KEY both being present, and until today the three
-# Cloudflare secrets were missing - so every night took the dry-run branch and
-# exited 0 while the workflow stayed green.
+# The digest first sent on 2026-09-17, once all four secrets were present
+# (before that every night took the dry-run branch and exited 0 while the
+# workflow stayed green). It runs inside daily-refresh, guarded on
+# CF_API_TOKEN and RESEND_KEY both being present.
 #
 # Turning it on by running daily-refresh would mail a list nobody has looked
 # at, on the first attempt, with no way to take it back. This does the reading

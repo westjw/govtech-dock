@@ -1,13 +1,16 @@
-# GovTech Dock
+# SLED JOBS
 
-A running map of state & local government technology companies — who they are,
-what they sell, and **who's hiring Account Executives right now**. Started as a
-spreadsheet built in Claude Cowork; this repo is the "formal app" version:
-a JSON database, a static website, and a deterministic refresh engine.
+A public job board for sales roles at state & local government technology
+companies, and the map of companies behind it: who they are, what they sell,
+and **who's hiring sellers right now**. Live at the domain named in
+`data/brand.json`. Started as a spreadsheet built in Claude Cowork; this repo
+is the app: a JSON database, a static site, and a deterministic refresh engine.
 
-**137 companies · 6 sectors** (Public Safety, Public Works, General Gov,
-Parks & Rec, K-12 Schools, Transit & Parking), each broken into categories
-(Fire/Police/EMS, Waste/Streets/Water, and so on).
+The name, tagline, domain and palette live in `data/brand.json` and nowhere
+else. (The git remote is still `westjw/govtech-dock`; that is an identifier,
+not the product's name.) Sectors and categories live in `data/schema.json`;
+run `python3 scripts/coverage.py` for the live company and board counts rather
+than quoting a number from a document.
 
 ## Quickstart
 
