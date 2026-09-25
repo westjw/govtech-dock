@@ -57,8 +57,9 @@ and the eight-colour palette. Nothing may hardcode any of them.
   `functions/_brand.js`, then pointing the Pages custom domain at the new
   name, is the whole move: alert links, digest footers, the confirmation email
   and the submission form all read it from brand.json.
-- **The sending address moved to `alerts@sledjobs.com` on 2026-09-03**, the
-  day Resend showed sledjobs.com verified (SPF and DKIM in Cloudflare DNS).
+- **The sending address moved to `alerts@sledjobs.com` late on 2026-09-02**
+  (2026-09-03 UTC, commit 6168048), once Resend showed sledjobs.com verified
+  (SPF and DKIM in Cloudflare DNS).
   `data/brand.json` and `functions/_brand.js` moved together and
   `selftest::check_brand` refuses the pair disagreeing. This bullet said the
   address was DELIBERATELY still on solesourcejobs.com for three weeks after
@@ -214,7 +215,8 @@ Founding year, Wrong bucket, Vendor scope, Scope review, Submissions,
 Duplicates, Missing websites, No board found, Blocked boards, Wrong placement,
 Unclassified roles, Acquisitions, Website review, Conference dates, Conference
 floors. Every key in `QUEUES` has a `RENDER.<key>` in admin.html and
-`check_the_two_applier_lists_agree` keeps the two sides honest.
+`check_every_queue_has_a_renderer` keeps QUEUES and RENDER.* honest, and
+`check_the_two_applier_lists_agree` keeps the two NO_APPLIER lists agreeing.
 
 The two newest are both about boards that may not belong to the company they
 are filed under, and they are different questions. **Boards we found** holds a
@@ -1071,8 +1073,10 @@ as `ALERTS`; add `RESEND_KEY` to the Pages project; add `CF_ACCOUNT_ID`,
 `CF_KV_NAMESPACE_ID`, `CF_API_TOKEN` and `RESEND_KEY` as repository secrets.
 A fifth repository secret, `ANTHROPIC_API_KEY`, is read by `write-profiles.yml`
 only; that workflow is `workflow_dispatch` and its cron line is a comment
-until the owner decides the nightly spend. (All five are set as of
-2026-09-17.)
+until the owner decides the nightly spend. (The four alerts secrets are
+confirmed present by the 2026-09-17 refresh log; whether `ANTHROPIC_API_KEY`
+is a repository secret cannot be established from this repo - it is OWNER-TODO
+T1 in job-hunter, unticked.)
 Every one is optional — with none set, the endpoint reports "not configured"
 and the CI step prints that and exits 0. A refresh must never fail because
 nobody set up email.
@@ -1185,8 +1189,8 @@ Practical reading of that when choosing what to do next:
   description and a website; `stage_suppliers.py` lands them per sector and
   has never been run with `--land`) and
   `data/conference_intake/govtech_candidates.json`
-  holds 670 researched candidates, none of them on the board yet. That is
-  worth more than another filter. (Counted 2026-08-24 — re-derive, don't
+  holds 928 researched candidates, none of them on the board yet. That is
+  worth more than another filter. (Counted 2026-09-25 — re-derive, don't
   quote.)
 - Admin work is product work here, because the queues are what keep the data
   honest, and one day they are meant to be playable.

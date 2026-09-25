@@ -81,7 +81,7 @@ it until step 1.
    200 then 302 means the site is live and the admin is behind Access. A 200
    on the second is the gap in step 2.
 
-**The sending address moved on 2026-09-03.** Resend verified `sledjobs.com`
+**The sending address moved late on 2026-09-02 (2026-09-03 UTC, commit 6168048).** Resend verified `sledjobs.com`
 (SPF and DKIM added in Cloudflare DNS for the new zone) and `from_email` in
 `data/brand.json` and `FROM` in `functions/_brand.js` were changed together
 and pushed. Nothing here still sends from solesourcejobs.com.
@@ -252,8 +252,7 @@ Step 1 is done (1b, verified 2026-09-03), so this window is closed; the
 paragraph is kept for what it protected. Before it, the /admin page was
 publicly viewable. It shows
 only company names, descriptions and queue proposals - the same facts the
-public board serves - and nothing on it can write. Do step 1 promptly
-anyway.
+public board serves - and nothing on it can write.
 
 That is all of it. Nothing in this file can be done from this machine without
 your credentials, which is the correct reason it has not been done.

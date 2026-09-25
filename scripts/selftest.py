@@ -22247,40 +22247,46 @@ def check_a_title_is_not_a_city() -> int:
                  "Protective Services Unit SCOTTSDALE", "Remote Denver"):
         if not gc.looks_like_a_title(word):
             errors += fail(f"looks_like_a_title let {word!r} through as a city")
+    # THE CONTRACT, STATED: a title word as PART of a longer word is not a
+    # title (Salesville, Winston-Salem), and a whole-word title is refused
+    # even when a real place carries it (Engineer Pass, CO has no postings
+    # and never will; if one appears, the word list is the thing to change).
     for real in ("Dallas", "Long Beach", "St. Paul", "Federal Way", "Unity",
-                 "Salesville", "Engineer Pass"):
-        # the last three are traps: a city that CONTAINS a title word as part
-        # of a longer word or as its whole name is still a city
-        pass
-    for real in ("Dallas", "Long Beach", "St. Paul", "Federal Way", "Winston-Salem"):
+                 "Salesville", "Winston-Salem"):
         if gc.looks_like_a_title(real):
             errors += fail(f"looks_like_a_title refused a real city {real!r}")
+    for whole in ("Engineer Pass", "Remote", "Office Park"):
+        if not gc.looks_like_a_title(whole):
+            errors += fail(f"looks_like_a_title accepted a whole-word title {whole!r}")
 
     # THROUGH main(): the title-shaped key is never asked and never written.
+    import contextlib
+    import io
+    import sys as _sys
     asked = []
-    out = pathlib.Path(tempfile.mkdtemp()) / "cities.json"
     keep = (gc.cities_on_board, gc.ask, gc.OUT, gc.time.sleep)
-    try:
-        gc.cities_on_board = lambda: collections.Counter(
-            {("Account Management Dallas", "TX"): 3, ("Dallas", "TX"): 2})
-        gc.ask = lambda c, s: (asked.append((c, s)) or
-                               {"lat": 32.7, "lon": -96.8, "query": f"{c}, {s}",
-                                "matched": c, "source": "stub"})
-        gc.OUT = out
-        gc.time.sleep = lambda *_: None
-        import io, contextlib, sys as _sys
-        argv = _sys.argv
-        _sys.argv = ["geocode_cities.py"]
-        with contextlib.redirect_stdout(io.StringIO()):
-            gc.main()
-    finally:
-        gc.cities_on_board, gc.ask, gc.OUT, gc.time.sleep = keep
-        _sys.argv = argv
+    argv = _sys.argv
+    with tempfile.TemporaryDirectory() as tmpd:
+        out = pathlib.Path(tmpd) / "cities.json"
+        try:
+            gc.cities_on_board = lambda: collections.Counter(
+                {("Account Management Dallas", "TX"): 3, ("Dallas", "TX"): 2})
+            gc.ask = lambda c, s: (asked.append((c, s)) or
+                                   {"lat": 32.7, "lon": -96.8, "query": f"{c}, {s}",
+                                    "matched": c, "source": "stub"})
+            gc.OUT = out
+            gc.time.sleep = lambda *_: None
+            _sys.argv = ["geocode_cities.py"]
+            with contextlib.redirect_stdout(io.StringIO()):
+                gc.main()
+        finally:
+            gc.cities_on_board, gc.ask, gc.OUT, gc.time.sleep = keep
+            _sys.argv = argv
+        have = json.loads(out.read_text()) if out.exists() else {}
     if ("Account Management Dallas", "TX") in asked:
         errors += fail("geocode_cities asked Nominatim about a role title")
     if ("Dallas", "TX") not in asked:
         errors += fail("geocode_cities stopped asking about a real city")
-    have = json.loads(out.read_text()) if out.exists() else {}
     if "Account Management Dallas|TX" in have:
         errors += fail("geocode_cities wrote a role title into cities.json")
     if "Dallas|TX" not in have:
@@ -22382,7 +22388,7 @@ def check_a_throttled_lookup_is_not_a_city_that_does_not_exist() -> int:
     # no-match must be one the geocoder actually got an answer about.
     store = json.loads((DATA / "cities.json").read_text())
     dead = [k for k, v in store.items() if v.get("lat") is None]
-    real = {"Waukesha Ridgeview|WI", "Protective Services Unit SCOTTSDALE|AZ"}
+    real = {"Waukesha Ridgeview|WI"}      # the SCOTTSDALE title key was purged
     phantom = [k for k in dead if k not in real and " " not in k.split("|")[0]]
     if len(dead) > 12:
         errors += fail(

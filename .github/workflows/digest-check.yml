@@ -2,10 +2,11 @@ name: digest-check
 
 # WHO WOULD GET AN EMAIL, WITHOUT SENDING ONE.
 #
-# The digest first sent on 2026-09-17, once all four secrets were present
-# (before that every night took the dry-run branch and exited 0 while the
-# workflow stayed green). It runs inside daily-refresh, guarded on
-# CF_API_TOKEN and RESEND_KEY both being present.
+# The digest first reached an inbox on 2026-09-17. The secrets were present
+# from about 2026-09-10; that night's send crashed, the nights between were
+# skipped by cadence, and 09-17 delivered. Before the secrets existed every
+# night took the dry-run branch and exited 0 while the workflow stayed green.
+# It runs inside daily-refresh, guarded on CF_API_TOKEN and RESEND_KEY.
 #
 # Turning it on by running daily-refresh would mail a list nobody has looked
 # at, on the first attempt, with no way to take it back. This does the reading

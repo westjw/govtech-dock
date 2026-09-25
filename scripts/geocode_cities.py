@@ -240,7 +240,8 @@ def main() -> int:
     OUT.write_text(json.dumps(have, indent=1, sort_keys=True) + "\n")
     live = sum(1 for v in have.values() if v.get("lat") is not None)
     print(f"\n{found} resolved, {missed} genuinely not found, "
-          f"{unasked} never asked (left off file to retry)")
+          f"{unasked} never asked (left off file to retry), "
+          f"{refused} refused as role titles")
     print(f"{OUT.name} now holds {len(have)} cities, {live} with coordinates")
     print("\nA city with no coordinate is left with lat null. It is NOT at "
           "0,0 and must never be filtered as though it were somewhere.")
