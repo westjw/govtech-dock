@@ -1,69 +1,97 @@
 {
-  "date": "2026-09-23",
-  "previous": "2026-09-22",
+  "date": "2026-09-25",
+  "previous": "2026-09-23",
   "changes": [
     {
-      "company": "Technosylva",
-      "id": "technosylva",
-      "from": "Unknown",
+      "company": "Skydio",
+      "id": "skydio",
+      "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Sr. Manager, FP&A & Sales Operatio only"
+      "note": "sales roles, none AE"
     },
     {
-      "company": "TeamSnap",
-      "id": "teamsnap",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Manager, Large Market (Remote)"
+      "company": "Accela",
+      "id": "accela",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Business Development Representativ only"
     },
     {
       "company": "Cubic Transportation Systems",
       "id": "cubic-transportation-systems",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 520 for https://cubic.wd1.myworkday"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager - East Coast (2 Locations)"
     },
     {
-      "company": "IPS Group",
-      "id": "ips-group",
-      "from": "Sales (non-AE)",
+      "company": "Paladin Drones",
+      "id": "paladin-drones",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Beep",
-      "id": "beep",
-      "from": "Sales (non-AE)",
+      "company": "Fortem Technologies",
+      "id": "fortem-technologies",
+      "from": "None found",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "ClassLink",
-      "id": "classlink",
+      "company": "Ecopia AI",
+      "id": "ecopia-ai",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "non-JSON response"
+    },
+    {
+      "company": "Handtevy",
+      "id": "handtevy",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "SiFi Networks",
-      "id": "sifi-networks",
-      "from": "None found",
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 404 for https://sifinetworks.com/co"
+      "note": "page scan found no listings"
     },
     {
-      "company": "Droplet",
-      "id": "droplet",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "company": "LineVision",
+      "id": "linevision",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "BibliU",
-      "id": "bibliu",
+      "company": "Meadow",
+      "id": "meadow",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Chorus Innovations",
+      "id": "chorus-innovations",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "VP of Customer Success only"
+    },
+    {
+      "company": "EBSCO Information Services",
+      "id": "ebsco-information-services",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Regional Sales Manager, K12 & Publ"
+    },
+    {
+      "company": "Orlo",
+      "id": "orlo",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Sales Support - Keyholder only"
+      "note": "sales roles, none AE"
     }
   ]
 }
