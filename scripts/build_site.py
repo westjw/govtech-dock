@@ -272,9 +272,13 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
     # They ship here rather than to /data/ because /admin/ is behind Access
     # and /data/ is not: a scope ruling is a judgement about a company, and
     # judgements belong on the side of the door where people sign in.
+    # AND THE DISMISSALS. "Bucket is right", "Not duplicates" and "Cannot find
+    # it" all write admin_dismissed.json, which was not shipped, so a
+    # dismissed row could never be hidden by what the page knew - it left
+    # only when the queue itself recomputed at the next build.
     rulings = {}
     for name in ("vendor_scope_decisions", "placement_rulings",
-                 "web_merge_rulings", "web_founded_rulings"):
+                 "web_merge_rulings", "web_founded_rulings", "admin_dismissed"):
         f = ROOT / "data" / f"{name}.json"
         try:
             rulings[name] = json.loads(f.read_text()) if f.exists() else {}

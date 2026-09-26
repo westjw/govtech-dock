@@ -1547,12 +1547,20 @@ def sessions(limit: int = 30) -> dict:
         return n
 
     considered = [paced(r) for r in runs]
+    # A SITTING ENDS. "7 rulings this sitting" was the last run of rulings
+    # whenever it happened - a Tuesday evening read as "this sitting" the
+    # following Sunday. The same four-hour gap that splits runs also closes
+    # the current one: if the last ruling is older than that, nobody is
+    # sitting, and the count is zero rather than a stale number that looks
+    # like today's.
+    live = bool(runs) and (dt.datetime.now(dt.timezone.utc) - runs[-1][-1]
+                           ).total_seconds() <= SITTING_GAP
     return {
         "sessions": len(runs),
         "best_session": max((len(r) for r in runs), default=0),
-        "this_session": len(runs[-1]) if runs else 0,
+        "this_session": len(runs[-1]) if live else 0,
         "best_considered": max(considered, default=0),
-        "this_considered": considered[-1] if considered else 0,
+        "this_considered": considered[-1] if live else 0,
         "rulings": len(stamps),
     }
 
@@ -2597,6 +2605,21 @@ def triage(companies, board) -> dict:
               for o in board.get("organizations", [])}
     counts = {k: len(f(companies, board)) for k, f in QUEUES.items()}
 
+    # WHAT THIS SITTING HAS ALREADY DONE, per queue. "done" was written as 0
+    # on every sortie, so the bar the comment beside it says "can fill" could
+    # not move. This is the same definition sessions() uses: the current run
+    # of person-authored ruling stamps, closed by the four-hour gap.
+    done_by_queue: dict = collections.Counter()
+    stamps = _ruling_stamps()
+    if stamps and (dt.datetime.now(dt.timezone.utc) - stamps[-1][0]
+                   ).total_seconds() <= SITTING_GAP:
+        run = []
+        for t, q in reversed(stamps):
+            if run and (run[-1][0] - t).total_seconds() > SITTING_GAP:
+                break
+            run.append((t, q))
+        done_by_queue.update(q for _, q in run)
+
     mis = q_miscategorized(companies, board)
     visible = sum(1 for r in mis if r["open_roles"])
     boards = q_boards(companies, board)
@@ -2612,7 +2635,7 @@ def triage(companies, board) -> dict:
     recs = []
     if visible:
         recs.append({"queue": "miscategorized", "n": visible,
-                     "scope": visible, "done": 0,
+                     "scope": visible, "done": done_by_queue.get("miscategorized", 0),
                      "goal": "the storefront is right",
                      "headline": f"Fix the {visible} the public can see",
                      "why": f"{visible} miscategorised companies are hiring right "
@@ -2625,7 +2648,7 @@ def triage(companies, board) -> dict:
         if top == "Everything else" and len(families) > 1:
             top, n_top = families.most_common(2)[1]
         recs.append({"queue": "vendors", "n": n_top,
-                     "scope": n_top, "done": 0,
+                     "scope": n_top, "done": done_by_queue.get("vendors", 0),
                      "goal": f"{top} is settled",
                      "headline": f"Settle {top} in one decision",
                      "why": f"{n_top} vendors, one call. The largest family on "
@@ -2633,14 +2656,14 @@ def triage(companies, board) -> dict:
                             f"with your reason on every one of them."})
     if counts.get("duplicates"):
         recs.append({"queue": "duplicates", "n": counts["duplicates"],
-                     "scope": counts["duplicates"], "done": 0,
+                     "scope": counts["duplicates"], "done": done_by_queue.get("duplicates", 0),
                      "goal": "one record per vendor",
                      "headline": f"Merge the {counts['duplicates']} duplicate pairs",
                      "why": "the whole queue is small enough to end today, and "
                             "every merge keeps the research from both sides"})
     if counts.get("submissions"):
         recs.append({"queue": "submissions", "n": counts["submissions"],
-                     "scope": counts["submissions"], "done": 0,
+                     "scope": counts["submissions"], "done": done_by_queue.get("submissions", 0),
                      "goal": "nobody is left waiting",
                      "headline": f"Answer the {counts['submissions']} from outside",
                      "why": "a stranger submitted a company and is waiting to "
@@ -3252,8 +3275,16 @@ def act_vendor_scope(body: dict) -> dict:
                          by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
-    msg = {"in": "will be added as a full company",
-           "sled": "will be added, public-sector roles only",
+    # SAY WHAT HAPPENS, NOT WHAT SHOULD. "will be added as a full company"
+    # was a promise nothing kept: no script reads an "in" or "sled" call and
+    # lands the vendor on the map, so 57 rulings sat recorded and unacted on
+    # while the door said otherwise. Until an applier exists (it is listed
+    # under 'what is undone'), the truthful message is that the call is on
+    # record and the queue will stop asking.
+    msg = {"in": "recorded; the nightly run hands it to the candidate queue, "
+                 "and it lands on the map once a card gives it a sector",
+           "sled": "recorded as SLED-only; same path as 'in', and the flag "
+                   "rides along to the landed company",
            "out": "left off the board"}[call]
     return {"ok": True, "message": f"{name}: {msg}"}
 
@@ -4968,7 +4999,13 @@ def _ledger_unlocked(before, cid):
 
 
 def act_dismiss(body: dict) -> dict:
-    bad = dismiss(body.get("queue", ""), body.get("key", ""),
+    # POST {} answered 200 and journalled a dismissal keyed ""/"" as the
+    # owner's ruling. A dismissal names the queue and the row or it is not one.
+    queue, key = body.get("queue"), body.get("key")
+    if not isinstance(queue, str) or not queue.strip() \
+            or not isinstance(key, str) or not key.strip():
+        return {"error": "a dismissal needs the queue and the key of the row"}
+    bad = dismiss(queue.strip(), key.strip(),
                   body.get("why", ""), by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}

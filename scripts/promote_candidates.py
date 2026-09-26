@@ -287,7 +287,11 @@ def main() -> int:
             "govtech": True, "vendor_type": "GovTech Product",
             "source": (f"conference sweep: {ev}" if event
                        else (f"research pass: {ev}" if ev else "research pass")),
-            "researched": True})
+            "researched": True,
+            # A 'sled' scope call rides along from the candidate row: the
+            # landed company drops every posting whose title does not name
+            # the public sector (build_board), which is what the owner ruled.
+            **({"sled_only": True} if r.get("sled_only") else {})})
         known[key] = name
         added.append(name)
 

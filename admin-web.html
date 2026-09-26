@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SLED JOBS — Admin</title>
 <style>
@@ -156,8 +157,41 @@ async function rule(payload){
    and every row already ruled comes back on the next reload looking
    unanswered. build_site now ships them to /admin/rulings.json, which Access
    protects like the rest of this page. */
-let D=null,RULED={vendor:{},place:{},merge:{},founded:{}},TAB="vendors";
+let D=null,RULED={vendor:{},place:{},merge:{},founded:{},dismissed:{}},TAB="vendors";
 let RULED_UNKNOWN=false;
+
+/* A RULING STAYS RULED FOR THE REST OF THE SESSION. rulings.json is written at
+   BUILD time; the commit a ruling just made reaches it only after the next
+   Pages build, minutes later. Every handler used to mark the row, remove it,
+   and call boot() - which refetched the stale file and put the row straight
+   back, so a saved ruling looked refused and a second tap said "already
+   ruled". This overlay is what the page itself has seen ruled; it is merged
+   OVER whatever the static file says, kept in sessionStorage so a reload
+   inside the same session does not re-ask, and dropped for a key the file
+   has caught up on. Dismissals are here too: they were not in rulings.json
+   at all, so a "Bucket is right" could never hide its row. */
+const LOCAL_KEY="sledjobs.admin.ruled.v1";
+function loadLocal(){try{const j=JSON.parse(sessionStorage.getItem(LOCAL_KEY)||"{}");
+  return {vendor:j.vendor||{},place:j.place||{},merge:j.merge||{},founded:j.founded||{},dismissed:j.dismissed||{}}}
+  catch{return {vendor:{},place:{},merge:{},founded:{},dismissed:{}}}}
+let LOCAL=loadLocal();
+function saveLocal(){try{sessionStorage.setItem(LOCAL_KEY,JSON.stringify(LOCAL))}catch{}}
+/* pure: the file's view, then this session's, never the other way round */
+function applyLocal(ruled,local){
+  const out={vendor:{...(ruled.vendor||{})},place:{...(ruled.place||{})},
+    merge:{...(ruled.merge||{})},founded:{...(ruled.founded||{})},dismissed:{}};
+  for(const k of ["vendor","place","merge","founded"])
+    for(const key of Object.keys(local[k]||{}))out[k][key]=out[k][key]||{local:true};
+  const dq={...(ruled.dismissed||{})};
+  for(const [q,keys] of Object.entries(local.dismissed||{})){
+    dq[q]={...(dq[q]||{})};for(const key of Object.keys(keys||{}))dq[q][key]=dq[q][key]||{local:true}}
+  out.dismissed=dq;return out;
+}
+function mark(kind,key){LOCAL[kind][key]=1;saveLocal();RULED=applyLocal(FILE,LOCAL)}
+function markDismissed(queue,key){LOCAL.dismissed[queue]=LOCAL.dismissed[queue]||{};
+  LOCAL.dismissed[queue][key]=1;saveLocal();RULED=applyLocal(FILE,LOCAL)}
+const dismissed=(q,key)=>!!((RULED.dismissed||{})[q]||{})[key];
+let FILE={vendor:{},place:{},merge:{},founded:{},dismissed:{}};
 const vkey=n=>String(n||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
 
 async function boot(){
@@ -172,11 +206,16 @@ async function boot(){
   if(!ruled){
     RULED_UNKNOWN=true;
   }else{
-    RULED.vendor=ruled.vendor_scope_decisions||{};
-    RULED.place=ruled.placement_rulings||{};
-    RULED.merge=ruled.web_merge_rulings||{};
-    RULED.founded=ruled.web_founded_rulings||{};
+    FILE={vendor:ruled.vendor_scope_decisions||{},place:ruled.placement_rulings||{},
+      merge:ruled.web_merge_rulings||{},founded:ruled.web_founded_rulings||{},
+      dismissed:ruled.admin_dismissed||{}};
   }
+  RULED=applyLocal(FILE,LOCAL);
+  render();
+}
+/* Everything below the fetches. Called again after every ruling, WITHOUT the
+   fetches: the file has not changed yet, and this session's overlay has. */
+function render(){
   $("#sub").textContent=`${D.companies.toLocaleString()} companies · `
     +`${D.postings.toLocaleString()} postings · data as of ${D.generated}`;
   const g=D.game||{};
@@ -210,6 +249,7 @@ async function boot(){
     `${g.today||0} today · best day this month ${g.best_30||0}`));
   if((g.today||0)>(g.best_30||0)&&(g.best_30||0)>0)
     yl.appendChild(el("span","pb","personal best"));
+  const oldLine=document.querySelector(".yourline");if(oldLine)oldLine.remove();
   strip.parentNode.insertBefore(yl,strip.nextSibling);
   const oldFloors=document.querySelector(".floors");if(oldFloors)oldFloors.remove();
   const near=(D.floors||[]).filter(f=>f.left>0&&f.left<=3).slice(0,4);
@@ -235,10 +275,15 @@ async function boot(){
 }
 function remaining(q){
   if(q==="vendors")return (D.vendors||[]).filter(v=>!(vkey(v.name) in RULED.vendor)).length;
-  if(q==="duplicates")return (D.duplicates||[]).length;
-  if(q==="founded")return (D.founded||[]).filter(c=>!(c.id in (RULED.founded||{}))).length;
-  return (D.miscategorized||[]).filter(c=>!(c.id in RULED.place)).length;
+  if(q==="duplicates")return (D.duplicates||[]).filter(x=>!dismissed("duplicates",x.key)
+    &&!mergedPair(x)).length;
+  if(q==="founded")return (D.founded||[]).filter(c=>!(c.id in (RULED.founded||{}))
+    &&!dismissed("founded",c.id)).length;
+  return (D.miscategorized||[]).filter(c=>!(c.id in RULED.place)&&!dismissed("miscategorized",c.id)).length;
 }
+/* either member kept: a merge keyed keep<-drop hides the pair whichever side survived */
+function mergedPair(x){const a=x.members[0].id,b=x.members[1].id;
+  return (a+"<-"+b) in RULED.merge||(b+"<-"+a) in RULED.merge}
 function draw(){
   document.querySelectorAll("nav button").forEach(b=>
     b.setAttribute("aria-selected",b.dataset.k===TAB));
@@ -254,8 +299,7 @@ function draw(){
    side needs width. The ruling is WHICH ONE SURVIVES, never "merge these":
    a merge that picked for you is one nobody can check later. */
 function drawDupes(v){
-  const rows=(D.duplicates||[]).filter(x=>!Object.keys(RULED.merge||{})
-    .some(k=>k.endsWith("<-"+x.members[1].id)||k.startsWith(x.members[0].id+"<-")));
+  const rows=(D.duplicates||[]).filter(x=>!mergedPair(x)&&!dismissed("duplicates",x.key));
   if(!rows.length){v.appendChild(el("div","empty","One record per vendor. Nothing left to merge."));return}
   rows.slice(0,40).forEach(x=>{
     const n=el("div","card");
@@ -277,7 +321,7 @@ function drawDupes(v){
         const r=await rule({kind:"merge",keep:m.id,drop:other.id,why:why.value,
           keep_name:m.name,drop_name:other.name,signal:x.signal});
         keep.disabled=false;
-        if(r){RULED.merge[m.id+"<-"+other.id]={};n.remove();boot()}
+        if(r){mark("merge",m.id+"<-"+other.id);n.remove();render()}
       };
       c.appendChild(keep);
       grid.appendChild(c);
@@ -290,7 +334,7 @@ function drawDupes(v){
       not.disabled=true;
       const r=await rule({kind:"dismiss",queue:"duplicates",key:x.key,why:why.value});
       not.disabled=false;
-      if(r){n.remove();boot()}
+      if(r){markDismissed("duplicates",x.key);n.remove();render()}
     };
     n.appendChild(not);
     v.appendChild(n);
@@ -301,7 +345,7 @@ function drawDupes(v){
    queue in the backlog and the longest, so it is the one worth having on a
    screen you already have open. */
 function drawFounded(v){
-  const rows=(D.founded||[]).filter(x=>!(x.id in (RULED.founded||{})));
+  const rows=(D.founded||[]).filter(x=>!(x.id in (RULED.founded||{}))&&!dismissed("founded",x.id));
   if(!rows.length){v.appendChild(el("div","empty","Every year confirmed."));return}
   rows.slice(0,60).forEach(x=>{
     const n=el("div","card");
@@ -320,14 +364,14 @@ function drawFounded(v){
       save.disabled=true;
       const r=await rule({kind:"founded",id:x.id,year:y,name:x.name,source:x.about||x.website});
       save.disabled=false;
-      if(r){RULED.founded[x.id]={};n.remove();boot()}
+      if(r){mark("founded",x.id);n.remove();render()}
     };
     const skip=el("button","act","Cannot find it");
     skip.onclick=async()=>{
       skip.disabled=true;
       const r=await rule({kind:"dismiss",queue:"founded",key:x.id,why:"not findable"});
       skip.disabled=false;
-      if(r){n.remove();boot()}
+      if(r){markDismissed("founded",x.id);n.remove();render()}
     };
     const r2=el("div","row");r2.append(yr,save,skip);n.appendChild(r2);
     v.appendChild(n);
@@ -354,7 +398,7 @@ function drawVendors(v){
             if(!confirm(`${label} for all ${names.length} in ${theme}?\n\n`
               +names.slice(0,10).join(", ")+(names.length>10?` and ${names.length-10} more`:"")))return;
             const r=await rule({kind:"vendor",names,call,theme,why:why.value});
-            if(r){names.forEach(n=>RULED.vendor[vkey(n)]={});boot()}
+            if(r){names.forEach(n=>mark("vendor",vkey(n)));render()}
           };row.appendChild(b)});
         g.appendChild(why);g.appendChild(row);
       }
@@ -373,12 +417,12 @@ function drawVendors(v){
     const why=el("input");why.placeholder="why (optional - it teaches the next pass)";
     n.appendChild(why);
     const row=el("div","row");
-    [["in","In: full company","good"],["sled","SLED-only roles",""],["out","Not this board","bad"]].forEach(([call,label,cls])=>{
+    [["in","In: to the candidate queue","good"],["sled","SLED-only: to the candidate queue",""],["out","Not this board","bad"]].forEach(([call,label,cls])=>{
       const b=el("button","act "+cls,label);
       b.onclick=async()=>{
         const r=await rule({kind:"vendor",name:x.name,call,why:why.value,
           description:x.description,website:x.website,source_event:x.source_event});
-        if(r){RULED.vendor[vkey(x.name)]={};n.remove();boot()}
+        if(r){mark("vendor",vkey(x.name));n.remove();render()}
       };row.appendChild(b)});
     n.appendChild(row);
     v.appendChild(n);
@@ -386,7 +430,7 @@ function drawVendors(v){
 }
 
 function drawBucket(v){
-  const rows=(D.miscategorized||[]).filter(c=>!(c.id in RULED.place));
+  const rows=(D.miscategorized||[]).filter(c=>!(c.id in RULED.place)&&!dismissed("miscategorized",c.id));
   if(!rows.length){v.appendChild(el("div","empty","Clean shelves. Nothing is in the wrong bucket."));return}
   rows.forEach(c=>{
     const n=el("div","item");
@@ -416,7 +460,7 @@ function drawBucket(v){
       const r=await rule({kind:"place",id:c.id,sector:secSel.value,category:catSel.value,
         why:why.value,was:`${c.sector} / ${c.category}`,
         proposed:`${c.proposed_sector} / ${c.proposed_category}`,description:c.description});
-      if(r){RULED.place[c.id]={};n.remove();boot()}
+      if(r){mark("place",c.id);n.remove();render()}
     };
     const keep=el("button","act","Bucket is right");
     keep.onclick=async()=>{
@@ -429,7 +473,7 @@ function drawBucket(v){
         saw:{was:`${c.sector} / ${c.category}`,
              proposed:c.proposed_sector?`${c.proposed_sector} / ${c.proposed_category}`:null,
              confidence:c.confidence,description:c.description}});
-      if(r){RULED.place[c.id]={};n.remove();boot()}
+      if(r){markDismissed("miscategorized",c.id);n.remove();render()}
     };
     row.append(move,keep);n.appendChild(row);
     v.appendChild(n);

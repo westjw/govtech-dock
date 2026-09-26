@@ -506,6 +506,12 @@ def _accept_card(p: dict, by: str, why: str, force: bool) -> dict:
     saw = p.get("saw") or {}
     ev = saw.get("source_event")
     event = ev if ev in pc._issued_event_tags() else None
+    # A SCOPE RULING RIDES ON THE CANDIDATE ROW, NEVER ON THE PROPOSAL. The
+    # model is never asked for sled_only (agents.py rule 8 refuses a proposal
+    # carrying it); a person's 'sled' call from the vendor-scope door is
+    # written onto the candidate row by apply_web_rulings, and read back here
+    # from that row, by name, when the card lands.
+    sled = _candidate_flag(name, "sled_only")
     companies.append({
         "id": cid, "name": name, "website": p.get("website"),
         "location": None, "year_founded": None,
@@ -517,12 +523,32 @@ def _accept_card(p: dict, by: str, why: str, force: bool) -> dict:
         "govtech": True, "vendor_type": "GovTech Product",
         "source": (f"conference sweep: {ev}" if event
                    else (f"research pass: {ev}" if ev else "agent card")),
-        "researched": True})
+        "researched": True,
+        **({"sled_only": True} if sled else {})})
     bad = admin.save_companies(companies, "add-company",
                                why=(why or p.get("why") or "")[:300], by=by)
     return ({"error": bad} if bad else
-            {"ok": True, "message": f"{name} added as {cid} "
-                                    f"({sector} / {cat})"})
+            {"ok": True, "message": f"{name} added as {cid} ({sector} / {cat})"
+                                    + (", SLED-only per the owner's scope call" if sled else "")})
+
+
+def _candidate_flag(name: str, flag: str):
+    """A flag a PERSON put on the candidate row (apply_web_rulings writes
+    sled_only from a vendor-scope call). Looked up by normalised name; a row
+    that is not there, or a file that is not, is simply no flag."""
+    import promote_candidates as pc
+    path = admin.DATA / "conference_intake" / "govtech_candidates.json"
+    try:
+        rows = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return None
+    if isinstance(rows, dict):
+        rows = list(rows.values())
+    key = pc.norm(name)
+    for r in rows:
+        if isinstance(r, dict) and pc.norm(r.get("name") or "") == key:
+            return r.get(flag)
+    return None
 
 
 def _accept_family(p: dict, by: str, why: str, force: bool) -> dict:

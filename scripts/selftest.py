@@ -894,6 +894,385 @@ def check_every_dismiss_names_its_row() -> int:
     return errors
 
 
+def check_a_sled_scope_call_reaches_the_landed_company() -> int:
+    """'in' and 'sled' vendor-scope calls had no landing at all.
+
+    57 were recorded and nothing anywhere read them; both doors said "will be
+    added as a full company". The landing is now: apply_web_rulings hands the
+    vendor back to the candidate queue with the call on the ROW, the card
+    agent gives it a sector, and _accept_card reads the row back when it
+    lands - never the proposal, because the model is never asked for
+    sled_only and rule 8 refuses a proposal carrying it.
+
+    Driven through _accept_card with every writer stubbed: the save is a
+    recorder, the data dir is a temp copy holding a candidate row with the
+    flag and one without.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import shutil
+    import tempfile
+
+    import admin
+    import agents  # noqa: F401  (schema comes from the temp dir through admin.DATA)
+    import promote_candidates as pc
+    import proposal_rulings as pr
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    (tmp / "conference_intake").mkdir()
+    shutil.copy(DATA / "schema.json", tmp / "schema.json")
+    (tmp / "suppliers.json").write_text("[]")
+    (tmp / "conference_intake" / "govtech_candidates.json").write_text(json.dumps([
+        {"name": "Alteryx", "website": "https://www.alteryx.com", "sled_only": True,
+         "from_scope_ruling": {"call": "sled", "on": "2026-09-25", "by": "wyeth"}},
+        {"name": "Plainco", "website": "https://plainco.test"},
+    ]))
+    schema = json.loads((DATA / "schema.json").read_text())
+    sector = schema["sectors"][0]["name"]
+    cat = schema["sectors"][0]["categories"][0]
+    saved = []
+    keep = (admin.DATA, admin.read_companies, admin.save_companies, pc.DATA,
+            pc._issued_event_tags)
+    try:
+        admin.DATA = tmp
+        pc.DATA = tmp
+        admin.read_companies = lambda: []
+        admin.save_companies = lambda companies, *a, **k: saved.append(list(companies)) or None
+        pc._issued_event_tags = lambda: set()
+        for name, want in (("Alteryx", True), ("Plainco", False)):
+            out = pr._accept_card({"kind": "card", "verdict": "govtech", "name": name,
+                                   "website": f"https://{name.lower()}.test",
+                                   "sector": sector, "category": cat,
+                                   "description": "sells a thing to counties"},
+                                  "owner", "test", False)
+            if out.get("error"):
+                errors += fail(f"_accept_card refused the fixture: {out}")
+                continue
+            landed = saved[-1][-1] if saved and saved[-1] else {}
+            if bool(landed.get("sled_only")) != want:
+                errors += fail(f"{name}: sled_only on the landed company is "
+                               f"{landed.get('sled_only')!r}, want {want}")
+            if want and "SLED-only" not in out.get("message", ""):
+                errors += fail("the accept message does not say the company is SLED-only")
+    finally:
+        (admin.DATA, admin.read_companies, admin.save_companies, pc.DATA,
+         pc._issued_event_tags) = keep
+
+    # and the applier itself: an 'in' decision leaves the scope queue for the
+    # candidate list, stamped, and a second run does nothing
+    import apply_web_rulings as awr
+    tmp2 = pathlib.Path(tempfile.mkdtemp()); (tmp2 / "conference_intake").mkdir()
+    (tmp2 / "vendor_scope_decisions.json").write_text(json.dumps({
+        "acme-data": {"call": "sled", "name": "Acme Data", "on": "2026-09-25", "by": "wyeth"},
+        "outco": {"call": "out", "name": "OutCo", "on": "2026-09-25", "by": "wyeth"}}))
+    (tmp2 / "scope_review_queue.json").write_text(json.dumps({"items": [
+        {"name": "Acme Data", "website": "https://acme.test", "description": "d",
+         "why": "horizontal", "source_event": "X 2026"},
+        {"name": "OutCo", "website": "https://out.test"}]}))
+    (tmp2 / "conference_intake" / "govtech_candidates.json").write_text("[]")
+    keep2 = (awr.DATA, admin.DATA, admin.write_atomic)
+    try:
+        awr.DATA = tmp2; admin.DATA = tmp2
+        admin.write_atomic = lambda name, obj: (tmp2 / name).write_text(json.dumps(obj))
+        import io, contextlib
+        with contextlib.redirect_stdout(io.StringIO()):
+            awr.apply_vendor_scope(False)
+            again = io.StringIO()
+        with contextlib.redirect_stdout(again):
+            awr.apply_vendor_scope(False)
+        cands = json.loads((tmp2 / "conference_intake" / "govtech_candidates.json").read_text())
+        dec = json.loads((tmp2 / "vendor_scope_decisions.json").read_text())
+        rev = json.loads((tmp2 / "scope_review_queue.json").read_text())
+        if len(cands) != 1 or cands[0].get("name") != "Acme Data" or not cands[0].get("sled_only"):
+            errors += fail(f"the sled call did not reach the candidate queue with its flag: {cands}")
+        if not dec["acme-data"].get("landed") or dec["outco"].get("landed"):
+            errors += fail(f"landed stamps are wrong: {dec}")
+        if [i["name"] for i in rev["items"]] != ["OutCo"]:
+            errors += fail(f"the ruled-in vendor was not removed from the scope queue: {rev}")
+        if "1 in/sled" in again.getvalue():
+            errors += fail("apply_vendor_scope is not idempotent")
+    finally:
+        awr.DATA, admin.DATA, admin.write_atomic = keep2
+    return errors
+
+
+def check_the_admin_door_is_verified_on_every_hostname() -> int:
+    """The admin bundle was public on the project's pages.dev alias.
+
+    Measured 2026-09-25: /admin/, /admin/data.json, /admin/rulings.json and
+    /admin/users.json answered 200 with no sign-in on solesource-c6g.pages.dev
+    while the same paths on sledjobs.com 302'd to Access. DEPLOY.md said a
+    custom domain inherits the Access policy; the alias does not, and nothing
+    in the code could tell, because it trusted that a request reaching it had
+    passed a door it could not see.
+
+    functions/admin/_middleware.js is that door, on every hostname, and it
+    VERIFIES the Access JWT rather than trusting a header's presence. Driven
+    through scripts/access_harness.mjs, which imports the real module, mints
+    tokens with a key it generated, and serves the matching JWKS through a
+    fake fetch. Every case below is a way in that must be shut, plus the two
+    paths that must stay open, plus the keys being down (503, never 200).
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import shutil
+    import subprocess
+
+    mw = ROOT / "functions" / "admin" / "_middleware.js"
+    if not mw.exists():
+        return fail("functions/admin/_middleware.js is gone: /admin is open on "
+                    "any hostname Access does not cover")
+    src = mw.read_text()
+    code = "\n".join(ln.split("//")[0] for ln in src.splitlines())
+    if "crypto.subtle.verify" not in code:
+        errors += fail("the admin door no longer verifies the Access JWT signature")
+
+    if not shutil.which("node"):
+        print("  note: node is not installed; the admin door was not driven")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "access_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    if r.returncode != 0:
+        return errors + fail(f"access_harness.mjs did not run: {r.stderr.strip()[:400]}")
+    try:
+        out = json.loads(r.stdout.strip().splitlines()[-1])
+    except Exception as exc:                                    # noqa: BLE001
+        return errors + fail(f"access_harness.mjs printed no JSON ({exc}): {r.stdout[:200]}")
+
+    shut = {"no_token_static": "a static file with no token",
+            "expired": "an expired token", "wrong_aud": "another application's token",
+            "wrong_iss": "a token from another team", "unknown_kid": "a token signed by an unknown key",
+            "forged_sig": "a token with a forged signature", "garbage": "a non-token",
+            "api_no_token": "an API call with no token"}
+    for k, what in shut.items():
+        c = out.get(k) or {}
+        if c.get("status") != 403 or c.get("reached"):
+            errors += fail(f"the admin door let through {what} ({c})")
+    for k, what in (("valid_header", "a valid token in the Access header"),
+                    ("valid_cookie", "a valid token in the CF_Authorization cookie"),
+                    ("whoami_open", "/admin/api/whoami (the public site's account menu)"),
+                    ("login_open", "/admin/api/login")):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached"):
+            errors += fail(f"the admin door refused {what} ({c})")
+    c = out.get("certs_down") or {}
+    if c.get("status") != 503 or c.get("reached"):
+        errors += fail(f"with the Access keys unreachable the door must be 503, got {c}")
+    if not out.get("keys_cached"):
+        errors += fail("the door refetches the Access keys on every request")
+    api = out.get("api_no_token") or {}
+    if not (api.get("json") or {}).get("error"):
+        errors += fail("an API refusal is not JSON with an error, so the phone page "
+                       "cannot show why")
+
+    # Belt and braces: the page says noindex itself.
+    if 'name="robots" content="noindex' not in (ROOT / "admin-web.html").read_text():
+        errors += fail("admin-web.html carries no noindex")
+    return errors
+
+
+def check_a_phone_ruling_stays_ruled() -> int:
+    """Every ruling reappeared on the phone the moment it was saved.
+
+    rulings.json is written at BUILD time, so the commit a ruling just made
+    reaches it minutes later. Each handler marked the row, removed it, and
+    called boot(), which refetched the stale file and put the row back: a
+    saved ruling looked refused and a second tap said "already ruled".
+    Dismissals were worse - admin_dismissed.json was not shipped at all, so
+    "Bucket is right" could never hide its row.
+
+    Three things, each source-level because the page needs a DOM: no ruling
+    handler calls boot() (only render()); the overlay function keeps the
+    file's view AND this session's, driven under node as a pure function;
+    and build_site ships admin_dismissed with the other four files.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import re
+    import shutil
+    import subprocess
+
+    html = (ROOT / "admin-web.html").read_text()
+    js = html[html.index("<script>") + 8: html.rindex("</script>")]
+    handlers = js[js.index("function drawDupes"): js.rindex("boot().catch")]
+    if re.search(r"\bboot\(\)", handlers):
+        errors += fail("a phone ruling handler still calls boot(), which refetches "
+                       "the stale rulings.json and puts the row back")
+    for name in ("function applyLocal", "function mark(", "function markDismissed(",
+                 "sessionStorage"):
+        if name not in js:
+            errors += fail(f"admin-web.html lost {name!r}: a ruling no longer outlives "
+                           "the refetch")
+    for q in ("duplicates", "founded", "miscategorized"):
+        if f'dismissed("{q}"' not in js:
+            errors += fail(f"the {q} rows are not filtered by dismissals, so a dismissed "
+                           "row comes back")
+
+    if shutil.which("node"):
+        m = re.search(r"function applyLocal[\s\S]*?\n}\n", js)
+        if not m:
+            return errors + fail("applyLocal could not be extracted from admin-web.html")
+        probe = m.group(0) + r"""
+const file={vendor:{acme:{on:"2026-09-01"}},place:{},merge:{},founded:{},dismissed:{founded:{x1:{}}}};
+const local={vendor:{"beta-co":1},place:{c9:1},merge:{},founded:{},dismissed:{miscategorized:{c9:1}}};
+const o=applyLocal(file,local);
+console.log(JSON.stringify({file_kept:"acme" in o.vendor&&o.vendor.acme.on==="2026-09-01",
+  local_added:"beta-co" in o.vendor&&"c9" in o.place,
+  dismissed_both:!!(o.dismissed.founded.x1&&o.dismissed.miscategorized.c9)}));
+"""
+        r = subprocess.run(["node", "-e", probe], capture_output=True, text=True, timeout=30)
+        try:
+            got = json.loads(r.stdout.strip().splitlines()[-1])
+        except Exception:                                       # noqa: BLE001
+            return errors + fail(f"applyLocal did not run under node: {r.stderr[:200]}")
+        for k, why in (("file_kept", "the file's rulings were dropped"),
+                       ("local_added", "this session's rulings were dropped"),
+                       ("dismissed_both", "dismissals from file and session did not merge")):
+            if not got.get(k):
+                errors += fail(f"applyLocal: {why}")
+
+    bs = (ROOT / "scripts" / "build_site.py").read_text()
+    bs = "\n".join(ln.split("#")[0] for ln in bs.splitlines())
+    if '"admin_dismissed"' not in bs:
+        errors += fail("build_site.py no longer ships admin_dismissed in rulings.json")
+    return errors
+
+
+def check_a_phone_session_cannot_kill_the_nightly_run() -> int:
+    """26 rulings from a phone made apply_web_rulings exit 1, every night.
+
+    save_companies refuses more than journal.BLAST changes unless the count
+    was seen; the applier never said it had, returned 1, and the workflow
+    step has no continue-on-error - so a productive Sunday stopped Monday's
+    crawl and board build, and every night after, because the rulings stayed
+    pending. It writes in chunks now, forced (the count is a person's own
+    decisions, seen here), attributed to the web, and a refusal is printed
+    and left pending rather than failing the run. Source-level: the applier
+    writes companies.json and cannot be driven against a fixture safely.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import journal
+    src = (ROOT / "scripts" / "apply_web_rulings.py").read_text()
+    code = "\n".join(ln.split("#")[0] for ln in src.splitlines())
+    if "return 1" in code:
+        errors += fail("apply_web_rulings can still exit 1 on a refusal, which fails "
+                       "the nightly run that carries the crawl")
+    # EVERY save is forced, not "a force=True exists somewhere in the file" -
+    # a presence check let one unforced placement save through.
+    saves = code.count("admin.save_companies(")
+    forced = code.count("force=True")
+    if saves == 0 or forced < saves:
+        errors += fail(f"apply_web_rulings has {saves} save(s) and {forced} forced, so a "
+                       f"session over {journal.BLAST} rulings is refused every night")
+    if f"CHUNK = {journal.BLAST}" not in code:
+        errors += fail(f"apply_web_rulings' CHUNK is not journal.BLAST ({journal.BLAST}), "
+                       "so one forced write can exceed what one undo can take back")
+    if code.count("_chunks(") < 3:
+        errors += fail("not every applier writes in chunks (founded, placements)")
+    if 'by="owner"' in code:
+        errors += fail("apply_web_rulings still journals a web ruling as the owner's")
+    if "apply_founded(a.dry_run) or apply_merges" in code:
+        errors += fail("a founded refusal still short-circuits the merges")
+    return errors
+
+
+def check_the_desk_admin_says_what_it_did() -> int:
+    """Three things the Start-here dashboard and one door got wrong.
+
+    - "N rulings this sitting" reported the LAST run of rulings however old:
+      a Tuesday evening read as this sitting on Sunday. A sitting is closed
+      by the same four-hour gap that splits runs.
+    - Every "Today's sorties" bar was written with done=0, so a bar the
+      comment beside it says "can fill" could not move.
+    - POST /api/dismiss with {} answered 200 and journalled a dismissal keyed
+      ""/"" as the owner's ruling.
+    - The vendor-scope door promised "will be added as a full company" and
+      nothing anywhere landed an 'in' or 'sled' call.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import datetime as dt
+
+    import admin
+
+    now = dt.datetime.now(dt.timezone.utc)
+    keep = admin._ruling_stamps
+    try:
+        admin._ruling_stamps = lambda mine_only=True: [
+            (now - dt.timedelta(days=3), "vendors")] * 7
+        s = admin.sessions()
+        if s["this_session"] != 0:
+            errors += fail(f"a run three days old still counts as this sitting: {s}")
+        admin._ruling_stamps = lambda mine_only=True: [
+            (now - dt.timedelta(minutes=30), "miscategorized"),
+            (now - dt.timedelta(minutes=20), "miscategorized"),
+            (now - dt.timedelta(minutes=10), "vendors")]
+        s = admin.sessions()
+        if s["this_session"] != 3:
+            errors += fail(f"a live sitting of 3 rulings reads as {s['this_session']}")
+        # the sortie bar reads the same sitting, per queue
+        companies = admin.read_companies()
+        board = json.loads((DATA / "board.json").read_text())
+        t = admin.triage(companies, board)
+        by_q = {r["queue"]: r for r in t["recommend"]}
+        if "miscategorized" in by_q and by_q["miscategorized"].get("done") != 2:
+            errors += fail("the wrong-bucket sortie does not count this sitting's two "
+                           f"rulings: {by_q['miscategorized'].get('done')!r}")
+        if "vendors" in by_q and by_q["vendors"].get("done") != 1:
+            errors += fail("the vendor sortie does not count this sitting's ruling: "
+                           f"{by_q['vendors'].get('done')!r}")
+        if any(r.get("done") is None for r in t["recommend"]):
+            errors += fail("a sortie carries no done count at all")
+    finally:
+        admin._ruling_stamps = keep
+
+    # an empty dismissal is refused before anything is written
+    wrote = []
+    keep_d = admin.dismiss
+    try:
+        admin.dismiss = lambda *a, **k: wrote.append((a, k)) or None
+        for body in ({}, {"queue": "founded"}, {"key": "x"}, {"queue": "", "key": ""},
+                     {"queue": 5, "key": "x"}):
+            try:
+                out = admin.act_dismiss(body)
+            except Exception as exc:                            # noqa: BLE001
+                # a crash is not a refusal: the handler answers 500 with a
+                # traceback instead of a message a person can act on
+                out = {"crashed": f"{type(exc).__name__}: {exc}"}
+            if not out.get("error"):
+                errors += fail(f"act_dismiss accepted or crashed on {body!r}: {out}")
+        if wrote:
+            errors += fail(f"act_dismiss wrote a dismissal for a body it should refuse: {wrote}")
+        out = admin.act_dismiss({"queue": "founded", "key": "acme", "why": "x"})
+        if out.get("error") or not wrote:
+            errors += fail(f"act_dismiss refused a complete dismissal: {out}")
+    finally:
+        admin.dismiss = keep_d
+
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    code = "\n".join(ln.split("#")[0] for ln in src.splitlines())
+    if "will be added as a full company" in code:
+        errors += fail("the vendor-scope door still promises a company will be added; "
+                       "nothing lands an 'in' call unless apply_vendor_scope exists")
+    return errors
+
+
 def check_web_ruling_stores_a_handle_not_a_person() -> int:
     """The web door writes a handle, and only an admin may write at all.
 
@@ -23878,6 +24257,11 @@ def main() -> int:
     errors += check_news_record_names_its_company_without_the_cache()
     errors += check_every_dismiss_names_its_row()
     errors += check_web_ruling_stores_a_handle_not_a_person()
+    errors += check_the_admin_door_is_verified_on_every_hostname()
+    errors += check_a_phone_ruling_stays_ruled()
+    errors += check_a_phone_session_cannot_kill_the_nightly_run()
+    errors += check_the_desk_admin_says_what_it_did()
+    errors += check_a_sled_scope_call_reaches_the_landed_company()
     errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()
     errors += check_journal_shapes_round_trip()

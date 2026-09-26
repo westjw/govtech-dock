@@ -26,6 +26,22 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import admin  # noqa: E402  (validate + write_atomic live there)
 
 
+# A GOOD PHONE SESSION MUST NOT TAKE THE NIGHTLY RUN DOWN. save_companies goes
+# through journal.check, which refuses more than BLAST (25) changes in one
+# write unless told the count was seen; 26 wrong-bucket rulings on a Sunday
+# therefore made this exit 1 on Monday, before the crawl and the board build,
+# and again every night after, because the rulings stayed pending. Each web
+# ruling is a person's individual decision, so the count IS seen - here - and
+# the writes are chunked to BLAST so every journal entry stays undoable in one
+# piece. A refusal is printed and the rulings stay pending; it never fails the
+# run that carries the crawl.
+CHUNK = 25
+
+
+def _chunks(items: list) -> list:
+    return [items[i:i + CHUNK] for i in range(0, len(items), CHUNK)]
+
+
 def _pending(name: str) -> dict:
     """Opinions from the web that the daily run has not applied yet."""
     path = DATA / name
@@ -50,37 +66,108 @@ def apply_founded(dry: bool) -> int:
     if not pending:
         return 0
     rows = json.loads((DATA / "web_founded_rulings.json").read_text())
-    companies = admin.read_companies()
-    by_id = {c["id"]: c for c in companies}
     done, failed = [], []
-    for cid, r in pending.items():
-        c = by_id.get(cid)
-        if c is None:
-            failed.append((cid, "no such company - merged away since the ruling"))
+    for chunk in _chunks(list(pending.items())):
+        companies = admin.read_companies()
+        by_id = {c["id"]: c for c in companies}
+        landed = []
+        for cid, r in chunk:
+            c = by_id.get(cid)
+            if c is None:
+                failed.append((cid, "no such company - merged away since the ruling"))
+                continue
+            was = c.get("year_founded")
+            c["year_founded"] = int(r["year"])   # an int, like every other year on the map
+            err = admin.validate(companies)
+            if err:
+                c["year_founded"] = was
+                failed.append((cid, err))
+                continue
+            landed.append((cid, was, r["year"]))
+        if dry or not landed:
+            done.extend(landed)
             continue
-        was = c.get("year_founded")
-        c["year_founded"] = int(r["year"])       # an int, like every other year on the map
-        err = admin.validate(companies)
-        if err:
-            c["year_founded"] = was
-            failed.append((cid, err))
+        print(f"  writing {len(landed)} founding year(s) (count seen; chunk of at most {CHUNK})")
+        bad = admin.save_companies(companies, "apply-web-founded",
+                                   f"{len(landed)} founding year(s) from the web admin",
+                                   by="web", force=True)
+        if bad:
+            print(f"refused: {bad}; these stay pending")
+            failed.extend((cid, bad) for cid, _, _ in landed)
             continue
-        done.append((cid, was, r["year"]))
-        rows[cid]["applied"] = True
+        for cid, _, _ in landed:
+            rows[cid]["applied"] = True
+        done.extend(landed)
     print(f"founding years: {len(done)} applied, {len(failed)} left pending")
     for cid, was, now in done[:8]:
         print(f"  {cid}: {was or 'unknown'} -> {now}")
     for cid, why in failed[:5]:
         print(f"  PENDING {cid}: {why}")
-    if dry or not done:
+    if not dry and done:
+        admin.write_atomic("web_founded_rulings.json", rows)
+    return 0
+
+
+def apply_vendor_scope(dry: bool) -> int:
+    """A vendor ruled IN or SLED-only goes back to the candidate queue.
+
+    57 vendor-scope calls sat recorded and unacted on: 'out' worked by
+    accident (hiding IS the outcome) while 'in' and 'sled' had no landing at
+    all, and both doors said "will be added as a full company". A scope-review
+    item carries no sector or category, and validate() refuses a company
+    without one, so this cannot write companies.json. What it can do is hand
+    the vendor back to the path that already lands candidates WITH a sector:
+    govtech_candidates.json is what the card agent reads and
+    promote_candidates.py lands, behind the owner's gate. `sled_only` rides
+    along so a 'sled' call becomes the flag on the landed company.
+
+    The decision is stamped `landed` with where it went, so this is
+    idempotent and the phone can say where the vendor actually is.
+    """
+    import datetime as dt
+    path = DATA / "vendor_scope_decisions.json"
+    if not path.exists():
         return 0
-    bad = admin.save_companies(companies, "apply-web-founded",
-                               f"{len(done)} founding year(s) from the web admin",
-                               by="owner")
-    if bad:
-        print(f"refused: {bad}")
-        return 1
-    admin.write_atomic("web_founded_rulings.json", rows)
+    decisions = json.loads(path.read_text())
+    todo = {k: d for k, d in decisions.items()
+            if isinstance(d, dict) and d.get("call") in ("in", "sled") and not d.get("landed")}
+    if not todo:
+        return 0
+    review_p = DATA / "scope_review_queue.json"
+    review = json.loads(review_p.read_text()) if review_p.exists() else {"items": []}
+    cand_p = DATA / "conference_intake" / "govtech_candidates.json"
+    cands = json.loads(cand_p.read_text()) if cand_p.exists() else []
+    norm = lambda n: "".join(ch for ch in (n or "").lower() if ch.isalnum())  # noqa: E731
+    have = {norm(c.get("name")) for c in cands}
+    by_name = {norm(i.get("name")): i for i in review.get("items", [])}
+    moved, missing = [], []
+    for key, d in todo.items():
+        item = by_name.get(norm(d.get("name")))
+        if item is None:
+            missing.append((d.get("name"), "not in the scope review queue any more"))
+            continue
+        if norm(item["name"]) not in have:
+            cands.append({"name": item["name"], "website": item.get("website"),
+                          "vertical": item.get("why"), "description": item.get("description"),
+                          "source_event": item.get("source_event"),
+                          "sled_only": d["call"] == "sled",
+                          "from_scope_ruling": {"call": d["call"], "on": d.get("on"),
+                                                "by": d.get("by")}})
+            have.add(norm(item["name"]))
+        moved.append((key, item["name"], d["call"]))
+        d["landed"] = {"to": "candidates", "on": dt.date.today().isoformat()}
+        review["items"] = [i for i in review["items"] if norm(i.get("name")) != norm(item["name"])]
+    print(f"vendor scope: {len(moved)} in/sled ruling(s) handed to the candidate queue, "
+          f"{len(missing)} could not be")
+    for _, name, call in moved[:8]:
+        print(f"  {name}: {call} -> govtech_candidates.json")
+    for name, why in missing[:5]:
+        print(f"  PENDING {name}: {why}")
+    if dry or not moved:
+        return 0
+    cand_p.write_text(json.dumps(cands, indent=1, ensure_ascii=False) + "\n")
+    review_p.write_text(json.dumps(review, indent=1, ensure_ascii=False) + "\n")
+    admin.write_atomic("vendor_scope_decisions.json", decisions)
     return 0
 
 
@@ -124,7 +211,8 @@ def apply_merges(dry: bool) -> int:
         # leaves the others alone instead of taking the batch down with it.
         out = admin.act_merge({"keep": r["keep"], "drop": r["drop"],
                                "why": r.get("why") or "",
-                               "by": r.get("by") or "owner"})
+                               # the handle rule.js recorded, never the owner by default
+                               "by": f"web:{r.get('by') or 'unknown'}"})
         if out.get("error"):
             failed.append((key, out["error"]))
             continue
@@ -146,7 +234,11 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    rc = apply_founded(a.dry_run) or apply_merges(a.dry_run)
+    # EVERY APPLIER RUNS. `apply_founded(...) or apply_merges(...)` skipped the
+    # merges whenever founded returned non-zero.
+    rc = 0
+    for step in (apply_founded, apply_merges, apply_vendor_scope):
+        rc = step(a.dry_run) or rc
 
     path = DATA / "placement_rulings.json"
     if not path.exists():
@@ -161,50 +253,54 @@ def main() -> int:
 
     # through read_companies so save_companies has a real before-image to
     # diff against - reading the file directly leaves the journal comparing
-    # against whatever the last caller happened to load
-    companies = admin.read_companies()
-    by_id = {c["id"]: c for c in companies}
+    # against whatever the last caller happened to load. One read per chunk,
+    # so each write diffs against what the previous chunk left.
     moved, failed = [], []
-    for cid, r in pending.items():
-        c = by_id.get(cid)
-        if c is None:
-            failed.append((cid, "no such company"))
+    for chunk in _chunks(list(pending.items())):
+        companies = admin.read_companies()
+        by_id = {c["id"]: c for c in companies}
+        landed = []
+        for cid, r in chunk:
+            c = by_id.get(cid)
+            if c is None:
+                failed.append((cid, "no such company"))
+                continue
+            was = (c["sector"], c["category"])
+            c["sector"], c["category"] = r["sector"], r["category"]
+            err = admin.validate(companies)
+            if err:
+                # revert just this one and keep going; the ruling stays pending
+                c["sector"], c["category"] = was
+                failed.append((cid, err))
+                continue
+            landed.append((cid, was, (r["sector"], r["category"]), r))
+        if a.dry_run or not landed:
+            moved.extend(landed)
             continue
-        was = (c["sector"], c["category"])
-        c["sector"], c["category"] = r["sector"], r["category"]
-        err = admin.validate(companies)
-        if err:
-            # revert just this one and keep going; the ruling stays pending
-            c["sector"], c["category"] = was
-            failed.append((cid, err))
+        # THROUGH save_companies, NOT write_atomic: these are the rulings a
+        # person is most likely to want back - made on a small screen, away
+        # from the evidence, applied hours later by a cron nobody watches - so
+        # every one gets a before-image and an undo.
+        print(f"  writing {len(landed)} placement(s) (count seen; chunk of at most {CHUNK})")
+        bad = admin.save_companies(
+            companies, "apply-web-rulings",
+            f"{len(landed)} placement ruling(s) from the web admin", by="web", force=True)
+        if bad:
+            print(f"refused: {bad}; these stay pending")
+            failed.extend((cid, bad) for cid, _, _, _ in landed)
             continue
-        moved.append((cid, was, (r["sector"], r["category"])))
-        r["applied"] = True
+        for _, _, _, r in landed:
+            r["applied"] = True
+        moved.extend(landed)
 
     print(f"{len(moved)} applied, {len(failed)} left pending")
-    for cid, was, now in moved[:10]:
+    for cid, was, now, _ in moved[:10]:
         print(f"  {cid}: {was[0]}/{was[1]} -> {now[0]}/{now[1]}")
     for cid, why in failed[:5]:
         print(f"  PENDING {cid}: {why}")
-    if a.dry_run:
-        return 0
-    # THROUGH save_companies, NOT write_atomic. This is the daily run that
-    # applies every ruling the owner makes from his phone, and it was writing
-    # companies.json directly - so those writes had no before-image and no
-    # undo, while CLAUDE.md promised every admin write was reversible. A
-    # review caught it. The rulings arriving here are exactly the ones a
-    # person is most likely to want back: they were made on a small screen,
-    # away from the evidence, and applied hours later by a cron job nobody
-    # watches.
-    bad = admin.save_companies(
-        companies, "apply-web-rulings",
-        f"{len(moved)} placement ruling(s) from the web admin", by="owner")
-    if bad:
-        print(f"refused: {bad}")
-        print("no rulings were applied; they stay pending for the next run")
-        return 1
-    admin.write_atomic("placement_rulings.json", rulings)
-    return 0
+    if not a.dry_run and moved:
+        admin.write_atomic("placement_rulings.json", rulings)
+    return rc
 
 
 if __name__ == "__main__":
