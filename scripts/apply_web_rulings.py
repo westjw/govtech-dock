@@ -98,6 +98,20 @@ def apply_founded(dry: bool) -> int:
         for cid, _, _ in landed:
             rows[cid]["applied"] = True
         done.extend(landed)
+    # A YEAR A PERSON TYPED IS A CONFIRMATION, whether or not it changed the
+    # record. The desk confirms through _record_confirmation; this never did,
+    # so a web year equal to the agent's guess produced an empty diff, wrote
+    # nothing, and left the row "unconfirmed" in the Founding year tab for
+    # ever. Confirmed here for every year that was not refused.
+    if not dry:
+        refused = {c for c, _ in failed}
+        for cid, r in pending.items():
+            if cid in refused:
+                continue
+            try:
+                admin._record_confirmation(cid, int(r["year"]), f"web:{r.get('by') or 'unknown'}")
+            except Exception as exc:                            # noqa: BLE001
+                print(f"  confirmation not recorded for {cid}: {exc}")
     print(f"founding years: {len(done)} applied, {len(failed)} left pending")
     for cid, was, now in done[:8]:
         print(f"  {cid}: {was or 'unknown'} -> {now}")

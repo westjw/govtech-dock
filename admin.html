@@ -773,7 +773,7 @@ async function showSweep(cat, sec) {
     const sign = el('button', null, it.reviewed ? 'Re-open' : 'I read this');
     sign.onclick = async () => {
       sign.disabled = true;
-      const body = {company_id: it.id, call: CALL};
+      const body = {company_id: it.id};
       if (it.reviewed) body.clear = true;
       else body.note = prompt('Anything worth noting? (optional)') || '';
       const res = await api('/api/page-review', body);
@@ -825,11 +825,19 @@ async function showStart() {
     row.appendChild(el('span', 'pl', pt.label));
     const bar = el('span', 'pbar');
     const fill = el('span', 'pfill');
-    fill.style.width = Math.max(2, pt.pct) + '%';
-    if (pt.pct < 50) fill.classList.add('low');
-    bar.appendChild(fill);
-    row.appendChild(bar);
-    row.appendChild(el('span', 'ppct', pt.pct + '%'));
+    /* NO DENOMINATOR IS NOT ZERO. board_health returns pct null when a part
+       has nothing to measure against, and this drew it as a 2% red bar
+       reading "null%" - the unknown-as-negative the server refused. */
+    if (pt.pct == null) {
+      row.appendChild(bar);
+      row.appendChild(el('span', 'ppct', '—'));
+    } else {
+      fill.style.width = Math.max(2, pt.pct) + '%';
+      if (pt.pct < 50) fill.classList.add('low');
+      bar.appendChild(fill);
+      row.appendChild(bar);
+      row.appendChild(el('span', 'ppct', pt.pct + '%'));
+    }
     row.title = pt.note;
     const note = el('div', 'pnote', pt.note);
     const wrap = el('div');
@@ -964,7 +972,7 @@ async function showStart() {
      wrong number even when the arithmetic is right, so the set is said out
      loud: the rulings that HAVE somewhere to put a reason. */
   counter.append(
-    big(onTable, 'decisions waiting on you'),
+    big(onTable, 'waiting in Vendor scope, Wrong bucket and Duplicates'),
     big(visible, 'of them wrong on the public site right now', 'amber'),
     big(g.why_coverage === null || g.why_coverage === undefined
         ? '—' : g.why_coverage + '%',
@@ -986,8 +994,8 @@ async function showStart() {
   line.appendChild(el('span', null,
     ss.this_session
       ? `${ss.this_session} ruling${ss.this_session === 1 ? '' : 's'} this sitting`
-        + ` · your best sitting is ${ss.best_session}`
-      : `${ss.rulings || 0} rulings across ${ss.sessions || 0} sittings · best ${ss.best_session || 0}`));
+        + ` · your best sitting in 30 days is ${ss.best_session_30}`
+      : `${ss.rulings || 0} rulings across ${ss.sessions || 0} sittings · best in 30 days ${ss.best_session_30 || 0}`));
   /* The badge reads the PACED count, not the raw one. Forty-one rulings in
      2.6 seconds is a real tally and is shown as one; it is not a personal
      best, and a screen that called it one would be handing out the trophy
@@ -1109,7 +1117,9 @@ async function showStart() {
   const rc = t.receipt || {};
   if (rc.open && (rc.stamped || rc.edits || (rc.doors || []).length
                   || (rc.by_others || []).length)) {
-    v.appendChild(el('div', 'lbl', 'This sitting'));
+    /* NOT HEADED "This sitting" WHEN NONE OF IT IS YOURS: an agent's writes
+       since you last sat are shown as exactly that. */
+    v.appendChild(el('div', 'lbl', rc.agent_only ? 'Since you last sat (not your rulings)' : 'This sitting'));
     v.appendChild(receiptCard(rc));
   }
 
@@ -1251,13 +1261,19 @@ async function showPage(id) {
     right.appendChild(g);
   }
 
+  /* vendor_type IS NOT A FIELD TO TYPE INTO. Every one of the 2,045 records
+     carries "GovTech Product"; a value typed here that tags.py does not know
+     lands and silently drops the sells tag at build. Shown, never edited. */
   const FIELDS = [
     ['website', 'Website', 'https://…'],
     ['description', 'Description', 'one line: what they sell + to whom'],
     ['location', 'HQ', 'City, ST'],
     ['year_founded', 'Year founded', 'a whole year, or leave blank'],
-    ['vendor_type', 'What they sell', 'GovTech Product, Equipment / Components…'],
   ];
+  { const wrap = el('div', 'fld');
+    wrap.appendChild(el('label', 'kv', 'What they sell'));
+    wrap.appendChild(el('div', 'kv', c.vendor_type || '—'));
+    right.appendChild(wrap); }
   FIELDS.forEach(([key, label, ph]) => {
     const wrap = el('div', 'fld');
     wrap.appendChild(el('label', 'kv', label));
@@ -1275,7 +1291,7 @@ async function showPage(id) {
       if (inp.value === was) return;
       said.textContent = 'saving…';
       const fields = {}; fields[key] = inp.value.trim();
-      const res = await api('/api/patch', {id: id, fields: fields, call: CALL});
+      const res = await api('/api/patch', {id: id, fields: fields});
       said.textContent = res.error ? '' : 'saved';
       if (res.error) { toast(res.error, true); inp.value = was; }
       else setTimeout(() => showPage(id), 400);
@@ -1325,7 +1341,7 @@ async function showPage(id) {
         if (!ok && !why) return toast('a rejection needs a reason', true);
         b.disabled = true;
         const res = await api('/api/proposal-ruling',
-          {key: p.key, accept: ok, why: why, call: CALL});
+          {key: p.key, accept: ok, why: why});
         b.disabled = false;
         toast(res.error || res.message);
         if (!res.error) showPage(id);
@@ -1340,7 +1356,7 @@ async function showPage(id) {
   const sign = el('button', 'act go', r.reviewed ? 'Re-open this page' : 'Approve this page');
   sign.onclick = async () => {
     sign.disabled = true;
-    const body = {company_id: id, call: CALL};
+    const body = {company_id: id};
     if (r.reviewed) body.clear = true;
     else body.note = prompt('Anything worth noting? (optional)') || '';
     const res = await api('/api/page-review', body);

@@ -212,6 +212,17 @@ async function boot(){
   }
   RULED=applyLocal(FILE,LOCAL);
   render();
+  /* "WE COULD NOT READ WHAT HAS BEEN RULED" IS SAID, NOT GUESSED AROUND. The
+     flag was set and read by nothing, so a deploy mid-flight drew every queue
+     as unruled with the buttons live. Now the page says so and rules nothing
+     until a reload reads the file. */
+  if(RULED_UNKNOWN){
+    const b=el("div","card");b.style.background="var(--bad)";b.style.color="#fff";
+    b.textContent="rulings.json could not be read, so what is already ruled is unknown. "
+      +"Nothing here will be sent until a reload reads it.";
+    $("#view").prepend(b);
+    document.querySelectorAll("#view button").forEach(x=>x.disabled=true);
+  }
 }
 /* Everything below the fetches. Called again after every ruling, WITHOUT the
    fetches: the file has not changed yet, and this session's overlay has. */
@@ -351,6 +362,18 @@ function drawFounded(v){
     const n=el("div","card");
     n.appendChild(el("div","nm",x.name));
     n.appendChild(el("div","kv",(x.description||"").slice(0,150)));
+    /* THE YEAR ALREADY ON THE ROW, and one tap to confirm it. An agent's
+       guess was shipped as `year`/`kind` and drawn as an empty box, so the
+       person retyped it and the retype confirmed nothing. */
+    if(x.kind==="unconfirmed"&&x.year){
+      const row0=el("div","row");
+      row0.appendChild(el("span","chip",`on file: ${x.year} (unconfirmed)`));
+      const ok=el("button","act good",`Confirm ${x.year}`);
+      ok.onclick=async()=>{ok.disabled=true;
+        const r=await rule({kind:"founded",id:x.id,year:x.year,name:x.name,source:x.about||x.website});
+        ok.disabled=false;if(r){mark("founded",x.id);n.remove();render()}};
+      row0.appendChild(ok);n.appendChild(row0);
+    }
     const row=el("div","row");
     if(x.about){const a=el("a",null,"their about page");a.href=x.about;a.target="_blank";a.rel="noopener";row.appendChild(a)}
     if(x.linkedin){const a=el("a",null,"linkedin");a.href=x.linkedin;a.target="_blank";a.rel="noopener";row.appendChild(a)}

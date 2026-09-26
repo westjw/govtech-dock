@@ -999,6 +999,129 @@ def check_a_sled_scope_call_reaches_the_landed_company() -> int:
     return errors
 
 
+def check_the_approval_screen_can_actually_send() -> int:
+    """Every write on the Page sweep and approval screen threw before fetch.
+
+    Four handlers built their body with `call: CALL`, an identifier defined
+    nowhere in admin.html; the browser raised ReferenceError and no request
+    ever left the page. Nothing in this suite executes admin.html's JavaScript,
+    so a wiring finder driving the page in a browser was the first thing to
+    notice - a month after the screen shipped. This file still cannot run the
+    page, but it can do the one cheap thing that catches this class: every
+    ALL-CAPS identifier the script uses must be declared in it (const/let/var/
+    function/class, an object key, or a property), or be a browser global.
+    Driven by mutation: put `call: CALL` back and this fires.
+
+    The same batch: a typed year could never land (validate refuses a string;
+    act_patch coerces now), proposal rulings reach the sitting count, the
+    desk's personal best is the 30-day one, a receipt anchors on the person,
+    a web year confirms the row, the phone says when rulings.json is
+    unreadable and offers a one-tap confirm, and the route list says seven.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import datetime as dt
+    import re as _re
+
+    import admin
+    import apply_web_rulings as awr
+
+    html = (ROOT / "admin.html").read_text()
+    js = html[html.index("<script>") + 8: html.rindex("</script>")]
+    code = _re.sub(r"/\*[\s\S]*?\*/|//[^\n]*", "", js)
+    nostr = _re.sub(r"`(?:\\.|[^`\\])*`|'(?:\\.|[^'\\\n])*'|\"(?:\\.|[^\"\\\n])*\"", "''", code)
+    # a regex literal after an operator or open paren: /^CHECK/.test(x)
+    nostr = _re.sub(r"(?<=[(=,:!&|?{}\[;]\s)/(?![/*])(?:\\.|[^/\\\n])+/[gimsuy]*", "/re/", nostr)
+    nostr = _re.sub(r"(?<=[(=,:!&|?{}\[;])/(?![/*])(?:\\.|[^/\\\n])+/[gimsuy]*", "/re/", nostr)
+    used = set(_re.findall(r"(?<![\w.$])([A-Z][A-Z0-9_]{2,})\b(?!\s*:)", nostr))
+    # a declaration list: `let META = null, SCHEMA = null, TAB = null;`
+    declared = set()
+    for m in _re.finditer(r"\b(?:const|let|var)\b([^;]*);", nostr):
+        declared |= set(_re.findall(r"(?:^|[,\s])([A-Z][A-Z0-9_]{2,})\s*(?==|,|$)", m.group(1)))
+    declared |= set(_re.findall(r"\b(?:function|class)\s+([A-Z][A-Z0-9_]{2,})", nostr))
+    declared |= set(_re.findall(r"\b([A-Z][A-Z0-9_]{2,})\s*:", nostr))       # object keys
+    BROWSER = {"JSON", "URL", "URLSearchParams", "NaN", "Infinity", "Math", "Date",
+               "Promise", "Map", "Set", "Object", "Array", "Number", "String",
+               "Boolean", "Error", "RegExp", "Symbol", "Intl", "DOMParser",
+               "HTMLElement", "Node", "Event", "CustomEvent", "AbortController",
+               "TextEncoder", "TextDecoder", "Blob", "FormData", "Headers",
+               "Request", "Response", "MutationObserver", "IntersectionObserver",
+               "ResizeObserver", "XMLHttpRequest", "WebSocket", "Image", "FileReader"}
+    undeclared = sorted(used - declared - BROWSER)
+    if undeclared:
+        errors += fail(f"admin.html uses ALL-CAPS identifiers it never declares - each is a "
+                       f"ReferenceError the moment its handler runs: {undeclared}")
+
+    # act_patch: a typed year lands as an int, blank clears, junk is refused
+    saved = []
+    keep = (admin.read_companies, admin.save_companies, admin.validate)
+    try:
+        admin.read_companies = lambda: [{"id": "acme", "name": "Acme", "year_founded": 1999}]
+        admin.save_companies = lambda companies, *a, **k: saved.append(list(companies)) or None
+        admin.validate = lambda companies: None
+        out = admin.act_patch({"id": "acme", "fields": {"year_founded": "2005"}})
+        if out.get("error") or saved[-1][0].get("year_founded") != 2005:
+            errors += fail(f"a typed year did not land as an int: {out} {saved[-1:]}")
+        out = admin.act_patch({"id": "acme", "fields": {"year_founded": ""}})
+        if out.get("error") or saved[-1][0].get("year_founded") is not None:
+            errors += fail(f"a blank year did not clear the field: {out}")
+        out = admin.act_patch({"id": "acme", "fields": {"year_founded": "about 2005"}})
+        if not out.get("error"):
+            errors += fail("junk in the year field was accepted")
+    finally:
+        admin.read_companies, admin.save_companies, admin.validate = keep
+
+    for action in ("proposal-accept", "proposal-reject", "board-proposal"):
+        if action not in admin.JOURNAL_RULINGS:
+            errors += fail(f"{action} is still counted by no meter, best or end state")
+
+    now = dt.datetime.now(dt.timezone.utc)
+    keep2 = admin._ruling_stamps
+    try:
+        admin._ruling_stamps = lambda mine_only=True: (
+            [(now - dt.timedelta(days=60), "vendors")] * 9
+            + [(now - dt.timedelta(days=2), "vendors")] * 4)
+        ss = admin.sessions()
+        if ss.get("best_session_30") != 4 or ss.get("best_session") != 9:
+            errors += fail(f"the 30-day best is wrong: {ss}")
+    finally:
+        admin._ruling_stamps = keep2
+
+    # the receipt anchors on a person; an agent write alone opens nothing
+    import journal
+    keep3 = (journal._entries, admin._ruling_stamps)
+    try:
+        stamp = (now - dt.timedelta(days=5)).isoformat()
+        journal._entries = lambda: [{"id": "x#1", "at": stamp, "by": "agent:add-company",
+                                     "action": "add-company", "n": 1}]
+        admin._ruling_stamps = lambda mine_only=True: []
+        rc = admin.receipt()
+        if not rc.get("agent_only") or not rc.get("by_others"):
+            errors += fail("a run holding only an agent write is not flagged agent_only, so the "
+                           f"page heads it \"This sitting\": {rc}")
+    finally:
+        journal._entries, admin._ruling_stamps = keep3
+
+    # a web year confirms the row, whether or not it changed it
+    src = "\n".join(ln.split("#")[0] for ln in (ROOT / "scripts" / "apply_web_rulings.py").read_text().splitlines())
+    if "_record_confirmation(" not in src.split("def apply_founded")[1].split("def apply_")[0]:
+        errors += fail("apply_founded never confirms the year through _record_confirmation")
+
+    web = (ROOT / "admin-web.html").read_text()
+    if "if(RULED_UNKNOWN)" not in web or "could not be read" not in web:
+        errors += fail("the phone page still says nothing when rulings.json cannot be read")
+    if 'x.kind==="unconfirmed"' not in web or "Confirm ${x.year}" not in web:
+        errors += fail("the phone page hides the year already on the row and offers no confirm")
+
+    if "Seven\nroutes are served" not in (ROOT / "CLAUDE.md").read_text() and \
+       "Seven routes are served" not in (ROOT / "CLAUDE.md").read_text().replace("\n  ", " "):
+        errors += fail("CLAUDE.md still lists six routes; /preview/c/ is the seventh")
+    return errors
+
+
 def check_six_small_things_the_audit_named() -> int:
     """Each reproduced by reading the code, then fixed, then driven here.
 
@@ -24561,6 +24684,7 @@ def main() -> int:
     errors += check_a_sled_scope_call_reaches_the_landed_company()
     errors += check_the_web_admin_can_grant_and_the_desk_agrees()
     errors += check_six_small_things_the_audit_named()
+    errors += check_the_approval_screen_can_actually_send()
     errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()
     errors += check_journal_shapes_round_trip()

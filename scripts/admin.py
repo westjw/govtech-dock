@@ -1562,9 +1562,16 @@ def sessions(limit: int = 30) -> dict:
     # like today's.
     live = bool(runs) and (dt.datetime.now(dt.timezone.utc) - runs[-1][-1]
                            ).total_seconds() <= SITTING_GAP
+    # THE SPEC SAYS "YOUR OWN LAST 30 DAYS". best_session is the all-time
+    # maximum, which can only be beaten by beating an all-time high and
+    # disagrees with the phone's 30-day figure; best_session_30 is what the
+    # desk shows now. All-time is kept for the record.
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=30)
+    recent = [r for r in runs if r[-1] >= cutoff]
     return {
         "sessions": len(runs),
         "best_session": max((len(r) for r in runs), default=0),
+        "best_session_30": max((len(r) for r in recent), default=0),
         "this_session": len(runs[-1]) if live else 0,
         "best_considered": max(considered, default=0),
         "this_considered": considered[-1] if live else 0,
@@ -2320,6 +2327,11 @@ JOURNAL_RULINGS = {
     "set-board": "boards", "retry-board": "boards", "posts-at": "boards",
     "save-website": "websites", "merge": "duplicates",
     "also": "placement", "move": "placement",
+    # A SITTING SPENT ACCEPTING WRITE-UPS COUNTED AS NOTHING. Proposal rulings
+    # were journalled under these actions and none was in this map, so 32 of
+    # the owner's rulings reached no sitting count, receipt, best or meter.
+    "proposal-accept": "proposals", "proposal-reject": "proposals",
+    "board-proposal": "boardfound", "proposal-board": "boardfound",
 }
 
 
@@ -2439,6 +2451,11 @@ def receipt() -> dict:
     theirs = collections.Counter(str(r.get("by")) for r in sitting
                                  if not _is_person(r.get("by")))
     ruled = [(t, q) for t, q in stamps if t >= start]
+    # A RUN WITH NOTHING OF THE PERSON'S IN IT IS NOT THEIR SITTING. It is still
+    # reported - an agent's 30 writes must say whose they were - but flagged,
+    # so the page does not head it "This sitting" a week after one agent
+    # write, as if the owner had sat.
+    agent_only = not mine and not ruled
     by_queue = collections.Counter(q for _, q in ruled)
     reversed_n = sum(1 for r in mine if r.get("action") in ("undo", "reopen"))
 
@@ -2478,6 +2495,7 @@ def receipt() -> dict:
 
     return {
         "open": True,
+        "agent_only": agent_only,
         "since": start.isoformat(timespec="minutes"),
         # stamped is a SUBSET of edits, and the page says so on one line.
         # They are not two piles to be added.
@@ -3904,6 +3922,20 @@ def act_patch(body: dict) -> dict:
                          "fields - board changes go through set-board, which "
                          "verifies the ref against the live board first. "
                          "Nothing was written."}
+    # A YEAR ARRIVES AS TEXT FROM ANY FORM. validate() refuses a string
+    # year_founded, so the approval screen's Year field could never land: a
+    # digit string becomes the int, blank clears it, anything else is refused
+    # by name rather than as a validation message about the whole file.
+    if "year_founded" in touched:
+        raw = fields["year_founded"]
+        if isinstance(raw, str):
+            raw = raw.strip()
+            if raw == "":
+                fields["year_founded"] = None
+            elif raw.isdigit():
+                fields["year_founded"] = int(raw)
+            else:
+                return {"error": f"year_founded must be a whole year, not {raw!r}"}
     for k in touched:
         c[k] = fields[k]
     err = validate(companies)
@@ -5726,7 +5758,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
     root, so /.git/config, /scripts/admin.py and /data/companies.json all
     answered 200 to anything that asked. ../ traversal was blocked correctly
     the whole time - the directory itself was the exposure - and the fix is to
-    stop having a directory. SIX routes are served and everything else is 404
+    stop having a directory. SEVEN routes are served (six static ones and
+    /preview/c/*.html, the one route that may be framed, by the approval
+    screen on this same origin) and everything else is 404
     by construction rather than by check:
 
         /                    the admin page

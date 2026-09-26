@@ -265,10 +265,13 @@ can be read. What is actually there now:
   `127.0.0.1` / `localhost` / `::1` on our own port gets 421.
 - **A static route allowlist.** This is not `SimpleHTTPRequestHandler` any
   more. That served the repository root, so `/.git/config`, `/scripts/admin.py`
-  and `/data/companies.json` all answered 200 to anything that asked. Six
+  and `/data/companies.json` all answered 200 to anything that asked. Seven
   routes are served — `/`, `/admin.html`, `/capture`, `/capture.js`,
-  `/assets/logos/*`, `/assets/mascot/*` — and everything else is 404 by
-  construction rather than by check.
+  `/assets/logos/*`, `/assets/mascot/*`, and `/preview/c/*.html` (the
+  approval screen's iframe; the one route answering `frame-ancestors 'self'`
+  instead of `'none'`, and the one non-/api/ route that renders an
+  unpublished company on demand) — and everything else is 404 by construction
+  rather than by check.
 - **`/api/token` is refused to any web origin.** It needs no token of its own
   (it is where the capture extension gets one), so the `Origin` header a
   browser attaches and a page cannot drop is what keeps it to the extension,
