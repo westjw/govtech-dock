@@ -6495,5 +6495,174 @@
   "description": "Cybersecurity platform: network firewalls, cloud, email, endpoint and SASE security, plus threat intelligence, for enterprises and governments",
   "source_event": null,
   "source_note": "35 names pasted by the owner on 2026-09-11 with NO event named. The run guessed a state/local gov-IT or GMIS-style exhibitor list and that guess is not evidence, so no conference tag is claimed here. Staged as a plain research list."
+ },
+ {
+  "name": "1Kosmos",
+  "website": "https://www.1kosmos.com",
+  "vertical": "Horizontal identity platform; citizen identity is one of three named use cases and the flagship case study is a 450,000-user BPO deployment. No HQ or founding year published.",
+  "description": "Passwordless authentication and identity verification platform for workforce, customer and citizen identity",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-01",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Barracuda Networks",
+  "website": "https://www.barracuda.com",
+  "vertical": "General-purpose cybersecurity vendor across six named industries. Founding year inferred from the site's own '© 2003 - 2026 Barracuda Networks, Inc.' copyright range rather than a stated founding date - drop it if that is too soft. No HQ address published.",
+  "description": "Email, network, application and data protection security products for businesses, MSPs, education and government",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Black Duck",
+  "website": "https://www.blackduck.com",
+  "vertical": "General AppSec, not government-specific. Founding year deliberately omitted and worth a human call: the original Black Duck Software was founded in 2002, acquired by Synopsys in 2017, then sold by Synopsys to Clearlake and Francisco Partners in October 2024 and relaunched under the old name - so 2002 and 2024 are both defensible and both misleading alone.",
+  "description": "Application security testing software - SAST, DAST, and software composition analysis - for software teams in all industries",
+  "source_event": "NASCIO 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Broadcom",
+  "website": "https://www.broadcom.com",
+  "vertical": "Candidate was listed as 'Broadcom Software', which is the software segment of Broadcom Inc. rather than a separate company. Year founded omitted as ambiguous: Broadcom Inc. in its current form dates to the 2018 Broadcom/Avago restructuring while the corporate lineage runs back to 1961. About page returns no usable text to automated fetches.",
+  "description": "Semiconductor and enterprise infrastructure software vendor whose software arm sells VMware virtualization, mainframe tooling and Symantec security to large enterprises",
+  "source_event": "NASCIO 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Check Point Software Technologies",
+  "website": "https://www.checkpoint.com",
+  "vertical": "General-purpose cybersecurity vendor; federal and state/local government is one of eight named industries. About page states 'a leader in cyber security since 1993' and lists Tel Aviv as international corporate HQ.",
+  "description": "Network, cloud, endpoint and workspace cybersecurity products for enterprises and governments worldwide",
+  "source_event": "GMIS International 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Cribl",
+  "website": "https://cribl.io",
+  "vertical": "Horizontal infrastructure software - roughly half the Fortune 100, with public sector one of eight industries listed. Their own Our Story timeline dates the founding by Clint Sharp, Dritan Bitincka, and Ledion Bitincka in San Francisco to July 2018.",
+  "description": "Telemetry data pipeline and observability software that routes logs, metrics, and traces for enterprise IT and security teams",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Dun & Bradstreet, Inc.",
+  "website": "https://www.dnb.com/SLED",
+  "vertical": "Horizontal commercial data and analytics business — business identity, credit and risk data sold to every industry — with a /SLED landing page for its government vertical. Selling the same data assets to agencies among everyone else is the Databricks/Splunk shape, not a purpose-built govtech product. Queues for a person.",
+  "description": "Business identity, risk and local-economy data and analytics sold to state and local government agencies.",
+  "source_event": "HHS conference exhibitor research 2026-08-25",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "ESET",
+  "website": "https://www.eset.com/us/",
+  "vertical": "Exhibited as ESET LLC, the North American subsidiary. General-purpose security software, not govtech-specific",
+  "description": "Endpoint antivirus, detection and response and email security sold to consumers and organizations in every industry",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Fischer Identity",
+  "website": "https://www.fischeridentity.com",
+  "vertical": "Higher education is the strongest vertical (Baylor, Auburn, UVA are the marquee logos), but they market equally to healthcare, financial services, and manufacturing - horizontal enough to leave the call to the owner. Site says \"years of IAM expertise\" with no founding year, so omitted.",
+  "description": "Managed identity governance and access management platform automating user lifecycle and provisioning",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "IGEL",
+  "website": "https://www.igel.com",
+  "vertical": "Exhibited as IGEL Technology Corporation, the US entity. General endpoint software sold across many industries. Recently acquired Stratodesk",
+  "description": "Secure Linux endpoint operating system and management software for VDI, DaaS and cloud workspaces across healthcare, finance, retail, manufacturing and government",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Ping Identity",
+  "website": "https://www.pingidentity.com",
+  "vertical": "General-purpose IAM: the company markets itself on Fortune 100 and large-bank adoption, with government as one vertical. Denver HQ confirmed on the company's contact page; founding year is from general reference sources, not the site. Owned by Thoma Bravo.",
+  "description": "Identity and access management, verification, and fraud protection software for large enterprises",
+  "source_event": "NASCIO 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "SailPoint",
+  "website": "https://www.sailpoint.com",
+  "vertical": "Industries listed are financial services, healthcare, manufacturing, education, government, oil and gas and utilities - horizontal enterprise identity security. The site's timeline shows milestones (2017, 2022, 2025) but no founding year, and no HQ is published on the pages fetched.",
+  "description": "Identity governance and access management platform covering provisioning, access certification, non-employee risk and machine and AI identities",
+  "source_event": "EDUCAUSE 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
+ },
+ {
+  "name": "Secto",
+  "website": "https://secto.io",
+  "vertical": "Legal name Secto AI, Inc. Horizontal enterprise browser security aimed at regulated industries generally, not a government product. No founding year published.",
+  "description": "Browser security software that protects credentials, blocks phishing, and governs employee AI tool use inside existing browsers",
+  "source_event": "GMIS International 2026",
+  "sled_only": true,
+  "from_scope_ruling": {
+   "call": "sled",
+   "on": "2026-09-08",
+   "by": "owner"
+  }
  }
 ]

@@ -1,97 +1,48 @@
 {
-  "date": "2026-09-25",
-  "previous": "2026-09-23",
+  "date": "2026-09-26",
+  "previous": "2026-09-25",
   "changes": [
     {
-      "company": "Skydio",
-      "id": "skydio",
+      "company": "Prepared",
+      "id": "prepared",
       "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Accela",
-      "id": "accela",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Business Development Representativ only"
-    },
-    {
-      "company": "Cubic Transportation Systems",
-      "id": "cubic-transportation-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager - East Coast (2 Locations)"
-    },
-    {
-      "company": "Paladin Drones",
-      "id": "paladin-drones",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Fortem Technologies",
-      "id": "fortem-technologies",
-      "from": "None found",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Ecopia AI",
-      "id": "ecopia-ai",
+      "company": "Glacier",
+      "id": "glacier",
       "from": "None found",
-      "to": "Unknown",
-      "note": "non-JSON response"
+      "to": "Yes",
+      "note": "Account Executive - Climate Tech ( (Remote East Coast )"
+    },
+    {
+      "company": "Edulog",
+      "id": "edulog",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "HydroPoint Data Systems",
+      "id": "hydropoint-data-systems",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Handtevy",
       "id": "handtevy",
-      "from": "Yes",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Mid-Market Account Executive"
+    },
+    {
+      "company": "RL Core Technologies",
+      "id": "rl-core-technologies",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "LineVision",
-      "id": "linevision",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Meadow",
-      "id": "meadow",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
-    },
-    {
-      "company": "Chorus Innovations",
-      "id": "chorus-innovations",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "VP of Customer Success only"
-    },
-    {
-      "company": "EBSCO Information Services",
-      "id": "ebsco-information-services",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Regional Sales Manager, K12 & Publ"
-    },
-    {
-      "company": "Orlo",
-      "id": "orlo",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
     }
   ]
 }
