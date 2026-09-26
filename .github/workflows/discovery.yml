@@ -74,7 +74,14 @@ jobs:
         run: |
           git config user.name  "westjw"
           git config user.email "67345260+westjw@users.noreply.github.com"
-          git add data/companies.json data/discovery_log.json
+          # EVERY FILE THE SWEEP WRITES, or the push dies. discover_ats.py
+          # also writes data/ats_suspects.json - a readable board whose slug
+          # names somebody else, kept for a person to confirm. The 09-20 run
+          # found one, left that file modified and unstaged, committed the
+          # other two, and `git pull --rebase` refused with "You have
+          # unstaged changes". 195 lines of probe results died in the
+          # runner. selftest holds this list against the script's writes.
+          git add data/companies.json data/discovery_log.json data/ats_suspects.json
           if git diff --cached --quiet; then
             echo "nothing new to commit"
             exit 0

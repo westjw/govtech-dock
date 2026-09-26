@@ -60,6 +60,7 @@ import pathlib
 import re
 import sys
 import threading
+import time
 import urllib.parse as up
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -513,6 +514,12 @@ def main() -> int:
                     help="companies in flight at once. ats._host_gate already "
                          "serialises callers to ONE host, so this parallelises "
                          "across hosts and a rude server stalls only its own lane")
+    ap.add_argument("--budget-seconds", type=float, default=None,
+                    help="stop handing out companies once this much wall-clock "
+                         "time has passed. What was read is saved; what was not "
+                         "sorts first next run, because the worklist rotates on "
+                         "fetched_on. A job times out on the clock, not on a "
+                         "row count, and this is the bound in the same unit")
     a = ap.parse_args()
 
     companies = admin.read_companies()
@@ -616,7 +623,47 @@ def main() -> int:
                         "unread": True, "unread_why": why,
                         "about": [], "news": []}
 
-        for rec in pool.map(guarded, rows):
+        # THE BOUND IS A CLOCK, BECAUSE THE JOB'S IS. --limit 600 was the
+        # "bounded, like the news sweep" promise, and it bounded the wrong
+        # unit: news.yml times out at 90 minutes, and 600 newsrooms took
+        # 76, 85 and 48 minutes on the three runs that finished. From
+        # 2026-09-13 to 09-26 fifty-five of fifty-eight runs were cancelled
+        # at 1h30m, and each was colder than the last - the ETag cache is
+        # saved only by a run that completes, so every run since restored
+        # the one 09-12 saved, sent two-week-old validators, and paid full
+        # fetches plus article hops for every index that had moved. Nothing
+        # was extracted and nothing was committed for two weeks.
+        #
+        # pool.map submits every row up front, so a deadline could not stop
+        # it handing out work. This hands out a window at a time and stops
+        # handing out when the budget is spent; what is in flight finishes
+        # (one fetch is bounded by ats.TIMEOUT), the index is saved as it
+        # always was, and the rows not reached sort first next time because
+        # their fetched_on is the oldest. A cap is a rate, not a subset.
+        deadline = (time.monotonic() + a.budget_seconds
+                    if a.budget_seconds else None)
+        window = max(1, a.workers) * 2
+        todo = list(rows)
+        inflight: set = set()
+        left = 0
+
+        def results():
+            nonlocal left
+            while todo or inflight:
+                while todo and len(inflight) < window:
+                    if deadline is not None and time.monotonic() >= deadline:
+                        left = len(todo)
+                        todo.clear()
+                        break
+                    inflight.add(pool.submit(guarded, todo.pop(0)))
+                if not inflight:
+                    break
+                finished, _ = cf.wait(inflight, return_when=cf.FIRST_COMPLETED)
+                for fut in finished:
+                    inflight.discard(fut)
+                    yield fut.result()
+
+        for rec in results():
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
                 got["unread"] += 1
@@ -630,6 +677,10 @@ def main() -> int:
                 save_index(idx)
 
     save_index(idx)
+    if left:
+        print(f"\n  budget of {a.budget_seconds:.0f}s spent with {left} of "
+              f"{len(rows)} not read. They are not skipped: fetched_on rotates, "
+              f"so they sort first next run.")
     if raised:
         print(f"\n  {len(raised)} site(s) RAISED and were recorded unread "
               f"rather than ending the run:")

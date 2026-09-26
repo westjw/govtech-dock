@@ -218,6 +218,20 @@ floors. Every key in `QUEUES` has a `RENDER.<key>` in admin.html and
 `check_every_queue_has_a_renderer` keeps QUEUES and RENDER.* honest, and
 `check_the_two_applier_lists_agree` keeps the two NO_APPLIER lists agreeing.
 
+**No board found carries two kinds of row since 2026-09-26.** A company with
+no board on file, and a company with a careers page ON FILE whose scan reads
+nothing ("page scan found no listings", a JS shell, a 404 on the address).
+The second kind - 589 companies, the page-only pile - was in no queue at all:
+the queue took `ats.type == unknown` or the org's `unreadable` flag, and
+build_board never sets `unreadable` on an html board (it sets `enumerable:
+False`, because `unreadable` drives the public "we could not read them"
+messages). The row says which kind it is and carries refresh's note. A fetch
+that was TURNED AWAY (403, 429) goes to Blocked boards instead; a page-scan
+board that produced a verdict is a readable board and is offered nowhere, and
+the page sweep no longer prints "no readable board" on it.
+`check_a_page_that_reads_nothing_is_offered_to_a_person` drives both. Work
+the queue one sector at a time (`?sector=`).
+
 The two newest are both about boards that may not belong to the company they
 are filed under, and they are different questions. **Boards we found** holds a
 board discovered INSIDE a careers page - the page named its own widget - and
@@ -923,7 +937,9 @@ Chrome extension in `extension/`.
 **887 companies have a careers page on file that produces nothing** (counted
 2026-08-24; `coverage.py` prints the live figure) — a person
 looking at the page sees the jobs anyway. That is the worklist both of these
-serve, and it is the single biggest hole on the board.
+serve, and it is the single biggest hole on the board. Since 2026-09-26 it is
+offered in the admin as the "careers page reads nothing" rows of **No board
+found**; before that it was in no queue, which is one reason it stayed a hole.
 
 Three things about capture are load-bearing:
 
@@ -1497,6 +1513,35 @@ retrying tells you what you found.
 The same shape appeared the same day in build_board: 47 boards "network error"
 in one build, and Civica, Career TEAM and BibliU all read perfectly minutes
 later.
+
+## Two scheduled sweeps that had stopped, and the bound each needed (found 2026-09-26)
+
+**news.yml was cancelled at its 90-minute timeout on 55 of 58 runs between
+2026-09-13 and 09-26.** The re-read step was bounded by `--limit 600`, which
+is the wrong unit: 600 newsrooms took 76, 85 and 48 minutes on the last three
+runs that finished, and the job times out on the clock. Once one run timed
+out, every later run was colder than the last, because `actions/cache` saves
+the ETag cache only when a job completes - so each run restored the cache the
+09-12 run saved, sent two-week-old validators, and paid full fetches plus
+article hops for every index that had moved. Four runs a day, two weeks, no
+extract, no commit. `fetch_profiles.py --budget-seconds` now stops handing out
+newsrooms when the budget is spent (pool.map submitted every row up front and
+no deadline could reach it); what was read is saved, what was not sorts first
+next run because the worklist rotates on `fetched_on`. news.yml passes 3600s
+of its 5400s. `check_the_news_sweep_stops_before_the_job_does` drives the
+loop with a stubbed reader and holds the number under the timeout.
+
+**discovery.yml lost the 2026-09-20 sweep** to `git pull --rebase: You have
+unstaged changes`. discover_ats.py writes three files and the workflow staged
+two; the third, `ats_suspects.json`, is written only when a probe finds a
+readable board whose slug names another company, which the 09-13 run did not
+and the 09-20 run did. 195 lines of probe results died in the runner.
+`check_discovery_stages_every_file_it_writes` reads the script's write
+targets off the code and holds the workflow's `git add` against them.
+
+Both are the same lesson as the render budget and the journal's BLAST: a
+bound has to be in the unit the failure is measured in, and a workflow's
+commit step has to be derived from what the script writes, not typed in.
 
 ## build_board.py is the crawler, not a formatter (noted 2026-08-25)
 

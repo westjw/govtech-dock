@@ -718,6 +718,43 @@ def _checked_recently(man: dict | None = None, today=None,
     return out
 
 
+# What refresh writes into hiring.note when an html fetch was turned away
+# rather than answered. These belong in Blocked boards - a retry pile - not
+# in front of a person: a 403 is not evidence about the page, and a person
+# opening it gets the same door. A 404 is NOT here on purpose: the address
+# on file is wrong, and fixing it is exactly the job the worklist offers.
+HTML_TURNED_AWAY = re.compile(
+    r"^(HTTP (403|429|5\d\d)\b|network error|fetcher crashed|gave up)", re.I)
+
+
+def _page_read_nothing(c: dict) -> bool:
+    """An html board on file whose last scan produced no verdict at all.
+
+    "None found" is a verdict - the page read as an empty board. "Sales
+    (non-AE)" and "Yes" are verdicts. "Unknown" is refresh saying it could
+    not tell, which for a page scan means no titles came back.
+    """
+    if (c.get("ats") or {}).get("type") != "html":
+        return False
+    h = c.get("hiring") or {}
+    return h.get("status") == "Unknown" and not h.get("roles")
+
+
+def _html_probe(c: dict, pr: dict) -> dict:
+    """The blocked/worklist split for a page-only board, read off refresh.
+
+    Discovery's log is about finding a board where none is on file; for a
+    company that HAS an address, the last fetch of that address is the
+    evidence, and its note says which pile the row belongs in.
+    """
+    h = c.get("hiring") or {}
+    note = (h.get("note") or "").strip()
+    if HTML_TURNED_AWAY.match(note):
+        return {"state": "blocked", "note": note, "on": h.get("checked")}
+    return {"state": pr.get("state"), "note": note or pr.get("note"),
+            "on": h.get("checked") or pr.get("on")}
+
+
 def _board_rows(companies, board):
     orgs = {o["id"]: o for o in board.get("organizations", [])}
     done = _checked_recently()
@@ -731,7 +768,20 @@ def _board_rows(companies, board):
         o = orgs.get(c["id"], {})
         kind = (c.get("ats") or {}).get("type")
         no_board = kind in (None, "unknown")
-        if not (no_board or o.get("unreadable")):
+        # A CAREERS PAGE ON FILE THAT READS NOTHING IS THIS QUEUE'S JOB TOO.
+        # refresh.py's verdict on an html board is `hiring.status`, and
+        # "Unknown" with "page scan found no listings" means we asked the
+        # page and it gave us no titles. build_board records that as
+        # `enumerable: False`, never as `unreadable` - that flag drives five
+        # public "we could not read them" messages and a page-only board is
+        # not that - so the `unreadable` clause below never fired for one.
+        # The 521 companies CLAUDE.md calls the single biggest hole on the
+        # board sat in no queue at all: nowhere to open one, paste the board
+        # it links to, or record where they post. 33 of Parks & Rec's 142
+        # were in that state on 2026-09-26 while the page sweep named the
+        # gap on every one of their pages.
+        page_read_nothing = _page_read_nothing(c)
+        if not (no_board or o.get("unreadable") or page_read_nothing):
             continue
         if is_dismissed("boards", c["id"]):
             continue
@@ -743,11 +793,17 @@ def _board_rows(companies, board):
         if o.get("scan_lead"):
             continue
         pr = _probe(c["id"], probe_log)
+        if page_read_nothing:
+            pr = _html_probe(c, pr)
         yield {"id": c["id"], "name": c["name"], "sector": c["sector"],
                "website": c.get("website"), "ats": kind,
-               "why": "board unreadable" if o.get("unreadable")
-                      else "no board on file",
-               "note": c.get("ats_note"),
+               "why": ("board unreadable" if o.get("unreadable")
+                       else "careers page reads nothing" if page_read_nothing
+                       else "no board on file"),
+               # what refresh said about the page, so the row says WHY a
+               # person is being asked rather than just that they are
+               "note": c.get("ats_note") or (pr["note"] if page_read_nothing
+                                              else None),
                "events": _events(c.get("description")),
                "probe": pr["state"], "probe_note": pr["note"],
                "probed_on": pr["on"],
@@ -755,14 +811,19 @@ def _board_rows(companies, board):
 
 
 def q_boards(companies, board) -> list:
-    """Probed, and nothing found: the capture-extension worklist.
+    """Nothing a fetcher can read: the capture-extension worklist.
 
-    These are companies whose sites were read and yielded no ATS and no
-    careers page a fetcher can use. Most genuinely have no public board -
-    they hire on LinkedIn or by email - so the fix is a person pasting an
-    address they found by hand, or standing on a conference floor. Blocked
-    and never-probed companies live in their own queues; mixing them in here
-    made this list look endless and taught nobody to open it.
+    Two kinds of row, one job. Companies whose sites were probed and yielded
+    no ATS and no careers page - most genuinely have no public board, they
+    hire on LinkedIn or by email. And companies with a careers page ON FILE
+    that answers and gives no titles: widgets in iframes, session-gated
+    boards, lists drawn by JavaScript that a render did not recover either.
+    The row says which. For both the fix is a person: open the page, paste
+    the board it links to, capture what it shows, or record where they
+    actually post. Blocked companies live in their own queue; mixing them
+    in here made this list look endless and taught nobody to open it. Work
+    it one sector at a time (`?sector=`), which is how it was always meant
+    to be worked.
     """
     out = [r for r in _board_rows(companies, board)
            if r["probe"] != "blocked" and r["website"]]
@@ -5235,9 +5296,22 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
     if (c.get("ats") or {}).get("type") not in STRUCTURED_ATS:
         import posts_at as _pa
         if not c.get("posts_at"):
-            out.append({"gap": "board", "queue": "boards",
-                        "what": "no readable board and no note on where they "
-                                "post"})
+            # A PAGE SCAN THAT PRODUCED A VERDICT IS A READABLE BOARD. html
+            # is not in STRUCTURED_ATS because coverage.py refuses to count
+            # a page scan as coverage - fragile, yes - but "no readable
+            # board" was being printed on 11 of Parks & Rec's pages whose
+            # boards refresh reads every night (Rain Bird: one AE role,
+            # CampLife: sales roles, none AE). A gap that names a fact the
+            # file contradicts is the honesty rule inverted. The gap stays
+            # for the html board whose scan read nothing, which is the
+            # same row `No board found` now offers.
+            h = c.get("hiring") or {}
+            page_read = ((c.get("ats") or {}).get("type") == "html"
+                         and h.get("status") not in (None, "", "Unknown"))
+            if not page_read:
+                out.append({"gap": "board", "queue": "boards",
+                            "what": "no readable board and no note on where "
+                                    "they post"})
         else:
             r = _pa.reach(c["posts_at"])
             if r == "capture" and c["id"] not in captured:

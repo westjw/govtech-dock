@@ -10491,12 +10491,20 @@ def _sandbox_admin(files: dict):
         tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
         for name, payload in files.items():
             (tmp / name).write_text(json.dumps(payload))
-        keep = (admin.DATA, journal.DATA, journal.LOG)
-        admin.DATA, journal.DATA, journal.LOG = tmp, tmp, tmp / "admin_journal.jsonl"
+        # AND THE ARCHIVE. journal.ARCHIVE is computed from DATA at import,
+        # so moving DATA does not move it: a sandboxed write that prunes -
+        # any fixture journal past KEEP - appends the pruned rows to the
+        # owner's real archive. Found 2026-09-26 as a duplicate of a real
+        # 09-08 ruling arriving in data/admin_journal.archive.jsonl on every
+        # suite run.
+        keep = (admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE)
+        admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = (
+            tmp, tmp, tmp / "admin_journal.jsonl",
+            tmp / "admin_journal.archive.jsonl")
         try:
             yield tmp
         finally:
-            admin.DATA, journal.DATA, journal.LOG = keep
+            admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = keep
     return swap()
 
 
@@ -13390,6 +13398,37 @@ def _data_fingerprint() -> dict:
             n = -1
         out[f.name] = (hashlib.sha256(raw).hexdigest(), n)
     return out
+
+
+def _archive_fingerprint() -> tuple:
+    """(archive rows, the journal's newest line). Together they tell a leaked
+    prune from a person's ruling; see _archive_leaked."""
+    a = DATA / "admin_journal.archive.jsonl"
+    j = DATA / "admin_journal.jsonl"
+    try:
+        rows = a.read_bytes().count(b"\n")
+    except OSError:
+        rows = 0
+    try:
+        raw = j.read_bytes().rstrip(b"\n")
+        tail = raw.rsplit(b"\n", 1)[-1] if raw else b""
+    except OSError:
+        tail = b""
+    return (rows, tail)
+
+
+def _archive_leaked(before: tuple, after: tuple) -> bool:
+    """A row reached the archive while the journal's newest entry stayed put.
+
+    The live journal sits at exactly journal.KEEP rows, so EVERY write prunes
+    one row into the archive - a person ruling in the admin mid-run does it
+    too, and that is not a leak: their ruling is then the journal's newest
+    line. A check that writes through the real journal and restores it from
+    a backup leaves the newest line exactly as it was, and the row it pushed
+    out sits in the archive as a duplicate of one the journal still holds.
+    That shape, and only that shape, is the leak.
+    """
+    return after[0] > before[0] and after[1] == before[1]
 
 
 def _journal_leaked(before_lines: int) -> list:
@@ -18207,41 +18246,31 @@ def check_the_owner_can_argue_with_the_logic() -> int:
         errors += fail("the suggest action is ungated; it writes a file and "
                        "should need the console code like every other write")
 
-    # The action WRITES, so the live file is put back exactly as found. A
-    # check that leaves a note behind every run fills the owner's own file
-    # with test data - which is the mistake a probe already made once against
-    # companies.json, and the reason that rule is in CLAUDE.md.
-    notes_path = ROOT / "data" / "logic_notes.json"
-    saved = notes_path.read_text() if notes_path.exists() else None
-    # AND THE JOURNAL. suggest is a journalled write now, so the before-image
-    # it records lands in the owner's real audit trail unless this puts it
-    # back too - a test ruling in the journal reads exactly like a real one,
-    # which is the same false record the note above is about.
-    log_path = ROOT / "data" / "admin_journal.jsonl"
-    saved_log = log_path.read_text() if log_path.exists() else None
-    before = json.loads((ROOT / "data" / "companies.json").read_text())
-    try:
+    # THE ACTION WRITES, SO IT WRITES INTO A SANDBOX. This used to run against
+    # the live data directory and put logic_notes.json and the journal back
+    # from a backup afterwards - and the journal write PRUNED: the live
+    # journal sits at exactly KEEP rows, one more pushes the oldest into the
+    # archive, and the backup restored the journal but not the archive. Every
+    # suite run appended a duplicate of a real 2026-09-08 ruling to the
+    # owner's archive (found 2026-09-26). A restore is not a sandbox.
+    with _sandbox_admin({"companies.json": [],
+                         "logic_notes.json": {"notes": []},
+                         "admin_dismissed.json": {}}) as tmp:
+        before = (tmp / "companies.json").read_bytes()
         out = admin.ACTIONS["suggest"]({"queue": "websites", "id": "x",
                                         "name": "X", "saw": "panel said a thing",
                                         "argument": "and the thing was wrong"})
         if not out.get("ok"):
             errors += fail(f"recording an argument failed: {out}")
-        after = json.loads((ROOT / "data" / "companies.json").read_text())
-        if before != after:
+        if (tmp / "companies.json").read_bytes() != before:
             errors += fail("recording an argument about the logic CHANGED "
                            "companies.json. It must never touch the map")
+        notes = json.loads((tmp / "logic_notes.json").read_text())
+        if len(notes.get("notes") or []) != 1:
+            errors += fail("the argument did not land in logic_notes.json")
         if not admin.ACTIONS["suggest"]({"argument": "   "}).get("error"):
             errors += fail("an empty argument was recorded as if it said "
                            "something")
-    finally:
-        if saved_log is None:
-            log_path.unlink(missing_ok=True)
-        else:
-            log_path.write_text(saved_log)
-        if saved is None:
-            notes_path.unlink(missing_ok=True)
-        else:
-            notes_path.write_text(saved)
     return errors
 
 
@@ -24032,6 +24061,319 @@ def check_a_registry_cannot_be_saved_over_the_other() -> int:
     return errors
 
 
+def check_a_page_that_reads_nothing_is_offered_to_a_person() -> int:
+    """A careers page on file that reads nothing must be in a queue.
+
+    CLAUDE.md calls the page-only pile "the single biggest hole on the
+    board" and says in as many words that it is the capture worklist. It
+    was in no queue. q_boards took `ats.type == unknown` or the org's
+    `unreadable` flag, and build_board never sets `unreadable` on an html
+    board - it sets `enumerable: False`, because `unreadable` drives the
+    public "we could not read them" messages. So the 521 companies whose
+    scan said "page scan found no listings" were offered to nobody, while
+    the page sweep named the gap on every one of their pages: 33 of Parks &
+    Rec's 142 on 2026-09-26, with nowhere to work them.
+
+    Driven through the queue against a throwaway data directory, the fifth
+    time this project learned that a helper nobody calls proves nothing.
+    Three shapes must land right: a scan that read nothing is offered; a
+    fetch that was TURNED AWAY (403, 429) is the retry pile, not a person's
+    job; a scan that produced a verdict - one AE role, sales roles, an
+    empty board that answered - is a readable board and is offered nowhere.
+    And the sweep must agree: the same page-scan board that reads must not
+    carry a "no readable board" gap, which 11 of Parks & Rec's pages did.
+    """
+    import admin as _admin
+    errors = 0
+
+    def co(cid, ats, status, note="", roles=None):
+        return {"id": cid, "name": cid.title(), "website": f"https://{cid}.test",
+                "sector": "Parks & Rec", "category": "Aquatics",
+                "description": "x", "year_founded": None, "location": None,
+                "ats": ats, "govtech": True, "vendor_type": "GovTech Product",
+                "hiring": {"status": status, "note": note, "roles": roles or [],
+                           "checked": "2026-09-25"}}
+
+    def html():
+        return {"type": "html", "ref": "https://x.test/careers"}
+
+    cos = [co("nothing", html(), "Unknown", "page scan found no listings"),
+           co("shell", html(), "Unknown", "page too small - likely JS-rendered"),
+           co("readsyes", html(), "Yes", "Account Executive",
+              [{"title": "Account Executive", "location": "", "url": ""}]),
+           co("readssales", html(), "Sales (non-AE)", "sales roles, none AE"),
+           co("readsnone", html(), "None found", ""),
+           co("turnedaway", html(), "Unknown", "HTTP 403 for https://x.test/careers"),
+           co("ratelimited", html(), "Unknown", "HTTP 429 rate limited for https://x.test"),
+           co("wrongaddr", html(), "Unknown", "HTTP 404 for https://x.test/careers"),
+           co("noboard", {"type": "unknown", "ref": None}, "Unknown", "no ATS on file"),
+           co("api", {"type": "greenhouse", "ref": "api"}, "None found", "")]
+    with _sandbox_admin({"companies.json": cos,
+                         "manual.json": {"checks": {}, "postings": []},
+                         "admin_dismissed.json": {}, "discovery_log.json": {},
+                         "news.json": {}}):
+        companies = _admin.read_companies()
+        empty = {"organizations": []}
+        boards = {r["id"]: r for r in _admin.q_boards(companies, empty)}
+        blocked = {r["id"]: r for r in _admin.q_blocked(companies, empty)}
+
+    for cid in ("nothing", "shell"):
+        r = boards.get(cid)
+        if not r:
+            errors += fail(f"{cid!r}: an html board whose scan read nothing is "
+                           f"in no queue - the page-only pile is invisible again")
+            continue
+        if r.get("why") != "careers page reads nothing":
+            errors += fail(f"{cid!r} is offered as {r.get('why')!r}; the row "
+                           f"must say the page was asked and gave no titles")
+        if not r.get("note") or "page" not in r["note"]:
+            errors += fail(f"{cid!r} carries no note; refresh's reason "
+                           f"({cos[0]['hiring']['note']!r}) is what tells a "
+                           f"person why they are being asked")
+        if cid in blocked:
+            errors += fail(f"{cid!r} is in Blocked boards too; one row, one pile")
+    for cid in ("readsyes", "readssales", "readsnone", "api"):
+        if cid in boards or cid in blocked:
+            errors += fail(f"{cid!r} reads - status "
+                           f"{next(c for c in cos if c['id'] == cid)['hiring']['status']!r} "
+                           f"- and is offered as a board nobody can read")
+    for cid in ("turnedaway", "ratelimited"):
+        if cid in boards:
+            errors += fail(f"{cid!r}: a fetch that was turned away is a retry, "
+                           f"not a person's job; a person opening it gets the "
+                           f"same door")
+        if cid not in blocked:
+            errors += fail(f"{cid!r} is in neither queue; a 403 on a page-only "
+                           f"board is the same fact as a blocked probe")
+    if "wrongaddr" not in boards:
+        errors += fail("a 404 on the address on file is not offered; fixing "
+                       "that address is exactly the job the worklist exists for")
+    if "wrongaddr" in blocked:
+        errors += fail("a 404 sits in the retry pile, where retrying the same "
+                       "wrong address forever learns nothing")
+    if boards.get("noboard", {}).get("why") != "no board on file":
+        errors += fail("a company with no board on file is no longer offered "
+                       "as one; the original worklist broke")
+
+    # THE SWEEP AGREES. A gap that names a fact the file contradicts is the
+    # honesty rule inverted.
+    def gaps(c):
+        return {g["gap"] for g in _admin.sweep_gaps(c, None, {}, set(), set())}
+    for cid in ("readsyes", "readssales", "readsnone"):
+        c = next(c for c in cos if c["id"] == cid)
+        if "board" in gaps(c):
+            errors += fail(f"the sweep says {cid!r} has 'no readable board' while "
+                           f"refresh reads it every night (status "
+                           f"{c['hiring']['status']!r})")
+    for cid in ("nothing", "noboard", "wrongaddr"):
+        c = next(c for c in cos if c["id"] == cid)
+        if "board" not in gaps(c):
+            errors += fail(f"the sweep reports nothing outstanding on {cid!r}, "
+                           f"whose board reads nothing")
+
+    # AND THE LIVE MAP, because the fixture proves the wiring and only the
+    # data can show the pile is actually being offered.
+    cos_live = json.loads((DATA / "companies.json").read_text())
+    board_live = json.loads((DATA / "board.json").read_text())
+    pile = [c for c in cos_live if _admin._page_read_nothing(c)]
+    offered = {r["id"] for r in _admin.q_boards(cos_live, board_live)}
+    offered |= {r["id"] for r in _admin.q_blocked(cos_live, board_live)}
+    if pile and len([c for c in pile if c["id"] in offered]) < len(pile) * 0.8:
+        errors += fail(f"{len(pile)} live companies have a careers page that "
+                       f"reads nothing and only "
+                       f"{len([c for c in pile if c['id'] in offered])} are "
+                       f"offered in No board found or Blocked boards")
+    return errors
+
+
+def check_discovery_stages_every_file_it_writes() -> int:
+    """discovery.yml must `git add` every file discover_ats.py writes.
+
+    The 2026-09-20 sweep found one readable board whose slug named another
+    company, wrote it to data/ats_suspects.json for a person to confirm,
+    committed companies.json and discovery_log.json, and then died at
+    `git pull --rebase`: "You have unstaged changes". 195 lines of probe
+    results were lost in the runner and the job went red for a reason that
+    had nothing to do with probing. The 09-13 run passed only because no
+    suspect turned up that day.
+
+    Read off the code, not the prose: every `(DATA / "x").write_text` and
+    every `NAME.write_text` where NAME is a `DATA / "x"` constant.
+    """
+    import re as _re
+    errors = 0
+    src = _code_only(ROOT / "scripts" / "discover_ats.py")
+    consts = dict(_re.findall(r'^([A-Z_]+)\s*=\s*DATA\s*/\s*"([^"]+)"', src,
+                              flags=_re.M))
+    written = set(_re.findall(r'\(DATA\s*/\s*"([^"]+)"\)\.write_text', src))
+    for name, fn in consts.items():
+        if _re.search(rf'\b{name}\.write_text\(', src):
+            written.add(fn)
+    if len(written) < 3:
+        return fail(f"found only {sorted(written)} as files discover_ats.py "
+                    f"writes; the scan is measuring nothing")
+    yml = (ROOT / ".github" / "workflows" / "discovery.yml").read_text()
+    yml_code = "\n".join(l for l in yml.splitlines() if not l.strip().startswith("#"))
+    adds = _re.findall(r"^\s*git add ([^\n]+)", yml_code, flags=_re.M)
+    staged = set(" ".join(adds).split())
+    for fn in sorted(written):
+        if f"data/{fn}" not in staged:
+            errors += fail(f"discover_ats.py writes data/{fn} and discovery.yml "
+                           f"never stages it, so a run that touches it dies at "
+                           f"`git pull --rebase` with unstaged changes and the "
+                           f"sweep is lost")
+    return errors
+
+
+def check_the_news_sweep_stops_before_the_job_does() -> int:
+    """The re-read must stop on the clock, under the job's timeout.
+
+    From 2026-09-13 to 09-26, 55 of 58 scheduled news runs were cancelled at
+    the 90-minute timeout in the re-read step: 600 newsrooms took 76, 85 and
+    48 minutes on the last three runs that finished, and every run after the
+    first timeout restored the ETag cache the 09-12 run saved - the cache is
+    saved only by a job that completes - so each was colder than the last.
+    Two weeks, four runs a day, nothing extracted, nothing committed. The
+    news gap on 62 of Parks & Rec's 142 pages was waiting on a sweep that
+    could not finish.
+
+    Two halves. The workflow must pass a budget that leaves room for the
+    extract, the commit and the cache save. And fetch_profiles must honour
+    it in the loop that hands out work: pool.map submitted every row up
+    front, so no deadline could stop it. Driven with a stubbed reader and a
+    budget too small for the worklist; the mutation that drops the deadline
+    reads all sixty and fails here.
+    """
+    import re as _re
+    import contextlib
+    import io
+    import time as _t
+    errors = 0
+    yml = (ROOT / ".github" / "workflows" / "news.yml").read_text()
+    yml_code = "\n".join(l for l in yml.splitlines() if not l.strip().startswith("#"))
+    tm = _re.search(r"timeout-minutes:\s*(\d+)", yml_code)
+    bm = _re.search(r"--budget-seconds\s+(\d+)", yml_code)
+    if not tm or not bm:
+        return fail("news.yml no longer carries both timeout-minutes and "
+                    "--budget-seconds on the re-read; the sweep is unbounded "
+                    "in the unit the job times out on")
+    timeout, budget = int(tm.group(1)) * 60, int(bm.group(1))
+    if budget > timeout * 0.75:
+        errors += fail(f"news.yml budgets {budget}s of a {timeout}s job for the "
+                       f"re-read; the extract, the commit and the cache save "
+                       f"need the rest, and a budget this close to the timeout "
+                       f"is the two weeks of cancelled runs again")
+
+    import fetch_profiles as fp
+    cos = [{"id": f"c{i}", "name": f"C{i}", "website": f"https://c{i}.test"}
+           for i in range(60)]
+    idx = {c["id"]: {"news": [{"url": f"https://c{c['id']}.test/news"}],
+                     "fetched_on": "2026-09-01"} for c in cos}
+    saved = {"recs": 0, "index": 0}
+
+    def fake_revisit(c, prior, listed=None):
+        _t.sleep(0.05)
+        return {"id": c["id"], "website": c.get("website"), "about": [],
+                "news": [{"url": "https://x.test/news", "text": "t"}]}
+
+    keep = (fp.revisit_news, fp.save, fp.save_index, fp.index, fp.load,
+            fp.admin.read_companies, sys.argv)
+    fp.revisit_news = fake_revisit
+    fp.save = lambda rec: saved.__setitem__("recs", saved["recs"] + 1)
+    fp.save_index = lambda i: saved.__setitem__("index", saved["index"] + 1)
+    fp.index = lambda: dict(idx)
+    fp.load = lambda cid: {}
+    fp.admin.read_companies = lambda: cos
+    sys.argv = ["fetch_profiles.py", "--news", "--refetch", "--write",
+                "--workers", "2", "--budget-seconds", "0.4"]
+    out = io.StringIO()
+    try:
+        t0 = _t.monotonic()
+        with contextlib.redirect_stdout(out):
+            rc = fp.main()
+        took = _t.monotonic() - t0
+    except Exception as exc:                               # noqa: BLE001
+        rc, took = f"crashed: {exc!r}", 0
+    finally:
+        (fp.revisit_news, fp.save, fp.save_index, fp.index, fp.load,
+         fp.admin.read_companies, sys.argv) = keep
+    if rc != 0:
+        errors += fail(f"fetch_profiles.main returned {rc!r} under a budget; a "
+                       f"spent budget is a normal end, not a failure")
+    if saved["recs"] >= 60:
+        errors += fail("fetch_profiles read every one of 60 newsrooms under a "
+                       "0.4s budget that allows ~16; the deadline is not "
+                       "reaching the loop that hands out work")
+    if saved["recs"] < 2:
+        errors += fail(f"fetch_profiles read {saved['recs']} newsroom(s) under "
+                       f"the budget; it stopped before it started")
+    if saved["index"] < 1:
+        errors += fail("the index was never saved after the budget ran out, so "
+                       "what WAS read is lost exactly as a timeout loses it")
+    if took > 5:
+        errors += fail(f"a 0.4s budget took {took:.1f}s to stop; the in-flight "
+                       f"window is not bounded")
+    if "not read" not in out.getvalue():
+        errors += fail("the run does not say how many rows the budget left "
+                       "unread; a silent cap reads as 'covered everything'")
+    return errors
+
+
+def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
+    """A sandboxed write must never reach the owner's real archive.
+
+    Found 2026-09-26: every suite run appended one row to
+    data/admin_journal.archive.jsonl - a duplicate of a real 2026-09-08
+    ruling. check_the_owner_can_argue_with_the_logic wrote through the live
+    journal, the write pruned the oldest row into the archive (the journal
+    sits at exactly KEEP rows, so every write prunes), and the check restored
+    the journal from a backup and not the archive. The journal fingerprint
+    at the end of main() passed - the journal was byte-identical - and the
+    data fingerprint watches *.json, not *.jsonl. Nothing noticed for as long
+    as the check existed.
+
+    Three things hold now: the sandbox moves journal.ARCHIVE with LOG and
+    DATA; main() compares the archive before and after the run and can tell
+    a leaked prune (archive grew, journal's newest line unchanged) from a
+    person ruling mid-run (archive grew, newest line is theirs); and the
+    check that did it runs inside the sandbox.
+    """
+    import journal
+    errors = 0
+    real = (journal.LOG, journal.ARCHIVE)
+    with _sandbox_admin({"companies.json": []}) as tmp:
+        if journal.ARCHIVE == real[1] or tmp not in journal.ARCHIVE.parents:
+            errors += fail("_sandbox_admin leaves journal.ARCHIVE pointing at "
+                           "the real archive; a sandboxed write that prunes "
+                           "lands the pruned rows in the owner's real file")
+        if journal.LOG == real[0] or tmp not in journal.LOG.parents:
+            errors += fail("_sandbox_admin leaves journal.LOG on the real journal")
+    if (journal.LOG, journal.ARCHIVE) != real:
+        errors += fail("_sandbox_admin did not put the journal paths back")
+
+    if not _archive_leaked((10, b"row"), (11, b"row")):
+        errors += fail("a row reaching the archive while the journal's newest "
+                       "entry stays the same is not called a leak")
+    if _archive_leaked((10, b"row"), (11, b"newer")):
+        errors += fail("a person's ruling that pruned a row is called a leak; "
+                       "that is the guard that cries wolf")
+    if _archive_leaked((10, b"row"), (10, b"row")):
+        errors += fail("an unchanged archive is called a leak")
+
+    # THE CALLER. The check that did this must stay inside the sandbox; a
+    # restore is not a sandbox, whatever the comment above it says.
+    src = _code_only(ROOT / "scripts" / "selftest.py")
+    i = src.find("def check_the_owner_can_argue_with_the_logic(")
+    body = src[i:src.find("\ndef ", i + 10)] if i >= 0 else ""
+    if not body:
+        errors += fail("check_the_owner_can_argue_with_the_logic is gone")
+    elif "_sandbox_admin(" not in body or 'ROOT / "data"' in body:
+        errors += fail("check_the_owner_can_argue_with_the_logic writes "
+                       "against the live data directory again; every suite "
+                       "run will append a duplicate row to the owner's archive")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -24041,6 +24383,7 @@ def main() -> int:
     # attributed to the owner that he never made. Stubbing is per-check and
     # easy to forget; this notices when somebody forgets.
     _journal_before = _journal_fingerprint()
+    _archive_before = _archive_fingerprint()
     # AND THE SAME FOR THE REST OF data/. See _data_fingerprint.
     _data_before = _data_fingerprint()
 
@@ -24707,6 +25050,10 @@ def main() -> int:
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
     errors += check_posts_at_says_whether_anything_can_be_got()
+    errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
+    errors += check_discovery_stages_every_file_it_writes()
+    errors += check_the_news_sweep_stops_before_the_job_does()
+    errors += check_a_pruned_row_cannot_leak_into_the_archive()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()
@@ -24844,6 +25191,25 @@ def main() -> int:
                   f"({_journal_before[0]} -> {after[0]} lines) and no new entry "
                   f"names a fixture, so somebody was ruling in the admin. "
                   f"Not a leak.")
+    # THE ARCHIVE, WHICH THE JOURNAL CHECK CANNOT SEE. A write that prunes
+    # leaves the journal the same length, and a check that restores the
+    # journal afterwards leaves it byte-identical - so the fingerprint above
+    # passed for weeks while a duplicate row landed in the archive per run.
+    arch_after = _archive_fingerprint()
+    if _archive_leaked(_archive_before, arch_after):
+        errors += fail(
+            f"data/admin_journal.archive.jsonl grew by "
+            f"{arch_after[0] - _archive_before[0]} row(s) during this run while "
+            f"the journal's newest entry did not change. A check wrote through "
+            f"the real journal - the write pruned the oldest row into the "
+            f"archive - and then put the journal back from a backup; the "
+            f"archive kept the pruned row, which the journal still holds. Run "
+            f"that check inside _sandbox_admin (it moves the archive too) and "
+            f"`git checkout -- data/admin_journal.archive.jsonl`.")
+    elif arch_after[0] > _archive_before[0]:
+        print("note: the archive grew during this run and the journal's newest "
+              "entry changed with it, so somebody was ruling in the admin. "
+              "Not a leak.")
 
     if errors:
         print(f"\n{errors} problem(s) found")

@@ -71,10 +71,18 @@ jobs:
 
       - name: Re-read the newsrooms and the feeds
         run: |
-          # BOUNDED. Unbounded, one slow night runs into the job timeout and
-          # the sweep is lost entirely rather than partly done.
+          # BOUNDED BY THE CLOCK, because that is what the job is bounded by.
+          # --limit 600 alone bounded the wrong unit: 600 newsrooms took 76,
+          # 85 and 48 minutes on the last three runs that finished, and from
+          # 2026-09-13 to 09-26 fifty-five of fifty-eight runs were cancelled
+          # at the 90-minute timeout. Each was colder than the last, because
+          # the ETag cache below is saved only by a run that completes - so
+          # every run restored the one 09-12 saved and paid full fetches.
+          # Two weeks, zero commits. The budget leaves the extract, the
+          # commit and the cache save their time; rows not reached sort
+          # first next run. selftest holds this number under the timeout.
           python scripts/fetch_profiles.py --news --refetch --workers 4 \
-            --limit 600 --write
+            --limit 600 --budget-seconds 3600 --write
 
       - name: Extract, behind the door
         run: |
