@@ -225,7 +225,20 @@ export async function onRequestPost({ request, env }) {
     if (cur.status === 200) {
       const f = await cur.json();
       sha = f.sha;
-      try { data = JSON.parse(atob(f.content.replace(/\n/g, ""))); } catch { data = {}; }
+      // NEVER WRITE OVER A FILE YOU COULD NOT READ. An unparseable body, or
+      // the Contents API's empty content for a file over 1 MB, used to become
+      // {} here and then be PUT back with the file's sha - a write that
+      // succeeds and leaves the file holding only the ruling just made. Every
+      // prior ruling gone, every vendor re-asked, and the only recovery a git
+      // revert somebody has to notice is needed.
+      if (f.encoding !== "base64" || typeof f.content !== "string") {
+        return json({ error: "could not read the ruling file (not base64 - too large?); nothing was written" }, 502);
+      }
+      try { data = JSON.parse(atob(f.content.replace(/\n/g, ""))); }
+      catch { return json({ error: "the ruling file on main is not valid JSON; nothing was written" }, 502); }
+      if (!data || typeof data !== "object" || Array.isArray(data)) {
+        return json({ error: "the ruling file on main is not a JSON object; nothing was written" }, 502);
+      }
     } else if (cur.status !== 404) {
       return json({ error: "could not read the ruling file" }, 502);
     }

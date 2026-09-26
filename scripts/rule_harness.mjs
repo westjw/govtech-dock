@@ -38,12 +38,14 @@ function envFor(putLog) {
   };
 }
 
-// stand in for GitHub: report the file as empty, record every write
+// stand in for GitHub: report the file as empty, record every write. `served`
+// overrides what the GET hands back, for the cases where the file is unreadable.
+let served = null;
 function fakeFetch(putLog) {
   return async (url, init = {}) => {
     const u = String(url);
     if ((init.method || "GET") === "GET") {
-      return new Response(JSON.stringify({ content: btoa("{}"), sha: "deadbeef" }),
+      return new Response(JSON.stringify(served || { content: btoa("{}"), encoding: "base64", sha: "deadbeef" }),
                           { status: 200 });
     }
     putLog.push(JSON.parse(init.body));
@@ -129,6 +131,19 @@ const GRANT = { kind: "user", email: "newperson@example.org", handle: "newperson
   const r = await call(OWNER, { ...GRANT, roles: ["owner"] }, puts);
   out.cases.owner_role_not_grantable = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
 }
+
+// 7. A FILE THAT CANNOT BE READ IS NEVER WRITTEN OVER. Unparseable content,
+// and the Contents API's empty non-base64 body for a file over 1 MB, both
+// used to become {} and be PUT back - every prior ruling gone.
+for (const [name, bad] of [["unparseable", { content: btoa("{not json"), encoding: "base64", sha: "s1" }],
+                           ["too_large", { content: "", encoding: "none", sha: "s2", size: 2000000 }]]) {
+  const puts = [];
+  served = bad;
+  globalThis.fetch = fakeFetch(puts);
+  const r = await call(OWNER, RULING, puts);
+  out.cases["unreadable_" + name] = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
+}
+served = null;
 
 // EVERYTHING the function tried to send GitHub, as one string: the record
 // bodies AND the commit messages. An address anywhere in here is the bug.

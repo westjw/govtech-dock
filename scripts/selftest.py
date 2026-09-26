@@ -1053,6 +1053,12 @@ def check_the_web_admin_can_grant_and_the_desk_agrees() -> int:
             errors += fail(f"the owner role was grantable from the web: {c}")
         if "newperson@" in out.get("everything_written", ""):
             errors += fail("the granted address reached GitHub in the clear")
+        # A FILE THAT CANNOT BE READ IS NEVER WRITTEN OVER.
+        for name in ("unreadable_unparseable", "unreadable_too_large"):
+            c = out["cases"].get(name) or {}
+            if c.get("status") != 502 or c.get("wrote"):
+                errors += fail(f"rule.js wrote over a ruling file it could not read ({name}): {c} - "
+                               "every prior ruling would be gone")
 
     # ---- act_user_grant takes a hash; apply_users lands through it --------
     saved = []
