@@ -346,13 +346,38 @@ rail sets sector *and* category together — setting the sector alone would stra
 the old category and `validate()` would refuse the write, correctly.
 
 **The web admin** (`admin-web.html`, `functions/admin/api/rule.js`,
-`scripts/apply_web_rulings.py`) is the judgment half — vendor scope and wrong
-bucket — workable from a phone. The division of labour is the design: the
-Worker only *appends an opinion* to a ruling file; the daily run applies it to
-`companies.json` in Python, where `validate()` lives. A bug in the web half can
-mis-record an opinion and cannot corrupt the map. Auth is Cloudflare Access,
-and the endpoint refuses to write when the Access headers are absent, so the
-failure mode of misconfiguration is "nothing works", never "everyone can write".
+`scripts/apply_web_rulings.py`) is the judgment half, workable from a phone:
+five tabs as of 2026-09-25 — Vendor scope, Wrong bucket, Duplicates, Founding
+year, and Users (a GRANT only; a revoke that waits a night is not a revoke,
+so the instant one is the Access policy). The division of labour is the
+design: the Worker only *appends an opinion* to a ruling file (committed to
+the repo through the GitHub Contents API, keyed by id); the daily run applies
+it in Python, where `validate()` lives — founding years and placements in
+chunks of `journal.BLAST` with the count seen, merges through `act_merge`,
+an `in`/`sled` vendor call back into the candidate queue so the card agent
+gives it a sector, a grant through `act_user_grant` with the hash rule.js
+made. A bug in the web half can mis-record an opinion and cannot corrupt the
+map. The page keeps a session overlay over the build-time `rulings.json`
+(which ships dismissals too), so a ruling stays ruled until the next deploy
+catches up.
+
+**The door on `/admin` is `functions/admin/_middleware.js`, on every
+hostname, and it VERIFIES the Access JWT.** On 2026-09-25 the whole bundle —
+every queue, every ruling with the owner's reasons, the owner's email hash —
+answered 200 to anyone on the project's `*.pages.dev` alias: Access covered
+the custom domain and not the alias, and `rule.js`/`whoami.js` trusted a
+header's presence. The middleware checks signature, audience, issuer and
+expiry against the team's keys; no token is 403, keys that will not answer
+are 503, and `whoami`/`login` stay open because they hold nothing. Team and
+AUD are constants with `ACCESS_TEAM_DOMAIN`/`ACCESS_AUD` overrides — a wrong
+value is a 403 naming the variable, never an open door.
+
+**A phone ruling used to vanish in the nightly push.** `refresh.yml` said
+`git pull --rebase -X theirs`; the bot's copy of a decision file won
+wholesale over a ruling committed while it ran. `scripts/merge_decisions.py
+--resolve` unions the keys now — both writers' rows kept, the bot's
+`applied` flags overlaid — and anything else that conflicts stops for a
+person.
 
 ## Every admin write is reversible
 

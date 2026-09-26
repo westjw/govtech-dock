@@ -284,6 +284,11 @@ def build_admin_bundle(out: "pathlib.Path") -> None:
             rulings[name] = json.loads(f.read_text()) if f.exists() else {}
         except (json.JSONDecodeError, OSError):
             rulings[name] = {}
+    # WHO HAS ACCESS, for the phone's Users tab: handles and roles only. The
+    # hash lives in /admin/users.json for whoami.js; the page has no use for it.
+    payload["users"] = [{"handle": h, "roles": list(u.get("roles") or []),
+                         "label": u.get("label") or "", "revoked_on": u.get("revoked_on")}
+                        for h, u in (users or {}).items() if isinstance(u, dict)]
     (admin_dir / "rulings.json").write_text(json.dumps(rulings))
     (admin_dir / "data.json").write_text(json.dumps(payload))
     print(f"  admin bundle: {len(payload['vendors'])} vendors, "

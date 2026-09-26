@@ -25,6 +25,12 @@ const FILES = {
   // web half can mis-record an opinion and cannot corrupt the map.
   merge: "data/web_merge_rulings.json",
   founded: "data/web_founded_rulings.json",
+  // A GRANT, from a phone. The address is hashed HERE and only the hash is
+  // written; the nightly run lands it in users.json through act_user_grant,
+  // so a grant made on Sunday opens the door on Monday. Revoking is not
+  // offered here on purpose: a revoke that waits a night is not a revoke,
+  // and the instant one is the Access policy in the dashboard.
+  user: "data/web_user_rulings.json",
 };
 
 const json = (obj, status = 200) =>
@@ -56,7 +62,7 @@ async function sha256(s) {
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
-async function ruler(request, env, email) {
+async function ruler(request, env, email, need = "admin") {
   const key = await sha256(String(email).trim().toLowerCase());
   let users = {};
   try {
@@ -66,7 +72,10 @@ async function ruler(request, env, email) {
   for (const [handle, u] of Object.entries(users || {})) {
     if (u && u.email_sha256 === key && !u.revoked_on) {
       const roles = Array.isArray(u.roles) ? u.roles : [];
-      if (roles.includes("admin") || roles.includes("owner")) return handle;
+      // "owner" covers everything; "admin" covers rulings. A grant needs the
+      // owner: the Users board is the one door that decides who else may rule.
+      if (roles.includes("owner")) return handle;
+      if (need === "admin" && roles.includes("admin")) return handle;
       return null;
     }
   }
@@ -80,21 +89,22 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "not behind Access - the /admin Access application " +
                          "is missing, so writing is refused" }, 403);
   }
+  let body;
+  try { body = await request.json(); } catch { return json({ error: "send JSON" }, 400); }
+  const kind = body.kind;
+  if (!FILES[kind]) return json({ error: "kind must be vendor, place, dismiss, merge, founded or user" }, 400);
+
   // THE HANDLE IS THE ONLY FORM OF THE PERSON THAT MAY BE STORED.
-  const who = await ruler(request, env, email);
+  const who = await ruler(request, env, email, kind === "user" ? "owner" : "admin");
   if (!who) {
-    return json({ error: "signed in, but the Users board has not granted you " +
-                         "admin. Ask the owner to add you." }, 403);
+    return json({ error: kind === "user"
+      ? "only the owner grants access"
+      : "signed in, but the Users board has not granted you admin. Ask the owner to add you." }, 403);
   }
   const token = env.GITHUB_ADMIN_TOKEN;
   if (!token) {
     return json({ error: "GITHUB_ADMIN_TOKEN is not configured" }, 501);
   }
-
-  let body;
-  try { body = await request.json(); } catch { return json({ error: "send JSON" }, 400); }
-  const kind = body.kind;
-  if (!FILES[kind]) return json({ error: "kind must be vendor, place, dismiss, merge or founded" }, 400);
 
   // Build the entries exactly the shapes the local admin writes, so the two
   // doors stay interchangeable. Every ruling carries who/when/why/what-they-saw.
@@ -147,6 +157,24 @@ export async function onRequestPost({ request, env }) {
       why: (body.why || "").trim() || null,
       applied: false,
       saw: { name: body.name, source: body.source },
+    };
+  } else if (kind === "user") {
+    const handle = String(body.handle || "").trim().toLowerCase();
+    const addr = String(body.email || "").trim();
+    const roles = Array.isArray(body.roles) ? body.roles.filter((r) => ["admin", "hunter"].includes(r)) : [];
+    if (!/^[a-z][a-z0-9-]{1,23}$/.test(handle))
+      return json({ error: "a handle is 2-24 characters: letters, digits, hyphens, starting with a letter" }, 400);
+    if (!addr.includes("@") || !addr.split("@").pop().includes("."))
+      return json({ error: "a grant needs the person's email address; it is hashed here and never stored" }, 400);
+    if (!roles.length) return json({ error: "grant admin, hunter, or both" }, 400);
+    // THE ADDRESS STOPS HERE. Only its hash goes into the record, the commit
+    // message names the handle, and the applier hands act_user_grant the
+    // hash - nothing on the way to users.json ever holds the address.
+    entries[handle] = {
+      handle, email_sha256: await sha256(addr.toLowerCase()), roles,
+      label: String(body.label || "").trim().slice(0, 80),
+      on: today, by: who, via: "web", applied: false,
+      why: (body.why || "").trim() || null,
     };
   } else if (kind === "place") {
     if (!body.id || !body.sector || !body.category)

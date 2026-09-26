@@ -91,6 +91,35 @@ this Pages project's custom domains first. Every alert link already mailed
 breaks at that moment; one confirmation email has ever been sent, so that is
 one address.
 
+## 1c. The pages.dev alias was never behind Access — and now it does not matter
+
+Measured 2026-09-25: `https://solesource-c6g.pages.dev/admin/`,
+`/admin/data.json`, `/admin/rulings.json` and `/admin/users.json` all answered
+**200 with no sign-in**, while the same paths on `sledjobs.com` 302'd to
+Access. §1b's claim that a custom domain "inherits the project's Access
+policy" is true of the custom domain and false of the `*.pages.dev` alias
+(and of preview deployments).
+
+The fix is in code, so it holds on every hostname: `functions/admin/
+_middleware.js` verifies the Access JWT (`Cf-Access-Jwt-Assertion` header or
+the `CF_Authorization` cookie) against
+`https://solesource-c6g-pages.cloudflareaccess.com/cdn-cgi/access/certs`,
+requires the application audience
+`80b769d2980cc241d0df575dd9fc1f67d68c6e23eb2e3065396e6ecac95cead9`, and
+refuses everything else. Verified after deploy: pages.dev answers **403**,
+sledjobs.com still redirects to Access, `whoami` still answers.
+
+Two things to know:
+
+- **If the Access application is ever recreated, its AUD changes** and every
+  admin request answers 403 naming the variable. Zero Trust → Access →
+  Applications → the app → Overview → *Application Audience (AUD) Tag*; set
+  it as the Pages variable `ACCESS_AUD` (and `ACCESS_TEAM_DOMAIN` if the team
+  domain changes). No redeploy of code is needed, but a Function reads a new
+  variable only after the next deployment (§3b).
+- **Optionally also add the alias to the Access application** in the
+  dashboard. Belt and braces; the middleware no longer depends on it.
+
 ## 2. Pages project (~3 min)
 1. **Workers & Pages → Create → Pages → Upload assets** is NOT what we want —
    choose **Connect to Git** instead, pick `westjw/govtech-dock`.

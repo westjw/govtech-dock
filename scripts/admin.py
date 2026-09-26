@@ -2325,7 +2325,18 @@ def _is_person(by: str | None) -> bool:
     typing is not a personal best, and reporting it as one is the same
     dishonesty as an invented denominator wearing a friendlier face.
     """
-    return not str(by or "owner").strip().lower().startswith("agent")
+    # NOT "anything that does not start with agent". Journal authors on file
+    # include claude-sonnet-5:write-profiles, capture, capture-extension,
+    # site-identity and "transit run ..., applied by Claude" - none of them a
+    # person, all of them counted as the owner's rulings under "Last rulings"
+    # and in the sitting receipt. A person is the owner, or a handle the
+    # Users board granted; a web ruling arrives as "web:<handle>".
+    who = str(by or "owner").strip().lower()
+    if who.startswith("web:"):
+        who = who[4:]
+    if who == "owner":
+        return True
+    return who in {h.lower() for h in read_users()}
 
 
 def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
@@ -2826,9 +2837,18 @@ def coverage_split(companies, board, sector: str = "") -> dict:
         e["n"] += 1
         if len(e["ids"]) < 25:
             e["ids"].append(c["id"])
+    # THE HEADER'S TWO NUMBERS. admin.html read cv.of_findable and cv.findable
+    # and this never returned them, so the coverage box has had no headline
+    # since it was drawn. Same definitions as scripts/coverage.py: findable is
+    # every company minus the ones checked and boardless; of_findable is the
+    # share of those with some board on file.
+    findable = total - n["absent"]
+    on_file = n["structured"] + n["page only"]
     return {
         "sector": sector or None,
         "total": total,
+        "findable": findable,
+        "of_findable": round(100 * on_file / findable) if findable else None,
         "buckets": [{"name": k, "n": n[k], "pct": round(100 * n[k] / total)}
                     for k in order],
         "by_ats": sorted(per.values(), key=lambda e: -e["n"]),
@@ -3600,8 +3620,16 @@ def act_user_grant(body: dict) -> dict:
     label = (body.get("label") or "").strip()[:80]
     by = body.get("by") or "owner"
     users = read_users()
-    if handle in users and not email:
+    # A GRANT FROM THE WEB ARRIVES AS A HASH. rule.js hashes the address at
+    # the edge and records only email_sha256, so the applier cannot hand this
+    # an address - and must not, since nothing here may hold one.
+    pre = (body.get("email_sha256") or "").strip().lower()
+    if pre and not re.fullmatch(r"[0-9a-f]{64}", pre):
+        return {"error": "email_sha256 is not a sha256 hex digest"}
+    if handle in users and not email and not pre:
         email = None                      # re-grant by handle keeps the hash
+    elif pre:
+        email = None
     elif not email or "@" not in email or "." not in email.split("@")[-1]:
         return {"error": "a grant needs the person's email address; it is hashed, never stored"}
     if not HANDLE.match(handle):
@@ -3615,8 +3643,8 @@ def act_user_grant(body: dict) -> dict:
     prev = users.get(handle) or {}
     if "owner" in (prev.get("roles") or []):
         return {"error": "the owner's roles are not edited from this board"}
-    if email is not None:
-        key = email_key(email)
+    if email is not None or pre:
+        key = pre or email_key(email)
         clash = next((h for h, u in users.items() if h != handle and isinstance(u, dict)
                       and u.get("email_sha256") == key), None)
         if clash:
@@ -5956,7 +5984,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def _api_get(self, path: str):
         if path == "/api/triage":
             companies, board = read_companies(), read("board.json", {})
+            # THE PAGE SAYS "every count below is <sector> only" and this
+            # ignored ?sector=, so a sector view showed the whole board's
+            # sorties under a caption promising otherwise.
+            want = (urllib.parse.parse_qs(
+                urllib.parse.urlparse(self.path).query).get("sector") or [""])[0]
+            if want:
+                companies = [c for c in companies if c.get("sector") == want]
             t = triage(companies, board)
+            t["sector"] = want or None
             t["health"] = board_health(companies, board)
             t["sessions"] = sessions()
             t["reversals"] = reversals()

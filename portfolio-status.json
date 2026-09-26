@@ -1,13 +1,18 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-09-25T16:33:55-04:00",
+  "last_updated": "2026-09-25T23:03:59-04:00",
   "status": "Active Build",
   "progress_pct": 50,
   "progress_note": "~50% (free board frame; the paid half still has no pricing, billing or employer self-serve beyond the claim gate) - 2026-09-25: a verified review of what is undone across both repos; claim corridor runs nightly (has carried no claim); beta codes minted from the board; the Parks & Rec approval screen exists and 0 of 142 pages are signed off",
   "next_move": "Parks & Rec, the department the owner chose to finish first: land the 266 write-ups that clear the door (promote_profiles --land-all --by owner), write the 37 Parks & Rec companies that have none, accept the 136 rival shortlists sitting in its never-gated categories, then sign off its 142 pages in the approval screen. Owner decisions in the way: landing is public, writing spends, and the buyer gate (772 pending) has never been printed.",
   "session_summary": "Reviewed what is left undone with four read-only finders and adversarial verifiers (55 findings, 49 confirmed, 2 refuted). On this side: portfolio-status was 116 commits stale with four false blockers; CLAUDE.md said the sending address had not moved, that no workflow ran sync_claims, that the admin had fourteen queues and seven agent kinds; the coverage block was a month old. All corrected to measured values. cities.json carried four role titles as city keys from a parser bug fixed long ago; purged, and the geocoder now refuses a title word before it asks.",
   "recent_work": [
+    "2026-09-25 functions/admin/_middleware.js: the /admin door verifies the Access JWT on every hostname; the pages.dev alias had served the whole admin bundle (queues, rulings with reasons, the owner's email hash) with no sign-in. Verified 403 after deploy",
+    "2026-09-25 Phone admin: a ruling stays ruled (session overlay over the build-time rulings.json, dismissals shipped), five tabs incl. Users (grant only, hashed at the edge, landed nightly)",
+    "2026-09-25 apply_web_rulings: chunked forced writes so a 26-ruling phone session cannot fail the nightly run; every applier runs; in/sled vendor calls hand the vendor to the candidate queue with sled_only riding to the landed company",
+    "2026-09-25 refresh.yml: no more -X theirs; merge_decisions.py unions decision-file keys so a phone ruling committed mid-run is kept",
+    "2026-09-25 Start here: 'this sitting' closes after four hours; sortie bars count this sitting per queue; ?sector= honoured; coverage header numbers exist; _is_person excludes model/extension authors; empty dismissals refused",
     "2026-09-23 Beta codes minted from the board (scripts/beta_codes.py, functions/api/beta.js): one code one person, consent version and text stored at redemption",
     "2026-09-23 Saved board split into companies / open roles / roles that came down, with a reader-set toggle",
     "2026-09-21 Page approval screen: the live /c/ page beside the record that made it; every company has a page to work on without publishing one it has not earned",
@@ -15,11 +20,7 @@
     "2026-09-18 sync_claims runs nightly; claim_alert opens one issue when a claim waits on the hand gate",
     "2026-09-18 Suppliers staged per sector: 1,578 cards, not 5,143 names, each with a tag it earned (never landed yet)",
     "2026-09-18 383 rival shortlists for Public Works and Parks & Rec, pending rulings; Public Works read by the owner",
-    "2026-09-18 board.json stops shipping 638 KB of keys the page never reads; logos shrunk 2.15 MB; journal memoised",
-    "2026-09-17 Tags as two derived dimensions; page sweep per category; 'could not be recorded' is not a diagnosis",
-    "2026-09-16 The claim path: owner is the gate, authorisation replayed from employer_events.jsonl in git, never from KV",
-    "2026-09-13 Write-up chunks 6-13 landed (Police 109 written)",
-    "2026-09-25 Doc pass: CLAUDE.md, DEPLOY.md, README, digest-check.yml and this file corrected to measured state; cities.json title-keys purged with a geocoder guard"
+    "2026-09-18 board.json stops shipping 638 KB of keys the page never reads; logos shrunk 2.15 MB; journal memoised"
   ],
   "blockers": [
     "No real claim has ever been carried: data/claims.json is {} and employer_events.jsonl does not exist because nobody has been verified. The corridor runs nightly and is untested by a real claimant",
@@ -27,7 +28,8 @@
     "501 write-ups pending (266 landable now, 215 behind stale gate timestamps, 20 never gated); 772 buyer verdicts pending with no gate ever printed; 383 rival shortlists pending; suppliers (1,578 card-ready) never landed - every one is an owner call because landing is public or judgment",
     "Parks & Rec: 0 of 142 pages signed off; 37 companies have no write-up (spend to write)",
     "The conference registry is at Phase 1 of 5: 837 national events staged, 802 needs_url, 0 verified, 55 departments unmapped, 760 events with no department, no conferences.yml",
+    "APWA and GMIS 403 an identified crawler (33 chapter events); IACP/IAFC/NSBA publish no chapter list (44 events)",
     "GITHUB_SUBMIT_TOKEN expiry is unrecorded and the form reverts silently when it lapses",
-    "APWA and GMIS 403 an identified crawler (33 chapter events); IACP/IAFC/NSBA publish no chapter list (44 events)"
+    "The desk-admin wiring audit and all verification agents did not run (session agent limit); the 38 audit findings acted on today were reproduced by hand, the rest (13 low/medium) are listed in the session notes and unverified"
   ]
 }

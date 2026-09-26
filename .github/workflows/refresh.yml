@@ -15,9 +15,9 @@ permissions:
 concurrency:
   # ONE GROUP ACROSS EVERY JOB THAT COMMITS INTO data/. Neither workflow
   # declared one, so an apply job and the refresh could commit concurrently -
-  # and refresh.yml's own `git pull --rebase -X theirs` resolves that conflict
-  # in the bot's favour, which silently DROPS the other job's write. A ruling
-  # made from a phone could vanish with no error anywhere.
+  # and refresh.yml's push step once said `git pull --rebase -X theirs`, which
+  # resolved that conflict in the bot's favour and silently DROPPED the other
+  # job's write. It merges decision files by key now (merge_decisions.py).
   group: govtech-dock-data
   cancel-in-progress: false
 
@@ -165,8 +165,14 @@ jobs:
             git commit -m "chore: daily hiring refresh ($(date +%F))"
             # Main may have moved during the 40-minute fetch. Rebase, and on a
             # conflict in generated files let this run's freshly built data
-            # win (-X theirs = the commit being replayed, i.e. ours-just-built).
-            git pull --rebase -X theirs origin main
+            # NEVER -X theirs. A ruling committed from a phone while this ran
+            # conflicted with the bot's copy of the same decision file and was
+            # dropped wholesale, with "1 ruling saved" on the phone and the
+            # commit in history. Decision files are dicts keyed by id: both
+            # sides' keys are kept and only the bot's flag changes overlay.
+            # Anything else that conflicts stops the push for a person.
+            git pull --rebase origin main \
+              || (python scripts/merge_decisions.py --resolve && GIT_EDITOR=true git rebase --continue)
             git push
           fi
 
@@ -188,7 +194,14 @@ jobs:
             echo "Spreadsheet unchanged."
           else
             git commit -m "chore: spreadsheet rebuild ($(date +%F))"
-            git pull --rebase -X theirs origin main
+            # NEVER -X theirs. A ruling committed from a phone while this ran
+            # conflicted with the bot's copy of the same decision file and was
+            # dropped wholesale, with "1 ruling saved" on the phone and the
+            # commit in history. Decision files are dicts keyed by id: both
+            # sides' keys are kept and only the bot's flag changes overlay.
+            # Anything else that conflicts stops the push for a person.
+            git pull --rebase origin main \
+              || (python scripts/merge_decisions.py --resolve && GIT_EDITOR=true git rebase --continue)
             git push
           fi
 

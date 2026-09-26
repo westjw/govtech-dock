@@ -171,6 +171,41 @@ def apply_vendor_scope(dry: bool) -> int:
     return 0
 
 
+def apply_users(dry: bool) -> int:
+    """A grant recorded on the web lands in users.json, through act_user_grant.
+
+    The record carries the hash rule.js made and never an address; the desk
+    door accepts a pre-hashed key for exactly this caller. The owner's own
+    roles are refused there, and so is a hash already on file under another
+    handle - both stay pending and say why.
+    """
+    pending = _pending("web_user_rulings.json")
+    if not pending:
+        return 0
+    rows = json.loads((DATA / "web_user_rulings.json").read_text())
+    done, failed = [], []
+    for handle, r in pending.items():
+        if dry:
+            done.append((handle, r.get("roles")))
+            continue
+        out = admin.act_user_grant({"handle": handle, "email_sha256": r.get("email_sha256"),
+                                    "roles": r.get("roles") or [], "label": r.get("label") or "",
+                                    "by": f"web:{r.get('by') or 'unknown'}"})
+        if out.get("error"):
+            failed.append((handle, out["error"]))
+            continue
+        rows[handle]["applied"] = True
+        done.append((handle, r.get("roles")))
+    print(f"users: {len(done)} grant(s) applied, {len(failed)} left pending")
+    for handle, roles in done[:8]:
+        print(f"  {handle}: {', '.join(roles or [])}")
+    for handle, why in failed[:5]:
+        print(f"  PENDING {handle}: {why}")
+    if not dry and done:
+        admin.write_atomic("web_user_rulings.json", rows)
+    return 0
+
+
 def apply_merges(dry: bool) -> int:
     """A merge ruled from the web, applied here through act_merge.
 
@@ -237,7 +272,7 @@ def main() -> int:
     # EVERY APPLIER RUNS. `apply_founded(...) or apply_merges(...)` skipped the
     # merges whenever founded returned non-zero.
     rc = 0
-    for step in (apply_founded, apply_merges, apply_vendor_scope):
+    for step in (apply_founded, apply_merges, apply_vendor_scope, apply_users):
         rc = step(a.dry_run) or rc
 
     path = DATA / "placement_rulings.json"

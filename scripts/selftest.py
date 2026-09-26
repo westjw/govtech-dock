@@ -999,6 +999,194 @@ def check_a_sled_scope_call_reaches_the_landed_company() -> int:
     return errors
 
 
+def check_the_web_admin_can_grant_and_the_desk_agrees() -> int:
+    """The second admin batch, each piece driven.
+
+    - rule.js takes a `user` kind: the owner may grant, an admin may not, the
+      owner role is not grantable, and the address is hashed at the edge - the
+      harness scans every byte sent to GitHub for one.
+    - act_user_grant accepts the pre-hashed key the applier hands it and
+      refuses a malformed one; apply_users lands a pending grant through it.
+    - _is_person: authors like claude-sonnet-5:write-profiles, capture and
+      "transit run ... applied by Claude" were counted as the owner's rulings.
+      A person is the owner or a handle on the Users board.
+    - coverage_split returns the two header numbers admin.html has read since
+      the box was drawn.
+    - /api/triage honours ?sector=, as the caption above it promises.
+    - merge_decisions keeps both writers' keys, and the nightly push no longer
+      resolves a conflict with -X theirs.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import http.server
+    import shutil
+    import subprocess
+    import tempfile
+    import threading
+    import urllib.error
+    import urllib.request
+
+    import admin
+    import apply_web_rulings as awr
+    import merge_decisions as md
+
+    # ---- rule.js user kind ------------------------------------------------
+    if shutil.which("node"):
+        r = subprocess.run(["node", str(ROOT / "scripts" / "rule_harness.mjs")],
+                           capture_output=True, text=True, timeout=90)
+        try:
+            out = json.loads(r.stdout)
+        except Exception:                                       # noqa: BLE001
+            return fail(f"rule_harness.mjs did not run: {r.stderr[:300]}")
+        c = out["cases"].get("owner_grants") or {}
+        if not (c.get("ok") and c.get("wrote") == 1 and c.get("hash_ok")
+                and c.get("roles") == ["hunter"] and c.get("applied") is False):
+            errors += fail(f"the owner's grant did not record a hashed, pending row: {c}")
+        c = out["cases"].get("admin_cannot_grant") or {}
+        if c.get("ok") or c.get("wrote"):
+            errors += fail(f"an admin who is not the owner could grant access: {c}")
+        c = out["cases"].get("owner_role_not_grantable") or {}
+        if c.get("ok") or c.get("wrote"):
+            errors += fail(f"the owner role was grantable from the web: {c}")
+        if "newperson@" in out.get("everything_written", ""):
+            errors += fail("the granted address reached GitHub in the clear")
+
+    # ---- act_user_grant takes a hash; apply_users lands through it --------
+    saved = []
+    keep = (admin.read_users, admin.save_decisions)
+    try:
+        admin.read_users = lambda: {"wyeth": {"email_sha256": "a" * 64, "roles": ["owner", "admin"]}}
+        admin.save_decisions = lambda name, obj, action, **k: saved.append((name, obj, action, k)) or None
+        out = admin.act_user_grant({"handle": "newperson", "email_sha256": "b" * 64,
+                                    "roles": ["hunter"], "label": "tester", "by": "web:wyeth"})
+        if out.get("error") or not saved:
+            errors += fail(f"a pre-hashed grant was refused: {out}")
+        else:
+            row = saved[-1][1].get("newperson") or {}
+            if row.get("email_sha256") != "b" * 64 or row.get("roles") != ["hunter"]:
+                errors += fail(f"the pre-hashed grant landed wrong: {row}")
+            if saved[-1][3].get("by") != "web:wyeth":
+                errors += fail("a web grant is not journalled as the web handle")
+        out = admin.act_user_grant({"handle": "x2", "email_sha256": "not-a-hash", "roles": ["hunter"]})
+        if not out.get("error"):
+            errors += fail("a malformed email_sha256 was accepted")
+        out = admin.act_user_grant({"handle": "x3", "roles": ["hunter"]})
+        if not out.get("error"):
+            errors += fail("a grant with neither an address nor a hash was accepted")
+    finally:
+        admin.read_users, admin.save_decisions = keep
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    (tmp / "web_user_rulings.json").write_text(json.dumps({
+        "newperson": {"handle": "newperson", "email_sha256": "c" * 64, "roles": ["hunter"],
+                      "label": "t", "by": "wyeth", "on": "2026-09-25", "applied": False},
+        "done": {"handle": "done", "email_sha256": "d" * 64, "roles": ["admin"], "applied": True}}))
+    grants = []
+    keep2 = (awr.DATA, admin.act_user_grant, admin.write_atomic)
+    try:
+        awr.DATA = tmp
+        admin.act_user_grant = lambda body: grants.append(body) or {"ok": True}
+        admin.write_atomic = lambda name, obj: (tmp / name).write_text(json.dumps(obj))
+        import io, contextlib
+        with contextlib.redirect_stdout(io.StringIO()):
+            awr.apply_users(False)
+        if len(grants) != 1 or grants[0].get("email_sha256") != "c" * 64 \
+                or grants[0].get("by") != "web:wyeth":
+            errors += fail(f"apply_users did not land the pending grant through the desk door: {grants}")
+        after = json.loads((tmp / "web_user_rulings.json").read_text())
+        if after["newperson"].get("applied") is not True:
+            errors += fail("apply_users landed a grant and left it pending")
+    finally:
+        awr.DATA, admin.act_user_grant, admin.write_atomic = keep2
+
+    # ---- who is a person ---------------------------------------------------
+    keep3 = admin.read_users
+    try:
+        admin.read_users = lambda: {"wyeth": {"roles": ["owner"]}, "sam": {"roles": ["admin"]}}
+        for by, want in (("owner", True), (None, True), ("sam", True), ("web:sam", True),
+                         ("agent:claude", False), ("claude-sonnet-5:write-profiles", False),
+                         ("capture", False), ("capture-extension", False),
+                         ("transit run 2026-09-10, applied by Claude on the owner's approval", False)):
+            if admin._is_person(by) != want:
+                errors += fail(f"_is_person({by!r}) is {admin._is_person(by)}, want {want}")
+    finally:
+        admin.read_users = keep3
+
+    # ---- the coverage header has its numbers -------------------------------
+    companies = admin.read_companies()
+    board = json.loads((DATA / "board.json").read_text())
+    cv = admin.coverage_split(companies, board, "")
+    n = {b["name"]: b["n"] for b in cv["buckets"]}
+    if cv.get("findable") != cv["total"] - n["absent"]:
+        errors += fail(f"coverage findable is {cv.get('findable')}, want total - absent")
+    want = round(100 * (n["structured"] + n["page only"]) / cv["findable"]) if cv["findable"] else None
+    if cv.get("of_findable") != want:
+        errors += fail(f"coverage of_findable is {cv.get('of_findable')}, want {want}")
+
+    # ---- /api/triage honours ?sector= --------------------------------------
+    class Quiet(admin.Handler):
+        def log_message(self, *a):
+            pass
+    srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
+    base = f"http://127.0.0.1:{srv.server_address[1]}"
+    threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
+    try:
+        tok = urllib.request.urlopen(base + "/api/token", timeout=5).read().decode()
+        tok = json.loads(tok).get("token") if tok.strip().startswith("{") else tok.strip()
+        def get(path):
+            req = urllib.request.Request(base + path, headers={"X-Admin-Token": tok})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read().decode())
+        sector = sorted({c.get("sector") for c in companies if c.get("sector")})[0]
+        whole = get("/api/triage")
+        part = get(f"/api/triage?sector={urllib.parse.quote(sector)}")
+        if part.get("sector") != sector:
+            errors += fail(f"/api/triage?sector= did not echo the sector: {part.get('sector')!r}")
+        w, p_ = whole["counts"], part["counts"]
+        if not any(p_.get(k, 0) < w.get(k, 0) for k in w):
+            errors += fail("/api/triage?sector= returned the whole board's counts under a "
+                           "caption promising one sector")
+    finally:
+        srv.shutdown()
+        srv.server_close()
+
+    # ---- decision files merge by key; the push never says -X theirs -------
+    base_d = {"a": {"on": "1", "applied": False}}
+    up = {"a": {"on": "1", "applied": False}, "b": {"on": "2", "applied": False}}
+    bot = {"a": {"on": "1", "applied": True}}
+    got = md.union(base_d, up, bot)
+    if got != {"a": {"on": "1", "applied": True}, "b": {"on": "2", "applied": False}}:
+        errors += fail(f"merge_decisions.union lost a side: {got}")
+    nested = md.union({"q": {"k1": {"on": "1"}}}, {"q": {"k1": {"on": "1"}, "k2": {"on": "2"}}},
+                      {"q": {"k1": {"on": "1"}, "k3": {"on": "3"}}})
+    if set(nested["q"]) != {"k1", "k2", "k3"}:
+        errors += fail(f"merge_decisions.union lost a nested dismissal: {nested}")
+    wf = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    cmds = "\n".join(ln for ln in wf.splitlines() if not ln.strip().startswith("#"))
+    if "-X theirs" in cmds:
+        errors += fail("refresh.yml still resolves a rebase with -X theirs, which drops a "
+                       "ruling committed from a phone while the bot ran")
+    if cmds.count("merge_decisions.py --resolve") < 2:
+        errors += fail("not every push step in refresh.yml falls back to merge_decisions")
+
+    # ---- the phone and the bundle carry the Users tab ----------------------
+    html = (ROOT / "admin-web.html").read_text()
+    if "function drawUsers" not in html or '"users","Users"' not in html:
+        errors += fail("admin-web.html has no Users tab")
+    bs = "\n".join(ln.split("#")[0] for ln in (ROOT / "scripts" / "build_site.py").read_text().splitlines())
+    if 'payload["users"]' not in bs:
+        errors += fail("build_site does not ship the user list to the phone")
+    if "email_sha256" in bs.split('payload["users"]')[1][:400]:
+        errors += fail("build_site ships the email hashes to the phone payload")
+    rj = "\n".join(ln.split("//")[0] for ln in (ROOT / "functions" / "admin" / "api" / "rule.js").read_text().splitlines())
+    if 'user: "data/web_user_rulings.json"' not in rj:
+        errors += fail("rule.js no longer accepts the user kind")
+    return errors
+
+
 def check_the_admin_door_is_verified_on_every_hostname() -> int:
     """The admin bundle was public on the project's pages.dev alias.
 
@@ -24262,6 +24450,7 @@ def main() -> int:
     errors += check_a_phone_session_cannot_kill_the_nightly_run()
     errors += check_the_desk_admin_says_what_it_did()
     errors += check_a_sled_scope_call_reaches_the_landed_company()
+    errors += check_the_web_admin_can_grant_and_the_desk_agrees()
     errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()
     errors += check_journal_shapes_round_trip()

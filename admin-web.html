@@ -268,7 +268,7 @@ function render(){
   }
   const tabs=$("#tabs");tabs.innerHTML="";
   [["vendors","Vendor scope"],["miscategorized","Wrong bucket"],
-   ["duplicates","Duplicates"],["founded","Founding year"]].forEach(([k,l])=>{
+   ["duplicates","Duplicates"],["founded","Founding year"],["users","Users"]].forEach(([k,l])=>{
     const b=el("button",null,l);b.dataset.k=k;
     b.onclick=()=>{TAB=k;draw()};tabs.appendChild(b)});
   draw();
@@ -289,7 +289,7 @@ function draw(){
     b.setAttribute("aria-selected",b.dataset.k===TAB));
   const v=$("#view");v.innerHTML="";
   ({vendors:drawVendors,miscategorized:drawBucket,
-    duplicates:drawDupes,founded:drawFounded}[TAB]||drawVendors)(v);
+    duplicates:drawDupes,founded:drawFounded,users:drawUsers}[TAB]||drawVendors)(v);
 }
 
 /* DUPLICATES, the highest-leverage queue there is: 70 pairs holding up 136
@@ -478,6 +478,44 @@ function drawBucket(v){
     row.append(move,keep);n.appendChild(row);
     v.appendChild(n);
   });
+}
+/* USERS: who may reach the admin and the beta, and a GRANT from here. The
+   address is typed here, hashed at the edge, and never stored; the grant
+   lands in users.json on the nightly run, so it opens the door tomorrow
+   morning, and the page says so. Revoking is not here on purpose - a revoke
+   that waits a night is not a revoke. The instant one is the Access policy. */
+function drawUsers(v){
+  const rows=D.users||[];
+  const list=el("div","card");
+  list.appendChild(el("div","kv",`${rows.length} with access`));
+  rows.forEach(u=>{
+    const line=el("div","kv",`${u.handle} — ${(u.roles||[]).join(", ")||"no roles"}`
+      +(u.label?` · ${u.label}`:"")+(u.revoked_on?` · revoked ${u.revoked_on}`:""));
+    list.appendChild(line)});
+  v.appendChild(list);
+  const n=el("div","card");
+  n.appendChild(el("div","nm","Grant access"));
+  n.appendChild(el("div","kv","Their address is hashed at the edge and never stored. "
+    +"The grant lands with the nightly run, so the door opens tomorrow morning."));
+  const email=el("input","txt");email.placeholder="their email";email.type="email";email.autocomplete="off";
+  const handle=el("input","txt");handle.placeholder="handle (letters, digits, hyphens)";
+  const label=el("input","txt");label.placeholder="who they are (optional)";
+  const roles=el("div","row");
+  const boxes={};
+  [["admin","admin: rule from here"],["hunter","hunter: the Job Hunter beta"]].forEach(([r,l])=>{
+    const lab=el("label");const cb=el("input");cb.type="checkbox";cb.value=r;boxes[r]=cb;
+    lab.append(cb,document.createTextNode(" "+l));roles.appendChild(lab)});
+  const go=el("button","act good","Grant (lands tonight)");
+  go.onclick=async()=>{
+    const picked=Object.keys(boxes).filter(r=>boxes[r].checked);
+    if(!picked.length){toast("pick at least one role",true);return}
+    go.disabled=true;
+    const r=await rule({kind:"user",email:email.value,handle:handle.value,roles:picked,label:label.value});
+    go.disabled=false;
+    if(r){email.value="";handle.value="";toast(`${handle.value||"grant"} recorded; it lands with the nightly run`)}
+  };
+  n.append(email,handle,label,roles,go);
+  v.appendChild(n);
 }
 boot().catch(e=>{const v=$("#view");v.innerHTML="";
   // a JSON.parse failure quotes the bytes it choked on, and those bytes came

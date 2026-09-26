@@ -22,6 +22,7 @@ const REVOKED = "gone@example.org";          // had a row, revoked
 
 const USERS = {
   wyeth: { email_sha256: sha(OWNER), roles: ["owner", "admin"], revoked_on: null },
+  sam:   { email_sha256: sha("sam@example.org"), roles: ["admin"], revoked_on: null },
   jane:  { email_sha256: sha("jane@example.org"), roles: ["hunter"], revoked_on: null },
   ghost: { email_sha256: sha(REVOKED), roles: ["admin"], revoked_on: "2026-09-01" },
 };
@@ -100,6 +101,33 @@ const RULING = { kind: "vendor", call: "out", name: "Acme Payroll", why: "horizo
   globalThis.fetch = fakeFetch(puts);
   const r = await call(null, RULING, puts);
   out.cases.anonymous = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
+}
+
+// 6. a GRANT: the owner may, an admin may not, and the address never lands
+const GRANT = { kind: "user", email: "newperson@example.org", handle: "newperson",
+                roles: ["hunter"], label: "a beta tester" };
+{
+  const puts = [];
+  globalThis.fetch = fakeFetch(puts);
+  const r = await call(OWNER, GRANT, puts);
+  const rec = puts.length ? JSON.parse(Buffer.from(puts[0].content, "base64").toString("utf8")) : {};
+  out.cases.owner_grants = { status: r.status, ok: !!r.body.ok, wrote: puts.length,
+    hash_ok: !!(rec.newperson && rec.newperson.email_sha256 === sha("newperson@example.org")),
+    roles: rec.newperson && rec.newperson.roles, applied: rec.newperson && rec.newperson.applied };
+  out.wrote.push(...puts);
+}
+{
+  const puts = [];
+  globalThis.fetch = fakeFetch(puts);
+  const r = await call("sam@example.org", GRANT, puts);
+  out.cases.admin_cannot_grant = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
+  out.wrote.push(...puts);
+}
+{
+  const puts = [];
+  globalThis.fetch = fakeFetch(puts);
+  const r = await call(OWNER, { ...GRANT, roles: ["owner"] }, puts);
+  out.cases.owner_role_not_grantable = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
 }
 
 // EVERYTHING the function tried to send GitHub, as one string: the record
