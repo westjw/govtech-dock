@@ -250,8 +250,24 @@ def _entries() -> list[dict]:
     return list(rows)
 
 
+ARCHIVE = DATA / "admin_journal.archive.jsonl"
+
+
 def _write_entries(rows: list[dict]) -> None:
     global _CACHE
+    # WHAT IS PRUNED IS ARCHIVED, NOT DROPPED. The journal is the ONLY record
+    # of boards/websites/duplicates/founded rulings and of every before-image,
+    # and it kept 500 entries: every journal-only ruling from 2026-08-28 to
+    # 09-08 was already gone, and the 09-08 sitting of 101 rulings would have
+    # followed after ~500 more writes - "your best sitting" silently falling
+    # and the undo for those rulings unrecoverable. Pruned rows go to an
+    # append-only archive; the live file stays small for the reads that
+    # happen on every admin request.
+    pruned = rows[:-KEEP] if len(rows) > KEEP else []
+    if pruned:
+        with open(ARCHIVE, "a") as fh:
+            for r in pruned:
+                fh.write(json.dumps(r) + "\n")
     fd, tmp = tempfile.mkstemp(dir=str(DATA), suffix=".tmp")
     with os.fdopen(fd, "w") as fh:
         for r in rows[-KEEP:]:

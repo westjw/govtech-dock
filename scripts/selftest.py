@@ -999,6 +999,109 @@ def check_a_sled_scope_call_reaches_the_landed_company() -> int:
     return errors
 
 
+def check_six_small_things_the_audit_named() -> int:
+    """Each reproduced by reading the code, then fixed, then driven here.
+
+    - The journal pruned to 500 and dropped the rest; it archives them now.
+    - act_scope stored no author and no input.
+    - Origin: null got the token (a sandboxed iframe sends exactly that).
+    - A string field arriving as a number was a 500 with a Python exception
+      name; it is a 400 that names the field's problem and writes nothing.
+    - /api/page answered 200 with an error body.
+    - The console code was printed without flush, so a redirected start held
+      it in a buffer until exit.
+    """
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    import http.server
+    import tempfile
+    import threading
+    import urllib.error
+    import urllib.request
+
+    import admin
+    import journal
+
+    # journal: pruned rows land in the archive
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    keep = (journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP)
+    try:
+        journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP = tmp, tmp / "j.jsonl", tmp / "a.jsonl", 3
+        rows = [{"id": f"2026-09-25#{i}", "action": "x"} for i in range(5)]
+        journal._write_entries(rows)
+        live = (tmp / "j.jsonl").read_text().splitlines()
+        arch = (tmp / "a.jsonl").read_text().splitlines() if (tmp / "a.jsonl").exists() else []
+        if len(live) != 3 or len(arch) != 2:
+            errors += fail(f"journal prune kept {len(live)} and archived {len(arch)}; want 3 and 2")
+        journal._write_entries(rows[-3:] + [{"id": "2026-09-25#5", "action": "y"}])
+        arch = (tmp / "a.jsonl").read_text().splitlines()
+        if len(arch) != 3:
+            errors += fail(f"a second prune did not append to the archive: {len(arch)} rows")
+    finally:
+        journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP = keep
+        journal._CACHE = None
+
+    # act_scope: by and saw on the record
+    saved = []
+    keep2 = (admin.read, admin.save_decisions)
+    try:
+        admin.read = lambda name, default=None: {} if name == "scope_decisions.json" else keep2[0](name, default)
+        admin.save_decisions = lambda name, obj, action, **k: saved.append(obj) or None
+        admin.act_scope({"id": "acme::AE", "in_scope": False, "by": "sam", "why": "federal",
+                         "title": "AE", "company": "Acme", "description": "d"})
+        rec = (saved[-1] if saved else {}).get("acme::AE") or {}
+        if rec.get("by") != "sam" or (rec.get("saw") or {}).get("title") != "AE":
+            errors += fail(f"a scope ruling still carries no author or input: {rec}")
+    finally:
+        admin.read, admin.save_decisions = keep2
+
+    # the server: Origin null, a wrong-typed field, /api/page
+    class Quiet(admin.Handler):
+        def log_message(self, *a):
+            pass
+    srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
+    base = f"http://127.0.0.1:{srv.server_address[1]}"
+    threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
+    def ask(path, headers=None, method="GET", body=None):
+        req = urllib.request.Request(base + path, data=body, method=method, headers=headers or {})
+        try:
+            with urllib.request.urlopen(req, timeout=10) as r:
+                return r.status, r.read()
+        except urllib.error.HTTPError as e:
+            return e.code, e.read()
+    try:
+        code, _ = ask("/api/token", {"Origin": "null"})
+        if code != 403:
+            errors += fail(f"/api/token answered {code} to Origin: null - a sandboxed iframe sends that")
+        code, body = ask("/api/token")
+        tok = json.loads(body).get("token") if body.strip().startswith(b"{") else body.decode().strip()
+        hdr = {"X-Admin-Token": tok, "Content-Type": "application/json"}
+        # posts-at still does body.get("id").strip(); dismiss refuses the type
+        # before it can strip, so it cannot show this
+        hdr2 = dict(hdr, **{"X-Admin-Code": admin.CONSOLE_CODE})
+        code, body = ask("/api/posts-at", hdr2, "POST", json.dumps({"id": 5, "url": 5}).encode())
+        if code != 400 or b"wrong type" not in body:
+            errors += fail(f"a wrong-typed field answered {code} {body[:90]!r}, not a 400 naming the type")
+        code, _ = ask("/api/page", hdr)
+        if code != 400:
+            errors += fail(f"/api/page with no id answered {code}, not 400")
+        code, _ = ask("/api/page?id=no-such-company-xyz", hdr)
+        if code != 404:
+            errors += fail(f"/api/page for an unknown company answered {code}, not 404")
+    finally:
+        srv.shutdown()
+        srv.server_close()
+
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    code_lines = [ln for ln in src.splitlines() if "code for this run" in ln and not ln.strip().startswith("#")]
+    if not code_lines or "flush=True" not in code_lines[0]:
+        errors += fail("the console code is printed without flush; a redirected start never shows it")
+    return errors
+
+
 def check_the_web_admin_can_grant_and_the_desk_agrees() -> int:
     """The second admin batch, each piece driven.
 
@@ -24457,6 +24560,7 @@ def main() -> int:
     errors += check_the_desk_admin_says_what_it_did()
     errors += check_a_sled_scope_call_reaches_the_landed_company()
     errors += check_the_web_admin_can_grant_and_the_desk_agrees()
+    errors += check_six_small_things_the_audit_named()
     errors += check_no_person_in_the_repo()
     errors += check_admin_writes_are_journalled()
     errors += check_journal_shapes_round_trip()

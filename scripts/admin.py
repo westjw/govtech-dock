@@ -1003,9 +1003,16 @@ def act_scope(body: dict) -> dict:
     if not pid or keep is None:
         return {"error": "need a posting id and a decision"}
     d = read("scope_decisions.json", {})
+    # WHO, AND WHAT THEY SAW. Every record in scope_decisions.json was
+    # authorless and carried no input - once the journal entry aged out
+    # nobody could say who ruled a posting out of scope or what they were
+    # shown, and _is_person(None) counted it as the owner's.
     d[pid] = {"in_scope": bool(keep), "on": dt.date.today().isoformat(),
               "at": now(),
-              "why": (body.get("why") or "").strip() or None}
+              "by": (body.get("by") or "owner").strip(),
+              "why": (body.get("why") or "").strip() or None,
+              "saw": {"title": body.get("title"), "company": body.get("company"),
+                      "description": body.get("description")}}
     bad = save_decisions("scope_decisions.json", d, "scope",
                          why=(body.get("why") or ""),
                          by=(body.get("by") or "owner"),
@@ -3616,7 +3623,8 @@ def act_user_grant(body: dict) -> dict:
     """Grant roles to a person by email; the file keeps the hash and a handle."""
     email = (body.get("email") or "").strip()
     handle = (body.get("handle") or "").strip().lower()
-    roles = [r for r in (body.get("roles") or []) if isinstance(r, str)]
+    roles = [r for r in (body.get("roles") if isinstance(body.get("roles"), list) else [])
+             if isinstance(r, str)]
     label = (body.get("label") or "").strip()[:80]
     by = body.get("by") or "owner"
     users = read_users()
@@ -5791,7 +5799,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         those two can be a page reading a reply it should not have.
         """
         origin = (self.headers.get("Origin") or "").strip().lower()
-        return origin.startswith("http://") or origin.startswith("https://")
+        # "null" IS A WEB ORIGIN: a sandboxed iframe or a data: document on any
+        # site sends it. It was neither http nor https, so it got the token.
+        return origin == "null" or origin.startswith("http://") or origin.startswith("https://")
 
     # ------------------------------------------------------------ writing
 
@@ -6085,9 +6095,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             cid = (qs.get("id") or [""])[0]
             if not cid:
-                return self._json({"error": "which company?"})
-            return self._json(page_detail(read_companies(),
-                                          read("board.json", {}), cid))
+                return self._json({"error": "which company?"}, 400)
+            detail = page_detail(read_companies(), read("board.json", {}), cid)
+            # 404 for a company that is not there, like /api/queue/<name>. A
+            # 200 carrying {"error": ...} read as success to anything keying
+            # off status and drew an approval screen for nothing.
+            return self._json(detail, 404 if isinstance(detail, dict) and detail.get("error") else 200)
         if path == "/api/sweep":
             # ONE CATEGORY AT A TIME, by the owner's choice: a sweep is a
             # reading job and 77 categories of rows at once is the queue
@@ -6224,6 +6237,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # remember it.
             with only_public_hosts():
                 out = ACTIONS[action](body)
+        except (AttributeError, TypeError) as exc:
+            # A STRING FIELD THAT ARRIVED AS A NUMBER. Thirteen handlers do
+            # body.get("id").strip() and raised out to here as a 500 with a
+            # Python exception name; nothing was written, and the caller sent
+            # the wrong shape, which is a 400 that names it.
+            return self._json({"error": f"a field has the wrong type ({type(exc).__name__}: "
+                                        f"{exc}); nothing was written"}, 400)
         except Exception as exc:
             return self._json({"error": f"{type(exc).__name__}: {exc}"}, 500)
         if isinstance(out, dict) and not out.get("error") and before is not None:
@@ -6289,7 +6309,7 @@ def main() -> int:
         # asks for these six characters once.
         print(f"\nhttp://127.0.0.1:{a.port}/#k={CONSOLE_CODE}"
               f"   (loopback only; ctrl-c to stop)")
-        print(f"\n  code for this run: {CONSOLE_CODE}")
+        print(f"\n  code for this run: {CONSOLE_CODE}", flush=True)
         print("  Rulings need it. It is printed here and nowhere else - no\n"
               "  route serves it and it is not in the page - so a script that\n"
               "  can only talk HTTP to this port cannot make a ruling.\n")
