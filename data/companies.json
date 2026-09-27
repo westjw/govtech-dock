@@ -10667,7 +10667,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
-    }
+    },
+    "also_known_as": [
+      "NEOGOV & PowerDMS by NEOGOV"
+    ]
   },
   {
     "id": "ukg",
@@ -12832,6 +12835,14 @@
       "by": "agent:descriptions-07",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://www.edulog.com/careers/",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {
@@ -18132,8 +18143,8 @@
     "category": "Finance & ERP",
     "description": "PE-backed govtech rollup: courts, land records, tax/CAMA, licensing, and citizen payments - exhibited at APPA Probation 2026, IAAO 2026, NASWA 2025, 3CMA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.catalisgov.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/959ba0e3-c5ad-4abc-b549-d28be9607007/CATALIS"
     },
     "hiring": {
       "status": "Unknown",
@@ -24000,7 +24011,15 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "ICMA 2025; NACo 2026; 3CMA 2026",
-    "researched": true
+    "researched": true,
+    "posts_at": {
+      "where": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/gogovapps/jobs/",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
+    }
   },
   {
     "id": "portage-cybertech",
@@ -41200,8 +41219,8 @@
     "category": "Corrections",
     "description": "Jail tech suite: commissary ordering, inmate kiosks, messaging, and video visitation in 20+ states - exhibited at Michigan Sheriffs Association 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/281738b4-8c12-499f-9675-d58fbec1da87/TW-VENDING-INC"
     },
     "hiring": {
       "status": "Unknown",
@@ -46127,7 +46146,17 @@
       }
     ],
     "competitors_checked_on": "2026-09-02",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "Peach AI inc.",
+      "Peach Safety"
+    ],
+    "also": [
+      {
+        "sector": "Public Safety",
+        "category": "Suppliers & Services"
+      }
+    ]
   },
   {
     "id": "thesheriffapp",
@@ -47450,7 +47479,23 @@
       "by": "claude-opus-5:profile-batch-08",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "buyer": "Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
+    "sells_to_gov": "yes",
+    "sled_only": true,
+    "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
+    "founded_source": "https://www.initse.com/ende/company/history/",
+    "acquisition_note": "Company history page states INIT acquired the MFS 90 planning system from Krupp in 1999. A 2016-era press archive (same site) additionally records: acquisition of 'a leading German provider of sales and customer management systems for public transport' (Sept 2016), a strategic investment in a North American mobile-ticketing provider (Aug 2016), and a planned majority stake in sensor specialist iri",
+    "acquisitions_checked_on": "2026-09-10",
+    "also_known_as": [
+      "INIT Innovations in Transportation, Inc."
+    ],
+    "also": [
+      {
+        "sector": "Transit & Parking",
+        "category": "Suppliers & Services"
+      }
+    ]
   },
   {
     "id": "avail-technologies",
@@ -52057,6 +52102,14 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://www.rideco.com/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {
@@ -55128,7 +55181,15 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "IACP 2026",
-    "researched": false
+    "researched": false,
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://bluevoice.io/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
+    }
   },
   {
     "id": "box",
@@ -58643,37 +58704,6 @@
     }
   },
   {
-    "id": "init-innovations-in-transportation-inc",
-    "name": "INIT Innovations in Transportation, Inc.",
-    "website": "https://www.initse.com/",
-    "location": null,
-    "year_founded": 1983,
-    "sector": "Transit & Parking",
-    "category": "Suppliers & Services",
-    "description": "Transit ITS, fare collection, scheduling software - exhibited at APTA 2026",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-09-27"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "APTA 2026",
-    "researched": false,
-    "buyer": "Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
-    "sells_to_gov": "yes",
-    "sled_only": true,
-    "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
-    "founded_source": "https://www.initse.com/ende/company/history/",
-    "acquisition_note": "Company history page states INIT acquired the MFS 90 planning system from Krupp in 1999. A 2016-era press archive (same site) additionally records: acquisition of 'a leading German provider of sales and customer management systems for public transport' (Sept 2016), a strategic investment in a North American mobile-ticketing provider (Aug 2016), and a planned majority stake in sensor specialist iri",
-    "acquisitions_checked_on": "2026-09-10"
-  },
-  {
     "id": "intangles-usa-inc",
     "name": "INTANGLES USA INC",
     "website": "https://www.intangles.ai",
@@ -60357,33 +60387,10 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025",
-    "researched": false
-  },
-  {
-    "id": "lexisnexis-coplogic-solutions",
-    "name": "LexisNexis",
-    "website": "https://www.lexisnexis.com/en-us/gateway.page",
-    "location": null,
-    "year_founded": null,
-    "sector": "Public Safety",
-    "category": "Suppliers & Services",
-    "description": "Online police reporting and crash report software - exhibited at IACP 2026",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-09-27"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "IACP 2026",
     "researched": false,
     "also_known_as": [
-      "LexisNexis Coplogic Solutions"
+      "LexisNexis Coplogic Solutions",
+      "LexisNexis"
     ]
   },
   {
@@ -61069,30 +61076,6 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "NACo 2026",
-    "researched": false
-  },
-  {
-    "id": "neogov-powerdms-by-neogov",
-    "name": "NEOGOV & PowerDMS by NEOGOV",
-    "website": "https://www.neogov.com",
-    "location": null,
-    "year_founded": 2000,
-    "sector": "General Gov",
-    "category": "HR & Workforce",
-    "description": "HR, policy and training software for government - exhibited at NRPA 2026",
-    "ats": {
-      "type": "html",
-      "ref": "https://www.neogov.com/about-us/careers/"
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "page scan found no listings",
-      "roles": [],
-      "checked": "2026-09-27"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "NRPA 2026",
     "researched": false
   },
   {
@@ -62321,33 +62304,6 @@
     "vendor_type": "GovTech Product",
     "source": "AB Show 2026",
     "researched": false
-  },
-  {
-    "id": "peach-ai-inc",
-    "name": "Peach Safety",
-    "website": "https://peachsafety.com/",
-    "location": null,
-    "year_founded": null,
-    "sector": "Public Safety",
-    "category": "Suppliers & Services",
-    "description": "AI police report writing - exhibited at IACP 2026",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-09-27"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "IACP 2026",
-    "researched": false,
-    "also_known_as": [
-      "Peach AI inc."
-    ]
   },
   {
     "id": "peerconnect",
@@ -87591,6 +87547,14 @@
       "by": "claude-opus-5:profile-batch-08",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://www.hydropoint.com/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {
@@ -150333,6 +150297,14 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://www.panoramaed.com/about/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {
@@ -153821,6 +153793,14 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://itopia.com/careers/",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {
@@ -153852,7 +153832,15 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: CoSN 2026",
-    "researched": true
+    "researched": true,
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://doorman.school/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
+    }
   },
   {
     "id": "clarity-solutions-group",
@@ -157840,6 +157828,14 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
+    },
+    "posts_at": {
+      "where": "own",
+      "label": "their own careers page",
+      "url": "https://www.onflo.com/about/careers",
+      "note": null,
+      "on": "2026-09-26",
+      "by": "owner"
     }
   },
   {

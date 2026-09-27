@@ -1658,8 +1658,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "two postings written as page entries with a posted date. the second is dated Jan 2024 and may be stale - the date is carried here rather than judged."
+  "status": "accepted",
+  "why": "two postings written as page entries with a posted date. the second is dated Jan 2024 and may be stale - the date is carried here rather than judged.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:aladtec": {
   "at": "2026-08-24T10:57:24-04:00",
@@ -1857,8 +1860,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the board is a Greenhouse job_board EMBEDDED IN AN IFRAME. the cheap fetch saw only the frame tag; reading the child frame returned the list. the frame url also hands over the ATS slug 'autura', which is worth more than these three rows."
+  "status": "accepted",
+  "why": "the board is a Greenhouse job_board EMBEDDED IN AN IFRAME. the cheap fetch saw only the frame tag; reading the child frame returned the list. the frame url also hands over the ATS slug 'autura', which is worth more than these three rows.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:avail-technologies": {
   "at": "2026-08-24T10:57:24-04:00",
@@ -2465,8 +2471,11 @@
    "verified": "checked by hand against the saved frame text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "the served HTML is 8 characters - the page is entirely JS. rendered, it is a BambooHR careers board with one row under 'Current Openings'. THE FINDING WORTH MORE: fotokite.bamboohr.com is an enumerable ATS, already the URL on file, so this company should stop needing a read at all."
+  "status": "accepted",
+  "why": "the served HTML is 8 characters - the page is entirely JS. rendered, it is a BambooHR careers board with one row under 'Current Openings'. THE FINDING WORTH MORE: fotokite.bamboohr.com is an enumerable ATS, already the URL on file, so this company should stop needing a read at all.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:greehill": {
   "at": "2026-08-24T10:57:24-04:00",
@@ -2937,8 +2946,11 @@
    "verified": "checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "one row under 'Municibid Careers', tagged Full Time / Remote with a paragraph of body copy. the only other role-shaped string on the page is 'Jackie Blaskovich, Director of Customer Success', an anniversary note about a current employee, and it is not carried."
+  "status": "accepted",
+  "why": "one row under 'Municibid Careers', tagged Full Time / Remote with a paragraph of body copy. the only other role-shaped string on the page is 'Jackie Blaskovich, Director of Customer Success', an anniversary note about a current employee, and it is not carried.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:myrec-com": {
   "at": "2026-08-24T10:57:24-04:00",
@@ -3159,8 +3171,11 @@
    "verified": "each row checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "one req linked from the careers page to its own role page. this is the ONLY one of the 25 the cheap fetch could read."
+  "status": "accepted",
+  "why": "one req linked from the careers page to its own role page. this is the ONLY one of the 25 the cheap fetch could read.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:noggin": {
   "at": "2026-08-24T00:33:43-04:00",
@@ -3617,8 +3632,11 @@
    "verified": "checked by hand against the saved page text"
   },
   "sector": null,
-  "status": "pending",
-  "why": "a real table with its own headers - JOB POSTING TITLE / LOCATION / DEPARTMENT / DATE - so these are postings, not chrome. BUT EVERY ROW IS DATED September 19th, 2016. the date is carried and not judged, and nobody should treat these as live without checking. the page also repeats 'Deputy Principal Construction Manager' in a second casing; that fourth row is dropped as the page repeating itself."
+  "status": "accepted",
+  "why": "a real table with its own headers - JOB POSTING TITLE / LOCATION / DEPARTMENT / DATE - so these are postings, not chrome. BUT EVERY ROW IS DATED September 19th, 2016. the date is carried and not judged, and nobody should treat these as live without checking. the page also repeats 'Deputy Principal Construction Manager' in a second casing; that fourth row is dropped as the page repeating itself.",
+  "ruled_by": "owner",
+  "ruled_on": "2026-09-26",
+  "ruled_why": null
  },
  "read:rezcomm": {
   "at": "2026-08-24T00:33:43-04:00",
