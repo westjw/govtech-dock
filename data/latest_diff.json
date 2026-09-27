@@ -1,48 +1,27 @@
 {
-  "date": "2026-09-26",
-  "previous": "2026-09-25",
+  "date": "2026-09-27",
+  "previous": "2026-09-26",
   "changes": [
     {
-      "company": "Prepared",
-      "id": "prepared",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Glacier",
-      "id": "glacier",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive - Climate Tech ( (Remote East Coast )"
-    },
-    {
-      "company": "Edulog",
-      "id": "edulog",
+      "company": "IFS (Ultimo)",
+      "id": "ifs",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Regional Account Executive, Energy (Ottawa, Ontario)"
     },
     {
-      "company": "HydroPoint Data Systems",
-      "id": "hydropoint-data-systems",
+      "company": "Thales",
+      "id": "thales",
       "from": "Unknown",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Sales Account Manager (3 Locations)"
     },
     {
-      "company": "Handtevy",
-      "id": "handtevy",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Mid-Market Account Executive"
-    },
-    {
-      "company": "RL Core Technologies",
-      "id": "rl-core-technologies",
+      "company": "ClassDojo",
+      "id": "classdojo",
       "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Sales (non-AE)",
+      "note": "Revenue Product Lead only"
     }
   ]
 }
