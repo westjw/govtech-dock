@@ -558,5 +558,13 @@
   },
   "note": "workday:jci reads (37 posting(s)), but does not match 'Johnson Controls OpenBlue'; likely a parent or another company",
   "on": "2026-08-26"
+ },
+ "copperleaf-technologies": {
+  "ats": {
+   "type": "smartrecruiters",
+   "ref": "IFS1"
+  },
+  "note": "smartrecruiters:IFS1 reads (275 posting(s)) and matches the acquirer named in 'Copperleaf Technologies (IFS)'; confirm it is scoped to this product line before wiring it up",
+  "on": "2026-09-27"
  }
 }
