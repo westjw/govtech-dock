@@ -135,6 +135,54 @@ several states, and desks we could not place. A distance search that quietly
 drops what it cannot map is a false "nothing near you", which is the same
 failure as a page scan reporting "no listings" when it could not read.
 
+## The job list is cards (owner, 2026-09-27)
+
+The jobs tab was a dense table from 2026-08-23. The owner looked at a federal
+board laid out as cards (govconcareershub.com, a Jobboardly site) and asked for
+that here, on the web and on phones. `jobCardHTML` in index.html builds every
+card at every width; the phone layout is CSS alone, so one function decides
+what a card says. The trade is known: a card fits two or three roles on a
+laptop screen where the table fitted five or six.
+
+What a card may say, each one a rule the table used to keep by position:
+
+- **Silence is written out and names which silence**: "no salary stated" (we
+  read the description and it named none), "pay unknown: we could not read this
+  posting", "pay not recorded" (this build has no pay field). "location not
+  stated" only when nothing names a place. Silence is `--dim`, not `--faint`:
+  on a card it is reading copy, and `--faint` is 2.86:1 on `--panel`.
+- **The work-mode line appears only when the posting states a mode.** An office
+  is a place, never proof of onsite; a territory reads "covers TX, OK +2". A
+  remote role that names no place gets no place line at all.
+- **A group is one advertisement in several places, and it only speaks for
+  itself where its postings agree.** Places are counted as distinct places, not
+  postings ("212 locations · 217 postings"; three postings naming nothing read
+  "location not stated · 3 postings"). Pay is one figure only if every posting
+  states it; "$X on 1 of 2 postings" when some are silent; "pay varies by
+  location" only when two figures differ. The employer's posted date shows only
+  when every posting gives the same one.
+- **A silence is not a difference.** One posting saying "remote" and another
+  saying nothing is "Remote on 1 of 2 postings"; "varies by location" needs two
+  different stated modes. Workday's "3 Locations" is a count, not a place:
+  "listed as 3 locations, not named here", and it is never counted as one.
+- **Both dates carry their labels**: "first seen today" (this board's crawl)
+  and "employer posted 2026-03-13" (their board's own date). "today" loses its
+  accent when the employer's date is more than 14 days older, and a group whose
+  newest posting is later than its first says "latest posting ...", because
+  Newest first sorts a group by its newest posting.
+- **Every save button for one role repaints together** (`data-id`). A
+  multi-posting card holds the lead posting's button twice, and repainting only
+  the clicked one made the next click undo the save it appeared to make. The
+  corner button on a grouped card saves ONE posting, and its label names where.
+- **An office with a city and no state** printed "Itasca, null" on cards, role
+  pages, the Saved tab and in search (416 postings). `officeText()` is the one
+  way to print an office.
+
+`check_the_job_card_says_what_the_posting_says` RUNS the card:
+`scripts/jobcard_harness.mjs` loads index.html's own script into a node vm with
+a DOM that absorbs everything and calls `jobCardHTML` on fixtures. It was built
+because the suite had never executed a line of the public page's script.
+
 ## House rules
 
 - **A page scan never proves absence.** `scan_pagetext` may return

@@ -24374,6 +24374,131 @@ def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
     return errors
 
 
+def _js_code_only(src: str) -> str:
+    """index.html's script with /* */ and // comments removed, so a match is
+    against code and never against the prose around it (the lesson that cost
+    three checks on 2026-09-25)."""
+    src = re.sub(r"/\*.*?\*/", "", src, flags=re.S)
+    return re.sub(r"(?m)(^|[^:\"'`\\])//[^\n]*", r"\1", src)
+
+
+def check_the_job_card_says_what_the_posting_says() -> int:
+    """The board's list is cards (owner, 2026-09-27). Run the real card.
+
+    Every fact a job seeker reads on the list now comes out of jobCardHTML in
+    index.html's inline script, and the suite had never executed a line of
+    that script - it read the page as text. The desk admin's approval screen
+    shipped with every write dead for five weeks that way. So
+    scripts/jobcard_harness.mjs loads the page's own script into a node vm
+    with a DOM that absorbs everything and calls jobCardHTML on fixture
+    groups; this asserts on the HTML that comes back.
+
+    What must hold, each one a house rule the table used to keep:
+      - a silence is said, and says WHICH silence: "no salary stated" when
+        the description was read, "pay unknown: we could not read this
+        posting" when it was not, "pay not recorded" when the build has no
+        pay field at all; "location not stated" only when nothing names one;
+      - the work-mode line appears only when the posting states a mode, and
+        a remote role is not also told its location is "not stated";
+      - an office is a place, a territory says "covers";
+      - a group of postings shows one pay or one mode only when they agree,
+        and otherwise says it varies by location;
+      - Quota-carrying only on a quota-carrying role;
+      - the employer's own posted date only when their board gave one;
+      - every value is escaped: a title carrying markup creates no element.
+    """
+    errors = 0
+    if not shutil.which("node"):
+        note("node is not installed; the job card was not executed")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                       capture_output=True, text=True, timeout=60)
+    if r.returncode != 0:
+        return fail(f"the job card harness died: {r.stderr.strip()[-400:]}")
+    try:
+        out = json.loads(r.stdout)
+    except ValueError:
+        return fail(f"the job card harness printed no JSON: {r.stdout[-300:]!r}")
+    if out.get("errors"):
+        errors += fail(f"index.html's script did not load cleanly in the harness: "
+                       f"{out['errors'][:3]}")
+    cards = out.get("cards") or {}
+    if len(cards) < 23:
+        return errors + fail(f"only {len(cards)} fixture card(s) came back; the "
+                             f"harness is measuring nothing")
+
+    def text(k):
+        v = cards.get(k) or ""
+        if v.startswith("THREW"):
+            return None
+        return re.sub(r"\s+", " ", re.sub(r"<svg.*?</svg>", "", v, flags=re.S))
+
+    def want(k, *need, absent=()):
+        nonlocal errors
+        t = text(k)
+        if t is None:
+            errors += fail(f"jobCardHTML threw on the {k!r} fixture: {cards.get(k)[:200]}")
+            return
+        for n in need:
+            if n not in t:
+                errors += fail(f"the {k!r} card does not say {n!r}")
+        for a in absent:
+            if a in t:
+                errors += fail(f"the {k!r} card says {a!r}, which the posting does not support")
+
+    want("plain", "location not stated", "no salary stated", "Quota-carrying",
+         absent=("jc-mode", "posted "))
+    want("paid", "Remote", "$90k", "$120k", absent=("location not stated", "no salary stated"))
+    want("office", "Hybrid", "Austin, TX", "posted 2026-09-18", absent=("location not stated",))
+    want("territory", "covers TX, OK, KS +1", absent=("jc-mode",))
+    want("unread", "pay unknown: we could not read this posting")
+    want("unrecorded", "pay not recorded")
+    want("notquota", "Customer Success", absent=("Quota-carrying",))
+    want("hostile", "&lt;img", "&lt;b&gt;Evil", absent=("<img", "<b>Evil", "<script>"))
+    want("group_same", "2 locations", "On-site", "$80k",
+         absent=("varies by location", "postings"))
+    want("group_diff", "2 locations", "work mode varies by location",
+         "pay varies by location", absent=("$80k", "$70k"))
+    # PLACES ARE COUNTED AS PLACES: three postings naming no place are not
+    # "3 locations", and two in one city are one place
+    want("group_noplace", "location not stated", "3 postings", absent=("locations",))
+    want("group_samecity", "Itasca, IL", "2 postings", absent=("2 locations",))
+    # a date only some postings give is not the group's; a range needs every
+    # posting to carry one
+    want("group_samecity", "employer posted 2026-09-01 to 2026-09-10")
+    want("group_halfdated", absent=("employer posted",))
+    want("group_stale", "employer posted 2026-02-27 to 2026-09-01",
+         absent=('class="when new"',))
+    want("group_partpay", "$80k", "on 1 of 2 postings", absent=("varies",))
+    want("group_mixedsilence", "no pay figure on any of these postings",
+         absent=("varies",))
+    want("nostate", "Itasca", absent=("null",))
+    want("remote_bare", "Remote", absent=("location not stated",))
+    # a Workday "3 Locations" is a count, not a place, and counts no place
+    want("workday_count", "listed as 3 locations", absent=(">3 Locations<",))
+    want("group_workday", "places not named in the listings", "2 postings",
+         absent=("2 locations", "30 Locations"))
+    # a silence is not a difference
+    want("group_modehalf", "Remote", "on 1 of 2 postings", absent=("varies",))
+    # both dates carry their labels, and "today" is not new when the
+    # employer's own date is months older
+    want("stale_today", "first seen", "employer posted 2026-03-13",
+         absent=('class="when new"',))
+    want("group_later", "first seen", "latest posting")
+
+    # THE CALLER. A builder nothing calls proves nothing about the page.
+    html = (ROOT / "index.html").read_text()
+    i = html.find("function drawJobs(")
+    body = _js_code_only(html[i:html.find("\nfunction locCell(", i)]) if i >= 0 else ""
+    if "jobCardHTML(g)" not in body:
+        errors += fail("drawJobs no longer builds its list from jobCardHTML, so "
+                       "this check is testing a card nobody sees")
+    if 'createElement("table")' in body:
+        errors += fail("drawJobs builds a table again; the owner asked for cards "
+                       "on the web and on phones (2026-09-27)")
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -25050,6 +25175,7 @@ def main() -> int:
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
     errors += check_posts_at_says_whether_anything_can_be_got()
+    errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
     errors += check_the_news_sweep_stops_before_the_job_does()

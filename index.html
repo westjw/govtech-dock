@@ -26,10 +26,12 @@
      on everything.
 
      The zero radius is the character of the whole thing. This is a modernist
-     grid - hairline rules, tabular figures, square corners - and the rounded
+     grid - hairline rules, tabular figures, square corners - and the ROUNDED
      cards this page used to carry read as a different product entirely.
      Borders only where two systems meet; whitespace does the rest of the
-     grouping. */
+     grouping. The job list is cards again (owner, 2026-09-27), but square,
+     on the token radius and the 4px scale: one bordered panel per role,
+     because each is a separate thing you act on. */
   :root{
     --font-heading:"Archivo",system-ui,sans-serif;
     --font-body:"Archivo",system-ui,sans-serif;
@@ -46,6 +48,11 @@
   :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536; --dim:#556F82;
          --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F; --bad:#C1341F;
          --beak:#F5A623; --chip:#DCE9F1;
+         /* the accent AS TEXT on a card (--panel) or a tag (--chip). Light
+            mode's accent already clears AA there; dark mode's was lifted
+            against --bg and falls to 4.16:1 on --panel and 3.58:1 on
+            --chip, so the dark value is lifted again along the same hue. */
+         --accent-text:#0B57C4;
          /* 3a's lead card is the one nearest thing, and it earns that by
             INVERTING the ground. On Ice that is Penguin, exactly as the
             design draws it. In dark mode Penguin IS the ground, so a literal
@@ -57,7 +64,7 @@
        lighten along their own hue until they clear AA again. */
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
-    --beak:#F5A623; --chip:#2E3852;
+    --beak:#F5A623; --chip:#2E3852; --accent-text:#76ABF9;
     /* Not inverted to white here. The header stays Penguin in both themes on
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
@@ -1045,25 +1052,86 @@
     margin-top:var(--space-4);padding-bottom:var(--space-2)}
   .rhead h3{font-size:20px}
   .rhead .n{font-size:13px;color:var(--dim)}
-  .jt{width:100%;border-collapse:collapse;table-layout:auto}
-  .jt th{text-align:left;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--faint);font-weight:600;padding:var(--space-2) var(--space-3);
-    border-top:1px solid var(--ink);border-bottom:1px solid var(--line);white-space:nowrap}
-  .jt td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--line);
-    vertical-align:top;font-size:13px;color:var(--dim)}
-  .jt tbody tr{cursor:pointer}
-  .jt tbody tr:hover{background:var(--panel)}
-  .jt td.role{font-size:16px;color:var(--ink);font-weight:600;line-height:1.25;
-    letter-spacing:-.01em}
-  .jt td.co{color:var(--ink)}
-  .jt .cowrap{display:flex;gap:var(--space-2);align-items:center}
-  .jt .tile{width:22px;height:22px;flex:none;display:flex;align-items:center;
-    justify-content:center;font-size:11px;font-weight:700}
-  .jt td.right{text-align:right;white-space:nowrap}
-  .jt th.right{text-align:right}
-  .jt td.act{width:36px;padding-left:0;padding-right:var(--space-2);text-align:right}
-  .jt .qm{color:var(--accent);font-weight:600;font-size:13px}
-  .jt .when.new{color:var(--accent);font-weight:600}
+  /* THE LIST IS CARDS (owner, 2026-09-27; see jobCardHTML). The system's
+     rules still hold inside one: radius from the token (0), the 4px scale,
+     the 25/20/16/13 ramp, hairline borders. A card is a bordered panel
+     because each one is a separate thing you act on - that IS a place where
+     two systems meet. */
+  .jcl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;
+    gap:var(--space-3)}
+  .jc{display:grid;grid-template-columns:64px minmax(0,1fr) auto;
+    gap:var(--space-2) var(--space-4);align-items:start;position:relative;
+    padding:var(--space-4) var(--space-6);background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);cursor:pointer}
+  .jc:hover{border-color:var(--dim)}
+  /* the accent border is for KEYBOARD focus; a mouse click on the expander
+     left it lit */
+  .jc:has(:focus-visible){border-color:var(--accent)}
+  .jc:has(.jc-locs) .jc-side{justify-content:flex-start}
+  .jc-logo .tile{width:64px;height:64px;display:flex;align-items:center;
+    justify-content:center;font-size:20px;font-weight:700}
+  .jc-main{min-width:0}
+  /* 600, the weight every list title on this board uses; 800 is for the
+     page's own headings */
+  .jc-title{margin:0;font-size:20px;font-weight:600;line-height:1.25;
+    letter-spacing:-.01em;overflow-wrap:anywhere}
+  .jc-title a{color:var(--ink);text-decoration:none}
+  .jc-title a:hover{text-decoration:underline}
+  .jc-title a:focus-visible,.jc-lplace:focus-visible{outline:2px solid var(--accent);
+    outline-offset:2px}
+  .jc-co{font-size:16px;color:var(--dim);margin-top:var(--space-1);
+    overflow-wrap:anywhere}
+  .jc-line{display:flex;gap:var(--space-2);align-items:flex-start;
+    margin-top:var(--space-2);font-size:16px;color:var(--ink);line-height:1.4}
+  .jc-co + .jc-line{margin-top:var(--space-3)}
+  /* the line icons are graphics a reader needs, so 3:1 at least: --dim, not
+     --faint (2.86:1 on --panel in light mode) */
+  .jc-ic{flex:none;display:inline-flex;width:20px;height:20px;color:var(--dim);
+    margin-top:1px}
+  .jc-ic svg{width:20px;height:20px}
+  .jc-v{min-width:0;overflow-wrap:anywhere}
+  /* A SILENCE IS READING COPY ON A CARD, not a label. The table drew a dash
+     in --faint; a card writes the sentence out, and --faint is 2.86:1 on
+     --panel. --dim is the readable secondary colour (4.9:1). */
+  .jc-silent{color:var(--dim)}
+  .jc-dot{color:var(--dim)}
+  .jc .pay,.jc .when.new{color:var(--accent-text)}
+  .jc-side{display:flex;flex-direction:column;align-items:flex-end;
+    justify-content:space-between;gap:var(--space-3);align-self:stretch;
+    min-width:132px}
+  .jc-tags{display:flex;flex-wrap:wrap;justify-content:flex-end;
+    gap:var(--space-1);padding-right:40px}
+  .jc-tag{font-size:13px;font-weight:600;padding:var(--space-1) var(--space-2);
+    background:var(--chip);color:var(--ink);white-space:nowrap}
+  .jc-tag.q{color:var(--accent-text)}
+  /* the bookmark rides in the corner on every width */
+  .jc-save{position:absolute;top:var(--space-2);right:var(--space-2)}
+  .jc .savebtn{display:inline-flex;align-items:center;justify-content:center;
+    min-width:36px;min-height:36px;color:var(--dim)}
+  .jc .savebtn[aria-pressed=true]{color:var(--accent-text)}
+  .jc-age{display:flex;flex-direction:column;align-items:flex-end;
+    gap:var(--space-1);font-size:16px;color:var(--dim);white-space:nowrap}
+  .jc-when{display:flex;gap:var(--space-2);align-items:center}
+  .jc-age .postedon{font-size:13px;margin-top:0}
+  .locmore{min-height:28px}
+  .jc-locs{list-style:none;margin:var(--space-3) 0 0;padding:0;
+    border-top:1px solid var(--line)}
+  /* place | pay | bookmark on a wide card; on a phone the pay drops under
+     the place (below). A grid, not a flex row: as flex, a long pay sentence
+     squeezed the place to one letter per line. */
+  .jc-locs li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto) auto;
+    gap:var(--space-1) var(--space-3);align-items:center;
+    padding:var(--space-1) 0;border-bottom:1px solid var(--line);font-size:13px;
+    color:var(--dim)}
+  .jc-lplace{min-width:0;overflow-wrap:anywhere;color:var(--ink);
+    text-decoration:none}
+  .jc-lplace:hover{text-decoration:underline}
+  .jc-lpay{text-align:right}
+  .jc-lwhen{color:var(--dim);white-space:nowrap}
+  .jc-locs li:last-child{border-bottom:0}
+  .jc-locs.samepay li{grid-template-columns:minmax(0,1fr) auto}
+  /* the place line carries the expander button; centre the pin on it */
+  .jc-line:has(.locmore){align-items:center}
   /* NO .dead RULE HERE, DELIBERATELY. The deck asks for a posting that has
      come off the board to be struck through for a day rather than silently
      vanishing. We do not know which postings those are: the site is served
@@ -1092,7 +1160,7 @@
     padding:var(--space-4) 0;border-bottom:1px solid var(--line)}
   .pager button{font:inherit;font-size:13px;font-weight:600;
     padding:var(--space-2) var(--space-4);border:1px solid var(--line);
-    background:var(--panel);color:var(--accent);cursor:pointer}
+    background:var(--panel);color:var(--accent-text);cursor:pointer}
   .pager button:disabled{color:var(--faint);cursor:default}
   .pager .pos{font-size:13px;color:var(--dim)}
   .pager .cap{font-size:13px;color:var(--faint);margin-left:auto}
@@ -1164,14 +1232,14 @@
   .bandline{font-size:14px}
   .bandwhy{font-size:12.5px;color:var(--dim);margin-top:var(--space-2)}
 
-  /* the locations button reads as a count first and a control second: it is
-     in a data column, and a button-looking thing in a data column reads as
-     the row's action rather than as the cell's value */
+  /* the locations button reads as a count first and a control second: it
+     sits on a card's place line, where a loud button would read as the
+     card's action rather than as the fact on that line. Underlined on the
+     text itself, so a 40px phone target does not float the rule below it. */
   .locmore{font:inherit;color:var(--ink);background:transparent;padding:0;
-    border:0;border-bottom:1px dotted var(--dim);cursor:pointer}
-  .locmore:hover{border-bottom-color:var(--ink)}
-  .jt tr.sub td{color:var(--dim);background:var(--chip)}
-  .jt tr.sub td.loc{padding-left:var(--space-4)}
+    border:0;text-decoration:underline dotted var(--dim);
+    text-underline-offset:3px;cursor:pointer}
+  .locmore:hover{text-decoration-color:var(--ink)}
 
   /* Square, like every control here - --radius is 0 and one rounded corner is
      what breaks the system. Quiet until hovered: it sits on every saved row
@@ -1259,11 +1327,11 @@
   .sechead .n{font-size:13px;color:var(--faint)}
 
   /* the company card's own table, and anything else that is a plain table */
-  table:not(.jt){width:100%;border-collapse:collapse;font-size:13px}
-  table:not(.jt) th{text-align:left;font-size:13px;letter-spacing:.08em;
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  table th{text-align:left;font-size:13px;letter-spacing:.08em;
     text-transform:uppercase;color:var(--faint);font-weight:600;
     padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--line)}
-  table:not(.jt) td{padding:var(--space-2) var(--space-3);
+  table td{padding:var(--space-2) var(--space-3);
     border-bottom:1px solid var(--line);vertical-align:top}
 
   /* -------------------------------------------------------------- tablet */
@@ -1272,11 +1340,9 @@
   }
 
   /* -------------------------------------------------------------- phones
-     Below 768px the job table becomes a card list. Five columns cannot
-     survive a 375px screen and a horizontal scroll is not an answer: on a
-     phone the facts that matter are the role, who it is with, and whether it
-     carries a number. Done in CSS rather than a second render path, so there
-     is one source of truth for what a row contains. */
+     Below 768px the job card reflows rather than shrinking: one render path
+     (jobCardHTML) at every width, and the phone layout is CSS alone, so
+     there is one source of truth for what a card says. */
   @media (max-width:768px){
     .hwrap{padding:var(--space-3) var(--space-4)}
     main{padding:0 var(--space-4) var(--space-8)}
@@ -1347,25 +1413,45 @@
     .urlbar{flex-wrap:nowrap}
     .cta .go{margin-left:0;width:100%;text-align:center}
 
-    .jt,.jt thead,.jt tbody,.jt tr,.jt td{display:block;width:auto}
-    .jt thead{position:absolute;left:-9999px}   /* kept for screen readers */
-    .jt tbody tr{border:1px solid var(--line);background:var(--panel);
-      padding:var(--space-3);margin-bottom:var(--space-2);position:relative}
-    .jt tbody tr:hover{background:var(--panel)}
-    .jt td{border:0;padding:0}
-    .jt td.role{font-size:16px;line-height:1.25;padding-right:32px}
-    .jt td.co{margin-top:var(--space-1)}
-    .jt td.loc,.jt td.sal,.jt td.age{display:inline-block;font-size:13px;
-      margin:var(--space-1) var(--space-2) 0 0;text-align:left}
-    .jt td.sal::before{content:"pay "}
-    /* the bookmark rides in the corner instead of taking a line of its own */
-    .jt td.act{position:absolute;top:var(--space-2);right:var(--space-2);
-      width:auto;margin:0;padding:0}
+    /* THE CARD ON A PHONE: logo and title side by side, the facts under
+       them at FULL width, then the tags and the date on one line. .jc-main
+       dissolves into the card's grid (display:contents) so its lines can
+       span both columns - inside it they were indented 101px and stopped
+       32px short of the edge, and half of them wrapped. Nothing is dropped:
+       a phone is where most people will read this. */
+    .jc{grid-template-columns:48px minmax(0,1fr);row-gap:0;column-gap:var(--space-3);
+      padding:var(--space-3) var(--space-4)}
+    .jc-logo{grid-row:span 2}
+    .jc-logo .tile{width:48px;height:48px;font-size:20px}
+    .jc-main{display:contents}
+    .jc-title{grid-column:2;font-size:16px;padding-right:40px}
+    .jc-co{grid-column:2;font-size:13px}
+    .jc-line,.jc-locs{grid-column:1 / -1}
+    .jc-line{font-size:13px;margin-top:var(--space-1)}
+    .jc-co + .jc-line{margin-top:var(--space-3)}
+    .jc-ic,.jc-ic svg{width:16px;height:16px}
+    .jc-side{grid-column:1 / -1;flex-direction:row;align-items:center;
+      justify-content:space-between;flex-wrap:wrap;min-width:0;
+      margin-top:var(--space-2);border-top:1px solid var(--line);
+      padding-top:var(--space-2)}
+    .jc-tags{justify-content:flex-start;padding-right:0}
+    .jc-age{font-size:13px;margin-left:auto}
+    /* thumbs, not cursors: 44px for the bookmark, 40px for the rest */
+    .jc-save{top:var(--space-1);right:var(--space-1)}
+    .jc .savebtn{min-width:44px;min-height:44px}
+    .locmore{min-height:40px}
+    .jc-locs li{min-height:44px;grid-template-columns:minmax(0,1fr) auto;
+      grid-template-areas:"place save" "pay save"}
+    .jc-lplace{grid-area:place}
+    .jc-lpay{grid-area:pay;text-align:left}
+    .jc-lsave{grid-area:save}
+    .jc-locs.samepay li{grid-template-areas:"place save"}
+    .jc-locs .savebtn{min-width:40px;min-height:40px}
     .pager{gap:var(--space-2)}
     .pager .cap{margin-left:0;flex-basis:100%}
     .row{padding:var(--space-3)}
     .row .when{display:none}          /* the date is the first thing to go */
-    table:not(.jt) td,table:not(.jt) th{padding:var(--space-2)}
+    table td,table th{padding:var(--space-2)}
   }
 </style>
 </head>
@@ -2665,9 +2751,13 @@ function payBit(p){
   return{cls:"paynone",txt:p.source==="manual"?"no description to read"
     :"we could not read this posting"};
 }
+/* The same words and colour a card uses, so a role reads the same on the
+   list, on its own page and on the Saved tab. */
 function payHTML(p){
   const b=payBit(p);
-  return b?` &middot; <span class="${b.cls}">${esc(b.txt)}</span>`:"";
+  if(!b)return "";
+  return b.cls==="pay"?` &middot; <span class="pay">${esc(b.txt)}</span>`
+    :` &middot; <span class="jc-silent">${esc(cardSilence(p))}</span>`;
 }
 /* Whether a row can be compared to a YEARLY floor at all, or null when it
    cannot. Nothing here converts between periods: an hourly rate becomes a
@@ -2939,7 +3029,7 @@ function jobs(){
     ${payOn?`Pay is shown where the posting states it, which most do not &mdash; a posting
     saying nothing is not a posting paying nothing, and a pay filter here sets those aside
     in the open rather than deleting them. `
-    :`<strong>Every salary cell is a dash in this build</strong>, because this run of the
+    :`<strong>Every card reads &ldquo;pay not recorded&rdquo; in this build</strong>, because this run of the
     board recorded no pay at all. That is a fact about us, not about the jobs: the next
     refresh carries pay where a posting states it. `}${
     D.organizations.filter(o=>o.no_board_on_file||o.unreadable).length.toLocaleString()}
@@ -3002,7 +3092,7 @@ function geoBits(p){
   if(p.work_mode==="remote")bits.push("remote");
   else if(p.office)
     bits.push((p.work_mode==="hybrid"?"hybrid - ":"in office - ")
-      +(p.office.city?p.office.city+", ":"")+p.office.state
+      +(officeText(p.office)||"place not stated")
       +(p.work_mode==="not stated"?" (mode not stated)":""));
   else if(p.work_mode==="hybrid"||p.work_mode==="onsite")bits.push(p.work_mode);
   else bits.push("work mode not stated");
@@ -3319,9 +3409,12 @@ function applyUrl(u){
     if(seg)[...seg.children].forEach(b=>
       b.setAttribute("aria-pressed",b.dataset.v===u.get("where")));
   }
-  // an incoming link with overflow filters set should show them, not hide them
+  // an incoming link with overflow filters set should show them, not hide them.
+  // us=us is the board's DEFAULT, written into every address on the first
+  // draw, so it is not a filter somebody set: counting it reopened the bar on
+  // every Back, and the list jumped 458px down a phone screen.
   const extras=["fam","sec","st","off","reg","sen","us","mode","src"];
-  if(extras.some(k=>u.has(k)))
+  if(extras.some(k=>u.has(k)&&!(k==="us"&&u.get(k)==="us")))
     setBarOpen($("#j-bar"),document.querySelector('[onclick*="toggleMore"]'),true);
   const fp=$("#j-fam-pill"), f=$("#j-fam");
   if(fp&&f)fp.value=f.value;
@@ -3373,7 +3466,11 @@ function toggleSave(p,btn){
       saved_at:new Date().toISOString()};
   }
   writeSaved(all);
-  if(btn)paintSave(btn,isSaved(p.id));
+  const on=isSaved(p.id);
+  if(btn)paintSave(btn,on);
+  document.querySelectorAll(".savebtn[data-id]").forEach(b=>{
+    if(b!==btn&&b.dataset.id===p.id)paintSave(b,on);
+  });
   const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
   syncSoon();
 }
@@ -3572,9 +3669,18 @@ function paintSave(btn,on){
     ? '<svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path d="M5 2.5h10a1 1 0 011 1v14l-6-3.6-6 3.6v-14a1 1 0 011-1z"/></svg>'
     : '<svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 2.5h10a1 1 0 011 1v14l-6-3.6-6 3.6v-14a1 1 0 011-1z"/></svg>';
 }
-function saveButton(p){
+/* `label` names the role for a screen reader - 25 buttons on a page all
+   called "save this role" say nothing about which one. data-id lets every
+   button for ONE role repaint together: a multi-location card holds the
+   lead posting's button in its corner AND in its expanded list, and
+   repainting only the clicked one left the other saying the opposite, so
+   the next click undid the save it appeared to make. */
+function saveButton(p,label){
   const b=document.createElement("button");
   b.className="savebtn";
+  b.type="button";
+  b.dataset.id=p.id;
+  b.setAttribute("aria-label","Save "+(label||p.title||"this role"));
   b.onclick=e=>{e.stopPropagation();toggleSave(p,b)};
   paintSave(b,isSaved(p.id));
   return b;
@@ -3802,7 +3908,7 @@ function drawJobs(){
     // finds a territory stored as KS.
     const geoCodes=[...(p.states||[]),p.office?p.office.state:null].filter(Boolean);
     const hay=`${p.title} ${p.company} ${p.location||""} ${p.category} ${
-      p.office?(p.office.city||"")+" "+p.office.state:""} ${
+      p.office?officeText(p.office).replace(",",""):""} ${
       (p.states||[]).join(" ")} ${p.region||""} ${
       geoCodes.map(c=>STATE_FULL[c]||"").join(" ")}`.toLowerCase();
     // the meaning first, against facts the pipeline already derived
@@ -4083,66 +4189,74 @@ function drawJobs(){
       emptyJobs(quotaOnly,f,where,setAside,g("j-q"),relaxed("quota"),relaxed("where")));
   }else{
     const from=(PAGE-1)*PAGE_SIZE, page=groups.slice(from,from+PAGE_SIZE);
-    /* THE LIST IS THE PRODUCT, so it is a table: five facts per row, in the
-       same five places on every row, at the density a person scans rather
-       than reads. The card grid this replaced fitted three roles on a screen.
+    const reopen=REOPEN; REOPEN=null;
+    /* THE LIST IS CARDS, at every width (owner, 2026-09-27). It was a table
+       from 2026-08-23 - five facts per row, in the same five places, at the
+       density a person scans - and the owner looked at a federal board laid
+       out as cards and asked for that here, on the web and on phones. The
+       trade is stated rather than hidden: a card fits two or three roles on
+       a laptop screen where the table fitted five or six.
 
-       Built, not stringified. A row used to carry
-       onclick="openRole('${esc(p.id)}')", and both halves of that were wrong:
-       esc() leaves ' alone, and p.id is a company id plus a job title taken
-       verbatim from an ATS, refreshed daily with nobody reading the titles.
-       An id that merely CONTAINS an entity ("...Engagement & Education", on
-       the board today) also came back through the HTML parser as a different
-       string. Holding p.id in a closure has neither problem. */
-    const table=document.createElement("table");
-    table.className="jt";
-    table.innerHTML=`<thead><tr>
-      <th scope="col">Role</th><th scope="col">Company</th><th scope="col">Location</th>
-      <th scope="col">Salary</th><th scope="col">Dates</th>
-      <th scope="col"><span class="sub" style="position:absolute;left:-9999px">Save</span></th>
-    </tr></thead><tbody></tbody>`;
-    const body=table.querySelector("tbody");
+       What a card carries is the table's five facts and nothing it cannot
+       back: the title, the company, WHERE (the stated work mode, and the
+       office or territory - never one dressed as the other), PAY in words
+       including which silence it is, and WHEN this board first read it plus
+       the employer's own date where one was given. The one rule the table
+       kept by position - every row has the same facts in the same places -
+       the card keeps by always drawing the place and pay lines, silence
+       included. Only the work-mode line is left out when the posting never
+       stated one, which is 2 in 3: a line reading "work mode not stated" on
+       most of the board is noise, and the place line already says where.
+
+       Built, not stringified, where it matters: the card is one HTML string
+       from jobCardHTML (every value through esc), and every handler is
+       attached here with p.id held in a closure - the reason the table was
+       built this way (an id containing an entity came back through the
+       parser as a different string) applies to a card exactly as much. */
+    const list=document.createElement("ul");
+    list.className="jcl";
+    list.setAttribute("aria-label",$("#j-h").textContent);
     page.forEach(g=>{
-      const p=g.lead, n=g.rows.length;
-      const w=when(p.first_seen,D.generated);
-      const tr=document.createElement("tr");
-      tr.onclick=()=>openRole(p.id);
-      /* A GROUP'S SALARY IS ONLY THE GROUP'S SALARY WHEN THEY AGREE. Pay
-         legitimately varies by city on a multi-location requisition, and
-         showing one city's band against a row that says "82 locations" would
-         publish a figure about 81 places nobody read it from. */
-      const pays=new Set(g.rows.map(r=>payCell(r)));
-      const sal=n>1&&pays.size>1
-        ? `<span class="paynone" title="the postings in this opening state
-             different figures">varies by location</span>`
-        : payCell(p);
-      tr.innerHTML=`
-        <td class="role">${esc(p.title)}${p.quota_carrying
-          ?' <span class="qm" title="carries a sales number">&#9679;</span>':""}</td>
-        <td class="co"><span class="cowrap">${tileHTML(p.company,p.company_id,"tile")}
-          <span>${esc(p.company)}</span></span></td>
-        <td class="loc">${n>1
-          ? `<button class="locmore" type="button">${n} locations</button>`
-          : esc(locCell(p))}</td>
-        <td class="sal">${sal}</td>
-        <td class="age"><span class="when ${esc(w.cls)}">${esc(w.txt)}</span>${
-          /* THE EMPLOYER'S OWN DATE, where their board published one. It is a
-             different fact from the line above it: that one is the day THIS
-             board first read the row, and every posting here has one inside
-             the last two weeks, so a requisition live since 2022 and one
-             opened yesterday looked identical. Shown only when the board
-             actually said - most do not, and an empty cell is the honest
-             rendering of that. */
-          p.posted?`<span class="postedon" title="the date the employer's own
-            job board gives for this posting">posted ${esc(p.posted)}</span>`:""}</td>
-        <td class="act"></td>`;
-      // the bookmark carries a handler, so it is built rather than stringified
-      tr.querySelector("td.act").appendChild(saveButton(p));
-      body.appendChild(tr);
-      const more=tr.querySelector(".locmore");
-      if(more)more.onclick=e=>{e.stopPropagation();expandOpening(tr,g,more)};
+      const p=g.lead;
+      const li=document.createElement("li");
+      li.className="jc";
+      li.dataset.key=p.opening_id||p.id;
+      li.innerHTML=jobCardHTML(g);
+      /* The whole card opens the role; the title is a real link as well, so
+         it can be tabbed to, middle-clicked and copied. A plain click on the
+         link is taken over so the page does not reload. */
+      const a=li.querySelector(".jc-title a");
+      /* The card body opens the role, except when the reader is selecting
+         text to copy, or asked for a new tab - then it does what the title
+         link would. */
+      li.onclick=e=>{
+        if((window.getSelection&&String(window.getSelection()))) return;
+        if(e.metaKey||e.ctrlKey||e.shiftKey){
+          if(a)window.open(a.href,"_blank","noopener");
+          return;
+        }
+        openRole(p.id);
+      };
+      if(a)a.onclick=e=>{
+        if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0){
+          e.stopPropagation();return;
+        }
+        e.preventDefault();e.stopPropagation();openRole(p.id);
+      };
+      /* On a card of several postings the corner saves ONE of them - the
+         earliest this board saw - so its label says which. */
+      li.querySelector(".jc-save").appendChild(saveButton(p,
+        g.rows.length>1?`${p.title}, ${rowPlace(p)}`:p.title));
+      const more=li.querySelector(".locmore");
+      if(more)more.onclick=e=>{e.stopPropagation();expandOpening(li,g,more)};
+      list.appendChild(li);
+      /* BACK LANDS WHERE YOU WERE. A place opened from an expanded list
+         records its card; the next time this page is drawn that card opens
+         again, before the scroll is restored, so the 41st of 217 places is
+         still under the reader's thumb. One-shot. */
+      if(reopen&&li.dataset.key===reopen&&more)expandOpening(li,g,more);
     });
-    host.appendChild(table);
+    host.appendChild(list);
     host.appendChild(pager(openings,pages,from,page.length));
   }
 
@@ -4186,13 +4300,19 @@ function drawJobs(){
   document.querySelectorAll(".payoff").forEach(el=>el.onclick=()=>payKeep(false));
 }
 
-/* Location, as one short cell. Territory is what a role COVERS and office is
-   where it SITS - two different facts, and the role page prints both. A table
-   cell has room for one, so it takes the one a reader is scanning a location
-   column for: where you would be. Silence stays silence. */
+/* Location, as one short phrase for a place row (a card's expanded postings,
+   a company page's roles). Territory is what a role COVERS and office is
+   where it SITS - two different facts, and the role page prints both. A row
+   has room for one, so it takes the one a reader is scanning for: where you
+   would be. Silence stays silence. */
+/* "City, ST" from an office, dropping whichever half is missing. An office
+   parsed with a city and no state printed as "Itasca, null" on 2026-09-27. */
+function officeText(o){
+  return [o&&o.city,o&&o.state].filter(Boolean).join(", ");
+}
 function locCell(p){
   if(p.work_mode==="remote")return "remote";
-  if(p.office)return (p.office.city?p.office.city+", ":"")+p.office.state
+  if(p.office&&officeText(p.office))return officeText(p.office)
     +(p.work_mode==="hybrid"?" (hybrid)":"");
   if(p.territory&&p.territory.stated)
     return (p.territory.states&&p.territory.states.length
@@ -4202,46 +4322,259 @@ function locCell(p){
   if(p.location)return p.location;
   return "not stated";
 }
-/* The salary cell. An em dash for every silence, because a column of
-   sentences is unreadable - but the dash carries WHICH silence as its title,
-   and the role page spells it out, so the distinction is never lost. It must
-   never look like a zero: --faint, the same colour every other "not stated"
-   on this board already uses. */
+/* A salary in a dense row (the company page's role list). An em dash for
+   every silence, because a column of sentences is unreadable - but the dash
+   carries WHICH silence as its title, so the distinction is never lost, and
+   it must never look like a zero. Cards do not use this: a card has room for
+   the words, and says them (cardPay). */
 function payCell(p){
   const b=payBit(p);
   if(b&&b.cls==="pay")return `<span class="pay">${esc(b.txt)}</span>`;
   const why=b?b.txt:"this build of the board recorded no pay either way";
   return `<span class="paynone" title="${esc(why)}">&mdash;</span>`;
 }
+
+/* ------------------------------------------------------------- job cards
+   The pieces of a card, each as small and as honest as the cell it
+   replaces. A card has room for words, so a silence is SAID - "no salary
+   stated", "we could not read this posting" - where the table could only
+   afford a dash with the reason in its title. */
+const CARD_MODE={remote:"Remote",hybrid:"Hybrid",onsite:"On-site"};
+/* Where the job sits or what it covers, WITHOUT the work mode - the mode has
+   its own line. An office is a place, not proof of onsite; a territory is
+   what a role covers, not where you would sit, and says so. null means the
+   posting named no place at all. */
+/* Workday writes "3 Locations" into the location field when a requisition
+   lists several, and names none of them. A count is not a place: printed
+   beside the pin it read as a place, and counted as one it inflated "N
+   locations" on grouped cards. */
+const LOC_COUNT=/^\s*(\d+)\s+locations?\s*$/i;
+function listedCount(p){
+  const m=LOC_COUNT.exec((p.location||"").trim());
+  return m?+m[1]:0;
+}
+function cardPlace(p){
+  if(p.office&&officeText(p.office))return officeText(p.office);
+  if(p.territory&&p.territory.stated){
+    const t=p.territory;
+    return "covers "+(t.states&&t.states.length
+      ? t.states.slice(0,3).join(", ")+(t.states.length>3?` +${t.states.length-3}`:"")
+      : t.region);
+  }
+  const raw=(p.location||"").trim();
+  // a remote role whose location field only repeats "remote" has no place to
+  // add; the mode line has already said it
+  if(raw&&!LOC_COUNT.test(raw)
+     &&!(p.work_mode==="remote"&&/^remote\b[\s,-]*$/i.test(raw)))return raw;
+  return null;
+}
+/* One posting's place as a row says it: the place it names (with its stated
+   mode where that matters), a Workday count said as a count, or which
+   silence. Used by the expanded list and by the corner bookmark's label, so
+   neither prints "2 Locations" as if it were a city. */
+function rowPlace(r){
+  const pl=cardPlace(r);
+  if(pl)return pl+(r.work_mode==="hybrid"?" (hybrid)":r.work_mode==="remote"?" (remote)":"");
+  if(listedCount(r))return `listed as ${listedCount(r)} locations, not named`;
+  if(r.work_mode==="remote")return "remote";
+  return "location not stated";
+}
+/* Pay in words. The figure when there is one; otherwise WHICH silence, led
+   by what it means for pay. "we could not read this posting" beside a money
+   icon read as the whole posting being broken; it is the pay we do not know.
+   "no salary stated" already says what it is about. */
+function cardPay(p){
+  const b=payBit(p);
+  if(b&&b.cls==="pay")return `<span class="pay">${esc(b.txt)}</span>`;
+  return `<span class="jc-silent">${esc(cardSilence(p))}</span>`;
+}
+function cardSilence(p){
+  const b=payBit(p);
+  return !b?"pay not recorded":b.txt==="no salary stated"?b.txt:"pay unknown: "+b.txt;
+}
+const CARD_ICON={
+  mode:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5.5h14v8H3zM1.5 16h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+  place:'<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18s-5.5-5.2-5.5-9.3a5.5 5.5 0 0111 0C15.5 12.8 10 18 10 18z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="8.6" r="1.9" fill="currentColor"/></svg>',
+  pay:'<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="1.8" y="5" width="16.4" height="10" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="10" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  age:'<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5.8V10l2.8 1.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'};
+function cardLine(kind,html,label){
+  return `<div class="jc-line jc-${kind}"><span class="jc-ic" title="${esc(label)}">${
+    CARD_ICON[kind]}</span><span class="jc-v">${html}</span></div>`;
+}
+/* One opening as a card. `g` is {lead, rows}: an advertisement grouped after
+   filtering, so a multi-city requisition shows the places that MATCHED. */
+function jobCardHTML(g){
+  const p=g.lead, n=g.rows.length;
+  const sil=t=>`<span class="jc-silent">${esc(t)}</span>`;
+  /* A GROUP'S MODE, PAY AND DATE ARE ONLY THE GROUP'S WHEN THEY AGREE - the
+     rule the table held for salary. One city's band printed against "82
+     locations" publishes a figure about 81 places nobody read it from. And a
+     silence is not a difference: one posting saying "remote" and one saying
+     nothing is "Remote on 1 of 2 postings", never "varies". */
+  const stated=g.rows.map(r=>r.work_mode).filter(m=>CARD_MODE[m]);
+  const modes=new Set(stated);
+  const lines=[];
+  if(modes.size>1)
+    lines.push(cardLine("mode",sil("work mode varies by location"),"work mode"));
+  else if(modes.size===1){
+    const m=CARD_MODE[stated[0]];
+    lines.push(cardLine("mode",stated.length===n?esc(m)
+      :esc(m)+" "+sil(`on ${stated.length} of ${n} postings`),
+      "work mode, as the posting states it"));
+  }
+  const remote=stated.length===n&&modes.size===1&&modes.has("remote");
+  /* PLACES ARE COUNTED AS PLACES. "N locations" used to be the number of
+     postings, so six requisitions that named no place at all read "6
+     locations" beside a map pin, and two in the same city read "2". Now:
+     the distinct places the postings actually name, and the postings as a
+     separate count whenever the two differ - each posting is its own
+     application, so the expander always opens all of them. */
+  const places=[...new Set(g.rows.map(cardPlace).filter(Boolean))];
+  const counted=g.rows.some(r=>listedCount(r));
+  let placeHTML=null;
+  if(n>1){
+    const k=places.length;
+    const btn=label=>`<button class="locmore" type="button" aria-expanded="false"
+      data-label="${esc(label)}">${esc(label)}</button>`;
+    placeHTML=k===n?btn(`${n} locations`)
+      :(k>1?esc(`${k} locations`):k===1?esc(places[0])
+        :counted?sil("places not named in the listings")
+        :remote?esc("remote"):sil("location not stated"))
+       +` <span class="jc-dot">&middot;</span> `+btn(`${n} postings`);
+  }else if(places.length){
+    placeHTML=esc(places[0]);
+  }else if(listedCount(p)){
+    placeHTML=sil(`listed as ${listedCount(p)} locations, not named here`);
+  }else if(p.work_mode!=="remote"){
+    // a remote role that names no place is not "location not stated": the
+    // mode line has already said where it is
+    placeHTML=sil("location not stated");
+  }
+  if(placeHTML!==null)
+    lines.push(cardLine("place",placeHTML,"where the job sits, or the territory it covers"));
+  const figs=new Set(), silences=new Set();
+  let silent=0;
+  g.rows.forEach(r=>{
+    const b=payBit(r);
+    if(b&&b.cls==="pay")figs.add(b.txt);
+    else{silent++;silences.add(cardSilence(r))}
+  });
+  let payHTML;
+  if(figs.size>1)payHTML=sil("pay varies by location");
+  else if(figs.size===1)payHTML=`<span class="pay">${esc([...figs][0])}</span>`
+    +(silent?" "+sil(`on ${n-silent} of ${n} postings`):"");
+  else payHTML=silences.size===1?sil([...silences][0])
+    :sil("no pay figure on any of these postings");
+  lines.push(cardLine("pay",payHTML,"pay"));
+  /* TWO DATES, BOTH LABELLED. "first seen" is the day THIS board first read
+     the posting; "employer posted" is the date their own board gives. An
+     unlabelled "today" sitting over an employer date from March read as a
+     brand-new job, so the words are visible, not in a tooltip, and "today"
+     only gets the accent when the employer's date does not contradict it. */
+  const w=when(p.first_seen,D.generated);
+  const posted=new Set(g.rows.map(r=>r.posted||""));
+  const allDated=g.rows.every(r=>r.posted);
+  const pd=[...posted].filter(Boolean).sort();
+  const postedOn=posted.size===1?p.posted:null;
+  /* a range only when EVERY posting carries a date; one undated posting
+     makes the range a claim about a posting that never gave one */
+  const postedRange=!postedOn&&allDated&&pd.length>1?`${pd[0]} to ${pd[pd.length-1]}`:null;
+  const stale=allDated&&pd.length&&p.first_seen&&dayGap(pd[pd.length-1],p.first_seen)>14;
+  const newest=g.rows.reduce((m,r)=>(r.first_seen||"")>m?r.first_seen:m,"");
+  const later=n>1&&newest&&newest!==p.first_seen?when(newest,D.generated).txt:"";
+  const fam=FAM[p.family];
+  return `
+    <div class="jc-logo" aria-hidden="true">${tileHTML(p.company,p.company_id,"tile")}</div>
+    <div class="jc-main">
+      <h4 class="jc-title"><a href="?role=${encodeURIComponent(p.id)}">${esc(p.title)}</a></h4>
+      <div class="jc-co">${esc(p.company)}</div>
+      ${lines.join("")}
+    </div>
+    <div class="jc-side">
+      <div class="jc-tags">${p.quota_carrying
+        ?'<span class="jc-tag q" title="carries a sales number">Quota-carrying</span>':""}${
+        fam&&p.family!=="other"?`<span class="jc-tag">${esc(fam)}</span>`:""}</div>
+      <div class="jc-save"></div>
+      <div class="jc-age">
+        <div class="jc-when"><span class="jc-ic">${CARD_ICON.age}</span><span
+          title="the day this board first read it">${w.txt?`first seen <span class="when ${
+          esc(stale?"":w.cls)}">${esc(w.txt)}</span>`:"date not recorded"}</span></div>${later
+        ?`<div class="postedon">latest posting ${esc(later)}</div>`:""}${postedOn
+        ?`<div class="postedon" title="the date the employer's own job board gives for this posting">employer posted ${esc(postedOn)}</div>`
+        :postedRange?`<div class="postedon" title="the dates the employer's own job board gives for these postings">employer posted ${esc(postedRange)}</div>`:""}
+      </div>
+    </div>`;
+}
 /* Open one advertisement into the places it was posted to.
 
-   Inserted after the row rather than replacing it, and each place keeps its
-   own link out - the 82 Xplor postings are 82 separate requisitions on
+   Inside the card rather than replacing it, and each place keeps its own
+   link out - the 82 Xplor postings are 82 separate requisitions on
    Greenhouse and applying to the Denver one is not applying to the Tulsa one.
    Collapsing them is about the list being readable, never about pretending
    they are one application.
 
    Toggles rather than accumulating: clicking twice used to be how a list grew
    a second copy of everything under it. */
-function expandOpening(tr,g,btn){
+let REOPEN=null;
+function expandOpening(card,g,btn){
   const open=btn.getAttribute("aria-expanded")==="true";
-  let el=tr.nextElementSibling;
-  while(el&&el.classList.contains("sub")){const nx=el.nextElementSibling;el.remove();el=nx}
+  const old=card.querySelector(".jc-locs");
+  if(old)old.remove();
   btn.setAttribute("aria-expanded",open?"false":"true");
-  btn.textContent=open?`${g.rows.length} locations`:`${g.rows.length} locations \u2212`;
+  const label=btn.dataset.label||`${g.rows.length} postings`;
+  btn.textContent=open?label:label+" −";
   if(open)return;
-  let at=tr;
-  g.rows.forEach(r=>{
-    const row=document.createElement("tr");
-    row.className="sub";
-    row.onclick=()=>openRole(r.id);
-    row.innerHTML=`<td class="role"></td><td class="co"></td>
-      <td class="loc">${esc(locCell(r))}</td>
-      <td class="sal">${payCell(r)}</td>
-      <td class="age"></td><td class="act"></td>`;
-    row.querySelector("td.act").appendChild(saveButton(r));
-    at.after(row); at=row;
+  const box=document.createElement("ul");
+  box.className="jc-locs";
+  /* Pay per place only when the places differ. When every posting says the
+     same thing the card's own pay line already said it, and 217 copies of
+     "pay unknown" under it is the card repeating itself. */
+  const samePay=new Set(g.rows.map(r=>cardPay(r))).size===1;
+  if(samePay)box.classList.add("samepay");
+  /* Sorted by place, so a reader can find their city. Two postings in one
+     place are told apart by the employer's date, or by their order, in the
+     row and in its label - two identical "Itasca, IL" links said nothing. */
+  const named=r=>!!cardPlace(r);
+  const rows=g.rows.slice().sort((a,b)=>(named(b)-named(a))
+    ||rowPlace(a).localeCompare(rowPlace(b)));
+  const byPlace=new Map();
+  rows.forEach(r=>{const k=rowPlace(r);byPlace.set(k,(byPlace.get(k)||[]).concat([r]))});
+  const nth=new Map();
+  rows.forEach(r=>{
+    const place=rowPlace(r);
+    const same=byPlace.get(place);
+    const i=(nth.get(place)||0)+1; nth.set(place,i);
+    /* WHAT TELLS TWO POSTINGS IN ONE PLACE APART. The employer's date, when
+       every one of them has a different one; otherwise their order - two
+       "Plano, TX, posted 2026-08-18" rows said nothing. */
+    const dates=same.map(x=>x.posted||"");
+    const datesTell=same.length>1&&dates.every(Boolean)&&new Set(dates).size===same.length;
+    const tell=same.length<2?(r.posted?`posted ${r.posted}`:"")
+      :datesTell?`posted ${r.posted}`
+      :`posting ${i} of ${same.length}`+(r.posted?`, posted ${r.posted}`:"");
+    const row=document.createElement("li");
+    row.innerHTML=`<a class="jc-lplace" href="?role=${encodeURIComponent(r.id)}"
+      aria-label="${esc(r.title+", "+place+(tell?", "+tell:""))}">${esc(place)}${
+      tell?` <span class="jc-lwhen">${esc(tell)}</span>`:""}</a>
+      ${samePay?"":`<span class="jc-lpay">${cardPay(r)}</span>`}<span class="jc-lsave"></span>`;
+    const a=row.querySelector("a");
+    const go=()=>{REOPEN=card.dataset.key||null;openRole(r.id)};
+    a.onclick=e=>{
+      e.stopPropagation();
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;
+      e.preventDefault();go();
+    };
+    row.onclick=e=>{
+      e.stopPropagation();
+      if(window.getSelection&&String(window.getSelection()))return;
+      if(e.metaKey||e.ctrlKey||e.shiftKey){window.open(a.href,"_blank","noopener");return}
+      go();
+    };
+    row.querySelector(".jc-lsave").appendChild(
+      saveButton(r,`${r.title}, ${place}${tell?", "+tell:""}`));
+    box.appendChild(row);
   });
+  card.querySelector(".jc-main").appendChild(box);
 }
 /* Pagination, in the url and not a scroll trap. It says which page of how
    many, because "Next" alone tells a person nothing about whether they are
@@ -5705,7 +6038,7 @@ function how(){
     genuinely boardless &mdash; small vendors hiring on LinkedIn or by email &mdash; which
     leaves the rest as boards nobody has found yet.</p>
 
-  <div class="sechead"><h3>What the columns actually mean</h3></div>
+  <div class="sechead"><h3>What each card says</h3></div>
   <p class="hint" style="max-width:80ch"><strong>First seen</strong> is the day this board
     first read the posting, not the day the employer posted it &mdash; we are not told
     that. This board&rsquo;s own history starts
@@ -5716,11 +6049,12 @@ function how(){
     number gets one; an odd title goes to a person.<br>
     <strong>Location</strong> is whatever the posting stated. &ldquo;Not stated&rdquo;
     means the posting did not say where &mdash; it does not mean remote.<br>
-    <strong>Salary</strong> is shown only where the posting states a figure. A dash is a
-    silence, and there are three different silences behind it: the posting stated nothing,
-    we never got its description, or this build of the board recorded no pay at all. The
-    role page names which one. A dash never means the job pays nothing, and the pay filter
-    sets uncomparable postings aside in the open rather than deleting them.</p>
+    <strong>Pay</strong> is shown only where the posting states a figure. Where it does
+    not, the card says which silence it is: &ldquo;no salary stated&rdquo; (we read the
+    posting and it named none), &ldquo;pay unknown&rdquo; (we never got its description),
+    or &ldquo;pay not recorded&rdquo; (this build of the board recorded no pay at all).
+    None of them means the job pays nothing, and the pay filter sets uncomparable postings
+    aside in the open rather than deleting them.</p>
 
   <div class="sechead"><h3>How a company gets on the list</h3></div>
   <p class="hint" style="max-width:80ch">Anyone can send one in with the button at the top
