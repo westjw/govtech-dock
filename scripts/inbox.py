@@ -76,16 +76,25 @@ def main() -> int:
         return 0
     by_co: dict = {}
     for r in show:
-        by_co.setdefault((r.get("name") or r.get("company_id") or "?"), []).append(r)
+        # the publisher's items are about a publish, not a company
+        by_co.setdefault((r.get("name") or r.get("company_id")
+                          or ("the desk publisher" if r.get("source") == "publisher" else "?")),
+                         []).append(r)
     n = 0
     for name, items in sorted(by_co.items(), key=lambda kv: kv[0].casefold()):
         print(f"\n{name}")
         for r in items:
             n += 1
             saw = r.get("saw") or {}
-            shown = (f"{'green' if saw.get('green') else 'red'}: {saw.get('state')}"
-                     + (f" ({saw.get('detail')})" if saw.get("detail") else "")) if saw else "-"
-            print(f"  {n}. [{r.get('item')}] the page showed {shown}")
+            if "state" in saw:
+                shown = (f"the page showed {'green' if saw.get('green') else 'red'}: "
+                         f"{saw.get('state')}"
+                         + (f" ({saw.get('detail')})" if saw.get("detail") else ""))
+            elif saw.get("files"):
+                shown = "files: " + ", ".join(saw["files"][:8])
+            else:
+                shown = "-"
+            print(f"  {n}. [{r.get('item')}] {shown}")
             print(f"     {r.get('by', 'owner')} wrote: {r.get('text')}")
             print(f"     id {r.get('id')} · {r.get('at', '')[:16]} · {r.get('status', 'open')}")
     print(f"\n{n} item(s)")

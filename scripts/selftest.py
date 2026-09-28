@@ -26666,6 +26666,16 @@ def check_the_claude_inbox_lists_and_settles() -> int:
         rc, out = run()
         if out.strip() != "EMPTY":
             errors += fail("a settled item is still listed as open")
+        # the publisher's items: about a publish, not a company or a page
+        ib.INBOX.write_text(ib.INBOX.read_text() + json.dumps({
+            "id": "publisher:conflict:t", "at": "2026-09-28T18:00", "source": "publisher",
+            "company_id": None, "name": None, "item": "page",
+            "saw": {"files": ["data/companies.json"]},
+            "text": "the desk and main changed the same field", "status": "open"}) + "\n")
+        rc, out = run()
+        if "the desk publisher" not in out or "files: data/companies.json" not in out \
+                or "red: None" in out:
+            errors += fail(f"a publisher item is not listed as one: {out!r}")
     finally:
         ib.INBOX, sys.argv = keep, keep_argv
     return errors
