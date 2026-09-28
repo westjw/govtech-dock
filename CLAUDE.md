@@ -276,6 +276,44 @@ gain `allow-same-origin` - that would hand a company page the console token.
 The news check runs in a background thread (the admin is single-threaded)
 and the card polls for the result.
 
+## The desk publisher (owner, 2026-09-28)
+
+What the owner does in the desk admin reaches the public site on its own:
+`scripts/publish.py`, run by launchd every 5 minutes from his checkout
+(`python3 scripts/publish.py --install` writes the plist from the checkout's
+own paths - no path of his machine is committed - and `--uninstall` removes
+it; `--status` and `--dry-run` for a look). **Cloudflare Pages is on the Free
+plan ("be frugal")**: a cycle pushes only when something changed, never within
+30 minutes of the last push, and only after 5 quiet minutes on the desk.
+
+- **What it publishes is derived, not typed**: data files named by admin
+  journal entries not yet on main, the two journals, and news.json /
+  site_pages_index.json / identity_labels.jsonl (written by the desk the way a
+  crawl writes). Anything else modified in the checkout is left out and named
+  in the status. board.json and data/detail/ are never taken from the desk.
+- **Merged on parsed JSON, three ways** (`merge_data.merge_text`, base = the
+  checkout's HEAD, ours = the desk, theirs = main): companies.json field by
+  field, a record the desk merged away is deleted when main changed only
+  hiring/ats, news records by the later read, journals by line, decision
+  files by key. A field both sides changed differently is a CONFLICT: nothing
+  is pushed and Claude's inbox says which.
+- **Built and checked in a throwaway worktree at main** (main's code runs,
+  never the checkout's uncommitted code): quick rebuild, its --check, every
+  staged JSON parses, the full selftest. Commit as westjw noreply, push never
+  forced. The admin holds `data/.admin.lock` around every action (`desk_lock`)
+  and the publisher takes it to snapshot and to sync.
+- **The checkout comes up to main** only when every published file is
+  byte-identical to the snapshot and nothing else dirty is in the way;
+  otherwise the next cycle carries it. A local commit main does not have
+  holds every cycle (inbox) - the base would be ambiguous.
+- **Paused** while a data workflow (daily-refresh, discovery, news,
+  write-profiles) is queued or running. Those workflows' push steps now
+  resolve a rebase conflict record by record through the same merge rule
+  (`merge_decisions.py --resolve`), taking the bot's freshly built board.json
+  and data/detail/; the publisher's next cycle redraws the board if a desk
+  edit is missing from it (news alone never triggers a redraw).
+- The belt says when an edit goes live (admin meta `publish`).
+
 ## House rules
 
 - **A page scan never proves absence.** `scan_pagetext` may return

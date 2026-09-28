@@ -30,8 +30,14 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# The files two writers may both touch. companies.json is NOT here: it is
-# written by the bot only, and a conflict in it is a real one.
+# The dict decision files whose rule is "both sides' keys, the bot's flag
+# changes overlay" (union below). Every OTHER data file is merged by
+# merge_data.merge_text - the same rule the desk publisher uses: companies.json
+# field by field (the desk changes posts_at, names and parents while the bot
+# changes hiring; since 2026-09-28 both write it), crawl records by the later
+# read, journals by line. Files a build draws (board.json, data/detail/...)
+# take the bot's freshly built copy; the publisher redraws them from the
+# merged inputs on its next cycle.
 DECISION_FILES = {
     "data/placement_rulings.json", "data/vendor_scope_decisions.json",
     "data/web_merge_rulings.json", "data/web_founded_rulings.json",
@@ -77,7 +83,18 @@ def _is_record(d: dict) -> bool:
     return any(k in d for k in ("on", "call", "applied", "year", "keep", "roles"))
 
 
+def _text(stage: int, path: str) -> str | None:
+    r = subprocess.run(["git", "show", f":{stage}:{path}"], capture_output=True,
+                       text=True, cwd=ROOT)
+    return r.stdout if r.returncode == 0 else None
+
+
 def resolve() -> int:
+    """Settle every conflicted path of a stopped rebase, or leave it for a
+    person and return 1. During a rebase stage 2 is the upstream (a phone
+    ruling, the desk publisher) and stage 3 is the bot's commit being
+    replayed."""
+    import merge_data
     r = subprocess.run(["git", "diff", "--name-only", "--diff-filter=U"],
                        capture_output=True, text=True, cwd=ROOT)
     conflicted = [p for p in r.stdout.split() if p]
@@ -86,19 +103,49 @@ def resolve() -> int:
         return 0
     rc = 0
     for path in conflicted:
-        if path not in DECISION_FILES:
-            print(f"  {path}: not a decision file, left for a person", file=sys.stderr)
+        if path in DECISION_FILES:
+            base, ours, theirs = _show(1, path), _show(2, path), _show(3, path)
+            if ours is None or theirs is None:
+                print(f"  {path}: a side is not a JSON dict, left for a person", file=sys.stderr)
+                rc = 1
+                continue
+            merged = union(base, ours, theirs)
+            (ROOT / path).write_text(json.dumps(merged, indent=1, ensure_ascii=False) + "\n")
+            subprocess.run(["git", "add", path], cwd=ROOT, check=True)
+            print(f"  {path}: merged {len(ours)} + {len(theirs)} keys -> {len(merged)}")
+            continue
+        if merge_data.is_generated(path):
+            bot = _text(3, path)
+            if bot is None:
+                subprocess.run(["git", "rm", "-q", "--cached", "--ignore-unmatch", path],
+                               cwd=ROOT, check=True)
+                (ROOT / path).unlink(missing_ok=True)
+                print(f"  {path}: the bot's build has no such file; removed")
+            else:
+                (ROOT / path).write_text(bot)
+                subprocess.run(["git", "add", path], cwd=ROOT, check=True)
+                print(f"  {path}: the bot's freshly built copy")
+            continue
+        if not path.startswith("data/"):
+            print(f"  {path}: not a data file, left for a person", file=sys.stderr)
             rc = 1
             continue
-        base, ours, theirs = _show(1, path), _show(2, path), _show(3, path)
-        if ours is None or theirs is None:
-            print(f"  {path}: a side is not a JSON dict, left for a person", file=sys.stderr)
+        # the bot's commit is carried onto the upstream, whose formatting wins
+        text, conflicts = merge_data.merge_text(path, _text(1, path), _text(3, path),
+                                                _text(2, path))
+        if conflicts:
+            for c in conflicts[:12]:
+                print(f"  {path}: {c}", file=sys.stderr)
             rc = 1
             continue
-        merged = union(base, ours, theirs)
-        (ROOT / path).write_text(json.dumps(merged, indent=1, ensure_ascii=False) + "\n")
-        subprocess.run(["git", "add", path], cwd=ROOT, check=True)
-        print(f"  {path}: merged {len(ours)} + {len(theirs)} keys -> {len(merged)}")
+        if text is None:
+            subprocess.run(["git", "rm", "-q", "--cached", "--ignore-unmatch", path],
+                           cwd=ROOT, check=True)
+            (ROOT / path).unlink(missing_ok=True)
+        else:
+            (ROOT / path).write_text(text)
+            subprocess.run(["git", "add", path], cwd=ROOT, check=True)
+        print(f"  {path}: merged record by record")
     return rc
 
 

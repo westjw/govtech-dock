@@ -3786,6 +3786,33 @@ QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "l
           "scrub": lambda companies, board: _page_belt().q_scrub(companies, board)}
 
 
+def publish_status() -> dict:
+    """What the desk publisher last did, for the belt: pushed and live,
+    waiting for quiet or for the 30-minute gap, paused, or refused."""
+    st = read("publish_state.json", {})
+    last = st.get("last") if isinstance(st.get("last"), dict) else {}
+    live = st.get("live") if isinstance(st.get("live"), dict) else {}
+    return {"outcome": last.get("outcome"), "at": last.get("at"),
+            "why": (last.get("why") or "")[:300],
+            "last_push": (st.get("last_push") or {}).get("at"),
+            "live": live.get("conclusion"), "pending": bool(st.get("pending_sha"))}
+
+
+@contextlib.contextmanager
+def desk_lock():
+    """The lock scripts/publish.py takes to snapshot and to sync. A file lock,
+    so it holds across processes; the admin is single-threaded, so it never
+    contends with itself."""
+    import fcntl
+    p = DATA / ".admin.lock"
+    with open(p, "a") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(fh, fcntl.LOCK_UN)
+
+
 def badge_count(key: str, rows: list) -> int:
     """The number on a tab. The Scrub tab lists the whole standing job, swept
     rows included with the day they come due; its badge is what is DUE, or
@@ -6219,6 +6246,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                "start_commit": START_COMMIT,
                                "head_commit": _head_commit(),
                                "code_changed": _code_fingerprint() != START_CODE,
+                               # the desk publisher's last word (publish.py):
+                               # the belt says when an edit goes live
+                               "publish": publish_status(),
                                # which companies have a logo, and in what
                                # format. The page needs this to know whether to
                                # ask for an image at all - guessing the
@@ -6429,7 +6459,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # Every action, not only the ones that obviously fetch: an action
             # that grows a fetch later inherits the guard instead of having to
             # remember it.
-            with only_public_hosts():
+            # THE DESK LOCK: the publisher snapshots the desk's files and
+            # fast-forwards the checkout holding this same lock, so it never
+            # reads a multi-file action half written, and never moves a file
+            # out from under one (scripts/publish.py).
+            with only_public_hosts(), desk_lock():
                 out = ACTIONS[action](body)
         except (AttributeError, TypeError) as exc:
             # A STRING FIELD THAT ARRIVED AS A NUMBER. Thirteen handlers do

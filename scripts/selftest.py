@@ -26251,6 +26251,387 @@ def check_the_company_page_keeps_itself() -> int:
         errors += fail("closing the extension panel does not forget the scrub target")
     return errors
 
+def check_the_merge_keeps_both_sides_record_by_record() -> int:
+    """merge_data.merge_text, the ONE merge rule the desk publisher and the
+    workflows' rebase resolver share (2026-09-28). The admin writes
+    companies.json with indent 1 and the nightly with indent 2, so a text
+    merge sees every line changed; parsed, the desk and the crawl almost never
+    touch the same field, and when they do nothing is guessed."""
+    import merge_data as M
+    errors = 0
+
+    def co(cid, **kw):
+        return dict({"id": cid, "name": cid.title(), "hiring": {"checked": "2026-09-27"}}, **kw)
+
+    def j2(x):
+        return json.dumps(x, indent=2) + "\n"
+
+    def j1(x):
+        return json.dumps(x, indent=1) + "\n"
+    base = [co("a"), co("b"), co("c")]
+    main = [co("a", hiring={"checked": "2026-09-28"}), co("b", hiring={"checked": "2026-09-28"}),
+            co("c", hiring={"checked": "2026-09-28"})]
+    desk = [co("a"), co("b", posts_at={"where": "linkedin"}), co("d")]      # c merged away, d added
+    text, conf = M.merge_text("data/companies.json", j2(base), j1(desk), j2(main))
+    got = {c["id"]: c for c in json.loads(text or "[]")}
+    if conf:
+        errors += fail(f"a desk edit and the crawl's hiring read as a conflict: {conf}")
+    if got.get("b", {}).get("posts_at") != {"where": "linkedin"} \
+            or got.get("b", {}).get("hiring", {}).get("checked") != "2026-09-28":
+        errors += fail("the merged companies.json lost the desk's field or the crawl's hiring")
+    if "c" in got or "d" not in got:
+        errors += fail("a company the desk merged away came back, or one it added was lost")
+    if not (text or "").startswith("[\n  {"):
+        errors += fail("the merged companies.json is not written the way main writes it (indent 2)")
+    # both changed one field differently: nothing guessed
+    desk2 = [co("a", name="Desk Name"), co("b"), co("c")]
+    main2 = [co("a", name="Crawl Name"), co("b"), co("c")]
+    _t, conf = M.merge_text("data/companies.json", j2(base), j1(desk2), j2(main2))
+    if not any("a.name" in c for c in conf):
+        errors += fail("two different names for one company merged without a conflict")
+    # merged away by the desk while main renamed it: a conflict, not a deletion
+    main3 = [co("a"), co("b"), co("c", name="Renamed")]
+    _t, conf = M.merge_text("data/companies.json", j2(base), j1([co("a"), co("b")]), j2(main3))
+    if not conf:
+        errors += fail("a company merged away on the desk while main changed its name "
+                       "was deleted without a word")
+    # crawl records: the later read wins
+    nb = {"x": {"checked_on": "2026-09-26", "items": []}}
+    nd = {"x": {"checked_on": "2026-09-28", "items": [{"headline": "desk read"}]}}
+    nm = {"x": {"checked_on": "2026-09-27", "items": [{"headline": "sweep read"}]}}
+    text, conf = M.merge_text("data/news.json", j1(nb), j1(nd), j1(nm))
+    if conf or json.loads(text)["x"]["items"][0]["headline"] != "desk read":
+        errors += fail("news.json did not keep the later read")
+    # journals: every line once, in time order
+    lb = ['{"at": "1", "n": 1}']
+    # main's line is LATER than the desk's, so arrival order is not time order
+    text, conf = M.merge_text("data/admin_journal.jsonl", "\n".join(lb) + "\n",
+                              "\n".join(lb + ['{"at": "2", "n": 2}']) + "\n",
+                              "\n".join(lb + ['{"at": "3", "n": 3}']) + "\n")
+    if conf or [json.loads(x)["n"] for x in text.splitlines()] != [1, 2, 3]:
+        errors += fail(f"the journals did not union in time order: {text!r}")
+    # a journal-shaped file (manual.json) merges by record
+    mb = {"checks": {}, "postings": [{"id": "p1", "company_id": "a"}]}
+    md = {"checks": {}, "postings": mb["postings"] + [{"id": "p2", "company_id": "b"}]}
+    mm = {"checks": {"a": {"checked_on": "2026-09-28"}},
+          "postings": mb["postings"] + [{"id": "p3", "company_id": "c"}]}
+    text, conf = M.merge_text("data/manual.json", j1(mb), j1(md), j1(mm))
+    got = json.loads(text or "{}")
+    if conf or {p["id"] for p in got.get("postings", [])} != {"p1", "p2", "p3"} \
+            or "a" not in got.get("checks", {}):
+        errors += fail(f"manual.json did not keep both sides' records: {conf}")
+    # a list of records by id (suppliers.json)
+    sb = [{"id": "s1"}]
+    text, conf = M.merge_text("data/suppliers.json", j1(sb), j1(sb + [{"id": "s2"}]),
+                              j1(sb + [{"id": "s3"}]))
+    if conf or {r["id"] for r in json.loads(text)} != {"s1", "s2", "s3"}:
+        errors += fail("suppliers.json did not keep both sides' additions")
+    # a drawn file is never merged
+    _t, conf = M.merge_text("data/board.json", j1({}), j1({"x": 1}), j1({"y": 2}))
+    if not conf:
+        errors += fail("board.json changed on both sides was merged; it must be redrawn")
+    # a decision dict: different keys both kept, one key two ways a conflict
+    text, conf = M.merge_text("data/scrub.json", j1({}), j1({"a": {"on": 1}}), j1({"b": {"on": 2}}))
+    if conf or set(json.loads(text)) != {"a", "b"}:
+        errors += fail("a decision file lost one side's key")
+    _t, conf = M.merge_text("data/scrub.json", j1({"a": 1}), j1({"a": 2}), j1({"a": 3}))
+    if not conf:
+        errors += fail("one key ruled two ways merged without a conflict")
+    return errors
+
+
+def _git(cwd, *args):
+    r = subprocess.run(["git", *args], cwd=str(cwd), capture_output=True, text=True)
+    if r.returncode != 0:
+        raise RuntimeError(f"git {' '.join(args)}: {r.stderr.strip()[-300:]}")
+    return r.stdout
+
+
+def _git_repo(path: pathlib.Path) -> pathlib.Path:
+    path.mkdir(parents=True, exist_ok=True)
+    _git(path, "init", "-q", "-b", "main")
+    _git(path, "config", "user.name", "selftest")
+    _git(path, "config", "user.email", "selftest@localhost")
+    _git(path, "config", "commit.gpgsign", "false")
+    return path
+
+
+def check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish() -> int:
+    """The workflows' push step rebases the bot's commit onto main. With the
+    desk publisher committing data during the 45-minute crawl, a conflict in
+    companies.json or board.json is ordinary, and merge_decisions --resolve
+    used to leave both "for a person" - the day's crawl never landed. Driven
+    here through a real stopped rebase in a throwaway repository."""
+    import merge_decisions as MD
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-resolve-"))
+    keep_root = MD.ROOT
+    try:
+        r = _git_repo(tmp / "r")
+        (r / "data").mkdir()
+
+        def write(companies, board):
+            (r / "data" / "companies.json").write_text(json.dumps(companies, indent=2) + "\n")
+            (r / "data" / "board.json").write_text(json.dumps(board, indent=1) + "\n")
+        a = {"id": "a", "name": "A", "hiring": {"checked": "2026-09-27"}}
+        b = {"id": "b", "name": "B", "hiring": {"checked": "2026-09-27"}}
+        write([a, b], {"generated": "2026-09-27", "organizations": [{"id": "a"}, {"id": "b"}]})
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "base")
+        _git(r, "branch", "bot")
+        # the desk publish lands on main
+        write([a, dict(b, posts_at={"where": "linkedin"})],
+              {"generated": "2026-09-27", "organizations": [{"id": "a"}, {"id": "b", "posts_at": 1}]})
+        _git(r, "commit", "-qam", "desk publish")
+        # the crawl, from the older base - it redraws the same organization
+        # line, so git's text merge stops on board.json too
+        _git(r, "checkout", "-q", "bot")
+        bot_board = {"generated": "2026-09-28", "organizations": [{"id": "a"}, {"id": "b", "open_roles": 3}]}
+        write([dict(a, hiring={"checked": "2026-09-28"}), dict(b, hiring={"checked": "2026-09-28"})],
+              bot_board)
+        _git(r, "commit", "-qam", "daily refresh")
+        rb = subprocess.run(["git", "rebase", "main"], cwd=r, capture_output=True, text=True)
+        if rb.returncode == 0:
+            errors += fail("the fixture did not produce a rebase conflict to resolve")
+        MD.ROOT = r
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = MD.resolve()
+        if rc != 0:
+            errors += fail("the resolver left companies.json or board.json for a person; "
+                           "the day's crawl would not land")
+        else:
+            env = dict(os.environ, GIT_EDITOR="true")
+            subprocess.run(["git", "rebase", "--continue"], cwd=r, capture_output=True, env=env)
+            got = {c["id"]: c for c in json.loads((r / "data" / "companies.json").read_text())}
+            if got["b"].get("posts_at") != {"where": "linkedin"}:
+                errors += fail("the crawl's rebase dropped the desk's published edit")
+            if got["a"]["hiring"]["checked"] != "2026-09-28":
+                errors += fail("the crawl's hiring read did not land")
+            if json.loads((r / "data" / "board.json").read_text()) != bot_board:
+                errors += fail("board.json is not the crawl's freshly drawn one")
+        # a real disagreement still stops for a person
+        subprocess.run(["git", "rebase", "--abort"], cwd=r, capture_output=True)
+        _git(r, "checkout", "-q", "main")
+        _git(r, "checkout", "-q", "-b", "bot2", "bot~1")
+        write([dict(a, name="Crawl A"), b], {"generated": "2026-09-27", "organizations": []})
+        _git(r, "commit", "-qam", "bot renames")
+        _git(r, "checkout", "-q", "main")
+        write([dict(a, name="Desk A"), dict(b, posts_at={"where": "linkedin"})],
+              {"generated": "2026-09-27", "organizations": [{"id": "a"}, {"id": "b", "posts_at": 1}]})
+        _git(r, "commit", "-qam", "desk renames")
+        _git(r, "checkout", "-q", "bot2")
+        subprocess.run(["git", "rebase", "main"], cwd=r, capture_output=True)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = MD.resolve()
+        if rc == 0:
+            errors += fail("two different names for one company were resolved without a person")
+        subprocess.run(["git", "rebase", "--abort"], cwd=r, capture_output=True)
+    except RuntimeError as exc:
+        errors += fail(f"the resolver fixture could not be built: {exc}")
+    finally:
+        MD.ROOT = keep_root
+        shutil.rmtree(tmp, ignore_errors=True)
+    for wf in ("refresh.yml", "discovery.yml", "news.yml", "write-profiles.yml"):
+        # comment lines out: the files explain the old `git pull --rebase`
+        y = "\n".join(ln for ln in (ROOT / ".github" / "workflows" / wf).read_text()
+                      .splitlines() if not ln.lstrip().startswith("#"))
+        pulls = len(re.findall(r"git pull --rebase", y))
+        guarded = len(re.findall(r"git pull --rebase origin main \\\s*\n\s*\|\| \(python "
+                                 r"scripts/merge_decisions\.py --resolve", y))
+        if pulls and guarded != pulls:
+            errors += fail(f"{wf}: {pulls - guarded} push step(s) rebase without the "
+                           f"record-by-record resolver")
+    return errors
+
+
+def check_the_publisher_publishes_the_desk_and_only_the_desk() -> int:
+    """scripts/publish.py, driven through whole cycles against throwaway git
+    repositories (a bare origin, the desk's checkout, a bot pushing a crawl
+    meanwhile). The owner's rules: push only when something changed, never
+    within 30 minutes of the last push, only after 5 quiet minutes; never a
+    research file; never forced; a conflict pushes nothing and says so; the
+    checkout comes up to main without losing a keystroke."""
+    import admin as _a
+    import publish as P
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-publish-"))
+    keep = (P.ROOT, _a.DATA)
+    try:
+        origin = tmp / "origin.git"
+        _git(tmp, "init", "-q", "--bare", "-b", "main", str(origin))
+        seed = _git_repo(tmp / "seed")
+        (seed / "data").mkdir()
+        cos = [{"id": i, "name": i.title(), "hiring": {"checked": "2026-09-27"}}
+               for i in ("a", "b", "c")]
+        (seed / "data" / "companies.json").write_text(json.dumps(cos, indent=2) + "\n")
+        (seed / "data" / "admin_journal.jsonl").write_text(
+            json.dumps({"at": "2026-09-27T09:00:00", "file": "companies.json", "id": "x#1"}) + "\n")
+        (seed / "data" / "board.json").write_text('{"generated": "2026-09-27"}\n')
+        (seed / ".gitignore").write_text("/data/publish_state.json\n/data/publish_state.tmp\n"
+                                         "/data/.admin.lock\n/data/claude_inbox.jsonl\n"
+                                         "/data/.publish_base/\n")
+        _git(seed, "add", "-A"); _git(seed, "commit", "-q", "-m", "seed")
+        _git(seed, "remote", "add", "origin", str(origin)); _git(seed, "push", "-q", "origin", "main")
+        desk = tmp / "desk"
+        _git(tmp, "clone", "-q", str(origin), str(desk))
+        for k, v in (("user.name", "desk"), ("user.email", "desk@localhost"),
+                     ("commit.gpgsign", "false")):
+            _git(desk, "config", k, v)
+        # the crawl lands on main while the desk works
+        bot = tmp / "bot"
+        _git(tmp, "clone", "-q", str(origin), str(bot))
+        _git(bot, "config", "user.name", "bot"); _git(bot, "config", "user.email", "bot@localhost")
+        crawled = [dict(c, hiring={"checked": "2026-09-28"}) for c in cos]
+        (bot / "data" / "companies.json").write_text(json.dumps(crawled, indent=2) + "\n")
+        _git(bot, "commit", "-qam", "daily refresh"); _git(bot, "push", "-q", "origin", "main")
+        # the desk: an edit through the journal, a new decision file, a research file
+        mine = [dict(c, posts_at={"where": "linkedin"}) if c["id"] == "b" else c for c in cos]
+        (desk / "data" / "companies.json").write_text(json.dumps(mine, indent=1) + "\n")
+        (desk / "data" / "scrub.json").write_text(json.dumps({"b": {"swept_on": "2026-09-28"}}, indent=1) + "\n")
+        with open(desk / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps({"at": "2026-09-28T10:00:00", "file": "companies.json", "id": "y#1"}) + "\n")
+            fh.write(json.dumps({"at": "2026-09-28T10:00:01", "file": "scrub.json", "id": "y#2"}) + "\n")
+        (desk / "data" / "exhibitors_research.json").write_text("[]\n")
+        P.ROOT, _a.DATA = desk, desk / "data"
+        t0 = time.time()
+
+        def age(seconds):
+            for p in (desk / "data").iterdir():
+                if p.is_file():
+                    os.utime(p, (t0 - seconds, t0 - seconds))
+
+        def redraw(wt):
+            cs = json.loads((wt / "data" / "companies.json").read_text())
+            (wt / "data" / "board.json").write_text(json.dumps(
+                {"generated": "2026-09-27", "organizations": cs}, indent=1) + "\n")
+            return None
+        kw = dict(busy=lambda: [], run_checks=lambda wt, staged: None,
+                  drift=lambda wt: 0, redraw=redraw, pages=lambda sha: None)
+        with contextlib.redirect_stdout(io.StringIO()):
+            age(60)
+            r = P.cycle(now=t0, **kw)
+            if r.get("outcome") != "waiting":
+                errors += fail(f"a desk active a minute ago was published: {r.get('outcome')}")
+            age(600)
+            r = P.cycle(now=t0, busy=lambda: ["daily-refresh"], **{k: v for k, v in kw.items() if k != "busy"})
+            if r.get("outcome") != "paused":
+                errors += fail(f"a cycle published while the nightly was running: {r.get('outcome')}")
+            r = P.cycle(now=t0, **kw)
+        if r.get("outcome") != "pushed":
+            errors += fail(f"a quiet desk with an edit did not publish: {r}")
+        else:
+            main = json.loads(_git(origin, "show", "main:data/companies.json"))
+            got = {c["id"]: c for c in main}
+            if got["b"].get("posts_at") != {"where": "linkedin"} or got["a"]["hiring"]["checked"] != "2026-09-28":
+                errors += fail("the publish did not carry both the desk's edit and the crawl's hiring")
+            files = _git(origin, "ls-tree", "-r", "--name-only", "main").split()
+            if "data/scrub.json" not in files:
+                errors += fail("a new decision file the journal names was not published")
+            if "data/exhibitors_research.json" in files:
+                errors += fail("a research file nobody journalled was published")
+            if not json.loads(_git(origin, "show", "main:data/board.json")).get("organizations"):
+                errors += fail("the board was not redrawn in the publish")
+            if _git(desk, "rev-parse", "HEAD").strip() != _git(origin, "rev-parse", "main").strip():
+                errors += fail("the checkout was not brought up to main after the publish")
+            if _git(desk, "status", "--porcelain", "--", "data/companies.json", "data/scrub.json").strip():
+                errors += fail("the published files are still dirty in the checkout")
+            if not (desk / "data" / "exhibitors_research.json").exists():
+                errors += fail("the sync removed a research file it did not publish")
+            if "exhibitors_research.json" not in " ".join(r.get("left_out") or []):
+                errors += fail("a file left out is not named in the status")
+        # a desk write DURING a cycle: published what was snapshotted, and the
+        # checkout is left alone (the newer write is the next cycle's)
+        cs = json.loads((desk / "data" / "companies.json").read_text())
+        cs[0]["posts_at"] = {"where": "wellfound"}
+        (desk / "data" / "companies.json").write_text(json.dumps(cs, indent=1) + "\n")
+        with open(desk / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps({"at": "2026-09-28T10:10:00", "file": "companies.json", "id": "y#9"}) + "\n")
+        age(600)
+
+        def meanwhile(wt, staged):
+            c2 = json.loads((desk / "data" / "companies.json").read_text())
+            c2[0]["location"] = "typed during the build"
+            (desk / "data" / "companies.json").write_text(json.dumps(c2, indent=1) + "\n")
+            return None
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 2000, **dict(kw, run_checks=meanwhile))
+        now_desk = json.loads((desk / "data" / "companies.json").read_text())
+        if r.get("outcome") != "pushed" or now_desk[0].get("location") != "typed during the build":
+            errors += fail(f"a desk write made during a cycle was lost by the sync: "
+                           f"{r.get('outcome')} {r.get('sync')}")
+        if "skipped" not in str(r.get("sync")):
+            errors += fail(f"the sync did not stand aside for a write made during the cycle: {r.get('sync')}")
+        # the gap: another edit ten minutes later waits for the 30 minutes
+        cs = json.loads((desk / "data" / "companies.json").read_text())
+        cs[0]["posts_at"] = {"where": "indeed"}
+        (desk / "data" / "companies.json").write_text(json.dumps(cs, indent=1) + "\n")
+        with open(desk / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps({"at": "2026-09-28T10:20:00", "file": "companies.json", "id": "y#3"}) + "\n")
+        age(600)
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 2600, **kw)
+        if r.get("outcome") != "waiting" or "30" not in str(r.get("why")):
+            errors += fail(f"a second push inside 30 minutes was not held: {r.get('outcome')} {r.get('why')}")
+        # a conflict: main renames the company the desk renamed
+        cs = json.loads((desk / "data" / "companies.json").read_text())
+        cs[2]["name"] = "Desk C"
+        (desk / "data" / "companies.json").write_text(json.dumps(cs, indent=1) + "\n")
+        _git(bot, "pull", "-q", "--rebase", "origin", "main")
+        bc = json.loads((bot / "data" / "companies.json").read_text())
+        bc[2]["name"] = "Crawl C"
+        (bot / "data" / "companies.json").write_text(json.dumps(bc, indent=2) + "\n")
+        _git(bot, "commit", "-qam", "rename"); _git(bot, "push", "-q", "origin", "main")
+        before = _git(origin, "rev-parse", "main").strip()
+        age(600)
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 6000, **kw)
+        if r.get("outcome") != "conflict" or _git(origin, "rev-parse", "main").strip() != before:
+            errors += fail(f"a field both sides changed differently was published: {r.get('outcome')}")
+        elif [c for c in r.get("conflicts") or [] if ".name" not in c]:
+            errors += fail("after a sync stood aside, the desk's own later edits read as "
+                           "conflicts with what it had published: " + str(r.get("conflicts")))
+        inbox = desk / "data" / "claude_inbox.jsonl"
+        if not inbox.exists() or '"source": "publisher"' not in inbox.read_text():
+            errors += fail("a publish conflict did not reach Claude's inbox")
+        # a failed check pushes nothing
+        cs[2]["name"] = "Crawl C"
+        (desk / "data" / "companies.json").write_text(json.dumps(cs, indent=1) + "\n")
+        age(600)
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 8000, **dict(kw, run_checks=lambda wt, staged: "selftest failed"))
+        if r.get("outcome") != "refused" or _git(origin, "rev-parse", "main").strip() != before:
+            errors += fail(f"a publish whose checks failed was pushed: {r.get('outcome')}")
+        # a desk with nothing to publish still follows main
+        desk2 = tmp / "desk2"
+        _git(tmp, "clone", "-q", str(origin), str(desk2))
+        _git(bot, "pull", "-q", "--rebase", "origin", "main")
+        (bot / "data" / "news.json").write_text('{"a": {"checked_on": "2026-09-29"}}\n')
+        _git(bot, "add", "-A"); _git(bot, "commit", "-qm", "news"); _git(bot, "push", "-q", "origin", "main")
+        P.ROOT, _a.DATA = desk2, desk2 / "data"
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 9000, **kw)
+        if _git(desk2, "rev-parse", "HEAD").strip() != _git(origin, "rev-parse", "main").strip():
+            errors += fail(f"an idle desk did not follow main: {r.get('outcome')} {r.get('sync')}")
+        P.ROOT, _a.DATA = desk, desk / "data"
+        # a local commit main does not have holds everything
+        _git(desk, "commit", "-q", "--allow-empty", "-m", "a session's unpushed commit")
+        with contextlib.redirect_stdout(io.StringIO()):
+            r = P.cycle(now=t0 + 12000, **kw)
+        if r.get("outcome") != "held":
+            errors += fail(f"a cycle published over a local commit main does not have: {r.get('outcome')}")
+    except RuntimeError as exc:
+        errors += fail(f"the publisher fixture could not be built: {exc}")
+    finally:
+        P.ROOT, _a.DATA = keep
+        shutil.rmtree(tmp, ignore_errors=True)
+    # the push is never forced, and the admin holds the lock around every action
+    src = _code_only(ROOT / "scripts" / "publish.py")
+    if re.search(r'"push"[^)]*"(-f|--force|--force-with-lease)"', src) or "+HEAD" in src:
+        errors += fail("the publisher can force a push")
+    adm = _code_only(ROOT / "scripts" / "admin.py")
+    if not re.search(r"with only_public_hosts\(\), desk_lock\(\):\s*\n\s*out = ACTIONS\[action\]\(body\)", adm):
+        errors += fail("admin actions do not run under the desk lock the publisher snapshots with")
+    return errors
+
 def check_the_claude_inbox_lists_and_settles() -> int:
     """The end-of-day workshop reads scripts/inbox.py: it must say EMPTY when
     nothing is open (so the daily run stops at once), list what is open with
@@ -26980,6 +27361,9 @@ def main() -> int:
     errors += check_the_belt_answers_what_was_asked()
     errors += check_the_belt_screen_acts_on_what_it_shows()
     errors += check_the_company_page_keeps_itself()
+    errors += check_the_merge_keeps_both_sides_record_by_record()
+    errors += check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish()
+    errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()

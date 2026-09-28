@@ -87,5 +87,8 @@ jobs:
             exit 0
           fi
           git commit -m "discovery: $(date -u +%Y-%m-%dT%H:%MZ) sweep"
-          git pull --rebase
+          # the desk publisher commits data while this runs; a conflict is
+          # merged record by record (merge_decisions.py), never -X theirs
+          git pull --rebase origin main \
+            || (python scripts/merge_decisions.py --resolve && GIT_EDITOR=true git rebase --continue)
           git push

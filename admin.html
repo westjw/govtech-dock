@@ -4912,7 +4912,22 @@ function pbCount() {
   const n = $('#pb-count'); if (!n) return;
   /* an approved page opened from "Open on approved pages" is not to go */
   const left = PB.items.slice(PB.i).filter(x => !x.approved).length;
-  n.textContent = `${PB.signed} of ${PB.total} approved` + (left ? ` · ${left} to go` : '');
+  n.textContent = `${PB.signed} of ${PB.total} approved` + (left ? ` · ${left} to go` : '')
+    + ' · ' + pbPublishLine();
+}
+
+/* WHEN AN EDIT GOES LIVE, said where the edit is made. The publisher pushes
+   after 5 quiet minutes, at most every 30, and Cloudflare builds in about
+   two - so an edit is on the public site within about half an hour. */
+function pbPublishLine() {
+  const p = (META && META.publish) || {};
+  if (!p.outcome) return 'edits go live when the publisher runs (not installed yet)';
+  if (p.pending) return 'published ' + (p.last_push || '').slice(11, 16) + ', building';
+  if (p.outcome === 'pushed' || p.outcome === 'idle')
+    return 'edits go live within about 30 min' + (p.last_push ? ' · last published '
+      + p.last_push.slice(11, 16) + (p.live && p.live !== 'success' ? ' (build ' + p.live + ')' : '') : '');
+  if (p.outcome === 'waiting') return 'publishing after a quiet spell';
+  return 'publisher ' + p.outcome + ': ' + (p.why || '').slice(0, 80);
 }
 
 /* the server's own numbers after a Submit, never "plus one" */
