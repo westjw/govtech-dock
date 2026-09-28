@@ -2838,8 +2838,34 @@ def check_a_stale_admin_says_so() -> int:
     if html.count("staleBanner();") < 2:
         errors += fail("the banner is not drawn on every meta load, so it "
                        "appears only sometimes")
-    if "start_commit === META.head_commit" not in html:
-        errors += fail("the banner does not compare the two commits")
+    # THE CODE, NOT THE COMMIT (2026-09-28). A data-only commit - the nightly
+    # refresh, a publish of the owner's own rulings - changes nothing this
+    # process runs, and a banner raised by one teaches him to ignore it.
+    if "META.code_changed" not in html:
+        errors += fail("the banner does not key on whether the admin's code changed")
+    if "start_commit === META.head_commit" in html:
+        errors += fail("the banner still compares commits, so every data-only "
+                       "commit tells the owner to restart")
+    if '"code_changed": _code_fingerprint() != START_CODE' not in src:
+        errors += fail("the meta payload does not say whether the code changed")
+    import tempfile, shutil
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-code-"))
+    keep = admin.ROOT
+    try:
+        (tmp / "scripts").mkdir()
+        (tmp / "scripts" / "a.py").write_text("x = 1\n")
+        (tmp / "data").mkdir()
+        admin.ROOT = tmp
+        before = admin._code_fingerprint()
+        (tmp / "data" / "companies.json").write_text("[]")
+        if admin._code_fingerprint() != before:
+            errors += fail("a data-only change moves the code fingerprint")
+        (tmp / "scripts" / "a.py").write_text("x = 22\n")
+        if admin._code_fingerprint() == before:
+            errors += fail("a change to a script does not move the code fingerprint")
+    finally:
+        admin.ROOT = keep
+        shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
 
@@ -7307,15 +7333,25 @@ def check_a_page_sign_off_says_what_was_true() -> int:
         errors += fail(f"the sign-off did not store the gaps it was made "
                        f"over: {r.get('gaps_then')!r}. A bare tick certifies "
                        f"nothing")
-    # BOTH DIRECTIONS. A gap that opened is the obvious one; a gap that closed
-    # means the page he approved is not the page a visitor sees.
+    # LOSSES ONLY (owner, 2026-09-28). A page approved with red items is not
+    # "changed" when one of them gets fixed - that is the point of approving
+    # with red items. It is flagged only when something it HAD is gone, and
+    # even then it shows in "Open on approved pages", never back on the belt.
     if PR.stale_for(r, ["write-up"]):
         errors += fail("an unchanged page reports as changed")
-    if "+buyer" not in PR.stale_for(r, ["write-up", "buyer"]):
-        errors += fail("a NEW gap does not re-open the sign-off")
-    if "-write-up" not in PR.stale_for(r, []):
-        errors += fail("a gap CLOSING does not re-open the sign-off; the page "
-                       "approved is no longer the page being served")
+    if "lost buyer" not in PR.stale_for(r, ["write-up", "buyer"]):
+        errors += fail("a page that LOST something since approval does not say so")
+    if PR.stale_for(r, []):
+        errors += fail("a red item getting FIXED flags an approved page; the "
+                       "owner approves with red items so they can be fixed later")
+    # the belt's own record: the whole checklist the page had then
+    belt = {"by": "owner", "on": "2026-09-28",
+            "checklist": {"writeup": True, "news": False, "board": True}}
+    if PR.stale_for(belt, ["news"]):
+        errors += fail("an item red at approval and still red reads as a loss")
+    if PR.stale_for(belt, ["writeup", "news"]) != ["lost writeup"]:
+        errors += fail("a write-up that was green at approval and is red now "
+                       "is not reported as lost")
     # NOT A REAL ADDRESS SHAPE. record() refuses any '@', and
     # check_no_person_in_the_repo counts address-shaped strings per file with
     # a stated number - writing one here to test the rule against addresses
@@ -9210,6 +9246,7 @@ const base = {description: "One line.", website: "https://b.example", researched
 const out = {
   site:    coAbout(base, "b.example", {profile: %s}),
   claimed: coAbout(base, "b.example", {profile: {...%s, by_kind: "company"}}),
+  owner:   coAbout(base, "b.example", {profile: {...%s, hand_written: true}}),
   none:    coAbout(base, "b.example", {}),
   legacy:  coAbout(base, "g.example", {profile: %s}),
   // the detail file's own two states, which must not read as "no write-up"
@@ -9218,21 +9255,27 @@ const out = {
   nonestr: coAbout(base, "b.example", {}),
 };
 console.log(JSON.stringify(out));
-""" % (src, _json.dumps(new), _json.dumps(new), _json.dumps(legacy))
+""" % (src, _json.dumps(new), _json.dumps(new), _json.dumps(new), _json.dumps(legacy))
     r = subprocess.run(["node", "--input-type=module", "-e", script],
                        capture_output=True, text=True, timeout=30)
     if r.returncode != 0:
         return errors + fail(f"coAbout threw under node: {r.stderr.strip()[:200]}")
     got = _json.loads(r.stdout)
     s = got["site"]
-    for want in ("Brinc builds drones", "Lemur opens", "built for public safety",
-                 "https://b.example/about", "written from their site",
-                 "Every sentence traces"):
+    for want in ("Brinc builds drones", "Lemur opens", "written from their site"):
         if want not in s:
             errors += fail(f"coAbout with a full profile does not render {want!r}")
-    if "<sup>1</sup>" not in s or "<sup>2</sup>" not in s:
-        errors += fail("paragraphs do not carry their source numbers; a reader "
-                       "cannot check a sentence against the page it came from")
+    # THE WRITE-UP IS THE TEXT, NOTHING HUNG ON IT (owner, 2026-09-28): no
+    # quote block, no numbered sources, no provenance line. The sources stay
+    # in the data for the door that checks an agent's draft.
+    for gone in ("built for public safety", "https://b.example/about",
+                 "Every sentence traces", "<sup>", "coquote"):
+        if gone in s:
+            errors += fail(f"coAbout still prints {gone!r}; the owner took the "
+                           f"quotes and source links off the write-up")
+    if "written by SLED JOBS" not in got["owner"]:
+        errors += fail("the owner's own write-up is not marked as written by "
+                       "SLED JOBS")
     if "in their own words" not in got["claimed"]:
         errors += fail("a claimed-company profile is not marked as the company's "
                        "own words")
@@ -13724,9 +13767,11 @@ def check_prerendered_pages() -> int:
             ph = pf.read_text()
             if "parcel maps to counties" not in ph:
                 errors += fail("the profiled page does not carry the write-up")
-            if "https://profiled.test/about" not in ph:
-                errors += fail("the profiled page does not link the page the "
-                               "write-up was written from")
+            # the owner took the source links off the write-up (2026-09-28)
+            if "https://profiled.test/about" in ph:
+                errors += fail("the profiled page still links the page the "
+                               "write-up was written from; the owner took the "
+                               "quotes and source links off")
             # The strip labels every page's first cell "open roles", so the
             # substring proves nothing; the claims are the number, the
             # description and the list.
@@ -13965,7 +14010,7 @@ def check_static_company_page_matches_the_app() -> int:
                 ("@media (max-width:620px)", "the 620 breakpoint"),
                 ('--font-heading:"Archivo"', "Archivo as the face"),
                 (".costrip>dl{", ".costrip cells as dl"),
-                (".coempty{", ".coempty"), (".coquote{", ".coquote"),
+                (".coempty{", ".coempty"), (".conews .row{", ".conews rows"),
                 (".coprov{", ".coprov"), (".corail .tag{", ".corail .tag")):
             if want not in css:
                 bad += fail(f"the static company stylesheet lost {why} ({want!r})")
@@ -13998,13 +14043,7 @@ def check_static_company_page_matches_the_app() -> int:
         want("full",
              '<span class="smeta">written from their site</span>',
              "<p>Permit software for counties.</p>",
-             f"<p>{P1}<sup>1</sup></p>", f"<p>{P2}<sup>2</sup><sup>1</sup></p>",
-             '<blockquote class="coquote">Permits, done.<span class="src">'
-             '<a href="https://www.full.test/" target="_blank" rel="nofollow noopener">/</a></span></blockquote>',
-             'Written from 2 pages on www.full.test, read 2026-09-01: '
-             '<a href="https://www.full.test/about" target="_blank" rel="nofollow noopener">1&nbsp;/about</a>, '
-             '<a href="https://www.full.test/customers" target="_blank" rel="nofollow noopener">2&nbsp;/customers</a>. '
-             'Every sentence traces to one of them.',
+             f"<p>{P1}</p>", f"<p>{P2}</p>",
              '<div class="v">3</div><dt>open roles</dt><dd>first read here 5 days ago</dd>',
              '<div class="v">1</div><dt>quota-carrying</dt><dd>33% of open roles</dd>',
              '<div class="v txt dim">Not enough history to read</div><dt>hiring phase</dt>'
@@ -14036,7 +14075,9 @@ def check_static_company_page_matches_the_app() -> int:
              '<title>Full Co is hiring · SLED JOBS</title>',
              'canonical" href="https://example.test/c/full"')
         refuse("full", "This is the one-line record", '<div class="coempty">',
-               "unreadable", "This list may be incomplete", '<a class="comore"')
+               "unreadable", "This list may be incomplete", '<a class="comore"',
+               # the owner took quotes and source links off write-ups
+               "<sup>", '<blockquote class="coquote">', "Every sentence traces")
         # one row per OPENING: the two Account Executive postings are one row
         n_rows = pages["full"].count('class="corow"')
         if n_rows != 3:
@@ -14065,7 +14106,7 @@ def check_static_company_page_matches_the_app() -> int:
         # profonly: a claimed write-up, nothing open, a scanned page, no rivals
         want("profonly",
              '<span class="smeta">in their own words, claimed page</span>',
-             "Profile Only sells parcel maps to counties.<sup>1</sup>",
+             "<p>Profile Only sells parcel maps to counties.</p>",
              '<div class="v dim">0</div><dt>open roles</dt><dd>none seen recently</dd>',
              '<div class="v txt dim">Too few openings to read</div><dt>hiring phase</dt>'
              '<dd>we need 3+ roles over 60 days to call it</dd>',
@@ -24499,6 +24540,887 @@ def check_the_job_card_says_what_the_posting_says() -> int:
     return errors
 
 
+def _belt_fixture() -> dict:
+    """A small map for the page belt's guards: one company per checklist
+    state that matters, in the shapes the real file holds."""
+    def co(cid, **over):
+        base = {"id": cid, "name": cid.replace("-", " ").title(),
+                "website": f"https://{cid}.test", "sector": "Parks & Rec",
+                "category": "Aquatics", "description": f"{cid} sells pool software",
+                "year_founded": 2010, "location": None, "govtech": True,
+                "vendor_type": "GovTech Product",
+                "ats": {"type": "greenhouse", "ref": cid},
+                "hiring": {"status": "Yes", "note": "", "roles": [], "checked": "2026-09-27"}}
+        base.update(over)
+        return base
+    full = co("full-co", profile={"paragraphs": ["A write-up."], "by": "agent:x"},
+              competitors=[{"id": "rival-co", "why": "same buyers"},
+                           {"id": "supply-co", "why": "same buyers"}],
+              sells_to_gov="yes", buyer_mix="gov_only", acquisitions_none_found=True)
+    unread_page = {"type": "html", "ref": "https://edge-co.test/careers"}
+    cos = [
+        # sells to government, the MIX never answered: not what was asked
+        co("yes-co", sells_to_gov="yes"),
+        # a research claim that names the parent on file, and one that does not
+        co("owned-co", parent="Big Parent Inc", acquisitions_checked_on="2026-09-01"),
+        co("claim-co", parent="Wrong Parent", acquisitions_checked_on="2026-09-01"),
+        # refresh says "Yes" off a keyword hit; the crawl read no listing
+        co("yesscan-co", ats={"type": "html", "ref": "https://yesscan-co.test/careers"},
+           hiring={"status": "Yes", "note": "", "checked": "2026-09-27",
+                   "roles": [{"title": "AE-type role (page scan) [page scan - verify]"}]}),
+        co("edge-co", ats=unread_page, hiring={"status": "Unknown", "roles": []}),
+        co("edge13-co", ats=dict(unread_page, ref="https://edge13-co.test/careers"),
+           hiring={"status": "Unknown", "roles": []}),
+    ]
+    board = {"organizations": [
+        {"id": i, "enumerable": True} for i in (
+            "full-co", "rival-co", "reads-co", "machine-co", "supply-co",
+            "pending-co", "agent-co", "yes-co", "owned-co", "claim-co")]
+        + [{"id": i, "enumerable": False} for i in (
+            "stub-co", "yesscan-co", "edge-co", "edge13-co")]
+        + [{"id": "linked-co", "no_board_on_file": True}], "postings": []}
+    return {"companies.json": [
+        full,
+        co("rival-co", acquisitions_checked_on="2026-09-01"),
+        co("stub-co", description="Stub Co - exhibited at NRPA 2026",
+           ats={"type": "html", "ref": "https://stub-co.test/careers"},
+           hiring={"status": "Unknown", "note": "page scan found no listings",
+                   "roles": [], "checked": "2026-09-27"},
+           sells_to_gov="unclear", year_founded=None),
+        co("reads-co", ats={"type": "html", "ref": "https://reads-co.test/jobs"},
+           hiring={"status": "None found", "note": "", "roles": [], "checked": "2026-09-27"}),
+        co("machine-co", year_founded=2001),
+        co("supply-co", category="Suppliers & Services"),
+        co("linked-co", ats={"type": "unknown", "ref": None},
+           hiring={"status": "Unknown", "note": "no ATS on file", "roles": []},
+           posts_at={"where": "linkedin", "url": "https://www.linkedin.com/company/x/jobs/",
+                     "on": "2026-09-01", "by": "owner"}),
+        co("pending-co", profile={"paragraphs": ["Old words."], "by": "agent:x"}),
+        co("agent-co", profile={"paragraphs": ["Landed agent words."], "by": "agent:x"}),
+    ] + cos,
+        "acquisitions_research.json": {
+            "owned-co": {"parent_claim": "Big Parent Inc", "says": "Acquired by Big Parent Inc in 2020",
+                         "on": "2026-09-01"},
+            "claim-co": {"parent_claim": "Other Parent LLC", "says": "Acquired by Other Parent LLC in 2019",
+                         "on": "2026-09-01"}},
+        # a list of 30, like the real 7,919: read with a dict default it came
+        # back empty and every write looked like 31 additions
+        "suppliers.json": [{"id": f"sup-{i}", "name": f"Supplier {i}"} for i in range(30)],
+        "news.json": {"full-co": {"state": "items", "items": [
+            {"date": "2026-09-20", "headline": "Full Co wins a county", "url": "https://full-co.test/n"}]},
+            "stub-co": {"state": "unread", "items": []},
+            "reads-co": {"state": "none_found", "items": []}},
+        "founded_provenance.json": {"machine-co": {"year": 2001, "by": "agent:overnight-build",
+                                                   "confirmed": None}},
+        "agent_proposals.json": {"profile:pending-co": {
+            "id": "pending-co", "kind": "profile", "status": "pending",
+            "paragraphs": ["An agent draft."], "confidence": "high"},
+            "profile:agent-co": {
+            "id": "agent-co", "kind": "profile", "status": "pending",
+            "paragraphs": ["A redraft."], "confidence": "high"}},
+        "scrub.json": {"full-co": {"sent_on": "2026-09-28", "sent_by": "owner"}},
+        "manual.json": {"checks": {}, "postings": []},
+        "admin_dismissed.json": {},
+        "discovery_log.json": {},
+        "site_identity.json": {"rows": []},
+        "board.json": board,
+        "schema.json": json.loads((DATA / "schema.json").read_text()),
+    }
+
+
+def check_the_page_belt_says_what_the_record_says() -> int:
+    """The page belt's nine items are computed on the server, one definition,
+    and green is a fact the file can show - never "a value exists".
+
+    Owner's drawing, 2026-09-28. Presence would paint the board green: a
+    description is on all 2,041 records (870 are conference stubs) and
+    vendor_type says the same thing on every one. Each shape here is one the
+    real file holds.
+    """
+    import admin as _a
+    errors = 0
+    with _sandbox_admin(_belt_fixture()):
+        import page_belt as pb
+        cs = _a.read_companies()
+        board = _a.read("board.json", {})
+        ctx = pb.context(cs, board)
+        by = {c["id"]: {i["key"]: i for i in pb.checklist(c, ctx)} for c in cs}
+        if [i["key"] for i in pb.checklist(cs[0], ctx)] != list(pb.ITEMS):
+            errors += fail("the checklist is not the nine items in the owner's order")
+
+        def want(cid, key, green, why):
+            nonlocal errors
+            got = by[cid][key]["green"]
+            if got != green:
+                errors += fail(f"{cid}: {key} is {'green' if got else 'red'} - {why}")
+        want("full-co", "writeup", True, "a write-up is on the page")
+        want("stub-co", "writeup", False, "a conference-stub description is not a write-up")
+        want("full-co", "news", True, "news items were read")
+        want("reads-co", "news", True, "checked and none found is an answer")
+        want("stub-co", "news", False, "a newsroom we could not read is NOT checked")
+        want("rival-co", "news", False, "never checked is red")
+        want("full-co", "board", True, "a Greenhouse board is read nightly")
+        want("reads-co", "board", True, "a page scan that produced a verdict reads")
+        want("stub-co", "board", False, "a careers page that reads nothing needs a sweep")
+        want("linked-co", "board", False, "posts on LinkedIn and never swept by hand")
+        want("supply-co", "supplier", False, "a govtech record under Suppliers & Services")
+        want("full-co", "supplier", True, "a govtech product in a real category")
+        want("full-co", "buyer", True, "government only is the question answered")
+        want("yes-co", "buyer", False, "'sells to government' does not say government "
+                                        "only or businesses too - the question drawn")
+        want("stub-co", "buyer", False, "unclear is not an answer")
+        want("machine-co", "founded", False, "a machine-written year nobody confirmed")
+        want("full-co", "founded", True, "a year with no reason to doubt it")
+        want("stub-co", "founded", False, "blank")
+        want("full-co", "ownership", True, "checked and independent")
+        want("machine-co", "ownership", False, "nobody has ever looked")
+        want("rival-co", "ownership", False, "a check that recorded no answer is not "
+                                              "an answer (64 sat green as 'never checked')")
+        if by["rival-co"]["ownership"]["state"] != "checked, not answered":
+            errors += fail(f"rival-co's ownership says {by['rival-co']['ownership']['state']!r}")
+        want("owned-co", "ownership", True, "the research names the parent on file")
+        want("claim-co", "ownership", False, "the research names a different parent")
+        if "Other Parent LLC" not in by["claim-co"]["ownership"]["detail"]:
+            errors += fail("an ownership flag does not print the claim it rests on: "
+                           + repr(by["claim-co"]["ownership"]["detail"]))
+        # ONE VERDICT FOR READABLE: the board's, which the public page prints
+        want("yesscan-co", "board", False, "refresh's 'Yes' off a keyword hit is not a "
+                                           "board the crawl reads")
+        orgs = {o["id"]: o for o in board["organizations"]}
+        for c in cs:
+            if (c.get("ats") or {}).get("type") != "html":
+                continue
+            o = orgs.get(c["id"]) or {}
+            public = bool(o) and o.get("enumerable") is not False and not o.get("unreadable")
+            if pb.jobs_box(c, ctx)["readable"] != public:
+                errors += fail(f"{c['id']}: the jobs box says readable="
+                               f"{not public} while the public page says {public}")
+        # a queue link only where that queue lists the company
+        for c in cs:
+            for it in by[c["id"]].values():
+                q = it.get("queue")
+                if q and q not in _a.QUEUES:
+                    errors += fail(f"{c['id']}: {it['key']} links a queue that does not exist: {q}")
+                if q and q in _a.QUEUES:
+                    rows = _a.QUEUES[q](cs, board)
+                    if not any(r.get("id") == c["id"] or any(
+                            (m or {}).get("id") == c["id"] for m in r.get("members") or [])
+                            for r in rows if isinstance(r, dict)):
+                        errors += fail(f"{c['id']}: {it['key']} links the {q} queue, "
+                                       f"which does not list it")
+        want("full-co", "competitors", True, "a shortlist")
+        want("stub-co", "competitors", False, "none, and none proposed")
+    return errors
+
+
+def check_the_page_belt_writes_through_the_doors() -> int:
+    """Every edit on the belt is a coded, journalled write with an author,
+    and the three ways it could quietly do harm are closed:
+
+      - a rename onto a name another company answers to is refused, and the
+        old name is kept as an alias;
+      - saving a website never touches the board (the older save-website
+        overwrites ats with whatever /careers yields, no ownership check);
+      - a pasted board is judged for ownership BEFORE it is wired, and a
+        MISMATCH is refused;
+      - the owner's hand-written write-up survives: the agent's pending draft
+        is turned down first, a landing skips it, and turning down a pending
+        draft never takes down what is already on the page;
+      - who-buys-it never sets sled_only, a posting filter that deletes jobs;
+      - explain words go to a gitignored inbox, never through the journal of
+        a public repo;
+      - Submit records the checklist server-side, the page leaves the belt,
+        and its red items show in "Open on approved pages".
+    """
+    import admin as _a
+    import journal as _j
+    errors = 0
+    for name in ("page-title", "page-website", "page-board", "page-scrub",
+                 "page-description", "page-writeup", "page-competitors",
+                 "page-news-check", "page-supplier", "page-buyer",
+                 "page-founded", "page-ownership", "page-explain", "page-submit"):
+        if name not in _a.ACTIONS:
+            errors += fail(f"{name} is not registered")
+        if name in _a.OPEN_ACTIONS:
+            errors += fail(f"{name} is an OPEN action; a ruling with an author "
+                           f"needs the console code")
+    ign = (ROOT / ".gitignore").read_text()
+    if "/data/claude_inbox.jsonl" not in ign:
+        errors += fail("the Claude inbox is not gitignored; the owner's words would "
+                       "publish in a public repo")
+    with _sandbox_admin(_belt_fixture()) as tmp:
+        import page_belt as pb
+        import add_company, verify_boards
+        import agents as _ag0
+        A = _a.ACTIONS
+        # no network in the suite: a .test domain does not resolve, and the
+        # store path agents fixes at import is moved into the sandbox too
+        keep_out, keep_store = _a.outward_url, _ag0.STORE
+        _a.outward_url = lambda raw: ((raw or "").strip() or None,
+                                      None if (raw or "").strip() else "no url")
+        _ag0.STORE = tmp / "agent_proposals.json"
+        try:
+
+            def act(_action, **body):
+                body.setdefault("by", "owner")
+                try:
+                    return A[_action](body)
+                except Exception as exc:                     # noqa: BLE001
+                    return {"error": f"crashed: {exc!r}"}
+
+            def rec(cid):
+                return next((c for c in _a.read_companies() if c["id"] == cid), None)
+
+            r = act("page-title", id="stub-co", name="Rival Co")
+            if not r.get("error"):
+                errors += fail("a rename onto another company's name was accepted")
+            r = act("page-title", id="stub-co", name="Stub Company")
+            c = rec("stub-co")
+            if r.get("error") or c["name"] != "Stub Company" or "Stub Co" not in (c.get("also_known_as") or []):
+                errors += fail(f"a rename did not keep the old name as an alias: {r}")
+
+            before = dict(rec("full-co")["ats"])
+            r = act("page-website", id="full-co", url="https://www.full-co.test/")
+            if r.get("error") or rec("full-co")["ats"] != before:
+                errors += fail(f"saving a website touched the board: {r}")
+
+            keep = (add_company.find_ats, add_company.verify, verify_boards.board_says,
+                    verify_boards.judge)
+            add_company.find_ats = lambda url: ({"type": "greenhouse", "ref": "someone-else"}, "", None)
+            add_company.verify = lambda block: (True, "3 postings")
+            verify_boards.board_says = lambda kind, ref: {"name": "Someone Else Inc"}
+            verify_boards.judge = lambda c, said: {"verdict": "MISMATCH",
+                                                   "why": "the board names Someone Else Inc"}
+            try:
+                r = act("page-board", id="stub-co", url="https://boards.greenhouse.io/someone-else")
+                if not r.get("error") or rec("stub-co")["ats"]["type"] != "html":
+                    errors += fail(f"a board that names another company was wired: {r}")
+                verify_boards.judge = lambda c, said: {"verdict": "matches", "why": ""}
+                verify_boards.board_says = lambda kind, ref: {"name": "Stub Company"}
+                r = act("page-board", id="stub-co", url="https://boards.greenhouse.io/stub-co")
+                if r.get("error") or rec("stub-co")["ats"]["type"] != "greenhouse":
+                    errors += fail(f"a verified board of their own was not wired: {r}")
+            finally:
+                (add_company.find_ats, add_company.verify, verify_boards.board_says,
+                 verify_boards.judge) = keep
+            r = act("page-board", id="linked-co",
+                    url="https://www.linkedin.com/company/linked-co/jobs/")
+            if r.get("outcome") != "posts_at" or rec("linked-co")["ats"]["type"] != "unknown":
+                errors += fail(f"a LinkedIn link was not recorded as where they post: {r}")
+
+            r = act("page-writeup", id="pending-co", paragraphs="My own words.\n\nSecond paragraph.")
+            c = rec("pending-co")
+            prof = c.get("profile") or {}
+            if r.get("error") or prof.get("paragraphs") != ["My own words.", "Second paragraph."] \
+                    or not prof.get("hand_written"):
+                errors += fail(f"the owner's write-up was not saved as his: {r} {prof}")
+            store = json.loads((tmp / "agent_proposals.json").read_text())
+            if store["profile:pending-co"]["status"] != "rejected":
+                errors += fail("the agent's pending draft was not turned down, so a "
+                               "later landing would put it over his words")
+            import proposal_rulings as _pr
+            store = json.loads((tmp / "agent_proposals.json").read_text())
+            _pr.rule(store, "profile:agent-co", False, why="test", by="owner")
+            if (rec("agent-co").get("profile") or {}).get("paragraphs") != ["Landed agent words."]:
+                errors += fail("turning down a PENDING redraft took the write-up already "
+                               "on the page")
+            import promote_profiles as _pp
+            cs = _a.read_companies()
+            st = {"profile:pending-co": {"id": "pending-co", "kind": "profile",
+                                         "status": "pending",
+                                         "paragraphs": [[{"text": "Agent words.", "url": "u"}]]}}
+            import agents as _ag
+            keep_save = _ag.save
+            _ag.save = lambda *a, **k: None
+            out = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(out):
+                    _pp.land(st, cs, ["profile:pending-co"], "owner", "test")
+            finally:
+                _ag.save = keep_save
+            if "held back 1" not in out.getvalue() or "unsure" in out.getvalue():
+                errors += fail("a write-up held back because the owner wrote it by hand "
+                               "is not reported as that: " + out.getvalue().strip()[:160])
+            # and one Accept from a queue says so plainly, instead of "see the journal"
+            st2 = {"profile:pending-co": dict(st["profile:pending-co"], status="pending")}
+            res = _pr.rule(st2, "profile:pending-co", True, why="test", by="owner")
+            if not res.get("error") or "by hand" not in res["error"]:
+                errors += fail(f"accepting an agent draft over the owner's own write-up "
+                               f"was not refused as that: {res}")
+            if (rec("pending-co").get("profile") or {}).get("paragraphs") != ["My own words.",
+                                                                              "Second paragraph."]:
+                errors += fail("a landing put an agent draft over the owner's own write-up")
+
+            r = act("page-competitors", id="stub-co", rivals=["not-a-company"])
+            if not r.get("error"):
+                errors += fail("a competitor that is not on the map was accepted")
+            r = act("page-competitors", id="stub-co", rivals=["rival-co"])
+            if r.get("error") or [x["id"] for x in rec("stub-co").get("competitors") or []] != ["rival-co"]:
+                errors += fail(f"a hand-picked shortlist did not save: {r}")
+
+            r = act("page-buyer", id="stub-co", mix="gov_only")
+            c = rec("stub-co")
+            if r.get("error") or c.get("sells_to_gov") != "yes" or c.get("buyer_mix") != "gov_only":
+                errors += fail(f"who-buys-it did not save: {r}")
+            if c.get("sled_only"):
+                errors += fail("who-buys-it set sled_only; that flag deletes every "
+                               "posting that does not name the public sector")
+
+            r = act("page-explain", id="stub-co", item="board", text="the board is a PDF")
+            inbox = tmp / "claude_inbox.jsonl"
+            if r.get("error") or not inbox.exists() or "the board is a PDF" not in inbox.read_text():
+                errors += fail(f"an explanation did not reach the inbox: {r}")
+            jl = (tmp / "admin_journal.jsonl")
+            if jl.exists() and "the board is a PDF" in jl.read_text():
+                errors += fail("an explanation went through the journal; the journal "
+                               "is tracked in a public repo")
+
+            r = act("page-submit", id="stub-co")
+            rev = json.loads((tmp / "page_reviews.json").read_text()).get("stub-co") or {}
+            k = r.get("counts") or {}
+            n_rev = len(json.loads((tmp / "page_reviews.json").read_text()))
+            if k.get("sector_signed") != n_rev or k.get("sector") != "Parks & Rec":
+                errors += fail(f"Submit does not answer with the server's own approved "
+                               f"count, so the screen counts by adding one: {k}")
+            if r.get("error") or set((rev.get("checklist") or {})) != set(pb.ITEMS):
+                errors += fail(f"a sign-off did not record the nine-item checklist: {r} {rev}")
+            belt = pb.belt(_a.read_companies(), {"organizations": []}, "Parks & Rec", None)
+            if any(i["id"] == "stub-co" for i in belt["items"]):
+                errors += fail("an approved page is still on the belt")
+            open_ = pb.q_signedoff(_a.read_companies(), _a.read("board.json", {}))
+            reds = {x["item"] for x in open_ if x["id"] == "stub-co"}
+            if not reds or reds != set(rev.get("gaps_then") or []):
+                errors += fail(f"an approved page's red items are not in Open on "
+                               f"approved pages: {reds} vs {rev.get('gaps_then')}")
+            # server-side, never from the client: a body claiming green changes nothing
+            r = act("page-submit", id="machine-co", checklist={"founded": True})
+            rev = json.loads((tmp / "page_reviews.json").read_text()).get("machine-co") or {}
+            if (rev.get("checklist") or {}).get("founded"):
+                errors += fail("a sign-off took the client's word that an item was green")
+
+            # the journal has an author on every belt write
+            for row in _j._entries():
+                if str(row.get("action", "")).startswith("page-") and not row.get("by"):
+                    errors += fail(f"a belt write has no author: {row.get('action')}")
+                    break
+        finally:
+            _a.outward_url, _ag0.STORE = keep_out, keep_store
+    return errors
+
+
+def check_the_scrub_tab_keeps_the_cadence() -> int:
+    """The Scrub tab holds every board only a person can read, with when a
+    person last swept it, on the owner's 14-day cadence. A company swept
+    today is not due; one swept 20 days ago is; one never swept is first.
+    A structured board is read nightly and is never on it. The extension's
+    worklist steps through the due ones."""
+    import admin as _a
+    errors = 0
+    fx = _belt_fixture()
+    today = dt.date.today()
+    fx["manual.json"] = {"checks": {
+        "stub-co": {"checked_on": today.isoformat(), "found": False},
+        "linked-co": {"checked_on": (today - dt.timedelta(days=20)).isoformat(),
+                      "found": True}}, "postings": []}
+    fx["companies.json"].append(dict(fx["companies.json"][2], id="never-co",
+                                     name="Never Co"))
+    with _sandbox_admin(fx):
+        import page_belt as pb
+        rows = pb.q_scrub(_a.read_companies(), _a.read("board.json", {}))
+        ids = [r["id"] for r in rows]
+        byid = {r["id"]: r for r in rows}
+        if "full-co" in ids:
+            errors += fail("a company on a structured board is on the Scrub tab, "
+                           "even though it was sent from the belt - it is read "
+                           "every night and needs no person")
+        for cid in ("stub-co", "linked-co", "never-co"):
+            if cid not in ids:
+                errors += fail(f"{cid} belongs on the Scrub tab and is not there")
+        if byid.get("stub-co", {}).get("due"):
+            errors += fail("a company swept today is shown as due")
+        if not byid.get("linked-co", {}).get("due"):
+            errors += fail("a company last swept 20 days ago is not due")
+        if ids and ids[0] != "never-co" and byid.get(ids[0], {}).get("last_swept"):
+            errors += fail(f"a never-swept company is not first: {ids[:3]}")
+        if byid.get("stub-co", {}).get("last_swept") != today.isoformat():
+            errors += fail("the Scrub tab does not show the day it was last swept")
+        if _a.badge_count("scrub", rows) != sum(1 for r in rows if r.get("due")):
+            errors += fail("the Scrub badge counts rows inside their cadence, so two "
+                           "sweeps leave the number where it was")
+        w = _a.act_worklist({"queue": "scrub", "limit": 10})
+        if w.get("error") or any(r["id"] == "stub-co" for r in w.get("rows") or []):
+            errors += fail(f"the extension's scrub worklist is missing or offers a "
+                           f"company that is not due: {w.get('error')}")
+    ext = (ROOT / "extension" / "capture.js").read_text()
+    if 'value="scrub"' not in ext or "ss-target" not in ext:
+        errors += fail("the extension cannot step through the Scrub list")
+    if "scrub" not in _a.QUEUES or "signedoff" not in _a.QUEUES:
+        errors += fail("the Scrub or Open-on-approved-pages tab is not a queue")
+    return errors
+
+
+def check_the_page_preview_shows_the_edit() -> int:
+    """The belt's CURRENT VIEW is the page as it will publish, drawn from the
+    record as it is NOW - not the last build - and a write-up that was taken
+    down does not come back from build_site's process-long detail cache. The
+    static page shows news when news is on file (it printed "No news items
+    have been recorded" on all 1,189 pages while 810 companies had news)."""
+    import admin as _a
+    import build_site as bs
+    errors = 0
+    cs = _a.read_companies()
+    board = json.loads((DATA / "board.json").read_text())
+    import page_belt as pb
+    cid = next((o["id"] for o in board.get("organizations", [])
+                if o.get("id") and any(c["id"] == o["id"] for c in cs)), None)
+    if not cid:
+        return fail("no company to preview")
+    c = next(x for x in cs if x["id"] == cid)
+    edited = [dict(x) for x in cs]
+    e = next(x for x in edited if x["id"] == cid)
+    e["name"] = "Previewed Name Co"
+    e["profile"] = {"paragraphs": ["A sentence only the preview can know."],
+                    "hand_written": True}
+    h = pb.preview_html(edited, board, cid) or ""
+    if "Previewed Name Co" not in h or "A sentence only the preview can know." not in h:
+        errors += fail("the preview does not show an edit made to the record")
+    if "written by SLED JOBS" not in h:
+        errors += fail("the owner's write-up is not labelled as written by SLED JOBS")
+    # a REAL landed write-up whose detail file carries it: hidden on the
+    # belt, it must not come back through build_site's detail refill
+    orgs = {o.get("id") for o in board.get("organizations", [])}
+    landed = next((x for x in cs if x.get("id") in orgs
+                   and ((x.get("profile") or {}).get("paragraphs"))
+                   and (DATA / "detail" / f"{x['id']}.json").exists()), None)
+    if landed:
+        first = str(landed["profile"]["paragraphs"][0])[:60]
+        hid = [dict(x) for x in cs]
+        hx = next(x for x in hid if x["id"] == landed["id"])
+        hx["profile_hidden"] = True
+        import html as _h
+        if first in _h.unescape(pb.preview_html(hid, board, landed["id"]) or ""):
+            errors += fail("a hidden write-up came back from the detail file")
+    else:
+        note("no landed write-up with a detail file to hide")
+    # THE STATIC PAGE SHOWS NEWS, driven through the page renderer itself
+    news = json.loads((DATA / "news.json").read_text())
+    withn = next((x for x in cs if x.get("id") in orgs
+                  and (news.get(x["id"]) or {}).get("items")), None)
+    if withn:
+        import html as _h
+        head = str(news[withn["id"]]["items"][0].get("headline") or "")[:40]
+        h = pb.preview_html(cs, board, withn["id"]) or ""
+        if head and head not in _h.unescape(h):
+            errors += fail("the company page does not show news that is on file")
+        if "No news items have been recorded" in h:
+            errors += fail("the company page still says no news was recorded")
+    else:
+        note("no company with news to render")
+    return errors
+
+
+def check_a_pasted_board_must_prove_it_is_theirs() -> int:
+    """Add board wires a board only when something POSITIVE says it is this
+    company's (review, 2026-09-28): the board names them, or its slug shares
+    ground with their name or website, or - a careers page - it sits on their
+    own site. The judge cannot see a name on Ashby, Lever, BambooHR, Breezy,
+    Recruitee or SmartRecruiters, so 'unknown' is not a pass. A refusal
+    carries its evidence and "wire anyway" (force) is journalled as such.
+
+    Also: a pasted board address is read AS an address - Greenhouse's own
+    board page does not contain its own URL, so reading the page for markers
+    found nothing - and every outcome that is a sweep (posts somewhere else,
+    real board found) stamps the 14-day cadence.
+    """
+    import admin as _a
+    errors = 0
+    with _sandbox_admin(_belt_fixture()) as tmp:
+        import page_belt as pb
+        import add_company, verify_boards, ats as _ats
+        keep = (_a.outward_url, add_company.find_ats, add_company.verify,
+                verify_boards.board_says, _ats.fetch_html_titles)
+        markers = [re.compile(p, re.I) for _k, p in add_company.ATS_MARKERS]
+
+        def find_ats(url, paths=None):
+            if any(m.search(url) for m in markers):
+                raise AssertionError("find_ats fetched a page for a board the "
+                                     "address already names")
+            return None, None, []
+        _a.outward_url = lambda raw: ((raw or "").strip() or None, None)
+        add_company.find_ats = find_ats
+        add_company.verify = lambda block: (True, "3 posting(s) readable")
+        # the real judge; the board states no employer name, as Ashby does
+        verify_boards.board_says = lambda kind, ref: {"name": None, "how": "no name on this ATS"}
+        _ats.fetch_html_titles = lambda url: [{"title": "Aquatics Engineer"}]
+        try:
+            def act(**body):
+                body.setdefault("by", "owner")
+                try:
+                    return pb.act_board(body)
+                except Exception as exc:                     # noqa: BLE001
+                    return {"error": f"crashed: {exc!r}"}
+
+            def rec(cid):
+                return next((c for c in _a.read_companies() if c["id"] == cid), None)
+
+            r = act(id="reads-co", url="https://jobs.ashbyhq.com/someone-else")
+            if not r.get("mismatch") or rec("reads-co")["ats"]["type"] != "html":
+                errors += fail(f"an Ashby board nothing ties to the company was wired: {r}")
+            if (r.get("evidence") or {}).get("slug") != "someone-else":
+                errors += fail(f"a refused board does not carry its evidence: {r.get('evidence')}")
+            r = act(id="reads-co", url="https://jobs.ashbyhq.com/someone-else", force=True)
+            if r.get("error") or rec("reads-co")["ats"] != {"type": "ashby", "ref": "someone-else"}:
+                errors += fail(f"'wire anyway' did not wire: {r}")
+            jl = (tmp / "admin_journal.jsonl").read_text()
+            if "wired anyway" not in jl:
+                errors += fail("a board wired anyway is not journalled as such")
+            r = act(id="rival-co", url="https://boards.greenhouse.io/rival-co")
+            if r.get("error") or rec("rival-co")["ats"] != {"type": "greenhouse", "ref": "rival-co"}:
+                errors += fail(f"a pasted Greenhouse link to their own board was not "
+                               f"read as an address and wired: {r}")
+            verify_boards.board_says = lambda kind, ref: {"name": "Someone Else Inc"}
+            r = act(id="pending-co", url="https://jobs.lever.co/pending-co")
+            if not r.get("mismatch") or rec("pending-co")["ats"]["type"] != "greenhouse":
+                errors += fail(f"a board that NAMES another company was wired because "
+                               f"its slug matched: {r}")
+            r = act(id="agent-co", url="https://elsewhere.test/careers")
+            if not r.get("mismatch") or rec("agent-co")["ats"]["type"] != "greenhouse":
+                errors += fail(f"a careers page on another site was wired: {r}")
+            r = act(id="agent-co", url="https://careers.agent-co.test/jobs")
+            if r.get("error") or rec("agent-co")["ats"] != {
+                    "type": "html", "ref": "https://careers.agent-co.test/jobs"}:
+                errors += fail(f"a careers page on their own site was not stored: {r}")
+            r = act(id="linked-co", url="https://www.linkedin.com/company/someone-else/jobs/")
+            if not r.get("mismatch") or rec("linked-co").get("posts_at", {}).get("url", "").find("someone-else") >= 0:
+                errors += fail(f"another company's LinkedIn page was recorded as where "
+                               f"they post: {r}")
+            r = act(id="linked-co", url="https://www.linkedin.com/company/linked-co/jobs/")
+            if r.get("outcome") != "posts_at":
+                errors += fail(f"their own LinkedIn jobs page was not recorded: {r}")
+            sc = _a.read("scrub.json", {})
+            if (sc.get("linked-co") or {}).get("swept_on") != dt.date.today().isoformat():
+                errors += fail("'posts somewhere else' did not count as a sweep, so the "
+                               "row came back as never swept")
+            row = next((x for x in pb.q_scrub(_a.read_companies(), _a.read("board.json", {}))
+                        if x["id"] == "linked-co"), None)
+            if row and row["due"]:
+                errors += fail("a company swept today by recording where they post is due")
+        finally:
+            (_a.outward_url, add_company.find_ats, add_company.verify,
+             verify_boards.board_says, _ats.fetch_html_titles) = keep
+    return errors
+
+
+def check_a_demoted_supplier_leaves_cleanly() -> int:
+    """Moving a company off the map into the supplier registry works, and
+    takes nothing with it that should stay.
+
+    It never worked: save_decisions read suppliers.json - a list - with a
+    dict default, got {}, and every write looked like 7,919 new records, so
+    the journal refused it. Now the before-state is read as the after's
+    shape; the demoted company leaves every competitor list in the same
+    write; and both halves are checked before either is written, so a
+    refusal cannot leave a supplier record for a company still on the map.
+    """
+    import admin as _a
+    errors = 0
+    with _sandbox_admin(_belt_fixture()) as tmp:
+        import page_belt as pb
+        r = pb.act_supplier({"id": "supply-co", "choice": "supplier", "confirm": True,
+                             "by": "owner", "why": "sells pool chemicals"})
+        sup = _a.read("suppliers.json", [])
+        cs = _a.read_companies()
+        if r.get("error") or not any(s.get("id") == "supply-co" for s in sup):
+            errors += fail(f"a supplier demotion was refused: {r}")
+        if any(c["id"] == "supply-co" for c in cs):
+            errors += fail("a demoted supplier is still on the map")
+        if len(sup) != 31:
+            errors += fail(f"the supplier registry holds {len(sup)} records after one "
+                           f"demotion from 30")
+        full = next(c for c in cs if c["id"] == "full-co")
+        if any(x.get("id") == "supply-co" for x in full.get("competitors") or []):
+            errors += fail("a demoted supplier is still in another company's competitor "
+                           "list; its page would print the bare slug")
+        import journal as _j
+        ent = [e for e in _j._entries() if e.get("file") == "suppliers.json"]
+        if not ent or ent[-1].get("n") != 1:
+            errors += fail(f"the supplier write was not journalled as ONE addition: "
+                           f"{[e.get('n') for e in ent]}")
+        # a half-done earlier try: a supplier record already there is reused
+        sup.append({"id": "rival-co", "name": "Rival Co"})
+        (tmp / "suppliers.json").write_text(json.dumps(sup))
+        r = pb.act_supplier({"id": "rival-co", "choice": "supplier", "confirm": True,
+                             "by": "owner"})
+        if r.get("error") or any(c["id"] == "rival-co" for c in _a.read_companies()):
+            errors += fail(f"a retry after a half-done demotion was refused: {r}")
+    return errors
+
+
+def check_the_belt_answers_what_was_asked() -> int:
+    """The belt's buttons do what they say, on the record:
+
+      - 'Not stated anywhere' with a machine year on file REMOVES the year
+        (through the journal) and records the answered blank - it used to
+        record only a dismissal, leaving the year on the page and the item red;
+      - an ownership answer names who gave it and settles the research row
+        in Acquisitions;
+      - a news check runs in the background (the admin is single-threaded),
+        refuses a company that does not exist, and says when it is running;
+      - a sweep coming due is not a LOSS on an approved page, and the
+        checklist and the Scrub tab agree on the day it comes due.
+    """
+    import admin as _a
+    errors = 0
+    fx = _belt_fixture()
+    today = dt.date.today()
+    fx["manual.json"] = {"checks": {
+        "edge-co": {"checked_on": (today - dt.timedelta(days=14)).isoformat()},
+        "edge13-co": {"checked_on": (today - dt.timedelta(days=13)).isoformat()},
+        "stub-co": {"checked_on": (today - dt.timedelta(days=20)).isoformat()}},
+        "postings": []}
+    fx["page_reviews.json"] = {"stub-co": {"by": "owner", "on": "2026-09-01",
+                                           "checklist": {k: True for k in
+                                                         ("website", "board", "writeup")}}}
+    with _sandbox_admin(fx):
+        import page_belt as pb
+
+        def item(cid, key):
+            cs = _a.read_companies()
+            ctx = pb.context(cs, _a.read("board.json", {}))
+            c = next(x for x in cs if x["id"] == cid)
+            return next(i for i in pb.checklist(c, ctx) if i["key"] == key), c, ctx
+
+        r = pb.act_founded({"id": "machine-co", "unknown": True, "by": "owner"})
+        it, c, _ = item("machine-co", "founded")
+        if r.get("error") or c.get("year_founded") or not it["green"]:
+            errors += fail(f"'not stated anywhere' left the machine year on the page: "
+                           f"{r} year={c.get('year_founded')} green={it['green']}")
+        if "2001" not in (r.get("message") or ""):
+            errors += fail(f"the founding-year message does not say what was removed: {r}")
+
+        r = pb.act_ownership({"id": "claim-co", "parent": "Other Parent LLC", "by": "owner"})
+        it, c, _ = item("claim-co", "ownership")
+        if r.get("error") or not it["green"] or c.get("ownership_by") != "owner":
+            errors += fail(f"an ownership answer did not settle the item: {r} {it}")
+        if any(x.get("id") == "claim-co" for x in
+               _a.q_acquisitions(_a.read_companies(), _a.read("board.json", {}))):
+            errors += fail("the research row stays in Acquisitions after the owner "
+                           "answered it on the belt")
+
+        r = pb.act_news_check({"id": "no-such-company", "by": "owner"})
+        if not r.get("error"):
+            errors += fail(f"a news check for a company that does not exist succeeded: {r}")
+        keep = pb._news_worker
+
+        def slow(cid):
+            time.sleep(1.0)
+            with pb._NEWS_LOCK:
+                pb.NEWS_JOBS[cid] = dict(pb.NEWS_JOBS[cid], done="now", message="3 news item(s)")
+        pb._news_worker = slow
+        try:
+            t0 = time.time()
+            r = pb.act_news_check({"id": "full-co", "by": "owner"})
+            took = time.time() - t0
+            if took > 0.5 or not r.get("running"):
+                errors += fail(f"a news check held the single-threaded admin for "
+                               f"{took:.1f}s instead of running in the background: {r}")
+            r2 = pb.act_news_check({"id": "full-co", "by": "owner"})
+            if "already" not in (r2.get("message") or ""):
+                errors += fail(f"a second news check started while one was running: {r2}")
+            for _ in range(40):
+                if (pb.news_job("full-co") or {}).get("done"):
+                    break
+                time.sleep(0.1)
+            if not (pb.news_job("full-co") or {}).get("done"):
+                errors += fail("a finished news check never reports done")
+        finally:
+            pb._news_worker = keep
+            pb.NEWS_JOBS.clear()
+
+        # THE CADENCE: due ON day 14 in both places, not on day 13
+        cs = _a.read_companies()
+        board = _a.read("board.json", {})
+        rows = {x["id"]: x for x in pb.q_scrub(cs, board)}
+        for cid, due in (("edge-co", True), ("edge13-co", False)):
+            it, _c, _ = item(cid, "board")
+            if rows.get(cid, {}).get("due") != due or it["green"] == due:
+                errors += fail(f"{cid}: the Scrub tab says due={rows.get(cid, {}).get('due')} "
+                               f"and the checklist says green={it['green']} "
+                               f"({'14' if due else '13'} days since the sweep)")
+        # a sweep coming due on an approved page is not a loss
+        so = [x for x in pb.q_signedoff(cs, board) if x["id"] == "stub-co" and x["item"] == "board"]
+        if not so or so[0]["lost"] or not so[0].get("sweep_due"):
+            errors += fail(f"an approved page's sweep coming due reads as a LOSS: {so}")
+        _it, c, ctx = item("stub-co", "board")
+        if "board" in pb.reds(c, ctx):
+            errors += fail("the loss test counts a sweep coming due as a board lost")
+        # the jobs box and the Scrub tab: one rule
+        for c in cs:
+            if pb.jobs_box(c, ctx)["on_scrub"] != (c["id"] in rows):
+                errors += fail(f"{c['id']}: the jobs box and the Scrub tab disagree "
+                               f"about whether it is on the Scrub tab")
+    return errors
+
+
+def check_the_belt_screen_acts_on_what_it_shows() -> int:
+    """The belt's screen, read as code (a review drove it in a browser,
+    2026-09-28, and every one of these happened):
+
+      - S pressed while a card loaded approved a company that was not on
+        screen: Skip and Submit act on the card shown, never on an index, and
+        do nothing while a card loads; every load carries a sequence number
+        and a stale one is dropped;
+      - a pending write-up draft printed as '[object Object]' next to Accept;
+      - the preview iframe may run the one scroll-keeper script but must
+        NEVER be same-origin with the admin (that would hand a company page
+        the console token);
+      - Submit showed the prefetched card only after a 2-second round trip;
+      - the Start page's late answer drew under the belt;
+      - the header's department picker sent '__start' to /api/queue.
+    """
+    errors = 0
+    html = (ROOT / "admin.html").read_text()
+    code = _js_code_only(html)
+
+    def body(name):
+        i = code.find(f"function {name}(")
+        if i < 0:
+            return ""
+        j = code.find("\nfunction ", i + 10)
+        k = code.find("\nasync function ", i + 10)
+        ends = [x for x in (j, k) if x > 0]
+        return code[i:min(ends) if ends else len(code)]
+    sub, adv, show_, pend = (body("pbSubmit"), body("pbAdvance"), body("pbShow"),
+                             body("pbPending"))
+    if "pbOnScreen()" not in sub or "pbOnScreen()" not in adv:
+        errors += fail("Submit or Skip does not act on the company on screen")
+    if "PB.busy" not in body("pbOnScreen"):
+        errors += fail("Skip and Submit are not held while a card loads")
+    if "seq !== PB.seq" not in show_ or "seq !== PB.seq" not in body("pbRefresh"):
+        errors += fail("a card load that is no longer the latest can still draw")
+    if "PB.next = null" in sub.split("api('/api/page-submit'")[0]:
+        errors += fail("Submit throws away the prefetched card before showing it")
+    if "PB.signed += 1" in sub:
+        errors += fail("the approved count is kept by adding one, not from the server")
+    if ".map(pbParaText)" not in pend or "p.paragraphs.forEach(" in pend:
+        errors += fail("a pending draft's paragraphs are printed without reading "
+                       "their sentences' text")
+    for m in re.finditer(r"setAttribute\('sandbox',\s*'([^']*)'\)", code):
+        if "allow-same-origin" in m.group(1):
+            errors += fail("a preview iframe is sandboxed with allow-same-origin; a "
+                           "scripted company page would reach the admin and its token")
+    if "setAttribute('sandbox', 'allow-scripts')" not in code:
+        errors += fail("the belt preview is not the sandboxed, scroll-keeping frame")
+    st = body("showStart")
+    if "TAB !== '__start'" not in st.split("api('/api/triage')")[-1][:300]:
+        errors += fail("the Start page draws its late answer under whatever view "
+                       "opened meanwhile")
+    if "if (TAB) show(TAB)" in code:
+        errors += fail("the department picker sends a '__' view to show(), which "
+                       "asks the server for /api/queue/__start")
+    if "['', 'choose…']" not in code:
+        errors += fail("'who buys it' pre-selects an answer nobody gave")
+    # a node run of the paragraph reader, on the real shape
+    if shutil.which("node"):
+        fn = body("pbParaText")
+        js = fn + ";console.log(JSON.stringify([pbParaText([{text:'One.',url:'u'},{text:'Two.'}]),pbParaText('Plain.')]))"
+        out = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=30)
+        if out.stdout.strip() != '["One. Two.","Plain."]':
+            errors += fail(f"pbParaText reads {out.stdout.strip() or out.stderr[:120]!r}")
+    else:
+        note("node not installed; pbParaText was not run")
+    return errors
+
+
+def check_the_company_page_keeps_itself() -> int:
+    """Three public-page fixes the belt review found:
+
+      - the app's company view switched to the Companies list the first time
+        any company was opened (its detail arriving called render(), which
+        draws the TAB): it redraws the company instead;
+      - a newsroom hidden on purpose printed "Nobody has looked yet": it has
+        no News section, in the app and on the static page;
+      - the static News list scrolled with nothing to say so (three of twelve
+        items at 375 wide): it carries the app's fade.
+    And the extension's scrub target pre-picks the company only on the page
+    its row opened - it used to apply to any page for two hours.
+    """
+    import build_site as bs
+    errors = 0
+    idx = _js_code_only((ROOT / "index.html").read_text())
+    i = idx.find("function fillDetail(")
+    fd = idx[i:idx.find("\nfunction ", i + 10)]
+    if "render()" in fd or "co(id,true)" not in fd:
+        errors += fail("the app's company view redraws the tab, not the company, "
+                       "when its detail arrives")
+    o = {"id": "x", "news": [], "news_state": "hidden"}
+    keep = bs.with_detail
+    bs.with_detail = lambda org: org
+    try:
+        if bs._co_news(o, "x.test").strip():
+            errors += fail("a hidden newsroom still prints a News section")
+        items = [{"date": f"2026-09-{d:02d}", "headline": f"Item {d}", "kind": k,
+                  "url": f"https://x.test/{d}"} for d, k in ((1, "contract"), (2, "funding"))]
+        h = bs._co_news({"id": "x", "news": items, "news_state": "items"}, "x.test")
+        if 'class="fade"' not in h or "conewsw" not in h:
+            errors += fail("the static News list has no fade to say it scrolls")
+        if "conewsw .fade" not in bs.COPAGE_CSS:
+            errors += fail("the static page carries the fade markup without its CSS")
+    finally:
+        bs.with_detail = keep
+    app = idx[idx.find("function coNews("):]
+    app = app[:app.find("\nfunction ", 10)]
+    if 'st==="hidden"&&!items.length) return ""' not in app:
+        errors += fail("the app still prints a News section for a hidden newsroom")
+    ext = _js_code_only((ROOT / "extension" / "capture.js").read_text())
+    j = ext.find("async function scrubTarget(")
+    if "samePlace(" not in ext[j:j + 600]:
+        errors += fail("the extension pre-picks a scrub target on any page, so a "
+                       "capture on the next site is filed under the wrong company")
+    x = ext.find('#ss-x").onclick')
+    if "scrubForget()" not in ext[x:x + 120]:
+        errors += fail("closing the extension panel does not forget the scrub target")
+    return errors
+
+def check_the_claude_inbox_lists_and_settles() -> int:
+    """The end-of-day workshop reads scripts/inbox.py: it must say EMPTY when
+    nothing is open (so the daily run stops at once), list what is open with
+    what the page showed beside the owner's words, and settle an item by id."""
+    import tempfile
+    import inbox as ib
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-inbox-"))
+    keep = ib.INBOX
+    ib.INBOX = tmp / "claude_inbox.jsonl"
+    keep_argv = sys.argv
+    try:
+        def run(*argv):
+            sys.argv = ["inbox.py", *argv]
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = ib.main()
+            return rc, buf.getvalue()
+        rc, out = run()
+        if rc != 0 or out.strip() != "EMPTY":
+            errors += fail(f"an empty inbox does not print EMPTY: {out!r}")
+        ib.INBOX.write_text(json.dumps({
+            "id": "acme:board:1", "at": "2026-09-28T17:00", "name": "Acme",
+            "item": "board", "saw": {"green": False, "state": "never swept by hand",
+                                     "detail": "page scan found no listings"},
+            "text": "their careers page is a PDF", "status": "open"}) + "\n")
+        rc, out = run()
+        for want in ("Acme", "never swept by hand", "their careers page is a PDF", "acme:board:1"):
+            if want not in out:
+                errors += fail(f"the inbox listing does not show {want!r}")
+        rc, out = run("--resolve", "acme:board:1", "--status", "fixed", "--note", "rule added")
+        rc, out = run()
+        if out.strip() != "EMPTY":
+            errors += fail("a settled item is still listed as open")
+    finally:
+        ib.INBOX, sys.argv = keep, keep_argv
+    return errors
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -25175,6 +26097,16 @@ def main() -> int:
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
     errors += check_posts_at_says_whether_anything_can_be_got()
+    errors += check_the_page_belt_says_what_the_record_says()
+    errors += check_the_page_belt_writes_through_the_doors()
+    errors += check_the_scrub_tab_keeps_the_cadence()
+    errors += check_the_page_preview_shows_the_edit()
+    errors += check_the_claude_inbox_lists_and_settles()
+    errors += check_a_pasted_board_must_prove_it_is_theirs()
+    errors += check_a_demoted_supplier_leaves_cleanly()
+    errors += check_the_belt_answers_what_was_asked()
+    errors += check_the_belt_screen_acts_on_what_it_shows()
+    errors += check_the_company_page_keeps_itself()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()

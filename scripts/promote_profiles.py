@@ -731,6 +731,7 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
     index = {c["id"]: c for c in seq if c.get("id")}
     today = dt.date.today().isoformat()
     wrote = skipped = 0
+    held: list = []          # held back because the owner wrote it by hand
     for start in range(0, len(keys), CHUNK):
         chunk = keys[start:start + CHUNK]
         n = 0
@@ -745,6 +746,11 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
                 # from their site" above nothing. It stays pending and is
                 # counted so the person landing a category sees it.
                 skipped += 1
+                continue
+            # the owner's own write-up is never landed over (2026-09-28), and
+            # that is said as itself - not counted with the unsure answers
+            if (index[p["id"]].get("profile") or {}).get("hand_written"):
+                held.append(p["id"])
                 continue
             index[p["id"]]["profile"] = _record(p, by, today)
             index[p["id"]].pop("profile_hidden", None)
@@ -773,6 +779,9 @@ def land(store: dict, companies: list, keys: list[str], by: str, why: str) -> in
         print(f"  landed {n} (journal entry {start // CHUNK + 1})")
     if skipped:
         print(f"  left {skipped} pending: unsure answers with no paragraphs, nothing to land")
+    if held:
+        print(f"  held back {len(held)}: the owner wrote the write-up by hand for "
+              + ", ".join(held[:8]) + (" ..." if len(held) > 8 else ""))
     return wrote
 
 

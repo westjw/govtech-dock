@@ -560,8 +560,8 @@ def has_static_page(o: dict) -> bool:
     grew a second condition the other two would have gone stale, and a
     sitemap listing a page that was never written is a 404 submitted to
     Google as canonical. A company gets a page when it has something a
-    crawler cannot get from the app: open roles, a sourced write-up, or a
-    researched shortlist.
+    crawler cannot get from the app: open roles, a write-up (sourced by the
+    agent door, or written by hand by the owner), or a researched shortlist.
     """
     o = with_detail(o)
     prof = o.get("profile") if isinstance(o.get("profile"), dict) else None
@@ -1087,8 +1087,15 @@ COPAGE_CSS = """
  .cosechd{display:flex;align-items:baseline;gap:0;border-bottom:1px solid var(--c-rule);padding-bottom:9px;margin-bottom:14px}
  .coabout p{font-size:13px;line-height:1.65;max-width:560px;margin:0 0 13px;color:var(--c-ink)}
  .coabout .more{color:var(--c-ink3)}
- .coquote{border-left:1.5px solid var(--c-rule);padding-left:14px;margin:16px 0 0;font-style:italic;font-size:13px;line-height:1.6;color:var(--c-ink2);max-width:560px}
- .coquote .src{font-style:normal;font-size:11px;color:var(--c-ink3)}
+ .conews{max-height:262px;overflow:auto;position:relative}
+ .conewsw{position:relative}
+ .conewsw .fade{position:absolute;left:0;right:0;bottom:0;height:54px;pointer-events:none;background:linear-gradient(transparent,var(--c-bg))}
+ .cochip{font:800 9.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--c-rule);color:var(--c-ink3);display:inline-block}
+ .conews .row{display:flex;gap:0;padding:11px 0;border-bottom:1px solid var(--c-rule);align-items:baseline}
+ .conews .d{width:62px;flex:none;font-size:11px;color:var(--c-ink3);font-variant-numeric:tabular-nums}
+ .conews .k{width:84px;flex:none;font:800 9.5px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink2)}
+ .conews .k.contract{color:var(--c-accent-text)}
+ .conews .t{flex:1;min-width:0;font-size:12.5px;line-height:1.5}
  .cogrp{margin:0 0 14px}
  .cogrph{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--c-rule)}
  .cogrph h3{font:800 13px/1 var(--font-heading)}
@@ -1454,40 +1461,74 @@ def _co_about(o: dict, dom: str) -> str:
                 f'built for &mdash; what they sell, who buys it, named customers &mdash; is '
                 f'not on file for this company yet, so nothing stands in for it.</p>'
                 f'</section>')
-    srcs = pr.get("sources") if isinstance(pr.get("sources"), list) else []
-
-    def num(u):
-        for i, s in enumerate(srcs):
-            if isinstance(s, dict) and s.get("url") == u:
-                return f"<sup>{i + 1}</sup>"
-        return ""
-    psrc = pr.get("paragraph_sources") if isinstance(pr.get("paragraph_sources"), list) else []
-    paras = ""
-    for i, txt in enumerate(pr["paragraphs"]):
-        us = list(dict.fromkeys(psrc[i] if i < len(psrc) and isinstance(psrc[i], list) else []))
-        paras += f"<p>{esc(str(txt))}{''.join(num(u) for u in us)}</p>"
-    q = pr.get("quote") if isinstance(pr.get("quote"), dict) else None
-    quote = ""
-    if q and q.get("text"):
-        src = (f'<span class="src">{_ext_link(q["url"], esc(_path_of(q["url"])))}</span>'
-               if q.get("url") else "")
-        quote = f'<blockquote class="coquote">{esc(str(q["text"]))}{src}</blockquote>'
-    by = ("in their own words, claimed page" if pr.get("by_kind") == "company"
+    # THE WRITE-UP IS THE TEXT, NOTHING HUNG ON IT (owner, 2026-09-28). The
+    # quote block, the numbered source links and the "every sentence traces"
+    # line came off the page: he did not want them, and he writes the rest
+    # himself. The sources stay in the data - the door that checks an agent's
+    # draft still reads them - they are simply not printed.
+    paras = "".join(f"<p>{esc(str(txt))}</p>" for txt in pr["paragraphs"])
+    by = ("written by SLED JOBS" if pr.get("hand_written")
+          else "in their own words, claimed page" if pr.get("by_kind") == "company"
           else "written from their site")
-    prov = ""
-    if srcs:
-        first = srcs[0] if isinstance(srcs[0], dict) else {}
-        when = f", read {esc(str(first['fetched_on']))}" if first.get("fetched_on") else ""
-        links = ", ".join(
-            _ext_link((s if isinstance(s, dict) else {}).get("url"),
-                      f"{i + 1}&nbsp;{esc(_path_of((s if isinstance(s, dict) else {}).get('url') or ''))}")
-            for i, s in enumerate(srcs))
-        prov = (f'<p class="coprov">Written from {len(srcs)} page{"" if len(srcs) == 1 else "s"} '
-                f'on {esc(dom or "their site")}{when}: {links}. Every sentence traces to '
-                f'one of them.</p>')
     return (f'<section class="cosec coabout">'
             f'<div class="cosechd"><h2>About</h2><span class="smeta">{by}</span></div>'
-            f'{lede}{paras}{quote}{prov}</section>')
+            f'{lede}{paras}</section>')
+
+
+NEWSKIND = {"contract": "contract", "funding": "funding", "leadership": "people",
+            "product": "product", "press": "press"}
+
+
+def _co_news(o: dict, dom: str) -> str:
+    """The News section - coNews, ported. This page used to print "No news
+    items have been recorded" on every company, 1,189 of them, while 810
+    companies had dated news on file; the app showed it and the page a
+    search engine indexes said the opposite. Same states, same words."""
+    esc = html.escape
+    o = with_detail(o)
+    items = o.get("news") if isinstance(o.get("news"), list) else []
+    st = o.get("news_state")
+    # a newsroom hidden on purpose has no section, as in the app
+    if st == "hidden" and not items:
+        return ""
+    when = f" &middot; read {esc(str(o['news_checked_on']))}" if o.get("news_checked_on") else ""
+    meta = (f"{len(items)} item{'' if len(items) == 1 else 's'}"
+            f"{' from ' + esc(dom) if dom else ''}{when}" if items
+            else f"their news page listed nothing dated{when}" if st == "none_found"
+            else "no news page found on their site" if st == "no_news_page"
+            else "their site could not be read" if st == "unread"
+            else "not checked yet")
+    head = f'<div class="cosechd"><h2>News</h2><span class="smeta">{meta}</span></div>'
+    if not items:
+        say = ("Their newsroom is on file and nothing on it carried a date we could read. "
+               "An item without a date is not published here." if st == "none_found"
+               else "Nothing on their site links to a newsroom, a blog or a press page."
+               if st == "no_news_page"
+               else "Their site did not answer when we last asked. That is a fact about "
+                    "the fetch, not about the company." if st == "unread"
+               else "Nobody has looked yet.")
+        return (f'<section class="cosec">{head}<p style="font-size:12.5px;line-height:1.6;'
+                f'color:var(--c-ink2);margin:0">{say}</p></section>')
+    rows = ""
+    for i in items:
+        if not isinstance(i, dict):
+            continue
+        kind = str(i.get("kind") or "")
+        title = esc(str(i.get("headline") or ""))
+        link = _ext_link(i.get("url"), title) if _safe_url(i.get("url")) else title
+        rows += (f'<div class="row"><span class="d">{esc(str(i.get("date") or "")[:10])}</span>'
+                 f'<span class="k {esc(kind)}">{esc(NEWSKIND.get(kind, kind))}</span>'
+                 f'<span class="t">{link}</span></div>')
+    # the kind chips when more than one kind is present, and the fade that
+    # says the list scrolls - at 375 wide it stopped after three of twelve
+    # items with nothing to say there were more
+    kinds = list(dict.fromkeys(str(i.get("kind")) for i in items
+                               if isinstance(i, dict) and i.get("kind")))
+    chips = ('<div style="margin:0 0 6px">' + " ".join(
+        f'<span class="cochip">{esc(NEWSKIND.get(k, k))}</span>' for k in kinds)
+        + '</div>') if len(kinds) > 1 else ""
+    return (f'<section class="cosec">{head}{chips}<div class="conewsw">'
+            f'<div class="conews">{rows}</div><span class="fade"></span></div></section>')
 
 
 def _co_rivals(o: dict, n_in_cat: int, by_id: dict) -> str:
@@ -1677,10 +1718,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     # --- reading column -----------------------------------------------------
     about = _co_about(o, dom)
     acq = _co_acquired(o, by_id)
-    news = ('<section class="cosec"><div class="cosechd"><h2>News</h2>'
-            '<span class="smeta">none on file</span></div>'
-            '<p style="font-size:12.5px;line-height:1.6;color:var(--c-ink2);margin:0">'
-            'No news items have been recorded for this company.</p></section>')
+    news = _co_news(o, dom)
     incomplete = ('<p class="coprov" style="padding-top:10px">This list may be incomplete: '
                   'their board is not one we can read in full.</p>' if mine and not readable else "")
     roles = (f'<section class="cosec"><div class="cosechd"><h2>Open roles</h2>'
@@ -1818,7 +1856,7 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     A COMPANY WITH SOMETHING TO SAY GETS A PAGE. This used to be "only
     companies with something open", on the argument that 1,810 pages reading
     "nothing open right now" are worthless in an index. That was right when
-    the page had nothing else. Once a company carries a sourced write-up or a
+    the page had nothing else. Once a company carries a write-up or a
     researched shortlist, its page carries facts a crawler cannot get from
     the app, and the argument inverts. has_static_page is the one gate.
 
@@ -2873,7 +2911,7 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
     # every company that HAS a page, not every company that is hiring - the
     # 1,810-near-identical-documents argument dies once a page carries a
-    # sourced write-up. Same gate as the writer, by construction.
+    # write-up. Same gate as the writer, by construction.
     hiring = [o for o in board.get("organizations", []) if has_static_page(o)]
     # /c/<id>.html, not ?co=. Both addresses show the same company, so one of
     # them has to be the canonical or they compete with each other; the static

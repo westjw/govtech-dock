@@ -230,7 +230,12 @@ def save_decisions(name: str, after, action: str, why: str = "",
     nothing about the journal needed changing to cover them.
     """
     import journal
-    before = read(name, {})
+    # THE BEFORE-STATE IS READ AS THE SAME SHAPE AS THE AFTER. read() returns
+    # its default when the file's type differs from the default's, so a list
+    # file (suppliers.json, 7,919 records) read with {} came back EMPTY, and
+    # every write looked like 7,919 additions - BLAST refused them all, and
+    # forcing it would have journalled the whole file as new.
+    before = read(name, [] if isinstance(after, list) else {})
     _eid, refusal = journal.record(name, before, after, action, by, why, force)
     if refusal:
         return refusal
@@ -2813,7 +2818,7 @@ def triage(companies, board) -> dict:
 # project refuses everywhere else, except now it is the operator being misled.
 FILTERABLE = {"profiles", "proposals", "leads", "boardfound", "founded",
               "miscategorized", "websites", "boards", "blocked", "placement",
-              "acquisitions", "unclassified"}
+              "acquisitions", "unclassified", "scrub", "signedoff"}
 
 
 def sector_index(companies) -> tuple[dict, dict]:
@@ -3776,13 +3781,31 @@ def who_is(email: str) -> dict | None:
 QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "leads": q_leads, "boardfound": _q_board_proposals, "founded": q_founded, "miscategorized": q_miscategorized, "vendors": q_vendor_scope, "scope": q_scope, "submissions": q_submissions, "duplicates": q_duplicates, "websites": q_websites, "boards": q_boards, "blocked": q_blocked,
           "placement": q_placement, "unclassified": q_unclassified,
           "acquisitions": q_acquisitions, "review": q_review,
-          "calendar": _q_calendar, "sweeps": q_sweeps}
+          "calendar": _q_calendar, "sweeps": q_sweeps,
+          "signedoff": lambda companies, board: _page_belt().q_signedoff(companies, board),
+          "scrub": lambda companies, board: _page_belt().q_scrub(companies, board)}
+
+
+def badge_count(key: str, rows: list) -> int:
+    """The number on a tab. The Scrub tab lists the whole standing job, swept
+    rows included with the day they come due; its badge is what is DUE, or
+    two sweeps leave the number where it was."""
+    if key == "scrub":
+        return sum(1 for r in rows if isinstance(r, dict) and r.get("due"))
+    return len(rows)
+
+
+def _page_belt():
+    import page_belt
+    return page_belt
 
 LABEL = {"users": "Users", "profiles": "Write-ups to check", "proposals": "Agent proposals", "leads": "Warm leads", "boardfound": "Boards we found", "founded": "Founding year", "miscategorized": "Wrong bucket", "vendors": "Vendor scope", "scope": "Scope review", "submissions": "Submissions", "duplicates": "Duplicates", "websites": "Missing websites",
          "boards": "No board found", "blocked": "Blocked boards", "placement": "Wrong placement",
          "unclassified": "Unclassified roles", "acquisitions": "Acquisitions",
          "review": "Website review", "calendar": "Conference dates",
-         "sweeps": "Conference floors"}
+         "sweeps": "Conference floors",
+         "signedoff": "Open on approved pages",
+         "scrub": "Scrub"}
 
 
 # ---------------------------------------------------------------- actions
@@ -4835,7 +4858,10 @@ def act_worklist(body: dict) -> dict:
 
     builders = {"boards": q_boards, "founded": q_founded,
                 "blocked": q_blocked, "websites": q_websites,
-                "rescrub": q_rescrub, "capture": q_capture}
+                "rescrub": q_rescrub, "capture": q_capture,
+                # the Scrub tab, due first - what the extension steps through
+                "scrub": lambda cs, b: [r for r in _page_belt().q_scrub(cs, b)
+                                        if r.get("due")]}
     if which not in builders:
         return {"error": f"unknown queue {which!r}",
                 "queues": sorted(builders)}
@@ -4863,6 +4889,8 @@ def act_worklist(body: dict) -> dict:
             "url": r.get("url"),
             "where": r.get("where") or None,
             "open_roles": r.get("open_roles"),
+            "last_swept": r.get("last_swept"),
+            "category": r.get("category"),
         })
     return {"queue": which, "total": len(rows), "rows": out,
             "counts": {k: len(v(companies, board)) for k, v in builders.items()}}
@@ -5373,6 +5401,8 @@ def q_sweep(companies, board, category: str | None = None,
     man = read("manual.json", {})
     captured = {p.get("company_id") for p in (man.get("postings") or [])
                 if isinstance(p, dict) and p.get("company_id")}
+    import page_belt
+    ctx = page_belt.context(companies, board)
     out = []
     for c in companies:
         if sector and c.get("sector") != sector:
@@ -5389,7 +5419,7 @@ def q_sweep(companies, board, category: str | None = None,
             "description": c.get("description"),
             "gaps": gaps,
             "reviewed": rev or None,
-            "stale": page_reviews.stale_for(rev, [g["gap"] for g in gaps]),
+            "stale": page_reviews.stale_for(rev, page_belt.reds(c, ctx)),
         })
     out.sort(key=lambda r: (-r["open_roles"], r["name"] or ""))
     return out
@@ -5452,7 +5482,8 @@ def page_detail(companies, board, cid: str) -> dict:
         "gaps": gaps,
         "pending": pending,
         "reviewed": rev or None,
-        "stale": page_reviews.stale_for(rev, [g["gap"] for g in gaps]),
+        "stale": page_reviews.stale_for(rev, _page_belt().reds(
+            c, _page_belt().context(companies, board))),
         "open_roles": org.get("open_roles", 0) or 0,
         "on_board": bool(org),
         # the artifact, and when it was made
@@ -5501,29 +5532,13 @@ def act_page_review(body: dict) -> dict:
                                 why=f"re-opened {cid}", by=by)
         return {"error": bad} if bad else {
             "ok": True, "message": f"{c.get('name')} re-opened"}
-    news = read("news.json", {})
-    store = read("agent_proposals.json", {})
-    pend = {v.get("id") for v in (store.values() if isinstance(store, dict) else [])
-            if isinstance(v, dict) and v.get("kind") == "rival"
-            and v.get("status") == "pending"}
-    man = read("manual.json", {})
-    captured = {p.get("company_id") for p in (man.get("postings") or [])
-                if isinstance(p, dict) and p.get("company_id")}
-    gaps = [g["gap"] for g in sweep_gaps(c, None, news, pend, captured)]
-    try:
-        rows[cid] = page_reviews.record(cid, by, gaps, body.get("note") or "")
-    except ValueError as e:
-        return {"error": str(e)}
-    bad = page_reviews.save(rows, "page-review",
-                            why=f"{cid} read by a person"
-                                + (f", {len(gaps)} still open" if gaps else
-                                   ", nothing missing"), by=by)
-    return {"error": bad} if bad else {
-        "ok": True,
-        "message": (f"{c.get('name')} signed off"
-                    + (f" with {len(gaps)} gap(s) noted" if gaps
-                       else " - nothing missing"))}
-
+    # ONE SIGN-OFF, WHICHEVER SCREEN IT COMES FROM. The page belt records the
+    # nine-item checklist the page had at that moment, server-side; this
+    # older sweep button used to record sweep_gaps' names instead, and two
+    # vocabularies in one file is how "what did it lose since" goes wrong.
+    import page_belt
+    return page_belt.act_submit({"id": cid, "by": by,
+                                 "note": body.get("note") or ""})
 
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
@@ -5542,6 +5557,25 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "dismiss": act_dismiss, "ask": act_ask,
            "page-review": act_page_review,
            "user-grant": act_user_grant, "user-revoke": act_user_revoke}
+
+
+def _page_belt_action(name: str):
+    """The page belt's edits live in page_belt.py; each is a coded action here
+    like every other ruling (never in OPEN_ACTIONS). Imported on first use so
+    the admin starts as fast as it did."""
+    def run(body: dict) -> dict:
+        import page_belt
+        return page_belt.ACTIONS[name](body)
+    run.__name__ = "page_belt_" + name.replace("-", "_")
+    return run
+
+
+for _name in ("page-title", "page-website", "page-board", "page-scrub",
+              "page-description", "page-writeup", "page-competitors",
+              "page-news-check", "page-supplier", "page-buyer",
+              "page-founded", "page-ownership", "page-explain",
+              "page-submit"):
+    ACTIONS[_name] = _page_belt_action(_name)
 
 
 # --- who may write a ruling ----------------------------------------------
@@ -5749,6 +5783,31 @@ def _head_commit() -> str:
 # process runs, so a difference from _head_commit() is proof the code on disk
 # has changed underneath it.
 START_COMMIT = _head_commit()
+
+
+def _code_fingerprint() -> str:
+    """The Python this process imported, as it is on disk now.
+
+    THE BANNER USED TO KEY ON THE COMMIT, and a commit moves for reasons that
+    change no code at all: the nightly data refresh, a publish of the owner's
+    own rulings. Every one raised "this admin is running code from an earlier
+    commit - stop it and start it again" over an admin whose code was
+    identical (2026-09-28). admin.html is re-read on every request, so only
+    the Python can go stale; this fingerprints scripts/*.py by size and mtime,
+    which a data-only commit never touches.
+    """
+    import hashlib
+    h = hashlib.sha1()
+    for f in sorted((ROOT / "scripts").glob("*.py")):
+        try:
+            st = f.stat()
+        except OSError:
+            continue
+        h.update(f"{f.name}:{st.st_size}:{st.st_mtime_ns};".encode())
+    return h.hexdigest()[:12]
+
+
+START_CODE = _code_fingerprint()
 
 ADMIN_HTML = ROOT / "admin.html"
 CAPTURE_JS = pathlib.Path(__file__).resolve().parent / "capture.js"
@@ -6145,7 +6204,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
             counts = {}
             for k, f in QUEUES.items():
                 rows, _did = in_sector(k, f(companies, board), want, companies)
-                counts[k] = len(rows)
+                counts[k] = badge_count(k, rows)
             return self._json({"counts": counts,
                                "sectors": sorted({c.get("sector") for c in
                                                   (companies if isinstance(companies, list)
@@ -6159,6 +6218,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                # is on disk now
                                "start_commit": START_COMMIT,
                                "head_commit": _head_commit(),
+                               "code_changed": _code_fingerprint() != START_CODE,
                                # which companies have a logo, and in what
                                # format. The page needs this to know whether to
                                # ask for an image at all - guessing the
@@ -6199,6 +6259,32 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 # lever there is, and it is invisible unless somebody counts.
                 "unblocks": _unblocks(name, companies, board),
             })
+        if path in ("/api/pages", "/api/page-card", "/api/page-preview"):
+            # THE PAGE BELT (owner's drawing, 2026-09-28). Read-only GETs; the
+            # edits are coded ACTIONS. The preview is rendered server-side from
+            # the record as it is now and handed over as a string for an
+            # <iframe sandbox="" srcdoc>, exactly as the approval screen does
+            # - never index.html framed on this origin, where the public page's
+            # script could read the console code.
+            import page_belt
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            companies, board = read_companies(), read("board.json", {})
+            if path == "/api/pages":
+                sec = (qs.get("sector") or [""])[0]
+                if not sec:
+                    return self._json({"error": "which sector?"}, 400)
+                return self._json(page_belt.belt(
+                    companies, board, sec, (qs.get("category") or [""])[0] or None))
+            cid = (qs.get("id") or [""])[0]
+            if not cid:
+                return self._json({"error": "which company?"}, 400)
+            if path == "/api/page-card":
+                out = page_belt.card(companies, board, cid)
+                return self._json(out, 404 if out.get("error") else 200)
+            html_ = page_belt.preview_html(companies, board, cid)
+            if html_ is None:
+                return self._json({"error": "company not found"}, 404)
+            return self._json({"html": html_, "crawled": board.get("generated")})
         if path == "/api/page":
             qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
             cid = (qs.get("id") or [""])[0]

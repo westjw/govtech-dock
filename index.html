@@ -162,10 +162,6 @@
   .coabout p{font-size:13px;line-height:1.65;max-width:560px;margin:0 0 13px;
     color:var(--c-ink)}
   .coabout .more{color:var(--c-ink3)}
-  .coquote{border-left:1.5px solid var(--c-rule);padding-left:14px;
-    margin:16px 0 0;font-style:italic;font-size:13px;line-height:1.6;
-    color:var(--c-ink2);max-width:560px}
-  .coquote .src{font-style:normal;font-size:11px;color:var(--c-ink3)}
   /* news */
   .conews{max-height:262px;overflow:auto;position:relative}
   .conewsw{position:relative}
@@ -5502,10 +5498,10 @@ function coRivals(o,sibs,inCat){
    provenance - would put a reviewer's working notes on a public page under
    the company's name. So the renderer keys on the shape, never on the key.
 
-   Every paragraph wears the numbers of the pages it was written from, and
-   the provenance line names those pages as links, because a sentence about
-   a real company's customers is a claim and the reader should be able to
-   check it against the page it came from in one click. */
+   The write-up is printed as its text alone (owner, 2026-09-28: no quotes,
+   no source links on the page). Sources stay in the data, where the agent
+   door checks every sentence against the page it came from; a write-up the
+   owner wrote by hand is his own word and is labelled as his. */
 /* HOW MANY BOARDS CANNOT BE READ, asked once and answered once. Three
    surfaces asked it and got three numbers: Market intel printed
    D.unreadable (17, the last run's fetch failures), Companies said 912 (no
@@ -5564,7 +5560,14 @@ function loadDetail(id){
    the answer arrives, and only if the reader is still on that company. */
 function fillDetail(id){
   if(id in DETAIL) return;
-  loadDetail(id).then(()=>{ if(CO===id) render(); });
+  /* REDRAW THE COMPANY, NOT THE TAB. render() draws VIEWS[tab], and the
+     company page is not a tab - so the first time any company was opened,
+     its detail arriving switched the reader to the Companies list (since
+     2026-09-09). co(id,true) redraws this company without pushing history,
+     and only while its page is still what is on screen. */
+  loadDetail(id).then(()=>{
+    if(CO===id && document.querySelector("#view .copage")) co(id,true);
+  });
 }
 
 function coNews(o,dom,det){
@@ -5573,6 +5576,9 @@ function coNews(o,dom,det){
     "their news could not be loaded just now",true);
   const items=Array.isArray(det.news)?det.news:[];
   const st=o.news_state;
+  /* a newsroom hidden on purpose has no section at all: "Nobody has looked
+     yet" would be untrue, and "hidden" tells a reader nothing */
+  if(st==="hidden"&&!items.length) return "";
   const when=o.news_checked_on?` &middot; read ${esc(o.news_checked_on)}`:"";
   const meta=items.length
     ? `${items.length} item${items.length===1?"":"s"}${dom?` from ${esc(dom)}`:""}${when}`
@@ -5623,22 +5629,15 @@ function coAbout(o,dom,det){
       built for &mdash; what they sell, who buys it, named customers &mdash; is
       not on file for this company yet, so nothing stands in for it.</p>
   </section>`;
-  const srcs=Array.isArray(pr.sources)?pr.sources:[];
-  const pathOf=u=>{try{const x=new URL(u);return (x.pathname==="/"?"":x.pathname).replace(/\/$/,"")||"/"}catch(e){return u}};
-  const num=u=>{const i=srcs.findIndex(s=>s&&s.url===u);return i<0?"":`<sup>${i+1}</sup>`};
-  const paras=pr.paragraphs.map((txt,i)=>{
-    const us=[...new Set(((pr.paragraph_sources||[])[i]||[]))];
-    return `<p>${esc(String(txt))}${us.map(num).join("")}</p>`}).join("");
-  const quote=(pr.quote&&pr.quote.text)
-    ?`<blockquote class="coquote">${esc(pr.quote.text)}${pr.quote.url
-        ?`<span class="src"><a href="${safeUrl(pr.quote.url)}">${esc(pathOf(pr.quote.url))}</a></span>`:""}</blockquote>`:"";
-  const by=pr.by_kind==="company"?"in their own words, claimed page":"written from their site";
-  const when=(srcs[0]&&srcs[0].fetched_on)?`, read ${esc(srcs[0].fetched_on)}`:"";
-  const prov=srcs.length?`<p class="coprov">Written from ${srcs.length} page${srcs.length===1?"":"s"} on ${
-      esc(dom||"their site")}${when}: ${srcs.map((s,i)=>`<a href="${safeUrl(s.url)}">${i+1}&nbsp;${esc(pathOf(s.url))}</a>`).join(", ")}. Every sentence traces to one of them.</p>`:"";
+  /* THE WRITE-UP IS THE TEXT, NOTHING HUNG ON IT (owner, 2026-09-28): no
+     quote block, no numbered source links, no "every sentence traces" line.
+     build_site._co_about says the same, so the app and the static page agree. */
+  const paras=pr.paragraphs.map(txt=>`<p>${esc(String(txt))}</p>`).join("");
+  const by=pr.hand_written?"written by SLED JOBS"
+    :pr.by_kind==="company"?"in their own words, claimed page":"written from their site";
   return `<section class="cosec coabout">
     <div class="cosechd"><h2>About</h2><span class="smeta">${by}</span></div>
-    ${lede}${paras}${quote}${prov}
+    ${lede}${paras}
   </section>`;
 }
 

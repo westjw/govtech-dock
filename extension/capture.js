@@ -459,6 +459,7 @@
                color:#7C97AA">what to hit next</span>
          <select id="ss-queue" style="margin-left:auto;font:inherit;padding:3px 6px;
                  border:1px solid #C9DCE8;background:#fff;color:#1F2536">
+           <option value="scrub">scrub list (due)</option>
            <option value="rescrub">due for a re-scrub</option>
            <option value="boards">no board found</option>
            <option value="founded">founding year</option>
@@ -503,7 +504,7 @@
         as a single posting. If the jobs are in an iframe, open the frame directly and click again.</div>`;
   }
 
-  box.querySelector("#ss-x").onclick = () => host.remove();
+  box.querySelector("#ss-x").onclick = () => { scrubForget(); host.remove(); };
 
   let company = null, timer;
   const q = box.querySelector("#ss-q"), hits = box.querySelector("#ss-hits"),
@@ -524,6 +525,7 @@
         d.innerHTML = `${esc(c.name)} <span style="color:#7C97AA">${esc(c.sector)}</span>`;
         d.onclick = () => {
           company = c; q.value = c.name; hits.innerHTML = "";
+          scrubForget();   // a company picked by hand replaces the scrub target
           say(c);
           identify(c);
         };
@@ -545,6 +547,7 @@
       company_id: company.id, jobs: [], page_url: location.href,
       found: false, note: "no board on this page, checked by hand" });
     const sent = r && r.ok && !r.data.error;
+    if (sent) scrubDone();
     msg.textContent = sent ? "recorded: no board here"
       : ((r && r.data && r.data.error) || "could not record that");
     if (sent) setTimeout(() => box.remove(), 900);
@@ -559,6 +562,7 @@
     const r = await api("/api/capture",
       { company_id: company.id, jobs: chosen, page_url: location.href });
     const sent = r && r.ok && !r.data.error;
+    if (sent) scrubDone();
     /* THREE OUTCOMES, NOT TWO. A capture the worker is HOLDING because the
        admin is off is not a failure - the work is safe and will go when the
        admin comes back - so it is not painted in the refusal colour, and the
@@ -615,6 +619,31 @@
     }
     const d = r.data;
     if (!(d.rows || []).length) { rows.textContent = "nothing waiting here."; return; }
+    if (sel.value === "scrub") {
+      /* THE SCRUB LIST IS STEPPED, NOT BROWSED (owner, 2026-09-28): a click
+         remembers which company this is and opens its careers page in this
+         tab; clicking the extension on that page picks the company for you.
+         Still one page, on a click - nothing here opens a page on its own. */
+      rows.innerHTML =
+        `<div style="color:#7C97AA;font-size:11.5px;margin-bottom:5px">`
+        + `${d.total} due to sweep</div>`
+        + d.rows.map((c, i) =>
+            `<div class="hit" data-i="${i}" style="cursor:pointer">`
+            + `<b>${esc(c.name)}</b> <span style="color:#7C97AA">`
+            + `${esc(c.last_swept ? "last swept " + c.last_swept : "never swept")}</span></div>`)
+          .join("");
+      rows.querySelectorAll(".hit").forEach((h) => {
+        h.onclick = async () => {
+          const c = d.rows[+h.dataset.i];
+          const url = c.url || c.website;
+          if (!url) return;
+          await chrome.storage.local.set({ "ss-target": {
+            id: c.id, name: c.name, sector: c.sector, at: Date.now(), url } });
+          location.href = url;
+        };
+      });
+      return;
+    }
     rows.innerHTML =
       `<div style="color:#7C97AA;font-size:11.5px;margin-bottom:5px">`
       + `${d.total} waiting</div>`
@@ -625,6 +654,47 @@
           + (c.events && c.events.length
               ? ` <span style="color:#7C97AA">${esc(c.events.join(" · "))}</span>` : "")
           + `</div>`).join("");
+  }
+
+  /* THE COMPANY THIS PAGE WAS OPENED FOR, from a scrub-list click - and
+     ONLY on that page. It used to pre-pick the company on any page for two
+     hours, so a capture on the next site was filed under the wrong company.
+     Now the page must be on the site the row opened (a subdomain or a
+     redirect within it counts); on a site many companies share - LinkedIn,
+     Indeed, a government jobs portal - the company's own part of the
+     address must match too. Picking another company, closing the panel or
+     recording the sweep forgets it; two hours is only the backstop. */
+  const SHARED_SITES = /(^|\.)(linkedin\.com|indeed\.com|glassdoor\.[a-z.]+|wellfound\.com|builtin\.com|ziprecruiter\.com|governmentjobs\.com|usajobs\.gov)$/;
+  function siteRoot(h) {
+    const p = (h || "").toLowerCase().replace(/^www\./, "").split(".");
+    return p.slice(-2).join(".");
+  }
+  function samePlace(target) {
+    let u;
+    try { u = new URL(target); } catch (_) { return false; }
+    const here = location.hostname.toLowerCase(), there = u.hostname.toLowerCase();
+    if (siteRoot(here) !== siteRoot(there)) return false;
+    if (!SHARED_SITES.test(there.replace(/^www\./, ""))) return true;
+    /* the company's own segment: /company/<slug>, /cmp/<slug>, /careers/<agency> */
+    const seg = u.pathname.split("/").filter(Boolean).slice(0, 2).join("/").toLowerCase();
+    return !!seg && location.pathname.toLowerCase().replace(/^\//, "").startsWith(seg);
+  }
+  async function scrubTarget() {
+    try {
+      const got = await chrome.storage.local.get("ss-target");
+      const t = got && got["ss-target"];
+      if (t && t.id && t.url && Date.now() - (t.at || 0) < 2 * 3600 * 1000
+          && samePlace(t.url)) return t;
+    } catch (_) { /* storage unavailable: pick by hand */ }
+    return null;
+  }
+  async function scrubForget() {
+    try { await chrome.storage.local.remove("ss-target"); } catch (_) {}
+  }
+  async function scrubDone() {
+    await scrubForget();
+    const sel = box.querySelector("#ss-queue");
+    if (sel) { sel.value = "scrub"; loadWork(); }
   }
 
 
@@ -683,6 +753,13 @@
   root.appendChild(box);
   document.body.appendChild(host);
 
+  scrubTarget().then((t) => {
+    if (!t || company) return;
+    company = { id: t.id, name: t.name, sector: t.sector };
+    q.value = t.name;
+    say(company);
+    identify(company);
+  });
   box.querySelector("#ss-queue").onchange = loadWork;
   wireNote();
   loadWork();

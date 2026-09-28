@@ -599,6 +599,9 @@ def _retract(p: dict, by: str, why: str) -> str:
     prof = (c or {}).get("profile")
     if not isinstance(prof, dict) or not prof.get("paragraphs"):
         return "nothing"
+    if prof.get("hand_written"):
+        # the owner's own words are not the agent draft being rejected
+        return "nothing"
     c.pop("profile", None)
     c.pop("profile_hidden", None)
     bad = admin.save_companies(companies, "profile-retract",
@@ -618,6 +621,11 @@ def _accept_profile(p: dict, by: str, why: str, force: bool, store: dict,
         return {"error": "nothing to land: this write-up carries no paragraphs. "
                          "An unsure answer is a valid answer and stays pending"}
     companies = admin.read_companies()
+    mine = next((c for c in companies if c.get("id") == p.get("id")), None)
+    if (mine or {}).get("profile", {}) and (mine.get("profile") or {}).get("hand_written"):
+        return {"error": f"the owner wrote {mine.get('name')}'s write-up by hand, so "
+                         f"this draft is not landed over it. Reject the draft, or "
+                         f"clear the hand-written one first"}
     n = promote_profiles.land(store, companies, [key], by,
                               why or f"landed {p.get('id')} from the write-ups tab")
     if not n:
@@ -701,7 +709,12 @@ def rule(store: dict, key: str, accept: bool, why: str = "", by: str = "",
         # successful pull, which is falsy, so the branch reporting the
         # retraction never ran and the caller was told nothing came down.
         _log_employer_ruling(p, key, False, by, why)
-        pulled = _retract(p, by, why) if kind == "profile" else "nothing"
+        # ONLY THE WRITE-UP BEING REJECTED COMES DOWN. This retracted on the
+        # rejection of a PENDING proposal too, so turning down a new agent
+        # draft took whatever write-up was already on the page - found
+        # 2026-09-28 when the owner's hand-written one vanished the moment the
+        # agent draft beside it was rejected.
+        pulled = _retract(p, by, why) if retracting else "nothing"
         if pulled.startswith("REFUSED"):
             return {"error": pulled}
         if pulled == "pulled":

@@ -82,6 +82,61 @@
 .fld { margin: 8px 0; }
 .fld label { display: block; margin-bottom: 3px; }
 .fld .txt { width: 100%; }
+/* ---- the page belt (owner's drawing, 2026-09-28) ------------------------ */
+/* The belt gets the width of the screen: the preview is the thing being
+   read, and the 1180px cap left it 601px wide with 740px of margin at 1920.
+   The top row stays put (Skip and Submit are always in reach) and the
+   preview stays in view while the checklist scrolls beside it. */
+main:has(#pb-host) { max-width: 1640px; }
+.pbtop { display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+         position: sticky; top: 0; z-index: 5; background: var(--bg);
+         padding: 8px 0; border-bottom: 1px solid var(--line); }
+.pbtop h2 { margin: 0 12px 0 0; }
+.pbgrow { flex: 1; }
+.pbsplit { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+.pbleft { position: sticky; top: 58px; }
+.pbpreview { height: calc(100vh - 120px); min-height: 420px; }
+@media (max-width: 1000px) { .pbleft { position: static; } .pbpreview { height: 70vh; } }
+#pb-host:focus { outline: none; }
+/* the belt's selects and text areas, themed like input.txt - unstyled they
+   drew white with Arial in dark mode */
+select.in, textarea.txt { font: inherit; font-size: 12.5px; padding: 6px 9px;
+  border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--ink); }
+textarea.txt { resize: vertical; line-height: 1.5; }
+.kv.warn, span.warn { color: var(--warn); }
+.pbtitle { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.pbtitle h2 { margin: 0; }
+.pbtitle .txt { flex: 1; min-width: 220px; }
+.pbchecks { border: 1px solid var(--line); margin-top: 10px; }
+.pbitem + .pbitem { border-top: 1px solid var(--line); }
+.pbhead { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left;
+          background: transparent; border: 0; padding: 9px 12px; cursor: pointer; font: inherit;
+          color: var(--ink); }
+.pbhead:hover, .pbitem.open .pbhead { background: var(--panel); }
+.pbhead:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.pbdot { width: 18px; flex: none; font-weight: 700; }
+.pbitem.green .pbdot { color: var(--accent); }
+.pbitem.red .pbdot { color: var(--warn); }
+.pblabel { font-weight: 600; min-width: 170px; }
+.pbstate { color: var(--dim); overflow-wrap: anywhere; }
+.pbdetail { color: var(--dim); font-size: 12.5px; padding: 0 12px 8px 40px; overflow-wrap: anywhere; }
+.pbeditor { padding: 8px 12px 12px 40px; display: flex; flex-direction: column; gap: 6px; }
+.pbeditor .txt, .pbeditor textarea, .pbjobs .txt { width: 100%; }
+.pbeditor .act, .pbjobs .act { align-self: flex-start; }
+.pbexplain { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line);
+             display: flex; flex-direction: column; gap: 6px; }
+.pbprop { border: 1px solid var(--line); padding: 8px; margin-top: 6px; }
+.pbpara { font-size: 13px; margin: 6px 0; }
+.pbchips { display: flex; flex-wrap: wrap; gap: 4px; }
+.pbx { background: transparent; border: 0; cursor: pointer; color: var(--dim); padding: 0 2px; }
+.pbhits { display: flex; flex-direction: column; }
+.pbhit { text-align: left; background: transparent; border: 0; padding: 4px 6px; cursor: pointer;
+         font: inherit; color: var(--ink); }
+.pbhit:hover { background: var(--panel); }
+.pbjobs { border: 1px solid var(--line); margin-top: 12px; padding: 10px 12px;
+          display: flex; flex-direction: column; gap: 6px; }
+.pbjobs h3 { margin: 0 0 4px; }
+.pbjrow { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .fld textarea.txt { min-height: 54px; resize: vertical; font: inherit; }
 
   .chip{font-size:11px;padding:2px 8px;border-radius:0;background:var(--chip);
@@ -382,8 +437,10 @@ const secQ = (u) => SECTOR ? u + (u.includes('?') ? '&' : '?')
 function staleBanner() {
   const old = document.getElementById('stale-admin');
   if (old) old.remove();
-  if (!META || !META.start_commit || !META.head_commit) return;
-  if (META.start_commit === META.head_commit) return;
+  /* ONLY WHEN THE PYTHON CHANGED. A new commit that touched only data (the
+     nightly refresh, a publish of your own rulings) changes nothing this
+     process runs, and a banner that fires on those teaches you to ignore it. */
+  if (!META || !META.code_changed) return;
   const b = el('div');
   b.id = 'stale-admin';
   b.style.cssText = 'background:var(--warn);color:#0f1420;padding:9px 16px;'
@@ -583,7 +640,7 @@ async function boot() {
   sortBtn.dataset.key = '__sort'; sortBtn.onclick = () => showSort();
   nav.appendChild(sortBtn);
   const sweepBtn = el('button', null, 'Page sweep');
-  sweepBtn.dataset.key = '__sweep'; sweepBtn.onclick = () => showSweep();
+  sweepBtn.dataset.key = '__sweep'; sweepBtn.onclick = () => showPageBelt();
   nav.appendChild(sweepBtn);
   drawSectorPicker();
   const canFilter = new Set(META.filterable || []);
@@ -627,13 +684,20 @@ function drawSectorPicker() {
       sel.appendChild(o);
     });
   sel.onchange = async () => {
+    /* boot() draws Start here; the view that was open comes back after it.
+       show() takes queue keys only - a '__' view has its own function, and
+       sending one to show() asked the server for /api/queue/__start. */
+    const was = TAB;
     SECTOR = sel.value;
     const u = new URL(location.href);
     if (SECTOR) u.searchParams.set('sector', SECTOR);
     else u.searchParams.delete('sector');
     history.replaceState(null, '', u);
     await boot();
-    if (TAB) show(TAB);
+    const views = {__pagebelt: () => showPageBelt(SECTOR || undefined, ''),
+                   __capture: showCapture, __sort: showSort, __sweep: () => showSweep()};
+    if (views[was]) views[was]();
+    else if (was && !was.startsWith('__')) show(was);
   };
   wrap.append(lab, sel);
   if (SECTOR) {
@@ -795,6 +859,9 @@ async function showStart() {
     b.setAttribute('aria-selected', b.dataset.key === '__start'));
   const v = $('#view'); v.innerHTML = '';
   const t = await api('/api/triage');
+  /* the triage answer can land after another view opened; it is dropped
+     rather than appended under that view */
+  if (TAB !== '__start') return;
   const g = t.game || {};
 
   /* THE COUNTER. Three numbers, and each is chosen to answer a different
@@ -4722,6 +4789,875 @@ async function drawRoles(host, bar) {
 }
 
 boot();
+
+/* ── The page belt (owner's drawing, 2026-09-28) ──────────────────────────
+   One company page at a time: Department (sector, optional subsector) on
+   top with Skip and Submit; the page as it will publish on the left; on the
+   right the checklist, where EVERY item - green or red - opens its editor on
+   this screen, and the jobs box. Submit approves the page even with red
+   items; they stay open in their own queues and in "Open on approved
+   pages", and an approved page never comes back here.
+
+   The checklist is computed on the server (page_belt.checklist) - the same
+   function Submit records - so what is drawn green here is what the sign-off
+   says was green. Nothing on this screen decides green on its own. */
+const PB = {sector: '', category: '', items: [], i: 0, card: null,
+            open: null, next: null, total: 0, signed: 0,
+            /* seq: every card load takes a number and a load that is no longer
+               the latest is dropped, so a slow answer never draws over the
+               company the screen has moved on to. busy: a card is loading -
+               J and S do nothing until the screen shows what they act on. */
+            seq: 0, busy: false, submitting: 0,
+            frame: null, frameId: null, frameHTML: '', scrollY: 0};
+
+function pbSkipKey() { return 'gtd-pb-skip:' + PB.sector + '|' + PB.category; }
+function pbSkipped() {
+  try { return JSON.parse(sessionStorage.getItem(pbSkipKey()) || '[]'); }
+  catch (_) { return []; }
+}
+function pbSkip(id) {
+  const s = pbSkipped().filter(x => x !== id); s.push(id);
+  try { sessionStorage.setItem(pbSkipKey(), JSON.stringify(s)); } catch (_) {}
+}
+function pbOn() { return TAB === '__pagebelt' && !!$('#pb-host'); }
+
+async function showPageBelt(sector, category) {
+  TAB = '__pagebelt';
+  beltOff();
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__sweep'));
+  if (sector !== undefined) { PB.sector = sector || ''; PB.category = category || ''; }
+  /* ONE DEPARTMENT. The header's picker is the admin's department; the belt
+     follows it whenever one is chosen there. */
+  else if (SECTOR && SECTOR !== PB.sector) { PB.sector = SECTOR; PB.category = ''; }
+  if (!PB.sector) PB.sector = SECTOR || ((SCHEMA && SCHEMA.sectors && SCHEMA.sectors[0]
+    && SCHEMA.sectors[0].name) || '');
+  const seq = ++PB.seq;
+  PB.card = null; PB.next = null; PB.frameId = null;
+  const v = $('#view'); v.innerHTML = '';
+  v.appendChild(pbTopRow());
+  const host = el('div'); host.id = 'pb-host'; host.tabIndex = -1; v.appendChild(host);
+  host.appendChild(el('div', 'empty', 'loading…'));
+  const r = await api('/api/pages?sector=' + encodeURIComponent(PB.sector)
+    + (PB.category ? '&category=' + encodeURIComponent(PB.category) : ''));
+  if (seq !== PB.seq || !pbOn()) return;
+  if (r.error) { host.innerHTML = ''; host.appendChild(el('div', 'empty', r.error)); return; }
+  /* skipped this sitting go to the back, in the order they were skipped */
+  const skipped = pbSkipped();
+  const items = r.items || [];
+  PB.items = items.filter(x => !skipped.includes(x.id))
+    .concat(skipped.map(id => items.find(x => x.id === id)).filter(Boolean));
+  PB.total = r.total; PB.signed = r.signed_off; PB.i = 0;
+  pbCount();
+  await pbShow();
+}
+
+/* A department chosen on the belt is the admin's department: the header,
+   the tab counts and the URL follow it, and the belt comes straight back. */
+async function pbAdoptSector(sec, cat) {
+  SECTOR = sec || '';
+  const u = new URL(location.href);
+  if (SECTOR) u.searchParams.set('sector', SECTOR); else u.searchParams.delete('sector');
+  history.replaceState(null, '', u);
+  await boot();
+  showPageBelt(sec, cat);
+}
+
+function pbTopRow() {
+  const row = el('div', 'pbtop');
+  row.appendChild(el('h2', null, 'Page sweep'));
+  const lab = el('span', 'kv', 'Department');
+  const sec = el('select', 'in');
+  sec.setAttribute('aria-label', 'department');
+  (SCHEMA.sectors || []).forEach(s => {
+    const o = el('option', null, s.name); o.value = s.name;
+    if (s.name === PB.sector) o.selected = true; sec.appendChild(o);
+  });
+  const cat = el('select', 'in');
+  cat.setAttribute('aria-label', 'subsector');
+  const fillCats = () => {
+    cat.innerHTML = '';
+    const all = el('option', null, 'All subsectors'); all.value = ''; cat.appendChild(all);
+    const s = (SCHEMA.sectors || []).find(x => x.name === sec.value);
+    (s ? s.categories : []).forEach(c => {
+      const o = el('option', null, c); o.value = c;
+      if (c === PB.category) o.selected = true; cat.appendChild(o);
+    });
+  };
+  fillCats();
+  sec.onchange = () => { PB.category = ''; fillCats(); pbAdoptSector(sec.value, ''); };
+  cat.onchange = () => showPageBelt(sec.value, cat.value);
+  const count = el('span', 'kv'); count.id = 'pb-count';
+  const skip = el('button', 'act', 'Skip');
+  skip.id = 'pb-skip';
+  skip.title = 'move on without approving (J)';
+  skip.onclick = () => pbAdvance(true);
+  const sub = el('button', 'act go', 'Submit');
+  sub.id = 'pb-submit';
+  sub.title = 'approve this page, red items and all (S)';
+  sub.onclick = () => pbSubmit();
+  const listLink = el('a', 'kv', 'categories list');
+  listLink.href = '#';
+  listLink.onclick = e => { e.preventDefault(); showSweep(); };
+  row.append(lab, sec, cat, count, el('span', 'pbgrow'), listLink, skip, sub);
+  return row;
+}
+
+function pbBusy(on) {
+  PB.busy = !!on;
+  ['#pb-skip', '#pb-submit'].forEach(s => { const b = $(s); if (b) b.disabled = !!on; });
+}
+
+function pbCount() {
+  const n = $('#pb-count'); if (!n) return;
+  /* an approved page opened from "Open on approved pages" is not to go */
+  const left = PB.items.slice(PB.i).filter(x => !x.approved).length;
+  n.textContent = `${PB.signed} of ${PB.total} approved` + (left ? ` · ${left} to go` : '');
+}
+
+/* the server's own numbers after a Submit, never "plus one" */
+function pbApplyCounts(k) {
+  if (!k || k.sector !== PB.sector) return;
+  if (!PB.category) { PB.total = k.sector_total; PB.signed = k.sector_signed; }
+  else if (k.category === PB.category) { PB.total = k.category_total; PB.signed = k.category_signed; }
+}
+
+async function pbLoad(id) {
+  const [card, pv] = await Promise.all([
+    api('/api/page-card?id=' + encodeURIComponent(id)),
+    api('/api/page-preview?id=' + encodeURIComponent(id))]);
+  return {card, pv};
+}
+
+/* THE NEXT PAGE IS ALREADY LOADING while this one is read, so Submit or Skip
+   lands on a built card rather than a spinner. The promise is kept, so a
+   Submit pressed before the prefetch lands waits for it rather than asking
+   twice. */
+function pbPrefetch() {
+  const nx = PB.items[PB.i + 1];
+  if (!nx || (PB.next && PB.next.id === nx.id)) return;
+  const p = pbLoad(nx.id);
+  PB.next = {id: nx.id, data: null, p};
+  p.then(d => { if (PB.next && PB.next.id === nx.id) PB.next.data = d; });
+}
+
+async function pbShow(keepOpen) {
+  const host = $('#pb-host'); if (!host || !pbOn()) return;
+  const seq = ++PB.seq;
+  const it = PB.items[PB.i];
+  if (!it) {
+    PB.card = null; PB.frameId = null; pbBusy(false);
+    host.innerHTML = '';
+    const end = el('div', 'beltend');
+    end.appendChild(el('h3', null, PB.total && PB.signed >= PB.total
+      ? `Every page in ${PB.category || PB.sector} is approved`
+      : 'Nothing left on this belt'));
+    const p = el('p', 'kv', 'Red items on approved pages stay open under "Open on approved '
+      + 'pages", and in their own queue where one lists them.');
+    const go = el('button', 'act', 'Open on approved pages');
+    go.onclick = () => show('signedoff');
+    end.append(p, go);
+    host.appendChild(end);
+    pbCount();
+    return;
+  }
+  pbBusy(true);
+  const pre = PB.next && PB.next.id === it.id ? PB.next : null;
+  const got = pre ? (pre.data || await pre.p) : await pbLoad(it.id);
+  if (seq !== PB.seq || !pbOn()) return;
+  pbBusy(false);
+  if (pre) PB.next = null;
+  if (got.card.error) { PB.card = null; host.innerHTML = '';
+    host.appendChild(el('div', 'empty', got.card.error)); return; }
+  PB.card = got.card;
+  if (!keepOpen) PB.open = null;
+  pbRender(got);
+  pbCount();
+  pbPrefetch();
+}
+
+async function pbRefresh() {
+  if (!pbOn() || !PB.card) return;
+  const id = PB.card.company.id, seq = PB.seq;
+  const d = await pbLoad(id);
+  if (seq !== PB.seq || !pbOn() || !PB.card || PB.card.company.id !== id) return;
+  if (d.card.error) return;
+  PB.card = d.card;
+  pbRender(d, true);
+}
+
+/* THE PREVIEW KEEPS ITS PLACE. The frame is sandboxed with scripts and
+   without same-origin, so it stays an opaque origin that cannot reach this
+   page; the only script in it is this one, which reports where the reader
+   has scrolled and scrolls back there when the page is redrawn after a save.
+   The published page carries no script of its own. */
+const PB_KEEPER = '<script>(function(){var t;addEventListener("scroll",function(){'
+  + 'clearTimeout(t);t=setTimeout(function(){parent.postMessage({pbScroll:scrollY},"*")},80)});'
+  + 'addEventListener("message",function(e){if(!e.data)return;'
+  + 'if(typeof e.data.pbScrollTo==="number")scrollTo(0,e.data.pbScrollTo);'
+  + 'if(e.data.pbWhere)parent.postMessage({pbScroll:scrollY,pbWhere:1},"*")});'
+  + 'parent.postMessage({pbReady:1},"*")})()<\/script>';
+function pbFrameHTML(pv) {
+  const h = (pv && pv.html) || '';
+  if (!h) return '';
+  return h.includes('</body>') ? h.replace('</body>', PB_KEEPER + '</body>') : h + PB_KEEPER;
+}
+/* Where the reader is, asked right before the page is swapped: a scroll
+   event is not guaranteed (a window that is not painting skips them), a
+   direct question is. Waits at most 250 ms, then swaps anyway. */
+function pbSwapFrame(html) {
+  const fr = PB.frame;
+  PB.frameHTML = html;
+  let done = false;
+  const swap = () => { if (done) return; done = true;
+    window.removeEventListener('message', hear);
+    if (PB.frame === fr) fr.srcdoc = html; };
+  const hear = e => { if (e.source === fr.contentWindow && e.data && e.data.pbWhere) swap(); };
+  window.addEventListener('message', hear);
+  try { fr.contentWindow.postMessage({pbWhere: 1}, '*'); } catch (_) { swap(); }
+  setTimeout(swap, 250);
+}
+window.addEventListener('message', e => {
+  if (!PB.frame || e.source !== PB.frame.contentWindow || !e.data) return;
+  if (typeof e.data.pbScroll === 'number') PB.scrollY = e.data.pbScroll;
+  if (e.data.pbReady && PB.scrollY)
+    PB.frame.contentWindow.postMessage({pbScrollTo: PB.scrollY}, '*');
+});
+/* A click in the preview moves focus into the frame, where J and S cannot
+   be heard. Focus comes straight back to the belt; the click, the scroll
+   and a link in the preview still work. */
+window.addEventListener('blur', () => setTimeout(() => {
+  if (pbOn() && PB.frame && document.activeElement === PB.frame) {
+    const h = $('#pb-host'); if (h) h.focus({preventScroll: true});
+  }
+}, 0));
+
+function pbRender(d, refresh) {
+  const host = $('#pb-host'); if (!host || !pbOn()) return;
+  const r = d.card, c = r.company || {};
+  let split = host.querySelector('.pbsplit'), left, right;
+  const html = pbFrameHTML(d.pv);
+  const crawled = 'The page as it will publish, drawn from the record just now. '
+    + 'Open roles are from the last crawl (' + ((d.pv && d.pv.crawled) || '?') + ').';
+  if (refresh && split && PB.frameId === c.id && PB.frame) {
+    /* same company: only the right pane is rebuilt, and the preview is
+       swapped only when the page actually changed */
+    left = split.children[0]; right = split.children[1];
+    right.innerHTML = '';
+    const cap = left.querySelector('.pbcap'); if (cap) cap.textContent = crawled;
+    if (html !== PB.frameHTML) pbSwapFrame(html);
+  } else {
+    host.innerHTML = '';
+    split = el('div', 'split pbsplit');
+    left = el('div', 'pane pbleft'); right = el('div', 'pane');
+    split.append(left, right); host.appendChild(split);
+    left.appendChild(el('p', 'kv pbcap', crawled));
+    const fr = document.createElement('iframe');
+    fr.setAttribute('sandbox', 'allow-scripts');
+    fr.tabIndex = -1;
+    fr.title = 'preview of the public page';
+    fr.className = 'copreview pbpreview';
+    PB.frame = fr; PB.frameId = c.id; PB.frameHTML = html; PB.scrollY = 0;
+    if (html) fr.srcdoc = html;
+    left.appendChild(fr);
+    const live = el('a', 'kv', 'open the live page ↗');
+    live.href = r.live; live.target = '_blank'; live.rel = 'noopener';
+    left.appendChild(live);
+  }
+
+  /* ---- right: the title, the checklist, the jobs box ---- */
+  right.appendChild(pbTitle(c));
+  right.appendChild(el('p', 'kv', (c.sector || '') + ' / ' + (c.category || '')
+    + (r.reviewed ? ' · approved ' + r.reviewed.on : '')));
+  const list = el('div', 'pbchecks');
+  (r.checklist || []).forEach(item => {
+    const row = el('div', 'pbitem' + (item.green ? ' green' : ' red')
+      + (PB.open === item.key ? ' open' : ''));
+    const head = el('button', 'pbhead');
+    head.type = 'button';
+    head.dataset.key = item.key;
+    head.setAttribute('aria-expanded', String(PB.open === item.key));
+    head.appendChild(el('span', 'pbdot', item.green ? '✓' : '✗'));
+    head.appendChild(el('span', 'pblabel', item.label));
+    head.appendChild(el('span', 'pbstate', item.state || ''));
+    head.onclick = () => {
+      if (item.key === 'board') {
+        PB.open = null; pbRender(d, true);
+        const j = $('#pb-jobs'); if (j) j.scrollIntoView({block: 'center'});
+        return;
+      }
+      PB.open = PB.open === item.key ? null : item.key;
+      pbRender(d, true);
+    };
+    row.appendChild(head);
+    if (item.detail) row.appendChild(el('div', 'pbdetail', item.detail));
+    if (PB.open === item.key) row.appendChild(pbEditor(item, r));
+    list.appendChild(row);
+  });
+  right.appendChild(list);
+  right.appendChild(pbJobs(r));
+  if (PB.items[PB.i + 1]) right.appendChild(el('p', 'beltnext',
+    'next up: ' + PB.items[PB.i + 1].name + ' - already loading'));
+  /* after a redraw, keyboard focus goes back to the item that was open,
+     not to the top of the page */
+  if (refresh && PB.open) {
+    const h = right.querySelector(`.pbhead[data-key="${PB.open}"]`);
+    if (h) h.focus({preventScroll: true});
+  }
+}
+
+/* one message line per editor, and every write goes through this */
+async function pbDo(action, body, msg, after) {
+  if (!PB.card) return {error: 'no page on screen'};
+  const id = PB.card.company.id;
+  msg.textContent = 'saving…'; msg.style.color = '';
+  const res = await api('/api/' + action, Object.assign({id}, body));
+  /* the reply may land after the belt moved on: it is said, never drawn
+     onto another company's card */
+  const here = pbOn() && PB.card && PB.card.company.id === id;
+  if (res.error) {
+    if (here) { msg.textContent = res.error; msg.style.color = 'var(--warn)'; }
+    else toast(res.error, true);
+    return res;
+  }
+  msg.textContent = res.message || 'saved';
+  msg.style.color = 'var(--accent)';
+  /* the card is redrawn after every save, which takes this line with it, so
+     the outcome is also said where it survives the redraw */
+  toast(res.message || 'saved');
+  if (after) after(res);
+  if (here && !res.removed) await pbRefresh();
+  return res;
+}
+
+function pbTitle(c) {
+  const wrap = el('div', 'pbtitle');
+  const h = el('h2', null, c.name || c.id);
+  const edit = el('button', 'act', 'Edit title');
+  edit.onclick = () => {
+    wrap.innerHTML = '';
+    const inp = el('input', 'txt'); inp.value = c.name || '';
+    inp.setAttribute('aria-label', 'company name');
+    const save = el('button', 'act go', 'Save title');
+    const msg = el('div', 'kv');
+    save.onclick = () => pbDo('page-title', {name: inp.value}, msg);
+    inp.onkeydown = e => { if (e.key === 'Enter') save.click(); };
+    wrap.append(inp, save, msg); inp.focus();
+  };
+  wrap.append(h, edit);
+  if ((c.also_known_as || []).length)
+    wrap.appendChild(el('div', 'kv', 'also known as ' + c.also_known_as.join(', ')));
+  return wrap;
+}
+
+function pbExplain(item) {
+  const box = el('div', 'pbexplain');
+  const ta = el('textarea', 'txt');
+  ta.rows = 2;
+  ta.setAttribute('aria-label', 'explain it for Claude');
+  ta.placeholder = 'Explain it for Claude: what is wrong here, or what the system '
+    + 'should know. Reviewed at the end of the day.';
+  const send = el('button', 'act', 'Send to Claude');
+  const msg = el('div', 'kv');
+  send.onclick = async () => {
+    if (!PB.card) return;
+    const res = await api('/api/page-explain', {id: PB.card.company.id, item: item.key,
+                                                text: ta.value});
+    if (res.error) { msg.textContent = res.error; msg.style.color = 'var(--warn)'; return; }
+    msg.textContent = res.message; msg.style.color = 'var(--accent)'; ta.value = '';
+  };
+  box.append(ta, send, msg);
+  return box;
+}
+
+/* An agent's paragraph is a list of sentences, each {text, url, quote};
+   an older one may be a plain string. Printed as the sentences, never as
+   the objects. */
+function pbParaText(para) {
+  return (Array.isArray(para) ? para : [para])
+    .map(s => typeof s === 'string' ? s : ((s && s.text) || '')).join(' ').trim();
+}
+
+function pbPending(r, kinds, msg) {
+  const box = el('div');
+  (r.pending || []).filter(p => kinds.includes(p.kind)).forEach(p => {
+    const d = el('div', 'pbprop');
+    d.appendChild(el('div', 'kv', 'waiting for your ruling: ' + p.kind
+      + (p.confidence ? ' · ' + p.confidence + ' confidence' : '')));
+    if (p.kind === 'buyer')
+      d.appendChild(el('div', null, 'sells to government: ' + (p.sells_to_gov || '?')
+        + (p.names_other_buyers ? ' · other buyers: ' + p.names_other_buyers : '')
+        + (p.buyer ? ' - ' + p.buyer : '')));
+    if (p.rivals && p.rivals.length)
+      d.appendChild(el('div', null, p.rivals.map(x => x.name).join(', ')));
+    const paras = (p.paragraphs || []).map(pbParaText).filter(Boolean);
+    paras.forEach(t => d.appendChild(el('p', 'pbpara', t)));
+    if (p.why) d.appendChild(el('div', 'kv', p.why));
+    const row = el('div', 'row');
+    /* a write-up draft with nothing readable in it is never offered for
+       Accept - Accept puts it on the public page */
+    if (p.kind !== 'profile' || paras.length) {
+      const ok = el('button', 'act go', 'Accept');
+      ok.onclick = () => pbDo('proposal-ruling', {key: p.key, accept: true}, msg);
+      row.appendChild(ok);
+    }
+    const no = el('button', 'act', 'Reject');
+    no.onclick = () => {
+      const why = prompt('Why reject it? (kept with the ruling)');
+      if (why) pbDo('proposal-ruling', {key: p.key, accept: false, why}, msg);
+    };
+    row.appendChild(no);
+    d.appendChild(row);
+    box.appendChild(d);
+  });
+  return box;
+}
+
+function pbPicker(placeholder, onPick) {
+  /* a company search over the whole map, through the open search action */
+  const wrap = el('div', 'pbpick');
+  const q = el('input', 'txt'); q.placeholder = placeholder;
+  q.setAttribute('aria-label', placeholder);
+  const hits = el('div', 'pbhits');
+  let timer = null;
+  q.oninput = () => {
+    clearTimeout(timer);
+    timer = setTimeout(async () => {
+      hits.innerHTML = '';
+      if (q.value.trim().length < 2) return;
+      const res = await api('/api/search-companies', {q: q.value});
+      (res.results || []).slice(0, 8).forEach(x => {
+        const h = el('button', 'pbhit', x.name + ' · ' + (x.sector || ''));
+        h.type = 'button';
+        h.onclick = () => { onPick(x); q.value = ''; hits.innerHTML = ''; };
+        hits.appendChild(h);
+      });
+    }, 250);
+  };
+  wrap.append(q, hits);
+  return wrap;
+}
+
+function pbEditor(item, r) {
+  const c = r.company || {};
+  const box = el('div', 'pbeditor');
+  const msg = el('div', 'kv');
+  const k = item.key;
+  if (k === 'website') {
+    const inp = el('input', 'txt'); inp.value = c.website || '';
+    inp.placeholder = 'https://their-site.com';
+    inp.setAttribute('aria-label', 'website');
+    const check = el('button', 'act', 'Check it');
+    const save = el('button', 'act go', 'Save website');
+    check.onclick = async () => {
+      msg.textContent = 'reading…';
+      const res = await api('/api/verify-website', {url: inp.value, name: c.name, id: c.id});
+      msg.textContent = res.error ? res.error
+        : (res.unreadable ? 'the page would not read'
+           : `"${res.title || ''}"` + (res.identifies ? ' - names the company' : ' - does NOT name the company')
+             + (res.parked ? ' - looks parked' : ''));
+    };
+    save.onclick = () => pbDo('page-website', {url: inp.value}, msg);
+    const row = el('div', 'row'); row.append(check, save);
+    box.append(inp, row);
+  } else if (k === 'writeup') {
+    box.appendChild(el('label', 'kv', 'One-line description (what they sell, to whom)'));
+    const d = el('input', 'txt'); d.value = c.description || '';
+    d.setAttribute('aria-label', 'one-line description');
+    const dsave = el('button', 'act', 'Save description');
+    dsave.onclick = () => pbDo('page-description', {text: d.value}, msg);
+    box.append(d, dsave);
+    box.appendChild(el('label', 'kv', 'Write-up - your words, published as you write them. '
+      + 'A blank line starts a new paragraph.'));
+    const ta = el('textarea', 'txt'); ta.rows = 8;
+    ta.setAttribute('aria-label', 'write-up');
+    ta.value = ((c.profile && c.profile.paragraphs) || []).map(pbParaText).join('\n\n');
+    const wsave = el('button', 'act go', 'Save write-up');
+    wsave.onclick = () => pbDo('page-writeup', {paragraphs: ta.value}, msg);
+    box.append(ta, wsave);
+    box.appendChild(pbPending(r, ['profile'], msg));
+  } else if (k === 'competitors') {
+    /* names from the server for every saved rival, including one from
+       outside this category */
+    const names = r.competitor_names || {};
+    let picked = (c.competitors || []).map(x => ({id: x.id,
+      name: names[x.id] || (r.same_category.find(s => s.id === x.id) || {}).name || x.id}));
+    const chips = el('div', 'pbchips');
+    const draw = () => {
+      chips.innerHTML = '';
+      picked.forEach(x => {
+        const ch = el('span', 'chip', x.name + ' ');
+        const rm = el('button', 'pbx', '×'); rm.type = 'button';
+        rm.setAttribute('aria-label', 'remove ' + x.name);
+        rm.onclick = () => { picked = picked.filter(y => y.id !== x.id); draw(); };
+        ch.appendChild(rm); chips.appendChild(ch);
+      });
+    };
+    draw();
+    const same = el('select', 'in');
+    same.setAttribute('aria-label', 'add a competitor from this category');
+    same.appendChild(Object.assign(el('option', null, 'add from ' + (c.category || 'this category')), {value: ''}));
+    (r.same_category || []).forEach(x => { const o = el('option', null, x.name); o.value = x.id; same.appendChild(o); });
+    same.onchange = () => {
+      const x = r.same_category.find(s => s.id === same.value);
+      if (x && !picked.some(y => y.id === x.id)) { picked.push(x); draw(); }
+      same.value = '';
+    };
+    const pick = pbPicker('or search the whole map', x => {
+      if (x.id !== c.id && !picked.some(y => y.id === x.id)) { picked.push(x); draw(); }
+    });
+    const save = el('button', 'act go', 'Save competitors');
+    save.onclick = () => pbDo('page-competitors', {rivals: picked.map(x => x.id)}, msg);
+    const none = el('button', 'act', 'None found');
+    none.onclick = () => pbDo('page-competitors', {none_found: true}, msg);
+    const row = el('div', 'row'); row.append(save, none);
+    box.append(chips, same, pick, row);
+    box.appendChild(pbPending(r, ['rival', 'rivweb'], msg));
+  } else if (k === 'news') {
+    const items = (r.news && r.news.items) || [];
+    if (items.length) {
+      items.slice(0, 5).forEach(n => {
+        const line = el('div', 'kv', (n.date || '') + ' · ');
+        const a = el('a', null, n.headline || n.url);
+        a.href = n.url; a.target = '_blank'; a.rel = 'noopener';
+        line.appendChild(a); box.appendChild(line);
+      });
+    } else box.appendChild(el('div', 'kv', 'No dated news items on file.'));
+    const job = r.news_job;
+    const running = job && !job.done;
+    if (job && job.done)
+      box.appendChild(el('div', job.error ? 'kv warn' : 'kv',
+        'last check ' + job.done + ': ' + (job.error || job.message)));
+    const chk = el('button', 'act', running ? 'Checking their news…' : 'Check their news now');
+    chk.disabled = !!running;
+    chk.onclick = async () => {
+      const res = await pbDo('page-news-check', {}, msg);
+      if (res && res.running) pbNewsPoll(c.id);
+    };
+    box.appendChild(chk);
+    if (running) pbNewsPoll(c.id);
+  } else if (k === 'supplier') {
+    const sec = el('select', 'in'), cat = el('select', 'in');
+    sec.setAttribute('aria-label', 'department'); cat.setAttribute('aria-label', 'subsector');
+    (SCHEMA.sectors || []).forEach(s => {
+      const o = el('option', null, s.name); o.value = s.name;
+      if (s.name === c.sector) o.selected = true; sec.appendChild(o);
+    });
+    const fill = () => {
+      cat.innerHTML = '';
+      const s = (SCHEMA.sectors || []).find(x => x.name === sec.value);
+      (s ? s.categories : []).forEach(x => {
+        const o = el('option', null, x); o.value = x;
+        if (x === c.category) o.selected = true; cat.appendChild(o);
+      });
+    };
+    fill(); sec.onchange = fill;
+    const gov = el('button', 'act go', 'GovTech product - file it here');
+    gov.onclick = () => pbDo('page-supplier', {choice: 'govtech', sector: sec.value, category: cat.value}, msg);
+    const sup = el('button', 'act', 'Supplier - take it off the map');
+    sup.onclick = async () => {
+      if (!confirm(`Move ${c.name} off the map into the supplier registry? `
+        + 'Its page and its jobs leave the public board.')) return;
+      const res = await pbDo('page-supplier', {choice: 'supplier', confirm: true}, msg);
+      if (res && res.removed) pbAdvance(false, true);
+    };
+    const row = el('div', 'row'); row.append(gov, sup);
+    box.append(sec, cat, row);
+  } else if (k === 'buyer') {
+    /* nothing is pre-selected: an unanswered question must not look answered */
+    const opts = [['', 'choose…'], ['gov_only', 'Government only'],
+                  ['gov_and_business', 'Government and businesses'],
+                  ['business_only', 'Businesses, not government']];
+    const sel = el('select', 'in');
+    sel.setAttribute('aria-label', 'who buys it');
+    opts.forEach(([v, t]) => { const o = el('option', null, t); o.value = v;
+      if ((c.buyer_mix || '') === v) o.selected = true; sel.appendChild(o); });
+    const who = el('input', 'txt'); who.value = c.buyer || '';
+    who.placeholder = 'who buys it, in one sentence (optional)';
+    who.setAttribute('aria-label', 'who buys it, in one sentence');
+    const save = el('button', 'act go', 'Save');
+    save.disabled = !sel.value;
+    sel.onchange = () => { save.disabled = !sel.value; };
+    save.onclick = () => pbDo('page-buyer', {mix: sel.value, buyer: who.value}, msg);
+    box.append(sel, who, save);
+    box.appendChild(pbPending(r, ['buyer'], msg));
+  } else if (k === 'founded') {
+    const y = el('input', 'txt'); y.value = c.year_founded || ''; y.placeholder = 'year, e.g. 2014';
+    y.setAttribute('aria-label', 'founding year');
+    const src = el('input', 'txt'); src.placeholder = 'where you read it (optional)';
+    src.setAttribute('aria-label', 'where you read it');
+    const save = el('button', 'act go', 'Save year');
+    save.onclick = () => pbDo('page-founded', {year: y.value, source: src.value}, msg);
+    /* with a year on file this button REMOVES it - said on the button */
+    const none = el('button', 'act', c.year_founded
+      ? `Not stated anywhere - remove ${c.year_founded}` : 'Not stated anywhere');
+    none.onclick = () => pbDo('page-founded', {unknown: true}, msg);
+    const row = el('div', 'row'); row.append(save, none);
+    box.append(y, src, row);
+  } else if (k === 'ownership') {
+    if (c.parent) box.appendChild(el('div', 'kv', 'on file: part of ' + c.parent));
+    if ((c.brands || []).length)
+      box.appendChild(el('div', 'kv', 'brands they own: ' + c.brands.map(b => b.name).join(', ')));
+    const pick = pbPicker('parent company (search the map)', x => {
+      pbDo('page-ownership', {parent: x.id}, msg);
+    });
+    const free = el('input', 'txt'); free.placeholder = 'or type a parent that is not on the map';
+    free.setAttribute('aria-label', 'parent not on the map');
+    const saveFree = el('button', 'act', 'Save parent');
+    saveFree.onclick = () => pbDo('page-ownership', {parent: free.value}, msg);
+    const ind = el('button', 'act go', 'Independent - no parent');
+    ind.onclick = () => pbDo('page-ownership', {independent: true}, msg);
+    const row = el('div', 'row'); row.append(saveFree, ind);
+    box.append(pick, free, row);
+  }
+  box.appendChild(msg);
+  /* where this item lives when it is not being fixed here - offered only
+     when that queue really lists this company */
+  if (item.queue && META && META.labels && META.labels[item.queue]) {
+    const q = el('a', 'kv', 'open the ' + META.labels[item.queue] + ' queue');
+    q.href = '#'; q.onclick = e => { e.preventDefault(); show(item.queue); };
+    box.appendChild(q);
+  }
+  box.appendChild(pbExplain(item));
+  return box;
+}
+
+/* a news check runs in the background on the server; the card asks again
+   every few seconds until it is done, and stops when the belt moves on */
+const PB_NEWS_POLLS = new Set();
+function pbNewsPoll(id) {
+  if (PB_NEWS_POLLS.has(id)) return;
+  PB_NEWS_POLLS.add(id);
+  let n = 0;
+  const tick = async () => {
+    n += 1;
+    if (!pbOn() || !PB.card || PB.card.company.id !== id || n > 60) {
+      PB_NEWS_POLLS.delete(id); return;
+    }
+    const card = await api('/api/page-card?id=' + encodeURIComponent(id));
+    const job = card && card.news_job;
+    if (job && job.done) {
+      PB_NEWS_POLLS.delete(id);
+      toast((PB.card && PB.card.company.name || id) + ': ' + (job.error || job.message), !!job.error);
+      pbRefresh();
+      return;
+    }
+    setTimeout(tick, 5000);
+  };
+  setTimeout(tick, 5000);
+}
+
+/* after a refused board: what was found, and the one way past it */
+function pbWireAnyway(res, url, msg, name, redo) {
+  if (!res || !res.mismatch) return;
+  const w = el('button', 'act', 'Wire it anyway');
+  w.title = 'you know this board is theirs - the journal records that you wired it anyway';
+  w.onclick = () => {
+    if (confirm(`Wire this board to ${name} anyway? Its jobs will publish as ${name}'s.`))
+      redo({url, force: true});
+  };
+  msg.after(w);
+}
+
+function pbJobs(r) {
+  const j = r.jobs || {};
+  const c = r.company || {};
+  const box = el('div', 'pbjobs'); box.id = 'pb-jobs';
+  box.appendChild(el('h3', null, 'Jobs'));
+  const b = el('div', 'pbjrow');
+  b.appendChild(el('span', 'pblabel', 'Board'));
+  if (j.url) {
+    const a = el('a', null, j.name); a.href = j.url; a.target = '_blank'; a.rel = 'noopener';
+    b.appendChild(a);
+  } else b.appendChild(el('span', null, j.name));
+  if (j.posts_at) b.appendChild(el('span', 'kv', ' · posts on ' + j.posts_at.label));
+  box.appendChild(b);
+  const rd = el('div', 'pbjrow');
+  rd.appendChild(el('span', 'pblabel', 'Readable'));
+  rd.appendChild(el('span', j.readable ? 'ok' : 'warn', j.readable ? 'yes' : 'no'));
+  rd.appendChild(el('span', 'kv', ' · ' + (j.why || '') + (j.open_roles ? ' · ' + j.open_roles + ' open' : '')));
+  box.appendChild(rd);
+  const sw = el('div', 'pbjrow');
+  sw.appendChild(el('span', 'pblabel', 'Last swept'));
+  sw.appendChild(el('span', null, j.last_swept || 'never by hand'));
+  if (j.on_scrub)
+    sw.appendChild(el('span', j.due ? 'kv warn' : 'kv',
+      ' · on the Scrub tab, ' + (j.due ? 'due now' : 'next sweep due ' + j.due_on)));
+  box.appendChild(sw);
+  const msg = el('div', 'kv');
+  const inp = el('input', 'txt');
+  inp.setAttribute('aria-label', 'job board link');
+  inp.placeholder = 'paste their job board link (Ashby, Greenhouse, a careers page, LinkedIn…)';
+  const go = el('button', 'act go', 'Add board');
+  const add = async body => {
+    const res = await pbDo('page-board', body, msg);
+    pbWireAnyway(res, body.url, msg, c.name || c.id, add);
+  };
+  go.onclick = () => add({url: inp.value});
+  inp.onkeydown = e => { if (e.key === 'Enter') go.click(); };
+  const wf = el('button', 'act', j.sent_from_belt ? 'Sent to the Scrub tab'
+    : (j.on_scrub ? 'Move to the top of Scrub' : 'Submit to workflow'));
+  wf.title = 'put it at the top of the Scrub tab, to sweep by hand with the extension';
+  wf.disabled = !!j.sent_from_belt;
+  wf.onclick = () => pbDo('page-scrub', {}, msg);
+  const row = el('div', 'row'); row.append(go, wf);
+  box.append(inp, row, msg);
+  box.appendChild(pbExplain({key: 'board'}));
+  return box;
+}
+
+/* Skip and Submit act on the company ON SCREEN, never on an index that may
+   have moved: if the two disagree, or a card is still loading, nothing
+   happens. */
+function pbOnScreen() {
+  const it = PB.items[PB.i];
+  return (!PB.busy && PB.card && it && it.id === PB.card.company.id) ? it : null;
+}
+
+function pbAdvance(skipped, removed) {
+  const it = removed ? PB.items[PB.i] : pbOnScreen();
+  if (!it) return;
+  if (skipped) pbSkip(it.id);
+  if (removed) PB.items.splice(PB.i, 1); else PB.i += 1;
+  pbShow();
+}
+
+async function pbSubmit() {
+  const it = pbOnScreen(); if (!it) return;
+  const id = it.id, name = PB.card.company.name || id;
+  /* THE NEXT CARD SHOWS AT ONCE. It was prefetched; the approval goes to
+     the server behind it. If the server refuses, the page comes back as the
+     next card and the refusal is said. */
+  PB.items.splice(PB.i, 1);
+  PB.submitting += 1;
+  pbShow();
+  const res = await api('/api/page-submit', {id});
+  PB.submitting -= 1;
+  if (res.error) {
+    PB.items.splice(Math.min(PB.i + 1, PB.items.length), 0, it);
+    if (PB.next && PB.next.id !== (PB.items[PB.i + 1] || {}).id) PB.next = null;
+    toast(name + ' was not approved: ' + res.error + ' - it comes up next', true);
+    pbCount();
+    return;
+  }
+  toast(res.message);
+  pbApplyCounts(res.counts);
+  pbCount();
+  refreshCounts();
+}
+
+/* J skips and S submits, only while the belt is on screen, no card is
+   loading and no field has focus - typing in an editor is typing. Escape
+   leaves a field, so the next J is a key and not a letter. */
+document.addEventListener('keydown', e => {
+  if (TAB !== '__pagebelt' || e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target;
+  const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT');
+  if (e.key === 'Escape' && typing && t.closest && t.closest('#pb-host, .pbtop')) {
+    t.blur(); const h = $('#pb-host'); if (h) h.focus({preventScroll: true});
+    return;
+  }
+  if (typing || PB.busy) return;
+  if (e.key === 'j' || e.key === 'J') { e.preventDefault(); pbAdvance(true); }
+  else if (e.key === 's' || e.key === 'S') { e.preventDefault(); pbSubmit(); }
+});
+
+RENDER.signedoff = x => {
+  const n = el('div', 'item');
+  const h = el('h3', null, x.name);
+  n.appendChild(h);
+  const meta = el('div', 'kv');
+  meta.append(el('span', 'chip' + (x.lost ? ' warn' : ''),
+                 x.lost ? 'lost since approval' : (x.sweep_due ? 'sweep due' : 'open when approved')),
+              document.createTextNode(' ' + x.label + ': ' + (x.state || '')));
+  n.appendChild(meta);
+  if (x.detail) n.appendChild(el('div', 'kv', x.detail));
+  const row = el('div', 'row');
+  const open = el('button', 'act go', 'Open the page');
+  open.onclick = async () => {
+    await showPageBelt(x.sector, x.category);
+    if (!pbOn()) return;
+    /* an approved page is not on the belt; show its card directly */
+    PB.items.unshift({id: x.id, name: x.name, category: x.category, approved: true});
+    PB.i = 0; PB.next = null;
+    pbShow();
+  };
+  row.appendChild(open);
+  n.appendChild(row);
+  return n;
+};
+
+/* THE SCRUB TAB (owner, 2026-09-28). Every board only a person can read,
+   with the day it was last swept by hand, on a 14-day cadence. The sweep
+   itself happens on their page with the extension - its "what to hit next"
+   list is this tab, due first - and any of four outcomes marks it swept:
+   jobs captured, no openings today, posts somewhere else, or the real board
+   pasted (which takes it off this tab for good: a board read every night
+   needs no person). */
+RENDER.scrub = x => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, x.name));
+  const meta = el('div', 'kv');
+  meta.append(el('span', 'chip' + (x.due ? ' warn' : ''),
+    x.last_swept ? (x.due ? `due - last swept ${x.last_swept}` : `swept ${x.last_swept} · next ${x.due_on}`)
+                 : 'never swept by hand'));
+  if (x.sent_on) meta.append(document.createTextNode(' '), el('span', 'chip', 'sent from the page belt ' + x.sent_on));
+  meta.append(document.createTextNode(' ' + (x.sector || '') + ' / ' + (x.category || '')));
+  n.appendChild(meta);
+  if (x.why) n.appendChild(el('div', 'kv', x.why));
+  if (x.url) {
+    const a = el('a', null, 'open their careers page ↗');
+    a.href = x.url; a.target = '_blank'; a.rel = 'noopener';
+    const w = el('div', 'kv'); w.appendChild(a); n.appendChild(w);
+  }
+  const row = el('div', 'row');
+  const msg = el('div', 'kv');
+  /* A SWEPT ROW STAYS, marked swept: the tab is the whole standing job and
+     the row comes due again in 14 days. Only a board read every night
+     leaves the list, and only when the server says so. */
+  const swept = how => {
+    const chip = meta.querySelector('.chip');
+    if (chip) { chip.className = 'chip'; chip.textContent = 'swept today - ' + how; }
+    row.querySelectorAll('button, input').forEach(b => { b.disabled = true; });
+    refreshCounts();
+  };
+  const none = el('button', 'act', 'No openings today');
+  none.onclick = async () => {
+    const r = await api('/api/capture', {company_id: x.id, jobs: [], page_url: x.url || x.website,
+      found: false, note: 'no openings today, swept from the Scrub tab'});
+    if (r.error) { msg.textContent = r.error; msg.style.color = 'var(--warn)'; return; }
+    toast(x.name + ': swept, no openings'); swept('no openings');
+  };
+  const inp = el('input', 'txt'); inp.placeholder = 'paste the real board (Ashby, Greenhouse…) or a LinkedIn jobs link';
+  inp.setAttribute('aria-label', 'job board link for ' + x.name);
+  const add = el('button', 'act go', 'Add board');
+  const send = async body => {
+    const r = await api('/api/page-board', Object.assign({id: x.id}, body));
+    if (r.error) {
+      msg.textContent = r.error; msg.style.color = 'var(--warn)';
+      if (r.mismatch && !body.force) {
+        const w = el('button', 'act', 'Wire it anyway');
+        w.onclick = () => {
+          if (confirm(`Wire this board to ${x.name} anyway? Its jobs will publish as ${x.name}'s.`)) {
+            w.remove(); send({url: body.url, force: true});
+          }
+        };
+        msg.after(w);
+      }
+      return;
+    }
+    msg.textContent = r.message; msg.style.color = 'var(--accent)';
+    if (r.outcome === 'empty') return;
+    toast(r.message);
+    if (r.outcome === 'wired') { n.remove(); refreshCounts(); }
+    else swept(r.outcome === 'posts_at' ? 'posts somewhere else' : 'careers page found');
+  };
+  add.onclick = () => send({url: inp.value});
+  row.append(none, inp, add);
+  n.append(row, msg);
+  return n;
+};
+
 </script>
 </body>
 </html>

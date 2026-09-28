@@ -25,3 +25,8 @@ public/
 # which pages were read, when, their sha, and nothing of what they said.
 /data/site_pages/
 /data/briefs/
+
+# The owner's words to Claude from the page belt's explain boxes. The repo is
+# public; this file is private by construction (page_belt.act_explain).
+/data/claude_inbox.jsonl
+/data/claude_inbox.state.json

@@ -22,8 +22,9 @@ longer in. So the gaps at the moment of signing are stored alongside, and
 `.profiles_read` recording WHEN a category was gated rather than merely THAT
 it was: a marker that cannot say what it covered certifies work nobody did.
 
-It never blocks anything. A stale sign-off re-opens a row on the sweep and
-says what changed; it does not un-publish a page or touch the map.
+It never blocks anything. A page that LOSES something after approval shows
+in "Open on approved pages" and in the item's own queue - never back on the
+belt - and nothing here un-publishes a page or touches the map.
 """
 from __future__ import annotations
 
@@ -71,21 +72,29 @@ def record(company_id: str, by: str, gaps: list, note: str = "") -> dict:
             "gaps_then": sorted(str(g) for g in gaps)}
 
 
-def stale_for(review: dict | None, gaps_now: list) -> list:
-    """What has changed since this page was signed off. [] when nothing has.
+def stale_for(review: dict | None, reds_now: list) -> list:
+    """What an approved page has LOST since it was approved. [] when nothing.
 
-    Reports BOTH directions. A gap that appeared is the obvious one - the
-    write-up was retracted, the board stopped reading. A gap that CLOSED
-    matters too: the page he approved is not the page a visitor sees, and he
-    may want to look at what landed.
+    LOSSES ONLY (owner, 2026-09-28). A page he approved does not come back
+    because something got FIXED - a write-up landing on an approved page is
+    the point of approving with red items. It is reported only when something
+    it HAD is gone: a write-up pulled, a board that stopped reading. And even
+    then it does not return to the belt; it shows in "Open on approved pages"
+    and in the item's own queue.
+
+    `reds_now` is page_belt.reds() - the nine checklist keys that are red
+    now. A sign-off made on the belt stores the whole checklist, so a loss is
+    a key that was green then and is red now. An older sign-off stored only
+    the gaps that were open, so there a loss is a gap that was not open then.
     """
     if not review:
         return []
-    then = set(review.get("gaps_then") or [])
-    now = set(str(g) for g in gaps_now)
-    out = [f"+{g}" for g in sorted(now - then)]
-    out += [f"-{g}" for g in sorted(then - now)]
-    return out
+    now = set(str(g) for g in reds_now)
+    then = review.get("checklist")
+    if isinstance(then, dict):
+        return [f"lost {k}" for k in sorted(now) if then.get(k)]
+    was = set(review.get("gaps_then") or [])
+    return [f"lost {g}" for g in sorted(now - was)]
 
 
 def main() -> int:

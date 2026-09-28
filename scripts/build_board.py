@@ -717,10 +717,12 @@ def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str |
 def profile_for_board(c: dict) -> dict | None:
     """The public shape of a company's write-up, or None.
 
-    Only the NEW shape travels - `paragraphs` with provenance - because the
-    two legacy `profile` rows are a reviewer's working notes and would read
-    as the company's own account of itself. Provenance is folded into what
-    the page needs: which pages each paragraph came from, and the page list.
+    Only the NEW shape travels - `paragraphs` - because the two legacy
+    `profile` rows are a reviewer's working notes and would read as the
+    company's own account of itself. The pages print the text alone (owner,
+    2026-09-28); provenance stays in companies.json for the agent door, and
+    a write-up the owner wrote by hand travels with hand_written so the page
+    can say whose words they are.
     """
     pr = c.get("profile")
     if not isinstance(pr, dict) or not isinstance(pr.get("paragraphs"), list) \
@@ -741,6 +743,9 @@ def profile_for_board(c: dict) -> dict | None:
         "paragraph_sources": per_para,
         "written_on": pr.get("written_on"),
         "by_kind": "company" if by.startswith("claim:") else "site",
+        # the owner's own words (page belt, 2026-09-28): the page says
+        # "written by SLED JOBS". Only when true, so nothing else changes.
+        **({"hand_written": True} if pr.get("hand_written") else {}),
     }
 
 def manual_row(mp: dict) -> dict:

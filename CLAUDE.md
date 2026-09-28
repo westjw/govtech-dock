@@ -183,6 +183,99 @@ What a card may say, each one a rule the table used to keep by position:
 a DOM that absorbs everything and calls `jobCardHTML` on fixtures. It was built
 because the suite had never executed a line of the public page's script.
 
+## The page belt, the Scrub tab and Claude's inbox (owner, 2026-09-28)
+
+The owner's drawing: company pages reviewed as a BELT, one company at a time,
+alphabetical within a department (sector) and optional subsector. Left: the
+public company page as it will publish, redrawn from the record after every
+edit (`page_belt.preview_html`). Right: the title (editable; the old name is
+kept as an alias) and a nine-item checklist, then the Jobs box. Skip (J) and
+Submit (S). Code: `scripts/page_belt.py`, admin tab "Page sweep".
+
+**The nine items, in his order:** website, job board, write-up (the
+description and the write-up are one item to him), competitors, news,
+supplier vs govtech, who buys it, founding year, ownership. Every item,
+green or red, opens its editor on the belt. Green is a FACT the file shows,
+computed on the server by `page_belt.checklist` - one definition, which
+Submit records. Rules that were each wrong once (review, 2026-09-28):
+
+- **Readable is the board's own verdict** (`board_verdict`: enumerable is not
+  False and nothing unreadable), the same test the public page prints.
+  refresh's `hiring.status` is a different question - "Yes" can be a keyword
+  hit with no title - and 192 of 808 careers pages disagreed with it.
+- **Who buys it is the MIX** - government only, or government and businesses.
+  "Sells to government" alone is red; "does not sell to government" is an
+  answer. The select pre-selects nothing.
+- **Ownership needs an answer**: a parent, acquired, or independent. A check
+  that recorded nothing (`acquisitions_checked_on` alone) is red "checked, not
+  answered". A research claim that names the parent on file settles itself;
+  a person's answer (`ownership_by`) settles it and dismisses the research row
+  in Acquisitions. `admin._is_person(None)` is True, so test the field is
+  PRESENT before asking whether a person wrote it.
+- **"Not stated anywhere" with a year on file REMOVES the year** (journalled),
+  then records the answered blank.
+- **A red item links a queue only when that queue lists the company.**
+
+**Add board proves ownership, it does not assume it.** A structured board is
+wired when the judge says `matches`, or its slug shares ground with the
+company (`discover_ats.slug_matches`) and the judge does not say MISMATCH. The
+judge sees no name on Ashby, Lever, BambooHR, Breezy, Recruitee or
+SmartRecruiters, so `unknown` is NOT a pass. A careers page must sit on their
+own website's host. A LinkedIn/Indeed/Wellfound/Built In link must carry their
+slug. Anything unproven is refused with its evidence; "Wire it anyway" sends
+`force` and the journal says "wired anyway by a person". A pasted board
+address is read as an address first (Greenhouse's page does not contain its
+own URL).
+
+**Submit approves even with red items.** An approved page never returns to
+the belt. Its red items show in "Open on approved pages" (`q_signedoff`) and in
+their own queue where one lists them - a company approved with everything but
+a founding year still shows in Founding year. A page that LOSES something after
+approval (green then, red now) is flagged "lost" there, never back on the
+belt. A sweep coming due is the cadence, not a loss (`cadence` on the item;
+`reds()` leaves it out).
+
+**Write-ups.** "I don't like the quotes and links in the description. Use what
+we have if we have it, I will add all of them manually." The public page
+prints paragraphs only - no numbered sources, no quote. His write-up is saved
+with `hand_written: True`, labelled "written by SLED JOBS", published as
+written; the agent's pending draft for that company is rejected first, a
+landing (`promote_profiles.land`) holds back rather than overwrite it and says
+so, and a queue Accept is refused with that reason. The agent door still
+guards what agents write.
+
+**The Scrub tab** (`q_scrub`) is every board only a person can read: a careers
+page the crawl cannot read, a place they post that a person can capture, or a
+company sent from the belt ("Submit to workflow"). A structured board is read
+nightly and never on it. Cadence: **14 days**, due ON day 14, one helper
+(`cadence`) for the tab, the jobs box and the checklist. A sweep is any of:
+jobs captured, no openings today, posts somewhere else, real board found - the
+last two are stamped by Add board into `scrub.json` (`swept_on`, `swept_how`).
+The badge counts DUE rows. The extension's worklist "scrub list (due)" steps
+through it; a row click stores `ss-target` with the URL it opened, and the
+panel pre-picks that company ONLY on that site (and on shared sites like
+LinkedIn only under that company's own path); picking another company,
+closing the panel or recording the sweep forgets it.
+
+**Claude's inbox.** Every checklist item has an "explain" box for anything
+that needs semantic explanation. It appends to `data/claude_inbox.jsonl` -
+GITIGNORED, written with a plain append and never through the journal,
+because the repo is public and the journal copies the why. Each row keeps what
+the checklist showed when he wrote it (`saw`). Once a day, at the end of the
+day, the open items are workshopped with him so the system understands what
+is going on; `python3 scripts/inbox.py` lists them and `--resolve ID --status
+workshopped|fixed|wontfix --note ...` settles one.
+
+**The screen acts on what it shows.** Skip and Submit act on the card on
+screen (`pbOnScreen`), never on an index, and do nothing while a card loads;
+every card load carries a sequence number and a stale one is dropped. Submit
+shows the prefetched next card at once and approves in the background; a
+refusal brings the page back as the next card. The preview iframe is
+`sandbox="allow-scripts"` for its one scroll-keeper script and must NEVER
+gain `allow-same-origin` - that would hand a company page the console token.
+The news check runs in a background thread (the admin is single-threaded)
+and the card polls for the result.
+
 ## House rules
 
 - **A page scan never proves absence.** `scan_pagetext` may return
