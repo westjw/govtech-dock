@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Anti-Drone Systems: Types, Legality, and Which You Need | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/anti-drone-systems"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Counter-UAS Solutions: How to Shortlist Vendors | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/counter-uas-solutions"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Do Anti-Drone Systems Work? A Step-by-Step Guide | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/how-do-anti-drone-systems-work"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Counter-UAS Systems: What a Complete C-UAS Stack Includes | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/counter-uas-systems"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Counter-Drone Measures: Every Lawful Option, Ranked | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/counter-drone-measures"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is Counter-UAS? The Complete C-UAS Guide | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/what-is-counter-uas"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "AirSight x Skydio: Closing the Gap Between Drone Detection and Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/airsight-x-skydio-drone-detection-response"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/drone-monitoring"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Tracking: How to Follow a UAS in Real Time | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-tracking"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Detection Technology: The Complete Guide | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-technology"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Radio Frequency Drone Detection: Range, Accuracy & Limits | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/radio-frequency-drone-detection"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "RF Drone Detection: How RF Sensors Find Drones and Pilots | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/rf-drone-detection-explained"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Can You Fly a Drone Over Private Property? What the Law Actually Allows | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-over-private-property-law"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The FAA's New No-Drone-Zone Rule: How Facilities Can Request Drone Flight Restrictions | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/the-faas-new-no-drone-zone-rule-how-facilities-can-request-drone-flight-restrictions-airsightno-drone-zone-faa-rule"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Tracker Guide: How to Track Drones in Real Time | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-tracker"
   }
  ],
  "profile": {

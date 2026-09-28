@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "AI Governance in Permitting: How to Keep Staff in Control of Every Decision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.claritisoftware.com/blog/ai-governance-in-permitting"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.claritisoftware.com/blog/how-these-7-permitting-departments-saved-time-with-claritis-process-automation"
-  },
-  {
-   "date": "2025-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Get the Most From Your Data with Clariti Enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.claritisoftware.com/blog/how-to-get-the-most-from-your-data-with-clariti-enterprise"
   }
  ],
  "profile": {

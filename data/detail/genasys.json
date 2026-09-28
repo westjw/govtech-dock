@@ -1,10 +1,37 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "What Does an Emergency Communication System Do When There Isn\u2019t an Emergency?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genasys.com/resources/what-does-an-emergency-communication-system-do-when-there-isnt-an-emergency"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Butte County, CA Selects Genasys Protect to Strengthen Its Wildfire Preparedness and Emergency Management",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.genasys.com/resources/butte-county-ca-selects-genasys-protect-to-strengthen-its-wildfire-preparedness-and-emergency-management"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Genasys Inc. Announces $1.3M LRAD National Guard Order",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genasys.com/resources/genasys-inc-announces-1-3m-lrad-national-guard-order"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
-   "headline": "Genasys Inc. Receives $3.0M in U.S. and International LRAD\u00ae Orders",
+   "headline": "Genasys Inc. Receives $3.0M in U.S. and International LRAD Orders",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genasys.com/resources/genasys-inc-receives-3-0m-in-u-s-and-international-lrad-orders"
@@ -13,7 +40,7 @@
    "date": "2026-09-09",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
-   "headline": "Genasys Inc. Receives $3.0M in U.S. and International LRAD\u00ae Orders",
+   "headline": "Genasys Inc. Receives $3.0M in U.S. and International LRAD Orders",
    "kind": "press",
    "kind_rule": null,
    "url": "https://genasys.com/press-releases/genasys-inc-receives-3-0m-in-u-s-and-international-lrad-orders"
@@ -73,40 +100,13 @@
    "url": "https://www.genasys.com/resources/is-it-possible-to-keep-high-value-targets-like-ai-data-centers-safe-in-your-community"
   },
   {
-   "date": "2026-08-18",
+   "date": "2026-08-20",
    "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Genasys Announces $1.4M in International LRAD Orders",
+   "first_seen": "2026-09-28",
+   "headline": "How Can Power Utilities and AI Data Centers Respond to Intruders Before Security Arrives?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.genasys.com/resources/genasys-announces-1-4m-in-lrad-orders"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Genasys Announces $1.4M in International LRAD Orders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://genasys.com/press-releases/genasys-announces-1-4m-in-lrad-orders/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Genasys Inc. Reports Fiscal Third Quarter 2026 Financial Results",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genasys.com/resources/genasys-inc-reports-fiscal-third-quarter-2026-financial-results"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Genasys Inc. Reports Fiscal Third Quarter 2026 Financial Results",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://genasys.com/press-releases/genasys-inc-reports-fiscal-third-quarter-2026-financial-results/"
+   "url": "https://www.genasys.com/resources/how-can-power-utilities-and-ai-data-centers-respond-to-intruders-before-security-arrives"
   }
  ]
 }

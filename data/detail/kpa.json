@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "The FTC\u2019s New Pricing FAQs Leave Dealers Little Room for Guesswork",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kpa.io/blog/the-ftcs-new-pricing-faqs-leave-dealers-little-room-for-guesswork"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-10",
+   "headline": "Employers Should Expect Increased Immigration Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kpa.io/blog/employers-should-expect-increased-immigration-enforcement/"
+  },
+  {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-10",
    "headline": "Your Dealership\u2019s Biggest Data Risk May Be a Vendor You Forgot About",
    "kind": "press",
@@ -13,19 +31,28 @@
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Employers Should Expect Increased Immigration Enforcement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kpa.io/blog/employers-should-expect-increased-immigration-enforcement/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
    "headline": "Before You Stockpile Motor Oil: The SPCC Compliance Risks Car Dealers Should Consider",
    "kind": "press",
    "kind_rule": null,
    "url": "https://kpa.io/blog/before-you-stockpile-motor-oil-the-spcc-compliance-risks-car-dealers-should-consider/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "State-Level Compliance Isn't Enough: Dealerships Must Look Beyond State Law",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kpa.io/blog/state-level-compliance-isnt-enough-dealerships-must-look-beyond-state-law/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Tax-Free Overtime: Are you Recording it Properly?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kpa.io/blog/tax-free-overtime-are-you-recording-it-properly"
   },
   {
    "date": "2026-08-31",
@@ -64,17 +91,8 @@
    "url": "https://kpa.io/blog/a-new-way-to-certify-aftermarket-parts-comply-what-it-means-for-your-shop/"
   },
   {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "State-Level Compliance Isn\u2019t Enough: Dealerships Must Look Beyond State Law",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kpa.io/blog/state-level-compliance-isnt-enough-dealerships-must-look-beyond-state-law/"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
+   "date": "2026-07-01",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Minimum Wage Changes for July 1, 2026",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kpa.io/blog/ftc-fines-are-not-a-remediation-plan-why-dealers-need-a-defensible-safeguards-program/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New Lab Services: VOC and Waste Analysis Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kpa.io/blog/new-lab-services-voc-and-waste-analysis-compliance/"
-  },
-  {
-   "date": "2026-05-22",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "The Advantages of SSO for Auto Compliance Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kpa.io/blog/the-advantages-of-sso-for-auto-compliance-software/"
   }
  ],
  "profile": {

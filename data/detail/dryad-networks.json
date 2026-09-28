@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Dryad Wins International XPRIZE Wildfire Award for Autonomous Wildfire Detection and Suppression",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.dryad.net/post/dryad-wins-international-xprize-wildfire-award-for-autonomous-wildfire-detection-and-suppression"
+  },
+  {
    "date": "2026-07-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dryad.net/post/dryad-reseller-conference-2024"
-  },
-  {
-   "date": "2024-07-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Revolutionizing Wildfire Prevention: How Dryad Networks is Leading the Way",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dryad.net/post/revolutionizing-wildfire-prevention"
   }
  ],
  "profile": {

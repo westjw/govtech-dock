@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Your AI Police Report Writing Policy: What It Needs to Say Before the First AI Assisted Report Reaches Your District Attorney",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/ai-police-report-writing-policy"
+  },
+  {
+   "date": "2026-09-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Body Camera Data Ownership: What Happens to Your Footage When Your Contract Ends",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.lenslock.com/post/body-camera-data-ownership"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -82,22 +100,13 @@
    "url": "https://www.lenslock.com/post/from-demo-to-deployment-your-complete-lenslock-customer-journey-for-police-body-cameras"
   },
   {
-   "date": "2025-03-27",
+   "date": "2025-09-30",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Redaction Challenges and Key Takeaways",
+   "first_seen": "2026-09-28",
+   "headline": "Why Switch to LensLock Body Cameras: Trusted by Police Nationwide",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lenslock.com/post/video-redaction-challenges-and-key-takeaways"
-  },
-  {
-   "date": "2023-01-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Data Storage: On Premise Vs. Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lenslock.com/post/data-storage-on-premise-vs-cloud"
+   "url": "https://www.lenslock.com/post/why-switch-to-lenslock-body-cameras"
   }
  ],
  "profile": {

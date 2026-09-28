@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing 120Field: Built for the Truck, Not the Office",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.120water.com/blog/introducing-120field"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "120Water Partners with TeamSolve to Better Connect Field Data and Water Compliance",
+   "kind": "contract",
+   "kind_rule": "Partners with",
+   "url": "https://www.120water.com/news/120water-teamsolve-partner-field-data-compliance"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The EPA's New Systemic Issues Checklist: What Water Systems Should Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/the-epas-new-systemic-issues-checklist-what-water-systems-should-know"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.120water.com/blog/lcri-service-line-verification-lessons-from-the-field"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Revised CCR Rule: Changes, Deadlines, and Next Steps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/the-revised-ccr-rule-changes-deadlines-and-next-steps"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ACE\u201926 Recap: Water Industry Heroes Unite in Washington, D.C.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/ace26-recap-water-industry-heroes-unite-in-washington-dc"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Reactive to Proactive: Closing the Water Compliance Gap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/from-reactive-to-proactive-closing-the-water-compliance-gap"
   }
  ],
  "profile": {

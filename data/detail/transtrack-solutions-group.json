@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "NTD Reporting Best Practices: From Annual Scramble to Continuous Reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/ntd-reporting-best-practices"
+  },
+  {
    "date": "2026-07-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.transtracksystems.net/blog/public-transit-ridership-is-rebounding"
+  },
+  {
+   "date": "2025-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What is ViewPoint BI and How Can You Use It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.transtracksystems.net/blog/what-is-viewpoint-bi"
   }
  ],
  "profile": {

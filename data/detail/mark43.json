@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "ForceMetrics is joining Mark43.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/forcemetrics-is-joining-mark43/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -64,8 +73,17 @@
    "url": "https://mark43.com/resources/blog/in-conversation-with-chief-andre-anderson-what-does-it-take-to-build-a-model-police-agency/"
   },
   {
+   "date": "2026-05-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Making Your Mark: Abbey Temple on Bringing Real-World Experience into Every Demo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/making-your-mark-abbey-temple/"
+  },
+  {
    "date": "2026-05-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "A Turning Point for Police Technology in the UK",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Edge Expands EdgeMarket with Mark43\u2019s Public Safety Platform, Bringing Modern Campus Safety Technology to Higher Education Nationwide",
    "kind": "press",
@@ -82,22 +100,13 @@
    "url": "https://mark43.com/press/edge-expands-edgemarket-with-mark43/"
   },
   {
-   "date": "2026-01-08",
+   "date": "2026-03-25",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Making Your Mark: Building at a Defining Moment for Mark43 Engineering",
+   "first_seen": "2026-09-28",
+   "headline": "Making Your Mark: A Conversation with Mary McCulloch and Tim Haynes",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://mark43.com/resources/blog/making-your-mark-building-at-a-defining-moment-for-mark43-engineering/"
-  },
-  {
-   "date": "2025-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Making Your Mark: A Conversation with Callum Gray",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://mark43.com/resources/blog/making-your-mark-a-conversation-with-callum-gray/"
+   "url": "https://mark43.com/resources/blog/making-your-mark-a-conversation-with-mary-mcculloch-and-tim-haynes/"
   }
  ],
  "profile": {

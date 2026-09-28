@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Export Trimble Data to DeepWalk: A 3-Step Migration Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-export-trimble-data-to-deepwalk-a-3-step-migration-guide"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Sidewalk Grading Algorithm Overview",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/sidewalk-grading-algorithm-overview"
+  },
+  {
    "date": "2026-06-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
-  },
-  {
-   "date": "2025-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How To: Plan Data Collection Routes for Your Project",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/how-to-plan-data-collection-routes-for-your-project"
-  },
-  {
-   "date": "2025-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Understanding DeepWalk's Data Tool - Details Page",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/understanding-deepwalks-data-tool---details-page"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Practical Steps for Stress-Free Local Government Year-End Reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mysoftwaresolutions.com/news/practical-steps-for-stress-free-local-government-year-end-reporting"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mysoftwaresolutions.com/news/whats-changing-in-the-ohio-police-and-fire-pension-fund"
-  },
-  {
-   "date": "2026-05-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why McDonough County, IL Chose VIP to Replace a Legacy System",
-   "kind": "contract",
-   "kind_rule": "Chose",
-   "url": "https://www.mysoftwaresolutions.com/news/why-mcdonough-county-il-chose-vip-to-replace-a-legacy-system"
   }
  ],
  "profile": {

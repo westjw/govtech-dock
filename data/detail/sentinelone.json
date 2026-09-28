@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "SentinelOne and NVIDIA: Governing AI From Silicon to Runtime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/sentinelone-and-nvidia-governing-ai-from-silicon-to-runtime/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 39 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-39-8/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "SentinelOne Extends Wayfinder Threat Hunting's Continuous Coverage to AWS, Azure, and Google Cloud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-extends-wayfinder-threat-huntings-continuous-coverage-to-aws-azure-and-google-cloud/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "New Study From SentinelOne & S&P Global\u2019s 451 Research Uncovers Widely Divergent Enterprise Readiness for Autonomous SOC Adoption",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/new-study-from-sentinelone-sp-globals-451-research-uncovers-widely-divergent-enterprise-readiness-for-autonomous-soc-adoption/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Why the SOC Can't Run on Vibes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/why-the-soc-cant-run-on-vibes/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "SentinelOne Named an AI Security Platform Leader in Latio 2026 AI Security Market Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-named-an-ai-security-platform-leader-in-latio-2026-ai-security-market-report/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "The SOC Just Gained a Capability It Never Had",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-soc-just-gained-a-capability-it-never-had/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "near-h1",
    "first_seen": "2026-09-11",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/sentinelone-and-tenable-find-cyber-attackers-routinely-target-edge-device-vendor-ecosystems-rather-than-individual-vulnerabilities/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Path to the Autonomous SOC: The Early Returns of AI & What It Means for Cybersecurity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-early-returns-of-ai-what-it-means-for-cybersecurity/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-12",
-   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 34 (2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-34-8/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Professor James Mickens, Katie Moussouris, Christiaan Triebert and Dino Dai Zovi to Keynote SentinelOne\u2019s LABScon 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/professor-james-mickens-katie-moussouris-christiaan-triebert-and-dino-dai-zovi-to-keynote-sentinelones-labscon-2026/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-12",
-   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 32 (2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-32-8/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Input to Impact: Secure AI Where It Runs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/from-input-to-impact-secure-ai-where-it-runs/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ConnectWise and SentinelOne Announce Shared Strategy to Advance Managed Cybersecurity for MSPs at Black Hat 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/connectwise-and-sentinelone-announce-shared-strategy/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SentinelOne Expands Collaboration with AWS to Deliver Unified AI Governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-expands-collaboration-with-aws-to-deliver-unified-ai-governance/"
   }
  ],
  "profile": {

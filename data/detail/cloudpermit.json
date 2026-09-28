@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why Permitting Capacity Matters for Housing Growth",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/why-permitting-capacity-matters-for-housing-growth"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquisition",
    "url": "https://cloudpermit.com/blog/cloudpermit-expands-its-local-government-software-suite-with-cityreporter-acquisition"
-  },
-  {
-   "date": "2026-02-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Bilingual Municipal Software Serves Everyone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/how-bilingual-municipal-software-serves-everyone?hsLang=en"
   }
  ],
  "profile": {

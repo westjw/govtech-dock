@@ -1,7 +1,70 @@
 {
  "news": [
   {
-   "date": "2026-09-09",
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Jail Detox Monitoring: Why Early Custody Observation Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/jail-detox-monitoring-why-early-custody-observation-matters"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "OverWatch\u2122 Enhances Custody Environments' Visibility and Accountability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/overwatch-tm-enhances-custody-environments-visibility-and-accountability"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Procurement Case for Monitoring Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/the-procurement-case-for-monitoring-technology"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Texas Jail Standards Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/texas-jail-standards-compliance"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Battery Life vs Transmission Power in Wearable Monitoring Systems: Engineering Trade-Offs in Jail Monitoring Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/battery-life-vs-transmission-power-in-wearable-monitoring-systems-engineering-trade-offs-in-jail-monitoring-technology"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "State Jail Observation Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/state-jail-observation-compliance"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is Liveness Detection in Corrections?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/what-is-liveness-detection-in-corrections"
+  },
+  {
+   "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Budgeting for a Jail Monitoring System",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/allegheny-county-jail-launches-biometric-tracking-for-medically-vulnerable-people"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Bridging the Gap Between Correctional and Medical Staff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/bridging-the-gap-between-correctional-and-medical-staff"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The Officer to Detainee Ratio",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/the-officer-to-detainee-ratio"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Is Institutional Liability in a Custodial Death Case?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/institutional-liability-in-a-custodial-death-case"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "What Is Data Chain of Custody for Correctional Monitoring Data?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/what-is-data-chain-of-custody-for-correctional-monitoring-data"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Observation Standards in Detention Facilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/observation-standards-in-detention-facilities"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Correctional Monitoring System Uptime",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/correctional-monitoring-system-uptime"
-  },
-  {
-   "date": "2026-06-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Why Oversight Consistency Matters in High-Risk Jail Housing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/why-oversight-consistency-matters-in-high-risk-jail-housing"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Stand Out To Government Buyers: Takeaways From The TXShare Office Hours Session",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://civicmarketplace.com/news/stand-out-to-government-buyers-takeaways-from-the-txshare-office-hours-session"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -91,22 +100,13 @@
    "url": "https://civicmarketplace.com/es-us/news/how-the-city-of-university-park-texas-eliminated-obbba-payroll-risk-in-six-weeks"
   },
   {
-   "date": "2026-07-16",
+   "date": "2026-07-23",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Brownsville Launches National Cooperative Contracting Initiative with Civic Marketplace",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://civicmarketplace.com/news/brownsville-launches-national-cooperative-contracting-initiative-with-civic-marketplace"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Quick Quote Speeds Up Procurement for Local Government",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/news/how-quick-quote-speeds-up-procurement-for-local-government"
+   "first_seen": "2026-09-28",
+   "headline": "Does Civic Marketplace charge additional fees for cooperative contract awardees?",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://www.civicmarketplace.com/help-center/articles/are-there-any-fees-associated-with-civic-marketplace"
   }
  ]
 }

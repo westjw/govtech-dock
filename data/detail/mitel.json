@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "time",
+   "first_seen": "2026-09-28",
+   "headline": "The Disconnected Store: Six Minutes on the Floor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mitel.com/blog/disconnected-store-six-minutes-on-the-floor"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "time",
+   "first_seen": "2026-09-28",
+   "headline": "Reimagining Citizen Engagement in Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mitel.com/blog/reimagining-citizen-engagement-in-government"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "time",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mitel.com/blog/how-to-clean-your-phone"
-  },
-  {
-   "date": "2023-04-04",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Another Softphone Security Breach Shows the Importance of Software Assurance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mitel.com/blog/another-softphone-security-breach-shows-the-importance-of-software-assurance"
-  },
-  {
-   "date": "2022-07-11",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Mitel DECT Wireless Handsets Awarded Business Phone System of the Year",
-   "kind": "contract",
-   "kind_rule": "Awarded",
-   "url": "https://www.mitel.com/blog/mitel-dect-wireless-handsets-awarded-business-phone-system-of-the-year"
   }
  ],
  "profile": {

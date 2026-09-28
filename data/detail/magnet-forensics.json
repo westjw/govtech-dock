@@ -1,6 +1,96 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "S2:E5 // Research, reality, and the future of AI in digital forensics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "S1:E12 // Presenting the proof: Incorporating digital evidence into opening statements and closing arguments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/legal-unpacked-s1e12-presenting-the-proof-incorporating-digital-evidence-into-opening-statements-and-closing-arguments/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Leading the Digital Path to Justice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/leading-the-digital-path-to-justice/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Is the UK behind the curve in DFIR practices?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/is-the-uk-behind-the-curve-in-dfir-practices/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Closing the investigative gap in incident response for security leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/closing-the-investigative-gap-in-incident-response-for-security-leaders/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "S3:E5 // What to expect when you\u2019re (not) expecting an incident",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "From footage to evidence: Introduction to video forensics and media authentication",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/from-footage-to-evidence-introduction-to-video-forensics-and-media-authentication/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Using image classifiers to focus on what mat\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/using-imagine-classifiers-to-focus-on-what-matters-in-investigations/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From footage to evidence: Introduction to vi\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/from-footage-to-evidence-introduction-to-video-forensics-and-media-authentication-3/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Updating event-driven collections for faster\u2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/updating-event-driven-collections-for-faster-dfir-investigations/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,96 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s4e9-siri-ous-intelligence-what-ios-27-means-for-digital-forensics/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ask Me Anything: Strengthening eDiscovery with digital forensics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/ask-me-anything-strengthening-ediscovery-with-digital-forensics/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "S1:E12 // Presenting the proof: Incorporating digital evidence into opening statements and closing arguments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/legal-unpacked-s1e12-presenting-the-proof-incorporating-digital-evidence-into-opening-statements-and-closing-arguments/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "eDiscovery Solutions Brief: Accelerate investigations. Reduce review. Defend with confidence.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/ediscovery-solutions-brief-accelerate-investigations-reduce-review-defend-with-confidence/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Solutions Brief: Smarter investigations powered by Magnet.AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/solutions-brief-smarter-investigations-powered-by-magnet-ai/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "S4:E8 // Roadblocks ahead! Navigating the major issues of mobile forensics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/mobile-unpacked-s4e8-roadblocks-ahead-navigating-the-major-issues-of-mobile-forensics/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Incident Response Solutions Brief: Connect threat detection and investigation for faster incident response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/incident-response-solutions-brief-connect-threat-detection-and-investigation-for-faster-incident-response-2/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "S3:E5 // What to expect when you\u2019re (not) expecting an incident",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Forensic analysis of ChatGPT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/forensic-analysis-of-chatgpt/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond the alert: Investigating AI-enabled cyber fraud in Africa",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/beyond-the-alert-investigating-ai-enabled-cyber-fraud-in-africa/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Turning chaos into cadence: Rethinking evidence management frameworks in high-volume arrest operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/turning-chaos-into-cadence-rethinking-evidence-management-frameworks-in-high-volume-arrest-operations/"
   }
  ],
  "profile": {

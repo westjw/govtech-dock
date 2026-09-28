@@ -1,26 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-07-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Entered easily, communicated seamlessly, trusted everywhere: The new standard for managing disruptions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/new-service-adjustments-enhancements"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "How Durham Region Transit improved reliability and streamlined costs by unlocking the power of their data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/durham-region-transit-case-study"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "near-h1",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Transit\u2019s World Cup: Keeping riders informed during large events",
    "kind": "press",
@@ -28,8 +10,8 @@
    "url": "https://www.goswift.ly/blog/large-event-passenger-communication"
   },
   {
-   "date": "2026-06-11",
-   "date_source": "near-h1",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Empowering operators to run reliable service with Onboard App",
    "kind": "press",
@@ -37,8 +19,8 @@
    "url": "https://www.goswift.ly/blog/onboard-app-reliable-service"
   },
   {
-   "date": "2026-06-09",
-   "date_source": "near-h1",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ghost buses are everywhere. Meet the benchmark haunting them back.",
    "kind": "press",
@@ -46,26 +28,8 @@
    "url": "https://www.goswift.ly/blog/eta-completeness-benchmark"
   },
   {
-   "date": "2026-05-05",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "4 ways ridership data is reshaping transit decisions across every team",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/ridership-data-reshaping-transit-decisions"
-  },
-  {
-   "date": "2026-05-01",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "TextMarks partners with Swiftly to expand access to best-in-class passenger information",
-   "kind": "contract",
-   "kind_rule": "partners with",
-   "url": "https://www.goswift.ly/blog/textmarks-partnership"
-  },
-  {
-   "date": "2026-04-09",
-   "date_source": "near-h1",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Executive interview: MDOT MTA\u2019s approach to improving on-time performance",
    "kind": "press",
@@ -73,40 +37,76 @@
    "url": "https://www.goswift.ly/blog/how-mdot-mta-improves-on-time-performance"
   },
   {
-   "date": "2026-03-24",
-   "date_source": "near-h1",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Introducing a game-changer for real-time performance management",
+   "headline": "significantly reduce trips that fall through the cracks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/tools-to-improve-transit-data"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Turn data into outcomes riders notice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/budget-resilience-strategies"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Empowering customer service with instant answers and unlimited access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/combining-anecdotes-with-data-for-a-complete-picture-of-transit-operations"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "integrating multiple sources of AVL data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/transforming-transit-with-high-quality-data"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Get started with transit data therapy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/3-lessons-from-hundreds-of-data-therapy-sessions"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing the industry\u2019s most trusted AI-powered CAD/AVL solution",
    "kind": "product",
    "kind_rule": "Introducing",
-   "url": "https://www.goswift.ly/blog/issues-in-live-operations"
+   "url": "https://www.goswift.ly/blog/introducing-swiftly-cad-avl"
   },
   {
-   "date": "2026-03-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Improve on-time performance in 2026\u2014Strategies from a transit agency executive",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Accurate, actionable OTP reporting: New tools and best practices",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/improve-on-time-performance-webinar"
+   "url": "https://www.goswift.ly/blog/on-time-performance-measurement-best-practices"
   },
   {
-   "date": "2026-02-25",
-   "date_source": "near-h1",
+   "date": "2026-09-17",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Serving students: Four essentials for campus transit tech",
+   "headline": "How Durham Region Transit improved reliability and streamlined costs by unlocking the power of their data",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/serving-students-four-essentials-for-university-transit-tech"
-  },
-  {
-   "date": "2026-01-07",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "How WeGo powers smarter Transit Signal Priority with real-time data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/lyt-wego-tsp-case-study"
+   "url": "https://www.goswift.ly/blog/durham-region-transit-case-study"
   }
  ],
  "profile": {

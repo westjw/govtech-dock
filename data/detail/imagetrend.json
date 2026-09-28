@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How a Fire and EMS LMS Brings Agency Training Into One Clear View",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/fire-and-ems-lms-training-readiness/"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imagetrend.com/blog/what-implementation-looks-like/"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Connect26 Conversations: Using Data to Drive Better Decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/connect26-data-better-decisions/"
   }
  ],
  "profile": {

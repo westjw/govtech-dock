@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Mass Export and Project Closeout",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/mass-export-and-project-closeout"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Project Documentation, Compliance & Closeout for DOT Construction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/project-documentation-compliance-closeout"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.addoversite.com/blog/item-level-quantity-tracking-built-in-calculators"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Handwritten Note Image Capture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.addoversite.com/blog/handwritten-note-image-capture"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Voice-to-Text Inspection Notes Inspectors can narrate observations in real time from anywhere on the site \u2014 capturing richer, more defensible field narratives without slowing down, and keeping their h",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.addoversite.com/blog/voice-to-text-inspection-notes"
   }
  ],
  "profile": {

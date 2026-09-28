@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Does Your Outfit Have to Do With Video Search?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intellicene.com/blog/what-does-your-outfit-have-to-do-with-video-search/"
+  },
+  {
    "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://intellicene.com/blog/for-airports-security-means-more-than-flight-control/"
-  },
-  {
-   "date": "2025-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "To a Retailer, Security Goes Beyond Asset Protection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intellicene.com/blog/to-a-retailer-security-goes-beyond-asset-protection/"
   }
  ],
  "profile": {

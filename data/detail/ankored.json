@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Mass Youth Lacrosse Raises the Bar for Player Safety",
+   "kind": "funding",
+   "kind_rule": "Raises",
+   "url": "https://www.ankored.com/blog/mass-youth-lacrosse-culture-of-safety"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Build Your 2027 Parks and Recreation Compliance Budget",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ankored.com/blog/parks-and-recreation-compliance-budget"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Softball Club Compliance Checklist: 6 Seasonal Milestones",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ankored.com/blog/softball-club-compliance-checklist"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ankored.com/blog/utah-parks-rec-seasonal-staff-compliance"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Who Actually Sets Your Summer Camp's Compliance Rules? The Four Authorities Every Parks & Rec Director Answers To",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ankored.com/blog/parks-rec-summer-camp-compliance-authorities"
-  },
-  {
-   "date": "2026-07-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Audit Test: What Happens When Someone Asks Your Parks & Rec Department for Proof",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ankored.com/blog/parks-rec-compliance-audit-test-spreadsheets"
-  },
-  {
-   "date": "2026-07-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Exempt Isn't Excused: What a Screening Gap Really Costs a Nevada Parks & Rec Department",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ankored.com/blog/nevada-parks-rec-background-check-exemptions-cost"
   }
  ],
  "profile": {

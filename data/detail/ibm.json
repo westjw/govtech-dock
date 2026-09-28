@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "A hand that walks? Swiss researchers built one, and it\u2019s weirdly adorable",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/eth-zurich-robot-hand-walks-on-fingers"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From AI pilots to autonomous AMS: The enterprise readiness test for SAP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/insights/from-ai-pilots-autonomous-ams"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Shadow AI has reached the SOC: Why security teams are becoming their own blind spot",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/insights/shadow-ai-has-reached-soc-security-teams-blind-spots"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Scientists mapped a fruit fly\u2019s brain. The internet made it play Doom.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/fruit-fly-connectome-brain-map-minecraft-doom"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "AI is tightening consulting teams\u2014and raising the bar for who\u2019s on them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/ai-tightening-consulting-teams-forward-deployed-units"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Inside the \u201cAI-themed\u201d high school teaching the tech as a superpower",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/seckinger-ai-themed-high-school"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why recursive self-improvement suddenly became a serious question",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/why-recursive-self-improvement-ai-serious-question"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "The continuous path from error mitigation to fault-tolerant quantum computing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/qec-continuum"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "The continuous path from error mitigation to fault-tolerant quantum computing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/quantum/blog/qec-continuum"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "LLM watermarks will be everywhere soon. Here\u2019s what you need to know.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/think/news/llm-watermarks-what-you-need-to-know"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Demonstrating a theoretical separation between quantum computers and large language models",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://research.ibm.com/blog/quantum-circuits-vs-llms"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -8,105 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/insights/navigating-the-hidden-cost-cognitive-cost-vibe-coding"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Will AI solve math too fast?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/will-ai-solve-math-too-fast-navier-stokes-terence-tao"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "IBM mathematician Subhash Khot is rethinking computing\u2019s hardest problems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/ibm-mathematicia-subhash-khot-computings-hardest-problems"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Switzerland will soon get its first IBM Quantum System Two",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/swiss-innovation-hub"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Switzerland will soon get its first IBM Quantum System Two",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/quantum/blog/swiss-innovation-hub"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "AI agent token spend management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/insights/ai-agent-token-spend-management"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Cleveland Clinic, RIKEN, IBM named Gordon Bell finalists 9 Sep 2026 \u2022 Robert Davis Community Network Research",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/gordon-bell-finalists-2026"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Cleveland Clinic, RIKEN, IBM named Gordon Bell finalists",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/quantum/blog/gordon-bell-finalists-2026"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "IBM Quantum Nighthawk r2\u2014more circuits, faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/nighthawk-r2"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "IBM Quantum Nighthawk r2\u2014more circuits, faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/quantum/blog/nighthawk-r2"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "At Hot Chips, a chip that speaks both mainframe and AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/hot-chips-dual-architecture-processor-mainframe-ai"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "This AI video game recreates San Francisco block by block",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/news/ai-video-game-recreates-san-francisco"
   }
  ]
 }

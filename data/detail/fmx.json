@@ -38,12 +38,21 @@
   },
   {
    "date": "2026-04-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How to Make a Business Case for Facilities Management Software",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gofmx.com/blog/business-case-facilities-management-software/"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How to Select the Best Facilities Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
   },
   {
    "date": "2026-02-10",
@@ -53,15 +62,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gofmx.com/blog/fleet-management-metrics/"
-  },
-  {
-   "date": "2025-09-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How to Select the Best Facilities Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
   },
   {
    "date": "2025-09-07",
@@ -91,6 +91,15 @@
    "url": "https://www.gofmx.com/blog/fleet-management-best-practices/"
   },
   {
+   "date": "2025-05-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Your Guide to Facilities Management KPIs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gofmx.com/blog/facilities-management-kpis/"
+  },
+  {
    "date": "2025-05-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Implement",
    "url": "https://www.gofmx.com/blog/facilities-management-goals/"
-  },
-  {
-   "date": "2025-03-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Facility Use Agreement 101: What to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gofmx.com/blog/facility-use-agreement/"
   }
  ],
  "profile": {

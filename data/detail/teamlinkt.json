@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "New Features & Technology Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/what-actually-happens-to-your-website-when-you-switch-sports-platforms"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "time",
+   "first_seen": "2026-09-28",
+   "headline": "New Features & Technology Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/blog/what-actually-happens-to-your-website-when-you-switch-sports-platforms"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Humboldt Minor Hockey Stopped Juggling Logins with TeamLinkt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/humboldt-minor-hockey-easy-to-use-software"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "time",
+   "first_seen": "2026-09-28",
+   "headline": "How Humboldt Minor Hockey Stopped Juggling Logins with TeamLinkt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/blog/humboldt-minor-hockey-easy-to-use-software"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://teamlinkt.com/blog/blog/lower-merion-little-league-teamlinkt"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Switching from SportsEngine to TeamLinkt: What the Migration Actually Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/what-to-know-before-switching-from-sportsengine"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Real Gap in Parks and Recreation Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/the-real-gap-in-parks-and-recreation-software"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Switching from Sports Connect to TeamLinkt: What the Migration Actually Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/what-to-know-before-switching-from-sports-connect"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond LeagueLineup: 8 Alternative Platforms to Consider in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/leaguelineup-alternatives-in-2026"
   }
  ],
  "profile": {

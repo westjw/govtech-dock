@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "card-date",
+   "first_seen": "2026-09-28",
+   "headline": "AI as an Investigative Partner: What a 33-Year Cold Case Shows Us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/resources/articles/how-centerline-ai-became-an-investigative-partner"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "card-date",
+   "first_seen": "2026-09-28",
+   "headline": "A Guide to Hiring and Retaining Local Government Workers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centralsquare.com/resources/articles/local-government-hiring-retention-guide"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
@@ -22,7 +40,7 @@
    "date": "2026-08-26",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
-   "headline": "Behind the Headset: The Data on 911 Dispatcher Mental Health",
+   "headline": "Behind the Headset: Data on 911 Dispatcher Mental Health",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.centralsquare.com/resources/articles/911-dispatcher-mental-health-data"
@@ -85,28 +103,10 @@
    "date": "2026-08-03",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
-   "headline": "CentralSquare and Skydio Partner to Bring Native Drone as First Responder Operations Into Public Safety CAD Workflows",
+   "headline": "CentralSquare & Skydio Bring Drone as First Responder to CAD",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.centralsquare.com/news-and-events/press/centralsquare-skydio-dfr-cad-integration"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "80% of Public Sector Leaders Are Ready for AI Adoption. Here\u2019s What\u2019s Getting in the Way",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centralsquare.com/resources/articles/public-sector-ai-adoption-barriers"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "card-date",
-   "first_seen": "2026-09-10",
-   "headline": "Heroes of CentralSquare: Katie Copeland",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centralsquare.com/resources/articles/heroes-of-centralsquare-katie-copeland"
   }
  ],
  "profile": {

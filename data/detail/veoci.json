@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Veoci Launches Vantage: Unified Operational Resilience Platform Brings Business Continuity, Crisis Management, and Mass Notification Together",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.veoci.com/press/vantage-operational-resilience-platform"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Read the release \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/press/capstone-itdr-disaster-recovery-higher-education"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Practitioner's Profile: Chuck Chapman's Journey from Service to Emergency Management Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/practitioners-profile-chuck-chapman-emergency-management"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Security Is the Part of Veoci You Shouldn't Have to Think About",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/veoci-security"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Building a Culture of Preparedness: What Actually Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/building-culture-of-preparedness"
+  },
+  {
    "date": "2026-08-13",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/airport-asset-management"
-  },
-  {
-   "date": "2026-04-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "External AI Tools vs. AI Inside Your Workflow: What Actually Works in Emergency Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/external-ai-vs-ai-inside-workflow-emergency-management"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Past the Hype: How We Built VIA to Make a Real Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/via-ai-impact"
-  },
-  {
-   "date": "2026-03-12",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Practitioner\u2019s Profile: Libby Adkins Brings Operational Insight to Government Solutions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/practitioners-profile-libby-adkins-government-solutions"
-  },
-  {
-   "date": "2026-03-10",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Practitioner\u2019s Profile: How Rachel Henry\u2019s Client-Side Roots Drive Her Solutions Today",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/practitioners-profile-rachel-henry"
-  },
-  {
-   "date": "2026-03-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "From Flight Paths to Flood Maps: Why Dave Bujak, CEM, PMP Decided the Best View is in the Thick of It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/dave-bujak-profile-emergency-management"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Ubicquia Acquires Databuoy, Expanding UbiShield\u2122 with Multi-Threat Detection",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.ubicquia.com/newsroom/ubicquia-acquires-databuoy"
+  },
+  {
    "date": "2026-05-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Series D",
    "url": "https://www.ubicquia.com/newsroom/ubicquia-secures-series-d-funding"
-  },
-  {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Related Ross, AWS, and Vanderbilt Host Inaugural Defense Tech Leadership Summit in West Palm Beach",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ubicquia.com/newsroom/related-ross-aws-and-vanderbilt-host-inaugural-defense-tech-leadership-summit-west"
   }
  ]
 }

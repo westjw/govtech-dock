@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "HopSkipDrive Debuts CareEngine\u2122, the Technology Platform Built to Keep Every Student Ride Coordinated",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hopskipdrive.com/blog/hopskipdrive-debuts-careengine/"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,6 +55,15 @@
    "url": "https://www.hopskipdrive.com/blog/hopskipdrive-introduces-spanish-language-caregiver-app/"
   },
   {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "An Automatic, Stress-Free Experience for Families",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hopskipdrive.com/blog/hopskipdrive-presenta-su-aplicacion-en-espanol-para-cuidadores/"
+  },
+  {
    "date": "2026-07-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -73,6 +91,15 @@
    "url": "https://www.hopskipdrive.com/blog/welcoming-kyndra-webb-to-our-safety-advisory-council/"
   },
   {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "are likely to have fewer concerns",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hopskipdrive.com/blog/why-families-and-districts-trust-hopskipdrive/"
+  },
+  {
    "date": "2026-05-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hopskipdrive.com/blog/new-2026-2027-product-suite/"
-  },
-  {
-   "date": "2026-05-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Safe Summer Rides for Families",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hopskipdrive.com/blog/safe-summer-rides-for-families/"
-  },
-  {
-   "date": "2026-05-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "RouteWise AI\u2122 Hits $100M in School Transportation Savings",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hopskipdrive.com/blog/routewise-ai-hits-100-million-in-school-transportation-savings/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Instant Accuracy: Introducing Flexible Invoice Groups",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.hopskipdrive.com/blog/instant-accuracy-introducing-flexible-invoice-groups/"
   }
  ],
  "profile": {

@@ -1,22 +1,58 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to help employees spot a social engineering attack before it\u2019s too late",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/how-help-employees-spot-social-engineering-attack-its-too-late"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Imprivata Enterprise Access Management Wins 2026 Best in KLAS Award for Access Management",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.imprivata.com/fr/company/press/imprivata-enterprise-access-management-wins-2026-best-klas-award-access-management"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Imprivata Enterprise Access Management Wins 2026 Best in KLAS Award for Access Management",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.imprivata.com/uk/company/press/imprivata-enterprise-access-management-wins-2026-best-klas-award-access-management"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "New Imprivata Research Finds 72% of Healthcare Organizations Have AI Tools or Agents Deployed Without Formal IT Approval",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/company/press/new-imprivata-research-finds-72-healthcare-organizations-have-ai-tools-or-agents"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Agentic AI in healthcare means governing action, not just access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/agentic-ai-healthcare-means-governing-action-not-just-access"
+  },
+  {
    "date": "2026-09-11",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "When remote access reaches the physical world: Vulnerabilities and consequences",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/when-remote-access-reaches-physical-world-vulnerabilities-and-consequences"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Inaugural Connect Benelux comes to Utrecht: Join healthcare leaders on 10 September 2026 Full story",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/uk/blog/inaugural-connect-benelux-comes-utrecht-join-healthcare-leaders-10-september-2026"
   },
   {
    "date": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/company/press/imprivata-recognized-constellation-shortlist-healthcare-it-security"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Shared vs. 1-to-1 mobile devices: Which model reduces the IT support burden?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/shared-vs-1-1-mobile-devices-which-model-reduces-it-support-burden"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI agents are becoming enterprise identities\u2014and a new major attack vector",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/ai-agents-are-becoming-enterprise-identities-and-new-major-attack-vector"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Identity Security Signals: Autonomous agents, third-party risk, the growing need for accountable access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/identity-security-signals-autonomous-agents-third-party-risk-growing-need-accountable"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why \u201cmostly CJIS compliant\u201d is a risky place for public safety agencies to be",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/why-mostly-cjis-compliant-risky-place-public-safety-agencies-be"
   }
  ],
  "profile": {

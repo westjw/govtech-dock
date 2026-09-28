@@ -1,112 +1,112 @@
 {
  "news": [
   {
-   "date": "2026-09-11",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Salesforce Expands Agentforce With a New Portfolio of AI Agents Built for High-Value Work",
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Your Roadmap to Marketing Cloud Next: A Role-Based Training Plan for the MCE Transition",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/agentforce-job-ready-ai-agents/"
+   "url": "https://www.salesforce.com/blog/your-roadmap-to-marketing-cloud-next/"
   },
   {
-   "date": "2026-09-10",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Salesforce Introduces the Trusted Enterprise AI Harness",
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Five Big Ideas Coming Out of Dreamforce 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/five-dreamforce-2026-takeaways/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Higher Ed Is Putting AI Agents to Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/higher-education-ai-agents/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "What Does Salesforce Do?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/what-does-salesforce-do/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "B2B Lead Detection 2026: Master Intent Data & Account-Based ABM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/blog/b2b-lead-detection-intent-data-abm-2026/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Salesforce Marks One Year of Missionforce with Strong Growth Across Government and Defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/missionsforce-one-year-anniversary/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why We Post-Trained Our Own Reasoning Model",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/why-we-post-trained-our-own-reasoning-model/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Salesforce Expands Missionforce with Purpose-Built AI and New Partnership with OpenAI to Advance Mission Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.salesforce.com/news/stories/missionsforce-expansion-agents-nvidia-openai-partnerships/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing The Campaign Agent That Turns Goals Into Growth",
    "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.salesforce.com/news/stories/enterprise-ai-harness/"
+   "kind_rule": "Introducing",
+   "url": "https://www.salesforce.com/blog/introducing-the-campaign-agent-that-turns-goals-into-growth/"
   },
   {
-   "date": "2026-09-09",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "New Research: CFOs Turn to AI and Agents to Tame Growing Revenue Complexity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/cfos-ai-agents-to-tame-revenue-complexity/"
-  },
-  {
-   "date": "2026-09-04",
+   "date": "2026-09-15",
    "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "4 Flow Types for Marketers Getting Started with Salesforce Flow",
+   "first_seen": "2026-09-28",
+   "headline": "20 Years of The Trailblazer Community: Building the Agentic Enterprise",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/4-flow-types-for-marketers-getting-started-with-salesforce-flow/"
+   "url": "https://www.salesforce.com/news/stories/trailblazers-twentieth-anniversary/"
   },
   {
-   "date": "2026-09-04",
+   "date": "2026-09-15",
    "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Agentforce Marketing: A Practical Framework for Successful Implementation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/agentforce-marketing-a-practical-framework-for-successful-implementation/"
+   "first_seen": "2026-09-28",
+   "headline": "Salesforce Unveils AIforce, Bringing the Full Power of Its Platform to Any Interface",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.salesforce.com/news/stories/aiforce-announcement/"
   },
   {
-   "date": "2026-09-03",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "New Salesforce Editions Bundle Everything Businesses Need for Agentic Transformation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/salesforce-simplifies-editions-2026/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "What It Takes to Make AI Customer Service Actually Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/customer-success-award-winners-2026/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Salesforce Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Healthcare Provider Industry Cloud Platforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/gartner-magic-quadrant-healthcare-provider-industry-cloud-platforms-2026/"
-  },
-  {
-   "date": "2026-08-31",
+   "date": "2026-09-15",
    "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Build Your Dreamforce 2026 Agenda",
+   "first_seen": "2026-09-28",
+   "headline": "AWS and Salesforce Put CRM Data, AI Agents, and Model Choice Into the Tools Teams Use Every Day",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/dreamforce-agenda-schedule/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The Gift of Subscriber Signals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/the-gift-of-subscriber-signals/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Top Innovations in the Winter \u201927 Release: AI Agents Run the Work, Freeing the Enterprise to Work Smarter and Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/news/stories/winter-2027-product-release-announcement/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Three Perfect Days at Dreamforce \u2014 A Marketer\u2019s Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.salesforce.com/blog/three-perfect-days-at-dreamforce-a-marketers-guide/"
+   "url": "https://www.salesforce.com/news/stories/aws-salesforce-enterprise-ai-expansion/"
   }
  ]
 }

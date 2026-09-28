@@ -1,8 +1,62 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How One District Rethought Aging Infrastructure to Invest in School Safety Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/school-safety-solutions-aging-infrastructure"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why School Safety Can\u2019t Wait: An Ohio Superintendent\u2019s Perspective",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/why-school-safety-cant-wait"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How a Wearable Panic Button Supports Faster Medical Emergency Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/wearable-panic-button-medical-emergency-response"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Information Do Responders Need? The Role of Critical Incident Mapping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/critical-incident-mapping-emergency-response"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Future of 911: How Emergency Management Systems Can Transform Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/future-of-911-emergency-management-systems"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Can Better Safety Technology Help Retain Correctional Officers?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.centegix.com/blog/correctional-officer-safety-retention"
+  },
+  {
    "date": "2026-09-09",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Chief Newman Answers: Why Do School Emergency Plans Fail at the Communication Stage?",
    "kind": "press",
@@ -11,7 +65,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "From Reactive to Proactive: 6 Video Security Insights From Rhombus\u2019 Jeremy Gulley",
    "kind": "press",
@@ -20,7 +74,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Should a Modern Correctional Officer Duress System Include?",
    "kind": "press",
@@ -29,7 +83,7 @@
   },
   {
    "date": "2026-08-25",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Is the True ROI of a School Alert System?",
    "kind": "press",
@@ -38,7 +92,7 @@
   },
   {
    "date": "2026-08-10",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Back to School 2026: 5 School Safety Trends That Will Shape the Year Ahead",
    "kind": "press",
@@ -47,66 +101,12 @@
   },
   {
    "date": "2026-08-10",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "CENTEGIX Heads to JAILCON26 Central: Advancing Correctional Officer Safety",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.centegix.com/blog/jailcon26-central-preview-what-to-expect-speakers-and-sessions/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Real-Time Video Intelligence: How CrisisAlert with Alert Activated Video Connects Responders With the Closest Cameras",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/crisisalert-real-time-video-intelligence/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Does AI School Safety Mean Big Brother Is Watching? Inside the CENTEGIX and VOLT Approach to Privacy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/ai-school-safety-privacy-big-brother/"
-  },
-  {
-   "date": "2026-07-18",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "How AI-Activated Alerts Are Changing the Speed of School Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/ai-activated-alerts-school-safety/"
-  },
-  {
-   "date": "2026-07-18",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Two Activations, One Response: Connecting Video With Incident Detection and Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/incident-detection-response-video-activations/"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Behind Alyssa\u2019s Law: Lori Alhadeff on Building a Culture of School Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/behind-alyssas-law-lori-alhadeff-on-building-a-culture-of-school-safety/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "og:published",
-   "first_seen": "2026-09-10",
-   "headline": "How Digital Mapping Brings Clarity to Emergency Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.centegix.com/blog/how-digital-mapping-brings-clarity-to-emergency-response/"
   }
  ],
  "profile": {

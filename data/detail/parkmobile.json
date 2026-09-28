@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Turning Asphalt into Art: ParkMobile Reimagines Coral Gables Parking Spaces for Park(ing) Day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.parkmobile.io/about-us/newsroom/articles/turning-asphalt-into-art-parkmobile-reimagines-coral-gables-parking-spaces-for-park-ing-day"
+  },
+  {
    "date": "2026-08-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.parkmobile.io/about-us/newsroom/articles/parkopedia-and-parkmobile-to-launch-us-emsp-service"
-  },
-  {
-   "date": "2024-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Exploring fall in Seattle: a seasonal delight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.parkmobile.io/resource-center/blog/exploring-fall-in-seattle-a-seasonal-delight"
   }
  ],
  "profile": {

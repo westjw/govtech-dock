@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Schenectady PD Use Drones to Track Armed Suspect and Recover Illegal Firearm",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brincdrones.com/news/schenectady-pd-use-drones-to-track-armed-suspect-and-recover-illegal-firearm/"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -13,7 +22,7 @@
    "date": "2026-07-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "DFR Is Now Core 911 Infrastructure. And the Integrations Have to Match",
+   "headline": "DFR Is Now Core 911 Infrastructure. And the Integrations Have to Match.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://brincdrones.com/news/dfr-is-now-core-911-infrastructure-and-the-integrations-have-to-match/"
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://brincdrones.com/news/brinc-drones-and-nova-software-company-partner-to-deliver-advanced-aerial-mapping-for-public-safety-agencies/"
+  },
+  {
+   "date": "2026-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Importance of Time on Scene for DFR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brincdrones.com/news/the-importance-of-time-on-scene-for-dfr/"
   }
  ],
  "profile": {

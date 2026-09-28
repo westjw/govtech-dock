@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Four ways to transform garbage fleet efficiency with data and video tools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/garbage-fleet-efficiency-data-video/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why the OEM versus device-level telematics debate misses the point for mixed-fleet operators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/oem-fleet-data-harmonisation/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Minds Behind the Miles: The People Powering Geotab\u2019s Innovation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/minds-behind-the-miles/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "6 benefits of an open, AI-powered fleet data platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/6-benefits-of-open-platform/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "EV fleet transition plan: Step-by-step guide for U.S. fleets 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/ev-fleet-transition-plan/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Field service GPS fleet tracking: what mid-market fleet managers need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/field-service-gps-fleet-tracking/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -20,7 +74,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "European data sovereignty: the next step we've been building toward",
    "kind": "press",
@@ -29,7 +83,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Five EV myths that are costing fleets money",
    "kind": "press",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/fleet-accident-management/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Best software for small trucking companies: 5 tools to streamline your fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/best-software-for-small-trucking-company/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "What roadside breakdowns really cost truck lessors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/cut-commercial-truck-breakdown-costs/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Driver risk management: How public fleet managers save time with smarter video tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/public-fleets-save-time-driver-risk-management/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How video telematics helps drivers trust the safety program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/dash-cam-program-guide/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-12",
-   "headline": "The 'ghost fleet' crisis: Why idle rental vehicles are your biggest liability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/uk/blog/decrease-rental-fleet-idling/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The leasing industry helped build the autonomous future",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/autonomous-vehicles-leasing/"
   }
  ],
  "profile": {

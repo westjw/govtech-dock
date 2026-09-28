@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Should a Modern Government Financial Technology Environment Include?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/government-financial-technology/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Before You Implement New Government Software: 7 Things to Map First",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://eunasolutions.com/resources/government-software-implementation-planning/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "2026 State of Public Budgeting: Navigating Funding Reductions",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://eunasolutions.com/resources/2026-state-public-budgeting-webinar/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Evaluate Government Financial Software: Integration and Implementation Questions to Ask for Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/how-to-evaluate-government-financial-software-integration/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Euna Solutions Announces Winners of 2026 Euna Impact Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://eunasolutions.com/resources/euna-solutions-announces-winners-of-2026-euna-impact-awards/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Multi-Year Forecasting for Local Government: How to Evaluate Budgeting and Financial Planning Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/multi-year-forecasting-software-for-local-government/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -37,6 +91,15 @@
    "url": "https://eunasolutions.com/resources/payment-reconciliation-checklist/"
   },
   {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Government Budgeting Software Integrates with ERP Systems",
+   "kind": "product",
+   "kind_rule": "Integrates with",
+   "url": "https://eunasolutions.com/resources/how-government-budgeting-software-integrates-with-erp/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eunasolutions.com/resources/build-your-business-case-for-govtech-modernization/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Local Governments Can Support Unbanked Residents Through Inclusive Payment Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/how-local-government-support-unbanked-residents/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Euna Solutions Announces Explorer Sam Cossman as Keynote Speaker for Eunaverse 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/euna-solutions-names-sam-cossman-eunaverse-2026-keynote-speaker/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "See Euna Invoicing in Action | Live Demo",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/euna-invoicing-live-demo/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Uniform Guidance Changes | Euna Grants",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/uniform-guidance-changes-webinar/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Reduce Delinquent Resident Payments Through Modern Government Payment Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/how-to-reduce-delinquent-resident-payments/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Budget Scenario Planning for Florida HJR 1-F (Property Tax Amendment)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/florida-hjr-1f-budget-scenario-planning/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The 2026 State of Public Budgeting: How Finance Leaders Are Preparing for Fiscal Uncertainty",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/state-of-public-budgeting-lunch-and-learn/"
   }
  ],
  "profile": {

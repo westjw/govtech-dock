@@ -1,27 +1,76 @@
 {
-  "date": "2026-09-27",
-  "previous": "2026-09-26",
+  "date": "2026-09-28",
+  "previous": "2026-09-27",
   "changes": [
     {
-      "company": "IFS (Ultimo)",
-      "id": "ifs",
+      "company": "Catalis",
+      "id": "catalis",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Regional Account Executive, Energy (Ottawa, Ontario)"
+      "note": "Account Executive"
     },
     {
-      "company": "Thales",
-      "id": "thales",
+      "company": "Boostlingo",
+      "id": "boostlingo",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "TurnKey Corrections",
+      "id": "turnkey-corrections",
       "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Account Manager (3 Locations)"
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "ClassDojo",
-      "id": "classdojo",
+      "company": "Tanium",
+      "id": "tanium",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Commercial Account Executive (Addison, TX)"
+    },
+    {
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
       "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Revenue Product Lead only"
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "ClassLink",
+      "id": "classlink",
+      "from": "None found",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Limble",
+      "id": "limble",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales Talent Community \u2013 AM & AE R only"
+    },
+    {
+      "company": "Fluxx",
+      "id": "fluxx",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Follett Software",
+      "id": "follett-software",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     }
   ]
 }

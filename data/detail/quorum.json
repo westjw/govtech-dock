@@ -1,13 +1,85 @@
 {
  "news": [
   {
-   "date": "2026-09-11",
+   "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "See what's new \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/pac-data-is-leaving-its-silo/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Candidate Data + AI: Preparing Your Federal Team for the 120th Congress",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/candidate-data-ai-preparing-your-federal-team-for-the-120th-congress/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why Federal Government Affairs Teams Need More Than an AI Research Tool",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/why-federal-government-affairs-teams-need-more-than-an-ai-research-tool/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "A Day in State Legislative Tracking: How AI Agents Help Teams Cover 50 States",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/a-day-in-state-legislative-tracking-how-ai-agents-help-teams-cover-50-states/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How AI Agents Make Government Affairs Teams More Efficient",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/how-ai-agents-make-government-affairs-teams-more-efficient/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "AI Meeting Prep That Keeps Government Affairs Teams Aligned",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/ai-meeting-prep-that-keeps-government-affairs-teams-aligned/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Quorum Named a Leader in G2\u2019s Fall 2026 Grid\u00ae Report for Public Affairs Software.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/quorum-named-a-leader-in-g2s-fall-2026-grid-report-for-public-affairs-software/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Happens When a Public Affairs Software Vendor Restructures?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/what-happens-when-a-public-affairs-software-vendor-restructures/"
   },
   {
    "date": "2026-08-28",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://quorum.us/blog/2027-state-legislative-pre-filing-dates-a-50-state-guide/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Quorum vs. PolicyNote: 2026 Platform Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/quorum-vs-policynote/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Quorum Grassroots vs. FiscalNote VoterVoice: 2026 Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/quorum-vs-votervoice/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Quorum vs. FiscalNote: The 2026 Platform Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/quorum-vs-fiscalnote/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The 5 Tiers of Public Affairs Maturity & How to Level Up",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/level-up-public-affairs-maturity/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Quorum\u2019s AI Agents Work: Your Top Questions Answered?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/how-quorums-ai-agents-work-your-top-questions-answered/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing the Bill Tracker Agent: Automate Policy Triage and Risk Analysis",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.quorum.us/blog/introducing-the-bill-tracker-agent-automate-policy-triage-and-risk-analysis/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your Grassroots Team, Fully Prepped and Ready to Act \u2014 Quincy Can Do It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/your-grassroots-team-fully-prepped-and-ready-to-act-quincy-can-do-it/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your Grassroots Program Needs a Pulse Check \u2014 Quincy Can Do It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/your-grassroots-program-needs-a-pulse-check-quincy-can-do-it/"
   }
  ]
 }

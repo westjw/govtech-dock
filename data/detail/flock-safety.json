@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Flock Security Testing 2026: What the Bishop Fox Penetration Test Found \u2014 Critical and High Findings Fixed and Independently Verified",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/flock-security-testing-2026-what-the-bishop-fox-penetration-test-found"
+  },
+  {
    "date": "2026-09-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/using-drones-for-security-patrols"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Break the Cycle of Recurring Safety Concerns and Property Damage at Your Parks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/how-to-break-the-cycle-of-recurring-safety-concerns-and-property-damage-at-your-parks"
   }
  ],
  "profile": {

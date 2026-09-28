@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Tennessee's New Development Review Law, Public Chapter 1044 Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/tennessee-public-chapter-1044"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "What Is a Certificate of Occupancy?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/what-is-a-certificate-of-occupancy"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/special-district-software"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Permitting and Community Development Software RFP Toolkit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Next Era of Community Development: 10 Trends to Watch",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Airfoil vs. Eggcrate Sunshades: Which Is Best for Your Building?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.long.com/blog/airfoil-vs-eggcrate-sunshades-which-is-best-for-your-building/"
+  },
+  {
    "date": "2026-08-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.long.com/resources/vrv-best-practices-series-design/"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "BlueBox by Swegon: ASHP Chiller Water Volume Sizing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.long.com/resources/bluebox-by-swegon-ashp-chiller-water-volume-sizing/"
   }
  ],
  "profile": {

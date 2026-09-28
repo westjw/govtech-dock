@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why 12 European countries put their trust in Everbridge for public warning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/how-12-european-countries-are-strengthening-public-warning-with-everbridge/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Everbridge Assist named finalist at the 2026 ITIJ Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.everbridge.com/blog/everbridge-assist-named-finalist-at-the-2026-itij-awards/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -67,7 +85,7 @@
    "date": "2024-08-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Explore the Everbridge product demo center",
+   "headline": "Explore the Everbridge 360 AI\u2122 product demo center",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/resources/product-demo-center/"

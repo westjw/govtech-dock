@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "The Most Dangerous Part of a Mining Operation Isn't Always Underground",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eyeride.io/blog/the-most-dangerous-part-of-a-mining-operation-isnt-always-underground/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://eyeride.io/blog/the-decisions-fleet-leaders-make-without-the-full-picture/"
-  },
-  {
-   "date": "2026-03-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Road Is Not the Risk. Uncertainty Is.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eyeride.io/blog/the-road-is-not-the-risk-uncertainty-is/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Keep Inspection Records Complete Across Multiple Sites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/how-to-keep-inspection-records-complete-across-multiple-sites"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/recap-enhancing-disaster-preparedness-and-response-in-floridas-water-sector"
-  },
-  {
-   "date": "2026-05-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Warnings on Community Assets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/table-summaries"
   }
  ],
  "profile": {

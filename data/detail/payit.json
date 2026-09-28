@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "New Research Shows How Agencies Can Hit 90% Digital Adoption",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://payitgov.com/news/new-research-shows-how-agencies-can-hit-90-digital-adoption/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Start with AI projects you can measure and reverse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://payitgov.com/blog/measurable-reversible-government-ai-projects/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "2026 AWS Champions: PayIt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://payitgov.com/news/2026-aws-champions-payit/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "PayIt Named a 2026 AWS Champion for Excellence in Government Cloud Innovation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://payitgov.com/news/payit-named-a-2026-aws-champion-for-excellence-in-government-cloud-innovation/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -20,7 +56,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Digital government discovery in the AI era: How to make a government page easy to find",
    "kind": "press",
@@ -47,7 +83,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Digital government discovery in the AI era: What public-sector leaders should prioritize",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://payitgov.com/news/gr-payit-continues-to-improve-convenience-and-access-for-grand-rapids-residents/"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "PayIt introduces Smart Works: AI-powered features to accelerate government modernization",
-   "kind": "product",
-   "kind_rule": "introduces",
-   "url": "https://payitgov.com/news/payit-introduces-smart-works-ai-powered-features-to-accelerate-government-modernization/"
-  },
-  {
-   "date": "2026-03-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How better reporting improves efficiency in government agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://payitgov.com/blog/improve-agency-efficiency-with-better-reporting/"
-  },
-  {
-   "date": "2025-12-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 government technology trend predictions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://payitgov.com/blog/2026-government-technology-trend-predictions/"
-  },
-  {
-   "date": "2025-10-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ins and outs of government payment processing admin portals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://payitgov.com/blog/the-agency-admin-portal/"
   }
  ]
 }

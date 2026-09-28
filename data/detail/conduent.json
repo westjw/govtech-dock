@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Conduent Names Narayanan Sundaresan Chief Information and Technology Officer",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.news.conduent.com/news/conduent-names-narayanan-sundaresan-chief-information-and-technology-officer"
+  },
+  {
    "date": "2026-07-13",
    "date_source": "index-text",
    "first_seen": "2026-09-09",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.news.conduent.com/news/conduent-announces-agreement-to-sell-its-tolling-business-to-quarterhill-inc-for-70-million"
+  },
+  {
+   "date": "2026-05-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Conduent Announces Agreement to Sell Its Public Transit Business to Modaxo for $164 Million",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.news.conduent.com/news/conduent-announces-agreement-to-sell-its-public-transit-business-to-modaxo-for-164-million"
   },
   {
    "date": "2026-01-28",

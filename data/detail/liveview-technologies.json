@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Site Awareness Focused MSU",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/site-awareness-focused-msu"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Access Point Control: A Rapidly Deployable, Flexible Solution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/access-point-control"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Is This Thing On?: Why The Most Reliable Security Cameras \u201cUptime\u201d All The Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/is-this-thing-on-why-the-most-reliable-security-cameras-uptime-all-the-time"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Data Center Security: Why Physical Protection Is Just as Critical as Cybersecurity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/data-center-security-why-physical-protection-is-just-as-critical-as-cybersecurity"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is Situational Awareness and Why Does It Matter for Security?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/what-is-situational-awareness-and-why-does-it-matter-for-security"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -55,58 +100,13 @@
    "url": "https://www.lvt.com/resources/snipes-ad-criminals-have-changed"
   },
   {
-   "date": "2026-09-08",
+   "date": "2026-09-09",
    "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "The Best Defense Is a Good Offense: Securing Game-Day Parking Lots with Mobile Security Units",
+   "first_seen": "2026-09-28",
+   "headline": "\u201cWe Remember\u201d: Why Every School Needs AI-Powered Campus Security",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.lvt.com/blog/the-best-defense-is-a-good-offense-securing-game-day-parking-lots-with-mobile-security-units"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Which Industries Benefit Most from Mobile Surveillance Units?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/which-industries-benefit-most-from-mobile-surveillance-units"
-  },
-  {
-   "date": "2026-09-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Temporary Access Control for Construction, Data Centers, and Outdoor Storage Sites",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/temporary-access-control-for-construction-data-centers-and-outdoor-storage-sites"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Intelligent Video Surveillance Supports Loss Prevention Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/how-intelligent-video-surveillance-supports-loss-prevention-teams"
-  },
-  {
-   "date": "2026-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How We Ensure High Uptimes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/how-we-ensure-high-uptimes"
-  },
-  {
-   "date": "2026-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Evaluate a Security Technology Vendor: 10 Questions to Ask",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/how-to-evaluate-a-security-technology-vendor-10-questions-to-ask"
+   "url": "https://www.lvt.com/blog/we-remember-why-every-school-needs-ai-powered-campus-security"
   }
  ],
  "profile": {

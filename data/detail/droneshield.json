@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "DroneShield Appoints Non-Executive Director",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-appoints-non-executive-director-lynne-saint"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "DroneShield Opens Adelaide R&D Hub to Accelerate Next-Generation of Australian Defence Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-opens-adelaide-research-development-hub-to-accelerate-next-generation-australian-defence-technology"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Global leader in drone warfare opens a new $13 million facility at Lot Fourteen",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/global-leader-in-drone-warfare-opens-a-new-13-million-facility-at-lot-fourteen"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Looking Toward LA28: The Future of Drone Security for Large-Scale Events",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/looking-toward-la28-the-future-of-drone-security-for-large-scale-events"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "DroneShield installs counter-UAS systems on U.S. military vehicles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/news/droneshield-installs-counter-uas-systems-on-us-military-vehicles"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "DroneShield Completes Installation and Acceptance of DroneSentry-X Mk2 Under U.S. JIATF-401 Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-completes-installation-acceptance-dronesentryx-mk2-us-jiatf-401-program"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "DroneShield and AIM Defence Collaborate on Directed Energy in Counter-Drone Architecture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-aim-defence-collaborate-on-directed-energy-in-counter-drone-architecture"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -19,6 +82,15 @@
    "url": "https://www.droneshield.com/media/press-releases/droneshield-supports-australian-air-force-cadets-australias-future-leaders"
   },
   {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Passive Detection Brings to Modern Counter-Drone Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/what-passive-detection-brings-to-modern-counter-drone-operations"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.droneshield.com/blog/critical-infrastructure-now-requires-three-dimensional-security"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "\u2018Global issue\u2019: Drones illegally flying near air bases triggering concern",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/news/global-issue-drones-illegally-flying-near-air-bases-triggering-concern"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DroneShield Launches RfRecon, Marking the Evolution from RF Detection to RF Intelligence",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-rfrecon-marking-the-evolution-from-rf-detection-to-rf-intelligence"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Modern Military Installations Demand Persistent RF Awareness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/military-installations-demand-persistent-rf-awareness"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Airspace Security During The FIFA World Cup\u2122",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/droneshield-layered-airspace-security-fifa-world-cup-2026"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Australian Tech Helps Warfighters Detect Drones They Have Never Seen Before",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/news/australian-tech-helps-warfighters-detect-drones-they-have-never-seen-before"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "RfAI-3: The Detection Engine That Finally Broke Free of the Catalog",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/rfai3-the-detection-engine-that-finally-broke-free-of-the-catalog"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DroneShield Breaks the Detection Paradigm: RfAI-3 Senses Drones That Have Never Been Seen Before",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-breaks-the-detection-paradigm-rfai-3-senses-drones-never-seen-before"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DroneShield wins AUD $23.2m European defence contracts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/news/droneshield-wins-aud-232m-european-defence-contracts"
   }
  ],
  "profile": {

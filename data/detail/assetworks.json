@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From Reactive to Predictive: How AI and IoT Are Reshaping Facility Maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/from-reactive-to-predictive-how-ai-and-iot-are-reshaping-facility-maintenance/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Local Government Asset Management: Common Challenges and How to Solve Them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/local-government-asset-management-common-challenges-and-how-to-solve-them/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "GIS Asset Management for Parks: Mapping Trails, Fields, and Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/gis-asset-management-for-parks/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why Disconnected Fleet Systems Create More Work Than They Save",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/why-disconnected-fleet-systems-create-more-work-than-they-save/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Poor Asset Visibility Impacts Scheduling and Daily Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/how-poor-asset-visibility-impacts-scheduling-and-daily-operations/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Hidden Causes of Repeat Repairs in Fleet Maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/the-hidden-causes-of-repeat-repairs-in-fleet-maintenance/"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Does a Modern Fleet Operation Actually Look Like?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/fleet/blog/what-does-a-modern-fleet-operation-actually-look-like/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -44,69 +107,6 @@
    "kind": "contract",
    "kind_rule": "Signs",
    "url": "https://www.assetworks.com/fleet/blog/is-your-fleet-running-efficiently-7-signs-it-might-not-be/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Code Jam 2026: A First Look at What\u2019s Coming",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/code-jam-2026-a-first-look-at-whats-coming/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "EAM vs. CMMS: What\u2019s the Difference and Which Does Your Organization Need?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/eam-vs-cmms/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Infrastructure Asset Management Software: A Guide for Public Works and Government Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/eam/blog/infrastructure-asset-management-software-guide/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Modern Fleet Management Changes Day-to-Day Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/how-modern-fleet-management-changes-day-to-day-work/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Connecting Your Fleet Improves Efficiency and Cuts Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/how-connecting-your-fleet-improves-efficiency-and-cuts-costs/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Fleet Performance Really Means in Modern Organizations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/what-fleet-performance-really-means-in-modern-organizations/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Speed Up Technician Workflows Without Cutting Corners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/how-to-speed-up-technician-workflows-without-cutting-corners/"
   }
  ],
  "profile": {

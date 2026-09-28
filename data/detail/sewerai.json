@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Evaluate an AI Sewer Inspection Vendor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sewerai.com/resources/how-to-evaluate-an-ai-sewer-inspection-vendor"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "SewerAI Launches Command Center: Turning Inspection Data Into Reports, Maps, and Rehab Plans in Minutes",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.sewerai.com/resources/sewerai-launches-command-center"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From CCTV to Capital Plan: A Five-Step Playbook",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sewerai.com/resources/from-cctv-to-capital-plan-a-five-step-playbook"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sewerai.com/resources/five-to-one-how-to-turn-every-proactive-dollar-into-five-in-avoided-repairs"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "SewerAI in Trenchless Technology: AI Will Expand Demand for PACP\u2122 Expertise, Not Reduce It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/sewerai-in-trenchless-technology-july-2026"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Would You Know Before It Broke?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/would-you-know-before-it-broke"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Waiting is the Expensive Option: AI and the Future of Water Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/ai-and-the-future-of-water-infrastructure"
   }
  ],
  "profile": {

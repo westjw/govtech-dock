@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From Reactive Enforcement to Predictive Safety Investment",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://elovate.com/blog/reactive-enforcement-to-predictive-safety-investment/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://elovate.com/blog/automated-traffic-enforcement-program-design/"
-  },
-  {
-   "date": "2025-12-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Technology Is Making Holiday Traffic Safer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://elovate.com/blog/how-technology-is-making-holiday-traffic-safer/"
   }
  ],
  "profile": {

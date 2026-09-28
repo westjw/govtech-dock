@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Strengthening Verkada Guest Integrations With Cameras",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/strengthening-verkada-guest-integrations-with-cameras/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing Verkada Transportation: Security for Modern Fleets",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.verkada.com/blog/introducing-verkada-transportation/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing Verkada Sound Systems: Seamless, Multi-Site Sound Management",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.verkada.com/blog/introducing-verkada-sound-systems/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing the TK74 Touchscreen Intercom",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.verkada.com/blog/introducing-the-tk74-touchscreen-intercom/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Announcing New Unified Timeline Functionality: Live Mode, Access Control, and More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/new-unified-timeline-functionality/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Expanding Verkada Access Control with New Platform Features",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/access-control-unified-timeline-platform-updates/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Expanding Our Open Platform with Additional Integrations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/open-platform-updates-september-2026/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing the AW33 Wireless Access Controller",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.verkada.com/blog/introducing-the-aw33-wireless-access-controller/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Announcing the Upcoming Thermal Camera Series",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/thermal-camera-series/"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verkada.com/blog/stopping-loss-before-it-happens-how-3-top-retailers-protect-stores-and-people-with-verkada-alarms-monitoring/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Building for Real-World Impact: Meet Ruiyi Wang, Verkada Software Engineer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/building-for-real-world-impact-meet-ruiyi-wang-verkada-software-engineer/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "What 2,741 IT and Security Leaders Across the World Told Us About Where Physical Security is Heading",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/what-2741-it-and-security-leaders-across-the-world-told-us-about-where-physical-security-is-heading/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Inside the AF64: How Verkada Unlocked Face Recognition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/inside-the-af64-how-verkada-unlocked-face-recognition/"
-  },
-  {
-   "date": "2026-06-17",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Verkada is Now GovRAMP Moderate Authorized",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/verkada-is-now-govramp-moderate-authorized/"
-  },
-  {
-   "date": "2026-06-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "A Verkada Investor's Playbook: Rob Ward on 25 Years of Growth Investing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/a-verkada-investors-playbook-rob-ward-on-25-years-of-growth-investing/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "How the AI GPU Shortage Is Quietly Spiking Security Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/ai-gpu-shortage-security-costs/"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Verkada Achieves FedRAMP\u00ae Authorized Status at the Moderate Impact Level",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/verkada-achieves-fedramp-authorized-status/"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Behind the Scenes of Building a Government-Grade Product",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/behind-the-scenes-of-building-a-government-grade-product/"
-  },
-  {
-   "date": "2026-05-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "New Ways to Protect Your Perimeter with Cameras",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verkada.com/blog/expanded-camera-triggers-for-alarms/"
   }
  ],
  "profile": {

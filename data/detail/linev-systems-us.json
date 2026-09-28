@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "LINEV Systems to Showcase FOBOS XR at NAME 2026",
+   "kind": "leadership",
+   "kind_rule": "NAME",
+   "url": "https://linevsystems.us/news/linev-systems-to-showcase-fobos-xr-at-name-2026/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://linevsystems.us/news/securing-campus-service-entrances-with-x-ray-screening-technology/"
-  },
-  {
-   "date": "2026-05-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Compact Jail Body Scanners: A Practical Answer to Modern Contraband Risks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://linevsystems.us/news/compact-jail-body-scanners-a-practical-answer-to-modern-contraband-risks/"
   }
  ],
  "profile": {

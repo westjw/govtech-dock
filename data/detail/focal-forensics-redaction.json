@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Body Camera Redaction Laws: What Agencies Must Do Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/body-camera-redaction-laws-2026"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Forensic Audio Enhancement: What It Can and Cannot Do",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/forensic-audio-enhancement-limits"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "AI Video Redaction: What Makes It Court-Defensible",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/ai-video-redaction-defensible"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/video-redaction-services-rfp-guide"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Redaction for FOIA: Defensible Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/defensible-video-redaction-is-the-new-front-line-of-public-trust"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Defensible Video Redaction for Public Records Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/the-future-of-transparency-why-video-redaction-is-no-longer-optional-for-public-agencies"
-  },
-  {
-   "date": "2025-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "October is Cybersecurity Awareness Month",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/october-is-cybersecurity-awareness-month"
   }
  ]
 }

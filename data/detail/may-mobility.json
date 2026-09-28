@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "WildCity: An AV\u2019s Digital Proving Ground",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/posts/wildcity-an-avs-digital-proving-ground/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "WildCity: An AV\u2019s Digital Proving Ground",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/ja/posts/wildcity-an-avs-digital-proving-ground/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "WildCity: An AV\u2019s Digital Proving Ground",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/wildcity-an-avs-digital-proving-ground/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "May Mobility to Become the First U.S. Publicly Listed Pure-Play Autonomous Ride-Hail Technology Company Through a Business Combination with ACP Holdings Acquisition Corp.",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://maymobility.com/posts/may-mobility-first-publicly-listed-pure-play-autonomous-ride-hail-technology-company-acp-holdings-acquisition-corp/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "May Mobility to Become the First U.S. Publicly Listed Pure-Play Autonomous Ride-Hail Technology Company Through a Business Combination with ACP Holdings Acquisition Corp.",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://maymobility.com/ja/posts/may-mobility-first-publicly-listed-pure-play-autonomous-ride-hail-technology-company-acp-holdings-acquisition-corp/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "May Mobility to Become the First U.S. Publicly Listed Pure-Play Autonomous Ride-Hail Technology Company Through a Business Combination with ACP Holdings Acquisition Corp.",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://maymobility.com/es/posts/may-mobility-first-publicly-listed-pure-play-autonomous-ride-hail-technology-company-acp-holdings-acquisition-corp/"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -8,6 +62,24 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://maymobility.com/posts/may-mobility-and-ntt-mobility-to-launch-first-public-rides-on-autonomous-e-palette/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Espa\u00f1ol (Estados Unidos) \ud83c\uddfa\ud83c\uddf8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maymobility.com/es/posts/may-mobility-and-ntt-mobility-to-launch-first-public-rides-on-autonomous-e-palette/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "May Mobility and NTT Mobility to Launch First Public Rides on Autonomous e-Palette",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://maymobility.com/ja/posts/may-mobility-and-ntt-mobility-to-launch-first-public-rides-on-autonomous-e-palette/"
   },
   {
    "date": "2026-07-17",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://maymobility.com/ja/posts/get-to-know-may-mike-diaz-senior-autonomy-release-engineer/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "May Mobility Appoints Balajee Kannan as Senior Vice President of Autonomy Core Engineering",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://maymobility.com/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "May Mobility Appoints Balajee Kannan as Senior Vice President of Autonomy Core Engineering",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://maymobility.com/es/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "May Mobility Appoints Balajee Kannan as Senior Vice President of Autonomy Core Engineering",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://maymobility.com/ja/posts/may-mobility-appoints-balajee-kannan-as-senior-vice-president-of-autonomy-core-engineering/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Our Autonomous Vehicles Are Actually Thinking",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/posts/what-our-autonomous-vehicles-are-actually-thinking/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Our Autonomous Vehicles Are Actually Thinking",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/es/posts/what-our-autonomous-vehicles-are-actually-thinking/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Our Autonomous Vehicles Are Actually Thinking",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/ja/posts/what-our-autonomous-vehicles-are-actually-thinking/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CaoCao and May Mobility Announce Strategic Partnership to Pioneer Robotaxi Expansion in Europe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/posts/caocao-and-may-mobility-announce-strategic-partnership-to-pioneer-robotaxi-expansion-in-europe/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CaoCao and May Mobility Announce Strategic Partnership to Pioneer Robotaxi Expansion in Europe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maymobility.com/es/posts/caocao-and-may-mobility-announce-strategic-partnership-to-pioneer-robotaxi-expansion-in-europe/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "LeoSight Announces First Healthcare Partnership with Coosa Valley Medical Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.leosight.com/newsroom/leosight-first-healthcare-partnership-with-coosa-valley-medical-center"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.leosight.com/blog/fbina-lessons-unified-command-leadership"
-  },
-  {
-   "date": "2025-12-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Clarity is a Survival Skill",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.leosight.com/blog/clarity-is-a-survival-skill"
   }
  ],
  "profile": {

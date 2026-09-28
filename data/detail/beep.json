@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "MOIA America Welcomes Its First Riders In Autonomous ID. Buzz Vehicles With Beep",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://ridebeep.com/press-releases/moia-america-welcomes-its-first-riders-in-autonomous-id-buzz-vehicles-with-beep"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Beep And Freebee Combine To Create The Essential Transit Partner For Modern Mobility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridebeep.com/press-releases/beep-and-freebee-combine-to-create-the-essential-transit-partner-for-modern-mobility"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridebeep.com/press-releases/beep-inc-and-adastec-announce-alliance-agreement-to-scale-shared-autonomous-transportation-services-ahead-of-two-upcoming-deployments"
-  },
-  {
-   "date": "2025-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beep Begins Operating NAVI: Nation's First Fully Autonomous Public Transit System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ridebeep.com/press-releases/beep-launches-navi-the-nations-first-fully-autonomous-public-transit-system"
-  },
-  {
-   "date": "2025-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "JTA Opens Autonomous Innovation Center, Unveils Service Name for Autonomous Vehicle Program",
-   "kind": "leadership",
-   "kind_rule": "Name",
-   "url": "https://ridebeep.com/press-releases/jta-opens-aic"
   }
  ],
  "profile": {

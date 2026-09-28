@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Time-and-Materials Government Contracts: Billing, Rates, and Risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/time-and-materials-government-contracts-billing-rates-and-risks/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Local Government Procurement: How City and County Purchasing Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/local-government-procurement-how-city-and-county-purchasing-works/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What is a GWAC? How Vendors Find Task-Order Opportunities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/what-is-a-gwac-how-vendors-find-task-order-opportunities/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Market Report: The Data Behind Public Sector Digital Transformation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/the-data-behind-public-sector-digital-transformation/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Market Report: The Latest Trends in K-12 EdTech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/market-report-the-latest-trends-in-k-12-edtech/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Market Report: The Latest Trends in SLED Financial Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/market-report-the-latest-trends-in-sled-financial-services/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Market Report: The Latest Trends in Public Sector Anti-Fraud Investments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/market-report-the-latest-trends-in-public-sector-anti-fraud-investments/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/what-is-sled-how-ai-is-changing-state-local-and-education-sales/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "GovSpend Partners with BidDesk Analytics\u00ae to Bring SKU-Level Pricing to Consumer Goods Industries",
-   "kind": "contract",
-   "kind_rule": "Partners with",
-   "url": "https://govspend.com/blog/govspend-partners-with-biddesk-analytics-to-bring-sku-level-pricing-to-consumer-goods-industries/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Varsity Tutors for Schools shuts down: Where online tutoring demand goes next",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/varsity-tutors-for-schools-shuts-down-where-online-tutoring-demand-goes-next/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Where Public Sector Selling Is Headed \u2014 And Why It\u2019s Good News",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/where-public-sector-selling-is-headed-and-why-its-good-news/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Behind the Numbers: The Role of GSA Schedules and GWACs in Federal Procurement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/behind-the-numbers-the-role-of-gsa-schedules-and-gwacs-in-federal-procurement/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Recap: How AI Is Changing Who Wins Government Contracting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/webinar-recap-how-ai-is-changing-who-wins-government-contracting/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Other Transactions (OTs): The $18.3 Billion Market Every Federal Contractor Should Understand",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/other-transactions-ots-the-18-3-billion-market-every-federal-contractor-should-understand/"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "GovSpend Is Now in Slack",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/govspend-is-now-in-slack/"
   }
  ]
 }

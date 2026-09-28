@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Transit Agencies Benefit From Autonomous Real-Time Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/how-transit-agencies-benefit-from-autonomous-real-time-intelligence/"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -73,40 +82,31 @@
    "url": "https://www.dataminr.com/resources/blog/implications-of-recent-cisa-disclosures-on-iranian-ot-targeting/"
   },
   {
-   "date": "2026-03-23",
+   "date": "2026-07-16",
    "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Dataminr for Cyber Defense Is Here to Tell You What\u2019s Coming, What It Costs, and What to Do Next",
+   "first_seen": "2026-09-28",
+   "headline": "The Detection Problem Is Solved. The Execution Problem Isn\u2019t.",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/dataminr-for-cyber-defense-is-here/"
+   "url": "https://www.dataminr.com/resources/blog/the-detection-problem-is-solved-the-execution-problem-isnt/"
   },
   {
-   "date": "2025-09-08",
+   "date": "2026-06-18",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Alerts to Action: Dataminr\u2019s Agentic AI Powers Real-Time, Actionable Intelligence for SIEM, SOAR, and TIP Systems",
+   "first_seen": "2026-09-28",
+   "headline": "America250: What It Takes to Secure the Nation\u2019s Summer of Events",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/dataminr-pulse-cyber-risk-api/"
+   "url": "https://www.dataminr.com/resources/blog/america250-what-it-takes-to-secure-the-nations-summer-of-events/"
   },
   {
-   "date": "2025-06-03",
+   "date": "2026-05-11",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building the Next Generation of Risk-Aware Platforms: A Partnership Approach",
+   "first_seen": "2026-09-28",
+   "headline": "Prevent a $1.5 Billion Security Blind Spot With Predictive Resilience Framework",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/building-the-next-generation-of-risk-aware-platforms-a-partnership-approach/"
-  },
-  {
-   "date": "2025-05-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Satellites to Supply Chains: How Real-Time Event Detection Is Transforming Multiple Industries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/from-satellites-to-supply-chains-how-real-time-event-detection-is-transforming-multiple-industries/"
+   "url": "https://www.dataminr.com/resources/blog/prevent-a-1-5-billion-security-blind-spot-with-predictive-resilience-framework/"
   }
  ],
  "profile": {

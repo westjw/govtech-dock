@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Routeware ReCollect Powers Smarter University Waste Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/university-waste-management/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Definitive Guide to Regulated Medical Waste (RMW) Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/regulated-medical-waste-software/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is a Waste Hauler CRM (and Why Not Use a Generic One)?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/waste-hauler-crm/"
+  },
+  {
+   "date": "2026-09-19",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "How Routeware\u2019s Waste Wizard Makes Recycling Easier",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/how-routeware-waste-wizard-makes-recycling-easier/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "What Modern Snow Management Looks Like for Cities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/what-modern-snow-management-looks-like-for-cities/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Routeware Appoints Calum Forsyth as Managing Director, Routeware UK",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://routeware.com/resources/news/routeware-appoints-calum-forsyth-as-managing-director-routeware-uk/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "How Roll-Off Haulers Run a Profitable Construction Waste Operation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/construction-waste-management/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/en_gb/blog/global-reporting-initiative-reporting-municipal-waste/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Does In-Cab Technology Improve Garbage Truck Driver Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/in-cab-technology-driver-safety/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Does In-Cab Technology Improve Garbage Truck Driver Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/en_gb/blog/in-cab-technology-driver-safety/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Stirling Council launches new waste and recycling portal for residents",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://routeware.com/resources/news/stirling-council-launches-new-waste-and-recycling-portal-for-residents/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "7 Things to Check When Choosing Waste Management Software for Residential Collection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/waste-management-software-residential-collection/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "7 Things to Check When Choosing Waste Management Software for Residential Collection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/en_gb/blog/waste-management-software-residential-collection/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "6 Things to Look For in Dumpster Rental Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/dumpster-rental-software/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "6 Ways to Streamline Liquid Waste Management and Protect Your Margin",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/6-ways-to-streamline-liquid-waste-management/"
   }
  ],
  "profile": {

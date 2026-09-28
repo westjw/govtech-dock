@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Green meets Blue: A brief RCS forensic excursion",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/blog/green-meets-blue-a-brief-rcs-forensic-excursion/"
+  },
+  {
    "date": "2026-06-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +17,60 @@
    "kind": "product",
    "kind_rule": "now available",
    "url": "https://www.msab.com/updates/q2-2026-major-release-is-now-available/"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "D\u00e9couvrez les nouveaut\u00e9s de la version 2\u00e8me trimestre 2026 de MSAB",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/fr/updates/decouvrez-les-nouveautes-de-la-version-2eme-trimestre-2026-de-msab/"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Entdecken Sie die Neuheiten in der MSAB-Version f\u00fcr das 2. Quartal 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/de/updates/entdecken-sie-die-neuheiten-in-der-msab-version-fuer-das-2-quartal-2026/"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Scopri le novit\u00e0 della versione MSAB del secondo trimestre 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/it/updates/q2-2026-major-release-is-now-available/"
+  },
+  {
+   "date": "2026-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Descubra las novedades de la versi\u00f3n del segundo trimestre de 2026 de MSAB",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/es/updates/descubra-las-novedades-de-la-version-del-segundo-trimestre-de-2026-de-msab/"
+  },
+  {
+   "date": "2026-05-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Bulletin from the Annual General Meeting of Micro Systemation AB (publ)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/fr/updates/bulletin-from-the-annual-general-meeting-of-micro-systemation-ab-publ-2/"
+  },
+  {
+   "date": "2026-05-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Bulletin from the Annual General Meeting of Micro Systemation AB (publ)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/it/updates/bulletin-from-the-annual-general-meeting-of-micro-systemation-ab-publ-2/"
   },
   {
    "date": "2026-05-07",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.msab.com/it/updates/msab-interim-report-q1-2026/"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "MSAB publishes Annual Report for 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/fr/updates/msab-publishes-annual-report-for-2025/"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "MSAB publishes Annual Report for 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/de/updates/msab-publishes-annual-report-for-2025/"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "MSAB publishes Annual Report for 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/it/updates/msab-publishes-annual-report-for-2025/"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "MSAB publishes Annual Report for 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/es/updates/msab-publishes-annual-report-for-2025/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Invitation to the Presentation of MSAB\u2019s Interim Report January-March 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/it/updates/invitation-to-the-presentation-of-msabs-interim-report-january-march-2026/"
-  },
-  {
-   "date": "2026-04-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "NOTICE OF ANNUAL GENERAL MEETING IN MICRO SYSTEMATION AB (publ)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/it/updates/notice-of-annual-general-meeting-in-micro-systemation-ab-publ-3/"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "La version majeure du premier trimestre 2026 est d\u00e9sormais disponible.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/fr/updates/q1-2026-major-release-is-now-available/"
   }
  ],
  "profile": {

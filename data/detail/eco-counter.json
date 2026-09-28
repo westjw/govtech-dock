@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Reliable comparisons: Eco-Visio automatically factors in school breaks and holidays",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eco-counter.com/blog/reliable-comparisons-eco-visio-factors-school-breaks-holidays"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eco-counter.com/blog/traffic-technology-eco-counter-support-greater-manchester-to-measure-and-communicate-success-for-its-active-travel-projects"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Spitzenzeiten dank Besucherprognosen vorhersehen (und \u00dcberlastung vermeiden)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://de.eco-counter.com/blog/besucherprognosen-vorhersehen"
   },
   {
    "date": "2026-06-26",
@@ -73,6 +91,15 @@
    "url": "https://www.eco-counter.com/blog/velo-city-2026-eco-counters-agenda-for-the-world-cycling-summit-rimini-italy"
   },
   {
+   "date": "2026-06-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "WAVIX-AI: Die nicht-invasive Radartechnologie f\u00fcr die multimodale Verkehrsz\u00e4hlung",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://de.eco-counter.com/blog/wavix-ai-radar-technologie"
+  },
+  {
    "date": "2026-06-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eco-counter.com/blog/city-montreal-eco-counter-renew-partnership-collect-data-active-transportation"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "WAVIX-AI, non-intrusive radar to count bikes, pedestrians and vehicles",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/wavix-ai-non-intrusive-radar-count-bicycles-pedestrians-motorized-modes"
-  },
-  {
-   "date": "2026-05-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Auckland optimises its cycling network by analysing ridership data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/how-auckland-optimises-cycling-network-analysing-ridership-data"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Measuring Visitor Traffic on the Trails of Boulder, Colorado",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/boulder-colorado"
   }
  ]
 }

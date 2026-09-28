@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Public Safety Agencies Are Prioritizing for Next Fiscal Year\u2019s Budget",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/insights/what-public-safety-agencies-are-prioritizing-for-next-fiscal-years-budget"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://autura.com/news/autura-marketplace-joins-urg-as-a-new-associate-vendors"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Read our latest news",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://autura.com/resources/auturas-new-mission-and-tagline/?d11364a7_page=2"
   }
  ],
  "profile": {

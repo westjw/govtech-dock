@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Anaplan Appoints Jared Coyle as Executive Vice President, AI",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.anaplan.com/news/anaplan-appoints-jared-coyle-exec-vp-ai/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
@@ -73,6 +82,24 @@
    "url": "https://www.anaplan.com/news/anaplan-extends-ai-delivery-ecosystem-with-twelve-preferred-partners/"
   },
   {
+   "date": "2026-06-17",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Solidarit\u00e9s International Chooses Anaplan to Modernize Financial Planning and Increase Transparency Across Its International Operations",
+   "kind": "contract",
+   "kind_rule": "Chooses",
+   "url": "https://www.anaplan.com/news/solidarites-international-chooses-anaplan-to-modernize-financial-planning/"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Indiana University Selects Anaplan to Modernize Financial Planning for Its $4.5 Billion Operating Budget",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.anaplan.com/news/indiana-university-selects-anaplan-to-modernize-financial-planning/"
+  },
+  {
    "date": "2026-03-25",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anaplan.com/news/anaplan-announces-latest-ai-driven-innovations-applications-to-advance-enterprise-decision-making/"
-  },
-  {
-   "date": "2025-12-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Anaplan Introduces Role\u2011Based AI Agents to Advance Industry-Leading Enterprise Scenario Planning and Analysis Platform",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.anaplan.com/news/anaplan-introduces-new-suite-role-based-ai-agents/"
-  },
-  {
-   "date": "2023-10-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "The indispensable platform for the agile connected enterprise: New innovations from Anaplan\u2019s product team",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anaplan.com/news/indispensable-planning-platform/"
-  },
-  {
-   "date": "2021-08-05",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-12",
-   "headline": "Anaplan Announces Date for Second Quarter Fiscal Year 2022 Earnings Conference Call",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anaplan.com/news/anaplan-announces-date-for-second-quarter-fiscal-year-2022-earnings-conference-call/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Evaluate Executive Protection Software: A Framework for Decision Documentation and Program Effectiveness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/how-to-evaluate-executive-protection-software"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Other Side of the Case: Modernizing Victim Assistance in the Digital Criminal Justice System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/the-other-side-of-the-case-modernizing-victim-assistance-in-the-digital-criminal-justice-system"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/workplace-violence-business-risk"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Forward-Thinking Public Safety Agencies Are Creating Technology Champions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/public-safety-agencies-technology-champions"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Data Overload to Operational Intelligence: How Modern Security Teams Turn Signals Into Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/data-overload-operational-intelligence-security-teams"
   }
  ],
  "profile": {

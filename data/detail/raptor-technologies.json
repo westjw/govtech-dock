@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "4 Strategies to Prevent Student Vaping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/4-strategies-to-prevent-student-vaping/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "75% Faster Check-In: How Albany Schools Transformed Event Screening With Raptor EventSafe\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/csd-albany-eventsafe-case-study/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Breaking Down the Standard Reunification Method (SRM): Key Roles, Steps, and Setup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/standard-reunification-method/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Recognizing the Warning Signs of Suicide Risk in Students",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://raptortech.com/resources/blog/student-suicide-risk-warning-signs/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Bell-to-Bell Cellphone Bans and the Rise of Hall Pass Requests",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/bell-to-bell-cellphone-bans/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/newark-csd-smartpass-case-study/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "7 Considerations for Better School Volunteer Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/6-considerations-for-modernized-school-volunteer-management/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Alachua County Schools Deploy Raptor Badge Alert to Protect Their Campuses",
-   "kind": "contract",
-   "kind_rule": "Deploy",
-   "url": "https://raptortech.com/resources/news/alachua-county-schools-use-raptor-badge-alert/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Raptor Technologies Helps School Districts Consolidate Safety Tools into a Single Cost-Effective Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/news/raptor-technologies-helps-school-districts-consolidate-safety-tools-into-a-single-cost-effective-platform/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A Campus Administrator\u2019s Playbook for Effective Bullying Prevention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/campus-administrator-bullying-prevention-guide/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "7 Considerations for Better School Volunteer Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/7-considerations-for-modernized-school-volunteer-management/"
   }
  ],
  "profile": {

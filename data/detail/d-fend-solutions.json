@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "From Capability to Confidence: What Major-Event Counter-Drone Operations Require",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/major-event-counter-drone-operations/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Varying Consequences of Rogue Drone Escalation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/the-varying-consequences-of-rogue-drone-escalation/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Drone Neutralization Systems: Comparing Methods and Outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/drone-neutralization-systems/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://d-fendsolutions.com/blog/rogue-drone-incident-briefing-june-2026/"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Anti-Drone Systems: Mitigating Cybersecurity Threats of Hostile Drones",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/anti-drone-systems-mitigating-cybersecurity-threats-of-hostile-drones/"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Remote ID: Why C-UAS Defense Requires More Than Cooperative Drone Awareness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/remote-id-counter-uas-limitations/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Rogue Drone Incident Briefing: May 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://d-fendsolutions.com/blog/rogue-drone-incident-briefing-may-2026/"
   }
  ],
  "profile": {

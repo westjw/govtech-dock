@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Introducing Samsara MCP: your data, inside of your team\u2019s AI tooling",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.samsara.com/blog/introducing-samsara-mcp"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "September product updates: 4 new Samsara releases to close gaps in your operation",
+   "kind": "product",
+   "kind_rule": "updates",
+   "url": "https://www.samsara.com/blog/september-product-updates-2026"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
@@ -8,6 +26,15 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.samsara.com/blog/introducing-samsara-driver-perks"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Designing Ground Intelligence: Giving cities a real-time view of every pothole",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.samsara.com/blog/designing-ground-intelligence-giving-cities-a-real-time-view-of-every-pothole"
   },
   {
    "date": "2026-09-08",
@@ -46,6 +73,15 @@
    "url": "https://www.samsara.com/blog/g2-fall-2026"
   },
   {
+   "date": "2026-08-21",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "Beyond 2026 with Pike Corp: Signals from the field",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.samsara.com/blog/beyond-2026-with-pike-corp-signals-from-the-field"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -55,6 +91,15 @@
    "url": "https://www.samsara.com/blog/august-product-updates-2026"
   },
   {
+   "date": "2026-08-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-28",
+   "headline": "From reports to real-time intervention: Building a voice agent for missed vehicle inspections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.samsara.com/blog/from-reports-to-real-time-intervention-building-a-voice-agent-for-missed-vehicle-inspections"
+  },
+  {
    "date": "2026-07-29",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.samsara.com/blog/the-new-samsara-community"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "The maintenance blind spots costing fleets more than they realize",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/maintenance-blind-spots-costing-fleets-more"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "We built a new brand the way we build everything at Samsara \u2014 with you",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/builtwithoperators"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "From reactive to ready: Real-world takeaways on using Ground Intelligence for Public Sector",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/real-world-takeaways-on-using-ground-intelligence-for-public-sector"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "How real-time visibility stops trailer mispulls in their tracks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/how-real-time-visibility-stops-trailer-mispulls-in-their-tracks"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "New innovations from Samsara help fleets find and recover the hidden operational costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.samsara.com/blog/samsaras-new-innovations-increase-efficiency"
   }
  ],
  "profile": {

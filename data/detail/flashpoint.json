@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "The Flashpoint Threat Intelligence Brief: Middle East",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/the-flashpoint-threat-intelligence-brief-middle-east/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Process Parameter Poisoning: Inside a Novel EDR Evasion Technique",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/process-parameter-poisoning-edr-evasion-technique/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -8,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/how-natural-language-search-powers-rapid-physical-security-intelligence/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The Flashpoint Threat Intelligence Brief: Middle East",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/the-flashpoint-threat-intelligence-brief-middle-east/"
   },
   {
    "date": "2026-09-01",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/proactive-defender-guide-infostealers/"
-  },
-  {
-   "date": "2026-03-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Navigating 2026\u2019s Converged Threats: Insights from Flashpoint\u2019s Global Threat Intelligence Report",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/global-threat-intelligence-report-2026/"
   }
  ],
  "profile": {

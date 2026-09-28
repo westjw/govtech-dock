@@ -1,13 +1,103 @@
 {
  "news": [
   {
-   "date": "2026-09-10",
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Bringing Intelligent AI Workload Orchestration to Nutanix Kubernetes Platform and Nutanix Enterprise AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/bringing-intelligent-ai-workload-orchestration-to-nutanix-kubernetes-platform-and-nutanix-enterprise-ai"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "og:published",
+   "first_seen": "2026-09-28",
+   "headline": "MySQL\u00ae on Steroids: Accelerating Provisioning, Backup & Recovery, and TDE with Nutanix Database Service (NDB)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/mysql-on-steroids"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "One Subnet, One Path: How Nutanix Flow Keeps VM Migration Traffic From Splitting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/how-flow-keeps-vm-migration-traffic-from-splitting"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Beyond Self-Managed EC2: NDB on NC2 for RDS Custom for Oracle Databases",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/ndb-on-nc2-for-rds-custom-for-oracle-databases"
+  },
+  {
+   "date": "2026-09-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Nutanix Recognized as a Leader in the Gartner\u00ae Magic Quadrant\u2122 for Distributed Hybrid Infrastructure",
+   "headline": "One Platform. Four Analyst Recognitions across Modern Infrastructure and AI.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nutanix.com/blog/nutanix-recognized-as-leader-in-gartner-magic-quadrant-for-distributed-hybrid-infrastructure"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Four Analyst Recognitions across Modern Infrastructure and AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/one-platform-four-analyst-recognitions-across-modern-infrastructure-and-ai"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "A Leader: Highest in Execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/nutanix-recognized-as-leader-in-gartner-magic-quadrant-for-server-virtualization-platforms"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Evaluate Neocloud Risks for Enterprise AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/7-enterprise-ai-infrastructure-risks-evaluate-before-choosing-neoclouds"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Forrester Wave\u2122 for Object Storage Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/blog/decoding-our-take-on-nutanixs-position-as-a-leader-in-the-forrester-wave"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "og:published",
+   "first_seen": "2026-09-28",
+   "headline": "Run Your AI in the Cloud. Or Don't. That's the Point.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/tech-center/blog/run-your-ai-in-the-cloud-or-dont-thats-the-point"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "\uc2e4\uc81c \ube44\uc6a9 \ubc0f \uae30\ub2a5 \uac2d \ubd84\uc11d:",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nutanix.com/ko/blog/navigating-the-true-cost-and-capability-gap-nutanix-vs-vmware-explained"
   },
   {
    "date": "2026-09-09",
@@ -17,96 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nutanix.com/tech-center/blog/nutanix-flow-and-ebpf-redefining-cloud-native-security-and-observability-for-nkp"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Nutanix Recognized as a Challenger in the 2026 Gartner \u00ae Magic Quadrant \u2122 for Container Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/nutanix-recognized-as-challenger-in-2026-gartner-magic-quadrant-for-container-management"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Unify Infrastructure & Operations to Minimize Silos in the Hybrid Cloud and Agentic AI Era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/unify-infrastructure-and-operations-to-minimize-silos"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "MySQL on NDB Architecture Deep Dive: From HA Foundation to Recovery and Security Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/mysql-on-ndb-architecture"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Nutanix Support for Microsoft Azure Virtual Desktop Hybrid is Now Generally Available",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/nutanix-support-for-azure-virtual-desktop-hybrid-is-now-generally-available"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Nutanix\u306b\u3088\u308bMicrosoft Azure Virtual Desktop Hybrid\u306e\u30b5\u30dd\u30fc\u30c8\u304c\u4e00\u822c\u63d0\u4f9b\u958b\u59cb",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/ja/blog/nutanix-support-for-azure-virtual-desktop-hybrid-is-now-generally-available"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Use Cases: AI ML",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/ja/blog/neoclouds-vs-hyperscalers"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building the Enterprise Foundation for Agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/building-the-enterprise-foundation-for-agentic-ai"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Empowering Enterprises & Service Providers: Migrations to Nutanix Projects",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/empowering-enterprises-and-service-providers"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Charting the Path to Governed Agentic AI with Nutanix Enterprise AI 2.8",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/charting-the-path-to-governed-agentic-ai-with-nutanix-enterprise-ai-2-8"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Nutanix Kubernetes Platform Achieves CNCF Kubernetes AI Conformance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nutanix.com/blog/nutanix-kubernetes-platform-achieves-cncf-kubernetes-ai-conformance"
   }
  ],
  "profile": {

@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Bitget Loses USD 351.6 Million in Hot Wallet Breach in Likely North Korea Attack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/bitget-loses-usd-3516-million-in-hot-wallet-breach-in-likely-north-korea-attack"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The State of Korean Digital Asset Compliance: While the Basic Act Waits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/the-state-of-korean-digital-asset-compliance-while-the-basic-act-waits"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "TRM Labs Supports Microsoft's Disruption of EvilTokens, an AI-Powered Cybercrime Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-supports-microsofts-disruption-of-eviltokens-an-ai-powered-cybercrime-service"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How Deepfakes Are Used to Commit Crimes (and How to Spot Them)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/how-deepfakes-are-used-to-commit-crimes-and-how-to-spot-them"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "OFAC Sanctions BitBank, Expanding Action Against Babak Zanjani\u2019s Digital Asset Network",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/ofac-sanctions-bitbank-expanding-action-against-babak-zanjanis-digital-asset-network"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Fake AI Trading Bots Are Getting Victims to Build Their Own Drainers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/fake-ai-trading-bots-are-getting-victims-to-build-their-own-drainers"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/2026s-biggest-hack-to-date-attackers-drained-usd-319-million-in-bitcoin-from-liquid-network-then-returned-85-of-funds"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cuba After EO 14404: Following the Money Beyond the Sanctions List",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/cuba-after-eo-14404-following-the-money-beyond-the-sanctions-list"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Number of Price-Manipulation Attacks Hits All-Time High as USD 75 Million Is Stolen From Tectonic",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/number-of-price-manipulation-attacks-hits-all-time-high-as-usd-75-million-is-stolen-from-tectonic"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Unpacking Taiwan's Virtual Asset Service Act: What Crypto and Stablecoin Issuers Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/unpacking-taiwans-virtual-asset-service-act-what-crypto-and-stablecoin-issuers-need-to-know"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Sanctioned Ravin Academy Training Biggest Ever Class of Future Iranian Cyber Fighters, Partners with Russian Firm as US-Iran War Continues",
-   "kind": "contract",
-   "kind_rule": "Partners with",
-   "url": "https://www.trmlabs.com/resources/blog/sanctioned-ravin-academy-training-biggest-ever-class-of-future-iranian-cyber-fighters-partners-with-russian-firm-as-us-iran-war-continues"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "\u200dTRM Labs Appoints MAS veteran Ziqing Ang as Head of Policy, APAC",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://www.trmlabs.com/resources/blog/trm-labs-appoints-mas-veteran-ziqing-ang-as-head-of-policy-apac"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "named digital assets a sanctionable sector of the Iranian economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/operation-economic-outcast-treasury-sanctions-nearly-60-iran-linked-targets-and-names-digital-assets-a-sanctionable-sector"
   }
  ],
  "profile": {

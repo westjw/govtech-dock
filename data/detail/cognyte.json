@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Cognyte Signs ~$20 Million AI-Powered Expansion with EMEA National Security Customer",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.cognyte.com/news/cognyte-signs-20-million-ai-powered-expansion-with-emea-national-security-customer/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The OSINT Framework Every Agency Needs: A Four-Pillar Model for Law Enforcement and Intelligence Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/blog/osint-framework-four-pillar-model/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Cognyte Secures ~$10 Million Contract with Long-Standing APAC National Security Customer",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.cognyte.com/news/cognyte-secures-10-million-contract-with-long-standing-apac-national-security-customer/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -80,33 +107,6 @@
    "kind": "contract",
    "kind_rule": "Contract",
    "url": "https://www.cognyte.com/news/cognyte-military-intelligence-customer-in-apac-expands-partnership-with-new-15-million-contract/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cognyte Appoints Adam Philpott as Chief Revenue Officer to Lead Global Market Expansion",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://www.cognyte.com/news/cognyte-appoints-adam-philpott-as-chief-revenue-officer-to-lead-global-market-expansion/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Growing Role of BizINT in Financial Crime Investigations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/blog/bizint/"
-  },
-  {
-   "date": "2026-07-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Top National Security Threats in 2026: What to Watch",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/blog/national-security-threats-2026/"
   }
  ],
  "profile": {

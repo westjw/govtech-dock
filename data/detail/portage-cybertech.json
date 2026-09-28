@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Canada\u2019s Digital Future Depends on More Than Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.portagecybertech.com/en/blog/the-digital-front-door-is-open-most-residents-still-cant-find-it/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "La porte d\u2019entr\u00e9e num\u00e9rique est ouverte, mais la plupart des r\u00e9sidents peinent encore \u00e0 la trouver",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.portagecybertech.com/fr/blog/la-porte-dentree-numerique-est-ouverte-mais-la-plupart-des-residents-peinent-encore-a-la-trouver/"
+  },
+  {
    "date": "2026-07-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.portagecybertech.com/en/blog/why-citizens-are-embracing-digital-government-services-key-insights-and-statistics/"
-  },
-  {
-   "date": "2024-10-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "xSuite\u2019s Global Transformation With 1CRM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.portagecybertech.com/en/blog/case-study-xsuite-1crm/"
-  },
-  {
-   "date": "2024-05-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Creating Future-Proof Firms with Digital Signatures",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.portagecybertech.com/en/blog/creating-future-proof-firms-with-digital-signatures/"
   }
  ],
  "profile": {

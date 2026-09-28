@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why Meaningful School Experiences Improve Attendance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/improve-attendance-meaningful-school-experiences/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "The Cost You Don\u2019t See: When \u201cWorking\u201d Systems Still Create Friction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/k12-software-value-cost-you-dont-see/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "A Year of Learning and Progress: What You\u2019ve Taught Us About Customer Success and the Progress We\u2019re Making",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/year-learning-progress-customer-success/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "New Attendance Support Enhancements Help Districts Strengthen Attendance Intervention This Fall",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/attendance-support-fall-enhancements/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Stronger Family Engagement, Simpler School Communication",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/schoolmessenger-communicate-presence-q3-2026-product-news/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Enrollment Product News: Stronger Enrollment Workflows for the School Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/enrollment-product-news-smarter-enrollment-workflows-summer-2026/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Enrollment Express Product News: Simpler Workflows Ahead",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/enrollment-express-product-news-q3-2026/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Make Special Programs Workflows Simpler and More Connected",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/special-programs-product-news-summer-2026/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Product News: A Stronger Start with Naviance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/blog/naviance-product-news-summer-2026/"
+  },
+  {
    "date": "2026-04-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.powerschool.com/news/powerschool-expands-ai-capabilities-with-multi-language-support-for-students-and-teachers/"
-  },
-  {
-   "date": "2025-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "A Step-by-Step Guide to Chronic Absenteeism Solutions and Improving Student Attendance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/chronic-absenteeism/"
-  },
-  {
-   "date": "2025-04-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Cabrillo USD Reduced Chronic Absenteeism with PowerSchool Attendance Intervention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/how-cabrillo-usd-reduced-chronic-absenteeism-with-powerschool-attendance-intervention/"
-  },
-  {
-   "date": "2025-01-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "K-12 Cybersecurity: A Guide to Online Safety in 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/cybersecurity-in-schools/"
-  },
-  {
-   "date": "2024-08-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Hawai\u02bbi DOE sets New Standard in K-12 Data Culture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/hawaii-doe-sets-new-standard/"
-  },
-  {
-   "date": "2024-03-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "A Superintendent\u2019s Guide to Federal Cybersecurity Grants",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/a-superintendents-guide-to-federal-cybersecurity-grants/"
-  },
-  {
-   "date": "2023-09-14",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "The Hidden Impact of Absenteeism: Enrollment and School Funding",
-   "kind": "funding",
-   "kind_rule": "Funding",
-   "url": "https://www1.powerschool.com/blog/hidden-impact-absenteeism-enrollment-school-funding/"
-  },
-  {
-   "date": "2023-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "PowerSchool Joins White House K-12 Education Technology Secure by Design Pledge & Announces New Commitments to Education Ecosystem Security",
-   "kind": "product",
-   "kind_rule": "Announces New",
-   "url": "https://www1.powerschool.com/news/powerschool-joins-white-house-k-12-education-technology-secure-by-design-pledge-announces-new-commitments-to-education-ecosystem-security/"
-  },
-  {
-   "date": "2023-06-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Student Data Privacy: Everything You Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/student-data-privacy-everything-you-need-to-know/"
-  },
-  {
-   "date": "2023-04-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Your Comprehensive Guide to School Cybersecurity Resources",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www1.powerschool.com/blog/cybersecurity-resources-to-protect-student-data-and-privacy/"
   }
  ],
  "profile": {

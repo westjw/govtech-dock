@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "How to Build a Travel and Spend Program That Scales With You",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/how-to-build-a-travel-and-spend-program"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Rising Travel Spend Can Tell Business Leaders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/what-rising-travel-spend-can-tell-business-leaders-about-growth"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Air Travel Accounts for More Than 75% of Corporate Transportation Spend Growth, New Emburse Data Reveals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/air-travel-accounts-for-more-than-75-of-corporate-transportation-spend-growth-new-emburse-data-reveals"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Emburse Launches AI-Powered Accounts Payable and Payments Solution Built for Growing Organizations",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.emburse.com/company/news/emburse-launches-ai-powered-accounts-payable-and-payments-solution-built-for-growing-organizations"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.emburse.com/company/news/emburse-named-to-the-2026-inc-5000-list-marking-fourth-consecutive-recognition"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Emburse and Direct Travel Launching Strategic Partnership to Deliver a Connected, AI-Powered Travel and Expense Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/company/news/emburse-and-direct-travel-launching-strategic-partnership-to-deliver-a-connected-ai-powered-travel-and-expense-experience"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Emburse Expands Open Travel and Expense Ecosystem, Delivering Greater Choice and a More Connected Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/company/news/emburse-expands-open-travel-and-expense-ecosystem-delivering-greater-choice-and-a-more-connected-experience"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Emburse Integrates with Cvent to Bring Travel Intelligence to Hotel Sourcing",
-   "kind": "product",
-   "kind_rule": "Integrates with",
-   "url": "https://www.emburse.com/company/news/emburse-integrates-with-cvent-to-bring-travel-intelligence-to-hotel-sourcing"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "BCD Travel and Emburse redefine the travel and expense experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/company/news/bcd-travel-and-emburse-redefine-the-travel-and-expense-experience"
   }
  ],
  "profile": {

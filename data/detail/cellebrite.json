@@ -1,6 +1,105 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Following the Digital Trail: How Digital Forensics Is Disrupting Human Trafficking Networks Across EMEA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/following-the-digital-trail-how-digital-forensics-is-disrupting-human-trafficking-networks-across-emea/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Closing the Digital Evidence Gap in Violence Against Women and Girls Investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/closing-the-digital-evidence-gap-in-violence-against-women-and-girls-investigations/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Cellebrite Calls for 2027 JUSTYS Nominees, Premier Event Highlights Unsung Heroes Who Keep the World Safe Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/cellebrite-calls-for-2027-justys-nominees-premier-event-highlights-unsung-heroes-who-keep-the-world-safe/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "Cellebrite Calls for 2027 JUSTYS Nominees, Premier Event Highlights Unsung Heroes Who Keep the World Safe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/customer-stories/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "card-date",
+   "first_seen": "2026-09-10",
+   "headline": "iOS Jailbreaking Is Over: What It Means for Your Security Team Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/ios-risk-for-mobile-app-developers-and-security-teams/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Mobile Security Testing Alternatives: Closing the iOS Blind Spots",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/mobile-security-testing-alternatives-ios-blind-spot/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Mobile App Security Checklist: A 30-Day Plan for iOS and Android Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/mobile-app-security-checklist/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Cellebrite Expands Global Digital Community, \u2018The 101,\u2019 for Digital Forensics and Investigative Professionals Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-expands-global-digital-community-the-101-for-digital-forensics-and-investigative-professionals/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Cellebrite CTO Chris Wade to Lead Cellebrite Labs, Sharpening Focus on Mobile Research Read Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-cto-chris-wade-to-lead-cellebrite-labs-sharpening-focus-on-mobile-research/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "card-date",
+   "first_seen": "2026-09-28",
+   "headline": "Cellebrite Initiates Plans to Redomicile in the United States",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-initiates-plans-to-redomicile-in-the-united-states/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Security Debt: What Happens When Your Mobile Security Can\u2019t Keep Up?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cellebrite.com/en/blog/what-is-security-debt/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -8,105 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cellebrite.com/en/blog/my-4-favorite-things-about-cellebrites-expanded-101-community/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Cellebrite Guardian: IRAP-Assessed Cloud Platform Achieves PROTECTED Level for Australian Government Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/guardian-irap-assessment-cloud-security-for-australian-agencies-cellebrite/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Cellebrite Announces Upcoming Investor Events in September",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-announces-upcoming-investor-events-in-september/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Digital Evidence Overload: Why Prosecutors Need Direct Access to Case Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/direct-access-to-digital-evidence-for-prosecutors/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Cellebrite Guardian Completes IRAP Assessment: Achieves PROTECTED Level for Australian Government Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-guardian-completes-irap-assessment-achieves-protected-level-for-australian-government-agencies/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Cellebrite Federal Solutions, Inc. (CFSI) Achieves U.S. Department of War\u2019s Advanced Cybersecurity Standard, Reinforcing Commitment to Secure Federal Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-federal-solutions-inc-cfsi-achieves-u-s-department-of-wars-advanced-cybersecurity-standard-reinforcing-commitment-to-secure-federal-operations/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cellebrite Brings Battlefield Intelligence to the Armed Forces with Launch of Portable Tactical Extraction Kit (C-TEK)",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://cellebrite.com/en/resources/cellebrite-brings-battlefield-intelligence-to-the-armed-forces-with-launch-of-portable-tactical-extraction-kit-c-tek/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "card-date",
-   "first_seen": "2026-09-10",
-   "headline": "Cellebrite Genesis for Enterprise Now Generally Available, Regional Availability Expands to More Global Markets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/resources/cellebrite-genesis-for-enterprise-now-generally-available-regional-availability-expands-to-more-global-markets/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "card-date",
-   "first_seen": "2026-09-10",
-   "headline": "Cellebrite Appoints Shiven Ramji Chief Executive Officer, Succeeding Thomas E. Hogan",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-appoints-shiven-ramji-chief-executive-officer-succeeding-thomas-e-hogan/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Will iOS 26 Cause Your Mobile App to Fail PCI Compliance?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/will-ios-26-cause-your-mobileapp-to-fail-pci-compliance/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "iOS Jailbreaking Is Over: What It Means for Your Security Team",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/ios-risk-for-mobile-app-developers-and-security-teams/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Mobile Security Testing Alternatives: Closing the iOS Blind Spots",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cellebrite.com/en/blog/mobile-security-testing-alternatives-ios-blind-spot/"
   }
  ],
  "profile": {

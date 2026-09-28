@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "TCF 2026: Littlepay\u2019s Project Coral update and the next steps for connected travel",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://littlepay.com/resource-hub/blog/articles/tcf-2026-littlepays-project-coral-update-and-the-next-steps-for-connected-travel/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Just add open-loop: Littlepay\u2019s EMV Overlay",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/just-add-open-loop-littlepays-emv-overlay/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Better buses, not just bus reform: What we heard at the UK Bus Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/better-buses-not-just-bus-reform-what-we-heard-at-the-uk-bus-summit/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://littlepay.com/resource-hub/blog/articles/bringing-contactless-emv-to-uk-rail-littlepay-powers-merseyrails-new-open-loop-system/"
-  },
-  {
-   "date": "2025-08-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "How Micro Mobility Is Transforming Transit Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/how-micro-mobility-is-transforming-transit-agencies/"
-  },
-  {
-   "date": "2025-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Project Highlights: Washington DC\u2019s record breaking upgrade to accept open loop payments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/"
-  },
-  {
-   "date": "2025-03-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "How Plug And Play Technologies Offer a Modular Approach To Fare Collection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://littlepay.com/resource-hub/blog/articles/how-plug-and-play-technologies-offer-a-modular-approach-to-fare-collection/"
   }
  ],
  "profile": {

@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Triggers an I-9 Audit?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/what-triggers-an-i-9-audit"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Why Is My Background Check Taking So Long?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/why-is-my-background-check-taking-so-long-1"
+  },
+  {
+   "date": "2026-09-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is an MVR Check? A Complete Guide for Employers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/what-is-an-mvr-check-a-complete-guide-for-employers"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Pre-Employment Drug Testing: What Employers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/pre-employment-drug-testing-what-employers-need-to-know"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "What Is a Global Watchlist Search in a Background Check?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/what-is-a-global-watchlist-search-in-a-background-check"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "How Real-Time Arrest Alerts Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/continuous-employee-monitoring-how-real-time-arrest-alerts-work"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -17,15 +71,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/background-checks-for-small-businesses"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Continuous Employee Monitoring: How Real-Time Arrest Alerts Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/continuous-employee-monitoring-how-real-time-arrest-alerts-work"
   },
   {
    "date": "2026-08-31",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/background-checks-for-contractors-what-employers-need-to-know"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Employment Verification: What It Is and How It Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/employment-verification-what-it-is-and-how-it-works"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Negligent Hiring: What Every Employer Needs to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/negligent-hiring-what-every-employer-needs-to-know"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Background Check Adjudication: The Complete Guide for HR Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/background-check-adjudication-the-complete-guide-for-hr-teams"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Is a Consumer Report Under the FCRA?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/what-is-a-consumer-report-under-the-fcra"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Does a Background Check Actually Cost?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/what-does-a-background-check-actually-cost"
   }
  ],
  "profile": {

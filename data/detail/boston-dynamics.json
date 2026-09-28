@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Ask a Roboticist: Meet Diane",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-diane/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Boston Dynamics Opens Robotics Metaplant Application Center to Train Humanoid Robots for Manufacturing Tasks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Boston Dynamics Joins DoW SkillBridge Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/boston-dynamics-joins-dow-skillbridge-program/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -8,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/the-missing-piece-of-your-ai-stack/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "Spot 5.2 Delivers Embodied AI for the Factory Floor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/spot-5-2-delivers-embodied-ai-for-the-factory-floor/"
   },
   {
    "date": "2026-09-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/securing-the-fifa-world-cup-2026/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Boston Dynamics Expands Massachusetts Footprint with New 323,000 Square Foot Facility in Waltham",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/news/boston-dynamics-expands-massachusetts-footprint-with-new-323000-square-foot-facility-in-waltham/"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Can football teach a robot to move?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/can-football-teach-a-robot-to-move/"
-  },
-  {
-   "date": "2026-06-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ask a Roboticist: Meet Chastity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-chastity/"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Training a Humanoid Robot for Hard Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/training-a-humanoid-robot-for-hard-work/"
   }
  ],
  "profile": {
