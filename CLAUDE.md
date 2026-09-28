@@ -1690,10 +1690,11 @@ commit step has to be derived from what the script writes, not typed in.
 It is the refresh job wearing a build job's name, and it takes 13-20 minutes.
 
 That matters because a change touching NO postings - moving a sector, filling
-in conference dates, adding a field to the conference rows - still costs a
-full crawl of a few hundred third-party boards before the site shows it. Four
+in conference dates, adding a field to the conference rows - used to cost a
+full crawl of a few hundred third-party boards before the site showed it. Four
 such rebuilds ran on 2026-08-25 for metadata-only edits, which is a lot of
-traffic aimed at other people's servers to redraw a tab.
+traffic aimed at other people's servers to redraw a tab. Those edits are
+`quick_rebuild.py`'s job now (below).
 
 **Waiting for it: never `pgrep -f build_board.py`.** A shell running
 `until ! pgrep -f build_board.py; do sleep; done` has that string in its OWN
@@ -1702,19 +1703,71 @@ command line, so pgrep matches the waiter and it waits for itself forever. On
 while nothing was building. Wait on the PID instead - `while kill -0 <pid>;
 do sleep 15; done` - or bracket the pattern, `pgrep -f "[b]uild_board.py"`.
 
-There is no offline mode. `--limit` and `--company` skip work but refuse to
-write the full board (correctly - a partial run overwriting the full board
-destroyed the dataset once). What is missing is a `--reuse-postings` that
-takes the postings out of the existing board.json, skips fetching entirely,
-and re-derives orgs, sectors, conferences, cities and totals from them.
+`--limit` and `--company` skip work but refuse to write the full board
+(correctly - a partial run overwriting the full board destroyed the dataset
+once).
 
-NOT built, deliberately: the postings flow through the fetch loop that also
-builds `orgs`, so reusing them is not a one-line substitution, and a bug in
-this script corrupts the file the public site reads. It needs a careful pass
-with the owner, not a quick one. If it is built, the payload MUST record that
-its postings were reused and when they were actually crawled - a board that
-reports a fresh `generated` date over week-old postings is the same lie as
-reporting "no jobs here" when nobody looked.
+**The offline mode is `scripts/quick_rebuild.py` (2026-09-28).** This section
+said it was deliberately not built because the postings flow through the fetch
+loop that builds `orgs`. That loop no longer builds them: every organization
+is `build_board.org_record()`, shared-board attribution is `board_owners()`,
+and the manual merge, first_seen, the narrowing filters (`out_of_scope()`),
+totals, conference rows and the data/detail split are functions main() calls.
+quick_rebuild calls the same ones, so a redraw cannot describe a company
+differently from a crawl. It reads no board: every socket and every fetcher is
+refused while it runs.
+
+- **It carries what only a crawl knows**: the postings, the six
+  `CRAWL_FIELDS`, `boards_read`/`unreadable`/`rendered`, and `generated` - the
+  crawl date the site ages postings by, which a redraw never moves. Its board
+  says it was redrawn: `redrawn: {at, inputs}`, the second a sha256 of the
+  inputs less `hiring` and `ats`.
+- **What needs a crawl waits for one, by name**, under "waits for the nightly
+  crawl": a changed ats type or board address, sled_only turned off on a
+  company that published its own rows, a shared board whose attribution moved
+  between companies still on file. Each is drawn exactly as the last crawl
+  left it - rows, crawl fields and board fields - and stays named on every
+  redraw until a crawl reads it.
+- **A company new since the crawl with a board on file is LEFT OFF the
+  board** - including one that points at a board another company already
+  holds. No card, no rows, no place in any count or in shared-board
+  attribution, its captures held back, and the report names it "waiting for
+  the nightly crawl" until a crawl reads it: what the board did before
+  redraws existed. Drawn, it would carry zero roles and `enumerable: None`,
+  which index.html and build_site.py read as a board that answered - "they
+  have nothing open that we can see" about a board nobody opened. A new
+  company with NO board on file is drawn; it has nothing to read.
+- **A shared board whose holder left the file passes on as the crawl passes
+  it** (`quick_rebuild.takeover()`): the company now holding it alone takes
+  the holder's crawled rows, re-keyed under its own id by `opening_id()` and
+  `posting_id()`, dated `generated`, through its own filters; one still
+  following names the new holder. Where the holder's read cannot pass exactly
+  the new holder waits by name instead. Its sled_only dropped roles the new
+  holder would keep, or its rows took its website as their url: the rows pass
+  with the holder's sled_only or board_url carried, so the wait is named on
+  every redraw. Its scope rulings dropped roles, its roles came from its own
+  stored roles, or it published nothing while the new holder has stored roles
+  or a scan lead of its own: named on the redraw that makes the change only
+  (nothing on the board can carry it), the first with the rows passed, the
+  others drawn as the follower they were. No `shares_board_with` on a redrawn
+  board names a company that is not on it.
+- Two edits it cannot see land with the next crawl unannounced: a scope
+  ruling that brings a dropped role back in (dropped rows are not stored), and
+  a same-type ref change on a workday/gusto/adp/gem board (board.json holds no
+  ref for those).
+- `python3 scripts/quick_rebuild.py` is a dry run listing what would change,
+  grouped by field; `--write` redraws; `--check` exits 1 unless board.json is
+  drawn from the inputs on disk.
+
+`selftest::check_a_redraw_is_the_crawl_without_the_fetch` runs main() itself
+OFFLINE over the committed inputs - fetchers stubbed from the committed board,
+sockets refused - and requires the redraw to match it byte for byte, then again
+after nine real edits, two of them a shared board's holder taken off the map.
+It is deliberately NOT compared with the committed board.json: that goes stale
+the first time news.yml commits after a crawl, and a check against it would
+fail every workflow's self-test from then until the next nightly, the
+nightly's own included. `check_an_ats_change_waits_for_the_crawl` holds every
+wait above, the takeover and the companies left off, across two redraws.
 
 ## Common tasks
 

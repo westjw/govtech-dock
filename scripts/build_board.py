@@ -839,16 +839,27 @@ _BLOCKED_MARKERS = ("blocked at", "could not fetch", "gave up after")
 _DISCOVERY_LOG: dict | None = None
 
 
-def _probe_state(cid: str) -> str | None:
-    """"blocked", "none-found", or None when nobody has looked yet."""
+def _read_discovery_log() -> dict:
+    """data/discovery_log.json, or {} when it is absent or unreadable."""
+    path = DATA / "discovery_log.json"
+    try:
+        return json.loads(path.read_text()) if path.exists() else {}
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _probe_state(cid: str, log: dict | None = None) -> str | None:
+    """"blocked", "none-found", or None when nobody has looked yet.
+
+    `log` is the run's discovery log (see run_context). Called without one,
+    the file is read once and kept in _DISCOVERY_LOG.
+    """
     global _DISCOVERY_LOG
-    if _DISCOVERY_LOG is None:
-        path = DATA / "discovery_log.json"
-        try:
-            _DISCOVERY_LOG = json.loads(path.read_text()) if path.exists() else {}
-        except (json.JSONDecodeError, OSError):
-            _DISCOVERY_LOG = {}
-    entry = _DISCOVERY_LOG.get(cid)
+    if log is None:
+        if _DISCOVERY_LOG is None:
+            _DISCOVERY_LOG = _read_discovery_log()
+        log = _DISCOVERY_LOG
+    entry = log.get(cid)
     if not entry:
         return None
     note = entry.get("note") or ""
@@ -976,6 +987,615 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
     return conf_rows
 
 
+# --- what a board.json organization is made of ----------------------------
+#
+# LIFTED OUT OF main() SO A REDRAW HAS NO SECOND COPY. Every organization used
+# to be a dict literal inside main()'s fetch loop, so the only way to change a
+# description on the site was to re-crawl ~2,000 job boards. main() and
+# scripts/quick_rebuild.py both build every organization through org_record()
+# below; the only thing they hand it differently is `crawl`.
+
+# THE SIX FIELDS ONLY A CRAWL CAN WRITE. Everything else on an organization
+# is derived from companies.json and the side files next to it; these come
+# off the fetch itself (what the board answered, what the filters dropped,
+# whether the roles came from storage). A redraw carries them from the last
+# crawl's board rather than inventing them.
+CRAWL_FIELDS = ("unreadable", "roles_from_storage", "enumerable",
+                "offtopic_dropped", "federal_dropped", "scan_lead")
+
+# A company nobody has crawled yet. Every crawl-owned field is None - not the
+# False or the count a read would have produced - because nothing was read.
+# Every reader of `enumerable` tests `is not False`, so None reads as "no
+# claim either way", which is the truth.
+NO_CRAWL = dict.fromkeys(CRAWL_FIELDS)
+
+
+def load_manual() -> dict | None:
+    """data/manual.json, or None when nothing has ever been captured."""
+    p = DATA / "manual.json"
+    return json.loads(p.read_text()) if p.exists() else None
+
+
+def board_owners(companies: list) -> tuple[dict, set]:
+    """(owns, unowned): who holds each board two or more companies point at.
+
+    `owns` maps a company id to the id of the board's owner; `unowned` holds
+    the owners the slug does not name.
+    """
+    # Two companies pointing at ONE board is not two boards. It happens after an
+    # acquisition: both the product and its acquirer end up with the parent's
+    # careers URL, and the same postings get counted under both names. Twenty
+    # refs were shared this way, double-counting 112 of 704 quota-carrying
+    # roles - a 16% inflation of the single number this board exists to report.
+    #
+    # The board belongs to whoever the slug names. Everyone else sharing it is
+    # marked and contributes nothing, rather than silently doubling the total.
+    shared: dict[tuple, list] = collections.defaultdict(list)
+    for c in companies:
+        kind = (c.get("ats") or {}).get("type")
+        ref = (c.get("ats") or {}).get("ref")
+        if kind in (None, "unknown") or ref is None:
+            continue
+        shared[(kind, json.dumps(ref, sort_keys=True))].append(c)
+
+    owns: dict[str, str] = {}          # company id -> id of the board's owner
+    unowned: set[str] = set()          # holders the slug does not name
+    for (kind, ref_json), group in shared.items():
+        if len(group) < 2:
+            continue
+        ref = json.loads(ref_json)
+        slug = ref if isinstance(ref, str) else " ".join(str(x) for x in ref)
+        norm = lambda t: re.sub(r"[^a-z0-9]", "", (t or "").lower())
+        ns = norm(slug)
+
+        def closeness(c):
+            """How much of this company's name the slug accounts for.
+
+            Taking the first name that merely CONTAINS the slug gave the Xplor
+            board to "PerfectMind (Xplor Recreation)" over "Xplor Recreation",
+            which is the company the slug is actually named after. The slug
+            covering more of the name is the better claim.
+            """
+            n = norm(c["name"])
+            if not n or not ns:
+                return 0.0
+            if n in ns or ns in n:
+                return len(ns) / max(len(n), len(ns))
+            return 0.0
+
+        holder = max(group, key=closeness)
+        unverified = closeness(holder) == 0
+        if unverified:
+            # Nobody is named by the slug. Three Catalis brands share
+            # catalisgov.com and none of them IS Catalis, so whoever holds it
+            # holds it arbitrarily. Keep the pick stable and say so, rather
+            # than letting an arbitrary attribution look decided.
+            holder = group[0]
+            unowned.add(holder["id"])
+        for c in group:
+            if c["id"] != holder["id"]:
+                owns[c["id"]] = holder["id"]
+    return owns, unowned
+
+
+def run_context(companies: list, manual: dict | None) -> dict:
+    """What every org record in one run reads that is not the company itself.
+
+    Read once per run, never per company: the tag vocabulary, confirmed
+    claims, the news store, shared-board attribution, the discovery log and
+    manual.json's hand checks.
+    """
+    owns, unowned = board_owners(companies)
+    return {"vocab": _TAG_VOCAB, "claims": load_claims(), "news": _news_store(),
+            "owns": owns, "unowned": unowned,
+            "discovery": _read_discovery_log(),
+            "checks": (manual or {}).get("checks", {})}
+
+
+def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
+    """One board.json organization, as the crawl and a redraw both write it.
+
+    `ctx` is run_context(); `crawl` holds exactly CRAWL_FIELDS - this run's
+    fetch in main(), the last crawl's board in quick_rebuild.py. The counts
+    are zero here and filled in by count_openings() once every posting exists.
+    """
+    kind = (c.get("ats") or {}).get("type")
+    ref = (c.get("ats") or {}).get("ref")
+    no_board = kind in (None, "unknown") or ref is None
+    # WHAT THEIR OWN SITE PRINTED, with the state beside it.
+    _news_items, _news_state, _news_on = news_for_board(c, ctx["news"])
+    o = {
+        "id": c["id"], "name": c["name"], "sector": c["sector"],
+        "category": c["category"], "also": c.get("also") or None,
+        "location": c.get("location"),
+        "year_founded": c.get("year_founded"), "description": c.get("description"),
+        "website": c.get("website"), "board_url": board_url(c),
+        # THEIR OWN LINKEDIN, read off their own careers page by
+        # find_linkedin.py and stored only where the slug matches
+        # the company name. It is a LINK, never a job count: for
+        # the 781 companies whose board will not enumerate, the
+        # card otherwise ends at "we could not read their board".
+        "linkedin": c.get("linkedin"),
+        "ats": kind, "ats_ranks": ats_tier(kind),
+        "tier": TIER.get(c["sector"]),
+        "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
+        # WHAT THEY SELL AND WHO BUYS IT, derived rather than stored.
+        # tags.py reads vendor_type and the buyer verdict off this same
+        # record, so the board's tags cannot disagree with the fields they
+        # came from - there is no second copy to drift. The vocabulary
+        # sits in schema.json beside sectors and categories, for the same
+        # reason: a tag the schema does not hold files a company nowhere.
+        "tags": tags.tags_for(c, ctx["vocab"]),
+        "parent": c.get("parent"), "ats_note": c.get("ats_note"),
+        # The sub-companies folded into this record by a family merge:
+        # each keeps its own name, its own website and the research written
+        # about it. Carried through in full because it is the ONLY place a
+        # brand with no record of its own still exists - drop it here and
+        # the site can never say that PerfectMind is Xplor Recreation, and
+        # a visitor typing that name gets an empty page about a company we
+        # actually track. `also_known_as` rides along for the same reason:
+        # it is where every dropped name went, and a name has to find the
+        # company.
+        "brands": _brands_with_history(c, companies),
+        # The other half of the same fact. A company that was bought
+        # says so on its own page, with the year and the sentence it
+        # was ruled from - not only on the buyer's.
+        "acquired": c.get("acquired") or None,
+        "also_known_as": c.get("also_known_as") or None,
+        # THE SHORTLIST, AND THE TWO SILENCES BESIDE IT. A researched
+        # empty and an unresearched company are different facts and the
+        # page renders them differently, so both flags travel: without
+        # `none_found` the page cannot tell "nobody competes with them"
+        # from "nobody has looked", which is the whole point of the
+        # engine that produced these.
+        "competitors": c.get("competitors") or None,
+        # THE WRITE-UP, in the shape the page keys on. Legacy `profile`
+        # rows carry internal notes and no `paragraphs`; they come
+        # through as None and the page shows the one-line record. A
+        # journalled `profile_hidden` is the kill switch a person can
+        # throw on any write-up on sight.
+        "profile": profile_for_board(c),
+        # WHAT THEIR OWN SITE PRINTED, with the state beside it. The
+        # engine, the door and the four-times-a-day sweep were all built
+        # and none of this was ever written onto the board, so the page
+        # hardcoded "No news items have been recorded" for every company
+        # on it while 10,099 dated items sat in the store.
+        "news": _news_items,
+        "news_state": _news_state,
+        "news_checked_on": _news_on,
+        "competitors_none_found": bool(c.get("competitors_none_found")) or None,
+        "competitors_checked_on": c.get("competitors_checked_on") or None,
+        # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can
+        # actually open one. The tag alone, not the whole `source` string:
+        # sweeps write "conference sweep: PLA 2026" and intake writes
+        # "PLA 2026", and two spellings of one event would list as two
+        # events. Null for anything not found at a conference.
+        # EVERY EVENT THEY WERE FOUND AT, not the raw source string. A
+        # record tagged "IACP 2026; NSA 2026" was shipped as one
+        # conference whose name was that whole string, so the company
+        # page named an event nobody runs and the tab's filter matched
+        # nothing. `conferences` is the list; `conference` stays as the
+        # first for every reader that expects one, so nothing that reads
+        # it breaks while the list is adopted.
+        "conferences": _event_tags(c.get("source")),
+        "conference": (_event_tags(c.get("source")) or [None])[0],
+        # Filled in by count_openings() once every posting exists. Counting
+        # here counted rows, missed the manual merge below, and rescanned
+        # the whole posting list once per company.
+        "open_roles": 0, "open_postings": 0,
+        "quota_roles": 0, "quota_postings": 0,
+        "families": {}, "phase": phase({}),
+        "unreadable": crawl["unreadable"],
+        # THESE ROLES WERE NOT CONFIRMED ON THIS RUN. Their board failed
+        # and refresh had them on file from an earlier read, so they are
+        # shown - absence of a successful fetch is not evidence the job is
+        # gone - but a reader is told which they are looking at.
+        "roles_from_storage": crawl["roles_from_storage"],
+        "sled_only": bool(c.get("sled_only")) or None,
+        "offtopic_dropped": crawl["offtopic_dropped"],
+        "federal_dropped": crawl["federal_dropped"],
+        "shares_board_with": ctx["owns"].get(c["id"]),
+        "board_owner_unverified": c["id"] in ctx["unowned"] or None,
+        # A company with nothing on file has not failed; it has never been
+        # tried. Counting 4,137 of those as "unreadable" made a discovery
+        # backlog look like a systemic fetch failure.
+        # whose board this actually is, when it is not theirs. An
+        # acquired company often points at the parent, and a visitor
+        # told "their hiring board" should not land on somebody
+        # else's without being warned first.
+        "board_owner": (c.get("acquired_by") or {}).get("board_owner")
+                        or (c.get("board_owner") or None),
+        "no_board_on_file": no_board,
+        # WHY there is no board, when we know. "We could not find a public
+        # job board" and "their site turned our reader away" are different
+        # facts, and the card was telling 181 companies' visitors the first
+        # when the truth was the second. One is a statement about them; the
+        # other is a statement about us.
+        #
+        # The blocked queue has always got this right - "not evidence of
+        # anything except that the fetcher was refused" - but that sentence
+        # lives in the admin, and the public card never saw it.
+        "probe": _probe_state(c["id"], ctx["discovery"]) if no_board else None,
+        "enumerable": crawl["enumerable"],
+        # A LEAD, WHERE WE HAVE ONE AND CANNOT TURN IT INTO A POSTING.
+        # 89 companies are in this state: a page scan found a
+        # quota-carrying title in the text of their careers page, but the
+        # listing itself never loaded for our reader, so there is no
+        # posting to publish and the card would otherwise say nothing at
+        # all. The scan is weak evidence - it proves those words appeared
+        # on that page, and nothing more - which is exactly why it is
+        # offered as a lead to check rather than counted as an opening.
+        # It changes no number on this board.
+        "scan_lead": crawl["scan_lead"],
+        # WHEN WE LAST LOOKED. The card has been saying "we could not find
+        # a public job board" with no date on it, which reads as a
+        # permanent fact about the company rather than the result of a
+        # probe on a particular day. The date is in discovery_log.json and
+        # was simply never carried across; index.html has been reading for
+        # three candidate field names since before one existed.
+        "board_checked_on": (ctx["discovery"] or {}).get(c["id"], {}).get("on"),
+        # WHERE THIS RECORD CAME FROM. 1,139 companies were found on a
+        # conference floor and the card never said so, which is the single
+        # most interesting provenance fact this dataset holds: it is the
+        # difference between "some database" and "somebody stood in front
+        # of their booth".
+        # WHERE THEY POST WHEN WE CANNOT READ A BOARD. The renderers for
+        # this have been in index.html the whole time and the admin has
+        # written the ruling since August; the field simply never crossed
+        # into board.json, so the feature was three-quarters built and
+        # entirely invisible. "They advertise on LinkedIn" and "we could
+        # not find a board" are opposite facts and were being shown as the
+        # same one.
+        "posts_at": c.get("posts_at") or None,
+        "source": c.get("source") or None,
+        "researched": bool(c.get("researched")) or None,
+        # WHO SAYS SO. A claimed page reads differently from one we wrote
+        # from a company's site, and the badge is the only thing telling a
+        # reader which they have. Read from data/claims.json, which
+        # sync_claims writes and which never holds a person.
+        "claimed": ctx["claims"].get(c["id"]) or None,
+    }
+    # Hand-checked in manual.json: the date somebody last looked by hand.
+    chk = ctx["checks"].get(c["id"])
+    if chk:
+        o["checked_by_hand"] = chk.get("checked_on")
+    return o
+
+
+def out_of_scope(title: str, rid: str, oid: str, scope: dict,
+                 sled_only: bool) -> str | None:
+    """"federal" or "offtopic" for a posting this board does not carry, else None.
+
+    The narrowing filters, lifted out of main()'s posting loop so a redraw
+    applies exactly the rule a crawl does to the rows it already holds.
+    """
+    # Scope rulings are looked up by both ids, most specific first.
+    # admin.py keys a new ruling by the posting id it saw on the board,
+    # which is now per-requisition; every ruling made before that is
+    # keyed company::title and is a judgement about the ROLE, so it
+    # still applies to all 93 rows and nobody is asked 93 times.
+    ruling = scope.get(rid)
+    if ruling is None:
+        ruling = scope.get(oid)
+    # FEDERAL FIRST, AND ON EVERY COMPANY. A federal account executive
+    # is a federal role whoever employs them, so this cannot sit inside
+    # the sled_only branch: 27 of the 40 federal roles on the board are
+    # at companies carrying no flag at all - Motorola's eight, Workday's
+    # five - where nothing looked at a title and the whole board loaded.
+    # A ruling still wins, which is why this reads `ruling is None`.
+    if ruling is None and FEDERAL_ROLE.search(title):
+        return "federal"
+    if sled_only or ruling:
+        if ruling is not None:
+            # A person has already decided. Their ruling beats the
+            # pattern in both directions.
+            if not ruling.get("in_scope"):
+                return "offtopic"
+        elif not SLED_ROLE.search(title) or NOT_OUR_GOV.search(title):
+            return "offtopic"
+    return None
+
+
+def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
+    """Append manual.json's captures to `postings`. Returns (added, already_fetched)."""
+    manual_count = manual_dupes = 0
+    seen_ids = {p["id"] for p in postings}
+    if man is None:
+        return manual_count, manual_dupes
+    for mp in man.get("postings", []):
+        # manual.py keys a hand-captured row company::title, which names
+        # the opening rather than the requisition. Re-key it the same way
+        # a fetched row is keyed, so "one id, one row" holds across both
+        # sources. No org counting here: count_openings() below sees these
+        # rows too, and doing it twice double-counted them.
+        # A captured row is a title read off a page a fetcher cannot
+        # enumerate, so there is no description behind it and derived()
+        # reads that correctly as jd_seen false. The dict is copied whole
+        # from manual.json, so it is also the one path by which a `jd` key
+        # could ever ride into the public file - derived() rebuilds the
+        # pay fields from scratch and the pop removes the text itself.
+        row = manual_row(mp)
+        # ONE ID, ONE ROW, across both sources. A captured posting is kept
+        # because the fetcher could not read the company; when the fetcher
+        # CAN read it, the same requisition arrives twice - once from
+        # Greenhouse and once from the extension - under the same id, and
+        # the site resolves a role by id, so every duplicate opened the
+        # wrong row. 8 of everdriven's rows were doubled this way on
+        # 2026-09-03. The fetched row wins; the capture stays in
+        # manual.json, it is simply not counted twice.
+        if row["id"] in seen_ids:
+            manual_dupes += 1
+            continue
+        seen_ids.add(row["id"])
+        postings.append(row)
+        manual_count += 1
+    return manual_count, manual_dupes
+
+
+def carry_first_seen(postings: list[dict], prev_postings: list[dict]) -> None:
+    """Give every posting the earliest first_seen the previous board held for it."""
+    prev, legacy = {}, {}
+    for p in prev_postings:
+        seen = p.get("first_seen")
+        if not seen:
+            continue
+        if p["id"] not in prev or seen < prev[p["id"]]:
+            prev[p["id"]] = seen
+        # Rows written before ids carried a requisition discriminator have
+        # id == company::title exactly. Without this fallback the very
+        # first run under the new scheme matches nothing, resets every
+        # first_seen to today, and the site reports 4,242 roles as posted
+        # this morning. It retires itself: once a board has been written
+        # with discriminated ids, no row takes this branch again.
+        # The oldest date wins: the old id was shared by up to 93 rows, and
+        # the opening has been open since the earliest of them appeared.
+        if p["id"] == opening_id(p.get("company_id"), p.get("title")):
+            if p["id"] not in legacy or seen < legacy[p["id"]]:
+                legacy[p["id"]] = seen
+    for p in postings:
+        was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
+        if was:
+            p["first_seen"] = was
+
+
+def fill_geography(postings: list[dict]) -> None:
+    """Territory, office and work mode for the rows that predate them."""
+    for mp in postings:
+        if "territory" not in mp:            # manual entries predate these fields
+            g = roles.geography(mp.get("location", ""), mp.get("title", ""))
+            mp.update(seniority=roles.seniority(mp.get("title", "")),
+                      territory=g["territory"], office=g["office"],
+                      states=g["territory"]["states"],
+                      region=g["territory"]["region"], work_mode=g["work_mode"])
+
+
+def drop_identical(postings: list[dict]) -> list[dict]:
+    """The rows, with byte-identical duplicates removed (first kept)."""
+    # Byte-identical duplicate rows are a fetcher stutter, not two jobs.
+    # Rows that DIFFER - one title across 93 locations - are real and stay;
+    # each now carries its own id, and posting_id() is derived from the url and
+    # location, so two rows that would collide on an id are identical in every
+    # other field too and one of them is dropped right here.
+    unique, seen_rows = [], set()
+    for mp in postings:
+        key = json.dumps(mp, sort_keys=True)
+        if key in seen_rows:
+            continue
+        seen_rows.add(key)
+        unique.append(mp)
+    return unique
+
+
+def logos_manifest() -> dict:
+    """{company id: file extension} for every logo on file, sorted by id."""
+    # which companies have a logo on file, and in what format. The page
+    # needs the extension to build the src, and a manifest is cheaper than
+    # 2,100 speculative requests that mostly 404.
+    #
+    # SORTED. glob() returns files in whatever order the filesystem keeps
+    # them, so the same logos wrote a differently ordered board.json on the
+    # CI runner and on a laptop, and a redraw could never be byte-identical
+    # to the crawl before it. The files are walked in order too, so if one
+    # id ever did have two files the same one would win on every machine.
+    logos = {}
+    ldir = ROOT / "assets" / "logos"
+    if ldir.exists():
+        for f in sorted(ldir.glob("*.*")):
+            logos[f.stem] = f.suffix.lstrip(".")
+    return dict(sorted(logos.items()))
+
+
+def cities_manifest() -> dict:
+    """{city key: [lat, lon]} for every city that geocoded."""
+    # Coordinates for the cities the board names, so "within 50 miles" can be
+    # answered in the page. Shipped INSIDE board.json rather than as a second
+    # file: the site is one fetch by design, and a filter that depends on a
+    # request that might not land is a filter that silently returns nothing.
+    #
+    # Only cities that RESOLVED are emitted. geocode_cities.py stores a failure
+    # as lat null, and a null must never reach the page: a city at no
+    # coordinate is not a city at 0,0, and the distance filter has to be able
+    # to tell "far away" from "we do not know where this is".
+    cities = {}
+    cpath = DATA / "cities.json"
+    if cpath.exists():
+        try:
+            for key, v in json.loads(cpath.read_text()).items():
+                if v.get("lat") is not None and v.get("lon") is not None:
+                    cities[key] = [v["lat"], v["lon"]]
+        except (json.JSONDecodeError, OSError, TypeError):
+            cities = {}
+    return cities
+
+
+def load_catalogue() -> list:
+    """data/conferences.json's catalogue rows, or [] when there is none."""
+    # WHERE THESE COMPANIES WERE FOUND. 1,129 of them carry a conference
+    # source tag - over half the map came off exhibitor lists - and until now
+    # that was only visible as "exhibited at IACP 2026" buried in a
+    # description. For a seller it is the more useful cut: which event puts
+    # the most hiring govtech vendors in one room is a travel-budget question
+    # with a real answer.
+    #
+    # EVERY conference in the catalogue ships, not only the ones a sweep has
+    # touched. This filtered to swept-or-found and showed 36 of 118, which
+    # turns a catalogue into a progress report on our own sweeping. The point
+    # of the tab is to be the list of govcon events that does not otherwise
+    # exist in one place; an event we have not mined yet is still an event,
+    # and "0 companies found" is a fact about US, not about the conference.
+    #
+    # Counts come from the company records, never from the catalogue's own
+    # claims: a swept event that yielded nothing shows zero rather than
+    # inheriting a number from somewhere else.
+    cpath = DATA / "conferences.json"
+    if not cpath.exists():
+        return []
+    try:
+        return json.loads(cpath.read_text()).get("conferences", [])
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def board_totals(postings: list[dict], groups: dict) -> dict:
+    """board.json's `totals`: openings counted from `groups`, rows beside them."""
+    # Everything below counts OPENINGS - see opening_id(). The row counts are
+    # still here, named *_postings, because "advertised in 607 postings" is the
+    # sentence that makes 470 checkable.
+    fam_totals = collections.Counter(rows[0].get("family") or "other"
+                                     for rows in groups.values())
+    sector_totals = collections.Counter(rows[0].get("sector")
+                                        for rows in groups.values())
+    # Where the pay numbers came from. "ats" is the board's own field, "text" is
+    # salary.py reading it out of the description - a weaker claim, and the site
+    # should be able to say which it is showing rather than presenting both as
+    # equally settled.
+    pay_source = collections.Counter(p["comp"]["source"] for p in postings
+                                     if p.get("comp"))
+    return {
+        # rows: one per advertisement, which is what the board lists
+        "postings": len(postings),
+        "quota_carrying_postings": sum(1 for p in postings if p["quota_carrying"]),
+        # openings: one per (company, title), which is what it counts.
+        # us/non_us count an opening if ANY of its rows says so, so an
+        # opening advertised on both sides of a border appears in both.
+        "openings": len(groups),
+        "quota_carrying": sum(1 for rows in groups.values()
+                              if any(p["quota_carrying"] for p in rows)),
+        "us": sum(1 for rows in groups.values()
+                  if any(p["is_us"] is True for p in rows)),
+        "non_us": sum(1 for rows in groups.values()
+                      if any(p["is_us"] is False for p in rows)),
+        "families": dict(fam_totals), "sectors": dict(sector_totals),
+        # What the site can honestly say on screen about pay coverage.
+        #
+        # These four do NOT partition the board and must not be presented as
+        # if they do. A posting can state pay without our ever having read a
+        # description (Breezy publishes the range in the list response and no
+        # description at all), and a posting we read in full very often
+        # states no pay. The only safe readings are the direct ones: this
+        # many rows carry a figure, this many rows we never read. Everything
+        # else - above all "the rest pay nothing" - is invented.
+        "pay_stated": sum(1 for rows in groups.values()
+                          if any(p.get("comp") for p in rows)),
+        "pay_stated_postings": sum(1 for p in postings if p.get("comp")),
+        "pay_source": dict(pay_source),
+        "jd_read_postings": sum(1 for p in postings if p.get("jd_seen")),
+        "jd_unread_postings": sum(1 for p in postings if not p.get("jd_seen")),
+    }
+
+
+def board_payload(generated: str, orgs: list[dict], postings: list[dict],
+                  groups: dict, companies: list, crawl_stats: dict,
+                  manual_count: int, manual_dupes: int) -> dict:
+    """board.json, in the key order the site has always been handed.
+
+    `crawl_stats` is the run's own {"unreadable", "rendered"}; boards_read
+    and coverage are set by the caller once they are known.
+    """
+    return {
+        "generated": generated,
+        "logos": logos_manifest(),
+        "cities": cities_manifest(),
+        "conferences": conference_rows(load_catalogue(), orgs, companies),
+        # BOARDS WE ACTUALLY READ, not companies we hold. Counted in the
+        # summary loop above; see the long note at the increment for what
+        # "read" means and which three lines can lie about it. Declared here
+        # only so the key's order in the payload is stable.
+        #
+        # TWO WRONG ANSWERS BEFORE THIS ONE, and the comment that used to
+        # stand here argued at length for the second of them:
+        #
+        #   len(companies) - every company on file. The public page printed
+        #   2,113 under "boards read this run", directly above a table saying
+        #   950 of those are blocked, absent or never probed.
+        #
+        #   structured + page only, off the coverage split. Better arithmetic,
+        #   same false claim: CLAUDE.md forbids adding those two by name,
+        #   because `page only` is a worklist for capture rather than
+        #   coverage. 866 of the 1,163 it reported are pages a fetcher mostly
+        #   cannot enumerate.
+        #
+        # Both describe the MAP and label it the RUN. The run reads 337.
+        "boards_read": None,
+        "unreadable": crawl_stats["unreadable"],
+        "rendered": crawl_stats["rendered"],
+        "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
+        "manual_postings": manual_count,
+        "manual_already_fetched": manual_dupes,
+        "totals": board_totals(postings, groups),
+        "organizations": orgs,
+        "postings": postings,
+    }
+
+
+def coverage_split(companies: list, orgs: list[dict], log: dict) -> dict:
+    """The five-way coverage split, counted over the companies on file."""
+    # THE FIVE-WAY SPLIT, on the board rather than only in a script nobody
+    # runs. "839 of 1,722 monitored" was wrong in both directions for months
+    # because it counted a careers page nothing can enumerate the same as a
+    # Greenhouse API, and counted companies with no board at all as a gap.
+    sys.path.insert(0, str(pathlib.Path(__file__).parent))
+    import coverage as _cov
+    orgs_by_id = {o["id"]: o for o in orgs}
+    split: dict = {}
+    for c in companies:
+        st = _cov.state(c, log.get(c["id"]), orgs_by_id.get(c["id"]))
+        split[st] = split.get(st, 0) + 1
+    return split
+
+
+def detail_bodies(orgs: list[dict]) -> dict[str, str]:
+    """{company id: the text of data/detail/<id>.json} for every company with news or a write-up."""
+    out = {}
+    for o in orgs:
+        d = {k: o[k] for k in ("news", "profile") if o.get(k)}
+        if d:
+            out[o["id"]] = json.dumps(d, indent=1) + "\n"
+    return out
+
+
+def write_details(bodies: dict[str, str], detail_dir: pathlib.Path) -> None:
+    """Write each detail file that changed and remove each one that is gone."""
+    detail_dir.mkdir(exist_ok=True)
+    for cid, body in bodies.items():
+        f = detail_dir / f"{cid}.json"
+        # only rewrite what changed, so a nightly build does not churn 1,062
+        # files through git for a board whose news did not move
+        if not f.exists() or f.read_text() != body:
+            f.write_text(body)
+    # a company that lost its last item must lose its file, or the page keeps
+    # serving news that is no longer on the board
+    for f in detail_dir.glob("*.json"):
+        if f.stem not in bodies:
+            f.unlink()
+
+
+def strip_details(orgs: list[dict]) -> None:
+    """Take news and the write-up off every org; they live in data/detail/."""
+    for o in orgs:
+        o.pop("news", None)
+        o.pop("profile", None)
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -1063,61 +1683,12 @@ def main() -> int:
             except Exception as exc2:
                 return c, [], f"twice: {str(exc2)[:52]}", True, kind == "html"
 
-    # Two companies pointing at ONE board is not two boards. It happens after an
-    # acquisition: both the product and its acquirer end up with the parent's
-    # careers URL, and the same postings get counted under both names. Twenty
-    # refs were shared this way, double-counting 112 of 704 quota-carrying
-    # roles - a 16% inflation of the single number this board exists to report.
-    #
-    # The board belongs to whoever the slug names. Everyone else sharing it is
-    # marked and contributes nothing, rather than silently doubling the total.
-    shared: dict[tuple, list] = collections.defaultdict(list)
-    _claims = load_claims()
-    _newsstore = _news_store()
-    for c in companies:
-        kind = (c.get("ats") or {}).get("type")
-        ref = (c.get("ats") or {}).get("ref")
-        if kind in (None, "unknown") or ref is None:
-            continue
-        shared[(kind, json.dumps(ref, sort_keys=True))].append(c)
-
-    owns: dict[str, str] = {}          # company id -> id of the board's owner
-    unowned: set[str] = set()          # holders the slug does not name
-    for (kind, ref_json), group in shared.items():
-        if len(group) < 2:
-            continue
-        ref = json.loads(ref_json)
-        slug = ref if isinstance(ref, str) else " ".join(str(x) for x in ref)
-        norm = lambda t: re.sub(r"[^a-z0-9]", "", (t or "").lower())
-        ns = norm(slug)
-
-        def closeness(c):
-            """How much of this company's name the slug accounts for.
-
-            Taking the first name that merely CONTAINS the slug gave the Xplor
-            board to "PerfectMind (Xplor Recreation)" over "Xplor Recreation",
-            which is the company the slug is actually named after. The slug
-            covering more of the name is the better claim.
-            """
-            n = norm(c["name"])
-            if not n or not ns:
-                return 0.0
-            if n in ns or ns in n:
-                return len(ns) / max(len(n), len(ns))
-            return 0.0
-
-        holder = max(group, key=closeness)
-        unverified = closeness(holder) == 0
-        if unverified:
-            # Nobody is named by the slug. Three Catalis brands share
-            # catalisgov.com and none of them IS Catalis, so whoever holds it
-            # holds it arbitrarily. Keep the pick stable and say so, rather
-            # than letting an arbitrary attribution look decided.
-            holder = group[0]
-            unowned.add(holder["id"])
-        for c in group:
-            if c["id"] != holder["id"]:
-                owns[c["id"]] = holder["id"]
+    # Everything an org record reads that is not the company: shared-board
+    # attribution (board_owners - a shared board is one board), claims, news,
+    # the discovery log and manual.json's hand checks. Read once, up front.
+    man = load_manual()
+    ctx = run_context(companies, man)
+    owns, unowned = ctx["owns"], ctx["unowned"]
 
     fetched = []
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
@@ -1292,33 +1863,16 @@ def main() -> int:
             url = j.get("url") or board_url(c)
             oid = opening_id(c["id"], title)
             rid = posting_id(c["id"], title, url, loc)
-            # Scope rulings are looked up by both ids, most specific first.
-            # admin.py keys a new ruling by the posting id it saw on the board,
-            # which is now per-requisition; every ruling made before that is
-            # keyed company::title and is a judgement about the ROLE, so it
-            # still applies to all 93 rows and nobody is asked 93 times.
-            ruling = scope.get(rid)
-            if ruling is None:
-                ruling = scope.get(oid)
-            # FEDERAL FIRST, AND ON EVERY COMPANY. A federal account executive
-            # is a federal role whoever employs them, so this cannot sit inside
-            # the sled_only branch: 27 of the 40 federal roles on the board are
-            # at companies carrying no flag at all - Motorola's eight, Workday's
-            # five - where nothing looked at a title and the whole board loaded.
-            # A ruling still wins, which is why this reads `ruling is None`.
-            if ruling is None and FEDERAL_ROLE.search(title):
+            # Federal first and on every company, then sled_only and a
+            # person's scope ruling, which beats the pattern both ways. See
+            # out_of_scope(), which a redraw applies to stored rows too.
+            why = out_of_scope(title, rid, oid, scope, sled_only)
+            if why == "federal":
                 dropped_federal += 1
                 continue
-            if sled_only or ruling:
-                if ruling is not None:
-                    # A person has already decided. Their ruling beats the
-                    # pattern in both directions.
-                    if not ruling.get("in_scope"):
-                        dropped_offtopic += 1
-                        continue
-                elif not SLED_ROLE.search(title) or NOT_OUR_GOV.search(title):
-                    dropped_offtopic += 1
-                    continue
+            if why:
+                dropped_offtopic += 1
+                continue
             fam = roles.family(title)
             geo = roles.geography(loc, title)
             # THE BOARD'S OWN STATEMENT BEATS OUR READING OF ITS PROSE, where
@@ -1399,385 +1953,49 @@ def main() -> int:
                 "first_seen": today, "source": "ats",
             })
 
-        # WHAT THEIR OWN SITE PRINTED, with the state beside it.
-        _news_items, _news_state, _news_on = news_for_board(c, _newsstore)
-        orgs.append({
-            "id": c["id"], "name": c["name"], "sector": c["sector"],
-            "category": c["category"], "also": c.get("also") or None,
-            "location": c.get("location"),
-            "year_founded": c.get("year_founded"), "description": c.get("description"),
-            "website": c.get("website"), "board_url": board_url(c),
-            # THEIR OWN LINKEDIN, read off their own careers page by
-            # find_linkedin.py and stored only where the slug matches
-            # the company name. It is a LINK, never a job count: for
-            # the 781 companies whose board will not enumerate, the
-            # card otherwise ends at "we could not read their board".
-            "linkedin": c.get("linkedin"),
-            "ats": kind, "ats_ranks": ats_tier(kind),
-            "tier": TIER.get(c["sector"]),
-            "vendor_type": c.get("vendor_type"), "govtech": c.get("govtech"),
-            # WHAT THEY SELL AND WHO BUYS IT, derived rather than stored.
-            # tags.py reads vendor_type and the buyer verdict off this same
-            # record, so the board's tags cannot disagree with the fields they
-            # came from - there is no second copy to drift. The vocabulary
-            # sits in schema.json beside sectors and categories, for the same
-            # reason: a tag the schema does not hold files a company nowhere.
-            "tags": tags.tags_for(c, _TAG_VOCAB),
-            "parent": c.get("parent"), "ats_note": c.get("ats_note"),
-            # The sub-companies folded into this record by a family merge:
-            # each keeps its own name, its own website and the research written
-            # about it. Carried through in full because it is the ONLY place a
-            # brand with no record of its own still exists - drop it here and
-            # the site can never say that PerfectMind is Xplor Recreation, and
-            # a visitor typing that name gets an empty page about a company we
-            # actually track. `also_known_as` rides along for the same reason:
-            # it is where every dropped name went, and a name has to find the
-            # company.
-            "brands": _brands_with_history(c, companies),
-            # The other half of the same fact. A company that was bought
-            # says so on its own page, with the year and the sentence it
-            # was ruled from - not only on the buyer's.
-            "acquired": c.get("acquired") or None,
-            "also_known_as": c.get("also_known_as") or None,
-            # THE SHORTLIST, AND THE TWO SILENCES BESIDE IT. A researched
-            # empty and an unresearched company are different facts and the
-            # page renders them differently, so both flags travel: without
-            # `none_found` the page cannot tell "nobody competes with them"
-            # from "nobody has looked", which is the whole point of the
-            # engine that produced these.
-            "competitors": c.get("competitors") or None,
-            # THE WRITE-UP, in the shape the page keys on. Legacy `profile`
-            # rows carry internal notes and no `paragraphs`; they come
-            # through as None and the page shows the one-line record. A
-            # journalled `profile_hidden` is the kill switch a person can
-            # throw on any write-up on sight.
-            "profile": profile_for_board(c),
-            # WHAT THEIR OWN SITE PRINTED, with the state beside it. The
-            # engine, the door and the four-times-a-day sweep were all built
-            # and none of this was ever written onto the board, so the page
-            # hardcoded "No news items have been recorded" for every company
-            # on it while 10,099 dated items sat in the store.
-            "news": _news_items,
-            "news_state": _news_state,
-            "news_checked_on": _news_on,
-            "competitors_none_found": bool(c.get("competitors_none_found")) or None,
-            "competitors_checked_on": c.get("competitors_checked_on") or None,
-            # WHICH EVENT THIS COMPANY CAME OFF, so the Conferences tab can
-            # actually open one. The tag alone, not the whole `source` string:
-            # sweeps write "conference sweep: PLA 2026" and intake writes
-            # "PLA 2026", and two spellings of one event would list as two
-            # events. Null for anything not found at a conference.
-            # EVERY EVENT THEY WERE FOUND AT, not the raw source string. A
-            # record tagged "IACP 2026; NSA 2026" was shipped as one
-            # conference whose name was that whole string, so the company
-            # page named an event nobody runs and the tab's filter matched
-            # nothing. `conferences` is the list; `conference` stays as the
-            # first for every reader that expects one, so nothing that reads
-            # it breaks while the list is adopted.
-            "conferences": _event_tags(c.get("source")),
-            "conference": (_event_tags(c.get("source")) or [None])[0],
-            # Filled in by count_openings() once every posting exists. Counting
-            # here counted rows, missed the manual merge below, and rescanned
-            # the whole posting list once per company.
-            "open_roles": 0, "open_postings": 0,
-            "quota_roles": 0, "quota_postings": 0,
-            "families": {}, "phase": phase({}),
+        # THE ORGANIZATION, built by org_record() - the one builder a redraw
+        # shares. Only `crawl` comes from this run's fetch; see CRAWL_FIELDS.
+        orgs.append(org_record(c, companies, ctx, {
             "unreadable": err,
-            # THESE ROLES WERE NOT CONFIRMED ON THIS RUN. Their board failed
-            # and refresh had them on file from an earlier read, so they are
-            # shown - absence of a successful fetch is not evidence the job is
-            # gone - but a reader is told which they are looking at.
             "roles_from_storage": from_storage or None,
-            "sled_only": sled_only or None,
+            "enumerable": enumerable,
             "offtopic_dropped": dropped_offtopic or None,
             "federal_dropped": dropped_federal or None,
-            "shares_board_with": owns.get(c["id"]),
-            "board_owner_unverified": c["id"] in unowned or None,
-            # A company with nothing on file has not failed; it has never been
-            # tried. Counting 4,137 of those as "unreadable" made a discovery
-            # backlog look like a systemic fetch failure.
-            # whose board this actually is, when it is not theirs. An
-            # acquired company often points at the parent, and a visitor
-            # told "their hiring board" should not land on somebody
-            # else's without being warned first.
-            "board_owner": (c.get("acquired_by") or {}).get("board_owner")
-                            or (c.get("board_owner") or None),
-            "no_board_on_file": no_board,
-            # WHY there is no board, when we know. "We could not find a public
-            # job board" and "their site turned our reader away" are different
-            # facts, and the card was telling 181 companies' visitors the first
-            # when the truth was the second. One is a statement about them; the
-            # other is a statement about us.
-            #
-            # The blocked queue has always got this right - "not evidence of
-            # anything except that the fetcher was refused" - but that sentence
-            # lives in the admin, and the public card never saw it.
-            "probe": _probe_state(c["id"]) if no_board else None,
-            "enumerable": enumerable,
-            # A LEAD, WHERE WE HAVE ONE AND CANNOT TURN IT INTO A POSTING.
-            # 89 companies are in this state: a page scan found a
-            # quota-carrying title in the text of their careers page, but the
-            # listing itself never loaded for our reader, so there is no
-            # posting to publish and the card would otherwise say nothing at
-            # all. The scan is weak evidence - it proves those words appeared
-            # on that page, and nothing more - which is exactly why it is
-            # offered as a lead to check rather than counted as an opening.
-            # It changes no number on this board.
+            # a lead only where the board handed us nothing to publish
             "scan_lead": _scan_lead(c) if not jobs else None,
-            # WHEN WE LAST LOOKED. The card has been saying "we could not find
-            # a public job board" with no date on it, which reads as a
-            # permanent fact about the company rather than the result of a
-            # probe on a particular day. The date is in discovery_log.json and
-            # was simply never carried across; index.html has been reading for
-            # three candidate field names since before one existed.
-            "board_checked_on": (_DISCOVERY_LOG or {}).get(c["id"], {}).get("on"),
-            # WHERE THIS RECORD CAME FROM. 1,139 companies were found on a
-            # conference floor and the card never said so, which is the single
-            # most interesting provenance fact this dataset holds: it is the
-            # difference between "some database" and "somebody stood in front
-            # of their booth".
-            # WHERE THEY POST WHEN WE CANNOT READ A BOARD. The renderers for
-            # this have been in index.html the whole time and the admin has
-            # written the ruling since August; the field simply never crossed
-            # into board.json, so the feature was three-quarters built and
-            # entirely invisible. "They advertise on LinkedIn" and "we could
-            # not find a board" are opposite facts and were being shown as the
-            # same one.
-            "posts_at": c.get("posts_at") or None,
-            "source": c.get("source") or None,
-            "researched": bool(c.get("researched")) or None,
-            # WHO SAYS SO. A claimed page reads differently from one we wrote
-            # from a company's site, and the badge is the only thing telling a
-            # reader which they have. Read from data/claims.json, which
-            # sync_claims writes and which never holds a person.
-            "claimed": _claims.get(c["id"]) or None,
-        })
+        }))
 
     # Merge hand-checked findings. These come from companies the fetchers cannot
     # read at all, so an automated run must never delete them: absence from this
     # run means the fetcher still cannot see the company, not that the role closed.
-    # Only `manual.py none` closes a manual posting.
-    manual_path = DATA / "manual.json"
-    manual_count = manual_dupes = 0
-    seen_ids = {p["id"] for p in postings}
-    if manual_path.exists():
-        man = json.loads(manual_path.read_text())
-        checks = man.get("checks", {})
-        for mp in man.get("postings", []):
-            # manual.py keys a hand-captured row company::title, which names
-            # the opening rather than the requisition. Re-key it the same way
-            # a fetched row is keyed, so "one id, one row" holds across both
-            # sources. No org counting here: count_openings() below sees these
-            # rows too, and doing it twice double-counted them.
-            # A captured row is a title read off a page a fetcher cannot
-            # enumerate, so there is no description behind it and derived()
-            # reads that correctly as jd_seen false. The dict is copied whole
-            # from manual.json, so it is also the one path by which a `jd` key
-            # could ever ride into the public file - derived() rebuilds the
-            # pay fields from scratch and the pop removes the text itself.
-            row = manual_row(mp)
-            # ONE ID, ONE ROW, across both sources. A captured posting is kept
-            # because the fetcher could not read the company; when the fetcher
-            # CAN read it, the same requisition arrives twice - once from
-            # Greenhouse and once from the extension - under the same id, and
-            # the site resolves a role by id, so every duplicate opened the
-            # wrong row. 8 of everdriven's rows were doubled this way on
-            # 2026-09-03. The fetched row wins; the capture stays in
-            # manual.json, it is simply not counted twice.
-            if row["id"] in seen_ids:
-                manual_dupes += 1
-                continue
-            seen_ids.add(row["id"])
-            postings.append(row)
-            manual_count += 1
-        for org in orgs:
-            chk = checks.get(org["id"])
-            if chk:
-                org["checked_by_hand"] = chk.get("checked_on")
+    # Only `manual.py none` closes a manual posting. The hand-check date rides on
+    # each org already: org_record() read it from `man` through run_context().
+    manual_count, manual_dupes = merge_manual(postings, man)
 
     # carry first_seen forward so a posting keeps its original date
     prev_path = DATA / "board.json"
     if prev_path.exists():
-        prev, legacy = {}, {}
-        for p in json.loads(prev_path.read_text()).get("postings", []):
-            seen = p.get("first_seen")
-            if not seen:
-                continue
-            if p["id"] not in prev or seen < prev[p["id"]]:
-                prev[p["id"]] = seen
-            # Rows written before ids carried a requisition discriminator have
-            # id == company::title exactly. Without this fallback the very
-            # first run under the new scheme matches nothing, resets every
-            # first_seen to today, and the site reports 4,242 roles as posted
-            # this morning. It retires itself: once a board has been written
-            # with discriminated ids, no row takes this branch again.
-            # The oldest date wins: the old id was shared by up to 93 rows, and
-            # the opening has been open since the earliest of them appeared.
-            if p["id"] == opening_id(p.get("company_id"), p.get("title")):
-                if p["id"] not in legacy or seen < legacy[p["id"]]:
-                    legacy[p["id"]] = seen
-        for p in postings:
-            was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
-            if was:
-                p["first_seen"] = was
+        carry_first_seen(postings,
+                         json.loads(prev_path.read_text()).get("postings", []))
 
-    for mp in postings:
-        if "territory" not in mp:            # manual entries predate these fields
-            g = roles.geography(mp.get("location", ""), mp.get("title", ""))
-            mp.update(seniority=roles.seniority(mp.get("title", "")),
-                      territory=g["territory"], office=g["office"],
-                      states=g["territory"]["states"],
-                      region=g["territory"]["region"], work_mode=g["work_mode"])
+    fill_geography(postings)
 
-    # Byte-identical duplicate rows are a fetcher stutter, not two jobs.
-    # Rows that DIFFER - one title across 93 locations - are real and stay;
-    # each now carries its own id, and posting_id() is derived from the url and
-    # location, so two rows that would collide on an id are identical in every
-    # other field too and one of them is dropped right here.
-    unique, seen_rows = [], set()
-    for mp in postings:
-        key = json.dumps(mp, sort_keys=True)
-        if key in seen_rows:
-            continue
-        seen_rows.add(key)
-        unique.append(mp)
+    unique = drop_identical(postings)
     if len(unique) != len(postings):
         print(f"  dropped {len(postings) - len(unique)} byte-identical duplicate posting rows")
     postings = unique
 
     groups = count_openings(postings, orgs)
 
-    # Everything below counts OPENINGS - see opening_id(). The row counts are
-    # still here, named *_postings, because "advertised in 607 postings" is the
-    # sentence that makes 470 checkable.
-    fam_totals = collections.Counter(rows[0].get("family") or "other"
-                                     for rows in groups.values())
-    sector_totals = collections.Counter(rows[0].get("sector")
-                                        for rows in groups.values())
-    # Where the pay numbers came from. "ats" is the board's own field, "text" is
-    # salary.py reading it out of the description - a weaker claim, and the site
-    # should be able to say which it is showing rather than presenting both as
-    # equally settled.
-    pay_source = collections.Counter(p["comp"]["source"] for p in postings
-                                     if p.get("comp"))
-    # which companies have a logo on file, and in what format. The page
-    # needs the extension to build the src, and a manifest is cheaper than
-    # 2,100 speculative requests that mostly 404.
-    logos = {}
-    ldir = ROOT / "assets" / "logos"
-    if ldir.exists():
-        for f in ldir.glob("*.*"):
-            logos[f.stem] = f.suffix.lstrip(".")
-
-    # Coordinates for the cities the board names, so "within 50 miles" can be
-    # answered in the page. Shipped INSIDE board.json rather than as a second
-    # file: the site is one fetch by design, and a filter that depends on a
-    # request that might not land is a filter that silently returns nothing.
-    #
-    # Only cities that RESOLVED are emitted. geocode_cities.py stores a failure
-    # as lat null, and a null must never reach the page: a city at no
-    # coordinate is not a city at 0,0, and the distance filter has to be able
-    # to tell "far away" from "we do not know where this is".
-    cities = {}
-    cpath = DATA / "cities.json"
-    if cpath.exists():
-        try:
-            for key, v in json.loads(cpath.read_text()).items():
-                if v.get("lat") is not None and v.get("lon") is not None:
-                    cities[key] = [v["lat"], v["lon"]]
-        except (json.JSONDecodeError, OSError, TypeError):
-            cities = {}
-
-    # WHERE THESE COMPANIES WERE FOUND. 1,129 of them carry a conference
-    # source tag - over half the map came off exhibitor lists - and until now
-    # that was only visible as "exhibited at IACP 2026" buried in a
-    # description. For a seller it is the more useful cut: which event puts
-    # the most hiring govtech vendors in one room is a travel-budget question
-    # with a real answer.
-    #
-    # EVERY conference in the catalogue ships, not only the ones a sweep has
-    # touched. This filtered to swept-or-found and showed 36 of 118, which
-    # turns a catalogue into a progress report on our own sweeping. The point
-    # of the tab is to be the list of govcon events that does not otherwise
-    # exist in one place; an event we have not mined yet is still an event,
-    # and "0 companies found" is a fact about US, not about the conference.
-    #
-    # Counts come from the company records, never from the catalogue's own
-    # claims: a swept event that yielded nothing shows zero rather than
-    # inheriting a number from somewhere else.
-    conf_rows = []
-    cpath = DATA / "conferences.json"
-    if cpath.exists():
-        try:
-            _cat = json.loads(cpath.read_text()).get("conferences", [])
-        except (json.JSONDecodeError, OSError):
-            _cat = []
-        conf_rows = conference_rows(_cat, orgs, companies)
-
-    payload = {
-        "generated": today,
-        "logos": logos,
-        "cities": cities,
-        "conferences": conf_rows,
-        # BOARDS WE ACTUALLY READ, not companies we hold. Counted in the
-        # summary loop above; see the long note at the increment for what
-        # "read" means and which three lines can lie about it. Declared here
-        # only so the key's order in the payload is stable.
-        #
-        # TWO WRONG ANSWERS BEFORE THIS ONE, and the comment that used to
-        # stand here argued at length for the second of them:
-        #
-        #   len(companies) - every company on file. The public page printed
-        #   2,113 under "boards read this run", directly above a table saying
-        #   950 of those are blocked, absent or never probed.
-        #
-        #   structured + page only, off the coverage split. Better arithmetic,
-        #   same false claim: CLAUDE.md forbids adding those two by name,
-        #   because `page only` is a worklist for capture rather than
-        #   coverage. 866 of the 1,163 it reported are pages a fetcher mostly
-        #   cannot enumerate.
-        #
-        # Both describe the MAP and label it the RUN. The run reads 337.
-        "boards_read": None,
-        "unreadable": unreadable,
-        "rendered": rendered,
-        "no_board_on_file": sum(1 for o in orgs if o.get("no_board_on_file")),
-        "manual_postings": manual_count,
-        "manual_already_fetched": manual_dupes,
-        "totals": {
-            # rows: one per advertisement, which is what the board lists
-            "postings": len(postings),
-            "quota_carrying_postings": sum(1 for p in postings if p["quota_carrying"]),
-            # openings: one per (company, title), which is what it counts.
-            # us/non_us count an opening if ANY of its rows says so, so an
-            # opening advertised on both sides of a border appears in both.
-            "openings": len(groups),
-            "quota_carrying": sum(1 for rows in groups.values()
-                                  if any(p["quota_carrying"] for p in rows)),
-            "us": sum(1 for rows in groups.values()
-                      if any(p["is_us"] is True for p in rows)),
-            "non_us": sum(1 for rows in groups.values()
-                          if any(p["is_us"] is False for p in rows)),
-            "families": dict(fam_totals), "sectors": dict(sector_totals),
-            # What the site can honestly say on screen about pay coverage.
-            #
-            # These four do NOT partition the board and must not be presented as
-            # if they do. A posting can state pay without our ever having read a
-            # description (Breezy publishes the range in the list response and no
-            # description at all), and a posting we read in full very often
-            # states no pay. The only safe readings are the direct ones: this
-            # many rows carry a figure, this many rows we never read. Everything
-            # else - above all "the rest pay nothing" - is invented.
-            "pay_stated": sum(1 for rows in groups.values()
-                              if any(p.get("comp") for p in rows)),
-            "pay_stated_postings": sum(1 for p in postings if p.get("comp")),
-            "pay_source": dict(pay_source),
-            "jd_read_postings": sum(1 for p in postings if p.get("jd_seen")),
-            "jd_unread_postings": sum(1 for p in postings if not p.get("jd_seen")),
-        },
-        "organizations": orgs,
-        "postings": postings,
-    }
+    # The totals, the logo manifest, the city coordinates and the conference
+    # rows are all derived from what is already here: board_payload() and the
+    # functions it calls, which a redraw calls too.
+    payload = board_payload(today, orgs, postings, groups, companies,
+                            {"unreadable": unreadable, "rendered": rendered},
+                            manual_count, manual_dupes)
+    # the summary below reads these two off the totals it just built
+    fam_totals = collections.Counter(payload["totals"]["families"])
+    pay_source = payload["totals"]["pay_source"]
 
     if owns:
         by_holder = collections.Counter(owns.values())
@@ -1868,18 +2086,8 @@ def main() -> int:
         return 0
 
     # THE FIVE-WAY SPLIT, on the board rather than only in a script nobody
-    # runs. "839 of 1,722 monitored" was wrong in both directions for months
-    # because it counted a careers page nothing can enumerate the same as a
-    # Greenhouse API, and counted companies with no board at all as a gap.
-    sys.path.insert(0, str(pathlib.Path(__file__).parent))
-    import coverage as _cov
-    _log = _DISCOVERY_LOG if _DISCOVERY_LOG is not None else {}
-    orgs_by_id = {o["id"]: o for o in orgs}
-    split: dict = {}
-    for c in companies:
-        st = _cov.state(c, _log.get(c["id"]), orgs_by_id.get(c["id"]))
-        split[st] = split.get(st, 0) + 1
-    payload["coverage"] = split
+    # runs - see coverage_split().
+    payload["coverage"] = coverage_split(companies, orgs, ctx["discovery"])
     # "BOARDS READ THIS RUN" IS NOW COUNTED FROM THE RUN, and it took two
     # wrong answers to get there.
     #
@@ -1914,30 +2122,11 @@ def main() -> int:
     # Split out per company: the board loads at 0.65 MB and opening a company
     # costs one more request of about a kilobyte. The static /c/ pages are
     # unaffected - build_site reads companies.json for these, not the board.
-    detail_dir = DATA / "detail"
-    detail_dir.mkdir(exist_ok=True)
-    wrote = 0
-    keep = set()
-    for o in payload.get("organizations", []):
-        d = {k: o[k] for k in ("news", "profile") if o.get(k)}
-        if not d:
-            continue
-        keep.add(o["id"])
-        f = detail_dir / f"{o['id']}.json"
-        body = json.dumps(d, indent=1) + "\n"
-        # only rewrite what changed, so a nightly build does not churn 1,062
-        # files through git for a board whose news did not move
-        if not f.exists() or f.read_text() != body:
-            f.write_text(body)
-        wrote += 1
-    # a company that lost its last item must lose its file, or the page keeps
-    # serving news that is no longer on the board
-    for f in detail_dir.glob("*.json"):
-        if f.stem not in keep:
-            f.unlink()
-    for o in payload.get("organizations", []):
-        o.pop("news", None)
-        o.pop("profile", None)
+    # Written only where changed, removed where gone: see write_details().
+    bodies = detail_bodies(payload["organizations"])
+    write_details(bodies, DATA / "detail")
+    strip_details(payload["organizations"])
+    wrote = len(bodies)
     print(f"  wrote data/detail/ for {wrote} company(ies); "
           f"news and profile are no longer in board.json")
 

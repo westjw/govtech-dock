@@ -7176,12 +7176,26 @@ def check_federal_is_out_and_a_city_is_not_federal() -> int:
         errors += fail("the federal drop no longer reads `ruling is None` "
                        "first, so a person who looked at a role and said it "
                        "belongs is overruled by a regex")
-    body = src.split("FEDERAL_ROLE.search(title)", 1)[-1][:400]
-    if "dropped_federal" not in body:
+    # The rule lives in out_of_scope(), lifted so a redraw applies it to rows
+    # it already holds; the COUNT lives in each caller. All three are held:
+    # the rule names a federal drop as federal, main() counts it, and so does
+    # quick_rebuild when a redraw narrows a board.
+    rule = src[src.find("\ndef out_of_scope("):]
+    rule = rule[:rule.find("\ndef ", 1)]
+    if 'return "federal"' not in rule.split("FEDERAL_ROLE.search(title)", 1)[-1][:120]:
+        errors += fail("out_of_scope() no longer names a federal drop as federal, "
+                       "so no caller can count it")
+    body = src[src.find("\ndef main("):]
+    if "out_of_scope(" not in body or not re.search(
+            r'if\s+why\s*==\s*"federal"\s*:\s*\n\s*dropped_federal\s*\+=\s*1', body):
         errors += fail("federal roles are dropped without being counted. A "
                        "wrong 'out of scope' is the one mistake this board "
                        "cannot see, and a number per company is the cheapest "
                        "thing that contradicts it")
+    redraw = _code_only(ROOT / "scripts" / "quick_rebuild.py")
+    if "out_of_scope(" not in redraw or 'drop["federal"]' not in redraw:
+        errors += fail("quick_rebuild narrows a board without counting what the "
+                       "federal rule drops")
     # THE DROP MUST NOT SIT INSIDE THE sled_only BRANCH, which is where it
     # would reach 13 of the 40 and miss Motorola's eight entirely.
     gate = src.find("if ruling is None and FEDERAL_ROLE.search")
@@ -10328,12 +10342,867 @@ def check_manual_merge_never_doubles_a_fetched_row() -> int:
         errors += fail("the fetched row must win over the capture")
     # THE CALLER. main() must consult the ids already on the board before
     # appending a manual row - a helper nobody calls is a guard on nothing.
-    src = (ROOT / "scripts" / "build_board.py").read_text()
-    body = src[src.find("def main("):]
-    if 'seen_ids = {p["id"] for p in postings}' not in body \
-            or 'if row["id"] in seen_ids:' not in body or "manual_dupes += 1" not in body:
-        errors += fail("build_board.main() no longer skips a manual row whose id "
-                       "the fetcher already carries")
+    # The merge was lifted into merge_manual() so quick_rebuild merges the
+    # same way; main() must call it, and it must hold the guard.
+    code = _code_only(ROOT / "scripts" / "build_board.py")
+    body = code[code.find("\ndef main("):]
+    merge = code[code.find("\ndef merge_manual("):]
+    merge = merge[:merge.find("\ndef ", 1)]
+    if "merge_manual(postings, man)" not in body:
+        errors += fail("build_board.main() no longer merges manual.json through "
+                       "merge_manual(), so nothing guarantees it skips a manual "
+                       "row whose id the fetcher already carries")
+    if 'seen_ids = {p["id"] for p in postings}' not in merge \
+            or 'if row["id"] in seen_ids:' not in merge or "manual_dupes += 1" not in merge:
+        errors += fail("build_board.merge_manual() no longer skips a manual row "
+                       "whose id the fetcher already carries")
+    return errors
+
+
+# --- quick_rebuild: a redraw is the crawl without the fetch ----------------
+
+# The inputs a board is drawn from. detail/ is copied separately.
+_BOARD_INPUTS = ("companies.json", "board.json", "scope_decisions.json",
+                 "manual.json", "news.json", "claims.json", "discovery_log.json",
+                 "cities.json", "conferences.json", "schema.json")
+
+
+@contextlib.contextmanager
+def _board_sandbox(files: dict):
+    """build_board and quick_rebuild pointed at a throwaway data directory.
+
+    `files` maps a name to a payload (written as JSON), or to None to copy the
+    real data/ file of that name; "detail/" copies data/detail/. Every
+    module-level path build_board writes through is moved - DATA, HISTORY and
+    RENDER_ATTEMPTS, which is computed from ROOT and so does NOT follow DATA -
+    and the two caches it fills from DATA are emptied, so nothing read or
+    written inside can be the real data/.
+    """
+    import build_board as bb
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
+    for name, payload in files.items():
+        if name == "detail/":
+            shutil.copytree(DATA / "detail", tmp / "detail")
+        elif payload is None:
+            if (DATA / name).exists():
+                shutil.copy2(DATA / name, tmp / name)
+        else:
+            (tmp / name).write_text(json.dumps(payload, indent=1) + "\n")
+    keep = (bb.DATA, bb.HISTORY, bb.RENDER_ATTEMPTS, bb.render_fetch,
+            bb._JD_CACHE, bb._DISCOVERY_LOG)
+    argv = list(sys.argv)
+    bb.DATA, bb.HISTORY = tmp, tmp / "history"
+    bb.RENDER_ATTEMPTS = tmp / "render_attempts.json"
+    bb.render_fetch, bb._JD_CACHE, bb._DISCOVERY_LOG = None, {}, None
+    try:
+        yield tmp
+    finally:
+        (bb.DATA, bb.HISTORY, bb.RENDER_ATTEMPTS, bb.render_fetch,
+         bb._JD_CACHE, bb._DISCOVERY_LOG) = keep
+        sys.argv = argv
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _offline_crawl(source: dict) -> str:
+    """build_board.main(), OFFLINE, in whatever sandbox is active. Returns stdout.
+
+    This is the crawler with the crawl taken out, never the crawler: every
+    socket and every real fetcher is refused by quick_rebuild.no_network()
+    for the whole run, and ats.fetch / fetch_html_titles are replaced inside
+    it by a stub that serves each board the rows `source` holds for it. A
+    board `source` recorded as unreadable raises, and one whose roles came
+    from storage answers empty, so main() takes those paths too. --no-render
+    and render_fetch = None keep the browser out.
+
+    A board belongs to its address, not to the company that held it: a
+    company the sandbox has removed still had its board read by the crawl
+    `source` came from, and that board answers the same rows to whoever
+    points at it now - which is how a shared board passes on.
+    """
+    import build_board as bb
+    import quick_rebuild as qr
+    orgs = {o["id"]: o for o in source.get("organizations", [])}
+    rows: dict = collections.defaultdict(list)
+    for p in source.get("postings", []):
+        if p.get("source") != "manual":
+            rows[p["company_id"]].append(p)
+    served, broken, empty = {}, set(), set()
+    here = json.loads((bb.DATA / "companies.json").read_text())
+    ids = {c["id"] for c in here}
+    removed = [c for c in json.loads((DATA / "companies.json").read_text())
+               if c["id"] not in ids]
+    for c in here + removed:
+        a = c.get("ats") or {}
+        if a.get("type") in (None, "unknown") or a.get("ref") is None:
+            continue
+        key = (("html", a["ref"]) if a["type"] == "html" and isinstance(a["ref"], str)
+               else json.dumps(a, sort_keys=True))
+        o = orgs.get(c["id"], {})
+        if o.get("unreadable"):
+            broken.add(key)
+        if o.get("roles_from_storage"):
+            empty.add(key)
+        for p in rows.get(c["id"], []):
+            j = {"title": p["title"], "location": p["location"], "url": p["url"],
+                 "jd": "a description" if p.get("jd_seen") else "",
+                 "comp": p.get("comp")}
+            if p.get("posted"):
+                j["posted"] = p["posted"]
+            served.setdefault(key, []).append(j)
+
+    def serve(key):
+        if key in broken:
+            raise bb.ats.AtsError("selftest: this board did not answer")
+        return [] if key in empty else [dict(j) for j in served.get(key, [])]
+
+    out = io.StringIO()
+    with qr.no_network():
+        bb.ats.fetch = lambda a: serve(json.dumps(a, sort_keys=True))
+        bb.ats.fetch_html_titles = lambda ref: serve(("html", ref))
+        sys.argv = ["build_board.py", "--no-render", "--workers", "4"]
+        with contextlib.redirect_stdout(out):
+            bb.main()
+    return out.getvalue()
+
+
+def _redraw_quietly(args: list) -> tuple[int, str]:
+    """quick_rebuild.main(args) with its report captured; an exception is rc 99."""
+    import quick_rebuild as qr
+    out = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(out):
+            rc = qr.main(args)
+    except Exception as exc:  # noqa: BLE001 - a crash is a failure to report
+        return 99, f"{out.getvalue()}\n{type(exc).__name__}: {exc}"
+    return rc, out.getvalue()
+
+
+def _board_files(d: pathlib.Path) -> tuple[str, dict]:
+    return ((d / "board.json").read_text(),
+            {f.name: f.read_bytes() for f in (d / "detail").glob("*.json")})
+
+
+def _same_board(what: str, crawl_text: str, crawl_detail: dict, redraw_text: str,
+                redraw_detail: dict, carried: tuple = ()) -> int:
+    """Failures where a redraw's board.json and data/detail/ are not main()'s.
+
+    Every organization and every detail file byte for byte; the whole file
+    once `redrawn` is set aside, and once the crawl stats in `carried` - which
+    a redraw keeps from the crawl before it, by design - are too.
+    """
+    errors = 0
+    crawl, redraw = json.loads(crawl_text), json.loads(redraw_text)
+    mark = redraw.pop("redrawn", None)
+    if not isinstance(mark, dict) or not mark.get("at") \
+            or not re.fullmatch(r"[0-9a-f]{64}", str(mark.get("inputs") or "")):
+        errors += fail(f"{what}: the `redrawn` marker is not {{at, inputs: sha256}} "
+                       f"- nothing can tell this board from a crawl's: {mark!r}")
+    if redraw.get("generated") != crawl.get("generated"):
+        errors += fail(f"{what}: `generated` moved from {crawl.get('generated')} to "
+                       f"{redraw.get('generated')} - the site ages every posting by it")
+    dsame = sum(1 for k, b in crawl_detail.items() if redraw_detail.get(k) == b)
+    if dsame != len(crawl_detail) or len(redraw_detail) != len(crawl_detail):
+        errors += fail(f"{what}: {dsame} of {len(crawl_detail)} data/detail files "
+                       f"match main()'s (the redraw left {len(redraw_detail)})")
+    for k in carried:
+        crawl.pop(k, None)
+        redraw.pop(k, None)
+    # The whole file equal means every organization in it is; the per-org
+    # count is only worth its cost when there is a difference to locate.
+    if json.dumps(redraw, indent=1) == json.dumps(crawl, indent=1):
+        return errors
+    got = {o["id"]: json.dumps(o, indent=1) for o in redraw.get("organizations", [])}
+    want = [(o["id"], json.dumps(o, indent=1)) for o in crawl.get("organizations", [])]
+    same = sum(1 for i, t in want if got.get(i) == t)
+    if same != len(want) or len(got) != len(want):
+        bad = [i for i, t in want if got.get(i) != t][:5]
+        errors += fail(f"{what}: {same} of {len(want)} organizations match what "
+                       f"main() drew from the same inputs (the redraw drew "
+                       f"{len(got)}); first that differ: {bad}")
+    diff = [k for k in set(crawl) | set(redraw)
+            if json.dumps(crawl.get(k), indent=1) != json.dumps(redraw.get(k), indent=1)]
+    aside = " and ".join(["`redrawn`", *carried])
+    errors += fail(f"{what}: board.json is not main()'s byte for byte with "
+                   f"{aside} set aside; keys that differ: {sorted(diff)}")
+    return errors
+
+
+def _metadata_edits(d: pathlib.Path) -> list[str]:
+    """Edits a person makes that need no crawl, applied to sandbox `d`'s inputs.
+
+    A description, a sector move, sled_only turned ON (a narrowing), a
+    rename, a company taken off the map, a news item gone, a capture added -
+    and a shared board's HOLDER taken off the map, so its one follower holds
+    the board alone and takes its rows, re-keyed. Picked from the data
+    deterministically; returns what was done.
+    """
+    cos = json.loads((d / "companies.json").read_text())
+    board = json.loads((d / "board.json").read_text())
+    orgs = {o["id"]: o for o in board["organizations"]}
+    # Not a company another shares a board with: renaming or removing a
+    # holder moves the attribution, which is a wait, not a metadata edit.
+    holders = {o.get("shares_board_with") for o in orgs.values()}
+    plain = [c for c in cos if orgs.get(c["id"], {}).get("open_postings", 0) >= 3
+             and not orgs[c["id"]].get("shares_board_with")
+             and c["id"] not in holders
+             and not orgs[c["id"]].get("sled_only")
+             and not orgs[c["id"]].get("unreadable")]
+    done = []
+    if len(plain) >= 6:
+        plain[0]["description"] = "Edited in a sandbox: " + (plain[0].get("description") or "")
+        other = next((x for x in cos if x["sector"] != plain[1]["sector"]), None)
+        if other:
+            plain[1]["sector"], plain[1]["category"] = other["sector"], other["category"]
+        plain[2]["sled_only"] = True
+        plain[3]["name"] = plain[3]["name"] + " (renamed)"
+        cos.remove(plain[4])
+        done += ["description", "sector", "sled_only on", "rename", "removal"]
+        man = json.loads((d / "manual.json").read_text()) if (d / "manual.json").exists() else {}
+        if man.get("postings"):
+            cap = dict(man["postings"][0])
+            cap.pop("id", None)
+            cap.update(company_id=plain[5]["id"], company=plain[5]["name"],
+                       title="Account Executive, Sandbox Capture",
+                       url="https://example.invalid/jobs/1", location="Austin, TX")
+            man["postings"].append(cap)
+            (d / "manual.json").write_text(json.dumps(man, indent=1))
+            done.append("capture")
+    # A HOLDER TAKEN OFF THE MAP. Its one follower then holds the board alone,
+    # the crawl reads it under the follower's id, and the redraw must hand the
+    # holder's rows over the same way (quick_rebuild.takeover()): the same
+    # requisitions, keyed by posting_id() for the new company, through its own
+    # filters. One follower carrying sled_only, so the rows are narrowed on
+    # the way, and one not. Only holders whose read hands over whole: rows
+    # off the board, nothing their own filters dropped.
+    follows = collections.defaultdict(list)
+    for o in orgs.values():
+        if o.get("shares_board_with"):
+            follows[o["shares_board_with"]].append(o["id"])
+    picked: dict = {}
+    for c in cos:
+        o = orgs.get(c["id"], {})
+        if (len(follows.get(c["id"], [])) != 1 or not o.get("open_postings")
+                or o.get("shares_board_with") or o.get("unreadable")
+                or o.get("roles_from_storage") or o.get("offtopic_dropped")
+                or o.get("sled_only")):
+            continue
+        heir = orgs.get(follows[c["id"]][0], {})
+        picked.setdefault("a sled_only heir" if heir.get("sled_only") else "an heir", c)
+    for kind, c in sorted(picked.items()):
+        cos.remove(c)
+        done.append(f"holder removed, {kind} takes its board")
+    (d / "companies.json").write_text(json.dumps(cos, indent=1))
+    news = json.loads((d / "news.json").read_text()) if (d / "news.json").exists() else {}
+    nid = next((k for k in orgs if isinstance(news.get(k), dict)
+                and len(news[k].get("items") or []) > 1), None)
+    if nid:
+        news[nid]["items"] = news[nid]["items"][1:]
+        (d / "news.json").write_text(json.dumps(news))
+        done.append("news")
+    return done
+
+
+def check_a_redraw_is_the_crawl_without_the_fetch() -> int:
+    """quick_rebuild draws the board build_board.main() draws, byte for byte.
+
+    THE GOLDEN, in two turns, both against main() run offline in a sandbox
+    (_offline_crawl: its fetchers serve the committed board's rows, every
+    socket is refused) so the board it writes is exactly the nightly's.
+
+    1. THE COMMITTED INPUTS. main() draws a board; quick_rebuild --write
+       redraws it from the same inputs. Every organization, every
+       data/detail file, and the whole of board.json once `redrawn` is set
+       aside, must come back byte-identical, `generated` untouched.
+    2. AFTER A PERSON'S EDITS - a description, a sector move, sled_only
+       turned on, a rename, a company removed, a news item gone, a capture
+       added, and two shared boards' holders removed so their followers
+       hold them alone (one of them sled_only). The redraw of the turn-1
+       board must equal what main() draws from the same edited inputs: the
+       promise this tool makes. Only boards_read may differ, because it is
+       the crawl's count and a redraw carries it by design. Turn 1 alone
+       could not see a re-stamp, a narrowing or a board changing hands
+       broken: on unedited inputs all three are no-ops.
+
+    WHY NOT AGAINST THE COMMITTED board.json DIRECTLY: it is drawn from the
+    inputs of the last crawl, and news.yml commits news.json four times a
+    day and admin rulings land in companies.json without redrawing it.
+    Asserted against the committed file, this would fail every workflow's
+    self-test from the first news sweep after a crawl - the nightly's too,
+    which runs the suite before build_board. main() is driven here instead,
+    so the claim is tested against the CURRENT main() and inputs whatever
+    the committed board happens to be - and a derivation added to main()
+    outside org_record() shows up in main()'s board and not in the redraw.
+    """
+    import build_board as bb
+    errors = 0
+    source = json.loads((DATA / "board.json").read_text())
+    files = {name: None for name in _BOARD_INPUTS}
+    files["detail/"] = None
+    with _board_sandbox(files) as tmp:
+        _offline_crawl(source)
+        crawl_text, crawl_detail = _board_files(tmp)
+        rc, text = _redraw_quietly(["--write"])
+        if rc != 0:
+            return fail(f"quick_rebuild --write failed ({rc}) over a board main() "
+                        f"had just drawn from the same inputs:\n{text[-400:]}")
+        first_text, first_detail = _board_files(tmp)
+        errors += _same_board("a redraw of the crawl's own inputs", crawl_text,
+                              crawl_detail, first_text, first_detail)
+
+        done = _metadata_edits(tmp)
+        twin = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
+        try:
+            shutil.copytree(tmp, twin, dirs_exist_ok=True)
+            rc, text = _redraw_quietly(["--write"])
+            edited_text, edited_detail = _board_files(tmp)
+            bb.DATA, bb.HISTORY = twin, twin / "history"
+            bb.RENDER_ATTEMPTS = twin / "render_attempts.json"
+            _offline_crawl(source)
+            twin_text, twin_detail = _board_files(twin)
+        finally:
+            shutil.rmtree(twin, ignore_errors=True)
+    if len(done) < 6:
+        note(f"the golden's edit turn found only {done} to make")
+    if not any(d.startswith("holder removed") for d in done):
+        note("the golden found no shared board whose holder it could take off "
+             "the map, so a board changing hands went untested against main()")
+    if rc != 0:
+        errors += fail(f"quick_rebuild --write failed ({rc}) after {done}:\n{text[-400:]}")
+    elif edited_text == first_text:
+        errors += fail(f"the golden's edits ({', '.join(done)}) changed nothing on "
+                       f"the redrawn board, so its second turn proves nothing")
+    else:
+        errors += _same_board(f"a redraw after {len(done)} edits ({', '.join(done)})",
+                              twin_text, twin_detail, edited_text, edited_detail,
+                              carried=("boards_read",))
+    return errors
+
+
+def check_main_builds_orgs_through_org_record() -> int:
+    """build_board.main() builds every organization through org_record().
+
+    A SOURCE CHECK ON THE CALLER. The golden above proves a redraw equals
+    main() today; this keeps the reason it can - one builder - from being
+    undone by the next field somebody types into main(): an org literal back
+    in main() is a second copy that a redraw would silently not carry.
+    Comment-stripped (_code_only), so prose naming a field cannot pass or
+    fail it.
+    """
+    code = _code_only(ROOT / "scripts" / "build_board.py")
+    i = code.find("\ndef main(")
+    if i < 0:
+        return fail("build_board has no main() - this guard cannot find the caller")
+    body = code[i:code.find('\nif __name__', i)]
+    errors = 0
+    if "orgs.append(org_record(c, companies, ctx," not in body:
+        errors += fail("build_board.main() no longer appends org_record(...) for "
+                       "each company, so a redraw no longer builds what the crawl builds")
+    # Keys only the organization literal holds (never CRAWL_FIELDS, which the
+    # crawl dict main() hands org_record legitimately carries).
+    literal = [k for k in ("year_founded", "ats_ranks", "also_known_as",
+                           "competitors_none_found", "news_checked_on",
+                           "shares_board_with", "board_owner_unverified",
+                           "no_board_on_file", "board_checked_on", "claimed")
+               if re.search(rf'"{k}"\s*:', body)]
+    if literal:
+        errors += fail(f"build_board.main() writes organization fields itself again "
+                       f"({', '.join(literal)}): the org literal is back in main(), "
+                       f"and quick_rebuild's org_record() will not draw them")
+    if "run_context(" not in body or "closeness" in body:
+        errors += fail("build_board.main() attributes shared boards inline instead "
+                       "of through run_context()/board_owners()")
+    ctx = code[code.find("\ndef run_context("):]
+    if "board_owners(companies)" not in ctx[:ctx.find("\ndef ", 1)]:
+        errors += fail("run_context() no longer takes attribution from board_owners()")
+    return errors
+
+
+def _redraw_fixture(board: dict, companies: list, keep: list,
+                    generated: str | None = None) -> tuple[dict, dict]:
+    """(companies.json, board.json) cut down to `keep`, the rest of board.json kept."""
+    ids = set(keep)
+    cos = [dict(c) for c in companies if c["id"] in ids]
+    small = {k: v for k, v in board.items() if k not in ("organizations", "postings")}
+    small["organizations"] = [o for o in board["organizations"] if o["id"] in ids]
+    small["postings"] = [p for p in board["postings"] if p.get("company_id") in ids]
+    if generated:
+        small["generated"] = generated
+    # key order as build_board writes it, so the fixture is a real board shape
+    small = {k: small[k] for k in board if k in small}
+    return cos, small
+
+
+def check_quick_rebuild_never_reads_a_board() -> int:
+    """quick_rebuild imports no fetcher, opens no socket, and moves no crawl fact.
+
+    1. THE SOURCE: no fetching module imported, no fetch called, and the
+       redraw inside main() runs under no_network().
+    2. THE RUN: quick_rebuild.main(["--write"]) in a sandbox, with a probe
+       inside the redraw that records whether the network was shut WHILE it
+       worked - socket.connect replaced, and socket.getaddrinfo and
+       socket.create_connection both replaced AND refusing when called. A
+       guard installed after the work, or never, or missing one door, fails
+       here. Then
+       `generated` and the crawl's own counts must come back unchanged, and
+       nothing a crawl writes (history/, removed.json, render_attempts.json)
+       may appear.
+    """
+    import socket
+
+    import build_board as bb
+    import quick_rebuild as qr
+    errors = 0
+    code = _code_only(ROOT / "scripts" / "quick_rebuild.py")
+    fetchy = re.findall(r"^\s*(?:import|from)\s+(requests|ats|render_fetch|urllib"
+                        r"|http|httpx|aiohttp|playwright)\b", code, re.M)
+    if fetchy:
+        errors += fail(f"quick_rebuild imports {sorted(set(fetchy))} - a redraw "
+                       f"reads no board, so it has no business loading a fetcher")
+    calls = re.findall(r"\b(fetch\w*|urlopen|read_board|fetch_rendered)\s*\(", code)
+    if calls:
+        errors += fail(f"quick_rebuild calls {sorted(set(calls))} - a redraw "
+                       f"reads no board")
+    body = code[code.find("\ndef main("):]
+    if "with no_network():" not in body or \
+            body.find("with no_network():") > body.find("redraw()"):
+        errors += fail("quick_rebuild.main() no longer redraws inside no_network()")
+
+    board = json.loads((DATA / "board.json").read_text())
+    companies = json.loads((DATA / "companies.json").read_text())
+    have = [o["id"] for o in board["organizations"] if o.get("open_postings")][:3]
+    cos, small = _redraw_fixture(board, companies, have, generated="2026-01-02")
+    real_connect = socket.socket.connect
+    real_lookup, real_dial = socket.getaddrinfo, socket.create_connection
+    open_during = []
+    shut_during: list = []
+    counted = bb.count_openings
+
+    def refused(call) -> bool:
+        """Did `call` raise no_network()'s own refusal? Anything else is a no."""
+        try:
+            got = call()
+        except RuntimeError as exc:
+            return "does not touch the network" in str(exc)
+        except OSError:
+            return False
+        if hasattr(got, "close"):
+            got.close()
+        return False
+
+    def probe(postings, orgs):
+        # called from inside the redraw: is the real connect still in place?
+        open_during.append(socket.socket.connect is real_connect)
+        # AND THE TWO WAYS OUT THAT NEVER SAY socket.connect: a name lookup,
+        # and create_connection. Each is CALLED, at loopback so that a guard
+        # gone missing costs a local lookup and nothing more, and must raise
+        # the refusal. Each must also BE the replacement: create_connection's
+        # own body calls getaddrinfo, so it would look refused through that
+        # alone while nothing guarded it.
+        shut_during.append({
+            "socket.getaddrinfo": socket.getaddrinfo is not real_lookup
+            and refused(lambda: socket.getaddrinfo("localhost", 80)),
+            "socket.create_connection": socket.create_connection is not real_dial
+            and refused(lambda: socket.create_connection(("127.0.0.1", 9), timeout=0.2)),
+        })
+        return counted(postings, orgs)
+
+    with _board_sandbox({"companies.json": cos, "board.json": small}) as tmp:
+        bb.count_openings = probe
+        try:
+            rc, text = _redraw_quietly(["--write"])
+        finally:
+            bb.count_openings = counted
+        after = json.loads((tmp / "board.json").read_text())
+        leaked = [n for n in ("history", "removed.json", "render_attempts.json")
+                  if (tmp / n).exists()]
+    if rc != 0:
+        errors += fail(f"quick_rebuild --write failed ({rc}) on a three-company "
+                       f"board:\n{text[-400:]}")
+    if open_during != [False]:
+        errors += fail("quick_rebuild redrew with the network open - no_network() "
+                       "was not in force while the board was being drawn"
+                       if open_during else "quick_rebuild never counted openings")
+    for name, shut in (shut_during[0] if len(shut_during) == 1 else {}).items():
+        if not shut:
+            errors += fail(f"quick_rebuild redrew with {name} open - no_network() "
+                           f"did not refuse it while the board was being drawn")
+    if socket.socket.connect is not real_connect or socket.getaddrinfo is not real_lookup \
+            or socket.create_connection is not real_dial:
+        errors += fail("quick_rebuild left the network shut after it returned")
+    for k in ("generated", "boards_read", "unreadable", "rendered"):
+        if after.get(k) != small.get(k):
+            errors += fail(f"a redraw changed {k!r} from {small.get(k)!r} to "
+                           f"{after.get(k)!r} - that is the crawl's to write")
+    if leaked:
+        errors += fail(f"a redraw wrote {leaked}, which only a crawl writes")
+    return errors
+
+
+def check_an_ats_change_waits_for_the_crawl() -> int:
+    """An edit that needs a crawl waits for it by name, and nothing is guessed.
+
+    One sandbox, redrawn twice through quick_rebuild.main() - twice because
+    a second redraw has only the first redraw's board to go on, and every
+    wait must survive it:
+
+    - an ats type changed (greenhouse -> lever) and a board address changed
+      (an html page moved);
+    - sled_only switched OFF on a company whose filter dropped roles;
+    - a shared board's holder RENAMED so the slug names nobody, which moves
+      the attribution.
+    Each is named under "waits for the nightly crawl" and keeps its crawled
+    rows, the six crawl-owned fields and every BOARD_FIELD exactly as the
+    crawl left them. An untouched company is never named.
+
+    A shared board's holder REMOVED: its one follower now holds the board
+    alone, and carries the holder's rows re-keyed by build_board's own
+    opening_id()/posting_id() for its id - including a row whose url
+    safe_url() rewrote after the crawl hashed it - dated `generated`, with
+    the holder's read, naming nobody in shares_board_with; a holder whose
+    board published nothing passes on its read and no rows. The variants
+    that cannot pass exactly wait by name instead: a holder whose filters
+    dropped roles the follower may keep (the dropped rows were never
+    stored), a holder whose rows took its website as their url (a crawl
+    gives them the follower's), a holder whose rows were its own stored
+    roles, a follower with a stored role of its own on a board that
+    published nothing, and a follower whose own board moved - which must
+    not name the holder it lost.
+
+    Companies new since the crawl WITH a board on file - one on a fresh
+    board (found at a conference, naming a parent), one joining a board
+    already crawled, named after its slug so it would take it - are left off
+    the board and named as "waiting for the nightly crawl": the board must
+    be, byte for byte, the one drawn from a file without them - no card, no
+    count, no brand, no attribution, their capture held back. One with no
+    board on file is drawn. No organization may name, in shares_board_with,
+    one that is not on the board.
+    """
+    import build_board as bb
+    import quick_rebuild as qr
+    errors = 0
+    board = json.loads((DATA / "board.json").read_text())
+    companies = json.loads((DATA / "companies.json").read_text())
+    orgs = {o["id"]: o for o in board["organizations"]}
+    by_id = {c["id"]: c for c in companies}
+    follows: dict = collections.defaultdict(list)
+    for o in orgs.values():
+        if o.get("shares_board_with"):
+            follows[o["shares_board_with"]].append(o["id"])
+    taken: set = set()
+
+    def alone(c, o):
+        return not o.get("shares_board_with") and c["id"] not in follows
+
+    def first(pred):
+        cid = next((c["id"] for c in companies if c["id"] in orgs and c["id"] not in taken
+                    and alone(c, orgs[c["id"]]) and pred(c, orgs[c["id"]])), None)
+        taken.add(cid)
+        return cid
+
+    def pair(pred):
+        """(holder, its one follower), both on file and on the board, unused."""
+        for c in companies:
+            f = follows.get(c["id"], [None])
+            if (len(f) != 1 or c["id"] in taken or f[0] in taken or f[0] not in by_id
+                    or c["id"] not in orgs or f[0] not in orgs
+                    or orgs[c["id"]].get("shares_board_with")
+                    or not pred(orgs[c["id"]], orgs[f[0]])):
+                continue
+            taken.update((c["id"], f[0]))
+            return c["id"], f[0]
+        return None, None
+
+    moved = first(lambda c, o: c["ats"]["type"] in ("greenhouse", "ashby")
+                  and o.get("open_postings") and not o.get("sled_only"))
+    paged = first(lambda c, o: c["ats"]["type"] == "html" and o.get("enumerable") is False
+                  and str(c["ats"].get("ref") or "").startswith("http"))
+    still = first(lambda c, o: o.get("open_postings") and isinstance(c["ats"].get("ref"), str)
+                  and not c["ats"]["ref"].startswith("http"))
+    narrow = first(lambda c, o: o.get("sled_only") and o.get("offtopic_dropped")
+                   and o.get("open_postings"))
+    whole = (lambda h, f: h.get("open_postings") and not h.get("unreadable")
+             and not h.get("roles_from_storage") and not h.get("offtopic_dropped")
+             and not h.get("sled_only") and not f.get("sled_only"))
+    wide, wide_heir = pair(lambda h, f: h.get("sled_only") and h.get("offtopic_dropped")
+                           and not f.get("sled_only") and not h.get("roles_from_storage"))
+    gone, heir = pair(whole)
+    site, site_heir = pair(lambda h, f: whole(h, f) and h.get("website")
+                           and f.get("website") and h["website"] != f["website"])
+    renamed, renamed_f = pair(lambda h, f: not h.get("board_owner_unverified"))
+    stash, stash_heir = pair(whole)
+    # A board that published nothing (an html page no reader enumerates), and
+    # a follower with no stored role or scan lead of its own: the crawl's
+    # drawing is exact. The same with a follower that has a stored role: not.
+    empty = (lambda h, f: h.get("ats") == "html" and h.get("enumerable") is False
+             and not h.get("open_postings") and not h.get("unreadable")
+             and not h.get("scan_lead") and not h.get("roles_from_storage")
+             and not bb._scan_lead(by_id[f["id"]]))
+    quiet, quiet_heir = pair(lambda h, f: empty(h, f)
+                             and not bb._stored_roles_as_jobs(by_id[f["id"]]))
+    hoard, hoard_heir = pair(lambda h, f: empty(h, f) and by_id[f["id"]].get("website"))
+    lost, drifter = pair(lambda h, f: True)
+    if not (moved and paged and still and narrow and gone and renamed):
+        note("no company fits the wait fixture; the wait guard did not run")
+        return 0
+    for name, got in (("a holder whose filters dropped roles", wide),
+                      ("a second holder with rows", site),
+                      ("a third holder with rows", stash),
+                      ("a board that published nothing", quiet),
+                      ("a second board that published nothing", hoard),
+                      ("a spare shared board", lost)):
+        if not got:
+            note(f"the wait fixture found no {name}; that case went untested")
+
+    keep = [x for x in (moved, paged, still, narrow, wide, wide_heir, gone, heir, site,
+                        site_heir, renamed, renamed_f, stash, stash_heir, quiet,
+                        quiet_heir, hoard, hoard_heir, lost, drifter) if x]
+    cos, small = _redraw_fixture(board, companies, keep)
+    small["postings"] = [dict(p) for p in small["postings"]]
+    small["organizations"] = [dict(o) for o in small["organizations"]]
+    fixture_orgs = {o["id"]: o for o in small["organizations"]}
+    for c in cos:
+        if c["id"] == moved:
+            c["ats"] = {"type": "lever" if c["ats"]["type"] != "lever" else "ashby",
+                        "ref": c["ats"]["ref"]}
+        if c["id"] == paged:
+            c["ats"] = {"type": "html", "ref": c["ats"]["ref"].rstrip("/") + "/moved"}
+        if c["id"] == narrow:
+            c["sled_only"] = False
+        if c["id"] == renamed:
+            c["name"] = "Zz Selftest Renamed"
+        if c["id"] == drifter:
+            c["ats"] = {"type": "html", "ref": "https://example.invalid/careers"}
+        if c["id"] in (site, site_heir):
+            # a board whose address board_url() cannot spell, so it falls
+            # back to each company's own website
+            c["ats"] = {"type": "workday", "ref": "selftest-tenant"}
+            o = fixture_orgs[c["id"]]
+            o["ats"], o["ats_ranks"], o["board_url"] = ("workday", bb.ats_tier("workday"),
+                                                         c.get("website"))
+        if c["id"] == hoard_heir:
+            # a role refresh verified on its own site, which a crawl promotes
+            # when the board it now holds publishes nothing
+            c["hiring"] = {"status": "Yes", "roles": [
+                {"title": "Account Executive",
+                 "url": c["website"].rstrip("/") + "/careers/account-executive"}]}
+    if stash:
+        # its rows were its own stored roles, not the board's
+        fixture_orgs[stash]["roles_from_storage"] = True
+    cos = [c for c in cos if c["id"] not in (gone, wide, site, stash, quiet, hoard, lost)]
+
+    # One of the holder's rows had its url rewritten by safe_url() after the
+    # crawl hashed it, and one of the website holder's rows had no url of its
+    # own. Both are what a real crawl writes.
+    rows_of = lambda cid: [p for p in small["postings"] if p["company_id"] == cid]
+    raw = None
+    if rows_of(gone):
+        p = rows_of(gone)[0]
+        raw = p["url"] + ("&" if "?" in p["url"] else "?") + "where=Two Words"
+        p["url"], p["id"] = bb.safe_url(raw), bb.posting_id(gone, p["title"], raw, p["location"])
+    if site and rows_of(site):
+        p = rows_of(site)[0]
+        p["url"] = bb.safe_url(by_id[site].get("website"))
+        p["id"] = bb.posting_id(site, p["title"], p["url"], p["location"])
+    scope_path = DATA / "scope_decisions.json"
+    scope = json.loads(scope_path.read_text()) if scope_path.exists() else {}
+    want = []
+    for p in rows_of(gone):
+        url = raw if raw and bb.safe_url(raw) == p["url"] else p["url"]
+        rid = bb.posting_id(heir, p["title"], url, p["location"])
+        oid = bb.opening_id(heir, p["title"])
+        if not bb.out_of_scope(p["title"], rid, oid, scope, bool(by_id[heir].get("sled_only"))):
+            want.append((rid, oid))
+
+    # New since the crawl: one on a fresh board, one joining `still`'s board
+    # and named after its slug so it would take the board from it, and one
+    # with no board at all. First in the file, so a tie goes to the newcomer.
+    # The first of them is found at a conference in the catalogue and names
+    # `still` as its parent, so a count or a brand list that took it in
+    # would show on the board.
+    catalogue = json.loads((DATA / "conferences.json").read_text()).get("conferences", []) \
+        if (DATA / "conferences.json").exists() else []
+    event = next((r["event_tag"].strip() for r in catalogue
+                  if (r.get("event_tag") or "").strip() and r.get("sled") is not False), None)
+    base = {k: v for k, v in by_id[still].items() if k not in ("hiring", "brands", "parent")}
+    fresh = dict(base, id="selftest-new-board", name="Selftest New Board",
+                 ats={"type": "greenhouse", "ref": "selftest-new-board"},
+                 parent=by_id[still]["name"], source=event)
+    joins = dict(base, id="selftest-joins-board", name=by_id[still]["ats"]["ref"],
+                 ats=dict(by_id[still]["ats"]))
+    bare = dict(base, id="selftest-no-board", name="Selftest No Board",
+                ats={"type": "unknown", "ref": None})
+    man = json.loads((DATA / "manual.json").read_text()) \
+        if (DATA / "manual.json").exists() else {}
+    # THE CONTROL: the same sandbox with the two left off never on file. A
+    # board that leaves them off is this board, byte for byte.
+    control = {"companies.json": [bare] + cos, "board.json": small,
+               "manual.json": {**man, "postings": []}, "conferences.json": None}
+    cos = [joins, fresh, bare] + cos
+    files = {"companies.json": cos, "board.json": small, "manual.json": control["manual.json"],
+             "conferences.json": None}
+    if man.get("postings"):
+        cap = dict(man["postings"][0])
+        cap.pop("id", None)
+        cap.update(company_id=fresh["id"], company=fresh["name"],
+                   title="Account Executive, Held Back", url="https://example.invalid/jobs/2",
+                   location="Austin, TX")
+        files["manual.json"] = {**man, "postings": [cap]}
+    if not (event and man.get("postings")):
+        note("the wait fixture has no conference or no capture to hold back; "
+             "the left-off control is weaker for it")
+    with _board_sandbox(control) as tmp:
+        rc, text = _redraw_quietly(["--write"])
+        unmarked = lambda b: {k: v for k, v in b.items() if k != "redrawn"}
+        without = unmarked(json.loads((tmp / "board.json").read_text()))
+    if rc != 0:
+        return errors + fail(f"the control redraw failed ({rc}):\n{text[-400:]}")
+
+    owns, unowned = bb.board_owners([c for c in cos if c["id"] not in (fresh["id"], joins["id"])])
+    shifted = [x for x in (renamed, renamed_f)
+               if owns.get(x) != orgs[x].get("shares_board_with")
+               or (x in unowned) != bool(orgs[x].get("board_owner_unverified"))]
+    if not shifted:
+        errors += fail(f"renaming {by_id[renamed]['name']} moved no attribution, so the "
+                       f"shared-board wait was not tested")
+    rows_before = {cid: [p["id"] for p in rows_of(cid)] for cid in (moved, narrow, renamed)}
+
+    def line(text, cid):
+        return next((ln for ln in text.splitlines() if f"({cid})" in ln), "")
+
+    with _board_sandbox(files) as tmp:
+        for turn in ("first", "second"):
+            rc, text = _redraw_quietly(["--write"])
+            if rc != 0:
+                errors += fail(f"{turn} redraw failed ({rc}):\n{text[-400:]}")
+                break
+            after = json.loads((tmp / "board.json").read_text())
+            now = {o["id"]: o for o in after["organizations"]}
+            head, _, offb = text.partition("waiting for the nightly crawl")
+            waiting = head.split("waits for the nightly crawl", 1)[-1] \
+                if "waits for the nightly crawl" in head else ""
+            held = [(moved, "ats changed"), (paged, "board address changed"),
+                    (narrow, "sled_only turned off")]
+            held += [(x, "attribution moved") for x in shifted]
+            for cid, why in held:
+                if why not in line(waiting, cid):
+                    errors += fail(f"{turn} redraw: {by_id[cid]['name']} is not reported "
+                                   f"as waiting for the nightly crawl ({why})")
+                for k in bb.CRAWL_FIELDS + qr.BOARD_FIELDS:
+                    if now[cid].get(k) != orgs[cid].get(k):
+                        errors += fail(f"{turn} redraw: {by_id[cid]['name']} lost the "
+                                       f"crawl's {k} ({orgs[cid].get(k)!r} -> "
+                                       f"{now[cid].get(k)!r}) while it waits")
+            for cid, was in rows_before.items():
+                kept = [p["id"] for p in after["postings"] if p["company_id"] == cid]
+                if kept != was:
+                    errors += fail(f"{turn} redraw: {by_id[cid]['name']}'s crawled rows "
+                                   f"were not carried while it waits "
+                                   f"({len(was)} -> {len(kept)})")
+            if line(waiting, still) or line(waiting, heir) \
+                    or (quiet and line(waiting, quiet_heir)):
+                errors += fail(f"{turn} redraw: a company with nothing to wait for "
+                               f"is reported as waiting for the crawl")
+
+            # THE HOLDER REMOVED: its follower holds the board and its rows.
+            got = [(p["id"], p["opening_id"]) for p in after["postings"]
+                   if p["company_id"] == heir]
+            if got != want:
+                errors += fail(f"{turn} redraw: {by_id[heir]['name']} holds "
+                               f"{by_id[gone]['name']}'s board alone and carries {len(got)} "
+                               f"row(s) keyed {got[:1]}, not the crawl's {len(want)} "
+                               f"keyed {want[:1]}")
+            if any(p["company_id"] == gone for p in after["postings"]):
+                errors += fail(f"{turn} redraw: rows still carry {gone}, which is off file")
+            for p in (p for p in after["postings"] if p["company_id"] == heir):
+                if (p["company"], p["first_seen"]) != (by_id[heir]["name"], small["generated"]):
+                    errors += fail(f"{turn} redraw: a row handed to {heir} reads "
+                                   f"{p['company']!r} first seen {p['first_seen']}, not "
+                                   f"{by_id[heir]['name']!r} on the crawl's "
+                                   f"{small['generated']}")
+                    break
+            h = now.get(heir, {})
+            if (h.get("shares_board_with"), h.get("enumerable"), h.get("open_postings")) \
+                    != (None, orgs[gone].get("enumerable"), len(want)):
+                errors += fail(f"{turn} redraw: {by_id[heir]['name']} took "
+                               f"{by_id[gone]['name']}'s board but reads shares_board_with="
+                               f"{h.get('shares_board_with')!r} enumerable="
+                               f"{h.get('enumerable')!r} open_postings={h.get('open_postings')!r}")
+
+            # ...and the three that cannot be drawn exactly, which wait.
+            if wide:
+                w = now.get(wide_heir, {})
+                if not line(waiting, wide_heir):
+                    errors += fail(f"{turn} redraw: {by_id[wide_heir]['name']} took over a "
+                                   f"board whose filters dropped roles and is not named "
+                                   f"as waiting")
+                if (w.get("sled_only"), w.get("offtopic_dropped"), w.get("shares_board_with")) \
+                        != (orgs[wide].get("sled_only"), orgs[wide].get("offtopic_dropped"), None):
+                    errors += fail(f"{turn} redraw: {by_id[wide_heir]['name']} does not carry "
+                                   f"the read of {by_id[wide]['name']}'s board it took over")
+            if site:
+                s = now.get(site_heir, {})
+                n = sum(1 for p in after["postings"] if p["company_id"] == site_heir)
+                if not line(waiting, site_heir) or n != len(rows_of(site)) \
+                        or s.get("board_url") != by_id[site].get("website"):
+                    errors += fail(f"{turn} redraw: {by_id[site_heir]['name']} took over a "
+                                   f"board whose rows point at {by_id[site]['name']}'s "
+                                   f"website and is not waiting with them ({n} rows, "
+                                   f"board_url {s.get('board_url')!r})")
+            if lost and not line(waiting, drifter):
+                errors += fail(f"{turn} redraw: {by_id[drifter]['name']}'s board moved and "
+                               f"it is not named as waiting")
+            # A holder's stored roles are ITS roles, and a board that published
+            # nothing hands over nothing: neither heir carries a row. Named on
+            # the redraw that makes the change - nothing on the board carries
+            # it to the next.
+            for gid, fid, why in ((stash, stash_heir, "came from"),
+                                  (hoard, hoard_heir, "would publish")):
+                if not gid:
+                    continue
+                if any(p["company_id"] in (gid, fid) for p in after["postings"]):
+                    errors += fail(f"{turn} redraw: {by_id[fid]['name']} took over "
+                                   f"{by_id[gid]['name']}'s board and carries rows no "
+                                   f"crawl would give it")
+                if turn == "first" and why not in line(waiting, fid):
+                    errors += fail(f"{turn} redraw: {by_id[fid]['name']} took over "
+                                   f"{by_id[gid]['name']}'s board, which cannot pass "
+                                   f"exactly, and is not named as waiting ({why})")
+            if quiet:
+                q = now.get(quiet_heir, {})
+                if (q.get("enumerable"), q.get("unreadable"), q.get("shares_board_with"),
+                        q.get("open_postings")) != (orgs[quiet].get("enumerable"),
+                                                    orgs[quiet].get("unreadable"), None, 0):
+                    errors += fail(f"{turn} redraw: {by_id[quiet_heir]['name']} holds "
+                                   f"{by_id[quiet]['name']}'s board alone and does not "
+                                   f"carry its read")
+
+            # NEW SINCE THE CRAWL: off the board, named, their capture held,
+            # and the board otherwise the one drawn without them on file.
+            if turn == "first" and unmarked(after) != without:
+                diff = sorted(k for k in set(without) | set(unmarked(after))
+                              if without.get(k) != after.get(k))
+                errors += fail(f"{turn} redraw: with two companies left off, the board "
+                               f"is not the one drawn without them on file - {diff} differ")
+            for c in (fresh, joins):
+                if c["id"] in now or not line(offb, c["id"]):
+                    errors += fail(f"{turn} redraw: {c['id']}, new with a board nobody "
+                                   f"has read, is " + ("drawn on the board" if c["id"] in now
+                                   else "not named as waiting for the nightly crawl"))
+                if any(p["company_id"] == c["id"] for p in after["postings"]):
+                    errors += fail(f"{turn} redraw: a capture for {c['id']} is on the board "
+                                   f"while its company is left off it")
+            if not now.get(bare["id"], {}).get("no_board_on_file"):
+                errors += fail(f"{turn} redraw: a new company with no board on file is "
+                               f"not drawn as having none")
+            if now.get(still, {}).get("shares_board_with"):
+                errors += fail(f"{turn} redraw: {by_id[still]['name']} was handed to "
+                               f"{now[still]['shares_board_with']}, a company off the board")
+            named = {o["id"] for o in after["organizations"]}
+            ghost = [(o["id"], o["shares_board_with"]) for o in after["organizations"]
+                     if o.get("shares_board_with") and o["shares_board_with"] not in named]
+            if ghost:
+                errors += fail(f"{turn} redraw: shares_board_with names a company that is "
+                               f"not on the board: {ghost}")
     return errors
 
 
@@ -26059,6 +26928,10 @@ def main() -> int:
                 f"ats.card_fields({lines!r}) = {(title, loc, pay)!r}, "
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_manual_merge_never_doubles_a_fetched_row()
+    errors += check_a_redraw_is_the_crawl_without_the_fetch()
+    errors += check_main_builds_orgs_through_org_record()
+    errors += check_quick_rebuild_never_reads_a_board()
+    errors += check_an_ats_change_waits_for_the_crawl()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
     errors += check_jobposting_never_invents_a_country()
