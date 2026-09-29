@@ -1,76 +1,76 @@
 {
-  "date": "2026-09-28",
-  "previous": "2026-09-27",
+  "date": "2026-09-29",
+  "previous": "2026-09-28",
   "changes": [
     {
-      "company": "Catalis",
-      "id": "catalis",
+      "company": "Prepared",
+      "id": "prepared",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Boostlingo",
-      "id": "boostlingo",
+      "company": "Cubic Transportation Systems",
+      "id": "cubic-transportation-systems",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 502 for https://cubic.wd1.myworkday"
+    },
+    {
+      "company": "BlackRainbow Inc",
+      "id": "blackrainbow-inc",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "TurnKey Corrections",
-      "id": "turnkey-corrections",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Tanium",
-      "id": "tanium",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Commercial Account Executive (Addison, TX)"
-    },
-    {
-      "company": "OnSolve (CodeRED)",
-      "id": "onsolve",
-      "from": "Unknown",
+      "company": "NinjaOne",
+      "id": "ninjaone",
+      "from": "Yes",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "ClassLink",
-      "id": "classlink",
-      "from": "None found",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Limble",
-      "id": "limble",
+      "company": "Metropolis",
+      "id": "metropolis",
       "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Talent Community \u2013 AM & AE R only"
-    },
-    {
-      "company": "Fluxx",
-      "id": "fluxx",
-      "from": "None found",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "Follett Software",
-      "id": "follett-software",
-      "from": "Sales (non-AE)",
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Solutions Consultant only"
+    },
+    {
+      "company": "Fluxx",
+      "id": "fluxx",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "BoodleBox",
+      "id": "boodlebox",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }
