@@ -1,83 +1,125 @@
 {
-  "date": "2026-09-30",
-  "previous": "2026-09-29",
+  "date": "2026-10-01",
+  "previous": "2026-09-30",
   "changes": [
     {
-      "company": "ZOLL Medical",
-      "id": "zoll-medical",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 502 for https://zoll.wd5.myworkdayj"
-    },
-    {
-      "company": "Cubic Transportation Systems",
-      "id": "cubic-transportation-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager - East Coast (2 Locations)"
-    },
-    {
-      "company": "EagleView",
-      "id": "eagleview",
+      "company": "Prepared",
+      "id": "prepared",
       "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Metropolis",
-      "id": "metropolis",
+      "company": "ZOLL Medical",
+      "id": "zoll-medical",
       "from": "Unknown",
       "to": "Yes",
-      "note": "Associate Account Executive (Cleve (Cleveland, Ohio, U)"
+      "note": "Account Executive - TherOx (SS02)  (6 Locations)"
     },
     {
-      "company": "The Weather Company",
-      "id": "the-weather-company",
-      "from": "None found",
+      "company": "Raptor Technologies",
+      "id": "raptor-technologies",
+      "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Propelus",
-      "id": "propelus",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sr. Customer Success Manager - Gov only"
-    },
-    {
-      "company": "Alma",
-      "id": "alma",
+      "company": "Swiftly",
+      "id": "swiftly",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "FAIRTIQ",
-      "id": "fairtiq",
+      "company": "Esper",
+      "id": "esper",
       "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Head of Strategic Accounts only"
+      "note": "Customer Success Lead only"
     },
     {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
+      "company": "EagleView",
+      "id": "eagleview",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "PMWEB",
+      "id": "pmweb",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "The Weather Company",
+      "id": "the-weather-company",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "EMS LINQ",
+      "id": "ems-linq",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive (Austin, Texas)"
+    },
+    {
+      "company": "Sentinel Offender Services",
+      "id": "sentinel-offender-services",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Regional Sales Manager - Southwest (remote, remote, US)"
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
-      "company": "Intelligent Video Solutions",
-      "id": "intelligent-video-solutions",
+      "company": "CHESS Health",
+      "id": "chess-health",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "FeedbackFruits",
+      "id": "feedbackfruits",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive (Texas) (US Remote)"
+    },
+    {
+      "company": "Follett Software",
+      "id": "follett-software",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Regional Representative - Sales only"
+      "note": "Inside Sales Account Executive only"
+    },
+    {
+      "company": "Chorus Innovations",
+      "id": "chorus-innovations",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Senior Sales Account Executive (Long Beach (Hybrid)"
+    },
+    {
+      "company": "Radicle Health",
+      "id": "radicle-health",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Senior Account Executive (Remote)"
     }
   ]
 }
