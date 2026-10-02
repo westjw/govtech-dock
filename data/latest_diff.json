@@ -1,125 +1,62 @@
 {
-  "date": "2026-10-01",
-  "previous": "2026-09-30",
+  "date": "2026-10-02",
+  "previous": "2026-10-01",
   "changes": [
     {
-      "company": "Prepared",
-      "id": "prepared",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Flock Safety",
+      "id": "flock-safety",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "ZOLL Medical",
-      "id": "zoll-medical",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive - TherOx (SS02)  (6 Locations)"
+      "company": "Glacier",
+      "id": "glacier",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Raptor Technologies",
       "id": "raptor-technologies",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "Swiftly",
-      "id": "swiftly",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Esper",
-      "id": "esper",
-      "from": "Yes",
+      "from": "Unknown",
       "to": "Sales (non-AE)",
-      "note": "Customer Success Lead only"
+      "note": "Director, GTM Finance only"
     },
     {
-      "company": "EagleView",
-      "id": "eagleview",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "PMWEB",
-      "id": "pmweb",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "The Weather Company",
-      "id": "the-weather-company",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Propelus",
-      "id": "propelus",
+      "company": "Portage CyberTech",
+      "id": "portage-cybertech",
       "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "EMS LINQ",
-      "id": "ems-linq",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive (Austin, Texas)"
-    },
-    {
-      "company": "Sentinel Offender Services",
-      "id": "sentinel-offender-services",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Regional Sales Manager - Southwest (remote, remote, US)"
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     },
     {
-      "company": "CHESS Health",
-      "id": "chess-health",
+      "company": "Oracle Utilities",
+      "id": "oracle-utilities",
       "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "FeedbackFruits",
-      "id": "feedbackfruits",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive (Texas) (US Remote)"
+      "to": "Unknown",
+      "note": "HTTP 301 for https://www.oracle.com/corp"
     },
     {
       "company": "Follett Software",
       "id": "follett-software",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Inside Sales Account Executive only"
-    },
-    {
-      "company": "Chorus Innovations",
-      "id": "chorus-innovations",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Senior Sales Account Executive (Long Beach (Hybrid)"
-    },
-    {
-      "company": "Radicle Health",
-      "id": "radicle-health",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Senior Account Executive (Remote)"
+      "note": "Expression of Interest: Outside Sa (Remote - USA)"
     }
   ]
 }
