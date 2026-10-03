@@ -26833,6 +26833,8 @@ def check_who_each_supplier_is() -> int:
         "https://mcgriff.com": Page("https://mcgriff.com", "McGriff | Insurance"),
         "https://deepwidgets.com": Page("https://deepwidgets.com", "Deep Widgets"),
         "https://realtwowidgets.com": Page("https://realtwowidgets.com", "Real Two Widgets"),
+        # port 80 does not answer; https does
+        "https://httponlywidgets.com": Page("https://httponlywidgets.com", "Httponly Widgets"),
         "https://charityengine.com": Page("https://charityengine.com",
                                           "Charity Engine | Donate your spare computing power",
                                           body="volunteer computing grid"),
@@ -26859,6 +26861,7 @@ def check_who_each_supplier_is() -> int:
         sup("moved-co", "Moved Widgets Inc", "https://movedwidgets.com"),
         sup("down-co", "Down Widgets", "https://downwidgets.com"),
         sup("deep-co", "Deep Widgets", "https://deepwidgets.com/old/page"),
+        sup("http-co", "Httponly Widgets", "http://httponlywidgets.com"),
         sup("theirs-co", "Theirs Widgets", "https://theirswidgets.com"),
         sup("theirs-div", "Theirs Widgets Division", "https://www.theirswidgets.com/div"),
         sup("graco-1", "Graco, Inc."),
@@ -26893,7 +26896,7 @@ def check_who_each_supplier_is() -> int:
     want = {
         "acme-signs": "found", "zeta": "not_found", "bolt": "found_review",
         "parked-co": "parked", "moved-co": "unconfirmed", "down-co": "unreadable",
-        "deep-co": "theirs", "theirs-co": "theirs", "theirs-div": "related",
+        "deep-co": "theirs", "http-co": "theirs", "theirs-co": "theirs", "theirs-div": "related",
         "graco-2": "duplicate", "boardco-sup": "duplicate",
         "booth": "not_a_company", "addr": "not_a_company", "nav": "not_a_company",
         "menu-1": "listing_menu", "menu-2": "listing_menu", "real-1": "listing_site",

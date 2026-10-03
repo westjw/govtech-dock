@@ -88,8 +88,11 @@ VERDICTS = {
     "found": "no website was on file; a guessed domain names them",
     "found_review": "a guessed domain names them, but a person should confirm it",
     "parked": "the website on file is a for-sale or holding page",
-    "unreadable": "the website on file did not answer, nor did its home page",
-    "not_found": "no website on file, and no guessed domain named them",
+    "unreadable": "the website on file did not answer our crawler, nor did its home page - "
+                  "most are bot walls that refuse an identified crawler (by house rule it "
+                  "never poses as a browser), so the site usually exists",
+    "not_found": "no website on file, and no guessed domain named them or let our crawler "
+                 "read it - NOT a finding that they have no website",
     "duplicate": "the same company as another record (see duplicate_of)",
     "related": "on the same website as another record and named like it - the same "
                "company or a division of it; a person decides, never merged",
@@ -360,13 +363,19 @@ def check_own(s: dict, get=fetch) -> dict:
     if failed:
         # A DEAD DEEP LINK IS NOT A DEAD SITE. Six of 15 "unreadable" in the
         # audit answered at their home page.
-        home = f"{urllib.parse.urlsplit(url if '//' in url else 'https://' + url).scheme or 'https'}://{host(url)}"
-        if host(url) and home.rstrip("/") != url.rstrip("/"):
+        # And an http:// address whose site answers only on https
+        # (beacon.org, hungerfordterry.com time out on port 80).
+        scheme = urllib.parse.urlsplit(url if "//" in url else "https://" + url).scheme or "https"
+        homes = [f"{scheme}://{host(url)}"] + ([f"https://{host(url)}"] if scheme == "http" else [])
+        for home in homes:
+            if not host(url) or home.rstrip("/") == url.rstrip("/"):
+                continue
             tried_root = True
             try:
                 r2 = get(home)
                 if getattr(r2, "status_code", 200) < 400:
                     r, failed = r2, None
+                    break
             except Exception:                           # noqa: BLE001
                 pass
     if failed:
@@ -658,9 +667,14 @@ def main() -> int:
     if not a.write:
         print("\n(nothing written: --write records data/supplier_identity.json)")
         return 0
-    if partial:
+    if a.sample:
         print("\n--write records the full run only; a sample is a measurement")
         return 1
+    if a.ids:
+        # a re-check of named records lands over their rows and nothing else
+        merged = dict(prior)
+        merged.update(rows)
+        rows = merged
     admin.write_atomic(OUT, {"generated": dt.datetime.now().astimezone().isoformat(
         timespec="seconds"), "verdicts": VERDICTS, "shared_ids": shared, "rows": rows})
     print(f"\nwrote data/{OUT}")
