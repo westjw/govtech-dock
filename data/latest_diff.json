@@ -1,62 +1,55 @@
 {
-  "date": "2026-10-02",
-  "previous": "2026-10-01",
+  "date": "2026-10-03",
+  "previous": "2026-10-02",
   "changes": [
     {
-      "company": "Flock Safety",
-      "id": "flock-safety",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Glacier",
-      "id": "glacier",
+      "company": "Byga",
+      "id": "byga",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
     },
     {
-      "company": "Raptor Technologies",
-      "id": "raptor-technologies",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Director, GTM Finance only"
-    },
-    {
-      "company": "Portage CyberTech",
-      "id": "portage-cybertech",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
+    },
+    {
+      "company": "Propelus",
+      "id": "propelus",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sr. Customer Success Manager - Gov only"
+    },
+    {
+      "company": "IDEMIA",
+      "id": "idemia",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Sales Manager - Smart Biometrics only"
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Oracle Utilities",
+      "id": "oracle-utilities",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Oracle Utilities",
-      "id": "oracle-utilities",
+      "company": "Tribute Technology",
+      "id": "tribute-technology",
       "from": "Sales (non-AE)",
       "to": "Unknown",
-      "note": "HTTP 301 for https://www.oracle.com/corp"
-    },
-    {
-      "company": "Follett Software",
-      "id": "follett-software",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Expression of Interest: Outside Sa (Remote - USA)"
+      "note": "network error: HTTPSConnectionPool(host="
     }
   ]
 }
