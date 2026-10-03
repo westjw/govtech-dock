@@ -26785,6 +26785,106 @@ def check_the_publisher_publishes_the_desk_and_only_the_desk() -> int:
         errors += fail("admin actions do not run under the desk lock the publisher snapshots with")
     return errors
 
+def check_who_each_supplier_is() -> int:
+    """scripts/supplier_identity.py, step 1 of moving the suppliers to SLED HQ
+    (owner, 2026-10-02): every verdict is about what was READ, and the traps
+    measured on the real list are held here.
+
+      - a guessed domain counts only when its page names the company;
+        a short name found that way goes to a person;
+      - a site on file that is for sale, names somebody else, or would not
+        answer is said as exactly that - never "not theirs" for a site that
+        did not answer;
+      - duplicates by website or by name, against suppliers and the board;
+      - an address, a booth number or site navigation is not a company;
+      - a host shared by records it does not name is the LISTING that
+        carried them (misheriff.org held 68), never their website and never
+        a duplicate; a one-word name off it is not searched, and a find off
+        it goes to a person (a menu item can own a domain too);
+      - it writes data/supplier_identity.json and never suppliers.json.
+    """
+    import supplier_identity as SI
+    errors = 0
+
+    class Page:
+        def __init__(self, url, title, status=200):
+            self.url, self.status_code = url, status
+            self.text = f"<html><head><title>{title}</title></head><body></body></html>"
+    pages = {
+        "https://acmesigns.com": Page("https://acmesigns.com", "Acme Signs | Custom signage"),
+        "https://bolt.com": Page("https://bolt.com", "Bolt"),
+        "https://parkedwidgets.com": Page("https://parkedwidgets.com", "parkedwidgets.com is for sale"),
+        "https://movedwidgets.com": Page("https://movedwidgets.com", "Other Corp | Home"),
+        "https://theirswidgets.com": Page("https://theirswidgets.com", "Theirs Widgets | Home"),
+        "https://careercenter.com": Page("https://careercenter.com", "Career Center"),
+        # the obvious domain answers, and it is somebody else's business
+        "https://zetalabs.com": Page("https://zetalabs.com", "Sunrise Bakery | Fresh bread"),
+    }
+
+    def get(url):
+        url = url.rstrip("/")
+        if "down" in url:
+            raise RuntimeError("connection refused")
+        if url in pages:
+            return pages[url]
+        raise RuntimeError("no such host")
+
+    def sup(cid, name, website=None):
+        return {"id": cid, "name": name, "website": website}
+    listing = "https://assoc.example/vendors"
+    suppliers = [
+        sup("acme-signs", "Acme Signs LLC"),
+        sup("zeta", "Zeta Labs"),
+        sup("bolt", "Bolt"),
+        sup("parked-co", "Parked Widgets", "https://parkedwidgets.com"),
+        sup("moved-co", "Moved Widgets Inc", "https://movedwidgets.com"),
+        sup("down-co", "Down Widgets", "https://downwidgets.com"),
+        sup("theirs-co", "Theirs Widgets", "https://theirswidgets.com"),
+        sup("theirs-div", "Theirs Widgets Division", "https://www.theirswidgets.com/div"),
+        sup("graco-1", "Graco, Inc."),
+        sup("graco-2", "Graco Inc."),
+        sup("boardco-sup", "Board Co", "https://boardco.com"),
+        # five digits: past the navigation pattern's 1-4, so only the
+        # number rule can refuse it
+        sup("booth", "#12105"),
+        sup("addr", "jane@example.com"),
+        sup("nav", "Exhibitors"),
+        sup("menu-1", "Employment", listing),
+        sup("menu-2", "Career Center", listing),
+        sup("real-1", "Real Vendor Corp", listing),
+    ]
+    companies = [{"id": "board-co", "name": "Board Co", "website": "https://www.boardco.com"}]
+    rows = SI.run(suppliers, companies, {}, workers=4, get=get)
+    want = {
+        "acme-signs": "found", "bolt": "found_review", "zeta": "not_found", "parked-co": "parked",
+        "moved-co": "names_other", "down-co": "unreadable", "theirs-co": "theirs",
+        "theirs-div": "duplicate", "graco-2": "duplicate", "boardco-sup": "duplicate",
+        "booth": "not_a_company", "addr": "not_a_company", "nav": "not_a_company",
+        "menu-1": "listing_site", "menu-2": "found_review", "real-1": "listing_site",
+    }
+    for cid, verdict in want.items():
+        got = (rows.get(cid) or {}).get("verdict")
+        if got != verdict:
+            errors += fail(f"supplier {cid}: verdict {got!r}, expected {verdict!r}")
+    if (rows.get("boardco-sup") or {}).get("on_board") is not True:
+        errors += fail("a supplier that is a company already on the board is not said to be one")
+    if (rows.get("graco-2") or {}).get("duplicate_of") != "graco-1":
+        errors += fail("a supplier listed twice under one name does not point at the first")
+    if (rows.get("menu-1") or {}).get("tried"):
+        errors += fail("a one-word name off an association site was searched for a domain")
+    if any((rows.get(c) or {}).get("verdict") == "duplicate" for c in ("menu-1", "menu-2", "real-1")):
+        errors += fail("records sharing the association page that listed them were called duplicates")
+    if (rows.get("down-co") or {}).get("verdict") in ("names_other", "not_found"):
+        errors += fail("a site that did not answer was reported as not theirs")
+    # it writes its own file and never the supplier list
+    src = _code_only(ROOT / "scripts" / "supplier_identity.py")
+    for m in re.finditer(r"(save_decisions|write_atomic)\(\s*([^,)]+)", src):
+        if "suppliers.json" in m.group(2) or m.group(2).strip() not in ("OUT",):
+            errors += fail(f"supplier_identity writes {m.group(2).strip()}; it may write only its own file")
+    if "suppliers.json" in re.sub(r'admin\.read\("suppliers\.json"', "", src):
+        errors += fail("supplier_identity touches suppliers.json other than to read it")
+    return errors
+
 def check_the_claude_inbox_lists_and_settles() -> int:
     """The end-of-day workshop reads scripts/inbox.py: it must say EMPTY when
     nothing is open (so the daily run stops at once), list what is open with
@@ -27520,6 +27620,7 @@ def main() -> int:
     errors += check_the_scrub_tab_keeps_the_cadence()
     errors += check_the_page_preview_shows_the_edit()
     errors += check_the_claude_inbox_lists_and_settles()
+    errors += check_who_each_supplier_is()
     errors += check_a_pasted_board_must_prove_it_is_theirs()
     errors += check_a_demoted_supplier_leaves_cleanly()
     errors += check_the_belt_answers_what_was_asked()
