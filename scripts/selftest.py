@@ -26787,38 +26787,57 @@ def check_the_publisher_publishes_the_desk_and_only_the_desk() -> int:
 
 def check_who_each_supplier_is() -> int:
     """scripts/supplier_identity.py, step 1 of moving the suppliers to SLED HQ
-    (owner, 2026-10-02): every verdict is about what was READ, and the traps
-    measured on the real list are held here.
+    (owner, 2026-10-02). Every verdict is about what was READ, and every rule
+    here answers something a 214-record audit found (2026-10-03):
 
-      - a guessed domain counts only when its page names the company;
-        a short name found that way goes to a person;
-      - a site on file that is for sale, names somebody else, or would not
-        answer is said as exactly that - never "not theirs" for a site that
-        did not answer;
-      - duplicates by website or by name, against suppliers and the board;
-      - an address, a booth number or site navigation is not a company;
-      - a host shared by records it does not name is the LISTING that
-        carried them (misheriff.org held 68), never their website and never
-        a duplicate; a one-word name off it is not searched, and a find off
-        it goes to a person (a menu item can own a domain too);
-      - it writes data/supplier_identity.json and never suppliers.json.
+      - a guessed domain counts only when its page names the company; a short
+        name, a fragment of the name, or a page that mentions nothing the
+        record says they sell goes to a person;
+      - a parking lander ("ww547.<name>.com/?tkn=") or a "launching soon"
+        page is never a find; a dead deep link is retried at the home page;
+      - the www. retry is a SECOND pass, so a lookalike apex cannot answer
+        before the company's own domain;
+      - an acronym domain counts only when its title carries the full name;
+      - a site on file that names them under another name is "unconfirmed",
+        never "somebody else's" (that verdict was right 1 time in 25);
+      - not a company: a bare address, a number, site navigation - but a real
+        name with a contact's address glued on is cleaned, not refused;
+      - off an association's own site, a name that does not read like a
+        company is a menu item (18 of 20) and is not searched;
+      - duplicates need the same name; same site with a name inside the other
+        is "related" and never merged; a .gov host and two companies sharing a
+        name with different websites are neither;
+      - no address leaves the script, and it never writes suppliers.json.
     """
     import supplier_identity as SI
     errors = 0
 
     class Page:
-        def __init__(self, url, title, status=200):
+        def __init__(self, url, title, status=200, body=""):
             self.url, self.status_code = url, status
-            self.text = f"<html><head><title>{title}</title></head><body></body></html>"
+            self.text = f"<html><head><title>{title}</title></head><body>{body}</body></html>"
     pages = {
         "https://acmesigns.com": Page("https://acmesigns.com", "Acme Signs | Custom signage"),
         "https://bolt.com": Page("https://bolt.com", "Bolt"),
         "https://parkedwidgets.com": Page("https://parkedwidgets.com", "parkedwidgets.com is for sale"),
         "https://movedwidgets.com": Page("https://movedwidgets.com", "Other Corp | Home"),
         "https://theirswidgets.com": Page("https://theirswidgets.com", "Theirs Widgets | Home"),
-        "https://careercenter.com": Page("https://careercenter.com", "Career Center"),
-        # the obvious domain answers, and it is somebody else's business
         "https://zetalabs.com": Page("https://zetalabs.com", "Sunrise Bakery | Fresh bread"),
+        # a parking service's lander, reached by the obvious domain
+        "https://landerwidgets.com": Page("http://ww547.landerwidgets.com/?tkn=abc", "Lander Widgets"),
+        # answers only on www.
+        "https://www.wwwonlywidgets.com": Page("https://www.wwwonlywidgets.com", "Wwwonly Widgets"),
+        # an acronym domain whose title carries the full name
+        "https://nrtcca.org": Page("https://nrtcca.org",
+                                   "National Real Time Crime Center Association | Home"),
+        "https://mcgriff.com": Page("https://mcgriff.com", "McGriff | Insurance"),
+        "https://deepwidgets.com": Page("https://deepwidgets.com", "Deep Widgets"),
+        "https://realtwowidgets.com": Page("https://realtwowidgets.com", "Real Two Widgets"),
+        "https://charityengine.com": Page("https://charityengine.com",
+                                          "Charity Engine | Donate your spare computing power",
+                                          body="volunteer computing grid"),
+        "https://mailtitlewidgets.com": Page("https://mailtitlewidgets.com",
+                                             "Mail Title Widgets write to sales@example.com"),
     }
 
     def get(url):
@@ -26829,8 +26848,8 @@ def check_who_each_supplier_is() -> int:
             return pages[url]
         raise RuntimeError("no such host")
 
-    def sup(cid, name, website=None):
-        return {"id": cid, "name": name, "website": website}
+    def sup(cid, name, website=None, description=""):
+        return {"id": cid, "name": name, "website": website, "description": description}
     listing = "https://assoc.example/vendors"
     suppliers = [
         sup("acme-signs", "Acme Signs LLC"),
@@ -26839,28 +26858,48 @@ def check_who_each_supplier_is() -> int:
         sup("parked-co", "Parked Widgets", "https://parkedwidgets.com"),
         sup("moved-co", "Moved Widgets Inc", "https://movedwidgets.com"),
         sup("down-co", "Down Widgets", "https://downwidgets.com"),
+        sup("deep-co", "Deep Widgets", "https://deepwidgets.com/old/page"),
         sup("theirs-co", "Theirs Widgets", "https://theirswidgets.com"),
         sup("theirs-div", "Theirs Widgets Division", "https://www.theirswidgets.com/div"),
         sup("graco-1", "Graco, Inc."),
         sup("graco-2", "Graco Inc."),
+        sup("gosafe-a", "goSafe", "https://gosafe.com"),
+        sup("gosafe-b", "GoSafe", "https://gosafe.io"),
+        sup("ct-a", "Emergency Management Division", "https://portal.ct.gov/a"),
+        # one name inside the other, on one .gov host: still two offices
+        sup("ct-b", "Emergency Management Division Grants", "https://portal.ct.gov/b"),
         sup("boardco-sup", "Board Co", "https://boardco.com"),
         # five digits: past the navigation pattern's 1-4, so only the
         # number rule can refuse it
         sup("booth", "#12105"),
         sup("addr", "jane@example.com"),
+        sup("fmia", "Flood Mitigation Industry Association - Roderick Scott - rscott@example.com"),
         sup("nav", "Exhibitors"),
         sup("menu-1", "Employment", listing),
         sup("menu-2", "Career Center", listing),
         sup("real-1", "Real Vendor Corp", listing),
+        sup("real-2", "Real Two Widgets Inc", listing),
+        sup("real-3", "Real Vendor Corp Services", listing),
+        sup("lander", "Lander Widgets"),
+        sup("wwwonly", "Wwwonly Widgets"),
+        sup("nrt", "National Real Time Crime Center Association"),
+        sup("mcgriff", "McGriff, A Marsh & McLennan Agency"),
+        sup("charity", "Charity Engine",
+            description="Nonprofit fundraising CRM and donor management - exhibited at X"),
+        sup("mail", "Mail Title Widgets"),
     ]
     companies = [{"id": "board-co", "name": "Board Co", "website": "https://www.boardco.com"}]
     rows = SI.run(suppliers, companies, {}, workers=4, get=get)
     want = {
-        "acme-signs": "found", "bolt": "found_review", "zeta": "not_found", "parked-co": "parked",
-        "moved-co": "names_other", "down-co": "unreadable", "theirs-co": "theirs",
-        "theirs-div": "duplicate", "graco-2": "duplicate", "boardco-sup": "duplicate",
+        "acme-signs": "found", "zeta": "not_found", "bolt": "found_review",
+        "parked-co": "parked", "moved-co": "unconfirmed", "down-co": "unreadable",
+        "deep-co": "theirs", "theirs-co": "theirs", "theirs-div": "related",
+        "graco-2": "duplicate", "boardco-sup": "duplicate",
         "booth": "not_a_company", "addr": "not_a_company", "nav": "not_a_company",
-        "menu-1": "listing_site", "menu-2": "found_review", "real-1": "listing_site",
+        "menu-1": "listing_menu", "menu-2": "listing_menu", "real-1": "listing_site",
+        "real-2": "found_review", "real-3": "listing_site",
+        "lander": "not_found", "wwwonly": "found", "nrt": "found",
+        "mcgriff": "found_review", "charity": "found_review", "mail": "found",
     }
     for cid, verdict in want.items():
         got = (rows.get(cid) or {}).get("verdict")
@@ -26870,12 +26909,20 @@ def check_who_each_supplier_is() -> int:
         errors += fail("a supplier that is a company already on the board is not said to be one")
     if (rows.get("graco-2") or {}).get("duplicate_of") != "graco-1":
         errors += fail("a supplier listed twice under one name does not point at the first")
-    if (rows.get("menu-1") or {}).get("tried"):
-        errors += fail("a one-word name off an association site was searched for a domain")
-    if any((rows.get(c) or {}).get("verdict") == "duplicate" for c in ("menu-1", "menu-2", "real-1")):
-        errors += fail("records sharing the association page that listed them were called duplicates")
-    if (rows.get("down-co") or {}).get("verdict") in ("names_other", "not_found"):
-        errors += fail("a site that did not answer was reported as not theirs")
+    for cid in ("gosafe-a", "gosafe-b", "ct-a", "ct-b"):
+        if (rows.get(cid) or {}).get("verdict") in ("duplicate", "related"):
+            errors += fail(f"{cid}: two different organisations were matched as one "
+                           f"(a shared name with different websites, or one .gov host)")
+    if (rows.get("fmia") or {}).get("verdict") == "not_a_company":
+        errors += fail("a real association with a contact's address glued on was refused")
+    if (rows.get("menu-2") or {}).get("tried"):
+        errors += fail("a menu item off an association site was searched for a domain")
+    if not (rows.get("deep-co") or {}).get("deep_link_dead"):
+        errors += fail("a dead deep link answered at the home page is not said to be one")
+    if "www." not in str((rows.get("wwwonly") or {}).get("url")):
+        errors += fail("the www. second pass did not record the address that answered")
+    if "@" in json.dumps(rows):
+        errors += fail("an address from a page title reached the findings")
     # it writes its own file and never the supplier list
     src = _code_only(ROOT / "scripts" / "supplier_identity.py")
     for m in re.finditer(r"(save_decisions|write_atomic)\(\s*([^,)]+)", src):
