@@ -39260,8 +39260,8 @@
     "category": "Procurement & Payments",
     "description": "AI procurement: solicitation drafting, market research, and proposal evaluation (YC; Dallas, US Navy)",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.ycombinator.com/companies/hazel-2/jobs"
     },
     "hiring": {
       "status": "Unknown",
@@ -41241,8 +41241,8 @@
     "category": "Corrections",
     "description": "Smart vending and locker hardware plus cloud software for inmate property and commissary dispensing",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://vendnovation.com/jobs/"
     },
     "hiring": {
       "status": "Unknown",
@@ -53763,8 +53763,8 @@
     "category": "Suppliers & Services",
     "description": "Payroll and HR management software services - exhibited at NACo 2026, PSHRA 2026, NASWA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://jobs.adp.com/en/?rb=ADP_COM"
     },
     "hiring": {
       "status": "Unknown",
@@ -55609,8 +55609,8 @@
     "category": "Suppliers & Services",
     "description": "Government contract and procurement software - exhibited at NIGP 2026",
     "ats": {
-      "type": "unknown",
-      "note": "was ashby/concourse, which is a DIFFERENT company: Concourse the corporate-finance AI startup (a16z/CRV/YC), not this one. Its 7 postings were on the public board, including a Founding AE counted as quota-carrying. The govtech Concourse is concoursetech.com - see the concourse-tech record, which may be the same company."
+      "type": "ashby",
+      "ref": "concourse"
     },
     "hiring": {
       "status": "Unknown",
@@ -60698,8 +60698,8 @@
     "category": "Suppliers & Services",
     "description": "Document management and process automation for government - exhibited at ICMA 2025, GMIS International 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://mcci.com/about/employment/"
     },
     "hiring": {
       "status": "Unknown",
@@ -60887,8 +60887,12 @@
     "category": "Suppliers & Services",
     "description": "Business phone and unified communications systems - exhibited at NIGP 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "workday",
+      "ref": [
+        "mitel",
+        "wd3",
+        "mitelcareers"
+      ]
     },
     "hiring": {
       "status": "Unknown",
@@ -76791,8 +76795,8 @@
     "category": "Youth Sports & Leagues",
     "description": "Club and league operations platform for youth sports organizations",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://home.playmetrics.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -81269,8 +81273,8 @@
     "category": "Citizen Services",
     "description": "ECode360 municipal code publishing and online code access for local government",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/e85dd7b0-975d-424a-939f-d55f469a2335/General-Code"
     },
     "hiring": {
       "status": "Unknown",
@@ -99766,8 +99770,8 @@
     "category": "Procurement & Payments",
     "description": "Cooperative contract search helping cities and counties buy off existing contracts",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.withpavilion.com/about/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -105418,8 +105422,8 @@
     "category": "Corrections",
     "description": "Cloud jail management and compliance software for small county jails",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://jailcore.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -123062,8 +123066,8 @@
     "category": "Waste & Recycling",
     "description": "Electric and vocational refuse truck chassis sold to municipal fleets",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://battlemotors.com/careers"
     },
     "hiring": {
       "status": "Unknown",

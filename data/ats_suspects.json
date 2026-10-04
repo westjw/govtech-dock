@@ -28,32 +28,36 @@
    "type": "rippling",
    "ref": "orange-barrel-media"
   },
-  "note": "rippling:orange-barrel-media reads (20 posting(s)), but does not match 'IKE Smart City'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "rippling:orange-barrel-media reads (21 posting(s)), but does not match 'IKE Smart City'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "camino-technologies": {
   "ats": {
    "type": "greenhouse",
    "ref": "clariticloudinc"
   },
-  "note": "greenhouse:clariticloudinc reads (9 posting(s)), but does not match 'Camino Technologies'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "greenhouse:clariticloudinc reads (8 posting(s)), but does not match 'Camino Technologies'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "careers-in-government": {
   "ats": {
-   "type": "breezy",
-   "ref": "skagit-911"
+   "type": "workday",
+   "ref": [
+    "austintexas",
+    "wd5",
+    "COA_Careers"
+   ]
   },
-  "note": "breezy:skagit-911 reads (2 posting(s)), but does not match 'Careers In Government'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:austintexas reads (8 posting(s)), but does not match 'Careers In Government'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "bonfire-interactive": {
   "ats": {
    "type": "bamboohr",
    "ref": "euna"
   },
-  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'Bonfire Interactive'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:euna reads (47 posting(s)), but does not match 'Bonfire Interactive'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "mdf-commerce": {
   "ats": {
@@ -68,48 +72,48 @@
    "type": "bamboohr",
    "ref": "euna"
   },
-  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'Ionwave Technologies'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:euna reads (47 posting(s)), but does not match 'Ionwave Technologies'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "ecivis": {
   "ats": {
    "type": "bamboohr",
    "ref": "euna"
   },
-  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'eCivis'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:euna reads (47 posting(s)), but does not match 'eCivis'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "amplifund": {
   "ats": {
    "type": "bamboohr",
    "ref": "euna"
   },
-  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'AmpliFund (StreamLink Software)'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:euna reads (47 posting(s)), but does not match 'AmpliFund (StreamLink Software)'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "global-traffic-technologies": {
   "ats": {
    "type": "ashby",
    "ref": "miovision"
   },
-  "note": "ashby:miovision reads (8 posting(s)), but does not match 'Global Traffic Technologies (GTT)'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "ashby:miovision reads (19 posting(s)), but does not match 'Global Traffic Technologies (GTT)'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "rapid-flow-technologies": {
   "ats": {
    "type": "ashby",
    "ref": "miovision"
   },
-  "note": "ashby:miovision reads (8 posting(s)), but does not match 'Rapid Flow Technologies'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "ashby:miovision reads (19 posting(s)), but does not match 'Rapid Flow Technologies'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "opencounter": {
   "ats": {
    "type": "bamboohr",
    "ref": "euna"
   },
-  "note": "bamboohr:euna reads (36 posting(s)), but does not match 'OpenCounter'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:euna reads (47 posting(s)), but does not match 'OpenCounter'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "adashi-systems": {
   "ats": {
@@ -124,8 +128,8 @@
    "type": "icims",
    "ref": "careers-tkcholdings"
   },
-  "note": "icims:careers-tkcholdings reads (21 posting(s)), but does not match 'ICSolutions'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "icims:careers-tkcholdings reads (311 posting(s)), but does not match 'ICSolutions'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "sparkrock": {
   "ats": {
@@ -192,8 +196,8 @@
     "terexcareers"
    ]
   },
-  "note": "workday:terex reads (31 posting(s)), but does not match 'ZenRobotics'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:terex reads (29 posting(s)), but does not match 'ZenRobotics'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "aci-worldwide": {
   "ats": {
@@ -201,7 +205,7 @@
    "ref": "https://ebwg.fa.us2.oraclecloud.com"
   },
   "note": "oracle:ebwg reads (0 posting(s)), but does not match 'ACI Worldwide'; likely a parent or another company",
-  "on": "2026-08-20"
+  "on": "2026-10-04"
  },
  "roadbotics": {
   "ats": {
@@ -212,8 +216,8 @@
     "Michelin"
    ]
   },
-  "note": "workday:michelinhr reads (28 posting(s)) and matches the acquirer named in 'RoadBotics (Michelin)'; confirm it is scoped to this product line before wiring it up",
-  "on": "2026-08-20"
+  "note": "workday:michelinhr reads (74 posting(s)) and matches the acquirer named in 'RoadBotics (Michelin)'; confirm it is scoped to this product line before wiring it up",
+  "on": "2026-10-04"
  },
  "roadbotics-by-michelin": {
   "ats": {
@@ -236,8 +240,8 @@
     "terexcareers"
    ]
   },
-  "note": "workday:terex reads (31 posting(s)), but does not match 'Soft-Pak'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:terex reads (29 posting(s)), but does not match 'Soft-Pak'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "brandkit": {
   "ats": {
@@ -248,8 +252,8 @@
     "Careers_GM"
    ]
   },
-  "note": "workday:generalmotors reads (39 posting(s)), but does not match 'Brandkit'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:generalmotors reads (220 posting(s)), but does not match 'Brandkit'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "ci-technologies": {
   "ats": {
@@ -265,7 +269,7 @@
    "ref": "https://recruiting.ultipro.com/LIO1001LIOG"
   },
   "note": "html:recruiting reads (0 posting(s)), but does not match 'LION Group'; likely a parent or another company",
-  "on": "2026-08-20"
+  "on": "2026-10-04"
  },
  "pierce-manufacturing": {
   "ats": {
@@ -276,8 +280,8 @@
     "Oshkosh"
    ]
   },
-  "note": "workday:oshkoshcorporation reads (25 posting(s)), but does not match 'Pierce Manufacturing'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:oshkoshcorporation reads (69 posting(s)), but does not match 'Pierce Manufacturing'; likely a parent or another company",
+  "on": "2026-10-04"
  },
  "d4h-technologies": {
   "ats": {
@@ -285,7 +289,7 @@
    "ref": "https://ecoonline.teamtailor.com"
   },
   "note": "html:ecoonline reads (0 posting(s)), but does not match 'D4H Technologies'; likely a parent or another company",
-  "on": "2026-08-20"
+  "on": "2026-10-04"
  },
  "intellicene": {
   "ats": {
