@@ -1,55 +1,69 @@
 {
-  "date": "2026-10-03",
-  "previous": "2026-10-02",
+  "date": "2026-10-04",
+  "previous": "2026-10-03",
   "changes": [
     {
-      "company": "Byga",
-      "id": "byga",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "company": "Hazel (hazelai.com)",
+      "id": "hazel",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "OnSolve (CodeRED)",
-      "id": "onsolve",
+      "company": "ADP",
+      "id": "adp",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Concourse",
+      "id": "concourse",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Founding Account Executive (New York City)"
+    },
+    {
+      "company": "Mitel",
+      "id": "mitel",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Hunter / Account Executive (2 Locations)"
+    },
+    {
+      "company": "PlayMetrics",
+      "id": "playmetrics",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Propelus",
-      "id": "propelus",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sr. Customer Success Manager - Gov only"
+      "company": "Byga",
+      "id": "byga",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "IDEMIA",
-      "id": "idemia",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Manager - Smart Biometrics only"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "Oracle Utilities",
-      "id": "oracle-utilities",
+      "company": "General Code",
+      "id": "general-code",
       "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "Tribute Technology",
       "id": "tribute-technology",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     }
   ]
 }
