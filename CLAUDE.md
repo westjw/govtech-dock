@@ -1633,6 +1633,40 @@ password behind a company page.
 - Python: stdlib + requests + openpyxl only. Match existing style (typed,
   small functions, no classes where a function does). Comments explain WHY.
 
+## The supplier move to SLED HQ: who each one is, and where it sells (2026-10-03..05)
+
+The owner wants the 7,918 suppliers on SLED HQ, sorted carefully (2026-10-01).
+Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
+
+- **Step 1, `scripts/supplier_identity.py` → `data/supplier_identity.json`.**
+  This records a verdict per supplier on who it is: the website is theirs,
+  found, unconfirmed, parked, unreadable, not found, a duplicate, a related
+  record, not a company, or a menu item off an association's site. A 214-record
+  audit set each rule, and a fresh 233-record audit measured the result.
+  "Not found" and "unreadable" are limits of the crawler, not facts about the
+  company.
+- **Step 2, `scripts/supplier_pages.py` + `scripts/supplier_categories.py` →
+  `data/supplier_categories.json`.** Owner: "throw them in the categories we
+  have for govtech", so suppliers sit in schema.json's sectors and categories.
+  - The conference a supplier exhibited at gives the sector (`CROSSWALK`).
+  - Its own site, read into the gitignored `data/supplier_pages/`, adds ONE
+    category when the site names it in two distinct terms, quoting the
+    sentence.
+  - When every show was a generalist one, the site picks the sector.
+  - When nothing specific turns up, the supplier goes in that sector's
+    Suppliers & Services.
+- **Nothing publishes without a website** (owner, 2026-10-04). A website
+  counts only when its own text sells into that sector. Step 1's "theirs"
+  is held to the same test, because a same-named business passed it.
+  - A blind, fresh 200-supplier holdout measured the published suppliers at
+    93% right website, 96% right sector and 76% exact category.
+  - 40 of 87 HELD suppliers had a real website, so the held pile is partly
+    a review queue.
+- The export is what SLED HQ reads. It has fixed sector keys, sector-qualified
+  category slugs, and a status per supplier. It carries no addresses:
+  67 supplier "names" are email addresses, and `clean_name` plus a scrub keep
+  them out.
+
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
 
 **Re-measured 2026-09-18: 7,919 records, 5,143 unruled, 1,578 card-ready
