@@ -387,13 +387,14 @@ rows all stay; only the counting changes.
 
 ## The admin backend
 
-`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Twenty queues, and
-`LABEL` in admin.py is the list (this paragraph said fourteen for a month):
-Users, Write-ups to check, Agent proposals, Warm leads, Boards we found,
-Founding year, Wrong bucket, Vendor scope, Scope review, Submissions,
-Duplicates, Missing websites, No board found, Blocked boards, Wrong placement,
-Unclassified roles, Acquisitions, Website review, Conference dates, Conference
-floors. Every key in `QUEUES` has a `RENDER.<key>` in admin.html and
+`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Twenty-three queues,
+and `LABEL` in admin.py is the list (this paragraph said fourteen for a month,
+then twenty for another): Users, Write-ups to check, Agent proposals, Warm
+leads, Boards we found, Founding year, Wrong bucket, Vendor scope, Scope
+review, Submissions, Duplicates, Missing websites, No board found, Blocked
+boards, Wrong placement, Unclassified roles, Acquisitions, Website review,
+Conference dates, Conference floors, Open on approved pages, Scrub, Supplier
+websites (a person releases a held supplier's website, 2026-10-05). Every key in `QUEUES` has a `RENDER.<key>` in admin.html and
 `check_every_queue_has_a_renderer` keeps QUEUES and RENDER.* honest, and
 `check_the_two_applier_lists_agree` keeps the two NO_APPLIER lists agreeing.
 
@@ -1768,6 +1769,32 @@ targets off the code and holds the workflow's `git add` against them.
 Both are the same lesson as the render budget and the journal's BLAST: a
 bound has to be in the unit the failure is measured in, and a workflow's
 commit step has to be derived from what the script writes, not typed in.
+
+**The budget did not hold either: one run finished between 2026-09-20 and
+10-05.** The September fix was right but incomplete. The budget stopped
+HANDING OUT companies, and a company already handed out ran to its end.
+- **One company could be hundreds of fetches.** `index_entry`'s `slim()`
+  dropped `from_index`, so every article a sweep ever read was committed as a
+  newsroom. A cold CI run works from that index, since it holds no bodies.
+  It re-read them all, then hopped twelve articles from each.
+  - The index held 33,743 "newsroom" pages across 1,321 companies, and 1,215
+    of them were Thomson Reuters'.
+  - On the same first 16 sites, the old code was still on Thomson Reuters 6½
+    minutes into a 2-minute budget. The fix read all 16 in 25 seconds.
+- **The log said nothing**, because stdout was buffered.
+
+Four rules now hold:
+- The index keeps the flag.
+- `revisit_news` re-reads at most `MAX_PAGES` newsrooms. Legacy unflagged
+  pages are ranked newsroom-shaped first, never excluded, because
+  `/newsroom/press-releases` is shaped like an article.
+- `grab()` refuses to START a fetch once the run's budget is spent
+  (`_RUN_DEADLINE`) or the company has used its `VISIT_CAP`. A company the
+  deadline cut is not saved, so it goes first next run.
+- news.yml sets `PYTHONUNBUFFERED`.
+
+`check_a_slow_site_cannot_outlast_the_sweep` drives the real `revisit_news`
+with a slow fake fetch.
 
 ## build_board.py is the crawler, not a formatter (noted 2026-08-25)
 

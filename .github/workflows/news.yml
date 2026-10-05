@@ -42,6 +42,10 @@ jobs:
     env:
       TZ: America/New_York        # journal ids key on the date; refresh pins
                                   # this too and two jobs must agree on it
+      # Progress as it happens. Python buffers stdout when it is not a
+      # terminal, so 89 minutes of a hung sweep logged NOTHING and the
+      # cancelled runs could not say where they stalled (2026-10-05).
+      PYTHONUNBUFFERED: "1"
     steps:
       - uses: actions/checkout@v5
 

@@ -107,9 +107,22 @@ def index_entry(rec: dict, prior: dict | None = None) -> dict:
     news run would have erased the about pages of every company it touched.
     Only the `test -f data/news.json` guard stopped it reaching a commit.
     """
-    slim = lambda pages: [{"url": p["url"], "chars": p.get("chars"), "sha": p.get("sha")}
-                          if p.get("text") else {"url": p["url"], "unread": p.get("unread")}
-                          for p in pages]
+    # THE ARTICLE FLAG IS KEPT. slim() used to drop `from_index`, so every
+    # article a sweep ever read was committed as if it were a newsroom, and
+    # the next cold run (CI holds no bodies, so it works from this index)
+    # re-read all of them as newsrooms and hopped twelve articles from each:
+    # 33,743 "newsroom" pages across 1,321 companies where visit() allows
+    # six each, 1,215 for Thomson Reuters alone. No run finished between
+    # 2026-09-20 and 10-05 but one.
+    def slim(pages):
+        out = []
+        for p in pages:
+            e = ({"url": p["url"], "chars": p.get("chars"), "sha": p.get("sha")}
+                 if p.get("text") else {"url": p["url"], "unread": p.get("unread")})
+            if p.get("from_index"):
+                e["from_index"] = p["from_index"]
+            out.append(e)
+        return out
     prior = prior or {}
     entry = {"fetched_on": rec.get("fetched_on"), "website": rec.get("website"),
              "unread": rec.get("unread"), "unread_on": rec.get("unread_on"),
@@ -289,8 +302,34 @@ def pick(urls: list[str], want: re.Pattern) -> list[str]:
             and not NOT_A_PAGE.search(up.urlsplit(u).path or "/")][:MAX_PAGES]
 
 
+# THE RUN'S CLOCK REACHES INSIDE A VISIT. The sweep's budget stopped handing
+# out companies, but a company already handed out ran to its end - and one
+# company is up to ~80 fetches at one request a second per host, each allowed
+# ats.TIMEOUT. So the window in flight at the deadline could outlast the job.
+# grab() now refuses to START a fetch once the run's budget is spent or once
+# this company has used its own share, so the most anything runs past a
+# deadline is the one fetch each worker is already inside.
+_RUN_DEADLINE = [None]          # monotonic seconds; set by main() under --budget-seconds
+VISIT_CAP = 300                 # seconds one company may spend in one sweep
+_VISIT = threading.local()
+BUDGET_SPENT = "not fetched: the run's time budget was spent"
+
+
+def _out_of_time() -> str | None:
+    now = time.monotonic()
+    if _RUN_DEADLINE[0] is not None and now >= _RUN_DEADLINE[0]:
+        return BUDGET_SPENT
+    until = getattr(_VISIT, "until", None)
+    if until is not None and now >= until:
+        return f"not fetched: this site had used its {VISIT_CAP}s of the sweep"
+    return None
+
+
 def grab(url: str, keep_html: bool = False) -> dict:
     """One page, as {url, text, chars, sha} or {url, unread: why}."""
+    late = _out_of_time()
+    if late:
+        return {"url": url, "unread": late}
     try:
         resp = ats._get(url)
     except Exception as exc:                      # ats raises its own type
@@ -315,6 +354,13 @@ def grab(url: str, keep_html: bool = False) -> dict:
         # headline; JSON-LD is the one <script> that does, and it is kept.
         out["html"] = STRIP_HTML.sub(" ", body)[:MAX_HTML]
     return out
+
+
+def is_article(pg: dict) -> bool:
+    """Whether a news page is SHAPED like one article. Used only to rank an
+    unflagged legacy index (see revisit_news); a flag, when present, decides."""
+    return bool(pg.get("from_index")) or bool(
+        ARTICLE.search(up.urlsplit(pg.get("url") or "").path or ""))
 
 
 def revisit_news(company: dict, prior: dict, listed: dict | None = None) -> dict:
@@ -362,9 +408,15 @@ def revisit_news(company: dict, prior: dict, listed: dict | None = None) -> dict
     out["website"] = (company.get("website") or "").strip() or None
     out["fetched_on"] = dt.date.today().isoformat()
     keep, changed = [], []
-    for pg in ((prior.get("news") or []) or (listed.get("news") or [])):
-        if pg.get("from_index"):
-            continue                      # articles are re-derived below
+    # AT MOST MAX_PAGES NEWSROOMS, the bound visit() found them under. An
+    # index committed before the article flag survived carries every article
+    # unflagged, so the unflagged pages are ranked newsroom-shaped first and
+    # cut at MAX_PAGES: a real index like /newsroom/press-releases is shaped
+    # like an article too, so the shape orders the pages and never excludes.
+    pages = (prior.get("news") or []) or (listed.get("news") or [])
+    rooms = sorted((pg for pg in pages if not pg.get("from_index")),
+                   key=is_article)[:MAX_PAGES]
+    for pg in rooms:
         fresh = grab(pg["url"], keep_html=True)
         if fresh.get("unread"):
             keep.append(pg)               # a failed fetch is not a change
@@ -372,12 +424,10 @@ def revisit_news(company: dict, prior: dict, listed: dict | None = None) -> dict
         if fresh.get("sha") != pg.get("sha"):
             changed.append(fresh)
         keep.append(fresh)
-    # articles only from an index that moved
+    # articles only from an index that moved, read off the page just fetched
+    # (grab kept its markup) rather than fetching the same index twice
     for pg in changed:
-        try:
-            inner = links(ats._get(pg["url"]).text, pg["url"])
-        except Exception:
-            continue
+        inner = links(pg.get("html") or "", pg["url"])
         for a_ in [x for x in inner
                    if ARTICLE.search(up.urlsplit(x).path or "")][:NEWS_ITEMS]:
             if any(x["url"] == a_ for x in keep):
@@ -418,7 +468,7 @@ def visit(company: dict, news_depth: int = 1) -> dict:
     out["about"].append(home)
 
     try:
-        body = ats._get(site).text
+        body = "" if _out_of_time() else ats._get(site).text
     except Exception:
         body = ""
     found = links(body, site)
@@ -443,10 +493,8 @@ def visit(company: dict, news_depth: int = 1) -> dict:
         # extractor takes the date from the article when the index has none.
         # A headline with no date anywhere is not an item.
         if news_depth and pg.get("html"):
-            try:
-                inner = links(ats._get(u).text, u)
-            except Exception:
-                inner = []
+            # the index grab() just read, not a second fetch of it
+            inner = links(pg["html"], u)
             arts = [a for a in inner if ARTICLE.search(up.urlsplit(a).path or "")
                     and not same_page(a, u)][:NEWS_ITEMS]
             for a_ in arts:
@@ -610,10 +658,18 @@ def main() -> int:
         lock = threading.Lock()
 
         def guarded(c):
+            _VISIT.until = time.monotonic() + VISIT_CAP
             try:
                 rec = one(c)
                 # last run's failure is not this run's news
                 rec.pop("unread_why", None)
+                # A COMPANY THE RUN'S DEADLINE CUT SHORT IS NOT A READ. It is
+                # not saved, so its fetched_on stays old and it sorts first
+                # next run; a company that spent its OWN share is saved, and
+                # rotates to the back like any other read.
+                if any(pg.get("unread") == BUDGET_SPENT
+                       for pg in (rec.get("news") or []) + (rec.get("about") or [])):
+                    rec["_cut"] = True
                 return rec
             except Exception as exc:                       # noqa: BLE001
                 why = f"{type(exc).__name__}: {exc}"[:200]
@@ -622,6 +678,8 @@ def main() -> int:
                 return {"id": c["id"], "website": c.get("website"),
                         "unread": True, "unread_why": why,
                         "about": [], "news": []}
+            finally:
+                _VISIT.until = None
 
         # THE BOUND IS A CLOCK, BECAUSE THE JOB'S IS. --limit 600 was the
         # "bounded, like the news sweep" promise, and it bounded the wrong
@@ -642,6 +700,7 @@ def main() -> int:
         # their fetched_on is the oldest. A cap is a rate, not a subset.
         deadline = (time.monotonic() + a.budget_seconds
                     if a.budget_seconds else None)
+        _RUN_DEADLINE[0] = deadline
         window = max(1, a.workers) * 2
         todo = list(rows)
         inflight: set = set()
@@ -652,7 +711,7 @@ def main() -> int:
             while todo or inflight:
                 while todo and len(inflight) < window:
                     if deadline is not None and time.monotonic() >= deadline:
-                        left = len(todo)
+                        left += len(todo)
                         todo.clear()
                         break
                     inflight.add(pool.submit(guarded, todo.pop(0)))
@@ -664,6 +723,9 @@ def main() -> int:
                     yield fut.result()
 
         for rec in results():
+            if rec.pop("_cut", False):
+                left += 1
+                continue
             if rec.get("unread"):
                 rec["unread_on"] = today.isoformat()
                 got["unread"] += 1
@@ -676,6 +738,7 @@ def main() -> int:
                 print(f"  ... {done}/{len(rows)}")
                 save_index(idx)
 
+    _RUN_DEADLINE[0] = None
     save_index(idx)
     if left:
         print(f"\n  budget of {a.budget_seconds:.0f}s spent with {left} of "

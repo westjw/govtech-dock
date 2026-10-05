@@ -25382,6 +25382,144 @@ def check_the_news_sweep_stops_before_the_job_does() -> int:
     return errors
 
 
+def check_a_slow_site_cannot_outlast_the_sweep() -> int:
+    """No news run finished between 2026-09-20 and 10-05 but one.
+
+    The budget stopped HANDING OUT companies, and that was the whole of it:
+    a company already handed out ran to its end, and one company could be
+    hundreds of fetches. The committed index had dropped the article flag
+    (slim() kept url, chars and sha), so a cold CI run - it holds no page
+    bodies and works from the index - re-read every article ever stored as
+    if it were a newsroom, then hopped twelve articles from each: 33,743
+    "newsroom" pages across 1,321 companies, 1,215 for Thomson Reuters. At
+    one request a second per host, the window in flight at the deadline
+    outlasted the job, and the log said nothing because stdout was buffered.
+
+    Driven against the REAL revisit_news and grab, with ats._get stubbed slow:
+      - the index keeps from_index;
+      - an unflagged legacy entry is read as at most MAX_PAGES newsrooms, the
+        rest judged articles by their address, and no index is fetched twice;
+      - under a budget the run stops within one fetch of the deadline even
+        with every company mid-visit, and a company the deadline cut short is
+        not saved (its fetched_on stays old, it goes first next run);
+      - with no budget, one company stops at its own VISIT_CAP.
+    """
+    import contextlib
+    import io
+    import time as _t
+    import fetch_profiles as fp
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    e = fp.index_entry({"news": [{"url": "https://x.test/news", "text": "t", "sha": "a"},
+                                 {"url": "https://x.test/news/one-story", "text": "t", "sha": "b",
+                                  "from_index": "https://x.test/news"}]})
+    if [n.get("from_index") for n in e["news"]] != [None, "https://x.test/news"]:
+        errors += fail(f"the committed index drops the article flag: {e['news']}")
+
+    calls = {"n": 0, "urls": []}
+    ARTS = "".join(f'<p><a href="/news/story-number-{i}">Story number {i} is here</a></p>' for i in range(30))
+
+    class Resp:
+        def __init__(self, url):
+            calls["n"] += 1
+            self.status_code = 200
+            self.url = url
+            self.text = (f"<html><body><h1>{url} {calls['n']}</h1>" + ARTS
+                         + "<p>" + ("words about the news of the day " * 12) + "</p></body></html>")
+
+    def slow_get(url, **kw):
+        calls["urls"].append(url)
+        _t.sleep(DELAY[0])
+        return Resp(url)
+
+    DELAY = [0.0]
+    keep_get = fp.ats._get
+    fp.ats._get = slow_get
+    try:
+        legacy = {"news": [{"url": f"https://big.test/news/story-{i:03d}"} for i in range(40)]
+                  + [{"url": f"https://big.test/newsroom?room-{i}"} for i in range(8)]}
+        rec = fp.revisit_news({"id": "big", "website": "https://big.test"}, {}, legacy)
+        rooms = [u for u in calls["urls"] if "?room-" in u]
+        if not rooms:
+            errors += fail("the legacy fixture re-read no newsroom at all; the check proves nothing")
+        if len(rooms) > fp.MAX_PAGES:
+            errors += fail(f"a legacy index was re-read as {len(rooms)} newsrooms; "
+                           f"visit() allows {fp.MAX_PAGES}")
+        if any(u.endswith(f"story-{i:03d}") for u in calls["urls"] for i in range(40)):
+            errors += fail("an unflagged article in the index was re-read as a newsroom")
+        if len(rooms) != len(set(rooms)):
+            errors += fail("a changed newsroom was fetched twice for its links")
+        hops = [n for n in rec["news"] if n.get("from_index")]
+        if len(hops) > fp.MAX_PAGES * fp.NEWS_ITEMS:
+            errors += fail(f"{len(hops)} article hops from one company")
+
+        # under a budget, every company mid-visit
+        cos = [{"id": f"c{i}", "name": f"C{i}", "website": f"https://c{i}.test"} for i in range(6)]
+        idx = {c["id"]: {"news": [{"url": f"https://c{i}.test/newsroom?room-{j}"} for j in range(6)],
+                         "fetched_on": "2026-09-01"} for i, c in enumerate(cos)}
+        saved = []
+        keep = (fp.save, fp.save_index, fp.index, fp.load, fp.admin.read_companies, sys.argv)
+        fp.save = lambda r: saved.append(r)
+        fp.save_index = lambda i: None
+        fp.index = lambda: {k: dict(v) for k, v in idx.items()}
+        fp.load = lambda cid: {}
+        fp.admin.read_companies = lambda: cos
+        DELAY[0] = 0.05
+        sys.argv = ["fetch_profiles.py", "--news", "--refetch", "--write",
+                    "--workers", "2", "--budget-seconds", "0.5"]
+        out = io.StringIO()
+        try:
+            t0 = _t.monotonic()
+            with contextlib.redirect_stdout(out):
+                rc = fp.main()
+            took = _t.monotonic() - t0
+        finally:
+            (fp.save, fp.save_index, fp.index, fp.load, fp.admin.read_companies, sys.argv) = keep
+        # each company is ~6 + 72 fetches at 0.05s = ~4s; two in flight at
+        # the deadline would run ~4s past it without the clock inside grab()
+        if calls["n"] < 10:
+            errors += fail(f"the budgeted run made {calls['n']} fetches; the check proves nothing")
+        if rc != 0:
+            errors += fail(f"the budgeted sweep returned {rc!r}")
+        if took > 1.5:
+            errors += fail(f"a 0.5s budget took {took:.1f}s to stop: companies "
+                           f"already handed out ran to their end")
+        if any(pg.get("unread") == fp.BUDGET_SPENT
+               for r in saved for pg in (r.get("news") or []) + (r.get("about") or [])):
+            errors += fail("a company the deadline cut short was saved; it must keep "
+                           "its old fetched_on and go first next run")
+        if "not read" not in out.getvalue():
+            errors += fail("the run does not say how many it left unread")
+
+        # with no budget, one company stops at its own share
+        keep_cap = fp.VISIT_CAP
+        fp.VISIT_CAP = 0.3
+        try:
+            fp._VISIT.until = _t.monotonic() + fp.VISIT_CAP
+            t0 = _t.monotonic()
+            rec = fp.revisit_news({"id": "c0", "website": "https://c0.test"}, {}, idx["c0"])
+            took = _t.monotonic() - t0
+        finally:
+            fp._VISIT.until = None
+            fp.VISIT_CAP = keep_cap
+        if took > 1.0:
+            errors += fail(f"one company ran {took:.1f}s past a 0.3s share")
+        if not any("had used its" in (n.get("unread") or "") for n in rec["news"]):
+            errors += fail("a company stopped at its share does not say why its "
+                           "remaining pages were not read")
+    finally:
+        fp.ats._get = keep_get
+        fp._RUN_DEADLINE[0] = None
+        DELAY[0] = 0.0
+    yml = (ROOT / ".github" / "workflows" / "news.yml").read_text()
+    if "PYTHONUNBUFFERED" not in yml:
+        errors += fail("news.yml buffers the sweep's output: a stalled run logs nothing")
+    return errors
+
 def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
     """A sandboxed write must never reach the owner's real archive.
 
@@ -27992,6 +28130,7 @@ def main() -> int:
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
     errors += check_the_news_sweep_stops_before_the_job_does()
+    errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
