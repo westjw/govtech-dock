@@ -24,6 +24,10 @@ public/
 # repo that is going public. The committed record is site_pages_index.json:
 # which pages were read, when, their sha, and nothing of what they said.
 /data/site_pages/
+# Suppliers' own pages, read for step 2 (what they sell). Same rule as
+# site_pages: other people's words, never committed; the sorted result in
+# supplier_categories.json carries only short quotes.
+/data/supplier_pages/
 /data/briefs/
 
 # The owner's words to Claude from the page belt's explain boxes. The repo is

@@ -26785,6 +26785,154 @@ def check_the_publisher_publishes_the_desk_and_only_the_desk() -> int:
         errors += fail("admin actions do not run under the desk lock the publisher snapshots with")
     return errors
 
+def check_suppliers_land_in_the_govtech_categories() -> int:
+    """scripts/supplier_categories.py, step 2 of the supplier move (owner,
+    2026-10-05: "throw them in the categories we have for govtech"). Each rule
+    here answers something a blind 201-supplier audit found:
+
+      - the conference places a supplier in a sector, and in a category when
+        the department is that specific (wastewater -> Public Works / Water);
+      - its own site adds ONE category, named in two distinct ways, inside a
+        sector the conferences say it sells to - unless every conference was
+        a generalist show, where the site decides the sector;
+      - a single word on a page, or a menu label, is not a category;
+      - a website publishes only when its own text sells into that sector,
+        for step 1's "theirs" too (a same-named septic contractor passed it);
+        a registrar's for-sale page never publishes;
+      - junk and duplicates keep their step 1 status, a duplicate of a board
+        company names kind "company";
+      - no address in any quote; sector keys are fixed and never removed.
+    """
+    import shutil
+    import tempfile
+    import supplier_categories as SC
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    old_pages = SC.PAGES
+    SC.PAGES = tmp
+    try:
+        def page(sid, *texts):
+            (tmp / f"{sid}.json").write_text(json.dumps({"id": sid, "pages": [
+                {"url": f"https://{sid}.example.com/{i}", "text": t} for i, t in enumerate(texts)]}))
+
+        WW, POL, CITY = ("Public works and infrastructure", "Wastewater"), \
+            ("Public safety", "Police"), ("Executive / administration", "Cities (elected)")
+        by_tag = {"WEF 2026": (WW, "https://weftec.example.com/x"),
+                  "COPS 2026": (POL, "https://cops.example.com/x"),
+                  "LEAGUE 2026": (CITY, "https://league.example.com/x")}
+        sup = lambda sid, tag: {"id": sid, "name": sid.title(), "description": f"exhibited at {tag}"}
+        ident = lambda v, **k: {"verdict": v, "url": f"https://{k.pop('host', 'x')}.example.com", **k}
+
+        page("pumpco", "Pumpco builds pumps for wastewater treatment plants and municipal lift stations.",
+             "Our valves and pump stations serve every water utility we work with, worldwide.")
+        r = SC.place(sup("pumpco", "WEF 2026"), ident("theirs", host="pumpco"), by_tag, {})
+        a = (r.get("assignments") or [{}])[0]
+        if r.get("status") != "publish" or (a.get("sector"), a.get("category"), a.get("basis")) \
+                != ("Public Works", "Water", "own_site"):
+            errors += fail(f"a wastewater supplier whose site sells it is not published under Water: {r}")
+        elif "lift stations" not in a["source"]["quote"] and "pump stations" not in a["source"]["quote"]:
+            errors += fail(f"the Water placement does not quote the page: {a['source']}")
+
+        page("insureco", "Insureco sells home, auto and life insurance to families since 1952.",
+             "Get a quote for your home today and bundle your auto policy with ours.")
+        r = SC.place(sup("insureco", "COPS 2026"), ident("theirs", host="insureco"), by_tag, {})
+        if r.get("status") != "held":
+            errors += fail(f"a same-named business whose site sells nothing police buy was published: {r}")
+        if [x.get("category") for x in r.get("assignments") or []] != ["Police"]:
+            errors += fail(f"a held supplier lost its conference placement: {r.get('assignments')}")
+
+        r = SC.place(sup("forsale", "COPS 2026"),
+                     {"verdict": "theirs", "url": "https://forsale.dynadot.com/forsale.com"}, by_tag, {})
+        if r.get("status") != "held" or "for sale" not in (r.get("held") or ""):
+            errors += fail(f"a domain-for-sale page published as a supplier's website: {r}")
+
+        page("evco", "Evco installs EV charging stations for city fleets and builds microgrids.",
+             "Our battery energy storage keeps charging infrastructure running through outages.")
+        r = SC.place(sup("evco", "LEAGUE 2026"), ident("found", host="evco"), by_tag, {})
+        secs = [x["sector"] for x in r.get("assignments") or []]
+        if secs != ["Utilities & Energy"]:
+            errors += fail(f"a generalist show did not let the site decide the sector: {secs}")
+
+        page("playco", "Playco designs playgrounds, picnic tables and park benches for any town.",
+             "Our shade structures and site furnishings come with a ten year warranty, always.",
+             "Police departments love our law enforcement training range seminars every year.")
+        r = SC.place(sup("playco", "COPS 2026"), ident("theirs", host="playco"), by_tag, {})
+        cats = [(x["sector"], x["category"]) for x in r.get("assignments") or []]
+        if any(sec == "Parks & Rec" for sec, _ in cats):
+            errors += fail(f"a specific show's supplier was filed outside that show's sector: {cats}")
+
+        # three-word labels: fetch_profiles.dechrome keeps them (it drops
+        # lines under three words), so only the sentence-length rule stops them
+        page("menuco", "Police Body Cameras\nLaw Enforcement Gear\nAbout Our Team",
+             "We sell things to people who need things, daily.")
+        r = SC.place(sup("menuco", "LEAGUE 2026"), ident("theirs", host="menuco"), by_tag, {})
+        if any(x["basis"] == "own_site" for x in r.get("assignments") or []):
+            errors += fail(f"menu labels became a category: {r.get('assignments')}")
+        page("onceco", "We once sold a sturdy chair to a police station somewhere in Ohio last year.",
+             "Mostly we sell office furniture to anybody at all who asks us nicely for it.")
+        r = SC.place(sup("onceco", "LEAGUE 2026"), ident("theirs", host="onceco"), by_tag, {})
+        if any(x["basis"] == "own_site" for x in r.get("assignments") or []):
+            errors += fail(f"one word in one sentence became a category: {r.get('assignments')}")
+
+        r = SC.place(sup("junk", "COPS 2026"), {"verdict": "listing_menu"}, by_tag, {})
+        if r.get("status") != "not_a_company":
+            errors += fail(f"a menu item off an association site was not refused: {r}")
+        r = SC.place(sup("twin", "COPS 2026"),
+                     {"verdict": "duplicate", "duplicate_of": "brinc", "on_board": True}, by_tag, {})
+        if r.get("status") != {"merged_into": {"kind": "company", "id": "brinc"}}:
+            errors += fail(f"a duplicate of a board company does not name kind 'company': {r.get('status')}")
+
+        r = SC.place(sup("nosite", "WEF 2026"), {"verdict": "not_found"}, by_tag, {})
+        if r.get("status") != "held" or [x["category"] for x in r.get("assignments") or []] != ["Water"]:
+            errors += fail(f"a supplier with no website is not held and placed by its show: {r}")
+
+        page("mailco", "Write to sales@mailco.example.com for wastewater treatment pricing today.",
+             "Our lift stations and sewer valves serve every water utility in the state.")
+        r = SC.place(sup("mailco", "WEF 2026"), ident("theirs", host="mailco"), by_tag, {})
+        if SC.ADDRESS.search(json.dumps(r.get("assignments"))):
+            errors += fail("an address reached a quote in the export")
+
+        twins = SC.one_per_id([{"id": "t", "name": "T", "description": "exhibited at WEF 2026"},
+                               {"id": "t", "name": "T2", "description": "exhibited at COPS 2026"}])
+        if len(twins) != 1 or "COPS 2026" not in twins[0]["description"]:
+            errors += fail(f"two records sharing an id are not read as one with both shows: {twins}")
+    finally:
+        SC.PAGES = old_pages
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # the keys SLED HQ joins on
+    pairs = SC.schema_pairs()
+    if set(pairs) != set(SC.SECTOR_KEYS):
+        errors += fail(f"schema sectors and SECTOR_KEYS differ: "
+                       f"{sorted(set(pairs) ^ set(SC.SECTOR_KEYS))}")
+    if len(set(SC.SECTOR_KEYS.values())) != len(SC.SECTOR_KEYS):
+        errors += fail("two sectors share a key")
+    slugs = [SC.category_key(n, c) for n, cats in pairs.items() if n in SC.SECTOR_KEYS for c in cats]
+    if len(slugs) != len(set(slugs)):
+        errors += fail("two categories share an industry slug")
+    out = DATA / "supplier_categories.json"
+    if out.exists():
+        doc = json.loads(out.read_text())
+        shipped = {x["key"] for x in doc.get("sectors") or []}
+        gone = shipped - set(SC.SECTOR_KEYS.values())
+        if gone:
+            errors += fail(f"sector key(s) SLED HQ joins on were removed: {sorted(gone)}")
+        known = {x["slug"] for x in doc.get("industries") or []}
+        bad = [x for x in doc.get("assignments") or [] if x.get("industry") not in known]
+        if bad:
+            errors += fail(f"{len(bad)} assignment(s) name an industry the header lacks")
+        if any(isinstance(x.get("status"), str) and x["status"] == "publish" and not x.get("website")
+               for x in doc.get("suppliers") or []):
+            errors += fail("a supplier is published with no website")
+        if SC.ADDRESS.search(out.read_text()):
+            errors += fail("an address is in data/supplier_categories.json")
+    return errors
+
 def check_who_each_supplier_is() -> int:
     """scripts/supplier_identity.py, step 1 of moving the suppliers to SLED HQ
     (owner, 2026-10-02). Every verdict is about what was READ, and every rule
@@ -27671,6 +27819,7 @@ def main() -> int:
     errors += check_the_page_preview_shows_the_edit()
     errors += check_the_claude_inbox_lists_and_settles()
     errors += check_who_each_supplier_is()
+    errors += check_suppliers_land_in_the_govtech_categories()
     errors += check_a_pasted_board_must_prove_it_is_theirs()
     errors += check_a_demoted_supplier_leaves_cleanly()
     errors += check_the_belt_answers_what_was_asked()
