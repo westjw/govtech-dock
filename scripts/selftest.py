@@ -1449,9 +1449,17 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
         return fail("functions/admin/_middleware.js is gone: /admin is open on "
                     "any hostname Access does not cover")
     src = mw.read_text()
-    code = "\n".join(ln.split("//")[0] for ln in src.splitlines())
+    # The signature check moved to functions/_access.js on 2026-10-05 so the
+    # site-wide gate could share it; the door must still import it from there.
+    if 'from "../_access.js"' not in src:
+        errors += fail("the admin door no longer imports the shared verifier "
+                       "from functions/_access.js")
+    acc = ROOT / "functions" / "_access.js"
+    code = "\n".join(ln.split("//")[0] for ln in
+                     (acc.read_text() if acc.exists() else "").splitlines())
     if "crypto.subtle.verify" not in code:
-        errors += fail("the admin door no longer verifies the Access JWT signature")
+        errors += fail("functions/_access.js no longer verifies the Access JWT "
+                       "signature, so neither door does")
 
     if not shutil.which("node"):
         print("  note: node is not installed; the admin door was not driven")
@@ -1496,6 +1504,151 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
         errors += fail("admin-web.html carries no noindex")
     return errors
 
+
+def check_the_site_is_signed_in_only_until_launch() -> int:
+    """Until launch, nothing on the site is served without a verified sign-in.
+
+    The owner decided on 2026-10-05 that SLED JOBS stays private until it is
+    ready to go live. Cloudflare Access is the main door, but Access never
+    covered the pages.dev alias (the 2026-09-25 /admin leak), so
+    functions/_gate.js is the same door in code, run first by the root
+    middleware on every page, data file and endpoint, on every hostname.
+
+    Driven through scripts/gate_harness.mjs, which imports the REAL root
+    middleware - a gate that is written but not wired is the failure this
+    exists to catch - mints tokens with a key it generated, and serves the
+    matching JWKS through a fake fetch. The check reads whichever state
+    GATED is in: gated, every way in must be shut and only the two sign-in
+    paths open; launched (GATED false), everything must reach the site. So
+    launch is a one-line flip with no test edit.
+
+    Also source-level: no _routes.json, because one that excluded static
+    files would send them past every function, gate included.
+    """
+    import re
+    import shutil
+    import subprocess
+
+    errors = 0
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    gate_js = ROOT / "functions" / "_gate.js"
+    root_mw = ROOT / "functions" / "_middleware.js"
+    if not gate_js.exists():
+        return fail("functions/_gate.js is gone: the site is open on any "
+                    "hostname Access does not cover")
+    raw = root_mw.read_text()
+    mw = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
+    mw = "\n".join(ln.split("//")[0] for ln in mw.splitlines())
+    if 'from "./_gate.js"' not in mw:
+        errors += fail("the root middleware no longer imports the gate")
+    on = mw[mw.find("export async function onRequest"):]
+    if "gate(" not in on or on.find("gate(") > on.find("next()"):
+        errors += fail("the root middleware serves the page before asking the "
+                       "gate, so the gate decides nothing")
+    for routes in (ROOT / "_routes.json", ROOT / "functions" / "_routes.json"):
+        if routes.exists():
+            errors += fail(f"{routes.relative_to(ROOT)} exists; a route list that "
+                           f"excludes paths sends them past the gate")
+    if "_routes.json" in (ROOT / "scripts" / "build_site.py").read_text():
+        errors += fail("build_site.py writes a _routes.json; a route list that "
+                       "excludes paths sends them past the gate")
+
+    if not shutil.which("node"):
+        print("  note: node is not installed; the site gate was not driven")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "gate_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    if r.returncode != 0:
+        return errors + fail(f"gate_harness.mjs did not run: {r.stderr.strip()[:400]}")
+    try:
+        out = json.loads(r.stdout.strip().splitlines()[-1])
+    except Exception as exc:                                    # noqa: BLE001
+        return errors + fail(f"gate_harness.mjs printed no JSON ({exc}): {r.stdout[:200]}")
+
+    # The holding page sends every refused visitor to /admin/api/login, which
+    # the gate leaves open. A `to` that leaves the site makes the whole gate a
+    # phishing link (review, 2026-10-05: to=/%09/evil left).
+    redirects = out.get("login_redirects") or []
+    if len(redirects) < 10:
+        errors += fail("the harness drove too few sign-in redirects to trust")
+    for c in redirects:
+        if c.get("origin") != "https://sledjobs.com":
+            errors += fail(f"the sign-in link sends to={c.get('to')!r} off the site "
+                           f"(Location {c.get('location')!r})")
+    keep = out.get("login_keeps_path") or {}
+    if keep.get("path") != "/c/verkada.html?tab=jobs":
+        errors += fail(f"the sign-in link no longer returns a person to the page they "
+                       f"asked for ({keep})")
+
+    gated = out.pop("gated", None)
+    cases = {k: c for k, c in out.items() if isinstance(c, dict) and "reached" in c}
+    if gated is False:
+        print("  note: GATED is false - the site is public (launched)")
+        for k, c in cases.items():
+            if not c.get("reached"):
+                errors += fail(f"the site is launched but the gate still refused "
+                               f"{k} ({c.get('status')})")
+        return errors
+    if gated is not True:
+        return errors + fail(f"functions/_gate.js exports no boolean GATED ({gated!r})")
+
+    shut = {
+        "anon_home": "the home page with no sign-in",
+        "anon_alias_page": "a company page on the pages.dev alias",
+        "anon_board_data": "the board's data file",
+        "anon_meta": "a meta index",
+        "anon_head": "a HEAD request",
+        "anon_api_post": "a POST to an endpoint",
+        "anon_api_get": "a GET to an endpoint",
+        "anon_admin_file": "an /admin file on the alias",
+        "trick_slash": "/admin/api/login/ (a trailing slash is not the open path)",
+        "trick_case": "/admin/api/LOGIN",
+        "trick_encoded": "/%61dmin/api/login",
+        "trick_double": "//admin/api/login",
+        "trick_dotdot": "a dot-dot path out of an open path",
+        "expired": "an expired token", "wrong_aud": "another application's token",
+        "wrong_iss": "a token from another team", "unknown_kid": "a token signed by an unknown key",
+        "forged_sig": "a token with a forged signature", "garbage": "a non-token cookie",
+        "xss": "a path carrying markup",
+    }
+    for k, what in shut.items():
+        c = out.get(k) or {}
+        if c.get("status") != 403 or c.get("reached"):
+            errors += fail(f"the site gate let through {what} ({c.get('status')}, "
+                           f"reached={c.get('reached')})")
+            continue
+        if "noindex" not in c.get("robots", "") or "no-store" not in c.get("cache", ""):
+            errors += fail(f"the refusal of {what} is not noindex and no-store")
+    for k in ("anon_api_post", "anon_api_get"):
+        if not ((out.get(k) or {}).get("json") or {}).get("error"):
+            errors += fail(f"{k}: an endpoint refusal is not JSON with an error")
+    home = (out.get("anon_home") or {}).get("body", "")
+    if 'href="https://sledjobs.com/admin/api/login?to=%2F"' not in home:
+        errors += fail("the holding page has no sign-in link back to the page asked for")
+    alias = (out.get("anon_alias_page") or {}).get("body", "")
+    if 'href="https://sledjobs.com/admin/api/login?to=' not in alias:
+        errors += fail("on the alias the sign-in link does not go to sledjobs.com, "
+                       "where Access can actually sign somebody in")
+    xss = (out.get("xss") or {}).get("body", "")
+    if "<script>alert" in xss or "<img src=x" in xss:
+        errors += fail("the holding page writes the requested path into the page unescaped")
+    for k, what in (("login_open", "/admin/api/login"),
+                    ("whoami_open", "/admin/api/whoami"),
+                    ("valid_header", "a valid token in the Access header"),
+                    ("valid_cookie", "a valid token in the cookie, on the alias"),
+                    ("valid_api_post", "a signed-in POST to an endpoint")):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached"):
+            errors += fail(f"the site gate refused {what} ({c.get('status')})")
+    for k in ("certs_down", "certs_down_api"):
+        c = out.get(k) or {}
+        if c.get("status") != 503 or c.get("reached"):
+            errors += fail(f"with the Access keys unreachable the gate must be 503, "
+                           f"got {c.get('status')} reached={c.get('reached')}")
+    return errors
 
 def check_a_phone_ruling_stays_ruled() -> int:
     """Every ruling reappeared on the phone the moment it was saved.
@@ -27332,6 +27485,7 @@ def main() -> int:
     errors += check_every_dismiss_names_its_row()
     errors += check_web_ruling_stores_a_handle_not_a_person()
     errors += check_the_admin_door_is_verified_on_every_hostname()
+    errors += check_the_site_is_signed_in_only_until_launch()
     errors += check_a_phone_ruling_stays_ruled()
     errors += check_a_phone_session_cannot_kill_the_nightly_run()
     errors += check_the_desk_admin_says_what_it_did()

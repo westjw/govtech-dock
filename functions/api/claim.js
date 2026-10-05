@@ -95,9 +95,17 @@ const clip = (v, n) => String(v == null ? "" : v).trim().slice(0, n);
  * on the repo's side, in sync_claims, from the employer log - so a bug here,
  * or a stale edge cache, cannot hand anybody write access to the map. It can
  * only tell somebody the wrong thing about how long their edit will take. */
-async function verifiedTails(request, id) {
+/* Our own static files, read through env.ASSETS when the runtime has it: a
+ * fetch() of our public url carries no sign-in, so while the site is
+ * signed-in only (functions/_gate.js) it is refused. */
+function asset(request, env, path) {
+  const url = new URL(path, request.url);
+  return (env && env.ASSETS) ? env.ASSETS.fetch(url) : fetch(url);
+}
+
+async function verifiedTails(request, env, id) {
   try {
-    const res = await fetch(new URL("/meta-claims.json", request.url));
+    const res = await asset(request, env, "/meta-claims.json");
     if (!res.ok) return [];
     const all = await res.json();
     const v = (all.verified || {})[id];
@@ -107,8 +115,8 @@ async function verifiedTails(request, id) {
   }
 }
 
-async function companyFrom(request, id) {
-  const res = await fetch(new URL("/meta-companies.json", request.url));
+async function companyFrom(request, env, id) {
+  const res = await asset(request, env, "/meta-companies.json");
   if (!res.ok) return null;
   const all = await res.json();
   const c = (all.companies || {})[id];
@@ -129,7 +137,7 @@ export async function onRequestGet({ request, env }) {
    * apart: unconfirmed (read the mail), confirmed (send it, a person reads
    * it), verified (it goes live). Collapsing the last two is how somebody
    * comes to believe an edit is live when it is sitting in a queue. */
-  const ok = (await verifiedTails(request, rec.company_id))
+  const ok = (await verifiedTails(request, env, rec.company_id))
     .includes(token.slice(-6));
   return json({
     ok: true,
@@ -171,7 +179,7 @@ async function startClaim(body, env, request) {
   if (!/^[a-z0-9][a-z0-9-]{0,80}$/.test(id)) return json({ error: "bad company" }, 400);
   if (!email) return json({ error: "That does not look like an email address." }, 400);
 
-  const co = await companyFrom(request, id);
+  const co = await companyFrom(request, env, id);
   if (!co) return json({ error: "We do not have that company on file." }, 404);
   if (!co.host) {
     return json({
@@ -374,7 +382,7 @@ async function propose(body, env, request) {
    * message that says a person is reading is worse than no message: it is a
    * reason to wait for something that is not coming. */
   const live = SELF_SERVE.has(kind)
-    && (await verifiedTails(request, rec.company_id)).includes(token.slice(-6));
+    && (await verifiedTails(request, env, rec.company_id)).includes(token.slice(-6));
   const key = `claimprop:${rec.company_id}:${Date.now()}:${mintToken().slice(0, 8)}`;
   await env.ALERTS.put(key, JSON.stringify(Object.assign(p, {
     company_id: rec.company_id, token_tail: token.slice(-6),

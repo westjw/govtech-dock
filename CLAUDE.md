@@ -568,6 +568,19 @@ are 503, and `whoami`/`login` stay open because they hold nothing. Team and
 AUD are constants with `ACCESS_TEAM_DOMAIN`/`ACCESS_AUD` overrides — a wrong
 value is a 403 naming the variable, never an open door.
 
+**Until launch the WHOLE site is signed-in only (owner, 2026-10-05).**
+`functions/_gate.js` runs first in `functions/_middleware.js` on every page,
+data file and endpoint, on every hostname. It checks the same Access sign-in
+as the `/admin` door, and the verifier both doors share lives in
+`functions/_access.js`.
+- Launch is `GATED = false` in `_gate.js`, plus narrowing the Access
+  application back to `/admin` (DEPLOY.md §3).
+- Both doors hold only while the Function runs. On the Free plan the Pages
+  project must be set to **Fail closed**, or a spent daily allowance serves
+  every static file with no gate.
+- Our own static files are read through `env.ASSETS`, never `fetch()` of our
+  own url. That fetch carries no sign-in, so the gate refuses it.
+
 **A phone ruling used to vanish in the nightly push.** `refresh.yml` said
 `git pull --rebase -X theirs`; the bot's copy of a decision file won
 wholesale over a ruling committed while it ran. `scripts/merge_decisions.py

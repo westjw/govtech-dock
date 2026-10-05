@@ -98,7 +98,9 @@ Measured 2026-09-25: `https://solesource-c6g.pages.dev/admin/`,
 **200 with no sign-in**, while the same paths on `sledjobs.com` 302'd to
 Access. §1b's claim that a custom domain "inherits the project's Access
 policy" is true of the custom domain and false of the `*.pages.dev` alias
-(and of preview deployments).
+(and of preview deployments). Re-measured 2026-10-05: per-deployment and
+preview URLs now answer a sign-in from a separate `*.solesource-c6g.pages.dev`
+application. The production alias still answers without one.
 
 The fix is in code, so it holds on every hostname: `functions/admin/
 _middleware.js` verifies the Access JWT (`Cf-Access-Jwt-Assertion` header or
@@ -128,10 +130,90 @@ Two things to know:
 4. **Custom domains** tab → add the domain you bought. Cloudflare wires DNS
    itself since it is the registrar.
 
-## 3. Password protection while you soft-launch (~2 min)
-**Zero Trust → Access → Applications → Add** → type Self-hosted → your domain
-→ policy: Emails ending in your address, or a one-time PIN. Free for up to 50
-users, and real auth rather than a shared password.
+## 3. Signed-in only until launch (decided 2026-10-05)
+The whole site stays private until it is ready to go live. Two doors guard it,
+and both check a sign-in from the SAME Access application, the one that
+already guards `/admin`. So there is no new secret, variable or application.
+
+**The code door: `functions/_gate.js`. Done in code.** It runs first in
+`functions/_middleware.js` on every request and every hostname, including
+`solesource-c6g.pages.dev`, which Access does not cover (§1c). It only works
+while the Function runs: see step 1 below.
+- A visitor without a verified sign-in gets a short holding page ("SLED JOBS
+  opens soon", with a Sign in link). An endpoint refuses with JSON 403.
+- Only `/admin/api/login` and `/admin/api/whoami` stay open, the same two the
+  `/admin` door leaves open.
+- `check_the_site_is_signed_in_only_until_launch` in `scripts/selftest.py`
+  drives it through `scripts/gate_harness.mjs`.
+
+**Your ~3 minutes in the dashboard. Step 1 is required.**
+1. **Fail closed.** dash.cloudflare.com → **Workers & Pages** → `solesource` →
+   **Settings** → **Runtime** → **Fail open / closed** → **Fail closed**. Save.
+   - Why: this account is on the Workers Free plan, which allows 100,000
+     Functions requests a day. Once that is spent, a project left on "Fail
+     open" serves every static file without running any Function. That means
+     no gate and no `/admin` door, including `/admin/users.json`, until
+     midnight UTC.
+   - Refused requests count toward the allowance, so anyone can spend it on
+     purpose against the pages.dev alias. Found in review, 2026-10-05. The
+     `/admin` door has had the same exposure since 2026-09-25.
+   - The cost: if the allowance is spent, everyone, you included, gets a
+     Cloudflare error page until midnight UTC. Workers Paid removes the daily
+     limit, and with it the need for this setting.
+   - curl cannot see this setting, so check it in the dashboard.
+2. dash.cloudflare.com → **Zero Trust** → **Access controls** → **Applications**.
+   Open the EXISTING application, the one whose hostnames are `sledjobs.com`,
+   `www.sledjobs.com` and `solesourcejobs.com`, each with path `admin`.
+   - **Do not create a new application.** The code accepts exactly one
+     audience (AUD) tag (`functions/_access.js`), so two applications on the
+     same hostnames cannot both work. If a second one gets created anyway,
+     delete it and do step 3 on the original.
+   - Only if the original itself is gone: clear the Path on its replacement as
+     in step 3, set the Pages variable `ACCESS_AUD` to the replacement's tag,
+     and redeploy.
+   - There is a SECOND, separate application, for `*.solesource-c6g.pages.dev`
+     (measured 2026-10-05). It is what puts a sign-in in front of
+     per-deployment and preview URLs. Leave it alone. Its sign-ins carry a
+     different tag, so those URLs show the holding page even after you sign
+     in. Use sledjobs.com.
+3. **Edit** → under its public hostnames, clear the **Path** field (`admin`)
+   on all three rows, so each one covers the whole hostname. Save.
+   - Add no wildcard such as `*.sledjobs.com`. SLED HQ will live at
+     `hq.sledjobs.com`, and its jobs feed must stay reachable for the
+     nightly workflow.
+4. Leave the policy as it is: your email, one-time PIN. Whoever that policy
+   admits sees the whole site, so add an employee there and nowhere else.
+5. In the application's settings, check that **Cookie Path Attribute** is OFF.
+   If it is on, a sign-in at `/admin` does not carry to the
+   rest of the site, and the holding page keeps asking you to sign in.
+
+Steps 2 and 3 and the code deploy can come in either order. Until step 3,
+the code door alone guards every hostname, and signing in goes through
+`/admin`. That holds only with step 1 done. Until the code deploys, Access
+guards the custom domains and the alias stays open. Do step 1 first, either
+way.
+
+**Verify, from any machine:**
+```
+curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" https://sledjobs.com/
+curl -s -o /dev/null -w "%{http_code}\n" https://solesource-c6g.pages.dev/
+curl -s -o /dev/null -w "%{http_code}\n" https://solesource-c6g.pages.dev/data/board.json
+```
+- The first should answer 302 to `solesource-c6g-pages.cloudflareaccess.com`,
+  which is Access. A 403 means only the code door is up: the dashboard step
+  is not done yet.
+- The second and third should answer 403, which is the code door on the alias.
+- In the dashboard, Settings → Runtime should show **Fail closed** (step 1).
+- Then, in a browser, open sledjobs.com, enter the emailed code, and the
+  board loads.
+
+**What keeps running:** the nightly workflows, since none of them read the
+live site. Alert digests also keep going: one subscriber, and its links work
+once signed in.
+**What stops:** search indexing, because every page answers with a sign-in,
+and the public forms (alerts, add a company, claim).
+**At launch:** set `GATED = false` in `functions/_gate.js`, push, wait for the
+deploy, then put path `admin` back on the three hostnames.
 
 ## 2b. www.solesourcejobs.com loops on sign-in — OPEN, verified 2026-09-03
 Signing in at `www.solesourcejobs.com/admin` ends in ERR_TOO_MANY_REDIRECTS.
@@ -227,9 +309,10 @@ Do these in order. The first one matters most.
    from now on. Skim them before you flip, and again before any later flip.
    None of the three reach the website: `build_site.py` ships `board.json`,
    `sectors.json` and `brand.json` and nothing else.
-3. **Zero Trust → Access → Applications → delete the Access application you
-   made in §3 (Password protection).**
-   That takes the login gate off the domain. Do it last, after 1 and 2.
+3. **Take the sign-in off the site (§3, "At launch").** Set `GATED = false`
+   in `functions/_gate.js` and push. Once it has deployed, put path `admin`
+   back on the Access application's three hostnames. Do NOT delete the
+   application: it still guards `/admin`. Do this last, after 1 and 2.
 
 Making the repo public is also what switches ON public submissions: the
 `add-company` issue template and its workflow (issue → a bot researches the

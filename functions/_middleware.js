@@ -20,20 +20,24 @@
  * can never disagree about what a role is called.
  */
 import { SITE, NAME } from "./_brand.js";
+import { gate } from "./_gate.js";
 
 const TAGLINE = "Every open sales role at state and local government technology companies.";
 
-/* One fetch per edge per deploy rather than one per visitor. The index is a
- * static asset on our own origin, so this is an internal hop, and the board is
- * rebuilt daily - an hour of staleness costs a title that names yesterday's
- * count, which is why the count is not in the title. */
+/* The index is a static asset of this same deployment, read through
+ * env.ASSETS: no network hop, and no second trip through this middleware.
+ * It used to be a fetch() of our own public url, cached an hour per edge.
+ * While the site is signed-in only (functions/_gate.js) that fetch carries
+ * no sign-in, so the gate - or Access in front of it - refused it and every
+ * page fell back to the default title. The fetch() remains only for a
+ * runtime with no ASSETS binding. */
 async function index(env, request, which) {
   const url = new URL(request.url);
   url.pathname = `/meta-${which}.json`;
   url.search = "";
-  const res = await fetch(url.toString(), {
-    cf: { cacheTtl: 3600, cacheEverything: true },
-  });
+  const res = (env && env.ASSETS)
+    ? await env.ASSETS.fetch(url.toString())
+    : await fetch(url.toString(), { cf: { cacheTtl: 3600, cacheEverything: true } });
   // NULL MEANS "COULD NOT READ IT", and the caller must not confuse that with
   // "read it, and the thing is not in it". Those are the two facts this whole
   // repository exists to keep apart, and here the difference is 4,439 pages.
@@ -278,6 +282,11 @@ class Title {
 
 export async function onRequest(context) {
   const { request, next } = context;
+  // FIRST, before anything is served or rewritten: while the site is
+  // signed-in only, nothing below this line runs for a visitor without a
+  // verified sign-in. See functions/_gate.js.
+  const shut = await gate(request, context.env);
+  if (shut) return shut;
   const res = await next();
   const type = res.headers.get("content-type") || "";
   if (!type.includes("text/html")) return res;
