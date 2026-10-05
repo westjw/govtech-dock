@@ -1,69 +1,27 @@
 {
-  "date": "2026-10-04",
-  "previous": "2026-10-03",
+  "date": "2026-10-05",
+  "previous": "2026-10-04",
   "changes": [
     {
-      "company": "Hazel (hazelai.com)",
-      "id": "hazel",
-      "from": "Unknown",
+      "company": "Boostlingo",
+      "id": "boostlingo",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive, SMB (United States (Rem)"
+    },
+    {
+      "company": "Red Rover",
+      "id": "red-rover",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "ADP",
-      "id": "adp",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Concourse",
-      "id": "concourse",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Founding Account Executive (New York City)"
-    },
-    {
-      "company": "Mitel",
-      "id": "mitel",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Hunter / Account Executive (2 Locations)"
-    },
-    {
-      "company": "PlayMetrics",
-      "id": "playmetrics",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Byga",
-      "id": "byga",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "OnSolve (CodeRED)",
-      "id": "onsolve",
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
-    },
-    {
-      "company": "General Code",
-      "id": "general-code",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Tribute Technology",
-      "id": "tribute-technology",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
     }
   ]
 }
