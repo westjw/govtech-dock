@@ -1037,6 +1037,101 @@ def q_review(companies, board) -> list:
             if not is_dismissed("review", k)]
 
 
+# Held by step 2 because the supplier's own pages did not sell into the part
+# of government its conference says it sells to (supplier_categories.py).
+HELD_UNCONFIRMED = "website not confirmed by what it sells"
+
+
+def q_supplier_sites(companies, board) -> list:
+    """Suppliers held back because their website was not confirmed, or would
+    not load for our crawler.
+
+    Step 2 of the supplier move publishes a supplier only when its own site
+    sells into the sector its conference says it sells to. That test is
+    cautious on purpose - a same-named business passed step 1's name check -
+    and a blind audit (2026-10-05) found 40 of 87 held suppliers really did
+    have their own website: pages that say too little, a catalogue with no
+    sentences. Only a person can release those, one look each.
+
+    A ruling lands in data/supplier_rulings.json (act_supplier_site) and the
+    next `supplier_categories.py --write` folds it into the export SLED HQ
+    reads. A ruled supplier leaves this queue at once.
+    """
+    cats = read("supplier_categories.json", {})
+    ident = (read("supplier_identity.json", {}) or {}).get("rows") or {}
+    ruled = read("supplier_rulings.json", {})
+    first = {}
+    for asg in cats.get("assignments") or []:
+        first.setdefault(asg.get("supplier_id"), asg)
+    industry = {x.get("slug"): x for x in cats.get("industries") or []}
+    sector = {x.get("key"): x.get("name") for x in cats.get("sectors") or []}
+    out = []
+    for s in cats.get("suppliers") or []:
+        sid = s.get("supplier_id")
+        # Two kinds of held supplier have a website a person can judge: one
+        # whose pages did not confirm it, and one whose site would not load
+        # for our crawler (a bot wall is usually still their site). A
+        # for-sale page, a "not theirs" ruling or no site at all is not asked.
+        why = s.get("held") or ""
+        if s.get("status") != "held" or not (why == HELD_UNCONFIRMED
+                                             or why.startswith("website unread")):
+            continue
+        if sid in ruled or is_dismissed("suppliers", sid):
+            continue
+        row = ident.get(sid) or {}
+        url = row.get("url") or row.get("website_was")
+        if not url:
+            continue
+        asg = first.get(sid) or {}
+        ind = industry.get(asg.get("industry")) or {}
+        out.append({"id": sid, "name": s.get("name"), "url": url,
+                    "says": row.get("says"), "step1": row.get("verdict"),
+                    "unread": why.startswith("website unread"),
+                    "sector": sector.get(ind.get("sector")), "category": ind.get("name"),
+                    "basis": asg.get("basis"), "listed_at": (asg.get("source") or {}).get("url")})
+    out.sort(key=lambda r: (r["sector"] or "~", (r["name"] or "").lower()))
+    return out
+
+
+def act_supplier_site(body: dict) -> dict:
+    """A person's word on one held supplier's website.
+
+    theirs: the website on file is the company's own - publish it.
+    not_theirs: it belongs to somebody else - stay held.
+    other: the right website is this one (a full http(s) address) - publish
+    that instead. Journalled through save_decisions like every ruling here,
+    with what the person was shown.
+    """
+    sid = (body.get("id") or "").strip()
+    verdict = body.get("verdict")
+    if verdict not in ("theirs", "not_theirs", "other"):
+        return {"error": "verdict must be theirs, not_theirs or other"}
+    cats = read("supplier_categories.json", {})
+    known = {s.get("supplier_id") for s in cats.get("suppliers") or []}
+    if sid not in known:
+        return {"error": f"no supplier {sid!r} in supplier_categories.json"}
+    url = (body.get("url") or "").strip()
+    if verdict == "other":
+        host = (urllib.parse.urlsplit(url).hostname or "") if url else ""
+        if not url.lower().startswith(("http://", "https://")) or "." not in host:
+            return {"error": "paste the full website address, starting with https://"}
+    d = read("supplier_rulings.json", {})
+    d[sid] = {"verdict": verdict, "url": url or None,
+              "on": dt.date.today().isoformat(), "at": now(),
+              "by": (body.get("by") or "owner").strip(),
+              "why": (body.get("why") or "").strip() or None,
+              "saw": {"url": body.get("saw_url"), "says": body.get("says")}}
+    bad = save_decisions("supplier_rulings.json", d, "supplier-site",
+                         why=(body.get("why") or ""), by=(body.get("by") or "owner"),
+                         force=bool(body.get("force")))
+    if bad:
+        return {"error": bad}
+    said = {"theirs": "their website - publishes",
+            "not_theirs": "not their website - stays held",
+            "other": "the right website saved - publishes"}[verdict]
+    return {"ok": True, "message": f"{said} on the next supplier_categories --write"}
+
+
 def q_scope(companies, board) -> list:
     """Postings a filter kept but could not confirm belong on this board.
 
@@ -3783,7 +3878,8 @@ QUEUES = {"users": q_users, "profiles": q_profiles, "proposals": q_proposals, "l
           "acquisitions": q_acquisitions, "review": q_review,
           "calendar": _q_calendar, "sweeps": q_sweeps,
           "signedoff": lambda companies, board: _page_belt().q_signedoff(companies, board),
-          "scrub": lambda companies, board: _page_belt().q_scrub(companies, board)}
+          "scrub": lambda companies, board: _page_belt().q_scrub(companies, board),
+          "suppliers": q_supplier_sites}
 
 
 def publish_status() -> dict:
@@ -3792,10 +3888,17 @@ def publish_status() -> dict:
     st = read("publish_state.json", {})
     last = st.get("last") if isinstance(st.get("last"), dict) else {}
     live = st.get("live") if isinstance(st.get("live"), dict) else {}
+    # INSTALLED IS A FACT ABOUT THIS MACHINE, and the belt said "edits go live
+    # within about 30 min" for a week after the owner uninstalled the
+    # publisher (2026-09-28): publish_state.json kept its last "pushed" and
+    # nothing asked whether launchd would ever run the script again.
+    import publish
+    plist = pathlib.Path.home() / "Library" / "LaunchAgents" / f"{publish.LABEL}.plist"
     return {"outcome": last.get("outcome"), "at": last.get("at"),
             "why": (last.get("why") or "")[:300],
             "last_push": (st.get("last_push") or {}).get("at"),
-            "live": live.get("conclusion"), "pending": bool(st.get("pending_sha"))}
+            "live": live.get("conclusion"), "pending": bool(st.get("pending_sha")),
+            "installed": plist.exists()}
 
 
 @contextlib.contextmanager
@@ -3832,7 +3935,8 @@ LABEL = {"users": "Users", "profiles": "Write-ups to check", "proposals": "Agent
          "review": "Website review", "calendar": "Conference dates",
          "sweeps": "Conference floors",
          "signedoff": "Open on approved pages",
-         "scrub": "Scrub"}
+         "scrub": "Scrub",
+         "suppliers": "Supplier websites"}
 
 
 # ---------------------------------------------------------------- actions
@@ -5583,7 +5687,8 @@ ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "proposal-ruling": act_proposal_ruling,
            "dismiss": act_dismiss, "ask": act_ask,
            "page-review": act_page_review,
-           "user-grant": act_user_grant, "user-revoke": act_user_revoke}
+           "user-grant": act_user_grant, "user-revoke": act_user_revoke,
+           "supplier-site": act_supplier_site}
 
 
 def _page_belt_action(name: str):

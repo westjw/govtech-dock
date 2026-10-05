@@ -620,7 +620,12 @@ const INTRO = {
     + 'here, pick the company.',
   review: 'Short one-word names where the domain matched exactly but the page could belong '
     + 'to anyone — kodex.* is a Samsung ETF brand. The page really does say the word, so no '
-    + 'text rule separates them.'
+    + 'text rule separates them.',
+  suppliers: 'Suppliers held back because their own website did not say they sell to the part '
+    + 'of government their conference says they sell to, or would not load for our crawler. About '
+    + 'half really are their website — a catalogue with no sentences, a page that says too '
+    + 'little, a bot wall — and only a look settles it. Open the site, then say whose it is. '
+    + 'Nothing publishes without a website, so "theirs" is what puts a supplier on SLED HQ.'
 };
 
 async function boot() {
@@ -4489,6 +4494,38 @@ RENDER.review = r => {
   return n;
 };
 
+RENDER.suppliers = r => {
+  const n = el('div', 'item');
+  n.appendChild(el('h3', null, r.name || r.id));
+  n.appendChild(el('div', 'kv', (r.sector || 'no sector') + ' / ' + (r.category || '')
+    + (r.basis === 'conference' ? ' · placed by the conference they exhibited at' : '')));
+  const w = el('div', 'kv');
+  const a = el('a', null, r.url); a.href = r.url; a.target = '_blank'; a.rel = 'noopener';
+  w.appendChild(a); n.appendChild(w);
+  /* The page's own title, fetched from a site we do not control: text only. */
+  if (r.says) n.appendChild(el('div', 'kv', 'the page says: ' + r.says));
+  if (r.unread) n.appendChild(el('div', 'kv', 'our crawler could not read this site; '
+    + 'your browser probably can'));
+  const row = el('div', 'row');
+  const send = async (verdict, url) => {
+    const res = await api('/api/supplier-site', {id: r.id, verdict, url,
+      saw_url: r.url, says: r.says || null});
+    if (res.error) return toast(res.error, true);
+    toast(res.message); n.remove(); refreshCounts();
+  };
+  const yes = el('button', 'act go', 'Yes, their website');
+  yes.onclick = () => send('theirs');
+  const no = el('button', 'act', 'No, somebody else');
+  no.onclick = () => send('not_theirs');
+  const other = el('input', 'txt'); other.type = 'text';
+  other.placeholder = 'or paste their real website';
+  const use = el('button', 'act', 'Use this website');
+  use.onclick = () => send('other', other.value.trim());
+  row.append(yes, no, other, use);
+  n.appendChild(row);
+  return n;
+};
+
 /* ------------------------------------------------------------------ capture */
 
 async function showCapture() {
@@ -4918,9 +4955,14 @@ function pbCount() {
 
 /* WHEN AN EDIT GOES LIVE, said where the edit is made. The publisher pushes
    after 5 quiet minutes, at most every 30, and Cloudflare builds in about
-   two - so an edit is on the public site within about half an hour. */
+   two - so an edit is on the public site within about half an hour. When it
+   is not installed nothing publishes on its own, whatever it last did: this
+   line said "within about 30 min" for a week after it was uninstalled. */
 function pbPublishLine() {
   const p = (META && META.publish) || {};
+  if (p.installed === false)
+    return 'edits are saved on this computer; the publisher is off, so they reach the '
+      + 'site only when it runs (python3 scripts/publish.py --install, or one run by hand)';
   if (!p.outcome) return 'edits go live when the publisher runs (not installed yet)';
   if (p.pending) return 'published ' + (p.last_push || '').slice(11, 16) + ', building';
   if (p.outcome === 'pushed' || p.outcome === 'idle')

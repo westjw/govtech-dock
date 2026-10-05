@@ -26933,6 +26933,164 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
             errors += fail("an address is in data/supplier_categories.json")
     return errors
 
+def check_a_person_can_release_a_held_supplier() -> int:
+    """The "Supplier websites" queue (admin, 2026-10-05).
+
+    Step 2 holds a supplier whose own site did not sell into its sector, and a
+    blind audit found 40 of 87 held suppliers did have their real website. The
+    queue is how a person releases them, and the ruling is how the export
+    learns it: theirs publishes the site on file, other publishes the address
+    the person pasted, not_theirs stays held and says who said so. A ruled
+    supplier leaves the queue at once; a supplier held for no website, or
+    junk, never enters it; an address that is not a URL is refused; and every
+    ruling is journalled with who made it.
+    """
+    import admin
+    import supplier_categories as SC
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    held = "website not confirmed by what it sells"
+    cats = {"sectors": [{"key": "public-works", "name": "Public Works"}],
+            "industries": [{"slug": "public-works/water", "name": "Water", "sector": "public-works"}],
+            "suppliers": [
+                {"supplier_id": "pumpco", "name": "Pumpco", "status": "held", "held": held},
+                {"supplier_id": "valveco", "name": "Valveco", "status": "held", "held": held},
+                {"supplier_id": "nosite", "name": "Nosite", "status": "held", "held": "no website"},
+                {"supplier_id": "walled", "name": "Walled", "status": "held",
+                 "held": "website unread (homepage: HTTP 403)"},
+                {"supplier_id": "forsale", "name": "Forsale", "status": "held",
+                 "held": "the website on file is a domain for sale"},
+                {"supplier_id": "liveco", "name": "Liveco", "status": "publish",
+                 "website": "https://liveco.example.com"}],
+            "assignments": [{"supplier_id": "pumpco", "industry": "public-works/water",
+                             "basis": "conference", "source": {"url": "https://x.example.com", "quote": "Pumpco"}}]}
+    ident = {"rows": {"pumpco": {"verdict": "found", "url": "https://pumpco.example.com", "says": "Pumpco"},
+                      "valveco": {"verdict": "theirs", "website_was": "https://valveco.example.com"},
+                      "nosite": {"verdict": "not_found"},
+                      "walled": {"verdict": "theirs", "url": "https://walled.example.com"},
+                      "forsale": {"verdict": "theirs", "url": "https://forsale.dynadot.com/x"}}}
+    with _sandbox_admin({"supplier_categories.json": cats, "supplier_identity.json": ident,
+                         "companies.json": [], "admin_dismissed.json": {}}) as tmp:
+        rows = admin.q_supplier_sites([], {})
+        ids = [r["id"] for r in rows]
+        if sorted(ids) != ["pumpco", "valveco", "walled"]:
+            errors += fail(f"the queue should hold the two unconfirmed suppliers and the "
+                           f"unreadable one, never a for-sale page: {ids}")
+        elif rows[0]["sector"] != "Public Works" or rows[0]["category"] != "Water":
+            errors += fail(f"a queue row does not say where the supplier sits: {rows[0]}")
+        r = admin.act_supplier_site({"id": "valveco", "verdict": "other", "url": "valveco dot com"})
+        if not r.get("error"):
+            errors += fail("an address that is not a URL was accepted")
+        r = admin.act_supplier_site({"id": "ghost", "verdict": "theirs"})
+        if not r.get("error"):
+            errors += fail("a ruling on a supplier the export does not hold was accepted")
+        r = admin.act_supplier_site({"id": "pumpco", "verdict": "theirs", "by": "owner"})
+        if r.get("error"):
+            errors += fail(f"a theirs ruling was refused: {r}")
+        r = admin.act_supplier_site({"id": "valveco", "verdict": "other",
+                                     "url": "https://www.valve-co.example.com", "by": "owner"})
+        if r.get("error"):
+            errors += fail(f"an other-website ruling was refused: {r}")
+        if [x["id"] for x in admin.q_supplier_sites([], {})] != ["walled"]:
+            errors += fail("a ruled supplier is still in the queue")
+        rulings = json.loads((tmp / "supplier_rulings.json").read_text())
+        if rulings.get("pumpco", {}).get("by") != "owner" or not rulings.get("pumpco", {}).get("at"):
+            errors += fail(f"a ruling does not say who made it and when: {rulings.get('pumpco')}")
+        if not (tmp / "admin_journal.jsonl").exists():
+            errors += fail("a supplier ruling was written without a journal entry")
+
+    # the export honours the ruling, both ways
+    by_tag = {"WEF 2026": (("Public works and infrastructure", "Wastewater"), "https://w.example.com")}
+    sup = {"id": "pumpco", "name": "Pumpco", "description": "exhibited at WEF 2026"}
+    base = {"verdict": "found", "url": "https://pumpco.example.com"}
+    r = SC.place(sup, base, by_tag, {}, {"verdict": "theirs"})
+    if r.get("status") != "publish" or r.get("website") != "https://pumpco.example.com" \
+            or r.get("website_by") != "person":
+        errors += fail(f"a theirs ruling did not publish the site on file: {r}")
+    r = SC.place(sup, base, by_tag, {}, {"verdict": "other", "url": "https://real.example.com"})
+    if r.get("status") != "publish" or r.get("website") != "https://real.example.com":
+        errors += fail(f"an other ruling did not publish the pasted address: {r}")
+    import shutil
+    import tempfile
+    pages = pathlib.Path(tempfile.mkdtemp())
+    old_pages, SC.PAGES = SC.PAGES, pages
+    try:
+        # pages that WOULD publish it: the ruling has to beat the text test
+        (pages / "pumpco.json").write_text(json.dumps({"id": "pumpco", "pages": [
+            {"url": "https://pumpco.example.com", "text":
+             "Pumpco builds pumps for wastewater treatment plants and lift stations.\n"
+             "Every water utility we serve runs our valves and pump stations daily."}]}))
+        if SC.place(sup, base, by_tag, {}).get("status") != "publish":
+            errors += fail("the not_theirs fixture would not have published on its own")
+        r = SC.place(sup, base, by_tag, {}, {"verdict": "not_theirs"})
+    finally:
+        SC.PAGES = old_pages
+        shutil.rmtree(pages, ignore_errors=True)
+    if r.get("status") != "held" or "person" not in (r.get("held") or "") or r.get("website"):
+        errors += fail(f"a not_theirs ruling did not hold the supplier: {r}")
+    if [x["category"] for x in r.get("assignments") or []] != ["Water"]:
+        errors += fail(f"a ruling about the website moved the placement: {r.get('assignments')}")
+    return errors
+
+def check_the_belt_says_when_nothing_publishes() -> int:
+    """The belt's publish line said "edits go live within about 30 min" for a
+    week after the owner uninstalled the desk publisher (2026-09-28): it read
+    the publisher's last outcome and never asked whether launchd would run it
+    again. publish_status() now says whether the plist is installed, and the
+    line checks that FIRST. Driven: publish_status under a fake home with and
+    without the plist, and pbPublishLine run under node on both answers."""
+    import shutil
+    import subprocess
+    import tempfile
+    import admin
+    import publish
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    home = pathlib.Path(tempfile.mkdtemp())
+    real = pathlib.Path.home
+    try:
+        pathlib.Path.home = classmethod(lambda cls: home)
+        if admin.publish_status().get("installed") is not False:
+            errors += fail("publish_status says installed with no plist on the machine")
+        agents = home / "Library" / "LaunchAgents"
+        agents.mkdir(parents=True)
+        (agents / f"{publish.LABEL}.plist").write_text("<plist/>")
+        if admin.publish_status().get("installed") is not True:
+            errors += fail("publish_status says not installed with the plist present")
+    finally:
+        pathlib.Path.home = real
+        shutil.rmtree(home, ignore_errors=True)
+
+    if not shutil.which("node"):
+        print("  note: node is not installed; pbPublishLine was not run")
+        return errors
+    html = (ROOT / "admin.html").read_text()
+    i = html.find("function pbPublishLine()")
+    j = html.find("\n}\n", i)
+    fn = html[i:j + 2]
+    js = (fn + "\nlet META;\nconst out = {};\n"
+          "META = {publish: {installed: false, outcome: 'pushed', last_push: '2026-09-28T10:00:00'}};\n"
+          "out.off = pbPublishLine();\n"
+          "META = {publish: {installed: true, outcome: 'pushed', last_push: '2026-09-28T10:00:00'}};\n"
+          "out.on = pbPublishLine();\nconsole.log(JSON.stringify(out));")
+    r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=30)
+    if r.returncode:
+        return errors + fail(f"pbPublishLine did not run: {r.stderr[:300]}")
+    out = json.loads(r.stdout.strip().splitlines()[-1])
+    if "30 min" in out["off"] or "off" not in out["off"]:
+        errors += fail(f"with the publisher uninstalled the belt still promises a time: {out['off']!r}")
+    if "30 min" not in out["on"]:
+        errors += fail(f"with the publisher installed the belt lost its promise: {out['on']!r}")
+    return errors
+
 def check_who_each_supplier_is() -> int:
     """scripts/supplier_identity.py, step 1 of moving the suppliers to SLED HQ
     (owner, 2026-10-02). Every verdict is about what was READ, and every rule
@@ -27820,6 +27978,8 @@ def main() -> int:
     errors += check_the_claude_inbox_lists_and_settles()
     errors += check_who_each_supplier_is()
     errors += check_suppliers_land_in_the_govtech_categories()
+    errors += check_a_person_can_release_a_held_supplier()
+    errors += check_the_belt_says_when_nothing_publishes()
     errors += check_a_pasted_board_must_prove_it_is_theirs()
     errors += check_a_demoted_supplier_leaves_cleanly()
     errors += check_the_belt_answers_what_was_asked()

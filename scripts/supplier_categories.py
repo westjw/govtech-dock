@@ -414,7 +414,7 @@ def what_it_sells(pages: list[dict]) -> list[dict]:
 
 
 # --- putting it together ----------------------------------------------------
-def place(s: dict, ident: dict, by_tag: dict, by_stem: dict) -> dict:
+def place(s: dict, ident: dict, by_tag: dict, by_stem: dict, ruling: dict | None = None) -> dict:
     sid = s["id"]
     verdict = (ident or {}).get("verdict")
     row = {"supplier_id": sid, "name": s.get("name"), "verdict": verdict}
@@ -479,6 +479,19 @@ def place(s: dict, ident: dict, by_tag: dict, by_stem: dict) -> dict:
     else:
         row["status"], row["held"] = "held", ("no website" if not site else
                                               f"website unread ({unread or verdict})")
+    # A PERSON'S WORD BEATS THE TEXT TEST, both ways (admin "Supplier
+    # websites", data/supplier_rulings.json). The placement is untouched: a
+    # ruling is about whose website it is, not where the supplier sells.
+    v = (ruling or {}).get("verdict")
+    if v == "theirs" and site:
+        row["status"], row["website"], row["website_by"] = "publish", site, "person"
+        row.pop("held", None)
+    elif v == "other" and (ruling or {}).get("url"):
+        row["status"], row["website"], row["website_by"] = "publish", ruling["url"], "person"
+        row.pop("held", None)
+    elif v == "not_theirs":
+        row.pop("website", None)
+        row["status"], row["held"] = "held", "a person said the website on file is not theirs"
     return row
 
 
@@ -504,9 +517,14 @@ def one_per_id(suppliers: list) -> list:
 def build(suppliers: list, ident_rows: dict) -> dict:
     by_tag, by_stem = conference_index()
     pairs = schema_pairs()
+    rulings = {}
+    rp = DATA / "supplier_rulings.json"
+    if rp.exists():
+        rulings = json.loads(rp.read_text())
     rows = []
     for s in one_per_id(suppliers):
-        rows.append(place(s, ident_rows.get(s["id"]) or {}, by_tag, by_stem))
+        rows.append(place(s, ident_rows.get(s["id"]) or {}, by_tag, by_stem,
+                          rulings.get(s["id"])))
     sectors = [{"key": SECTOR_KEYS[n], "name": n} for n in pairs]
     industries = []
     for n, cats in pairs.items():
@@ -514,7 +532,8 @@ def build(suppliers: list, ident_rows: dict) -> dict:
             industries.append({"slug": category_key(n, c), "name": c, "sector": SECTOR_KEYS[n]})
     suppliers_out, assignments = [], []
     for r in rows:
-        out_row = {k: r[k] for k in ("supplier_id", "name", "status", "website", "held") if k in r}
+        out_row = {k: r[k] for k in ("supplier_id", "name", "status", "website", "website_by", "held")
+                   if k in r}
         # A NAME OFF AN EXHIBITOR LIST CAN BE AN ADDRESS: 67 "names" are a
         # contact's email and a few carry one glued on. Step 1's cleaner
         # takes the glued part off; anything left is scrubbed.
