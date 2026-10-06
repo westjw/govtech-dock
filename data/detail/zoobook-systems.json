@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Methadone vs. buprenorphine vs. naltrexone: MAT documentation requirements under N.J.A.C. 8:43K and 42 CFR Part 8",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/mat-documentation-njac-843k-42-cfr-part-8/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "One license, one system: what the integrated license asks of your records and how Zoobook handles it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/one-license-one-system-njac-843k/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What New Jersey outpatient facilities need to know about the new integrated license",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/new-jersey-integrated-license-njac-843k/"
+  },
+  {
    "date": "2026-03-26",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -80,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://zoobooksystems.com/blog/why-electronic-health-record-integration-is-no-longer-optional/"
-  },
-  {
-   "date": "2025-10-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Top 20 Denial Codes in Medical Billing: Meanings, Reasons & Solutions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://zoobooksystems.com/blog/top-20-denial-codes-in-medical-billing/"
   }
  ]
 }

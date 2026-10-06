@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What's new in Wooclap in october: a new way to read your polls a cleaner screen and attendance...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/new-in-wooclap-october-2026/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Two Companies, One Vision: Inside the Wooclap\u2013Vevox Acquisition",
+   "kind": "funding",
+   "kind_rule": "Acquisition",
+   "url": "https://www.wooclap.com/en/blog/two-companies-one-vision/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Wooclap acquires Vevox to build the world's leading active learning platform for live training &...",
+   "kind": "funding",
+   "kind_rule": "acquires",
+   "url": "https://www.wooclap.com/en/blog/wooclap-acquires-vevox/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Best Memorization Techniques for Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/memorization-techniques/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -58,7 +94,7 @@
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "What is instructional design?",
+   "headline": "How to improve learning effectiveness for better engagement",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wooclap.com/en/blog/instructional-design/"
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://docs.wooclap.com/en/articles/14619595-how-to-use-wooclap-in-moodle"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "How to use Wooclap in Canvas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://docs.wooclap.com/en/articles/14623833-how-to-use-wooclap-in-canvas"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "How to use Wooclap in Blackboard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://docs.wooclap.com/en/articles/14623841-how-to-use-wooclap-in-blackboard"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "LTI 1.3 Integration with Moodle - Setup guide",
-   "kind": "product",
-   "kind_rule": "Integration with",
-   "url": "https://docs.wooclap.com/en/articles/16654555-lti-1-3-integration-with-moodle-setup-guide"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "LTI 1.3 integration with Canvas - Setup Guide",
-   "kind": "product",
-   "kind_rule": "integration with",
-   "url": "https://docs.wooclap.com/en/articles/16655047-lti-1-3-integration-with-canvas-setup-guide"
   }
  ]
 }

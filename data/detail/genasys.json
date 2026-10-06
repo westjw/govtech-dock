@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "Why Vendor Support Shouldn\u2019t End After Implementation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genasys.com/resources/why-vendor-support-shouldnt-end-after-implementation"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "Genasys Secures $1.5M in New U.S. and International Hardware Orders to Close Out Fiscal Year 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genasys.com/resources/genasys-secures-1-5m-in-new-u-s-and-international-hardware-orders-to-close-out-fiscal-year-2026"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "near-h1",
    "first_seen": "2026-09-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genasys.com/resources/genasys-evertel-lrad-law-enforcement"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Is it Possible to Keep High-Value Targets Like AI Data Centers Safe in Your Community?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genasys.com/resources/is-it-possible-to-keep-high-value-targets-like-ai-data-centers-safe-in-your-community"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "How Can Power Utilities and AI Data Centers Respond to Intruders Before Security Arrives?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genasys.com/resources/how-can-power-utilities-and-ai-data-centers-respond-to-intruders-before-security-arrives"
   }
  ]
 }

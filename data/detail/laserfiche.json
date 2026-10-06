@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Laserfiche Names Garrett Boss as CIO to Lead Enterprise IT, Security, and Business Transformation",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.laserfiche.com/resources/press-center/press/laserfiche-hires-garrett-boss-as-chief-information-officer/"
+  },
+  {
    "date": "2026-08-06",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Launches Advanced Enterprise Security to Deliver Multi-Region Disaster Recovery and GovRAMP-Ready Compliance for Highly Regulated Industries",
    "kind": "product",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "ChannelVision Magazine Honors Laserfiche with 2026 Visionary Spotlight Award",
    "kind": "contract",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-06-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Info-Tech Research Group Recognizes Laserfiche as a Champion in the 2026 Enterprise Content Management \u2013 Enterprise Emotional Footprint Report",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-06-02",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Launches on AWS Marketplace, Bringing Intelligent Content Management to the Enterprise",
    "kind": "product",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-05-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Big Data Lab Opens at Hofstra University to Foster Future Tech Leaders",
    "kind": "press",
@@ -65,16 +74,16 @@
   },
   {
    "date": "2026-05-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Laserfiche Recognized as a Leader in 2026 Gartner\u00ae Magic Quadrant\u2122 for Document Management",
-   "kind": "press",
-   "kind_rule": null,
+   "headline": "Laserfiche Introduces AI Agents: The Future of Intelligent Content Management",
+   "kind": "product",
+   "kind_rule": "Introduces",
    "url": "https://www.laserfiche.com/resources/press-center/press/laserfiche-named-leader-2026-gartner-magic-quadrant-ai-document-management/"
   },
   {
    "date": "2026-04-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Introduces AI Agents: The Future of Intelligent Content Management",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.laserfiche.com/resources/champion/"
-  },
-  {
-   "date": "2023-01-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "eBooks, Guides, and More",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.laserfiche.com/resources/ebooks-guides-more/?sf_paged=30"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "8 Planning Decisions That Can Make or Break Your Behavioral Health EHR Optimization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cantatahealth.com/resource/blog/8-planning-decisions-that-can-make-or-break-your-behavioral-health-ehr-optimization/"
+  },
+  {
    "date": "2026-08-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cantatahealth.com/resource/blog/how-cn-guidance-is-extending-crisis-care-beyond-the-emergency-room/"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New Research from Cantata Health Solutions Reveals 85% of Consumers Want Better Digital Tools for Behavioral Health",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cantatahealth.com/resource/news/new-research-from-cantata-health-solutions-reveals-85-of-consumers-want-better-digital-tools-for-behavioral-health/"
   }
  ],
  "profile": {

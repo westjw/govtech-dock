@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Launching a CMMS in two weeks: A practical guide for manufacturers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/launching-a-cmms-in-two-weeks-a-practical-guide-for-manufacturers"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The property tax squeeze: Why scenario modeling is no longer optional",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/the-property-tax-squeeze-why-scenario-modeling-is-no-longer-optional"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI aspirations vs. operational reality: Overcoming implementation anxieties",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/ai-aspirations-vs-operational-reality-overcoming-implementation-anxieties"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Rethinking healthcare\u2019s approach to infrastructure investment",
+   "kind": "funding",
+   "kind_rule": "investment",
+   "url": "https://www.brightlysoftware.com/blog/rethinking-healthcares-approach-to-infrastructure-investment"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -37,10 +73,10 @@
    "url": "https://www.brightlysoftware.com/blog/from-aging-infrastructure-to-strategic-investment-how-guideline-43-can-transform-healthcare"
   },
   {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date": "2026-09-10",
+   "date_source": "time",
    "first_seen": "2026-09-28",
-   "headline": "Your 90-day framework to accelerate maintenance technician onboarding in food and beverage manufacturing",
+   "headline": "The reliability leader\u2019s guide to building a learning culture",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/your-90-day-framework-to-accelerate-maintenance-technician-onboarding-in-food-and-beverage"
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/en-au/blog/the-reliability-leaders-guide-to-building-a-learning-culture"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CMMS for schools: Choose what you need now, grow when you\u2019re ready",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/blog/cmms-for-schools-choose-what-you-need-now-grow-when-youre-ready"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "CMMS for schools: Choose what you need now, grow when you\u2019re ready",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/en-gb/blog/cmms-for-schools-choose-what-you-need-now-grow-when-youre-ready"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "CMMS for schools: Choose what you need now, grow when you\u2019re ready",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/en-au/blog/cmms-for-schools-choose-what-you-need-now-grow-when-youre-ready"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "From reactive maintenance to strategic capital planning through asset investment planning",
-   "kind": "funding",
-   "kind_rule": "investment",
-   "url": "https://www.brightlysoftware.com/blog/from-reactive-maintenance-to-strategic-capital-planning-through-asset-investment-planning"
   }
  ],
  "profile": {

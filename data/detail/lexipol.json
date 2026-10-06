@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "When the Camera Becomes a Tracker: ALPRs After Chatrie",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/when-the-camera-becomes-a-tracker-alprs-after-chatrie/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Kingsley Stops at the Cell Door? What Poynter v. Shirley Means for Jail Liability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/kingsley-stops-at-the-cell-door-what-poynter-v-shirley-means-for-jail-liability/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Collective Knowledge, Not Collective Guessing: Reasonable Suspicion and the Fellow-Officer Rule",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/collective-knowledge-not-collective-guessing-reasonable-suspicion-and-the-fellow-officer-rule/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "A Second Bite at the Apple: Two Stops, One Dog, and the Traffic-Stop Clock",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/a-second-bite-at-the-apple-two-stops-one-dog-and-the-traffic-stop-clock/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Prepared Leader: How Principle-Based Leadership Builds Operational Readiness in Law Enforcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/the-prepared-leader-how-principle-based-leadership-builds-operational-readiness-in-law-enforcement/"
+  },
+  {
    "date": "2026-09-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -8,6 +53,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lexipol.com/resources/blog/15-easy-to-miss-readiness-risks-for-public-safety-agencies/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Is Your Agency Really Ready? The Role of Leadership and Culture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/is-your-agency-really-ready-the-role-of-leadership-and-culture/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Learning-Driven Agency: Creating a Culture That Never Stops Improving",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/blog/the-learning-driven-agency-creating-a-culture-that-never-stops-improving/"
   },
   {
    "date": "2026-09-16",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lexipol.com/resources/clayton-oh-police-department/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Are We Still a Paramilitary Organization as a Fire Service? And Should We Be?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/are-we-still-a-paramilitary-organization-as-a-fire-service-and-should-we-be/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Is It Burnout, or Do I Just Hate People? The Answer Is an Operational Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/is-it-burnout-or-do-i-just-hate-people-the-answer-is-an-operational-problem/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Vehicle Inventory Searches Depend on Clear Policies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/vehicle-inventory-searches-depend-on-clear-policies/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Threat Does Not Disappear Between Shots",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/the-threat-does-not-disappear-between-shots/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When a Welfare Check Justifies Warrantless Entry Under the Fourth Amendment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/when-a-welfare-check-justifies-warrantless-entry-under-the-fourth-amendment/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Contempt of Cop Is Not Active Resistance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/contempt-of-cop-is-not-active-resistance/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Decentralized Command in Public Safety: Building Leaders at Every Level",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/blog/decentralized-command-in-public-safety-building-leaders-at-every-level/"
   }
  ],
  "profile": {

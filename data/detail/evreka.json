@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI Assistants for Municipal Waste Operations: Less Admin, Faster Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/ai-assistants-municipal-waste-operations/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How AI Assistants Are Simplifying EPR CSRD Reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/ai-assistants-epr-csrd-reporting/"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -28,6 +46,42 @@
    "url": "https://evreka.co/blog/what-is-diwass/"
   },
   {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "DIWASS naleving: verplichtingen, handhaving en een praktische checklist",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/nl/blog/diwass-naleving/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "DIWASS vereisten: wat moet u indienen, wanneer en hoe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/nl/blog/diwass-vereisten/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Wat is DIWASS? Het EU Digital Waste Shipment System uitgelegd",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/nl/blog/wat-is-diwass/"
+  },
+  {
+   "date": "2026-08-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI for Material Traceability: From Plain Language to Chain of Custody",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/blog/ai-material-traceability-chain-of-custody/"
+  },
+  {
    "date": "2026-07-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -37,6 +91,15 @@
    "url": "https://evreka.co/blog/diwass-api-vs-web-portal/"
   },
   {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "DIWASS API vs Webportaal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://evreka.co/nl/blog/diwass-api-vs-webportaal/"
+  },
+  {
    "date": "2026-07-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://evreka.co/blog/diwass-checklist-for-carriers-waste-compliance/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Waste Management: Why Projects Fail to Scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/ai-in-waste-management-why-projects-fail-to-scale/"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS Chain Dependency Risk and Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-chain-dependency-risk-and-costs/"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "DIWASS Orange List vs Green List: Key Compliance Differences",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/diwass-orange-list-vs-green-list-key-compliance-differences/"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Camera System for Waste Management: 8 Practical Use Cases",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/ai-camera-system-for-waste-management-8-practical-use-cases/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Digital Twin for Waste Management: How It Works & Cuts Costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/blog/digital-twin-for-waste-management-how-it-works-cuts-costs/"
-  },
-  {
-   "date": "2025-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Product Launch: Discover Next-Generation Evreka Solutions",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://evreka.co/news/product-launch-discover-next-generation-evreka-solutions/"
-  },
-  {
-   "date": "2025-11-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Vakbeurs Recycling 2025: Meet Evreka and Discover the Next Generation of Waste Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://evreka.co/news/vakbeurs-recycling-2025-meet-evreka-and-discover-its-next-generation-waste-software/"
   }
  ]
 }

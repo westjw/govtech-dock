@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to stop fuel fraud at the pump",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/how-to-stop-fuel-card-fraud/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Top seven best fleet fuel cards: How to choose the right one for your business?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/fleet-fuel-cards/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What Happens When You Build for the Driver?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/minds-behind-the-miles-radu-creosteanu/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -28,6 +55,15 @@
    "url": "https://www.geotab.com/blog/minds-behind-the-miles/"
   },
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Measuring the supply chain in motion",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/supply-chain-in-motion/"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -38,7 +74,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "EV fleet transition plan: Step-by-step guide for U.S. fleets 2026",
    "kind": "press",
@@ -56,7 +92,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "EV fleet transition: How to plan a successful fleet electrification strategy",
    "kind": "press",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "Fleet electrification ROI: How to calculate and maximize savings",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/fleet-electrification-roi/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "European data sovereignty: the next step we've been building toward",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/european-data-sovereignty/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Five EV myths that are costing fleets money",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/5-ev-myths-fleet-costs/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Best construction fleet management software: Features, platforms and buying tips",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/best-construction-fleet-management-software/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fleet accident management: How to improve safety and reduce costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/fleet-accident-management/"
   }
  ],
  "profile": {

@@ -1,7 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-09-24",
+   "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
@@ -10,10 +10,28 @@
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
   },
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How to Build a 2027 Grassroots Advocacy Plan: Goals, Calendar, and Cadence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/grassroots-advocacy-plan/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "See what's new \u2192",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/2026-election-prep-guide-what-to-expect-in-quorum/"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
-   "headline": "See what's new \u2192",
+   "headline": "PAC Data Is Leaving Its Silo",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/pac-data-is-leaving-its-silo/"
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Build vs. Buy Government Affairs Software: What to Consider",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/build-vs-buy-government-affairs-software-what-to-consider/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Your PAC Program Needs to Connect to Your Legislative Strategy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/why-your-pac-program-needs-to-connect-to-your-legislative-strategy/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2027 State Legislative Pre-Filing Dates: A 50-State Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://quorum.us/blog/2027-state-legislative-pre-filing-dates-a-50-state-guide/"
   }
  ]
 }

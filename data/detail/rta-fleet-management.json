@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Who Owns Connected Vehicle Data? What Fleet Managers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/who-owns-connected-vehicle-data-what-fleet-managers-need-to-know"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fleet Management vs. Fleet Maintenance: What\u2019s the Difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/fleet-management-vs.-fleet-maintenance-whats-the-difference"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fleet Utilization Guide: How to Find and Manage Underutilized Vehicles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/blog/fleet-utilization-guide-how-to-find-and-manage-underutilized-vehicles"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "RTA Fleet Named No. 34 on Fortune Best Small Workplaces\u2122 2026 List",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://rtafleet.com/press/rta-fleet-named-34-fortune-best-small-workplaces-2026-list"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -71,42 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://rtafleet.com/press/state-of-utah-selects-rta-fleet360-to-modernize-fleet-operations"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Before Your Fleet Uses AI, Build Trust First",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/before-your-fleet-uses-ai-build-trust-first"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Best Fleet Leaders Don't Just Manage Their Shops. They Advocate for Them.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/the-best-fleet-leaders-dont-just-manage-their-shops.-they-advocate-for-them"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Government Fleets Should Move to an Internal Service Fund Model, and How to Start",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/why-government-fleets-should-move-to-an-internal-service-fund-model-and-how-to-start"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Fleet Right-Sizing: Two Methods Every Government Fleet Manager Should Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://rtafleet.com/blog/fleet-right-sizing-two-methods-every-government-fleet-manager-should-know"
   }
  ],
  "profile": {

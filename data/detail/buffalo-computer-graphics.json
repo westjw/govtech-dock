@@ -1,8 +1,80 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What Is Maritime Simulation and Why Training Facilities Need It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/maritime-simulation-training-facilities"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What Is a Full Mission Bridge Simulator?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/full-mission-bridge-simulator-definition"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Incident Management Software Integrates With 911 and Weather Data",
+   "kind": "product",
+   "kind_rule": "Integrates With",
+   "url": "https://www.bcgeng.com/blog/incident-management-software-integration"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why Real-Time Dashboards Matter in Incident Management Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/real-time-incident-dashboard-emergency-management"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What to Look for in Emergency Operations Center Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/emergency-operations-center-software-tips-guide"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Emergency Management Software Improves Response Coordination",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/emergency-management-software-dlan"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What Is an Incident Management System?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/incident-management-system-capabilities"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why Mobile Incident Management Software Is Essential for Modern Field Response",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/mobile-incident-management-software-field-response"
+  },
+  {
    "date": "2026-09-10",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "What Is DisasterLAN (DLAN) Incident Management Software?",
    "kind": "press",
@@ -20,7 +92,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "How to Choose the Right Emergency Management Software for Your Agency",
    "kind": "press",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/content/images/blog/pexels-mikhail-nilov-8943103_7213b84d7126446b84f3dc190847ed8f_1600.jpg"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Disaster Management Software: Key Features to Evaluate Before You Buy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/disaster-management-software-best-features"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Disaster Management Software: Key Features to Evaluate Before You Buy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/content/images/blog/pexels-marina-zvada-844583049-28495269_82cac06c22b8a5e69ed6041768843d10_1600.jpg"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Why 24/7 Emergency Response Depends on Modern Duty Officer Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/why-247-emergency-response-depends-on-modern-duty-officer-software"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Why 24/7 Emergency Response Depends on Modern Duty Officer Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/content/images/blog/Duty_Officer.jpg"
-  },
-  {
-   "date": "2026-06-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Empowering Everyone - Why Buffalo Computer Graphics Is Built for Usability Not Just the IT Experts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/built-for-usability"
-  },
-  {
-   "date": "2026-05-01",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "More Than Just Software - The Buffalo Computer Graphics Difference in Customer Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/more-than-just-software"
-  },
-  {
-   "date": "2026-02-19",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "From the Ground Up - The Story Behind Buffalo Computer Graphics - and Why It Matters for Your Organization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/about-buffalo-computer-graphics"
-  },
-  {
-   "date": "2025-12-03",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Practice Makes Perfect: How Buffalo Computer Graphics Transforms Emergency Preparedness Through Realistic Training",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/practice-makes-perfect-how-buffalo-computer-graphics-transforms-emergency-preparedness-through-realistic-training"
   }
  ]
 }

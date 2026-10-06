@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Everyone Has Questions About AI \u2014 Here\u2019s How Leaders Can Address Them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/answering-ai-questions-for-district-leaders"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Print It, Project It, or Skip the Screen: How Brisk Fits Any Classroom",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.briskteaching.com/post/how-brisk-fits-any-classroom"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "75 Ways to Build Classroom Community",
+   "headline": "75 Ways to Build Classroom Community.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.briskteaching.com/post/75-ways-to-build-classroom-community"
@@ -49,7 +67,7 @@
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "25 Icebreaker Games for Kids: Build Connection on the First Day and Beyond",
+   "headline": "Icebreaker & First-Day Questions",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.briskteaching.com/post/icebreaker-games-for-kids"
@@ -58,7 +76,7 @@
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "First-Year Teacher Must-Haves for the School Year",
+   "headline": "\u200d Michelle Cummings is the chief academic officer (CAO) at Brisk Teaching . She is author of The First-Year Teacher\u2019s Survival Guide, 5th Edition published by Jossey-Bass. Michelle served as the CAO a",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.briskteaching.com/post/first-year-teacher-must-haves-for-the-school-year"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.briskteaching.com/post/discover-10-ways-to-boost-student-engagement-with-brisk-and-boost"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Brisk Teaching Now an NYSITCC-Approved Vendor to Expand AI-Powered Teaching Tools Across New York State",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.briskteaching.com/post/brisk-to-expand-ai-powered-teaching-tools-across-ny-state"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Brisk Comes to Claude: Your Favorite Brisk Tools, Right in Your Claude Chats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.briskteaching.com/post/announcing-brisk-claude-connector"
   }
  ],
  "profile": {

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Knowledge Behind The Uptime View Article",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3rdeyecam.com/news/knowledge-behind-the-uptime-article/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "3rd Eye software aims to boost fleet management visibility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3rdeyecam.com/news/3rd-eye-software-aims-to-boost-fleet-management-visibility/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "3rd Eye Launches Connected City as One Platform for Smarter, Safer Municipal Service",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.3rdeyecam.com/news/3rd-eye-connected-city-pr/"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.3rdeyecam.com/news/3rd-eye-and-heil-environmental-join-terex-services-demo-day-in-tennessee/"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Waste Today Highlights Trident Waste & Recycling\u2019s Success with Heil, 3rd Eye, and Soft-Pak",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.3rdeyecam.com/news/trident-waste-recycling-article-waste-today/"
-  },
-  {
-   "date": "2026-02-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FEATURED IN WASTE ADVANTAGE \u2013 Turning Complexity Into Control in Roll-Off Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.3rdeyecam.com/blog/roll-off-fleet-management-technology/"
-  },
-  {
-   "date": "2026-01-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Commercial Recycling Contamination Detection: How Smart Technology Is Solving a Costly Industry Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.3rdeyecam.com/blog/commercial-waste-contamination-detection-technology-solutions/"
   }
  ],
  "profile": {

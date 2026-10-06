@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "ParentSquare Named Winner in the Tech & Learning Awards of Excellence: Back to School 2026",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://www.parentsquare.com/blog/parentsquare-tech-learning-awards-of-excellence-back-to-school/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.parentsquare.com/blog/parentsquare-intelligence-features-to-enable/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "5 ISTELive 26 Takeaways: Fixing the Broken Line Between Schools and Families",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.parentsquare.com/blog/istelive-26-takeaways-school-family-communication/"
   }
  ],
  "profile": {

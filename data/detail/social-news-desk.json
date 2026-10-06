@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How AI Workflows Help Newsrooms Scale Publishing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/how-ai-workflows-help-newsrooms-scale-publishing/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/how-wbrc-6-news-simplified-branded-content-advertising-with-social-news-desk/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How K-12 Schools Can Strengthen Crisis Communication Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.socialnewsdesk.com/blog/how-k-12-schools-can-strengthen-crisis-communication-workflows/"
   }
  ],
  "profile": {

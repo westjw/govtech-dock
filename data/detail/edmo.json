@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Degree Plan: How Universities Can Build Clearer Academic Pathways for Students",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/degree-plan/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Transfer Evaluation System: How Colleges Can Streamline Credit Evaluation and Increase Enrollment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/transfer-evaluation-system/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Recruitment Ecosystem in Higher Education: A Guide for Enrollment Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/recruitment-ecosystem-in-higher-education/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Key Strategies to Increase Student Engagement in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/strategies-to-increase-student-engagement/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Student Journey Mapping in Higher Education: Step-by-Step Guide, Example & Template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/what-is-student-journey-mapping-step-by-step-guide-how-can-ai-help-in-this/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -20,7 +65,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "What Is an Articulation Agreement? A Complete Guide for Colleges and Universities",
    "kind": "press",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/gpa-standards-accreditation-requirements-admissions/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "EDMO Launches Document Intelligence Suite to Help Universities Process Applications Faster",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://goedmo.com/blog/edmo-launches-document-intelligence-suite-to-help-universities-process-applications-faster/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Admissions Chatbot vs. Admissions Counselor: When to Automate and When Human Support Wins",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/admissions-chatbot-vs-admissions-counselor/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Managing an Admissions Team: Proven Ways to Boost Motivation and Performance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/managing-an-admissions-team/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Must-Have CRM Features for Admissions Teams in Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/crm-features-for-admissions-teams/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How University Admissions Work And What\u2019s Changing in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/how-university-admissions-work/"
   }
  ]
 }

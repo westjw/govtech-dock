@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-18",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "The last mile of robotics: the pilot was flawless, the deployment stalled at 10 robots",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/the-last-mile-of-robotics-the-pilot-was-flawless-the-deployment-stalled-at-10-robots"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://celona.io/news/celona-launches-orion-the-agentic-converged-wireless-platform-for-the-ai-native-enterprise"
-  },
-  {
-   "date": "2026-04-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Rakuten Symphony and Celona to Collaborate on End-to-End Open RAN Private 5G Solutions for Enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/news/rakuten-symphony-and-celona-to-collaborate-on-end-to-end-open-ran-private-5g-solutions-for-enterprise"
   }
  ],
  "profile": {

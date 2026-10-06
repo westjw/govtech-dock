@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Surviving a legacy system data migration without losing your mind",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/blog/surviving-a-legacy-system-data-migration-without-losing-your-mind/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.swiftcomply.com/blog/cccph-compliance-with-swiftcomply-backflow/"
-  },
-  {
-   "date": "2025-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SwiftComply Named Water Utilities Compliance Management Software of the Year 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/swiftcomply-named-water-utilities-compliance-management-software-of-the-year-2025/"
   }
  ],
  "profile": {

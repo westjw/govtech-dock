@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Audio Chain of Custody: A Forensic Checklist",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/audio-chain-of-custody-checklist"
+  },
+  {
    "date": "2026-09-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/video-redaction-fees-foia-defensible"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Redaction Services: What to Put in Your Agency's RFP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/video-redaction-services-rfp-guide"
   }
  ]
 }

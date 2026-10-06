@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Keep Billing Procedures Accessible and Ready",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/keep-billing-procedures-accessible-and-ready/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Use Email Placeholders to Personalize Messages",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/use-email-codes-to-personalize-messages/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Advanced Options Let You Fine Tune Searches",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/advanced-options-let-you-fine-tune-searches/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Coordinating Volunteers \u2014 The Complete Guide to Organizing Effective Volunteer Programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/coordinating-volunteers-the-complete-guide-to-organizing-effective-volunteer-programs/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Use Sets for Checklist Items That Apply to Multiple Assignments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/use-sets-for-checklist-items-that-apply-to-multiple-assignments/"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -62,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/identify-service-entries-source/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Continue Reading \u201cUpdate Your Agency Information\u201d \u2192",
-   "kind": "product",
-   "kind_rule": "Update",
-   "url": "https://www.volgistics.com/blog/update-your-agency-information/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Continue Reading \u201cOptimize PDF Files\u201d \u2192",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/optimize-pdf-files/"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Sort Information in the Mailbox",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/sort-information-in-the-mailbox/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Keep billing contact up-to-date",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/keep-billing-contact-up-to-date/"
   }
  ]
 }

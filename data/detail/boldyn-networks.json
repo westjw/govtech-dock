@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "20 more campuses select Boldyn for connectivity and IT operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.boldyn.com/news/20-more-campuses-select-boldyn-for-connectivity-and-it-operations"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Southern California\u2019s most popular airport scales for the future with Boldyn Networks\u2019 advanced private wireless network",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.boldyn.com/news/southern-californias-most-popular-airport-scales-for-the-future-with-boldyn-networks-advanced-private-wireless-network"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "NYRA chooses Boldyn Networks as connectivity partner for the Belmont Park redevelopment project",
+   "kind": "contract",
+   "kind_rule": "chooses",
+   "url": "https://www.boldyn.com/news/nyra-chooses-boldyn-networks-as-connectivity-partner-for-the-belmont-park-redevelopment-project"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "From New York to Rome, new documentary hosted on National Geographic reveals the hidden networks powering smart cities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.boldyn.com/news/from-new-york-to-rome-new-documentary-hosted-on-national-geographic-reveals-the-hidden-networks-powering-smart-cities"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -11,7 +47,7 @@
   },
   {
    "date": "2026-08-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "West Sussex advances smart livestock monitoring with Pneumonitor and Boldyn Networks\u2019 private 5G",
    "kind": "press",
@@ -20,21 +56,12 @@
   },
   {
    "date": "2026-08-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "R\u00edo Hondo College invests in stronger campus technology support to improve student, faculty and staff experiences",
    "kind": "funding",
    "kind_rule": "invests",
    "url": "https://www.boldyn.com/news/rio-hondo-college-invests-in-stronger-campus-technology-support-to-improve-student-faculty-and-staff-experiences"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From New York to Rome, new documentary hosted on National Geographic reveals the hidden networks powering smart cities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/news/from-new-york-to-rome-new-documentary-hosted-on-national-geographic-reveals-the-hidden-networks-powering-smart-cities"
   },
   {
    "date": "2026-08-11",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Boldyn Networks supercharges connectivity at The O2 Belfast with O2 customers to experience it first",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.boldyn.com/news/boldyn-networks-delivers-indoor-5g-infrastructure-at-two-leading-hospitals-in-rome-and-milan"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Chicago Fire FC taps MLS supplier Boldyn Networks to realize its vision for McDonald's Park",
-   "kind": "contract",
-   "kind_rule": "taps",
-   "url": "https://www.boldyn.com/news/chicago-fire-fc-taps-mls-supplier-boldyn-networks-to-realize-its-vision-for-mcdonalds-park"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Smart cities: the public-private innovation transforming cities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/blog/smart-cities-the-public-private-innovation-transforming-cities"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Huntingdon College expands Boldyn Networks partnership to support a more connected campus",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.boldyn.com/news/huntingdon-college-expands-boldyn-networks-partnership-to-support-a-more-connected-campus"
   }
  ]
 }

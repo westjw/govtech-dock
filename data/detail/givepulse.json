@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "GivePulse to Document Volunteer Service for Medicaid & SNAP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://learn.givepulse.com/blog/givepulse-to-document-volunteer-service-for-medicaid-snap"
+  },
+  {
    "date": "2026-07-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://learn.givepulse.com/blog/mastering-strategic-partnerships-a-guide-for-community-impact"
-  },
-  {
-   "date": "2026-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Kennesaw State Scales Student Volunteer Engagement with GivePulse",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://learn.givepulse.com/blog/kennesaw-state-scales-student-volunteer-engagement-with-givepulse"
   }
  ]
 }

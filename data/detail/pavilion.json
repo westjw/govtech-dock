@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to pull your Pavilion opportunities in bulk with the Opportunities API",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.withpavilion.com/about/resources/pavilion-opportunities-api-guide"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How-to-guide October 1, 2026 How to connect Pavilion to Microsoft Dynamics 365 Sales Resource title Learn more",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.withpavilion.com/about/resources/microsoft-dynamics-365-integration-guide"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to connect Pavilion to Salesforce",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.withpavilion.com/about/resources/salesforce-integration-guide"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
@@ -46,6 +73,15 @@
    "url": "https://www.withpavilion.com/about/resources/avi-spl-wins-new-public-sector-deals-faster-with-pavilion"
   },
   {
+   "date": "2026-08-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Procurement Impossible: Scaling Without Self-Destructing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.withpavilion.com/about/resources/procurement-impossible-scaling-without-self-destructing"
+  },
+  {
    "date": "2026-08-03",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Procurement Impossible: Scaling Without Self-Destructing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/procurement-impossible-scaling-without-self-destructing"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Procurement Survivor: 5 Lessons Procurement Leaders Shared About Surviving Year-End",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.withpavilion.com/about/resources/procurement-survivor-5-lessons-procurement-leaders-shared-about-surviving-year-end"
-  },
-  {
-   "date": "2026-05-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "[Pavilion x GovMVMT] The Procurement Leader's Playbook for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/pavilion-x-govmvmt-the-procurement-leaders-playbook-for-2026"
-  },
-  {
-   "date": "2026-05-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Bringing Pavilion to every agency in Virginia!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/bringing-pavilion-to-every-agency-in-virginia"
-  },
-  {
-   "date": "2026-03-25",
-   "date_source": "card-date",
-   "first_seen": "2026-09-09",
-   "headline": "Pavilion and VAGP Are Partnering to Bring Smarter Sourcing to Virginia Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.withpavilion.com/about/resources/pavilion-vagp-partnership"
   }
  ],
  "profile": {

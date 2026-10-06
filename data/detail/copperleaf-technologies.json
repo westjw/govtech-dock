@@ -1,8 +1,53 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Rail\u2019s Next Decade: Making the Right Choices When Everything Is a Priority",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.copperleaf.com/blog/rails-next-decade-making-the-right-choices-when-everything-is-a-priority/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Building Grid Resilience: How Utilities Can Make Smarter Investment Decisions",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://www.copperleaf.com/blog/building-grid-resilience-how-utilities-can-make-smarter-investment-decisions/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Energy-Neutral Wastewater Treatment: Is It Achievable?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.copperleaf.com/blog/energy-neutral-wastewater-treatment-is-it-achievable/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Asset Investment Planning Is Changing Faster Than Most Organizations Realize",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://www.copperleaf.com/blog/asset-investment-planning-is-changing-faster-than-most-organizations-realize/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "From Crisis to Control: Transforming Water Infrastructure Planning with IFS Copperleaf\u00ae",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.copperleaf.com/blog/water-infrastructure-planning-ifs-copperleaf/"
+  },
+  {
    "date": "2026-09-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Risk-Informed Capital Planning for Utilities: Moving Beyond Asset Age",
    "kind": "press",
@@ -11,7 +56,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "From Regulatory Compliance to Regulatory Intelligence: The Next Evolution in Rail Investment Planning",
    "kind": "funding",
@@ -56,57 +101,12 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Are You Investing in the Right Risks? Rethinking Risk-Based Capital Prioritization",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.copperleaf.com/blog/are-you-investing-in-the-right-risks-rethinking-risk-based-capital-prioritization/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Priority List to Executable Rail Plan: Why Capital Constraints Go Beyond Budget",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.copperleaf.com/blog/from-priority-list-to-executable-rail-plan-why-capital-constraints-go-beyond-budget-2/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Does Value-Based Capital Allocation Really Mean?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.copperleaf.com/blog/what-does-value-based-capital-allocation-really-mean/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Confidence Is the New Standard for Capital Planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.copperleaf.com/blog/confidence-is-the-new-standard-for-capital-planning/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Smart Water Metering: From Data to Better Investment Decisions",
-   "kind": "funding",
-   "kind_rule": "Investment",
-   "url": "https://www.copperleaf.com/blog/smart-water-metering-from-data-to-better-investment-decisions/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cost of Inaction in Capital Planning: When Annual Plans Become Outdated",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.copperleaf.com/blog/cost-of-inaction-in-capital-planning-when-annual-plans-become-outdated/"
   }
  ],
  "profile": {

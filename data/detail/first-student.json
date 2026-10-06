@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "First Student and Con Edison Advance Electric School Bus Infrastructure in New York City",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://firststudentinc.com/resources/newsroom/first-student-and-con-edison-advance-electric-school-bus-infrastructure-in-new-york-city/"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "First Student Enters the New School Year with Strong Safety, Technology, and Operational Performance",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-06-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "First Student Named Official New York New Jersey World Cup 2026 Host City Supporter",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-06-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "First Student, Inc. Launches National Hiring Week Events to Recruit and Empower the Next Generation of School Transportation Professionals",
    "kind": "product",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "First Student Partners with Advanced Remarketing Services to Support Special Olympics North America Through Sustainable Vehicle Retirement Program",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "First Student, Inc. Wins Major Student Transportation Contract in Saskatchewan, Expanding Commitment to Innovation and Partnership in Canada",
    "kind": "contract",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://firststudentinc.com/resources/newsroom/first-student-marks-six-million-electric-miles-driven-on-earth-day/"
-  },
-  {
-   "date": "2025-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "First Student to Showcase Award-Winning First Charge Solution at ACT Expo 2025",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://firststudentinc.com/resources/newsroom/first-student-to-showcase-award-winning-first-charge-solution-at-act-expo-2025/"
   }
  ],
  "profile": {

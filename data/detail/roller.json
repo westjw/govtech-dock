@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "IATP 2026 Highlights and Key Takeaways",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/iatp-2026-recap"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why We Rock the Spectrum Chose ROLLER + Patch Retention, and What It Fixed",
+   "kind": "contract",
+   "kind_rule": "Chose",
+   "url": "https://www.roller.software/blog/wrts-and-patch-retention"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Sk8 Expo 2026 Recap: Back at Margaritaville with the skating community",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.roller.software/blog/sk8-expo-2026-recap"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What the 1 October Australian surcharge ban means for your venue and your card acceptance costs",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-07-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The Future of Discovery: How AI Is Reshaping the Way Guests Find and Choose Attractions",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.roller.software/blog/lumos-creates-a-seamless-guest-experience"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Venue Management Software for Attractions: A Complete Buyer's Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/venue-management-software-attractions-buyers-guide"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "How to Choose a POS System for Attractions and Entertainment Venues",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/how-to-choose-a-pos-system-for-attractions"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Why Attractions Need an Integrated POS System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.roller.software/blog/why-attractions-need-an-integrated-pos"
   }
  ],
  "profile": {

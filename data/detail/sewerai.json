@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Doing More With Less: Modernizing Without Adding Headcount",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sewerai.com/resources/doing-more-with-less-modernizing-without-adding-headcount"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Burns & McDonnell and SewerAI Announce Strategic Partnership to Help Utilities Modernize Infrastructure Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sewerai.com/resources/burns-mcdonnell-sewerai-strategic-partnership"
+  },
+  {
    "date": "2026-09-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "How to Evaluate an AI Sewer Inspection Vendor",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "SewerAI Launches Command Center: Turning Inspection Data Into Reports, Maps, and Rehab Plans in Minutes",
    "kind": "product",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "From CCTV to Capital Plan: A Five-Step Playbook",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The Most Expensive Line Item Is the One You Didn't Spend",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "How one contractor turned multi-day inspections into 20-minute jobs",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-08-17",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "How to stay ahead of your CMOM program instead of chasing it",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-08-10",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Your inspection data is fine. Your QA queue is the bottleneck.",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-08-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "From the Underground Up: Breaking Down SewerAI's Product Philosophy",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-07-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Where your inflow and infiltration is actually coming from",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sewerai.com/resources/where-your-inflow-and-infiltration-is-actually-coming-from"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How engineering firms turn CCTV data into capital plans clients will fund",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/how-engineering-firms-turn-cctv-data-into-capital-plans-clients-will-fund"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Five to One: How to Turn Every Proactive Dollar into Five in Avoided Repairs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sewerai.com/resources/five-to-one-how-to-turn-every-proactive-dollar-into-five-in-avoided-repairs"
   }
  ],
  "profile": {

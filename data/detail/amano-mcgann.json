@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Amano McGann Introduces ONEflex Ticketless LPR \u2013 Bringing New Flexibility to Ticketless Parking",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://amanomcgann.com/2026/09/oneflex-ticketless-lpr/"
+  },
+  {
    "date": "2026-04-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -47,12 +56,39 @@
   },
   {
    "date": "2025-07-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Amano McGann Announces Leadership Transition: Greg Brewer Appointed President & CEO Starting July 1st",
    "kind": "leadership",
    "kind_rule": "Appointed",
    "url": "https://amanomcgann.com/2025/07/greg-brewer-appointed-ceo-amano-mcgann/"
+  },
+  {
+   "date": "2024-07-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Amano McGann and Parking Base Integration Now Available",
+   "kind": "product",
+   "kind_rule": "Now Available",
+   "url": "https://amanomcgann.com/2024/07/aoparkingbaseintegration/"
+  },
+  {
+   "date": "2024-06-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Amano McGann and ParkChirp Announce Integration for Seamless Parking Reservations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2024/06/aopcintegration/"
+  },
+  {
+   "date": "2023-10-11",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Amano ONE Upgrade a Success at Cardone Corporate Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://amanomcgann.com/2023/10/cardonecorporatecenter/"
   }
  ],
  "profile": {

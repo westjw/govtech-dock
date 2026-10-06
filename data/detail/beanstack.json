@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Banned Books Week: Let Books & Comics Be Joyful Reading",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/banned-books-week-let-books-comics-be-joyful-reading"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Starry Nights and Reading Lights: Beanstack\u2019s 2027 Winter Reading Challenge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/beanstack-2027-winter-reading-challenge"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Build Year-Round Community Engagement With Reading Challenges",
+   "kind": "funding",
+   "kind_rule": "Round",
+   "url": "https://www.beanstack.com/blog/build-year-round-community-engagement-with-reading-challenges"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beyond Internet Access: How Public Libraries Strengthen Communities in a Digital World",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/how-public-libraries-strengthen-communities-in-a-digital-world"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beanstack Announces SOC 2 Compliance and Releases Public SOC 3 Security Report",
+   "kind": "product",
+   "kind_rule": "Releases",
+   "url": "https://www.beanstack.com/blog/beanstack-announces-soc-2-compliance-and-releases-public-soc-3-security-report"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Run a Back-to-School Reading Challenge: A Step-by-Step Playbook",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/reading-challenge-playbook"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -53,60 +107,6 @@
    "kind": "contract",
    "kind_rule": "Awards",
    "url": "https://www.beanstack.com/blog/reintroducing-the-reading-culture-awards"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Embrace the Joy of Reading: Celebrate Library Card Sign-Up Month",
-   "kind": "contract",
-   "kind_rule": "Sign",
-   "url": "https://www.beanstack.com/blog/celebrate-library-card-sign-up-month"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Book Fairs: Raising Money and Building Reading Culture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/beyond-book-fairs-raising-money-and-building-reading-culture"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Product Spotlight: Daily Reading Goals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/product-spotlight-daily-reading-goals"
-  },
-  {
-   "date": "2026-04-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing the Reading Motivation Index (RMI)",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.beanstack.com/blog/introducing-the-reading-motivation-index-rmi"
-  },
-  {
-   "date": "2026-02-26",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "Create a challenge using Beanstack\u2019s templates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.beanstack.com/hc/en-us/articles/360012093774-set-up-a-challenge-using-our-pre-created-challenge-templates"
-  },
-  {
-   "date": "2025-11-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Helping Students Find Their Voice Through the Power of Reading Choice",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/the-importance-of-independent-reading-for-students"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Planning for Tomorrow Starts With Better Tools Today",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/planning-for-tomorrow-starts-with-better-tools-today"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/ai-in-local-government-how-its-used-now-and-whats-ahead"
-  },
-  {
-   "date": "2026-02-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cloudpermit Expands Its Local Government Software Suite with CityReporter Acquisition",
-   "kind": "funding",
-   "kind_rule": "Acquisition",
-   "url": "https://cloudpermit.com/blog/cloudpermit-expands-its-local-government-software-suite-with-cityreporter-acquisition"
   }
  ],
  "profile": {

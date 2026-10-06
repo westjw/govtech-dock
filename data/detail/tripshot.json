@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "5 Signs Your Airport Operations Are Ready to Level Up",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://tripshot.com/blog/5-signs-your-airport-operations-are-ready-to-level-up"
+  },
+  {
    "date": "2025-12-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tripshot.com/blog/cut-the-costs-of-parking-facilities"
-  },
-  {
-   "date": "2024-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Takeaways from ACT International Conference 2024",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tripshot.com/blog/data-driven-success-takeaways-from-act-international-conference"
   }
  ]
 }

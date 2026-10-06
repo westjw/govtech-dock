@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Shifting Mindsets: Turning Internal Roadblocks Into Academic Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/overcoming-barriers-academic-success"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Artificial Intelligence, Business Operations and Efficiency, Change Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/aligning-people-platforms-ai-change-higher-education"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Artificial Intelligence, Student Information Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/introducing-2026-product-innovation-update"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -11,9 +38,9 @@
   },
   {
    "date": "2026-09-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Student Success at the Core: Joe Bradley's Perspective on Technology and Leadership",
+   "headline": "Heroes of Higher Ed",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/joe-bradley-carroll-community-college-student-success"
@@ -29,25 +56,25 @@
   },
   {
    "date": "2026-08-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Proposed Federal Grant Reforms: What Higher Education Leaders Need to Know",
+   "headline": "Governance, Grants, Thought Leadership",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/proposed-uniform-guidance-changes-higher-education"
   },
   {
    "date": "2026-08-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Data-Driven Advising Improves Student Retention",
+   "headline": "Student Success and Retention",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/data-driven-advising-improves-student-retention"
   },
   {
    "date": "2026-08-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "It's Okay to Pivot Your College Path",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/leading-through-modernization-executive-sponsors-role-saas-success"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Artificial Intelligence, Grants Teri Zuzevich Artificial Intelligence for Grant Writing \u2014 When to Use It and When Humans Still Win Jul 16, 2026 4 min read",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/ai-grant-writing-best-practices-higher-education"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Business Operations and Efficiency, Multi-Campus Systems, Thought Leadership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/resilience-gap-enterprise-risk-across-higher-education-systems"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How a Homeschooled, Multilingual Student Found Confidence and Belonging in College",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/how-homeschooled-multilingual-student-found-confidence-and-belonging"
   }
  ],
  "profile": {

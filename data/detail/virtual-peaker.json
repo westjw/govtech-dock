@@ -1,8 +1,62 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What is Topline Demand Control?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/what-is-topline-demand-control/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "BYOD (Bring Your Own Device) 2026: Why OEM-Agnostic Demand Flexibility Programs Are Winning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/byod-bring-your-own-device-2026-why-oem-agnostic-demand-flexibility-programs-are-winning/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What is a Distributed Energy Resource (DER)?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/distributed-energy-resource/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How To Develop (& Scale) Water Heater Demand Flexibility Programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/how-to-develop-scale-water-heater-demand-flexibility-programs/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What is EV Telematics?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/ev-telematics/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Substation-Level Storage: When to Build vs. When to Orchestrate BTM Distributed Energy Resources (DERs)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/substation-level-storage-when-to-build-vs-when-to-orchestrate-btm-distributed-energy-resources-ders/"
+  },
+  {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-12",
    "headline": "What is Peak Shaving?",
    "kind": "press",
@@ -11,7 +65,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "BESS & the Duck Curve: Leveraging DERs to Manage Peaks",
    "kind": "press",
@@ -20,12 +74,12 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "What Are Distributed Energy Resource Management Systems (DERMS)?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/distributed-energy-resource-management-systems-derms"
+   "url": "https://virtual-peaker.com/blog/distributed-energy-resource-management-systems-derms/"
   },
   {
    "date": "2026-09-02",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/smart-water-heaters-demand-flexibility-what-utilities-should-know-before-launching-a-program/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is a Virtual Power Plant?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/what-is-a-virtual-power-plant/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is Firm Load Shedding?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/what-is-firm-load-shedding/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Much Can Demand Response Programs Save Utilities in Avoided Peak Costs?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/how-much-can-demand-response-programs-save-utilities-in-avoided-peak-costs/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "4 Things You Know About Critical Peaks (And 1 You Probably Don\u2019t)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/4-things-you-know-about-critical-peaks-and-1-you-probably-dont/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Team Q&A: Juliann Major \u2013 Client Success Manager",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/team-qa-juliann-major-client-success-manager/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Smart Thermostats & Demand Flexibility: What Utilities Should Know Before Launching a Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/smart-thermostats-demand-flexibility-what-utilities-should-know-before-launching-a-program/"
   }
  ],
  "profile": {

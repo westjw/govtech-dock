@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "10 Best Agentic AI Tools in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/agentic-ai-tools"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Multi-Agent Systems: What They Are and How They Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/multi-agent-systems"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Agentic AI: What It Is, How It Works, and Why It Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/agentic-ai"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Agentic AI Examples: How It Is Used Across Business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/agentic-ai-examples"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Agentic Automation: The Next Step Beyond RPA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/agentic-automation"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "AI Agents for Business: Use Cases, Benefits, and How to Start",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/ai-agents-for-business"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Enterprise AI Agents: What They Are and How to Deploy Them",
+   "kind": "contract",
+   "kind_rule": "Deploy",
+   "url": "https://www.concourse.ai/insights/enterprise-ai-agents"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "What Are AI Agents? A Plain-English Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/what-are-ai-agents"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "8 Best Financial Consolidation Software Tools in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/best-financial-consolidation-software"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.concourse.ai/insights/best-financial-reporting-software"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How to Choose an AI Finance Transformation Partner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/ai-finance-transformation-partner"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "SOX Compliance: Requirements, Controls, and How AI Helps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/sox-compliance"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Finance Transformation: A Practical Guide for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/finance-transformation"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "8 Best HighRadius Alternatives in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/highradius-alternatives"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Automation in Finance: RPA, AI Agents, and What Actually Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/automation-in-finance"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Will AI Replace Accountants?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/will-ai-replace-accountants"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Financial Close Automation: How AI Agents Do the Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/financial-close-automation"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Journal Entry Automation: How AI Agents Draft and Post JEs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/journal-entry-automation"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Bank Fee Analysis: How AI Agents Catch Overcharges",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/bank-fee-analysis"
   }
  ],
  "profile": {

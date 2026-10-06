@@ -1,22 +1,13 @@
 {
  "news": [
   {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date": "2026-09-23",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "How to Keep Inspection Records Complete Across Multiple Sites",
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/how-to-keep-inspection-records-complete-across-multiple-sites"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ask questions, draft reports, and update records across your account \u2014 the AI Assistant handles it all in Forerunner",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://withforerunner.com/post/ai-assistant"
   },
   {
    "date": "2026-09-02",
@@ -28,17 +19,17 @@
    "url": "https://withforerunner.com/post/forerunners-ai-assistant-for-forms"
   },
   {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date": "2026-09-01",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "After the Inspector Leaves: Building Legally Defensible Inspection Records",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/after-the-inspector-leaves-building-legally-defensible-inspection-record"
+   "headline": "Ask questions, draft reports, and update records across your account \u2014 the AI Assistant handles it all in Forerunner",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://withforerunner.com/post/ai-assistant"
   },
   {
    "date": "2026-07-31",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Automate workflows with Forerunner's Automations Builder. Create tasks, route work, send notifications, and streamline operations.",
    "kind": "press",
@@ -62,6 +53,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/what-your-crew-saw-that-never-made-it-to-the-report"
+  },
+  {
+   "date": "2026-06-30",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "After the Inspector Leaves: Building Legally Defensible Inspection Records",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/after-the-inspector-leaves-building-legally-defensible-inspection-record"
   },
   {
    "date": "2026-06-15",

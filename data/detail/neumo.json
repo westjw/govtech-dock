@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Norfolk Circuit Court, VA Improved Jury Management Efficiency With Neumo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neumo.com/resources/norfolk-circuit-court-jury-management-efficiency/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -10,6 +19,24 @@
    "url": "https://neumo.com/resources/how-tigard-municipal-court-keeps-its-photo-enforcement-caseload-paper-free/"
   },
   {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beyond Compliance: Designing Accessible DMV Self-Service",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neumo.com/resources/designing-accessible-dmv-self-service/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Modernizing Government Software, One Department at a Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neumo.com/resources/modernizing-government-software-one-department-at-a-time/"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -17,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://neumo.com/resources/what-the-best-governments-do-counties-edition/"
+  },
+  {
+   "date": "2026-08-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Inside the Driver Experience: A National Survey on Motor Vehicle Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neumo.com/resources/inside-the-driver-experience/"
   },
   {
    "date": "2026-08-04",
@@ -35,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://neumo.com/resources/boost-revenue-with-simple-short-term-rental-registration-and-tax-collections/"
+  },
+  {
+   "date": "2026-07-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Applying Utility User Taxes to Video Streaming Services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neumo.com/resources/applying-utility-user-taxes-to-video-streaming-services/"
   },
   {
    "date": "2026-07-10",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://neumo.com/resources/modernizing-constituent-payment-experience-webinar/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "UCLA Anderson Quarterly Economic Forecast",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://neumo.com/resources/ucla-anderson-economic-forecast/"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How Oregon DMV Is Expanding Access Beyond Office Hours With Self-Service Kiosks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://neumo.com/resources/oregon-dmv-self-service-kiosks-access/"
-  },
-  {
-   "date": "2026-06-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How Santa Barbara, CA Relies on Neumo for Tax Compliance and Auditing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://neumo.com/resources/how-santa-barbara-relies-on-neumo-for-tax-compliance-and-auditing/"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "A Guide for Local Government: Staying Ahead of Property Record Fraud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://neumo.com/resources/property-record-fraud-guide/"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Local Government Ordinance Workbook: A Structured Framework for Regulating Short-Term Rentals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://neumo.com/resources/str-ordinance-workbook/"
   }
  ],
  "profile": {

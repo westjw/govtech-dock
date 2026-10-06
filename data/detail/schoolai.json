@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI in the classroom: a practical guide for the start of the school year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/ai-in-the-classroom-practical-guide-for-start-of-school-year"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The back-to-school AI checklist every school leader needs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/back-to-school-checklist-school-leaders"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -40,7 +58,7 @@
    "date": "2026-08-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Managing AI implementation in schools: a practical framework for district leaders",
+   "headline": "give yourself a month",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/managing-ai-implementation-in-schools"
@@ -49,7 +67,7 @@
    "date": "2026-07-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Understanding which tools teachers use: A guide to educational technology tools",
+   "headline": "tools don't share data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/understanding-which-tools-teachers-use"
@@ -58,7 +76,7 @@
    "date": "2026-07-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
-   "headline": "Classroom technology usage data",
+   "headline": "How to measure whether your classroom technology is actually working",
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/classroom-technology-usage-data"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/ai-guardrails-keeping-students-safe-and-learning-on-track"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "District-wide technology rollout strategies that actually stick",
-   "kind": "contract",
-   "kind_rule": "rollout",
-   "url": "https://schoolai.com/blog/district-wide-technology-rollout-strategies"
-  },
-  {
-   "date": "2026-06-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "AI tools with student privacy protections",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/ai-tools-with-student-privacy-protections"
   }
  ]
 }

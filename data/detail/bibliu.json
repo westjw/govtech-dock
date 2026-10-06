@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Getting Ahead of Your Bookstore Renewal",
+   "kind": "contract",
+   "kind_rule": "Renewal",
+   "url": "https://bibliu.com/blog/getting-ahead-of-your-bookstore-renewal"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bibliu.com/blog/market-consolidation-in-higher-ed"
-  },
-  {
-   "date": "2025-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The New Front Line in the Fight Against Higher Ed Financial Aid Fraud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bibliu.com/blog/the-new-front-line-in-the-fight-against-higher-ed-financial-aid-fraud"
   }
  ],
  "profile": {

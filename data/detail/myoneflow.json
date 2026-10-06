@@ -1,13 +1,31 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "From Activity to Outcomes: What the NASWA Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myoneflow.com/blog/naswa2026-workforce-outcomes-tracking"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "From Participation to Outcomes: Why Workforce Programs Need",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myoneflow.com/blog/workforce-outcomes-tracking-measure-what-matters"
+  },
+  {
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Braided Funding vs. Blended Funding: How Workforce Organizations Track, Manage, and Scale Multiple Grants",
    "kind": "funding",
    "kind_rule": "Funding",
-   "url": "https://www.myoneflow.com/blog/braided-funding-guide-for-workforce-development?hsLang=en"
+   "url": "https://www.myoneflow.com/blog/braided-funding-guide-for-workforce-development"
   },
   {
    "date": "2026-07-21",
@@ -16,7 +34,7 @@
    "headline": "Connecting Colorado: One Year into a Statewide Workforce Modernization",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/connecting-colorado-workforce-modernization?hsLang=en"
+   "url": "https://www.myoneflow.com/blog/connecting-colorado-workforce-modernization"
   },
   {
    "date": "2026-07-14",
@@ -40,7 +58,7 @@
    "date": "2026-06-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "2026 Workforce Pell Eligibility & Implementation Guide",
+   "headline": "preparing for Workforce Pell implementation",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myoneflow.com/blog/2026-workforce-pell-eligibility-implementation-guide"
@@ -55,10 +73,19 @@
    "url": "https://www.myoneflow.com/blog/whats-happening-to-wioa"
   },
   {
+   "date": "2026-05-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "5. Improved Collaboration Across Teams and Partners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.myoneflow.com/blog/workforce-software-implementation-step-by-step-guide"
+  },
+  {
    "date": "2026-01-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Pay-for-Performance Apprenticeships: 2026 Model Overview & Playbook",
+   "headline": "1. How does case management software work?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myoneflow.com/blog/pay-for-performance-apprenticeships"
@@ -67,7 +94,7 @@
    "date": "2025-10-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "5 Pillars of Resilient Apprenticeship Networks",
+   "headline": "Building resilient apprenticeship networks",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myoneflow.com/blog/5-pillars-of-resilient-apprenticeship-networks"
@@ -76,37 +103,10 @@
    "date": "2025-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Turning Data into Action: Using PIRL Reporting to Showcase WIOA Success",
+   "headline": "WIOA performance reporting and PIRL data strategies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.myoneflow.com/blog/using-pirl-reporting-to-showcase-wioa-success"
-  },
-  {
-   "date": "2025-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Simplifying IEP Management to Build Accountability and Improve Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/simplify-iep-management"
-  },
-  {
-   "date": "2025-03-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 Reasons to Combine Case Management with Fiscal Tracking",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/5-reasons-to-combine-case-management-with-fiscal-tracking"
-  },
-  {
-   "date": "2023-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Acing the Audit: The Secret to Stress-Free WIOA Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/acing-the-audit"
   }
  ],
  "profile": {

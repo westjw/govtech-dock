@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "At Lightspeed, We Don\u2019t Just Help You Govern AI. We Hold Ourselves to the Same Standard.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/at-lightspeed-we-dont-just-help-you-govern-ai-we-hold-ourselves-to-the-same-standard/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.lightspeedsystems.com/en_uk/news/lightspeed-systems-launches-multi-os-device-management-giving-k-12-it-teams-one-console-for-every-major-school-device/"
-  },
-  {
-   "date": "2026-03-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "free 14-day screen time audit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/resources/screen-time-audit/"
   }
  ],
  "profile": {

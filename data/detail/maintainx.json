@@ -1,6 +1,87 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What's New at MaintainX: October 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/whats-new-at-maintainx-october-2026"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The 6 Best Hotel Maintenance Software Platforms: Comparing CMMS Options",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/best-maintenance-software-for-hotels"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why and How Teams Should Implement a Layered Process Audit",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://www.getmaintainx.com/blog/layered-process-audit"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "When Did Finance Stop Trusting Maintenance Data?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/when-did-finance-stop-trusting-maintenance-data"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why the Cost of Downtime is Rising for Manufacturers and what Top Teams are Doing Differently",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/downtime-costs-in-manufacturing"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "My week at IMTS 2026: Manufacturing\u2019s biggest stage delivers again",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/newsroom/my-week-at-imts-2026-manufacturings-biggest-stage-delivers-again"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "5 Questions with Brett Pyper, Maintenance Planning Leader at Hudsonville Ice Cream",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/newsroom/5-questions-with-brett-pyper-maintenance-planning-leader-at-hudsonville-ice-cream"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "The True Price of Unplanned Downtime in Food Manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/newsroom/the-true-price-of-unplanned-downtime-in-food-manufacturing"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "To Reshore Manufacturing, Examine Reliability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/newsroom/to-reshore-manufacturing-examine-reliability"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -26,87 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/fmea-template"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Equipment Failure Analysis: Causes, Process, and Worksheet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/equipment-failure-analysis-template"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The Ultimate EAM Buyer\u2019s Guide: How maintenance teams can evaluate and choose EAM software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/eam-software-buyers-guide"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Three Big Reasons That Well-planned Maintenance Programs Fail",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/three-reasons-well-planned-maintenance-programs-fail"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Reliability and Maintenance: A Guide for Industrial Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/reliability-and-maintenance"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "A Beginner\u2019s Guide to Keeping Asset Data Clean In Your CMMS",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/how-to-keep-cmms-asset-data-clean"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The One Metric That\u2019ll Help you Make the Case for Hiring More Maintenance Staff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/how-to-use-data-to-justify-higher-maintenance-headcount"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Seven ways to use AI in asset management: How to create SOPs, detect asset failure, and more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/ai-in-asset-management-examples"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Vacuum Pump Preventive Maintenance Checklist: Inspection and Service Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/vacuum-pump-preventive-maintenance-checklist"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Dump Truck Preventive Maintenance Checklist: A Duty-Cycle Inspection Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/dump-truck-preventive-maintenance-checklist"
   }
  ],
  "profile": {

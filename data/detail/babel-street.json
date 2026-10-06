@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Victor Minella, Former Senior Department of the Navy Official, Joins Babel Street Advisory Board",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/victor-minella-joins-babel-street-advisory-board"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Babel Street Named a Disruptor in Risk Intelligence and Data Management in the Chartis Research RiskTech100 2027 Report",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-named-disruptor-chartis-research-2027"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -89,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.babelstreet.com/resources/webinars"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Babel Street Launches Agentic Risk Intelligence to Empower Analysts to Outpace AI-Fueled Threats",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.babelstreet.com/about-us/newsroom/babel-street-launches-agentic-risk-intelligence"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "What Denver Zoo Has Learned About Building Cleaner, Smarter Zoo Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bigbelly.com/news/what-denver-zoo-has-learned-about-building-cleaner-smarter-zoo-operations"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Denver Zoo\u2019s Joshua Hernandez to Share Bigbelly Experience at AZFA 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bigbelly.com/news/denver-zoos-joshua-hernandez-to-share-bigbelly-experience-at-azfa-2026"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -82,31 +100,13 @@
    "url": "https://bigbelly.com/news/summer-together-hoboken-invests-in-cleaner-streets-smarter-infrastructure"
   },
   {
-   "date": "2026-06-30",
+   "date": "2026-07-01",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Made in Mass. Delivered Around the World.",
+   "first_seen": "2026-10-06",
+   "headline": "Ready to work with us?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://bigbelly.com/news/made-in-mass-delivered-around-the-world"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "\u267b\ufe0f Join Bigbelly at Recycle Florida Today 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bigbelly.com/news/join-bigbelly-at-recycle-florida-today-2026"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Join the Bigbelly Team in Baltimore!",
-   "kind": "leadership",
-   "kind_rule": "Join the",
-   "url": "https://bigbelly.com/news/join-the-bigbelly-team-in-baltimore"
+   "url": "https://bigbelly.com/news/summer-community-celebration"
   }
  ]
 }

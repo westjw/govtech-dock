@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "i-PRO and Kepler Vision Technologies Partner to Improve Patient Safety Monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-and-kepler-vision-technologies-partner-improve-patient-safety"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "How Emerging Technologies Are Shaping Utility Perimeter Protection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-emerging-technologies-are-shaping-utility-perimeter-protection"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "i-PRO Wins Two 2026 Security Today New Product of the Year Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-wins-two-2026-security-today-new-product-year-awards"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "og:published",
    "first_seen": "2026-09-09",
@@ -8,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://i-pro.com/products_and_solutions/us-en/surveillance/newsroom/why-cybers-security-just-critical-physical-security-utilities"
+  },
+  {
+   "date": "2026-09-08",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Why Cyber Security Is Just as Critical as Physical Security for Utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/why-cyber-security-just-critical-physical-security-utilities"
   },
   {
    "date": "2026-09-01",
@@ -28,8 +64,8 @@
    "url": "https://i-pro.com/products_and_solutions/us-en/surveillance/newsroom/how-edge-ai-reduces-false-alarms-utility-security"
   },
   {
-   "date": "2026-08-18",
-   "date_source": "og:published",
+   "date": "2026-08-25",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "How Edge AI Reduces False Alarms in Utility Security",
    "kind": "press",
@@ -37,8 +73,17 @@
    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-edge-ai-reduces-false-alarms-utility-security"
   },
   {
-   "date": "2026-08-03",
-   "date_source": "og:published",
+   "date": "2026-08-12",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "How Utilities Can Eliminate Visibility Gaps at Remote Substations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-utilities-can-eliminate-visibility-gaps-remote-substations"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "i-PRO Named Milestone Systems\u2019 Innovation & AI Solution Partner of the Year in the US Region",
    "kind": "press",
@@ -47,7 +92,7 @@
   },
   {
    "date": "2026-08-03",
-   "date_source": "og:published",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "i-PRO ClassSecure Safety System Wins 2026 Secure Campus Award",
    "kind": "contract",
@@ -55,58 +100,13 @@
    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-classsecure-safety-system-wins-2026-secure-campus-award"
   },
   {
-   "date": "2026-07-29",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "How Utilities Can Eliminate Visibility Gaps at Remote Substations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/how-utilities-can-eliminate-visibility-gaps-remote-substations"
-  },
-  {
    "date": "2026-07-23",
-   "date_source": "og:published",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Why Early Detection Is a Top Priority for Utility Perimeter Security",
    "kind": "press",
    "kind_rule": null,
    "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/why-early-detection-is-a-top-priority-for-utility-perimeter-security"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "i-PRO Introduces Security Update Initiative to Strengthen Long-Term Trust and Compliance",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-security-update-initiative"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Perimeter Protection Award for Security Radar",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/perimeter-protection-award-security-radar"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "2026 Security Sales & Integration MVP Award for the X\u2011series Fisheye Cameras with GenAI at the Edge",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/2026-security-sales-integration-mvp-award-x-series-fisheye-cameras-genai-edge"
-  },
-  {
-   "date": "2026-03-17",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "i-PRO Introduces Its First Cameras with Generative AI at the Edge",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://i-pro.com/products_and_solutions/en/surveillance/newsroom/i-pro-introduces-its-first-cameras-generative-ai-edge"
   }
  ],
  "profile": {

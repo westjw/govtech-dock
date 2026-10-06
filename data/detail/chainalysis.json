@@ -1,8 +1,80 @@
 {
  "news": [
   {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date": "2026-10-05",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "East Asia Crypto Adoption Report: South Korea\u2019s AI Trade Comes to Crypto",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/eastern-asia-crypto-adoption-2026/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How AI Helped Chainalysis Investigators Trace the $387 Million North Korea Stole from Bitget",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/387m-bitget-theft-2026/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "OFAC Sanctions Tren de Aragua Fugitive Who Laundered ATM Heists With Crypto",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/ofac-sanctions-tren-de-aragua-crypto-laundering-september-2026/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Singapore Leads Central & Southeast Asia and Oceania\u2019s Crypto Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/central-southeast-asia-oceania-crypto-adoption-2026/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "2026 Global Crypto Adoption Index: World\u2019s Crypto Economy Held Firm Through the Bear Market",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/2026-global-crypto-adoption-index/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Latin America: Brazil Leads World in Adoption as Region\u2019s Crypto Economy Grows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/latin-america-crypto-adoption-2026/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "DPRK and Iran are Leading a 5.2x Surge YoY in Blockchain-Assisted Cyberattacks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/etherhiding-blockchain-dead-drops/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Chainalysis Supports Arc with Automatic Token Support",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "OFAC and DOJ Strike Xinbi, a Multibillion-Dollar Marketplace for Cybercriminals",
    "kind": "press",
@@ -11,7 +83,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "How The $320M Exploit of Liquid Network Went Down",
    "kind": "press",
@@ -19,8 +91,8 @@
    "url": "https://www.chainalysis.com/blog/320m-exploit-liquid-network/"
   },
   {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
+   "date": "2026-09-09",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Tracing Crypto in a Narcotics Investigation: FBI Charges Alleged Opioid Distributors",
    "kind": "press",
@@ -28,85 +100,13 @@
    "url": "https://www.chainalysis.com/blog/fbi-traces-crypto-opioids-distributors/"
   },
   {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
+   "date": "2026-09-08",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Chainalysis Supports HyperEVM with Automatic Token Support",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chainalysis.com/blog/chainalysis-supports-hyperevm-with-automatic-token-support/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "FBI Seizes $560K in Crypto From Hamas Fundraising Network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/fbi-seizes-hamas-crypto-fundraising-network/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Blockchain Data Tell Us About $457+ Billion in Potentially Taxable Crypto Activity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/crypto-tax-reporting-carf/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Operation Lighthouse: Chainalysis\u2019s CSAM-Disruption Sprint IDs Suspects in 125 Countries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/operation-lighthouse-august-2026/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "OFAC Targets Ministry of Intelligence, Crypto-for-Oil Payments in Latest Iran Sanctions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/ofac-iran-oil-payments-august-2026/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Machine Learning Has a Specific Role in Blockchain Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/ml-role-in-blockchain-intelligence/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Understanding the FATF\u2019s DeFi Report: A Functional Approach to Decentralized Finance Regulation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/understanding-fatf-defi-report-july-2026/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Penlink Plugs Into Trusted Blockchain Data With Chainalysis",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/penlink-integration-blockchain-intelligence-august-2026/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Estimated $30 Million Stolen in Violent Crypto Attacks in 2026 as France Records Emerges as Hotspot",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/violent-crypto-wrench-attacks-2026/"
   }
  ],
  "profile": {

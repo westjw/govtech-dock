@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Wauwatosa\u2019s CFO Turns Staffing Ratios Into Better Board Conversations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/blog/how-wauwatosas-cfo-turns-staffing-ratios-into-better-board-conversations/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Information and Support Regarding Recent Cybersecurity Notifications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/news/information-and-support-regarding-recent-cybersecurity-notifications/"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-06-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "AI is Already in Your Classrooms. Here\u2019s How to Help Your Teachers Use It Well.",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-06-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Texas Special Education Funding Is Changing: What Districts Need to Know About Tiers of Intensity",
    "kind": "funding",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-06-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How K-12 CFOs Can Maximize Medicaid Reimbursement Through Special Education Collaboration",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.frontlineeducation.com/news/frontline-education-launches-new-recruiting-hiring-system-to-fix-hiring-breakdowns-and-help-districts-fill-roles-faster/"
-  },
-  {
-   "date": "2026-03-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Frontline Education\u2019s \u201cDear Future\u201d AI Campaign Named Finalist in PR Daily\u2019s 2025 Marketing Awards",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://www.frontlineeducation.com/news/frontline-educations-dear-future-ai-campaign-named-finalist-in-pr-dailys-2025-marketing-awards/"
-  },
-  {
-   "date": "2026-02-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "10 Best Practices for Improving and Expanding Social, Emotional and Behavioral Supports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/blog/support-student-social-emotional-behavior-needs/"
   }
  ],
  "profile": {

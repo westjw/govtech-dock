@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Spot to the Rescue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/spot-to-the-rescue/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Inside the Robotics Race",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/inside-the-robotics-race/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Robot Hands for Modern AI and Real Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/blog/robot-hands-for-modern-ai-and-real-work/"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -19,6 +46,15 @@
    "url": "https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks/"
   },
   {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Police Demonstrate Robot Dog Used in Critical Incidents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bostondynamics.com/news/police-demonstrate-robot-dog-used-in-critical-incidents/"
+  },
+  {
    "date": "2026-09-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -31,7 +67,7 @@
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
-   "headline": "The Missing Piece of Your AI Stack",
+   "headline": "Spot 5.2 Delivers Embodied AI for the Factory Floor",
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/the-missing-piece-of-your-ai-stack/"
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-taylor/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Deploying Robots Into (and Onto) the Field",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/deploying-robots-into-and-onto-the-field/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Bridging the \u2018Porch Gap\u2019",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/bridging-the-porch-gap/"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Atlas, the humanoid robot, delivers match ball at World Cup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/news/atlas-the-humanoid-robot-delivers-match-ball-at-world-cup/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Securing the FIFA World Cup 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/securing-the-fifa-world-cup-2026/"
   }
  ],
  "profile": {

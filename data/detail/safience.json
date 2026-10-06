@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Identity intelligence starts with a record, not a face",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/identity-intelligence-starts-with-a-record/"
+  },
+  {
+   "date": "2026-10-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Known-offender identification at the bank branch: what it is and what it is not",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/known-offender-identification-bank-branch/"
+  },
+  {
+   "date": "2026-10-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What goes into UMbRA, the law-enforcement-sourced identity database, and what never does",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/where-umbra-records-come-from/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2026/10/biometrica-systems-now-operates-as-safience/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2019/09/thirty-four-individuals-including-medical-professionals-charged-for-alleged-medicare-and-medicaid-fraud/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -37,15 +82,6 @@
    "url": "https://safience.io/2023/01/how-you-can-help-in-the-fight-against-human-trafficking/"
   },
   {
-   "date": "2022-12-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The Year That Was: Guns & School Safety \u2014 10 Years After Sandy Hook",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/12/the-year-that-was-guns-school-safety-10-years-after-sandy-hook/"
-  },
-  {
    "date": "2022-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2022/10/spotlight-the-worrying-spike-in-school-shootings-across-america/"
-  },
-  {
-   "date": "2022-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Human Trafficking: The State Of Forced Labor \u2014 An Introduction",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/10/human-trafficking-the-state-of-forced-labor-an-introduction/"
-  },
-  {
-   "date": "2022-04-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "State Of The Tribal Courts: A Statistical View",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/04/state-of-the-tribal-courts-a-statistical-view/"
-  },
-  {
-   "date": "2022-03-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NCJTC Partners With Biometrica To Announce Big Data And Facial Recognition Training Program For Law Enforcement And Criminal Justice Professionals",
-   "kind": "contract",
-   "kind_rule": "Partners With",
-   "url": "https://safience.io/2022/03/ncjtc-partners-with-biometrica-to-announce-big-data-and-facial-recognition-training-program-for-law-enforcement-and-criminal-justice-professionals/"
-  },
-  {
-   "date": "2022-02-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Millions Of Americans Are Victims Of Stalking Each Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/02/millions-of-americans-are-victims-of-stalking-each-year/"
   }
  ],
  "profile": {

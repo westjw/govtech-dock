@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Grant Compliance And Reporting With Nonprofit Software: A Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/grant-compliance-reporting-nonprofit-software"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Types of Nonprofit Foundations: A Clear Breakdown",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/types-of-nonprofit-foundations"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Nonprofit Technology Strategy: What To Prioritize & Roadmap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/nonprofit-technology-strategy"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Donor Advised Fund vs Private Foundation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/donor-advised-fund-vs-private-foundation"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "A Day Born from Tragedy, Built for Good: 25 Years of 9/11 Day with Jay Winuk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/25-years-of-911-day-with-jay-winuk"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why You Should Replace Your Grant Tracking Template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/replace-grant-tracking-template"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fluxx.io/blog/philanthropy-events-and-conferences"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ranking the Best Grant Management Software Providers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/best-grant-management-software-providers"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fluxx Redefines AI-Powered Grantmaking with Launch of Intelligent Assistant Finn",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.fluxx.io/blog/fluxx-launches-intelligent-assistant-finn"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why You Need To Avoid Grant Tracking Spreadsheets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/avoiding-grant-tracking-spreadsheets"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is a Foundation Grant Manager?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/what-does-a-foundation-grant-manager-do"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "GDPR Compliance in Grant Management Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/grant-management-systems-gdpr-compliance"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Federal Grant Compliance Checklist for Grantmakers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/federal-grant-compliance-checklist-for-grantmakers"
   }
  ],
  "profile": {

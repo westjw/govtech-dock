@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beware investing in wrong technology when pursuing benefits of London-style ticketing, new rep...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fairtiq.com/en/press-releases/beware-investing-in-wrong-technology-when-pursuing-benefits-of-london-style-ticketing-new-report-warns"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-03-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "FAIRTIQ and Partners gain major recognition at Transport Ticketing Global 2026 for mobile pay-as-you-go excellence",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-03-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Crossing borders with one swipe: mobile pay-as-you-go solution wins \u2018Cross-Border Ticketing\u2019 award at Transport Ticketing Global 2026",
    "kind": "contract",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-03-10",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "FAIRTIQ launches BIBO market test: season ticket level comfort without the subscription",
    "kind": "product",

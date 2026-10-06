@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What the Right System Delivers: Better Decision-Making",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://collegenet.com/blog/what-the-right-system-delivers-better-decision-making"
+  },
+  {
    "date": "2026-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://collegenet.com/blog/lets-talk-about-customer-service-what-does-excellent-support-feel-like"
-  },
-  {
-   "date": "2025-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Johns Hopkins adopts 25Live as universitywide academic and event scheduling platform",
-   "kind": "contract",
-   "kind_rule": "adopts",
-   "url": "https://collegenet.com/company/news/johns-hopkins-adopts-25live-as-universitywide-academic-and-event-scheduling-platform"
   }
  ],
  "profile": {

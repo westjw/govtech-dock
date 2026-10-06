@@ -1,13 +1,22 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How to Select Resilience Management Software: A Buyer's Guide for Financial Institutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.noggin.io/blog/how-to-select-resilience-management-software-a-buyers-guide-for-financial-institutions"
+  },
+  {
    "date": "2026-08-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Risk management in banking: A guide to risk & risk management strategies for financial institutions",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.noggin.io/blog/risk-management-in-banking-a-guide-to-risk-risk-management-strategies-for-financial-institutions?hsLang=en"
+   "url": "https://www.noggin.io/blog/risk-management-in-banking-a-guide-to-risk-risk-management-strategies-for-financial-institutions"
   },
   {
    "date": "2026-08-04",
@@ -16,7 +25,7 @@
    "headline": "The Five Pillars of Strategic Resilience",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.noggin.io/blog/the-five-pillars-of-strategic-resilience?hsLang=en"
+   "url": "https://www.noggin.io/blog/the-five-pillars-of-strategic-resilience"
   },
   {
    "date": "2026-06-30",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.noggin.io/blog/choosing-the-best-business-continuity-planning-software-for-universities?hsLang=en"
-  },
-  {
-   "date": "2026-02-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Third-Party Risk Management Software vs. Spreadsheets: A cost comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.noggin.io/blog/third-party-risk-management-software-vs-spreadsheets-a-cost-comparison?hsLang=en"
   }
  ]
 }

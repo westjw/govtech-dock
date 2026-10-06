@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How to Detect and Prevent Contract Cheating",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://honorlock.com/blog/stop-contract-cheating/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Honorlock Introduces New Solutions to Stop Fraud in Remote Hiring",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://honorlock.com/news/honorlock-introduces-new-solutions-to-stop-fraud-in-remote-hiring/"
+  },
+  {
    "date": "2026-07-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://honorlock.com/blog/how-to-stop-cheating-in-online-tests/"
-  },
-  {
-   "date": "2026-05-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Proctor Real-World Nursing Exams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://honorlock.com/blog/online-proctoring-nursing-exam-formats/"
-  },
-  {
-   "date": "2026-04-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is Cluely & How to Block It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://honorlock.com/blog/what-is-cluely-how-to-block-it/"
   }
  ],
  "profile": {

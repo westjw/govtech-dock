@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Knowledge Behind the Uptime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heil.com/news/knowledge-behind-the-uptime-article/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Built To Scale: From One Truck to 300,000 Customers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heil.com/news/built-to-scale-from-one-truck-to-300000-customers/"
+  },
+  {
    "date": "2026-07-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "Raises",
    "url": "https://www.heil.com/news/heil-charity-invitational-scholarships-fort-payne/"
-  },
-  {
-   "date": "2026-04-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3rd Eye Featured In Waste Advantage \u2013 AI In The Waste Industry",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.heil.com/news/ai-in-the-waste-industry-waste-advantage/"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Heil and 3rd Eye Join Terex Services Demo Day in Tennessee",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.heil.com/news/demo-days-heil/"
   }
  ],
  "profile": {

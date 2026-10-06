@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "SIC Biometrics unveils BIO-NOMAD, field-ready multimodal enrollment station",
+   "kind": "product",
+   "kind_rule": "unveils",
+   "url": "https://integratedbiometrics.com/press-releases/sic-biometrics-unveils-bio-nomad-field-ready-multimodal-enrollment-station"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Pioneering Touchless Biometrics: How Placer County Sheriff\u2019s Office and CDI are Revolutionizing Field Identification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://integratedbiometrics.com/articles/pioneering-touchless-biometrics-how-placer-county-sheriffs-office-and-cdi-are-revolutionizing-field-identification"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-06-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "GripID unveils the V10, a portable all-in-one biometric enrollment station",
    "kind": "product",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-03-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Integrated Biometrics Earns ISO 14001:2015 Certification, Strengthening Commitment to Environmental Responsibility",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2025-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Integrated Biometrics\u2019 Kojak Scanner Achieves STQC Certification",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2025-06-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Integrated Biometrics Enhances Danno Fingerprint Scanner with 256-Bit AES Encryption",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2025-06-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "GripID and Integrated Biometrics unveil GripID MANNIX, the Next Generation of Mobile Full-palm Identification",
    "kind": "product",
    "kind_rule": "unveil",
    "url": "https://integratedbiometrics.com/press-releases/gripid-and-integrated-biometrics-unveil-gripid-mannix-the-next-generation-of-mobile-full-palm-identification"
-  },
-  {
-   "date": "2025-05-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Empowering Africa\u2019s Digital Identity: A Decade of ID4Africa\u2019s Grassroots Movement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://integratedbiometrics.com/articles/empowering-africas-digital-identity-a-decade-of-id4africas-grassroots-movement"
-  },
-  {
-   "date": "2025-05-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "No Child Left Behind: How Digital Identity Ensures Lifelong Immunization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://integratedbiometrics.com/articles/no-child-left-behind-how-digital-identity-ensures-lifelong-immunization"
   }
  ]
 }

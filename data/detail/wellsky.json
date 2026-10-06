@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "What\u2019s changing in the fiscal year FY2027 ICD-10-CM code update?",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why access to more patient data isn\u2019t enough to improve care transitions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/why-access-to-more-patient-data-isnt-enough-to-improve-care-transitions/"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/five-ways-long-term-care-administrators-can-foster-healthy-stress-management/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Twentyeight Health is improving access to sexual and reproductive care",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/twentyeight-health-is-improving-access-to-sexual-and-reproductive-care/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Improve provider-patient relationships to better address SDoH",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/improve-provider-patient-relationships-to-better-address-sdoh/"
   }
  ]
 }

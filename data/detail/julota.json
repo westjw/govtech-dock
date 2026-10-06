@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Psychology of Hope in Law Enforcement: What the Research Says",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/the-psychology-of-hope-in-law-enforcement-what-the-research-says/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What is Behavioral Health Deflection?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/what-is-behavioral-health-deflection/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Rural Healthcare Access: How MIH Closed the Gap Early",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/rural-healthcare-access-how-mih-closed-the-gap-early/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/de-escalation-training-for-police/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Julota: A 24/7 Digital Homeless Outreach Coordinator",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/julota-a-24-7-digital-homeless-outreach-coordinator/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How MIH-CP Programs Can Improve Long-Acting Injectable Antipsychotic Adherence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/how-mih-cp-programs-can-improve-long-acting-injectable-antipsychotic-adherence/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wound Care at Home: How Community Paramedics Are Closing the Gap for Post-Surgical and Diabetic Patients",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/wound-care-at-home-how-community-paramedics-are-closing-the-gap-for-post-surgical-and-diabetic-patients/"
   }
  ],
  "profile": {

@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Creating a More Flexible, Connected Course Evaluation Process at CSUDH with Explorance Blue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/news/creating-a-more-flexible-connected-course-evaluation-process-at-csudh-with-explorance-blue"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Transforming Manual Course Evaluations at Prism Career Institute with Explorance Blue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/news/transforming-manual-course-evaluations-at-prism-career-institute-with-explorance-blue"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Learning Measurement and Skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/blog/explorance-metrics-that-matter-10-0-prove-your-training-is-closing-the-skills-gap"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Learning Measurement and Skills",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/blog/beyond-training-a-new-framework-for-connecting-skills-to-business-impact"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Explorance Blue 9.8: Built Around Customer Needs, Designed for Better Feedback",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/blog/explorance-blue-9-8-built-around-customer-needs-designed-for-better-feedback"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Creating a Future-Ready Evaluation Process at South Texas College of Law Houston with Explorance Blue",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/news/creating-a-future-ready-evaluation-process-at-south-texas-college-of-law-houston-with-explorance-blue"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -13,7 +67,7 @@
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Explorance Metrics That Matter 9.8: Built for Simpler, More Flexible Workflows",
+   "headline": "Learning Measurement and Skills",
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/blog/explorance-metrics-that-matter-98-built-for-simpler-more-flexible-workflows"
@@ -29,7 +83,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Transforming Course Evaluations and Supporting Teaching Excellence at Lamar State College-Port Arthur with Explorance Blue",
    "kind": "press",
@@ -37,26 +91,8 @@
    "url": "https://explorance.com/news/transforming-course-evaluations-and-supporting-teaching-excellence-at-lamar-state-college-port-arthur-with-explorance-blue"
   },
   {
-   "date": "2026-08-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "University of Iowa College of Pharmacy Advances Data-Driven Decision-Making with Explorance Blue",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/news/university-of-iowa-college-of-pharmacy-advances-data-driven-decision-making-with-explorance-blue"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Explorance BlueX 2.2: Building More Agile, Secure, and Data-Driven Feedback Experiences",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/blog/bluex-22-building-more-agile-secure-and-data-driven-feedback-experiences"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "near-h1",
+   "date": "2026-08-12",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Spring Arbor University Creates a More Connected and Scalable Approach to Feedback with Explorance Blue",
    "kind": "press",
@@ -64,49 +100,13 @@
    "url": "https://explorance.com/news/spring-arbor-university-creates-a-more-connected-and-scalable-approach-to-feedback-with-explorance-blue"
   },
   {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
+   "date": "2026-08-04",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Explorance World 2026 Recap: 4 Key Themes From the Conference",
+   "headline": "University of Iowa College of Pharmacy Advances Data-Driven Decision-Making with Explorance Blue",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://explorance.com/blog/explorance-world-2026-recap"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "at speed and scale: Explorance introduces a new AI model to analyse NSS open-ended feedback",
-   "kind": "product",
-   "kind_rule": "introduces",
-   "url": "https://explorance.com/news/insights-at-speed-and-scale-explorance-introduces-a-new-ai-model-to-analyse-nss-open-ended-feedback"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Explorance Honors 23 Organizations at Inaugural Metrics That Matter Learning Excellence Awards at Explorance World 2026",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://explorance.com/news/explorance-honors-23-organizations-at-inaugural-metrics-that-matter-learning-excellence-awards-at-explorance-world-2026"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Highland Community College Selects Explorance Blue to Modernize and Streamline Course Evaluation Processes",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://explorance.com/news/highland-community-college-selects-explorance-blue-to-modernize-and-streamline-course-evaluation-processes"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Use National Student Survey (NSS) Data to Prepare for 2026-27",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/blog/how-to-use-national-student-survey-nss-data-to-prepare-for-2026-27"
+   "url": "https://explorance.com/news/university-of-iowa-college-of-pharmacy-advances-data-driven-decision-making-with-explorance-blue"
   }
  ],
  "profile": {

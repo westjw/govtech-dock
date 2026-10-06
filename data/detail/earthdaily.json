@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Tracking Crop Change After Severe Weather",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/tracking-crop-change-after-severe-weather"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "September World in 10: A Global Crop Outlook Divided by Wetness and Dryness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/september-world-in-10-a-global-crop-outlook-divided-by-wetness-and-dryness"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "NASA, ESA and USGS Raise the Bar for Commercial Satellite Data",
+   "kind": "funding",
+   "kind_rule": "Raise",
+   "url": "https://earthdaily.com/blog/nasa-esa-and-usgs-raise-the-bar-for-commercial-satellite-data"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "EarthDaily Secures Marigold Renewals With Two Global Mining Majors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/earthdaily-secures-marigold-renewals-with-two-global-mining-majors"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why Climate Risk Needs a Continuous Record of Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/why-climate-risk-needs-a-continuous-record-of-change"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why Border Security Needs Persistent Broad-Area Change Detection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/why-border-security-needs-persistent-broad-area-change-detection"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "EarthDaily Selected as Preferred InSAR Provider for Global Engineering Firm\u2019s Tailings Management Platform",
+   "kind": "contract",
+   "kind_rule": "Selected",
+   "url": "https://earthdaily.com/blog/earthdaily-selected-as-preferred-insar-provider-for-global-engineering-firms-tailings-management-platform"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/why-satellite-imagery-still-struggles-to-scale-in-agriculture"
-  },
-  {
-   "date": "2026-07-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Price of Being Trusted: Why Commercial Earth Observation Chose Standards",
-   "kind": "contract",
-   "kind_rule": "Chose",
-   "url": "https://earthdaily.com/blog/the-price-of-being-trusted-why-commercial-earth-observation-chose-standards"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "June World in 10: Europe Corn Concerns Rise as Global Crop Conditions Improve Unevenly",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/june-world-in-10-europe-corn-concerns-rise-as-global-crop-conditions-improve-unevenly"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Nightshade Helps Make ASM Activity Visible at Scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/how-nightshade-helps-make-asm-activity-visible-at-scale"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Science-Grade Data and the Detail You Can Trust",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/science-grade-data-and-the-detail-you-can-trust"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Effective ASM Monitoring Requires: From Anecdote to Evidence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/what-effective-asm-monitoring-requires-from-anecdote-to-evidence"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Science-Grade Data Matters for Governments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/why-science-grade-data-matters-for-governments"
-  },
-  {
-   "date": "2026-06-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Science-Grade Data Matters for Change Detection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/why-science-grade-data-matters-for-change-detection"
   }
  ],
  "profile": {

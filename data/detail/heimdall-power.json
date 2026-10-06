@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Heimdall Power Supports North Carolina\u2019s First Statewide DLR Deployment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/heimdall-power-supports-north-carolinas-first-statewide-dlr-deployment"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Energa-Operator S.A. is a new Heimdall Power customer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/energa-operator-s-a-is-a-new-heimdall-power-customer"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-04-08",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "From Static to Smart: Ameren\u2019s Push to Unlock Grid Capacity in the Midwest",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Speed to Power: Watch Entergy and Heimdall Power\u2019s On-Demand Webinar",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-03-19",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Three Things U.S. Utilities Need to Know About DOE\u2019s $1.9B SPARK Funding Opportunity",
    "kind": "funding",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-02-26",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "\u201cSmart Spheres\u201d in the Snow: Minnesota Power Instruments 200 Miles of Transmission Grid Along Lake Superior",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-02-04",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Entergy Sets U.S. Record with Multi-State DLR Deployment by Drone",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.heimdallpower.com/news/entergy-sets-us-record-with-multi-state-dlr-deployment-by-drone"
-  },
-  {
-   "date": "2026-02-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Heimdall Power and Entergy deploy multi-state Dynamic Line Rating (DLR) Project",
-   "kind": "contract",
-   "kind_rule": "deploy",
-   "url": "https://www.heimdallpower.com/news/heimdall-power-and-entergy-deploy-multi-state-dynamic-line-rating-dlr-project"
-  },
-  {
-   "date": "2026-01-27",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Meet Heimdall Power at DTECH 2026!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.heimdallpower.com/news/meet-heimdall-power-at-dtech-2026"
   }
  ],
  "profile": {

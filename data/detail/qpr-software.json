@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Ericsson Uses Process Mining for Trade Compliance | QPR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/ericsson-process-mining-trade-compliance"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Start and Scale Process Intelligence Across the Enterprise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/how-to-start-scale-process-intelligence"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CEO Interview: Matti Erkheikki on How to Start and Scale Process Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/ceo-interview-matti-erkheikki-on-how-to-start-and-scale-process-intelligence"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Making the Dashboard Optional",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/making-the-dashboard-optional-process-intelligence-ai"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "QPR brings AI Agent Mining for Snowflake to Snowflake World Tour Stockholm",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/ai-agent-mining-snowflake-world-tour-stockholm"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -62,51 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selected",
    "url": "https://www.qpr.com/news/large-us-public-sector-organizations-selects-qpr-processanalyzer"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Sanofi Built an Enterprise Process Mining Center of Excellence with AI and Snowflake",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/how-sanofi-scaled-process-mining-with-ai-and-snowflake"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "QPR Software and Solita join forces to accelerate process intelligence and AI adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/qpr-software-and-solita-join-forces-to-accelerate-process-intelligence-and-ai-adoption"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Meet QPR at Snowflake Summit 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/meet-qpr-at-snowflake-summit-2026"
-  },
-  {
-   "date": "2026-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "QPR Software Plc\u2019s Annual General Meeting to Be Held on June 17, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/qpr-software-plcs-annual-general-meeting-to-be-held-on-june-17-2026"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "QPR Software Recognized as a Visionary for the Fourth Consecutive Year in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Process Intelligence Platforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/qpr-software-recognized-visionary-fourth-consecutive-year-2026-gartner-magic-quadrant-process-intelligence-platforms"
   }
  ],
  "profile": {

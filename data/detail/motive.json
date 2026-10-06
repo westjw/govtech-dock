@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Your most expensive fleet problems may be the ones you can\u2019t see.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/cost-of-delayed-action-fleet-management/"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fleet maintenance managers: Stay on top of preventive maintenance in 2027.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/fleet-maintenance-managers-guide/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Connected fleet maintenance data: 5 strategies to improve uptime in 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/connected-fleet-maintenance-data/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Engineering Physical AI: How we build real-world voice and autonomous agents at Motive",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/team-member-spotlight-sean-santschi/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "near-h1",
    "first_seen": "2026-09-28",
@@ -71,42 +107,6 @@
    "kind": "product",
    "kind_rule": "integration with",
    "url": "https://helpcenter.gomotive.com/hc/en-us/articles/39362233220253-Precursory-integration-with-Motive"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Alto Track Integration with Motive",
-   "kind": "product",
-   "kind_rule": "Integration with",
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/39361208637341-Alto-Track-Integration-with-Motive"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Why AI for the physical world is a harder problem \u2014 and a bigger one.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/shoaib-makani-vlad-kachur-show-physical-ai/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How fuel cards support business operations for large fleets.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/how-fuel-cards-work-for-large-fleet-operations/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Rebate Visibility for Motive Cards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/36718662502301-Rebate-Visibility-for-Motive-Cards"
   }
  ],
  "profile": {

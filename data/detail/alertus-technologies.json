@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "National Preparedness Month Tips and Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://alertus.com/blog/national-preparedness-month-tips-and-resources"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://alertus.com/blog/modernizing-employee-communication-amp-response"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What West Virginia House Bill 4798 Means for School Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://alertus.com/blog/what-west-virginia-house-bill-4798-means-for-school-safety"
   }
  ],
  "profile": {

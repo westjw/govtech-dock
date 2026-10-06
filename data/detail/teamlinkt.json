@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "New Features & Technology Trends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/youth-sports-website-builder-connected-data"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why Fraser Valley Volleyball Stays on TeamLinkt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/fraser-valley-volleyball-team-communication"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "5 Signs It's Time to Switch Your Sports Management Platform",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://teamlinkt.com/blog/signs-its-time-to-switch-your-sports-management-platform"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://teamlinkt.com/blog/what-to-know-before-switching-from-leaguelineup"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Switching from LeagueLineup to TeamLinkt: What the Migration Actually Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/blog/what-to-know-before-switching-from-leaguelineup"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How the Second-Largest Little League in the World Runs Its Programs on TeamLinkt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/lower-merion-little-league-teamlinkt"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "How the Second-Largest Little League in the World Runs Its Programs on TeamLinkt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/blog/lower-merion-little-league-teamlinkt"
   }
  ],
  "profile": {

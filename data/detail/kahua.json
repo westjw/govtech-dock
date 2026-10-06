@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The 5 Phases of a Construction Project Lifecycle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/the-5-stages-of-a-construction-projects-lifecycle/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Kahua Secures Strategic Growth Investment from Bain Capital at a Valuation Above $1 Billion",
+   "kind": "funding",
+   "kind_rule": "Investment",
+   "url": "https://kahua.com/news/kahua-secures-strategic-growth-investment-from-bain-capital-at-a-valuation-above-1-billion/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Kahua Earns BSI Kitemark\u2122 Certification for ISO 19650 Information Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/news/kahua-earns-bsi-kitemark-certification-for-iso-19650-information-management/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "8 Best Procore Alternatives for Construction Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/procore-alternatives/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fresh Eyes: Creating a Meaningful Construction Internship Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/creating-construction-internship-experience/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -29,7 +74,7 @@
   },
   {
    "date": "2026-08-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Kahua Launches kCapture to Turn Reality Capture Into a Connected Visual Record",
    "kind": "product",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/rethinking-construction-project-asset-data-for-ai/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Trust by Design: A Foundation for AI Adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/trust-by-design-ai-adoption-for-construction-software/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Practical Case for AI at Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/the-practical-case-for-ai-at-work/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Stop Talking About AI Models and Focus on Enterprise AI Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/stop-talking-ai-models-focus-on-enterprise-ai-systems/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ready or Not: 7 Ways to Format Construction Project Management Spreadsheet Data for AI in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/how-to-format-construction-project-management-spreadsheet-data-to-use-for-ai-in-2026/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Kahua vs. Procore: Construction Management Platforms Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/kahua-vs-procore/"
   }
  ],
  "profile": {

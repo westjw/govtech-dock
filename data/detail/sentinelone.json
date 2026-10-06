@@ -1,13 +1,40 @@
 {
  "news": [
   {
-   "date": "2026-09-28",
+   "date": "2026-10-05",
    "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Bring Your Own Vulnerable Device: How EDR Killing Became an Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-how-edr-killing-became-an-industry/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Building Agents Backwards from Evaluation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/building-agents-backwards-from-evaluation/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "SentinelOne and NVIDIA: Governing AI From Silicon to Runtime",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/sentinelone-and-nvidia-governing-ai-from-silicon-to-runtime/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Bring Your Own Vulnerable Device: The EDR Killer Economy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-the-edr-killer-economy/"
   },
   {
    "date": "2026-09-25",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Why the SOC Can't Run on Vibes",
    "kind": "press",
@@ -55,8 +82,8 @@
    "url": "https://www.sentinelone.com/press/sentinelone-named-an-ai-security-platform-leader-in-latio-2026-ai-security-market-report/"
   },
   {
-   "date": "2026-09-14",
-   "date_source": "index-text",
+   "date": "2026-09-11",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "The SOC Just Gained a Capability It Never Had",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-36-8/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SentinelOne Expands Wayfinder Frontier AI Services with OpenAI Daybreak Models",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-expands-wayfinder-frontier-ai-services-with-openai-daybreak-models/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Edge Infrastructure Under Siege: What Two Independent Datasets Reveal About Who's Exploiting Your Perimeter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/what-two-independent-datasets-reveal-about-whos-exploiting-your-perimeter/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SentinelOne and Tenable Find Cyber Attackers Routinely Target Edge-Device Vendor Ecosystems Rather Than Individual Vulnerabilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-and-tenable-find-cyber-attackers-routinely-target-edge-device-vendor-ecosystems-rather-than-individual-vulnerabilities/"
   }
  ],
  "profile": {

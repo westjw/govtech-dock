@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "BEUMER Group launches BEUMER robotpick to transform inbound parcel automation",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.beumergroup.com/press/beumer-group-launches-beumer-robotpick-to-transform-inbound-parcel-automation/"
+  },
+  {
    "date": "2026-04-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2025-12-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "BEUMER Group inaugurates new state-of-the-art manufacturing facility in India",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-12-09",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "90 years of BEUMER Group: Shaping the future with tradition, innovation, and vision",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2025-09-22",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Fachpack/Powtech: BEUMER Group presents BEUMER Guardian for process optimisation and increased plant availability",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2025-09-15",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "BEUMER Group Successfully Delivers High-Speed FFS Packaging Lines to Packwell",
    "kind": "press",

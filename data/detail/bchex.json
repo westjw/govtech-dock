@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "DOT Background Check Requirements for Transportation Employers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/dot-background-check-requirements-for-transportation-employers"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Does a Background Check Show Employment History?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/does-a-background-check-show-employment-history"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Employment Verification Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-employment-verification-works"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/what-hiring-leaders-actually-think-about-their-background-screening-providers"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Remote I-9 Verification: The Employer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/remote-i-9-verification-the-employers-guide-to-compliant-remote-onboarding"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Background Checks for Healthcare Workers: What",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/background-checks-for-healthcare-workers-whats-required-and-why-its-different"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Background Checks for Contractors: What Employers Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/background-checks-for-contractors-what-employers-need-to-know"
   }
  ],
  "profile": {

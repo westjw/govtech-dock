@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "ClearGov Named Exclusive Budgeting and Financial Management Software Partner of ACCG",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/accg-exclusive-partnership"
+  },
+  {
    "date": "2026-06-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,6 +44,15 @@
    "kind": "funding",
    "kind_rule": "Merger",
    "url": "https://cleargov.com/rc/news/cleargov-gravity-announcement"
+  },
+  {
+   "date": "2026-01-06",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "ClearGov Named Illinois State Association of Counties Corporate Partner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cleargov.com/rc/news/illinois-state-association-of-counties-partnership"
   },
   {
    "date": "2025-10-01",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cleargov.com/rc/news/lackawanna-county-pa"
-  },
-  {
-   "date": "2025-03-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Marketing Veteran David Karel Joins ClearGov as Chief Marketing Officer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cleargov.com/rc/news/marketing-veteran-david-karel-joins-cleargov-as-chief-marketing-officer"
-  },
-  {
-   "date": "2025-03-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ClearGov Named Illinois State Association of Counties Corporate Partner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cleargov.com/rc/news/illinois-state-association-of-counties-partnership"
   }
  ],
  "profile": {

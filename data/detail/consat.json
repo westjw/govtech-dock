@@ -1,4 +1,60 @@
 {
+ "news": [
+  {
+   "date": "2026-03-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Dysons Australia sets a new standard for public transportation with Consat Telematics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.consat.com/news/dysons-australia-sets-a-new-standard-for-public-transportation-with-consat-telematics/"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Consat Telematics supports accessible travel with Hailo App launch on Ventura Buses in Melbourne",
+   "kind": "product",
+   "kind_rule": "launch",
+   "url": "https://www.consat.com/news/consat-telematics-supports-accessible-travel-with-hailo-app-launch-on-ventura-buses-in-melbourne/"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "You\u2019re invited to Consat Telematics Talks on March 26",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.consat.com/news/youre-invited-to-consat-telematics-talks-on-march-26/"
+  },
+  {
+   "date": "2025-06-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "One platform, 55 transit systems: Unifying public transit across British Columbia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.consat.com/news/one-platform-55-transit-systems-unifying-public-transit-across-british-columbia/"
+  },
+  {
+   "date": "2025-05-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "\u2018Consistently ahead of the curve\u2019: Australasian Bus & Coach feature highlights Consat Telematics\u2019 role in public transportation innovation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.consat.com/news/consistently-ahead-of-the-curve-australasian-bus-coach-feature-highlights-consat-telematics-role-in-public-transportation-innovation/"
+  },
+  {
+   "date": "2024-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "AI AND INNOVATION FOR SUSTAINABLE & SMART CITIES",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.consat.com/news/ai-and-innovation-for-sustainable-smart-cities/"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "Consat Telematics is a Swedish provider of public transportation systems, founded in 1986 and operating across Sweden, Norway, Denmark, Australia, Canada, and Brazil. The wider Consat group reports offices on five continents and more than 250 employees.",

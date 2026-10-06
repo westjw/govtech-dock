@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Airspan Acquires Fixed Wireless Product Lines from Cambium Networks",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.cambiumnetworks.com/blog/airspan-acquires-fixed-wireless-product-lines-from-cambium-networks/"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "og:published",
    "first_seen": "2026-09-09",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cambium Networks and Acnet Deepen Their Partnership in Poland and Central Europe",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-08-18",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cambium Networks\u2019 ePMP 4000 Series Surpasses 220,000 Radios Shipped Globally, Tops 50,000 6 GHz Units in North America",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cambium Networks Launches MarketApps Hub, the AI-Era App Marketplace Where Anyone Can Build for Their Network",
    "kind": "product",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cambium Networks Introduces High Density Wi-Fi 7 Solution for the Enterprise",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cambiumnetworks.com/blog/how-wireless-broadband-is-creating-new-opportunities-for-wireless-service-providers/"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Cambium Networks Wi-Fi Delivers Connectivity Aboard the International Space Station",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cambiumnetworks.com/blog/cambium-networks-wi-fi-delivers-connectivity-aboard-the-international-space-station/"
   }
  ],
  "profile": {

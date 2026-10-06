@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "University of Louisiana System Expands Scaffold DataX to Five Additional Campuses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.k16solutions.com/news/university-of-louisiana-system-expands-scaffold-datax-to-five-additional-campuses"
+  },
+  {
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.k16solutions.com/news/san-diego-state-improves-student-engagement-and-attendance-tracking-with-scaffold-datax-by-k16-solutions"
-  },
-  {
-   "date": "2024-08-13",
-   "date_source": "card-date",
-   "first_seen": "2026-09-09",
-   "headline": "University of Louisiana System Embraces Industry\u2019s First Automated Data Warehouse\u2013Scaffold DataX",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.k16solutions.com/news/university-of-louisiana-system-embraces-industrys-first-automated-data-warehousescaffold-datax"
   }
  ],
  "profile": {

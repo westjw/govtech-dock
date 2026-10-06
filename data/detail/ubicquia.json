@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Ubicquia Acquires Databuoy, Expanding UbiShield\u2122 with Multi-Threat Detection",
    "kind": "funding",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-05-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The Hidden Cost of Poor Power Quality in Commercial and Industrial Operations",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-05-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Preventing Outages Before They Happen: The Utility Playbook Is Changing",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Distribution Visibility Is the New Reliability Standard",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Solving the Hidden Costs of LED Streetlight Upgrades",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-04-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "From Reactive to Predictive: The Future of Smart Street Lighting",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-02-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Smart Streetlight Tech Supplier Ubicquia Raises $106M",
    "kind": "funding",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-02-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Ubicquia Raises $106 Million to Expand AI-Driven Infrastructure Platforms",
    "kind": "funding",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-02-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Exclusive: Ubicquia raises $106M for smart energy infrastructure",
    "kind": "funding",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-02-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Ubicquia Secures $106 Million",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-02-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Ubicquia Secures $106 Million in Series D Funding to Accelerate Growth in Intelligent Infrastructure",
    "kind": "funding",

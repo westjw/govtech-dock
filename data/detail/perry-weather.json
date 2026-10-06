@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What is Heat Index? Chart and Free Calculator",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/what-is-heat-index/"
+  },
+  {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "El Ni\u00f1o 2026 Winter Forecast: U.S. Weather Outlook for 2026-27",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Perry Weather Lands $110M Growth Investment, Plans Major Dallas Hiring Expansion for Weather Ops & Safety Platform",
    "kind": "funding",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/ghsa-heat-wbgt-playbook-2026/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "2026 Summer Platform Update: What\u2019s New for Cities & Parks",
-   "kind": "product",
-   "kind_rule": "Update",
-   "url": "https://perryweather.com/resources/2026-summer-platform-update-cities/"
   }
  ],
  "profile": {

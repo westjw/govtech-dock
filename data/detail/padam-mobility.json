@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "V\u00e9hicules autonomes en Europe : une loi, vingt-sept r\u00e9alit\u00e9s - 1/3",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.padam-mobility.com/blog/vehicules-autonomes-en-europe-une-loi-vingt-sept-realites"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "V\u00e9hicules autonomes en Europe : le transport public ne doit pas rater son tournant - 3/3",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.padam-mobility.com/blog/vehicules-autonomes-en-europe-le-transport-public-ne-doit-pas-rater-son-tournant"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "V\u00e9hicules autonomes en Europe : ce que l'Allemagne, la Norv\u00e8ge et la France font diff\u00e9remment - 2/3",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.padam-mobility.com/blog/vehicules-autonomes-en-europe-ce-que-lallemagne-la-norvege-et-la-france-font-differemment"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.padam-mobility.com/blog/fileo-le-lancement-reussi-du-plus-grand-transport-a-la-demande-deurope"
-  },
-  {
-   "date": "2025-12-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Comment les algorithmes optimisent le Transport \u00e0 la Demande chez Padam Mobility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.padam-mobility.com/blog/comment-les-algorithmes-optimisent-le-transport-a-la-demande-chez-padam-mobility"
-  },
-  {
-   "date": "2025-12-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Fil\u00e9o: The Successful Launch of Europe's Largest Demand-Responsive Transport Service",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.padam-mobility.com/en/blog/fileo-the-successful-launch-of-europes-largest-demand-responsive-transport-service"
-  },
-  {
-   "date": "2025-12-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Do Algorithms Optimize Demand-Responsive Transport at Padam Mobility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.padam-mobility.com/en/blog/how-do-algorithms-optimize-demand-responsive-transport-at-padam-mobility"
   }
  ]
 }

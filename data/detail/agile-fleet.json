@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Tell Whether Your Shared Fleet Has a Vehicle Distribution Problem Instead of a Fleet Size Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-tell-whether-your-shared-fleet-has-a-vehicle-distribution-problem-instead-of-a-fleet-size-problem"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "10 Warning Signs Your Shared Fleet Scheduling Process Is Breaking Down",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://www.agilefleet.com/blog/10-warning-signs-your-shared-fleet-scheduling-process-is-breaking-down"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Much Does Poor Vehicle Availability Actually Cost a Shared Fleet?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-much-does-poor-vehicle-availability-actually-cost-a-shared-fleet"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Should Shared Fleets Handle Peak Demand Without Buying Vehicles They Rarely Need?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-should-shared-fleets-handle-peak-demand-without-buying-vehicles-they-rarely-need"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Is Low Fleet Utilization Really a Demand Problem? 8 Access Barriers That Can Make Shared Vehicles Look Underused",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/is-low-fleet-utilization-really-a-demand-problem-8-access-barriers-that-can-make-shared-vehicles-look-underused"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What Should Government Fleets Do With Underutilized Vehicles? A 6-Option Decision Framework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/what-should-government-fleets-do-with-underutilized-vehicles-a-6-option-decision-framework"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Government Fleets Should Set Vehicle Utilization Thresholds Without Relying on Mileage Alone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-government-fleets-should-set-vehicle-utilization-thresholds-without-relying-on-mileage-alone"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -44,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/how-to-build-a-defensible-fleet-replacement-plan-for-government-budget-season"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Much Spare Capacity Should a Shared Fleet Keep? Balancing Utilization With Vehicle Availability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-much-spare-capacity-should-a-shared-fleet-keep-balancing-utilization-with-vehicle-availability"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When Is a Shared Fleet Vehicle Too Expensive to Keep? A Practical Retain, Reassign, or Remove Framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/when-is-a-shared-fleet-vehicle-too-expensive-to-keep-a-practical-retain-reassign-or-remove-framework"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Fleet Maintenance Software Alone Is Not Enough for a Shared Vehicle Pool",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/why-fleet-maintenance-software-alone-is-not-enough-for-a-shared-vehicle-pool"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Calculate Cost Per Reservation in a Shared Fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-to-calculate-cost-per-reservation-in-a-shared-fleet"
-  },
-  {
-   "date": "2025-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building a Fleet Policy That Actually Works (and Gets Followed)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/building-a-fleet-policy-that-actually-works-and-gets-followed"
-  },
-  {
-   "date": "2023-01-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Assess Fleet Utilization Without Software: A Practical Guide for Public Sector Fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/getting-to-start-how-to-assess-your-fleet-utilization-when-you-dont-have-fleet-technology"
   }
  ],
  "profile": {

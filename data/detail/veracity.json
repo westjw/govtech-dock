@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The State of EdTech: School Districts Are Entering an Era of Accountability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veracityvs.com/blog/the-state-of-edtech-school-districts-are-entering-an-era-of-accountability/"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veracityvs.com/blog/5-questions-every-superintendent-should-ask-about-their-edtech-portfolio/"
-  },
-  {
-   "date": "2026-02-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Powhatan County Public Schools Selects Veracity to Modernize EdTech Management",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.veracityvs.com/news/powhatan-county-public-schools-selects-veracity-to-modernize-edtech-management/"
   }
  ]
 }

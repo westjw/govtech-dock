@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Why CSA Scores Matter More Than Ever",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/why-csa-scores-matter-more-than-ever/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How Asset Trackers Improve Small Equipment and Trailer Visibility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/how-asset-trackers-improve-small-equipment-and-trailer-visibility/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why Backup Accidents Are More Common Than You Think",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/why-backup-accidents-are-more-common-than-you-think/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fleet GPS Tracking Devices: OBD-II, Hardwired, and Asset Trackers Compared",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/fleet-gps-tracking-devices-obd-ii-vs-hardwired/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Vehicle Side Cameras Help Exonerate Drivers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/how-vehicle-side-cameras-help-exonerate-drivers/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -46,6 +91,15 @@
    "url": "https://www.gpsinsight.com/blog/how-gps-insights-driveri-portal-transforms-operations/"
   },
   {
+   "date": "2024-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Become a GPS Insight Partner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/resources/become-a-partner/"
+  },
+  {
    "date": "2024-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gpsinsight.com/blog/field-service-management-software/"
-  },
-  {
-   "date": "2024-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "protect drivers from unfair blame",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/utilizing-driver-scorecards/"
-  },
-  {
-   "date": "2024-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Top Field Service Management Software Solutions for Small Businesses in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/best-field-service-management-software-for-small-business/"
-  },
-  {
-   "date": "2023-03-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ELD Costs in 2026: Hardware, BYOD Apps, and Hidden Fees Unpacked",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/how-much-does-eld-cost/"
-  },
-  {
-   "date": "2022-11-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Aggressive Driving: Using Technology to Increase Safety and Save Money",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/aggressive-driving-using-technology-to-increase-safety-and-save-money/"
-  },
-  {
-   "date": "2020-10-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3 Key Reasons Your Business Needs Digital Forms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/your-business-needs-digital-forms/"
-  },
-  {
-   "date": "2020-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Field Technicians: Mobile Story Tellers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/field-technicians-mobile-story-tellers/"
   }
  ]
 }

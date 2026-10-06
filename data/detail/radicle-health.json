@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Preparing for the New Wave of Medicaid Oversight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/preparing-for-the-new-wave-of-medicaid-oversight/"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,6 +89,15 @@
    "kind": "funding",
    "kind_rule": "Funding",
    "url": "https://radicle-health.com/blog/medicaid-reimbursement-strategies-braided-funding-guide/"
+  },
+  {
+   "date": "2025-06-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Coast to Coast Youth Mental Health Investments: CYBHI & NYS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicle-health.com/blog/workforce-shortage/"
   }
  ],
  "profile": {

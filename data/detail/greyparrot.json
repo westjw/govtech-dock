@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Climate Week NYC 2026: waste is an unmeasured domestic resource",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.greyparrot.ai/resources/blog/climate-week-nyc-2026-waste-is-an-unmeasured-domestic-resource"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Teaching computers to see what we see: Mikela Druckman on AI in waste",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.greyparrot.ai/resources/blog/teaching-computers-to-see-what-we-see-mikela-druckman-on-ai-in-waste"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Waste intelligence vs. AI for sorting: what's the difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.greyparrot.ai/resources/blog/waste-intelligence-vs-ai-for-sorting"
+  },
+  {
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.greyparrot.ai/deepnest/blog/greyparrot-loreal-groupe"
-  },
-  {
-   "date": "2025-12-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Greyparrot\u2019s 2025 highlights: Turning circular momentum into intelligent action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.greyparrot.ai/resources/blog/greyparrot-2025-highlights"
-  },
-  {
-   "date": "2025-12-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Recycling in 2025: What we learned from 52 billion waste items",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.greyparrot.ai/resources/blog/2025-unwrapped"
-  },
-  {
-   "date": "2022-05-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Greyparrot raises $11M Series A funding",
-   "kind": "funding",
-   "kind_rule": "raises",
-   "url": "https://www.greyparrot.ai/resource-hub/blog/series-a-funding"
   }
  ],
  "profile": {

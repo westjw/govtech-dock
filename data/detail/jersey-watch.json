@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What's the Best Way to Engage Youth Sports Parents?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/how-to-engage-parents-in-youth-sports"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Youth Sports Costs: What Families Pay and How to Save",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/costs-of-youth-sports"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "18 Soccer Fundraising Ideas for Your Youth Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/soccer-fundraising-ideas"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "6 Ways to Register More Youth Football Players This Season",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/register-more-youth-football-players"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Wix, Squarespace or a Sports-Specific Website Builder: Which Is Right for Your Youth Sports League?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/wix-vs-squarespace-vs-sports-website-builder"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "How to Improve Sports Team Communication in 5 Steps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/improve-your-teams-communication"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "4 Youth Soccer Defensive Drills for Better Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/youth-soccer-defensive-drills"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "How To Make a Youth Soccer Website in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/make-a-soccer-website"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jerseywatch.com/blog/how-to-manage-a-youth-basketball-team"
-  },
-  {
-   "date": "2025-04-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Five Jobs Behind Managing a Baseball Team Well",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/how-to-manage-a-baseball-team"
-  },
-  {
-   "date": "2025-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The 5 Best Basketball Website Templates for Youth Teams and Leagues",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/basketball-website-template"
-  },
-  {
-   "date": "2025-02-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "7 LeagueApps Alternatives Worth Considering for Small Sports Clubs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/leagueapps-alternatives"
-  },
-  {
-   "date": "2024-09-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Top 5 Football Website Templates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/best-football-website-templates"
-  },
-  {
-   "date": "2024-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The 9 Best Baseball Website Templates in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/baseball-website-templates"
-  },
-  {
-   "date": "2024-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "The 12 Best Soccer Website Templates in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/soccer-website-templates"
-  },
-  {
-   "date": "2024-05-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "7 Best Sports Team Payment Apps | Jersey Watch Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/sports-team-payment-apps"
-  },
-  {
-   "date": "2024-03-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Best Sports Registration Software for Volunteer-Run Leagues: 5 Top Picks",
-   "kind": "contract",
-   "kind_rule": "Picks",
-   "url": "https://www.jerseywatch.com/blog/best-sports-registration-software"
   }
  ],
  "profile": {

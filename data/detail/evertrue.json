@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "og:published",
+   "first_seen": "2026-10-05",
+   "headline": "EverEvolving Across the Donor Journey: Q3 Product Updates",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://www.evertrue.com/blog/everevolving-across-the-donor-journey-q3-product-updates/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to Create Unbeatable Fundraising Videos in 9 Steps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evertrue.com/blog/fundraising-video/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Donors Give When They Feel Known \u2014 What Happened After One Asked \u201cWhat Do You Want?\u201d",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evertrue.com/blog/donors-give-when-they-feel-known-what-happened-after-one-asked-what-do-you-want/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "og:published",
+   "first_seen": "2026-10-05",
+   "headline": "Automate the Busywork, Not the Relationship: An Expert\u2019s Guide to Fundraising Cadences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evertrue.com/blog/automate-the-busywork-not-the-relationship-an-experts-guide-to-fundraising-cadences/"
+  },
+  {
+   "date": "2026-09-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "AI Fundraising: Mastering the Future Fundraising Landscape",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evertrue.com/blog/ai-fundraising/"
+  },
+  {
    "date": "2026-08-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evertrue.com/blog/giving-usa-2025-the-617-billion-isnt-the-story/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your Quiet Prospect Might Not Be Cold. It Might Just Take 6 Touchpoints.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/blog/your-quiet-prospect-might-not-be-cold-it-might-just-take-6-touchpoints/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The $2,500 Donor That Became a $15M Donor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/blog/the-2500-donor-that-became-a-15m-donor/"
-  },
-  {
-   "date": "2026-05-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond the Wealth Screen: A Guide to Predictive Scoring for Nonprofits",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/resources/beyond-the-wealth-screen-a-guide-to-predictive-scoring-for-nonprofits/"
-  },
-  {
-   "date": "2026-05-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Modern Fundraiser\u2019s Guide to AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/resources/the-modern-fundraisers-guide-to-ai/"
-  },
-  {
-   "date": "2026-04-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "UPMIFA: What Every Nonprofit NEEDS to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evertrue.com/blog/upmifa/"
   }
  ],
  "profile": {

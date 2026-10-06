@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Merge Community Snapshot: Your 5-minute recap for September 2026",
+   "kind": "funding",
+   "kind_rule": "Merge",
+   "url": "https://www.merative.com/newsroom/merge-community-snapshot-september-2026"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Truven Launches MarketScan Snapshot, an AI-powered Tool to Evaluate Fit-For-Purpose Real-World Data in Minutes",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.merative.com/newsroom/truven-launches-marketscan-snapshot-an-ai-powered-tool-to-evaluate-fit-for-purpose-real-world-data-in-minutes"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "AI-powered MarketScan Snapshot speeds real-world data feasibility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/ai-powered-marketscan-snapshot-speeds-real-world-data-feasibility"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "What employers & payers need to know about multi-cancer early detection tests",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/what-employers-payers-need-to-know-about-multi-cancer-early-detection-tests"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Merge launches MergeIQ\u2122, the AI layer powering intelligence across its enterprise imaging platform",
+   "kind": "funding",
+   "kind_rule": "Merge",
+   "url": "https://www.merative.com/newsroom/merge-launches-mergeiq-ai-enterprise-imaging-platform"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.merative.com/blog/lab-data-expands-marketscan-partner-ecosystem-for-real-world-evidence"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Eight months after TB14: the real test is execution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/eight-months-after-tb14-the-real-test-is-execution"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How ARIA uses Merge to create a single seamless physician experience",
-   "kind": "funding",
-   "kind_rule": "Merge",
-   "url": "https://www.merative.com/blog/aria-merge-seamless-user-experience"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What RxDC data reveals about prescription drug rebates and employer health plan costs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/what-rxdx-data-reveals-about-prescription-drug-rebates-and-employer-health-plan-costs"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Before it makes the headlines: The public health detectives you never hear about",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/before-it-makes-the-headlines-the-public-health-detectives-you-never-hear-about"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The cornerstone of RMI and Merge\u2019s 30-year relationship? The people",
-   "kind": "funding",
-   "kind_rule": "Merge",
-   "url": "https://www.merative.com/blog/rmi-30-year-partnership"
   }
  ]
 }

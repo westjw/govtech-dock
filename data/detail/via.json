@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2026-09-25",
+   "date": "2026-10-05",
    "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Introducing Via Fixed Route",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://ridewithvia.com/resources/via-announces-launch-of-fixed-route-live-operations-solution"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Power up your planning: The Remix features you need to know this October.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridewithvia.com/resources/the-remix-features-you-need-to-know-this-october"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Transforming Transit. The Via Features you need to know this October",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ridewithvia.com/resources/the-via-features-you-need-to-know-this-october"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "time",
    "first_seen": "2026-09-28",
    "headline": "The Latest on Capitol Hill",
    "kind": "press",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-09-18",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-28",
    "headline": "What paratransit leaders need to know about change management",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-10",
    "headline": "The City of Sunnyvale launches Sunnyvale Beam, citywide zero-emission microtransit for workers, students, residents, and visitors",
    "kind": "product",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Via Welcomes the Knode.ai Team to Accelerate AI for Public Transit",
    "kind": "leadership",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-08-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "3 things we learned about how AI can improve call center performance",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Via and SMART Expand On-Demand Microtransit Into Northern Macomb County",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://ridewithvia.com/resources/no-fixed-route-no-problem-the-future-of-city-transit-with-jason-via?hsLang=en"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Navigating the Future of Transit: 4 Key Takeaways from Our Industry Summit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://ridewithvia.com/resources/navigating-the-future-of-transit-4-key-takeaways-from-our-industry-summit?hsLang=en"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How the City of Mobile, Alabama rewrote its transit contract to improve service delivery",
-   "kind": "contract",
-   "kind_rule": "contract",
-   "url": "https://ridewithvia.com/resources/city-of-mobile-alabama-improves-transit-delivery"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Navigating Capitol Hill: Reauthorization, Midterms, and Federal Transit Funding",
-   "kind": "funding",
-   "kind_rule": "Funding",
-   "url": "https://ridewithvia.com/resources/navigating-capitol-hill-reauthorization-midterms-and-federal-transit-funding?hsLang=en"
   }
  ],
  "profile": {

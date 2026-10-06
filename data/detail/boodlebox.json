@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "The data residency fine print nobody's reading.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://boodlebox.ai/blog/data-residency-fine-print-nobodys-reading"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Data residency isn't one decision. It's eight.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://boodlebox.ai/blog/data-residency-isnt-one-decision-its-eight"
+  },
+  {
    "date": "2026-08-12",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-06-18",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Buying for the Few, Deploying to the Many",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-02-12",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Empowering Educators: How Enhanced AI Coach Mode Builds Responsible AI Skills in Students",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-02-12",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Less Is More: The Environmental Value of Token Savings in an AI-Driven Economy",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2025-11-21",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Developing AI Literacy: A New Approach to Human-AI Interaction",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2025-03-26",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Empowering Connections: How One Student Used BoodleBox to Create Life-Changing AI Companions",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2025-01-29",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Breaking Down Academic Silos with AI Collaboration",
    "kind": "press",
    "kind_rule": null,
    "url": "https://boodlebox.ai/blog/breaking-down-academic-silos-with-ai-collaboration"
-  },
-  {
-   "date": "2025-01-08",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Cross-Campus Transformation with AI Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://boodlebox.ai/blog/cross-campus-transformation-with-ai-tools"
-  },
-  {
-   "date": "2024-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "AI Meets Education: BoodleBox's Latest Tools for Modern Professors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://boodlebox.ai/blog/ai-meets-education-boodleboxs-latest-tools-for-modern-professors"
   }
  ],
  "profile": {

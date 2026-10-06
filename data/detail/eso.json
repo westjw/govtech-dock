@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "ESO Launches Logis Billing Intelligent Lockbox Assistant, the First AI-Powered Lockbox Solution for EMS Billing",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "New Research Finds 3% of Patients Drive 16% of All 911 EMS Responses",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://www.eso.com/news/press-releases/new-research-finds-3-of-patients-drive-16-of-all-911-ems-responses/"
   },
   {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
+   "date": "2026-06-24",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "ESO Launches Prehospital Intelligence\u2122 to Reduce Length of Stay and Strengthen EMS-Hospital Collaboration",
    "kind": "product",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-06-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "ESO Closes NFIRS Era with 2026 Fire Service Index, Sets the Stage for Richer Data Under NERIS Reporting Standard",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "2026 ESO Trauma Index connects hospital and prehospital blood product data, revealing new patterns across the emergency care continuum",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-05-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "ESO Innovation Awards Recognize Customers Improving Outcomes Through Data Across the Emergency Response Lifecycle",
    "kind": "contract",
@@ -58,7 +58,7 @@
    "date": "2026-05-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "2026 ESO EMS Index Read More",
+   "headline": "2026 ESO EMS Index",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/ems-index/"
@@ -76,7 +76,7 @@
    "date": "2026-05-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "2026 ESO Trauma Index Read More",
+   "headline": "2026 ESO Trauma Index",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/trauma-index/"
@@ -94,7 +94,7 @@
    "date": "2025-08-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "2026 ITDX Data Dictionary Read More",
+   "headline": "2026 ITDX Data Dictionary",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/2026-itdx-data-dictionary/"
@@ -103,7 +103,7 @@
    "date": "2025-06-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "NERIS Product Teaser Video Read More",
+   "headline": "NERIS Product Teaser Video",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/neris-product-teaser-video/"

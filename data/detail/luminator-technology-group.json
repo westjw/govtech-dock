@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Luminator Introduces First-of-Its-Kind AI Technology That Sees, Assesses, and Reports On Bus Stop Conditions and Cleanliness",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://luminator.com/news/luminator-introduces-ai-enabled-bus-stop-condition-monitoring"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -52,7 +61,7 @@
    "headline": "Luminator Marks Milestone and More",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://luminator.com/news/luminator-marks-milestone-and-more?hsLang=en"
+   "url": "https://luminator.com/news/luminator-marks-milestone-and-more"
   },
   {
    "date": "2026-08-13",
@@ -61,7 +70,7 @@
    "headline": "Luminator Completes Key Phase of its Customer Experience Transformation Unifies All Customer-Facing Operations onto One Platform",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://luminator.com/news/luminator-completes-key-phase-of-its-customer-experience-transformation-unifies-all-customer-facing-operations-onto-one-platform?hsLang=en"
+   "url": "https://luminator.com/news/luminator-completes-key-phase-of-its-customer-experience-transformation-unifies-all-customer-facing-operations-onto-one-platform"
   },
   {
    "date": "2026-07-14",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-06-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The Quiet Work of Keeping Transit Safe",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-06-05",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The Standard We Set in the Spotlight",
    "kind": "press",
    "kind_rule": null,
    "url": "https://luminator.com/news/the-standard-we-set-in-the-spotlight"
-  },
-  {
-   "date": "2026-05-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Balancing Safety and Privacy: How AI-Powered Facial Blurring Supports Modern Transit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://luminator.com/news/balancing-safety-and-privacy-how-ai-powered-facial-blurring-supports-modern-transit"
   }
  ]
 }

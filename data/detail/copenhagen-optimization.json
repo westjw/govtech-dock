@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-01-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Copenhagen Optimization partners with Brisbane International Airport to transform airport security operations",
    "kind": "contract",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2025-12-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Copenhagen Optimization joins forces with Grantley Adams International Airport, Barbados, adding first Caribbean airport to list of partners",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2025-08-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Copenhagen Optimization partners with ISS Pacific to advance airport security operations across leading Australian airports",
    "kind": "contract",
@@ -43,7 +43,7 @@
    "headline": "JFK Terminal 4 chooses Better Airport\u00ae",
    "kind": "contract",
    "kind_rule": "chooses",
-   "url": "https://copenhagenoptimization.com/news/jfk-terminal-4-chooses-better-airport/?hsLang=en"
+   "url": "https://copenhagenoptimization.com/news/jfk-terminal-4-chooses-better-airport/"
   }
  ],
  "profile": {

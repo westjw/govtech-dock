@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-08-17",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Employee spotlight on Rogelio Vicencio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://genfare.com/blog/employee-spotlight-on-rogelio-vicencio/"
+  },
+  {
    "date": "2026-08-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -62,15 +71,6 @@
    "kind": "product",
    "kind_rule": "introduces",
    "url": "https://genfare.com/blog/house-introduces-build-america-250-act/"
-  },
-  {
-   "date": "2026-04-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Employee spotlight on Rogelio Vicencio",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://genfare.com/blog/employee-spotlight-on-rogelio-vicencio/"
   },
   {
    "date": "2026-04-23",

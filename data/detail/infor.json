@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The future is agentic. The foundation is data and governance.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/future-is-agentic-data-governance"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Beyond visibility: What healthcare supply chain leaders need next",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/healthcare-supply-chain-strategy"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Smart Sensors, AI Agents, and Higher OEE in Food Manufacturing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/smart-sensors-ai-agents-oee-food-manufacturing"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How distributors grow margin with value-added services and Infor Industry AI Agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/distributor-margin-growth-ai-agents"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Workforce, finance, and supply chain in healthcare",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/connected-healthcare-better-outcomes"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Live Learning Sessions to Help Your Team Get More from Infor Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/introducing-infor-u-skill-builder"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The science of AI hiring: Why structure still matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/ai-hiring-science-structure-matters"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Go-live is just the start: Closing the ERP adoption gap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/closing-the-erp-adoption-gap"
+  },
+  {
    "date": "2026-09-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/free-up-your-working-capital-with-infor-industry-ai"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Where your hidden factory hides\u2014and the one question that unlocks it",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/hidden-factory-manufacturing-performance"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How distributors free up working capital with AI inventory optimization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/ai-inventory-optimization-working-capital"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The frontline workforce challenge every industry is facing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/frontline-workforce-challenges"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "User adoption: The hidden variable in ERP implementation success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/erp-user-adoption-success"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Black Book recognizes Infor in healthcare supply chain",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/infor-1-client-rated-vendor-healthcare-supply-chain-technology"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How banks can turn rising rates into a corporate deposit advantage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/corporate-deposit-strategy-rising-rates"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Your AI strategy is only as good as its first move",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/ai-strategy-first-move"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The morning after: AI\u2019s trust problem and what hospitality leaders should do",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/ai-trust-hospitality-leaders"
   }
  ],
  "profile": {

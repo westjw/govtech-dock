@@ -1,4 +1,114 @@
 {
+ "news": [
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Teller Government Cashiering Earns Workday Design Approved Status",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/teller-government-cashiering-earns-workday-design-approved-status"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Teller Cashiering awarded NCTCOG TXShare cooperative purchasing contract",
+   "kind": "contract",
+   "kind_rule": "awarded",
+   "url": "https://www.goteller.com/news/teller-cashiering-awarded-nctcog-txshare-cooperative-purchasing-contract"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Santa Fe County, NM Selects Teller Government Cashiering as Part of Countywide Modernization",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.goteller.com/news/santa-fe-county-selects-teller-for-countywide-modernization"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "City of Grand Prairie Selects Teller Government Cashiering to Modernize Revenue Collection Operations",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.goteller.com/news/city-of-grand-prairie-selects-teller-government-cashiering-to-modernize-revenue-collection-operations"
+  },
+  {
+   "date": "2026-06-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "West Jordan, Utah\u2019s 3rd Largest City, is Modernizing Revenue Collection",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/city-of-west-jordan-modernizes-revenue-collection"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "City of Boynton Beach Projects Up to $1.4 Million in Annual Savings with New Teller Engagement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/city-of-boynton-beach-projects-up-to-1-4-million-in-annual-savings-with-new-teller-engagement"
+  },
+  {
+   "date": "2026-04-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Clark County Treasurer\u2019s Office Testimonials",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/clark-county-treasurers-office-testimonials"
+  },
+  {
+   "date": "2026-04-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Alishia Topper, Clark County Treasurer shares her experience with Teller",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/alishia-topper-clark-county-treasurer-shares-her-experience-with-teller"
+  },
+  {
+   "date": "2026-04-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Sara Lowe, Clark County Chief Deputy Treasurer shares her experience with Teller",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/sara-lowe-clark-county-chief-deputy-treasurer-shares-her-experience-with-teller"
+  },
+  {
+   "date": "2026-04-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Neil Heyer, Clark County Tax Service Manager shares his experience with Teller",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goteller.com/news/neil-heyer-clark-county-tax-service-manager-shares-his-experience-with-teller"
+  },
+  {
+   "date": "2026-03-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Teller Cashiering Welcomes Jacob Bruen as Implementation Software Engineer",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://www.goteller.com/news/teller-cashiering-welcomes-jacob-bruen-as-implementation-software-engineer"
+  },
+  {
+   "date": "2026-02-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Can/Am Technologies Simplifies Government Payment Operations with the Launch of Teller Payments, Powered by Fiserv",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.goteller.com/news/launch-of-teller-payments-powered-by-fiserv"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "Can/Am Technologies sells Teller, a cashiering and point-of-sale package made for local and state government agencies across North America. More than 80 state and local governments use it for cashiering, payment technology, and credit processing. The idea is a single hub that centralizes revenue collection, credit processing, and reconciliation.",

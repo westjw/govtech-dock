@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Is There a Free EHR for Behavioral Health? What Free Costs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/free-ehr-for-behavioral-health-what-free-really-costs"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Substance Abuse Progress Note Examples, Intake to Discharge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/substance-abuse-progress-note-examples"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Mental Health Discharge Summary Example and Template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/mental-health-discharge-summary-example-and-template"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Long Does Behavioral Health EHR Implementation Take?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/how-long-does-behavioral-health-ehr-implementation-take"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Behavioral Health RCM Benchmarks: Clean Claims, AR, Denials",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/behavioral-health-rcm-benchmarks-clean-claim-rate-days-in-ar"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Behavioral Health Case Management Software: A Buying Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/blog/behavioral-health-case-management-software"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://easehealth.com/resources/credentialing-checklist"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Billing Insurance Verification Checklist Complete insurance verification checklist for mental health providers. Pre-appointment verification steps, questions to ask insure...",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/insurance-verification-checklist"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Practice Management Multi-Location Operations Checklist Expansion checklist for therapy practices adding new locations covering feasibility, setup, credentialing, technology, and ongoing...",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/multi-location-operations-checklist"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "Multi-Provider Credentialing Tracker for Group Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/multi-provider-credentialing-tracker"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "New Client Onboarding Checklist for Therapists",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/client-onboarding-checklist"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "New Clinician Onboarding Checklist (90-Day Plan)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/clinician-onboarding-checklist"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "Prior Authorization Request Templates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/prior-auth-request-template"
   }
  ]
 }

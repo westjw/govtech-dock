@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Masabi Launches Passenger, Bringing Agency-Branded Journey Planning, Fare Payments and Concessions Together in One App",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.masabi.com/news/masabi-launches-passenger-bringing-agency-branded-journey-planning-fare-payments-and-concessions-together-in-one-app/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Halifax Transit Launches Account-Based Ticketing Across Bus and Ferry, Powered by Masabi",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.masabi.com/news/halifax-transit-launches-account-based-ticketing-across-bus-and-ferry-powered-by-masabi/"
+  },
+  {
    "date": "2026-09-14",
    "date_source": "near-h1",
    "first_seen": "2026-09-28",
@@ -10,49 +28,85 @@
    "url": "https://blog.masabi.com/blog/start-small-deliver-fast-mobile-first-approach-to-regional-fare-collection-for-uk-bus-franchises"
   },
   {
-   "date": "2026-06-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Tap, Ride, Repeat: How Masabi Is Scaling Open Payments Across North America",
-   "kind": "contract",
-   "kind_rule": "Tap",
-   "url": "https://blog.masabi.com/blog/tap-ride-repeat-how-masabi-is-scaling-open-payments-across-north-america"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "How SaaS Fare Collection Keeps Getting Faster at Scale",
+   "date": "2026-09-14",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Start small, deliver fast: Mobile-First Approach to Regional Fare Collection for UK Bus Franchises",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://blog.masabi.com/blog/how-saas-fare-collection-keeps-getting-faster-at-scale"
+   "url": "https://www.masabi.com/news/start-small-deliver-fast-mobile-first-approach-to-regional-fare-collection-for-uk-bus-franchises/"
   },
   {
-   "date": "2026-06-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Transdev Blazefield Chooses Passenger, a Masabi company, to Power Customer-Facing Digital Services",
-   "kind": "contract",
-   "kind_rule": "Chooses",
-   "url": "https://blog.masabi.com/blog/transdev-blazefield-chooses-passenger-a-masabi-company-to-power-customer-facing-digital-services"
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Total Cost of Ownership Analysis: SaaS Platforms vs Bespoke Design-Build Fare Collection Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/total-cost-of-ownership-analysis-saas-platforms-vs-bespoke-design-build-fare-collection-systems/"
   },
   {
-   "date": "2026-06-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Masabi Wins Sourcewell Contract, Giving 50,000+ Public Agencies a Fast-Track Route to Modern Fare Collection",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://blog.masabi.com/blog/masabi-wins-sourcewell-contract-giving-50000-public-agencies-a-fast-track-route-to-modern-fare-collection"
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Reducing Cash Onboard Public Transit: Balancing Equity and Efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/reducing-cash-onboard-public-transit/"
   },
   {
-   "date": "2026-06-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Arriva UK and Passenger, a Masabi Company, Launch Suite Of Digital Services via Best-In-Class Customer App",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://blog.masabi.com/blog/arriva-uk-and-passenger-a-masabi-company-launch-suite-of-digital-services-via-best-in-class-customer-app"
+   "date": "2026-08-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Bridging the Fare Gap: Unlocking Equity and Efficiency Through Fare Capping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/bridging-the-fare-gap/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What is account-based ticketing?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/what-is-account-based-ticketing/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What is software as a service?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/what-is-software-as-a-service/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "ABT vs AFC \u2014 what\u2019s the difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/abt-vs-afc/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Open loop vs closed loop payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/open-loop-vs-closed-loop/"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Universal token \u2014 what it means for transit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/resources/universal-token-standard/"
   }
  ]
 }

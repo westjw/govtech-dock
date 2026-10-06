@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Costa Rica's SJO airport expands Outsight's Spatial Intelligence to new terminal areas",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsight.ai/insights/costa-rica-s-sjo-airport-expands-outsight-s-spatial-intelligence-to-new-terminal/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Outsight accelerates in Asia-Pacific: new Singapore hub",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsight.ai/insights/outsight-accelerates-in-asia-pacific-new-singapore-hub-joins-hong-kong/"
+  },
+  {
+   "date": "2026-09-20",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Outsight crosses 280 million passengers under real-time measurement, from the busiest US hubs to Singapore Changi",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsight.ai/insights/outsight-crosses-280-million-passengers-under-real-time-measurement/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-04-23",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Aeroporti di Roma to deploy Outsight's Physical AI solution at scale across Rome Fiumicino Airport",
    "kind": "contract",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-04-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Intel and Outsight Announce Strategic Collaboration to Bring Physical AI\u2013Powered Spatial Intelligence to the Enterprise Edge",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-04-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Bordeaux Airport deploys Outsight solution to reduce passenger waiting times",
    "kind": "contract",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-04-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Outsight joins EONA-X to develop collaboration and data innovation in European airports",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What's a Motional Digital Twin?",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-02-13",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Outsight wins Gold for Innovation in Data & AI",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-02-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Outsight recognised among top leading AI companies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsight.ai/insights/outsight-recognised-among-top-leading-ai-companies/"
-  },
-  {
-   "date": "2026-02-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to analyze real-time passenger flow in airports",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsight.ai/insights/how-to-analyze-real-time-passenger-flow-in-airports/"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Why airports struggle with passenger flow counting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsight.ai/insights/why-airports-struggle-with-passenger-flow-counting/"
-  },
-  {
-   "date": "2026-01-07",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "LiDAR queue optimization for airports and retail",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsight.ai/insights/lidar-queue-optimization-for-airports-and-retail/"
   }
  ],
  "profile": {

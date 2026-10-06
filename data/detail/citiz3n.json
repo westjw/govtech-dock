@@ -1,4 +1,51 @@
 {
+ "news": [
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "White Papers & Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://citiz3n.com/resources/whitepapers-reports/"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Product demos & walkthroughs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://citiz3n.com/resources/demo-hub"
+  },
+  {
+   "date": "2026-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Plain-Language Definitions for the Terms That Matter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://citiz3n.com/resources/glossary/"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Procurement guides & requirements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://citiz3n.com/resources/rfp-guides/"
+  },
+  {
+   "date": "2026-08-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Built to the Standards Government Programs Require",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://citiz3n.com/resources/trust-compliance/"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "CITIZ3N Government Solutions builds modular platforms for government agencies that oversee Affordable Care Act marketplaces, Medicaid, health and human services programs, and health benefits for government employees. It is a subsidiary of Softheon and one of three brands in that portfolio.",

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why I\u2019m Excited About What Interloc Is Bringing to APTA 2026 TRANSform & EXPO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/why-im-excited-about-what-interloc-is-bringing-to-apta-2026-transform-expo"
+  },
+  {
    "date": "2026-08-11",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Interloc Solutions Launches interloc.ai, an Enterprise Agentic AI Platform Built Specifically for IBM Maximo",
    "kind": "product",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-06-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Installing an offline OpenShift Cluster and Mirroring the required Image Registries. Part 1 of 3, preparation and initial installation",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-03-29",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Interloc Solutions Launches Informer EdgeSync for MAS to Deliver Upgrades on Your Timeline, with Zero Downtime",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/preparing-executing-automated-db2-backups-when-running-on-redhat-openshift"
-  },
-  {
-   "date": "2025-08-13",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "King County\u2019s Facilities Management Division (FMD) Upgrades to Maximo Application Suite (MAS) 9.01 with Interloc Solutions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/company/news/king-countys-facilities-management-division-fmd-upgrades-to-maximo-application-suite-mas-9.01-with-interloc-solutions"
   }
  ],
  "profile": {

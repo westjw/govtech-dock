@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "What Is Password Spraying? Low-and-Slow Account Compromise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/what-is-password-spraying-low-and-slow-account-compromise"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "What is Adversary-in-the-Middle (AiTM)? Session Hijacking at Scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/what-is-adversary-in-the-middle-aitm-session-hijacking-at-scale"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Internal Tool Gets Body Double",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/internal-tool-gets-body-double"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "EP 123 \u2014 Overmatch Ventures' Morgan Hitzig On The Founder Offset And Why America Wins By Playing Its Own Game",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/morgan-hitzig-founder-offset"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The Complete Guide to NIST CSF: What It Is, the Six Functions Explained, and How to Implement It",
+   "kind": "contract",
+   "kind_rule": "Implement",
+   "url": "https://radicl.com/resources/the-complete-guide-to-nist-csf-what-it-is-the-six-functions-explained-and-how-to-implement-it"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Cloaking Gate Fronts a Certutil Stager Deploying ScreenConnect",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/cloaking-gate-fronts-a-certutil-stager-deploying-screenconnect"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "That Voter Registration Website Might Want More Than Your Vote",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/that-voter-registration-website-might-want-more-than-your-vote"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Nigerian Princes, Free iPads, and the Evolution of Social Engineering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/signal-noise-volume-12"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/what-is-spear-phishing-targeted-attacks-on-defense-contractors"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "NERC CIP Compliance Checklist for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/nerc-cip-compliance-checklist-for-2026"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "FAR CUI Rule vs. CMMC: What Government Contractors Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/far-cui-rule-vs.-cmmc-what-government-contractors-need-to-know"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Signal & Noise, Volume 11",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/signal-noise-volume-11"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "EP 121 \u2014 Tidal Flight's Jude Augustine On Building The First Clean Sheet Seaplane In Decades",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/jude-augustine-tidal-flight-seaplane"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is Lateral Movement? How Attackers Move Through Your Network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-is-lateral-movement-how-attackers-move-through-your-network"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is NERC CIP? Standards, Scope, and Compliance Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-is-nerc-cip-standards-scope-and-compliance-explained"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Top 9 CMMC Consultants for Defense Contractors in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/top-9-cmmc-consultants-for-defense-contractors-in-2026"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Cyberthreats Credit Unions Need to Watch For",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/cyberthreats-credit-unions-need-to-watch-for"
   }
  ],
  "profile": {

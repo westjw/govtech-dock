@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Trust is not a feature. It is the foundation.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/blog/trust-is-not-a-feature-it-is-the-foundation/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.msab.com/es/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
-  },
-  {
-   "date": "2026-04-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "MSAB Interim Report \u2013 Q1 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/it/updates/msab-interim-report-q1-2026/"
   }
  ],
  "profile": {

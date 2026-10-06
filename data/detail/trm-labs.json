@@ -1,8 +1,53 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Law Enforcement Uses AI to Fight AI-Enabled Crime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/how-law-enforcement-uses-ai-to-fight-ai-enabled-crime"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "FinCEN Moves to Cut the A7 Network's Sub-Agents Off From the US Financial System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/fincen-moves-to-cut-the-a7-networks-sub-agents-off-from-the-us-financial-system"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Treasury Sanctions Tren de Aragua ATM Jackpotting Network, Including Seven TRON Addresses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/treasury-sanctions-tren-de-aragua-atm-jackpotting-network-including-seven-tron-addresses"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Terrorist Groups Use AI, and What It Means for Financing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/how-terrorist-groups-use-ai-and-what-it-means-for-financing"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What\u2019s Driving the 117% Rise in CSAM Marketplace Payments \u2014 and Where AI Fits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/whats-driving-the-117-rise-in-csam-marketplace-payments-and-where-ai-fits"
+  },
+  {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Bitget Loses USD 351.6 Million in Hot Wallet Breach in Likely North Korea Attack",
    "kind": "press",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/evolution-of-terrorist-financing-25-years-after-9-11"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "As Much as 30% of a Blockchain's Transfers Are Spam. Here's What It Means for Sanctions Screening.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/as-much-as-30-of-a-blockchains-transfers-are-spam-heres-what-it-means-for-sanctions-screening"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The US Sanctions Xinbi, One of Southeast Asia's Largest Illicit Crypto Marketplaces",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/the-us-sanctions-xinbi-one-of-southeast-asias-largest-illicit-crypto-marketplaces"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "TRM Labs Announces Series C Expansion at USD 2 Billion Valuation to Continue Building Crimefighting AI",
-   "kind": "funding",
-   "kind_rule": "Series C",
-   "url": "https://www.trmlabs.com/resources/blog/trm-labs-announces-series-c-expansion-at-usd-2-billion-valuation-to-continue-building-crimefighting-ai"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Singapore's Proposed Stablecoin Rules: What the MAS Consultation Means for Issuers, Exchanges, and Banks",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/singapores-proposed-stablecoin-rules-what-the-mas-consultation-means-for-issuers-exchanges-and-banks"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "2026\u2019s Biggest Hack To Date: Attackers Drained USD 319 Million in Bitcoin From Liquid Network, Then Returned 85% of Funds",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/2026s-biggest-hack-to-date-attackers-drained-usd-319-million-in-bitcoin-from-liquid-network-then-returned-85-of-funds"
   }
  ],
  "profile": {

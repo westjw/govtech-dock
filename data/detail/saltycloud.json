@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CIS Controls v8: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cis-controls-v8/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CIS Benchmarks: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cis-benchmarks/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CMMC 2.0, Rule & Timeline: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cmmc-2-0/"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CJIS Compliance: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cjis-compliance/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.saltycloud.com/resources/nist-800-53-crosswalk/"
-  },
-  {
-   "date": "2026-05-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "NIST CSF vs Other Frameworks: Complete Guide [2026]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/nist-csf-vs-other-frameworks/"
-  },
-  {
-   "date": "2026-04-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NIST CSF 2.0 Multi-Framework Crosswalk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/resources/nist-csf-multi-framework-crosswalk/"
-  },
-  {
-   "date": "2026-04-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NIST CSF 2.0 Self-Assessment Questionnaire",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/resources/nist-csf-2-0-self-assessment-questionnaire/"
-  },
-  {
-   "date": "2026-04-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NIST CSF 2.0 Readiness Scorecard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/resources/nist-csf-scorecard/"
   }
  ],
  "profile": {

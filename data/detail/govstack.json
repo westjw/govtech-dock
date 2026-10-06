@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Govstack Introduces New Subscription Plans to Support the Future of Digital Government",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.govstack.com/resources/posts/govstack-introduces-new-subscription-plans-to-support-the-future-of-digital-government/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "City of Bryan Earns National Savvy Award for Best Overall Website",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.govstack.com/resources/posts/city-of-bryan-earns-national-savvy-award-for-best-overall-website/"
+  },
+  {
    "date": "2026-01-26",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -19,6 +37,15 @@
    "url": "https://www.govstack.com/resources/posts/accessibility-and-why-quick-fix-tools-arent-a-compliance-strategy/"
   },
   {
+   "date": "2026-01-19",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Municipal Website RFP Toolkit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govstack.com/resources/posts/website-rfp-toolkit/"
+  },
+  {
    "date": "2025-12-16",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2025-12-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How Can Municipalities Digitize Their Services for a Better Citizen Experience?",
    "kind": "press",
@@ -53,15 +80,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govstack.com/resources/posts/cyber-safe-elections-protecting-democracy-and-your-residents-in-the-digital-age/"
-  },
-  {
-   "date": "2025-10-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Municipal Website RFP Toolkit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govstack.com/resources/posts/website-rfp-toolkit/"
   },
   {
    "date": "2025-10-31",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.govstack.com/resources/posts/launch-digital-services-for-your-community/"
-  },
-  {
-   "date": "2025-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Optimizing Government Website Workflows with Automation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govstack.com/resources/posts/optimizing-government-website-workflows-with-automation/"
-  },
-  {
-   "date": "2025-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Automate, Secure, and Simplify Municipal Document Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govstack.com/resources/posts/automate-secure-and-simplify-municipal-document-management/"
   }
  ],
  "profile": {

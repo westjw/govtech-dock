@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "HEat Index, Issue 125 \u2013 ACTS Reporting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/heat-index-issue-125-acts-reporting/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "HEat Index, Issue 124 \u2013 AI-Exposed Majors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/heat-index-issue-124-ai-exposed-majors/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Your Applications Changed. Your Data Strategy Should Stay Yours.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/your-applications-changed-your-data-strategy-should-stay-yours/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "HEat Index, Issue 123 \u2013 Evidence for AI & Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/heat-index-issue-123-evidence-for-ai-learning/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evisions.com/blog/beyond-reports-moving-from-a-reporting-culture-to-a-data-culture/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Argos 6.14.0 Now Available",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://www.evisions.com/blog/argos-6-14-0-now-available/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "HEat Index, Issue 116 \u2013 Loan Proration Rule",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/heat-index-issue-116-loan-proration-rule/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "HEat Index, Issue 115 \u2013 Three-Year Degrees and Critical Thinking",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/heat-index-issue-115-three-year-degrees-and-critical-thinking/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Invoke Learning Starter Pack 1.0 Now Available",
-   "kind": "product",
-   "kind_rule": "Now Available",
-   "url": "https://www.evisions.com/blog/invoke-learning-starter-pack-1-0-now-available/"
   }
  ],
  "profile": {

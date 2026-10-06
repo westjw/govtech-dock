@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Program Integrity in Human Services: Key Takeaways on Identifying and Avoiding for Fraud, Waste, and Abuse",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/program-integrity-in-human-services/"
+  },
+  {
+   "date": "2026-09-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "IDD Documentation Software: What It Is and How It Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/idd-documentation-software-what-it-is-and-how-it-works/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -17,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/the-circle-of-support-bridging-the-gap-between-agencies-and-families-with-secure-access/"
+  },
+  {
+   "date": "2026-09-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "5 Ways Electronic Documentation Empowers DSPs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/5-ways-electronic-documentation-empowers-dsps/"
   },
   {
    "date": "2026-08-11",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/happy-havens-path-to-paperless-reclaiming-time-for-direct-support-with-therap/"
-  },
-  {
-   "date": "2026-06-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Human Hands: Five Ways AI Can Help I/DD Providers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/ai-in-human-hands-five-ways-ai-can-help-i-dd-providers/"
-  },
-  {
-   "date": "2026-05-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Binders to Better Care: Gateway Community Service Board\u2019s Therap Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/from-binders-to-better-care-gateway-community-service-boards-therap-experience/"
-  },
-  {
-   "date": "2026-03-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Automated Data Collection: A Smart Solution for Better Supports at Human Services Agencies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/automated-data-collection-a-smart-solution-for-better-supports-at-human-services-agencies/"
   }
  ]
 }

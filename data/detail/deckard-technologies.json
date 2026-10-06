@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How a Small Municipality Can Get Accurate Tourism and Housing Data When Most Vacation Rentals Aren't Registered",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://deckard.com/resources/how-a-small-municipality-can-get-accurate-tourism-and-housing-data-when-most-vacation-rentals-arent-registered"
+  },
+  {
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "What Is Forensic AI for Rental Compliance? How Deckard Finds Unregistered Properties",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-04-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "Long-Term vs. Short-Term Rental Compliance: Why They're Not the Same Problem",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://deckard.com/resources/as-florida-rethinks-property-taxes-how-will-you-fund-your-future"
-  },
-  {
-   "date": "2026-01-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "How Digital Inspections Strengthen Short-Term Rental Safety and Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://deckard.com/resources/how-digital-inspections-strengthen-short-term-rental-safety-and-compliance"
   }
  ],
  "profile": {

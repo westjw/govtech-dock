@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Unlocking Critical Insights with Ecopia and Eagleview",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecopiatech.com/resources/blog/unlocking-critical-insights-with-ecopia-and-eagleview"
+  },
+  {
    "date": "2026-08-26",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/the-ultimate-guide-to-geospatial-data-for-insurance"
-  },
-  {
-   "date": "2026-08-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Geospatial Master Data Management Checklist",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ecopiatech.com/resources/blog/geospatial-master-data-management-checklist"
   }
  ],
  "profile": {

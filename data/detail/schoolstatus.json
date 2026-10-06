@@ -1,8 +1,80 @@
 {
  "news": [
   {
-   "date": "2026-09-09",
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How Student Data Should Drive Every Family Communication Decision",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/student-data-family-communication-decisions"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "When Bullying Shows Up in Attendance Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/bullying-and-attendance"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Same Data, Every Building: How One Texas District Built Real Attendance Visibility",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/east-central-isd-chronic-absenteeism-case-study"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "SchoolStatus Earns 30 G2 Badges for Fall 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/schoolstatus-g2-fall-2026-badges"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "SchoolStatus Attend Wins 2026 Tech & Learning Award of Excellence",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.schoolstatus.com/blog/schoolstatus-wins-2026-tech-learning-award"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to Build the Business Case for a District-Wide Communication Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/business-case-district-communication-platform"
+  },
+  {
+   "date": "2026-09-15",
    "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Nine Questions That Reveal What Your District Really Knows",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/nine-questions-attendance-diagnostic"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "New Book Gives District Leaders a Practical Framework for Improving Chronic Absenteeism\u2014and a Comprehensive Look at State-Level Attendance Policies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/new-book-for-improving-chronic-absenteeism"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "How Family Segmentation Turns Attendance Data Into Action",
    "kind": "press",
@@ -11,7 +83,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Why Mass Blast Communications Are Failing Your Families",
    "kind": "press",
@@ -20,7 +92,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Why We Still Mail Attendance Interventions in 2026",
    "kind": "press",
@@ -29,84 +101,12 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "School Communication Platform Comparison",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/school-communication-platform-comparison"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Chronic Absenteeism Interventions To Implement In the First 30 Days",
-   "kind": "contract",
-   "kind_rule": "Implement",
-   "url": "https://www.schoolstatus.com/blog/chronic-absenteeism-interventions-first-30-days"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The ROI of Family Engagement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/roi-family-engagement-schools"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Chronic Absenteeism Affects Reading Proficiency",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/chronic-absenteeism-reading-proficiency"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Communicate Student Progress Without Overwhelming Families",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/communicating-student-progress-to-families"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New Data from 1.1 Million Students Shows Chronic Absenteeism Falling for Third Straight Year in 142 K-12 Districts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/new-data-from-1-1-million-students-shows-chronic-absenteeism-falling-for-third-straight-year-in-142-k-12-districts"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "State Attendance Laws Every District Leader Must Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/k-12-attendance-law-requirements-by-state"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Complete Guide to Reducing Chronic Absenteeism for District Leaders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/how-to-reduce-chronic-absenteeism"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The One Decision That Changed Attendance Across Eighteen Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/one-system-eighteen-schools-attendance"
   }
  ],
  "profile": {

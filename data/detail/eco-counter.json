@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Quanteo, the Parent Company of Eco-Counter, Acquires Belgian Company Telraam",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.eco-counter.com/blog/quanteo-eco-compteur-acquisition-societe-belge-telraam-0"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Oslo Turned Bicycle Count Data Into Proof for Its Cycling Ambitions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eco-counter.com/blog/how-oslo-turned-bicycle-count-data-into-proof-for-its-cycling-ambitions"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "European Mobility Week 2026: A 4% increase in bicycle ridership!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eco-counter.com/blog/european-mobility-week-4-percent-increase-bicycle-ridership"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eco-counter.com/blog/anticipate-peaks-using-traffic-prediction-now-available-eco-visio"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Velo-city 2026: Eco-Counter\u2019s agenda for the world cycling summit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/velo-city-2026-eco-counters-agenda-for-the-world-cycling-summit-rimini-italy"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "WAVIX-AI: Die nicht-invasive Radartechnologie f\u00fcr die multimodale Verkehrsz\u00e4hlung",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://de.eco-counter.com/blog/wavix-ai-radar-technologie"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "City of Montreal and Eco-Counter to Collect Active Transportation Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/city-montreal-eco-counter-renew-partnership-collect-data-active-transportation"
   }
  ]
 }

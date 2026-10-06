@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Cognyte Renews $20+ Million Annual Agreement with Tier-1 National Security Agency",
+   "kind": "contract",
+   "kind_rule": "Renews",
+   "url": "https://www.cognyte.com/news/cognyte-renews-20-million-annual-agreement-with-tier-1-national-security-agency/"
+  },
+  {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Cognyte Signs ~$20 Million AI-Powered Expansion with EMEA National Security Customer",
    "kind": "contract",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "The OSINT Framework Every Agency Needs: A Four-Pillar Model for Law Enforcement and Intelligence Agencies",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Cognyte Secures ~$10 Million Contract with Long-Standing APAC National Security Customer",
    "kind": "contract",
@@ -29,12 +38,21 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "Cognyte Reports Strong Second Quarter Results with Accelerating Software Growth and Expanding Profitability",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/news/cognyte-reports-strong-second-quarter-results-with-accelerating-software-growth-and-expanding-profitability/"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
   },
   {
    "date": "2026-09-07",
@@ -44,15 +62,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/blog/fatf-grey-list-investigative-capabilities/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cognyte to Announce Second Quarter FYE27 Financial Results on September 9, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/news/cognyte-to-announce-second-quarter-fye27-financial-results-on-september-9-2026/"
   },
   {
    "date": "2026-08-12",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cognyte to Showcase Financial Crimes Investigation Technology at IAFCI International Conference",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Secures ~$5 Million Expansion with Long-Standing EMEA National Security Customer",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cognyte Joins Global Anti-Scam Alliance to Fight Financial Fraud Threats",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/blog/geospatial-intelligence/"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cognyte Military Intelligence Customer in APAC Expands Partnership with New ~$15-Million Contract",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://www.cognyte.com/news/cognyte-military-intelligence-customer-in-apac-expands-partnership-with-new-15-million-contract/"
   }
  ],
  "profile": {

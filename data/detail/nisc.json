@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Streamline Your Processes with Automated Data Entry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nisc.coop/blog/streamline-your-processes-with-automated-data-entry/"
+  },
+  {
    "date": "2026-06-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -31,7 +40,7 @@
    "date": "2026-04-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Northeast Oklahoma Electric Cooperative: How Mapping Cleanup Transformed Operations in Tornado Alley",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/northeast-oklahoma-electric-cooperative-how-mapping-cleanup-transformed-operations-in-tornado-alley/"
@@ -40,7 +49,7 @@
    "date": "2026-03-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Wired for Change: Embracing AI in Energy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/wired-for-change-embracing-ai-in-energy/"
@@ -49,7 +58,7 @@
    "date": "2026-01-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "How CoServ and Peace River Electric Simplified Complex Processes with NISC\u2019s iVUE Connect \u2013 Marketing Platform",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/how-coserv-and-peace-river-electric-simplified-complex-processes-with-niscs-ivue-connect-marketing-platform/"
@@ -58,7 +67,7 @@
    "date": "2025-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Simplification is the Road to Member Success for Two Montana Communications Providers",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/simplification-is-the-road-to-member-success-for-two-montana-communications-providers/"
@@ -67,7 +76,7 @@
    "date": "2025-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Wake EMC Reduces Truck Rolls by Nearly 50 Percent for Disconnects with NISC\u2019s Multi-Channel Messenger",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/wake-emc-reduces-truck-rolls-by-nearly-50-percent-for-disconnects-with-niscs-multi-channel-messenger/"
@@ -76,37 +85,28 @@
    "date": "2025-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Enhanced Customer Engagement with Enhanced Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/enhanced-customer-engagement-with-enhanced-data/"
   },
   {
    "date": "2025-07-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Desperate Times; Disparate Measures :: Embracing Zero Trust to Protect Critical Infrastructure",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/desperate-times-disparate-measures-embracing-zero-trust-to-protect-critical-infrastructure/"
   },
   {
    "date": "2025-02-13",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "National Information Solutions Cooperative (NISC)",
+   "headline": "Making Employees Part of Change is Key to Project Success",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nisc.coop/blog/making-employees-part-of-change-is-key-to-projec-t-success/"
-  },
-  {
-   "date": "2024-12-13",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Disaster Recovery: Ensuring Business Continuity in the Face of a Disaster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nisc.coop/blog/disaster-recovery-ensuring-business-continuity-in-the-face-of-a-disaster/"
   }
  ]
 }

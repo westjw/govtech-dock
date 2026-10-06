@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Extending Katapult Pro: An Interview With Samer Romise",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.katapultengineering.com/blog/extensibility-samer-romise"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Beautiful Tension: Culture, Profit, And Fulfillment At Katapult",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.katapultengineering.com/blog/andrew-bryden-interview"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why \"Close Enough\" Isn\u2019t Good Enough: Defensible Data in Utility Pole Engineering",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.katapultengineering.com/blog/defensible-data-utility-pole-engineering"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to Hire and Manage a High-Performing OSP Team",
+   "kind": "leadership",
+   "kind_rule": "Hire",
+   "url": "https://www.katapultengineering.com/blog/hire-manage-osp-team"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why BEAD Non-Deployment Funds Won't Cover Your Pole Replacements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.katapultengineering.com/blog/bead-non-deployment-funds"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -52,7 +97,7 @@
    "headline": "Getting the Details Right from the Start: An ADB Case Study",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/adb-companies-case-study?hsLang=en"
+   "url": "https://www.katapultengineering.com/blog/adb-companies-case-study"
   },
   {
    "date": "2026-07-21",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.katapultengineering.com/blog/katapult-pro-training"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The MSA You Sign at 10 Employees Can Sink You at 50: Managing Business Risk as Your Engineering Firm Grows",
-   "kind": "contract",
-   "kind_rule": "Sign",
-   "url": "https://www.katapultengineering.com/blog/risk-management-for-growing-engineering-firms"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Over- and Underestimated Components of OSP Engineering",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/over-underestimated-osp-engineering"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Davey Resource Group Serves One of the Country's Largest IOUs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/davey-case-study?hsLang=en"
-  },
-  {
-   "date": "2026-04-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CCI Systems Case Study: Make Ready Workflow Visibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/cci-systems-case-study?hsLang=en"
-  },
-  {
-   "date": "2026-04-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SQUAN Case Study - Workflow Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.katapultengineering.com/blog/squan-case-study?hsLang=en"
   }
  ],
  "profile": {

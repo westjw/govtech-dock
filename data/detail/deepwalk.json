@@ -1,22 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How to Export Trimble Data to DeepWalk: A 3-Step Migration Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/how-to-export-trimble-data-to-deepwalk-a-3-step-migration-guide"
-  },
-  {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Sidewalk Grading Algorithm Overview",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/sidewalk-grading-algorithm-overview"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "How to Export Trimble Data to DeepWalk: A 3-Step Migration Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-export-trimble-data-to-deepwalk-a-3-step-migration-guide"
   },
   {
    "date": "2026-06-16",
@@ -26,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/free-sidewalk-mileage-how-cities-can-use-deepwalk-and-openstreetmaps-in-preparation-for-sidewalk-assessments"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Danville Prioritizes Sidewalk Access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deepwalk.com/blog/danville-prioritizes-sidewalk-access"
   },
   {
    "date": "2026-05-14",
@@ -55,8 +46,8 @@
    "url": "https://www.deepwalk.com/blog/how-to-add-and-onboard-new-users-on-deepwalk"
   },
   {
-   "date": "2026-05-04",
-   "date_source": "json-ld",
+   "date": "2026-05-01",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How to Reset Your Password on DeepWalk",
    "kind": "press",
@@ -74,7 +65,7 @@
   },
   {
    "date": "2026-04-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How To: Use DeepWalk Flex For Sidewalk Measurements",
    "kind": "press",
@@ -83,7 +74,7 @@
   },
   {
    "date": "2026-02-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How To: Register as a New User on DeepWalk",
    "kind": "press",
@@ -91,8 +82,8 @@
    "url": "https://www.deepwalk.com/blog/how-to-register-as-a-new-user-on-deepwalk"
   },
   {
-   "date": "2025-10-20",
-   "date_source": "json-ld",
+   "date": "2025-09-15",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How To: Migrate to DeepWalk's Formal Authentication System",
    "kind": "press",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deepwalk.com/blog/turning-assessment-into-action-genoa-il-uses-deepwalk-for-sidewalk-inspections"
+  },
+  {
+   "date": "2025-03-17",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "How To: Plan Data Collection Routes for Your Project",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deepwalk.com/blog/how-to-plan-data-collection-routes-for-your-project"
   }
  ],
  "profile": {

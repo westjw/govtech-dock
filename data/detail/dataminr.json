@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI Risk Detection: The Attacks on Your AI Stack Are Ordinary \u2013 And Addressable",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/ai-risk-detection/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "12 Years in the UK: Why Dataminr\u2019s Commitment to the UK Runs Deep",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/12-years-in-the-uk-why-dataminrs-committment-to-the-uk-runs-deep/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Introducing Client-Tailored Threat Intelligence: Turning Threat Data Into Intelligence That Matters to You",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.dataminr.com/resources/blog/introducing-client-tailored-threat-intelligence/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "From Signals to Strategic Advantage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/from-signals-to-strategic-advantage/"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/blog/cvss-is-telling-you-the-wrong-thing/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Implications of Recent CISA Disclosures on Iranian OT System Targeting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/implications-of-recent-cisa-disclosures-on-iranian-ot-targeting/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The Detection Problem Is Solved. The Execution Problem Isn\u2019t.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/the-detection-problem-is-solved-the-execution-problem-isnt/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "America250: What It Takes to Secure the Nation\u2019s Summer of Events",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/america250-what-it-takes-to-secure-the-nations-summer-of-events/"
-  },
-  {
-   "date": "2026-05-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Prevent a $1.5 Billion Security Blind Spot With Predictive Resilience Framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/prevent-a-1-5-billion-security-blind-spot-with-predictive-resilience-framework/"
   }
  ],
  "profile": {

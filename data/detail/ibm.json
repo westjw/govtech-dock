@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Directed execution: Scaling a research platform for quantum error correction",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/directed-execution"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "The continuous path from error mitigation to fault-tolerant quantum computing",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://research.ibm.com/blog/quantum-circuits-vs-llms"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Vibing fatigue: Navigating the hidden cognitive costs of vibe coding",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/think/insights/navigating-the-hidden-cost-cognitive-cost-vibe-coding"
   }
  ]
 }

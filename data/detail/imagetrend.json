@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Pediatric Air Medical Intubation: Findings From a National Study",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/pediatric-air-medical-intubation-study/"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Names",
    "url": "https://www.imagetrend.com/press-releases/imagetrend-names-chris-cartrett-as-chief-executive-officer-to-accelerate-ai-powered-growth/"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Implementation Actually Looks Like with ImageTrend",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/what-implementation-looks-like/"
   }
  ],
  "profile": {

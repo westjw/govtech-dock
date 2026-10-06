@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "9 key insights from 3,000 fashion shoppers on payments, channel blending, and AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/fashion-shopper-payments-insights"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "8 omnichannel payment shifts reshaping fashion retail in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/omnichannel-retailing-fashion-trends-2026"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The new rules of fashion and sportswear payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/resources/fashion-consumer-trends-report"
+  },
+  {
    "date": "2026-08-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -31,7 +58,7 @@
    "date": "2026-07-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "ACI Payments Optimization Program Boost approvals. Recover lost revenue.",
+   "headline": "ACI Payments Optimization: Program Boost approvals. Recover lost revenue.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/resources/payments-optimization-program"
@@ -49,7 +76,7 @@
    "date": "2026-07-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "A bank\u2019s guide to multi-standard payment messaging",
+   "headline": "A bank\u2019s guide for orchestrating every payment message, across every standard",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/resources/multi-standard-payment-messaging-guide"
@@ -76,37 +103,10 @@
    "date": "2026-07-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Add acquirers without adding complexity",
+   "headline": "ACI ISO Acquiring Program: Add acquirers without complexity",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/resources/aci-iso-acquiring-program"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Top five tips for implementing local payment methods",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/top-five-tips-for-implementing-local-payment-methods"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Visa\u2019s service-fee update for utilities: What changes and what doesn\u2019t",
-   "kind": "product",
-   "kind_rule": "update",
-   "url": "https://www.aciworldwide.com/blog/visa-service-fee-update-utilities"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When modernization creates complexity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/resources/when-modernization-creates-complexity"
   }
  ],
  "profile": {

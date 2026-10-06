@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Stop Being the Answer to Every Question",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://centeredgesoftware.com/blog/how-to-stop-being-the-answer-to-every-question/"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Benefits of an All-In-One Solution for Your FEC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://centeredgesoftware.com/blog/the-benefits-of-an-all-in-one-solution-for-your-fec/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://centeredgesoftware.com/blog/why-your-group-sales-role-isnt-producing-and-how-to-fix-it/"
-  },
-  {
-   "date": "2026-04-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CenterEdge to Show at RSA Convention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://centeredgesoftware.com/news/centeredge-to-show-at-rsa-convention/"
-  },
-  {
-   "date": "2026-04-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A Better Way to Win Mother\u2019s Day and Father\u2019s Day at Your FEC",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://centeredgesoftware.com/blog/a-better-way-to-win-mothers-day-and-fathers-day-at-your-fec/"
   }
  ],
  "profile": {

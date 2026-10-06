@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Introducing Kanopy Technology: the new home of Recycle Coach",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://recyclecoach.com/blog/introducing-kanopy-technology-the-new-home-of-recycle-coach"
+  },
+  {
    "date": "2026-03-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -17,6 +26,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://recyclecoach.com/blog/recycle-coach-is-now-soc-2-type-i-certified"
+  },
+  {
+   "date": "2025-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Changing Recycling Behaviour: The Importance of Effective Outreach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recyclecoach.com/blog/changing-recycling-behaviour-the-importance-of-effective-outreach"
+  },
+  {
+   "date": "2025-08-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Waste Education Enables Communities to Reduce Waste and Recycle Better",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://recyclecoach.com/blog/how-waste-education-enables-communities-to-reduce-waste-and-recycle-better"
   },
   {
    "date": "2025-08-20",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://recyclecoach.com/blog/theres-more-than-meets-the-eye-when-it-comes-to-recycling-metal"
-  },
-  {
-   "date": "2025-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Giving New Life to an Old Read: The Recyclability of Books",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://recyclecoach.com/blog/giving-new-life-to-an-old-read-the-recyclability-of-books"
-  },
-  {
-   "date": "2025-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "10 Ways to Avoid Recycling Contamination",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://recyclecoach.com/blog/10-ways-to-avoid-recycling-contamination"
-  },
-  {
-   "date": "2025-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Recycling Journey of a Plastic Bottle Cap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://recyclecoach.com/blog/the-recycling-journey-of-a-plastic-bottle-cap"
   }
  ],
  "profile": {

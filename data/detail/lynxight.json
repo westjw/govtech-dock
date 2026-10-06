@@ -1,13 +1,31 @@
 {
  "news": [
   {
-   "date": "2026-08-23",
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What a day at Freeflow taught me about where UK swimming is heading",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lynxight.com/blog/what-a-day-at-freeflow-taught-me-about-where-uk-swimming-is-heading"
+  },
+  {
+   "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The 5 Hidden Complexities of Outdoor Pool Camera Design",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lynxight.com/blog/outdoor-pool-camera-design-complexities"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Silent Drowning: Why It's So Easy to Miss",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lynxight.com/blog/silent-drowning-why-its-so-easy-to-miss"
   },
   {
    "date": "2026-08-03",

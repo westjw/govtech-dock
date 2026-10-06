@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Echodyne Awarded $250 Million JIATF-401 Counter-UAS Contract",
+   "kind": "contract",
+   "kind_rule": "Awarded",
+   "url": "https://www.echodyne.com/newsroom/echodyne-awarded-250-million-jiatf-401-counter-uas-contract"
+  },
+  {
    "date": "2026-09-09",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "KONGSBERG Selects Echodyne MESA Radar for Counter-UAS Weapon Systems",
    "kind": "contract",
@@ -37,15 +46,6 @@
    "url": "https://www.echodyne.com/newsroom/echodyne-opens-new-manufacturing-facility-to-meet-surging-global-demand-for-advanced-mesa-r-radar"
   },
   {
-   "date": "2026-06-01",
-   "date_source": "card-date",
-   "first_seen": "2026-09-28",
-   "headline": "Accelerating Maritime Security Innovation with Future Ready Radar",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.echodyne.com/newsroom/accelerating-maritime-security-innovation-with-future-ready-radar"
-  },
-  {
    "date": "2026-05-27",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-04-20",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Echodyne Partners with Trust Automation on U.S. Air Force Counter-UAS Contract",
    "kind": "contract",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-04-15",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Advancing the Sensor-to-Shooter Kill Chain: Echodyne at Cross Domain Fires",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-03-04",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Echodyne Uniquely Positioned to Support Laser Effectors",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-03-04",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Echodyne Selected as Range Radar for Project Fly Trap 4.5",
    "kind": "contract",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-02-04",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Moog and Echodyne Announce Collaboration to Advance Weapon Systems for Global Defense",
    "kind": "press",

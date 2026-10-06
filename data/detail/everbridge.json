@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Physical controls in information security: An assessment guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/physical-controls-in-information-security-an-assessment-guide/"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What access schedule and role-based access control design works for labs, offices, and restricted zones?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/what-access-schedule-and-role-based-access-control-design-works-for-labs-offices-and-restricted-zones/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "ASIS asked security leaders: If 82% have an active assailant plan, why do only 39% feel ready?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/asis-asked-security-leaders-if-82-have-an-active-assailant-plan-why-do-only-39-feel-ready/"
+  },
+  {
    "date": "2026-09-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -67,7 +94,7 @@
    "date": "2025-03-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Impact tolerance in operational resilience: A guide for businesses",
+   "headline": "Security leadership in a complex world",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/impact-tolerance-in-operational-resilience/"
@@ -76,28 +103,10 @@
    "date": "2025-03-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Security leadership in a complex world",
+   "headline": "Myth vs. reality: 10 Myths about AI in critical event management",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/security-leadership-in-a-complex-world-2/"
-  },
-  {
-   "date": "2024-08-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Explore the Everbridge 360 AI\u2122 product demo center",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/resources/product-demo-center/"
-  },
-  {
-   "date": "2024-02-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Forrester study reveals Everbridge ROI of 358%",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/forrester-tei-study-reveals-numerous-everbridge-benefits/"
   }
  ],
  "profile": {

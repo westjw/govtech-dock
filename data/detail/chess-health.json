@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Substance Use Disorder Prevention: A Guide to Early Identification and Intervention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/substance-use-disorder-prevention/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The Rise of Cychlorphine, Kratom, and 7-OH: Why Prevention Is the First Line of Defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/emerging-drugs-substance-use-prevention/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Contingency Management for Substance Use Disorder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/contingency-management-for-substance-use-disorder/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "CHESS Health Convenes National Discussion on Rural Recovery Access, in Partnership with NACCHO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/press-releases/chess-health-convenes-national-discussion-on-rural-recovery-access/"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-03-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Retention is a Revenue Strategy",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chess.health/blog/retention-is-a-revenue-strategy/"
-  },
-  {
-   "date": "2026-03-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Loneliness Epidemic: Why Human Connection Can\u2019t Be Automated Away",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/the-loneliness-epidemic/"
-  },
-  {
-   "date": "2026-01-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "The Daunting Task of Allocating Opioid Settlement Funds",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/the-daunting-task-of-allocating-opioid-settlement-funds/"
-  },
-  {
-   "date": "2026-01-05",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Substance Use Disorder Readmissions: The Hidden Drain on Star Ratings and Revenue",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/avoiding-substance-use-disorder-readmissions/"
-  },
-  {
-   "date": "2026-01-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Meeting HEDIS FUI Requirements",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/meeting-hedis-fui-requirements/"
   }
  ],
  "profile": {

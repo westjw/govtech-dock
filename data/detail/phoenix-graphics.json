@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Final Stretch: Quality-Control Steps in the Last 60 Days Before Election Day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://phoenixelectionprinting.com/blog/quality-control-steps-60-days-before-election-day"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Voter Information Cards That Actually Work: Design and Delivery Best Practices",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-02-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Inside Ballot Security: How Printing Choices Protect Election Integrity",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-01-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The MOVE Act Explained: A Boards-of-Election Compliance Guide",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2025-12-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Accessible Ballots: Designing for ADA Compliance and All Voters",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2025-11-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "4 Print Solutions Needed for Smooth Elections",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2025-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Election Mail Integrity: Ensuring Trust and Accuracy in Democratic Outreach",
    "kind": "press",
    "kind_rule": null,
    "url": "https://phoenixelectionprinting.com/blog/election-mail-integrity"
-  },
-  {
-   "date": "2025-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Printing Requirements for Vote-by-Mail & Absentee Ballot Programs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://phoenixelectionprinting.com/blog/printing-requirements-vote-by-mail-absentee-ballot"
   }
  ],
  "profile": {

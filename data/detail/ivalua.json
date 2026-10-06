@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Supplier Risk Management (SRM): Strategies to Mitigate Supplier Risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/supplier-risk-management-srm/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Purchase Requisition vs Purchase Order: What\u2019s The Difference?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/purchase-requisition-vs-purchase-order/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Supplier Risk Assessments: Evaluate & Manage Vendor Risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/supplier-risk-assessment/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Ultimate Guide to Supplier Performance Management (SPM) [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/supplier-performance-management/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Supplier Onboarding 101: Essential Tips for a Smooth Process",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/supplier-onboarding-process/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Ultimate Guide to Supplier Relationship Management [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/blog/supplier-relationship-management/"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Ivalua Recognized for Employee Happiness, Perks, and Work-Life Balance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-recognized-for-employee-happiness-perks-and-work-life-balance/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Ivalua Named a Leader in the IDC MarketScape: Worldwide AI-Enabled Direct Spend",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-named-a-leader-in-the-idc-marketscape-worldwide-ai-enabled-direct-spend/"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -29,84 +101,12 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
    "headline": "Ivalua Achieves EcoVadis Gold Medal for Second Consecutive Year",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ivalua.com/press-releases/ivalua-achieves-ecovadis-gold-medal-for-second-consecutive-year/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Source-to-Contract (S2C) Process Guide: Steps, Stages, And How To Map It",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://www.ivalua.com/blog/source-contract-process/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Ivalua with Dun & Bradstreet: Setting the S2P Intelligence Standard via API + MCP",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/ivalua-dun-bradstreet-supplier-risk-intelligence-api-mcp/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "AI in Strategic Sourcing: Benefits, Use Cases & Implementation Guide for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/ai-sourcing/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Two in Five Businesses Fall Victim to Invoice Fraud, With Losses Averaging $367,000",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/press-releases/two-in-five-businesses-fall-victim-to-invoice-fraud-with-losses-averaging-367000/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Build a Successful Procurement Strategy in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/procurement-strategy/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "77% of U.S. Procurement Leaders Prioritize Lower Material Costs Amid Pressure to Improve Quality",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/press-releases/77-of-u-s-procurement-leaders-prioritize-lower-material-costs-amid-pressure-to-improve-quality/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Agentic AI Risk Management in Procurement: A Comprehensive Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/agentic-ai-risk-management-procurement/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Guida completa alla gestione dei fornitori: strategie e best practice per il 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://it.ivalua.com/blog/gestione-dei-fornitori/"
   }
  ]
 }

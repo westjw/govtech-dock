@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why Spreadsheets Fail at Scale for Water Utility Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/why-spreadsheets-fail-at-scale-for-water-utility-compliance"
+  },
+  {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Introducing 120Field: Built for the Truck, Not the Office",
    "kind": "product",
@@ -19,22 +28,13 @@
    "url": "https://www.120water.com/news/120water-teamsolve-partner-field-data-compliance"
   },
   {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
+   "date": "2026-09-22",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "The EPA's New Systemic Issues Checklist: What Water Systems Should Know",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.120water.com/blog/the-epas-new-systemic-issues-checklist-what-water-systems-should-know"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Securing the Future of Small Water Systems: A Conversation with Scott Huckaby of Talbot County, GA",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/securing-the-future-of-small-water-systems-a-conversation-with-scott-huckaby-of-talbot-county-ga"
   },
   {
    "date": "2026-09-10",
@@ -55,17 +55,8 @@
    "url": "https://www.120water.com/blog/life-after-inventory"
   },
   {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Celebrating Our Customers: 120Water Clients Honored by the LSLR Collaborative",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.120water.com/blog/celebrating-our-customers-120water-clients-honored-by-the-lslr-collaborative"
-  },
-  {
    "date": "2026-09-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "School and Child Care Sampling Waivers: What Qualifies and Who Approves It",
    "kind": "press",
@@ -74,7 +65,7 @@
   },
   {
    "date": "2026-09-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Building Your School and Child Care Facility List: What the New EPA Resources Actually Require",
    "kind": "press",
@@ -83,7 +74,7 @@
   },
   {
    "date": "2026-08-18",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Recap: An Operator's Guide to Verifying Unknown Service Lines",
    "kind": "press",
@@ -92,7 +83,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Recap: Preparing for LCRI Service Line Inventory Requirements",
    "kind": "press",
@@ -101,12 +92,21 @@
   },
   {
    "date": "2026-07-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "LCRI Service Line Verification: Lessons from the Field",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.120water.com/blog/lcri-service-line-verification-lessons-from-the-field"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Celebrating Our Customers: 120Water Clients Honored by the LSLR Collaborative",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.120water.com/blog/celebrating-our-customers-120water-clients-honored-by-the-lslr-collaborative"
   }
  ],
  "profile": {

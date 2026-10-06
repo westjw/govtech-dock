@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "IQGeo Appoints Mike Woods as Chief Executive Officer",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.iqgeo.com/news/iqgeo-appoints-mike-woods-as-chief-executive-officer"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "BEAD Supplemental Round: How Fiber Providers Can Win $21 Billion in New Funding",
+   "kind": "funding",
+   "kind_rule": "Round",
+   "url": "https://www.iqgeo.com/blog/how-fiber-providers-can-win-21-billion-in-new-bead-funding"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "What Are Visual AI Agents for Telecom and Utility Network Operations",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The Hidden Problem with Field Data Quality in Telecom and Utility Networks",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-07-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Why Autonomous Networks in Telecom Depend on Trusted Digital Twins of Physical Infrastructure",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-07-09",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "IQGeo Launches Automated Error Detection for Telecom Network Records",
    "kind": "product",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-07-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Fiber System of Record for Utilities: Build a Resilient Grid with a Stronger Fiber Network Backbone",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-06-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Utility Field Workers of the Future",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-06-18",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "IQGeo Appoints Sophie Gelsthorpe as Chief Human Resources Officer",
    "kind": "leadership",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Awards",
    "url": "https://www.iqgeo.com/news/iqgeo-announces-winners-of-2026-emea-meetup-customer-innovations-awards"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Visual AI Enables Utility Operators to Power Smart Meter Rollout",
-   "kind": "contract",
-   "kind_rule": "Rollout",
-   "url": "https://www.iqgeo.com/blog/ai-smart-meter-installation-software"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "IQGeo To Preview Unified Fieldworker App at Fiber Connect 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iqgeo.com/news/iqgeo-to-preview-unified-fieldworker-app-at-fiber-connect-2026"
   }
  ],
  "profile": {

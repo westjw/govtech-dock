@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-07-30",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "From Scenic Backroads to 65+ Tours: How Drives & Detours Is Scaling Self-Guided Travel with STQRY",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-07-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "How Visit Finger Lakes Turned Historic Markers Into a Virtual Museum Without Walls",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-07-15",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Introducing STQRY Studio: AI-Powered Tools for Interactive Digital Experiences",
    "kind": "product",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-07-03",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "May 2026: Apps Gone Live",
    "kind": "press",
@@ -83,12 +83,30 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Explore Paris\u2019 P\u00e8re-Lachaise Cemetery with New City of Immortals App",
    "kind": "press",
    "kind_rule": null,
    "url": "https://stqry.com/blog/explore-paris-pere-lachaise-cemetery-with"
+  },
+  {
+   "date": "2026-05-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Why STQRY Is the Perfect Platform for AI-Powered Tours",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stqry.com/blog/no-code-software"
+  },
+  {
+   "date": "2026-04-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What is Gamification and Why is it Important?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stqry.com/blog/what-is-gamification"
   }
  ],
  "profile": {

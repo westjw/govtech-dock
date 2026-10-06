@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "In the News | Visibility is the School AI Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/in-the-news-government-technology-school-ai-problem/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Classroom Manager Keeps Students Engaged in the Classroom",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/how-classroom-manager-keeps-students-engaged-in-the-classroom/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "In the News | AI Companies Argue There\u2019s a Hidden Cost of Banning AI and Screens in Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/in-the-news-uniteai-banning-ai-and-screens-in-schools-2/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Control Internet Access by Device Without Creating More Work for IT Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/control-internet-access-by-device-without-creating-more-work/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Choosing the Right Data Security Solution for Your School District",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/choosing-the-right-data-security-solution-for-your-school-district/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "FBI Warns About OAuth Consent Phishing Risks for K12 Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/fbi-oauth-consent-phishing/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "MSN Op-ed | September is the Most Dangerous Month for AI Phishing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/in-the-news-msn-september-ai-phishing/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -38,75 +101,12 @@
   },
   {
    "date": "2026-08-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "7 Common Microsoft 365 Security Risks in Schools and How To Address Them",
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/common-microsoft-365-security-risks-in-schools/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Archer City ISD Replaced a Patchwork of Tools With A Unified Security and Safety Solution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/customer-story-k12-archer-city-isd-tx/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How To Recognize a Compromised Google Account for Better Phishing Prevention",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/recognize-a-compromised-google-workspace-account-before-a-breach/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Phishing Protection Software Helps Schools Stop Email-Based Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/how-phishing-protection-software-helps-schools-stop-email-based-threats/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Government Technology | The Real Issue Isn\u2019t Screen Time in Schools, but Technology Governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/in-the-news-government-technology-screen-time-in-schools/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Hidden Risks of Google Workspace Collaboration and How Cloud Security Monitoring Helps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/the-hidden-risks-of-google-workspace-collaboration-in-schools/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Email Threat Intelligence: A Smarter Way to Understand Phishing Risk in K-12",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://managedmethods.com/blog/email-threat-intelligence-k12-phishing-analytics/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Modern Google OAuth Phishing: What K\u201312 Schools Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/google-docs-phishing-oauth-attack/"
   }
  ],
  "profile": {

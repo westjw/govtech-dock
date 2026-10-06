@@ -1,8 +1,53 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Anthropic invests $100 million to train 10,000 engineers and tackle the enterprise AI talent gap",
+   "kind": "funding",
+   "kind_rule": "invests",
+   "url": "https://www.anthropic.com/news/claude-frontier-academy"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Barclays scales Claude to upgrade operations and improve client experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/barclays-scales-claude"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Claude discovers a novel enzyme system with CRISPR-like repeats",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Partnering with Accenture on embedded evaluation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/accenture-embedded-evaluation"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Introducing the Life Sciences Verification Program",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.anthropic.com/news/life-sciences-verification-program"
+  },
+  {
    "date": "2026-09-01",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Developing Enterprise Frontier Safeguards with our customers",
    "kind": "press",
@@ -11,7 +56,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Improving our alignment and security efforts",
    "kind": "press",
@@ -20,7 +65,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Previewing the Model Hardware Standard",
    "kind": "press",
@@ -29,7 +74,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Expanding our support for scientists",
    "kind": "press",
@@ -38,7 +83,7 @@
   },
   {
    "date": "2026-08-25",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Funding better evaluations of AI\u2019s impact on wellbeing",
    "kind": "funding",
@@ -47,7 +92,7 @@
   },
   {
    "date": "2026-08-14",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How Claude\u2019s text watermark works",
    "kind": "press",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Mariano-Florentino (Tino) Cu\u00e9llar to join Anthropic as Chief Global Affairs Officer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/tino-cuellar"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Investigating three real-world incidents in our cybersecurity evaluations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Our position on open-weights models",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/position-open-weights-models"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Claude Opus 5",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.anthropic.com/news/claude-opus-5"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "More details on Fable 5\u2019s cyber safeguards and our jailbreak framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework"
   }
  ],
  "profile": {

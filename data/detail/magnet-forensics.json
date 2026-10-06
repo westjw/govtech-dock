@@ -1,10 +1,46 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "S2:E1 // From Device examination to evidence: Direct examination of the digital device examiner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s2e1-from-device-examination-to-evidence-direct-examination-of-the-digital-device-examiner/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Ask Me Anything: Accelerating incident response with digital forensics at scale",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/ask-me-anything-accelerating-incident-response-with-digital-forensics-at-scale/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Magnet Griffeye: Revolutionizing the battle against terrorism, extremism, and organized crime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/magnet-griffeye-revolutionizing-the-battle-against-terrorism-extremism-and-organized-crime/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Forensic Early Case Assessment: Why the evidence must come first",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/forensic-early-case-assessment-why-the-evidence-must-come-first/"
+  },
+  {
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
-   "headline": "S2:E5 // Research, reality, and the future of AI in digital forensics",
+   "headline": "S2:E5 // Research, reality, and the future o\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
@@ -49,7 +85,7 @@
    "date": "2026-09-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "S3:E5 // What to expect when you\u2019re (not) expecting an incident",
+   "headline": "S3:E5 // What to expect when you\u2019re (not) \u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/s3e5-what-to-expect-when-youre-not-expecting-an-incident/"
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/using-imagine-classifiers-to-focus-on-what-matters-in-investigations/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "From footage to evidence: Introduction to vi\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/from-footage-to-evidence-introduction-to-video-forensics-and-media-authentication-3/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Updating event-driven collections for faster\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/updating-event-driven-collections-for-faster-dfir-investigations/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From tip to action: Managing NCMEC cyber tips at scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/from-tip-to-action-managing-ncmec-cyber-tips-at-scale/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "S4:E9 // Siri-ous intelligence: What iOS 27 means for digital forensics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s4e9-siri-ous-intelligence-what-ios-27-means-for-digital-forensics/"
   }
  ],
  "profile": {

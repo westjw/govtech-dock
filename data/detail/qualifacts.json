@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Navigating H.R. 1: What Providers Need to Know and How to Plan Ahead",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qualifacts.com/resources/hr-1-medicaid-changes-behavioral-health-providers/"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "CenterPointe Named Winner of 2026 Qualifacts Community Impact Through Innovation Award",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.qualifacts.com/resources/centerpointe-named-winner-of-2026-qualifacts-community-impact-through-innovation-award/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -49,7 +67,7 @@
    "date": "2026-08-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "The Behavioral Health Denial Prevention Checklist",
+   "headline": "The Behavioral Health Denial Prevention Checklist: 20 Things to Verify Before You Submit a Claim",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qualifacts.com/resources/the-behavioral-health-denial-prevention-checklist/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qualifacts.com/resources/5-vbc-dashboards-for-ccbhcs-download/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Connecting Point Strengthens Care Coordination for Justice-Involved Individuals with Qualifacts Partnership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qualifacts.com/resources/care-coordination-justice-involved-individuals-referral-management/"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Qualifacts Advances AI for Behavioral Health with New Generative and Agentic Capabilities in Qualifacts iQ",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qualifacts.com/resources/behavioral-health-ai-agentic-billing-clinical-documentation/"
   }
  ],
  "profile": {

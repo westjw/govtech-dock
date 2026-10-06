@@ -1,27 +1,69 @@
 {
-  "date": "2026-10-05",
-  "previous": "2026-10-04",
+  "date": "2026-10-06",
+  "previous": "2026-10-05",
   "changes": [
     {
-      "company": "Boostlingo",
-      "id": "boostlingo",
-      "from": "None found",
+      "company": "ImageTrend",
+      "id": "imagetrend",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive, SMB (United States (Rem)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Red Rover",
-      "id": "red-rover",
+      "company": "PayIt",
+      "id": "payit",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Client Success Manager (Northeast  only"
+    },
+    {
+      "company": "SwiftGov (Swiftbuild.ai)",
+      "id": "swiftgov",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Paladin Drones",
+      "id": "paladin-drones",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative ( only"
+    },
+    {
+      "company": "PSTrax",
+      "id": "pstrax",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Baron Weather",
+      "id": "baron-weather",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "OpenAI",
+      "id": "openai",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Business Development Manager, Prod (Munich, Germany)"
+    },
+    {
+      "company": "SimplyAnalytics",
+      "id": "simplyanalytics",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Ad Astra Information Systems",
+      "id": "ad-astra-information-systems",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Director of Client Success only"
     }
   ]
 }

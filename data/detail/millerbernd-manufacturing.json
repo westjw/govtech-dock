@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Don't Wait for a Title. Start Leading at Millerbernd Today.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.millerbernd.com/who-we-are/news/leadership-academy"
+  },
+  {
    "date": "2026-08-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.millerbernd.com/who-we-are/news/running-on-eos"
-  },
-  {
-   "date": "2025-06-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Meet Our Newest Member in Precision Fabrication",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.millerbernd.com/who-we-are/news/precision-manufacturing"
   }
  ]
 }

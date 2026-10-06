@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Visit us booth #32 Atlantic APCO Conference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://prophoenix.com/2026/09/visit-us-booth-32-atlantic-apco-conference/"
+  },
+  {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Henry County Sheriff\u2019s Office now live with Phoenix software",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "Real-Time Data, Faster Response",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-06-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Visit us booth 324 at FBINAA",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-06-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Visit us booth 609 at National Sheriffs\u2019 Association Conference",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-05-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Here Today at IACP Tech Booth 537",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Dodge County, MN now live with Phoenix software",
    "kind": "press",
    "kind_rule": null,
    "url": "https://prophoenix.com/2026/05/dodge-county-mn-now-live-with-phoenix-software/"
-  },
-  {
-   "date": "2026-04-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Massachusetts Chiefs of Police Conference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://prophoenix.com/2026/04/massachusetts-chiefs-of-police-conference/"
   }
  ]
 }

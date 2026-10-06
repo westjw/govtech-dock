@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "3 Ways Turnkey Microtransit Improves First-Mile and Last-Mile Transportation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/3-ways-turnkey-microtransit-improves-first-mile-and-last-mile-transportation"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "5 Ways Electric Microtransit Can Integrate With Existing Public Transit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ridecircuit.com/blog/5-ways-electric-microtransit-can-integrate-with-existing-public-transit"
+  },
+  {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "3 Challenges Cities Face When Launching Effective Microtransit",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-05-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Circuit Champions: The People Moving Cities",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-04-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "When Gas Prices Rise, Movement Shifts",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-04-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Circuit, Powered by People: Camille Santiago",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-03-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "3 Things We Learned at Safe Roads Summit 2026",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ridecircuit.com/blog/the-difference-between-ride-sharing-and-ride-hailing"
-  },
-  {
-   "date": "2026-02-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "3 Things You Should Know About Fixed-Route and On-Demand Service",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ridecircuit.com/blog/fixed-route-vs-on-demand"
-  },
-  {
-   "date": "2025-02-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Circuit Raises $17M Series B Financing to Scale Tech-Driven Shared Mobility",
-   "kind": "funding",
-   "kind_rule": "Raises",
-   "url": "https://www.ridecircuit.com/blog/series-b?hsLang=en"
   }
  ],
  "profile": {

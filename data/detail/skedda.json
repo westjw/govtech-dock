@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Booking data, wherever you need it:",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/blog/skedda-api-booking-data"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "August 2026 Release Roundup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/blog/august-2026-release-roundup"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "July 2026 Release Roundup",
    "kind": "press",
@@ -19,17 +37,8 @@
    "url": "https://www.skedda.com/blog/july-2026-release-roundup"
   },
   {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "August 2026 Release Roundup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skedda.com/blog/august-2026-release-roundup"
-  },
-  {
    "date": "2026-07-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Moving to a Smaller Office? How to Reduce Office Size the Right Way",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-07-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Every Office, One Dashboard: Meet the Organization Hub",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How to Open a New Office That Works Long After Move-In Day",
    "kind": "press",
@@ -82,31 +91,22 @@
    "url": "https://www.skedda.com/blog/office-occupancy-tracking-methods"
   },
   {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
+   "date": "2026-07-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Best Meeting Room Booking Software: 25 Tools Compared by Pricing, Features, and Fit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/insights/best-meeting-room-booking-software"
+  },
+  {
+   "date": "2026-07-06",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "June 2026 Product Roundup",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skedda.com/blog/june-2026-product-roundup"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Other Access to or Disclosure of Your Information",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://support.skedda.com/en/articles/15674923-sms-messaging-terms"
-  },
-  {
-   "date": "2026-06-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Control Office Space Costs While Protecting Workplace Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skedda.com/blog/control-office-space-costs-workplace-experience"
   }
  ],
  "profile": {

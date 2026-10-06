@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-09-25",
+   "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "The Flashpoint Threat Intelligence Brief: Middle East",
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/the-flashpoint-threat-intelligence-brief-middle-east/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Ransomware Risk Model: Flashpoint\u2019s Patented Scoring Method to Inform Vulnerability Prioritization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/ransomware-risk-model-flashpoint-patented-scoring-method/"
   },
   {
    "date": "2026-09-22",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/process-parameter-poisoning-edr-evasion-technique/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Flashpoint Named A Customer Favorite in The Forrester Wave\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/flashpoint-named-a-customer-favorite-in-the-forrester-wave/"
   },
   {
    "date": "2026-09-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/beyond-cyber-cti-teams-solving-converged-threat-use-cases/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Vulnerability Management Flashpoint EASM: Industry-Leading Vulnerability Intelligence, Mapped to Your Internet-Facing Assets Catch exposures before threat actors do. Here is how Flashpoint\u2019s new modul",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/flashpoint-easm-vulnerability-intelligence/"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Identity Is the New Attack Surface: How Infostealers Are Reshaping Enterprise Risk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/proactive-defender-guide-infostealers/"
   }
  ],
  "profile": {

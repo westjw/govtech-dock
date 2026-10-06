@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2025-08-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Go Live Announcement of IDSS 2.0 Disease Surveillance System Built on Casetivity-DSS",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2025-06-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Massachusetts MIIS Leads the Nation in VTrckS API Phase 3 Implementation",
    "kind": "press",
@@ -65,16 +65,16 @@
   },
   {
    "date": "2023-02-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "AWS Partnership: Strategic Solutions Group Joins AWS Public Sector Program | SSG",
+   "headline": "AWS Partnership: How SSG Enhances Public Sector Services with AWS",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ssg-llc.com/news/strategic-solutions-group-joins-the-aws-partner-network-and-the-aws-public-sector-partner-program/"
   },
   {
    "date": "2022-12-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Strategic Solutions Group (SSG) LLC Maintains Effective Security Controls According to Recent SOC 2 Report",
    "kind": "press",
@@ -83,27 +83,27 @@
   },
   {
    "date": "2022-01-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "My Vax Massachusetts: SSG and MDPH's Joint Venture for Vaccination Records | SSG",
+   "headline": "My Vax Massachusetts: Streamlining Access to Vaccination Records with SSG and MDPH",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ssg-llc.com/news/ssg-and-mdph-launch-my-vax-records-in-massachusetts/"
   },
   {
    "date": "2021-05-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "SSG Launches App to Help Public Health Departments Solve Data Burden | SSG",
+   "headline": "SSG Launches Application to Empower Public Health Departments to Solve Growing Data Burden",
    "kind": "product",
    "kind_rule": "Launches",
    "url": "https://www.ssg-llc.com/news/ssg-launches-application-to-empower-public-health-departments-to-solve-growing-data-burden/"
   },
   {
    "date": "2021-03-26",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Digital Contact Tracing Platform: Accelerating COVID-19 Response with Innovative Healthcare Technology | SSG",
+   "headline": "Digital Contact Tracing Platform: SSG\u2019s Innovative Approach to Combat COVID-19",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ssg-llc.com/news/healthcare-technology-innovator-ssg-rolls-out-digital-platforms-to-accelerate-the-fight-against-covid-19/"

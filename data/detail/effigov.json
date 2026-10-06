@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Recording Available: How Sumter County Handles 12,000+ Resident Calls Per Month with Voice AI",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-07-27",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Real-Time Oversight: How Voice AI Catches a Wrong Answer Mid-Call",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-07-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "One Number, Every Department: What Citywide Voice AI Actually Looks Like",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The Self-Improving Phone Line: How Voice AI Closes Its Own Gaps",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-07-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "A Recording Is a Paper Trail, Not a Guardrail",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-07-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Context Sharing: Why Residents Should Never Repeat Themselves to a Second AI Agent",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The One Oversight Question to Ask Before You Buy Government Voice AI",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-07-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "The 90-Day Countywide Voice AI Rollout, Department by Department",
    "kind": "contract",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-07-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "When the Provider Goes Down, the Phone Still Rings",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-07-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Your Failed Calls Are a To-Do List: How Voice AI Tells You What's Missing",
    "kind": "press",

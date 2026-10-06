@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Attendance Interventions Work\u2014But What Works Changes by Grade Level",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.panoramaed.com/blog/attendance-interventions-work-what-works-changes-by-grade-level"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.panoramaed.com/blog/special-education-ai-use-cases"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The 8-Step Framework Special Ed Directors Use to Build Custom AI Tools (That Actually Fit Your District)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.panoramaed.com/blog/the-8-step-framework-special-ed-directors-use-to-build-custom-ai-tools"
   }
  ],
  "profile": {

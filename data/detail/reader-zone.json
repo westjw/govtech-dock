@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "How to Keep a Library Reading Program Active After Launch",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.readerzone.com/blog/keep-library-reading-program-participation-active"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Minutes, Books, or Pages? Choosing Reading Program Metrics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.readerzone.com/blog/reading-program-metrics"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-06-30",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Create a Culture of Reading in Any Classroom",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-06-05",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "7 Reading Log Alternatives That Still Give Teachers Accountability",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-03-06",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "What do You Want to Accomplish with Reading Programs in 2026?",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2024-01-11",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Trends in Juvenile Literature, 2024",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2023-02-23",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "5 Common Summer Reading Mistakes",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2022-05-25",
-   "date_source": "near-h1",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Reader Zone Clinics 2022",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.readerzone.com/blog/reader-zone-clinics-2022"
-  },
-  {
-   "date": "2022-03-11",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "4 Reasons why public libraries thrived through the pandemic",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.readerzone.com/blog/4-reasons-why-public-libraries-thrived-through-the-pandemic"
-  },
-  {
-   "date": "2022-02-04",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Trends in Juvenile Literature, 2022",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.readerzone.com/blog/childrens-book-trends-2022"
   }
  ],
  "profile": {

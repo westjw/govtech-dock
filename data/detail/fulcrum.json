@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fixing the gap between your water audit and field data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/fixing-the-gap-between-your-water-audit-and-field-data/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Wildnote Teams: The field record that shows the full picture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/the-field-record-that-shows-the-full-picture/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fulcrum and Overstory, working the same problem from both ends",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/fulcrum-and-overstory-partnership/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Overstory and Fulcrum Partner to Deliver Closed-Loop Risk Reduction for Utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-overstory-partnership/"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "With Fulcrum MCP connector and AI Toolkit, workflows once too hard to build are now within reach",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/fulcrum-mcp-connector-ai-toolkit/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Fulcrum Announces MCP & AI Toolkit That Let Field Teams Create Fully-Featured, End-to-End Digital Workflows Through AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-announces-mcp-connector-and-ai-toolkit/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,15 +62,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/woolpert-and-fulcrum-partnership-for-vegetation-risk-management/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fulcrum and Woolpert Connect Utility Vegetation Risk Data Straight to the Crews Who Act on It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-woolpert-partnership/"
   },
   {
    "date": "2026-08-31",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/fulcrum-workflow-automations-the-handoff-that-runs-itself/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Visual proof in the field: How photos and videos strengthen water asset inspections",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/how-photos-and-videos-strengthen-water-asset-inspections/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Water asset management starts with connecting hydrant, valve, and meter records",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/water-asset-management-starts-with-connecting-hydrant-valve-and-meter-records/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What the EPA water infrastructure funding push means for your field operations",
-   "kind": "funding",
-   "kind_rule": "funding",
-   "url": "https://www.fulcrumapp.com/blog/what-epas-water-infrastructure-funding-push-means-for-field-ops/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why pipeline integrity management demands more than most GIS software delivers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/why-pipeline-integrity-management-demands-more-than-most-gis-software-delivers/"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fulcrum Launches its Field Operations Management Platform to Replace Patchworks of Point Solutions and Paper that Slow Down Utility Field Crews",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-launches-its-field-operations-management-platform/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to Build Your First AI Product: A Keynote at the Futures Summit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://n2nservices.com/press/futures-summit-2026-keynote"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Helios: The Next Generation of N2N's Higher-Ed Integration Platform",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-06-04",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "100 Days That Changed Everything",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2025-11-17",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "N2N and Ellucian expand partnership to embed LightLeapAI into Apply and Financial Aid",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2025-09-15",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "El Camino College Union: AI combats enrollment fraud at ECC and other California colleges",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2025-09-02",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Palo Alto Online: Foothill-De Anza pioneers AI tool to detect community college financial aid fraud",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2025-09-02",
-   "date_source": "near-h1",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "EdSource: How California community colleges are using AI to battle financial aid fraud",
    "kind": "press",
    "kind_rule": null,
    "url": "https://n2nservices.com/press/edsource-california-ai-fraud-detection"
-  },
-  {
-   "date": "2025-08-23",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Fortune: 'Ghost students' \u2014 AI-powered fraud rings target millions in financial aid",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://n2nservices.com/press/fortune-ghost-students"
   }
  ],
  "profile": {

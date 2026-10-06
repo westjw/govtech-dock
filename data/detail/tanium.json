@@ -1,8 +1,62 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "AI is Accelerating Your Environment. Our Connector Keeps Up: The Next Evolution of the Service Graph Connector for Tanium & ServiceNow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/service-graph-connector-delta-sync"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Hunter Wins: HuntIQ Tradecraft is your new hunt library",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/huntiq-tradecraft-hub-launch"
+  },
+  {
+   "date": "2026-09-21",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "The Mythos opportunity: Why AI-powered discovery is a welcome modernisation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/mythos-opportunity-ebook"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Hunting Our Own Vulnerabilities First: Tanium\u2019s Frontier AI Security Commitment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/frontier-ai"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Hunt or be Hunted: Hunting RunMRU for Credential Exposure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/runmru-credential-exposure-huntiq"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "Tanium Joins Anthropic's Project Glasswing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/press-releases/tanium-joins-anthropics-project-glasswing"
+  },
+  {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-12",
    "headline": "Hunt or be Hunted: FalconFlank Zero-Day",
    "kind": "press",
@@ -11,7 +65,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
    "headline": "Hunt or be Hunted: ShieldBreak Zero-Day",
    "kind": "press",
@@ -38,7 +92,7 @@
   },
   {
    "date": "2026-08-25",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
    "headline": "The clock is ticking: Your roadmap to 31st October 2026",
    "kind": "press",
@@ -53,60 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as CEO",
    "url": "https://www.tanium.com/newsroom/press-releases"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Tanium Reappoints Co-Founder Orion Hindawi as CEO to Drive Next Chapter of Growth",
-   "kind": "leadership",
-   "kind_rule": "as CEO",
-   "url": "https://www.tanium.com/press-releases/tanium-reappoints-co-founder-orion-hindawi-as-ceo-to-drive-next-chapter-of-growth"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Critical macOS Screen Sharing Authentication Bypass \u2014 Under Active Exploitation (CVE-2026-65400)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/guardian-critical-macos-screen-sharing-authentication-bypass-cve-2026-65400"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Slash Commands Bring Expert SecOps Workflows to Atlas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/atlas-slash-commands"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/keeping-up-with-ai-accelerating-vulnerability-discovery"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ShieldBreak: The Windows Defender 0-Day with No Patch \u2014 And What to Do",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/shieldbreak-mitigation"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "AI That Acts: What IT and Security teams are really buying, and what it takes to earn their trust",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/resources/g2-ai-that-acts-report"
   }
  ],
  "profile": {

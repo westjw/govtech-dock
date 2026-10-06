@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Expanding Netradyne's suite of AI-powered alerts with the new Pedestrian Awareness DriverStar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/pedestrian-awareness-driverstar"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The Quest for Zero Preventable Accidents starts now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/the-quest-for-zero-preventable-accidents"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Shorter days, higher stakes: how fleets can prepare for fall driving risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/shorter-days-higher-stakes-how-fleets-can-prepare-for-fall-driving-risks"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Benefits of AI Dash Cams for Fleet Tracking",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/the-benefits-of-ai-dash-cams-for-fleet-tracking"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Oil and Gas Fleet Management: How to Build a Safer Fleet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/why-is-oil-and-gas-fleet-safety-important"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Stop Arm Violations and the Top 8 School Bus Safety Issues",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/top-8-school-bus-safety-issues"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netradyne.com/de/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Netherlands \u2013 Nederlands (Dutch)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/nl/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI-Powered School Bus Camera Systems: Ensuring Student Safety and Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/blog/ai-powered-school-bus-camera-systems-ensuring-student-safety-and-security"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Improve Truck Driver Retention: 6 Strategies That Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/blog/how-to-increase-driver-retention-expert-tips"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "AI-Powered School Bus Camera Systems: Ensuring Student Safety and Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/uk/blog/ai-powered-school-bus-camera-systems-ensuring-student-safety-and-security"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Syst\u00e8mes de cam\u00e9ras d'autobus scolaire aliment\u00e9s par IA : Assurer la s\u00e9curit\u00e9 des \u00e9tudiants",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/ca-fr/blog/ai-powered-school-bus-camera-systems-ensuring-student-safety-and-security"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Sistemas de C\u00e1maras para Autobuses Escolares Impulsados por IA: Garantizando la Seguridad de los Estudiantes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/mx/blog/ai-powered-school-bus-camera-systems-ensuring-student-safety-and-security"
   }
  ],
  "profile": {

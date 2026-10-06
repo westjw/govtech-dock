@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Can You Lease Water Rights Without Selling Your Land?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/can-you-lease-water-rights-without-selling-your-land"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Why Solar Projects Take Years: The Interconnection Queue, Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/why-solar-projects-take-years-the-interconnection-queue-explained"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Should I Hire a Land Broker or Sell Land Myself?",
+   "kind": "leadership",
+   "kind_rule": "Hire",
+   "url": "https://www.landapp.com/post/should-i-hire-a-land-broker-or-sell-land-myself"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.landapp.com/post/how-much-do-data-centers-pay-for-land"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Crops Grow Best Under Solar Panels?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/what-crops-grow-best-under-solar-panels"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "USDA Farmland Values Reach a Record High in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/usda-farmland-values-reach-a-record-high-in-2026"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What States Are Best For Wind Energy?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/what-states-are-best-for-wind-energy"
   }
  ],
  "profile": {

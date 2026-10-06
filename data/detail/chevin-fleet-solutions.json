@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "RoadFlex integration now available in the FleetWave Store",
+   "kind": "product",
+   "kind_rule": "now available",
+   "url": "https://www.chevinfleet.com/en-us/blog/roadflex-integration-now-available-in-the-fleetwave-store/"
+  },
+  {
    "date": "2026-09-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chevinfleet.com/en-us/blog/chevin-fleet-solutions-to-showcase-latest-innovations-at-the-cv-show-2026/"
-  },
-  {
-   "date": "2026-01-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Chevin Fleet Solutions to Exhibit at the NAFA I&E 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chevinfleet.com/en-us/blog/chevin-fleet-solutions-to-exhibit-at-the-nafa-ie-2026/"
   }
  ],
  "profile": {

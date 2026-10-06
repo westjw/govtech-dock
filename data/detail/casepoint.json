@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "When PDF-Centric FOIA Workflows Start To Break Down",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/when-pdf-centric-foia-workflows-start-to-break-down/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Casepoint Expands Casepoint IQ With First Purpose-Built AI Agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/press/casepoint-expands-casepoint-iq-with-purpose-built-ai-agents/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "5 Security Standards That Reveal the FOIA Market Gap [Infographic]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/foia-technology-security-standards-market-gap/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.casepoint.com/blog/relativity-retires-server-federal-agencies-enter-cloud-first-security-first-era/"
-  },
-  {
-   "date": "2025-11-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "How Legal Teams Should Calculate and Showcase ROI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/how-legal-teams-should-calculate-and-showcase-roi/"
-  },
-  {
-   "date": "2025-10-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Best Practices for Your RFP Process: A Guide for Legal Ops",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/rfp-process-best-practices-a-guide-for-legal-ops/"
-  },
-  {
-   "date": "2024-12-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Navigating Cloud-Based Data Collection in a Hybrid Environment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/navigating-cloud-based-esi-data-collection-hybrid-environment/"
   }
  ],
  "profile": {

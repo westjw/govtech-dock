@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Limble Acquires FM360\u2019s Professional Services Business, Names Founder John Rimer VP of Professional Services",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://limblecmms.com/news/professional-services-fm360-team"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Complete Guide to Facilities Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://limblecmms.com/blog/facilities-management"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Meet the Finalists: 2026 Limble Maintenance Hero Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://limblecmms.com/blog/meet-the-finalists-2026-limble-maintenance-hero-awards"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Fabricated Metals Maintenance: How Shops Stop Losing Hours to Breakdowns",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://limblecmms.com/blog/fabricated-metals-maintenance"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What Actually Breaks When Your CMMS Can't Talk To Your Other Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://limblecmms.com/blog/when-your-cmms-cant-talk-to-your-other-systems"
+  },
+  {
    "date": "2026-09-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://limblecmms.com/blog/cmms-efficiency-process-redesign"
-  },
-  {
-   "date": "2026-06-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Get the Right ROI From Your CMMS: Moving Beyond Reactive Maintenance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/blog/maximizing-cmms-roi"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Meet Smart Parts: Limble's AI-Powered Parts Inventory Tool",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/news/smart-parts"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Limble Earns 40+ Badges in G2\u2019s Summer 2026 Report",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/news/g2-summer-2026-report"
-  },
-  {
-   "date": "2026-04-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Limble Appoints Tim Lamb as Chief Marketing Officer to Drive Scalable Growth and GTM Velocity",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://limblecmms.com/news/tim-lamb-cmo"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Limble and VibeCloud Integrate Predictive Maintenance Insights With Work Order Execution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/news/limble-and-vibecloud"
   }
  ],
  "profile": {

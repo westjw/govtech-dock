@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Protecting government\u2019s role as the source of truth in an AI-driven world",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/protecting-governments-role-as-the-source-of-truth-in-an-ai-driven-world/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The new shape of digital government: Nominations now open for the 2027 Granicus Digital Government Awards",
+   "kind": "contract",
+   "kind_rule": "Awards",
+   "url": "https://granicus.com/blog/the-new-shape-of-digital-government-nominations-now-open-for-the-2027-granicus-digital-government-awards/"
+  },
+  {
    "date": "2026-09-18",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://granicus.com/blog/6-takeaways-from-government-leaders-on-the-future-of-ai-in-the-public-sector/"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Program participation depends on what residents understand before enrollment begins",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/program-participation-depends-on-what-residents-understand-before-enrollment-begins/"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Accessibility maturity matters more than compliance Blogs Read more",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/accessibility-maturity-matters-more-than-compliance/"
   }
  ],
  "profile": {

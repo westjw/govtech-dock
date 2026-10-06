@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "Introducing RockOS and Rock Cortex",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.alcatraz.ai/blog/rockos-rock-cortex-gsx-2026"
+  },
+  {
    "date": "2026-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -28,35 +37,8 @@
    "url": "https://www.alcatraz.ai/blog/aviation-access-control-a-case-for-contractor-employee-security"
   },
   {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Effective tailgating mitigation strategies for your business",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.alcatraz.ai/blog/tailgating-mitigation-strategies-access-control"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Government Building Access Control: Why Outdated Systems Are Failing Federal Facilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.alcatraz.ai/blog/securing-government-buildings-with-access-control-systems"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Biometric airport security: modernizing employee access control systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.alcatraz.ai/blog/modern-airport-employee-access-control-systems"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date": "2026-03-23",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How Alcatraz and Genea work together to advance identity-first access control",
    "kind": "press",
@@ -64,13 +46,67 @@
    "url": "https://www.alcatraz.ai/blog/alcatraz-genea-identity-first-access-control"
   },
   {
-   "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date": "2026-03-19",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The privacy conversation grew up. Here's what that means for security.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.alcatraz.ai/blog/privacy-conversation-grew-up-facial-biometrics-security"
+  },
+  {
+   "date": "2026-03-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Effective tailgating mitigation strategies for your business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/tailgating-mitigation-strategies-access-control"
+  },
+  {
+   "date": "2026-02-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Biometric airport security: modernizing employee access control systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/modern-airport-employee-access-control-systems"
+  },
+  {
+   "date": "2026-02-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Government Building Access Control: Why Outdated Systems Are Failing Federal Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/securing-government-buildings-with-access-control-systems"
+  },
+  {
+   "date": "2026-02-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "How to prevent data breaches before they cost you millions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/how-to-prevent-data-breaches-before-they-cost-you-millions"
+  },
+  {
+   "date": "2026-02-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Why are energy and utility facilities switching to AI facial authentication access control?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/why-are-energy-and-utility-facilities-switching-to-ai-facial-authentication-access-control"
+  },
+  {
+   "date": "2026-02-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Privacy-first facial authentication: the modern standard for higher education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.alcatraz.ai/blog/privacy-first-facial-authentication-the-modern-standard-for-higher-education"
   }
  ],
  "profile": {

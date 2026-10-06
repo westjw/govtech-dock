@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Oscilloquartz and Iridium expand resilient positioning and navigation capabilities with new PNT service integration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20260928-oscilloquartz-and-iridium-expand-resilient-positioning-and-navigation-capabilities"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Adtran showcases open optical networking for AI infrastructure at OIF\u2019s ECOC 2026 interop demo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20260917-adtran-showcases-open-optical-networking-for-ai-infrastructure-at-oifs-ecoc-2026-demo"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "BMC TV expands UK network for major sports broadcasts with Adtran and Fibre Technologies Ltd",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20260915-bmc-tv-expands-uk-network-for-major-sports-broadcasts-with-adtran-and-fibre-technologies"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "time",
    "first_seen": "2026-09-05",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-08-19",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Oscilloquartz expands US aerospace, defense and government presence to address rising demand for resilient PNT",
    "kind": "press",
@@ -80,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.adtran.com/en/newsroom/press-releases/20260529-adtran-resolves-long-running-patent-litigation-reinforcing-commitment-to-defend-innovation"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "euNetworks launches new quantum-safe private connectivity service powered by Adtran\u2019s encrypted optical transport technology",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.adtran.com/en/newsroom/press-releases/20260527-eunetworks-launches-new-quantum-safe-private-connectivity-service-powered-by-adtran"
   }
  ],
  "profile": {

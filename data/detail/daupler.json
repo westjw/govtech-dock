@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "City of Lebanon launches Daupler after-hours customer service system",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://daupler.com/news/city-of-lebanon-launches-daupler-after-hours-customer-service-system"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://daupler.com/news/120water-announces-partner-ecosystem-to-deliver-comprehensive-solutions-addressing-the-water-industrys-biggest-challenges"
-  },
-  {
-   "date": "2020-03-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Demand for Daupler spikes amid COVID-19 as more GovTech customers work from home",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://daupler.com/news/demand-for-daupler-spikes-amid-covid-19-as-more-govtech-customers-work-from-home"
   }
  ],
  "profile": {

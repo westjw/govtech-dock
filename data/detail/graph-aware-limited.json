@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "What\u2019s new in GraphAware Hume 3.1",
    "kind": "press",
@@ -73,8 +73,8 @@
    "url": "https://graphaware.com/blog/neo4j-acquires-graphaware-13-years-of-innovation/"
   },
   {
-   "date": "2026-04-09",
-   "date_source": "json-ld",
+   "date": "2026-06-03",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "GraphAware Hume 3.0: Built for the reality of intelligence work",
    "kind": "press",
@@ -82,13 +82,13 @@
    "url": "https://graphaware.com/blog/graphaware-hume-3-0/"
   },
   {
-   "date": "2026-03-18",
-   "date_source": "json-ld",
+   "date": "2026-04-09",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Solving the challenges of intelligence analysis with graphs",
+   "headline": "Network analysis in criminal intelligence",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://graphaware.com/blog/solve-challenges-intelligence-analysis/"
+   "url": "https://graphaware.com/blog/network-analysis/"
   },
   {
    "date": "2024-02-16",

@@ -1,13 +1,49 @@
 {
  "news": [
   {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date": "2026-09-24",
+   "date_source": "index-text",
    "first_seen": "2026-09-11",
    "headline": "You don\u2019t know SN*P",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.propel.app/blog/you-dont-know-snap-propel/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s changing with Medicaid in 2026?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/whats-changing-medicaid/"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-09-09",
+   "headline": "What changes should I report to Medicaid at renewal?",
+   "kind": "contract",
+   "kind_rule": "renewal",
+   "url": "https://www.propel.app/blog/what-to-report-to-medicaid-at-renewal/"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "A Q&A with Propel\u2019s first Director of State Ventures",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/state-ventures-q-a/"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Does taking care of a family member count as work for Medicaid?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.propel.app/blog/does-taking-care-of-a-family-member-count-as-work-for-medicaid/"
   },
   {
    "date": "2026-08-27",
@@ -29,16 +65,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Does taking care of a family member count as work for Medicaid?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/does-taking-care-of-a-family-member-count-as-work-for-medicaid/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "What\u2019s changing with Medicaid in New York?",
    "kind": "press",
@@ -55,8 +82,8 @@
    "url": "https://www.propel.app/insights/june-2026-pulse-survey/"
   },
   {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
+   "date": "2026-08-17",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "What to do if your Summer EBT didn't arrive",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.propel.app/blog/how-many-people-in-the-u-s-are-on-medicaid/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "What to do if your Summer EBT didn't arrive",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/summer-ebt-2026/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Qu\u00e9 hacer si su Summer EBT no lleg\u00f3",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/es/blog/que-hacer-si-su-summer-ebt-no-llego-es/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "What is the federal poverty level?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.propel.app/blog/income/"
   }
  ],
  "profile": {

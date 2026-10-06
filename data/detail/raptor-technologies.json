@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "A Defensible Framework for Responding to Bullying at Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/defensible-framework-for-responding-to-bullying/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "8 Safety and Planning Steps to Take Before a School Field Trip",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/school-field-trip-planning/"
+  },
+  {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "4 Strategies to Prevent Student Vaping",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "When Should Post-Incident Training Happen at Schools?",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Talking About Suicide: What to Say and Why It Matters",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Using Digital Hall Passes to Prevent Unsafe or Unauthorized Meetups",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "12 Strategies for Preventing Playground Accidents at Schools",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-08-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "5 Reasons to Attend the 2026 SchoolSAFE Conference",
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/blog/reasons-to-attend-schoolsafe-conference/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "9 Types of School Safety Drills and Exercises",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/nine-types-of-school-safety-drills-and-exercises/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Newark CSD Cuts Hallway Wandering with Raptor SmartPass",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/newark-csd-smartpass-case-study/"
   }
  ],
  "profile": {

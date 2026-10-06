@@ -1,13 +1,22 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "The Al was never the hard part. Trust was.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aquasight.io/blog/the-al-was-never-the-hard-part.-trust-was"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Aquasight exhibiting and speaking at Weftec, New Orleans Sept 26-30, 2026.",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.aquasight.io/blog/aquasight-exhibiting-and-speaking-at-weftec-new-orleans-sept-26-30-2026?hsLang=en"
+   "url": "https://www.aquasight.io/blog/aquasight-exhibiting-and-speaking-at-weftec-new-orleans-sept-26-30-2026"
   },
   {
    "date": "2026-03-23",
@@ -16,11 +25,11 @@
    "headline": "AI & Technology: Promise to Practice: Real Utilities. Real Solutions",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.aquasight.io/blog/ai-technology-promise-to-practice-real-utilities.-real-solutions?hsLang=en"
+   "url": "https://www.aquasight.io/blog/ai-technology-promise-to-practice-real-utilities.-real-solutions"
   },
   {
    "date": "2025-09-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "A New Era of Utility Intelligence: Aquasight Unveils Three Breakthrough Innovations at WEFTEC 2025",
    "kind": "product",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2025-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Digital Twins in Action: How Central San is Reimagining Wastewater Process Optimization",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2025-09-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How St. Louis MSD and Aquasight Are Future-Proofing Infrastructure Planning with Best Practice Asset Management Digital Workflows",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2025-08-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Regional Smart Water Platforms: Transforming Utility Collaboration and Resilience",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-08-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "AI-Driven Smart Water Solutions: Turning Climate Pressure into Utility Action",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2025-07-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Smarter Lift Station Management: How Utilities Are Using Digital Tools to Prevent Failures and Cut Costs",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2025-06-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Finding the Invisible Leaks: How Smart Platforms Are Helping Utilities Tackle Water Loss",
    "kind": "press",

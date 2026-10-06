@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Measure Utility Customer Engagement: The Metrics That Actually Matter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.silverblaze.com/blog/how-to-measure-utility-customer-engagement-the-metrics-that-actually-matter/"
+  },
+  {
    "date": "2026-08-12",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI Chatbots for Utilities: Cut Call Volume Without Losing the Human Touch",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-07-24",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How Modern Utility Billing Software Handles Complex Rate Structures: Time-of-Use, Tiered, and Demand Charges",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-06-24",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Understanding the Value of a Utility Billing System",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-06-19",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Why Utilities Are Investing in Cloud-Based Utility Management Solutions",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-06-10",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Future of Utility Customer Engagement for Modern Utilities",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-06-05",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How an Outage Management System Improves Utility Response",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-05-22",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What to Look for in Utility Management Solutions (Cloud, Integration, and Scalability)",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-05-14",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How AMI Utility Data Supports Better Decision Making",
    "kind": "press",
@@ -74,12 +83,30 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How Utility Billing Solutions Improve Efficiency with Real-Time Data and Cloud Integration",
+   "headline": "\u201cHow Utility Billing Solutions Improve Efficiency With Real-Time Data and Cloud Integration\u201d post",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.silverblaze.com/blog/how-utility-billing-solutions-improve-efficiency-with-real-time-data-and-cloud-integration/"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "the difference between utility billing software and billing systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.silverblaze.com/blog/utility-billing-software-vs-billing-systems-whats-the-difference/"
+  },
+  {
+   "date": "2026-04-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "\u201cHow to Choose the Right Utility Customer Engagement Platform\u201d post",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.silverblaze.com/blog/how-to-choose-the-right-utility-customer-engagement-platform-for-a-cloud-based-utility-strategy/"
   }
  ]
 }

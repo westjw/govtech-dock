@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
+   "date": "2026-10-01",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "Automated Meeting Minutes for Local Government: 6 Major Benefits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.escribemeetings.com/blog/automated-meeting-minutes/"
+  },
+  {
+   "date": "2026-07-01",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "California SB 707: What Public Agencies Need to Know",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-04-22",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Clerks Who Use AI Worry More, Not Less: Here\u2019s Why That\u2019s a Good Sign",
    "kind": "contract",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-04-17",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "Residents Can\u2019t Find What You\u2019ve Already Published And It\u2019s Costing Your Office",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-04-16",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "The Clerk\u2019s Office Is Changing. The Budget Isn\u2019t.",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-03-24",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "WCAG 2.1 Compliance Deadline Is Approaching \u2014 Is Your Organization Ready?",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-02-25",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "You\u2019re WCAG 2.1 AA Ready With eScribe.",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "WCAG Compliance Checklist for the Public Meeting Lifecycle",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-02-02",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "City Ordinance vs. City Code: What\u2019s the Difference?",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2025-11-20",
-   "date_source": "json-ld",
+   "date_source": "near-h1",
    "first_seen": "2026-09-05",
    "headline": "What are Meeting Minutes? (Overview, Definition, and Examples)",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.escribemeetings.com/blog/meeting-minutes/"
-  },
-  {
-   "date": "2025-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Does a City Manager Do? (Overview, Roles, and Responsibilities)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.escribemeetings.com/blog/what-does-a-city-manager-do-overview-roles-and-responsibilities/"
   }
  ]
 }

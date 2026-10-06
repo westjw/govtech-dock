@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "thenextweb: Google and Nvidia launch an alliance to make data centres flex their power",
+   "kind": "product",
+   "kind_rule": "launch",
+   "url": "https://www.gridunity.com/resources/thenextweb-google-and-nvidia-launch-an-alliance-to-make-data-centres-flex-their-power"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "What GridUnity Brings to the AI Energy Management Alliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gridunity.com/resources/what-gridunity-brings-to-the-ai-energy-management-alliance-aema-a-practical-perspective-on-connecting-flexible-ai-data-centers-to-the-power-grid"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "GridUnity Selected as Founding Board Member of New AI Energy Management Alliance",
+   "kind": "contract",
+   "kind_rule": "Selected",
+   "url": "https://www.gridunity.com/resources/gridunity-selected-as-founding-board-member-of-new-ai-energy-management-alliance"
+  },
+  {
    "date": "2026-05-18",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gridunity.com/resources/grid-in-focus-part-1-interconnection-bottleneck"
-  },
-  {
-   "date": "2025-07-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "GridUnity\u00ae and CYME announce a partnership to drive innovation across utility engineering operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gridunity.com/resources/gridunity-r-and-cyme-announce-a-partnership-to-drive-innovation-across-utility-engineering-operations"
-  },
-  {
-   "date": "2025-07-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "GridUnity CEO Brian Fitzsimons to Present on Intelligent Grid Connection and Artificial Intelligence at FERC Technical Conference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gridunity.com/resources/gridunity-ceo-brian-fitzsimons-to-present-on-intelligent-grid-connection-and-artificial-intelligence-at-ferc-technical-conference"
-  },
-  {
-   "date": "2025-06-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Meet Ed Sutton: Championing Growth and AI Innovation in Distribution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gridunity.com/resources/meet-ed-sutton-championing-growth-and-ai-innovation-in-distribution"
   }
  ],
  "profile": {

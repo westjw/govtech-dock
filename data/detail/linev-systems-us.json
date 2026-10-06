@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "LINEV Systems to Showcase FOBOS XR at NAME 2026",
    "kind": "leadership",
@@ -11,12 +11,21 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "LINEV Systems ClearPass Body Scanner Among Improvements Recognized in Lake County\u2019s National Innovation Award",
    "kind": "contract",
    "kind_rule": "Award",
    "url": "https://linevsystems.us/news/linev-systems-clearpass-body-scanner-among-improvements-recognized-in-lake-countys-national-innovation-award/"
+  },
+  {
+   "date": "2026-08-30",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Securing Campus Service Entrances with X-Ray Screening Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://linevsystems.us/news/securing-campus-service-entrances-with-x-ray-screening-technology/"
   },
   {
    "date": "2026-08-11",
@@ -26,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://linevsystems.us/news/gsx-2026-is-almost-here-meet-linev-systems-us-at-booth-1251-in-atlanta/"
+  },
+  {
+   "date": "2026-07-30",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Advanced X-Ray Screening for Contraband Control in Correctional Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://linevsystems.us/news/advanced-x-ray-screening-for-contraband-control-in-correctional-facilities/"
   },
   {
    "date": "2026-07-15",
@@ -55,17 +73,8 @@
    "url": "https://linevsystems.us/news/ai-driven-contraband-detection-for-correctional-and-secure-facilities/"
   },
   {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI Baggage Screening for Stadiums, Arenas and High-Capacity Venues",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://linevsystems.us/news/ai-baggage-screening-for-stadiums-arenas-and-high-capacity-venues/"
-  },
-  {
    "date": "2026-06-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Modern Airport X-Ray Security for Faster Passenger and Baggage Screening",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-05-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "LINEV Systems and Quantum Detection Advance AI-Powered X-Ray Screening",
    "kind": "press",
@@ -82,17 +91,8 @@
    "url": "https://linevsystems.us/news/linev-systems-and-quantum-detection-advance-ai-powered-x-ray-screening/"
   },
   {
-   "date": "2026-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Advanced X-Ray Screening for Contraband Control in Correctional Facilities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://linevsystems.us/news/advanced-x-ray-screening-for-contraband-control-in-correctional-facilities/"
-  },
-  {
    "date": "2026-05-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "LINEV Systems Joins the International Irradiation Association",
    "kind": "leadership",
@@ -100,13 +100,13 @@
    "url": "https://linevsystems.us/news/linev-systems-joins-the-international-irradiation-association/"
   },
   {
-   "date": "2026-05-11",
-   "date_source": "json-ld",
+   "date": "2026-05-10",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Securing Campus Service Entrances with X-Ray Screening Technology",
+   "headline": "Compact Jail Body Scanners: A Practical Answer to Modern Contraband Risks",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://linevsystems.us/news/securing-campus-service-entrances-with-x-ray-screening-technology/"
+   "url": "https://linevsystems.us/news/compact-jail-body-scanners-a-practical-answer-to-modern-contraband-risks/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Keeping Communication Strong in Phone-Free Schools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.singlewire.com/news/keeping-communication-strong-in-phone-free-schools"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Edgewood High School Integrated Wearable Alert Badges Into Its Emergency Response Plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.singlewire.com/news/edgewood-high-school-integrated-wearable-alert-badges"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.singlewire.com/blog/illinois-passes-alyssas-law-what-school-districts-need-to-know"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Bridging the Communication Gap in Phone-Free Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.singlewire.com/news/bridging-communication-gaps-in-phone-free-schools"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Edgewood High School adopts wearable alerts to speed emergency response",
-   "kind": "contract",
-   "kind_rule": "adopts",
-   "url": "https://www.singlewire.com/news/edgewood-adopts-informacast-wearable-to-speed-up-response"
   }
  ],
  "profile": {

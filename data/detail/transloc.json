@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "TransL\u014dc to Exhibit at APTA TRANSform & EXPO 2026, Highlighting Connected Fixed Route and OnDemand Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/press/apta-transform-and-expo-2026/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "When the Detour Hits: A Deep Dive on Managing Your Own Routes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/blog/managing-your-own-routes-a-transit-agency-deep-dive/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "TransLoc to Exhibit at NACAS C3X 2026, Highlighting Connected Mobility for Safer, Smarter Campuses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/press/nacas-c3x-2026/"
+  },
+  {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-09",
    "headline": "TransL\u014dc Delivers Phase 2 Enhancements to Reporting Platform: Faster, More Responsive Fixed Route Reports",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-08-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "The Ride Capacity You Never Actually Had",
    "kind": "press",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "TransL\u014dc\u2019s Troy Morris Reflects on His First Months as General Manager, Grounded in Direct Customer Conversations",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-07-30",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What a 40 Percent Fare Increase Actually Buys a Transit Agency",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Fixed Route or OnDemand Microtransit? A Decision Framework",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-07-15",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Fixed Route Operations: Inbound and Outbound Routes for Transit Agencies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://transloc.com/blog/inbound-and-outbound-routes-for-transit-agencies-fixed-route-operations/"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Long Wait Time Prevention for Transit Agencies: Improve Service Reliability",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/long-wait-time-prevention-for-transit-agencies-improve-service-reliability/"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "TransLoc Introduces Long Wait Time Prevention for Transit Agencies",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://transloc.com/press/long-wait-time-prevention/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Dwell Time Best Practices: Turning Stop-Level Data into Better Service Decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/dwell-time-best-practices/"
   }
  ]
 }

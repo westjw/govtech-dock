@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Spotting Student Disengagement Before It Becomes a Stop-Out",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/student-disengagement-warning-signs/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Get More from Your Existing Donors: A Playbook by Donor Type",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/donor-retention-strategies-playbook-by-donor-type/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gravyty.com/blog/summer-melt-financial-aid/"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Security & Compliance for Advancement Leaders: What You Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/security-compliance-advancement/"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "The 4-Week Enrollment Decision Window: What the FAFSA Data Means for Your Yield Strategy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/what-the-fafsa-data-means-for-your-yield-strategy/"
   }
  ],
  "profile": {

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Bringing Sustainability into Retail Operations Discussions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rubicon.com/blog/bringing-sustainability-into-retail-operations-discussions/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "From A to Z [Anaerobic Digester to Zero Waste to Landfill]: The Rubicon Industry Glossary",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rubicon.com/blog/from-a-to-z-anaerobic-digester-to-zero-waste-to-landfill-the-rubicon-industry-glossary/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "ConnexFM Mid-Year: Managing Waste Across Complex Facility Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rubicon.com/blog/connexfm-mid-year-managing-waste-across-complex-facility-operations/"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.rubicon.com/blog/the-complexity-challenge-facing-grocery-chains/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Why Your Grocery Chain Doesn\u2019t Have a Waste Problem \u2013 It Has an Operations Problem",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.rubicon.com/blog/grocery-waste-management-why-your-grocery-chain-doesnt-have-a-waste-problem-it-has-an-operations-problem/"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Rubicon Expands Dumpster on Demand Rental Platform into Houston, Building on Success in Atlanta and Dallas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.rubicon.com/news/rubicon-expands-dumpster-on-demand-rental-platform-into-houston-building-on-success-in-atlanta-and-dallas/"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Rubicon Names Steven Hood Chief Commercial Officer",
-   "kind": "leadership",
-   "kind_rule": "Names",
-   "url": "https://www.rubicon.com/news/steven-hood-named-chief-commercial-officer/"
   }
  ],
  "profile": {

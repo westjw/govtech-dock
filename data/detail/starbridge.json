@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook October 2, 2026 Starbridge HubSpot Integration: What Syncs and How to Set It Up What the Starbridge HubSpot integration syncs, which HubSpot object each data type belongs on, and how to set i",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/starbridge-hubspot-integration"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook October 2, 2026 Starbridge Salesforce Integration: Setup, Sync, and Matching What the Starbridge Salesforce integration syncs, the admin setup it needs, how account matching works, and how re",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/starbridge-salesforce-integration"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook September 29, 2026 Starbridge Zapier Integration: Setup, Triggers, Workflows How to connect Starbridge to Zapier, which Bridge events trigger a Zap, and how to route only high-scoring buying ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/starbridge-zapier"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook September 29, 2026 Q4 Government Spending The year-end spending rush works differently for local government and schools. See what Q4 government spending really means and when budgets free up.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/q4-government-spending"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook September 28, 2026 AI Workflows for B2G Sales Generic AI tools miss how government and education buy. See how B2G sales automation maps AI workflows to the buying cycle and runs inside your C",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/ai-workflows-b2g-sales-automation"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Playbook September 28, 2026 B2G Sales Terms A practical glossary of B2G sales terms for government and education, from procurement and budget cycles to compliance and buying signals.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/b2g-sales-terms"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -47,66 +101,12 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Playbook September 15, 2026 B2G Sales Rep Onboarding: What to Cover A 90-day onboarding plan for a new B2G sales rep. What to teach in each phase, the account context to hand over on day one, and the ",
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/b2g-sales-rep-onboarding"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 How to Automate Government Account Research A workflow guide for government and education sales teams. What to automate first, which public records predict a purchase, how ",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/automate-government-account-research"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 Trigger-Based Outbound for B2G Sales Teams How government and education sales teams turn public buying events into trigger-based outbound: qualifying, scoring, routing, and",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/trigger-based-outbound-b2g"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 How to Sell to State Agencies: A Practical Guide for B2G Sales Teams Learn how state agencies are funded, how buying decisions form before a solicitation, which routes exis",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/how-to-sell-to-state-agencies"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 B2G Competitive Intelligence: How to Research Incumbents and Time Rip-and-replace Campaigns Find the incumbent vendor in a government or education account, pull contract te",
-   "kind": "contract",
-   "kind_rule": "contract",
-   "url": "https://starbridge.ai/blog/b2g-competitive-intelligence"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 How to Reach Government Decision Makers Map the people who fund, evaluate, and approve a government purchase, then reach them with verified contacts, better timing, and the",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/reach-government-decision-makers"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 Government Contract Expiration: How to Time Your Outreach A government contract expiration date is not the deadline. How option years, extensions, and quiet renewals move t",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://starbridge.ai/blog/government-contract-expiration"
   }
  ],
  "profile": {

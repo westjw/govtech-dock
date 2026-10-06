@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "time",
+   "first_seen": "2026-09-05",
+   "headline": "What\u2019s New: Tools & Features",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/12386023-what-s-new-tools-features"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-09-09",
+   "headline": "Features That Can Be Enabled/Disabled for Your Organization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/16786795-features-that-can-be-enabled-disabled-for-your-organization"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "What Services Does MagicSchool Provide?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/9940206-what-services-does-magicschool-provide"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "time",
+   "first_seen": "2026-09-12",
+   "headline": "Knowledge: Grounding MagicSchool in Your District's Documents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/14426217-knowledge-grounding-magicschool-in-your-district-s-documents"
+  },
+  {
    "date": "2026-09-12",
    "date_source": "time",
    "first_seen": "2026-09-09",
@@ -57,15 +93,6 @@
   {
    "date": "2026-09-11",
    "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Features That Can Be Enabled/Disabled for Your Organization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16786795-features-that-can-be-enabled-disabled-for-your-organization"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "time",
    "first_seen": "2026-09-11",
    "headline": "Browsing and Searching the Tool Library",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/15635358-tool-calling-in-raina"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Content Filters Blocking MagicSchool",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16764998-content-filters-blocking-magicschool"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Adding Your Organization Logo",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/14287719-adding-your-organization-logo"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "Student Tools & Teacher Tools Overview",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/16738030-student-tools-teacher-tools-overview"
   }
  ],
  "profile": {

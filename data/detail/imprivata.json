@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Why healthcare needs to ditch the password and switch to the PIN",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/why-healthcare-needs-ditch-password-and-switch-pin"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Identity security signals: What to watch this Cybersecurity Awareness Month",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/identity-security-signals-what-watch-cybersecurity-awareness-month"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "As privileged access expands, you need simplicity \u2013 not platform sprawl",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/privileged-access-expands-you-need-simplicity-not-platform-sprawl"
+  },
+  {
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -31,7 +58,7 @@
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
-   "headline": "New Imprivata Research Finds 72% of Healthcare Organizations Have AI Tools or Agents Deployed Without Formal IT Approval",
+   "headline": "Read the press release",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/company/press/new-imprivata-research-finds-72-healthcare-organizations-have-ai-tools-or-agents"
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "Identity Security Signals: AI tests security boundaries, digital trust faces new pressures, critical infrastructure risks grow",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-08-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Preparing for the future of patient identity: The role of Imprivata Patient Access in MATCH IT Act readiness",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/preparing-future-patient-identity-role-imprivata-patient-access-match-it-act-readiness"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to prepare for the next generation of identity-based threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/how-prepare-next-generation-identity-based-threats"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI as a clinical actor: Securing the next phase of health automation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/ai-clinical-actor-securing-next-phase-health-automation"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Imprivata Recognized in Constellation ShortListTM for Healthcare IT Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/company/press/imprivata-recognized-constellation-shortlist-healthcare-it-security"
   }
  ],
  "profile": {

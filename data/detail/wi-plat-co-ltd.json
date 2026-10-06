@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "WI.Plat Showcases Smart Water Management Technology at AQUATECH MEXICO 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wiplat.com/blog/aquatech-mexico-2026/"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "WI.Plat Participates in Uzbekistan\u2019s District Heating Infrastructure Modernization Project",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wiplat.com/blog/uzbekistan-district-heating-leak-detection-project/"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "WI.Plat Signs Second Performance-Based NRW Reduction Project in Indonesia with Banjar PDAM",
+   "kind": "contract",
+   "kind_rule": "Signs",
+   "url": "https://wiplat.com/blog/wiplat-banjar-pdam-performance-based-nrw-reduction-indonesia/"
+  },
+  {
    "date": "2026-07-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wiplat.com/blog/wi-plat-expands-southeast-asia-strategy-at-iwwef-2025-in-indonesia/"
-  },
-  {
-   "date": "2025-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "WI.Plat Showcases Global Competitiveness at AWWA ACE 25 in the U.S.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wiplat.com/blog/wi-plat-showcases-global-competitiveness-at-awwa-ace-25-in-the-u-s/"
-  },
-  {
-   "date": "2025-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "WI.Plat Selected for KOICA IBS Program \u2013 Launches Full-Scale Water Management Project in Indonesia",
-   "kind": "contract",
-   "kind_rule": "Selected",
-   "url": "https://wiplat.com/blog/wi-plat-selected-for-koica-ibs-program-launches-full-scale-water-management-project-in-indonesia/"
-  },
-  {
-   "date": "2025-05-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CQ @ Clarke Quay Revitalised and Redeveloped",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wiplat.com/blog/cq-clarke-quay-revitalised-and-redeveloped/"
   }
  ]
 }

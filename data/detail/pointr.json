@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Pointr's September Demo Day Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.pointr.tech/blog/september-demo-day"
+  },
+  {
    "date": "2026-08-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -91,22 +100,13 @@
    "url": "https://www.pointr.tech/blog/ai-mapping-benchmark"
   },
   {
-   "date": "2025-05-15",
+   "date": "2025-06-30",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "LinkedIn's Path to $2.6M Savings and an Improved Employee Experience",
+   "first_seen": "2026-10-05",
+   "headline": "the world\u2019s first AI indoor mapping benchmark",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.pointr.tech/blog/linkedin-pointr-office-utilization-case-study"
-  },
-  {
-   "date": "2025-04-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Indoor Mapping - The Complete Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.pointr.tech/blog/complete-guide-indoor-mapping"
+   "url": "https://www.pointr.tech/blog/pointr-first-ai-mapping-benchmark"
   }
  ],
  "profile": {

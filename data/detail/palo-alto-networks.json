@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "\u201cSASE Gateway\u201d provided by KDDI : How SP Interconnect Simplifies Closed Net...",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/09/sase-gateway-provided-by-kddi-how-sp-interconnect-simplifies-closed-network-zero-trust/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Introducing CLARA Agent: Instant Cloud & AI Risk Insights Available on...",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.paloaltonetworks.com/blog/2026/09/introducing-clara-agent-instant-cloud-ai-risk-insights-available-on-google-cloud-gemini-enterprise/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Why OT Resilience Is Now a Boardroom Imperative",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/09/why-ot-resilience-is-now-a-boardroom-imperative/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -58,7 +85,7 @@
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Palo Alto Networks Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Hybrid Mesh Firewall",
+   "headline": "Palo Alto Networks Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u0212...",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/09/palo-alto-networks-named-a-leader-in-the-2026-gartner-magic-quadrant-for-hybrid-mesh-firewall-securing-every-environment-at-the-speed-of-frontier-ai/"
@@ -76,37 +103,10 @@
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Building Securely From Day One: Palo Alto Networks Partners with the Zendesk Startup Program",
+   "headline": "Building Securely From Day One: Palo Alto Networks Partners with the Zendes...",
    "kind": "contract",
    "kind_rule": "Partners with",
    "url": "https://www.paloaltonetworks.com/blog/2026/09/building-securely-from-day-one-palo-alto-networks-partners-with-the-zendesk-startup-program/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Making the Most of the Cloud Marketplace Opportunity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/09/making-the-most-of-the-cloud-marketplace-opportunity/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Celebrating excellence: Palo Alto Networks announces the 2026 North America Partner of the Year Awards",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://www.paloaltonetworks.com/blog/2026/08/celebrating-excellence-palo-alto-networks-announces-the-2026-north-america-partner-of-the-year-awards/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Unit 42 Defends Organizations Against Next-Gen Frontier AI Risks with Anthropic\u2019s Mythos 5",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/08/unit-42-defends-organizations-against-next-gen-frontier-ai-risks-with-anthropics-mythos-5/"
   }
  ],
  "profile": {

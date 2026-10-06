@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "PayNearMe Launches AI Servicing and Collections Agent to Help Support Teams Scale While Lowering the Cost to Serve",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://home.paynearme.com/press/paynearme-launches-ai-servicing-and-collections-agent-to-help-support-teams-scale-while-lowering-the-cost-to-serve/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "PayNearMe\u2019s Vision for the Future of AI in Payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/paynearmes-vision-for-the-future-of-ai-in-payments/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Building the Future of AI in Payments: A Conversation With Danny Shader and Dave Grannan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/building-the-future-of-ai-in-payments/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Agentic AI: The Future of AI in Payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://home.paynearme.com/blog/agentic-ai-the-future-of-ai-in-payments/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://home.paynearme.com/resources/the-impact-of-payment-experience-on-toll-revenue-leakage/"
-  },
-  {
-   "date": "2025-02-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Total Cost of Acceptance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/resources/beyond-transaction-fees/"
-  },
-  {
-   "date": "2024-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Understanding Generational Loan Payment Preferences",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/resources/understanding-generational-loan-payment-preferences/?utm_source=credit_union_business&utm_medium=press_release&utm_campaign=press_release&utm_content=byline"
-  },
-  {
-   "date": "2024-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Choosing your next payments provider",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/resources/bill-pay-buyers-guide/"
-  },
-  {
-   "date": "2021-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Research Reports View the latest research and trends.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://home.paynearme.com/resources/research/"
   }
  ]
 }

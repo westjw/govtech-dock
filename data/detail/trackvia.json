@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Next Chapter for Field Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/the-next-chapter-for-field-operations/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "TrackVia Launches Next Generation of Its AI-Ready Field Operations Platform",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://trackvia.com/press/trackvia-launches-next-generation-ai-ready-field-operations-platform/"
+  },
+  {
+   "date": "2026-08-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Best Practices for Modern Field Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/best-practices-for-modern-field-operations/"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",

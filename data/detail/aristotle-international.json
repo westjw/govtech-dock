@@ -47,7 +47,7 @@
   },
   {
    "date": "2024-10-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Most Effective Way to Reach Early Voters",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2024-10-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Understanding Trends in Absentee Voting",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2024-10-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "\u201cDouble Negative\u201d Voters and How to Reach Them",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2024-10-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "How to Use Voter Data for Fundraising",
    "kind": "press",
@@ -83,12 +83,30 @@
   },
   {
    "date": "2024-10-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Advocacy Via Thought Leadership",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aristotle.com/blog/2024/10/advocacy-via-thought-leadership/"
+  },
+  {
+   "date": "2024-09-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What Is a Political Action Committee?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aristotle.com/blog/2024/09/7-tips-for-encouraging-contributions-to-pacs/"
+  },
+  {
+   "date": "2024-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "PAC vs Super PAC Differences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aristotle.com/blog/2024/09/pac-vs-super-pac-understanding-the-difference/"
   }
  ],
  "profile": {

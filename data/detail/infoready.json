@@ -1,10 +1,19 @@
 {
  "news": [
   {
-   "date": "2026-08-11",
-   "date_source": "dateline",
+   "date": "2026-09-28",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
-   "headline": "InfoReady on Inc. 5000 List of Fastest Growing Private Companies",
+   "headline": "InfoReady Wins Ann Arbor SPARK FastTrack Award for a Milestone 10th Time",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://inforeadycorp.com/newsroom/infoready-fasttrack-award-history?hsLang=en"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "InfoReady Earns a Place on the 2026 Inc. 5000 List of America\u2019s Fastest-Growing Private Companies",
    "kind": "press",
    "kind_rule": null,
    "url": "https://inforeadycorp.com/newsroom/inc-5000-history?hsLang=en"
@@ -17,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://inforeadycorp.com/newsroom/infoready-achieves-national-recognition-growth-leadership-impact?hsLang=en"
-  },
-  {
-   "date": "2025-09-26",
-   "date_source": "dateline",
-   "first_seen": "2026-09-05",
-   "headline": "InfoReady Wins FastTrack Award Nine Times",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://inforeadycorp.com/newsroom/infoready-fasttrack-award-history?hsLang=en"
   },
   {
    "date": "2025-04-10",
@@ -73,6 +73,15 @@
    "url": "https://blog.inforeadycorp.com/post/reducing-the-administrative-burden-of-academic-program-reviews-in-2025?hsLang=en"
   },
   {
+   "date": "2025-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "2024 InfoReady Release Highlights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.inforeadycorp.com/post/2024-infoready-release-highlights"
+  },
+  {
    "date": "2025-03-05",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -82,31 +91,22 @@
    "url": "https://blog.inforeadycorp.com/post/companies-use-infoready-for-innovation?hsLang=en"
   },
   {
+   "date": "2025-02-04",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Managing Research Development with Small Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.inforeadycorp.com/post/research-development-with-small-teams"
+  },
+  {
    "date": "2025-01-09",
-   "date_source": "dateline",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "InfoReady Celebrates 2024 with Record Growth and Expanded Impact in the Higher Education Market",
+   "headline": "2024 Company Results & Milestones",
    "kind": "press",
    "kind_rule": null,
    "url": "https://inforeadycorp.com/newsroom/record-growth-and-expanded-impact-in-2024?hsLang=en"
-  },
-  {
-   "date": "2024-01-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "2023 Company Results & Milestones",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://inforeadycorp.com/newsroom/remarkable-achievements-and-growth-2023?hsLang=en"
-  },
-  {
-   "date": "2023-02-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Design Your Review Process: Approvals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.inforeadycorp.com/post/design-your-review-process-approvals?hsLang=en"
   }
  ]
 }

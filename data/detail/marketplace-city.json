@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "What Local Governments Told Us: Insights from Our 2026 Customer Survey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://go.marketplace.city/blog/what-local-governments-told-us-2026-customer-surveywhat-local-governments-told-us-insights-from-our-2026-customer-survey"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://go.marketplace.city/blog/can-ai-replace-government-procurement-research"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cooperative Contracts vs. Market Intelligence: Why Co-Ops Aren't Enough for IT Decisions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://go.marketplace.city/blog/cooperative-purchasing-vs-market-intelligence-local-government"
   }
  ],
  "profile": {

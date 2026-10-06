@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "At LOUPE, AI\u2019s Demand for Data Is Giving IoT New Momentum",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://identiv.com/blog/at-loupe-ais-demand-for-data-is-giving-iot-new-momentum/"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Security Labels: Various Methods of Protection Can Help Safeguard Brands",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://identiv.com/news/security-labels/"
+  },
+  {
    "date": "2026-08-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-06-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Michael Zehnpfennig: Photography, Zentangle, and the Art of IoT Engineering",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-05-06",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Jelson Mateus: The Engineer Who Designs the Future Before It\u2019s Needed",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-04-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Scaling the Future of IoT: Kolja Vogel on Building Identiv\u2019s BLE Solutions",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-03-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Clinical Trials Are Getting Smarter \u2013 and More Connected",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Key Trends and Takeaways from Manifest 2026",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-01-05",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Multicomponent Manufacturing at Scale: How Complex IoT Devices Are Actually Built",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2025-11-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "The Rise of BLE: What It Means for the Future of Supply Chain Visibility",
    "kind": "press",
    "kind_rule": null,
    "url": "https://identiv.com/blog/the-rise-of-ble-what-it-means-for-the-future-of-supply-chain-visibility-2/"
-  },
-  {
-   "date": "2025-10-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A New Standard for Trust: How IoT Is Transforming Wine Authentication",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://identiv.com/blog/a-new-standard-for-trust-how-iot-is-transforming-wine-authentication/"
-  },
-  {
-   "date": "2025-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why You May Need a BLE Label, Even If You Don\u2019t Know It Yet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://identiv.com/blog/why-you-may-need-a-ble-label-even-if-you-dont-know-it-yet/"
   }
  ]
 }

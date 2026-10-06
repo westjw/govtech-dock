@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Liberty Defense and Wadsworth Solutions Announce Sale of HEXWAVE\u2122 Systems to Cleveland Hopkins International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-and-wadsworth-solutions-announce-sale-of-hexwave-systems-to-cleveland-hopkins-international-airport/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Liberty Defense Expands U.S. Distribution Footprint with New Agreement with VMI Security for HEXWAVE\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-expands-u-s-distribution-footprint-with-new-agreement-with-vmi-security-for-hexwave/"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Liberty Defense Enters Commercial Loss Prevention Market with Multi-Site HEXWAVE Agreement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://libertydefense.com/news/liberty-defense-enters-commercial-loss-prevention-market-with-multi-site-hexwave-agreement/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -80,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://libertydefense.com/news/liberty-defense-delivers-hexwave-system-to-tsa/"
-  },
-  {
-   "date": "2021-11-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Liberty Defense Featured in CNBC Coverage about Aviation Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://libertydefense.com/news/cnbc-coverage-aviation-security/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "The Human Side of Airport Digitization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aerosimple.com/blog/the-human-side-of-airport-digitization"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -46,8 +55,8 @@
    "url": "https://www.aerosimple.com/blog/what-airport-data-should-actually-be-measured"
   },
   {
-   "date": "2026-03-04",
-   "date_source": "json-ld",
+   "date": "2026-04-06",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Building Operational Resilience Beyond Spreadsheets",
    "kind": "press",
@@ -55,8 +64,8 @@
    "url": "https://www.aerosimple.com/blog/building-operational-resilience-beyond-spreadsheets"
   },
   {
-   "date": "2026-02-18",
-   "date_source": "json-ld",
+   "date": "2026-03-04",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What Airport Boards Should Ask Before Approving New Tech",
    "kind": "press",
@@ -64,8 +73,8 @@
    "url": "https://www.aerosimple.com/blog/what-airport-boards-should-ask-before-approving-new-tech"
   },
   {
-   "date": "2026-01-20",
-   "date_source": "json-ld",
+   "date": "2026-02-18",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Multi-Level Approvals Without Bottlenecks",
    "kind": "press",
@@ -73,8 +82,8 @@
    "url": "https://www.aerosimple.com/blog/multi-level-approvals-without-bottlenecks"
   },
   {
-   "date": "2025-12-16",
-   "date_source": "json-ld",
+   "date": "2026-01-20",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "A Day in the Life of Airport Operations \u2014 The AERO-Simple Way",
    "kind": "press",
@@ -82,8 +91,8 @@
    "url": "https://www.aerosimple.com/blog/a-day-in-the-life-of-an-airport-operations-team-making-complexity-aero-simple"
   },
   {
-   "date": "2025-11-23",
-   "date_source": "json-ld",
+   "date": "2025-12-16",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Managing Airfield Lighting Assets the Smart Way",
    "kind": "press",
@@ -91,22 +100,13 @@
    "url": "https://www.aerosimple.com/blog/managing-airfield-lighting-assets-the-smart-way"
   },
   {
-   "date": "2025-10-16",
-   "date_source": "json-ld",
+   "date": "2025-11-23",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Reactive vs Preventive Maintenance in Airport Environments",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aerosimple.com/blog/reactive-vs-preventive-maintenance-in-airport-environments"
-  },
-  {
-   "date": "2025-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Hazard to Mitigation: Closing the Loop in Digital SMS",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aerosimple.com/blog/from-hazard-to-mitigation-closing-the-loop-in-digital-sms"
   }
  ]
 }

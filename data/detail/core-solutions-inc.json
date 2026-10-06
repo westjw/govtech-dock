@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Inside the Workflows Designer: How the Intelligent Care Record Keeps Care Teams Moving",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/inside-the-workflows-designer"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Denial Management for Behavioral Health: Strategies That Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/denial-management-for-behavioral-health-strategies-that-work"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to Improve Revenue Cycle Management Success in Behavioral Health",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/how-to-improve-revenue-cycle-management-success-in-behavioral-health"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Native AI vs. Bolted-On AI in Behavioral Health EHR: What CFOs Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/native-ai-vs-bolted-on-ai-in-behavioral-health-ehr-what-cfos-need-to-know"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Essential Questions to Ask Technology-Focused Behavioral Health RCM Companies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/essential-questions-to-ask-technology-focused-behavioral-health-rcm-companies"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "AI Meets Behavioral Health: Exploring the Cx360 Intelligence EHR With Dr. Michael Arevalo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/ai-meets-behavioral-health-exploring-the-cx360-intelligence-ehr-with-dr-michael-arevalo"
+  },
+  {
+   "date": "2026-09-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Improving Behavioral Health EHR Buy-In & Adoption With Core Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/improving-behavioral-health-ehr-buy-in-adoption-with-core-solutions"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -44,69 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/navigating-medicaid-billing-for-idd-services-and-its-impact-on-rcm"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Data Integrity Matters in an EHR for Addiction Treatment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/why-data-integrity-matters-in-an-ehr-for-addiction-treatment"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Behavioral Health Revenue Analytics & KPIs: Targeting the Best Metrics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/behavioral-health-revenue-analytics-kpis-targeting-the-best-metrics"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Behavioral Health RCM: Why Specialized Tech Expertise Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/behavioral-health-rcm-why-specialized-tech-expertise-matters"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Improving Notes in Addiction Treatment Electronic Medical Records",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/improving-notes-in-addiction-treatment-electronic-medical-records"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Reducing the SUD Document Burden With a Purpose-Built EHR",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/reducing-the-sud-document-burden-with-a-purpose-built-ehr"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Maintaining Medical Necessity in Substance Use RCM Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/maintaining-medical-necessity-in-substance-use-rcm-software"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Inside the Revenue Cycle Command Center: A New Standard for Behavioral Health RCM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/inside-the-revenue-cycle-command-center-a-new-standard-for-behavioral-health-rcm"
   }
  ],
  "profile": {

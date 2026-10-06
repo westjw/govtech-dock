@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Customize Your School Settings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.minga.io/en/articles/14479385-customize-your-school-settings"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Minga Earns 1EdTech Data Privacy Certification for Student Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://minga.io/blog/minga-earns-1edtech-data-privacy-certification-for-student-safety/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Set Up Your Bell Schedule in Minga",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.minga.io/en/articles/13622775-set-up-your-bell-schedule-in-minga"
+  },
+  {
    "date": "2026-08-31",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What Your Tardy Dashboard Should Show You Every Morning",
    "kind": "press",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Introducing Minga Insights, Because You Deserve to See the Whole Picture",
    "kind": "product",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Keeping Every Parent in the Loop, Without Lifting a Finger",
    "kind": "press",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Flex Periods Only Work If Every Student Actually Shows Up Somewhere Meaningful",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Why School Discipline Breaks Down (And How Automation Restores Accountability)",
    "kind": "press",
@@ -53,6 +80,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://minga.io/blog/how-schools-are-actually-reducing-tardies/"
+  },
+  {
+   "date": "2026-08-11",
+   "date_source": "time",
+   "first_seen": "2026-10-05",
+   "headline": "Sync SIS Rosters with MingaSync",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://support.minga.io/en/articles/13755775-sync-sis-rosters-with-mingasync"
   },
   {
    "date": "2026-08-10",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://minga.io/blog/why-teachers-abandon-digital-hall-passes/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Successfully Roll Out a New Hall Pass System at Your School",
-   "kind": "contract",
-   "kind_rule": "Roll Out",
-   "url": "https://minga.io/blog/how-to-successfully-roll-out-a-new-hall-pass-system-at-your-school/"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What to Ask Before You Buy a Digital Hall Pass System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://minga.io/blog/what-to-ask-before-you-buy-a-digital-hall-pass-system/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Minga Acquires RTI Scheduler to Strengthen Intervention and Enrichment for K\u201312 Schools",
-   "kind": "funding",
-   "kind_rule": "Acquires",
-   "url": "https://minga.io/blog/minga-acquires-rti-scheduler/"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Automate Your School\u2019s Tardy Workflow (Without Replacing Your SIS)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://minga.io/blog/how-to-automate-your-schools-tardy-workflow/"
   }
  ],
  "profile": {

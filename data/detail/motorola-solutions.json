@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Mobile app brings the 911 call directly to officers in the field",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/new-lightning-mobile-app-capabilities"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Different types of CCTV security cameras for businesses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/cctv-camera-types"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How to choose right gate access control systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/gate-access-control"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.motorolasolutions.com/de/blog/gym-access-control"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Michael Mangini wins APCO Jack Daniel Award",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://www.motorolasolutions.com/en_us/blog/2026-jack-daniel-award"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Physische Sicherheit: Best Practices f\u00fcr Unternehmen",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/de/blog/physical-security-guide"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Carroll County State's Attorney's Office & Digital Evidence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/en_us/blog/carroll-county-evidence"
   }
  ],
  "profile": {

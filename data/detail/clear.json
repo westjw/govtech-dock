@@ -1,13 +1,67 @@
 {
  "news": [
   {
+   "date": "2026-09-28",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Destination Guide: Denver on a Layover",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/denver-on-a-layover"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Travel Tips: What Do I Do If My Luggage is Lost",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/what-do-i-do-if-my-luggage-is-lost"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Airport Guide: Chicago O\u2019Hare International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/aiport-guide-ord"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Travel Tips: Checked Bag vs. Carry-On",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/checked-bag-vs-carry-on"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Destination Guide: LA on a Layover",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/la-on-a-layover"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "card-date",
+   "first_seen": "2026-10-05",
+   "headline": "CLEAR Airport Guide: Atlanta Hartsfield-Jackson International Airport",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/airport-guide-atl"
+  },
+  {
    "date": "2026-09-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "CLEAR Airport Guide: Denver International Airport",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clearme.com/blog/airport-guide-den"
+   "url": "https://clearme.com/blog/airport-guide-den"
   },
   {
    "date": "2026-08-27",
@@ -16,7 +70,7 @@
    "headline": "CLEAR Travel Tips: How to Prepare for Wedding Travel Delays",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clearme.com/blog/prepare-wedding-travel-delays"
+   "url": "https://clearme.com/blog/prepare-wedding-travel-delays"
   },
   {
    "date": "2026-08-26",
@@ -25,11 +79,11 @@
    "headline": "CLEAR x Zola Partnership: Say \"I Do\" to Seamless Travel",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clearme.com/blog/clear-zola-partnership"
+   "url": "https://clearme.com/blog/clear-zola-partnership"
   },
   {
    "date": "2026-08-25",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "CLEAR Airport Guide: Los Angeles International Airport",
    "kind": "press",
@@ -38,7 +92,7 @@
   },
   {
    "date": "2026-08-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-10",
    "headline": "CLEAR Airport Guide: John F. Kennedy International Airport",
    "kind": "press",
@@ -52,61 +106,7 @@
    "headline": "CLEAR Travel Tips: How to Fly With a Wedding Dress",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clearme.com/blog/travel-tips-flying-with-wedding-dress"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CLEAR Travel Tips: Planning Travel for Your Destination Wedding",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/coordinate-travel-destination-wedding"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "CLEAR Travel Tips: Can You Bring Wedding Gifts on a Plane?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/can-you-bring-wedding-gifts-on-a-plane"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CLEAR Airport Guide: Seattle-Tacoma International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/airport-guide-sea"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CLEAR eGates Are Strengthening Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/how-egates-strengthen-airport-security"
-  },
-  {
-   "date": "2026-02-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is Shoulder Season and Why it's the Best Time to Travel",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/what-is-shoulder-season"
-  },
-  {
-   "date": "2026-02-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "10 Common Travel Mistakes & How to Avoid Them",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/common-travel-mistakes"
+   "url": "https://clearme.com/blog/travel-tips-flying-with-wedding-dress"
   }
  ]
 }

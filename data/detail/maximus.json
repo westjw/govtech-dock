@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Maximus SNAP modernization experts featured in Policy & Practice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://maximus.com/news/david-crowson-pat-aguilar-snap-policy-practice"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Maximus Foundation awards more than $2 Million to nonprofits nationwide",
+   "kind": "contract",
+   "kind_rule": "awards",
+   "url": "https://maximus.com/news/2026-foundation-grantees"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -58,7 +76,7 @@
    "date": "2026-07-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Proactive accuracy in eligibility determination is shaping SNAP\u2019s future",
+   "headline": "Proactive accuracy in eligibility...",
    "kind": "press",
    "kind_rule": null,
    "url": "https://maximus.com/insights/snap-eligibility-accuracy"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://maximus.com/news/socom-human-performance"
-  },
-  {
-   "date": "2026-06-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why human infrastructure is critical to AI success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maximus.com/news/derrick-pledger-human-role-ai"
-  },
-  {
-   "date": "2026-05-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Empowering America\u2019s caregivers: How Maximus and the Elizabeth Dole Foundation transform Veteran support through whole health",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maximus.com/insights/supporting-veterans-through-whole-health"
   }
  ],
  "profile": {

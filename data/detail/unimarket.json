@@ -1,13 +1,31 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beyond Cost: 5 Lessons From Our Vendor Relationship Panel and the Solution to Address Them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.unimarket.com/resources/beyond-cost-5-lessons-from-our-vendor-relationship-panel-and-the-solution-to-address-them/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "The Complete Guide to Scaling Procure-to-Pay Workflows for Mid-Sized Companies with Multi-Department Buying",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.unimarket.com/resources/the-complete-guide-to-scaling-procure-to-pay-workflows-for-mid-sized-companies-with-multi-department-buying/"
+  },
+  {
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Where AI Creates the Most Value in Procurement",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.unimarket.com/resources/where-ai-creates-the-most-value-in-procurement/?l=en-us"
+   "url": "https://www.unimarket.com/resources/where-ai-creates-the-most-value-in-procurement/"
   },
   {
    "date": "2026-08-19",
@@ -25,7 +43,7 @@
    "headline": "The Real Cost of Procurement Tech Debt",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.unimarket.com/resources/the-real-cost-of-procurement-tech-debt/?l=en-us"
+   "url": "https://www.unimarket.com/resources/the-real-cost-of-procurement-tech-debt/"
   },
   {
    "date": "2026-08-04",
@@ -82,31 +100,13 @@
    "url": "https://www.unimarket.com/resources/ai-invoice-automation-launch/?l=en-us"
   },
   {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Unimarket Partners with Procurated to Add Supplier Performance Intelligence to Enterprise Supplier Management",
-   "kind": "contract",
-   "kind_rule": "Partners with",
-   "url": "https://www.unimarket.com/resources/unimarket-partners-with-procurated-to-add-supplier-performance-intelligence-to-enterprise-supplier-management/?l=en-us"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Unimarket Partners with Procurated to Add Supplier Performance Intelligence to Enterprise Supplier Management",
-   "kind": "contract",
-   "kind_rule": "Partners with",
-   "url": "https://www.unimarket.com/anz/resources/unimarket-partners-with-procurated-to-add-supplier-performance-intelligence-to-enterprise-supplier-management/?l=en-au"
-  },
-  {
-   "date": "2026-03-18",
-   "date_source": "json-ld",
+   "date": "2026-04-01",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Unimarket to Showcase Source-to-Pay Innovation at EPIC 2026 Conference",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.unimarket.com/resources/unimarket-to-showcase-source-to-pay-innovation-at-epic-2026-conference/?l=en-us"
+   "url": "https://www.unimarket.com/resources/unimarket-to-showcase-source-to-pay-innovation-at-epic-2026-conference/"
   }
  ]
 }

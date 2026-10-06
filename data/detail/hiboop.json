@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Inside the UVic research: how peer-reviewed comorbidity data reshaped HiBoop's recommendation logic",
    "kind": "press",
@@ -47,16 +47,16 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "We'll be in Denver for the National Council Annual Conference",
+   "headline": "HiBoop at NatCon 2026: Come Find Us at Booth 1441",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hiboop.com/insights/natcon-2026/"
   },
   {
    "date": "2026-03-18",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "From research to code: how the University of Victoria shaped HiBoop's clinical brain",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-03-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "AuDHD: What Happens When ADHD and Autism Coexist",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2025-07-06",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Me & Autism: Building a Space That Says Yes",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-01-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "HiBoop Launches Clinical Pilot for Innovative Mental Health Assessment Platform",
    "kind": "product",

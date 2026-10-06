@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-09-11",
+   "date": "2026-10-01",
    "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Knighthead Life Selects Brain Co. to Power Annuity Operations",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://brain.co/blog/knighthead-life-selects-brain-co-to-power-annuity-operations"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Knighthead Life Selects Brain Co. to Power Annuity Operations",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://brain.co/news/design"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "index-text",
    "first_seen": "2026-09-12",
    "headline": "My Summer as a Platform Engineering Intern at Brain Co.",
    "kind": "press",

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "The Top 10 U.S. Cities Driving Business Travel Demand in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/the-top-10-u-s-cities-driving-business-travel-demand-in-2026"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Modernizing Corporate Travel Policies for Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/blog/modernizing-corporate-travel-policies-for-success"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.emburse.com/blog/finance-leader-checklist-for-agentic-ai"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Emburse Wins 2026 SaaS Award for Best SaaS Product for Business Productivity",
-   "kind": "contract",
-   "kind_rule": "Award",
-   "url": "https://www.emburse.com/company/news/emburse-wins-2026-saas-award-for-best-saas-product-for-business-productivity"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Emburse Named to the 2026 Inc. 5000 List, Marking Fourth Consecutive Recognition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/company/news/emburse-named-to-the-2026-inc-5000-list-marking-fourth-consecutive-recognition"
   }
  ],
  "profile": {

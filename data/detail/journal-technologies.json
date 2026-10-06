@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Evaluating AI for Justice: A Sneak Peek",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.journaltech.com/blog/evaluating-ai-for-justice-sneak-peek"
+  },
+  {
    "date": "2026-08-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.journaltech.com/blog/key-cms-concepts"
-  },
-  {
-   "date": "2025-04-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Utah Prosecution Council Standardizes CMS Offering with eProsecutor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.journaltech.com/blog/utah-prosecution-council-standardizes-cms-offering-with-eprosecutor"
   }
  ],
  "profile": {

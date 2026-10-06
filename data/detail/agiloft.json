@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Agiloft Astra: AI Powered Contract Intelligence, Now for Everyone",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://agiloft.com/blog/introducing-astra-ai-powered-contract-intelligence"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Transforming contract review at NetApp with Agiloft Astra",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://agiloft.com/blog/transforming-contract-review-at-netapp-with-astra"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-05",
+   "headline": "Agiloft Research Reveals Hidden Procurement Value Gap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://agiloft.com/news/agiloft-research-reveals-hidden-procurement-gap"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -8,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://agiloft.com/news/multi-player-sponsorship-2026-us-open"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Powering EBITDA With Contracts: How Procurement Teams Can Create Faster Financial Impact with AI-Powered CLM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://agiloft.com/blog/powering-ebitda-with-contracts-how-procurement-teams-can-create-faster-financial-impact-with-ai-powered-clm"
   },
   {
    "date": "2026-08-21",
@@ -40,15 +58,6 @@
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "AI Contracting Tools vs CLM: What\u2019s the Difference (And Why You Need Both)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://agiloft.com/blog/ai-contracting-tools-vs-clm-whats-the-difference-and-why-your-business-needs-both"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
    "headline": "What Is Data Governance and Why Is It Important for AI-Powered CLM?",
    "kind": "press",
    "kind_rule": null,
@@ -58,9 +67,9 @@
    "date": "2026-08-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "From hype to must-have: 4 practical uses of AI in contract management",
-   "kind": "contract",
-   "kind_rule": "contract",
+   "headline": "world propelled forward by AI",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://www.agiloft.com/blog/four-uses-of-ai-in-contract-management"
   },
   {
@@ -73,33 +82,6 @@
    "url": "https://www.agiloft.com/blog/ai-governance-is-the-next-big-priority-in-legal-tech-heres-how-clm-is-leading-the-way"
   },
   {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Payors and Providers Can Scale Value-Based Care with Smarter Contract Lifecycle Management (CLM)",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://agiloft.com/blog/how-payors-and-providers-can-scale-value-based-care-with-smarter-contract-lifecycle-management-clm"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Introducing Agiloft Astra: AI Powered Contract Intelligence, Now for Everyone",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://agiloft.com/blog/introducing-astra-ai-powered-contract-intelligence"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "5 Ways to Unlock Contract Data to Drive New Revenue",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://agiloft.com/blog/3-ways-to-unlock-contract-data-to-drive-new-revenue"
-  },
-  {
    "date": "2026-08-04",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -107,6 +89,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://agiloft.com/news/noe-ramos-elected-to-worldccs-global-ambassadors"
+  },
+  {
+   "date": "2026-07-16",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Powering EBITDA With Contracts: How Procurement Teams Can Create Faster Financial Impact with AI-Powered CLM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://agiloft.com/blog/powering-ebitda-with-contracts-how-procurement-teams-can-create-faster-financial-impact-with-ai-powered-clm"
+  },
+  {
+   "date": "2026-07-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-09-05",
+   "headline": "Agiloft Announces General Availability of Agiloft Astra, Expanding Access to Contract AI for Legal, Procurement and Finance Teams \u2013 With New Users Getting to Value in Five Minutes - Agiloft News",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://agiloft.com/news/agiloft-announces-general-availability-of-agiloft-astra"
   }
  ],
  "profile": {

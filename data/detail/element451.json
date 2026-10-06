@@ -1,8 +1,35 @@
 {
  "news": [
   {
-   "date": "2026-08-28",
-   "date_source": "near-h1",
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Element451 and Socure Take On Ghost Students With Bolt Fraud Detection and Resolution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/ghost-students-bolt-fraud-detection"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Element451 Introduces Bolt Fraud Detection and Resolution, an Agentic Solution Built With Socure to Close the Gap on Higher Education Fraud",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.element451.com/blog/element451-introduces-bolt-fraud-detection-and-resolution"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Bolt Custom Skills: Teach Your AI Agents Your Institution's Processes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/bolt-custom-skills-teach-your-process"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How San Diego Miramar College Built 24/7, Equity-Centered Student Support with AI Agents",
    "kind": "press",
@@ -10,8 +37,26 @@
    "url": "https://www.element451.com/blog/san-diego-miramar-college-ai-agents-student-support"
   },
   {
-   "date": "2026-08-26",
-   "date_source": "near-h1",
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Beat the Game of Telephone Before AI Amplifies It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/beat-the-game-of-telephone-before-ai-amplifies-it"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Element451 Powers Smarter Student Data With NVIDIA Nemotron",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/element451-powers-smarter-student-data-with-nvidia"
+  },
+  {
+   "date": "2026-08-15",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How Case Management Closes the Gap Advisors Can't Close Alone",
    "kind": "press",
@@ -19,8 +64,17 @@
    "url": "https://www.element451.com/blog/element451-case-management-student-success"
   },
   {
-   "date": "2026-08-12",
-   "date_source": "near-h1",
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "How Cape Cod Community College Deployed an AI Admissions Agent In One Week, And Kept Its Small College Identity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/cape-cod-community-college-ai-admissions-agent"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "CE and Workforce Teams Are Being Asked to Do More. Here's the Infrastructure That Makes It Possible.",
    "kind": "press",
@@ -37,35 +91,8 @@
    "url": "https://www.element451.com/blog/what-15-years-of-manual-deduplication-taught-me"
   },
   {
-   "date": "2026-07-28",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "20 New Teammates, Zero New Budget: How Wake Tech Scaled AI Agents Across an Entire Institution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/20-new-teammates-zero-new-budget"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Practical AI for Marketing Teams: Real Use Cases You Can Apply Today",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/practical-ai-for-marketing-teams"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "How to Buy AI in 2026: A Sourcing Playbook for Higher Ed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/how-to-buy-ai-in-2026"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "near-h1",
+   "date": "2026-08-04",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "From Inquiry to Completion: How CCBC Redesigned the Student Experience",
    "kind": "press",
@@ -73,40 +100,13 @@
    "url": "https://www.element451.com/blog/ccbc-student-experience-redesign"
   },
   {
-   "date": "2026-06-29",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Your Enrollment Data Is Good. The Problem Is Where It Lives.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/encoura-element451-partnership-encoura-connect"
-  },
-  {
-   "date": "2026-05-28",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Higher Education Has a Capacity Problem. Meet the AI Agent Engine Built to Solve It.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/meet-the-ai-agent-engine-built-for-higher-ed"
-  },
-  {
-   "date": "2026-04-13",
+   "date": "2026-08-03",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Element451 Doubles Q1 Growth, Expands Executive Team to Support Next Phase of AI Innovation in Higher Education",
+   "first_seen": "2026-10-05",
+   "headline": "Mastering the Prompt Stack: How to Build AI Agents That Think Like Enrollment Marketers",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.element451.com/blog/element451-2026q1-growth-executive-expansion"
-  },
-  {
-   "date": "2026-03-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Six Element451 Partner Colleges Earn 2026 ATD Leader College Designation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/celebrating-atd-leader-colleges-dream-2026"
+   "url": "https://www.element451.com/blog/mastering-the-prompt-stack"
   }
  ],
  "profile": {
