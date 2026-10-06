@@ -10771,6 +10771,12 @@ def _metadata_edits(d: pathlib.Path) -> list[str]:
         plain[3]["name"] = plain[3]["name"] + " (renamed)"
         cos.remove(plain[4])
         done += ["description", "sector", "sled_only on", "rename", "removal"]
+        # A PERSON'S OUT-OF-SCOPE RULING, which nothing read until 2026-10-06:
+        # Concourse was ruled out and its wrong board's jobs stayed on.
+        if len(plain) >= 7:
+            plain[6]["out_of_scope"] = {"by": "owner", "on": "2026-10-06",
+                                        "why": "sandbox ruling"}
+            done.append(f"ruled out {plain[6]['id']}")
         man = json.loads((d / "manual.json").read_text()) if (d / "manual.json").exists() else {}
         if man.get("postings"):
             cap = dict(man["postings"][0])
@@ -10814,6 +10820,81 @@ def _metadata_edits(d: pathlib.Path) -> list[str]:
         (d / "news.json").write_text(json.dumps(news))
         done.append("news")
     return done
+
+
+def check_a_ruled_out_company_is_left_alone() -> int:
+    """Discovery and refresh never touch a company a person ruled out of scope.
+
+    The owner ruled Concourse out on 2026-08-24 (concourse.ai is a finance-AI
+    company; the procurement exhibitor of that name is concourse-tech) and its
+    wrong board was unwired. The 2026-10-04 discovery sweep saw a company with
+    no board and a website, probed it, and wired ashby/concourse straight
+    back; six of the wrong company's jobs were on the board for two days.
+    build_board.ruled_out keeps it off the board (held against main() by the
+    redraw golden); this drives the two scripts that reach the network, in a
+    sandbox, with their probes stubbed.
+    """
+    import types
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import discover_ats as da
+    import refresh as R
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
+    ruling = {"by": "owner", "on": "2026-08-24", "why": "sandbox"}
+    hiring = {"status": "Unknown", "note": "", "roles": []}
+    cos = [{"id": "kept-co", "name": "Kept Co", "website": "https://kept.example",
+            "ats": {"type": "unknown"}, "hiring": dict(hiring)},
+           {"id": "ruled-co", "name": "Ruled Co", "website": "https://ruled.example",
+            "ats": {"type": "unknown"}, "hiring": dict(hiring),
+            "out_of_scope": ruling}]
+    (tmp / "companies.json").write_text(json.dumps(cos))
+    (tmp / "only.txt").write_text("kept-co\nruled-co\n")
+    keep = (da.DATA, da.LOG, da.SUSPECTS, da.probe, sys.argv,
+            R.DATA, R.HISTORY, R.check_company, R.RENDER_ATTEMPTS)
+    probed: list = []
+
+    def fake_probe(c):
+        probed.append(c["id"])
+        return {"id": c["id"], "found": {"type": "ashby", "ref": c["id"]},
+                "note": "stub"}
+    try:
+        da.DATA, da.LOG, da.SUSPECTS = tmp, tmp / "log.json", tmp / "sus.json"
+        da.probe = fake_probe
+        for argv in (["discover_ats.py", "--write", "--workers", "1"],
+                     ["discover_ats.py", "--write", "--workers", "1",
+                      "--only", str(tmp / "only.txt")]):
+            sys.argv = argv
+            with contextlib.redirect_stdout(io.StringIO()):
+                da.main()
+        if "ruled-co" in probed:
+            errors += fail("discovery probed a company a person ruled out of scope - "
+                           "the sweep that re-wired Concourse's wrong board")
+        if "kept-co" not in probed:
+            errors += fail("discovery probed nothing, so the ruled-out case proves nothing")
+        after = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+        if (after["ruled-co"].get("ats") or {}).get("type") != "unknown":
+            errors += fail("discovery wired a board onto a company ruled out of scope")
+
+        (tmp / "hist").mkdir()
+        (tmp / "companies.json").write_text(json.dumps(cos))
+        checked: list = []
+        R.DATA, R.HISTORY = tmp, tmp / "hist"
+        R.RENDER_ATTEMPTS = tmp / "ra.json"
+        R.check_company = lambda comp: (checked.append(comp["id"]) or
+                                        {"status": "None found", "note": "", "roles": [],
+                                         "skipped": True})
+        sys.argv = ["refresh.py", "--dry-run", "--render-budget", "0", "--ci"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            R.main()
+        if "ruled-co" in checked:
+            errors += fail("refresh fetched a company a person ruled out of scope")
+        if "kept-co" not in checked:
+            errors += fail("refresh checked nothing, so the ruled-out case proves nothing")
+    finally:
+        (da.DATA, da.LOG, da.SUSPECTS, da.probe, sys.argv,
+         R.DATA, R.HISTORY, R.check_company, R.RENDER_ATTEMPTS) = keep
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
 
 
 def check_a_redraw_is_the_crawl_without_the_fetch() -> int:
@@ -10889,6 +10970,17 @@ def check_a_redraw_is_the_crawl_without_the_fetch() -> int:
         errors += _same_board(f"a redraw after {len(done)} edits ({', '.join(done)})",
                               twin_text, twin_detail, edited_text, edited_detail,
                               carried=("boards_read",))
+        # AGREEING IS NOT ENOUGH: both could keep a company a person ruled out.
+        for gone in [d[len("ruled out "):] for d in done if d.startswith("ruled out ")]:
+            for label, txt in (("the crawl", twin_text), ("the redraw", edited_text)):
+                b = json.loads(txt)
+                if any(o["id"] == gone for o in b["organizations"]) or \
+                        any(p.get("company_id") == gone for p in b["postings"]):
+                    errors += fail(f"{label} still publishes {gone}, which a person "
+                                   f"ruled out of scope (build_board.ruled_out)")
+    if not any(d.startswith("ruled out ") for d in done):
+        note("the golden found no company to rule out of scope, so that ruling "
+             "went untested against main()")
     return errors
 
 
@@ -25981,6 +26073,85 @@ def _js_code_only(src: str) -> str:
     return re.sub(r"(?m)(^|[^:\"'`\\])//[^\n]*", r"\1", src)
 
 
+def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
+    """'0 open roles' is a measurement, so only a board we read may print it.
+
+    Until 2026-10-06 both company views asked one question - is the board
+    `enumerable is not False` - and the 862 companies with no board on file
+    answered yes, because refresh skips ats=unknown and never sets it False.
+    Each printed a large 0, "none seen recently" and "Their board is one we
+    read every night and it is empty right now" about a board that does not
+    exist; the 754 unreadable boards printed the same 0 over "not measured";
+    and 319 of 458 competitor rows printed 0 for a board nobody read. Axon's
+    page said it had no open roles.
+
+    Driven through the real page builder for three fixtures, and the app's
+    boardState()/openCount() are run by jobcard_harness.mjs over every
+    organization on the committed board and held to build_site's pair.
+    """
+    import shutil, subprocess, json as _json
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    base = {"sector": "Public Safety", "category": "Police", "description": "x",
+            "open_roles": 0, "quota_roles": 0, "website": "https://f.example",
+            "board_url": "https://f.example/careers", "ats": "html"}
+    read = dict(base, id="read-co", name="Read Co", ats="greenhouse", enumerable=True)
+    unread = dict(base, id="unread-co", name="Unread Co", enumerable=False)
+    none_ = dict(base, id="none-co", name="None Co", ats="unknown", enumerable=True,
+                 no_board_on_file=True, board_url="https://f.example")
+    rivals = dict(base, id="rival-co", name="Rival Co", ats="greenhouse", enumerable=True,
+                  competitors=[{"id": "unread-co", "why": "a"}, {"id": "none-co", "why": "b"},
+                               {"id": "read-co", "why": "c"}])
+    orgs = [read, unread, none_, rivals]
+    by_id = {o["id"]: o for o in orgs}
+    board = {"organizations": orgs, "logos": {}, "postings": [], "generated": "2026-10-06"}
+    page = {o["id"]: bs.company_page_html(o, [], board, brand, by_id, {}, 1) for o in orgs}
+    strip = lambda h: h.split('class="costrip"', 1)[-1][:400]
+    if '>0</div><dt>open roles' not in strip(page["read-co"]):
+        errors += fail("a board we read that is empty no longer says 0")
+    for cid, what in (("unread-co", "an unreadable board"), ("none-co", "no board on file")):
+        if '>0</div><dt>open roles' in strip(page[cid]):
+            errors += fail(f"the company page prints '0 open roles' for {what} - "
+                           f"nobody counted, so there is no number to print")
+    if "read every night" in page["none-co"] or "none seen recently" in page["none-co"]:
+        errors += fail("a company with no board on file is described as a board "
+                       "we read every night")
+    if "No board on file" not in page["none-co"]:
+        errors += fail("a company with no board on file does not say so in its source cell")
+    if "Their hiring board" in page["none-co"]:
+        errors += fail("a company with no board on file links its homepage as "
+                       "'Their hiring board'")
+    rail = page["rival-co"].split("<h2>Competitors</h2>", 1)[-1][:900]
+    if rail.count('<span class="n">&mdash;</span>') != 2 or '<span class="n">0</span>' not in rail:
+        errors += fail("competitor rows do not tell a measured 0 from a board "
+                       "nobody read")
+
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so boardState() was not run")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return errors + fail(f"index.html's script would not run: {r.stderr.strip()[:300]}")
+    js = (_json.loads(r.stdout.strip().splitlines()[-1]).get("boards") or {})
+    live = json.loads((ROOT / "data" / "board.json").read_text()).get("organizations", [])
+    if not js or len(js) != len(live):
+        return errors + fail(f"boardState() answered for {len(js)} of {len(live)} "
+                             f"organizations")
+    differ = [o["id"] for o in live
+              if js.get(o["id"]) != [bs.board_state(o), bs.open_count(o)]]
+    if differ:
+        errors += fail(f"index.html and build_site.py disagree about what a count "
+                       f"means on {len(differ)} companies, e.g. {differ[:3]}")
+    zero_unread = [k for k, (st, n) in js.items() if n == "0" and st != "read"]
+    if zero_unread:
+        errors += fail(f"{len(zero_unread)} companies print 0 open roles with no "
+                       f"board read, e.g. {zero_unread[:3]}")
+    return errors
+
+
 def check_the_job_card_says_what_the_posting_says() -> int:
     """The board's list is cards (owner, 2026-09-27). Run the real card.
 
@@ -28466,6 +28637,7 @@ def main() -> int:
                 f"expected {(w_title, w_loc, w_pay)!r}")
     errors += check_manual_merge_never_doubles_a_fetched_row()
     errors += check_a_redraw_is_the_crawl_without_the_fetch()
+    errors += check_a_ruled_out_company_is_left_alone()
     errors += check_main_builds_orgs_through_org_record()
     errors += check_quick_rebuild_never_reads_a_board()
     errors += check_an_ats_change_waits_for_the_crawl()
@@ -28527,6 +28699,7 @@ def main() -> int:
     errors += check_the_nightly_resolver_carries_the_crawl_onto_a_desk_publish()
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
+    errors += check_a_zero_is_only_printed_when_a_board_was_read()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
     errors += check_the_news_sweep_stops_before_the_job_does()

@@ -305,6 +305,11 @@ def main() -> int:
             print(f"no company matching {args.company!r}", file=sys.stderr)
             return 1
 
+    # A company a person ruled out of scope is not fetched: it is not on the
+    # board (build_board.ruled_out), and its board may be somebody else's.
+    # It keeps its last known state, as a company outside --company does.
+    targets = [c for c in targets if not c.get("out_of_scope")]
+
     _plan_renders(targets, args.render_budget)
     if _RENDER_ALLOW:
         oldest = min((_render_attempts.get(i, "") for i in _RENDER_ALLOW), default="")

@@ -1314,6 +1314,30 @@ def out_of_scope(title: str, rid: str, oid: str, scope: dict,
     return None
 
 
+def ruled_out(companies: list, man: dict | None) -> tuple[list, dict | None, list]:
+    """(companies to publish, captures to publish, ids a person ruled out).
+
+    A COMPANY A PERSON RULED OUT OF SCOPE IS NOT PUBLISHED. The ruling is an
+    `out_of_scope` object ({by, on, why}) on the record, and until 2026-10-06
+    nothing read it: the owner ruled Concourse out on 2026-08-24 (a finance-AI
+    company matched to a procurement exhibitor's name), discovery re-wired its
+    board on 10-04, and six of the wrong company's jobs went back on the board,
+    a "Founding Account Executive" among them. The record stays in
+    companies.json with its research; it is simply not drawn, its captures are
+    not listed, and discover_ats and refresh leave it alone. quick_rebuild
+    calls this too, so a redraw and a crawl agree about who is on the board.
+    """
+    out = [c["id"] for c in companies if c.get("out_of_scope")]
+    if not out:
+        return companies, man, []
+    gone = set(out)
+    keep = [c for c in companies if c["id"] not in gone]
+    if man:
+        man = {**man, "postings": [mp for mp in man.get("postings", [])
+                                   if mp.get("company_id") not in gone]}
+    return keep, man, sorted(out)
+
+
 def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
     """Append manual.json's captures to `postings`. Returns (added, already_fetched)."""
     manual_count = manual_dupes = 0
@@ -1789,6 +1813,7 @@ def main() -> int:
     # attribution (board_owners - a shared board is one board), claims, news,
     # the discovery log and manual.json's hand checks. Read once, up front.
     man = load_manual()
+    companies, man, ruled = ruled_out(companies, man)
     ctx = run_context(companies, man)
     owns, unowned = ctx["owns"], ctx["unowned"]
 
@@ -2149,6 +2174,11 @@ def main() -> int:
                   f"hiring: " + ", ".join(o["name"] for o in blank[:6]))
 
     no_board = sum(1 for o in orgs if o.get("no_board_on_file"))
+    if ruled:
+        # Named every run: a company that stops appearing is the one mistake
+        # nobody sees, so the build says which ones it left out and why.
+        print(f"{len(ruled)} compan(y/ies) not published - a person ruled them out "
+              f"of scope: {', '.join(ruled)}")
     print(f"{len(companies)} companies: {len(companies) - no_board} with a board on "
           f"file, {no_board} awaiting discovery")
     print(f"  {unreadable} boards unreadable, {rendered} recovered by rendering")

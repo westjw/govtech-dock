@@ -757,9 +757,19 @@ def main() -> int:
         global COMPANY_BUDGET
         COMPANY_BUDGET = a.budget
 
+    # NEVER PROBE A COMPANY A PERSON RULED OUT. Concourse was ruled out on
+    # 2026-08-24 and its wrong board unwired; the 10-04 sweep saw "no board,
+    # has a website" and wired ashby/concourse straight back, overwriting the
+    # note that warned against it. Applies to --only lists too: a list is a
+    # decision about what to probe, not a reversal of a ruling.
+    ruled = {c["id"] for c in companies if c.get("out_of_scope")}
     if a.only:
         wanted = {ln.strip() for ln in pathlib.Path(a.only).read_text().splitlines()
                   if ln.strip()}
+        if wanted & ruled:
+            print(f"  ({len(wanted & ruled)} id(s) in the list were ruled out of scope "
+                  f"by a person and are not probed)")
+        wanted -= ruled
         todo = [c for c in companies if c["id"] in wanted and c.get("website")]
         missing = wanted - {c["id"] for c in todo}
         if missing:
@@ -767,7 +777,8 @@ def main() -> int:
     else:
         todo = [c for c in companies
                 if (c.get("ats") or {}).get("type") in (None, "unknown")
-                and c.get("website") and stale(log.get(c["id"]))]
+                and c.get("website") and stale(log.get(c["id"]))
+                and c["id"] not in ruled]
     todo.sort(key=lambda c: probe_order(c, log))
     # An explicit id list is already the decision about scope. Clipping it to
     # --limit silently probed 300 of 768 and reported as though that were all

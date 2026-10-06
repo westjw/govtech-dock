@@ -1201,8 +1201,47 @@ def _co_record_days(mine: list, now: dt.date) -> "int | None":
     return None if first is None else (now - first).days
 
 
-def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date) -> str:
+def board_state(o: dict) -> str:
+    """'read', 'unread' or 'none': what a count of 0 on this company means.
+
+    ONLY 'read' MAKES A ZERO A FACT. Until 2026-10-06 the company page asked
+    only "enumerable is not False", which is True for the 862 companies with
+    no board on file (refresh skips ats=unknown), so each of them printed a
+    large "0 open roles", "none seen recently" and "Their board is one we read
+    every night and it is empty right now" - about a board that does not
+    exist. The 754 unreadable boards printed the same 0 over "not measured".
+    That is the false "None found" this repository refuses everywhere else.
+    index.html's boardState() is the same rule, and selftest holds the two."""
+    if o.get("no_board_on_file"):
+        return "none"
+    if o.get("enumerable") is False or o.get("unreadable"):
+        return "unread"
+    return "read"
+
+
+def _posts_at_phrase(pa: dict) -> str:
+    """Where a company with no board says it hires, as a clause. Mirrors the
+    cases index.html's postsAtSentence() separates."""
+    where = pa.get("where")
+    if where == "email":
+        return "openings go out by email"
+    if where == "recruiter":
+        return "they hire through an outside recruiter"
+    return f"they post on {html.escape(pa.get('label') or 'another site')}"
+
+
+def open_count(o: dict) -> str:
+    """The open-roles figure as printed: a number, or an em dash when nobody
+    could count. Roles captured by hand are a floor and still print."""
+    n = o.get("open_roles") or 0
+    return str(n) if n or board_state(o) == "read" else "&mdash;"
+
+
+def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
+                  state: str = "") -> str:
     if not open_:
+        if state == "none":
+            return "no board on file to count"
         return "none seen recently" if readable else "not measured"
     span = _co_record_days(mine, now)
     if span is not None and span < 30:
@@ -1547,7 +1586,9 @@ def _co_rivals(o: dict, n_in_cat: int, by_id: dict) -> str:
             if not isinstance(r, dict):
                 continue
             x = by_id.get(r.get("id")) or {}
-            n = (f'<span class="n">{x["open_roles"]}</span>'
+            # A competitor whose board nobody read is a dash, not a 0: 319 of
+            # 458 rows printed 0 for an unread or absent board (2026-10-06).
+            n = (f'<span class="n">{open_count(x)}</span>'
                  if x.get("open_roles") is not None else "")
             why = f'<span class="d">{esc(r["why"])}</span>' if r.get("why") else ""
             rows += (f'<div class="r"><span><a href="{_co_href(r.get("id"), by_id)}">'
@@ -1580,7 +1621,13 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
     cid = o["id"]
     alert = f'/alerts?company={urllib.parse.quote(cid, safe="")}'
     if not mine:
-        if readable:
+        if board_state(o) == "none":
+            pa = o.get("posts_at") or {}
+            why = ("We have not found a public job board for them, so we cannot "
+                   "say whether they are hiring."
+                   + (f" {_posts_at_phrase(pa)[:1].upper()}{_posts_at_phrase(pa)[1:]}, "
+                      f"which we do not read automatically." if pa else ""))
+        elif readable:
             why = "Their board is one we read every night and it is empty right now."
         else:
             last = (f" &mdash; last on {esc(str(o['board_checked_on']))}"
@@ -1588,7 +1635,8 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
             why = ("Their board is live but built in a way we cannot read automatically, "
                    f"so this list may be incomplete. A person checks it{last}.")
         board = (_ext_link(o["board_url"], "Open their hiring board &#8599;", "cobtn") + " "
-                 if o.get("board_url") and _safe_url(o["board_url"]) else "")
+                 if o.get("board_url") and _safe_url(o["board_url"])
+                 and board_state(o) != "none" else "")
         return (f'<div class="coempty">'
                 f'<img src="/assets/mascot/svg/head-ghosted.svg" alt="" width="88" height="88">'
                 f'<div><h3>No open roles we can see.</h3><p>{why}</p>'
@@ -1650,8 +1698,13 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     cid = o["id"]
     open_ = o.get("open_roles") or 0
     quota = o.get("quota_roles") or 0
-    readable = o.get("enumerable") is not False and not o.get("unreadable")
+    state = board_state(o)
+    readable = state == "read"
     phase = _co_phase(mine, readable, now)
+    if state == "none":
+        phase = {"value": "Not measured", "tone": "dim",
+                 "note": "no job board on file, so there is nothing here to "
+                         "read a phase from"}
     dom = re.sub(r"/.*$", "", re.sub(r"^https?://", "", o.get("website") or ""))
     q_id = urllib.parse.quote(cid, safe="")
 
@@ -1693,7 +1746,11 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
 
     # --- stat strip, four cells, always ------------------------------------
     ats = o.get("ats") or ""
-    if readable:
+    if state == "none":
+        pa = o.get("posts_at") or {}
+        src_val = "No board on file"
+        src_note = _posts_at_phrase(pa) if pa else "none found when we looked"
+    elif readable:
         src_val = ats[:1].upper() + ats[1:] if ats else "Not on file"
         src_note = (f"read nightly{f' · all {open_} readable' if open_ else ''}"
                     if ats and ats not in ("html", "unknown")
@@ -1705,8 +1762,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                     + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
     pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
     strip = (f'<div class="costrip">'
-             f'<dl><div class="v{"" if open_ else " dim"}">{open_}</div><dt>open roles</dt>'
-             f'<dd>{esc(_co_open_note(mine, open_, readable, now))}</dd></dl>'
+             f'<dl><div class="v{"" if open_ else " dim"}">{open_count(o)}</div><dt>open roles</dt>'
+             f'<dd>{esc(_co_open_note(mine, open_, readable, now, state))}</dd></dl>'
              f'<dl><div class="v{"" if quota else " dim"}">{quota or "&mdash;"}</div><dt>quota-carrying</dt>'
              f'<dd>{pct}</dd></dl>'
              f'<dl class="wide"><div class="v txt {phase["tone"]}">{esc(phase["value"])}</div>'
@@ -1730,7 +1787,9 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     unreadable_tag = '<span class="tag">unreadable</span>'
     if o.get("website") and _safe_url(o["website"]):
         links += f'<div class="r">{_ext_link(o["website"], esc(dom))}</div>'
-    if o.get("board_url") and _safe_url(o["board_url"]):
+    # No board on file means no hiring board to link: board_url on those
+    # records is their homepage, already linked above as the website.
+    if o.get("board_url") and _safe_url(o["board_url"]) and state != "none":
         links += (f'<div class="r">{_ext_link(o["board_url"], "Their hiring board")}'
                   f'{"" if readable else unreadable_tag}</div>')
     rail = f"<section><h2>Links</h2>{links}</section>"

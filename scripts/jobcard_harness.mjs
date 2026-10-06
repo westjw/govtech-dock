@@ -146,4 +146,19 @@ try {
 } catch (e) {
   errors.push(`calling jobCardHTML: ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out }));
+/* THE SAME QUESTION IN BOTH LANGUAGES. What a 0 means on a company is
+   decided by boardState() here and board_state() in build_site.py, and they
+   once disagreed with the truth together (2026-10-06: 862 companies with no
+   board printed "0 open roles"). Every organization on the committed board is
+   run through the page's own functions so selftest can hold the two. */
+let boards = null;
+try {
+  const b = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
+  ctx.__orgs = b.organizations || [];
+  boards = vm.runInContext(`(() => { const r = {};
+      for (const o of __orgs) r[o.id] = [boardState(o), openCount(o)];
+      return r; })()`, ctx);
+} catch (e) {
+  errors.push(`calling boardState/openCount: ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards }));

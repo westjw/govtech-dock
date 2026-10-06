@@ -332,6 +332,9 @@ def redraw() -> dict:
     scope_path = bb.DATA / "scope_decisions.json"
     scope = json.loads(scope_path.read_text()) if scope_path.exists() else {}
     man = bb.load_manual()
+    # The same people's rulings a crawl honours (build_board.ruled_out): a
+    # company ruled out of scope is not on file as far as the board knows.
+    companies, man, _ruled = bb.ruled_out(companies, man)
     prev_orgs = {o["id"]: o for o in prev.get("organizations", [])}
     on_file = {c["id"] for c in companies}
 
