@@ -46,6 +46,38 @@ async function emailKey(email) {
 /* Deliberately conservative rather than RFC-complete: this address is going
  * to be handed to a mail API, so anything exotic is likelier to be an attempt
  * at header injection than a real mailbox. */
+/* WHO IS ASKING, as a key nobody can turn back into an address or follow
+ * across days: SHA-256 of the caller's IP and today's date. The date is IN
+ * the hash, so yesterday's key cannot be recomputed and nothing links one
+ * day's activity to the next. The IP ALONE: ratings hashed the user-agent in
+ * too, and a new user-agent string reset the cap (launch audit, 2026-10-06).
+ * Every per-caller daily cap in functions/ uses this one. */
+async function callerKey(request) {
+  const h = request && request.headers;
+  const ip = (h && h.get && h.get("cf-connecting-ip")) || "unknown";
+  const day = new Date().toISOString().slice(0, 10);
+  const digest = await crypto.subtle.digest(
+    "SHA-256", new TextEncoder().encode(`${ip}|${day}`));
+  return [...new Uint8Array(digest)]
+    .map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 32);
+}
+
+/* A DAILY ALLOWANCE PER CALLER for anything that sends mail. Counted on
+ * every attempt, BEFORE the address is looked up, so how fast a caller runs
+ * out can never depend on whether an address is subscribed or claimed: the
+ * endpoints answer identically for every address state, and this must not
+ * become the oracle they refuse to be. A refusal writes nothing. Until
+ * 2026-10-06 neither endpoint limited a caller at all: one script could
+ * spend the day's 100 Resend mails, or mail five strangers at each of 2,026
+ * companies (launch audit). */
+async function underDailyCap(env, request, scope, cap) {
+  const k = `cap:${scope}:` + (await callerKey(request));
+  const n = Number((await env.ALERTS.get(k)) || 0);
+  if (n >= cap) return false;
+  await env.ALERTS.put(k, String(n + 1), { expirationTtl: 60 * 60 * 26 });
+  return true;
+}
+
 function validEmail(raw) {
   const e = String(raw || "").trim().toLowerCase();
   if (e.length < 6 || e.length > 254) return null;
@@ -193,5 +225,5 @@ function shell(preheader, body, links) {
 </table></td></tr></table></body></html>`;
 }
 
-export { json, mintToken, emailKey, validEmail, cleanToken, send, button, shell,
+export { json, mintToken, emailKey, callerKey, underDailyCap, validEmail, cleanToken, send, button, shell,
          FONT, MASCOT, FROM, SITE, NAME, DOMAIN };

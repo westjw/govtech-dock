@@ -212,8 +212,20 @@ live site. Alert digests also keep going: one subscriber, and its links work
 once signed in.
 **What stops:** search indexing, because every page answers with a sign-in,
 and the public forms (alerts, add a company, claim).
-**At launch:** set `GATED = false` in `functions/_gate.js`, push, wait for the
-deploy, then put path `admin` back on the three hostnames.
+**At launch:** run `python3 scripts/selftest.py` and see "all checks
+passed" (Pages deploys a push without running it; `selftest.yml` reports on
+the push afterwards), set `GATED = false` in `functions/_gate.js`, push, wait
+for the deploy, then put path `admin` back on the three hostnames.
+
+**Going private again, if launch shows a problem (about two minutes):**
+1. Set `GATED = true` in `functions/_gate.js` and push. Every page, data file
+   and endpoint shows the holding page again one deploy later. Or, faster
+   and with no push: Pages → Deployments → the last gated deployment →
+   **Rollback to this deployment**.
+2. Clear the path `admin` on the Access application's hostnames again, so
+   signing in covers the whole site (step 3 above).
+3. Check: `curl -s -o /dev/null -w "%{http_code}\n" https://sledjobs.com/`
+   answers 302 (Access) or 403 (the code gate), never 200.
 
 ## 2b. www.solesourcejobs.com loops on sign-in — OPEN, verified 2026-09-03
 Signing in at `www.solesourcejobs.com/admin` ends in ERR_TOO_MANY_REDIRECTS.

@@ -34,7 +34,7 @@
  * as an encrypted variable. Without either, this endpoint reports that it is
  * not configured - it never pretends a signup landed.
  */
-import { json, mintToken, emailKey, validEmail, cleanToken, send, button, shell,
+import { json, mintToken, emailKey, underDailyCap, validEmail, cleanToken, send, button, shell,
          SITE, FROM, NAME } from "../_mail.js";
 const MAX_SAVED = 500;          // a person's shortlist, not a scrape target
 const MAX_ID = 300;
@@ -239,7 +239,7 @@ export async function onRequestPost({ request, env }) {
   }
   const action = String(body.action || "");
 
-  if (action === "subscribe") return subscribe(body, env);
+  if (action === "subscribe") return subscribe(body, env, request);
 
   const token = cleanToken(body.token);
   if (!token) return json({ error: "bad_token" }, 400);
@@ -288,7 +288,11 @@ export async function onRequestPost({ request, env }) {
   return json({ error: "unknown action" }, 400);
 }
 
-async function subscribe(body, env) {
+/* Sign-ups one caller may make in a day. An office behind one address is
+ * a handful of people; a script is the thing this stops. */
+const SIGNUPS_PER_CALLER = 10;
+
+async function subscribe(body, env, request) {
   if (body.company_fax) return json({ ok: true });   // honeypot, as on submit
   const email = validEmail(body.email);
   const prefs = cleanPrefs(body.prefs);
@@ -298,6 +302,10 @@ async function subscribe(body, env) {
   const same = json({ ok: true, check_your_email: true });
   if (!email) return json({ error: "That does not look like an email address." }, 400);
   if (!env.RESEND_KEY) return notConfigured();
+  if (!(await underDailyCap(env, request, "alerts", SIGNUPS_PER_CALLER)))
+    return json({ error: "too_many",
+                  message: "That is enough sign-ups from here today. Try again tomorrow." },
+                429);
 
   const ek = await emailKey(email);
   const existing = await env.ALERTS.get(ek);

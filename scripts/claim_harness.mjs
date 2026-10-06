@@ -29,6 +29,8 @@ const COMPANIES = {
     acme: { n: "Acme", s: "Public Safety", w: "acme.com" },
     "no-site": { n: "No Site", s: "Public Safety", w: "" },
     "co-uk": { n: "Brit Co", s: "Public Safety", w: "britco.co.uk" },
+    ...Object.fromEntries([1, 2, 3, 4, 5, 6, 7].map((i) =>
+      [`many-${i}`, { n: `Many ${i}`, s: "Public Safety", w: `many${i}.example` }])),
   },
 };
 globalThis.fetch = async (url) => {
@@ -135,5 +137,21 @@ out.unconfirmedStoredNothing =
 /* --- releasing ---------------------------------------------------------- */
 out.release = await read(await post({ action: "release", token }));
 out.afterRelease = await read(await get(token));
+
+/* --- one caller, many companies: the per-caller allowance ------------- */
+const mailsBefore = sent.length;
+const many = [];
+for (const i of [1, 2, 3, 4, 5, 6, 7]) {
+  const res = await mod.onRequestPost({
+    request: { json: async () => ({ action: "claim", company_id: `many-${i}`,
+                                    email: `jane@many${i}.example` }),
+               url: "https://sledjobs.com/api/claim",
+               headers: new Headers({ "cf-connecting-ip": "203.0.113.77" }) },
+    env });
+  many.push(res.status);
+}
+out.oneCallerAccepted = many.filter((c) => c === 200).length;
+out.oneCallerRefused = many.filter((c) => c === 429).length;
+out.oneCallerMails = sent.length - mailsBefore;
 
 console.log(JSON.stringify(out));

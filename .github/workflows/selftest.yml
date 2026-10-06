@@ -1,0 +1,49 @@
+name: selftest
+
+# EVERY PUSH IS CHECKED, NOT ONLY THE NIGHTLY.
+#
+# Cloudflare Pages deploys every push to main by itself, running
+# build_site.py and nothing else. Until 2026-10-06 the self-test ran only
+# inside the scheduled jobs (refresh, news, discovery, links), so "selftest
+# fails the build" meant it failed the NEXT scheduled run, after a bad push
+# was already live (launch audit). This runs the suite on every push and
+# pull request, so a human push - the launch flip included - is red within
+# minutes and GitHub mails whoever pushed it.
+#
+# It does not hold the deploy back: Pages cannot wait for a GitHub check.
+# For the launch push, run `python3 scripts/selftest.py` before pushing.
+#
+# Pushes the scheduled jobs make with GITHUB_TOKEN do not start workflows
+# (GitHub's own rule), so this runs for people's pushes, not the bots'.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: selftest-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: America/New_York
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Self-test
+        run: python scripts/selftest.py

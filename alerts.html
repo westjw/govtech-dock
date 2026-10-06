@@ -333,7 +333,9 @@ function signupView(){
       say("ok","Check your email and click the link to confirm. Until you do, nothing is sent.");
       $("#go").disabled=true;
     }else{
-      say("err",r.error||"That did not go through. Try again shortly.");
+      // message first: a refusal like the daily sign-up allowance carries a
+      // sentence in `message` and a machine word in `error`
+      say("err",r.message||r.error||"That did not go through. Try again shortly.");
     }
   };
 }

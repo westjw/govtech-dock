@@ -1639,6 +1639,36 @@ The rules follow the contract agreed with the HQ session on 2026-10-04:
 - Its pay is labelled "stated by the employer on SLED HQ".
 - `check_sled_hq_jobs_reach_the_board` covers this. Mutation-tested 15 of 15.
 
+## Launch fixes, 2026-10-06: what each guard holds
+
+A launch audit (the checklist lives in a claude.ai artifact, not the repo)
+found these. Each rule has a check that was broken on purpose to prove it
+fires.
+- **A 0 is printed only for a board we read.** `build_site.board_state()` and
+  index.html's `boardState()` split read / unread / none. A company with no
+  board on file printed "0 open roles" and "a board we read every night".
+  `check_a_zero_is_only_printed_when_a_board_was_read` runs both languages
+  over every organization.
+- **A person's `out_of_scope` ruling on a company keeps it off the board.**
+  `build_board.ruled_out()` serves main() and quick_rebuild, and discover_ats
+  and refresh skip the company. Nothing read the field before, so discovery
+  re-wired Concourse after the owner ruled it out.
+- **Alerts:** an unconfirmed signup expires in a week (`putSub`). Every
+  mail-sending endpoint has an hourly cooldown per address and a daily
+  allowance per caller (`_mail.underDailyCap`), counted before the address is
+  looked up so it cannot become an oracle. `alerts_harness.mjs` runs the
+  handlers.
+- **The shared KV store:** ratings reads come from the edge cache, the vote
+  cap is per IP (not IP plus user-agent), and beta guesses are capped per
+  caller rather than by one global counter.
+- **The Actions logs are public.** The digest names a subscriber by four
+  characters of its KV key, never by any part of the address.
+- **robots.txt does not block /data/.** The app draws every page from it.
+- **Share cards record the domain they were drawn for**
+  (`assets/og/rendered.json`), because the domain guard cannot read a PNG.
+- **`selftest.yml` runs the suite on every human push.** It reports; it cannot
+  hold a Pages deploy back. DEPLOY.md §3 has the way back to private.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

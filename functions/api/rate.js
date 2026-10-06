@@ -43,6 +43,8 @@
  * there is no record of what any one person thought of anything.
  */
 
+import { callerKey } from "../_mail.js";
+
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), {
     status,
@@ -91,17 +93,8 @@ const cleanTag = (t) => {
 
 const today = () => new Date().toISOString().slice(0, 10);
 
-/** SHA-256 of caller + day, hex. The day is IN the hash, not beside it, so
- *  the key cannot be recomputed for a different day and nothing links a
- *  caller's activity across dates. */
-async function callerKey(request) {
-  const ip = request.headers.get("cf-connecting-ip") || "unknown";
-  const ua = request.headers.get("user-agent") || "";
-  const data = new TextEncoder().encode(`${ip}|${ua}|${today()}`);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  return [...new Uint8Array(digest)]
-    .map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 32);
-}
+/** How long one answer for a set of conferences is reused at the edge. */
+const READ_CACHE_SECONDS = 300;
 
 /** What the page may show, from what is stored. Kept in one place so the
  *  floor cannot be enforced in one branch and forgotten in another. */
@@ -131,12 +124,30 @@ export async function onRequestGet({ request, env }) {
   // ?tags=a,b,c - the catalogue asks for every event on screen in one call.
   const many = url.searchParams.get("tags");
   if (many) {
-    const tags = many.split(",").map(cleanTag).filter(Boolean).slice(0, 200);
+    // ONE READ PER CONFERENCE PER VIEW was the cost: the conferences tab asks
+    // for every event on screen, 138 of them, so about 725 views spent the
+    // account's 100,000 free daily reads that alerts and claims share
+    // (launch audit, 2026-10-06). The same set of conferences now gets the
+    // same answer from the edge cache for five minutes. Sorted and deduped so
+    // the same set is the same cache key whatever order the page sends.
+    const tags = [...new Set(many.split(",").map(cleanTag).filter(Boolean))]
+      .sort().slice(0, 200);
+    const cache = typeof caches !== "undefined" && caches.default ? caches.default : null;
+    const key = new Request(`${url.origin}/api/rate?tags=${encodeURIComponent(tags.join(","))}`);
+    if (cache) {
+      const hit = await cache.match(key);
+      if (hit) return hit;
+    }
     const rows = await Promise.all(tags.map(async (t) => {
       const raw = await env.ALERTS.get("worth:" + t);
       return publicShape(t, raw ? JSON.parse(raw) : null);
     }));
-    return json({ ok: true, ratings: rows });
+    const res = new Response(JSON.stringify({ ok: true, ratings: rows }), {
+      headers: { "content-type": "application/json", "referrer-policy": "no-referrer",
+                 "cache-control": `public, max-age=${READ_CACHE_SECONDS}` },
+    });
+    if (cache) await cache.put(key, res.clone());
+    return res;
   }
 
   const tag = cleanTag(url.searchParams.get("tag"));

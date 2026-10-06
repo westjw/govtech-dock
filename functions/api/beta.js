@@ -22,7 +22,7 @@
  * contact database, and the owner already knows who he handed a code to -
  * that is what the note on the minted code is for.
  */
-import { json } from "../_mail.js";
+import { json, callerKey } from "../_mail.js";
 
 /* The words a redeemer agrees to, versioned. Stored WITH the redemption so a
  * consent record says what was consented to, rather than pointing at a page
@@ -36,6 +36,9 @@ export const CONSENT = {
 };
 
 const SHAPE = /^JH-[0-9A-HJKMNP-TV-Z]{4}-[0-9A-HJKMNP-TV-Z]{4}$/;
+/* Redemption attempts one caller may make in a day. A person types their
+ * code once, or a few times with typos. */
+const GUESS_CAP = 20;
 
 export async function onRequestPost({ request, env }) {
   if (!env.ALERTS) return json({ error: "not_configured" }, 501);
@@ -47,13 +50,17 @@ export async function onRequestPost({ request, env }) {
   const code = String(body.code || "").trim().toUpperCase();
   if (!SHAPE.test(code)) return json({ error: "bad_code" }, 400);
 
-  /* A DAY CAP ON GUESSES, per the claim endpoint's own pattern. 40 bits is
-   * not a guessable space, but a door with no cap invites somebody to find
-   * out, and the log would fill with their attempts rather than with people. */
-  const day = "betatry:" + new Date().toISOString().slice(0, 10);
-  const tries = Number((await env.ALERTS.get(day)) || 0);
-  if (tries > 500) return json({ error: "too_many" }, 429);
-  await env.ALERTS.put(day, String(tries + 1), { expirationTtl: 60 * 60 * 26 });
+  /* A DAY CAP ON GUESSES, PER CALLER. 40 bits is not a guessable space, but
+   * a door with no cap invites somebody to find out. This was ONE counter for
+   * everybody: 501 guesses from one script locked redemption for every person
+   * holding a real code, and each guess spent a write of the free plan's
+   * 1,000 a day that alerts and claims share (launch audit, 2026-10-06). Per
+   * caller, a script spends GUESS_CAP writes and then nothing; a refusal past
+   * the cap writes nothing at all. */
+  const tryKey = "betatry:" + (await callerKey(request));
+  const tries = Number((await env.ALERTS.get(tryKey)) || 0);
+  if (tries >= GUESS_CAP) return json({ error: "too_many" }, 429);
+  await env.ALERTS.put(tryKey, String(tries + 1), { expirationTtl: 60 * 60 * 26 });
 
   const live = JSON.parse((await env.ALERTS.get("beta:codes")) || "{}");
   if (!live[code]) return json({ ok: false, why: "not_a_code" });

@@ -27,7 +27,7 @@
  * and acquired brands are all real and all judgment calls, so they get a
  * link that files a submission for a person rather than a rule that guesses.
  */
-import { json, mintToken, emailKey, validEmail, cleanToken, send, button, shell,
+import { json, mintToken, emailKey, underDailyCap, validEmail, cleanToken, send, button, shell,
          SITE, NAME } from "../_mail.js";
 
 /* Addresses that prove nothing. A gmail address is not evidence of working
@@ -57,6 +57,7 @@ const SELF_SERVE = new Set(["description", "profile", "logo", "job"]);
 const CAP = { description: 300, profile: 1600, note: 600, title: 120, location: 90 };
 const MAX_PER_COMPANY = 3;          // three people at one company is a team
 const MAIL_PER_DAY = 5;             // per company, so a claim page is not a mailer
+const CLAIMS_PER_CALLER = 5;        // per caller across every company, same reason
 const COOLDOWN_MS = 60 * 60 * 1000; // per address
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -211,7 +212,12 @@ async function startClaim(body, env, request) {
     }, 400);
   }
 
-  // rate limits, per address and per company
+  // rate limits, per caller, per address and per company. The caller's is
+  // first and counts every attempt, so it cannot vary with the address.
+  if (!(await underDailyCap(env, request, "claim", CLAIMS_PER_CALLER)))
+    return json({ error: "too_many",
+                  message: "That is enough claims from here today. Try again tomorrow." },
+                429);
   const ek = await emailKey(email);
   const seenRaw = await env.ALERTS.get("claimem:" + ek);
   if (seenRaw) {

@@ -2609,6 +2609,46 @@ def check_an_alert_signup_keeps_its_promises() -> int:
                        f"subscribed: {ans}")
     if d.get("afterStop"):
         errors += fail("unsubscribing left a key behind")
+    if d.get("oneCallerAccepted") != 10 or d.get("oneCallerMails") != 10:
+        errors += fail(f"one caller signed up {d.get('oneCallerAccepted')} addresses "
+                       f"and sent {d.get('oneCallerMails')} mails in a day; the "
+                       f"allowance is 10, and the free mail plan is 100 a day")
+    return errors
+
+
+def check_ratings_cannot_spend_the_shared_store() -> int:
+    """Conference ratings stay inside a budget alerts and claims can live with.
+
+    rate.js shares the KV namespace subscribers and claims live in, and on the
+    free plan the account has 100,000 reads and 1,000 writes a day. Until
+    2026-10-06 one view of the conferences tab read one key per conference
+    (138), so about 725 views spent the day's reads, and the per-caller vote
+    cap hashed the user-agent in, so a new user-agent string reset it. Run
+    through scripts/rate_harness.mjs, which IMPORTS the module.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so the ratings endpoint was not run")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "rate_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"the ratings endpoint would not run: {r.stderr.strip()[:300]}")
+    d = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    if d.get("readsAfterThreeViews") != d.get("readsFirstView"):
+        errors += fail(f"three views of the same conferences cost "
+                       f"{d.get('readsAfterThreeViews')} reads against "
+                       f"{d.get('readsFirstView')} for one - the edge cache is not "
+                       f"answering, and each view spends a read per conference")
+    shown = d.get("shownAverage") or {}
+    if shown.get("average") != 3.8 or shown.get("n") != 4:
+        errors += fail(f"a cached answer no longer carries the rating: {shown}")
+    if d.get("acceptedFromOneIp") != 12:
+        errors += fail(f"one address voted {d.get('acceptedFromOneIp')} times in a "
+                       f"day by changing its user-agent; the cap is 12 per caller")
+    if d.get("otherIp") != 200:
+        errors += fail("one caller's spent cap refused a different caller")
     return errors
 
 
@@ -2655,6 +2695,13 @@ def check_claiming_holds_the_domain_line() -> int:
          "mail.acme.com is still acme.com; refusing it would lock out most companies")
     want("coUk", 200, "check_your_email",
          "britco.co.uk must not collapse to co.uk, which every British company shares")
+    # ONE CALLER, MANY COMPANIES. The per-company cap stopped a page being a
+    # mailer; nothing stopped one script mailing five strangers at each of
+    # 2,026 companies (launch audit, 2026-10-06).
+    if d.get("oneCallerAccepted") != 5 or d.get("oneCallerMails") != 5:
+        errors += fail(f"one caller started {d.get('oneCallerAccepted')} claims and "
+                       f"sent {d.get('oneCallerMails')} mails across 7 companies "
+                       f"in a day; the allowance is 5")
     want("coUkStranger", 400, "wrong_domain",
          "if .co.uk collapsed to its public suffix, ANY British company could "
          "claim any other - which is the direction that actually hurts")
@@ -5728,14 +5775,22 @@ const env = { ALERTS: {
   put: async (k, v) => { store.set(k, v); },
 } };
 store.set("beta:codes", JSON.stringify({ "JH-AAAA-BBBB": { minted_on: "2026-09-01" } }));
-const post = (code) => onRequestPost({
-  request: { json: async () => ({ code }) }, env });
+const hdr = (ip) => ({ get: (k) => (k === "cf-connecting-ip" ? ip : null) });
+const post = (code, ip = "192.0.2.1") => onRequestPost({
+  request: { json: async () => ({ code }), headers: hdr(ip) }, env });
 const out = {};
 out.good = await (await post("jh-aaaa-bbbb ".trim())).json();
 out.twice = await (await post("JH-AAAA-BBBB")).json();
 out.unknown = await (await post("JH-ZZZZ-ZZZZ")).json();
 out.malformed = await (await post("JH-ILOU-1234")).json();
 out.stored = JSON.parse(store.get("betaredeem:JH-AAAA-BBBB") || "null");
+// one script guessing: capped for itself, and nobody else locked out
+let last = null;
+for (let i = 0; i < 30; i++) last = await (await post("JH-ZZZZ-ZZZY", "198.51.100.7")).json();
+out.capped = last;
+out.otherCaller = await (await post("JH-ZZZZ-ZZZZ", "203.0.113.9")).json();
+out.tryCounts = [...store.keys()].filter((k) => k.startsWith("betatry:"))
+  .map((k) => Number(store.get(k)));
 console.log(JSON.stringify(out));
 """
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False) as f:
@@ -5764,6 +5819,17 @@ console.log(JSON.stringify(out));
         errors += fail(f"an unminted code was not refused by name: {got['unknown']}")
     if got["malformed"].get("error") != "bad_code":
         errors += fail(f"a code carrying I/L/O/U was not refused: {got['malformed']}")
+
+    # A SCRIPT GUESSING IS CAPPED FOR ITSELF, and only for itself. This was
+    # one counter for everybody: 501 guesses locked out every real holder and
+    # spent half the free plan's daily writes (launch audit, 2026-10-06).
+    if (got.get("capped") or {}).get("error") != "too_many":
+        errors += fail(f"30 guesses from one caller were never refused: {got.get('capped')}")
+    if (got.get("otherCaller") or {}).get("why") != "not_a_code":
+        errors += fail(f"one caller's guessing locked a different caller out: "
+                       f"{got.get('otherCaller')}")
+    if max(got.get("tryCounts") or [999]) > 20:
+        errors += fail(f"a capped caller kept spending writes: {got.get('tryCounts')}")
 
     rec = got.get("stored") or {}
     if not rec.get("consent_text"):
@@ -28677,6 +28743,7 @@ def main() -> int:
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_an_alert_signup_keeps_its_promises()
+    errors += check_ratings_cannot_spend_the_shared_store()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
