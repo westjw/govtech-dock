@@ -516,6 +516,23 @@ def q_websites(companies, board) -> list:
         if k:
             by_ident.setdefault(k, []).append(c)
 
+    # A RESEARCHED SUGGESTION, shown on the card. proposed_websites.json held
+    # a page-quoted answer for seven of these fifteen and the card never
+    # showed it: the owner would have researched them again by hand. Only an
+    # answer with an address is offered, and only as a suggestion - the card's
+    # own Check and Save still decide.
+    # An answer WITHOUT an address is a finding, and it is shown too: "closed
+    # in 2019, the old domain is a casino now" or "renamed, already on the
+    # board as Civix" is the answer to this row, and it is not a website.
+    proposed, finding = {}, {}
+    for p in read("proposed_websites.json", []) or []:
+        if not isinstance(p, dict) or not p.get("id"):
+            continue
+        if p.get("website"):
+            proposed[p["id"]] = {"website": p["website"], "confidence": p.get("confidence"),
+                                 "quote": (p.get("quote") or "")[:240] or None}
+        elif p.get("why"):
+            finding[p["id"]] = p["why"][:600]
     out = []
     for c in companies:
         if c.get("website") or is_dismissed("websites", c["id"]):
@@ -531,6 +548,8 @@ def q_websites(companies, board) -> list:
                     "same_name_as": [{"id": o["id"], "name": o["name"],
                                       "website": o.get("website")}
                                      for o in (has_site or twins)] or None,
+                    "proposed": proposed.get(c["id"]),
+                    "finding": None if c["id"] in proposed else finding.get(c["id"]),
                     "tier": 1 if c["sector"] in ("General Gov", "Public Works", "Parks & Rec")
                             else 2})
     return out

@@ -446,7 +446,7 @@
     "name": "Liberty Mobility Now",
     "website": null,
     "confidence": "none",
-    "why": "Reached the obvious domain and it is a squatter listing, not them. https://libertymobilitynow.com and https://www.libertymobilitynow.com both return \"LibertyMobilityNow.com is for sale | HugeDomains\" with og:site_name \"HugeDomains\" and a $5,495 price - PARKED matches and identifies() correctly refuses it, even though identity_note shows present=[\"liberty\",\"mobility\",\"now\"], missing=[] and domain_is_lead=True. That is a textbook false positive on name tokens alone. Also tried https://libertymobility.co, https://rideliberty.com, https://libertymobilitynow.org (all ConnectionError). Do NOT use libertymobility.com: it resolves, but it is Liberty Mobility of Coventry, Rhode Island, a power-wheelchair repair and rental shop - a different business that got a similar domain. The BBB profile for Liberty Mobility Now, Inc. (Athens, OH / Lincoln, NE) carries an out-of-business indicator, which fits the expired domain. Blank is the honest answer here."
+    "why": "research 2026-10-05: out of business since January 2018; both of its domains are for sale. Its founder's later nonprofit, Feonix, is a separate organisation. A defunct company: consider removing it from the board."
   },
   {
     "id": "loop-websites-for-municipalities",
@@ -514,9 +514,10 @@
   {
     "id": "omen-ai",
     "name": "Omen AI",
-    "website": null,
-    "confidence": "ambiguous",
-    "why": "omen.ai is live and identifies as 'Omen' (og:site_name, score 100), but it is a fluid-sensor asset-intelligence company - 'Omen uses continuous fluid analysis to read the health of your equipment in real time' - selling to data centres and industrial machine operators. 'public works' x0, 'municipal' x0, 'government' x0 in the page text. Our record says PWX 2026, sector Public Works. Its one adjacent signal is heavy equipment ('Your cranes, forklifts, and heavy equipment...'), which could touch a public works fleet, but nothing on the page connects it to APWA or a government buyer, and I could not reach a PWX 2026 exhibitor directory to confirm which Omen exhibited (the a2z and expocad paths 404, apwa.org 403s, and the aggregator listing carries no name containing 'Omen'). Note identity_note returns present ['omen'], missing ['ai'] - so identifies() would reject it anyway. This is the Vocalis shape: right name, unproven business. An earlier pass reached the same wall from the other side - data/conference_intake/placements/batch-4.json files omen-ai with confidence 'low' and the reason 'Description too generic; any placement would be a guess.' The description is the thing to fix first; the website follows it."
+    "website": "https://www.omen.ai",
+    "confidence": "medium",
+    "quote": "Omen — Continuous coolant analysis for data centers",
+    "why": "research 2026-10-05: the PWX 2026 exhibitor profile links omen.ai, and the site names Omen AI. It now sells continuous coolant analysis for data centers, so whether it is govtech at all is a Vendor scope question."
   },
   {
     "id": "onward-health",
@@ -548,9 +549,10 @@
   {
     "id": "oracle-netsuite-for-government",
     "name": "Oracle NetSuite for Government",
-    "website": null,
-    "confidence": "unreachable",
-    "why": "Nothing readable answered. add_company.fetch() on https://www.netsuite.com, https://www.netsuite.com/portal/industries/government.shtml and https://www.oracle.com/netsuite/ all returned HTTP 403; the same three through the repo's Playwright renderer (scripts/render_fetch.py's browser and UA) returned a 294-byte Akamai page titled 'Access Denied' ('You don't have permission to access ... on this server'), and oracle.com/netsuite/ redirects into netsuite.com/portal/home.shtml which is denied too. This is a refusal to this network, not evidence the site does not exist - it plainly does. I did not fall back to oracle.com, because the parent's homepage is the aboutamazon.eu mistake in a different suit: it would neither name NetSuite nor show the government ERP product."
+    "website": "https://www.netsuite.com/portal/industries/government-erp.shtml",
+    "confidence": "high",
+    "quote": "NetSuite for Government is a cloud-based enterprise resource planning (ERP) solution designed for public-sector organizations, including government agencies and municipalities.",
+    "why": "research 2026-10-05: a product line of Oracle NetSuite, not a separate company; the page is NetSuite's own. Consider whether it belongs under the Oracle record instead."
   },
   {
     "id": "partake",
@@ -565,8 +567,8 @@
     "id": "pcc-technology-group",
     "name": "PCC Technology Group",
     "website": null,
-    "confidence": "ambiguous",
-    "why": "I found the business but it no longer has a site of its own, and recording one would file a parent's facts under this record. pcctechnologyinc.com resolves but 301s to gocivix.com, and every page there is branded Civix - identity_note on the Civix homepage is ok=False, present=[], missing=['pcc','technology','group']. The Civix about page (gocivix.com/company/about-civix/) explains why, in its own timeline: '2015-2016: Quest Information Systems (Quest) and PCC technology Inc. (PCC) were acquired to expand elections, government business service, and campaign finance offerings'. So PCC was absorbed into Civix (a GCR/HKW portfolio company). The business does match our description - Civix's Go Elect voter registration page says 'used by more states than any other to ensure the integrity of voter and election-related data' and Go Register covers business registry - but the only page naming PCC names it as an acquisition, in the past tense. Writing https://gocivix.com here would point the logo fetcher and board discovery at Civix and attribute Civix's postings to PCC, which is the parent-subsidiary error the admin's Acquisitions queue exists to catch. Recommend routing this to merge/acquisitions with also_known_as='Civix' rather than giving it a website."
+    "confidence": "none",
+    "why": "research 2026-10-05: renamed Civix in 2020 (GCR, PCC and MB3 rebranded together); its old product URL redirects to gocivix.com. Civix is already on the board, so this is a merge into 'civix', not a missing website."
   },
   {
     "id": "peach-ai-inc",
@@ -854,5 +856,33 @@
     "website": null,
     "confidence": "ambiguous",
     "why": "wrangler.ai is a real, named page - og:site_name 'Wrangler.ai', title 'Wrangler.ai - Intelligent Field Operations', footer '(c) 2026 Wrangler Technologies, Inc.' - but it is an 11KB pre-launch splash for a different market: 'Wrangler.ai is consolidating the app toolbelt for HVAC, plumbing, electrical, and other trades. Launching in 2026. Join the waitlist.' Nothing on it concerns infrastructure data, public works or government, which is what we say this company sells, and there is no product yet to check. (identifies() also returns false here, on 'Coming soon' hitting PARKED.) The earlier audit already rejected wrangler-ai.com as a San Antonio SEO shop; I searched for a public-works Wrangler and found none. Name matches, business unconfirmed, so it keeps its blank."
+  },
+  {
+    "id": "materna-ips",
+    "name": "Materna IPS",
+    "website": null,
+    "confidence": "none",
+    "why": "research 2026-10-05: acquired by SITA in 2024 and renamed 'IPS a SITA company'. SITA is already on the board (sita-information-networking-computing-usa-inc), so this is a merge. Do not use materna-ips.com: it now redirects to a gambling site."
+  },
+  {
+    "id": "sightbit",
+    "name": "Sightbit",
+    "website": null,
+    "confidence": "none",
+    "why": "research 2026-10-05: sightbit.com is the company's historical domain, but today it serves a broken app with no company content, after ten months as a parked page; its current owner is unconfirmed. Re-check later."
+  },
+  {
+    "id": "fathom",
+    "name": "Fathom",
+    "website": null,
+    "confidence": "none",
+    "why": "research 2026-10-05: FATHOM Water Management closed in November 2019 and nothing took over the business. Its old domain gwfathom.com now serves a crypto-casino page. A defunct company: consider removing it from the board."
+  },
+  {
+    "id": "watchtower-robotics",
+    "name": "WatchTower Robotics",
+    "website": null,
+    "confidence": "none",
+    "why": "research 2026-10-05: watchtowerrobotics.com carried the company's site until late 2025 and now serves gambling spam; no new domain, rename or acquisition found. Do not use that domain."
   }
 ]

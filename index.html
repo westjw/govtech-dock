@@ -2410,6 +2410,8 @@ function roleView(id){
         <span class="pay" style="font-size:15.5px">${esc(payText(p.comp))}</span>
         <span class="chip">${p.comp.source==="ats"
           ? "published by their job board"
+          : p.comp.source==="employer"
+          ? "stated by the employer on SLED HQ"
           : "read out of the description"}</span>
         ${p.comp.raw?`<div style="margin-top:3px">as posted: &ldquo;${esc(p.comp.raw)}&rdquo;</div>`:""}</div>`;
       return `<div class="kv" style="margin-top:8px;max-width:74ch">${p.jd_seen
@@ -2422,7 +2424,8 @@ function roleView(id){
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
-      ${p.source==="manual"?'<span class="chip">found by hand</span>':""}</p>`:""}
+      ${p.source==="manual"?'<span class="chip">found by hand</span>'
+        :p.source==="hq"?'<span class="chip">posted on SLED HQ</span>':""}</p>`:""}
 
     <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
     ${(()=>{

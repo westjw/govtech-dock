@@ -1593,6 +1593,32 @@ still governs employers. If the paid tiers need real accounts, that is a
 decision to take deliberately for those tiers — it is not licence to put a
 password behind a company page.
 
+## Jobs posted on SLED HQ reach the board through a feed (2026-10-05)
+
+The recruiter side lives in SLED HQ (owner, 2026-10-01), and HQ never writes
+this repo.
+- `scripts/hq_jobs.py` reads HQ's feed nightly in `refresh.yml`, before the
+  board is built, into `data/hq_jobs.json`.
+- `build_board.merge_hq` lists those jobs the way `merge_manual` lists
+  captures, and `quick_rebuild` does the same.
+- Without the `SLEDJOBS_FEED_TOKEN` secret it does nothing. HQ is not
+  deployed yet.
+
+The rules follow the contract agreed with the HQ session on 2026-10-04:
+- Any answer but 200 keeps the jobs on file, because an error is never
+  "no jobs".
+- A 200 carries the whole list.
+- Bad jobs are refused one at a time, each with its reason: an unknown
+  company, a company with no website, an apply url off `hq.<domain>`,
+  vocabulary outside roles.py, or a closing date already past.
+- No description is stored, and no token or body is ever logged.
+- At build time a job is dropped again if its date passed or its company lost
+  its website.
+- An HQ row is keyed `company::title::hash` like every row, with `hq_id` beside
+  it, so it groups with the same title off the company's own board.
+- Its pay is labelled "stated by the employer on SLED HQ".
+- `check_sled_hq_jobs_reach_the_board` covers this. Mutation-tested 15 of 15.
+
 ## Conventions
 
 - Company `id` = kebab-case name (parenthetical suffixes dropped).

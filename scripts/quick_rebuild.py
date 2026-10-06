@@ -110,7 +110,7 @@ STAMPED = ("company", "sector", "category", "also")
 # The side files a redraw reads, hashed into the `redrawn` marker.
 HASHED = ("news.json", "manual.json", "claims.json", "scope_decisions.json",
           "discovery_log.json", "cities.json", "conferences.json",
-          "schema.json")
+          "schema.json", "hq_jobs.json")
 
 
 @contextlib.contextmanager
@@ -430,6 +430,7 @@ def redraw() -> dict:
                  if i not in on_file and i not in passed}
 
     manual_count, manual_dupes = bb.merge_manual(postings, man)
+    bb.merge_hq(postings, bb.load_hq(), companies)
     bb.carry_first_seen(postings, prev.get("postings", []))
     bb.fill_geography(postings)
     unique = bb.drop_identical(postings)

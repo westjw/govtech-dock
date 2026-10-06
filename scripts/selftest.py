@@ -18632,6 +18632,47 @@ def check_acquired_names_still_match_themselves() -> int:
 
 
 
+def check_a_researched_website_reaches_the_card() -> int:
+    """A suggestion the research already made must be on the card.
+
+    proposed_websites.json held a page-quoted answer for seven of the fifteen
+    companies in Missing websites (Oracle, LexisNexis Risk, UKG TeleStaff...)
+    and the card never showed it, so the owner would have researched them
+    again by hand (2026-10-05). Driven in a sandbox: a proposal with an
+    address reaches its row, one without an address (ambiguous, unreachable)
+    does not, and the card offers it through the same Check a pasted address
+    gets - it never saves on its own.
+    """
+    import admin
+    errors = 0
+    companies = [{"id": "acme", "name": "Acme", "sector": "General Gov", "category": "Finance & ERP",
+                  "description": "x", "website": None},
+                 {"id": "blur", "name": "Blur", "sector": "General Gov", "category": "Finance & ERP",
+                  "description": "x", "website": None}]
+    props = [{"id": "acme", "name": "Acme", "website": "https://acme.example.com",
+              "confidence": "high", "quote": "Acme makes finance software"},
+             {"id": "blur", "name": "Blur", "website": None, "confidence": "none",
+              "why": "closed in 2019; the old domain is a casino page now"}]
+    with _sandbox_admin({"companies.json": companies, "proposed_websites.json": props,
+                         "admin_dismissed.json": {}}):
+        rows = {r["id"]: r for r in admin.q_websites(companies, {})}
+    if (rows.get("acme") or {}).get("proposed", {}).get("website") != "https://acme.example.com":
+        errors += fail(f"a researched website does not reach its row: {rows.get('acme')}")
+    if (rows.get("blur") or {}).get("proposed"):
+        errors += fail("a proposal with no address was offered as a suggestion")
+    if "casino" not in ((rows.get("blur") or {}).get("finding") or ""):
+        errors += fail("what research found, with no website to offer, does not reach the card")
+    html = (ROOT / "admin.html").read_text()
+    body = html[html.find("RENDER.websites"):]
+    body = body[:body.find("\nRENDER.", 10)]
+    if "c.finding" not in body:
+        errors += fail("the Missing websites card does not show what research found")
+    if "c.proposed" not in body or "check.onclick()" not in body:
+        errors += fail("the Missing websites card does not offer the suggestion through Check")
+    if "save.onclick()" in body.split("Use this suggestion")[-1][:200]:
+        errors += fail("the suggestion saves on its own; a person must press Save")
+    return errors
+
 def check_websites_queue_names_its_twins() -> int:
     """A row that cannot be answered by answering it must say so.
 
@@ -25520,6 +25561,163 @@ def check_a_slow_site_cannot_outlast_the_sweep() -> int:
         errors += fail("news.yml buffers the sweep's output: a stalled run logs nothing")
     return errors
 
+def check_sled_hq_jobs_reach_the_board() -> int:
+    """Jobs posted on SLED HQ are listed on the board, on the agreed contract.
+
+    The recruiter side lives in SLED HQ (owner, 2026-10-01) and HQ never
+    writes this repo: scripts/hq_jobs.py reads its feed into hq_jobs.json and
+    build_board merges it (contract agreed with the HQ session 2026-10-04).
+    Each rule below is a way the board could publish something it must not:
+      - any answer but 200 keeps the jobs on file (an error is never "no jobs");
+      - one bad job is refused with its reason, never the whole feed;
+      - a company the board lacks, or one with no website, is refused;
+      - an apply link off hq.sledjobs.com is refused (a poisoned feed cannot
+        aim the board's Apply buttons elsewhere);
+      - vocabulary outside roles.py is refused, not mapped to "other";
+      - the description is never stored, the token never printed;
+      - at build, a job past its closing date or whose company lost its
+        website is dropped, and a kept job groups with the same title off the
+        company's own board as one opening.
+    """
+    import contextlib
+    import datetime as _dt
+    import io
+    import os
+    import shutil
+    import tempfile
+    import build_board as bb
+    import hq_jobs as HQ
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    today = _dt.date(2026, 10, 6)
+    cos = {"acme": {"id": "acme", "name": "Acme", "website": "https://acme.example.com",
+                    "sector": "Public Safety", "category": "Police"},
+           "nosite": {"id": "nosite", "name": "Nosite", "website": "",
+                      "sector": "Public Safety", "category": "Police"}}
+    good = {"id": "hq::a1", "company_id": "acme", "title": "Account Executive", "family": "gtm",
+            "seniority": "mid", "quota_carrying": True, "work_mode": "remote",
+            "office": {"city": "Austin", "state": "TX"},
+            "territory": {"states": ["TX", "OK"], "region": "Southwest", "stated": True},
+            "comp": {"min": 90000, "max": 120000, "currency": "USD", "period": "year",
+                     "source": "employer"},
+            "posted": "2026-10-01", "closes": "2026-11-01",
+            "url": "https://hq.sledjobs.com/jobs/a1?source=sledjobs",
+            "description": "SECRET JOB COPY", "updated_at": "2026-10-02T00:00:00Z"}
+    bad = {
+        "unknown company": dict(good, id="hq::b1", company_id="ghost"),
+        "no website": dict(good, id="hq::b2", company_id="nosite"),
+        "url off hq": dict(good, id="hq::b3", url="https://evil.example.com/apply"),
+        "family": dict(good, id="hq::b4", family="sales"),
+        "seniority": dict(good, id="hq::b5", seniority="principal"),
+        "work mode": dict(good, id="hq::b6", work_mode="in office"),
+        "region": dict(good, id="hq::b7", territory={"states": ["TX"], "region": "Texas"}),
+        "state": dict(good, id="hq::b8", territory={"states": ["XX"]}),
+        "comp": dict(good, id="hq::b9", comp={"min": "lots", "period": "year"}),
+        "closed": dict(good, id="hq::b10", closes="2026-10-01"),
+        "id": dict(good, id="a11"),
+    }
+    took, refused = HQ.sort_feed({"v": 1, "jobs": [good] + list(bad.values())}, cos, today)
+    if [j["id"] for j in took] != ["hq::a1"]:
+        errors += fail(f"the feed sorted wrong: took {[j['id'] for j in took]}")
+    if len(refused) != len(bad):
+        errors += fail(f"{len(bad)} bad jobs, {len(refused)} refused: {refused}")
+    if any(not r.get("why") for r in refused):
+        errors += fail("a refusal does not say why")
+    if "description" in (took[0] if took else {}):
+        errors += fail("the job description was kept; the board stores no job-ad text")
+
+    class R:
+        def __init__(self, code, body=None, text=None):
+            self.status_code, self._body, self._text = code, body, text
+        def json(self):
+            if self._body is None:
+                raise ValueError("not json")
+            return self._body
+    feeds = {"404": R(404), "503": R(503), "junk": R(200), "v2": R(200, {"v": 2, "jobs": []}),
+             "ok": R(200, {"v": 1, "generated_at": "x", "jobs": [good]})}
+
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    keep = (HQ.OUT, HQ.DATA, os.environ.get("SLEDJOBS_FEED_TOKEN"))
+    try:
+        HQ.DATA, HQ.OUT = tmp, tmp / "hq_jobs.json"
+        (tmp / "companies.json").write_text(json.dumps(list(cos.values())))
+        before = {"jobs": [dict(good, id="hq::old")], "note": "on file"}
+        HQ.OUT.write_text(json.dumps(before))
+        os.environ["SLEDJOBS_FEED_TOKEN"] = "TOKEN-THAT-MUST-NOT-PRINT"
+        for name in ("404", "503", "junk", "v2"):
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                HQ.main(["--write"], get=lambda *a, **k: feeds[name])
+            if json.loads(HQ.OUT.read_text()) != before:
+                errors += fail(f"a feed that answered {name} replaced the jobs on file")
+            if "kept" not in out.getvalue():
+                errors += fail(f"a feed that answered {name} does not say the jobs were kept")
+            if "TOKEN-THAT-MUST-NOT-PRINT" in out.getvalue():
+                errors += fail("the feed token reached the log")
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            HQ.main(["--write"], get=lambda *a, **k: feeds["ok"])
+        doc = json.loads(HQ.OUT.read_text())
+        if [j["id"] for j in doc.get("jobs") or []] != ["hq::a1"]:
+            errors += fail(f"a 200 did not replace the jobs on file: {doc.get('jobs')}")
+        text = HQ.OUT.read_text() + out.getvalue()
+        if "SECRET JOB COPY" in text or "TOKEN-THAT-MUST-NOT-PRINT" in text:
+            errors += fail("the description or the token reached the file or the log")
+        os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        called = []
+        with contextlib.redirect_stdout(io.StringIO()):
+            HQ.main(["--write"], get=lambda *a, **k: called.append(1) or feeds["ok"])
+        if called:
+            errors += fail("with no token the feed was still asked")
+    finally:
+        HQ.OUT, HQ.DATA = keep[0], keep[1]
+        if keep[2] is None:
+            os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        else:
+            os.environ["SLEDJOBS_FEED_TOKEN"] = keep[2]
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # the build
+    ats_row = {"id": "acme::Account Executive::x", "opening_id": "acme::Account Executive",
+               "company_id": "acme", "title": "Account Executive", "source": "ats"}
+    postings = [ats_row]
+    hq = {"jobs": [good, dict(good, id="hq::c2", closes="2026-10-02",
+                              url="https://hq.sledjobs.com/jobs/c2", title="Closed Role"),
+                   dict(good, id="hq::c3", company_id="nosite", url="https://hq.sledjobs.com/jobs/c3")]}
+    added, dropped = bb.merge_hq(postings, hq, list(cos.values()), today=today)
+    row = next((p for p in postings if p.get("source") == "hq"), None)
+    if (added, dropped) != (1, 2) or not row:
+        errors += fail(f"merge_hq added {added} and dropped {dropped}; expected 1 and 2")
+    else:
+        if not row["id"].startswith("acme::Account Executive::"):
+            errors += fail(f"an HQ row id does not start company::title:: ({row['id']}); "
+                           f"build_site and momentum read the company off the front")
+        if row["opening_id"] != ats_row["opening_id"]:
+            errors += fail("an HQ job does not group with the same title off the company's board")
+        if (row["comp"] or {}).get("source") != "employer" or row["comp_floor"] != 90000:
+            errors += fail(f"an HQ job's pay is not the employer's statement: {row['comp']}")
+        if row.get("hq_id") != "hq::a1" or row.get("url") != good["url"]:
+            errors += fail("an HQ row lost its HQ id or its apply link")
+        if not row.get("jd_seen"):
+            errors += fail("an HQ job reads as a posting we could not read")
+        if "description" in row:
+            errors += fail("an HQ row carries the description")
+    if bb.merge_hq([], None, list(cos.values()), today=today) != (0, 0):
+        errors += fail("with no hq_jobs.json the build is not untouched")
+
+    page = (ROOT / "index.html").read_text()
+    if 'p.comp.source==="employer"' not in page or "posted on SLED HQ" not in page:
+        errors += fail("the page does not say an HQ job's pay is the employer's, or where it was posted")
+    yml = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    i, j = yml.find("hq_jobs.py --write"), yml.find("build_board.py --render-budget")
+    if i < 0 or j < 0 or i > j or "secrets.SLEDJOBS_FEED_TOKEN" not in yml:
+        errors += fail("refresh.yml does not read SLED HQ's feed, with its secret, before the board is built")
+    return errors
+
 def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
     """A sandboxed write must never reach the owner's real archive.
 
@@ -27974,6 +28172,7 @@ def main() -> int:
     errors += check_calendar_dates_survive_the_round_trip()
     errors += check_acquired_names_still_match_themselves()
     errors += check_websites_queue_names_its_twins()
+    errors += check_a_researched_website_reaches_the_card()
     errors += check_headline_counts_openings()
     errors += check_admin_blurbs_have_no_typed_counts()
     errors += check_queues_do_not_propose_deleted_categories()
@@ -28131,6 +28330,7 @@ def main() -> int:
     errors += check_discovery_stages_every_file_it_writes()
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()
+    errors += check_sled_hq_jobs_reach_the_board()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()

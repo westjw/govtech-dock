@@ -1332,6 +1332,90 @@ def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
     return manual_count, manual_dupes
 
 
+def load_hq() -> dict | None:
+    """data/hq_jobs.json (scripts/hq_jobs.py), or None before HQ has ever answered."""
+    p = DATA / "hq_jobs.json"
+    return json.loads(p.read_text()) if p.exists() else None
+
+
+def hq_row(job: dict, c: dict) -> dict:
+    """One job an employer posted on SLED HQ, in the board's row shape.
+
+    Keyed like every other row - company::title, then a hash of the url and
+    location - because the site, build_site and momentum read the company id
+    off the front of a posting id; HQ's own id rides along as `hq_id`. The
+    pay is the employer's own statement (source "employer", no `raw` quote to
+    show), and jd_seen is true because the employer wrote the posting: a job
+    with no pay on it is a job whose employer stated none. The description is
+    not here - it never reached hq_jobs.json - and the apply url is HQ's, so
+    an applicant from the board is counted as the board's.
+    """
+    title = ats.plain(job.get("title") or "")
+    office = job.get("office") or None
+    if office and not (office.get("city") or office.get("state")):
+        office = None
+    terr = job.get("territory") or {}
+    territory = {"states": sorted(terr.get("states") or []), "region": terr.get("region"),
+                 "stated": bool(terr.get("stated"))}
+    if office:
+        location = ", ".join(x for x in (office.get("city"), office.get("state")) if x)
+    elif job.get("work_mode") == "remote":
+        location = "Remote"
+    else:
+        location = ""
+    comp = job.get("comp")
+    if comp:
+        comp = {"min": comp.get("min"), "max": comp.get("max"),
+                "currency": comp.get("currency") or "USD", "period": comp.get("period"),
+                "source": "employer", "raw": None}
+    us = (office or {}).get("state") in roles.US_CODES or bool(territory["states"])
+    return {"id": posting_id(c["id"], title, job["url"], location),
+            "opening_id": opening_id(c["id"], title),
+            "hq_id": job["id"], "source": "hq",
+            "company": c.get("name"), "company_id": c["id"], "title": title,
+            "family": job.get("family"), "quota_carrying": bool(job.get("quota_carrying")),
+            "seniority": job.get("seniority"), "territory": territory, "office": office,
+            "states": territory["states"], "region": territory["region"],
+            "work_mode": job.get("work_mode") or "not stated", "location": location,
+            "is_us": True if us else None, "jd_seen": True, "comp": comp,
+            "comp_floor": (comp or {}).get("min"),
+            "comp_period": comp.get("period") if comp else None,
+            "posted": job.get("posted"), "url": job["url"],
+            "sector": c.get("sector"), "category": c.get("category"),
+            "also": c.get("also") or None}
+
+
+def merge_hq(postings: list[dict], hq: dict | None, companies: list[dict],
+             today: dt.date | None = None) -> tuple[int, int]:
+    """Append SLED HQ's jobs to `postings`. Returns (added, dropped).
+
+    hq_jobs.py refused what the feed should not have sent; this re-checks the
+    two things that can change between that read and this build: the company
+    can lose its website or leave the file, and a job can pass its closing
+    date while HQ is not answering (a feed that is down keeps its jobs, so a
+    closed one would otherwise stay listed for as long as HQ stays down).
+    """
+    if not hq:
+        return 0, 0
+    by_id = {c["id"]: c for c in companies}
+    day = (today or dt.date.today()).isoformat()
+    seen = {p["id"] for p in postings}
+    added = dropped = 0
+    for job in hq.get("jobs") or []:
+        c = by_id.get(job.get("company_id"))
+        if not c or not (c.get("website") or "").strip() \
+                or (job.get("closes") and job["closes"] < day):
+            dropped += 1
+            continue
+        row = hq_row(job, c)
+        if row["id"] in seen:
+            continue
+        seen.add(row["id"])
+        postings.append(row)
+        added += 1
+    return added, dropped
+
+
 def carry_first_seen(postings: list[dict], prev_postings: list[dict]) -> None:
     """Give every posting the earliest first_seen the previous board held for it."""
     prev, legacy = {}, {}
@@ -1971,6 +2055,10 @@ def main() -> int:
     # Only `manual.py none` closes a manual posting. The hand-check date rides on
     # each org already: org_record() read it from `man` through run_context().
     manual_count, manual_dupes = merge_manual(postings, man)
+    # Jobs employers posted on SLED HQ (scripts/hq_jobs.py read the feed).
+    hq_count, hq_dropped = merge_hq(postings, load_hq(), companies)
+    if hq_count or hq_dropped:
+        print(f"  SLED HQ: {hq_count} job(s) listed, {hq_dropped} dropped at build")
 
     # carry first_seen forward so a posting keeps its original date
     prev_path = DATA / "board.json"

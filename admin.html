@@ -2577,6 +2577,23 @@ RENDER.websites = c => {
   const check = el('button', 'act', 'Check');
   const save = el('button', 'act go', 'Save'); save.disabled = true;
   let verified = null;
+  /* A researched answer, offered and never applied: "Use this suggestion"
+     fills the box and runs the same Check a pasted address gets, and Save is
+     still a person's click. The quote is the site's own words, as text. */
+  /* What research found when it found no website to offer: a company that
+     closed, a domain someone else now owns, a record that belongs under
+     another one. Text only - it came from pages we do not control. */
+  if (c.finding) n.appendChild(el('div', 'kv', 'Research found: ' + c.finding));
+  if (c.proposed && c.proposed.website) {
+    const s = el('div', 'kv');
+    s.appendChild(el('span', null, 'Suggested by research (' + (c.proposed.confidence || '?') + '): '));
+    s.appendChild(el('b', null, c.proposed.website));
+    if (c.proposed.quote) s.appendChild(el('div', null, '\u201c' + c.proposed.quote + '\u201d'));
+    const use = el('button', 'act', 'Use this suggestion');
+    use.onclick = () => { inp.value = c.proposed.website; check.onclick(); };
+    s.appendChild(use);
+    n.appendChild(s);
+  }
   check.onclick = async () => {
     check.disabled = true; check.textContent = 'checking…';
     const r = await api('/api/verify-website', {url: inp.value, name: c.name});

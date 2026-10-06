@@ -133,6 +133,15 @@ jobs:
         # trial's rate, and it is wrong.
         run: python scripts/refresh.py --ci --force --render-budget 600
 
+      - name: Read the jobs employers posted on SLED HQ
+        # Does nothing until the SLEDJOBS_FEED_TOKEN secret exists. Any answer
+        # but 200 keeps the HQ jobs on file - an error is never "no jobs" - and
+        # the log carries the status and the counts only, never the token or
+        # the body: these logs are public (scripts/hq_jobs.py).
+        env:
+          SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
+        run: python scripts/hq_jobs.py --write
+
       - name: Build the job board and market intel
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.
