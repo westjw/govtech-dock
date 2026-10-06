@@ -110,7 +110,7 @@ STAMPED = ("company", "sector", "category", "also")
 # The side files a redraw reads, hashed into the `redrawn` marker.
 HASHED = ("news.json", "manual.json", "claims.json", "scope_decisions.json",
           "discovery_log.json", "cities.json", "conferences.json",
-          "schema.json", "hq_jobs.json")
+          "schema.json", "hq_jobs.json", "link_health.json")
 
 
 @contextlib.contextmanager

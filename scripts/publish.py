@@ -91,7 +91,7 @@ REPO_SLUG = "westjw/govtech-dock"
 AUTHOR = ("westjw", "67345260+westjw@users.noreply.github.com")
 # The workflows in the govtech-dock-data concurrency group: each commits data
 # files this publisher also commits.
-DATA_WORKFLOWS = ("daily-refresh", "discovery", "news", "write-profiles")
+DATA_WORKFLOWS = ("daily-refresh", "discovery", "news", "write-profiles", "links")
 BUSY = ("queued", "in_progress", "waiting", "pending", "requested")
 # Written by the desk the way a crawl writes, so not journalled.
 CRAWL_WRITES = ("data/news.json", "data/site_pages_index.json",

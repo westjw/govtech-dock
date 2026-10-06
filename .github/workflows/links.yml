@@ -1,0 +1,62 @@
+name: links
+
+# EVERY LINK THE BOARD PUBLISHES, RE-ASKED WEEKLY. A website is judged once,
+# when it is found, and nothing else ever goes back: gwfathom.com served
+# crypto-casino spam and its careers link stayed on the public page for three
+# weeks after the website on the same domain was taken down (2026-10-05).
+# link_check.py fetches each company's website, careers page and posts-at
+# link, live, and build_board does not publish one it found serving spam or a
+# for-sale page. About 2,900 links on ~2,600 hosts: one request per host,
+# paced and identified, roughly ten minutes.
+on:
+  schedule:
+    - cron: "0 4 * * 3"        # Wednesday 04:00 UTC, clear of every other job
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  # The data group refresh, news, discovery and watchdog share: one writer of
+  # data/ at a time.
+  group: govtech-dock-data
+  cancel-in-progress: false
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TZ: America/New_York
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Self-test
+        run: python scripts/selftest.py
+
+      - name: Check every link the board publishes
+        run: python scripts/link_check.py --write --workers 8
+
+      - name: Commit what changed
+        run: |
+          git config user.name  "westjw"
+          git config user.email "67345260+westjw@users.noreply.github.com"
+          git add data/link_health.json
+          if git diff --cached --quiet; then
+            echo "nothing new to commit"
+            exit 0
+          fi
+          git commit -m "links: $(date -u +%Y-%m-%dT%H:%MZ) check"
+          # the desk publisher commits data while this runs; a conflict is
+          # merged record by record (merge_decisions.py), never -X theirs
+          git pull --rebase origin main \
+            || (python scripts/merge_decisions.py --resolve && GIT_EDITOR=true git rebase --continue)
+          git push

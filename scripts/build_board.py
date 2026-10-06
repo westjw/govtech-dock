@@ -1089,7 +1089,23 @@ def run_context(companies: list, manual: dict | None) -> dict:
     return {"vocab": _TAG_VOCAB, "claims": load_claims(), "news": _news_store(),
             "owns": owns, "unowned": unowned,
             "discovery": _read_discovery_log(),
-            "checks": (manual or {}).get("checks", {})}
+            "checks": (manual or {}).get("checks", {}),
+            "hidden_links": hidden_links()}
+
+
+def hidden_links() -> set:
+    """Links link_check.py last found serving spam or a for-sale page.
+
+    A LINK IS NOT PUBLISHED WHEN ITS PAGE IS A CASINO. gwfathom.com's careers
+    link sat on the public page for three weeks after the company's website
+    on the same domain was taken down for crypto-casino spam (2026-10-05).
+    The record is left as it is - a person fixes it, from the evidence - and
+    the board simply does not carry the link until they do."""
+    p = DATA / "link_health.json"
+    if not p.exists():
+        return set()
+    import link_check
+    return link_check.hidden(json.loads(p.read_text()))
 
 
 def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
@@ -1109,7 +1125,8 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
         "category": c["category"], "also": c.get("also") or None,
         "location": c.get("location"),
         "year_founded": c.get("year_founded"), "description": c.get("description"),
-        "website": c.get("website"), "board_url": board_url(c),
+        "website": None if c.get("website") in ctx.get("hidden_links", ()) else c.get("website"),
+        "board_url": None if board_url(c) in ctx.get("hidden_links", ()) else board_url(c),
         # THEIR OWN LINKEDIN, read off their own careers page by
         # find_linkedin.py and stored only where the slug matches
         # the company name. It is a LINK, never a job count: for
@@ -1246,7 +1263,8 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
         # entirely invisible. "They advertise on LinkedIn" and "we could
         # not find a board" are opposite facts and were being shown as the
         # same one.
-        "posts_at": c.get("posts_at") or None,
+        "posts_at": None if (c.get("posts_at") or {}).get("url") in ctx.get("hidden_links", ())
+                    else (c.get("posts_at") or None),
         "source": c.get("source") or None,
         "researched": bool(c.get("researched")) or None,
         # WHO SAYS SO. A claimed page reads differently from one we wrote

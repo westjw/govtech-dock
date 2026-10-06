@@ -25718,6 +25718,96 @@ def check_sled_hq_jobs_reach_the_board() -> int:
         errors += fail("refresh.yml does not read SLED HQ's feed, with its secret, before the board is built")
     return errors
 
+def check_every_published_link_is_rechecked() -> int:
+    """A link the board publishes is re-asked, and a casino is never published.
+
+    gwfathom.com was taken off Fathom's record on 2026-09-13 for serving
+    crypto-casino spam; its careers link on the same domain stayed on the
+    public page until 2026-10-05, because a website is judged once, at
+    discovery, and nothing re-asks. scripts/link_check.py fetches every
+    published link weekly (links.yml) and build_board does not publish one
+    found serving spam or a for-sale page. Driven: judge() on each kind of
+    page, hidden() on the findings, and org_record() with a flagged website,
+    careers page and posts-at link.
+    """
+    import build_board as bb
+    import link_check as L
+    errors = 0
+
+    def fail(msg: str) -> int:
+        print(f"  FAIL: {msg}")
+        return 1
+
+    spam = "<title>Situs Slot Gacor</title>" + " slot casino jackpot gacor maxwin " * 3
+    parked = "<html><title>example.com is for sale</title><body>This domain is for sale!</body></html>"
+    cases = {
+        "spam": L.judge("https://a.example.com", 200, "https://a.example.com/", spam),
+        "for_sale": L.judge("https://b.example.com", 200, "https://b.example.com/", parked),
+        "market": L.judge("https://c.example.com", 200, "https://www.hugedomains.com/domain_profile.cfm?d=c",
+                          "<title>c.example.com</title> premium name"),
+        "moved": L.judge("https://d.example.com", 200, "https://www.parent.example.org/d",
+                         "<title>Parent</title> we bought D"),
+        "unread": L.judge("https://e.example.com", 403, "https://e.example.com", ""),
+        "ok": L.judge("https://f.example.com", 200, "https://www.f.example.com/",
+                      "<title>F</title> software for cities"),
+        # the first full run's false alarms (2026-10-05): one ordinary word
+        # repeated, and a vendor whose page loads a registrar's script
+        "one word": L.judge("https://g.example.com", 200, "https://g.example.com/",
+                            "<title>BondLink</title>" + " book a time slot with us " * 8),
+        "registrar script": L.judge("https://h.example.com", 200, "https://h.example.com/",
+                                    "<title>Legacy Mark</title><script src='https://img1.wsimg.com/godaddy.js'></script>"
+                                    " cemetery software since 1987 <footer>Website Builder by GoDaddy</footer>"),
+        "casino title": L.judge("https://i.example.com", 200, "https://i.example.com/",
+                                "<title>VPN Friendly BTC Crypto Casinos USA</title> best options"),
+    }
+    want = {"spam": "spam", "for_sale": "for_sale", "market": "for_sale", "moved": "moved",
+            "unread": "unread", "ok": "ok", "one word": "ok", "registrar script": "ok",
+            "casino title": "spam"}
+    for k, w in want.items():
+        if cases[k]["kind"] != w:
+            errors += fail(f"a {k} page was judged {cases[k]['kind']!r}, not {w!r}")
+    health = {"links": {"x": [{"url": "https://a.example.com", "kind": "spam"},
+                              {"url": "https://b.example.com", "kind": "for_sale"},
+                              {"url": "https://d.example.com", "kind": "moved"},
+                              {"url": "https://e.example.com", "kind": "unread"}]}}
+    if L.hidden(health) != {"https://a.example.com", "https://b.example.com"}:
+        errors += fail(f"the links hidden are {L.hidden(health)}; only spam and for-sale pages hide")
+
+    c = {"id": "zz-link-test", "name": "ZZ", "sector": "Public Works", "category": "Water",
+         "website": "https://a.example.com",
+         "ats": {"type": "html", "ref": "https://b.example.com/careers"},
+         "posts_at": {"where": "other", "url": "https://a.example.com/jobs"}}
+    ctx = bb.run_context([c], None)
+    ctx["hidden_links"] = {"https://a.example.com", "https://b.example.com/careers",
+                           "https://a.example.com/jobs"}
+    try:
+        o = bb.org_record(c, [c], ctx, {"unreadable": None, "roles_from_storage": None, "enumerable": None, "offtopic_dropped": None, "federal_dropped": None, "scan_lead": None})
+    except Exception as exc:                               # noqa: BLE001
+        return errors + fail(f"org_record could not be driven: {exc!r}")
+    if o.get("website") or o.get("board_url") or o.get("posts_at"):
+        errors += fail(f"a flagged link was published: website={o.get('website')!r} "
+                       f"board_url={o.get('board_url')!r} posts_at={o.get('posts_at')!r}")
+    if c["website"] != "https://a.example.com":
+        errors += fail("hiding a link rewrote the company record; a person fixes the record")
+    ctx["hidden_links"] = set()
+    o = bb.org_record(c, [c], ctx, {"unreadable": None, "roles_from_storage": None, "enumerable": None, "offtopic_dropped": None, "federal_dropped": None, "scan_lead": None})
+    if o.get("website") != "https://a.example.com":
+        errors += fail("an unflagged website was not published")
+
+    yml = (ROOT / ".github" / "workflows" / "links.yml")
+    if not yml.exists():
+        errors += fail("no links.yml: nothing re-asks the board's links")
+    else:
+        y = yml.read_text()
+        for need in ("link_check.py --write", "git add data/link_health.json",
+                     "group: govtech-dock-data", "cron:"):
+            if need not in y:
+                errors += fail(f"links.yml lacks {need!r}")
+    import publish
+    if "links" not in publish.DATA_WORKFLOWS:
+        errors += fail("the desk publisher does not pause for the links job")
+    return errors
+
 def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
     """A sandboxed write must never reach the owner's real archive.
 
@@ -28331,6 +28421,7 @@ def main() -> int:
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_sled_hq_jobs_reach_the_board()
+    errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()

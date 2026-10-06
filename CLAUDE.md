@@ -1593,6 +1593,26 @@ still governs employers. If the paid tiers need real accounts, that is a
 decision to take deliberately for those tiers — it is not licence to put a
 password behind a company page.
 
+## Every published link is re-asked weekly (2026-10-05)
+
+A website is judged once, at discovery, and `site_identity.py` re-reads only
+pages cached back then, so nothing went back to look.
+- gwfathom.com's careers link stayed on Fathom's public page for three weeks
+  after the website on the same domain was taken down for casino spam.
+- `scripts/link_check.py` (`links.yml`, Wednesdays) fetches every website,
+  careers page and posts-at link live, and writes `data/link_health.json`.
+- `build_board` does not publish a link found serving spam or a for-sale
+  page. The record is untouched; a person fixes it.
+- "Moved" (usually an acquisition) and "unread" are shown, never hidden.
+
+**The first full run flagged 33 links as spam and 31 were vendors.** BondLink
+says "slot" seven times (time slots), Trimble "spin" ten times (a spinner).
+- The real hijacks use five or more different gambling words.
+- So spam needs three different ones, or an unmistakable word in the title.
+- A for-sale page is judged by the words a reader sees. A registrar's name in
+  the markup is not enough: legacymark.com loads a GoDaddy script.
+- Mutation-tested 13 of 13. Read the flagged list before trusting it.
+
 ## Jobs posted on SLED HQ reach the board through a feed (2026-10-05)
 
 The recruiter side lives in SLED HQ (owner, 2026-10-01), and HQ never writes
