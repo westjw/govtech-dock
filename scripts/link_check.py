@@ -71,6 +71,17 @@ def registrable(host: str) -> str:
     return ".".join(parts[-2:])
 
 
+def brand_changed(url: str, final: str) -> bool:
+    """A redirect onto a different NAME, not just a new address for the same one.
+    automotus.co -> automotus.ai and aurelian.io -> aurelian.com are the same
+    company moving house; cartegraph.com -> opengov.com is a purchase."""
+    a = re.sub(r"[^a-z0-9]", "", registrable(up.urlsplit(url).hostname or "").split(".")[0])
+    b = re.sub(r"[^a-z0-9]", "", registrable(up.urlsplit(final).hostname or "").split(".")[0])
+    if not a or not b or a == b:
+        return False
+    return not (a in b or b in a or a[:5] == b[:5])
+
+
 def links_of(c: dict) -> list[tuple[str, str]]:
     """(field, url) for every link the board publishes for this company."""
     out = []

@@ -25794,6 +25794,36 @@ def check_every_published_link_is_rechecked() -> int:
     if o.get("website") != "https://a.example.com":
         errors += fail("an unflagged website was not published")
 
+    # a website that now lands on another NAME is acquisition evidence
+    pairs = {("https://www.cartegraph.com", "https://opengov.com/products/asset-management/"): True,
+             ("https://www.automotus.co", "https://www.automotus.ai/"): False,
+             ("https://www.aurelian.io", "https://www.aurelian.com/"): False,
+             ("https://www.abilis.ca", "https://abilis-solutions.com/"): False,
+             ("https://acme.example.com", "https://www.acme.example.com/about"): False}
+    for (u, f), want in pairs.items():
+        if L.brand_changed(u, f) != want:
+            errors += fail(f"brand_changed({u}, {f}) is not {want}")
+    import shutil
+    import tempfile
+    import acquisitions as A
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    keep_data = A.DATA
+    try:
+        A.DATA = tmp
+        (tmp / "link_health.json").write_text(json.dumps({"links": {
+            "zz-bought": [{"field": "website", "kind": "moved", "url": "https://www.cartegraph.com",
+                           "final": "https://opengov.com/products/asset-management/"}],
+            "zz-moved-house": [{"field": "website", "kind": "moved", "url": "https://www.automotus.co",
+                                "final": "https://www.automotus.ai/"}]}}))
+        ev = A.evidence_for("zz-bought")
+        if (ev.get("redirect") or {}).get("to") != "https://opengov.com/products/asset-management/":
+            errors += fail(f"a website landing on another name is not acquisition evidence: {ev}")
+        if A.evidence_for("zz-moved-house").get("redirect"):
+            errors += fail("a same-name domain move was offered as an acquisition")
+    finally:
+        A.DATA = keep_data
+        shutil.rmtree(tmp, ignore_errors=True)
+
     yml = (ROOT / ".github" / "workflows" / "links.yml")
     if not yml.exists():
         errors += fail("no links.yml: nothing re-asks the board's links")

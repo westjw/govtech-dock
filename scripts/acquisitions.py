@@ -56,6 +56,11 @@ def _read(p: pathlib.Path, default):
 
 
 
+def _brand_changed(url: str | None, final: str | None) -> bool:
+    import link_check
+    return bool(url and final) and link_check.brand_changed(url, final)
+
+
 def _logo_families() -> dict:
     """Companies whose logo file is byte-identical to another company's.
 
@@ -171,6 +176,15 @@ def evidence_for(cid: str) -> dict:
             if m:
                 out.setdefault("redirect", {"to": m.group(1).rstrip(" -"),
                                             "from": "their own website"})
+    # THE WEEKLY LINK CHECK SEES THE SAME FACT, FRESH. link_check.py fetches
+    # every company's website live, and one that now lands on a different
+    # NAME - cartegraph.com on opengov.com, aclara.com on hubbell.com - is the
+    # redirect this queue is built on. A new address for the same name
+    # (automotus.co -> automotus.ai) is not a purchase and is left out.
+    for row in ((_read(DATA / "link_health.json", {}) or {}).get("links") or {}).get(cid, []):
+        if row.get("field") == "website" and row.get("kind") == "moved" \
+                and _brand_changed(row.get("url"), row.get("final")):
+            out.setdefault("redirect", {"to": row.get("final"), "from": "their own website"})
     fam = _logo_families().get(cid)
     if fam:
         out["logo_family"] = fam
@@ -396,6 +410,10 @@ def q_acquisitions(companies, board) -> list:
     for lid, e in (_read(DATA / "logo_log.json", {}) or {}).items():
         if isinstance(e, dict) and "different brand" in (e.get("note") or ""):
             add(lid, "website-redirect")
+    for lid, rows in ((_read(DATA / "link_health.json", {}) or {}).get("links") or {}).items():
+        if any(r.get("field") == "website" and r.get("kind") == "moved"
+               and _brand_changed(r.get("url"), r.get("final")) for r in rows):
+            add(lid, "website-moved")
     for lid, f in _logo_families().items():
         # a duplicate record is the Duplicates queue's job, not this one
         if not f.get("same_company"):
