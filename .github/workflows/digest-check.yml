@@ -10,8 +10,9 @@ name: digest-check
 #
 # Turning it on by running daily-refresh would mail a list nobody has looked
 # at, on the first attempt, with no way to take it back. This does the reading
-# half only: it lists the sub: keys in KV and prints the count and the masked
-# addresses.
+# half only: it lists the sub: keys in KV and prints the count and the first
+# characters of each key - never any part of an address, because the logs
+# of a public repository are public.
 #
 # RESEND_KEY IS DELIBERATELY NOT PASSED. Not as a convention - as a property.
 # send_digests refuses a --send with no key, so this job cannot mail anybody

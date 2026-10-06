@@ -3007,9 +3007,9 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         "# Every page here is public and meant to be found.\n"
         "User-agent: *\n"
         "Allow: /\n"
-        "# data/board.json is 6MB of JSON the pages read at runtime. It is not\n"
-        "# secret - it is simply not a page, and crawling it helps nobody.\n"
-        "Disallow: /data/\n"
+        "# data/ is NOT disallowed: the board draws every role page from\n"
+        "# data/board.json, and a crawler that may not fetch it renders an\n"
+        "# error message instead of the role.\n"
         f"\nSitemap: {site}/sitemap.xml\n")
 
     # A real 404 body. Cloudflare Pages serves /404.html for an unmatched path,

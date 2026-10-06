@@ -59,11 +59,18 @@ CF = "https://api.cloudflare.com/client/v4"
 FROM = brand.FROM
 
 
-def mask(email: str) -> str:
-    """j****@gmail.com - enough to tell two subscribers apart in a log,
-    not enough to be a mailing list if the log leaks."""
-    name, _, host = email.partition("@")
-    return f"{name[:1]}****@{host}"
+def label(key: str) -> str:
+    """sub:Ab3x... - the first four characters of the subscription's KV key.
+
+    THE LOG IS PUBLIC. This used to print j****@gmail.com on the assumption
+    that the Actions log stayed private; the repository is public, so its logs
+    are too. One letter plus the domain plus "61 new govtech roles" names a
+    person job hunting at a small agency, which is the one question this site
+    must never answer about somebody (launch audit, 2026-10-06). Four
+    characters of a 256-bit random token identify nobody and leave 232 bits
+    unguessed, and they are exactly what the KV dashboard needs to find the key
+    when an at-risk subscriber's last_sent has to be advanced by hand."""
+    return f"{key[:8]}..."
 
 
 class KV:
@@ -230,7 +237,7 @@ def main() -> int:
             continue
         if not sub or not sub.get("email"):
             continue
-        who = mask(sub["email"])
+        who = label(key)
         if not sub.get("confirmed"):
             skipped += 1
             continue

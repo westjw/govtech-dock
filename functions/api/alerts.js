@@ -38,7 +38,20 @@ import { json, mintToken, emailKey, validEmail, cleanToken, send, button, shell,
          SITE, FROM, NAME } from "../_mail.js";
 const MAX_SAVED = 500;          // a person's shortlist, not a scrape target
 const MAX_ID = 300;
-const CONFIRM_COOLDOWN = 3600;  // seconds between confirmation mails per address
+const CONFIRM_COOLDOWN = 3600;  // seconds between mails per address, either kind
+/* AN UNCONFIRMED SIGNUP EXPIRES. The confirmation mail has always said "the
+ * request expires on its own", and until 2026-10-06 nothing made it true:
+ * the record was written with no expiry and nothing pruned it, so an address
+ * somebody else typed in was kept for ever. KV deletes both keys after a
+ * week; confirming re-writes them with no expiry. */
+const PENDING_TTL = 7 * 86400;
+
+/* EVERY write of a subscription goes through here, so no action can make a
+ * pending record permanent by rewriting it: settings and sync work before
+ * confirming, and a put replaces the key whole, expiry included. */
+const putSub = (env, token, sub) =>
+  env.ALERTS.put("sub:" + token, JSON.stringify(sub),
+                 sub.confirmed ? undefined : { expirationTtl: PENDING_TTL });
 
 const CADENCES = new Set(["daily", "twice", "weekly"]);
 /* These four sets are the SAME vocabulary scripts/roles.py assigns and
@@ -169,7 +182,7 @@ Click to confirm. Until you do, nothing is sent.
 ${link}
 
 If this was not you, ignore this email. No further mail will be sent to this
-address and the request expires on its own.
+address and the request expires on its own in a week.
 
 The same link is your settings page afterwards: change what you get, or stop
 the alerts, without a password.`;
@@ -183,7 +196,7 @@ the alerts, without a password.`;
 <div style="padding:20px 0 4px">${button(link, "Confirm alerts")}</div>
 <p style="margin:16px 0 0;color:#556F82;font-size:13px">If this was not you,
  ignore this email. Nothing further will be sent to this address and the
- request expires on its own.</p>
+ request expires on its own in a week.</p>
 <p style="margin:8px 0 0;color:#556F82;font-size:13px">The same link is your
  settings page afterwards &mdash; change what you get, or stop the alerts,
  no password.</p>`,
@@ -237,14 +250,18 @@ export async function onRequestPost({ request, env }) {
   if (action === "confirm") {
     if (!sub.confirmed) {
       sub.confirmed = true;
-      await env.ALERTS.put("sub:" + token, JSON.stringify(sub));
+      // Confirmed now, so putSub writes it with no expiry. The address key is
+      // rewritten too, or it would lapse after a week and the next signup
+      // from this address would mint a second subscription.
+      await putSub(env, token, sub);
+      await env.ALERTS.put(await emailKey(sub.email), token);
     }
     return json({ ok: true, confirmed: true, prefs: sub.prefs });
   }
 
   if (action === "update") {
     sub.prefs = cleanPrefs(body.prefs);
-    await env.ALERTS.put("sub:" + token, JSON.stringify(sub));
+    await putSub(env, token, sub);
     return json({ ok: true, prefs: sub.prefs });
   }
 
@@ -256,7 +273,7 @@ export async function onRequestPost({ request, env }) {
   if (action === "sync") {
     sub.saved = cleanSaved(body.saved);
     sub.removed = cleanRemoved(body.removed, sub.removed);
-    await env.ALERTS.put("sub:" + token, JSON.stringify(sub));
+    await putSub(env, token, sub);
     return json({ ok: true, saved: sub.saved, removed: sub.removed });
   }
 
@@ -291,7 +308,13 @@ async function subscribe(body, env) {
     if (raw) {
       const sub = JSON.parse(raw);
       if (sub.confirmed) {
-        // Already subscribed: send the settings link, not a second signup.
+        // Already subscribed: send the settings link, not a second signup -
+        // and not more than once an hour. This branch had no cooldown, so
+        // anyone who knew a subscriber's address could make this site mail
+        // them without limit (launch audit, 2026-10-06).
+        if (now - (sub.settings_sent || 0) < CONFIRM_COOLDOWN) return same;
+        sub.settings_sent = now;
+        await putSub(env, existing, sub);
         await send(env, email, "Your SLED JOBS alert settings",
           `Your settings link:\n\n${SITE}/alerts?t=${existing}\n\n` +
           `You are already subscribed, so nothing changed. Use the link to ` +
@@ -314,7 +337,8 @@ async function subscribe(body, env) {
       if (now - (sub.confirm_sent || 0) < CONFIRM_COOLDOWN) return same;
       sub.prefs = prefs;
       sub.confirm_sent = now;
-      await env.ALERTS.put("sub:" + existing, JSON.stringify(sub));
+      await putSub(env, existing, sub);
+      await env.ALERTS.put(ek, existing, { expirationTtl: PENDING_TTL });
       await send(env, email, ...confirmMail(existing, prefs));
       return same;
     }
@@ -323,8 +347,8 @@ async function subscribe(body, env) {
   const token = mintToken();
   const sub = { email, prefs, saved: [], removed: {}, confirmed: false,
                 created: now, confirm_sent: now, last_sent: null };
-  await env.ALERTS.put("sub:" + token, JSON.stringify(sub));
-  await env.ALERTS.put(ek, token);
+  await putSub(env, token, sub);
+  await env.ALERTS.put(ek, token, { expirationTtl: PENDING_TTL });
   const ok = await send(env, email, ...confirmMail(token, prefs));
   if (!ok) {
     // Do not leave a half-made subscription that never got its link.

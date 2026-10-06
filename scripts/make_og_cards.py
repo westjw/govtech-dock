@@ -19,6 +19,7 @@ Every colour comes from data/brand.json. Nothing here restates a hex.
 from __future__ import annotations
 
 import base64
+import datetime as dt
 import json
 import pathlib
 import sys
@@ -115,6 +116,16 @@ def main() -> int:
             page.screenshot(path=str(OUT / f"{name}.png"))
             print(f"  wrote assets/og/{name}.png")
         br.close()
+    # THE PICTURES CARRY THE DOMAIN, AND NOTHING COULD READ A PICTURE. The
+    # cards were drawn 2026-08-29 and the domain moved on 09-02; every link
+    # preview still said solesourcejobs.com five weeks later, because the
+    # domain guard reads text. This record is the text it can read:
+    # selftest.check_share_cards refuses cards drawn for another domain.
+    (OUT / "rendered.json").write_text(json.dumps({
+        "domain": brand["domain"], "name": brand["name"],
+        "rendered_on": dt.date.today().isoformat(),
+        "orgs": orgs, "hiring": hiring}, indent=1) + "\n")
+    print("  wrote assets/og/rendered.json")
     return 0
 
 

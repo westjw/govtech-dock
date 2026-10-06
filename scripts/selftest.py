@@ -2555,6 +2555,63 @@ def _run_argv(mod, argv):
         sys.argv = keep
 
 
+def check_an_alert_signup_keeps_its_promises() -> int:
+    """The alerts endpoint does what its own emails say it does.
+
+    Run through scripts/alerts_harness.mjs, which IMPORTS functions/api/
+    alerts.js against a fake KV that records each write's expiry. Nothing ran
+    these handlers before 2026-10-06, and two promises were false: the
+    confirmation mail says an unconfirmed request "expires on its own" and
+    nothing expired it, and the pending branch's cooldown exists "so this
+    cannot be used to bomb somebody else's inbox" while the confirmed branch
+    mailed on every request.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so the alerts endpoint was not run")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "alerts_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"the alerts endpoint would not run: {r.stderr.strip()[:300]}")
+    d = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    week = 7 * 86400
+    if d.get("pendingSubTtl") != week or d.get("pendingEmTtl") != week:
+        errors += fail(f"an unconfirmed signup does not expire in a week "
+                       f"(sub {d.get('pendingSubTtl')}, address "
+                       f"{d.get('pendingEmTtl')}) - the confirmation mail "
+                       f"promises it does, to somebody who never agreed")
+    if d.get("pendingTtlAfterUpdate") != week or d.get("pendingTtlAfterSync") != week \
+            or d.get("writesWithoutTtlWhilePending"):
+        errors += fail("saving settings or syncing before confirming made the "
+                       "pending record permanent")
+    if d.get("confirmedSubTtl") is not None or d.get("confirmedEmTtl") is not None \
+            or d.get("confirmedTtlAfterRepeat") is not None:
+        errors += fail(f"a CONFIRMED subscription still expires (sub "
+                       f"{d.get('confirmedSubTtl')}, address "
+                       f"{d.get('confirmedEmTtl')}) - a subscriber would vanish")
+    if d.get("mailsAfterSignup") != 1 or d.get("mailsAfterPendingRepeat") != 1:
+        errors += fail("a repeat signup inside the hour sent another confirmation")
+    if d.get("settingsMailsFrom25Requests") != 1:
+        errors += fail(f"25 signups for an already-subscribed address sent "
+                       f"{d.get('settingsMailsFrom25Requests')} settings emails; "
+                       f"anyone who knows a subscriber's address can flood "
+                       f"their inbox from the public site")
+    if d.get("settingsMailsAfterAnHour") != 2:
+        errors += fail("after the hour, the settings email can no longer be "
+                       "asked for at all - the cooldown is a lockout")
+    ans = [_json.dumps(d.get(k, {}).get("body") if k != "freshAnswer" else d.get(k),
+                       sort_keys=True) for k in ("signup", "repeatAnswer", "freshAnswer")]
+    if len(set(ans)) != 1:
+        errors += fail(f"subscribe answers differently for new and existing "
+                       f"addresses, which makes it an oracle for who is "
+                       f"subscribed: {ans}")
+    if d.get("afterStop"):
+        errors += fail("unsubscribing left a key behind")
+    return errors
+
+
 def check_claiming_holds_the_domain_line() -> int:
     """A company may claim its page by proving it reads mail at its own
     domain, and may then PROPOSE - never edit.
@@ -7856,9 +7913,10 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             errors += fail("mail went out that could not be recorded and the "
                            "run reported success. The next digest clearing "
                            "their floor repeats the window and nothing said so")
-        # 4. AND IT SAYS WHO, because a count nobody can act on is not a report
-        if "a****@example.org" not in warn or "b****@example.org" not in warn:
-            errors += fail(f"the at-risk subscribers are not named (masked) in "
+        # 4. AND IT SAYS WHICH KEY, because a count nobody can act on is not a
+        #    report - by the KV key the dashboard finds, never by address
+        if "sub:aaa" not in warn or "sub:bbb" not in warn:
+            errors += fail(f"the at-risk subscribers are not named by KV key in "
                            f"the WARNING, so nobody can fix their last_sent by "
                            f"hand: {warn[-200:]!r}")
         # 6. AND A SUBSCRIPTION WE COULD NOT READ IS REPORTED AS THAT, not as
@@ -7872,9 +7930,12 @@ def check_one_subscriber_never_silences_the_rest() -> int:
         if len(fake.mailed) != 2:
             errors += fail(f"an unreadable subscription changed who got mail: "
                            f"{fake.mailed}")
-        # 5. NO ADDRESS IN FULL, ever - this runs in CI and CI logs are forever
-        if "alpha@example.org" in text or "beta@example.org" in text:
-            errors += fail("a subscriber's full address reached the log")
+        # 5. NO PART OF ANY ADDRESS, ever. The repository is public, so its
+        #    Actions logs are; a masked "a****@example.org" still printed the
+        #    domain, and at a small agency the domain is the person.
+        if "example.org" in text or "alpha" in text or "beta@" in text:
+            errors += fail("part of a subscriber's address reached the log, and "
+                           "the Actions logs of a public repository are public")
     finally:
         sd.requests, dg.build, dg.render, sys.argv = keep[0], keep[1], keep[2], keep[3]
         sd.time = __import__("time")
@@ -14693,6 +14754,16 @@ def check_share_cards() -> int:
     for miss in sorted(named - have):
         errors += fail(f"the middleware points at /assets/og/{miss}.png and no "
                        f"such card exists - run scripts/make_og_cards.py")
+    # The domain is drawn INTO the pictures, where the domain guard cannot
+    # read it (they said solesourcejobs.com for five weeks after the move).
+    # make_og_cards.py records what it drew them for; hold that to brand.json.
+    rec = ROOT / "assets" / "og" / "rendered.json"
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    drawn = json.loads(rec.read_text()) if rec.exists() else {}
+    if drawn.get("domain") != brand["domain"] or drawn.get("name") != brand["name"]:
+        errors += fail(f"the share cards were drawn for "
+                       f"{drawn.get('domain') or 'an unrecorded domain'}, and the "
+                       f"site is {brand['domain']} - run scripts/make_og_cards.py")
     ship = (ROOT / "scripts" / "build_site.py").read_text()
     if '"og"' not in ship:
         errors += fail("build_site does not copy assets/og into the published "
@@ -18247,8 +18318,17 @@ def check_crawl_files() -> int:
         rob = (tmp / "robots.txt").read_text()
         if "Sitemap: https://example.test/sitemap.xml" not in rob:
             errors += fail("robots.txt does not name the sitemap")
-        if "Disallow: /data/" not in rob:
-            errors += fail("robots.txt invites crawlers into the 6MB data feed")
+        # THIS ASSERTION USED TO DEMAND THE OPPOSITE. "Disallow: /data/" kept
+        # crawlers off a 6MB file, and with it off the only thing the app can
+        # draw from: Google does not fetch a blocked resource while rendering,
+        # so 6,362 of 7,731 sitemap addresses (every ?role= page, the tabs and
+        # /) rendered as loadError's "Run python3 scripts/build_board.py",
+        # with JobPosting markup on top (launch audit, 2026-10-06).
+        if any(l.strip().lower().startswith("disallow:") and "/data" in l
+               for l in rob.splitlines()):
+            errors += fail("robots.txt blocks /data/, and every app page is drawn "
+                           "from data/board.json - a crawler sees the error "
+                           "message instead of the role")
         if "example.test" not in rob or "example.test" not in sm:
             errors += fail("the crawl files hardcode a domain instead of reading "
                            "brand.json - a rebrand would leave them pointing at "
@@ -28424,6 +28504,7 @@ def main() -> int:
     errors += check_a_proposal_is_about_the_company_it_was_asked_about()
     errors += check_federal_is_out_and_a_city_is_not_federal()
     errors += check_one_subscriber_never_silences_the_rest()
+    errors += check_an_alert_signup_keeps_its_promises()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()
