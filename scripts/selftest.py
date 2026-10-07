@@ -2590,6 +2590,12 @@ def check_an_alert_signup_keeps_its_promises() -> int:
                        f"record permanent, renewed it, or left its address key on a "
                        f"different clock (sub {d.get('pendingTtlAfterSync')}, address "
                        f"{d.get('emTtlAfterSync')}, wanted both {five})")
+    if d.get("oneClick") != 200 or not d.get("oneClickGone"):
+        errors += fail(f"a mail client's one-click unsubscribe (a form POST, RFC 8058) "
+                       f"did not delete the subscription ({d.get('oneClick')})")
+    if d.get("oneClickWrongBody") != 400 or not d.get("oneClickKeptAfterWrongBody"):
+        errors += fail("a form POST that is not List-Unsubscribe=One-Click unsubscribed "
+                       "somebody, or was not refused")
     if d.get("emAfterStaleConfirm") != "LIVE":
         errors += fail(f"confirming a stale pending signup took the address key from "
                        f"the confirmed subscription ({d.get('emAfterStaleConfirm')!r}); "
@@ -2635,6 +2641,41 @@ def check_an_alert_signup_keeps_its_promises() -> int:
         errors += fail(f"one caller signed up {d.get('oneCallerAccepted')} addresses "
                        f"and sent {d.get('oneCallerMails')} mails in a day; the "
                        f"allowance is 10, and the free mail plan is 100 a day")
+    return errors
+
+
+def check_an_emailed_link_waits_for_a_person() -> int:
+    """Opening a confirm, stop or claim link sends nothing until a click.
+
+    alerts.html confirmed (?confirm=1) and deleted (?stop=1) on load, and
+    claim.html confirmed a claim on load. Work and government mail gateways
+    open links in a sandbox that runs scripts, so a scanner could start a
+    stranger's digests or silently unsubscribe somebody (launch audit,
+    2026-10-06). scripts/emaillink_harness.mjs runs each page's own script,
+    opens the link, records every POST, then presses the button.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so the emailed links were not opened")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "emaillink_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"the emailed-link pages would not run: {r.stderr.strip()[:300]}")
+    d = _json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    for key, action, what in (("alertsConfirm", "confirm", "an alerts confirm link"),
+                              ("alertsStop", "stop", "an unsubscribe link"),
+                              ("claimConfirm", "confirm", "a claim link")):
+        c = d.get(key) or {}
+        if c.get("errors"):
+            errors += fail(f"{what}'s page threw: {c['errors'][:2]}")
+        if c.get("onLoad"):
+            errors += fail(f"opening {what} sent {c['onLoad']} before anyone pressed "
+                           f"anything - a mail scanner opening it does the same")
+        if action not in (c.get("afterClick") or []):
+            errors += fail(f"pressing the button on {what} did not send '{action}': "
+                           f"{c.get('afterClick')} (button {c.get('button')})")
     return errors
 
 
@@ -7976,6 +8017,7 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             return Resp(401)                     # the 2026-09-10 failure
         def post(self, url, **kw):
             self.mailed.append(kw.get("json", {}).get("to", [None])[0])
+            self.headers = getattr(self, "headers", []) + [kw.get("json", {}).get("headers")]
             return Resp(200, {"id": "msg"})
 
     fake = Fake()
@@ -8027,6 +8069,17 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             errors += fail(f"the at-risk subscribers are not named by KV key in "
                            f"the WARNING, so nobody can fix their last_sent by "
                            f"hand: {warn[-200:]!r}")
+        # 7. EVERY DIGEST CARRIES BOTH ONE-CLICK HEADERS, with its own token:
+        #    List-Unsubscribe-Post alone (all that was ever sent) shows no button.
+        for h in getattr(fake, "headers", []):
+            h = h or {}
+            if h.get("List-Unsubscribe-Post") != "List-Unsubscribe=One-Click" or \
+                    "/api/alerts?t=" not in (h.get("List-Unsubscribe") or ""):
+                errors += fail(f"a digest went out without both one-click unsubscribe "
+                               f"headers (RFC 8058), so mail clients show no button: {h}")
+                break
+        if not getattr(fake, "headers", None):
+            errors += fail("no digest was sent, so the unsubscribe headers went unchecked")
         # 6. AND A SUBSCRIPTION WE COULD NOT READ IS REPORTED AS THAT, not as
         #    a quiet skip. It got no mail, and whether it had roles waiting is
         #    unknown - which is a fact about the KV API, not about them.
@@ -28965,6 +29018,7 @@ def main() -> int:
     errors += check_one_subscriber_never_silences_the_rest()
     errors += check_an_alert_signup_keeps_its_promises()
     errors += check_ratings_cannot_spend_the_shared_store()
+    errors += check_an_emailed_link_waits_for_a_person()
     errors += check_a_failed_kv_write_says_which_failure_it_was()
     errors += check_a_tag_is_derived_and_never_stored()
     errors += check_a_page_sign_off_says_what_was_true()

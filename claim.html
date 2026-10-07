@@ -208,6 +208,20 @@
   </div>
 </div>
 
+<!-- OPENING THE LINK DOES NOTHING BY ITSELF. Work and government mail
+     gateways open links in a sandbox that runs scripts; when this page
+     confirmed on load, such a scanner confirmed claims nobody clicked
+     (launch audit, 2026-10-06). One button, pressed by a person. -->
+<div id="confirmstep" hidden>
+  <div class="panel">
+    <h1 id="confirmtitle">Confirm your claim</h1>
+    <p class="sub">Press the button to confirm you asked to claim this page.
+      If you did not, close this tab and nothing happens.</p>
+    <p><button id="confirmgo" type="button">Yes, confirm my claim</button></p>
+    <div class="msg" id="m-confirm"></div>
+  </div>
+</div>
+
 <div id="dead" hidden>
   <h1>That link has expired</h1>
   <p class="sub">Claim links last thirty days. Start again and we will send a
@@ -266,9 +280,23 @@ async function load() {
   if (!r.ok) { $("#dead").hidden = false; return; }
   ME = r;
   if (!r.confirmed) {
-    const c = await api({action: "confirm", token: TOKEN});
-    if (c.ok) ME.confirmed = true;
+    $("#confirmstep").hidden = false;
+    $("#confirmtitle").textContent = "Confirm your claim on " + (r.name || "this page");
+    $("#confirmgo").onclick = async () => {
+      $("#confirmgo").disabled = true;
+      const c = await api({action: "confirm", token: TOKEN});
+      if (c.ok) { ME.confirmed = true; $("#confirmstep").hidden = true; portal(r); }
+      else {
+        $("#m-confirm").textContent = c.message || c.error || "That did not go through. Try again.";
+        $("#confirmgo").disabled = false;
+      }
+    };
+    return;
   }
+  portal(r);
+}
+
+function portal(r) {
   $("#portal").hidden = false;
   $("#ptitle").textContent = r.name || "Your page";
   $("#pwho").innerHTML = "Claimed with " + r.email

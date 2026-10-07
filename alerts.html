@@ -451,15 +451,30 @@ function settingsView(data){
 
 (async function(){
   if(!TOKEN){signupView();return}
-  $("#view").innerHTML='<div class="panel"><p class="note">Loading your settings…</p></div>';
-  if(WANT_CONFIRM)await api({action:"confirm",token:TOKEN});
-  if(WANT_STOP){
-    const r=await api({action:"stop",token:TOKEN});
-    $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
-      <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
-        :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
-    return;
+  /* OPENING A LINK DOES NOTHING BY ITSELF. Work and government mail gateways
+     open links in a sandbox that runs scripts, and this page confirmed or
+     unsubscribed on load - so a scanner could start a stranger's digests or
+     silently stop somebody's (launch audit, 2026-10-06). Each link now shows
+     one button, and a person presses it. */
+  if(WANT_CONFIRM||WANT_STOP){
+    const stop=WANT_STOP;
+    $("#view").innerHTML=`<div class="panel"><h2>${stop?"Stop these emails?":"Confirm your alerts"}</h2>
+      <p class="note">${stop
+        ?"This deletes the subscription and everything stored with it."
+        :"Press the button to start your alerts. If you did not ask for them, close this tab and nothing is sent."}</p>
+      <p><button type="button" id="linkgo">${stop?"Stop and delete":"Confirm alerts"}</button></p>
+      <div id="linkmsg"></div></div>`;
+    await new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
+    if(stop){
+      const r=await api({action:"stop",token:TOKEN});
+      $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
+        <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
+          :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
+      return;
+    }
+    await api({action:"confirm",token:TOKEN});
   }
+  $("#view").innerHTML='<div class="panel"><p class="note">Loading your settings…</p></div>';
   const r=await fetch("/api/alerts?t="+encodeURIComponent(TOKEN));
   let d={}; try{d=await r.json()}catch{}
   if(d.ok){

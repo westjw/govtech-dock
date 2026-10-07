@@ -177,6 +177,22 @@ out.driftSubscriptions = cnt();
   out.emAfterStaleConfirm = KV.has(k) ? (KV.get(k).v === LIVE ? "LIVE" : KV.get(k).v.slice(0, 4)) : null;
 }
 
+/* 12. ONE-CLICK UNSUBSCRIBE, as a mail client sends it (RFC 8058): a FORM
+   POST to the List-Unsubscribe address, the token in the url. */
+{
+  await post({ action: "subscribe", email: "u@example.org", prefs: PREFS }, "192.0.2.90");
+  const tok = [...KV.keys()].find((k) => k.startsWith("sub:") && JSON.parse(KV.get(k).v).email === "u@example.org").slice(4);
+  await post({ action: "confirm", token: tok });
+  const form = async (body, t) => (await mod.onRequestPost({
+    request: new Request(`https://sledjobs.com/api/alerts?t=${t}`, { method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" }, body }), env })).status;
+  out.oneClickWrongBody = await form("List-Unsubscribe=Nope", tok);
+  out.oneClickKeptAfterWrongBody = !!(await env.ALERTS.get("sub:" + tok));
+  out.oneClick = await form("List-Unsubscribe=One-Click", tok);
+  out.oneClickGone = !(await env.ALERTS.get("sub:" + tok))
+    && ![...KV.values()].some((e) => e.v === tok);
+}
+
 out.writesWithoutTtlWhilePending = writes
   .filter((w) => w.k === "sub:" + token)
   .slice(0, 3)                                   // signup, update, sync

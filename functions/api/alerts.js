@@ -245,6 +245,27 @@ export async function onRequestGet({ request, env }) {
 
 export async function onRequestPost({ request, env }) {
   if (!env.ALERTS) return notConfigured();
+  /* ONE-CLICK UNSUBSCRIBE (RFC 8058). A mail client that shows the button
+   * POSTs "List-Unsubscribe=One-Click" as a FORM to the address in the
+   * List-Unsubscribe header - <site>/api/alerts?t=<token> - and expects the
+   * subscription gone. This endpoint took only JSON, so the button could not
+   * work (launch audit, 2026-10-06). The token in the address is the proof,
+   * exactly as on the settings link; nothing else is accepted this way. */
+  const ctype = (request.headers && request.headers.get("content-type")) || "";
+  if (ctype.includes("application/x-www-form-urlencoded")) {
+    const form = new URLSearchParams(await request.text());
+    const token = cleanToken(new URL(request.url).searchParams.get("t"));
+    if (form.get("List-Unsubscribe") !== "One-Click" || !token)
+      return json({ error: "bad_request" }, 400);
+    const raw = await env.ALERTS.get("sub:" + token);
+    if (raw) {
+      const sub = JSON.parse(raw);
+      await env.ALERTS.delete("sub:" + token);
+      const ek = await emailKey(sub.email);
+      if ((await env.ALERTS.get(ek)) === token) await env.ALERTS.delete(ek);
+    }
+    return json({ ok: true, stopped: true });
+  }
   let body;
   try {
     body = await request.json();

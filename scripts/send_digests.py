@@ -165,20 +165,28 @@ class KV:
         return None, False
 
 
-def send_mail(key: str, to: str, subject: str, text: str, html: str) -> bool:
+def unsubscribe_headers(token: str) -> dict:
+    """RFC 8058 one-click unsubscribe: BOTH headers, or a mail client shows no
+    button. Only List-Unsubscribe-Post was ever sent - half of the pair - and
+    the endpoint took only JSON, so Gmail and Yahoo offered no unsubscribe and
+    people reached for "report spam" instead (launch audit, 2026-10-06).
+    functions/api/alerts.js answers the form POST a mail client makes."""
+    return {"List-Unsubscribe": f"<{brand.SITE}/api/alerts?t={token}>",
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click"}
+
+
+def send_mail(key: str, to: str, subject: str, text: str, html: str,
+              unsubscribe: str | None = None) -> bool:
+    """Send one mail. `unsubscribe` is the subscription token for a digest;
+    mail that is not to a list (the claim welcome) carries no unsubscribe."""
+    payload = {"from": FROM, "to": [to], "subject": subject, "text": text, "html": html}
+    if unsubscribe:
+        payload["headers"] = unsubscribe_headers(unsubscribe)
     for attempt in range(3):
         try:
             r = requests.post("https://api.resend.com/emails", timeout=30,
                               headers={"authorization": f"Bearer {key}"},
-                              json={"from": FROM, "to": [to], "subject": subject,
-                                    "text": text, "html": html,
-                                    # One-click unsubscribe. Without it Gmail
-                                    # treats a bulk sender as suspect, and a
-                                    # person who wants out should not have to
-                                    # hunt for a link at the bottom.
-                                    "headers": {
-                                        "List-Unsubscribe-Post":
-                                            "List-Unsubscribe=One-Click"}})
+                              json=payload)
             if r.ok:
                 return True
             if r.status_code == 429 or r.status_code >= 500:
@@ -253,7 +261,7 @@ def main() -> int:
         print(f"  {who}: {subject}", flush=True)
         if not a.send:
             continue
-        if send_mail(resend, sub["email"], subject, text, html):
+        if send_mail(resend, sub["email"], subject, text, html, unsubscribe=key[4:]):
             sent += 1
             sub["last_sent"] = today.isoformat()
             # ONLY AFTER THE MAIL ACTUALLY LEFT - and the count above is
