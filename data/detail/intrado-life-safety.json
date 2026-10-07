@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Estado de la Industria del 911 en EE. UU. en 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.intrado.com/resources/estado-de-la-industria-del-911-en-ee-uu-en-2026"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.intrado.com/resources/ers-demo"
-  },
-  {
-   "date": "2026-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Experience Intrado OneAlert\u2122 in Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.intrado.com/resources/onealert-demo"
   }
  ],
  "profile": {

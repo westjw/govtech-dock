@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-15",
+   "date": "2026-10-06",
    "date_source": "card-date",
+   "first_seen": "2026-10-07",
+   "headline": "Fortuna Enters West Virginia Market with Highmark Health Options",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/fortuna-enters-west-virginia-market-with-highmark-health-options"
+  },
+  {
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Understanding CMS's New Implementation Guidance for Medical Frailty",
    "kind": "press",
@@ -26,42 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fortunahealth.com/resources/how-fortuna-helps-with-perm"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Voice AI vs Human Calls for Medicaid Renewals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Consumers Taught Us in Our First Two Years of Building",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-consumers-taught-us-in-our-first-two-years-of-building"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Medicaid Leaders Think About H.R. 1: Themes Across Three AHIP Panels",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-medicaid-leaders-think-about-h-r-1-themes-across-three-ahip-panels"
   },
   {
    "date": "2026-07-30",
@@ -107,6 +80,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fortunahealth.com/resources/the-quiet-eligibility-crisis-coming-for-medicare-dual-eligible-members"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Voice AI vs Human Calls for Medicaid Renewals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
+  },
+  {
+   "date": "2026-04-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Consumers Taught Us in Our First Two Years of Building",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-consumers-taught-us-in-our-first-two-years-of-building"
   }
  ],
  "profile": {

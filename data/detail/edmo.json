@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Administrative Benchmarking in Higher Education: A Guide for Universities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/administrative-benchmarking/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/whatsapp-for-university-admissions-team/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Accreditation Requirements and GPA Standards: What Admissions Teams Must Track",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/gpa-standards-accreditation-requirements-admissions/"
   }
  ]
 }

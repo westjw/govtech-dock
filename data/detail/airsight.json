@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Anti-Drone Systems for Airports: What Protects a Runway | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/anti-drone-systems-for-airports"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Drone Detection System Requirements: The RFP Checklist | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-system-requirements"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Best Drone Detection System: How to Actually Compare Them | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/best-drone-detection-system"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Drone Detection Solutions: Matching the System to the Mission | Airsight",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/drone-detection-solutions-by-mission"
+  },
+  {
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/airguard-ads-b-manned-aircraft-drone-one-view"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The DOJ BIDEN Grant Program: $3 Billion, Three Rounds, and Where Drone Detection Fits",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/the-doj-biden-grant-program-3-billion-three-rounds-and-where-drone-detection-fits"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Detection System Cost: Total Cost of Ownership Guide | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-detection-system-cost"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FEMA Counter-UAS Grant Program: How to Fund Drone Detection | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/fema-counter-uas-grant-program"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Monitoring: What Continuous Coverage Requires | Airsight",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/drone-monitoring"
   }
  ],
  "profile": {

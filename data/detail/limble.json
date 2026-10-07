@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Limble Report Finds Maintenance Teams Struggling to Get Ahead of Downtime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://limblecmms.com/news/state-of-maintenance-report"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://limblecmms.com/blog/test-cmms-workflows"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Bad CMMS Process Design is Killing Your Team's Efficiency: How To Fix It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://limblecmms.com/blog/cmms-efficiency-process-redesign"
   }
  ],
  "profile": {

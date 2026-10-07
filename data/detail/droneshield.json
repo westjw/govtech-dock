@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "DroneShield Access Portal Recognised with Australian Good Design Award",
+   "kind": "contract",
+   "kind_rule": "Award",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-access-portal-recognised-with-australian-good-design-award"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "DroneShield Appoints Joint Company Secretary",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-appoints-joint-company-secretary-candice-driver"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "How ADS-B and AIS Illuminate the Full Counter-Drone Picture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.droneshield.com/blog/how-ads-b-and-ais-illuminate-the-full-counter-drone-picture"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "DroneShield Launches Mission Ready Services",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-launches-mission-ready-services"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "DroneShield Awarded JIATF-401 Domestic Shield IDIQ Contract",
+   "kind": "contract",
+   "kind_rule": "Awarded",
+   "url": "https://www.droneshield.com/media/press-releases/droneshield-awarded-jiatf-401-domestic-shield-idiq-contract"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "JIATF-401 advances Domestic Shield with counter-UAS contract awards",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://www.droneshield.com/media/news/jiatf-401-advances-domestic-shield-with-counter-uas-contract-awards"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.droneshield.com/media/press-releases/droneshield-completes-installation-acceptance-dronesentryx-mk2-us-jiatf-401-program"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "DroneShield and AIM Defence Collaborate on Directed Energy in Counter-Drone Architecture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-aim-defence-collaborate-on-directed-energy-in-counter-drone-architecture"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "DroneShield Appoints Rebecca Lowde as Chief Financial Officer",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-appoints-rebecca-lowde-chief-financial-officer"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "DroneShield Supports Australian Air Force Cadets to Help Develop Australia\u2019s Future Leaders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/media/press-releases/droneshield-supports-australian-air-force-cadets-australias-future-leaders"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Passive Detection Brings to Modern Counter-Drone Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/what-passive-detection-brings-to-modern-counter-drone-operations"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Ultra-Wideband Capability Is Vital for Countering Evasive Drones",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/why-ultra-wideband-capability-vital-for-counter-drone-2026"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Critical Infrastructure Now Requires Three-Dimensional Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.droneshield.com/blog/critical-infrastructure-now-requires-three-dimensional-security"
   }
  ],
  "profile": {

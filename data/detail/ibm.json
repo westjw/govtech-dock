@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Qiskit beyond Python: Fortran, C++, and Julia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/qiskit-beyond-python"
+  },
+  {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Directed execution: Scaling a research platform for quantum error correction",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "The continuous path from error mitigation to fault-tolerant quantum computing",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/think/news/llm-watermarks-what-you-need-to-know"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Demonstrating a theoretical separation between quantum computers and large language models",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/blog/quantum-circuits-vs-llms"
   }
  ]
 }

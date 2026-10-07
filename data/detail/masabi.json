@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "time",
+   "first_seen": "2026-10-06",
+   "headline": "Masabi Launches AI Incubator to Develop Practical Tools for Fare Collection that Improve Rider Experience and Increase Operational Efficiency for Public Transit",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.masabi.com/news/masabi-launches-ai-incubator-to-develop-practical-tools-for-fare-collection-that-improve-rider-experience-and-increase-operational-efficiency-for-public-transit/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "time",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.masabi.com/resources/open-loop-vs-closed-loop/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Universal token \u2014 what it means for transit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.masabi.com/resources/universal-token-standard/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Introducing Truven Meridian: A new way to put the power of Truven to work",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.merative.com/blog/introducing-truven-meridian-a-new-way-to-put-the-power-of-truven-to-work"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.merative.com/newsroom/truven-expands-marketscan-partner-ecosystem-with-lab-data-to-advance-real-world-evidence-generation"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Lab data expands MarketScan Partner Ecosystem for real-world evidence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/lab-data-expands-marketscan-partner-ecosystem-for-real-world-evidence"
   }
  ]
 }

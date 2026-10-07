@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Your most expensive fleet problems may be the ones you can\u2019t see.",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Fleet maintenance managers: Stay on top of preventive maintenance in 2027.",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Connected fleet maintenance data: 5 strategies to improve uptime in 2027",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Engineering Physical AI: How we build real-world voice and autonomous agents at Motive",
    "kind": "press",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "IDEMIA and JazzCash bring premiumization and personalization to payment cards in Pakistan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idemia.com/news/idemia-and-jazzcash-bring-premiumization-and-personalization-payment-cards-pakistan-2026-10-07"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.idemia.com/news/hyperform-achieves-its-first-milestone-quantum-safe-data-protection-2026-01-29"
-  },
-  {
-   "date": "2025-10-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "3 cybersecurity technologies every CISO and CTO should know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idemia.com/insights/3-cybersecurity-technologies-every-ciso-and-cto-should-know"
   }
  ]
 }

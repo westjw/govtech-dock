@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "ArcSuite AI Added to A-Frame Solutions\u2019 GSA Multiple Award Schedule",
    "kind": "contract",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Product Feature September 30, 2026",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "A-Frame Solutions Awarded State of Montana Contract to Provide ArcSuite AI to State Agencies",
    "kind": "contract",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-06",
+   "headline": "NEOGOV partners with HireRight to streamline background screening in public sector hiring workflows",
+   "kind": "contract",
+   "kind_rule": "partners with",
+   "url": "https://blog.neogov.com/press/neogov-partners-with-hireright-to-streamline-background-screening-in-public-sector-hiring-workflows"
+  },
+  {
    "date": "2026-07-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blog.neogov.com/press/neogov-featured-in-pshra-public-eye-magazine"
-  },
-  {
-   "date": "2024-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NEOGOV Introduces Vetted Background Investigation Software for Public Safety Agencies",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://blog.neogov.com/press/neogov-introduces-vetted-background-investigation-software-for-public-safety-agencies"
   }
  ],
  "profile": {

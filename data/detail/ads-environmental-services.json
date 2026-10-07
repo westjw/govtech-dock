@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-02",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-07",
+   "headline": "El Ni\u00f1o: Why Collection Systems Should Prepare Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adsenv.com/news/el-nino-why-prepare-now"
+  },
+  {
    "date": "2026-03-02",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -55,6 +64,24 @@
    "url": "https://www.adsenv.com/news/ads-community-strong-next-step-farms-spring-2024"
   },
   {
+   "date": "2024-01-22",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-07",
+   "headline": "Don\u2019t Guess. Know! Continuous Monitoring of Flood-Prone Sites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adsenv.com/news/dont-guess-know-continuous-monitoring-of-flood-prone-sites"
+  },
+  {
+   "date": "2023-10-31",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-07",
+   "headline": "New ForeSITE\u2122-UL Ultrasonic Monitoring is Fully Compatible with ADS PRISM\u2122 Suite",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adsenv.com/news/new-foresite-ul-ultrasonic-monitoring-is-fully-compatible-with-ads-prism-suite"
+  },
+  {
    "date": "2023-09-14",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "contract",
    "kind_rule": "Award",
    "url": "https://www.adsenv.com/news/ads-australia-team-supports-taswater-in-award-winning-flow-monitoring-project"
-  },
-  {
-   "date": "2022-12-06",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Read NEWEA Article on Big Data and Smart Sewers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.adsenv.com/news/read-newea-article-on-big-data-and-smart-sewers"
-  },
-  {
-   "date": "2021-12-06",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "ADS expands 3rd-Party Data Hosting with ADS PRISM Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.adsenv.com/news/ads-3rd-party-data"
-  },
-  {
-   "date": "2020-10-22",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "ADS\u00ae Announces the Powerful Updated PRISM\u2122 2.0 Solution Platform for Delivering Actionable, Data-Driven Answers for Critical Wastewater Collection System Problems",
-   "kind": "product",
-   "kind_rule": "Announces the",
-   "url": "https://www.adsenv.com/news/powerfulupdatedprism"
   }
  ],
  "profile": {

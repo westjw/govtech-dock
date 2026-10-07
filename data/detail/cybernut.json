@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date": "2026-09-30",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Age-Appropriate Cybersecurity Training: How CyberNut Serves Students Differently",
    "kind": "press",
@@ -10,8 +10,8 @@
    "url": "https://www.cybernut.com/blog/age-appropriate-cybersecurity-training-how-cybernut-serves-students-differently"
   },
   {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date": "2026-09-23",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "What School Staff Actually Think About Cybersecurity Training (And How to Change It)",
    "kind": "press",
@@ -19,53 +19,8 @@
    "url": "https://www.cybernut.com/blog/what-school-staff-actually-think-about-cybersecurity-training-and-how-to-change-it"
   },
   {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Adaptive Phishing Simulations Improve Staff Response Rates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cybernut.com/blog/how-adaptive-phishing-simulations-improve-staff-response-rates"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cybersecurity Insurance and Training: How Proactive Programs Lower Premiums",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cybernut.com/blog/cybersecurity-insurance-and-training-how-proactive-programs-lower-premiums"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Gamified Training Reduces Phishing Click Rates Over Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cybernut.com/blog/how-gamified-training-reduces-phishing-click-rates-over-time"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Questions Every IT Director Should Ask Before Signing a Security Awareness Contract",
-   "kind": "contract",
-   "kind_rule": "Contract",
-   "url": "https://www.cybernut.com/blog/questions-every-it-director-should-ask-before-signing-a-security-awareness-contract"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "No SOC Team? How CyberNut Fills the Gap for Under-Resourced Districts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cybernut.com/blog/no-soc-team-how-cybernut-fills-the-gap-for-under-resourced-districts"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date": "2026-09-16",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "How CyberNut's AI Adapts Phishing Difficulty to Each User",
    "kind": "press",
@@ -73,8 +28,8 @@
    "url": "https://www.cybernut.com/blog/how-cybernuts-ai-adapts-phishing-difficulty-to-each-user"
   },
   {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date": "2026-09-09",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "What Happens After a Staff Member Clicks: Turning Failures Into Learning",
    "kind": "press",
@@ -82,13 +37,58 @@
    "url": "https://www.cybernut.com/blog/what-happens-after-a-staff-member-clicks-turning-failures-into-learning"
   },
   {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
+   "date": "2026-08-26",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "How Adaptive Phishing Simulations Improve Staff Response Rates",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/how-adaptive-phishing-simulations-improve-staff-response-rates"
+  },
+  {
+   "date": "2026-08-19",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Cybersecurity Insurance and Training: How Proactive Programs Lower Premiums",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/cybersecurity-insurance-and-training-how-proactive-programs-lower-premiums"
+  },
+  {
+   "date": "2026-08-12",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "How to Evaluate and Implement Cybersecurity Awareness Training for Your School District",
    "kind": "contract",
    "kind_rule": "Implement",
    "url": "https://www.cybernut.com/blog/how-to-evaluate-and-implement-cybersecurity-awareness-training-for-your-school-district"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "How Gamified Training Reduces Phishing Click Rates Over Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/how-gamified-training-reduces-phishing-click-rates-over-time"
+  },
+  {
+   "date": "2026-07-22",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Questions Every IT Director Should Ask Before Signing a Security Awareness Contract",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://www.cybernut.com/blog/questions-every-it-director-should-ask-before-signing-a-security-awareness-contract"
+  },
+  {
+   "date": "2026-07-15",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "No SOC Team? How CyberNut Fills the Gap for Under-Resourced Districts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cybernut.com/blog/no-soc-team-how-cybernut-fills-the-gap-for-under-resourced-districts"
   },
   {
    "date": "2026-07-08",

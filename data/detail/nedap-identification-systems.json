@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Nedap launches Nedap Way: secure building access with its next-generation reader line",
    "kind": "product",

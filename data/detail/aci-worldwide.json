@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Agentic commerce in fashion: Shoppers want AI to save them money, not spend it",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/agentic-commerce-fashion-retail"
+  },
+  {
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/blog/standing-still-is-the-real-risk-in-cards"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ACI ISO Acquiring Program: Add acquirers without complexity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/resources/aci-iso-acquiring-program"
   }
  ],
  "profile": {

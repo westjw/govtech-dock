@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "In-Situ's VuSitu App Now Auto-Generates Field Deployment Reports, Synced Instantly to HydroVu",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://in-situ.com/us/press-releases/in-situ-s-vusitu-app-now-auto-generates-field-deployment-reports-synced-instantly-to-hydrovu"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://in-situ.com/us/news/aqua-troll-800-struts-its-stuff-in-challenging-coastal-study"
-  },
-  {
-   "date": "2025-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "In-Situ Expands Ajax Rentals Division with New Location in Tampa, Florida",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://in-situ.com/us/press-releases/in-situ-expands-ajax-rentals-division-with-new-location-in-tampa-florida"
   }
  ]
 }

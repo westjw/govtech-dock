@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Substance Use Disorder Prevention: A Guide to Early Identification and Intervention",
    "kind": "press",
@@ -11,21 +11,12 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "The Rise of Cychlorphine, Kratom, and 7-OH: Why Prevention Is the First Line of Defense",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.chess.health/blog/emerging-drugs-substance-use-prevention/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Contingency Management for Substance Use Disorder",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chess.health/blog/contingency-management-for-substance-use-disorder/"
   },
   {
    "date": "2026-09-22",
@@ -37,8 +28,17 @@
    "url": "https://www.chess.health/press-releases/chess-health-convenes-national-discussion-on-rural-recovery-access/"
   },
   {
+   "date": "2026-09-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Contingency Management for Substance Use Disorder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chess.health/blog/contingency-management-for-substance-use-disorder/"
+  },
+  {
    "date": "2026-08-10",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Meeting HEDIS POD Requirements",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-07-31",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Digital Health Solutions for Substance Use Disorder",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-06-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Rural Health Transformation Is Here",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-03-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Hidden in Plain Sight: Why Alcohol Use Disorder Demands Urgent Attention",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-03-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "The Compounding Crisis: SUD, Comorbidities, and the Cost of Fragmented Care",
    "kind": "press",

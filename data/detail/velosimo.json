@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Velosimo Announces Partnership with Procore Technologies to Enhance Construction and Government Collaboration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.velosimo.com/newsroom/velosimo-announces-partnership-with-procore-technologies-to-enhance-construction-and-government-collaboration"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.velosimo.com/newsroom/city-of-visalia-ca-selects-velosimo-connect-to-integrate-accela-with-stripe"
-  },
-  {
-   "date": "2026-03-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Velosimo to Collaborate with OpenGov to Deliver Integration for Local Governments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.velosimo.com/blog/velosimo-and-opengov-partner-to-deliver-seamless-integration-for-local-governments"
   }
  ]
 }

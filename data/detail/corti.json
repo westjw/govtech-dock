@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Redline Data and Corti Partner to Bring Clinical AI Across Germany",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corti.ai/newsroom/redline-data-and-corti-partner-to-bring-clinical-ai-across-germany"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.corti.ai/newsroom/sps-expands-philips-speechlive-with-ambient-medical-ai-documentation-powered-by-corti"
-  },
-  {
-   "date": "2025-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "medatixx and Corti Announce Strategic Partnership to Deliver Real-Time AI Documentation in German Medical Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/medatixx-and-corti-announce-strategic-partnership"
   }
  ],
  "profile": {

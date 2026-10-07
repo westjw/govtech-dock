@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Higher Ed Does Not Have a Data Problem. It Has a Trust Problem.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.evisions.com/blog/higher-ed-does-not-have-a-data-problem-it-has-a-trust-problem/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.evisions.com/blog/heat-index-issue-117-turnitin-attempts-to-solve-ai-cheating/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Reports: Moving from a Reporting Culture to a Data Culture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.evisions.com/blog/beyond-reports-moving-from-a-reporting-culture-to-a-data-culture/"
   }
  ],
  "profile": {

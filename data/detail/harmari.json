@@ -55,8 +55,17 @@
    "url": "https://www.harmari.com/2020/01/x-42/"
   },
   {
+   "date": "2020-01-01",
+   "date_source": "og:published",
+   "first_seen": "2026-10-07",
+   "headline": "Sign up on our mailing list",
+   "kind": "contract",
+   "kind_rule": "Sign",
+   "url": "https://www.harmari.com/2020/01/cache-10/"
+  },
+  {
    "date": "2019-06-11",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "Facebook shuts down Graph Search; investigators scrambling for workarounds",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2018-03-19",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "Estimated Non-Airbnb Short Term Rental inventory by State",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2018-03-08",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "Harmari\u2019s offices have moved!",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2018-02-05",
-   "date_source": "time",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "Harmari announces Short Term Rental 10.3 Release",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.harmari.com/2018/02/harmari-announces-short-term-rental-10-3-release/"
-  },
-  {
-   "date": "2017-10-31",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Beware the zombie short term rental listings!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.harmari.com/2017/10/beware-the-zombie-short-term-rental-listings/"
   }
  ],
  "profile": {

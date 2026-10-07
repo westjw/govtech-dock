@@ -1,69 +1,62 @@
 {
-  "date": "2026-10-06",
-  "previous": "2026-10-05",
+  "date": "2026-10-07",
+  "previous": "2026-10-06",
   "changes": [
     {
-      "company": "ImageTrend",
-      "id": "imagetrend",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "PayIt",
-      "id": "payit",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Client Success Manager (Northeast  only"
-    },
-    {
-      "company": "SwiftGov (Swiftbuild.ai)",
-      "id": "swiftgov",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Paladin Drones",
-      "id": "paladin-drones",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative ( only"
-    },
-    {
-      "company": "PSTrax",
-      "id": "pstrax",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Baron Weather",
-      "id": "baron-weather",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "OpenAI",
-      "id": "openai",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Business Development Manager, Prod (Munich, Germany)"
-    },
-    {
-      "company": "SimplyAnalytics",
-      "id": "simplyanalytics",
+      "company": "ForceMetrics",
+      "id": "forcemetrics",
       "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Ad Astra Information Systems",
-      "id": "ad-astra-information-systems",
-      "from": "Yes",
+      "company": "Spare",
+      "id": "spare",
+      "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Director of Client Success only"
+      "note": "Senior Customer Success Manager only"
+    },
+    {
+      "company": "Upper Hand",
+      "id": "upper-hand",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive (INDIANAPOLIS, IN)"
+    },
+    {
+      "company": "Clear Ballot Group",
+      "id": "clear-ballot-group",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Fluxx",
+      "id": "fluxx",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sr. Customer Success Manager only"
+    },
+    {
+      "company": "Campspot",
+      "id": "campspot",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "In-Situ",
+      "id": "in-situ",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://in-situ.com/careers"
+    },
+    {
+      "company": "TeamDynamix",
+      "id": "teamdynamix",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Enterprise Sales Executive, NY/PA (New York)"
     }
   ]
 }

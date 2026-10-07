@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Biometrica Systems now operates as Safience",
    "kind": "press",
@@ -44,6 +44,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2019/09/thirty-four-individuals-including-medical-professionals-charged-for-alleged-medicare-and-medicaid-fraud/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2021/05/federal-rules-on-reasonable-suspicion-testing-for-workplace-substance-abuse/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2021/06/report-finds-possible-coordinated-child-sex-abuse-ring-in-18-mexican-schools/"
   },
   {
    "date": "2026-09-25",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2022/11/spotlight-anti-crime-bills-in-the-works/"
-  },
-  {
-   "date": "2022-11-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Spotlight: Native American Heritage Month",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/11/spotlight-native-american-heritage-month/"
-  },
-  {
-   "date": "2022-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Spotlight: The Worrying Spike In School Shootings Across America",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2022/10/spotlight-the-worrying-spike-in-school-shootings-across-america/"
   }
  ],
  "profile": {

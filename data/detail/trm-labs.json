@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Kyrgyzstani Exchange TokenSpot Determined to Be Front Company for Sanctioned Russian Exchange Grinex",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/kyrgyzstani-exchange-tokenspot-determined-to-be-front-company-for-sanctioned-russian-exchange-grinex"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "TRM Labs and Zscaler ThreatLabz Join Forces to Track Cybercrime and Nation-State Blockchain Activity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/trm-labs-and-zscaler-threatlabz-join-forces-to-track-cybercrime-and-nation-state-blockchain-activity"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Americans Are Buying Peptides From the Same Chinese Chemical Vendors Selling Fentanyl Precursors: Sales Up 32% Since 2023",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/americans-are-buying-peptides-from-the-same-chinese-chemical-vendors-selling-fentanyl-precursors-sales-up-32-since-2023"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/how-deepfakes-are-used-to-commit-crimes-and-how-to-spot-them"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "OFAC Sanctions BitBank, Expanding Action Against Babak Zanjani\u2019s Digital Asset Network",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/ofac-sanctions-bitbank-expanding-action-against-babak-zanjanis-digital-asset-network"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Fake AI Trading Bots Are Getting Victims to Build Their Own Drainers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/fake-ai-trading-bots-are-getting-victims-to-build-their-own-drainers"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "The Evolution of Terrorist Financing, 25 Years After 9/11",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/evolution-of-terrorist-financing-25-years-after-9-11"
   }
  ],
  "profile": {

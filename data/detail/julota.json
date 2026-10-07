@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "MIH-CP and LEAD Partnerships: Breaking the Jail-and-Release Loop",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/community-paramedicine-jail-diversion-lead/"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/when-the-shot-window-closes-the-mih-cp-gap-in-injectable-oud-treatment/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "De-Escalation Training for Police Just Got a Federal Overhaul. Here\u2019s Where Co-Responder Data Fits In.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/de-escalation-training-for-police/"
   }
  ],
  "profile": {

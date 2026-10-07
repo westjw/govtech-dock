@@ -1,13 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-09-29",
+   "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "The 5 Phases of a Construction Project Lifecycle",
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/the-5-stages-of-a-construction-projects-lifecycle/"
+  },
+  {
+   "date": "2026-10-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Construction Submittals Guide: Process, Examples, and Tips",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/understanding-the-importance-of-construction-submittals/"
   },
   {
    "date": "2026-09-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/what-top-performing-contractors-do-differently-4-ways-to-protect-profitability/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Rethinking Project Asset Data in the Age of AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/rethinking-construction-project-asset-data-for-ai/"
   }
  ],
  "profile": {

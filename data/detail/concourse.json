@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "10 Best AI Agent Builders in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.concourse.ai/insights/best-ai-agent-builders"
+  },
+  {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "10 Best Agentic AI Tools in 2026",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Multi-Agent Systems: What They Are and How They Work",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Agentic AI: What It Is, How It Works, and Why It Matters",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Agentic AI Examples: How It Is Used Across Business",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Agentic Automation: The Next Step Beyond RPA",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "AI Agents for Business: Use Cases, Benefits, and How to Start",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Enterprise AI Agents: What They Are and How to Deploy Them",
    "kind": "contract",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "What Are AI Agents? A Plain-English Guide",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.concourse.ai/insights/best-account-reconciliation-software"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "8 Best Financial Reporting Software Tools in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.concourse.ai/insights/best-financial-reporting-software"
   }
  ],
  "profile": {

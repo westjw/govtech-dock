@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "CJIS Requirements: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cjis-requirements/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.saltycloud.com/blog/nist-800-171/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NIST 800-53 Multi-Framework Crosswalk",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/resources/nist-800-53-crosswalk/"
   }
  ],
  "profile": {

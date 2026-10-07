@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Playbook October 7, 2026 Starbridge vs. Citylitics. Which platform wins more deals? Compare Starbridge and Citylitics across buying signals, contact data, spend intelligence, RFPs, and contract vehicl",
+   "kind": "contract",
+   "kind_rule": "contract",
+   "url": "https://starbridge.ai/blog/starbridge-vs-citylitics"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Playbook October 6, 2026 Starbridge MCP: Buyer Intelligence in Claude and ChatGPT The Starbridge MCP connects Claude and ChatGPT to your live Starbridge data. What it exposes, how to connect it, and w",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/starbridge-mcp"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "Playbook September 24, 2026 How to Shorten the Government Sales Cycle Government sales cycles get shorter at the front, not the end. Learn the two levers that cut the timeline, entering before the RFP",
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/how-to-shorten-government-sales-cycle"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 Government Budget Signals in Sales: How to Read a Public Budget Before the RFP Which government budget documents show real purchase intent, when to reach out, and how to qu",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/government-budget-signals"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 15, 2026 B2G Sales Rep Onboarding: What to Cover A 90-day onboarding plan for a new B2G sales rep. What to teach in each phase, the account context to hand over on day one, and the ",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/b2g-sales-rep-onboarding"
   }
  ],
  "profile": {

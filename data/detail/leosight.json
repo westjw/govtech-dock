@@ -1,22 +1,22 @@
 {
  "news": [
   {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "LeoSight Announces First Healthcare Partnership with Coosa Valley Medical Center",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.leosight.com/newsroom/leosight-first-healthcare-partnership-with-coosa-valley-medical-center"
-  },
-  {
    "date": "2026-09-04",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "LeoSight and Axis Communications Unite Video and Sensor Intelligence for More Coordinated Public Safety Response",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.leosight.com/newsroom/leosight-axis-communications-unite-video-sensor-intelligence"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "LeoSight Announces First Healthcare Partnership with Coosa Valley Medical Center",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.leosight.com/newsroom/leosight-first-healthcare-partnership-with-coosa-valley-medical-center"
   },
   {
    "date": "2026-07-07",

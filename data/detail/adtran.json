@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "time",
+   "first_seen": "2026-10-07",
+   "headline": "Oscilloquartz expands OSAinside\u2122 Series OSA 5400 TimeCard\u2122 with advanced server-integrated timing capabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20261007-oscilloquartz-expands-osainside-series-osa-5400-timecard-with-advanced-server"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "time",
    "first_seen": "2026-10-05",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-19",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Oscilloquartz expands US aerospace, defense and government presence to address rising demand for resilient PNT",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.adtran.com/en/newsroom/press-releases/20260714-oso-internet-solutions-brings-fiber-broadband-to-remote-navajo-communities-with-adtran"
-  },
-  {
-   "date": "2026-05-29",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Adtran resolves long-running patent litigation, reinforcing commitment to defend innovation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.adtran.com/en/newsroom/press-releases/20260529-adtran-resolves-long-running-patent-litigation-reinforcing-commitment-to-defend-innovation"
   }
  ],
  "profile": {

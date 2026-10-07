@@ -1,15 +1,6 @@
 {
  "news": [
   {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Mountain Technology Symposium 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/mountain-technology-symposium-2026/"
-  },
-  {
    "date": "2026-09-26",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://accesso.com/news/iaapa-theme-park-summit-paris-and-region-2/"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "OSRA 2026 (Ontario Ski Resorts Association)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/osra-2026-ontario-ski-resorts-association/"
   }
  ]
 }

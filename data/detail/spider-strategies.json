@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "The Q4 Reality Check: What Does Your Performance Actually Tell You?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/strategic-performance-analysis/"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "How to Measure Initiative Progress: A Guide to Tracking Strategic Initiatives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/initiative-progress/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.spiderstrategies.com/blog/healthcare-reporting-automation/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Standardize KPIs Across an Organization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/standardize-kpis-across-organization/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Dashboards to Decisions: Closing the Execution Gap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/dashboards-to-decision-making/"
   }
  ],
  "profile": {

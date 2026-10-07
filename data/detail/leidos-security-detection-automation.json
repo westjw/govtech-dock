@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Leidos names Stephen Vather senior vice president of",
+   "kind": "leadership",
+   "kind_rule": "names",
+   "url": "https://leidos.com/insights/leidos-names-stephen-vather-senior-vice-president-investor-relations"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/preparing-applications-continuous-modernization"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Where should your cloud workloads really live?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/where-should-your-cloud-workloads-really-live"
   }
  ]
 }

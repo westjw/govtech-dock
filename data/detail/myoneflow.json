@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "From Funding to Function: A Braided Funding Guide for",
+   "kind": "funding",
+   "kind_rule": "Funding",
+   "url": "https://www.myoneflow.com/blog/a-braided-funding-guide-for-workforce-organizations"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -91,22 +100,13 @@
    "url": "https://www.myoneflow.com/blog/pay-for-performance-apprenticeships"
   },
   {
-   "date": "2025-10-22",
+   "date": "2025-11-26",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Building resilient apprenticeship networks",
+   "first_seen": "2026-10-07",
+   "headline": "Preparing for Workforce Pell implementation",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/5-pillars-of-resilient-apprenticeship-networks"
-  },
-  {
-   "date": "2025-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "WIOA performance reporting and PIRL data strategies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.myoneflow.com/blog/using-pirl-reporting-to-showcase-wioa-success"
+   "url": "https://www.myoneflow.com/blog/preparing-for-workforce-pell"
   }
  ],
  "profile": {

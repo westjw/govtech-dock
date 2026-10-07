@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "A Design System with Judgment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/blog/a-design-system-with-judgment"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "Authorship Over Output Sep 15, 2026 How we rebuilt the design career ladder, headcount, and hiring bar at Brain Co. around a single principle: authorship over output.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://brain.co/blog/authorship-over-output"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -55,8 +73,8 @@
    "url": "https://brain.co/blog/sessiongrep-a-local-first-memory-layer-for-cli-agents"
   },
   {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
+   "date": "2026-05-27",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Deployed at Brain Co.",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://brain.co/blog/llm-generated-rules-engines-executable-if-then-logic-for-llm-explainability-in-regulated-industries"
-  },
-  {
-   "date": "2025-12-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Blueprint Information Extraction: Computer Vision + LLMs vs Vision-Language Models",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://brain.co/blog/blueprint-information-extraction"
-  },
-  {
-   "date": "2025-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Optimizing Risk and Cost in Supply-Demand Management by Simulating Probabilistic Outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://brain.co/blog/optimizing-risk-and-cost-in-supply-demand-management-by-simulating-probabilistic-outcomes"
   }
  ]
 }

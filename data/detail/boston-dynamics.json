@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-06",
+   "headline": "Boston Dynamics Appoints Rohit Prasad as Chief Executive Officer",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://bostondynamics.com/news/boston-dynamics-appoints-rohit-prasad-as-chief-executive-officer/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-mark/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Ask a Roboticist: Meet Taylor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bostondynamics.com/blog/ask-a-roboticist-meet-taylor/"
   }
  ],
  "profile": {
