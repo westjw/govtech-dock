@@ -1,9 +1,10 @@
+import { verify, tokenOf } from "../../_access.js";
+
 /* WHO IS SIGNED IN, and what may they reach.
  *
- * Cloudflare Access sits on /admin for every hostname and puts the verified
- * address of a signed-in person on the request. This function never checks
- * a password, never validates a token and holds no secret: if the header is
- * there, Access put it there, and if it is not, nobody is signed in. What
+ * Cloudflare Access sits on /admin for every hostname. This function never
+ * checks a password and holds no secret: it verifies the Access token the
+ * browser carries (verifiedEmail, below) and reads the address from it. What
  * it adds is the owner's ruling from the Users board - a hash of the
  * address looked up in users.json, which carries hashes and handles and
  * never an address - so the site can show "signed in as jane" and open the
@@ -11,11 +12,11 @@
  * Job Hunter beta. The address itself is not returned: the page needs a
  * handle, not a person.
  *
- * Fails closed three ways: no header is signed out; a header with no
+ * Fails closed three ways: no verified token is signed out; an address with no
  * matching hash is signed in with no roles; a users.json that cannot be
  * read is the same as an empty one. */
 export async function onRequestGet({ request, env }) {
-  const email = request.headers.get("Cf-Access-Authenticated-User-Email");
+  const email = await verifiedEmail(request, env);
   if (!email) return json({ signed_in: false });
   const key = await sha256(email.trim().toLowerCase());
   let users = {};
@@ -29,6 +30,24 @@ export async function onRequestGet({ request, env }) {
     }
   }
   return json({ signed_in: true, handle: null, roles: [] });
+}
+
+/* THE ADDRESS IS READ FROM A VERIFIED TOKEN, NOT A HEADER. This endpoint is
+ * open (the public account menu asks it), so the /admin door does not run in
+ * front of it, and it used to take Cf-Access-Authenticated-User-Email on
+ * trust - a header a client can send on the pages.dev alias, where no Access
+ * application stands. It verifies the same Access token the door does
+ * (functions/_access.js): no token or a bad one is signed out, and keys that
+ * will not answer are signed out too, because this only ever opens doors. */
+async function verifiedEmail(request, env) {
+  const token = tokenOf(request);
+  if (!token) return null;
+  try {
+    const claims = await verify(token, env);
+    return claims && typeof claims.email === "string" ? claims.email : null;
+  } catch (e) {
+    return null;
+  }
 }
 
 async function sha256(s) {

@@ -53,15 +53,21 @@ function fakeFetch(putLog) {
   };
 }
 
-async function call(email, body, putLog) {
+/* The person arrives the way functions/admin/_middleware.js hands it on:
+   context.data.access, set only after it verified the token. `headerOnly`
+   sends the address as the Cf-Access-Authenticated-User-Email header and
+   nothing else - what a client can do on the pages.dev alias, where no Access
+   application stands - and must be refused. */
+async function call(email, body, putLog, { headerOnly = false } = {}) {
   const headers = new Headers();
-  if (email) {
+  if (email && headerOnly) {
     headers.set("Cf-Access-Authenticated-User-Email", email);
     headers.set("Cf-Access-Jwt-Assertion", "fake.jwt.value");
   }
   const req = new Request("https://sledjobs.com/admin/api/rule",
                           { method: "POST", headers, body: JSON.stringify(body) });
-  const res = await onRequestPost({ request: req, env: envFor(putLog) });
+  const data = email && !headerOnly ? { access: { email } } : {};
+  const res = await onRequestPost({ request: req, env: envFor(putLog), data });
   return { status: res.status || 200, body: await res.json() };
 }
 
@@ -103,6 +109,14 @@ const RULING = { kind: "vendor", call: "out", name: "Acme Payroll", why: "horizo
   globalThis.fetch = fakeFetch(puts);
   const r = await call(null, RULING, puts);
   out.cases.anonymous = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
+}
+
+// 5b. the owner's address in a header nobody verified
+{
+  const puts = [];
+  globalThis.fetch = fakeFetch(puts);
+  const r = await call(OWNER, RULING, puts, { headerOnly: true });
+  out.cases.header_only = { status: r.status, ok: !!r.body.ok, wrote: puts.length };
 }
 
 // 6. a GRANT: the owner may, an admin may not, and the address never lands

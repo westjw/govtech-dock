@@ -59,5 +59,14 @@ export async function onRequest(context) {
     return refuse(url, 403, "the sign-in could not be verified for this application "
       + "(ACCESS_AUD / ACCESS_TEAM_DOMAIN name which one)");
   }
+  // THE VERIFIED IDENTITY TRAVELS WITH THE REQUEST. The handlers behind this
+  // door read the person from here, never from Cf-Access-Authenticated-User-
+  // Email: that header is put on by Access where Access runs, and on the
+  // pages.dev alias, which no Access application covers, a client can send
+  // it itself (launch audit, 2026-10-06). context.data is the Pages way to
+  // hand a value from middleware to the function it runs.
+  if (context.data && typeof context.data === "object") {
+    context.data.access = { email: typeof claims.email === "string" ? claims.email : null };
+  }
   return next();
 }

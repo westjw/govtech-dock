@@ -82,12 +82,15 @@ async function ruler(request, env, email, need = "admin") {
   return null;
 }
 
-export async function onRequestPost({ request, env }) {
-  const email = request.headers.get("Cf-Access-Authenticated-User-Email");
-  const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
-  if (!email || !jwt) {
-    return json({ error: "not behind Access - the /admin Access application " +
-                         "is missing, so writing is refused" }, 403);
+export async function onRequestPost({ request, env, data }) {
+  // WHO IS RULING comes from the token functions/admin/_middleware.js
+  // verified, never from a header: Cf-Access-Authenticated-User-Email can be
+  // sent by the client itself on the pages.dev alias, and a signed-in admin
+  // could have ruled as the owner (launch audit, 2026-10-06).
+  const email = data && data.access && data.access.email;
+  if (!email) {
+    return json({ error: "not signed in through a verified Access token, so " +
+                         "writing is refused" }, 403);
   }
   let body;
   try { body = await request.json(); } catch { return json({ error: "send JSON" }, 400); }

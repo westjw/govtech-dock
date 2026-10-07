@@ -1489,6 +1489,17 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
         c = out.get(k) or {}
         if c.get("status") != 200 or not c.get("reached"):
             errors += fail(f"the admin door refused {what} ({c})")
+    # THE VERIFIED PERSON IS HANDED ON, and only by the door. rule.js reads
+    # who is ruling from context.data.access and nothing else, because the
+    # Cf-Access-Authenticated-User-Email header can be sent by the client on
+    # the pages.dev alias (launch audit, 2026-10-06).
+    for k in ("valid_header", "valid_cookie"):
+        if ((out.get(k) or {}).get("identity") or {}).get("email") != "person@desk":
+            errors += fail(f"the door let {k} through without handing on the verified "
+                           f"address, so rule.js cannot know who is ruling")
+    for k in shut:
+        if (out.get(k) or {}).get("identity"):
+            errors += fail(f"the door handed on an identity for {k}, which it refused")
     c = out.get("certs_down") or {}
     if c.get("status") != 503 or c.get("reached"):
         errors += fail(f"with the Access keys unreachable the door must be 503, got {c}")
@@ -1896,7 +1907,9 @@ def check_web_ruling_stores_a_handle_not_a_person() -> int:
             ("wrong_role", "somebody the Users board granted only 'hunter'"),
             ("no_row", "somebody Access admits with no Users row at all"),
             ("revoked", "somebody whose admin was revoked"),
-            ("anonymous", "nobody signed in")):
+            ("anonymous", "nobody signed in"),
+            # a header is not a sign-in: a client can send it on pages.dev
+            ("header_only", "a request carrying the owner's address in a header, unverified")):
         c = cases.get(name) or {}
         if c.get("ok") or c.get("wrote"):
             errors += fail(f"{why} was able to write a ruling ({c}). Access "
@@ -2399,51 +2412,39 @@ console.log(JSON.stringify({{
 def check_login_endpoint_names_a_handle_never_an_address() -> int:
     """functions/admin/api/whoami.js is the login: Access puts a verified
     address on the request, this answers with the handle and roles the
-    owner's Users board granted. Driven under node with a fake request and
-    a fake asset store: no header is signed out; a hash on file is a handle
+    owner's Users board granted. Driven under node with signed tokens and
+    a fake asset store: no verified token is signed out; a hash on file is a handle
     with roles; a revoked hash is signed in with none; the address is never
     in the answer. And login.js sends people only to a path on this site."""
-    import subprocess, json as _json, hashlib
-    who = (ROOT / "functions" / "admin" / "api" / "whoami.js").read_text()
-    login = (ROOT / "functions" / "admin" / "api" / "login.js").read_text()
-    key = hashlib.sha256(b"jane.doe@example.org").hexdigest()
-    gone = hashlib.sha256(b"old@example.org").hexdigest()
-    users = {"jane": {"email_sha256": key, "roles": ["hunter"], "revoked_on": None},
-             "old": {"email_sha256": gone, "roles": ["admin"], "revoked_on": "2026-09-01"}}
-    js = who.replace("export async function onRequestGet", "async function onRequestGet") + "\n" \
-        + login.replace("export async function onRequestGet", "async function onLogin") + f"""
-const USERS = {_json.dumps(users)};
-const env = {{ ASSETS: {{ fetch: async () => new Response(JSON.stringify(USERS), {{status: 200}}) }} }};
-const req = (email) => new Request("https://sledjobs.com/admin/api/whoami",
-  {{ headers: email ? {{ "Cf-Access-Authenticated-User-Email": email }} : {{}} }});
-(async () => {{
-  const out = {{}};
-  out.none = await (await onRequestGet({{ request: req(null), env }})).json();
-  out.jane = await (await onRequestGet({{ request: req(" Jane.Doe@Example.org "), env }})).json();
-  out.old = await (await onRequestGet({{ request: req("old@example.org"), env }})).json();
-  out.stranger = await (await onRequestGet({{ request: req("who@example.org"), env }})).json();
-  out.janeRaw = JSON.stringify(out.jane);
-  const loc = async (to) => (await onLogin({{ request: new Request("https://sledjobs.com/admin/api/login?to=" + encodeURIComponent(to)) }})).headers.get("location");
-  out.home = await loc("/");
-  out.co = await loc("/?co=brinc");
-  out.evil = await loc("https://evil.example/");
-  out.prot = await loc("//evil.example/");
-  console.log(JSON.stringify(out));
-}})();"""
-    r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=60)
+    import subprocess, json as _json
+    # THE TOKEN, NOT A HEADER (2026-10-06). whoami is open - the /admin door
+    # does not run in front of it - and it trusted the Cf-Access-Authenticated-
+    # User-Email header, which a client can send on the pages.dev alias. It
+    # verifies the Access token now; whoami_harness.mjs imports the real
+    # modules and signs tokens with a key it generated.
+    r = subprocess.run(["node", str(ROOT / "scripts" / "whoami_harness.mjs")],
+                       capture_output=True, text=True, timeout=60)
     if r.returncode:
         return fail(f"whoami.js did not run under node: {r.stderr[:400]}")
     got = _json.loads(r.stdout.strip().splitlines()[-1])
     errors = 0
     if got["none"] != {"signed_in": False}:
-        errors += fail(f"no Access header must be signed out, nothing more: {got['none']}")
-    if got["jane"] != {"signed_in": True, "handle": "jane", "roles": ["hunter"]}:
-        errors += fail(f"a signed-in address on file must answer handle and roles, "
-                       f"matched after trimming and lower-casing: {got['jane']}")
+        errors += fail(f"no token must be signed out, nothing more: {got['none']}")
+    for k in ("jane", "jane_cookie"):
+        if got[k] != {"signed_in": True, "handle": "jane", "roles": ["hunter"]}:
+            errors += fail(f"a verified address on file ({k}) must answer handle and roles, "
+                           f"matched after trimming and lower-casing: {got[k]}")
     if got["old"] != {"signed_in": True, "handle": None, "roles": []}:
         errors += fail(f"a revoked person is signed in with no handle and no roles: {got['old']}")
     if got["stranger"] != {"signed_in": True, "handle": None, "roles": []}:
         errors += fail(f"an address the owner never granted gets no roles: {got['stranger']}")
+    for k, what in (("header_only", "the address in a header nobody verified"),
+                    ("forged", "a token signed by another key"),
+                    ("other_app", "another Access application's token"),
+                    ("keys_down", "a token whose key cannot be fetched")):
+        if got[k] != {"signed_in": False}:
+            errors += fail(f"whoami signed somebody in on {what}: {got[k]} - it opens "
+                           f"the admin and beta doors in the account menu")
     if "@" in got["janeRaw"] or "example.org" in got["janeRaw"]:
         errors += fail("the login answer carries the address; the page needs a handle, not a person")
     if got["home"] != "/" or got["co"] != "/?co=brinc":

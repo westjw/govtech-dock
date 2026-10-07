@@ -43,10 +43,12 @@ async function ask(path, { header, cookie } = {}) {
   if (cookie) headers.set("Cookie", `CF_Authorization=${cookie}; other=1`);
   const req = new Request(`https://solesource-c6g.pages.dev${path}`, { headers });
   let reached = false;
-  const res = await onRequest({ request: req, env: {}, next: async () => { reached = true; return new Response("ok", { status: 200 }); } });
+  const data = {};
+  const res = await onRequest({ request: req, env: {}, data, next: async () => { reached = true; return new Response("ok", { status: 200 }); } });
   let body = "";
   try { body = await res.text(); } catch { body = ""; }
-  return { status: res.status, reached, json: body.startsWith("{") ? JSON.parse(body) : null, body };
+  return { status: res.status, reached, json: body.startsWith("{") ? JSON.parse(body) : null, body,
+           identity: data.access || null };
 }
 
 const out = {};
