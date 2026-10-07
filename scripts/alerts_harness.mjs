@@ -188,9 +188,26 @@ out.driftSubscriptions = cnt();
       headers: { "content-type": "application/x-www-form-urlencoded" }, body }), env })).status;
   out.oneClickWrongBody = await form("List-Unsubscribe=Nope", tok);
   out.oneClickKeptAfterWrongBody = !!(await env.ALERTS.get("sub:" + tok));
+  // a browser opening the List-Unsubscribe address is sent to the stop page;
+  // the page's own fetch still gets the JSON it reads
+  const getAs = async (accept) => {
+    const res = await mod.onRequestGet({ request: new Request(`https://sledjobs.com/api/alerts?t=${tok}`,
+      { headers: accept ? { accept } : {} }), env });
+    return [res.status, res.headers.get("location")];
+  };
+  out.browserOpens = await getAs("text/html,application/xhtml+xml");
+  out.pageFetch = (await getAs(null))[0];
   out.oneClick = await form("List-Unsubscribe=One-Click", tok);
   out.oneClickGone = !(await env.ALERTS.get("sub:" + tok))
     && ![...KV.values()].some((e) => e.v === tok);
+  // the encoding RFC 8058 says SHOULD be used: multipart/form-data
+  await post({ action: "subscribe", email: "m@example.org", prefs: PREFS }, "192.0.2.91");
+  const tm = [...KV.keys()].find((k) => k.startsWith("sub:") && JSON.parse(KV.get(k).v).email === "m@example.org").slice(4);
+  await post({ action: "confirm", token: tm });
+  const fd = new FormData(); fd.append("List-Unsubscribe", "One-Click");
+  out.oneClickMultipart = (await mod.onRequestPost({ request: new Request(`https://sledjobs.com/api/alerts?t=${tm}`,
+    { method: "POST", body: fd }), env })).status;
+  out.oneClickMultipartGone = !(await env.ALERTS.get("sub:" + tm));
 }
 
 /* 13. A PENDING RECORD FROM BEFORE THE SHARED EXPIRY: no `expires`, no

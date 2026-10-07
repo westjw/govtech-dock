@@ -581,6 +581,11 @@ as the `/admin` door, and the verifier both doors share lives in
   every static file with no gate.
 - Our own static files are read through `env.ASSETS`, never `fetch()` of our
   own url. That fetch carries no sign-in, so the gate refuses it.
+- **One request passes without a sign-in: a mail client's one-click
+  unsubscribe** (RFC 8058) - a POST to `/api/alerts` with a well-formed `?t=`
+  and a form body (`isOneClickUnsubscribe`). Digests go out while the site is
+  private and the provider's POST can carry no sign-in. alerts.js then
+  requires `List-Unsubscribe=One-Click` and answers the same for any token.
 
 **A phone ruling used to vanish in the nightly push.** `refresh.yml` said
 `git pull --rebase -X theirs`; the bot's copy of a decision file won
@@ -1707,8 +1712,9 @@ fires.
   buildSlides() and home().
 - **Emailed links wait for a click** (alerts confirm/stop, claim confirm), and
   digests carry both RFC 8058 headers, answered by alerts.js's form POST.
-- **Two blind review rounds**, 8 agents each (4 reviewers, 4 skeptics): 11
-  then 21 confirmed findings, all fixed; most were tests that could not fail.
+- **Three blind review rounds** (8, 8 and 4 agents, half of them skeptics):
+  11, 21 and 7 confirmed findings, all fixed; most were tests that could not
+  fail.
   **Run a check's clean baseline before mutating it**: one "caught" mutation
   in round one was the baseline failing, not the guard.
 - The board's offtopic counts were computed under the broken pattern and

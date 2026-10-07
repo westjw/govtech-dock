@@ -6231,12 +6231,17 @@ function buildSlides(){
 
   // 1. What this run turned up. Was a grey strip above the job list; it is
   //    the freshest thing the board knows and it belongs at the front.
-  if(fresh.length){
+  // COUNTED AS THE BUTTON OPENS IT: the jobs tab with the quota pill on,
+  // since=0 - so new sales roles in openings, not every new posting in every
+  // family (158 over a link that showed 25; third review, 2026-10-07). A run
+  // with none drops the slide rather than printing a zero.
+  if(freshQ.length){
     const seenBefore=new Set(D.postings.filter(p=>p.first_seen!==gen).map(p=>p.company_id));
     const debut=[...new Set(freshQ.filter(p=>!seenBefore.has(p.company_id)).map(p=>p.company))];
+    const freshOpenings=new Set(freshQ.map(p=>p.opening_id)).size;
     out.push({kick:"New this run",
-      h:`<span class="num">${fresh.length.toLocaleString()}</span> new postings`,
-      p:`First seen on ${esc(gen)}, <strong>${freshQ.length.toLocaleString()}</strong> of them carrying a number.`
+      h:`<span class="num">${freshOpenings.toLocaleString()}</span> new sales role${freshOpenings===1?"":"s"}`,
+      p:`First seen on ${esc(gen)}, advertised in <strong>${freshQ.length.toLocaleString()}</strong> posting${freshQ.length===1?"":"s"}.`
         +(debut.length?` First seller req we have ever recorded at ${esc(debut.slice(0,3).join(", "))}${debut.length>3?` and ${debut.length-3} other${debut.length-3===1?"":"s"}`:""}.`:""),
       cta:"See what is new", go:()=>{tab="jobs";ROLE=null;render();
         const f=$("#j-since"); if(f){f.value="0";f.dispatchEvent(new Event("change"))}}});
@@ -6460,7 +6465,9 @@ function openVisit(){
 function sinceLastVisit(){
   const on=LAST_VISIT;
   if(!on)return "";
-  const q=D.postings.filter(p=>p.quota_carrying&&(p.first_seen||"")>on);
+  // the jobs tab's default set: "See them" opens it (third review, 2026-10-07:
+  // this counted roles in Amsterdam and Paris the link never shows)
+  const q=boardDefault(D.postings).filter(p=>(p.first_seen||"")>on);
   if(!q.length)return "";
   const openings=new Set(q.map(p=>p.opening_id)).size;
   const cos=new Set(q.map(p=>p.company_id)).size;

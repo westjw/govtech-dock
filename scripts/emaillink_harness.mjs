@@ -28,7 +28,7 @@ function stub() {
   return p;
 }
 
-async function run(page, search, getAnswer) {
+async function run(page, search, getAnswer, postAnswer = null) {
   const html = readFileSync(new URL(`../${page}`, import.meta.url), "utf8");
   const scripts = [...html.matchAll(/<script(\s[^>]*)?>([\s\S]*?)<\/script>/g)]
     .filter((m) => !/\bsrc=/.test(m[1] || "") && !/application\/(ld\+)?json/.test(m[1] || ""))
@@ -57,7 +57,9 @@ async function run(page, search, getAnswer) {
     if ((init.method || "GET").toUpperCase() === "POST") {
       const body = JSON.parse(init.body || "{}");
       posts.push(body.action);
-      return { ok: true, status: 200, json: async () => ({ ok: true, confirmed: true }) };
+      if (postAnswer === "offline") throw new TypeError("Failed to fetch");
+      const ans = postAnswer || { ok: true, confirmed: true };
+      return { ok: !!ans.ok, status: ans.ok ? 200 : 400, json: async () => ans };
     }
     return { ok: true, status: 200, json: async () => getAnswer(String(url)) };
   };
@@ -91,7 +93,12 @@ async function run(page, search, getAnswer) {
   const before = [...posts];
   const button = [...els.entries()].find(([k, e]) => ["#linkgo", "#confirmgo"].includes(k) && typeof e.onclick === "function");
   if (button) { button[1].onclick({ preventDefault() {}, stopPropagation() {} }); await settle(); }
-  return { errors, onLoad: before, afterClick: [...posts], button: button ? button[0] : null };
+  const st = (k) => (els.has(k) ? els.get(k) : null);
+  return { errors, onLoad: before, afterClick: [...posts], button: button ? button[0] : null,
+           deadShown: st("#dead") ? st("#dead").hidden === false : false,
+           confirmMsg: st("#m-confirm") ? st("#m-confirm").textContent : "",
+           confirmDisabled: st("#confirmgo") ? st("#confirmgo").disabled : null,
+           view: st("#view") ? st("#view")._html.slice(0, 400) : "" };
 }
 
 const out = {};
@@ -100,4 +107,12 @@ out.alertsConfirm = await run("alerts.html", `?t=${TOKEN}&confirm=1`, subAnswer)
 out.alertsStop = await run("alerts.html", `?t=${TOKEN}&stop=1`, subAnswer);
 out.claimConfirm = await run("claim.html", `?t=${TOKEN}`, () => ({ ok: true, confirmed: false,
   name: "Acme", company_id: "acme", email: "jane@example.org", goes_live_without_review: [] }));
+// a subscriber ALREADY confirmed opens the link again (it is also the
+// settings link): no button, nothing sent, straight to settings
+out.alertsConfirmedReopen = await run("alerts.html", `?t=${TOKEN}&confirm=1`,
+  () => ({ ...subAnswer(), confirmed: true, last_sent: "2026-10-01" }));
+const claimAnswer = () => ({ ok: true, confirmed: false, name: "Acme", company_id: "acme",
+  email: "jane@example.org", goes_live_without_review: [] });
+out.claimLapsed = await run("claim.html", `?t=${TOKEN}`, claimAnswer, { error: "bad_token" });
+out.claimOffline = await run("claim.html", `?t=${TOKEN}`, claimAnswer, "offline");
 console.log(JSON.stringify(out));

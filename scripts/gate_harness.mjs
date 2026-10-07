@@ -39,8 +39,9 @@ globalThis.fetch = async (url) => {
   return new Response("nope", { status: 404 });
 };
 
-async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie } = {}) {
+async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie, ctype } = {}) {
   const headers = new Headers();
+  if (ctype) headers.set("content-type", ctype);
   if (header) headers.set("Cf-Access-Jwt-Assertion", header);
   if (cookie) headers.set("Cookie", `other=1; CF_Authorization=${cookie}`);
   const req = new Request(`https://${host}${path}`, { method, headers });
@@ -68,6 +69,17 @@ out.anon_head        = await ask("/", { method: "HEAD" });
 out.anon_api_post    = await ask("/api/alerts", { method: "POST" });
 out.anon_api_get     = await ask("/api/claim?t=x");
 out.anon_admin_file  = await ask("/admin/users.json", { host: ALIAS });
+// THE ONE SHAPE THAT PASSES while gated: a mail client's one-click
+// unsubscribe (RFC 8058) - and every near miss stays shut
+const T43 = "t".repeat(43);
+const FORM = "application/x-www-form-urlencoded";
+out.oneclick_form      = await ask(`/api/alerts?t=${T43}`, { method: "POST", ctype: FORM });
+out.oneclick_multipart = await ask(`/api/alerts?t=${T43}`, { method: "POST", ctype: "Multipart/Form-Data; boundary=x" });
+out.oneclick_json      = await ask(`/api/alerts?t=${T43}`, { method: "POST", ctype: "application/json" });
+out.oneclick_no_token  = await ask("/api/alerts", { method: "POST", ctype: FORM });
+out.oneclick_bad_token = await ask("/api/alerts?t=short", { method: "POST", ctype: FORM });
+out.oneclick_get       = await ask(`/api/alerts?t=${T43}`, { ctype: FORM });
+out.oneclick_elsewhere = await ask(`/api/claim?t=${T43}`, { method: "POST", ctype: FORM });
 out.trick_slash      = await ask("/admin/api/login/");
 out.trick_case       = await ask("/admin/api/LOGIN");
 out.trick_encoded    = await ask("/%61dmin/api/login");

@@ -456,30 +456,39 @@ function settingsView(data){
      unsubscribed on load - so a scanner could start a stranger's digests or
      silently stop somebody's (launch audit, 2026-10-06). Each link now shows
      one button, and a person presses it. */
-  if(WANT_CONFIRM||WANT_STOP){
-    const stop=WANT_STOP;
-    $("#view").innerHTML=`<div class="panel"><h2>${stop?"Stop these emails?":"Confirm your alerts"}</h2>
-      <p class="note">${stop
-        ?"This deletes the subscription and everything stored with it."
-        :"Press the button to start your alerts. If you did not ask for them, close this tab and nothing is sent."}</p>
-      <p><button type="button" id="linkgo">${stop?"Stop and delete":"Confirm alerts"}</button></p>
-      <div id="linkmsg"></div></div>`;
-    await new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
-    if(stop){
-      const r=await api({action:"stop",token:TOKEN});
-      $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
-        <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
-          :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
-      return;
-    }
-    await api({action:"confirm",token:TOKEN});
+  const button=(title,note,label)=>{
+    $("#view").innerHTML=`<div class="panel"><h2>${title}</h2><p class="note">${note}</p>
+      <p><button type="button" id="linkgo">${label}</button></p><div id="linkmsg"></div></div>`;
+    return new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
+  };
+  if(WANT_STOP){
+    await button("Stop these emails?","This deletes the subscription and everything stored with it.",
+                 "Stop and delete");
+    const r=await api({action:"stop",token:TOKEN});
+    $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
+      <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
+        :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
+    return;
   }
   $("#view").innerHTML='<div class="panel"><p class="note">Loading your settings…</p></div>';
   const r=await fetch("/api/alerts?t="+encodeURIComponent(TOKEN));
   let d={}; try{d=await r.json()}catch{}
+  /* THE CONFIRM LINK IS ALSO THE SETTINGS LINK (the email says so). Read the
+     subscription first - the GET changes nothing - and ask for the click only
+     while it is pending. A subscriber already getting digests who opened it
+     to change settings was told "Press the button to start your alerts" and
+     that closing the tab would send nothing (third review, 2026-10-07). */
+  let justConfirmed=false;
+  if(WANT_CONFIRM&&d.ok&&!d.confirmed){
+    await button("Confirm your alerts",
+      "Press the button to start your alerts. If you did not ask for them, close this tab and nothing is sent.",
+      "Confirm alerts");
+    const c=await api({action:"confirm",token:TOKEN});
+    if(c.ok){ d.confirmed=true; justConfirmed=true; }
+  }
   if(d.ok){
     settingsView(d);
-    if(WANT_CONFIRM)say("ok","Confirmed. You will get your first digest on the next matching morning.");
+    if(justConfirmed)say("ok","Confirmed. You will get your first digest on the next matching morning.");
   }else if(d.error==="not_configured"){
     $("#view").innerHTML='<div class="panel"><h2>Not switched on</h2>'
       +'<p class="note">Alerts are not configured on this site yet.</p></div>';

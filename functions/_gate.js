@@ -90,10 +90,27 @@ function refuse(request, url, status, error, line) {
 }
 
 /* null means "let it through"; anything else is the response to send. */
+/* A MAIL CLIENT'S ONE-CLICK UNSUBSCRIBE (RFC 8058) passes the gate. Digests
+ * go out while the site is private, they carry List-Unsubscribe, and the
+ * mail provider's POST carries no cookie and no sign-in by design - so the
+ * gate turned every Unsubscribe button into a silent 403 (third review,
+ * 2026-10-07). Only that exact shape passes: a POST to /api/alerts with a
+ * well-formed ?t= and a form body. alerts.js then requires the body to say
+ * List-Unsubscribe=One-Click and answers the same whatever the token, so it
+ * opens nothing and tells nothing. A JSON POST, a GET, or no token is gated. */
+function isOneClickUnsubscribe(request, url) {
+  if (request.method !== "POST" || url.pathname !== "/api/alerts") return false;
+  if (!/^[A-Za-z0-9_-]{40,64}$/.test(url.searchParams.get("t") || "")) return false;
+  const ctype = (request.headers.get("content-type") || "").toLowerCase();
+  return ctype.includes("application/x-www-form-urlencoded")
+      || ctype.includes("multipart/form-data");
+}
+
 export async function gate(request, env) {
   if (!GATED) return null;
   const url = new URL(request.url);
   if (OPEN.has(url.pathname)) return null;
+  if (isOneClickUnsubscribe(request, url)) return null;
   const token = tokenOf(request);
   if (!token) {
     return refuse(request, url, 403, "not_signed_in",

@@ -1624,7 +1624,20 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         "wrong_iss": "a token from another team", "unknown_kid": "a token signed by an unknown key",
         "forged_sig": "a token with a forged signature", "garbage": "a non-token cookie",
         "xss": "a path carrying markup",
+        "oneclick_json": "a JSON POST to the alerts endpoint carrying a token",
+        "oneclick_no_token": "a form POST to the alerts endpoint with no token",
+        "oneclick_bad_token": "a form POST with a malformed token",
+        "oneclick_get": "a GET to the alerts endpoint carrying a token",
+        "oneclick_elsewhere": "a form POST to another endpoint",
     }
+    # A MAIL CLIENT'S ONE-CLICK UNSUBSCRIBE PASSES, in both RFC 8058 encodings:
+    # digests go out while the site is private and the provider's POST can
+    # carry no sign-in (third review, 2026-10-07).
+    for k in ("oneclick_form", "oneclick_multipart"):
+        if not (out.get(k) or {}).get("reached"):
+            errors += fail(f"the gate refused a mail client's one-click unsubscribe "
+                           f"({k}: {(out.get(k) or {}).get('status')}) - every digest's "
+                           f"Unsubscribe button does nothing while the site is private")
     for k, what in shut.items():
         c = out.get(k) or {}
         if c.get("status") != 403 or c.get("reached"):
@@ -2593,6 +2606,13 @@ def check_an_alert_signup_keeps_its_promises() -> int:
     if d.get("oneClick") != 200 or not d.get("oneClickGone"):
         errors += fail(f"a mail client's one-click unsubscribe (a form POST, RFC 8058) "
                        f"did not delete the subscription ({d.get('oneClick')})")
+    if d.get("oneClickMultipart") != 200 or not d.get("oneClickMultipartGone"):
+        errors += fail("a multipart/form-data one-click unsubscribe - the encoding RFC "
+                       "8058 says SHOULD be used - was refused")
+    bo = d.get("browserOpens") or [None, None]
+    if bo[0] != 303 or "stop=1" not in (bo[1] or "") or d.get("pageFetch") != 200:
+        errors += fail(f"a browser opening the List-Unsubscribe address gets {bo}, not the "
+                       f"stop page; or the page's own fetch lost its JSON ({d.get('pageFetch')})")
     if d.get("oneClickWrongBody") != 400 or not d.get("oneClickKeptAfterWrongBody"):
         errors += fail("a form POST that is not List-Unsubscribe=One-Click unsubscribed "
                        "somebody, or was not refused")
@@ -2682,6 +2702,22 @@ def check_an_emailed_link_waits_for_a_person() -> int:
         if action not in (c.get("afterClick") or []):
             errors += fail(f"pressing the button on {what} did not send '{action}': "
                            f"{c.get('afterClick')} (button {c.get('button')})")
+    # THE CONFIRM LINK IS ALSO THE SETTINGS LINK: a subscriber already getting
+    # digests is not asked to "start your alerts" (third review, 2026-10-07)
+    c = d.get("alertsConfirmedReopen") or {}
+    if c.get("button") or c.get("afterClick") or "Confirm alerts" in (c.get("view") or ""):
+        errors += fail(f"a confirmed subscriber reopening the confirm link is asked to "
+                       f"confirm again: button {c.get('button')}, sent {c.get('afterClick')}")
+    # a claim that lapsed while the tab was open says so, with the way back;
+    # an offline press says so and can be pressed again
+    c = d.get("claimLapsed") or {}
+    if not c.get("deadShown") or "bad_token" in (c.get("confirmMsg") or ""):
+        errors += fail("a claim that lapsed before the button was pressed shows a raw "
+                       "error and a button that can only fail, not the expired page")
+    c = d.get("claimOffline") or {}
+    if c.get("confirmDisabled") is not False or "No connection" not in (c.get("confirmMsg") or ""):
+        errors += fail("pressing confirm while offline leaves the button disabled and "
+                       "says nothing")
     return errors
 
 
@@ -8091,12 +8127,17 @@ def check_one_subscriber_never_silences_the_rest() -> int:
                            f"hand: {warn[-200:]!r}")
         # 7. EVERY DIGEST CARRIES BOTH ONE-CLICK HEADERS, with its own token:
         #    List-Unsubscribe-Post alone (all that was ever sent) shows no button.
-        for h in getattr(fake, "headers", []):
+        # ...and each one's OWN token, exactly: "sub:<token>" or another
+        # subscriber's token passed a substring check (third review, 2026-10-07)
+        import brand as _brand
+        want_url = {"alpha@example.org": f"<{_brand.SITE}/api/alerts?t={TOK['a']}>",
+                    "beta@example.org": f"<{_brand.SITE}/api/alerts?t={TOK['b']}>"}
+        for to, h in zip(fake.mailed, getattr(fake, "headers", [])):
             h = h or {}
             if h.get("List-Unsubscribe-Post") != "List-Unsubscribe=One-Click" or \
-                    "/api/alerts?t=" not in (h.get("List-Unsubscribe") or ""):
+                    h.get("List-Unsubscribe") != want_url.get(to):
                 errors += fail(f"a digest went out without both one-click unsubscribe "
-                               f"headers (RFC 8058), so mail clients show no button: {h}")
+                               f"headers carrying its own token (RFC 8058): {h}")
                 break
         if not getattr(fake, "headers", None):
             errors += fail("no digest was sent, so the unsubscribe headers went unchecked")
@@ -26448,6 +26489,20 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     if seller and num(re.search(r'class="num">([\d,]+)<', seller["h"]).group(1)) != want:
         errors += fail(f"the banner's Sellers wanted slide says {seller['h'][:60]!r}; "
                        f"its Open the board link lands on {want}")
+    gen = board.get("generated")
+    fresh = len({p["opening_id"] for p in board["postings"] if p.get("quota_carrying")
+                 and p.get("is_us") is not False and p.get("first_seen") == gen})
+    new_slide = next((x for x in front.get("slides", []) if x["kick"] == "New this run"), None)
+    if fresh and (not new_slide or num(re.search(r'class="num">([\d,]+)<', new_slide["h"]).group(1)) != fresh):
+        errors += fail(f"the New this run slide says {new_slide and new_slide['h'][:60]!r}; "
+                       f"its button opens {fresh} new sales roles")
+    since = sum(1 for _ in {p["opening_id"] for p in board["postings"]
+                            if p.get("quota_carrying") and p.get("is_us") is not False
+                            and (p.get("first_seen") or "") > front.get("lastVisit", "~")})
+    m2 = re.search(r'<div class="since">\s*<strong>([\d,]+) quota-carrying', front["home"])
+    if since and (not m2 or num(m2.group(1)) != since):
+        errors += fail(f"the since-your-last-visit line says {m2 and m2.group(1)}; its "
+                       f"link opens {since}")
     if "in the United States" in front["home"].split('id="h-jobs"', 1)[-1][:600]:
         errors += fail("the home card says its roles are in the United States, and "
                        "the count includes roles we could not place")

@@ -222,7 +222,11 @@ try {
     if (k === "getElementById") return (id) => (id === "view" ? v2 : S);
     return S;
   } });
-  vm.runInContext(`D = __real; home();`, ctx);
+  // a returning visitor last here three days before the crawl, so the
+  // "since you were last here" line is drawn too
+  const g = new Date(Date.parse(ctx.__real.generated) - 3 * 86400000).toISOString().slice(0, 10);
+  front.lastVisit = g;
+  vm.runInContext(`D = __real; LAST_VISIT = ${JSON.stringify(g)}; home();`, ctx);
   front.home = String(rec2.innerHTML);
 } catch (e) {
   errors.push(`running the front page: ${e && e.message}`);

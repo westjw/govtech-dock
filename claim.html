@@ -237,10 +237,15 @@ const TOKEN = qs.get("t");
 let ME = null;
 
 async function api(body) {
-  const r = await fetch("/api/claim", {
-    method: "POST", headers: {"content-type": "application/json"},
-    body: JSON.stringify(body),
-  });
+  // A fetch that never answers (offline) is an answer too: it used to throw
+  // inside a button's handler and leave the button disabled with nothing said.
+  let r;
+  try {
+    r = await fetch("/api/claim", {
+      method: "POST", headers: {"content-type": "application/json"},
+      body: JSON.stringify(body),
+    });
+  } catch (e) { return {error: "no answer", message: "No connection - nothing was sent. Try again."}; }
   try { return await r.json(); } catch (e) { return {error: "no answer"}; }
 }
 function say(id, text, bad) {
@@ -286,8 +291,12 @@ async function load() {
       $("#confirmgo").disabled = true;
       const c = await api({action: "confirm", token: TOKEN});
       if (c.ok) { ME.confirmed = true; $("#confirmstep").hidden = true; portal(r); }
-      else {
-        $("#m-confirm").textContent = c.message || c.error || "That did not go through. Try again.";
+      else if (c.error === "bad_token" || c.error === "unknown_token") {
+        // the claim lapsed or was handed back while the tab was open: say so,
+        // with the way to start again, rather than a button that can only fail
+        $("#confirmstep").hidden = true; $("#dead").hidden = false;
+      } else {
+        $("#m-confirm").textContent = c.message || "That did not go through. Try again.";
         $("#confirmgo").disabled = false;
       }
     };

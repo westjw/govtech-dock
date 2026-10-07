@@ -142,7 +142,9 @@ while the Function runs: see step 1 below.
 - A visitor without a verified sign-in gets a short holding page ("SLED JOBS
   opens soon", with a Sign in link). An endpoint refuses with JSON 403.
 - Only `/admin/api/login` and `/admin/api/whoami` stay open, the same two the
-  `/admin` door leaves open.
+  `/admin` door leaves open - plus a mail client's one-click unsubscribe
+  (a form POST to `/api/alerts?t=`), because digests keep going out while the
+  site is private.
 - `check_the_site_is_signed_in_only_until_launch` in `scripts/selftest.py`
   drives it through `scripts/gate_harness.mjs`.
 

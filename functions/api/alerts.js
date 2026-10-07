@@ -235,6 +235,16 @@ export async function onRequestGet({ request, env }) {
   if (!env.ALERTS) return notConfigured();
   const token = cleanToken(new URL(request.url).searchParams.get("t"));
   if (!token) return json({ error: "bad_token" }, 400);
+  // A PERSON WHO OPENS THE LIST-UNSUBSCRIBE ADDRESS gets the stop button, not
+  // JSON. Mail clients that ignore List-Unsubscribe-Post open the URL in a
+  // browser (RFC 2369); this answered with the subscription's data and
+  // deleted nothing (third review, 2026-10-07). The page's own fetch() sends
+  // no text/html Accept and still gets JSON. The stop page asks for a click.
+  const accept = ((request.headers && request.headers.get("accept")) || "").toLowerCase();
+  if (accept.includes("text/html")) {
+    return new Response(null, { status: 303, headers: {
+      location: `/alerts?t=${encodeURIComponent(token)}&stop=1`, "cache-control": "no-store" } });
+  }
   const raw = await env.ALERTS.get("sub:" + token);
   if (!raw) return json({ error: "unknown_token" }, 404);
   const sub = JSON.parse(raw);
@@ -262,11 +272,15 @@ export async function onRequestPost({ request, env }) {
    * subscription gone. This endpoint took only JSON, so the button could not
    * work (launch audit, 2026-10-06). The token in the address is the proof,
    * exactly as on the settings link; nothing else is accepted this way. */
-  const ctype = (request.headers && request.headers.get("content-type")) || "";
-  if (ctype.includes("application/x-www-form-urlencoded")) {
-    const form = new URLSearchParams(await request.text());
+  // multipart/form-data is the encoding RFC 8058 says SHOULD be used; the
+  // url-encoded form is the one it allows. Both, in any letter case (third
+  // review, 2026-10-07: only the second was accepted).
+  const ctype = ((request.headers && request.headers.get("content-type")) || "").toLowerCase();
+  if (ctype.includes("application/x-www-form-urlencoded") || ctype.includes("multipart/form-data")) {
+    let one = null;
+    try { one = (await request.formData()).get("List-Unsubscribe"); } catch { one = null; }
     const token = cleanToken(new URL(request.url).searchParams.get("t"));
-    if (form.get("List-Unsubscribe") !== "One-Click" || !token)
+    if (one !== "One-Click" || !token)
       return json({ error: "bad_request" }, 400);
     const raw = await env.ALERTS.get("sub:" + token);
     if (raw) {
