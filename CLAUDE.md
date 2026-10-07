@@ -1668,6 +1668,34 @@ fires.
   (`assets/og/rendered.json`), because the domain guard cannot read a PNG.
 - **`selftest.yml` runs the suite on every human push.** It reports; it cannot
   hold a Pages deploy back. DEPLOY.md §3 has the way back to private.
+- **SLED_ROLE held BACKSPACE characters for seven weeks** (2026-08-21 to
+  10-07): its `\b` word boundaries were written as 0x08, so "SLED", "gov",
+  "government", "govtech", "K-12" and "state and local" never matched. Fixed;
+  `SLED_ROLE_CASES` drive out_of_scope() and
+  `check_no_control_characters_in_source` refuses any control character in a
+  tracked source file.
+- **`sled_only` has two meanings in this repo, and they point in opposite
+  directions.** build_board reads it as "drop every title that does not name
+  the public sector", which was built for horizontal vendors (Anthropic,
+  OpenAI). The 2026-09-10/11 runs set it on 159 companies whose sites name
+  only government buyers, reading it as "sells only to government". Measured
+  live on 64 of those boards: 2,683 postings listed, 22 shown, and 1 of 152
+  quota-carrying roles shown (OpenGov, Granicus, Tyler, Mark43...).
+  `agents.buyer_sled_eligible` still derives the flag that way. **Clearing
+  them is the owner's call, pending.**
+- **A company with no board says which kind**: none found, turned away
+  (`probe == "blocked"`), or not looked for yet. `no_board_note()` and
+  `noBoardText()`. A board we read whose every role this board leaves out
+  says so with the counts (`scope_note`), never "empty right now".
+- **jobcard_harness runs the app's company view, `co()`,** on fixtures and
+  captures what it writes to #view. The helpers agreeing proved nothing about
+  the view.
+- **The /admin handlers read the person from the verified token**, which the
+  door passes on as `context.data.access`; whoami verifies its own.
+- **Pending alert signups carry one absolute `expires`** for both keys, and a
+  caller is its IPv6 /64.
+- These fixes were reviewed blind by 8 agents (4 reviewers, 4 skeptics): 11
+  real findings, all fixed; most were tests that could not fail.
 
 ## Conventions
 

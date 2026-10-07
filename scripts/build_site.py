@@ -1253,6 +1253,23 @@ def scope_note(o: dict) -> str:
     return "Of what their board lists, we leave out " + " and ".join(bits) + "."
 
 
+def no_board_note(o: dict) -> str:
+    """Why a company has no board on file, in the source cell's few words.
+
+    THREE DIFFERENT FACTS, and only one is about them. Discovery found nothing
+    ("none-found"), their site turned our reader away ("blocked" - 179
+    companies, which said "none found when we looked" about a site that never
+    let us look), or nobody has looked yet (no probe). index.html's
+    noBoardText() is the same rule (review, 2026-10-07)."""
+    on = o.get("board_checked_on")
+    probe = o.get("probe")
+    if probe == "blocked":
+        return "their site turned our reader away" + (f" on {on}" if on else "")
+    if not probe:
+        return "not looked for yet"
+    return "none found when we looked" + (f" on {on}" if on else "")
+
+
 def open_count(o: dict) -> str:
     """The open-roles figure as printed: a number, or an em dash when nobody
     could count. Roles captured by hand are a floor and still print."""
@@ -1646,8 +1663,13 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
     if not mine:
         if board_state(o) == "none":
             pa = o.get("posts_at") or {}
-            why = ("We have not found a public job board for them, so we cannot "
-                   "say whether they are hiring."
+            probe = o.get("probe")
+            why = (("Their site turned our reader away, so we never got far enough "
+                    "to see whether they have a job board. That is a fact about our "
+                    "reader, not about their hiring." if probe == "blocked" else
+                    "We have not looked for a job board for them yet." if not probe else
+                    "We have not found a public job board for them, so we cannot "
+                    "say whether they are hiring.")
                    + (f" {_posts_at_phrase(pa)[:1].upper()}{_posts_at_phrase(pa)[1:]}, "
                       f"which we do not read automatically." if pa else ""))
         elif readable and scope_note(o):
@@ -1775,7 +1797,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     if state == "none":
         pa = o.get("posts_at") or {}
         src_val = "No board on file"
-        src_note = _posts_at_phrase(pa) if pa else "none found when we looked"
+        src_note = _posts_at_phrase(pa) if pa else esc(no_board_note(o))
     elif readable:
         src_val = ats[:1].upper() + ats[1:] if ats else "Not on file"
         src_note = (f"read nightly{f' · all {open_} readable' if open_ else ''}"
@@ -2448,6 +2470,15 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     eyebrow = [f'<span>{esc(tag)}</span>']
     if c.get("flagship"):
         eyebrow.append('<span class="cfx-flag">Flagship</span>')
+    # AN EDITION THAT HAS ENDED SAYS SO. 29 of 138 pages were for events
+    # already over (3CMA, EDUCAUSE) and still offered "Event site &
+    # registration" and "Add to calendar"; the .cfpast style shipped on every
+    # page and nothing used it (launch audit, 2026-10-06). Same "today" as the
+    # same-department list below, which already drops past events.
+    span = _ics_range(c.get("dates"))
+    ended = bool(span) and span[1] < dt.date.today()
+    if ended:
+        eyebrow.append('<span class="cfpast">Ended</span>')
 
     if swept:
         state = ('<span class="cfx-state read"><i></i>Floor read</span>')
@@ -2461,7 +2492,8 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
         # claim about a dispatch show in Anaheim. The per-company counts are
         # in the roster table below, where each number sits beside the company
         # it belongs to and cannot be mistaken for the floor's total.
-        lede = (f'{where}We read this floor: <b>{len(roster)}</b> '
+        lede = (("This edition has ended. " if ended else "")
+                + f'{where}We read this floor: <b>{len(roster)}</b> '
                 f'{"company" if len(roster) == 1 else "companies"} on file'
                 + (f', <b>{n_hire}</b> of them hiring a seller today'
                    if n_hire else
@@ -2470,12 +2502,14 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     else:
         state = '<span class="cfx-state"><i></i>Floor not read yet</span>'
         where = f"{esc(block)} &rarr; {esc(dept)}. " if block and dept else ""
-        lede = (f'{where}The tag <b>{esc(tag)}</b> is what company pages cite '
+        lede = (("This edition has ended. " if ended else "")
+                + f'{where}The tag <b>{esc(tag)}</b> is what company pages cite '
                 f'when we know a company exhibited here.')
 
     # ── the facts table: only rows we hold ────────────────────────────────
     facts = []
-    facts.append(("Dates", esc(c.get("dates") or _cf_no_dates(c))))
+    facts.append(("Dates", esc(c.get("dates") or _cf_no_dates(c))
+                  + (" &middot; ended" if ended else "")))
     if _cf_place(c):
         facts.append(("City", esc(_cf_place(c))))
     if dept:
@@ -2488,8 +2522,9 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     doors = []
     if c.get("url"):
         doors.append(f'<a class="cfx-door lead" href="{esc(c["url"])}" '
-                     f'rel="nofollow noopener">Event site &amp; registration '
-                     f'&nearr;</a>')
+                     f'rel="nofollow noopener">'
+                     + ("Event site" if ended else "Event site &amp; registration")
+                     + ' &nearr;</a>')
     # THE DIRECTORY, WHICH REACHED NO READER UNTIL TODAY. 61 rows carry one and
     # the conference row shape did not pass it through, so every unmined page
     # said "we have not read this floor" and offered nothing to do about it.
@@ -2499,7 +2534,7 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     # ONLY WHEN THE FILE EXISTS. _ics_range refuses a date string it cannot
     # parse, so `has_dates` is not the same question as "is there a calendar":
     # five rows carry prose a person can read and the parser will not guess at.
-    if _ics_range(c.get("dates")):
+    if span and not ended:
         doors.append(f'<a class="cfx-door" href="/e/{_slugify(tag)}.ics">'
                      f'Add to calendar (.ics)</a>')
 

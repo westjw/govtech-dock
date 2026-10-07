@@ -2583,10 +2583,22 @@ def check_an_alert_signup_keeps_its_promises() -> int:
                        f"(sub {d.get('pendingSubTtl')}, address "
                        f"{d.get('pendingEmTtl')}) - the confirmation mail "
                        f"promises it does, to somebody who never agreed")
-    if d.get("pendingTtlAfterUpdate") != week or d.get("pendingTtlAfterSync") != week \
-            or d.get("writesWithoutTtlWhilePending"):
-        errors += fail("saving settings or syncing before confirming made the "
-                       "pending record permanent")
+    five = 5 * 86400
+    if d.get("pendingTtlAfterUpdate") != five or d.get("pendingTtlAfterSync") != five \
+            or d.get("emTtlAfterSync") != five or d.get("writesWithoutTtlWhilePending"):
+        errors += fail(f"saving settings or syncing before confirming made the pending "
+                       f"record permanent, renewed it, or left its address key on a "
+                       f"different clock (sub {d.get('pendingTtlAfterSync')}, address "
+                       f"{d.get('emTtlAfterSync')}, wanted both {five})")
+    if d.get("emAfterStaleConfirm") != "LIVE":
+        errors += fail(f"confirming a stale pending signup took the address key from "
+                       f"the confirmed subscription ({d.get('emAfterStaleConfirm')!r}); "
+                       f"its unsubscribe could no longer find it")
+    if d.get("driftSubAlive") or d.get("confirmOldAfterExpiry") != 404 \
+            or d.get("driftSubscriptions") != 1:
+        errors += fail(f"a pending signup used for sync on day 5 outlived its address "
+                       f"key, and a re-signup left {d.get('driftSubscriptions')} "
+                       f"subscriptions for one address - every digest twice")
     if d.get("confirmedSubTtl") is not None or d.get("confirmedEmTtl") is not None \
             or d.get("confirmedTtlAfterRepeat") is not None:
         errors += fail(f"a CONFIRMED subscription still expires (sub "
@@ -2610,6 +2622,15 @@ def check_an_alert_signup_keeps_its_promises() -> int:
                        f"subscribed: {ans}")
     if d.get("afterStop"):
         errors += fail("unsubscribing left a key behind")
+    if not d.get("cappedKnown") or d.get("cappedKnown") != d.get("cappedUnknown"):
+        errors += fail(f"a capped caller gets a different answer for an address on "
+                       f"file ({d.get('cappedKnown')}) than for one that is not "
+                       f"({d.get('cappedUnknown')}) - the cap must be counted before "
+                       f"the address is looked up, or it is an oracle for who is subscribed")
+    if d.get("v6Accepted") != 10 or d.get("v6Mails") != 10:
+        errors += fail(f"one machine walking the addresses of its IPv6 /64 signed up "
+                       f"{d.get('v6Accepted')} and sent {d.get('v6Mails')} mails; an IPv6 "
+                       f"caller is its /64, or the allowance stops nothing")
     if d.get("oneCallerAccepted") != 10 or d.get("oneCallerMails") != 10:
         errors += fail(f"one caller signed up {d.get('oneCallerAccepted')} addresses "
                        f"and sent {d.get('oneCallerMails')} mails in a day; the "
@@ -2642,6 +2663,15 @@ def check_ratings_cannot_spend_the_shared_store() -> int:
                        f"{d.get('readsAfterThreeViews')} reads against "
                        f"{d.get('readsFirstView')} for one - the edge cache is not "
                        f"answering, and each view spends a read per conference")
+    # the EDGE keeps the copy; a visitor's browser keeps nothing, or after a
+    # vote it repaints the pre-vote count for five more minutes
+    if d.get("browserCacheMiss") != "no-store" or d.get("browserCacheHit") != "no-store":
+        errors += fail(f"the ratings read tells the browser to cache it "
+                       f"({d.get('browserCacheMiss')!r} / {d.get('browserCacheHit')!r}); "
+                       f"a voter reopening the panel sees the count before their vote")
+    if "max-age" not in (d.get("edgeCache") or ""):
+        errors += fail(f"the edge copy carries no max-age ({d.get('edgeCache')!r}), so "
+                       f"the edge cache cannot hold it")
     shown = d.get("shownAverage") or {}
     if shown.get("average") != 3.8 or shown.get("n") != 4:
         errors += fail(f"a cached answer no longer carries the rating: {shown}")
@@ -2699,6 +2729,10 @@ def check_claiming_holds_the_domain_line() -> int:
     # ONE CALLER, MANY COMPANIES. The per-company cap stopped a page being a
     # mailer; nothing stopped one script mailing five strangers at each of
     # 2,026 companies (launch audit, 2026-10-06).
+    if not d.get("cappedKnown") or d.get("cappedKnown") != d.get("cappedUnknown"):
+        errors += fail(f"a capped caller's claim answers differently for an address in "
+                       f"its cooldown ({d.get('cappedKnown')}) than for a fresh one "
+                       f"({d.get('cappedUnknown')}) - an oracle for who has claimed")
     if d.get("oneCallerAccepted") != 5 or d.get("oneCallerMails") != 5:
         errors += fail(f"one caller started {d.get('oneCallerAccepted')} claims and "
                        f"sent {d.get('oneCallerMails')} mails across 7 companies "
@@ -7904,6 +7938,13 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             if not self.ok:
                 raise sd.requests.HTTPError(f"{self.status_code}")
 
+    # REAL-LENGTH TOKENS. The fixture keys were "sub:aaa", seven characters,
+    # so printing four of the token and printing ALL of it read the same, and
+    # a label() returning the whole key - the subscription's bearer credential,
+    # in a public log - passed (review, 2026-10-07). 43 characters, as minted.
+    TOK = {n: n * 4 + "Q7xP2mK9vB3nR8tL5wH1jD6fG4sZ0cY2eU9iO3aT7y"[:39]
+           for n in ("a", "b", "c")}
+
     class Fake:
         """Cloudflare KV and Resend, with every PUT refused."""
         HTTPError = sd.requests.HTTPError
@@ -7912,11 +7953,11 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             self.mailed, self.puts = [], 0
         def get(self, url, **kw):
             if "/keys" in url:
-                return Resp(200, {"result": [{"name": "sub:aaa"},
-                                             {"name": "sub:bbb"},
-                                             {"name": "sub:ccc"}],
+                return Resp(200, {"result": [{"name": "sub:" + TOK["a"]},
+                                             {"name": "sub:" + TOK["b"]},
+                                             {"name": "sub:" + TOK["c"]}],
                                   "result_info": {}})
-            if url.endswith("ccc"):
+            if url.endswith(TOK["c"]):
                 # A SUBSCRIPTION WE CANNOT READ. Without one in the fixture the
                 # unreadable branch is never driven, and a mutation deleting it
                 # walks straight past - which is exactly what happened the
@@ -7926,7 +7967,7 @@ def check_one_subscriber_never_silences_the_rest() -> int:
             # A fixture address must never be one the guard has to make an
             # exception for - an exception is how a real mailbox eventually
             # arrives in a file allowed to hold business ones.
-            who = ("alpha@example.org" if url.endswith("aaa")
+            who = ("alpha@example.org" if url.endswith(TOK["a"])
                    else "beta@example.org")
             return Resp(200, {"email": who, "confirmed": True,
                               "last_sent": "2026-09-01", "prefs": {}})
@@ -7982,7 +8023,7 @@ def check_one_subscriber_never_silences_the_rest() -> int:
                            "their floor repeats the window and nothing said so")
         # 4. AND IT SAYS WHICH KEY, because a count nobody can act on is not a
         #    report - by the KV key the dashboard finds, never by address
-        if "sub:aaa" not in warn or "sub:bbb" not in warn:
+        if "sub:aaaa" not in warn or "sub:bbbb" not in warn:
             errors += fail(f"the at-risk subscribers are not named by KV key in "
                            f"the WARNING, so nobody can fix their last_sent by "
                            f"hand: {warn[-200:]!r}")
@@ -8003,6 +8044,12 @@ def check_one_subscriber_never_silences_the_rest() -> int:
         if "example.org" in text or "alpha" in text or "beta@" in text:
             errors += fail("part of a subscriber's address reached the log, and "
                            "the Actions logs of a public repository are public")
+        # ...AND NO MORE OF THE TOKEN THAN THE FOUR CHARACTERS THAT FIND IT. The
+        # token is the subscription: whoever holds it reads saved roles,
+        # changes settings and unsubscribes.
+        if any(tok[:5] in text for tok in TOK.values()):
+            errors += fail("more than four characters of a subscription token "
+                           "reached the log - the token is the subscriber's key")
     finally:
         sd.requests, dg.build, dg.render, sys.argv = keep[0], keep[1], keep[2], keep[3]
         sd.time = __import__("time")
@@ -10950,11 +10997,17 @@ def check_a_ruled_out_company_is_left_alone() -> int:
         R.check_company = lambda comp: (checked.append(comp["id"]) or
                                         {"status": "None found", "note": "", "roles": [],
                                          "skipped": True})
-        sys.argv = ["refresh.py", "--dry-run", "--render-budget", "0", "--ci"]
-        with contextlib.redirect_stdout(io.StringIO()):
+        sys.argv = ["refresh.py", "--dry-run", "--render-budget", "0"]
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
             R.main()
         if "ruled-co" in checked:
             errors += fail("refresh fetched a company a person ruled out of scope")
+        line = next((l for l in buf.getvalue().splitlines() if "Ruled Co" in l), "")
+        if "Unknown" not in line or "ruled out of scope" not in line:
+            errors += fail(f"refresh carries a ruled-out company's last verdict forward "
+                           f"instead of saying it was ruled out: {line.strip()!r} - "
+                           f"Concourse stayed 'Yes' off the wrong company's board")
         if "kept-co" not in checked:
             errors += fail("refresh checked nothing, so the ruled-out case proves nothing")
     finally:
@@ -11048,6 +11101,9 @@ def check_a_redraw_is_the_crawl_without_the_fetch() -> int:
     if not any(d.startswith("ruled out ") for d in done):
         note("the golden found no company to rule out of scope, so that ruling "
              "went untested against main()")
+    elif rc == 0 and "ruled out of scope by a person, not drawn" not in text:
+        errors += fail("the redraw reports a company a person ruled out as 'no longer "
+                       "on file', which reads as a deleted record, not a ruling")
     return errors
 
 
@@ -24268,6 +24324,22 @@ def check_the_conference_page_is_the_conference_panel() -> int:
     empty = dict(row); empty["companies"] = 0
     blank = bs._conference_body(empty, row["tag"], [], [], org=org)
 
+    # AN EDITION THAT HAS ENDED SAYS SO, and offers neither registration nor a
+    # calendar entry (launch audit, 2026-10-06: 29 pages did both).
+    past = dict(row, dates="January 5-7, 2020", url="https://example.test/event")
+    soon = dict(row, dates=f"March 3-5, {dt.date.today().year + 1}",
+                url="https://example.test/event")
+    old_page = bs._conference_body(past, row["tag"], roster, hiring, org=org)
+    new_page = bs._conference_body(soon, row["tag"], roster, hiring, org=org)
+    if ('class="cfpast"' not in old_page or "This edition has ended" not in old_page
+            or "Add to calendar" in old_page or "registration" in old_page):
+        errors += fail("a conference page for an edition that has ended does not say "
+                       "so, or still offers registration or a calendar entry")
+    if ("cfpast" in new_page or "Add to calendar" not in new_page
+            or "registration" not in new_page):
+        errors += fail("a conference still to come is marked ended, or lost its "
+                       "registration and calendar doors")
+
     # THE PAGE'S OWN CLASSES, AND ITS OWN SHEET. This checked the cfp-* set
     # and required index.html to use each one too, because the /e/ page WAS a
     # port of the panel and borrowed the app's stylesheet. Turn 3 made it a
@@ -26254,7 +26326,12 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     read = dict(base, id="read-co", name="Read Co", ats="greenhouse", enumerable=True)
     unread = dict(base, id="unread-co", name="Unread Co", enumerable=False)
     none_ = dict(base, id="none-co", name="None Co", ats="unknown", enumerable=True,
-                 no_board_on_file=True, board_url="https://f.example")
+                 no_board_on_file=True, probe="none-found", board_url="https://f.example")
+    # unreadable WITHOUT enumerable=False: 19 live boards look like this
+    unreadable = dict(base, id="unreadable-co", name="Unreadable Co", ats="lever",
+                      enumerable=True, unreadable="404")
+    blocked = dict(none_, id="blocked-co", name="Blocked Co", probe="blocked")
+    unprobed = dict(none_, id="unprobed-co", name="Unprobed Co", probe=None)
     rivals = dict(base, id="rival-co", name="Rival Co", ats="greenhouse", enumerable=True,
                   competitors=[{"id": "unread-co", "why": "a"}, {"id": "none-co", "why": "b"},
                                {"id": "read-co", "why": "c"}])
@@ -26262,7 +26339,7 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     # more printed "it is empty right now" (2026-10-07).
     scoped = dict(base, id="scoped-co", name="Scoped Co", ats="icims", enumerable=True,
                   offtopic_dropped=52, federal_dropped=2)
-    orgs = [read, unread, none_, rivals, scoped]
+    orgs = [read, unread, none_, rivals, scoped, unreadable, blocked, unprobed]
     board = {"organizations": orgs, "logos": {}, "postings": [], "generated": "2026-10-06"}
     # THROUGH sanitize(), as the real build does: it runs before the pages are
     # written and mutates the same objects, so a count it strips is a count no
@@ -26273,7 +26350,9 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     strip = lambda h: h.split('class="costrip"', 1)[-1][:400]
     if '>0</div><dt>open roles' not in strip(page["read-co"]):
         errors += fail("a board we read that is empty no longer says 0")
-    for cid, what in (("unread-co", "an unreadable board"), ("none-co", "no board on file")):
+    for cid, what in (("unread-co", "an unreadable board"), ("none-co", "no board on file"),
+                      ("unreadable-co", "a board whose last read failed"),
+                      ("blocked-co", "a site that turned our reader away")):
         if '>0</div><dt>open roles' in strip(page[cid]):
             errors += fail(f"the company page prints '0 open roles' for {what} - "
                            f"nobody counted, so there is no number to print")
@@ -26282,6 +26361,12 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
                        "we read every night")
     if "No board on file" not in page["none-co"]:
         errors += fail("a company with no board on file does not say so in its source cell")
+    # WHICH KIND OF NO BOARD: found nothing, turned away, never looked
+    if "turned our reader away" not in page["blocked-co"] or "none found" in page["blocked-co"]:
+        errors += fail("a company whose site turned our reader away is said to have "
+                       "no board found - a refusal is not an answer")
+    if "not looked for yet" not in page["unprobed-co"] or "none found" in page["unprobed-co"]:
+        errors += fail("a company nobody has probed is said to have no board found")
     if "Their hiring board" in page["none-co"]:
         errors += fail("a company with no board on file links its homepage as "
                        "'Their hiring board'")
@@ -26311,10 +26396,46 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     if differ:
         errors += fail(f"index.html and build_site.py disagree about what a count "
                        f"means on {len(differ)} companies, e.g. {differ[:3]}")
-    zero_unread = [k for k, (st, n, _note) in js.items() if n == "0" and st != "read"]
+    # FROM THE RAW FIELDS, not from either helper: a board nobody read prints a
+    # dash. Both helpers dropping `unreadable` together still agreed, and the
+    # old test (state != "read") agreed with them (review, 2026-10-07).
+    unread_ids = {o["id"] for o in live if not (o.get("open_roles") or 0)
+                  and (o.get("no_board_on_file") or o.get("enumerable") is False
+                       or o.get("unreadable"))}
+    zero_unread = sorted(k for k in unread_ids
+                         if (js.get(k) or [None, None])[1] != "&mdash;"
+                         or bs.open_count(next(o for o in live if o["id"] == k)) != "&mdash;")
     if zero_unread:
-        errors += fail(f"{len(zero_unread)} companies print 0 open roles with no "
-                       f"board read, e.g. {zero_unread[:3]}")
+        errors += fail(f"{len(zero_unread)} companies print a count with no board "
+                       f"read, e.g. {zero_unread[:3]}")
+
+    # THE APP'S OWN COMPANY VIEW, run by jobcard_harness: co() could print
+    # `${open}` again while both helpers stayed right.
+    views = _json.loads(r.stdout.strip().splitlines()[-1]).get("views") or {}
+    flat = {k: re.sub(r"\s+", " ", v) for k, v in views.items()}
+    jstrip = lambda k: flat.get(k, "").split('class="costrip"', 1)[-1][:500]
+    if not flat or any(v.startswith("THREW") for v in flat.values()):
+        errors += fail(f"co() did not run in the harness: "
+                       f"{[(k, v[:80]) for k, v in flat.items() if v.startswith('THREW')]}")
+    else:
+        if '>0</div> <dt>open roles' not in jstrip("read-co"):
+            errors += fail("the app's company view no longer says 0 for a board we read")
+        for k in ("unread-co", "unreadable-co", "none-co", "blocked-co", "unprobed-co"):
+            if '>0</div> <dt>open roles' in jstrip(k):
+                errors += fail(f"the app's company view prints 0 open roles for {k}")
+        if "read every night" in flat["none-co"] or "Their hiring board" in flat["none-co"]:
+            errors += fail("the app calls a company with no board on file a board we "
+                           "read every night, or links its homepage as its hiring board")
+        if "turned our reader away" not in flat["blocked-co"] or "none found" in flat["blocked-co"]:
+            errors += fail("the app says no board was found where the site turned us away")
+        if "not looked for yet" not in flat["unprobed-co"]:
+            errors += fail("the app says no board was found for a company nobody probed")
+        if "empty right now" in flat["scoped-co"] or "52 roles" not in flat["scoped-co"]:
+            errors += fail("the app calls a board whose every role is out of scope empty")
+        rail = flat["rival-co"].split("<h2>Competitors</h2>", 1)[-1][:1500]
+        if rail.count('<span class="n">&mdash;</span>') != 2 or '<span class="n">0</span>' not in rail:
+            errors += fail("the app's competitor rows do not tell a measured 0 from a "
+                           "board nobody read")
     return errors
 
 

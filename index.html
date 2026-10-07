@@ -2221,6 +2221,16 @@ function boardState(o){
   if(o.enumerable===false||o.unreadable)return "unread";
   return "read";
 }
+/* Why a company has no board on file, in the source cell's few words: found
+   nothing, turned away, or not looked for yet. Same rule as build_site's
+   no_board_note(). 179 companies whose site refused our reader said "none
+   found when we looked" (review, 2026-10-07). */
+function noBoardText(o){
+  const on=boardCheckedOn(o);
+  if(o.probe==="blocked")return "their site turned our reader away"+(on?" on "+on:"");
+  if(!o.probe)return "not looked for yet";
+  return "none found when we looked"+(on?" on "+on:"");
+}
 /* Why a board we read shows fewer roles than it lists, or "". The board is not
    empty; this board leaves part of it out and says how much and why. Same
    sentence as build_site.scope_note(). Granicus (2 federal, 52 off-topic) and
@@ -5739,7 +5749,7 @@ function co(id,fromUrl){
               :readable?(o.ats?o.ats.charAt(0).toUpperCase()+o.ats.slice(1):"Not on file")
                        :"Board unreadable";
   const srcNote=state==="none"
-    ? (o.posts_at?esc(postsAtPhrase(o.posts_at)):"none found when we looked")
+    ? (o.posts_at?esc(postsAtPhrase(o.posts_at)):esc(noBoardText(o)))
     : readable
     ? (o.ats&&o.ats!=="html"&&o.ats!=="unknown"
         ? `read nightly${open?` · all ${open} readable`:""}`
@@ -5787,8 +5797,13 @@ function co(id,fromUrl){
     rolesInner=`<div class="coempty">${GHOST}
       <div><h3>No open roles we can see.</h3>
       <p>${state==="none"
-        ? `We have not found a public job board for them, so we cannot say whether
-           they are hiring.${o.posts_at?` ${esc(postsAtPhrase(o.posts_at).replace(/^./,c=>c.toUpperCase()))},
+        ? `${o.probe==="blocked"
+             ?`Their site turned our reader away, so we never got far enough to see
+               whether they have a job board. That is a fact about our reader, not
+               about their hiring.`
+             :!o.probe?`We have not looked for a job board for them yet.`
+             :`We have not found a public job board for them, so we cannot say whether
+               they are hiring.`}${o.posts_at?` ${esc(postsAtPhrase(o.posts_at).replace(/^./,c=>c.toUpperCase()))},
            which we do not read automatically.`:""}`
         : readable&&scopeNote(o)
         ? `Their board is one we read every night, and it lists roles - none of them
@@ -7719,7 +7734,8 @@ function paintRating(box,d){
           headers:{"content-type":"application/json"},
           body:JSON.stringify({tag:box.dataset.rate,score:v})});
         const j=await r.json();
-        if(j&&j.ok){ rememberRating(box.dataset.rate,v); paintRating(box,j); }
+        if(j&&j.ok){ rememberRating(box.dataset.rate,v); FRESH_RATING[box.dataset.rate]=j;
+                     paintRating(box,j); }
         else{
           /* Say what went wrong in the row itself. A silent failure here
              reads as "my vote counted" and it did not. */
@@ -7736,6 +7752,12 @@ function paintRating(box,d){
   });
 }
 
+/* THE VISITOR'S OWN VOTE OUTRANKS A CACHED COUNT. The ?tags= read is served
+   from the edge for five minutes, so reopening a conference after voting
+   showed the pre-vote count beside "you said yes" with the buttons disabled -
+   the vote looked lost and could not be cast again (review, 2026-10-07). The
+   POST answered with the fresh row; for that tag, this session keeps it. */
+const FRESH_RATING=Object.create(null);
 async function loadRatings(){
   const boxes=[...document.querySelectorAll("[data-rate]")];
   if(!boxes.length)return;
@@ -7746,7 +7768,7 @@ async function loadRatings(){
     if(!r.ok)return;                    // 501 before KV is bound; leave the
     const j=await r.json();             // placeholders rather than an error
     if(!j||!j.ratings)return;
-    const by={}; j.ratings.forEach(x=>by[x.tag]=x);
+    const by={}; j.ratings.forEach(x=>by[x.tag]=FRESH_RATING[x.tag]||x);
     boxes.forEach(b=>{ if(by[b.dataset.rate])paintRating(b,by[b.dataset.rate]) });
     cfRatingNote(j.ratings);
   }catch{ /* offline: rows simply carry no score, which is what we know */ }

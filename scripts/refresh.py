@@ -306,11 +306,11 @@ def main() -> int:
             return 1
 
     # A company a person ruled out of scope is not fetched: it is not on the
-    # board (build_board.ruled_out), and its board may be somebody else's.
-    # It keeps its last known state, as a company outside --company does.
-    targets = [c for c in targets if not c.get("out_of_scope")]
-
-    _plan_renders(targets, args.render_budget)
+    # board (build_board.ruled_out), and its board may be somebody else's. Nor
+    # does it keep its last verdict - that froze Concourse at "Yes" off the
+    # wrong company's board, into every snapshot and the daily spreadsheet
+    # (review, 2026-10-07). It is written Unknown, naming the ruling.
+    _plan_renders([c for c in targets if not c.get("out_of_scope")], args.render_budget)
     if _RENDER_ALLOW:
         oldest = min((_render_attempts.get(i, "") for i in _RENDER_ALLOW), default="")
         print(f"rendering up to {len(_RENDER_ALLOW)} board(s) this run "
@@ -322,7 +322,13 @@ def main() -> int:
             # keep last known state for companies outside a --company run
             snapshot[comp["id"]] = {k: comp["hiring"][k] for k in ("status", "note", "roles")}
             continue
-        result = check_company(comp)
+        ruling = comp.get("out_of_scope")
+        if ruling:
+            result = {"status": "Unknown", "roles": [], "skipped": True,
+                      "note": f"ruled out of scope by {ruling.get('by') or 'a person'}"
+                              f" on {ruling.get('on') or 'an unrecorded date'}"}
+        else:
+            result = check_company(comp)
         was_skipped = result.pop("skipped", False)
         if was_skipped:
             skipped.append(comp["name"])

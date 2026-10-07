@@ -46,12 +46,26 @@ const CONFIRM_COOLDOWN = 3600;  // seconds between mails per address, either kin
  * week; confirming re-writes them with no expiry. */
 const PENDING_TTL = 7 * 86400;
 
+/* ONE EXPIRY FOR BOTH KEYS, FIXED AT SIGNUP. A pending record carries
+ * `expires` (epoch seconds) and both sub:<token> and em:<hash> are written
+ * with that absolute time, so they lapse together. A relative TTL on each put
+ * renewed sub: every time settings or sync wrote it while em: ran out on
+ * schedule; a re-signup then minted a second token and confirming both left
+ * one address with two permanent subscriptions (review, 2026-10-07). Only a
+ * re-sent confirmation starts the week again. KV refuses an expiration under
+ * 60 seconds away, so a write in the last minute rounds up to 61. */
+const pendingExpiry = (sub) => {
+  const now = Math.floor(Date.now() / 1000);
+  if (!sub.expires) sub.expires = now + PENDING_TTL;     // records from before this rule
+  return { expiration: Math.max(sub.expires, now + 61) };
+};
+
 /* EVERY write of a subscription goes through here, so no action can make a
  * pending record permanent by rewriting it: settings and sync work before
  * confirming, and a put replaces the key whole, expiry included. */
 const putSub = (env, token, sub) =>
   env.ALERTS.put("sub:" + token, JSON.stringify(sub),
-                 sub.confirmed ? undefined : { expirationTtl: PENDING_TTL });
+                 sub.confirmed ? undefined : pendingExpiry(sub));
 
 const CADENCES = new Set(["daily", "twice", "weekly"]);
 /* These four sets are the SAME vocabulary scripts/roles.py assigns and
@@ -250,11 +264,16 @@ export async function onRequestPost({ request, env }) {
   if (action === "confirm") {
     if (!sub.confirmed) {
       sub.confirmed = true;
+      delete sub.expires;
       // Confirmed now, so putSub writes it with no expiry. The address key is
       // rewritten too, or it would lapse after a week and the next signup
-      // from this address would mint a second subscription.
+      // from this address would mint a second subscription - but only when
+      // it is missing or already this token's: confirming must never take
+      // the address away from another subscription.
       await putSub(env, token, sub);
-      await env.ALERTS.put(await emailKey(sub.email), token);
+      const ek = await emailKey(sub.email);
+      const holder = await env.ALERTS.get(ek);
+      if (!holder || holder === token) await env.ALERTS.put(ek, token);
     }
     return json({ ok: true, confirmed: true, prefs: sub.prefs });
   }
@@ -345,8 +364,9 @@ async function subscribe(body, env, request) {
       if (now - (sub.confirm_sent || 0) < CONFIRM_COOLDOWN) return same;
       sub.prefs = prefs;
       sub.confirm_sent = now;
+      sub.expires = now + PENDING_TTL;        // a fresh link starts the week again
       await putSub(env, existing, sub);
-      await env.ALERTS.put(ek, existing, { expirationTtl: PENDING_TTL });
+      await env.ALERTS.put(ek, existing, pendingExpiry(sub));
       await send(env, email, ...confirmMail(existing, prefs));
       return same;
     }
@@ -354,9 +374,10 @@ async function subscribe(body, env, request) {
 
   const token = mintToken();
   const sub = { email, prefs, saved: [], removed: {}, confirmed: false,
-                created: now, confirm_sent: now, last_sent: null };
+                created: now, confirm_sent: now, last_sent: null,
+                expires: now + PENDING_TTL };
   await putSub(env, token, sub);
-  await env.ALERTS.put(ek, token, { expirationTtl: PENDING_TTL });
+  await env.ALERTS.put(ek, token, pendingExpiry(sub));
   const ok = await send(env, email, ...confirmMail(token, prefs));
   if (!ok) {
     // Do not leave a half-made subscription that never got its link.

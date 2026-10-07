@@ -334,7 +334,7 @@ def redraw() -> dict:
     man = bb.load_manual()
     # The same people's rulings a crawl honours (build_board.ruled_out): a
     # company ruled out of scope is not on file as far as the board knows.
-    companies, man, _ruled = bb.ruled_out(companies, man)
+    companies, man, ruled = bb.ruled_out(companies, man)
     prev_orgs = {o["id"]: o for o in prev.get("organizations", [])}
     on_file = {c["id"] for c in companies}
 
@@ -454,7 +454,7 @@ def redraw() -> dict:
 
     changed, new, removed = detail_changes(bodies)
     same = (_without_mark(payload) == _without_mark(prev))
-    return {"payload": payload, "bodies": bodies, "prev": prev,
+    return {"payload": payload, "bodies": bodies, "prev": prev, "ruled": ruled,
             "companies": companies, "waits": waits, "narrowed": narrowed,
             "off": off, "handed": handed,
             "restamped": restamped, "gone_rows": gone_rows,
@@ -515,7 +515,11 @@ def report(plan: dict) -> list[str]:
             by_field[k].append(o["id"])
     touched = {i for ids in by_field.values() for i in ids}
     on_file = {c["id"] for c in plan["companies"]}
-    gone = [i for i in old if i not in on_file]
+    # A COMPANY A PERSON RULED OUT IS STILL ON FILE. It is said as a ruling,
+    # not as a record somebody deleted (review, 2026-10-07: Concourse read as
+    # "no longer on file").
+    ruled = set(plan.get("ruled") or [])
+    gone = [i for i in old if i not in on_file and i not in ruled]
     out.append(f"  {len(touched)} organization(s) would change"
                + (":" if touched else ""))
     for k in sorted(by_field, key=lambda k: (-len(by_field[k]), k)):
@@ -523,6 +527,9 @@ def report(plan: dict) -> list[str]:
     if new_ids:
         out.append(f"  {len(new_ids)} new since the crawl with no board on file, "
                    f"drawn with no crawl and no roles: {_names(new_ids, names)}")
+    if ruled & set(old):
+        out.append(f"  {len(ruled & set(old))} ruled out of scope by a person, not "
+                   f"drawn: {_names(sorted(ruled & set(old)), names)}")
     if gone:
         out.append(f"  {len(gone)} no longer on file, dropped with their rows "
                    f"unless another company took over their board: "
@@ -539,8 +546,12 @@ def report(plan: dict) -> list[str]:
 
     before, after = len(prev.get("postings", [])), len(payload["postings"])
     bits = []
-    if plan["gone_rows"]:
-        bits.append(f"{sum(plan['gone_rows'].values())} of companies no longer on file")
+    ruled_rows = sum(n for c, n in plan["gone_rows"].items() if c in ruled)
+    if plan["gone_rows"] and sum(plan["gone_rows"].values()) > ruled_rows:
+        bits.append(f"{sum(plan['gone_rows'].values()) - ruled_rows} of companies "
+                    f"no longer on file")
+    if ruled_rows:
+        bits.append(f"{ruled_rows} of companies ruled out of scope")
     if plan["narrowed"]:
         bits.append(f"{sum(plan['narrowed'].values())} out of scope now at "
                     f"{_names(sorted(plan['narrowed']), names)}")

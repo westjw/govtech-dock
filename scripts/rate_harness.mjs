@@ -32,7 +32,7 @@ const hdr = (ip, ua) => new Headers({ "cf-connecting-ip": ip, "user-agent": ua,
 const get = async (q) => {
   const res = await mod.onRequestGet({
     request: new Request("https://sledjobs.com/api/rate?" + q), env });
-  return { status: res.status, body: await res.json() };
+  return { status: res.status, body: await res.json(), cc: res.headers.get("cache-control") };
 };
 const vote = async (tag, ip, ua) => {
   const res = await mod.onRequestPost({
@@ -48,7 +48,9 @@ KV.set("worth:Conf 1 2026", JSON.stringify({ n: 4, sum: 3 }));
 
 out.first = await get("tags=" + encodeURIComponent(tags.join(",")));
 out.readsFirstView = reads;
-await get("tags=" + encodeURIComponent(tags.join(",")));
+out.browserCacheMiss = out.first.cc;
+out.browserCacheHit = (await get("tags=" + encodeURIComponent(tags.join(",")))).cc;
+out.edgeCache = [...edge.values()].map((r) => r.headers.get("cache-control"))[0] || null;
 await get("tags=" + encodeURIComponent([...tags].reverse().join(",")));
 out.readsAfterThreeViews = reads;
 out.shownAverage = (out.first.body.ratings || []).find((r) => r.tag === "Conf 1 2026");

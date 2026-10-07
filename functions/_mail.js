@@ -46,6 +46,20 @@ async function emailKey(email) {
 /* Deliberately conservative rather than RFC-complete: this address is going
  * to be handed to a mail API, so anything exotic is likelier to be an attempt
  * at header injection than a real mailbox. */
+/* AN IPv6 CALLER IS ITS /64. One machine is routinely handed a whole /64,
+ * and Cloudflare passes the full address, so keyed on the /128 a script that
+ * walked 2001:db8:1:2::1, ::2, ::3 ... was a new caller every request and no
+ * cap ever refused it (review, 2026-10-07: 40 of 40 sign-ups accepted). An
+ * IPv4 address stays whole. */
+function callerNet(ip) {
+  if (!ip.includes(":")) return ip;
+  const [head, tail] = ip.toLowerCase().split("::");
+  const a = head ? head.split(":") : [];
+  const b = tail !== undefined ? (tail ? tail.split(":") : []) : null;
+  const full = b === null ? a : [...a, ...Array(Math.max(0, 8 - a.length - b.length)).fill("0"), ...b];
+  return full.slice(0, 4).map((g) => g.replace(/^0+(?=.)/, "")).join(":") + "::/64";
+}
+
 /* WHO IS ASKING, as a key nobody can turn back into an address or follow
  * across days: SHA-256 of the caller's IP and today's date. The date is IN
  * the hash, so yesterday's key cannot be recomputed and nothing links one
@@ -54,7 +68,7 @@ async function emailKey(email) {
  * Every per-caller daily cap in functions/ uses this one. */
 async function callerKey(request) {
   const h = request && request.headers;
-  const ip = (h && h.get && h.get("cf-connecting-ip")) || "unknown";
+  const ip = callerNet((h && h.get && h.get("cf-connecting-ip")) || "unknown");
   const day = new Date().toISOString().slice(0, 10);
   const digest = await crypto.subtle.digest(
     "SHA-256", new TextEncoder().encode(`${ip}|${day}`));
@@ -225,5 +239,5 @@ function shell(preheader, body, links) {
 </table></td></tr></table></body></html>`;
 }
 
-export { json, mintToken, emailKey, callerKey, underDailyCap, validEmail, cleanToken, send, button, shell,
+export { json, mintToken, emailKey, callerKey, callerNet, underDailyCap, validEmail, cleanToken, send, button, shell,
          FONT, MASCOT, FROM, SITE, NAME, DOMAIN };

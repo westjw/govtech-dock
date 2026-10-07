@@ -161,4 +161,49 @@ try {
 } catch (e) {
   errors.push(`calling boardState/openCount: ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards }));
+/* THE APP'S COMPANY VIEW, RUN. boardState() and openCount() agreeing with
+   build_site proved nothing about co(), which could still print `${open}` and
+   "read every night" while every check stayed green (review, 2026-10-07).
+   co() writes one string to $("#view").innerHTML, so #view is a recorder and
+   everything else stays the absorbing stub. */
+let views = null;
+try {
+  const base = { sector: "Public Safety", category: "Police", description: "x",
+                 open_roles: 0, quota_roles: 0, website: "https://f.example",
+                 board_url: "https://f.example/careers", ats: "html" };
+  const orgs = [
+    { ...base, id: "read-co", name: "Read Co", ats: "greenhouse", enumerable: true },
+    { ...base, id: "unread-co", name: "Unread Co", enumerable: false },
+    { ...base, id: "unreadable-co", name: "Unreadable Co", ats: "lever", enumerable: true, unreadable: "404" },
+    { ...base, id: "none-co", name: "None Co", ats: "unknown", enumerable: true,
+      no_board_on_file: true, probe: "none-found", board_url: "https://f.example" },
+    { ...base, id: "blocked-co", name: "Blocked Co", ats: "unknown", enumerable: true,
+      no_board_on_file: true, probe: "blocked", board_url: "https://f.example" },
+    { ...base, id: "unprobed-co", name: "Unprobed Co", ats: "unknown", enumerable: true,
+      no_board_on_file: true, probe: null, board_url: "https://f.example" },
+    { ...base, id: "scoped-co", name: "Scoped Co", ats: "icims", enumerable: true,
+      offtopic_dropped: 52, federal_dropped: 2 },
+    { ...base, id: "rival-co", name: "Rival Co", ats: "greenhouse", enumerable: true,
+      competitors: [{ id: "unread-co", why: "a" }, { id: "none-co", why: "b" }, { id: "read-co", why: "c" }] },
+  ];
+  ctx.__fix = { generated: "2026-10-07", logos: {}, postings: [], organizations: orgs, conferences: [] };
+  const rec = { innerHTML: "" };
+  const viewEl = new Proxy(rec, { get(t, k) { return k in t ? t[k] : S; },
+                                  set(t, k, v) { t[k] = v; return true; } });
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelector") return (sel) => (sel === "#view" ? viewEl : S);
+    if (k === "getElementById") return (id) => (id === "view" ? viewEl : S);
+    return S;
+  } });
+  views = {};
+  for (const o of orgs) {
+    rec.innerHTML = "";
+    try {
+      vm.runInContext(`D = __fix; (typeof DETAIL === "object" && DETAIL) && (DETAIL[${JSON.stringify(o.id)}] = {}); co(${JSON.stringify(o.id)}, true);`, ctx);
+      views[o.id] = String(rec.innerHTML);
+    } catch (e) { views[o.id] = "THREW: " + (e && e.message); }
+  }
+} catch (e) {
+  errors.push(`running co(): ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views }));

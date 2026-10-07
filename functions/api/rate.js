@@ -134,20 +134,25 @@ export async function onRequestGet({ request, env }) {
       .sort().slice(0, 200);
     const cache = typeof caches !== "undefined" && caches.default ? caches.default : null;
     const key = new Request(`${url.origin}/api/rate?tags=${encodeURIComponent(tags.join(","))}`);
+    // THE EDGE KEEPS IT FIVE MINUTES; THE BROWSER KEEPS NOTHING. The cached
+    // copy carries public, max-age so the edge honours it; what goes to the
+    // browser is no-store, or a visitor's own browser would hold a pre-vote
+    // count for five more minutes on top of the edge's (review, 2026-10-07).
     if (cache) {
       const hit = await cache.match(key);
-      if (hit) return hit;
+      if (hit) return json(await hit.json());
     }
     const rows = await Promise.all(tags.map(async (t) => {
       const raw = await env.ALERTS.get("worth:" + t);
       return publicShape(t, raw ? JSON.parse(raw) : null);
     }));
-    const res = new Response(JSON.stringify({ ok: true, ratings: rows }), {
-      headers: { "content-type": "application/json", "referrer-policy": "no-referrer",
-                 "cache-control": `public, max-age=${READ_CACHE_SECONDS}` },
-    });
-    if (cache) await cache.put(key, res.clone());
-    return res;
+    const body = { ok: true, ratings: rows };
+    if (cache) {
+      await cache.put(key, new Response(JSON.stringify(body), {
+        headers: { "content-type": "application/json",
+                   "cache-control": `public, max-age=${READ_CACHE_SECONDS}` } }));
+    }
+    return json(body);
   }
 
   const tag = cleanTag(url.searchParams.get("tag"));

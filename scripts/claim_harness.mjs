@@ -153,5 +153,16 @@ for (const i of [1, 2, 3, 4, 5, 6, 7]) {
 out.oneCallerAccepted = many.filter((c) => c === 200).length;
 out.oneCallerRefused = many.filter((c) => c === 429).length;
 out.oneCallerMails = sent.length - mailsBefore;
+// capped: an address inside its cooldown answers exactly as a fresh one
+const capClaim = async (email) => {
+  const res = await mod.onRequestPost({
+    request: { json: async () => ({ action: "claim", company_id: "many-1", email }),
+               url: "https://sledjobs.com/api/claim",
+               headers: new Headers({ "cf-connecting-ip": "203.0.113.77" }) },
+    env });
+  return JSON.stringify([res.status, await res.json()]);
+};
+out.cappedKnown = await capClaim("jane@many1.example");
+out.cappedUnknown = await capClaim("bob@many1.example");
 
 console.log(JSON.stringify(out));
