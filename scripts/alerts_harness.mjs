@@ -193,6 +193,23 @@ out.driftSubscriptions = cnt();
     && ![...KV.values()].some((e) => e.v === tok);
 }
 
+/* 13. A PENDING RECORD FROM BEFORE THE SHARED EXPIRY: no `expires`, no
+   expiry on either key. Its first write stamps one week for both, and the
+   next write three days later does not renew it. */
+{
+  const OLD = "O".repeat(43);
+  const k = await (await import("../functions/_mail.js")).emailKey("o@example.org");
+  KV.set("sub:" + OLD, { v: JSON.stringify({ email: "o@example.org", confirmed: false, prefs: PREFS }), exp: null });
+  KV.set(k, { v: OLD, exp: null });
+  await post({ action: "update", token: OLD, prefs: PREFS });
+  out.legacyStamped = !!JSON.parse(KV.get("sub:" + OLD).v).expires;
+  out.legacySubLeft = ttlOf("sub:" + OLD);
+  out.legacyEmLeft = ttlOf(k);
+  clock += 3 * DAY;
+  await post({ action: "sync", token: OLD, saved: [], removed: {} });
+  out.legacySubLeftAfter = ttlOf("sub:" + OLD);
+}
+
 out.writesWithoutTtlWhilePending = writes
   .filter((w) => w.k === "sub:" + token)
   .slice(0, 3)                                   // signup, update, sync

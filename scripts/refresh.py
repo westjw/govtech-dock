@@ -316,7 +316,7 @@ def main() -> int:
         print(f"rendering up to {len(_RENDER_ALLOW)} board(s) this run "
               f"(oldest attempt {oldest or 'never'})")
 
-    snapshot, changes, skipped = {}, [], []
+    snapshot, changes, skipped, ruled_out = {}, [], [], []
     for comp in companies:
         if comp not in targets:
             # keep last known state for companies outside a --company run
@@ -330,7 +330,12 @@ def main() -> int:
         else:
             result = check_company(comp)
         was_skipped = result.pop("skipped", False)
-        if was_skipped:
+        # A RULING IS NOT A GAP. "needs ATS discovery" invites somebody to
+        # re-wire the board a person ruled out, which is the Concourse mistake
+        # (second review, 2026-10-07).
+        if ruling:
+            ruled_out.append(comp["name"])
+        elif was_skipped:
             skipped.append(comp["name"])
         old = prev.get(comp["id"], {}).get("status", comp["hiring"]["status"])
         if result["status"] != old:
@@ -359,6 +364,9 @@ def main() -> int:
           f" | {len(changes)} changed")
     if skipped:
         print(f"needs ATS discovery ({len(skipped)}): " + ", ".join(sorted(skipped)))
+    if ruled_out:
+        print(f"ruled out of scope by a person, not fetched ({len(ruled_out)}): "
+              + ", ".join(sorted(ruled_out)))
     if _render_did or _render_skipped:
         print(f"rendered {_render_did} board(s); {_render_skipped} waited their "
               f"turn (they are NOT zeros - each gets a browser on a later run, "

@@ -2,9 +2,11 @@ import { verify, tokenOf } from "../../_access.js";
 
 /* WHO IS SIGNED IN, and what may they reach.
  *
- * Cloudflare Access sits on /admin for every hostname. This function never
- * checks a password and holds no secret: it verifies the Access token the
- * browser carries (verifiedEmail, below) and reads the address from it. What
+ * Cloudflare Access signs people in for /admin, but it does not cover the
+ * pages.dev alias, and this endpoint is open, so no door runs in front of it.
+ * It never checks a password, holds no secret and trusts no header: it
+ * verifies the Access token the browser carries (verifiedEmail, below) and
+ * reads the address from it. What
  * it adds is the owner's ruling from the Users board - a hash of the
  * address looked up in users.json, which carries hashes and handles and
  * never an address - so the site can show "signed in as jane" and open the

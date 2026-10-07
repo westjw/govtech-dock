@@ -368,7 +368,8 @@ def board_url(c: dict) -> str | None:
 # So: `sled_only: true` on a company keeps the roles that name the public sector
 # and drops the rest. The company still appears with an honest count.
 SLED_ROLE = re.compile(
-    r"public[- ]sector|state (and|&) local\b|\bSLED\b|\bgov(ernment|tech)?\b|"
+    r"public[- ]sector|\bstate,?\s*(and|&|/)?\s*local\b|\bSLED\b|"
+    r"\bgov(ernments?|tech|t)?\b|"
     r"civic|municipal|federal|public safety|\bK-?12\b|higher[- ]ed", re.I)
 
 # ...but not another country's public sector. "Account Executive - Public

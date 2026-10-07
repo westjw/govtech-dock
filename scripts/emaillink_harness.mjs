@@ -99,5 +99,5 @@ const subAnswer = () => ({ ok: true, confirmed: false, prefs: { cadence: "weekly
 out.alertsConfirm = await run("alerts.html", `?t=${TOKEN}&confirm=1`, subAnswer);
 out.alertsStop = await run("alerts.html", `?t=${TOKEN}&stop=1`, subAnswer);
 out.claimConfirm = await run("claim.html", `?t=${TOKEN}`, () => ({ ok: true, confirmed: false,
-  name: "Acme", company_id: "acme", email: "jane@acme.example", goes_live_without_review: [] }));
+  name: "Acme", company_id: "acme", email: "jane@example.org", goes_live_without_review: [] }));
 console.log(JSON.stringify(out));

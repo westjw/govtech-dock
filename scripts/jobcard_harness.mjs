@@ -206,4 +206,58 @@ try {
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views }));
+/* THE FRONT PAGE ON THE REAL BOARD: buildSlides() and home(), so every number
+   a click turns into the jobs tab can be held to that tab's default set. */
+let front = null;
+try {
+  ctx.__real = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
+  front = vm.runInContext(`(() => { D = __real;
+      const slides = buildSlides().map((x) => ({ kick: x.kick, h: String(x.h), p: String(x.p) }));
+      return { slides }; })()`, ctx);
+  const rec2 = { innerHTML: "" };
+  const v2 = new Proxy(rec2, { get(t, k) { return k in t ? t[k] : S; },
+                               set(t, k, v) { t[k] = v; return true; } });
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelector") return (sel) => (sel === "#view" ? v2 : S);
+    if (k === "getElementById") return (id) => (id === "view" ? v2 : S);
+    return S;
+  } });
+  vm.runInContext(`D = __real; home();`, ctx);
+  front.home = String(rec2.innerHTML);
+} catch (e) {
+  errors.push(`running the front page: ${e && e.message}`);
+}
+/* A VISITOR'S OWN VOTE AGAINST A STALE EDGE COPY: loadRatings() run for real
+   with a fetch answering n=2, a stored fresh row of n=3, and the paint and
+   note functions recording what they were handed. */
+let ratings = null;
+try {
+  ratings = {};
+  const store = new Map();
+  ctx.localStorage = { getItem: (k) => (store.has(k) ? store.get(k) : null),
+                       setItem: (k, v) => store.set(k, String(v)), removeItem: (k) => store.delete(k) };
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "querySelectorAll") return (sel) => (sel === "[data-rate]" ? [{ dataset: { rate: "X 2026" } }] : []);
+    if (k === "querySelector" || k === "getElementById") return () => S;
+    return S;
+  } });
+  let serverN = 2;
+  ctx.fetch = async () => ({ ok: true, json: async () => ({ ok: true,
+    ratings: [{ tag: "X 2026", n: serverN, min_shown: 3, average: null, needs: 3 - serverN }] }) });
+  vm.runInContext(`__painted = []; __noted = [];
+    paintRating = (b, d) => { if (d) __painted.push(d.n); };
+    cfRatingNote = (rows) => { __noted.push(rows.map((r) => r.n)); };`, ctx);
+  const runOnce = async (label, fresh, age) => {
+    store.set("sled-rated-fresh", JSON.stringify(fresh ? { "X 2026": { row: { tag: "X 2026", n: fresh }, at: Date.now() - age } } : {}));
+    vm.runInContext(`__painted = []; __noted = [];`, ctx);
+    await vm.runInContext(`loadRatings()`, ctx);
+    ratings[label] = { painted: vm.runInContext(`__painted.slice()`, ctx), noted: vm.runInContext(`__noted.slice()`, ctx) };
+  };
+  await runOnce("freshWins", 3, 1000);
+  await runOnce("freshExpired", 3, 11 * 60 * 1000);
+  serverN = 4;
+  await runOnce("serverCaughtUp", 3, 1000);
+} catch (e) {
+  errors.push(`running loadRatings: ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings }));

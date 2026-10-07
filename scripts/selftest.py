@@ -2596,6 +2596,12 @@ def check_an_alert_signup_keeps_its_promises() -> int:
     if d.get("oneClickWrongBody") != 400 or not d.get("oneClickKeptAfterWrongBody"):
         errors += fail("a form POST that is not List-Unsubscribe=One-Click unsubscribed "
                        "somebody, or was not refused")
+    if not d.get("legacyStamped") or d.get("legacySubLeft") != week \
+            or d.get("legacyEmLeft") != week or d.get("legacySubLeftAfter") != 4 * 86400:
+        errors += fail(f"a pending record from before the shared expiry is not given "
+                       f"one stored week for both keys (sub {d.get('legacySubLeft')}, "
+                       f"address {d.get('legacyEmLeft')}, after three days "
+                       f"{d.get('legacySubLeftAfter')})")
     if d.get("emAfterStaleConfirm") != "LIVE":
         errors += fail(f"confirming a stale pending signup took the address key from "
                        f"the confirmed subscription ({d.get('emAfterStaleConfirm')!r}); "
@@ -2699,6 +2705,19 @@ def check_ratings_cannot_spend_the_shared_store() -> int:
         return fail(f"the ratings endpoint would not run: {r.stderr.strip()[:300]}")
     d = _json.loads(r.stdout.strip().splitlines()[-1])
     errors = 0
+    # THE PAGE HALF: a visitor's own fresh count beats a stale edge copy, for
+    # ten minutes and only until the server catches up (second review,
+    # 2026-10-07). jobcard_harness runs the real loadRatings().
+    jr = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                        capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    rt = (_json.loads(jr.stdout.strip().splitlines()[-1]).get("ratings") or {}) if not jr.returncode else {}
+    want = {"freshWins": [3], "freshExpired": [2], "serverCaughtUp": [4]}
+    for k, n in want.items():
+        got = rt.get(k) or {}
+        if got.get("painted") != n or got.get("noted") != [n]:
+            errors += fail(f"ratings after a vote ({k}): painted {got.get('painted')}, "
+                           f"noted {got.get('noted')}, wanted {n} - the voter sees the "
+                           f"pre-vote count, or never sees anyone else's")
     if d.get("readsAfterThreeViews") != d.get("readsFirstView"):
         errors += fail(f"three views of the same conferences cost "
                        f"{d.get('readsAfterThreeViews')} reads against "
@@ -7983,8 +8002,9 @@ def check_one_subscriber_never_silences_the_rest() -> int:
     # so printing four of the token and printing ALL of it read the same, and
     # a label() returning the whole key - the subscription's bearer credential,
     # in a public log - passed (review, 2026-10-07). 43 characters, as minted.
-    TOK = {n: n * 4 + "Q7xP2mK9vB3nR8tL5wH1jD6fG4sZ0cY2eU9iO3aT7y"[:39]
-           for n in ("a", "b", "c")}
+    TOK = {"a": "aaaa" + "Q7xP2mK9vB3nR8tL5wH1jD6fG4sZ0cY2eU9iO3aT7",
+           "b": "bbbb" + "m3Kd8Lq2Zx7Vn4Rt9Wp1Hs6Gf5Jc0Yb3Eu8Io2Ay",
+           "c": "cccc" + "T5nB2kR9xQ4mW7vL1pZ8hS3fG6jD0cY2eU9iO4aU"}
 
     class Fake:
         """Cloudflare KV and Resend, with every PUT refused."""
@@ -8100,7 +8120,10 @@ def check_one_subscriber_never_silences_the_rest() -> int:
         # ...AND NO MORE OF THE TOKEN THAN THE FOUR CHARACTERS THAT FIND IT. The
         # token is the subscription: whoever holds it reads saved roles,
         # changes settings and unsubscribes.
-        if any(tok[:5] in text for tok in TOK.values()):
+        # ANY five-character run of a token, anywhere: a label printing the
+        # first four and the last twelve passed the first version of this
+        # (second review, 2026-10-07).
+        if any(tok[i:i + 5] in text for tok in TOK.values() for i in range(len(tok) - 4)):
             errors += fail("more than four characters of a subscription token "
                            "reached the log - the token is the subscriber's key")
     finally:
@@ -11009,10 +11032,15 @@ def check_a_ruled_out_company_is_left_alone() -> int:
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
     ruling = {"by": "owner", "on": "2026-08-24", "why": "sandbox"}
     hiring = {"status": "Unknown", "note": "", "roles": []}
+    # THE RULED COMPANY'S LAST VERDICT IS "Yes", as Concourse's was: an
+    # Unknown fixture could not tell a frozen verdict from a cleared one
+    # (second review, 2026-10-07).
+    was_yes = {"status": "Yes", "note": "Founding Account Executive",
+               "roles": [{"title": "Founding Account Executive", "location": "", "url": "u"}]}
     cos = [{"id": "kept-co", "name": "Kept Co", "website": "https://kept.example",
             "ats": {"type": "unknown"}, "hiring": dict(hiring)},
            {"id": "ruled-co", "name": "Ruled Co", "website": "https://ruled.example",
-            "ats": {"type": "unknown"}, "hiring": dict(hiring),
+            "ats": {"type": "unknown"}, "hiring": dict(was_yes),
             "out_of_scope": ruling}]
     (tmp / "companies.json").write_text(json.dumps(cos))
     (tmp / "only.txt").write_text("kept-co\nruled-co\n")
@@ -11056,8 +11084,13 @@ def check_a_ruled_out_company_is_left_alone() -> int:
             R.main()
         if "ruled-co" in checked:
             errors += fail("refresh fetched a company a person ruled out of scope")
-        line = next((l for l in buf.getvalue().splitlines() if "Ruled Co" in l), "")
-        if "Unknown" not in line or "ruled out of scope" not in line:
+        lines = buf.getvalue().splitlines()
+        line = next((l for l in lines if "Ruled Co" in l and "Unknown" in l), "")
+        if any("needs ATS discovery" in l and "Ruled Co" in l for l in lines):
+            errors += fail("refresh lists a ruled-out company under 'needs ATS "
+                           "discovery', an invitation to re-wire what a person ruled out")
+        if "Unknown" not in line or "ruled out of scope" not in line \
+                or "Founding Account Executive" in line:
             errors += fail(f"refresh carries a ruled-out company's last verdict forward "
                            f"instead of saying it was ruled out: {line.strip()!r} - "
                            f"Concourse stayed 'Yes' off the wrong company's board")
@@ -11067,6 +11100,16 @@ def check_a_ruled_out_company_is_left_alone() -> int:
         (da.DATA, da.LOG, da.SUSPECTS, da.probe, sys.argv,
          R.DATA, R.HISTORY, R.check_company, R.RENDER_ATTEMPTS) = keep
         shutil.rmtree(tmp, ignore_errors=True)
+    # THE COMMITTED BOARD, said and not failed. A ruling made at the desk sits
+    # in companies.json until the next crawl or redraw draws the board again;
+    # failing here would stop the very nightly that drops it. So it is named.
+    ruled = {c["id"] for c in json.loads((DATA / "companies.json").read_text())
+             if c.get("out_of_scope")}
+    on_board = sorted(ruled & {o["id"] for o in json.loads((DATA / "board.json")
+                                                               .read_text())["organizations"]})
+    if on_board:
+        note(f"data/board.json still draws {on_board}, ruled out of scope by a person; "
+             f"`python3 scripts/quick_rebuild.py --write` or the next crawl drops them")
     return errors
 
 
@@ -11154,9 +11197,15 @@ def check_a_redraw_is_the_crawl_without_the_fetch() -> int:
     if not any(d.startswith("ruled out ") for d in done):
         note("the golden found no company to rule out of scope, so that ruling "
              "went untested against main()")
-    elif rc == 0 and "ruled out of scope by a person, not drawn" not in text:
-        errors += fail("the redraw reports a company a person ruled out as 'no longer "
-                       "on file', which reads as a deleted record, not a ruling")
+    elif rc == 0:
+        names = {c["id"]: c["name"] for c in json.loads((DATA / "companies.json").read_text())}
+        ruled_names = [names.get(d[len("ruled out "):], "") for d in done
+                       if d.startswith("ruled out ")]
+        gone_line = next((l for l in text.splitlines() if "no longer on file" in l), "")
+        if "ruled out of scope by a person, not drawn" not in text \
+                or any(n and n in gone_line for n in ruled_names):
+            errors += fail("the redraw reports a company a person ruled out as 'no longer "
+                           "on file', which reads as a deleted record, not a ruling")
     return errors
 
 
@@ -26284,7 +26333,15 @@ def _js_code_only(src: str) -> str:
 # Titles a sled_only company's board carries, and what out_of_scope() must
 # do with each. None = kept on the board.
 SLED_ROLE_CASES = [
-    ("Local Government Account Executive (Evergreen)", None),
+    ("Local Government Account Executive", None),
+    # the plural, the abbreviation and the comma - each missed by the pattern
+    # as first restored (second review, 2026-10-07); GovWell's board carried
+    # "Account Executive - Small & Medium Governments"
+    ("Account Executive - Small & Medium Governments", None),
+    ("Regional Sales Manager-Govt", None),
+    ("Enterprise Account Executive (State, Local, and Education)", None),
+    ("Customer Account Executive, K-12, EdTech", None),
+    ("Account Executive - GovTech Software Sales", None),
     ("Account Executive, SLED", None),
     ("Account Executive - State & Local", None),
     ("State and Local Account Executive", None),
@@ -26311,7 +26368,8 @@ def check_a_public_sector_title_is_recognised() -> int:
     0x08 where `\\b` belonged, so "SLED", "gov", "government", "govtech",
     "K-12" and "state and local" could never match. Only "public sector",
     "civic", "municipal", "federal", "public safety" and "higher ed" did. For
-    seven weeks Granicus's "Local Government Account Executive" was dropped as
+    seven weeks Securly's "Customer Account Executive, K-12, EdTech" and
+    iWorQ's "Account Executive - GovTech Software Sales" were dropped as
     off-topic, with every other sled_only company's equivalent. No case
     covered the pattern. Driven through out_of_scope(), the caller.
     """
@@ -26349,6 +26407,50 @@ def check_no_control_characters_in_source() -> int:
             errors += fail(f"{f} holds control character(s) {[hex(b) for b in bad]} - "
                            f"usually an escape like \\b written through a non-raw "
                            f"string; a regex reads it as a character to match")
+    return errors
+
+
+def check_the_front_page_counts_what_its_links_open() -> int:
+    """Every front-page number a click turns into the jobs tab counts that tab's
+    default set: quota-carrying, under the United States default (everything
+    not placed outside the US). The home link said "All 1,025" over a page of
+    472 (launch audit, 2026-10-06), and after that was fixed the banner still
+    said 675 over the same 478 (second review, 2026-10-07). Runs the real
+    buildSlides() and home() on the committed board via jobcard_harness and
+    compares with the set computed here, independently.
+    """
+    import shutil, subprocess, json as _json
+    if not shutil.which("node"):
+        print("  SKIP: node is not installed here, so the front page was not run")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                       capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+    if r.returncode:
+        return fail(f"index.html's script would not run: {r.stderr.strip()[:300]}")
+    out = _json.loads(r.stdout.strip().splitlines()[-1])
+    front = out.get("front") or {}
+    if not front.get("home"):
+        return fail(f"home() did not run in the harness: {out.get('errors')}")
+    board = json.loads((DATA / "board.json").read_text())
+    want = len({p["opening_id"] for p in board["postings"]
+                if p.get("quota_carrying") and p.get("is_us") is not False})
+    errors = 0
+    num = lambda t: int(re.sub(r"[^0-9]", "", t) or -1)
+    m = re.search(r'id="h-all"[^>]*>All ([\d,]+) roles', front["home"])
+    if not m or num(m.group(1)) != want:
+        errors += fail(f"the home link says All {m and m.group(1)} roles; the jobs "
+                       f"tab opens on {want}")
+    card = re.search(r'id="h-jobs".*?class="big">([\d,]+)<', front["home"], re.S)
+    if not card or num(card.group(1)) != want:
+        errors += fail(f"the home Sales roles card says {card and card.group(1)}; the "
+                       f"jobs tab opens on {want}")
+    seller = next((x for x in front.get("slides", []) if x["kick"] == "Sellers wanted"), None)
+    if seller and num(re.search(r'class="num">([\d,]+)<', seller["h"]).group(1)) != want:
+        errors += fail(f"the banner's Sellers wanted slide says {seller['h'][:60]!r}; "
+                       f"its Open the board link lands on {want}")
+    if "in the United States" in front["home"].split('id="h-jobs"', 1)[-1][:600]:
+        errors += fail("the home card says its roles are in the United States, and "
+                       "the count includes roles we could not place")
     return errors
 
 
@@ -26420,11 +26522,22 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
                        "no board found - a refusal is not an answer")
     if "not looked for yet" not in page["unprobed-co"] or "none found" in page["unprobed-co"]:
         errors += fail("a company nobody has probed is said to have no board found")
+    # THE PARAGRAPH TOO, not only the source cell (second review, 2026-10-07)
+    if "never got far enough" not in page["blocked-co"] \
+            or "We have not found a public job board" in page["blocked-co"]:
+        errors += fail("the roles paragraph tells a turned-away company we found no board")
+    if "We have not looked for a job board for them yet" not in page["unprobed-co"]:
+        errors += fail("the roles paragraph tells an unprobed company we found no board")
     if "Their hiring board" in page["none-co"]:
         errors += fail("a company with no board on file links its homepage as "
                        "'Their hiring board'")
-    if "empty right now" in page["scoped-co"] or "52 roles" not in page["scoped-co"] \
-            or "2 federal roles" not in page["scoped-co"]:
+    # and it says what the FILTER did, never that the roles are outside this
+    # board's scope: OpenGov's account executives are this board's scope
+    # (second review, 2026-10-07)
+    if "empty right now" in page["scoped-co"] or "52 postings" not in page["scoped-co"] \
+            or "2 federal postings" not in page["scoped-co"] \
+            or "roles this board does not show" not in page["scoped-co"] \
+            or "s scope" in page["scoped-co"]:
         errors += fail("a board we read whose every role this board leaves out is "
                        "called empty, or does not say how many it left out and why")
     rail = page["rival-co"].split("<h2>Competitors</h2>", 1)[-1][:900]
@@ -26483,7 +26596,15 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
             errors += fail("the app says no board was found where the site turned us away")
         if "not looked for yet" not in flat["unprobed-co"]:
             errors += fail("the app says no board was found for a company nobody probed")
-        if "empty right now" in flat["scoped-co"] or "52 roles" not in flat["scoped-co"]:
+        if "never got far enough" not in flat["blocked-co"] \
+                or "We have not found a public job board" in flat["blocked-co"]:
+            errors += fail("the app's roles paragraph tells a turned-away company we "
+                           "found no board")
+        if "We have not looked for a job board for them yet" not in flat["unprobed-co"]:
+            errors += fail("the app's roles paragraph tells an unprobed company we "
+                           "found no board")
+        if "empty right now" in flat["scoped-co"] or "52 postings" not in flat["scoped-co"] \
+                or "s scope" in flat["scoped-co"]:
             errors += fail("the app calls a board whose every role is out of scope empty")
         rail = flat["rival-co"].split("<h2>Competitors</h2>", 1)[-1][:1500]
         if rail.count('<span class="n">&mdash;</span>') != 2 or '<span class="n">0</span>' not in rail:
@@ -29042,6 +29163,7 @@ def main() -> int:
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
+    errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()
     errors += check_no_control_characters_in_source()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()

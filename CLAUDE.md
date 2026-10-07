@@ -1694,8 +1694,25 @@ fires.
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a
   caller is its IPv6 /64.
-- These fixes were reviewed blind by 8 agents (4 reviewers, 4 skeptics): 11
-  real findings, all fixed; most were tests that could not fail.
+- **SLED_ROLE takes the plural and the abbreviation**: "Governments", "Govt",
+  "State, Local". The restored pattern missed all three (GovWell's "Small &
+  Medium Governments").
+- **A filtered board's sentence says what the FILTER did**, never that the
+  roles are outside this board's scope, because while sled_only is misapplied
+  that is false for OpenGov's account executives. The counts are postings.
+- **Every front-page number a click turns into the jobs tab counts that tab's
+  default** (`boardDefault()`: quota-carrying, not placed outside the US);
+  the banner and the card disagreed with the page they open.
+  `check_the_front_page_counts_what_its_links_open` runs the real
+  buildSlides() and home().
+- **Emailed links wait for a click** (alerts confirm/stop, claim confirm), and
+  digests carry both RFC 8058 headers, answered by alerts.js's form POST.
+- **Two blind review rounds**, 8 agents each (4 reviewers, 4 skeptics): 11
+  then 21 confirmed findings, all fixed; most were tests that could not fail.
+  **Run a check's clean baseline before mutating it**: one "caught" mutation
+  in round one was the baseline failing, not the guard.
+- The board's offtopic counts were computed under the broken pattern and
+  correct themselves at the first crawl after the fix ships.
 
 ## Conventions
 

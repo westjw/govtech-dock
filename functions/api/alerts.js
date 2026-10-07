@@ -63,9 +63,20 @@ const pendingExpiry = (sub) => {
 /* EVERY write of a subscription goes through here, so no action can make a
  * pending record permanent by rewriting it: settings and sync work before
  * confirming, and a put replaces the key whole, expiry included. */
-const putSub = (env, token, sub) =>
-  env.ALERTS.put("sub:" + token, JSON.stringify(sub),
-                 sub.confirmed ? undefined : pendingExpiry(sub));
+const putSub = async (env, token, sub) => {
+  // THE EXPIRY IS DECIDED BEFORE THE RECORD IS SERIALISED. pendingExpiry
+  // stamps `expires` on a record from before this rule; computed inside the
+  // put, after JSON.stringify, the stamp was never stored and every settings
+  // save or sync renewed the week (second review, 2026-10-07). Such a
+  // record's address key gets the same expiry, if it still names this token.
+  const legacy = !sub.confirmed && !sub.expires;
+  const opts = sub.confirmed ? undefined : pendingExpiry(sub);
+  await env.ALERTS.put("sub:" + token, JSON.stringify(sub), opts);
+  if (legacy && sub.email) {
+    const ek = await emailKey(sub.email);
+    if ((await env.ALERTS.get(ek)) === token) await env.ALERTS.put(ek, token, opts);
+  }
+};
 
 const CADENCES = new Set(["daily", "twice", "weekly"]);
 /* These four sets are the SAME vocabulary scripts/roles.py assigns and

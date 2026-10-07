@@ -1243,14 +1243,19 @@ def scope_note(o: dict) -> str:
     off = o.get("offtopic_dropped") or 0
     if not (fed or off):
         return ""
+    # WHAT THE FILTER DID, NOT WHERE THE BOARD'S SCOPE ENDS. This said the
+    # roles were outside this board's scope, which was false for OpenGov's and
+    # Granicus's account executives: they are dropped by the sled_only title
+    # filter, which is misapplied on 159 companies pending the owner's ruling
+    # (review, 2026-10-07). Postings, because offtopic_dropped counts rows.
     bits = []
     if off:
-        bits.append(f"{off} role{'' if off == 1 else 's'} whose title"
-                    f"{'' if off == 1 else 's'} name no part of the public sector")
+        bits.append(f"{off} posting{'' if off == 1 else 's'} our public-sector "
+                    f"title filter does not keep")
     if fed:
-        bits.append(f"{fed} federal role{'' if fed == 1 else 's'}, which belong"
-                    f"{'s' if fed == 1 else ''} on a federal board")
-    return "Of what their board lists, we leave out " + " and ".join(bits) + "."
+        bits.append(f"{fed} federal posting{'' if fed == 1 else 's'}, which "
+                    f"belong{'s' if fed == 1 else ''} on a federal board")
+    return "Of what their board lists, this board leaves out " + " and ".join(bits) + "."
 
 
 def no_board_note(o: dict) -> str:
@@ -1673,8 +1678,8 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
                    + (f" {_posts_at_phrase(pa)[:1].upper()}{_posts_at_phrase(pa)[1:]}, "
                       f"which we do not read automatically." if pa else ""))
         elif readable and scope_note(o):
-            why = ("Their board is one we read every night, and it lists roles - none "
-                   "of them in this board's scope. " + scope_note(o))
+            why = ("Their board is one we read every night, and it lists roles this "
+                   "board does not show. " + scope_note(o))
         elif readable:
             why = "Their board is one we read every night and it is empty right now."
         else:
@@ -1809,7 +1814,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                     + " · a person checks it"
                     + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
     # a board we read that lists roles, none in scope, is not "none seen"
-    open_note = ("none in this board's scope" if readable and not open_ and scope_note(o)
+    open_note = ("none shown here, see below" if readable and not open_ and scope_note(o)
                  else _co_open_note(mine, open_, readable, now, state))
     pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
     strip = (f'<div class="costrip">'

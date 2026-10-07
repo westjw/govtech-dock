@@ -6,12 +6,14 @@
  * never edits the dataset directly, so a bug here can mis-record an opinion
  * but cannot corrupt the map.
  *
- * Auth is Cloudflare Access. The Access application covering /admin/* must
- * exist BEFORE the GITHUB_ADMIN_TOKEN secret is added: Cloudflare sets the
- * authenticated-user headers only after a request passes Access, and without
- * the app this path would be open to the world. The function refuses to work
- * when the headers are absent, so the failure mode of misconfiguration is
- * "nothing works", never "everyone can write".
+ * Auth is the Access sign-in, VERIFIED. functions/admin/_middleware.js
+ * checks the Access token's signature, audience and expiry on every hostname
+ * (Access itself does not cover the pages.dev alias) and hands the address it
+ * verified to this function as context.data.access. Nothing here reads a
+ * request header for the person: Cf-Access-Authenticated-User-Email can be
+ * sent by a client on the alias. With no verified address the function
+ * refuses, so a misconfiguration means "nothing works", never "everyone can
+ * write".
  */
 const REPO = "westjw/govtech-dock";
 
