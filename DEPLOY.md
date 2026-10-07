@@ -144,7 +144,10 @@ while the Function runs: see step 1 below.
 - Only `/admin/api/login` and `/admin/api/whoami` stay open, the same two the
   `/admin` door leaves open - plus a mail client's one-click unsubscribe
   (a form POST to `/api/alerts?t=`), because digests keep going out while the
-  site is private.
+  site is private. That exception only matters while Access covers just
+  `/admin`: after step 3 below, Access answers first and the one-click button
+  in mail clients cannot work until launch (a second Access application with
+  a Bypass would fix it; not worth it for one subscriber).
 - `check_the_site_is_signed_in_only_until_launch` in `scripts/selftest.py`
   drives it through `scripts/gate_harness.mjs`.
 

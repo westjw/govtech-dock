@@ -586,6 +586,13 @@ as the `/admin` door, and the verifier both doors share lives in
   and a form body (`isOneClickUnsubscribe`). Digests go out while the site is
   private and the provider's POST can carry no sign-in. alerts.js then
   requires `List-Unsubscribe=One-Click` and answers the same for any token.
+  **This only helps while Access covers just `/admin`.** Once Access covers
+  the whole host (DEPLOY.md §3 step 3), Access answers at the edge before any
+  Function runs, so a mail client's button cannot work until launch. Making
+  it work would take a second Access application with a Bypass on
+  `api/alerts`, against the one-application rule; with one subscriber it is
+  not worth it. The digest's own "Stop these emails" link works for a
+  signed-in reader throughout.
 
 **A phone ruling used to vanish in the nightly push.** `refresh.yml` said
 `git pull --rebase -X theirs`; the bot's copy of a decision file won
