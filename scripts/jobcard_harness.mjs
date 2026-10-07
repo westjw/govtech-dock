@@ -156,7 +156,7 @@ try {
   const b = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
   ctx.__orgs = b.organizations || [];
   boards = vm.runInContext(`(() => { const r = {};
-      for (const o of __orgs) r[o.id] = [boardState(o), openCount(o)];
+      for (const o of __orgs) r[o.id] = [boardState(o), openCount(o), scopeNote(o)];
       return r; })()`, ctx);
 } catch (e) {
   errors.push(`calling boardState/openCount: ${e && e.message}`);

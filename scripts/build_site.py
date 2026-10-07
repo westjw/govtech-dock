@@ -321,9 +321,14 @@ DROP_ORG = {"vendor_type", "govtech"}
 #     company_page_html - it renders "Part of X, acquired YYYY".
 # Dropping either would have blanked a real sentence on a public page with
 # nothing erroring. Anything added here must be checked against BOTH readers.
+# offtopic_dropped and federal_dropped SHIP, since 2026-10-07. Stripped, a
+# company whose every posting this board leaves out (Granicus: 2 federal and
+# 52 off-topic; OpenGov: 71 off-topic) printed "Their board is one we read
+# every night and it is empty right now" - a false empty about a board with
+# dozens of jobs on it. Two small ints on the companies that have them.
 DROP_ORG_DEAD = {
-    "board_owner_unverified", "shares_board_with", "offtopic_dropped",
-    "federal_dropped", "board_owner", "quota_postings", "open_postings",
+    "board_owner_unverified", "shares_board_with",
+    "board_owner", "quota_postings", "open_postings",
     "sled_only", "linkedin", "ats_note", "checked_by_hand",
 }
 DROP_POSTING = {"opening_locations", "opening_postings", "captured_from"}
@@ -1230,6 +1235,24 @@ def _posts_at_phrase(pa: dict) -> str:
     return f"they post on {html.escape(pa.get('label') or 'another site')}"
 
 
+def scope_note(o: dict) -> str:
+    """Why a board we read shows fewer roles than it lists, or "". The board
+    is not empty; this board leaves some of it out, and says how many and why.
+    index.html's scopeNote() is the same sentence."""
+    fed = o.get("federal_dropped") or 0
+    off = o.get("offtopic_dropped") or 0
+    if not (fed or off):
+        return ""
+    bits = []
+    if off:
+        bits.append(f"{off} role{'' if off == 1 else 's'} whose title"
+                    f"{'' if off == 1 else 's'} name no part of the public sector")
+    if fed:
+        bits.append(f"{fed} federal role{'' if fed == 1 else 's'}, which belong"
+                    f"{'s' if fed == 1 else ''} on a federal board")
+    return "Of what their board lists, we leave out " + " and ".join(bits) + "."
+
+
 def open_count(o: dict) -> str:
     """The open-roles figure as printed: a number, or an em dash when nobody
     could count. Roles captured by hand are a floor and still print."""
@@ -1627,6 +1650,9 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
                    "say whether they are hiring."
                    + (f" {_posts_at_phrase(pa)[:1].upper()}{_posts_at_phrase(pa)[1:]}, "
                       f"which we do not read automatically." if pa else ""))
+        elif readable and scope_note(o):
+            why = ("Their board is one we read every night, and it lists roles - none "
+                   "of them in this board's scope. " + scope_note(o))
         elif readable:
             why = "Their board is one we read every night and it is empty right now."
         else:
@@ -1760,10 +1786,13 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
         src_note = (("custom HTML" if ats == "html" else "their board")
                     + " · a person checks it"
                     + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
+    # a board we read that lists roles, none in scope, is not "none seen"
+    open_note = ("none in this board's scope" if readable and not open_ and scope_note(o)
+                 else _co_open_note(mine, open_, readable, now, state))
     pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
     strip = (f'<div class="costrip">'
              f'<dl><div class="v{"" if open_ else " dim"}">{open_count(o)}</div><dt>open roles</dt>'
-             f'<dd>{esc(_co_open_note(mine, open_, readable, now, state))}</dd></dl>'
+             f'<dd>{esc(open_note)}</dd></dl>'
              f'<dl><div class="v{"" if quota else " dim"}">{quota or "&mdash;"}</div><dt>quota-carrying</dt>'
              f'<dd>{pct}</dd></dl>'
              f'<dl class="wide"><div class="v txt {phase["tone"]}">{esc(phase["value"])}</div>'
@@ -2966,7 +2995,9 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     site = brand["site"].rstrip("/")
     today = dt.date.today().isoformat()
     urls = [(f"{site}/", "daily", "1.0")]
-    for tab in ("jobs", "companies", "conferences", "market", "alerts"):
+    # The app's own tabs (index.html TABS). "market" and "alerts" were listed
+    # here and neither is a tab: both opened the job list (2026-10-06).
+    for tab in ("jobs", "companies", "conferences", "map", "intel"):
         urls.append((f"{site}/?tab={tab}", "daily", "0.8"))
     # every company that HAS a page, not every company that is hiring - the
     # 1,810-near-identical-documents argument dies once a page carries a

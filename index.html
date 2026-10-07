@@ -1342,6 +1342,11 @@
   @media (max-width:768px){
     .hwrap{padding:var(--space-3) var(--space-4)}
     main{padding:0 var(--space-4) var(--space-8)}
+    /* The company view bleeds to the edge by cancelling main's padding, and
+       it cancelled 20px of a 16px padding: every ?co= page was 379px wide on
+       a 375px phone and slid sideways (launch audit, 2026-10-06). Cancel
+       exactly what main has here. */
+    .copage{margin:0 calc(-1 * var(--space-4)) -40px;padding:0 var(--space-4) 48px}
     /* Measured: stacked, this header took 241px and the filter column took
        218 more, and the first job row landed at 992px - nothing above the
        fold at all, which is the hero problem again in a narrower window.
@@ -1494,9 +1499,13 @@
    <a class="row" href="/alerts">Email alerts and cadence →</a>
    <a class="row" href="#" id="accttheme">Switch theme →</a>
    <!-- Signing in is for the people who run the board and the closed beta:
-        a code sent to your email, no password, decided by the owner. The
-        row says "Log in" until /admin/api/whoami says who you are. -->
-   <a class="row" href="/admin/api/login?to=/" id="acctlogin">Log in →</a>
+        a code sent to your email, no password, decided by the owner. The row
+        SAYS WHO IT IS FOR. It said "Log in" to every visitor, right under
+        "Nothing here asks who you are", and the sign-in behind it admits only
+        the addresses the owner put on the list - a job seeker who clicked it
+        met a refusal and could read it as "this board needs an account"
+        (launch audit, 2026-10-06). whoami replaces it once you are signed in. -->
+   <a class="row" href="/admin/api/login?to=/" id="acctlogin">Team and beta sign-in →</a>
    <div id="acctdoors"></div>
  </div>
 </header>
@@ -2211,6 +2220,18 @@ function boardState(o){
   if(o.no_board_on_file)return "none";
   if(o.enumerable===false||o.unreadable)return "unread";
   return "read";
+}
+/* Why a board we read shows fewer roles than it lists, or "". The board is not
+   empty; this board leaves part of it out and says how much and why. Same
+   sentence as build_site.scope_note(). Granicus (2 federal, 52 off-topic) and
+   OpenGov (71) printed "it is empty right now" over boards full of jobs. */
+function scopeNote(o){
+  const fed=o.federal_dropped||0, off=o.offtopic_dropped||0;
+  if(!fed&&!off)return "";
+  const bits=[];
+  if(off)bits.push(`${off} role${off===1?"":"s"} whose title${off===1?"":"s"} name no part of the public sector`);
+  if(fed)bits.push(`${fed} federal role${fed===1?"":"s"}, which belong${fed===1?"s":""} on a federal board`);
+  return "Of what their board lists, we leave out "+bits.join(" and ")+".";
 }
 /* The figure as printed: a number, or a dash when nobody could count. Roles
    captured by hand are a floor and still print. */
@@ -3302,7 +3323,9 @@ const URLKEYS={q:"j-q",fam:"j-fam",sec:"j-sec",st:"j-state",off:"j-office",
    copies of this rule is how it came to be true in one of them. */
 function tabFromUrl(u,fallback){
   if(!u)return fallback;
-  if(u.get("tab"))return u.get("tab");
+  // "market" is what the sitemap and the head tags called the intel tab
+  // until 2026-10-07; a link already made with it opens the tab it meant
+  if(u.get("tab"))return u.get("tab")==="market"?"intel":u.get("tab");
   if(u.get("role"))return "jobs";
   if(u.get("co"))return "companies";
   if(Object.keys(URLKEYS).some(k=>u.has(k))
@@ -5726,7 +5749,7 @@ function co(id,fromUrl){
   const strip=`<div class="costrip">
     <dl><div class="v${open?"":" dim"}">${openCount(o)}</div>
       <dt>open roles</dt>
-      <dd>${esc(coOpenNote(mine,open,readable,state))}</dd></dl>
+      <dd>${esc(readable&&!open&&scopeNote(o)?"none in this board's scope":coOpenNote(mine,open,readable,state))}</dd></dl>
     <dl><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
       <dt>quota-carrying</dt>
       <dd>${quota?`${Math.round(quota/open*100)}% of open roles`:"nothing to count"}</dd></dl>
@@ -5767,6 +5790,9 @@ function co(id,fromUrl){
         ? `We have not found a public job board for them, so we cannot say whether
            they are hiring.${o.posts_at?` ${esc(postsAtPhrase(o.posts_at).replace(/^./,c=>c.toUpperCase()))},
            which we do not read automatically.`:""}`
+        : readable&&scopeNote(o)
+        ? `Their board is one we read every night, and it lists roles - none of them
+           in this board's scope. ${esc(scopeNote(o))}`
         : readable
         ? `Their board is one we read every night and it is empty right now.`
         : `Their board is live but built in a way we cannot read automatically,
@@ -6361,6 +6387,11 @@ function nearNote(NEAR){
       ${NEAR.ambiguous.length} states here &mdash; add the state, e.g.
       ${esc(NEAR.ambiguous[0].replace("|",", "))}</span>`;
   if(!NEAR.at)return "";
+  // a distance is measured on OpenStreetMap's coordinates, so it is credited
+  // wherever one is applied (see the map tab)
+  const osm=` · <span class="unplaced">distances use city locations &copy;
+    <a href="https://www.openstreetmap.org/copyright" target="_blank"
+       rel="noopener">OpenStreetMap contributors</a></span>`;
   // desks that exist and could not be measured to
   let n=0;
   for(const p of D.postings){
@@ -6368,10 +6399,10 @@ function nearNote(NEAR){
     if(!p.office||!p.office.city)continue;
     if(!coordsOf(cityKey(p)))n++;
   }
-  if(!n)return "";
+  if(!n)return osm;
   return ` · <span class="unplaced">${n.toLocaleString()} role${n===1?"":"s"}
     name a place we could not put on a map, so ${n===1?"it is":"they are"} not
-    in this count</span>`;
+    in this count</span>`+osm;
 }
 /* --- what changed since you were last here -------------------------------
    The one line a returning visitor wants, and it is the one thing a static
@@ -6457,7 +6488,15 @@ function visitHorizon(on){
 function home(){
   const slides=buildSlides();
   const orgs=D.organizations||[];
-  const q=D.postings.filter(p=>p.quota_carrying);
+  /* THE SAME ROLES THE JOBS TAB OPENS ON: quota-carrying, and the United
+     States default, which keeps everything not positively placed outside it
+     (filters' u==="us"). This counted every quota row worldwide, so the
+     front page promised "All 1,025" and its link landed on "472 roles", and
+     two of the six newest roles shown were in Denmark and Pakistan (launch
+     audit, 2026-10-06). A number on the front page is a promise about the
+     page it opens. */
+  const q=D.postings.filter(p=>p.quota_carrying&&p.is_us!==false);
+  const qOpenings=new Set(q.map(p=>p.opening_id)).size;
   const banner=slides.length?`
   <div class="banner" id="banner">
     ${slides.some(s=>s.hero)?`<div class="bhero" id="bhero" aria-hidden="true">
@@ -6524,7 +6563,7 @@ function home(){
 
   ${newest.length?`
   <div class="hsec"><h3>Newest sales roles</h3>
-    <a id="h-all" role="button" tabindex="0">All ${q.length.toLocaleString()} &rarr;</a></div>
+    <a id="h-all" role="button" tabindex="0">All ${qOpenings.toLocaleString()} roles &rarr;</a></div>
   <div style="margin-bottom:var(--space-8)">
     ${newest.map(r=>{
       const age=when(r.first_seen,D.generated);
@@ -6552,10 +6591,11 @@ function home(){
          count openings, not rows" and then this card did the opposite, on the
          same screen. -->
     <a class="hcard" id="h-jobs" href="#">
-      <span class="big">${new Set(q.map(p=>p.opening_id)).size.toLocaleString()}</span>
+      <span class="big">${qOpenings.toLocaleString()}</span>
       <h3>Sales roles</h3>
-      <p>Quota-carrying roles at state and local government technology
-         companies, advertised in ${q.length.toLocaleString()} postings.
+      <p>Quota-carrying roles in the United States at state and local
+         government technology companies, advertised in
+         ${q.length.toLocaleString()} postings.
          Filter by family, seniority, work mode and pay.</p>
     </a>
     <a class="hcard" id="h-cos" href="#">
@@ -8258,7 +8298,14 @@ function mapView(){
     state.${unplaced>0?` <strong>${unplaced.toLocaleString()}</strong> role${unplaced===1?" names":"s name"}
     a city we could not place, and ${(new Set(D.postings.map(p=>p.opening_id)).size-officeIds.size).toLocaleString()}
     name no city at all - neither is on this map, and neither is a zero.`:""}
-  </p>`;
+  </p>
+  <!-- THE COORDINATES ARE OPENSTREETMAP'S. geocode_cities.py asks Nominatim,
+       and its usage policy and the ODbL licence ask for a visible credit
+       wherever the data is used; it was only ever in a code comment (launch
+       audit, 2026-10-06). -->
+  <p class="hint" style="margin-top:6px">City locations &copy;
+    <a href="https://www.openstreetmap.org/copyright" target="_blank"
+       rel="noopener">OpenStreetMap contributors</a>.</p>`;
   const cv=$("#mapcv"); let hover=null;
   const redraw=()=>mapDraw(cv,rows,hover);
   requestAnimationFrame(redraw);
@@ -8327,11 +8374,21 @@ function render(){
 /* The two failures this page can have at boot, kept apart on purpose. */
 function loadError(e){
   const why=e&&e.message?String(e.message):String(e||"");
-  $("#view").innerHTML=`<div class="empty">${GHOST}Could not load
-    <code>data/board.json</code>.<br>
-    <span class="sub">${esc(why)}<br>
-    Run <code>python3 scripts/build_board.py</code>, then serve this folder over http
-    &mdash; opening index.html as a file will fail here too.</span></div>`;
+  /* A VISITOR GETS A VISITOR'S SENTENCE. This told everybody to run
+     "python3 scripts/build_board.py", which is advice for whoever is building
+     the site on their own machine - a stranger on a train with one bar of
+     signal read developer instructions (launch audit, 2026-10-06). The build
+     hint is kept for a local copy, where it is the right advice. */
+  const local=location.protocol==="file:"
+    ||/^(localhost|127\.|\[::1\]|0\.0\.0\.0)/.test(location.hostname);
+  $("#view").innerHTML=`<div class="empty">${GHOST}The job list did not load.<br>
+    <span class="sub">${local
+      ? `Could not load <code>data/board.json</code>: ${esc(why)}<br>
+         Run <code>python3 scripts/build_board.py</code>, then serve this folder
+         over http &mdash; opening index.html as a file will fail here too.`
+      : `This is usually the connection. Reloading the page normally fixes it.
+         <br><button type="button" class="cobtn" style="margin-top:var(--space-3)" onclick="location.reload()">Reload</button>
+         <br><span style="color:var(--dim)">${esc(why)}</span>`}</span></div>`;
 }
 function renderError(e){
   // the stack goes to the console, where a person debugging can read it; the
@@ -8412,7 +8469,7 @@ async function whoAmI(){
     const r=await fetch("/admin/api/whoami",{credentials:"include",redirect:"manual"});
     if(r.ok) me=await r.json();
   }catch(e){ me=null; }
-  if(!me||!me.signed_in){ row.textContent="Log in \u2192"; row.href="/admin/api/login?to="+encodeURIComponent(location.pathname+location.search); return; }
+  if(!me||!me.signed_in){ row.textContent="Team and beta sign-in \u2192"; row.href="/admin/api/login?to="+encodeURIComponent(location.pathname+location.search); return; }
   const roles=me.roles||[];
   row.textContent=me.handle?"Signed in as "+me.handle:"Signed in, not on the list yet";
   row.href="/admin/hunter/";

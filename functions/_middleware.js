@@ -169,12 +169,18 @@ async function describe(request, env) {
     };
   }
 
+  // THE TABS THE APP HAS (index.html's TABS), and only those. This named
+  // "market" and "alerts", which the app does not have: a shared "Market
+  // intel" preview opened the job list, and Google was handed two copies of
+  // /?tab=jobs, while the real map and intel tabs got no description, no
+  // canonical and no card (launch audit, 2026-10-06). Alerts is its own page,
+  // /alerts. Each key's card is assets/og/<key>.png (check_share_cards).
   const TABS = {
     jobs: ["Sales jobs in govtech", "Every open sales role at state and local government technology companies, in one list."],
     companies: ["Govtech companies", "The companies selling technology to state and local government, and which of them are hiring."],
     conferences: ["Govtech conferences", "Where these companies exhibit, with dates, so you know which floor to stand on."],
-    market: ["Govtech market intel", "What the hiring across state and local government technology actually looks like."],
-    alerts: ["Job alerts", "Get the new sales roles by email, on the days you choose, above the threshold you set."],
+    map: ["Where the desks are", "Every city a govtech company names an office in for an open role, on one map."],
+    intel: ["Govtech market intel", "What the hiring across state and local government technology actually looks like."],
     saved: null,
   };
   if (tab && TABS[tab]) {
@@ -185,7 +191,7 @@ async function describe(request, env) {
       image: `${SITE}/assets/og/${tab}.png`,
     };
   }
-  if (!role && !co && !tab && u.pathname === "/") {
+  if (!role && !co && (!tab || tab === "home") && u.pathname === "/") {
     return {
       title: `${NAME} · ${TAGLINE}`, desc: TAGLINE,
       canonical: `${SITE}/`, image: `${SITE}/assets/og/home.png`,

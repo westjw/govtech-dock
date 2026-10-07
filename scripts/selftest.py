@@ -14909,6 +14909,15 @@ def check_share_cards() -> int:
     named = set(re.findall(r"/assets/og/([a-z]+)\.png", src))
     named |= {t for t in re.findall(r"^\s+(\w+): \[\"", src, re.M) if t != "saved"}
     have = {p.stem for p in (ROOT / "assets" / "og").glob("*.png")}
+    # A TAB THE APP DOES NOT HAVE IS A PREVIEW THAT LIES. The middleware gave
+    # "market" and "alerts" their own titles and cards; the app has neither
+    # tab and opened the job list for both (launch audit, 2026-10-06).
+    app_tabs = set(re.findall(r'\["(\w+)","', re.search(
+        r"const TABS=\[(.*?)\];", (ROOT / "index.html").read_text(), re.S).group(1)))
+    mw_tabs = {t for t in re.findall(r"^\s+(\w+): (?:\[|null)", src, re.M)}
+    for ghost in sorted(mw_tabs - app_tabs):
+        errors += fail(f"_middleware.js describes ?tab={ghost}, which index.html has "
+                       f"no tab for - its preview promises a page the app does not show")
     for miss in sorted(named - have):
         errors += fail(f"the middleware points at /assets/og/{miss}.png and no "
                        f"such card exists - run scripts/make_og_cards.py")
@@ -18473,6 +18482,13 @@ def check_crawl_files() -> int:
             errors += fail(f"the sitemap advertises {len(adv - on_disk)} "
                            f"conference page(s) that were never written: "
                            f"{sorted(adv - on_disk)[:3]}")
+        app_tabs = set(_re.findall(r'\["(\w+)","', _re.search(
+            r"const TABS=\[(.*?)\];", (ROOT / "index.html").read_text(), _re.S).group(1)))
+        ghosts = set(_re.findall(r"\?tab=(\w+)</loc>", sm)) - app_tabs
+        if ghosts:
+            errors += fail(f"the sitemap advertises ?tab= {sorted(ghosts)}, which the "
+                           f"app has no tab for - Google indexes the job list under "
+                           f"another name")
         rob = (tmp / "robots.txt").read_text()
         if "Sitemap: https://example.test/sitemap.xml" not in rob:
             errors += fail("robots.txt does not name the sitemap")
@@ -26139,6 +26155,77 @@ def _js_code_only(src: str) -> str:
     return re.sub(r"(?m)(^|[^:\"'`\\])//[^\n]*", r"\1", src)
 
 
+# Titles a sled_only company's board carries, and what out_of_scope() must
+# do with each. None = kept on the board.
+SLED_ROLE_CASES = [
+    ("Local Government Account Executive (Evergreen)", None),
+    ("Account Executive, SLED", None),
+    ("Account Executive - State & Local", None),
+    ("State and Local Account Executive", None),
+    ("K-12 Account Executive", None),
+    ("K12 Sales Director", None),
+    ("GovTech Sales Director", None),
+    ("Gov Account Executive", None),
+    ("Public Sector Account Executive", None),
+    ("Municipal Sales Manager", None),
+    ("Enterprise Account Executive", "offtopic"),
+    ("Account Executive - Public Sector (ASEAN)", "offtopic"),
+    # the boundaries are the point: these must NOT read as government
+    ("Sledding Program Instructor", "offtopic"),
+    ("Governance, Risk and Compliance Analyst", "offtopic"),
+    ("Federal Account Executive", "federal"),
+]
+
+
+def check_a_public_sector_title_is_recognised() -> int:
+    """sled_only keeps the titles that name the public sector - all of them.
+
+    SLED_ROLE's word boundaries were written into build_board.py as BACKSPACE
+    characters on 2026-08-21, the day the pattern was added: the file held
+    0x08 where `\\b` belonged, so "SLED", "gov", "government", "govtech",
+    "K-12" and "state and local" could never match. Only "public sector",
+    "civic", "municipal", "federal", "public safety" and "higher ed" did. For
+    seven weeks Granicus's "Local Government Account Executive" was dropped as
+    off-topic, with every other sled_only company's equivalent. No case
+    covered the pattern. Driven through out_of_scope(), the caller.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_board as bb
+    errors = 0
+    for title, want in SLED_ROLE_CASES:
+        got = bb.out_of_scope(title, "x::" + title, "x::" + title, {}, True)
+        if got != want:
+            errors += fail(f"sled_only: {title!r} -> {got!r}, wanted {want!r}")
+    return errors
+
+
+def check_no_control_characters_in_source() -> int:
+    """No tracked source file holds a control character but tab and newline.
+
+    A tool that writes "\\b" through a non-raw string writes a backspace, and
+    in a regex a backspace is a character to match, not a word boundary. That
+    is how SLED_ROLE spent seven weeks unable to match "government"
+    (2026-08-21 to 10-07): the file looked right in an editor, which shows
+    nothing for 0x08, and every test passed because none named the word.
+    """
+    import subprocess
+    errors = 0
+    files = subprocess.run(["git", "ls-files"], cwd=str(ROOT), capture_output=True,
+                           text=True).stdout.split()
+    for f in files:
+        if not re.search(r"\.(py|js|mjs|html|yml|yaml|css|md|toml|sh)$", f):
+            continue
+        p = ROOT / f
+        if not p.exists():
+            continue
+        bad = sorted({b for b in p.read_bytes() if b < 32 and b not in (9, 10, 13)})
+        if bad:
+            errors += fail(f"{f} holds control character(s) {[hex(b) for b in bad]} - "
+                           f"usually an escape like \\b written through a non-raw "
+                           f"string; a regex reads it as a character to match")
+    return errors
+
+
 def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     """'0 open roles' is a measurement, so only a board we read may print it.
 
@@ -26170,9 +26257,17 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     rivals = dict(base, id="rival-co", name="Rival Co", ats="greenhouse", enumerable=True,
                   competitors=[{"id": "unread-co", "why": "a"}, {"id": "none-co", "why": "b"},
                                {"id": "read-co", "why": "c"}])
-    orgs = [read, unread, none_, rivals]
-    by_id = {o["id"]: o for o in orgs}
+    # A BOARD WE READ THAT LISTS ROLES, NONE IN SCOPE: Granicus, OpenGov and 52
+    # more printed "it is empty right now" (2026-10-07).
+    scoped = dict(base, id="scoped-co", name="Scoped Co", ats="icims", enumerable=True,
+                  offtopic_dropped=52, federal_dropped=2)
+    orgs = [read, unread, none_, rivals, scoped]
     board = {"organizations": orgs, "logos": {}, "postings": [], "generated": "2026-10-06"}
+    # THROUGH sanitize(), as the real build does: it runs before the pages are
+    # written and mutates the same objects, so a count it strips is a count no
+    # page can print - which is how Granicus's page lost the reason it is empty.
+    bs.sanitize(board)
+    by_id = {o["id"]: o for o in orgs}
     page = {o["id"]: bs.company_page_html(o, [], board, brand, by_id, {}, 1) for o in orgs}
     strip = lambda h: h.split('class="costrip"', 1)[-1][:400]
     if '>0</div><dt>open roles' not in strip(page["read-co"]):
@@ -26189,6 +26284,10 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     if "Their hiring board" in page["none-co"]:
         errors += fail("a company with no board on file links its homepage as "
                        "'Their hiring board'")
+    if "empty right now" in page["scoped-co"] or "52 roles" not in page["scoped-co"] \
+            or "2 federal roles" not in page["scoped-co"]:
+        errors += fail("a board we read whose every role this board leaves out is "
+                       "called empty, or does not say how many it left out and why")
     rail = page["rival-co"].split("<h2>Competitors</h2>", 1)[-1][:900]
     if rail.count('<span class="n">&mdash;</span>') != 2 or '<span class="n">0</span>' not in rail:
         errors += fail("competitor rows do not tell a measured 0 from a board "
@@ -26207,11 +26306,11 @@ def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
         return errors + fail(f"boardState() answered for {len(js)} of {len(live)} "
                              f"organizations")
     differ = [o["id"] for o in live
-              if js.get(o["id"]) != [bs.board_state(o), bs.open_count(o)]]
+              if js.get(o["id"]) != [bs.board_state(o), bs.open_count(o), bs.scope_note(o)]]
     if differ:
         errors += fail(f"index.html and build_site.py disagree about what a count "
                        f"means on {len(differ)} companies, e.g. {differ[:3]}")
-    zero_unread = [k for k, (st, n) in js.items() if n == "0" and st != "read"]
+    zero_unread = [k for k, (st, n, _note) in js.items() if n == "0" and st != "read"]
     if zero_unread:
         errors += fail(f"{len(zero_unread)} companies print 0 open roles with no "
                        f"board read, e.g. {zero_unread[:3]}")
@@ -28767,6 +28866,8 @@ def main() -> int:
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
+    errors += check_a_public_sector_title_is_recognised()
+    errors += check_no_control_characters_in_source()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
     errors += check_the_news_sweep_stops_before_the_job_does()
