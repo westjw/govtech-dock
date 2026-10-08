@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Eliminating Crime and Protecting Employees at Marathon Petroleum",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/eliminating-crime-protecting-employees-marathon-petroleum"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/resources/snipes-ad-throwing-brick"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Snipes: Million Dollar Savings",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/snipes-ad-million-dollar-savings"
   }
  ],
  "profile": {

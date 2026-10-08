@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-05-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Inside the UVic research: how peer-reviewed comorbidity data reshaped HiBoop's recommendation logic",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-03-26",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-09-05",
    "headline": "HiBoop at NatCon 2026: Come Find Us at Booth 1441",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-03-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "From research to code: how the University of Victoria shaped HiBoop's clinical brain",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-03-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AuDHD: What Happens When ADHD and Autism Coexist",
    "kind": "press",
@@ -85,7 +85,7 @@
    "date": "2026-01-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "How to Choose Mental Health Assessments for Your Clinic",
+   "headline": "Evidence-based guidance for selecting the right clinical assessments for your practice and patient population.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hiboop.com/insights/choosing-assessments/"
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-01-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "HiBoop Launches Clinical Pilot for Innovative Mental Health Assessment Platform",
    "kind": "product",

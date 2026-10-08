@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "How Successful Co-Response Models Are Built on Data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/co-response-models-built-on-data"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/working-across-jurisdictions-to-create-a-safer-arizona"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Data governance built for public trust: Peregrine access policies | Peregrine",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://peregrine.io/resources/peregrine-access-policies-data-governance-built-for-public-trust"
   }
  ],
  "profile": {

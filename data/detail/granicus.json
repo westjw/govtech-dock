@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Reducing avoidable calls with clearer digital services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/reducing-avoidable-calls-with-clearer-digital-services/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launch",
    "url": "https://granicus.com/blog/belmont-turned-ai-launch-into-community-experience/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "6 takeaways from government leaders on the future of AI in the public sector",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://granicus.com/blog/6-takeaways-from-government-leaders-on-the-future-of-ai-in-the-public-sector/"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "UK Sanctions Cryptomus, Heleket, and TokenSpot in New Russia Package Targeting Crypto and Payment Channels",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/uk-sanctions-cryptomus-heleket-and-tokenspot-in-new-russia-package-targeting-crypto-and-payment-channels"
+  },
+  {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Beyond ASIC's No-Action Period: What Digital Asset Firms in Australia Need to Know",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Kyrgyzstani Exchange TokenSpot Determined to Be Front Company for Sanctioned Russian Exchange Grinex",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "TRM Labs and Zscaler ThreatLabz Join Forces to Track Cybercrime and Nation-State Blockchain Activity",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Americans Are Buying Peptides From the Same Chinese Chemical Vendors Selling Fentanyl Precursors: Sales Up 32% Since 2023",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/the-state-of-korean-digital-asset-compliance-while-the-basic-act-waits"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "TRM Labs Supports Microsoft's Disruption of EvilTokens, an AI-Powered Cybercrime Service",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/trm-labs-supports-microsofts-disruption-of-eviltokens-an-ai-powered-cybercrime-service"
   }
  ],
  "profile": {

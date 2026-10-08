@@ -4603,7 +4603,7 @@ def act_capture(body: dict) -> dict:
     suspect = []
     for j in raw:
         title = (j.get("title") or "").strip()
-        if not title or roles.is_junk(title) or roles.is_evergreen(title):
+        if not title or roles.not_a_listing(title, c["name"]):
             continue
         if _reads_like_nav(title):
             suspect.append(title)

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "time",
+   "first_seen": "2026-10-08",
+   "headline": "How West Ottawa Basketball Cut Admin Time by 15+ Hours a Week",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/west-ottawa-basketball-cut-admin-time-with-teamlinkt"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "time",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://teamlinkt.com/blog/blog/fort-saskatchewan-soccer-registration-software"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Switching from LeagueLineup to TeamLinkt: What the Migration Actually Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/what-to-know-before-switching-from-leaguelineup"
   }
  ],
  "profile": {

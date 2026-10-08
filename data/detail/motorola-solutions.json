@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Bounce back faster with a crisis management plan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/crisis-management"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.motorolasolutions.com/es/blog/physical-security-guide"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Zutrittskontrolle im Fitnessstudio: Sicherer Check-in",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/de/blog/gym-access-control"
   }
  ],
  "profile": {

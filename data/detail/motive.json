@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Truck maintenance 101: Build a program to reduce downtime and costs.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/truck-maintenance-guide/"
+  },
+  {
    "date": "2026-10-05",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Your most expensive fleet problems may be the ones you can\u2019t see.",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fleet maintenance managers: Stay on top of preventive maintenance in 2027.",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Connected fleet maintenance data: 5 strategies to improve uptime in 2027",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Engineering Physical AI: How we build real-world voice and autonomous agents at Motive",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Integration with",
    "url": "https://helpcenter.gomotive.com/hc/en-us/articles/39369883733661-AI27-Integration-with-Motive"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Precursory integration with Motive",
-   "kind": "product",
-   "kind_rule": "integration with",
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/39362233220253-Precursory-integration-with-Motive"
   }
  ],
  "profile": {

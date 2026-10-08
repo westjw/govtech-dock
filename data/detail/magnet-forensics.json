@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "S2:E5 // Research, reality, and the future of AI in digital forensics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Introducing Magnet Autokey: Accelerating your vehicle investigations",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.magnetforensics.com/resources/introducing-magnet-autokey-accelerating-your-vehicle-investigations/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -13,7 +31,7 @@
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Ask Me Anything: Accelerating incident response with digital forensics at scale",
+   "headline": "Ask Me Anything: Accelerating incident res\u2026",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/ask-me-anything-accelerating-incident-response-with-digital-forensics-at-scale/"
@@ -35,15 +53,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/forensic-early-case-assessment-why-the-evidence-must-come-first/"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "S2:E5 // Research, reality, and the future o\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/s2e5-research-reality-and-the-future-of-ai-in-digital-forensics/"
   },
   {
    "date": "2026-09-18",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.magnetforensics.com/resources/from-footage-to-evidence-introduction-to-video-forensics-and-media-authentication/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Using image classifiers to focus on what mat\u2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.magnetforensics.com/resources/using-imagine-classifiers-to-focus-on-what-matters-in-investigations/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Federal Contract Spending in FY26: Key Trends and a Look at FY27",
+   "kind": "contract",
+   "kind_rule": "Contract",
+   "url": "https://govspend.com/blog/federal-contract-spending-in-fy26-key-trends-and-a-look-at-fy27/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/market-report-the-latest-trends-in-k-12-edtech/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Market Report: The Latest Trends in SLED Financial Services",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/market-report-the-latest-trends-in-sled-financial-services/"
   }
  ]
 }

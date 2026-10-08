@@ -1710,6 +1710,12 @@ fires.
   The whole text goes to `data/jd_local.json`, gitignored, for job-hunter.
   `check_the_repo_keeps_no_job_ads`. The old text is still in git history;
   rewriting that is the owner's call.
+- **Nothing listed is a non-job (2026-10-08).** `roles.not_a_listing` -
+  junk, talent pools, expressions of interest, internal-only reqs, unfilled
+  placeholders, the employer's own name - is asked at capture, at crawl, in
+  the manual merge (captures made under an older rule) and on a redraw. 22
+  rows came off. `check_no_listing_is_a_non_job` pins real jobs that share
+  the words ("Internal Audit Manager") and reads the published board.
 - **A company with no board says which kind**: none found, turned away
   (`probe == "blocked"`), or not looked for yet. `no_board_note()` and
   `noBoardText()`. A board we read whose every role this board leaves out

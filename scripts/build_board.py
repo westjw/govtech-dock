@@ -280,7 +280,7 @@ def _stored_roles_as_jobs(c: dict) -> list[dict]:
         # includes roles which never reach the board is a number that lies
         # about its own work. SchoolStatus's stored role is "Account Executive
         # (Future Opportunities)" - a talent pool, not an opening.
-        if roles.is_junk(title) or roles.is_evergreen(title):
+        if roles.not_a_listing(title, *names):
             continue
         board = _domain_root(url)
         if not board:
@@ -1367,6 +1367,12 @@ def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
         # from manual.json, so it is also the one path by which a `jd` key
         # could ever ride into the public file - derived() rebuilds the
         # pay fields from scratch and the pop removes the text itself.
+        # A capture is filtered when it lands (admin.act_capture), but only by
+        # the rule as it stood that day: "Exciting opportunities await you."
+        # and "Aira Tech Corp." were captured 2026-09-15 and published for
+        # three weeks. So the build asks again, with today's rule.
+        if roles.not_a_listing(mp.get("title") or "", mp.get("company")):
+            continue
         row = manual_row(mp)
         # ONE ID, ONE ROW, across both sources. A captured posting is kept
         # because the fetcher could not read the company; when the fetcher
@@ -1995,7 +2001,7 @@ def main() -> int:
         # shaped like a measurement, so it is gone rather than left at 0.
         for j in jobs:
             title = (j.get("title") or "").strip()
-            if roles.is_junk(title) or roles.is_evergreen(title):
+            if roles.not_a_listing(title, c.get("name")):
                 continue
             loc = j.get("location") or ""
             url = j.get("url") or board_url(c)

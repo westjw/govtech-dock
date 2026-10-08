@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "From the Field to Maximo: Why Mobility Matters for Utilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/from-the-field-to-maximo-why-mobility-matters-for-utilities"
+  },
+  {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "From System of Record to System of Action: Interloc\u2019s AI Journey",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Why I\u2019m Excited About What Interloc Is Bringing to APTA 2026 TRANSform & EXPO",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/ibm-maximo-application-suite-on-prem-installation-design-considerations"
-  },
-  {
-   "date": "2025-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Detecting Air Leaks in Metro Rail Pneumatic Systems with IBM Maximo Monitor Derived Metrics",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/detecting-air-leaks-in-metro-rail-pneumatic-systems-with-ibm-maximo-monitor-derived-metrics"
   }
  ],
  "profile": {

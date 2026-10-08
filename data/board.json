@@ -4065,7 +4065,7 @@
    "approx_count": 180,
    "companies": 27,
    "hiring": 9,
-   "open_roles": 255
+   "open_roles": 252
   },
   {
    "tag": "ASBO School Business 2026",
@@ -4244,8 +4244,8 @@
    "state": null,
    "approx_count": 129,
    "companies": 41,
-   "hiring": 13,
-   "open_roles": 378
+   "hiring": 12,
+   "open_roles": 377
   },
   {
    "tag": "North Carolina League of Municipalities 2027",
@@ -4335,7 +4335,7 @@
    "approx_count": null,
    "companies": 102,
    "hiring": 25,
-   "open_roles": 680
+   "open_roles": 677
   },
   {
    "tag": "AACE 2026",
@@ -4479,7 +4479,7 @@
    "approx_count": null,
    "companies": 70,
    "hiring": 22,
-   "open_roles": 510
+   "open_roles": 507
   },
   {
    "tag": "NACo Legislative 2026",
@@ -4749,7 +4749,7 @@
    "approx_count": 221,
    "companies": 68,
    "hiring": 17,
-   "open_roles": 525
+   "open_roles": 522
   },
   {
    "tag": "NASFAA 2026",
@@ -4983,7 +4983,7 @@
    "approx_count": 37,
    "companies": 6,
    "hiring": 4,
-   "open_roles": 256
+   "open_roles": 253
   },
   {
    "tag": "NPELRA 2026",
@@ -5037,7 +5037,7 @@
    "approx_count": null,
    "companies": 94,
    "hiring": 20,
-   "open_roles": 617
+   "open_roles": 613
   },
   {
    "tag": "GMIS International 2026",
@@ -5091,7 +5091,7 @@
    "approx_count": 80,
    "companies": 9,
    "hiring": 5,
-   "open_roles": 326
+   "open_roles": 323
   },
   {
    "tag": "AJA 2027",
@@ -5325,7 +5325,7 @@
    "approx_count": null,
    "companies": 162,
    "hiring": 35,
-   "open_roles": 1218
+   "open_roles": 1217
   },
   {
    "tag": "AAPA 2026",
@@ -5793,7 +5793,7 @@
    "approx_count": null,
    "companies": 88,
    "hiring": 14,
-   "open_roles": 256
+   "open_roles": 255
   },
   {
    "tag": "SWANA WASTECON 2025",
@@ -6081,7 +6081,7 @@
    "approx_count": 80,
    "companies": 46,
    "hiring": 12,
-   "open_roles": 106
+   "open_roles": 99
   },
   {
    "tag": "ISTELive 2026",
@@ -6171,7 +6171,7 @@
    "approx_count": null,
    "companies": 120,
    "hiring": 20,
-   "open_roles": 729
+   "open_roles": 725
   },
   {
    "tag": "NAST 2026",
@@ -6261,7 +6261,7 @@
    "approx_count": 20,
    "companies": 19,
    "hiring": 2,
-   "open_roles": 60
+   "open_roles": 59
   },
   {
    "tag": "NAYS 2026",
@@ -6286,40 +6286,40 @@
  "unreadable": 19,
  "rendered": 6,
  "no_board_on_file": 862,
- "manual_postings": 258,
+ "manual_postings": 256,
  "manual_already_fetched": 3,
  "totals": {
-  "postings": 7523,
-  "quota_carrying_postings": 1116,
-  "openings": 6211,
-  "quota_carrying": 743,
-  "us": 2751,
-  "non_us": 1704,
+  "postings": 7501,
+  "quota_carrying_postings": 1113,
+  "openings": 6189,
+  "quota_carrying": 740,
+  "us": 2743,
+  "non_us": 1701,
   "families": {
    "engineering": 1457,
    "ops": 213,
-   "gtm": 1746,
+   "gtm": 1737,
    "policy": 11,
-   "ga": 432,
+   "ga": 431,
    "product": 254,
    "cs": 365,
-   "field": 463,
-   "other": 1014,
+   "field": 461,
+   "other": 1004,
    "data": 204,
    "exec": 52
   },
   "sectors": {
-   "Public Safety": 1457,
+   "Public Safety": 1456,
    "Public Works": 1008,
-   "Transit & Parking": 547,
-   "General Gov": 1218,
-   "Parks & Rec": 217,
-   "K-12 Schools": 164,
-   "Utilities & Energy": 267,
-   "Health & Human Services": 255,
+   "Transit & Parking": 546,
+   "General Gov": 1213,
+   "Parks & Rec": 215,
+   "K-12 Schools": 157,
+   "Utilities & Energy": 266,
+   "Health & Human Services": 254,
    "Courts & Justice": 42,
-   "Airports & Aviation": 853,
-   "Higher Education": 172,
+   "Airports & Aviation": 850,
+   "Higher Education": 171,
    "Housing & Community Dev": 11
   },
   "pay_stated": 1377,
@@ -6328,8 +6328,8 @@
    "ats": 495,
    "text": 1071
   },
-  "jd_read_postings": 3754,
-  "jd_unread_postings": 3769
+  "jd_read_postings": 3741,
+  "jd_unread_postings": 3760
  },
  "organizations": [
   {
@@ -9689,8 +9689,8 @@
     "APTA 2026"
    ],
    "conference": "APTA 2026",
-   "open_roles": 16,
-   "open_postings": 16,
+   "open_roles": 15,
+   "open_postings": 15,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
@@ -9698,8 +9698,7 @@
     "ops": 2,
     "ga": 1,
     "gtm": 1,
-    "exec": 1,
-    "other": 1
+    "exec": 1
    },
    "phase": "building: hiring mostly engineers and product",
    "unreadable": null,
@@ -11329,7 +11328,7 @@
     "Simpleview (Granicus Destinations)"
    ],
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -23000,13 +22999,13 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 13,
-   "open_postings": 13,
+   "open_roles": 12,
+   "open_postings": 12,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
     "engineering": 6,
-    "other": 3,
+    "other": 2,
     "data": 1,
     "ops": 1,
     "ga": 1,
@@ -25687,7 +25686,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "unread",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -26863,7 +26862,7 @@
      "why": "CJIS-aligned intelligence request and case workflow for the same fusion center and agency intel unit buyer Kaseware targets."
     }
    ],
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -27311,7 +27310,7 @@
      "why": "Field digital forensic triage software competing with XRY Express for the same patrol/investigator field-extraction rollout"
     }
    ],
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -27622,7 +27621,7 @@
      "why": "OSINT and comms analytics via Cobwebs sold into the same LE intelligence unit deciding on one open-source intelligence platform"
     }
    ],
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -29002,12 +29001,12 @@
     "NSA 2026"
    ],
    "conference": "IACP 2026",
-   "open_roles": 33,
-   "open_postings": 37,
+   "open_roles": 32,
+   "open_postings": 36,
    "quota_roles": 2,
    "quota_postings": 2,
    "families": {
-    "other": 8,
+    "other": 7,
     "gtm": 5,
     "engineering": 8,
     "data": 1,
@@ -29661,7 +29660,7 @@
      "why": "Training LMS, policy/accountability content and Guardian Tracking sold to the same chief and training bureau on the same annual content subscription Lexipol bids."
     }
    ],
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -43824,7 +43823,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -49564,7 +49563,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -51006,7 +51005,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -54352,12 +54351,12 @@
     "EDUCAUSE 2026"
    ],
    "conference": "APTA 2026",
-   "open_roles": 152,
-   "open_postings": 161,
+   "open_roles": 149,
+   "open_postings": 158,
    "quota_roles": 16,
    "quota_postings": 17,
    "families": {
-    "gtm": 72,
+    "gtm": 69,
     "ga": 13,
     "other": 25,
     "cs": 9,
@@ -55245,13 +55244,11 @@
     "NLC City Summit 2026"
    ],
    "conference": "ICMA 2026",
-   "open_roles": 1,
-   "open_postings": 1,
+   "open_roles": 0,
+   "open_postings": 0,
    "quota_roles": 0,
    "quota_postings": 0,
-   "families": {
-    "other": 1
-   },
+   "families": {},
    "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
@@ -72245,12 +72242,12 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 6,
-   "open_postings": 6,
+   "open_roles": 5,
+   "open_postings": 5,
    "quota_roles": 1,
    "quota_postings": 1,
    "families": {
-    "gtm": 3,
+    "gtm": 2,
     "other": 1,
     "product": 1,
     "cs": 1
@@ -76060,14 +76057,14 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 12,
-   "open_postings": 12,
+   "open_roles": 11,
+   "open_postings": 11,
    "quota_roles": 4,
    "quota_postings": 4,
    "families": {
     "gtm": 5,
-    "other": 3,
     "data": 1,
+    "other": 2,
     "product": 1,
     "engineering": 2
    },
@@ -84844,16 +84841,16 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 189,
-   "open_postings": 216,
+   "open_roles": 187,
+   "open_postings": 214,
    "quota_roles": 13,
    "quota_postings": 16,
    "families": {
     "engineering": 44,
     "gtm": 29,
-    "other": 53,
+    "other": 52,
     "field": 21,
-    "ga": 23,
+    "ga": 22,
     "cs": 6,
     "data": 12,
     "policy": 1
@@ -94144,13 +94141,11 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 1,
-   "open_postings": 1,
+   "open_roles": 0,
+   "open_postings": 0,
    "quota_roles": 0,
    "quota_postings": 0,
-   "families": {
-    "other": 1
-   },
+   "families": {},
    "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
@@ -107935,16 +107930,15 @@
     "CoSN 2026"
    ],
    "conference": "CoSN 2026",
-   "open_roles": 9,
-   "open_postings": 9,
-   "quota_roles": 2,
-   "quota_postings": 2,
+   "open_roles": 3,
+   "open_postings": 3,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
-    "gtm": 6,
-    "field": 2,
+    "gtm": 2,
     "data": 1
    },
-   "phase": "selling: a go-to-market push",
+   "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
@@ -112812,13 +112806,13 @@
     "CoSN 2026"
    ],
    "conference": "CoSN 2026",
-   "open_roles": 5,
-   "open_postings": 5,
-   "quota_roles": 2,
-   "quota_postings": 2,
+   "open_roles": 4,
+   "open_postings": 4,
+   "quota_roles": 1,
+   "quota_postings": 1,
    "families": {
     "cs": 1,
-    "gtm": 3,
+    "gtm": 2,
     "ga": 1
    },
    "phase": "selling: a go-to-market push",
@@ -114185,12 +114179,12 @@
     "EDUCAUSE 2026"
    ],
    "conference": "EDUCAUSE 2026",
-   "open_roles": 8,
-   "open_postings": 8,
+   "open_roles": 7,
+   "open_postings": 7,
    "quota_roles": 1,
    "quota_postings": 1,
    "families": {
-    "other": 4,
+    "other": 3,
     "cs": 1,
     "data": 1,
     "field": 1,
@@ -115960,12 +115954,12 @@
     "NASWA 2025"
    ],
    "conference": "NASWA 2025",
-   "open_roles": 40,
-   "open_postings": 58,
+   "open_roles": 39,
+   "open_postings": 57,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
-    "other": 31,
+    "other": 30,
     "data": 1,
     "field": 1,
     "gtm": 1,
@@ -118723,7 +118717,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -118782,7 +118776,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -118840,7 +118834,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -118898,7 +118892,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119014,7 +119008,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119072,7 +119066,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119130,7 +119124,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119246,7 +119240,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119362,7 +119356,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119420,7 +119414,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119537,7 +119531,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119599,7 +119593,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119715,7 +119709,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119773,7 +119767,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119831,7 +119825,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119891,7 +119885,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -119949,7 +119943,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120007,7 +120001,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120240,7 +120234,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120306,7 +120300,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120364,7 +120358,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120422,7 +120416,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120538,7 +120532,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120719,7 +120713,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120777,7 +120771,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120835,7 +120829,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -120896,7 +120890,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121013,7 +121007,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121078,7 +121072,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121136,7 +121130,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121194,7 +121188,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121252,7 +121246,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121310,7 +121304,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121368,7 +121362,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121429,7 +121423,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121610,7 +121604,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121785,7 +121779,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121909,7 +121903,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -121971,7 +121965,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122031,7 +122025,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122089,7 +122083,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122147,7 +122141,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122209,7 +122203,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122499,7 +122493,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122557,7 +122551,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122789,7 +122783,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122905,7 +122899,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -122963,7 +122957,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123079,7 +123073,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123137,7 +123131,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123210,7 +123204,7 @@
    ],
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123337,7 +123331,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123395,7 +123389,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123453,7 +123447,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123570,7 +123564,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123628,7 +123622,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123693,7 +123687,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -123751,7 +123745,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124052,7 +124046,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124110,7 +124104,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124175,7 +124169,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124596,7 +124590,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124662,7 +124656,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124836,7 +124830,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124894,7 +124888,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -124952,7 +124946,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125010,7 +125004,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125242,7 +125236,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125300,7 +125294,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125358,7 +125352,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125416,7 +125410,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125474,7 +125468,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125532,7 +125526,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125596,7 +125590,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125654,7 +125648,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125712,7 +125706,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125770,7 +125764,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -125829,7 +125823,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126126,7 +126120,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126184,7 +126178,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126242,7 +126236,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126358,7 +126352,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126474,7 +126468,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126648,7 +126642,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126706,7 +126700,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126822,7 +126816,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126880,7 +126874,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -126996,7 +126990,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127054,7 +127048,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127170,7 +127164,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127235,7 +127229,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127293,7 +127287,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127412,7 +127406,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127470,7 +127464,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127528,7 +127522,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127586,7 +127580,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127644,7 +127638,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127818,7 +127812,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "unread",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -127993,7 +127987,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128054,7 +128048,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128112,7 +128106,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128170,7 +128164,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128286,7 +128280,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128344,7 +128338,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128404,7 +128398,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128462,7 +128456,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128520,7 +128514,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128636,7 +128630,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128754,7 +128748,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "items",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -128931,7 +128925,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -129171,7 +129165,7 @@
    "also_known_as": null,
    "competitors": null,
    "news_state": "none_found",
-   "news_checked_on": "2026-10-07",
+   "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
@@ -129466,13 +129460,13 @@
    "competitors_checked_on": null,
    "conferences": [],
    "conference": null,
-   "open_roles": 41,
-   "open_postings": 41,
+   "open_roles": 40,
+   "open_postings": 40,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
     "engineering": 28,
-    "other": 4,
+    "other": 3,
     "ops": 2,
     "field": 1,
     "gtm": 3,
@@ -213700,37 +213694,6 @@
    "opening_locations": 1
   },
   {
-   "id": "es-s::Apply for future positions at ES&S::1fe47dc9",
-   "opening_id": "es-s::Apply for future positions at ES&S",
-   "company": "ES&S (Election Systems & Software)",
-   "company_id": "es-s",
-   "title": "Apply for future positions at ES&S",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Omaha or Remote",
-   "is_us": null,
-   "jd_seen": true,
-   "comp": null,
-   "url": "https://recruiting.paylocity.com/recruiting/jobs/All/9e5dfb87-edb1-4c67-b79a-b0468de29488/Election-Systems-Software-LLC",
-   "sector": "General Gov",
-   "category": "Elections",
-   "also": null,
-   "first_seen": "2026-09-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "hart-intercivic::Customer Support Center Consultant Level 1 (CSC 1)::217d6a21",
    "opening_id": "hart-intercivic::Customer Support Center Consultant Level 1 (CSC 1)",
    "company": "Hart InterCivic",
@@ -238808,38 +238771,6 @@
    "comp": null,
    "posted": "2026-08-31",
    "url": "https://www.droneshield.com/open-positions?gh_jid=4006425201",
-   "sector": "Public Safety",
-   "category": "Police",
-   "also": null,
-   "first_seen": "2026-09-08",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "droneshield::\ud83d\udd0dWant to work with us but don't see the right role?::e319a682",
-   "opening_id": "droneshield::\ud83d\udd0dWant to work with us but don't see the right role?",
-   "company": "DroneShield",
-   "company_id": "droneshield",
-   "title": "\ud83d\udd0dWant to work with us but don't see the right role?",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Anywhere in the world",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-08-03",
-   "url": "https://www.droneshield.com/open-positions?gh_jid=4005398201",
    "sector": "Public Safety",
    "category": "Police",
    "also": null,
@@ -264544,37 +264475,6 @@
    "opening_locations": 1
   },
   {
-   "id": "workday::Business Development Representative - [Expression of interest]::69d125f4",
-   "opening_id": "workday::Business Development Representative - [Expression of interest]",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Business Development Representative - [Expression of interest]",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Singapore",
-   "is_us": false,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Singapore/Business-Development-Representative---Korean-Speaking_JR-0109533",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-09-09",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "workday::Senior Treasury Manager::c6eb1720",
    "opening_id": "workday::Senior Treasury Manager",
    "company": "Workday",
@@ -264914,68 +264814,6 @@
    "category": "Finance & ERP",
    "also": null,
    "first_seen": "2026-09-30",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "workday::Expression of Interest: Business Development Representative (Supporting Taiwan)::c00997db",
-   "opening_id": "workday::Expression of Interest: Business Development Representative (Supporting Taiwan)",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Expression of Interest: Business Development Representative (Supporting Taiwan)",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "2 Locations",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Singapore/Expression-of-Interest--Business-Development-Representative--Supporting-Taiwan-_JR-0101860",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-08-20",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "workday::Expression of Interest: Business Development Representative (Supporting Hong Kong)::a7388ee3",
-   "opening_id": "workday::Expression of Interest: Business Development Representative (Supporting Hong Kong)",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Expression of Interest: Business Development Representative (Supporting Hong Kong)",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "2 Locations",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Singapore/Expression-of-Interest--Business-Development-Representative--Supporting-Hong-Kong-_JR-0101859",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-08-20",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -276778,41 +276616,6 @@
    "source": "ats",
    "opening_postings": 228,
    "opening_locations": 223
-  },
-  {
-   "id": "summer::Additional Roles (Resume Drop)::d4aa9e38",
-   "opening_id": "summer::Additional Roles (Resume Drop)",
-   "company": "Summer",
-   "company_id": "summer",
-   "title": "Additional Roles (Resume Drop)",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "New York",
-    "state": "NY"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "New York, New York, United States",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2020-05-27",
-   "url": "https://job-boards.greenhouse.io/summer/jobs/4077755003",
-   "sector": "General Gov",
-   "category": "HR & Workforce",
-   "also": null,
-   "first_seen": "2026-09-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
   },
   {
    "id": "ascento-ag::Robot Technician::72f0b5e7",
@@ -301055,37 +300858,6 @@
    "opening_locations": 1
   },
   {
-   "id": "dtn::SaaS Sales Professionals \u2013 Ongoing Opportunities::b19badea",
-   "opening_id": "dtn::SaaS Sales Professionals \u2013 Ongoing Opportunities",
-   "company": "DTN",
-   "company_id": "dtn",
-   "title": "SaaS Sales Professionals \u2013 Ongoing Opportunities",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote, TX",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "url": "https://dtn.wd1.myworkdayjobs.com/en-US/DTN_Careers/job/Remote-TX/SaaS-Sales-Professionals---Ongoing-Opportunities_R-002947",
-   "sector": "Parks & Rec",
-   "category": "Weather & Outdoor Safety",
-   "also": null,
-   "first_seen": "2026-08-27",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "dtn::Global Customer Services Manager \u2013 Energy::c98b1909",
    "opening_id": "dtn::Global Customer Services Manager \u2013 Energy",
    "company": "DTN",
@@ -304724,38 +304496,6 @@
    "comp": null,
    "posted": "2026-03-30",
    "url": "https://job-boards.greenhouse.io/bloomerang/jobs/4679213005",
-   "sector": "Parks & Rec",
-   "category": "Volunteer Management",
-   "also": null,
-   "first_seen": "2026-08-19",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "initlive::Don't see what you're looking for?::cc1745a2",
-   "opening_id": "initlive::Don't see what you're looking for?",
-   "company": "InitLive (Bloomerang Volunteer)",
-   "company_id": "initlive",
-   "title": "Don't see what you're looking for?",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote, US",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-01-21",
-   "url": "https://job-boards.greenhouse.io/bloomerang/jobs/4651854005",
    "sector": "Parks & Rec",
    "category": "Volunteer Management",
    "also": null,
@@ -328551,37 +328291,6 @@
    "opening_locations": 0
   },
   {
-   "id": "bruker-detection::Statutory Reporting & Compliance Specialist - Unsolicited Applications (m/f/d)::c17b9ebd",
-   "opening_id": "bruker-detection::Statutory Reporting & Compliance Specialist - Unsolicited Applications (m/f/d)",
-   "company": "Bruker Detection",
-   "company_id": "bruker-detection",
-   "title": "Statutory Reporting & Compliance Specialist - Unsolicited Applications (m/f/d)",
-   "family": "ga",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://internationalcareers-bruker.icims.com/jobs/19292/statutory-reporting-%26-compliance-specialist---unsolicited-applications-%28m-f-d%29/job?hub=12&in_iframe=1",
-   "sector": "Airports & Aviation",
-   "category": "Security & Screening",
-   "also": null,
-   "first_seen": "2026-09-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
    "id": "bruker-detection::(Senior) General Ledger Specialist (m/f/d)::ac8bc278",
    "opening_id": "bruker-detection::(Senior) General Ledger Specialist (m/f/d)",
    "company": "Bruker Detection",
@@ -329255,37 +328964,6 @@
    "jd_seen": false,
    "comp": null,
    "url": "https://internationalcareers-bruker.icims.com/jobs/18441/key-account-manager%2c-japan/job?hub=12&in_iframe=1",
-   "sector": "Airports & Aviation",
-   "category": "Security & Screening",
-   "also": null,
-   "first_seen": "2026-09-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "bruker-detection::Unsolicited Application (m/w/d)::47b5d698",
-   "opening_id": "bruker-detection::Unsolicited Application (m/w/d)",
-   "company": "Bruker Detection",
-   "company_id": "bruker-detection",
-   "title": "Unsolicited Application (m/w/d)",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://germancareers-bruker.icims.com/jobs/18406/unsolicited-application-%28m-w-d%29/job?hub=12&in_iframe=1",
    "sector": "Airports & Aviation",
    "category": "Security & Screening",
    "also": null,
@@ -366428,37 +366106,6 @@
    "opening_locations": 1
   },
   {
-   "id": "minga::Director, Account Management (INTERNAL APPLICANTS ONLY)::4b5dc1ce",
-   "opening_id": "minga::Director, Account Management (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Director, Account Management (INTERNAL APPLICANTS ONLY)",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": true,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/110",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
    "id": "minga::Director, Account Management::5d49c4e2",
    "opening_id": "minga::Director, Account Management",
    "company": "Minga",
@@ -366491,161 +366138,6 @@
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
-  },
-  {
-   "id": "minga::Manager, Customer Implementation (INTERNAL APPLICANTS ONLY)::8aede2ab",
-   "opening_id": "minga::Manager, Customer Implementation (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Manager, Customer Implementation (INTERNAL APPLICANTS ONLY)",
-   "family": "field",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/112",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "minga::Manager, Account Management (INTERNAL APPLICANTS ONLY)::ebcedfff",
-   "opening_id": "minga::Manager, Account Management (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Manager, Account Management (INTERNAL APPLICANTS ONLY)",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/113",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "minga::Implementation Manager (INTERNAL APPLICANTS ONLY)::df45e879",
-   "opening_id": "minga::Implementation Manager (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Implementation Manager (INTERNAL APPLICANTS ONLY)",
-   "family": "field",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/114",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "minga::Account Manager (INTERNAL APPLICANTS ONLY)::3db3c690",
-   "opening_id": "minga::Account Manager (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Account Manager (INTERNAL APPLICANTS ONLY)",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/115",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "minga::Account Executive (INTERNAL APPLICANTS ONLY)::89ae569f",
-   "opening_id": "minga::Account Executive (INTERNAL APPLICANTS ONLY)",
-   "company": "Minga",
-   "company_id": "minga",
-   "title": "Account Executive (INTERNAL APPLICANTS ONLY)",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://minga.bamboohr.com/careers/116",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-09-16",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
   },
   {
    "id": "minga::Senior Data Engineer::410e9988",
@@ -370179,38 +369671,6 @@
    "opening_locations": 1
   },
   {
-   "id": "follett-software::Expression of Interest: Outside Sales Consultant/Account Executive::4972396f",
-   "opening_id": "follett-software::Expression of Interest: Outside Sales Consultant/Account Executive",
-   "company": "Follett Software",
-   "company_id": "follett-software",
-   "title": "Expression of Interest: Outside Sales Consultant/Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote - USA",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-05-04",
-   "url": "https://job-boards.greenhouse.io/follettsoftware/jobs/5209314008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "also": null,
-   "first_seen": "2026-10-02",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "follett-software::Inside Sales Account Executive::6cde752f",
    "opening_id": "follett-software::Inside Sales Account Executive",
    "company": "Follett Software",
@@ -372711,41 +372171,6 @@
    "opening_locations": 1
   },
   {
-   "id": "ad-astra-information-systems::Don't see your job, but want to be part of Ad Astra? Apply Here::33d52c70",
-   "opening_id": "ad-astra-information-systems::Don't see your job, but want to be part of Ad Astra? Apply Here",
-   "company": "Ad Astra Information Systems",
-   "company_id": "ad-astra-information-systems",
-   "title": "Don't see your job, but want to be part of Ad Astra? Apply Here",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Overland Park",
-    "state": "KS"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Overland Park, KS, US",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "posted": "2017-04-19",
-   "url": "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=494ef77f-89dc-46b0-9ada-272945a487a1&ccId=19000101_000001&jobId=1357154481_2221&lang=en_US",
-   "sector": "Higher Education",
-   "category": "IT & Administration",
-   "also": null,
-   "first_seen": "2026-10-08",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "boodlebox::Onboarding & Digital Success Lead::983cdc39",
    "opening_id": "boodlebox::Onboarding & Digital Success Lead",
    "company": "BoodleBox",
@@ -374893,38 +374318,6 @@
    "category": "Workforce & Labor",
    "also": null,
    "first_seen": "2026-09-22",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "career-team::Referral Program & Talent Pipeline::c22a0da4",
-   "opening_id": "career-team::Referral Program & Talent Pipeline",
-   "company": "Career TEAM",
-   "company_id": "career-team",
-   "title": "Referral Program & Talent Pipeline",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote in the United States",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-10-07",
-   "url": "https://job-boards.greenhouse.io/careerteam/jobs/4741663005",
-   "sector": "Health & Human Services",
-   "category": "Workforce & Labor",
-   "also": null,
-   "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -386333,41 +385726,6 @@
    "opening_locations": 1
   },
   {
-   "id": "heron-power::<insert job you excel at>::0e72c982",
-   "opening_id": "heron-power::<insert job you excel at>",
-   "company": "Heron Power",
-   "company_id": "heron-power",
-   "title": "<insert job you excel at>",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Scotts Valley",
-    "state": "CA"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "onsite",
-   "location": "Scotts Valley",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2025-04-29",
-   "url": "https://jobs.ashbyhq.com/heron-power/3bc464ac-0543-4a54-9e94-618080a78966",
-   "sector": "Utilities & Energy",
-   "category": "Grid & Energy",
-   "also": null,
-   "first_seen": "2026-09-21",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "heron-power::Engineering Technician::2e592dd2",
    "opening_id": "heron-power::Engineering Technician",
    "company": "Heron Power",
@@ -395755,68 +395113,6 @@
    "opening_locations": 0
   },
   {
-   "id": "hayden-ai::Exciting opportunities await you.::016488d7",
-   "company": "Hayden AI",
-   "company_id": "hayden-ai",
-   "title": "Exciting opportunities await you.",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "url": "https://www.hayden.ai/careers",
-   "sector": "Transit & Parking",
-   "category": "Rider Experience",
-   "first_seen": "2026-09-15",
-   "captured_from": "https://www.hayden.ai/careers",
-   "source": "manual",
-   "jd_seen": true,
-   "comp": null,
-   "opening_id": "hayden-ai::Exciting opportunities await you.",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
-   "id": "aira::Aira Tech Corp.::85608248",
-   "company": "Aira",
-   "company_id": "aira",
-   "title": "Aira Tech Corp.",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "url": "https://secure6.saashr.com/ta/6195354.careers?CareersSearch=&lang=en-US",
-   "sector": "Airports & Aviation",
-   "category": "Terminal & Passenger Experience",
-   "first_seen": "2026-09-15",
-   "captured_from": "https://secure6.saashr.com/ta/6195354.careers?CareersSearch=&lang=en-US",
-   "source": "manual",
-   "jd_seen": true,
-   "comp": null,
-   "opening_id": "aira::Aira Tech Corp.",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
    "id": "autura::Revenue & Billing Operations Manager::17f27170",
    "company": "Autura",
    "company_id": "autura",
@@ -396179,5 +395475,9 @@
   "absent": 566,
   "unchecked": 117,
   "blocked": 179
+ },
+ "redrawn": {
+  "at": "2026-10-08T19:45:49Z",
+  "inputs": "c1a4398bac7b65bff58706f08a7aadb4415aaeac4259e37b2fd17cf05830b0bf"
  }
 }

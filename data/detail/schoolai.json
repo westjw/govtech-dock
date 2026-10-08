@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Digital Citizenship Week: Help students check AI answers before they trust them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/digital-citizenship-week-ai-claim-check"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "SchoolAI vs. teacher-facing AI tools: Grading, planning, and personalization with teachers in charge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://schoolai.com/blog/schoolai-vs-teacher-facing-ai-tools"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://schoolai.com/blog/new-features-2026-2027"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "District AI Rollout Plan, Rolling Out AI Across a School District",
-   "kind": "contract",
-   "kind_rule": "Rollout",
-   "url": "https://schoolai.com/blog/digital-tools-for-school-districts"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "AI guardrails: Keeping students safe and learning on track",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://schoolai.com/blog/ai-guardrails-keeping-students-safe-and-learning-on-track"
   }
  ]
 }

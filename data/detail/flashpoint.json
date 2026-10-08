@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "CastleStealer: An Emerging Infostealer Growing More Sophisticated",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/flashpoint-global-threat-intelligence-report-midyear-2026/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Data Center Physical Security: Mitigating FPV Drone Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/data-center-physical-security-mitigating-fpv-drone-threats/"
   }
  ],
  "profile": {

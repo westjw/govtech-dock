@@ -38,12 +38,22 @@ LABEL = {
 # Extraction artifacts. Some careers pages yield image filenames and stray markup;
 # "Xplor_Logo_withTag_Color.png" is not an opening and must never reach the board.
 JUNK = re.compile(r"\.(png|jpe?g|svg|gif|webp|pdf|css|js)\b|^\s*[\W_]+\s*$|"
-                  r"^(logo|image|icon|banner|photo)\b", re.I)
+                  r"^(logo|image|icon|banner|photo)\b|"
+                  # a template's placeholder, published unfilled:
+                  # Heron Power's "<insert job you excel at>" (2026-10-08)
+                  r"^\s*<[^<>]*>\s*$|\binsert (a |your )?(job|role|title|position)\b",
+                  re.I)
 
 # Talent-pool pages that never close. Counting them inflates every hiring number.
 EVERGREEN = re.compile(
-    r"general application|don.?t see (a|the) (job|role|position)|"
-    r"talent (pool|community|network)|future opportunit|open application|"
+    r"general application|"
+    # "Don't see your job...", "...don't see the right role?", "Don't see what
+    # you're looking for?" - the old form wanted "a|the" then the noun at once
+    r"don.?t see (a|an|any|the|your|what)\b|"
+    r"talent (pool|community|network|pipeline)|future opportunit|open application|"
+    r"future (positions|roles|openings|vacancies)|ongoing opportunit|"
+    r"expression of interest|unsolicited application|resume drop|"
+    r"opportunities await|"
     r"speculative|join our (talent|network)|other opportunit|"
     r"submit your (resume|cv)|no (matching )?role|\(evergreen\)|\bevergreen\b|spontaneous application|interested in joining|"
     r"can.?t find|didn.?t find|general interest|future consideration|"
@@ -57,6 +67,47 @@ def is_junk(title: str) -> bool:
 
 def is_evergreen(title: str) -> bool:
     return bool(EVERGREEN.search(title or ""))
+
+
+# Real openings nobody reading this board may apply for. Minga published six,
+# two of them quota-carrying, as "Account Executive (INTERNAL APPLICANTS
+# ONLY)". Anchored on "only" and on the applicant noun, because "Internal
+# Audit Manager" and "Internal Sales - Tendering Engineer" are real jobs.
+INTERNAL_ONLY = re.compile(
+    r"\binternal (applicants?|candidates?|employees?|staff) only\b|"
+    r"\b(internal|employees?) only\b|\bfor internal (applicants?|candidates?)\b", re.I)
+
+
+def is_internal_only(title: str) -> bool:
+    return bool(INTERNAL_ONLY.search(title or ""))
+
+
+# Words a company's name carries that a title never needs to repeat.
+_NAME_FILLER = {"inc", "incorporated", "corp", "corporation", "co", "company", "llc",
+                "ltd", "limited", "plc", "gmbh", "group", "holdings", "tech",
+                "technologies", "technology", "the"}
+
+
+def _name_key(s: str) -> str:
+    s = re.sub(r"\([^)]*\)", " ", s or "").lower()
+    return " ".join(w for w in re.findall(r"[a-z0-9]+", s) if w not in _NAME_FILLER)
+
+
+def is_company_name(title: str, *names: str) -> bool:
+    """A title that is only the employer's own name: a capture that read the
+    page heading. "Aira Tech Corp." on Aira's careers page (2026-09-15)."""
+    t = _name_key(title)
+    return bool(t) and any(t == _name_key(n) for n in names if n)
+
+
+def not_a_listing(title: str, *names: str) -> bool:
+    """Everything that reaches a careers page and is not an opening a reader
+    can apply for: extraction junk, a talent pool, an internal-only req, a
+    placeholder, the employer's own name. Every path a title enters the
+    board by asks this one question (launch audit, 2026-10-08: 18 such rows
+    were live, across capture, crawl and the redraw of stored rows)."""
+    return (is_junk(title) or is_evergreen(title) or is_internal_only(title)
+            or is_company_name(title, *names))
 
 
 RULES: list[tuple[str, re.Pattern]] = [

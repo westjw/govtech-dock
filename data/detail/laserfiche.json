@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Laserfiche Names Garrett Boss as CIO to Lead Enterprise IT, Security, and Business Transformation",
    "kind": "leadership",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-08-06",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Launches Advanced Enterprise Security to Deliver Multi-Region Disaster Recovery and GovRAMP-Ready Compliance for Highly Regulated Industries",
    "kind": "product",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "ChannelVision Magazine Honors Laserfiche with 2026 Visionary Spotlight Award",
    "kind": "contract",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-06-02",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Launches on AWS Marketplace, Bringing Intelligent Content Management to the Enterprise",
    "kind": "product",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-05-05",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Introduces AI Agents: The Future of Intelligent Content Management",
    "kind": "product",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-04-28",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Laserfiche Introduces AI Agents: The Future of Intelligent Content Management",
    "kind": "product",

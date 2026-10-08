@@ -303,6 +303,8 @@ def takeover(c: dict, gone: dict, rows: list, scope: dict,
             why = (f"took over {gone.get('name')}'s board, and its rows with no "
                    f"url of their own point at {fallback}")
         q.update(id=rid, opening_id=oid, company_id=cid, first_seen=generated)
+        if bb.roles.not_a_listing(title, c["name"]):
+            continue                    # not an opening; the crawl counts none
         v = bb.out_of_scope(title, rid, oid, scope, sled_only)
         if v:
             drop[v] += 1
@@ -401,6 +403,11 @@ def redraw() -> dict:
             sled_only = bool(c.get("sled_only"))
             kept, drop = [], collections.Counter()
             for p in rows:
+                # Not an opening at all (roles.not_a_listing): the crawl drops
+                # these before counting anything, so they join no count here.
+                if bb.roles.not_a_listing(p["title"], c["name"]):
+                    drop["not_a_listing"] += 1
+                    continue
                 v = bb.out_of_scope(p["title"], p["id"], p["opening_id"], scope, sled_only)
                 if v:
                     drop[v] += 1
@@ -553,7 +560,8 @@ def report(plan: dict) -> list[str]:
     if ruled_rows:
         bits.append(f"{ruled_rows} of companies ruled out of scope")
     if plan["narrowed"]:
-        bits.append(f"{sum(plan['narrowed'].values())} out of scope now at "
+        bits.append(f"{sum(plan['narrowed'].values())} now out of scope or not "
+                    f"an opening at "
                     f"{_names(sorted(plan['narrowed']), names)}")
     if plan["identical_dropped"]:
         bits.append(f"{plan['identical_dropped']} byte-identical duplicates")

@@ -8529,6 +8529,90 @@ def check_the_repo_keeps_no_job_ads() -> int:
     return errors
 
 
+def check_no_listing_is_a_non_job() -> int:
+    """Nothing on the board is a talent pool, an internal req or a heading.
+
+    Launch audit, 2026-10-08: 22 rows at 14 companies were not openings a
+    reader could apply for - six Minga reqs marked INTERNAL APPLICANTS ONLY
+    (two quota-carrying), expressions of interest, unsolicited applications,
+    a resume drop, "Don't see your job...", a template's "<insert job you
+    excel at>", and two captures that read a page heading ("Exciting
+    opportunities await you.", "Aira Tech Corp."). roles.not_a_listing is the
+    one question; this pins it both ways, drives the capture endpoint and the
+    manual merge, and reads the published board.
+    """
+    import roles as _roles
+    import build_board as bb
+    errors = 0
+    for title, names in [
+            ("Account Executive (INTERNAL APPLICANTS ONLY)", ()),
+            ("Internal Candidates Only - Sales Manager", ()),
+            ("Expression of Interest: Outside Sales Consultant/Account Executive", ()),
+            ("Business Development Representative - [Expression of interest]", ()),
+            ("Unsolicited Application (m/w/d)", ()),
+            ("Additional Roles (Resume Drop)", ()),
+            ("Don't see your job, but want to be part of Ad Astra? Apply Here", ()),
+            ("\U0001F50DWant to work with us but don't see the right role?", ()),
+            ("Don't see what you're looking for?", ()),
+            ("Referral Program & Talent Pipeline", ()),
+            ("SaaS Sales Professionals \u2013 Ongoing Opportunities", ()),
+            ("Apply for future positions at ES&S", ()),
+            ("<insert job you excel at>", ()),
+            ("Exciting opportunities await you.", ()),
+            ("Aira Tech Corp.", ("Aira",)),
+            ("Spontaneous Application", ())]:
+        if not _roles.not_a_listing(title, *names):
+            errors += fail(f"{title!r} is not an opening, and would be listed as one")
+    # real jobs that share a word with the patterns above
+    for title, names in [
+            ("Internal Audit Manager", ()), ("Internal Sales - Tendering Engineer", ()),
+            ("Internal Controller", ()), ("Internal Staff Accountant", ()),
+            ("Director, Financial Reporting & Internal Controls", ()),
+            ("Software Developer - Internal Automation", ()),
+            ("Principal Platform Engineer || Internal Developer Platform", ()),
+            ("Director, Business Development (Future Mobility)", ()),
+            ("SDET, CI/CD Pipeline and Test Infrastructure", ()),
+            ("Insert Molding Technician", ()), ("Career Advisor", ()),
+            ("Axon Account Executive", ("Axon",)), ("Account Executive", ("Acme",))]:
+        if _roles.not_a_listing(title, *names):
+            errors += fail(f"{title!r} is a real job and would be dropped as a non-listing")
+
+    # THE CAPTURE ENDPOINT asks the same question
+    import admin as _admin
+    with _sandbox_admin({"companies.json": [_ACME],
+                         "manual.json": {"checks": {}, "postings": []}}) as sb:
+        r = _admin.act_capture({"company_id": "acme", "page_url": "https://acme.test/careers",
+                                "jobs": [{"title": "Acme Inc.", "url": "https://acme.test/careers"},
+                                         {"title": "Account Executive (Internal Applicants Only)",
+                                          "url": "https://acme.test/j/1"},
+                                         {"title": "Account Executive", "url": "https://acme.test/j/2"}]})
+        got = [p["title"] for p in json.loads((sb / "manual.json").read_text())["postings"]]
+        if got != ["Account Executive"]:
+            errors += fail(f"act_capture landed {got}; only the real opening should land")
+
+    # A CAPTURE MADE UNDER AN OLDER RULE is asked again at build time
+    rows = []
+    bb.merge_manual(rows, {"postings": [
+        {"id": "acme::Acme Inc.", "title": "Acme Inc.", "company": "Acme", "company_id": "acme"},
+        {"id": "acme::Exciting opportunities await you.", "company": "Acme", "company_id": "acme",
+         "title": "Exciting opportunities await you."},
+        {"id": "acme::Account Executive", "title": "Account Executive", "company": "Acme",
+         "company_id": "acme", "url": "https://acme.test/j/2"}]})
+    if [r["title"] for r in rows] != ["Account Executive"]:
+        errors += fail(f"merge_manual published {[r['title'] for r in rows]}; a capture "
+                       f"made before today's rule must be filtered by it")
+
+    # THE PUBLISHED BOARD. A crawl or a redraw that skipped the filter shows here.
+    board = json.loads((DATA / "board.json").read_text())
+    names = {c["id"]: c.get("name") for c in json.loads((DATA / "companies.json").read_text())}
+    live = [f"{p.get('company_id')}: {p.get('title')}" for p in board.get("postings", [])
+            if _roles.not_a_listing(p.get("title") or "", p.get("company"),
+                                    names.get(p.get("company_id")))]
+    if live:
+        errors += fail(f"{len(live)} posting(s) on the board are not openings: {live[:5]}")
+    return errors
+
+
 def check_nothing_derives_sled_only() -> int:
     """sled_only comes from a person's Vendor scope ruling and nowhere else.
 
@@ -29410,6 +29494,7 @@ def main() -> int:
     errors += check_the_buyer_door_holds()
     errors += check_nothing_derives_sled_only()
     errors += check_the_repo_keeps_no_job_ads()
+    errors += check_no_listing_is_a_non_job()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()
