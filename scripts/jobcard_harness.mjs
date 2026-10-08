@@ -128,6 +128,14 @@ const cases = {
     return { lead: a, rows: [a, b] };
   })(),
   stale_today: { lead: post({ first_seen: "2026-09-27", posted: "2026-03-13" }), rows: null },
+  // found by hand: the card says nothing re-reads it; a group says so only
+  // when every posting in it was
+  by_hand: { lead: post({ source: "manual" }), rows: null },
+  group_halfhand: (() => {
+    const a = post({ id: "h::1", source: "manual", office: { city: "Austin", state: "TX" } });
+    const b = post({ id: "h::2", office: { city: "Dallas", state: "TX" } });
+    return { lead: a, rows: [a, b] };
+  })(),
   group_later: (() => {
     const a = post({ id: "l::1", first_seen: "2026-08-25", office: { city: "Austin", state: "TX" } });
     const b = post({ id: "l::2", first_seen: "2026-09-25", office: { city: "Dallas", state: "TX" } });
@@ -151,6 +159,19 @@ try {
    once disagreed with the truth together (2026-10-06: 862 companies with no
    board printed "0 open roles"). Every organization on the committed board is
    run through the page's own functions so selftest can hold the two. */
+/* The credibility line over the list: "links checked today" must say which
+   postings it does not cover. */
+let fresh = null;
+try {
+  fresh = vm.runInContext(`(() => { const keep = D.postings;
+      D.postings = [{source: "manual"}, {source: "ats"}, {source: "manual"}];
+      const a = freshness(D.generated);
+      D.postings = [{source: "ats"}];
+      const b = freshness(D.generated);
+      D.postings = keep; return [a, b]; })()`, ctx);
+} catch (e) {
+  errors.push(`calling freshness: ${e && e.message}`);
+}
 let boards = null;
 try {
   const b = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
@@ -264,4 +285,4 @@ try {
 } catch (e) {
   errors.push(`running loadRatings: ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings }));
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh }));

@@ -2499,7 +2499,7 @@ function roleView(id){
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
-      ${p.source==="manual"?'<span class="chip">found by hand</span>'
+      ${p.source==="manual"?`<span class="chip">found by hand${p.first_seen?" on "+esc(p.first_seen):""}, not re-checked since</span>`
         :p.source==="hq"?'<span class="chip">posted on SLED HQ</span>':""}</p>`:""}
 
     <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
@@ -2729,7 +2729,12 @@ function todayISO(){const d=new Date();
 function freshness(gen){
   if(!gen)return "we have no record of when these links were last checked";
   const d=dayGap(gen,todayISO());
-  const on=` (${gen})`;
+  /* EXCEPT THE ONES NOBODY RE-READS. A posting found by hand sits on the
+     board until a person scrubs it - 250 of 261 were past the 14-day scrub
+     window on 2026-10-06 - so "links checked today" over all of them was
+     true of the rest and not of these (launch audit). */
+  const byHand=(D.postings||[]).filter(p=>p.source==="manual").length;
+  const on=` (${gen})`+(byHand?`, except ${byHand.toLocaleString()} found by hand`:"");
   if(d<=0)return "links checked today"+on;
   if(d===1)return "links checked yesterday"+on;
   return `links checked ${d} days ago`+on;
@@ -4609,7 +4614,9 @@ function jobCardHTML(g){
           esc(stale?"":w.cls)}">${esc(w.txt)}</span>`:"date not recorded"}</span></div>${later
         ?`<div class="postedon">latest posting ${esc(later)}</div>`:""}${postedOn
         ?`<div class="postedon" title="the date the employer's own job board gives for this posting">employer posted ${esc(postedOn)}</div>`
-        :postedRange?`<div class="postedon" title="the dates the employer's own job board gives for these postings">employer posted ${esc(postedRange)}</div>`:""}
+        :postedRange?`<div class="postedon" title="the dates the employer's own job board gives for these postings">employer posted ${esc(postedRange)}</div>`:""}${
+        g.rows.every(r=>r.source==="manual")
+        ?`<div class="postedon" title="captured from a page no fetcher can read; nothing re-reads it each night">found by hand, not re-checked</div>`:""}
       </div>
     </div>`;
 }

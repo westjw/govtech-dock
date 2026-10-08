@@ -27257,6 +27257,17 @@ def check_the_job_card_says_what_the_posting_says() -> int:
         errors += fail(f"index.html's script did not load cleanly in the harness: "
                        f"{out['errors'][:3]}")
     cards = out.get("cards") or {}
+    # FOUND BY HAND IS SAID (launch audit, 2026-10-06): nothing re-reads a
+    # captured posting, so the list's "links checked today" names them as the
+    # exception and their card says they are not re-checked.
+    fresh = out.get("fresh") or ["", ""]
+    if not fresh[0].endswith("except 2 found by hand") or "found by hand" in fresh[1]:
+        errors += fail(f"the list's freshness line no longer names the postings "
+                       f"nothing re-checks: {fresh}")
+    for k, says in (("by_hand", True), ("group_halfhand", False)):
+        if ("found by hand, not re-checked" in (cards.get(k) or "")) != says:
+            errors += fail(f"the {k!r} card {'does not say' if says else 'says'} "
+                           f"it was found by hand and not re-checked")
     if len(cards) < 23:
         return errors + fail(f"only {len(cards)} fixture card(s) came back; the "
                              f"harness is measuring nothing")
