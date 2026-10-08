@@ -126,7 +126,8 @@ out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=job
 // FRAME PROTECTION comes from the middleware itself, on every spelling of the
 // two token pages, and nowhere else (the board may be embedded)
 out.frames = {};
-for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc", "/", "/c/verkada.html"]) {
+for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc",
+                 "/%61lerts", "/cl%61im.html", "/", "/c/verkada.html"]) {
   out.frames[p] = await ask(p, { cookie: mint({}) });
 }
 console.log(JSON.stringify(out));

@@ -4947,7 +4947,7 @@
    "approx_count": null,
    "companies": 12,
    "hiring": 4,
-   "open_roles": 52
+   "open_roles": 51
   },
   {
    "tag": "NAHRO 2026",
@@ -5163,7 +5163,7 @@
    "approx_count": null,
    "companies": 5,
    "hiring": 1,
-   "open_roles": 14
+   "open_roles": 13
   },
   {
    "tag": "NAMD 2025",
@@ -5523,7 +5523,7 @@
    "approx_count": null,
    "companies": 78,
    "hiring": 17,
-   "open_roles": 691
+   "open_roles": 690
   },
   {
    "tag": "NAPT Summit 2026",
@@ -6081,7 +6081,7 @@
    "approx_count": 80,
    "companies": 46,
    "hiring": 12,
-   "open_roles": 99
+   "open_roles": 98
   },
   {
    "tag": "ISTELive 2026",
@@ -6242,8 +6242,8 @@
    "state": null,
    "approx_count": 450,
    "companies": 72,
-   "hiring": 16,
-   "open_roles": 422
+   "hiring": 15,
+   "open_roles": 421
   },
   {
    "tag": "NASWA 2025",
@@ -6286,15 +6286,15 @@
  "unreadable": 19,
  "rendered": 6,
  "no_board_on_file": 862,
- "manual_postings": 256,
+ "manual_postings": 255,
  "manual_already_fetched": 3,
  "totals": {
-  "postings": 7501,
+  "postings": 7497,
   "quota_carrying_postings": 1113,
-  "openings": 6189,
+  "openings": 6185,
   "quota_carrying": 740,
-  "us": 2743,
-  "non_us": 1701,
+  "us": 2741,
+  "non_us": 1700,
   "families": {
    "engineering": 1457,
    "ops": 213,
@@ -6304,22 +6304,22 @@
    "product": 254,
    "cs": 365,
    "field": 461,
-   "other": 1004,
+   "other": 1000,
    "data": 204,
    "exec": 52
   },
   "sectors": {
    "Public Safety": 1456,
-   "Public Works": 1008,
+   "Public Works": 1006,
    "Transit & Parking": 546,
    "General Gov": 1213,
    "Parks & Rec": 215,
    "K-12 Schools": 157,
    "Utilities & Energy": 266,
-   "Health & Human Services": 254,
+   "Health & Human Services": 253,
    "Courts & Justice": 42,
    "Airports & Aviation": 850,
-   "Higher Education": 171,
+   "Higher Education": 170,
    "Housing & Community Dev": 11
   },
   "pay_stated": 1377,
@@ -6328,8 +6328,8 @@
    "ats": 495,
    "text": 1071
   },
-  "jd_read_postings": 3741,
-  "jd_unread_postings": 3760
+  "jd_read_postings": 3740,
+  "jd_unread_postings": 3757
  },
  "organizations": [
   {
@@ -24926,12 +24926,12 @@
     "PWX 2026"
    ],
    "conference": "PWX 2026",
-   "open_roles": 12,
-   "open_postings": 15,
+   "open_roles": 11,
+   "open_postings": 14,
    "quota_roles": 2,
    "quota_postings": 3,
    "families": {
-    "other": 7,
+    "other": 6,
     "engineering": 2,
     "field": 1,
     "gtm": 2
@@ -79364,13 +79364,13 @@
     "NAMPI 2026"
    ],
    "conference": "Healthcare IT Connect 2026",
-   "open_roles": 14,
-   "open_postings": 14,
+   "open_roles": 13,
+   "open_postings": 13,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
     "product": 1,
-    "other": 9,
+    "other": 8,
     "cs": 1,
     "data": 2,
     "engineering": 1
@@ -92768,13 +92768,11 @@
     "AWWA ACE 2026"
    ],
    "conference": "AWWA ACE 2026",
-   "open_roles": 1,
-   "open_postings": 1,
+   "open_roles": 0,
+   "open_postings": 0,
    "quota_roles": 0,
    "quota_postings": 0,
-   "families": {
-    "other": 1
-   },
+   "families": {},
    "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
@@ -112869,8 +112867,8 @@
     "CoSN 2026"
    ],
    "conference": "CoSN 2026",
-   "open_roles": 40,
-   "open_postings": 40,
+   "open_roles": 39,
+   "open_postings": 39,
    "quota_roles": 6,
    "quota_postings": 6,
    "families": {
@@ -112880,7 +112878,7 @@
     "ops": 5,
     "field": 4,
     "exec": 2,
-    "other": 5,
+    "other": 4,
     "engineering": 6,
     "data": 2,
     "product": 1
@@ -222470,38 +222468,6 @@
    "comp": null,
    "posted": "2026-10-07",
    "url": "https://wavetronix.breezy.hr/p/5a4501f64f6f-full-time-line-cook-wavetronix-springs-campus",
-   "sector": "Public Works",
-   "category": "Streets",
-   "also": null,
-   "first_seen": "2026-10-08",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "wavetronix::General Job Inquiry::8ad71d84",
-   "opening_id": "wavetronix::General Job Inquiry",
-   "company": "Wavetronix",
-   "company_id": "wavetronix",
-   "title": "General Job Inquiry",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "United States",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "posted": "2026-10-02",
-   "url": "https://wavetronix.breezy.hr/p/52c39b1c8059-general-job-inquiry",
    "sector": "Public Works",
    "category": "Streets",
    "also": null,
@@ -350037,38 +350003,6 @@
    "opening_locations": 1
   },
   {
-   "id": "blueconduit::Open General Position::35bdd63a",
-   "opening_id": "blueconduit::Open General Position",
-   "company": "BlueConduit",
-   "company_id": "blueconduit",
-   "title": "Open General Position",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "United States",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "posted": "2023-12-14",
-   "url": "https://blueconduit.breezy.hr/p/9dee6c1fcaed-open-general-position",
-   "sector": "Public Works",
-   "category": "Water",
-   "also": null,
-   "first_seen": "2026-08-19",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "veovo::Sales Director Americas::ebd1ad13",
    "opening_id": "veovo::Sales Director Americas",
    "company": "Veovo",
@@ -371087,38 +371021,6 @@
    "opening_locations": 1
   },
   {
-   "id": "instructure::General Job Template::05645d2a",
-   "opening_id": "instructure::General Job Template",
-   "company": "Instructure",
-   "company_id": "instructure",
-   "title": "General Job Template",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Manila, Philippines (remote)",
-   "is_us": false,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-10-08",
-   "url": "https://jobs.ashbyhq.com/instructure/782b3593-fe8e-469f-9c5b-de73d1e8ba43",
-   "sector": "Higher Education",
-   "category": "IT & Administration",
-   "also": null,
-   "first_seen": "2026-10-08",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "instructure::AI Platform Engineer::ee38761e",
    "opening_id": "instructure::AI Platform Engineer",
    "company": "Instructure",
@@ -387552,37 +387454,6 @@
    "opening_locations": 0
   },
   {
-   "id": "acentra-health::Refer::a8b6c02b",
-   "company": "Acentra Health",
-   "company_id": "acentra-health",
-   "title": "Refer",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "url": "https://careers-acentra.icims.com/jobs/5994/referral",
-   "sector": "Health & Human Services",
-   "category": "Benefits & Medicaid Systems",
-   "first_seen": "2026-09-02",
-   "captured_from": "https://careers.acentra.com/us/jobs",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "acentra-health::Refer",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 0
-  },
-  {
    "id": "acentra-health::Clinical Evaluator (PRN) NE::ac3e3eae",
    "company": "Acentra Health",
    "company_id": "acentra-health",
@@ -395477,7 +395348,7 @@
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-08T19:45:49Z",
-  "inputs": "c1a4398bac7b65bff58706f08a7aadb4415aaeac4259e37b2fd17cf05830b0bf"
+  "at": "2026-10-08T20:32:13Z",
+  "inputs": "16431da35e5804095867f03373a052eeab0c4d96a77ec30ecf15da018cdc3bef"
  }
 }

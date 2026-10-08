@@ -312,7 +312,11 @@ export async function onRequest(context) {
   const shut = await gate(request, context.env);
   if (shut) return shut;
   let res = await next();
-  if (NO_FRAME.has(new URL(request.url).pathname)) {
+  // DECODED FIRST: Pages serves /%61lerts as /alerts, so a lookup on the raw
+  // path left that spelling framable (second review, 2026-10-08).
+  let path = new URL(request.url).pathname;
+  try { path = decodeURIComponent(path); } catch { /* malformed: as sent */ }
+  if (NO_FRAME.has(path)) {
     res = new Response(res.body, res);
     res.headers.set("X-Frame-Options", "DENY");
     res.headers.set("Content-Security-Policy", "frame-ancestors 'none'");

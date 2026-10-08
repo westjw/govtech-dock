@@ -1598,7 +1598,8 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
     # Cloudflare does not apply _headers to a response a Function produced,
     # and every request passes through this one (launch audit, 2026-10-06).
     frames = out.get("frames") or {}
-    for path in ("/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc"):
+    for path in ("/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc",
+                 "/%61lerts", "/cl%61im.html"):
         f = frames.get(path) or {}
         if f.get("xfo") != "DENY" or f.get("fa") != "frame-ancestors 'none'":
             errors += fail(f"{path} can be framed (X-Frame-Options {f.get('xfo')!r}, "
@@ -8575,12 +8576,45 @@ def check_the_repo_keeps_no_job_ads() -> int:
              "Total Compensation\nRemote, US\n$140,000 - $200,000 / year"),
             ("a compensation heading two lines up",
              "Compensation\nLocation-based range:\n$120,000 - $150,000"),
+            # second review: a cut three letters into "audits" read as AUD
+            ("a range, then 'audits' where a window ends",
+             "The base salary range for this role is $120,000 - $150,000 per "
+             "year. You will lead 30,000 audits annually."),
+            ("no pay, then 'audits' where a window ends",
+             "Our clients have saved $2M. Salary: DOE. We handle 30,000 audits a year."),
             ("a bonus line before an unlabelled hourly range",
              "Signing bonus: $5,000\n" + "Our team is growing. " * 12 + "\n$60 - $80 / hour")):
         whole, part = salary.parse(text), salary.parse(salary.pay_excerpt(text))
         if whole != part:
             errors += fail(f"pay_excerpt changes what parse() reads for {label}: "
                            f"{whole} from the text, {part} from the excerpt")
+    # A SEEDED FUZZ of the narrowest excerpt, where window edges and the joiner
+    # live. Deterministic. Each of the second review's two defects - a cut
+    # inside "audits", a bare-newline joiner gluing "$" to a distant number -
+    # fails at least one of these 3,000; the current cut fails none.
+    import random as _random
+    rng = _random.Random(11)
+    words = ["audits", "cadence", "usda", "eurozone", "gbps", "between", "and", "to",
+             "per", "year", "hour", "salary", "base", "range", "bonus", "OTE", "$",
+             "USD", "1,000", "30,000", "120,000", "100,000", "$5,000", "$90,000", "-",
+             "Compensation:", "\n", "k", "residents", "fee"]
+    drift = 0
+    for _ in range(3000):
+        t = " ".join(rng.choice(words) for _ in range(rng.randint(5, 90))).replace(" \n ", "\n")
+        drift += salary.parse(salary.pay_excerpt(t)) != salary.parse(t)
+    if drift:
+        errors += fail(f"pay_excerpt reads differently from the whole text on {drift} "
+                       f"of 3,000 seeded texts; the build parses only the excerpt")
+    # AND THE STORED-FILE CHECK REFUSES A LEAK THAT A WIDER WINDOW WOULD HIDE:
+    # prose before a figure is only allowed when the narrower cut parsed
+    # differently, which is the one case the writers widen.
+    ok_ex = salary.pay_excerpt("Compensation: The base salary range is $120,000 - $140,000 per year.")
+    if not salary.stored_excerpt_ok(ok_ex) or salary.stored_excerpt_ok(
+            "We sell to counties across the region and value curiosity and grit. "
+            "You will own the whole cycle, from first meeting to signed contract, "
+            "and report to the head of sales. " + ok_ex):
+        errors += fail("stored_excerpt_ok no longer tells a faithful excerpt from one "
+                       "carrying a paragraph of the ad")
     if salary.pay_excerpt("We match every dollar you contribute. Duties include selling."):
         errors += fail("pay_excerpt keeps text for the word 'dollar', which parse() never reads")
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
@@ -8668,7 +8702,7 @@ def check_the_repo_keeps_no_job_ads() -> int:
         errors += fail(f"data/jd_cache.json holds {len(full)} full description(s) - "
                        f"the repository is public")
     loose = [u for u, v in cache.items() if isinstance(v, dict) and v.get("pay_text")
-             and salary.pay_excerpt(v["pay_text"]) != v["pay_text"]]
+             and not salary.stored_excerpt_ok(v["pay_text"])]
     if loose:
         errors += fail(f"{len(loose)} cached excerpt(s) carry text parse() never reads")
 
@@ -8689,7 +8723,7 @@ def check_the_repo_keeps_no_job_ads() -> int:
                      for line in p.read_text().splitlines() if line.strip()]
     for where, obj in held:
         for k, v in texts(obj):
-            if k != "pay_text" or salary.pay_excerpt(v) != v:
+            if k != "pay_text" or not salary.stored_excerpt_ok(v):
                 errors += fail(f"{where} holds a job description under `{k}` "
                                f"({len(v):,} chars) - the repository is public")
     return errors
@@ -8726,7 +8760,10 @@ def check_no_listing_is_a_non_job() -> int:
             ("<insert job you excel at>", ()),
             ("Exciting opportunities await you.", ()),
             ("Aira Tech Corp.", ("Aira",)),
-            ("Spontaneous Application", ())]:
+            ("Spontaneous Application", ()),
+            # second review, 2026-10-08: live on the board and missed
+            ("General Job Inquiry", ()), ("Open General Position", ()),
+            ("General Job Template", ()), ("Refer", ())]:
         if not _roles.not_a_listing(title, *names):
             errors += fail(f"{title!r} is not an opening, and would be listed as one")
     # real jobs that share a word with the patterns above
@@ -8739,6 +8776,8 @@ def check_no_listing_is_a_non_job() -> int:
             ("Director, Business Development (Future Mobility)", ()),
             ("SDET, CI/CD Pipeline and Test Infrastructure", ()),
             ("Insert Molding Technician", ()), ("Career Advisor", ()),
+            ("General Manager", ()), ("Referral Coordinator", ()),
+            ("Template Designer", ()), ("General Counsel", ()),
             ("Axon Account Executive", ("Axon",)), ("Account Executive", ("Acme",))]:
         if _roles.not_a_listing(title, *names):
             errors += fail(f"{title!r} is a real job and would be dropped as a non-listing")
@@ -8767,6 +8806,18 @@ def check_no_listing_is_a_non_job() -> int:
     if [r["title"] for r in rows] != ["Account Executive"]:
         errors += fail(f"merge_manual published {[r['title'] for r in rows]}; a capture "
                        f"made before today's rule must be filtered by it")
+
+    # SLED HQ: an employer's own posting asks the same question
+    rows = []
+    co = [{"id": "acme", "name": "Acme", "website": "https://acme.test"}]
+    added, dropped = bb.merge_hq(rows, {"jobs": [
+        {"id": "h1", "company_id": "acme", "title": "General Application",
+         "url": "https://acme.test/j/0"},
+        {"id": "h2", "company_id": "acme", "title": "Account Executive",
+         "url": "https://acme.test/j/1"}]}, co)
+    if [r["title"] for r in rows] != ["Account Executive"] or dropped != 1:
+        errors += fail(f"merge_hq published {[r['title'] for r in rows]} "
+                       f"(dropped {dropped}); an employer's talent pool is not an opening")
 
     # THE PUBLISHED BOARD. A crawl or a redraw that skipped the filter shows here.
     board = json.loads((DATA / "board.json").read_text())
@@ -29138,6 +29189,9 @@ def main() -> int:
                       ("New York City", True), ("NYC Headquarters", True),
                       ("Texas Remote Work", True), ("U.S. (Remote)", True),
                       ("London, England", False), ("Toronto", False),
+                      # names the US only to exclude it (second review, 2026-10-08)
+                      ("Remote (Outside of United States)", False),
+                      ("Remote - non-US", False), ("Remote, US", True),
                       ("2 Locations", None)]:
         got = _roles.is_us(loc, "Account Executive")
         if got != want:

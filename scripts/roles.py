@@ -41,7 +41,10 @@ JUNK = re.compile(r"\.(png|jpe?g|svg|gif|webp|pdf|css|js)\b|^\s*[\W_]+\s*$|"
                   r"^(logo|image|icon|banner|photo)\b|"
                   # a template's placeholder, published unfilled:
                   # Heron Power's "<insert job you excel at>" (2026-10-08)
-                  r"^\s*<[^<>]*>\s*$|\binsert (a |your )?(job|role|title|position)\b",
+                  r"^\s*<[^<>]*>\s*$|\binsert (a |your )?(job|role|title|position)\b|"
+                  # Instructure's "General Job Template" (2026-10-08), and a
+                  # capture of a referral form whose whole title was "Refer"
+                  r"\bjob template\b|^\s*(refer|referral|apply|apply now|apply here)\s*$",
                   re.I)
 
 # Talent-pool pages that never close. Counting them inflates every hiring number.
@@ -54,6 +57,8 @@ EVERGREEN = re.compile(
     r"future (positions|roles|openings|vacancies)|ongoing opportunit|"
     r"expression of interest|unsolicited application|resume drop|"
     r"opportunities await|"
+    # "General Job Inquiry" (Wavetronix), "Open General Position" (BlueConduit)
+    r"\bgeneral (job )?(inquir(y|ies)|position)\b|"
     r"speculative|join our (talent|network)|other opportunit|"
     r"submit your (resume|cv)|no (matching )?role|\(evergreen\)|\bevergreen\b|spontaneous application|interested in joining|"
     r"can.?t find|didn.?t find|general interest|future consideration|"
@@ -287,6 +292,11 @@ NON_US = re.compile(
     r"Lima|Peru|Bogot[aá]|Quito|Ecuador|Montevideo|Uruguay|Asunci[oó]n|"
     r"San Jos[eé], Costa Rica|Costa Rica|Panama|Guatemala|Santo Domingo|"
     r"Dominican Republic|Guadalajara|Monterrey|Mexico City|CDMX)\b", re.I)
+# A location that names the US only to exclude it. "Remote (Outside of United
+# States)" read as a US posting on its country name, and went to Google as a
+# remote job open to US applicants (second review, 2026-10-08).
+NOT_US = re.compile(r"\b(outside|excluding|except)\s+(of\s+)?(the\s+)?"
+                    r"(US|U\.S\.|USA|United States)\b|\bnon[- ]US\b", re.I)
 # "U.S." is deliberately outside the trailing \b: a word boundary after a
 # period needs a word character next, so "U.S. (Remote)" failed its own hint.
 US_HINT = re.compile(r"\b(United States|USA?\b|remote.{0,12}\bus\b|"
@@ -662,7 +672,7 @@ def is_us(location_text: str, title: str = "") -> bool | None:
     blob = f"{location_text or ''} {title or ''}"
     if not blob.strip():
         return None
-    if NON_US.search(blob):
+    if NON_US.search(blob) or NOT_US.search(blob):
         return False
     if US_HINT.search(blob) or STATE.search(blob) or US_CITY.search(blob):
         return True

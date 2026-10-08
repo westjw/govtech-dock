@@ -638,7 +638,7 @@ def jd_backfilled(row: dict, url: str) -> dict:
         return row
     text = hit.get("pay_text")
     if not isinstance(text, str):
-        text = salary.pay_excerpt(hit.get("jd") or "")      # an older entry
+        text = salary.faithful_excerpt(hit.get("jd") or "")      # an older entry
     # A COPY. Mutating the fetcher's row would put the cached text back into
     # the object the fetch loop still holds, and the whole discipline in this
     # file is that ad text never travels further than derived().
@@ -1467,6 +1467,12 @@ def merge_hq(postings: list[dict], hq: dict | None, companies: list[dict],
             dropped += 1
             continue
         row = hq_row(job, c)
+        # An employer types its own titles, and "General Application" is a
+        # talent pool whoever posts it - the same question as every other
+        # path a title enters by (second review, 2026-10-08).
+        if roles.not_a_listing(row["title"], c.get("name")):
+            dropped += 1
+            continue
         if row["id"] in seen:
             continue
         seen.add(row["id"])

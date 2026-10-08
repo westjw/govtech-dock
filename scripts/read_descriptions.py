@@ -268,14 +268,14 @@ def main() -> int:
             # not, because that is what moves a failing posting to the back of
             # the rotation. Recording only successes is how a queue turns into
             # a hundred broken urls retried forever.
-            # ONLY THE TEXT AROUND PAY FIGURES IS KEPT (salary.pay_excerpt), never the
+            # ONLY THE TEXT AROUND PAY FIGURES IS KEPT (salary.faithful_excerpt), never the
             # ad: this file is in a public repository, and the build needs
             # nothing else from a description (launch audit, 2026-10-06).
             # `read_on` says the description was read, which is what makes
             # "no salary stated" true for an empty excerpt.
             entry = {"tried": today}
             if jd:
-                entry["pay_text"] = salary.pay_excerpt(jd)
+                entry["pay_text"] = salary.faithful_excerpt(jd)
                 entry["read_on"] = today
                 local[r["url"]] = {"jd": jd, "read_on": today}
                 got += 1

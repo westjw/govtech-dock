@@ -352,11 +352,12 @@ def redraw() -> dict:
                                    if mp.get("company_id") not in off]}
     ctx = bb.run_context(drawn, man)
 
-    # The crawl's rows by company, in board order. Manual rows are not here:
-    # they are merged again from manual.json below, the way a crawl does it.
+    # The crawl's rows by company, in board order. Manual and SLED HQ rows are
+    # not here: they are merged again from manual.json and hq_jobs.json below,
+    # the way a crawl does it, so each has one path in and one set of filters.
     crawled: dict[str, list] = collections.defaultdict(list)
     for p in prev.get("postings", []):
-        if p.get("source") != "manual":
+        if p.get("source") not in ("manual", "hq"):
             crawled[p.get("company_id")].append(p)
 
     waits: dict[str, str] = {}
@@ -393,6 +394,14 @@ def redraw() -> dict:
             p["sector"], p["category"] = c["sector"], c["category"]
             p["also"] = c.get("also") or None
             restamped += before != [p.get(k) for k in STAMPED]
+        # NOT AN OPENING AT ALL (roles.not_a_listing), for every company -
+        # including one waiting for the crawl, whose rows otherwise pass
+        # through untouched (second review, 2026-10-08). The crawl drops
+        # these before counting anything, so they join no count here.
+        listed = [p for p in rows if not bb.roles.not_a_listing(p["title"], c["name"])]
+        if len(listed) < len(rows):
+            narrowed[cid] = narrowed.get(cid, 0) + len(rows) - len(listed)
+        rows = listed
         if why:
             waits[cid] = why
         elif rows and took is None:
@@ -403,11 +412,6 @@ def redraw() -> dict:
             sled_only = bool(c.get("sled_only"))
             kept, drop = [], collections.Counter()
             for p in rows:
-                # Not an opening at all (roles.not_a_listing): the crawl drops
-                # these before counting anything, so they join no count here.
-                if bb.roles.not_a_listing(p["title"], c["name"]):
-                    drop["not_a_listing"] += 1
-                    continue
                 v = bb.out_of_scope(p["title"], p["id"], p["opening_id"], scope, sled_only)
                 if v:
                     drop[v] += 1
@@ -418,7 +422,7 @@ def redraw() -> dict:
                                             + drop["federal"]) or None
                 crawl["offtopic_dropped"] = ((crawl["offtopic_dropped"] or 0)
                                              + drop["offtopic"]) or None
-                narrowed[cid] = sum(drop.values())
+                narrowed[cid] = narrowed.get(cid, 0) + sum(drop.values())
             rows = kept
         postings.extend(rows)
         o = bb.org_record(c, drawn, ctx, crawl)

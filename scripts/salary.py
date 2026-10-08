@@ -485,10 +485,19 @@ def _money_spans(hay: str) -> list[tuple[int, int]]:
     return out
 
 
-def pay_excerpt(text: str) -> str:
+# What sits between two windows. Not whitespace, so no money pattern can
+# read across it: a bare newline let "Reports $" and "100,000" in two
+# different windows parse as $100,000 (review, 2026-10-08).
+JOIN = "\n\u2026\n"
+# A window edge moves out to the nearest whitespace, but no further than this
+# - a run with no whitespace at all (a URL, minified data) is cut anyway.
+_EDGE = 60
+
+
+def pay_excerpt(text: str, scale: int = 1) -> str:
     """The text around each money figure in a job description, exactly as
     much as parse() reads, and nothing else. Windows that do not touch are
-    joined with a newline.
+    joined with JOIN.
 
     WHY THIS EXISTS. data/jd_cache.json held 816 full job descriptions, 5.4M
     characters of other companies' ads, in a public repository (launch audit,
@@ -504,16 +513,35 @@ def pay_excerpt(text: str) -> str:
     range fell out, and the excerpt published the OTE as base pay (review,
     2026-10-08). parse() reads LOOKBACK characters before a figure and at
     most _AFTER after it, so a window of exactly that, cut from the ORIGINAL
-    text, gives every figure the same context it had - and a window that
-    touches the next one merges with it, so no figure is ever cut in half.
-    Re-excerpting an excerpt returns it unchanged, which is what
-    selftest checks: anything stored that is not inside a window is a leak.
-    Empty when the text states no money figure at all.
+    text, gives every figure the same context it had.
+
+    NEVER INSIDE A WORD. A cut three letters into "audits" left "30,000 aud",
+    which parses as Australian dollars - an invented figure, or a real range
+    made ambiguous (second review, 2026-10-08). So each edge moves out to
+    whitespace, and windows that then touch merge.
+
+    `scale` widens every window; the writers use it when the excerpt does not
+    parse exactly as the full text does (see faithful_excerpt). Re-excerpting
+    an excerpt at scale 4 returns it unchanged, which is what selftest checks:
+    anything stored outside those windows is a leak. Empty when the text
+    states no money figure at all.
     """
     if not text or not isinstance(text, str):
         return ""
     hay = text.replace("\u00a0", " ")      # 1:1, as parse() does
-    spans = sorted((max(0, a - _BEFORE), min(len(text), b + _AFTER))
+    n = len(text)
+
+    def out_to_space(i: int, step: int) -> int:
+        # step -1 moves a start left, +1 moves an end right, until the cut
+        # falls on whitespace (or the text's edge)
+        for _ in range(_EDGE):
+            if i <= 0 or i >= n or hay[i - 1].isspace() or hay[i].isspace():
+                return i
+            i += step
+        return i
+
+    spans = sorted((out_to_space(max(0, a - _BEFORE * scale), -1),
+                    out_to_space(min(n, b + _AFTER * scale), 1))
                    for a, b in _money_spans(hay))
     merged: list[list[int]] = []
     for a, b in spans:
@@ -521,4 +549,37 @@ def pay_excerpt(text: str) -> str:
             merged[-1][1] = max(merged[-1][1], b)
         else:
             merged.append([a, b])
-    return "\n".join(text[a:b] for a, b in merged)
+    return JOIN.join(text[a:b] for a, b in merged)
+
+
+def faithful_excerpt(text: str) -> str:
+    """pay_excerpt, widened until parse() reads it exactly as it reads the
+    whole text. What the writers store: the build only ever sees the
+    excerpt, so an excerpt that parses differently publishes a different
+    salary. Measured on all 816 cached descriptions it never needs to widen;
+    it exists so that a text it would need it on cannot reach the board."""
+    want = parse(text)
+    for scale in (1, 2, 4):
+        ex = pay_excerpt(text, scale)
+        if parse(ex) == want:
+            return ex
+    return ex
+
+
+def stored_excerpt_ok(v: str) -> bool:
+    """Is `v` something faithful_excerpt could have stored, and nothing more?
+
+    A stored excerpt is a fixed point of pay_excerpt at the scale it was cut
+    at, and it was only cut wider when the narrower cut parsed differently.
+    So text kept beyond the narrowest faithful window - a leaked paragraph of
+    somebody's ad - fails here, and a legitimately widened excerpt does not.
+    """
+    if not v:
+        return True
+    want = parse(v)
+    narrower_ok = True          # scale 1 has no narrower cut to justify it
+    for scale in (1, 2, 4):
+        if pay_excerpt(v, scale) == v:
+            return narrower_ok
+        narrower_ok = parse(pay_excerpt(v, scale)) != want
+    return False

@@ -4621,13 +4621,13 @@ def act_capture(body: dict) -> dict:
         signatures.add((cid, title, url, loc))
         terr = roles.territory(loc, title)
         # The extension's single-posting mode sends the JD body. ONLY THE TEXT
-        # AROUND ITS PAY FIGURES IS KEPT (salary.pay_excerpt): manual.json is in a public
+        # AROUND ITS PAY FIGURES IS KEPT (salary.faithful_excerpt): manual.json is in a public
         # repository, and the build needs nothing else from a description -
         # derived() parses pay out of `pay_text` and drops it (launch audit,
         # 2026-10-08). `jd_read` is what keeps "we read it and it stated no
         # pay" apart from "never read" when the excerpt comes back empty.
         jd = (j.get("jd_text") or "").strip()[:20000]
-        pay = salary.pay_excerpt(jd) if jd else ""
+        pay = salary.faithful_excerpt(jd) if jd else ""
         man["postings"].append({
             "id": pid, "company": c["name"], "company_id": cid,
             **({"pay_text": pay} if pay else {}),
