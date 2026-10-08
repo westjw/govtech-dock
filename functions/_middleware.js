@@ -210,6 +210,10 @@ async function describe(request, env) {
  * employer's structured baseSalary and should not be dressed as one.
  */
 function jobLd(id, r, site) {
+  // datePosted is REQUIRED (Google's JobPosting docs, checked 2026-10-08), and
+  // build_site already drops `ld` for a role with no employer date. A cached
+  // meta-roles.json from before that change must not reach Google either.
+  if (!r.pd) return null;
   const loc = r.ci || r.st
     ? { "@type": "Place",
         address: Object.assign({ "@type": "PostalAddress", addressCountry: "US" },
@@ -229,8 +233,8 @@ function jobLd(id, r, site) {
   // write_meta_index() from ats.posted_date, which reads whichever publish
   // field each of the seven structured boards actually sends - and returns
   // nothing where a board sends none, which is most of the web. Where it is
-  // absent the field stays absent: it is optional in the spec, and a wrong one
-  // is not.
+  // absent there is no block at all (see the top of this function): the field
+  // is required, and a wrong one is worse than none.
   //
   // NEVER `r.d`. That was first_seen, the day WE first saw the row, and 2,183
   // of 3,524 blocks once claimed one of our first two crawl days as the day
@@ -244,6 +248,9 @@ function jobLd(id, r, site) {
   // inferred - and build_site drops `ld` entirely for a role we cannot put
   // anywhere, so this block is never emitted without one of the two.
   else if (r.tc) o.jobLocationType = "TELECOMMUTE";
+  // A remote posting must name a country its applicants may work from.
+  // build_site sets `tc` only where the board's own record says US.
+  if (!loc && r.tc) o.applicantLocationRequirements = { "@type": "Country", name: "US" };
   return JSON.stringify(o);
 }
 

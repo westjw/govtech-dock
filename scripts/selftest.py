@@ -16185,8 +16185,9 @@ def check_structured_data_claims_no_posting_date() -> int:
     'no jobs here'." The page told the truth to a reader and told Google the
     other thing.
 
-    Where a board publishes no date the field is still withheld entirely, like
-    validThrough and baseSalary. Optional in the spec; a wrong one is not.
+    Where a board publishes no date there is NO BLOCK (2026-10-08). The
+    sentence here used to say "optional in the spec"; Google's JobPosting
+    docs list datePosted as required, and 174 blocks shipped without one.
     """
     bad = 0
     mw = (ROOT / "functions" / "_middleware.js").read_text()
@@ -16283,6 +16284,14 @@ def check_structured_data_claims_no_posting_date() -> int:
                         f"no state and no TELECOMMUTE. jobLocation is required "
                         f"and those blocks are invalid - a job claim we cannot "
                         f"complete is worse than no claim")
+        undated = [v for v in blocks if not v.get("pd")]
+        if undated:
+            bad += fail(f"{len(undated):,} JobPosting blocks have no employer date; "
+                        f"datePosted is required, so they are invalid")
+    # Only a posting this board calls US may go out as remote-in-the-US.
+    if 'p_.get("work_mode")=="remote"andp_.get("is_us")isTrue' not in bsflat:
+        bad += fail("build_site marks a remote posting TELECOMMUTE without its own "
+                    "record saying US, and the Worker states US for every one")
     mwcode = re.sub(r"//.*$", "", mw, flags=re.M)
     # THE EXPRESSION, NOT THE WORD. `else if (false) o.jobLocationType =
     # "TELECOMMUTE";` leaves the string verbatim and emits nothing - the same
@@ -16291,6 +16300,11 @@ def check_structured_data_claims_no_posting_date() -> int:
         bad += fail("the middleware no longer emits jobLocationType gated on "
                     "r.tc, so 533 remote postings ship a JobPosting with no "
                     "location statement at all")
+    mwflat = re.sub(r"\s+", "", mwcode)
+    if 'if(!loc&&r.tc)o.applicantLocationRequirements={"@type":"Country",name:"US"}' not in mwflat:
+        bad += fail("a remote JobPosting names no applicant country; Google requires one")
+    if "if(!r.pd)returnnull;" not in mwflat:
+        bad += fail("jobLd emits a block with no datePosted, a required field")
     return bad
 
 

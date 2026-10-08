@@ -676,8 +676,13 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
                 if off.get("city"):
                     r["ci"] = off["city"]
             if not (r.get("ci") or r.get("st")):
-                if p_.get("work_mode") == "remote":
-                    r["tc"] = 1          # jobLocationType: TELECOMMUTE
+                # REMOTE, AND FROM WHERE. Google requires a remote posting to
+                # name at least one country an applicant may work from; the
+                # Worker states US, so only a posting this board's own record
+                # calls US (is_us True) may carry it. 283 remote blocks were
+                # "Remote - UK" or a bare "Remote" (2026-10-08).
+                if p_.get("work_mode") == "remote" and p_.get("is_us") is True:
+                    r["tc"] = 1          # jobLocationType: TELECOMMUTE, in the US
                 else:
                     r.pop("ld", None)    # no location we can state: no block
             # THE EMPLOYER'S OWN DATE, now that the board has one. Shipped
@@ -686,6 +691,11 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
             # note above for why first_seen can never fill this.
             if p_.get("posted"):
                 r["pd"] = p_["posted"]
+            else:
+                # datePosted IS REQUIRED (Google's JobPosting docs, checked
+                # 2026-10-08), and the only other date is our crawl date. No
+                # employer date, no block - 174 were going out without one.
+                r.pop("ld", None)
         roles[p_["id"]] = r
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
