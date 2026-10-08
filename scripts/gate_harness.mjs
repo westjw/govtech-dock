@@ -123,6 +123,26 @@ for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.ex
   out.login_redirects.push(await landing(to));
 }
 out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=jobs"));
+// A ROLE PAGE, DRAWN: which head handlers the middleware attaches. node has no
+// HTMLRewriter, so a stub records them; the role index answers through ASSETS
+// with a role that carries every markup field.
+{
+  const attached = [];
+  globalThis.HTMLRewriter = class {
+    on(sel, h) { attached.push(`${sel}:${h && h.constructor ? h.constructor.name : "?"}`); return this; }
+    transform(res) { return res; }
+  };
+  const roles = { roles: { "acme::ae": { t: "Account Executive", c: "Acme", w: "Austin, TX",
+    ld: 1, pd: "2026-10-01", st: "TX", ci: "Austin" } } };
+  const req = new Request("https://sledjobs.com/?role=acme::ae",
+    { headers: { Cookie: `CF_Authorization=${mint({})}` } });
+  const res = await onRequest({ request: req,
+    env: { ASSETS: { fetch: async () => new Response(JSON.stringify(roles), { status: 200 }) } },
+    next: async () => new Response("<html><head></head></html>",
+      { status: 200, headers: { "content-type": "text/html" } }) });
+  out.role_head = { status: res.status, attached };
+  delete globalThis.HTMLRewriter;
+}
 // FRAME PROTECTION comes from the middleware itself, on every spelling of the
 // two token pages, and nowhere else (the board may be embedded)
 // BROWSER CACHING on images and the board's data, and nowhere else

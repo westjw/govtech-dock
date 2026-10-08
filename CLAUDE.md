@@ -1727,6 +1727,10 @@ fires.
 - **Browsers keep images a day and board data five minutes** (root
   middleware `CACHE_RULES`, private, GET 200 only) - every request is a
   Function call against the free plan's daily allowance.
+- **Job markup for Google is OFF (owner, 2026-10-08).** `JOB_MARKUP = false`
+  in functions/_middleware.js: Google requires the full job description and
+  the repo keeps no ad text. jobLd() and its guards stay so turning it back on
+  is one line; gate_harness proves a role page attaches no JobPosting block.
 - **The nightly is scheduled 05:23 UTC** because GitHub starts it 4-9 hours
   late; the watchdog also asks GitHub whether the last Cloudflare deploy went
   out (`watchdog.deploy_faults`).

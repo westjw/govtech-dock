@@ -1594,6 +1594,16 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         errors += fail(f"the sign-in link no longer returns a person to the page they "
                        f"asked for ({keep})")
 
+    # JOB MARKUP IS OFF (owner, 2026-10-08): a role page gets its title and
+    # head, and no JobPosting block. Driven through the real middleware.
+    head = out.get("role_head") or {}
+    attached = head.get("attached") or []
+    if not any(a.startswith("title:") for a in attached):
+        errors += fail(f"the harness drew no role page head ({head}); the markup "
+                       f"question was never asked")
+    if any(a.endswith(":Ld") for a in attached):
+        errors += fail("a role page carries JobPosting markup; the owner turned it off "
+                       "(Google requires the full job description, which we do not keep)")
     # BROWSER CACHING: images a day, the board's data five minutes, private,
     # and nothing else - not a page, not the gate's refusal (launch audit:
     # every view re-paid ~21 Function requests for files that had not changed)

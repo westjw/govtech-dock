@@ -60,6 +60,14 @@ const esc = (s) =>
   String(s ?? "").replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+/* JOB MARKUP FOR GOOGLE IS OFF (owner, 2026-10-08). Google's JobPosting rules
+ * require "the full description of the job", and this board keeps no ad text -
+ * every block carried one generated sentence, which Google says can bring a
+ * manual action against the site. jobLd() and build_site's `ld` flags stay, and
+ * keep their guards, so turning it back on is this one line once a full
+ * description can honestly be shown. */
+const JOB_MARKUP = false;
+
 /* What this address is, or null to leave the defaults alone. */
 async function describe(request, env) {
   const u = new URL(request.url);
@@ -135,7 +143,7 @@ async function describe(request, env) {
     }
     const where = r.w ? ` in ${r.w}` : "";
     return {
-      ld: r.ld ? jobLd(role, r, SITE) : null,
+      ld: JOB_MARKUP && r.ld ? jobLd(role, r, SITE) : null,
       title: `${r.t} at ${r.c} · ${NAME}`,
       desc: `${r.c} is hiring a ${r.t}${where}. Found on ${NAME}, which tracks `
           + `sales roles at state and local government technology companies.`,

@@ -21,11 +21,10 @@ WHAT READING ONE BUYS. Three things, and they compound:
 
   - A stated salary. salary.py finds a range in roughly three descriptions out
     of four that state one, and pay is the filter people actually use.
-  - Google for Jobs. functions/_middleware.js emits a JobPosting block ONLY for
-    postings whose description was read, deliberately - structured data about a
-    posting we never opened is a claim we cannot support. Every description
-    read here makes one more posting eligible for the one channel that sends
-    high-intent traffic to a board this size.
+  - Google for Jobs, if it is ever switched back on. functions/_middleware.js
+    built a JobPosting block only for postings whose description was read; the
+    owner turned the markup off on 2026-10-08 (JOB_MARKUP), because Google
+    requires the full description and this board keeps none.
   - The difference between "they did not state pay" and "we never looked",
     which the board already reports honestly and which this shrinks.
 
