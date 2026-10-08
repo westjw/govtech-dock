@@ -8409,16 +8409,17 @@ def check_a_gate_review_only_covers_what_it_saw() -> int:
 
 
 def check_the_repo_keeps_no_job_ads() -> int:
-    """The description cache, captures and journal hold pay sentences, never ads.
+    """The description cache, captures and journal hold pay excerpts, never ads.
 
     data/jd_cache.json carried 816 full job descriptions (5.4M characters of
     other companies' ads) in a PUBLIC repository (launch audit, 2026-10-06),
     and two hand captures put more into data/manual.json and, through their
     before/after images, into data/admin_journal.jsonl. The build needs only
     two things from a description: that it was read, and the pay range
-    salary.parse finds in it. salary.pay_excerpt keeps the sentences that
-    state pay plus a neighbour each side; on all 816, parse(excerpt) ==
-    parse(full). This runs the real read_descriptions.main on a stubbed
+    salary.parse finds in it. salary.pay_excerpt keeps exactly the
+    characters parse() reads around each money figure; on all 816,
+    parse(excerpt) == parse(full), and an excerpt re-excerpted is unchanged -
+    so anything stored outside those windows is a leak this catches. This runs the real read_descriptions.main on a stubbed
     fetch and the real admin.act_capture in a sandbox, then the build's own
     readers on what they wrote, and reads the committed files.
     """
@@ -8426,11 +8427,40 @@ def check_the_repo_keeps_no_job_ads() -> int:
     sys.path.insert(0, str(ROOT / "scripts"))
     import read_descriptions as rd
     import build_board as bb
-    errors = 0
     ad = ("Join our mission to modernise government. You will own a territory "
-          "of counties. We value curiosity and grit.\n"
+          "of counties across the region, building relationships with clerks, "
+          "treasurers and county managers who buy software once a decade. "
+          "We value curiosity and grit.\n"
           "Compensation: The base salary range is $120,000 - $140,000 per year.\n"
-          "We offer medical, dental and vision. Apply today.")
+          "We offer medical, dental and vision, a home-office stipend, and a "
+          "generous parental leave policy. Apply today.")
+    errors = 0
+    # THE EXCERPT KEEPS WHAT parse() READS AND NOTHING ELSE (review,
+    # 2026-10-08). A captured ad arrives with its newlines collapsed, so a
+    # sentence-based excerpt kept a whole unpunctuated ad; and a label two
+    # short lines above a range fell out of a one-neighbour excerpt, which
+    # published an OTE as base pay.
+    import salary
+    flat = " ".join(ad.replace(".", "").split())
+    ex = salary.pay_excerpt(flat)
+    if "modernise government" in ex or "parental leave" in ex or not ex:
+        errors += fail(f"pay_excerpt kept prose far from the figure in an ad with no "
+                       f"sentence breaks ({len(ex)} of {len(flat)} chars)")
+    for label, text in (
+            ("an OTE heading two lines up",
+             "On-Target Earnings (OTE)\nColorado\n$150,000 - $200,000 per year"),
+            ("a total-comp heading two lines up",
+             "Total Compensation\nRemote, US\n$140,000 - $200,000 / year"),
+            ("a compensation heading two lines up",
+             "Compensation\nLocation-based range:\n$120,000 - $150,000"),
+            ("a bonus line before an unlabelled hourly range",
+             "Signing bonus: $5,000\n" + "Our team is growing. " * 12 + "\n$60 - $80 / hour")):
+        whole, part = salary.parse(text), salary.parse(salary.pay_excerpt(text))
+        if whole != part:
+            errors += fail(f"pay_excerpt changes what parse() reads for {label}: "
+                           f"{whole} from the text, {part} from the excerpt")
+    if salary.pay_excerpt("We match every dollar you contribute. Duties include selling."):
+        errors += fail("pay_excerpt keeps text for the word 'dollar', which parse() never reads")
     tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
     keep = (rd.DATA, rd.CACHE, rd.LOCAL, rd.read_one, rd.PAUSE, sys.argv)
     try:
@@ -8451,7 +8481,7 @@ def check_the_repo_keeps_no_job_ads() -> int:
             errors += fail("read_descriptions stored the job ad itself in a file "
                            "the public repository carries")
         if "$120,000 - $140,000" not in (entry.get("pay_text") or "") or not entry.get("read_on"):
-            errors += fail(f"read_descriptions lost the pay sentence or the fact it "
+            errors += fail(f"read_descriptions lost the pay figure or the fact it "
                            f"read the posting: {entry}")
         # the whole ad is kept, on this machine only, for job-hunter
         local = json.loads((tmp / "jd_local.json").read_text()).get(url) or {}
@@ -8518,7 +8548,7 @@ def check_the_repo_keeps_no_job_ads() -> int:
     loose = [u for u, v in cache.items() if isinstance(v, dict) and v.get("pay_text")
              and salary.pay_excerpt(v["pay_text"]) != v["pay_text"]]
     if loose:
-        errors += fail(f"{len(loose)} cached excerpt(s) carry more than pay sentences")
+        errors += fail(f"{len(loose)} cached excerpt(s) carry text parse() never reads")
 
     def texts(o):
         if isinstance(o, dict):
@@ -8638,10 +8668,10 @@ def check_nothing_derives_sled_only() -> int:
     (owner retired the rule, 2026-10-08). A re-run of any of them would hide
     them again. Source-level, comments stripped: the only assignments allowed
     are the two that carry a person's 'sled' call (promote_candidates,
-    proposal_rulings) and land_buyer's, which buyer_sled_eligible keeps dead.
+    proposal_rulings).
     """
     import re as _re
-    allowed = {"promote_candidates.py", "proposal_rulings.py", "promote_profiles.py"}
+    allowed = {"promote_candidates.py", "proposal_rulings.py"}
     errors = 0
     pat = _re.compile(r"""\[["']sled_only["']\]\s*=\s*True|["']sled_only["']\s*:\s*True""")
     for f in sorted((ROOT / "scripts").glob("*.py")):
@@ -8803,14 +8833,10 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
             seq = admin.read_companies()
             keys = ["buyer:acme", "buyer:beta", "buyer:gamma"]
             rep2 = promote_profiles.land_buyer(store, seq, keys, "selftest",
-                                               "fixture", with_sled=False)
+                                               "fixture")
             if rep2["wrote"] != 1:
                 errors += fail(f"land_buyer wrote {rep2['wrote']} row(s); only "
                                f"acme is pending with a verdict and unanswered")
-            if rep2["sled"]:
-                errors += fail("land_buyer set sled_only without with_sled. "
-                               "That flag drops every posting whose title does "
-                               "not name the public sector, off a public board")
             named = " ".join(f"{n} {r}" for n, r in rep2["held"])
             if "Gamma" not in named or "already answered" not in named:
                 errors += fail(f"a company already carrying an answer was not "
@@ -8824,7 +8850,7 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
                                "beside it; a verdict nobody can re-check is "
                                "not evidence")
             if landed["acme"].get("sled_only"):
-                errors += fail("sled_only reached a company without with_sled")
+                errors += fail("sled_only reached a company from a buyer verdict")
             if landed["gamma"].get("sells_to_gov") != "no":
                 errors += fail("land_buyer overwrote an answer already on "
                                "file. The newer answer is not automatically "
@@ -8833,19 +8859,25 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
             if landed["beta"].get("sells_to_gov"):
                 errors += fail("a door-refused answer landed on the map")
 
-            # 3. NOT EVEN WITH THE WORD: a buyer verdict never sets the flag.
+            # 3. NOT EVEN FROM AN OLD ROW: 74 stored proposals still carry
+            #    sled_eligible true from before the rule was retired, and the
+            #    switch that used to act on it must be gone, not just unused.
+            import inspect
+            if "with_sled" in inspect.signature(promote_profiles.land_buyer).parameters:
+                errors += fail("land_buyer still takes with_sled; a buyer verdict "
+                               "never sets sled_only (owner, 2026-10-08)")
             store2 = agents.load()
             store2["buyer:acme"]["status"] = "pending"
+            store2["buyer:acme"]["sled_eligible"] = True
             landed["acme"].pop("sells_to_gov", None)
             seq2 = admin.read_companies()
             for c in seq2:
                 if c["id"] == "acme":
                     c.pop("sells_to_gov", None)
-            rep3 = promote_profiles.land_buyer(store2, seq2, ["buyer:acme"],
-                                               "selftest", "fixture",
-                                               with_sled=True)
+            promote_profiles.land_buyer(store2, seq2, ["buyer:acme"],
+                                        "selftest", "fixture")
             after = {c["id"]: c for c in admin.read_companies()}
-            if rep3["sled"] or after["acme"].get("sled_only"):
+            if after["acme"].get("sled_only"):
                 errors += fail("land_buyer set sled_only from a buyer verdict; "
                                "on a government-only vendor that filter hides "
                                "its sales roles (owner, 2026-10-08)")
@@ -9078,12 +9110,9 @@ def check_the_buyer_queue_draws_the_verdict_and_the_sentence() -> int:
     in PROPOSAL_KINDS, and a person deciding whether a company belongs on a
     board about government cannot rule on a truncated blob.
 
-    AND ONE THING THE CARD MUST SAY OUT LOUD: a row the door marked
-    sled-eligible looks like a decision sitting on the card, and accepting it
-    here deliberately does NOT set that flag - sled_only subtracts postings
-    from a public board and is set from the CLI behind a gate review that
-    prints how many. A person who learns that from an error afterwards has
-    already made a decision they did not know they were making.
+    AND ONE THING THE CARD MUST NOT DO: offer sled_only. Older rows still
+    carry `sled_eligible`, and a buyer verdict never sets that flag any more
+    (owner, 2026-10-08) - it is a person's Vendor scope ruling.
 
     Driven under node against the real object literal.
     """
@@ -9133,9 +9162,7 @@ console.log(JSON.stringify(out));
     want = {
         "eligible": ["yes", "Cities, counties and school districts buy it.",
                      "serving cities, counties and school districts",
-                     "https://acme.example/about",
-                     # the card says what accepting does NOT do
-                     "does NOT set that flag"],
+                     "https://acme.example/about"],
         # a 'yes' whose quote did not survive intake cannot be recorded, and
         # the card has to say so rather than offer a button that will refuse
         "refused_shape": ["no quote survived intake"],
@@ -9146,6 +9173,9 @@ console.log(JSON.stringify(out));
                 errors += fail(f"the buyer queue row ({kind}) does not show "
                                f"{n!r} - a person cannot rule on what they "
                                f"cannot read")
+    if "sled_only" in got["eligible"] or "--with-sled" in got["eligible"]:
+        errors += fail("the buyer card still offers sled_only; a buyer verdict "
+                       "never sets it (owner, 2026-10-08)")
     return errors
 
 
@@ -10999,7 +11029,7 @@ def check_derived() -> int:
         # whitespace is not a description under this key either
         ({"jd_text": "  \n ", "comp": None},
          {"jd_seen": False, "comp": None}),
-        # A capture since 2026-10-08 keeps only the pay sentences, as
+        # A capture since 2026-10-08 keeps only the text around its pay figures, as
         # `pay_text`, and marks the reading with `jd_read` - so a description
         # that stated no pay is still "read", not "never looked".
         ({"pay_text": "Base salary range: $140,000 - $200,000 per year.",

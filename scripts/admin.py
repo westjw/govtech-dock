@@ -4620,8 +4620,8 @@ def act_capture(body: dict) -> dict:
                 continue
         signatures.add((cid, title, url, loc))
         terr = roles.territory(loc, title)
-        # The extension's single-posting mode sends the JD body. ONLY ITS PAY
-        # SENTENCES ARE KEPT (salary.pay_excerpt): manual.json is in a public
+        # The extension's single-posting mode sends the JD body. ONLY THE TEXT
+        # AROUND ITS PAY FIGURES IS KEPT (salary.pay_excerpt): manual.json is in a public
         # repository, and the build needs nothing else from a description -
         # derived() parses pay out of `pay_text` and drops it (launch audit,
         # 2026-10-08). `jd_read` is what keeps "we read it and it stated no

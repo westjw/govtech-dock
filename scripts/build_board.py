@@ -567,7 +567,7 @@ def derived(row: dict) -> dict:
         except Exception:
             comp = None
 
-    # A capture since 2026-10-08 keeps only the pay sentences, under
+    # A capture since 2026-10-08 keeps only the text around its pay figures, under
     # `pay_text`, plus `jd_read` for the reading itself (admin.act_capture).
     cap = row.get("jd_text") if "jd_text" in row else row.get("pay_text")
     cap = cap if isinstance(cap, str) and cap.strip() else None
@@ -631,7 +631,7 @@ def jd_backfilled(row: dict, url: str) -> dict:
     if isinstance(jd, str) and jd.strip():
         return row
     hit = _JD_CACHE.get(url)
-    # THE CACHE HOLDS PAY SENTENCES, NOT ADS (salary.pay_excerpt, 2026-10-08):
+    # THE CACHE HOLDS PAY EXCERPTS, NOT ADS (salary.pay_excerpt, 2026-10-08):
     # `read_on` says the description was read, `pay_text` is what parse() can
     # use from it - empty when it stated no pay, which is still a reading.
     if not isinstance(hit, dict) or not hit.get("read_on"):
@@ -762,7 +762,7 @@ def manual_row(mp: dict) -> dict:
     fetched row is keyed so "one id, one row" can hold across both sources.
     EVERY text key is dropped: `jd`, the extension's `jd_text` (up to 20,000
     characters of somebody else's job-ad copy, on rows captured before
-    2026-10-08) and `pay_text` (the pay sentences kept since), plus the
+    2026-10-08) and `pay_text` (the pay excerpt kept since), plus the
     `jd_read` marker; derived() has already taken the two facts worth keeping
     off them."""
     row = {**mp, "source": "manual", **derived(mp)}

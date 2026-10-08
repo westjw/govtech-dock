@@ -1705,8 +1705,10 @@ fires.
   the flag is a person's Vendor scope ruling ("sled") and nothing else.
 - **The repo keeps no job ads (2026-10-08).** `data/jd_cache.json` held 816
   whole descriptions; it, the hand captures in `manual.json` and their
-  journal images now keep only the pay sentences (`salary.pay_excerpt`,
-  parse-identical on all 816) plus a read marker (`read_on` / `jd_read`).
+  journal images now keep only the characters `salary.parse` reads around
+  each money figure (`salary.pay_excerpt`: 120 before, 35 after; 1.9% of
+  the text, parse-identical on all 816) plus a read marker (`read_on` /
+  `jd_read`).
   The whole text goes to `data/jd_local.json`, gitignored, for job-hunter.
   `check_the_repo_keeps_no_job_ads`. The old text is still in git history;
   rewriting that is the owner's call.

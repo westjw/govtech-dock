@@ -39,7 +39,7 @@ entry is therefore always a FALLBACK: a fresher reading from the board itself
 always wins.
 
 TWO FILES, BECAUSE THE REPOSITORY IS PUBLIC. jd_cache.json is committed, so
-it keeps only the sentences that state pay (salary.pay_excerpt) and the day
+it keeps only the text around each pay figure (salary.pay_excerpt) and the day
 the posting was read - never the ad. Until 2026-10-08 it held 816 whole
 descriptions, other companies' copy in a public repo. The full text goes to
 data/jd_local.json, which is gitignored like http_cache and site_pages and
@@ -268,7 +268,7 @@ def main() -> int:
             # not, because that is what moves a failing posting to the back of
             # the rotation. Recording only successes is how a queue turns into
             # a hundred broken urls retried forever.
-            # ONLY THE PAY SENTENCES ARE KEPT (salary.pay_excerpt), never the
+            # ONLY THE TEXT AROUND PAY FIGURES IS KEPT (salary.pay_excerpt), never the
             # ad: this file is in a public repository, and the build needs
             # nothing else from a description (launch audit, 2026-10-06).
             # `read_on` says the description was read, which is what makes
@@ -301,7 +301,7 @@ def main() -> int:
           f"({got/len(todo)*100:.0f}%)")
     print(f"data/jd_cache.json now holds "
           f"{sum(1 for v in cache.values() if v.get('read_on')):,} description(s) read "
-          f"(pay sentences only)")
+          f"(pay excerpts only)")
     print("run build_board.py to fold them into the board")
     return 0
 

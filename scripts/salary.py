@@ -466,30 +466,59 @@ def parse(text: str) -> dict | None:
 
 # --- what a stored description may keep -----------------------------------
 
-_SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])|\n+")
-_CURRENCY = re.compile(r"[$\u20ac\u00a3\u00a5]|\b(USD|CAD|EUR|GBP|AUD)\b|\bdollars?\b", re.I)
+# Everything parse() reads around one figure: the label window before it, and
+# the reject/period window after it (TAIL is the wider of the two).
+_BEFORE = LOOKBACK
+_AFTER = max(TAIL, TRAIL_PERIOD + 12)
+
+
+def _money_spans(hay: str) -> list[tuple[int, int]]:
+    """Every RANGE_RE / SINGLE_RE match that carries a currency marker - the
+    only matches _candidates() can ever turn into pay."""
+    out = []
+    for m in RANGE_RE.finditer(hay):
+        if m.group("c1") or m.group("c2") or m.group("c3"):
+            out.append((m.start(), m.end()))
+    for m in SINGLE_RE.finditer(hay):
+        if m.group("c1") or m.group("c3"):
+            out.append((m.start(), m.end()))
+    return out
 
 
 def pay_excerpt(text: str) -> str:
-    """The sentences of a job description that state pay, each with the
-    sentence either side of it - and nothing else.
+    """The text around each money figure in a job description, exactly as
+    much as parse() reads, and nothing else. Windows that do not touch are
+    joined with a newline.
 
     WHY THIS EXISTS. data/jd_cache.json held 816 full job descriptions, 5.4M
     characters of other companies' ads, in a public repository (launch audit,
     2026-10-06). The build needs two things from a description: that it was
-    read, and the pay range parse() finds in it. This keeps what parse() can
-    use: any sentence carrying a currency marker or a figure parse() would
-    consider, plus one neighbour each side, because a period or label can sit
-    on the next line ("USD $120,000.00 - USD $130,000.00" then "/Yr").
-    Measured on all 816: parse(pay_excerpt(t)) == parse(t) for every one,
-    keeping 6.25% of the text; without the neighbours 10 differed, and with
-    parse()'s own detector alone 1 did. Empty when the text states no pay.
+    read, and the pay range parse() finds in it.
+
+    WHY CHARACTERS AND NOT SENTENCES. The first version kept whole sentences
+    with a neighbour each side. A captured ad arrives with every newline
+    collapsed (extension/capture.js clean()), so an ad with no full stops was
+    one "sentence" and was kept whole the moment it said "$"; 187 cached
+    excerpts held 130,826 characters parse() could not use. And one neighbour
+    was too few: an "On-Target Earnings" heading two short lines above a
+    range fell out, and the excerpt published the OTE as base pay (review,
+    2026-10-08). parse() reads LOOKBACK characters before a figure and at
+    most _AFTER after it, so a window of exactly that, cut from the ORIGINAL
+    text, gives every figure the same context it had - and a window that
+    touches the next one merges with it, so no figure is ever cut in half.
+    Re-excerpting an excerpt returns it unchanged, which is what
+    selftest checks: anything stored that is not inside a window is a leak.
+    Empty when the text states no money figure at all.
     """
     if not text or not isinstance(text, str):
         return ""
-    parts = [p for p in _SENTENCE.split(text) if p.strip()]
-    keep: set = set()
-    for i, p in enumerate(parts):
-        if _CURRENCY.search(p) or _candidates(p.replace("\u00a0", " ")):
-            keep.update(range(max(0, i - 1), min(len(parts), i + 2)))
-    return "\n".join(parts[i] for i in sorted(keep))
+    hay = text.replace("\u00a0", " ")      # 1:1, as parse() does
+    spans = sorted((max(0, a - _BEFORE), min(len(text), b + _AFTER))
+                   for a, b in _money_spans(hay))
+    merged: list[list[int]] = []
+    for a, b in spans:
+        if merged and a <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], b)
+        else:
+            merged.append([a, b])
+    return "\n".join(text[a:b] for a, b in merged)

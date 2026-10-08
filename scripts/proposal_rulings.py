@@ -639,11 +639,9 @@ def _accept_buyer(p: dict, by: str, why: str, force: bool, store: dict,
     function that lands a category, so a single ruling and a batch write the
     same fields with the same provenance.
 
-    IT NEVER SETS sled_only FROM HERE, and that is not an oversight. The flag
-    makes build_board drop every posting whose title does not name the public
-    sector, so accepting one row in a queue would silently subtract jobs from
-    a public board. land_buyer takes `with_sled` and only the CLI passes it,
-    behind a gate review that prints how many postings are at stake first.
+    IT NEVER SETS sled_only, and neither does land_buyer (retired
+    2026-10-08, owner): that flag is a person's Vendor scope ruling, and
+    derived from a buyer verdict it hid government-only vendors' sales roles.
     """
     import promote_profiles
     if not p.get("sells_to_gov") or not p.get("buyer"):
@@ -652,17 +650,13 @@ def _accept_buyer(p: dict, by: str, why: str, force: bool, store: dict,
     companies = admin.read_companies()
     rep = promote_profiles.land_buyer(
         store, companies, [key], by,
-        why or f"landed {p.get('id')} from the proposals queue",
-        with_sled=False)
+        why or f"landed {p.get('id')} from the proposals queue")
     if not rep.get("wrote"):
         held = "; ".join(f"{n}: {r}" for n, r in (rep.get("held") or [])[:2])
         return {"error": f"the buyer answer could not be landed"
                          + (f" - {held}" if held else "; see the journal")}
-    tail = ("  It is eligible for sled_only and did NOT get it: that flag "
-            "removes postings and is set from the CLI behind a gate review."
-            if p.get("sled_eligible") else "")
     return {"ok": True, "message": f"buyer recorded for "
-                                   f"{p.get('name') or p.get('id')}.{tail}"}
+                                   f"{p.get('name') or p.get('id')}."}
 
 
 def _accept_rival(p: dict, by: str, why: str, force: bool, store: dict) -> dict:

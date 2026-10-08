@@ -3271,15 +3271,9 @@ const PROPOSAL_KINDS = {
       say('other buyer:', p.other_quote, p.other_url);
       if (!p.buyer_quote && p.sells_to_gov === 'yes')
         e.appendChild(el('div', 'kv', 'no quote survived intake - this cannot be recorded'));
-      /* WHAT ACCEPTING DOES NOT DO. sled_eligible looks like a decision on
-         the card and is not one: accepting here records the buyer and never
-         sets sled_only, because that flag subtracts postings and belongs
-         behind a gate review that prints how many. Saying so on the card is
-         cheaper than a person learning it from a message afterwards. */
-      if (p.sled_eligible)
-        e.appendChild(el('div', 'kv', 'Eligible for sled_only. Accepting records the buyer '
-          + 'and does NOT set that flag - it drops postings, and it is set from the CLI '
-          + 'behind a gate review.'));
+      /* No sled_only line. Older rows still carry `sled_eligible`, but a buyer
+         verdict never sets that flag any more (retired 2026-10-08, owner): it
+         is a person's Vendor scope ruling, and the card must not offer it. */
       return e;
     },
     needsForce: p => false,
