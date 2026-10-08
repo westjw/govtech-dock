@@ -8597,7 +8597,34 @@ def check_news_labels_make_no_false_claims() -> int:
             ("Getting Ahead of Your Bookstore Renewal", "press"),
             ("Is Your Tap Water Safe to Drink?", "press"),
             ("A Year-Round Fundraising Strategy for Museums", "press"),
-            ("Usability is Your Best Investment", "press")]:
+            ("Usability is Your Best Investment", "press"),
+            # fourth review, 2026-10-08: still filed as a deal, a round or a hire
+            ("Best Dash Cams of 2026: Top Picks Reviewed", "press"),
+            ("14 Top Silent Auction Software Picks Compared", "press"),
+            ("Camus Energy Selected for Google for Startups Accelerator", "press"),
+            ("ConnX Selected as Top Innovator in Cloud Collaboration", "press"),
+            ("Nobel Systems CEO Selected to Join U.S. Business Delegation to Uzbekistan", "press"),
+            ("Black Creek Selects James Hurley as VP of Software Engineering", "leadership"),
+            ("United States, Australia Sign Deal To Combat Serious Crime", "press"),
+            ("Labrie has signed an agreement to be acquired by Hiab", "funding"),
+            ("Publish your OpenGov contracts to Pavilion", "press"),
+            ("Vehicle Thefts Fell 11% After Flock Cameras Went Live", "press"),
+            ("Ladris deploys Forward Ops", "press"),
+            ("Best Places to Invest in Airbnbs Near Airports", "press"),
+            ("Hoboken Invests in Cleaner Streets", "press"),
+            ("Edmunds GovTech Raises Over $325,000 for Crohn's and Colitis", "press"),
+            ("Genasys Secures $1.5M in New Hardware Orders", "press"),
+            ("School Site Acquisition Tracking", "press"),
+            ("Anthropic invests $100 million to train 10,000 engineers", "press"),
+            ("Lessons in Advocacy: How Tennessee Used Data to Secure Tourism Funding", "press"),
+            ("\u201cWhy I Chose to Become a 911 Dispatcher\u201d", "press"),
+            ("Starbridge vs GovSpend: Which platform wins more deals? Compare", "press"),
+            # and real rounds the third pass lost
+            ("Gridware Powers Forward with $26.4 Million Series-A Round Led by Sequoia", "funding"),
+            ("Perry Weather Lands $110M Growth Investment", "funding"),
+            ("Klir receives $16m investment to develop water software", "funding"),
+            ("SunTx Capital Partners Announces Investment in Epoch Solutions Group", "funding"),
+            ("Announcing JusticeText's $2.2M raise", "funding")]:
         got = news.kind(headline)[0]
         if got != want:
             errors += fail(f"news.kind({headline!r}) = {got!r}, expected {want!r}")
@@ -8639,6 +8666,89 @@ def check_the_page_works_without_javascript() -> int:
         return fail("the built index.html has no no-JavaScript page (a heading and the "
                     "state-page links); with scripts off the site is two empty divs")
     return 0
+
+
+def check_html_reader_takes_a_links_own_job_label() -> int:
+    """A card whose link says only "View Job" is read by its aria-label.
+
+    Therap's five postings each link with the text "View Job" and name the
+    role in aria-label ("View job: Sales Assistant"); fetch_html_titles
+    dropped all five and only the three also in the header menu reached the
+    board (fourth review, 2026-10-08). Only a label that says it is a job,
+    on a link whose address looks like one, is taken.
+    """
+    import ats
+    page = (
+        '<a href="/jobs/senior-support-specialist/" aria-label="View job: Senior Support '
+        'Specialist">View Job</a>'
+        '<a aria-label="View job: Sales Assistant" href="/jobs/sales-assistant/">View Job</a>'
+        '<a href="/jobs/x/">View Job</a>'                              # no label: not a role
+        '<a href="/careers/culture" aria-label="Learn more about our mission">Learn more</a>'
+        '<a href="/about/" aria-label="View job: Careers at Acme">View Job</a>')  # not a job url
+
+    class Stub:
+        text = page
+    keep = ats._get
+    ats._get = lambda url, **kw: Stub()
+    try:
+        got = [r["title"] for r in ats.fetch_html_titles("https://acme.test/jobs/")]
+    except Exception as e:                       # noqa: BLE001
+        got = [f"raised {type(e).__name__}: {e}"]
+    finally:
+        ats._get = keep
+    if got != ["Senior Support Specialist", "Sales Assistant"]:
+        return fail(f"fetch_html_titles read {got} from links labelled 'View job: ...'")
+    return 0
+
+
+def check_a_capture_says_only_what_is_true() -> int:
+    """What a hand-captured posting may say, and when it gives way.
+
+    Fourth review, 2026-10-08: captures at companies whose own feed is read
+    in full every night were publishing as "found by hand on a page no
+    fetcher can read"; a capture's printed date could be a fetcher's; and
+    "not re-checked since" stayed after a person re-read the page.
+    """
+    import build_board as bb
+    errors = 0
+    orgs = [{"id": "acme", "ats": "greenhouse", "enumerable": True, "unreadable": None},
+            {"id": "beta", "ats": "html", "enumerable": True, "unreadable": None},
+            {"id": "gamma", "ats": "greenhouse", "enumerable": True, "unreadable": "HTTP 500"}]
+    rows = []
+    with contextlib.redirect_stdout(io.StringIO()):
+        bb.merge_manual(rows, {"postings": [
+            {"id": f"{c}::Account Executive", "title": "Account Executive", "company": c.title(),
+             "company_id": c, "url": f"https://{c}.test/j/1"} for c in ("acme", "beta", "gamma")]},
+            orgs)
+    got = sorted(r["company_id"] for r in rows)
+    if got != ["beta", "gamma"]:
+        errors += fail(f"merge_manual kept captures at {got}; a company whose feed was read "
+                       f"in full tonight (acme) is its own word, an html page (beta) or a "
+                       f"failed read (gamma) is not")
+    cap = {"id": "x::a", "source": "manual", "first_seen": "2026-09-02"}
+    fetched = {"id": "x::b", "source": "ats", "first_seen": "2026-10-08"}
+    bb.carry_first_seen([cap, fetched], [{"id": "x::a", "first_seen": "2026-09-03"},
+                                         {"id": "x::b", "first_seen": "2026-09-01"}])
+    if cap["first_seen"] != "2026-09-02" or fetched["first_seen"] != "2026-09-01":
+        errors += fail(f"carry_first_seen gave a capture {cap['first_seen']} and a fetched row "
+                       f"{fetched['first_seen']}; a capture keeps its own earlier date")
+    if shutil.which("node"):
+        src = (ROOT / "index.html").read_text()
+        fn = src[src.index("function byHandText"):src.index("/*lightMark:start*/")]
+        script = ("const byHandText=new Function(%s+';return byHandText')();"
+                  "const p={first_seen:'2026-09-08'};"
+                  "console.log(JSON.stringify([byHandText(p,{checked_by_hand:'2026-09-08'}),"
+                  "byHandText(p,{checked_by_hand:'2026-10-10'}),"
+                  "byHandText(p,{checked_by_hand:'2026-09-08'},true),"
+                  "byHandText(p,{checked_by_hand:'2026-10-10'},true)]))") % json.dumps(fn)
+        r = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=30)
+        got = json.loads(r.stdout or "[]") if r.returncode == 0 else [r.stderr[:200]]
+        want = ["found by hand on 2026-09-08, not re-checked since",
+                "found by hand on 2026-09-08, page re-read by hand on 2026-10-10",
+                "found by hand, not re-checked", "found by hand, page re-read 2026-10-10"]
+        if got != want:
+            errors += fail(f"byHandText says {got}, expected {want}")
+    return errors
 
 
 def check_the_repo_keeps_no_job_ads() -> int:
@@ -11381,7 +11491,7 @@ def check_manual_merge_never_doubles_a_fetched_row() -> int:
     body = code[code.find("\ndef main("):]
     merge = code[code.find("\ndef merge_manual("):]
     merge = merge[:merge.find("\ndef ", 1)]
-    if "merge_manual(postings, man)" not in body:
+    if "merge_manual(postings, man, orgs)" not in body:
         errors += fail("build_board.main() no longer merges manual.json through "
                        "merge_manual(), so nothing guarantees it skips a manual "
                        "row whose id the fetcher already carries")
@@ -18268,11 +18378,12 @@ def check_watchdog_sees_a_failed_deploy() -> int:
     now = _dt.datetime(2026, 10, 8, 15, 0, tzinfo=_dt.timezone.utc)
     env = {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "o/r"}
 
-    def gh(runs_by_sha, tip_pushed="2026-10-08T14:58:00Z"):
+    def gh(runs_by_sha, tip_pushed="2026-10-08T14:58:00Z", dates=None):
         def fetch(path):
             if "/commits?" in path:
                 return [{"sha": sha * 7, "commit": {"committer": {
-                            "date": tip_pushed if i == 0 else "2026-10-08T09:00:00Z"}}}
+                            "date": (dates or {}).get(sha) or
+                                    (tip_pushed if i == 0 else "2026-10-08T09:00:00Z")}}}
                         for i, sha in enumerate(runs_by_sha)]
             sha = path.split("/commits/")[1][:1]
             return {"check_runs": runs_by_sha[sha]}
@@ -18296,13 +18407,24 @@ def check_watchdog_sees_a_failed_deploy() -> int:
         got = [hard for _, _, hard in watchdog.deploy_faults(env=env, fetch=gh(runs), now=now)]
         if got != want:
             errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
-    # main's tip pushed hours ago with no Pages build at all: Pages stopped
-    # picking main up, and an older success must not read as a live site
-    got = [hard for _, _, hard in watchdog.deploy_faults(
-        env=env, fetch=gh({"a": [], "b": [ok]}, tip_pushed="2026-10-08T09:30:00Z"), now=now)]
-    if got != [True]:
-        errors += fail(f"watchdog on 'an unbuilt tip pushed hours ago': faults {got}, "
-                       f"expected [True]")
+    # PAGES STOPPED PICKING MAIN UP. A commit made after the last build
+    # started and still unbuilt past the grace is a push nobody built - even
+    # under a young tip, which the 13:00 news sweep leaves at most 15:00 runs.
+    early = {"status": "completed", "conclusion": "success",
+             "started_at": "2026-10-08T08:00:00Z"}
+    for label, runs, dates, want in (
+            ("an unbuilt tip pushed hours ago", {"a": [], "b": [early]},
+             {"a": "2026-10-08T09:30:00Z", "b": "2026-10-08T07:59:00Z"}, [True]),
+            ("Pages stopped at noon, a young news commit on top", {"a": [], "b": [], "c": [ok]},
+             {"a": "2026-10-08T14:40:00Z", "b": "2026-10-08T12:30:00Z",
+              "c": "2026-10-08T09:59:00Z"}, [True]),
+            ("middle commits of a push Pages built", {"a": [], "b": [], "c": [ok]},
+             {"a": "2026-10-08T14:40:00Z", "b": "2026-10-08T09:50:00Z",
+              "c": "2026-10-08T09:55:00Z"}, [])):
+        got = [hard for _, _, hard in watchdog.deploy_faults(
+            env=env, fetch=gh(runs, dates=dates), now=now)]
+        if got != want:
+            errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
 
     def boom(path):
         raise OSError("api down")
@@ -29925,6 +30047,8 @@ def main() -> int:
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()
+    errors += check_html_reader_takes_a_links_own_job_label()
+    errors += check_a_capture_says_only_what_is_true()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

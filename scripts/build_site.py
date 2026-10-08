@@ -326,10 +326,13 @@ DROP_ORG = {"vendor_type", "govtech"}
 # 52 off-topic; OpenGov: 71 off-topic) printed "Their board is one we read
 # every night and it is empty right now" - a false empty about a board with
 # dozens of jobs on it. Two small ints on the companies that have them.
+# checked_by_hand SHIPS, since 2026-10-08: a captured posting's page says
+# when a person last re-read the page it came from (index.html byHandText),
+# and without it "not re-checked since" stays after a re-read.
 DROP_ORG_DEAD = {
     "board_owner_unverified", "shares_board_with",
     "board_owner", "quota_postings", "open_postings",
-    "sled_only", "linkedin", "ats_note", "checked_by_hand",
+    "sled_only", "linkedin", "ats_note",
 }
 DROP_POSTING = {"opening_locations", "opening_postings", "captured_from"}
 

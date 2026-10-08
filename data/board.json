@@ -4065,7 +4065,7 @@
    "approx_count": 180,
    "companies": 27,
    "hiring": 9,
-   "open_roles": 252
+   "open_roles": 248
   },
   {
    "tag": "ASBO School Business 2026",
@@ -4335,7 +4335,7 @@
    "approx_count": null,
    "companies": 102,
    "hiring": 25,
-   "open_roles": 677
+   "open_roles": 673
   },
   {
    "tag": "AACE 2026",
@@ -4749,7 +4749,7 @@
    "approx_count": 221,
    "companies": 68,
    "hiring": 17,
-   "open_roles": 522
+   "open_roles": 518
   },
   {
    "tag": "NASFAA 2026",
@@ -5325,7 +5325,7 @@
    "approx_count": null,
    "companies": 162,
    "hiring": 35,
-   "open_roles": 1217
+   "open_roles": 1216
   },
   {
    "tag": "AAPA 2026",
@@ -5541,7 +5541,7 @@
    "approx_count": null,
    "companies": 13,
    "hiring": 5,
-   "open_roles": 288
+   "open_roles": 279
   },
   {
    "tag": "ULI Fall Meeting 2026",
@@ -6286,35 +6286,35 @@
  "unreadable": 19,
  "rendered": 6,
  "no_board_on_file": 862,
- "manual_postings": 255,
- "manual_already_fetched": 3,
+ "manual_postings": 230,
+ "manual_already_fetched": 0,
  "totals": {
-  "postings": 7497,
-  "quota_carrying_postings": 1113,
-  "openings": 6185,
-  "quota_carrying": 740,
-  "us": 2741,
+  "postings": 7472,
+  "quota_carrying_postings": 1108,
+  "openings": 6171,
+  "quota_carrying": 739,
+  "us": 2728,
   "non_us": 1700,
   "families": {
-   "engineering": 1457,
-   "ops": 213,
-   "gtm": 1737,
+   "engineering": 1455,
+   "ops": 212,
+   "gtm": 1735,
    "policy": 11,
-   "ga": 431,
-   "product": 254,
-   "cs": 365,
+   "ga": 430,
+   "product": 253,
+   "cs": 363,
    "field": 461,
-   "other": 1000,
+   "other": 995,
    "data": 204,
    "exec": 52
   },
   "sectors": {
-   "Public Safety": 1456,
+   "Public Safety": 1455,
    "Public Works": 1006,
    "Transit & Parking": 546,
-   "General Gov": 1213,
+   "General Gov": 1209,
    "Parks & Rec": 215,
-   "K-12 Schools": 157,
+   "K-12 Schools": 148,
    "Utilities & Energy": 266,
    "Health & Human Services": 253,
    "Courts & Justice": 42,
@@ -6329,7 +6329,7 @@
    "text": 1071
   },
   "jd_read_postings": 3740,
-  "jd_unread_postings": 3757
+  "jd_unread_postings": 3732
  },
  "organizations": [
   {
@@ -18051,17 +18051,16 @@
     "GFOA 2026"
    ],
    "conference": "ICMA 2025",
-   "open_roles": 17,
-   "open_postings": 27,
+   "open_roles": 13,
+   "open_postings": 13,
    "quota_roles": 4,
-   "quota_postings": 8,
+   "quota_postings": 4,
    "families": {
-    "other": 3,
-    "gtm": 7,
-    "product": 2,
+    "other": 2,
+    "gtm": 6,
+    "product": 1,
     "engineering": 3,
-    "field": 1,
-    "cs": 1
+    "field": 1
    },
    "phase": "mixed: building and selling at once",
    "unreadable": null,
@@ -30504,13 +30503,12 @@
     "IACP 2026"
    ],
    "conference": "IACP 2026",
-   "open_roles": 2,
-   "open_postings": 2,
+   "open_roles": 1,
+   "open_postings": 1,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
-    "gtm": 1,
-    "engineering": 1
+    "gtm": 1
    },
    "phase": "too few openings to read",
    "unreadable": null,
@@ -68412,7 +68410,7 @@
    "conferences": [],
    "conference": null,
    "open_roles": 1,
-   "open_postings": 2,
+   "open_postings": 1,
    "quota_roles": 0,
    "quota_postings": 0,
    "families": {
@@ -73708,17 +73706,14 @@
     "NAPT Summit 2026"
    ],
    "conference": "NAPT Summit 2026",
-   "open_roles": 18,
-   "open_postings": 18,
-   "quota_roles": 5,
-   "quota_postings": 5,
+   "open_roles": 9,
+   "open_postings": 9,
+   "quota_roles": 4,
+   "quota_postings": 4,
    "families": {
-    "gtm": 7,
-    "cs": 3,
-    "ops": 2,
-    "ga": 1,
-    "other": 4,
-    "engineering": 1
+    "gtm": 6,
+    "cs": 2,
+    "ops": 1
    },
    "phase": "selling: a go-to-market push",
    "unreadable": null,
@@ -210488,7 +210483,7 @@
    "also": null,
    "first_seen": "2026-09-18",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210523,7 +210518,7 @@
    "also": null,
    "first_seen": "2026-09-16",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210558,7 +210553,7 @@
    "also": null,
    "first_seen": "2026-09-04",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210593,7 +210588,7 @@
    "also": null,
    "first_seen": "2026-09-04",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210628,7 +210623,7 @@
    "also": null,
    "first_seen": "2026-09-04",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210663,7 +210658,7 @@
    "also": null,
    "first_seen": "2026-10-05",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210698,8 +210693,8 @@
    "also": null,
    "first_seen": "2026-10-05",
    "source": "ats",
-   "opening_postings": 2,
-   "opening_locations": 2
+   "opening_postings": 1,
+   "opening_locations": 1
   },
   {
    "id": "debtbook::Senior Software Engineer::034f4172",
@@ -210742,7 +210737,7 @@
    "also": null,
    "first_seen": "2026-10-05",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210821,7 +210816,7 @@
    "also": null,
    "first_seen": "2026-10-05",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -210865,7 +210860,7 @@
    "also": null,
    "first_seen": "2026-09-05",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -299542,7 +299537,7 @@
    "also": null,
    "first_seen": "2026-09-08",
    "source": "ats",
-   "opening_postings": 2,
+   "opening_postings": 1,
    "opening_locations": 1
   },
   {
@@ -387121,308 +387116,6 @@
    "opening_locations": 1
   },
   {
-   "id": "everdriven::Senior Finance AnalystNew::d2b9e034",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Senior Finance AnalystNew",
-   "family": "ga",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Greenwood Village, Colorado, United States",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5412386008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-02",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Senior Finance AnalystNew",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Greenwood Village",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Senior Manager, FinanceNew::bf102359",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Senior Manager, FinanceNew",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Greenwood Village, Colorado, United States",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5412363008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-02",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Senior Manager, FinanceNew",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Greenwood Village",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Customer Success Manager::804e8ca8",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Customer Success Manager",
-   "family": "cs",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote Florida",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5406599008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Customer Success Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Senior Manager, Revenue Operations- Strategy & Operations::d07cd5e3",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Senior Manager, Revenue Operations- Strategy & Operations",
-   "family": "ops",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Greenwood Village, Colorado, United States",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5174888008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-02",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Senior Manager, Revenue Operations- Strategy & Operations",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Greenwood Village",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Account Executive, Georgia/Florida::2dd90c77",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Account Executive, Georgia/Florida",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "states": [
-    "FL"
-   ],
-   "region": "Southeast",
-   "work_mode": "remote",
-   "location": "Remote Georgia",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5231015008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-02",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Account Executive, Georgia/Florida",
-   "territory": {
-    "states": [
-     "FL"
-    ],
-    "region": "Southeast",
-    "stated": true
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Knowledge Management Specialist::ccc6e892",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Knowledge Management Specialist",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Greenwood Village, Colorado, United States",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5373886008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Knowledge Management Specialist",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Greenwood Village",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Account Specialist, Birmingham::af17ab46",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Account Specialist, Birmingham",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "Remote Birmingham",
-   "is_us": null,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5288872008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Account Specialist, Birmingham",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Account Specialist Manager, PA::19c31a17",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Account Specialist Manager, PA",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [
-    "PA"
-   ],
-   "region": "Northeast",
-   "work_mode": "remote",
-   "location": "remote PA",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5389794008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Account Specialist Manager, PA",
-   "territory": {
-    "states": [
-     "PA"
-    ],
-    "region": "Northeast",
-    "stated": true
-   },
-   "office": null,
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "everdriven::Engineering Manager::3498e610",
-   "company": "EverDriven",
-   "company_id": "everdriven",
-   "title": "Engineering Manager",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Greenwood Village, Colorado, United States",
-   "is_us": true,
-   "url": "https://job-boards.greenhouse.io/everdriven/jobs/5288693008",
-   "sector": "K-12 Schools",
-   "category": "Operations & SIS",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://job-boards.greenhouse.io/everdriven",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "everdriven::Engineering Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Greenwood Village",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "acentra-health::Presentation Designer, Mid::cb80ce22",
    "company": "Acentra Health",
    "company_id": "acentra-health",
@@ -388225,7 +387918,7 @@
    "url": "https://www.amcsgroup.com/careers/marketing-operations-support-specialist-209955/",
    "sector": "Public Works",
    "category": "Waste & Recycling",
-   "first_seen": "2026-09-04",
+   "first_seen": "2026-09-03",
    "captured_from": "https://www.amcsgroup.com/careers/",
    "source": "manual",
    "jd_seen": false,
@@ -389013,482 +388706,6 @@
    },
    "office": null,
    "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Senior Customer Success Manager - Treasury Accounts::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Senior Customer Success Manager - Treasury Accounts",
-   "family": "cs",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Senior Customer Success Manager - Treasury Accounts",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Senior Debt Specialist::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Senior Debt Specialist",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Senior Debt Specialist",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Senior Software Engineer::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Senior Software Engineer",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Senior Software Engineer",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Software Engineer::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Software Engineer",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Software Engineer",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Software Engineering Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Software Engineering Manager",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Software Engineering Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Senior Field Marketing Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Senior Field Marketing Manager",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Senior Field Marketing Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Associate Product Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Associate Product Manager",
-   "family": "product",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Associate Product Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Senior Product Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Senior Product Manager",
-   "family": "product",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Senior Product Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 2
-  },
-  {
-   "id": "debtbook::Enterprise Account Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Enterprise Account Manager",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Enterprise Account Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Mid-Market Account Manager::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Mid-Market Account Manager",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Mid-Market Account Manager",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Enterprise Account Executive::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Enterprise Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Enterprise Account Executive",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Mid-Market Account Executive::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Mid-Market Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Mid-Market Account Executive",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Sales Development Representative::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Sales Development Representative",
-   "family": "gtm",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Sales Development Representative",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
-   "opening_locations": 1
-  },
-  {
-   "id": "debtbook::Customer Support Associate::38d2e399",
-   "company": "DebtBook",
-   "company_id": "debtbook",
-   "title": "Customer Support Associate",
-   "family": "other",
-   "quota_carrying": false,
-   "seniority": "junior",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Charlotte, NC",
-   "is_us": true,
-   "url": "https://www.debtbook.com/current-openings",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "first_seen": "2026-09-03",
-   "captured_from": "https://www.debtbook.com/current-openings",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "debtbook::Customer Support Associate",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Charlotte",
-    "state": "NC"
-   },
-   "opening_postings": 2,
    "opening_locations": 1
   },
   {
@@ -391372,41 +390589,6 @@
     "state": "UT"
    },
    "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "dominion-voting-systems::Technical Lead (Illinois)::dea064db",
-   "company": "Dominion Voting Systems",
-   "company_id": "dominion-voting-systems",
-   "title": "Technical Lead (Illinois)",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "senior",
-   "states": [
-    "IL"
-   ],
-   "region": "Midwest",
-   "work_mode": "remote",
-   "location": "Remote - IL",
-   "is_us": true,
-   "url": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/4359657",
-   "sector": "General Gov",
-   "category": "Elections",
-   "first_seen": "2026-09-08",
-   "captured_from": "https://recruiting.paylocity.com/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "dominion-voting-systems::Technical Lead (Illinois)",
-   "territory": {
-    "states": [
-     "IL"
-    ],
-    "region": "Midwest",
-    "stated": true
-   },
-   "office": null,
-   "opening_postings": 2,
    "opening_locations": 1
   },
   {
@@ -395244,40 +394426,6 @@
    "opening_locations": 1
   },
   {
-   "id": "fotokite::UAS Support Technician::0fa2ecad",
-   "company": "Fotokite",
-   "company_id": "fotokite",
-   "title": "UAS Support Technician",
-   "family": "engineering",
-   "quota_carrying": false,
-   "seniority": "mid",
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Boulder, Colorado",
-   "is_us": true,
-   "url": "https://fotokite.bamboohr.com/careers",
-   "sector": "Public Safety",
-   "category": "Fire",
-   "first_seen": "2026-09-26",
-   "captured_from": "https://fotokite.bamboohr.com/careers",
-   "source": "manual",
-   "jd_seen": false,
-   "comp": null,
-   "opening_id": "fotokite::UAS Support Technician",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Boulder",
-    "state": "CO"
-   },
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "municibid::Sales Development Representative::d8234df4",
    "company": "Municibid",
    "company_id": "municibid",
@@ -395348,7 +394496,7 @@
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-08T20:42:01Z",
+  "at": "2026-10-08T21:36:49Z",
   "inputs": "16431da35e5804095867f03373a052eeab0c4d96a77ec30ecf15da018cdc3bef"
  }
 }

@@ -112,29 +112,45 @@ def deploy_faults(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]
     now = now or dt.datetime.now(dt.timezone.utc)
     try:
         commits = fetch(f"/repos/{repo}/commits?sha=main&per_page={DEPLOY_LOOKBACK}")
-        for i, c in enumerate(commits):
+        # UNBUILT PUSHES. Pages builds the tip of every push within a minute
+        # (400 commits checked, 2026-10-08); only the middle commits of a
+        # multi-commit push go unbuilt, and that push's own build starts AFTER
+        # them. So a commit made after the newest Pages build started, and
+        # still unbuilt past the grace, belongs to a push Pages never picked up
+        # - an app that lost the repo, deploys switched off - and an older
+        # success must not read as a live site. Not just the tip: the 13:00
+        # news sweep usually leaves a young tip at the 15:00 run, and skipping
+        # it walked straight back to the last good build (third and fourth
+        # reviews, 2026-10-08).
+        unbuilt: list[tuple[str, dt.datetime]] = []
+
+        def never_built(started_at):
+            start = _when(started_at)
+            late = [(sha, at) for sha, at in unbuilt
+                    if start and at > start and now - at > DEPLOY_GRACE]
+            if not late:
+                return None
+            sha, at = late[-1]
+            return [(f"Cloudflare Pages never picked up main at {sha[:7]}",
+                     f"committed {at:%Y-%m-%d %H:%M} UTC, after the last Pages build "
+                     f"started, and still unbuilt - so the public site is an older "
+                     f"build than the repo holds", True)]
+
+        for c in commits:
             sha = c["sha"]
             runs = fetch(f"/repos/{repo}/commits/{sha}/check-runs"
                          f"?check_name={urllib.request.quote(DEPLOY_CHECK)}")
             runs = sorted(runs.get("check_runs") or [],
                           key=lambda r: r.get("started_at") or "", reverse=True)
             if not runs:
-                # MAIN'S TIP IS ALWAYS THE TIP OF A PUSH, and Pages builds every
-                # push's tip within a minute (400 commits checked, 2026-10-08).
-                # Only the middle commits of a multi-commit push go unbuilt. So a
-                # tip with no run, past the grace, means Pages stopped picking
-                # main up - an app that lost the repo, deploys switched off - and
-                # skipping it would read an older success as a live site
-                # (third review, 2026-10-08).
-                pushed = _when((c.get("commit") or {}).get("committer", {}).get("date"))
-                if i == 0 and pushed and now - pushed > DEPLOY_GRACE:
-                    return [(f"Cloudflare Pages never picked up main's newest commit "
-                             f"{sha[:7]}",
-                             f"pushed {pushed:%Y-%m-%d %H:%M} UTC and no Pages build "
-                             f"exists for it, so the public site is an older build than "
-                             f"the repo holds", True)]
+                at = _when((c.get("commit") or {}).get("committer", {}).get("date"))
+                if at:
+                    unbuilt.append((sha, at))
                 continue
             run = runs[0]
+            stopped = never_built(run.get("started_at"))
+            if stopped:
+                return stopped
             if run.get("status") != "completed":
                 started = _when(run.get("started_at"))
                 if started and now - started > DEPLOY_GRACE:

@@ -2499,7 +2499,7 @@ function roleView(id){
     ${purl?`<p class="colinks"><a class="golink" href="${esc(purl)}" target="_blank"
       rel="noopener">Open the posting &rarr;</a>
       <span class="chip">${age.txt==="new today"?"first seen today":"on the board "+esc(age.txt)}</span>
-      ${p.source==="manual"?`<span class="chip">found by hand${p.first_seen?" on "+esc(p.first_seen):""}, not re-checked since</span>`
+      ${p.source==="manual"?`<span class="chip">${esc(byHandText(p,o))}</span>`
         :p.source==="hq"?'<span class="chip">posted on SLED HQ</span>':""}</p>`:""}
 
     <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
@@ -2670,6 +2670,18 @@ function logoImg(cid){
   const ext=D.logos&&D.logos[cid];
   return ext?`<img src="assets/logos/${esc(cid)}.${esc(ext)}" alt=""
     decoding="async" onload="lightMark(this)" onerror="this.remove()">`:"";
+}
+/* WHAT A CAPTURED POSTING CAN HONESTLY SAY about when anyone last looked.
+   Nothing re-reads it nightly; a person may re-read the page it came from,
+   which the company's checked_by_hand records - and then "not re-checked
+   since" is false (fourth review, 2026-10-08). `short` is the card's form.
+   A capture stamps checked_by_hand itself, so only a LATER date is a re-read. */
+function byHandText(p,o,short){
+  const seen=p&&p.first_seen, again=o&&o.checked_by_hand;
+  const reread=!!(again&&seen&&again>seen);
+  if(short)return reread?`found by hand, page re-read ${again}`:"found by hand, not re-checked";
+  return "found by hand"+(seen?" on "+seen:"")
+    +(reread?`, page re-read by hand on ${again}`:", not re-checked since");
 }
 /*lightMark:start*/
 /* A WHITE MARK ON A WHITE PLATE. 19 of the 1,916 logos are white on
@@ -4616,7 +4628,8 @@ function jobCardHTML(g){
         ?`<div class="postedon" title="the date the employer's own job board gives for this posting">employer posted ${esc(postedOn)}</div>`
         :postedRange?`<div class="postedon" title="the dates the employer's own job board gives for these postings">employer posted ${esc(postedRange)}</div>`:""}${
         g.rows.every(r=>r.source==="manual")
-        ?`<div class="postedon" title="captured from a page no fetcher can read; nothing re-reads it each night">found by hand, not re-checked</div>`:""}
+        ?`<div class="postedon" title="captured by hand; no fetcher re-reads it each night">${esc(byHandText(p,
+          (D.organizations||[]).find(x=>x.id===p.company_id),true))}</div>`:""}
       </div>
     </div>`;
 }

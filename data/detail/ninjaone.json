@@ -14,8 +14,8 @@
    "date_source": "dateline",
    "first_seen": "2026-09-10",
    "headline": "NinjaOne Reaches $12.3B Valuation as IT Operations Market Consolidates Around a Single Platform",
-   "kind": "funding",
-   "kind_rule": "Valuation",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://www.ninjaone.com/press/12-3-billion-valuation/"
   },
   {
@@ -69,7 +69,7 @@
    "first_seen": "2026-09-10",
    "headline": "NinjaOne Secures $5 Billion Valuation and $500 Million Funding to Redefine Automated Endpoint Management",
    "kind": "funding",
-   "kind_rule": "Secures $",
+   "kind_rule": "$500 Million Funding",
    "url": "https://www.ninjaone.com/press/500m-series-c-extensions-5b-valuation/"
   },
   {
@@ -77,8 +77,8 @@
    "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "NinjaOne Announces Intent to Acquire SaaS Backup and Data Protection Leader Dropsuite",
-   "kind": "funding",
-   "kind_rule": "Acquire",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://www.ninjaone.com/press/ninjaone-announces-intent-to-acquire-dropsuite/"
   }
  ],

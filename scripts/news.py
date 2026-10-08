@@ -104,29 +104,77 @@ SECTION_LABEL = re.compile(
 # third-person adoption verb ("Nevada County adopts JusticeText"); funding
 # needs money in the sentence. Measured on all 13,292 stored headlines
 # (2026-10-08).
+# Words that make a subject a public body: how a city, a county or an agency
+# announces it chose a vendor.
+_PUBLIC = (r"(city|county|state|town|village|department|dept|district|authority|"
+           r"agency|commission|board|council|university|college|schools?|transit|"
+           r"police|sheriff|fire|court|airport|port|library|public)")
+
+# An honour, a list or a programme is not a customer: "Selected for Google
+# for Startups Accelerator", "Selected as Top Innovator", "...of the Year".
+# The lookaheads below read to the end of the line, not the next period:
+# "Selected to Join U.S. Business Delegation" hid its last word behind the
+# periods in "U.S." (fourth review, 2026-10-08).
+_HONOUR = (r"(awards?|honou?rs?|innovators?|list|accelerator|program(me)?|lab|hub|"
+           r"showcase|board member|delegation|of the year|finalists?|cohort|"
+           r"fellowship|competition|challenge|winners?|top|best|recogni[sz]\w*|"
+           r"spotlight|feature[sd]?|speaker|panel|summit|conference|initiative|incubator)")
+
+# MONEY, as a figure: "$15 Million", "$2.2M", "€10mm".
+_MONEY = r"(\$|€|£)\s?[\d.,]+\s*(k|m|mm|mn|million|b|bn|billion)?\b"
+
 NEWS_RULES = (
+    # A HIRE FIRST: "Black Creek Selects James Hurley as VP of Software
+    # Engineering" and "LineVision Taps ... as Chief Executive Officer" are
+    # people news, and the contract verbs below would file them as deals.
+    ("leadership", re.compile(
+        r"\bas (its |the |our |their )?(new |next |first |interim )?"
+        r"(ceo|cfo|cto|coo|cro|cmo|cio|ciso|chief\b|president|vp\b|svp\b|evp\b|"
+        r"vice president|head of|general manager|managing director|director of)", re.I)),
+    # A SALE, MERGER OR BUYOUT, before the contract verbs: "has signed an
+    # agreement to be acquired by Hiab" is an acquisition, not a contract.
+    ("funding", re.compile(
+        r"\b(to be acquired|acquired by|merger with|merges? with|completes? (the )?acquisition)\b|"
+        r"\bacquires\b(?!\s+(a|an|the|new|two|three|four|five|six|\d+)\b)|"
+        r"\bacquisition of\b(?![^\n]{0,40}\b(kits?|equipment|units?|vehicles?|land|sites?|"
+        r"property|propert(y|ies)|data|licen[cs]es?)\b)", re.I)),
     ("contract", re.compile(
-        r"\baward(ed|s)?\b.{0,40}\b(contracts?|grants?|task orders?|agreements?|bids?)\b|"
-        r"\b(contracts?|grants?|task orders?)\b.{0,15}\bawards?\b|"
-        r"\b(wins?|won|secure[sd]?|lands?|landed|approve[sd]?|signs?|signed|inks?|inked|"
-        r"begins?|extends?|extended|renews?|renewed)\b.{0,40}"
-        r"\b(contracts?|agreements?|deals?|mou|memorandum)\b|"
-        r"\bcontracts? (with|for|to)\b|"
-        r"\bselected (as|by|to|for)\b|\b(selects|chooses|chose|adopts|implements|"
-        r"deploys|taps|picks)\b|\b(goes|went) live\b|"
+        r"\baward(ed|s)?\b[^\n]{0,40}\b(contracts?|grants?|task orders?|agreements?|bids?)\b|"
+        r"\b(contract|grant|task order) award(ed)? (to|for)\b|"
+        r"\b(wins|won|secures|secured|lands|landed|approves|approved|signs|signed|inks|inked|"
+        r"begins|began|extends|extended|renews|renewed)\b[^\n]{0,40}"
+        r"\b(contract|agreement|deal|mou|memorandum of understanding|task order)\b"
+        r"(?![^\n]{0,20}\b(to be acquired|acquired)\b)|"
+        r"\b(a|an|the|new|\$[\d.,]+\s*\w*)\s+contract (with|for|to)\b|"
+        r"\bselected (as|by|to|for)\b(?![^\n]{0,70}\b" + _HONOUR + r"\b)|"
+        r"\b(selects|chooses|chose|taps)\b(?![^\n]{0,70}\b" + _HONOUR + r"\b)|"
+        r"\badopts\b(?![^\n]{0,60}\b(resolution|policy|policies|standards?|framework|"
+        r"plan|budget|ordinance|code|guidelines?)\b)|"
+        # implements / deploys only with a public body as the subject: a
+        # vendor "deploys Forward Ops" is shipping its own product
+        r"\b" + _PUBLIC + r"\b[^\n]{0,50}\b(implements|deploys|rolls out|launches|picks)\b|"
+        r"\b(goes|went) live (with|on)\b|"
         # a PUBLIC BODY partnering with a vendor is how a city announces a
         # contract ("Bethlehem Parking Authority Partners with Cleverciti");
         # two companies partnering is not
-        r"\b(city|county|state|town|village|department|district|authority|agency|"
-        r"university|college|schools?|transit|police|sheriff)\b[^.]{0,40}\bpartners? with\b|"
+        r"\b" + _PUBLIC + r"\b[^\n]{0,40}\bpartners? with\b|"
         r"\bpartners? with (the )?(city|county|state|town|village|department|"
         r"district|authority|agency|university|college)\b", re.I)),
+    # MONEY RAISED, said with money or with the words of a round. A charity
+    # total ("Raises Over $325,000 for Crohn's"), a customer buying something
+    # ("Hoboken Invests in Cleaner Streets") or "Best Places to Invest in..."
+    # is not a funding round.
     ("funding", re.compile(
-        r"\braise[sd]?\b.{0,30}(\$|\u20ac|\u00a3|\bmillion\b|\bbillion\b|\bseries\b|"
-        r"\bseed\b|\bfunding\b|\bround\b)|\bfunding round\b|\bseries [a-e]\b|"
-        r"\bseed (round|funding)\b|\bsecures?\b.{0,25}(\$|\bfunding\b|\binvestment\b)|"
-        r"\binvestment (from|led by|by)\b|\binvest(s|ed)? in\b|\bvaluation\b|\bacqui(res?|red|sition)\b|"
-        r"\bmerger\b|\bmerges? with\b", re.I)),
+        r"\b(raise[sd]?|secures|secured|closes|closed|lands|landed|receives|received|gets|announces)\b"
+        r"[^\n]{0,40}\b(series[- ][a-e]|seed (round|funding)|funding round|growth (equity|investment)|"
+        r"venture (funding|capital|round)|strategic investment|investment round|"
+        r"(funding|investment|financing) (from|led by|by))\b|"
+        r"\bseries[- ][a-e]\b|\bseed (round|funding)\b|\bfunding round\b|"
+        r"\b(investment|funding|financing) (from|led by|by)\b|"
+        + _MONEY + r"(\s+[\w-]+)?\s+(raise|round|funding|investment|financing|series)\b"
+        r"(?!\s+opportunit)|"
+        r"\b(capital|partners|ventures|equity)\b[^\n]{0,40}\b(invests|invested|investment in|announces investment)\b|"
+        r"\bvaluation of\b|\bat a [^\n]{0,20}valuation\b", re.I)),
     ("leadership", re.compile(
         r"\b(appoint(s|ed)?|names?|joins? (as|the)|hires?|promot(es|ed)|welcomes|"
         r"new (ceo|cfo|cto|coo|cro|chief|president|vp|vice president|head of)|"
@@ -139,12 +187,19 @@ NEWS_RULES = (
 
 # A HEADLINE SHAPED LIKE A BLOG POST is never filed as a deal, a round or a
 # hire: "How We Deploy AI", "Why Bismarck State Chose Nelnet", "5 Reasons
-# Water Utilities Should Adopt...", anything that ends in a question mark.
+# Water Utilities Should Adopt...", "Best Places to Invest in...", anything
+# that asks a question. Also after a short prefix or an opening quote -
+# "Lessons in Advocacy: How Tennessee Used..." - and a question may end in a
+# closing quote or sit mid-headline ("...wins more deals? Compare ...").
 BLOG_SHAPE = re.compile(
-    r"^\s*(how|why|what|when|where|which|who|is|are|do|does|can|should|read|"
-    r"getting|celebrating|top \d+)\b|"
-    r"^\s*\d+\+?\s+(signs|reasons|ways|tips|things|steps|questions|mistakes|"
-    r"trends|lessons|myths|best|key|common|keys)\b|\?\s*$", re.I)
+    r"^\s*(?:[^:|>\n]{0,60}(?::|\||-->)\s*)?[\"“‘']?\s*"
+    r"(how|why|what|when|where|which|who|is|are|do|does|can|should|read|"
+    r"getting|celebrating|best|top \d+|a (look|guide) (at|to)|the (ultimate|complete) guide)\s|"
+    r"^\s*(?:[^:|>\n]{0,60}(?::|\||-->)\s*)?(\d+\+?|two|three|four|five|six|seven|eight|nine|ten)"
+    r"\s+(top\s+|best\s+)?(signs|reasons|ways|tips|"
+    r"things|steps|questions|mistakes|trends|lessons|myths|best|key|common|keys|places)\b|"
+    r"\bneed to know\b|"
+    r"\?[\s\"”’']*($|[A-Z—-])", re.I)
 
 
 def norm(s: str) -> str:

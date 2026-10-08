@@ -1356,13 +1356,36 @@ def ruled_out(companies: list, man: dict | None) -> tuple[list, dict | None, lis
     return keep, man, sorted(out)
 
 
-def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
-    """Append manual.json's captures to `postings`. Returns (added, already_fetched)."""
-    manual_count = manual_dupes = 0
+# A capture's company is READ IN FULL when its structured job feed answered
+# this run: the employer's own list, every posting on it. An html page is not
+# that - a capture there may come from a page the reader never sees.
+def read_in_full(orgs: list[dict]) -> set:
+    return {o["id"] for o in orgs or []
+            if o.get("ats") not in (None, "unknown", "html")
+            and o.get("enumerable") is True and not o.get("unreadable")}
+
+
+def merge_manual(postings: list[dict], man: dict | None,
+                 orgs: list[dict] | None = None) -> tuple[int, int]:
+    """Append manual.json's captures to `postings`. Returns (added, already_fetched).
+
+    A CAPTURE AT A COMPANY READ IN FULL TONIGHT IS LEFT OFF. A capture exists
+    because no fetcher could read the company; once its feed is read, the
+    feed is the employer's own word, and a captured posting that is not on it
+    has closed. 25 such rows at Debtbook, EverDriven, Dominion and Fotokite
+    were publishing as "found by hand on a page no fetcher can read" while
+    their Greenhouse, Paylocity and BambooHR feeds were read every night
+    (fourth review, 2026-10-08). They stay in manual.json; the count is said.
+    """
+    manual_count = manual_dupes = retired = 0
     seen_ids = {p["id"] for p in postings}
     if man is None:
         return manual_count, manual_dupes
+    full = read_in_full(orgs)
     for mp in man.get("postings", []):
+        if mp.get("company_id") in full:
+            retired += 1
+            continue
         # manual.py keys a hand-captured row company::title, which names
         # the opening rather than the requisition. Re-key it the same way
         # a fetched row is keyed, so "one id, one row" holds across both
@@ -1395,6 +1418,9 @@ def merge_manual(postings: list[dict], man: dict | None) -> tuple[int, int]:
         seen_ids.add(row["id"])
         postings.append(row)
         manual_count += 1
+    if retired:
+        print(f"  {retired} captured posting(s) left off: their company's own feed "
+              f"was read in full and does not list them")
     return manual_count, manual_dupes
 
 
@@ -1510,6 +1536,12 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict]) -> None:
                 legacy[p["id"]] = seen
     for p in postings:
         was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
+        # A CAPTURE KEEPS ITS OWN DATE when that is earlier: the role page
+        # prints it as "found by hand on <date>", and a carried date can be the
+        # night a fetcher first read the same posting - EverDriven's capture of
+        # 09-02 was printing 09-03 (fourth review, 2026-10-08).
+        if was and p.get("source") == "manual" and p.get("first_seen"):
+            was = min(was, p["first_seen"])
         if was:
             p["first_seen"] = was
 
@@ -2127,7 +2159,7 @@ def main() -> int:
     # run means the fetcher still cannot see the company, not that the role closed.
     # Only `manual.py none` closes a manual posting. The hand-check date rides on
     # each org already: org_record() read it from `man` through run_context().
-    manual_count, manual_dupes = merge_manual(postings, man)
+    manual_count, manual_dupes = merge_manual(postings, man, orgs)
     # Jobs employers posted on SLED HQ (scripts/hq_jobs.py read the feed).
     hq_count, hq_dropped = merge_hq(postings, load_hq(), companies)
     if hq_count or hq_dropped:

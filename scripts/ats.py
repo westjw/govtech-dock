@@ -1693,6 +1693,11 @@ def fetch_icims(ref: str) -> list[dict]:
 # enough to enumerate most of them, which is the difference between a company
 # appearing on a job board and being invisible on it.
 _ANCHOR = re.compile(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', re.I | re.S)
+# "View job: Senior Support Specialist" - a link's accessible name, when its
+# visible text is only a button label (see fetch_html_titles)
+_ARIA_JOB = re.compile(r'\baria-label=["\'](?:view|see|open|apply(?: for| to)?)\s+'
+                       r'(?:this\s+)?(?:job|role|position|opening|posting)\s*[:\-\u2013\u2014]\s*'
+                       r'([^"\']{3,90})["\']', re.I)
 _JOB_HREF = re.compile(r"/(job|jobs|career|careers|position|opening|vacanc|"
                        r"apply|posting|req)[/\-_?=]|jobId|requisition", re.I)
 _TITLEISH = re.compile(r"\b(engineer|developer|manager|director|analyst|specialist|"
@@ -1938,7 +1943,8 @@ def fetch_html_titles(url: str) -> list[dict]:
     """
     resp = _get(url)
     seen, out = set(), []
-    for href, inner in _ANCHOR.findall(resp.text):
+    for m in _ANCHOR.finditer(resp.text):
+        href, inner = m.group(1), m.group(2)
         # A LINK THAT WRAPS THE WHOLE CARD. uveye.com/careers puts the title,
         # the location, the employment type and a "More Details / Less Details"
         # toggle inside one <a>, so flattening it gave sixteen postings titled
@@ -1953,11 +1959,22 @@ def fetch_html_titles(url: str) -> list[dict]:
         picked = heads[0][1] if len(heads) == 1 else inner
         text = re.sub(r"\s+", " ", _ANYTAG.sub(" ", picked)).strip()
         text = strip_cta(html_lib.unescape(text))
+        # A CARD WHOSE LINK SAYS ONLY "View Job". Therap's five postings each
+        # link with that text and name the role in aria-label ("View job:
+        # Senior Support Specialist"); the title gate dropped all five, and
+        # only the three also linked from the header menu reached the board
+        # (fourth review, 2026-10-08). Used only when the visible text is not
+        # a title, and only the role named after "View job:".
+        named = False         # the page's own label says this link is a job
+        if not _TITLEISH.search(text):
+            aria = _ARIA_JOB.search(m.group(0)[:m.group(0).find(">") + 1])
+            if aria:
+                text, named = html_lib.unescape(aria.group(1)).strip(), True
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
         if _JOB_COUNT.search(text):
             continue          # "Engineer jobs 555,845 open jobs" is a rail, not a role
-        if not (_JOB_HREF.search(href) and _TITLEISH.search(text)):
+        if not (_JOB_HREF.search(href) and (named or _TITLEISH.search(text))):
             continue
         # DEDUP ON THE LINK, NOT THE TITLE. It used to key on the title, which
         # worked only because the titles were dirty: Samsara's card text

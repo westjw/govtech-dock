@@ -33,7 +33,7 @@
    "first_seen": "2026-09-05",
    "headline": "Santa Cruz County Public Defender's Office implements JusticeText for AI-driven evidence review",
    "kind": "contract",
-   "kind_rule": "implements",
+   "kind_rule": "County Public Defender's Office implements",
    "url": "https://justicetext.com/blog/santa-cruz-public-defenders"
   },
   {
@@ -59,8 +59,8 @@
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The Orleans Public Defenders office partners with JusticeText to leverage AI-powered discovery review in defense of their clients",
-   "kind": "press",
-   "kind_rule": null,
+   "kind": "contract",
+   "kind_rule": "Public Defenders office partners with",
    "url": "https://justicetext.com/blog/orleans-public-defenders"
   },
   {
@@ -95,8 +95,8 @@
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Announcing JusticeText\u2019s $2.2M raise to increase accountability in the criminal justice system",
-   "kind": "press",
-   "kind_rule": null,
+   "kind": "funding",
+   "kind_rule": "$2.2M raise",
    "url": "https://justicetext.com/blog/seed-round-announcement"
   },
   {
