@@ -8,15 +8,16 @@
 # confidence.
 #
 # A check that lives inside the pipeline it watches goes quiet at exactly the
-# moment it is needed. So this is a second job, five hours after the first, and
+# moment it is needed. So this is a second job, on its own clock, and
 # it does not depend on the first having run - that is the thing it is asking.
 name: Watchdog
 
 on:
   schedule:
-    # refresh.yml runs at 10:00 UTC and takes about 40 minutes. 15:00 leaves
-    # room for a slow crawl and a re-run without this firing at a job that is
-    # simply still working.
+    # refresh.yml is scheduled for 05:23 UTC, GitHub starts it hours late, and
+    # it takes about 2.5h, so on a bad day it is still running at 15:00. That
+    # is not a fault this reports: it flags a board two days old, never one
+    # being built.
     - cron: "0 15 * * *"
   workflow_dispatch:
 
@@ -83,8 +84,8 @@ jobs:
             echo
             echo "This job asks the one question the refresh cannot ask about"
             echo "itself: did it actually run, and does the board it left behind"
-            echo "still say true things? It runs on its own cron five hours"
-            echo "later, so a refresh that stopped firing entirely is still"
+            echo "still say true things? It runs on its own cron, apart from"
+            echo "the refresh, so a refresh that stopped firing entirely is still"
             echo "noticed."
             echo
             echo "It closes itself when the nightly run produces a good board"

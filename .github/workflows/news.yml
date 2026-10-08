@@ -13,7 +13,8 @@ name: news
 # RSS or Atom feed they are not followed at all - a feed states the date.
 #
 # Clear of the other two jobs by the clock AND by the concurrency group.
-# refresh runs 10:00 and takes ~2.5h; watchdog runs 15:00.
+# refresh is scheduled 05:23 (GitHub starts it hours late) and takes ~2.5h;
+# watchdog runs 15:00.
 on:
   schedule:
     - cron: "0 1 * * *"

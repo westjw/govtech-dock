@@ -3,9 +3,17 @@ name: daily-refresh
 on:
   schedule:
     # Daily. GitHub cron is always UTC regardless of the TZ env below, which only
-    # sets the container clock for date stamps. 10:00 UTC is 06:00 ET, so a role
-    # posted overnight is on the board before the working day starts.
-    - cron: "0 10 * * *"
+    # sets the container clock for date stamps.
+    #
+    # SCHEDULED EARLY BECAUSE GITHUB STARTS IT LATE. At "0 10" (06:00 ET) the
+    # last fifteen runs started between 14:16 and 19:09 UTC - four to nine
+    # hours late - and digests promised for the morning went out after lunch
+    # (launch audit). GitHub names the top of the hour as its busiest time, so
+    # this is off the hour, and early enough that the same delays land the
+    # digest between about 05:30 and 10:30 ET. 05:23 UTC is after midnight ET
+    # in both summer and winter, so even an on-time start never stamps
+    # yesterday's date onto today's snapshot.
+    - cron: "23 5 * * *"
   workflow_dispatch: {}
 
 permissions:
