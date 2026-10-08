@@ -45,6 +45,7 @@ import time
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
 import roles          # noqa: E402
+import news           # noqa: E402
 import salary         # noqa: E402
 import tags           # noqa: E402
 
@@ -718,7 +719,13 @@ def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str |
     rec = store.get(c.get("id"))
     if not isinstance(rec, dict):
         return None, None, None
-    items = [i for i in (rec.get("items") or []) if isinstance(i, dict)]
+    # THE LABEL IS RE-READ FROM THE HEADLINE HERE, not taken as stored. The
+    # sweep stamps a kind when it first reads an item, so a rule fixed later
+    # never reached the 13,292 items already on file - which is how "5 Signs
+    # Your Fleet Needs an Upgrade" stayed a CONTRACT on a real company's page
+    # (launch audit). Same reason pay is parsed at build time.
+    items = [{**i, **dict(zip(("kind", "kind_rule"), news.kind(i.get("headline") or "")))}
+             for i in (rec.get("items") or []) if isinstance(i, dict)]
     items.sort(key=lambda i: i.get("date") or "", reverse=True)
     return (items[:NEWS_ON_BOARD] or None), rec.get("state"), rec.get("checked_on")
 

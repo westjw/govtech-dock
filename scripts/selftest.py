@@ -8531,6 +8531,55 @@ def check_every_view_has_a_heading_and_a_way_past_the_header() -> int:
     return errors
 
 
+def check_news_labels_make_no_false_claims() -> int:
+    """A CONTRACT or FUNDING label is a claim about a real company.
+
+    Launch audit, 2026-10-06: 18 of 30 sampled "contract" items were not
+    contracts - "Sign up on our mailing list" six times on one page, listicles
+    ("5 Signs Your Fleet..."), honours ("wins ... Award"), any partnership.
+    The rules now lean to silence, and the build re-reads every stored item's
+    label from its headline, so a rule fix reaches what is already on file.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import news
+    import build_board as bb
+    errors = 0
+    for headline, want in [
+            ("Hernando Board Approves Contract for AI Customer Service System", "contract"),
+            ("Nevada County Public Defender adopts JusticeText", "contract"),
+            ("Talitrix Selected as a GPS Provider for Florida's 20th Judicial Circuit", "contract"),
+            ("Echodyne Awarded $250 Million JIATF-401 Counter-UAS Contract", "contract"),
+            ("City of Leavenworth Partners with Cleverciti for Smart Parking", "contract"),
+            ("Newark Goes Live With Eproval, An Online Permitting System", "contract"),
+            ("Daupler Raises $15 Million Series B", "funding"),
+            ("OffenderWatch Announces Significant Investment by STG Allegro", "funding"),
+            ("5 Signs Your Fleet Management Process Needs an Upgrade", "press"),
+            # shaped like a blog post, though a contract rule would match
+            ("Read about Why Bismarck State College and UND Chose Nelnet Refunds", "press"),
+            ("How Cities Award Contracts Faster", "press"),
+            ("How We Deploy AI, and Why We Do It Carefully", "press"),
+            ("Nallian wins Air Cargo Innovation Award at the World Air Cargo Awards", "press"),
+            ("Flash Partners with Waze: 30,000+ Parking Locations Now Available", "product"),
+            ("Chronic Absenteeism Interventions To Implement In the First 30 Days", "press"),
+            ("Government Contract Financing: Payment Methods, Cash Flow, and Risk", "press"),
+            ("Sign up on our mailing list", "press"),
+            ("Getting Ahead of Your Bookstore Renewal", "press"),
+            ("Is Your Tap Water Safe to Drink?", "press"),
+            ("A Year-Round Fundraising Strategy for Museums", "press"),
+            ("Usability is Your Best Investment", "press")]:
+        got = news.kind(headline)[0]
+        if got != want:
+            errors += fail(f"news.kind({headline!r}) = {got!r}, expected {want!r}")
+    # AND THE BUILD RE-READS A STORED LABEL rather than trusting it
+    rec = {"state": "items", "items": [{"headline": "5 Signs Your Fleet Needs an Upgrade",
+                                        "date": "2026-09-01", "kind": "contract",
+                                        "kind_rule": "Signs"}]}
+    items, _, _ = bb.news_for_board({"id": "acme"}, {"acme": rec})
+    if not items or items[0].get("kind") != "press":
+        errors += fail(f"news_for_board kept a stored label the rules no longer give: {items}")
+    return errors
+
+
 def check_the_repo_keeps_no_job_ads() -> int:
     """The description cache, captures and journal hold pay excerpts, never ads.
 
@@ -29799,6 +29848,7 @@ def main() -> int:
     errors += check_no_listing_is_a_non_job()
     errors += check_white_logos_stay_visible()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
+    errors += check_news_labels_make_no_false_claims()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

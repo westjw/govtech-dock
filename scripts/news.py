@@ -92,15 +92,41 @@ SECTION_LABEL = re.compile(
 
 # KIND, BY ORDERED RULE, and the rule is recorded on the item so a person can
 # see why a headline was filed where it was. First match wins.
+#
+# A LABEL IS A CLAIM ABOUT A REAL COMPANY, so these lean to silence: a real
+# contract filed as plain news is a missed label, while "5 Signs Your Fleet
+# Needs an Upgrade" filed as CONTRACT is a false statement on the company's
+# page. The first rules did the second at scale - 18 of 30 sampled
+# "contract" items were not contracts (launch audit, 2026-10-06): bare
+# "sign" matched "Sign up" and "6 Signs You've Outgrown", "award" matched
+# honours, "partners with" matched any partnership, "implement" matched
+# how-to posts. Now a contract needs a contract word beside its verb, or a
+# third-person adoption verb ("Nevada County adopts JusticeText"); funding
+# needs money in the sentence. Measured on all 13,292 stored headlines
+# (2026-10-08).
 NEWS_RULES = (
     ("contract", re.compile(
-        r"\b(award(ed|s)?|select(ed|s)|chooses|chose|picks?|taps?|deploys?|"
-        r"goes live|went live|"
-        r"contract|partners? with|signs?|renew(al|ed|s)|adopts?|implements?|rollout|"
-        r"rolls? out)\b", re.I)),
+        r"\baward(ed|s)?\b.{0,40}\b(contracts?|grants?|task orders?|agreements?|bids?)\b|"
+        r"\b(contracts?|grants?|task orders?)\b.{0,15}\bawards?\b|"
+        r"\b(wins?|won|secure[sd]?|lands?|landed|approve[sd]?|signs?|signed|inks?|inked|"
+        r"begins?|extends?|extended|renews?|renewed)\b.{0,40}"
+        r"\b(contracts?|agreements?|deals?|mou|memorandum)\b|"
+        r"\bcontracts? (with|for|to)\b|"
+        r"\bselected (as|by|to|for)\b|\b(selects|chooses|chose|adopts|implements|"
+        r"deploys|taps|picks)\b|\b(goes|went) live\b|"
+        # a PUBLIC BODY partnering with a vendor is how a city announces a
+        # contract ("Bethlehem Parking Authority Partners with Cleverciti");
+        # two companies partnering is not
+        r"\b(city|county|state|town|village|department|district|authority|agency|"
+        r"university|college|schools?|transit|police|sheriff)\b[^.]{0,40}\bpartners? with\b|"
+        r"\bpartners? with (the )?(city|county|state|town|village|department|"
+        r"district|authority|agency|university|college)\b", re.I)),
     ("funding", re.compile(
-        r"\b(raise[sd]?|funding|series [a-e]\b|investment|invest(s|ed)|acqui(res?|red|sition)|"
-        r"merger|merges?|valuation|round)\b", re.I)),
+        r"\braise[sd]?\b.{0,30}(\$|\u20ac|\u00a3|\bmillion\b|\bbillion\b|\bseries\b|"
+        r"\bseed\b|\bfunding\b|\bround\b)|\bfunding round\b|\bseries [a-e]\b|"
+        r"\bseed (round|funding)\b|\bsecures?\b.{0,25}(\$|\bfunding\b|\binvestment\b)|"
+        r"\binvestment (from|led by|by)\b|\binvest(s|ed)? in\b|\bvaluation\b|\bacqui(res?|red|sition)\b|"
+        r"\bmerger\b|\bmerges? with\b", re.I)),
     ("leadership", re.compile(
         r"\b(appoint(s|ed)?|names?|joins? (as|the)|hires?|promot(es|ed)|welcomes|"
         r"new (ceo|cfo|cto|coo|cro|chief|president|vp|vice president|head of)|"
@@ -110,6 +136,15 @@ NEWS_RULES = (
         r"now available|announces? (new|the)|rolls? out|update[sd]?|version \d|"
         r"integrat(es|ion) with)\b", re.I)),
 )
+
+# A HEADLINE SHAPED LIKE A BLOG POST is never filed as a deal, a round or a
+# hire: "How We Deploy AI", "Why Bismarck State Chose Nelnet", "5 Reasons
+# Water Utilities Should Adopt...", anything that ends in a question mark.
+BLOG_SHAPE = re.compile(
+    r"^\s*(how|why|what|when|where|which|who|is|are|do|does|can|should|read|"
+    r"getting|celebrating|top \d+)\b|"
+    r"^\s*\d+\+?\s+(signs|reasons|ways|tips|things|steps|questions|mistakes|"
+    r"trends|lessons|myths|best|key|common|keys)\b|\?\s*$", re.I)
 
 
 def norm(s: str) -> str:
@@ -498,6 +533,8 @@ def item_from_article(html: str, url: str) -> dict:
 
 # ------------------------------------------------------------------ door --
 def kind(headline: str) -> tuple[str, str | None]:
+    if BLOG_SHAPE.search(headline or ""):
+        return "press", None
     for name, rx in NEWS_RULES:
         m = rx.search(headline or "")
         if m:

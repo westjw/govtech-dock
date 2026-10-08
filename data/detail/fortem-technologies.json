@@ -6,7 +6,7 @@
    "first_seen": "2026-09-05",
    "headline": "Fortem Technologies Selected as Prime Contractor on 5-Year DHS Counter-Drone IDIQ Worth More Than $1B",
    "kind": "contract",
-   "kind_rule": "Selected",
+   "kind_rule": "Selected as",
    "url": "https://fortemtech.com/press-releases/2026-08-04-fortem-technologies-selected-as-prime-contractor-on-5-year-dhs-counter-drone-idiq-worth-more-than-1b/"
   },
   {
@@ -32,8 +32,8 @@
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Lockheed Martin Invests $25M in Fortem Technologies to Meet Urgent Demand for Countering UAS Threats",
-   "kind": "funding",
-   "kind_rule": "Invests",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://fortemtech.com/press-releases/2026-04-22-lockheed-martin-invests-25m-in-fortem-technologies-to-meet-urgent-demand-for-countering-uas-threats/"
   },
   {
@@ -95,8 +95,8 @@
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Fortem Technologies Partners with Southern States LLC to Protect U.S. Power Grid from Drone Threats",
-   "kind": "contract",
-   "kind_rule": "Partners with",
+   "kind": "press",
+   "kind_rule": null,
    "url": "https://fortemtech.com/press-releases/2025-12-04-fortem-technologies-partners-with-southern-states-llc-to-protect-u-s-power-grid-from-drone-threats/"
   },
   {
@@ -105,7 +105,7 @@
    "first_seen": "2026-09-05",
    "headline": "Fortem Technologies Among First Defense Companies Selected for U.S. Army\u2019s New G-TEAD Marketplace",
    "kind": "contract",
-   "kind_rule": "Selected",
+   "kind_rule": "Selected for",
    "url": "https://fortemtech.com/press-releases/2025-11-21-fortem-technologies-among-first-defense-companies-selected-for-u-s-army-s-new-g-tead-marketplace/"
   }
  ],
