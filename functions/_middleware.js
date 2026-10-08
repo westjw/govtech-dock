@@ -304,6 +304,19 @@ class Title {
  * on every spelling of both pages (launch audit, 2026-10-06). */
 const NO_FRAME = new Set(["/alerts", "/alerts.html", "/claim", "/claim.html"]);
 
+/* A BROWSER MAY KEEP WHAT DOES NOT CHANGE BY THE MINUTE. Every request runs
+ * this Function, and the free plan allows 100,000 a day across the account. A
+ * first visit to the jobs list costs about 21 of them, 18 of those logos, and
+ * nothing told a browser it could keep any of it, so every view paid again
+ * (launch audit). Images change only when a person replaces one: a day. The
+ * board's data changes once a night: five minutes. `private`, so no shared
+ * cache ever holds a response the gate let one person see. Only on a GET
+ * answered 200 - never an error, a redirect or the gate's own refusal. */
+const CACHE_RULES = [
+  [/^\/assets\/[^?]+\.(png|jpe?g|gif|webp|svg|ico|avif)$/i, "private, max-age=86400"],
+  [/^\/data\/(board\.json|detail\/[^/]+\.json)$/, "private, max-age=300"],
+];
+
 export async function onRequest(context) {
   const { request, next } = context;
   // FIRST, before anything is served or rewritten: while the site is
@@ -320,6 +333,12 @@ export async function onRequest(context) {
     res = new Response(res.body, res);
     res.headers.set("X-Frame-Options", "DENY");
     res.headers.set("Content-Security-Policy", "frame-ancestors 'none'");
+  }
+  const keep = request.method === "GET" && res.status === 200
+    && CACHE_RULES.find(([rx]) => rx.test(path));
+  if (keep) {
+    res = new Response(res.body, res);
+    res.headers.set("Cache-Control", keep[1]);
   }
   const type = res.headers.get("content-type") || "";
   if (!type.includes("text/html")) return res;

@@ -39,7 +39,7 @@ globalThis.fetch = async (url) => {
   return new Response("nope", { status: 404 });
 };
 
-async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie, ctype } = {}) {
+async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie, ctype, nextStatus = 200 } = {}) {
   const headers = new Headers();
   if (ctype) headers.set("content-type", ctype);
   if (header) headers.set("Cf-Access-Jwt-Assertion", header);
@@ -47,7 +47,7 @@ async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie
   const req = new Request(`https://${host}${path}`, { method, headers });
   let reached = false;
   const res = await onRequest({ request: req, env: {},
-    next: async () => { reached = true; return new Response("ok", { status: 200, headers: { "content-type": "text/plain" } }); } });
+    next: async () => { reached = true; return new Response("ok", { status: nextStatus, headers: { "content-type": "text/plain" } }); } });
   let body = "";
   try { body = await res.text(); } catch { body = ""; }
   return { status: res.status, reached,
@@ -125,6 +125,16 @@ for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.ex
 out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=jobs"));
 // FRAME PROTECTION comes from the middleware itself, on every spelling of the
 // two token pages, and nowhere else (the board may be embedded)
+// BROWSER CACHING on images and the board's data, and nowhere else
+out.caching = {};
+for (const p of ["/assets/logos/axon.png", "/assets/mascot/svg/mascot-stand.svg",
+                 "/data/board.json", "/data/detail/axon.json", "/", "/alerts",
+                 "/data/companies.json", "/assets/logos/axon.png.html"]) {
+  out.caching[p] = (await ask(p, { cookie: mint({}) })).cache;
+}
+out.caching_refused = (await ask("/assets/logos/axon.png")).cache;
+out.caching_missing = (await ask("/assets/logos/nope.png", { cookie: mint({}), nextStatus: 404 })).cache;
+out.caching_post = (await ask("/data/board.json", { cookie: mint({}), method: "POST" })).cache;
 out.frames = {};
 for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc",
                  "/%61lerts", "/cl%61im.html", "/", "/c/verkada.html"]) {

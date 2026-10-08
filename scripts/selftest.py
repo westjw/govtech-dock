@@ -1594,6 +1594,27 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         errors += fail(f"the sign-in link no longer returns a person to the page they "
                        f"asked for ({keep})")
 
+    # BROWSER CACHING: images a day, the board's data five minutes, private,
+    # and nothing else - not a page, not the gate's refusal (launch audit:
+    # every view re-paid ~21 Function requests for files that had not changed)
+    caching = out.get("caching") or {}
+    for path, want in (("/assets/logos/axon.png", "private, max-age=86400"),
+                       ("/assets/mascot/svg/mascot-stand.svg", "private, max-age=86400"),
+                       ("/data/board.json", "private, max-age=300"),
+                       ("/data/detail/axon.json", "private, max-age=300")):
+        if caching.get(path) != want:
+            errors += fail(f"{path} is served with cache-control {caching.get(path)!r}, "
+                           f"not {want!r}")
+    for path in ("/", "/alerts", "/data/companies.json", "/assets/logos/axon.png.html"):
+        if "max-age" in (caching.get(path) or ""):
+            errors += fail(f"{path} is cached ({caching.get(path)!r}); only images and "
+                           f"the board's data may be")
+    for k in ("caching_missing", "caching_post"):
+        if "max-age" in (out.get(k) or ""):
+            errors += fail(f"a {k.split('_')[1]} answer is cached ({out.get(k)!r}); a "
+                           f"browser would keep a 404 or a POST's reply for a day")
+    if out.get("gated") is not False and "max-age" in (out.get("caching_refused") or ""):
+        errors += fail("the gate's refusal of a logo carries a cache lifetime")
     # FRAME PROTECTION ON THE TOKEN PAGES, from the middleware itself:
     # Cloudflare does not apply _headers to a response a Function produced,
     # and every request passes through this one (launch audit, 2026-10-06).
