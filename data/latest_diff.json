@@ -1,62 +1,55 @@
 {
-  "date": "2026-10-07",
-  "previous": "2026-10-06",
+  "date": "2026-10-08",
+  "previous": "2026-10-07",
   "changes": [
     {
-      "company": "ForceMetrics",
-      "id": "forcemetrics",
+      "company": "BS&A Software",
+      "id": "bs-a-software",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Spare",
-      "id": "spare",
-      "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Senior Customer Success Manager only"
+      "note": "sales roles, none AE"
     },
     {
-      "company": "Upper Hand",
-      "id": "upper-hand",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive (INDIANAPOLIS, IN)"
-    },
-    {
-      "company": "Clear Ballot Group",
-      "id": "clear-ballot-group",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Fluxx",
-      "id": "fluxx",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sr. Customer Success Manager only"
-    },
-    {
-      "company": "Campspot",
-      "id": "campspot",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "In-Situ",
-      "id": "in-situ",
+      "company": "Concourse",
+      "id": "concourse",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 403 for https://in-situ.com/careers"
+      "note": "ruled out of scope by owner on 2026-08-24"
     },
     {
-      "company": "TeamDynamix",
-      "id": "teamdynamix",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Enterprise Sales Executive, NY/PA (New York)"
+      "company": "Intrado Life & Safety",
+      "id": "intrado-life-safety",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: HTTPSConnectionPool(host="
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "GCR (Woolpert)",
+      "id": "gcr",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CUSI",
+      "id": "cusi",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://cusi.com/careers/"
+    },
+    {
+      "company": "PlanStreet",
+      "id": "planstreet",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.planstreet.com/"
     }
   ]
 }
