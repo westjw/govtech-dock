@@ -56,12 +56,11 @@ for r in found:
     n += 1
     if verdict == "no" or (verdict == "unclear" and r["sells_outside_government"] == "yes"):
         not_gov.append((r["id"], r["name"], r["confidence"]))
-    if (verdict == "yes" and r["sells_outside_government"] == "no"
-            and r["confidence"] == "high"):
-        c["sled_only"] = True
-        c["sled_only_why"] = (f"scope pass {today}: their own site names no "
-                              f"non-government buyer. {r['buyer'][:180]}")
-        sled += 1
+    # RETIRED 2026-10-08 (owner): a buyer verdict never sets sled_only. The flag
+    # makes build_board drop every title that does not name the public sector, which
+    # is right for a horizontal vendor and backwards for a government-only one; this
+    # rule set it on 159 government-only vendors and hid 151 of 152 quota-carrying
+    # roles. sled_only is a person's Vendor scope ruling ("sled") and nothing else.
 
 print(f"{n} companies updated, {skipped} no longer on file")
 print(f"  sled_only set on {sled} more, each from a site that named no other buyer")

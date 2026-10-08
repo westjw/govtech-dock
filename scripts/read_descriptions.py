@@ -32,10 +32,18 @@ WHAT READING ONE BUYS. Three things, and they compound:
 WHY A CACHE FILE AND NOT A WRITE INTO board.json. board.json is rebuilt from
 scratch by every crawl, so anything written into it directly is destroyed on
 the next run - and hand-editing it would be the same class of mistake as
-hand-editing a history snapshot. The descriptions land in data/jd_cache.json
-keyed by the posting's own url, and build_board reads that cache for any row
-whose fetcher returned no description. A cache entry is therefore always a
-FALLBACK: a fresher reading from the board itself always wins.
+hand-editing a history snapshot. What the build needs from each description
+lands in data/jd_cache.json keyed by the posting's own url, and build_board
+reads that cache for any row whose fetcher returned no description. A cache
+entry is therefore always a FALLBACK: a fresher reading from the board itself
+always wins.
+
+TWO FILES, BECAUSE THE REPOSITORY IS PUBLIC. jd_cache.json is committed, so
+it keeps only the sentences that state pay (salary.pay_excerpt) and the day
+the posting was read - never the ad. Until 2026-10-08 it held 816 whole
+descriptions, other companies' copy in a public repo. The full text goes to
+data/jd_local.json, which is gitignored like http_cache and site_pages and
+never leaves this machine; job-hunter's land_cached_jds is what reads it.
 
 WHAT IT WILL NOT DO. It does not invent, and it does not retry forever. A
 posting whose page will not load is recorded as attempted with no text, which
@@ -57,10 +65,13 @@ import time
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 import ats                                                  # noqa: E402
+import salary                                               # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 CACHE = DATA / "jd_cache.json"
+# The whole description, local only (.gitignore). See the docstring.
+LOCAL = DATA / "jd_local.json"
 
 # One request per posting on somebody else's API. ats.DETAIL_PAUSE is 0.2s
 # between calls inside a single company's fetch; this is the pause between
@@ -244,6 +255,7 @@ def main() -> int:
         return 0
 
     cache = load(CACHE, {})
+    local = load(LOCAL, {})
     today = dt.date.today().isoformat()
     got = 0
     started = time.time()
@@ -256,17 +268,24 @@ def main() -> int:
             # not, because that is what moves a failing posting to the back of
             # the rotation. Recording only successes is how a queue turns into
             # a hundred broken urls retried forever.
+            # ONLY THE PAY SENTENCES ARE KEPT (salary.pay_excerpt), never the
+            # ad: this file is in a public repository, and the build needs
+            # nothing else from a description (launch audit, 2026-10-06).
+            # `read_on` says the description was read, which is what makes
+            # "no salary stated" true for an empty excerpt.
             entry = {"tried": today}
             if jd:
-                entry["jd"] = jd
+                entry["pay_text"] = salary.pay_excerpt(jd)
                 entry["read_on"] = today
+                local[r["url"]] = {"jd": jd, "read_on": today}
                 got += 1
-            elif (cache.get(r["url"]) or {}).get("jd"):
-                # a previous run read it; keep that text and only restamp
+            elif (cache.get(r["url"]) or {}).get("read_on"):
+                # a previous run read it; keep that reading and only restamp
                 entry = dict(cache[r["url"]], tried=today)
             cache[r["url"]] = entry
             if i and i % 25 == 0:
                 write_atomic(CACHE, cache)
+                write_atomic(LOCAL, local)
                 print(f"  {i}/{len(todo)} - {got} description(s) so far")
     except KeyboardInterrupt:
         print("\n  stopped - keeping what was read so far")
@@ -275,12 +294,14 @@ def main() -> int:
         # threw away an hour of reading because it was interrupted would teach
         # everyone to never interrupt it.
         write_atomic(CACHE, cache)
+        write_atomic(LOCAL, local)
 
     took = time.time() - started
     print(f"read {got:,} of {len(todo):,} attempted in {took/60:.1f} min "
           f"({got/len(todo)*100:.0f}%)")
     print(f"data/jd_cache.json now holds "
-          f"{sum(1 for v in cache.values() if v.get('jd')):,} description(s)")
+          f"{sum(1 for v in cache.values() if v.get('read_on')):,} description(s) read "
+          f"(pay sentences only)")
     print("run build_board.py to fold them into the board")
     return 0
 

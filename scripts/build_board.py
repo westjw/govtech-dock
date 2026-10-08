@@ -567,7 +567,9 @@ def derived(row: dict) -> dict:
         except Exception:
             comp = None
 
-    cap = row.get("jd_text")
+    # A capture since 2026-10-08 keeps only the pay sentences, under
+    # `pay_text`, plus `jd_read` for the reading itself (admin.act_capture).
+    cap = row.get("jd_text") if "jd_text" in row else row.get("pay_text")
     cap = cap if isinstance(cap, str) and cap.strip() else None
     if cap and comp is None:
         try:
@@ -576,7 +578,8 @@ def derived(row: dict) -> dict:
             # same reason as the type checks above: a malformed description
             # costs its own pay range, never the whole board
             comp = None
-    out = {"jd_seen": bool(jd.strip()) if isinstance(jd, str) else bool(cap),
+    out = {"jd_seen": (bool(jd.strip()) if isinstance(jd, str) else bool(cap))
+                      or row.get("_jd_read") is True or row.get("jd_read") is True,
            "comp": comp}
     if comp:
         out["comp_floor"] = comp.get("min")
@@ -628,13 +631,18 @@ def jd_backfilled(row: dict, url: str) -> dict:
     if isinstance(jd, str) and jd.strip():
         return row
     hit = _JD_CACHE.get(url)
-    text = (hit or {}).get("jd") if isinstance(hit, dict) else None
-    if not (isinstance(text, str) and text.strip()):
+    # THE CACHE HOLDS PAY SENTENCES, NOT ADS (salary.pay_excerpt, 2026-10-08):
+    # `read_on` says the description was read, `pay_text` is what parse() can
+    # use from it - empty when it stated no pay, which is still a reading.
+    if not isinstance(hit, dict) or not hit.get("read_on"):
         return row
+    text = hit.get("pay_text")
+    if not isinstance(text, str):
+        text = salary.pay_excerpt(hit.get("jd") or "")      # an older entry
     # A COPY. Mutating the fetcher's row would put the cached text back into
     # the object the fetch loop still holds, and the whole discipline in this
     # file is that ad text never travels further than derived().
-    return {**row, "jd": text, "_from_cache": True}
+    return {**row, "jd": text, "_from_cache": True, "_jd_read": True}
 
 
 def phase(families: dict) -> str:
@@ -752,12 +760,14 @@ def profile_for_board(c: dict) -> dict | None:
 def manual_row(mp: dict) -> dict:
     """A hand-captured posting in the board's row shape, keyed the way a
     fetched row is keyed so "one id, one row" can hold across both sources.
-    BOTH text keys are dropped: `jd` and the extension's `jd_text` (up to
-    20,000 characters of somebody else's job-ad copy); derived() has already
-    taken the two facts worth keeping off them."""
+    EVERY text key is dropped: `jd`, the extension's `jd_text` (up to 20,000
+    characters of somebody else's job-ad copy, on rows captured before
+    2026-10-08) and `pay_text` (the pay sentences kept since), plus the
+    `jd_read` marker; derived() has already taken the two facts worth keeping
+    off them."""
     row = {**mp, "source": "manual", **derived(mp)}
-    row.pop("jd", None)
-    row.pop("jd_text", None)
+    for k in ("jd", "jd_text", "pay_text", "jd_read"):
+        row.pop(k, None)
     row["title"] = ats.plain(mp.get("title") or "")
     row["opening_id"] = opening_id(mp["company_id"], row["title"])
     row["id"] = posting_id(mp["company_id"], row["title"],

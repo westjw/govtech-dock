@@ -197,12 +197,11 @@ def main() -> int:
         # sentence that justified it is stored beside it so the call can be
         # argued with. "unclear" never sets it: a site that names no public
         # buyer is unclear, which is not the same as government-only.
-        if (str(sells).strip() == "yes" and buyer
-                and not names_a_private_buyer(str(buyer))):
-            c["sled_only"] = True
-            c["sled_only_why"] = (f"{spec['label']}: buyer stated as "
-                                  f"{str(buyer).strip()[:200]}")
-            sled += 1
+        # RETIRED 2026-10-08 (owner): a buyer verdict never sets sled_only. The flag
+        # makes build_board drop every title that does not name the public sector, which
+        # is right for a horizontal vendor and backwards for a government-only one; this
+        # rule set it on 159 government-only vendors and hid 151 of 152 quota-carrying
+        # roles. sled_only is a person's Vendor scope ruling ("sled") and nothing else.
 
         founded, fconf = cell(r, "founded"), cell(r, "fconf")
         if (c.get("year_founded") in (None, "") and founded

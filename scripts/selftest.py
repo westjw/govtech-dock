@@ -8394,6 +8394,169 @@ def check_a_gate_review_only_covers_what_it_saw() -> int:
     return errors
 
 
+def check_the_repo_keeps_no_job_ads() -> int:
+    """The description cache, captures and journal hold pay sentences, never ads.
+
+    data/jd_cache.json carried 816 full job descriptions (5.4M characters of
+    other companies' ads) in a PUBLIC repository (launch audit, 2026-10-06),
+    and two hand captures put more into data/manual.json and, through their
+    before/after images, into data/admin_journal.jsonl. The build needs only
+    two things from a description: that it was read, and the pay range
+    salary.parse finds in it. salary.pay_excerpt keeps the sentences that
+    state pay plus a neighbour each side; on all 816, parse(excerpt) ==
+    parse(full). This runs the real read_descriptions.main on a stubbed
+    fetch and the real admin.act_capture in a sandbox, then the build's own
+    readers on what they wrote, and reads the committed files.
+    """
+    import types
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import read_descriptions as rd
+    import build_board as bb
+    errors = 0
+    ad = ("Join our mission to modernise government. You will own a territory "
+          "of counties. We value curiosity and grit.\n"
+          "Compensation: The base salary range is $120,000 - $140,000 per year.\n"
+          "We offer medical, dental and vision. Apply today.")
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
+    keep = (rd.DATA, rd.CACHE, rd.LOCAL, rd.read_one, rd.PAUSE, sys.argv)
+    try:
+        url = "https://acme.wd1.myworkdayjobs.com/en-US/acme/job/x/AE_1"
+        (tmp / "board.json").write_text(json.dumps({"postings": [
+            {"url": url, "title": "Account Executive", "company": "Acme",
+             "company_id": "acme", "jd_seen": False}]}))
+        (tmp / "companies.json").write_text(json.dumps([
+            {"id": "acme", "name": "Acme", "ats": {"type": "workday", "ref": "x"}}]))
+        rd.DATA, rd.CACHE, rd.LOCAL, rd.PAUSE = (tmp, tmp / "jd_cache.json",
+                                                 tmp / "jd_local.json", 0)
+        rd.read_one = lambda r: ad
+        sys.argv = ["read_descriptions.py", "--limit", "5"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            rd.main()
+        entry = json.loads((tmp / "jd_cache.json").read_text()).get(url) or {}
+        if "jd" in entry or "modernise government" in json.dumps(entry):
+            errors += fail("read_descriptions stored the job ad itself in a file "
+                           "the public repository carries")
+        if "$120,000 - $140,000" not in (entry.get("pay_text") or "") or not entry.get("read_on"):
+            errors += fail(f"read_descriptions lost the pay sentence or the fact it "
+                           f"read the posting: {entry}")
+        # the whole ad is kept, on this machine only, for job-hunter
+        local = json.loads((tmp / "jd_local.json").read_text()).get(url) or {}
+        if local.get("jd") != ad:
+            errors += fail("read_descriptions no longer keeps the full description "
+                           "in data/jd_local.json, job-hunter's only local source")
+        bb._JD_CACHE = {url: entry}
+        out = bb.derived(bb.jd_backfilled({"title": "Account Executive", "jd": None,
+                                           "comp": None}, url))
+        if not out.get("jd_seen") or (out.get("comp") or {}).get("min") != 120000:
+            errors += fail(f"the build no longer reads pay or 'description read' "
+                           f"from the cache: {out}")
+        bb._JD_CACHE = {url: {"read_on": "2026-10-08", "pay_text": ""}}
+        out = bb.derived(bb.jd_backfilled({"title": "Account Executive", "jd": None,
+                                           "comp": None}, url))
+        if not out.get("jd_seen") or out.get("comp"):
+            errors += fail("a description read that stated no pay is no longer "
+                           "'no salary stated'")
+    finally:
+        rd.DATA, rd.CACHE, rd.LOCAL, rd.read_one, rd.PAUSE, sys.argv = keep
+        bb._JD_CACHE = None
+        shutil.rmtree(tmp, ignore_errors=True)
+    if "/data/jd_local.json" not in (ROOT / ".gitignore").read_text().splitlines():
+        errors += fail("data/jd_local.json is not gitignored - it holds whole job "
+                       "ads and the repository is public")
+
+    # A HAND CAPTURE, through the real endpoint. The extension sends the whole
+    # ad as jd_text; manual.json and the journal must keep only the pay.
+    import admin as _admin
+    with _sandbox_admin({"companies.json": [_ACME],
+                         "manual.json": {"checks": {}, "postings": []}}) as sb:
+        r = _admin.act_capture({"company_id": "acme",
+                                "page_url": "https://acme.test/careers",
+                                "jobs": [{"title": "Account Executive",
+                                          "url": "https://acme.test/j/1", "jd_text": ad},
+                                         {"title": "Solutions Engineer",
+                                          "url": "https://acme.test/j/2",
+                                          "jd_text": "Our office has a climbing wall."}]})
+        if r.get("added") != 2:
+            errors += fail(f"the capture sandbox landed {r.get('added')} of 2 rows "
+                           f"({r.get('error') or r.get('message')})")
+        written = (sb / "manual.json").read_text() + (sb / "admin_journal.jsonl").read_text()
+        if "modernise government" in written or "climbing wall" in written:
+            errors += fail("act_capture stored the job ad itself in manual.json or "
+                           "the journal, both of which the public repository carries")
+        rows = {p["title"]: p for p in json.loads((sb / "manual.json").read_text())["postings"]}
+        for title, floor in (("Account Executive", 120000), ("Solutions Engineer", None)):
+            mp = rows.get(title) or {}
+            row = bb.manual_row(mp) if mp else {}
+            got = (row.get("comp") or {}).get("min")
+            if not row.get("jd_seen") or got != floor:
+                errors += fail(f"a captured {title} built as jd_seen={row.get('jd_seen')} "
+                               f"pay floor {got}; read, with floor {floor}, expected")
+            left = {"jd", "jd_text", "pay_text", "jd_read"} & set(row)
+            if left:
+                errors += fail(f"manual_row published {sorted(left)} on a board row")
+    # THE COMMITTED FILE ITSELF
+    import salary
+    cache = json.loads((DATA / "jd_cache.json").read_text())
+    full = [u for u, v in cache.items() if isinstance(v, dict) and "jd" in v]
+    if full:
+        errors += fail(f"data/jd_cache.json holds {len(full)} full description(s) - "
+                       f"the repository is public")
+    loose = [u for u, v in cache.items() if isinstance(v, dict) and v.get("pay_text")
+             and salary.pay_excerpt(v["pay_text"]) != v["pay_text"]]
+    if loose:
+        errors += fail(f"{len(loose)} cached excerpt(s) carry more than pay sentences")
+
+    def texts(o):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if k in ("jd", "jd_text", "pay_text") and isinstance(v, str) and v.strip():
+                    yield k, v
+                yield from texts(v)
+        elif isinstance(o, list):
+            for v in o:
+                yield from texts(v)
+    held = [("data/manual.json", json.loads((DATA / "manual.json").read_text()))]
+    for name in ("admin_journal.jsonl", "admin_journal.archive.jsonl"):
+        p = DATA / name
+        if p.exists():
+            held += [(f"data/{name}", json.loads(line))
+                     for line in p.read_text().splitlines() if line.strip()]
+    for where, obj in held:
+        for k, v in texts(obj):
+            if k != "pay_text" or salary.pay_excerpt(v) != v:
+                errors += fail(f"{where} holds a job description under `{k}` "
+                               f"({len(v):,} chars) - the repository is public")
+    return errors
+
+
+def check_nothing_derives_sled_only() -> int:
+    """sled_only comes from a person's Vendor scope ruling and nowhere else.
+
+    The flag makes build_board drop every posting whose title does not name
+    the public sector. Three one-off appliers (transit run, scope pass, run
+    facts) and agents.buyer_sled_eligible set it wherever a company's own site
+    named only government buyers - the opposite of the horizontal vendors it
+    was built for - and hid 151 of 152 quota-carrying roles at 159 vendors
+    (owner retired the rule, 2026-10-08). A re-run of any of them would hide
+    them again. Source-level, comments stripped: the only assignments allowed
+    are the two that carry a person's 'sled' call (promote_candidates,
+    proposal_rulings) and land_buyer's, which buyer_sled_eligible keeps dead.
+    """
+    import re as _re
+    allowed = {"promote_candidates.py", "proposal_rulings.py", "promote_profiles.py"}
+    errors = 0
+    pat = _re.compile(r"""\[["']sled_only["']\]\s*=\s*True|["']sled_only["']\s*:\s*True""")
+    for f in sorted((ROOT / "scripts").glob("*.py")):
+        if f.name == "selftest.py" or f.name in allowed:
+            continue
+        code = "\n".join(l.split("#", 1)[0] for l in f.read_text().splitlines())
+        if pat.search(code):
+            errors += fail(f"{f.name} sets sled_only itself; the flag is a person's "
+                           f"Vendor scope ruling, and derived it hid OpenGov's and "
+                           f"Granicus's sales roles")
+    return errors
+
+
 def check_the_buyer_door_holds() -> int:
     """The scope door, case by case, and the shape of the answer it protects.
 
@@ -8424,20 +8587,21 @@ def check_the_buyer_door_holds() -> int:
             errors += fail(f"the buyer door should have refused {label} under "
                            f"rule {want} and said {got!r}")
 
-    # THE DERIVED FLAG IS THE 2026-09-11 PASS'S RULE, NOT A NEW ONE, and it is
-    # the only thing here that can subtract from a public board. All three
-    # conditions, each broken in turn.
+    # NO BUYER VERDICT MAKES A COMPANY sled_only (owner, 2026-10-08). The rule
+    # this held - government-only buyer, high confidence - put the filter on
+    # 159 government-only vendors, the opposite of the horizontal vendors it
+    # was built for, and hid 151 of 152 quota-carrying roles. The flag is a
+    # person's Vendor scope ruling. Every shape of answer, the government-only
+    # one above all, is refused.
     sound = {"id": "acme", "confidence": "high", "sells_to_gov": "yes",
              "names_other_buyers": "no", "buyer": "cities and counties buy it."}
-    if not agents.buyer_sled_eligible(sound):
-        errors += fail("an answer meeting all three of the measured "
-                       "conditions is not read as sled-eligible")
-    for field, worse in (("confidence", "medium"), ("sells_to_gov", "unclear"),
-                         ("names_other_buyers", "yes")):
-        if agents.buyer_sled_eligible(dict(sound, **{field: worse})):
-            errors += fail(f"sled_only eligibility survives {field}={worse!r}; "
-                           f"the scope pass measured all three and left "
-                           f"anything softer to a person")
+    for field, val in ((None, None), ("names_other_buyers", "yes"),
+                       ("confidence", "medium"), ("sells_to_gov", "unclear")):
+        row = dict(sound) if field is None else dict(sound, **{field: val})
+        if agents.buyer_sled_eligible(row):
+            errors += fail(f"a buyer verdict ({field or 'government-only'}) is read as "
+                           f"sled-eligible; that rule hid OpenGov's and Granicus's "
+                           f"sales roles - the flag is a person's Vendor scope ruling")
     return errors
 
 
@@ -8456,7 +8620,7 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
 
       1. a verdict the door accepted survives ingest and reaches companies.json
       2. a verdict the door REFUSED is kept, and lands nothing
-      3. sled_only is NOT set without with_sled, however eligible the row
+      3. sled_only is never set by a buyer verdict, with or without with_sled
       4. an answer already on file is never overwritten, and is NAMED
     """
     import json as _json
@@ -8527,9 +8691,10 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
                                    f"proposal the door accepted: {row.get(field)!r}. "
                                    f"The verdict never reaches the map and "
                                    f"nothing reports a problem")
-            if not row.get("sled_eligible"):
-                errors += fail("a yes / no / high answer was not stored as "
-                               "sled-eligible, so the gate can never offer it")
+            if row.get("sled_eligible"):
+                errors += fail("a government-only buyer answer was stored as "
+                               "sled-eligible; a buyer verdict never makes a "
+                               "company sled_only (owner, 2026-10-08)")
             if (store.get("buyer:beta") or {}).get("status") != "refused":
                 errors += fail("a buyer answer the door refused was not kept "
                                "as refused; the gate review reads refusals, "
@@ -8570,7 +8735,7 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
             if landed["beta"].get("sells_to_gov"):
                 errors += fail("a door-refused answer landed on the map")
 
-            # 3. WITH the word, the flag lands - and only on the eligible row.
+            # 3. NOT EVEN WITH THE WORD: a buyer verdict never sets the flag.
             store2 = agents.load()
             store2["buyer:acme"]["status"] = "pending"
             landed["acme"].pop("sells_to_gov", None)
@@ -8582,20 +8747,23 @@ def check_a_buyer_answer_survives_the_whole_spine() -> int:
                                                "selftest", "fixture",
                                                with_sled=True)
             after = {c["id"]: c for c in admin.read_companies()}
-            if rep3["sled"] != 1 or not after["acme"].get("sled_only"):
-                errors += fail("with_sled did not set the flag on an eligible "
-                               "row, so the opt-in path is unreachable")
-            # THE SENTENCE, NOT A SENTENCE. A mutation that emptied the
-            # buyer half of this string left a truthy stub - "their own pages
-            # name no " - and a presence check walked straight past it. What
-            # makes the flag reviewable is the BUYER EVIDENCE travelling with
-            # it, so that is what is asserted.
-            said = str(after["acme"].get("sled_only_why") or "")
-            if "Cities, counties and school districts" not in said:
-                errors += fail(f"sled_only landed without the buyer sentence "
-                               f"behind it: {said!r}. A flag that removes "
-                               f"postings and cannot say what it rests on is "
-                               f"not reviewable")
+            if rep3["sled"] or after["acme"].get("sled_only"):
+                errors += fail("land_buyer set sled_only from a buyer verdict; "
+                               "on a government-only vendor that filter hides "
+                               "its sales roles (owner, 2026-10-08)")
+            # AND THE CLI SAYS SO, rather than quietly doing nothing.
+            keep_argv = sys.argv
+            sys.argv = ["promote_profiles.py", "--land-buyer", "Police", "--by",
+                        "selftest", "--with-sled"]
+            err = io.StringIO()
+            try:
+                with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
+                    rc = promote_profiles.main()
+            finally:
+                sys.argv = keep_argv
+            if rc != 1 or "retired" not in err.getvalue():
+                errors += fail(f"--with-sled did not refuse by name (rc {rc}): "
+                               f"{err.getvalue()[:120]!r}")
         finally:
             agents.STORE, promote_profiles.BUYER_READ = keep_store, keep_read
             agents._profile_texts = keep_texts
@@ -10525,7 +10693,7 @@ def note(msg):
 # would have shipped 20,000 characters of another company's job ad into the
 # public file. It had never fired only because no single-posting capture had
 # run yet.
-PROSE_KEYS = {"jd", "jd_text", "description", "descriptionPlain",
+PROSE_KEYS = {"jd", "jd_text", "pay_text", "description", "descriptionPlain",
               "descriptionHtml",
               "content", "requirements", "jobDescription", "jobAd", "body",
               "text", "_pagetext", "_jd_is_teaser", "_detail_url"}
@@ -10733,6 +10901,15 @@ def check_derived() -> int:
         # whitespace is not a description under this key either
         ({"jd_text": "  \n ", "comp": None},
          {"jd_seen": False, "comp": None}),
+        # A capture since 2026-10-08 keeps only the pay sentences, as
+        # `pay_text`, and marks the reading with `jd_read` - so a description
+        # that stated no pay is still "read", not "never looked".
+        ({"pay_text": "Base salary range: $140,000 - $200,000 per year.",
+          "jd_read": True, "comp": None},
+         {"jd_seen": True, "comp_floor": 140000, "comp_period": "year"}),
+        ({"jd_read": True, "comp": None}, {"jd_seen": True, "comp": None}),
+        # and only a real True says so; a stray string is not a reading
+        ({"jd_read": "no", "comp": None}, {"jd_seen": False, "comp": None}),
         # a fetcher handing back something malformed costs the pay range, not
         # the board: this whole script is one process writing one file.
         ({"jd": "text", "comp": "$140k"}, {"jd_seen": True, "comp": None}),
@@ -29231,6 +29408,8 @@ def main() -> int:
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()
+    errors += check_nothing_derives_sled_only()
+    errors += check_the_repo_keeps_no_job_ads()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

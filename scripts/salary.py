@@ -462,3 +462,34 @@ def parse(text: str) -> dict | None:
     if len({_key(c) for c in cands}) > 1:
         return None
     return cands[0]
+
+
+# --- what a stored description may keep -----------------------------------
+
+_SENTENCE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])|\n+")
+_CURRENCY = re.compile(r"[$\u20ac\u00a3\u00a5]|\b(USD|CAD|EUR|GBP|AUD)\b|\bdollars?\b", re.I)
+
+
+def pay_excerpt(text: str) -> str:
+    """The sentences of a job description that state pay, each with the
+    sentence either side of it - and nothing else.
+
+    WHY THIS EXISTS. data/jd_cache.json held 816 full job descriptions, 5.4M
+    characters of other companies' ads, in a public repository (launch audit,
+    2026-10-06). The build needs two things from a description: that it was
+    read, and the pay range parse() finds in it. This keeps what parse() can
+    use: any sentence carrying a currency marker or a figure parse() would
+    consider, plus one neighbour each side, because a period or label can sit
+    on the next line ("USD $120,000.00 - USD $130,000.00" then "/Yr").
+    Measured on all 816: parse(pay_excerpt(t)) == parse(t) for every one,
+    keeping 6.25% of the text; without the neighbours 10 differed, and with
+    parse()'s own detector alone 1 did. Empty when the text states no pay.
+    """
+    if not text or not isinstance(text, str):
+        return ""
+    parts = [p for p in _SENTENCE.split(text) if p.strip()]
+    keep: set = set()
+    for i, p in enumerate(parts):
+        if _CURRENCY.search(p) or _candidates(p.replace("\u00a0", " ")):
+            keep.update(range(max(0, i - 1), min(len(parts), i + 2)))
+    return "\n".join(parts[i] for i in sorted(keep))

@@ -1550,22 +1550,22 @@ BUYER_MAX = 300
 
 
 def buyer_sled_eligible(p: dict) -> bool:
-    """Does this scope answer clear the bar sled_only was measured at?
+    """Never: a buyer verdict does not make a company sled_only. RETIRED
+    2026-10-08 by the owner.
 
-    THE RULE IS apply_scope_pass's, NOT A NEW ONE. Ten agents read 76 sites on
-    2026-09-11 and sled_only landed only where the verdict was yes, the site
-    named no non-government buyer at all, and the agent said high. Anything
-    softer was left for a person with the evidence in front of them. Restated
-    here in one place rather than re-derived, because a rule written twice is
-    two rules that drift - and this one silently removes postings.
-
-    ELIGIBLE IS NOT LANDED. promote_profiles.land_buyer writes the flag only
-    when a person passes --with-sled, having read the gate.
+    This returned True for "sells to government, names no other buyer, high
+    confidence" - a GOVERNMENT-ONLY vendor. But sled_only makes build_board
+    drop every posting whose title does not name the public sector, a filter
+    built on 2026-08-21 for HORIZONTAL vendors (Anthropic, OpenAI) whose
+    government work is a slice. On a government-only vendor it deletes the
+    core of what this board is for: "Enterprise Account Executive" names no
+    sector. The rule set the flag on 159 such vendors and hid 151 of 152
+    quota-carrying roles at OpenGov, Granicus, Tyler and Mark43 (measured
+    live, 2026-10-07). The flag is a person's Vendor scope ruling ("sled"),
+    made looking at the company, and nothing derives it. Kept, returning
+    False, so every reader of `sled_eligible` keeps working.
     """
-    return (isinstance(p, dict)
-            and p.get("sells_to_gov") == "yes"
-            and p.get("names_other_buyers") == "no"
-            and p.get("confidence") == "high")
+    return False
 
 
 def check_buyer(p: dict, texts: dict[str, str]) -> str | None:

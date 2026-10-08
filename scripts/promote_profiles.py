@@ -988,6 +988,15 @@ def main() -> int:
         return 0
 
     if a.land_buyer:
+        if a.with_sled:
+            # RETIRED 2026-10-08 (owner): a buyer verdict never sets sled_only.
+            # It is a person's Vendor scope ruling ("sled"), made looking at the
+            # company; derived from "government-only buyer" it hid 151 of 152
+            # quota-carrying roles at 159 vendors. See agents.buyer_sled_eligible.
+            print("--with-sled is retired: sled_only is set only by a Vendor scope "
+                  "ruling ('sled') in the admin, never from a buyer verdict.",
+                  file=sys.stderr)
+            return 1
         read = json.loads(BUYER_READ.read_text()) if BUYER_READ.exists() else []
         if a.land_buyer not in read:
             print(f"  REFUSED. --gate-buyer {a.land_buyer!r} has not printed in "

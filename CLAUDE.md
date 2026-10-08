@@ -789,6 +789,11 @@ something in quotation marks and takes it for evidence. `unclear` is the
 answer for "the pages do not say", and it cannot be high confidence: the
 verdict there is that there is no verdict.
 
+**RETIRED 2026-10-08: no buyer verdict sets `sled_only`** - the rule below
+put the filter on government-only vendors, the opposite of what it is for, and
+hid 151 of 152 quota-carrying roles at 159 of them (see "Launch fixes"). The
+paragraph is kept for the history.
+
 **The model is never asked for `sled_only`, and rule 8 refuses it by name.**
 That flag makes `build_board` drop every posting whose title does not name the
 public sector, so a wrong one deletes real jobs off a public board and leaves
@@ -1693,8 +1698,18 @@ fires.
   only government buyers, reading it as "sells only to government". Measured
   live on 64 of those boards: 2,683 postings listed, 22 shown, and 1 of 152
   quota-carrying roles shown (OpenGov, Granicus, Tyler, Mark43...).
-  `agents.buyer_sled_eligible` still derives the flag that way. **Clearing
-  them is the owner's call, pending.**
+  **Owner, 2026-10-08: cleared on the 159 (Anthropic and OpenAI keep it),
+  and the rule retired.** `agents.buyer_sled_eligible` returns False,
+  `promote_profiles --with-sled` refuses by name, the three one-off appliers
+  no longer write it, and `check_nothing_derives_sled_only` holds the line:
+  the flag is a person's Vendor scope ruling ("sled") and nothing else.
+- **The repo keeps no job ads (2026-10-08).** `data/jd_cache.json` held 816
+  whole descriptions; it, the hand captures in `manual.json` and their
+  journal images now keep only the pay sentences (`salary.pay_excerpt`,
+  parse-identical on all 816) plus a read marker (`read_on` / `jd_read`).
+  The whole text goes to `data/jd_local.json`, gitignored, for job-hunter.
+  `check_the_repo_keeps_no_job_ads`. The old text is still in git history;
+  rewriting that is the owner's call.
 - **A company with no board says which kind**: none found, turned away
   (`probe == "blocked"`), or not looked for yet. `no_board_note()` and
   `noBoardText()`. A board we read whose every role this board leaves out

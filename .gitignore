@@ -24,6 +24,10 @@ public/
 # repo that is going public. The committed record is site_pages_index.json:
 # which pages were read, when, their sha, and nothing of what they said.
 /data/site_pages/
+# The whole job descriptions read_descriptions.py reads. Same rule: other
+# companies' ad copy. The committed data/jd_cache.json keeps only the pay
+# sentences; this keeps the rest for local use (job-hunter).
+/data/jd_local.json
 # Suppliers' own pages, read for step 2 (what they sell). Same rule as
 # site_pages: other people's words, never committed; the sorted result in
 # supplier_categories.json carries only short quotes.

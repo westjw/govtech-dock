@@ -49,6 +49,7 @@ import discover_ats   # noqa: E402
 import find_websites  # noqa: E402
 import coverage       # noqa: E402
 import roles          # noqa: E402
+import salary         # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -4619,13 +4620,18 @@ def act_capture(body: dict) -> dict:
                 continue
         signatures.add((cid, title, url, loc))
         terr = roles.territory(loc, title)
-        # The extension's single-posting mode sends the JD body - the thing the
-        # board never has and scoring always wants. Kept on the manual record
-        # with provenance; the dock itself only ever renders the title.
+        # The extension's single-posting mode sends the JD body. ONLY ITS PAY
+        # SENTENCES ARE KEPT (salary.pay_excerpt): manual.json is in a public
+        # repository, and the build needs nothing else from a description -
+        # derived() parses pay out of `pay_text` and drops it (launch audit,
+        # 2026-10-08). `jd_read` is what keeps "we read it and it stated no
+        # pay" apart from "never read" when the excerpt comes back empty.
         jd = (j.get("jd_text") or "").strip()[:20000]
+        pay = salary.pay_excerpt(jd) if jd else ""
         man["postings"].append({
             "id": pid, "company": c["name"], "company_id": cid,
-            **({"jd_text": jd} if jd else {}),
+            **({"pay_text": pay} if pay else {}),
+            **({"jd_read": True} if jd else {}),
             "title": title, "family": roles.family(title),
             "quota_carrying": roles.is_quota_carrying(title),
             "seniority": roles.seniority(title),
