@@ -9850,7 +9850,8 @@
    "source": "NSA 2026",
    "researched": true,
    "claimed": null,
-   "checked_by_hand": "2026-09-02"
+   "checked_by_hand": "2026-09-02",
+   "checked_empty": true
   },
   {
    "id": "urban-sdk",
@@ -394496,7 +394497,7 @@
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-08T21:36:49Z",
+  "at": "2026-10-08T22:11:14Z",
   "inputs": "16431da35e5804095867f03373a052eeab0c4d96a77ec30ecf15da018cdc3bef"
  }
 }

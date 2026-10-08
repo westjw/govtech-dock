@@ -2678,10 +2678,16 @@ function logoImg(cid){
    A capture stamps checked_by_hand itself, so only a LATER date is a re-read. */
 function byHandText(p,o,short){
   const seen=p&&p.first_seen, again=o&&o.checked_by_hand;
-  const reread=!!(again&&seen&&again>seen);
-  if(short)return reread?`found by hand, page re-read ${again}`:"found by hand, not re-checked";
+  const reread=!!(again&&seen&&again>seen), empty=reread&&!!o.checked_empty;
+  /* A re-read is a fact about the PAGE, not this posting: it is said as
+     "page read again", and when that read found the page empty - the Scrub
+     tab's "No openings today", which leaves the captures up - it says so
+     (fifth review, 2026-10-08). */
+  if(short)return empty?`found by hand; page listed no openings on ${again}`
+    :reread?`found by hand, page read again ${again}`:"found by hand, not re-checked";
   return "found by hand"+(seen?" on "+seen:"")
-    +(reread?`, page re-read by hand on ${again}`:", not re-checked since");
+    +(empty?`; when the page was read again on ${again} it listed no openings`
+      :reread?`, page read again by hand on ${again}`:", not re-checked since");
 }
 /*lightMark:start*/
 /* A WHITE MARK ON A WHITE PLATE. 19 of the 1,916 logos are white on

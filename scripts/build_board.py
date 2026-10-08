@@ -724,7 +724,9 @@ def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str |
     # never reached the 13,292 items already on file - which is how "5 Signs
     # Your Fleet Needs an Upgrade" stayed a CONTRACT on a real company's page
     # (launch audit). Same reason pay is parsed at build time.
-    items = [{**i, **dict(zip(("kind", "kind_rule"), news.kind(i.get("headline") or "")))}
+    names = [c.get("name")] + list(c.get("also_known_as") or [])
+    items = [{**i, **dict(zip(("kind", "kind_rule"),
+                               news.kind(i.get("headline") or "", names)))}
              for i in (rec.get("items") or []) if isinstance(i, dict)]
     items.sort(key=lambda i: i.get("date") or "", reverse=True)
     return (items[:NEWS_ON_BOARD] or None), rec.get("state"), rec.get("checked_on")
@@ -1295,6 +1297,12 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
     chk = ctx["checks"].get(c["id"])
     if chk:
         o["checked_by_hand"] = chk.get("checked_on")
+        # and whether that look found the page EMPTY ("No openings today" in
+        # the Scrub tab): the captures stay until a person closes them, and a
+        # page must not call them re-checked by a read that found nothing
+        # (fifth review, 2026-10-08)
+        if chk.get("found") is False:
+            o["checked_empty"] = True
     return o
 
 
@@ -1362,7 +1370,10 @@ def ruled_out(companies: list, man: dict | None) -> tuple[list, dict | None, lis
 def read_in_full(orgs: list[dict]) -> set:
     return {o["id"] for o in orgs or []
             if o.get("ats") not in (None, "unknown", "html")
-            and o.get("enumerable") is True and not o.get("unreadable")}
+            and o.get("enumerable") is True and not o.get("unreadable")
+            # a night that fell back to stored roles: no feed answered
+            # (fifth review, 2026-10-08)
+            and not o.get("roles_from_storage")}
 
 
 def merge_manual(postings: list[dict], man: dict | None,

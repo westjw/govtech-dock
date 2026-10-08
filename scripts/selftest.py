@@ -8628,6 +8628,24 @@ def check_news_labels_make_no_false_claims() -> int:
         got = news.kind(headline)[0]
         if got != want:
             errors += fail(f"news.kind({headline!r}) = {got!r}, expected {want!r}")
+    # FIFTH REVIEW, 2026-10-08: real ones the stricter rules had lost, and
+    # the two cases only the page's own company can decide
+    for headline, names, want in [
+            ("BRINC Raises $125M to Put a 911 Response Drone on Every Police and Fire Station Roof", None, "funding"),
+            ("Procore to Acquire DroneDeploy", None, "funding"),
+            ("ClearGov and Gravity Announce Merger", None, "funding"),
+            ("NinjaOne Reaches $12.3B Valuation", None, "funding"),
+            ("City of Santa Monica Selects Populus to Power Its Shared Mobility Program", None, "contract"),
+            ("Heil Charity Invitational Raises Nearly $8,000 for Local Student Scholarships", None, "press"),
+            ("Apply Government Solutions Launches New Brand", None, "product"),
+            ("Providence picks Passport to replace its legacy enforcement systems", ["Passport"], "contract"),
+            ("Ladris deploys Forward Ops", ["Ladris"], "press"),
+            ("SkySafe and State of Rhode Island Renew Multi-Year Contract", ["SkySafe"], "contract"),
+            ("NJCU and Mercer County CC Sign Dual Admission Transfer Agreement", ["CollegeNET"], "press"),
+            ("Assemblymember Tyler Diep Selects Code Four as Small Business of the Year", ["Code Four"], "press")]:
+        got = news.kind(headline, names)[0]
+        if got != want:
+            errors += fail(f"news.kind({headline!r}, {names}) = {got!r}, expected {want!r}")
     # AND THE BUILD RE-READS A STORED LABEL rather than trusting it
     rec = {"state": "items", "items": [{"headline": "5 Signs Your Fleet Needs an Upgrade",
                                         "date": "2026-09-01", "kind": "contract",
@@ -8635,6 +8653,12 @@ def check_news_labels_make_no_false_claims() -> int:
     items, _, _ = bb.news_for_board({"id": "acme"}, {"acme": rec})
     if not items or items[0].get("kind") != "press":
         errors += fail(f"news_for_board kept a stored label the rules no longer give: {items}")
+    # and it tells the rules whose page this is
+    rec = {"state": "items", "items": [{"headline": "Providence picks Passport to replace its "
+                                        "legacy enforcement systems", "date": "2026-09-01"}]}
+    items, _, _ = bb.news_for_board({"id": "passport", "name": "Passport"}, {"passport": rec})
+    if not items or items[0].get("kind") != "contract":
+        errors += fail(f"news_for_board does not pass the company's name to the rules: {items}")
     return errors
 
 
@@ -8713,18 +8737,21 @@ def check_a_capture_says_only_what_is_true() -> int:
     errors = 0
     orgs = [{"id": "acme", "ats": "greenhouse", "enumerable": True, "unreadable": None},
             {"id": "beta", "ats": "html", "enumerable": True, "unreadable": None},
-            {"id": "gamma", "ats": "greenhouse", "enumerable": True, "unreadable": "HTTP 500"}]
+            {"id": "gamma", "ats": "greenhouse", "enumerable": True, "unreadable": "HTTP 500"},
+            {"id": "delta", "ats": "greenhouse", "enumerable": True, "unreadable": None,
+             "roles_from_storage": True}]
     rows = []
     with contextlib.redirect_stdout(io.StringIO()):
         bb.merge_manual(rows, {"postings": [
             {"id": f"{c}::Account Executive", "title": "Account Executive", "company": c.title(),
-             "company_id": c, "url": f"https://{c}.test/j/1"} for c in ("acme", "beta", "gamma")]},
+             "company_id": c, "url": f"https://{c}.test/j/1"}
+            for c in ("acme", "beta", "gamma", "delta")]},
             orgs)
     got = sorted(r["company_id"] for r in rows)
-    if got != ["beta", "gamma"]:
+    if got != ["beta", "delta", "gamma"]:
         errors += fail(f"merge_manual kept captures at {got}; a company whose feed was read "
-                       f"in full tonight (acme) is its own word, an html page (beta) or a "
-                       f"failed read (gamma) is not")
+                       f"in full tonight (acme) is its own word, an html page (beta), a "
+                       f"failed read (gamma) or a night on stored roles (delta) is not")
     cap = {"id": "x::a", "source": "manual", "first_seen": "2026-09-02"}
     fetched = {"id": "x::b", "source": "ats", "first_seen": "2026-10-08"}
     bb.carry_first_seen([cap, fetched], [{"id": "x::a", "first_seen": "2026-09-03"},
@@ -8740,12 +8767,17 @@ def check_a_capture_says_only_what_is_true() -> int:
                   "console.log(JSON.stringify([byHandText(p,{checked_by_hand:'2026-09-08'}),"
                   "byHandText(p,{checked_by_hand:'2026-10-10'}),"
                   "byHandText(p,{checked_by_hand:'2026-09-08'},true),"
-                  "byHandText(p,{checked_by_hand:'2026-10-10'},true)]))") % json.dumps(fn)
+                  "byHandText(p,{checked_by_hand:'2026-10-10'},true),"
+                  "byHandText(p,{checked_by_hand:'2026-10-10',checked_empty:true}),"
+                  "byHandText(p,{checked_by_hand:'2026-10-10',checked_empty:true},true)]))") % json.dumps(fn)
         r = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=30)
         got = json.loads(r.stdout or "[]") if r.returncode == 0 else [r.stderr[:200]]
         want = ["found by hand on 2026-09-08, not re-checked since",
-                "found by hand on 2026-09-08, page re-read by hand on 2026-10-10",
-                "found by hand, not re-checked", "found by hand, page re-read 2026-10-10"]
+                "found by hand on 2026-09-08, page read again by hand on 2026-10-10",
+                "found by hand, not re-checked", "found by hand, page read again 2026-10-10",
+                "found by hand on 2026-09-08; when the page was read again on 2026-10-10 it "
+                "listed no openings",
+                "found by hand; page listed no openings on 2026-10-10"]
         if got != want:
             errors += fail(f"byHandText says {got}, expected {want}")
     return errors
@@ -18377,6 +18409,8 @@ def check_watchdog_sees_a_failed_deploy() -> int:
     errors = 0
     now = _dt.datetime(2026, 10, 8, 15, 0, tzinfo=_dt.timezone.utc)
     env = {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "o/r"}
+    napped = []
+    nap = napped.append                  # never really sleep in a test
 
     def gh(runs_by_sha, tip_pushed="2026-10-08T14:58:00Z", dates=None):
         def fetch(path):
@@ -18401,10 +18435,11 @@ def check_watchdog_sees_a_failed_deploy() -> int:
         ("a build stuck for four hours", {"a": [stuck], "b": [ok]}, [True]),
         ("a commit Pages skipped, the one before failed", {"a": [], "b": [failed]}, [True]),
         ("a just-pushed tip not built yet, the one before fine", {"a": [], "b": [ok]}, []),
-        ("no Pages result anywhere, tip just pushed", {"a": [], "b": []}, [False]),
+        # nothing built anywhere and a commit hours old: Pages has stopped
+        ("no Pages result anywhere, an older commit hours old", {"a": [], "b": []}, [True]),
     ]
     for label, runs, want in cases:
-        got = [hard for _, _, hard in watchdog.deploy_faults(env=env, fetch=gh(runs), now=now)]
+        got = [hard for _, _, hard in watchdog.deploy_faults(env=env, fetch=gh(runs), now=now, sleep=nap)]
         if got != want:
             errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
     # PAGES STOPPED PICKING MAIN UP. A commit made after the last build
@@ -18422,19 +18457,55 @@ def check_watchdog_sees_a_failed_deploy() -> int:
              {"a": "2026-10-08T14:40:00Z", "b": "2026-10-08T09:50:00Z",
               "c": "2026-10-08T09:55:00Z"}, [])):
         got = [hard for _, _, hard in watchdog.deploy_faults(
-            env=env, fetch=gh(runs, dates=dates), now=now)]
+            env=env, fetch=gh(runs, dates=dates), now=now, sleep=nap)]
         if got != want:
             errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
 
+    # nothing built anywhere but every commit minutes old: no verdict yet
+    got = [hard for _, _, hard in watchdog.deploy_faults(
+        env=env, fetch=gh({"a": [], "b": []}, dates={"a": "2026-10-08T14:58:00Z",
+                                                     "b": "2026-10-08T14:50:00Z"}),
+        now=now, sleep=nap)]
+    if got != [False]:
+        errors += fail(f"watchdog on 'nothing built, every commit minutes old': faults {got}, "
+                       f"expected [False]")
+    # AN OUTAGE LONGER THAN THE OLD LOOKBACK: twelve unbuilt commits, none
+    # built in reach, the newest hours old - hard, not a note that lets the
+    # issue close as recovered (fifth review, 2026-10-08)
+    many = {chr(97 + i): [] for i in range(12)}
+    dates = {k: "2026-10-08T12:00:00Z" for k in many}
+    got = [hard for _, _, hard in watchdog.deploy_faults(
+        env=env, fetch=gh(many, dates=dates), now=now, sleep=nap)]
+    if got != [True]:
+        errors += fail(f"watchdog on 'twelve unbuilt commits, nothing built in reach': "
+                       f"faults {got}, expected [True]")
+    # A PUSH CAUGHT MID-BUILD: old commits pushed a minute ago, no run yet on
+    # the first ask, the build there on the second - no fault
+    calls = {"n": 0}
+    base = gh({"a": [], "b": [early]}, dates={"a": "2026-10-08T09:30:00Z",
+                                              "b": "2026-10-08T07:59:00Z"})
+    built = gh({"a": [ok], "b": [early]}, dates={"a": "2026-10-08T09:30:00Z",
+                                                 "b": "2026-10-08T07:59:00Z"})
+
+    def in_flight(path):
+        if "/commits?" in path:
+            calls["n"] += 1
+        return (base if calls["n"] <= 1 else built)(path)
+    napped.clear()
+    got = watchdog.deploy_faults(env=env, fetch=in_flight, now=now, sleep=nap)
+    if got or napped != [watchdog.DEPLOY_RECHECK]:
+        errors += fail(f"a push caught mid-build was reported ({got}) or not asked again "
+                       f"({napped})")
+
     def boom(path):
         raise OSError("api down")
-    got = watchdog.deploy_faults(env=env, fetch=boom, now=now)
+    got = watchdog.deploy_faults(env=env, fetch=boom, now=now, sleep=nap)
     if [h for _, _, h in got] != [False]:
         errors += fail(f"a GitHub API failure is not a soft note: {got}")
-    if watchdog.deploy_faults(env={}, fetch=boom, now=now):
+    if watchdog.deploy_faults(env={}, fetch=boom, now=now, sleep=nap):
         errors += fail("deploy_faults asked GitHub outside Actions, with no token")
     wf = (ROOT / ".github/workflows/watchdog.yml").read_text()
-    if 'grep -q "could not ask GitHub" /tmp/watchdog.txt' not in wf:
+    if 'grep -q -e "could not ask GitHub" -e "no Cloudflare Pages result" /tmp/watchdog.txt' not in wf:
         errors += fail("the watchdog can close an open issue on a night it could not "
                        "ask whether the deploy went out")
     if "checks: read" not in wf or "GITHUB_TOKEN: ${{ github.token }}" not in wf:

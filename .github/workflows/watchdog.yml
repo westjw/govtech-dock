@@ -110,7 +110,7 @@ jobs:
                    --json number --jq '.[0].number // empty' 2>/dev/null || true)"
           # A night that could not ASK whether the deploy went out has not
           # shown that it did, so it closes nothing (third review, 2026-10-08).
-          if grep -q "could not ask GitHub" /tmp/watchdog.txt; then
+          if grep -q -e "could not ask GitHub" -e "no Cloudflare Pages result" /tmp/watchdog.txt; then
             echo "deploy status unknown tonight; leaving any open issue open"
             exit 0
           fi

@@ -45,6 +45,7 @@ import json
 import os
 import pathlib
 import sys
+import time
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -66,8 +67,15 @@ CLIFF = 0.40
 DEPLOY_CHECK = "Cloudflare Pages"
 # A build normally takes a few minutes. One still running after this is stuck.
 DEPLOY_GRACE = dt.timedelta(hours=2)
-# How far back to look for the newest commit Pages has answered for.
-DEPLOY_LOOKBACK = 10
+# How far back to look for the newest commit Pages has answered for. Ten was
+# a day and a half of bot commits; an outage longer than that turned into a
+# soft note and closed the issue (fifth review, 2026-10-08).
+DEPLOY_LOOKBACK = 50
+# Pages posts its check run when a build FINISHES, a minute or two after the
+# push. A commit made hours before it was pushed looks long unbuilt during
+# that minute, so an unbuilt-push fault is asked again after this long and
+# stands only if the build still has not appeared.
+DEPLOY_RECHECK = 180
 
 
 def _github(token: str):
@@ -89,7 +97,19 @@ def _when(stamp: str | None) -> dt.datetime | None:
         return None
 
 
-def deploy_faults(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]:
+def deploy_faults(env=None, fetch=None, now=None, sleep=None) -> list[tuple[str, str, bool]]:
+    """deploy_status, asked twice when it finds an unbuilt push: once, and
+    again DEPLOY_RECHECK seconds later, so a push caught mid-build is not
+    reported as one Pages never picked up."""
+    first = deploy_status(env, fetch, now)
+    if not (first and first[0][2] and "never picked up" in first[0][0]):
+        return first
+    (sleep or time.sleep)(DEPLOY_RECHECK)
+    later = (now + dt.timedelta(seconds=DEPLOY_RECHECK)) if now else None
+    return deploy_status(env, fetch, later)
+
+
+def deploy_status(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]:
     """Did the newest deploy Cloudflare Pages attempted actually go out?
 
     Walks main's newest commits for the newest one carrying a Cloudflare
@@ -166,6 +186,15 @@ def deploy_faults(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]
                      f"{run.get('completed_at')}, so the public site is an older "
                      f"build than the repo holds. {run.get('html_url') or ''}".strip(),
                      True)]
+        # NOTHING BUILT IN THE WHOLE LOOKBACK. If the newest unbuilt commit
+        # is past the grace, Pages has stopped: hard, not a note that lets the
+        # issue close as recovered.
+        old = [(sha, at) for sha, at in unbuilt if now - at > DEPLOY_GRACE]
+        if old:
+            sha, at = old[0]
+            return [(f"Cloudflare Pages never picked up main at {sha[:7]}",
+                     f"no Pages build on any of main's last {len(commits)} commits, and "
+                     f"this one was committed {at:%Y-%m-%d %H:%M} UTC", True)]
         return [(f"no Cloudflare Pages result on the last {DEPLOY_LOOKBACK} commits",
                  "either builds are being skipped or the Pages app stopped "
                  "reporting to GitHub", False)]

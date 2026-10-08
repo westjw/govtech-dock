@@ -106,19 +106,23 @@ SECTION_LABEL = re.compile(
 # (2026-10-08).
 # Words that make a subject a public body: how a city, a county or an agency
 # announces it chose a vendor.
-_PUBLIC = (r"(city|county|state|town|village|department|dept|district|authority|"
+_PUBLIC = (r"(city|county|co\.|state|town|village|department|dept|district|authority|"
            r"agency|commission|board|council|university|college|schools?|transit|"
-           r"police|sheriff|fire|court|airport|port|library|public)")
+           r"police|sheriff|fire|court|airport|port|library|public|station|"
+           r"ministry|province|municipality|metro)")
 
 # An honour, a list or a programme is not a customer: "Selected for Google
 # for Startups Accelerator", "Selected as Top Innovator", "...of the Year".
 # The lookaheads below read to the end of the line, not the next period:
 # "Selected to Join U.S. Business Delegation" hid its last word behind the
 # periods in "U.S." (fourth review, 2026-10-08).
-_HONOUR = (r"(awards?|honou?rs?|innovators?|list|accelerator|program(me)?|lab|hub|"
-           r"showcase|board member|delegation|of the year|finalists?|cohort|"
-           r"fellowship|competition|challenge|winners?|top|best|recogni[sz]\w*|"
-           r"spotlight|feature[sd]?|speaker|panel|summit|conference|initiative|incubator)")
+# NARROW ON PURPOSE: "program" and "initiative" also end real awards
+# ("Santa Monica Selects Populus to Power ... Its Shared Mobility Program"),
+# so only an honour's own words cancel a selection (fifth review, 2026-10-08).
+_HONOUR = (r"(awards?|honou?rs?|innovators?|accelerator|showcase|board member|delegation|"
+           r"of the year|finalists?|cohort|fellowship|competition|winners?|"
+           r"recogni[sz]\w*|spotlight|speaker|panel|summit|conference|incubator|"
+           r"innovation (hub|lab|challenge|program)|tech lab|\d+ (by|under) \d+ list)")
 
 # MONEY, as a figure: "$15 Million", "$2.2M", "€10mm".
 _MONEY = r"(\$|€|£)\s?[\d.,]+\s*(k|m|mm|mn|million|b|bn|billion)?\b"
@@ -134,7 +138,9 @@ NEWS_RULES = (
     # A SALE, MERGER OR BUYOUT, before the contract verbs: "has signed an
     # agreement to be acquired by Hiab" is an acquisition, not a contract.
     ("funding", re.compile(
-        r"\b(to be acquired|acquired by|merger with|merges? with|completes? (the )?acquisition)\b|"
+        r"\b(to be acquired|acquired by|merger with|merges? with|completes? (the )?acquisition|"
+        r"has acquired|announce[sd]? (a |its |their )?merger|business combination)\b|"
+        r"\b(to|intent to|agreement to|plans to|will) acquire\b(?!\s+(a|an|the|new)\b)|"
         r"\bacquires\b(?!\s+(a|an|the|new|two|three|four|five|six|\d+)\b)|"
         r"\bacquisition of\b(?![^\n]{0,40}\b(kits?|equipment|units?|vehicles?|land|sites?|"
         r"property|propert(y|ies)|data|licen[cs]es?)\b)", re.I)),
@@ -174,7 +180,12 @@ NEWS_RULES = (
         + _MONEY + r"(\s+[\w-]+)?\s+(raise|round|funding|investment|financing|series)\b"
         r"(?!\s+opportunit)|"
         r"\b(capital|partners|ventures|equity)\b[^\n]{0,40}\b(invests|invested|investment in|announces investment)\b|"
-        r"\bvaluation of\b|\bat a [^\n]{0,20}valuation\b", re.I)),
+        r"\bvaluation of\b|\bat a [^\n]{0,20}valuation\b|" + _MONEY + r"\s+valuation\b|"
+        # "BRINC Raises $125M to Put a 911 Response Drone on Every Station":
+        # raised money, said plainly - unless it was for a cause
+        r"\b(raise[sd]?|raising)\s+(\w+\s+){0,2}" + _MONEY + r"|"
+        r"\b(secures|secured|closes|closed)\s+(\w+\s+){0,2}" + _MONEY +
+        r"(?![^\n]{0,50}\b(orders?|contracts?|deals?|agreements?|expansion|project)\b)", re.I)),
     ("leadership", re.compile(
         r"\b(appoint(s|ed)?|names?|joins? (as|the)|hires?|promot(es|ed)|welcomes|"
         r"new (ceo|cfo|cto|coo|cro|chief|president|vp|vice president|head of)|"
@@ -587,10 +598,72 @@ def item_from_article(html: str, url: str) -> dict:
 
 
 # ------------------------------------------------------------------ door --
-def kind(headline: str) -> tuple[str, str | None]:
+# WHOSE PAGE THE HEADLINE IS ON decides two cases no pattern can: "Providence
+# picks Passport" is a contract on Passport's page, "Ladris deploys Forward
+# Ops" is Ladris shipping its own product; "SkySafe and State of Rhode Island
+# Renew Multi-Year Contract" is SkySafe's deal, "NJCU and Mercer County CC
+# Sign Dual Admission Transfer Agreement" is not CollegeNET's (fifth review,
+# 2026-10-08). Only build_board passes names; the sweep and the feed reader
+# do not, and get the name-free rules.
+_GENERIC_NAME = {"inc", "corp", "corporation", "company", "group", "systems", "solutions",
+                 "software", "technologies", "technology", "services", "labs", "global",
+                 "international", "the", "and", "data", "health", "public", "government"}
+_CUSTOMER_VERB = re.compile(r"\b(implements|deploys|picks|rolls out|launches|selects|chooses|"
+                            r"taps|adopts)\b", re.I)
+_OWN_DEAL = re.compile(r"\b(sign|renew|extend|win|winning|ink)\b[^\n]{0,40}"
+                       r"\b(contracts?|agreements?|deal|mou|memorandum of understanding)\b", re.I)
+
+
+_HONOUR_AFTER = re.compile(r"[^\n]{0,70}\b" + _HONOUR + r"\b", re.I)
+
+
+def _name_tokens(names) -> list[str]:
+    out = []
+    for n in names or ():
+        for t in re.findall(r"[a-z0-9]+", str(n).lower()):
+            if len(t) >= 4 and t not in _GENERIC_NAME and t not in out:
+                out.append(t)
+    return out
+
+
+def _names_at(headline: str, tokens: list[str]) -> list[int]:
+    low = headline.lower()
+    return [m.start() for t in tokens for m in re.finditer(r"\b" + re.escape(t) + r"\b", low)]
+
+
+def kind(headline: str, names=None) -> tuple[str, str | None]:
     if BLOG_SHAPE.search(headline or ""):
         return "press", None
+    got = _kind(headline)
+    if got[0] != "press" or not names:
+        return got
+    tokens = _name_tokens(names)
+    at = _names_at(headline, tokens)
+    if not at:
+        return got
+    m = _CUSTOMER_VERB.search(headline)
+    # the company is the OBJECT: named after the verb and not before it -
+    # and an honour is still not a customer ("Selects Code Four as Small
+    # Business of the Year")
+    if m and min(at) > m.start() and not _HONOUR_AFTER.search(headline, m.end()):
+        return "contract", m.group(0)
+    m = _OWN_DEAL.search(headline)
+    if m:
+        return "contract", m.group(0)
+    return got
+
+
+# Money raised FOR A CAUSE is not a round, wherever the cause sits in the
+# headline: "Heil Charity Invitational Raises Nearly $8,000 for Local
+# Student Scholarships" (fifth review, 2026-10-08).
+_CAUSE = re.compile(r"\b(charit\w*|donat\w*|fundrais\w*|giving\s?tuesday|crohn\w*|cancer|"
+                    r"golf|invitational|toy drive|food drive|scholarships?|nonprofits?)\b", re.I)
+
+
+def _kind(headline: str) -> tuple[str, str | None]:
     for name, rx in NEWS_RULES:
+        if name == "funding" and _CAUSE.search(headline or ""):
+            continue
         m = rx.search(headline or "")
         if m:
             return name, m.group(0)
