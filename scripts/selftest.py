@@ -1594,6 +1594,20 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         errors += fail(f"the sign-in link no longer returns a person to the page they "
                        f"asked for ({keep})")
 
+    # FRAME PROTECTION ON THE TOKEN PAGES, from the middleware itself:
+    # Cloudflare does not apply _headers to a response a Function produced,
+    # and every request passes through this one (launch audit, 2026-10-06).
+    frames = out.get("frames") or {}
+    for path in ("/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc"):
+        f = frames.get(path) or {}
+        if f.get("xfo") != "DENY" or f.get("fa") != "frame-ancestors 'none'":
+            errors += fail(f"{path} can be framed (X-Frame-Options {f.get('xfo')!r}, "
+                           f"CSP {f.get('fa')!r}); it carries a token and a one-click action")
+    for path in ("/", "/c/verkada.html"):
+        if (frames.get(path) or {}).get("xfo"):
+            errors += fail(f"{path} refuses to be framed; the board is public and "
+                           f"embedding it is a use, not an attack")
+
     gated = out.pop("gated", None)
     cases = {k: c for k, c in out.items() if isinstance(c, dict) and "reached" in c}
     if gated is False:

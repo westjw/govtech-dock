@@ -51,6 +51,8 @@ async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie
   let body = "";
   try { body = await res.text(); } catch { body = ""; }
   return { status: res.status, reached,
+           xfo: res.headers.get("x-frame-options") || "",
+           fa: res.headers.get("content-security-policy") || "",
            type: res.headers.get("content-type") || "",
            robots: res.headers.get("x-robots-tag") || "",
            cache: res.headers.get("cache-control") || "",
@@ -121,4 +123,10 @@ for (const to of ["/%09/x.example", "/.//x.example", "/./%09/x.example", "//x.ex
   out.login_redirects.push(await landing(to));
 }
 out.login_keeps_path = await landing(encodeURIComponent("/c/verkada.html?tab=jobs"));
+// FRAME PROTECTION comes from the middleware itself, on every spelling of the
+// two token pages, and nowhere else (the board may be embedded)
+out.frames = {};
+for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc", "/", "/c/verkada.html"]) {
+  out.frames[p] = await ask(p, { cookie: mint({}) });
+}
 console.log(JSON.stringify(out));
