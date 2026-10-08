@@ -1718,6 +1718,18 @@ fires.
   the manual merge (captures made under an older rule) and on a redraw. 22
   rows came off. `check_no_listing_is_a_non_job` pins real jobs that share
   the words ("Internal Audit Manager") and reads the published board.
+- **A news label is a claim (2026-10-08).** CONTRACT needs a contract word
+  beside its verb, a third-person adoption verb, or a public body partnering;
+  FUNDING needs money; a blog-shaped headline gets neither (`news.NEWS_RULES`,
+  `BLOG_SHAPE`). `build_board.news_for_board` re-reads every stored item's
+  label from its headline, so a rule fix reaches all of news.json at the
+  next build. `check_news_labels_make_no_false_claims`.
+- **Browsers keep images a day and board data five minutes** (root
+  middleware `CACHE_RULES`, private, GET 200 only) - every request is a
+  Function call against the free plan's daily allowance.
+- **The nightly is scheduled 05:23 UTC** because GitHub starts it 4-9 hours
+  late; the watchdog also asks GitHub whether the last Cloudflare deploy went
+  out (`watchdog.deploy_faults`).
 - **A company with no board says which kind**: none found, turned away
   (`probe == "blocked"`), or not looked for yet. `no_board_note()` and
   `noBoardText()`. A board we read whose every role this board leaves out
