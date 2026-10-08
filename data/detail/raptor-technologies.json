@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "A Defensible Framework for Responding to Bullying at Schools",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "8 Safety and Planning Steps to Take Before a School Field Trip",
    "kind": "press",
@@ -19,17 +19,8 @@
    "url": "https://raptortech.com/resources/blog/school-field-trip-planning/"
   },
   {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "4 Strategies to Prevent Student Vaping",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/4-strategies-to-prevent-student-vaping/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "index-text",
+   "date": "2026-09-27",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "75% Faster Check-In: How Albany Schools Transformed Event Screening With Raptor EventSafe\u2122",
    "kind": "press",
@@ -37,8 +28,17 @@
    "url": "https://raptortech.com/resources/csd-albany-eventsafe-case-study/"
   },
   {
+   "date": "2026-09-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-28",
+   "headline": "4 Strategies to Prevent Student Vaping",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/4-strategies-to-prevent-student-vaping/"
+  },
+  {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Breaking Down the Standard Reunification Method (SRM): Key Roles, Steps, and Setup",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Recognizing the Warning Signs of Suicide Risk in Students",
    "kind": "contract",
@@ -55,58 +55,58 @@
    "url": "https://raptortech.com/resources/blog/student-suicide-risk-warning-signs/"
   },
   {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "A Campus Administrator\u2019s Playbook for Effective Bullying Prevention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/campus-administrator-bullying-prevention-guide/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Case for Wearable Silent Panic Alerts: Helping Schools Choose and Adopt the Right One",
+   "kind": "contract",
+   "kind_rule": "Adopt",
+   "url": "https://raptortech.com/resources/wearable-silent-panic-alerts-guide/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Current Advice for K-12 Sports Safety: Cardiac Arrest, Heat Stroke, and Head Injuries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/guide-to-k12-sports-safety/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "A K-12 Guide on Bullying Awareness: Creating Safer Student Experiences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/k12-guide-bullying-awareness/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Digital Hall Passes for Safer, More Accountable Student Movements",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/digital-hall-pass-guide-for-better-student-movements/"
+  },
+  {
    "date": "2026-09-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Bell-to-Bell Cellphone Bans and the Rise of Hall Pass Requests",
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/blog/bell-to-bell-cellphone-bans/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "When Should Post-Incident Training Happen at Schools?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/post-incident-training-for-schools/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Talking About Suicide: What to Say and Why It Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/talking-about-suicide/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Using Digital Hall Passes to Prevent Unsafe or Unauthorized Meetups",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/digital-hall-passes-prevent-unauthorized-meetups/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "12 Strategies for Preventing Playground Accidents at Schools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/strategies-for-preventing-playground-accidents-at-schools/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "5 Reasons to Attend the 2026 SchoolSAFE Conference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/reasons-to-attend-schoolsafe-conference/"
   }
  ],
  "profile": {

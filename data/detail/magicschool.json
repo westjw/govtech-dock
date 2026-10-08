@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "time",
+   "first_seen": "2026-10-07",
+   "headline": "Setting District-Wide Student Room Hours",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://help.magicschool.ai/en/articles/17437255-setting-district-wide-student-room-hours"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "time",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://help.magicschool.ai/en/articles/16738794-browsing-and-searching-the-tool-library"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Tool Calling in Raina",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://help.magicschool.ai/en/articles/15635358-tool-calling-in-raina"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "Flock Authorized as a CVE Numbering Authority by CISA",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/flock-authorized-as-a-cve-numbering-authority-by-cisa"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "What Is Traffic Analytics?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/flock-lpr-vs-fixed-video-same-camera-body-two-different-jobs"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Communities Can Extend Public Safety Visibility During Summer",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/how-communities-can-extend-public-safety-visibility-during-summer"
   }
  ],
  "profile": {

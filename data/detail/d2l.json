@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/newsroom/d2l-named-a-leader-across-11-g2-fall-2026-reports/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Hire",
    "url": "https://www.d2l.com/blog/new-hire-orientation/"
-  },
-  {
-   "date": "2026-10-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Accessible Education: The Complete Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/accessible-education-the-complete-guide/"
   }
  ],
  "profile": {

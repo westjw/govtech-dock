@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Beyond Support: How Flashpoint Redefines the Customer Success Experience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/beyond-support-how-flashpoint-redefines-the-customer-success-experience/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/data-center-physical-security-mitigating-fpv-drone-threats/"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Cyber: How CTI Teams Are Solving Converged Threat Use Cases",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/beyond-cyber-cti-teams-solving-converged-threat-use-cases/"
   }
  ],
  "profile": {

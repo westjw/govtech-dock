@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Ghost Students Are Targeting Community Colleges. Here's Why.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.element451.com/blog/ghost-students-community-colleges"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.element451.com/blog/ccbc-student-experience-redesign"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Mastering the Prompt Stack: How to Build AI Agents That Think Like Enrollment Marketers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/mastering-the-prompt-stack"
   }
  ],
  "profile": {

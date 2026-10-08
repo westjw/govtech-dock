@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Person-Centered Planning: What It Actually Means for Your Team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/person-centered-planning-what-it-actually-means-for-your-team/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Electronic Visit Verification (EVV) Explained: What IDD and HCBS Providers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/electronic-visit-verification-evv-explained-what-idd-and-hcbs-providers-need-to-know/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "The IDD Documentation Software Buyer's Checklist: 12 Questions to Ask Before You Switch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.therapservices.net/blog/the-idd-documentation-software-buyers-checklist-12-questions-to-ask-before-you-switch/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.therapservices.net/blog/beyond-written-records-4-ways-theraps-video-documentation-empowers-staff-and-individuals-at-richmond-residential/"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Standardizing Success: How Lutheran Social Service of Minnesota Unified Statewide Documentation with Therap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/standardizing-success-how-lutheran-social-service-of-minnesota-unified-statewide-documentation-with-therap/"
-  },
-  {
-   "date": "2026-06-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Action: 7 Insights for I/DD Providers Navigating AI Implementation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/ai-in-action-7-insights-for-i-dd-providers-navigating-ai-implementation/"
-  },
-  {
-   "date": "2026-06-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Happy Haven\u2019s Path to Paperless: Reclaiming Time for Direct Support with Therap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.therapservices.net/blog/happy-havens-path-to-paperless-reclaiming-time-for-direct-support-with-therap/"
   }
  ]
 }

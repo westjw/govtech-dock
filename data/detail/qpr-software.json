@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Where Process Intelligence Is Heading: 5 Questions with Gary Chitan of TOCH Consulting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/blog/process-intelligence-ai-gary-chitan-toch-consulting"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "QPR partner TOCH Consulting shares its view on the future of Process Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/qpr-toch-consulting-future-of-process-intelligence"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/news/qpr-software-has-published-its-half-year-financial-report-january-june-2026"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Process Mining in Banking: How Erste Bank Poland Reduced Loan Drop-Offs and Recovered Millions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/blog/erste-bank-process-mining-in-banking"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "One of the Largest U.S. Public Sector Organizations Selected QPR ProcessAnalyzer",
-   "kind": "contract",
-   "kind_rule": "Selected",
-   "url": "https://www.qpr.com/news/large-us-public-sector-organizations-selects-qpr-processanalyzer"
   }
  ],
  "profile": {

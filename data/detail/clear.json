@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "CLEAR Hosts Military Veterans at NY HQ to Preview New Initiative with VA.gov",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/clear-veterans-preview-va-gov-sign-in"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/airport-guide-jfk"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CLEAR Travel Tips: How to Fly With a Wedding Dress",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/travel-tips-flying-with-wedding-dress"
   }
  ]
 }

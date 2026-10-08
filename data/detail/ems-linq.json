@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "\u201cTry Again\u201d: Chef Kevin Jenkins on Cooking for the Toughest Critics. The kids.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/try-again-chef-kevin-jenkins-on-cooking-for-the-toughest-critics-the-kids/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/take-a-dollar-squeeze-a-dollar-how-school-district-cfos-do-more-with-less/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Food Waste in Schools: What Causes It and Proven Strategies to Reduce It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/food-waste-in-schools-what-causes-it-and-proven-strategies-to-reduce-it/"
   }
  ]
 }

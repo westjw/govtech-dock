@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "EPR demands push AI vision systems toward MRFs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/epr-demands-push-ai-vision-systems-toward-mrfs"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "California Waste Solutions upgrades technology at California MRFs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everestlabs.ai/news/california-waste-solutions-upgrades-technology-at-california-mrfs"
+  },
+  {
    "date": "2026-08-24",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everestlabs.ai/blog/everestlabs-2025-in-review"
-  },
-  {
-   "date": "2025-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "RWM Wrapped: How AI is Optimizing Resource Recovery",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/blog/rwm-wrapped-how-ai-is-optimizing-resource-recovery"
-  },
-  {
-   "date": "2025-09-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Veolia adds EverestLabs' AI-powered recycling robots in first international deployment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everestlabs.ai/news/veolia-adds-everestlabs-ai-powered-recycling-robots-in-first-international-deployment"
   }
  ],
  "profile": {

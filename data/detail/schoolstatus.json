@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "How Sumter County Built One Attendance Process to Reduce Chronic Absenteeism",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/reduce-chronic-absenteeism-attendance-consistency"
+  },
+  {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How Student Data Should Drive Every Family Communication Decision",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "When Bullying Shows Up in Attendance Data",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Same Data, Every Building: How One Texas District Built Real Attendance Visibility",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "SchoolStatus Earns 30 G2 Badges for Fall 2026",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "SchoolStatus Attend Wins 2026 Tech & Learning Award of Excellence",
    "kind": "contract",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How to Build the Business Case for a District-Wide Communication Platform",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "New Book Gives District Leaders a Practical Framework for Improving Chronic Absenteeism\u2014and a Comprehensive Look at State-Level Attendance Policies",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/mailed-attendance-letters"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "School Communication Platform Comparison",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/school-communication-platform-comparison"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "The Threat That Gets You Is in the Source You\u2019re Not Watching",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dataminr.com/resources/blog/the-threat-that-gets-you-is-in-the-source-youre-not-watching/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dataminr.com/resources/how-public-data-contributes-to-space-domain-awareness/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "CVSS Is Telling You the Wrong Thing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dataminr.com/resources/blog/cvss-is-telling-you-the-wrong-thing/"
   }
  ],
  "profile": {

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "How industrial manufacturers turn market pressure into competitive advantage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/manufacturers-turn-market-pressure-competitive-advantage"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "The new demands on healthcare workforce management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/healthcare-leaders-rethinking-workforce-management"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "How a distributor competes on speed and accuracy by scaling AI across its business",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/state-electric-supply-velocity-suite"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/ai-governance-gap"
-  },
-  {
-   "date": "2026-10-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Designing employee-led coaching to be easy, helpful, and grounded in science",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/employee-led-coaching-grounded-in-science"
-  },
-  {
-   "date": "2026-10-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Purpose-built AI for every industry: How Infor and AWS are powering the agentic enterprise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/industry-ai-agentic-enterprise"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "The future is agentic. The foundation is data and governance.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/future-is-agentic-data-governance"
   }
  ],
  "profile": {

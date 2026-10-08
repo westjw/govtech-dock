@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "September 2026 Release Roundup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/blog/september-2026-release-roundup"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -8,15 +17,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skedda.com/blog/skedda-api-booking-data"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "August 2026 Release Roundup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skedda.com/blog/august-2026-release-roundup"
   },
   {
    "date": "2026-08-25",
@@ -29,7 +29,16 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "August 2026 Release Roundup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/blog/august-2026-release-roundup"
+  },
+  {
+   "date": "2026-08-04",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "July 2026 Release Roundup",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-07-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Moving to a Smaller Office? How to Reduce Office Size the Right Way",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-07-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Every Office, One Dashboard: Meet the Organization Hub",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-07-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "How to Open a New Office That Works Long After Move-In Day",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skedda.com/insights/best-meeting-room-booking-software"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "June 2026 Product Roundup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skedda.com/blog/june-2026-product-roundup"
   }
  ],
  "profile": {

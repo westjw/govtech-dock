@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-07",
    "headline": "Redline Data and Corti Partner to Bring Clinical AI Across Germany",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-04-01",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Corti Ships Symphony for Medical Coding with up to 25% Accuracy Edge Over OpenAI and Anthropic",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-04-01",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Struck by a Duck: What Bizarre Billing Codes Reveal About How Countries Live - And Get Hurt",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-02-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Corti Launches Agentic Infrastructure to Scale AI Deployment in Healthcare",
    "kind": "product",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2025-12-09",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Voice Technologies partners with Corti to deliver healthcare AI-enabled apps",
    "kind": "contract",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2025-11-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Corti and S3 Praxiscomputer Bring AI-Powered Documentation to German Medical Practices",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-09-03",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "SPS Expands Philips SpeechLive with Ambient Medical AI Documentation, Powered by Corti",
    "kind": "press",

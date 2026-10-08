@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "time",
+   "first_seen": "2026-10-08",
+   "headline": "Adtran launches Mosaic One Agents to help teams easily scale operations",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20261008-adtran-launches-mosaic-one-agents-to-help-teams-easily-scale-operations"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "time",
    "first_seen": "2026-10-07",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-08-20",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Adva Network Security extends Security Director with automated crypto management for FSP 3000 S-Flex\u2122 and CryptoMux\u2122",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.adtran.com/en/newsroom/press-releases/20260716-silo-communications-expands-fiber-connectivity-in-rural-illinois-with-adtran"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Oso Internet Solutions brings fiber broadband to one of the most remote Navajo communities with Adtran",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.adtran.com/en/newsroom/press-releases/20260714-oso-internet-solutions-brings-fiber-broadband-to-remote-navajo-communities-with-adtran"
   }
  ],
  "profile": {

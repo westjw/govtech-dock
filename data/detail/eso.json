@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "University Hospitals Expands ESO Service Arrangement to Deliver Prehospital Intelligence Across Northern Ohio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eso.com/news/press-releases/university-hospitals-expands-eso-service-arrangement-to-deliver-prehospital-intelligence-across-northern-ohio/"
+  },
+  {
    "date": "2026-07-14",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/2026-itdx-data-dictionary/"
-  },
-  {
-   "date": "2025-06-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "NERIS Product Teaser Video",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eso.com/resources/neris-product-teaser-video/"
   }
  ]
 }

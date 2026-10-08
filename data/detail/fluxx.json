@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Private Family Foundation Compliance Rules You Should Follow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fluxx.io/blog/private-family-foundation-compliance-rules"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fluxx.io/blog/grant-compliance-for-nonprofits"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Top Philanthropy Events and Conferences In 2026 and 2027",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fluxx.io/blog/philanthropy-events-and-conferences"
   }
  ],
  "profile": {

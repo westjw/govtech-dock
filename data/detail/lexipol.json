@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "The Secret to More Resilient First Responders: More Cardio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lexipol.com/resources/the-secret-to-more-resilient-first-responders-more-cardio/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lexipol.com/resources/blog/words-matter-what-message-are-you-leaving/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Clayton (OH) Police Department",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lexipol.com/resources/clayton-oh-police-department/"
   }
  ],
  "profile": {

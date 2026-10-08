@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Mapping the Physical World with Netradyne Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/mapping-the-physical-world-with-netradyne-intelligence"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netradyne.com/mx/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "A Smarter Way to Act on Intelligence: The New Netradyne Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/de/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
   }
  ],
  "profile": {

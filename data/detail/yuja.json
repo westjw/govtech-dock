@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "The Minnesota State Colleges and Universities System Chooses YuJa Panorama to Enhance Online Accessibility For 290,000 Students Across 54 Campuses October 7, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Chooses",
+   "url": "https://www.yuja.com/blog/news/minnesota-state-colleges-and-universities-system-yuja-panorama/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Why the Future of Digital Accessibility in Higher Education is Proactive",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "YuJa Lumina v26.7.0 Release \u2013 Automation That Does the Heavy Lifting for Relinking and Video Editing",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "YuJa EqualGround v26.7.0 Release \u2013 Automate Your Website Remediation Workflows at Scale with New AI-Powered Features",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.yuja.com/blog/news/university-of-maryland-eastern-shore-yuja-autopilot/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "og:published",
-   "first_seen": "2026-10-05",
-   "headline": "YuJa Panorama v26.7.0 Release \u2013 Dozens of New Accessibility Capabilities to Improve LMS Course Accessibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/new-versatile-tools-to-better-manage-your-course-accessibility-in-yuja-panorama/"
   }
  ],
  "profile": {

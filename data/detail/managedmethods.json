@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "In the News | Classroom Manager Wins Tech & Learning 2026 Back to School Award",
    "kind": "contract",
@@ -10,8 +10,17 @@
    "url": "https://managedmethods.com/blog/in-the-news-award-back-to-school-award-2026/"
   },
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Introducing Email Threat Intelligence: A Smarter Way to Understand Phishing Risk in K-12",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://managedmethods.com/blog/email-threat-intelligence-k12-phishing-analytics/"
+  },
+  {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "In the News | Visibility is the School AI Problem",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "How Classroom Manager Keeps Students Engaged in the Classroom",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "In the News | AI Companies Argue There\u2019s a Hidden Cost of Banning AI and Screens in Schools",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "How to Control Internet Access by Device Without Creating More Work for IT Teams",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Choosing the Right Data Security Solution for Your School District",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "FBI Warns About OAuth Consent Phishing Risks for K12 Schools",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "MSN Op-ed | September is the Most Dangerous Month for AI Phishing",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-10",
    "headline": "How the Best Web Content Filtering Software Helps Schools Manage AI Tools Safely",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "8 Signs Your School District Has Outgrown Its Web Content Filtering Solution",
    "kind": "contract",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Choosing the Right Web Content Filtering Solution for Your School District",
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/right-web-content-filtering-solution-for-your-school-district/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "District Administration | K12\u2019s biggest cybersecurity risk isn\u2019t devices. It\u2019s everything beyond.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/in-the-news-district-administration-device-cybersecurity/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "This is some text inside of a div block.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goguardian.com/blog/how-goguardian-can-help-your-district-manage-ai-governance"
+  },
+  {
    "date": "2026-09-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/essential-checklists-for-a-secure-and-successful-school-year"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Explore the Enhanced GoGuardian Beacon for a New School Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goguardian.com/blog/explore-the-enhanced-goguardian-beacon-for-a-new-school-year"
   }
  ]
 }

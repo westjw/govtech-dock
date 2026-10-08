@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "card-date",
+   "first_seen": "2026-10-08",
+   "headline": "Highmark Wholecare and Fortuna Health Introduce State's First AI-Enabled Medicaid Renewal Support",
+   "kind": "contract",
+   "kind_rule": "Renewal",
+   "url": "https://www.fortunahealth.com/resources/highmark-wholecare-and-fortuna-health-introduce-states-first-ai-enabled-medicaid-renewal-support"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "card-date",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
-  },
-  {
-   "date": "2026-04-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Consumers Taught Us in Our First Two Years of Building",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-consumers-taught-us-in-our-first-two-years-of-building"
   }
  ],
  "profile": {

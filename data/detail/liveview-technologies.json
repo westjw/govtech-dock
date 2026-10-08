@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Mobile Security Unit Buyer's Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/msu-buyers-guide"
+  },
+  {
    "date": "2026-10-03",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/resources/snipes-ad-million-dollar-savings"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Snipes: Green Jumpsuit Theft Story",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/snipes-ad-green-jumpsuit-theft"
   }
  ],
  "profile": {

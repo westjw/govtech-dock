@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "The More Your Trucks Have in Common, The Less They Cost You",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heil.com/news/common-body-article/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.heil.com/news/heil-dealer-summit-2026/"
-  },
-  {
-   "date": "2026-04-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Heil Charity Invitational Raises Nearly $8,000 for Local Student Scholarships",
-   "kind": "funding",
-   "kind_rule": "Raises",
-   "url": "https://www.heil.com/news/heil-charity-invitational-scholarships-fort-payne/"
   }
  ],
  "profile": {

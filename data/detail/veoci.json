@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "National Incident Management System (NIMS) for Government: A Practical Guide to Incident Coordination",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/nims-government-practical-guide-incident-coordination"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "near-h1",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/asset-management-airport"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "What are the motivations?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/airport-asset-management"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-08",
+   "headline": "AI in Waste Management: Helpful or Hype?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/ai-waste-management-helpful-or-hype/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/global-reporting-initiative-reporting-municipal-waste/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "GRI Reporting for Municipal Waste: It Starts With Your Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/en_gb/blog/global-reporting-initiative-reporting-municipal-waste/"
   }
  ],
  "profile": {

@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "FIDO Tech appoints Jamie Stapleton as Chief Technology Officer",
+   "kind": "leadership",
+   "kind_rule": "appoints",
+   "url": "https://fido.tech/news/fido-tech-appoints-jamie-stapleton-as-chief-technology-officer/"
+  },
+  {
    "date": "2026-09-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "David Archard takes key FIDO US business development role",
+   "headline": "David Archard takes key FIDO US business development role Lewis Sep 8, 2026 Read 1 min",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/david-archard-takes-key-fido-us-business-development-role/"
@@ -31,7 +40,7 @@
    "date": "2026-07-21",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Mobilize your non-leak staff and unlock hidden field resource Polly Blythe Jul 21, 2026 Read 2 min",
+   "headline": "Mobilize your non-leak staff and unlock hidden field resource Polly Jul 21, 2026 Read 2 min",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/articles/blog/mobilize-non-leak-staff-and-unlock-hidden-field-resource/"
@@ -49,7 +58,7 @@
    "date": "2026-07-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Alex Leyland joins FIDO Tech as Operations Director Diane Fagan Jul 14, 2026 Read 2 min",
+   "headline": "Alex Leyland joins FIDO Tech as Operations Director",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/articles/news/alex-leyland-fido-operations-director/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/fido-tech-achieves-cyber-essentials-plus/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "FIDO Tech achieves Cyber Essentials Plus",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://fido.tech/articles/news/fido-tech-achieves-cyber-essentials-plus/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "card-date",
+   "first_seen": "2026-10-08",
+   "headline": "Netze BW is a new Heimdall Power customer",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.heimdallpower.com/news/netze-bw-is-a-new-heimdall-power-customer"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "card-date",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.heimdallpower.com/news/smart-spheres-in-the-snow-minnesota-power-instruments-200-miles-of-transmission-grid-along-lake-superior"
-  },
-  {
-   "date": "2026-02-04",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Entergy Sets U.S. Record with Multi-State DLR Deployment by Drone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.heimdallpower.com/news/entergy-sets-us-record-with-multi-state-dlr-deployment-by-drone"
   }
  ],
  "profile": {

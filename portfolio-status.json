@@ -1,34 +1,32 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-10-05T22:45:00-04:00",
+  "last_updated": "2026-10-08T12:00:00-04:00",
   "status": "Active Build",
-  "progress_pct": 50,
-  "progress_note": "~50% (free board frame; the paid half has no pricing or billing, and the recruiter side now lives in SLED HQ) - 2026-10-05: the site is signed-in only until launch; suppliers sorted into the govtech categories; the news sweep runs again after two weeks dead; HQ's jobs feed has a reader waiting for it",
-  "next_move": "Owner, in Cloudflare: fix the sign-in loop (remove the www.solesourcejobs.com hostname from the Access application, turn off Eager redirect cookie), confirm Fail closed, then widen Access to the whole site. Then publish the 30 unpublished desk edits (publish.py, one run) so the desk checkout reaches main and the Supplier websites and Missing websites tabs appear.",
-  "session_summary": "Launch groundwork. The whole site went private behind the same Access sign-in as the admin, on every hostname, after a 9-agent review found a Free-plan fail-open bypass and a login open redirect. All 7,918 suppliers were placed in the govtech categories with a quoted source (holdout: 93% right website, 96% sector, 76% category among those published), with a review queue for the 1,732 held. The news sweep, dead since 09-20, was traced to an index that dropped its article flag and fixed; the first run finished in 23 minutes. A reader for SLED HQ's jobs feed and a weekly re-check of every published link were built.",
+  "progress_pct": 55,
+  "progress_note": "~55% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-08: launch fixes pushed; 159 govtech companies' sales roles un-hidden at the next crawl",
+  "next_move": "Owner, in Cloudflare: fix the sign-in loop (delete the www.solesourcejobs.com row, Eager redirect cookie off), confirm Fail closed, replace CF_API_TOKEN (KV write 401). Then rule the 15 no-website companies, decide the claim link and supply privacy/contact details for the policy pages.",
+  "session_summary": "A measured launch checklist (claude.ai artifact) and the fixes it called for: honest zeros on company pages, a real takedown for ruled-out companies, per-caller mail and storage limits, one-click unsubscribe, emailed links that wait for a click, the admin reading identity from the verified token, and a check on every push. Four blind review rounds confirmed 40 findings in that work, all fixed or documented. The biggest find was in the data: a 'public sector only' title filter set on 159 government-only vendors hid 151 of 152 quota-carrying roles at OpenGov, Granicus, Tyler and others; the owner approved clearing it, and its regex had held backspace characters since August.",
   "recent_work": [
+    "2026-10-08 sled_only cleared on 159 government-only vendors (owner OK): their sales roles return at the next crawl; SLED_ROLE regex repaired (backspaces since 08-21)",
+    "2026-10-08 Nine delegated federal in-scope rulings reopened (owner OK): federal roles off the board; Concourse off the board",
+    "2026-10-07 Four blind review rounds over the launch fixes: 11, 21, 7, 1 confirmed findings, all fixed or documented",
+    "2026-10-07 Emailed links wait for a click; RFC 8058 one-click unsubscribe; admin identity from the verified Access token",
+    "2026-10-06 Launch checklist from a 6-auditor audit; share cards, robots, public logs, alert expiry, per-caller limits, honest zeros, takedowns",
     "2026-10-05 Site signed-in only until launch (functions/_gate.js, shared verifier functions/_access.js); verified 403 on every hostname; login.js open redirect closed",
     "2026-10-05 Suppliers step 2: data/supplier_categories.json, the export SLED HQ reads; 3,038 publish, 4,302 held; blind holdout measured",
     "2026-10-05 Admin: Supplier websites queue (1,732 held suppliers); Missing websites shows research suggestions and findings; belt says when the publisher is off",
     "2026-10-05 news.yml runs again: index keeps from_index, at most 6 newsrooms per company, a clock inside grab(); 600/600 newsrooms in 23 min",
     "2026-10-05 SLED HQ jobs feed reader (hq_jobs.py, merge_hq), dormant until SLEDJOBS_FEED_TOKEN exists",
-    "2026-10-05 Weekly links.yml: every published link re-fetched; spam and for-sale pages never published (Fathom's casino careers link unwired)",
-    "2026-10-03 Suppliers step 1: who each supplier is, measured on two audits",
-    "2026-09-25 functions/admin/_middleware.js: the /admin door verifies the Access JWT on every hostname; the pages.dev alias had served the whole admin bundle (queues, rulings with reasons, the owner's email hash) with no sign-in. Verified 403 after deploy",
-    "2026-09-25 Phone admin: a ruling stays ruled (session overlay over the build-time rulings.json, dismissals shipped), five tabs incl. Users (grant only, hashed at the edge, landed nightly)",
-    "2026-09-25 apply_web_rulings: chunked forced writes so a 26-ruling phone session cannot fail the nightly run; every applier runs; in/sled vendor calls hand the vendor to the candidate queue with sled_only riding to the landed company",
-    "2026-09-25 refresh.yml: no more -X theirs; merge_decisions.py unions decision-file keys so a phone ruling committed mid-run is kept",
-    "2026-09-25 Start here: 'this sitting' closes after four hours; sortie bars count this sitting per queue; ?sector= honoured; coverage header numbers exist; _is_person excludes model/extension authors; empty dismissals refused",
-    "2026-09-23 Beta codes minted from the board (scripts/beta_codes.py, functions/api/beta.js): one code one person, consent version and text stored at redemption"
+    "2026-10-05 Weekly links.yml: every published link re-fetched; spam and for-sale pages never published (Fathom's casino careers link unwired)"
   ],
   "blockers": [
-    "Owner's sign-in loops (www.solesourcejobs.com redirect breaks Access's eager cookie hop); the owner cannot see the gated site until the Access application is fixed",
-    "Fail closed on the Pages project is unconfirmed; on the Free plan a spent daily allowance would serve static files ungated",
-    "30 desk edits (2026-09-29..30) are unpublished since the desk publisher was uninstalled; the desk checkout is behind main",
-    "Six board companies need a ruling before launch: Fathom and Liberty Mobility Now are defunct, PCC Technology is Civix, Materna IPS is SITA's, Sightbit and WatchTower Robotics have dead domains",
-    "SLED HQ is not deployed: the jobs feed, employers feed and claim link all wait on it",
-    "No real claim has ever been carried: data/claims.json is {} and employer_events.jsonl does not exist because nobody has been verified. The corridor runs nightly and is untested by a real claimant",
-    "The board has one confirmed alert subscriber; nothing may be sold on an audience that is not there"
+    "Owner's sign-in loops (www.solesourcejobs.com redirects Access's callback); he cannot see the gated site until the Access application is fixed",
+    "Fail closed on the Pages project is unconfirmed; the free plan's daily Functions allowance (and Workers Paid) is undecided",
+    "CF_API_TOKEN cannot write KV: every digest day fails to record last_sent and repeats roles",
+    "15 board companies have no website (the private period's exit condition); 6 need a ruling",
+    "No privacy policy, terms or contact route; needs the owner's name/address/contact and a lawyer's read",
+    "The 'Claim this page' destination is undecided while SLED HQ is not deployed",
+    "data/jd_cache.json (918 full job ads) is public in the repo; untracking is ready, history rewrite is the owner's call"
   ]
 }

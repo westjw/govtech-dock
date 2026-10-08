@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "5 Reasons Your KPIs Improve While Your Strategic Goals Slip",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/strategic-goals/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.spiderstrategies.com/blog/strategic-performance-metrics/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Healthcare Teams Are Automating Performance Reporting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/healthcare-reporting-automation/"
   }
  ],
  "profile": {

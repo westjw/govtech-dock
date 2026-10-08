@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Why early cancer screening is urgent for health plans and employers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/why-early-cancer-screening-is-urgent-for-health-plans-and-employers"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Cancer trends by age: What employers and health plans need to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/cancer-trends-by-age-what-employers-and-health-plans-need-to-know"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "Merge",
    "url": "https://www.merative.com/newsroom/merge-community-snapshot-august-2026"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "C\u00faram and Argyle partner to bring real-time, consent-based verification to government benefits eligibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/newsroom/curam-and-argyle-partnership"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Truven expands MarketScan Partner Ecosystem with lab data to advance real-world evidence generation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/newsroom/truven-expands-marketscan-partner-ecosystem-with-lab-data-to-advance-real-world-evidence-generation"
   }
  ]
 }

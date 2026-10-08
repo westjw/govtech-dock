@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-07",
    "headline": "GE Vernova to Double the Number of MIT Interns and Permanent Hires in 2027",
    "kind": "leadership",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "GE Vernova-powered projects receive 2026 POWER Magazine Awards for advancements in energy efficiency and decarbonization",
    "kind": "contract",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "GE Vernova and PROTEC Celebrate Next Engineers Engineering Academy Graduation",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "GE Vernova declares fourth quarter 2026 dividend",
    "kind": "press",

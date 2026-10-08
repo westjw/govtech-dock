@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-17",
+   "date": "2026-10-07",
    "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Fall 2026 Towing, Public Safety, and Auto Recycling Events: Where to Find Autura",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.autura.com/insights/fall-2026-towing-public-safety-and-auto-recycling-events-where-to-find-autura"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "What Public Safety Agencies Are Prioritizing for Next Fiscal Year\u2019s Budget",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.autura.com/insights/autura-marketplace-redesigned-with-faster-listings-smarter-bidding-near-100-payment-success-rate-and-more"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Autura Marketplace Joins URG as a New Associate Vendor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.autura.com/news/autura-marketplace-joins-urg-as-a-new-associate-vendors"
   }
  ],
  "profile": {

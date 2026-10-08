@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Marketplace.city\u2019s New Homepage: Start With Search",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://go.marketplace.city/blog/marketplace.citys-new-homepage-start-with-search"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Introducing Clearbox Starter: free basic access for every state and local government user",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://go.marketplace.city/blog/free-for-every-u.s.-state-and-local-government-employee-marketplace.citys-government-only-vendor-intelligence-network"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://go.marketplace.city/blog/risks-government-vendor-research-online"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Is a Government Technology Market Landscape? A Buyer's Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://go.marketplace.city/blog/what-is-a-government-technology-market-landscape"
-  },
-  {
-   "date": "2026-06-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Can AI Replace Government Procurement Research? Here's What We Found",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://go.marketplace.city/blog/can-ai-replace-government-procurement-research"
   }
  ],
  "profile": {

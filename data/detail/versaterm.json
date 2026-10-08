@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Versaterm Advances Drone Response with Native FAA LAANC Airspace Authorization Integration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.versaterm.com/news/versaterm-advances-drone-response-with-native-faa-laanc-airspace-authorization-integration/"
+  },
+  {
    "date": "2026-09-14",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-04-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Versaterm Announces 2026 Innovation Award Winners",
    "kind": "contract",
    "kind_rule": "Award",
    "url": "https://www.versaterm.com/news/versaterm-announces-2026-innovation-award-winners/"
-  },
-  {
-   "date": "2026-03-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Versaterm Appoints Andrew Lazarus as Chief Financial Officer",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://www.versaterm.com/news/versaterm-appoints-andrew-lazarus-as-chief-financial-officer/"
   }
  ],
  "profile": {

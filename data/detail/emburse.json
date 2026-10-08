@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "card-date",
+   "first_seen": "2026-10-08",
+   "headline": "Emburse Named a Leader in Three 2026 IDC MarketScape Reports for AI-Enabled Accounts Payable and Embedded Payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.emburse.com/company/news/emburse-named-a-leader-in-three-2026-idc-marketscape-reports-for-ai-enabled-accounts-payable-and-embedded-payments"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.emburse.com/company/news/emburse-spend-expands-globally-launching-in-australia-as-its-first-market-outside-the-u-s"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Finance Leader\u2019s Checklist for Trustworthy Agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.emburse.com/blog/finance-leader-checklist-for-agentic-ai"
   }
  ],
  "profile": {

@@ -2034,7 +2034,7 @@
     "buyer_source": "https://www.brincdrones.com/case/law-enforcement/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "About as clean a SLED-only profile as this list gets. The site claims deployment \"by Over 900 Public Safety Agencies in all 50 States\" and names Las Vegas Metro PD, Kansas City PD, Fort Wayne PD (IN), Beverly Hills PD, Atlanta PD, Connecticut State Police, Chula Vista PD and NYPD. The pitch is literally \"Put a 911 Response Drone on Every Police and Fire Station Roof\" (drone-as-first-responder). No private security, no corporate, no military buyer named anywhere I read. Our \"Police\" category is correct, though fire and search-and-rescue are equally prominent.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public safety agencies only \u2014 police departments, sheriffs, state police, fire departments and 911/search-and-rescue agencies."
   },
   {
@@ -2202,7 +2202,7 @@
     "buyer_source": "https://www.mark43.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The cleanest record in this batch. Every customer named on the site is a police department, sheriff's office, campus police, port/transit police or a federal agency \u2014 no commercial buyer appears anywhere, so sells_outside_government is \"no\". Worth knowing for the board that their customer list mixes federal (Secret Service, DIA, Capitol Police, Interior) in with the state and local agencies; the state/local half is large and clearly the core, so this is a genuine SLED vendor, not a federal one. Our \"Police\" category is right, though they also serve dispatch/911 and campus and port agencies.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public safety agencies only \u2014 \"over 300 public safety agencies of all sizes, from federal to state and local, across the world.\" Named: California Highway Patrol, Boston Police, Se"
   },
   {
@@ -2371,7 +2371,7 @@
     "buyer_source": "https://www.peregrine.io",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The homepage names fifteen customers outright and every single one is a public agency: Atlanta Police Department, Miami Police Department, Fairfax County Police Department, Loudoun County Sheriff's Office, Hobbs Police Department, Edmonton Police Service, Ada County Paramedics, Eagle Fire Department, East Pierce Fire-Rescue, Pinellas County Safety & Emergency Services, Manatee County Emergency Management, Cuyahoga County Prosecutor's Office, Merced County District Attorney, Florida Fish and Wildlife Conservation Commission, and Northern Arizona University - a public university, which still cou",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public safety agencies only - police departments and sheriff's offices, fire-rescue, EMS, 911 centers, corrections, emergency management and prosecutors' offices."
   },
   {
@@ -3516,7 +3516,7 @@
     "buyer_source": "https://www.prepared911.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every customer the site names is a public agency: Anoka County 911 ECC, Baltimore 911, Delaware County, Galt PD, Lee County, City of Boulder, Pitkin County, Nashville, Tulsa. The three solution audiences are \"911,\" \"Field Responders\" and \"Communities\" - \"Communities\" reads as the residents a PSAP serves, not a separate commercial buyer, so I found no non-government buyer anywhere on the site. The homepage states Prepared \"is now the intelligence layer of Axon 911,\" i.e. it is now inside Axon - relevant to how the board treats the listing. Our \"EMS\" category is defensible but narrow: the produc",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. City, county and municipal 911 centers (PSAPs) and their emergency communications and police agencies buy Prepared's assistive-AI call-taking, dispatch and QA tools."
   },
   {
@@ -4329,7 +4329,7 @@
     "buyer_source": "https://www.aurelian.com/customers",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "As pure a local-government buyer as this list gets \u2014 every named customer is a county 911 center, a sheriff's office or a municipal dispatch agency, and the products (AVA for non-emergency call handling, CORA for live call guidance) have no non-government use case on the site. Two housekeeping notes for the board. First, the URL we carry is stale: https://www.aurelian.io 308-redirects to https://www.aurelian.com/, so the record should be updated. Second, our category says 'EMS' \u2014 the site is about PSAP/911 dispatch generally, covering law enforcement, fire and EMS calls, so '911 / Emergency Co",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. 911 centers \u2014 PSAPs and emergency communications centers, plus sheriff's offices; the customers page names Volusia Sheriff's Office, Snohomish County 911, Kalamazoo County, Hamilto"
   },
   {
@@ -6226,7 +6226,7 @@
     },
     "buyer": "Cities and transit agencies (named deployments: Santa Monica, San Francisco, Washington DC, plus Philadelphia and Barcelona per blog posts).",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Cities and transit agencies (named deployments: Santa Monica, San Francisco, Washington DC, plus Philadelphia and Barcelona per blog posts).",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -6275,7 +6275,7 @@
     "buyer_source": "https://www.obvio.ai",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Homepage testimonials name Chief Tracy Stone (Town of Colmar Manor, MD), Chief Dan Franklin (Morningside, MD), Chief Anthony Ayers (Cottage City, MD) and Joy Ren, Town Manager (Capitol Heights, MD). The /solutions page states plainly that they partner with municipalities to build a culture of safety in their communities. No commercial buyer appears anywhere on the site. Our 'Streets' category is fair \u2014 it's AI stop-sign/traffic-safety enforcement cameras \u2014 though the buying department is police, not public works.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Small-town municipal governments and their police departments \u2014 the site's testimonials are all Maryland town police chiefs and a town manager."
   },
   {
@@ -6394,7 +6394,7 @@
     "buyer_source": "https://www.buspatrol.com/case-studies",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every named customer on the case studies page is a public body - school districts, a sheriff's office, cities and police departments. No commercial buyer appears anywhere on the site. Worth knowing for the board: /how-it-works says there is 'No upfront cost to districts or taxpayers. Programs are funded through violator-paid fines,' so the district or municipality is the contracting party but does not write a cheque - the revenue comes from citations. Our 'Streets' category is defensible (school-bus stop-arm camera enforcement) though 'Public Safety' or 'School Transportation' would describe i",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. School districts, counties, municipalities and law enforcement - Austin ISD, Bethlehem Area SD PA, Carroll County Public Schools MD, Prince George's County Public Schools MD, Manas"
   },
   {
@@ -8879,7 +8879,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Homepage claims 7,000+ public sector customers, 48 of the 50 largest US cities, and 100% of US federal cabinet-level agencies; named buyers include City of Austin, Nashville, Honolulu, Oregon Dept of Corrections, Oklahoma Health Care Authority and Unified Government of Wyandotte County/KCK. Markets menu is Local, State, Federal, Education, Destinations. One edge worth flagging: the Destinations market (https://granicus.com/market/destinations/) sells to DMOs and convention bureaus - most are public authorities or publicly funded (Las Vegas, Hamilton County, Melbourne Convention Bureau), but so",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government: clerks (agenda and meeting management), communications offices (email/SMS outreach), records officers (GovQA public records), and IT/web teams in local and state government. Federa",
     "acquisition_note": "Acquirer. The About page names: GovDelivery merger (2017), Vision Internet (2018), Firmstep (2019), Bang the Table and OpenCities (2021), GovQA (2021), Rock Solid (2022), Simpleview (2024), Indigov (2025; the newsroom lists 'Granicus Buys Indigov to Strengthen Constituent Engagement', December 10, 2025). Tripepi Smith also lists Novus Agenda (2017) and SouthTech Systems (2018).",
     "acquisitions_checked_on": "2026-09-11"
@@ -8918,7 +8918,7 @@
     "buyer_source": "StormCon Expo run 2026-09-10",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as General government (clerks, communications, IT), with public works, parks/recreation, utilities and special districts as department buyers; public sector only. No stormwater-specific product found \u2014 P",
     "acquisition_note": "Acquirer: Rec1 (2017, became CivicRec), BoardSync (2017, became CivicClerk), Virtual Towns & Schools (2018), SeeClickFix (2020), Optimere with ArchiveSocial, NextRequest and Monsido (2022), Streamline incl. DocAccess (announced Dec 18, 2025). Monsido sold to Acquia in 2024. Networks Plus sister business sold 2014.",
     "acquisitions_checked_on": "2026-09-11"
@@ -8950,7 +8950,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (city and county administration / clerk and resident-services offices), sometimes individual departments such as a county surrogate; public sector only as far as the site shows.",
     "acquisitions_checked_on": "2026-09-11",
     "acquisitions_none_found": true,
@@ -9298,7 +9298,7 @@
     "buyer_source": "https://www.accela.com/solutions/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Government-exclusive as far as its own site is concerned. The solutions menu is literally segmented by /solutions/city/, /solutions/county/ and /solutions/state/, and neither the homepage nor the solutions page names a private enterprise, utility or contractor as a buyer. Pure SLED - no federal-only caveat needed. Our 'Permitting & Licensing' category matches what the site sells.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. City, county and state government agencies only - 900+ agencies and more than half of the top US cities and counties, with City of McAllen TX, Cabarrus County NC, Manatee County FL"
   },
   {
@@ -9370,7 +9370,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Homepage states it serves \"cities, counties, townships, special districts, school districts, utilities, and state agencies across the United States,\" claims 2,000+ governments and 4,500+ implementations, and names Tucson, Orlando, Minneapolis, San Antonio, Miami, Tampa, Kansas City, San Diego, Boston, LA, Taylor County and others. Every named buyer is public. Note for the board: the site is much broader than our \"Permitting & Licensing\" category - it leads with finance/budgeting, procurement, public works and utilities alongside community development.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government, led by finance (ERP, budgeting, procurement); also public works (asset management), community development (permitting), utilities (utility billing), and some school districts and t",
     "acquisition_note": "Acquired: Cartegraph (operations/asset management; announced 2022, Cox-financed), iGovServices ('Tax & Revenue', May 1, 2024), Ignatius (low-code forms/workflow, Feb 11, 2025). Itself: Cox Enterprises acquired majority ownership, Feb 27, 2024, at a $1.8B valuation.",
     "acquisitions_checked_on": "2026-09-11",
@@ -9607,7 +9607,7 @@
     "buyer_source": "https://www.claritisoftware.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Clean SLED-only vendor. The site tiers its products explicitly by government size - Enterprise for 'large local governments,' Launch for 'small to mid-sized local governments,' CivCheck for 'governments of all sizes' - which is a good example of house rule 2: the word 'Enterprise' here means a big city, not a commercial market. No private-sector buyer is named anywhere. Our 'Permitting & Licensing' category matches the site exactly.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Clariti sells permitting, licensing and land-management software exclusively to local governments, naming the City of Los Angeles, City of Phoenix, Orange County CA, Dona Ana Count"
   },
   {
@@ -9732,7 +9732,7 @@
     "buyer_source": "https://www.govwell.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every named customer is a municipality or county: Clarksville IN, Perinton NY, Nederland TX, Lawrenceburg TN, Collinsville OK, Paradise CA, Hampton GA, Brevard NC, Cold Spring KY, Hutto TX, Black Mountain NC, Macon County NC, Butte-Silver Bow MT, La Porte County IN, North Royalton and Niles OH, Clewiston and Eustis FL, Middlebury CT, Vermillion SD. The site names no state agency and no non-government buyer of any kind, and the posted populations show the focus is small towns and counties. Exact match for our 'Permitting & Licensing' category.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. City, town and county governments - building departments, planning and zoning, licensing and code enforcement staff - mostly in small and mid-sized municipalities."
   },
   {
@@ -9913,7 +9913,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "About as clean a SLED-only record as this board will see. The homepage carries a section headed \"We Serve the Public Sector\" listing exactly those six buyer types, with the line \"From small rural counties to large metropolitan cities, we've got you covered\", and the page title is \"Software & Services for the Public Sector\". Every one of the dozens of product lines is a government function - appraisal and tax, court case management, jail administration, CAD and law-enforcement records, hunting and fishing licensing, school ERP, student transportation. Nothing on the site names a commercial buye",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as Many departments: general government / finance (ERP, cashiering, budgeting), courts and justice (eCourts, digital court recording), police / 911 (CAD, mobile, RMS, jail management), clerks and recorde",
     "acquisition_note": "Serial acquirer. On its own IR site: For The Record (digital court recording, about $212.5M cash, announced Feb 2, 2026, expected to close Q1 2026). Business Wire: CODY Systems (public-safety RMS / COBRAnet, Jul 31, 2026) and Emergency Networking (Jul 28, 2025). Tyler has not itself been acquired; it is a public company (NYSE: TYL, S&P 500).",
     "acquisitions_checked_on": "2026-09-11"
@@ -10374,7 +10374,7 @@
     "buyer_source": "https://www.payitgov.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The cleanest record in this batch. Site's own words: \"PayIt is a customer experience and payments platform for state and local government.\" Named customers are all public - Harris County Tax Assessor-Collector, North Carolina DMV, Minnesota DNR, Missouri Department of Conservation, Arkansas Game and Fish Commission, Guilford County NC, City of Grand Rapids MI, City of Columbia MO, and the Kansas iKan state system. Not one commercial buyer appears anywhere on the page. Matches our Procurement & Payments category exactly.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State and local government agencies only - city and county treasurers, tax assessors and finance directors, state DMVs and conservation/natural-resources departments, court clerks "
   },
   {
@@ -10985,7 +10985,7 @@
     "buyer_source": "https://partner.rec.us/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every named customer is a city, town or special recreation district; the homepage tagline is 'Modern parks & rec departments run on Rec Technologies' and the partner site claims 100+ cities. No private club, YMCA, nonprofit or business is named anywhere I could reach. Two site notes: rec.us/about and rec.us/pricing both 404 - the real company and sales material live at partner.rec.us. Also worth flagging that residents book and pay for classes and court time through the consumer-facing rec.us app, but the paying customer is the agency, so I did not count residents as a non-government buyer. Ou",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Municipal parks and recreation departments and recreation districts - San Francisco Rec and Park, City of Torrance CA, City of Norman OK, Apex Park and Recreation District CO, plus"
   },
   {
@@ -12363,7 +12363,7 @@
     "buyer_source": "https://www.goguardian.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The site is single-market and says so: 'The #1 choice for K-12 web filtering on any OS', 'Supporting 50% of US K-12 students', '2M+ educators'. Named districts include Clark County School District, Chicago Public Schools, NYC Public Schools, Camdenton, Neosho, Chagrin Falls and Lee County Schools \u2014 all public districts. No commercial, higher-ed or consumer buyer is named anywhere on the homepage; a /customers page does not exist (404). One framing caveat for the board: our category is 'School Safety' and GoGuardian does sell student-safety monitoring, but the homepage leads with web filtering ",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts \u2014 district administrators, IT staff and teachers."
   },
   {
@@ -12504,7 +12504,7 @@
     "buyer_source": "https://www.securly.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Homepage and about page both frame the entire business as K-12: \"27,000+ Schools,\" \"20M+ Students supported,\" \"K-12 schools keep their students safe.\" Every named customer is a public school district, which is a public buyer, so sells_outside_government is no. One thing worth flagging rather than hiding: Securly Home is a parent-facing app, and parents are not government. I tried the parents page and the Securly Home product page to see whether parents pay directly and neither states who pays - the product is described as controlling \"your child's school device,\" i.e. reaching parents through ",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts - named district customers include Wichita Public Schools, Elgin School District U-46 (IL), Sheboygan Area School District (WI), Howard-Suamico School Distric"
   },
   {
@@ -12968,7 +12968,7 @@
     "buyer_source": "https://www.powerschool.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Named customers are districts: Boston Public Schools, Columbus City Schools, Cherry Creek, Colorado Springs D11, DeKalb County, Denton ISD, Tomball ISD, Volusia County Schools, plus Epic Charter Schools (charters are public). There is a dedicated Statewide Solutions page (https://www.powerschool.com/statewide-solutions/) for state education agencies. The one non-public buyer type visible is private K-12 - NorthPointe Christian Schools (MI) - which is a minor category next to the district business, so I kept sells_outside_government at \"no.\" Also note it claims 60M+ students across 90 countries",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 education - public school districts and state education agencies, plus charter and private schools."
   },
   {
@@ -13360,7 +13360,7 @@
     "researched": true,
     "buyer": "Transit agencies (fare collection / intelligent transportation division); Cubic's separate Defense unit sells mission systems to defense and intelligence agencies",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (fare collection / intelligent transportation division); Cubic's separate Defense unit sells mission systems to defense and intelligence agencies",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -13507,7 +13507,7 @@
     },
     "buyer": "Transit agencies (bus, rail, paratransit) of all sizes, from 30-vehicle city agencies to 6,000+ vehicle providers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (bus, rail, paratransit) of all sizes, from 30-vehicle city agencies to 6,000+ vehicle providers",
     "acquisition_note": "Clever Devices acquired Digital Recorders (2012), RSM Services Corporation (2015), and M.A.I.O.R., an Italian transit software firm (2017). Clever Devices was itself acquired by Hitachi Rail, with the deal announced April 2026 and closed July 1, 2026 \u2014 confirmed on cleverdevices.com's own news page and homepage (\"Clever Devices, a Hitachi Group Company\").",
     "acquisitions_checked_on": "2026-09-10"
@@ -13661,7 +13661,7 @@
     },
     "buyer": "transit agency / city government (primary \u2014 cities, transit authorities, and paratransit operators are the named customers); also sells to school districts, universities, corporations, and healthcare providers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / city government (primary \u2014 cities, transit authorities, and paratransit operators are the named customers); also sells to school districts, universities, corporations, and healthcare ",
     "acquisition_note": "Acquired Remix in 2021 (announced March 10, 2021) and Citymapper in 2023 (announced March 16, 2023); also announced welcoming the Knode.ai team in August 2026 (framed as an acqui-hire/team addition, not explicitly called an acquisition)",
     "acquisitions_checked_on": "2026-09-10"
@@ -13790,7 +13790,7 @@
     },
     "buyer": "Public transit agencies, cities, and transit operators (also serves workforce-shuttle companies and transportation consultancies, but transit agencies/operators are primary)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies, cities, and transit operators (also serves workforce-shuttle companies and transportation consultancies, but transit agencies/operators are primary)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -13929,7 +13929,7 @@
     },
     "buyer": "Transit agencies (ridership/data analytics customers); Swiftly overall serves 200+ agencies including LA Metro, MBTA, SEPTA, and Sound Transit.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (ridership/data analytics customers); Swiftly overall serves 200+ agencies including LA Metro, MBTA, SEPTA, and Sound Transit.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -13963,7 +13963,7 @@
     "researched": true,
     "buyer": "Transit agencies and operators \u2014 the site cites 200 agencies and operators served globally",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and operators \u2014 the site cites 200 agencies and operators served globally",
     "acquisition_note": "Acquired Passenger Technology Group, announced 2 Feb 2026 (masabi.com/press-releases/); the site also brands the acquired unit as 'Passenger, a Masabi company' elsewhere.",
     "acquisitions_checked_on": "2026-09-10"
@@ -13993,7 +13993,7 @@
     "researched": true,
     "buyer": "Transit agencies (200+ across North America per site, including AC Transit, Metro Transit Minnesota, Miami-Dade Transit, Jacksonville Transportation Authority)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (200+ across North America per site, including AC Transit, Metro Transit Minnesota, Miami-Dade Transit, Jacksonville Transportation Authority)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -14241,7 +14241,7 @@
     "researched": true,
     "buyer": "municipalities and higher-education institutions (general government) primary, also private parking operators \u2014 public sector named first of three customer segments",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities and higher-education institutions (general government) primary, also private parking operators \u2014 public sector named first of three customer segments",
     "acquisition_note": "Acquired Populus (curb/mobility management) \u2014 press release \"IPS Acquires Populus, Expanding Smart Mobility and Transportation Solutions\" dated November 4, 2025 on ipsgroup.com/resources/",
     "acquisitions_checked_on": "2026-09-10"
@@ -14383,7 +14383,7 @@
     "researched": true,
     "buyer": "Municipal governments / city transportation departments \u2014 over 100 city partners named (Chicago, Oakland, Miami, Santa Monica, Hoboken); no commercial buyer is mentioned, so government is the sole stated buyer.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Municipal governments / city transportation departments \u2014 over 100 city partners named (Chicago, Oakland, Miami, Santa Monica, Hoboken); no commercial buyer is mentioned, so government is the sole sta",
     "acquisition_note": "Acquired by IPS Group, Inc. in Nov 2025, per Populus's own blog post: 'Populus has been acquired by IPS Group, Inc., a global leader in smart parking and curb management solutions.' Site states products/services and core teams continue unchanged.",
     "acquisitions_checked_on": "2026-09-10",
@@ -15452,7 +15452,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government / IT (city and county administration); police services also appear among clients. Government-only: every client shown on the homepage is a public agency.",
     "acquisitions_checked_on": "2026-09-11",
     "acquisitions_none_found": true
@@ -17748,7 +17748,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as Schools (K-12 facilities, maintenance, and operations departments); also higher-ed facilities and municipal public works/facilities. Public side is primary: 1,300+ of its roughly 2,600 customers are s",
     "acquisition_note": "No acquisitions either way. Investors: Five Elms Capital (strategic investment, October 2019, on FMX's own blog) and Luminate Capital Partners (strategic growth investment, July 21, 2025, PR Newswire; Five Elms kept a significant stake).",
     "acquisitions_checked_on": "2026-09-11"
@@ -17802,7 +17802,7 @@
     "researched": true,
     "buyer": "Government entities at federal, state, provincial, county, and municipal levels \u2014 parking, mass transit, and parks & recreation agencies \u2014 plus private parking/transit operators; the named product lines (Enforcement, Mass Transit Ticketing, Parks & Recreation Ticketing) point to government as primary.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Government entities at federal, state, provincial, county, and municipal levels \u2014 parking, mass transit, and parks & recreation agencies \u2014 plus private parking/transit operators; the named product lin",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -17947,7 +17947,7 @@
     "buyer_source": "https://www.bsasoftware.com/resources/case-studies/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The homepage headline is ERP software designed for local government and claims 2,100+ organizations. The case studies page confirms it with named customers and nothing else: Big Rapids MI, Northville Township MI, New Buffalo MI, Lowell AR, North Little Rock AR, Streetsboro OH, Brainerd MN, Cape Canaveral FL, Cooper City FL, Gulf Breeze FL, Dahlonega GA, Woodstock GA, Easley SC, Angola IN, Chester NH, Greenfield WI, Overland MO and Cole County MO. Every one is a municipal or county government; no school district and no commercial customer appears. Heavy Michigan concentration, which matches the",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Local governments only \u2014 cities, townships, towns and counties buying financial management, HR, utility billing, community development and assessing/property tax software."
   },
   {
@@ -20730,7 +20730,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as General government (county and city manager's offices, IT) and water districts (utilities). Public sector only; no private-sector line was seen.",
     "acquisitions_checked_on": "2026-09-11",
     "acquisitions_none_found": true,
@@ -25646,7 +25646,7 @@
     "buyer_source": "https://courtinnovations.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Heads-up on the URL in our record: https://getmatterhorn.com now 301-redirects to https://catalisgov.com/matterhorn-LP \u2014 Matterhorn has been absorbed into Catalis, which describes itself as \"modernizing governments across North America.\" The Catalis landing page names no customers at all; the actual named court list lives on courtinnovations.com, which is where I read the answer. Every buyer named on either site is a court or a public agency, so sells_outside_government is \"no\". Our \"Courts & Case Management\" category is correct, and these are state and local courts, not federal.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Courts \u2014 municipal, district, county and state trial courts. The live court list names Pinal County Superior Court (AZ), the Delaware Justice of the Peace Court, Miami-Dade's Eleve"
   },
   {
@@ -27782,7 +27782,7 @@
     "buyer_source": "https://www.wavetronix.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every customer the site actually names is public: Delaware DOT, Montana DOT, City of Lehi, Utah. The applications page describes only agency use cases (adaptive signal control, ramp metering, tolling, FHWA reporting, federal funding) and names no private buyer. One caveat worth a human eye: the news page carries a podcast episode with Avenue Consultants, a private traffic-engineering consultancy \u2014 a guest appearance, not a stated customer, so I did not count it. Traffic consultants plausibly buy these sensors for data collection, but the site never says so. Our 'Streets' category fits.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State transportation departments and city traffic agencies that run highways and signalized intersections."
   },
   {
@@ -28461,7 +28461,7 @@
     "buyer_source": "StormCon Expo run 2026-09-10",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as Primarily local government: floodplain managers, building and permitting departments, code enforcement, and public works/stormwater programs, plus state agencies. The title tag also names 'regulated i",
     "acquisitions_checked_on": "2026-09-11",
     "acquisitions_none_found": true
@@ -29714,7 +29714,7 @@
     "buyer_source": "https://www.versaterm.com/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Its \"Who We Serve\" menu is six industries and all six are public: Law Enforcement, Fire & EMS, ECCs & PSAPs, Crime Labs & Forensic Units, School & Education, Court Systems. Named customers are Glendale Police, Sumner County Sheriff's Office, City of Santa Monica (cloud CAD and RMS) and Charlotte County Sheriff's Office \u2014 city and county government throughout. No private security or commercial buyer appears anywhere I read. The School & Education page (https://www.versaterm.com/industry/school-education/) is about schools partnering with law enforcement on SRO programs rather than districts buy",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public safety agencies \u2014 police and sheriffs, fire and EMS, 911 emergency communications centers and PSAPs, crime labs, court systems, and schools working with school resource offi"
   },
   {
@@ -29875,7 +29875,7 @@
     "buyer_source": "https://nicherms.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every named customer is a police agency. US state-and-local ones include Kansas City Police Department, Springfield (Missouri) PD, Olathe (Kansas) PD, Temple (Texas) PD and Orange County, New York. The bulk of the named base is actually UK and Canadian \u2014 South Yorkshire Police, Durham Constabulary, Warwickshire Police, Hampshire Constabulary, North Wales Police, Merseyside Police, Toronto Police Service, Peel Regional Police, Ontario Provincial Police, Regina Police Service. Those are still public buyers but not US SLED, so the US SLED footprint is a minority of the customer list even though t",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Police forces and law enforcement agencies exclusively \u2014 the site says it serves \"174k+ Sworn officers in over 180 agencies worldwide\" and names municipal, county and national poli"
   },
   {
@@ -35938,7 +35938,7 @@
     "buyer_source": "https://www.benchmarkanalytics.com/state-agencies/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Their state-agencies page names real public buyers: the New Jersey Office of the Attorney General (statewide use-of-force reporting portal), the Colorado Office of the Attorney General and Colorado POST (LMS for roughly 40,000 personnel), the Virginia Department of Criminal Justice Services (LMS for 20,000+), the Florida Department of Corrections, and the UConn Institute for Municipal and Regional Policy covering about 125 agencies. The homepage adds Bloomington Police Department as a case study. Every buyer named anywhere on the site is a state or local public agency - no insurers, risk pools",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State attorneys general, state POST and criminal-justice agencies, municipal police departments, and state corrections departments buying officer personnel management, early-interv"
   },
   {
@@ -37238,7 +37238,7 @@
     "buyer_source": "https://www.acusensus.com/united-states/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Their US page names public agencies and nothing else: \"North Carolina State Highway Patrol engaged Acusensus in a state-wide Commercial Motor Vehicle (CMV) enforcement program,\" a Connecticut \"five-year agreement... to deliver a state-wide automated speed enforcement program,\" and the Arkansas Speed work-zone program with ARDOT. They also say they have deployed \"in 20 states through demonstrations, pilot programs, or contractual engagements.\" Buyers skew state-level (highway patrols and DOTs) with at least one municipal police department; no commercial customer appears anywhere. Good fit for o",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State and local traffic-enforcement agencies - North Carolina State Highway Patrol, Arkansas DOT, the State of Connecticut, South Lake Minnetonka Police Department, plus programs i"
   },
   {
@@ -37477,7 +37477,7 @@
     },
     "buyer": "mixed \u2014 sells to both law-enforcement/government (managing towing programs, per the 'Government' and 'Law Enforcement' customer pages) and private towing/recovery/impound-lot operators; site says it serves '3,000+ towing companies' and ~400,000 impounds/year across North America, so the private towing-company side reads as the larger volume even though government is a named buyer",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 sells to both law-enforcement/government (managing towing programs, per the 'Government' and 'Law Enforcement' customer pages) and private towing/recovery/impound-lot operators; site says it s",
     "acquisition_note": "own /about page states: \"Shaped by a 2024 merger with TRAXERO and other acquisitions, Autura...\" \u2014 names TRAXERO as a predecessor/merger partner in 2024, but does not give Autura's own founding year or name the other acquisitions",
     "acquisitions_checked_on": "2026-09-10"
@@ -37630,7 +37630,7 @@
     "researched": true,
     "buyer": "cities, municipalities, and university systems (police/public works enforcement) primary \u2014 named deployments in Massachusetts, New Jersey, Albuquerque; also serves private lots and marinas",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as cities, municipalities, and university systems (police/public works enforcement) primary \u2014 named deployments in Massachusetts, New Jersey, Albuquerque; also serves private lots and marinas",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -38951,7 +38951,7 @@
     "buyer_source": "https://www.paymentworks.com/resources/case-studies/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every single customer named in their case-study library is a public institution: University of North Carolina-Asheville, University of North Texas, University of Tennessee System, University of Kentucky, Stephen F. Austin University, Johns Hopkins University, an unnamed community college, the City of Vista California, and Cabarrus County, whose study is about recovering from a $2.5M vendor fraud scam. Higher ed dominates and local government is the second seam. One honest caveat behind the 'no': their Who We Serve page is organized by job function - AP, Procurement, Finance, leadership, suppli",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Public universities and university systems above all, plus community colleges, counties and cities - the finance, AP and procurement offices inside them buying vendor onboarding an"
   },
   {
@@ -39428,7 +39428,7 @@
     "buyer_source": "https://concoursetech.com/case-studies",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The case studies confirm it: City of Owosso MI, Rides Mass Transit District IL, Houston-Galveston Area Council, State of Oklahoma OMES, a regional transit authority, a county parks department, an urban school district, a community college, a state treasury, a state judiciary and a state water resources board. Not one private business appears. Note the product footprint is far wider than our 'Procurement & Payments' category - the site lists twelve solution areas including permitting, legislative/public meetings, utility billing, courts and public safety, parks and recreation, grants, and asset",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Concourse Tech sells to public institutions only - its own words are 'State agencies, cities and counties, school districts, colleges and universities, special districts,' and it c"
   },
   {
@@ -46705,7 +46705,7 @@
     },
     "buyer": "Transit agencies \u2014 fixed route, microtransit, paratransit, ferries, and light rail operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 fixed route, microtransit, paratransit, ferries, and light rail operators",
     "acquisition_note": "Part of SPX Corporation \u2014 genfare.com's careers page links to a spx.com Modern Slavery Statement and to careers.spx.com; no acquisition year stated on genfare.com itself.",
     "acquisitions_checked_on": "2026-09-10"
@@ -46735,7 +46735,7 @@
     "researched": true,
     "buyer": "Transit agencies (fare collection division, relevant here); the wider company also sells to railway companies, energy retailers, and parking operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (fare collection division, relevant here); the wider company also sells to railway companies, energy retailers, and parking operators",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -46853,7 +46853,7 @@
     },
     "buyer": "Transit agencies and mobility operators (e.g. Transport for New South Wales, Caltrans, HSL, Transdev, Kinetic, Metro Lisbon)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and mobility operators (e.g. Transport for New South Wales, Caltrans, HSL, Transdev, Kinetic, Metro Lisbon)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -46883,7 +46883,7 @@
     "researched": true,
     "buyer": "Transit agencies, municipalities, and parking/toll authorities (public sector primary); site also mentions merchants as a customer segment",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, municipalities, and parking/toll authorities (public sector primary); site also mentions merchants as a customer segment",
     "acquisition_note": "O-CITY is described on its own site as a platform built on payment technology from parent company BPC; not framed as an acquisition, more a product/brand of BPC",
     "acquisitions_checked_on": "2026-09-10",
@@ -47034,7 +47034,7 @@
     "researched": true,
     "buyer": "transit agency (public transit operators/authorities are the stated customer; no private/commercial buyer is named on the site)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (public transit operators/authorities are the stated customer; no private/commercial buyer is named on the site)",
     "acquisition_note": "Kuba's own About page (kubapay.com/en/company/) states Kuba is 'a proud member of the ICM family' (parent group), but does not name any acquisitions outright, including no mention of 'Unwire' by name anywhere on the site pages checked. Separately, unwire.com (a distinct company covered elsewhere in this batch) now 302-redirects to kubapay.com -- a fact observed directly, not stated on Kuba's own p",
     "acquisitions_checked_on": "2026-09-10",
@@ -47067,7 +47067,7 @@
     "researched": true,
     "buyer": "Transit agencies \u2014 the site cites more than 30 agencies across the USA and Europe",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 the site cites more than 30 agencies across the USA and Europe",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -47097,7 +47097,7 @@
     "researched": true,
     "buyer": "transit agency (their own press page names BART and New York MTA as customers for fare-collection systems; toll authorities and airports are also named as buyers of other product lines)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (their own press page names BART and New York MTA as customers for fare-collection systems; toll authorities and airports are also named as buyers of other product lines)",
     "acquisition_note": "Their own press page (straffic.com/user/movePage/36/view) has a dated release from 2026-08-07 titled (translated) 'STraffic signs contract to acquire LS Electric's railway-signalling business' -- STraffic is the acquirer, not the acquired.",
     "acquisitions_checked_on": "2026-09-10"
@@ -47437,7 +47437,7 @@
     },
     "buyer": "Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include Honolulu, Frankfurt, and National Express); site cites 250,000 vehicles monitored and 140+ ticketing systems deployed worldwide",
     "founded_source": "https://www.initse.com/ende/company/history/",
     "acquisition_note": "Company history page states INIT acquired the MFS 90 planning system from Krupp in 1999. A 2016-era press archive (same site) additionally records: acquisition of 'a leading German provider of sales and customer management systems for public transport' (Sept 2016), a strategic investment in a North American mobile-ticketing provider (Aug 2016), and a planned majority stake in sensor specialist iri",
@@ -47566,7 +47566,7 @@
     },
     "buyer": "public transit agencies (e.g. StanRTA is named as a customer)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies (e.g. StanRTA is named as a customer)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -47693,7 +47693,7 @@
     },
     "buyer": "Transit agencies (bus, rail, on-demand transport) primary, e.g. LA Metro cited as largest HASTUS installation; also sells to postal operators (e.g. An Post) which are often public-sector too",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (bus, rail, on-demand transport) primary, e.g. LA Metro cited as largest HASTUS installation; also sells to postal operators (e.g. An Post) which are often public-sector too",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -47813,7 +47813,7 @@
     },
     "buyer": "Bus and rail transit operators and public transport authorities worldwide (Deutsche Bahn, Trenitalia, DSB, SJ, SBB, plus municipal transit authorities)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Bus and rail transit operators and public transport authorities worldwide (Deutsche Bahn, Trenitalia, DSB, SJ, SBB, plus municipal transit authorities)",
     "acquisition_note": "Acquired TTI AG (2001), which enabled creation of the IVU.suite product",
     "acquisitions_checked_on": "2026-09-10"
@@ -47875,7 +47875,7 @@
     "researched": true,
     "buyer": "transit agency \u2014 case studies name RTC of Washoe County, COTA, DART, PRTC, Greater Cleveland RTA, and Monterey-Salinas Transit",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 case studies name RTC of Washoe County, COTA, DART, PRTC, Greater Cleveland RTA, and Monterey-Salinas Transit",
     "acquisition_note": "own news archive headline states \"Vontas, a Modaxo company, Acquires Orion Labs to Expand Communication Offering\" \u2014 year not given in the headline text captured",
     "acquisitions_checked_on": "2026-09-10"
@@ -48141,7 +48141,7 @@
     },
     "buyer": "Public transit operators/authorities (named customers: Skyss and Kolumbus in Norway, Tide Buss and Din Tur and \u00d6stg\u00f6tatrafiken in Sweden, Unibuss in Oslo, Ventura Bus Lines in Australia, Eletra in Brazil)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit operators/authorities (named customers: Skyss and Kolumbus in Norway, Tide Buss and Din Tur and \u00d6stg\u00f6tatrafiken in Sweden, Unibuss in Oslo, Ventura Bus Lines in Australia, Eletra in Bra",
     "acquisition_note": "Bonnier Capital (Bonnier Group's investment arm) took a strategic ownership stake in Consat Telematics, announced June 1, 2026, per Consat's own newsroom on mynewsdesk.com. Framed by both parties as a strategic partnership rather than a full buyout; Consat states it retains its existing management and operational independence.",
     "acquisitions_checked_on": "2026-09-10"
@@ -48171,7 +48171,7 @@
     "researched": true,
     "buyer": "Transit agencies (e.g. LA Metro/LADOT contract cited on the US site) \u2014 general government transit authorities",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (e.g. LA Metro/LADOT contract cited on the US site) \u2014 general government transit authorities",
     "acquisition_note": "gmv.com footer lists \"Al\u00e9n Space\" and \"Autek Ingenier\u00eda\" as \"Other GMV sites\", suggesting related group companies, but the site does not state these as acquisitions",
     "acquisitions_checked_on": "2026-09-10"
@@ -48413,7 +48413,7 @@
     },
     "buyer": "Public transit agencies, private transit operators, and school boards (school transportation named as a specific service line)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies, private transit operators, and school boards (school transportation named as a specific service line)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -48443,7 +48443,7 @@
     "researched": true,
     "buyer": "transit agency (public transit, university campus bus, and on-demand shuttle operations named)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (public transit, university campus bus, and on-demand shuttle operations named)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -48579,7 +48579,7 @@
     },
     "buyer": "Transit agencies (named customers include LA Metro, Metrolink, LADOT, OCTA, BC Transit, Foothill Transit)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named customers include LA Metro, Metrolink, LADOT, OCTA, BC Transit, Foothill Transit)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -48609,7 +48609,7 @@
     "researched": true,
     "buyer": "Primarily transit agencies, airports, and utilities (e.g., BART, JFK Terminal 4, Aruba Airport); also serves private manufacturing and healthcare clients",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Primarily transit agencies, airports, and utilities (e.g., BART, JFK Terminal 4, Aruba Airport); also serves private manufacturing and healthcare clients",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -48859,7 +48859,7 @@
     "researched": true,
     "buyer": "Rail/transit operators and UK government transport bodies (Network Rail, Department for Transport, LNER, Southeastern named); general government/transit is the primary buyer",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Rail/transit operators and UK government transport bodies (Network Rail, Department for Transport, LNER, Southeastern named); general government/transit is the primary buyer",
     "acquisition_note": "Own site states the company has made \"seventeen successful acquisitions\" since its 2007 IPO, describing itself as \"a naturally acquisitive business\"; individual acquired-company names and years were not present on the pages fetched (tracsis.com/about-tracsis/acquisitions returned a 404 for the specific list)",
     "acquisitions_checked_on": "2026-09-10"
@@ -48889,7 +48889,7 @@
     "researched": true,
     "buyer": "Freight railroads (Class 1/2/3), rail contractors, and maintenance-of-way operations appear to be the primary named customers (Conrail, Herzog, Anacostia Rail Holdings); commuter rail/transit agencies (e.g. Metrolink) are also named buyers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Freight railroads (Class 1/2/3), rail contractors, and maintenance-of-way operations appear to be the primary named customers (Conrail, Herzog, Anacostia Rail Holdings); commuter rail/transit agencies",
     "acquisition_note": "Now one of four rail-tech companies (with ZEDAS, Raspberry Software, Automated Rail) unified under new parent Waynova Group, itself backed by Arcadea Group as permanent-equity owner",
     "acquisitions_checked_on": "2026-09-10"
@@ -48959,7 +48959,7 @@
     "researched": true,
     "buyer": "Transit agencies and freight rail operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and freight rail operators",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -49077,7 +49077,7 @@
     "researched": true,
     "buyer": "Rail transit agencies and railroad operators (onboard train-control and signaling hardware)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Rail transit agencies and railroad operators (onboard train-control and signaling hardware)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49212,7 +49212,7 @@
     },
     "buyer": "Rail, metro, and infrastructure operators (public transit/rail authorities primary, e.g. Tel Aviv NTA Red Line); also markets to freight rail operators which may be private",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Rail, metro, and infrastructure operators (public transit/rail authorities primary, e.g. Tel Aviv NTA Red Line); also markets to freight rail operators which may be private",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49375,7 +49375,7 @@
     "researched": true,
     "buyer": "Transit agencies (recent named contracts: Wisconsin statewide, Pennsylvania) \u2014 appears to sell only to public-sector transit buyers, no commercial-side evidence found",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (recent named contracts: Wisconsin statewide, Pennsylvania) \u2014 appears to sell only to public-sector transit buyers, no commercial-side evidence found",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49405,7 +49405,7 @@
     "researched": true,
     "buyer": "Transit agencies (named contracts: New York City Transit/MTA, City of Quebec LRT, FGC in Spain)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named contracts: New York City Transit/MTA, City of Quebec LRT, FGC in Spain)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49435,7 +49435,7 @@
     "researched": true,
     "buyer": "Airports and transit agencies primarily (Newark Liberty, Denver, JFK, LaGuardia, Memphis International; Metro Transit, Sound Transit, RTD); also sells to hospitals, universities, and real-estate portfolios",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Airports and transit agencies primarily (Newark Liberty, Denver, JFK, LaGuardia, Memphis International; Metro Transit, Sound Transit, RTD); also sells to hospitals, universities, and real-estate portf",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -49558,7 +49558,7 @@
     "researched": true,
     "buyer": "Government and public safety \u2014 sold through NASPO ValuePoint, Sourcewell, and state contracts including North Carolina and Virginia sheriffs' associations, Georgia DOAS, and Mississippi ITS",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Government and public safety \u2014 sold through NASPO ValuePoint, Sourcewell, and state contracts including North Carolina and Virginia sheriffs' associations, Georgia DOAS, and Mississippi ITS",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49588,7 +49588,7 @@
     "researched": true,
     "buyer": "Transit agencies and public transportation operators (bus, rail) managing CCTV, fare collection, and CAD-AVL systems",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and public transportation operators (bus, rail) managing CCTV, fare collection, and CAD-AVL systems",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49618,7 +49618,7 @@
     "researched": true,
     "buyer": "Transit agencies, fire/EMS, police departments, and city DOTs/public works (customers named include MBTA, LA Metro, TRIMET, SEPTA, King County, City of Seattle)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, fire/EMS, police departments, and city DOTs/public works (customers named include MBTA, LA Metro, TRIMET, SEPTA, King County, City of Seattle)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -49823,7 +49823,7 @@
     "researched": true,
     "buyer": "transit agency (Barrie Transit, Brampton Transit, and Niagara Region Transit named as clients)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (Barrie Transit, Brampton Transit, and Niagara Region Transit named as clients)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -49971,7 +49971,7 @@
     },
     "buyer": "schools (school bus safety programs are a named product line); also public transit agencies, paratransit services, universities, and motorcoach operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as schools (school bus safety programs are a named product line); also public transit agencies, paratransit services, universities, and motorcoach operators",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -50122,7 +50122,7 @@
     "researched": true,
     "buyer": "Transit and rail operators worldwide",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit and rail operators worldwide",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -50152,7 +50152,7 @@
     "researched": true,
     "buyer": "Fleet operators broadly \u2014 public safety and school (pupil) transportation are named buyer segments, alongside large commercial delivery fleets (Amazon, UPS, FedEx, USPS) which the site features most prominently",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Fleet operators broadly \u2014 public safety and school (pupil) transportation are named buyer segments, alongside large commercial delivery fleets (Amazon, UPS, FedEx, USPS) which the site features most p",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -50374,7 +50374,7 @@
     },
     "buyer": "School districts (student transportation) primary, based on \"Student Protector\" branding and press releases about school-system contracts; also sells to transit agencies and police departments",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as School districts (student transportation) primary, based on \"Student Protector\" branding and press releases about school-system contracts; also sells to transit agencies and police departments",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -50547,7 +50547,7 @@
     "researched": true,
     "buyer": "Transit agencies and railway operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and railway operators",
     "acquisition_note": "Protran Technology is a division of Harsco Rail, stated on their own About page (\"Protran Technology is a division of Harsco Rail, a global manufacturer and supplier of railway track maintenance and construction equipment\")",
     "acquisitions_checked_on": "2026-09-10"
@@ -50838,7 +50838,7 @@
     "researched": true,
     "buyer": "transit agency (bus, rail) primary, buying real-time passenger info displays; also airports, highways, and event venues",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (bus, rail) primary, buying real-time passenger info displays; also airports, highways, and event venues",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -50955,7 +50955,7 @@
     "researched": true,
     "buyer": "Transit agencies (named clients include Pittsburgh Port Authority, Dallas DART, Alexandria DASH, Cleveland RTA, Richmond GRTC, Seattle King County Metro, Chicago Pace, Portland TriMet, Detroit SMART, San Antonio VIA, and Fort Worth Trinity Metro).",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (named clients include Pittsburgh Port Authority, Dallas DART, Alexandria DASH, Cleveland RTA, Richmond GRTC, Seattle King County Metro, Chicago Pace, Portland TriMet, Detroit SMART, ",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -50985,7 +50985,7 @@
     "researched": true,
     "buyer": "transit agency \u2014 municipal bus systems, plus university, airport, and hospital/healthcare shuttle operators",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 municipal bus systems, plus university, airport, and hospital/healthcare shuttle operators",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -51092,7 +51092,7 @@
     "researched": true,
     "buyer": "Transit agencies and operators (bus and rail) are primary \u2014 site claims \"3,000+ Agencies and Operators Using Luminator Globally\" and names Capital Metro; the company also sells aircraft lighting to aerospace/military customers through its Luminator Aerospace division, a secondary line.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and operators (bus and rail) are primary \u2014 site claims \"3,000+ Agencies and Operators Using Luminator Globally\" and names Capital Metro; the company also sells aircraft lighting to ae",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51233,7 +51233,7 @@
     },
     "buyer": "Transit agencies and departments of transportation buy passenger-information and rail/bus displays and variable message signs; the same company also sells advertising, sports-venue, and industrial display systems commercially, but transit/government appears to be a primary named sector alongside those.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and departments of transportation buy passenger-information and rail/bus displays and variable message signs; the same company also sells advertising, sports-venue, and industrial dis",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51263,7 +51263,7 @@
     "researched": true,
     "buyer": "Public transport operators (bus and rail); site claims customers in over 80 countries without naming specific US agencies.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport operators (bus and rail); site claims customers in over 80 countries without naming specific US agencies.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51626,7 +51626,7 @@
     },
     "buyer": "Public transport operators and city/national rail authorities (named clients: MTA, Deutsche Bahn, RATP Smart Systems, SBB, GVB, JR East, Translink) \u2014 transit agencies are the primary buyer.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport operators and city/national rail authorities (named clients: MTA, Deutsche Bahn, RATP Smart Systems, SBB, GVB, JR East, Translink) \u2014 transit agencies are the primary buyer.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51768,7 +51768,7 @@
     },
     "buyer": "Municipalities, transit agencies, and city officials; company describes itself as enabling public transit agencies and cities to access data services linked to infrastructure. Deployments named in Quebec (Canada), New Jersey (USA), and Barcelona (Europe).",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Municipalities, transit agencies, and city officials; company describes itself as enabling public transit agencies and cities to access data services linked to infrastructure. Deployments named in Que",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51798,7 +51798,7 @@
     "researched": true,
     "buyer": "transit agency",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -51933,7 +51933,7 @@
     },
     "buyer": "Transit agencies \u2014 named customers include MBTA, LA Metro, CapMetro, PSTA, and Votran",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies \u2014 named customers include MBTA, LA Metro, CapMetro, PSTA, and Votran",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -51973,7 +51973,7 @@
     "researched": true,
     "buyer": "transit agencies and municipalities (customers named on site include Houston METRO, SEPTA, RTC Las Vegas, MARTA, Kansas City)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agencies and municipalities (customers named on site include Houston METRO, SEPTA, RTC Las Vegas, MARTA, Kansas City)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -52092,7 +52092,7 @@
     "researched": true,
     "buyer": "transit agencies and counties (named partners include Virginia Commonwealth University, city of Winona MN, Fairfield County OH, Arrowhead Transit MN); also licenses routing tech to Zoox",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agencies and counties (named partners include Virginia Commonwealth University, city of Winona MN, Fairfield County OH, Arrowhead Transit MN); also licenses routing tech to Zoox",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -52122,7 +52122,7 @@
     "researched": true,
     "buyer": "transit agency / paratransit programs (e.g. GRTC, Metro Mobility, METROLift are named customers); also serves health plans and nonprofits",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / paratransit programs (e.g. GRTC, Metro Mobility, METROLift are named customers); also serves health plans and nonprofits",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -52152,7 +52152,7 @@
     "researched": true,
     "buyer": "Statewide agencies, regional transit authorities, transportation brokerages, and nonprofit/private transit providers; general government/transit is primary buyer per site's own list",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Statewide agencies, regional transit authorities, transportation brokerages, and nonprofit/private transit providers; general government/transit is primary buyer per site's own list",
     "acquisition_note": "HBSS acquired TranWare (fleet management technology firm founded by Steve Furniss); year not stated",
     "acquisitions_checked_on": "2026-09-10"
@@ -52182,7 +52182,7 @@
     "researched": true,
     "buyer": "transit agency / paratransit and NEMT operators (public and private transportation companies), per itcurves.net/about-us description of client base",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / paratransit and NEMT operators (public and private transportation companies), per itcurves.net/about-us description of client base",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -52212,7 +52212,7 @@
     "researched": true,
     "buyer": "public transit agencies, community transport services, and mobility providers per site's own description",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies, community transport services, and mobility providers per site's own description",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -52471,7 +52471,7 @@
     },
     "buyer": "Public transit operators and municipalities primary; also campuses and airports",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit operators and municipalities primary; also campuses and airports",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -52566,7 +52566,7 @@
     "researched": true,
     "buyer": "primarily private/individual riders and healthcare (PACE) programs, with paratransit partnerships (e.g. King County Metro, SamTrans) as a secondary public-sector channel",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as primarily private/individual riders and healthcare (PACE) programs, with paratransit partnerships (e.g. King County Metro, SamTrans) as a secondary public-sector channel",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -52667,7 +52667,7 @@
     "researched": true,
     "buyer": "Transit agencies and city departments of transportation \u2014 named clients include DC Department of Transportation, Madera Metro, City of Fresno, and a Transit Tech Lab partnership with MTA NYCT and LIRR.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and city departments of transportation \u2014 named clients include DC Department of Transportation, Madera Metro, City of Fresno, and a Transit Tech Lab partnership with MTA NYCT and LIRR",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -54071,7 +54071,7 @@
     },
     "buyer": "mixed \u2014 transit agencies (BVG Berlin, Transport for London, Trafikverket) are named customers for voice announcements, but accessibility device makers (AssistiveWare, Tobii Dynavox) and customer-service platforms (Genesys) are also major buyers; transit is not clearly the primary market",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 transit agencies (BVG Berlin, Transport for London, Trafikverket) are named customers for voice announcements, but accessibility device makers (AssistiveWare, Tobii Dynavox) and customer-servi",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -54289,7 +54289,7 @@
     ],
     "buyer": "mixed \u2014 government/public administration ('Smart PA') and transportation/rail are named sectors, alongside banking, telecom, energy, and other private clients; no single primary buyer is evident from the site",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 government/public administration ('Smart PA') and transportation/rail are named sectors, alongside banking, telecom, energy, and other private clients; no single primary buyer is evident from ",
     "acquisition_note": "Site references a takeover bid ('OPA') on Almawave S.p.A., described as part of the Almaviva Group; no year given and relationship (subsidiary vs. acquisition target) is not spelled out",
     "acquisitions_checked_on": "2026-09-10"
@@ -54626,7 +54626,7 @@
     },
     "buyer": "parking operators and city/government decision-makers are named first on the homepage, alongside public-transport operators, fleet managers/businesses, and automakers \u2014 public-sector side (parking authorities, city planning) reads as primary given the ordering and emphasis on their own page",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as parking operators and city/government decision-makers are named first on the homepage, alongside public-transport operators, fleet managers/businesses, and automakers \u2014 public-sector side (parking aut",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -54656,7 +54656,7 @@
     "researched": false,
     "buyer": "mixed \u2014 banks and fintechs appear to be the primary customer base; government bodies and transit agencies (Noida Metro, Sacramento Light Rail Transit) are named as public-sector buyers of related products",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as mixed \u2014 banks and fintechs appear to be the primary customer base; government bodies and transit agencies (Noida Metro, Sacramento Light Rail Transit) are named as public-sector buyers of related prod",
     "acquisition_note": "Integro Technologies named as an Aurionpro subsidiary; no acquisition year or further detail given on the page checked",
     "acquisitions_checked_on": "2026-09-10"
@@ -55059,7 +55059,7 @@
     ],
     "buyer": "Owner-operators including cities/government, transportation, energy, and water agencies, plus private engineering/construction firms and academic institutions; public sector is one of several named buyer segments, not stated as primary",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Owner-operators including cities/government, transportation, energy, and water agencies, plus private engineering/construction firms and academic institutions; public sector is one of several named bu",
     "acquisition_note": "About-us page lists Cesium, Cohesive, and Seequent as 'our businesses' (subsidiaries), implying prior acquisitions, but does not state acquisition years.",
     "acquisitions_checked_on": "2026-09-10"
@@ -56788,7 +56788,7 @@
     },
     "buyer": "Public transit agencies (named customers include TARTA/Toledo Area Regional Transit Authority, High Valley Transit, and Indiana University's shuttle system)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (named customers include TARTA/Toledo Area Regional Transit Authority, High Valley Transit, and Indiana University's shuttle system)",
     "founded_source": "https://etatransit.com/company/ (states ETA Transit was established in 2003)",
     "acquisitions_checked_on": "2026-09-10",
@@ -57538,7 +57538,7 @@
     "researched": false,
     "buyer": "Public transit agencies (site states '90+ Transit Agencies' and '50,000+ Vehicles' served); product of S & A Systems, Inc.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transit agencies (site states '90+ Transit Agencies' and '50,000+ Vehicles' served); product of S & A Systems, Inc.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -58256,7 +58256,7 @@
     "buyer_source": "https://www.govworx.ai/solutions/ecc-pre-hire-training-and-qa",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every named customer is public: O'Fallon (MO) Police Department in a case study, Marshall County (IA) Communications in a testimonial, and homepage logos for Monterey County CA, San Mateo County, Boulder County, Santa Cruz Regional 9-1-1 and Somerset County 911. The site names no private or commercial buyer at all. One correction to our record: our category is Police, but the site's own segments are 9-1-1/ECC Professionals first, then Law Enforcement, Fire/EMS and Education Professionals - the dispatcher training and QA product (CommsCoach) looks like the primary line, so Police alone understa",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. 9-1-1 and emergency communications centers, law enforcement agencies, and fire/EMS agencies - named customers are county and city public safety agencies."
   },
   {
@@ -58528,7 +58528,7 @@
     "researched": false,
     "buyer": "General government (IBM maintains a dedicated government-industry practice covering cloud, AI, cybersecurity, and citizen-experience tools); government is one of many industry verticals IBM sells into, alongside a much larger private-enterprise business \u2014 not stated as primary",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as General government (IBM maintains a dedicated government-industry practice covering cloud, AI, cybersecurity, and citizen-experience tools); government is one of many industry verticals IBM sells into",
     "acquisition_note": "A September 9, 2026 newsroom item ('LTM Collaborates with IBM and Red Hat on Lightwell...') refers to Red Hat as an IBM-affiliated entity, consistent with IBM's known acquisition of Red Hat, but this page does not itself state an acquisition.",
     "acquisitions_checked_on": "2026-09-10"
@@ -58858,7 +58858,7 @@
     ],
     "buyer": "Government and transportation authorities (ports, airports, railways) and defense forces across 140+ countries, per site's own framing; also serves healthcare systems",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Government and transportation authorities (ports, airports, railways) and defense forces across 140+ countries, per site's own framing; also serves healthcare systems",
     "acquisition_note": "Homepage references 'Minsait' and 'IndraMind' as Indra business divisions/brands; Minsait is widely known as Indra's digital-transformation subsidiary but this was not framed as an explicit acquisition on the pages read.",
     "acquisitions_checked_on": "2026-09-10"
@@ -63357,7 +63357,7 @@
     "researched": false,
     "buyer": "Government and critical-infrastructure operators \u2014 airports, seaports, border security, military bases, and utility companies; holds a GSA contract (47QTCA21D009V), which suggests public-sector sales are primary over any private/commercial use",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Government and critical-infrastructure operators \u2014 airports, seaports, border security, military bases, and utility companies; holds a GSA contract (47QTCA21D009V), which suggests public-sector sales ",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -74998,7 +74998,7 @@
     },
     "buyer": "General government / public works (municipal fleets, police departments); also sells commercially to private transportation and insurance markets \u2014 public-sector page names VDOT, Miami Police Dept, and Mecklenburg County as customers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as General government / public works (municipal fleets, police departments); also sells commercially to private transportation and insurance markets \u2014 public-sector page names VDOT, Miami Police Dept, an",
     "acquisition_note": "Serial acquirer: Gardiner Group (1999), Vytek Corp (2003), Dataradio (2006), Aercept/AirIQ (2007), Wireless Matrix (2012), Crashboxx (2015), LoJack Corporation (2016), LoJack licensees Car Track/Tracker (2019), Synovia Solutions (2019, school-bus/transit tracking). CalAmp later divested LoJack's US stolen-vehicle-recovery business to Spireon (2021) and filed for Chapter 11 in 2024.",
     "acquisitions_checked_on": "2026-09-10"
@@ -75044,7 +75044,7 @@
     "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Ron-Turley-Associates-Inc', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule.",
     "buyer": "Public-sector fleets \u2014 government agencies, transit authorities, and K-12/higher-ed fleets; the site claims 750+ public-sector fleet customers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public-sector fleets \u2014 government agencies, transit authorities, and K-12/higher-ed fleets; the site claims 750+ public-sector fleet customers",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -75278,7 +75278,7 @@
     },
     "buyer": "Utilities and general government fleets (DC Water, Hydro Ottawa, Anglian Water, Severn Trent Water named as customers) alongside commercial and construction fleets \u2014 public utilities appear to be a named vertical, not the sole buyer",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Utilities and general government fleets (DC Water, Hydro Ottawa, Anglian Water, Severn Trent Water named as customers) alongside commercial and construction fleets \u2014 public utilities appear to be a na",
     "acquisition_note": "Chevin's own site names no parent, but its careers/job board is hosted on Volaris Group's Workday tenant (volarisgroup.wd3.myworkdayjobs.com), indicating Chevin is a Volaris Group (Constellation Software) portfolio company.",
     "acquisitions_checked_on": "2026-09-10"
@@ -75627,7 +75627,7 @@
     "source": "competitor sweep",
     "buyer": "Utilities and municipal government fleets are the named clients (American Electric Power, PSEG, City of Columbus, Xcel Energy, Southern Company); one private client (Purolator) is also named, but public-sector/utility fleets appear primary based on the client list shown",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Utilities and municipal government fleets are the named clients (American Electric Power, PSEG, City of Columbus, Xcel Energy, Southern Company); one private client (Purolator) is also named, but publ",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -76093,7 +76093,7 @@
     },
     "buyer": "transit agency \u2014 named customers on their own site include Cambridge, Beijing Metro, Bangkok's Skytrain, and Dallas Area Rapid Transit (DART); site says deployments in over 200 cities/regions",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency \u2014 named customers on their own site include Cambridge, Beijing Metro, Bangkok's Skytrain, and Dallas Area Rapid Transit (DART); site says deployments in over 200 cities/regions",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -76123,7 +76123,7 @@
     "source": "competitor sweep",
     "buyer": "public transit agencies (e.g. Hampton Roads Transit, York Region Transit, King County Metro, CapMetro named as customers)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as public transit agencies (e.g. Hampton Roads Transit, York Region Transit, King County Metro, CapMetro named as customers)",
     "acquisition_note": "Bytemark is stated on its own site to be \"a Siemens Company\" (meta description) within Siemens Mobility, with footer copyright reading \"Siemens Mobility Inc.\"; no acquisition year is given on the site itself",
     "acquisitions_checked_on": "2026-09-10"
@@ -76209,7 +76209,7 @@
     "source": "competitor sweep",
     "buyer": "Cities, municipalities, and parking authorities (on-street/off-street parking) plus transit agencies (fare collection, ticketing, MaaS); public sector is primary based on named customers (e.g. City of Rochester NY, University of Arkansas)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Cities, municipalities, and parking authorities (on-street/off-street parking) plus transit agencies (fare collection, ticketing, MaaS); public sector is primary based on named customers (e.g. City of",
     "acquisition_note": "Acquired by EasyPark Group; acquisition closed January 15, 2025, with the combined company now operating as \"Arrive\"",
     "acquisitions_checked_on": "2026-09-10"
@@ -76349,7 +76349,7 @@
     },
     "buyer": "Parking authorities and city general government",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities and city general government",
     "acquisition_note": "CivicSmart was formed in 2015 when it acquired Duncan Parking Technologies, consolidating the US parking-meter business of Duncan Solutions (itself a 2005 merger of Duncan Parking Technologies, Enforcement Technology, Reino International, and Professional Account Management). Duncan Parking Technologies now operates as a wholly-owned subsidiary of CivicSmart.",
     "acquisitions_checked_on": "2026-09-10"
@@ -76500,7 +76500,7 @@
     },
     "buyer": "Parking authorities and city governments are the operator/paying side of the platform (drivers use the app free); the site also serves businesses/fleets, but municipal parking operators are primary",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities and city governments are the operator/paying side of the platform (drivers use the app free); the site also serves businesses/fleets, but municipal parking operators are primary",
     "acquisition_note": "Own press page states a transition \"post the transition from Corpay\" to new ownership by Lightyear Capital, confirming Corpay was a prior parent; no year given",
     "acquisitions_checked_on": "2026-09-10"
@@ -76530,7 +76530,7 @@
     "source": "competitor sweep",
     "buyer": "Cities and municipalities, parking authorities/operators, universities and colleges, and police departments \u2014 general government/parking authority is primary",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Cities and municipalities, parking authorities/operators, universities and colleges, and police departments \u2014 general government/parking authority is primary",
     "acquisition_note": "gtechna's own about page does not mention Harris Computer or Constellation Software, but the Workday job-board URL (harriscomputer.wd3.myworkdayjobs.com/gtechna) indicates it operates under Harris Computer, a Constellation Software subsidiary",
     "acquisitions_checked_on": "2026-09-10",
@@ -76659,7 +76659,7 @@
     "source": "competitor sweep",
     "buyer": "Parking authorities, municipalities, and airports on the government/public side; also ski resorts, stadiums, and entertainment venues commercially",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Parking authorities, municipalities, and airports on the government/public side; also ski resorts, stadiums, and entertainment venues commercially",
     "acquisition_note": "Acquired by ASSA ABLOY Group (2024); previously became part of the Kudelski Group in 2001",
     "acquisitions_checked_on": "2026-09-10",
@@ -80534,7 +80534,7 @@
     "buyer_source": "https://simpligov.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Purely public-sector. Positions itself as 'The platform government programs run on'. Solutions are organized by government function on both the constituent side (vehicle & transportation, licensing & permitting, health & human services, public safety & justice) and the internal side (HR, procurement & finance, legal & compliance, IT & administration). No commercial customer, industry or use case appears anywhere on the homepage. Our 'Citizen Services' category fits, though the internal-operations half (HR, procurement) is just as prominent as citizen-facing services.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State and local government agencies only \u2014 State of California, State of New Jersey, City of San Jose, City of Cupertino, Guilford County NC, and the California Community Colleges "
   },
   {
@@ -81497,7 +81497,7 @@
     "buyer_source": "https://iworq.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Local government only, and says so plainly: 'Local Government Software Solutions' and 'Management Software Built for Community Development & Public Works Departments'. Reinforced by '100% U.S. Owned & Operated' and hosting on AWS GovCloud. No private-sector buyer named anywhere. Our 'Citizen Services' category is defensible but the product is really departmental operations software for public works and community development (permits, code enforcement, asset management) rather than a resident-facing portal.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Cities and counties \u2014 specifically community development and public works departments; North Ogden, UT is the one named client."
   },
   {
@@ -83067,7 +83067,7 @@
     "buyer_source": "https://authorium.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Public-sector only; no commercial buyer named. Describes itself as 'A single platform to transform documents and data into operational value and connect the flow of public funds across mission-critical government functions', and says roughly 60% of its staff have worked in government. FINDING: our category 'HR & Workforce' looks wrong. The site's named functions are procurement, contract lifecycle management, budget requests, grants management and legislative analysis \u2014 that is procurement/contracting and grants, not HR. Worth re-categorizing. Also note the federal U.S. Air Force work sits out",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Government agencies \u2014 state and local first (CalPERS is the named customer), plus federal work with the U.S. Air Force."
   },
   {
@@ -89462,7 +89462,7 @@
     "buyer_source": "https://www.linq.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Entirely K-12 public education. Mission line on the homepage is 'Feed every kid. Pay every teacher. Use every dollar.' Buyer personas are named by district role: nutrition leaders, finance and business operations leaders, HR leaders, superintendents, technology directors. Product lines are school nutrition, K-12 ERP ('budgets, payroll, and more with tools built for the way K-12 districts actually work') and payments. No non-education buyer appears. Our 'Operations & SIS' category is close but slightly off: LINQ is nutrition + ERP + payments, not a student information system.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts first \u2014 Culver City, Eagle County, Hernando, Mesa, Willard, St. Vrain Valley School District CO \u2014 plus state education agencies."
   },
   {
@@ -89779,7 +89779,7 @@
     "buyer_source": "https://everdriven.com/school-districts/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The site says 800+ school districts across 38 states and names Chicago Public Schools, Houston ISD, Plano ISD, Cypress-Fairbanks ISD, Burbank Unified, Los Gatos Union, Seaford, Gilbert Public Schools, Chandler Unified, Wichita Public Schools, Appleton Area and Capistrano Unified. Every named customer is a public district or a charter school, which is why I answered 'no' to selling outside government. One thing for a person to weigh: the page states plainly that it serves 'Public school districts, Private schools, Charter schools, and Magnet schools', so private K-12 schools are a stated buyer ",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts arranging alternative student transportation - special education students with IEPs and 504 plans, students in foster care and McKinney-Vento homeless student"
   },
   {
@@ -91135,7 +91135,7 @@
     "buyer_source": "https://www.classlink.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Education only. Homepage claims '3,000+ School Systems', '25M+ Students & Staff', '50 States', '42 Countries' and says the products are 'built for education'. Beyond K-12 the site carries a higher-ed overview naming colleges and community colleges and a statewide solution plus a StateLink product for state education agencies \u2014 all still public/institutional buyers under the SLED definition, so nothing here counts as an outside-government market. Our 'Operations & SIS' category fits loosely; the actual product is identity, single sign-on and rostering rather than a student information system.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school systems first (Rowan-Salisbury Schools, Collierville ISD, Harwood Unified Union SD, South Heart Schools), plus colleges and community colleges (Cedar Crest College, Lar"
   },
   {
@@ -97392,7 +97392,7 @@
     "buyer_source": "https://acentra.com/clients-and-testimonials/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Cleanest case in this batch. Every named client is a government agency: Washington State Health Care Authority, West Virginia DoHS, Utah DHHS, Oregon Health Authority, Michigan DHHS, Alabama Medicaid Agency, Wyoming Department of Health, Arizona AHCCCS, Hawaii Med-QUEST. The company describes itself as built 'to deliver maximum value and impact to government healthcare programs'. No commercial health plan, insurer or private employer appears anywhere. Note the mix: they also contract with CMS, which is federal and therefore not SLED, but the state Medicaid work is the dominant and clearly-stat",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. State health and Medicaid agencies, plus the federal Centers for Medicare & Medicaid Services."
   },
   {
@@ -101364,7 +101364,7 @@
     "source": "competitor sweep",
     "buyer": "Transit agencies in North America, paratransit operators, and government transportation organizations",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies in North America, paratransit operators, and government transportation organizations",
     "acquisition_note": "Trapeze Group operates as a subsidiary of Modaxo Inc. (\"a Modaxo company\"); footer copyright reads \"\u00a9 2026 Modaxo Inc., its subsidiaries and affiliates\"",
     "acquisitions_checked_on": "2026-09-10"
@@ -101521,7 +101521,7 @@
     },
     "buyer": "Tolling agencies and mobility/transportation operators managing free-flow toll roads",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Tolling agencies and mobility/transportation operators managing free-flow toll roads",
     "acquisition_note": "Part of Abertis Mobility Services / Abertis Group \u2014 parent relationship referenced in Emovis's own news content ('Abertis Senior Leadership Visits Emovis Miami Headquarters'); no acquisition year stated.",
     "acquisitions_checked_on": "2026-09-10"
@@ -101551,7 +101551,7 @@
     "source": "competitor sweep",
     "buyer": "Public transport agencies and operators (the app is offered to riders on behalf of the transit operator that contracts FAIRTIQ)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport agencies and operators (the app is offered to riders on behalf of the transit operator that contracts FAIRTIQ)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -101681,7 +101681,7 @@
     },
     "buyer": "Public transport authorities and operators; site also mentions school transport as a use case",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Public transport authorities and operators; site also mentions school transport as a use case",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -101955,7 +101955,7 @@
     "buyer_source": "https://www.lightspeedsystems.com/trusted-by-largest-districts/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Correction to my own field: sells_to_gov should read yes - school districts are public buyers under the house rules. (Please read sells_to_gov as yes; see the buyer sentence and evidence.) Named districts include Chicago Public Schools, LAUSD, Miami-Dade, Houston ISD, Fairfax County, Denver, Virginia Beach, Fort Worth ISD, Northside ISD and Caddo Parish. Not one private company, library or non-education buyer appears. Two things a person should know: the customer base is K-12 only, no higher ed or general government, and it is international - the site claims 31,000 schools in 43 countries and ",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts and schools - the site's named customers are all public school districts, including 28 of the 50 largest US districts."
   },
   {
@@ -106285,7 +106285,7 @@
     "buyer_source": "https://recidiviz.org",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Every buyer named on the site is a state department of corrections; the site describes itself as a nonprofit that 'partners with criminal justice agencies,' so 'sells' is a loose fit but the buyer relationship is unambiguous and entirely state government. No commercial, private-prison or vendor customer appears anywhere on the homepage. Our 'Corrections' category is accurate. The platform is pitched as working 'alongside or in place of your current software,' i.e. it sits next to incumbent DOC case management systems.",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Recidiviz is a nonprofit that partners with state criminal justice agencies - its homepage names the Michigan, Colorado, North Dakota and Maine departments of corrections and claim"
   },
   {
@@ -108813,7 +108813,7 @@
     "source": "competitor sweep",
     "buyer": "Municipalities, universities, hospitals, and downtown authorities across the US and Canada \u2014 public-sector buyers are named exclusively alongside private parking operators.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Municipalities, universities, hospitals, and downtown authorities across the US and Canada \u2014 public-sector buyers are named exclusively alongside private parking operators.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -109068,7 +109068,7 @@
     },
     "buyer": "municipalities/cities (general government) \u2014 named customers Dublin OH, Marysville OH, St. Charles MO",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities/cities (general government) \u2014 named customers Dublin OH, Marysville OH, St. Charles MO",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -109200,7 +109200,7 @@
     },
     "buyer": "municipalities and university campuses (general government / higher ed) primary, also private organizations \u2014 named customers Arlington County VA and City of Delray Beach FL",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as municipalities and university campuses (general government / higher ed) primary, also private organizations \u2014 named customers Arlington County VA and City of Delray Beach FL",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -109295,7 +109295,7 @@
     "source": "competitor sweep",
     "buyer": "cities, counties, universities, and colleges (general government) \u2014 site states 450+ clients across the US",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as cities, counties, universities, and colleges (general government) \u2014 site states 450+ clients across the US",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -109325,7 +109325,7 @@
     "source": "competitor sweep",
     "buyer": "Municipal governments and universities running parking, traffic, and code enforcement citation programs, per client testimonials on the homepage.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Municipal governments and universities running parking, traffic, and code enforcement citation programs, per client testimonials on the homepage.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -109355,7 +109355,7 @@
     "source": "competitor sweep",
     "buyer": "cities/municipalities (general government / parking authority) \u2014 named clients Athens OH, White Plains NY, Thousand Oaks CA",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as cities/municipalities (general government / parking authority) \u2014 named clients Athens OH, White Plains NY, Thousand Oaks CA",
     "acquisition_note": "Homepage header states \"Learn about Passport's acquisition of Complus (CDI)\" \u2014 Passport acquired Complus Data Innovations; year not given on the page",
     "acquisitions_checked_on": "2026-09-10"
@@ -109479,7 +109479,7 @@
     },
     "buyer": "general government / higher education \u2014 named customers on the homepage include the City of Spokane, City of Las Vegas, College Park, University of Maryland, University of North Texas, and University of Colorado Boulder; site says '300+ clients' in the US and Canada",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as general government / higher education \u2014 named customers on the homepage include the City of Spokane, City of Las Vegas, College Park, University of Maryland, University of North Texas, and University ",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -113249,7 +113249,7 @@
     "buyer_source": "StormCon Expo run 2026-09-10",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "StormCon Expo run 2026-09-10: buyer stated as Municipal sewer, wastewater, and stormwater utilities (every customer named on the site is a public utility or city). Sells hardware, software (PRISM, SLiiCER), and monitoring-as-a-service.",
     "acquisition_note": "Part of IDEX Corporation: the own-site careers page says 'ADS within IDEX Corporation', and idexcorp.com redirects to adsenv.com. IDEX acquired ADS LLC in 2008 (announced Nov 2007, closed Jan 2008, ~$156\u2013160M) per a third-party acquisition history. The about page also mentions ACCUSONIC, relationship unexplained.",
     "acquisitions_checked_on": "2026-09-11"
@@ -120132,7 +120132,7 @@
     },
     "buyer": "transit agency (paratransit/NEMT/microtransit operators); primary buyer is public transit agencies, per solutions pages naming transit agencies and mobility providers",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (paratransit/NEMT/microtransit operators); primary buyer is public transit agencies, per solutions pages naming transit agencies and mobility providers",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120186,7 +120186,7 @@
     "source": "competitor sweep",
     "buyer": "Transit agencies, including urban, rural, and Indigenous community transit services, per their own on-demand-transit and public-transit product pages.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies, including urban, rural, and Indigenous community transit services, per their own on-demand-transit and public-transit product pages.",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120324,7 +120324,7 @@
     },
     "buyer": "Transit authorities and municipal transportation providers (over 70 communities, primarily Canada and the US)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit authorities and municipal transportation providers (over 70 communities, primarily Canada and the US)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120508,7 +120508,7 @@
     "source": "competitor sweep",
     "buyer": "public works / transportation department (municipal governments contract Freebee to run free shuttle service in their city, per multiple city .gov pages, e.g. Miami Beach, Delray Beach); also sells advertising/sponsorship to local businesses as a secondary revenue stream",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as public works / transportation department (municipal governments contract Freebee to run free shuttle service in their city, per multiple city .gov pages, e.g. Miami Beach, Delray Beach); also sells ad",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120538,7 +120538,7 @@
     "source": "competitor sweep",
     "buyer": "Transit agencies and municipal utilities/transport authorities (e.g. Stadtwerke M\u00fcnster, MVG Munich); also NEMT and Middle East shuttle deployments",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies and municipal utilities/transport authorities (e.g. Stadtwerke M\u00fcnster, MVG Munich); also NEMT and Middle East shuttle deployments",
     "acquisition_note": "Acquired by Swvl Inc. in 2022 (deal announced March 24, 2022, closed Q2 2022)",
     "acquisitions_checked_on": "2026-09-10"
@@ -120730,7 +120730,7 @@
     "source": "competitor sweep",
     "buyer": "Transit agencies (e.g. Maryland Transit Administration, LA Dept of Transportation, Harris County) and Area Agencies on Aging/senior centers; general government and non-profit human-services buyers are primary, per their own case studies.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies (e.g. Maryland Transit Administration, LA Dept of Transportation, Harris County) and Area Agencies on Aging/senior centers; general government and non-profit human-services buyers are",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120760,7 +120760,7 @@
     "source": "competitor sweep",
     "buyer": "transit agency / city DOT / airport authority (named deployments include Atlanta, Contra Costa County, San Jose Airport, and Newark Liberty International Airport)",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency / city DOT / airport authority (named deployments include Atlanta, Contra Costa County, San Jose Airport, and Newark Liberty International Airport)",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true
@@ -120958,7 +120958,7 @@
     "source": "competitor sweep",
     "buyer": "Cities/transit programs for passenger shuttle deployments and airports/ports/industrial operators for cargo tractors (Charlatte Autonom line) \u2014 a mixed public/private customer base, with recent news skewing toward airport and industrial cargo clients.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Cities/transit programs for passenger shuttle deployments and airports/ports/industrial operators for cargo tractors (Charlatte Autonom line) \u2014 a mixed public/private customer base, with recent news s",
     "acquisition_note": "navya.tech/about-us names Macnica and NTT WEST, Inc. (Japan) as major shareholders, and the site's own news feed covers an NTT West investment in \"GAUSSIN MACNICA MOBILITY.\" External sources (Gaussin press release, sustainable-bus.com \u2014 not opened as primary evidence here beyond the search snippet) describe Navya undergoing a 2023 insolvency/asset sale to Gaussin and Macnica, but navya.tech itself",
     "acquisitions_checked_on": "2026-09-10",
@@ -121310,7 +121310,7 @@
     "source": "competitor sweep",
     "buyer": "Primarily industrial businesses (ports, airports, manufacturing, solar-farm monitoring) per their own site's stated customer description; also involved in government-linked projects such as a Dubai Future Foundation joint venture and public-road AV shuttle trials in Northern Ireland, so a public-sector side exists but industrial/commercial appears primary.",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Primarily industrial businesses (ports, airports, manufacturing, solar-farm monitoring) per their own site's stated customer description; also involved in government-linked projects such as a Dubai Fu",
     "acquisitions_checked_on": "2026-09-10",
     "acquisitions_none_found": true,
@@ -127123,7 +127123,7 @@
     "buyer_source": "https://www.vgsi.com/testimonials/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The testimonials page is a wall of public buyers and nothing else: City of Chesapeake, Albemarle County, Prince George County and Gloucester County VA; Towns of Auburn, Kingston, Millis, Norwell, Winthrop and Leominster MA; Camden, Ellsworth and Windham ME; Lake County Property Appraiser, Pasco, Sumter and Taylor County FL; Norwalk, Bristol, Windsor and Coventry CT; five Rhode Island towns; Huntingdon, Warren and Crawford County PA; Bedford and Berlin NH; Hartford VT; West Baton Rouge Parish Assessor; and the District of Columbia. Not one private company appears. The homepage itself is thin on",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Municipal and county assessing and property-appraisal offices - towns, cities, counties and parish/property appraisers - buy their CAMA mass-appraisal and assessment software."
   },
   {
@@ -127290,7 +127290,7 @@
     "buyer_source": "https://www.devnetinc.com/about/testimonials/",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "A government-only vendor. Their Edge platform page says \"One solution to serve government\" and describes opening records to \"the public, local offices, outside agencies and partner organizations.\" Every named customer across the homepage and testimonials page is a county office or a city assessor, and the product line - CAMA and assessment administration, tax billing and collection, records management, permitting and zoning, tax bill printing and mailing - only makes sense for a county courthouse. No commercial buyer appears anywhere. Mild category note: we file them under Finance & ERP, which",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. County government offices and municipal assessors - named customers are McLean County IL IT, Piatt County IL Clerk and Recorder, Bond County IL Clerk and Recorder, Morgan County IL"
   },
   {
@@ -137764,7 +137764,7 @@
     "buyer_source": "https://bibliu.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Named customers are all educational institutions: Jackson College, Johnston Community College, Iowa Western, South Texas College, Florida SouthWestern State College, New Jersey City University, UT Rio Grande Valley, Grand Canyon University, plus Socorro ISD and Ysleta ISD for dual credit, and UK institutions (Cambridge, Coventry). Under the house rules those are all public buyers. Two things for the board: the institution is the buyer (course-materials / inclusive-access programs), not students directly, and our \"IT & Administration\" category undersells it - this is a higher-ed courseware and ",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Higher education institutions - universities, community colleges and academic libraries - plus school districts running dual-credit programs."
   },
   {
@@ -140799,7 +140799,7 @@
     "buyer_source": "https://www.aais.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The homepage is wall-to-wall named higher-ed customers with no other kind of buyer anywhere: Mohawk Valley Community College, Northwest Missouri State University, South Louisiana Community College, Western Kentucky University, Tarrant County College, Bossier Parish Community College, Northeast Lakeview College, University of Southern Mississippi, Chattanooga State Community College, Texas A&M-Corpus Christi, Montgomery College, Lamar University, San Jose State, University of Houston, Tidewater Community College, Collin College and more. Nearly all are public institutions, and under the board's",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Colleges and universities only - community colleges, state universities and technical colleges buying academic scheduling and course-demand analytics."
   },
   {
@@ -144924,7 +144924,7 @@
     "buyer_source": "https://www.k16solutions.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The named customer wall is entirely colleges and universities: UCLA, UC Riverside, San Diego State, Texas Tech, University at Buffalo, UMass Amherst, Boise State, Collin College, Monroe Community College, Kean University, Arkansas State, Southern University System, University of Louisiana System, Seton Hall, USC, University of Tampa, Meharry Medical College. Under the house rule that universities and colleges are public buyers whether public or private, that makes sells_outside_government \"no\" \u2014 but the reasoning is worth stating rather than hiding, because several of those (USC, Seton Hall, U",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Higher education institutions \u2014 universities, colleges, community colleges and multi-campus university systems, sold to campus IT leadership that owns the LMS and the data layer."
   },
   {
@@ -146815,7 +146815,7 @@
     "buyer_source": "Gov IT & Cyber run 2026-09-11",
     "buyer_checked_on": "2026-09-11",
     "sells_to_gov": "yes",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "Gov IT & Cyber run 2026-09-11: buyer stated as County government IT / information security offices (general government); homepage also addresses 'U.S. Critical Infrastructure Leaders'. Public sector appears primary: every named program and custome",
     "acquisitions_checked_on": "2026-09-11",
     "acquisitions_none_found": true
@@ -156064,7 +156064,7 @@
     "buyer_source": "https://www.stellic.com",
     "buyer_checked_on": "2026-09-11",
     "scope_note": "Customer logos and success stories are entirely higher education: public institutions include Florida State, University of Virginia, The Ohio State University, Indiana University, University of Nebraska, University of Utah, Santa Monica College and Johnson County Community College; private ones include Carnegie Mellon, Cornell, Duke, Johns Hopkins, Columbia, Wesleyan, Quinnipiac, TCU, Case Western and Colorado College. Under the house rule that colleges and universities are public buyers whether public or private, that makes sells_outside_government a no. Some customers are foreign (UNSW Sydne",
-    "sled_only": true,
+    "sled_only": false,
     "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. Colleges and universities \u2014 registrars, provosts, advisors and CIOs at large public universities, community colleges, R1 research institutions and small private colleges."
   },
   {

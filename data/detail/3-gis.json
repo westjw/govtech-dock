@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "What's new in the 3-GIS | Web Lio 2 release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.3-gis.com/blog/whats-new-in-3-gis-web-lio-2"
+  },
+  {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What\u2019s new in the 3-GIS Utilities 5.6 release",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-07-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Inside our week at the 2026 Esri UC",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-07-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Centillion Solutions, an Osmose Company, and 3-GIS partner to unlock more advanced network management for telecom operators",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-05-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Telecom industry pulse: May 2026 recap",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-05-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What network operators are weighing after Fiber Connect 2026",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-05-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First deep dive into Esri\u2019s Telecom Domain Network \u2013 Rotterdam, April 8\u201310",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-05-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What\u2019s new in the Lio 1 release of 3-GIS | Web",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-05-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Our key takeaways from Esri IMGIS International 2026",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-04-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Employee spotlight: Seth Straayer",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.3-gis.com/blog/exploring-trace-capabilities-for-the-telecom-domain-network"
-  },
-  {
-   "date": "2026-04-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Telecom industry pulse: March 2026 recap",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.3-gis.com/blog/telecom-industry-pulse-march-2026-recap"
   }
  ],
  "profile": {

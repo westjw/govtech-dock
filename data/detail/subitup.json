@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-07",
+   "headline": "Switching From WhenToWork: The 2026 Guide for Municipal & Campus Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.subitup.com/blog/switching-from-whentowork-the-2026-guide-for-municipal-campus-teams"
+  },
+  {
    "date": "2026-04-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blog.subitup.com/blog/simplify-workforce-management-with-siu-timeclock-integration"
-  },
-  {
-   "date": "2024-09-19",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "How Effective Employee Scheduling Will Increase Employee Performance And Job Satisfaction Within Higher Education Departments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.subitup.com/blog/how-effective-employee-scheduling-will-increase-employee-performance-and-job-satisfaction-within-higher-education-departments"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "Government Software Use Cases: How Local Governments Are Improving Everyday Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/government-software-use-cases/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-07",
+   "headline": "4 Ways Back-Office Government Technology Improves Public Service Delivery Outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://eunasolutions.com/resources/how-back-office-technology-improves-public-services/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "Funding",
    "url": "https://eunasolutions.com/resources/2026-state-public-budgeting-webinar/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How to Evaluate Government Financial Software: Integration and Implementation Questions to Ask for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://eunasolutions.com/resources/how-to-evaluate-government-financial-software-integration/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Euna Solutions Announces Winners of 2026 Euna Impact Awards",
-   "kind": "contract",
-   "kind_rule": "Awards",
-   "url": "https://eunasolutions.com/resources/euna-solutions-announces-winners-of-2026-euna-impact-awards/"
   }
  ],
  "profile": {
