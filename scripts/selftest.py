@@ -8408,6 +8408,83 @@ def check_a_gate_review_only_covers_what_it_saw() -> int:
     return errors
 
 
+def check_white_logos_stay_visible() -> int:
+    """A white logo gets a dark plate; a logo that shows nothing gives way.
+
+    19 logos are white on transparent and drew as an empty white box on the
+    white plate every tile and company page puts behind a logo (Axon's page
+    among them); five more drew nothing at all. index.html's lightMark()
+    looks at the image once it loads. Node has no canvas, so this runs the
+    REAL function, cut from index.html, against a fake one fed crafted
+    pixels - and checks both pages wire it up, from the one copy.
+    """
+    import subprocess
+    errors = 0
+    src = (ROOT / "index.html").read_text()
+    if "/*lightMark:start*/" not in src or "/*lightMark:end*/" not in src:
+        return fail("index.html lost lightMark() or its markers; build_site cuts "
+                    "the company page's copy from between them")
+    fn = src[src.index("/*lightMark:start*/"):src.index("/*lightMark:end*/")]
+    if src.count('onload="lightMark(this)"') < 2:
+        errors += fail("the app's logo images (tileHTML and logoImg) no longer run "
+                       "lightMark; a white logo is an empty box again")
+    for where, css in (("index.html", src),
+                       ("the company page CSS", (ROOT / "scripts" / "build_site.py").read_text())):
+        if "img.ondark{background:#1F2536}" not in css.replace(" ", ""):
+            errors += fail(f"{where} has no dark plate for .ondark")
+    if not shutil.which("node"):
+        print("  note: node is not installed; lightMark was not driven")
+        return errors
+    script = r"""
+const N = 32;
+function px(kind) {
+  const d = new Uint8ClampedArray(N * N * 4);
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const i = (y * N + x) * 4, mark = x > 8 && x < 24 && y > 8 && y < 24;
+    let p = [0, 0, 0, 0];
+    if (kind === "whiteMark" && mark) p = [255, 255, 255, 255];
+    if (kind === "blankSquare") p = [255, 255, 255, 255];
+    if (kind === "empty") p = [0, 0, 0, 0];
+    if (kind === "colour" && mark) p = [200, 40, 40, 255];
+    if (kind === "opaqueOnWhite") p = mark && x < 12 ? [20, 20, 20, 255] : [255, 255, 255, 255];
+    d.set(p, i);
+  }
+  return d;
+}
+let current = "colour";
+const document = { createElement: () => ({ getContext: () => ({
+  drawImage() {}, getImageData: () => ({ data: px(current) }) }) }) };
+eval(FN);
+const out = {};
+for (const [kind, url] of [["whiteMark", "a.png"], ["blankSquare", "b.png"], ["empty", "c.ico"],
+                           ["empty", "d.svg"], ["colour", "e.png"], ["opaqueOnWhite", "f.png"]]) {
+  current = kind;
+  const cls = new Set(); let removed = false;
+  const img = { src: "assets/logos/" + url, currentSrc: "", classList: { add: c => cls.add(c) },
+                remove() { removed = true; } };
+  lightMark(img);
+  out[kind + ":" + url] = removed ? "removed" : (cls.has("ondark") ? "ondark" : "plain");
+}
+console.log(JSON.stringify(out));
+""".replace("FN", json.dumps(fn))
+    r = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=30)
+    if r.returncode != 0:
+        return errors + fail(f"lightMark threw under node: {r.stderr.strip()[:300]}")
+    got = json.loads(r.stdout.strip().splitlines()[-1])
+    want = {"whiteMark:a.png": "ondark", "blankSquare:b.png": "removed",
+            "empty:c.ico": "removed", "empty:d.svg": "plain",
+            "colour:e.png": "plain", "opaqueOnWhite:f.png": "plain"}
+    for k, v in want.items():
+        if got.get(k) != v:
+            errors += fail(f"lightMark on {k} gave {got.get(k)!r}, expected {v!r}")
+    # AND THE COMPANY PAGE CARRIES THE SAME FUNCTION, from the one copy
+    import build_site
+    page = build_site._lightmark_script()
+    if fn not in page or ".coid .logo img" not in page:
+        errors += fail("the company page's lightMark is not index.html's")
+    return errors
+
+
 def check_the_repo_keeps_no_job_ads() -> int:
     """The description cache, captures and journal hold pay excerpts, never ads.
 
@@ -29553,6 +29630,7 @@ def main() -> int:
     errors += check_nothing_derives_sled_only()
     errors += check_the_repo_keeps_no_job_ads()
     errors += check_no_listing_is_a_non_job()
+    errors += check_white_logos_stay_visible()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

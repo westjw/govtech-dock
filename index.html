@@ -1304,6 +1304,8 @@
   .tile,.cotile{position:relative;overflow:hidden}
   .tile img,.cotile img{position:absolute;inset:0;width:100%;height:100%;
     object-fit:contain;background:#fff;padding:3px}
+  /* a white mark gets the dark plate it was drawn for - see lightMark() */
+  .tile img.ondark,.cotile img.ondark,.coid .logo img.ondark{background:#1F2536}
   .row .tile{width:36px;height:36px;display:flex;align-items:center;
     justify-content:center;font-size:13px;font-weight:700;flex:none}
   .row .main{flex:1;min-width:0}
@@ -2641,7 +2643,7 @@ function tileHTML(name, cid, cls){
      each a 42px square from our own origin over one connection. */
   return `<div class="${cls}" style="background:${bg};color:${fg}">${esc(initials(name))}`
     + (src?`<img src="${esc(src)}" alt="" decoding="async"
-        onerror="this.remove()">`:"")
+        onload="lightMark(this)" onerror="this.remove()">`:"")
     + `</div>`;
 }
 /* The company page header is not a .tile - it keeps its own square and its
@@ -2651,8 +2653,40 @@ function tileHTML(name, cid, cls){
 function logoImg(cid){
   const ext=D.logos&&D.logos[cid];
   return ext?`<img src="assets/logos/${esc(cid)}.${esc(ext)}" alt=""
-    decoding="async" onerror="this.remove()">`:"";
+    decoding="async" onload="lightMark(this)" onerror="this.remove()">`:"";
 }
+/*lightMark:start*/
+/* A WHITE MARK ON A WHITE PLATE. 19 of the 1,916 logos are white on
+   transparent - drawn for a dark header - and showed as an empty white box
+   (Axon's company page among them); five more drew nothing at all (three
+   empty icons, two blank white squares). The file is ours, same origin, so
+   the page can look: drawn at 32px, a mark with under a tenth of its ink
+   visible on white and most of it visible on dark gets the dark plate, and a
+   raster that shows nothing on either is dropped so the initials stand.
+   Never drops an SVG: an unsized SVG can draw as nothing in some browsers.
+   Measured on all 1,916 (2026-10-08): 21 get the plate, 5 are dropped, and
+   the nearest logo left alone shows 12% of its ink on white. */
+function lightMark(img){
+  try{
+    const n=32,c=document.createElement("canvas");c.width=c.height=n;
+    const x=c.getContext("2d",{willReadFrequently:true});
+    x.drawImage(img,0,0,n,n);
+    const d=x.getImageData(0,0,n,n).data;
+    let ink=0,onLight=0,onDark=0;
+    for(let i=0;i<d.length;i+=4){
+      const a=d[i+3]/255;if(a<.25)continue;ink++;
+      const l=.2126*d[i]+.7152*d[i+1]+.0722*d[i+2];
+      if(255-(l*a+255*(1-a))>25)onLight++;
+      if(Math.abs(l*a+37*(1-a)-37)>25)onDark++;
+    }
+    const svg=/\.svg(\?|$)/i.test(img.currentSrc||img.src||"");
+    const blank=!ink||(ink>.95*n*n&&onLight<.005*n*n);
+    if(blank){if(!svg)img.remove();return;}
+    // an opaque logo brings its own ground; a plate would only frame it
+    if(ink<.95*n*n&&onLight<.1*ink&&onDark>.5*ink)img.classList.add("ondark");
+  }catch(e){/* a logo we cannot read is drawn as it is */}
+}
+/*lightMark:end*/
 function tile(name){let h=0;for(const c of name||"")h=(h*31+c.charCodeAt(0))|0;
   return TILE[Math.abs(h)%TILE.length];}
 function initials(name){const w=(name||"").replace(/[^A-Za-z ]/g," ").trim().split(/\s+/);

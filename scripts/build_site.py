@@ -1073,6 +1073,7 @@ COPAGE_CSS = """
  .coid{display:flex;gap:16px;align-items:flex-start;padding:2px 0 18px}
  .coid .logo{width:56px;height:56px;flex:none;display:grid;place-items:center;font:800 22px/1 var(--font-heading);background:#E8F1F7;color:#1F2536;position:relative;overflow:hidden}
  .coid .logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px}
+ .coid .logo img.ondark{background:#1F2536}
  .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
  .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);font-variant-numeric:tabular-nums}
  .cometa .sep{padding:0 8px;color:var(--c-rule)}
@@ -1966,8 +1967,27 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     meta = " ".join(x for x in (first or desc, f"{line}." if line else "") if x)
     title = (f"{o['name']} is hiring · {brand['name']}" if line
              else f"{o['name']} · {brand['name']}")
+    if logo_img:
+        body += _lightmark_script()
     return _page(title, meta, f"{site}/c/{cid}", body, brand, "companies",
                  css=COPAGE_CSS, wrap=False)
+
+
+def _lightmark_script() -> str:
+    """index.html's lightMark(), run over this page's logo once it loads.
+
+    THE ONE COPY LIVES IN index.html, between its /*lightMark:start*/ and
+    /*lightMark:end*/ markers, and is cut out here rather than written twice:
+    a white logo on the company page's white plate was an empty box (Axon's,
+    among ten), the same defect the app's tiles had. Run at the end of the
+    page, so the image may already be loaded - complete, or wait for it."""
+    src = (ROOT / "index.html").read_text()
+    fn = src[src.index("/*lightMark:start*/"):src.index("/*lightMark:end*/")]
+    return ("<script>" + fn
+            + 'document.querySelectorAll(".coid .logo img").forEach(function(i){'
+            + 'if(i.complete&&i.naturalWidth)lightMark(i);'
+            + 'else i.addEventListener("load",function(){lightMark(i)})});'
+            + "</script>")
 
 
 def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
