@@ -18091,6 +18091,62 @@ def check_alerts_page_cannot_be_framed() -> int:
     return bad
 
 
+def check_watchdog_sees_a_failed_deploy() -> int:
+    """A Cloudflare build that failed must open the watchdog issue.
+
+    Everything else the watchdog reads is data/ in the repo, so a failed
+    deploy left an old site live behind a good board, and GitHub emails
+    nobody about a failed check from an app (launch audit, 2026-10-06).
+    deploy_faults() asks for the newest "Cloudflare Pages" check run on
+    main; driven here against a fake GitHub, case by case.
+    """
+    import datetime as _dt
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import watchdog
+    errors = 0
+    now = _dt.datetime(2026, 10, 8, 15, 0, tzinfo=_dt.timezone.utc)
+    env = {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "o/r"}
+
+    def gh(runs_by_sha):
+        def fetch(path):
+            if "/commits?" in path:
+                return [{"sha": sha * 7} for sha in runs_by_sha]
+            sha = path.split("/commits/")[1][:1]
+            return {"check_runs": runs_by_sha[sha]}
+        return fetch
+    ok = {"status": "completed", "conclusion": "success", "started_at": "2026-10-08T10:00:00Z"}
+    failed = {"status": "completed", "conclusion": "failure", "started_at": "2026-10-08T11:00:00Z",
+              "completed_at": "2026-10-08T11:04:00Z"}
+    young = {"status": "in_progress", "started_at": "2026-10-08T14:50:00Z"}
+    stuck = {"status": "in_progress", "started_at": "2026-10-08T11:00:00Z"}
+    cases = [
+        ("the newest deploy succeeded", {"a": [ok]}, []),
+        ("the newest deploy failed", {"a": [failed], "b": [ok]}, [True]),
+        ("a build ten minutes in, the one before fine", {"a": [young], "b": [ok]}, []),
+        ("a build ten minutes in, the one before failed", {"a": [young], "b": [failed]}, [True]),
+        ("a build stuck for four hours", {"a": [stuck], "b": [ok]}, [True]),
+        ("a commit Pages skipped, the one before failed", {"a": [], "b": [failed]}, [True]),
+        ("no Pages result anywhere", {"a": [], "b": []}, [False]),
+    ]
+    for label, runs, want in cases:
+        got = [hard for _, _, hard in watchdog.deploy_faults(env=env, fetch=gh(runs), now=now)]
+        if got != want:
+            errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
+
+    def boom(path):
+        raise OSError("api down")
+    got = watchdog.deploy_faults(env=env, fetch=boom, now=now)
+    if [h for _, _, h in got] != [False]:
+        errors += fail(f"a GitHub API failure is not a soft note: {got}")
+    if watchdog.deploy_faults(env={}, fetch=boom, now=now):
+        errors += fail("deploy_faults asked GitHub outside Actions, with no token")
+    wf = (ROOT / ".github/workflows/watchdog.yml").read_text()
+    if "checks: read" not in wf or "GITHUB_TOKEN: ${{ github.token }}" not in wf:
+        errors += fail("watchdog.yml does not give the check step a token that can "
+                       "read check runs, so the deploy question is never asked")
+    return errors
+
+
 def check_watchdog_is_independent() -> int:
     """The watchdog must not depend on the thing it watches.
 
@@ -29447,6 +29503,7 @@ def main() -> int:
     errors += check_sitemap_offers_the_job_pages()
     errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
+    errors += check_watchdog_sees_a_failed_deploy()
     errors += check_queue_history_is_append_only()
     errors += check_capture_flags_nav_without_dropping_sellers()
     errors += check_worklist_leads_with_evidence()

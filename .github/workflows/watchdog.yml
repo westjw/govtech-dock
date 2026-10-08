@@ -23,6 +23,9 @@ on:
 permissions:
   contents: read
   issues: write
+  # to read the "Cloudflare Pages" check run on main's commits: did the last
+  # deploy actually go out (scripts/watchdog.py deploy_faults)
+  checks: read
 
 
 jobs:
@@ -41,6 +44,8 @@ jobs:
       - name: Check the board
         id: check
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set +e
           python scripts/watchdog.py > /tmp/watchdog.txt 2>&1

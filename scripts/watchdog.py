@@ -29,6 +29,10 @@ WHAT IT CHECKS, and each one is a way this has actually gone wrong or could:
   - coverage has not collapsed. If `structured` halves overnight, something
     broke in discovery rather than 140 companies deleting their job boards.
   - meta.json's dates agree with the history directory.
+  - the last deploy went out. Everything above reads data/ in the repo, so a
+    Cloudflare build that failed left an old site live with a good board
+    sitting unpublished - and GitHub emails nobody about a failed check from
+    an app (launch audit, 2026-10-06). See deploy_faults().
 
 It asserts nothing about whether the numbers are GOOD. A quiet week is a quiet
 week. It only reports the shapes that mean the machinery stopped.
@@ -38,8 +42,10 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import pathlib
 import sys
+import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -54,6 +60,88 @@ STALE_DAYS = 2
 # about 3%; 40% is far outside anything a market does and well inside what a
 # broken fetcher does.
 CLIFF = 0.40
+
+
+# The check run Cloudflare Pages posts on every commit it builds.
+DEPLOY_CHECK = "Cloudflare Pages"
+# A build normally takes a few minutes. One still running after this is stuck.
+DEPLOY_GRACE = dt.timedelta(hours=2)
+# How far back to look for the newest commit Pages has answered for.
+DEPLOY_LOOKBACK = 10
+
+
+def _github(token: str):
+    def fetch(path: str):
+        req = urllib.request.Request(
+            "https://api.github.com" + path,
+            headers={"Authorization": f"Bearer {token}",
+                     "Accept": "application/vnd.github+json",
+                     "User-Agent": "govtech-dock-watchdog"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read())
+    return fetch
+
+
+def _when(stamp: str | None) -> dt.datetime | None:
+    try:
+        return dt.datetime.fromisoformat((stamp or "").replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def deploy_faults(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]:
+    """Did the newest deploy Cloudflare Pages attempted actually go out?
+
+    Walks main's newest commits for the newest one carrying a Cloudflare
+    Pages check run. Success is fine. Failed, cancelled or timed out is a
+    HARD fault: the site is serving an older build than the repo holds, and
+    the staleness banner will not say so for two days. Still running past
+    DEPLOY_GRACE is hard too. Still running inside it is a build in
+    progress, so the commit before it is judged instead.
+
+    Only in GitHub Actions (GITHUB_TOKEN and GITHUB_REPOSITORY set); a
+    local run has nothing to ask. A failed question - the API down, a token
+    without `checks: read` - is SOFT: a watchdog that opens an issue because
+    GitHub hiccuped is a watchdog people learn to ignore.
+    """
+    env = os.environ if env is None else env
+    token, repo = env.get("GITHUB_TOKEN"), env.get("GITHUB_REPOSITORY")
+    if not token or not repo:
+        return []
+    fetch = fetch or _github(token)
+    now = now or dt.datetime.now(dt.timezone.utc)
+    try:
+        commits = fetch(f"/repos/{repo}/commits?sha=main&per_page={DEPLOY_LOOKBACK}")
+        for c in commits:
+            sha = c["sha"]
+            runs = fetch(f"/repos/{repo}/commits/{sha}/check-runs"
+                         f"?check_name={urllib.request.quote(DEPLOY_CHECK)}")
+            runs = sorted(runs.get("check_runs") or [],
+                          key=lambda r: r.get("started_at") or "", reverse=True)
+            if not runs:
+                continue
+            run = runs[0]
+            if run.get("status") != "completed":
+                started = _when(run.get("started_at"))
+                if started and now - started > DEPLOY_GRACE:
+                    return [(f"the deploy of {sha[:7]} has been running since "
+                             f"{run.get('started_at')}",
+                             "a Pages build takes minutes; this one is stuck, and "
+                             "the site is still serving the build before it", True)]
+                continue
+            if run.get("conclusion") == "success":
+                return []
+            return [(f"the last deploy failed ({run.get('conclusion')}) on {sha[:7]}",
+                     f"Cloudflare Pages did not publish main as of "
+                     f"{run.get('completed_at')}, so the public site is an older "
+                     f"build than the repo holds. {run.get('html_url') or ''}".strip(),
+                     True)]
+        return [(f"no Cloudflare Pages result on the last {DEPLOY_LOOKBACK} commits",
+                 "either builds are being skipped or the Pages app stopped "
+                 "reporting to GitHub", False)]
+    except Exception as e:                       # noqa: BLE001 - see docstring
+        return [("could not ask GitHub whether the last deploy went out",
+                 f"{type(e).__name__}: {e}", False)]
 
 
 def load(p: pathlib.Path, default=None):
@@ -134,6 +222,8 @@ def check() -> list[dict]:
             f"but the newest snapshot is {snaps[-1]} - the run recorded "
             f"itself and did not leave the data behind", hard=False)
 
+    for what, why, hard in deploy_faults():
+        bad(what, why, hard)
     return out
 
 
