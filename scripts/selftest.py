@@ -8532,6 +8532,16 @@ def check_every_view_has_a_heading_and_a_way_past_the_header() -> int:
     first = _re.search(r"<(a|button|input|select|textarea)\b[^>]*>", body)
     if not first or 'class="skip"' not in first.group(0) or 'href="#view"' not in first.group(0):
         errors += fail("the first control on the page is not the skip link to #view")
+    # THE SKIP LINK MUST NOT NAVIGATE: a fragment navigation fires popstate and
+    # the router re-read the tab, sending the reader to Home (third review)
+    if not _re.search(r'querySelector\("\.skip"\)\?\.addEventListener\("click",e=>\{\s*'
+                      r'e\.preventDefault\(\)', src):
+        errors += fail("the skip link navigates to #view instead of moving focus, and "
+                       "the router answers that by redrawing Home")
+    for state in ("Role no longer listed", "Conferences", "The job list did not load",
+                  "This view failed to draw"):
+        if f'<h1 class="vh">{state}</h1>' not in src:
+            errors += fail(f"the {state!r} state draws with no h1")
     if 'id="view" tabindex="-1"' not in src:
         errors += fail("#view cannot take focus, so the skip link scrolls but "
                        "the next Tab starts back in the header")
@@ -8599,6 +8609,36 @@ def check_news_labels_make_no_false_claims() -> int:
     if not items or items[0].get("kind") != "press":
         errors += fail(f"news_for_board kept a stored label the rules no longer give: {items}")
     return errors
+
+
+def check_the_page_works_without_javascript() -> int:
+    """The shipped index.html carries a real page for a reader without JS.
+
+    build_site.write_noscript injects it by finding #view's markup. It
+    matched an exact string, so when #view gained tabindex="-1" for the skip
+    link the fallback silently stopped shipping and nothing checked for it
+    (third review, 2026-10-08). This reads the built page.
+    """
+    import tempfile
+    import build_site
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="selftest-noscript-"))
+    try:
+        shutil.copy2(ROOT / "index.html", tmp / "index.html")
+        # it links the state pages that were built beside it
+        (tmp / "s").mkdir()
+        (tmp / "s" / "tx.html").write_text("<!doctype html>")
+        build_site.write_noscript(tmp, json.loads((DATA / "board.json").read_text()),
+                                  json.loads((DATA / "brand.json").read_text()))
+        page = (tmp / "index.html").read_text()
+    except SystemExit as e:
+        return fail(f"write_noscript stopped the build: {e}")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    m = re.search(r"<noscript>(.*?)</noscript>", page, re.S)
+    if not m or 'href="/s/' not in m.group(1) or "<h1" not in m.group(1):
+        return fail("the built index.html has no no-JavaScript page (a heading and the "
+                    "state-page links); with scripts off the site is two empty divs")
+    return 0
 
 
 def check_the_repo_keeps_no_job_ads() -> int:
@@ -18228,10 +18268,12 @@ def check_watchdog_sees_a_failed_deploy() -> int:
     now = _dt.datetime(2026, 10, 8, 15, 0, tzinfo=_dt.timezone.utc)
     env = {"GITHUB_TOKEN": "t", "GITHUB_REPOSITORY": "o/r"}
 
-    def gh(runs_by_sha):
+    def gh(runs_by_sha, tip_pushed="2026-10-08T14:58:00Z"):
         def fetch(path):
             if "/commits?" in path:
-                return [{"sha": sha * 7} for sha in runs_by_sha]
+                return [{"sha": sha * 7, "commit": {"committer": {
+                            "date": tip_pushed if i == 0 else "2026-10-08T09:00:00Z"}}}
+                        for i, sha in enumerate(runs_by_sha)]
             sha = path.split("/commits/")[1][:1]
             return {"check_runs": runs_by_sha[sha]}
         return fetch
@@ -18247,12 +18289,20 @@ def check_watchdog_sees_a_failed_deploy() -> int:
         ("a build ten minutes in, the one before failed", {"a": [young], "b": [failed]}, [True]),
         ("a build stuck for four hours", {"a": [stuck], "b": [ok]}, [True]),
         ("a commit Pages skipped, the one before failed", {"a": [], "b": [failed]}, [True]),
-        ("no Pages result anywhere", {"a": [], "b": []}, [False]),
+        ("a just-pushed tip not built yet, the one before fine", {"a": [], "b": [ok]}, []),
+        ("no Pages result anywhere, tip just pushed", {"a": [], "b": []}, [False]),
     ]
     for label, runs, want in cases:
         got = [hard for _, _, hard in watchdog.deploy_faults(env=env, fetch=gh(runs), now=now)]
         if got != want:
             errors += fail(f"watchdog on '{label}': faults {got}, expected {want}")
+    # main's tip pushed hours ago with no Pages build at all: Pages stopped
+    # picking main up, and an older success must not read as a live site
+    got = [hard for _, _, hard in watchdog.deploy_faults(
+        env=env, fetch=gh({"a": [], "b": [ok]}, tip_pushed="2026-10-08T09:30:00Z"), now=now)]
+    if got != [True]:
+        errors += fail(f"watchdog on 'an unbuilt tip pushed hours ago': faults {got}, "
+                       f"expected [True]")
 
     def boom(path):
         raise OSError("api down")
@@ -18262,6 +18312,9 @@ def check_watchdog_sees_a_failed_deploy() -> int:
     if watchdog.deploy_faults(env={}, fetch=boom, now=now):
         errors += fail("deploy_faults asked GitHub outside Actions, with no token")
     wf = (ROOT / ".github/workflows/watchdog.yml").read_text()
+    if 'grep -q "could not ask GitHub" /tmp/watchdog.txt' not in wf:
+        errors += fail("the watchdog can close an open issue on a night it could not "
+                       "ask whether the deploy went out")
     if "checks: read" not in wf or "GITHUB_TOKEN: ${{ github.token }}" not in wf:
         errors += fail("watchdog.yml does not give the check step a token that can "
                        "read check runs, so the deploy question is never asked")
@@ -29273,6 +29326,7 @@ def main() -> int:
                       # names the US only to exclude it (second review, 2026-10-08)
                       ("Remote (Outside of United States)", False),
                       ("Remote - non-US", False), ("Remote, US", True),
+                      ("Remote (Outside the U.S.)", False), ("Remote, non-U.S.", False),
                       ("2 Locations", None)]:
         got = _roles.is_us(loc, "Account Executive")
         if got != want:
@@ -29870,6 +29924,7 @@ def main() -> int:
     errors += check_white_logos_stay_visible()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
+    errors += check_the_page_works_without_javascript()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

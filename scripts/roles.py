@@ -295,8 +295,12 @@ NON_US = re.compile(
 # A location that names the US only to exclude it. "Remote (Outside of United
 # States)" read as a US posting on its country name, and went to Google as a
 # remote job open to US applicants (second review, 2026-10-08).
+# "U.S." sits outside the trailing \b for the same reason as in US_HINT below:
+# no word boundary follows a period, so "Outside the U.S." never matched
+# (third review, 2026-10-08).
 NOT_US = re.compile(r"\b(outside|excluding|except)\s+(of\s+)?(the\s+)?"
-                    r"(US|U\.S\.|USA|United States)\b|\bnon[- ]US\b", re.I)
+                    r"(?:(?:US|USA|United States)\b|U\.S\.)|\bnon[- ](?:US\b|U\.S\.)",
+                    re.I)
 # "U.S." is deliberately outside the trailing \b: a word boundary after a
 # period needs a word character next, so "U.S. (Remote)" failed its own hint.
 US_HINT = re.compile(r"\b(United States|USA?\b|remote.{0,12}\bus\b|"

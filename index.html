@@ -2448,7 +2448,7 @@ function roleView(id){
     if(near.length){p=near[0];older=near.length}
   }
   if(!p){
-    $("#view").innerHTML=BACK_HTML+`<div class="empty">That role is no longer on the board.
+    $("#view").innerHTML=BACK_HTML+`<h1 class="vh">Role no longer listed</h1><div class="empty">That role is no longer on the board.
       It may have been filled, or the company&rsquo;s board stopped listing it.</div>`;
     wireBack();return;
   }
@@ -6758,7 +6758,7 @@ function home(){
 function conferences(){
   const rows=(D.conferences||[]);
   if(!rows.length){
-    $("#view").innerHTML=`<div class="empty">${GHOST}No conference data on this
+    $("#view").innerHTML=`<h1 class="vh">Conferences</h1><div class="empty">${GHOST}No conference data on this
       build.<br><span class="sub">data/conferences.json is the catalogue and
       build_board.py counts against it.</span></div>`;
     return;
@@ -8494,7 +8494,7 @@ function loadError(e){
      hint is kept for a local copy, where it is the right advice. */
   const local=location.protocol==="file:"
     ||/^(localhost|127\.|\[::1\]|0\.0\.0\.0)/.test(location.hostname);
-  $("#view").innerHTML=`<div class="empty">${GHOST}The job list did not load.<br>
+  $("#view").innerHTML=`<h1 class="vh">The job list did not load</h1><div class="empty">${GHOST}The job list did not load.<br>
     <span class="sub">${local
       ? `Could not load <code>data/board.json</code>: ${esc(why)}<br>
          Run <code>python3 scripts/build_board.py</code>, then serve this folder
@@ -8508,7 +8508,7 @@ function renderError(e){
   // page says what happened in a sentence and does not guess at a cause
   console.error("render failed",e);
   const why=e&&e.message?String(e.message):String(e||"");
-  $("#view").innerHTML=`<div class="empty">${GHOST}This view failed to draw.<br>
+  $("#view").innerHTML=`<h1 class="vh">This view failed to draw</h1><div class="empty">${GHOST}This view failed to draw.<br>
     <span class="sub">${esc(why)}<br>
     <strong>data/board.json loaded fine</strong> &mdash; this is a bug in the page, not
     a problem with the data. Pick another tab, or reload without the query string.</span>
@@ -8668,6 +8668,16 @@ function start(d){
   // reaches this listener because openRole and a settled filter change push
   // real entries now; with everything on replaceState there was one entry and
   // nothing to pop back to.
+  /* THE SKIP LINK MOVES FOCUS, NOT THE URL. As a plain href="#view" it was a
+     fragment navigation, which fires popstate, and this handler re-reads the
+     tab from a URL that does not carry one - so the link meant for keyboard
+     and screen-reader users sent them from Companies to Home (third review,
+     2026-10-08). */
+  document.querySelector(".skip")?.addEventListener("click",e=>{
+    e.preventDefault();
+    const v=$("#view");
+    if(v){ v.focus({preventScroll:true}); v.scrollIntoView(); }
+  });
   window.addEventListener("popstate",()=>{
     PENDING_URL=readUrl();
     ROLE=PENDING_URL?PENDING_URL.get("role"):null;

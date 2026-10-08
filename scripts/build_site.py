@@ -2945,12 +2945,17 @@ def write_noscript(out: pathlib.Path, board: dict, brand: dict) -> int:
     if not src.exists():
         return 0
     html_txt = src.read_text()
-    anchor = '<main><div id="stale"></div><div class="panel" id="view"></div></main>'
-    if anchor not in html_txt:
-        # The body changed shape. Say so rather than silently shipping no
-        # fallback - a missing noscript looks identical to a working one.
-        print("  noscript: could not find the main element; NOT injected")
-        return 0
+    # MATCHED BY SHAPE, NOT BY BYTES. An exact string broke the day #view
+    # gained tabindex="-1" for the skip link: the fallback silently stopped
+    # shipping and the build only printed a note (third review, 2026-10-08).
+    m = re.search(r'<main><div id="stale"></div><div class="panel" id="view"[^>]*></div></main>',
+                  html_txt)
+    if not m:
+        # The body changed shape. A missing fallback looks identical to a
+        # working one, so this stops the build rather than printing a note.
+        raise SystemExit("noscript: could not find the main element in index.html; "
+                         "the no-JavaScript page would not ship")
+    anchor = m.group(0)
 
     t = board.get("totals") or {}
     name = brand.get("name") or "SLED JOBS"

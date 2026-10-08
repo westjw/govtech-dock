@@ -112,13 +112,27 @@ def deploy_faults(env=None, fetch=None, now=None) -> list[tuple[str, str, bool]]
     now = now or dt.datetime.now(dt.timezone.utc)
     try:
         commits = fetch(f"/repos/{repo}/commits?sha=main&per_page={DEPLOY_LOOKBACK}")
-        for c in commits:
+        for i, c in enumerate(commits):
             sha = c["sha"]
             runs = fetch(f"/repos/{repo}/commits/{sha}/check-runs"
                          f"?check_name={urllib.request.quote(DEPLOY_CHECK)}")
             runs = sorted(runs.get("check_runs") or [],
                           key=lambda r: r.get("started_at") or "", reverse=True)
             if not runs:
+                # MAIN'S TIP IS ALWAYS THE TIP OF A PUSH, and Pages builds every
+                # push's tip within a minute (400 commits checked, 2026-10-08).
+                # Only the middle commits of a multi-commit push go unbuilt. So a
+                # tip with no run, past the grace, means Pages stopped picking
+                # main up - an app that lost the repo, deploys switched off - and
+                # skipping it would read an older success as a live site
+                # (third review, 2026-10-08).
+                pushed = _when((c.get("commit") or {}).get("committer", {}).get("date"))
+                if i == 0 and pushed and now - pushed > DEPLOY_GRACE:
+                    return [(f"Cloudflare Pages never picked up main's newest commit "
+                             f"{sha[:7]}",
+                             f"pushed {pushed:%Y-%m-%d %H:%M} UTC and no Pages build "
+                             f"exists for it, so the public site is an older build than "
+                             f"the repo holds", True)]
                 continue
             run = runs[0]
             if run.get("status") != "completed":
