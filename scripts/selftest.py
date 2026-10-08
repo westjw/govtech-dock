@@ -8430,7 +8430,7 @@ def check_white_logos_stay_visible() -> int:
                        "lightMark; a white logo is an empty box again")
     for where, css in (("index.html", src),
                        ("the company page CSS", (ROOT / "scripts" / "build_site.py").read_text())):
-        if "img.ondark{background:#1F2536}" not in css.replace(" ", ""):
+        if "img.ondark{background:var(--hdr-bg)}" not in css.replace(" ", ""):
             errors += fail(f"{where} has no dark plate for .ondark")
     if not shutil.which("node"):
         print("  note: node is not installed; lightMark was not driven")
@@ -8482,6 +8482,51 @@ console.log(JSON.stringify(out));
     page = build_site._lightmark_script()
     if fn not in page or ".coid .logo img" not in page:
         errors += fail("the company page's lightMark is not index.html's")
+    return errors
+
+
+def check_every_view_has_a_heading_and_a_way_past_the_header() -> int:
+    """One h1 per view, a skip link, and no input named only by a placeholder.
+
+    Accessibility audit, 2026-10-06: no <h1> on the home, jobs, companies,
+    conferences or role views (a screen reader's first jump lands nowhere);
+    no skip link past the header's controls; and claim.html's company-id box
+    was named by its placeholder alone, which disappears as soon as anybody
+    types. Checked against the source the browser runs; driven in a browser
+    on 2026-10-08 (one h1 on all seven tabs and on a role).
+    """
+    import re as _re
+    errors = 0
+    src = (ROOT / "index.html").read_text()
+    titles = src.count('<h1 class="ptitle">')
+    if '<h2 class="ptitle">' in src or titles != 5:
+        errors += fail(f"a view title is no longer the page's h1 ({titles} of 5)")
+    for view in ("SLED JOBS: sales jobs at govtech companies", "Saved", "Market intel"):
+        if f'<h1 class="vh">{view}</h1>' not in src:
+            errors += fail(f"the {view!r} view has no h1")
+    if not _re.search(r'<h1 style="[^"]*">\$\{esc\(p\.title\)\}</h1>', src):
+        errors += fail("a role's title is no longer its page's h1")
+    body = src[src.index("<body"):]
+    first = _re.search(r"<(a|button|input|select|textarea)\b[^>]*>", body)
+    if not first or 'class="skip"' not in first.group(0) or 'href="#view"' not in first.group(0):
+        errors += fail("the first control on the page is not the skip link to #view")
+    if 'id="view" tabindex="-1"' not in src:
+        errors += fail("#view cannot take focus, so the skip link scrolls but "
+                       "the next Tab starts back in the header")
+    for page in ("claim.html", "alerts.html"):
+        html_ = (ROOT / page).read_text()
+        labelled = set(_re.findall(r'<label[^>]*\bfor="([^"]+)"', html_))
+        # an input inside its <label> is labelled by it
+        wrapped = {t for lab in _re.findall(r"<label\b[^>]*>.*?</label>", html_, _re.S)
+                   for t in _re.findall(r"<input\b[^>]*>", lab)}
+        for tag in _re.findall(r"<input\b[^>]*>", html_):
+            if _re.search(r'type="(hidden|submit|button)"', tag) or tag in wrapped:
+                continue
+            iid = (_re.search(r'\bid="([^"]+)"', tag) or [None, None])[1]
+            if iid in labelled or "aria-label" in tag:
+                continue
+            errors += fail(f"{page}: an input ({iid or tag[:40]}) is named by nothing "
+                           f"a screen reader keeps once the box has text in it")
     return errors
 
 
@@ -29631,6 +29676,7 @@ def main() -> int:
     errors += check_the_repo_keeps_no_job_ads()
     errors += check_no_listing_is_a_non_job()
     errors += check_white_logos_stay_visible()
+    errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_the_buyer_rules_say_what_the_buyer_door_enforces()
     errors += check_landing_refuses_a_category_nobody_gated()
     errors += check_the_buyer_queue_draws_the_verdict_and_the_sentence()

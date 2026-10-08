@@ -90,8 +90,9 @@
     correct what it says, post your open roles, and tell us when we have filed
     you in the wrong place.</p>
   <div class="panel">
-    <h2>Which company</h2>
-    <input id="co" placeholder="the company id, e.g. acme" autocomplete="off">
+    <h2 id="co-h">Which company</h2>
+    <!-- the heading names the field; a placeholder is not a label -->
+    <input id="co" aria-labelledby="co-h" placeholder="the company id, e.g. acme" autocomplete="off">
     <div class="row"></div>
     <label for="em" style="margin-top:12px">Your work email</label>
     <input id="em" type="email" placeholder="you@yourcompany.com" autocomplete="email">

@@ -304,6 +304,17 @@
     letter-spacing:.02em;line-height:1;white-space:nowrap}
   .brand:hover .word{text-decoration:underline;text-underline-offset:4px}
   h1{font-size:20px;letter-spacing:.04em}
+  /* read by a screen reader, not drawn */
+  .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;
+    overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  /* THE FIRST TAB STOP: past the header's controls to the listings. Hidden
+     until it has focus. */
+  .skip{position:absolute;left:var(--space-4);top:-48px;z-index:100;
+    background:var(--panel);color:var(--accent-text);padding:var(--space-2) var(--space-3);
+    border:1px solid var(--line)}
+  .skip:focus{top:var(--space-2)}
+  /* the skip link's target: the jump itself is the cue, not a ring round the page */
+  #view:focus{outline:none}
 
   nav{display:flex;gap:var(--space-4);flex-wrap:wrap}
   nav button{background:none;border:0;padding:var(--space-2) 0;font:inherit;
@@ -968,7 +979,10 @@
   .phead{border-top:1px solid var(--line);padding-top:var(--space-4);margin-top:var(--space-3)}
   /* No max-width: the title fits one line at 42px inside the 1180px column,
      and wrapping it cost 43px of the fold to buy nothing. */
-  .ptitle{font-size:42px;line-height:1.02}
+  /* An h1 since 2026-10-08 - each view's title is the page's one top
+     heading (accessibility audit). The bare h1 rule below letter-spaces the
+     header's old wordmark, so the title keeps the heading tracking here. */
+  .ptitle{font-size:42px;line-height:1.02;letter-spacing:-.02em}
   .pline{margin:var(--space-3) 0 0;font-size:16px;color:var(--dim)}
   .pline strong{color:var(--ink);font-weight:600}
 
@@ -1304,8 +1318,9 @@
   .tile,.cotile{position:relative;overflow:hidden}
   .tile img,.cotile img{position:absolute;inset:0;width:100%;height:100%;
     object-fit:contain;background:#fff;padding:3px}
-  /* a white mark gets the dark plate it was drawn for - see lightMark() */
-  .tile img.ondark,.cotile img.ondark,.coid .logo img.ondark{background:#1F2536}
+  /* a white mark gets the dark plate it was drawn for - see lightMark(). The
+     header's Penguin, which stays dark in both themes. */
+  .tile img.ondark,.cotile img.ondark,.coid .logo img.ondark{background:var(--hdr-bg)}
   .row .tile{width:36px;height:36px;display:flex;align-items:center;
     justify-content:center;font-size:13px;font-weight:700;flex:none}
   .row .main{flex:1;min-width:0}
@@ -1464,6 +1479,7 @@
      have moved into the page head, next to the title they belong to - saying
      the same numbers twice on one screen is how a reader learns to skip a
      line. -->
+<a class="skip" href="#view">Skip to the listings</a>
 <header>
  <div class="hwrap">
   <div class="htop">
@@ -1511,7 +1527,7 @@
    <div id="acctdoors"></div>
  </div>
 </header>
-<main><div id="stale"></div><div class="panel" id="view"></div></main>
+<main><div id="stale"></div><div class="panel" id="view" tabindex="-1"></div></main>
 
 <!-- Anyone can propose a company. Nothing here writes to the map: it opens a
      submission, a bot researches it and opens a pull request, a person merges.
@@ -2448,7 +2464,7 @@ function roleView(id){
     <div class="cohead">
       ${tileHTML(p.company,p.company_id,"cotile")}
       <div>
-        <h2 style="margin:0 0 2px;font-size:21px;letter-spacing:-.015em">${esc(p.title)}</h2>
+        <h1 style="margin:0 0 2px;font-size:21px;letter-spacing:-.015em">${esc(p.title)}</h1>
         <div class="sub"><a href="#" id="r-co">${esc(p.company)}</a>
           &middot; ${esc(p.sector)} / ${esc(p.category)}</div>
       </div>
@@ -2904,7 +2920,7 @@ function jobs(){
 
   $("#view").innerHTML=`
   <div class="phead">
-    <h2 class="ptitle">Job board for govtech companies</h2>
+    <h1 class="ptitle">Job board for govtech companies</h1>
     <!-- Three questions answered in one line and one number: what it is, how
          big it is, how fresh it is. The third is the credibility line, and it
          is derived from the build date rather than a figure nobody recorded -
@@ -3866,7 +3882,7 @@ function savedView(){
           ><span class="v${seeGone?" on":""}">${seeGone?"Showing":"Hidden"}</span
           ></button></div></div>`
     + (seeGone?`<div class="list" id="s-gone"></div>`:"");
-  $("#view").innerHTML=searchHTML+cosHTML
+  $("#view").innerHTML=`<h1 class="vh">Saved</h1>`+searchHTML+cosHTML
     + `<div class="sechead"><h3>Saved roles</h3>
       <div class="n">${open.length} ${linked?"kept with your subscription":"kept on this device"}${
         open.length&&nap<open.length?` &middot; ${nap} still to apply to`:""}</div></div>`
@@ -4773,7 +4789,7 @@ function companies(){
   const noBoard=D.organizations.filter(o=>o.no_board_on_file).length;
   $("#view").innerHTML=`
   <div class="phead">
-    <h2 class="ptitle">Every govtech company we can find</h2>
+    <h1 class="ptitle">Every govtech company we can find</h1>
     <p class="pline"><strong>${D.organizations.length.toLocaleString()}</strong> tracked
       &middot; <strong>${hiring.toLocaleString()}</strong> with something open right now
       &middot; <strong>${withQuota.toLocaleString()}</strong> hiring sellers
@@ -5996,7 +6012,7 @@ function intel(){
   const hiring=D.organizations.filter(o=>o.open_roles>0).length;
   const topGtm=[...D.organizations].sort((a,b)=>(b.families?.gtm||0)-(a.families?.gtm||0)).slice(0,8);
   const topEng=[...D.organizations].sort((a,b)=>(b.families?.engineering||0)-(a.families?.engineering||0)).slice(0,8);
-  $("#view").innerHTML=`
+  $("#view").innerHTML=`<h1 class="vh">Market intel</h1>
     <div class="cards">
       <div class="card"><div class="bignum">${(t.postings||0).toLocaleString()}</div><div class="lbl">open postings</div></div>
       <div class="card"><div class="bignum">${(t.quota_carrying||0).toLocaleString()}</div><div class="lbl">quota-carrying</div></div>
@@ -6071,7 +6087,7 @@ function how(){
   const unread=D.organizations.filter(o=>o.unreadable||o.enumerable===false).length;
   $("#view").innerHTML=`
   <div class="phead">
-    <h2 class="ptitle">How listings get here</h2>
+    <h1 class="ptitle">How listings get here</h1>
     <p class="pline">Built ${esc(D.generated)} &middot; ${esc(freshness(D.generated))}</p>
   </div>
 
@@ -6618,7 +6634,8 @@ function home(){
   });
   const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]).slice(0,8);
 
-  $("#view").innerHTML=banner+sinceLastVisit()+`
+  $("#view").innerHTML=`<h1 class="vh">SLED JOBS: sales jobs at govtech companies</h1>`
+    +banner+sinceLastVisit()+`
   <div class="hsearch">
     <input id="h-q" type="search" placeholder="Role, skill, or company"
            aria-label="Search roles">
@@ -6759,7 +6776,7 @@ function conferences(){
 
   $("#view").innerHTML=`
   <div class="phead">
-    <h2 class="ptitle">Every govtech conference we know of</h2>
+    <h1 class="ptitle">Every govtech conference we know of</h1>
     <p class="pline"><strong>${rows.length}</strong> events across
       ${order.length} government departments.
       ${swept?`We have mined exhibitor lists from <strong>${swept}</strong> of
@@ -8372,7 +8389,7 @@ function mapView(){
   const unplaced=officeIds.size-placedIds.size;
   $("#view").innerHTML=`
   <div class="phead">
-    <h2 class="ptitle">Where the desks are</h2>
+    <h1 class="ptitle">Where the desks are</h1>
     <p class="pline"><strong>${rows.length.toLocaleString()}</strong> cities
       &middot; <strong>${placed.toLocaleString()}</strong> roles placed on the map</p>
   </div>
