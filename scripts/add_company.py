@@ -295,8 +295,13 @@ def main() -> int:
     suppliers_path = DATA / "suppliers.json"
     suppliers = json.loads(suppliers_path.read_text()) if suppliers_path.exists() else []
     host = urllib.parse.urlparse(url).netloc.replace("www.", "")
+    # a BRAND's website is the company's too: simpleviewinc.com is Granicus's
+    # Simpleview brand (review, 2026-10-08)
+    def _sites(c):
+        return [c.get("website") or ""] + [b.get("website") or "" for b in (c.get("brands") or [])
+                                           if isinstance(b, dict)]
     dupe = next((c for c in companies + suppliers
-                 if host and host in (c.get("website") or "")), None)
+                 if host and any(host in s for s in _sites(c))), None)
     if dupe:
         # ALREADY ON THE BOARD IS NOT A FAILURE. Somebody submitted a company
         # we track; the honest answer is "we have it", and the caller needs to
@@ -357,13 +362,23 @@ def main() -> int:
     # file - and the write would have died in the journal with an error
     # nobody could read (launch work, 2026-10-08). The site is usually a brand
     # or an acquisition of the company we track; which, a person decides.
-    def _key(s):
-        return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
-    same = next((c for c in companies
-                 if c.get("id") == entry["id"] or _key(c.get("name")) == _key(name)
-                 or _key(name) in {_key(n) for n in (c.get("also_known_as") or [])}
-                 or _key(name) in {_key(b.get("name") if isinstance(b, dict) else b)
-                                   for b in (c.get("brands") or [])}), None)
+    # The same normaliser the candidate door trusts (promote_candidates):
+    # legal suffixes and parentheticals off, a looser name matched on whole
+    # words - and the part INSIDE a brand's parenthetical counts as a name too,
+    # because "Simpleview (Granicus Destinations)" is what simpleviewinc.com
+    # calls "Granicus Destinations" (review, 2026-10-08).
+    import promote_candidates as pc
+    known: dict = {}
+    for c in companies:
+        names = [c.get("name")] + list(c.get("also_known_as") or [])
+        names += [b.get("name") if isinstance(b, dict) else b for b in (c.get("brands") or [])]
+        for n in names:
+            for part in [n] + re.findall(r"\(([^)]*)\)", n or ""):
+                k = pc.norm(part)
+                if k:
+                    known.setdefault(k, c)
+    same = next((c for c in companies if c.get("id") == entry["id"]), None) \
+        or pc.same_company(pc.norm(name), known)
     if same:
         blockers.append(f"the site calls itself {name}, which is already on the board as "
                         f"{same['name']} ({same['id']}) - probably a brand or an "
@@ -392,6 +407,12 @@ def main() -> int:
         # not take it back - on the one path where nobody is watching.
         sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
         import admin
+        # READ THROUGH THE ADMIN, or the journal refuses the write: it holds
+        # the file's last read to catch a stale overwrite, and a bare
+        # json.loads never registers one. Every bot write was refused this
+        # way, so the public form never once opened a pull request (review,
+        # 2026-10-08).
+        companies = admin.read_companies()
         companies.append(entry)
         bad = admin.save_companies(companies, "add-company",
                                    why=f"added {entry['id']} from {url}",

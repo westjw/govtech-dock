@@ -274,6 +274,14 @@ CARD_LINE_CASES = [
 
 # (lines, flattened, title, location, pay raw or None)
 CARD_CASES = [
+    # A CHIP IS NEVER THE TITLE (Comeet, Cellebrite, 2026-10-08): the name
+    # line has no job word and the chip under it has one ("Executive")
+    (["VP Sales APAC (Japan & Korea)", "Sales \u00b7 Full-time \u00b7 Executive"],
+     "VP Sales APAC (Japan & Korea) Sales \u00b7 Full-time \u00b7 Executive",
+     "VP Sales APAC (Japan & Korea)", "", None),
+    (["Solutions Architect", "Pre-Sales \u00b7 Full-time \u00b7 Senior"],
+     "Solutions Architect Pre-Sales \u00b7 Full-time \u00b7 Senior",
+     "Solutions Architect", "", None),
     (["Full Stack Engineer", "New York, NY", "$120k - 145k", "Apply"],
      "Full Stack Engineer New York, NY $120k - 145k",
      "Full Stack Engineer", "New York, NY", "$120k - 145k"),
@@ -2612,6 +2620,46 @@ def check_add_company_journals_and_reports_already_tracked() -> int:
             errors += fail(f"add_company proposed a second Granicus from govqa.com (rc {rc}, "
                            f"{len(written)} records); a name already on the board must "
                            f"block, and say so")
+
+    # THE BRAND'S OWN NAME, and the write that actually lands. A brand's
+    # parenthetical is a name too ("Simpleview (Granicus Destinations)"), and
+    # a clean proposal must write - every bot write was refused by the journal
+    # until add_company read companies through the admin (review, 2026-10-08).
+    def drive(url, title, desc, rows):
+        with _sandbox_admin({"companies.json": rows, "suppliers.json": []}) as tmp:
+            keep = (add_company.DATA, add_company.fetch, add_company.find_ats,
+                    add_company.verify, add_company.guess_sector, sys.argv)
+            add_company.DATA = tmp
+            add_company.fetch = lambda u: (f"<html><head><title>{title}</title><meta name=\"description\" "
+                                           f"content=\"{desc}\"></head></html>", None)
+            add_company.find_ats = lambda u: ({"type": "html", "ref": u + "/careers"}, u, [])
+            add_company.verify = lambda block: (True, "3 posting(s) readable")
+            add_company.guess_sector = lambda text: ("General Gov", "Civic Engagement", "high", ["x"])
+            sys.argv = ["add_company.py", url, "--write", "--by", "bot:add-company"]
+            out = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                    rc = add_company.main()
+            except SystemExit as e:
+                rc = e.code
+            finally:
+                (add_company.DATA, add_company.fetch, add_company.find_ats,
+                 add_company.verify, add_company.guess_sector, sys.argv) = keep
+            return rc, out.getvalue(), json.loads((tmp / "companies.json").read_text())
+    # the brand's parenthetical shares no word with its parent's name, so only
+    # reading inside the parentheses can find it
+    brand = [dict(gran[1], brands=[{"name": "Simpleview (Destination Cloud)",
+                                    "website": "https://www.simpleviewinc.com"}])]
+    rc, said, rows = drive("https://www.destcloud.example", "Destination Cloud",
+                           "Tourism CRM", brand)
+    if rc == 0 or len(rows) != 1 or "already on the board as Granicus" not in said:
+        errors += fail(f"a brand's parenthetical name did not block a duplicate (rc {rc}): "
+                       f"{said[-200:]!r}")
+    rc, said, rows = drive("https://www.permitly.example", "Permitly", "Permits for cities",
+                           list(gran))
+    if rc != 0 or len(rows) != len(gran) + 1 or rows[-1].get("name") != "Permitly":
+        errors += fail(f"a clean proposal did not write through the journal (rc {rc}, "
+                       f"{len(rows)} records): {said[-240:]!r}")
 
     # THE WORKFLOW IS THE CALLER. A code nobody reads is a code that does
     # nothing: the yaml must branch on it, and its reporting step must run
@@ -8755,7 +8803,9 @@ def check_html_reader_takes_a_links_own_job_label() -> int:
         '<a href="/about/" aria-label="View job: Careers at Acme">View Job</a>'   # not a job url
         # an EMPTY link laid over a card, named by its label (Ekin, Webflow)
         '<a aria-label="Regional Sales Manager | Texas" href="/jobs/rsm-texas" class="x"></a>'
-        '<a aria-label="Open the menu" href="/jobs/" class="x"></a>')           # not a title
+        '<a aria-label="Open the menu" href="/jobs/" class="x"></a>'            # not a title
+        # a button's sentence is not a title, even on a job link (Nedap's group page)
+        '<a aria-label="Read more about Senior Frontend Engineer" href="/jobs/sfe" class="x"></a>')
 
     class Stub:
         text = page
@@ -9067,6 +9117,7 @@ def check_no_listing_is_a_non_job() -> int:
             ("Spontaneous Application", ()),
             # second review, 2026-10-08: live on the board and missed
             ("General Job Inquiry", ()), ("Open General Position", ()),
+            ("I Want to Work in Vulnerability Research & Exploit Engineering", ()),
             ("General Job Template", ()), ("Refer", ())]:
         if not _roles.not_a_listing(title, *names):
             errors += fail(f"{title!r} is not an opening, and would be listed as one")

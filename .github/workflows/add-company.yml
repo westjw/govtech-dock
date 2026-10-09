@@ -59,7 +59,9 @@ jobs:
           SUBMITTED_URL: ${{ steps.url.outputs.url }}
         run: |
           set +e
-          python scripts/add_company.py "$SUBMITTED_URL" --write --by "bot:add-company"
+          # a refusal reaches the submitter: it goes into the proposal the
+          # issue comment quotes, not only into this log
+          python scripts/add_company.py "$SUBMITTED_URL" --write --by "bot:add-company" 2>> proposal.txt
           echo "wrote=$?" >> "$GITHUB_OUTPUT"
           exit 0
 

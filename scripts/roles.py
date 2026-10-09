@@ -57,6 +57,9 @@ EVERGREEN = re.compile(
     r"future (positions|roles|openings|vacancies)|ongoing opportunit|"
     r"expression of interest|unsolicited application|resume drop|"
     r"opportunities await|"
+    # "I Want to Work in Vulnerability Research & Exploit Engineering"
+    # (Magnet Forensics, location TBD) is a pool, not a requisition
+    r"\bi want to work\b|\binterested in working\b|"
     # "General Job Inquiry" (Wavetronix), "Open General Position" (BlueConduit)
     r"\bgeneral (job )?(inquir(y|ies)|position)\b|"
     r"speculative|join our (talent|network)|other opportunit|"

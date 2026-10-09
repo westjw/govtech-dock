@@ -1877,7 +1877,18 @@ def card_fields(lines: list[str], flat: str) -> tuple[str, str, dict | None]:
     hands back the flattened text exactly as before. A slightly long title beats
     a truncated one, and beats a dropped posting by much more.
     """
-    idx = next((i for i, line in enumerate(lines) if _TITLEISH.search(line)), None)
+    # A CHIP IS NEVER THE TITLE: "Sales · Full-time · Executive" carries a job
+    # word ("Executive") and was published as Cellebrite's VP Sales posting,
+    # whose name line has none (review, 2026-10-08). With no other line that
+    # reads like a job, the card's first line is its name - if it is not a
+    # chip itself.
+    def chip(line):
+        return line.count("\u00b7") >= 2 or line.count(" | ") >= 2
+    idx = next((i for i, line in enumerate(lines)
+                if _TITLEISH.search(line) and not chip(line)), None)
+    if idx is None and lines and not chip(lines[0]) and 6 <= len(lines[0]) <= 90 \
+            and any(chip(line) for line in lines[1:]):
+        idx = 0
     if idx is None:
         return flat, "", None
     title = strip_cta(lines[idx])
@@ -1976,11 +1987,13 @@ def fetch_html_titles(url: str) -> list[dict]:
             elif not text:
                 # AN EMPTY LINK LAID OVER A CARD, named only by its label -
                 # Webflow's pattern: Ekin's "Customer Success Manager | Poland"
-                # (2026-10-08). The label is the title, and a place after " | "
-                # is the location; the title gate below still applies.
+                # (2026-10-08). ONLY in that "Title | Place" form: a label that
+                # is a sentence ("Read more about Senior Frontend Engineer",
+                # Nedap's group vacancies page) is a button, not a title
+                # (review, 2026-10-08). The title gate below still applies.
                 aria = _ARIA_ANY.search(open_tag)
-                if aria:
-                    label = html_lib.unescape(aria.group(1)).strip()
+                label = html_lib.unescape(aria.group(1)).strip() if aria else ""
+                if " | " in label and not _CTA_LEAD.match(label):
                     text, _, aria_loc = (x.strip() for x in label.partition(" | "))
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
