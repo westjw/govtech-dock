@@ -1922,6 +1922,15 @@ fires.
     banner pauses while a keyboard is in it. Element `onfocusin` does not
     exist in any browser: use addEventListener.
     `check_reading_text_is_never_set_in_fog`, `check_assistive_tech_hears_what_changed`.
+  - **A blind review of that batch** (3 lenses, each finding challenged)
+    confirmed 11, all fixed and each guard broken on purpose: a sub-sector
+    is matched in the same filing as its sector (`coFilings`, `coCatOk(o,
+    cat, sec)`, `category_counts`), so "Browse all N" opens N; `goTab` owns
+    PENDING_URL and `applyCoUrl` clears an earlier query's pill release; one
+    click is one history entry; the panel's Tab trap is on the document
+    (focus falls to <body> when a vote disables the button); an empty live
+    region stays displayed (display:none takes it out of the tree); and
+    `history_first_seen()` reads HISTORY when called, not at import.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

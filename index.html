@@ -1848,6 +1848,8 @@ function parseQuery(q){
   return want;
 }
 const inSector=(r,s)=>r.sector===s||(r.also||[]).some(a=>a.sector===s);
+/* every (sector, sub-sector) a company is filed under: its own and each `also` */
+const coFilings=o=>[{sector:o.sector,category:o.category},...(o.also||[])];
 const inCategory=(r,c)=>r.category===c||(r.also||[]).some(a=>a.category===c);
 
 /* ------------------------------------------ searching COMPANIES by MEANING
@@ -2705,7 +2707,11 @@ function backToBoard(){
   // the tab comes back from the url too, so a role opened out of Saved returns
   // to Saved rather than dumping you on the job board
   tab=tabFromUrl(PENDING_URL,"jobs");
+  // and a company card comes back as the card: CO stayed set under a ?co=
+  // address while the list drew, so nothing the reader did there was written
+  CO=PENDING_URL?PENDING_URL.get("co"):null;
   render();
+  if(CO){ co(CO,true); if(CO_MISSING)render(); }
   window.scrollTo(0,BOARD_SCROLL);
 }
 function whereSummary(mine){
@@ -3577,7 +3583,8 @@ function writeUrl(push){
     Object.entries(COKEYS).forEach(([k,id])=>{
       const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
     });
-    if($("#c-hire-pill")?.getAttribute("aria-pressed")==="false")u.set("call","1");
+    // only a person's "everyone": a pill a search released is the search's
+    if($("#c-hire-pill")?.getAttribute("aria-pressed")==="false"&&!CO_AUTO_OFF)u.set("call","1");
   }
   // page 1 is the default and stays out of the address, so the plain board
   // and "the plain board, page 1" are one url rather than two
@@ -5006,6 +5013,10 @@ function companies(){
 /* An incoming list address, or a link that named a sector or sub-sector. The
    filters live under More filters, so the bar opens to show what is set. */
 function applyCoUrl(u){
+  /* the pill companies() just drew is fresh: an automatic release from an
+     earlier query (a conference's exhibitors) must not hand it back "on"
+     over the call=1 this address asked for */
+  CO_AUTO_OFF=false;
   if(!u)return;
   const sec=$("#c-sec"), cat=$("#c-cat");
   if(sec&&u.get("csec")){ sec.value=u.get("csec"); syncCoCats(); }
@@ -5020,27 +5031,33 @@ function applyCoUrl(u){
    somewhere else (launch audit 2, 2026-10-09). PUSH_NEXT because a tab is a
    decision Back should undo. jobs() writes its own address as it draws; the
    second call then finds it already right and does nothing. */
-function goTab(t){
-  ROLE=null; CO=null; tab=t;
-  PUSH_NEXT=true; render(); writeUrl();
+function goTab(t,u=null){
+  /* PENDING_URL starts clean: companies() reads it, and only jobs() ever
+     cleared it, so the filters of an earlier address came back on the next
+     click of the Companies tab (review of launch audit 2) */
+  ROLE=null; CO=null; tab=t; PENDING_URL=u;
+  PUSH_NEXT=true; render(); writeUrl(); PENDING_URL=null;
 }
 /* ONE WAY ONTO THE COMPANIES LIST - a tab, a breadcrumb, "Browse all" - and
    it clears the open company and writes the address. A link that names a
    sector or sub-sector opens the list on it, every company in it rather than
    only those hiring, because that is the number "Browse all N" printed. */
 function toCompanies(sec,cat){
-  PENDING_URL=sec||cat?new URLSearchParams(
-    Object.entries({csec:sec||"",ccat:cat||"",call:"1"}).filter(([,v])=>v)):null;
-  goTab("companies");
-  PENDING_URL=null;
+  goTab("companies",sec||cat?new URLSearchParams(
+    Object.entries({csec:sec||"",ccat:cat||"",call:"1"}).filter(([,v])=>v)):null);
 }
 /* Categories on the board under one sector, or under every sector when none
    is chosen. Pure, so it can be driven under node: the same list the
    dropdown shows is the list this returns. */
 function coCatOptions(orgs,sec){
-  return [...new Set(orgs.filter(o=>o.category&&(!sec||inSector(o,sec))).map(o=>o.category))].sort();
+  return [...new Set(orgs.flatMap(coFilings).filter(f=>f.category&&(!sec||f.sector===sec)).map(f=>f.category))].sort();
 }
-function coCatOk(o,cat){return !cat||o.category===cat;}
+/* A SUB-SECTOR IS MATCHED IN THE SAME FILING AS THE SECTOR. The sector was
+   matched through `also` and the sub-sector on the primary filing, so Oracle
+   (Public Safety / Suppliers, also Transit & Parking) was listed under
+   Transit & Parking / Suppliers and "Browse all 23" opened 24 (review of
+   launch audit 2, 2026-10-09). */
+function coCatOk(o,cat,sec){return !cat||coFilings(o).some(f=>f.category===cat&&(!sec||f.sector===sec));}
 function syncCoCats(){
   const sel=$("#c-cat");if(!sel)return;
   const sec=$("#c-sec")?.value||"",keep=sel.value;
@@ -5238,11 +5255,7 @@ function hotChip(id){
 }
 function drawCos(){
   loadActive();
-  /* the list's sector, sub-sector and hiring pill are in its address. Not
-     while the address names a company: at boot companies() draws the list
-     before co() opens the card, and writing here would erase the ?co= it
-     is about to open. */
-  if(tab==="companies"&&!CO&&!new URLSearchParams(location.search).has("co"))writeUrl();
+
   const g=i=>{const el=$("#"+i);return el?el.value:"";};
   const q=(g("c-q")||"").trim().toLowerCase();
   if(q!==CO_LASTQ){
@@ -5250,6 +5263,13 @@ function drawCos(){
     // a release belonged to the query that caused it, so hand the pill back
     if(CO_AUTO_OFF){CO_AUTO_OFF=false;setHiringPill(true);}
   }
+  /* the list's sector, sub-sector and hiring pill are in its address, written
+     once the pill a query handed back has settled. Not while the address
+     names a company on the board: at boot companies() draws the list before
+     co() opens the card, and writing here would erase that ?co=. A ?co=
+     naming nobody is replaced, or the list's filters never reach the bar. */
+  const coP=new URLSearchParams(location.search).get("co");
+  if(tab==="companies"&&!CO&&!(coP&&(D.organizations||[]).some(o=>o.id===coP)))writeUrl();
   let hiringOnly=$("#c-hire-pill")?.getAttribute("aria-pressed")==="true";
   const s=g("c-sec"),ph=g("c-phase"),rd=g("c-reads");
 
@@ -5285,7 +5305,7 @@ function drawCos(){
   const ct=g("c-cat");
   const rest=o=>{
     if(s&&!inSector(o,s))return false;
-    if(!coCatOk(o,ct))return false;
+    if(!coCatOk(o,ct,s))return false;
     if(ph&&!(o.phase||"").startsWith(ph))return false;
     if(rd==="api"&&!(o.open_roles>0))return false;
     if(rd==="x"&&o.enumerable!==false&&!o.unreadable)return false;
@@ -6172,8 +6192,9 @@ function co(id,fromUrl){
      browse link is about the whole category, so passing sibs.length made the
      link read "Browse all 6 in Police" over a category holding 132. A number
      on a public page is a claim, including the small ones nobody checks. */
+  /* counted with the list's own filter, so "Browse all N" opens N */
   const inCat=(D.organizations||[])
-    .filter(x=>x.sector===o.sector&&x.category===o.category
+    .filter(x=>inSector(x,o.sector)&&coCatOk(x,o.category,o.sector)
               &&!(o.brands||[]).some(b=>b.id===x.id));
   const sibs=inCat.filter(x=>x.id!==id)
     .sort((a,b)=>(b.open_roles||0)-(a.open_roles||0)).slice(0,5);
@@ -6567,7 +6588,9 @@ function buildSlides(){
       p:`First seen on ${esc(gen)}, advertised in <strong>${freshQ.length.toLocaleString()}</strong> posting${freshQ.length===1?"":"s"}.`
         +(debut.length?` First seller req we have ever recorded at ${esc(debut.slice(0,3).join(", "))}${debut.length>3?` and ${debut.length-3} other${debut.length-3===1?"":"s"}`:""}.`:""),
       cta:"See what is new", go:()=>{goTab("jobs");
-        const f=$("#j-since"); if(f){f.value="0";f.dispatchEvent(new Event("change"))}}});
+        // refilter, not a "change" event: #j-since listens for input, so the
+        // event did nothing and the board ignored the age it showed
+        const f=$("#j-since"); if(f){f.value="0";refilter();}}});
   }
 
   // 2. The size of the thing, which is the credibility line for a stranger.
@@ -6983,8 +7006,11 @@ function home(){
   document.querySelectorAll(".hsecs button").forEach(b=>{
     b.onclick=()=>{
       stopBanner(); goTab("jobs");
+      // the sector refines the entry goTab just pushed rather than pushing a
+      // second, so Back from the sector's board goes home, not to the bare board
       const sel=$("#j-sec-pill");
-      if(sel){ sel.value=b.dataset.sec; sel.dispatchEvent(new Event("change",{bubbles:true})); }
+      if(sel){ sel.value=b.dataset.sec; if($("#j-sec"))$("#j-sec").value=b.dataset.sec;
+               SHOWN=60; drawJobs(); }
     };
   });
 
@@ -7885,15 +7911,6 @@ function cfOpenPanel(tag,fromUrl){
   host.hidden=false;
   document.body.classList.add("cfp-lock");
   host.onclick=e=>{ if(e.target===host)cfClosePanel(); };
-  host.onkeydown=e=>{
-    if(e.key!=="Tab")return;
-    const f=[...host.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
-      .filter(x=>x.tabIndex>=0&&!x.disabled&&x.getClientRects().length);
-    if(!f.length)return;
-    const first=f[0], last=f[f.length-1], at=document.activeElement;
-    if(e.shiftKey&&(at===first||!host.contains(at))){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey&&(at===last||!host.contains(at))){ e.preventDefault(); first.focus(); }
-  };
   // not b.onclick=cfClosePanel: the click event arrived as `fromUrl`, so the
   // close button never gave the address back
   host.querySelectorAll("[data-cfclose]").forEach(b=>b.onclick=()=>cfClosePanel());
@@ -7901,7 +7918,9 @@ function cfOpenPanel(tag,fromUrl){
     e.stopPropagation(); downloadIcs(r);
   });
   host.querySelectorAll("[data-cfall]").forEach(a=>a.onclick=e=>{
-    e.preventDefault(); cfClosePanel(); cfToCompanies(tag);
+    // close without an entry of its own: Back from the exhibitors returns
+    // to the panel the reader clicked from
+    e.preventDefault(); cfClosePanel(true); cfToCompanies(tag);
   });
   // the panel's rating widget is the same one the rows use
   loadRatings();
@@ -7941,8 +7960,20 @@ function wireCfOpen(){
     if(b.getAttribute("aria-disabled")==="true")b.style.cursor="pointer";
   });
 }
+/* Escape closes the panel and Tab stays inside it. On the document, not the
+   panel: a vote disables the focused button and focus falls to <body>, where
+   a listener on the panel never hears the next Tab (review of launch audit
+   2, 2026-10-09). */
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"&&CF_OPEN)cfClosePanel();
+  if(e.key==="Escape"&&CF_OPEN){ cfClosePanel(); return; }
+  if(e.key!=="Tab"||!CF_OPEN)return;
+  const host=$("#cf-panel"); if(!host||host.hidden)return;
+  const f=[...host.querySelectorAll('a[href],button,input,select,textarea,[tabindex]')]
+    .filter(x=>x.tabIndex>=0&&!x.disabled&&x.getClientRects().length);
+  if(!f.length)return;
+  const first=f[0], last=f[f.length-1], at=document.activeElement;
+  if(e.shiftKey&&(at===first||!host.contains(at))){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey&&(at===last||!host.contains(at))){ e.preventDefault(); first.focus(); }
 });
 
 function cfCardsHTML(list){

@@ -1569,7 +1569,7 @@ def merge_hq(postings: list[dict], hq: dict | None, companies: list[dict],
     return added, dropped
 
 
-def history_first_seen(history: pathlib.Path = HISTORY) -> tuple[dict, dict]:
+def history_first_seen(history: pathlib.Path | None = None) -> tuple[dict, dict]:
     """({posting id: first snapshot night}, {company id: first snapshot night}).
 
     The previous board alone is not enough to carry a date. A posting that
@@ -1579,7 +1579,11 @@ def history_first_seen(history: pathlib.Path = HISTORY) -> tuple[dict, dict]:
     snapshots since 08-24 (launch audit 2, 2026-10-09). Exact ids only: the id
     holds the title, url and place, so a match is the same posting. A title
     that merely recurs is not.
+
+    `history` defaults to HISTORY as it stands when CALLED: a default bound at
+    import kept reading the real data/history inside the suite's sandbox.
     """
+    history = HISTORY if history is None else history
     by_id: dict = {}
     by_co: dict = {}
     for f in sorted(history.glob("*.json")):

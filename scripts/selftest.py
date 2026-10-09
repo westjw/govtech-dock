@@ -2418,7 +2418,7 @@ def check_companies_sub_sector_filter_follows_the_sector() -> int:
     import re, subprocess, json as _json
     src = (ROOT / "index.html").read_text()
     pieces = []
-    for name in ("inSector", "inCategory"):
+    for name in ("inSector", "coFilings", "inCategory"):
         m = re.search(rf"^const {name}=.*$", src, re.M)
         if not m:
             return fail(f"index.html no longer defines {name}")
@@ -2429,7 +2429,7 @@ def check_companies_sub_sector_filter_follows_the_sector() -> int:
             return fail(f"index.html no longer defines {name}; the sub-sector "
                         f"filter on the Companies tab is gone")
         j = src.find("\n}\n", i) if "\n" in src[i:i + 400] and not src[i:i + 400].startswith(
-            f"function {name}(o,cat){{return") else src.find("}\n", i)
+            f"function {name}(o,cat,sec){{return") else src.find("}\n", i)
         pieces.append(src[i:j + 2] if j > i else src[i:src.find("\n", i) + 1])
     orgs = [{"id": "a", "category": "Police", "sector": "Public Safety"},
             {"id": "b", "category": "Fire & EMS", "sector": "Public Safety"},
@@ -2446,6 +2446,12 @@ console.log(JSON.stringify({{
   none: coCatOptions(orgs, "Nowhere"),
   okAny: orgs.filter(o => coCatOk(o, "")).length,
   okPolice: orgs.filter(o => coCatOk(o, "Police")).map(o => o.id),
+  // Police in General Gov is d's primary filing; Police through d's `also`
+  // is Public Safety's. A company filed Public Safety / Police and also
+  // General Gov / Permitting is not General Gov / Police.
+  cross: coCatOk({{sector: "Public Safety", category: "Police",
+                   also: [{{sector: "General Gov", category: "Permitting"}}]}}, "Police", "General Gov"),
+  viaAlso: coCatOk(orgs[3], "Police", "Public Safety"),
 }}));"""
     r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=60)
     if r.returncode:
@@ -2462,6 +2468,10 @@ console.log(JSON.stringify({{
         errors += fail(f"under General Gov: {got['gg']}")
     if got["none"] != []:
         errors += fail(f"a sector with nothing under it offers nothing: {got['none']}")
+    if got.get("cross") is not False or got.get("viaAlso") is not True:
+        errors += fail(f"the sub-sector is not matched in the same filing as the "
+                       f"sector (cross={got.get('cross')}, viaAlso={got.get('viaAlso')}): "
+                       f"'Browse all 23 in Suppliers & Services' opened 24")
     if got["okAny"] != 5 or got["okPolice"] != ["a", "d"]:
         errors += fail(f"the predicate: no sub-sector keeps everyone, a sub-sector "
                        f"keeps its companies: {got['okAny']}, {got['okPolice']}")
@@ -2469,7 +2479,8 @@ console.log(JSON.stringify({{
     # applied in the same filter that applies the sector
     for needle, why in ((' id="c-cat"', "the sub-sector dropdown is gone"),
                         ('"c-cat"', "drawCos no longer listens to the sub-sector"),
-                        ("if(!coCatOk(o,ct))return false;", "the filter no longer applies the sub-sector"),
+                        ("if(!coCatOk(o,ct,s))return false;", "the filter no longer applies the sub-sector in the sector's filing"),
+                        ("coCatOk(x,o.category,o.sector)", "the company view's 'Browse all N' counts with another filter than the list it opens"),
                         ('addEventListener("input",syncCoCats)', "the list no longer follows the sector")):
         if needle not in src:
             errors += fail(why)
@@ -9127,6 +9138,31 @@ def check_every_view_has_its_own_address() -> int:
         if tabs.get(q) != t:
             errors += fail(f"tabFromUrl opens a {q} address on {tabs.get(q)!r}, "
                            f"not {t!r}")
+    # "Browse all N" against the list it opens, on every filing in the real
+    # board: the count build_site prints and the app's own list filter
+    board = json.loads((DATA / "board.json").read_text())
+    orgs = board.get("organizations") or []
+    counts = bs.category_counts(orgs)
+    src0 = (ROOT / "index.html").read_text()
+    pieces = [re.search(rf"^const {n}=.*$", src0, re.M).group(0)
+              for n in ("inSector", "coFilings")]
+    i = src0.find("function coCatOk(")
+    pieces.append(src0[i:src0.find("\n", i)])
+    pairs = sorted(k for k in counts if k[0] and k[1])
+    js_ = "\n".join(pieces) + f"""
+const orgs = {json.dumps([{k: o.get(k) for k in ("sector", "category", "also")} for o in orgs])};
+const pairs = {json.dumps(pairs)};
+console.log(JSON.stringify(pairs.map(([s, c]) =>
+  orgs.filter(o => inSector(o, s) && coCatOk(o, c, s)).length)));"""
+    rn = subprocess.run(["node", "-e", js_], capture_output=True, text=True, timeout=120)
+    if rn.returncode:
+        errors += fail(f"the list filter did not run under node: {rn.stderr[:300]}")
+    else:
+        listed = json.loads(rn.stdout.strip().splitlines()[-1])
+        off = [(p, counts[p], n) for p, n in zip(pairs, listed) if counts[p] != n]
+        if off:
+            errors += fail(f"{len(off)} 'Browse all N' counts disagree with the list "
+                           f"they open, e.g. {off[:3]}")
     href = bs.companies_list_href("Finance & ERP", "Tax & Revenue")
     if "csec=Finance%20%26%20ERP" not in href or "ccat=Tax%20%26%20Revenue" not in href \
             or "call=1" not in href:
@@ -9134,7 +9170,30 @@ def check_every_view_has_its_own_address() -> int:
                        f"open the list on the category it counted")
     src = (ROOT / "index.html").read_text()
     js = re.sub(r"/\*.*?\*/", "", src, flags=re.S)
-    go = js[js.find("function goTab("):][:400]
+    go = js[js.find("function goTab("):][:600]
+    if "PENDING_URL=u" not in go.replace(" ", "") or "PENDING_URL=null" not in go.replace(" ", ""):
+        errors += fail("goTab does not start from a clean PENDING_URL, so an "
+                       "earlier address's filters come back on the next tab click")
+    if "CO_AUTO_OFF=false" not in js[js.find("function applyCoUrl("):][:500].replace(" ", ""):
+        errors += fail("applyCoUrl leaves an earlier query's automatic release "
+                       "standing, which turns call=1 back into 'Hiring now'")
+    wu = js[js.find("function writeUrl("):][:3000]
+    if not re.search(r'aria-pressed"\)==="false"&&!CO_AUTO_OFF\)u\.set\("call"', wu):
+        errors += fail("writeUrl records a release the search caused as call=1")
+    bb_ = js[js.find("function backToBoard("):][:900]
+    if 'CO=PENDING_URL?PENDING_URL.get("co")' not in bb_ or "co(CO,true)" not in bb_:
+        errors += fail("Back from a role opened on a company card draws the list "
+                       "under a ?co= address")
+    if 'cfClosePanel(true); cfToCompanies(tag)' not in js:
+        errors += fail("'all exhibitors' pushes two history entries, so Back skips "
+                       "the panel the reader clicked from")
+    hs = js[js.find('document.querySelectorAll(".hsecs button")'):][:500]
+    if "dispatchEvent(" in hs:
+        errors += fail("a home sector button pushes a second history entry "
+                       "through the sector pill, so Back lands on the bare board")
+    if 'f.dispatchEvent(new Event("change"))' in js:
+        errors += fail("'See what is new' sends a change event nothing handles; "
+                       "the board ignores the age it shows")
     if "writeUrl(" not in go or "CO=null" not in go.replace(" ", ""):
         errors += fail("goTab does not clear the open company and write the "
                        "address, so a tab switch leaves the bar on the last view")
@@ -9396,8 +9455,12 @@ def check_assistive_tech_hears_what_changed() -> int:
     cl = js[js.find("function cfClosePanel("):][:1200]
     if "CF_OPENER=document.activeElement" not in op.replace(" ", ""):
         errors += fail("cfOpenPanel does not remember what opened it")
-    if not re.search(r'host\.onkeydown=e=>\{\s*if\(e\.key!=="Tab"\)', op):
-        errors += fail("the conference panel does not keep Tab inside it")
+    # on the document: focus that falls to <body> inside the open panel (a
+    # vote disables the focused button) never reaches a listener on the panel
+    ti = js.find('if(e.key!=="Tab"||!CF_OPEN)return;')
+    if ti < 0 or 'document.addEventListener("keydown"' not in js[max(0, ti - 200):ti]:
+        errors += fail("the conference panel does not keep Tab inside it from "
+                       "the document, so focus on <body> walks the page under it")
     if ".focus(" not in cl:
         errors += fail("closing the conference panel leaves focus on <body>")
     if re.search(r"data-cfclose\]\"\)\.forEach\(b=>b\.onclick=cfClosePanel\)", js):
@@ -9413,6 +9476,9 @@ def check_assistive_tech_hears_what_changed() -> int:
     if re.search(r"\.msg\.(ok|err)\{[^}]*color:var\(--(accent|bad)\)", al):
         errors += fail("an alerts message sets its text in --accent or --bad "
                        "on --chip, 3.6:1 in dark mode")
+    if re.search(r"\.msg:empty\{[^}]*display:\s*none", al):
+        errors += fail("an empty alerts #msg is display:none, which takes the "
+                       "live region out of the accessibility tree until it fills")
     say = al[al.find("function say("):][:300]
     if "hidden=false" in say.replace(" ", ""):
         errors += fail("say() unhides #msg as it fills it; a region that "
@@ -19584,6 +19650,18 @@ def check_a_posting_keeps_the_night_we_first_saw_it() -> int:
     if nights.get("gran::AE - KS::h1") != "2026-08-24" or by_co.get("gran") != "2026-08-24":
         errors += fail(f"history_first_seen read {nights.get('gran::AE - KS::h1')} / "
                        f"{by_co.get('gran')}, not the first night a snapshot held it")
+    # the folder is HISTORY as it is when called, or a sandbox that points
+    # HISTORY elsewhere still dates postings from the real snapshots
+    real = bb.HISTORY
+    with _tf.TemporaryDirectory() as tmp:
+        bb.HISTORY = pathlib.Path(tmp)
+        try:
+            leak = bb.history_first_seen()
+        finally:
+            bb.HISTORY = real
+    if leak[0] or leak[1]:
+        errors += fail(f"history_first_seen() read {len(leak[0])} ids from the real "
+                       f"data/history with HISTORY pointed at an empty sandbox")
     back = {"id": "gran::AE - KS::h1", "opening_id": "gran::AE - KS",
             "company_id": "gran", "first_seen": "2026-10-08"}
     new = {"id": "gran::AE - West::h2", "opening_id": "gran::AE - West",

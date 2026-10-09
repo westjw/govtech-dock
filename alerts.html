@@ -60,9 +60,10 @@
   .msg{font-size:13.5px;padding:11px 14px;border-radius:9px;margin:14px 0 0}
   /* ink on the chip, and the kind in the rule beside it: --accent and --bad
      on --chip measured 3.6:1 in dark mode and 4.49:1 in light (launch
-     audit 2, 2026-10-09). An empty message takes no room, so the live
-     region can stay in the page and be announced when it fills. */
-  .msg:empty{display:none}
+     audit 2, 2026-10-09). An empty message takes no room but stays
+     displayed: display:none takes the live region out of the accessibility
+     tree, and one that enters it with its text is not announced. */
+  .msg:empty{padding:0;margin:0}
   .msg.ok{background:var(--chip);color:var(--ink);border-left:3px solid var(--accent)}
   .msg.err{background:var(--chip);color:var(--ink);border-left:3px solid var(--bad)}
   .foot{color:var(--dim);font-size:12.5px;margin-top:22px;line-height:1.6}
@@ -532,7 +533,8 @@ function settingsView(data){
   }
   if(d.ok){
     settingsView(d);
-    if(justConfirmed)say("ok","Confirmed. You will get your first digest on the next matching morning.");
+    // after the new view's live region is in the tree, or it is not heard
+    if(justConfirmed)setTimeout(()=>say("ok","Confirmed. You will get your first digest on the next matching morning."),150);
   }else if(d.error==="not_configured"){
     $("#view").innerHTML='<div class="panel"><h2>Not switched on</h2>'
       +'<p class="note">Alerts are not configured on this site yet.</p></div>';

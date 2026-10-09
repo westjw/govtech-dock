@@ -1681,6 +1681,23 @@ def _co_news(o: dict, dom: str, now: dt.date | None = None) -> str:
             f'<div class="conews">{rows}</div><span class="fade"></span></div></section>')
 
 
+def category_counts(orgs: list) -> dict:
+    """{(sector, category): companies filed there}, for "Browse all N".
+
+    Every filing counts, a company's own and each `also`, once per company,
+    because that is what the list the link opens matches (index.html
+    coCatOk). Counting the primary alone printed "Browse all 23" over a list
+    of 24."""
+    cat_n: dict = {}
+    for x in orgs:
+        filed = {(x.get("sector"), x.get("category"))} | {
+            (a.get("sector"), a.get("category")) for a in (x.get("also") or [])
+            if isinstance(a, dict)}
+        for f in filed:
+            cat_n[f] = cat_n.get(f, 0) + 1
+    return cat_n
+
+
 def companies_list_href(sector: str = "", category: str = "") -> str:
     """The app's Companies list, opened on a sector or sub-sector.
 
@@ -2091,10 +2108,10 @@ def write_company_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     by_id = {x["id"]: x for x in orgs if x.get("id")}
     by_name = {str(x["name"]).strip().lower(): x for x in orgs if x.get("name")}
     # the whole category, counted once, for the "Browse all N" link - the
-    # company itself included, the way the app counts it
-    cat_n: dict = {}
-    for x in orgs:
-        cat_n[(x.get("sector"), x.get("category"))] = cat_n.get((x.get("sector"), x.get("category")), 0) + 1
+    # company itself included, the way the app counts it. Every filing counts,
+    # its own and each `also`, because that is what the list it opens matches
+    # (index.html coCatOk); counting the primary alone printed 23 over 24.
+    cat_n = category_counts(orgs)
     n = 0
     for o in orgs:
         if not has_static_page(o):
