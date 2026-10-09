@@ -58,9 +58,14 @@
   button.linkish{background:none;border:0;padding:0;color:var(--accent);font-weight:500;
     text-decoration:underline;cursor:pointer}
   .msg{font-size:13.5px;padding:11px 14px;border-radius:9px;margin:14px 0 0}
-  .msg.ok{background:var(--chip);color:var(--accent)}
-  .msg.err{background:var(--chip);color:var(--bad)}
-  .foot{color:var(--faint);font-size:12.5px;margin-top:22px;line-height:1.6}
+  /* ink on the chip, and the kind in the rule beside it: --accent and --bad
+     on --chip measured 3.6:1 in dark mode and 4.49:1 in light (launch
+     audit 2, 2026-10-09). An empty message takes no room, so the live
+     region can stay in the page and be announced when it fills. */
+  .msg:empty{display:none}
+  .msg.ok{background:var(--chip);color:var(--ink);border-left:3px solid var(--accent)}
+  .msg.err{background:var(--chip);color:var(--ink);border-left:3px solid var(--bad)}
+  .foot{color:var(--dim);font-size:12.5px;margin-top:22px;line-height:1.6}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .saved li{font-size:13.5px;margin-bottom:5px}
   .saved{padding-left:18px;margin:0}
@@ -327,7 +332,7 @@ function readForm(){
 
 function say(kind,text){
   const m=$("#msg"); if(!m)return;
-  m.className="msg "+kind; m.textContent=text; m.hidden=false;
+  m.className="msg "+kind; m.textContent=text;
 }
 
 async function api(body){
@@ -352,7 +357,7 @@ function signupView(){
     <div style="height:16px"></div>
     ${formHTML(null)}
     <button id="go">Send me the confirmation</button>
-    <div id="msg" class="msg" hidden></div>
+    <div id="msg" class="msg" role="status" aria-live="polite"></div>
   </div>`;
   fillSectors(); paintCompanies();
   $("#go").onclick=async()=>{
@@ -408,7 +413,7 @@ function settingsView(data){
     ${formHTML(PREFS)}
     <button id="save">Save changes</button>
     <button class="ghost" id="test">See these filters on the board</button>
-    <div id="msg" class="msg" hidden></div>
+    <div id="msg" class="msg" role="status" aria-live="polite"></div>
   </div>
   <div class="panel"><h2>Saved roles on this browser</h2>
     <p class="note" id="syncnote"></p>
@@ -497,7 +502,7 @@ function settingsView(data){
      one button, and a person presses it. */
   const button=(title,note,label)=>{
     $("#view").innerHTML=`<div class="panel"><h2>${title}</h2><p class="note">${note}</p>
-      <p><button type="button" id="linkgo">${label}</button></p><div id="linkmsg"></div></div>`;
+      <p><button type="button" id="linkgo">${label}</button></p><div id="linkmsg" role="status"></div></div>`;
     return new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
   };
   if(WANT_STOP){

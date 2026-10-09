@@ -445,11 +445,13 @@ def redraw() -> dict:
 
     manual_count, manual_dupes = bb.merge_manual(postings, man, orgs)
     bb.merge_hq(postings, bb.load_hq(), companies)
-    bb.carry_first_seen(postings, prev.get("postings", []))
+    nights, read_from = bb.history_first_seen()
+    bb.carry_first_seen(postings, prev.get("postings", []), nights)
     bb.fill_geography(postings)
     unique = bb.drop_identical(postings)
     identical = len(postings) - len(unique)
     postings = unique
+    bb.mark_read_since(orgs, postings, read_from)
     groups = bb.count_openings(postings, orgs)
     # `generated` and the crawl's counts are the crawl's, never this run's.
     # The companies left off are left out of every count too: the board is

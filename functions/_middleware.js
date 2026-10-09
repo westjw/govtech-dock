@@ -70,11 +70,17 @@ const esc = (s) =>
 const JOB_MARKUP = false;
 
 /* What this address is, or null to leave the defaults alone. */
-async function describe(request, env) {
+/* The keys index.html writes for the job board (URLKEYS, plus the quota
+ * pill, the where segment, the pay set-aside and the page). An address
+ * carrying any of them is the jobs tab, as tabFromUrl reads it. */
+const BOARD_KEYS = ["q", "fam", "sec", "st", "off", "reg", "sen", "us", "mode",
+  "src", "pay", "since", "sort", "any", "where", "paynone", "p"];
+
+export async function describe(request, env) {
   const u = new URL(request.url);
   const role = u.searchParams.get("role");
   const co = u.searchParams.get("co");
-  const tab = u.searchParams.get("tab");
+  let tab = u.searchParams.get("tab");
 
   if (role) {
     const idx = await index(env, request, "roles");
@@ -195,6 +201,30 @@ async function describe(request, env) {
     intel: ["Govtech market intel", "What the hiring across state and local government technology actually looks like."],
     saved: null,
   };
+  // AN ADDRESS THAT NAMES NO TAB IS NOT ALWAYS HOME (launch audit 2,
+  // 2026-10-09). The app opens a conference panel at ?e=<tag> and writes the
+  // job board's filters with no tab (?us=us, ?st=TX&us=us), and every one of
+  // them was titled and canonicalised as https://sledjobs.com/. Read them the
+  // way index.html's tabFromUrl does.
+  const ev = u.searchParams.get("e");
+  if (ev && !role && !co && !tab) {
+    const idx = await index(env, request, "events");
+    const e = own(idx && idx.events, ev);
+    if (e && e.p) {
+      return {
+        title: `${e.n}: who is hiring \u00b7 ${NAME}`,
+        desc: `${e.l || e.n}. Sales roles at the govtech companies we track there.`,
+        canonical: `${SITE}/e/${encodeURIComponent(e.p)}`,
+        image: `${SITE}/assets/og/conferences.png`,
+      };
+    }
+    tab = "conferences";
+  }
+  if (!role && !co && !tab) {
+    const has = (ks) => ks.some((k) => u.searchParams.has(k));
+    if (has(["csec", "ccat", "call"])) tab = "companies";
+    else if (has(BOARD_KEYS)) tab = "jobs";
+  }
   if (tab && TABS[tab]) {
     const [t, d] = TABS[tab];
     return {

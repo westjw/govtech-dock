@@ -1890,6 +1890,38 @@ fires.
     theme switch works on a light system. `check_every_css_variable_is_defined`.
   - **"Hiring a seller" means a quota-carrying role**, on conference rosters
     and in the company link preview, never "any open role".
+  The second batch:
+  - **"Hiring hard" ignores a night we started reading more** (momentum
+    rule 6). On 09-02 the crawler began reading whole boards and Motorola
+    went from 33 openings to 357 overnight; its badge said 23 quota-carrying
+    roles became 62 while they had fallen from 69. A night that adds 15+
+    openings of any family and half again moves that company's baseline to
+    it, and the badge names that night. `check_a_coverage_jump_is_not_a_surge`.
+  - **A posting keeps the night a snapshot first held it.** carry_first_seen
+    read only the previous board, so postings hidden by sled_only or behind a
+    failed read were dated the night they came back: Granicus said "first
+    read here 1 day ago" about boards read since August. Exact ids from
+    data/history now count too (1,171 postings moved), and `read_since` on an
+    org is the first night we held any of its postings, where that is
+    earlier than its open ones. `check_a_posting_keeps_the_night_we_first_saw_it`.
+  - **Ownership prints the ruling's sentence, never a stored year beside it.**
+    The year was often another deal's (DTN "acquired 2025" was its own
+    purchase), and the label said "their own announcement" over research.
+    `check_ownership_says_what_the_record_holds`.
+  - **The role page's pay sentence counts with payBit**: silence only where
+    we read the posting, unread ones said as unread, and a $ range only from
+    yearly USD (Mueller's "$80k" was CAD). `check_the_pay_sentence_counts_what_it_read`.
+  - **Every view has an address.** Tabs go through `goTab()`, the Companies
+    list keeps its sector, sub-sector and "everyone" in `csec`, `ccat` and
+    `call`, and "Browse all N in X" opens the list on X. The middleware
+    titles ?e= as its /e/ page (meta-events.json) and a filtered board as the
+    jobs tab, not as the home page. `check_every_view_has_its_own_address`.
+  - **Fog never colours reading text** (49 rules and inline styles moved to
+    `--dim` / `--c-ink2`); counts, the add dialog and the alerts page speak
+    to a screen reader; the conference panel keeps and returns focus; the
+    banner pauses while a keyboard is in it. Element `onfocusin` does not
+    exist in any browser: use addEventListener.
+    `check_reading_text_is_never_set_in_fog`, `check_assistive_tech_hears_what_changed`.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

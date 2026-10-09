@@ -995,7 +995,7 @@ CFPAGE_CSS = """
   .cfp-alt{font:inherit;font-size:14px;font-weight:600;padding:10px 18px;
     border-radius:999px;border:1px solid var(--line);background:var(--panel);
     color:var(--ink);cursor:pointer}
-  .cfp-src{margin-left:auto;font-size:12px;color:var(--faint);text-align:right}
+  .cfp-src{margin-left:auto;font-size:12px;color:var(--dim);text-align:right}
   .cfp-chips{display:flex;gap:8px;flex-wrap:wrap}
   .cfchip{font-size:12.5px;background:var(--panel);border:1px solid var(--line);
     border-radius:999px;padding:6px 12px;color:var(--dim)}
@@ -1026,7 +1026,7 @@ CFPAGE_CSS = """
     border-radius:50%;background:var(--ink);color:var(--panel);
     font-size:9.5px;font-weight:700;margin-left:-7px;
     border:2px solid var(--panel);flex:0 0 auto}
-  .cfzero{color:var(--faint)}
+  .cfzero{color:var(--dim)}
  /* -- the two differences, stated rather than edited into the rules above --
     The panel's stylesheet is carried WHOLE and on purpose: an edited copy is
     a copy that drifts. What a page is and a drawer is not goes here.
@@ -1067,14 +1067,14 @@ COPAGE_CSS = """
  .band a{color:var(--hdr-ink);text-decoration:none;font-weight:800;letter-spacing:.01em}
  .pay{font-variant-numeric:tabular-nums}
  .pay{color:var(--accent);font-weight:600;white-space:nowrap}
- .paynone{color:var(--faint)}
+ .paynone{color:var(--dim)}
  .copage{--c-bg:#FAF7F0;--c-rule:#C9DCE8;--c-stroke:#1F2536;--c-ink:#1F2536;--c-ink2:#556F82;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#C1341F;--c-link:#0B57C4}
  @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .copage{--c-bg:#151B29;--c-rule:#2E3A50;--c-stroke:#4A5C71;--c-ink:#E8F1F7;--c-ink2:#A9C3D4;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#E4634A;--c-link:#9CC3FF}}
  :root[data-theme=dark] .copage{--c-bg:#151B29;--c-rule:#2E3A50;--c-stroke:#4A5C71;--c-ink:#E8F1F7;--c-ink2:#A9C3D4;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#E4634A;--c-link:#9CC3FF}
  .copage{background:var(--c-bg);color:var(--c-ink);margin:0;padding:0 20px 48px;min-height:70vh}
  .copage a{color:var(--c-link)}
  .cowrap{max-width:1000px;margin:0 auto}
- .cocrumb{font-size:11px;line-height:1.5;color:var(--c-ink3);padding:14px 0 10px;font-variant-numeric:tabular-nums}
+ .cocrumb{font-size:11px;line-height:1.5;color:var(--c-ink2);padding:14px 0 10px;font-variant-numeric:tabular-nums}
  .cocrumb a{color:var(--c-ink2);text-decoration:none}
  .cocrumb a:hover{text-decoration:underline}
  .cocrumb .sep{padding:0 7px;color:var(--c-rule)}
@@ -1083,7 +1083,7 @@ COPAGE_CSS = """
  .coid .logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:4px}
  .coid .logo img.ondark{background:var(--hdr-bg)}
  .coid h1{font-size:30px;line-height:1;letter-spacing:-.025em;margin:0 0 8px}
- .cometa{font-size:11px;line-height:1.5;color:var(--c-ink3);font-variant-numeric:tabular-nums}
+ .cometa{font-size:11px;line-height:1.5;color:var(--c-ink2);font-variant-numeric:tabular-nums}
  .cometa .sep{padding:0 8px;color:var(--c-rule)}
  .cometa a{color:var(--c-ink2)}
  .coacts{margin-left:auto;display:flex;gap:8px;flex:none}
@@ -1098,7 +1098,7 @@ COPAGE_CSS = """
  .costrip>dl.src{flex:1.1 1 0}
  .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
  .costrip .v.txt{font-size:17px;line-height:1.2;letter-spacing:-.01em}
- .costrip .v.dim{color:var(--c-ink3)}
+ .costrip .v.dim{color:var(--c-ink2)}
  .costrip .v.acc{color:var(--c-accent-text)}
  .costrip dt{font:800 9.5px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink3);margin:10px 0 7px}
  .costrip dd{margin:0;font-size:11px;line-height:1.5;color:var(--c-ink2);font-variant-numeric:tabular-nums}
@@ -1107,28 +1107,28 @@ COPAGE_CSS = """
  .corail{width:262px;flex:none}
  .cosec{margin:0 0 30px}
  .cosec>h2{font:800 15px/1 var(--font-heading);display:inline}
- .cosec .smeta{font-size:11px;color:var(--c-ink3);padding-left:10px}
+ .cosec .smeta{font-size:11px;color:var(--c-ink2);padding-left:10px}
  .cosechd{display:flex;align-items:baseline;gap:0;border-bottom:1px solid var(--c-rule);padding-bottom:9px;margin-bottom:14px}
  .coabout p{font-size:13px;line-height:1.65;max-width:560px;margin:0 0 13px;color:var(--c-ink)}
- .coabout .more{color:var(--c-ink3)}
+ .coabout .more{color:var(--c-ink2)}
  .conews{max-height:262px;overflow:auto;position:relative}
  .conewsw{position:relative}
  .conewsw .fade{position:absolute;left:0;right:0;bottom:0;height:54px;pointer-events:none;background:linear-gradient(transparent,var(--c-bg))}
  .cochip{font:800 9.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border:1px solid var(--c-rule);color:var(--c-ink3);display:inline-block}
  .conews .row{display:flex;gap:0;padding:11px 0;border-bottom:1px solid var(--c-rule);align-items:baseline}
- .conews .d{width:62px;flex:none;font-size:11px;color:var(--c-ink3);font-variant-numeric:tabular-nums}
+ .conews .d{width:62px;flex:none;font-size:11px;color:var(--c-ink2);font-variant-numeric:tabular-nums}
  .conews .k{width:84px;flex:none;font:800 9.5px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink2)}
  .conews .k.contract{color:var(--c-accent-text)}
  .conews .t{flex:1;min-width:0;font-size:12.5px;line-height:1.5}
  .cogrp{margin:0 0 14px}
  .cogrph{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--c-rule)}
  .cogrph h3{font:800 13px/1 var(--font-heading)}
- .cogrph .n{font-size:11px;color:var(--c-ink3);margin-left:auto}
+ .cogrph .n{font-size:11px;color:var(--c-ink2);margin-left:auto}
  .corow{display:flex;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.5}
  .corow .ti{flex:1;min-width:0;font-weight:800}
  .corow .lo{width:120px;flex:none;color:var(--c-ink2);font-size:11px}
  .corow .pa{width:118px;flex:none;color:var(--c-ink2);font-size:11px;font-variant-numeric:tabular-nums}
- .corow .ag{width:52px;flex:none;color:var(--c-ink3);font-size:11px;font-variant-numeric:tabular-nums}
+ .corow .ag{width:52px;flex:none;color:var(--c-ink2);font-size:11px;font-variant-numeric:tabular-nums}
  .corow .sv{width:46px;flex:none;text-align:right}
  .comore{font-size:11px;padding:9px 0;display:inline-block}
  .coempty{display:flex;gap:20px;align-items:flex-start;padding:22px 0 4px}
@@ -1138,7 +1138,7 @@ COPAGE_CSS = """
  .corail section{margin:0 0 26px}
  .corail h2{font:800 9.5px/1.35 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:var(--c-ink3);border-bottom:1px solid var(--c-rule);padding-bottom:8px;margin-bottom:4px}
  .corail .r{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px solid var(--c-rule);font-size:12.5px;line-height:1.45}
- .corail .r .d{display:block;font-size:11px;color:var(--c-ink3);margin-top:3px}
+ .corail .r .d{display:block;font-size:11px;color:var(--c-ink2);margin-top:3px}
  .corail .r .n{margin-left:auto;font-size:11px;color:var(--c-ink2);font-variant-numeric:tabular-nums;flex:none}
  .corail .tag{margin-left:auto;font:800 9.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-text);flex:none}
  .coacq .acqhead{font-size:14px;font-weight:700;margin:0 0 6px}
@@ -1146,16 +1146,14 @@ COPAGE_CSS = """
  .corail .b{padding:11px 0;border-bottom:1px solid var(--c-rule)}
  .corail .b:last-of-type{border-bottom:0}
  .corail .bh{display:flex;align-items:baseline;gap:8px;font-size:12.5px;font-weight:600}
- .corail .bh .yr{font:800 9.5px/1 var(--font-heading);letter-spacing:.1em;
-   text-transform:uppercase;color:var(--c-ink3)}
  .corail .bh .n{margin-left:auto;font-size:11px;color:var(--c-ink2)}
  .corail .does,.corail .deal{font-size:11px;line-height:1.55;color:var(--c-ink2);
    margin:5px 0 0}
- .corail .deal{color:var(--c-ink3)}
+ .corail .deal{color:var(--c-ink2)}
  .corail .src-l{font-size:11px;margin:5px 0 0}
- .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink3);padding-top:9px}
+ .corail .note{font-size:11px;line-height:1.5;color:var(--c-ink2);padding-top:9px}
  .corail .all{font-size:11px;padding-top:9px;display:inline-block}
- .coprov{font-size:10.5px;line-height:1.5;color:var(--c-ink3)}
+ .coprov{font-size:10.5px;line-height:1.5;color:var(--c-ink2)}
  .cofoot{padding-top:10px;border-top:1px solid var(--c-rule)}
  @media (max-width:1080px){.corail{width:220px}}
  @media (max-width:900px){
@@ -1213,11 +1211,13 @@ def _co_roles(posts: list, since: "dt.date | None" = None) -> set:
     return out
 
 
-def _co_record_days(mine: list, now: dt.date) -> "int | None":
+def _co_record_days(mine: list, now: dt.date,
+                    since: "str | None" = None) -> "int | None":
     """How far back the record goes for this company, in days, or None when
     nothing here carries a date. A window longer than the record measures
-    us, not them - see coRecordDays in index.html."""
-    first = None
+    us, not them - see coRecordDays in index.html. `since` is the org's
+    `read_since`: our snapshots can go back further than its open postings."""
+    first = _co_date(since) if since else None
     for p in mine:
         t = _co_date(p.get("first_seen"))
         if t and (first is None or t < first):
@@ -1302,12 +1302,12 @@ def open_count(o: dict) -> str:
 
 
 def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
-                  state: str = "") -> str:
+                  state: str = "", since: "str | None" = None) -> str:
     if not open_:
         if state == "none":
             return "no board on file to count"
         return "none seen recently" if readable else "not measured"
-    span = _co_record_days(mine, now)
+    span = _co_record_days(mine, now, since)
     if span is not None and span < 30:
         when = "today" if span == 0 else f"{span} day{'' if span == 1 else 's'} ago"
         return f"first read here {when}"
@@ -1315,7 +1315,8 @@ def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
     return f"+{n} first read in the last 30 days" if n else "none added in 30 days"
 
 
-def _co_phase(mine: list, readable: bool, now: dt.date) -> dict:
+def _co_phase(mine: list, readable: bool, now: dt.date,
+              since: "str | None" = None) -> dict:
     """{value, tone, note} for the hiring-phase cell - coPhase, ported.
 
     A board nobody could read has no phase, not a quiet one. And the record
@@ -1333,7 +1334,7 @@ def _co_phase(mine: list, readable: bool, now: dt.date) -> dict:
         if t and t >= d60:
             fresh.append(p)
     roles = len(_co_roles(fresh))
-    span = _co_record_days(mine, now)
+    span = _co_record_days(mine, now, since)
     if span is not None and span < 60:
         return {"value": "Not enough history to read", "tone": "dim",
                 "note": f"we have only been reading this board for {span} "
@@ -1551,16 +1552,28 @@ def _co_acquired(o: dict, by_id: dict) -> str:
                 if (x.get("name") or "").strip().lower() == str(parent).strip().lower()), None)
     if hit:
         who = f'<a href="{_co_href(hit, by_id)}">{who}</a>'
-    yr = (acq or {}).get("year")
-    head = f"Part of {who}" + (f", acquired {esc(str(yr))}" if yr else "")
+    # NO YEAR IN THE HEADLINE. The stored `year` is often another deal's:
+    # DTN read "acquired 2025" (its own purchase of Tandem Concepts) over a
+    # sentence saying TBG AG bought it in 2017, and Sterling Volunteers
+    # "acquired 2026" over "No year is given" (launch audit 2, 2026-10-09).
+    # The sentence the ruling was made from carries any year it has.
+    head = f"Part of {who}"
     deal = (f'<p>{esc(str(acq["deal"]))}</p>' if acq and acq.get("deal") else "")
     src = (acq or {}).get("source")
     link = (f'<p class="coprov">{_ext_link(src, "Read the announcement")}</p>'
             if isinstance(src, str) and src.startswith("http") else "")
-    if not deal and not yr:
+    if not deal:
         return ""            # a bare parent name is what the meta line already says
+    # who ruled, and from what: "their own announcement" sat over SubItUp's
+    # "SubItUp's own site makes no mention of it"
+    by = str((acq or {}).get("ruled_by") or "")
+    on = (acq or {}).get("on")
+    said = ("from research, not yet checked by a person"
+            if not by or by.startswith("agent")
+            else "a person's ruling" + (f" on {esc(str(on))}" if on else "")
+            + ", from research")
     return (f'<section class="cosec coacq"><div class="cosechd"><h2>Ownership</h2>'
-            f'<span class="smeta">ruled from their own announcement</span></div>'
+            f'<span class="smeta">{said}</span></div>'
             f'<p class="acqhead">{head}</p>{deal}{link}</section>')
 
 
@@ -1668,13 +1681,30 @@ def _co_news(o: dict, dom: str, now: dt.date | None = None) -> str:
             f'<div class="conews">{rows}</div><span class="fade"></span></div></section>')
 
 
+def companies_list_href(sector: str = "", category: str = "") -> str:
+    """The app's Companies list, opened on a sector or sub-sector.
+
+    csec/ccat are the list's own keys (index.html COKEYS), and call=1 shows
+    everyone we track, which is the number "Browse all N" printed. Both links
+    were bare /?tab=companies and opened all 1,200 (launch audit 2)."""
+    q = [("tab", "companies")]
+    if sector:
+        q.append(("csec", sector))
+    if category:
+        q.append(("ccat", category))
+    if sector or category:
+        q.append(("call", "1"))
+    return "/?" + urllib.parse.urlencode(q, quote_via=urllib.parse.quote)
+
+
 def _co_rivals(o: dict, n_in_cat: int, by_id: dict) -> str:
     """The Competitors rail block - coRivals, ported. Three states, three
     different facts: a researched shortlist, a researched EMPTY, and not
     researched yet. The third offers the category as navigation, labelled as
     navigation, and never as the shortlist."""
     esc = html.escape
-    link = (f'<a class="all" href="/?tab=companies">Browse all {n_in_cat:,} in '
+    href = esc(companies_list_href(o.get("sector") or "", o.get("category") or ""))
+    link = (f'<a class="all" href="{href}">Browse all {n_in_cat:,} in '
             f'{esc(o.get("category") or "")} &rarr;</a>' if n_in_cat > 1 else "")
     checked = o.get("competitors_checked_on")
     rivals = o.get("competitors") or []
@@ -1806,7 +1836,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     quota = o.get("quota_roles") or 0
     state = board_state(o)
     readable = state == "read"
-    phase = _co_phase(mine, readable, now)
+    phase = _co_phase(mine, readable, now, o.get("read_since"))
     if state == "none":
         phase = {"value": "Not measured", "tone": "dim",
                  "note": "no job board on file, so there is nothing here to "
@@ -1869,7 +1899,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                     + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
     # a board we read that lists roles, none in scope, is not "none seen"
     open_note = ("none shown here, see below" if readable and not open_ and scope_note(o)
-                 else _co_open_note(mine, open_, readable, now, state))
+                 else _co_open_note(mine, open_, readable, now, state,
+                                    o.get("read_since")))
     pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
     strip = (f'<div class="costrip">'
              f'<dl><div class="v{"" if open_ else " dim"}">{open_count(o)}</div><dt>open roles</dt>'
@@ -1917,8 +1948,6 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
             elif b.get("website"):
                 nm = _ext_link(b["website"], nm)
             n = f'<span class="n">{b["openRoles"]}</span>' if b.get("openRoles") is not None else ""
-            yr = (f'<span class="yr">acquired {esc(str(b["acquired_year"]))}</span>'
-                  if b.get("acquired_year") else "")
             # THE PARAGRAPH IS THE POINT. A list of names answers "who do they
             # own" and stops there; the reader's next question is always what
             # that was and when it changed hands. Both are stored - the
@@ -1930,7 +1959,9 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                     if b.get("deal") else "")
             src = (f'<p class="src-l">{_ext_link(b["source"], "the announcement")}</p>'
                    if b.get("source") else "")
-            rows += (f'<div class="b"><div class="bh"><span>{nm}</span>{yr}{n}</div>'
+            # no "acquired YYYY": the stored year can be another deal's (see
+            # _co_acquired); the deal sentence carries the one it has
+            rows += (f'<div class="b"><div class="bh"><span>{nm}</span>{n}</div>'
                      f'{does}{deal}{src}</div>')
         rail += (f'<section><h2>Brands they own</h2>{rows}'
                  f'<p class="note">Counts are not rolled up: roles above are each '
@@ -1982,7 +2013,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     body = (f'<div class="copage"><div class="cowrap">'
             f'<nav class="cocrumb" aria-label="Breadcrumb">'
             f'<a href="/?tab=companies">Companies</a><span class="sep">/</span>'
-            f'<a href="/?tab=companies">{esc(o.get("sector") or "")}</a>'
+            f'<a href="{esc(companies_list_href(o.get("sector") or ""))}">'
+            f'{esc(o.get("sector") or "")}</a>'
             f'<span class="sep">/</span>{esc(o.get("category") or "")}</nav>'
             f'{ident}{strip}'
             f'<div class="cobody"><main class="cocol">{about}{acq}{news}{roles}</main>'
@@ -2892,6 +2924,9 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             dept_index.setdefault(_c["department"], []).append(_c)
 
     n = 0
+    # tag -> the page this event got, for the middleware: a shared ?e= link
+    # was titled and canonicalised as the home page (launch audit 2)
+    events: dict = {}
     for c in board.get("conferences", []) or []:
         # THE SAME ACCESSOR THE PREDICATE USES. This read only `tag` while
         # conference_gets_a_page reads `tag or event_tag`, so the two disagreed
@@ -2939,7 +2974,11 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             + "Sales roles at the govtech companies on this floor.",
             f"{site}/e/{_slugify(tag)}", body, brand, "conferences",
             css=_default_css(brand) + CFPAGE_CSS, wrap=False))
+        events[tag] = {"n": c.get("name") or tag, "p": _slugify(tag), "l": line}
         n += 1
+    (out / "meta-events.json").write_text(
+        json.dumps({"generated": board.get("generated"), "events": events},
+                   separators=(",", ":")))
     return n
 
 
@@ -2966,7 +3005,10 @@ def attach_active(board: dict) -> dict:
         sys.path.insert(0, str(ROOT / "scripts"))
         import momentum as _mom
         surge = _mom.surge()
-        board["active"] = ([{"id": c["id"], "was": c["was"], "now": c["now"]}
+        # `since` per company: rule 6 measures a company whose coverage
+        # jumped from the night it jumped, not from the window's start
+        board["active"] = ([{"id": c["id"], "was": c["was"], "now": c["now"],
+                             "since": c["since"]}
                             for c in surge.get("companies", [])]
                            if surge.get("ready") else [])
         board["active_since"] = surge.get("since")

@@ -9088,6 +9088,118 @@ def check_every_control_answers_the_keyboard() -> int:
     return errors
 
 
+def check_every_view_has_its_own_address() -> int:
+    """A tab, a filtered list and a conference panel each have an address.
+
+    Launch audit 2 (2026-10-09): switching tabs never changed the address,
+    so Back after opening a company landed on the job board and a copied link
+    reopened the last view. "Browse all 43 in Finance & ERP" and the sector
+    breadcrumb opened the unfiltered list with ?co= still in the bar. And
+    every ?e= panel and filtered board was titled and canonicalised as the
+    home page. Driven where it can be (describe_harness, tabFromUrl,
+    build_site's links); the history calls are read off the source, and
+    browser-checked when they change.
+    """
+    import build_site as bs
+    errors = 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "describe_harness.mjs")],
+                       capture_output=True, text=True, timeout=60)
+    if r.returncode != 0:
+        return fail(f"describe_harness.mjs failed: {r.stderr[-400:]}")
+    d = json.loads(r.stdout)
+    home = "https://sledjobs.com/"
+    want = {"/?e=APCO%202026": "https://sledjobs.com/e/apco-2026",
+            "/?e=Nowhere%202026": "https://sledjobs.com/?tab=conferences",
+            "/?us=us": "https://sledjobs.com/?tab=jobs",
+            "/?st=TX&us=us": "https://sledjobs.com/?tab=jobs",
+            "/?csec=Public%20Safety": "https://sledjobs.com/?tab=companies",
+            "/": home, "/?utm_source=x": home}
+    for path, canon in want.items():
+        got = (d.get(path) or {}).get("canonical")
+        if got != canon:
+            errors += fail(f"{path} is described with canonical {got}, not "
+                           f"{canon}: a shared link to it claims to be another page")
+    if "APCO 2026" not in ((d.get("/?e=APCO%202026") or {}).get("title") or ""):
+        errors += fail("a conference panel's shared link is not titled with the event")
+    tabs = (_harness().get("paySentence") or {}).get("tabs") or {}
+    for q, t in (("e", "conferences"), ("list", "companies"), ("board", "jobs"),
+                 ("plain", "home")):
+        if tabs.get(q) != t:
+            errors += fail(f"tabFromUrl opens a {q} address on {tabs.get(q)!r}, "
+                           f"not {t!r}")
+    href = bs.companies_list_href("Finance & ERP", "Tax & Revenue")
+    if "csec=Finance%20%26%20ERP" not in href or "ccat=Tax%20%26%20Revenue" not in href \
+            or "call=1" not in href:
+        errors += fail(f"the static 'Browse all' link is {href}: it does not "
+                       f"open the list on the category it counted")
+    src = (ROOT / "index.html").read_text()
+    js = re.sub(r"/\*.*?\*/", "", src, flags=re.S)
+    go = js[js.find("function goTab("):][:400]
+    if "writeUrl(" not in go or "CO=null" not in go.replace(" ", ""):
+        errors += fail("goTab does not clear the open company and write the "
+                       "address, so a tab switch leaves the bar on the last view")
+    if not re.search(r'\$\("#tabs"\)\.children\]\.forEach\(b=>b\.onclick=\(\)=>goTab\(', js):
+        errors += fail("the tab buttons do not go through goTab, so a tab "
+                       "switch leaves the bar on the last view")
+    # every other way onto a tab: setting `tab` and calling render() beside
+    # it is the shape that never wrote the address
+    # (a ?co= naming nobody keeps its address: the notice is about it)
+    loose = [m.group(0)[:60] for m in re.finditer(
+        r'tab="(?:jobs|companies|how|home|map|intel|saved)";[^;\n]*;?\s*render\(\)', js)
+        if "CO_MISSING" not in js[max(0, m.start() - 40):m.start()]]
+    if loose:
+        errors += fail(f"{len(loose)} place(s) switch tab without writing the "
+                       f"address: {loose[:3]}")
+    w = js[js.find("function writeUrl("):][:1600]
+    if '"e"' not in w or "COKEYS" not in w:
+        errors += fail("writeUrl does not clear ?e= and the list's own keys, "
+                       "so a conference or a filter follows the reader to "
+                       "another tab")
+    tc = js[js.find("function toCompanies("):][:400]
+    if "goTab(" not in tc:
+        errors += fail("toCompanies leaves the open company in the address")
+    for act in ("toCategory", "toSector"):
+        if f'data-click="{act}"' not in js:
+            errors += fail(f"no link uses {act}: the company view's category "
+                           f"and sector links open the unfiltered list")
+    return errors
+
+
+def check_the_pay_sentence_counts_what_it_read() -> int:
+    """A role page's pay paragraph counts silence only where we read, and $ only in USD.
+
+    Launch audit 2 (2026-10-09): Motorola's role page said "3 of their 394
+    postings state pay ... The rest state none - that is the posting being
+    silent", and 382 of the rest were never read. Mueller's "$80k" was CAD
+    80,026, and two of its others state hourly pay; Mark43's "$30k" was £30k.
+    coPaySentence() counts with payBit and is driven here on one posting of
+    each kind.
+    """
+    got = (_harness().get("paySentence") or {})
+    mixed, usd = got.get("mixed") or "", got.get("allUsd") or ""
+    errors = 0
+    if not mixed.startswith("3 of their 9 postings state pay"):
+        errors += fail(f"the pay sentence miscounts who states pay: {mixed!r}. "
+                       f"Hourly and non-USD figures are stated pay too")
+    if "$90k" not in mixed or "$120k" not in mixed:
+        errors += fail(f"the pay sentence lost the one yearly USD range: {mixed!r}")
+    if "$80k" in mixed or "$110k" in mixed:
+        errors += fail(f"the pay sentence prints a CAD salary with a $ sign: {mixed!r}")
+    if "2 that we read state none" not in mixed:
+        errors += fail(f"the pay sentence does not count silence as the postings "
+                       f"we read and found silent: {mixed!r}")
+    if "3 postings we could not read" not in mixed:
+        errors += fail(f"the pay sentence folds postings we never read into "
+                       f"'state none': {mixed!r}")
+    if "the rest" in mixed.lower():
+        errors += fail(f"'the rest' is back in the pay sentence: {mixed!r}")
+    if usd != "2 of their 2 postings state pay, between $60k and $95k a year.":
+        errors += fail(f"an all-USD company reads {usd!r}")
+    if got.get("none") != "":
+        errors += fail("a company whose postings state no pay got a pay sentence")
+    return errors
+
+
 def check_the_app_company_view_counts_openings() -> int:
     """The app's company view counts what its strip counts: openings.
 
@@ -9210,6 +9322,102 @@ def bs_slug(tag: str) -> str:
     sys.path.insert(0, str(ROOT / "scripts"))
     import build_site as bs
     return bs._slugify(tag)
+
+
+def check_reading_text_is_never_set_in_fog() -> int:
+    """Fog (--faint, --c-ink3) colours tiny uppercase labels, never reading text.
+
+    CLAUDE.md's palette rule, and launch audit 2 (2026-10-09) found it broken
+    in 49 places: "carrying a number" on 59 Companies rows, the month counts
+    on the calendar, every company page's meta line, role ages and notes, the
+    alerts page's privacy footer - 2.5 to 2.9:1 where AA needs 4.5. A rule
+    that sets text in Fog must also set it uppercase; inline styles never
+    may. Disabled controls are exempt, as WCAG has them.
+    """
+    keep = {".pager button:disabled", ".calweek-days span.out"}
+    errors = 0
+    for f in ("index.html", "scripts/build_site.py", "alerts.html"):
+        src = (ROOT / f).read_text()
+        for tok in ("--faint", "--c-ink3"):
+            for m in re.finditer(r"color:\s*var\(" + re.escape(tok) + r"\)", src):
+                st = src.rfind("{", 0, m.start())
+                en = src.find("}", m.end())
+                tail = src[max(0, m.start() - 80):m.start()]
+                if 'style="' in tail and "{" not in tail[tail.rfind('style="'):]:
+                    line = src.count("\n", 0, m.start()) + 1
+                    errors += fail(f"{f}:{line} sets inline text in {tok}, which "
+                                   f"is 2.5-2.9:1 on its ground; use the readable "
+                                   f"secondary tone")
+                    continue
+                sel = src[src.rfind("}", 0, st) + 1:st].strip().split("\n")[-1].strip()
+                if sel in keep or "uppercase" in src[st:en]:
+                    continue
+                line = src.count("\n", 0, m.start()) + 1
+                errors += fail(f"{f}:{line} `{sel}` sets lower-case text in {tok}; "
+                               f"Fog is for tiny uppercase labels (CLAUDE.md)")
+    return errors
+
+
+def check_assistive_tech_hears_what_changed() -> int:
+    """Counts, messages and modals say what changed to a screen reader.
+
+    Launch audit 2 (2026-10-09): no live region anywhere in the app, so a
+    filter changed "6 roles" silently; the Add-a-company dialog had no name,
+    labels tied to nothing and a message nobody heard, and disabling Submit
+    dropped focus to <body>; the conference panel let Tab walk out onto the
+    page under it and gave focus to <body> on close; the home banner rotated
+    a focused slide away; the alerts page's messages were never announced.
+    The parts a vm cannot drive are read off the code.
+    """
+    errors = 0
+    html = (ROOT / "index.html").read_text()
+    js = re.sub(r"/\*.*?\*/", "", html, flags=re.S)
+    for i in ("j-n", "c-n", "cf-n"):
+        m = re.search(r'<[a-z]+[^>]*\bid="' + i + r'"[^>]*>', html)
+        if not m or 'role="status"' not in m.group(0):
+            errors += fail(f"#{i}, the result count, is not a live region: a "
+                           f"filter changes it and nobody hears")
+    dlg = re.search(r'<dialog id="add-dlg"[^>]*>', html)
+    lab = re.search(r'aria-labelledby="([^"]+)"', dlg.group(0)) if dlg else None
+    if not lab or f'id="{lab.group(1)}"' not in html:
+        errors += fail("the Add-a-company dialog has no accessible name")
+    for i in ("add-url", "add-ctx"):
+        if f'<label for="{i}"' not in html:
+            errors += fail(f"the #{i} field's label is tied to nothing; it is "
+                           f"named only by its placeholder")
+    m = re.search(r'<div id="add-msg"[^>]*>', html)
+    if not m or not re.search(r'role="status"|aria-live=', m.group(0)):
+        errors += fail("the Add-a-company result is not announced")
+    send = js[js.find("async function sendAdd("):][:3000]
+    if re.search(r"\bgo\.disabled\s*=\s*true", send):
+        errors += fail("sendAdd disables the focused Submit button, dropping "
+                       "focus to <body> inside an open modal")
+    op = js[js.find("function cfOpenPanel("):][:4000]
+    cl = js[js.find("function cfClosePanel("):][:1200]
+    if "CF_OPENER=document.activeElement" not in op.replace(" ", ""):
+        errors += fail("cfOpenPanel does not remember what opened it")
+    if not re.search(r'host\.onkeydown=e=>\{\s*if\(e\.key!=="Tab"\)', op):
+        errors += fail("the conference panel does not keep Tab inside it")
+    if ".focus(" not in cl:
+        errors += fail("closing the conference panel leaves focus on <body>")
+    if re.search(r"data-cfclose\]\"\)\.forEach\(b=>b\.onclick=cfClosePanel\)", js):
+        errors += fail("the panel's close button passes its click event as "
+                       "`fromUrl`, so closing never gives the address back")
+    if not re.search(r'bn\.addEventListener\("focusin",\s*stopBanner\)', js):
+        errors += fail("the home banner does not pause while a keyboard is in "
+                       "it, so a focused slide rotates away")
+    al = (ROOT / "alerts.html").read_text()
+    for m in re.finditer(r'<div id="msg"[^>]*>', al):
+        if 'role="status"' not in m.group(0):
+            errors += fail("the alerts page's #msg is not a live region")
+    if re.search(r"\.msg\.(ok|err)\{[^}]*color:var\(--(accent|bad)\)", al):
+        errors += fail("an alerts message sets its text in --accent or --bad "
+                       "on --chip, 3.6:1 in dark mode")
+    say = al[al.find("function say("):][:300]
+    if "hidden=false" in say.replace(" ", ""):
+        errors += fail("say() unhides #msg as it fills it; a region that "
+                       "appears with its text is not reliably announced")
+    return errors
 
 
 def check_every_css_variable_is_defined() -> int:
@@ -19348,6 +19556,174 @@ def check_active_badge_measures_them_not_us() -> int:
     return bad
 
 
+def check_a_posting_keeps_the_night_we_first_saw_it() -> int:
+    """A posting that left the board and came back keeps its first night.
+
+    Launch audit 2 (2026-10-09): carry_first_seen() read only the previous
+    board, so a posting hidden by sled_only from 09-10 to 10-08, or behind a
+    board that failed to read, was dated the night it came back. Granicus
+    printed "first read here 1 day ago" and "we have only been reading this
+    board for 1 day" over postings in our snapshots since 08-24, and so did
+    50 other company pages. The snapshots under data/history are read for
+    the exact id, and a company whose older postings have all closed carries
+    `read_since`, the first night we held any of its postings.
+    """
+    import tempfile as _tf
+    import build_board as bb
+    import build_site as bs
+    errors = 0
+    with _tf.TemporaryDirectory() as tmp:
+        h = pathlib.Path(tmp)
+        (h / "2026-08-24.json").write_text(json.dumps(
+            {"date": "2026-08-24", "ids": ["gran::AE - KS::h1", "gran::Old SE::h9"]}))
+        (h / "2026-09-01.json").write_text(json.dumps(
+            {"date": "2026-09-01", "ids": ["gran::AE - KS::h1", "other::x::h"]}))
+        (h / "2026-10-08.json").write_text(json.dumps(
+            {"date": "2026-10-08", "ids": ["gran::AE - KS::h1", "gran::AE - West::h2"]}))
+        nights, by_co = bb.history_first_seen(h)
+    if nights.get("gran::AE - KS::h1") != "2026-08-24" or by_co.get("gran") != "2026-08-24":
+        errors += fail(f"history_first_seen read {nights.get('gran::AE - KS::h1')} / "
+                       f"{by_co.get('gran')}, not the first night a snapshot held it")
+    back = {"id": "gran::AE - KS::h1", "opening_id": "gran::AE - KS",
+            "company_id": "gran", "first_seen": "2026-10-08"}
+    new = {"id": "gran::AE - West::h2", "opening_id": "gran::AE - West",
+           "company_id": "gran", "first_seen": "2026-10-08"}
+    # a title that merely recurs under another id is not the same posting
+    same_title = {"id": "gran::Old SE::h7", "opening_id": "gran::Old SE",
+                  "company_id": "gran", "first_seen": "2026-10-08"}
+    bb.carry_first_seen([back, new, same_title], [], nights)
+    if back["first_seen"] != "2026-08-24":
+        errors += fail(f"a posting back on the board after a month hidden is dated "
+                       f"{back['first_seen']}, not the 08-24 a snapshot first held it: "
+                       f"the Granicus 'first read here 1 day ago'")
+    if new["first_seen"] != "2026-10-08" or same_title["first_seen"] != "2026-10-08":
+        errors += fail("carry_first_seen moved a posting no snapshot held by its "
+                       "exact id")
+    later = {"id": "gran::AE - KS::h1", "opening_id": "gran::AE - KS",
+             "company_id": "gran", "first_seen": "2026-08-01"}
+    bb.carry_first_seen([later], [], nights)
+    if later["first_seen"] != "2026-08-01":
+        errors += fail("a snapshot moved a posting's date LATER than the one it had")
+    orgs = [{"id": "gran"}, {"id": "fresh"}, {"id": "gone", "read_since": "2026-01-01"}]
+    posts = [dict(new), {"id": "fresh::a::1", "company_id": "fresh",
+                         "first_seen": "2026-10-01"}]
+    bb.mark_read_since(orgs, posts, {"gran": "2026-08-24", "fresh": "2026-10-01"})
+    got = {o["id"]: o.get("read_since") for o in orgs}
+    if got != {"gran": "2026-08-24", "fresh": None, "gone": None}:
+        errors += fail(f"mark_read_since set {got}: only a company whose snapshots "
+                       f"go back past its open postings carries it, and a stale "
+                       f"value is removed")
+    now = dt.date(2026, 10, 9)
+    if bs._co_record_days([new], now, "2026-08-24") != 46:
+        errors += fail("the company page's record span ignores read_since")
+    if "first read here" in bs._co_open_note([new], 1, True, now, "read", "2026-08-24"):
+        errors += fail("the company page still says 'first read here' for a board "
+                       "we have read since August")
+    js = re.sub(r"/\*.*?\*/", "", (ROOT / "index.html").read_text(), flags=re.S)
+    for call in ("coPhase(mine,readable,o.read_since)",
+                 "coOpenNote(mine,open,readable,state,o.read_since)"):
+        if call not in js:
+            errors += fail(f"co() no longer passes read_since: {call}")
+    if "coRecordDays(mine,since)" not in js:
+        errors += fail("coOpenNote/coPhase do not hand read_since to coRecordDays")
+    rec = js[js.find("function coRecordDays("):][:300]
+    if "Date.parse(since)" not in rec:
+        errors += fail("coRecordDays ignores read_since, so the app says 'first "
+                       "read here' where the static page does not")
+    for f, needle in (("build_board.py", "history_first_seen()"),
+                      ("quick_rebuild.py", "bb.history_first_seen()")):
+        src = (ROOT / "scripts" / f).read_text()
+        code = "\n".join(l.split("#")[0] for l in src.splitlines())
+        if needle not in code or "mark_read_since(" not in code:
+            errors += fail(f"{f} does not carry dates from the snapshots and mark "
+                           f"read_since, so its next run re-dates every returned posting")
+    return errors
+
+
+def check_a_coverage_jump_is_not_a_surge() -> int:
+    """A night we started reading more of a board is not a night they hired.
+
+    Launch audit 2 (2026-10-09): on 2026-09-02 the crawler began reading whole
+    boards, and Motorola Solutions went from 33 openings to 357 overnight. The
+    badge read "23 quota-carrying roles on 2026-08-23, 62 now", while its
+    quota-carrying openings had fallen from 69 since that night. Rule 6 moves
+    such a company's baseline to the night it jumped.
+
+    Driven on synthetic snapshots, and the shipped tooltip is read off
+    attach_active and hotChip: a rebased company carries its own `since`, or
+    the tooltip names the window's start and the old misstatement returns.
+    """
+    import tempfile as _tf
+    import build_site as _bs
+    mom = _import_momentum()
+    bad = 0
+    days = ["2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04"]
+
+    def ids(co, q, e, tag=""):
+        return ([f"{co}::Account Executive {tag}{i}::q{i}" for i in range(q)]
+                + [f"{co}::Software Engineer {tag}{i}::e{i}" for i in range(e)])
+
+    filler = [f"filler::Software Engineer {i}::f{i}" for i in range(50)]
+    snaps = {
+        # 30 openings, then 120 overnight: a coverage change. Quota-carrying
+        # 10 -> 30 that night, 28 now - which is FEWER, not a surge.
+        "jumpco": [ids("jumpco", 10, 20), ids("jumpco", 30, 90),
+                   ids("jumpco", 30, 90), ids("jumpco", 28, 90)],
+        # a night with nothing read is an outage, not a jump on return:
+        # 4 -> 8 since the window opened is a real surge
+        "outageco": [ids("outageco", 4, 16), [], ids("outageco", 4, 16),
+                     ids("outageco", 8, 16)],
+        # jumped, then genuinely grew: measured from the jump, 6 -> 12
+        "latejump": [ids("latejump", 4, 16), ids("latejump", 6, 54),
+                     ids("latejump", 6, 54), ids("latejump", 12, 54)],
+    }
+    with _tf.TemporaryDirectory() as tmp:
+        root = pathlib.Path(tmp)
+        (root / "history").mkdir()
+        for n, day in enumerate(days):
+            row = list(filler)
+            for seq in snaps.values():
+                row += seq[n]
+            (root / "history" / f"{day}.json").write_text(
+                json.dumps({"date": day, "ids": row}))
+        (root / "board.json").write_text(json.dumps({"organizations": []}))
+        real = mom.DATA
+        mom.DATA = root
+        try:
+            r = mom.surge()
+            shipped = _bs.attach_active({}).get("active") or []
+        finally:
+            mom.DATA = real
+    rows = {c["id"]: c for c in r.get("companies") or []}
+    if "jumpco" in rows:
+        bad += fail("momentum calls jumpco a surge (10 -> 28 quota-carrying) "
+                    "although its openings went 30 -> 120 in one night and "
+                    "its quota-carrying count has fallen since: that is the "
+                    "Motorola badge, our crawler's history printed as theirs")
+    o = rows.get("outageco")
+    if not o or o.get("since") != days[0] or o.get("was") != 4:
+        bad += fail(f"outageco (4 -> 8 quota-carrying, one night unread) came "
+                    f"out as {o}; a night with nothing read must not move the "
+                    f"baseline")
+    lj = rows.get("latejump")
+    if not lj or lj.get("since") != days[1] or lj.get("was") != 6:
+        bad += fail(f"latejump came out as {lj}; a company whose coverage "
+                    f"jumped must be measured from that night ({days[1]}, 6 "
+                    f"quota-carrying), not from the window's start")
+    ship = {a["id"]: a for a in shipped}
+    if ship.get("latejump", {}).get("since") != days[1]:
+        bad += fail(f"attach_active ships latejump as {ship.get('latejump')}: "
+                    f"without its own `since`, the badge names the window's "
+                    f"start as the date of a count taken on another night")
+    src = (ROOT / "index.html").read_text()
+    body = src[src.find("function hotChip("):][:500]
+    if not re.search(r"\$\{esc\(a\.since\s*\|\|", body):
+        bad += fail("hotChip does not print the company's own `since`, so a "
+                    "rebased company's tooltip dates its count to the wrong "
+                    "night")
+    return bad
+
+
 def _import_momentum():
     import momentum
     return momentum
@@ -25438,6 +25814,68 @@ def check_researched_parents_reach_the_queue_with_their_evidence() -> int:
     return errors
 
 
+def check_ownership_says_what_the_record_holds() -> int:
+    """The ownership block prints the ruling's sentence, never a year beside it.
+
+    Launch audit 2 (2026-10-09): the stored `year` is often another deal's.
+    DTN read "Part of TBG AG, acquired 2025" (2025 is DTN buying Tandem
+    Concepts) over a sentence saying TBG AG bought it in 2017; Galaxy
+    Digital's 2024 is its own HandsOn Connect purchase; Sterling Volunteers
+    printed 2026 over "No year is given". And the block said "ruled from their
+    own announcement" over SubItUp's "SubItUp's own site makes no mention of
+    it". So: no year outside the sentence, on the page or on the buyer's
+    brands rail, and the label says who ruled and from what.
+    """
+    import build_site as bs
+    errors = 0
+    brand = json.loads((ROOT / "data" / "brand.json").read_text())
+    deal = ("Acquired Tandem Concepts in 2025. TBG AG bought this company in "
+            "April 2017.")
+    child = {"id": "k", "name": "Child Co", "sector": "Parks & Rec",
+             "category": "Recreation Management", "description": "A thing",
+             "open_roles": 0, "profile": None, "news": None, "parent": "Parent Co",
+             "acquired": {"parent": "Parent Co", "year": 2025, "deal": deal,
+                          "ruled_by": "owner", "on": "2026-09-09",
+                          "source": "parks-rec vendor research"}}
+    parent = {"id": "p", "name": "Parent Co", "sector": "Parks & Rec",
+              "category": "Recreation Management", "description": "Another",
+              "open_roles": 0, "profile": None, "news": None,
+              "brands": [{"name": "Child Co", "was_id": "k",
+                          "acquired_year": 2024, "deal": deal}]}
+    board = {"organizations": [parent, child], "logos": {}, "postings": [],
+             "generated": "2026-10-09"}
+    byid = {"p": parent, "k": child}
+    page = bs.company_page_html(child, [], board, brand, byid, {}, 1)
+    sec = page[page.find('class="cosec coacq"'):]
+    sec = sec[:sec.find("</section>")]
+    if not sec:
+        return fail("the acquired company's page has no ownership block")
+    if re.search(r"\b2025\b", sec.replace(deal, "")):
+        errors += fail("the ownership block prints the stored year beside the "
+                       "sentence; that year is often another deal's (DTN's "
+                       "2025 over TBG AG's 2017)")
+    if "own announcement" in sec:
+        errors += fail("the ownership block says it was ruled from their own "
+                       "announcement, over research that names no such page")
+    if "a person" not in sec or "2026-09-09" not in sec:
+        errors += fail("the ownership block does not say a person ruled it, "
+                       "and when")
+    if "Read the announcement" in sec:
+        errors += fail("a source that is not a link printed an announcement link")
+    agent = dict(child, acquired=dict(child["acquired"], ruled_by="agent:x"))
+    page = bs.company_page_html(agent, [], dict(board, organizations=[parent, agent]),
+                                brand, {"p": parent, "k": agent}, {}, 1)
+    if "not yet checked by a person" not in page:
+        errors += fail("an agent's unchecked acquisition reads as a person's ruling")
+    rail = bs.company_page_html(parent, [], board, brand, byid, {}, 1)
+    if re.search(r"acquired\s*2024", rail):
+        errors += fail("the brands rail prints a stored year beside the brand; "
+                       "Galaxy Digital's 2024 is a deal it made, not its sale")
+    if "TBG AG bought this company" not in rail:
+        errors += fail("the brands rail lost the sentence the ruling was made from")
+    return errors
+
+
 def check_an_acquisition_is_shown_on_both_sides() -> int:
     """Who bought whom, in a size a reader can see, on both companies.
 
@@ -25481,15 +25919,14 @@ def check_an_acquisition_is_shown_on_both_sides() -> int:
     if "coacq" not in kid_page:
         errors += fail("the acquired company's page has no ownership block; "
                        "'part of X' stays four words of grey meta type")
-    for needle, what in (("acquired 2022", "the year"),
-                         ("announced 1 May 2022", "the sentence it was ruled from"),
+    for needle, what in (("announced 1 May 2022", "the sentence it was ruled from"),
                          ("parent.example/news/child", "the announcement link")):
         if needle not in kid_page:
             errors += fail(f"the acquired company's page is missing {what}")
 
     par_page = bs.company_page_html(parent, [], board, brand, byid, {}, 1)
     for needle, what in (("sold campground reservations", "what the brand did"),
-                         ("acquired 2019", "the year it changed hands"),
+                         ("Bought in 2019", "the sentence it changed hands in"),
                          ("parent.example/news/folded", "the announcement link")):
         if needle not in par_page:
             errors += fail(f"the brands rail is missing {what} - a list of names "
@@ -31162,6 +31599,8 @@ def main() -> int:
     errors += check_posted_date_is_the_employers()
     errors += check_boards_read_agrees_with_coverage()
     errors += check_active_badge_measures_them_not_us()
+    errors += check_a_coverage_jump_is_not_a_surge()
+    errors += check_a_posting_keeps_the_night_we_first_saw_it()
     errors += check_sitemap_offers_the_job_pages()
     errors += check_alerts_page_cannot_be_framed()
     errors += check_watchdog_is_independent()
@@ -31181,6 +31620,7 @@ def main() -> int:
     errors += check_the_headline_is_the_headline_not_the_card()
     errors += check_researched_parents_reach_the_queue_with_their_evidence()
     errors += check_an_acquisition_is_shown_on_both_sides()
+    errors += check_ownership_says_what_the_record_holds()
     errors += check_a_hand_check_records_what_it_found()
     errors += check_the_rescrub_list_is_the_boards_only_you_can_read()
     errors += check_an_exhibitor_tag_reaches_the_field_that_counts()
@@ -31404,8 +31844,12 @@ def main() -> int:
     errors += check_a_company_alert_is_about_that_company()
     errors += check_every_control_answers_the_keyboard()
     errors += check_the_app_company_view_counts_openings()
+    errors += check_the_pay_sentence_counts_what_it_read()
+    errors += check_every_view_has_its_own_address()
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
+    errors += check_reading_text_is_never_set_in_fog()
+    errors += check_assistive_tech_hears_what_changed()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()

@@ -1569,8 +1569,60 @@ def merge_hq(postings: list[dict], hq: dict | None, companies: list[dict],
     return added, dropped
 
 
-def carry_first_seen(postings: list[dict], prev_postings: list[dict]) -> None:
-    """Give every posting the earliest first_seen the previous board held for it."""
+def history_first_seen(history: pathlib.Path = HISTORY) -> tuple[dict, dict]:
+    """({posting id: first snapshot night}, {company id: first snapshot night}).
+
+    The previous board alone is not enough to carry a date. A posting that
+    left the board and came back - hidden by sled_only from 09-10 to 10-08,
+    or behind a board that failed to read - was dated the night it returned:
+    Granicus printed "first read here 1 day ago" over postings in our
+    snapshots since 08-24 (launch audit 2, 2026-10-09). Exact ids only: the id
+    holds the title, url and place, so a match is the same posting. A title
+    that merely recurs is not.
+    """
+    by_id: dict = {}
+    by_co: dict = {}
+    for f in sorted(history.glob("*.json")):
+        try:
+            snap = json.loads(f.read_text())
+        except (OSError, json.JSONDecodeError):
+            continue
+        day = snap.get("date") or f.stem
+        for i in snap.get("ids") or []:
+            if not isinstance(i, str):
+                continue
+            if day < by_id.get(i, "9999"):
+                by_id[i] = day
+            co = i.split("::")[0]
+            if day < by_co.get(co, "9999"):
+                by_co[co] = day
+    return by_id, by_co
+
+
+def mark_read_since(orgs: list[dict], postings: list[dict], by_co: dict) -> None:
+    """`read_since` on a company whose postings start later than our record.
+
+    The company page says "we have only been reading this board for N days"
+    from its postings' dates, and a company whose older postings have closed
+    looks newly read. Set only where the snapshots go back further, so it
+    costs nothing on the rest, and removed where they do not.
+    """
+    first: dict = {}
+    for p in postings:
+        t, c = p.get("first_seen"), p.get("company_id")
+        if t and c and t < first.get(c, "9999"):
+            first[c] = t
+    for o in orgs:
+        o.pop("read_since", None)
+        since = by_co.get(o.get("id"))
+        if since and o.get("id") in first and since < first[o["id"]]:
+            o["read_since"] = since
+
+
+def carry_first_seen(postings: list[dict], prev_postings: list[dict],
+                     nights: dict | None = None) -> None:
+    """Give every posting the earliest first_seen the previous board, or any
+    snapshot in `nights` ({id: night}, from history_first_seen), held for it."""
     prev, legacy = {}, {}
     for p in prev_postings:
         seen = p.get("first_seen")
@@ -1591,6 +1643,10 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict]) -> None:
                 legacy[p["id"]] = seen
     for p in postings:
         was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
+        # a snapshot only ever moves a date EARLIER, never past one held
+        night = (nights or {}).get(p["id"])
+        if night and (not was or night < was) and night < (p.get("first_seen") or "9999"):
+            was = night
         # A CAPTURE KEEPS ITS OWN DATE when that is earlier: the role page
         # prints it as "found by hand on <date>", and a carried date can be the
         # night a fetcher first read the same posting - EverDriven's capture of
@@ -2222,9 +2278,10 @@ def main() -> int:
 
     # carry first_seen forward so a posting keeps its original date
     prev_path = DATA / "board.json"
-    if prev_path.exists():
-        carry_first_seen(postings,
-                         json.loads(prev_path.read_text()).get("postings", []))
+    nights, read_from = history_first_seen()
+    carry_first_seen(postings,
+                     json.loads(prev_path.read_text()).get("postings", [])
+                     if prev_path.exists() else [], nights)
 
     fill_geography(postings)
 
@@ -2232,6 +2289,7 @@ def main() -> int:
     if len(unique) != len(postings):
         print(f"  dropped {len(postings) - len(unique)} byte-identical duplicate posting rows")
     postings = unique
+    mark_read_since(orgs, postings, read_from)
 
     groups = count_openings(postings, orgs)
 

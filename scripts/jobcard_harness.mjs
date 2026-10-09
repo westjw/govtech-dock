@@ -420,4 +420,31 @@ try {
 } catch (e) {
   errors.push(`driving dispatch(): ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts }));
+// THE ROLE PAGE'S PAY SENTENCE, on postings of every kind a company holds:
+// read and silent, never read, a hand capture, hourly, CAD, and yearly USD
+let paySentence = null;
+try {
+  paySentence = vm.runInContext(`(() => {
+    const yr = (min, max, cur) => ({ min, max, currency: cur, period: "year" });
+    const P = (comp, extra) => Object.assign({ id: "x", comp }, extra);
+    const mixed = [
+      P(yr(90000, 120000, "USD"), { jd_seen: true }),
+      P(yr(80026, 110009, "CAD"), { jd_seen: true }),
+      P({ min: 24.5, max: 24.5, currency: "USD", period: "hour" }, { jd_seen: true }),
+      P(null, { jd_seen: true }), P(null, { jd_seen: true }),
+      P(null, { jd_seen: false }), P(null, { jd_seen: false }), P(null, { jd_seen: false }),
+      P(null, { jd_seen: false, source: "manual" }),
+    ];
+    const allUsd = [P(yr(60000, 70000, "USD"), { jd_seen: true }),
+                    P(yr(80000, 95000, null), { jd_seen: true })];
+    // which tab an incoming address opens, as boot and popstate read it
+    const t = (q) => tabFromUrl(new URLSearchParams(q), "home");
+    return { mixed: coPaySentence(mixed), allUsd: coPaySentence(allUsd),
+             none: coPaySentence([P(null, { jd_seen: true })]),
+             tabs: { e: t("e=APCO%202026"), list: t("csec=Public%20Safety&call=1"),
+                     board: t("us=us"), plain: t("utm_source=x"), co: t("co=x") } };
+  })()`, ctx);
+} catch (e) {
+  errors.push(`driving coPaySentence(): ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence }));

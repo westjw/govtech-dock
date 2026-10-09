@@ -13,7 +13,7 @@ posting at 2,113 companies.
 It also means no visitor is tracked to produce it. Nothing is counted about the
 person reading the page.
 
-FOUR RULES, AND EACH ONE EXISTS BECAUSE THE OBVIOUS VERSION IS WRONG.
+SIX RULES, AND EACH ONE EXISTS BECAUSE THE OBVIOUS VERSION IS WRONG.
 
 1. THE BASELINE MUST BE COMPARABLE. Posting ids gained a url+location hash on
    2026-08-23, so the 08-22 and 08-23 snapshots share not one id in three
@@ -46,6 +46,20 @@ FOUR RULES, AND EACH ONE EXISTS BECAUSE THE OBVIOUS VERSION IS WRONG.
    The sixth row was an existing job relisted in another city. CLAUDE.md says
    the headline counts openings not rows, for exactly this reason, and a badge
    is a leaderboard with one row on it.
+
+6. A NIGHT WE STARTED READING MORE OF A BOARD IS NOT A NIGHT THEY HIRED.
+   Rule 3 covers a company we could not read at all; this is the same error
+   at a nonzero baseline. On 2026-09-02 the crawler began reading whole
+   boards: Motorola Solutions went from 33 openings to 357 overnight, ZOLL 34
+   to 120, Xylem 31 to 183. The badge then read "23 quota-carrying roles on
+   2026-08-23, 62 now" for Motorola, whose quota-carrying openings had FALLEN
+   from 69 since the night its board was read in full. Clearing sled_only on
+   2026-10-08 did it again (Arrive 0 to 79). So a night on which a company's
+   openings of every family grew by JUMP_ADDED and by half again, against the
+   last night it had any, moves that company's baseline to that night.
+   Counted over all families, because coverage is what changed, not selling.
+   It will also swallow a real surge that lands in one night; a missed badge
+   is the cheaper mistake.
 
 WHAT IT SAYS TODAY, re-derived rather than remembered: two companies qualify
 over the comparable window, InitLive and Bruker Detection, each having gone
@@ -81,6 +95,12 @@ COMPARABLE = 0.2
 # hundred is not.
 MIN_ADDED = 2
 MIN_GROWTH = 0.5          # and it has to be half again as many, at least
+
+# A one-night rise this large, in openings of every family, is a change in what
+# we read. See rule 6. On the nights of known coverage changes (09-02, 10-08)
+# the rises ran +16 to +324; a night's ordinary churn at one company is a few.
+JUMP_ADDED = 15
+JUMP_GROWTH = 0.5
 
 
 def load(p: pathlib.Path):
@@ -152,6 +172,24 @@ def per_company(ids: set, quota_only: bool = False) -> collections.Counter:
     return collections.Counter({k: len(v) for k, v in openings.items()})
 
 
+def coverage_jumps(snaps: list[tuple[str, set]]) -> dict[str, str]:
+    """{company id: the last night its openings jumped}, per rule 6.
+
+    Measured against the last night the company had ANY openings, so a board
+    that failed for a night and came back is not a jump, and one that was
+    hidden for a month and came back larger is.
+    """
+    last: dict[str, int] = {}
+    out: dict[str, str] = {}
+    for date, ids in snaps:
+        for cid, n in per_company(ids).items():
+            before = last.get(cid, 0)
+            if n - before >= JUMP_ADDED and n >= before * (1 + JUMP_GROWTH):
+                out[cid] = date
+            last[cid] = n
+    return out
+
+
 def surge() -> dict:
     """The comparable window, whatever length it happens to be.
 
@@ -190,10 +228,16 @@ def surge() -> dict:
 
     was = per_company(base_ids, quota_only=True)
     now = per_company(now_ids, quota_only=True)
+    # rule 6: a company whose coverage jumped after the window opened is
+    # measured from the night it jumped
+    jumps = {cid: d for cid, d in coverage_jumps(snaps).items() if d > base_date}
+    on = dict(snaps)
+    then = {d: per_company(on[d], quota_only=True) for d in set(jumps.values())}
 
     rows = []
     for cid, n in now.items():
-        before = was.get(cid, 0)
+        since = jumps.get(cid, base_date)
+        before = (then[since] if since in then else was).get(cid, 0)
         if before == 0:
             continue                      # rule 3
         added = n - before
@@ -205,6 +249,7 @@ def surge() -> dict:
         if added < MIN_ADDED or added / max(before, 1) < MIN_GROWTH:
             continue
         rows.append({"id": cid, "name": names.get(cid, cid),
+                     "since": since,
                      "was": before, "now": n, "added": added,
                      "growth": round(added / max(before, 1), 2)})
     rows.sort(key=lambda r: (-r["growth"], -r["added"]))
@@ -240,7 +285,8 @@ def main() -> int:
     print(f"active since {r['since']} ({r['days']} snapshots on file)\n")
     for c in r["companies"]:
         print(f"  {c['name'][:30]:32} {c['was']:>3} -> {c['now']:<3} "
-              f"(+{c['added']}, {c['growth']:.0%})")
+              f"(+{c['added']}, {c['growth']:.0%})"
+              + (f"  from {c['since']}" if c["since"] != r["since"] else ""))
     return 0
 
 
