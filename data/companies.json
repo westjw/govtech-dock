@@ -5616,7 +5616,7 @@
   {
     "id": "rehrig-pacific",
     "name": "Rehrig Pacific",
-    "website": "https://www.rehrig.com",
+    "website": "https://www.rehrigpacific.com",
     "location": "Los Angeles, CA",
     "year_founded": 1913,
     "sector": "Public Works",
@@ -5650,6 +5650,12 @@
       "note": null,
       "on": "2026-09-08",
       "by": "owner"
+    },
+    "website_note": {
+      "was": "https://www.rehrig.com",
+      "why": "https://www.rehrig.com stopped answering (https fails (SSLError); plain http answers 200 at http://www.rehrigpacific.com/ titled 'Industry Leaders In Waste, Recycling, And Supply Cha); the company's site is now https://www.rehrigpacific.com (https://www.rehrigpacific.com/: \"Comprehensive and sustainable solutions that empower our municipality and waste hauler customers to do more.\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
     }
   },
   {
@@ -49789,7 +49795,7 @@
   {
     "id": "transify",
     "name": "Transify",
-    "website": "https://transify.city",
+    "website": "https://www.transify.com",
     "location": null,
     "year_founded": 2020,
     "sector": "Transit & Parking",
@@ -49814,7 +49820,13 @@
     "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as transit agency (Barrie Transit, Brampton Transit, and Niagara Region Transit named as clients)",
     "acquisitions_checked_on": "2026-09-10",
-    "acquisitions_none_found": true
+    "acquisitions_none_found": true,
+    "website_note": {
+      "was": "https://transify.city",
+      "why": "https://transify.city stopped answering (no answer: https ConnectionError; http ConnectionError); the company's site is now https://www.transify.com (https://www.transify.com/: \"Transify is a Data Visualization Platform for transit planners that integrates with all your data sources\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "angeltrax",
@@ -58677,7 +58689,7 @@
   {
     "id": "imagesource-inc",
     "name": "ImageSource, Inc.",
-    "website": "https://imagesource.com",
+    "website": "https://www.imagesourceinc.com",
     "location": null,
     "year_founded": null,
     "sector": "General Gov",
@@ -58696,7 +58708,13 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "ICMA 2025",
-    "researched": false
+    "researched": false,
+    "website_note": {
+      "was": "https://imagesource.com",
+      "why": "https://imagesource.com stopped answering (the domain imagesource.com does not resolve in DNS); the company's site is now https://www.imagesourceinc.com (https://www.imagesourceinc.com/: \"ImageSource Inc. - Process Innovation Made Easy\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "imprivata",
@@ -79181,7 +79199,7 @@
   {
     "id": "shakespeare-composite-structures",
     "name": "Shakespeare Composite Structures",
-    "website": "https://www.shakespeare-cs.com",
+    "website": "https://www.shakespearecomposites.com",
     "location": "Newberry, SC",
     "year_founded": 1897,
     "sector": "Utilities & Energy",
@@ -79200,7 +79218,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.shakespeare-cs.com",
+      "why": "https://www.shakespeare-cs.com stopped answering (the domain no longer exists); the company's site is now https://www.shakespearecomposites.com: the Shakespeare brand site, run by Valmont Industries since 2014 ('Shakespeare is the leading brand of composite light poles in North America')",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "sabre-industries",
@@ -89382,7 +89406,7 @@
   {
     "id": "aequitas-solutions",
     "name": "Aequitas Solutions",
-    "website": "https://www.aequitas-solutions.com",
+    "website": "https://www.myaequitas.com",
     "location": "Chino, CA",
     "year_founded": 2000,
     "sector": "K-12 Schools",
@@ -89401,7 +89425,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.aequitas-solutions.com",
+      "why": "https://www.aequitas-solutions.com stopped answering (https fails (SSLError); plain http answers 200 at http://www.aequitas-solutions.com/ titled 'Domain im Kundenauftrag registriert'); the company's site is now https://www.myaequitas.com (https://www.myaequitas.com/: \"We strive to be a leader in innovative K-12 Student Information Systems and to provide unbeatable customer support.\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "alma",
@@ -95347,7 +95377,7 @@
   {
     "id": "geocomm",
     "name": "GeoComm",
-    "website": "https://www.geo-comm.com",
+    "website": "https://www.geocomm.com",
     "location": "St. Cloud, Minnesota",
     "year_founded": 1995,
     "sector": "Public Safety",
@@ -95366,7 +95396,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; APCO 2026"
+    "source": "competitor sweep; APCO 2026",
+    "website_note": {
+      "was": "https://www.geo-comm.com",
+      "why": "https://www.geo-comm.com stopped answering (no answer: https SSLError; http ConnectTimeout); the company's site is now https://www.geocomm.com (https://www.geocomm.com/: \"GeoComm: Leading Public Safety GIS Solutions\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "comtech",
@@ -96564,7 +96600,7 @@
   {
     "id": "wps-parking-solutions",
     "name": "WPS Parking Solutions",
-    "website": "https://www.wps-parkingsolutions.com",
+    "website": "https://www.wpsparking.com/en",
     "location": "Utrecht, Netherlands",
     "year_founded": 1993,
     "sector": "Airports & Aviation",
@@ -96583,7 +96619,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.wps-parkingsolutions.com",
+      "why": "https://www.wps-parkingsolutions.com stopped answering (the domain no longer exists); the company's site is now https://www.wpsparking.com/en: https://www.parking.net/parking-news/wps-parking-solutions/has-been-acquired-by-certina-group gives the website as www.wpsparking.com; its English page is titled '... - WPS Parking Solutions'",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "parking-boxx",
@@ -97417,7 +97459,7 @@
   {
     "id": "cardinality-ai",
     "name": "Cardinality.ai",
-    "website": "https://cardinality.ai",
+    "website": "https://cardyai.com",
     "location": "Fremont, California",
     "year_founded": 2015,
     "sector": "Health & Human Services",
@@ -97441,7 +97483,13 @@
       {
         "text": "Certificate expired (curl: 'certificate has expired'). Their problem, self-resolving on renewal. Diagnosed 2026-08-26."
       }
-    ]
+    ],
+    "website_note": {
+      "was": "https://cardinality.ai",
+      "why": "https://cardinality.ai stopped answering (https fails (SSLError); plain http answers 200 at https://cardyai.com/ titled 'Cardinality.ai | AI Case Management SaaS Solutions'. https://); the company's site is now https://cardyai.com (https://cardyai.com/: \"10M+ constituents are benefiting from Cardinality\u2019s modernized solutions, with more to follow as we expand our footprint\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "casebook-pbc",
@@ -105357,7 +105405,7 @@
   {
     "id": "marquis-software-solutions",
     "name": "Marquis Software Solutions",
-    "website": "https://www.marquissoftware.com",
+    "website": "https://www.marquisware.com",
     "location": "Horsham, Pennsylvania",
     "year_founded": 1994,
     "sector": "Public Safety",
@@ -105376,7 +105424,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.marquissoftware.com",
+      "why": "https://www.marquissoftware.com stopped answering (https fails (ConnectTimeout); plain http answers 200 at http://www.marquissoftware.com/ titled 'Web Page Under Construction'); the company's site is now https://www.marquisware.com (https://www.marquisware.com/: \"Marquis Software - Offender Management Software\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "syscon-justice-systems",
@@ -107413,7 +107467,7 @@
   {
     "id": "union-supply-group",
     "name": "Union Supply Group",
-    "website": "https://www.unionsupplygroup.com",
+    "website": "https://www.unionsupply.com",
     "location": "Rancho Dominguez, California",
     "year_founded": 1991,
     "sector": "Public Safety",
@@ -107432,7 +107486,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.unionsupplygroup.com",
+      "why": "https://www.unionsupplygroup.com stopped answering (https fails (ConnectionError); plain http answers 404 at http://www.unionsupplygroup.com/ titled 'Not Found'); the company's site is now https://www.unionsupply.com (https://www.unionsupply.com/: \"Union Supply provides food, apparel, footwear, electronics, and personal-care products to State, Federal and County corr\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "emergency-reporting",
@@ -107473,7 +107533,7 @@
   {
     "id": "intterra",
     "name": "Intterra",
-    "website": "https://intterragroup.com",
+    "website": "https://www.intterra.io",
     "location": "Fort Collins, Colorado",
     "year_founded": 2011,
     "sector": "Public Safety",
@@ -107492,7 +107552,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; IAFC FRI 2026"
+    "source": "competitor sweep; IAFC FRI 2026",
+    "website_note": {
+      "was": "https://intterragroup.com",
+      "why": "https://intterragroup.com stopped answering (https fails (ConnectionError); plain http answers 200 at https://www.intterra.io/ titled 'Intterra | Public Safety&#x27;s Map-Based Connecte); the company's site is now https://www.intterra.io (https://www.intterra.io/: \"Intterra | Public Safety's Map-Based Connected Ecosystem\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "station-boss",
@@ -114802,7 +114868,7 @@
   {
     "id": "synect",
     "name": "Synect",
-    "website": "https://www.synect.com",
+    "website": "https://www.synectmedia.com",
     "location": "Boston, Massachusetts",
     "year_founded": 2013,
     "sector": "Airports & Aviation",
@@ -114821,7 +114887,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.synect.com",
+      "why": "https://www.synect.com stopped answering (no answer: https SSLError; http SSLError); the company's site is now https://www.synectmedia.com (https://www.synectmedia.com/: \"Synect partners with airports and airlines to modernize their facilities, solve operational challenges, and connect with\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "airportlabs",
@@ -116365,7 +116437,7 @@
   {
     "id": "rhizome",
     "name": "Rhizome",
-    "website": "https://www.rhizome.energy",
+    "website": "https://www.rhizomedata.com",
     "location": "Washington, District of Columbia",
     "year_founded": 2021,
     "sector": "Utilities & Energy",
@@ -116384,7 +116456,13 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
+    "source": "competitor sweep",
+    "website_note": {
+      "was": "https://www.rhizome.energy",
+      "why": "https://www.rhizome.energy stopped answering (the domain www.rhizome.energy does not resolve in DNS); the company's site is now https://www.rhizomedata.com (https://www.rhizomedata.com/: \"Rhizome is a grid planning platform built on forward-looking climate modeling and asset-level investment prioritization.\")",
+      "on": "2026-10-08",
+      "by": "agent:launch-fix"
+    }
   },
   {
     "id": "linevision",

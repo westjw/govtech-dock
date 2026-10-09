@@ -4491,6 +4491,10 @@ RENDER.review = r => {
   const w = el('div', 'kv');
   const a = el('a', null, r.url); a.href = r.url; a.target = '_blank'; a.rel = 'noopener';
   w.appendChild(a); n.appendChild(w);
+  /* A replacement for a website that stopped answering says what it replaces
+     and the evidence a researcher and a skeptic found for it. Text only. */
+  if (r.was) n.appendChild(el('div', 'kv', 'replaces ' + r.was + (r.was_why ? ' (' + r.was_why + ')' : '')));
+  if (r.why) n.appendChild(el('div', 'kv', r.why));
   n.appendChild(el('div', 'kv', 'found ' + (r.found_on || '')));
   const row = el('div', 'row');
   const yes = el('button', 'act go', 'Yes, that is them');

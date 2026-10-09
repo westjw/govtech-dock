@@ -1,0 +1,110 @@
+{
+ "civix": {
+  "name": "Civix",
+  "url": "https://gocivix.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.civixusa.com",
+  "was_why": "the domain no longer exists",
+  "why": "gocivix.com is titled 'Civix | Transforming the Public Sector' and sells Go Elect election software; civix.com is an unrelated real-estate site.",
+  "by": "agent:launch-fix"
+ },
+ "cts-software": {
+  "name": "CTS Software (TripMaster)",
+  "url": "https://tripmastersoftware.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.ctsoftware.com",
+  "was_why": "it times out, and over http shows an under-construction page",
+  "why": "The TripMaster product site; its footer reads '\u00a9 2026 CTS Software' and its contact addresses are on the cts-software.com domain.",
+  "by": "agent:launch-fix"
+ },
+ "holon": {
+  "name": "HOLON",
+  "url": "https://www.driveholon.com",
+  "found_on": "2026-10-08",
+  "was": "https://holon-mobility.com",
+  "was_why": "the domain no longer exists",
+  "why": "HOLON GmbH (Paderborn) now uses driveholon.com; its imprint names HOLON GmbH and it sells the autonomous HOLON urban mover.",
+  "by": "agent:launch-fix"
+ },
+ "ink-innovation": {
+  "name": "Ink Innovation",
+  "url": "https://www.innovation.ink",
+  "found_on": "2026-10-08",
+  "was": "https://ink.aero",
+  "was_why": "the domain no longer exists",
+  "why": "The company now calls itself 'Ink'; the footer reads '\u00a9 2026 Ink Innovation' and inkaviation.com redirects here. ink.aero is gone.",
+  "by": "agent:launch-fix"
+ },
+ "kango": {
+  "name": "Kango",
+  "url": "https://kangoapp.co",
+  "found_on": "2026-10-08",
+  "was": "https://www.kango.com",
+  "was_why": "it times out",
+  "why": "Kango's youth rideshare for school districts; the footer reads 'Kango is a product of DoLightful, Inc.' kango.com is not theirs.",
+  "by": "agent:launch-fix"
+ },
+ "platinum-technology-resource": {
+  "name": "Platinum Technology Resource",
+  "url": "https://platinumelectionresults.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.platinumtr.com",
+  "was_why": "the domain is now for sale",
+  "why": "Their election-results site for eight Illinois counties, with a 2026 Platinum Technology Resource footer. platinumtr.com is now for sale; this is a product site, not a corporate one.",
+  "by": "agent:launch-fix"
+ },
+ "precision-kiosk-technologies": {
+  "name": "Precision Kiosk Technologies",
+  "url": "https://abkiosk.com",
+  "found_on": "2026-10-08",
+  "was": "https://precisionkiosktech.com",
+  "was_why": "it times out",
+  "why": "The AB Kiosk product site; its news names Minnesota-based Precision Kiosk Technologies, and its sales address is on the precisionkiosktech.com domain. Newest news item: 2023.",
+  "by": "agent:launch-fix"
+ },
+ "prodigy-solutions": {
+  "name": "Prodigy Solutions",
+  "url": "https://prodigytel.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.prodigysolutionsinc.com",
+  "was_why": "the domain no longer exists",
+  "why": "Titled 'Prodigy Solutions - Connection Matters', Mount Laurel NJ, inmate communications and commissary. It refuses our crawler (403); a browser loads it.",
+  "by": "agent:launch-fix"
+ },
+ "seachange-print-innovations": {
+  "name": "SeaChange Print Innovations",
+  "url": "https://www.seachangemn.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.seachangeprint.com",
+  "was_why": "the domain no longer exists",
+  "why": "The Minnesota ballot printer now goes by SeaChange; seachangemn.com has an Elections page for secure ballot printing.",
+  "by": "agent:launch-fix"
+ },
+ "sentient-energy": {
+  "name": "Sentient Energy (Koch Engineered Solutions)",
+  "url": "https://sentientenergy.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.sentient-energy.com",
+  "was_why": "its secure connection fails",
+  "why": "sentient-energy.com redirects here over http; titled 'Sentient Energy | Distribution Grid Products & Solutions'.",
+  "by": "agent:launch-fix"
+ },
+ "sonrai-systems": {
+  "name": "Sonrai Systems",
+  "url": "https://home.sonraisystems.com",
+  "found_on": "2026-10-08",
+  "was": "https://sonraisystems.com",
+  "was_why": "its secure connection fails",
+  "why": "The company's own page for its RFID system for waste haulers (Maple Park, IL). Its newest event listed is from 2016, so it may no longer trade.",
+  "by": "agent:launch-fix"
+ },
+ "stresscrete-group": {
+  "name": "StressCrete Group (King Luminaire)",
+  "url": "https://scgrp.com",
+  "found_on": "2026-10-08",
+  "was": "https://www.stresscretegroup.com",
+  "was_why": "its secure connection fails",
+  "why": "stresscretegroup.com redirects here over http; titled 'StressCrete Group', listing King Luminaire and StressCrete.",
+  "by": "agent:launch-fix"
+ }
+}

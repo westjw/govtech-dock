@@ -478,5 +478,165 @@
   "parent_claim": "Xplor Technologies. Known from the nextrec.com footer (\"\u00a9 Copyright 2026 Xplor Technologies. All rights reserved.\"), the /company/about page carrying Xplor Recreation branding over PerfectMind content, and xplorrecreation.com redirecting to nextrec.com.",
   "says": "Xplor Technologies. Known from the nextrec.com footer (\"\u00a9 Copyright 2026 Xplor Technologies. All rights reserved.\"), the /company/about page carrying Xplor Recreation branding over PerfectMind content, and xplorrecreation.com redirecting to nextrec.com. | deal: Acquired by Xplor Technologies in 2020, stated on nextrec.com/perfectmind-software: PerfectMind \"was acquired by Xplor Technologies in 2020\" and \"In 2022, PerfectMind rebranded to become nextRec.\" Xplor Technologies in turn announced a merger with Clubessential Holdings on 16 September 2025 (Advent  | their board sits on https://careers.smartrecruiters.com/Xplor",
   "source": "parks-rec vendor research"
+ },
+ "apollo-video-technology": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Luminator Technology Group: \"Luminator Technology Group (LTG) announced its acquisition of Apollo Video Technology (Apollo Video ) on May 11, 2017.\" (https://busride.com/luminator-technology-group-acquire-apollo-video-technology/)",
+  "note": "Found when the board's website for Apollo Video Technology, https://www.apollovideo.com, stopped answering (link check 2026-10-07). School Bus Fleet also reported the deal ('Luminator Technology Group Acquires Apollo Video'). Luminator's Onboard Video Security page for bus transit still sells the RoadRunner line, which was Apollo's flagship transit video product. apollovideo.com times out.",
+  "on": "2026-10-08",
+  "parent_claim": "Luminator Technology Group - https://busride.com/luminator-technology-group-acquire-apollo-video-technology/",
+  "says": "Apollo Video Technology was acquired by Luminator Technology Group: \"Luminator Technology Group (LTG) announced its acquisition of Apollo Video Technology (Apollo Video ) on May 11, 2017.\" Its product is now at https://luminator.com/bus/onboard-video-security.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "blip-systems": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Gentrack Group (airports division Veovo): \"Blip Systems A/S has announced that it has concluded an acquisition agreement with Gentrack Group Ltd.\" (https://www.masstransitmag.com/technology/press-release/12331178/blip-systems-blip-systems-becomes-part-of-gentrack-group-ltd-to-boost-technology-range)",
+  "note": "Found when the board's website for BLIP Systems, https://blipsystems.com, stopped answering (link check 2026-10-07). Dated May 3, 2017. In February 2018 Gentrack launched Veovo as its airport brand. The PR Newswire launch release says 'Veovo combines the Airport 20/20 operations solution with the recently acquired BlipTrack guest predictability' solutions. Veovo's Queue Management page (title 'Veovo | Airport Queue Management') sells the same airport queue and flow measurement. blipsystems.com no longer resolves.",
+  "on": "2026-10-08",
+  "parent_claim": "Gentrack Group (airports division Veovo) - https://www.masstransitmag.com/technology/press-release/12331178/blip-systems-blip-systems-becomes-part-of-gentrack-group-ltd-to-boost-technology-range",
+  "says": "BLIP Systems was acquired by Gentrack Group (airports division Veovo): \"Blip Systems A/S has announced that it has concluded an acquisition agreement with Gentrack Group Ltd.\" Its product is now at https://veovo.com/platform/queue-management.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "citybase": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Euna Solutions (formerly GTY Technology Holdings): \"has completed its merger with Bonfire, CityBase, eCivis, OpenCounter, Questica and Sherpa Government Solutions.\" (https://www.govtech.com/biz/GTY-Completes-6-Company-Gov-Tech-Merger-Trades-on-Nasdaq.html)",
+  "note": "Found when the board's website for CityBase, https://thecitybase.com, stopped answering (link check 2026-10-07). GovTech, February 20, 2019: GTY Technology acquired CityBase. GTY merged with GI Partners in 2022, and that release is hosted on eunasolutions.com. thecitybase.com now redirects to the Euna Payments page with utm_content=citybase. That page is titled 'Government Payment Processing Software | Euna Payments'.",
+  "on": "2026-10-08",
+  "parent_claim": "Euna Solutions (formerly GTY Technology Holdings) - https://www.govtech.com/biz/GTY-Completes-6-Company-Gov-Tech-Merger-Trades-on-Nasdaq.html",
+  "says": "CityBase was acquired by Euna Solutions (formerly GTY Technology Holdings): \"has completed its merger with Bonfire, CityBase, eCivis, OpenCounter, Questica and Sherpa Government Solutions.\" Its product is now at https://eunasolutions.com/solutions/payments/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "complus-data-innovations": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Passport Labs (Passport): \"Passport today announces its acquisition of parking enforcement company, Complus Data Innovations (Complus).\" (https://www.passportinc.com/blog/passport-acquires-complus-data-innovations-to-enable-more-cities-to-facilitate-curbside-transactions/)",
+  "note": "Found when the board's website for Complus Data Innovations, https://www.complusdata.com, stopped answering (link check 2026-10-07). Dated June 6, 2019. GovTech confirms it ('Passport Buys Complus, a Competitor in City Parking Tech'). Passport's Citation Issuance page (title 'Citation Issuance - Passport') is the follow-on parking citation product. complusdata.com no longer resolves. Passport's site sometimes serves a Cloudflare challenge on repeat fetches.",
+  "on": "2026-10-08",
+  "parent_claim": "Passport Labs (Passport) - https://www.passportinc.com/blog/passport-acquires-complus-data-innovations-to-enable-more-cities-to-facilitate-curbside-transactions/",
+  "says": "Complus Data Innovations was acquired by Passport Labs (Passport): \"Passport today announces its acquisition of parking enforcement company, Complus Data Innovations (Complus).\" Its product is now at https://www.passportinc.com/product/enforcement/citation-issuance/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "cyracom-international": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Propio Language Services: \"Propio Language Services has acquired CyraCom International Inc., uniting two of the most prominent U.S.-based interpretation providers.\" (https://multilingual.com/propio-cyracom-merger-healthcare-lsp/)",
+  "note": "Found when the board's website for CyraCom International, https://www.cyracom.com, stopped answering (link check 2026-10-07). Dated July 3, 2025. Propio's own release is at propio.com/blog/propio-acquires-cyracom/ ('is proud to announce its acquisition of CyraCom International Inc.'), but it returns 403 to curl because of bot blocking. propio.com loads (title 'Language Access Solutions | Propio'). Propio's government phone and video interpretation page is https://propio.com/public-sector/ (title 'Public Sector Language Solutions | Propio'), which I confirmed through a fetch tool, but it also returns 403 to curl. cyracom.com shows a Cloudflare DNS error.",
+  "on": "2026-10-08",
+  "parent_claim": "Propio Language Services - https://multilingual.com/propio-cyracom-merger-healthcare-lsp/",
+  "says": "CyraCom International was acquired by Propio Language Services: \"Propio Language Services has acquired CyraCom International Inc., uniting two of the most prominent U.S.-based interpretation providers.\" Its product is now at https://propio.com/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "ebid-systems": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Contruent: \"today announced it has acquired ProcureWare, a cloud-based procurement management solution, formerly owned by Bentley Systems.\" (https://www.contruent.com/about/news/contruent-accelerates-product-investment-and-innovation-with-procureware-acquisition/)",
+  "note": "Found when the board's website for eBid Systems (ProcureWare), https://ebidsystems.com, stopped answering (link check 2026-10-07). Ownership chain: eBid Systems renamed itself ProcureWare in May 2016, Bentley Systems bought it in March 2017, and Contruent bought ProcureWare from Bentley in 2024. Contruent's own release is the source for the 2024 sale but does not mention eBid. The eBid-to-ProcureWare-to-Bentley link comes from a trade blog, Extranet Evolution (extranetevolution.com/2017/10/bentley-acquires-ebid-systems/). ebidsystems.com and procureware.com both time out. Contruent's ProcureWare page (verified 200) now markets it for capital projects, with vendor management, RFP and bid analysis, and contract award. It is not pitched specifically to public agencies.",
+  "on": "2026-10-08",
+  "parent_claim": "Contruent - https://www.contruent.com/about/news/contruent-accelerates-product-investment-and-innovation-with-procureware-acquisition/",
+  "says": "eBid Systems (ProcureWare) was acquired by Contruent: \"today announced it has acquired ProcureWare, a cloud-based procurement management solution, formerly owned by Bentley Systems.\" Its product is now at https://www.contruent.com/product/procureware/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "escape-technologies": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Frontline Education: \"Escape Technology, now part of Frontline Education\" (https://www.frontlineeducation.com/escape)",
+  "note": "Found when the board's website for Escape Technologies, https://www.escapetech.com, stopped answering (link check 2026-10-07). The old escapetech.com domain redirects over plain http to this Frontline page (verified 200). The page also says 'HR, Finance and Payroll software built for California COEs, districts and schools', which matches the description.",
+  "on": "2026-10-08",
+  "parent_claim": "Frontline Education - https://www.frontlineeducation.com/escape",
+  "says": "Escape Technologies was acquired by Frontline Education: \"Escape Technology, now part of Frontline Education\" Its product is now at https://www.frontlineeducation.com/escape.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "griffeye": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Magnet Forensics: \"announced today that it has acquired Griffeye, a world leader in digital media forensics for child sexual abuse investigations.\" (https://www.magnetforensics.com/news/magnet-forensics-acquires-griffeye-a-leading-digital-media-forensics-software-firm/)",
+  "note": "Found when the board's website for Griffeye, https://www.griffeye.com, stopped answering (link check 2026-10-07). The deal closed on August 10, 2023, per the same Magnet release. The product is now sold as Magnet Griffeye (page verified 200). griffeye.com returns a Cloudflare 1000 error and www.griffeye.com does not resolve.",
+  "on": "2026-10-08",
+  "parent_claim": "Magnet Forensics - https://www.magnetforensics.com/news/magnet-forensics-acquires-griffeye-a-leading-digital-media-forensics-software-firm/",
+  "says": "Griffeye was acquired by Magnet Forensics: \"announced today that it has acquired Griffeye, a world leader in digital media forensics for child sexual abuse investigations.\" Its product is now at https://www.magnetforensics.com/products/magnet-griffeye/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "pondera-solutions": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Thomson Reuters: \"Thomson Reuters (TSX/NYSE: TRI) today announced that it has acquired Pondera Solutions\" (https://www.thomsonreuters.com/en/press-releases/2020/march/thomson-reuters-acquires-pondera-solutions)",
+  "note": "Found when the board's website for Pondera Solutions, https://www.ponderasolutions.com, stopped answering (link check 2026-10-07). Acquired March 19, 2020. ponderasolutions.com redirects over http to Thomson Reuters' Fraud Detect page (title 'Fraud Detect - Comprehensive Fraud Detection Software | Thomson Reuters'). That page's product-support email is a support address at ponderasolutions.com, which ties Fraud Detect to Pondera.",
+  "on": "2026-10-08",
+  "parent_claim": "Thomson Reuters - https://www.thomsonreuters.com/en/press-releases/2020/march/thomson-reuters-acquires-pondera-solutions",
+  "says": "Pondera Solutions was acquired by Thomson Reuters: \"Thomson Reuters (TSX/NYSE: TRI) today announced that it has acquired Pondera Solutions\" Its product is now at https://legal.thomsonreuters.com/en/products/fraud-detect.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "selc-ireland": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Itron: \"Itron has acquired Smart Efficient Lighting Control (SELC), a market leader in the smart lighting controls industry\" (https://na.itron.com/w/itron-acquires-selc)",
+  "note": "Found when the board's website for SELC Ireland, https://www.selc.ie, stopped answering (link check 2026-10-07). Itron's 8-K says it bought 100% of SELC Group Limited (Irish company) from Sensus/Xylem on Oct 12, 2021. Wayback captures from 2023 and 2024 show www.selc.ie redirecting to Itron's intelligent-streetlights page, which now redirects to the Smart Lighting url above. Separately, founder Sean Noone runs Westire Technology (https://westire.com, Belmullet; photocells and street-lighting controls). An industry profile describes Westire as 'originally known as SELC IRELAND', so the board may want to list it on its own.",
+  "on": "2026-10-08",
+  "parent_claim": "Itron - https://na.itron.com/w/itron-acquires-selc",
+  "says": "SELC Ireland was acquired by Itron: \"Itron has acquired Smart Efficient Lighting Control (SELC), a market leader in the smart lighting controls industry\" Its product is now at https://na.itron.com/what-we-offer/smart-lighting.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "structural-steel-products": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Race Rock Group (Houston private investment firm): \"Structural and Steel Products (SSP), a leading manufacturer and distributor of engineered poles, sign structures, and highway safety products, in Race Rock\u2019s portfolio\" (https://www.racerockgroup.com/news)",
+  "note": "Found when the board's website for Structural & Steel Products (SSP), https://www.sspco.com, stopped answering (link check 2026-10-07). Race Rock agreed in Dec 2020 to buy SSP from Highland Capital (BusinessWire). Its 2023 news item on buying Highway Safety and Ohio Galvanizing names Fort Worth-based SSP as part of its portfolio. The portfolio page also names SSP. sspco.com does not resolve, and s-steel.com, SSP's later domain, is a GoDaddy 'Coming Soon' placeholder. SSP has no product page of its own.",
+  "on": "2026-10-08",
+  "parent_claim": "Race Rock Group (Houston private investment firm) - https://www.racerockgroup.com/news",
+  "says": "Structural & Steel Products (SSP) was acquired by Race Rock Group (Houston private investment firm): \"Structural and Steel Products (SSP), a leading manufacturer and distributor of engineered poles, sign structures, and highway safety products, in Race Rock\u2019s portfolio\" Its product is now at https://www.racerockgroup.com/portfolio.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "twiage": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "TigerConnect: \"TigerConnect, the leading clinical collaboration platform in healthcare, today announced the acquisition of Twiage\" (https://tigerconnect.com/resources/newsroom/tigerconnect-acquires-twiage)",
+  "note": "Found when the board's website for Twiage, https://twiagemed.com, stopped answering (link check 2026-10-07). The release is dated Nov 19, 2024; BusinessWire and EMS World also carried it. twiagemed.com fails TLS. TigerConnect's pre-hospital page ('Pre-Hospital Communication App | Products | TigerConnect') covers EMS-to-ED alerts and links to Twiage resources. tigerconnect.com returns 403 to plain curl because of bot protection, so we read it through a web fetcher.",
+  "on": "2026-10-08",
+  "parent_claim": "TigerConnect - https://tigerconnect.com/resources/newsroom/tigerconnect-acquires-twiage",
+  "says": "Twiage was acquired by TigerConnect: \"TigerConnect, the leading clinical collaboration platform in healthcare, today announced the acquisition of Twiage\" Its product is now at https://tigerconnect.com/products/pre-hospital/.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "vendengine": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Tyler Technologies: \"Tyler has completed the previously announced acquisition of VendEngine, a privately-held cloud-based software provider focused on financial technology for the corrections market.\" (https://s201.q4cdn.com/385562537/files/doc_news/2021/09/rl102211.pdf)",
+  "note": "Found when the board's website for Vendengine, https://www.vendengine.com, stopped answering (link check 2026-10-07). The deal closed Sept 1, 2021 for about $84M; the source is Tyler's investor-relations PDF, also on BusinessWire. vendengine.com times out. tylertech.com/products/vendengine redirects to Tyler's Corrections page, which covers inmate finances and commissary operations. Tyler product sheets still use the VendEngine name for kiosks and commissary.",
+  "on": "2026-10-08",
+  "parent_claim": "Tyler Technologies - https://s201.q4cdn.com/385562537/files/doc_news/2021/09/rl102211.pdf",
+  "says": "Vendengine was acquired by Tyler Technologies: \"Tyler has completed the previously announced acquisition of VendEngine, a privately-held cloud-based software provider focused on financial technology for the corrections market.\" Its product is now at https://www.tylertech.com/solutions/courts-public-safety/corrections.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "vision-box": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Amadeus: \"Today Amadeus announces it has completed the acquisition of Vision-Box, a leading provider of biometric solutions\" (https://amadeus.com/en/newsroom/press-releases/vision-box-biometrics-acquisition-complete)",
+  "note": "Found when the board's website for Vision-Box, https://vision-box.com, stopped answering (link check 2026-10-07). Amadeus completed the deal in April 2024 (EV about \u20ac320M). vision-box.com no longer resolves, and www.vision-box.com serves the wrong (azureedge) certificate. The Amadeus Biometrics page loads (verified with a browser user agent, because amadeus.com bot-challenges plain curl) and lists the Vision-Box acquisition under Strategic acquisitions.",
+  "on": "2026-10-08",
+  "parent_claim": "Amadeus - https://amadeus.com/en/newsroom/press-releases/vision-box-biometrics-acquisition-complete",
+  "says": "Vision-Box was acquired by Amadeus: \"Today Amadeus announces it has completed the acquisition of Vision-Box, a leading provider of biometric solutions\" Its product is now at https://amadeus.com/en/innovation/biometrics.",
+  "source": "dead-website research 2026-10-08 (researcher + skeptic, agent:launch-fix)"
+ },
+ "shakespeare-composite-structures": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "Valmont Industries: \"On October 6, 2014, the Company acquired Shakespeare Composite Structures (Shakespeare) for $48,272 in cash, plus assumed liabilities.\" (Valmont FY2014 10-K, https://www.sec.gov/Archives/edgar/data/102729/000104746915001179/a2223109z10-k.htm)",
+  "note": "Found when the board's website for Shakespeare Composite Structures, https://www.shakespeare-cs.com, stopped resolving (link check 2026-10-07). The brand site shakespearecomposites.com is run by Valmont: its footer reads '(c) 2024 Valmont Industries, Inc.' and Valmont's brands page links to it.",
+  "on": "2026-10-08",
+  "parent_claim": "Valmont Industries - https://www.sec.gov/Archives/edgar/data/102729/000104746915001179/a2223109z10-k.htm",
+  "says": "Shakespeare Composite Structures was acquired by Valmont Industries on October 6, 2014 (Valmont's FY2014 10-K); the brand site carries Valmont's copyright.",
+  "source": "dead-website research 2026-10-08 (agent:launch-fix)"
+ },
+ "monster-government-solutions": {
+  "board_on": "not found",
+  "confidence": "confirmed",
+  "deal": "PartnerOne acquired Monster Government Solutions in August 2025; on July 28, 2026 it renamed itself: \"Apply Government Solutions (ApplyGov), formerly Monster Government Solutions, announced today its new brand identity\" (https://www.applygovernmentsolutions.com/news/apply-government-solutions-launches-new-brand-to-advance-federal-hr-modernization/)",
+  "note": "Found when the board's website, http://www.monstergov.com/, failed its certificate check (link check 2026-10-07). Its own older domain monstergovernmentsolutions.com redirects to applygovernmentsolutions.com, titled 'Federal Government Workforce Solutions | Apply Government Solutions'. The new site leads with federal HR (FedHire); the record describes MonsterWorks for state workforce agencies, so whether it stays in scope is a separate question.",
+  "on": "2026-10-08",
+  "parent_claim": "PartnerOne - https://www.applygovernmentsolutions.com/news/partnerone-acquires-workforce-tech-leader-monster-government-solutions/",
+  "says": "Monster Government Solutions was bought by PartnerOne (August 2025) and renamed Apply Government Solutions (July 2026); its new site leads with federal HR.",
+  "source": "dead-website research 2026-10-08 (agent:launch-fix)"
  }
 }
