@@ -223,7 +223,7 @@ def worklist(limit: int | None = None) -> list[dict]:
 def look(row: dict) -> dict:
     """One page, once. Returns the row with whatever was found on it."""
     try:
-        resp = ats._get(row["url"])
+        resp = ats._page(row["url"])
         html = resp.text or ""
     except Exception as e:                    # noqa: BLE001
         return {**row, "error": f"{type(e).__name__}", "found": []}

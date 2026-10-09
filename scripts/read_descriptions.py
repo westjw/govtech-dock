@@ -197,7 +197,7 @@ def read_one(row: dict) -> str:
         # which is the same block fetch_html_titles already knows how to read.
         # Using that rather than seven bespoke detail parsers means this script
         # gains nothing to drift out of step with.
-        resp = ats._get(url)
+        resp = ats._page(url)
         found = ats._page_postings(resp.text)
         if not found:
             return ""

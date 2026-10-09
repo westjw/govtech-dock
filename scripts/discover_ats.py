@@ -257,6 +257,11 @@ BODY_CAP = 600_000
 
 def get(url: str) -> Fetch:
     import requests
+    import robots
+    # robots.txt first (owner's ruling, 2026-10-09): a site that asks
+    # crawlers to stay out is "blocked", as a refusing server is
+    if not robots.allowed(url):
+        return Fetch(status=0, url=url, outcome="blocked")
     # PACED, like every other fetch here. This function keeps its own body
     # cap and split timeouts - both were earned and neither belongs in
     # ats._get - so it borrows the gate rather than the fetcher.

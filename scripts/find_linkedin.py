@@ -128,7 +128,7 @@ def main() -> int:
     stored, unsure, none = 0, [], 0
     for r in rows:
         try:
-            html = ats._get(r["url"]).text
+            html = ats._page(r["url"]).text
         except Exception:                          # noqa: BLE001
             continue
         cands = candidates(html)

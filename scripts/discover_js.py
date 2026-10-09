@@ -72,6 +72,11 @@ def fingerprint(text):
 
 
 async def load(ctx, url, seen):
+    # every page this opens asks robots.txt first, the start page and every
+    # careers link it follows (owner's ruling, 2026-10-09; scripts/robots.py)
+    import robots
+    if not robots.allowed(url):
+        return "", "", [], "robots.txt asks crawlers not to read this site"
     page = await ctx.new_page()
     page.on("request", lambda r: seen.append(r.url)
             if r.resource_type in ("xhr", "fetch", "document", "script") else None)
@@ -105,8 +110,10 @@ async def probe_one(browser, comp, sem):
         return cid, "-", {}, [], "no website", 0
     async with sem:
         ctx = await browser.new_context(
+            # names itself, as render_fetch.UA does (owner's ruling, 2026-10-09)
             user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-                       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+                       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 "
+                       "(compatible; govtech-dock/1.0; +https://github.com/westjw/govtech-dock)",
             viewport={"width": 1280, "height": 900})
         seen, best_text, err = [], 0, None
         try:
@@ -179,4 +186,5 @@ async def main():
     print(f"\n{found}/{len(res)} fingerprinted")
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())

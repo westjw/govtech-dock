@@ -133,7 +133,7 @@ def page_names_it(html: str, code: str, name: str) -> tuple:
 def resolve(code: str, name: str, log=print) -> dict:
     for url in candidates(code, name):
         try:
-            html = ats._get(url).text
+            html = ats._page(url).text
         except ats.AtsError as exc:
             log(f"      {url:<40} {str(exc)[:44]}")
             continue

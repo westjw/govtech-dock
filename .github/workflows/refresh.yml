@@ -227,6 +227,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if [ "$(python scripts/alert.py "$RUNNER_TEMP/alert.md")" = "alert" ]; then
+            # ONE OPEN AT A TIME. The repository is public and every night's
+            # list was left open: 40 of them by 2026-10-09 (owner: keep them,
+            # close the old ones). Tonight's supersedes the last.
+            for n in $(gh issue list --state open --limit 200 --json number,title \
+                         --jq '.[] | select(.title | contains("new AE opening(s) —")) | .number'); do
+              gh issue close "$n" --reason completed || true
+            done
             COUNT=$(grep -c '^### ' "$RUNNER_TEMP/alert.md")
             gh issue create \
               --title "$COUNT new AE opening(s) — $(date +%F)" \

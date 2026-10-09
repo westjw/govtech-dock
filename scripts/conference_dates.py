@@ -129,7 +129,7 @@ def confirm(c: dict) -> dict:
     if not held or not url:
         return {"conference": c["conference"], "state": "no date on file"}
     try:
-        html = ats._get(url).text
+        html = ats._page(url).text
     except Exception as e:                            # noqa: BLE001
         # We learned nothing. That is not the same as the date being gone,
         # and recording it as a change would be a fact about our fetcher

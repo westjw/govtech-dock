@@ -179,7 +179,7 @@ def link_near_state(page: str, base: str, state: str, skip) -> str | None:
 
 def fetch(url: str) -> str | None:
     try:
-        return ats._get(url).text
+        return ats._page(url).text
     except Exception:                                   # noqa: BLE001
         return None
 

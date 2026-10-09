@@ -45,8 +45,12 @@ NAV = re.compile(r"^(apply|apply now|learn more|read more|view (all|jobs|opening
                  r"previous|home|about|contact|search|filter|all departments?|"
                  r"privacy|terms|cookie|sign in|log in|menu)s?$", re.I)
 
+# A browser's string, because the page needs a browser to draw, AND our name
+# and where to read about us, the way Google's own renderer says who it is.
+# It passed as plain Chrome until the owner's robots.txt ruling (2026-10-09).
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
+      "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 "
+      "(compatible; govtech-dock/1.0; +https://github.com/westjw/govtech-dock)")
 
 # An anchor's innerText includes its children, so a card that renders the title
 # and the location as siblings arrives as one string: "Senior Revenue Accountant
@@ -112,6 +116,12 @@ def available() -> bool:
 def fetch_rendered(url: str, *, timeout_ms: int = 25000,
                    settle_ms: int = 2200) -> list[dict]:
     """Return [{title, location, url}] from a rendered careers page."""
+    # robots.txt first, as for every page this crawler reads (scripts/robots.py)
+    here = str(__import__("pathlib").Path(__file__).resolve().parent)
+    if here not in sys.path:
+        sys.path.insert(0, here)
+    import robots
+    robots.check(url)
     try:
         from playwright.sync_api import sync_playwright
     except ImportError as exc:                    # pragma: no cover

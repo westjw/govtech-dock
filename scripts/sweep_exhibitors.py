@@ -507,7 +507,7 @@ def sweep(conf: dict) -> dict:
         "why": None,
     }
     try:
-        page = ats._get(url).text
+        page = ats._page(url).text
     except Exception as exc:                            # noqa: BLE001
         staged["why"] = f"{type(exc).__name__}: {str(exc)[:90]}"
         return staged

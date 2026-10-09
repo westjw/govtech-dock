@@ -177,7 +177,7 @@ def items(body: str, base: str, shape: str | None = None) -> list[dict]:
 def read(url: str) -> tuple[list, bool, str]:
     """(items, was_unchanged, note). A 304 is the cheap, common answer."""
     try:
-        resp = ats._get(url)
+        resp = ats._page(url)                      # asks robots.txt first
     except Exception as exc:                       # ats raises its own type
         return [], False, str(exc)[:100]
     # ats._get hands back a _Cached on 304, which is how a watch sweep knows

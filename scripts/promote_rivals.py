@@ -189,7 +189,7 @@ def verify_sources(store: dict, category: str | None, limit: int) -> int:
             url = (a.get("source") or {}).get("url") or ""
             quote = ((a.get("source") or {}).get("quote") or "").strip()
             try:
-                text = ats._get(url).text
+                text = ats._page(url).text
             except Exception as exc:
                 a["unverified"] = f"could not fetch the source: {str(exc)[:90]}"
                 done += 1

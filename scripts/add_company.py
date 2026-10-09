@@ -137,6 +137,9 @@ def fetch(url: str) -> tuple[str, str]:
     and discarding it on status alone loses real companies. zencity.io does
     exactly this. A short body is a block page and stays discarded."""
     import requests
+    import robots
+    if not robots.allowed(url):                  # owner's ruling, 2026-10-09
+        return "", "robots.txt asks crawlers not to read this site"
     try:
         r = requests.get(url, headers=ats.UA, timeout=ats.TIMEOUT,
                          allow_redirects=True)

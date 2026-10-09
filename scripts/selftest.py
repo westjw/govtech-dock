@@ -33,6 +33,16 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import alert     # noqa: E402
 import classify  # noqa: E402
 import salary    # noqa: E402
+import robots    # noqa: E402
+
+# NO CHECK ASKS A REAL SITE FOR ITS robots.txt. A check that stubs ats._get
+# still reaches robots.allowed, which fetches with requests of its own: on
+# 2026-10-09 the Gusto check asked jobs.gusto.com for real, so the suite's
+# answer hung on a stranger's server. Unless a check hands robots a fetcher,
+# every site here has none (a 404: no rules) and the check reads the page it
+# stubbed.
+_ROBOTS_RULES = robots._rules
+robots._rules = lambda base, fetch=None: _ROBOTS_RULES(base, fetch or (lambda url: (404, "")))
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -10217,6 +10227,149 @@ console.log(JSON.stringify({
     if 'const GONE=r=>r&&(r.error==="unknown_token"||r.error==="bad_token");' not in al \
             or "while(!r.ok&&!GONE(r))" not in al or "Your settings did not load" not in al:
         errors += fail("the alerts page reads our failure as the reader's bad link")
+    return errors
+
+
+def check_the_crawler_honours_robots_txt() -> int:
+    """A page whose site asks crawlers to stay out is not read, and the
+    crawler says who it is.
+
+    The owner's ruling, 2026-10-09: robots.txt is honoured. Every night the
+    crawler had read LinkedIn job pages and the iCIMS portals of Bruker
+    Detection and BigBear.ai, whose robots.txt says "Disallow: /" to every
+    crawler, while one of its two fetchers passed as plain Chrome. The rules
+    are RFC 9309's: a 4xx means no rules, a 5xx or no answer means keep out.
+    The boards' documented JSON feeds are interfaces for programs and are not
+    asked; every PAGE reader is.
+    """
+    import inspect
+    import ats
+    import robots
+    errors = 0
+    # an unregistered top-level name: a mutant that ignores the stub fails at
+    # DNS rather than asking somebody's real site
+    files = {
+        "a.robots-fixture": (200, "User-agent: *\nDisallow: /\n"),
+        "b.robots-fixture": (200, "User-agent: govtech-dock\nDisallow: /jobs\n\nUser-agent: *\nAllow: /\n"),
+        "c.robots-fixture": (404, ""),
+        "d.robots-fixture": (503, ""),
+        "f.robots-fixture": (200, "User-agent: *\nDisallow:\n"),
+    }
+    asked = []
+    def fetch(url):
+        host = url.split("/")[2]
+        asked.append(host)
+        if host == "e.robots-fixture":
+            raise OSError("no answer")
+        return files[host]
+    saved = dict(robots._CACHE)
+    try:
+        for url, want, why in (
+                ("https://a.robots-fixture/careers", False, "a site that says Disallow: / to every crawler"),
+                ("https://b.robots-fixture/jobs/1", False, "a path disallowed to our own product token"),
+                ("https://b.robots-fixture/about", True, "a path our token may read"),
+                ("https://c.robots-fixture/careers", True, "a site with no robots.txt (404)"),
+                ("https://d.robots-fixture/careers", False, "a site whose robots.txt answers 503"),
+                ("https://e.robots-fixture/careers", False, "a site whose robots.txt does not answer"),
+                ("https://f.robots-fixture/careers", True, "a site whose robots.txt disallows nothing"),
+                ("https://acme.test/careers", True, "a reserved test domain"),
+                ("https://jobs.example.com/x", True, "a reserved example domain")):
+            got = robots.allowed(url, fetch=fetch)
+            if got is not want:
+                errors += fail(f"robots.allowed says {got} for {why}")
+        robots.allowed("https://a.robots-fixture/other", fetch=fetch)
+        if asked.count("a.robots-fixture") != 1:
+            errors += fail(f"robots.txt was fetched {asked.count('a.robots-fixture')} times for one host in one run")
+        if any(h.endswith((".test", "example.com")) for h in asked):
+            errors += fail("a reserved test domain's robots.txt was asked for over the network")
+        # and with no fetcher handed in, the suite reads "no robots.txt" off
+        # the stub at the top of this file, never off the network
+        import requests
+        real_rg, hits = requests.get, []
+        def no_net(*a, **k):
+            hits.append(a[0] if a else k.get("url"))
+            raise OSError("the suite does not use the network")
+        requests.get = no_net
+        try:
+            ok = robots.allowed("https://suite.robots-fixture/careers")
+        finally:
+            requests.get = real_rg
+        if hits or ok is not True:
+            errors += fail("the suite asks a real site for its robots.txt instead of reading none")
+
+        # every page reader refuses, and none of them reads the page anyway
+        read = []
+        real_allowed, real_get = robots.allowed, ats._get
+        robots.allowed = lambda url, fetch=None: False
+        ats._get = lambda url, **kw: read.append(url)
+        try:
+            try:
+                ats._page("https://refused.invalid/careers")
+                errors += fail("ats._page read a page robots.txt refused")
+            except ats.RobotsRefused:
+                pass
+            except Exception as exc:                        # noqa: BLE001
+                errors += fail(f"ats._page refused with {type(exc).__name__}, not RobotsRefused")
+            if not issubclass(ats.RobotsRefused, ats.AtsError):
+                errors += fail("a robots refusal is not an AtsError, so a nightly board read crashes on it")
+            import add_company
+            html, note = add_company.fetch("https://refused.invalid/")
+            if html or "robots.txt" not in note:
+                errors += fail(f"add_company read a refused site: {note!r}")
+            import discover_ats
+            f = discover_ats.get("https://refused.invalid/careers")
+            if f.outcome != "blocked":
+                errors += fail(f"discover_ats read a refused page: {f.outcome!r}")
+            import render_fetch
+            try:
+                render_fetch.fetch_rendered("https://refused.invalid/careers")
+                errors += fail("render_fetch rendered a refused page")
+            except robots.Refused:
+                pass
+            except Exception as exc:                        # noqa: BLE001
+                errors += fail(f"render_fetch did not ask robots.txt first: {type(exc).__name__}")
+        finally:
+            robots.allowed, ats._get = real_allowed, real_get
+        if read:
+            errors += fail(f"a refused page was read anyway: {read}")
+    finally:
+        robots._CACHE.clear()
+        robots._CACHE.update(saved)
+
+    # the page readers go through _page; a raw _get in one reads past robots.txt
+    for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
+                 "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
+                 "fetch_gusto"):
+        src = inspect.getsource(getattr(ats, name))
+        if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
+            errors += fail(f"ats.{name} reads a page without asking robots.txt")
+    # and so do the scripts a person runs by hand: a sweep is a crawl whoever
+    # starts it. Exempt, and not listed: verify_boards (the boards' JSON
+    # APIs), link_check and redirect_sweep (where an address lands, no
+    # content read), logos (an address a company's claimant gave us).
+    for name, n in (("fetch_profiles", 2), ("feeds", 1), ("conference_dates", 1),
+                    ("find_boards", 1), ("find_event_directories", 1), ("find_linkedin", 1),
+                    ("find_websites", 1), ("promote_rivals", 1), ("read_descriptions", 1),
+                    ("resolve_org_sites", 1), ("supplier_pages", 1), ("sweep_exhibitors", 1),
+                    ("supplier_identity", 1)):
+        src = (ROOT / "scripts" / f"{name}.py").read_text()
+        if src.count("ats._page(") < n or re.search(r"ats\._get\(|requests\.get\(", src):
+            errors += fail(f"scripts/{name}.py reads a page without asking robots.txt")
+
+    # and it says who it is, in the same words robots.txt is matched against
+    import render_fetch
+    if robots.TOKEN not in ats.UA["User-Agent"] or robots.UA != ats.UA:
+        errors += fail("the crawler's user agent does not carry the token robots.txt is read for")
+    if f"{robots.TOKEN}/" not in render_fetch.UA:
+        errors += fail("the browser renderer passes as plain Chrome")
+    # discover_js needs Playwright at import, which CI does not install: read it
+    dj = (ROOT / "scripts" / "discover_js.py").read_text()
+    load = dj[dj.find("async def load("):dj.find("\nasync def ", dj.find("async def load(") + 1)]
+    if (load.find("robots.allowed(url)") < 0
+            or not 0 <= load.find("robots.allowed(url)") < load.find("ctx.new_page()")):
+        errors += fail("the discovery browser opens a page before asking robots.txt")
+    if "user_agent=" not in dj or f"{robots.TOKEN}/" not in dj:
+        errors += fail("the discovery browser passes as plain Chrome")
     return errors
 
 
@@ -32671,6 +32824,7 @@ def main() -> int:
     errors += check_every_view_has_its_own_address()
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
+    errors += check_the_crawler_honours_robots_txt()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()

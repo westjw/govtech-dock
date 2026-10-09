@@ -359,6 +359,24 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   `agent:overnight-build` with a `why` that says they are not human rulings —
   so `admin_undo.py` can take any of them back. That recovery is the safety
   net working, not permission to use it.
+- **The crawler honours robots.txt, and says who it is (owner, 2026-10-09).**
+  Every PAGE read goes through `ats._page` or `robots.allowed`/`robots.check`
+  (`scripts/robots.py`): careers pages, newsrooms, rendered pages, sites read
+  for a write-up or a submission, and the sweeps a person runs by hand
+  (exhibitor floors, directories, website and board finders). A new page
+  fetcher that calls `ats._get` or `requests` directly reads past it. Exempt:
+  the boards' documented JSON feeds (Greenhouse, Lever, Ashby and the rest,
+  and `verify_boards`), which are interfaces published for programs;
+  `link_check` and `redirect_sweep`, which read where an address lands and no
+  content; `logos`, which fetches the address a claimant gave us. RFC 9309: a 4xx means no rules, a 5xx or no
+  answer means keep out for the run. Every user agent names `govtech-dock/1.0`
+  and the repo; none passes as plain Chrome. Honouring it cost 313 postings at
+  5 companies on the day (Bruker Detection and BigBear.ai's iCIMS portals,
+  two LinkedIn pages, Rain Bird). A person may still capture a role by hand:
+  that is a reader, not a crawler. `check_the_crawler_honours_robots_txt`
+  holds it (24/24 mutations). The suite stubs `robots._rules` at the top of
+  selftest.py so no check asks a real site; a check that wants rules passes
+  its own `fetch`.
 
 ## Rows, openings, and the ids that hold them together
 

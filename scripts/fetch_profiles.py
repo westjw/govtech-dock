@@ -331,7 +331,7 @@ def grab(url: str, keep_html: bool = False) -> dict:
     if late:
         return {"url": url, "unread": late}
     try:
-        resp = ats._get(url)
+        resp = ats._page(url)                     # asks robots.txt first
     except Exception as exc:                      # ats raises its own type
         return {"url": url, "unread": str(exc)[:120]}
     body = getattr(resp, "text", "") or ""
@@ -468,7 +468,7 @@ def visit(company: dict, news_depth: int = 1) -> dict:
     out["about"].append(home)
 
     try:
-        body = "" if _out_of_time() else ats._get(site).text
+        body = "" if _out_of_time() else ats._page(site).text
     except Exception:
         body = ""
     found = links(body, site)

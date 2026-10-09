@@ -108,6 +108,10 @@ class AtsError(Exception):
     pass
 
 
+class RobotsRefused(AtsError):
+    """robots.txt asks crawlers not to read the page (scripts/robots.py)."""
+
+
 class RateLimited(AtsError):
     """The server asked us to slow down, which is not the same as a refusal.
 
@@ -439,6 +443,17 @@ def _retry_after(raw: str | None) -> float | None:
         return None
 
 
+def _page(url: str, **kw):
+    """_get for a PAGE, which asks the site's robots.txt first (owner's
+    ruling, 2026-10-09; scripts/robots.py). The boards' JSON feeds go
+    through _get directly: they are interfaces published for programs."""
+    import robots
+    if not robots.allowed(url):
+        raise RobotsRefused(f"robots.txt asks crawlers not to read "
+                            f"{urllib.parse.urlsplit(url).netloc}")
+    return _get(url, **kw)
+
+
 def _get(url: str, **kw):
     _host_gate(url)
     headers = dict(UA)
@@ -668,7 +683,7 @@ def _schema_posting(url: str) -> tuple[str, dict | None]:
     block. A description we could not read is not a posting we lose.
     """
     try:
-        raw = _get(url).text
+        raw = _page(url).text
     except AtsError:
         return "", None
     for block in _LD.findall(raw):
@@ -1420,7 +1435,7 @@ def fetch_paylocity(ref: str) -> list[dict]:
     The list lives in a window.pageData assignment, so the titles are exact
     rather than scraped out of markup.
     """
-    resp = _get(ref)
+    resp = _page(ref)
     m = re.search(r"window\.pageData\s*=\s*(\{.*?\})\s*;", resp.text, re.S)
     if not m:
         raise AtsError("paylocity board carried no pageData block")
@@ -1486,7 +1501,7 @@ _ANYTAG = re.compile(r"<[^>]+>")
 
 
 def _page_text(url: str) -> str:
-    resp = _get(url)
+    resp = _page(url)
     text = _TAG.sub(" ", resp.text)
     # A COMMENTED-OUT JOB IS NOT AN OPENING, and this is the extractor
     # that decides it. _ANYTAG below runs from a bare `<!--` to the next
@@ -1507,7 +1522,7 @@ def fetch_rippling(slug: str) -> list[dict]:
     # Rippling boards are server-rendered; job titles appear in page text and in
     # embedded JSON. Try embedded JSON first, fall back to text scan.
     url = f"https://ats.rippling.com/{slug}/jobs"
-    resp = _get(url)
+    resp = _page(url)
     titles = re.findall(r'"name"\s*:\s*"([^"]{4,90})"\s*,\s*"[^"]*url', resp.text)
     if not titles:
         return [{"title": "", "location": "", "url": url, "_pagetext": _strip(resp.text)}]
@@ -1547,7 +1562,7 @@ def _rippling_urls(raw: str) -> dict[str, str]:
 
 
 def _rippling_detail(url: str) -> tuple[str, dict | None]:
-    m = _NEXT_DATA.search(_get(url).text)
+    m = _NEXT_DATA.search(_page(url).text)
     if not m:
         return "", None
     api = (((json.loads(m.group(1)).get("props") or {}).get("pageProps") or {})
@@ -1590,7 +1605,7 @@ def fetch_jazzhr(slug: str) -> list[dict]:
     # page carries only an Organization block; the ad and, when the employer set
     # one, a structured baseSalary are on the posting page.
     url = f"https://{slug}.applytojob.com/apply/"
-    resp = _get(url)
+    resp = _page(url)
 
     # MEASURE THE TITLE, NOT THE PADDING. The bound used to live inside the
     # pattern as {4,90}, which counted the anchor's RAW inner text - and
@@ -1669,7 +1684,7 @@ def fetch_icims(ref: str) -> list[dict]:
     rows = _paged(
         lambda pr: re.findall(
             r'<a\s+href="([^"]+)"[^>]*class="iCIMS_Anchor"[^>]*title="([^"]+)"',
-            _get(f"{base}{joiner}in_iframe=1&pr={pr}").text),
+            _page(f"{base}{joiner}in_iframe=1&pr={pr}").text),
         lambda pair: html_lib.unescape(pair[0]),
         page=1, max_pages=ICIMS_MAX_PAGES, label=str(ref))
 
@@ -1953,7 +1968,7 @@ def fetch_html_titles(url: str) -> list[dict]:
     URL and its text reads like a job title. Requires at least two hits, because
     one match is far more likely to be a stray link than a real board.
     """
-    resp = _get(url)
+    resp = _page(url)
     seen, out = set(), []
     for m in _ANCHOR.finditer(resp.text):
         href, inner = m.group(1), m.group(2)
@@ -2196,7 +2211,7 @@ def _gusto_is_meta(line: str) -> bool:
 
 
 def fetch_gusto(ref: str) -> list[dict]:
-    raw = _get(GUSTO_BASE + "boards/" + _gusto_seg(ref)).text
+    raw = _page(GUSTO_BASE + "boards/" + _gusto_seg(ref)).text
     text = plain_html(raw)
     hrefs = set(_GUSTO_HREF.findall(raw))
 

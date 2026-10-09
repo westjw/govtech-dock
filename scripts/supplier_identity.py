@@ -298,7 +298,7 @@ def fetch(url: str):
     site, and from the cache they were recorded as the lookalike."""
     import ats
     ats.HTTP_CACHE = None
-    return ats._get(url)
+    return ats._page(url)
 
 
 # A PARKING SERVICE'S LANDER, which find_websites._parked does not know: a

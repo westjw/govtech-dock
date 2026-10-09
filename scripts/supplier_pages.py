@@ -69,7 +69,7 @@ def visit(sid: str, site: str) -> dict:
         return out
     out["pages"].append(home)
     try:
-        body = fp.ats._get(site).text
+        body = fp.ats._page(site).text
     except Exception:                                   # noqa: BLE001
         body = ""
     seen = {(up.urlsplit(site).path or "/").rstrip("/").lower()}

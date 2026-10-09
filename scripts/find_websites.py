@@ -252,7 +252,7 @@ def probe(company: dict) -> dict:
     for url in candidates(name):
         base = url.split("//", 1)[1].rsplit(".", 1)[0]
         try:
-            r = ats._get(url)
+            r = ats._page(url)
         except Exception:
             continue
         if identifies(r.text, name, base):
