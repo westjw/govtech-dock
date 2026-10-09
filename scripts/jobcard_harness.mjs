@@ -228,13 +228,26 @@ try {
     { ...base, id: "rival-co", name: "Rival Co", ats: "greenhouse", enumerable: true,
       competitors: [{ id: "unread-co", why: "a" }, { id: "none-co", why: "b" }, { id: "read-co", why: "c" }] },
     { ...base, id: "quote-co", name: "Quote Co", ats: "greenhouse", enumerable: true, open_roles: 1 },
+    // a parent named by its NAME, one nobody on the board answers to, and
+    // brands with and without a live record of their own
+    { ...base, id: "child-co", name: "Child Co", parent: "Read Co" },
+    { ...base, id: "orphan-co", name: "Orphan Co", parent: "Nobody Holdings" },
+    { ...base, id: "brand-co", name: "Brand Co", brands: [{ name: "Brand A" }, { name: "Brand B", record: "read-co" }] },
+    // ONE OPENING in two cities that state different pay, and one more
+    { ...base, id: "multi-co", name: "Multi Co", ats: "greenhouse", enumerable: true, open_roles: 2, quota_roles: 2 },
   ];
   // A title with an apostrophe, a double quote and a backslash: what a job
   // board hands us, and what an onclick="openRole('...')" could never carry.
   const QUOTE_ID = "quote-co::D\u00e9veloppement d'affaires \"AE\" \\ x::1a2b";
   const qp = post({ id: QUOTE_ID, title: "D\u00e9veloppement d'affaires \"AE\" \\ x", company: "Quote Co",
                     company_id: "quote-co", opening_id: "quote-co::q" });
-  ctx.__fix = { generated: "2026-10-07", logos: {}, postings: [qp], organizations: orgs, conferences: [] };
+  const mp = (i, city, min) => post({ id: `multi-co::AE::${i}`, title: "Account Executive", company: "Multi Co",
+    company_id: "multi-co", opening_id: "multi-co::AE", location: `${city}, TX`, office: { city, state: "TX" },
+    comp: { min, max: min + 20000, period: "year", currency: "USD" } });
+  const multi = [mp(1, "Austin", 90000), mp(2, "Dallas", 100000),
+    post({ id: "multi-co::SE::1", title: "Sales Engineer", company: "Multi Co", company_id: "multi-co",
+           opening_id: "multi-co::SE" })];
+  ctx.__fix = { generated: "2026-10-07", logos: {}, postings: [qp, ...multi], organizations: orgs, conferences: [] };
   ctx.__quoteId = QUOTE_ID;
   const rec = { innerHTML: "" };
   const viewEl = new Proxy(rec, { get(t, k) { return k in t ? t[k] : S; },
@@ -391,6 +404,15 @@ try {
     const errImg = el("IMG", {}, { "data-mark": "" });
     fire("error", { type: "error", target: errImg });
     r.fired = { got: got.splice(0), errorRemoved: errImg.removed };
+    // ENTER ON A ROW, SPACE ON A BUTTON: the keydown listener the page
+    // registered, fired with focusable rows of each kind
+    const kd = (tag, role, key, tabIndex = 0) => { let clicked = 0;
+      const t = { tagName: tag, tabIndex, getAttribute: (n) => (n === "role" ? role : null), click() { clicked++; } };
+      fire("keydown", { type: "keydown", key, target: t, preventDefault() {} }); return clicked; };
+    r.kbd = { enterLink: kd("DIV", "link", "Enter"), spaceLink: kd("DIV", "link", " "),
+              spaceButton: kd("SPAN", "button", " "), enterButton: kd("SPAN", "button", "Enter"),
+              realButton: kd("BUTTON", "button", "Enter"), notFocusable: kd("DIV", "link", "Enter", -1),
+              noRole: kd("DIV", null, "Enter") };
     Object.assign(globalThis, keep, keep2);
     return r; })()`, ctx);
   acts.qid = ctx.__qid;

@@ -69,6 +69,21 @@
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
     --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA; }}
+  /* THE SWITCH, NOT ONLY THE SYSTEM. The account menu's "Switch theme" sets
+     data-theme="dark" and nothing here read it, so a reader on a light-mode
+     machine could not get the dark theme (launch audit 2, 2026-10-09). The
+     same tokens as the block above; check_the_theme_switch_reaches_every_token
+     holds the two equal. */
+  :root[data-theme=dark]{
+    /* ground becomes Penguin. Badge falls to 2.3:1 there, so both accents
+       lighten along their own hue until they clear AA again. */
+    --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
+    --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
+    --beak:#F5A623; --chip:#2E3852; --accent-text:#76ABF9;
+    /* Not inverted to white here. The header stays Penguin in both themes on
+       purpose and a white card beside it would be the loudest thing on the
+       page; lifting to --chip keeps the lead card first without shouting. */
+    --cf-lead:#2E3852; --cf-lead-ink:#E8F1F7; --cf-lead-dim:#A8BCCA; }
   /* ---------------------------------------------- company page (turn 6)
      THE NINE TOKENS THE BUILD SPEC NAMES, and only these. They are scoped to
      .copage rather than :root because the spec's ground (#151B29) is a step
@@ -91,6 +106,11 @@
     --c-ink:#E8F1F7; --c-ink2:#A9C3D4; --c-ink3:#7C97AA;
     --c-accent:#C1341F; --c-accent-text:#E4634A; --c-link:#9CC3FF;
   }}
+  :root[data-theme=dark] .copage{
+    --c-bg:#151B29; --c-rule:#2E3A50; --c-stroke:#4A5C71;
+    --c-ink:#E8F1F7; --c-ink2:#A9C3D4; --c-ink3:#7C97AA;
+    --c-accent:#C1341F; --c-accent-text:#E4634A; --c-link:#9CC3FF;
+  }
   .copage{background:var(--c-bg);color:var(--c-ink);
     margin:0 -20px -40px;padding:0 20px 48px;min-height:70vh}
   .copage a{color:var(--c-link)}
@@ -1218,7 +1238,9 @@
 
   /* Beak, the one highlight colour on this page, because this is the one row
      state worth looking at rather than reading. */
-  .hot{background:var(--beak);color:var(--penguin);font-weight:700;
+  /* Penguin on Beak. This named --penguin, which was never defined, so the
+     text fell back to --ink: near-white on Beak at 1.77:1 in dark mode. */
+  .hot{background:var(--beak);color:var(--hdr-bg);font-weight:700;
     font-size:11px;letter-spacing:.04em;padding:1px 6px;text-transform:uppercase}
 
   /* Beanie, not Beak. Beak is the highlight this page uses for things worth
@@ -1708,6 +1730,22 @@ function logoEvent(e){
   if(e.type==="load")lightMark(t); else t.remove();
 }
 ["click","input","change"].forEach(k=>document.addEventListener(k,e=>dispatch(k,e),true));
+/* A THING YOU CAN CLICK IS A THING YOU CAN REACH. Rows that open a company
+   or a role, "Show more", and the inline "include them" switches were divs
+   and spans with an onclick: nothing could focus one, so a keyboard or
+   screen-reader user could not open a company from the Companies tab (launch
+   audit 2, 2026-10-09). Each now takes focus (tabindex 0) and a role, and
+   Enter - or Space, on a button - clicks it. Real buttons and links do that
+   themselves and are left alone. */
+function reachable(el,role){ el.tabIndex=0; el.setAttribute("role",role||"link"); return el; }
+function kbdActivate(e){
+  const t=e.target;
+  if(!t||!t.getAttribute||t.tabIndex!==0||/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(t.tagName||""))return;
+  const role=t.getAttribute("role");
+  if(role!=="link"&&role!=="button")return;
+  if(e.key==="Enter"||(e.key===" "&&role==="button")){e.preventDefault();t.click();}
+}
+document.addEventListener("keydown",kbdActivate,true);
 document.addEventListener("load",logoEvent,true);
 document.addEventListener("error",logoEvent,true);
 /* "How listings get here" is in the deck's header for a reason: this board's
@@ -2617,7 +2655,7 @@ function roleView(id){
     const h=$("#r-sibs");
     siblings.slice(0,12).forEach(x=>{
       const row=document.createElement("div");
-      row.className="row clk";
+      row.className="row clk"; reachable(row);
       row.onclick=()=>openRole(x.id);
       row.innerHTML=`${tileHTML(x.company,x.company_id,"tile")}
         <div class="main"><div class="t">${esc(x.title)}</div>
@@ -2629,6 +2667,7 @@ function roleView(id){
       const more=document.createElement("div");
       more.className="more";
       more.textContent=`See all ${siblings.length} at this company`;
+      reachable(more);
       more.onclick=()=>{ROLE=null;co(p.company_id)};
       h.appendChild(more);
     }
@@ -3128,23 +3167,23 @@ function jobs(){
          offers a source that actually splits the board, and every posting on
          this build came from an ATS. It comes back on its own. -->
     <div class="bar" id="j-bar" style="display:none">
-      <select id="j-fam"><option value="">All role families</option>
+      <select id="j-fam" aria-label="Role family"><option value="">All role families</option>
         ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}</select>
-      <select id="j-sec"><option value="">All sectors</option>
+      <select id="j-sec" aria-label="Sector"><option value="">All sectors</option>
         ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <!-- esc() on both the value AND the text, on every option below. A
            state comes from roles.geography() parsing a location string an ATS
            gave us, so it is third-party text arriving daily with nobody
            reading it. -->
-      <select id="j-state"><option value="">Territory: any</option>
+      <select id="j-state" aria-label="Territory state"><option value="">Territory: any</option>
         <option value="__none">No stated territory</option>
         ${states.map(x=>`<option value="${esc(x)}">Territory: ${esc(x)}</option>`).join("")}</select>
-      <select id="j-region"><option value="">Territory region: any</option>
+      <select id="j-region" aria-label="Territory region"><option value="">Territory region: any</option>
         ${regions.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
-      <select id="j-office"><option value="">Office: anywhere</option>
+      <select id="j-office" aria-label="Office state"><option value="">Office: anywhere</option>
         <option value="__none">Office not stated</option>
         ${offStates.map(x=>`<option value="${esc(x)}">Office in ${esc(x)}</option>`).join("")}</select>
-      <select id="j-sen"><option value="">Any level</option>
+      <select id="j-sen" aria-label="Seniority"><option value="">Any level</option>
         <option value="junior">Junior</option><option value="mid">Mid</option>
         <option value="senior">Senior</option><option value="leadership">Leadership</option></select>
       <!-- DEFAULTS TO THE US, because this is a board about American state
@@ -3159,11 +3198,11 @@ function jobs(){
            the default shows what is in the US and what we could not place,
            and says which is which; "US only, confirmed" is there for anybody
            who wants the stricter cut. -->
-      <select id="j-us"><option value="us" selected>United States</option>
+      <select id="j-us" aria-label="Country"><option value="us" selected>United States</option>
         <option value="1">US only, confirmed</option>
         <option value="">Anywhere in the world</option>
         <option value="0">Outside the US</option></select>
-      <select id="j-mode"><option value="">Any work mode</option>
+      <select id="j-mode" aria-label="Work mode"><option value="">Any work mode</option>
         <option value="remote">Remote</option><option value="hybrid">Hybrid</option>
         <option value="onsite">Onsite</option>
         <option value="not stated">Work mode not stated</option></select>
@@ -3421,11 +3460,11 @@ function emptyJobs(quotaOnly,fam,where,setAside,q,noQuota,noWhere){
     return `<div class="empty">${GHOST}No posting that states a salary clears that floor.<br>
       ${setAside.total.toLocaleString()} match everything else you set but cannot be
       compared to it — ${paySetAsideText(setAside)}.<br>
-      <span class="payall">Show those ${setAside.total.toLocaleString()} anyway &rarr;</span></div>`;
+      <span class="payall" tabindex="0" role="button">Show those ${setAside.total.toLocaleString()} anyway &rarr;</span></div>`;
   if(quotaOnly&&fam&&fam!=="gtm"&&noQuota)
     return `<div class="empty">${GHOST}No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
-      <span id="j-relax" style="color:var(--accent);cursor:pointer;font-weight:600">
+      <span id="j-relax" tabindex="0" role="button" style="color:var(--accent);cursor:pointer;font-weight:600">
         Show all ${noQuota.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
   if(where&&noWhere)
     return `<div class="empty">${GHOST}Nothing matches that work mode. ${noWhere.toLocaleString()}
@@ -3980,7 +4019,7 @@ function savedView(){
   const cohost=$("#s-cos");
   if(cohost)cos.forEach(o=>{
     const row=document.createElement("div");
-    row.className="row clk";
+    row.className="row clk"; reachable(row);
     row.onclick=()=>co(o.company_id);
     row.innerHTML=`${tileHTML(o.company,o.company_id,"tile")}
       <div class="main"><div class="t">${esc(o.title||o.company||"")}</div>
@@ -3996,7 +4035,7 @@ function savedView(){
     const [bg,fg]=tile(p.company);
     const gone=!live.has(p.id);
     const row=document.createElement("div");
-    row.className="row clk";
+    row.className="row clk"; reachable(row);
     const surl=safeUrl(p.url);
     row.onclick=()=>{live.has(p.id)?openRole(p.id):(surl&&window.open(surl,"_blank","noopener"))};
     row.innerHTML=`${tileHTML(p.company,p.company_id,"tile")}
@@ -4300,9 +4339,9 @@ function drawJobs(){
     +(relaxed?` · showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
     +(setAside?(PAY_KEEP
       ? ` · including ${setAside.total.toLocaleString()} with no comparable salary
-          (${paySetAsideText(setAside)}) · <span class="payoff">set them aside</span>`
+          (${paySetAsideText(setAside)}) · <span class="payoff" tabindex="0" role="button">set them aside</span>`
       : ` · ${setAside.total.toLocaleString()} set aside: ${paySetAsideText(setAside)}
-          · <span class="payall">include them</span>`):"")
+          · <span class="payall" tabindex="0" role="button">include them</span>`):"")
     +nearNote(NEAR);
 
   /* What is new since you saved this search. Counted off `rows`, which is what
@@ -4896,10 +4935,10 @@ function companies(){
         ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <select id="c-cat" aria-label="Sub-sector"><option value="">All sub-sectors</option>
         ${coCatOptions(D.organizations,"").map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
-      <select id="c-phase"><option value="">Any phase</option>
+      <select id="c-phase" aria-label="Hiring phase"><option value="">Any phase</option>
         <option value="selling">Selling</option><option value="building">Building</option>
         <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
-      <select id="c-reads"><option value="">Any board</option>
+      <select id="c-reads" aria-label="Board we can read"><option value="">Any board</option>
         <option value="api">Readable board</option>
         <option value="x">Board we cannot read</option>
         <option value="none">No board on file</option></select>
@@ -5073,17 +5112,17 @@ function coWhy(q,W,c){
      person who widened has to be able to get back to the narrow answer. */
   if(c.outN)
     bits.push(`${c.outN.toLocaleString()} more mention the words and are filed
-      elsewhere &mdash; <span class="colink cotext" data-on="1">include them</span>`);
+      elsewhere &mdash; <span tabindex="0" role="button" class="colink cotext" data-on="1">include them</span>`);
   if(c.inN)
     bits.push(`including ${c.inN.toLocaleString()} that only mention the words
-      &mdash; <span class="colink cotext" data-on="">set them aside</span>`);
+      &mdash; <span tabindex="0" role="button" class="colink cotext" data-on="">set them aside</span>`);
   if(c.wideN)
     bits.push(`${c.wideN.toLocaleString()} more sit in ${esc(c.secs.join(", "))}
-      outside those categories &mdash; <span class="colink cowide" data-on="1">widen to
+      outside those categories &mdash; <span tabindex="0" role="button" class="colink cowide" data-on="1">widen to
       the whole sector</span>`);
   else if(CO_WIDE&&c.secs.length)
     bits.push(`widened to all of ${esc(c.secs.join(", "))} &mdash;
-      <span class="colink cowide" data-on="">narrow back</span>`);
+      <span tabindex="0" role="button" class="colink cowide" data-on="">narrow back</span>`);
 
   const w=document.createElement("div");
   w.className="note";
@@ -5306,7 +5345,7 @@ function drawCos(){
        the reader's eye already is. */
     const asName=q?(coBrandsNamed(o,q)[0]||{}).name||coAkaNamed(o,q)[0]||"":"";
     const row=document.createElement("div");
-    row.className="row clk";
+    row.className="row clk"; reachable(row);
     // same reason as the job row: the id stays a value, so encodeURIComponent
     // (which leaves ' alone) is not being asked to be an escaping function
     row.onclick=()=>co(o.id);
@@ -5347,6 +5386,7 @@ function drawCos(){
     more.className="more";
     more.textContent=`Show ${Math.min(60,rows.length-CSHOWN)} more of ${
       (rows.length-CSHOWN).toLocaleString()}`;
+    reachable(more,"button");
     more.onclick=showMoreCo;
     clist.appendChild(more);
   }
@@ -5461,6 +5501,39 @@ function companyStory(o, mine){
 const brandParas=t=>(t||"").split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean)
   .map(s=>`<p>${esc(s)}</p>`).join("");
 const brandList=o=>(o.brands||[]).filter(b=>b&&b.name);
+/* the families build_site.SALES_FAMILIES leads with, so both pages order
+   their role groups the same way */
+const CO_SALES=new Set(["gtm","field"]);
+/* PAY FOR ONE OPENING IN SEVERAL PLACES, said the way the job card says it:
+   a figure only when every posting states the same one. One city's band
+   printed against forty places is a figure about thirty-nine nobody read. */
+/* an opening's age is its EARLIEST posting's: one requisition relisted in a
+   new city yesterday has still been open since the first of them appeared */
+const coFirstSeen=g=>g.map(r=>r.first_seen).filter(Boolean).sort()[0]||null;
+function coGroupPay(g){
+  if(g.length===1)return payCell(g[0]);
+  const figs=new Set(); let stated=0;
+  g.forEach(r=>{const b=payBit(r); if(b&&b.cls==="pay"){figs.add(b.txt);stated++;}});
+  if(figs.size>1)return `<span class="paynone" title="the postings state different figures">varies</span>`;
+  if(figs.size===1)return `<span class="pay">${esc([...figs][0])}</span>`
+    +(stated<g.length?` <span class="paynone">on ${stated} of ${g.length}</span>`:"");
+  return `<span class="paynone" title="no pay figure on any of these postings">&mdash;</span>`;
+}
+/* `parent` is a NAME and a brand carries no id. The app put the name in
+   ?co= (34 parent links, every one "not on this board", Accela included) and
+   gave every brand /?co= with nothing after it (launch audit 2, 2026-10-09).
+   Resolved the way build_site resolves them: a parent by its exact name, a
+   brand by the live record it still has, and plain text when there is none. */
+function coParentHTML(name){
+  const n=String(name||"").trim(), k=n.toLowerCase();
+  const par=k?(D.organizations||[]).find(x=>String(x.name||"").trim().toLowerCase()===k):null;
+  return par?`part of <a href="/?co=${encodeURIComponent(par.id)}">${esc(n)}</a>`:`part of ${esc(n)}`;
+}
+function coBrandHTML(b){
+  const rec=b&&b.record?(D.organizations||[]).find(x=>x.id===b.record):null;
+  const name=esc((b&&b.name)||String(b||""));
+  return rec?`<a href="/?co=${encodeURIComponent(rec.id)}">${name}</a>`:name;
+}
 
 /* The roster, high on the card. Somebody who arrived here by typing
    "perfectmind" has to see that word before three screens of the parent's own
@@ -5886,7 +5959,7 @@ function co(id,fromUrl){
                  nothing rather than asserting "unclaimed" about 2,057 firms */
               "",
               (o.brands&&o.brands.length)?`owns ${o.brands.length} brand${o.brands.length===1?"":"s"}`:"",
-              o.parent?`part of <a href="/?co=${encodeURIComponent(o.parent)}">${esc(o.parent)}</a>`:""
+              o.parent?coParentHTML(o.parent):""
              ].filter(Boolean);
 
   /* --- 04 stat strip, four cells, always ------------------------------ */
@@ -5921,11 +5994,24 @@ function co(id,fromUrl){
 
   const news=coNews(o,dom,DETAIL[o.id]);
 
-  /* roles, grouped by family, biggest group first */
+  /* ROLES, GROUPED BY FAMILY, ONE ROW PER OPENING - the way the static page
+     and the strip above count them. These rows were postings and the group
+     header counted them, so Xplor read "15 open roles" over "231 roles · 228
+     quota-carrying" for one requisition advertised in many cities (launch
+     audit 2, 2026-10-09). Sales families first, then the biggest. */
   const byFam={};
   mine.forEach(p=>{ (byFam[p.family||"other"]=byFam[p.family||"other"]||[]).push(p); });
-  const groups=Object.entries(byFam).sort((a,b)=>b[1].length-a[1].length);
-  const roleRows=(rows)=>rows.map(p=>`<div class="corow">
+  const openingsOf=rows=>{
+    const m=new Map();
+    rows.forEach(p=>{const k=p.opening_id||p.id; if(!m.has(k))m.set(k,[]); m.get(k).push(p);});
+    return [...m.values()].sort((a,b)=>(!a[0].quota_carrying)-(!b[0].quota_carrying)
+      ||String(a[0].title||"").localeCompare(String(b[0].title||"")));
+  };
+  const groups=Object.entries(byFam).map(([fam,rows])=>[fam,openingsOf(rows)])
+    .sort((a,b)=>(!CO_SALES.has(a[0]))-(!CO_SALES.has(b[0]))||b[1].length-a[1].length);
+  const roleRows=(openings)=>openings.map(g=>{const p=g[0];
+    const places=new Set(g.map(locCell)), more=places.size-1;
+    return `<div class="corow">
       <span class="ti"><a href="#" data-click="openRole" data-arg="${esc(p.id)}"
         >${esc(p.title)}</a></span>
       <!-- locCell and payCell, NOT p.location and p.comp. Both fields are
@@ -5934,10 +6020,10 @@ function co(id,fromUrl){
            WHICH silence it is. Both helpers already existed and already got
            this right for the jobs table; this row reinvented them and got
            them wrong in the same commit. -->
-      <span class="lo">${esc(locCell(p))}</span>
-      <span class="pa">${payCell(p)}</span>
-      <span class="ag">${coAge(p.first_seen)}</span>
-      <span class="sv"></span></div>`).join("");
+      <span class="lo">${esc(locCell(p))}${more>0?esc(` and ${more} other location${more>1?"s":""}`):""}</span>
+      <span class="pa">${coGroupPay(g)}</span>
+      <span class="ag">${coAge(coFirstSeen(g))}</span>
+      <span class="sv"></span></div>`;}).join("");
   let rolesInner;
   if(!mine.length){
     rolesInner=`<div class="coempty">${GHOST}
@@ -5967,10 +6053,11 @@ function co(id,fromUrl){
     rolesInner=groups.map(([fam,rows],i)=>{
       /* A group a person opened shows every role. The first two are open with
          three; "Show N more" used to toggle the set and redraw the same three,
-         because nothing read it for an open group (2026-09 to 10-09). */
+         because nothing read it for an open group (2026-09 to 10-09). `rows`
+         here are openings, each a list of its postings. */
       const all=CO_OPEN_GROUPS.has(fam);
       const openG=i<2||all;
-      const q=rows.filter(r=>r.quota_carrying).length;
+      const q=rows.filter(g=>g[0].quota_carrying).length;
       const shown=all?rows:(openG?rows.slice(0,3):[]);
       return `<div class="cogrp"><div class="cogrph">
           <h3>${esc(FAM[fam]||fam)}</h3>
@@ -6035,8 +6122,7 @@ function co(id,fromUrl){
         readable?"":`<span class="tag">unreadable</span>`}</div>`:""}
     </section>
     ${(o.brands&&o.brands.length)?`<section><h2>Brands they own</h2>
-      ${o.brands.map(b=>`<div class="r"><span><a href="/?co=${
-        encodeURIComponent(b.id||"")}">${esc(b.name||b)}</a>${
+      ${o.brands.map(b=>`<div class="r"><span>${coBrandHTML(b)}${
         b.descriptor?`<span class="d">${esc(b.descriptor)}</span>`:""}</span>${
         b.openRoles!=null?`<span class="n">${b.openRoles}</span>`:""}</div>`).join("")}
       <p class="note">Counts are not rolled up: roles above are each company's own.</p>
@@ -6165,7 +6251,7 @@ function intel(){
     const host=$("#"+hostId); if(!host)return;
     list.filter(o=>o.families&&o.families[key]).forEach(o=>{
       const d=document.createElement("div");
-      d.className="kv clk";
+      d.className="kv clk"; reachable(d);
       d.innerHTML=`<strong>${o.families[key]}</strong> ${esc(o.name)}`;
       d.onclick=()=>co(o.id);
       host.appendChild(d);
@@ -6694,7 +6780,7 @@ function home(){
       </div>`).join("")}
     </div>
     ${slides.length>1?`<div class="bnav">
-      <div class="bdots">${slides.map((_,i)=>`<i data-dot="${i}"${i===0?' class="on"':""}></i>`).join("")}</div>
+      <div class="bdots">${slides.map((_,i)=>`<i data-dot="${i}" tabindex="0" role="button" aria-label="Slide ${i+1} of ${slides.length}"${i===0?' class="on"':""}></i>`).join("")}</div>
       <button id="bprev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
       <button id="bnext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>`:""}
@@ -7069,7 +7155,7 @@ function conferences(){
       // its own, which is how the two drifted apart last time.
       document.querySelectorAll("#cf-list .calrow[data-cf], #cf-list .calbar[data-cf]")
         .forEach(el=>{
-        el.style.cursor="pointer";
+        el.style.cursor="pointer"; reachable(el,"button");
         el.onclick=()=>{
           ROLE=null; tab="companies"; render();
           const box=$("#c-q");
@@ -8736,6 +8822,9 @@ function start(d){
   wireHeader();
   openVisit();                 // before render() - see sinceLastVisit
   PENDING_URL=readUrl();
+  // read before render(): jobs() consumes PENDING_URL
+  const wantAdd=!!(PENDING_URL&&PENDING_URL.get("add")==="1");
+  const addCo=PENDING_URL?PENDING_URL.get("co"):null;
   tab=tabFromUrl(PENDING_URL,"home");
   if(PENDING_URL&&PENDING_URL.get("role")){ROLE=PENDING_URL.get("role")}
   render();
@@ -8752,6 +8841,20 @@ function start(d){
   if(PENDING_URL&&PENDING_URL.get("e")){
     if(tab!=="conferences"){ tab="conferences"; render(); }
     cfOpenPanel(PENDING_URL.get("e"),true);
+  }
+  /* ?add=1 OPENS THE ADD-A-COMPANY FORM. claim.js sends a claimant whose mail
+     domain is not the website on file here ("Tell us about it"); it pointed
+     at ?tab=submit, a tab this board never had, and landed on the job board
+     with nothing to fill in (launch audit 2, 2026-10-09). With ?co= the
+     context box starts on that company. The flag leaves the address once
+     read, so a reload does not reopen the form. */
+  if(wantAdd){
+    const o=addCo?(D.organizations||[]).find(x=>x.id===addCo):null;
+    const ctx=document.getElementById("add-ctx");
+    if(ctx&&o&&!ctx.value)ctx.value=`About ${o.name}: `;
+    openAdd({preventDefault(){}});
+    const u=new URL(location.href); u.searchParams.delete("add");
+    history.replaceState(history.state,"",u.pathname+u.search);
   }
   // Sync runs after the first paint and never blocks it: the board must work
   // with the network gone, and a saved list is the last thing worth waiting on.

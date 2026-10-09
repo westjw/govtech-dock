@@ -710,6 +710,11 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
                         # companies.json. Both omitted when false/absent, so
                         # the file does not grow a byte for the 1,700 that
                         # carry neither.
+                        # q: quota-carrying roles, so a link preview can say
+                        # "sales roles" only about sales roles. It said "N open
+                        # sales roles" with N = every open role (Aurelian: 8,
+                        # all engineering and product; launch audit 2).
+                        **({"q": o["quota_roles"]} if o.get("quota_roles") else {}),
                         **({"p": 1} if has_static_page(o) else {}),
                         **({"w": _reg_host(o.get("website"))} if _reg_host(o.get("website")) else {})}
     # TWO FILES, not one. A role page has no use for 2,113 company records and
@@ -1460,6 +1465,26 @@ def _pay_cell(p: dict) -> str:
     return f'<span class="paynone" title="{html.escape(why)}">&mdash;</span>'
 
 
+def _group_pay_cell(grp: list) -> str:
+    """Pay for one opening advertised in several places, said the way the job
+    card says it: a figure only when every posting states the same one. The
+    row printed the FIRST posting's pay for all of them - one city's band, or
+    "no salary stated", for postings that state other figures (launch audit
+    2, 2026-10-09). index.html's coGroupPay is the same rule."""
+    if len(grp) == 1:
+        return _pay_cell(grp[0])
+    bits = [_pay_bit(g) for g in grp]
+    figs = {b[1] for b in bits if b and b[0] == "pay"}
+    stated = sum(1 for b in bits if b and b[0] == "pay")
+    if len(figs) > 1:
+        return '<span class="paynone" title="the postings state different figures">varies</span>'
+    if figs:
+        fig = html.escape(next(iter(figs)))
+        return (f'<span class="pay">{fig}</span>'
+                + (f' <span class="paynone">on {stated} of {len(grp)}</span>' if stated < len(grp) else ""))
+    return '<span class="paynone" title="no pay figure on any of these postings">&mdash;</span>'
+
+
 def _safe_url(u) -> str:
     """http(s) and nothing else. A url out of an ATS is a url out of a
     stranger, and this page is served to strangers."""
@@ -1756,7 +1781,7 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
                      f'<span class="ti"><a href="/?role={urllib.parse.quote(str(rep.get("id") or ""), safe="")}">'
                      f'{esc(rep.get("title") or "")}</a></span>'
                      f'<span class="lo">{esc(loc)}</span>'
-                     f'<span class="pa">{_pay_cell(rep)}</span>'
+                     f'<span class="pa">{_group_pay_cell(grp)}</span>'
                      f'<span class="ag">{esc(age)}</span>'
                      f'<span class="sv"></span></div>')
         hidden = n - len(shown)
@@ -2122,9 +2147,14 @@ def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
                 f'and back-office openings these companies also carry, so this is '
                 f'a floor rather than a total.</p>'
                 f'<ul>{items}</ul>'
-                f'<div class="note"><a href="/?tab=jobs&amp;st={urllib.parse.quote(st)}">'
-                f'Filter the live board to {html.escape(name)}</a>, where these are '
-                f'sortable and kept current.</div>')
+                # THE OFFICE FILTER, which is what this page counts by. It
+                # linked st=, the board's TERRITORY filter: /s/tx's 101 roles
+                # opened as 10, and MN and SD - no territory option at all -
+                # opened the whole national board (launch audit 2).
+                f'<div class="note"><a href="/?off={urllib.parse.quote(st)}">'
+                f'See offices in {html.escape(name)} on the live board</a>, kept '
+                f'current. It opens on the quota-carrying roles; &ldquo;Any role&rdquo; '
+                f'there shows the rest.</div>')
         (d / f"{st.lower()}.html").write_text(_page(
             f"Govtech sales jobs in {name} · {brand['name']}",
             f"{line}. Sales roles at state and local government technology "
@@ -2600,7 +2630,10 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     if swept:
         rows = []
         for o in roster[:10]:
-            n = o.get("open_roles") or 0
+            # the company's quota-carrying roles, as its own page counts them:
+            # the column printed every open role, so Motorola's 359 sat under
+            # a "sales roles" heading beside a company page saying 62
+            n = o.get("quota_roles") or 0
             place = " / ".join(x for x in (o.get("sector"), o.get("category")) if x)
             # LINK ONLY WHERE A PAGE WAS WRITTEN. has_static_page is the one
             # gate on whether /c/<id>.html exists, and this roster linked every
@@ -2642,9 +2675,9 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
             f'<section class="cfx-sec"><h2>Who exhibits here &middot; hiring first'
             f'<span>{len(roster)} '
             f'{"company" if len(roster) == 1 else "companies"}'
-            f'{f" &middot; {n_hire} hiring" if n_hire else ""}</span></h2>'
+            f'{f" &middot; {n_hire} hiring a seller" if n_hire else ""}</span></h2>'
             f'<table class="cfx-roster"><thead><tr><th>Company</th>'
-            f'<th>On the board</th><th class="n">Open sales roles</th></tr></thead>'
+            f'<th>On the board</th><th class="n">Quota-carrying roles</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table>{more}'
             f'<p class="cfx-more">These are the exhibitors <em>we</em> track from '
             f'this show, not the show&rsquo;s own list. A short roster here means '
@@ -2870,16 +2903,22 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         tag = c.get("tag") or c.get("event_tag")
         if not tag:
             continue
+        # sellers first: a quota-carrying role, then any open role at all
         roster = sorted(by_tag.get(tag, []),
-                        key=lambda o: (-(o.get("open_roles") or 0), o.get("name") or ""))
+                        key=lambda o: (-(o.get("quota_roles") or 0), -(o.get("open_roles") or 0),
+                                       o.get("name") or ""))
         if not conference_gets_a_page(c, by_tag):
             continue      # nothing to say that the catalogue tab does not say
-        hiring = [o for o in roster if o.get("open_roles")]
+        # HIRING A SELLER means a quota-carrying role. This took any open role:
+        # APCO's page said 9 of 32 were "hiring a seller today" where 5 were,
+        # counting Aurelian's eight engineering and product openings among
+        # them (launch audit 2, 2026-10-09).
+        hiring = [o for o in roster if o.get("quota_roles")]
         # The <meta description> is what a search result and a link unfurl
         # show, so it says the one thing this page can answer that nothing
         # else can - and says it about US, never about the show's floor.
         line = (f"{len(hiring)} of the {len(roster)} exhibitors we track here "
-                f"are hiring" if roster else "No exhibitors tracked here yet")
+                f"are hiring a seller" if roster else "No exhibitors tracked here yet")
         span = _ics_range(c.get("dates"))
         peers = [x for x in dept_index.get(c.get("department") or "", [])
                  if x.get("tag") != tag and conference_gets_a_page(x, by_tag)]
@@ -3362,6 +3401,12 @@ def main() -> int:
     schema = json.loads((ROOT / "data" / "schema.json").read_text())
     (out / "data" / "sectors.json").write_text(
         json.dumps([x["name"] for x in schema["sectors"]], separators=(",", ":")))
+    # THE NAMES, FOR AN ALERT ABOUT ONE COMPANY. /alerts?company=<id> names
+    # the company it is limited to; the alerts page reads this (about 60 KB)
+    # rather than the whole board to say it in words.
+    (out / "data" / "company-names.json").write_text(
+        json.dumps({o["id"]: o.get("name") or o["id"] for o in board.get("organizations") or []},
+                   separators=(",", ":"), sort_keys=True))
 
     brand = json.loads((ROOT / "data" / "brand.json").read_text())
     write_headers(out)

@@ -1861,6 +1861,35 @@ fires.
   so it redrew the same three roles. The set is cleared when `co()` opens
   a different company, or one company's expanded group would follow the
   reader everywhere.
+- **A second launch audit (2026-10-09)** found 56 things; the first batch is
+  fixed here, each with a check broken on purpose:
+  - **A company alert is about that company.** Every company page links to
+    `/alerts?company=<id>`, and nothing read it: the reader signed up for
+    every role on the board. alerts.html now names the companies, `cleanPrefs`
+    keeps up to 20 lowercase ids, and `digest.matches()` refuses a posting
+    from any other company. `check_a_company_alert_is_about_that_company`.
+  - **Every control answers the keyboard.** A row the app draws as a div or
+    span goes through `reachable()` (tabindex 0, role button), and one keydown
+    listener turns Enter and Space into its click. The Companies tab, saved
+    rows, sibling roles and "Show more" could not be opened without a mouse.
+    The selects under More filters carry aria-labels.
+    `check_every_control_answers_the_keyboard`.
+  - **The app's company view counts openings,** as its stat strip and the
+    static page already did: one row per opening ("and 222 other
+    locations"), and pay prints a figure only when every posting states the
+    same one (`coGroupPay`, `_group_pay_cell`).
+    `check_the_app_company_view_counts_openings`.
+  - **A link goes where it says.** The state page opens `/?off=` (office
+    state; `st=` is territory and dropped MN and SD). A parent or brand links
+    only to a record we hold, else plain text. The claim mail sends "their
+    page" to /c/ only when one is built, and a mismatched domain opens the
+    Add-a-company form, not a `tab=submit` nothing has.
+    `check_every_link_on_a_page_leads_where_it_says`.
+  - **Every CSS variable is defined** (`.hot` used an undefined
+    `--penguin`), and `:root[data-theme=dark]` repeats the dark tokens so the
+    theme switch works on a light system. `check_every_css_variable_is_defined`.
+  - **"Hiring a seller" means a quota-carrying role**, on conference rosters
+    and in the company link preview, never "any open role".
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

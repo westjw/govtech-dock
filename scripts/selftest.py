@@ -8977,6 +8977,272 @@ def check_the_board_never_opens_on_a_blank_panel() -> int:
     return errors
 
 
+def check_a_company_alert_is_about_that_company() -> int:
+    """"Alert me when they post" gives an alert about that company.
+
+    Every company page linked /alerts?company=<id>, and nothing read it: the
+    alerts page, the Worker and the digest had no company at all, so a
+    visitor who asked to hear when Accela posts was signed up for every new
+    role on the board (launch audit 2, 2026-10-09). Now the page reads the
+    id and names it from data/company-names.json (built), the Worker keeps a
+    cleaned list (driven through alerts_harness), and digest.matches() lets
+    through only that company's roles.
+    """
+    import subprocess
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import digest
+    errors = 0
+    p = {"company_id": "accela", "quota_carrying": True, "family": "gtm"}
+    if not digest.matches(p, {"companies": ["accela"]}):
+        errors += fail("a company alert does not carry that company's roles")
+    if digest.matches({**p, "company_id": "tyler-technologies"}, {"companies": ["accela"]}):
+        errors += fail("a company alert carries another company's roles")
+    if not digest.matches(p, {}):
+        errors += fail("an alert with no company stopped carrying every company")
+    page = (ROOT / "alerts.html").read_text()
+    for need, why in (('q.get("company")', "the page never reads ?company="),
+                      ("companies:COMPANIES.slice()", "the form never sends the company"),
+                      ('id="co-only"', "the page never says which company the alert is for"),
+                      ("NAMES=false", "an unreadable name list would widen the alert silently")):
+        if need not in page:
+            errors += fail(f"alerts.html: {why}")
+    if shutil.which("node"):
+        r = subprocess.run(["node", str(ROOT / "scripts" / "alerts_harness.mjs")],
+                           capture_output=True, text=True, timeout=180)
+        try:
+            got = json.loads(r.stdout).get("companiesStored")
+        except ValueError:
+            got = f"no JSON: {r.stderr[-200:]}"
+        if got != ["accela", "tyler-technologies"]:
+            errors += fail(f"the alerts Worker stored companies as {got!r}")
+    out = _built_site()
+    if out is not None:
+        f = out / "data" / "company-names.json"
+        board = json.loads((DATA / "board.json").read_text())
+        names = json.loads(f.read_text()) if f.exists() else {}
+        want = {o["id"] for o in board.get("organizations") or []}
+        if set(names) != want:
+            errors += fail(f"data/company-names.json names {len(names)} companies, the board has {len(want)}")
+    return errors
+
+
+def _harness() -> dict:
+    """jobcard_harness.mjs's JSON, run once per suite."""
+    if "out" not in _HARNESS:
+        import subprocess
+        r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                           capture_output=True, text=True, timeout=300)
+        try:
+            _HARNESS["out"] = json.loads(r.stdout)
+        except ValueError:
+            _HARNESS["out"] = {"errors": [f"no JSON: {r.stderr[-300:]}"]}
+    return _HARNESS["out"]
+
+
+_HARNESS: dict = {}
+
+
+def check_every_control_answers_the_keyboard() -> int:
+    """Everything a mouse can click, a keyboard can reach and press.
+
+    Rows that open a company or a role, "Show more", the saved rows, Market
+    intel's rows, the conference calendar and the inline "include them"
+    switches were divs and spans with an onclick: a keyboard user could not
+    open a company from the Companies tab at all (launch audit 2,
+    2026-10-09). Each now takes focus and a role, and kbdActivate turns Enter
+    (or Space, on a button) into the click. Ten filter dropdowns had no name
+    a screen reader could say. Held on the listener itself (fired through the
+    harness), on every site that builds such an element, and on every select.
+    """
+    errors = 0
+    src = (ROOT / "index.html").read_text()
+    if shutil.which("node"):
+        k = (_harness().get("acts") or {}).get("kbd") or {}
+        want = {"enterLink": 1, "spaceLink": 0, "spaceButton": 1, "enterButton": 1,
+                "realButton": 0, "notFocusable": 0, "noRole": 0}
+        if k != want:
+            errors += fail(f"the keyboard listener answers {k}, not {want}")
+    # every element built with an onclick that is not itself a button or a link
+    for pat, n, what in (
+            (r'row\.className="row clk"; reachable\(row\);', 4, "a row that opens a company or role"),
+            (r'reachable\(more(,"button")?\);', 2, "a Show more / See all control"),
+            (r'd\.className="kv clk"; reachable\(d\);', 1, "a Market intel row"),
+            (r'el\.style\.cursor="pointer"; reachable\(el,"button"\);', 1, "a conference calendar row"),
+            (r'<span class="pay(all|off)" tabindex="0" role="button">', 3, "an include/set-aside switch"),
+            (r'<span tabindex="0" role="button" class="colink co(text|wide)"', 4, "a widen/narrow switch"),
+            (r'<span id="j-relax" tabindex="0" role="button"', 1, "the show-all-roles switch"),
+            (r'<i data-dot="\$\{i\}" tabindex="0" role="button"', 1, "a banner dot")):
+        if len(re.findall(pat, src)) != n:
+            errors += fail(f"{what} is no longer reachable by keyboard ({len(re.findall(pat, src))} of {n})")
+    if re.search(r'(row|more|d)\.className="(row clk|more|kv clk)";\s*\n\s*\1\.onclick', src):
+        errors += fail("a clickable row or control is built without reachable()")
+    for page in ("index.html", "alerts.html", "claim.html"):
+        # comments name the element in prose ("A <select> sizes itself...")
+        t = re.sub(r"/\*.*?\*/|<!--.*?-->", "", (ROOT / page).read_text(), flags=re.S)
+        for m in re.finditer(r"<select\b([^>]*)>", t):
+            attrs = m.group(1)
+            sid = re.search(r'\bid="([^"$]+)"', attrs)
+            named = "aria-label=" in attrs or (sid and re.search(rf'<label[^>]*\bfor="{re.escape(sid.group(1))}"', t))
+            if not named:
+                errors += fail(f"{page}: a <select {attrs.strip()[:40]}> has no name a screen reader can say")
+    return errors
+
+
+def check_the_app_company_view_counts_openings() -> int:
+    """The app's company view counts what its strip counts: openings.
+
+    Its role groups were postings and the header counted them, so Xplor read
+    "15 open roles" over "231 roles · 228 quota-carrying" (launch audit 2).
+    Both pages now list one row per opening, say how many other places it is
+    advertised in, and give a group's pay the job card's way: a figure only
+    when every posting states the same one. Driven on a fixture opening in
+    two cities that state different pay, through co() and company_page_html.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+    if shutil.which("node"):
+        v = (_harness().get("views") or {}).get("multi-co", "")
+        if "2 roles &middot; 2 quota-carrying" not in v:
+            errors += fail(f"co() counts something other than openings: "
+                           f"{re.findall(r'<span class=.n.>([^<]*)', v)[:2]}")
+        if "and 1 other location" not in v or "varies" not in v:
+            errors += fail("co() lists a multi-city opening as separate rows, or gives it one city's pay")
+    mp = lambda i, city, lo: {"id": f"multi-co::AE::{i}", "title": "Account Executive",  # noqa: E731
+                              "company_id": "multi-co", "opening_id": "multi-co::AE", "family": "gtm",
+                              "quota_carrying": True, "location": f"{city}, TX",
+                              "office": {"city": city, "state": "TX"}, "first_seen": "2026-10-01",
+                              "comp": {"min": lo, "max": lo + 20000, "period": "year", "currency": "USD"}}
+    mine = [mp(1, "Austin", 90000), mp(2, "Dallas", 100000)]
+    o = {"id": "multi-co", "name": "Multi Co", "open_roles": 1, "quota_roles": 1, "ats": "greenhouse",
+         "enumerable": True}
+    page = bs._co_roles_html(o, mine, True, dt.date(2026, 10, 9))
+    if "1 role &middot; 1 quota-carrying" not in page or "varies" not in page:
+        errors += fail(f"the static page's group pay or count is wrong: {page[:300]}")
+    if bs._group_pay_cell(mine[:1]) != bs._pay_cell(mine[0]):
+        errors += fail("one posting's pay is no longer said as it was")
+    same = [mp(1, "Austin", 90000), {**mp(2, "Dallas", 90000)}]
+    if "varies" in bs._group_pay_cell(same) or "on " in bs._group_pay_cell(same):
+        errors += fail("two postings stating the same figure read as varying")
+    half = [mp(1, "Austin", 90000), {**mp(2, "Dallas", 0), "comp": None}]
+    if "on 1 of 2" not in bs._group_pay_cell(half):
+        errors += fail("an opening whose postings partly state pay does not say on how many")
+    return errors
+
+
+def check_every_link_on_a_page_leads_where_it_says() -> int:
+    """Links the launch audit followed and found going somewhere else
+    (launch audit 2, 2026-10-09), each now held where it is built:
+
+    - a state page counts by office and linked the TERRITORY filter (st=);
+    - the app linked a parent by its NAME in ?co= and every brand to ?co=
+      with nothing after it;
+    - the claim email linked /c/<id> for 837 companies with no such page,
+      and "Tell us about it" went to ?tab=submit, a tab that never existed;
+    - conference pages said "hiring a seller" about any open role and headed
+      a column of every open role "sales roles";
+    - a company's link preview called every open role a sales role.
+    """
+    errors = 0
+    if shutil.which("node"):
+        v = _harness().get("views") or {}
+        if 'part of <a href="/?co=read-co">' not in v.get("child-co", ""):
+            errors += fail("the app's parent link does not resolve the parent's name to its id")
+        if "part of Nobody Holdings" not in v.get("orphan-co", "") or "?co=Nobody" in v.get("orphan-co", ""):
+            errors += fail("a parent nobody on the board answers to is linked")
+        b = v.get("brand-co", "")
+        if 'href="/?co=read-co">Brand B' not in b or 'href="/?co="' in b:
+            errors += fail("a brand links to an empty ?co=, or not to the record it has")
+    claim = (ROOT / "functions" / "api" / "claim.js").read_text()
+    app = (ROOT / "index.html").read_text()
+    if re.search(r"""[`"'][^`"'\n]*tab=submit""", claim + app):
+        errors += fail("something still links ?tab=submit, a tab the board does not have")
+    if "&add=1" not in claim or 'PENDING_URL.get("add")==="1"' not in app:
+        errors += fail("the claim page's 'Tell us about it' no longer opens the add-a-company form")
+    if "co.page ? `${SITE}/c/${id}`" not in claim:
+        errors += fail("the claim email links /c/<id> even for companies with no such page")
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    if "c.q ? ` ${c.q} open sales role" not in mw:
+        errors += fail("a link preview calls roles 'sales roles' without counting quota-carrying ones")
+    out = _built_site()
+    if out is None:
+        return errors
+    board = json.loads((DATA / "board.json").read_text())
+    orgs = {o["id"]: o for o in board.get("organizations") or []}
+    meta = json.loads((out / "meta-companies.json").read_text()).get("companies") or {}
+    for cid, m in meta.items():
+        if (orgs.get(cid) or {}).get("quota_roles") and m.get("q") != orgs[cid]["quota_roles"]:
+            errors += fail(f"meta-companies.json {cid}: q is {m.get('q')}, the board says "
+                           f"{orgs[cid]['quota_roles']}")
+            break
+    for f in sorted((out / "s").glob("*.html")):
+        t = f.read_text()
+        code = f.stem.upper()
+        if "st=" in t or f'href="/?off={code}"' not in t:
+            errors += fail(f"s/{f.name} does not link the board's office filter for {code}")
+            break
+    by_tag: dict = {}
+    for o in board.get("organizations") or []:
+        for tg in (o.get("conferences") or ([o["conference"]] if o.get("conference") else [])):
+            by_tag.setdefault(tg, []).append(o)
+    checked = 0
+    for f in sorted((out / "e").glob("*.html")):
+        t = f.read_text()
+        m = re.search(r"<b>(\d+)</b> of them hiring a seller today", t)
+        if not m:
+            continue
+        tag = next((c.get("tag") for c in board.get("conferences") or []
+                    if f.stem == bs_slug(c.get("tag") or "")), None)
+        if not tag:
+            continue
+        want = sum(1 for o in by_tag.get(tag, []) if o.get("quota_roles"))
+        if int(m.group(1)) != want:
+            errors += fail(f"e/{f.name} says {m.group(1)} hiring a seller; {want} carry a quota role")
+        if "Open sales roles" in t:
+            errors += fail(f"e/{f.name} still heads a column of every open role 'sales roles'")
+        checked += 1
+    if not checked:
+        errors += fail("no conference page with a roster was checked")
+    return errors
+
+
+def bs_slug(tag: str) -> str:
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    return bs._slugify(tag)
+
+
+def check_every_css_variable_is_defined() -> int:
+    """No rule reads a colour token nobody defined, and the theme switch
+    reaches every token the system theme does.
+
+    The "hiring hard" chip read var(--penguin), defined nowhere, so its text
+    fell back to --ink: near-white on Beak at 1.77:1 in dark mode. And the
+    account menu's "Switch theme" set data-theme="dark", which nothing in
+    index.html read, so a reader on a light-mode machine could not get the
+    dark theme (launch audit 2, 2026-10-09).
+    """
+    errors = 0
+    for page in ("index.html", "alerts.html", "claim.html"):
+        t = (ROOT / page).read_text()
+        defined = set(re.findall(r"(--[\w-]+)\s*:", t))
+        for name in sorted(set(re.findall(r"var\((--[\w-]+)\s*\)", t)) - defined):
+            errors += fail(f"{page} reads var({name}), which nothing defines")
+    t = (ROOT / "index.html").read_text()
+    for media, switch in ((r"@media \(prefers-color-scheme:dark\)\{:root:not\(\[data-theme=light\]\)\{(.*?)\}\}",
+                           r":root\[data-theme=dark\]\{(.*?)\}"),
+                          (r"@media \(prefers-color-scheme:dark\)\{:root:not\(\[data-theme=light\]\) \.copage\{(.*?)\}\}",
+                           r":root\[data-theme=dark\] \.copage\{(.*?)\}")):
+        a, b = re.search(media, t, re.S), re.search(switch, t, re.S)
+        if not a or not b:
+            errors += fail(f"index.html has no {'switch' if a else 'system'} dark block for {switch[:30]}")
+            continue
+        tok = lambda x: dict(re.findall(r"(--[\w-]+)\s*:\s*([^;]+);", x))  # noqa: E731
+        if tok(a.group(1)) != tok(b.group(1)):
+            errors += fail("the theme switch's dark tokens differ from the system dark theme's")
+    return errors
+
+
 def check_admin_has_one_spelling() -> int:
     """/admin is reachable by one spelling only.
 
@@ -11770,7 +12036,10 @@ def check_company_counts_are_roles_not_postings():
                            "'[object Object]'; p.location is empty on most "
                            "postings, so a row that reads it directly says "
                            "nothing about where the job is")
-        if "payCell(" not in rows:
+        # a row is now one OPENING and says its pay through coGroupPay, which
+        # hands a single posting straight to payCell (launch audit 2)
+        grp = html[html.find("function coGroupPay("):][:600] if "function coGroupPay(" in html else ""
+        if "payCell(" not in rows and not ("coGroupPay(" in rows and "payCell(" in grp):
             errors += fail("the company page's role rows do not call payCell. "
                            "p.comp is an object, and the dash payCell prints "
                            "carries which silence it is in its title - a row "
@@ -25930,7 +26199,7 @@ def check_the_board_opens_on_the_united_states() -> int:
         return 1
 
     page = (ROOT / "index.html").read_text()
-    m = re.search(r'<select id="j-us">(.*?)</select>', page, re.S)
+    m = re.search(r'<select id="j-us"[^>]*>(.*?)</select>', page, re.S)
     if not m:
         return errors + fail("the j-us control is gone; nothing scopes the "
                              "board to the United States any more")
@@ -31132,6 +31401,11 @@ def main() -> int:
     errors += check_admin_has_one_spelling()
     errors += check_a_company_page_never_shows_another_companys_newsroom()
     errors += check_the_board_never_opens_on_a_blank_panel()
+    errors += check_a_company_alert_is_about_that_company()
+    errors += check_every_control_answers_the_keyboard()
+    errors += check_the_app_company_view_counts_openings()
+    errors += check_every_link_on_a_page_leads_where_it_says()
+    errors += check_every_css_variable_is_defined()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()

@@ -121,7 +121,9 @@ async function companyFrom(request, env, id) {
   if (!res.ok) return null;
   const all = await res.json();
   const c = (all.companies || {})[id];
-  return c ? { id, name: c.n, host: c.w || "", sector: c.s } : null;
+  // `page`: whether the company has a static page of its own (/c/<id>).
+  // 837 do not, and a link there is the 404 page (launch audit 2).
+  return c ? { id, name: c.n, host: c.w || "", sector: c.s, page: !!c.p } : null;
 }
 
 /* --- read: what this token is ------------------------------------------- */
@@ -208,7 +210,9 @@ async function startClaim(body, env, request) {
     return json({
       error: "wrong_domain",
       message: `Claiming ${co.name} needs an address at ${want}.`,
-      differs: `${SITE}/?tab=submit&co=${encodeURIComponent(id)}`,
+      // the add-a-company form, opened on the company (?add=1). This was
+      // ?tab=submit, a tab the board never had (launch audit 2, 2026-10-09).
+      differs: `${SITE}/?co=${encodeURIComponent(id)}&add=1`,
     }, 400);
   }
 
@@ -260,7 +264,8 @@ async function startClaim(body, env, request) {
        ${button(link, "Confirm the claim")}
        <p style="margin:18px 0 0;font-size:13px;color:#556F82">If this was not you,
        ignore this email and nothing happens.</p>`,
-      [["Their page", `${SITE}/c/${id}`], [NAME, SITE]]));
+      [["Their page", co.page ? `${SITE}/c/${id}` : `${SITE}/?co=${encodeURIComponent(id)}`],
+       [NAME, SITE]]));
   if (!ok) return json({ error: "We could not send that email just now." }, 502);
   return json({ ok: true, check_your_email: true });
 }

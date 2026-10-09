@@ -160,7 +160,10 @@ async function describe(request, env) {
     // The count is a fact about today and the card may be cached for longer
     // than today, so it is said only when there is something to say and never
     // as a number in the title.
-    const open = c.r ? ` ${c.r} open sales role${c.r === 1 ? "" : "s"} right now.` : "";
+    // "sales roles" only for the quota-carrying ones (q); every open role is
+    // just "open roles" (r). It called all r "sales" (launch audit 2).
+    const open = c.q ? ` ${c.q} open sales role${c.q === 1 ? "" : "s"} right now.`
+      : c.r ? ` ${c.r} open role${c.r === 1 ? "" : "s"} right now.` : "";
     return {
       title: `${c.n} · ${NAME}`,
       desc: (c.d ? c.d.replace(/\s+/g, " ").trim() + "." : `${c.n} sells into ${c.s || "state and local government"}.`)

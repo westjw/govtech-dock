@@ -55,6 +55,8 @@
   button:disabled{opacity:.5;cursor:default}
   button.ghost{background:none;color:var(--dim);border-color:var(--line);font-weight:500}
   button.danger{background:none;color:var(--bad);border-color:var(--line);font-weight:500}
+  button.linkish{background:none;border:0;padding:0;color:var(--accent);font-weight:500;
+    text-decoration:underline;cursor:pointer}
   .msg{font-size:13.5px;padding:11px 14px;border-radius:9px;margin:14px 0 0}
   .msg.ok{background:var(--chip);color:var(--accent)}
   .msg.err{background:var(--chip);color:var(--bad)}
@@ -175,6 +177,40 @@ const CADENCE=[
   ["weekly","Wednesday mornings","One email a week, mid-week. The quietest option."]];
 
 let PREFS=null, SAVED=[], SECTORS=[];
+
+/* A COMPANY ALERT. Every company page links here as /alerts?company=<id>
+   ("Alert me when they post"), and this page used to ignore it: the visitor
+   signed up for every new role on the board while believing it was for that
+   company (launch audit 2, 2026-10-09). The id comes from the address, the
+   name from the board's own list (data/company-names.json), and the alert is
+   limited to that company until the visitor drops it. If the list cannot be
+   read the id is shown as it is, never silently widened to every company. */
+const ID_RE=/^[a-z0-9][a-z0-9-]{0,80}$/;
+const ASKED=(q.get("company")||"").trim().toLowerCase();
+let COMPANIES=ID_RE.test(ASKED)?[ASKED]:[];
+let NAMES=null;                       // null: loading, false: unreadable
+fetch("data/company-names.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(n=>{NAMES=n&&typeof n==="object"?n:false;paintCompanies()})
+  .catch(()=>{NAMES=false;paintCompanies()});
+function paintCompanies(){
+  const box=$("#co-only"); if(!box)return;
+  box.textContent="";
+  if(!COMPANIES.length){box.hidden=true;return}
+  box.hidden=false;
+  const own=id=>NAMES&&Object.prototype.hasOwnProperty.call(NAMES,id);
+  if(NAMES&&!COMPANIES.some(own)){
+    COMPANIES=[];
+    box.textContent="That link named a company this board does not list, so this alert covers every company.";
+    return;
+  }
+  if(NAMES)COMPANIES=COMPANIES.filter(own);
+  const s=document.createElement("strong");
+  s.textContent="Only roles at "+COMPANIES.map(id=>NAMES?NAMES[id]:id).join(", ")+". ";
+  const b=document.createElement("button");
+  b.type="button"; b.className="linkish"; b.textContent="Any company instead";
+  b.onclick=()=>{COMPANIES=[];paintCompanies()};
+  box.append(s,b);
+}
 /* Kept in step with the same list in functions/api/alerts.js. */
 const STATES=new Set(("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA "
  +"ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX "
@@ -186,7 +222,7 @@ const STATES=new Set(("AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA 
    setting works - a sector filter is the one thing here that is optional. */
 fetch("data/sectors.json").then(r=>r.json()).then(list=>{
   SECTORS=(Array.isArray(list)?list:[]).sort();
-  fillSectors();
+  fillSectors(); paintCompanies();
 }).catch(()=>{});
 
 function fillSectors(){
@@ -210,6 +246,7 @@ function formHTML(p){
   </div>
 
   <h2>Which roles</h2>
+  <p class="note" id="co-only" role="status" hidden></p>
   <p class="note">Leave these alone and you get everything new. Narrow them and
     the alert only carries roles that clear the bar.</p>
   <label class="opt" style="margin-bottom:12px">
@@ -283,6 +320,7 @@ function readForm(){
     sector:$("#sector").value||null,
     work_mode:$("#mode").value||null,
     states:typed.filter(x=>STATES.has(x)),
+    companies:COMPANIES.slice(),
     min_count:parseInt($("#floor").value,10)||1
   };
 }
@@ -316,7 +354,7 @@ function signupView(){
     <button id="go">Send me the confirmation</button>
     <div id="msg" class="msg" hidden></div>
   </div>`;
-  fillSectors();
+  fillSectors(); paintCompanies();
   $("#go").onclick=async()=>{
     const email=$("#email").value.trim();
     if(!email){say("err","Add your email first.");return}
@@ -359,6 +397,7 @@ function paintSync(){
 
 function settingsView(data){
   PREFS=data.prefs; SAVED=data.saved||[];
+  COMPANIES=Array.isArray(PREFS&&PREFS.companies)?PREFS.companies.filter(x=>ID_RE.test(x)):[];
   const live=SAVED.length;
   $("#view").innerHTML=`<div class="panel">
     <h2>Settings for ${esc(data.email)}</h2>
@@ -391,7 +430,7 @@ function settingsView(data){
       above. There is no suppression list and no record kept that you were here.</p>
     <button class="danger" id="stop">Stop these emails and delete my data</button>
   </div>`;
-  fillSectors();
+  fillSectors(); paintCompanies();
   paintSync();
   $("#synctoggle").onclick=()=>{
     // The board and this page share an origin, so the token is handed over

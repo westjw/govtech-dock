@@ -109,6 +109,11 @@ function cleanPrefs(raw) {
     ? [...new Set(p.states.map((s) => String(s).toUpperCase().slice(0, 2))
         .filter((s) => STATES.has(s)))].slice(0, 12)
     : [];
+  // the companies an alert is limited to (/alerts?company=<id>); ids only
+  const companies = Array.isArray(p.companies)
+    ? [...new Set(p.companies.filter((s) => typeof s === "string").map((s) => s.toLowerCase())
+        .filter((s) => /^[a-z0-9][a-z0-9-]{0,80}$/.test(s)))].slice(0, 20)
+    : [];
   const n = Number(p.min_count);
   return {
     cadence: CADENCES.has(p.cadence) ? p.cadence : "weekly",
@@ -118,6 +123,7 @@ function cleanPrefs(raw) {
     sector: typeof p.sector === "string" ? p.sector.slice(0, 60) : null,
     work_mode: MODES.has(p.work_mode) ? p.work_mode : null,
     states,
+    companies,
     us_only: p.us_only === true,
     min_count: Number.isFinite(n) ? Math.min(Math.max(Math.round(n), 1), 50) : 1,
   };

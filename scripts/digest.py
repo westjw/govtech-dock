@@ -74,6 +74,10 @@ def lookback_start(cadence: str, today: dt.date, last_sent: str | None) -> dt.da
 
 def matches(p: dict, sub: dict) -> bool:
     """The role bar: does this posting clear what the subscriber asked for?"""
+    # an alert asked for from a company's page is about that company only
+    cos = set(sub.get("companies") or [])
+    if cos and p.get("company_id") not in cos:
+        return False
     if sub.get("quota_only") and not p.get("quota_carrying"):
         return False
     fam = sub.get("family")

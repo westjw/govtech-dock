@@ -94,6 +94,12 @@ out.confirm = await post({ action: "confirm", token });
 out.confirmedSubTtl = ttlOf(subKey());
 out.confirmedEmTtl = ttlOf(emKey());
 
+/* COMPANY ALERTS: the ids an alert is limited to are kept, cleaned - lower
+   case, deduplicated, ids only - and nothing else rides in with them. */
+await post({ action: "update", token, prefs: { cadence: "weekly",
+  companies: ["accela", "ACCELA", "Bad Id!", "x".repeat(90), "tyler-technologies", 7] } });
+out.companiesStored = (JSON.parse(KV.get("sub:" + token).v).prefs || {}).companies;
+
 /* 5. An already-subscribed address: one settings mail, then a cooldown. */
 const before = sent.length;
 for (let i = 0; i < 25; i++) {
