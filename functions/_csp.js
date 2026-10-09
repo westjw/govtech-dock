@@ -93,11 +93,35 @@ export async function policyFor(request, env, { holding = false } = {}) {
   return tpl.replaceAll("{{NONCE}}", nonce()).replaceAll("{{ORIGIN}}", origin);
 }
 
+/* AN SVG IS A DOCUMENT. Opened directly, one served from this origin runs
+ * its own script with our cookies. The logos come from company websites
+ * (fetch_logos.py), so each is served sandboxed: it draws, and runs nothing. */
+const SVG_POLICY = "default-src 'none'; img-src data:; style-src 'unsafe-inline'; sandbox";
+
 /* Frame headers where they belong, and the policy on every HTML response. */
 export async function secure(res, request, env, { holding = false, mode = CSP_MODE } = {}) {
   const path = decodedPath(request);
   const isFramed = framed(path);
-  const html = (res.headers.get("content-type") || "").includes("text/html");
+  const type = res.headers.get("content-type") || "";
+  const html = type.includes("text/html");
+  /* A 304 CARRIES NO POLICY. The browser copies a policy header from a 304
+   * onto the page it stored, so a frame-only header there (ours, or the
+   * _headers line Pages adds to the bare 304 it builds) would replace the
+   * stored page's full policy with frame-ancestors alone, and the cached
+   * /alerts or /claim would run with no script policy (review, 2026-10-09).
+   * With none on the 304, the browser keeps what came with the 200. */
+  if (res.status === 304) {
+    if (!res.headers.has("content-security-policy") && !res.headers.has("content-security-policy-report-only")) return res;
+    const bare = new Response(null, res);
+    bare.headers.delete("Content-Security-Policy");
+    bare.headers.delete("Content-Security-Policy-Report-Only");
+    return bare;
+  }
+  if (type.includes("image/svg+xml")) {
+    const svg = new Response(res.body, res);
+    svg.headers.set("Content-Security-Policy", SVG_POLICY);
+    return svg;
+  }
   if (!isFramed && !html) return res;
   const out = new Response(res.body, res);
   if (isFramed) {

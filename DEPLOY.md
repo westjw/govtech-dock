@@ -225,7 +225,12 @@ for the deploy, then put path `admin` back on the three hostnames.
 ships REPORTING: browsers run everything and print what they would block in
 the console. While still signed in, open the board, a company page, a
 conference page, /alerts and /claim on sledjobs.com with the browser's
-console open; any line starting "[Report Only] Refused" is something the
+console open, and search the console for "Content Security Policy". In
+Chrome a report-only violation is an info line that reads "... violates the
+following Content Security Policy directive ..." and ends "The policy is
+report-only, so the violation has been logged but no further action has been
+taken." (show the Info level, which the default filter may hide); in Firefox
+it is a warning naming "Content-Security-Policy". Each one is something the
 policy would break. If there are none, set `CSP_MODE = "enforce"` in
 `functions/_csp.js` and push. selftest refuses `GATED = false` while the
 policy only reports. In the Cloudflare dashboard, Rocket Loader must stay

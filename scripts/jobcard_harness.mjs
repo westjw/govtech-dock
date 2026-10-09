@@ -41,10 +41,11 @@ function stub() {
 const S = stub();
 /* The document records how the page registers its listeners and absorbs
    everything else, so selftest can hold the action dispatcher to capture. */
-const listeners = [];
+const listeners = [], listenerFns = [];
 const docRec = new Proxy(S, { get(_t, k) {
-  if (k === "addEventListener") return (type, _fn, opt) => {
-    listeners.push([String(type), opt === true || !!(opt && opt.capture)]); };
+  if (k === "addEventListener") return (type, fn, opt) => {
+    listeners.push([String(type), opt === true || !!(opt && opt.capture)]);
+    listenerFns.push([String(type), fn]); };
   return S[k];
 } });
 const storage = { getItem: () => null, setItem() {}, removeItem() {}, clear() {}, key: () => null, length: 0 };
@@ -257,6 +258,12 @@ try {
   views.__more_before = grab(`CO_OPEN_GROUPS = null; D = __fix; co("quote-co", true);`);
   views.__more_after = grab(`coShowAll("gtm");`);
   views.__more_back = grab(`coShowAll("gtm");`);
+  // and an opened group does not follow the reader to the next company
+  ctx.__fix.postings = ctx.__fix.postings.concat(Array.from({ length: 5 }, (_, i) => post({
+    id: `read-co::r${i}`, title: `Role ${i}`, company: "Read Co", company_id: "read-co",
+    opening_id: `read-co::o${i}` })));
+  grab(`co("quote-co", true); coShowAll("gtm");`);
+  views.__more_next_co = grab(`co("read-co", true);`);
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }
@@ -325,6 +332,7 @@ try {
    globals) and handed fake events. */
 let acts = null;
 try {
+  ctx.__listenerFns = listenerFns;
   ctx.__qid = vm.runInContext("typeof __quoteId === 'string' ? __quoteId : ''", ctx) || "q::it's \"x\" \\ y::1";
   acts = vm.runInContext(`(() => {
     const got = [], keep = { openRole, alertOnCompany, coShowAll, lightMark, toggleQuota };
@@ -365,7 +373,20 @@ try {
     logoEvent({ type: "error", target: plain }); r.errorPlain = plain.removed;
     r.actKeys = Object.keys(ACTS);
     r.frozen = Object.isFrozen(ACTS);
-    Object.assign(globalThis, keep);
+    // THE LISTENERS THE PAGE REGISTERED, FIRED: a listener wired to the wrong
+    // kind or to nothing does nothing here, as it would in a browser
+    const fire = (type, ev) => { for (const [t, fn] of __listenerFns) if (t === type) fn(ev); };
+    const keep2 = { nearChanged, famPill };
+    nearChanged = () => got.push(["nearChanged"]);
+    famPill = () => got.push(["famPill"]);
+    fire("click", ev("click", el("A", { click: "openRole", arg: "via-listener" })));
+    fire("input", ev("input", el("INPUT", { input: "nearChanged" })));
+    fire("change", ev("change", el("SELECT", { change: "famPill" })));
+    fire("load", { type: "load", target: el("IMG", {}, { "data-mark": "" }) });
+    const errImg = el("IMG", {}, { "data-mark": "" });
+    fire("error", { type: "error", target: errImg });
+    r.fired = { got: got.splice(0), errorRemoved: errImg.removed };
+    Object.assign(globalThis, keep, keep2);
     return r; })()`, ctx);
   acts.qid = ctx.__qid;
   acts.listeners = listeners;

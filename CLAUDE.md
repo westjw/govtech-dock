@@ -1817,9 +1817,30 @@ fires.
   - Tested in a browser with the policy ENFORCED on a local build. Every
     kind of page ran. An injected onerror, a `javascript:` link, an injected
     script and eval were all refused.
+  - A blind review (4 reviewers, 4 skeptics) confirmed 12 findings, all
+    fixed. The ones worth knowing:
+    - **A 304 carries no policy header.** The browser copies a 304's
+      policy over the page it stored. A frame-only header (ours, or the
+      `_headers` line Pages adds to its bare 304) would have left a cached
+      /alerts with no script policy in enforce mode.
+    - **The build reads raw text too.** html.parser and browsers disagree on
+      `<!-->`, `--!>`, `<svg><style>`, a `</noscript>` inside an attribute,
+      and duplicated attributes (browsers keep the first). So after cutting
+      out the scripts the build wrote, `csp.raw_problems()` refuses any
+      handler, `<script>` or `javascript:` attribute left in the text.
+      `is_js_url()` strips tabs, newlines and leading controls the way a
+      browser does.
+    - **SVGs are served sandboxed.** The logos come from company websites.
+  - **An `/admin` spelled another way is refused** (pre-existing, found by
+    the same review). The Functions router matches the admin door against
+    the RAW path and the asset server decodes it. So `/%61dmin/data.json`
+    and `//admin/data.json` were served the admin's queue data past the
+    door. `_middleware.disguisedAdmin()`; `check_admin_has_one_spelling`.
 - **"Show N more" on a company page shows the rest** (2026-10-09). From the
   turn-6 rebuild it toggled a set nothing read for the first two groups,
-  so it redrew the same three roles.
+  so it redrew the same three roles. The set is cleared when `co()` opens
+  a different company, or one company's expanded group would follow the
+  reader everywhere.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

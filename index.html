@@ -5842,6 +5842,8 @@ function co(id,fromUrl){
   /* THE COMPANY GETS AN ADDRESS. Mirrors openRole: pushState so Back undoes
      it, and the board's own query string is remembered so Back returns to the
      search you came from rather than a bare board. */
+  // a group opened on one company stays open only on that company
+  if(CO!==id) CO_OPEN_GROUPS=new Set();
   CO=id;
   if(!fromUrl){
     LAST_BOARD_QS=CO?LAST_BOARD_QS:location.search;

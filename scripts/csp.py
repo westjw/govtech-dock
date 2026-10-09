@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import html
 import html.parser
 import json
 import pathlib
@@ -110,11 +111,21 @@ class _Page(html.parser.HTMLParser):
         self._in: list[str] | None = None
 
     def handle_starttag(self, tag, attrs):
-        a = {(k or "").lower(): (v or "") for k, v in attrs}
+        # A BROWSER KEEPS THE FIRST of two same-named attributes; a dict keeps
+        # the last. <script type="text/javascript" type="application/json">
+        # runs in a browser and read here as a data block (review, 2026-10-09).
+        # No page of ours writes one, so a duplicate is refused outright.
+        a: dict = {}
+        for k, v in attrs:
+            k = (k or "").lower()
+            if k in a:
+                self.bad.append(f"a duplicated attribute <{tag} {k}=... {k}=...>")
+                continue
+            a[k] = v or ""
         for k, v in a.items():
             if k.startswith("on"):
                 self.bad.append(f"an inline handler <{tag} {k}=...>")
-            if k in URL_ATTRS and re.match(r"\s*javascript:", v, re.I):
+            if k in URL_ATTRS and is_js_url(v):
                 self.bad.append(f"a javascript: url in <{tag} {k}>")
             if k == "nonce":
                 self.bad.append(f"a nonce attribute on <{tag}>")
@@ -143,6 +154,47 @@ class _Page(html.parser.HTMLParser):
             self._in = None
         elif tag == "script":
             self._in = None
+
+
+def is_js_url(v: str) -> bool:
+    """A browser strips tab, LF and CR anywhere in a url and leading C0
+    controls and spaces before it reads the scheme: "java\tscript:" and
+    "\x01javascript:" are javascript: urls."""
+    return bool(re.match(r"[\x00-\x20]*javascript:", re.sub(r"[\t\n\r]", "", v or ""), re.I))
+
+
+# THE SECOND READER, ON THE RAW TEXT. Python's html.parser and a browser
+# disagree about some markup - "<!-->" ends a comment in a browser and not
+# here, "--!>" likewise, <svg><style> is raw text here and not there, and a
+# </noscript> inside an attribute ends the noscript only in a browser - so an
+# injected <img onerror> or <script> can hide from the parser above (review,
+# 2026-10-09). With the scripts this build wrote cut out, the rest of a page
+# must hold no tag with a handler, no <script> and no attribute that is a
+# javascript: url, however a parser reads it.
+RAW_HANDLER = re.compile(r"<[a-z][^>]*?[\s/\"']on[a-z]+\s*=", re.I)
+RAW_SCRIPT = re.compile(r"<script\b", re.I)
+RAW_JS_URL = re.compile(r"=\s*[\"']?[\x00-\x20]*javascript:", re.I)
+SCRIPT_BLOCK = re.compile(r"<script\b([^>]*)>(.*?)</script\s*>", re.I | re.S)
+
+
+def raw_problems(text: str, allowed: list) -> list:
+    def keep(m):
+        attrs, body = m.group(1), m.group(2)
+        if re.search(r"type\s*=\s*[\"']?application/(ld\+)?json", attrs, re.I) and \
+                not re.search(r"<|on[a-z]+\s*=", body.replace("\\u003c", ""), re.I):
+            return ""
+        return "" if norm(body) in allowed else m.group(0)
+    rest = SCRIPT_BLOCK.sub(keep, text)
+    out = []
+    if RAW_HANDLER.search(rest):
+        out.append("a tag with an inline handler, outside any script this build wrote "
+                   f"(...{RAW_HANDLER.search(rest).group(0)[-40:]!r})")
+    if RAW_SCRIPT.search(rest):
+        out.append("a <script> this build did not write, outside the parser's view")
+    flat = re.sub(r"[\t\n\r]", "", html.unescape(rest))
+    if RAW_JS_URL.search(flat):
+        out.append("an attribute that is a javascript: url (after entity and whitespace decoding)")
+    return out
 
 
 def read(text: str) -> _Page:
@@ -194,8 +246,10 @@ def build(out: pathlib.Path, allowed: dict) -> dict:
         if kind is None:
             problems.append(f"{rel}: a page of no known kind; csp.kind_of() must name it")
             continue
-        page = read(f.read_text(encoding="utf-8"))
+        text = f.read_text(encoding="utf-8")
+        page = read(text)
         problems += [f"{rel}: {b}" for b in page.bad]
+        problems += [f"{rel}: {b}" for b in raw_problems(text, allowed.get(kind, []))]
         for s in page.scripts:
             if re.search(r"<script|</script", s, re.I):
                 problems.append(f"{rel}: a script whose text holds a script tag")

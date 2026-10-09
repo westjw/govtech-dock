@@ -155,6 +155,13 @@ for (const p of ["/assets/logos/axon.png", "/assets/mascot/svg/mascot-stand.svg"
 out.caching_refused = (await ask("/assets/logos/axon.png")).cache;
 out.caching_missing = (await ask("/assets/logos/nope.png", { cookie: mint({}), nextStatus: 404 })).cache;
 out.caching_post = (await ask("/data/board.json", { cookie: mint({}), method: "POST" })).cache;
+// AN /admin SPELLED ANOTHER WAY never reaches the asset server, which would
+// decode it past the admin door (review, 2026-10-09)
+out.disguised = {};
+for (const p of ["/%61dmin/data.json", "/admin%2Fdata.json", "//admin/data.json",
+                 "/ADMIN/data.json", "/%41dmin/", "/admin/data.json", "/administration", "/c/admin-co"]) {
+  out.disguised[p] = await ask(p, { cookie: mint({}) });
+}
 out.frames = {};
 for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=abc",
                  "/%61lerts", "/cl%61im.html", "/", "/c/verkada.html"]) {
@@ -201,6 +208,27 @@ if (process.env.CSP_MANIFEST) {
     return { enforce: r.headers.get("content-security-policy") || "",
              report: r.headers.get("content-security-policy-report-only") || "" };
   };
+  // a 304 the asset server built bare, with the _headers frame line on it
+  const ask304 = async (path) => {
+    const req = new Request(`https://sledjobs.com${path}`, { headers: { Cookie: `CF_Authorization=${mint({})}`, "If-None-Match": '"v1"' } });
+    const res = await onRequest({ request: req, env, next: async () => new Response(null, { status: 304,
+      headers: { etag: '"v1"', "content-security-policy": "frame-ancestors 'none'", "x-frame-options": "DENY" } }) });
+    return { status: res.status, enforce: res.headers.get("content-security-policy") || "",
+             report: res.headers.get("content-security-policy-report-only") || "" };
+  };
+  C.r304 = { "/alerts": await ask304("/alerts"), "/claim?t=x": await ask304("/claim?t=x"),
+             "/admin/": await ask304("/admin/"), "/": await ask304("/") };
+  {
+    const r304e = await csp.secure(new Response(null, { status: 304, headers: { "content-security-policy": "frame-ancestors 'none'" } }),
+      new Request("https://sledjobs.com/alerts"), env, { mode: "enforce" });
+    C.r304["/alerts (enforce)"] = { status: r304e.status, enforce: r304e.headers.get("content-security-policy") || "",
+                                    report: r304e.headers.get("content-security-policy-report-only") || "" };
+  }
+  C.svg = await (async () => {
+    const req = new Request("https://sledjobs.com/assets/logos/x.svg", { headers: { Cookie: `CF_Authorization=${mint({})}` } });
+    const res = await onRequest({ request: req, env, next: async () => new Response("<svg/>", { status: 200, headers: { "content-type": "image/svg+xml" } }) });
+    return { status: res.status, enforce: res.headers.get("content-security-policy") || "" };
+  })();
   C.enforce_alerts = await enforce("/alerts");
   C.enforce_home = await enforce("/");
   // a manifest that cannot be read never costs a page
