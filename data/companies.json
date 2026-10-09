@@ -20113,30 +20113,6 @@
     }
   },
   {
-    "id": "social-pinpoint",
-    "name": "Social Pinpoint",
-    "website": "https://www.socialpinpoint.com",
-    "location": "Newcastle, Australia",
-    "year_founded": 2012,
-    "sector": "General Gov",
-    "category": "Citizen Services",
-    "description": "Community engagement platform: interactive maps, surveys, engagement CRM",
-    "ats": {
-      "type": "rippling",
-      "ref": "open-point"
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "HTTP 404 for https://www.socialpinpoint.",
-      "roles": [],
-      "checked": "2026-10-08"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "ICMA 2025",
-    "researched": true
-  },
-  {
     "id": "social-news-desk",
     "name": "Social News Desk",
     "website": "https://www.socialnewsdesk.com",
@@ -138708,7 +138684,7 @@
     "name": "Open Point",
     "website": "https://www.openpoint.com",
     "location": "Vancouver, Canada",
-    "year_founded": null,
+    "year_founded": 2012,
     "sector": "General Gov",
     "category": "Citizen Services",
     "description": "Community engagement and stakeholder relationship management platform for councils, transportation agencies, and infrastructure project owners - exhibited at 3CMA 2026",
@@ -138818,7 +138794,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
-    }
+    },
+    "also_known_as": [
+      "Social Pinpoint"
+    ]
   },
   {
     "id": "follett-software",

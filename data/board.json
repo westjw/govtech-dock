@@ -4333,7 +4333,7 @@
    "city": "Long Beach/Los Angeles County, CA",
    "state": null,
    "approx_count": null,
-   "companies": 102,
+   "companies": 101,
    "hiring": 25,
    "open_roles": 673
   },
@@ -19245,64 +19245,6 @@
    "board_checked_on": "2026-10-04",
    "posts_at": null,
    "source": "ICMA 2025; ICMA 2026; NLC City Summit 2026; 3CMA 2026",
-   "researched": true,
-   "claimed": null
-  },
-  {
-   "id": "social-pinpoint",
-   "name": "Social Pinpoint",
-   "sector": "General Gov",
-   "category": "Citizen Services",
-   "also": null,
-   "location": "Newcastle, Australia",
-   "year_founded": 2012,
-   "description": "Community engagement platform: interactive maps, surveys, engagement CRM",
-   "website": "https://www.socialpinpoint.com",
-   "board_url": "https://www.socialpinpoint.com/careers",
-   "linkedin": null,
-   "ats": "html",
-   "ats_ranks": "none",
-   "tier": 1,
-   "vendor_type": "GovTech Product",
-   "govtech": true,
-   "tags": [
-    "govtech-product"
-   ],
-   "parent": null,
-   "ats_note": null,
-   "brands": null,
-   "acquired": null,
-   "also_known_as": null,
-   "competitors": null,
-   "news_state": "unread",
-   "news_checked_on": "2026-10-08",
-   "competitors_none_found": null,
-   "competitors_checked_on": null,
-   "conferences": [
-    "ICMA 2025"
-   ],
-   "conference": "ICMA 2025",
-   "open_roles": 0,
-   "open_postings": 0,
-   "quota_roles": 0,
-   "quota_postings": 0,
-   "families": {},
-   "phase": "too few openings to read",
-   "unreadable": null,
-   "roles_from_storage": null,
-   "sled_only": null,
-   "offtopic_dropped": null,
-   "federal_dropped": null,
-   "shares_board_with": null,
-   "board_owner_unverified": null,
-   "board_owner": null,
-   "no_board_on_file": false,
-   "probe": null,
-   "enumerable": false,
-   "scan_lead": null,
-   "board_checked_on": null,
-   "posts_at": null,
-   "source": "ICMA 2025",
    "researched": true,
    "claimed": null
   },
@@ -112715,7 +112657,7 @@
    "category": "Citizen Services",
    "also": null,
    "location": "Vancouver, Canada",
-   "year_founded": null,
+   "year_founded": 2012,
    "description": "Community engagement and stakeholder relationship management platform for councils, transportation agencies, and infrastructure project owners - exhibited at 3CMA 2026",
    "website": "https://www.openpoint.com",
    "board_url": "https://www.openpoint.com/company/careers/",
@@ -112732,7 +112674,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Social Pinpoint"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-08",
@@ -394490,14 +394434,14 @@
   }
  ],
  "coverage": {
-  "structured": 373,
+  "structured": 372,
   "page only": 805,
   "absent": 566,
   "unchecked": 117,
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-09T02:35:59Z",
-  "inputs": "f8e18bea414155d890800f0c7595e04a822897802bb8ff3a150d74fcd7f9576a"
+  "at": "2026-10-09T02:57:12Z",
+  "inputs": "a0a5dbbe36f33ec345a7a29f37d483229d928c3a7f68b4c7c727a429e09d3729"
  }
 }
