@@ -227,6 +227,12 @@
   </div>
 </div>
 
+<div id="down" hidden>
+  <h1>Your claim did not load</h1>
+  <p class="sub">That is our end, not your link, and nothing about your claim
+    changed. Reload this page in a minute.</p>
+</div>
+
 <div id="dead" hidden>
   <h1>That link has expired</h1>
   <p class="sub">Claim links last thirty days. Start again and we will send a
@@ -287,7 +293,12 @@ if (!TOKEN) {
 async function load() {
   const r = await fetch("/api/claim?t=" + encodeURIComponent(TOKEN))
     .then((x) => x.json()).catch(() => ({error: "x"}));
-  if (!r.ok) { $("#dead").hidden = false; return; }
+  // only a token the server does not know is an expired link; a network or
+  // server failure said "That link has expired" too (launch audit 3)
+  if (!r.ok) {
+    $(r.error === "bad_token" || r.error === "unknown_token" ? "#dead" : "#down").hidden = false;
+    return;
+  }
   ME = r;
   if (!r.confirmed) {
     $("#confirmstep").hidden = false;
@@ -317,7 +328,8 @@ function portal(r) {
   const who = $("#pwho");
   who.textContent = "Claimed with " + (r.email || "") + " · ";
   const pub = document.createElement("a");
-  pub.href = "/c/" + encodeURIComponent(r.company_id);
+  // its own page where one is built, else its card in the board
+  pub.href = (r.page ? "/c/" : "/?co=") + encodeURIComponent(r.company_id);
   pub.textContent = "see the public page →";
   who.appendChild(pub);
   $("#cat-now").textContent = "Tell us where you belong and why.";

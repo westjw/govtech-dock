@@ -179,6 +179,29 @@ def live_now() -> list[str]:
     return [PLAIN.get(k, k) for k in proposal_rulings.SELF_SERVE_KINDS]
 
 
+def page_url(company_id: str) -> str:
+    """The company's own page where one is built, else its card in the app.
+
+    /c/<id> exists only for a company with open roles, a write-up or a
+    researched shortlist, so the welcome mail's "Open your page" was a 404
+    for most verified claimants (launch audit 3, 2026-10-09). claim.js holds
+    the same rule for its own mails.
+    """
+    import json
+    import urllib.parse
+    q = urllib.parse.quote(str(company_id), safe="")
+    try:
+        import build_site
+        board = json.loads((ROOT / "data" / "board.json").read_text())
+        o = next((x for x in board.get("organizations") or []
+                  if x.get("id") == company_id), None)
+        if o and build_site.has_static_page(o):
+            return f"{SITE}/c/{q}"
+    except (OSError, ValueError, ImportError):
+        pass
+    return f"{SITE}/?co={q}"
+
+
 def welcome(row: dict) -> tuple[str, str, str]:
     """(subject, text, html) for the one mail this gate sends.
 
@@ -188,7 +211,7 @@ def welcome(row: dict) -> tuple[str, str, str]:
     guessing which, and the three things still refused are exactly the three
     somebody will otherwise try once and be silently confused by.
     """
-    page = f"{SITE}/c/{row['company_id']}"
+    page = page_url(row["company_id"])
     sub = f"You can edit {row['name']} on {brand.NAME}"
     goes = live_now()
     listed = ", ".join("your " + g for g in goes[:-1]) + " and your " + goes[-1]

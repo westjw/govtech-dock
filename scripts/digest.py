@@ -102,7 +102,12 @@ def matches(p: dict, sub: dict) -> bool:
             here.add(p["office"]["state"])
         if not (here & states):
             return False
-    if sub.get("us_only") and p.get("is_us") is False:
+    # THE BOARD'S DEFAULT: roles placed outside the US are left out unless the
+    # subscriber asked for them. Every subscription carried them, the alerts
+    # page's preview (the board) hid them, and a UK role read as just "remote"
+    # (launch audit 3, 2026-10-09). `worldwide` is new because every stored
+    # subscription already says us_only: false without anybody having chosen.
+    if p.get("is_us") is False and not sub.get("worldwide"):
         return False
     return True
 
@@ -117,13 +122,31 @@ def build(board: dict, sub: dict, today: dt.date | None = None) -> dict:
     start = lookback_start(cadence, today, sub.get("last_sent"))
     fresh = [p for p in board.get("postings", [])
              if p.get("first_seen") and dt.date.fromisoformat(p["first_seen"]) >= start]
-    hits = [p for p in fresh if matches(p, sub)]
+    hits = openings(p for p in fresh if matches(p, sub))
     floor = int(sub.get("min_count") or 1)
     if len(hits) < floor:
         return {"send": False, "roles": hits, "since": start.isoformat(),
                 "why": f"{len(hits)} new, under the floor of {floor}"}
     return {"send": True, "roles": interleave(hits), "since": start.isoformat(),
             "why": f"{len(hits)} new since {start.isoformat()}"}
+
+
+def openings(rows) -> list[dict]:
+    """One row per opening, the unit the board counts.
+
+    The digest counted postings: "61 new govtech roles" over 43 openings,
+    Ekin's one Regional Sales Manager four times in a row, and two rows the
+    same to the letter (launch audit 3, 2026-10-09). The first posting stands
+    for the opening and carries how many places it is advertised in.
+    """
+    by: dict[str, dict] = {}
+    for p in rows:
+        k = p.get("opening_id") or p.get("id")
+        if k in by:
+            by[k]["_places"] += 1
+        else:
+            by[k] = {**p, "_places": 1}
+    return list(by.values())
 
 
 def interleave(hits: list[dict]) -> list[dict]:
@@ -170,7 +193,51 @@ def _where(p: dict) -> str:
         bits.append("location not stated")
     else:
         bits.append("no office stated")
+    # a role placed outside the US says where, never just "remote"
+    if p.get("is_us") is False and (p.get("location") or "").strip():
+        bits.append("outside the US: " + str(p["location"]).strip()[:60])
+    if (p.get("_places") or 1) > 1:
+        bits.append(f"{p['_places']} locations")
     return " · ".join(b for b in bits if b)
+
+
+# The age filter's horizons, as index.html ageOptions() offers them.
+AGES = (0, 3, 7, 14, 30)
+
+
+def board_link(sub: dict, since: str, board: dict) -> str:
+    """The board, carrying this subscription's filters and window, for "and N
+    more". It said "on the board" with no link, over a set the board's
+    default view does not show (launch audit 3, 2026-10-09). The keys are the
+    alerts page preview's, so the two open the same board."""
+    cos = sub.get("companies") or []
+    if len(cos) == 1:
+        return f"{SITE}/?co={urllib.parse.quote(cos[0], safe='')}"
+    q = {"tab": "jobs"}
+    if not sub.get("quota_only"):
+        q["any"] = "1"
+    for k, key in (("family", "fam"), ("seniority", "sen"), ("sector", "sec"),
+                   ("work_mode", "mode")):
+        if sub.get(k):
+            q[key] = sub[k]
+    if sub.get("states"):
+        q["anyst"] = ",".join(sub["states"])
+    if sub.get("worldwide"):
+        q["us"] = ""
+    rows = board.get("postings") or []
+    try:
+        g = dt.date.fromisoformat(str(board.get("generated") or "")[:10])
+        need = (g - dt.date.fromisoformat(since)).days
+        gaps = [(g - dt.date.fromisoformat(p["first_seen"][:10])).days
+                for p in rows if p.get("first_seen")]
+        for h in AGES:            # the smallest offered horizon covering the window
+            n = sum(1 for x in gaps if x <= h)
+            if h >= need and 0 < n < len(rows):
+                q["since"] = str(h)
+                break
+    except (ValueError, TypeError):
+        pass
+    return SITE + "/?" + urllib.parse.urlencode(q)
 
 
 # --- the shared email shell ------------------------------------------------
@@ -309,11 +376,14 @@ def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
         lines.append("  " + SITE + "/?role="
                      + urllib.parse.quote(str(p["id"]), safe=""))
         lines.append("")
+    more = board_link(sub, digest["since"], board) if n > 40 else ""
     if n > 40:
-        lines.append(f"...and {n - 40} more on the board.")
+        lines.append(f"...and {n - 40} more on the board: {more}")
         lines.append("")
-    lines.append(f"Since {digest['since']}. Every role here appeared on the board "
-                 f"after that date, so nothing repeats between digests.")
+    # "since", the HTML's word: the date is the first day included, and
+    # "after" left it out (launch audit 3)
+    lines.append(f"Since {digest['since']}. Every role here first appeared on the board "
+                 f"on or after that date, so nothing repeats between digests.")
     lines.append(f"Change what you get or stop these: {SITE}/alerts?t={sub.get('token','')}")
     text = "\n".join(lines)
 
@@ -343,8 +413,9 @@ def render(digest: dict, sub: dict, board: dict) -> tuple[str, str, str]:
         '</div>'
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0"'
         f' border="0" style="border-collapse:collapse;margin-top:10px">{cards}</table>'
-        + (f'<div style="color:#556F82;font-size:13px;padding-top:12px">and {n-40} '
-           f'more on the board</div>' if n > 40 else ''))
+        + (f'<div style="font-size:13px;padding-top:12px"><a href="{esc(more)}" '
+           f'style="color:#0B57C4">and {n-40} more on the board</a></div>'
+           if n > 40 else ''))
 
     tok = esc(sub.get("token", ""))
     html = shell(

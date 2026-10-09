@@ -297,6 +297,10 @@ function formHTML(p){
         <option value="onsite"${sel(p.work_mode,"onsite")}>In an office</option>
       </select></div>
   </div>
+  <label class="opt" style="margin-bottom:12px">
+    <input type="checkbox" id="worldwide" ${p.worldwide?"checked":""}>
+    <span><strong>Include roles outside the US</strong>
+      <small>Left out unless you tick this, as the board leaves them out by default.</small></span></label>
   <div class="row"><div>
     <label for="states">States (optional, e.g. NY, NJ, CT)</label>
     <input type="text" id="states" value="${esc((p.states||[]).join(", "))}"
@@ -331,6 +335,7 @@ function readForm(){
     work_mode:$("#mode").value||null,
     states:typed.filter(x=>STATES.has(x)),
     companies:COMPANIES.slice(),
+    worldwide:$("#worldwide").checked,
     min_count:parseInt($("#floor").value,10)||1
   };
 }
@@ -341,11 +346,21 @@ function say(kind,text){
 }
 
 async function api(body){
-  const r=await fetch("/api/alerts",{method:"POST",
-    headers:{"content-type":"application/json"},body:JSON.stringify(body)});
+  let r;
+  try{
+    r=await fetch("/api/alerts",{method:"POST",
+      headers:{"content-type":"application/json"},body:JSON.stringify(body)});
+  }catch{
+    return {ok:false,status:0,error:"No connection, so nothing was changed. Try again."};
+  }
   let j={}; try{j=await r.json()}catch{}
   return {ok:r.ok,status:r.status,...j};
 }
+/* WHETHER A FAILURE IS THE LINK OR US. Every failed answer read as the
+   reader's bad link: "Already gone" over a subscription still stored and
+   still mailing, and "your mail client broke the link" when our function
+   had errored (launch audit 3, 2026-10-09). Only these two mean the link. */
+const GONE=r=>r&&(r.error==="unknown_token"||r.error==="bad_token");
 
 /* ---------- signup (no token) ------------------------------------------- */
 
@@ -482,6 +497,8 @@ function settingsView(data){
        `anyst` is the board filter added for exactly this: it takes the list
        and matches territory-or-office, which is digest.py's rule. */
     if(p.states.length)u.set("anyst",p.states.join(","));
+    // the board's empty `us` is "anywhere in the world", what the email sends
+    if(p.worldwide)u.set("us","");
     location.href="/?"+u.toString();
   };
   $("#stop").onclick=async()=>{
@@ -513,15 +530,26 @@ function settingsView(data){
   if(WANT_STOP){
     await button("Stop these emails?","This deletes the subscription and everything stored with it.",
                  "Stop and delete");
-    const r=await api({action:"stop",token:TOKEN});
+    let r=await api({action:"stop",token:TOKEN});
+    // our failure: say so, nothing was deleted, and let them press again
+    while(!r.ok&&!GONE(r)){
+      $("#linkmsg").textContent="That did not go through, so nothing was deleted and the emails "
+        +"will continue. That is our end, not your link. Press the button again in a minute.";
+      $("#linkgo").disabled=false;
+      await new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
+      r=await api({action:"stop",token:TOKEN});
+    }
     $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
       <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
         :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
     return;
   }
   $("#view").innerHTML='<div class="panel"><p class="note">Loading your settings…</p></div>';
-  const r=await fetch("/api/alerts?t="+encodeURIComponent(TOKEN));
-  let d={}; try{d=await r.json()}catch{}
+  let d={};
+  try{
+    const r=await fetch("/api/alerts?t="+encodeURIComponent(TOKEN));
+    try{d=await r.json()}catch{}
+  }catch{ d={error:"offline"}; }
   /* THE CONFIRM LINK IS ALSO THE SETTINGS LINK (the email says so). Read the
      subscription first - the GET changes nothing - and ask for the click only
      while it is pending. A subscriber already getting digests who opened it
@@ -542,6 +570,10 @@ function settingsView(data){
   }else if(d.error==="not_configured"){
     $("#view").innerHTML='<div class="panel"><h2>Not switched on</h2>'
       +'<p class="note">Alerts are not configured on this site yet.</p></div>';
+  }else if(!GONE(d)){
+    $("#view").innerHTML='<div class="panel"><h2>Your settings did not load</h2>'
+      +'<p class="note">That is our end, not your link, and nothing about your subscription '
+      +'changed. Reload this page in a minute.</p></div>';
   }else{
     $("#view").innerHTML=`<div class="panel"><h2>That link did not work</h2>
       <p class="note">It may have already been used to unsubscribe, or it may be

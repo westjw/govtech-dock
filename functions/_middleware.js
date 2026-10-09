@@ -78,6 +78,11 @@ const BOARD_KEYS = ["q", "fam", "sec", "st", "off", "reg", "sen", "us", "mode",
 
 export async function describe(request, env) {
   const u = new URL(request.url);
+  // ONLY THE APP AT "/" READS ?role= ?co= ?e= ?tab= AND THE BOARD'S KEYS.
+  // Every company page links to /claim?co=<id>, and that ?co= rewrote the
+  // claim form's title, canonical and preview as the company's page (launch
+  // audit 3, 2026-10-09). Any other path keeps its own head.
+  if (u.pathname !== "/") return null;
   const role = u.searchParams.get("role");
   const co = u.searchParams.get("co");
   let tab = u.searchParams.get("tab");
@@ -142,8 +147,11 @@ export async function describe(request, env) {
       return {
         noindex: true,
         title: `That role is no longer listed \u00b7 ${NAME}`,
-        desc: `This posting has come off ${NAME}. It may have been filled, or `
-            + `the company's job board stopped listing it.`,
+        // the edge cannot see the company's board state, so it names both
+        // causes, ours included (launch audit 3)
+        desc: `This posting has come off ${NAME}. It may have been filled, the `
+            + `company's job board may have stopped listing it, or we may no `
+            + `longer be able to read that board.`,
         canonical: `${SITE}/`,
         image: `${SITE}/assets/og/jobs.png`,
       };
@@ -172,7 +180,8 @@ export async function describe(request, env) {
       : c.r ? ` ${c.r} open role${c.r === 1 ? "" : "s"} right now.` : "";
     return {
       title: `${c.n} · ${NAME}`,
-      desc: (c.d ? c.d.replace(/\s+/g, " ").trim() + "." : `${c.n} sells into ${c.s || "state and local government"}.`)
+      // a stop only where the text has none: "used by 170+ airports.." (audit 3)
+      desc: (c.d ? c.d.replace(/\s+/g, " ").trim().replace(/([^.!?\u2026])$/, "$1.") : `${c.n} sells into ${c.s || "state and local government"}.`)
           + open,
       // A company with an opening has a prerendered page at /c/<id>.html with
       // the facts in its HTML. That is the canonical one, so the app view and
@@ -212,8 +221,8 @@ export async function describe(request, env) {
     const e = own(idx && idx.events, ev);
     if (e && e.p) {
       return {
-        title: `${e.n}: who is hiring \u00b7 ${NAME}`,
-        desc: `${e.l || e.n}. Sales roles at the govtech companies we track there.`,
+        title: `${e.n}${e.h ? ": who is hiring" : ""} \u00b7 ${NAME}`,
+        desc: `${e.l || e.n}.` + (e.h ? " Sales roles at the govtech companies we track there." : ""),
         canonical: `${SITE}/e/${encodeURIComponent(e.p)}`,
         image: `${SITE}/assets/og/conferences.png`,
       };

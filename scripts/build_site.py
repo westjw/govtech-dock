@@ -580,6 +580,15 @@ def has_static_page(o: dict) -> bool:
                 or o.get("competitors"))
 
 
+def clip_desc(s: str, n: int) -> str:
+    """At most n characters, cut at a word and marked as cut. A plain [:180]
+    left 105 company previews ending "GMIS Inte." or "202." (launch audit 3)."""
+    s = " ".join(str(s).split())
+    if len(s) <= n:
+        return s
+    return s[:n - 1].rsplit(" ", 1)[0].rstrip(",;:-\u2013\u2014 ") + "\u2026"
+
+
 def write_meta_index(out: pathlib.Path, board: dict) -> dict:
     """The small file the middleware reads to title a page.
 
@@ -705,7 +714,7 @@ def write_meta_index(out: pathlib.Path, board: dict) -> dict:
         roles[p_["id"]] = r
     for o in board.get("organizations", []):
         cos[o["id"]] = {"n": o.get("name") or "", "s": o.get("sector") or "",
-                        "d": (o.get("description") or "")[:180],
+                        "d": clip_desc(o.get("description") or "", 180),
                         "r": o.get("open_roles") or 0,
                         # p: a static /c/ page exists, so the canonical may
                         # point there. w: the registrable website host, which
@@ -2110,7 +2119,10 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
              + (f", {quota} of them quota-carrying" if quota else "")) if open_ else "")
     first = ""
     if prof and prof.get("paragraphs"):
-        first = str(prof["paragraphs"][0]).split(". ")[0].strip()
+        # not at the stop in "Inc." or an initial: 13 pages' description was
+        # just "Saab, Inc." or "E.J." (launch audit 3, 2026-10-09)
+        first = re.split(r"(?<!\b[A-Z])(?<!\bInc)(?<!\bCorp)(?<!\bLtd)(?<!\bCo)\.\s+",
+                         str(prof["paragraphs"][0]), maxsplit=1)[0].strip()
         if first and first[-1] not in ".!?":
             first += "."
     meta = " ".join(x for x in (first or desc, f"{line}." if line else "") if x)
@@ -2270,6 +2282,17 @@ def write_state_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
     return n
 
 
+def _rfc822(day) -> str:
+    """RSS 2.0's date: "2026-10-09" is not one, and readers drop it (audit 3)."""
+    import email.utils
+    try:
+        d = dt.date.fromisoformat(str(day)[:10])
+    except ValueError:
+        d = dt.date.today()
+    return email.utils.format_datetime(
+        dt.datetime(d.year, d.month, d.day, tzinfo=dt.timezone.utc))
+
+
 def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """An RSS feed of the new quota roles, and calendar feeds for the floors.
 
@@ -2293,6 +2316,7 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
     # audit 2). A ceiling only for a run that adds hundreds, and the channel
     # then says how many it left out.
     CAP = 500
+    stamp = _rfc822(gen)
     items = ""
     for p_ in fresh[:CAP]:
         # the canonical's encoding (encodeURIComponent), as the sitemap has it
@@ -2305,6 +2329,7 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
                   f"{html.escape(p_.get('company') or '')}</title>\n"
                   f"    <link>{html.escape(link)}</link>\n"
                   f"    <guid isPermaLink=\"false\">{html.escape(p_['id'])}</guid>\n"
+                  f"    <pubDate>{stamp}</pubDate>\n"
                   f"    <description>{html.escape(desc)}</description>\n"
                   f"  </item>\n")
     (out / "feed.xml").write_text(
@@ -2316,7 +2341,7 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
         f"companies, first seen on the most recent run"
         + (f": the first {CAP} of {len(fresh):,} by company name; the rest are "
            f"on the board" if len(fresh) > CAP else "") + ".</description>\n"
-        f"  <lastBuildDate>{gen}</lastBuildDate>\n"
+        f"  <lastBuildDate>{stamp}</lastBuildDate>\n"
         + items + "</channel></rss>\n")
 
     # Calendars. One for everything, one per department block, so somebody who
@@ -2578,7 +2603,12 @@ def conference_is_worth_crawling(c: dict, by_tag: dict) -> bool:
     tag = c.get("tag") or c.get("event_tag")
     if not tag or not conference_gets_a_page(c, by_tag):
         return False
-    return bool(by_tag.get(tag) or c.get("dates"))
+    if by_tag.get(tag):
+        return True
+    # a date somebody could plan around, which a past one is not: 16 ended
+    # editions with nobody on file went to Google as "who is hiring" (audit 3)
+    span = _ics_range(c.get("dates"))
+    return bool(c.get("dates")) and not (span and span[1] < dt.date.today())
 
 
 def conference_rosters(board: dict) -> dict:
@@ -3062,13 +3092,16 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
         cal = _one_event_ics(c, tag, brand, site, _ics_stamp(board))
         if cal:
             (d / f"{_slugify(tag)}.ics").write_text(cal)
+        # "who is hiring" only over a floor we have read
         (d / f"{_slugify(tag)}.html").write_text(_page(
-            f"{c.get('name') or tag}: who is hiring · {brand['name']}",
+            f"{c.get('name') or tag}{': who is hiring' if roster else ''} · {brand['name']}",
             f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
-            + "Sales roles at the govtech companies on this floor.",
+            + ("Sales roles at the govtech companies on this floor." if roster
+               else "We have not read this floor yet."),
             f"{site}/e/{_slugify(tag)}", body, brand, "conferences",
             css=_default_css(brand) + CFPAGE_CSS, wrap=False))
-        events[tag] = {"n": c.get("name") or tag, "p": _slugify(tag), "l": line}
+        events[tag] = {"n": c.get("name") or tag, "p": _slugify(tag), "l": line,
+                       "h": bool(roster)}
         n += 1
     (out / "meta-events.json").write_text(
         json.dumps({"generated": board.get("generated"), "events": events},
@@ -3277,7 +3310,6 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     no-openings pages is how a site teaches a crawler to stop believing it.
     """
     site = brand["site"].rstrip("/")
-    today = dt.date.today().isoformat()
     urls = [(f"{site}/", "daily", "1.0")]
     # The app's own tabs (index.html TABS). "market" and "alerts" were listed
     # here and neither is a tab: both opened the job list (2026-10-06).
@@ -3363,15 +3395,21 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         # proper canonical tag" and the submitted address is not the indexed
         # one, for 12% of the role urls.
         u = f"{site}/?role={urllib.parse.quote(pid, safe=_JS_SAFE)}"
-        (read if p_.get("jd_seen") else unread).append(u)
-    for u in read:
-        urls.append((u, "daily", "0.9"))
-    for u in unread:
-        urls.append((u, "daily", "0.7"))
+        (read if p_.get("jd_seen") else unread).append((u, p_.get("first_seen")))
+    for u, seen in read:
+        urls.append((u, "daily", "0.9", seen))
+    for u, seen in unread:
+        urls.append((u, "daily", "0.7", seen))
+    # A DATE THAT IS TRUE OR NONE. Every one of 9,450 urls said it changed on
+    # the build day, every night, so a crawler learns to ignore the field
+    # (launch audit 3). A role's is the day it first appeared; the rest omit it.
+    def lastmod(row):
+        d = row[3] if len(row) > 3 else None
+        return f"<lastmod>{html.escape(str(d)[:10])}</lastmod>" if d else ""
     body = "\n".join(
-        f'  <url><loc>{html.escape(u)}</loc><lastmod>{today}</lastmod>'
-        f'<changefreq>{f}</changefreq><priority>{pr}</priority></url>'
-        for u, f, pr in urls)
+        f'  <url><loc>{html.escape(row[0])}</loc>{lastmod(row)}'
+        f'<changefreq>{row[1]}</changefreq><priority>{row[2]}</priority></url>'
+        for row in urls)
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

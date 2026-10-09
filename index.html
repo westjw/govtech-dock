@@ -2554,6 +2554,18 @@ function payBand(p){
       board never fills that silence with a guess.</div>
   </div>`;
 }
+/* Why a role is no longer on the board, as far as we can tell. A company
+   whose board we cannot read (or have none for) lost the role from OUR view;
+   "it may have been filled" put an employer-side reason on our blind spot
+   (launch audit 3, 2026-10-09). */
+function goneWhy(companyId,short){
+  const o=(D.organizations||[]).find(x=>x.id===companyId);
+  if(o&&boardState(o)!=="read")
+    return short?"we can no longer read their board, so we cannot tell why"
+      :"Their board is one we cannot read automatically, so we cannot tell whether it was filled.";
+  return short?"it may have been filled or the board stopped listing it"
+    :"It may have been filled, or the company’s board stopped listing it.";
+}
 function roleView(id){
   let p=D.postings.find(x=>x.id===id), older=0;
   if(!p){
@@ -2568,7 +2580,7 @@ function roleView(id){
   }
   if(!p){
     $("#view").innerHTML=BACK_HTML+`<h1 class="vh">Role no longer listed</h1><div class="empty">That role is no longer on the board.
-      It may have been filled, or the company&rsquo;s board stopped listing it.</div>`;
+      ${goneWhy(String(id).split("::")[0])}</div>`;
     wireBack();return;
   }
   const o=D.organizations.find(x=>x.id===p.company_id)||{};
@@ -2667,7 +2679,7 @@ function roleView(id){
       automatically this run, so this list may be incomplete</span></div>`:""}
     ${o.roles_from_storage?`<div class="kv"><span class="chip warn">their board did not
       answer this run &mdash; these roles are what we read last time, not confirmed
-      today</span></div>`:""}
+      on this run</span></div>`:""}
 
     ${siblings.length?`<h2 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h2>
       <div class="list" id="r-sibs"></div>`:""}`;
@@ -2858,10 +2870,15 @@ function initials(name){const w=(name||"").replace(/[^A-Za-z ]/g," ").trim().spl
 /* "today" / "yesterday" / a date, from first_seen against the build date. */
 function when(seen,gen){
   if(!seen)return{txt:"",cls:""};
-  const d=(new Date(gen)-new Date(seen))/864e5;
+  /* THE READER'S TODAY, not the build's. Measured against D.generated, every
+     morning from the reader's midnight until the nightly deployed said
+     "first seen today" about yesterday's roles, and a missed night kept
+     saying it while the header said "2 days ago" (launch audit 3,
+     2026-10-09). `gen` is no longer read; callers keep passing it. */
+  const d=dayGap(String(seen).slice(0,10),todayISO());
   if(d<=0)return{txt:"today",cls:"new"};
-  if(d<=1)return{txt:"yesterday",cls:""};
-  return{txt:`${Math.round(d)} days ago`,cls:""};
+  if(d===1)return{txt:"yesterday",cls:""};
+  return{txt:`${d} days ago`,cls:""};
 }
 /* Whole days between two YYYY-MM-DD strings, both read as UTC midnight so a
    timezone cannot make a board built this morning look a day old. */
@@ -2900,7 +2917,8 @@ function freshness(gen){
    deepens instead of needing a person to remember. */
 function ageOptions(rows,gen){
   const out=[];
-  [[0,"First seen today"],[3,"Seen in the last 3 days"],[7,"Seen in the last 7 days"],
+  // counted from the build's date, so "today" here is the last check's
+  [[0,"New on the last check"],[3,"Seen in the last 3 days"],[7,"Seen in the last 7 days"],
    [14,"Seen in the last 14 days"],[30,"Seen in the last 30 days"]].forEach(([d,label])=>{
     const n=rows.filter(p=>p.first_seen&&dayGap(p.first_seen,gen)<=d).length;
     if(n>0&&n<rows.length)out.push({v:String(d),label,n});
@@ -3730,7 +3748,29 @@ function downloadSaved(){
   document.body.appendChild(a); a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove()},0);
 }
-function writeSaved(all){try{localStorage.setItem(SAVED_KEY,JSON.stringify(all))}catch{}}
+function writeSaved(all){try{localStorage.setItem(SAVED_KEY,JSON.stringify(all));return true}catch{return false}}
+/* WHEN THE BROWSER KEEPS NOTHING. With site data blocked the bookmark changed
+   nothing and said nothing, while the Saved tab and the account menu went on
+   promising the role would wait here (launch audit 3, 2026-10-09). */
+let STORAGE_OK=null;
+function storageWorks(){
+  if(STORAGE_OK!==null)return STORAGE_OK;
+  try{ localStorage.setItem("sled-probe","1"); localStorage.removeItem("sled-probe"); STORAGE_OK=true; }
+  catch{ STORAGE_OK=false; }
+  return STORAGE_OK;
+}
+const NO_STORAGE="This browser is not letting the site keep anything, so nothing can be saved here. Allow site data for this site and try again.";
+function storageRefused(){
+  let w=document.getElementById("savewarn");
+  if(!w){
+    w=document.createElement("div"); w.id="savewarn"; w.setAttribute("role","status");
+    w.style.cssText="position:fixed;left:16px;right:16px;bottom:16px;z-index:80;max-width:520px;"
+      +"margin:0 auto;padding:12px 14px;background:var(--ink);color:var(--bg);font-size:14px";
+    document.body.appendChild(w);
+  }
+  w.textContent=NO_STORAGE;
+  clearTimeout(storageRefused.t); storageRefused.t=setTimeout(()=>w.remove(),8000);
+}
 function toggleSave(p,btn){
   const all=savedAll();
   if(all[p.id]){delete all[p.id];tombstone(p.id)}
@@ -3743,7 +3783,7 @@ function toggleSave(p,btn){
       saved_on:new Date().toISOString().slice(0,10),
       saved_at:new Date().toISOString()};
   }
-  writeSaved(all);
+  if(!writeSaved(all)){ storageRefused(); return; }
   const on=isSaved(p.id);
   if(btn)paintSave(btn,on);
   document.querySelectorAll(".savebtn[data-id]").forEach(b=>{
@@ -4060,8 +4100,8 @@ function savedView(){
     + (open.length?`<div class="list" id="s-open"></div>`
        :`<div class="empty">${roles.length||cos.length
           ?"Nothing here is still on the board."
-          :`Nothing saved yet. Use the bookmark on any role and it
-            waits here — on this browser, without an account.`}</div>`)
+          :storageWorks()?`Nothing saved yet. Use the bookmark on any role and it
+            waits here — on this browser, without an account.`:esc(NO_STORAGE)}</div>`)
     + goneHTML;
   $("#view").querySelectorAll(".applybtn[data-qs]").forEach(b=>{
     b.onclick=()=>dropSearch(b.dataset.qs);
@@ -4097,7 +4137,7 @@ function savedView(){
         <div class="m">${esc(p.company)} &middot; ${esc(p.sector||"")}${
           p.category?" / "+esc(p.category):""} &middot; ${geoBits(p).map(esc).join(" &middot; ")}${
           payHTML(live.get(p.id))}
-          ${gone?'<span class="chip warn">no longer on the board — it may have been filled or the board stopped listing it</span>':""}
+          ${gone?`<span class="chip warn">no longer on the board — ${esc(goneWhy(p.company_id,true))}</span>`:""}
         </div></div>
       <div class="when">${ap[p.id]
         ? `<span class="chip ok">applied ${esc(ap[p.id])}</span>`
@@ -6345,7 +6385,7 @@ function toggleSaveCompany(o){
       saved_on:new Date().toISOString().slice(0,10),
       saved_at:new Date().toISOString()};
   }
-  writeSaved(all);
+  if(!writeSaved(all)){ storageRefused(); return; }
   const c=$("#savedcount"); if(c)c.textContent=Object.keys(savedAll()).length||"";
   syncSoon();
 }
@@ -6714,7 +6754,7 @@ function buildSlides(){
     out.push({kick:"The map",
       h:`<span class="num">${D.organizations.length.toLocaleString()}</span> govtech companies`,
       p:`Tracked whether they are hiring or not — ${hiring.toLocaleString()} have `
-        +`something open today. Search by what they sell, not just by name: `
+        +`something open on the last check. Search by what they sell, not just by name: `
         +`type “recreation software” or “911 dispatch”.`,
       cta:"Browse companies", go:()=>toCompanies()});
   }
@@ -9026,6 +9066,7 @@ function paintAcctPip(){
 }
 
 function acctText(){
+  if(!storageWorks())return NO_STORAGE;
   const n=savedCount(), linked=!!syncToken();
   const roles=n===1?"1 role":n+" roles";
   if(!n) return linked

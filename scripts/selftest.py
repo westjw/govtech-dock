@@ -9916,6 +9916,268 @@ def check_every_view_is_announced_and_named() -> int:
     return errors
 
 
+def check_the_digest_counts_openings_and_keeps_to_the_boards_default() -> int:
+    """An alert email counts jobs the way the board does, and carries what the
+    board shows by default.
+
+    Launch audit 3 (2026-10-09): the digest counted postings ("61 new govtech
+    roles" over 43 openings, one Ekin requisition four times, two rows the
+    same to the letter), sent roles placed outside the US that the board and
+    the alerts page's own preview hide, called a UK role just "remote", said
+    "and 679 more on the board" with no link, and its text said "after" the
+    date it includes. Driven through digest.build() and render().
+    """
+    import digest
+    errors = 0
+    gen = "2026-10-09"
+    def post(i, **k):
+        p = {"id": f"co{i}::AE {i}::{i}", "opening_id": f"co{i}::AE {i}", "title": f"Account Executive {i}",
+             "company": f"Co {i}", "company_id": f"co{i}", "quota_carrying": True, "first_seen": gen,
+             "is_us": True, "work_mode": "remote", "sector": "General Gov"}
+        p.update(k)
+        return p
+    rows = [post(i) for i in range(44)]
+    rows.append(dict(rows[0], id="co0::AE 0::second", work_mode="onsite",
+                     office={"city": "Austin", "state": "TX"}))
+    rows.append(post(99, is_us=False, location="London, United Kingdom"))
+    board = {"generated": gen, "postings": rows}
+    sub = {"cadence": "daily", "quota_only": False, "min_count": 1,
+           "last_sent": "2026-10-08", "token": "T", "us_only": False}
+    today = dt.date(2026, 10, 9)
+    d = digest.build(board, sub, today)
+    if len(d.get("roles") or []) != 44:
+        errors += fail(f"the digest carries {len(d.get('roles') or [])} rows for 44 US openings "
+                       f"(one advertised twice, one abroad left out by default)")
+    subject, text, html_ = digest.render(d, sub, board)
+    if not subject.startswith("44 new govtech roles"):
+        errors += fail(f"the digest's subject counts postings: {subject!r}")
+    if "2 locations" not in text:
+        errors += fail("an opening advertised twice is not one row naming its locations")
+    if "on or after" not in text:
+        errors += fail("the text digest says roles appeared 'after' the first day it includes")
+    m = re.search(r'<a href="([^"]+)"[^>]*>and 4 more on the board</a>', html_)
+    if not m or "/?tab=jobs" not in m.group(1) or "more on the board: https://" not in text:
+        errors += fail("'and N more on the board' carries no link to the board")
+    world = dict(sub, worldwide=True)
+    dw = digest.build(board, world, today)
+    abroad = [p for p in dw.get("roles") or [] if p.get("is_us") is False]
+    if len(dw.get("roles") or []) != 45 or not abroad:
+        errors += fail("a subscriber who asked for roles abroad does not get them")
+    elif "outside the US: London" not in digest._where(abroad[0]):
+        errors += fail("a role abroad reads as just 'remote' in the email")
+    al = (ROOT / "alerts.html").read_text()
+    if 'id="worldwide"' not in al or 'worldwide:$("#worldwide").checked' not in al \
+            or 'if(p.worldwide)u.set("us","");' not in al:
+        errors += fail("the alerts page has no 'roles outside the US' choice, or its preview "
+                       "does not open the board the email describes")
+    if "worldwide: p.worldwide === true" not in (ROOT / "functions" / "api" / "alerts.js").read_text():
+        errors += fail("cleanPrefs drops the subscriber's 'roles outside the US' choice")
+    return errors
+
+
+def check_a_stranger_cannot_mail_somebody_without_end() -> int:
+    """A pending signup sends at most three confirmations, and lapses a week
+    after it was first made; a saved company syncs as a company.
+
+    Launch audit 3 (2026-10-09): re-sending restarted the week, so a stranger
+    typing somebody's address once an hour mailed them 240 times in ten days,
+    each mail promising no further mail. And sync dropped `kind`, so a saved
+    company came back on the other device as a role that "may have been
+    filled". Driven through functions/api/alerts.js by alerts_harness.
+    """
+    r = subprocess.run(["node", str(ROOT / "scripts" / "alerts_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    if r.returncode:
+        return fail(f"alerts_harness.mjs failed: {r.stderr[-300:]}")
+    d = json.loads(r.stdout.strip().splitlines()[-1])
+    errors = 0
+    if d.get("strangerMailsFirstSixDays") != 3 or (d.get("strangerMails") or 99) > 6:
+        errors += fail(f"one address got {d.get('strangerMailsFirstSixDays')} confirmations in six days "
+                       f"and {d.get('strangerMails')} in ten from a stranger re-sending hourly")
+    if d.get("savedKind") != "company":
+        errors += fail("a saved company loses its kind in sync")
+    js = " ".join((ROOT / "functions" / "api" / "alerts.js").read_text().split())
+    if "expires on its own in a week." in js or js.count("a week after it was first made") < 2:
+        errors += fail("the confirmation mail still promises a week from the latest mail")
+    return errors
+
+
+def check_claim_links_open_pages_that_exist() -> int:
+    """The claim welcome mail and the claim portal link to a page that exists.
+
+    Launch audit 3 (2026-10-09): both always linked /c/<id>, which is built
+    only for a company with roles, a write-up or a shortlist - a 404 for 837.
+    And the portal said "That link has expired" when our own server failed.
+    """
+    import verify_claims as VC
+    import build_site as bs
+    errors = 0
+    board = json.loads((DATA / "board.json").read_text())
+    orgs = board.get("organizations") or []
+    with_page = next((o for o in orgs if bs.has_static_page(o)), None)
+    without = next((o for o in orgs if not bs.has_static_page(o)), None)
+    if with_page and not VC.page_url(with_page["id"]).endswith("/c/" + with_page["id"]):
+        errors += fail("the claim welcome mail does not link a built page as /c/")
+    if without and "/?co=" not in VC.page_url(without["id"]):
+        errors += fail(f"the claim welcome mail links {without['id']}'s /c/ page, which is not built")
+    cj = (ROOT / "functions" / "api" / "claim.js").read_text()
+    get = cj[cj.find("export async function onRequestGet"):][:1800]
+    if "page: !!(co && co.page)" not in get:
+        errors += fail("the claim API does not say whether the company's page is built")
+    cl = (ROOT / "claim.html").read_text()
+    if 'pub.href = (r.page ? "/c/" : "/?co=")' not in cl:
+        errors += fail("the claim portal's 'see the public page' links /c/ regardless")
+    if '"#dead" : "#down"' not in cl or 'id="down"' not in cl:
+        errors += fail("the claim portal says the link expired when our server failed")
+    return errors
+
+
+def check_search_and_previews_see_what_is_there() -> int:
+    """Search engines and link previews read true titles, descriptions,
+    dates and pictures.
+
+    Launch audit 3 (2026-10-09): /claim?co=<id> took the company page's
+    title and canonical; ?co= previews ended "GMIS Inte." or ".."; 13 company
+    pages' description was "Saab, Inc."; empty or ended conference floors
+    went to Google as "who is hiring"; the feed's date was not an RSS date
+    and every sitemap url claimed to change nightly; and the jobs share card
+    printed a company count nothing redrew.
+    """
+    import email.utils
+    import tempfile as _tf
+    import build_site as bs
+    errors = 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "describe_harness.mjs")],
+                       capture_output=True, text=True, timeout=60)
+    d = json.loads(r.stdout) if r.returncode == 0 else {}
+    for path in ("/claim?co=acme", "/c/acme?src=x"):
+        if path not in d or d[path] is not None:
+            errors += fail(f"{path} is described as an app view: {d.get(path)}")
+    acme = (d.get("/?co=acme") or {}).get("desc") or ""
+    if ".." in acme:
+        errors += fail(f"a company preview doubles its full stop: {acme!r}")
+    cut = (d.get("/?co=cut") or {}).get("desc") or ""
+    if "GMIS… 1 open role" not in cut:
+        errors += fail(f"a clipped company preview gains a stop after its ellipsis: {cut!r}")
+    empty = d.get("/?e=Empty%202026") or {}
+    if "who is hiring" in (empty.get("title") or "") or "Sales roles" in (empty.get("desc") or ""):
+        errors += fail("an empty conference floor previews as 'who is hiring'")
+    clipped = bs.clip_desc("word " * 60, 40)
+    if len(clipped) > 40 or not clipped.endswith("…") or clipped[:-1].endswith(" "):
+        errors += fail(f"clip_desc cuts mid-word or unmarked: {clipped!r}")
+    brand = json.loads((DATA / "brand.json").read_text())
+    o = {"id": "saab", "name": "Saab, Inc.", "sector": "Public Safety", "category": "Police",
+         "open_roles": 0, "news": None, "description": "Defence",
+         "profile": {"paragraphs": ["Saab, Inc. sells products to the U.S. government. More."]}}
+    page = bs.company_page_html(o, [], {"organizations": [o], "logos": {}, "postings": [],
+                                        "generated": "2026-10-09"}, brand, {"saab": o}, {}, 1)
+    m = re.search(r'<meta name="description" content="([^"]*)"', page)
+    if not m or not m.group(1).startswith("Saab, Inc. sells products to the U.S. government."):
+        errors += fail(f"a company page's description stops at 'Inc.': {m and m.group(1)!r}")
+    by_tag = {"Read 2026": [{"id": "x"}]}
+    past = {"tag": "Past 2020", "dates": "January 5-7, 2020", "name": "Past"}
+    soon = {"tag": "Soon", "dates": f"March 3-5, {dt.date.today().year + 1}", "name": "Soon"}
+    read = {"tag": "Read 2026", "dates": "January 5-7, 2020", "name": "Read"}
+    if bs.conference_is_worth_crawling(past, {}) or not bs.conference_is_worth_crawling(soon, {}) \
+            or not bs.conference_is_worth_crawling(read, by_tag):
+        errors += fail("the sitemap's conference rule admits an ended floor nobody read, or "
+                       "drops one with a future date or a roster")
+    with _tf.TemporaryDirectory() as tmp:
+        out = pathlib.Path(tmp)
+        tiny = {"generated": "2026-10-09", "conferences": [], "organizations": [],
+                "postings": [{"id": "a::b::1", "title": "AE", "company": "A", "company_id": "a",
+                              "quota_carrying": True, "first_seen": "2026-10-09"},
+                             {"id": "a::c::2", "title": "SE", "company": "A", "company_id": "a",
+                              "first_seen": "2026-08-20", "jd_seen": True}]}
+        bs.write_feeds(out, tiny, brand)
+        feed = (out / "feed.xml").read_text()
+        lb = re.search(r"<lastBuildDate>([^<]+)</lastBuildDate>", feed)
+        try:
+            ok = lb and email.utils.parsedate_to_datetime(lb.group(1)) is not None
+        except (TypeError, ValueError):
+            ok = False
+        if not ok or "<pubDate>" not in feed:
+            errors += fail("feed.xml's dates are not RSS dates, or its items carry none")
+        bs.write_crawl_files(out, tiny, brand)
+        sm = (out / "sitemap.xml").read_text()
+        home = re.search(r"<url><loc>[^<]*/</loc>(.*?)</url>", sm)
+        role = re.search(r"<loc>[^<]*\?role=a%3A%3Ac%3A%3A2</loc><lastmod>([^<]+)</lastmod>", sm)
+        if (home and "<lastmod>" in home.group(1)) or not role or role.group(1) != "2026-08-20":
+            errors += fail("the sitemap's lastmod is the build day rather than a true date or none")
+    og = (ROOT / "scripts" / "make_og_cards.py").read_text()
+    cards = og[og.find("CARDS = {"):og.find("\n}\n", og.find("CARDS = {"))]
+    cards = "\n".join(l.split("#")[0] for l in cards.splitlines())     # code, not comments
+    if "{hiring}" in cards or "{orgs}" in cards:
+        errors += fail("a share card draws a live count into a picture nothing redraws")
+    return errors
+
+
+def check_the_reader_is_told_the_truth_when_things_fail() -> int:
+    """Today is the reader's, our failures are ours, and a role we lost sight
+    of is not said to be filled.
+
+    Launch audit 3 (2026-10-09): "first seen today" measured against the build
+    said today about yesterday's roles every morning; the unsubscribe page said
+    "Already gone" when our function failed, and the emails went on; the
+    settings page blamed the reader's mail client; a role at a company whose
+    board we cannot read "may have been filled"; and with site storage blocked
+    the bookmark did nothing and said nothing.
+    """
+    errors = 0
+    ix = (ROOT / "index.html").read_text()
+    js = re.sub(r"/\*.*?\*/", "", ix, flags=re.S)
+    def fn(name, const=False):
+        if const:
+            m = re.search(rf"^const {name}=.*$", js, re.M)
+            return m.group(0) if m else ""
+        i = js.find(f"function {name}(")
+        return js[i:js.find("\n}\n", i) + 2] if i >= 0 else ""
+    src = "\n".join([fn("dayGap", True), fn("todayISO"), fn("when"), fn("boardState"), fn("goneWhy"),
+                     fn("storageWorks"), fn("NO_STORAGE", True), fn("acctText")])
+    src = src.replace("let STORAGE_OK", "var STORAGE_OK")
+    script = """
+const FIXED = Date.parse("2026-10-10T13:00:00Z");
+const RD = Date;
+class FD extends RD { constructor(...a){ a.length ? super(...a) : super(FIXED); } static now(){ return FIXED; } }
+globalThis.Date = FD;
+var STORAGE_OK=null;
+globalThis.localStorage = { setItem(){ throw new Error("blocked"); }, removeItem(){}, getItem(){ return null; } };
+globalThis.D = { organizations: [{id: "dark", unreadable: true}, {id: "lit"}] };
+const savedCount = () => 0, syncToken = () => null;
+""" + src + """
+console.log(JSON.stringify({
+  build: when("2026-10-09", "2026-10-09").txt,
+  today: when("2026-10-10", "2026-10-09").txt,
+  dark: goneWhy("dark"), lit: goneWhy("lit"),
+  acct: acctText(), stored: storageWorks(),
+}));"""
+    r = subprocess.run(["node", "-"], input=script, capture_output=True, text=True, timeout=60,
+                       env={**os.environ, "TZ": "America/New_York"})
+    if r.returncode:
+        return fail(f"the reader-state functions did not run under node: {r.stderr[-300:]}")
+    g = json.loads(r.stdout.strip().splitlines()[-1])
+    if g.get("build") != "yesterday" or g.get("today") != "today":
+        errors += fail(f"a role first seen on yesterday's build reads {g.get('build')!r} on the "
+                       f"reader's next morning")
+    if "may have been filled" in g.get("dark", "") or "cannot tell" not in g.get("dark", ""):
+        errors += fail(f"a role lost from a board we cannot read says: {g.get('dark')!r}")
+    if "filled" not in g.get("lit", ""):
+        errors += fail("a role gone from a board we read lost its plain explanation")
+    if g.get("stored") is not False or "not letting the site keep anything" not in g.get("acct", ""):
+        errors += fail("with site storage blocked the account menu still promises roles are kept")
+    if js.count('if(!writeSaved(all)){ storageRefused(); return; }') != 2:
+        errors += fail("saving a role or a company fails silently when the browser keeps nothing")
+    for needle, why in (('${goneWhy(String(id).split("::")[0])}', "the gone-role page"),
+                        ('goneWhy(p.company_id,true)', "the saved-role chip")):
+        if needle not in js:
+            errors += fail(f"{why} does not say what is true")
+    al = (ROOT / "alerts.html").read_text()
+    if 'const GONE=r=>r&&(r.error==="unknown_token"||r.error==="bad_token");' not in al \
+            or "while(!r.ok&&!GONE(r))" not in al or "Your settings did not load" not in al:
+        errors += fail("the alerts page reads our failure as the reader's bad link")
+    return errors
+
+
 def check_every_css_variable_is_defined() -> int:
     """No rule reads a colour token nobody defined, and the theme switch
     reaches every token the system theme does.
@@ -32367,6 +32629,11 @@ def main() -> int:
     errors += check_every_view_has_its_own_address()
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
+    errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
+    errors += check_a_stranger_cannot_mail_somebody_without_end()
+    errors += check_claim_links_open_pages_that_exist()
+    errors += check_search_and_previews_see_what_is_there()
+    errors += check_the_reader_is_told_the_truth_when_things_fail()
     errors += check_text_on_tags_and_dark_cards_is_readable()
     errors += check_every_view_is_announced_and_named()
     errors += check_a_us_city_named_for_a_foreign_one_stays_in_the_us()

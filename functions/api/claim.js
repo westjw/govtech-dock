@@ -142,10 +142,14 @@ export async function onRequestGet({ request, env }) {
    * comes to believe an edit is live when it is sitting in a queue. */
   const ok = (await verifiedTails(request, env, rec.company_id))
     .includes(token.slice(-6));
+  // whether /c/<id> is built: the portal's "see the public page" opened the
+  // 404 for 837 companies without one (launch audit 3, 2026-10-09)
+  const co = await companyFrom(request, env, rec.company_id);
   return json({
     ok: true,
     company_id: rec.company_id,
     name: rec.name,
+    page: !!(co && co.page),
     email: mask(rec.email),              // never the address itself
     confirmed: !!rec.confirmed,
     verified: ok,

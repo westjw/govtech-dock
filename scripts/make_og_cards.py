@@ -37,10 +37,15 @@ CARDS = {
     # and everyone hiring nobody. 152 companies carry a quota-carrying role.
     # The card is the preview a link renders in Slack and on a timeline, so it
     # is read by more people than the page it points at.
+    #
+    # NO COUNTS IN A PICTURE. Nothing redraws these nightly, so "151
+    # companies" stood over a board of 187 two days later (launch audit 3,
+    # 2026-10-09), on the preview of every role, state page and filtered
+    # board. A number belongs in the page's text, which is rebuilt every night.
     "jobs": ("Sales jobs in govtech",
-             "quota-carrying roles across {hiring} companies, refreshed daily"),
+             "quota-carrying roles at govtech companies, refreshed daily"),
     "companies": ("The govtech map",
-                  "{orgs} companies selling into state and local government"),
+                  "every company selling into state and local government"),
     "conferences": ("Where they exhibit",
                     "the floors these companies stand on, with dates"),
     # keyed by the app's tab names, which the middleware turns into

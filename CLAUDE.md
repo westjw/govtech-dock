@@ -1973,6 +1973,32 @@ fires.
     visit; a conference panel titles the page; `shares_board_with` now
     ships (intel counts boards); e/ pages define --space-8, and
     `check_every_css_variable_is_defined` now scans the built pages' CSS.
+- **A third launch audit (2026-10-09)**: the mail a subscriber gets, what
+  search engines and link previews see, and what a reader sees when things
+  fail. 18 found, 0 refuted, all fixed and broken on purpose (27 of 27):
+  - **The digest counts openings** (`digest.openings`, "N locations" on the
+    row) and keeps to the board's default: roles placed outside the US only
+    for a subscriber who ticks `worldwide`, and then labelled with where they
+    are. "And N more" links the board with the subscriber's filters
+    (`board_link`). `check_the_digest_counts_openings_and_keeps_to_the_boards_default`.
+  - **A pending signup sends at most three confirmations** (`MAX_CONFIRMS`)
+    and lapses a week after the first; a saved company syncs its `kind`.
+    `check_a_stranger_cannot_mail_somebody_without_end`.
+  - **Claim mails and the portal link /c/ only where it is built**
+    (`verify_claims.page_url`, the claim GET's `page`), and the portal tells
+    our failure from an expired link. `check_claim_links_open_pages_that_exist`.
+  - **The middleware describes only "/"** (claim?co= kept its own head); ?co=
+    previews are clipped at a word (`clip_desc`) with one stop; a company's
+    first sentence does not stop at "Inc."; an ended floor nobody read is not
+    in the sitemap and no empty floor says "who is hiring"; feed dates are
+    RFC 822 and a sitemap lastmod is a role's first_seen or nothing; the
+    share cards carry no counts (nothing redraws them).
+    `check_search_and_previews_see_what_is_there`.
+  - **"Today" is the reader's** (`when()` against `todayISO()`); a role gone
+    from a board we cannot read says we cannot tell (`goneWhy`); the alerts
+    and claim pages tell our failures from a bad link (`GONE`); a blocked
+    site store says so instead of failing silently (`storageWorks`).
+    `check_the_reader_is_told_the_truth_when_things_fail`.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

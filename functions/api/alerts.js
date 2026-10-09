@@ -45,6 +45,11 @@ const CONFIRM_COOLDOWN = 3600;  // seconds between mails per address, either kin
  * somebody else typed in was kept for ever. KV deletes both keys after a
  * week; confirming re-writes them with no expiry. */
 const PENDING_TTL = 7 * 86400;
+/* A pending request sends at most this many confirmations, and its week runs
+ * from the first. Re-sending restarted the week, so a stranger typing
+ * somebody's address once an hour mailed them 240 times in ten days, each
+ * mail promising no further mail (launch audit 3, 2026-10-09). */
+const MAX_CONFIRMS = 3;
 
 /* ONE EXPIRY FOR BOTH KEYS, FIXED AT SIGNUP. A pending record carries
  * `expires` (epoch seconds) and both sub:<token> and em:<hash> are written
@@ -125,6 +130,9 @@ function cleanPrefs(raw) {
     states,
     companies,
     us_only: p.us_only === true,
+    // roles placed outside the US, which the board hides by default; the
+    // digest leaves them out unless this is set (launch audit 3)
+    worldwide: p.worldwide === true,
     min_count: Number.isFinite(n) ? Math.min(Math.max(Math.round(n), 1), 50) : 1,
   };
 }
@@ -143,8 +151,12 @@ function cleanPrefs(raw) {
  * against. Without it the comparison falls back to saved_on, which is a DATE,
  * and re-saving a role on the same day you unsaved it loses to its own
  * tombstone - the role silently disappears again on the next sync. */
+// `kind` separates a saved COMPANY from a saved role. Dropped, a company saved
+// on the laptop came back on the phone as a role "no longer listed" that "may
+// have been filled" (launch audit 3, 2026-10-09).
 const SAVED_FIELDS = ["id", "title", "company", "company_id", "url", "sector",
-                      "category", "family", "seniority", "saved_on", "saved_at"];
+                      "category", "family", "seniority", "saved_on", "saved_at",
+                      "kind"];
 
 function cleanSaved(raw) {
   if (!Array.isArray(raw)) return [];
@@ -212,8 +224,8 @@ Click to confirm. Until you do, nothing is sent.
 
 ${link}
 
-If this was not you, ignore this email. No further mail will be sent to this
-address and the request expires on its own in a week.
+If this was not you, ignore this email. The request expires on its own a week
+after it was first made, and nothing is sent once it has.
 
 The same link is your settings page afterwards: change what you get, or stop
 the alerts, without a password.`;
@@ -226,8 +238,8 @@ the alerts, without a password.`;
  nothing is sent.</p>
 <div style="padding:20px 0 4px">${button(link, "Confirm alerts")}</div>
 <p style="margin:16px 0 0;color:#556F82;font-size:13px">If this was not you,
- ignore this email. Nothing further will be sent to this address and the
- request expires on its own in a week.</p>
+ ignore this email. The request expires on its own a week after it was first
+ made, and nothing is sent once it has.</p>
 <p style="margin:8px 0 0;color:#556F82;font-size:13px">The same link is your
  settings page afterwards &mdash; change what you get, or stop the alerts,
  no password.</p>`,
@@ -414,9 +426,10 @@ async function subscribe(body, env, request) {
       // Pending: re-send the confirmation, but not more than once an hour, so
       // this cannot be used to bomb somebody else's inbox.
       if (now - (sub.confirm_sent || 0) < CONFIRM_COOLDOWN) return same;
+      if ((sub.confirms || 1) >= MAX_CONFIRMS) return same;   // same answer: no oracle
+      sub.confirms = (sub.confirms || 1) + 1;
       sub.prefs = prefs;
-      sub.confirm_sent = now;
-      sub.expires = now + PENDING_TTL;        // a fresh link starts the week again
+      sub.confirm_sent = now;                 // the week still runs from the first
       await putSub(env, existing, sub);
       await env.ALERTS.put(ek, existing, pendingExpiry(sub));
       await send(env, email, ...confirmMail(existing, prefs));

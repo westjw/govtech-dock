@@ -233,6 +233,32 @@ out.driftSubscriptions = cnt();
   out.legacySubLeftAfter = ttlOf("sub:" + OLD);
 }
 
+/* 14. A STRANGER RESENDING SOMEBODY'S CONFIRMATION: one signup, then one
+   more an hour for ten days from rotating callers, never confirmed. At most
+   three mails, and the request lapses a week after the FIRST. */
+{
+  const before = sent.length;
+  await post({ action: "subscribe", email: "target@example.org", prefs: PREFS });
+  for (let h = 1; h <= 240; h++) {
+    clock += 3601 * 1000;
+    await post({ action: "subscribe", email: "target@example.org", prefs: PREFS });
+    if (h === 6 * 24) out.strangerMailsFirstSixDays = sent.length - before;
+  }
+  out.strangerMails = sent.length - before;
+}
+
+/* 15. A SAVED COMPANY keeps its kind through sync, so the other device
+   files it as a company and not as a role that "may have been filled". */
+{
+  await post({ action: "subscribe", email: "kind@example.org", prefs: PREFS });
+  const tk = [...KV.keys()].find((x) => x.startsWith("sub:") && JSON.parse(KV.get(x).v).email === "kind@example.org").slice(4);
+  await post({ action: "confirm", token: tk });
+  await post({ action: "sync", token: tk, removed: {},
+               saved: [{ id: "co:acme", kind: "company", company_id: "acme", title: "Acme", company: "Acme" }] });
+  const rec = JSON.parse(KV.get("sub:" + tk).v);
+  out.savedKind = ((rec.saved || []).find((x) => x.id === "co:acme") || {}).kind || null;
+}
+
 out.writesWithoutTtlWhilePending = writes
   .filter((w) => w.k === "sub:" + token)
   .slice(0, 3)                                   // signup, update, sync
