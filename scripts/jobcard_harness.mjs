@@ -187,7 +187,9 @@ try {
   staleNews = vm.runInContext(`(() => {
       const det = n => ({ news: [{ date: n, headline: "x", kind: "press", url: "https://a.test/x" }] });
       const o = { news_state: "items", news_checked_on: "2026-09-20" };
-      return [coNews(o, "a.test", det("2023-05-02")), coNews(o, "a.test", det("2026-08-01"))]; })()`, ctx);
+      return [coNews(o, "a.test", det("2023-05-02")), coNews(o, "a.test", det("2026-08-01")),
+              coNews({ news_state: "hosts_news", news_by: "Bloomerang", news_checked_on: "2026-09-20" },
+                     "bloomerang.com", { news: [] })]; })()`, ctx);
 } catch (e) {
   errors.push(`calling coNews: ${e && e.message}`);
 }

@@ -5779,6 +5779,7 @@ function coNews(o,dom,det){
     : st==="none_found" ? `their news page listed nothing dated${when}`
     : st==="no_news_page" ? "no news page found on their site"
     : st==="unread" ? "their site could not be read"
+    : st==="hosts_news" ? `the newsroom on their site is ${esc(o.news_by||dom||"another organisation")}'s`
     : st==="hidden" ? "hidden"
     : "not checked yet";
   const head=`<div class="cosechd"><h2>News</h2><span class="smeta">${meta}</span></div>`;
@@ -5787,6 +5788,9 @@ function coNews(o,dom,det){
       st==="none_found" ? "Their newsroom is on file and nothing on it carried a date we could read. An item without a date is not published here."
       : st==="no_news_page" ? "Nothing on their site links to a newsroom, a blog or a press page."
       : st==="unread" ? "Their site did not answer when we last asked. That is a fact about the fetch, not about the company."
+      /* their website is a page on someone else's site, so the newsroom it
+         leads to is that site's (InitLive on bloomerang.com); not theirs */
+      : st==="hosts_news" ? `Their website is a page on ${esc(dom||"another site")}, so the news there is ${esc(o.news_by||dom||"that site")}'s, not theirs, and it is not shown here as theirs.`
       : "Nobody has looked yet."}</p>
   </section>`;
   /* chips only when more than one kind is present; a single-kind filter is

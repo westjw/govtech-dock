@@ -41,6 +41,7 @@ import pathlib
 import re
 import sys
 import time
+import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import ats            # noqa: E402
@@ -703,6 +704,42 @@ def _news_store() -> dict:
         return {}
 
 
+def newsroom_owner(c: dict) -> str | None:
+    """Whose newsroom this company's website leads to, when it is not theirs.
+
+    InitLive's website is bloomerang.com/volunteer, DaySmart Recreation's is
+    daysmart.com/recreation and TSO Mobile's is zonar.com/acquisitions/
+    tsomobile. The news sweep follows a site to its newsroom, so those pages
+    printed Bloomerang's nonprofit blog, DaySmart's salon acquisitions and
+    Zonar's press releases as the company's own (launch audit, 2026-10-09).
+    A website that is a PAGE inside a site leads to that site's newsroom, and
+    it is someone else's when the site's brand is the parent's on file, or
+    is in none of the company's own names. A language path (/us, /en,
+    /us-en) is the company's own site in a language, and a whole site of
+    their own (cardyai.com for Cardinality.ai) is theirs whatever it is
+    called. Returns the parent's name, or the site's domain."""
+    import link_check
+    u = urllib.parse.urlsplit(c.get("website") or "")
+    segs = [x for x in u.path.split("/")
+            if x and not re.fullmatch(r"[a-z]{2}([-_][a-z]{2})?", x, re.I)]
+    if not segs or not u.hostname:
+        return None
+    def flat(x):
+        return re.sub(r"[^a-z0-9]", "", str(x or "").lower())
+    host = link_check.registrable(u.hostname)
+    brand = flat(host.split(".")[0])
+    if not brand:
+        return None
+    parent = str(c.get("parent") or "").strip()
+    if parent and (brand in flat(parent) or flat(parent) in brand):
+        return parent
+    names = [c.get("name")] + list(c.get("also_known_as") or []) + \
+        [b.get("name") for b in (c.get("brands") or []) if isinstance(b, dict)]
+    if any(flat(n) and (brand in flat(n) or flat(n) in brand) for n in names):
+        return None
+    return host
+
+
 def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str | None]:
     """(items, state, checked_on) for one company.
 
@@ -719,6 +756,9 @@ def news_for_board(c: dict, store: dict) -> tuple[list | None, str | None, str |
     rec = store.get(c.get("id"))
     if not isinstance(rec, dict):
         return None, None, None
+    # SOMEONE ELSE'S NEWSROOM is not shown as theirs; the page says whose it is
+    if newsroom_owner(c):
+        return None, "hosts_news", rec.get("checked_on")
     # THE LABEL IS RE-READ FROM THE HEADLINE HERE, not taken as stored. The
     # sweep stamps a kind when it first reads an item, so a rule fixed later
     # never reached the 13,292 items already on file - which is how "5 Signs
@@ -1303,6 +1343,10 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
         # (fifth review, 2026-10-08)
         if chk.get("found") is False:
             o["checked_empty"] = True
+    # whose newsroom it is, only where it is someone else's: a key on all
+    # 2,040 organizations would be 37 KB of null on every first visit
+    if _news_state == "hosts_news":
+        o["news_by"] = newsroom_owner(c)
     return o
 
 

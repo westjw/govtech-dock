@@ -1604,6 +1604,8 @@ def _co_news(o: dict, dom: str, now: dt.date | None = None) -> str:
             else f"their news page listed nothing dated{when}" if st == "none_found"
             else "no news page found on their site" if st == "no_news_page"
             else "their site could not be read" if st == "unread"
+            else f"the newsroom on their site is {esc(str(o.get('news_by') or dom or 'another organisation'))}'s"
+            if st == "hosts_news"
             else "not checked yet")
     head = f'<div class="cosechd"><h2>News</h2><span class="smeta">{meta}</span></div>'
     if not items:
@@ -1613,6 +1615,9 @@ def _co_news(o: dict, dom: str, now: dt.date | None = None) -> str:
                if st == "no_news_page"
                else "Their site did not answer when we last asked. That is a fact about "
                     "the fetch, not about the company." if st == "unread"
+               else (f"Their website is a page on {esc(dom or 'another site')}, so the news there "
+                     f"is {esc(str(o.get('news_by') or dom or 'that site'))}'s, not theirs, and it "
+                     f"is not shown here as theirs.") if st == "hosts_news"
                else "Nobody has looked yet.")
         return (f'<section class="cosec">{head}<p style="font-size:12.5px;line-height:1.6;'
                 f'color:var(--c-ink2);margin:0">{say}</p></section>')

@@ -29574,7 +29574,7 @@
      "why": "VR use-of-force and de-escalation training simulator bought instead of a screen-based MILO lane by the same training unit"
     }
    ],
-   "news_state": "none_found",
+   "news_state": "hosts_news",
    "news_checked_on": "2026-10-09",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -29602,7 +29602,8 @@
    "posts_at": null,
    "source": "direct add",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "news_by": "faac.com"
   },
   {
    "id": "inveris-training-solutions",
@@ -52993,7 +52994,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "hosts_news",
    "news_checked_on": "2026-10-09",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -53023,7 +53024,8 @@
    "posts_at": null,
    "source": "APTA 2026",
    "researched": null,
-   "claimed": null
+   "claimed": null,
+   "news_by": "zonar.com"
   },
   {
    "id": "tanium",
@@ -62504,7 +62506,7 @@
    },
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "hosts_news",
    "news_checked_on": "2026-10-09",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -62532,7 +62534,8 @@
    "posts_at": null,
    "source": "competitor sweep",
    "researched": null,
-   "claimed": null
+   "claimed": null,
+   "news_by": "DaySmart Software"
   },
   {
    "id": "ezfacility",
@@ -76128,7 +76131,7 @@
    },
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "hosts_news",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -76162,7 +76165,8 @@
    "posts_at": null,
    "source": "competitor sweep",
    "researched": null,
-   "claimed": null
+   "claimed": null,
+   "news_by": "Bloomerang"
   },
   {
    "id": "travelstorys",
@@ -129011,7 +129015,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "hosts_news",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -129045,7 +129049,8 @@
    "posts_at": null,
    "source": "research pass: HHS conference exhibitor research 2026-08-25; AIRA 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "news_by": "inductivehealth.com"
   },
   {
    "id": "pulselight",
@@ -417298,5 +417303,9 @@
   "absent": 566,
   "unchecked": 117,
   "blocked": 179
+ },
+ "redrawn": {
+  "at": "2026-10-09T14:00:03Z",
+  "inputs": "2fc2f7ca1a479f5355b0d867fbd669a9f8934c9744b4819796e86838885c557f"
  }
 }

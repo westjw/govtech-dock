@@ -1737,6 +1737,22 @@ fires.
   `BLOG_SHAPE`). `build_board.news_for_board` re-reads every stored item's
   label from its headline, so a rule fix reaches all of news.json at the
   next build. `check_news_labels_make_no_false_claims`.
+- **A company page never shows another company's newsroom as its own
+  (2026-10-09).** Some websites on file are a page on someone else's site:
+  InitLive's is bloomerang.com/volunteer, DaySmart Recreation's is
+  daysmart.com/recreation, TSO Mobile's is zonar.com/acquisitions/tsomobile.
+  The sweep followed each site to its newsroom, so those pages printed
+  Bloomerang's, DaySmart's and Zonar's news as their own.
+  - `build_board.newsroom_owner()` decides. The site's newsroom belongs to
+    someone else when the site's brand is the parent's on file, or is in
+    none of the company's own names.
+  - It does not count a language path (`/us-en`) or a whole site of the
+    company's own, even a renamed one (cardyai.com for Cardinality.ai).
+  - The news is withheld with state `hosts_news` and `news_by`, which is
+    set only where it applies (a key on every organization would add 37 KB
+    to the first load).
+  - Both renderers say whose newsroom it is.
+  - `check_a_company_page_never_shows_another_companys_newsroom`.
 - **Browsers keep images a day and board data five minutes** (root
   middleware `CACHE_RULES`, private, GET 200 only) - every request is a
   Function call against the free plan's daily allowance.

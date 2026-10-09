@@ -8870,6 +8870,80 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
     return errors
 
 
+def check_a_company_page_never_shows_another_companys_newsroom() -> int:
+    """A company whose website is a page on someone else's site does not get
+    that site's news printed as its own.
+
+    InitLive's website is bloomerang.com/volunteer, DaySmart Recreation's
+    daysmart.com/recreation, TSO Mobile's zonar.com/acquisitions/tsomobile.
+    The sweep follows a site to its newsroom, so their pages printed
+    Bloomerang's nonprofit blog, DaySmart's salon acquisitions and Zonar's
+    press releases as theirs (launch audit, 2026-10-09). build_board.
+    newsroom_owner() names whose newsroom it is; news_for_board() withholds
+    the items; both renderers say why. Held on the rule's own cases (a
+    language path and a renamed whole site are the company's own), on
+    org_record, on both renderers, and on the committed board.
+    """
+    import subprocess
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_board as bb
+    import build_site as bs
+    errors = 0
+    cases = [
+        ({"name": "InitLive (Bloomerang Volunteer)", "website": "https://bloomerang.com/volunteer",
+          "parent": "Bloomerang"}, "Bloomerang"),
+        ({"name": "DaySmart Recreation", "website": "https://www.daysmart.com/recreation",
+          "parent": "DaySmart Software"}, "DaySmart Software"),
+        ({"name": "TSO Mobile", "website": "https://www.zonar.com/acquisitions/tsomobile"}, "zonar.com"),
+        ({"name": "IBM", "website": "https://www.ibm.com/us-en"}, None),
+        ({"name": "Thomson Reuters", "website": "https://www.thomsonreuters.com/en"}, None),
+        ({"name": "NICE", "website": "https://www.nice.com/public-safety"}, None),
+        ({"name": "Justice Systems by LONG", "website": "https://www.long.com/public-safety/"}, None),
+        ({"name": "Cardinality.ai", "website": "https://cardyai.com"}, None),
+        # a language path on a renamed site of their own: the locale rule decides
+        ({"name": "Cardinality.ai", "website": "https://cardyai.com/en-us"}, None),
+        ({"name": "Acme", "website": "https://www.acme.example/products/x", "brands": [{"name": "Acme"}]}, None),
+        ({"name": "Widget Co", "website": "https://www.bigcorp.example/widget",
+          "also_known_as": ["BigCorp Widget"]}, None),
+    ]
+    for c, want in cases:
+        got = bb.newsroom_owner(c)
+        if got != want:
+            errors += fail(f"newsroom_owner({c['website']}) is {got!r}, not {want!r}")
+    c = {"id": "zz-initlive", "name": "InitLive", "website": "https://bloomerang.com/volunteer",
+         "parent": "Bloomerang", "sector": "General Gov", "category": "HR & Workforce"}
+    store = {"zz-initlive": {"state": "items", "checked_on": "2026-09-20", "items": [
+        {"date": "2026-09-04", "headline": "No EIN yet?", "url": "https://bloomerang.co/blog/x"}]}}
+    if bb.news_for_board(c, store) != (None, "hosts_news", "2026-09-20"):
+        errors += fail(f"another organisation's newsroom still reaches the board: {bb.news_for_board(c, store)}")
+    ctx = bb.run_context([c], None)
+    ctx["news"] = store
+    o = bb.org_record(c, [c], ctx, {"unreadable": None, "roles_from_storage": None, "enumerable": None,
+                                     "offtopic_dropped": None, "federal_dropped": None, "scan_lead": None})
+    if o.get("news_state") != "hosts_news" or o.get("news_by") != "Bloomerang":
+        errors += fail(f"the board does not say whose newsroom it is: {o.get('news_state')}, {o.get('news_by')}")
+    page = bs._co_news({**o, "news": []}, "bloomerang.com", dt.date(2026, 10, 9))
+    if "Bloomerang's" not in page or "not shown here as theirs" not in page or "No EIN" in page:
+        errors += fail(f"the company page does not say the newsroom is the parent's: {page[:200]}")
+    if shutil.which("node"):
+        r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                           capture_output=True, text=True, timeout=180)
+        try:
+            app = (json.loads(r.stdout).get("staleNews") or [None, None, ""])[2] or ""
+        except ValueError:
+            app = ""
+        if "Bloomerang's" not in app or "not shown here as theirs" not in app:
+            errors += fail(f"the app's company page does not say the newsroom is the parent's: {app[:200]}")
+    board = json.loads((DATA / "board.json").read_text())
+    by = {x["id"]: x for x in board.get("organizations", [])}
+    for cid, owner in (("initlive", "Bloomerang"), ("tso-mobile", "zonar.com"),
+                       ("daysmart-recreation", "DaySmart Software")):
+        x = by.get(cid)
+        if x and (x.get("news_state") != "hosts_news" or x.get("news_by") != owner):
+            errors += fail(f"{cid}'s page on the committed board still shows {owner}'s newsroom as its own")
+    return errors
+
+
 def check_admin_has_one_spelling() -> int:
     """/admin is reachable by one spelling only.
 
@@ -31023,6 +31097,7 @@ def main() -> int:
     errors += check_outside_text_never_becomes_markup()
     errors += check_every_page_carries_a_policy_built_from_itself()
     errors += check_admin_has_one_spelling()
+    errors += check_a_company_page_never_shows_another_companys_newsroom()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()
