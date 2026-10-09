@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-08",
    "headline": "Make security easy for your workforce: Take friction out of authentication",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "Why healthcare needs to ditch the password and switch to the PIN",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "Identity security signals: What to watch this Cybersecurity Awareness Month",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://www.imprivata.com/blog/identity-security-signals-what-watch-cybersecurity-awareness-month"
   },
   {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date": "2026-09-29",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "As privileged access expands, you need simplicity \u2013 not platform sprawl",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "How to help employees spot a social engineering attack before it\u2019s too late",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-28",
    "headline": "Agentic AI in healthcare means governing action, not just access",
    "kind": "press",

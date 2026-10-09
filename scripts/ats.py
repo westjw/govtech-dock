@@ -1695,6 +1695,7 @@ def fetch_icims(ref: str) -> list[dict]:
 _ANCHOR = re.compile(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', re.I | re.S)
 # "View job: Senior Support Specialist" - a link's accessible name, when its
 # visible text is only a button label (see fetch_html_titles)
+_ARIA_ANY = re.compile(r'\baria-label=["\']([^"\']{3,120})["\']', re.I)
 _ARIA_JOB = re.compile(r'\baria-label=["\'](?:view|see|open|apply(?: for| to)?)\s+'
                        r'(?:this\s+)?(?:job|role|position|opening|posting)\s*[:\-\u2013\u2014]\s*'
                        r'([^"\']{3,90})["\']', re.I)
@@ -1966,10 +1967,21 @@ def fetch_html_titles(url: str) -> list[dict]:
         # (fourth review, 2026-10-08). Used only when the visible text is not
         # a title, and only the role named after "View job:".
         named = False         # the page's own label says this link is a job
+        aria_loc = ""
+        open_tag = m.group(0)[:m.group(0).find(">") + 1]
         if not _TITLEISH.search(text):
-            aria = _ARIA_JOB.search(m.group(0)[:m.group(0).find(">") + 1])
+            aria = _ARIA_JOB.search(open_tag)
             if aria:
                 text, named = html_lib.unescape(aria.group(1)).strip(), True
+            elif not text:
+                # AN EMPTY LINK LAID OVER A CARD, named only by its label -
+                # Webflow's pattern: Ekin's "Customer Success Manager | Poland"
+                # (2026-10-08). The label is the title, and a place after " | "
+                # is the location; the title gate below still applies.
+                aria = _ARIA_ANY.search(open_tag)
+                if aria:
+                    label = html_lib.unescape(aria.group(1)).strip()
+                    text, _, aria_loc = (x.strip() for x in label.partition(" | "))
         if not (6 <= len(text) <= 90) or _NAV.match(text):
             continue
         if _JOB_COUNT.search(text):
@@ -1996,6 +2008,7 @@ def fetch_html_titles(url: str) -> list[dict]:
         # IS one do the card's lines get read, for the three fields that were
         # being run together into the title.
         title, loc, comp = card_fields(_card_lines(inner), text)
+        loc = loc or aria_loc
         out.append({"title": title, "location": loc, "comp": comp,
                     "url": urllib.parse.urljoin(url, html_lib.unescape(href))})
     if len(out) < 2:

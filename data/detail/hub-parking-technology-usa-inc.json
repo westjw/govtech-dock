@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-01",
+   "date": "2026-10-08",
    "date_source": "near-h1",
+   "first_seen": "2026-10-08",
+   "headline": "J4M evolves \u2013 New features for more flexible validation management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hubparking.com/news/j4m-evolves-new-features-for-more-flexible-validation-management/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "HUB Parking Technology and Electro Automation Group Strengthen UK Operations",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.hubparking.com/news/hub-parking-technology-launches-the-new-access-reader/"
-  },
-  {
-   "date": "2026-07-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "New Case Study \u2013 Modernizing the Heart of Ipswich, UK",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hubparking.com/news/new-case-study-modernizing-the-heart-of-ipswich-uk/"
   }
  ],
  "profile": {

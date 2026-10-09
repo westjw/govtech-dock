@@ -8752,20 +8752,28 @@ def check_html_reader_takes_a_links_own_job_label() -> int:
         '<a aria-label="View job: Sales Assistant" href="/jobs/sales-assistant/">View Job</a>'
         '<a href="/jobs/x/">View Job</a>'                              # no label: not a role
         '<a href="/careers/culture" aria-label="Learn more about our mission">Learn more</a>'
-        '<a href="/about/" aria-label="View job: Careers at Acme">View Job</a>')  # not a job url
+        '<a href="/about/" aria-label="View job: Careers at Acme">View Job</a>'   # not a job url
+        # an EMPTY link laid over a card, named by its label (Ekin, Webflow)
+        '<a aria-label="Regional Sales Manager | Texas" href="/jobs/rsm-texas" class="x"></a>'
+        '<a aria-label="Open the menu" href="/jobs/" class="x"></a>')           # not a title
 
     class Stub:
         text = page
     keep = ats._get
     ats._get = lambda url, **kw: Stub()
     try:
-        got = [r["title"] for r in ats.fetch_html_titles("https://acme.test/jobs/")]
+        rows = ats.fetch_html_titles("https://acme.test/jobs/")
+        got = [r["title"] for r in rows]
     except Exception as e:                       # noqa: BLE001
-        got = [f"raised {type(e).__name__}: {e}"]
+        got, rows = [f"raised {type(e).__name__}: {e}"], []
     finally:
         ats._get = keep
-    if got != ["Senior Support Specialist", "Sales Assistant"]:
-        return fail(f"fetch_html_titles read {got} from links labelled 'View job: ...'")
+    if got != ["Senior Support Specialist", "Sales Assistant", "Regional Sales Manager"]:
+        return fail(f"fetch_html_titles read {got} from links labelled 'View job: ...' "
+                    f"and an empty link labelled 'Title | Place'")
+    if rows[-1].get("location") != "Texas":
+        return fail(f"an empty labelled link's place after ' | ' was not read as its "
+                    f"location: {rows[-1]}")
     return 0
 
 

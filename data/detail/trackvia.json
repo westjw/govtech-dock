@@ -28,6 +28,15 @@
    "url": "https://trackvia.com/press/trackvia-launches-next-generation-ai-ready-field-operations-platform/"
   },
   {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "Best Practices in Field Operations: Lessons from Vee-Jay Cement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/vee-jay-webinar-recap-best-practices-in-field-operations/"
+  },
+  {
    "date": "2026-08-27",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -73,8 +82,8 @@
    "url": "https://trackvia.com/blog/how-to-track-assets-across-multiple-locations-without-losing-visibility/"
   },
   {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
+   "date": "2026-08-08",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "How to Keep Field Operations Synchronized When Plans Change",
    "kind": "press",
@@ -82,13 +91,22 @@
    "url": "https://trackvia.com/blog/how-to-keep-field-operations-synchronized-when-plans-change/"
   },
   {
-   "date": "2026-03-03",
-   "date_source": "json-ld",
+   "date": "2026-07-31",
+   "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "TrackVia Achieves FedRAMP Ready Status for Its Government Workflow Platform",
+   "headline": "TrackVia Achieves FedRAMP Moderate Equivalency for Its Government Workflow Platform",
    "kind": "press",
    "kind_rule": null,
    "url": "https://trackvia.com/blog/trackvia-fedramp-ready-status/"
+  },
+  {
+   "date": "2026-03-03",
+   "date_source": "time",
+   "first_seen": "2026-10-08",
+   "headline": "TrackVia Brings Modern AI-Ready Work Management to Government Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/trackvia-government-announcement/"
   }
  ]
 }

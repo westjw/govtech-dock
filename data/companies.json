@@ -14684,8 +14684,12 @@
     "category": "Grid & Energy",
     "description": "Smart metering (water, electric, gas), grid-edge intelligence, and utility IoT giant - exhibited at AWWA ACE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.itron.com/company/careers"
+      "type": "workday",
+      "ref": [
+        "itron",
+        "wd5",
+        "Itron"
+      ]
     },
     "hiring": {
       "status": "Unknown",
@@ -15674,8 +15678,8 @@
     "category": "Camps & Youth Programs",
     "description": "Camp management software with electronic health records for camps, schools, and youth programs",
     "ats": {
-      "type": "html",
-      "ref": "https://www.campdoc.com/careers"
+      "type": "greenhouse",
+      "ref": "docnetwork"
     },
     "hiring": {
       "status": "Unknown",
@@ -20118,8 +20122,8 @@
     "category": "Citizen Services",
     "description": "Community engagement platform: interactive maps, surveys, engagement CRM",
     "ats": {
-      "type": "html",
-      "ref": "https://www.socialpinpoint.com/careers"
+      "type": "rippling",
+      "ref": "open-point"
     },
     "hiring": {
       "status": "Unknown",
@@ -20982,7 +20986,7 @@
     "description": "AI assistants for municipal staff: records research, staff report drafting, benchmarking",
     "ats": {
       "type": "ashby",
-      "ref": "prophecy-gov"
+      "ref": "prophecygov"
     },
     "hiring": {
       "status": "Unknown",
@@ -22196,7 +22200,7 @@
     "category": "Operations & SIS",
     "description": "Thrillshare K-12 communications: district websites, apps, notifications, branding - exhibited at NLC City Summit 2026, CoSN 2026",
     "ats": {
-      "type": "lever",
+      "type": "greenhouse",
       "ref": "apptegy"
     },
     "hiring": {
@@ -27104,7 +27108,7 @@
     "category": "Fleet & Asset Mgmt",
     "description": "Mobile-first CMMS unicorn for maintenance ops, with a growing government vertical",
     "ats": {
-      "type": "greenhouse",
+      "type": "ashby",
       "ref": "maintainx"
     },
     "hiring": {
@@ -27970,7 +27974,7 @@
     "description": "Vehicle-captured 360 street imagery and lidar with AI analytics for local governments and utilities",
     "ats": {
       "type": "recruitee",
-      "ref": "cyclomedia"
+      "ref": "cyclomediatechnology"
     },
     "hiring": {
       "status": "Unknown",
@@ -28161,8 +28165,8 @@
     "category": "Streets",
     "description": "AI/GIS asset management with vehicle-mounted road, sidewalk, and sign scanning (ex-StreetScan) - exhibited at Connecticut Conference of Municipalities 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://citylogix.com/careers"
+      "type": "rippling",
+      "ref": "citylogix"
     },
     "hiring": {
       "status": "Unknown",
@@ -28346,7 +28350,7 @@
     "category": "Water",
     "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026",
     "ats": {
-      "type": "greenhouse",
+      "type": "ashby",
       "ref": "forerunner"
     },
     "hiring": {
@@ -30721,7 +30725,7 @@
     "description": "Mobile forensics and investigative intelligence (UFED, Pathfinder) - Nasdaq: CLBT",
     "ats": {
       "type": "html",
-      "ref": "https://cellebrite.com/en/careers/"
+      "ref": "https://cellebrite.com/en/about/careers/positions/"
     },
     "hiring": {
       "status": "Unknown",
@@ -30860,7 +30864,7 @@
     "description": "Axiom and Graykey digital forensics for police and federal agencies (Thoma Bravo)",
     "ats": {
       "type": "lever",
-      "ref": "magnet-forensics"
+      "ref": "magnetforensics"
     },
     "hiring": {
       "status": "Unknown",
@@ -31598,8 +31602,8 @@
     "category": "Police",
     "description": "Threat intelligence and OSINT platform for enterprises and public safety",
     "ats": {
-      "type": "greenhouse",
-      "ref": "flashpoint"
+      "type": "ashby",
+      "ref": "flashpoint.io"
     },
     "hiring": {
       "status": "Unknown",
@@ -31735,7 +31739,7 @@
     "description": "Blockchain intelligence for crypto tracing and fraud, sold to LE and regulators",
     "ats": {
       "type": "ashby",
-      "ref": "trm"
+      "ref": "trm-labs"
     },
     "hiring": {
       "status": "Unknown",
@@ -33020,7 +33024,7 @@
       "ref": [
         "veritone",
         "wd1",
-        "Veritone"
+        "Veritone_Career_Site"
       ]
     },
     "hiring": {
@@ -33462,8 +33466,8 @@
     "category": "Police",
     "description": "Fixed and mobile ALPR cameras and back-office software for LE and munis",
     "ats": {
-      "type": "html",
-      "ref": "https://www.ndi-rs.com/careers"
+      "type": "bamboohr",
+      "ref": "ndirs"
     },
     "hiring": {
       "status": "Unknown",
@@ -34430,7 +34434,7 @@
     "description": "MESA electronically-scanned radars for counter-UAS and site security",
     "ats": {
       "type": "greenhouse",
-      "ref": "echodyne"
+      "ref": "echodynecorp"
     },
     "hiring": {
       "status": "Unknown",
@@ -36498,8 +36502,8 @@
     "category": "Police",
     "description": "Outsourced extra-duty detail administration plus Jivasoft scheduling software - exhibited at IAFC FRI 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.extradutysolutions.com/careers/"
+      "type": "jazzhr",
+      "ref": "extradutysolutions"
     },
     "hiring": {
       "status": "Unknown",
@@ -39950,7 +39954,7 @@
     "description": "Agent-native AI 'GovOS' for local gov permitting, licensing, and procurement (~$55M Series A, ex-DeepMind)",
     "ats": {
       "type": "ashby",
-      "ref": "brain"
+      "ref": "brainco"
     },
     "hiring": {
       "status": "Unknown",
@@ -43483,7 +43487,7 @@
     "description": "Handheld backscatter X-ray imagers for LE, corrections, bomb squads, and border inspection",
     "ats": {
       "type": "workable",
-      "ref": "videray"
+      "ref": "videray-technologies-inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -43593,7 +43597,7 @@
     "description": "AI ALPR mobile patrol units, speed enforcement, and officer safety systems for LE and municipalities",
     "ats": {
       "type": "html",
-      "ref": "https://www.ekin.com/careers"
+      "ref": "https://www.ekin.com/about/jobs"
     },
     "hiring": {
       "status": "Unknown",
@@ -47471,7 +47475,7 @@
     "description": "myAvail enterprise transit management ITS and CAD/AVL for mid-size US agencies",
     "ats": {
       "type": "html",
-      "ref": "https://availtec.com/careers"
+      "ref": "https://availtec.com/archive-careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -50398,7 +50402,7 @@
     "description": "Enterprise IP video surveillance and AI analytics for transit, banking, and government",
     "ats": {
       "type": "workable",
-      "ref": "marchnetworks"
+      "ref": "march-networks"
     },
     "hiring": {
       "status": "Unknown",
@@ -74900,8 +74904,8 @@
     "category": "Fleet & Operations",
     "description": "Telematics devices and fleet tracking software for public fleets",
     "ats": {
-      "type": "icims",
-      "ref": "careers-calamp"
+      "type": "html",
+      "ref": "https://calamp-wireless-networks-corporation.gnahiring.com/"
     },
     "hiring": {
       "status": "Unknown",
@@ -99636,8 +99640,8 @@
     "category": "Procurement & Payments",
     "description": "Acquisition, contract and cost management software for federal and state agencies",
     "ats": {
-      "type": "icims",
-      "ref": "careers-unisonglobal"
+      "type": "ashby",
+      "ref": "unison-software"
     },
     "hiring": {
       "status": "Unknown",
@@ -116792,8 +116796,8 @@
     "category": "Grid & Energy",
     "description": "900 MHz private LTE spectrum and networks for utilities and public power",
     "ats": {
-      "type": "html",
-      "ref": "https://www.anterix.com/careers"
+      "type": "adp",
+      "ref": "7912437d-5602-48f6-a505-5a752a62d985"
     },
     "hiring": {
       "status": "Unknown",

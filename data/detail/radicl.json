@@ -19,15 +19,6 @@
    "url": "https://radicl.com/resources/what-is-password-spraying-low-and-slow-account-compromise"
   },
   {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "What is Adversary-in-the-Middle (AiTM)? Session Hijacking at Scale",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-is-adversary-in-the-middle-aitm-session-hijacking-at-scale"
-  },
-  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -64,15 +55,6 @@
    "url": "https://radicl.com/resources/signal-noise-volume-12"
   },
   {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "That Voter Registration Website Might Want More Than Your Vote",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/that-voter-registration-website-might-want-more-than-your-vote"
-  },
-  {
    "date": "2026-09-25",
    "date_source": "index-text",
    "first_seen": "2026-10-06",
@@ -107,6 +89,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/nerc-cip-compliance-checklist-for-2026"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-06",
+   "headline": "That Voter Registration Website Might Want More Than Your Vote",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/that-voter-registration-website-might-want-more-than-your-vote"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "index-text",
+   "first_seen": "2026-09-28",
+   "headline": "What Is FedRAMP? Cloud Authorization for Government Contractors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/what-is-fedramp-cloud-authorization-for-government-contractors"
   }
  ],
  "profile": {

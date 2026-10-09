@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-08",
+   "headline": "What Should Modern Community Development Software Solve?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/what-should-modern-community-development-software-solve"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/why-citizen-self-service-portals-are-transforming-local-government"
-  },
-  {
-   "date": "2026-03-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "AI in Local Government: How It\u2019s Used Now and What\u2019s Ahead",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/ai-in-local-government-how-its-used-now-and-whats-ahead"
   }
  ],
  "profile": {

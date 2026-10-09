@@ -11104,7 +11104,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "unread",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -11329,7 +11329,7 @@
     "Simpleview (Granicus Destinations)"
    ],
    "competitors": null,
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -11689,7 +11689,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "unread",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -16627,7 +16627,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -25395,7 +25395,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "unread",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -25686,7 +25686,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "unread",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -26862,7 +26862,7 @@
      "why": "CJIS-aligned intelligence request and case workflow for the same fusion center and agency intel unit buyer Kaseware targets."
     }
    ],
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -27310,7 +27310,7 @@
      "why": "Field digital forensic triage software competing with XRY Express for the same patrol/investigator field-extraction rollout"
     }
    ],
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -29660,7 +29660,7 @@
      "why": "Training LMS, policy/accountability content and Guardian Tracking sold to the same chief and training bureau on the same annual content subscription Lexipol bids."
     }
    ],
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
@@ -32650,7 +32650,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "unread",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -43822,7 +43822,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -49562,7 +49562,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -53284,7 +53284,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "none_found",
+   "news_state": "items",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -55703,7 +55703,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "none_found",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -61245,7 +61245,7 @@
    "acquired": null,
    "also_known_as": null,
    "competitors": null,
-   "news_state": "items",
+   "news_state": "unread",
    "news_checked_on": "2026-10-08",
    "competitors_none_found": null,
    "competitors_checked_on": null,
@@ -394490,14 +394490,14 @@
   }
  ],
  "coverage": {
-  "structured": 366,
-  "page only": 812,
+  "structured": 372,
+  "page only": 806,
   "absent": 566,
   "unchecked": 117,
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-08T22:11:14Z",
-  "inputs": "16431da35e5804095867f03373a052eeab0c4d96a77ec30ecf15da018cdc3bef"
+  "at": "2026-10-09T02:12:34Z",
+  "inputs": "f8e18bea414155d890800f0c7595e04a822897802bb8ff3a150d74fcd7f9576a"
  }
 }
