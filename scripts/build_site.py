@@ -761,18 +761,25 @@ def _default_css(brand: dict) -> str:
     """The stylesheet of the state and conference pages, in the brand's own
     tokens. The company page brings its own (COPAGE_CSS)."""
     p_ = brand["palette"]
+    # links as TEXT in dark mode take the lifted badge (4.16:1 on the dark
+    # panel otherwise); a brand file without it keeps the fill colour
+    dark = brand["derived"]["dark"]
+    link_text = (dark.get("badge_text") or dark["badge"])["hex"]
     return f"""
  :root{{--bg:{p_['ice']['hex']};--panel:{p_['belly']['hex']};--ink:{p_['penguin']['hex']};
    --line:{p_['frost']['hex']};--dim:{brand['derived']['deep_fog']['hex']};
    --link:{p_['badge']['hex']};--beak:{p_['beak']['hex']};
+   --link-text:{p_['badge']['hex']};
    --on-link:{p_['ice']['hex']}}}
  @media (prefers-color-scheme:dark){{:root:not([data-theme=light]){{--bg:{p_['penguin']['hex']};--panel:#262E42;
    --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
    --link:{brand['derived']['dark']['badge']['hex']};
+   --link-text:{link_text};
    --on-link:{p_['penguin']['hex']}}}}}
  :root[data-theme=dark]{{--bg:{p_['penguin']['hex']};--panel:#262E42;
    --ink:{p_['ice']['hex']};--line:#39435C;--dim:#A8BCCA;
    --link:{brand['derived']['dark']['badge']['hex']};
+   --link-text:{link_text};
    --on-link:{p_['penguin']['hex']}}}
  *{{box-sizing:border-box}}
  body{{margin:0;background:var(--bg);color:var(--ink);
@@ -792,7 +799,7 @@ def _default_css(brand: dict) -> str:
  li:last-child{{border-bottom:0}}
  .role{{font-weight:600}}
  .meta{{color:var(--dim);font-size:13.5px}}
- a{{color:var(--link)}}
+ a{{color:var(--link-text)}}
  .note{{background:var(--panel);border:1px solid var(--line);padding:12px 14px;
    font-size:14px;color:var(--dim);margin:18px 0}}
  .cta{{display:inline-block;margin-top:8px;font-weight:600}}
@@ -903,7 +910,7 @@ CFPAGE_CSS = """
      Every colour is a token from the kit, so both themes come along. */
   .cfx{max-width:900px;margin:0 auto;padding:0 var(--space-4) 64px}
   .cfx-crumb{font-size:13px;color:var(--dim);margin:var(--space-6) 0 var(--space-4)}
-  .cfx-crumb a{color:var(--link);text-decoration:none}
+  .cfx-crumb a{color:var(--link-text);text-decoration:none}
   .cfx-crumb a:hover{text-decoration:underline}
   .cfx-eyebrow{display:flex;align-items:center;gap:var(--space-3);
     font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
@@ -931,7 +938,7 @@ CFPAGE_CSS = """
     text-decoration:none;border:1px solid var(--line);color:var(--ink)}
   .cfx-door.lead{background:var(--link);border-color:var(--link);
     color:var(--on-link)}
-  .cfx-door:hover{border-color:var(--link);color:var(--link)}
+  .cfx-door:hover{border-color:var(--link);color:var(--link-text)}
   .cfx-door.lead:hover{color:var(--on-link);opacity:.92}
   .cfx-sec{margin:0 0 var(--space-8)}
   .cfx-sec h2{font-size:11px;font-weight:700;letter-spacing:.08em;
@@ -952,17 +959,17 @@ CFPAGE_CSS = """
   .cfx-roster td{padding:9px var(--space-3) 9px 0;border-bottom:1px solid var(--line);
     vertical-align:top}
   .cfx-roster td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
-  .cfx-roster a{color:var(--link);text-decoration:none}
+  .cfx-roster a{color:var(--link-text);text-decoration:none}
   .cfx-roster a:hover{text-decoration:underline}
   .cfx-more{font-size:13px;color:var(--dim);margin-top:var(--space-3)}
   .cfx-org{font-size:14.5px;line-height:1.5}
-  .cfx-org a{font-weight:700;color:var(--link);text-decoration:none;font-size:16px}
+  .cfx-org a{font-weight:700;color:var(--link-text);text-decoration:none;font-size:16px}
   .cfx-org .meta{color:var(--dim);font-size:13px;margin-top:3px}
   .cfx-next{display:grid;gap:var(--space-2)}
   .cfx-next a{display:flex;justify-content:space-between;gap:var(--space-4);
     text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);
     padding:9px 0;font-size:14px}
-  .cfx-next a:hover .nm{color:var(--link)}
+  .cfx-next a:hover .nm{color:var(--link-text)}
   .cfx-next .when{color:var(--dim);font-size:13px;flex:none;
     font-variant-numeric:tabular-nums}
   .cfx-src{font-size:13px;color:var(--dim);line-height:1.6}
@@ -1009,7 +1016,7 @@ CFPAGE_CSS = """
   .cfp-roster{list-style:none;margin:0;padding:0;display:grid;gap:10px;
     grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
   .cfp-roster li{display:flex;align-items:center;gap:8px;font-size:14px}
-  .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent);
+  .cfp-roster em{font-style:normal;font-size:11px;color:var(--link-text);
     margin-left:auto}
   .cfp-note{margin:var(--space-3) 0 0;font-size:12.5px;color:var(--dim)}
   .cfp-rate .cfrate{border:0;padding:0}
@@ -1041,7 +1048,7 @@ CFPAGE_CSS = """
  .cfp-name{font-size:30px;padding-right:0}
  .cfp-sec h2{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
    text-transform:uppercase;color:var(--faint)}
- .cfp-roster a{color:var(--link)}
+ .cfp-roster a{color:var(--link-text)}
  .cfp-card .note{margin-top:var(--space-4)}
 """
 
@@ -1050,23 +1057,26 @@ CFPAGE_CSS = """
 COPAGE_CSS = """
  :root{--font-heading:"Archivo",system-ui,sans-serif;--font-body:"Archivo",system-ui,sans-serif;--radius:0px}
  :root{--bg:#E8F1F7;--panel:#FAF7F0;--line:#C9DCE8;--ink:#1F2536;--dim:#556F82;
-   --faint:#7C97AA;--accent:#0B57C4;--warn:#C1341F;--bad:#C1341F;--beak:#F5A623;--chip:#DCE9F1}
+   --faint:#7C97AA;--accent:#0B57C4;--warn:#C1341F;--bad:#C1341F;--beak:#F5A623;--chip:#DCE9F1;
+   --accent-text:#0B57C4}
  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
    --bg:#1F2536;--panel:#262E42;--line:#39435C;--ink:#E8F1F7;--dim:#A8BCCA;
-   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852}}
+   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852;
+   --accent-text:#76ABF9}}
  :root[data-theme=dark]{
    --bg:#1F2536;--panel:#262E42;--line:#39435C;--ink:#E8F1F7;--dim:#A8BCCA;
-   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852}
+   --faint:#7C97AA;--accent:#478EF5;--warn:#E46855;--bad:#E46855;--beak:#F5A623;--chip:#2E3852;
+   --accent-text:#76ABF9}
  :root{--hdr-bg:#1F2536;--hdr-ink:#E8F1F7;--hdr-mute:#9FB3C4;--hdr-line:#39435C}
  *{box-sizing:border-box}
  button,input,select,textarea,dialog,img,code{border-radius:var(--radius)}
  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--font-body)}
  h1,h2,h3,h4{font-family:var(--font-heading);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0}
- a{color:var(--accent);text-underline-offset:2px}
+ a{color:var(--accent-text);text-underline-offset:2px}
  .band{background:var(--hdr-bg);color:var(--hdr-ink);border-bottom:3px solid var(--beak);padding:14px 22px}
  .band a{color:var(--hdr-ink);text-decoration:none;font-weight:800;letter-spacing:.01em}
  .pay{font-variant-numeric:tabular-nums}
- .pay{color:var(--accent);font-weight:600;white-space:nowrap}
+ .pay{color:var(--accent-text);font-weight:600;white-space:nowrap}
  .paynone{color:var(--dim)}
  .copage{--c-bg:#FAF7F0;--c-rule:#C9DCE8;--c-stroke:#1F2536;--c-ink:#1F2536;--c-ink2:#556F82;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#C1341F;--c-link:#0B57C4}
  @media (prefers-color-scheme:dark){:root:not([data-theme=light]) .copage{--c-bg:#151B29;--c-rule:#2E3A50;--c-stroke:#4A5C71;--c-ink:#E8F1F7;--c-ink2:#A9C3D4;--c-ink3:#7C97AA;--c-accent:#C1341F;--c-accent-text:#E4634A;--c-link:#9CC3FF}}

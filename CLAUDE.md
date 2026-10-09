@@ -1950,6 +1950,20 @@ fires.
     says which of the three no-board states it is in, and is dated by
     `last_looked()` (the later of the probe and a person's capture); "none
     added in 30 days" only when somebody looked within 30. Dates format in UTC.
+  The low findings, second half (accessibility):
+  - **Text takes a text token**: `--accent-text` (never `--accent`, 4.16:1
+    on the dark panel), `--warn-text`, and `--dim-chip` for secondary text on
+    a `--chip` (`--dim` there is 4.26:1). The static pages' links take
+    `--link-text`. Derived values are in brand.json `derived`.
+    `check_text_on_tags_and_dark_cards_is_readable` measures them per theme.
+  - **A screen reader is told where it is**: the nav marks the view with
+    `aria-current="page"` (aria-selected means nothing on a button);
+    `viewTitle()` titles every view, role and company; opening a role or a
+    company moves focus to its h1 (`focusView`), and a redraw of the same
+    company gives it back; each filter chip names its filter and keeps
+    focus; the map canvas is named and has a list of states doing its one
+    action; views go h1, h2, h3; no nested <main>; the claim page's fields
+    have names and its messages are live. `check_every_view_is_announced_and_named`.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

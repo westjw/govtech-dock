@@ -53,6 +53,10 @@
             against --bg and falls to 4.16:1 on --panel and 3.58:1 on
             --chip, so the dark value is lifted again along the same hue. */
          --accent-text:#0B57C4;
+         /* secondary text on a --chip, and warn/bad as TEXT: --dim is 4.26:1
+            on --chip, and --warn 4.13:1 on the dark panel (launch audit 2;
+            data/brand.json derived) */
+         --dim-chip:#4E6678; --warn-text:#BC321E;
          /* 3a's lead card is the one nearest thing, and it earns that by
             INVERTING the ground. On Ice that is Penguin, exactly as the
             design draws it. In dark mode Penguin IS the ground, so a literal
@@ -65,6 +69,7 @@
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
     --beak:#F5A623; --chip:#2E3852; --accent-text:#76ABF9;
+    --dim-chip:#A8BCCA; --warn-text:#EE8676;
     /* Not inverted to white here. The header stays Penguin in both themes on
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
@@ -80,6 +85,7 @@
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7; --dim:#A8BCCA;
     --faint:#7C97AA; --accent:#478EF5; --warn:#E46855; --bad:#E46855;
     --beak:#F5A623; --chip:#2E3852; --accent-text:#76ABF9;
+    --dim-chip:#A8BCCA; --warn-text:#EE8676;
     /* Not inverted to white here. The header stays Penguin in both themes on
        purpose and a white card beside it would be the loudest thing on the
        page; lifting to --chip keeps the lead card first without shouting. */
@@ -283,7 +289,7 @@
        font:16px/1.5 var(--font-body)}
   h1,h2,h3,h4{font-family:var(--font-heading);font-weight:800;
     letter-spacing:-.02em;line-height:1.12;margin:0}
-  a{color:var(--accent);text-underline-offset:2px}
+  a{color:var(--accent-text);text-underline-offset:2px}
   /* every column of numbers lines up, which is half of why the deck's tables
      look the way they do */
   td,th,.bignum,.tabn,.pline,.pos,.urlbar code,.when,.pay,.cta .n,
@@ -341,7 +347,7 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
     color:var(--hdr-mute);cursor:pointer;border-bottom:2px solid transparent}
   nav button:hover{color:var(--hdr-ink)}
-  nav button[aria-selected=true]{color:var(--hdr-ink);border-bottom-color:var(--beak)}
+  nav button[aria-current=page]{color:var(--hdr-ink);border-bottom-color:var(--beak)}
   .tabn{font-variant-numeric:tabular-nums;color:var(--hdr-ink);font-size:13px}
 
   /* Circular actions, top right. Round is a deliberate exception to the
@@ -377,15 +383,15 @@
     padding:var(--space-4);width:min(320px,90vw);z-index:60;display:none;
     box-shadow:0 8px 28px rgba(31,37,54,.28)}
   .acct.open{display:block}
-  .acct h3{font-size:14px;margin:0 0 var(--space-2)}
+  .acct h2{font-size:14px;margin:0 0 var(--space-2)}
   .acct p{font-size:13px;color:var(--dim);line-height:1.5;margin:0 0 var(--space-3)}
-  .acct a.row{display:block;font-size:13.5px;font-weight:600;color:var(--accent);
+  .acct a.row{display:block;font-size:13.5px;font-weight:600;color:var(--accent-text);
     text-decoration:none;padding:var(--space-2) 0;border-top:1px solid var(--line)}
   .acct a.row:hover{color:var(--ink)}
   /* The company, on a role card: enough to place them, then the rest on ask. */
   .costory p{font-size:14px;line-height:1.6;color:var(--dim);margin:0 0 var(--space-3)}
   .costory .more p:last-child{margin-bottom:0}
-  .blowup{font:inherit;font-size:13px;font-weight:600;color:var(--accent);
+  .blowup{font:inherit;font-size:13px;font-weight:600;color:var(--accent-text);
     background:none;border:0;padding:var(--space-1) 0;cursor:pointer;
     border-bottom:1px solid transparent}
   .blowup:hover{border-bottom-color:var(--accent)}
@@ -403,13 +409,13 @@
   .hsearch button:hover{background:var(--accent)}
   .hsec{display:flex;align-items:baseline;gap:var(--space-3);
     margin:0 0 var(--space-4)}
-  .hsec h3{font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0}
-  .hsec a{font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;
+  .hsec h2{font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0}
+  .hsec a{font-size:13px;font-weight:600;color:var(--accent-text);text-decoration:none;
     margin-left:auto;cursor:pointer}
   .hsec a:hover{text-decoration:underline}
   .hrole{display:flex;gap:var(--space-3);align-items:center;padding:var(--space-3) 0;
     border-top:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
-  .hrole:hover .ht{color:var(--accent)}
+  .hrole:hover .ht{color:var(--accent-text)}
   .hrole .ht{font-weight:600;font-size:15px;line-height:1.3}
   .hrole .hm{font-size:13px;color:var(--dim);margin-top:2px}
   .hrole .hp{margin-left:auto;font-size:13.5px;font-weight:600;white-space:nowrap;
@@ -418,7 +424,7 @@
   .hsecs button{font:inherit;font-size:13.5px;padding:var(--space-2) var(--space-4);
     border:1px solid var(--line);background:var(--panel);color:var(--ink);
     cursor:pointer}
-  .hsecs button:hover{border-color:var(--accent);color:var(--accent)}
+  .hsecs button:hover{border-color:var(--accent);color:var(--accent-text)}
   .hsecs b{font-variant-numeric:tabular-nums;color:var(--dim);font-weight:600}
 
   /* ------------------------------------------------------------ conferences
@@ -460,7 +466,7 @@
   .cfs-pop{position:relative}
   .cfs-btn{font:inherit;font-size:14px;border:0;background:transparent;
     color:var(--ink);padding:0;text-align:left;cursor:pointer;width:100%}
-  .cfs-btn.on{font-weight:700;color:var(--accent)}
+  .cfs-btn.on{font-weight:700;color:var(--accent-text)}
   .cfpop{position:absolute;z-index:40;top:calc(100% + 14px);left:-8px;
     min-width:min(520px,86vw);background:var(--panel);
     border:1px solid var(--line);border-radius:14px;padding:var(--space-4);
@@ -471,10 +477,10 @@
     align-items:center;font:inherit;font-size:14px;text-align:left;
     background:none;border:0;color:var(--ink);cursor:pointer;
     padding:8px 10px;border-radius:8px;width:100%}
-  .cfpop-row:hover{color:var(--accent)}
+  .cfpop-row:hover{color:var(--accent-text)}
   .cfpop-row b{font-weight:600;color:var(--dim);font-variant-numeric:tabular-nums}
   .cfpop-row.on{background:var(--bg);font-weight:700}
-  .cfpop-row.on b{color:var(--accent)}
+  .cfpop-row.on b{color:var(--accent-text)}
   .cfpop-foot{display:flex;justify-content:space-between;align-items:center;
     margin-top:var(--space-3);padding-top:var(--space-3);
     border-top:1px solid var(--line)}
@@ -482,7 +488,7 @@
   .cfpop-clear,.cfpop-done{font:inherit;font-size:14px;background:none;
     border:0;cursor:pointer;padding:6px 10px}
   .cfpop-clear{color:var(--dim)}
-  .cfpop-done{color:var(--accent);font-weight:700}
+  .cfpop-done{color:var(--accent-text);font-weight:700}
   /* Anchored to its own right edge. The department picker sits mid-bar and
      can hang left; this one is the second-from-last field, so hanging left
      put it off the side of the window. */
@@ -491,13 +497,13 @@
   .cfstarbg{color:var(--line)}
   /* Not --beak. brand.json says Beak is never a text colour, and a star is a
      glyph however much it looks like an icon. */
-  .cfstarfg{position:absolute;left:0;top:0;overflow:hidden;color:var(--accent);
+  .cfstarfg{position:absolute;left:0;top:0;overflow:hidden;color:var(--accent-text);
     white-space:nowrap}
   .cfp-rate .cfstars button{font:inherit;font-size:13px;font-weight:700;
     border:1px solid var(--line);background:var(--panel);color:var(--ink);
     border-radius:999px;padding:6px 16px;margin-left:6px;cursor:pointer}
   .cfp-rate .cfstars button:hover:not(:disabled){border-color:var(--accent);
-    color:var(--accent)}
+    color:var(--accent-text)}
   .cfp-rate .cfstars button[aria-pressed=true]{background:var(--accent);
     border-color:var(--accent);color:#fff}
   .cfpop-near{min-width:min(460px,88vw);left:auto;right:-8px}
@@ -507,7 +513,7 @@
     align-items:baseline}
   .cfnear-from input{font:inherit;font-size:14px;font-weight:400;border:0;
     border-bottom:1px dashed var(--line);background:transparent;
-    color:var(--accent);width:11em}
+    color:var(--accent-text);width:11em}
   .cfnear-from input:focus{outline:none;border-bottom-color:var(--accent)}
   .cfnear-count{font-size:13px;color:var(--dim)}
   .cfpop-near input[type=range]{width:100%;accent-color:var(--accent);margin:0}
@@ -520,7 +526,7 @@
   .cfst{font:inherit;font-size:12px;font-weight:700;letter-spacing:.03em;
     border:1px solid var(--line);background:var(--bg);color:var(--dim);
     border-radius:999px;padding:3px 8px;cursor:pointer}
-  .cfst:hover{color:var(--accent);border-color:var(--accent)}
+  .cfst:hover{color:var(--accent-text);border-color:var(--accent)}
   .cfst.on{background:var(--accent);border-color:var(--accent);color:#fff}
   .cfchips{display:flex;align-items:center;gap:var(--space-3);
     flex-wrap:wrap;margin-bottom:var(--space-4)}
@@ -536,7 +542,7 @@
     border-left:1px solid var(--line);padding-left:var(--space-4)}
   .cfline1{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
   .cfline2{font-size:13px;color:var(--dim)}
-  .cfaway{color:var(--accent)}
+  .cfaway{color:var(--accent-text)}
   .cffaces{display:inline-flex}
   .cfface{display:grid;place-items:center;width:26px;height:26px;
     border-radius:50%;background:var(--ink);color:var(--panel);
@@ -547,7 +553,7 @@
     text-align:right;line-height:1.35}
   .cfopen{display:grid;place-items:center;width:32px;height:32px;flex:0 0 auto;
     border-radius:50%;border:1px solid var(--line);color:var(--dim)}
-  .cfrow:hover .cfopen{border-color:var(--accent);color:var(--accent)}
+  .cfrow:hover .cfopen{border-color:var(--accent);color:var(--accent-text)}
 
   /* the card grid */
   .cfgrid{display:grid;gap:var(--space-4);
@@ -559,7 +565,7 @@
   .cfcard:hover{border-color:var(--accent)}
   .cfc-top{display:flex;justify-content:space-between;font-size:12px;
     color:var(--dim)}
-  .cfc-away{color:var(--accent);font-weight:700}
+  .cfc-away{color:var(--accent-text);font-weight:700}
   .cfc-name{font-family:var(--font-heading);font-weight:800;font-size:18px;
     display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .cfdot{width:8px;height:8px;border-radius:50%;background:#E8A33D;
@@ -600,14 +606,14 @@
   .cfchip b{color:var(--ink)}
   .cfp-sec{background:var(--panel);border:1px solid var(--line);
     border-radius:14px;padding:var(--space-4)}
-  .cfp-sec h4{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
+  .cfp-sec h3{margin:0 0 var(--space-3);font-size:11px;letter-spacing:.09em;
     text-transform:uppercase;color:var(--faint);display:flex;
     justify-content:space-between;align-items:center}
   .cfp-all{font-size:12px;text-transform:none;letter-spacing:0;font-weight:700}
   .cfp-roster{list-style:none;margin:0;padding:0;display:grid;gap:10px;
     grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
   .cfp-roster li{display:flex;align-items:center;gap:8px;font-size:14px}
-  .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent);
+  .cfp-roster em{font-style:normal;font-size:11px;color:var(--accent-text);
     margin-left:auto}
   .cfp-note{margin:var(--space-3) 0 0;font-size:12.5px;color:var(--dim)}
   .cfp-rate .cfrate{border:0;padding:0}
@@ -652,7 +658,7 @@
   .cfcardx.lead .cfcardx-when{color:var(--cf-lead-ink)}
   .cfcardx-when i{width:8px;height:8px;border-radius:50%;background:var(--beak);
     display:inline-block;flex:none}
-  .cfcardx-mi{font-size:13px;font-weight:600;color:var(--accent)}
+  .cfcardx-mi{font-size:13px;font-weight:600;color:var(--accent-text)}
   .cfcardx.lead .cfcardx-mi{color:var(--cf-lead-ink);font-weight:700}
   .cfcardx-name{font-size:26px;font-weight:700;letter-spacing:-.025em;
     line-height:1.05}
@@ -661,7 +667,7 @@
   .cfcardx-foot{margin-top:auto;font-size:13px;color:var(--dim);
     display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap}
   .cfcardx.lead .cfcardx-foot{color:var(--cf-lead-dim)}
-  .cfcardx:hover .cfcardx-name{color:var(--accent)}
+  .cfcardx:hover .cfcardx-name{color:var(--accent-text)}
   .cfcardx.lead:hover .cfcardx-name{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--beak)}
   @media (max-width:900px){.cfspot-grid{grid-template-columns:1fr}}
 
@@ -673,12 +679,12 @@
      still has to live somewhere, so it groups last under its own honest
      heading rather than being dropped. */
   .cfblock{margin-bottom:var(--space-8)}
-  .cfblock h3{font-family:var(--font-heading);font-weight:800;font-size:16px;
+  .cfblock h2{font-family:var(--font-heading);font-weight:800;font-size:16px;
     letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
     margin:0 0 var(--space-3);padding-bottom:var(--space-2);
     border-bottom:1px solid var(--line);
     display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3)}
-  .cfblock h3 .n{font-weight:600;letter-spacing:0;text-transform:none;
+  .cfblock h2 .n{font-weight:600;letter-spacing:0;text-transform:none;
     font-size:13px;color:var(--dim)}
   /* Four columns: when, what, who, open. `align-items:center` rather than
      baseline - the date block is two lines and the name one, and baseline
@@ -691,7 +697,7 @@
      squeezed to nothing beside a long name and ran under the open button. */
   .cfnums{margin-left:auto;flex:0 1 auto;display:flex;align-items:center;
     gap:var(--space-3);justify-content:flex-end;min-width:0}
-  .cfrow:hover .cfname{color:var(--accent)}
+  .cfrow:hover .cfname{color:var(--accent-text)}
   .cfname{font-weight:600;font-size:15px}
   .cfflag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;
     font-weight:700;color:var(--bg);background:var(--dim);padding:1px 5px}
@@ -721,7 +727,7 @@
     font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer;
     border:1px solid var(--line);background:var(--panel);color:var(--dim)}
   .cfstars button:hover:not(:disabled),
-  .cfstars button:focus-visible{border-color:var(--accent);color:var(--accent)}
+  .cfstars button:focus-visible{border-color:var(--accent);color:var(--accent-text)}
   .cfstars button[aria-pressed="true"]{background:var(--accent);
     border-color:var(--accent);color:var(--bg)}
   .cfstars button:disabled{cursor:default;opacity:.55}
@@ -751,12 +757,12 @@
     border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
     background:var(--panel)}
   .cfsite:hover,.cfsite:focus-visible{border-color:var(--accent);
-    color:var(--accent)}
+    color:var(--accent-text)}
   .cfcal{color:var(--dim);text-decoration:none;font:inherit;font-size:12.5px;
     border:1px solid var(--line);padding:2px 7px;white-space:nowrap;
     background:var(--panel);cursor:pointer}
   .cfcal:hover,.cfcal:focus-visible{border-color:var(--accent);
-    color:var(--accent)}
+    color:var(--accent-text)}
   .cfmeta{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
   .cfcount{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;
     margin-left:auto;white-space:nowrap}
@@ -812,16 +818,16 @@
      arrow, never split silently into two events. */
   .calnav{display:flex;align-items:center;gap:var(--space-4);
     margin:var(--space-6) 0 var(--space-3)}
-  .calnav h3{margin:0;font-family:var(--font-heading);font-size:19px;
+  .calnav h2{margin:0;font-family:var(--font-heading);font-size:19px;
     font-weight:800;letter-spacing:-.02em;min-width:9.5em}
   .calnav button{font:inherit;font-size:16px;line-height:1;width:30px;
     height:30px;border:1px solid var(--line);background:var(--panel);
     color:var(--ink);cursor:pointer}
-  .calnav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .calnav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent-text)}
   .calnav button:disabled{opacity:.35;cursor:default}
   .calnav .n{font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums}
   .calnav .today{margin-left:auto;font-size:13px;background:none;border:0;
-    width:auto;height:auto;color:var(--accent);text-decoration:underline;
+    width:auto;height:auto;color:var(--accent-text);text-decoration:underline;
     cursor:pointer;padding:0}
   .calkey{display:flex;flex-wrap:wrap;gap:var(--space-4);font-size:12px;
     color:var(--dim);margin:0 0 var(--space-3)}
@@ -838,14 +844,14 @@
   .calweek-days span{font-size:12px;color:var(--dim);padding:6px 8px 2px;
     font-variant-numeric:tabular-nums;min-height:26px}
   .calweek-days span.out{color:var(--faint)}
-  .calweek-days span.is-today{color:var(--accent);font-weight:700}
+  .calweek-days span.is-today{color:var(--accent-text);font-weight:700}
   .calbars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
     gap:3px 0;padding:0 0 7px}
   .calbar{display:block;font-size:12px;line-height:1.25;padding:4px 7px;
     margin:0 2px;background:var(--chip);color:var(--ink);text-align:left;
     border:0;font:inherit;font-size:12px;cursor:pointer;overflow:hidden;
     text-overflow:ellipsis;white-space:nowrap;border-left:3px solid var(--line)}
-  .calbar:hover{border-left-color:var(--accent);color:var(--accent)}
+  .calbar:hover{border-left-color:var(--accent);color:var(--accent-text)}
   .calbar.near{border-left-color:var(--accent)}
   .calbar.now{border-left-color:var(--beak)}
   .calbar.past{opacity:.55}
@@ -865,7 +871,7 @@
   .calmon{margin:var(--space-6) 0 var(--space-2);display:flex;
     align-items:baseline;gap:var(--space-3);border-bottom:2px solid var(--line);
     padding-bottom:var(--space-2)}
-  .calmon h3{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em}
+  .calmon h2{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em}
   .calmon .n{font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums}
   .calrow{display:grid;grid-template-columns:104px 1fr auto;gap:var(--space-3);
     padding:7px 0;border-bottom:1px solid var(--line);align-items:baseline}
@@ -980,7 +986,7 @@
   .hcard{background:var(--panel);border:1px solid var(--line);
     padding:var(--space-6);text-decoration:none;color:var(--ink);display:block}
   .hcard:hover{border-color:var(--accent)}
-  .hcard h3{font-family:var(--font-heading);font-weight:800;font-size:20px;
+  .hcard h2{font-family:var(--font-heading);font-weight:800;font-size:20px;
     margin:0 0 var(--space-2)}
   .hcard p{font-size:14px;color:var(--dim);line-height:1.5;margin:0}
   .hcard .big{font-size:32px;font-weight:800;font-variant-numeric:tabular-nums;
@@ -1026,7 +1032,7 @@
   .filters select:focus,.pill:focus{outline:2px solid var(--accent);outline-offset:-2px}
   .pill[aria-pressed=true]{border-color:var(--ink)}
   .pill .v{color:var(--dim)}
-  .pill .v.on{color:var(--accent);font-weight:600}
+  .pill .v.on{color:var(--accent-text);font-weight:600}
   .seg{display:inline-flex;border:1px solid var(--line);background:var(--panel)}
   .seg button{font:inherit;font-size:13px;padding:var(--space-2) var(--space-3);border:0;
     background:none;color:var(--dim);cursor:pointer}
@@ -1054,7 +1060,7 @@
   .urlbar code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink);
     white-space:nowrap}
   .urlbar button{font:inherit;font-size:13px;font-weight:600;padding:var(--space-1) var(--space-3);
-    border:1px solid var(--line);background:var(--bg);color:var(--accent);cursor:pointer;
+    border:1px solid var(--line);background:var(--bg);color:var(--accent-text);cursor:pointer;
     white-space:nowrap;flex:none}
   .urlcap{font-size:13px;color:var(--dim);margin:var(--space-1) 0 0}
 
@@ -1067,10 +1073,10 @@
     margin:var(--space-3) 0 0}
   .fchips:empty{display:none}
   .fchip{display:inline-flex;align-items:center;font-size:13px;background:var(--chip);
-    color:var(--dim);padding-left:var(--space-3)}
+    color:var(--dim-chip);padding-left:var(--space-3)}
   .fchip button{font:inherit;font-size:14px;line-height:1;background:none;border:0;
-    color:var(--dim);cursor:pointer;padding:0 var(--space-2);height:26px}
-  .fchip button:hover{color:var(--bad)}
+    color:var(--dim-chip);cursor:pointer;padding:0 var(--space-2);height:26px}
+  .fchip button:hover{color:var(--warn-text)}
   .fclear{font:inherit;font-size:13px;background:none;border:0;color:var(--dim);
     cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:var(--space-1)}
   .fclear:hover{color:var(--ink)}
@@ -1080,7 +1086,7 @@
      what the filter did to the board rather than only what survived it. */
   .rhead{display:flex;gap:var(--space-3);align-items:baseline;flex-wrap:wrap;
     margin-top:var(--space-4);padding-bottom:var(--space-2)}
-  .rhead h3{font-size:20px}
+  .rhead h2{font-size:20px}
   .rhead .n{font-size:13px;color:var(--dim)}
   /* THE LIST IS CARDS (owner, 2026-09-27; see jobCardHTML). The system's
      rules still hold inside one: radius from the token (0), the 4px scale,
@@ -1175,11 +1181,11 @@
      reader is scanning for. Silence is an em dash in --faint, the same colour
      every other "not stated" on this board already uses - it is a state, not
      a warning, and it must never look like a zero. */
-  .pay{color:var(--accent);font-weight:600;white-space:nowrap}
+  .pay{color:var(--accent-text);font-weight:600;white-space:nowrap}
   .paynone{color:var(--dim)}
   /* the one click that puts the set-aside postings back */
-  .payall,.payoff{color:var(--accent);cursor:pointer;font-weight:600}
-  .colink{color:var(--accent);cursor:pointer;font-weight:600;white-space:nowrap}
+  .payall,.payoff{color:var(--accent-text);cursor:pointer;font-weight:600}
+  .colink{color:var(--accent-text);cursor:pointer;font-weight:600;white-space:nowrap}
   /* the two set-aside offers in the why-line are sentences, not labels, so
      they wrap - colink's nowrap would push the note past 375px */
   .cotext,.cowide{white-space:normal}
@@ -1210,8 +1216,8 @@
   .sub{color:var(--dim);font-size:13px}
   .kv{color:var(--dim);font-size:13px;margin:var(--space-1) 0 0}
   .chip{font-size:13px;padding:2px var(--space-2);background:var(--chip);
-    color:var(--dim);white-space:nowrap;display:inline-block}
-  .ok{color:var(--accent)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+    color:var(--dim-chip);white-space:nowrap;display:inline-block}
+  .ok{color:var(--accent-text)} .warn{color:var(--warn-text)} .bad{color:var(--warn-text)}
   .wrap{overflow-x:auto}
   .hint{font-size:13px;color:var(--dim);margin-top:var(--space-3);line-height:1.6}
   .barfill{display:inline-block;height:8px;background:var(--accent);
@@ -1262,7 +1268,7 @@
   .band{margin-top:var(--space-3);max-width:74ch;padding:var(--space-3);
     background:var(--chip);border-left:3px solid var(--line)}
   .bandline{font-size:14px}
-  .bandwhy{font-size:12.5px;color:var(--dim);margin-top:var(--space-2)}
+  .bandwhy{font-size:12.5px;color:var(--dim-chip);margin-top:var(--space-2)}
 
   /* the locations button reads as a count first and a control second: it
      sits on a card's place line, where a loud button would read as the
@@ -1306,7 +1312,7 @@
   .brands>.lbl{margin:0 0 var(--space-2)}
   .brand{margin-top:var(--space-6);border-left:1px solid var(--line);
     padding-left:var(--space-4)}
-  .brand h4{font-size:20px;letter-spacing:-.015em}
+  .brand h2{font-size:20px;letter-spacing:-.015em}
   .brand .bmeta{margin-top:var(--space-2);display:flex;gap:var(--space-3);
     align-items:baseline;flex-wrap:wrap;font-size:13px}
   .brand p{color:var(--dim);font-size:16px;line-height:1.6;max-width:72ch;
@@ -1353,12 +1359,12 @@
   .savebtn{flex:none;background:none;border:0;padding:var(--space-1);cursor:pointer;
     color:var(--dim);line-height:0}
   .savebtn:hover{color:var(--ink);background:var(--chip)}
-  .savebtn[aria-pressed=true]{color:var(--accent)}
+  .savebtn[aria-pressed=true]{color:var(--accent-text)}
   .more{padding:var(--space-3) var(--space-4);border-top:1px solid var(--line);
-    text-align:center;font-size:13px;font-weight:600;color:var(--accent);cursor:pointer}
+    text-align:center;font-size:13px;font-weight:600;color:var(--accent-text);cursor:pointer}
   .more:hover{background:var(--bg)}
   .sechead{display:flex;align-items:baseline;gap:var(--space-3);margin-top:var(--space-6)}
-  .sechead h3{font-size:20px}
+  .sechead h2{font-size:20px}
   .sechead .n{font-size:13px;color:var(--dim)}
 
   /* the company card's own table, and anything else that is a plain table */
@@ -1533,7 +1539,7 @@
  </div>
  <!-- What "an account" means here, said plainly, instead of a password box. -->
  <div class="acct" id="acctmenu" role="dialog" aria-label="Account and settings">
-   <h3 id="accttitle">Saved on this device</h3>
+   <h2 id="accttitle">Saved on this device</h2>
    <p id="acctbody"></p>
    <a class="row" href="/alerts" id="acctsync">Sync across devices →</a>
    <a class="row" href="/alerts">Email alerts and cadence →</a>
@@ -1712,6 +1718,7 @@ const ACTS=Object.freeze({
   openRole:el=>openRole(el.dataset.arg),
   alertOnCompany:el=>alertOnCompany(el.dataset.arg),
   coShowAll:el=>coShowAll(el.dataset.arg),
+  mapState:el=>mapToState(el.dataset.arg),
   reload:()=>location.reload(),
   nearChanged:()=>nearChanged(), milesChanged:()=>milesChanged(),
   famPill:()=>famPill(), secPill:()=>secPill(), payPill:()=>payPill(),
@@ -2614,7 +2621,7 @@ function roleView(id){
       ${p.source==="manual"?`<span class="chip">${esc(byHandText(p,o))}</span>`
         :p.source==="hq"?'<span class="chip">posted on SLED HQ</span>':""}</p>`:""}
 
-    <h3 style="font-size:13px;margin-top:22px">Before you apply</h3>
+    <h2 style="font-size:13px;margin-top:22px">Before you apply</h2>
     ${(()=>{
       const k=ATSHOW[(o.ats||"").toLowerCase()];
       if(k)return `<div class="kv" style="max-width:74ch">
@@ -2662,7 +2669,7 @@ function roleView(id){
       answer this run &mdash; these roles are what we read last time, not confirmed
       today</span></div>`:""}
 
-    ${siblings.length?`<h3 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h3>
+    ${siblings.length?`<h2 style="font-size:13px;margin-top:22px">Also open at ${esc(p.company)}</h2>
       <div class="list" id="r-sibs"></div>`:""}`;
   wireBack();
   const blow=$("#r-blow"), more=$("#r-more");
@@ -2715,6 +2722,7 @@ function openRole(id){
     location.pathname+"?role="+encodeURIComponent(id));
   render();
   window.scrollTo(0,0);
+  focusView();
 }
 function backToBoard(){
   ROLE=null;
@@ -3260,7 +3268,7 @@ function jobs(){
         duplicated: two places showing the same count is two places to drift. */""}
 
   <div class="fchips" id="j-chips"></div>
-  <div class="rhead"><h3 id="j-h">All quota-carrying roles</h3>
+  <div class="rhead"><h2 id="j-h">All quota-carrying roles</h2>
     <div class="n" id="j-n" role="status"></div>
     <button class="applybtn" type="button" id="j-savesearch"
       data-click="saveSearch">save this search</button></div>
@@ -3492,7 +3500,7 @@ function emptyJobs(quotaOnly,fam,where,setAside,q,noQuota,noWhere){
   if(quotaOnly&&fam&&fam!=="gtm"&&noQuota)
     return `<div class="empty">${GHOST}No <strong>${esc(FAM[fam]||fam)}</strong> roles carry a
       quota, which is expected: quota-carrying means a sales number.<br>
-      <span id="j-relax" tabindex="0" role="button" style="color:var(--accent);cursor:pointer;font-weight:600">
+      <span id="j-relax" tabindex="0" role="button" style="color:var(--accent-text);cursor:pointer;font-weight:600">
         Show all ${noQuota.toLocaleString()} ${esc(FAM[fam]||fam)} roles instead &rarr;</span></div>`;
   if(where&&noWhere)
     return `<div class="empty">${GHOST}Nothing matches that work mode. ${noWhere.toLocaleString()}
@@ -4013,7 +4021,7 @@ function savedView(){
      you already found. */
   const srch=searchesAll();
   const searchHTML=!srch.length?"":`
-    <div class="sechead"><h3>Saved searches</h3>
+    <div class="sechead"><h2>Saved searches</h2>
       <div class="n">${srch.length} on this device</div></div>
     <div class="list">${srch.map(x=>`
       <div class="row">
@@ -4025,7 +4033,7 @@ function savedView(){
       </div>`).join("")}</div>`;
 
   const cosHTML=!cos.length?"":`
-    <div class="sechead"><h3>Saved companies</h3>
+    <div class="sechead"><h2>Saved companies</h2>
       <div class="n">${cos.length} ${cos.length===1?"company":"companies"}</div></div>
     <div class="list" id="s-cos"></div>`;
   /* THE COUNT IS PRINTED WHETHER OR NOT THE LIST IS. A section that vanishes
@@ -4035,7 +4043,7 @@ function savedView(){
      bring them back. */
   const seeGone=showGone();
   const goneHTML=!gonelist.length?"":`
-    <div class="sechead"><h3>No longer listed</h3>
+    <div class="sechead"><h2>No longer listed</h2>
       <div class="n">${gonelist.length} ${gonelist.length===1?"role":"roles"} the
         board stopped carrying &middot; kept because you may have applied
         <button class="pill" type="button" id="s-togglegone"
@@ -4045,7 +4053,7 @@ function savedView(){
           ></button></div></div>`
     + (seeGone?`<div class="list" id="s-gone"></div>`:"");
   $("#view").innerHTML=`<h1 class="vh">Saved</h1>`+searchHTML+cosHTML
-    + `<div class="sechead"><h3>Saved roles</h3>
+    + `<div class="sechead"><h2>Saved roles</h2>
       <div class="n">${open.length} ${linked?"kept with your subscription":"kept on this device"}${
         open.length&&nap<open.length?` &middot; ${nap} still to apply to`:""}</div></div>`
     + bar + exportHTML
@@ -4756,7 +4764,7 @@ function jobCardHTML(g){
   return `
     <div class="jc-logo" aria-hidden="true">${tileHTML(p.company,p.company_id,"tile")}</div>
     <div class="jc-main">
-      <h4 class="jc-title"><a href="?role=${encodeURIComponent(p.id)}">${esc(p.title)}</a></h4>
+      <h3 class="jc-title"><a href="?role=${encodeURIComponent(p.id)}">${esc(p.title)}</a></h3>
       <div class="jc-co">${esc(p.company)}</div>
       ${lines.join("")}
     </div>
@@ -4921,18 +4929,26 @@ function chipDefs(){
       history.replaceState({},"","?"+u.toString());}});
   return out;
 }
+function chipFocus(i){
+  const bs=[...($("#j-chips")?.querySelectorAll(".fchip button")||[])];
+  (bs[Math.min(i,bs.length-1)]||$("#j-q"))?.focus();
+}
 function drawChips(){
   const host=$("#j-chips"); if(!host)return;
   const defs=chipDefs();
   host.textContent="";
   if(!defs.length)return;
-  defs.forEach(d=>{
+  defs.forEach((d,i)=>{
     const c=document.createElement("span");
     c.className="fchip";
-    c.innerHTML=`<span>${d.label}</span><button type="button"
-      aria-label="remove this filter">&times;</button>`;
+    c.innerHTML=`<span>${d.label}</span><button type="button">&times;</button>`;
+    /* EACH BUTTON NAMES ITS FILTER, and focus lands on the chip that takes
+       the removed one's place. Every button was "remove this filter", and
+       removing one dropped focus to <body> (launch audit 2, 2026-10-09). */
+    const b=c.querySelector("button");
+    b.setAttribute("aria-label",`Remove filter: ${c.querySelector("span").textContent.trim()}`);
     // toggleQuota and setWhere redraw on their own; a select does not
-    c.querySelector("button").onclick=()=>{d.clear();refilter()};
+    b.onclick=()=>{d.clear();refilter();chipFocus(i);};
     host.appendChild(c);
   });
   const all=document.createElement("button");
@@ -4941,6 +4957,7 @@ function drawChips(){
     // clear() may itself redraw, so collect first and draw once at the end
     chipDefs().forEach(d=>d.clear());
     refilter();
+    $("#j-q")?.focus();
   };
   host.appendChild(all);
 }
@@ -4991,7 +5008,7 @@ function companies(){
     </div>
   </div>
 
-  <div class="sechead"><h3 id="c-h">Hiring now</h3><div class="n" id="c-n" role="status"></div></div>
+  <div class="sechead"><h2 id="c-h">Hiring now</h2><div class="n" id="c-n" role="status"></div></div>
   ${/* The search says out loud how it read the query. That sentence IS the
        feature: a bounded concept map is only better than substring matching
        if a person can see which bucket it chose and disagree with it. */""}
@@ -5052,6 +5069,9 @@ function goTab(t,u=null){
      cleared it, so the filters of an earlier address came back on the next
      click of the Companies tab (review of launch audit 2) */
   ROLE=null; CO=null; tab=t; PENDING_URL=u;
+  // leaving the card: the next company opened, even the same one, is a new
+  // visit (its focus and its expanded groups start fresh)
+  CO_DRAWN=null;
   PUSH_NEXT=true; render(); writeUrl(); PENDING_URL=null;
 }
 /* ONE WAY ONTO THE COMPANIES LIST - a tab, a breadcrumb, "Browse all" - and
@@ -5462,10 +5482,10 @@ function drawCos(){
             ?`posts on ${esc((o.posts_at.label)||POSTS_AT_LABEL[o.posts_at.where]||"another site")}`
             :noBoardShort(o)}</div>`
         :unreadable
-        ?`<div class="when" style="color:var(--warn)">board not readable</div>`
+        ?`<div class="when" style="color:var(--warn-text)">board not readable</div>`
         :o.quota_roles
           ?`<div style="text-align:right;white-space:nowrap">
-              <div style="font-size:17px;font-weight:700;color:var(--accent);
+              <div style="font-size:17px;font-weight:700;color:var(--accent-text);
                 font-variant-numeric:tabular-nums">${o.quota_roles}</div>
               <div style="font-size:11px;color:var(--dim)">carrying a number</div></div>`
           :o.open_roles
@@ -5681,7 +5701,7 @@ function brandSection(o){
       const rec=b.record?D.organizations.find(x=>x.id===b.record):null;
       const site=safeUrl(b.website);
       return `<div class="brand" id="brand-${i}">
-        <h4>${esc(b.name)}</h4>
+        <h2>${esc(b.name)}</h2>
         <div class="bmeta">
           ${site?`<a href="${esc(site)}" target="_blank" rel="noopener"
             style="font-weight:600">${esc(b.website.replace(/^https?:\/\//,"")
@@ -6059,7 +6079,11 @@ function co(id,fromUrl){
   /* a group opened on one company stays open only on that company. Keyed on
      the company last DRAWN: popstate sets CO from the url before it calls
      co(CO,true), so CO!==id never fired on Back (second review, 10-09). */
-  if(CO_DRAWN!==id) CO_OPEN_GROUPS=new Set();
+  const fresh=CO_DRAWN!==id;
+  // a redraw of the same card (its write-up arriving, a group opening)
+  // replaces the heading that had focus; it gets it back below
+  const hadFocus=!fresh&&!!document.activeElement?.closest?.("#view h1");
+  if(fresh) CO_OPEN_GROUPS=new Set();
   CO_DRAWN=id;
   CO=id;
   if(!fromUrl){
@@ -6292,11 +6316,15 @@ function co(id,fromUrl){
       </div>
     </div>
     ${strip}
-    <div class="cobody"><main class="cocol">${about}${news}${roles}</main>${rail}</div>
+    <div class="cobody"><div class="cocol">${about}${news}${roles}</div>${rail}</div>
   </div></div>`;
 
   const sv=$("#cosave");
   if(sv) sv.onclick=()=>{ toggleSaveCompany(o); co(id,true); };
+  // the title names the company, and a company the reader just opened gets
+  // focus on its name (a redraw of the same one does not move it)
+  document.title=`${o.name} · SLED JOBS`;
+  if((fresh&&!fromUrl)||hadFocus)focusView();
 }
 
 /* Saving a COMPANY, not a role. Same store and the same sync, keyed "co:<id>"
@@ -6350,16 +6378,16 @@ function intel(){
            tab's: a board exists and its roles cannot be read. -->
       <div class="card"><div class="bignum">${unreadableCount().toLocaleString()}</div><div class="lbl">boards unreadable</div></div>
     </div>
-    <h3 style="font-size:13px">Where the hiring is, by function</h3>
+    <h2 style="font-size:13px">Where the hiring is, by function</h2>
     ${fams.map(([f,n])=>`<div class="kv"><span style="display:inline-block;width:34px;text-align:right">${n}</span>
       <span class="barfill" style="width:${Math.max(6,Math.round(n/maxF*300))}px"></span>
       ${esc(FAM[f]||f)}</div>`).join("")}
-    <h3 style="font-size:13px;margin-top:20px">By sector</h3>
+    <h2 style="font-size:13px;margin-top:20px">By sector</h2>
     ${secs.map(([s,n])=>`<div class="kv"><span style="display:inline-block;width:34px;text-align:right">${n}</span>
       <span class="barfill" style="width:${Math.max(6,Math.round(n/secs[0][1]*300))}px"></span>
       ${esc(s)}</div>`).join("")}
     ${t.pay_stated_postings===undefined?"":`
-    <h3 style="font-size:13px;margin-top:20px">What we know about pay</h3>
+    <h2 style="font-size:13px;margin-top:20px">What we know about pay</h2>
     <div class="kv"><strong>${t.pay_stated_postings.toLocaleString()}</strong> of
       ${t.postings.toLocaleString()} postings state a figure${
       t.pay_source?` (${Object.entries(t.pay_source).map(([k,n])=>
@@ -6372,13 +6400,13 @@ function intel(){
       board: a posting we never read may state pay we have not seen, and a posting that states
       nothing is not a posting that pays nothing. Neither number supports &ldquo;the rest pay
       less&rdquo;.</p>`}
-    <h3 style="font-size:13px;margin-top:20px">Company phase, of the ${readOrgs.length.toLocaleString()} boards we read</h3>
+    <h2 style="font-size:13px;margin-top:20px">Company phase, of the ${readOrgs.length.toLocaleString()} boards we read</h2>
     ${Object.entries(byPhase).sort((a,b)=>b[1]-a[1]).map(([k,n])=>
       `<div class="kv"><strong>${n}</strong> ${esc(k)}</div>`).join("")}
     <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:20px">
-      <div><h3 style="font-size:13px">Biggest GTM pushes</h3>
+      <div><h2 style="font-size:13px">Biggest GTM pushes</h2>
         <div id="i-gtm"></div></div>
-      <div><h3 style="font-size:13px">Biggest engineering builds</h3>
+      <div><h2 style="font-size:13px">Biggest engineering builds</h2>
         <div id="i-eng"></div></div>
     </div>
     <p class="hint">Hiring composition is the signal. A company hiring mostly engineers is
@@ -6467,7 +6495,7 @@ function how(){
        "A finished state. Small vendors hire on LinkedIn or by email."],
       ["unchecked","never probed, or probed before the current rules existed",""]];
     const tot=Object.values(c).reduce((a,b)=>a+b,0)||1;
-    return `<div class="sechead"><h3>What we can actually read</h3></div>
+    return `<div class="sechead"><h2>What we can actually read</h2></div>
       <div class="wrap"><table><thead><tr><th>state</th><th class="num">companies</th>
       <th class="num">share</th><th>what it means</th></tr></thead><tbody>
       ${rows.filter(([k])=>c[k]!=null).map(([k,what,note])=>
@@ -6482,7 +6510,7 @@ function how(){
       it had 839 of 1,722 boards monitored for months.</p>`;
   })()}
 
-  <div class="sechead"><h3>Where a row comes from</h3></div>
+  <div class="sechead"><h2>Where a row comes from</h2></div>
   <p class="hint" style="max-width:80ch">Every posting is read from the company&rsquo;s own
     job board &mdash; a Greenhouse, Lever, Ashby or Workday API where they have one, the
     careers page itself where they do not. ${n(bySrc.ats)} of the ${n(D.totals.postings)}
@@ -6491,7 +6519,7 @@ function how(){
     guessing. ${aggNote()} The apply link goes straight out to the
     employer; this board hosts no application and asks you for no account.</p>
 
-  <div class="sechead"><h3>What we cannot see, and why that is on the page</h3></div>
+  <div class="sechead"><h2>What we cannot see, and why that is on the page</h2></div>
   <p class="hint" style="max-width:80ch"><strong>A page scan never proves absence.</strong>
     ${n(noBoard)} of the companies here have no public job board we could find,
     ${n(blocked)} have a site that turned our reader away before it could look,
@@ -6503,7 +6531,7 @@ function how(){
     genuinely boardless &mdash; small vendors hiring on LinkedIn or by email &mdash; which
     leaves the rest as boards nobody has found yet.</p>
 
-  <div class="sechead"><h3>What each card says</h3></div>
+  <div class="sechead"><h2>What each card says</h2></div>
   <p class="hint" style="max-width:80ch"><strong>First seen</strong> is the day this board
     first read the posting, not the day the employer posted it &mdash; we are not told
     that. This board&rsquo;s own history starts
@@ -6521,7 +6549,7 @@ function how(){
     None of them means the job pays nothing, and the pay filter sets uncomparable postings
     aside in the open rather than deleting them.</p>
 
-  <div class="sechead"><h3>How a company gets on the list</h3></div>
+  <div class="sechead"><h2>How a company gets on the list</h2></div>
   <p class="hint" style="max-width:80ch">Anyone can send one in with the button at the top
     of the page. A bot reads the site and proposes a sector and a job board; a person
     reviews it before it appears. A submission is a claim, not a fact, and nothing reaches
@@ -6541,10 +6569,10 @@ function how(){
 
         Built from the board rather than listed by hand, so a state that
         gains or loses its last posting appears or goes on its own. */""}
-  <h3 style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  <h2 style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--dim);margin:var(--space-8) 0 var(--space-3);
     border-bottom:1px solid var(--line);padding-bottom:var(--space-2)">
-    Pages that need no JavaScript</h3>
+    Pages that need no JavaScript</h2>
   <p class="hint" style="max-width:80ch">One page per state, per company and
     per conference, rebuilt nightly and readable with scripts off &mdash; which
     is also how most crawlers other than Google read a site.</p>
@@ -6995,7 +7023,7 @@ function home(){
   </div>
 
   ${newest.length?`
-  <div class="hsec"><h3>Newest sales roles</h3>
+  <div class="hsec"><h2>Newest sales roles</h2>
     <a id="h-all" role="button" tabindex="0">All ${qOpenings.toLocaleString()} roles &rarr;</a></div>
   <div style="margin-bottom:var(--space-8)">
     ${newest.map(r=>{
@@ -7011,7 +7039,7 @@ function home(){
   </div>`:""}
 
   ${secs.length?`
-  <div class="hsec"><h3>By what they sell into</h3></div>
+  <div class="hsec"><h2>By what they sell into</h2></div>
   <div class="hsecs">
     ${secs.map(([name,n])=>`<button type="button" data-sec="${esc(name)}">
       ${esc(name)} <b>${n}</b></button>`).join("")}
@@ -7025,7 +7053,7 @@ function home(){
          same screen. -->
     <a class="hcard" id="h-jobs" href="#">
       <span class="big">${qOpenings.toLocaleString()}</span>
-      <h3>Sales roles</h3>
+      <h2>Sales roles</h2>
       <p>Quota-carrying roles at state and local government technology
          companies, leaving out those we placed outside the US. Advertised in
          ${q.length.toLocaleString()} postings.
@@ -7033,7 +7061,7 @@ function home(){
     </a>
     <a class="hcard" id="h-cos" href="#">
       <span class="big">${orgs.length.toLocaleString()}</span>
-      <h3>Companies</h3>
+      <h2>Companies</h2>
       <p>The whole map, hiring or not, with what each one sells and where
          their board is — or that they have none we could find.</p>
     </a>
@@ -7668,8 +7696,8 @@ function cfNear(){
 }
 
 function cfBlockHTML(b,list){
-  return `<div class="cfblock"><h3>${esc(b)}
-    <span class="n">${list.length} event${list.length===1?"":"s"}</span></h3>${
+  return `<div class="cfblock"><h2>${esc(b)}
+    <span class="n">${list.length} event${list.length===1?"":"s"}</span></h2>${
     list.map(r=>cfRowHTML(r)).join("")}</div>`;
 }
 
@@ -7856,10 +7884,10 @@ function cfPanelHTML(r){
   return `<div class="cfp-card" role="dialog" aria-modal="true"
                aria-label="${esc(r.name)}">
     <button type="button" class="cfp-x" data-cfclose aria-label="Close">&times;</button>
-    <h3 class="cfp-name">${esc(r.name)}
+    <h2 class="cfp-name">${esc(r.name)}
       ${r.flagship?`<span class="cfflag">Flagship</span>`:""}
       ${isNow(r.dates)?`<span class="cfnow">On now</span>`:""}
-      ${isPast(r.dates)?`<span class="cfpast">past edition</span>`:""}</h3>
+      ${isPast(r.dates)?`<span class="cfpast">past edition</span>`:""}</h2>
     <p class="cfp-org">${esc([r.department,r.block].filter(Boolean).join(" \u00b7 "))}</p>
     <p class="cfp-when">${bits.join(" &middot; ")}</p>
 
@@ -7882,9 +7910,9 @@ function cfPanelHTML(r){
     </div>
 
     <section class="cfp-sec">
-      <h4>Who has a booth
+      <h3>Who has a booth
         ${roster.length>8?`<a href="#" data-cfall="${esc(r.tag)}"
-           class="cfp-all">All ${roster.length} &rarr;</a>`:""}</h4>
+           class="cfp-all">All ${roster.length} &rarr;</a>`:""}</h3>
       ${roster.length?`<ul class="cfp-roster">${
         roster.slice(0,8).map(o=>`<li><span class="cfface">${
           esc(cfInitials(o.name))}</span><span>${esc(o.name)}</span>${
@@ -7898,7 +7926,7 @@ function cfPanelHTML(r){
     </section>
 
     <section class="cfp-sec cfp-rate">
-      <h4>Worth it?</h4>
+      <h3>Worth it?</h3>
       <div class="cfrate" data-rate="${esc(r.tag)}">
         <span class="cfscore" data-score>&mdash;</span>
         <span class="cfvotes" data-votes>&nbsp;</span>
@@ -8422,7 +8450,7 @@ function cfCalendarHTML(rows){
     out+=`<div class="calnav">
       <button type="button" data-calstep="-1" ${i<=0?"disabled":""}
         aria-label="Previous month">&lsaquo;</button>
-      <h3>${CAL_MONTH_NAME[at.getMonth()]} ${at.getFullYear()}</h3>
+      <h2>${CAL_MONTH_NAME[at.getMonth()]} ${at.getFullYear()}</h2>
       <button type="button" data-calstep="1" ${i>=ord.length-1?"disabled":""}
         aria-label="Next month">&rsaquo;</button>
       <span class="n">${inMonth.length} event${inMonth.length===1?"":"s"}${
@@ -8449,8 +8477,8 @@ function cfCalendarHTML(rows){
       lastKey=key;
       const n=dated.filter(x=>
         `${x.v.start.getFullYear()}-${x.v.start.getMonth()}`===key).length;
-      out+=`<div class="calmon"><h3>${CAL_MONTH_NAME[d.getMonth()]}
-        ${d.getFullYear()}</h3><span class="n">${n} event${n===1?"":"s"}</span></div>`;
+      out+=`<div class="calmon"><h2>${CAL_MONTH_NAME[d.getMonth()]}
+        ${d.getFullYear()}</h2><span class="n">${n} event${n===1?"":"s"}</span></div>`;
     }
     const past=d<today;
     /* The two numbers a seller actually wants beside an event: how many
@@ -8781,6 +8809,11 @@ function mapView(){
   });
   const placed=placedIds.size;
   const unplaced=officeIds.size-placedIds.size;
+  // openings with an office, per state: what a click on any of its cities opens
+  const st={};
+  D.postings.forEach(p=>{ const s=p.office&&p.office.state;
+    if(s)(st[s]=st[s]||new Set()).add(p.opening_id); });
+  const byState=Object.entries(st).map(([k,v])=>[k,v.size]).sort((a,b)=>b[1]-a[1]);
   $("#view").innerHTML=`
   <div class="phead">
     <h1 class="ptitle">Where the desks are</h1>
@@ -8788,9 +8821,20 @@ function mapView(){
       &middot; <strong>${placed.toLocaleString()}</strong> roles placed on the map</p>
   </div>
   <div style="border:1px solid var(--line);background:var(--panel);padding:10px">
-    <canvas id="mapcv" style="width:100%;height:min(62vh,560px);display:block;
-      cursor:crosshair"></canvas>
+    <canvas id="mapcv" role="img" aria-label="Map of the ${rows.length.toLocaleString()} cities where these roles have an office. The list of states below opens the same filtered board."
+      style="width:100%;height:min(62vh,560px);display:block;cursor:crosshair"></canvas>
   </div>
+  ${/* THE MAP'S ONE ACTION, WITHOUT A MOUSE. The canvas had no name, no
+        fallback and a click-only handler, so a screen reader found nothing
+        and a keyboard could not pick a city (launch audit 2, 2026-10-09).
+        These buttons do what a click on a city does. */""}
+  <details class="mapstates" style="margin-top:10px">
+    <summary>The same, as a list of states</summary>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+      ${byState.map(([st,n])=>`<button type="button" class="pill" data-click="mapState"
+        data-arg="${esc(st)}">${esc(st)} <span class="v">${n.toLocaleString()}</span></button>`).join("")}
+    </div>
+  </details>
   <p class="hint" style="max-width:80ch;margin-top:10px">
     Every city a posting names an office in, sized by how many roles sit there.
     There is no state outline underneath: these are the offices, and the country
@@ -8820,9 +8864,12 @@ function mapView(){
     const b=cv.getBoundingClientRect();
     const h2=mapHit(rows,e.clientX-b.left,e.clientY-b.top,b.width,b.height);
     if(!h2)return;
-    tab="jobs";PENDING_URL=new URLSearchParams({tab:"jobs",off:h2.state});
-    PUSH_NEXT=true; render();
+    mapToState(h2.state);
   });
+}
+function mapToState(state){
+  tab="jobs";PENDING_URL=new URLSearchParams({tab:"jobs",off:state});
+  PUSH_NEXT=true; render();
 }
 
 const VIEWS=Object.assign(Object.create(null),
@@ -8869,7 +8916,33 @@ function render(){
      The tab strip is repainted either way, so the way out is a tab rather
      than the address bar. */
   try{ VIEWS[tab](); }catch(e){ renderError(e); }
-  [...$("#tabs").children].forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));
+  /* aria-current, not aria-selected: aria-selected means nothing on a plain
+     button, so a screen reader was never told which view is current */
+  [...$("#tabs").children].forEach(b=>{
+    if(b.dataset.t===tab)b.setAttribute("aria-current","page");
+    else b.removeAttribute("aria-current");
+  });
+  document.title=viewTitle();
+}
+/* THE PAGE TITLE FOLLOWS THE VIEW. It stayed "SLED JOBS - govtech sales
+   roles" on every role and company, so a screen reader announced nothing
+   when one opened and every tab in a browser read the same (launch audit 2,
+   2026-10-09). The middleware gives a shared link the same words. */
+const VIEW_TITLES={jobs:"Sales jobs in govtech",companies:"Govtech companies",
+  conferences:"Govtech conferences",map:"Where the desks are",
+  intel:"Govtech market intel",saved:"Saved",how:"How listings get here"};
+function viewTitle(){
+  if(tab==="jobs"&&ROLE){
+    const p=D.postings.find(x=>x.id===ROLE)||D.postings.find(x=>x.id.startsWith(ROLE+"::"));
+    return (p?`${p.title} at ${p.company}`:"Role no longer listed")+" · SLED JOBS";
+  }
+  return VIEW_TITLES[tab]?`${VIEW_TITLES[tab]} · SLED JOBS`:"SLED JOBS — govtech sales roles";
+}
+/* Opening a role or a company moves focus to its heading, so the reader
+   lands on what they opened rather than on <body>. Not at boot. */
+function focusView(){
+  const h=$("#view h1"); if(!h)return;
+  h.setAttribute("tabindex","-1"); h.focus({preventScroll:true});
 }
 /* The two failures this page can have at boot, kept apart on purpose. */
 function loadError(e){

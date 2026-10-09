@@ -21,20 +21,24 @@
   :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536;
          --dim:#556F82; --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F;
          --beak:#F5A623; --chip:#DCE9F1; --radius:0;
+         /* accent and warn as TEXT, and text ON the accent: #478EF5 is 4.16:1
+            as text on the dark panel and 3.04:1 under Belly text (launch
+            audit 2, 2026-10-09; data/brand.json derived) */
+         --accent-text:#0B57C4; --warn-text:#C1341F; --on-accent:#FAF7F0;
          --hdr-bg:#1F2536; --hdr-ink:#E8F1F7; --hdr-rule:#F5A623; --hdr-dim:#7C97AA; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
     --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
-    --chip:#2E3852; }}
+    --chip:#2E3852; --accent-text:#76ABF9; --warn-text:#EE8676; --on-accent:#1F2536; }}
   :root[data-theme=dark]{
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
     --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
-    --chip:#2E3852; }
+    --chip:#2E3852; --accent-text:#76ABF9; --warn-text:#EE8676; --on-accent:#1F2536; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 Archivo,"Helvetica Neue",Arial,sans-serif}
   input,textarea,select,button{border-radius:var(--radius);font:inherit}
-  a{color:var(--accent);text-underline-offset:2px}
+  a{color:var(--accent-text);text-underline-offset:2px}
   .band{background:var(--hdr-bg);color:var(--hdr-ink);
         border-bottom:3px solid var(--hdr-rule);padding:11px 22px;
         display:flex;align-items:center;gap:11px}
@@ -55,11 +59,11 @@
   textarea{min-height:96px;resize:vertical}
   .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
   button{padding:9px 16px;border:1px solid var(--accent);background:var(--accent);
-         color:#FAF7F0;font-weight:600;cursor:pointer}
-  button.plain{background:transparent;color:var(--accent)}
+         color:var(--on-accent);font-weight:600;cursor:pointer}
+  button.plain{background:transparent;color:var(--accent-text)}
   button:disabled{opacity:.5;cursor:default}
   .msg{font-size:13.5px;margin-top:9px}
-  .msg.bad{color:var(--warn)}
+  .msg.bad{color:var(--warn-text)}
   .note{color:var(--dim);font-size:13px}
   .flag{border-left:3px solid var(--beak);padding:9px 12px;background:var(--chip);
         font-size:13.5px;margin:12px 0}
@@ -67,11 +71,11 @@
   .tabs{display:flex;gap:2px;flex-wrap:wrap;margin-bottom:14px}
   .tabs button{background:var(--panel);color:var(--ink);border:1px solid var(--line);
     font-weight:500;padding:8px 13px}
-  .tabs button[aria-selected=true]{background:var(--ink);color:var(--bg);
+  .tabs button[aria-current=true]{background:var(--ink);color:var(--bg);
     border-color:var(--ink);font-weight:600}
   .who{font-size:13px;color:var(--dim);margin:0 0 18px}
   dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
-  dt{color:var(--faint)}
+  dt{color:var(--dim)}
   [hidden]{display:none!important}
   @media (max-width:560px){.wrap{padding:22px 16px 60px}h1{font-size:22px}}
 </style>
@@ -100,7 +104,7 @@
       company's own domain. That is the whole proof — we do not ask for a
       password, and we never store one.</p>
     <div class="row"><button id="go">Send me the link</button></div>
-    <div class="msg" id="m1"></div>
+    <div class="msg" id="m1" role="status"></div>
   </div>
   <div class="flag">Confirm your address, then we check you over by hand &mdash;
     usually a day or two. After that your description, your write-up, your logo
@@ -117,12 +121,12 @@
   <div class="tabs" id="tabs"></div>
 
   <div class="panel" id="pane-description">
-    <h2>The one-line description</h2>
+    <h2 id="h-description">The one-line description</h2>
     <p class="note">What you sell and to whom, in one line. This is what shows
       on the board next to your name.</p>
-    <textarea id="f-description" maxlength="300" style="min-height:64px"></textarea>
+    <textarea id="f-description" maxlength="300" style="min-height:64px" aria-labelledby="h-description"></textarea>
     <div class="row"><button data-send="description">Send it for review</button></div>
-    <div class="msg" id="m-description"></div>
+    <div class="msg" id="m-description" role="status"></div>
   </div>
 
   <div class="panel" id="pane-profile" hidden>
@@ -131,13 +135,13 @@
       would explain the company to somebody who has not heard of it — not a
       brochure. We keep the version we wrote from your site until this is
       approved.</p>
-    <textarea id="f-p1" maxlength="700" placeholder="What you sell, and to whom."></textarea>
-    <textarea id="f-p2" maxlength="700" style="margin-top:8px"
+    <textarea id="f-p1" maxlength="700" aria-label="Longer description, paragraph 1" placeholder="What you sell, and to whom."></textarea>
+    <textarea id="f-p2" maxlength="700" style="margin-top:8px" aria-label="Longer description, paragraph 2"
       placeholder="How it works, or what it covers."></textarea>
-    <textarea id="f-p3" maxlength="700" style="margin-top:8px"
+    <textarea id="f-p3" maxlength="700" style="margin-top:8px" aria-label="Longer description, paragraph 3"
       placeholder="Who uses it. Anything about the company itself."></textarea>
     <div class="row"><button data-send="profile">Send it for review</button></div>
-    <div class="msg" id="m-profile"></div>
+    <div class="msg" id="m-profile" role="status"></div>
   </div>
 
   <div class="panel" id="pane-logo" hidden>
@@ -150,7 +154,7 @@
     <label for="f-logo">Link to the image</label>
     <input id="f-logo" maxlength="400" placeholder="https://&hellip;/logo.png">
     <div class="row"><button data-send="logo">Send it for review</button></div>
-    <div class="msg" id="m-logo"></div>
+    <div class="msg" id="m-logo" role="status"></div>
   </div>
 
   <div class="panel" id="pane-job" hidden>
@@ -165,7 +169,7 @@
     <label for="f-url" style="margin-top:10px">Link to the posting</label>
     <input id="f-url" maxlength="400" placeholder="https://…">
     <div class="row"><button data-send="job">Send it for review</button></div>
-    <div class="msg" id="m-job"></div>
+    <div class="msg" id="m-job" role="status"></div>
   </div>
 
   <div class="panel" id="pane-category" hidden>
@@ -180,16 +184,16 @@
       something because somebody browsing it expected to find what is on it, so
       a person decides — we will not move a company because it asked.</div>
     <div class="row"><button data-send="category">Send the request</button></div>
-    <div class="msg" id="m-category"></div>
+    <div class="msg" id="m-category" role="status"></div>
   </div>
 
   <div class="panel" id="pane-contact" hidden>
-    <h2>Something else</h2>
+    <h2 id="h-contact">Something else</h2>
     <p class="note">Anything we have wrong that does not fit above. This reaches
       a person, not a form handler.</p>
-    <textarea id="f-note" maxlength="600"></textarea>
+    <textarea id="f-note" maxlength="600" aria-labelledby="h-contact"></textarea>
     <div class="row"><button data-send="contact">Send it</button></div>
-    <div class="msg" id="m-contact"></div>
+    <div class="msg" id="m-contact" role="status"></div>
   </div>
 
   <div class="flag no" id="cannot">
@@ -205,7 +209,7 @@
     <div class="row">
       <button class="plain" id="release">Hand the claim back</button>
     </div>
-    <div class="msg" id="m-release"></div>
+    <div class="msg" id="m-release" role="status"></div>
   </div>
 </div>
 
@@ -219,7 +223,7 @@
     <p class="sub">Press the button to confirm you asked to claim this page.
       If you did not, close this tab and nothing happens.</p>
     <p><button id="confirmgo" type="button">Yes, confirm my claim</button></p>
-    <div class="msg" id="m-confirm"></div>
+    <div class="msg" id="m-confirm" role="status"></div>
   </div>
 </div>
 
@@ -343,10 +347,12 @@ function portal(r) {
   const tabs = $("#tabs");
   PANES.forEach(([k, label], i) => {
     const b = document.createElement("button");
-    b.textContent = label; b.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    // aria-current: aria-selected means nothing on a plain button, so the
+    // current pane was never announced (launch audit 2)
+    b.textContent = label; b.setAttribute("aria-current", i === 0 ? "true" : "false");
     b.onclick = () => {
       PANES.forEach(([k2]) => { $("#pane-" + k2).hidden = k2 !== k; });
-      [...tabs.children].forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+      [...tabs.children].forEach((x) => x.setAttribute("aria-current", String(x === b)));
     };
     tabs.appendChild(b);
   });

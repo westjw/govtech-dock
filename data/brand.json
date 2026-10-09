@@ -70,7 +70,21 @@
       "beanie": {
         "hex": "#E46855",
         "on_penguin": "4.7:1"
+      },
+      "badge_text": {
+        "hex": "#76ABF9",
+        "on_panel": "5.8:1",
+        "why": "Badge as TEXT on a dark card: #478EF5 is 4.16:1 on the dark panel. Lifted along its hue; the fill colour stays #478EF5."
+      },
+      "beanie_text": {
+        "hex": "#EE8676",
+        "on_panel": "5.4:1",
+        "why": "Beanie as TEXT on a dark card or chip: #E46855 is 4.13:1 on the dark panel and 3.55:1 on the dark chip. In light mode the text value is #BC321E, Beanie darkened from 4.49:1 to 4.7:1 on the Chip tag ground."
       }
+    },
+    "deep_fog_on_chip": {
+      "hex": "#4E6678",
+      "why": "Deep Fog is 4.26:1 on the Chip tag ground and AA needs 4.5 (launch audit 2, 2026-10-09). Fog's hue darkened once more, for secondary text on a chip only."
     }
   },
   "_from_email_comment": "MOVED 2026-09-03, the day Resend verified sledjobs.com. It had been held on solesourcejobs.com on purpose: moving it before the new domain was verified would have made every alert fail to send, silently, with the endpoint still answering 200. Verified before the change, not after: resend._domainkey.sledjobs.com carries a DKIM key distinct from the old domain's, send.sledjobs.com carries v=spf1 include:amazonses.com ~all, and its MX is feedback-smtp.us-east-1.amazonses.com - the same region the old domain sends from. functions/_brand.js restates this and selftest::check_brand fails the build if the two disagree, so they move together or not at all. Links in alerts ALREADY MAILED point at solesourcejobs.com and keep working, because that domain is still attached to this Pages project; they break the day it moves to the federal board."

@@ -18,17 +18,19 @@
      never used for text anywhere. */
   :root{ --bg:#E8F1F7; --panel:#FAF7F0; --line:#C9DCE8; --ink:#1F2536;
          --dim:#556F82; --faint:#7C97AA; --accent:#0B57C4; --warn:#C1341F;
-         --bad:#C1341F; --beak:#F5A623; --chip:#DCE9F1; }
+         --bad:#C1341F; --beak:#F5A623; --chip:#DCE9F1;
+         --accent-text:#0B57C4; --dim-chip:#4E6678; }
   @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
     /* the ground becomes Penguin, which drops Badge to 2.3:1 - so the two
        accents lighten along their own hue until they clear AA again */
     --bg:#1F2536; --panel:#262E42; --line:#39435C; --ink:#E8F1F7;
     --dim:#A8BCCA; --faint:#7C97AA; --accent:#478EF5; --warn:#E46855;
-    --bad:#E46855; --beak:#F5A623; --chip:#2E3852; }}
+    --bad:#E46855; --beak:#F5A623; --chip:#2E3852;
+    --accent-text:#76ABF9; --dim-chip:#A8BCCA; }}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
        font:15px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
-  a{color:var(--accent);text-underline-offset:2px}
+  a{color:var(--accent-text);text-underline-offset:2px}
   .wrap{max-width:620px;margin:0 auto;padding:34px 22px 70px}
   h1{font-size:22px;margin:0 0 4px;letter-spacing:-.015em}
   .sub{color:var(--dim);font-size:13.5px;margin:0 0 26px}
@@ -49,13 +51,15 @@
   .opt:has(input:checked){border-color:var(--accent);background:var(--chip)}
   .opt input{margin:2px 0 0;flex:none;accent-color:var(--accent)}
   .opt small{display:block;color:var(--dim);font-size:12.5px;margin-top:1px}
+  /* on the chosen option's --chip ground --dim is 4.26:1 (launch audit 2) */
+  .opt:has(input:checked) small{color:var(--dim-chip)}
   button{font:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:9px;
     border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
   button:hover{filter:brightness(1.07)}
   button:disabled{opacity:.5;cursor:default}
   button.ghost{background:none;color:var(--dim);border-color:var(--line);font-weight:500}
   button.danger{background:none;color:var(--bad);border-color:var(--line);font-weight:500}
-  button.linkish{background:none;border:0;padding:0;color:var(--accent);font-weight:500;
+  button.linkish{background:none;border:0;padding:0;color:var(--accent-text);font-weight:500;
     text-decoration:underline;cursor:pointer}
   .msg{font-size:13.5px;padding:11px 14px;border-radius:9px;margin:14px 0 0}
   /* ink on the chip, and the kind in the rule beside it: --accent and --bad

@@ -9755,6 +9755,136 @@ def check_an_unread_board_is_never_described_as_read() -> int:
     return errors
 
 
+def _contrast(a: str, b: str) -> float:
+    def lum(h):
+        h = h.lstrip("#")
+        c = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+        c = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+    la, lb = sorted((lum(a), lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
+def _tokens(css: str, which: str) -> dict:
+    """{--name: #hex} from a page's light :root block, or its dark one."""
+    if which == "light":
+        m = re.search(r":root\{([^}]*--bg:[^}]*)\}", css)
+    else:
+        m = re.search(r":root\[data-theme=dark\]\{([^}]*)\}", css) or \
+            re.search(r"prefers-color-scheme:\s*dark\)\{:root:not\(\[data-theme=light\]\)\{([^}]*)\}", css)
+    return dict(re.findall(r"(--[\w-]+):\s*(#[0-9A-Fa-f]{6})", m.group(1))) if m else {}
+
+
+def check_text_on_tags_and_dark_cards_is_readable() -> int:
+    """Text on a --chip, accent and warn text on a dark card, and the claim
+    page's buttons clear AA in both themes.
+
+    Launch audit 2 (2026-10-09): --dim on --chip was 4.26:1 (role-page chips,
+    filter chips, the pay-band note, the alerts page's chosen option); in
+    dark mode --accent as text on --panel was 4.16:1 ("Show 60 more", quota
+    counts, pill values, pay) and --warn 4.13:1 ("board not readable"); the
+    claim page's buttons were 3.04:1 and its <dt> labels Fog. Measured from
+    the tokens each page declares, so a token edit that breaks it fails here.
+    """
+    errors = 0
+    pages = {"index.html": (ROOT / "index.html").read_text(),
+             "claim.html": (ROOT / "claim.html").read_text(),
+             "alerts.html": (ROOT / "alerts.html").read_text()}
+    need = {"index.html": [("--dim-chip", "--chip"), ("--accent-text", "--panel"),
+                           ("--accent-text", "--chip"), ("--warn-text", "--panel"),
+                           ("--warn-text", "--chip")],
+            "claim.html": [("--accent-text", "--panel"), ("--warn-text", "--panel"),
+                           ("--on-accent", "--accent"), ("--dim", "--panel")],
+            "alerts.html": [("--dim-chip", "--chip"), ("--accent-text", "--panel")]}
+    for f, pairs in need.items():
+        for theme in ("light", "dark"):
+            t = {**_tokens(pages[f], "light"), **(_tokens(pages[f], "dark") if theme == "dark" else {})}
+            for fg, bg in pairs:
+                if fg not in t or bg not in t:
+                    errors += fail(f"{f} ({theme}) does not declare {fg} or {bg}")
+                    continue
+                r = _contrast(t[fg], t[bg])
+                if r < 4.5:
+                    errors += fail(f"{f} ({theme}): {fg} on {bg} is {r:.2f}:1; AA needs 4.5")
+    ix = pages["index.html"]
+    js = re.sub(r"/\*.*?\*/", "", ix, flags=re.S)
+    if re.search(r"(?<![-\w])color:var\(--accent\)", js):
+        errors += fail("index.html still sets text in --accent; text takes --accent-text")
+    for sel in (".chip", ".fchip", ".bandwhy"):
+        m = re.search(r"  " + re.escape(sel) + r"\{[^}]*\}", ix)
+        if not m or "var(--dim-chip)" not in m.group(0):
+            errors += fail(f"{sel} text on --chip is not --dim-chip")
+    if "color:var(--warn)" in js or "color:var(--bad)" in js:
+        errors += fail("index.html sets text in --warn or --bad; text takes --warn-text")
+    if not re.search(r"\.opt:has\(input:checked\) small\{color:var\(--dim-chip\)\}",
+                     pages["alerts.html"]):
+        errors += fail("the alerts page's chosen option sets its note in --dim on --chip")
+    cl = pages["claim.html"]
+    if re.search(r"\bdt\{[^}]*--faint", cl):
+        errors += fail("claim.html's <dt> labels are set in Fog")
+    if not re.search(r"button\{[^}]*color:var\(--on-accent\)", cl):
+        errors += fail("claim.html's buttons do not take --on-accent")
+    bs_src = (ROOT / "scripts" / "build_site.py").read_text()
+    if " a{{color:var(--link-text)}}" not in bs_src or " a{color:var(--accent-text);" not in bs_src:
+        errors += fail("the static pages set link text in the 4.16:1 dark fill colour")
+    return errors
+
+
+def check_every_view_is_announced_and_named() -> int:
+    """A screen reader is told where it is, and every control says what it does.
+
+    Launch audit 2 (2026-10-09): the nav marked the current view with
+    aria-selected on plain buttons (never announced); opening a role or a
+    company left focus on <body> and the title unchanged; every filter
+    chip's button was "remove this filter" and removing one dropped focus;
+    the map was an unnamed canvas with a click-only action; views jumped
+    from h1 to h3; the company view nested a second <main>; and the claim
+    page's text areas had no names and its messages no live region.
+    """
+    errors = 0
+    ix = (ROOT / "index.html").read_text()
+    js = re.sub(r"/\*.*?\*/", "", ix, flags=re.S)
+    rend = js[js.find("function render(){"):][:900]
+    if 'setAttribute("aria-current","page")' not in rend or "aria-selected" in rend:
+        errors += fail("render() does not mark the current view with aria-current")
+    if "nav button[aria-current=page]" not in ix:
+        errors += fail("the nav's current-view style is not keyed on aria-current")
+    if "document.title=viewTitle();" not in rend:
+        errors += fail("render() leaves the page title on every view")
+    orl = js[js.find("function openRole("):][:600]
+    if "focusView()" not in orl:
+        errors += fail("opening a role leaves focus on <body>")
+    co_ = js[js.find("function co(id,fromUrl){"):]
+    co_ = co_[:co_.find("\nfunction ")]
+    if "document.title=" not in co_ or "if((fresh&&!fromUrl)||hadFocus)focusView();" not in co_:
+        errors += fail("opening a company neither titles the page nor moves focus to it")
+    ch = js[js.find("function drawChips("):][:1200]
+    if "remove this filter" in ch or 'aria-label",`Remove filter: ' not in ch or "chipFocus(i)" not in ch:
+        errors += fail("filter chips share one name, or removing one drops focus")
+    if not re.search(r'<canvas id="mapcv" role="img" aria-label="', ix) or 'data-click="mapState"' not in ix:
+        errors += fail("the map is an unnamed canvas with no keyboard route to its action")
+    if "<main class=\"cocol\">" in ix:
+        errors += fail("the in-app company view nests a second <main>")
+    # headings: each view's sections are h2, nothing skips from h1 to h3
+    for needle in ('<div class="sechead"><h3>', '<div class="hsec"><h3>', '<div class="rhead"><h3',
+                   '<h4 class="jc-title">', '<div class="cfblock"><h3>'):
+        if needle in ix:
+            errors += fail(f"a view section still skips a heading level: {needle}")
+    if re.search(r'<h3 style="font-size:13px', ix):
+        errors += fail("Market intel or the role page still opens its sections at h3")
+    cl = (ROOT / "claim.html").read_text()
+    for tid in ("f-description", "f-p1", "f-p2", "f-p3", "f-note"):
+        m = re.search(r'<textarea id="' + tid + r'"[^>]*>', cl)
+        if not m or not re.search(r'aria-label(?:ledby)?="', m.group(0)):
+            errors += fail(f"claim.html's #{tid} has no accessible name")
+    bare = re.findall(r'<div class="msg" id="[^"]+">', cl)
+    if bare:
+        errors += fail(f"{len(bare)} claim.html message(s) are not live regions")
+    if 'setAttribute("aria-selected"' in cl:
+        errors += fail("claim.html's pane switcher marks the current pane with aria-selected")
+    return errors
+
+
 def check_every_css_variable_is_defined() -> int:
     """No rule reads a colour token nobody defined, and the theme switch
     reaches every token the system theme does.
@@ -21985,7 +22115,7 @@ def check_headline_counts_openings() -> int:
     # count, and it sat under the heading "Sales roles" three elements below a
     # banner slide that says "we count openings, not rows". Any count fed
     # straight from a filtered posting list must not be labelled as roles.
-    for m in re.finditer(r"\$\{q\.length[^}]*\}\s*</span>\s*<h3>([^<]*)</h3>", html):
+    for m in re.finditer(r"\$\{q\.length[^}]*\}\s*</span>\s*<h[23]>([^<]*)</h[23]>", html):
         if re.search(r"\broles?\b", m.group(1), re.I):
             errors += fail(f"index.html labels a posting-row count as "
                            f"{m.group(1)!r}. Rows are advertisements; roles "
@@ -32195,6 +32325,8 @@ def main() -> int:
     errors += check_every_view_has_its_own_address()
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
+    errors += check_text_on_tags_and_dark_cards_is_readable()
+    errors += check_every_view_is_announced_and_named()
     errors += check_a_us_city_named_for_a_foreign_one_stays_in_the_us()
     errors += check_the_front_page_counts_by_opening()
     errors += check_the_feed_and_the_no_js_page_say_what_is_true()
