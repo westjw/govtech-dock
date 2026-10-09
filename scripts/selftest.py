@@ -9937,8 +9937,9 @@ def check_the_digest_counts_openings_and_keeps_to_the_boards_default() -> int:
         p.update(k)
         return p
     rows = [post(i) for i in range(44)]
-    rows.append(dict(rows[0], id="co0::AE 0::second", work_mode="onsite",
-                     office={"city": "Austin", "state": "TX"}))
+    rows[0] = dict(rows[0], work_mode="onsite", office={"city": "Dallas", "state": "TX"})
+    rows.append(dict(rows[0], id="co0::AE 0::second", office={"city": "Austin", "state": "TX"}))
+    rows.append(dict(rows[1], id="co1::AE 1::again"))      # the same place twice
     rows.append(post(99, is_us=False, location="London, United Kingdom"))
     board = {"generated": gen, "postings": rows}
     sub = {"cadence": "daily", "quota_only": False, "min_count": 1,
@@ -9951,13 +9952,31 @@ def check_the_digest_counts_openings_and_keeps_to_the_boards_default() -> int:
     subject, text, html_ = digest.render(d, sub, board)
     if not subject.startswith("44 new govtech roles"):
         errors += fail(f"the digest's subject counts postings: {subject!r}")
-    if "2 locations" not in text:
-        errors += fail("an opening advertised twice is not one row naming its locations")
+    rows_txt = text.splitlines()
+    def row_of(title):
+        i = next((k for k, l in enumerate(rows_txt) if l == title), None)
+        return rows_txt[i + 1] if i is not None and i + 1 < len(rows_txt) else ""
+    two_places, one_place = row_of("Account Executive 0"), row_of("Account Executive 1")
+    if "2 locations" not in two_places or "postings" in two_places \
+            or "2 postings" not in one_place or "locations" in one_place:
+        errors += fail(f"an opening's row miscounts places and postings: {two_places!r} / {one_place!r}")
     if "on or after" not in text:
         errors += fail("the text digest says roles appeared 'after' the first day it includes")
     m = re.search(r'<a href="([^"]+)"[^>]*>and 4 more on the board</a>', html_)
     if not m or "/?tab=jobs" not in m.group(1) or "more on the board: https://" not in text:
         errors += fail("'and N more on the board' carries no link to the board")
+    elif "from=2026-10-09" not in m.group(1) or "to=2026-10-09" not in m.group(1) \
+            or "since=" in m.group(1):
+        errors += fail(f"the board link's window is relative, so it drifts after a rebuild: {m.group(1)}")
+    # a company alert follows its company page: a subscription that never chose
+    # gets the company's roles abroad too, and one that chose not to does not
+    abroad_co = [post(200 + i, is_us=False, company_id="farco", location="Leeds") for i in range(3)]
+    board_co = {"generated": gen, "postings": abroad_co}
+    co_sub = dict(sub, companies=["farco"])
+    if len(digest.build(board_co, co_sub, today).get("roles") or []) != 3:
+        errors += fail("a company alert on a company whose roles are all abroad never sends")
+    if digest.build(board_co, dict(co_sub, worldwide=False), today).get("send"):
+        errors += fail("a company alert whose subscriber left out roles abroad still sends them")
     world = dict(sub, worldwide=True)
     dw = digest.build(board, world, today)
     abroad = [p for p in dw.get("roles") or [] if p.get("is_us") is False]
@@ -9967,7 +9986,8 @@ def check_the_digest_counts_openings_and_keeps_to_the_boards_default() -> int:
         errors += fail("a role abroad reads as just 'remote' in the email")
     al = (ROOT / "alerts.html").read_text()
     if 'id="worldwide"' not in al or 'worldwide:$("#worldwide").checked' not in al \
-            or 'if(p.worldwide)u.set("us","");' not in al:
+            or 'if(p.worldwide)u.set("us","");' not in al \
+            or "worldwide:COMPANIES.length>0" not in al:
         errors += fail("the alerts page has no 'roles outside the US' choice, or its preview "
                        "does not open the board the email describes")
     if "worldwide: p.worldwide === true" not in (ROOT / "functions" / "api" / "alerts.js").read_text():
@@ -9991,7 +10011,7 @@ def check_a_stranger_cannot_mail_somebody_without_end() -> int:
         return fail(f"alerts_harness.mjs failed: {r.stderr[-300:]}")
     d = json.loads(r.stdout.strip().splitlines()[-1])
     errors = 0
-    if d.get("strangerMailsFirstSixDays") != 3 or (d.get("strangerMails") or 99) > 6:
+    if d.get("strangerMailsFirstSixDays") != 3 or (d.get("strangerMails") or 99) > 3:
         errors += fail(f"one address got {d.get('strangerMailsFirstSixDays')} confirmations in six days "
                        f"and {d.get('strangerMails')} in ten from a stranger re-sending hourly")
     if d.get("savedKind") != "company":
@@ -10104,6 +10124,11 @@ def check_search_and_previews_see_what_is_there() -> int:
         role = re.search(r"<loc>[^<]*\?role=a%3A%3Ac%3A%3A2</loc><lastmod>([^<]+)</lastmod>", sm)
         if (home and "<lastmod>" in home.group(1)) or not role or role.group(1) != "2026-08-20":
             errors += fail("the sitemap's lastmod is the build day rather than a true date or none")
+    bsrc = (ROOT / "scripts" / "build_site.py").read_text()
+    if "': who is hiring' if hiring else ''" not in bsrc or '"h": bool(hiring)}' not in bsrc:
+        errors += fail("a conference page says 'who is hiring' over a floor where nobody is")
+    if 'cfRoster(tag).some(o=>o.quota_roles)?": who is hiring":""' not in (ROOT / "index.html").read_text():
+        errors += fail("the app's conference panel titles every floor 'who is hiring'")
     og = (ROOT / "scripts" / "make_og_cards.py").read_text()
     cards = og[og.find("CARDS = {"):og.find("\n}\n", og.find("CARDS = {"))]
     cards = "\n".join(l.split("#")[0] for l in cards.splitlines())     # code, not comments
@@ -10136,19 +10161,20 @@ def check_the_reader_is_told_the_truth_when_things_fail() -> int:
                      fn("storageWorks"), fn("NO_STORAGE", True), fn("acctText")])
     src = src.replace("let STORAGE_OK", "var STORAGE_OK")
     script = """
-const FIXED = Date.parse("2026-10-10T13:00:00Z");
+const FIXED = Date.parse(process.env.FIXED || "2026-10-10T13:00:00Z");
 const RD = Date;
 class FD extends RD { constructor(...a){ a.length ? super(...a) : super(FIXED); } static now(){ return FIXED; } }
 globalThis.Date = FD;
 var STORAGE_OK=null;
 globalThis.localStorage = { setItem(){ throw new Error("blocked"); }, removeItem(){}, getItem(){ return null; } };
-globalThis.D = { organizations: [{id: "dark", unreadable: true}, {id: "lit"}] };
+globalThis.D = { organizations: [{id: "dark", unreadable: true}, {id: "lit"},
+                                 {id: "none", no_board_on_file: true}] };
 const savedCount = () => 0, syncToken = () => null;
 """ + src + """
 console.log(JSON.stringify({
   build: when("2026-10-09", "2026-10-09").txt,
   today: when("2026-10-10", "2026-10-09").txt,
-  dark: goneWhy("dark"), lit: goneWhy("lit"),
+  dark: goneWhy("dark"), lit: goneWhy("lit"), none: goneWhy("none"),
   acct: acctText(), stored: storageWorks(),
 }));"""
     r = subprocess.run(["node", "-"], input=script, capture_output=True, text=True, timeout=60,
@@ -10156,6 +10182,15 @@ console.log(JSON.stringify({
     if r.returncode:
         return fail(f"the reader-state functions did not run under node: {r.stderr[-300:]}")
     g = json.loads(r.stdout.strip().splitlines()[-1])
+    # a fresh build reads "today" in Auckland too: the board's dates are New
+    # York days, and so is the "today" they are measured against
+    r2 = subprocess.run(["node", "-"], input=script, capture_output=True, text=True, timeout=60,
+                        env={**os.environ, "TZ": "Pacific/Auckland", "FIXED": "2026-10-09T14:00:00Z"})
+    g2 = json.loads(r2.stdout.strip().splitlines()[-1]) if r2.returncode == 0 else {}
+    if g2.get("build") != "today":
+        errors += fail(f"a role first seen on today's build reads {g2.get('build')!r} in Auckland")
+    if "no board on file" not in g.get("none", ""):
+        errors += fail(f"a role at a company with no board on file says: {g.get('none')!r}")
     if g.get("build") != "yesterday" or g.get("today") != "today":
         errors += fail(f"a role first seen on yesterday's build reads {g.get('build')!r} on the "
                        f"reader's next morning")
@@ -10165,8 +10200,15 @@ console.log(JSON.stringify({
         errors += fail("a role gone from a board we read lost its plain explanation")
     if g.get("stored") is not False or "not letting the site keep anything" not in g.get("acct", ""):
         errors += fail("with site storage blocked the account menu still promises roles are kept")
-    if js.count('if(!writeSaved(all)){ storageRefused(); return; }') != 2:
-        errors += fail("saving a role or a company fails silently when the browser keeps nothing")
+    if js.count('if(!writeSaved(all)){ storageRefused(); return; }') != 2 \
+            or 'if(!writeSearches(all)){ storageRefused(); return; }' not in js:
+        errors += fail("saving a role, a company or a search fails silently when the browser keeps nothing")
+    if '[3,"Within 3 days of the last check"]' not in js:
+        errors += fail("the age filter says 'in the last 3 days' while counting from the last check")
+    if "more have roles a person captured by hand" not in js:
+        errors += fail("the home map slide counts hand captures as 'open on the last check'")
+    if 'if(fromDay&&!((p.first_seen||"").slice(0,10)>=fromDay))return false;' not in js:
+        errors += fail("the board ignores a digest link's date window")
     for needle, why in (('${goneWhy(String(id).split("::")[0])}', "the gone-role page"),
                         ('goneWhy(p.company_id,true)', "the saved-role chip")):
         if needle not in js:

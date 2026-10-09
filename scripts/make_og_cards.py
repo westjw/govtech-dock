@@ -45,7 +45,7 @@ CARDS = {
     "jobs": ("Sales jobs in govtech",
              "quota-carrying roles at govtech companies, refreshed daily"),
     "companies": ("The govtech map",
-                  "every company selling into state and local government"),
+                  "every one we can find selling into state and local government"),
     "conferences": ("Where they exhibit",
                     "the floors these companies stand on, with dates"),
     # keyed by the app's tab names, which the middleware turns into

@@ -3094,14 +3094,16 @@ def write_conference_pages(out: pathlib.Path, board: dict, brand: dict) -> int:
             (d / f"{_slugify(tag)}.ics").write_text(cal)
         # "who is hiring" only over a floor we have read
         (d / f"{_slugify(tag)}.html").write_text(_page(
-            f"{c.get('name') or tag}{': who is hiring' if roster else ''} · {brand['name']}",
-            f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
-            + ("Sales roles at the govtech companies on this floor." if roster
-               else "We have not read this floor yet."),
+            # who is hiring only where somebody is: a roster with no seller
+            # hiring said it too (review of launch audit 3)
+            f"{c.get('name') or tag}{': who is hiring' if hiring else ''} · {brand['name']}",
+            (f"{line}. " + (f"{c.get('dates')}, {c.get('city')}. " if c.get("dates") else "")
+             + ("Sales roles at the govtech companies on this floor." if hiring
+                else "" if roster else "We have not read this floor yet.")).rstrip(),
             f"{site}/e/{_slugify(tag)}", body, brand, "conferences",
             css=_default_css(brand) + CFPAGE_CSS, wrap=False))
         events[tag] = {"n": c.get("name") or tag, "p": _slugify(tag), "l": line,
-                       "h": bool(roster)}
+                       "h": bool(hiring)}
         n += 1
     (out / "meta-events.json").write_text(
         json.dumps({"generated": board.get("generated"), "events": events},

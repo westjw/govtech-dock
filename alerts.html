@@ -246,7 +246,9 @@ function fillSectors(){
 /* ---------- shared form ------------------------------------------------- */
 
 function formHTML(p){
-  p=p||{cadence:"weekly",min_count:1};
+  // a company alert starts with roles abroad included: its company page
+  // lists every role (review of launch audit 3)
+  p=p||{cadence:"weekly",min_count:1,worldwide:COMPANIES.length>0};
   const sel=(v,x)=>v===x?" selected":"";
   return `
   <h2>How often</h2>
@@ -300,7 +302,8 @@ function formHTML(p){
   <label class="opt" style="margin-bottom:12px">
     <input type="checkbox" id="worldwide" ${p.worldwide?"checked":""}>
     <span><strong>Include roles outside the US</strong>
-      <small>Left out unless you tick this, as the board leaves them out by default.</small></span></label>
+      <small>${COMPANIES.length?"A company's page lists all its roles, so a company alert starts with them included."
+        :"Left out unless you tick this, as the board leaves them out by default."}</small></span></label>
   <div class="row"><div>
     <label for="states">States (optional, e.g. NY, NJ, CT)</label>
     <input type="text" id="states" value="${esc((p.states||[]).join(", "))}"

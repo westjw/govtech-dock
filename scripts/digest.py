@@ -107,7 +107,15 @@ def matches(p: dict, sub: dict) -> bool:
     # page's preview (the board) hid them, and a UK role read as just "remote"
     # (launch audit 3, 2026-10-09). `worldwide` is new because every stored
     # subscription already says us_only: false without anybody having chosen.
-    if p.get("is_us") is False and not sub.get("worldwide"):
+    #
+    # A COMPANY ALERT FOLLOWS ITS COMPANY PAGE, which lists every role: under
+    # the US default a company alert on Civica, all of whose 61 roles are
+    # abroad, could never send (review of launch audit 3). A subscription that
+    # never chose (stored before `worldwide` existed) gets that default.
+    ww = sub.get("worldwide")
+    if ww is None:
+        ww = bool(cos)
+    if p.get("is_us") is False and not ww:
         return False
     return True
 
@@ -145,8 +153,22 @@ def openings(rows) -> list[dict]:
         if k in by:
             by[k]["_places"] += 1
         else:
-            by[k] = {**p, "_places": 1}
+            by[k] = {**p, "_places": 1, "_spots": set()}
+        spot = _place(p)
+        if spot:
+            by[k]["_spots"].add(spot)
     return list(by.values())
+
+
+def _place(p: dict) -> "str | None":
+    """The place one posting names, as index.html's card reads it."""
+    o = p.get("office") or {}
+    if o.get("city") or o.get("state"):
+        return f"{o.get('city') or ''}, {o.get('state') or ''}"
+    t = p.get("territory") or {}
+    if t.get("stated"):
+        return ",".join(t.get("states") or []) or t.get("region") or None
+    return (p.get("location") or "").strip() or None
 
 
 def interleave(hits: list[dict]) -> list[dict]:
@@ -193,16 +215,19 @@ def _where(p: dict) -> str:
         bits.append("location not stated")
     else:
         bits.append("no office stated")
-    # a role placed outside the US says where, never just "remote"
-    if p.get("is_us") is False and (p.get("location") or "").strip():
-        bits.append("outside the US: " + str(p["location"]).strip()[:60])
-    if (p.get("_places") or 1) > 1:
-        bits.append(f"{p['_places']} locations")
+    # a role placed outside the US says so, and where when it says where;
+    # never just "remote"
+    if p.get("is_us") is False:
+        loc = str(p.get("location") or "").strip()[:60]
+        bits.append("outside the US" + (": " + loc if loc else ""))
+    # PLACES, then postings: "location not stated · 2 locations" counted
+    # postings as places (review of launch audit 3)
+    spots, rows = len(p.get("_spots") or ()), (p.get("_places") or 1)
+    if spots > 1:
+        bits.append(f"{spots} locations")
+    if rows > max(spots, 1):
+        bits.append(f"{rows} postings")
     return " · ".join(b for b in bits if b)
-
-
-# The age filter's horizons, as index.html ageOptions() offers them.
-AGES = (0, 3, 7, 14, 30)
 
 
 def board_link(sub: dict, since: str, board: dict) -> str:
@@ -222,21 +247,14 @@ def board_link(sub: dict, since: str, board: dict) -> str:
             q[key] = sub[k]
     if sub.get("states"):
         q["anyst"] = ",".join(sub["states"])
-    if sub.get("worldwide"):
+    if sub.get("worldwide") or (sub.get("worldwide") is None and cos):
         q["us"] = ""
-    rows = board.get("postings") or []
-    try:
-        g = dt.date.fromisoformat(str(board.get("generated") or "")[:10])
-        need = (g - dt.date.fromisoformat(since)).days
-        gaps = [(g - dt.date.fromisoformat(p["first_seen"][:10])).days
-                for p in rows if p.get("first_seen")]
-        for h in AGES:            # the smallest offered horizon covering the window
-            n = sum(1 for x in gaps if x <= h)
-            if h >= need and 0 < n < len(rows):
-                q["since"] = str(h)
-                break
-    except (ValueError, TypeError):
-        pass
+    # THE EMAIL'S OWN WINDOW, as dates. A relative age horizon measured from
+    # whatever build is live: a day later "since=0" opened 443 roles of which
+    # 2 were in the email (review of launch audit 3). index.html reads these.
+    q["from"] = str(since)[:10]
+    if board.get("generated"):
+        q["to"] = str(board["generated"])[:10]
     return SITE + "/?" + urllib.parse.urlencode(q)
 
 

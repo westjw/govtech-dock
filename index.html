@@ -2560,8 +2560,12 @@ function payBand(p){
    (launch audit 3, 2026-10-09). */
 function goneWhy(companyId,short){
   const o=(D.organizations||[]).find(x=>x.id===companyId);
-  if(o&&boardState(o)!=="read")
-    return short?"we can no longer read their board, so we cannot tell why"
+  const st=o?boardState(o):"read";
+  if(st==="none")
+    return short?"we have no board on file for them, so we cannot tell why"
+      :"We have no board on file for this company, so we cannot tell whether it was filled.";
+  if(st==="unread")
+    return short?"we cannot read their board automatically, so we cannot tell why"
       :"Their board is one we cannot read automatically, so we cannot tell whether it was filled.";
   return short?"it may have been filled or the board stopped listing it"
     :"It may have been filled, or the company’s board stopped listing it.";
@@ -2883,8 +2887,15 @@ function when(seen,gen){
 /* Whole days between two YYYY-MM-DD strings, both read as UTC midnight so a
    timezone cannot make a board built this morning look a day old. */
 const dayGap=(a,b)=>Math.round((Date.parse(b+"T00:00:00Z")-Date.parse(a+"T00:00:00Z"))/864e5);
-function todayISO(){const d=new Date();
-  return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);}
+/* Today in the calendar the board's dates are stamped in (the nightly runs in
+   America/New_York), so a role first seen on a build reads "today" in every
+   zone that day, Auckland's included (review of launch audit 3). */
+function todayISO(){
+  try{ return new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",
+    year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date()); }
+  catch{ const d=new Date();
+    return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10); }
+}
 /* The credibility line's third fact, and the one most easily faked. The deck
    asks for "links checked 6 hours ago". We do not have an hour: what is
    recorded is the DATE the run built this file, so this says exactly what
@@ -2918,8 +2929,10 @@ function freshness(gen){
 function ageOptions(rows,gen){
   const out=[];
   // counted from the build's date, so "today" here is the last check's
-  [[0,"New on the last check"],[3,"Seen in the last 3 days"],[7,"Seen in the last 7 days"],
-   [14,"Seen in the last 14 days"],[30,"Seen in the last 30 days"]].forEach(([d,label])=>{
+  // counted back from the last check, not from the reader's today, and
+  // labelled so: "in the last 3 days" listed roles a card called "4 days ago"
+  [[0,"New on the last check"],[3,"Within 3 days of the last check"],[7,"Within 7 days of the last check"],
+   [14,"Within 14 days of the last check"],[30,"Within 30 days of the last check"]].forEach(([d,label])=>{
     const n=rows.filter(p=>p.first_seen&&dayGap(p.first_seen,gen)<=d).length;
     if(n>0&&n<rows.length)out.push({v:String(d),label,n});
   });
@@ -3820,7 +3833,7 @@ function searchesAll(){
       return Array.isArray(v)?v.filter(x=>x&&okQs(x.qs)):[]}catch{return []}
 }
 function writeSearches(v){
-  try{localStorage.setItem(SEARCH_KEY,JSON.stringify(v.slice(0,40)))}catch{}
+  try{localStorage.setItem(SEARCH_KEY,JSON.stringify(v.slice(0,40)));return true}catch{return false}
 }
 /* What the filters currently say, in words, for the default name. A saved
    search called "?fam=gtm&st=TX" is a saved search nobody clicks. */
@@ -3844,7 +3857,7 @@ function saveSearch(){
   const all=searchesAll();
   if(all.some(x=>x.qs===qs)){say("already saved");return}
   all.unshift({qs,name:searchLabel(),on:new Date().toISOString().slice(0,10)});
-  writeSearches(all);
+  if(!writeSearches(all)){ storageRefused(); return; }
   say("saved");
   /* The tab badge is deliberately NOT touched. It counts kept ROLES and
      acctText says so in those words; folding searches into it would make a
@@ -4047,6 +4060,7 @@ function savedView(){
              your phone. Which ones you have applied to stays on this
              browser.</span>`}
         <a href="/alerts" style="margin-left:auto">Manage</a></div>`
+    : !storageWorks() ? ""
     : `<div class="syncbar"><span>Kept on this browser only — clearing site data
         loses them.</span>
         <a href="/alerts" style="margin-left:auto">Sync across devices</a></div>`;
@@ -4172,6 +4186,12 @@ function drawJobs(){
      the keys it knows, so this survives every other filter being changed. */
   const anyst=(new URLSearchParams(location.search).get("anyst")||"")
     .split(",").map(x=>x.trim().toUpperCase()).filter(Boolean);
+  /* AN EMAIL'S OWN WINDOW, as dates: a digest's "and N more" link carries the
+     first and last day it covered, which no later rebuild moves (review of
+     launch audit 3). URL-only, like anyst. */
+  const day=k=>{const v=new URLSearchParams(location.search).get(k)||"";
+    return /^\d{4}-\d{2}-\d{2}$/.test(v)?v:"";};
+  const fromDay=day("from"), toDay=day("to");
 
   const NEAR=nearState();
   const WANT=parseQuery(q);
@@ -4303,6 +4323,8 @@ function drawJobs(){
         ||(p.office&&p.office.state===x));
       if(!hit)return false;
     }
+    if(fromDay&&!((p.first_seen||"").slice(0,10)>=fromDay))return false;
+    if(toDay&&!((p.first_seen||"").slice(0,10)<=toDay))return false;
     if(rg&&p.region!==rg)return false;
     if(md&&p.work_mode!==md)return false;
     if(sen&&p.seniority!==sen)return false;
@@ -4966,6 +4988,14 @@ function chipDefs(){
     label:"connected to "+esc(anyq.toUpperCase().split(",").map(x=>x.trim())
       .filter(Boolean).join(", ")),
     clear:()=>{const u=new URLSearchParams(location.search);u.delete("anyst");
+      history.replaceState({},"","?"+u.toString());}});
+  // a digest's window, shown and removable like every other filter
+  const qu=new URLSearchParams(location.search);
+  const fd=/^\d{4}-\d{2}-\d{2}$/.test(qu.get("from")||"")?qu.get("from"):"";
+  const td=/^\d{4}-\d{2}-\d{2}$/.test(qu.get("to")||"")?qu.get("to"):"";
+  if(fd||td) out.push({
+    label:"first seen "+(fd&&td?`${fd} to ${td}`:fd?`on or after ${fd}`:`on or before ${td}`),
+    clear:()=>{const u=new URLSearchParams(location.search);u.delete("from");u.delete("to");
       history.replaceState({},"","?"+u.toString());}});
   return out;
 }
@@ -6750,11 +6780,16 @@ function buildSlides(){
 
   // 4. The map behind the board. Companies is the half people do not find.
   if(D.organizations&&D.organizations.length){
-    const hiring=D.organizations.filter(o=>(o.open_roles||0)>0).length;
+    // what the last check read, apart from what a person captured by hand
+    const fetched=new Set((D.postings||[]).filter(p=>p.source!=="manual").map(p=>p.company_id));
+    const open=D.organizations.filter(o=>(o.open_roles||0)>0);
+    const onCheck=open.filter(o=>fetched.has(o.id)).length, byHand=open.length-onCheck;
     out.push({kick:"The map",
       h:`<span class="num">${D.organizations.length.toLocaleString()}</span> govtech companies`,
-      p:`Tracked whether they are hiring or not — ${hiring.toLocaleString()} have `
-        +`something open on the last check. Search by what they sell, not just by name: `
+      p:`Tracked whether they are hiring or not — ${onCheck.toLocaleString()} have `
+        +`something open on the last check`
+        +(byHand?`, and ${byHand.toLocaleString()} more have roles a person captured by hand`:"")
+        +`. Search by what they sell, not just by name: `
         +`type “recreation software” or “911 dispatch”.`,
       cta:"Browse companies", go:()=>toCompanies()});
   }
@@ -8037,7 +8072,9 @@ function cfOpenPanel(tag,fromUrl){
   if(!CF_OPEN)CF_OPENER=document.activeElement;
   CF_OPEN=tag;
   // the middleware's title for a shared ?e= link, kept once the app draws
-  document.title=`${r.name||tag}: who is hiring · SLED JOBS`;
+  // "who is hiring" only over a floor where somebody is hiring a seller, as
+  // the /e/ page and the middleware say it (review of launch audit 3)
+  document.title=`${r.name||tag}${cfRoster(tag).some(o=>o.quota_roles)?": who is hiring":""} · SLED JOBS`;
   let host=$("#cf-panel");
   if(!host){
     host=document.createElement("div");

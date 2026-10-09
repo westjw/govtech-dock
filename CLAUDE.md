@@ -1999,6 +1999,16 @@ fires.
     and claim pages tell our failures from a bad link (`GONE`); a blocked
     site store says so instead of failing silently (`storageWorks`).
     `check_the_reader_is_told_the_truth_when_things_fail`.
+  - **The blind review of those fixes** confirmed 13 (0 refuted), all fixed
+    and broken on purpose: a company alert includes the company's roles
+    abroad unless its subscriber said not (`worldwide` None means "follow the
+    company page"); the "and N more" link carries the email's window as
+    dates (`from`/`to`, read by the board and shown as a chip), never a
+    relative horizon; a row says places and postings apart; the confirmation
+    budget is per address (`cb:` key, 30 days, cleared on confirm); "who is
+    hiring" needs a seller hiring; `todayISO()` is a New York date, the
+    calendar the board is stamped in; the age filter says "of the last
+    check"; a role at a company with no board says so.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

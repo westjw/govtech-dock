@@ -50,6 +50,21 @@ const PENDING_TTL = 7 * 86400;
  * somebody's address once an hour mailed them 240 times in ten days, each
  * mail promising no further mail (launch audit 3, 2026-10-09). */
 const MAX_CONFIRMS = 3;
+/* AND PER ADDRESS, not only per request: a request lapses after a week and
+ * the next one started a fresh three, so a stranger could still mail an
+ * address three times a week, every week (review of launch audit 3). The
+ * budget sits under the address's hash and clears when the address confirms. */
+const BUDGET_TTL = 30 * 86400;
+const budgetKey = (ek) => "cb:" + ek.slice(3);
+async function spendConfirm(env, ek, now) {
+  let b = null;
+  try { b = JSON.parse(await env.ALERTS.get(budgetKey(ek))); } catch { b = null; }
+  if (!b || !b.exp || b.exp <= now) b = { n: 0, exp: now + BUDGET_TTL };
+  if (b.n >= MAX_CONFIRMS) return false;
+  b.n += 1;
+  await env.ALERTS.put(budgetKey(ek), JSON.stringify(b), { expiration: Math.max(b.exp, now + 61) });
+  return true;
+}
 
 /* ONE EXPIRY FOR BOTH KEYS, FIXED AT SIGNUP. A pending record carries
  * `expires` (epoch seconds) and both sub:<token> and em:<hash> are written
@@ -338,6 +353,7 @@ export async function onRequestPost({ request, env }) {
       const ek = await emailKey(sub.email);
       const holder = await env.ALERTS.get(ek);
       if (!holder || holder === token) await env.ALERTS.put(ek, token);
+      await env.ALERTS.delete(budgetKey(ek));      // a real reader: budget spent on them
     }
     return json({ ok: true, confirmed: true, prefs: sub.prefs });
   }
@@ -427,6 +443,7 @@ async function subscribe(body, env, request) {
       // this cannot be used to bomb somebody else's inbox.
       if (now - (sub.confirm_sent || 0) < CONFIRM_COOLDOWN) return same;
       if ((sub.confirms || 1) >= MAX_CONFIRMS) return same;   // same answer: no oracle
+      if (!(await spendConfirm(env, ek, now))) return same;
       sub.confirms = (sub.confirms || 1) + 1;
       sub.prefs = prefs;
       sub.confirm_sent = now;                 // the week still runs from the first
@@ -437,6 +454,7 @@ async function subscribe(body, env, request) {
     }
   }
 
+  if (!(await spendConfirm(env, ek, now))) return same;
   const token = mintToken();
   const sub = { email, prefs, saved: [], removed: {}, confirmed: false,
                 created: now, confirm_sent: now, last_sent: null,
