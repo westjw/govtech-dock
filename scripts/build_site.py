@@ -3030,17 +3030,20 @@ def write_headers(out: pathlib.Path) -> None:
     click destroys their subscription. That is worth a header.
 
     Both forms, because X-Frame-Options is the one older browsers honour and
-    frame-ancestors is the one that is actually specified. Nothing else is set
-    here - a Content-Security-Policy on the board itself would have to allow
-    the inline script and style the single-file app is built from, which is a
-    policy that permits what it is meant to prevent.
+    frame-ancestors is the one that is actually specified. The PAGE policy is
+    not set here (2026-10-09): functions/_csp.js sets one on every HTML
+    response from the manifest scripts/csp.py builds, allowing each inline
+    script by its hash rather than by 'unsafe-inline' - so the single-file app
+    runs and an injected handler, javascript: url or script does not. This
+    file once said such a policy would have to permit what it is meant to
+    prevent; that was true of 'unsafe-inline' and is not true of hashes.
     """
     # EVERY SPELLING OF BOTH PAGES, EACH WITH ITS OWN HEADERS. "/alerts.html"
     # sat here with no header lines under it, and claim mail links to /claim,
     # which this file did not name (launch audit, 2026-10-06). Cloudflare also
     # does not apply _headers to a response a Pages Function produced, and the
-    # root middleware sees every request - so functions/_middleware.js sets
-    # the same two headers itself (NO_FRAME). This file is the second layer.
+    # root middleware sees every request - so functions/_csp.js sets the same
+    # two headers itself (NO_FRAME, and /admin). This file is the second layer.
     # A claim page carries a token in the URL and answers only to somebody
     # holding one, which is why it is here at all.
     rules = "".join(f"{path}\n  X-Frame-Options: DENY\n"
@@ -3365,6 +3368,12 @@ def main() -> int:
     # AFTER the pages it links to exist, so it can only ever name a page that
     # was actually written. A fallback advertising a 404 is worse than none.
     n_ns = write_noscript(out, board, brand)
+    # LAST, after every page exists as it will ship: the content security
+    # policy, every inline script hashed from the page itself, and a refusal
+    # (SystemExit) for any script, handler or javascript: url this build did
+    # not write. See scripts/csp.py; functions/_csp.js serves it.
+    import csp
+    csp_m = csp.write(out, ROOT, brand, _hunter_page(brand), _lightmark_script())
 
     size = sum(f.stat().st_size for f in out.rglob("*") if f.is_file())
     print(f"wrote {a.out}/: {len(SHIP)} page(s) + data/board.json")
@@ -3375,6 +3384,8 @@ def main() -> int:
           f"with an opening), robots.txt, 404.html")
     print(f"  noscript: a real page for a reader without JavaScript, "
           f"linking {n_ns} state page(s)")
+    print(f"  meta-csp.json: a policy for {len(csp_m['policies'])} kinds of page, "
+          f"{sum(csp_m['scripts'].values())} inline scripts hashed")
     print(f"  c/: {n_co} prerendered company pages")
     print(f"  s/: {n_st} state pages")
     print(f"  e/: {n_ev} conference pages")

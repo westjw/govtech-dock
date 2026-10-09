@@ -160,4 +160,62 @@ for (const p of ["/alerts", "/alerts.html", "/claim", "/claim.html", "/claim?t=a
                  "/%61lerts", "/cl%61im.html", "/", "/c/verkada.html"]) {
   out.frames[p] = await ask(p, { cookie: mint({}) });
 }
+/* THE CONTENT SECURITY POLICY, carried. Only when selftest hands over a built
+ * manifest (CSP_MANIFEST=<public>/meta-csp.json): HTML responses through the
+ * REAL middleware, a fake ASSETS serving that manifest, every spelling of
+ * every kind of page, and the failures that must never cost a page. */
+if (process.env.CSP_MANIFEST) {
+  const { readFileSync } = await import("node:fs");
+  const csp = await import(new URL("../functions/_csp.js", import.meta.url));
+  const real = readFileSync(process.env.CSP_MANIFEST, "utf8");
+  // node has no HTMLRewriter; the head rewrite keeps the response's headers,
+  // which is all this section asks about
+  globalThis.HTMLRewriter = class { on() { return this; } transform(r) { return r; } };
+  let serve = () => new Response(real, { status: 200 });
+  const env = { ASSETS: { fetch: async (u) => (String(u).endsWith("/meta-csp.json") ? serve() : new Response("{}", { status: 200 })) } };
+  async function askHtml(path, { host = "sledjobs.com", signed = true, type = "text/html; charset=utf-8" } = {}) {
+    const headers = new Headers();
+    if (signed) headers.set("Cookie", `CF_Authorization=${mint({})}`);
+    const req = new Request(`https://${host}${path}`, { headers });
+    const res = await onRequest({ request: req, env,
+      next: async () => new Response("<!doctype html><p>page</p>", { status: 200, headers: { "content-type": type } }) });
+    return { status: res.status, body: await res.text(),
+             enforce: res.headers.get("content-security-policy") || "",
+             report: res.headers.get("content-security-policy-report-only") || "",
+             xfo: res.headers.get("x-frame-options") || "" };
+  }
+  const C = { mode: csp.CSP_MODE, pages: {} };
+  for (const p of JSON.parse(process.env.CSP_PATHS || "[]")) C.pages[p] = await askHtml(p);
+  C.home_twice = [await askHtml("/"), await askHtml("/")].map((r) => r.report || r.enforce);
+  C.www = await askHtml("/", { host: "www.sledjobs.com" });
+  C.alias = await askHtml("/c/verkada", { host: "solesource-c6g.pages.dev" });
+  C.holding = await askHtml("/", { signed: false });
+  C.holding_alerts = await askHtml("/alerts", { signed: false });
+  C.plain = await askHtml("/", { type: "text/plain" });
+  C.alerts = await askHtml("/alerts");
+  C.admin = await askHtml("/admin/");
+  // enforce mode, through secure() itself, on a framed page and an open one
+  const enforce = async (path) => {
+    const r = await csp.secure(new Response("<p>x</p>", { headers: { "content-type": "text/html" } }),
+      new Request(`https://sledjobs.com${path}`), env, { mode: "enforce" });
+    return { enforce: r.headers.get("content-security-policy") || "",
+             report: r.headers.get("content-security-policy-report-only") || "" };
+  };
+  C.enforce_alerts = await enforce("/alerts");
+  C.enforce_home = await enforce("/");
+  // a manifest that cannot be read never costs a page
+  C.broken = {};
+  for (const [label, fn] of [["missing", () => new Response("no", { status: 404 })],
+                             ["garbled", () => new Response("{not json", { status: 200 })],
+                             ["no_placeholder", () => new Response(JSON.stringify({ routes: [["app", "^/$"]], policies: { app: "default-src 'none'" } }), { status: 200 })],
+                             ["throws", () => { throw new Error("assets down"); }]]) {
+    csp._reset();
+    serve = fn;
+    C.broken[label] = { home: await askHtml("/"), alerts: await askHtml("/alerts") };
+  }
+  csp._reset();
+  serve = () => new Response(real, { status: 200 });
+  out.csp = C;
+  delete globalThis.HTMLRewriter;
+}
 console.log(JSON.stringify(out));

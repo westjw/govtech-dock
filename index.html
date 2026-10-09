@@ -5950,19 +5950,25 @@ function co(id,fromUrl){
         >Alert me when they post</button></div></div>`;
   }else{
     rolesInner=groups.map(([fam,rows],i)=>{
-      const openG=i<2||CO_OPEN_GROUPS.has(fam);
+      /* A group a person opened shows every role. The first two are open with
+         three; "Show N more" used to toggle the set and redraw the same three,
+         because nothing read it for an open group (2026-09 to 10-09). */
+      const all=CO_OPEN_GROUPS.has(fam);
+      const openG=i<2||all;
       const q=rows.filter(r=>r.quota_carrying).length;
-      const shown=openG?rows.slice(0,3):[];
+      const shown=all?rows:(openG?rows.slice(0,3):[]);
       return `<div class="cogrp"><div class="cogrph">
           <h3>${esc(FAM[fam]||fam)}</h3>
           <span class="n">${rows.length} role${rows.length===1?"":"s"}${
             q?` &middot; ${q} quota-carrying`:""}</span></div>
         ${roleRows(shown)}
-        ${openG&&rows.length>3
+        ${!openG
           ? `<a class="comore" href="#" data-click="coShowAll" data-arg="${esc(fam)}"
-              >Show ${rows.length-3} more</a>`
-          : (!openG?`<a class="comore" href="#" data-click="coShowAll" data-arg="${esc(fam)}"
-              >Expand</a>`:"")}
+              >Expand</a>`
+          : rows.length>3
+          ? `<a class="comore" href="#" data-click="coShowAll" data-arg="${esc(fam)}"
+              >${all?"Show fewer":`Show ${rows.length-3} more`}</a>`
+          : ""}
       </div>`;}).join("");
   }
   const roles=`<section class="cosec">

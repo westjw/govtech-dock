@@ -1776,6 +1776,50 @@ fires.
     All fixed; `check_outside_text_never_becomes_markup`.
   - This is step 0 of a content security policy, which needs no inline
     handlers to be worth having.
+- **A content security policy on every page, built from the pages
+  (2026-10-09).** The second wall behind escaping: if an escape is ever
+  missed, the browser still refuses an injected handler, `javascript:` url,
+  script or eval.
+  - **Nobody types a hash.** `build_site.main()` calls `csp.write()` LAST.
+    It reads the pages as they will ship, hashes every inline script, and
+    writes `public/meta-csp.json` with one policy per kind of page (app,
+    company, static, alerts, claim, admin, none, holding).
+    `functions/_csp.js` reads it once per isolate and sets the header, so an
+    edit changes the page and its hashes in the same deploy.
+  - **The build refuses what it did not write.** Each kind of page may carry
+    only the scripts cut from its sources. Anything else stops the build,
+    naming the file and leaving the last deploy live: an inline handler, a
+    `javascript:` url, an external script, a nonce, a `<meta>` policy,
+    `<base>`, `<object>`, `<embed>` or `<iframe>`, or a page of unknown kind.
+    So an escaping bug cannot get itself hashed and blessed. A new kind of
+    page needs a line in `csp.kind_of()` and `csp.ROUTES`.
+  - **The nonce is minted per response and never written into our HTML.** It
+    exists for the Bot Fight Mode snippet Cloudflare injects (seen live).
+    The policy allows only that snippet's `/cdn-cgi/challenge-platform/`
+    path, not `'self'`.
+  - Styles stay `'unsafe-inline'`: the pages carry thousands of style
+    attributes, and a style cannot run anything. A hash or nonce in
+    style-src would switch it off.
+  - **It ships reporting** (`CSP_MODE = "report"`, Report-Only header). The
+    gate's holding page is enforced from the start. Flip to `"enforce"`
+    after a console check on the live site (DEPLOY.md §3). selftest refuses
+    `GATED = false` while it still reports.
+  - **It never costs a page.** A missing, garbled or unreadable manifest
+    sends the page untouched, keeping only the frame headers. Frame headers
+    are on the token pages and, since this change, on `/admin` too, which
+    had none.
+  - `check_every_page_carries_a_policy_built_from_itself` covers it:
+    - plants nine things the build must refuse;
+    - re-hashes every built page with a second reader;
+    - drives every spelling of every kind through the real middleware with
+      the real manifest;
+    - checks that a broken manifest costs no page.
+  - Tested in a browser with the policy ENFORCED on a local build. Every
+    kind of page ran. An injected onerror, a `javascript:` link, an injected
+    script and eval were all refused.
+- **"Show N more" on a company page shows the rest** (2026-10-09). From the
+  turn-6 rebuild it toggled a set nothing read for the first two groups,
+  so it redrew the same three roles.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

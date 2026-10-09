@@ -221,6 +221,15 @@ and the public forms (alerts, add a company, claim).
 passed" (Pages deploys a push without running it; `selftest.yml` reports on
 the push afterwards), set `GATED = false` in `functions/_gate.js`, push, wait
 for the deploy, then put path `admin` back on the three hostnames.
+**Before that, enforce the content security policy** (added 2026-10-09). It
+ships REPORTING: browsers run everything and print what they would block in
+the console. While still signed in, open the board, a company page, a
+conference page, /alerts and /claim on sledjobs.com with the browser's
+console open; any line starting "[Report Only] Refused" is something the
+policy would break. If there are none, set `CSP_MODE = "enforce"` in
+`functions/_csp.js` and push. selftest refuses `GATED = false` while the
+policy only reports. In the Cloudflare dashboard, Rocket Loader must stay
+off: it rewrites the page's scripts and their hashes stop matching.
 
 **Going private again, if launch shows a problem (about two minutes):**
 1. Set `GATED = true` in `functions/_gate.js` and push. Every page, data file

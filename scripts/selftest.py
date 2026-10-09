@@ -8522,6 +8522,272 @@ def check_a_gate_review_only_covers_what_it_saw() -> int:
     return errors
 
 
+_BUILT_SITE: dict = {}
+
+
+def _built_site() -> pathlib.Path | None:
+    """The site built ONCE per suite run into a temporary folder (SHIP_ADMIN=1,
+    as production), shared by every check that needs real pages. None when
+    it would not build; the first caller reports why."""
+    if "out" in _BUILT_SITE:
+        return _BUILT_SITE["out"]
+    import atexit
+    import subprocess
+    import tempfile
+    out = pathlib.Path(tempfile.mkdtemp())
+    atexit.register(shutil.rmtree, out, True)
+    env = {**os.environ, "SHIP_ADMIN": "1", "PYTHONDONTWRITEBYTECODE": "1"}
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_site.py"),
+                        "--out", str(out), "--force"], cwd=ROOT, env=env,
+                       capture_output=True, text=True, timeout=900)
+    ok = r.returncode == 0 and len(list(out.rglob("*.html"))) > 100
+    _BUILT_SITE["out"] = out if ok else None
+    _BUILT_SITE["why"] = "" if ok else f"exit {r.returncode}: {(r.stderr or r.stdout)[-400:]}"
+    return _BUILT_SITE["out"]
+
+
+def check_every_page_carries_a_policy_built_from_itself() -> int:
+    """Every HTML response carries a content security policy whose script
+    hashes were computed from that very page, at build time.
+
+    The second wall behind escaping: an inline handler, a javascript: url or a
+    script this build did not write is refused by the browser even if an
+    escape is missed (step 1 of the 2026-10-09 plan; step 0 took every
+    handler out of the markup). Nobody types a hash: scripts/csp.py reads the
+    built pages LAST in build_site.main() and writes meta-csp.json, and
+    functions/_csp.js serves it. Held here:
+
+    1. the build REFUSES what it did not write - a planted script, handler,
+       javascript: url, external script, nonce, meta policy, <base>, nested
+       script text, a page of no known kind - naming the file;
+    2. the manifest's policies have the shape the plan says, per kind;
+    3. its hashes are exactly the hashes of the pages of that kind, recomputed
+       by a SECOND reader (a regex, not html.parser), none missing, none stale;
+    4. every spelling of every kind of page, driven through the REAL
+       middleware with the real manifest, gets its own kind's policy; the
+       nonce differs per response; the holding page is enforced; frame
+       headers fold in; a manifest that cannot be read costs no page;
+    5. no hash or nonce is typed into any source;
+    6. csp.write is the last thing build_site.main() writes;
+    7. the site cannot launch (GATED false) while the policy only reports.
+    """
+    import base64 as _b64
+    import subprocess
+    import tempfile
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import csp
+    import build_site as bs
+    errors = 0
+    brand = json.loads((DATA / "brand.json").read_text())
+
+    # 1. THE BUILD REFUSES WHAT IT DID NOT WRITE
+    allowed = csp.expected(ROOT, brand, bs._hunter_page(brand), bs._lightmark_script())
+    app_src = (ROOT / "index.html").read_text()
+    lm = bs._lightmark_script()
+    plants = {
+        "c/x.html": ("<p>ok</p>" + lm + "<script>alert(1)</script>", "an inline script this build did not write"),
+        "c/y.html": ('<img src="a.png" onerror="alert(1)">', "an inline handler"),
+        "e/z.html": ('<a href=" javascript:alert(1)">z</a>', "a javascript: url"),
+        "s/TX.html": ('<script src="https://evil.example/x.js"></script>', "an external script"),
+        "c/n.html": ('<p nonce="abc">x</p>', "a nonce attribute"),
+        "c/m.html": ('<meta http-equiv="Content-Security-Policy" content="x">', "a policy in a <meta> tag"),
+        "c/b.html": ('<base href="https://evil.example/">', "a <base> element"),
+        "c/i.html": ('<iframe src="/"></iframe>', "a <iframe> element"),
+        "c/q.html": ('<script>var a="<script>";</script>', "holds a script tag"),
+        "odd/page.html": ("<p>x</p>", "a page of no known kind"),
+    }
+    for rel, (html_text, says) in plants.items():
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        try:
+            (tmp / "index.html").write_text(app_src)
+            (tmp / rel).parent.mkdir(parents=True, exist_ok=True)
+            (tmp / rel).write_text(f"<!doctype html><html><body>{html_text}</body></html>")
+            try:
+                csp.build(tmp, allowed)
+                errors += fail(f"the build took {rel} carrying {says!r}; it must refuse it")
+            except SystemExit as exc:
+                if rel not in str(exc) or says not in str(exc):
+                    errors += fail(f"the build refused {rel} without naming the file and "
+                                   f"{says!r}: {str(exc)[:160]}")
+            # the same page clean is accepted, so the refusal was about the plant
+            if rel != "odd/page.html":
+                (tmp / rel).write_text("<!doctype html><html><body><p>fine</p></body></html>")
+                try:
+                    csp.build(tmp, allowed)
+                except SystemExit as exc:
+                    errors += fail(f"a clean {rel} was refused: {str(exc)[:160]}")
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    out = _built_site()
+    if out is None:
+        return errors + fail(f"the site would not build for the policy check: {_BUILT_SITE.get('why')}")
+    mf = out / "meta-csp.json"
+    if not mf.exists():
+        return errors + fail("the build wrote no meta-csp.json; build_site.main() never calls csp.write")
+    m = json.loads(mf.read_text())
+    pol = m.get("policies") or {}
+
+    # 2. THE SHAPE, per kind
+    def directives(p: str) -> dict:
+        d = {}
+        for part in p.split(";"):
+            bits = part.split()
+            if bits:
+                d[bits[0].lower()] = bits[1:]
+        return d
+    kinds = [k for k, _ in csp.ROUTES] + ["holding"]
+    for k in kinds:
+        p = pol.get(k)
+        if not isinstance(p, str):
+            errors += fail(f"meta-csp.json has no policy for {k!r}")
+            continue
+        d = directives(p)
+        if d.get("default-src") != ["'none'"]:
+            errors += fail(f"{k}: default-src is {d.get('default-src')}, not 'none'")
+        ss = d.get("script-src") or []
+        extra = [x for x in ss if not (x == "'nonce-{{NONCE}}'" or x == "{{ORIGIN}}/cdn-cgi/challenge-platform/"
+                                       or re.fullmatch(r"'sha256-[A-Za-z0-9+/]{43}='", x))]
+        if extra or "'nonce-{{NONCE}}'" not in ss:
+            errors += fail(f"{k}: script-src allows {extra or 'no nonce'}; only the nonce, "
+                           f"the challenge path and this kind's hashes may run")
+        for name in ("script-src-attr", "form-action", "base-uri", "object-src"):
+            if d.get(name) != ["'none'"]:
+                errors += fail(f"{k}: {name} is {d.get(name)}, not 'none'")
+        st = d.get("style-src") or []
+        if "'unsafe-inline'" not in st or any(x.startswith(("'sha", "'nonce")) for x in st):
+            errors += fail(f"{k}: style-src {st}: a hash or nonce there switches unsafe-inline off "
+                           f"and blanks thousands of style attributes")
+        if "report-uri" in d or "report-to" in d:
+            errors += fail(f"{k}: a report endpoint costs a Function request per report")
+        if d.get("img-src") != ["'self'"] or d.get("connect-src") != ["'self'"]:
+            errors += fail(f"{k}: img-src/connect-src widened: {d.get('img-src')} / {d.get('connect-src')}")
+
+    # 3. A SECOND READER, independent of csp.py's parser
+    SCRIPT = re.compile(r"<script(\s[^>]*)?>(.*?)</script\s*>", re.S | re.I)
+
+    def hashes_of(text: str) -> set:
+        hs = set()
+        for mm in SCRIPT.finditer(text):
+            if re.search(r"type\s*=\s*[\"']?application/(ld\+)?json", mm.group(1) or "", re.I):
+                continue
+            body = mm.group(2).replace("\r\n", "\n").replace("\r", "\n")
+            dg = hashlib.sha256(body.encode("utf-8")).digest()
+            hs.add("'sha256-" + _b64.b64encode(dg).decode() + "'")
+        return hs
+
+    by_kind: dict = {k: set() for k in kinds}
+    one: dict = {}
+    for f in sorted(out.rglob("*.html")):
+        rel = f.relative_to(out).as_posix()
+        k = csp.kind_of(rel)
+        hs = hashes_of(f.read_text(encoding="utf-8"))
+        by_kind.setdefault(k, set()).update(hs)
+        one.setdefault(k, (rel, hs))
+        if not hs <= set(directives(pol.get(k, "")).get("script-src") or []):
+            errors += fail(f"{rel}: a script on the page is not in the {k} policy; it would not run")
+    for k in kinds:
+        listed = {x for x in directives(pol.get(k, "")).get("script-src") or [] if x.startswith("'sha256-")}
+        if listed - by_kind.get(k, set()):
+            errors += fail(f"{k}: the policy allows {len(listed - by_kind.get(k, set()))} hash(es) no "
+                           f"page of that kind carries - stale, or blessing something")
+    if not by_kind.get("app"):
+        errors += fail("the second reader found no script on index.html; it compared nothing")
+
+    # 4. EVERY SPELLING, THROUGH THE REAL MIDDLEWARE
+    spell = {}
+    for k, (rel, hs) in one.items():
+        if k == "app":
+            ps = ["/", "/index.html"]
+        elif k == "none":
+            ps = ["/404.html", "/no-such-page"]
+        elif rel.endswith("/index.html"):
+            ps = ["/" + rel[: -len("index.html")]]
+        else:
+            ps = ["/" + rel, "/" + rel[:-5]]
+            if k in ("alerts", "claim"):
+                ps.append("/%" + format(ord(rel[0]), "x") + rel[1:-5])
+        for p in ps:
+            spell[p] = (k, hs)
+    if not shutil.which("node"):
+        print("  note: node is not installed; the policy was not carried")
+        return errors
+    env = {**os.environ, "CSP_MANIFEST": str(mf), "CSP_PATHS": json.dumps(sorted(spell))}
+    r = subprocess.run(["node", str(ROOT / "scripts" / "gate_harness.mjs")],
+                       capture_output=True, text=True, timeout=300, env=env)
+    try:
+        C = json.loads(r.stdout)["csp"]
+    except (ValueError, KeyError):
+        return errors + fail(f"gate_harness carried no policy: {r.stderr[-300:]}")
+    mode = C.get("mode")
+    if mode not in ("report", "enforce"):
+        errors += fail(f"CSP_MODE is {mode!r}")
+    hdr = "report" if mode == "report" else "enforce"
+    for p, (k, hs) in spell.items():
+        got = C["pages"].get(p) or {}
+        h = got.get(hdr) or ""
+        if got.get("status") != 200 or "<p>page</p>" not in (got.get("body") or ""):
+            errors += fail(f"{p}: the page did not come through ({got.get('status')})")
+        if "'nonce-" not in h:
+            errors += fail(f"{p} ({k}) carries no policy in its {hdr} header")
+            continue
+        if not hs <= set(directives(h).get("script-src") or []):
+            errors += fail(f"{p} is served the wrong kind's policy: its scripts would not run")
+        if k in ("alerts", "claim", "admin") and "DENY" not in (got.get("xfo") or ""):
+            errors += fail(f"{p} lost its frame protection")
+    a, b = C.get("home_twice") or ["", ""]
+    na = re.search(r"'nonce-([^']+)'", a or "")
+    nb = re.search(r"'nonce-([^']+)'", b or "")
+    if not (na and nb) or na.group(1) == nb.group(1) or len(na.group(1)) < 22:
+        errors += fail("the nonce is missing, short, or the same on two responses")
+    if "https://www.sledjobs.com/cdn-cgi/challenge-platform/" not in (C["www"].get(hdr) or ""):
+        errors += fail("the challenge path does not follow the host the page was asked on")
+    hold = C.get("holding") or {}
+    if hold.get("status") != 403 or "'nonce-" not in (hold.get("enforce") or "") \
+            or "sha256" in (hold.get("enforce") or "") or hold.get("report"):
+        errors += fail(f"the gate's holding page is not under an ENFORCED policy with no hashes: {hold}")
+    if "frame-ancestors 'none'" not in (C.get("holding_alerts") or {}).get("enforce", ""):
+        errors += fail("the holding page for /alerts dropped frame-ancestors")
+    if (C.get("plain") or {}).get("report") or (C.get("plain") or {}).get("enforce"):
+        errors += fail("a text/plain response was given a page policy")
+    ea = (C.get("enforce_alerts") or {}).get("enforce", "")
+    if not (ea.startswith("default-src 'none'") and ea.endswith("frame-ancestors 'none'")):
+        errors += fail(f"enforce mode on /alerts does not fold frame-ancestors into ONE header: {ea[-80:]}")
+    if (C.get("enforce_home") or {}).get("report"):
+        errors += fail("enforce mode still sends a report-only header")
+    for label, res in (C.get("broken") or {}).items():
+        home, al = res.get("home") or {}, res.get("alerts") or {}
+        if home.get("status") != 200 or "<p>page</p>" not in (home.get("body") or ""):
+            errors += fail(f"a {label} manifest cost the page itself")
+        if home.get("report") or home.get("enforce"):
+            errors += fail(f"a {label} manifest still produced a policy")
+        if al.get("enforce") != "frame-ancestors 'none'" or al.get("xfo") != "DENY":
+            errors += fail(f"a {label} manifest cost /alerts its frame protection")
+
+    # 5. NOTHING TYPED
+    for f in [ROOT / "index.html", ROOT / "alerts.html", ROOT / "claim.html", ROOT / "admin-web.html",
+              *sorted((ROOT / "functions").rglob("*.js"))]:
+        t = f.read_text()
+        if re.search(r"'sha256-[A-Za-z0-9+/]{43}='", t) or re.search(r"'nonce-[A-Za-z0-9+/]{16,}", t):
+            errors += fail(f"{f.relative_to(ROOT)} has a hash or nonce typed into it; it will drift")
+
+    # 6. LAST WRITE
+    src = inspect.getsource(bs.main)
+    i = src.rfind("csp.write(")
+    later = [w for w in ("write_noscript(", "build_admin_bundle(", "write_company_pages(",
+                         "write_conference_pages(", "write_state_pages(", "write_headers(")
+             if src.rfind(w) > i]
+    if i < 0 or later:
+        errors += fail(f"csp.write is not the last page write in build_site.main(): {later or 'never called'}")
+
+    # 7. NO LAUNCH ON A POLICY THAT ONLY REPORTS
+    gated = re.search(r"export const GATED\s*=\s*(true|false)", (ROOT / "functions" / "_gate.js").read_text())
+    if gated and gated.group(1) == "false" and mode != "enforce":
+        errors += fail("the site is public (GATED false) while the policy only reports; "
+                       "set CSP_MODE to \"enforce\" in functions/_csp.js")
+    return errors
+
+
 def check_no_markup_carries_code() -> int:
     """No page writes code into markup: no on* attribute, no javascript: url.
 
@@ -8596,25 +8862,17 @@ def check_no_markup_carries_code() -> int:
     probe.feed('<p><img src="x" ONERROR="y"><a href=" javascript:z">a</a></p>')
     if len(probe.bad) != 2:
         errors += fail(f"the built-page parser missed a planted handler or url: {probe.bad}")
-    out = pathlib.Path(tempfile.mkdtemp())
-    try:
-        env = {**os.environ, "SHIP_ADMIN": "1", "PYTHONDONTWRITEBYTECODE": "1"}
-        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_site.py"),
-                            "--out", str(out), "--force"], cwd=ROOT, env=env,
-                           capture_output=True, text=True, timeout=600)
-        pages = sorted(out.rglob("*.html"))
-        if r.returncode != 0 or len(pages) < 100:
-            errors += fail(f"the site would not build for the markup scan "
-                           f"(exit {r.returncode}, {len(pages)} pages): {r.stderr[-300:]}")
+    out = _built_site()
+    if out is None:
+        errors += fail(f"the site would not build for the markup scan: {_BUILT_SITE.get('why')}")
+    else:
         found = []
-        for f in pages:
+        for f in sorted(out.rglob("*.html")):
             a = Attrs()
             a.feed(f.read_text(errors="replace"))
             found += [f"{f.relative_to(out)}: {b}" for b in a.bad]
         for b in found[:10]:
             errors += fail(f"a built page carries code in markup: {b}")
-    finally:
-        shutil.rmtree(out, ignore_errors=True)
 
     # 3. EVERY ACTION NAME RESOLVES, AND EVERY ACTION IS USED
     src = (ROOT / "index.html").read_text()
@@ -8670,6 +8928,12 @@ def check_no_markup_carries_code() -> int:
         if (kind, True) not in reg:
             errors += fail(f"no capture-phase {kind} listener on the document; "
                            f"{'a logo load does not bubble' if kind in ('load', 'error') else 'controls do nothing'}")
+    vs = h.get("views") or {}
+    shown = {k: vs.get(k, "").count('data-click="openRole"') for k in ("__more_before", "__more_after", "__more_back")}
+    if shown != {"__more_before": 3, "__more_after": 5, "__more_back": 3} \
+            or "Show 2 more" not in vs.get("__more_before", "") \
+            or "Show fewer" not in vs.get("__more_after", ""):
+        errors += fail(f"'Show N more' on a company page does not show the rest and back: {shown}")
     view = (h.get("views") or {}).get("quote-co", "")
     args = [_html.unescape(x) for x in re.findall(r'data-click="openRole" data-arg="([^"]*)"', view)]
     if qid not in args:
@@ -30594,6 +30858,7 @@ def main() -> int:
     errors += check_white_logos_stay_visible()
     errors += check_no_markup_carries_code()
     errors += check_outside_text_never_becomes_markup()
+    errors += check_every_page_carries_a_policy_built_from_itself()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()

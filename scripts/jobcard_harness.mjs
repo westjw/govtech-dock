@@ -249,6 +249,14 @@ try {
       views[o.id] = String(rec.innerHTML);
     } catch (e) { views[o.id] = "THREW: " + (e && e.message); }
   }
+  // "Show N more" shows the rest of the group, and "Show fewer" puts it back
+  // (it redrew the same three roles from 2026-09 to 10-09)
+  ctx.__fix.postings = Array.from({ length: 5 }, (_, i) => post({ id: `quote-co::r${i}`,
+    title: `Role ${i}`, company: "Quote Co", company_id: "quote-co", opening_id: `quote-co::o${i}` }));
+  const grab = (js) => { rec.innerHTML = ""; vm.runInContext(js, ctx); return String(rec.innerHTML); };
+  views.__more_before = grab(`CO_OPEN_GROUPS = null; D = __fix; co("quote-co", true);`);
+  views.__more_after = grab(`coShowAll("gtm");`);
+  views.__more_back = grab(`coShowAll("gtm");`);
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }
