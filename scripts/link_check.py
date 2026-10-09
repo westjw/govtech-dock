@@ -25,7 +25,11 @@ FOUR FINDINGS, and only the first two hide a link:
             acquisition (cartegraph.com names OpenGov). The link may well be
             right; the RECORD may not be. Shown to a person, never hidden.
   unread    the fetch failed or was refused. A fact about the fetch, never about
-            the company: a bot wall is not a dead link.
+            the company: a bot wall is not a dead link. With no HTTP answer at
+            all, `why` names which silence it was (a domain gone from DNS is
+            the only one that says the address is dead), and `plain_http` is
+            where the same address goes over http - evidence for the record,
+            and a for-sale page there hides the link like one over https.
 
 build_board reads link_health.json and does not publish a link flagged spam or
 for_sale (the record is untouched; a person fixes it from the admin). Paced
@@ -141,28 +145,88 @@ def judge(url: str, status: int | None, final: str, html: str) -> dict:
     return {"kind": "ok", "status": status, "final": final, "title": title}
 
 
-def fetch(url: str) -> tuple[int | None, str, str]:
-    """(status or None, final url, body). Live: no HTTP cache."""
+# WHICH SILENCE. The 2026-10-07 run listed 61 websites as answering nothing,
+# with no status and no reason, and they were five different facts: 17
+# domains gone from DNS, a dozen certificates expired (thecitybase.com,
+# escapetech.com - both now redirect, over plain http, to the company that
+# bought them), timeouts, and dropped connections. Only the first says the
+# address is dead; a person fixing the record needs to know which it is.
+SILENCES = (
+    ("no such domain", re.compile(r"NameResolution|getaddrinfo|nodename nor servname|"
+                                  r"Name or service not known|No address associated", re.I)),
+    ("certificate expired", re.compile(r"certificate has expired", re.I)),
+    ("certificate is for another address", re.compile(r"[Hh]ostname mismatch|doesn't match|"
+                                                      r"not valid for", re.I)),
+    ("certificate not trusted", re.compile(r"CERTIFICATE_VERIFY_FAILED|SSLCertVerification", re.I)),
+    ("secure connection failed", re.compile(r"SSLError|SSL:|TLSV1|WRONG_VERSION", re.I)),
+    ("timed out", re.compile(r"Timeout|timed out", re.I)),
+    ("connection refused", re.compile(r"ConnectionRefused|Connection refused", re.I)),
+    ("connection dropped", re.compile(r"ConnectionReset|Connection reset|Connection aborted|"
+                                      r"RemoteDisconnected", re.I)),
+)
+
+
+def why_unanswered(err: str) -> str:
+    """The reason a fetch got no HTTP answer at all, from the error's text."""
+    for why, pat in SILENCES:
+        if pat.search(err or ""):
+            return why
+    return "network error"
+
+
+def fetch(url: str) -> tuple[int | None, str, str, str]:
+    """(status or None, final url, body, why there was no answer). Live: no
+    HTTP cache."""
     ats.HTTP_CACHE = None
     try:
         r = ats._get(url)
-        return 200, getattr(r, "url", url) or url, getattr(r, "text", "") or ""
+        return 200, getattr(r, "url", url) or url, getattr(r, "text", "") or "", ""
     except ats.AtsError as exc:
         m = re.search(r"HTTP (\d{3})", str(exc))
-        return (int(m.group(1)) if m else None), url, ""
-    except Exception:                                       # noqa: BLE001
-        return None, url, ""
+        if m:
+            return int(m.group(1)), url, "", ""
+        return None, url, "", why_unanswered(str(exc))
+    except Exception as exc:                                # noqa: BLE001
+        return None, url, "", why_unanswered(repr(exc))
+
+
+def moved_to(row: dict) -> str | None:
+    """Where this link lands on another domain, if it does: the link itself,
+    or - when the https address gave no answer - the same address over plain
+    http. thecitybase.com's certificate has expired and over http it goes to
+    Euna; that redirect is the acquisition evidence, even though a visitor
+    clicking the https link sees only a certificate warning."""
+    if row.get("kind") == "moved":
+        return row.get("final")
+    plain = row.get("plain_http") or {}
+    if plain.get("kind") == "moved":
+        return plain.get("final")
+    return None
 
 
 def check(companies: list, get=fetch, workers: int = 8) -> dict:
-    """{company_id: [{field, url, kind, status, final, title}]} for every link."""
+    """{company_id: [{field, url, kind, status, final, title, why?, plain_http?}]}
+    for every link."""
     jobs = [(c["id"], field, url) for c in companies for field, url in links_of(c)]
     seen: dict = {}
     out: dict = {}
 
     def one(url):
-        status, final, body = get(url)
-        return judge(url, status, final, body)
+        status, final, body, why = (tuple(get(url)) + ("",))[:4]
+        res = judge(url, status, final, body)
+        if status is None:
+            res["why"] = why or "network error"
+        # PLAIN HTTP, AS EVIDENCE ONLY. The published https link stays unread
+        # - that is what a visitor gets - but where the same address goes over
+        # http says whether the company moved, was bought, or let the domain
+        # go to a for-sale page. A dead domain has nothing to ask.
+        if status is None and res["why"] != "no such domain" \
+                and url.lower().startswith("https://"):
+            s2, f2, b2, _w = (tuple(get("http://" + url[8:])) + ("",))[:4]
+            if s2 == 200 and b2:
+                plain = judge(url, s2, f2, b2)
+                res["plain_http"] = {"kind": plain["kind"], "final": f2, "title": plain["title"]}
+        return res
 
     urls = sorted({u for _, _, u in jobs})
     with cf.ThreadPoolExecutor(max_workers=workers) as pool:
@@ -177,11 +241,14 @@ def check(companies: list, get=fetch, workers: int = 8) -> dict:
 
 
 def hidden(health: dict | None) -> set:
-    """The urls build_board must not publish: flagged spam or for_sale."""
+    """The urls build_board must not publish: flagged spam or for_sale, by
+    the link itself or by the same address over plain http."""
     bad = set()
     for rows in ((health or {}).get("links") or {}).values():
         for r in rows:
-            if r.get("kind") in HIDE:
+            # an https link that does not answer, on a domain that over plain
+            # http is for sale, is not theirs either (platinumtr.com, 10-08)
+            if r.get("kind") in HIDE or (r.get("plain_http") or {}).get("kind") in HIDE:
                 bad.add(r.get("url"))
     return bad
 
@@ -204,16 +271,26 @@ def main(argv: list | None = None) -> int:
             counts[r["kind"]] = counts.get(r["kind"], 0) + 1
     print(f"{sum(len(v) for v in res.values())} links checked: " +
           ", ".join(f"{n} {k}" for k, n in sorted(counts.items())))
+    whys: dict = {}
+    for rows in res.values():
+        for r in rows:
+            if r.get("why"):
+                whys[r["why"]] = whys.get(r["why"], 0) + 1
+    if whys:
+        print("  no answer: " + ", ".join(f"{n} {w}" for w, n in sorted(whys.items(), key=lambda x: -x[1])))
     for kind in ("spam", "for_sale"):
         for cid, rows in sorted(flagged.items()):
             for r in rows:
-                if r["kind"] == kind:
-                    print(f"  {kind.upper():9} {cid}: {r['field']} {r['url']} -> {r['title'][:70]!r}")
+                if r["kind"] == kind or (r.get("plain_http") or {}).get("kind") == kind:
+                    t = r["title"] or (r.get("plain_http") or {}).get("title") or ""
+                    print(f"  {kind.upper():9} {cid}: {r['field']} {r['url']} -> {t[:70]!r}")
     if a.write and not a.id:
         OUT.write_text(json.dumps({
             "note": "What every link the board publishes led to when last checked "
                     "(scripts/link_check.py). build_board does not publish a link "
-                    "flagged spam or for_sale. Only links that are not ok are listed.",
+                    "flagged spam or for_sale. Only links that are not ok are listed. "
+                    "'why' says why a link gave no answer; 'plain_http' is where the "
+                    "same address went over http, as evidence only.",
             "checked_on": dt.date.today().isoformat(),
             "counts": counts, "links": flagged}, indent=1, sort_keys=True) + "\n")
         print(f"wrote {OUT.relative_to(ROOT)}")

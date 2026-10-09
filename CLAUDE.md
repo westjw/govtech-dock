@@ -1630,6 +1630,19 @@ says "slot" seven times (time slots), Trimble "spin" ten times (a spinner).
   the markup is not enough: legacymark.com loads a GoDaddy script.
 - Mutation-tested 13 of 13. Read the flagged list before trusting it.
 
+**"No answer" says which silence (2026-10-08).** The 10-07 run listed 61
+websites with no status and no reason. Re-asked, 23 answered over plain http,
+and the rest were five different failures: domains gone from DNS, expired
+certificates, certificates for another address, timeouts and dropped
+connections.
+- `why` on each such row names the failure. Only "no such domain" says the
+  address itself is dead.
+- `plain_http` is where the same address goes over http. It is evidence only:
+  the published https link stays unread, because that is what a visitor gets.
+  thecitybase.com's certificate expired and over http it lands on Euna, so
+  `moved_to()` hands that to the Acquisitions queue.
+- A domain that is for sale over plain http is hidden like one over https.
+
 ## Jobs posted on SLED HQ reach the board through a feed (2026-10-05)
 
 The recruiter side lives in SLED HQ (owner, 2026-10-01), and HQ never writes

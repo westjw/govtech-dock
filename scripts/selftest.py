@@ -27196,10 +27196,12 @@ def check_every_published_link_is_rechecked() -> int:
                                     " cemetery software since 1987 <footer>Website Builder by GoDaddy</footer>"),
         "casino title": L.judge("https://i.example.com", 200, "https://i.example.com/",
                                 "<title>VPN Friendly BTC Crypto Casinos USA</title> best options"),
+        # a 200 with nothing in it is not a page that answered
+        "empty": L.judge("https://j.example.com", 200, "https://j.example.com/", ""),
     }
     want = {"spam": "spam", "for_sale": "for_sale", "market": "for_sale", "moved": "moved",
             "unread": "unread", "ok": "ok", "one word": "ok", "registrar script": "ok",
-            "casino title": "spam"}
+            "casino title": "spam", "empty": "unread"}
     for k, w in want.items():
         if cases[k]["kind"] != w:
             errors += fail(f"a {k} page was judged {cases[k]['kind']!r}, not {w!r}")
@@ -27257,9 +27259,105 @@ def check_every_published_link_is_rechecked() -> int:
             errors += fail(f"a website landing on another name is not acquisition evidence: {ev}")
         if A.evidence_for("zz-moved-house").get("redirect"):
             errors += fail("a same-name domain move was offered as an acquisition")
+        # an expired certificate, and over plain http the buyer's page
+        (tmp / "link_health.json").write_text(json.dumps({"links": {
+            "zz-cert": [{"field": "website", "kind": "unread", "status": None,
+                         "url": "https://thecitybase.com", "final": "https://thecitybase.com",
+                         "why": "certificate expired",
+                         "plain_http": {"kind": "moved", "title": "Euna Payments",
+                                        "final": "https://eunasolutions.com/solutions/payments/"}}]}}))
+        ev = A.evidence_for("zz-cert")
+        if (ev.get("redirect") or {}).get("to") != "https://eunasolutions.com/solutions/payments/":
+            errors += fail(f"a dead https site that redirects to its buyer over http is not "
+                           f"acquisition evidence: {ev}")
     finally:
         A.DATA = keep_data
         shutil.rmtree(tmp, ignore_errors=True)
+
+    # WHICH SILENCE (2026-10-08). The 10-07 run listed 61 websites as giving
+    # no answer with no reason; they were dead domains, expired certificates,
+    # timeouts and dropped connections. The error strings are requests' own.
+    silences = {
+        "HTTPSConnectionPool(host='www.rec1.com', port=443): Max retries exceeded (Caused by "
+        "NameResolutionError(\"Failed to resolve 'www.rec1.com' ([Errno 8] nodename nor servname "
+        "provided, or not known)\"))": "no such domain",
+        "network error: HTTPSConnectionPool(host='thecitybase.com', port=443): (Caused by SSLError("
+        "SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: "
+        "certificate has expired (_ssl.c:1002)')))": "certificate expired",
+        "(Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] "
+        "certificate verify failed: Hostname mismatch, certificate is not valid for "
+        "'www.synect.com'. (_ssl.c:1002)\")))": "certificate is for another address",
+        "(Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal "
+        "error (_ssl.c:1002)')))": "secure connection failed",
+        "(Caused by ConnectTimeoutError(<HTTPSConnection(host='numina.co', port=443)>, "
+        "'Connection to numina.co timed out. (connect timeout=20)'))": "timed out",
+        "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))":
+            "connection dropped",
+        "(Caused by NewConnectionError('<HTTPSConnection>: Failed to establish a new connection: "
+        "[Errno 61] Connection refused'))": "connection refused",
+        "something nobody has seen": "network error",
+    }
+    for err, w in silences.items():
+        if L.why_unanswered(err) != w:
+            errors += fail(f"why_unanswered({err[:60]!r}...) is {L.why_unanswered(err)!r}, not {w!r}")
+    keep_get, keep_cache = L.ats._get, L.ats.HTTP_CACHE
+    try:
+        def gone(u):
+            raise L.ats.AtsError("network error: (Caused by NameResolutionError(\"Failed to resolve\"))")
+
+        def refused(u):
+            raise L.ats.AtsError(f"HTTP 403 for {u}")
+        L.ats._get = gone
+        if L.fetch("https://x.example.com")[::3] != (None, "no such domain"):
+            errors += fail(f"fetch on a dead domain gave {L.fetch('https://x.example.com')}")
+        L.ats._get = refused
+        if L.fetch("https://x.example.com")[::3] != (403, ""):
+            errors += fail(f"fetch on a 403 gave {L.fetch('https://x.example.com')}; a status is its own reason")
+    finally:
+        L.ats._get, L.ats.HTTP_CACHE = keep_get, keep_cache
+
+    sale = "<html><title>platinumtr.com is for sale</title><body>Buy this domain</body></html>"
+    pages = {
+        "https://dead.example.com": (None, "https://dead.example.com", "", "no such domain"),
+        "https://cert.example.com": (None, "https://cert.example.com", "", "certificate expired"),
+        "http://cert.example.com": (200, "https://buyer.example.org/payments",
+                                    "<title>Buyer Payments</title> we bought Cert"),
+        "https://slow.example.com": (None, "https://slow.example.com", "", "timed out"),
+        "http://slow.example.com": (200, "https://www.buydomains.com/lander/slow.example.com", sale),
+        "https://old.example.com": (None, "https://old.example.com", ""),   # a 3-tuple stub
+        "https://ok.example.com": (200, "https://ok.example.com/", "<title>OK</title> software"),
+    }
+    asked: list = []
+
+    def stub(u):
+        asked.append(u)
+        return pages.get(u, (None, u, "", "connection refused"))
+
+    co = [{"id": k.split("//")[1].split(".")[0], "website": k}
+          for k in pages if k.startswith("https://")]
+    try:
+        got = {cid: rows[0] for cid, rows in L.check(co, get=stub, workers=2).items()}
+    except Exception as exc:                               # noqa: BLE001
+        return errors + fail(f"link_check.check could not be driven: {exc!r}")
+    if got["dead"].get("why") != "no such domain" or "plain_http" in got["dead"]:
+        errors += fail(f"a dead domain reads {got['dead']}")
+    if "http://dead.example.com" in asked:
+        errors += fail("plain http was asked of a domain that does not exist")
+    if got["cert"].get("kind") != "unread" or got["cert"].get("why") != "certificate expired":
+        errors += fail(f"an expired certificate reads {got['cert']}; a visitor's click fails, so it is unread")
+    if L.moved_to(got["cert"]) != "https://buyer.example.org/payments":
+        errors += fail(f"where an expired-certificate site goes over http was lost: {got['cert']}")
+    if (got["slow"].get("plain_http") or {}).get("kind") != "for_sale":
+        errors += fail(f"a site for sale over plain http was not judged for sale: {got['slow']}")
+    health = {"links": {cid: [r] for cid, r in got.items()}}
+    if "https://slow.example.com" not in L.hidden(health):
+        errors += fail("a link whose domain is for sale over plain http is still published")
+    if "https://cert.example.com" in L.hidden(health):
+        errors += fail("a link to a company's buyer was hidden; moved is shown to a person, never hidden")
+    if got["old"].get("why") != "network error":
+        errors += fail(f"a fetch with no reason reads {got['old']}; it must still say it had no answer")
+    if "why" in got["ok"] or "plain_http" in got["ok"] or "http://ok.example.com" in asked:
+        errors += fail(f"a link that answered was given a silence or a second fetch: {got['ok']}")
 
     yml = (ROOT / ".github" / "workflows" / "links.yml")
     if not yml.exists():
