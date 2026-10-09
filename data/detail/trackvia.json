@@ -11,12 +11,21 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "The Next Chapter for Field Operations",
    "kind": "press",
    "kind_rule": null,
    "url": "https://trackvia.com/blog/the-next-chapter-for-field-operations/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "time",
+   "first_seen": "2026-10-08",
+   "headline": "Best Practices in Field Operations: Lessons from Vee-Jay Cement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://trackvia.com/blog/vee-jay-webinar-recap-best-practices-in-field-operations/"
   },
   {
    "date": "2026-09-30",
@@ -29,16 +38,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Best Practices in Field Operations: Lessons from Vee-Jay Cement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://trackvia.com/blog/vee-jay-webinar-recap-best-practices-in-field-operations/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Best Practices for Modern Field Operations",
    "kind": "press",
@@ -46,8 +46,8 @@
    "url": "https://trackvia.com/blog/best-practices-for-modern-field-operations/"
   },
   {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
+   "date": "2026-08-27",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "You Didn\u2019t Outgrow the Spreadsheet. You Outgrew What Replaced It.",
    "kind": "press",
@@ -55,8 +55,8 @@
    "url": "https://trackvia.com/blog/you-didnt-outgrow-the-spreadsheet-you-outgrew-what-replaced-it/"
   },
   {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
+   "date": "2026-08-24",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Disaster Response for State Agencies: A Field Workflow Guide",
    "kind": "press",
@@ -64,8 +64,8 @@
    "url": "https://trackvia.com/blog/disaster-response-for-state-agencies-a-field-workflow-guide/"
   },
   {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
+   "date": "2026-08-20",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "You Shouldn\u2019t Have to Out-Work Your Software: A Workflow Automation Guide for Public Sector Teams",
    "kind": "press",
@@ -73,8 +73,8 @@
    "url": "https://trackvia.com/blog/a-workflow-automation-guide-for-public-sector-teams/"
   },
   {
-   "date": "2026-08-08",
-   "date_source": "json-ld",
+   "date": "2026-08-13",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "How to Track Assets Across Multiple Locations Without Losing Visibility",
    "kind": "press",

@@ -2,12 +2,21 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/keeping-up-with-ai-accelerating-vulnerability-discovery"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "card-date",
+   "first_seen": "2026-10-09",
+   "headline": "Machine Speed Defenses: Charting a Path to Rapid SecOps Transformation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/omdia-machine-speed-defenses"
   },
   {
    "date": "2026-10-06",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "AI is Accelerating Your Environment. Our Connector Keeps Up: The Next Evolution of the Service Graph Connector for Tanium & ServiceNow",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Hunter Wins: HuntIQ Tradecraft is your new hunt library",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Hunting Our Own Vulnerabilities First: Tanium\u2019s Frontier AI Security Commitment",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Hunt or be Hunted: Hunting RunMRU for Credential Exposure",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-12",
    "headline": "Hunt or be Hunted: FalconFlank Zero-Day",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-09-09",
    "headline": "Hunt or be Hunted: ShieldBreak Zero-Day",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/resources/endpoint-management-autonomous-it-ebook"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Leveraging AI for IT & Security Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/resources/leveraging-ai-it-security-ops-ebook"
   }
  ],
  "profile": {

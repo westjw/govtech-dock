@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "Playbook October 9, 2026 Government Fiscal Year Calendars for Sales Timing See when state and local government, K\u201312, and higher education fiscal years start, and how to time outreach around fresh bud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/government-fiscal-year-calendar"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "Playbook October 9, 2026 Starbridge vs. e.Republic Industry Navigator Compare Starbridge and e.Republic across buying signals, contact data, spend intelligence, RFPs, and contract vehicles for K\u201312 GT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/starbridge-vs-erepublic-industry-navigator"
+  },
+  {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 7, 2026 Starbridge vs. Citylitics. Which platform wins more deals? Compare Starbridge and Citylitics across buying signals, contact data, spend intelligence, RFPs, and contract vehicl",
    "kind": "press",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 7, 2026 How CROs Should Use AI in Their GTM Motion: A Playbook (So Far) How Starbridge's CRO is using AI across go-to-market. The one metric that matters, what to automate first, and ",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 6, 2026 Starbridge MCP: Buyer Intelligence in Claude and ChatGPT The Starbridge MCP connects Claude and ChatGPT to your live Starbridge data. What it exposes, how to connect it, and w",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook October 2, 2026 Starbridge HubSpot Integration: What Syncs and How to Set It Up What the Starbridge HubSpot integration syncs, which HubSpot object each data type belongs on, and how to set i",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook October 2, 2026 Starbridge Salesforce Integration: Setup, Sync, and Matching What the Starbridge Salesforce integration syncs, the admin setup it needs, how account matching works, and how re",
    "kind": "press",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook September 29, 2026 Starbridge Zapier Integration: Setup, Triggers, Workflows How to connect Starbridge to Zapier, which Bridge events trigger a Zap, and how to route only high-scoring buying ",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook September 29, 2026 Q4 Government Spending The year-end spending rush works differently for local government and schools. See what Q4 government spending really means and when budgets free up.",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook September 28, 2026 AI Workflows for B2G Sales Generic AI tools miss how government and education buy. See how B2G sales automation maps AI workflows to the buying cycle and runs inside your C",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Playbook September 28, 2026 B2G Sales Terms A practical glossary of B2G sales terms for government and education, from procurement and budget cycles to compliance and buying signals.",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/government-sales-pipeline"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "time",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 25, 2026 How to Personalize B2G Outbound Generic outreach fails in government and education. Learn how to personalize B2G outbound with verified contacts and real buying signals tha",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/personalized-b2g-outbound"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "time",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 24, 2026 How Local Governments Buy Software Local governments buy software through a public, rule-bound process. Here\u2019s how it works, and why the buying decision is visible long bef",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/how-local-governments-buy-software"
   }
  ],
  "profile": {

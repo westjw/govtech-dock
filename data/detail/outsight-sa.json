@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-08",
    "headline": "Outsight and Enchanted Tools bring Beyond Line-of-Sight awareness to Service Robots",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-07",
    "headline": "Outsight acquires GRASP Aviation Innovation",
    "kind": "funding",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Costa Rica's SJO airport expands Outsight's Spatial Intelligence to new terminal areas",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Outsight accelerates in Asia-Pacific: new Singapore hub",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-09-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Outsight crosses 280 million passengers under real-time measurement, from the busiest US hubs to Singapore Changi",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-04-23",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Aeroporti di Roma to deploy Outsight's Physical AI solution at scale across Rome Fiumicino Airport",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-04-21",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Intel and Outsight Announce Strategic Collaboration to Bring Physical AI\u2013Powered Spatial Intelligence to the Enterprise Edge",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-04-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Bordeaux Airport deploys Outsight solution to reduce passenger waiting times",
    "kind": "contract",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "What's a Motional Digital Twin?",
    "kind": "press",

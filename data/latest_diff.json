@@ -1,55 +1,307 @@
 {
-  "date": "2026-10-08",
-  "previous": "2026-10-07",
+  "date": "2026-10-09",
+  "previous": "2026-10-08",
   "changes": [
     {
-      "company": "BS&A Software",
-      "id": "bs-a-software",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "company": "Skydio",
+      "id": "skydio",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Concourse",
-      "id": "concourse",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "ruled out of scope by owner on 2026-08-24"
-    },
-    {
-      "company": "Intrado Life & Safety",
-      "id": "intrado-life-safety",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: HTTPSConnectionPool(host="
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "GCR (Woolpert)",
-      "id": "gcr",
-      "from": "Yes",
+      "company": "BusPatrol",
+      "id": "buspatrol",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
+      "company": "Urban SDK",
+      "id": "urban-sdk",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager"
+    },
+    {
+      "company": "LeagueApps",
+      "id": "leagueapps",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Itron",
+      "id": "itron",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Senior Manager, Sales - Resiliency only"
+    },
+    {
+      "company": "Partage",
+      "id": "partage",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "CampDoc",
+      "id": "campdoc",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "BS&A Software",
+      "id": "bs-a-software",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Prophecy Gov",
+      "id": "prophecy-gov",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Placer.ai",
+      "id": "placer-ai",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (United States, Rem)"
+    },
+    {
+      "company": "Apptegy",
+      "id": "apptegy",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative only"
+    },
+    {
+      "company": "Government Window",
+      "id": "government-window",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "MaintainX",
+      "id": "maintainx",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Emerging Account Executive (Denver)"
+    },
+    {
+      "company": "Cyclomedia",
+      "id": "cyclomedia",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Senior Account Manager Poland (Remote job)"
+    },
+    {
+      "company": "Citylogix",
+      "id": "citylogix",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Manager (California)"
+    },
+    {
+      "company": "Forerunner",
+      "id": "forerunner",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive (Portland, ME)"
+    },
+    {
+      "company": "Cellebrite",
+      "id": "cellebrite",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Magnet Forensics",
+      "id": "magnet-forensics",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive - Public Sector  (Las Vegas, Nevada)"
+    },
+    {
+      "company": "Flashpoint",
+      "id": "flashpoint",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "TRM Labs",
+      "id": "trm-labs",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Account Director, Public Sector (D only"
+    },
+    {
+      "company": "Veritone",
+      "id": "veritone",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales & Business Operations Coordi only"
+    },
+    {
+      "company": "NDI Recognition Systems",
+      "id": "ndi-recognition-systems",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Echodyne",
+      "id": "echodyne",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager - Asia (Remote - Asia)"
+    },
+    {
+      "company": "Extra Duty Solutions",
+      "id": "extra-duty-solutions",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Peachjar",
+      "id": "peachjar",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Municibid",
+      "id": "municibid",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Brain Co.",
+      "id": "brain-co",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "Sales Engineer only"
+    },
+    {
+      "company": "Videray Technologies",
+      "id": "videray-technologies",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Ekin Smart City Technologies",
+      "id": "ekin-smart-city-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Modaxo",
+      "id": "modaxo",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Sales Director (Italy - Signa)"
+    },
+    {
+      "company": "Interloc Solutions",
+      "id": "interloc-solutions",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "March Networks",
+      "id": "march-networks",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Regional Sales Manager - Transit S"
+    },
+    {
+      "company": "Axon Vibe",
+      "id": "axon-vibe",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CARFAX",
+      "id": "carfax",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Manager - Revenue Operations & Ana only"
+    },
+    {
+      "company": "CalAmp",
+      "id": "calamp",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Intrado Life & Safety",
+      "id": "intrado-life-safety",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Unison (Unison Global)",
+      "id": "unison",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Anterix",
+      "id": "anterix",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "OCLC",
+      "id": "oclc",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Strategic Account Director only"
+    },
+    {
       "company": "CUSI",
       "id": "cusi",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://cusi.com/careers/"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Open Point",
+      "id": "open-point",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
       "company": "PlanStreet",
       "id": "planstreet",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://www.planstreet.com/"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }
