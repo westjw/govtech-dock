@@ -6079,13 +6079,19 @@ function co(id,fromUrl){
   /* a group opened on one company stays open only on that company. Keyed on
      the company last DRAWN: popstate sets CO from the url before it calls
      co(CO,true), so CO!==id never fired on Back (second review, 10-09). */
-  const fresh=CO_DRAWN!==id;
+  // an open the reader made (not the address, not a redraw) is a new visit,
+  // even of the company drawn last: Back to the list and the same row again
+  // left focus on <body> (review of launch audit 2)
+  const fresh=!fromUrl||CO_DRAWN!==id;
   // a redraw of the same card (its write-up arriving, a group opening)
   // replaces the heading that had focus; it gets it back below
   const hadFocus=!fresh&&!!document.activeElement?.closest?.("#view h1");
   if(fresh) CO_OPEN_GROUPS=new Set();
   CO_DRAWN=id;
   CO=id;
+  // the card belongs to Companies, as a reload of its ?co= address says,
+  // whichever tab it was opened from; the nav marks that
+  tab="companies"; markNav();
   if(!fromUrl){
     LAST_BOARD_QS=CO?LAST_BOARD_QS:location.search;
     history.pushState({co:id,qs:LAST_BOARD_QS},"",
@@ -6357,7 +6363,9 @@ function intel(){
   const byPhase={};
   // over boards we read: 1,763 unread or boardless companies were counted
   // as "too few openings to read" (launch audit 2)
-  const readOrgs=D.organizations.filter(o=>boardState(o)==="read");
+  // boards, not companies: six share another company's board and carry no
+  // roles of their own, which made 443 "boards we read" beside 437
+  const readOrgs=D.organizations.filter(o=>boardState(o)==="read"&&!o.shares_board_with);
   readOrgs.forEach(o=>{const k=(o.phase||"").split(":")[0];byPhase[k]=(byPhase[k]||0)+1;});
   const hiring=D.organizations.filter(o=>o.open_roles>0).length;
   const handRead=D.organizations.filter(o=>boardState(o)==="unread"&&o.open_roles>0).length;
@@ -6445,6 +6453,8 @@ function how(){
   const unlooked=nb.filter(o=>!o.probe).length;
   const noBoard=nb.length-blocked-unlooked;
   const unread=D.organizations.filter(o=>boardState(o)==="unread").length;
+  // a person's captures still show, on a board we cannot read or none at all
+  const handRead=D.organizations.filter(o=>boardState(o)!=="read"&&o.open_roles>0).length;
   $("#view").innerHTML=`
   <div class="phead">
     <h1 class="ptitle">How listings get here</h1>
@@ -6524,7 +6534,8 @@ function how(){
     ${n(noBoard)} of the companies here have no public job board we could find,
     ${n(blocked)} have a site that turned our reader away before it could look,
     ${n(unlooked)} have not been looked for yet, and ${n(unread)} have a board our reader
-    cannot open. Those companies show no roles. That
+    cannot open. Those companies show no roles${handRead?`, except ${n(handRead)} whose roles a
+    person captured by hand`:""}. That
     is a fact about what reached us, not about whether they are hiring, and every one of
     their cards says so in those words rather than showing you a zero. A field audit of a
     random sample put roughly 55&ndash;63% of the &ldquo;no board found&rdquo; pile as
@@ -7985,6 +7996,8 @@ function cfOpenPanel(tag,fromUrl){
      2026-10-09). The row that opened it gets focus back on close. */
   if(!CF_OPEN)CF_OPENER=document.activeElement;
   CF_OPEN=tag;
+  // the middleware's title for a shared ?e= link, kept once the app draws
+  document.title=`${r.name||tag}: who is hiring · SLED JOBS`;
   let host=$("#cf-panel");
   if(!host){
     host=document.createElement("div");
@@ -8017,6 +8030,7 @@ function cfClosePanel(fromUrl){
   const was=CF_OPEN;
   CF_OPEN=null;
   const back=CF_OPENER; CF_OPENER=null;
+  if(was)document.title=viewTitle();
   if(was){
     const row=back&&back!==document.body&&document.contains(back)?back
       :document.querySelector(`[data-tag="${CSS.escape(was)}"]`);
@@ -8809,10 +8823,12 @@ function mapView(){
   });
   const placed=placedIds.size;
   const unplaced=officeIds.size-placedIds.size;
-  // openings with an office, per state: what a click on any of its cities opens
+  // per state, the openings its button opens: the board's default (quota-
+  // carrying, not placed outside the US) with an office there. Counting
+  // every pin printed "CA 626" over a board of 24 (review of launch audit 2)
   const st={};
   D.postings.forEach(p=>{ const s=p.office&&p.office.state;
-    if(s)(st[s]=st[s]||new Set()).add(p.opening_id); });
+    if(s&&p.quota_carrying&&p.is_us!==false)(st[s]=st[s]||new Set()).add(p.opening_id); });
   const byState=Object.entries(st).map(([k,v])=>[k,v.size]).sort((a,b)=>b[1]-a[1]);
   $("#view").innerHTML=`
   <div class="phead">
@@ -8869,7 +8885,7 @@ function mapView(){
 }
 function mapToState(state){
   tab="jobs";PENDING_URL=new URLSearchParams({tab:"jobs",off:state});
-  PUSH_NEXT=true; render();
+  PUSH_NEXT=true; render(); focusView();
 }
 
 const VIEWS=Object.assign(Object.create(null),
@@ -8916,13 +8932,16 @@ function render(){
      The tab strip is repainted either way, so the way out is a tab rather
      than the address bar. */
   try{ VIEWS[tab](); }catch(e){ renderError(e); }
-  /* aria-current, not aria-selected: aria-selected means nothing on a plain
-     button, so a screen reader was never told which view is current */
+  markNav();
+  document.title=viewTitle();
+}
+/* aria-current, not aria-selected: aria-selected means nothing on a plain
+   button, so a screen reader was never told which view is current */
+function markNav(){
   [...$("#tabs").children].forEach(b=>{
     if(b.dataset.t===tab)b.setAttribute("aria-current","page");
     else b.removeAttribute("aria-current");
   });
-  document.title=viewTitle();
 }
 /* THE PAGE TITLE FOLLOWS THE VIEW. It stayed "SLED JOBS - govtech sales
    roles" on every role and company, so a screen reader announced nothing

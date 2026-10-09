@@ -392,7 +392,7 @@ function portal(r) {
       $("#dead").querySelector("h1").textContent = "Claim handed back";
       $("#dead").querySelector(".sub").textContent =
         "The page is unclaimed again. Nothing you sent us is deleted.";
-    } else { say("#m-release", r2.error || "That did not work.", true); }
+    } else { say("#m-release", r2.message || r2.error || "That did not work.", true); }
   };
 }
 </script>

@@ -9512,6 +9512,9 @@ def check_a_us_city_named_for_a_foreign_one_stays_in_the_us() -> int:
             ("Dublin, Ireland", "AE", False),
             ("Melbourne, Australia", "AE", False),
             ("Vancouver, BC", "AE", False),
+            # a namesake's own country code that is also a US state code
+            ("Vancouver, CA", "AE", False), ("London, CA", "AE", False),
+            ("Berlin, DE", "AE", False), ("Dublin, CA", "AE", True),
             ("London", "AE", False),
             ("Miami", "Enterprise Account Executive (LATAM)", False)):
         got = r.is_us(loc, title)
@@ -9677,12 +9680,16 @@ def check_a_cut_sentence_is_never_printed_cut() -> int:
     board = json.loads((DATA / "board.json").read_text())
     row = next((c for c in board.get("conferences") or [] if c.get("tag")), None)
     if row:
+        # one catalogue event, a chapter row promoted INTO it, a staged row
         org = {"name": "Test Association", "url": "https://example.test",
-               "event_count": 16, "published_count": 1, "swept_count": 0}
+               "event_count": 16, "published_count": 2, "swept_count": 0,
+               "events": [{"source": "catalogue", "published": True},
+                          {"source": "state", "published": True, "promoted_tag": row["tag"]},
+                          {"source": "staged", "published": False}]}
         body = bs._conference_body(row, row["tag"], [], [], org=org)
-        if "16 events in the catalogue" in body or "1 event in the catalogue" not in body:
-            errors += fail("Run by counts staged registry rows, not the events the "
-                           "catalogue publishes")
+        if "1 event in the catalogue" not in body:
+            errors += fail("Run by counts staged or promoted chapter rows, not the "
+                           "catalogue's own events")
     return errors
 
 
@@ -9705,7 +9712,7 @@ def check_an_unread_board_is_never_described_as_read() -> int:
     intel, how = front.get("intel") or "", front.get("how") or ""
     board = json.loads((DATA / "board.json").read_text())
     orgs = board["organizations"]
-    read = [o for o in orgs if bs.board_state(o) == "read"]
+    read = [o for o in orgs if bs.board_state(o) == "read" and not o.get("shares_board_with")]
     m = re.search(r"Company phase, of the ([\d,]+) boards we read", intel)
     if not m or int(m.group(1).replace(",", "")) != len(read):
         errors += fail("Market intel counts phases over boards nobody read")
@@ -9717,6 +9724,10 @@ def check_an_unread_board_is_never_described_as_read() -> int:
     if "open postings</div>" in intel or "could not be\n    read this run" in intel:
         errors += fail("intel puts postings beside openings, or calls the standing "
                        "unreadable boards this run's failures")
+    hand = sum(1 for o in orgs if bs.board_state(o) != "read" and (o.get("open_roles") or 0) > 0)
+    if hand and f"except {hand:,} whose roles a\n    person captured by hand" not in how:
+        errors += fail("the How tab says every unread or boardless company shows no roles; "
+                       f"{hand} show roles a person captured by hand")
     nb = [o for o in orgs if o.get("no_board_on_file")]
     blocked = sum(1 for o in nb if o.get("probe") == "blocked")
     if f"{blocked:,} have a site that turned our reader away" not in how:
@@ -9795,7 +9806,8 @@ def check_text_on_tags_and_dark_cards_is_readable() -> int:
                            ("--warn-text", "--chip")],
             "claim.html": [("--accent-text", "--panel"), ("--warn-text", "--panel"),
                            ("--on-accent", "--accent"), ("--dim", "--panel")],
-            "alerts.html": [("--dim-chip", "--chip"), ("--accent-text", "--panel")]}
+            "alerts.html": [("--dim-chip", "--chip"), ("--accent-text", "--panel"),
+                            ("--warn-text", "--panel")]}
     for f, pairs in need.items():
         for theme in ("light", "dark"):
             t = {**_tokens(pages[f], "light"), **(_tokens(pages[f], "dark") if theme == "dark" else {})}
@@ -9816,6 +9828,8 @@ def check_text_on_tags_and_dark_cards_is_readable() -> int:
             errors += fail(f"{sel} text on --chip is not --dim-chip")
     if "color:var(--warn)" in js or "color:var(--bad)" in js:
         errors += fail("index.html sets text in --warn or --bad; text takes --warn-text")
+    if re.search(r"(?<![-\w])color:var\(--(?:bad|warn)\)", pages["alerts.html"]):
+        errors += fail("alerts.html sets text in --bad or --warn; text takes --warn-text")
     if not re.search(r"\.opt:has\(input:checked\) small\{color:var\(--dim-chip\)\}",
                      pages["alerts.html"]):
         errors += fail("the alerts page's chosen option sets its note in --dim on --chip")
@@ -9845,7 +9859,9 @@ def check_every_view_is_announced_and_named() -> int:
     ix = (ROOT / "index.html").read_text()
     js = re.sub(r"/\*.*?\*/", "", ix, flags=re.S)
     rend = js[js.find("function render(){"):][:900]
-    if 'setAttribute("aria-current","page")' not in rend or "aria-selected" in rend:
+    mk = js[js.find("function markNav("):][:300]
+    if "markNav();" not in rend or 'setAttribute("aria-current","page")' not in mk \
+            or "aria-selected" in rend + mk:
         errors += fail("render() does not mark the current view with aria-current")
     if "nav button[aria-current=page]" not in ix:
         errors += fail("the nav's current-view style is not keyed on aria-current")
@@ -9858,6 +9874,19 @@ def check_every_view_is_announced_and_named() -> int:
     co_ = co_[:co_.find("\nfunction ")]
     if "document.title=" not in co_ or "if((fresh&&!fromUrl)||hadFocus)focusView();" not in co_:
         errors += fail("opening a company neither titles the page nor moves focus to it")
+    if "const fresh=!fromUrl||CO_DRAWN!==id;" not in co_:
+        errors += fail("reopening the company drawn last leaves focus on <body>")
+    if 'tab="companies"; markNav();' not in co_:
+        errors += fail("a company opened from Jobs or Saved leaves that tab marked current")
+    mt = js[js.find("function mapToState("):][:200]
+    if "focusView()" not in mt:
+        errors += fail("the map's keyboard action drops focus to <body>")
+    mv = js[js.find("function mapView("):][:2500]
+    if "p.quota_carrying&&p.is_us!==false" not in mv:
+        errors += fail("the map's state list counts every pin, not the board its button opens")
+    op = js[js.find("function cfOpenPanel("):][:1500]
+    if "document.title=" not in op:
+        errors += fail("an open conference panel leaves a generic title over a shared ?e= link")
     ch = js[js.find("function drawChips("):][:1200]
     if "remove this filter" in ch or 'aria-label",`Remove filter: ' not in ch or "chipFocus(i)" not in ch:
         errors += fail("filter chips share one name, or removing one drops focus")
@@ -9880,6 +9909,8 @@ def check_every_view_is_announced_and_named() -> int:
     bare = re.findall(r'<div class="msg" id="[^"]+">', cl)
     if bare:
         errors += fail(f"{len(bare)} claim.html message(s) are not live regions")
+    if 'say("#m-release", r2.error' in cl:
+        errors += fail("claim.html announces the release's error code, not its message")
     if 'setAttribute("aria-selected"' in cl:
         errors += fail("claim.html's pane switcher marks the current pane with aria-selected")
     return errors
@@ -9901,6 +9932,17 @@ def check_every_css_variable_is_defined() -> int:
         defined = set(re.findall(r"(--[\w-]+)\s*:", t))
         for name in sorted(set(re.findall(r"var\((--[\w-]+)\s*\)", t)) - defined):
             errors += fail(f"{page} reads var({name}), which nothing defines")
+    # the built pages' own stylesheets: e/ pages read var(--space-8), which
+    # only index.html defined, so 471 sections sat flush (review of launch
+    # audit 2, 2026-10-09)
+    import build_site as _bs
+    brand = json.loads((DATA / "brand.json").read_text())
+    for label, css in (("conference pages", _bs._default_css(brand) + _bs.CFPAGE_CSS),
+                       ("state pages", _bs._default_css(brand)),
+                       ("company pages", _bs.COPAGE_CSS)):
+        defined = set(re.findall(r"(--[\w-]+)\s*:", css))
+        for name in sorted(set(re.findall(r"var\((--[\w-]+)\s*\)", css)) - defined):
+            errors += fail(f"the {label} read var({name}), which their stylesheet never defines")
     t = (ROOT / "index.html").read_text()
     for media, switch in ((r"@media \(prefers-color-scheme:dark\)\{:root:not\(\[data-theme=light\]\)\{(.*?)\}\}",
                            r":root\[data-theme=dark\]\{(.*?)\}"),

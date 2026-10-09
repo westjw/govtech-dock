@@ -1964,6 +1964,15 @@ fires.
     focus; the map canvas is named and has a list of states doing its one
     action; views go h1, h2, h3; no nested <main>; the claim page's fields
     have names and its messages are live. `check_every_view_is_announced_and_named`.
+  - **The blind review of the low findings** confirmed 12 (0 refuted), all
+    fixed and broken on purpose: Run by counts catalogue rows only (a
+    promoted chapter row is the same event); a namesake keeps its foreign
+    home when the code is its own country's ("Vancouver, CA", "Berlin, DE");
+    the map's state buttons count what they open and keep focus; a company
+    card marks Companies current and any open the reader makes is a new
+    visit; a conference panel titles the page; `shares_board_with` now
+    ships (intel counts boards); e/ pages define --space-8, and
+    `check_every_css_variable_is_defined` now scans the built pages' CSS.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

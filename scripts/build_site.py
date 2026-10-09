@@ -329,8 +329,11 @@ DROP_ORG = {"vendor_type", "govtech"}
 # checked_by_hand SHIPS, since 2026-10-08: a captured posting's page says
 # when a person last re-read the page it came from (index.html byHandText),
 # and without it "not re-checked since" stays after a re-read.
+# shares_board_with SHIPS, since 2026-10-09: Market intel counts boards, not
+# the six companies filed under another company's board (443 "boards we
+# read" beside 437). A short string on six companies.
 DROP_ORG_DEAD = {
-    "board_owner_unverified", "shares_board_with",
+    "board_owner_unverified",
     "board_owner", "quota_postings", "open_postings",
     "sled_only", "linkedin", "ats_note",
 }
@@ -979,7 +982,8 @@ CFPAGE_CSS = """
     .cfx-facts dt{padding-top:var(--space-3)}
     .cfx-door{width:100%;text-align:center}
   }
- :root{--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;
+ :root{--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;
+   --font-heading:"Archivo",system-ui,sans-serif;
    --accent:var(--link);--faint:var(--dim)}
   /* the panel */
   .cfp-wrap{position:fixed;inset:0;z-index:60;background:rgba(15,22,36,.45);
@@ -2845,7 +2849,14 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
         # counts staged registry rows - "Chapter conferences (~30)", "e.g.
         # Connecticut NAHRO" - so NAHRO read "16 events in the catalogue"
         # over a catalogue holding one (launch audit 2, 2026-10-09)
-        n_pub = org.get("published_count")
+        #
+        # CATALOGUE ROWS ONLY. published_count also counts a state chapter
+        # row promoted INTO that catalogue event, so 13 pages said "2 events"
+        # over one (review of launch audit 2). The stored count is the
+        # fallback for a record that carries no events list.
+        evs = org.get("events")
+        n_pub = (sum(1 for e in evs if isinstance(e, dict) and e.get("source") == "catalogue")
+                 if isinstance(evs, list) else org.get("published_count"))
         if n_pub:
             meta.append(f'{n_pub} {"event" if n_pub == 1 else "events"} '
                         f'in the catalogue')

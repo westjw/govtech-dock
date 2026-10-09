@@ -685,11 +685,19 @@ US_NAMESAKES = {"manchester", "dublin", "melbourne", "paris", "athens", "rome",
                 "amsterdam", "milan", "belgrade", "panama"}
 
 
+# A namesake's own COUNTRY code that is also a US state code: "Vancouver, CA"
+# and "London, CA" are Canada, "Berlin, DE" Germany, "Panama, PA" Panama.
+# Boards do write ISO codes - "Melbourne, AU", "London, GB", "Dublin, IE".
+_NAMESAKE_HOME = {"vancouver": "CA", "london": "CA", "berlin": "DE", "panama": "PA"}
+
+
 def _us_namesake(blob: str, m: "re.Match") -> bool:
     """Whether a NON_US hit is a US city of the same name, by its state code."""
-    if m.group(0).lower() not in US_NAMESAKES:
+    name = m.group(0).lower()
+    if name not in US_NAMESAKES:
         return False
-    return bool(STATE.match(blob, m.end()))
+    st = STATE.match(blob, m.end())
+    return bool(st) and st.group(1) != _NAMESAKE_HOME.get(name)
 
 
 def is_us(location_text: str, title: str = "") -> bool | None:
