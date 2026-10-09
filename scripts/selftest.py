@@ -9489,6 +9489,272 @@ def check_assistive_tech_hears_what_changed() -> int:
     return errors
 
 
+def check_a_us_city_named_for_a_foreign_one_stays_in_the_us() -> int:
+    """Manchester, NH is in the US; so is Badger Meter's "US - FL - Melbourne".
+
+    Launch audit 2 (2026-10-09): the non-US list matched city names that are
+    also US cities, so OCLC's eight "Dublin, OH" roles, two "Manchester, NH",
+    Badger Meter's "US - FL - Melbourne Facility" and Metropolis's "(New
+    England)" in Providence were placed outside the US and hidden by the
+    board's default. A namesake followed by a US state code is the US one,
+    and only the listed namesakes: "Tel-Aviv, IL" stays Israel.
+    """
+    import roles as r
+    errors = 0
+    for loc, title, want in (
+            ("US - FL - Melbourne Facility", "Field Support Technician", True),
+            ("Manchester, NH (NH05)", "Pre-Sales Engineer", True),
+            ("Dublin, OH / Hybrid", "Product Manager", True),
+            ("Providence, Rhode Island, United States", "AE (New England)", True),
+            ("Vancouver, WA", "AE", True),
+            ("Tel-Aviv, IL", "AE", False),
+            ("Manchester, UK", "AE", False),
+            ("Dublin, Ireland", "AE", False),
+            ("Melbourne, Australia", "AE", False),
+            ("Vancouver, BC", "AE", False),
+            ("London", "AE", False),
+            ("Miami", "Enterprise Account Executive (LATAM)", False)):
+        got = r.is_us(loc, title)
+        if got is not want:
+            errors += fail(f"is_us({loc!r}, {title!r}) is {got}, not {want}")
+    return errors
+
+
+def check_the_front_page_counts_by_opening() -> int:
+    """The home page's sector buttons, banner and debut claim say what is true.
+
+    Launch audit 2 (2026-10-09): "Parks & Rec 258" counted rows over a board
+    reading 32 roles; "one requisition posted to 93 cities" was a frozen
+    figure; "Hiring hardest" ranked a US-only subset and opened a list
+    ranked otherwise; and "First seller req we have ever recorded at Urban
+    SDK" was false, the hiring record holding its two titles since 08-17.
+    Run on the real board through jobcard_harness, and the debut rule driven
+    on synthetic records.
+    """
+    import tempfile as _tf
+    import build_board as bb
+    errors = 0
+    front = _harness().get("front") or {}
+    home = front.get("home") or ""
+    board = json.loads((DATA / "board.json").read_text())
+    rows = [p for p in board["postings"] if p.get("quota_carrying") and p.get("is_us") is not False]
+    for name, n in re.findall(r'<button type="button" data-sec="([^"]+)">\s*[^<]*<b>(\d+)</b>', home):
+        name = html.unescape(name)
+        want = len({p.get("opening_id") or p["id"] for p in rows
+                    if p.get("sector") == name or any(a.get("sector") == name for a in p.get("also") or [])})
+        if int(n) != want:
+            errors += fail(f"the home button '{name} {n}' counts rows; the board it "
+                           f"opens leads with {want} roles")
+    slides = {x["kick"]: x for x in front.get("slides") or []}
+    sw = (slides.get("Sellers wanted") or {}).get("p", "")
+    if "93 cities" in sw:
+        errors += fail("the Sellers wanted slide still prints the frozen '93 cities'")
+    per = collections.Counter(p.get("opening_id") for p in rows)
+    widest = max(per.values()) if per else 0
+    if widest > 1 and f"{widest:,} postings" not in sw:
+        errors += fail(f"the Sellers wanted slide does not name the widest requisition "
+                       f"({widest} postings): {sw[:160]!r}")
+    hh = slides.get("Hiring hardest")
+    top = sorted((o for o in board["organizations"] if o.get("quota_roles")),
+                 key=lambda o: -o["quota_roles"])[:1]
+    if hh and top and not hh["p"].startswith(f"{top[0]['quota_roles']} quota-carrying"):
+        errors += fail(f"Hiring hardest says {hh['p'][:80]!r}; the Companies tab it "
+                       f"opens shows {top[0]['name']} with {top[0]['quota_roles']}")
+    nw = (slides.get("New this run") or {}).get("p", "")
+    named = re.search(r"First seller req we have ever recorded at (.+?)\.(?:\s|$)", nw)
+    debut = {o["name"] for o in board["organizations"] if o.get("seller_debut")}
+    if named:
+        first = [x.strip() for x in re.split(r",| and ", named.group(1)) if x.strip()]
+        bad = [x for x in first if not re.match(r"\d+ others?$", x) and html.unescape(x) not in debut]
+        if bad:
+            errors += fail(f"the banner names {bad} as a debut; seller_debut does not")
+    with _tf.TemporaryDirectory() as tmp:
+        h, hh_ = pathlib.Path(tmp) / "h", pathlib.Path(tmp) / "hh"
+        h.mkdir(); hh_.mkdir()
+        (h / "2026-10-01.json").write_text(json.dumps(
+            {"date": "2026-10-01", "ids": ["oldco::Account Executive::a", "engco::Software Engineer::b"]}))
+        (hh_ / "2026-08-17.json").write_text(json.dumps({"companies": {
+            "urban": {"roles": [{"title": "Account Executive"}]}}}))
+        (hh_ / "2026-10-09.json").write_text(json.dumps({"companies": {
+            "newco": {"roles": [{"title": "Account Executive"}]}}}))
+        before = bb.sellers_before("2026-10-09", h, hh_)
+    if before != {"oldco", "urban"}:
+        errors += fail(f"sellers_before read {sorted(before)}: a seller title on "
+                       f"either record before today, and nothing from today")
+    orgs = [{"id": c} for c in ("oldco", "urban", "newco", "engco")]
+    posts = [{"company_id": c, "quota_carrying": True, "first_seen": "2026-10-09"}
+             for c in ("oldco", "urban", "newco")] + [
+            {"company_id": "engco", "quota_carrying": False, "first_seen": "2026-10-09"}]
+    bb.mark_seller_debut(orgs, posts, "2026-10-09", before)
+    got = sorted(o["id"] for o in orgs if o.get("seller_debut"))
+    if got != ["newco"]:
+        errors += fail(f"mark_seller_debut marked {got}; only a company with no "
+                       f"seller title on any earlier record debuts")
+    js = re.sub(r"/\*.*?\*/", "", (ROOT / "index.html").read_text(), flags=re.S)
+    if "seenBefore" in js or "o.seller_debut" not in js:
+        errors += fail("the banner's debut is not read from seller_debut")
+    for f, call in (("build_board.py", "mark_seller_debut(orgs, postings, today, sellers_before(today))"),
+                    ("quick_rebuild.py", "bb.mark_seller_debut(")):
+        if call not in (ROOT / "scripts" / f).read_text():
+            errors += fail(f"{f} does not mark seller debuts")
+    return errors
+
+
+def check_the_feed_and_the_no_js_page_say_what_is_true() -> int:
+    """The feed carries every new role, at the canonical address; the no-JS
+    page counts sales roles.
+
+    Launch audit 2 (2026-10-09): feed.xml stopped at 60 items sorted by
+    company name, dropping Urban SDK, Versaterm, Workday and Xylem without a
+    word, and encoded "(California)" as %28California%29 where the role's
+    canonical has the parentheses. The <noscript> page printed every opening
+    of every family (6,656) under "every open sales role".
+    """
+    import tempfile as _tf
+    import build_site as bs
+    errors = 0
+    brand = json.loads((DATA / "brand.json").read_text())
+    gen = "2026-10-09"
+    posts = [{"id": f"co{i:02d}::Account Manager (California)::{i}", "title": "Account Manager (California)",
+              "company": f"Co {i:02d}", "company_id": f"co{i:02d}", "quota_carrying": True,
+              "first_seen": gen, "opening_id": f"co{i:02d}::am", "is_us": True}
+             for i in range(70)]
+    # and three rows the no-JS count must NOT count: a second posting of an
+    # opening already counted, an engineering role, a seller role abroad
+    extra = [dict(posts[0], id="co00::Account Manager (California)::x"),
+             dict(posts[1], id="co01::Software Engineer::e", quota_carrying=False,
+                  opening_id="co01::se"),
+             dict(posts[2], id="co02::Account Manager (UK)::u", is_us=False,
+                  opening_id="co02::uk")]
+    board = {"generated": gen, "postings": posts + extra, "conferences": [],
+             "organizations": [{"id": p["company_id"]} for p in posts] + [{"id": "idle"}]}
+    with _tf.TemporaryDirectory() as tmp:
+        out = pathlib.Path(tmp)
+        bs.write_feeds(out, board, brand)
+        feed = (out / "feed.xml").read_text()
+        (out / "index.html").write_text((ROOT / "index.html").read_text())
+        (out / "s").mkdir()
+        bs.write_noscript(out, board, brand)
+        page = (out / "index.html").read_text()
+    if feed.count("<item>") != 72:
+        errors += fail(f"feed.xml carries {feed.count('<item>')} of 72 new quota-carrying "
+                       f"postings")
+    if "%28California%29" in feed or "(California)" not in feed.split("<link>", 2)[-1]:
+        errors += fail("feed.xml encodes a role id differently from its canonical "
+                       "(encodeURIComponent leaves ( ) alone)")
+    m = re.search(r"<strong>([\d,]+) open sales roles</strong> at ([\d,]+) companies", page)
+    if not m or m.group(1) != "70" or m.group(2) != "70":
+        errors += fail(f"the no-JS page does not count quota-carrying openings: "
+                       f"{m and m.group(0)!r}")
+    return errors
+
+
+def check_a_cut_sentence_is_never_printed_cut() -> int:
+    """Ownership prints whole sentences and no internal note; Run by counts
+    published events.
+
+    Launch audit 2 (2026-10-09): seven deal sentences stored at exactly 400
+    characters printed mid-word, Galaxy Digital's on "WAS ACQUIRED by Bette",
+    and OpenCounter's carried a "(Correction: ...)" note. Conference pages
+    said "16 events in the catalogue" for NAHRO, counting staged registry
+    rows, over a catalogue holding one.
+    """
+    import build_site as bs
+    errors = 0
+    cut = ("Acquired by Parent Co in 2020. It also bought Other Co in 2021. "
+           "(Correction: the card previously said otherwise.) ")
+    cut = (cut + "x" * 400)[:bs.DEAL_CEILING - 12] + " WAS ACQUIRED"
+    got = bs.deal_text(cut)
+    if got != "Acquired by Parent Co in 2020. It also bought Other Co in 2021.":
+        errors += fail(f"deal_text printed {got[-60:]!r} from a sentence cut at the "
+                       f"research ceiling")
+    whole = "Acquired by Poppulo; announced 2025-03-04"
+    if bs.deal_text(whole) != whole:
+        errors += fail("deal_text dropped a short deal with no closing stop")
+    src = (ROOT / "scripts" / "build_site.py").read_text()
+    if 'deal_text((acq or {}).get("deal"))' not in src or 'deal_text(b.get("deal"))' not in src:
+        errors += fail("the ownership block or the brands rail prints the raw deal text")
+    board = json.loads((DATA / "board.json").read_text())
+    row = next((c for c in board.get("conferences") or [] if c.get("tag")), None)
+    if row:
+        org = {"name": "Test Association", "url": "https://example.test",
+               "event_count": 16, "published_count": 1, "swept_count": 0}
+        body = bs._conference_body(row, row["tag"], [], [], org=org)
+        if "16 events in the catalogue" in body or "1 event in the catalogue" not in body:
+            errors += fail("Run by counts staged registry rows, not the events the "
+                           "catalogue publishes")
+    return errors
+
+
+def check_an_unread_board_is_never_described_as_read() -> int:
+    """A board nobody could read gets no phase, no "none found", and no quiet
+    month nobody checked.
+
+    Launch audit 2 (2026-10-09): 1,763 unread or boardless companies were
+    "too few openings to read" on the Companies rows and in Market intel;
+    179 whose site turned our reader away said "no public board found"; the
+    intel cards put 8,062 postings beside 773 openings and said 734 standing
+    unreadable boards "could not be read this run"; Gainwell's page said "a
+    person checks it - last 2026-08-19" over roles captured 09-08 and "none
+    added in 30 days" when nobody had looked in 31; and the app printed
+    08-18 as "Aug 17" in the Americas.
+    """
+    import build_site as bs
+    errors = 0
+    front = _harness().get("front") or {}
+    intel, how = front.get("intel") or "", front.get("how") or ""
+    board = json.loads((DATA / "board.json").read_text())
+    orgs = board["organizations"]
+    read = [o for o in orgs if bs.board_state(o) == "read"]
+    m = re.search(r"Company phase, of the ([\d,]+) boards we read", intel)
+    if not m or int(m.group(1).replace(",", "")) != len(read):
+        errors += fail("Market intel counts phases over boards nobody read")
+    tf = re.search(r"<strong>(\d+)</strong> too few openings to read", intel)
+    want_tf = sum(1 for o in read if (o.get("phase") or "").startswith("too few"))
+    if tf and int(tf.group(1)) != want_tf:
+        errors += fail(f"intel says {tf.group(1)} 'too few openings to read'; of the "
+                       f"boards we read it is {want_tf}")
+    if "open postings</div>" in intel or "could not be\n    read this run" in intel:
+        errors += fail("intel puts postings beside openings, or calls the standing "
+                       "unreadable boards this run's failures")
+    nb = [o for o in orgs if o.get("no_board_on_file")]
+    blocked = sum(1 for o in nb if o.get("probe") == "blocked")
+    if f"{blocked:,} have a site that turned our reader away" not in how:
+        errors += fail("the How tab folds the companies whose site turned our reader "
+                       "away into 'no public job board we could find'")
+    js = re.sub(r"/\*.*?\*/", "", (ROOT / "index.html").read_text(), flags=re.S)
+    for needle, why in (('o.phase&&boardState(o)==="read"?" &middot; "', "a Companies row"),
+                        ('${o.phase&&boardState(o)==="read"?`<div class="kv">Their open roles read as', "the role page"),
+                        ('if(o.phase&&boardState(o)==="read")b+=', "companyStory")):
+        if needle not in js:
+            errors += fail(f"{why} gives a phase to a board nobody read")
+    if ":noBoardShort(o)}" not in js:
+        errors += fail("a Companies row says 'no public board found' whatever happened")
+    gw = {"board_checked_on": "2026-08-19", "checked_by_hand": "2026-09-08"}
+    if bs.last_looked(gw) != "2026-09-08":
+        errors += fail("last_looked ignores a person's later capture")
+    now = dt.date(2026, 10, 9)
+    old = [{"id": "g::a::1", "opening_id": "g::a", "first_seen": "2026-08-20"}]
+    note = bs._co_open_note(old, 1, False, now, "unread", None, "2026-09-08")
+    if note != "not re-checked since 2026-09-08":
+        errors += fail(f"an unread board nobody looked at for 31 days says {note!r}")
+    if bs._co_open_note(old, 1, False, now, "unread", None, "2026-10-01") != "none added in 30 days":
+        errors += fail("an unread board looked at last week lost 'none added in 30 days'")
+    for needle in ("lastLooked(o)?` · last ${esc(lastLooked(o))}`", "Record last verified${\n      lastLooked(o)",
+                   "coOpenNote(mine,open,readable,state,o.read_since,lastLooked(o))"):
+        if needle not in js:
+            errors += fail(f"the app still dates a look by the probe alone: {needle[:40]}")
+    i = js.find("function coAge(")
+    fn = js[i:js.find("\n}\n", i) + 2]
+    for tz in ("America/Los_Angeles", "America/New_York"):
+        r = subprocess.run(["node", "-e", fn + "console.log(coAge('2026-08-18'))"],
+                           capture_output=True, text=True, timeout=30,
+                           env={**os.environ, "TZ": tz})
+        if "18" not in r.stdout:
+            errors += fail(f"coAge('2026-08-18') prints {r.stdout.strip()!r} in {tz}")
+    return errors
+
+
 def check_every_css_variable_is_defined() -> int:
     """No rule reads a colour token nobody defined, and the theme switch
     reaches every token the system theme does.
@@ -19702,7 +19968,7 @@ def check_a_posting_keeps_the_night_we_first_saw_it() -> int:
                        "we have read since August")
     js = re.sub(r"/\*.*?\*/", "", (ROOT / "index.html").read_text(), flags=re.S)
     for call in ("coPhase(mine,readable,o.read_since)",
-                 "coOpenNote(mine,open,readable,state,o.read_since)"):
+                 "coOpenNote(mine,open,readable,state,o.read_since,"):
         if call not in js:
             errors += fail(f"co() no longer passes read_since: {call}")
     if "coRecordDays(mine,since)" not in js:
@@ -31929,6 +32195,11 @@ def main() -> int:
     errors += check_every_view_has_its_own_address()
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
+    errors += check_a_us_city_named_for_a_foreign_one_stays_in_the_us()
+    errors += check_the_front_page_counts_by_opening()
+    errors += check_the_feed_and_the_no_js_page_say_what_is_true()
+    errors += check_a_cut_sentence_is_never_printed_cut()
+    errors += check_an_unread_board_is_never_described_as_read()
     errors += check_reading_text_is_never_set_in_fog()
     errors += check_assistive_tech_hears_what_changed()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()

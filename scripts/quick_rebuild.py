@@ -452,6 +452,8 @@ def redraw() -> dict:
     identical = len(postings) - len(unique)
     postings = unique
     bb.mark_read_since(orgs, postings, read_from)
+    bb.mark_seller_debut(orgs, postings, prev["generated"],
+                         bb.sellers_before(prev["generated"]))
     groups = bb.count_openings(postings, orgs)
     # `generated` and the crawl's counts are the crawl's, never this run's.
     # The companies left off are left out of every count too: the board is

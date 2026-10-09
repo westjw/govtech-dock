@@ -20494,7 +20494,8 @@
    "posts_at": null,
    "source": "ICMA 2025",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "legislaide",
@@ -24471,7 +24472,8 @@
    "posts_at": null,
    "source": "NRPA 2026; PWX 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "novotx",
@@ -25192,7 +25194,8 @@
    "posts_at": null,
    "source": "direct add",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "dynamic-infrastructure",
@@ -25372,7 +25375,8 @@
    "posts_at": null,
    "source": "PWX 2026; Connecticut Conference of Municipalities 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "frost-solutions",
@@ -25611,7 +25615,8 @@
    "posts_at": null,
    "source": "PWX 2026; StormCon 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "iseechange",
@@ -27272,7 +27277,8 @@
    "posts_at": null,
    "source": "IACP 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "magnet-forensics",
@@ -27356,7 +27362,8 @@
    "posts_at": null,
    "source": "IACP 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "msab",
@@ -29226,7 +29233,8 @@
    "posts_at": null,
    "source": "IACP 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "boston-dynamics",
@@ -35764,7 +35772,8 @@
    "posts_at": null,
    "source": "IACP 2026; NSA 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "securetech-systems",
@@ -40879,7 +40888,8 @@
    "posts_at": null,
    "source": "APTA 2026",
    "researched": true,
-   "claimed": null
+   "claimed": null,
+   "seller_debut": true
   },
   {
    "id": "streamax-america",
@@ -43533,7 +43543,8 @@
    "source": "NACo 2026; PSHRA 2026; NASWA 2025",
    "researched": null,
    "claimed": null,
-   "read_since": "2026-10-04"
+   "read_since": "2026-10-04",
+   "seller_debut": true
   },
   {
    "id": "aatral-vr-ar-training",
@@ -417473,7 +417484,7 @@
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-09T16:33:35Z",
+  "at": "2026-10-09T17:51:59Z",
   "inputs": "10c8bc80454415e99d8051e5228aed84089d72f3bf125b1d5aed7731d0a62569"
  }
 }

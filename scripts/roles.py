@@ -263,7 +263,9 @@ def is_quota_carrying(title: str) -> bool:
 
 
 NON_US = re.compile(
-    r"\b(EMEA|APAC|LATAM|United Kingdom|\bUK\b|England|Scotland|Wales|Ireland|"
+    # (?<!New ) England: "Associate Account Executive (New England)" in
+    # Providence, RI was placed outside the US (launch audit 2, 2026-10-09)
+    r"\b(EMEA|APAC|LATAM|United Kingdom|\bUK\b|(?<!New )England|Scotland|Wales|Ireland|"
     r"London|Manchester|Dublin|Limerick|Cork|Paris|France|Berlin|Munich|Germany|"
     r"Madrid|Barcelona|Spain|Amsterdam|Netherlands|Brussels|Belgium|Zurich|"
     r"Switzerland|Stockholm|Sweden|Oslo|Norway|Copenhagen|Denmark|Helsinki|"
@@ -670,6 +672,26 @@ def seniority(title: str) -> str:
     return "mid"
 
 
+# A COUNTRY CODE FIRST, then a state: "US - FL - Melbourne Facility".
+US_PREFIX = re.compile(r"\s*(?:US|USA)\s*[-,/]\s*(A[LKZR]|C[AOT]|DE|FL|GA|HI|I[DLNA]|"
+                       r"K[SY]|LA|M[EDAINSOT]|N[EVHJMYCD]|O[HKR]|PA|RI|S[CD]|T[NX]|"
+                       r"UT|V[TA]|W[AVIY]|DC)\b")
+# FOREIGN CITY NAMES THAT ARE ALSO US CITIES. Followed by a US state code they
+# are the US one: "Manchester, NH", "Dublin, OH / Hybrid" (OCLC's eight) and
+# "Vancouver, WA" were all placed outside the US (launch audit 2). Only these
+# names: "Tel-Aviv, IL" must stay Israel, IL being its country code too.
+US_NAMESAKES = {"manchester", "dublin", "melbourne", "paris", "athens", "rome",
+                "cairo", "lima", "london", "vancouver", "berlin", "warsaw",
+                "amsterdam", "milan", "belgrade", "panama"}
+
+
+def _us_namesake(blob: str, m: "re.Match") -> bool:
+    """Whether a NON_US hit is a US city of the same name, by its state code."""
+    if m.group(0).lower() not in US_NAMESAKES:
+        return False
+    return bool(STATE.match(blob, m.end()))
+
+
 def is_us(location_text: str, title: str = "") -> bool | None:
     """True, False, or None when undeterminable.
 
@@ -679,7 +701,11 @@ def is_us(location_text: str, title: str = "") -> bool | None:
     blob = f"{location_text or ''} {title or ''}"
     if not blob.strip():
         return None
-    if NON_US.search(blob) or NOT_US.search(blob):
+    # "US - FL - Melbourne Facility" names its country first (Badger Meter)
+    if US_PREFIX.match(location_text or ""):
+        return True
+    if NOT_US.search(blob) or any(not _us_namesake(blob, m)
+                                  for m in NON_US.finditer(blob)):
         return False
     if US_HINT.search(blob) or STATE.search(blob) or US_CITY.search(blob):
         return True

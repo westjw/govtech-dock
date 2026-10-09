@@ -1603,6 +1603,62 @@ def history_first_seen(history: pathlib.Path | None = None) -> tuple[dict, dict]
     return by_id, by_co
 
 
+def sellers_before(today: str, history: pathlib.Path | None = None,
+                   hiring: pathlib.Path | None = None) -> set:
+    """Companies with a quota-carrying title on any record before `today`.
+
+    Both records count: the board's own snapshots (data/history, ids carry
+    the title) and the per-company hiring record (data/hiring_history, kept
+    since 08-16). The home banner said "First seller req we have ever
+    recorded at Urban SDK" from today's board alone, and hiring_history had
+    the same two titles on 08-17 (launch audit 2, 2026-10-09). Read when
+    called, like history_first_seen.
+    """
+    history = HISTORY if history is None else history
+    hiring = (DATA / "hiring_history") if hiring is None else hiring
+    seen: set = set()
+    for f in sorted(history.glob("*.json")):
+        if f.stem >= today:
+            continue
+        try:
+            ids = json.loads(f.read_text()).get("ids") or []
+        except (OSError, json.JSONDecodeError):
+            continue
+        for i in ids:
+            parts = i.split("::") if isinstance(i, str) else []
+            if len(parts) >= 2 and parts[0] not in seen:
+                title = "::".join(parts[1:-1]) if len(parts) >= 3 else parts[1]
+                if roles.is_quota_carrying(title):
+                    seen.add(parts[0])
+    for f in sorted(hiring.glob("*.json")):
+        if f.stem >= today:
+            continue
+        try:
+            cos = json.loads(f.read_text()).get("companies") or {}
+        except (OSError, json.JSONDecodeError):
+            continue
+        for cid, rec in cos.items():
+            if cid in seen or not isinstance(rec, dict):
+                continue
+            if any(isinstance(r, dict) and roles.is_quota_carrying(r.get("title") or "")
+                   for r in rec.get("roles") or []):
+                seen.add(cid)
+    return seen
+
+
+def mark_seller_debut(orgs: list[dict], postings: list[dict], today: str,
+                      before: set) -> None:
+    """`seller_debut` on a company whose first seller req on any record is
+    one first seen `today`. The banner claims a debut only where this is set;
+    absent means "not a debut, or not known to be one"."""
+    fresh = {p.get("company_id") for p in postings
+             if p.get("quota_carrying") and p.get("first_seen") == today}
+    for o in orgs:
+        o.pop("seller_debut", None)
+        if o.get("id") in fresh and o["id"] not in before:
+            o["seller_debut"] = True
+
+
 def mark_read_since(orgs: list[dict], postings: list[dict], by_co: dict) -> None:
     """`read_since` on a company whose postings start later than our record.
 
@@ -2294,6 +2350,7 @@ def main() -> int:
         print(f"  dropped {len(postings) - len(unique)} byte-identical duplicate posting rows")
     postings = unique
     mark_read_since(orgs, postings, read_from)
+    mark_seller_debut(orgs, postings, today, sellers_before(today))
 
     groups = count_openings(postings, orgs)
 

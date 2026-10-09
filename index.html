@@ -2325,6 +2325,10 @@ function postsAtSentence(rec,counted){
    should degrade to dateless rather than to a crash. */
 const boardCheckedOn=o=>o.board_checked_on||o.discovery_on
   ||(o.discovery&&o.discovery.on)||null;
+/* The last day anybody looked at a board we cannot read: the probe or a
+   person's capture, whichever is later. build_site.last_looked() is the same
+   rule; Gainwell said "last 2026-08-19" over roles captured 09-08. */
+const lastLooked=o=>[o.board_checked_on,o.checked_by_hand].filter(Boolean).map(String).sort().pop()||null;
 /* The whole no-board statement, as {html} or null when the company has a
    board and this does not apply. */
 /* 'read', 'unread' or 'none': what a count of 0 on this company means. ONLY
@@ -2343,6 +2347,14 @@ function boardState(o){
    nothing, turned away, or not looked for yet. Same rule as build_site's
    no_board_note(). 179 companies whose site refused our reader said "none
    found when we looked" (review, 2026-10-07). */
+/* The same three states in a list row's few words. "no public board found"
+   stood on 179 companies whose site turned our reader away and 7 nobody had
+   looked for (launch audit 2, 2026-10-09). */
+function noBoardShort(o){
+  if(o.probe==="blocked")return "site turned our reader away";
+  if(!o.probe)return "not looked for yet";
+  return "no public board found";
+}
 function noBoardText(o){
   const on=boardCheckedOn(o);
   if(o.probe==="blocked")return "their site turned our reader away"+(on?" on "+on:"");
@@ -2619,7 +2631,11 @@ function roleView(id){
         :o.ats_ranks==="none"?"A person opens this list. Write for a reader, not a parser."
         :"We could not tell what runs their board, so assume a person reads it and write plainly."}</div>`;
     })()}
-    ${o.phase?`<div class="kv">The company overall is <strong>${esc(o.phase)}</strong>${
+    ${/* the MIX of what is open now, and only for a board we read: "the
+          company overall is mixed" stood over a company page that refuses to
+          read a hiring phase from 52 days of record, and over boards nobody
+          could read ("too few openings to read") (launch audit 2) */""}
+    ${o.phase&&boardState(o)==="read"?`<div class="kv">Their open roles read as <strong>${esc(o.phase)}</strong>${
       o.open_roles?` — ${o.open_roles} role${o.open_roles===1?"":"s"} open, ${o.quota_roles||0} carrying a number`:""}.</div>`:""}
     ${/* BRIEFER HERE THAN ON THE COMPANY CARD, and expandable. A role card is
           read to answer "is this job worth my afternoon", and five paragraphs
@@ -5435,7 +5451,7 @@ function drawCos(){
         <div class="m">${esc(o.sector)} / ${esc(o.category)}${
           (o.also||[]).map(a=>" &middot; "+esc(a.sector)+" / "+esc(a.category)).join("")}${
           o.location?" &middot; "+esc(o.location):""}
-          <span style="color:var(--dim)">${o.phase?" &middot; "+esc(o.phase):""}</span>${
+          <span style="color:var(--dim)">${o.phase&&boardState(o)==="read"?" &middot; "+esc(o.phase):""}</span>${
           asName?` &middot; <span class="brandhit">found as ${esc(asName)}</span>`:""}</div>
       </div>
       ${/* "nothing open" on a company whose board we never found is a claim
@@ -5444,7 +5460,7 @@ function drawCos(){
       ${o.no_board_on_file
         ?`<div class="when">${o.posts_at
             ?`posts on ${esc((o.posts_at.label)||POSTS_AT_LABEL[o.posts_at.where]||"another site")}`
-            :"no public board found"}</div>`
+            :noBoardShort(o)}</div>`
         :unreadable
         ?`<div class="when" style="color:var(--warn)">board not readable</div>`
         :o.quota_roles
@@ -5555,7 +5571,7 @@ function companyStory(o, mine){
       if(fam.length>3)b+=` and ${fam.length-3} other area${fam.length-3===1?"":"s"}`;
       b+=`.`;
     }
-    if(o.phase)b+=` That reads as ${o.phase.replace(/^[a-z]+:\s*/,"")}.`;
+    if(o.phase&&boardState(o)==="read")b+=` That reads as ${o.phase.replace(/^[a-z]+:\s*/,"")}.`;
     P.push(b);
   }
 
@@ -5759,14 +5775,21 @@ function coRecordDays(mine,since){
    executed by the selftest, and this is the exact line that printed "+357 in
    the last 30 days" about a company whose board we had read for one night.
    A rule worth having is a rule a harness can drive. */
-function coOpenNote(mine,open,readable,state,since){
+function coOpenNote(mine,open,readable,state,since,last){
   if(!open) return state==="none"?"no board on file to count"
                   :readable?"none seen recently":"not measured";
   const span=coRecordDays(mine,since);
   if(span!==null&&span<30)
     return `first read here ${span===0?"today":`${span} day${span===1?"":"s"} ago`}`;
   const n=coRoles(mine,Date.now()-30*864e5).size;
-  return n?`+${n} first read in the last 30 days`:"none added in 30 days";
+  if(n)return `+${n} first read in the last 30 days`;
+  // a board only a person reads: not a claim about a month nobody looked at
+  if(state==="unread"){
+    const lt=Date.parse(last||"");
+    if(!lt||Date.now()-lt>30*864e5)
+      return last?`not re-checked since ${last}`:"not re-checked in 30 days";
+  }
+  return "none added in 30 days";
 }
 
 function coPhase(mine,readable,since){
@@ -5822,7 +5845,9 @@ function coAge(iso){
   const d=Math.floor((Date.now()-t)/864e5);
   if(d<1) return "today";
   if(d<30) return d+"d";
-  return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric"});
+  // in UTC: first_seen is a date, parsed as UTC midnight, and local time
+  // printed "Aug 17" for 08-18 everywhere in the Americas (launch audit 2)
+  return new Date(t).toLocaleDateString(undefined,{month:"short",day:"numeric",timeZone:"UTC"});
 }
 
 /* A CATEGORY IS NOT A SHORTLIST, and this rail claimed it was. It read
@@ -6080,11 +6105,11 @@ function co(id,fromUrl){
         ? `read nightly${open?` · all ${open} readable`:""}`
         : "a page we scan, not a board we can enumerate")
     : `${o.ats==="html"?"custom HTML":"their board"} · a person checks it`
-      +(o.board_checked_on?` · last ${esc(o.board_checked_on)}`:"");
+      +(lastLooked(o)?` · last ${esc(lastLooked(o))}`:"");
   const strip=`<div class="costrip">
     <dl><div class="v${open?"":" dim"}">${openCount(o)}</div>
       <dt>open roles</dt>
-      <dd>${esc(readable&&!open&&scopeNote(o)?"none shown here, see below":coOpenNote(mine,open,readable,state,o.read_since))}</dd></dl>
+      <dd>${esc(readable&&!open&&scopeNote(o)?"none shown here, see below":coOpenNote(mine,open,readable,state,o.read_since,lastLooked(o)))}</dd></dl>
     <dl><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
       <dt>quota-carrying</dt>
       <dd>${quota?`${Math.round(quota/open*100)}% of open roles`:"nothing to count"}</dd></dl>
@@ -6150,7 +6175,7 @@ function co(id,fromUrl){
         ? `Their board is one we read every night and it is empty right now.`
         : `Their board is live but built in a way we cannot read automatically,
            so this list may be incomplete. A person checks it${
-           o.board_checked_on?` &mdash; last on ${esc(o.board_checked_on)}`:""}.`}</p>
+           lastLooked(o)?` &mdash; last on ${esc(lastLooked(o))}`:""}.`}</p>
       ${o.board_url&&state!=="none"?`<a class="cobtn" href="${safeUrl(o.board_url)}" target="_blank"
         rel="noopener">Open their hiring board &#8599;</a> `:""}
       <button class="cobtn" data-click="alertOnCompany" data-arg="${esc(id)}"
@@ -6240,7 +6265,7 @@ function co(id,fromUrl){
     ${coRivals(o,sibs,inCat)}
     ${coClaim(o)}
     <section><p class="coprov">Record last verified${
-      o.board_checked_on?" "+esc(o.board_checked_on):""}${
+      lastLooked(o)?" "+esc(lastLooked(o)):""}${
       o.researched?" by hand":""}. ${
       readable&&o.ats&&o.ats!=="html"
         ? `Roles read from ${esc(o.ats)} nightly.`
@@ -6302,13 +6327,20 @@ function intel(){
   const fams=Object.entries(t.families).sort((a,b)=>b[1]-a[1]);
   const maxF=Math.max(...fams.map(([,n])=>n));
   const byPhase={};
-  D.organizations.forEach(o=>{const k=(o.phase||"").split(":")[0];byPhase[k]=(byPhase[k]||0)+1;});
+  // over boards we read: 1,763 unread or boardless companies were counted
+  // as "too few openings to read" (launch audit 2)
+  const readOrgs=D.organizations.filter(o=>boardState(o)==="read");
+  readOrgs.forEach(o=>{const k=(o.phase||"").split(":")[0];byPhase[k]=(byPhase[k]||0)+1;});
   const hiring=D.organizations.filter(o=>o.open_roles>0).length;
+  const handRead=D.organizations.filter(o=>boardState(o)==="unread"&&o.open_roles>0).length;
   const topGtm=[...D.organizations].sort((a,b)=>(b.families?.gtm||0)-(a.families?.gtm||0)).slice(0,8);
   const topEng=[...D.organizations].sort((a,b)=>(b.families?.engineering||0)-(a.families?.engineering||0)).slice(0,8);
   $("#view").innerHTML=`<h1 class="vh">Market intel</h1>
     <div class="cards">
-      <div class="card"><div class="bignum">${(t.postings||0).toLocaleString()}</div><div class="lbl">open postings</div></div>
+      ${/* OPENINGS BESIDE OPENINGS. "8,062 open postings" stood beside 773
+            quota-carrying OPENINGS, and the bars below sum openings too
+            (launch audit 2, 2026-10-09). */""}
+      <div class="card"><div class="bignum">${(t.openings||0).toLocaleString()}</div><div class="lbl">open roles, in ${(t.postings||0).toLocaleString()} postings</div></div>
       <div class="card"><div class="bignum">${(t.quota_carrying||0).toLocaleString()}</div><div class="lbl">quota-carrying</div></div>
       <div class="card"><div class="bignum">${hiring.toLocaleString()}</div><div class="lbl">companies hiring</div></div>
       <!-- ONE DEFINITION OF UNREADABLE, SHARED. This printed D.unreadable,
@@ -6340,7 +6372,7 @@ function intel(){
       board: a posting we never read may state pay we have not seen, and a posting that states
       nothing is not a posting that pays nothing. Neither number supports &ldquo;the rest pay
       less&rdquo;.</p>`}
-    <h3 style="font-size:13px;margin-top:20px">Company phase</h3>
+    <h3 style="font-size:13px;margin-top:20px">Company phase, of the ${readOrgs.length.toLocaleString()} boards we read</h3>
     ${Object.entries(byPhase).sort((a,b)=>b[1]-a[1]).map(([k,n])=>
       `<div class="kv"><strong>${n}</strong> ${esc(k)}</div>`).join("")}
     <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:20px">
@@ -6351,8 +6383,10 @@ function intel(){
     </div>
     <p class="hint">Hiring composition is the signal. A company hiring mostly engineers is
     building; one hiring mostly sellers is pushing go to market; one hiring mostly delivery
-    and support is absorbing customers it already won. ${unreadableCount().toLocaleString()} boards could not be
-    read this run, so those companies show zero openings rather than none existing.</p>`;
+    and support is absorbing customers it already won. ${unreadableCount().toLocaleString()} boards are
+    ones our reader cannot open, a standing state rather than this run's failures, so those
+    companies show no count rather than a zero${handRead?`, except ${handRead.toLocaleString()} whose
+    roles a person captured by hand`:""}.</p>`;
   // built rather than stringified, for the same reason as every other row here
   const leaders=(hostId,list,key)=>{
     const host=$("#"+hostId); if(!host)return;
@@ -6377,8 +6411,12 @@ function how(){
   const bySrc={};
   D.postings.forEach(p=>{const k=p.source||"ats";bySrc[k]=(bySrc[k]||0)+1});
   const n=v=>(v||0).toLocaleString();
-  const noBoard=D.organizations.filter(o=>o.no_board_on_file).length;
-  const unread=D.organizations.filter(o=>o.unreadable||o.enumerable===false).length;
+  // the three states of "no board on file", as each company page says them
+  const nb=D.organizations.filter(o=>o.no_board_on_file);
+  const blocked=nb.filter(o=>o.probe==="blocked").length;
+  const unlooked=nb.filter(o=>!o.probe).length;
+  const noBoard=nb.length-blocked-unlooked;
+  const unread=D.organizations.filter(o=>boardState(o)==="unread").length;
   $("#view").innerHTML=`
   <div class="phead">
     <h1 class="ptitle">How listings get here</h1>
@@ -6455,8 +6493,10 @@ function how(){
 
   <div class="sechead"><h3>What we cannot see, and why that is on the page</h3></div>
   <p class="hint" style="max-width:80ch"><strong>A page scan never proves absence.</strong>
-    ${n(noBoard)} of the companies here have no public job board we could find, and
-    ${n(unread)} have one we could not read this run. Those companies show no roles. That
+    ${n(noBoard)} of the companies here have no public job board we could find,
+    ${n(blocked)} have a site that turned our reader away before it could look,
+    ${n(unlooked)} have not been looked for yet, and ${n(unread)} have a board our reader
+    cannot open. Those companies show no roles. That
     is a fact about what reached us, not about whether they are hiring, and every one of
     their cards says so in those words rather than showing you a zero. A field audit of a
     random sample put roughly 55&ndash;63% of the &ldquo;no board found&rdquo; pile as
@@ -6580,8 +6620,12 @@ function buildSlides(){
   // family (158 over a link that showed 25; third review, 2026-10-07). A run
   // with none drops the slide rather than printing a zero.
   if(freshQ.length){
-    const seenBefore=new Set(D.postings.filter(p=>p.first_seen!==gen).map(p=>p.company_id));
-    const debut=[...new Set(freshQ.filter(p=>!seenBefore.has(p.company_id)).map(p=>p.company))];
+    /* A DEBUT ON ANY RECORD, not on today's board. Read off today's postings
+       it named Urban SDK, whose two seller titles the hiring record has held
+       since 08-17 (launch audit 2). build_board sets seller_debut from both
+       records; absent means not a debut, or not known to be one. */
+    const debutIds=new Set((D.organizations||[]).filter(o=>o.seller_debut).map(o=>o.id));
+    const debut=[...new Set(freshQ.filter(p=>debutIds.has(p.company_id)).map(p=>p.company))];
     const freshOpenings=new Set(freshQ.map(p=>p.opening_id)).size;
     out.push({kick:"New this run",
       h:`<span class="num">${freshOpenings.toLocaleString()}</span> new sales role${freshOpenings===1?"":"s"}`,
@@ -6596,20 +6640,27 @@ function buildSlides(){
   // 2. The size of the thing, which is the credibility line for a stranger.
   const q=boardDefault(D.postings);
   const openings=new Set(q.map(p=>p.opening_id)).size;
+  // the widest single requisition, measured: "93 cities" was a frozen figure
+  // for one that had grown to 228 postings (launch audit 2)
+  const perOpening={};
+  q.forEach(p=>{ perOpening[p.opening_id]=(perOpening[p.opening_id]||0)+1; });
+  const widest=Math.max(0,...Object.values(perOpening));
   if(q.length){
     out.push({kick:"Sellers wanted",
       h:`<span class="num">${openings.toLocaleString()}</span> quota-carrying roles`,
       p:`Advertised in ${q.length.toLocaleString()} postings across `
         +`${new Set(q.map(p=>p.company_id)).size.toLocaleString()} govtech companies. `
-        +`We count openings, not rows — one requisition posted to 93 cities is one job.`,
+        +`We count openings, not rows`
+        +(widest>1?` — one requisition advertised in ${widest.toLocaleString()} postings is one job.`:"."),
       cta:"Open the board", go:()=>goTab("jobs")});
   }
 
-  // 3. Who is hiring hardest right now, by openings rather than rows.
-  const byCo={};
-  q.forEach(p=>{ (byCo[p.company]=byCo[p.company]||new Set()).add(p.opening_id) });
-  const top=Object.entries(byCo).map(([n,s])=>[n,s.size])
-    .sort((a,b)=>b[1]-a[1]).slice(0,3);
+  // 3. Who is hiring hardest right now, by openings rather than rows - and by
+  // the count the Companies tab it opens prints. Ranked on the US-only
+  // default it said ZOLL 48 ahead of Motorola 32, over a list showing
+  // Motorola 62 and ZOLL 60 (launch audit 2, 2026-10-09).
+  const top=(D.organizations||[]).filter(o=>(o.quota_roles||0)>0)
+    .map(o=>[o.name,o.quota_roles]).sort((a,b)=>b[1]-a[1]).slice(0,3);
   if(top.length&&top[0][1]>1){
     out.push({kick:"Hiring hardest",
       h:esc(top[0][0]),
@@ -6923,12 +6974,17 @@ function home(){
      result cannot drift is to compute both the same way. */
   // the same list the sector dropdown is built from, one line up in jobs()
   const ALL_SECTORS=[...new Set(D.postings.map(x=>x.sector).filter(Boolean))];
+  /* OPENINGS, as the board it opens leads with. Counting rows put "Parks &
+     Rec 258" over a board reading "32 roles", 228 of the rows being one
+     Xplor requisition, and ranked it above Public Safety's 175 roles
+     (launch audit 2, 2026-10-09). */
   const bySec={};
   q.forEach(p=>{
     ALL_SECTORS.forEach(name=>{ if(inSector(p,name))
-      bySec[name]=(bySec[name]||0)+1 });
+      (bySec[name]=bySec[name]||new Set()).add(p.opening_id||p.id) });
   });
-  const secs=Object.entries(bySec).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const secs=Object.entries(bySec).map(([n,set])=>[n,set.size])
+    .sort((a,b)=>b[1]-a[1]).slice(0,8);
 
   $("#view").innerHTML=`<h1 class="vh">SLED JOBS: sales jobs at govtech companies</h1>`
     +banner+sinceLastVisit()+`

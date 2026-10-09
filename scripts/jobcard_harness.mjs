@@ -307,6 +307,11 @@ try {
   front.lastVisit = g;
   vm.runInContext(`D = __real; LAST_VISIT = ${JSON.stringify(g)}; home();`, ctx);
   front.home = String(rec2.innerHTML);
+  // the Market intel and How tabs, on the real board
+  for (const [k, fn] of [["intel", "intel"], ["how", "how"]]) {
+    try { rec2.innerHTML = ""; vm.runInContext(`D = __real; ${fn}();`, ctx); front[k] = String(rec2.innerHTML); }
+    catch (e) { errors.push(`running ${fn}(): ${e && e.message}`); }
+  }
 } catch (e) {
   errors.push(`running the front page: ${e && e.message}`);
 }

@@ -1301,8 +1301,18 @@ def open_count(o: dict) -> str:
     return str(n) if n or board_state(o) == "read" else "&mdash;"
 
 
+def last_looked(o: dict) -> "str | None":
+    """The last day anybody looked at this company's board: the crawl's probe
+    or a person's capture, whichever is later. Gainwell's page said "a person
+    checks it - last 2026-08-19" over 97 roles a person captured on 09-08
+    (launch audit 2, 2026-10-09). index.html lastLooked() is the same rule."""
+    days = [str(d) for d in (o.get("board_checked_on"), o.get("checked_by_hand")) if d]
+    return max(days) if days else None
+
+
 def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
-                  state: str = "", since: "str | None" = None) -> str:
+                  state: str = "", since: "str | None" = None,
+                  last: "str | None" = None) -> str:
     if not open_:
         if state == "none":
             return "no board on file to count"
@@ -1312,7 +1322,15 @@ def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
         when = "today" if span == 0 else f"{span} day{'' if span == 1 else 's'} ago"
         return f"first read here {when}"
     n = len(_co_roles(mine, now - dt.timedelta(days=30)))
-    return f"+{n} first read in the last 30 days" if n else "none added in 30 days"
+    if n:
+        return f"+{n} first read in the last 30 days"
+    # a board only a person reads: "none added in 30 days" is a claim about a
+    # month nobody may have looked at
+    if state == "unread":
+        lt = _co_date(last)
+        if lt is None or (now - lt).days > 30:
+            return f"not re-checked since {last}" if last else "not re-checked in 30 days"
+    return "none added in 30 days"
 
 
 def _co_phase(mine: list, readable: bool, now: dt.date,
@@ -1533,6 +1551,30 @@ def _co_href(target_id, by_id: dict) -> str:
     return f"/?co={urllib.parse.quote(tid, safe='')}"
 
 
+# apply_run_facts.py and apply_transit_run.py stored research notes as a[:400]
+DEAL_CEILING = 400
+
+
+def deal_text(raw) -> str:
+    """A stored deal sentence as it may be printed: whole sentences only.
+
+    The research that wrote these cut them at 400 characters, so seven pages
+    ended mid-word - Galaxy Digital's on "WAS ACQUIRED by Bette", which cut
+    off the very acquisition the section is about - and OpenCounter's
+    printed an internal "(Correction: ...)" note (launch audit 2,
+    2026-10-09). Nothing is composed: a parenthetical correction note is
+    dropped, and a text that stops mid-sentence ends at its last full one.
+    """
+    cut = len(str(raw or "")) >= DEAL_CEILING
+    t = re.sub(r"\s*\(Correction:[^)]*\)", "", str(raw or "")).strip()
+    # only a text that reached the research's ceiling was cut; a short one
+    # with no closing stop ("Acquired by Poppulo; announced 2025-03-04") is whole
+    if not t or not cut or re.search(r"[.!?][\"'\u201d)]*$", t):
+        return t
+    ends = list(re.finditer(r"[.!?][\"'\u201d)]*(?=\s)", t))
+    return t[:ends[-1].end()] if ends else ""
+
+
 def _co_acquired(o: dict, by_id: dict) -> str:
     """"Part of X" as a block a reader can actually read.
 
@@ -1558,7 +1600,8 @@ def _co_acquired(o: dict, by_id: dict) -> str:
     # "acquired 2026" over "No year is given" (launch audit 2, 2026-10-09).
     # The sentence the ruling was made from carries any year it has.
     head = f"Part of {who}"
-    deal = (f'<p>{esc(str(acq["deal"]))}</p>' if acq and acq.get("deal") else "")
+    said = deal_text((acq or {}).get("deal"))
+    deal = f'<p>{esc(said)}</p>' if said else ""
     src = (acq or {}).get("source")
     link = (f'<p class="coprov">{_ext_link(src, "Read the announcement")}</p>'
             if isinstance(src, str) and src.startswith("http") else "")
@@ -1783,8 +1826,8 @@ def _co_roles_html(o: dict, mine: list, readable: bool, now: dt.date) -> str:
         elif readable:
             why = "Their board is one we read every night and it is empty right now."
         else:
-            last = (f" &mdash; last on {esc(str(o['board_checked_on']))}"
-                    if o.get("board_checked_on") else "")
+            last = (f" &mdash; last on {esc(last_looked(o))}"
+                    if last_looked(o) else "")
             why = ("Their board is live but built in a way we cannot read automatically, "
                    f"so this list may be incomplete. A person checks it{last}.")
         board = (_ext_link(o["board_url"], "Open their hiring board &#8599;", "cobtn") + " "
@@ -1913,11 +1956,11 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
         src_val = "Board unreadable"
         src_note = (("custom HTML" if ats == "html" else "their board")
                     + " · a person checks it"
-                    + (f" · last {esc(str(o['board_checked_on']))}" if o.get("board_checked_on") else ""))
+                    + (f" · last {esc(last_looked(o))}" if last_looked(o) else ""))
     # a board we read that lists roles, none in scope, is not "none seen"
     open_note = ("none shown here, see below" if readable and not open_ and scope_note(o)
                  else _co_open_note(mine, open_, readable, now, state,
-                                    o.get("read_since")))
+                                    o.get("read_since"), last_looked(o)))
     pct = f"{int(math.floor(quota / open_ * 100 + 0.5))}% of open roles" if quota and open_ else "nothing to count"
     strip = (f'<div class="costrip">'
              f'<dl><div class="v{"" if open_ else " dim"}">{open_count(o)}</div><dt>open roles</dt>'
@@ -1972,8 +2015,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
             # ruled from - so neither is composed here.
             does = (f'<p class="does">{esc(str(b["does"]))}</p>'
                     if b.get("does") else "")
-            deal = (f'<p class="deal">{esc(str(b["deal"]))}</p>'
-                    if b.get("deal") else "")
+            said = deal_text(b.get("deal"))
+            deal = f'<p class="deal">{esc(said)}</p>' if said else ""
             src = (f'<p class="src-l">{_ext_link(b["source"], "the announcement")}</p>'
                    if b.get("source") else "")
             # no "acquired YYYY": the stored year can be another deal's (see
@@ -2017,7 +2060,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     # page is scanned rather than enumerated, and this line agrees with it.
     nightly = readable and ats and ats not in ("html", "unknown")
     rail += (f'<section><p class="coprov">Record last verified'
-             f'{" " + esc(str(o["board_checked_on"])) if o.get("board_checked_on") else ""}'
+             f'{" " + esc(last_looked(o)) if last_looked(o) else ""}'
              f'{" by hand" if o.get("researched") else ""}. '
              f'{f"Roles read from {esc(ats)} nightly." if nightly else "Roles are checked by hand."}'
              f'</p></section>')
@@ -2230,9 +2273,16 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
     fresh = [p_ for p_ in board.get("postings", [])
              if p_.get("first_seen") == gen and p_.get("quota_carrying")]
     fresh.sort(key=lambda p_: (p_.get("company") or "", p_.get("title") or ""))
+    # NO SILENT CAP. It stopped at 60, sorted by company name, so on 10-09
+    # Urban SDK, Versaterm, Workday and Xylem - companies late in the
+    # alphabet - never reached a subscriber and nothing said so (launch
+    # audit 2). A ceiling only for a run that adds hundreds, and the channel
+    # then says how many it left out.
+    CAP = 500
     items = ""
-    for p_ in fresh[:60]:
-        link = f"{site}/?role={urllib.parse.quote(p_['id'])}"
+    for p_ in fresh[:CAP]:
+        # the canonical's encoding (encodeURIComponent), as the sitemap has it
+        link = f"{site}/?role={urllib.parse.quote(p_['id'], safe=_JS_SAFE)}"
         where = (p_.get("location") or "").strip()
         desc = (f"{p_.get('company','')} is hiring a {p_.get('title','')}"
                 + (f" in {where}" if where else "") + ".")
@@ -2249,7 +2299,9 @@ def write_feeds(out: pathlib.Path, board: dict, brand: dict) -> dict:
         f"  <title>{html.escape(brand['name'])}: new quota-carrying roles</title>\n"
         f"  <link>{site}/</link>\n"
         f"  <description>Sales roles at state and local government technology "
-        f"companies, first seen on the most recent run.</description>\n"
+        f"companies, first seen on the most recent run"
+        + (f": the first {CAP} of {len(fresh):,} by company name; the rest are "
+           f"on the board" if len(fresh) > CAP else "") + ".</description>\n"
         f"  <lastBuildDate>{gen}</lastBuildDate>\n"
         + items + "</channel></rss>\n")
 
@@ -2779,9 +2831,13 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
     # ── run by ────────────────────────────────────────────────────────────
     if org and org.get("name"):
         meta = []
-        if org.get("event_count"):
-            meta.append(f'{org["event_count"]} '
-                        f'{"event" if org["event_count"] == 1 else "events"} '
+        # PUBLISHED events, the ones on the Conferences tab. event_count also
+        # counts staged registry rows - "Chapter conferences (~30)", "e.g.
+        # Connecticut NAHRO" - so NAHRO read "16 events in the catalogue"
+        # over a catalogue holding one (launch audit 2, 2026-10-09)
+        n_pub = org.get("published_count")
+        if n_pub:
+            meta.append(f'{n_pub} {"event" if n_pub == 1 else "events"} '
                         f'in the catalogue')
         if org.get("swept_count"):
             meta.append(f'{org["swept_count"]} '
@@ -3077,8 +3133,15 @@ def write_noscript(out: pathlib.Path, board: dict, brand: dict) -> int:
                          "the no-JavaScript page would not ship")
     anchor = m.group(0)
 
-    t = board.get("totals") or {}
     name = brand.get("name") or "SLED JOBS"
+    # COUNTED AS THE BOARD OPENS: quota-carrying roles not placed outside the
+    # US, by opening (index.html boardDefault). It printed every opening of
+    # every family, 6,656 under "every open sales role" beside a home card
+    # saying 552 (launch audit 2, 2026-10-09).
+    sell = [p_ for p_ in board.get("postings") or []
+            if p_.get("quota_carrying") and p_.get("is_us") is not False]
+    n_roles = len({p_.get("opening_id") or p_.get("id") for p_ in sell})
+    n_cos = len({p_.get("company_id") for p_ in sell})
     # The states that actually have a page, read off what write_state_pages
     # wrote rather than guessed at.
     sdir = out / "s"
@@ -3095,8 +3158,9 @@ def write_noscript(out: pathlib.Path, board: dict, brand: dict) -> int:
         '<noscript><div class="nojs">'
         f'<h1>{html.escape(name)}</h1>'
         f'<p>Every open sales role at state and local government technology '
-        f'companies. <strong>{t.get("openings", 0):,} roles</strong> at '
-        f'{len(board.get("organizations") or []):,} companies, rebuilt every '
+        f'companies. <strong>{n_roles:,} open sales roles</strong> at '
+        f'{n_cos:,} companies, out of '
+        f'{len(board.get("organizations") or []):,} we track, rebuilt every '
         f'night.</p>'
         '<p>This page normally assembles itself in your browser. With '
         'JavaScript off, these pages need none:</p>'

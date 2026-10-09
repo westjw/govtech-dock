@@ -1931,6 +1931,25 @@ fires.
     (focus falls to <body> when a vote disables the button); an empty live
     region stays displayed (display:none takes it out of the tree); and
     `history_first_seen()` reads HISTORY when called, not at import.
+  The low findings, first half (claims and links):
+  - **A namesake city with a US state code is the US one** (`roles._us_namesake`,
+    `US_PREFIX`): OCLC's eight "Dublin, OH", "Manchester, NH", Badger Meter's
+    "US - FL - Melbourne" and "(New England)" were placed outside the US.
+    Fixed at the next crawl; a redraw does not recompute `is_us`.
+  - **The front page counts openings**: the sector buttons, a measured
+    widest requisition instead of a frozen "93 cities", and "Hiring hardest"
+    by the `quota_roles` the Companies tab shows. **A debut is one on any
+    record** (`sellers_before` reads data/history and data/hiring_history;
+    `seller_debut` on the org), never "not on today's board".
+  - **feed.xml has no silent cap** and links at the canonical's encoding;
+    the no-JS page counts quota-carrying openings in the US.
+  - **A deal sentence cut at the research's 400 characters prints to its
+    last whole sentence** (`deal_text`), without "(Correction: ...)" notes;
+    Run by counts `published_count`, not staged registry rows.
+  - **A board nobody read gets no phase** (rows, intel, role page, story),
+    says which of the three no-board states it is in, and is dated by
+    `last_looked()` (the later of the probe and a person's capture); "none
+    added in 30 days" only when somebody looked within 30. Dates format in UTC.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a
