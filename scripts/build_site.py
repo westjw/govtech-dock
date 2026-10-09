@@ -2969,7 +2969,8 @@ def write_noscript(out: pathlib.Path, board: dict, brand: dict) -> int:
     # MATCHED BY SHAPE, NOT BY BYTES. An exact string broke the day #view
     # gained tabindex="-1" for the skip link: the fallback silently stopped
     # shipping and the build only printed a note (third review, 2026-10-08).
-    m = re.search(r'<main><div id="stale"></div><div class="panel" id="view"[^>]*></div></main>',
+    m = re.search(r'<main><div id="stale"></div><div class="panel" id="view"[^>]*>'
+                  r'(?:<p class="empty boot"[^>]*>[^<]*</p>)?</div></main>',
                   html_txt)
     if not m:
         # The body changed shape. A missing fallback looks identical to a

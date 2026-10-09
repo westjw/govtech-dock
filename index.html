@@ -1527,7 +1527,13 @@
    <div id="acctdoors"></div>
  </div>
 </header>
-<main><div id="stale"></div><div class="panel" id="view" tabindex="-1"></div></main>
+<main><div id="stale"></div><div class="panel" id="view" tabindex="-1"><p class="empty boot" role="status">Loading the job board&hellip;</p></div></main>
+<!-- NOT A BLANK PANEL WHILE THE BOARD DOWNLOADS. #view was empty until
+     data/board.json (about 700 KB compressed) had arrived and parsed, so a
+     stranger on a slow connection saw the header over nothing (launch audit).
+     The first render replaces this; with JavaScript off nothing would, so the
+     noscript rule hides it under the page write_noscript() adds. -->
+<noscript><style>.boot{display:none}</style></noscript>
 
 <!-- Anyone can propose a company. Nothing here writes to the map: it opens a
      submission, a bot researches it and opens a pull request, a person merges.

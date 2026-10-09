@@ -8944,6 +8944,39 @@ def check_a_company_page_never_shows_another_companys_newsroom() -> int:
     return errors
 
 
+def check_the_board_never_opens_on_a_blank_panel() -> int:
+    """The board says it is loading while data/board.json downloads.
+
+    #view shipped empty and the app drew nothing until about 700 KB of board
+    data had arrived and parsed, so a visitor on a slow connection saw the
+    header over a blank panel (launch audit). It now ships a status line the
+    first render replaces, hidden by a noscript rule when JavaScript is off
+    (where write_noscript's page stands in). The download itself starts from
+    a preload in <head>, which only helps if it names exactly the address
+    boot() fetches - otherwise the board downloads twice.
+    """
+    errors = 0
+    src = (ROOT / "index.html").read_text()
+    view = re.search(r'<div class="panel" id="view"[^>]*>(.*?)</div></main>', src, re.S)
+    if not view or 'role="status"' not in view.group(1) or "Loading" not in view.group(1):
+        errors += fail("#view ships empty again: the board opens on a blank panel while it downloads")
+    if not re.search(r"<noscript><style>\.boot\{display:none\}</style></noscript>", src):
+        errors += fail("with JavaScript off the loading line would stay forever; nothing hides .boot")
+    pre = re.search(r'<link rel="preload" href="([^"]+)" as="fetch" crossorigin>', src)
+    boot = re.search(r"async function boot\(\)\{.*?fetch\(\"([^\"]+)\"\)", src, re.S)
+    if not pre or not boot:
+        errors += fail("the board preload or boot()'s fetch could not be found")
+    elif pre.group(1) != boot.group(1):
+        errors += fail(f"the preload names {pre.group(1)!r} and boot() fetches {boot.group(1)!r}: "
+                       f"the board would download twice")
+    out = _built_site()
+    if out is not None:
+        built = (out / "index.html").read_text()
+        if "Loading the job board" not in built or "<noscript>" not in built.split("<main>")[0]:
+            errors += fail("the shipped index.html lost the loading line or the no-JavaScript page")
+    return errors
+
+
 def check_admin_has_one_spelling() -> int:
     """/admin is reachable by one spelling only.
 
@@ -31098,6 +31131,7 @@ def main() -> int:
     errors += check_every_page_carries_a_policy_built_from_itself()
     errors += check_admin_has_one_spelling()
     errors += check_a_company_page_never_shows_another_companys_newsroom()
+    errors += check_the_board_never_opens_on_a_blank_panel()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()
