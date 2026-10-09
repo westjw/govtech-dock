@@ -5722,7 +5722,9 @@ function coNews(o,dom,det){
   /* OLD NEWS SAYS SO, up front: on 59 pages the newest item was over two
      years old, dated row by row but nowhere in the heading (launch audit). */
   const newest=items.map(i=>String(i.date||"").slice(0,10)).filter(Boolean).sort().pop()||"";
-  const stale=newest&&D.generated&&dayGap(newest,D.generated.slice(0,10))>730
+  /* self-contained: selftest runs coNews on its own, with no D or dayGap */
+  const gen=(typeof D!=="undefined"&&D&&D.generated)?String(D.generated).slice(0,10):"";
+  const stale=newest&&gen&&(Date.parse(gen+"T00:00:00Z")-Date.parse(newest+"T00:00:00Z"))/864e5>730
     ?` &middot; nothing newer than ${esc(newest.slice(0,7))}`:"";
   const meta=items.length
     ? `${items.length} item${items.length===1?"":"s"}${dom?` from ${esc(dom)}`:""}${stale}${when}`
