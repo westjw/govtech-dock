@@ -9154,7 +9154,10 @@ const orgs = {json.dumps([{k: o.get(k) for k in ("sector", "category", "also")} 
 const pairs = {json.dumps(pairs)};
 console.log(JSON.stringify(pairs.map(([s, c]) =>
   orgs.filter(o => inSector(o, s) && coCatOk(o, c, s)).length)));"""
-    rn = subprocess.run(["node", "-e", js_], capture_output=True, text=True, timeout=120)
+    # on stdin, not -e: the org list is over Linux's 128 KB limit on one
+    # argument, and CI died on it with E2BIG while macOS passed
+    rn = subprocess.run(["node", "-"], input=js_, capture_output=True, text=True,
+                        timeout=120)
     if rn.returncode:
         errors += fail(f"the list filter did not run under node: {rn.stderr[:300]}")
     else:
