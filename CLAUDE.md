@@ -1835,7 +1835,11 @@ fires.
     the same review). The Functions router matches the admin door against
     the RAW path and the asset server decodes it. So `/%61dmin/data.json`
     and `//admin/data.json` were served the admin's queue data past the
-    door. `_middleware.disguisedAdmin()`; `check_admin_has_one_spelling`.
+    door. A second review found dot segments behind encoded slashes
+    (`/x%2F..%2Fadmin/data.json`) did the same. So `_middleware.disguisedPath()`
+    refuses any path that encodes a slash, backslash or dot (no real address
+    here does), and any other spelling that resolves to `/admin`.
+    `check_admin_has_one_spelling`.
 - **"Show N more" on a company page shows the rest** (2026-10-09). From the
   turn-6 rebuild it toggled a set nothing read for the first two groups,
   so it redrew the same three roles. The set is cleared when `co()` opens

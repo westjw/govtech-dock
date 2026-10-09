@@ -5523,7 +5523,7 @@ function brandSection(o){
    is true, and lorem in its place would be the one thing this project has
    never shipped. */
 const NEWS_KINDS=["contract","funding","leadership","product","press"];
-let CO_NEWS_FILTER="all", CO_OPEN_GROUPS=null;
+let CO_NEWS_FILTER="all", CO_OPEN_GROUPS=null, CO_DRAWN=null;
 
 /* The hiring phase is an ENUM and it needs evidence to speak. Three roles
    opened inside 60 days, or it says so and prints the threshold - the same
@@ -5842,8 +5842,11 @@ function co(id,fromUrl){
   /* THE COMPANY GETS AN ADDRESS. Mirrors openRole: pushState so Back undoes
      it, and the board's own query string is remembered so Back returns to the
      search you came from rather than a bare board. */
-  // a group opened on one company stays open only on that company
-  if(CO!==id) CO_OPEN_GROUPS=new Set();
+  /* a group opened on one company stays open only on that company. Keyed on
+     the company last DRAWN: popstate sets CO from the url before it calls
+     co(CO,true), so CO!==id never fired on Back (second review, 10-09). */
+  if(CO_DRAWN!==id) CO_OPEN_GROUPS=new Set();
+  CO_DRAWN=id;
   CO=id;
   if(!fromUrl){
     LAST_BOARD_QS=CO?LAST_BOARD_QS:location.search;

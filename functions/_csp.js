@@ -98,6 +98,10 @@ export async function policyFor(request, env, { holding = false } = {}) {
  * (fetch_logos.py), so each is served sandboxed: it draws, and runs nothing. */
 const SVG_POLICY = "default-src 'none'; img-src data:; style-src 'unsafe-inline'; sandbox";
 
+/* A path a page is served at: no extension, or .html. A 304 carries no
+ * content-type, so this is how one for a page is told from one for a file. */
+const pageLike = (path) => /(^|\/)[^/.]*$|\.html$/i.test(path);
+
 /* Frame headers where they belong, and the policy on every HTML response. */
 export async function secure(res, request, env, { holding = false, mode = CSP_MODE } = {}) {
   const path = decodedPath(request);
@@ -110,11 +114,26 @@ export async function secure(res, request, env, { holding = false, mode = CSP_MO
    * stored page's full policy with frame-ancestors alone, and the cached
    * /alerts or /claim would run with no script policy (review, 2026-10-09).
    * With none on the 304, the browser keeps what came with the 200. */
+  /* EXCEPT WHERE THE STORED POLICY MUST CHANGE: after the flip to enforce, a
+   * page cached under report-only would stay report-only in that browser
+   * until its bytes changed (second review, 2026-10-09). So in enforce mode a
+   * 304 for a page carries the enforced policy. A 304 means the stored bytes
+   * are the current ones, so the hashes match; only the nonce is new, which
+   * costs the cached copy Cloudflare's snippet and nothing of ours. */
   if (res.status === 304) {
-    if (!res.headers.has("content-security-policy") && !res.headers.has("content-security-policy-report-only")) return res;
     const bare = new Response(null, res);
     bare.headers.delete("Content-Security-Policy");
     bare.headers.delete("Content-Security-Policy-Report-Only");
+    if (/\.svg$/i.test(path)) {
+      bare.headers.set("Content-Security-Policy", SVG_POLICY);
+    } else if ((holding || mode === "enforce") && pageLike(path)) {
+      let p = null;
+      try { p = await policyFor(request, env, { holding }); } catch { p = null; }
+      if (p) bare.headers.set("Content-Security-Policy", isFramed ? `${p}; ${FRAME}` : p);
+      else if (isFramed) bare.headers.set("Content-Security-Policy", FRAME);
+    } else if (isFramed) {
+      // report mode: the stored page keeps its own; nothing here replaces it
+    }
     return bare;
   }
   if (type.includes("image/svg+xml")) {

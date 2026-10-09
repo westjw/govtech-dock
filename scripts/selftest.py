@@ -8605,6 +8605,12 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
         "e/r7.html": ('<a href="java\tscript:alert(1)">a</a>', None),
         "e/r8.html": ('<a href="jav&#x0A;ascript:alert(1)">a</a>', None),
         "e/r9.html": ('<a href="\x01javascript:alert(1)">a</a>', None),
+        # ... and with a quoted ">" before the handler, or a data-block disguise
+        "c/s1.html": ('<!--><img alt=">" src=x onerror=alert(1)>-->', None),
+        "c/s2.html": ('<svg><style><img alt=">" src=x onerror=alert(4)></style></svg>', None),
+        "c/s3.html": ("<noscript><p title=\"</noscript><img alt='>' src=x onerror=alert(5)>\"></p></noscript>", None),
+        "c/s4.html": ('<!--><script type="text/javascript" type="application/json">alert(1)</script>-->', None),
+        "c/s5.html": ('<!--><script data-x="type=application/json">alert(1)</script>-->', None),
     }
     for rel, (html_text, says) in plants.items():
         tmp = pathlib.Path(tempfile.mkdtemp())
@@ -8786,6 +8792,18 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
                            f"over the stored page's policy: {res}")
     if not C.get("r304"):
         errors += fail("no 304 was asked about")
+    for label, res in (C.get("r304_enforce") or {}).items():
+        e = res.get("enforce") or ""
+        if "'nonce-" not in e or res.get("report"):
+            errors += fail(f"in enforce mode a 304 for {label} carries no enforced policy, so a page "
+                           f"cached under report-only stays report-only: {res}")
+        if label.startswith(("/alerts", "/admin")) and "frame-ancestors 'none'" not in e:
+            errors += fail(f"in enforce mode a 304 for {label} dropped frame-ancestors")
+    for label in ("/assets/logos/x.png", "/data/board.json"):
+        if (C.get("r304_enforce_files") or {}).get(label, {}).get("enforce"):
+            errors += fail(f"a 304 for the file {label} was given a page policy")
+    if "sandbox" not in ((C.get("r304_enforce_files") or {}).get("/assets/logos/x.svg") or {}).get("enforce", ""):
+        errors += fail("a 304 for an SVG lost its sandbox")
     sv = C.get("svg") or {}
     if "sandbox" not in (sv.get("enforce") or "") or "default-src 'none'" not in (sv.get("enforce") or ""):
         errors += fail(f"an SVG is served without its sandbox policy: {sv}")
@@ -8824,11 +8842,24 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
         errors += fail(f"csp.write is not the last page write in build_site.main(): {later or 'never called'}")
 
     # 8. NO LOGO OF OURS CAN RUN ANYTHING, sandboxed or not: they come from
-    # company websites (fetch_logos.py accepts any <svg>)
+    # company websites (fetch_logos.py accepts any <svg>). An SVG is XML: a
+    # script element may carry a namespace prefix (<svg:script>, <h:script>)
+    # and an attribute may be entity-encoded (second review, 2026-10-09).
+    def logo_runs(t: str) -> bool:
+        u = re.sub(r"[\t\n\r]", "", html.unescape(t))
+        return bool(re.search(r"<([\w.-]+:)?(script|foreignobject|iframe|embed|object)\b", u, re.I)
+                    or re.search(r"[\s/\"']on[a-z]+\s*=", u, re.I)
+                    or re.search(r"=\s*[\"']?[\x00-\x20]*javascript:", u, re.I))
+    for t, want in (('<svg><script>x</script></svg>', True),
+                    ('<svg:svg xmlns:svg="http://www.w3.org/2000/svg"><svg:script>x</svg:script></svg:svg>', True),
+                    ('<svg><h:script xmlns:h="http://www.w3.org/1999/xhtml">x</h:script></svg>', True),
+                    ('<svg><a xlink:href="&#106;avascript:alert(1)"><rect/></a></svg>', True),
+                    ('<svg onload="x()"></svg>', True), ('<svg><foreignObject/></svg>', True),
+                    ('<svg viewBox="0 0 10 10"><path d="M0 0h10"/><title>Acme</title></svg>', False)):
+        if logo_runs(t) != want:
+            errors += fail(f"the logo scanner {'passed' if want else 'flagged'} {t[:60]!r}")
     for f in sorted((ROOT / "assets" / "logos").glob("*.svg")):
-        t = f.read_text(errors="replace")
-        if re.search(r"<script|<foreignObject|[\s/\"']on[a-z]+\s*=", t, re.I) or \
-                re.search(r"=\s*[\"']?[\x00-\x20]*javascript:", re.sub(r"[\t\n\r]", "", t), re.I):
+        if logo_runs(f.read_text(errors="replace")):
             errors += fail(f"assets/logos/{f.name} carries script; replace it with a plain image")
 
     # 7. NO LAUNCH ON A POLICY THAT ONLY REPORTS
@@ -8864,7 +8895,9 @@ def check_admin_has_one_spelling() -> int:
         return fail(f"gate_harness.mjs printed no JSON: {r.stderr[-300:]}")
     errors = 0
     for p in ("/%61dmin/data.json", "/admin%2Fdata.json", "//admin/data.json",
-              "/ADMIN/data.json", "/%41dmin/"):
+              "/ADMIN/data.json", "/%41dmin/", "/x%2F..%2Fadmin/data.json",
+              "/.%2Fadmin/data.json", "/%2E%2Fadmin/data.json", "/c/..%5Cadmin/x",
+              "/c/a%2Fb"):
         res = d.get(p) or {}
         if res.get("status") != 404 or res.get("reached"):
             errors += fail(f"{p} reached the asset server ({res.get('status')}); it decodes to "
@@ -9048,6 +9081,9 @@ def check_no_markup_carries_code() -> int:
             or "Show 2 more" not in vs.get("__more_before", "") \
             or "Show fewer" not in vs.get("__more_after", ""):
         errors += fail(f"'Show N more' on a company page does not show the rest and back: {shown}")
+    back = vs.get("__more_back_button", "")
+    if back.count('data-click="openRole"') != 3:
+        errors += fail("Back to a company inherits the groups opened on the company before it")
     nxt = vs.get("__more_next_co", "")
     nrows = nxt.count('data-click="openRole"')
     if nrows != 3 or "Show 2 more" not in nxt:

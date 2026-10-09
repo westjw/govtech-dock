@@ -264,6 +264,9 @@ try {
     opening_id: `read-co::o${i}` })));
   grab(`co("quote-co", true); coShowAll("gtm");`);
   views.__more_next_co = grab(`co("read-co", true);`);
+  // Back: popstate sets CO from the url BEFORE it calls co(CO, true)
+  grab(`co("read-co", true); coShowAll("gtm");`);
+  views.__more_back_button = grab(`CO = "quote-co"; co(CO, true);`);
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }

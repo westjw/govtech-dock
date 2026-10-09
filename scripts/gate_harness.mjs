@@ -159,7 +159,9 @@ out.caching_post = (await ask("/data/board.json", { cookie: mint({}), method: "P
 // decode it past the admin door (review, 2026-10-09)
 out.disguised = {};
 for (const p of ["/%61dmin/data.json", "/admin%2Fdata.json", "//admin/data.json",
-                 "/ADMIN/data.json", "/%41dmin/", "/admin/data.json", "/administration", "/c/admin-co"]) {
+                 "/ADMIN/data.json", "/%41dmin/", "/x%2F..%2Fadmin/data.json", "/.%2Fadmin/data.json",
+                 "/%2E%2Fadmin/data.json", "/c/..%5Cadmin/x", "/c/a%2Fb",
+                 "/admin/data.json", "/administration", "/c/admin-co"]) {
   out.disguised[p] = await ask(p, { cookie: mint({}) });
 }
 out.frames = {};
@@ -218,12 +220,18 @@ if (process.env.CSP_MANIFEST) {
   };
   C.r304 = { "/alerts": await ask304("/alerts"), "/claim?t=x": await ask304("/claim?t=x"),
              "/admin/": await ask304("/admin/"), "/": await ask304("/") };
-  {
-    const r304e = await csp.secure(new Response(null, { status: 304, headers: { "content-security-policy": "frame-ancestors 'none'" } }),
-      new Request("https://sledjobs.com/alerts"), env, { mode: "enforce" });
-    C.r304["/alerts (enforce)"] = { status: r304e.status, enforce: r304e.headers.get("content-security-policy") || "",
-                                    report: r304e.headers.get("content-security-policy-report-only") || "" };
-  }
+  // enforce mode: a 304 for a page carries the enforced policy, a file's none
+  const e304 = async (path) => {
+    const r = await csp.secure(new Response(null, { status: 304, headers: { "content-security-policy": "frame-ancestors 'none'" } }),
+      new Request(`https://sledjobs.com${path}`), env, { mode: "enforce" });
+    return { status: r.status, enforce: r.headers.get("content-security-policy") || "",
+             report: r.headers.get("content-security-policy-report-only") || "" };
+  };
+  C.r304_enforce = { "/alerts": await e304("/alerts"), "/admin/": await e304("/admin/"),
+                     "/": await e304("/"), "/c/verkada": await e304("/c/verkada") };
+  C.r304_enforce_files = { "/assets/logos/x.png": await e304("/assets/logos/x.png"),
+                           "/data/board.json": await e304("/data/board.json"),
+                           "/assets/logos/x.svg": await e304("/assets/logos/x.svg") };
   C.svg = await (async () => {
     const req = new Request("https://sledjobs.com/assets/logos/x.svg", { headers: { Cookie: `CF_Authorization=${mint({})}` } });
     const res = await onRequest({ request: req, env, next: async () => new Response("<svg/>", { status: 200, headers: { "content-type": "image/svg+xml" } }) });

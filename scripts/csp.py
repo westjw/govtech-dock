@@ -171,7 +171,8 @@ def is_js_url(v: str) -> bool:
 # 2026-10-09). With the scripts this build wrote cut out, the rest of a page
 # must hold no tag with a handler, no <script> and no attribute that is a
 # javascript: url, however a parser reads it.
-RAW_HANDLER = re.compile(r"<[a-z][^>]*?[\s/\"']on[a-z]+\s*=", re.I)
+# a quoted value may hold ">" (alt=">"), so quoted values are stepped over
+RAW_HANDLER = re.compile(r"<[a-z](?:\"[^\"]*\"|'[^']*'|[^'\">])*?[\s/\"']on[a-z]+\s*=", re.I)
 RAW_SCRIPT = re.compile(r"<script\b", re.I)
 RAW_JS_URL = re.compile(r"=\s*[\"']?[\x00-\x20]*javascript:", re.I)
 SCRIPT_BLOCK = re.compile(r"<script\b([^>]*)>(.*?)</script\s*>", re.I | re.S)
@@ -180,8 +181,11 @@ SCRIPT_BLOCK = re.compile(r"<script\b([^>]*)>(.*?)</script\s*>", re.I | re.S)
 def raw_problems(text: str, allowed: list) -> list:
     def keep(m):
         attrs, body = m.group(1), m.group(2)
-        if re.search(r"type\s*=\s*[\"']?application/(ld\+)?json", attrs, re.I) and \
-                not re.search(r"<|on[a-z]+\s*=", body.replace("\\u003c", ""), re.I):
+        # a data block only when that is ALL the tag says: a browser reads the
+        # FIRST type, so type=... type="application/json" and
+        # data-x="type=application/json" both run (second review, 2026-10-09)
+        if re.fullmatch(r"""\s*type\s*=\s*["']application/ld\+json["']\s*""", attrs, re.I) \
+                and "<" not in body:
             return ""
         return "" if norm(body) in allowed else m.group(0)
     rest = SCRIPT_BLOCK.sub(keep, text)

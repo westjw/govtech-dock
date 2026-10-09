@@ -326,11 +326,20 @@ const CACHE_RULES = [
  * while the whole site is signed-in; on the pages.dev alias after launch it
  * was the 2026-09-25 leak again (review, 2026-10-09). Any spelling of /admin
  * that is not the plain one is refused here, before anything is served. */
-export function disguisedAdmin(request) {
+export function disguisedPath(request) {
   const raw = new URL(request.url).pathname;
+  // NO REAL ADDRESS HERE ENCODES A SLASH, A BACKSLASH OR A DOT. Those are how
+  // a path changes shape between the router, which reads it raw, and the
+  // asset server, which decodes it and resolves the dot segments:
+  // /x%2F..%2Fadmin/data.json and /.%2Fadmin/data.json reached the queue
+  // data past the first version of this check (second review, 2026-10-09).
+  if (/%2f|%5c|%2e|\\/i.test(raw)) return true;
   let dec = raw;
   try { dec = decodeURIComponent(raw); } catch { return /admin/i.test(raw); }
-  const canon = dec.replace(/\/{2,}/g, "/").toLowerCase();
+  let canon;
+  try {
+    canon = new URL(dec.replace(/\/{2,}/g, "/"), "https://x.invalid").pathname.toLowerCase();
+  } catch { return /admin/i.test(dec); }
   return /^\/admin(\/|$)/.test(canon) && !/^\/admin(\/|$)/.test(raw);
 }
 
@@ -343,7 +352,7 @@ export async function onRequest(context) {
   // the holding page carries no script of ours, so its policy is enforced
   if (shut) return secure(shut, request, context.env, { holding: true });
   // after the gate, so a visitor without a sign-in still meets the gate first
-  if (disguisedAdmin(request)) {
+  if (disguisedPath(request)) {
     return new Response("Not found", { status: 404, headers: {
       "content-type": "text/plain; charset=utf-8", "cache-control": "no-store",
       "x-robots-tag": "noindex" } });
