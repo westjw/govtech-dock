@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "The Best Partnerships Begin with Curiosity and Lead to Better Outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://acentra.com/blog/the-best-partnerships-begin-with-curiosity-and-lead-to-better-outcomes?hsLang=en"
+  },
+  {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Preparing for the Next Phase of the Rural Health Transformation Program: From Application Success to Performance Success",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Modernizing Medicaid Systems Without Disrupting Care",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Acentra Health CEO Todd Stottlemyer Named to Virginia 500 Power List for Fifth Consecutive Year",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Key Takeaways from NAMPI 2026: Advancing Medicaid Program Integrity Through Collaboration, Data, and Action",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Acentra Health Named a Pioneer in URAC\u2019s Leaders in Performance Measurement Program for Case Management",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "MESC 2026 and the Next Phase of Medicaid Modernization",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Acentra Health Awarded Five-Year Contract Extension to Continue Utilization Management Services in Colorado",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-08-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Acentra Health Acquires FEI Systems to Expand Technology and Clinical Solutions for Medicaid, Long-Term Services and Supports, Home- and Community-Based Services, and Behavioral Health",
    "kind": "funding",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Acentra Health Names Srini Surendranath as Senior Vice President of Product and Solutions Management",
    "kind": "leadership",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-07-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Acentra Health Appoints Sreedevi Hegde as Senior Vice President \u2013 India Country Head",
    "kind": "leadership",
    "kind_rule": "Appoints",
    "url": "https://acentra.com/news/acentra-health-appoints-sreedevi-hegde-as-senior-vice-president-india-country-head"
-  },
-  {
-   "date": "2026-07-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "4 Best Practices for Seamless Medicaid Provider Enrollment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://acentra.com/blog/4-best-practices-for-seamless-medicaid-provider-enrollment?hsLang=en"
   }
  ],
  "profile": {

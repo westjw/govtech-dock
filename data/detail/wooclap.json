@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "EDUCAUSE 2026: Why AI is putting humans and reasoning back at the heart of higher education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/educause-2026/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wooclap.com/en/blog/instructional-design/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "time",
-   "first_seen": "2026-09-09",
-   "headline": "How to use Wooclap in Moodle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://docs.wooclap.com/en/articles/14619595-how-to-use-wooclap-in-moodle"
   }
  ]
 }

@@ -1,8 +1,44 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Interstitial Lung Disease: What to Expect",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/interstitial-lung-disease-what-to-expect/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "COPD Exacerbation Warning Signs and What to Do",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/copd-exacerbation-warning-signs-and-what-to-do/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "What is a Portable Oxygen Concentrator? A Caregiver\u2019s Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/portable-oxygen-concentrator-a-caregivers-guide/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "What are the Most Common COPD Symptoms?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trualta.com/resources/blog/the-most-common-copd-symptoms-explained/"
+  },
+  {
    "date": "2026-10-07",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "NA Meeting: Support, Community, Recovery",
    "kind": "press",
@@ -11,7 +47,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Methadone Treatment: How It Works Day to Day",
    "kind": "press",
@@ -47,7 +83,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "What Caregivers Can Expect During Drug Withdrawal",
    "kind": "press",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "How does an AA Meeting Support Sobriety",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trualta.com/resources/blog/how-an-aa-meeting-supports-sobriety/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "time",
-   "first_seen": "2026-10-06",
-   "headline": "What are Drug Overdose Symptoms and Treatment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/drug-overdose-symptoms-and-treatment/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Substance Abuse Evaluation: A Caregiver Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/substance-abuse-evaluation-a-caregiver-guide/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "Does Medicare Cover Cancer Treatment?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/does-medicare-cover-cancer-treatment/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "Cancer Treatment: A Caregiver\u2019s Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trualta.com/resources/blog/cancer-treatment-a-caregivers-guide/"
   }
  ]
 }

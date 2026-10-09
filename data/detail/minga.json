@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "The Real Cost of Running Three Separate School Systems for Behavior, Hall Passes, and Tardy Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://minga.io/blog/cost-of-running-multiple-school-systems/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Why Teachers Abandon Behavior Tracking Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://minga.io/blog/why-teachers-abandon-behavior-tracking-systems/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "How to Recognize a Student Without Losing the Room",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://minga.io/blog/recognizing-students-in-the-moment/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "time",
    "first_seen": "2026-10-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://minga.io/blog/how-schools-are-actually-reducing-tardies/"
-  },
-  {
-   "date": "2026-08-11",
-   "date_source": "time",
-   "first_seen": "2026-10-05",
-   "headline": "Sync SIS Rosters with MingaSync",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://support.minga.io/en/articles/13755775-sync-sis-rosters-with-mingasync"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Everything We Built This Year, All to Make Your Life Easier",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://minga.io/blog/minga-product-updates-2026-everything-we-built-this-year/"
-  },
-  {
-   "date": "2026-07-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Most Schools Get Teacher Adoption Wrong: How to Fix It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://minga.io/blog/why-teachers-abandon-digital-hall-passes/"
   }
  ],
  "profile": {

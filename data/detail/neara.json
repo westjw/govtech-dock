@@ -1,4 +1,33 @@
 {
+ "news": [
+  {
+   "date": "2026-09-29",
+   "date_source": "time",
+   "first_seen": "2026-10-09",
+   "headline": "Releases Company news, straight from Neara.",
+   "kind": "product",
+   "kind_rule": "Releases",
+   "url": "https://neara.com/newsroom/press-releases"
+  },
+  {
+   "date": "2026-09-10",
+   "date_source": "time",
+   "first_seen": "2026-10-09",
+   "headline": "Thought Leadership Perspectives on the grid under pressure.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neara.com/newsroom/thought-leadership"
+  },
+  {
+   "date": "2026-02-10",
+   "date_source": "time",
+   "first_seen": "2026-10-09",
+   "headline": "Media Coverage Where our work shows up in the news.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://neara.com/newsroom/media-coverage"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "Neara sells physics-based digital twin software to electric utilities, which use it to model their networks. The pitch is to unify assets, surroundings and workflows in a single physics-accurate view.",

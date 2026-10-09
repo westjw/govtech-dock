@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Placer County Superior Court Sets the Gold Standard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.journaltech.com/blog/placer-county-superior-court-sets-the-gold-standard"
+  },
+  {
    "date": "2026-09-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.journaltech.com/blog/prioritizing-user-interface-user-experience"
-  },
-  {
-   "date": "2025-04-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Technology Q&A: Key Concepts for a Future-Ready CMS",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.journaltech.com/blog/key-cms-concepts"
   }
  ],
  "profile": {

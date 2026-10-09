@@ -379,7 +379,7 @@
  },
  "invita-healthcare-technologies": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "giro": {
   "ok": true,
@@ -561,7 +561,7 @@
  },
  "modaxo": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "concourse": {
   "ok": true,
@@ -593,7 +593,7 @@
  },
  "recdesk": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "teamsnap": {
   "ok": true,
@@ -601,7 +601,7 @@
  },
  "ips-group": {
   "ok": false,
-  "note": "bot wall, not the site (202, 1106b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "civilgrid": {
   "ok": true,
@@ -1333,7 +1333,7 @@
  },
  "vermont-systems": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "active-network": {
   "ok": true,
@@ -1453,7 +1453,7 @@
  },
  "nimble-energy": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "deepwalk": {
   "ok": true,
@@ -1485,7 +1485,7 @@
  },
  "line-mobility": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "premium-parking": {
   "ok": true,
@@ -1641,7 +1641,7 @@
  },
  "zencity": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "citibot": {
   "ok": true,
@@ -1713,7 +1713,7 @@
  },
  "openmeeting-technologies": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "clerkbase": {
   "ok": true,
@@ -1968,8 +1968,10 @@
   "note": "https://rtvision.com/wp-content/uploads/2022/06/cropped-favicon-192x192.png"
  },
  "atlasview": {
-  "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "ok": true,
+  "note": "https://atlasview.co/__l5e/assets-v1/bc1a4e07-2924-4dc8-884c-8115bdf16133/atlasview-logo.png",
+  "via": "markup-logo",
+  "url": "https://atlasview.co/__l5e/assets-v1/bc1a4e07-2924-4dc8-884c-8115bdf16133/atlasview-logo.png"
  },
  "atomai-solutions": {
   "ok": true,
@@ -2001,7 +2003,7 @@
  },
  "dynamic-infrastructure": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "nira-dynamics": {
   "ok": true,
@@ -2061,7 +2063,7 @@
  },
  "passport-workforce": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "centralsquare-technologies": {
   "ok": true,
@@ -2077,7 +2079,7 @@
  },
  "365labs": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "omnigo-software": {
   "ok": true,
@@ -2253,7 +2255,7 @@
  },
  "saferwatch": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "acusensus": {
   "ok": true,
@@ -2431,7 +2433,7 @@
  },
  "jailgeek": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "guard1": {
   "ok": true,
@@ -2487,7 +2489,7 @@
  },
  "neuralguard": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "compumed": {
   "ok": true,
@@ -2555,7 +2557,7 @@
  },
  "securetech-systems": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "collective-data": {
   "ok": true,
@@ -2717,7 +2719,7 @@
  },
  "modeshift": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "straffic-america": {
   "ok": true,
@@ -2828,8 +2830,10 @@
   "note": "https://images.squarespace-cdn.com/content/v1/6081bba44ab03a11b72f828f/831d1a23-3630-474a-9666-ed297e312803/favicon.ico"
  },
  "connx": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://connxai.com/hubfs/ConnX%20Logo%202026.png",
+  "via": "markup-logo",
+  "url": "https://connxai.com/hubfs/ConnX%20Logo%202026.png"
  },
  "csit": {
   "ok": true,
@@ -2856,8 +2860,10 @@
   "note": "https://www.sahay.io/icon.png?ffeefd3a3d55f341"
  },
  "transify": {
-  "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/6627dd62d6df44cb0dbd4233/6628299fb992cc5d48997f95_icon-256_x_256.png",
+  "via": "declared-icon",
+  "url": "https://cdn.prod.website-files.com/6627dd62d6df44cb0dbd4233/6628299fb992cc5d48997f95_icon-256_x_256.png"
  },
  "angeltrax": {
   "ok": true,
@@ -2937,7 +2943,7 @@
  },
  "hanover-displays": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "signagent": {
   "ok": true,
@@ -2973,15 +2979,17 @@
  },
  "qryde-by-hbss": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "it-curves": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://itcurves.ai/_assets/v11/cce23ddd1c602f4dade86e281e92463d8231a27f.png",
+  "via": "markup",
+  "url": "https://itcurves.ai/_assets/v11/cce23ddd1c602f4dade86e281e92463d8231a27f.png"
  },
  "tss-paratransit": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "beep": {
   "ok": true,
@@ -3659,7 +3667,7 @@
  },
  "parkspace-by-bookflowgo": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "passur-aerospace": {
   "ok": true,
@@ -3703,7 +3711,7 @@
  },
  "thoroughtec-simulation-usa-inc": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "tiba-parking-systems-llc": {
   "ok": true,
@@ -3757,7 +3765,7 @@
  },
  "caliber-public-safety": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "southern-software": {
   "ok": true,
@@ -3765,7 +3773,7 @@
  },
  "sun-ridge-systems": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "eforce-software": {
   "ok": true,
@@ -3845,11 +3853,11 @@
  },
  "oxygen-forensics": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "logo found but 6382KB, over the 214KB cap"
  },
  "adf-solutions": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "griffeye": {
   "ok": false,
@@ -4071,7 +4079,7 @@
  },
  "sportskey": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "telensa": {
   "ok": true,
@@ -4129,7 +4137,7 @@
  },
  "shakespeare-composite-structures": {
   "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "note": "the site's only icon is a 16px favicon of its parent's mark (Valmont's V), not this brand's; refused by eye 2026-10-09"
  },
  "sabre-industries": {
   "ok": true,
@@ -4312,8 +4320,10 @@
   "note": "no readable icon on the site"
  },
  "acendre": {
-  "ok": false,
-  "note": "site answered 404"
+  "ok": true,
+  "note": "https://acendre.com/wp-content/uploads/2026/04/acendreLogoMidGry512-300x300.webp",
+  "via": "markup-logo",
+  "url": "https://acendre.com/wp-content/uploads/2026/04/acendreLogoMidGry512-300x300.webp"
  },
  "vidcruiter": {
   "ok": true,
@@ -4497,7 +4507,7 @@
  },
  "yunex-traffic": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "rhythm-engineering": {
   "ok": true,
@@ -4507,7 +4517,7 @@
  },
  "sensys-networks": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "global-traffic-technologies": {
   "ok": true,
@@ -4539,7 +4549,7 @@
  },
  "numetric": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "agileassets": {
   "ok": true,
@@ -4654,8 +4664,10 @@
   "note": "https://planitgeo.com/wp-content/uploads/2022/10/cropped-2022-PG-Color-Icon-1-192x192.png"
  },
  "trailhead-labs": {
-  "ok": false,
-  "note": "blocked to non-browser clients (429)"
+  "ok": true,
+  "note": "https://www.outerspatial.com/apple-touch-icon.png",
+  "via": "apple-touch-icon",
+  "url": "https://www.outerspatial.com/apple-touch-icon.png"
  },
  "skyward": {
   "ok": true,
@@ -4678,8 +4690,10 @@
   "note": "logo found but 476KB, over the 214KB cap"
  },
  "aequitas-solutions": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://www.myaequitas.com/wp-content/uploads/2023/07/cropped-Logo-for-Social-cleart-300x300.png",
+  "via": "markup-logo",
+  "url": "https://www.myaequitas.com/wp-content/uploads/2023/07/cropped-Logo-for-Social-cleart-300x300.png"
  },
  "escape-technologies": {
   "ok": false,
@@ -4702,8 +4716,10 @@
   "note": "https://www.transfinder.com/img/favicon/android-icon-36x36.png"
  },
  "everdriven": {
-  "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "ok": true,
+  "note": "https://www.everdriven.com/wp-content/uploads/2026/06/Favicon-EverDriven-300x300.png",
+  "via": "declared-icon",
+  "url": "https://www.everdriven.com/wp-content/uploads/2026/06/Favicon-EverDriven-300x300.png"
  },
  "scribbles-software": {
   "ok": true,
@@ -4804,8 +4820,10 @@
   "url": "https://cdn.prod.website-files.com/5d84dd633ce9fe6617068f49/62fba2b2857f1e2270e9b48c_favicon-32x32.png"
  },
  "reel-scout": {
-  "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "ok": true,
+  "note": "https://images.squarespace-cdn.com/content/v1/560c9713e4b06ecc6a2a071a/1528316768182-ZWY6FLK4HTQX3EF594EJ/rs-logo-white.",
+  "via": "markup-logo",
+  "url": "https://images.squarespace-cdn.com/content/v1/560c9713e4b06ecc6a2a071a/1528316768182-ZWY6FLK4HTQX3EF594EJ/rs-logo-white.png"
  },
  "momentus-technologies": {
   "ok": true,
@@ -4841,7 +4859,7 @@
  },
  "point": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "travelstorys": {
   "ok": true,
@@ -4877,7 +4895,7 @@
  },
  "ifs": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "blocked to non-browser clients (429)"
  },
  "upkeep": {
   "ok": true,
@@ -4932,8 +4950,10 @@
   "note": "https://tcpsoftware.com/wp-content/uploads/2025/05/cropped-tcp-favicon-192x192.png"
  },
  "digitech": {
-  "ok": false,
-  "note": "site unreachable"
+  "ok": true,
+  "note": "https://digitechcomputer.com/wp-content/uploads/2026/08/cropped-Digitech-Site-Icon-192x192.png",
+  "via": "declared-icon",
+  "url": "https://digitechcomputer.com/wp-content/uploads/2026/08/cropped-Digitech-Site-Icon-192x192.png"
  },
  "locution-systems": {
   "ok": true,
@@ -4949,7 +4969,7 @@
  },
  "zetron": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "hexagon-safety-infrastructure-geospatial": {
   "ok": false,
@@ -4999,7 +5019,7 @@
  },
  "frogparking": {
   "ok": false,
-  "note": "redirects to towne.com - a different brand, not taken"
+  "note": "blocked to non-browser clients (403)"
  },
  "nedap-identification-systems": {
   "ok": true,
@@ -5010,8 +5030,10 @@
   "note": "https://tagmasterna.com/wp-content/uploads/2019/03/tagmaster.ico"
  },
  "wps-parking-solutions": {
-  "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "ok": true,
+  "note": "https://www.wpsparking.com/images/algemeen/favicon-2.png#2",
+  "via": "declared-icon",
+  "url": "https://www.wpsparking.com/images/algemeen/favicon-2.png#2"
  },
  "parking-boxx": {
   "ok": true,
@@ -5050,8 +5072,10 @@
   "note": "site unreachable (ConnectionError)"
  },
  "cardinality-ai": {
-  "ok": false,
-  "note": "redirects to cardyai.com - a different brand, not taken"
+  "ok": true,
+  "note": "https://cardyai.com/favicon.ico",
+  "via": "blind-path",
+  "url": "https://cardyai.com/favicon.ico"
  },
  "casebook-pbc": {
   "ok": true,
@@ -5353,7 +5377,7 @@
  },
  "astrophysics-inc": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "voti-detection": {
   "ok": true,
@@ -5497,7 +5521,7 @@
  },
  "accurate-controls": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "montgomery-technology": {
   "ok": true,
@@ -5520,8 +5544,10 @@
   "note": "https://averhealth.com/wp-content/uploads/2017/11/small-logo.png"
  },
  "union-supply-group": {
-  "ok": false,
-  "note": "site answered 404"
+  "ok": true,
+  "note": "https://www.unionsupply.com/Content/images/union-supply-direct-logo.jpg",
+  "via": "markup-logo",
+  "url": "https://www.unionsupply.com/Content/images/union-supply-direct-logo.jpg"
  },
  "zoll-data-systems": {
   "ok": true,
@@ -5545,7 +5571,7 @@
  },
  "incident-response-technologies": {
   "ok": false,
-  "note": "site unreachable (SSLError)"
+  "note": "redirects to www.omnigo.com - a different brand, not taken"
  },
  "ladris-technologies": {
   "ok": true,
@@ -5613,7 +5639,7 @@
  },
  "nwave-technologies": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "fybr": {
   "ok": true,
@@ -5705,7 +5731,7 @@
  },
  "blue-bird-corporation": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "thomas-built-buses": {
   "ok": true,
@@ -5801,7 +5827,7 @@
  },
  "gutermann": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "ovarro": {
   "ok": true,
@@ -6012,8 +6038,10 @@
   "note": "https://uplight.com/wp-content/uploads/2019/07/cropped-uplight-icon-1-192x192.png"
  },
  "rhizome": {
-  "ok": false,
-  "note": "site unreachable (ConnectionError)"
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/66fcadb54da8508d5c5e5e2c/66fcaec9718c5d52b909dc62_rhizome-favi-3.jpg",
+  "via": "markup",
+  "url": "https://cdn.prod.website-files.com/66fcadb54da8508d5c5e5e2c/66fcaec9718c5d52b909dc62_rhizome-favi-3.jpg"
  },
  "linevision": {
   "ok": true,
@@ -6049,7 +6077,7 @@
  },
  "chronicle": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "everspot": {
   "ok": true,
@@ -6147,7 +6175,7 @@
  },
  "system-automation": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "e-plansoft": {
   "ok": true,
@@ -6287,7 +6315,7 @@
  },
  "bulk-handling-systems": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "cp-group": {
   "ok": true,
@@ -6471,7 +6499,7 @@
  },
  "justice-systems-inc": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "imagesoft": {
   "ok": true,
@@ -6511,11 +6539,11 @@
  },
  "bis-digital": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "viq-solutions": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "courtcall": {
   "ok": true,
@@ -6611,7 +6639,7 @@
  },
  "unit4": {
   "ok": false,
-  "note": "blocked to non-browser clients (403)"
+  "note": "blocked to non-browser clients (429)"
  },
  "actionfigure": {
   "ok": true,
@@ -6735,7 +6763,7 @@
  },
  "lambent": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "doobert": {
   "ok": false,
@@ -6811,7 +6839,7 @@
  },
  "castus": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "brainfreeze": {
   "ok": true,
@@ -7271,11 +7299,11 @@
  },
  "seats-one": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "smowl": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "terminalfour": {
   "ok": true,
@@ -7519,7 +7547,7 @@
  },
  "incident-iq": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "hapara": {
   "ok": true,
@@ -7599,7 +7627,7 @@
  },
  "propeller": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "rhetorixlab": {
   "ok": true,
@@ -7690,8 +7718,10 @@
   "note": "https://citiz3n.com/wp-content/uploads/2024/01/cropped-CITI3N23_C3-Icon_SolidBox_v1-192x192.jpg"
  },
  "blue-flame-group": {
-  "ok": false,
-  "note": "no readable icon on the site"
+  "ok": true,
+  "note": "https://www.blueflamegroup.ai/assets/apple-touch-icon.png",
+  "via": "blind-path",
+  "url": "https://www.blueflamegroup.ai/assets/apple-touch-icon.png"
  },
  "nec-software-solutions": {
   "ok": false,
@@ -7731,7 +7761,7 @@
  },
  "lote4kids": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "myfilmfriend": {
   "ok": true,
@@ -7971,7 +8001,7 @@
  },
  "harris-school-solutions": {
   "ok": false,
-  "note": "bot wall, not the site (202, 1106b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "nutrislice": {
   "ok": true,
@@ -8147,7 +8177,7 @@
  },
  "ai-rgus": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "almaviva": {
   "ok": true,
@@ -8459,7 +8489,7 @@
  },
  "soilflo": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "strategic-mapping": {
   "ok": false,
@@ -8495,7 +8525,7 @@
  },
  "wavepoint-solutions-llc": {
   "ok": false,
-  "note": "bot wall, not the site (202, 168b)"
+  "note": "blocked to non-browser clients (403)"
  },
  "wrangler-ai": {
   "ok": true,
@@ -8581,7 +8611,7 @@
  },
  "monster-government-solutions": {
   "ok": false,
-  "note": "site unreachable (ConnectTimeout)"
+  "note": "site unreachable (SSLError)"
  },
  "cott-systems": {
   "ok": true,
@@ -8594,5 +8624,11 @@
   "note": "https://plowops.com/og-image.png",
   "via": "markup",
   "url": "https://plowops.com/og-image.png"
+ },
+ "heron-power": {
+  "ok": true,
+  "note": "https://cdn.prod.website-files.com/68e3e61e3bb8011e0d35b360/68e630d0bea6818d0b5c789e_webclip.png",
+  "via": "markup",
+  "url": "https://cdn.prod.website-files.com/68e3e61e3bb8011e0d35b360/68e630d0bea6818d0b5c789e_webclip.png"
  }
 }

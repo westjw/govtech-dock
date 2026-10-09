@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2023-02-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Learning & Teaching \u00b7 13 February 2023 How Can Universities Prepare Students for Work? 10 Ways to Prepare Grads for the Future Workplace",
    "kind": "press",
@@ -11,21 +11,12 @@
   },
   {
    "date": "2022-11-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Digital Skills Gap: Strategies and Solutions to Bridge the Skills Gap",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.potential.ly/resources/digital-skills-gap"
-  },
-  {
-   "date": "2022-11-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Learning & Teaching \u00b7 24 October 2022 Examples of Learning Management Systems (LMS)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.potential.ly/resources/examples-of-learning-management-systems"
   },
   {
    "date": "2022-10-31",
@@ -38,12 +29,12 @@
   },
   {
    "date": "2022-10-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Learning & Teaching \u00b7 1 December 2021 The link between Employability and Entrepreneurship",
+   "headline": "Learning & Teaching \u00b7 24 October 2022 Examples of Learning Management Systems (LMS)",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.potential.ly/resources/the-link-between-employability-and-entrepreneurship"
+   "url": "https://www.potential.ly/resources/examples-of-learning-management-systems"
   },
   {
    "date": "2022-09-23",
@@ -64,8 +55,17 @@
    "url": "https://www.potential.ly/resources/featured-skills-partner-stunning-videos-made-simple-with-invideo"
   },
   {
+   "date": "2021-12-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-05",
+   "headline": "Learning & Teaching \u00b7 1 December 2021 The link between Employability and Entrepreneurship",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.potential.ly/resources/the-link-between-employability-and-entrepreneurship"
+  },
+  {
    "date": "2021-11-25",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "The UK's Digital Skills Gap: Future Outlook & Potentially's Solution",
    "kind": "press",
@@ -73,8 +73,8 @@
    "url": "https://www.potential.ly/resources/uk-digital-skills-gap-future-outlook-potentially-solution"
   },
   {
-   "date": "2021-11-25",
-   "date_source": "index-text",
+   "date": "2021-11-21",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Enterprise \u00b7 21 November 2021 Potentially: A Learning Platform? Our Guide for Enterprise Partners",
    "kind": "press",
@@ -82,22 +82,13 @@
    "url": "https://www.potential.ly/resources/potentially-a-learning-platform"
   },
   {
-   "date": "2021-11-21",
-   "date_source": "index-text",
+   "date": "2021-11-17",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Career Services \u00b7 17 November 2021 What is Student Engagement and Why Does it Matter?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.potential.ly/resources/what-is-student-engagement-and-why-does-it-matter"
-  },
-  {
-   "date": "2021-11-17",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Career Services \u00b7 29 June 2021 Potential.ly 101: Building a Scalable Award Structure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.potential.ly/resources/potential-ly-101-building-a-scalable-award-structure"
   },
   {
    "date": "2021-11-12",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.potential.ly/resources/potentially-disrupting-brand-promotion"
+  },
+  {
+   "date": "2021-11-05",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Career Services Making Students Future-Ready November 5, 2021 4 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.potential.ly/blog/making-students-future-ready"
   }
  ],
  "profile": {

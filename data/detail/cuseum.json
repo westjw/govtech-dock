@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "AZA 2026 Recap: Quick Wins for Zoo and Aquarium Membership",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cuseum.com/blog/aza-2026-zoo-aquarium-membership-quick-wins"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cuseum.com/blog/from-ai-adoption-to-ai-governance"
-  },
-  {
-   "date": "2026-07-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Every Nonprofit Board Needs AI Expertise",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cuseum.com/blog/why-every-nonprofit-board-needs-ai-expertise"
   }
  ],
  "profile": {

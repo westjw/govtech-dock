@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Who Should See AI Plan Review Findings First?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eplansoft.com/resources/who-should-see-ai-plan-review-findings-first"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eplansoft.com/resources/chicagopermits"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How We Built Our New Plan Review Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eplansoft.com/resources/newplanexperience"
   }
  ],
  "profile": {

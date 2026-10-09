@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "QPR AI Agent Mining for Snowflake reveals how AI agents actually behave",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qpr.com/news/qpr-ai-agent-mining-for-snowflake"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qpr.com/news/ceo-interview-matti-erkheikki-on-why-process-intelligence-is-critical-for-enterprise-ai"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "QPR Software has published its Half-Year Financial Report January\u2013June 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qpr.com/news/qpr-software-has-published-its-half-year-financial-report-january-june-2026"
   }
  ],
  "profile": {

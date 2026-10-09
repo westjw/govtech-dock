@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "From Spokane to Columbus: What We Heard at ISM 2026",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Camp Northwoods: Taking Time to Recharge and Reconnect",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "What if Finding the Answer Didn\u2019t Mean Searching an Entire Case File?",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Meet the Team Shaping What\u2019s Next at Northwoods",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-06-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Helping Those Who Help Others Starts at Home",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-06-11",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "When the Work Outgrows the Name: Introducing Grove",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-05-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "From Compliance to Connection: What Child Welfare Technology Needs to Become",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-05-19",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Northwoods Consulting Partners Appoints Jill Nemoir as Chief Executive Officer",
    "kind": "leadership",

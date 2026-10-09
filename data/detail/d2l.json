@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-10-07",
+   "date": "2026-10-09",
    "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Research Minute: How Intentional Design Creates Belonging in Online Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/research-minute-how-intentional-design-creates-belonging-in-online-learning/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "How K-12 Leaders Are Rethinking Professional Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/how-k-12-leaders-are-rethinking-professional-learning/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "index-text",
    "first_seen": "2026-10-08",
    "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/association-lms/"
-  },
-  {
-   "date": "2026-10-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The Advantages, Challenges, and Benefits of Blended Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/advantages-and-challenges-of-blended-learning/"
-  },
-  {
-   "date": "2026-10-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "New Hire Orientation Guide for HR Leaders and Managers",
-   "kind": "leadership",
-   "kind_rule": "Hire",
-   "url": "https://www.d2l.com/blog/new-hire-orientation/"
   }
  ],
  "profile": {

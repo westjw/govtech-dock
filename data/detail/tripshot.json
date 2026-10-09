@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Fixed-Route Operations for a Connected Campus",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://tripshot.com/blog/a-fixed-route-is-a-network-of-decisions"
+  },
+  {
    "date": "2026-09-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://tripshot.com/blog/driving-sustainability-how-commute-programs-benefit-organizations-and-the-planet"
-  },
-  {
-   "date": "2024-08-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Optimize Parking & Operations for a Successful Hybrid Workplace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://tripshot.com/blog/cut-the-costs-of-parking-facilities"
   }
  ]
 }

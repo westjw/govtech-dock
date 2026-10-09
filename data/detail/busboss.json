@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Understanding Real-Time Dispatch Delays in School Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/understanding-real-time-dispatch-delays-in-school-fleets"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/understanding-dispatch-data-failures-in-large-fleets"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The Driver Shortage Isn't Going Away Here's How to Manage Around It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/the-driver-shortage-isnt-going-away-heres-how-to-manage-around-it"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Is TikTok Actually Dangerous for My Kid?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bark.us/blog/is-tiktok-dangerous/"
+  },
+  {
    "date": "2026-10-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What Teens Wish Their Parents Knew About Their Mental Health",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How to Protect Your Child During Holiday Family Gatherings",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Safer Music Devices for Kids: A Roundup of Our Top Choices",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How Tech Can Help You Navigate Your Kid\u2019s Early Independence",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How Do I Know My Child Is Being Groomed Online?",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What Happens After the Assembly",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "When the Chromebook Comes Home From School: What Parents Should Do",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-12",
    "headline": "Suicide Prevention Month: The Digital Warning Signs Parents Often Miss",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "What Parents Need to Know About ChatGPT\u2019s New Teen Experience",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bark.us/blog/kid-bullied-online/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Bark Watch vs Apple Watch: Here\u2019s the Breakdown",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bark.us/blog/the-bark-watch-vs-apple-watch/"
   }
  ],
  "profile": {

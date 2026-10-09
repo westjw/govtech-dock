@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Integrating Accounting and Mapping Systems for Seamless Municipal Utility Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/municipal-utility-software-integration-guide/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Maximizing Customer Engagement with Muni-Link\u2019s Utility Communication Tools",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/utility-customer-engagement-muni-link-communication-tools-mobile-apps/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-09-13",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Framework for Selecting Municipal Utility Billing Software That Streamlines Collections and Payments",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://muni-link.com/blog/why-data-integrity-fails-in-utility-billing/"
-  },
-  {
-   "date": "2026-07-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cloud-Based vs. On-Premise Utility Billing Software \u2013 A Guide for Municipalities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/cloud-based-vs-on-premise-utility-billing-software/"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Are the Best Software Options for Transitioning From Manual to Automated Billing?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/transitioning-manual-to-automated-billing/"
   }
  ],
  "profile": {
