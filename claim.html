@@ -309,8 +309,13 @@ async function load() {
 function portal(r) {
   $("#portal").hidden = false;
   $("#ptitle").textContent = r.name || "Your page";
-  $("#pwho").innerHTML = "Claimed with " + r.email
-    + ' · <a href="/c/' + encodeURIComponent(r.company_id) + '">see the public page →</a>';
+  // The address is text, never markup: built as nodes, not concatenated.
+  const who = $("#pwho");
+  who.textContent = "Claimed with " + (r.email || "") + " · ";
+  const pub = document.createElement("a");
+  pub.href = "/c/" + encodeURIComponent(r.company_id);
+  pub.textContent = "see the public page →";
+  who.appendChild(pub);
   $("#cat-now").textContent = "Tell us where you belong and why.";
   const dl = $("#facts");
   dl.innerHTML = "";

@@ -39,10 +39,18 @@ function stub() {
   return p;
 }
 const S = stub();
+/* The document records how the page registers its listeners and absorbs
+   everything else, so selftest can hold the action dispatcher to capture. */
+const listeners = [];
+const docRec = new Proxy(S, { get(_t, k) {
+  if (k === "addEventListener") return (type, _fn, opt) => {
+    listeners.push([String(type), opt === true || !!(opt && opt.capture)]); };
+  return S[k];
+} });
 const storage = { getItem: () => null, setItem() {}, removeItem() {}, clear() {}, key: () => null, length: 0 };
 const ctx = {
   console: { log() {}, warn() {}, error() {}, info() {} },
-  document: S, window: undefined, navigator: S, location: { search: "", pathname: "/", hash: "", href: "http://x/", origin: "http://x", hostname: "x" },
+  document: docRec, window: undefined, navigator: S, location: { search: "", pathname: "/", hash: "", href: "http://x/", origin: "http://x", hostname: "x" },
   history: S, localStorage: storage, sessionStorage: storage,
   fetch: () => new Promise(() => {}), setTimeout: () => 0, clearTimeout() {}, setInterval: () => 0,
   clearInterval() {}, requestAnimationFrame: () => 0, queueMicrotask() {},
@@ -216,8 +224,15 @@ try {
       offtopic_dropped: 52, federal_dropped: 2 },
     { ...base, id: "rival-co", name: "Rival Co", ats: "greenhouse", enumerable: true,
       competitors: [{ id: "unread-co", why: "a" }, { id: "none-co", why: "b" }, { id: "read-co", why: "c" }] },
+    { ...base, id: "quote-co", name: "Quote Co", ats: "greenhouse", enumerable: true, open_roles: 1 },
   ];
-  ctx.__fix = { generated: "2026-10-07", logos: {}, postings: [], organizations: orgs, conferences: [] };
+  // A title with an apostrophe, a double quote and a backslash: what a job
+  // board hands us, and what an onclick="openRole('...')" could never carry.
+  const QUOTE_ID = "quote-co::D\u00e9veloppement d'affaires \"AE\" \\ x::1a2b";
+  const qp = post({ id: QUOTE_ID, title: "D\u00e9veloppement d'affaires \"AE\" \\ x", company: "Quote Co",
+                    company_id: "quote-co", opening_id: "quote-co::q" });
+  ctx.__fix = { generated: "2026-10-07", logos: {}, postings: [qp], organizations: orgs, conferences: [] };
+  ctx.__quoteId = QUOTE_ID;
   const rec = { innerHTML: "" };
   const viewEl = new Proxy(rec, { get(t, k) { return k in t ? t[k] : S; },
                                   set(t, k, v) { t[k] = v; return true; } });
@@ -295,4 +310,58 @@ try {
 } catch (e) {
   errors.push(`running loadRatings: ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews }));
+/* NO CODE IN MARKUP: the action dispatcher and the logo listener, run for
+   real. Every control names an action in data-click/-input/-change and the
+   value it needs in data-arg; dispatch() is the one place that turns that
+   into a call. The actions are stubbed in the page's own scope (they are
+   globals) and handed fake events. */
+let acts = null;
+try {
+  ctx.__qid = vm.runInContext("typeof __quoteId === 'string' ? __quoteId : ''", ctx) || "q::it's \"x\" \\ y::1";
+  acts = vm.runInContext(`(() => {
+    const got = [], keep = { openRole, alertOnCompany, coShowAll, lightMark, toggleQuota };
+    openRole = (id) => got.push(["openRole", id]);
+    alertOnCompany = (id) => got.push(["alertOnCompany", id]);
+    coShowAll = (f) => got.push(["coShowAll", f]);
+    toggleQuota = (b) => got.push(["toggleQuota", b && b.tagName]);
+    lightMark = (img) => got.push(["lightMark", img && img.tagName]);
+    const el = (tag, ds, attrs) => ({ tagName: tag, dataset: ds, removed: false,
+      hasAttribute: (n) => Object.prototype.hasOwnProperty.call(attrs || {}, n),
+      remove() { this.removed = true; } });
+    const ev = (kind, target, type) => ({ type: type || kind, target: target === null ? null : {
+        closest: (sel) => (target && sel === "[data-" + kind + "]" ? target : null) },
+      prevented: false, preventDefault() { this.prevented = true; } });
+    const r = {};
+    let e = ev("click", el("A", { click: "openRole", arg: __qid }));
+    dispatch("click", e); r.openRole = { got: got.splice(0), prevented: e.prevented };
+    e = ev("click", el("BUTTON", { click: "alertOnCompany", arg: "acme-civic" }));
+    dispatch("click", e); r.alert = { got: got.splice(0), prevented: e.prevented };
+    e = ev("click", el("A", { click: "coShowAll", arg: "gtm" }));
+    dispatch("click", e); r.coShowAll = { got: got.splice(0), prevented: e.prevented };
+    e = ev("click", el("BUTTON", { click: "toggleQuota" }));
+    dispatch("click", e); r.toggle = { got: got.splice(0) };
+    const odd = {};
+    for (const name of ["constructor", "toString", "__proto__", "hasOwnProperty", "nope"]) {
+      e = ev("click", el("A", { click: name }));
+      try { dispatch("click", e); odd["k_" + name] = { got: got.splice(0), prevented: e.prevented }; }
+      catch (x) { odd["k_" + name] = { threw: String(x && x.message) }; }
+    }
+    r.odd = odd;
+    e = ev("click", null); dispatch("click", e); r.noTarget = got.splice(0);
+    e = ev("input", el("INPUT", { click: "openRole", arg: "x" }));
+    dispatch("input", e); r.wrongKind = got.splice(0);
+    const img = el("IMG", {}, { "data-mark": "" }), plain = el("IMG", {}, {});
+    logoEvent({ type: "load", target: img }); r.loadMarked = got.splice(0);
+    logoEvent({ type: "load", target: plain }); r.loadPlain = got.splice(0);
+    logoEvent({ type: "error", target: img }); r.errorMarked = img.removed;
+    logoEvent({ type: "error", target: plain }); r.errorPlain = plain.removed;
+    r.actKeys = Object.keys(ACTS);
+    r.frozen = Object.isFrozen(ACTS);
+    Object.assign(globalThis, keep);
+    return r; })()`, ctx);
+  acts.qid = ctx.__qid;
+  acts.listeners = listeners;
+} catch (e) {
+  errors.push(`driving dispatch(): ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts }));

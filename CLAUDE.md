@@ -1754,6 +1754,28 @@ fires.
 - **jobcard_harness runs the app's company view, `co()`,** on fixtures and
   captures what it writes to #view. The helpers agreeing proved nothing about
   the view.
+- **No markup carries code (2026-10-09).** index.html drew 33 inline
+  handlers, five as `onclick="openRole('${esc(p.id)}')"`. That was never
+  escaped: the HTML parser decodes `&#39;` back into a quote before the
+  handler compiles, so five French titles with an apostrophe threw a
+  SyntaxError when clicked, and a title written to close the string would
+  have run as script on the site.
+  - A control names its action in `data-click`, `data-input` or
+    `data-change`, and the value it needs in `data-arg`. `dispatch()` looks
+    the name up in the frozen `ACTS` table with an own-key test.
+  - An action takes an id or a name, never a url and never HTML.
+  - Logos carry `data-mark`. `load` and `error` do not bubble, so one
+    capture-phase listener on the document handles them. A row built
+    off-page must be appended in the same synchronous pass.
+  - `check_no_markup_carries_code` scans the hand-written pages, builds the
+    site and parses every page, holds ACTS against the names used, and drives
+    `dispatch()` with an id carrying `'`, `"` and `\`.
+  - The same inventory found six places putting outside text in raw
+    (conference links with no scheme check, the logo path, claim.html's
+    address, the beta page's date, the issue number, the web admin's links).
+    All fixed; `check_outside_text_never_becomes_markup`.
+  - This is step 0 of a content security policy, which needs no inline
+    handlers to be worth having.
 - **The /admin handlers read the person from the verified token**, which the
   door passes on as `context.data.access`; whoami verifies its own.
 - **Pending alert signups carry one absolute `expires`** for both keys, and a

@@ -139,6 +139,10 @@ function markFor(name,id){
 }
 const el=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;
   if(txt!==undefined)n.textContent=txt;return n};
+/* An address from research or a scraped exhibitor list is a stranger's: http(s)
+   or nothing. A javascript: href runs on this origin when it is clicked. */
+const webUrl=u=>{try{const p=new URL(String(u||""));
+  return p.protocol==="http:"||p.protocol==="https:"?p.href:""}catch{return ""}};
 let TOAST_T=null;
 function toast(m,bad){const t=$("#toast");t.textContent=m;
   t.style.background=bad?"var(--bad)":"var(--ink)";t.classList.add("on");
@@ -375,8 +379,8 @@ function drawFounded(v){
       row0.appendChild(ok);n.appendChild(row0);
     }
     const row=el("div","row");
-    if(x.about){const a=el("a",null,"their about page");a.href=x.about;a.target="_blank";a.rel="noopener";row.appendChild(a)}
-    if(x.linkedin){const a=el("a",null,"linkedin");a.href=x.linkedin;a.target="_blank";a.rel="noopener";row.appendChild(a)}
+    if(webUrl(x.about)){const a=el("a",null,"their about page");a.href=webUrl(x.about);a.target="_blank";a.rel="noopener";row.appendChild(a)}
+    if(webUrl(x.linkedin)){const a=el("a",null,"linkedin");a.href=webUrl(x.linkedin);a.target="_blank";a.rel="noopener";row.appendChild(a)}
     n.appendChild(row);
     const yr=el("input","txt");yr.placeholder="year";yr.inputMode="numeric";yr.maxLength=4;
     yr.style.maxWidth="7ch";
@@ -434,8 +438,8 @@ function drawVendors(v){
     if(x.source_event)kv.appendChild(el("span","chip",x.source_event));
     kv.appendChild(document.createTextNode(x.description||""));
     n.appendChild(kv);
-    if(x.website){const a=el("a",null,x.website.replace(/^https?:\/\//,""));
-      a.href=x.website;a.target="_blank";a.rel="noopener";
+    if(webUrl(x.website)){const a=el("a",null,x.website.replace(/^https?:\/\//,""));
+      a.href=webUrl(x.website);a.target="_blank";a.rel="noopener";
       const w=el("div","kv");w.appendChild(a);n.appendChild(w)}
     const why=el("input");why.placeholder="why (optional - it teaches the next pass)";
     n.appendChild(why);

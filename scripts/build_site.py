@@ -95,7 +95,7 @@ a{{color:#0B57C4}}</style></head><body>
   try {{ held = JSON.parse(localStorage.getItem(KEY) || "null"); }} catch (e) {{}}
   const inBeta = (rec) => {{
     body.innerHTML = '<div class="in"><b>You are on the beta list.</b> '
-      + 'Redeemed ' + (rec.on || "") + '.<br><br>' + esc(rec.consent_text || "")
+      + 'Redeemed ' + esc(rec.on || "") + '.<br><br>' + esc(rec.consent_text || "")
       + '</div>';
   }};
   const esc = (t) => String(t).replace(/[&<>"]/g, c =>
@@ -1808,7 +1808,8 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     # tileHTML. The company page, the page a search result lands on, showed
     # an initial for every one of them.
     _ext = (board.get("logos") or {}).get(o.get("id"))
-    logo_img = (f'<img src="/assets/logos/{o.get("id")}.{_ext}" alt=""'
+    logo_img = (f'<img src="/assets/logos/{urllib.parse.quote(str(o.get("id")), safe="")}'
+                f'.{urllib.parse.quote(str(_ext), safe="")}" alt=""'
                 f' decoding="async">' if _ext else "")
     sep = '<span class="sep">&middot;</span>'
     ident = (f'<div class="coid">'
@@ -2567,16 +2568,19 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
 
     # ── the doors ─────────────────────────────────────────────────────────
     doors = []
-    if c.get("url"):
-        doors.append(f'<a class="cfx-door lead" href="{esc(c["url"])}" '
+    # Every outbound address here passes _safe_url, as the company pages'
+    # do: conferences.json and organisations.json are research output, and a
+    # javascript: value there would ship as a live link on our origin.
+    if _safe_url(c.get("url")):
+        doors.append(f'<a class="cfx-door lead" href="{esc(_safe_url(c["url"]))}" '
                      f'rel="nofollow noopener">'
                      + ("Event site" if ended else "Event site &amp; registration")
                      + ' &nearr;</a>')
     # THE DIRECTORY, WHICH REACHED NO READER UNTIL TODAY. 61 rows carry one and
     # the conference row shape did not pass it through, so every unmined page
     # said "we have not read this floor" and offered nothing to do about it.
-    if c.get("exhibitor_url"):
-        doors.append(f'<a class="cfx-door" href="{esc(c["exhibitor_url"])}" '
+    if _safe_url(c.get("exhibitor_url")):
+        doors.append(f'<a class="cfx-door" href="{esc(_safe_url(c["exhibitor_url"]))}" '
                      f'rel="nofollow noopener">Exhibitor directory &nearr;</a>')
     # ONLY WHEN THE FILE EXISTS. _ics_range refuses a date string it cannot
     # parse, so `has_dates` is not the same question as "is there a calendar":
@@ -2659,10 +2663,10 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
         # in the same words the catalogue tab uses, then hands over the only
         # useful thing we have: the organiser's own list.
         door = ""
-        if c.get("exhibitor_url"):
+        if _safe_url(c.get("exhibitor_url")):
             door = (f'<p>They publish an exhibitor directory, so when it is read '
                     f'this page fills in on its own. '
-                    f'<a href="{esc(c["exhibitor_url"])}" rel="nofollow noopener">'
+                    f'<a href="{esc(_safe_url(c["exhibitor_url"]))}" rel="nofollow noopener">'
                     f'Open their exhibitor directory &nearr;</a></p>')
         else:
             door = ('<p>We have not found an exhibitor list for this event at '
@@ -2696,10 +2700,10 @@ def _conference_body(c: dict, tag: str, roster: list, hiring: list,
             meta.append(f'{org["swept_count"]} '
                         f'{"floor" if org["swept_count"] == 1 else "floors"} read')
         host = ""
-        if org.get("url"):
+        if _safe_url(org.get("url")):
             host = urllib.parse.urlparse(org["url"]).netloc.replace("www.", "")
-        link = (f'<a href="{esc(org["url"])}" rel="nofollow noopener">'
-                f'{esc(org["name"])}</a>' if org.get("url")
+        link = (f'<a href="{esc(_safe_url(org["url"]))}" rel="nofollow noopener">'
+                f'{esc(org["name"])}</a>' if _safe_url(org.get("url"))
                 else f'<b>{esc(org["name"])}</b>')
         secs.append(f'<section class="cfx-sec"><h2>Run by</h2>'
                     f'<div class="cfx-org">{link}'

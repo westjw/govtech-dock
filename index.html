@@ -1561,11 +1561,11 @@
 
     <div id="add-msg" style="font-size:13px;margin-top:12px;line-height:1.5"></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
-      <button type="button" onclick="document.getElementById('add-dlg').close()"
+      <button type="button" data-click="closeAdd"
         style="font:inherit;font-size:13.5px;padding:9px 16px;border-radius:20px;
                border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer">
         Cancel</button>
-      <button type="button" id="add-go" onclick="sendAdd()"
+      <button type="button" id="add-go" data-click="sendAdd"
         style="font:inherit;font-size:13.5px;font-weight:600;padding:9px 20px;border:0;
                border-radius:20px;background:var(--accent);color:var(--bg);cursor:pointer">
         Submit</button>
@@ -1617,7 +1617,7 @@ const ADD_FALLBACK="https://github.com/westjw/govtech-dock/issues/new?template=a
   if(j && j.ok){
     msg.style.color="var(--accent)";
     msg.innerHTML="Thank you. It is queued as submission "
-      +(j.number?("#"+j.number):"")+", and a person reviews it before it appears.";
+      +(j.number?("#"+esc(j.number)):"")+", and a person reviews it before it appears.";
     url.value=""; document.getElementById("add-ctx").value="";
     return;
   }
@@ -1634,14 +1634,13 @@ const ADD_FALLBACK="https://github.com/westjw/govtech-dock/issues/new?template=a
 
 <script>
 const $=(s,r=document)=>r.querySelector(s);
-/* ' and \ are in here even though nothing below puts data inside a JS string
-   literal any more. They used to be missing, and the gap was not obvious:
-   escaping " stops an attribute breakout and does nothing about a string
-   breakout, so `onclick="f('${esc(x)}')"` looked escaped and was not. Titles
-   come verbatim from company job boards, and the board already carries ids with
-   an apostrophe ("Don't see what you're looking for?") and with a backslash.
-   The renderers are the real fix; this is so a future caller does not inherit
-   the hole. */
+/* esc() makes text safe as element text and inside a double-quoted
+   attribute. It does NOT make text safe inside JavaScript in an attribute:
+   the HTML parser decodes &#39; and &#92; back to ' and \ before an onclick
+   is compiled, so `onclick="f('${esc(x)}')"` was never escaped, whatever
+   this comment once said. That is why nothing here writes an on* attribute
+   any more (see ACTS below): a value goes in data-arg. Titles come verbatim
+   from company job boards, and ids carry apostrophes and backslashes. */
 const esc=s=>String(s??"").replace(/[&<>"'\\]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
   '"':"&quot;","'":"&#39;","\\":"&#92;"}[c]));
 /* A url out of an ATS is a url out of a stranger. http(s) and nothing else:
@@ -1656,6 +1655,55 @@ function safeUrl(u){
   catch{return ""}
 }
 let D=null, tab="home", PENDING_URL=null, ROLE=null;
+/* NO CODE IN MARKUP (2026-10-09). A control the app draws names its action
+   in data-click, data-input or data-change, and one listener per event type
+   looks the name up in ACTS. The page used to write
+   onclick="openRole('${esc(p.id)}')", and that cannot be escaped: the HTML
+   parser decodes &#39; back into a quote BEFORE the handler is compiled, so
+   the five postings with an apostrophe in the title ("Developpement
+   d'affaires") threw a SyntaxError when clicked, and a title written to
+   close the string would have run as script on this origin. data-arg comes
+   back from dataset as exactly the string, and is never code. It is also
+   what lets a content security policy forbid inline handlers outright.
+   An action takes an id or a name, never a url and never HTML. The lookup
+   is an own-key test, so an action named "constructor" does nothing. */
+const ACTS=Object.freeze({
+  closeAdd:()=>document.getElementById("add-dlg").close(),
+  sendAdd:()=>sendAdd(),
+  drawJobs:()=>drawJobs(), drawCos:()=>drawCos(), saveSearch:()=>saveSearch(),
+  toggleQuota:el=>toggleQuota(el), setWhere:el=>setWhere(el),
+  toggleMore:el=>toggleMore(el), copyUrl:el=>copyUrl(el),
+  toggleHiring:el=>toggleHiring(el), toggleMoreCo:el=>toggleMoreCo(el),
+  toCompanies:()=>{tab="companies";render();},
+  openRole:el=>openRole(el.dataset.arg),
+  alertOnCompany:el=>alertOnCompany(el.dataset.arg),
+  coShowAll:el=>coShowAll(el.dataset.arg),
+  reload:()=>location.reload(),
+  nearChanged:()=>nearChanged(), milesChanged:()=>milesChanged(),
+  famPill:()=>famPill(), secPill:()=>secPill(), payPill:()=>payPill(),
+});
+function dispatch(kind,e){
+  const t=e.target, el=t&&t.closest?t.closest("[data-"+kind+"]"):null;
+  if(!el)return;
+  const name=el.dataset[kind];
+  if(!Object.prototype.hasOwnProperty.call(ACTS,name)){console.error("no action",name);return;}
+  // a link that runs an action goes nowhere; "#" would fire popstate
+  if(kind==="click"&&el.tagName==="A")e.preventDefault();
+  ACTS[name](el,e);
+}
+/* A LOGO'S load AND error DO NOT BUBBLE, so they are caught on the way down
+   (capture) at the document. Registered here, before anything draws, so a
+   cached logo's load - always queued as a task - is still seen. A row built
+   off-page must be appended in the same synchronous pass as its innerHTML,
+   or a logo that loads while it is detached never gets here. */
+function logoEvent(e){
+  const t=e.target;
+  if(!t||t.tagName!=="IMG"||!t.hasAttribute||!t.hasAttribute("data-mark"))return;
+  if(e.type==="load")lightMark(t); else t.remove();
+}
+["click","input","change"].forEach(k=>document.addEventListener(k,e=>dispatch(k,e),true));
+document.addEventListener("load",logoEvent,true);
+document.addEventListener("error",logoEvent,true);
 /* "How listings get here" is in the deck's header for a reason: this board's
    whole claim is that it says where a number came from, and a stranger has
    nowhere to check that unless it is one click from the top of every page. */
@@ -2659,7 +2707,7 @@ function tileHTML(name, cid, cls){
      each a 42px square from our own origin over one connection. */
   return `<div class="${cls}" style="background:${bg};color:${fg}">${esc(initials(name))}`
     + (src?`<img src="${esc(src)}" alt="" decoding="async"
-        onload="lightMark(this)" onerror="this.remove()">`:"")
+        data-mark>`:"")
     + `</div>`;
 }
 /* The company page header is not a .tile - it keeps its own square and its
@@ -2669,7 +2717,7 @@ function tileHTML(name, cid, cls){
 function logoImg(cid){
   const ext=D.logos&&D.logos[cid];
   return ext?`<img src="assets/logos/${esc(cid)}.${esc(ext)}" alt=""
-    decoding="async" onload="lightMark(this)" onerror="this.remove()">`:"";
+    decoding="async" data-mark>`:"";
 }
 /* WHAT A CAPTURED POSTING CAN HONESTLY SAY about when anyone last looked.
    Nothing re-reads it nightly; a person may re-read the page it came from,
@@ -2965,7 +3013,7 @@ function jobs(){
     <div class="search">
       <input type="search" id="j-q" placeholder="Role, skill, or company"
         aria-label="Search by role, skill or company">
-      <button type="button" onclick="drawJobs()">Search</button>
+      <button type="button" data-click="drawJobs">Search</button>
     </div>
 
     <!-- Two filters the deck asked for are NOT here, and their absence is the
@@ -2982,7 +3030,7 @@ function jobs(){
          posting by typing the word, which is the honest route to it. -->
     <div class="filters">
       <button class="pill" type="button" id="j-quota-pill" aria-pressed="true"
-        onclick="toggleQuota(this)"
+        data-click="toggleQuota"
         title="only roles that carry a sales number"><span class="v on"
         id="j-quota-v">Quota-carrying</span></button>
       <!-- Remote / Hybrid / Onsite are DISJOINT here. "In person" used to
@@ -2991,10 +3039,10 @@ function jobs(){
            counts for the same roles. Onsite now means the job demonstrably
            sits somewhere and is neither remote nor hybrid. -->
       <div class="seg" id="j-where">
-        <button type="button" data-v="" aria-pressed="true" onclick="setWhere(this)">Anywhere</button>
-        <button type="button" data-v="remote" aria-pressed="false" onclick="setWhere(this)">Remote</button>
-        <button type="button" data-v="hybrid" aria-pressed="false" onclick="setWhere(this)">Hybrid</button>
-        <button type="button" data-v="onsite" aria-pressed="false" onclick="setWhere(this)">Onsite</button>
+        <button type="button" data-v="" aria-pressed="true" data-click="setWhere">Anywhere</button>
+        <button type="button" data-v="remote" aria-pressed="false" data-click="setWhere">Remote</button>
+        <button type="button" data-v="hybrid" aria-pressed="false" data-click="setWhere">Hybrid</button>
+        <button type="button" data-v="onsite" aria-pressed="false" data-click="setWhere">Onsite</button>
       </div>
       <!-- NEAR A CITY. Only meaningful for a job that has a place, so it hides
            itself when Remote is selected - a remote role is not near anything
@@ -3008,8 +3056,8 @@ function jobs(){
       <span class="near" id="j-near-wrap">
         <input id="j-near" list="j-cities" placeholder="Near a city"
                autocomplete="off" aria-label="Near a city"
-               oninput="nearChanged()">
-        <select id="j-miles" aria-label="How far" onchange="milesChanged()">
+               data-input="nearChanged">
+        <select id="j-miles" aria-label="How far" data-change="milesChanged">
           <option value="25">25 miles</option>
           <option value="50" selected>50 miles</option>
           <option value="100">100 miles</option>
@@ -3017,7 +3065,7 @@ function jobs(){
         </select>
         <datalist id="j-cities"></datalist>
       </span>
-      <select id="j-fam-pill" onchange="famPill()" aria-label="Kind of role">
+      <select id="j-fam-pill" data-change="famPill" aria-label="Kind of role">
         <option value="">Any kind of role</option>
         ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
       </select>
@@ -3030,7 +3078,7 @@ function jobs(){
            Higher Ed. It mirrors #j-sec rather than replacing it, the same way
            the role-family pill mirrors #j-fam, so an incoming shared link
            still works whichever one it names. -->
-      <select id="j-sec-pill" onchange="secPill()" aria-label="Industry they sell into">
+      <select id="j-sec-pill" data-change="secPill" aria-label="Industry they sell into">
         <option value="">Any industry</option>
         ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
       </select>
@@ -3041,7 +3089,7 @@ function jobs(){
            SELECT, so it can never be only a thing that happens to you, and a
            posting we never read gets its own option rather than being filed
            under "stated nothing". -->
-      <select id="j-pay" onchange="payPill()" aria-label="Pay">
+      <select id="j-pay" data-change="payPill" aria-label="Pay">
         <option value="">Any pay</option>
         <option value="stated">Shows a salary</option>
         <option value="80000">$80k+ a year</option>
@@ -3064,7 +3112,7 @@ function jobs(){
         <option value="co">Company A&ndash;Z</option>
       </select>
       <button class="pill" type="button" aria-expanded="false"
-        onclick="toggleMore(this)">More filters <span class="v" id="j-more-v"></span></button>
+        data-click="toggleMore">More filters <span class="v" id="j-more-v"></span></button>
     </div>
 
     <!-- Every filter is kept. Territory, state, region, sector, seniority and
@@ -3129,7 +3177,7 @@ function jobs(){
       <span class="lead" title="every filter and the page number are in the address">
         this view is a link</span>
       <div class="urlwrap"><code id="j-url"></code></div>
-      <button type="button" id="j-copy" onclick="copyUrl(this)">Copy link</button>
+      <button type="button" id="j-copy" data-click="copyUrl">Copy link</button>
     </div>
   </div>
 
@@ -3142,7 +3190,7 @@ function jobs(){
   <div class="rhead"><h3 id="j-h">All quota-carrying roles</h3>
     <div class="n" id="j-n"></div>
     <button class="applybtn" type="button" id="j-savesearch"
-      onclick="saveSearch()">save this search</button></div>
+      data-click="saveSearch">save this search</button></div>
   <div id="j-savednote"></div>
   <div id="j-list"></div>
   <div id="j-cta"></div>
@@ -4829,13 +4877,13 @@ function companies(){
       <input type="search" id="c-q"
         placeholder="A company name, or what they sell &mdash; &ldquo;recreation software&rdquo;, &ldquo;911 dispatch&rdquo;"
         aria-label="Search companies by name or by what they sell">
-      <button type="button" onclick="drawCos()">Search</button>
+      <button type="button" data-click="drawCos">Search</button>
     </div>
     <div class="filters">
       <button class="pill" type="button" id="c-hire-pill" aria-pressed="true"
-        onclick="toggleHiring(this)">Showing <span class="v on" id="c-hire-v">Hiring now</span></button>
+        data-click="toggleHiring">Showing <span class="v on" id="c-hire-v">Hiring now</span></button>
       <button class="pill" type="button" aria-expanded="false"
-        onclick="toggleMoreCo(this)">More filters <span class="v" id="c-more-v"></span></button>
+        data-click="toggleMoreCo">More filters <span class="v" id="c-more-v"></span></button>
     </div>
     <div class="bar" id="c-bar" style="display:none">
       <select id="c-sec" aria-label="Sector"><option value="">All sectors</option>
@@ -5609,7 +5657,7 @@ function coAge(iso){
 function coRivals(o,sibs,inCat){
   const list=o.competitors||[];
   const n=(inCat||[]).length;
-  const link=n>1?`<a class="all" href="#" onclick="tab='companies';render();return false"
+  const link=n>1?`<a class="all" href="#" data-click="toCompanies"
         >Browse all ${n.toLocaleString()} in ${esc(o.category)} &rarr;</a>`:"";
   if(list.length) return `<section><h2>Competitors</h2>
     ${list.map(r=>{const x=(D.organizations||[]).find(y=>y.id===r.id)||{};
@@ -5739,8 +5787,7 @@ function coNews(o,dom,det){
       st==="none_found" ? "Their newsroom is on file and nothing on it carried a date we could read. An item without a date is not published here."
       : st==="no_news_page" ? "Nothing on their site links to a newsroom, a blog or a press page."
       : st==="unread" ? "Their site did not answer when we last asked. That is a fact about the fetch, not about the company."
-      : "Nobody has looked yet."}
-      <a href="#" onclick="tab='submit';render();return false">Suggest an item</a>.</p>
+      : "Nobody has looked yet."}</p>
   </section>`;
   /* chips only when more than one kind is present; a single-kind filter is
      a control that does nothing. */
@@ -5864,7 +5911,7 @@ function co(id,fromUrl){
   mine.forEach(p=>{ (byFam[p.family||"other"]=byFam[p.family||"other"]||[]).push(p); });
   const groups=Object.entries(byFam).sort((a,b)=>b[1].length-a[1].length);
   const roleRows=(rows)=>rows.map(p=>`<div class="corow">
-      <span class="ti"><a href="#" onclick="openRole('${esc(p.id)}');return false"
+      <span class="ti"><a href="#" data-click="openRole" data-arg="${esc(p.id)}"
         >${esc(p.title)}</a></span>
       <!-- locCell and payCell, NOT p.location and p.comp. Both fields are
            structured on this board: territory is an object and rendered
@@ -5899,7 +5946,7 @@ function co(id,fromUrl){
            o.board_checked_on?` &mdash; last on ${esc(o.board_checked_on)}`:""}.`}</p>
       ${o.board_url&&state!=="none"?`<a class="cobtn" href="${safeUrl(o.board_url)}" target="_blank"
         rel="noopener">Open their hiring board &#8599;</a> `:""}
-      <button class="cobtn" onclick="alertOnCompany('${esc(id)}')"
+      <button class="cobtn" data-click="alertOnCompany" data-arg="${esc(id)}"
         >Alert me when they post</button></div></div>`;
   }else{
     rolesInner=groups.map(([fam,rows],i)=>{
@@ -5912,9 +5959,9 @@ function co(id,fromUrl){
             q?` &middot; ${q} quota-carrying`:""}</span></div>
         ${roleRows(shown)}
         ${openG&&rows.length>3
-          ? `<a class="comore" href="#" onclick="coShowAll('${esc(fam)}');return false"
+          ? `<a class="comore" href="#" data-click="coShowAll" data-arg="${esc(fam)}"
               >Show ${rows.length-3} more</a>`
-          : (!openG?`<a class="comore" href="#" onclick="coShowAll('${esc(fam)}');return false"
+          : (!openG?`<a class="comore" href="#" data-click="coShowAll" data-arg="${esc(fam)}"
               >Expand</a>`:"")}
       </div>`;}).join("");
   }
@@ -5988,8 +6035,8 @@ function co(id,fromUrl){
 
   $("#view").innerHTML=`<div class="copage"><div class="cowrap">
     <nav class="cocrumb" aria-label="Breadcrumb">
-      <a href="#" onclick="tab='companies';render();return false">Companies</a>
-      <span class="sep">/</span><a href="#" onclick="tab='companies';render();return false"
+      <a href="#" data-click="toCompanies">Companies</a>
+      <span class="sep">/</span><a href="#" data-click="toCompanies"
         >${esc(o.sector)}</a>
       <span class="sep">/</span>${esc(o.category)}</nav>
     <div class="coid">
@@ -6001,7 +6048,7 @@ function co(id,fromUrl){
       <div class="coacts">
         <button class="cobtn ${saved?"on":"fill"}" id="cosave"
           >${saved?"Saved":"Save company"}</button>
-        <button class="cobtn" onclick="alertOnCompany('${esc(id)}')"
+        <button class="cobtn" data-click="alertOnCompany" data-arg="${esc(id)}"
           >Alert on new roles</button>
       </div>
     </div>
@@ -8526,7 +8573,7 @@ function loadError(e){
          Run <code>python3 scripts/build_board.py</code>, then serve this folder
          over http &mdash; opening index.html as a file will fail here too.`
       : `This is usually the connection. Reloading the page normally fixes it.
-         <br><button type="button" class="cobtn" style="margin-top:var(--space-3)" onclick="location.reload()">Reload</button>
+         <br><button type="button" class="cobtn" style="margin-top:var(--space-3)" data-click="reload">Reload</button>
          <br><span style="color:var(--dim)">${esc(why)}</span>`}</span></div>`;
 }
 function renderError(e){

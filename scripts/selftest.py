@@ -8522,6 +8522,264 @@ def check_a_gate_review_only_covers_what_it_saw() -> int:
     return errors
 
 
+def check_no_markup_carries_code() -> int:
+    """No page writes code into markup: no on* attribute, no javascript: url.
+
+    index.html drew 33 inline handlers, five of them as
+    onclick="openRole('${esc(p.id)}')". esc() turns ' into &#39;, and the
+    HTML parser decodes that back into a quote BEFORE the handler is
+    compiled - so the five postings with an apostrophe in the title
+    ("Developpement d'affaires") threw a SyntaxError when clicked, and a job
+    title written to close the string would have run as script on
+    sledjobs.com (found 2026-10-09). Every control now names an action in
+    data-click / data-input / data-change, the value it needs in data-arg,
+    and dispatch() looks the name up in ACTS with an own-key test.
+
+    Held four ways: the source of every hand-written page is scanned (and the
+    scanner is first shown what it must catch); the site is BUILT into a
+    temporary folder and every page parsed; every action name in index.html
+    resolves to ACTS and every ACTS key is used; and jobcard_harness drives
+    dispatch() and logoEvent() for real, with an id carrying an apostrophe,
+    a double quote and a backslash, and runs co() on a posting with that id.
+    It is also what lets a content security policy forbid inline handlers.
+    """
+    import html as _html
+    import html.parser as _hp
+    import subprocess
+    import tempfile
+    errors = 0
+    # attribute names are case-insensitive: onClick= is an onclick
+    TAG_ON = re.compile(r"<[a-zA-Z][^<>]*?\son[a-z]+\s*=", re.S | re.I)
+    JS_URL = re.compile(r"""\b(?:href|src|action|formaction)\s*=\s*["']?\s*javascript:""", re.I)
+
+    def scan(text: str) -> list:
+        return [m.group(0)[-40:] for pat in (TAG_ON, JS_URL) for m in pat.finditer(text)]
+
+    # THE SCANNER, SHOWN WHAT IT EXISTS TO CATCH, so a weakened pattern fails
+    # here instead of passing everything
+    for bad in ('<img src=x onerror=alert(1)>', '<button type="button"\n    onclick="f()">',
+                '<a href=" javascript:alert(1)">x</a>', '<a\nhref=javascript:x>',
+                "`<a class=\"x\" onClick='go()'>`"):
+        if not scan(bad):
+            errors += fail(f"the markup scanner passed {bad!r}")
+    for ok in ('b.onclick=e=>go(e)', 'el.addEventListener("load",f,true)',
+               '<button data-click="drawJobs">', 'prose that says onclick= once',
+               '<a href="https://x.example/javascript:faq">'):
+        if scan(ok):
+            errors += fail(f"the markup scanner flagged harmless {ok!r}")
+
+    # 1. THE HAND-WRITTEN PAGES, markup and the templates inside their scripts
+    for name in ("index.html", "alerts.html", "claim.html", "admin-web.html"):
+        f = ROOT / name
+        if not f.exists():
+            continue
+        for hit in scan(f.read_text()):
+            errors += fail(f"{name} writes code into markup: ...{hit!r}")
+
+    # 2. THE BUILT SITE, every page, parsed rather than pattern-matched
+    class Attrs(_hp.HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.bad = []
+
+        def handle_starttag(self, tag, attrs):
+            for k, v in attrs:
+                k = (k or "").lower()
+                if k.startswith("on"):
+                    self.bad.append(f"<{tag} {k}=...>")
+                if k in ("href", "src", "action", "formaction", "xlink:href") \
+                        and re.match(r"\s*javascript:", v or "", re.I):
+                    self.bad.append(f"<{tag} {k}={(v or '')[:30]!r}>")
+        handle_startendtag = handle_starttag
+
+    probe = Attrs()
+    probe.feed('<p><img src="x" ONERROR="y"><a href=" javascript:z">a</a></p>')
+    if len(probe.bad) != 2:
+        errors += fail(f"the built-page parser missed a planted handler or url: {probe.bad}")
+    out = pathlib.Path(tempfile.mkdtemp())
+    try:
+        env = {**os.environ, "SHIP_ADMIN": "1", "PYTHONDONTWRITEBYTECODE": "1"}
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_site.py"),
+                            "--out", str(out), "--force"], cwd=ROOT, env=env,
+                           capture_output=True, text=True, timeout=600)
+        pages = sorted(out.rglob("*.html"))
+        if r.returncode != 0 or len(pages) < 100:
+            errors += fail(f"the site would not build for the markup scan "
+                           f"(exit {r.returncode}, {len(pages)} pages): {r.stderr[-300:]}")
+        found = []
+        for f in pages:
+            a = Attrs()
+            a.feed(f.read_text(errors="replace"))
+            found += [f"{f.relative_to(out)}: {b}" for b in a.bad]
+        for b in found[:10]:
+            errors += fail(f"a built page carries code in markup: {b}")
+    finally:
+        shutil.rmtree(out, ignore_errors=True)
+
+    # 3. EVERY ACTION NAME RESOLVES, AND EVERY ACTION IS USED
+    src = (ROOT / "index.html").read_text()
+    m = re.search(r"const ACTS=Object\.freeze\(\{(.*?)\n\}\);", src, re.S)
+    if not m:
+        return errors + fail("index.html lost its ACTS table; nothing dispatches a control")
+    keys = set(re.findall(r"(?:^|[\s,{])([A-Za-z_]\w*):", m.group(1)))
+    used = set(re.findall(r'data-(?:click|input|change)="([^"$]+)"', src))
+    for n in sorted(used - keys):
+        errors += fail(f"a control names action {n!r} and ACTS has no such key; it does nothing")
+    for n in sorted(keys - used):
+        errors += fail(f"ACTS.{n} is never named by any control; drop it or wire it")
+
+    # 4. THE DISPATCHER AND THE LOGO LISTENER, RUN
+    if not shutil.which("node"):
+        print("  note: node is not installed; dispatch() was not driven")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jobcard_harness.mjs")],
+                       capture_output=True, text=True, timeout=180)
+    try:
+        h = json.loads(r.stdout)
+    except ValueError:
+        return errors + fail(f"jobcard_harness printed no JSON: {r.stderr[-300:]}")
+    a = h.get("acts") or {}
+    qid = a.get("qid") or ""
+    if not ("'" in qid and '"' in qid and "\\" in qid):
+        errors += fail(f"the dispatcher fixture lost its apostrophe, quote or backslash: {qid!r}")
+    if (a.get("openRole") or {}).get("got") != [["openRole", qid]]:
+        errors += fail(f"openRole did not receive the id exactly: {a.get('openRole')}")
+    if not (a.get("openRole") or {}).get("prevented"):
+        errors += fail("a link running an action still navigates to '#' (popstate re-renders)")
+    if (a.get("alert") or {}).get("got") != [["alertOnCompany", "acme-civic"]]:
+        errors += fail(f"alertOnCompany did not receive its id: {a.get('alert')}")
+    if (a.get("coShowAll") or {}).get("got") != [["coShowAll", "gtm"]]:
+        errors += fail(f"coShowAll did not receive its family: {a.get('coShowAll')}")
+    if (a.get("toggle") or {}).get("got") != [["toggleQuota", "BUTTON"]]:
+        errors += fail(f"toggleQuota was not handed its own button: {a.get('toggle')}")
+    for name, res in (a.get("odd") or {}).items():
+        if res.get("got") or res.get("threw"):
+            errors += fail(f"an unknown action {name[2:]!r} ran something: {res}")
+    if len(a.get("odd") or {}) != 5:
+        errors += fail(f"not every unknown action was tried: {sorted(a.get('odd') or {})}")
+    if a.get("noTarget") or a.get("wrongKind"):
+        errors += fail("dispatch() acted on an event with no control, or of the wrong kind")
+    if a.get("loadMarked") != [["lightMark", "IMG"]] or a.get("loadPlain"):
+        errors += fail("lightMark runs on the wrong images (only data-mark logos)")
+    if a.get("errorMarked") is not True or a.get("errorPlain") is not False:
+        errors += fail("a broken logo is not removed, or an unmarked image was")
+    if not a.get("frozen"):
+        errors += fail("ACTS can be changed at run time; it must be frozen")
+    reg = [tuple(x) for x in a.get("listeners") or []]
+    for kind in ("click", "input", "change", "load", "error"):
+        if (kind, True) not in reg:
+            errors += fail(f"no capture-phase {kind} listener on the document; "
+                           f"{'a logo load does not bubble' if kind in ('load', 'error') else 'controls do nothing'}")
+    view = (h.get("views") or {}).get("quote-co", "")
+    args = [_html.unescape(x) for x in re.findall(r'data-click="openRole" data-arg="([^"]*)"', view)]
+    if qid not in args:
+        errors += fail(f"co() does not carry the posting id in data-arg exactly: {args[:2]}")
+    for oid, v in (h.get("views") or {}).items():
+        if scan(v):
+            errors += fail(f"co({oid}) writes code into markup: {scan(v)[:2]}")
+    return errors
+
+
+def check_outside_text_never_becomes_markup() -> int:
+    """Six places put outside text into a page without the escaping its
+    neighbours get (found by the 2026-10-09 inventory, all fixed):
+
+    - conference pages linked c.url, c.exhibitor_url and the organiser's url
+      with html escaping and no scheme check, so a javascript: value in the
+      research files would have shipped as a live link (company pages check
+      the scheme already, through _safe_url);
+    - the company page wrote its logo path from the raw id;
+    - claim.html put the claimant's masked address into innerHTML;
+    - the beta page put rec.on (from localStorage) into innerHTML;
+    - index.html put the submission's issue number into innerHTML raw;
+    - admin-web.html set href from research data with no scheme check.
+
+    The two page builders are driven with hostile values; the browser-side
+    four are held at the source, and the admin's webUrl() is run under node.
+    """
+    import html.parser as _hp
+    import subprocess
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build_site as bs
+    errors = 0
+
+    class Links(_hp.HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.urls, self.imgs = [], []
+
+        def handle_starttag(self, tag, attrs):
+            d = dict(attrs)
+            if tag == "a" and d.get("href"):
+                self.urls.append(d["href"])
+            if tag == "img" and d.get("src"):
+                self.imgs.append(d["src"])
+        handle_startendtag = handle_starttag
+
+    board = json.loads((DATA / "board.json").read_text())
+    rows = board.get("conferences") or []
+    row = next((c for c in rows if c.get("tag")), None)
+    if not row:
+        return fail("no conference on the board to draw")
+    for hostile, want_link in (("javascript:alert(document.domain)", False),
+                               (" JavaScript:alert(1)", False),
+                               ("https://ok.example/expo", True)):
+        c = dict(row, url=hostile, exhibitor_url=hostile, companies=0)
+        org = {"name": "Test Association", "url": hostile, "event_count": 1, "swept_count": 0}
+        body = bs._conference_body(c, c["tag"], [], [], org=org)
+        lk = Links()
+        lk.feed(body)
+        bad = [u for u in lk.urls if re.match(r"\s*javascript:", u, re.I)]
+        if bad:
+            errors += fail(f"a conference page links {bad[0]!r}: its addresses are not scheme-checked")
+        if want_link and hostile not in lk.urls:
+            errors += fail("a conference page dropped a good https address with the bad ones")
+
+    org = {"id": 'fixture"co', "name": "Fixture Co", "sector": "General Gov",
+           "category": "Permitting & Licensing", "description": "x", "open_roles": 0,
+           "profile": None, "news": None, "website": "https://f.example"}
+    b2 = {"organizations": [org], "logos": {'fixture"co': "png"}, "postings": [],
+          "generated": "2026-10-09"}
+    brand = json.loads((DATA / "brand.json").read_text())
+    try:
+        page = bs.company_page_html(org, [], b2, brand, {org["id"]: org}, {}, 1)
+    except Exception as exc:                               # noqa: BLE001
+        return errors + fail(f"company_page_html raised on a quoted id: {exc!r}")
+    lk = Links()
+    lk.feed(page)
+    if "/assets/logos/fixture%22co.png" not in lk.imgs:
+        errors += fail(f"the company page's logo path is not encoded: {lk.imgs[:2]}")
+
+    claim = (ROOT / "claim.html").read_text()
+    if re.search(r"innerHTML\s*=[^;]*\br\.email", claim):
+        errors += fail("claim.html puts the claimant's address into innerHTML")
+    hunter = bs._hunter_page(brand)
+    if "'Redeemed ' + esc(rec.on" not in hunter:
+        errors += fail("the beta page writes rec.on into innerHTML unescaped")
+    app = (ROOT / "index.html").read_text()
+    if re.search(r'"#"\+j\.number', app):
+        errors += fail("index.html writes the issue number into innerHTML raw")
+    admin = (ROOT / "admin-web.html").read_text()
+    raw = re.findall(r"\.href\s*=\s*x\.\w+", admin)
+    if raw:
+        errors += fail(f"admin-web.html sets an href straight from data: {raw[:2]}")
+    m = re.search(r"const webUrl=.*?\}\};\n", admin, re.S)
+    if not m:
+        return errors + fail("admin-web.html lost webUrl()")
+    if shutil.which("node"):
+        js = m.group(0) + ("console.log(JSON.stringify([webUrl('javascript:alert(1)'),"
+                           "webUrl(' JAVASCRIPT:x'),webUrl('https://a.example/b'),webUrl(''),"
+                           "webUrl('data:text/html,x')]))")
+        r = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=30)
+        try:
+            got = json.loads(r.stdout)
+        except ValueError:
+            return errors + fail(f"webUrl() could not be run: {r.stderr[-200:]}")
+        if got != ["", "", "https://a.example/b", "", ""]:
+            errors += fail(f"webUrl() lets through what it should not: {got}")
+    return errors
+
+
 def check_white_logos_stay_visible() -> int:
     """A white logo gets a dark plate; a logo that shows nothing gives way.
 
@@ -8539,9 +8797,15 @@ def check_white_logos_stay_visible() -> int:
         return fail("index.html lost lightMark() or its markers; build_site cuts "
                     "the company page's copy from between them")
     fn = src[src.index("/*lightMark:start*/"):src.index("/*lightMark:end*/")]
-    if src.count('onload="lightMark(this)"') < 2:
-        errors += fail("the app's logo images (tileHTML and logoImg) no longer run "
-                       "lightMark; a white logo is an empty box again")
+    # The logos carry data-mark and ONE capture-phase listener runs lightMark
+    # on them (an onload attribute was the old wiring; no markup carries code
+    # now). check_no_markup_carries_code drives the listener itself.
+    if src.count("decoding=\"async\"\n        data-mark>") + src.count("decoding=\"async\" data-mark>") < 2:
+        errors += fail("the app's logo images (tileHTML and logoImg) no longer carry "
+                       "data-mark, so lightMark never runs; a white logo is an "
+                       "empty box again")
+    if "if(e.type===\"load\")lightMark(t)" not in src:
+        errors += fail("logoEvent no longer runs lightMark on a logo's load")
     for where, css in (("index.html", src),
                        ("the company page CSS", (ROOT / "scripts" / "build_site.py").read_text())):
         if "img.ondark{background:var(--hdr-bg)}" not in css.replace(" ", ""):
@@ -30328,6 +30592,8 @@ def main() -> int:
     errors += check_the_repo_keeps_no_job_ads()
     errors += check_no_listing_is_a_non_job()
     errors += check_white_logos_stay_visible()
+    errors += check_no_markup_carries_code()
+    errors += check_outside_text_never_becomes_markup()
     errors += check_every_view_has_a_heading_and_a_way_past_the_header()
     errors += check_news_labels_make_no_false_claims()
     errors += check_the_page_works_without_javascript()
