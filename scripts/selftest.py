@@ -2579,6 +2579,40 @@ def check_add_company_journals_and_reports_already_tracked() -> int:
             errors += fail(f"a company already on the board did not return "
                            f"ALREADY_TRACKED ({add_company.ALREADY_TRACKED}); got {rc}")
 
+    # A NAME ALREADY ON THE BOARD under another website is a blocker that
+    # says so: govqa.com's title is "Granicus", its owner (2026-10-08)
+    gran = companies + [{"id": "granicus", "name": "Granicus", "sector": "General Gov",
+                         "category": "Civic Engagement", "description": "x",
+                         "website": "https://granicus.com", "ats": {"type": "unknown", "ref": None},
+                         "hiring": "Unknown", "govtech": True, "vendor_type": "product"}]
+    with _sandbox_admin({"companies.json": gran, "suppliers.json": []}) as tmp:
+        keep = (add_company.DATA, add_company.fetch, add_company.find_ats,
+                add_company.verify, add_company.guess_sector)
+        add_company.DATA = tmp
+        add_company.fetch = lambda url: ("<html><head><title>Granicus</title><meta name="
+                                         "\"description\" content=\"Public records requests\">"
+                                         "</head></html>", None)
+        add_company.find_ats = lambda url: ({"type": "html", "ref": url + "careers"}, url, [])
+        add_company.verify = lambda block: (True, "3 posting(s) readable")
+        add_company.guess_sector = lambda text: ("General Gov", "Civic Engagement", "high", ["x"])
+        out = io.StringIO()
+        keep_argv = sys.argv
+        sys.argv = ["add_company.py", "https://www.govqa.com", "--write"]
+        try:
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+                rc = add_company.main()
+        except SystemExit as e:
+            rc = e.code
+        finally:
+            sys.argv = keep_argv
+            (add_company.DATA, add_company.fetch, add_company.find_ats,
+             add_company.verify, add_company.guess_sector) = keep
+        written = json.loads((tmp / "companies.json").read_text())
+        if rc == 0 or len(written) != len(gran) or "already on the board as Granicus" not in out.getvalue():
+            errors += fail(f"add_company proposed a second Granicus from govqa.com (rc {rc}, "
+                           f"{len(written)} records); a name already on the board must "
+                           f"block, and say so")
+
     # THE WORKFLOW IS THE CALLER. A code nobody reads is a code that does
     # nothing: the yaml must branch on it, and its reporting step must run
     # whatever happened and never fail the run.

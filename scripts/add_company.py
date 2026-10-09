@@ -352,6 +352,22 @@ def main() -> int:
     print()
 
     blockers = []
+    # A NAME ALREADY ON THE BOARD. govqa.com's own title says "Granicus", its
+    # owner, so the bot proposed a second Granicus - same id as the one on
+    # file - and the write would have died in the journal with an error
+    # nobody could read (launch work, 2026-10-08). The site is usually a brand
+    # or an acquisition of the company we track; which, a person decides.
+    def _key(s):
+        return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+    same = next((c for c in companies
+                 if c.get("id") == entry["id"] or _key(c.get("name")) == _key(name)
+                 or _key(name) in {_key(n) for n in (c.get("also_known_as") or [])}
+                 or _key(name) in {_key(b.get("name") if isinstance(b, dict) else b)
+                                   for b in (c.get("brands") or [])}), None)
+    if same:
+        blockers.append(f"the site calls itself {name}, which is already on the board as "
+                        f"{same['name']} ({same['id']}) - probably a brand or an "
+                        f"acquisition of it; a person decides")
     if not sector:
         blockers.append("no sector could be inferred")
     elif confidence == "low":
