@@ -1577,7 +1577,7 @@ NEWSKIND = {"contract": "contract", "funding": "funding", "leadership": "people"
             "product": "product", "press": "press"}
 
 
-def _co_news(o: dict, dom: str) -> str:
+def _co_news(o: dict, dom: str, now: dt.date | None = None) -> str:
     """The News section - coNews, ported. This page used to print "No news
     items have been recorded" on every company, 1,189 of them, while 810
     companies had dated news on file; the app showed it and the page a
@@ -1590,8 +1590,17 @@ def _co_news(o: dict, dom: str) -> str:
     if st == "hidden" and not items:
         return ""
     when = f" &middot; read {esc(str(o['news_checked_on']))}" if o.get("news_checked_on") else ""
+    # old news says so, up front, as in the app (coNews)
+    dates = sorted(str(i.get("date") or "")[:10] for i in items if isinstance(i, dict) and i.get("date"))
+    stale = ""
+    if dates and now:
+        try:
+            if (now - dt.date.fromisoformat(dates[-1])).days > 730:
+                stale = f" &middot; nothing newer than {esc(dates[-1][:7])}"
+        except ValueError:
+            stale = ""
     meta = (f"{len(items)} item{'' if len(items) == 1 else 's'}"
-            f"{' from ' + esc(dom) if dom else ''}{when}" if items
+            f"{' from ' + esc(dom) if dom else ''}{stale}{when}" if items
             else f"their news page listed nothing dated{when}" if st == "none_found"
             else "no news page found on their site" if st == "no_news_page"
             else "their site could not be read" if st == "unread"
@@ -1845,7 +1854,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     # --- reading column -----------------------------------------------------
     about = _co_about(o, dom)
     acq = _co_acquired(o, by_id)
-    news = _co_news(o, dom)
+    news = _co_news(o, dom, now)
     incomplete = ('<p class="coprov" style="padding-top:10px">This list may be incomplete: '
                   'their board is not one we can read in full.</p>' if mine and not readable else "")
     roles = (f'<section class="cosec"><div class="cosechd"><h2>Open roles</h2>'

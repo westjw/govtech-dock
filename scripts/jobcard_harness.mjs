@@ -172,6 +172,16 @@ try {
 } catch (e) {
   errors.push(`calling freshness: ${e && e.message}`);
 }
+/* A company whose newest news is over two years old says so in the heading. */
+let staleNews = null;
+try {
+  staleNews = vm.runInContext(`(() => {
+      const det = n => ({ news: [{ date: n, headline: "x", kind: "press", url: "https://a.test/x" }] });
+      const o = { news_state: "items", news_checked_on: "2026-09-20" };
+      return [coNews(o, "a.test", det("2023-05-02")), coNews(o, "a.test", det("2026-08-01"))]; })()`, ctx);
+} catch (e) {
+  errors.push(`calling coNews: ${e && e.message}`);
+}
 let boards = null;
 try {
   const b = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
@@ -285,4 +295,4 @@ try {
 } catch (e) {
   errors.push(`running loadRatings: ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh }));
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews }));

@@ -27590,6 +27590,18 @@ def check_the_job_card_says_what_the_posting_says() -> int:
     if not fresh[0].endswith("except 2 found by hand") or "found by hand" in fresh[1]:
         errors += fail(f"the list's freshness line no longer names the postings "
                        f"nothing re-checks: {fresh}")
+    # OLD NEWS SAYS SO in the heading, in the app and on the static page
+    stale = out.get("staleNews") or ["", ""]
+    if "nothing newer than 2023-05" not in stale[0] or "nothing newer" in stale[1]:
+        errors += fail("the app's news heading does not say when a company's newest "
+                       "item is over two years old (or says it of recent news)")
+    import build_site as _bs
+    _o = {"news": [{"date": "2023-05-02", "headline": "x", "url": "https://a.test/x"}],
+          "news_state": "items", "news_checked_on": "2026-09-20"}
+    import datetime as _dt
+    if "nothing newer than 2023-05" not in _bs._co_news(_o, "a.test", _dt.date(2026, 9, 27)):
+        errors += fail("the static company page's news heading does not say its newest "
+                       "item is over two years old")
     for k, says in (("by_hand", True), ("group_halfhand", False)):
         if ("found by hand, not re-checked" in (cards.get(k) or "")) != says:
             errors += fail(f"the {k!r} card {'does not say' if says else 'says'} "
