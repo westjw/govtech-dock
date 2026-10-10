@@ -254,5 +254,13 @@
   "why": "site legal text",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ITS_America_2026.json",
+  "name": "Cybersecurity & Data",
+  "verdict": "not_a_company",
+  "why": "topic category heading, no site or vertical",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

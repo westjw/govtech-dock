@@ -400,5 +400,29 @@
   "why": "association site navigation link",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NCSEA_Policy_Forum_2027.json",
+  "name": "Case Management Portal",
+  "verdict": "not_a_company",
+  "why": "state government portal link, Alabama",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NCSEA_Policy_Forum_2027.json",
+  "name": "Program Case Management Portal",
+  "verdict": "not_a_company",
+  "why": "state government portal link, Wyoming",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NCSEA_Policy_Forum_2027.json",
+  "name": "Web-Talks",
+  "verdict": "not_a_company",
+  "why": "NCSEA webinar series page",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

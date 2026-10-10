@@ -1,43 +1,11 @@
 {
  "event_tag": "New York State Conference of Mayors and Muni 2027",
  "conference": "Vendor Opportunities - New York Conference of Mayors",
- "found": true,
+ "found": false,
  "source_url": "http://www.nycom.org/training/exhibiting-sponsorship",
  "source_note": "Read from http://www.nycom.org/training/exhibiting-sponsorship by scripts/sweep_exhibitors.py. 34 name(s), 3 with a website the page itself linked. Quality: good (21% carry a corporate marker, 6% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [
-  {
-   "name": "Grants Dashboard",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Member Dashboard",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Matters Magazine",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Matters Magazine Archive",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Minute Newsletter",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  }
- ],
- "why": "21% carry a corporate marker, 6% name a site section, 41% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "read",
- "read_dropped": 29,
+ "exhibitors": [],
+ "why": "reader: every one of the 5 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 34,
  "quality_was": "menu"
 }

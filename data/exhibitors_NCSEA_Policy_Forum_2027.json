@@ -12,12 +12,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Case Management Portal",
-   "website": "https://myalabama.gov/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "CGI Transcend®",
    "website": "https://www.cgi.com/us/en-us/solutions/transcend",
    "is_govtech": true,
@@ -80,12 +74,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Program Case Management Portal",
-   "website": "https://childsupport.wyoming.gov/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Protech Solutions",
    "website": "http://protechsolutions.com"
   },
@@ -122,12 +110,6 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
-  },
-  {
-   "name": "Web-Talks",
-   "website": "https://www.ncsea.org/web-talks-2/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "www.csgdelivers.com",
@@ -168,6 +150,6 @@
  ],
  "why": "22% carry a corporate marker, 6% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
- "read_dropped": 42,
+ "read_dropped": 45,
  "quality_was": "menu"
 }

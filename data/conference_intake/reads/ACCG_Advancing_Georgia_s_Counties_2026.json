@@ -126,5 +126,13 @@
   "why": "site prompt text",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ACCG_Advancing_Georgia_s_Counties_2026.json",
+  "name": "Engineering Technician - Water System",
+  "verdict": "not_a_company",
+  "why": "job posting title",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

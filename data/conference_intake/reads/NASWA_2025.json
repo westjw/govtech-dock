@@ -262,5 +262,53 @@
   "why": "host association's own service line",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "Artificial Intelligence (AI) Resources",
+  "verdict": "not_a_company",
+  "why": "NASWA site resource page navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "Custom Solutions Overview",
+  "verdict": "not_a_company",
+  "why": "NASWA site navigation heading",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "Data Products & Partnerships",
+  "verdict": "not_a_company",
+  "why": "NASWA site navigation heading",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "Multistate Data Collaborative",
+  "verdict": "unsure",
+  "why": "NASWA programme; collaborative could be an organisation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "UI Interstate Connection Network (UI ICON)",
+  "verdict": "not_a_company",
+  "why": "NASWA-operated interstate system, programme item",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NASWA_2025.json",
+  "name": "UI State Information Data Exchange System (UI SIDES)",
+  "verdict": "not_a_company",
+  "why": "NASWA-operated data exchange system, programme item",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

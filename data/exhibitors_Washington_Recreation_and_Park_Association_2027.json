@@ -1,25 +1,11 @@
 {
  "event_tag": "Washington Recreation and Park Association 2027",
  "conference": "Washington Recreation and Park Association",
- "found": true,
+ "found": false,
  "source_url": "http://www.wrpatoday.org/sponsors",
  "source_note": "Read from http://www.wrpatoday.org/sponsors by scripts/sweep_exhibitors.py. 40 name(s), 9 with a website the page itself linked. Quality: good (15% carry a corporate marker, 8% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [
-  {
-   "name": "Membership App",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "WRPA Today Membership App",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  }
- ],
- "why": "15% carry a corporate marker, 8% name a site section, 50% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "read",
- "read_dropped": 38,
+ "exhibitors": [],
+ "why": "reader: every one of the 2 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 40,
  "quality_was": "menu"
 }

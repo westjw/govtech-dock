@@ -1,25 +1,11 @@
 {
  "event_tag": "Ohio ASBO 2026",
  "conference": "Ohio ASBO",
- "found": true,
+ "found": false,
  "source_url": "https://oasbo-ohio.org/about/meet-oasbo/sponsors",
  "source_note": "Read from https://oasbo-ohio.org/about/meet-oasbo/sponsors by scripts/sweep_exhibitors.py. 83 name(s), 3 with a website the page itself linked. Quality: good (17% carry a corporate marker, 8% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [
-  {
-   "name": "Platform Overview",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Registration and Payment Policies",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  }
- ],
- "why": "17% carry a corporate marker, 8% name a site section, 59% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "read",
- "read_dropped": 81,
+ "exhibitors": [],
+ "why": "reader: every one of the 2 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 83,
  "quality_was": "menu"
 }

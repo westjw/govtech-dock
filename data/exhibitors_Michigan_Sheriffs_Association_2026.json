@@ -458,8 +458,14 @@
   {
    "name": "MI Public Safety Communications System",
    "website": "https://www.misheriff.org/vendors/mi-public-safety-communications-system/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "state agency system listed in vendor directory",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Michigan Police Equipment Company",

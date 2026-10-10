@@ -6,18 +6,6 @@
  "source_note": "Read from https://www.nclm.org/about-us/partners-sponsors by scripts/sweep_exhibitors.py. 86 name(s), 16 with a website the page itself linked. Quality: good (30% carry a corporate marker, 2% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "ADA Compliance",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Advancing Municipal Leaders",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "CavMac",
    "website": null,
    "is_govtech": false,
@@ -28,12 +16,6 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
-  },
-  {
-   "name": "Claims Portal",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "GovDeals",
@@ -49,24 +31,6 @@
   },
   {
    "name": "ICC Code Solutions",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Directory",
-   "website": "https://www.nclm.org/about-us/municipal-directory/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal DriveSafe Program",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Equation Podcast",
    "website": null,
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
@@ -102,12 +66,6 @@
    }
   },
   {
-   "name": "Opioid Solutions Toolbox",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Shield Services",
    "website": null,
    "is_govtech": null,
@@ -118,12 +76,6 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
-  },
-  {
-   "name": "Training: Cyber Security, Defensive Driving, Online Safety, OSHA-10",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "UNC School of Government",
@@ -152,6 +104,6 @@
  ],
  "why": "30% carry a corporate marker, 2% name a site section, 33% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
- "read_dropped": 68,
+ "read_dropped": 76,
  "quality_was": "menu"
 }

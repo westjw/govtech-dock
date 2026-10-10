@@ -6,45 +6,21 @@
  "source_note": "Read from https://www.naswa.org/conferences/2025-naswa-summit by scripts/sweep_exhibitors.py. 43 name(s), 6 with a website the page itself linked. Quality: good (23% carry a corporate marker, 5% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "Artificial Intelligence (AI) Resources",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Custom Solutions Overview",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Data Products & Partnerships",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Multistate Data Collaborative",
    "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "UI Interstate Connection Network (UI ICON)",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "UI State Information Data Exchange System (UI SIDES)",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "NASWA programme; collaborative could be an organisation",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "25% carry a corporate marker, 2% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
  "restaged": "43 -> 40 names after re-filtering on 2026-09-02",
- "read_dropped": 33,
+ "read_dropped": 38,
  "quality_was": "menu"
 }

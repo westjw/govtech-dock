@@ -1268,5 +1268,21 @@
   "why": "programmable keyboards; peripheral hardware",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "NBCP Communications System",
+  "verdict": "unsure",
+  "why": "APCO exhibitor entry; reads like product, vendor unclear",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Network & Recharge Lounge (1)",
+  "verdict": "not_a_company",
+  "why": "Floor-plan lounge, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

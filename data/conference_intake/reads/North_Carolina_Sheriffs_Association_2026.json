@@ -374,5 +374,13 @@
   "why": "consumer goods",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_North_Carolina_Sheriffs_Association_2026.json",
+  "name": "Officer Assistance Network",
+  "verdict": "not_a_company",
+  "why": "Sheriffs' association programme on its own domain",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

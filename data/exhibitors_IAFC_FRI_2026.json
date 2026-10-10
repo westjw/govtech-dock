@@ -2924,8 +2924,14 @@
    "name": "The GUIDE App",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=479",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "App product name; vendor behind it unclear",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TNT Rescue Systems Inc",

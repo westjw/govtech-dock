@@ -680,5 +680,29 @@
   "why": "'Powered by WordPress' footer credit",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Iowa_State_Association_of_Counties_2026.json",
+  "name": "Computer Systems & Software",
+  "verdict": "not_a_company",
+  "why": "vendor directory category heading",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Iowa_State_Association_of_Counties_2026.json",
+  "name": "Member Portal",
+  "verdict": "not_a_company",
+  "why": "member portal navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Iowa_State_Association_of_Counties_2026.json",
+  "name": "Records/Document Management",
+  "verdict": "not_a_company",
+  "why": "vendor directory category heading",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

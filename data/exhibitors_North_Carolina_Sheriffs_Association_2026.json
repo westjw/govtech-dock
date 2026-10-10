@@ -378,12 +378,6 @@
    }
   },
   {
-   "name": "Officer Assistance Network",
-   "website": "https://ncsheriffs.org/officer-assistance-network",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Pay Tel Communications, Inc.",
    "website": "http://www.paytel.com/",
    "is_govtech": false,
@@ -504,6 +498,6 @@
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 16,
+ "read_dropped": 17,
  "quality_was": "good"
 }

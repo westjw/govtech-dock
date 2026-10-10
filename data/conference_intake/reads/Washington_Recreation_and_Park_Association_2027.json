@@ -302,5 +302,21 @@
   "why": "association's social link",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Washington_Recreation_and_Park_Association_2027.json",
+  "name": "Membership App",
+  "verdict": "not_a_company",
+  "why": "Association app navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Washington_Recreation_and_Park_Association_2027.json",
+  "name": "WRPA Today Membership App",
+  "verdict": "not_a_company",
+  "why": "Association's own member app",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

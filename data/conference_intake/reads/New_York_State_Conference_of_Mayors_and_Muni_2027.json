@@ -230,5 +230,45 @@
   "why": "host's own event",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_New_York_State_Conference_of_Mayors_and_Muni_2027.json",
+  "name": "Grants Dashboard",
+  "verdict": "not_a_company",
+  "why": "NYCOM site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_New_York_State_Conference_of_Mayors_and_Muni_2027.json",
+  "name": "Member Dashboard",
+  "verdict": "not_a_company",
+  "why": "member dashboard navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_New_York_State_Conference_of_Mayors_and_Muni_2027.json",
+  "name": "Municipal Matters Magazine",
+  "verdict": "not_a_company",
+  "why": "host association magazine",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_New_York_State_Conference_of_Mayors_and_Muni_2027.json",
+  "name": "Municipal Matters Magazine Archive",
+  "verdict": "not_a_company",
+  "why": "magazine archive navigation",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_New_York_State_Conference_of_Mayors_and_Muni_2027.json",
+  "name": "Municipal Minute Newsletter",
+  "verdict": "not_a_company",
+  "why": "host association newsletter",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

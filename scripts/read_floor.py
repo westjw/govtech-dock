@@ -177,7 +177,7 @@ def apply(verdicts: list[dict], by: str, write: bool) -> dict:
             # a page that was never an exhibitor list, said the way the
             # sweeper says it, so the queue shows the address is wrong.
             d["found"] = False
-            d["why"] = (f"reader: every one of the {len(dropped)} names was the "
+            d["why"] = (f"reader: every one of the {d['read_dropped']} names was the "
                         f"site's own text, not an exhibitor; this page is not a floor")
             d.pop("quality", None)
             report["not_a_floor"].append(fname)

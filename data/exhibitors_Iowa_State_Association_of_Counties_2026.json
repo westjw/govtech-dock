@@ -42,12 +42,6 @@
    }
   },
   {
-   "name": "Computer Systems & Software",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "COST ADVISORY SERVICES, INC.",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/cost-advisory-services-inc/",
    "is_govtech": false,
@@ -168,12 +162,6 @@
    }
   },
   {
-   "name": "Member Portal",
-   "website": "https://members.iowacounties.org/",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "MERCYONE",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/mercyone/",
    "is_govtech": false,
@@ -242,12 +230,6 @@
   {
    "name": "PURPLE WAVE AUCTION",
    "website": "https://www.iowacounties.org/purple-wave-auction/"
-  },
-  {
-   "name": "Records/Document Management",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "REGOV",
@@ -332,6 +314,6 @@
  ],
  "why": "25% carry a corporate marker, 3% name a site section, 15% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
- "read_dropped": 67,
+ "read_dropped": 70,
  "quality_was": "menu"
 }

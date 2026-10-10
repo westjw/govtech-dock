@@ -22,18 +22,6 @@
    }
   },
   {
-   "name": "County Data Briefs",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Data & Research",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Pennsylvania Counties Health Insurance Purchasing Cooperative (PCHIPC)",
    "website": "https://www.pchipc.com/",
    "is_govtech": false,
@@ -60,6 +48,6 @@
  ],
  "why": "25% carry a corporate marker, 5% name a site section, 47% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
- "read_dropped": 53,
+ "read_dropped": 55,
  "quality_was": "menu"
 }

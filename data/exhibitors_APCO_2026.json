@@ -1439,8 +1439,14 @@
    "name": "NBCP Communications System",
    "booth": "1020",
    "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "APCO exhibitor entry; reads like product, vendor unclear",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NCMEC",
@@ -1454,13 +1460,6 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
-  },
-  {
-   "name": "Network & Recharge Lounge (1)",
-   "booth": "940",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "NGA",
@@ -2509,7 +2508,7 @@
    "is_govtech_why": "not judged yet - names only"
   }
  ],
- "read_dropped": 14,
+ "read_dropped": 15,
  "quality_was": null,
  "quality": "read"
 }

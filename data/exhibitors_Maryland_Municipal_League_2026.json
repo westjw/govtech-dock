@@ -1304,16 +1304,16 @@
    }
   },
   {
-   "name": "Maryland Municipal League",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "Maryland Municipal Parks and Recreation",
    "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "MML affiliate association; probably not a vendor",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Municipal Public Works Officials Association",
@@ -1526,8 +1526,14 @@
   {
    "name": "Mobile Voting",
    "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "could be Mobile Voting organisation or topic",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mosca Design",
@@ -2190,6 +2196,6 @@
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 10,
+ "read_dropped": 11,
  "quality_was": "good"
 }

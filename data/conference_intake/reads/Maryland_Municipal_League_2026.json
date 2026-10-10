@@ -1368,5 +1368,29 @@
   "why": "municipal government",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Maryland_Municipal_League_2026.json",
+  "name": "Maryland Municipal League",
+  "verdict": "not_a_company",
+  "why": "event host association itself, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Maryland_Municipal_League_2026.json",
+  "name": "Maryland Municipal Parks and Recreation",
+  "verdict": "unsure",
+  "why": "MML affiliate association; probably not a vendor",
+  "by": "agent:reader",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_Maryland_Municipal_League_2026.json",
+  "name": "Mobile Voting",
+  "verdict": "unsure",
+  "why": "could be Mobile Voting organisation or topic",
+  "by": "agent:reader",
+  "on": "2026-10-10"
  }
 ]

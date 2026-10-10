@@ -8,8 +8,14 @@
   {
    "name": "Municipal Software",
    "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
+   "is_govtech": null,
+   "is_govtech_why": "names software, a platform or a govtech function",
+   "read": {
+    "verdict": "unsure",
+    "why": "generic phrase; category heading or vendor name",
+    "by": "agent:reader",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Reach Alert",

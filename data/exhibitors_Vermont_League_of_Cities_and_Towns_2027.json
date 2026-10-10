@@ -1,85 +1,11 @@
 {
  "event_tag": "Vermont League of Cities and Towns 2027",
  "conference": "Vermont League of Cities and Towns",
- "found": true,
+ "found": false,
  "source_url": "http://www.vlct.org/vlcts-business-alliance-program",
  "source_note": "Read from http://www.vlct.org/vlcts-business-alliance-program by scripts/sweep_exhibitors.py. 123 name(s), 7 with a website the page itself linked. Quality: good (15% carry a corporate marker, 5% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [
-  {
-   "name": "2025-2026 Municipal Policy",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Ask Muni-Pal AI Assistant",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Civic Engagement and Belonging",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Civic Engagement and Belonging Committee",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "MAP Dashboard",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Assistance Center",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Calendar",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Operations Support",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Municipal Policy",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "OSHA Compliance",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "PACIF Policy Portal & Underwriting",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "VLCT Municipal Service Scholarship",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  }
- ],
- "why": "15% carry a corporate marker, 5% name a site section, 20% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "read",
- "read_dropped": 109,
+ "exhibitors": [],
+ "why": "reader: every one of the 12 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 121,
  "quality_was": "menu"
 }
