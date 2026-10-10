@@ -137,12 +137,10 @@ def fetch(url: str) -> tuple[str, str]:
     and discarding it on status alone loses real companies. zencity.io does
     exactly this. A short body is a block page and stays discarded."""
     import requests
-    import robots
-    if not robots.allowed(url):                  # owner's ruling, 2026-10-09
-        return "", "robots.txt asks crawlers not to read this site"
     try:
-        r = requests.get(url, headers=ats.UA, timeout=ats.TIMEOUT,
-                         allow_redirects=True)
+        # every hop asks robots.txt first (owner's ruling, 2026-10-09)
+        r = ats.follow(url, lambda u: requests.get(
+            u, headers=ats.UA, timeout=ats.TIMEOUT, allow_redirects=False))
         # THE SAME PAGE, READ CORRECTLY. ats._get repairs a body served as
         # UTF-8 with no charset header, which requests otherwise reads as
         # Latin-1; this function calls requests directly and so went around
@@ -150,6 +148,10 @@ def fetch(url: str) -> tuple[str, str]:
         # Optimization Technology(tm)" and reached the admin's website check
         # with the trademark sign as three glued characters.
         ats._fix_encoding(r)
+    except ats.RobotsRefused as exc:
+        if exc.kind == "disallowed":
+            return "", "robots.txt asks crawlers not to read this site"
+        return "", str(exc)
     except Exception as exc:
         # A BROKEN CERTIFICATE CHAIN IS NOT A DEAD SITE, and until now it was
         # recorded as one. kunzleigh.com - state WIC systems, Medicaid
@@ -169,7 +171,10 @@ def fetch(url: str) -> tuple[str, str]:
         # accepts any certificate is a board an attacker can write to, and the
         # fix for a site with a broken chain is that somebody notices it -
         # which is what the distinct note is for.
-        note = _why_unreachable(exc)
+        # A robots.txt that did not answer is the site not answering, and
+        # gets the same diagnosis: kunzleigh.com's broken chain fails there
+        # first now, and must not read as a site that said no.
+        note = _why_unreachable(exc.__cause__ or exc)
         return "", note
     if r.status_code == 200:
         return r.text, ""
@@ -256,8 +261,14 @@ def find_ats(url: str, paths: list[str] | None = None
     notes = []
     for path in [""] + (CAREER_PATHS if paths is None else paths):
         page_url = base + path
-        html, _ = fetch(page_url)
+        html, why = fetch(page_url)
         if not html:
+            # A PAGE WE MAY NOT READ, OR COULD NOT, IS NOT A PAGE WITHOUT A
+            # BOARD. Thrown away, it ended as "no careers page or ATS marker
+            # found", and the admin filed the company none-found for 45 days.
+            # "could not fetch" is the admin's own word for blocked.
+            if why and (not path or why.startswith("robots.txt")):
+                notes.append(f"could not fetch {page_url}: {why}")
             continue
         for kind, pat in ATS_MARKERS:
             m = re.search(pat, html, re.I)

@@ -73,13 +73,30 @@ def fingerprint(text):
 
 async def load(ctx, url, seen):
     # every page this opens asks robots.txt first, the start page and every
-    # careers link it follows (owner's ruling, 2026-10-09; scripts/robots.py)
+    # careers link it follows, at every redirect hop, the way render_fetch
+    # does and for the same reasons (owner's ruling, 2026-10-09; robots.py)
+    if REPO + "/scripts" not in sys.path:
+        sys.path.insert(0, REPO + "/scripts")
+    import ats
     import robots
-    if not robots.allowed(url):
+    try:
+        url = await asyncio.to_thread(ats.resolve, url)
+    except ats.RobotsRefused:
         return "", "", [], "robots.txt asks crawlers not to read this site"
+    except Exception as e:
+        return "", "", [], str(e)[:60]
     page = await ctx.new_page()
     page.on("request", lambda r: seen.append(r.url)
             if r.resource_type in ("xhr", "fetch", "document", "script") else None)
+
+    async def only_allowed(route):
+        req = route.request
+        if req.resource_type == "document" and not await asyncio.to_thread(
+                robots.allowed, req.url):
+            await route.abort("blockedbyclient")
+        else:
+            await route.continue_()
+    await page.route("**/*", only_allowed)
     try:
         await page.goto(url, wait_until="domcontentloaded", timeout=30000)
         try:
@@ -87,6 +104,9 @@ async def load(ctx, url, seen):
         except Exception:
             pass
         await page.wait_for_timeout(1500)
+        if not await asyncio.to_thread(robots.allowed, page.url):
+            await page.close()
+            return "", "", [], "robots.txt asks crawlers not to read this site"
         dom = await page.content()
         try:
             text = await page.inner_text("body")

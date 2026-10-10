@@ -395,11 +395,16 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
     last = "site unreachable"
     sess = requests.Session()
 
+    def read(url: str, timeout: int):
+        """One page or file, every redirect hop asking robots.txt first
+        (owner's ruling, 2026-10-09). Raises ats.RobotsRefused when refused."""
+        return ats.follow(url, lambda u: sess.get(u, headers=ats.UA, timeout=timeout,
+                                                  allow_redirects=False))
+
     def get(url: str, timeout: int = 12) -> bytes | None:
         """One small file. Politeness lives here so every path pays it."""
         try:
-            r = sess.get(url, headers=ats.UA, timeout=timeout,
-                         allow_redirects=True)
+            r = read(url, timeout)
             time.sleep(0.25)
             if not r.ok or len(r.content) > MAX_BYTES * 3:
                 return None
@@ -425,8 +430,7 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
         if is_plain and not last.startswith("site unreachable"):
             break               # it answered over https; http tells us nothing
         try:
-            r = sess.get(attempt, headers=ats.UA, timeout=20,
-                         allow_redirects=True)
+            r = read(attempt, 20)
             status, base = r.status_code, (r.url or attempt)
             if r.ok:
                 if not same_brand(site, base, cid, name):
@@ -436,8 +440,10 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
                 page = r.text
                 break
             last = f"site answered {r.status_code}"
+        except ats.RobotsRefused as exc:
+            last = str(exc)
         except Exception as exc:
-            last = f"site unreachable ({type(exc).__name__})"
+            last = f"site unreachable ({type(exc.__cause__ or exc).__name__})"
         time.sleep(0.3)
 
     if not page:
@@ -458,7 +464,7 @@ def fetch_one(row: tuple[str, str, str, bool]) -> dict:
         if any(g in url for g in GENERIC_ICONS):
             continue            # the host's own mark, not this company's
         try:
-            ir = sess.get(url, headers=ats.UA, timeout=12)
+            ir = read(url, 12)
             time.sleep(0.25)
             if not ir.ok:
                 continue

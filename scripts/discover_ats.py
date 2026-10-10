@@ -257,11 +257,6 @@ BODY_CAP = 600_000
 
 def get(url: str) -> Fetch:
     import requests
-    import robots
-    # robots.txt first (owner's ruling, 2026-10-09): a site that asks
-    # crawlers to stay out is "blocked", as a refusing server is
-    if not robots.allowed(url):
-        return Fetch(status=0, url=url, outcome="blocked")
     # PACED, like every other fetch here. This function keeps its own body
     # cap and split timeouts - both were earned and neither belongs in
     # ats._get - so it borrows the gate rather than the fetcher.
@@ -270,22 +265,29 @@ def get(url: str) -> Fetch:
     # has ever earned a 403. All 99 blocks in discovery_log came from sweeps
     # run by this file, eight workers wide against company front doors, with
     # nothing spacing them. The board crawl, which is paced, took zero.
-    ats._host_gate(url)
-    try:
+    def one(u):
+        ats._host_gate(u)
         # (connect, read) rather than one number. A bare timeout still let an
         # ssl.read sit for over a minute, which stalls a worker and - with an
         # in-order result iterator - stalled the entire sweep's reporting.
-        r = requests.get(url, headers=ats.UA, timeout=(5, PROBE_TIMEOUT),
-                         allow_redirects=True, stream=True)
+        return requests.get(u, headers=ats.UA, timeout=(5, PROBE_TIMEOUT),
+                            allow_redirects=False, stream=True)
+    try:
+        # robots.txt first, at every redirect hop (owner's ruling, 2026-10-09).
+        # A refusal is its own outcome: it says nothing about the company's
+        # OTHER pages, and is no reason to stop looking at them.
+        r = ats.follow(url, one)
         raw = b""
         for chunk in r.iter_content(chunk_size=65536):
             raw += chunk
             if len(raw) >= BODY_CAP:
                 break
         r.close()
+    except ats.RobotsRefused as exc:
+        return Fetch(url=url, outcome="robots", status=0, text=str(exc))
     except Exception as exc:
         return Fetch(url=url, outcome="error", status=0,
-                     text=type(exc).__name__)
+                     text=type(exc.__cause__ or exc).__name__)
     # THE SAME CHARSET RULE THE REST OF THE FETCHERS USE. This decoded with
     # r.encoding, which requests sets to Latin-1 for any text/* body that
     # carries no charset - so a UTF-8 page arrived here with its punctuation
@@ -517,6 +519,11 @@ def probe(company: dict) -> dict:
     started = time.monotonic()
 
     home = get(site)
+    if home.outcome == "robots":
+        # Not retried soon: it is the site's standing answer, not a bot wall
+        # having a bad day. "could not fetch" keeps it out of none-found.
+        return {"id": company["id"], "found": None,
+                "note": f"could not fetch the site: {home.text[:80]}"}
     if home.outcome == "blocked":
         return {"id": company["id"], "found": None, "retry_soon": True,
                 "note": f"blocked at the door (HTTP {home.status})"}
@@ -559,10 +566,12 @@ def probe(company: dict) -> dict:
                     return {"id": company["id"], "found": None, "retry_soon": True,
                             "note": f"gave up after {COMPANY_BUDGET}s"}
                 r = get(target)
+                if r.outcome == "robots":
+                    continue          # that page is closed to us; the next may not be
                 if r.outcome == "blocked":
+                    where = (target[len(site):] or "/") if target.startswith(site) else target
                     return {"id": company["id"], "found": None, "retry_soon": True,
-                            "note": f"blocked at {target[len(site):] or '/'} "
-                                    f"(HTTP {r.status})"}
+                            "note": f"blocked at {where} (HTTP {r.status})"}
                 if r.outcome != "ok":
                     continue
                 if fingerprint(r.text) in bad:

@@ -116,16 +116,34 @@ def available() -> bool:
 def fetch_rendered(url: str, *, timeout_ms: int = 25000,
                    settle_ms: int = 2200) -> list[dict]:
     """Return [{title, location, url}] from a rendered careers page."""
-    # robots.txt first, as for every page this crawler reads (scripts/robots.py)
+    # ROBOTS.TXT, AT EVERY STEP A BROWSER TAKES ON ITS OWN (owner's ruling,
+    # 2026-10-09; scripts/robots.py). A browser follows redirects and scripts
+    # without asking anybody, and Playwright's router sees only the first URL
+    # of a server redirect (measured: a 302 to a refused host loaded anyway).
+    # So, three layers:
+    #   1. the address's own redirects are walked first, each hop asked, no
+    #      body read, and the browser opens where they end;
+    #   2. any page navigation after that (a script's redirect, a frame) is
+    #      asked before it is made, and refused ones are aborted;
+    #   3. the page we read from must itself be one we may read, or nothing
+    #      read off it is kept.
     here = str(__import__("pathlib").Path(__file__).resolve().parent)
     if here not in sys.path:
         sys.path.insert(0, here)
+    import ats
     import robots
-    robots.check(url)
+    url = ats.resolve(url)
     try:
         from playwright.sync_api import sync_playwright
     except ImportError as exc:                    # pragma: no cover
         raise RenderUnavailable("playwright is not installed") from exc
+
+    def only_allowed(route):
+        req = route.request
+        if req.resource_type == "document" and not robots.allowed(req.url):
+            route.abort("blockedbyclient")
+        else:
+            route.continue_()
 
     out, seen = [], set()
     with sync_playwright() as p:
@@ -133,6 +151,7 @@ def fetch_rendered(url: str, *, timeout_ms: int = 25000,
         ctx = browser.new_context(user_agent=UA,
                                   viewport={"width": 1280, "height": 1000})
         page = ctx.new_page()
+        page.route("**/*", only_allowed)
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
             try:
@@ -140,6 +159,7 @@ def fetch_rendered(url: str, *, timeout_ms: int = 25000,
             except Exception:
                 pass                              # some boards never go idle
             page.wait_for_timeout(settle_ms)
+            robots.check(page.url)
             links = page.eval_on_selector_all(
                 "a[href]",
                 "els => els.map(e => [e.getAttribute('href') || '', "

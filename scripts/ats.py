@@ -68,6 +68,11 @@ import urllib.parse
 
 import requests
 
+# robots.txt is asked before every page (owner's ruling, 2026-10-09). A HARD
+# import, unlike salary's below, on purpose: without it the crawler would read
+# pages it has been asked to leave alone, and that has to fail loudly.
+import robots
+
 # salary.py turns free description text into the same comp block. It is a
 # sibling module written alongside this one, and the import is guarded on
 # purpose: a hard import means that if it is ever missing or broken at import
@@ -108,8 +113,10 @@ class AtsError(Exception):
     pass
 
 
-class RobotsRefused(AtsError):
-    """robots.txt asks crawlers not to read the page (scripts/robots.py)."""
+class RobotsRefused(AtsError, robots.Refused):
+    """robots.txt asks crawlers not to read the page, or its server would not
+    say (a 5xx). scripts/robots.py. A robots.txt that did not answer at all is
+    NOT this: it is a network error, raised as one, so it is retried as one."""
 
 
 class RateLimited(AtsError):
@@ -443,15 +450,68 @@ def _retry_after(raw: str | None) -> float | None:
         return None
 
 
+REDIRECTS = (301, 302, 303, 307, 308)
+MAX_HOPS = 10
+
+
+def ask_robots(url: str) -> None:
+    """Raise unless robots.txt lets this crawler read `url`."""
+    v = robots.verdict(url)
+    if v.ok:
+        return
+    if v.kind == "network":
+        raise AtsError(v.why) from v.error        # "network error: ..." - retried
+    raise RobotsRefused(v.why, v.kind, v.error)
+
+
+def follow(url: str, one, *, hops: int = MAX_HOPS):
+    """Fetch `url`, following redirects HERE so every hop asks robots.txt.
+
+    `one(u)` makes exactly one request with redirects off. A library that
+    follows redirects for us asks only the first host: a careers page that
+    301s to an iCIMS portal saying "Disallow: /" was read through the
+    company's own permission (blind review, 2026-10-09).
+    """
+    for _ in range(hops + 1):
+        ask_robots(url)
+        resp = one(url)
+        # (a stand-in response with no status is not a redirect either)
+        loc = (getattr(resp, "headers", None) or {}).get("Location") \
+            if getattr(resp, "status_code", 200) in REDIRECTS else None
+        if not loc:
+            return resp
+        try:
+            resp.close()
+        except Exception:                          # noqa: BLE001
+            pass
+        url = urllib.parse.urljoin(url, loc)
+    raise AtsError(f"more than {hops} redirects from {url}")
+
+
+def _one(url: str, **kw):
+    """One request, no redirects followed, paced and named like _get."""
+    _host_gate(url)
+    try:
+        return requests.get(url, headers=UA, timeout=TIMEOUT,
+                            allow_redirects=False, **kw)
+    except requests.RequestException as exc:
+        raise AtsError(f"network error: {exc}") from exc
+
+
+def resolve(url: str) -> str:
+    """Where `url` lands, every hop asked first, no body read. For a browser
+    that is about to open it: it follows redirects without asking anybody."""
+    resp = follow(url, lambda u: _one(u, stream=True))
+    resp.close()
+    return str(resp.url or url)
+
+
 def _page(url: str, **kw):
-    """_get for a PAGE, which asks the site's robots.txt first (owner's
-    ruling, 2026-10-09; scripts/robots.py). The boards' JSON feeds go
-    through _get directly: they are interfaces published for programs."""
-    import robots
-    if not robots.allowed(url):
-        raise RobotsRefused(f"robots.txt asks crawlers not to read "
-                            f"{urllib.parse.urlsplit(url).netloc}")
-    return _get(url, **kw)
+    """_get for a PAGE, which asks the site's robots.txt first, at every
+    redirect hop (owner's ruling, 2026-10-09; scripts/robots.py). The boards'
+    JSON feeds go through _get directly: they are interfaces published for
+    programs."""
+    return follow(url, lambda u: _get(u, allow_redirects=False, **kw))
 
 
 def _get(url: str, **kw):
@@ -481,6 +541,10 @@ def _get(url: str, **kw):
         # HONOUR IT, not just report it. Per host, so one rude server does
         # not slow down 1,139 innocent ones.
         _back_off(url, resp)
+    # a redirect, handed back to follow() when the caller asked to see them
+    if (kw.get("allow_redirects") is False and resp.status_code in REDIRECTS
+            and resp.headers.get("Location")):
+        return resp
     if resp.status_code != 200:
         raise AtsError(f"HTTP {resp.status_code} for {url}")
     _fix_encoding(resp)

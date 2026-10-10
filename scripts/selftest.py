@@ -10231,18 +10231,22 @@ console.log(JSON.stringify({
 
 
 def check_the_crawler_honours_robots_txt() -> int:
-    """A page whose site asks crawlers to stay out is not read, and the
-    crawler says who it is.
+    """A page whose site asks crawlers to stay out is not read, at any hop,
+    and the crawler says who it is.
 
     The owner's ruling, 2026-10-09: robots.txt is honoured. Every night the
     crawler had read LinkedIn job pages and the iCIMS portals of Bruker
     Detection and BigBear.ai, whose robots.txt says "Disallow: /" to every
     crawler, while one of its two fetchers passed as plain Chrome. The rules
-    are RFC 9309's: a 4xx means no rules, a 5xx or no answer means keep out.
-    The boards' documented JSON feeds are interfaces for programs and are not
-    asked; every PAGE reader is.
+    are RFC 9309's, read by robots.py itself: the stdlib parser took the first
+    matching rule, ignored * and $, and lost a group at a blank line. A 4xx
+    means no rules, a 5xx keeps out, and no answer is a network error, not a
+    refusal. The boards' documented JSON feeds are interfaces for programs and
+    are not asked; every PAGE reader is, at every redirect hop.
     """
     import inspect
+    import threading
+    import time as _time
     import ats
     import robots
     errors = 0
@@ -10254,6 +10258,20 @@ def check_the_crawler_honours_robots_txt() -> int:
         "c.robots-fixture": (404, ""),
         "d.robots-fixture": (503, ""),
         "f.robots-fixture": (200, "User-agent: *\nDisallow:\n"),
+        # RFC 9309 2.2.2: the longest match decides, an Allow wins a tie
+        "g.robots-fixture": (200, "User-agent: *\nAllow: /\nDisallow: /careers\n"),
+        "h.robots-fixture": (200, "User-agent: *\nDisallow: /\nAllow: /careers\n"),
+        "l.robots-fixture": (200, "User-agent: *\nDisallow: /page\nAllow: /page\n"),
+        # 2.2.3: * and $
+        "i.robots-fixture": (200, "User-agent: *\nDisallow: /*/jobs\nDisallow: /*.php$\n"
+                                  "Disallow: /*?pr=\n"),
+        # a byte-order mark, and blank lines inside one group
+        "j.robots-fixture": (200, "\ufeffUser-agent: *\n\nDisallow: /admin\n\nDisallow: /careers\n"),
+        # every group naming us, combined, whatever the case or version
+        "k.robots-fixture": (200, "User-agent: govtech-dock/1.0\nDisallow: /a\n\nUser-agent: *\n"
+                                  "Disallow: /\n\nUser-agent: GOVTECH-DOCK\nDisallow: /b\n"),
+        # one spelling for comparison
+        "m.robots-fixture": (200, "User-agent: *\nDisallow: /caf%C3%A9\nDisallow: /%7Ejoe\n"),
     }
     asked = []
     def fetch(url):
@@ -10261,17 +10279,37 @@ def check_the_crawler_honours_robots_txt() -> int:
         asked.append(host)
         if host == "e.robots-fixture":
             raise OSError("no answer")
+        if host == "slow.robots-fixture":
+            _time.sleep(0.2)
+            return (200, "User-agent: *\nDisallow: /x\n")
         return files[host]
     saved = dict(robots._CACHE)
     try:
         for url, want, why in (
                 ("https://a.robots-fixture/careers", False, "a site that says Disallow: / to every crawler"),
+                ("https://a.robots-fixture/robots.txt", True, "robots.txt itself"),
                 ("https://b.robots-fixture/jobs/1", False, "a path disallowed to our own product token"),
                 ("https://b.robots-fixture/about", True, "a path our token may read"),
                 ("https://c.robots-fixture/careers", True, "a site with no robots.txt (404)"),
                 ("https://d.robots-fixture/careers", False, "a site whose robots.txt answers 503"),
                 ("https://e.robots-fixture/careers", False, "a site whose robots.txt does not answer"),
                 ("https://f.robots-fixture/careers", True, "a site whose robots.txt disallows nothing"),
+                ("https://g.robots-fixture/careers/1", False, "'Allow: /' then the longer 'Disallow: /careers'"),
+                ("https://g.robots-fixture/about", True, "'Allow: /' outside the disallowed path"),
+                ("https://h.robots-fixture/careers", True, "'Disallow: /' then the longer 'Allow: /careers'"),
+                ("https://h.robots-fixture/about", False, "'Disallow: /' outside the allowed path"),
+                ("https://l.robots-fixture/page", True, "an Allow and a Disallow of the same length"),
+                ("https://i.robots-fixture/en/jobs/7", False, "'Disallow: /*/jobs'"),
+                ("https://i.robots-fixture/apply.php", False, "'Disallow: /*.php$'"),
+                ("https://i.robots-fixture/apply.php?x=1", True, "a $ pattern the query carries past"),
+                ("https://i.robots-fixture/list?pr=3", False, "'Disallow: /*?pr=' on a query"),
+                ("https://i.robots-fixture/list", True, "a path no wildcard matches"),
+                ("https://j.robots-fixture/careers", False, "a rule after a blank line, behind a byte-order mark"),
+                ("https://k.robots-fixture/a", False, "the first of two groups naming us"),
+                ("https://k.robots-fixture/b", False, "the second of two groups naming us"),
+                ("https://k.robots-fixture/c", True, "a path neither of our groups names, under a '*' that does"),
+                ("https://m.robots-fixture/café", False, "a non-ASCII path against its percent-encoding"),
+                ("https://m.robots-fixture/~joe", False, "an unreserved character against its escape"),
                 ("https://acme.test/careers", True, "a reserved test domain"),
                 ("https://jobs.example.com/x", True, "a reserved example domain")):
             got = robots.allowed(url, fetch=fetch)
@@ -10282,6 +10320,32 @@ def check_the_crawler_honours_robots_txt() -> int:
             errors += fail(f"robots.txt was fetched {asked.count('a.robots-fixture')} times for one host in one run")
         if any(h.endswith((".test", "example.com")) for h in asked):
             errors += fail("a reserved test domain's robots.txt was asked for over the network")
+        # no answer is a network error, said as one, and asked again next time
+        v = robots.verdict("https://e.robots-fixture/careers", fetch=fetch)
+        if v.kind != "network" or not v.why.startswith("network error") or asked.count("e.robots-fixture") != 2:
+            errors += fail(f"a robots.txt that did not answer reads {v.why!r}, asked "
+                           f"{asked.count('e.robots-fixture')} time(s)")
+        robots.allowed("https://d.robots-fixture/x", fetch=fetch)
+        if asked.count("d.robots-fixture") != 1 or "asks crawlers" in robots.verdict(
+                "https://d.robots-fixture/x", fetch=fetch).why:
+            errors += fail("a robots.txt answering 503 is asked every time, or reads as a refusal")
+        # an answer expires: the admin server runs for days
+        base = "https://f.robots-fixture"
+        robots._CACHE[base] = (0.0, robots._CACHE[base][1])
+        robots.allowed(base + "/x", fetch=fetch)
+        if asked.count("f.robots-fixture") != 2:
+            errors += fail("a cached robots.txt never expires")
+        # ten readers at one host at once ask it once
+        threads = [threading.Thread(target=robots.allowed,
+                                    args=("https://slow.robots-fixture/y",), kwargs={"fetch": fetch})
+                   for _ in range(6)]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+        if asked.count("slow.robots-fixture") != 1:
+            errors += fail(f"{asked.count('slow.robots-fixture')} robots.txt requests went to one "
+                           f"host at once")
         # and with no fetcher handed in, the suite reads "no robots.txt" off
         # the stub at the top of this file, never off the network
         import requests
@@ -10297,11 +10361,31 @@ def check_the_crawler_honours_robots_txt() -> int:
         if hits or ok is not True:
             errors += fail("the suite asks a real site for its robots.txt instead of reading none")
 
-        # every page reader refuses, and none of them reads the page anyway
+        # every page reader refuses, at every hop, and none reads the page anyway
         read = []
-        real_allowed, real_get = robots.allowed, ats._get
-        robots.allowed = lambda url, fetch=None: False
-        ats._get = lambda url, **kw: read.append(url)
+        class Resp:
+            def __init__(self, url, status=200, loc=None):
+                self.url, self.status_code, self.text = url, status, "<html></html>"
+                self.headers = {"Location": loc} if loc else {}
+            def close(self):
+                pass
+        def stub_get(url, **kw):
+            read.append(url)
+            if url.endswith("/hop"):
+                return Resp(url, 301, "https://refused.invalid/portal")
+            return Resp(url)
+        def refuse(url, fetch=None):
+            if "refused.invalid" in url:
+                return robots.Verdict(False, "robots.txt asks crawlers not to read refused.invalid",
+                                      "disallowed")
+            if "down.invalid" in url:
+                return robots.Verdict(False, "network error: robots.txt on down.invalid did not answer "
+                                             "(SSLError)", "network",
+                                      OSError("certificate verify failed: unable to get local issuer "
+                                              "certificate"))
+            return robots.ALLOWED
+        real_verdict, real_get = robots.verdict, ats._get
+        robots.verdict, ats._get = refuse, stub_get
         try:
             try:
                 ats._page("https://refused.invalid/careers")
@@ -10310,15 +10394,45 @@ def check_the_crawler_honours_robots_txt() -> int:
                 pass
             except Exception as exc:                        # noqa: BLE001
                 errors += fail(f"ats._page refused with {type(exc).__name__}, not RobotsRefused")
+            try:
+                ats._page("https://open.invalid/hop")
+                errors += fail("ats._page followed a redirect onto a page robots.txt refused")
+            except ats.RobotsRefused:
+                pass
+            # the real _get hands a redirect back rather than calling it a failure
+            real_rq = ats.requests.get
+            ats.requests.get = lambda u, **kw: Resp(u, 301, "https://hop.invalid/b") \
+                if kw.get("allow_redirects") is False else Resp(u)
+            try:
+                got = real_get("https://hop.invalid/a", allow_redirects=False)
+                if getattr(got, "status_code", 0) != 301:
+                    errors += fail("ats._get swallows a redirect, so follow() cannot ask the next hop")
+            except Exception as exc:                        # noqa: BLE001
+                errors += fail(f"ats._get calls a redirect a failure: {exc}")
+            finally:
+                ats.requests.get = real_rq
             if not issubclass(ats.RobotsRefused, ats.AtsError):
                 errors += fail("a robots refusal is not an AtsError, so a nightly board read crashes on it")
+            try:
+                ats._page("https://down.invalid/careers")
+            except ats.RobotsRefused:
+                errors += fail("a robots.txt that did not answer is reported as a refusal")
+            except ats.AtsError as exc:
+                if "network error" not in str(exc):
+                    errors += fail("a robots.txt that did not answer is not retried as a network error")
             import add_company
             html, note = add_company.fetch("https://refused.invalid/")
             if html or "robots.txt" not in note:
                 errors += fail(f"add_company read a refused site: {note!r}")
+            html, note = add_company.fetch("https://down.invalid/")
+            if not note.startswith("tls_chain"):
+                errors += fail(f"a site whose certificate chain is broken reads {note!r}")
+            _, _, notes = add_company.find_ats("https://refused.invalid")
+            if not any(n.startswith("could not fetch") for n in notes):
+                errors += fail(f"a site robots.txt closes is filed as having no board: {notes}")
             import discover_ats
             f = discover_ats.get("https://refused.invalid/careers")
-            if f.outcome != "blocked":
+            if f.outcome != "robots":
                 errors += fail(f"discover_ats read a refused page: {f.outcome!r}")
             import render_fetch
             try:
@@ -10329,9 +10443,36 @@ def check_the_crawler_honours_robots_txt() -> int:
             except Exception as exc:                        # noqa: BLE001
                 errors += fail(f"render_fetch did not ask robots.txt first: {type(exc).__name__}")
         finally:
-            robots.allowed, ats._get = real_allowed, real_get
-        if read:
+            robots.verdict, ats._get = real_verdict, real_get
+        if any("refused.invalid" in u or "down.invalid" in u for u in read):
             errors += fail(f"a refused page was read anyway: {read}")
+
+        # discovery steps past one closed page to the next, and files a site
+        # closed at the door as blocked, not as a company with no board
+        site = "https://acme.robots-fixture"
+        pages = {
+            site: discover_ats.Fetch(text="<a href='/jobs'>Careers</a> <a href='/company/careers'>"
+                                          "Join us</a>", status=200, url=site, outcome="ok"),
+            site + "/jobs": discover_ats.Fetch(url=site + "/jobs", outcome="robots",
+                                               text="robots.txt asks crawlers not to read it"),
+            site + "/company/careers": discover_ats.Fetch(
+                text="Careers at Acme Gov <a href='https://boards.greenhouse.io/acmegov'>x</a>"
+                     + " " * 3000, status=200, url=site + "/company/careers", outcome="ok"),
+        }
+        real_dget, real_fetch = discover_ats.get, discover_ats.ats.fetch
+        discover_ats.get = lambda u: pages.get(u.rstrip("/"), discover_ats.Fetch(
+            url=u, outcome="notfound", status=404))
+        discover_ats.ats.fetch = lambda block: [{"title": "Account Executive"}]
+        try:
+            r = discover_ats.probe({"id": "acme-gov", "name": "Acme Gov", "website": site})
+            if not r.get("found"):
+                errors += fail(f"discovery gave up at the first page robots.txt closed: {r.get('note')!r}")
+            pages[site] = pages[site + "/jobs"]
+            r = discover_ats.probe({"id": "acme-gov", "name": "Acme Gov", "website": site})
+            if r.get("retry_soon") or "could not fetch" not in (r.get("note") or ""):
+                errors += fail(f"a site robots.txt closes at the door is filed as: {r}")
+        finally:
+            discover_ats.get, discover_ats.ats.fetch = real_dget, real_fetch
     finally:
         robots._CACHE.clear()
         robots._CACHE.update(saved)
@@ -10344,17 +10485,36 @@ def check_the_crawler_honours_robots_txt() -> int:
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
     # and so do the scripts a person runs by hand: a sweep is a crawl whoever
-    # starts it. Exempt, and not listed: verify_boards (the boards' JSON
-    # APIs), link_check and redirect_sweep (where an address lands, no
-    # content read), logos (an address a company's claimant gave us).
+    # starts it. Every request they make directly must be one hop of
+    # ats.follow, never a library following redirects for it. Exempt, and not
+    # listed: verify_boards (the boards' JSON APIs), link_check and
+    # redirect_sweep (where an address lands, no content read), logos (an
+    # address a company's claimant gave us).
     for name, n in (("fetch_profiles", 2), ("feeds", 1), ("conference_dates", 1),
                     ("find_boards", 1), ("find_event_directories", 1), ("find_linkedin", 1),
                     ("find_websites", 1), ("promote_rivals", 1), ("read_descriptions", 1),
                     ("resolve_org_sites", 1), ("supplier_pages", 1), ("sweep_exhibitors", 1),
-                    ("supplier_identity", 1)):
+                    ("supplier_identity", 1), ("add_company", 1), ("discover_ats", 1),
+                    ("fetch_logos", 1)):
         src = (ROOT / "scripts" / f"{name}.py").read_text()
-        if src.count("ats._page(") < n or re.search(r"ats\._get\(|requests\.get\(", src):
-            errors += fail(f"scripts/{name}.py reads a page without asking robots.txt")
+        gated = sum(src.count(k) for k in ("ats._page(", "ats.follow(", "ats.resolve("))
+        raw = [m.start() for m in re.finditer(r"\b(?:requests|sess)\.get\(", src)]
+        if (gated < n or "ats._get(" in src or "allow_redirects=True" in src
+                or any("allow_redirects=False" not in src[k:k + 200] for k in raw)):
+            errors += fail(f"scripts/{name}.py reads a page without asking robots.txt at every hop")
+    # a browser follows redirects and scripts without asking: both browser
+    # readers walk the redirects first, abort refused navigations, and keep
+    # nothing from a page they may not read
+    for name, after in (("render_fetch", "robots.check(page.url)"),
+                        ("discover_js", "robots.allowed, page.url")):
+        src = (ROOT / "scripts" / f"{name}.py").read_text()
+        if ("ats.resolve" not in src or 'page.route("**/*", only_allowed)' not in src
+                or 'route.abort("blockedbyclient")' not in src or after not in src):
+            errors += fail(f"scripts/{name}.py lets the browser open a page robots.txt refuses")
+
+    adm = (ROOT / "scripts" / "admin.py").read_text()
+    if 'next((n for n in notes if n.startswith("could not fetch")),' not in adm:
+        errors += fail("the admin files a site it could not read as one with no board")
 
     # and it says who it is, in the same words robots.txt is matched against
     import render_fetch
@@ -10362,12 +10522,7 @@ def check_the_crawler_honours_robots_txt() -> int:
         errors += fail("the crawler's user agent does not carry the token robots.txt is read for")
     if f"{robots.TOKEN}/" not in render_fetch.UA:
         errors += fail("the browser renderer passes as plain Chrome")
-    # discover_js needs Playwright at import, which CI does not install: read it
     dj = (ROOT / "scripts" / "discover_js.py").read_text()
-    load = dj[dj.find("async def load("):dj.find("\nasync def ", dj.find("async def load(") + 1)]
-    if (load.find("robots.allowed(url)") < 0
-            or not 0 <= load.find("robots.allowed(url)") < load.find("ctx.new_page()")):
-        errors += fail("the discovery browser opens a page before asking robots.txt")
     if "user_agent=" not in dj or f"{robots.TOKEN}/" not in dj:
         errors += fail("the discovery browser passes as plain Chrome")
     return errors

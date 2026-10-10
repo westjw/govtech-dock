@@ -360,21 +360,39 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   so `admin_undo.py` can take any of them back. That recovery is the safety
   net working, not permission to use it.
 - **The crawler honours robots.txt, and says who it is (owner, 2026-10-09).**
-  Every PAGE read goes through `ats._page` or `robots.allowed`/`robots.check`
-  (`scripts/robots.py`): careers pages, newsrooms, rendered pages, sites read
-  for a write-up or a submission, and the sweeps a person runs by hand
-  (exhibitor floors, directories, website and board finders). A new page
-  fetcher that calls `ats._get` or `requests` directly reads past it. Exempt:
-  the boards' documented JSON feeds (Greenhouse, Lever, Ashby and the rest,
-  and `verify_boards`), which are interfaces published for programs;
-  `link_check` and `redirect_sweep`, which read where an address lands and no
-  content; `logos`, which fetches the address a claimant gave us. RFC 9309: a 4xx means no rules, a 5xx or no
-  answer means keep out for the run. Every user agent names `govtech-dock/1.0`
-  and the repo; none passes as plain Chrome. Honouring it cost 313 postings at
-  5 companies on the day (Bruker Detection and BigBear.ai's iCIMS portals,
-  two LinkedIn pages, Rain Bird). A person may still capture a role by hand:
-  that is a reader, not a crawler. `check_the_crawler_honours_robots_txt`
-  holds it (24/24 mutations). The suite stubs `robots._rules` at the top of
+  Every PAGE read asks first (`scripts/robots.py`), AT EVERY REDIRECT HOP:
+  through `ats._page`, or `ats.follow(url, one)` where `one` makes a single
+  request with `allow_redirects=False`. A library left to follow redirects
+  asks only the first host, so a careers page that 301s to a disallowed iCIMS
+  portal was read on the company's permission. Browsers (`render_fetch`,
+  `discover_js`) walk the address's redirects first with `ats.resolve`, abort
+  refused navigations in a `page.route` handler, and keep nothing from a page
+  whose final URL is refused; Playwright's router never sees a server
+  redirect's second hop (measured). Covered: careers pages, newsrooms,
+  rendered pages, sites read for a write-up or a submission, and the sweeps a
+  person runs by hand (exhibitor floors, directories, website, board and logo
+  finders). A new page fetcher that calls `ats._get`, or `requests` with
+  redirects on, reads past it. Exempt: the boards' documented JSON feeds
+  (Greenhouse, Lever, Ashby and the rest, and `verify_boards`), which are
+  interfaces published for programs; `link_check` and `redirect_sweep`, which
+  read where an address lands and no content; `logos`, which fetches the
+  address a claimant gave us.
+  The rules are RFC 9309's and `robots.py` reads them itself: the stdlib
+  `urllib.robotparser` takes the first matching rule instead of the longest,
+  ignores `*` and `$`, ends a group at a blank line, and wrongly refused Rain
+  Bird. A 4xx means no rules; a 5xx keeps out (cached an hour); NO ANSWER is a
+  network error, raised as `AtsError("network error: ...")` and never cached,
+  so it is retried and never reads as a refusal (`add_company` gives it the
+  same tls/dns/timeout diagnosis as the page). A refusal is never "no board":
+  discovery skips that page and tries the next, and a site closed at the door
+  is filed "could not fetch", which the admin reads as blocked.
+  Every user agent names `govtech-dock/1.0` and the repo; none passes as plain
+  Chrome. Cost, measured with this matcher on 2026-10-09: 303 postings at 4
+  companies (Bruker Detection 213 and BigBear.ai 64 on iCIMS portals saying
+  `Disallow: /`, CORE Business Technologies 20 and Fortem Technologies 6 on
+  LinkedIn), and 5 boards that had none. A person may still capture a role by
+  hand: that is a reader, not a crawler. `check_the_crawler_honours_robots_txt`
+  holds it (36/36 mutations). The suite stubs `robots._rules` at the top of
   selftest.py so no check asks a real site; a check that wants rules passes
   its own `fetch`.
 

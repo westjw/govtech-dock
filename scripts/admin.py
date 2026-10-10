@@ -3411,7 +3411,9 @@ def act_save_website(body: dict) -> dict:
             else:
                 steps.append(f"board found but unreadable, left unknown")
         else:
-            steps.append("no board on the site yet")
+            # a site we could not read, or may not, is not a site with no board
+            steps.append(next((n for n in notes if n.startswith("could not fetch")),
+                              "no board on the site yet"))
     except Exception as exc:  # noqa: BLE001
         steps.append("could not check for a job board just now")
 
