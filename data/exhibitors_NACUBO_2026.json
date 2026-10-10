@@ -9,13 +9,25 @@
    "name": "1Government Procurement Alliance",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cooperative purchasing organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "cooperative purchasing organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ABM Industries, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: facilities services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "facilities services company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alteryx, Inc",
@@ -37,13 +49,25 @@
    "name": "American Dining Creations",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: food service company",
+   "read": {
+    "verdict": "supplier",
+    "why": "food service company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Express",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anaplan",
@@ -61,13 +85,25 @@
    "name": "Aramark Collegiate Hospitality",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: campus dining services",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus dining services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ARO",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ASUENE USA Inc.",
@@ -79,13 +115,25 @@
    "name": "Attain Partners",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: management and technology consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "management and technology consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Barnes & Noble College",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: campus bookstore operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus bookstore operator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BibliU Inc.",
@@ -107,7 +155,13 @@
    "name": "Boundless Learning",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: online program management services",
+   "read": {
+    "verdict": "supplier",
+    "why": "online program management services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Brailsford & Dunlavey",
@@ -121,13 +175,25 @@
    "name": "Capstone Development Partners",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: student housing developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "student housing developer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Capstone On-Campus Management (COCM)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: student housing management",
+   "read": {
+    "verdict": "supplier",
+    "why": "student housing management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carahsoft",
@@ -137,43 +203,85 @@
    "name": "CBIZ",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting, advisory and insurance services",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting, advisory and insurance services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cedar Financial",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: collections and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "collections and financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chartwells Higher Education",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: campus dining services",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus dining services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cherry Bekaert",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Citi",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CLA (CliftonLarsonAllen LLP)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CohnReznick LLP",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CollegeVine",
@@ -189,7 +297,13 @@
    "name": "Core Education PBC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: shared business services for colleges",
+   "read": {
+    "verdict": "supplier",
+    "why": "shared business services for colleges",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Corpay Inc",
@@ -201,7 +315,13 @@
    "name": "Crowe LLP",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DebtBook",
@@ -216,8 +336,14 @@
   {
    "name": "Drivestream",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Oracle Cloud ERP implementation IT services",
+   "read": {
+    "verdict": "vendor",
+    "why": "Oracle Cloud ERP implementation IT services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Druid AI",
@@ -237,19 +363,37 @@
    "name": "eCampus.com Higher Ed",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: online course-materials retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "online course-materials retailer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ECSI",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: student loan servicing and tuition payment software/services",
+   "read": {
+    "verdict": "vendor",
+    "why": "student loan servicing and tuition payment software/services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Elior Collegiate Dining",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: campus dining services",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus dining services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ellucian",
@@ -268,12 +412,6 @@
    "website": null
   },
   {
-   "name": "Exhibitor FAQs",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Exhibitor Service Center",
    "website": null
   },
@@ -281,7 +419,13 @@
    "name": "Fitch Ratings",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit ratings agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit ratings agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FMX",
@@ -291,19 +435,25 @@
    "name": "Follett Higher Education",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: campus bookstore operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus bookstore operator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Forvis Mazars",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "General EXPO Information",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovDeals",
@@ -313,7 +463,13 @@
    "name": "GradGuard",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: student insurance products",
+   "read": {
+    "verdict": "supplier",
+    "why": "student insurance products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HelioCampus",
@@ -323,25 +479,49 @@
    "name": "HES Facilities Management",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: facilities management services",
+   "read": {
+    "verdict": "supplier",
+    "why": "facilities management services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HHM CPAs",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HUB International",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Huron Consulting Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Illumia (formerly Transact + CBORD)",
@@ -353,13 +533,25 @@
    "name": "Independent College Bookstore Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IST Management Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: outsourced office and mail services",
+   "read": {
+    "verdict": "supplier",
+    "why": "outsourced office and mail services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jaggaer",
@@ -373,7 +565,13 @@
    "name": "JPMorgan",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kuali",
@@ -392,20 +590,38 @@
   {
    "name": "LearningMate",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: edtech software and digital content services",
+   "read": {
+    "verdict": "vendor",
+    "why": "edtech software and digital content services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mauve Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: global employment/HR services",
+   "read": {
+    "verdict": "supplier",
+    "why": "global employment/HR services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MAXIMUS Higher Education, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Maximus government-services contractor; higher-ed cost software and consulting",
+   "read": {
+    "verdict": "vendor",
+    "why": "Maximus government-services contractor; higher-ed cost software and consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Meadow",
@@ -415,31 +631,61 @@
    "name": "Merchant Advocate",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: payment-fee consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "payment-fee consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Metz Culinary Management",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: dining management",
+   "read": {
+    "verdict": "supplier",
+    "why": "dining management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MOHELA",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: student loan servicer",
+   "read": {
+    "verdict": "supplier",
+    "why": "student loan servicer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Moody's Ratings",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit ratings agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit ratings agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "myFootpath",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: enrollment services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "enrollment services company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nelnet Campus Commerce",
@@ -452,8 +698,14 @@
   {
    "name": "OculusIT LLC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: managed IT services for higher education",
+   "read": {
+    "verdict": "vendor",
+    "why": "managed IT services for higher education",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "OneSource Virtual",
@@ -468,8 +720,14 @@
   {
    "name": "PayLock",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: parking enforcement devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "parking enforcement devices with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PFM Asset Management",
@@ -481,19 +739,37 @@
    "name": "Piper Sandler",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: investment bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Plante Moran",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Porter Khouw Consulting, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: dining consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "dining consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Quodus",
@@ -503,41 +779,65 @@
    "name": "Radnor Property Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: real estate developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate developer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ramp",
    "website": null
   },
   {
-   "name": "Register for Booth Space",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "RGMA",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RISE Real Estate Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: real estate company",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rize Education",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: online course-sharing consortium; education services",
+   "read": {
+    "verdict": "supplier",
+    "why": "online course-sharing consortium; education services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "S&P Global Ratings",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit ratings agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit ratings agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SAP America",
@@ -555,43 +855,61 @@
    "name": "Segal",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HR and benefits consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "HR and benefits consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Slingshot",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: course-materials provider at higher-ed finance show",
+   "read": {
+    "verdict": "supplier",
+    "why": "course-materials provider at higher-ed finance show",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sodexo Campus",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: campus dining and facilities services",
+   "read": {
+    "verdict": "supplier",
+    "why": "campus dining and facilities services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Southern Association of College and Business Officers",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Sponsor Service Center (Companies who purchased Sponsorship)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sponsorship Purchase",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: regional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "regional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stantec Architecture Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Strata Decision Technology",
@@ -608,20 +926,26 @@
   {
    "name": "Tessera",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous one-word name; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TIAA",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "top",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TouchNet, A Global Payments Company",
@@ -631,13 +955,25 @@
    "name": "Transamerica",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tru Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Unimarket",
@@ -647,7 +983,13 @@
    "name": "University of Kentucky-Martin School",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university school",
+   "read": {
+    "verdict": "supplier",
+    "why": "university school",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Virtual Incentives",
@@ -663,13 +1005,25 @@
    "name": "Wellfleet Student",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: student health insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "student health insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Withum",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Workday, Inc.",
@@ -685,5 +1039,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 6,
+ "quality_was": "good"
 }

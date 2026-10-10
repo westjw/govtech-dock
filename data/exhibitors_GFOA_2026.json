@@ -9,7 +9,13 @@
    "name": "Abdo",
    "website": "https://abdosolutions.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ACI Worldwide",
@@ -23,7 +29,13 @@
    "name": "AGA",
    "website": "https://www.agacgfm.org",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association (government accountants)",
+   "read": {
+    "verdict": "supplier",
+    "why": "association (government accountants)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Allocore",
@@ -37,13 +49,25 @@
    "name": "American Express",
    "website": "https://www.americanexpress.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services (cards)",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services (cards)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Water Works Association",
    "website": "https://www.awwa.org/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association (water utilities)",
+   "read": {
+    "verdict": "supplier",
+    "why": "association (water utilities)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anaplan",
@@ -61,7 +85,13 @@
    "name": "Argent Institutional Trust Company",
    "website": "https://aitc.argentfinancial.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trust company; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "trust company; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Asset Systems",
@@ -77,7 +107,13 @@
    "name": "Avero Advisors",
    "website": "https://www.averoadvisors.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Named advisory consultancy; IT/ERP consulting services, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Named advisory consultancy; IT/ERP consulting services, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Avila Technologies",
@@ -97,7 +133,13 @@
    "name": "BDO",
    "website": "https://www.bdo.com/industries/state-and-local-government",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beacon Bid",
@@ -119,19 +161,37 @@
    "name": "BLX Group",
    "website": "https://www.blxgroup.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal finance advisory (arbitrage rebate)",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal finance advisory (arbitrage rebate)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BMO Bank",
    "website": "https://commercial.bmo.com/en/us/industry-expertise/governments/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BNY",
    "website": "https://www.bny.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BondLink",
@@ -147,7 +207,13 @@
    "name": "Bronner Group",
    "website": "https://www.bronnergroup.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public-sector management consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "public-sector management consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BS&A Software",
@@ -157,7 +223,13 @@
    "name": "Byline Bank",
    "website": "https://www.bylinebank.com/municipal-banking/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Can/Am Teller Cashiering",
@@ -169,7 +241,13 @@
    "name": "Carr, Riggs & Ingram",
    "website": "https://www.criadv.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Caselle",
@@ -179,7 +257,13 @@
    "name": "CBIZ",
    "website": "https://www.cbiz.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting, advisory and benefits firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting, advisory and benefits firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CentralSquare Technologies",
@@ -188,8 +272,14 @@
   {
    "name": "CGI",
    "website": "https://www.cgi.com/us/en-us/state-local-government",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT services and government ERP software (CGI Advantage)",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT services and government ERP software (CGI Advantage)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chandler Asset Management",
@@ -211,19 +301,37 @@
    "name": "CKH Group",
    "website": "https://www.ckhgroup.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CLA",
    "website": "https://www.claconnect.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm (CliftonLarsonAllen)",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm (CliftonLarsonAllen)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Claremont Lincoln University",
    "website": "https://claremontlincoln.edu/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ClearGov",
@@ -233,13 +341,25 @@
    "name": "Client First Technology Consulting",
    "website": "https://clientfirstcg.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Named consultancy; IT/ERP consulting services, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Named consultancy; IT/ERP consulting services, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CLOUDVICE",
    "website": "https://www.cloudvice.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (name signals cloud technology services); skeptic unsure (Name reads cloud + advice; likely cloud consultancy/services, product unclear.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CodeRight, Inc.",
@@ -249,7 +369,13 @@
    "name": "Colonial Life & Accident Insurance Company",
    "website": "https://www.coloniallife.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance company",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CommercePayments",
@@ -259,19 +385,13 @@
    "name": "Computershare Corporate Trust",
    "website": "https://www.computershare.com/corporate_trust",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Conference Overview",
-   "website": "https://www.gfoa.org/2026-overview",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Conference Schedule",
-   "website": "https://www.gfoa.org/2026-schedule",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: corporate trust services; financial",
+   "read": {
+    "verdict": "supplier",
+    "why": "corporate trust services; financial",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CORE Business Technologies",
@@ -291,7 +411,13 @@
    "name": "Crowe LLP",
    "website": "https://www.crowe.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CSG",
@@ -333,7 +459,13 @@
    "name": "Denovo",
    "website": "https://www.denovo-us.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Oracle JDE consulting and managed services; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Oracle JDE consulting and managed services; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DivDat Powered by Meridian",
@@ -349,17 +481,17 @@
    "name": "DRS",
    "website": "https://www.drsconsults.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm; no technology signal in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm; no technology signal in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Edmunds GovTech",
    "website": "https://www.edmundsgovtech.com/"
-  },
-  {
-   "name": "Education Sessions",
-   "website": "https://www.gfoa.org/sessions/2026-sessions",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Edwin",
@@ -369,25 +501,31 @@
    "name": "Eide Bailly",
    "website": "https://www.eidebailly.com/industries/government/government-advisory-services",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Elavon",
    "website": "https://www.elavon.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: payment processor; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "payment processor; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ellipse Solutions",
    "website": "https://ellipsesolutions.com/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Employment Resources for Finance Officers",
-   "website": "https://www.gfoa.org/employment-resources",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Engine",
@@ -403,35 +541,29 @@
    "name": "Equitable",
    "website": "https://equitable.com/retirement",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: retirement and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "retirement and financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ERPA",
    "website": "http://www.erpa.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: ERP consulting and managed services; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: ERP consulting and managed services; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Euna Solutions",
    "website": "https://eunasolutions.com/"
-  },
-  {
-   "name": "Executive Board",
-   "website": "https://www.gfoa.org/executive-board",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Experience Chicago",
-   "website": "https://www.choosechicago.com/meetings/gfoa2026/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Facebook",
-   "website": "https://www.facebook.com/GFOAofUSandCanada/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Fairfax Software",
@@ -453,7 +585,13 @@
    "name": "Fitch Ratings",
    "website": "https://www.fitchratings.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit rating agency; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit rating agency; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fluxx Labs",
@@ -469,13 +607,25 @@
    "name": "Forvis Mazars",
    "website": "https://www.forvismazars.us/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FourthSquare",
    "website": "https://fourthsquare.com/company/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Oracle Cloud implementation consultancy; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Oracle Cloud implementation consultancy; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FUNDVIEW Software",
@@ -487,19 +637,37 @@
    "name": "GilFlo Consulting Services",
    "website": "https://www.gilfloconsulting.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting services; no technology signal in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting services; no technology signal in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GNC Consulting",
    "website": "https://www.gnc-consulting.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Named consultancy; Oracle/PeopleSoft implementation services, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Named consultancy; Oracle/PeopleSoft implementation services, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Government Portfolio Advisors",
    "website": "https://gpafixedincome.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: investment advisor",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment advisor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Government Window",
@@ -527,13 +695,13 @@
    "name": "Green Office Partner",
    "website": "https://www.greenofficepartner.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Guide for CPE",
-   "website": "https://www.gfoa.org/guide-for-cpe",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: managed print and office equipment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "managed print and office equipment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Guidehouse",
@@ -547,7 +715,13 @@
    "name": "Hawkins Delafield & Wood LLP",
    "website": "https://www.hawkins.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HCA Asset Management",
@@ -567,7 +741,13 @@
    "name": "HHM CPAs",
    "website": "https://hhmcpas.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Highstreet IT Solutions",
@@ -579,7 +759,13 @@
    "name": "HilltopSecurities",
    "website": "https://www.hilltopsecurities.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal finance broker-dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal finance broker-dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Holly",
@@ -593,7 +779,13 @@
    "name": "Huron",
    "website": "https://www.huronconsultinggroup.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: management consulting firm; technology is a practice, not product",
+   "read": {
+    "verdict": "supplier",
+    "why": "management consulting firm; technology is a practice, not product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "i3 Verticals",
@@ -609,7 +801,13 @@
    "name": "ICL",
    "website": "https://instcl.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely institutional finance firm (instcl.com); no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely institutional finance firm (instcl.com); no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ICMA",
@@ -619,13 +817,25 @@
    "name": "Illinois GFOA",
    "website": "https://www.igfoa.org/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state association",
+   "read": {
+    "verdict": "supplier",
+    "why": "state association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ImageMaster",
    "website": "https://www.imagemaster.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal bond document printing and distribution",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal bond document printing and distribution",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Infor",
@@ -636,8 +846,14 @@
   {
    "name": "InfoSend",
    "website": "https://infosend.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (utility bill print/mail outsourcing plus e-billing and payment software); skeptic unsure (Primarily print-and-mail outsourcing; e-billing software is secondary.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "inLogic, Inc.",
@@ -649,13 +865,13 @@
    "name": "Insight Investment",
    "website": "https://www.insightinvestment.com/united-states/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Instagram",
-   "website": "https://www.instagram.com/gfoa_/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: asset management",
+   "read": {
+    "verdict": "supplier",
+    "why": "asset management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IntelliPay",
@@ -665,7 +881,13 @@
    "name": "IntraFi",
    "website": "https://www.intrafi.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: deposit placement network; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "deposit placement network; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "InvoiceCloud",
@@ -674,64 +896,82 @@
   {
    "name": "iteria.us",
    "website": "https://www.iteria.us/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "exhibitor shown as bare domain; Iteria's business unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "J.P. Morgan",
    "website": "https://www.jpmorgan.com/industries-we-serve/public-sector/government",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "JAGGAER",
    "website": "https://www.jaggaer.com/"
   },
   {
-   "name": "Jobs Board",
-   "website": "https://www.gfoa.org/jobs",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Keen360",
    "website": "https://keen360.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Keynote Speakers",
-   "website": "https://www.gfoa.org/2026-keynotes",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Business and technology consultancy; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Business and technology consultancy; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Koa Hills Consulting",
    "website": "https://www.koahills.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Named consultancy; ERP implementation services, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Named consultancy; ERP implementation services, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lincoln Financial",
    "website": "https://www.lincolnfinancial.com/public/individuals",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lincoln Institute of Land Policy",
    "website": "https://www.lincolninst.edu/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit think tank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Linebarger Attorneys At Law",
    "website": "https://www.lgbs.com/"
-  },
-  {
-   "name": "LinkedIn",
-   "website": "https://www.linkedin.com/company/gfoa/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Local Government Hispanic Network",
@@ -740,26 +980,20 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Log Out",
-   "website": "https://members.gfoa.org/Gfoamember/Gfoamember/logout.aspx?URLSITE=https://www.gfoa.org/member-logout/events/bye-bye-big-boring-budget-books-hello-compelling-concise-clear-communications",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "LSL",
    "website": "https://lslcpas.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Madison AI",
    "website": "https://www.madisonai.com/"
-  },
-  {
-   "name": "Materials Library",
-   "website": "https://www.gfoa.org/materials",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Matrix Consulting Group",
@@ -769,7 +1003,13 @@
    "name": "Mauldin & Jenkins",
    "website": "https://www.mjcpa.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maximus",
@@ -779,37 +1019,61 @@
    "name": "Meeder Public Funds",
    "website": "https://meederinvestment.com/public-funds",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Membership and Education",
-   "website": "https://www.gfoa.org/membership-and-education",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public funds investment management",
+   "read": {
+    "verdict": "supplier",
+    "why": "public funds investment management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Merchant Advocate",
    "website": "https://merchantadvocate.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: merchant-fee auditing consultancy; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "merchant-fee auditing consultancy; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Merchant Cost Consulting",
    "website": "https://merchantcostconsulting.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: merchant-fee consulting; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "merchant-fee consulting; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Metaformers, Inc. (Meta)",
    "website": "https://metaformers.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Oracle Cloud implementation consultancy; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Oracle Cloud implementation consultancy; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Metropolitan Commercial Bank",
    "website": "https://mcbankny.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MGT",
@@ -823,19 +1087,37 @@
    "name": "Moody's Ratings",
    "website": "https://www.moodys.com/pfg",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit rating agency; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit rating agency; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Morgan Stanley Investment Management",
    "website": "https://www.morganstanley.com/liquidity",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: asset management",
+   "read": {
+    "verdict": "supplier",
+    "why": "asset management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Multi-Bank Securities, Inc.",
    "website": "https://mbssecurities.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: broker-dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "broker-dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Muni-Link",
@@ -848,14 +1130,26 @@
   {
    "name": "Mythics",
    "website": "https://mythics.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Oracle reseller and IT solutions for public sector",
+   "read": {
+    "verdict": "vendor",
+    "why": "Oracle reseller and IT solutions for public sector",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Forum for Black Public Administrators (NFBPA)",
    "website": "https://www.nfbpa.org/home",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Payment Corporation (NatPay)",
@@ -867,7 +1161,13 @@
    "name": "National Procurement Institute (NPI)",
    "website": "https://www.npi-aep.org/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association (procurement)",
+   "read": {
+    "verdict": "supplier",
+    "why": "association (procurement)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Neumo",
@@ -877,59 +1177,109 @@
    "name": "New Orleans Visitors Bureau",
    "website": "https://www.neworleans.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: convention and visitors bureau",
+   "read": {
+    "verdict": "supplier",
+    "why": "convention and visitors bureau",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Next Generation Inc, an HR Path Company",
    "website": "https://nxtgeninc.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: HR technology consultancy (HR Path group); services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: HR technology consultancy (HR Path group); services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NIGP Code & Consulting",
    "website": "https://www.nigp.org/our-profession/nigp-consulting",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: procurement association's commodity-code and consulting arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "procurement association's commodity-code and consulting arm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northern Illinois University",
    "website": "https://www.niu.edu/index.shtml",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northern Trust",
    "website": "https://www.northerntrust.com/united-states/home",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Office Locations",
-   "website": "https://www.gfoa.org/office-locations",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Old National Bank",
    "website": "https://www.oldnational.com/business/commercial-banking/specialized-industries/government-and-municipalities/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Omnibus",
    "website": "https://omnibus.io/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: likely public-finance SaaS (.io domain); unverified",
+   "read": {
+    "verdict": "vendor",
+    "why": "likely public-finance SaaS (.io domain); unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "OnActuate, a Microsoft & Dayforce Partner",
    "website": "https://www.onactuate.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Implementation partner/consultancy for Microsoft and Dayforce; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Implementation partner/consultancy for Microsoft and Dayforce; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "One Source Virtual",
-   "website": "https://www.onesourcevirtual.com/"
+   "website": "https://www.onesourcevirtual.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: Workday services partner and payroll BPO; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Workday services partner and payroll BPO; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "OneStream",
@@ -969,7 +1319,13 @@
    "name": "PFM",
    "website": "https://www.pfm.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public financial advisory",
+   "read": {
+    "verdict": "supplier",
+    "why": "public financial advisory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PFM Asset Management",
@@ -985,29 +1341,41 @@
    "name": "Plante Moran",
    "website": "https://www.plantemoran.com/industries/government",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PNC Bank",
    "website": "https://www.pnc.com",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Point & Pay",
    "website": "https://www.pointandpay.com/"
   },
   {
-   "name": "Preconference Seminars",
-   "website": "https://www.gfoa.org/2026-precon",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Professional",
    "website": "https://professionalcredit.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Professional Credit; debt collection agency (per website)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional Credit; debt collection agency (per website)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PTMA Financial Solutions",
@@ -1019,7 +1387,13 @@
    "name": "Public Sector HealthCare Roundtable",
    "website": "https://www.healthcareroundtable.us/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: coalition/association",
+   "read": {
+    "verdict": "supplier",
+    "why": "coalition/association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Quant16",
@@ -1034,8 +1408,14 @@
   {
    "name": "RCI",
    "website": "https://rcitech.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT firm; 'rcitech' domain signals technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT firm; 'rcitech' domain signals technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RedBeam",
@@ -1065,13 +1445,25 @@
    "name": "S&P Global Ratings",
    "website": "https://www.spglobal.com/uspublicfinance",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: credit rating agency; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit rating agency; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SAFEChecks",
    "website": "https://www.safechecks.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: secure check printing; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "secure check printing; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sage",
@@ -1095,25 +1487,37 @@
    "name": "SIB",
    "website": "https://www.aboutsib.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: expense auditing consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "expense auditing consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sierra-Cedar",
    "website": "https://www.sierra-cedar.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sign Up",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: IT consulting and implementation services; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: IT consulting and implementation services; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sikich",
    "website": "https://www.sikich.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SOFTRAX",
@@ -1125,7 +1529,13 @@
    "name": "SoftResources",
    "website": "https://softresources.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Software-selection consultancy; pure consulting, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Software-selection consultancy; pure consulting, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Software Solutions",
@@ -1145,19 +1555,25 @@
    "name": "Squire & Company",
    "website": "https://www.squire.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Strada",
    "website": "https://stradaglobal.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sunday Morning Yoga",
-   "website": "https://www.gfoa.org/2026-yoga",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: HR/payroll outsourcing and implementation services; not a product company.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: HR/payroll outsourcing and implementation services; not a product company.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SymPro",
@@ -1179,19 +1595,25 @@
    "name": "Third Millennium Associates",
    "website": "https://www.tmainc.org/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: associates/consulting firm; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "associates/consulting firm; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TIAA",
    "website": "https://www.tiaa.org/public",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Twitter",
-   "website": "https://www.twitter.com/GFOA",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tyler Technologies",
@@ -1201,7 +1623,13 @@
    "name": "U.S. Bank",
    "website": "https://www.usbank.com",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "UKG",
@@ -1211,7 +1639,13 @@
    "name": "UMB Bank",
    "website": "https://www.umb.com/business-banking/why-umb",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Univerus",
@@ -1221,7 +1655,13 @@
    "name": "Util-Assist",
    "website": "https://utilassist.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Utility technology consultancy (CIS/AMI implementation); services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Utility technology consultancy (CIS/AMI implementation); services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Velosimo",
@@ -1243,7 +1683,13 @@
    "name": "Voya Financial",
    "website": "https://www.voya.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Watson & Yates",
@@ -1253,19 +1699,37 @@
    "name": "Wealthspire",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wealth management",
+   "read": {
+    "verdict": "supplier",
+    "why": "wealth management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Weaver",
    "website": "https://weaver.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wells Fargo",
    "website": "https://www.wellsfargo.com/com/solutions/global-payments-liquidity/?utm_medium=www-redirect&amp;utm_source=com--treasury-management",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Workday",
@@ -1282,19 +1746,21 @@
    "website": "https://www.xpressbillpay.com/"
   },
   {
-   "name": "YouTube",
-   "website": "https://www.youtube.com/channel/UC9WdpnRDXE6nzxzRbkkMFOA",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Zions Bank",
    "website": "https://www.zionsbank.com",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "good",
- "restaged": "251 -> 239 names after re-filtering on 2026-09-02"
+ "quality": "read",
+ "restaged": "251 -> 239 names after re-filtering on 2026-09-02",
+ "read_dropped": 21,
+ "quality_was": "good"
 }

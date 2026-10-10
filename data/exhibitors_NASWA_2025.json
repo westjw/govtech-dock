@@ -6,28 +6,10 @@
  "source_note": "Read from https://www.naswa.org/conferences/2025-naswa-summit by scripts/sweep_exhibitors.py. 43 name(s), 6 with a website the page itself linked. Quality: good (23% carry a corporate marker, 5% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "2025 State of the Workforce",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Affiliate Program",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Artificial Intelligence (AI) Resources",
    "website": null,
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Calendar",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Custom Solutions Overview",
@@ -42,154 +24,10 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Facebook",
-   "website": "https://www.facebook.com/NASWAorg/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Hilton Honors Military Program",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Instagram",
-   "website": "https://www.instagram.com/naswaorg/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Job Board",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Learning & Library",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Legislative Priorities",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Legislative Tracking",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Letters & Testimony",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "LinkedIn",
-   "website": "https://www.linkedin.com/company/national-association-of-state-workforce-agencies",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Multistate Data Collaborative",
    "website": null,
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "NASWA Leadership",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NASWA Regions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NASWA Reports",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "National Labor Exchange",
-   "website": "https://www.naswa.org/national-labor-exchange",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "News Releases",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Past Meetings",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Policy Committees Overview",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sponsor Opportunities",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "State of the Workforce",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Technology Support Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Training Development & Delivery",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Twitter",
-   "website": "https://twitter.com/naswaorg",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Twitter @NASWAORG",
-   "website": "https://twitter.com/naswaorg",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "UI Information Technology Support Center (UI ITSC)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "UI Integrity Center",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UI Interstate Connection Network (UI ICON)",
@@ -202,45 +40,11 @@
    "website": null,
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Upcoming Conferences",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Upcoming Meetings & Webinars",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Workforce Information Technology Support Center (Workforce ITSC)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Workforce Innovation Awards",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Workforce Innovation Awards Nominations",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Workforce Support Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": "25% carry a corporate marker, 2% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu",
- "restaged": "43 -> 40 names after re-filtering on 2026-09-02"
+ "quality": "read",
+ "restaged": "43 -> 40 names after re-filtering on 2026-09-02",
+ "read_dropped": 33,
+ "quality_was": "menu"
 }

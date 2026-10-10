@@ -24,8 +24,14 @@
    "website": null,
    "tier": "Hospitality",
    "sells": "AI-powered claims analytics and services for health plans and government agencies to cut improper payments; Alivia 360 platform, payment integrity and RAC support for state Medicaid agencies.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Alivia Analytics, healthcare payment-integrity analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Alivia Analytics, healthcare payment-integrity analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Consulting Group",
@@ -33,7 +39,13 @@
    "tier": "Networking Lunch",
    "sells": "Public sector solutions implementation and operations improvement for health, education and human services agencies - regulatory compliance, reimbursement and program revenue.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public-sector management consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "public-sector management consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PwC",
@@ -41,15 +53,27 @@
    "tier": "Networking Breakfast",
    "sells": "Health Industries consulting for payers, providers, pharma and life sciences and medical device organizations, plus health policy data and insights.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: professional services and consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional services and consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Peraton",
    "website": "https://www.peraton.com",
    "tier": "Keynote Address",
    "sells": "National security mission integration and enterprise IT for the armed forces and government agencies.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: government IT services contractor",
+   "read": {
+    "verdict": "vendor",
+    "why": "government IT services contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Codoxo",
@@ -71,7 +95,13 @@
    "tier": "Platinum",
    "sells": "Fraud, waste and abuse detection for government and commercial clients - predictive modeling and analytics, investigations, audits, claims review, enrollment monitoring.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: program-integrity contractor, services over product",
+   "read": {
+    "verdict": "supplier",
+    "why": "program-integrity contractor, services over product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pulselight",
@@ -84,16 +114,28 @@
    "website": "https://www.machinify.com",
    "tier": "Platinum",
    "sells": "Healthcare claims platform using AI to give payers higher claim accuracy and consistency.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: payment-integrity analytics and AI software",
+   "read": {
+    "verdict": "vendor",
+    "why": "payment-integrity analytics and AI software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Optum",
    "website": "https://Optum.com/stategov",
    "tier": "Platinum",
    "sells": "Services for government health programs, sold to states.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Optum state-government health IT and analytics",
+   "read": {
+    "verdict": "vendor",
+    "why": "Optum state-government health IT and analytics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Myers & Stauffer",
@@ -101,15 +143,27 @@
    "tier": "Platinum",
    "sells": "Medicaid payment integrity work - eligibility reviews, claims audits and testing, estate recovery, provider cost audits, managed care audits and compliance.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and Medicaid consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and Medicaid consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "InComm Healthcare",
    "website": "https://www.incomm.com/healthcare/",
    "tier": "Platinum",
    "sells": "Rewards and incentive platform for Medicaid health plans - digital and physical member rewards, configurable benefit design, spend controls and reporting.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare benefits payments technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare benefits payments technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IBM",
@@ -124,8 +178,14 @@
    "website": "https://www.hcfraudshield.com",
    "tier": "Platinum",
    "sells": "Automated fraud, waste, abuse and error detection solutions and investigative expertise for healthcare payers.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fraud, waste and abuse analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "fraud, waste and abuse analytics platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alliant Health Solutions",
@@ -147,7 +207,13 @@
    "tier": "Gold",
    "sells": "Independent medical review, utilization management, legal adjudication and dispute resolution for federal and state agencies and health plans.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: hearings, appeals and medical review services",
+   "read": {
+    "verdict": "supplier",
+    "why": "hearings, appeals and medical review services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "America's Health Insurance Plans",
@@ -155,7 +221,13 @@
    "tier": "Gold",
    "sells": "Health insurance trade association selling online courses, designations and webinars on Medicaid, Medicare, dual eligibles, long-term care and fraud detection.",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: AHIP, health insurance trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "AHIP, health insurance trade association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Acentra Health",
@@ -182,8 +254,14 @@
    "website": "https://www.splunk.com/en_us/solutions/industries/public-sector/sled.html",
    "tier": null,
    "sells": "Data platform for security and observability - enterprise observability, unified security and custom applications.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Splunk data platform, public-sector SLED page",
+   "read": {
+    "verdict": "vendor",
+    "why": "Splunk data platform, public-sector SLED page",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NCCI",
@@ -191,7 +269,13 @@
    "tier": null,
    "sells": "Unannounced pre-enrollment and post-enrollment site visits and field inspections for moderate- and high-risk Medicaid providers.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: acronym services firm, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "acronym services firm, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Integrity Advantage",
@@ -199,7 +283,13 @@
    "tier": null,
    "sells": "Professional services for health payers - FWA program assessments, Special Investigations Unit outsourcing, investigations, medical record reviews and training.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: FWA consulting, audit and investigation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "FWA consulting, audit and investigation services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Dun & Bradstreet, Inc.",
@@ -214,10 +304,17 @@
    "website": "https://commence.ai/",
    "tier": null,
    "sells": "Healthcare solutions combining clinical expertise, AI-powered strategy and scalable technology.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: .ai domain; AI software pitched for program integrity",
+   "read": {
+    "verdict": "vendor",
+    "why": ".ai domain; AI software pitched for program integrity",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "29% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with",
- "quality": "good"
+ "quality": "read",
+ "quality_was": "good"
 }

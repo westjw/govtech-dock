@@ -142,8 +142,17 @@ NAV_SHARE = 0.30       # more chrome than this and the page is not a directory
 _ARROWS = "\u203a\u00bb\u2192\u25b8\u25be\u25b6\u276f\u00ab\u2039\u2190<>"
 
 
+# A CALL TO ACTION RIDING ON A NAME. NC League's partner page writes each
+# sponsor as "CavMac Learn More" - the name and its button in one anchor - and
+# the row was filed under that whole string, twice (2026-10-10).
+CTA_TAIL = re.compile(r"[\s\-\u2013\u2014|:]*\b(learn more|read more|more info(rmation)?|find out more|"
+                      r"visit (the )?(web)?site|view (profile|website|details)|website|details|"
+                      r"click here)\s*$", re.I)
+
+
 def clean(s: str) -> str:
     s = re.sub(r"\s+", " ", html_lib.unescape(s or "")).strip()
+    s = CTA_TAIL.sub("", s).strip()
     return s.strip(_ARROWS + " ")
 
 

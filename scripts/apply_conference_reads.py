@@ -82,8 +82,17 @@ def main() -> int:
             # Recorded so the next run does not re-spend the fetch, and so the
             # row says WHY it is still blank rather than looking unattempted.
             c["dates_note"] = (f"read {today}: could not read a next-edition "
-                               f"date - {str(r.get('directory_note') or '')[:160]}")
+                               f"date - {str(r.get('note') or r.get('directory_note') or '')[:160]}")
             what.append("unreadable, noted")
+        elif conf == "unannounced":
+            # THE SITE READ FINE AND SAYS NOTHING ABOUT A NEXT EDITION. The
+            # date on file stays (it is the last edition, labelled past), and
+            # the row says when somebody looked and what they saw, so the
+            # next pass starts from that rather than from nothing.
+            c["dates_note"] = (f"read {today}: no next edition announced on the "
+                               f"organisation's site - {str(r.get('note') or '')[:160]}")
+            c["dates_checked_on"] = today
+            what.append("unannounced, noted")
 
         if r.get("city") and not c.get("city"):
             c["city"] = r["city"]

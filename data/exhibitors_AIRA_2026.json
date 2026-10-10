@@ -29,7 +29,13 @@
    "tier": "Diamond",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Moderna",
@@ -37,7 +43,13 @@
    "tier": "Diamond",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vaccine manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "vaccine manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sanofi",
@@ -45,7 +57,13 @@
    "tier": "Diamond",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "STChealth",
@@ -66,8 +84,14 @@
    "website": "https://www.hln.com/",
    "tier": "Platinum",
    "sells": "Immunization Calculation Engine (ICE) open-source evaluation/forecasting software plus IIS consulting and vendor-specific support, per AIRA's Corporate Partner Product Directory",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (public health informatics; builds immunization registry software); skeptic unsure (Named consultancy; develops IIS software but sells consulting services.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Optimoz, Inc",
@@ -75,7 +99,13 @@
    "tier": "Platinum",
    "sells": "OpenHIT IIS immunization information system platform for public health agencies, per AIRA's Corporate Partner Product Directory",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: IT/cloud consulting and engineering services firm, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: IT/cloud consulting and engineering services firm, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pfizer",
@@ -83,7 +113,13 @@
    "tier": "Platinum",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Strategic Solutions Group",
@@ -103,7 +139,13 @@
    "tier": "Gold",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IBM",
@@ -118,16 +160,28 @@
    "website": "https://www.athenahealth.com/",
    "tier": "Silver",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EHR/health IT software; exhibits to immunization registries",
+   "read": {
+    "verdict": "vendor",
+    "why": "EHR/health IT software; exhibits to immunization registries",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Audacious Inquiry",
    "website": "https://ainq.com/",
    "tier": "Silver",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public health data-exchange software for states",
+   "read": {
+    "verdict": "vendor",
+    "why": "public health data-exchange software for states",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Dynavax",
@@ -135,23 +189,41 @@
    "tier": "Silver",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vaccine manufacturer (pharma)",
+   "read": {
+    "verdict": "supplier",
+    "why": "vaccine manufacturer (pharma)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Epic",
    "website": "https://www.epic.com/",
    "tier": "Silver",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Epic EHR software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Epic EHR software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IronBridge",
    "website": "http://www.ironbridgecorp.com/",
    "tier": "Silver",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (IT consulting/software for public health registries); skeptic unsure (Reader's own basis is IT consulting; may be a consultancy, not product.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "J. Michael Consulting",
@@ -159,7 +231,13 @@
    "tier": "Silver",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Named consultancy; immunization IS consulting services, no product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Named consultancy; immunization IS consulting services, no product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LexisNexis Risk Solutions",
@@ -185,5 +263,6 @@
   }
  ],
  "why": "42% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with",
- "quality": "good"
+ "quality": "read",
+ "quality_was": "good"
 }

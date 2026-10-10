@@ -244,6 +244,8 @@ def apply(write: bool) -> int:
             key = re.sub(r"[^a-z0-9]", "", (ex.get("name") or "").lower())
             if key in known:
                 continue                       # already ruled on; intake tags it
+            if (ex.get("read") or {}).get("verdict"):
+                continue                       # a reader judged it (read_floor.py)
             flag, why = score(ex["name"])
             if ex.get("is_govtech") != flag:
                 n += 1

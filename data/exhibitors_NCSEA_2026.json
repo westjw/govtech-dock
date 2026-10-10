@@ -12,18 +12,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Advocacy & Public Policy",
-   "website": "https://www.ncsea.org/advocacy-public-policy/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Awards",
-   "website": "https://www.ncsea.org/leadershipawards/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Case Management Portal",
    "website": "https://myalabama.gov/",
    "is_govtech": true,
@@ -32,48 +20,30 @@
   {
    "name": "CGI Transcend®",
    "website": "https://www.cgi.com/us/en-us/solutions/transcend",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Child Support Media Guide",
-   "website": "https://www.ncsea.org/resources-info/child-support-media-guide/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: CGI's child-support software product",
+   "read": {
+    "verdict": "vendor",
+    "why": "CGI's child-support software product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Conduent",
    "website": "https://www.conduent.com/solution/child-support-enforcement-services/"
   },
   {
-   "name": "Conferences",
-   "website": "https://www.ncsea.org/conferences/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "connect with us today!",
-   "website": "https://maximus.com/news-and-events/ncsea?utm_source=ncsea_corp_partner_page&amp;utm_medium=web&amp;utm_campaign=program_modernization&amp;utm_content=event_page",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Corporate",
-   "website": "https://www.ncsea.org/membership/corporate/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "County and Local IV-D Agency",
-   "website": "https://www.ncsea.org/membership/local-or-international-iv-d-agency/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Courtland Consulting",
    "website": "https://courtlandconsulting.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: IV&V, QA and project-management consultancy for state agencies; no software product",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: IV&V, QA and project-management consultancy for state agencies; no software product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CSG Government Solutions",
@@ -85,23 +55,17 @@
    "name": "CurrentMediaGroup.net",
    "website": "https://currentmediagroup.net/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: media group domain, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "media group domain, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Deloitte",
    "website": "https://www.deloitte.com/us/en/Industries/government-public/about/child-support-services.html"
-  },
-  {
-   "name": "Education & Programs",
-   "website": "https://www.ncsea.org/programs-events/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Facebook",
-   "website": "https://www.facebook.com/ncsea1/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Fast Enterprises (FAST)",
@@ -110,140 +74,8 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "For Child Support Professionals",
-   "website": "https://www.ncsea.org/resources-info/for-child-support-professional-parents/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "For Parents",
-   "website": "https://www.ncsea.org/resources-info/parents/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Governance",
-   "website": "https://www.ncsea.org/about/governance/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "GreenCourt",
    "website": "https://greencourt.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Hill Tips – Resources for Educating Federal & State Legislators",
-   "website": "https://www.ncsea.org/hill-tips/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Housing Assistance",
-   "website": "https://dfs.wyo.gov/assistance-programs/home-utilities-energy-assistance/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Individual Membership",
-   "website": "https://www.ncsea.org/membership/individual/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "International Child Support",
-   "website": "https://www.ncsea.org/resources-info/international-child-support/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "LaTrese Wallace",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "LinkedIn",
-   "website": "https://www.linkedin.com/company/national-child-support-enforcement-association/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Member Login",
-   "website": "https://online.ncsea.org/account/login.aspx",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA Apparel Shop",
-   "website": "https://business.landsend.com/store/ncsea/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "NCSEA Board Resolutions & Policy Statements",
-   "website": "https://www.ncsea.org/advocacy-public-policy/ncsea-board-resolutions-policy-statements/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA Connects",
-   "website": "https://www.ncsea.org/ncsea-connects/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA Corporate Partners",
-   "website": "https://www.ncsea.org/ncsea-corporate-partners-2/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA Job Board",
-   "website": "https://www.ncsea.org/resources-info/job-board/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA Legislative Updates",
-   "website": "https://www.ncsea.org/advocacy-public-policy/legislative-updates/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA News",
-   "website": "https://www.ncsea.org/ncsea-news/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA On Location Podcast",
-   "website": "https://www.ncsea.org/ncsea-on-location-podcast/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NCSEA U",
-   "website": "https://www.ncsea.org/ncsea-u/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Nonprofit",
-   "website": "https://www.ncsea.org/membership/nonprofit/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Podcast",
-   "website": "https://anchor.fm/ncseaonlocation",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Program Application",
-   "website": "https://childsupport.wyoming.gov/apply/start.php",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
   },
@@ -258,36 +90,6 @@
    "website": "http://protechsolutions.com"
   },
   {
-   "name": "Quick Facts for Legislators & Interested Parties",
-   "website": "https://www.ncsea.org/quickfacts/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Research & Resources",
-   "website": "https://www.ncsea.org/resources-info/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Research Topics",
-   "website": "https://www.ncsea.org/resources-info/research/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "SNAP (Supplemental Nutrition Assistance Program)",
-   "website": "https://dfs.wyo.gov/assistance-programs/food-assistance/supplemental-nutrition-assistance-program-snap/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "State, Tribal or International IV-D Agency",
-   "website": "https://www.ncsea.org/membership/state-tribal-or-international-iv-d-agency/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Stellarware Corporation",
    "website": "https://stellarware.com/"
   },
@@ -298,34 +100,28 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "TANF (Temporary Assistance for Needy Families)",
-   "website": "https://dfs.wyo.gov/assistance-programs/cash-assistance/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Twitter",
-   "website": "https://twitter.com/NCSEA1",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Veritas HHS",
    "website": "https://www.veritas-hhs.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: child-support program operations services (BPO)",
+   "read": {
+    "verdict": "supplier",
+    "why": "child-support program operations services (BPO)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "visit.kpmg.us/hhs",
    "website": "https://kpmg.com/us/en/industries/health-and-human-services.html?utm_source=vanity&amp;utm_medium=ref",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Volunteer Opportunities",
-   "website": "https://www.ncsea.org/volunteer/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vanity URL for KPMG, professional services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "vanity URL for KPMG, professional services firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Web-Talks",
@@ -334,42 +130,44 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "website",
-   "website": "https://smi-inc.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "www.csgdelivers.com",
    "website": "https://csgdelivers.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (CSG Government Solutions, government IT modernization consulting); skeptic not_a_company (bare domain string; CSG Government Solutions is a PMO/IV&V consultancy anyway)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "www.youngwilliams.com",
    "website": "https://eur02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.youngwilliams.com%2F&amp;data=02%7C01%7C%7C9f2f2dbdab9a4580275908d82e6a3a75%7Cac144e41800148f09e1c170716ed06b6%7C0%7C0%7C637310381068547577&amp;sdata=nQpe%2FCjzWo74iOCjX0CeDZCFu31zB%2F4NpnLDQKoD%2Fsc%3D&amp;reserved=0",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: YoungWilliams child-support services and legal operations",
+   "read": {
+    "verdict": "supplier",
+    "why": "YoungWilliams child-support services and legal operations",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "YoungWilliams",
    "website": "http://www.youngwilliams.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "— NCSEA Leadership Symposium",
-   "website": "https://www.ncsea.org/ncsea-leadership-symposium/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "— NCSEA Policy Forum",
-   "website": "https://www.ncsea.org/ncsea-policy-forum/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: child-support program operations and legal services",
+   "read": {
+    "verdict": "supplier",
+    "why": "child-support program operations and legal services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "22% carry a corporate marker, 6% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 42,
+ "quality_was": "menu"
 }

@@ -1,0 +1,110 @@
+[
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "athenahealth",
+  "verdict": "vendor",
+  "why": "EHR/health IT software; exhibits to immunization registries",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Audacious Inquiry",
+  "verdict": "vendor",
+  "why": "public health data-exchange software for states",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Dynavax",
+  "verdict": "supplier",
+  "why": "vaccine manufacturer (pharma)",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Epic",
+  "verdict": "vendor",
+  "why": "Epic EHR software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "GlaxoSmithKline",
+  "verdict": "supplier",
+  "why": "pharma",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "HLN Consulting",
+  "verdict": "unsure",
+  "why": "split: reader vendor (public health informatics; builds immunization registry software); skeptic unsure (Named consultancy; develops IIS software but sells consulting services.)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "IronBridge",
+  "verdict": "unsure",
+  "why": "split: reader vendor (IT consulting/software for public health registries); skeptic unsure (Reader's own basis is IT consulting; may be a consultancy, not product.)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "J. Michael Consulting",
+  "verdict": "supplier",
+  "why": "skeptic: Named consultancy; immunization IS consulting services, no product.",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Merck",
+  "verdict": "supplier",
+  "why": "pharma",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Moderna",
+  "verdict": "supplier",
+  "why": "vaccine manufacturer",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Optimoz, Inc",
+  "verdict": "supplier",
+  "why": "skeptic: IT/cloud consulting and engineering services firm, no product.",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Pfizer",
+  "verdict": "supplier",
+  "why": "pharma",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_AIRA_2026.json",
+  "name": "Sanofi",
+  "verdict": "supplier",
+  "why": "pharma",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ }
+]

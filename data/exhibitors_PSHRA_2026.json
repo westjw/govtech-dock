@@ -6,12 +6,6 @@
  "source_note": "Read from https://s2.goeshow.com/pshra/annual/2026/sponsor_list.cfm by scripts/sweep_exhibitors.py. 51 name(s), 2 with a website the page itself linked. Quality: good (20% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "2026 PSHRA Annual Conference",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "AbsenceSoft",
    "website": null,
    "is_govtech": false,
@@ -31,7 +25,13 @@
    "name": "Alcoholics Anonymous",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit fellowship exhibiting",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit fellowship exhibiting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Baker Tilly",
@@ -47,7 +47,13 @@
    "name": "Bolton Partners, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: actuarial/benefits consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "actuarial/benefits consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carahsoft",
@@ -57,13 +63,25 @@
    "name": "Carrot",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fertility and family-building benefits provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "fertility and family-building benefits provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Colonial Life",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cornerstone OnDemand",
@@ -76,32 +94,8 @@
    "website": null
   },
   {
-   "name": "Current Exhibitor & Sponsor List",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Dayforce",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibit Hall Map",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibit Space Benefits & Expo Hours",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor and Sponsor Prospectus",
-   "website": "https://s2.goeshow.com/pshra/annual/2026/pdf/PSHRA_Prospectus_2026_-_FINAL.pdf",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
   },
@@ -111,12 +105,6 @@
   },
   {
    "name": "Express Evaluations",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Frequently Asked Questions",
    "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -134,22 +122,28 @@
    "website": null
   },
   {
-   "name": "Hotel Accomodations",
-   "website": "https://pshra.org/pshra26hotel",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
    "name": "IMA Financial Group, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance brokerage/financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage/financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "International Foundation of Employee Benefit Plans",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: benefits education association",
+   "read": {
+    "verdict": "supplier",
+    "why": "benefits education association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Job Accommodation Network",
@@ -158,22 +152,28 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Justification Letters",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Kaiser Permanente",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health plan/provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "health plan/provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Medefy",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits navigation app platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits navigation app platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NEOGOV",
@@ -183,7 +183,13 @@
    "name": "Ochs, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public-sector benefits consulting/brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "public-sector benefits consulting/brokerage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Oracle America, Inc.",
@@ -195,19 +201,13 @@
    "name": "Plante Moran",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Print",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "PSHRA Sponsor/Exhibitor Testimonials",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting and consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting and consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pulpstream",
@@ -223,22 +223,16 @@
    "name": "Segal",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sign-Up Now!",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: actuarial/benefits consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "actuarial/benefits consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SimpliVerified",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "TestCompany1",
    "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
@@ -269,13 +263,25 @@
    "name": "Via Benefits",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: retiree health exchange brokerage (WTW)",
+   "read": {
+    "verdict": "supplier",
+    "why": "retiree health exchange brokerage (WTW)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WEX",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits accounts and payments fintech platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits accounts and payments fintech platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Workday",
@@ -283,6 +289,8 @@
   }
  ],
  "why": null,
- "quality": "good",
- "restaged": "51 -> 50 names after re-filtering on 2026-09-02"
+ "quality": "read",
+ "restaged": "51 -> 50 names after re-filtering on 2026-09-02",
+ "read_dropped": 12,
+ "quality_was": "good"
 }

@@ -32,8 +32,14 @@
    "website": null,
    "tier": "Booths #414, #416, Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: data/identity and income verification products for eligibility",
+   "read": {
+    "verdict": "vendor",
+    "why": "data/identity and income verification products for eligibility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nutanix",
@@ -68,40 +74,70 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: cloud platform; core public-sector technology vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "cloud platform; core public-sector technology vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Curam",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: social-program management software (Merative/IBM Curam)",
+   "read": {
+    "verdict": "vendor",
+    "why": "social-program management software (Merative/IBM Curam)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Databricks",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: data and analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "data and analytics platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Genesys",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: contact-center software",
+   "read": {
+    "verdict": "vendor",
+    "why": "contact-center software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Harmony Healthcare IT",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: health IT data archiving software",
+   "read": {
+    "verdict": "vendor",
+    "why": "health IT data archiving software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HealthTech Solutions",
@@ -130,16 +166,28 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT services and systems integration for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT services and systems integration for government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Innovacer Inc.",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare data platform (Innovaccer)",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare data platform (Innovaccer)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jama Software",
@@ -155,7 +203,13 @@
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: professional services and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional services and consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LexisNexis",
@@ -170,8 +224,14 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Progress Software public-sector arm",
+   "read": {
+    "verdict": "vendor",
+    "why": "Progress Software public-sector arm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rubrik",
@@ -194,8 +254,14 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ServiceNow",
@@ -224,8 +290,14 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: data/security analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "data/security analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SteadyIQ",
@@ -239,15 +311,27 @@
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health management and quality-improvement services organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "health management and quality-improvement services organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TransUnion",
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: data/identity verification and analytics products for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "data/identity verification and analytics products for government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Unite Us",
@@ -260,10 +344,17 @@
    "website": null,
    "tier": "Carahsoft partner, outside the Carahsoft Pavilion",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: identity-resolution SaaS for health and human services",
+   "read": {
+    "verdict": "vendor",
+    "why": "identity-resolution SaaS for health and human services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "15% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with - worth a look before running intake",
- "quality": "mixed"
+ "quality": "read",
+ "quality_was": "mixed"
 }

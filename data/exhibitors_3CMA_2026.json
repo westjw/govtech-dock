@@ -6,28 +6,16 @@
  "source_note": "Read from https://3cma.org/401/Conference-Sponsors by scripts/sweep_exhibitors.py. 59 name(s), 32 with a website the page itself linked. Quality: mixed (10% carry a corporate marker, 3% name a site section - worth a look before running intake). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "3CMA Officers Meet the Board",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Annual Conference Sept. 9 - 11, 2026",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Breakout Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Canva",
    "website": "http://www.canva.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: design SaaS; sells Canva for Government to communicators",
+   "read": {
+    "verdict": "vendor",
+    "why": "design SaaS; sells Canva for Government to communicators",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CASTUS",
@@ -46,72 +34,24 @@
   {
    "name": "CivAll by Social News Desk",
    "website": "http://civall.com/connect",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "civall.com/connect",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "civicplus.com",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: government social-media management platform (Social News Desk)",
+   "read": {
+    "verdict": "vendor",
+    "why": "government social-media management platform (Social News Desk)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CivicPlus®",
    "website": "https://www.civicplus.com/"
   },
   {
-   "name": "Conference Apparel",
-   "website": "https://3cmagear.itemorder.com/shop/category/679739/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Conference Hotel",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Conference Schedule",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Conference Sponsors",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Copyright Notices",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Digital Accessibility by WeCo",
    "website": "https://theweco.com/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Evening Networking Events",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Fees",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "FlashVote",
@@ -133,43 +73,13 @@
    "name": "Granite Sky Creative Group",
    "website": "https://gscreates.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Job Board Find Opportunities",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Keynote Speakers",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "linkedin.com/company/civallco",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Meetings & Conferences",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Member Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Membership Information Become a Member",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: creative/marketing agency, no technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "creative/marketing agency, no technology product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MindMixer",
@@ -179,19 +89,13 @@
    "name": "North Star Place Branding & Marketing",
    "website": "http://northstarideas.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "northstarideas.com",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Notify Me",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: place branding and marketing agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "place branding and marketing agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ohpynez",
@@ -214,20 +118,8 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "polimorphic.com",
-   "website": "https://www.polimorphic.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Powerfront",
    "website": "https://www.powerfront.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Pre-Conference Sessions",
-   "website": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
   },
@@ -239,13 +131,13 @@
    "name": "Q1Media",
    "website": "https://www.q1media.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Quick Links",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: digital advertising/media services firm, not a product",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital advertising/media services firm, not a product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Raftelis",
@@ -264,40 +156,28 @@
    "website": "https://www.revize.com/"
   },
   {
-   "name": "Savvy Awards",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Savvy Awards Be Recognized",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Site Map",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Siteimprove.a",
    "website": "https://www.siteimprove.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Siteimprove: web accessibility/analytics SaaS, big in government",
+   "read": {
+    "verdict": "vendor",
+    "why": "Siteimprove: web accessibility/analytics SaaS, big in government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SoSu.TV",
    "website": "https://www.sosu.tv/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sponsorship/Exhibitor Information",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: video/media production brand; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "video/media production brand; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tightrope Media Systems",
@@ -306,20 +186,14 @@
   {
    "name": "TTHM",
    "website": "https://tthm.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Webinars Online Training",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "yourveryfavorite.com",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: municipal meeting video streaming and web services firm",
+   "read": {
+    "verdict": "vendor",
+    "why": "municipal meeting video streaming and web services firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zencity",
@@ -327,5 +201,7 @@
   }
  ],
  "why": "10% carry a corporate marker, 3% name a site section, 24% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 29,
+ "quality_was": "menu"
 }

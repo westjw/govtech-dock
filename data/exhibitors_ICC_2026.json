@@ -1,72 +1,11 @@
 {
  "event_tag": "ICC 2026",
  "conference": "ICC Annual Conference",
- "found": true,
+ "found": false,
  "source_url": "https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=BJKYXLVZ",
  "source_note": "Read from https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=BJKYXLVZ by scripts/sweep_exhibitors.py. 11 name(s), 1 with a website the page itself linked. Quality: good (18% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [
-  {
-   "name": "Event Info",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "EXPO HALL HOURS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Gaylord Opryland Resort & Convention Center, Nashville, Tennessee",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Legend",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "October 18 – 21, 2026 (Sunday — Wednesday)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Print",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "RENT BOOTH NOW",
-   "website": "https://www.conferenceharvester.com/harvester2ex/login.asp?EventKey=BJKYXLVZ",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Show/Hide",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Zoom In",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Zoom Out",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  }
- ],
- "why": "10% carry a corporate marker, 0% name a site section, 50% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu",
- "restaged": "11 -> 10 names after re-filtering on 2026-09-02"
+ "exhibitors": [],
+ "why": "reader: every one of the 10 names was the site's own text, not an exhibitor; this page is not a floor",
+ "restaged": "11 -> 10 names after re-filtering on 2026-09-02",
+ "read_dropped": 10
 }

@@ -101,7 +101,8 @@
    "url": "https://www.natat.org/",
    "dates_source": null,
    "dates_confidence": "unreachable",
-   "dates_note": "The National Association of Towns and Townships' entire website is down. natat.org resolves and answers, but every path returns HTTP 500 with the WordPress fatal-error page: 'WordPress › Error / There has been a critical error on this website.' I tried /, /events/, /natat-membership/, /wp-json/wp/v2/pages and /sitemap_index.xml, and tried four different clients - the repo fetcher, plain requests with a desktop Chrome User-Agent, WebFetch, and a real browser - all four got the identical 500. Nothing about any NATaT event can be confirmed from its own source while the site is in this state. This is a site outage, not proof that no NATaT event exists; it is worth re-checking rather than writing off."
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - natat.org answers again (no 500s). Home, Member Resources and Federal Advocacy pages carry no events section; the newest event material is a 2023 Town Hall and ",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Executive / administration",
@@ -149,7 +150,9 @@
    "city": "Raleigh, NC",
    "next_edition": "2026",
    "dates_source": "https://www.ncsl.org/events/details/2026-nalit-professional-development-seminar",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - NCSL's 2026 seminar page (Sept 30-Oct 3, Raleigh) is the only NALIT event linked from the NALIT staff page; NCSL's events listing runs to January 2027 with no N",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Executive / administration",
@@ -161,11 +164,12 @@
    "fetchability": null,
    "event_tag": "Smart Cities Connect 2026",
    "url": "https://smartcitiesconnect.org/",
-   "dates": "September 22-24, 2026",
+   "dates": "October 6-8, 2027",
    "city": "National Harbor, MD",
    "next_edition": "2026",
-   "dates_source": "https://smartcitiesconnect.org/",
-   "dates_confidence": "high"
+   "dates_source": "https://fall.smartcitiesconnect.org/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -291,11 +295,12 @@
    "discovery_notes": "Sept 23-27, 2026, Salt Lake City. Page lists tiered sponsors (Gold/Silver/Bronze/Supporter, ~29 total) directly in HTML; sponsors effectively double as the exhibitor pool - no separate exhibitor directory published.",
    "event_tag": "IMLA 2026",
    "url": "https://imla.org/annual-conference/",
-   "dates": "September 23-27, 2026",
+   "dates": "October 14-18, 2027",
    "city": "Salt Lake City, UT",
    "next_edition": "2026",
    "dates_source": "https://imla.org/annual-conference/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -334,11 +339,12 @@
     "notes": "Source: https://3cma.org/401/Conference-Sponsors, fetched cleanly with WebFetch and re-verified against raw curl HTML (no 403, no pagination, single page, all tiers inline). Captured all 35 sponsors across 4 tiers: Grand (CivAll|Social News Desk), 15 event-specific tier sponsors, 14 Super Supporters, 5 Conference Supporters -- matches the ~35 estimate in discovery notes. As the notes said, 3CMA has no separate exhibitor app; sponsors ARE the exhibitor roster. File: /private/tmp/claude-501/-Users-wyethwest/bae54666-b02f-4b55-98ed-4e5a5f866107/scratchpad/dock-work/data/conference_intake/staged/3cma-2026.json. JUDGMENT RULE APPLIED: is_govtech=true only when the EXHIBITED offering is a purpose-built public-sector product; horizontal SaaS whose gov business is a slice of a general commercial product was marked false (Canva, Pantheon, Siteimprove) -- flag these three if the tracker prefers to count horizontal vendors with SLED sales teams. Other false calls: North Star, Granite Sky, Q1Media (marketing/ad agencies), SoSu.TV (video production services), Chandlerthinks and Raftelis (consultancies), CPC Program at TCU (university program), Your Very Favorite (activity-book publisher), Digital Accessibility by WeCo (audit/training services, explicitly 'no fees for software'). Borderline TRUE calls worth a second look: Tightrope Media Systems and CASTUS (gov video playout/streaming -- software-centric but shipped partly as appliances), Telephone Town Hall Meeting (tech plus managed serv"
    },
    "url": "https://3cma.org/64/Annual-Conference",
-   "dates": "September 9-11, 2026",
+   "dates": "September 8-10, 2027",
    "city": "Denver, CO",
    "next_edition": "2026",
    "dates_source": "https://3cma.org/64/Annual-Conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -390,7 +396,9 @@
    "city": "Chicago, IL",
    "next_edition": "2026 Fall Meeting",
    "dates_source": "https://www.nasbo.org/meetings-trainings/fall-meeting",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The Fall Meeting page still shows only the 2026 meeting (Sept 30-Oct 2, Chicago; registration closed). The meetings overview and home page list no dates; fall.e",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -402,11 +410,12 @@
    "fetchability": null,
    "event_tag": "NAST 2026",
    "url": "https://nast.org/2026annualconference/",
-   "dates": "September 27-30, 2026",
+   "dates": "September 19-22, 2027",
    "city": "Detroit, MI",
    "next_edition": "2026",
-   "dates_source": "https://nast.org/2026annualconference/",
-   "dates_confidence": "high"
+   "dates_source": "https://nast.org/conference-overview/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -488,8 +497,9 @@
    "url": "https://taxadmin.org/event/fta-annual-meeting/",
    "dates_source": null,
    "dates_confidence": "unannounced",
-   "dates_note": "2027 dates not yet announced. The 2026 FTA Annual Meeting was June 7-10, 2026 at the Loews Vanderbilt Hotel, Nashville, TN and is past. I read taxadmin.org's own events calendar three ways - the /events/ listing, the /calendar/ page, and the site's own WordPress events API (wp-json/tribe/events/v1/events) queried from 2025-01-01 through 2029-12-31. The API returns 24 events and the last one on the calendar is the November 1-4, 2026 WSATA Annual Meeting. There is no 2027 FTA Annual Meeting entry anywhere on the official calendar, and the annual-meeting page still shows the 2026 event. The site is live and healthy; FTA simply has not posted 2027 yet.",
-   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 19 company names visible"
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - taxadmin.org's own event page shows the 2026 Annual Meeting (June 7-10, Nashville) as passed; its calendar's Upcoming view finds 2 events, both late 2026, neith",
+   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 19 company names visible",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -530,7 +540,9 @@
    "city": "Phoenix, AZ",
    "next_edition": "2026",
    "dates_source": "https://www.naspo.org/events-and-webinars/naspo-annual/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The NASPO Annual page still shows the 2026 conference (Sept 27-30, Phoenix); its 'Future Events' tab links to /future-events/null/, which returns 404. The event",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -550,7 +562,9 @@
    "city": "Portland, OR",
    "next_edition": "2026",
    "dates_source": "https://www.pshra.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The Annual Conference page reads 'Thank you for a memorable PSHRA26!' (Sept 28-30, 2026, Portland) with no 2027 announcement; Upcoming Events redirects to membe",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -625,11 +639,12 @@
     "notes": "Sponsor-only directory (NASCIO has no exhibit hall), 8 tiers: Pinnacle 2, Networking Hub 2, WiFi 1, Headshot Lounge 1, Give Back 6, Gold 32, Silver 20, Bronze 12 = 76. No pagination. Discovery note said ~80; actual is 76. curl returned 403 even with the Chrome UA and full header set, so I used WebFetch plus live-DOM extraction in the browser. Guard against a summarizer bug: WebFetch reported bogus totals ('98 companies', 'Gold 33') while its own name list held 76 -- I enumerated headings and logo alts directly from the DOM to confirm exactly 8 tiers and 76 names, matching WebFetch name-for-name. Names come from logo alt text; the only links on the page are nascio.org member-directory profiles, not company sites, so the website field holds each company's real canonical domain rather than a NASCIO profile URL. Classification: excluded integrators/consultancies (Accenture, Deloitte, EY, McKinsey, Capgemini, NTT DATA, SAIC, GDIT, Peraton, Unisys, Slalom, TekStream, Egen, Nava), named resellers (Carahsoft, SHI, CDW-G, Presidio, WWT), analysts (Gartner, Forrester), accounting firms (BerryDunn, RSM), hardware makers (Dell, AMD, HPE, Yubico), telecoms (AT&T, Verizon, T-Mobile, Comcast, Spectrum), services (TTEC, Luna Data, Optum). Judgment calls: Palo Alto and Fortinet kept true as security-platform software despite selling appliances; Pluralsight true as a SaaS training platform."
    },
    "url": "https://www.nascio.org/events/",
-   "dates": "September 27 - 30, 2026",
+   "dates": "October 3-6, 2027",
    "city": "San Diego, CA",
    "next_edition": "2026",
-   "dates_source": "https://www.nascio.org/events/",
-   "dates_confidence": "high"
+   "dates_source": "https://www.nascio.org/events/conferences/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -656,7 +671,8 @@
    "city": "Williamsburg, VA",
    "next_edition": "2026",
    "dates_source": "https://www.gmis.org/page/2026homepage",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - gmis.org returned HTTP 403 to the crawler on the 2026 homepage, www.gmis.org/ and gmis.org/. Nothing could be read."
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -745,7 +761,8 @@
    "city": "Houston, TX",
    "next_edition": "2026",
    "dates_source": "https://www.apwa.org/events/pwx-conference/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - apwa.org returned HTTP 403 to the crawler on the PWX conference page, www.apwa.org/ and pwx.apwa.org/. Nothing could be read."
   },
   {
    "block": "Public works and infrastructure",
@@ -907,11 +924,12 @@
    "fetchability": null,
    "event_tag": "StormCon 2026",
    "url": "https://www.stormcon.com/",
-   "dates": "August 25-27, 2026",
+   "dates": "August 24-26, 2027",
    "city": "Minneapolis, MN",
    "next_edition": "2026",
-   "dates_source": "https://www.stormcon.com/",
-   "dates_confidence": "high"
+   "dates_source": "https://www.stormcon.com/2027",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Public works and infrastructure",
@@ -947,11 +965,12 @@
    "discovery_notes": "WEFTEC 2026, Sept 26-30, New Orleans. Fetched HTML is a MapYourShow app shell (only UI strings like 'Selected Exhibitor'), no company names server-side. WEF claims 950+ exhibitors; exhibitor waitlist already closed. A person should open weftec26.mapyourshow.com.",
    "event_tag": "WEFTEC 2026",
    "url": "https://www.weftec.org/",
-   "dates": "September 26-30, 2026",
+   "dates": "September 25-29, 2027",
    "city": "New Orleans, LA",
    "next_edition": "2026",
    "dates_source": "https://www.weftec.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Public works and infrastructure",
@@ -967,11 +986,12 @@
    "discovery_notes": "WASTECON was rebranded to RCon starting 2025. PDF verified by download: '2025 RCon Exhibitors as of 11.4.2025' with booth numbers (Great Lakes Fusion, AGRU America, Veolia, Machinex, RouteSmart, WSP USA, ...); SWANA says the sold-out 2025 hall had 211 exhibitors. Upcoming RCon 2026 (St. Louis, Sept 29-Oct 1) exposes only a JS floor plan at rcon2026.expofp.com (empty HTML shell) plus swana.org/events/rcon2026/exhibit-hall.",
    "event_tag": "SWANA WASTECON 2025",
    "url": "https://swana.org/events/rcon2026",
-   "dates": "September 29 - October 2, 2026",
+   "dates": "September 21-24, 2027",
    "city": "St. Louis, MO",
    "next_edition": "2026",
-   "dates_source": "https://swana.org/events/rcon2026",
-   "dates_confidence": "high"
+   "dates_source": "https://swana.org/events/rcon/rcon2026",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Public works and infrastructure",
@@ -1058,7 +1078,9 @@
    "city": "Kansas City, MO",
    "next_edition": "2026",
    "dates_source": "https://www.natoa.org/events/2026-annual-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The 2026 conference page, the events calendar and the homepage show only the 2026 Kansas City conference ('Save the Date for the 2026 NATOA Annual Conference');",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Transportation",
@@ -1075,7 +1097,8 @@
    "city": "Chicago, IL",
    "next_edition": "2026",
    "dates_source": "https://www.aptaexpo.com/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - apta.com returned HTTP 403 on the event page and root. APTA's expo site aptaexpo.com was readable but states only 'Interested in attending in 2029?' with no dat"
   },
   {
    "block": "Transportation",
@@ -1123,11 +1146,12 @@
    "fetchability": null,
    "event_tag": "ACI-NA 2026",
    "url": "https://airportscouncil.org/conference/2026-annual-conference-and-exhibition/",
-   "dates": "September 14-17, 2026",
+   "dates": "October 4-7, 2027",
    "city": "Philadelphia, PA",
    "next_edition": "2026",
-   "dates_source": "https://airportscouncil.org/conference/2026-annual-conference-and-exhibition/",
-   "dates_confidence": "high"
+   "dates_source": "https://airportscouncil.org/education/conferences/future-aci-na-events/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Transportation",
@@ -1139,11 +1163,12 @@
    "fetchability": null,
    "event_tag": "AAPA 2026",
    "url": "https://www.ports.org",
-   "dates": "September 27-29, 2026",
+   "dates": "September 27-29, 2027",
    "city": "New Orleans, LA",
    "next_edition": "2026",
-   "dates_source": "https://aapa.getregistered.net/2026-annual-convention",
-   "dates_confidence": "medium"
+   "dates_source": "https://www.ports.org/browsebytopic.aspx?ItemNumber=21533&navItemNumber=20810",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Transportation",
@@ -1163,11 +1188,12 @@
     "https://www.aamva.org/getmedia/ (exhibit prospectus PDF, linked from that page)"
    ],
    "url": "https://www.aamva.org/events-education/conferences-meetings/conferences/annual-international-conference-(aic)",
-   "dates": "September 29 - October 1, 2026",
+   "dates": "September 28-30, 2027",
    "city": "Providence, RI",
    "next_edition": "2026",
-   "dates_source": "https://www.aamva.org/events-education/conferences-meetings/conferences/annual-international-conference-(aic)",
-   "dates_confidence": "high"
+   "dates_source": "https://www.aamva.org/events-education/conferences-meetings/conferences/conferences/aics/2027-annual-international-conference",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Public safety",
@@ -1287,7 +1313,8 @@
    "city": "Orlando, FL",
    "next_edition": "2026",
    "dates_source": "https://www.hmpglobalevents.com/emsworldexpo",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - hmpglobalevents.com/emsworldexpo is a JavaScript app; the crawler receives only 'A required part of this site couldn't load' (209 chars). emsworldexpo.com redir"
   },
   {
    "block": "Public safety",
@@ -1485,7 +1512,8 @@
    "url": "https://www.astho.org/education/upcoming-events/",
    "dates_source": null,
    "dates_confidence": "unannounced",
-   "dates_note": "astho.org answers fine. I read three of ASTHO's own event listings - astho.org/education/upcoming-events/, account.astho.org/Events/Calendar-of-Events and my.astho.org/events/calendar - and every one lists only webinars plus an October 6-7, 2026 Leading Change workshop. No annual meeting or conference edition is posted with dates. my.astho.org/asthoannualmeeting/home returns ASTHO's own “Page Not Found”. I will not name dates ASTHO has not posted."
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - Read astho.org upcoming-events, education hub, past-events and account.astho.org calendar: only webinars through Dec 10, 2026. The Annual Meeting and Policy Sum",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Health and human services",
@@ -1507,10 +1535,11 @@
    "url": "https://mesconference.org/",
    "dates_source": "ruled 2026-09-03 by owner",
    "dates_confidence": "ended",
-   "dates_note": "2027 dates not yet announced. MESC 2026 ran August 17-20, 2026 at the Oregon Convention Center, Portland, OR and finished five days ago. I queried the conference site's own WordPress events API (mesconference.org/wp-json/tribe/events/v1/events) for 2026-01-01 through 2029-12-31: 26 events come back and the last is 'Medicaid Enterprise Systems Conference - 2026', Aug 17-20, Oregon Convention Center. Nothing for 2027 exists on the official calendar, there is no future-conferences page, and the homepage is still running a 'MESC 2026 Starts In...' countdown for a conference that already ended, alongside an announcement that 2026 registration has closed. The site is live; NESCSO has just not posted 2027.",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - mesconference.org home shows 'MESC 2027 Starts In...' countdown and 'Visit Pittsburgh' but no dates in text; registration/hotel pages say MESC 2027 information ",
    "dates": "August 17-20, 2026",
    "city": "Portland, OR",
-   "note": "dates supplied by the owner 2026-08-25. The research pass recorded MESC as unannounced because the site had not posted them; the owner had them. PAST as of that date."
+   "note": "dates supplied by the owner 2026-08-25. The research pass recorded MESC as unannounced because the site had not posted them; the owner had them. PAST as of that date.",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Health and human services",
@@ -1576,9 +1605,12 @@
     "notes": "IMPORTANT SCOPE CAVEAT: this is NOT a symposium exhibitor floor list. I re-confirmed the discovery note -- WebFetch of https://www.ncsea.org/ncsea-leadership-symposium/ returned no sponsor, exhibitor, or vendor-directory section for the Aug 10-13, 2026 Galt House event (it carries only event/hotel details, past-symposium history, and a state agency directory), and a web search surfaced no exhibitor list either. So the file records NCSEA's year-round Corporate Partners roster from https://www.ncsea.org/ncsea-corporate-partners-2/, exactly as discovery intended. complete=true refers to that page: I captured all 15 partners across all 3 tiers (Platinum 4, Gold 5, Silver 6 -- verified against raw curl HTML; no Bronze tier, no pagination, no A-Z split, nothing truncated). If the tracker needs the actual 2026 symposium exhibit-hall roster, it does not exist on the public site and would need a request to NCSEA. File: /private/tmp/claude-501/-Users-wyethwest/bae54666-b02f-4b55-98ed-4e5a5f866107/scratchpad/dock-work/data/conference_intake/staged/ncsea-2026.json. Only 3 of 15 are govtech (Fast Enterprises/FastCSE, GreenCourt/GovLink, Stellarware/CSLN and new-hire reporting) -- this roster is dominated by integrators, consultancies, and BPO operators, which is normal for the child support IV-D market. Borderline FALSE calls the parent may want to revisit: Conduent (sells child support enforcement SYSTEMS alongside SDU operations, ExpertPay, and a card program -- marked false because the"
    },
    "url": "https://www.ncsea.org/ncsea-leadership-symposium/",
-   "dates_source": null,
-   "dates_confidence": "unannounced",
-   "dates_note": "2027 dates not yet announced. The 2026 Leadership Symposium ran August 10-13, 2026 at the Galt House Hotel, Louisville, KY and is past. The official symposium page lists editions back to 2016 and the newest entry on it is 2026 - there is no 2027 save-the-date. I also checked ncsea.org/conferences/ and the ncsea.org homepage; neither carries a 2027 symposium date. (ncsea.org/events/ returns HTTP 404 - that path does not exist on this site, it is not an outage.) The site is live; NCSEA has not posted 2027. For reference, the symposium has fallen in the first two weeks of August every year since 2016, and NCSEA's other conference, the Policy Forum, is described on the same site as traditionally late January to mid-February in Washington DC."
+   "dates_source": "https://www.ncsea.org/ncsea-leadership-symposium/",
+   "dates_confidence": "high",
+   "dates_note": "2027 dates not yet announced. The 2026 Leadership Symposium ran August 10-13, 2026 at the Galt House Hotel, Louisville, KY and is past. The official symposium page lists editions back to 2016 and the newest entry on it is 2026 - there is no 2027 save-the-date. I also checked ncsea.org/conferences/ and the ncsea.org homepage; neither carries a 2027 symposium date. (ncsea.org/events/ returns HTTP 404 - that path does not exist on this site, it is not an outage.) The site is live; NCSEA has not posted 2027. For reference, the symposium has fallen in the first two weeks of August every year since 2016, and NCSEA's other conference, the Policy Forum, is described on the same site as traditionally late January to mid-February in Washington DC.",
+   "dates": "August 16-19, 2027",
+   "dates_checked_on": "2026-10-10",
+   "city": "Seattle, WA"
   },
   {
    "block": "Health and human services",
@@ -1658,11 +1690,12 @@
    "discovery_notes": "Flagship event is the NASWA Summit (2026 edition Sept 16-17, Milwaukee). The 2026 Summit page shows only presenting sponsor FAST Enterprises so far; the 2025 Summit page lists full tiered sponsors (Diamond/Platinum/Gold/Silver/Bronze). 2026 sponsorship prospectus PDF: https://www.naswa.org/system/files/2025-12/2026conferencesponsorships.pdf",
    "event_tag": "NASWA 2025",
    "url": "https://www.naswa.org/conferences/save-the-date-naswa-conferences",
-   "dates": "September 16-17, 2026",
+   "dates": "September 15-16, 2027",
    "city": "Milwaukee, WI",
    "next_edition": "2026",
    "dates_source": "https://www.naswa.org/conferences/save-the-date-naswa-conferences",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Health and human services",
@@ -1718,7 +1751,7 @@
    "url": "https://www.aace1.org/page/2026AACEconference",
    "dates_source": "https://www.aace1.org/events/EventDetails.aspx?id=2046604&group=",
    "dates_confidence": "high",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.aace1.org/events/EventDetails.aspx?id=2046604&group=",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - aace1.org answered HTTP 403 to the identified crawler on both the 2026 conference page and the home page; nothing could be read.",
    "dates": "September 28 - October 1, 2026",
    "city": "Orlando, FL"
   },
@@ -1786,11 +1819,12 @@
    "fetchability": null,
    "event_tag": "NCSHA 2026",
    "url": "https://www.ncsha.org/events/",
-   "dates": "October 3-6, 2026",
+   "dates": "September 18-21, 2027",
    "city": "Detroit, MI",
    "next_edition": "2026",
-   "dates_source": "https://www.ncsha.org/events/",
-   "dates_confidence": "high"
+   "dates_source": "https://www.ncsha.org/events/future-events/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Community development",
@@ -1818,11 +1852,12 @@
    "fetchability": null,
    "event_tag": "NRPA 2026",
    "url": "https://conference.nrpa.org/",
-   "dates": "September 29 - October 1, 2026",
+   "dates": "September 28-30, 2027",
    "city": "Philadelphia, PA",
    "next_edition": "2026",
-   "dates_source": "https://conference.nrpa.org/",
-   "dates_confidence": "high"
+   "dates_source": "https://conference.nrpa.org/about/",
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -2034,11 +2069,12 @@
    "discovery_notes": "NAPT ACTS 2026 (49th Annual, Louisville KY, Oct 3-7 2026). napt.org/conference has no exhibitor list, only Cvent registration (also a JS shell). Map Dynamics hosts the trade show floorplan/exhibitor viewer (napt2026 instance confirmed live with Floorplan + Exhibitors tabs), but all names render client-side; the napt2025 (Grand Rapids) instance at homebase.map-dynamics.com/napt2025/floorplan is equally JS-walled. A person opening the URL should see the exhibitor tab.",
    "event_tag": "NAPT Summit 2026",
    "url": "https://www.napt.org/conference",
-   "dates": "October 3-7, 2026",
+   "dates": "October 7-10, 2027",
    "city": "Louisville, KY",
    "next_edition": "2026",
    "dates_source": "https://www.napt.org/conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "K-12 education",
@@ -2070,11 +2106,13 @@
    "fetchability": null,
    "event_tag": "NASRO 2026",
    "url": "https://www.nasro.org/conference/future-nasro-conferences/",
-   "dates_source": "https://web.archive.org/web/20260702182047if_/https://www.nasro.org/clientuploads/directory/homepage_slideshow/NASHVILLE.png",
-   "dates_confidence": "unreachable",
+   "dates_source": "https://nasro.org/2027-national-conference/",
+   "dates_confidence": "high",
    "dates_note": "read 2026-09-11: could not read a next-edition date - DATES ARE UNREADABLE, NOT UNANNOUNCED. NASRO's 36th annual National School Safety Conference ran June 28 - July 2, 2026 at the Peppermill Casino and Resort, Ren",
    "city": "Nashville, TN",
-   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 8 company names visible"
+   "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 8 company names visible",
+   "dates": "July 4-9, 2027",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "K-12 education",
@@ -2117,7 +2155,8 @@
    "city": "Denver, CO",
    "next_edition": "2026",
    "dates_source": "https://events.educause.edu/annual-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "dates_note": "read 2026-10-10: could not read a next-edition date - HTTP 403 to the identified crawler on events.educause.edu/annual-conference, events.educause.edu/ and www.educause.edu/; nothing could be read."
   },
   {
    "block": "Higher education",
@@ -2200,9 +2239,9 @@
    "url": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/",
    "dates_source": "https://iaclea.org/event/2026-iaclea-annual-conference-exposition/",
    "dates_confidence": "high",
-   "dates_note": "iaclea.org is live and serves fine, but nothing on it announces a 2027 Annual Conference & Exposition. The 2026 edition is past: 'IACLEA's premier event for campus law enforcement and public safety is headed to Orlando, FL - June 25-28, 2026' at the Caribe Royale Orlando. The only conference link on the homepage goes to the Cvent page for that same 2026 event (web.cvent.com/event/4015ec2d-7612-418e-b17c-fb5c8f134d06/summary, 'Thursday, June 25 - Sunday, June 28'). Checked the homepage, /events/list/ pages 1 and 2, /annual-conference (404), and the WordPress sitemap - iaclea.org/tribe_events-sitemap.xml lists a 2025 and a 2026 annual conference event and no 2027 one. So: site live, next edition simply not posted yet.",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - iaclea.org's 2026 event page says 'This event has passed'; the events calendar lists only Oct-Nov 2026 trainings; the Training hub still states the 2026 Orlando",
    "dates": "June 25-28, 2026",
-   "dates_checked_on": "2026-09-11",
+   "dates_checked_on": "2026-10-10",
    "city": "Orlando, FL",
    "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 99 company names visible"
   },
@@ -2250,13 +2289,14 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "NAMPI 2026",
-   "dates": "August 23-26, 2026",
+   "dates": "August 22-25, 2027",
    "city": "Portland, OR",
-   "dates_confidence": "owner",
+   "dates_confidence": "high",
    "dates_source": "https://nampi2026.vfairs.com/",
    "note": "added 2026-08-25 at the owner's request. Run by National Association for Medicaid Program Integrity. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
    "url": "https://nampi.net/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://nampi2026.vfairs.com/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://nampi2026.vfairs.com/",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -2301,13 +2341,14 @@
    "exhibitor_url": null,
    "fetchability": null,
    "event_tag": "Healthcare IT Connect 2026",
-   "dates": "February 23-26, 2026",
+   "dates": "March 29 - April 1, 2027",
    "city": "New Orleans, LA",
-   "dates_confidence": "owner",
-   "dates_source": "https://healthcareitconnect.com/",
+   "dates_confidence": "high",
+   "dates_source": "https://app.healthcareitconnect.com/event/2027-state-hit-connect-summit",
    "note": "added 2026-08-25 at the owner's request. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
    "url": "https://healthcareitconnect.com/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://healthcareitconnect.com/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://healthcareitconnect.com/",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Health and human services",
@@ -2394,9 +2435,9 @@
    "fetchability": "readable",
    "event_tag": "New York State Conference of Mayors and Muni 2027",
    "url": "http://www.nycom.org",
-   "dates": "September 14-18, 2026",
+   "dates": "September 13-17, 2027",
    "city": "Saratoga Springs, NY",
-   "dates_source": "https://www.nycom.org/training/exhibiting-sponsorship",
+   "dates_source": "https://www.nycom.org/training/conferences-training/fall-training-school",
    "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'New York State Conference of Mayors and Municipal Officials' by https://www.nlc.org/membership/state-municipal-leagues/. Directory: 34 names, good (21% carry a corporate marker, 6% name a site section). Event name read from the page as 'Vendor Opportunities - New York Conference of Mayors'.",
    "state_event": {
@@ -2404,7 +2445,7 @@
     "geo": "New York",
     "parent_national": "NLC"
    },
-   "dates_checked_on": "2026-09-11"
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Executive / administration",
@@ -2425,7 +2466,9 @@
     "org_code": "MUNI_MD",
     "geo": "Maryland",
     "parent_national": "NLC"
-   }
+   },
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - Summer Conference (MMLCon) page has no dates; exhibits.mdmunicipal.org/2026 states only June 14-17, 2026 (past); /2027 is an empty placeholder; the June 2027 ca",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Executive / administration",
@@ -2447,7 +2490,8 @@
     "geo": "Kentucky",
     "parent_national": "NLC"
    },
-   "dates_checked_on": "2026-09-11"
+   "dates_checked_on": "2026-10-10",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - KLC Conference & Expo page shows Sept 22-25, 2026 Covington with 'This event has ended'; Upcoming Events lists only trainings through Nov 10, 2026; Partner with"
   },
   {
    "block": "Executive / administration",
@@ -2468,7 +2512,9 @@
     "org_code": "MUNI_CT",
     "geo": "Connecticut",
     "parent_national": "NLC"
-   }
+   },
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The 2026 CT Emergency Management Symposium was Thursday, April 23, 2026 (registration page), so it is past; the site nav and Events pages list only 2026 events,",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Executive / administration",
@@ -2490,9 +2536,10 @@
     "geo": "Vermont",
     "parent_national": "NLC"
    },
-   "dates_checked_on": "2026-09-11",
+   "dates_checked_on": "2026-10-10",
    "exhibitor_url_candidate": "https://www.vlct.org/2026-27-business-alliance-members",
-   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 13 company names here. The url on file is http://www.vlct.org/vlcts-business-alliance-program - rule which."
+   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 13 company names here. The url on file is http://www.vlct.org/vlcts-business-alliance-program - rule which.",
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - Annual Events & Training Schedule lists Town Fair 10/7/2026 DoubleTree South Burlington (past) and runs only through December 2026; the town-fair-2026 page ment"
   },
   {
    "block": "Executive / administration",
@@ -2552,16 +2599,17 @@
    "fetchability": "readable",
    "event_tag": "Iowa State Association of Counties 2026",
    "url": "http://www.iowacounties.org/",
-   "dates": null,
+   "dates": "August 25-27, 2027",
    "city": null,
-   "dates_source": "https://www.iowacounties.org/member-resources/vendor-directory/",
-   "dates_confidence": "unannounced",
+   "dates_source": "https://www.iowacounties.org/meetings/all-annual-events/",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Iowa State Association of Counties' by https://www.naco.org/page/state-associations-affiliates-and-affinity-organizations. Directory: 100 names, good (25% carry a corporate marker, 3% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "CNTY_IA",
     "geo": "Iowa",
     "parent_national": "NACO"
-   }
+   },
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -2606,7 +2654,9 @@
     "org_code": "SHF_NC",
     "geo": "North Carolina",
     "parent_national": "NSA"
-   }
+   },
+   "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - NCSA site names three sponsored events (Spring Meeting, Annual Business Conference, Fall Meeting); news shows the 2026 Annual Business Conference already held b",
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "Public safety",
@@ -2618,16 +2668,17 @@
    "fetchability": "readable",
    "event_tag": "Michigan Sheriffs Association 2026",
    "url": "https://www.misheriff.org/",
-   "dates": null,
+   "dates": "October 18-20, 2026",
    "city": null,
-   "dates_source": "https://www.misheriff.org/vendors/",
-   "dates_confidence": "unannounced",
+   "dates_source": "https://www.misheriff.org/training/",
+   "dates_confidence": "high",
    "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-09-02. Organisation name confirmed as 'Michigan Sheriffs’ Association' by https://www.misheriff.org/. Directory: 117 names, good (36% carry a corporate marker, 2% name a site section). Event name not stated on the page; the organisation's name stands in.",
    "state_event": {
     "org_code": "SHF_MI",
     "geo": "Michigan",
     "parent_national": "NSA"
-   }
+   },
+   "dates_checked_on": "2026-10-10"
   },
   {
    "block": "K-12 education",

@@ -2,7 +2,7 @@
  "event_tag": null,
  "conference": "govit research list",
  "found": true,
- "quality": "researched",
+ "quality": "read",
  "source_url": null,
  "source_note": "35 names pasted by the owner on 2026-09-11 with NO event named. The run guessed a state/local gov-IT or GMIS-style exhibitor list and that guess is not evidence, so no conference tag is claimed here. Staged as a plain research list.",
  "exhibitors": [
@@ -35,12 +35,18 @@
    "website": "https://www.brightspeed.com/business-solutions/",
    "description": "Fiber internet, dedicated internet access, ethernet and voice for businesses, with a public-sector line for government, K-12 and higher ed",
    "is_govtech": false,
-   "is_govtech_why": "A fiber and broadband CARRIER's government-facing business unit, not a govtech product company - the same shelf the project already gives AT&T Mobility, Spectrum Business and T-Mobile for Government.",
+   "is_govtech_why": "reader: broadband carrier business unit; connectivity service, not a product",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "broadband carrier business unit; connectivity service, not a product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Check Point Software Technologies Ltd.",
@@ -59,12 +65,18 @@
    "website": "https://www.controlaltprotect.com/",
    "description": "Managed cybersecurity for small and mid-sized businesses: threat protection, detection, incident response and breach recovery",
    "is_govtech": false,
-   "is_govtech_why": "A managed security SERVICES provider, not a product company, and the row shows no live public-sector business to support a vendor call.",
+   "is_govtech_why": "reader: managed security services provider; no product",
    "vertical": null,
    "sector": "K-12 Schools",
    "confidence": "low",
    "verifier": "wrong_placement",
-   "verifier_why": "The outcome is right and I could not refute it. \"Managed security services\" is a services practice, not a govtech product — the same bucket the project already uses for Allied Universal, DLT and the consultancies — so vendor is off the table, and it is a private company rather than an agency, association or brand, so not_a_company does not apply either. Supplier is the correct filing.\n\nThe sector is where the placement fails. General Gov has zero support anywhere in this row: buyer is \"Businesses\", focus is \"Private primary\", sells is \"unclear\", and nothing names a city, county, state or general-government buyer. The single public-sector thread in the entire row points the other way — a 2019 pitch to Houston County Schools (AL). Thin as that is, it is the only evidence of a public buyer type, and a supplier filing should follow the evidence rather than default to General Gov as a catch-all. That is exactly failure mode (b): parking a company in a sector its actual business shows no contact with. File it under K-12 Schools / Suppliers & Services.\n\nTwo cautions for the parent, both from the row itself. First, confidence here is low on any sector: one postponed pitch from seven years ago is not a public-sector practice, and a reviewer who preferred to treat the sector as genuinely undetermined would have a fair case — my correction is the best-supported option, not a strong one. Second, the flags say the About and Careers pages now 404. That is a signal the company may no longer be a live employer with a sales-hiring pipeline, so it is a poor promotion candidate regardless of sector, and nothing in this row supports wiring a job board for it."
+   "verifier_why": "The outcome is right and I could not refute it. \"Managed security services\" is a services practice, not a govtech product — the same bucket the project already uses for Allied Universal, DLT and the consultancies — so vendor is off the table, and it is a private company rather than an agency, association or brand, so not_a_company does not apply either. Supplier is the correct filing.\n\nThe sector is where the placement fails. General Gov has zero support anywhere in this row: buyer is \"Businesses\", focus is \"Private primary\", sells is \"unclear\", and nothing names a city, county, state or general-government buyer. The single public-sector thread in the entire row points the other way — a 2019 pitch to Houston County Schools (AL). Thin as that is, it is the only evidence of a public buyer type, and a supplier filing should follow the evidence rather than default to General Gov as a catch-all. That is exactly failure mode (b): parking a company in a sector its actual business shows no contact with. File it under K-12 Schools / Suppliers & Services.\n\nTwo cautions for the parent, both from the row itself. First, confidence here is low on any sector: one postponed pitch from seven years ago is not a public-sector practice, and a reviewer who preferred to treat the sector as genuinely undetermined would have a fair case — my correction is the best-supported option, not a strong one. Second, the flags say the About and Careers pages now 404. That is a signal the company may no longer be a live employer with a sales-hiring pipeline, so it is a poor promotion candidate regardless of sector, and nothing in this row supports wiring a job board for it.",
+   "read": {
+    "verdict": "supplier",
+    "why": "managed security services provider; no product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CyberFOX",
@@ -95,12 +107,18 @@
    "website": "https://globalsolgroup.com/",
    "description": "IT services contractor for federal, state, and local agencies: cybersecurity, Laserfiche content management, digital transformation, and IT staffing",
    "is_govtech": false,
-   "is_govtech_why": "IT services and staffing for agencies rather than a product or platform - the project's standing consultancy-and-staffing call, alongside Acro Service Corporation and the other staffing firms already filed.",
+   "is_govtech_why": "reader: IT services and staffing; consultancy",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "IT services and staffing; consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovAI",
@@ -131,24 +149,36 @@
    "website": "https://www.howardcomputers.com/",
    "description": "Maker and reseller of desktops, notebooks, servers, AV and network gear, with installation, for schools, government, business and healthcare",
    "is_govtech": false,
-   "is_govtech_why": "A hardware reseller and integrator, which is the DLT precedent exactly - it belongs on the same shelf as CDW Government, SHI, Insight Public Sector and Connection Public Sector Solutions, all already filed as suppliers.",
+   "is_govtech_why": "reader: hardware reseller and integrator; distributor",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "hardware reseller and integrator; distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ITML Institute (IT Management and Leadership Institute)",
    "website": "https://itmlinstitute.org/",
    "description": "IT management and leadership training and certifications (ITMLP, ITMLE) for IT managers, including government IT departments",
    "is_govtech": false,
-   "is_govtech_why": "A training and certification provider for public-sector IT staff - a course provider, which the project files as a supplier rather than a govtech vendor.",
+   "is_govtech_why": "reader: training and certification provider",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "training and certification provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Madison AI",
@@ -179,24 +209,36 @@
    "website": "https://www.mrainternational.com/",
    "description": "HP, HPE and Samsung hardware, repair, managed print, security and IT services for K-12, higher ed, state and local government",
    "is_govtech": false,
-   "is_govtech_why": "IT consulting and systems integration for government - a consultancy and integrator, not a govtech product company, so it files rather than boards.",
+   "is_govtech_why": "reader: IT consulting and systems integration; no product",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "IT consulting and systems integration; no product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nfina Technologies, Inc.",
    "website": "https://nfina.com/",
    "description": "Servers, storage, hyperconverged systems, hybrid cloud, and backup/DR built in Alabama for business, government, and education IT",
    "is_govtech": false,
-   "is_govtech_why": "It manufactures general-purpose servers, storage and hyperconverged hardware that happens to be sold into gov/edu/healthcare, which is equipment manufacturing rather than a govtech product or platform.",
+   "is_govtech_why": "reader: general-purpose server and storage hardware maker",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "general-purpose server and storage hardware maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NinjaOne",
@@ -239,12 +281,18 @@
    "website": "https://www.otmcyber.com/",
    "description": "Managed cybersecurity and 24/7 U.S. SOC for 9-1-1 centers, public safety, government, and critical infrastructure; readiness training and testing",
    "is_govtech": false,
-   "is_govtech_why": "Managed cybersecurity and vCISO work is a delivered service engagement, not a govtech product or platform, which puts it with the consultancies the project already files as suppliers.",
+   "is_govtech_why": "reader: managed cybersecurity and vCISO services; no product",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "managed cybersecurity and vCISO services; no product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Polimorphic",
@@ -311,12 +359,18 @@
    "website": "https://www.starnetsolutions.com/",
    "description": "IT infrastructure, managed IT, cybersecurity, cloud, and backup services for NJ businesses, government entities, and E-Rate schools",
    "is_govtech": false,
-   "is_govtech_why": "It delivers IT infrastructure and services to public sector clients rather than selling its own govtech product, which is the integrator/reseller pattern the project files as a supplier.",
+   "is_govtech_why": "reader: IT infrastructure services and integration",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "IT infrastructure services and integration",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SysAid",
@@ -335,24 +389,36 @@
    "website": "https://www.t-mobile.com/business/government",
    "description": "5G wireless, devices, Government Internet, IoT fleet tracking, and T-Priority public-safety network slicing for state and local agencies",
    "is_govtech": false,
-   "is_govtech_why": "A national wireless carrier selling connectivity and devices through a government sales line is a service provider to the public sector, not a govtech product company.",
+   "is_govtech_why": "reader: wireless carrier; connectivity service, not a govtech product",
    "vertical": null,
    "sector": "Utilities & Energy",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "wireless carrier; connectivity service, not a govtech product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ThinkGard",
    "website": "https://www.thinkgard.com/",
    "description": "Cybersecurity-as-a-service and backup/disaster recovery for small to mid-sized municipalities, counties, and businesses",
    "is_govtech": false,
-   "is_govtech_why": "Backup, disaster recovery and business continuity delivered as a managed service is a service engagement rather than a govtech product, so it files as a supplier despite its clean local government and K-12 focus.",
+   "is_govtech_why": "reader: backup/DR delivered as managed service; close call",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "backup/DR delivered as managed service; close call",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ThreatLocker",
@@ -371,24 +437,36 @@
    "website": "https://www.toptenusa.com",
    "description": "Third-party hardware maintenance for data center servers, storage, and network gear, plus parts, upgrades, and EOSL support",
    "is_govtech": false,
-   "is_govtech_why": "Third-party hardware maintenance for data centers is a services contractor whose market is data-center operators, not a govtech product company - the same call the project made on DLT and the other resellers and service providers.",
+   "is_govtech_why": "reader: third-party hardware maintenance services",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "third-party hardware maintenance services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TraceSecurity",
    "website": "https://www.tracesecurity.com/",
    "description": "Cybersecurity compliance services and software for banks and credit unions: pen testing, IT audits, risk assessments, and vCISO",
    "is_govtech": false,
-   "is_govtech_why": "A risk-assessment, audit and compliance house whose actual market is banks and credit unions, with government appearing only as an industry tile - that is the consultancy/compliance-services pattern the project files as a supplier, not a govtech product a SLED salesperson sells.",
+   "is_govtech_why": "reader: compliance/audit services mainly for banks; government incidental",
    "vertical": null,
    "sector": "General Gov",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "compliance/audit services mainly for banks; government incidental",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tricentis",
@@ -426,5 +504,6 @@
    "verifier": "agree",
    "verifier_why": "I tried to break this and could not. (a) Supplier test: the project's supplier precedent covers physical-goods makers (Kurita), distributors/resellers (DLT), field labor (Allied Universal), and consultancies/course providers. Wasabi is none of those - it sells its own hot cloud object storage as a metered product on its own price sheet, not someone else's hardware and not a body of consultants. The row supports a product/platform company: \"Low-cost cloud object storage\", $70M at a $1.8B valuation, acquired Curio AI, 11 openings on its own Greenhouse. The only genuine supplier-ish argument is that storage is horizontal plumbing rather than a govtech application, but the board has already settled that in the other direction with Nutanix, Box and AWS. Horizontal infrastructure with a named public vertical is an accepted vendor profile here. And SLED is explicit: \"education\" in the buyer line is K-12/higher-ed, so this is not a federal-only or defence-only disqualification. (b) Placement test: General Gov > IT & AI Platforms is right. Object storage is not Finance & ERP, not Citizen Services, not Permitting; it is generic IT infrastructure, which is exactly what that category exists for. The one alternative worth naming is Public Safety, since cheap object storage is commonly used for video/body-cam retention, but the row names no surveillance product, so picking Public Safety on that basis would be inventing a fact. General Gov is correct on the evidence given. Board-wiring note (outside the verdict): parent is null and the Greenhouse board carries 11 roles, so this is neither a parent's-board false positive (Rave/Motorola, RoadBotics/Michelin) nor a thousand-req general-purpose board that would swamp the 6,405-posting index - wiring it is safe. The flags entry (founding year 2015 vs 2017) is a metadata cleanup item with no bearing on outcome, sector or category."
   }
- ]
+ ],
+ "quality_was": "researched"
 }

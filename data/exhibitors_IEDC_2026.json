@@ -6,18 +6,6 @@
  "source_note": "Read from https://neworleans.iedconline.org/exhibitors by scripts/sweep_exhibitors.py. 19 name(s), 17 with a website the page itself linked. Quality: good (26% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "Attendee Toolkit",
-   "website": "https://neworleans.iedconline.org/attendee-toolkit",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Centennial Supporters",
-   "website": "https://neworleans.iedconline.org/centennial-sponsors",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "GIS WebTech",
    "website": "https://www.linkedin.com/company/gis-webtech/"
   },
@@ -29,25 +17,13 @@
    "name": "growamerica.org",
    "website": "https://growamerica.org/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Host Committee",
-   "website": "https://neworleans.iedconline.org/host-committee",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Hotel & Travel",
-   "website": "https://neworleans.iedconline.org/hotel-and-travel",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Justification Letter",
-   "website": "https://neworleans.iedconline.org/justification-letter",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: domain of Grow America, community-development finance nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "domain of Grow America, community-development finance nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Localintel",
@@ -56,14 +32,14 @@
   {
    "name": "localintel.com",
    "website": "https://www.localintel.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Partners",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (domain of Localintel, econ-dev data and mapping SaaS); skeptic not_a_company (bare domain string per rule; real vendor Localintel behind it, rename rather than delete)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Resimplifi",
@@ -72,41 +48,43 @@
   {
    "name": "resimplifi.com/econ-dev",
    "website": "http://resimplifi.com/econ-dev",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (domain of Resimplifi, real-estate data platform sold to EDOs); skeptic not_a_company (URL path string per rule; real vendor Resimplifi behind it, rename rather than delete)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ROI Research on Investment",
    "website": "https://researchoninvestment.com/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Sponsor & Exhibitor Info",
-   "website": "https://neworleans.iedconline.org/sponsor-exhibitor-information",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Tours & Special Events",
-   "website": "https://neworleans.iedconline.org/special-events",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Utilities Supporters",
-   "website": "https://neworleans.iedconline.org/utilities",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: investment-attraction research consultancy for EDOs",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment-attraction research consultancy for EDOs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "www.giswebtech.com",
    "website": "https://giswebtech.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (domain of GIS WebTech, GIS site-selection software for EDOs); skeptic not_a_company (bare domain string per rule; real vendor GIS WebTech behind it, rename rather than delete)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "28% carry a corporate marker, 0% name a site section, 11% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu",
- "restaged": "19 -> 18 names after re-filtering on 2026-09-02"
+ "quality": "read",
+ "restaged": "19 -> 18 names after re-filtering on 2026-09-02",
+ "read_dropped": 9,
+ "quality_was": "menu"
 }

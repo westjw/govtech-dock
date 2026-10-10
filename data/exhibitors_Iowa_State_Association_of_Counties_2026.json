@@ -9,43 +9,37 @@
    "name": "AHLERS & COONEY, P.C.",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/ahlers/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Architects",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Iowa law firm (P.C.)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Iowa law firm (P.C.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AUREON",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/aureon/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Banking/Investments",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Bid Notices & Classifieds",
-   "website": "https://www.iowacounties.org/member-resources/bid-notices-classifieds/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Certified Iowa County Supervisor",
-   "website": "https://www.iowacounties.org/programs/certified-iowa-county-supervisor/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Iowa managed IT, cybersecurity and network services provider",
+   "read": {
+    "verdict": "vendor",
+    "why": "Iowa managed IT, cybersecurity and network services provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "COMMUNITY STATE BANK",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/community-state-bank-2/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank; financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank; financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Computer Systems & Software",
@@ -54,28 +48,16 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Corporate Opportunities",
-   "website": "https://www.iowacounties.org/corporate-opportunities/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Corporate Partners",
-   "website": "https://www.iowacounties.org/corporate-opportunities/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Corporate Partners ▼",
-   "website": "https://www.iowacounties.org/corporate-opportunities/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "COST ADVISORY SERVICES, INC.",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/cost-advisory-services-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cost-allocation consulting for governments",
+   "read": {
+    "verdict": "supplier",
+    "why": "cost-allocation consulting for governments",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "COTT SYSTEMS",
@@ -84,108 +66,52 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "County Directory",
-   "website": "https://www.iowacounties.org/member-resources/county-directory/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "County Financial Overview",
-   "website": "https://www.iowacounties.org/?page_id=148",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "CRMS, INC., REPRESENTING IMWCA",
    "website": "https://www.iowacounties.org/county-risk-management-services-inc-representing-icap-and-imwca/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: risk-pool administrator; insurance services",
+   "read": {
+    "verdict": "supplier",
+    "why": "risk-pool administrator; insurance services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DELTA DENTAL",
    "website": "https://www.iowacounties.org/delta-dental-of-iowa/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Elections",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Endorsed Companies",
-   "website": "https://www.iowacounties.org/corporate-opportunities/endorsed-companies/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Energy Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Engineers",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Equipment/Vehicles",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Events Calendar",
-   "website": "https://www.iowacounties.org/meetings/events-calendar/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Excellence in Action Awards",
-   "website": "https://www.iowacounties.org/about/excellence-in-action-awards/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "facebook",
-   "website": "https://www.facebook.com/IowaCounties"
-  },
-  {
-   "name": "Financial Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: dental insurance carrier",
+   "read": {
+    "verdict": "supplier",
+    "why": "dental insurance carrier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FORVIS MAZARS",
-   "website": "https://www.iowacounties.org/member-resources/vendor-directory/forvis-mazars/"
-  },
-  {
-   "name": "Geographical Information Services",
-   "website": null,
+   "website": "https://www.iowacounties.org/member-resources/vendor-directory/forvis-mazars/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Golden Eagle",
-   "website": "https://www.iowacounties.org/about/golden-eagle/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GOVEASE",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/govease/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Group Benefits",
-   "website": "https://www.iowacounties.org/programs/group-benefits/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: online tax-sale auction software for county treasurers",
+   "read": {
+    "verdict": "vendor",
+    "why": "online tax-sale auction software for county treasurers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HEARTLAND BUSINESS SYSTEMS",
@@ -197,149 +123,49 @@
    "name": "HENRY M. ADKINS & SON, INC.",
    "website": "https://www.iowacounties.org/henry-m-adkins-son-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: election equipment dealer and ballot printer; reseller of goods, not a technology product company",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: election equipment dealer and ballot printer; reseller of goods, not a technology product company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HOPKINS & HUEBNER, P.C.",
    "website": "https://www.iowacounties.org/hopkins-huebner-p-c/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ICTS/CSN",
-   "website": "https://www.iowacounties.org/programs/icts-csn/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "instagram",
-   "website": "https://www.instagram.com/iowa_counties/"
-  },
-  {
-   "name": "Insurance",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Iowa County Attorney’s Case Management Project",
-   "website": "https://www.iowacounties.org/programs/icacmp/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Iowa Precinct Atlas Consortium",
-   "website": "https://www.iowacounties.org/programs/iowa-precinct-atlas-consortium/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Iowa State Association of County Supervisors",
-   "website": "https://www.iowacounties.org/about/iowacountysupervisors/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "ISAC Bill Summaries",
-   "website": "https://www.iowacounties.org/?page_id=75",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ISAC Education Foundation",
-   "website": "https://www.iowacounties.org/programs/isac-education-foundation/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "ISAC HIPAA Program",
-   "website": "https://www.iowacounties.org/member-resources/hipaa-information-for-counties/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ISAC Staff",
-   "website": "https://www.iowacounties.org/about/isac-staff/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: law firm (P.C.)",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm (P.C.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ISG",
-   "website": "https://www.iowacounties.org/isg/"
-  },
-  {
-   "name": "IT Services",
-   "website": null,
+   "website": "https://www.iowacounties.org/isg/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Legal Resources",
-   "website": "https://www.iowacounties.org/member-resources/legal-resources/",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Legal Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Legislative",
-   "website": "https://www.iowacounties.org/legislative/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Legislative Policy Committee",
-   "website": "https://www.iowacounties.org/legislative/legislative-policy-committee/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Legislative Priorities",
-   "website": "https://www.iowacounties.org/legislative/legislative-priorities/"
-  },
-  {
-   "name": "Legislative ▼",
-   "website": "https://www.iowacounties.org/legislative/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "mail",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Manuals",
-   "website": "https://www.iowacounties.org/member-resources/manuals/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture/engineering firm (I+S Group)",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture/engineering firm (I+S Group)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MAULDIN & JENKINS",
-   "website": "https://www.iowacounties.org/member-resources/vendor-directory/mauldin-and-jenkins/"
-  },
-  {
-   "name": "Media Center",
-   "website": "https://www.iowacounties.org/about/media-center/",
+   "website": "https://www.iowacounties.org/member-resources/vendor-directory/mauldin-and-jenkins/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Meetings",
-   "website": "https://www.iowacounties.org/meetings/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Meetings ▼",
-   "website": "https://www.iowacounties.org/meetings/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Member Portal",
@@ -348,82 +174,70 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Members",
-   "website": "https://www.iowacounties.org/about/members/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "MERCYONE",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/mercyone/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Iowa healthcare system",
+   "read": {
+    "verdict": "supplier",
+    "why": "Iowa healthcare system",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MURPHY TRACTOR & EQUIPMENT CO.",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/murphy-tractor-equipment-co/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: heavy equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "heavy equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Association of Counties",
    "website": "https://www.iowacounties.org/member-resources/national-association-of-counties/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: national county association (NACo)",
+   "read": {
+    "verdict": "supplier",
+    "why": "national county association (NACo)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NEAPOLITAN LABS",
    "website": "https://www.iowacounties.org/neapolitan-labs/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (Des Moines web design/hosting for county government websites); skeptic unsure (web design/hosting studio for county sites; creative agency versus small govtech web vendor)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NORTHLAND SECURITIES, INC.",
    "website": "https://www.iowacounties.org/northland-securities-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Office Products/Printing",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Opioid Settlement Resources",
-   "website": "https://www.iowacounties.org/member-resources/opioid-settlement-resources/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Organizational Documents",
-   "website": "https://www.iowacounties.org/about/organizational-documents/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal bond underwriter, public finance",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal bond underwriter, public finance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PMA FINANCIAL NETWORK LLC",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/pma-financial-network/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Preferred Vendors",
-   "website": "https://www.iowacounties.org/corporate-opportunities/preferred-vendors/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Programs",
-   "website": "https://www.iowacounties.org/programs/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Programs ▼",
-   "website": "https://www.iowacounties.org/programs/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "PURPLE WAVE AUCTION",
@@ -436,46 +250,16 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Recreation/Beautification",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Register Online",
-   "website": "https://www.iowacounties.org/meetings/register-online/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "REGOV",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/regov/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Resources",
-   "website": "https://www.iowacounties.org/member-resources/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Resources ▼",
-   "website": "https://www.iowacounties.org/member-resources/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Risk Management",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Salary Survey",
-   "website": "https://ss.iowacounties.org",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "real vendor-directory entry; offering not inferable from name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SCHNEIDER GEOSPATIAL",
@@ -485,35 +269,13 @@
    "name": "SPEER FINANCIAL",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/speer-financial/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Supervisors Government Relations",
-   "website": "https://www.iowacounties.org/legislative/supervisors-legislative-recommendations/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Technology Service Bureau",
-   "website": "https://www.iowacounties.org/programs/tsb/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Telecommunications",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Tracking Tool",
-   "website": "https://www.iowacounties.org/legislative/tracking-tool/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Twitter",
-   "website": "https://twitter.com/IowaCounties"
+   "is_govtech_why": "reader: municipal financial advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal financial advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TYLER TECHNOLOGIES",
@@ -523,63 +285,53 @@
    "name": "UMB BANKING",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/umb-bank/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Unofficial Election Results",
-   "website": "https://www.iowacounties.org/member-resources/unofficial-election-results/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "US IMAGING, INC.",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/us-imaging-inc/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: records digitization and imaging services for county recorders",
+   "read": {
+    "verdict": "vendor",
+    "why": "records digitization and imaging services for county recorders",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VANGUARD",
    "website": "https://www.iowacounties.org/member-resources/vendor-directory/vanguard/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Vendor Directory",
-   "website": "https://www.iowacounties.org/member-resources/vendor-directory/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Visual Composer",
-   "website": "http://visualcomposer.com/?utm_campaign=vc-theme&utm_source=vc-theme-front&utm_medium=vc-theme-footer",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Webinars",
-   "website": "https://www.iowacounties.org/meetings/webinars/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: likely Vanguard Appraisals: CAMA software plus mass appraisal",
+   "read": {
+    "verdict": "vendor",
+    "why": "likely Vanguard Appraisals: CAMA software plus mass appraisal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WELLMARK BLUE CROSS BLUE SHIELD",
    "website": "https://www.iowacounties.org/wellmark-blue-cross-blue-shield/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Wellness Program",
-   "website": "https://www.iowacounties.org/programs/wellness-program/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "WordPress",
-   "website": "https://wordpress.org",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health insurance carrier",
+   "read": {
+    "verdict": "supplier",
+    "why": "health insurance carrier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "25% carry a corporate marker, 3% name a site section, 15% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 67,
+ "quality_was": "menu"
 }

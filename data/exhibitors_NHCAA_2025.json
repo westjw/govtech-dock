@@ -10,32 +10,56 @@
    "website": null,
    "tier": "Visibility Sponsor, Booth 816; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2)",
    "sells": "Payment integrity across the claim payment life cycle - prospective payment policy management, clinical coding review, pre- and postpay chart review, and detection of wasteful, abusive or fraudulent billing patterns.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare payment-integrity analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare payment-integrity analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Healthcare Fraud Shield",
    "website": null,
    "tier": "Visibility Sponsor, Booth 805; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2). The sponsor page's blurb types the abbreviation 'HCFS'; the logo and the ATC 2025 agenda both type 'Healthcare Fraud Shield'.",
    "sells": "Fraud, waste, abuse and error / payment integrity software for health insurers, combining AI and targeted analytics with SIU/PI services.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: FWA detection analytics platform for health plans",
+   "read": {
+    "verdict": "vendor",
+    "why": "FWA detection analytics platform for health plans",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HMS",
    "website": "https://www.gainwelltechnologies.com",
    "tier": "Visibility Sponsor, Booth 804; also Welcome Reception co-sponsor and a Platinum Supporting Member session sponsor (source 1 + source 2). Recorded as the logo prints it; NHCAA's agenda types 'HMS, a Gainwell Company' and Gainwell's own event page (https://www.gainwelltechnologies.com/resources/events/national-health-care-anti-fraud-association-nhcaa-annual-training-conference-2025/) says 'Visit the us at the HMS booth' and calls HMS 'a key sponsor of the event'.",
    "sells": "Digital and cloud-enabled solutions across the human services and public health ecosystem in all 50 states and US territories; FraudCapture is the fraud product named in the ATC 2025 agenda.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Gainwell Technologies site; Medicaid program-integrity technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "Gainwell Technologies site; Medicaid program-integrity technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SecureCare",
    "website": null,
    "tier": "Coffee Break sponsor, Wednesday November 19 - 'Coffee Break in the Anti-Fraud Expo Hall ... Sponsored by SecureCare' (source 2, https://www.nhcaa.org/download/36636/)",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name; several unrelated companies share it",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Morgan & Morgan",
@@ -43,15 +67,27 @@
    "tier": "Expo Hall Reception sponsor, Wednesday November 19 - 'Reception in the Anti-Fraud Expo Hall ... Sponsored by Morgan & Morgan' (source 2, https://www.nhcaa.org/download/36636/)",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Claritev",
    "website": null,
    "tier": "NHCAA Platinum Supporting Member; bought the session 'Uncovering Waste and Abuse within Hospital Billing: Itemized Bill Review' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: formerly MultiPlan; healthcare cost-management data and technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "formerly MultiPlan; healthcare cost-management data and technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alivia Analytics",
@@ -78,24 +114,42 @@
    "website": "https://www.shift-technology.com",
    "tier": "Booth 812; NHCAA Platinum Supporting Member who bought the session 'AI That Works Because You Do: Expertise at the Core of Smarter Payment Integrity' (source 2 + source 3, https://www.shift-technology.com/resources/events/nhcaa-annual-training-conference-1, which reads 'Event | November 18-21, 2025 | Nashville, TN ... Visit Us at Booth #812')",
    "sells": "AI-powered payment integrity platform for health plans; fraud, waste and abuse detection for investigators, analysts, coders and SIU teams.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI insurance fraud-detection SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI insurance fraud-detection SaaS",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "4LData",
    "website": "https://4ldata.com",
    "tier": "Booth 704; NHCAA Platinum Supporting Member who bought the session 'How Provider Intelligence & AI Agents Transform SIU Performance' (source 2 + source 3, https://4ldata.com/2025/11/06/4l-data-intelligence-at-nhcaa-atc-2025/, which reads 'Visit us at Booth #704 to see the 4L SIU Hub in action'). Recorded as the NHCAA agenda prints it ('4LData'); the company's own page uses the full name '4L Data Intelligence'.",
    "sells": "Provider-centric fraud, waste and abuse prevention; the 4L SIU Hub for special investigations units.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI fraud/waste/abuse analytics for payers incl. Medicaid",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI fraud/waste/abuse analytics for payers incl. Medicaid",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EXL Health",
    "website": null,
    "tier": "NHCAA Platinum Supporting Member; bought the session 'The Fraud Hunters Toolkit: Finding the Cases Others Miss' (source 2, https://www.nhcaa.org/download/36636/). No booth number published.",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare data analytics and payment-integrity technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare data analytics and payment-integrity technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Codoxo",
@@ -109,7 +163,13 @@
    "tier": "Booth 522/524; NHCAA Platinum Supporting Member who bought the session 'The Payment Integrity Shake-Up: AI and the Human in the Loop' (source 2 + source 3, https://www.medreview.us/noteworthy/2025/11/14/national-health-care-anti-fraud-association-nhcaa-2025-annual-training-conference-2/, dated 11/14/2025: 'Join MedReview in Nashville Nov. 18-21 ... Visit us at booth #522/524')",
    "sells": "Physician-focused prepay and postpay payment integrity solutions for payers.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: clinical claims-review services, not a technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "clinical claims-review services, not a technology product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Qlarant",
@@ -117,17 +177,30 @@
    "tier": "Booth 512 (source 3 only, https://www.qlarant.com/knowledge/events/nhcaa-2025-annual-training-conference/, posted November 7, 2025: 'Visit Us at Booth 512! Qlarant specialists will be on hand at Booth 512'). Not named in any NHCAA document found.",
    "sells": "Program integrity and fraud, waste and abuse solutions; the page names TENEX and ClaimsVue Health, a platform covering common and trending health care fraud schemes.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: program-integrity contractor; audits and investigations services",
+   "read": {
+    "verdict": "supplier",
+    "why": "program-integrity contractor; audits and investigations services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HealthEdge",
    "website": "https://healthedge.com",
    "tier": "Booth 810 (source 3 only, https://healthedge.com/resources/events/nhcaa-2025, which lists 'Dates: November 18th-21st', Gaylord Opryland Nashville, and 'Booth: 810'). Not named in any NHCAA document found.",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: core administrative software for health payers",
+   "read": {
+    "verdict": "vendor",
+    "why": "core administrative software for health payers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "12% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with - worth a look before running intake",
- "quality": "mixed"
+ "quality": "read",
+ "quality_was": "mixed"
 }

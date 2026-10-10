@@ -16,16 +16,28 @@
    "website": "https://theworknumber.com/solutions/industries/government-verification",
    "tier": "Platinum Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Work Number verification data product for government eligibility",
+   "read": {
+    "verdict": "vendor",
+    "why": "Work Number verification data product for government eligibility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Optum",
    "website": null,
    "tier": "Gold Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: health IT and analytics arm sells Medicaid systems to states",
+   "read": {
+    "verdict": "vendor",
+    "why": "health IT and analytics arm sells Medicaid systems to states",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "leidos",
@@ -38,8 +50,14 @@
    "website": null,
    "tier": "Gold Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Progress Software (MarkLogic, data platforms)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Progress Software (MarkLogic, data platforms)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EY",
@@ -47,15 +65,27 @@
    "tier": "Gold Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: audit, tax and advisory professional services",
+   "read": {
+    "verdict": "supplier",
+    "why": "audit, tax and advisory professional services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "accenture",
    "website": null,
    "tier": "Gold Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: systems integrator; IT services core to state Medicaid work",
+   "read": {
+    "verdict": "vendor",
+    "why": "systems integrator; IT services core to state Medicaid work",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Socure",
@@ -90,16 +120,28 @@
    "website": "http://gainwelltechnologies.com",
    "tier": "Gold Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Gainwell Technologies: Medicaid management information systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "Gainwell Technologies: Medicaid management information systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Google",
    "website": null,
    "tier": "Gold Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: cloud and software for public sector",
+   "read": {
+    "verdict": "vendor",
+    "why": "cloud and software for public sector",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "salesforce",
@@ -120,8 +162,14 @@
    "website": "https://www.gdit.com/",
    "tier": "Silver Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: General Dynamics IT: government IT services",
+   "read": {
+    "verdict": "vendor",
+    "why": "General Dynamics IT: government IT services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NORTH HIGHLAND",
@@ -129,15 +177,27 @@
    "tier": "Silver Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: management consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "management consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "edifecs",
    "website": null,
    "tier": "Silver Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare data interoperability software (EDI, Medicaid)",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare data interoperability software (EDI, Medicaid)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CSG Government Solutions",
@@ -152,8 +212,14 @@
    "website": "https://innovaccer.com/",
    "tier": "Silver Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare data platform software",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare data platform software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NTT DATA",
@@ -168,8 +234,14 @@
    "website": null,
    "tier": "Silver Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: contact-center software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "contact-center software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "infor",
@@ -198,16 +270,28 @@
    "website": null,
    "tier": "Silver Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT service-management consulting and implementation services",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT service-management consulting and implementation services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "aws",
    "website": "https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/#medicaid",
    "tier": "Bronze Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: cloud platform; site targets state Medicaid programs",
+   "read": {
+    "verdict": "vendor",
+    "why": "cloud platform; site targets state Medicaid programs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PUBLIC KNOWLEDGE",
@@ -215,7 +299,13 @@
    "tier": "Bronze Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: management consulting for health and human services agencies",
+   "read": {
+    "verdict": "supplier",
+    "why": "management consulting for health and human services agencies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Elyon",
@@ -223,15 +313,27 @@
    "tier": "Bronze Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely Elyon Strategies, Medicaid management consultancy; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely Elyon Strategies, Medicaid management consultancy; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "verato",
    "website": "https://www.verato.com",
    "tier": "Bronze Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: identity resolution software used by state health agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "identity resolution software used by state health agencies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Healthy Together",
@@ -245,7 +347,13 @@
    "tier": "Bronze Community Sponsor",
    "sells": "Human Services IT Advisory Group (the expansion printed under the HSITAG mark)",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Human Services IT Advisory Group: industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Human Services IT Advisory Group: industry association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Adobe",
@@ -259,15 +367,29 @@
    "name": "Berry Dunn",
    "website": null,
    "tier": "Bronze Community Sponsor",
-   "sells": null
+   "sells": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: BerryDunn: accounting and management consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "BerryDunn: accounting and management consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "celonis",
    "website": null,
    "tier": "Bronze Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: process-mining software",
+   "read": {
+    "verdict": "vendor",
+    "why": "process-mining software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "findhelp",
@@ -281,15 +403,27 @@
    "tier": "Bronze Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: IT staffing firm; staffing is the main offering",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT staffing firm; staffing is the main offering",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IMO Health",
    "website": null,
    "tier": "Bronze Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: clinical terminology and health data software",
+   "read": {
+    "verdict": "vendor",
+    "why": "clinical terminology and health data software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SIMPLIGOV",
@@ -302,8 +436,14 @@
    "website": null,
    "tier": "Bronze Community Sponsor",
    "sells": "Creative data technology (the line printed under the InterSystems mark)",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: database and health data platform software",
+   "read": {
+    "verdict": "vendor",
+    "why": "database and health data platform software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "argyle",
@@ -327,7 +467,13 @@
    "tier": "Corporate Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager; healthcare services, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager; healthcare services, not a tech product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "beam",
@@ -341,15 +487,27 @@
    "tier": "Corporate Community Sponsor",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: audit, tax and advisory professional services",
+   "read": {
+    "verdict": "supplier",
+    "why": "audit, tax and advisory professional services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "KL&A",
    "website": "https://kunzleigh.com/",
    "tier": "Corporate Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Kunz Leigh & Associates: technology consulting and software development",
+   "read": {
+    "verdict": "vendor",
+    "why": "Kunz Leigh & Associates: technology consulting and software development",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "mirza",
@@ -362,26 +520,45 @@
    "website": null,
    "tier": "Corporate Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: address validation and geocoding API software",
+   "read": {
+    "verdict": "vendor",
+    "why": "address validation and geocoding API software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "school of lunch",
    "website": null,
    "tier": "Corporate Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; may be lunch-sponsor alt text or food brand",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "StackAI",
    "website": null,
    "tier": "Corporate Community Sponsor",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI workflow software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI workflow software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "6% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with - worth a look before running intake",
- "quality": "mixed"
+ "quality": "read",
+ "quality_was": "mixed"
 }

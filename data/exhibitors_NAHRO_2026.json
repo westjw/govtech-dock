@@ -21,7 +21,13 @@
    "name": "A2Z Events",
    "website": "https://mya2zevents.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: event-software platform credit, not a government vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "event-software platform credit, not a government vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AffordableHousing.com",
@@ -37,19 +43,37 @@
    "name": "Allergy Technologies",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bed-bug mattress liners, physical goods despite the name",
+   "read": {
+    "verdict": "supplier",
+    "why": "bed-bug mattress liners, physical goods despite the name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMA Consulting Group, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm, no technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm, no technology product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Auburn University - Master of Real Estate Development Program",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university degree programme exhibiting",
+   "read": {
+    "verdict": "supplier",
+    "why": "university degree programme exhibiting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Baker Tilly",
@@ -59,7 +83,13 @@
    "name": "Bath Fitter",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bathroom remodeling, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "bathroom remodeling, physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beacon Bid",
@@ -75,49 +105,97 @@
    "name": "Brown Stove Works",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: stove manufacturer, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "stove manufacturer, physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bureau Veritas Technical Assessments",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: property inspection and assessment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "property inspection and assessment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CBIZ",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accounting, insurance and advisory services",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting, insurance and advisory services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CGI Federal",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: CGI government IT systems and services",
+   "read": {
+    "verdict": "vendor",
+    "why": "CGI government IT systems and services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Clesia Ventures, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: holding-style LLC name, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "holding-style LLC name, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Contractor Compliance & Monitoring, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: labor compliance monitoring services",
+   "read": {
+    "verdict": "supplier",
+    "why": "labor compliance monitoring services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Copper Home",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: home products brand, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "home products brand, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CVR Associates, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: housing program administration consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing program administration consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DAWGS Vacant Property Security",
@@ -127,13 +205,25 @@
    "name": "Doeren Mayhew (formerly Berman Hopkins Wright & LaHam))",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CPA and advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA and advisory firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Du & Associates, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engineering/consulting associates firm, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/consulting associates firm, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Emphasys Software",
@@ -143,31 +233,49 @@
    "name": "EnCompliance Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "EXHIBITOR DIRECTORY",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: compliance consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "compliance consulting services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ezzy Manufacturing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: manufacturer, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "manufacturer, physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Felix Storch, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: appliance maker (Summit Appliance), physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "appliance maker (Summit Appliance), physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FireAvert, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: stove auto-shutoff hardware device, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "stove auto-shutoff hardware device, not software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FreshAir Sensor",
@@ -179,7 +287,13 @@
    "name": "GE Appliances",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: appliances, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "appliances, physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gilson Housing Partners",
@@ -191,7 +305,13 @@
    "name": "HAI Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance for housing authorities",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance for housing authorities",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HD Supply",
@@ -201,7 +321,13 @@
    "name": "Housing Agency Retirement Trust",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: retirement plan and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "retirement plan and financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Housing Programs Software",
@@ -225,13 +351,25 @@
    "name": "Keys Claims Consultants, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance claims consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance claims consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LandlordLocks.com",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: locks and keys, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "locks and keys, physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LCPtracker, Inc",
@@ -241,5 +379,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 1,
+ "quality_was": "good"
 }

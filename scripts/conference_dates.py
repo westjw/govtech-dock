@@ -128,15 +128,25 @@ def confirm(c: dict) -> dict:
     url = c.get("url")
     if not held or not url:
         return {"conference": c["conference"], "state": "no date on file"}
-    try:
-        html = ats._page(url).text
-    except Exception as e:                            # noqa: BLE001
+    # THE PAGE THE DATE WAS READ OFF, as well as the event's front page. A
+    # reader sets a date from the organisation's events calendar and records
+    # that page as dates_source; checking only the front page then called
+    # the date "not found" on a site that states it one click away.
+    pages = [url]
+    src = str(c.get("dates_source") or "")
+    if src.startswith("http") and src.rstrip("/") != url.rstrip("/"):
+        pages.append(src)
+    text, why = "", None
+    for page in pages:
+        try:
+            text += " " + " ".join(re.sub(r"<[^>]+>", " ", ats._page(page).text).split())
+        except Exception as e:                        # noqa: BLE001
+            why = why or type(e).__name__
+    if not text.strip():
         # We learned nothing. That is not the same as the date being gone,
         # and recording it as a change would be a fact about our fetcher
         # published as a fact about their conference.
-        return {"conference": c["conference"], "state": "unreadable",
-                "why": type(e).__name__}
-    text = " ".join(re.sub(r"<[^>]+>", " ", html).split())
+        return {"conference": c["conference"], "state": "unreadable", "why": why}
     for m in _DATE.finditer(text):
         d = parsed(m.group(0))
         if d == held:

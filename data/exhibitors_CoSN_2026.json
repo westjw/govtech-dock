@@ -14,8 +14,14 @@
   {
    "name": "Cadmium",
    "website": "https://www.GoCadmium.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (event-management software (eventScribe); page's platform credit, not exhibitor); skeptic not_a_company (Conference website platform credit, not an exhibitor; event software, not govtech.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ClassDojo",
@@ -24,8 +30,14 @@
   {
    "name": "Clear Touch",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: interactive classroom display maker; K-12 ed-tech hardware with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "interactive classroom display maker; K-12 ed-tech hardware with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Eratesync",
@@ -34,18 +46,18 @@
   {
    "name": "Exteme Networks",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: typo of Extreme Networks; K-12 networking vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "typo of Extreme Networks; K-12 networking vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gaggle",
    "website": null
-  },
-  {
-   "name": "Give Feedback",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Intellischool",
@@ -54,8 +66,14 @@
   {
    "name": "IPEVO",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: document cameras and classroom devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "document cameras and classroom devices with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jamf",
@@ -92,14 +110,26 @@
   {
    "name": "NTP Cybersecurity",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: cybersecurity services firm",
+   "read": {
+    "verdict": "vendor",
+    "why": "cybersecurity services firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Secured Tech",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals IT/security technology firm",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals IT/security technology firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "simpldiscipline",
@@ -112,16 +142,16 @@
    "website": null
   },
   {
-   "name": "Technical Support",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Tellabs",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: optical LAN networking equipment vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "optical LAN networking equipment vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Thinkverse",
@@ -130,8 +160,14 @@
   {
    "name": "Trafera",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: K-12 device reseller and IT services",
+   "read": {
+    "verdict": "vendor",
+    "why": "K-12 device reseller and IT services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Typing.com",
@@ -146,10 +182,18 @@
   {
    "name": "Xpel by Forward Edge",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (Forward Edge K-12 IT services product); skeptic unsure (Forward Edge is a K-12 IT services/MSP; Xpel may be a service.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "mixed"
+ "quality": "read",
+ "read_dropped": 2,
+ "quality_was": "mixed"
 }

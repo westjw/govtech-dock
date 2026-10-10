@@ -1,0 +1,82 @@
+[
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Event Info",
+  "verdict": "not_a_company",
+  "why": "site navigation label",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "EXPO HALL HOURS",
+  "verdict": "not_a_company",
+  "why": "expo logistics heading",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Gaylord Opryland Resort & Convention Center, Nashville, Tennessee",
+  "verdict": "not_a_company",
+  "why": "venue line with city/state; event logistics, not an exhibitor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Legend",
+  "verdict": "not_a_company",
+  "why": "floor-map UI control",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "October 18 – 21, 2026 (Sunday — Wednesday)",
+  "verdict": "not_a_company",
+  "why": "event dates",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Print",
+  "verdict": "not_a_company",
+  "why": "floor-map UI control",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "RENT BOOTH NOW",
+  "verdict": "not_a_company",
+  "why": "booth-sales call to action",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Show/Hide",
+  "verdict": "not_a_company",
+  "why": "floor-map UI control",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Zoom In",
+  "verdict": "not_a_company",
+  "why": "floor-map UI control",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Zoom Out",
+  "verdict": "not_a_company",
+  "why": "floor-map UI control",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ }
+]

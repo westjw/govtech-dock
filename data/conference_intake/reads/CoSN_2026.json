@@ -1,0 +1,92 @@
+[
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Cadmium",
+  "verdict": "unsure",
+  "why": "split: reader vendor (event-management software (eventScribe); page's platform credit, not exhibitor); skeptic not_a_company (Conference website platform credit, not an exhibitor; event software, not govtech.)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Clear Touch",
+  "verdict": "vendor",
+  "why": "interactive classroom display maker; K-12 ed-tech hardware with software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Exteme Networks",
+  "verdict": "vendor",
+  "why": "typo of Extreme Networks; K-12 networking vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Give Feedback",
+  "verdict": "not_a_company",
+  "why": "site UI text",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "IPEVO",
+  "verdict": "vendor",
+  "why": "document cameras and classroom devices with software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "NTP Cybersecurity",
+  "verdict": "vendor",
+  "why": "cybersecurity services firm",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Secured Tech",
+  "verdict": "vendor",
+  "why": "name signals IT/security technology firm",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Technical Support",
+  "verdict": "not_a_company",
+  "why": "site support link text",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Tellabs",
+  "verdict": "vendor",
+  "why": "optical LAN networking equipment vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Trafera",
+  "verdict": "vendor",
+  "why": "K-12 device reseller and IT services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CoSN_2026.json",
+  "name": "Xpel by Forward Edge",
+  "verdict": "unsure",
+  "why": "split: reader vendor (Forward Edge K-12 IT services product); skeptic unsure (Forward Edge is a K-12 IT services/MSP; Xpel may be a service.)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ }
+]

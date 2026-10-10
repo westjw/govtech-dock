@@ -17,7 +17,13 @@
    "booth": "1022",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Antenna maker; passive RF components, not a technology product company.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Antenna maker; passive RF components, not a technology product company.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "365LABS",
@@ -30,29 +36,53 @@
    "name": "911 Emerge-N-See",
    "booth": "2353",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown 911 brand; training or product unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "911 Tech - DORWorks.com",
    "booth": "1138",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: DORWorks: dispatcher training-records software",
+   "read": {
+    "verdict": "vendor",
+    "why": "DORWorks: dispatcher training-records software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "911 Training Institute",
    "booth": "922",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "training provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "911Simulators.com",
    "booth": "1030",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 call-taking simulation software",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 call-taking simulation software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Absolute Software",
@@ -72,22 +102,40 @@
    "name": "ADDER Technology",
    "booth": "429",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: KVM/control-room IT hardware with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "KVM/control-room IT hardware with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AFC Industries",
    "booth": "3124",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ergonomic console furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "ergonomic console furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aikitech, Inc",
    "booth": "1333",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals tech; unknown firm, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals tech; unknown firm, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ALIVE TELECOM",
@@ -100,8 +148,14 @@
    "name": "Allerium",
    "booth": "2426",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alleviate LLC",
@@ -128,22 +182,27 @@
    "name": "Anritsu Company",
    "booth": "946",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: RF test and measurement equipment",
+   "read": {
+    "verdict": "vendor",
+    "why": "RF test and measurement equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "APCO California",
    "booth": "3118",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "APCO Exhibit Sales & Exhibit Managers Office",
-   "booth": "1836",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: host association's state chapter booth",
+   "read": {
+    "verdict": "supplier",
+    "why": "host association's state chapter booth",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "APCO International",
@@ -156,15 +215,27 @@
    "name": "APS Firehouse Alerting",
    "booth": "1647",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fire station alerting systems (hardware plus software)",
+   "read": {
+    "verdict": "vendor",
+    "why": "fire station alerting systems (hardware plus software)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aselsan",
    "booth": "3200",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: defence electronics; radios and communications systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "defence electronics; radios and communications systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Astronics Test Systems",
@@ -191,29 +262,53 @@
    "name": "Aviat Networks",
    "booth": "2910",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: microwave backhaul networking",
+   "read": {
+    "verdict": "vendor",
+    "why": "microwave backhaul networking",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Axon 911 - Prepared + Carbyne",
    "booth": "1455",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Axon booth: 911 call-handling (Prepared, Carbyne)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Axon booth: 911 call-handling (Prepared, Carbyne)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Axon 911 - The Future of 911",
    "booth": "552",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Axon booth label; duplicate of Axon 911",
+   "read": {
+    "verdict": "vendor",
+    "why": "Axon booth label; duplicate of Axon 911",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Base Case",
    "booth": "2923",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BerryDunn",
@@ -226,29 +321,40 @@
    "name": "BK Technologies",
    "booth": "736",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety radios",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety radios",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Black Box",
    "booth": "3140",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Blood Donation",
-   "booth": "3348",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT infrastructure, KVM and networking",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT infrastructure, KVM and networking",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BodyBilt Seating",
    "booth": "447",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: ergonomic seating",
+   "read": {
+    "verdict": "supplier",
+    "why": "ergonomic seating",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CALEA",
@@ -261,15 +367,14 @@
    "name": "Cape Radio Products",
    "booth": "3020",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Career Advancement Center",
-   "booth": "1211",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (radio products maker/dealer; comms hardware, verify); skeptic unsure ('Radio products' dealer; may sell accessories (batteries, antennas) rather than technology.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carfax",
@@ -282,8 +387,14 @@
    "name": "Catalyst Communications Technologies Inc.",
    "booth": "2711",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio dispatch/interoperability software",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio dispatch/interoperability software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CentralSquare Technologies",
@@ -296,8 +407,14 @@
    "name": "Cogito Innovations",
    "booth": "1234",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 'Innovations' name suggests tech; unknown firm, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "'Innovations' name suggests tech; unknown firm, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Columbia Southern University",
@@ -310,29 +427,53 @@
    "name": "Commercial Electronics Corp.",
    "booth": "3220",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: likely two-way radio dealer/systems integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "likely two-way radio dealer/systems integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CommSys, Inc.",
    "booth": "2917",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: CJIS/NCIC interface software (ConnectCIC)",
+   "read": {
+    "verdict": "vendor",
+    "why": "CJIS/NCIC interface software (ConnectCIC)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Communication Center Specialists",
    "booth": "1248",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: comm-centre consulting/staffing; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "comm-centre consulting/staffing; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Communications-Applied Technology",
    "booth": "3017",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio interoperability devices (ICRI)",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio interoperability devices (ICRI)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Computer Information Systems, Inc.",
@@ -345,8 +486,14 @@
    "name": "ComSonics",
    "booth": "423",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: RF test equipment and radio service",
+   "read": {
+    "verdict": "vendor",
+    "why": "RF test equipment and radio service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Concept Seating",
@@ -359,15 +506,27 @@
    "name": "Convey911, LLC",
    "booth": "2846",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 translation/accessibility software",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 translation/accessibility software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CPI",
    "booth": "3138",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: likely CPI OpenFox, CJIS message-switch software",
+   "read": {
+    "verdict": "vendor",
+    "why": "likely CPI OpenFox, CJIS message-switch software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Critical Response Group, Inc.",
@@ -388,42 +547,78 @@
    "booth": "3104",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tower and fiber infrastructure owner",
+   "read": {
+    "verdict": "supplier",
+    "why": "tower and fiber infrastructure owner",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CSS-Mindshare",
    "booth": "1431",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CTI Products",
    "booth": "3117",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio-over-IP dispatch hardware/software",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio-over-IP dispatch hardware/software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DataTech911",
    "booth": "3037",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 call data analytics",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 call data analytics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "dbSpectra Inc.",
    "booth": "2921",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: RF combiners, filters, antennas; passive RF component maker.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: RF combiners, filters, antennas; passive RF component maker.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Denise Amber Lee Foundation",
    "booth": "1135",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: 911 advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "911 advocacy nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DeskOfficer, Inc.",
@@ -437,7 +632,13 @@
    "booth": "3024",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: journal/media publication",
+   "read": {
+    "verdict": "supplier",
+    "why": "journal/media publication",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DragonForce",
@@ -461,13 +662,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Education Row",
-   "booth": "1123",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "EFJohnson, a JVCKENWOOD Company",
    "booth": "1447",
    "website": null,
@@ -478,15 +672,27 @@
    "name": "EMERES, Inc.",
    "booth": "2647",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EMR Corporation",
    "booth": "3016",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: RF filters, duplexers, combiners; passive RF component maker.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: RF filters, duplexers, combiners; passive RF component maker.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Engineered Tower Solutions, PLLC",
@@ -500,14 +706,26 @@
    "booth": "3236",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: recruitment marketing agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "recruitment marketing agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Equature",
    "booth": "2810",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 call recording and analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 call recording and analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Esri",
@@ -534,43 +752,53 @@
    "name": "Evoltix",
    "booth": "2717",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, tech-sounding but unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EXACOM, Inc.",
    "booth": "1147",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Lounge",
-   "booth": "1828",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Expo Eatery",
-   "booth": "100",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: voice logging/recording systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "voice logging/recording systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Responders Children's Foundation",
    "booth": "1246",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Responders Expo",
    "booth": "1023",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trade-show/event organiser, not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade-show/event organiser, not a tech vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FirstNet, Built with AT&T",
@@ -583,43 +811,79 @@
    "name": "Flight Tactics",
    "booth": "3218",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; possibly drone services or training",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fountainhead Control Rooms",
    "booth": "540",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: control room furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "control room furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Garmin International, Inc.",
    "booth": "3049",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: GPS/satellite communicator devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "GPS/satellite communicator devices with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GateKeeper Proximity",
    "booth": "830",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: proximity login security tokens (cyber)",
+   "read": {
+    "verdict": "vendor",
+    "why": "proximity login security tokens (cyber)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Genesis",
    "booth": "953",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: likely Genesis Group, radio system monitoring software",
+   "read": {
+    "verdict": "vendor",
+    "why": "likely Genesis Group, radio system monitoring software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Genovation Inc",
    "booth": "851",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: programmable keypad hardware; peripheral maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "programmable keypad hardware; peripheral maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GeoComm",
@@ -633,42 +897,78 @@
    "booth": "1123",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "getResQ911",
    "booth": "2949",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 app/software brand",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 app/software brand",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GM/OnStar",
    "booth": "2517",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: automaker telematics service; not a govtech product company",
+   "read": {
+    "verdict": "supplier",
+    "why": "automaker telematics service; not a govtech product company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GME",
    "booth": "2916",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: two-way radio manufacturer",
+   "read": {
+    "verdict": "vendor",
+    "why": "two-way radio manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Goserco, Inc.",
    "booth": "2552",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety communications/dispatch systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety communications/dispatch systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "govhost",
    "booth": "3121",
    "website": null,
    "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech_why": "not judged yet - names only",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (government web/cloud hosting by name); skeptic unsure (Lowercase single token, no site; may be a page artifact, unknown firm.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovWorx",
@@ -689,21 +989,26 @@
    "booth": "2837",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Headshot Lounge",
-   "booth": "1119",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Antenna manufacturer; passive RF component maker.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Antenna manufacturer; passive RF component maker.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HigherGround, Inc.",
    "booth": "836",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: call recording/logging software",
+   "read": {
+    "verdict": "vendor",
+    "why": "call recording/logging software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HipLink Software",
@@ -730,64 +1035,118 @@
    "name": "i911 International",
    "booth": "437",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 technology brand, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 technology brand, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ID Networks",
    "booth": "1243",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety CAD/RMS software",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety CAD/RMS software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "iLOQ",
    "booth": "2823",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": true,
+   "is_govtech_why": "reader: digital locking/access control devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "digital locking/access control devices with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Impact Power Technologies LLC",
    "booth": "1635",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: radio batteries",
+   "read": {
+    "verdict": "supplier",
+    "why": "radio batteries",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "INDIGITAL",
    "booth": "752",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: NG911 ESInet network services provider",
+   "read": {
+    "verdict": "vendor",
+    "why": "NG911 ESInet network services provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Infinity Massage Chairs",
    "booth": "3145",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: massage chairs",
+   "read": {
+    "verdict": "supplier",
+    "why": "massage chairs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "InterTalk",
    "booth": "2710",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: dispatch console systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "dispatch console systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Intrado",
    "booth": "2725",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 call handling and network services",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 call handling and network services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IRON HORSE Seating",
    "booth": "622",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: seating",
+   "read": {
+    "verdict": "supplier",
+    "why": "seating",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IS-Wireless",
@@ -801,7 +1160,13 @@
    "booth": "2553",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: speaker/trainer's business",
+   "read": {
+    "verdict": "supplier",
+    "why": "speaker/trainer's business",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "JPL Telecom LLC",
@@ -821,22 +1186,27 @@
    "name": "JTS | Johnston Technical Services, Inc.",
    "booth": "3100",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "K9 Dog Demo Area",
-   "booth": "610",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (technical services firm; likely radio systems integrator); skeptic unsure ('Technical services' firm; installer/integrator services, product unknown.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kathrein SCALA",
    "booth": "620",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Antenna manufacturer; passive RF component maker.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Antenna manufacturer; passive RF component maker.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kimberly A. Miller & Associates, LLC",
@@ -850,14 +1220,26 @@
    "booth": "2925",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: radio audio accessories",
+   "read": {
+    "verdict": "supplier",
+    "why": "radio audio accessories",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "L3Harris Technologies",
    "booth": "2700",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety radios and communications",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety radios and communications",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LanguageLine Solutions",
@@ -871,7 +1253,13 @@
    "booth": "3120",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: massage/TENS devices sold on floor",
+   "read": {
+    "verdict": "supplier",
+    "why": "massage/TENS devices sold on floor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Leonardo US Cyber & Security Solutions, LLC",
@@ -885,14 +1273,26 @@
    "booth": "3144",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "training provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LocusUSA",
    "booth": "855",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio network monitoring technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio network monitoring technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Locution Systems Inc.",
@@ -905,8 +1305,14 @@
    "name": "LumenServe, Inc.",
    "booth": "3126",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mark43",
@@ -926,36 +1332,66 @@
    "name": "Microwave Networks Inc",
    "booth": "840",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: microwave backhaul radios",
+   "read": {
+    "verdict": "vendor",
+    "why": "microwave backhaul radios",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Miller at Work",
    "booth": "2825",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mission Critical Partners",
    "booth": "1337",
    "website": null,
    "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech_why": "not judged yet - names only",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (public safety technology consulting and managed IT); skeptic unsure (Primarily a consulting/engineering firm with managed services; no product.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MissionWise",
    "booth": "1228",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Modirum Platforms",
    "booth": "1029",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: software platforms company",
+   "read": {
+    "verdict": "vendor",
+    "why": "software platforms company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ModUcom (Modular Communications System)",
@@ -1011,7 +1447,13 @@
    "booth": "3041",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Network & Recharge Lounge (1)",
@@ -1025,7 +1467,13 @@
    "booth": "2501",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: government agency or association",
+   "read": {
+    "verdict": "supplier",
+    "why": "government agency or association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NICE",
@@ -1039,14 +1487,26 @@
    "booth": "536",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state TERT programme (government)",
+   "read": {
+    "verdict": "supplier",
+    "why": "state TERT programme (government)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northland & Companies",
    "booth": "2924",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: holding/consulting group name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "holding/consulting group name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Octave",
@@ -1073,22 +1533,40 @@
    "name": "Omnitronics, Inc.",
    "booth": "1047",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio dispatch and RoIP",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio dispatch and RoIP",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Oscilloquartz",
    "booth": "1122",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: network timing/synchronisation equipment",
+   "read": {
+    "verdict": "vendor",
+    "why": "network timing/synchronisation equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "OTM Cyber",
    "booth": "3019",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": true,
+   "is_govtech_why": "reader: cybersecurity services",
+   "read": {
+    "verdict": "vendor",
+    "why": "cybersecurity services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pace Scheduler",
@@ -1144,14 +1622,26 @@
    "booth": "3003",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: industry partnership/association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry partnership/association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Power Products Unlimited",
    "booth": "3006",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: radio batteries and power accessories",
+   "read": {
+    "verdict": "supplier",
+    "why": "radio batteries and power accessories",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PowerDMS",
@@ -1159,13 +1649,6 @@
    "website": null,
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "Presentation Theater",
-   "booth": "3302",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Prism-IPX Systems, LLC",
@@ -1179,7 +1662,13 @@
    "booth": "1051",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: industry interest group/association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry interest group/association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ProPhoenix Corporation",
@@ -1192,15 +1681,27 @@
    "name": "PSN Americas",
    "booth": "2809",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; PSN may mean public safety network",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Safety Group",
    "booth": "748",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely Jones & Bartlett publisher division",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely Jones & Bartlett publisher division",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Safety Solutions MO, LLC",
@@ -1210,25 +1711,17 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Public Safety Vehicles Area 1",
-   "booth": "2852",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Public Safety Vehicles Area 2",
-   "booth": "811",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Pulsiam",
    "booth": "3148",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety CAD/RMS software",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety CAD/RMS software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PURVIS Systems",
@@ -1242,7 +1735,13 @@
    "booth": "1528",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RAM Mounts",
@@ -1269,8 +1768,14 @@
    "name": "Regroup",
    "booth": "3130",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: mass notification software",
+   "read": {
+    "verdict": "vendor",
+    "why": "mass notification software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rescue 42",
@@ -1280,74 +1785,121 @@
    "is_govtech_why": "not judged yet - names only"
   },
   {
-   "name": "Resume Review",
-   "booth": "1212",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Revcord",
    "booth": "747",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: voice recording software",
+   "read": {
+    "verdict": "vendor",
+    "why": "voice recording software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RF Technology Americas",
    "booth": "621",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: radio repeaters/base stations",
+   "read": {
+    "verdict": "vendor",
+    "why": "radio repeaters/base stations",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RoGO Communications",
    "booth": "618",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "communications brand; possibly RoGO Fire app, unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Russ Bassett",
    "booth": "3029",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: console furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "console furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ryzyliant",
    "booth": "721",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SAF North America",
    "booth": "534",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: microwave radios (SAF Tehnika)",
+   "read": {
+    "verdict": "vendor",
+    "why": "microwave radios (SAF Tehnika)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Safran",
    "booth": "829",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: exhibiting unit (timing/GNSS devices) is tech hardware",
+   "read": {
+    "verdict": "vendor",
+    "why": "exhibiting unit (timing/GNSS devices) is tech hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SAIMON VISION",
    "booth": "3244",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; 'vision' may mean video analytics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Samsung",
    "booth": "634",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: electronics; rugged devices and displays with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "electronics; rugged devices and displays with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Schedule Express by SafeCities",
@@ -1360,78 +1912,144 @@
    "name": "Schweitzer Engineering Laboratories",
    "booth": "1134",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: SEL: protection, timing and networking devices",
+   "read": {
+    "verdict": "vendor",
+    "why": "SEL: protection, timing and networking devices",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SDR, Inc.",
    "booth": "722",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown acronym firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Secure Headset Group",
    "booth": "934",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: headsets",
+   "read": {
+    "verdict": "supplier",
+    "why": "headsets",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SENCOMMUNICATIONS, INC.",
    "booth": "835",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: headset/accessory distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "headset/accessory distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Siento",
    "booth": "1230",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely seating brand; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely seating brand; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sinclair Technologies",
    "booth": "3004",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Antennas, filters, combiners; predominantly passive RF components.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Antennas, filters, combiners; predominantly passive RF components.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Slatercom - WCD",
    "booth": "1131",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: two-way radio and dispatch dealer/integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "two-way radio and dispatch dealer/integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Smart Response Technologies",
    "booth": "2848",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 'Technologies' name; likely software, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "'Technologies' name; likely software, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SmartCOP, Inc.",
    "booth": "3102",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public safety CAD/RMS software",
+   "read": {
+    "verdict": "vendor",
+    "why": "public safety CAD/RMS software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SOFTIL",
    "booth": "2805",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: MCPTT/VoLTE software",
+   "read": {
+    "verdict": "vendor",
+    "why": "MCPTT/VoLTE software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SOS Technologies",
    "booth": "435",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor ('Technologies' name; verify); skeptic unsure (Likely the first-aid/AED training and supplies firm, not technology.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sourcewell",
@@ -1452,14 +2070,26 @@
    "booth": "2821",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tower/navigation lighting hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "tower/navigation lighting hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stancil Corporation",
    "booth": "1657",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: voice recording systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "voice recording systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "STI-CO Industries, Inc.",
@@ -1480,28 +2110,52 @@
    "booth": "2900",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: console furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "console furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Swissphone, LLC",
    "booth": "1639",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: pagers and alerting systems with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "pagers and alerting systems with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Syncworks",
    "booth": "746",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: network timing/synchronisation integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "network timing/synchronisation integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Syniverse",
    "booth": "3136",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: telecom messaging/interconnect services",
+   "read": {
+    "verdict": "vendor",
+    "why": "telecom messaging/interconnect services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tait Communications",
@@ -1514,15 +2168,27 @@
    "name": "Team Health Network",
    "booth": "537",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: health services network; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "health services network; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Telewave.io",
    "booth": "1146",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Telewave: antennas, filters, combiners; passive RF component maker.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Telewave: antennas, filters, combiners; passive RF component maker.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Telex Radio Dispatch",
@@ -1535,43 +2201,66 @@
    "name": "TESSCO LLC",
    "booth": "2905",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (wireless infrastructure distributor); skeptic unsure (Distributor; catalog largely passive components, cables and accessories.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Testforce",
    "booth": "846",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: test equipment distributor, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "test equipment distributor, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Headset Team",
    "booth": "1429",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: headsets",
+   "read": {
+    "verdict": "supplier",
+    "why": "headsets",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Healthy Dispatcher",
    "booth": "1137",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wellness training",
+   "read": {
+    "verdict": "supplier",
+    "why": "wellness training",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ThisGen",
    "booth": "1128",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "TL Exhibitor Care Center",
-   "booth": "1846",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tyler Technologies",
@@ -1584,8 +2273,14 @@
    "name": "UR International, Inc.",
    "booth": "535",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown brand, no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "US Digital Designs, Inc.",
@@ -1599,7 +2294,13 @@
    "booth": "3022",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: used radio equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "used radio equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Valor Systems, Inc.",
@@ -1613,7 +2314,13 @@
    "booth": "2652",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wireless engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "wireless engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vector Solutions",
@@ -1641,7 +2348,13 @@
    "booth": "2452",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment shelters (physical goods)",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment shelters (physical goods)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VIAVI Solutions",
@@ -1654,43 +2367,66 @@
    "name": "Virtual Academy 9-1-1",
    "booth": "823",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech": null,
+   "is_govtech_why": "names a trade that is not a product vendor",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (online training platform (SaaS) for public safety); skeptic unsure (Online training-course provider; content/training, not a technology product.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vista Com",
    "booth": "2453",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 911 recording and analytics",
+   "read": {
+    "verdict": "vendor",
+    "why": "911 recording and analytics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Washington Radio Reports",
    "booth": "3240",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: media/regulatory reports, no product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "media/regulatory reports, no product signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Watson Consoles",
    "booth": "2911",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: console furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "console furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waveband Communications, INC",
    "booth": "3116",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Wellness Zone",
-   "booth": "3330",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: radio accessories",
+   "read": {
+    "verdict": "supplier",
+    "why": "radio accessories",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Westnet, LLC",
@@ -1704,21 +2440,39 @@
    "booth": "3141",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: earpieces",
+   "read": {
+    "verdict": "supplier",
+    "why": "earpieces",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wilmac Technologies",
    "booth": "1329",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: recording/analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "recording/analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Winsted",
    "booth": "529",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: control room furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "control room furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wireless Supply",
@@ -1732,7 +2486,13 @@
    "booth": "2709",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: programmable keyboards; peripheral hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "programmable keyboards; peripheral hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Xybix Systems, Inc.",
@@ -1748,5 +2508,8 @@
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
   }
- ]
+ ],
+ "read_dropped": 14,
+ "quality_was": null,
+ "quality": "read"
 }

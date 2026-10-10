@@ -6,12 +6,6 @@
  "source_note": "Read from https://exhibits.mdmunicipal.org/2026/exhibitor_list.cfm by scripts/sweep_exhibitors.py. 222 name(s), 1 with a website the page itself linked. Quality: good (33% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "- Exhibitor - FAQ",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "2by2 Industries",
    "website": null
   },
@@ -23,13 +17,25 @@
    "name": "Aggregate Screens and Crushers",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: heavy equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "heavy equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aiphone Corporation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: intercom and door-entry hardware manufacturer; physical security equipment, not an IT product",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: intercom and door-entry hardware manufacturer; physical security equipment, not an IT product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alta Grid",
@@ -38,8 +44,14 @@
   {
    "name": "Altumint, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: automated traffic-enforcement cameras with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "automated traffic-enforcement cameras with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ameresco, Inc.",
@@ -49,31 +61,25 @@
    "name": "American Fidelity Assurance Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Andy Harris, Congressman",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Angela Alsobrooks, United States Senator",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Annapolis, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "April McClain Delaney, Congresswoman MD06",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ARK Systems, Inc.",
@@ -84,26 +90,50 @@
   {
    "name": "Asc3nd technology group",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: technology/IT services group",
+   "read": {
+    "verdict": "vendor",
+    "why": "technology/IT services group",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Atlantic Heavy Duty",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trucks and heavy equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "trucks and heavy equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Atlantic Machinery, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: machinery dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "machinery dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Attorney General, Maryland Office of the",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Axis Communications",
@@ -113,49 +143,97 @@
    "name": "Ballet Theatre of Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: arts nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "arts nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bates Trucking Trash Removal, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: waste hauling",
+   "read": {
+    "verdict": "supplier",
+    "why": "waste hauling",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BEACON at Salisbury University",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university research center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university research center",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bearing Advisors",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial/municipal advisory",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial/municipal advisory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bel Air, Town of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beyond the Surface Pros",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: surface cleaning/restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "surface cleaning/restoration services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bladensburg, Town of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Blue Whale EV",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: EV charging/vehicle infrastructure; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "EV charging/vehicle infrastructure; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Buyers Products Company",
@@ -165,31 +243,61 @@
    "name": "Cambridge, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Capital One N.A.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CareFirst BlueCross BlueShield",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "health insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CBIZ InR",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: benefits/insurance brokerage and advisory",
+   "read": {
+    "verdict": "supplier",
+    "why": "benefits/insurance brokerage and advisory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Center for the Study of Economics",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit think tank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CFR Compliance Group, Inc",
@@ -201,37 +309,61 @@
    "name": "Charles P. Johnson and Associates, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engineering and surveying firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and surveying firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chemung Supply",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: highway/guardrail supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "highway/guardrail supplies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chesapeake Employers' Insurance Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Chris Van Hollen, United States Senator",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Christmas Decor by Watermark",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: holiday decorating services",
+   "read": {
+    "verdict": "supplier",
+    "why": "holiday decorating services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CIGNA HealthCare Mid-Atlantic",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "health insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Citibot",
@@ -241,17 +373,25 @@
    "name": "Clean Power Wash, Delmarva Christmas Lights",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Code Enforcement and Zoning Officials Association President",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: cleaning and holiday lighting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "cleaning and holiday lighting services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Comcast Business",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: telecom/connectivity and communications services for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "telecom/connectivity and communications services for government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Comcate",
@@ -261,19 +401,37 @@
    "name": "Commercial Recreation Products",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: playground/recreation equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "playground/recreation equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Comptroller of Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Constellation Energy Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: energy utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy utility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CUES, Inc.",
@@ -285,25 +443,49 @@
    "name": "Cunningham Recreation/Gametime",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: playground equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "playground equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Custom Park Surfacing, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: park surfacing contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "park surfacing contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Davenport & Company LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: financial advisory/investment bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial advisory/investment bank",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Davis, Bowen & Friedel, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engineering and architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Deloitte",
@@ -313,31 +495,61 @@
    "name": "DiCarlo Precision Instrument, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: surveying instrument dealer; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "surveying instrument dealer; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Diligent (BoardDocs)",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: board-management SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "board-management SaaS",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EA Engineering, Science, and Technology, Inc., PBC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: environmental engineering consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental engineering consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EAW Security",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "security firm; guards versus systems integrator unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ECS Mid-Atlantic",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: geotechnical/environmental engineering",
+   "read": {
+    "verdict": "supplier",
+    "why": "geotechnical/environmental engineering",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Edmunds GovTech",
@@ -347,41 +559,49 @@
    "name": "ELECTEC ELECTION SERVICES",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: turnkey election administration services, not a product",
+   "read": {
+    "verdict": "supplier",
+    "why": "turnkey election administration services, not a product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Energy Future Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: energy advocacy coalition/nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy advocacy coalition/nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EquipKo",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ESRGC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibit Sales Form",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor - FAQ",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor List",
-   "website": null
+   "is_govtech_why": "reader: university regional GIS cooperative, not a company",
+   "read": {
+    "verdict": "supplier",
+    "why": "university regional GIS cooperative, not a company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Exhibitor Service Center",
@@ -391,13 +611,25 @@
    "name": "Ferguson Waterworks",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: waterworks pipe and supplies distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "waterworks pipe and supplies distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Tryon Advisors LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal financial advisory",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal financial advisory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FirstNet Built with AT&T",
@@ -407,7 +639,13 @@
    "name": "Forest Valley Tree & Turf",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: tree and turf services",
+   "read": {
+    "verdict": "supplier",
+    "why": "tree and turf services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fort Orange Press",
@@ -421,19 +659,37 @@
    "name": "Fortiline Waterworks",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: waterworks supplies distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "waterworks supplies distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Frederick, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GAMBRILLS EQUIPMENT",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovDeals",
@@ -442,8 +698,14 @@
   {
    "name": "GovToKnow",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "name suggests civic information product; nature unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovWell",
@@ -453,57 +715,121 @@
    "name": "GranTurk Equipment Co., Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: refuse truck/equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "refuse truck/equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "H.A. DeHart & Son, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: truck equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "truck equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hadco Decorative Lighting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: lighting products",
+   "read": {
+    "verdict": "supplier",
+    "why": "lighting products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hagerstown, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Havre de Grace, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hawkins, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: water treatment chemicals",
+   "read": {
+    "verdict": "supplier",
+    "why": "water treatment chemicals",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HILB Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Holiday Outdoor Decor",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: holiday decor products",
+   "read": {
+    "verdict": "supplier",
+    "why": "holiday decor products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Holophane Lighting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: lighting fixtures",
+   "read": {
+    "verdict": "supplier",
+    "why": "lighting fixtures",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HPE",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Hewlett Packard Enterprise; IT hardware and software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Hewlett Packard Enterprise; IT hardware and software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ICC Innovation",
@@ -511,13 +837,27 @@
   },
   {
    "name": "IDEXX",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: water-testing lab products; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "water-testing lab products; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IMPACT Technology Group, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT/managed technology services",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT/managed technology services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Infrastructure Solutions Group",
@@ -534,218 +874,434 @@
   {
    "name": "IP Consulting Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "could be IT/network consulting or unrelated consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Keenan Pharmacy Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit services",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Keystone Sports Construction",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: sports facility construction",
+   "read": {
+    "verdict": "supplier",
+    "why": "sports facility construction",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "KOMPAN Playgrounds",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: playground equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "playground equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "KW Government Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic government services name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic government services name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LeafFilter Gutter Protection",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gutter products",
+   "read": {
+    "verdict": "supplier",
+    "why": "gutter products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lewis Contractors",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: construction",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LGIT Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: local-government insurance trust health program",
+   "read": {
+    "verdict": "supplier",
+    "why": "local-government insurance trust health program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lindsey + Associates",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: professional services firm; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional services firm; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Local Government Insurance Trust",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance pool",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance pool",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mahan Rykiel Associates",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: landscape architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "landscape architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Air National Guard Recruiting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland American Water",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: water utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "water utility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Army National Guard",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Cannabis Administration",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Correctional Enterprises",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state prison-industries agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state prison-industries agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Budget and Management",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Commerce",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Emergency Management- 911 Board",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of General Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Housing and Community Development",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Natural Resources",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Public Safety and Correctional Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Social and Economic Mobility",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of the Environment",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Department of Transportation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Energy Administration",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Environmental Service",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland ESGR",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Defense Department support program; government",
+   "read": {
+    "verdict": "supplier",
+    "why": "Defense Department support program; government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Fire and Rescue Institute - UMD",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "university institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Fire Chiefs Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Heritage Areas Coalition",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit coalition",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Industrial Trucks, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: forklift/industrial truck dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "forklift/industrial truck dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Insurance Administration",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Lottery and Gaming",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Municipal Clerks Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: affiliate professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "affiliate professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Municipal League",
@@ -763,49 +1319,97 @@
    "name": "Maryland Municipal Public Works Officials Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: affiliate professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "affiliate professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Occupational Safety and Health/Maryland Department of Labor",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Relay-Department of Disabilities",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Rural Water Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland State Firefighters Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Tourism Coalition",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit coalition",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maryland Two Fifty Commission",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state commission",
+   "read": {
+    "verdict": "supplier",
+    "why": "state commission",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McCrone",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engineering and surveying firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering and surveying firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McEnroe Voice & Data",
@@ -817,47 +1421,97 @@
    "name": "McWane Plant and Industrial",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pipe and valve manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "pipe and valve manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MD Underground Facilities Damage Prevention Authority",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state authority",
+   "read": {
+    "verdict": "supplier",
+    "why": "state authority",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Medical Access Service Advantage",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare/benefit service; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare/benefit service; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MedImpact",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mentoring Through Athletics",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Metro Recreation Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: recreation equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "recreation equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mid-Atlantic Truck & Equipment",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: truck and equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "truck and equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Middlesex Water Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: water utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "water utility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Miss Utility",
@@ -887,7 +1541,13 @@
    "name": "MW Studios",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: design/media studio; no tech product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "design/media studio; no tech product signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Highway Products, Inc",
@@ -897,37 +1557,73 @@
    "name": "National League of Cities",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Vision Administrators (NVA)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vision benefits administrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "vision benefits administrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Neptune TG",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (water meters with AMI/AMR software (Neptune Technology Group)); skeptic unsure (water meter manufacturer with AMI software; primarily hardware, govtech fit uncertain)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "New Vertical Technologies",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals technology company; nature unverified",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals technology company; nature unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Noovis LLC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT/network and security infrastructure integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT/network and security infrastructure integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NORESCO",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: energy services/performance contracting",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy services/performance contracting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NovoaGlobal, Inc.",
@@ -953,31 +1649,61 @@
    "name": "Pepco and Delmarva Power Energy Savings for Business Program",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: utility-run program; utility exhibitor",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility-run program; utility exhibitor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Plak That Sign Co.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: signs",
+   "read": {
+    "verdict": "supplier",
+    "why": "signs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Playground Specialists, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: playground equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "playground equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pleasants Construction, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: construction",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Power Up Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advocacy/program organisation; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy/program organisation; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PPG Traffic Solutions",
@@ -993,25 +1719,49 @@
    "name": "Ranked Choice Voting Maryland",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Really Clean Streets",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: street cleaning services",
+   "read": {
+    "verdict": "supplier",
+    "why": "street cleaning services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Really Good Equipment",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Redspeed Maryland LLC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: automated speed/red-light enforcement cameras with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "automated speed/red-light enforcement cameras with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Republic Services",
@@ -1029,31 +1779,49 @@
    "name": "River Valley Recreation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: recreation equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "recreation equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RK&K",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Royal Plus Disaster Cleanup",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Rules and Regulations",
-   "website": "https://exhibits.mdmunicipal.org/2026/documents/Rules_and_regs_2026_012026.pdf",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "restoration services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rural Maryland Council",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state council/agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state council/agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SealMaster",
@@ -1063,19 +1831,37 @@
    "name": "Service Line Program by HomeServe",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: service-line warranty program",
+   "read": {
+    "verdict": "supplier",
+    "why": "service-line warranty program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SERVPRO",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "restoration services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Shannon-Baum Signs and Graphics, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: signs and graphics",
+   "read": {
+    "verdict": "supplier",
+    "why": "signs and graphics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ShoreScan Solutions",
@@ -1087,43 +1873,85 @@
    "name": "Small Business Development Center",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: government/university program",
+   "read": {
+    "verdict": "supplier",
+    "why": "government/university program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Solar Landscape",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: community solar developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "community solar developer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Southern Corrosion, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: water tank maintenance contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "water tank maintenance contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sparks at Play, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: playground/recreation; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "playground/recreation; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stewart-Amos Sweeper Co",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: street sweepers",
+   "read": {
+    "verdict": "supplier",
+    "why": "street sweepers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "STH",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; cannot identify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stop Offshore Wind",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advocacy campaign/nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy campaign/nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sunbelt Rentals, Inc.",
@@ -1134,20 +1962,38 @@
   {
    "name": "Surava",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unfamiliar name; nature unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Susquehanna Operational Services, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: water/wastewater operations contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "water/wastewater operations contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sustainable Maryland Certified",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university-run certification program",
+   "read": {
+    "verdict": "supplier",
+    "why": "university-run certification program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Syntech Systems",
@@ -1155,13 +2001,27 @@
   },
   {
    "name": "T-Mobile",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: wireless carrier; government connectivity and IoT",
+   "read": {
+    "verdict": "vendor",
+    "why": "wireless carrier; government connectivity and IoT",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Target Marketing Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: marketing/promotional services",
+   "read": {
+    "verdict": "supplier",
+    "why": "marketing/promotional services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Team One Network",
@@ -1173,19 +2033,37 @@
    "name": "Terex Utilities",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: utility trucks and equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility trucks and equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Total Environmental Concepts, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: environmental services",
+   "read": {
+    "verdict": "supplier",
+    "why": "environmental services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Traffic Safety Supplies",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: traffic safety goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "traffic safety goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tyler Technologies",
@@ -1199,7 +2077,13 @@
    "name": "University of Baltimore, Schaefer Center for Public Policy",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university center",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "USG Water Solutions",
@@ -1211,7 +2095,13 @@
    "name": "ValuGard Anti-Corrosion",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: anti-corrosion products",
+   "read": {
+    "verdict": "supplier",
+    "why": "anti-corrosion products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VC3",
@@ -1219,7 +2109,15 @@
   },
   {
    "name": "Verizon",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: telecom carrier; government connectivity and communications",
+   "read": {
+    "verdict": "vendor",
+    "why": "telecom carrier; government connectivity and communications",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Verkada",
@@ -1229,7 +2127,13 @@
    "name": "Versalift",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: aerial lift trucks",
+   "read": {
+    "verdict": "supplier",
+    "why": "aerial lift trucks",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vialytics",
@@ -1239,27 +2143,53 @@
    "name": "Water Works Metrology LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: meter testing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "meter testing services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Westminster, City of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WGL Energy Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: energy supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy supplier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Williamsport, Town of",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal government",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal government",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 10,
+ "quality_was": "good"
 }

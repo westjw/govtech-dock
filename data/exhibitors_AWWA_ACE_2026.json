@@ -13,19 +13,37 @@
    "name": "A2Z Events",
    "website": "https://mya2zevents.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: event-platform footer branding, not a government tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "event-platform footer branding, not a government tech vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AA Thread",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: thread-seal tape maker; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "thread-seal tape maker; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ABASCO",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Abasco: containment booms/barriers; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Abasco: containment booms/barriers; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ABB Measurement & Analytics",
@@ -37,49 +55,25 @@
    "name": "Accurate Corrosion Control",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Career Center Job Fair",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Innovation Hub powered by Isle",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Meter Challenge",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Pipe Tapping",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Poster Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ACE26 Tap Water Taste Test: People\u2019s Choice and Best of the Best",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: corrosion-control engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "corrosion-control engineering services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Adaptor, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pipe repair clamps and couplings; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "pipe repair clamps and couplings; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Advance Products & Systems, LLC",
@@ -99,37 +93,73 @@
    "name": "AGRU America, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: geomembranes and plastic pipe; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "geomembranes and plastic pipe; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ALCEA ASSA ABLOY",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ASSA ABLOY locks/access-control hardware; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "ASSA ABLOY locks/access-control hardware; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alliance For PE Pipe",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trade association for PE pipe",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association for PE pipe",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American AVK Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: valves and hydrants; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "valves and hydrants; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMERICAN Cast Iron Pipe Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ductile iron pipe manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "ductile iron pipe manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Innovations",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: pipeline-integrity remote monitoring devices plus compliance software",
+   "read": {
+    "verdict": "vendor",
+    "why": "pipeline-integrity remote monitoring devices plus compliance software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Pipeline Solutions",
@@ -141,37 +171,73 @@
    "name": "AMPP",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: AMPP materials-protection association",
+   "read": {
+    "verdict": "supplier",
+    "why": "AMPP materials-protection association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anchor Construction Corporation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ANDRITZ",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ANDRITZ pumps/turbines; industrial equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "ANDRITZ pumps/turbines; industrial equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AQS (Aquarius Spectrum)",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Aquarius Spectrum: acoustic leak-detection sensors with cloud analytics",
+   "read": {
+    "verdict": "vendor",
+    "why": "Aquarius Spectrum: acoustic leak-detection sensors with cloud analytics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aqua Equip Technologies LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: water equipment supplier; 'Technologies' alone no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "water equipment supplier; 'Technologies' alone no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aqua Smart, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "'Smart' hints at water tech but unknown company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aqua-Aerobic Systems, Inc.",
@@ -197,33 +263,53 @@
    "name": "Aqueous Vets",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PFAS water-treatment vessels; physical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "PFAS water-treatment vessels; physical equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aquestia USA",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Aquestia control valves; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Aquestia control valves; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AquiSense Incorporated",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: UV-C LED disinfection modules; hardware component",
+   "read": {
+    "verdict": "supplier",
+    "why": "UV-C LED disinfection modules; hardware component",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Arq, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "EXHIBITOR DIRECTORY",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: activated carbon producer; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "activated carbon producer; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 7,
+ "quality_was": "good"
 }

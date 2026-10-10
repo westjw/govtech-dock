@@ -6,30 +6,6 @@
  "source_note": "Read from https://educause26.smallworldlabs.com/exhibitors by scripts/sweep_exhibitors.py. 53 name(s), 1 with a website the page itself linked. Quality: good (23% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "00 DAYS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "00 HRS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "00 MINS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "00 SECS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "1Kosmos, Inc.",
    "website": null,
    "is_govtech": false,
@@ -38,20 +14,38 @@
   {
    "name": "A10 Networks",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: network and application security vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "network and application security vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "A2Z Events",
    "website": "https://mya2zevents.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (event-management software; page's platform credit, not an exhibitor); skeptic not_a_company (Conference website platform credit, not an exhibitor; event software, not govtech.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ABCloudz Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (cloud and database software services firm); skeptic unsure (Cloud/database development services firm; services, product unclear.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Abnormal AI",
@@ -68,8 +62,14 @@
   {
    "name": "Accenture",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (IT services and consulting); skeptic unsure (Professional services/systems integrator, not a product company; policy call.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Accruent",
@@ -126,8 +126,14 @@
   {
    "name": "Alchemy",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous name; EDUCAUSE IT floor suggests tech but unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alertus Technologies",
@@ -162,8 +168,14 @@
   {
    "name": "Arista Networks",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: networking equipment vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "networking equipment vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Armis",
@@ -181,7 +193,13 @@
    "name": "ASSA ABLOY",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: door lock and access hardware manufacturer; physical security goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "door lock and access hardware manufacturer; physical security goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Atlassian",
@@ -197,19 +215,37 @@
    "name": "Attain Partners",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Management and technology consultancy; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Management and technology consultancy; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Avaap",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: ERP implementation consultancy; services, not a product.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: ERP implementation consultancy; services, not a product.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AVer Information, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: classroom AV cameras and devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "classroom AV cameras and devices with software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aviz Networks",
@@ -240,8 +276,14 @@
   {
    "name": "Bettera",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown name; no signal beyond EDUCAUSE IT floor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BeyondTrust",
@@ -252,64 +294,18 @@
   {
    "name": "BlackBeltHelp",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Directory",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor List",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Log In",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Gallery",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "MARKETPLACE",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Powered by A2Z Events",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Press Releases",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Products",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Videos",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (higher-ed IT help desk outsourcing); skeptic unsure (Outsourced help-desk staffing service; near a staffing firm, product unclear.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 13,
+ "quality_was": "good"
 }

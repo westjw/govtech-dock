@@ -2,7 +2,7 @@
  "event_tag": "StormCon 2026",
  "conference": "StormCon 2026",
  "found": true,
- "quality": "researched",
+ "quality": "read",
  "source_url": "https://scon26.mapyourshow.com/",
  "source_note": "The StormCon 2026 expo exhibitor page ('74 Results'), pasted by the owner on 2026-09-10 and then researched one company at a time. scon26.mapyourshow.com refuses fetches, so no name could be confirmed against the show's own URL - the list's provenance is the owner's paste, and every website beside it was confirmed from the company's own page.",
  "exhibitors": [
@@ -11,36 +11,54 @@
    "website": "https://3ptechnik.com/",
    "description": "Stormwater sedimentation, filtration, and rainwater harvesting systems for road, industrial, and building runoff",
    "is_govtech": false,
-   "is_govtech_why": "A German manufacturer of stormwater sedimentation, filtration and rainwater-harvesting hardware with no stated public buyer and no US office — a product maker selling through the European construction chain, not a govtech platform company.",
+   "is_govtech_why": "reader: Stormwater filtration hardware manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater filtration hardware manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Abtech Industries",
    "website": "https://abtechindustries.com/",
    "description": "Smart Sponge filtration media and inlet filters removing PFAS, metals, hydrocarbons, and bacteria for MS4s, DOTs, and airports",
    "is_govtech": false,
-   "is_govtech_why": "Maker of Smart Sponge filtration media and inlet filters — a manufactured treatment device sold to stormwater programs, which is hardware supply rather than a govtech product or platform.",
+   "is_govtech_why": "reader: Filtration media and inlet filters",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Filtration media and inlet filters",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ACO, Inc.",
    "website": "https://www.acousa.com/",
    "description": "Polymer concrete trench drains, stormwater storage tanks, and oil-water separators for highways, airports, and commercial sites",
    "is_govtech": false,
-   "is_govtech_why": "Polymer concrete trench drains and stormwater structures sold through a distributor network — precast/drainage product manufacturing, the same class as the pipe and precast makers already filed as suppliers.",
+   "is_govtech_why": "reader: Trench drain manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Trench drain manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ADS Environmental Services",
@@ -59,24 +77,36 @@
    "website": "https://rgf.com/afl/",
    "description": "Oil-water separators, oil stop valves, and spill-containment sumps for utilities, industrial, military, and airport facilities",
    "is_govtech": false,
-   "is_govtech_why": "Manufactures oil-water separators and stormwater treatment units for municipal and industrial sites — equipment supply into public works, not a software or platform product.",
+   "is_govtech_why": "reader: Oil-water separator equipment",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Oil-water separator equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AQUALIS",
    "website": "https://aqualisco.com/",
    "description": "Stormwater and wastewater inspection, maintenance, repair, and compliance services for commercial properties and municipalities",
    "is_govtech": false,
-   "is_govtech_why": "A nationwide field-services contractor performing stormwater BMP inspection and maintenance, mostly for commercial property owners — services delivered on site, which files as a supplier the way the project files other field contractors.",
+   "is_govtech_why": "reader: Stormwater field services contractor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater field services contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aquarius Systems",
@@ -107,36 +137,54 @@
    "website": "https://www.barr.com/",
    "description": "Engineering and environmental consulting (water management, remediation, permitting) for mining, power, industry, and public agencies",
    "is_govtech": false,
-   "is_govtech_why": "An employee-owned engineering and environmental consulting firm whose primary market is industrial, with public agencies one of five sectors — consultancies are filed as suppliers per the project's own precedent.",
+   "is_govtech_why": "reader: Engineering consultancy",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bedrock Environmental",
    "website": "https://bedrockenvironmental.com/",
    "description": "Erosion and sediment control, seed mixes, geotextiles, and drainage products distributed for construction, energy, and road projects",
    "is_govtech": false,
-   "is_govtech_why": "An erosion-control seed and supply distributor selling to contractors — distributors are filed as suppliers, and the row's identity doubt is not enough to reject the record outright.",
+   "is_govtech_why": "reader: Erosion control distributor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "low",
    "verifier": "agree",
-   "verifier_why": "I tried to break this three ways and it holds.\n\n(a) Vendor-vs-supplier: not close. offering=\"distributor\", desc=\"Erosion control seed and supply\", buyer=\"Contractors\". That is squarely the DLT/Kurita pattern — a distributor of physical goods whose buyers are contractors, with municipalities at most specifying. No product, platform, or software anywhere in the row, so \"vendor\" would be the exact error this project has been burned by. Supplier is right.\n\n(b) Sector/category: the run is \"stormcon\" (stormwater), and erosion-control seed is a stormwater/sediment-control input on construction and right-of-way work. Public Works is the closest public function and Suppliers & Services is the only category a distributor belongs in. The one alternative worth naming is Parks & Rec > Grounds, Irrigation & Turf (seed is turf), but that category is for turf-management products serving parks departments and nothing in the row points at parks buyers. For a supplier record the sector choice only decides which Suppliers & Services shelf it sits on, so the downside is small either way.\n\n(c) The identity doubt — the strongest attack, and it still does not move the call. The flag says the site never uses \"Seed & Supply\" and a separate Bedrock Environmental Services, Inc. exists, so the website may be attached to the wrong entity. Run the branch both ways: if the row is the seed distributor, it is a supplier; if bedrockenvironmental.com is actually the environmental-services/consulting firm, consultancies are filed as suppliers too. Either entity lands on supplier, and neither is a govtech product company. The ambiguity is a data-hygiene problem (the website field should be re-verified before the record is promoted or contacted), not a placement problem. It is also not grounds for not_a_company — nothing suggests an agency, nonprofit, or brand line.\n\nWhat I would not do on this row is treat it as a rejection or assert a public buyer: sells=\"unclear\" and \"No stated public buyer\" are honest, and unclear is a real answer, not a \"no\". Filing it as a visible, promotable supplier is the correct handling of that state.\n\nOne caveat to carry forward rather than bury: provider=\"not found\" and roles=null, so there is no board to wire here regardless — this is a filed record, not a live-jobs source."
+   "verifier_why": "I tried to break this three ways and it holds.\n\n(a) Vendor-vs-supplier: not close. offering=\"distributor\", desc=\"Erosion control seed and supply\", buyer=\"Contractors\". That is squarely the DLT/Kurita pattern — a distributor of physical goods whose buyers are contractors, with municipalities at most specifying. No product, platform, or software anywhere in the row, so \"vendor\" would be the exact error this project has been burned by. Supplier is right.\n\n(b) Sector/category: the run is \"stormcon\" (stormwater), and erosion-control seed is a stormwater/sediment-control input on construction and right-of-way work. Public Works is the closest public function and Suppliers & Services is the only category a distributor belongs in. The one alternative worth naming is Parks & Rec > Grounds, Irrigation & Turf (seed is turf), but that category is for turf-management products serving parks departments and nothing in the row points at parks buyers. For a supplier record the sector choice only decides which Suppliers & Services shelf it sits on, so the downside is small either way.\n\n(c) The identity doubt — the strongest attack, and it still does not move the call. The flag says the site never uses \"Seed & Supply\" and a separate Bedrock Environmental Services, Inc. exists, so the website may be attached to the wrong entity. Run the branch both ways: if the row is the seed distributor, it is a supplier; if bedrockenvironmental.com is actually the environmental-services/consulting firm, consultancies are filed as suppliers too. Either entity lands on supplier, and neither is a govtech product company. The ambiguity is a data-hygiene problem (the website field should be re-verified before the record is promoted or contacted), not a placement problem. It is also not grounds for not_a_company — nothing suggests an agency, nonprofit, or brand line.\n\nWhat I would not do on this row is treat it as a rejection or assert a public buyer: sells=\"unclear\" and \"No stated public buyer\" are honest, and unclear is a real answer, not a \"no\". Filing it as a visible, promotable supplier is the correct handling of that state.\n\nOne caveat to carry forward rather than bury: provider=\"not found\" and roles=null, so there is no board to wire here regardless — this is a filed record, not a live-jobs source.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Erosion control distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Best Management Products, Inc.",
    "website": "https://bmpinc.com/",
    "description": "Catch basin hoods and trash screens (SNOUT) that trap oil, debris and trash in storm drains, for municipal MS4s and site owners",
    "is_govtech": false,
-   "is_govtech_why": "It manufactures physical stormwater hardware (SNOUT hoods, stainless trash screens) that cities buy as product, not a govtech software or platform company, so it files as a supplier rather than a board vendor.",
+   "is_govtech_why": "reader: Stormwater hardware manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater hardware manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BioBase",
@@ -155,12 +203,18 @@
    "website": "https://blocksom.com/",
    "description": "Natural fiber products maker: HVAC filters, packaging media, and storm water inlet filters for construction-phase sediment control",
    "is_govtech": false,
-   "is_govtech_why": "An erosion-control fiber products manufacturer selling to industrial buyers and contractors is a materials supplier, not a govtech product company.",
+   "is_govtech_why": "reader: Erosion control fiber products",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Erosion control fiber products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CivicPlus",
@@ -179,72 +233,108 @@
    "website": "https://www.cleanwayusa.com/",
    "description": "Catch basin, curb inlet and downspout filter inserts with MetalZorb metals-removal media, for industrial and municipal stormwater permittees",
    "is_govtech": false,
-   "is_govtech_why": "A manufacturer of catch-basin and inlet filter inserts and treatment media whose primary buyer is industrial NPDES permit holders, with municipalities as one customer class among businesses - hardware for compliance, not a govtech product or platform.",
+   "is_govtech_why": "reader: Catch basin filter manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Catch basin filter manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Convergent Water Technologies",
    "website": "https://convergentwater.com/",
    "description": "Stormwater treatment systems — FocalPoint biofiltration, smartPOND automation, GEPS recharge, PRETX pretreatment — sold via a reseller network",
    "is_govtech": false,
-   "is_govtech_why": "Stormwater treatment hardware (biofiltration, recharge, pretreatment) sold through a national value-added reseller network rather than direct to agencies, which is the classic manufacturer-through-channel supplier shape.",
+   "is_govtech_why": "reader: Stormwater treatment hardware via resellers",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater treatment hardware via resellers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ACF West, Inc.",
    "website": "https://www.acfwest.com/",
    "description": "Geosynthetics distributor for the western US: erosion and sediment control, geotextiles, geogrids, liners and stormwater products",
    "is_govtech": false,
-   "is_govtech_why": "A geosynthetics and erosion-control distributor is a reseller of other makers' products - the same call the project already made for DLT - so it files as a supplier despite the public-agency projects.",
+   "is_govtech_why": "reader: Geosynthetics distributor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Geosynthetics distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Eric'sons Manufacturing (DuraTrench brand)",
    "website": "https://www.duratrench.com/",
    "description": "Prefabricated trench drains, curved and slot drains, and grates for airports, industrial and food plants, truck docks and roadways",
    "is_govtech": false,
-   "is_govtech_why": "Eric'sons Manufacturing is a real employer (DuraTrench is only its brand), and it makes polymer concrete trench drain sold to contractors and municipalities - a manufactured product, not a govtech platform.",
+   "is_govtech_why": "reader: Trench drain manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Trench drain manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ecopliant Environmental, Inc.",
    "website": "https://ecopliant.org/",
    "description": "Nonprofit certification body: CISEC sediment and erosion control inspector and CDSEC design certifications, exams and training",
    "is_govtech": false,
-   "is_govtech_why": "The row flags it as a nonprofit certification body - an inspector credentialing organization rather than an employer selling a product or service into government - so it should not become a company record.",
+   "is_govtech_why": "reader: Nonprofit certification body",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": "wrong_outcome",
-   "verifier_why": "The call leans on the \"NONPROFIT\" flag alone, and that is the wrong branch of the rules for this entity type. The project's supplier definition explicitly enumerates \"course providers\" and \"trade bodies\" as things that get FILED as suppliers, and the cited precedent says the same about consultancies and course providers. An erosion-and-sediment-control inspector certification body (CISEC) is exactly that: it sells certification exams, renewals and training to inspectors, contractors and agency staff. The row has sells=yes and a named public buyer (\"Government agencies and municipal staff\"), so it is a selling organization - not a government agency, not a brand or product line, and not a pure membership association with nothing to sell. Tax status by itself does not make a training/credentialing seller a non-company; most trade bodies the project already files as suppliers are nonprofits too, and \"supplier is not a rejection\" is the whole point of that bucket. It is plainly NOT a vendor - there is no govtech product or platform here, only certification and courses - so it must never get a real sector/category on the board. The sector/category chosen is fine for a supplier filing (erosion/stormwater control is Public Works; Suppliers & Services is the right bucket), which is itself a tell that the record was muddled: a not_a_company record never becomes a company record, so giving it a sector and category is self-contradictory. Two cautions from the row itself, not invented: provider=\"not found\" and roles=null with the site last updated 2019-10, so there is no ATS to wire (wire_board=false) and the entity may be dormant or mid-rename - file it as a supplier and point it at no job board. Confidence medium: supplier-vs-not_a_company is the only live question, and the project's own precedent on course providers and trade bodies resolves it toward supplier."
+   "verifier_why": "The call leans on the \"NONPROFIT\" flag alone, and that is the wrong branch of the rules for this entity type. The project's supplier definition explicitly enumerates \"course providers\" and \"trade bodies\" as things that get FILED as suppliers, and the cited precedent says the same about consultancies and course providers. An erosion-and-sediment-control inspector certification body (CISEC) is exactly that: it sells certification exams, renewals and training to inspectors, contractors and agency staff. The row has sells=yes and a named public buyer (\"Government agencies and municipal staff\"), so it is a selling organization - not a government agency, not a brand or product line, and not a pure membership association with nothing to sell. Tax status by itself does not make a training/credentialing seller a non-company; most trade bodies the project already files as suppliers are nonprofits too, and \"supplier is not a rejection\" is the whole point of that bucket. It is plainly NOT a vendor - there is no govtech product or platform here, only certification and courses - so it must never get a real sector/category on the board. The sector/category chosen is fine for a supplier filing (erosion/stormwater control is Public Works; Suppliers & Services is the right bucket), which is itself a tell that the record was muddled: a not_a_company record never becomes a company record, so giving it a sector and category is self-contradictory. Two cautions from the row itself, not invented: provider=\"not found\" and roles=null with the site last updated 2019-10, so there is no ATS to wire (wire_board=false) and the entity may be dormant or mid-rename - file it as a supplier and point it at no job board. Confidence medium: supplier-vs-not_a_company is the only live question, and the project's own precedent on course providers and trade bodies resolves it toward supplier.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit certification body",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ecoraster North America",
    "website": "https://ecorastergrid.com/",
    "description": "Recycled-plastic permeable paving grids for driveways, parking, road shoulders, and municipal stormwater infiltration",
    "is_govtech": false,
-   "is_govtech_why": "Permeable paving grid systems are a manufactured building material sold to contractors and property owners, which files as a supplier.",
+   "is_govtech_why": "reader: Permeable paving grids",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Permeable paving grids",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EJ",
@@ -275,48 +365,72 @@
    "website": "https://www.epgco.com/",
    "description": "Pumps, control panels, and SCADA monitoring for landfill leachate and gas, plus stormwater and surface water pumping",
    "is_govtech": false,
-   "is_govtech_why": "Pump systems and controls for landfill leachate and stormwater are equipment sold into public works, not a govtech product or platform, so it files as a supplier alongside the Kurita water-treatment-hardware precedent.",
+   "is_govtech_why": "reader: Pump systems and controls hardware",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Pump systems and controls hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fabco Industries, Inc.",
    "website": "https://fabco-industries.com/",
    "description": "Catch basin insert filters and stormwater filtration devices capturing trash, sediment, and pollutants for municipalities and utilities",
    "is_govtech": false,
-   "is_govtech_why": "A manufacturer of connector pipe screens, StormSack and inlet filters whose product reaches agencies through certified partner installers is a hardware supplier, not a govtech vendor.",
+   "is_govtech_why": "reader: Inlet filter hardware manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Inlet filter hardware manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ferguson Waterworks",
    "website": "https://www.fergusonwaterworks.com/",
    "description": "Waterworks distributor: pipe, valves and fittings, stormwater and geosynthetic materials, and meters for utilities, municipalities, and contractors",
    "is_govtech": false,
-   "is_govtech_why": "A waterworks distributor selling municipal and investor-owned utility product lines is a reseller/distributor, exactly the DLT precedent, so it files as a supplier rather than a govtech vendor.",
+   "is_govtech_why": "reader: Waterworks distributor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Waterworks distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Foley Products, A CMC Precast Business",
    "website": "https://www.foleyproducts.com/",
    "description": "Precast concrete pipe, box culverts, manholes, inlets, utility vaults, and stormwater detention for infrastructure and site projects",
    "is_govtech": false,
-   "is_govtech_why": "Precast concrete pipe, box culvert and structures sold to contractors and DOTs is precisely the precast-maker case the project files as a supplier, with agencies as specifiers rather than software buyers.",
+   "is_govtech_why": "reader: Precast concrete manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Precast concrete manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Forerunner",
@@ -335,72 +449,108 @@
    "website": "https://frogcreek.partners/",
    "description": "Gutter Bin catch basin and curb inlet stormwater filters, plus cleaning and pollution-data service, for municipal public works",
    "is_govtech": false,
-   "is_govtech_why": "The Gutter Bin is a manufactured stormwater filtration device with a cleaning-and-reporting service attached - physical drainage hardware sold to cities, not a govtech product or platform - so it files as a supplier even though municipalities buy it directly.",
+   "is_govtech_why": "reader: Stormwater filtration device plus cleaning service",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater filtration device plus cleaning service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gator Guard",
    "website": "https://gatorguard.com/",
    "description": "Sediment control wattles, weighted gutter wattles, and foam logs for construction-site and roadway erosion control",
    "is_govtech": false,
-   "is_govtech_why": "A wattle and foam-log manufacturer selling through a dealer and installer network to erosion-control contractors; the supplier shape is clear but the row names no public buyer at all, so its SLED relevance is unestablished rather than disproven.",
+   "is_govtech_why": "reader: Erosion control wattles manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "low",
    "verifier": "agree",
-   "verifier_why": "Tried to break this three ways; it holds.\n\n(a) Vendor upgrade? No. The row describes physical goods — sediment control wattles, weighted gutter wattles, foam logs — moved through a \"Dealers and Installers\" page. That is a manufacturer with a two-step channel, the exact shape the project already files as supplier (Kurita hardware, DLT reseller). No product, platform, software or subscription surface appears anywhere in the row. The stated buyer is construction/erosion-control contractors, with public agencies at most specifying via highway and roadway work — the precedent line \"municipalities only as specifiers\" is directly on point.\n\n(b) Wrong sector/category? Public Works > Suppliers & Services is the right home. Sediment and erosion control is stormwater and streets work; the row's own hooks are \"highway, residential and industrial site development\" and \"IDEAL FOR ROADWAY WORK.\" Competing homes are weaker: Transit & Parking is riders, fare and curb systems, not roadway runoff control; Utilities & Energy is grid, billing and broadband. Water and Streets both sit under Public Works, so the sector is right either way, and Suppliers & Services is the mandated category for a supplier.\n\n(c) Should it be not_a_company? This is the only live challenge, and it does not clear the bar. The flags — no About page, no address, no news, facts sourced from BBB — are consistent with a brand page for a product line rather than an employer, and \"Gator Guard\" reads like a product name. But a BBB business record is evidence of a distinct entity, parent is null, and nothing in the row identifies an owning manufacturer, so calling it a brand would be inventing the fact that not_a_company requires. Filing as a supplier is the correct, reversible call. Flag for the wiring step: if a job board is ever found on this domain, check it for parent or sibling ownership first, given how thin the site is.\n\nOne caveat on the other researcher's phrasing, not the outcome: they treat the absence of a named public buyer as leaving SLED relevance \"unestablished.\" Under the project's rules that is simply the \"unclear\" state, not a mark against the record — suppliers are filed, not rejected — so it changes nothing about the placement. Confidence: medium-high on supplier and on Public Works; the residual doubt is entity-vs-brand, not shape."
+   "verifier_why": "Tried to break this three ways; it holds.\n\n(a) Vendor upgrade? No. The row describes physical goods — sediment control wattles, weighted gutter wattles, foam logs — moved through a \"Dealers and Installers\" page. That is a manufacturer with a two-step channel, the exact shape the project already files as supplier (Kurita hardware, DLT reseller). No product, platform, software or subscription surface appears anywhere in the row. The stated buyer is construction/erosion-control contractors, with public agencies at most specifying via highway and roadway work — the precedent line \"municipalities only as specifiers\" is directly on point.\n\n(b) Wrong sector/category? Public Works > Suppliers & Services is the right home. Sediment and erosion control is stormwater and streets work; the row's own hooks are \"highway, residential and industrial site development\" and \"IDEAL FOR ROADWAY WORK.\" Competing homes are weaker: Transit & Parking is riders, fare and curb systems, not roadway runoff control; Utilities & Energy is grid, billing and broadband. Water and Streets both sit under Public Works, so the sector is right either way, and Suppliers & Services is the mandated category for a supplier.\n\n(c) Should it be not_a_company? This is the only live challenge, and it does not clear the bar. The flags — no About page, no address, no news, facts sourced from BBB — are consistent with a brand page for a product line rather than an employer, and \"Gator Guard\" reads like a product name. But a BBB business record is evidence of a distinct entity, parent is null, and nothing in the row identifies an owning manufacturer, so calling it a brand would be inventing the fact that not_a_company requires. Filing as a supplier is the correct, reversible call. Flag for the wiring step: if a job board is ever found on this domain, check it for parent or sibling ownership first, given how thin the site is.\n\nOne caveat on the other researcher's phrasing, not the outcome: they treat the absence of a named public buyer as leaving SLED relevance \"unestablished.\" Under the project's rules that is simply the \"unclear\" state, not a mark against the record — suppliers are filed, not rejected — so it changes nothing about the placement. Confidence: medium-high on supplier and on Public Works; the residual doubt is entity-vs-brand, not shape.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Erosion control wattles manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HalenHardy",
    "website": "https://www.halenhardy.com/",
    "description": "Spill and sediment control products, absorbents, and stormwater filter socks for utilities and industrial sites",
    "is_govtech": false,
-   "is_govtech_why": "A spill, absorbent and sediment-control products maker whose named customers are overwhelmingly investor-owned electric utilities and industrial sites, with a single municipal logo - equipment, not a govtech product.",
+   "is_govtech_why": "reader: Spill and sediment control products",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Spill and sediment control products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Headwater Technologies LLC",
    "website": "https://www.headwatertech.com/",
    "description": "Peat-based treatment media and treatment systems for copper and zinc stormwater, mining, and dewatering compliance",
    "is_govtech": false,
-   "is_govtech_why": "Peat-based stormwater filtration media sold to contractors is a raw-materials manufacturer; the row names no public buyer, which is unclear rather than no, and unclear still files as a supplier here.",
+   "is_govtech_why": "reader: Filtration media manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Filtration media manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hinterland Group",
    "website": "https://www.hinterlandgroup.com/",
    "description": "Pipeline rehab contractor: CIPP lining, CCTV inspection, manhole rehab, and bypass pumping for municipal and private sewer and storm systems",
    "is_govtech": false,
-   "is_govtech_why": "An owner-run field contractor performing cured-in-place pipe lining, lift station and vacuum sewer work is a field services firm, which the project files as a supplier no matter how much public work it holds.",
+   "is_govtech_why": "reader: Pipe lining field contractor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Pipe lining field contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HUBER Technology, LLC (US subsidiary of HUBER SE)",
    "website": "https://www.huber-se.com/en-us/",
    "description": "Stainless steel machines and plants for municipal and industrial water, wastewater, and sludge treatment",
    "is_govtech": false,
-   "is_govtech_why": "Screening, grit and sludge treatment equipment for municipal wastewater utilities is process hardware, the same category as the Kurita water-treatment precedent, so it files as a supplier.",
+   "is_govtech_why": "reader: Wastewater process equipment",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Wastewater process equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hyfi",
@@ -431,24 +581,36 @@
    "website": "https://www.invisiblestructures.com/",
    "description": "Porous grass and gravel pavers, underground stormwater storage, and erosion control for fire lanes, parking, and parks",
    "is_govtech": false,
-   "is_govtech_why": "A porous-paver and underground-storage manufacturer specified by designers and installed by contractors, with public agencies appearing as project owners rather than as its buyers.",
+   "is_govtech_why": "reader: Porous paver manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Porous paver manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AquaShield, Inc. (operating as Komline-AquaShield)",
    "website": "https://www.aquashieldinc.com/",
    "description": "Stormwater treatment units for site developers and municipalities: hydrodynamic separators, filtration systems, and biofiltration",
    "is_govtech": false,
-   "is_govtech_why": "Hydrodynamic separators and stormwater filtration structures are manufactured treatment devices sold to municipalities and contractors, which files as a supplier rather than a govtech vendor.",
+   "is_govtech_why": "reader: Stormwater treatment hardware",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater treatment hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lane Enterprises, LLC",
@@ -467,132 +629,198 @@
    "website": "https://www.madewell.net/",
    "description": "Protective coatings and concrete restoration products for manhole and pipe rehab, industrial floors, and aquarium linings",
    "is_govtech": false,
-   "is_govtech_why": "A protective-coatings manufacturer for manhole and pipe rehabilitation sold through contractors and certified applicators, with municipal sewer and storm agencies as end users and engineers as specifiers - textbook supplier.",
+   "is_govtech_why": "reader: Protective coatings manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Protective coatings manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MKB Company LLC",
    "website": "https://www.mkbcompany.com/",
    "description": "Erosion and sediment control products for contractors and engineers: filter socks, silt fence, inlet filters, blankets, and green infrastructure",
    "is_govtech": false,
-   "is_govtech_why": "An erosion-control and geosynthetics distributor selling to contractors is a distributor, not a govtech product company, and the row names no public buyer.",
+   "is_govtech_why": "reader: Erosion control distributor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Erosion control distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NEXT Infras USA (NEXT, a division of Groupe Brunet)",
    "website": "https://www.nextinfras.com/",
    "description": "PVC pipe and stormwater systems for municipal and site projects: EZstorm+ detention/infiltration modules, SDD3 separators, conduits",
    "is_govtech": false,
-   "is_govtech_why": "A stormwater infrastructure products manufacturer selling to contractors, with no public buyer stated, is a supplier rather than a govtech vendor.",
+   "is_govtech_why": "reader: Stormwater infrastructure products manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Stormwater infrastructure products manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nexterra Environmental",
    "website": "https://www.nexterraenvironmental.com/",
    "description": "Erosion control and stormwater product distributor for developers, contractors, and municipalities, plus BMP inspection and maintenance",
    "is_govtech": false,
-   "is_govtech_why": "Erosion-control distribution plus field inspection and maintenance crews is distribution and contracted services, not a product company, even though municipalities are named buyers.",
+   "is_govtech_why": "reader: Distribution and field maintenance services",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Distribution and field maintenance services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PaveDrain",
    "website": "https://www.pavedrain.com/",
    "description": "Permeable paving block system for streets, alleys, and parking lots: stormwater infiltration and storage, plus Pave Tank modules",
    "is_govtech": false,
-   "is_govtech_why": "A permeable articulating concrete block paving system is a manufactured construction product installed on municipal projects, so it files as a supplier despite municipalities being named buyers.",
+   "is_govtech_why": "reader: Permeable paving system manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Permeable paving system manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Precip",
    "website": "https://precip.ai/",
    "description": "Hyperlocal rainfall measurement and forecast app and API: rain alerts, multi-site rainfall history, and data export for field teams",
-   "is_govtech": null,
-   "is_govtech_why": "The row does not support a vendor call: the identity match is unconfirmed and the site names no stormwater use and no public buyer, so it is filed rather than boarded and should be held for verification.",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Precipitation data and analytics product; public-buyer fit to verify",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "low",
    "verifier": "unsupported",
-   "verifier_why": "The reasoning refutes itself. It says \"the row does not support a vendor call: the identity match is unconfirmed and the site names no stormwater use and no public buyer\" — and then makes a positive placement anyway. Supplier is not a low-confidence parking space; it is a substantive business-model finding (pipe and precast, distributors, resellers, contractors, consultancies, course providers, guards — DLT, Kurita, Allied Universal). Nothing in this row puts Precip in that class. The row says offering=\"software/SaaS\" and desc=\"Rainfall data app\": a three-person YC software product is the opposite of the supplier archetype. On the row's own facts the only two defensible readings are (1) a govtech data product, which would be a VENDOR, or (2) a consumer/ag/insurance weather-data startup with no public buyer at all — and the row cannot distinguish them, so neither call can be made.\n\nThe sector is worse than the outcome. \"Public Works\" rests on one thing: the run label \"stormcon\". The row's own evidence cuts against it — why=\"Site never mentions stormwater\", sells=\"unclear\", buyer=\"Unknown\". Filing it under Public Works asserts a stormwater/water application the row explicitly says the site never claims. That is exactly failure mode (b): a sector the actual product is not shown to serve, inherited from the source list rather than from the company.\n\nAnd the identity is not established. The flags say plainly: \"UNCERTAIN MATCH: only match found is precip.ai, a three-person YC rainfall-data app; getprecip.com failed robots.txt. UNCONFIRMED.\" The StormCon exhibitor may well be getprecip.com — a different entity that was never read. Filing under the unverified URL creates a company record for a possibly wrong company, with a website, a sector and a category attached to it. A supplier record is not harmless: the project keeps ~4,745 of them visible and promotable, so a misattributed one is a live wrong record, not a quiet archive.\n\nIf verification later shows precip.ai is the exhibitor and it sells rainfall/precipitation data to municipal stormwater or utility departments, the correct call is vendor, Public Works > Water — a data platform sold to a public works department is a product company, not a supplier, so \"Suppliers & Services\" would be wrong in that case too. If it turns out to be the consumer/ag rainfall app the description suggests, with no public buyer named, it does not belong on the board in any bucket. Either way the current row supports neither call, and \"unclear\" is the honest answer until someone reaches getprecip.com and confirms which Precip exhibited and who buys it.\n\nSeparately, there is nothing lost by holding it: provider=\"not found\" and roles=null, so there is no job board to wire, and at three people there would be no SLED sales openings for a salesperson to see even if the match were confirmed."
+   "verifier_why": "The reasoning refutes itself. It says \"the row does not support a vendor call: the identity match is unconfirmed and the site names no stormwater use and no public buyer\" — and then makes a positive placement anyway. Supplier is not a low-confidence parking space; it is a substantive business-model finding (pipe and precast, distributors, resellers, contractors, consultancies, course providers, guards — DLT, Kurita, Allied Universal). Nothing in this row puts Precip in that class. The row says offering=\"software/SaaS\" and desc=\"Rainfall data app\": a three-person YC software product is the opposite of the supplier archetype. On the row's own facts the only two defensible readings are (1) a govtech data product, which would be a VENDOR, or (2) a consumer/ag/insurance weather-data startup with no public buyer at all — and the row cannot distinguish them, so neither call can be made.\n\nThe sector is worse than the outcome. \"Public Works\" rests on one thing: the run label \"stormcon\". The row's own evidence cuts against it — why=\"Site never mentions stormwater\", sells=\"unclear\", buyer=\"Unknown\". Filing it under Public Works asserts a stormwater/water application the row explicitly says the site never claims. That is exactly failure mode (b): a sector the actual product is not shown to serve, inherited from the source list rather than from the company.\n\nAnd the identity is not established. The flags say plainly: \"UNCERTAIN MATCH: only match found is precip.ai, a three-person YC rainfall-data app; getprecip.com failed robots.txt. UNCONFIRMED.\" The StormCon exhibitor may well be getprecip.com — a different entity that was never read. Filing under the unverified URL creates a company record for a possibly wrong company, with a website, a sector and a category attached to it. A supplier record is not harmless: the project keeps ~4,745 of them visible and promotable, so a misattributed one is a live wrong record, not a quiet archive.\n\nIf verification later shows precip.ai is the exhibitor and it sells rainfall/precipitation data to municipal stormwater or utility departments, the correct call is vendor, Public Works > Water — a data platform sold to a public works department is a product company, not a supplier, so \"Suppliers & Services\" would be wrong in that case too. If it turns out to be the consumer/ag rainfall app the description suggests, with no public buyer named, it does not belong on the board in any bucket. Either way the current row supports neither call, and \"unclear\" is the honest answer until someone reaches getprecip.com and confirms which Precip exhibited and who buys it.\n\nSeparately, there is nothing lost by holding it: provider=\"not found\" and roles=null, so there is no job board to wire, and at three people there would be no SLED sales openings for a salesperson to see even if the match were confirmed.",
+   "read": {
+    "verdict": "vendor",
+    "why": "Precipitation data and analytics product; public-buyer fit to verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Prinsco, Inc.",
    "website": "https://www.prinsco.com/",
    "description": "HDPE drainage pipe, stormwater chambers, and water quality units for agricultural drainage and stormwater contractors and engineers",
    "is_govtech": false,
-   "is_govtech_why": "HDPE drainage pipe and stormwater chambers sold to agricultural and municipal contractors are manufactured products, so this files as a supplier, not a govtech vendor.",
+   "is_govtech_why": "reader: Drainage pipe manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Drainage pipe manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Red Valve Company, Inc.",
    "website": "https://www.redvalve.com/",
    "description": "Pinch valves, check valves, and Tideflex backflow valves for municipal water, wastewater, stormwater outfalls, and industrial plants",
    "is_govtech": false,
-   "is_govtech_why": "A valve and backflow-device manufacturer selling hardware to water and wastewater utilities, which is the classic supplier profile, not a govtech product company.",
+   "is_govtech_why": "reader: Valve manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Valve manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "REHAU",
    "website": "https://www.rehau.com/us-en",
    "description": "Polymer building products: PEXa plumbing and radiant piping, MUNICIPEX water service lines, and RAUSIKKO stormwater storage crates",
    "is_govtech": false,
-   "is_govtech_why": "A global polymer piping and building-products maker whose named customers are contractors and distributors, so at best it is a supplier, and the row names no public buyer at all.",
+   "is_govtech_why": "reader: Polymer piping manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "low",
    "verifier": "agree",
-   "verifier_why": "I tried to break this three ways and it holds. (1) Outcome: REHAU is a polymer extrusion manufacturer (pipe, window/building profiles, furniture and industrial polymers) whose row-stated buyers are \"Contractors and distributors,\" with no public buyer named anywhere in the row. That is exactly the project's own precedent pattern — a Kurita-style hardware maker, with municipalities at most specifying the pipe. It is not a govtech product or platform company, so \"vendor\" is not defensible; \"not_a_company\" is also wrong, because REHAU is a real employer with its own careers system, not a brand or product line. Supplier is the correct file, and filing it keeps it visible and promotable. (2) Sector: the offering is \"manufactured products (pipe, structures, treatment devices)\" from a stormwater run — municipal stormwater/sewer/water infrastructure. Public Works owns Water, so Public Works is the right home. The plausible alternative, Utilities & Energy, covers grid, broadband and billing, not buried stormwater pipe, so it would be a worse fit; Housing & Community Dev would only apply if we were filing the window-profile/building-products line, which is not what this row describes. (3) Category: Suppliers & Services is the only correct category for a supplier outcome. Two cautions that do not change the placement but should ride with the record: the ATS (ukg/UltiPro) sits under parent \"REHAU Group,\" so wiring it risks reporting parent/sibling requisitions as this company's — treat wire_board as false unless the instance is proven scoped to the US entity; and a global polymer group's UKG instance will be dominated by plant, extrusion and automotive roles rather than SLED sales, which is board-noise risk on top of the parent problem."
+   "verifier_why": "I tried to break this three ways and it holds. (1) Outcome: REHAU is a polymer extrusion manufacturer (pipe, window/building profiles, furniture and industrial polymers) whose row-stated buyers are \"Contractors and distributors,\" with no public buyer named anywhere in the row. That is exactly the project's own precedent pattern — a Kurita-style hardware maker, with municipalities at most specifying the pipe. It is not a govtech product or platform company, so \"vendor\" is not defensible; \"not_a_company\" is also wrong, because REHAU is a real employer with its own careers system, not a brand or product line. Supplier is the correct file, and filing it keeps it visible and promotable. (2) Sector: the offering is \"manufactured products (pipe, structures, treatment devices)\" from a stormwater run — municipal stormwater/sewer/water infrastructure. Public Works owns Water, so Public Works is the right home. The plausible alternative, Utilities & Energy, covers grid, broadband and billing, not buried stormwater pipe, so it would be a worse fit; Housing & Community Dev would only apply if we were filing the window-profile/building-products line, which is not what this row describes. (3) Category: Suppliers & Services is the only correct category for a supplier outcome. Two cautions that do not change the placement but should ride with the record: the ATS (ukg/UltiPro) sits under parent \"REHAU Group,\" so wiring it risks reporting parent/sibling requisitions as this company's — treat wire_board as false unless the instance is proven scoped to the US entity; and a global polymer group's UKG instance will be dominated by plant, extrusion and automotive roles rather than SLED sales, which is board-noise risk on top of the parent problem.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Polymer piping manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Santa Fe Water Systems",
    "website": "https://sfwsystems.com/",
    "description": "Prefabricated piping assemblies, stormwater treatment and pump systems for Southern California municipal, industrial, and data center projects",
    "is_govtech": false,
-   "is_govtech_why": "Sells water and wastewater equipment to municipal utilities, which is equipment supply into the public sector rather than a govtech product.",
+   "is_govtech_why": "reader: Water equipment supplier",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Water equipment supplier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SEKISUI CHEMICAL CO., LTD.",
    "website": "https://www.sekisuichemical.com/",
    "description": "Japanese plastics group: resins, interlayer films, pipe systems and pipeline renewal, modular housing, and medical products",
    "is_govtech": false,
-   "is_govtech_why": "A Japanese chemicals and plastics conglomerate whose business is mostly electronics, automotive, housing and medical, with pipe systems and pipeline renewal as one segment - a materials manufacturer, not a govtech vendor.",
+   "is_govtech_why": "reader: Chemicals and plastics conglomerate",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Chemicals and plastics conglomerate",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Silt Tracker",
@@ -611,36 +839,54 @@
    "website": "https://www.siouxchief.com/",
    "description": "Plumbing products for wholesalers and contractors: drains, trench drains, PEX, valves, hangers, and outlet boxes",
    "is_govtech": false,
-   "is_govtech_why": "A plumbing products manufacturer selling through wholesalers and contractors with no public buyer named anywhere in the row - the weakest supplier in this batch, filed rather than rejected because it is still a real employer, not an agency or a brand.",
+   "is_govtech_why": "reader: Plumbing products manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "low",
    "verifier": "agree",
-   "verifier_why": "I tried to break this three ways and it holds. (1) Not a vendor: Sioux Chief is a rough-plumbing products manufacturer — pipe fittings, drains, carriers, water-hammer arrestors — sold through wholesalers and contractors. The row's own offering field says \"manufactured products (pipe, structures, treatment devices)\" and buyer says \"Plumbing wholesalers and contractors.\" That is the project's precedent case almost verbatim: a manufacturer whose buyers are contractors, engineers and distributors, with municipalities only as specifiers, is a supplier (same shelf as Kurita's water-treatment hardware and the pipe/precast makers). There is no product, platform, software, or subscription in the row, so \"vendor\" is not available. (2) Not not_a_company: it is a real, privately held employer with its own Paylocity ATS and no parent listed, so there is no parent-board trap and no brand/agency/nonprofit problem — filing beats rejecting. (3) Sector: this is the only place I had real doubt. Sioux Chief's line is building-side plumbing, not municipal mains or stormwater treatment, so an argument exists for a buildings/facilities home rather than Public Works. But among the valid sectors there is no buildings/facilities option, the row was harvested on the stormcon (stormwater) run, and pipe/drainage/treatment hardware sits closest to Public Works > Water. Public Works > Suppliers & Services is therefore the correct catch-all — Utilities & Energy would be worse (that is grid, lighting, billing, broadband) and General Gov worse still. The reason text is also honest about the weakness rather than inventing a public buyer, which is the right call given the row names none. Note for the record, not a defect in the placement: nothing in this row supports wiring the board — no roles count, and no evidence of SLED sales postings — so this should stay a filed supplier record and not be pointed at a job feed on this evidence."
+   "verifier_why": "I tried to break this three ways and it holds. (1) Not a vendor: Sioux Chief is a rough-plumbing products manufacturer — pipe fittings, drains, carriers, water-hammer arrestors — sold through wholesalers and contractors. The row's own offering field says \"manufactured products (pipe, structures, treatment devices)\" and buyer says \"Plumbing wholesalers and contractors.\" That is the project's precedent case almost verbatim: a manufacturer whose buyers are contractors, engineers and distributors, with municipalities only as specifiers, is a supplier (same shelf as Kurita's water-treatment hardware and the pipe/precast makers). There is no product, platform, software, or subscription in the row, so \"vendor\" is not available. (2) Not not_a_company: it is a real, privately held employer with its own Paylocity ATS and no parent listed, so there is no parent-board trap and no brand/agency/nonprofit problem — filing beats rejecting. (3) Sector: this is the only place I had real doubt. Sioux Chief's line is building-side plumbing, not municipal mains or stormwater treatment, so an argument exists for a buildings/facilities home rather than Public Works. But among the valid sectors there is no buildings/facilities option, the row was harvested on the stormcon (stormwater) run, and pipe/drainage/treatment hardware sits closest to Public Works > Water. Public Works > Suppliers & Services is therefore the correct catch-all — Utilities & Energy would be worse (that is grid, lighting, billing, broadband) and General Gov worse still. The reason text is also honest about the weakness rather than inventing a public buyer, which is the right call given the row names none. Note for the record, not a defect in the placement: nothing in this row supports wiring the board — no roles count, and no evidence of SLED sales postings — so this should stay a filed supplier record and not be pointed at a job feed on this evidence.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plumbing products manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Soleno",
    "website": "https://soleno.com/en/",
    "description": "HDPE pipe, culverts, geocellular retention, and stormwater treatment units for infrastructure, agricultural, and residential drainage",
    "is_govtech": false,
-   "is_govtech_why": "Makes thermoplastic drainage pipe and stormwater management products for municipalities and contractors - a pipe manufacturer, which this project files as a supplier by precedent.",
+   "is_govtech_why": "reader: Drainage pipe manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Drainage pipe manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stalker Radar (Applied Concepts, Inc.)",
    "website": "https://www.stalkerradar.com/",
    "description": "Police radar and lidar, photo enforcement cameras, and radar speed signs for law enforcement and traffic agencies",
-   "is_govtech": false,
-   "is_govtech_why": "Sells speed radar, lidar and radar speed signs directly to law enforcement agencies, cities and schools on cooperative contracts - the agency is the buyer, not a specifier, so this is a public safety vendor despite arriving on a stormwater exhibitor list.",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Speed radar, lidar and radar signs sold to law enforcement",
    "vertical": null,
    "sector": "Public Safety",
    "confidence": "medium",
    "verifier": "wrong_outcome",
-   "verifier_why": "Sector is right (police speed enforcement, not stormwater), but the outcome rests on a test the project does not use. The researcher's reason is \"the agency is the buyer, not a specifier, so this is a public safety vendor.\" Buying direct from the agency is not what makes a vendor: Allied Universal sells guards straight to public agencies and Kurita sells water-treatment hardware to utilities, and both are filed as SUPPLIERS in this project's own precedent. Direct agency purchase only rules OUT the specifier-only pattern; it does not rule IN a govtech product company. The vendor test is whether this is a govtech PRODUCT or PLATFORM company, and on this row it is not. The row's own offering field says \"manufactured products,\" and the desc is \"police speed radar, lidar, speed trailers and radar speed signs\" - hardware instruments, exactly the rubric's explicit supplier bucket (\"equipment manufacturers\"). Nothing in the row names software, a platform, a hosted data service, a subscription or an agency-facing application; the only sales-motion evidence is cooperative contracts (HGACBuy, NY OGS), which is how commodity public-safety equipment (firearms, uniforms, vehicle upfits) is bought and is therefore neutral-to-negative evidence for \"product company.\" Reaching \"vendor\" requires inventing a software line, which is forbidden. Correct filing is Public Safety > Suppliers & Services - a filing, not a rejection; it stays visible and promotable. Two secondary notes: (1) \"Stalker Radar\" is a brand of Applied Concepts, Inc. and the parent field repeats that same legal entity, so the prevue board is the employer's own, not a parent's or sibling's - no Rave/Motorola trap here, wire_board is fine on that ground; (2) roles is null, so the row shows no actual SLED sales opening, and confidence in anything beyond the supplier filing should be low."
+   "verifier_why": "Sector is right (police speed enforcement, not stormwater), but the outcome rests on a test the project does not use. The researcher's reason is \"the agency is the buyer, not a specifier, so this is a public safety vendor.\" Buying direct from the agency is not what makes a vendor: Allied Universal sells guards straight to public agencies and Kurita sells water-treatment hardware to utilities, and both are filed as SUPPLIERS in this project's own precedent. Direct agency purchase only rules OUT the specifier-only pattern; it does not rule IN a govtech product company. The vendor test is whether this is a govtech PRODUCT or PLATFORM company, and on this row it is not. The row's own offering field says \"manufactured products,\" and the desc is \"police speed radar, lidar, speed trailers and radar speed signs\" - hardware instruments, exactly the rubric's explicit supplier bucket (\"equipment manufacturers\"). Nothing in the row names software, a platform, a hosted data service, a subscription or an agency-facing application; the only sales-motion evidence is cooperative contracts (HGACBuy, NY OGS), which is how commodity public-safety equipment (firearms, uniforms, vehicle upfits) is bought and is therefore neutral-to-negative evidence for \"product company.\" Reaching \"vendor\" requires inventing a software line, which is forbidden. Correct filing is Public Safety > Suppliers & Services - a filing, not a rejection; it stays visible and promotable. Two secondary notes: (1) \"Stalker Radar\" is a brand of Applied Concepts, Inc. and the parent field repeats that same legal entity, so the prevue board is the employer's own, not a parent's or sibling's - no Rave/Motorola trap here, wire_board is fine on that ground; (2) roles is null, so the row shows no actual SLED sales opening, and confidence in anything beyond the supplier filing should be low.",
+   "read": {
+    "verdict": "vendor",
+    "why": "Speed radar, lidar and radar signs sold to law enforcement",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stetco",
@@ -683,12 +929,18 @@
    "website": "https://swimsclean.com/stormtek/",
    "description": "Stainless connector pipe screens for California full trash capture compliance, sold by SWIMS with storm drain maintenance services",
    "is_govtech": false,
-   "is_govtech_why": "StormTek is a product of SWIMS (itself acquired by Apex Companies), so the row names a brand, not an employer - and the only buyers named are private property managers and HOA boards.",
+   "is_govtech_why": "reader: Brand of SWIMS, a stormwater maintenance services firm",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": "wrong_outcome",
-   "verifier_why": "The brand/not-a-company call is aimed at the wrong half of the row. \"StormTek\" is indeed a product line, but the row's website is swimsclean.com - SWIMS's own site - and the row name already carries the operating company. SWIMS is a real employer: a Northern/Southern California field maintenance contractor doing storm drain, catch basin and vault cleaning, with 3 roles posted on its OWN careers page (provider: \"own page, no ATS detected\"), so the requisitions belong to the operating company, not to a brand and not to a parent board. not_a_company is reserved for agencies, nonprofits/associations, and brands with no employer behind them; here the employer is right there and the defect is a naming defect. The fix is to rename the record to SWIMS (StormTek) and file it, not to delete it. On the project's own precedent - field contractors, maintenance crews, consultancies filed as suppliers, never rejected - SWIMS is a textbook Public Works / Suppliers & Services entry: storm drain, catch basin and vault maintenance is public-works infrastructure work even where the named buyers are private. It is emphatically not a vendor (no govtech product or platform; manufactured pipe/structures/treatment devices plus a cleaning service), so the reviewer's sector/category is the right destination - they just attached it to an outcome that throws the record away. Two secondary problems: (1) assigning a sector and category to a not_a_company outcome is internally contradictory, since such records are never supposed to become company records; (2) the private-buyer argument (\"property managers and HOA boards\") is a weak basis for rejection under the project's own rule that a row naming no public buyer is \"unclear,\" never \"no\" - sells is literally recorded as \"unclear,\" and the reason statement leans on it as if it were a proven negative. Separately, wire_board should be FALSE regardless of outcome: SWIMS was acquired by Apex Companies in May 2024, so hiring is likely to route to Apex's board, and reporting a parent's requisitions as the subsidiary's is the exact Rave/Motorola and RoadBotics/Michelin failure this project has been burned by; the 3 roles on a non-ATS page show no evidence of a SLED sales seat. Confidence: medium - judging only from the row, which names no public-agency buyer, so this sits at the boundary if the project applies a hard public-buyer test. But the choice between supplier and not_a_company is not close: an employer with its own careers page is not a brand."
+   "verifier_why": "The brand/not-a-company call is aimed at the wrong half of the row. \"StormTek\" is indeed a product line, but the row's website is swimsclean.com - SWIMS's own site - and the row name already carries the operating company. SWIMS is a real employer: a Northern/Southern California field maintenance contractor doing storm drain, catch basin and vault cleaning, with 3 roles posted on its OWN careers page (provider: \"own page, no ATS detected\"), so the requisitions belong to the operating company, not to a brand and not to a parent board. not_a_company is reserved for agencies, nonprofits/associations, and brands with no employer behind them; here the employer is right there and the defect is a naming defect. The fix is to rename the record to SWIMS (StormTek) and file it, not to delete it. On the project's own precedent - field contractors, maintenance crews, consultancies filed as suppliers, never rejected - SWIMS is a textbook Public Works / Suppliers & Services entry: storm drain, catch basin and vault maintenance is public-works infrastructure work even where the named buyers are private. It is emphatically not a vendor (no govtech product or platform; manufactured pipe/structures/treatment devices plus a cleaning service), so the reviewer's sector/category is the right destination - they just attached it to an outcome that throws the record away. Two secondary problems: (1) assigning a sector and category to a not_a_company outcome is internally contradictory, since such records are never supposed to become company records; (2) the private-buyer argument (\"property managers and HOA boards\") is a weak basis for rejection under the project's own rule that a row naming no public buyer is \"unclear,\" never \"no\" - sells is literally recorded as \"unclear,\" and the reason statement leans on it as if it were a proven negative. Separately, wire_board should be FALSE regardless of outcome: SWIMS was acquired by Apex Companies in May 2024, so hiring is likely to route to Apex's board, and reporting a parent's requisitions as the subsidiary's is the exact Rave/Motorola and RoadBotics/Michelin failure this project has been burned by; the 3 roles on a non-ATS page show no evidence of a SLED sales seat. Confidence: medium - judging only from the row, which names no public-agency buyer, so this sits at the boundary if the project applies a hard public-buyer test. But the choice between supplier and not_a_company is not close: an employer with its own careers page is not a brand.",
+   "read": {
+    "verdict": "supplier",
+    "why": "Brand of SWIMS, a stormwater maintenance services firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "StormTrap",
@@ -707,48 +959,72 @@
    "website": "https://thompsonpipegroup.com/",
    "description": "Concrete pressure, steel, FRP, and reinforced concrete pipe and box culverts for water utilities, municipalities, and energy projects",
    "is_govtech": false,
-   "is_govtech_why": "Concrete and steel pressure pipe manufacturer selling to contractors, municipalities and water districts - pipe makers are the textbook supplier case in this project's precedent.",
+   "is_govtech_why": "reader: Pipe manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Pipe manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Titan Machinery",
    "website": "https://www.titanmachinery.com/",
    "description": "Case IH, New Holland, and CASE dealer network: ag and construction equipment, parts, and service; municipal sales via NASPO and Sourcewell",
    "is_govtech": false,
-   "is_govtech_why": "An agricultural and construction equipment dealership chain - a distributor, and the row names no public buyer at all, so it is filed as a supplier rather than placed as a vendor.",
+   "is_govtech_why": "reader: Equipment dealership",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment dealership",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Triverus",
    "website": "https://triverus.com/",
    "description": "Pervious pavement cleaning vehicles and contract surface-cleaning services for public works, airports, schools, and Navy flight decks",
    "is_govtech": false,
-   "is_govtech_why": "Builds pavement cleaning vehicles and sells contract cleaning service - equipment plus field services, so a supplier, though with unusually strong named public past performance.",
+   "is_govtech_why": "reader: Pavement cleaning vehicles and services",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Pavement cleaning vehicles and services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TrueNorth Steel",
    "website": "https://truenorthsteel.com",
    "description": "Fabricated steel maker: corrugated steel pipe for drainage and stormwater, bridges, storage tanks, and structural steel",
    "is_govtech": false,
-   "is_govtech_why": "Corrugated steel pipe, tank and bridge product manufacturer selling to DOTs, contractors and municipalities - manufactured infrastructure goods, not a govtech product.",
+   "is_govtech_why": "reader: Steel pipe and tank manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Steel pipe and tank manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TYMCO",
@@ -767,96 +1043,145 @@
    "website": "https://unitedstormwater.com",
    "description": "Stormwater services and trash capture devices: drain cleaning, inspection, maintenance, and catch basin connector pipe screens",
    "is_govtech": false,
-   "is_govtech_why": "A field services contractor doing catch basin and storm drain cleaning for California municipalities - services delivered on site, not a product or platform.",
+   "is_govtech_why": "reader: Storm drain cleaning contractor",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "medium",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Storm drain cleaning contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Upstream Technologies",
    "website": "https://upstreamtechnologies.us/",
    "description": "Stormwater treatment products for cities and watershed districts: SAFL Baffle sump insert, SKUNK garbage trap, MPD infiltrometer",
    "is_govtech": false,
-   "is_govtech_why": "A small Minnesota manufacturer of catch-basin inserts and sump baffles is a stormwater hardware maker specified by municipalities, not a govtech product company.",
+   "is_govtech_why": "reader: Catch basin insert manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Catch basin insert manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vodaland",
    "website": "https://vodaland-usa.com",
    "description": "Drainage and landscape products: trench and slot drains, catch basins, dry wells, permeable pavers, and erosion control",
    "is_govtech": false,
-   "is_govtech_why": "A drainage and landscape products seller running an ecommerce and marketplace channel aimed at homeowners, contractors and engineers, with municipalities named but secondary - a distributor-style supplier, not a govtech vendor.",
+   "is_govtech_why": "reader: Drainage products seller",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Drainage products seller",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wapro",
    "website": "https://wapro.com/us/",
    "description": "Flood and backflow protection valves for municipalities and utilities: inline check valves, flap and gate valves, flow regulators",
    "is_govtech": false,
-   "is_govtech_why": "Swedish maker of backflow and odour valves sold to contractors and municipal sewer systems - hardware, not a govtech platform.",
+   "is_govtech_why": "reader: Backflow valve manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Backflow valve manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waterline Renewal Technologies",
    "website": "https://waterlinerenewal.com",
    "description": "Trenchless sewer rehabilitation systems: CIPP lateral lining, UV-cure spot repair, and manhole rehab (Perma-Liner, LMK, APM, LightRay)",
    "is_govtech": false,
-   "is_govtech_why": "Trenchless pipe rehabilitation products (Perma-Liner, LightRay) sold to municipal sewer utilities and their contractors are consumable/manufactured goods, not a govtech product.",
+   "is_govtech_why": "reader: Pipe rehabilitation products",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Pipe rehabilitation products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wavin",
    "website": "https://wavin.us/",
    "description": "Plastic pipe and fittings plus stormwater systems (AquaCell crates, tree and blue-green roof retention) for engineers, contractors, and cities",
    "is_govtech": false,
-   "is_govtech_why": "Plastic pipe and stormwater systems sold through contractors and distributors - a building-products manufacturer, with no public buyer named.",
+   "is_govtech_why": "reader: Plastic pipe manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Plastic pipe manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Xerxes Corporation",
    "website": "https://xerxes.com/",
    "description": "Fiberglass underground tanks for fuel, water, and wastewater, plus stormwater chambers, vaults, and water-quality separators",
    "is_govtech": false,
-   "is_govtech_why": "Fiberglass underground storage tanks and stormwater systems sold to contractors and distributors is manufactured hardware, not a govtech product company.",
+   "is_govtech_why": "reader: Fiberglass tank manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiberglass tank manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zurn",
    "website": "https://www.zurn.com",
    "description": "Commercial building water products: site drainage, backflow and water safety, behind-the-wall systems, fixtures, fire protection",
    "is_govtech": false,
-   "is_govtech_why": "Water management, drainage and plumbing products sold to contractors, distributors and commercial building owners - a plumbing-products manufacturer whose public-sector work is specification-driven.",
+   "is_govtech_why": "reader: Plumbing and drainage products manufacturer",
    "vertical": null,
    "sector": "Public Works",
    "confidence": "high",
    "verifier": null,
-   "verifier_why": null
+   "verifier_why": null,
+   "read": {
+    "verdict": "supplier",
+    "why": "Plumbing and drainage products manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
- ]
+ ],
+ "quality_was": "researched"
 }

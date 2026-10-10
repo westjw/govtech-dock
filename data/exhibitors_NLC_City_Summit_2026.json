@@ -22,12 +22,6 @@
    "website": null
   },
   {
-   "name": "Advanced Search",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Airbnb",
    "website": null
   },
@@ -54,12 +48,6 @@
   {
    "name": "Amtrak",
    "website": null
-  },
-  {
-   "name": "Apple Safari",
-   "website": "http://support.apple.com/downloads/#safari",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Apptegy",
@@ -160,12 +148,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Check My Calendar",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Chick-fil-A, Inc.",
    "website": null,
    "is_govtech": false,
@@ -238,40 +220,16 @@
    "website": null
   },
   {
-   "name": "Enhanced",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Esri",
    "website": null
-  },
-  {
-   "name": "Exhibitor List",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "FlashVote",
    "website": null
   },
   {
-   "name": "Fri Nov, 20",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "GM Fleet",
    "website": null
-  },
-  {
-   "name": "Google Chrome",
-   "website": "https://www.google.com/chrome/browser/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "GoRail",
@@ -305,7 +263,13 @@
    "name": "Harvard University John F. Kennedy School of Government",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HayDay Services",
@@ -345,7 +309,13 @@
    "name": "International City/County Management Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Iteris, Inc.",
@@ -390,18 +360,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Mon Nov, 23",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Mozilla Firefox",
-   "website": "https://www.mozilla.org/en-US/firefox/new/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Munibit",
    "website": null
   },
@@ -428,16 +386,16 @@
    "website": null
   },
   {
-   "name": "NLC Hold",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "OBIC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; could be an organisation, cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Off Duty Management",
@@ -488,12 +446,6 @@
    "website": null
   },
   {
-   "name": "Print",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Public Restroom Company",
    "website": null
   },
@@ -504,12 +456,6 @@
   {
    "name": "Readyly",
    "website": null
-  },
-  {
-   "name": "Register as attendee",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Revize Government Websites",
@@ -526,12 +472,6 @@
   {
    "name": "Samsara",
    "website": null
-  },
-  {
-   "name": "Sat Nov, 21",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Schneider Geospatial",
@@ -568,20 +508,8 @@
    "website": null
   },
   {
-   "name": "Sun Nov, 22",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "TextByChoice",
    "website": null
-  },
-  {
-   "name": "Thu Nov, 19",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "TIPS - The Interlocal Purchasing System",
@@ -610,12 +538,6 @@
   {
    "name": "U.S. Green Building Council",
    "website": null
-  },
-  {
-   "name": "Upgrade Internet Explorer",
-   "website": "http://windows.microsoft.com/en-us/internet-explorer/download-ie",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "UTOPIA Fiber",
@@ -647,5 +569,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 16,
+ "quality_was": "good"
 }

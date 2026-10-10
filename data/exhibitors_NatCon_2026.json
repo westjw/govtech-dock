@@ -9,7 +9,13 @@
    "name": "988 Colorado Mental Health Line",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state crisis-line programme; government exhibitor",
+   "read": {
+    "verdict": "supplier",
+    "why": "state crisis-line programme; government exhibitor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AB Staffing Solutions",
@@ -19,7 +25,13 @@
    "name": "Accreditation Guru, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accreditation consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "accreditation consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Advanced Pharmacy Solutions (APS)",
@@ -31,19 +43,37 @@
    "name": "Aegis Sciences Corporation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: toxicology laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "toxicology laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aetna Medicaid",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: managed-care insurer",
+   "read": {
+    "verdict": "supplier",
+    "why": "managed-care insurer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Altruix",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy services company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Amazon Business",
@@ -57,13 +87,25 @@
    "name": "American Bedding MFG., Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: physical goods: mattresses and bedding",
+   "read": {
+    "verdict": "supplier",
+    "why": "physical goods: mattresses and bedding",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AmeriHealth Caritas",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Medicaid managed-care insurer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Medicaid managed-care insurer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Amigo AI",
@@ -75,13 +117,25 @@
    "name": "AMIkids, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit youth services",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit youth services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Andrus Sanctuary Institute",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit training institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anonymous Health",
@@ -91,13 +145,25 @@
    "name": "Arapahoe Community College",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: college",
+   "read": {
+    "verdict": "supplier",
+    "why": "college",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ascend Healthcare",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioral health provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral health provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Assured Health, Inc.",
@@ -119,7 +185,13 @@
    "name": "Barrins & Associates",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accreditation consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "accreditation consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beacon Crisis Dispatch",
@@ -131,13 +203,25 @@
    "name": "Beck Institute for Cognitive Behavior Therapy",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit training institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BEE Medic",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: neurofeedback medical devices for clinicians, not govtech",
+   "read": {
+    "verdict": "supplier",
+    "why": "neurofeedback medical devices for clinicians, not govtech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Behavioral Health RCM Solutions, LLC",
@@ -148,44 +232,86 @@
   {
    "name": "Bellis",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown single-word name; could be a company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bowling Business Strategies",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bristol Bay Area Health Corporation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tribal health organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "tribal health organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Burrows Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Butler Human Services Furniture",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "furniture",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cadmium",
    "website": "https://www.GoCadmium.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: event-platform software powering the page, not govtech",
+   "read": {
+    "verdict": "supplier",
+    "why": "event-platform software powering the page, not govtech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "California Correctional Health Care Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cantata Health Solutions",
@@ -195,7 +321,13 @@
    "name": "CapGrow Partners LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: real estate for care providers",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate for care providers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CaraSolva",
@@ -209,7 +341,13 @@
    "name": "CareCredit",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare financing (financial services)",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare financing (financial services)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CareLoop Health",
@@ -219,25 +357,37 @@
    "name": "CARF International",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CCBHC Lounge",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit accreditor",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit accreditor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Centerstone",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit behavioral health provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit behavioral health provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chazin",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Chazin & Company, nonprofit accounting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chazin & Company, nonprofit accounting services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CHESS Health",
@@ -279,19 +429,25 @@
    "name": "CohnReznick LLP",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: accounting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Colorado Department of Corrections",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Community Zone",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Compass Health Network",
@@ -303,7 +459,13 @@
    "name": "Continuity Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ContinuumCloud",
@@ -317,7 +479,13 @@
    "name": "Correctional Counseling Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: treatment-programme training and materials",
+   "read": {
+    "verdict": "supplier",
+    "why": "treatment-programme training and materials",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CredibleMind",
@@ -327,13 +495,25 @@
    "name": "Crestwood Behavioral Health, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioral health provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral health provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Culinary Services Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: food service",
+   "read": {
+    "verdict": "supplier",
+    "why": "food service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Dazos",
@@ -349,13 +529,25 @@
    "name": "Devereux",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit behavioral health provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit behavioral health provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DLA-20 Insights",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioral-health assessment tool licensing/training, not govtech",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral-health assessment tool licensing/training, not govtech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Doxy.me",
@@ -387,7 +579,13 @@
    "name": "Empower Community Care",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: evidence-based programme licensor and services",
+   "read": {
+    "verdict": "supplier",
+    "why": "evidence-based programme licensor and services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EnSoftek Inc./DrCloudEHR",
@@ -397,31 +595,13 @@
    "name": "EverSpring Pharmacy",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Services",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitors Lounge",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Expert Insight Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Expo Theater",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "exydoc",
@@ -433,19 +613,37 @@
    "name": "FasPsych, LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: telepsychiatry clinical services, not a product",
+   "read": {
+    "verdict": "supplier",
+    "why": "telepsychiatry clinical services, not a product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Favorite",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "likely a favourites button; could be Favorite Healthcare Staffing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Nonprofit",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: unemployment-insurance alternative (financial services)",
+   "read": {
+    "verdict": "supplier",
+    "why": "unemployment-insurance alternative (financial services)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Five Element Analytics LLC",
@@ -456,48 +654,66 @@
   {
    "name": "Fivebase, LLC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown name; could be a company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Flatrock Inc",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown name; could be a company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Florence Crittenton Training Institute",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit training institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FTI Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Genoa Healthcare",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Genoa Replishment Spa",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Giv.",
    "website": null
-  },
-  {
-   "name": "Give Feedback",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Greenspace Health",
@@ -513,31 +729,49 @@
    "name": "Guardian Pharmacy Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Haleon",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consumer health pharmaceuticals",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer health pharmaceuticals",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Harm Reduction Therapeutics, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit pharmaceutical (naloxone)",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit pharmaceutical (naloxone)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hazelden Betty Ford Foundation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Headshot Cafe",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit treatment foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit treatment foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HiBoop",
@@ -547,7 +781,13 @@
    "name": "Hispanic/Latino Behavioral Health Center of Excellence",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federally funded technical-assistance centre",
+   "read": {
+    "verdict": "supplier",
+    "why": "federally funded technical-assistance centre",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "INCITE Consulting Solutions",
@@ -559,25 +799,49 @@
    "name": "Indian Health Service",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IPC -Integrated Psychiatric Consultants",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: telepsychiatry clinical services",
+   "read": {
+    "verdict": "supplier",
+    "why": "telepsychiatry clinical services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Iris Telehealth",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: telepsychiatry clinical services, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "telepsychiatry clinical services, not a tech product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ISC Group, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous acronym; cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ITO Health PBC",
@@ -589,25 +853,49 @@
    "name": "Jackson and Coker",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: physician staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "physician staffing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Johnson & Johnson",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceuticals",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceuticals",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Joint Commission",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit accreditor",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit accreditor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Journeyworks Publishing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kana Health",
@@ -617,7 +905,13 @@
    "name": "Kings View Professional Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioral-health billing and consulting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral-health billing and consulting services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kipu Health",
@@ -626,40 +920,40 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Kitty Korner",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Labcorp",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LearnWell",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: education services for hospitalised students",
+   "read": {
+    "verdict": "supplier",
+    "why": "education services for hospitalised students",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LocumTenens.com",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Lunch Station 1",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Lunch Station 2",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: clinician staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "clinician staffing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lyssn",
@@ -668,14 +962,26 @@
   {
    "name": "Marigold Health",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: digital peer-support software platform sold to Medicaid plans",
+   "read": {
+    "verdict": "vendor",
+    "why": "digital peer-support software platform sold to Medicaid plans",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McLean Hospital",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: hospital",
+   "read": {
+    "verdict": "supplier",
+    "why": "hospital",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "mdhub",
@@ -701,25 +1007,49 @@
    "name": "Mental Health Risk Retention Group/Negley Associates",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mercer Government",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: government human-services consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "government human-services consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Milliman Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: actuarial consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "actuarial consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mindset Care, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; could be provider or health-tech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mission Driven Data AI",
@@ -745,25 +1075,49 @@
    "name": "Molina Healthcare",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: managed-care insurer",
+   "read": {
+    "verdict": "supplier",
+    "why": "managed-care insurer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Motivo",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: online clinical-supervision software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "online clinical-supervision software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MTM Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioral-health consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral-health consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mutual of America Financial Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nano Net Technologies Inc.",
@@ -772,40 +1126,52 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "NatCon Memories Photo Station",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NatCon Sales Office",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "National Alliance on Mental Illness",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Committee for Quality Assurance (NCQA)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit accreditor",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit accreditor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Peer Support Training Center",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "training organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nationwide Mutual Insurance",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Netsmart",
@@ -815,7 +1181,13 @@
    "name": "New Harbinger Publications",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NextGen Healthcare",
@@ -851,7 +1223,13 @@
    "name": "Office of Behavioral Health Advocacy (OBHA)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government office",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government office",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Oracle Health",
@@ -863,31 +1241,61 @@
    "name": "Otsuka America Pharmaceutical, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceuticals",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceuticals",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Parkview Health Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy services",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Personal Transformationm Institute",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "training institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PharmaSmart International",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: blood-pressure kiosks; health devices, not govtech",
+   "read": {
+    "verdict": "supplier",
+    "why": "blood-pressure kiosks; health devices, not govtech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PharMerica",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PlanStreet Inc",
@@ -899,13 +1307,13 @@
    "name": "Plated Foodservice",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Poster Pavilion",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: food service",
+   "read": {
+    "verdict": "supplier",
+    "why": "food service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PowerDMS",
@@ -921,7 +1329,13 @@
    "name": "Preferra Insurance Company RRG",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PRG Insight",
@@ -935,7 +1349,13 @@
    "name": "Provista",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: group purchasing organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "group purchasing organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Psych Hub",
@@ -954,18 +1374,18 @@
   {
    "name": "Public Health Supportive Services",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "could be a programme label or an organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pulse For Good",
    "website": null
-  },
-  {
-   "name": "Puppy Park",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Qualifacts",
@@ -979,7 +1399,13 @@
    "name": "R1 Learning",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training materials for behavioral-health workforce",
+   "read": {
+    "verdict": "supplier",
+    "why": "training materials for behavioral-health workforce",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Radicle Health",
@@ -1005,7 +1431,13 @@
    "name": "Row Partners",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: professional-services style name, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional-services style name, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Salesforce",
@@ -1016,20 +1448,38 @@
   {
    "name": "Secure Telehealth Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: HIPAA video telehealth software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "HIPAA video telehealth software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SempiternusRx",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ShiftKey",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare staffing marketplace",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare staffing marketplace",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sigmund Software",
@@ -1043,7 +1493,13 @@
    "name": "SimiTree",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting and revenue-cycle services",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting and revenue-cycle services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Simplifyance",
@@ -1053,25 +1509,37 @@
    "name": "Social Current",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit network",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit network",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Solari, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit crisis services operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit crisis services operator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Southwest Lab",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Storage",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Streamline Healthcare Solutions",
@@ -1081,25 +1549,25 @@
    "name": "Substance Abuse and Mental Health Services Administration",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Substance Use First Aid/National Opioid Settlement Conference",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "T. Scott Consulting",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Technical Support",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Topaz Systems Inc.",
@@ -1111,19 +1579,37 @@
    "name": "Trauma Recovery EMDR HAP",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit training organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit training organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Triad",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare word shared by many companies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Trust Insurance",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TRX Development Solutions",
@@ -1135,7 +1621,13 @@
    "name": "U.S. Department of State Bureau of Medical Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "UST Workforce Solutions",
@@ -1151,7 +1643,13 @@
    "name": "Vanguard Research Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: clinical research",
+   "read": {
+    "verdict": "supplier",
+    "why": "clinical research",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Verity",
@@ -1161,7 +1659,13 @@
    "name": "Vibrant Emotional Health and the 988 Suicide & Crisis Lifeline",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit crisis-line operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit crisis-line operator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Videra Health",
@@ -1173,7 +1677,13 @@
    "name": "VieMed Healthcare Staffing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "staffing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Walden University",
@@ -1186,16 +1696,16 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Wellbeing Salon",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Wellness Consultants",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "generic; could be a consultancy or a floor programme",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Willetts Technology, Inc",
@@ -1207,19 +1717,37 @@
    "name": "Xpio Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: behavioral-health IT consulting firm (EHR selection, compliance, analytics services); reader's own why says services",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: behavioral-health IT consulting firm (EHR selection, compliance, analytics services); reader's own why says services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zero Overdose",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zero Suicide Institute at Education Development Center",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zoobook Systems",
@@ -1227,5 +1755,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 20,
+ "quality_was": "good"
 }

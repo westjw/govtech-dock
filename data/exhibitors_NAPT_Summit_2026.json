@@ -23,15 +23,27 @@
    "name": "AlphaRoute",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: school bus routing optimization software",
+   "read": {
+    "verdict": "vendor",
+    "why": "school bus routing optimization software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMF BRUNS AMERICA",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair securement equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair securement equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AngelTrax",
@@ -45,98 +57,169 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: mufflers, vehicle parts",
+   "read": {
+    "verdict": "supplier",
+    "why": "mufflers, vehicle parts",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BESI, Inc",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: school bus seat belts and restraints",
+   "read": {
+    "verdict": "supplier",
+    "why": "school bus seat belts and restraints",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BraunAbility",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair lifts and accessible vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair lifts and accessible vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BSI",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; cannot identify the company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Buckled In",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: seat-belt safety brand, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "seat-belt safety brand, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bus Gates, Inc",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Bus Gates, Inc.",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: duplicate row; school bus crossing gates",
+   "read": {
+    "verdict": "supplier",
+    "why": "duplicate row; school bus crossing gates",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bus IQ",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IQ-branded bus telematics/software name",
+   "read": {
+    "verdict": "vendor",
+    "why": "IQ-branded bus telematics/software name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BusPlanner",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: school bus routing software",
+   "read": {
+    "verdict": "vendor",
+    "why": "school bus routing software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BusRight",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: school bus routing and tracking software",
+   "read": {
+    "verdict": "vendor",
+    "why": "school bus routing and tracking software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cadex Insurance Recovery",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance claims recovery services",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance claims recovery services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Collins Bus",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: school bus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "school bus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Easy Way Safety Services Inc",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: child safety restraints for buses",
+   "read": {
+    "verdict": "supplier",
+    "why": "child safety restraints for buses",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Education Logistics (Edulog)",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Edulog school bus routing software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Edulog school bus routing software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EverDriven",
@@ -150,7 +233,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: illuminated school bus signs, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "illuminated school bus signs, hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Student, Inc.",
@@ -192,14 +281,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic products manufacturer, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic products manufacturer, no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jasper Engines & Transmissions",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: engines and transmissions",
+   "read": {
+    "verdict": "supplier",
+    "why": "engines and transmissions",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jenoptik Smart Mobility Solutions",
@@ -213,42 +314,65 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle components manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle components manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "METS - Midwest Educational Transportation Services",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: school bus dealer and services",
+   "read": {
+    "verdict": "supplier",
+    "why": "school bus dealer and services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Model 1 Commercial Vehicles",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NAPT HQ",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: commercial vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "commercial vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nextcom Inc",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "communications-sounding name, offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "O2 COOL MANUFACTURING, LLC",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fans and coolers manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fans and coolers manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Onspot of North America",
@@ -261,8 +385,14 @@
    "name": "Pro-Vision",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: bus video and body camera systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "bus video and body camera systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Q'Straint/Sure-Lok",
@@ -283,14 +413,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: electric school bus brand, vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "electric school bus brand, vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rite-Hite",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: loading dock equipment and industrial doors",
+   "read": {
+    "verdict": "supplier",
+    "why": "loading dock equipment and industrial doors",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Robotronics",
@@ -325,7 +467,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: school bus seat belts",
+   "read": {
+    "verdict": "supplier",
+    "why": "school bus seat belts",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SaferWatch",
@@ -360,42 +508,78 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: transportation routing consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transportation routing consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "School Bus Safety Company",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: driver safety training content",
+   "read": {
+    "verdict": "supplier",
+    "why": "driver safety training content",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "School BUSRide",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trade magazine",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade magazine",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "School Transportation News",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: trade magazine",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade magazine",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "School-Radio",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: two-way radio dealer/reseller for schools; sells communications hardware, not a technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: two-way radio dealer/reseller for schools; sells communications hardware, not a technology product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SMART tag",
    "website": null,
    "detail_url": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": true,
+   "is_govtech_why": "reader: RFID student ridership tracking system",
+   "read": {
+    "verdict": "vendor",
+    "why": "RFID student ridership tracking system",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sourcewell",
@@ -422,8 +606,14 @@
    "name": "Synovia",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: GPS fleet tracking for school buses (CalAmp)",
+   "read": {
+    "verdict": "vendor",
+    "why": "GPS fleet tracking for school buses (CalAmp)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tait Communications",
@@ -459,41 +649,9 @@
    "detail_url": null,
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "Food & Beverage",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Attendee Seating",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Expo Company Area",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Help Area",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Food and Beverage",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
   }
- ]
+ ],
+ "read_dropped": 6,
+ "quality_was": null,
+ "quality": "read"
 }

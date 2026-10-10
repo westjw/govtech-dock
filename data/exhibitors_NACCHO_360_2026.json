@@ -15,13 +15,25 @@
    "name": "Alosa Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit academic-detailing organisation, not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit academic-detailing organisation, not a tech vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alzheimer's Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit health association",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit health association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Amergis Government Staffing",
@@ -33,13 +45,25 @@
    "name": "American Kidney Fund",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit health fund",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit health fund",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Public Health Association APHA",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Amneal Pharmaceuticals",
@@ -50,26 +74,50 @@
   {
    "name": "Arclet",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown one-word brand; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Association of Public Health Nurses",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Association of Schools and Programs of Public Health (ASPPH)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: academic association",
+   "read": {
+    "verdict": "supplier",
+    "why": "academic association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Association of State & Territorial Dental Directors & ASTDD Foundation, Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association and its foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "association and its foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BAO Systems",
@@ -81,31 +129,61 @@
    "name": "Bavarian Nordic Inc.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vaccine manufacturer; pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "vaccine manufacturer; pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bavarian Nordic Medical Affairs",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharma company division",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma company division",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BME Strategies",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: strategy consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "strategy consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Business House",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CDP, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-health data systems (WIC, immunization) software firm",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-health data systems (WIC, immunization) software firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Champ Software",
@@ -117,7 +195,13 @@
    "name": "Charlie's Kids",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: safe-sleep nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "safe-sleep nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CHESS Health",
@@ -129,7 +213,13 @@
    "name": "Child Source",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: child-focused resource organisation; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "child-focused resource organisation; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "City Health Dashboard",
@@ -140,26 +230,50 @@
   {
    "name": "COMMANDO",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "all-caps brand; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CompleteSMS",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: SMS messaging platform; communications tech",
+   "read": {
+    "verdict": "vendor",
+    "why": "SMS messaging platform; communications tech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Conduent Healthy Communities Institute",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: community health data and analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "community health data and analytics platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cority",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EHS and occupational/public health SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "EHS and occupational/public health SaaS",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CredibleMind",
@@ -171,55 +285,97 @@
    "name": "Cribs for Kids",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: safe-sleep nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "safe-sleep nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Crisis Prevention Institute",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: de-escalation training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "de-escalation training provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CureMD Healthcare",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EHR software including public-health EHR",
+   "read": {
+    "verdict": "vendor",
+    "why": "EHR software including public-health EHR",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Datamation Imaging Services Corporation",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: document imaging and records digitization IT services",
+   "read": {
+    "verdict": "vendor",
+    "why": "document imaging and records digitization IT services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "de Beaumont Foundation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: philanthropic foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "philanthropic foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Deterra",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: drug deactivation pouches; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "drug deactivation pouches; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EKF Diagnostics",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibit Hall Activity",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: point-of-care diagnostic devices; medical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "point-of-care diagnostic devices; medical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FamilyTrac, Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: case-management tracking software for family health programs",
+   "read": {
+    "verdict": "vendor",
+    "why": "case-management tracking software for family health programs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Findhelp",
@@ -231,19 +387,37 @@
    "name": "Fresh Baby",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nutrition education products; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "nutrition education products; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gilead Sciences",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Grifols",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical and plasma company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical and plasma company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Health Management Associates, Inc",
@@ -255,67 +429,133 @@
    "name": "Healthcare Staffing Professionals",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: healthcare staffing firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare staffing firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HealthHIV",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HIV nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "HIV nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HLN Consulting, LLC",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-health informatics firm; immunization IS software",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-health informatics firm; immunization IS software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hub Public Benefit Corp",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "public benefit corp; offering unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Illinois Supply Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: supplies distributor; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "supplies distributor; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Initium Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public health consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public health consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Institute for Healthcare Advancement (IHA)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health literacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health literacy nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Johns Hopkins Bloomberg School of Public Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university school of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university school of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Juno Health",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EHR software company",
+   "read": {
+    "verdict": "vendor",
+    "why": "EHR software company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kentucky Association of Local Boards of Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association of local boards of health",
+   "read": {
+    "verdict": "supplier",
+    "why": "association of local boards of health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kentucky Health Departments Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state health departments association",
+   "read": {
+    "verdict": "supplier",
+    "why": "state health departments association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LanguageLine Solutions",
@@ -327,13 +567,25 @@
    "name": "LHD Academy of Science",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: public health academy organisation; not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "public health academy organisation; not a tech vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mamava",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: lactation pods; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "lactation pods; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McWilliams School of Biomedical Informatics at UTHealth Houston",
@@ -344,8 +596,14 @@
   {
    "name": "Metopio",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: community health data analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "community health data analytics platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Microsoft",
@@ -357,31 +615,49 @@
    "name": "Moxley Public Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "NACCHO Membership Booth",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: public health consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public health consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Board of Public Health Examiners (NBPHE)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: certification board",
+   "read": {
+    "verdict": "supplier",
+    "why": "certification board",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Hispanic Health Foundation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: health nonprofit foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Indian Health Board",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tribal health nonprofit board",
+   "read": {
+    "verdict": "supplier",
+    "why": "tribal health nonprofit board",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Network of Public Health Institutes",
@@ -393,7 +669,13 @@
    "name": "Neelyx Labs",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: diagnostic laboratory services",
+   "read": {
+    "verdict": "supplier",
+    "why": "diagnostic laboratory services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Netsmart",
@@ -404,8 +686,14 @@
   {
    "name": "OpenELIS Foundation",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech": null,
+   "is_govtech_why": "names a trade that is not a product vendor",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (nonprofit stewarding open-source public-health lab information software); skeptic unsure (nonprofit open-source foundation; organisation offering software, not a commercial vendor)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Opioid Response Network",
@@ -417,37 +705,61 @@
    "name": "Padagis",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic pharmaceutical company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Patagonia Health",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EHR software for public health departments",
+   "read": {
+    "verdict": "vendor",
+    "why": "EHR software for public health departments",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pear Suite",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: community health worker care-navigation software",
+   "read": {
+    "verdict": "vendor",
+    "why": "community health worker care-navigation software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Perseid Kit Co.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: kit maker; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "kit maker; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Persimmony",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Pet Therapy",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public health program data management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "public health program data management software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PH360 AI by F&T Labs",
@@ -458,8 +770,14 @@
   {
    "name": "Pivto Better Learning",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "learning brand; unclear if training service or software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PlanStreet Inc",
@@ -471,19 +789,37 @@
    "name": "Plusoptix, Inc",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vision screening medical devices",
+   "read": {
+    "verdict": "supplier",
+    "why": "vision screening medical devices",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Consulting Group",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: public sector consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public sector consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Health Accreditation Board (PHAB)",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit accreditation board",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit accreditation board",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Health Informatics Institute",
@@ -495,13 +831,25 @@
    "name": "Public Health Law Center",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit legal center",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit legal center",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Health Resource Center",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "could be host resource area or an organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Public Health Training Center Network",
@@ -513,49 +861,85 @@
    "name": "Purdue University",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "QA",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Remedy Healthcare Consulting LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rescue | The Behavior Change Agency",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavior-change marketing agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavior-change marketing agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RSM US LLP",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: accounting and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting and consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rx Destroyer",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: drug disposal product; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "drug disposal product; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Star PPE LLC",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PPE supplier; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "PPE supplier; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Team Health Network",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: health network/staffing organisation; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "health network/staffing organisation; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TECPHI Network Coordinating Center",
@@ -567,7 +951,13 @@
    "name": "The Network for Public Health Law",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: public health law nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "public health law nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TruMed Systems",
@@ -579,7 +969,13 @@
    "name": "Trust for America's Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health policy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health policy nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TRX Development Solutions, LLC",
@@ -591,7 +987,13 @@
    "name": "Tulane Celia Scott Weatherhead School of Public Health and Tropical Medicine",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university school of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university school of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "U.S. Census Bureau",
@@ -603,43 +1005,85 @@
    "name": "University of Kentucky College of Public Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university college of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university college of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "University of Louisville School of Public Health & Information Sciences",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university school of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university school of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "University of Miami Department of Public Health Sciences",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university department",
+   "read": {
+    "verdict": "supplier",
+    "why": "university department",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "University of Nebraska Medical Center - College of Public Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university college of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university college of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "University of South Florida (USF) College of Public Health",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university college of public health",
+   "read": {
+    "verdict": "supplier",
+    "why": "university college of public health",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "University of South Florida DISTA",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university program",
+   "read": {
+    "verdict": "supplier",
+    "why": "university program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Valneva",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vaccine manufacturer; pharma",
+   "read": {
+    "verdict": "supplier",
+    "why": "vaccine manufacturer; pharma",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vector Disease Control International",
@@ -651,13 +1095,28 @@
    "name": "Venesky & Company",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting/accounting-style firm; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting/accounting-style firm; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ViiV Healthcare",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
- ]
+ ],
+ "read_dropped": 4,
+ "quality_was": null,
+ "quality": "read"
 }

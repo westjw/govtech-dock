@@ -1,0 +1,117 @@
+[
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Attendee Toolkit",
+  "verdict": "not_a_company",
+  "why": "conference site navigation",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Centennial Supporters",
+  "verdict": "not_a_company",
+  "why": "sponsor-tier heading",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "growamerica.org",
+  "verdict": "supplier",
+  "why": "domain of Grow America, community-development finance nonprofit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Host Committee",
+  "verdict": "not_a_company",
+  "why": "conference site navigation",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Hotel & Travel",
+  "verdict": "not_a_company",
+  "why": "event logistics navigation",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Justification Letter",
+  "verdict": "not_a_company",
+  "why": "attendee resource page",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "localintel.com",
+  "verdict": "unsure",
+  "why": "split: reader vendor (domain of Localintel, econ-dev data and mapping SaaS); skeptic not_a_company (bare domain string per rule; real vendor Localintel behind it, rename rather than delete)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Partners",
+  "verdict": "not_a_company",
+  "why": "sponsor-section heading",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "resimplifi.com/econ-dev",
+  "verdict": "unsure",
+  "why": "split: reader vendor (domain of Resimplifi, real-estate data platform sold to EDOs); skeptic not_a_company (URL path string per rule; real vendor Resimplifi behind it, rename rather than delete)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "ROI Research on Investment",
+  "verdict": "supplier",
+  "why": "investment-attraction research consultancy for EDOs",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Sponsor & Exhibitor Info",
+  "verdict": "not_a_company",
+  "why": "conference site navigation",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Tours & Special Events",
+  "verdict": "not_a_company",
+  "why": "programme navigation",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "Utilities Supporters",
+  "verdict": "not_a_company",
+  "why": "sponsor-tier heading",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_IEDC_2026.json",
+  "name": "www.giswebtech.com",
+  "verdict": "unsure",
+  "why": "split: reader vendor (domain of GIS WebTech, GIS site-selection software for EDOs); skeptic not_a_company (bare domain string per rule; real vendor GIS WebTech behind it, rename rather than delete)",
+  "disputed": "vendor",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ }
+]

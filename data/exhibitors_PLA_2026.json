@@ -19,43 +19,85 @@
    "name": "720 design",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: library interior design/architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "library interior design/architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "A2Z Events",
    "website": "https://mya2zevents.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: directory software's footer credit, not a PLA exhibitor",
+   "read": {
+    "verdict": "supplier",
+    "why": "directory software's footer credit, not a PLA exhibitor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ABDO",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: children's book publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "children's book publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Adilam Inc.",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: library RFID and self-service technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "library RFID and self-service technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AdventureKEEN",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ALA Office of Intellectual Freedom – UABB – Freedom to Read Foundation",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: ALA office and affiliated nonprofit exhibiting",
+   "read": {
+    "verdict": "supplier",
+    "why": "ALA office and affiliated nonprofit exhibiting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ALA Publishing & Media and ALA Store",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: association publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "association publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AM Quartex",
@@ -67,7 +109,13 @@
    "name": "AmazeWorks",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: education nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "education nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Amazon Business",
@@ -77,31 +125,61 @@
    "name": "American Psychological Association",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association/publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "association/publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Andrews McMeel Publishing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Annick Press",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anvil Press",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "APG Books",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aqua by Adobe",
@@ -113,7 +191,13 @@
    "name": "Arcadia Publishing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ASLdeafined",
@@ -127,13 +211,25 @@
    "name": "Association for Rural & Small Libraries",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: library association",
+   "read": {
+    "verdict": "supplier",
+    "why": "library association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Association of Bookmobile and Outreach Services",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: library association",
+   "read": {
+    "verdict": "supplier",
+    "why": "library association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AtoZdatabases",
@@ -147,19 +243,37 @@
    "name": "Backstage Library Works",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: library cataloging and digitization services",
+   "read": {
+    "verdict": "supplier",
+    "why": "library cataloging and digitization services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Baker Publishing Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beacon Press",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Beanstack",
@@ -169,19 +283,37 @@
    "name": "Beech Street Books",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Better Containers Mfg. Co.",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: manufacturer of physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "manufacturer of physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Better World Books",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bookseller",
+   "read": {
+    "verdict": "supplier",
+    "why": "bookseller",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BiblioCommons Corp.",
@@ -192,20 +324,38 @@
   {
    "name": "Bibliotheca",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: library RFID, self-check and cloudLibrary platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "library RFID, self-check and cloudLibrary platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BKV Group",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture/engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture/engineering firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Blackstone Publishing",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Blick Art Materials",
@@ -215,7 +365,13 @@
    "name": "Bloomsbury",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BMI Digital Reel",
@@ -227,33 +383,17 @@
    "name": "Booklist Publications",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Booth #H1",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354133&amp;MapItBooth=H1&amp;MapID=233",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Booth #K5",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=354134&amp;MapItBooth=K5&amp;MapID=233",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Booth #T1",
-   "website": "https://s23.a2zinc.net/clients/corcexpo/PLA2026/Public/Eventmap.aspx?EventId=204&amp;MapItBoothID=305061&amp;MapItBooth=T1&amp;MapID=233",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "EXHIBITOR DIRECTORY",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ALA review magazine",
+   "read": {
+    "verdict": "supplier",
+    "why": "ALA review magazine",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "23% carry a corporate marker, 0% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 4,
+ "quality_was": "menu"
 }

@@ -9,53 +9,29 @@
    "name": "Abbott Toxicology",
    "website": "https://www.toxicology.abbott/us/en/products/sotoxa-mobile-test-system.html",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: drug-testing diagnostics (physical goods)",
+   "read": {
+    "verdict": "supplier",
+    "why": "drug-testing diagnostics (physical goods)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Abraxas Youth & Family Services",
    "website": "https://abraxasyfs.org/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Being Michelle",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Career Fair",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: youth/family treatment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "youth/family treatment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CATALIS",
    "website": "https://catalisgov.com"
-  },
-  {
-   "name": "Community Corrections Chase (C3)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Corporate Members",
-   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=AboutAPPA-Corporate-Members",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Darlene Webb",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Dennis Maloney Project",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "DIMS Product Suite",
@@ -67,175 +43,73 @@
    "name": "Empower Community Care",
    "website": "https://www.empowercommunitycare.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "EXECUTIVE LEADERSHIP SUMMIT",
-   "website": "https://www.appa-net.org/institutes/2026-Summit/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Information",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Exhibitor Kit (PDF)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: behavioural health programme services",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioural health programme services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FieldWare",
    "website": "https://fieldware.com/"
   },
   {
-   "name": "First Time Attendees Networking Event",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Health and Wellness",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Healthy Walking Challenges",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Hotel Reservation",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
    "name": "iCEV",
    "website": "https://www.icevonline.com/"
-  },
-  {
-   "name": "In-Person Schedule",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Intensive Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Journal Technologies",
    "website": "https://www.journaltech.com/"
   },
   {
-   "name": "Judicial Roundtable",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Justice-Involved Individuals Career Fair",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Justify My Attendance Letter",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Juvenile Justice Track",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Lifelab Studio",
    "website": "https://www.journeydo.com/lifelabs.html",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: learning/curriculum studio; no clear software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "learning/curriculum studio; no clear software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LifeSafer",
    "website": "https://www.lifesafer.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Networking Event",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Non-denominational Sunday Service",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: ignition interlock devices with monitoring software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ignition interlock devices with monitoring software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "North American Learning Institute",
    "website": "https://courseforcourt.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Online Order Form",
-   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPA26Summer",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "PDF Order Form",
-   "website": "https://myexpoleads.expologic.com/index.cfm/forms/showCode/APPA26Summer/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Plenary Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: online court-ordered classes provider (education)",
+   "read": {
+    "verdict": "supplier",
+    "why": "online court-ordered classes provider (education)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Procivica",
    "website": "https://www.procivica.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Purchase Lead Retrieval",
-   "website": "https://myexpoleads.expologic.com/index.cfm/order/showCode/APPAW26",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Register Now",
-   "website": "https://www.appa-net.org/eweb/DynamicPage.aspx?webcode=EventInfo&Reg_evt_key=e6ad316f-cd68-4ff4-b773-2aab57dc46f0",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Review the Full Rules & Regulations (PDF)",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "SCHEDULED EVENTS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: civic-tech name; likely corrections case-management software, verify",
+   "read": {
+    "verdict": "vendor",
+    "why": "civic-tech name; likely corrections case-management software, verify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Securus Monitoring",
@@ -244,67 +118,27 @@
   {
    "name": "Smart Start",
    "website": "https://www.smartstartinc.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sponsor Deck",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "SPONSORS & EXHIBITORS",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: ignition interlock devices with monitoring software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ignition interlock devices with monitoring software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SuperCOM",
    "website": "https://www.supercom.com/"
   },
   {
-   "name": "TRAVEL & LODGING",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Tyler Tech Track",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Tyler Technologies",
    "website": "https://www.tylertech.com/products/enterprise-supervision"
-  },
-  {
-   "name": "UCCI Pop-up Sessions",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Virtual Schedule",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Women's Symposium",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Yoga and Breathwork",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   }
  ],
  "why": "11% carry a corporate marker, 0% name a site section, 11% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu",
- "restaged": "58 -> 53 names after re-filtering on 2026-09-02"
+ "quality": "read",
+ "restaged": "58 -> 53 names after re-filtering on 2026-09-02",
+ "read_dropped": 36,
+ "quality_was": "menu"
 }

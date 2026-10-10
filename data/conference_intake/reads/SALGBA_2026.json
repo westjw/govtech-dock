@@ -1,0 +1,610 @@
+[
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "9amHealth",
+  "verdict": "supplier",
+  "why": "virtual cardiometabolic care provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "AHIP",
+  "verdict": "supplier",
+  "why": "health insurers trade association",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Ameriflex",
+  "verdict": "supplier",
+  "why": "FSA/HSA/COBRA third-party administrator",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Anthem BCBS",
+  "verdict": "supplier",
+  "why": "health insurer",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Aon",
+  "verdict": "supplier",
+  "why": "insurance brokerage/consulting",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Aptia",
+  "verdict": "supplier",
+  "why": "benefits administration outsourcing services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "ArrayRX",
+  "verdict": "supplier",
+  "why": "state-sponsored pharmacy benefit program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Benecard PBF",
+  "verdict": "supplier",
+  "why": "pharmacy benefit manager",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Benefitfocus",
+  "verdict": "vendor",
+  "why": "benefits administration SaaS",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "BenefitsMe",
+  "verdict": "unsure",
+  "why": "unknown; name suggests a benefits app",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Blue Cross Blue Shield Association- Blue365",
+  "verdict": "supplier",
+  "why": "insurer association discount program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Businessolver",
+  "verdict": "vendor",
+  "why": "benefits administration SaaS (Benefitsolver)",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "CancerNavigator",
+  "verdict": "unsure",
+  "why": "unknown; cancer navigation service or app",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "CareATC",
+  "verdict": "supplier",
+  "why": "employer onsite/near-site clinics",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Carrot",
+  "verdict": "supplier",
+  "why": "fertility and family-building benefits provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Carrum Health",
+  "verdict": "supplier",
+  "why": "centers-of-excellence surgical benefit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Color Health",
+  "verdict": "supplier",
+  "why": "genetic testing and cancer screening",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "CTI Audit Solutions",
+  "verdict": "supplier",
+  "why": "dependent eligibility audit services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "CVS Caremark",
+  "verdict": "supplier",
+  "why": "pharmacy benefit manager",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "CVS Healthspire",
+  "verdict": "supplier",
+  "why": "CVS health services division",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Eli Lilly and Company",
+  "verdict": "supplier",
+  "why": "pharmaceutical manufacturer",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Employers Health",
+  "verdict": "supplier",
+  "why": "employer purchasing coalition",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Empyrean",
+  "verdict": "vendor",
+  "why": "benefits administration technology platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Evernoth Health Services",
+  "verdict": "supplier",
+  "why": "Cigna health services arm (Evernorth)",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "EyeMed",
+  "verdict": "supplier",
+  "why": "vision insurance",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "finHealth",
+  "verdict": "vendor",
+  "why": "healthcare claims analytics software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Form Health",
+  "verdict": "supplier",
+  "why": "virtual obesity medicine clinic",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Galileo",
+  "verdict": "supplier",
+  "why": "virtual primary care provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Galleri",
+  "verdict": "supplier",
+  "why": "GRAIL cancer screening blood test",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Garner Health",
+  "verdict": "supplier",
+  "why": "data-driven provider-steering health benefit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Green Imaging",
+  "verdict": "supplier",
+  "why": "medical imaging network",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Health Advocate",
+  "verdict": "supplier",
+  "why": "healthcare advocacy services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Healthee",
+  "verdict": "vendor",
+  "why": "AI benefits navigation software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Hinge Health",
+  "verdict": "supplier",
+  "why": "digital musculoskeletal care program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "HMS",
+  "verdict": "unsure",
+  "why": "bare acronym; likely cost-containment services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "IMA",
+  "verdict": "supplier",
+  "why": "insurance brokerage",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Included Health",
+  "verdict": "supplier",
+  "why": "virtual care and navigation provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Lantern",
+  "verdict": "supplier",
+  "why": "specialty care network benefit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Lucid Diagnostics",
+  "verdict": "supplier",
+  "why": "diagnostic testing",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Lyra Health",
+  "verdict": "supplier",
+  "why": "mental health care benefit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Maven Clinic",
+  "verdict": "supplier",
+  "why": "virtual women's and family health clinic",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "McGriff, A Marsh & McLennan Agency",
+  "verdict": "supplier",
+  "why": "insurance brokerage",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Medefy",
+  "verdict": "vendor",
+  "why": "benefits navigation app platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "MedImpact",
+  "verdict": "supplier",
+  "why": "pharmacy benefit manager",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Novo Nordisk",
+  "verdict": "supplier",
+  "why": "pharmaceutical manufacturer",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Nox Health",
+  "verdict": "supplier",
+  "why": "sleep health program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Omada Health",
+  "verdict": "supplier",
+  "why": "digital chronic-condition care program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Opioid Free America",
+  "verdict": "supplier",
+  "why": "advocacy nonprofit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Optum Rx",
+  "verdict": "supplier",
+  "why": "pharmacy benefit manager",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Oshi Health",
+  "verdict": "supplier",
+  "why": "virtual GI care provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Partnership Health Centers",
+  "verdict": "supplier",
+  "why": "health clinics",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Pelago",
+  "verdict": "supplier",
+  "why": "virtual substance-use care",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Personify Health",
+  "verdict": "vendor",
+  "why": "employee wellbeing SaaS platform (ex Virgin Pulse)",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Pomelo Care",
+  "verdict": "supplier",
+  "why": "virtual maternity care provider",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Progyny",
+  "verdict": "supplier",
+  "why": "fertility benefits management",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Quantum Health",
+  "verdict": "supplier",
+  "why": "care coordination and navigation services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Quizzify",
+  "verdict": "vendor",
+  "why": "health-literacy e-learning software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "RazorMetrics",
+  "verdict": "vendor",
+  "why": "prescription cost-optimization analytics software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Retiree First",
+  "verdict": "supplier",
+  "why": "retiree benefits consulting",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Rightway",
+  "verdict": "supplier",
+  "why": "care navigation and PBM services",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Segal",
+  "verdict": "supplier",
+  "why": "actuarial/benefits consulting",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Sharecare",
+  "verdict": "vendor",
+  "why": "digital health engagement platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "SlateRx",
+  "verdict": "supplier",
+  "why": "pharmacy benefit manager",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Solrera Health",
+  "verdict": "supplier",
+  "why": "unknown health firm; no technology signal",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Spring Health",
+  "verdict": "supplier",
+  "why": "mental health care benefit",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Sword Health",
+  "verdict": "supplier",
+  "why": "digital musculoskeletal care program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "TELUS Health",
+  "verdict": "vendor",
+  "why": "health/benefits technology and EAP platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Truven by Merative",
+  "verdict": "vendor",
+  "why": "health data analytics software",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Twin Health",
+  "verdict": "supplier",
+  "why": "AI metabolic care program with clinicians",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Vera Whole Health",
+  "verdict": "supplier",
+  "why": "advanced primary care clinics",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Via Benefits",
+  "verdict": "supplier",
+  "why": "retiree health exchange brokerage (WTW)",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Virta Health",
+  "verdict": "supplier",
+  "why": "virtual diabetes reversal clinic",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "WebMD Health Servies",
+  "verdict": "vendor",
+  "why": "employee wellbeing software platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Wellworks For You",
+  "verdict": "supplier",
+  "why": "wellness program administrator",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "WEX",
+  "verdict": "vendor",
+  "why": "benefits accounts and payments fintech platform",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_SALGBA_2026.json",
+  "name": "Wondr Health",
+  "verdict": "supplier",
+  "why": "digital behavioral weight program",
+  "by": "agent:reader+skeptic",
+  "on": "2026-10-10"
+ }
+]

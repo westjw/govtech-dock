@@ -10,28 +10,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=136",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: emergency board-up and restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency board-up and restoration services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "20/20 Biolabs, Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=173",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cancer-screening blood tests; lab services",
+   "read": {
+    "verdict": "supplier",
+    "why": "cancer-screening blood tests; lab services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "360 Cookware",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=496",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cookware; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "cookware; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "3M Scott Fire & Safety",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=290",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: SCBA and respiratory PPE manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "SCBA and respiratory PPE manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "5.11 TACTICAL",
@@ -45,35 +69,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=478",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely insurance advisory organisation; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely insurance advisory organisation; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Actiontech",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=458",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "tech in name but offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ADL Insulflex, Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409114",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: thermal insulation and heat-protection products",
+   "read": {
+    "verdict": "supplier",
+    "why": "thermal insulation and heat-protection products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Advanced Selections, LLC",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=28918159753",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely promotional-exam/selection services; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely promotional-exam/selection services; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Airgain Inc",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10889057630",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: primarily an antenna (passive RF) manufacturer; brief says RF component makers are suppliers",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: primarily an antenna (passive RF) manufacturer; brief says RF component makers are suppliers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alco-Lite (Sam Carbis Solutions)",
@@ -87,14 +141,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=514",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: SCBA and breathing-air equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "SCBA and breathing-air equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Response Vehicles",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=461",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ambulance and emergency vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "ambulance and emergency vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Angel Armor",
@@ -108,7 +174,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=286",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic services company; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic services company; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Applied Information, Inc.",
@@ -121,15 +193,27 @@
    "name": "APS Firehouse Alerting",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=151",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fire station alerting systems; communications tech",
+   "read": {
+    "verdict": "vendor",
+    "why": "fire station alerting systems; communications tech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Armor Tuff Fire House Flooring",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=33409318295",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: flooring",
+   "read": {
+    "verdict": "supplier",
+    "why": "flooring",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Avive",
@@ -143,49 +227,91 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=459",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Base Case",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=474",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "name gives no clue; cases or software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BAUER COMPRESSORS INC.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=103",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: breathing-air compressors",
+   "read": {
+    "verdict": "supplier",
+    "why": "breathing-air compressors",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BFX Fire Apparatus",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=187",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire apparatus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire apparatus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bio-Care",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=303",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: decontamination or wellness products; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "decontamination or wellness products; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BKV Group Architects & Engineering",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=280",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture and engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture and engineering firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BlackOhm",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=518",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; electrical or cyber brand, cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Blauer Manufacturing",
@@ -199,14 +325,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=186",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: incident command training/certification program and magazine",
+   "read": {
+    "verdict": "supplier",
+    "why": "incident command training/certification program and magazine",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BME Fire Trucks",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=137",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire apparatus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire apparatus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Boston Leather",
@@ -227,35 +365,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=321",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: used fire apparatus dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "used fire apparatus dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BrinkAlert",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=361",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: alerting-named product; likely alerting technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "alerting-named product; likely alerting technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BRW Architects",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=322",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bullard Thermal Imaging & Fire Helmets",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=452",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: helmet/PPE maker; thermal imagers are hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "helmet/PPE maker; thermal imagers are hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Canadian Association of Fire Chiefs (IAFC)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36791900002",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: independent national association; exhibits",
+   "read": {
+    "verdict": "supplier",
+    "why": "independent national association; exhibits",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CCE Platform, Inc.",
@@ -269,28 +437,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409120",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: FEMA training center; government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "FEMA training center; government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CET Fire Pumps",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=169",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chief 360",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=28356409091",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "could be software, assessment or leadership program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Circul-Air Corp",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=411",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: hose and gear dryers",
+   "read": {
+    "verdict": "supplier",
+    "why": "hose and gear dryers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ClearPath Solutions Group",
@@ -318,7 +510,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=105",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: badges, uniforms and public safety supply",
+   "read": {
+    "verdict": "supplier",
+    "why": "badges, uniforms and public safety supply",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Covert Armor International LLC",
@@ -332,35 +530,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=300",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: media publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "media publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CrewBoss",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=174",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wildland fire PPE apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "wildland fire PPE apparel",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Darley",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=108",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pumps, apparatus and equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "pumps, apparatus and equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Deccan International",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=296",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fire/EMS deployment analytics software (ADAM, LiveMUM)",
+   "read": {
+    "verdict": "vendor",
+    "why": "fire/EMS deployment analytics software (ADAM, LiveMUM)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DFND",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=164",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "opaque brand; apparel or cyber, cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Digital Combustion",
@@ -381,7 +609,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=200",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gloves",
+   "read": {
+    "verdict": "supplier",
+    "why": "gloves",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DreamSeat",
@@ -395,28 +629,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=509",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: electrolyte drink products",
+   "read": {
+    "verdict": "supplier",
+    "why": "electrolyte drink products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Duo-Safety Ladder Corp",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=135",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ladders",
+   "read": {
+    "verdict": "supplier",
+    "why": "ladders",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "e2 Embroidery & Screenprinting",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=468",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: apparel decoration",
+   "read": {
+    "verdict": "supplier",
+    "why": "apparel decoration",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Eastern Kentucky University",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=434",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Echo Data Analytics",
@@ -429,8 +687,14 @@
    "name": "EfireX",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=494",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "suppressant product or software; cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EFJohnson, a JVCKENWOOD Company",
@@ -444,28 +708,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=146",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nozzles and valves",
+   "read": {
+    "verdict": "supplier",
+    "why": "nozzles and valves",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Emergency Services Consulting International (ESCI)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=443",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Emergency Services Insurance Program by McNeil & Co",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=142",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurance program",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Engine Company Leather",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409124",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: leather goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "leather goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ENTENMANN-ROVIN CO.",
@@ -479,7 +767,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=251",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fireworks; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "fireworks; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ericsson Enterprise Wireless Solutions",
@@ -514,21 +808,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36324027694",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Expo Group Service Desk",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=481",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cancer-screening diagnostics",
+   "read": {
+    "verdict": "supplier",
+    "why": "cancer-screening diagnostics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Extendobed",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=320",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle slide-out storage hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle slide-out storage hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Extra Duty Solutions",
@@ -542,21 +841,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=237",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit education organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit education organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FastLane Emergency Vehicles",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=292",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: emergency vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FeatherShark",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=472",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "opaque brand; offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Federal Signal Corp",
@@ -570,77 +887,130 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409123",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Department Safety Officers Association (FDSOA)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=203",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Engineering Training",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=331",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: media brand's training arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "media brand's training arm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Facilities Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=111",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training towers and structures",
+   "read": {
+    "verdict": "supplier",
+    "why": "training towers and structures",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Fighter Cancer Foundation",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=238",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Innovations",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=207",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic fire products name; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic fire products name; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Master Fire Equipment, Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=462",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Recovery USA",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409122",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Fire, Life & Safety Section (FLSS)",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=17960152857",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: incident cost-recovery billing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "incident cost-recovery billing services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire-Dex/Gear Wash",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=23840809335",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: turnout gear manufacturer and gear cleaning",
+   "read": {
+    "verdict": "supplier",
+    "why": "turnout gear manufacturer and gear cleaning",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fireblast Global",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=380",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: live-fire training props and simulators",
+   "read": {
+    "verdict": "supplier",
+    "why": "live-fire training props and simulators",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Firefighter Cancer Support Network",
@@ -654,28 +1024,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=480",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Firehouse",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=343",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Firehouse Magazine; media",
+   "read": {
+    "verdict": "supplier",
+    "why": "Firehouse Magazine; media",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Firehouse Grants",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409119",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: grant-writing consulting service",
+   "read": {
+    "verdict": "supplier",
+    "why": "grant-writing consulting service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FireStationFurniture.com",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=198",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: furniture company branded by its domain",
+   "read": {
+    "verdict": "supplier",
+    "why": "furniture company branded by its domain",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "First Arriving",
@@ -724,35 +1118,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=335",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: fire-equipment distributor showing thermal cameras; hardware goods via dealer, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: fire-equipment distributor showing thermal cameras; hardware goods via dealer, not software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fluid Tactical Hydration",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=447",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: hydration products",
+   "read": {
+    "verdict": "supplier",
+    "why": "hydration products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FORTS USA",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409101",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: portable buildings and shelters",
+   "read": {
+    "verdict": "supplier",
+    "why": "portable buildings and shelters",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Foster Coach Sales Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409109",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ambulance dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "ambulance dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FoxFury",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=346",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: LED lighting hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "LED lighting hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Front Line Mobile Health",
@@ -766,21 +1190,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=274",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training structures",
+   "read": {
+    "verdict": "supplier",
+    "why": "training structures",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GAME Apparel",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=453",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "apparel",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Garage : The Marketplace for Emergency Vehicles & Equipment",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=385",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (online marketplace platform startup for fire apparatus); skeptic unsure (used-apparatus marketplace startup; sells vehicles through a platform, not technology to agencies)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GEMT Solutions",
@@ -801,7 +1243,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=356",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cancer-screening test",
+   "read": {
+    "verdict": "supplier",
+    "why": "cancer-screening test",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Grainger",
@@ -815,14 +1263,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=199",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gear storage racks",
+   "read": {
+    "verdict": "supplier",
+    "why": "gear storage racks",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gulf Highway Equipment",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=264",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HAAS Alert",
@@ -836,49 +1296,91 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=181",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gear drying racks",
+   "read": {
+    "verdict": "supplier",
+    "why": "gear drying racks",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HazMat Training",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10888972607",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training provider; generic name",
+   "read": {
+    "verdict": "supplier",
+    "why": "training provider; generic name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HazSim",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=427",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (hazmat training simulator device with software); skeptic unsure (hazmat training simulator device maker; training equipment more than software, govtech fit uncertain)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HEN Technologies",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=482",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HEN nozzle maker despite Technologies in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "HEN nozzle maker despite Technologies in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HexArmor",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=154",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gloves and PPE",
+   "read": {
+    "verdict": "supplier",
+    "why": "gloves and PPE",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hoefer Welker",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=519",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Holik America",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15626326393",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gloves and PPE",
+   "read": {
+    "verdict": "supplier",
+    "why": "gloves and PPE",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Holman Capital Corporation",
@@ -892,7 +1394,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=350",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit coalition",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Honeywell Technologies; US Digital Designs; Fiplex",
@@ -906,105 +1414,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=449",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC 2nd Vice President Candidate",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=488",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Company Officers Section (COS)",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15236403593",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Eastern Division",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36765181974",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Emergency Medical Services (EMS) Section",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10889070422",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Executive Fire Officers Section (EFO)",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15236474127",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Great Lakes Division",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36896389459",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Industrial Fire and Safety Section",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=515",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Missouri Valley Division",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36791899670",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFC Volunteer & Combination Officers Section (VCOS)",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10888867148",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "IAFF/ IAFC Joint Labor/ Management Wellness Fitness Initiative",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=516",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance and financial services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IamResponding by RapidSOS",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=114",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: responder notification software; RapidSOS 911 tech",
+   "read": {
+    "verdict": "vendor",
+    "why": "responder notification software; RapidSOS 911 tech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "iBwave",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=476",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: in-building wireless network design software",
+   "read": {
+    "verdict": "vendor",
+    "why": "in-building wireless network design software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "iEmpathize",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=357",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit education organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit education organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IFSTA/Fire Protection Publications",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=288",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ImageTrend",
@@ -1018,35 +1486,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=487",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "training organisation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IMS Alliance",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=255",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: incident command boards and accountability tags; mostly physical",
+   "read": {
+    "verdict": "supplier",
+    "why": "incident command boards and accountability tags; mostly physical",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "INNOTEX inc",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=117",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: turnout gear manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "turnout gear manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "International Association Of Fire Chiefs (IAFC)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15403322272",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: host association itself; real organisation, not a vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "host association itself; real organisation, not a vendor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "International Public Safety Institute",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=33779288499",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training and education institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "training and education institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Intterra",
@@ -1060,7 +1558,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=490",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: apparatus component brands (roll-up doors etc.)",
+   "read": {
+    "verdict": "supplier",
+    "why": "apparatus component brands (roll-up doors etc.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Johnson Controls",
@@ -1074,21 +1578,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=273",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kansas Fire & Rescue Training Institute",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=470",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: university training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "university training institute",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kentucky Trailer Specialty Vehicles",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=26126777215",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: specialty vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "specialty vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lake Assault Boats",
@@ -1102,7 +1624,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=351",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PPE manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "PPE manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LDV, Inc.",
@@ -1116,7 +1644,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=180",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: lockers",
+   "read": {
+    "verdict": "supplier",
+    "why": "lockers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lexipol",
@@ -1137,21 +1671,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=211",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: firefighter physicals; health services",
+   "read": {
+    "verdict": "supplier",
+    "why": "firefighter physicals; health services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LIV",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=305",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "three-letter brand; offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LoneStar Tactical Buildings",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=464",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: buildings",
+   "read": {
+    "verdict": "supplier",
+    "why": "buildings",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LYT",
@@ -1165,14 +1717,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=206",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle exhaust removal systems",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle exhaust removal systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Makita USA",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=325",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: power tools",
+   "read": {
+    "verdict": "supplier",
+    "why": "power tools",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MCM Technology",
@@ -1186,49 +1750,91 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=306",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: washing machines for SCBA and gear",
+   "read": {
+    "verdict": "supplier",
+    "why": "washing machines for SCBA and gear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Micro-Blaze",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=246",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bioremediation cleaning products",
+   "read": {
+    "verdict": "supplier",
+    "why": "bioremediation cleaning products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mighty Struts",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=367",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle stabilization struts",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle stabilization struts",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Milnor Laundry Systems",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=155",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: laundry equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "laundry equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Miovision Technologies Incorporated",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=195",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: traffic signal and emergency vehicle preemption technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "traffic signal and emergency vehicle preemption technology",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Morgan Olson",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=505",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: walk-in van bodies",
+   "read": {
+    "verdict": "supplier",
+    "why": "walk-in van bodies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Morning Pride MFG",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=16748698220",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: turnout gear manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "turnout gear manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Motorola Solutions",
@@ -1248,64 +1854,118 @@
    "name": "MyXEV",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=520",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "opaque EV-sounding brand; cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NAFECO",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=224",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Alliance for Public Safety GIS Foundation",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=463",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit foundation",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Fallen Firefighters Foundation",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=276",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Fire Safety Council",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=332",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit education materials",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit education materials",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Foam",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=172",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: firefighting foam concentrate",
+   "read": {
+    "verdict": "supplier",
+    "why": "firefighting foam concentrate",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Institute for Occupational Safety and Health (NIOSH)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=517",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NCL Government Capital",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=175",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: equipment leasing and financing",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment leasing and financing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NDS Wellness",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=513",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wellness services",
+   "read": {
+    "verdict": "supplier",
+    "why": "wellness services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Neutron Edge - AI Assistant for Fire Crews",
@@ -1319,35 +1979,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36791899504",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: regional association; exhibits",
+   "read": {
+    "verdict": "supplier",
+    "why": "regional association; exhibits",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NexEMS",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=523",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "EMS-named; software or service unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NextEra Energy Resources",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=499",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: energy utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy utility",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NFPA",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=304",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: standards association",
+   "read": {
+    "verdict": "supplier",
+    "why": "standards association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NIOSH",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=522",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "North American Rescue",
@@ -1368,7 +2058,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409112",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NPPGov",
@@ -1381,15 +2077,14 @@
    "name": "OneDose",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409117",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Operational Readiness for First Responders: OUD",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36791528871",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: EMS medication dosing software app",
+   "read": {
+    "verdict": "vendor",
+    "why": "EMS medication dosing software app",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Operative IQ",
@@ -1403,21 +2098,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15700491270",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ambulance manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "ambulance manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Panasonic Connect / TOUGHBOOK",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=190",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": true,
+   "is_govtech_why": "reader: rugged computing devices for public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "rugged computing devices for public safety",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Paratech, Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=121",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: rescue struts and tools",
+   "read": {
+    "verdict": "supplier",
+    "why": "rescue struts and tools",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Parsec Antennas",
@@ -1431,7 +2144,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=177",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: restoration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "restoration services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Peregrine",
@@ -1452,7 +2171,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=340",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire helmet maker despite Technology in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire helmet maker despite Technology in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pierce Manufacturing",
@@ -1466,7 +2191,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=143",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: plastics manufacturer; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "plastics manufacturer; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Plymovent",
@@ -1487,7 +2218,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=508",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: safety products; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "safety products; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Prism-IPX Systems LLC",
@@ -1501,14 +2238,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10889070428",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tactical apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "tactical apparel",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Provident",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=122",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: accident and health insurance for responders",
+   "read": {
+    "verdict": "supplier",
+    "why": "accident and health insurance for responders",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PSTrax",
@@ -1521,22 +2270,40 @@
    "name": "Public Consulting Group",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=221",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: public-sector management consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "public-sector management consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Puck Fire",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=33070052715",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: unknown fire product; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "unknown fire product; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PulsePoint",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=124",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: CPR/AED alerting app platform for agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "CPR/AED alerting app platform for agencies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PURVIS Systems",
@@ -1550,7 +2317,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=157",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gear dryers",
+   "read": {
+    "verdict": "supplier",
+    "why": "gear dryers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RAM Mounts",
@@ -1564,7 +2337,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=457",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: garage doors",
+   "read": {
+    "verdict": "supplier",
+    "why": "garage doors",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "REP Fitness",
@@ -1578,7 +2357,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=125",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle rescue stabilization tools",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle rescue stabilization tools",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rescue 42",
@@ -1591,22 +2376,40 @@
    "name": "RESCUE ID",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409115",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "identification product; tags or software, cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rescue Intellitech",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=213",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: SCBA/gear decon washers despite Intellitech name",
+   "read": {
+    "verdict": "supplier",
+    "why": "SCBA/gear decon washers despite Intellitech name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ResponderGrid.com",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=492",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (web-branded responder platform; likely software); skeptic unsure (domain-styled string, unknown product; 'likely software' is a guess, verify before research)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RespondersPro Inc.",
@@ -1620,28 +2423,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=384",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PPE and gear",
+   "read": {
+    "verdict": "supplier",
+    "why": "PPE and gear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RKI Instruments, Inc.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=483",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: gas detection instruments; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "gas detection instruments; hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rocky Boots",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409113",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: boots",
+   "read": {
+    "verdict": "supplier",
+    "why": "boots",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ROLLNRACK",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10888981769",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: hose rolling and racking equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "hose rolling and racking equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rosenbauer America",
@@ -1654,15 +2481,14 @@
    "name": "SAFER",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36765182308",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Safety, Health & Survival (SHS) Section",
-   "website": null,
-   "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15236427287",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "grant program, IAFC initiative or company; cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Safeware Inc.",
@@ -1682,22 +2508,40 @@
    "name": "Schedule2.IT",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=35655628050",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: scheduling software brand",
+   "read": {
+    "verdict": "vendor",
+    "why": "scheduling software brand",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "School of EMS",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=247",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: EMS training school",
+   "read": {
+    "verdict": "supplier",
+    "why": "EMS training school",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Scotty FIREFIGHTER",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=222",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: foam and nozzle products",
+   "read": {
+    "verdict": "supplier",
+    "why": "foam and nozzle products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SeeDevil Lighting & Power",
@@ -1711,21 +2555,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=282",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic; plausibly a service-dog nonprofit booth",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic; plausibly a service-dog nonprofit booth",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Setcom Corporation",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=160",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: apparatus intercom and headset manufacturer; communications equipment, not a software/IT product",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: apparatus intercom and headset manufacturer; communications equipment, not a software/IT product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SFS Architecture",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409105",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Shive-Hattery Inc",
@@ -1739,7 +2601,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=166",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: emergency vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Skydio",
@@ -1753,28 +2621,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=524",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: labor union local",
+   "read": {
+    "verdict": "supplier",
+    "why": "labor union local",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Solberg",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=521",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: firefighting foam",
+   "read": {
+    "verdict": "supplier",
+    "why": "firefighting foam",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sophroneo Rescue Co.",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=491",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: rescue equipment; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "rescue equipment; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SOS Gate",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=503",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely emergency gate-access hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely emergency gate-access hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sourcewell",
@@ -1788,42 +2680,78 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10888913522",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: regional association; exhibits",
+   "read": {
+    "verdict": "supplier",
+    "why": "regional association; exhibits",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Southwestern Fire Chief's Association (IAFC)",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=10889149302",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: regional association; exhibits",
+   "read": {
+    "verdict": "supplier",
+    "why": "regional association; exhibits",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Spencer Fire Trucks",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=473",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire apparatus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire apparatus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "State Urban Search and Rescue Alliance",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=507",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: alliance nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "alliance nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stationwise",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=299",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fire department staffing and scheduling software",
+   "read": {
+    "verdict": "vendor",
+    "why": "fire department staffing and scheduling software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Steel Blue Work Boots",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=341",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: boots",
+   "read": {
+    "verdict": "supplier",
+    "why": "boots",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Streamlight",
@@ -1858,21 +2786,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=218",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ventilation fans and light towers",
+   "read": {
+    "verdict": "supplier",
+    "why": "ventilation fans and light towers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sutphen Corporation",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=159",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire apparatus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire apparatus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SVI Trucks",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=128",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire apparatus manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire apparatus manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SymbolArts",
@@ -1885,8 +2831,14 @@
    "name": "Symtech Fire",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=437",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "tech in name; suppression systems or software unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Systems Definition, Inc. (SDI)",
@@ -1921,28 +2873,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=465",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: helmets",
+   "read": {
+    "verdict": "supplier",
+    "why": "helmets",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tempest Technology",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409102",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ventilation fan maker despite Technology in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "ventilation fan maker despite Technology in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TESSERE",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409106",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: likely architecture/design firm; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely architecture/design firm; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Guardians' Line",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=448",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: apparel or support line; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "apparel or support line; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The GUIDE App",
@@ -1963,21 +2939,39 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15821315915",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pump and valve accessories",
+   "read": {
+    "verdict": "supplier",
+    "why": "pump and valve accessories",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Trinity Fire Products",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=471",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire products",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TruBlue Technologies",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409108",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Technologies in name; offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tyler Technologies",
@@ -1998,14 +2992,26 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=34210558086",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: brand name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "brand name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "UniMac",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=106",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: laundry equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "laundry equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "United Diagnostic Services, LLC",
@@ -2019,35 +3025,65 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=362",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "US Fire Pump, LLC",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=19737075053",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "USA Advertising LLC",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=396",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advertising and promotional products",
+   "read": {
+    "verdict": "supplier",
+    "why": "advertising and promotional products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vanguard Safetywear",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15235956037",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PPE apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "PPE apparel",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vave Health",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=455",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: handheld ultrasound medical device",
+   "read": {
+    "verdict": "supplier",
+    "why": "handheld ultrasound medical device",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vector Solutions",
@@ -2060,22 +3096,40 @@
    "name": "Verisk/ISO",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=185",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (data analytics; ISO fire protection ratings); skeptic unsure (Verisk/ISO rates departments for insurers; analytics firm not selling technology to agencies)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VFIS",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=133",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance for emergency services",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance for emergency services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VIKING Fire & Rescue",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=307",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PPE manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "PPE manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vision Fitness",
@@ -2088,8 +3142,14 @@
    "name": "Vitalizone Inc",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=36290203946",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "name suggests vitals monitoring; wearable tech or wellness",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Volcanic Bikes",
@@ -2103,49 +3163,91 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=501",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: graphene materials and wearable antennas; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "graphene materials and wearable antennas; hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ward No Smoke",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=372",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: diesel exhaust filtration",
+   "read": {
+    "verdict": "supplier",
+    "why": "diesel exhaust filtration",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Warn Industries",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409111",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: winches",
+   "read": {
+    "verdict": "supplier",
+    "why": "winches",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Warrior Brush Trucks",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=266",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: brush trucks",
+   "read": {
+    "verdict": "supplier",
+    "why": "brush trucks",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waterous",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=161",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fire pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "fire pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Weis Fire & Safety",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=215",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: equipment and apparatus dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment and apparatus dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wendell's Mint",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=354",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: challenge coins",
+   "read": {
+    "verdict": "supplier",
+    "why": "challenge coins",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Westnet LLC.",
@@ -2166,7 +3268,13 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=217",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: training towers",
+   "read": {
+    "verdict": "supplier",
+    "why": "training towers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Will-Burt",
@@ -2180,28 +3288,52 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=15235967638",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: flame-resistant apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "flame-resistant apparel",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WSKF Architects",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=450",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "X-naut",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=37746409128",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tablet cooling cases and mounts; hardware accessory",
+   "read": {
+    "verdict": "supplier",
+    "why": "tablet cooling cases and mounts; hardware accessory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Z Tone",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=33751915434",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "tone/paging-sounding name; offering unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ZOLL Medical Corporation",
@@ -2215,7 +3347,16 @@
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=489",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: sleep pods for stations",
+   "read": {
+    "verdict": "supplier",
+    "why": "sleep pods for stations",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
- ]
+ ],
+ "read_dropped": 14,
+ "quality_was": null,
+ "quality": "read"
 }

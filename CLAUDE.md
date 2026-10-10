@@ -1232,6 +1232,48 @@ only when the organisation's own page states them.
   4,023 names the classifier left unjudged. Three "good" or staged pages are
   not floors at all on reading: ACCG's is a job board, APPA Public Power's and
   Animal Care Expo's are navigation.
+**Stage 2 (landed): the floors are read before they are filed.**
+
+- **`scripts/read_floor.py` is the reader's deterministic half.** `brief`
+  lists every staged name nobody has judged (not on the board, not a
+  candidate, not a supplier a research pass stamped); `apply` stamps a
+  reader's verdict beside each name - `vendor` (is_govtech true, a research
+  candidate), `supplier` (false), `not_a_company` (leaves the floor, and the
+  supplier row filed off it leaves through the journal), `unsure` (stays
+  null, held). A floor whose every name is judged is graded `read`, which
+  intake accepts where it refused `menu`; a floor whose every name was the
+  site's own text becomes `found: false` with the reason, so the queue shows
+  a wrong address, not a swept floor. Verdicts are kept in
+  `data/conference_intake/reads/`.
+- **Two readers and a skeptic, blind to each other.** 4,023 names in 15
+  batches; the skeptic tried to refute every `vendor` call and a sample of
+  the deletions. Deletions held (0 disputed in 230 sampled); `vendor` was
+  over-called by 15-30% a batch, mostly passive RF component makers,
+  consultancies and benefits programmes. A dispute resolves the conservative
+  way: `supplier` when the skeptic says so (visible, promotable), `unsure`
+  when the readers split, with `disputed` kept on the row so the research
+  stage can pick disputed vendors up after the clean ones.
+- **Intake holds back the unread.** `is_govtech: null` is no longer a
+  supplier; it is held, counted, and named (`--allow-unread` to insist).
+  Intake refuses `found: false` and writes the journalled companies file
+  before the bare suppliers file. `classify_exhibitors` never overwrites a
+  reader's verdict.
+- **The link profile was measured again and is still not a detector** (it
+  separates sponsors from navigation on 3CMA and APPA, fails on NC League and
+  NCSEA); the reader is the tool.
+- **`scripts/read_page.py`** prints a page's text the way the crawler reads it
+  (robots.txt at every hop, our name on the request) so research agents never
+  fetch with their own user agent. **`scripts/promote_cards.py`** is the card
+  door: `--verify` looks for each card's evidence quote on the company's own
+  site, `--second-read` records a blind second reader, `--gate` prints what a
+  person reads (refusals, low confidence, evidence not on the page, split
+  verdicts, a 5% sample), `--land` lands only high-confidence cards whose
+  quote is on the site and whose second reader agreed, and only after the
+  gate has printed. A govtech card whose only match is an unresearched
+  supplier row moves that row out through the journal rather than adding a
+  twin. **Dates:** `conference_dates.confirm` also reads `dates_source`;
+  `apply_conference_reads` takes an `unannounced` read as a dated note.
+
 - **`check_a_redraw_is_the_crawl_without_the_fetch` flaked once** during this
   work: 21 organisations differed after its randomised edits (everbridge,
   urban-sdk, placer-ai first), none with a source the tag change can touch,
@@ -2431,6 +2473,12 @@ wait above, the takeover and the companies left off, across two redraws.
   from schema.json, find their ATS (try the API URL patterns in
   `scripts/ats.py` docstrings), append to companies.json, run selftest, run
   `refresh.py --company <id>`, then `export_xlsx.py`.
+- **Read a floor before filing it:** `python3 scripts/read_floor.py brief --out brief.json`
+  → agents judge (vendor / supplier / not_a_company / unsure) → `python3
+  scripts/read_floor.py apply verdicts.json --write` → `conference_intake.py`.
+- **Research cards through the door:** `agents.py brief --kind card` → research
+  (fetch with `python3 scripts/read_page.py URL`) → `agents.py ingest --kind card`
+  → `promote_cards.py --verify`, `--second-read reads.json`, `--gate`, `--land --by owner`.
 - **Discover an ATS (JS-walled board):** `python3 scripts/discover_js.py noats`
   renders each Unknown in headless Chromium and prints the ATS endpoint its
   board actually calls. Needs `pip install playwright` + `python -m playwright

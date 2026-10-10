@@ -6,28 +6,40 @@
  "source_note": "Read from https://ncsheriffs.org/corporate-partners-and-sponsors-2026 by scripts/sweep_exhibitors.py. 130 name(s), 73 with a website the page itself linked. Quality: good (18% carry a corporate marker, 1% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "2026 Election Chart",
-   "website": "https://e1.nmcdn.io/assets/ncsheriff/wp-content/uploads/2026/04/2026-Election-Chart-4.8.pdf",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Altumint",
    "website": "https://altumint.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: automated traffic-enforcement camera technology for agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "automated traffic-enforcement camera technology for agencies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aramark",
    "website": "https://www.aramark.com/industries/business-and-government/corrections",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: food and facilities services",
+   "read": {
+    "verdict": "supplier",
+    "why": "food and facilities services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Armor Healthcare",
    "website": "https://armorhealthcare.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AT&T Business Solutions",
@@ -50,40 +62,46 @@
   {
    "name": "Brooks Public Safety",
    "website": "https://brooksnetworkservices.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-safety technology integrator: cameras, radios, IT",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-safety technology integrator: cameras, radios, IT",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Chuqlab",
    "website": "https://www.chuqlab.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown firm; 'lab' suffix weakly suggests tech",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Clearview AI",
    "website": "https://www.clearview.ai/"
   },
   {
-   "name": "College Scholarships",
-   "website": "https://ncsheriffs.org/about/scholarships",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
    "name": "Combined Public Communications",
    "website": "http://www.cpcjail.com/"
-  },
-  {
-   "name": "Corporate Partners and Sponsors",
-   "website": "https://ncsheriffs.org/corporate-partners-and-sponsors-2026",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Correctional Behavioral Health",
    "website": "http://cbhjails.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional mental health services",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional mental health services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Equifax Workforce Solutions",
@@ -96,26 +114,40 @@
    "website": "https://www.essper.com/"
   },
   {
-   "name": "facebook",
-   "website": "https://www.facebook.com/NcSheriffsAssociation"
-  },
-  {
    "name": "Food Lion",
    "website": "https://foodlion.com/home",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: grocery chain",
+   "read": {
+    "verdict": "supplier",
+    "why": "grocery chain",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Genesys Health Alliance",
    "website": "https://www.genesyshealth.net/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare staffing/provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare staffing/provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Globe Life Family Heritage Division",
    "website": "https://home.globelifeinsurance.com/familyheritage/home",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GUARDIAN RFID",
@@ -126,16 +158,16 @@
    "website": "https://gunbustersusa.com/"
   },
   {
-   "name": "Honorary Membership",
-   "website": "https://membership.ncsheriffs.org/annual-membership",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "IHS Pharmacy",
    "website": "https://ihspharmacy.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: institutional pharmacy services",
+   "read": {
+    "verdict": "supplier",
+    "why": "institutional pharmacy services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Imprivata",
@@ -145,7 +177,13 @@
    "name": "IMS Correctional Healthcare",
    "website": "https://imscorrectional.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Indivior",
@@ -154,14 +192,16 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "instagram",
-   "website": "https://www.instagram.com/ncsheriffsassociation"
-  },
-  {
    "name": "Johnson Industrial Machinery Services, Inc.",
    "website": "http://www.jimsinc.net/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: industrial machinery services",
+   "read": {
+    "verdict": "supplier",
+    "why": "industrial machinery services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Keefe Group",
@@ -171,67 +211,121 @@
    "name": "Kellwell Food Management",
    "website": "http://www.kellwell.com",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: correctional food service",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional food service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kiesler Police Supply",
    "website": "http://www.kiesler.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: police equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "police equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
-   "name": "Kimble\u2019s Corrections",
+   "name": "Kimble’s Corrections",
    "website": "https://www.kimblesfood.com/?utm_source=google&amp;utm_medium=wix-smart-campaign&amp;utm_campaign=google-ads-campaign-2024-10-16-987e024e&amp;gad_source=1&amp;gad_campaignid=21810779742&amp;gbraid=0AAAAA-X33KGLXniMkXRQntKfOZSqPEXhe&amp;gclid=CjwKCAiA2PrMBhA4EiwAwpHyC8TGPOzCZAO8ulqspl3uEYceICYOmZQ5AaIYX139aoS8b9qJZdgn5RoCG2IQAvD_BwE",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional food service",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional food service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "KNC Technologies",
    "website": "https://knctech.us/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: 'Technologies' name; IT/communications firm",
+   "read": {
+    "verdict": "vendor",
+    "why": "'Technologies' name; IT/communications firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Law Enforcement Torch Run for Special Olympics, North Carolina",
    "website": "https://sonc.net/torch-run/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: Special Olympics nonprofit fundraising program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Special Olympics nonprofit fundraising program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LAW Publications",
    "website": "https://www.lawpublications.net/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Legislative Reports",
-   "website": "https://ncsheriffs.org/resources/legislative-reports",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: law-enforcement publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "law-enforcement publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Matthews Specialty Vehicles",
    "website": "https://www.msvehicles.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: specialty vehicle manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "specialty vehicle manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McDaniel Supply Company",
    "website": "http://www.mcdanielsupplyco.net/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: inmate commissary supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "inmate commissary supplies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MEDIKO",
    "website": "http://www.medikoinc.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Modern Automotive",
    "website": "https://www.modernauto.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: car dealership",
+   "read": {
+    "verdict": "supplier",
+    "why": "car dealership",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Montgomery Technology Systems",
@@ -243,57 +337,51 @@
    "name": "Moseley",
    "website": "https://www.moseleydesigns.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Moseley Architects; justice facility design",
+   "read": {
+    "verdict": "supplier",
+    "why": "Moseley Architects; justice facility design",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "National Public Safety Group",
    "website": "http://npsg.org"
   },
   {
-   "name": "NCACC County Risk Group Sheriffs\u2019 Risk Management Program",
+   "name": "NCACC County Risk Group Sheriffs’ Risk Management Program",
    "website": "http://www.ncacc.org/services-for-counties/risk-management",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: county risk pool insurance program",
+   "read": {
+    "verdict": "supplier",
+    "why": "county risk pool insurance program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "NCIC Inmate Communications",
    "website": "https://www.ncic.com/"
   },
   {
-   "name": "NCSA Job Openings",
-   "website": "https://ncsheriffs.org/job-openings",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Oasis Commissary Services",
    "website": "http://www.oasiscommissary.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: jail commissary services",
+   "read": {
+    "verdict": "supplier",
+    "why": "jail commissary services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Officer Assistance Network",
    "website": "https://ncsheriffs.org/officer-assistance-network",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Officers & Executive Committee",
-   "website": "https://ncsheriffs.org/about/people",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Online Store",
-   "website": "https://shop.ncsheriffs.org/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Past Presidents",
-   "website": "https://e1.nmcdn.io/assets/ncsheriff/wp-content/uploads/2025/07/NCSA-Past-Presidents.pdf",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Pay Tel Communications, Inc.",
@@ -304,44 +392,50 @@
   {
    "name": "Peregrine Technologies",
    "website": "https://www.peregrine.io/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-safety data integration platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-safety data integration platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Performance Machine and Fab Inc.",
    "website": "https://www.performancemfnc.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: metal fabrication",
+   "read": {
+    "verdict": "supplier",
+    "why": "metal fabrication",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Permitium",
    "website": "http://www.permitium.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: online permit software for sheriffs' offices",
+   "read": {
+    "verdict": "vendor",
+    "why": "online permit software for sheriffs' offices",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Prime Health Services, Inc.",
    "website": "http://www.primehealthservices.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Procurement",
-   "website": "https://ncsheriffs.org/procurement",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Programs",
-   "website": "https://ncsheriffs.org/programs",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Publications",
-   "website": "https://ncsheriffs.org/resources/publications",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare network/cost-containment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare network/cost-containment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Smart Communications",
@@ -356,12 +450,6 @@
    "website": "http://www.southernsoftware.com/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Specialty License Plates",
-   "website": "https://ncsheriffs.org/specialty-license-plates",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Summit Correctional Services",
@@ -382,12 +470,6 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Website Design and Development",
-   "website": "https://www.newmediacampaigns.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Wellpath",
    "website": "https://wellpathcare.com/"
   },
@@ -395,13 +477,25 @@
    "name": "Wharton-Smith, Inc.",
    "website": "https://whartonsmith.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zippix Toothpicks",
    "website": "https://zippixtoothpicks.com/?srsltid=AfmBOorpSEWj0bCU63GqHYoqo9ZW1jDgGxYsfClzHVG2iCUxc9dLVBnB",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consumer goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ZOLL Medical Corporation",
@@ -409,5 +503,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 16,
+ "quality_was": "good"
 }

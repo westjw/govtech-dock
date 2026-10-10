@@ -10,70 +10,130 @@
    "booth": "102",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HDPE pipe fusion services",
+   "read": {
+    "verdict": "supplier",
+    "why": "HDPE pipe fusion services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Trash Bin Cleaners Direct LLC (Mfg)",
    "booth": "103",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Bin cleaning truck manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bin cleaning truck manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Qingdao SOCO New Material Co., Ltd.",
    "booth": "105",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Materials manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Materials manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CommanderAI",
    "booth": "106",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI software for waste hauler operations",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI software for waste hauler operations",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "E Tech Group",
    "booth": "107",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Automation systems integrator, no product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Automation systems integrator, no product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AGRU America",
    "booth": "108",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Geomembrane liner manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geomembrane liner manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Viridi",
    "booth": "109",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Battery energy storage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Battery energy storage maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stonhard",
    "booth": "110",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Flooring and coatings",
+   "read": {
+    "verdict": "supplier",
+    "why": "Flooring and coatings",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Core & Main",
    "booth": "112",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waterworks products distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waterworks products distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SignalFire Wireless Telemetry",
    "booth": "113",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wireless telemetry sensors with cloud software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wireless telemetry sensors with cloud software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fetch Waste Solutions",
@@ -101,14 +161,26 @@
    "booth": "118",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Polystyrene manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Polystyrene manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Perennial Energy, LLC",
    "booth": "119",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill gas flare equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill gas flare equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Recycle Coach",
@@ -122,21 +194,39 @@
    "booth": "121",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Pump equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pump equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aljon",
    "booth": "125",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill compactor and baler maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill compactor and baler maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IPL North America",
    "booth": "131",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Plastic cart and container manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plastic cart and container manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CSG Forte",
@@ -156,15 +246,27 @@
    "name": "Boos Resource and Technology Group",
    "booth": "201",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown group; name suggests consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Enthalpy Analytical",
    "booth": "203",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental testing laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental testing laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Fire Rover, LLC",
@@ -178,14 +280,26 @@
    "booth": "205",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill leachate pump manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill leachate pump manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Veolia",
    "booth": "206",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Environmental services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental services company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lytx",
@@ -199,7 +313,13 @@
    "booth": "209",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Compaction equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Compaction equipment manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Machinex",
@@ -234,7 +354,13 @@
    "booth": "218",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill gas field services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill gas field services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RouteSmart Technologies, Inc.",
@@ -269,7 +395,13 @@
    "booth": "231",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Water treatment equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Water treatment equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Seek Thermal",
@@ -283,77 +415,143 @@
    "booth": "233",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Nonprofit paint stewardship program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit paint stewardship program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lummus Technology, LLC",
    "booth": "234",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Process technology licensor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Process technology licensor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vishay Transducers, Ltd.",
    "booth": "235",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Load cell components",
+   "read": {
+    "verdict": "supplier",
+    "why": "Load cell components",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rochem Americas",
    "booth": "239",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Leachate membrane treatment systems",
+   "read": {
+    "verdict": "supplier",
+    "why": "Leachate membrane treatment systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ENCON Evaporators",
    "booth": "241",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Wastewater evaporator manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wastewater evaporator manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Organics Management",
    "booth": "243",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Organics and composting operations, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Organics and composting operations, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
-   "name": "Ken\u2019s Truck Repair",
+   "name": "Ken’s Truck Repair",
    "booth": "249",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Truck repair shop",
+   "read": {
+    "verdict": "supplier",
+    "why": "Truck repair shop",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northland Capital Equipment Finance",
    "booth": "251",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: Equipment financing",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment financing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "METTLER TOLEDO",
    "booth": "253",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Scales and weighing instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Scales and weighing instruments",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Leachate Management Specialists",
    "booth": "255",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Leachate treatment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Leachate treatment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Commercial Solar Panel Recycling",
    "booth": "259",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Recycling service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycling service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Heartland Industrial Solutions",
@@ -367,14 +565,26 @@
    "booth": "263",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Chemical supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chemical supplier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Adsorption Research, Inc.",
    "booth": "265",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Adsorbent gas-separation process technology, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "Adsorbent gas-separation process technology, not software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cascade Cart Solutions",
@@ -388,49 +598,91 @@
    "booth": "301",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Trade publication",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade publication",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Autostar Heavy Duty",
    "booth": "302",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Heavy-duty truck parts",
+   "read": {
+    "verdict": "supplier",
+    "why": "Heavy-duty truck parts",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RRT Design & Construction",
    "booth": "303",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: Design-build contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Design-build contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Clean Composting Company",
    "booth": "304",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Composting services and equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Composting services and equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Solmax",
    "booth": "305",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Geosynthetics manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geosynthetics manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sennebogen LLC",
    "booth": "306",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Material handler equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Material handler equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ECT2",
    "booth": "307",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: PFAS treatment systems and media",
+   "read": {
+    "verdict": "supplier",
+    "why": "PFAS treatment systems and media",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WSP USA",
@@ -444,21 +696,39 @@
    "booth": "309",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Merchant payment processing, not government-focused",
+   "read": {
+    "verdict": "supplier",
+    "why": "Merchant payment processing, not government-focused",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Geotech Environmental Equipment, Inc.",
    "booth": "313",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental instruments and sampling equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental instruments and sampling equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Humdinger Equipment",
    "booth": "317",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Motive",
@@ -471,15 +741,27 @@
    "name": "CurbWaste",
    "booth": "321",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Waste management SaaS for haulers",
+   "read": {
+    "verdict": "vendor",
+    "why": "Waste management SaaS for haulers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "KEITH MANUFACTURING CO",
    "booth": "325",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Walking-floor trailer manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Walking-floor trailer manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carolina Software",
@@ -507,7 +789,13 @@
    "booth": "332",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Strong Data",
@@ -520,78 +808,144 @@
    "name": "Point and Pay",
    "booth": "338",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Government e-payment software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Government e-payment software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HDR Engineering",
    "booth": "339",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MAC Trailer Enterprises, Inc.",
    "booth": "340",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Trailer manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trailer manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Morrow Energy, LLC",
    "booth": "341",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill gas processing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill gas processing equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Progressive Environmental Services, LLC",
    "booth": "342",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "North American Hazardous Materials Management Association (NAHMMA)",
    "booth": "343",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: Trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cimarron",
    "booth": "347",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill gas flare and combustion equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill gas flare and combustion equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Brown Bear / Broyhill",
    "booth": "348",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Compost turner and landscape equipment makers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Compost turner and landscape equipment makers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BDP Industries",
    "booth": "349",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Dewatering equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dewatering equipment manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "DOD Labs, A Division of DOD Technologies, Inc.",
    "booth": "350",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gas detection instruments and analytical lab",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gas detection instruments and analytical lab",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Komar Industries",
    "booth": "351",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Industrial shredder manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial shredder manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Reworld",
@@ -605,56 +959,104 @@
    "booth": "353",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Generic name, no technology-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Generic name, no technology-product signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Heartland",
    "booth": "354",
    "website": null,
    "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech_why": "not judged yet - names only",
+   "read": {
+    "verdict": "unsure",
+    "why": "Ambiguous: Heartland Water Technology or Heartland Payment Systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Atmos Technologies",
    "booth": "358",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown firm; could be monitoring hardware or software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Metalcrete Industries",
    "booth": "360",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Industrial products, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial products, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lancaster County Solid Waste Management Authority (LCSWMA)",
    "booth": "361",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Contenur",
    "booth": "362",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste container manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste container manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Schaefer Plastics North America",
    "booth": "400",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Cart and container manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cart and container manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SCS Engineers",
    "booth": "401",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Neptune Wash Solutions",
@@ -675,21 +1077,39 @@
    "booth": "408",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Automatic tarping machines",
+   "read": {
+    "verdict": "supplier",
+    "why": "Automatic tarping machines",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gershman, Brickner & Bratton, Inc.",
    "booth": "412",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Solid waste consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Solid waste consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Watershed Geo",
    "booth": "413",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineered turf landfill cover",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineered turf landfill cover",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CARLSON SOFTWARE",
@@ -703,7 +1123,13 @@
    "booth": "418",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Geotechnical and environmental consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geotechnical and environmental consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CQA Solutions, Ltd.",
@@ -717,35 +1143,65 @@
    "booth": "420",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Landfill cover products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Landfill cover products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Toter/Wastequip",
    "booth": "425",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Cart and container manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cart and container manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Weaver Consultants Group",
    "booth": "432",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Consulting engineers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting engineers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "PFAS Laboratories",
    "booth": "438",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Testing laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "Testing laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LoCI Controls",
    "booth": "439",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Automated landfill gas wellheads with cloud data platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Automated landfill gas wellheads with cloud data platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Brigade Electronics",
@@ -759,28 +1215,52 @@
    "booth": "442",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Plasma PFAS destruction process hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plasma PFAS destruction process hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Suzhou JONO Environmental Technology Co.,LTD",
    "booth": "443",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Recycling sorting equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycling sorting equipment manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GCI (Grace Consulting, Inc.)",
    "booth": "447",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The EcoHero Show",
    "booth": "448",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Media podcast",
+   "read": {
+    "verdict": "supplier",
+    "why": "Media podcast",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Samsara",
@@ -794,28 +1274,52 @@
    "booth": "450",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Consulting engineers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting engineers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Hauler Magazine",
    "booth": "452",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Trade publication",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade publication",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Firefly AB",
    "booth": "453",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Industrial spark and fire detection hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial spark and fire detection hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VIA Technologies, Inc.",
    "booth": "454",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Embedded computing hardware maker; fleet cameras a sideline",
+   "read": {
+    "verdict": "supplier",
+    "why": "Embedded computing hardware maker; fleet cameras a sideline",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VLS Environmental Solutions",
@@ -836,21 +1340,39 @@
    "booth": "501",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste products, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste products, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SETCO Solid Tire & Rim",
    "booth": "503",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Tires and rims",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tires and rims",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Burns & McDonnell",
    "booth": "507",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering and construction firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and construction firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tetra Tech",
@@ -864,14 +1386,26 @@
    "booth": "513",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Live-floor trailer systems",
+   "read": {
+    "verdict": "supplier",
+    "why": "Live-floor trailer systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Allonnia",
    "booth": "514",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bioremediation and PFAS treatment company, not a software product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bioremediation and PFAS treatment company, not a software product",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rehrig Pacific Company",
@@ -885,21 +1419,39 @@
    "booth": "519",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Recycling sorting equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycling sorting equipment manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bigbelly Solar, LLC",
    "booth": "521",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Smart connected waste stations with cloud software for cities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Smart connected waste stations with cloud software for cities",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waste360/WasteExpo",
    "booth": "524",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Media and trade show",
+   "read": {
+    "verdict": "supplier",
+    "why": "Media and trade show",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Routeware",
@@ -912,36 +1464,66 @@
    "name": "Envirosuite / Byers Scientific",
    "booth": "538",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Envirosuite is environmental monitoring SaaS used by public agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Envirosuite is environmental monitoring SaaS used by public agencies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Synagro Technologies, Inc.",
    "booth": "542",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Biosolids management services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Biosolids management services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Terramac",
    "booth": "543",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Crawler carrier equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crawler carrier equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Evonik Corporation",
    "booth": "546",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Specialty chemicals",
+   "read": {
+    "verdict": "supplier",
+    "why": "Specialty chemicals",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MRU Instruments Inc.",
    "booth": "547",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Gas analyzer instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gas analyzer instruments",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Environmental Solutions Group",
@@ -955,49 +1537,91 @@
    "booth": "549",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Recycling machinery manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycling machinery manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Environmental Equipment Sales & Services",
    "booth": "550",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BTR",
    "booth": "551",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare acronym, cannot identify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Coviana",
    "booth": "552",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown firm, no signal either way",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Leadpoint Business Services",
    "booth": "553",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Staffing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Staffing services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Thermal Instrument Company",
    "booth": "554",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Flow meter instruments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Flow meter instruments",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Diamondback Products, Inc.",
    "booth": "555",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Physical products maker, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Physical products maker, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ecotec Solutions",
@@ -1018,14 +1642,26 @@
    "booth": "602",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Energy services, no tech-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Energy services, no tech-product signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ludlum Measurement Inc",
    "booth": "603",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Radiation detection instrument manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Radiation detection instrument manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMP",
@@ -1039,91 +1675,169 @@
    "booth": "606",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste processing plant technology, industrial hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste processing plant technology, industrial hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vecoplan",
    "booth": "607",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Shredder manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Shredder manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bandit Industries, Inc.",
    "booth": "608",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Wood chipper and grinder manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wood chipper and grinder manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "tarpARMOR",
    "booth": "609",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Tarp products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tarp products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rotochopper, Inc.",
    "booth": "612",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Grinder manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Grinder manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "E-Pak Manufacturing",
    "booth": "614",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Manufacturer of physical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Manufacturer of physical equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SCAN~LINK Technologies Inc.",
    "booth": "616",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: Vehicle-mounted RFID proximity alarm hardware; safety equipment, not software or data.",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Vehicle-mounted RFID proximity alarm hardware; safety equipment, not software or data.",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Water & Carbon Group",
    "booth": "620",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Water treatment engineering",
+   "read": {
+    "verdict": "supplier",
+    "why": "Water treatment engineering",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hauler Hero",
    "booth": "625",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Waste hauler management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Waste hauler management software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Qnergy Inc",
    "booth": "627",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Methane-powered generator hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Methane-powered generator hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WIS",
    "booth": "635",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare acronym, cannot identify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EARTHRES, A Division of RESPEC",
    "booth": "639",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering and environmental consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and environmental consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Apis Innovation",
    "booth": "641",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown firm; name hints tech but nothing specific",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jacobs",
@@ -1136,43 +1850,79 @@
    "name": "IETLink",
    "booth": "646",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown firm; name hints connectivity",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Company Wrench",
    "booth": "648",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Heavy equipment dealer and rental",
+   "read": {
+    "verdict": "supplier",
+    "why": "Heavy equipment dealer and rental",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Macpactor",
    "booth": "652",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Compactor manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Compactor manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "APTIM",
    "booth": "654",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering and environmental services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and environmental services firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Valicor Environmental Services",
    "booth": "659",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Wastewater treatment services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wastewater treatment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TruckPay",
    "booth": "661",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Hauling e-ticketing and payments software used by DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Hauling e-ticketing and payments software used by DOTs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bluewater Engineered Storage Systems",
@@ -1193,21 +1943,39 @@
    "booth": "713",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Erosion control products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Erosion control products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Enerflex",
    "booth": "715",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Gas compression and energy infrastructure",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gas compression and energy infrastructure",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cardoza Waste Parts Nation",
    "booth": "724",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste equipment parts distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste equipment parts distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RWI Enhanced Evaporation",
@@ -1221,168 +1989,312 @@
    "booth": "726",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Energy services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Energy services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Compactor Rentals of America",
    "booth": "731",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Equipment rental",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment rental",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BWF Envirotec, US",
    "booth": "733",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Industrial filtration media maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial filtration media maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Franzen North America Inc",
    "booth": "735",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Unknown manufacturer, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Unknown manufacturer, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waste Today / Recycling Today Media Group",
    "booth": "738",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Trade publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade publisher",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Jacobi Carbons, Inc.",
    "booth": "739",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Activated carbon manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Activated carbon manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Assist Services LLC",
    "booth": "740",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Services firm, no product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Services firm, no product signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Euclid Chemical",
    "booth": "741",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Concrete chemicals manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Concrete chemicals manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Factory Direct Promos",
    "booth": "742",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Promotional products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Promotional products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ISCO",
    "booth": "743",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HDPE piping supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "HDPE piping supplier",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EcoVision Environmental",
    "booth": "758",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental products and services, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental products and services, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ecodrum",
    "booth": "760",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: In-vessel composting equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "In-vessel composting equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sniffer Robotics",
    "booth": "762",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (Drone methane detection technology with data analytics); skeptic unsure (Drone emissions-monitoring service provider, not a product sale; government fit unclear.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Strata Geosystems LLC",
    "booth": "764",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Geosynthetics manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geosynthetics manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lyten",
    "booth": "812",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Battery and materials maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Battery and materials maker",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WastAway",
    "booth": "814",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste-to-fuel processing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste-to-fuel processing equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kimble Recycling & Disposal, Inc.",
    "booth": "816",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Waste hauler",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste hauler",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ecoverse",
    "booth": "820",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Recycling equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recycling equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Larson Design Group",
    "booth": "822",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Engineering and architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Plum Creek Environmental",
    "booth": "826",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Environmental products and services, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Environmental products and services, no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TRI Environmental",
    "booth": "828",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Geosynthetics testing laboratory",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geosynthetics testing laboratory",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wayste",
    "booth": "832",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown; possibly hauling marketplace software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mighty Binz",
    "booth": "834",
    "website": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Bin products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bin products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ZwitterCo",
    "booth": "836",
    "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: Membrane technology for wastewater",
+   "read": {
+    "verdict": "supplier",
+    "why": "Membrane technology for wastewater",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMCS Group",
@@ -1395,8 +2307,16 @@
    "name": "Recoup Technologies Inc.",
    "booth": "846",
    "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "Unknown firm; could be equipment or software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
- ]
+ ],
+ "quality_was": null,
+ "quality": "read"
 }

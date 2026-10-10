@@ -128,6 +128,11 @@ def main() -> int:
                          "three associations are called APPA and a bare "
                          "'APPA 2026' cannot be read six months later. Overrides "
                          "whatever the staged file called itself.")
+    ap.add_argument("--allow-unread", action="store_true",
+                    help="file names nobody has judged as suppliers anyway. The "
+                         "default holds them back: a name the classifier could "
+                         "not read is a question for read_floor.py, not a "
+                         "supplier record")
     ap.add_argument("--default-sector", default="General Gov",
                     help="sector for suppliers the classifier left unplaced; "
                          "set from the conference's buyer block, so a courts "
@@ -158,6 +163,13 @@ def main() -> int:
               f"the association's own pages rather than an exhibitor floor. "
               f"Re-sweep it from a real directory url first.", file=sys.stderr)
         return 1
+    # A PAGE THE SWEEP COULD NOT READ, OR A READER FOUND WAS NEVER A FLOOR,
+    # has `found: false` and a `why`. Nothing checked it here, so a refusal
+    # could be filed as an empty floor.
+    if staged.get("found") is False:
+        print(f"refusing {a.file}: not an exhibitor list - "
+              f"{staged.get('why') or 'the sweep found nothing'}", file=sys.stderr)
+        return 1
     event, why = resolve_tag(staged, a.event_tag)
     if why:
         print(f"refused: {why}", file=sys.stderr)
@@ -183,6 +195,7 @@ def main() -> int:
 
     tagged = new_suppliers = 0
     candidates = []
+    unread: list[str] = []
     seen_in_file: set[str] = set()
     for ex in staged["exhibitors"]:
         key = norm(ex["name"])
@@ -190,6 +203,13 @@ def main() -> int:
             continue
         seen_in_file.add(key)
         hit = by_name.get(key)
+        # NOBODY HAS JUDGED THIS NAME. The classifier left `is_govtech` null
+        # ("nothing in the name either way") and this filed every such name
+        # as a supplier - 4,023 of them by 2026-10-09, menu items among them.
+        # Held back for read_floor.py unless the caller says otherwise.
+        if not hit and ex.get("is_govtech") is None and not a.allow_unread:
+            unread.append(ex["name"])
+            continue
         if hit:
             _, row = hit
             row["description"] = add_event(row.get("description"), event)
@@ -228,7 +248,12 @@ def main() -> int:
 
     print(f"{event}: {len(staged['exhibitors'])} staged -> {tagged} already on "
           f"file (note extended), {new_suppliers} new suppliers, "
-          f"{len(candidates)} govtech candidates for research")
+          f"{len(candidates)} govtech candidates for research"
+          + (f", {len(unread)} unread (held back)" if unread else ""))
+    if unread:
+        print(f"  unread, not filed: {', '.join(unread[:8])}"
+              + (f" and {len(unread) - 8} more" if len(unread) > 8 else ""))
+        print(f"  read them first: python3 scripts/read_floor.py brief --files {a.file}")
     if a.dry_run:
         return 0
 
@@ -236,10 +261,11 @@ def main() -> int:
     if err:
         print(f"refused: {err}", file=sys.stderr)
         return 1
-    admin.write_atomic("suppliers.json", suppliers)
-    # force: the counts were printed above, which is what journal.BLAST asks
-    # for before a write touching more than 25 records. A dry run is the
-    # person looking; the run without it is the person saying go.
+    # THE JOURNALLED WRITE FIRST. suppliers.json is written bare, so when the
+    # journal refused the companies write the suppliers were already on disk
+    # with no way back. force: the counts were printed above, which is what
+    # journal.BLAST asks for before a write touching more than 25 records. A
+    # dry run is the person looking; the run without it is the person saying go.
     bad = admin.save_companies(
         companies, "conference-intake",
         f"{event}: {tagged} on file tagged, {new_suppliers} suppliers filed",
@@ -247,6 +273,7 @@ def main() -> int:
     if bad:
         print(f"refused: {bad}", file=sys.stderr)
         return 1
+    admin.write_atomic("suppliers.json", suppliers)
     STAGE.mkdir(exist_ok=True)
     cand_path = STAGE / "govtech_candidates.json"
     existing = json.loads(cand_path.read_text()) if cand_path.exists() else []

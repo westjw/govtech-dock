@@ -24,14 +24,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federally funded technical-assistance programme booth",
+   "read": {
+    "verdict": "supplier",
+    "why": "federally funded technical-assistance programme booth",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ADAboy Van Conversions",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair van conversions; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair van conversions; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AESYS",
@@ -45,14 +57,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Altro safety flooring; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Altro safety flooring; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AMF BRUNS AMERICA",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair securement systems; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair securement systems; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AngelTrax",
@@ -80,7 +104,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair-accessible vehicles and lifts",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair-accessible vehicles and lifts",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bus Climate Control",
@@ -94,7 +124,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bus rental service",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus rental service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Camira",
@@ -107,8 +143,14 @@
    "name": "Capitol GCS",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unexpanded 'GCS'; services firm of unknown kind",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CITYROVER",
@@ -122,42 +164,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "CTAA",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Leadership Academy",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "CTAA Membership",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Tech",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Training",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal technical-assistance center (CCAM)",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal technical-assistance center (CCAM)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CWI Digital Systems",
@@ -178,7 +191,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bus manufacturer; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus manufacturer; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Driverge Vehicle Innovations",
@@ -192,7 +211,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: electric shuttle-bus manufacturer; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "electric shuttle-bus manufacturer; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ETA TRANSIT SYSTEMS",
@@ -213,21 +238,39 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: mobility vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "mobility vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ForeFront Power",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: solar/energy developer; utilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "solar/energy developer; utilities",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Forest River Bus & Van",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bus and van manufacturer; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus and van manufacturer; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FR Conversions",
@@ -255,14 +298,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: marketing/advertising agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "marketing/advertising agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HBSS Connect Corp./QRyde",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: QRyde: transit scheduling and dispatch software",
+   "read": {
+    "verdict": "vendor",
+    "why": "QRyde: transit scheduling and dispatch software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IDIS Americas",
@@ -283,14 +338,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle control electronics hardware for fleets",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle control electronics hardware for fleets",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Iris Infrared & Intelligent Sensors NA, Inc.",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: IRIS automatic passenger-counting sensors with analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IRIS automatic passenger-counting sensors with analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "IT Curves",
@@ -304,14 +371,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: air suspension manufacturer; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "air suspension manufacturer; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kevadiya Inc",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (transit IT services and software firm); skeptic unsure (Transit IT services/custom development firm; product unclear.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kiel Americas",
@@ -324,29 +403,53 @@
    "name": "Kontron America, Inc.",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: Kontron embedded/onboard computing and telematics hardware",
+   "read": {
+    "verdict": "vendor",
+    "why": "Kontron embedded/onboard computing and telematics hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Latinos In Transit",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: professional association/nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association/nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lippert",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Lippert vehicle components; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lippert vehicle components; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LiquidSpring LLC",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle suspension systems; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle suspension systems; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Mass Transit",
@@ -359,8 +462,14 @@
    "name": "Master's Transportation",
    "website": null,
    "detail_url": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
+   "is_govtech": false,
+   "is_govtech_why": "reader: bus dealer and rental; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus dealer and rental; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MATAWAN",
@@ -381,14 +490,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bus dealer; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus dealer; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MORryde International, Inc.",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle suspension and components; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle suspension and components; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MTM Transit",
@@ -402,21 +523,39 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: AASHTO association programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "AASHTO association programme",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nebraska Association of Transportation Providers (NATP)",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state transportation-provider association",
+   "read": {
+    "verdict": "supplier",
+    "why": "state transportation-provider association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
-   "name": "Non-Emergency Medical Transportation Accreditation Commission\u00ae (NEMTAC\u00ae)",
+   "name": "Non-Emergency Medical Transportation Accreditation Commission® (NEMTAC®)",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: NEMT accreditation nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "NEMT accreditation nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Onspot of North America",
@@ -429,22 +568,40 @@
    "name": "Onward",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous name; possibly Onward Rides mobility service",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Optimus Technologies",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: biodiesel fuel-system hardware for fleets",
+   "read": {
+    "verdict": "supplier",
+    "why": "biodiesel fuel-system hardware for fleets",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ProCredEx",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: credentialing data-exchange software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "credentialing data-exchange software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Propane Education & Research Council",
@@ -472,14 +629,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: electric bus repower/conversion; vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "electric bus repower/conversion; vehicles",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ride Guide Transit Technologies",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: transit scheduling/dispatch software; name signals it",
+   "read": {
+    "verdict": "vendor",
+    "why": "transit scheduling/dispatch software; name signals it",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RideCo",
@@ -493,7 +662,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: transit consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "transit consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Romaine Electric Corp",
@@ -541,15 +716,27 @@
    "name": "SDG",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym, cannot identify",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Seifert Transit Graphics",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle graphics and signage",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle graphics and signage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Shah Software, Inc.",
@@ -562,8 +749,14 @@
    "name": "Skyward Thought, Inc.",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown firm; no offering signal in name",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Spare",
@@ -584,14 +777,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "The Navigation Firm",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: consulting firm; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Transdev",
@@ -605,7 +810,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: bus destination signage hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus destination signage hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Transit Technologies",
@@ -619,14 +830,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: FTA-funded workforce technical-assistance center",
+   "read": {
+    "verdict": "supplier",
+    "why": "FTA-funded workforce technical-assistance center",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TransitFare",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: fare-collection technology; name signals it",
+   "read": {
+    "verdict": "vendor",
+    "why": "fare-collection technology; name signals it",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TransLoc Inc.",
@@ -640,7 +863,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TransTrack Solutions Group",
@@ -660,8 +889,14 @@
    "name": "TSI Video Surveillance",
    "website": null,
    "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: onboard video surveillance systems for transit",
+   "read": {
+    "verdict": "vendor",
+    "why": "onboard video surveillance systems for transit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Turbo Images",
@@ -682,14 +917,26 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wheelchair-accessible vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "wheelchair-accessible vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "USDOT ITS Joint Program Office",
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "UZURV",
@@ -710,7 +957,13 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: HSM bus seating/securement product line; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "HSM bus seating/securement product line; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Waysine LLC",
@@ -718,776 +971,9 @@
    "detail_url": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Membership Lounge",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Leadership Academy Lounge",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Golf Simulator",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Refreshment Lounge",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Puppy Park (Tues Only)",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "501",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "601",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "606",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "610",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "611",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "612",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "616",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "618",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "620",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "624",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "625",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "626",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "630",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "632",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "634",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "705",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "709",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "717",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "721",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "725",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "731",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "809",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "811",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "813",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "816",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "817",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "818",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "820",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "823",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "824",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "825",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "827",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "831",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "833",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "901",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "905",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "908",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "909",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "910",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "911",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "912",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "913",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "919",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "921",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "922",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "923",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "924",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "925",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "926",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "927",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "930",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "931",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "932",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "934",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1000",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1001",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1002",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1003",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1004",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1005",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1007",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1008",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1010",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1011",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1012",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1013",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1016",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1017",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1018",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1022",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1024",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1026",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1031",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1037",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1039",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1100",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1101",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1102",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1104",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1106",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1110",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1111",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1112",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1117",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1121",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1125",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1131",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1136",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1138",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1210",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1211",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1213",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1215",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1217",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1219",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1220",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1221",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1223",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1227",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1229",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1231",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1233",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "1235",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Resource Center",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CTAA Resources",
-   "website": null,
-   "detail_url": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   }
- ]
+ ],
+ "read_dropped": 115,
+ "quality_was": null,
+ "quality": "read"
 }

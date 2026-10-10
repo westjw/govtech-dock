@@ -6696,6 +6696,8 @@ def check_every_pipeline_script_has_a_caller() -> int:
         "promote_rivals.py": "agents propose, people rule",
         "promote_profiles.py": "same, and it gates on a category being read",
         "promote_candidates.py": "same",
+        "promote_cards.py": "the card door: a person reads the gate before it lands",
+        "read_floor.py": "the reader's applier; a person or agent runs it per floor",
         "discover_js.py": "needs Playwright; kept out of the run path on purpose",
     }
     MUST_RUN = {
@@ -10479,6 +10481,354 @@ def check_the_crawler_honours_robots_txt() -> int:
     dj = (ROOT / "scripts" / "discover_js.py").read_text()
     if "user_agent=" not in dj or f"{robots.TOKEN}/" not in dj:
         errors += fail("the discovery browser passes as plain Chrome")
+    return errors
+
+
+def check_a_floor_is_read_before_it_is_filed() -> int:
+    """A name nobody judged is not a supplier, a page that was never a floor
+    is not a swept floor, and a reader's verdict outranks the name rule.
+
+    The owner's ruling, 2026-10-09: Claude reads the floors. Before this,
+    classify left "nothing in the name either way" null and intake filed
+    every null as a supplier - 4,023 names across 54 floors, menu items
+    among them - and a page graded `good` that was really a county job board
+    (ACCG) counted as swept. read_floor.py is the deterministic half of the
+    reading (brief out, verdicts in); this drives it and the two scripts
+    that must respect it.
+    """
+    import subprocess
+    import read_floor as rf
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-read-"))
+    saved = (rf.DATA, rf.READS, rf.purge_suppliers, rf.settled, rf.staged_files)
+    purged: list = []
+    try:
+        rf.DATA, rf.READS = tmp, tmp / "reads"
+        rf.purge_suppliers = lambda names, by, why: (purged.extend(names) or (len(names), None))
+        rf.settled = lambda: (set(), set(), set())      # nothing on the fixture board yet
+        def floor(name, rows, quality="menu"):
+            f = tmp / f"exhibitors_{name}.json"
+            f.write_text(json.dumps({"event_tag": f"{name} 2026", "conference": name, "found": True,
+                                     "quality": quality, "source_url": "https://x.test/sponsors",
+                                     "exhibitors": rows}))
+            return f
+        f1 = floor("One", [{"name": "Acme Software", "is_govtech": None},
+                           {"name": "Acme Pumps", "is_govtech": None},
+                           {"name": "Member Login", "is_govtech": None},
+                           {"name": "Zed Quux", "is_govtech": None},
+                           {"name": "Nobody Looked", "is_govtech": None}])
+        f2 = floor("Two", [{"name": "Board of Trustees", "is_govtech": None},
+                           {"name": "Site Map", "is_govtech": None}], quality="good")
+        f3 = floor("Three", [{"name": "Beta Analytics", "is_govtech": None},
+                             {"name": "Gamma Consulting", "is_govtech": False}])
+        V = lambda fn, n, v, why="a few words a person can check": {"file": fn, "name": n, "verdict": v, "why": why}
+        verdicts = [V(f1.name, "Acme Software", "vendor"), V(f1.name, "Acme Pumps", "supplier"),
+                    V(f1.name, "Member Login", "not_a_company"), V(f1.name, "Zed Quux", "unsure", ""),
+                    V(f2.name, "Board of Trustees", "not_a_company"), V(f2.name, "Site Map", "not_a_company"),
+                    V(f3.name, "Beta Analytics", "vendor")]
+        rep = rf.apply(verdicts, "agent:test", write=True)
+        one = json.loads(f1.read_text()); by = {e["name"]: e for e in one["exhibitors"]}
+        if by.get("Acme Software", {}).get("is_govtech") is not True or \
+                (by.get("Acme Software", {}).get("read") or {}).get("verdict") != "vendor":
+            errors += fail("a vendor verdict did not set is_govtech true with the reading beside it")
+        if by.get("Acme Pumps", {}).get("is_govtech") is not False:
+            errors += fail("a supplier verdict did not set is_govtech false")
+        if "Member Login" in by or one.get("read_dropped") != 1:
+            errors += fail("a name judged not a company stayed on the floor")
+        if by.get("Zed Quux", {}).get("is_govtech") is not None or by.get("Nobody Looked", {}).get("is_govtech") is not None:
+            errors += fail("an unsure or unread name was given a verdict it never had")
+        if (by.get("Zed Quux", {}).get("read") or {}).get("verdict") != "unsure":
+            errors += fail("an unsure reading was not recorded as a reading")
+        # the name rule had already called it False; a reader's unsure holds it
+        f6 = floor("Six", [{"name": "Maybe Co", "is_govtech": False, "is_govtech_why": "nothing in the name"}])
+        rf.apply([V(f6.name, "Maybe Co", "unsure", "")], "agent:test", write=True)
+        if json.loads(f6.read_text())["exhibitors"][0].get("is_govtech") is not None:
+            errors += fail("a reader's unsure left the name rule's False in place, so intake files it")
+        # button text is not part of a name (sweep_exhibitors.clean)
+        import sweep_exhibitors as sw
+        for raw, want in (("CavMac Learn More", "CavMac"), ("VC3 - Learn More", "VC3"), ("GovDeals Learn More", "GovDeals"),
+                          ("Website Solutions Inc", "Website Solutions Inc"), ("Delta Dental", "Delta Dental")):
+            if sw.clean(raw) != want:
+                errors += fail(f"sweep_exhibitors.clean({raw!r}) = {sw.clean(raw)!r}, expected {want!r}")
+        if one.get("quality") != "menu":
+            errors += fail("a floor with a name nobody has read was graded `read`")
+        two = json.loads(f2.read_text())
+        if two.get("found") is not False or "not a floor" not in (two.get("why") or "") or "quality" in two:
+            errors += fail("a page whose every name was the site's own text still counts as a floor")
+        three = json.loads(f3.read_text())
+        if three.get("quality") != "read" or three.get("quality_was") != "menu":
+            errors += fail("a floor whose every name is judged was not graded `read`")
+        if sorted(purged) != ["Board of Trustees", "Member Login", "Site Map"]:
+            errors += fail(f"supplier rows filed off dropped names were not purged: {purged}")
+        if not (tmp / "reads" / "One.json").exists():
+            errors += fail("the reading was not kept beside the floor")
+        for bad, why in (([V(f1.name, "Acme Software", "maybe")], "an unknown verdict"),
+                         ([V(f1.name, "Acme Software", "vendor", "ok")], "a verdict with no reason")):
+            try:
+                rf.apply(bad, "agent:test", write=False)
+                errors += fail(f"read_floor.apply took {why}")
+            except SystemExit:
+                pass
+        # a name the board already holds counts as judged: with it, a floor
+        # whose other names are read grades `read`, and intake can tag it
+        rf.settled = lambda: ({rf.ci.norm("On Board Co")}, {rf.ci.norm("Queued Co")}, {rf.ci.norm("Stamped Co")})
+        f5 = floor("Five", [{"name": "On Board Co", "is_govtech": None}, {"name": "Fresh Co", "is_govtech": None}])
+        rf.apply([V(f5.name, "Fresh Co", "vendor")], "agent:test", write=True)
+        if json.loads(f5.read_text()).get("quality") != "read":
+            errors += fail("a floor whose only unread name is already on the board stayed `menu`")
+        # the brief leaves out what is settled
+        fb = floor("Four", [{"name": "On Board Co", "is_govtech": None}, {"name": "Queued Co", "is_govtech": None},
+                            {"name": "Stamped Co", "is_govtech": None}, {"name": "Flagged Co", "is_govtech": True},
+                            {"name": "Read Co", "is_govtech": False, "read": {"verdict": "supplier"}},
+                            {"name": "Fresh Co", "is_govtech": None}], quality="good")
+        rf.staged_files = lambda: [fb]
+        got = [r["name"] for r in rf.brief()]
+        if got != ["Fresh Co"]:
+            errors += fail(f"the brief asks about settled names: {got}")
+    finally:
+        rf.DATA, rf.READS, rf.purge_suppliers, rf.settled, rf.staged_files = saved
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # intake: a refused page is refused, the unread are held, `read` is accepted
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-intake-"))
+    try:
+        def run(payload, *flags):
+            f = tmp / "floor.json"
+            f.write_text(json.dumps(payload))
+            r = subprocess.run([sys.executable, str(ROOT / "scripts" / "conference_intake.py"),
+                                str(f), "--dry-run", *flags], cwd=str(ROOT),
+                               capture_output=True, text=True, timeout=180)
+            return r.returncode, r.stdout + r.stderr
+        tag = "GFOA 2026"
+        rc, out = run({"event_tag": tag, "found": False, "why": "reader: not a floor",
+                       "exhibitors": [{"name": "Zq Vendor Nine", "is_govtech": True}]})
+        if rc == 0 or "not an exhibitor list" not in out:
+            errors += fail("intake took a file the sweep or a reader refused as a floor")
+        rc, out = run({"event_tag": tag, "found": True, "quality": "read",
+                       "exhibitors": [{"name": "Zq Unread Nine", "is_govtech": None},
+                                      {"name": "Zq Supplier Nine", "is_govtech": False}]})
+        if rc != 0 or "1 unread" not in out or "1 new suppliers" not in out:
+            errors += fail(f"intake did not hold back the unread name (rc {rc}): {out[-300:]}")
+        rc, out = run({"event_tag": tag, "found": True, "quality": "read",
+                       "exhibitors": [{"name": "Zq Unread Nine", "is_govtech": None}]}, "--allow-unread")
+        if rc != 0 or "1 new suppliers" not in out:
+            errors += fail("--allow-unread did not file the unread name as the caller asked")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    itk = (ROOT / "scripts" / "conference_intake.py").read_text()
+    i_save, i_sup = itk.find('admin.save_companies(\n        companies, "conference-intake"'), itk.find('admin.write_atomic("suppliers.json", suppliers)')
+    if i_save < 0 or i_sup < 0 or i_sup < i_save:
+        errors += fail("intake writes the bare suppliers file before the journalled companies "
+                       "write, so a journal refusal leaves half the intake on disk")
+    cls = (ROOT / "scripts" / "classify_exhibitors.py").read_text()
+    if '(ex.get("read") or {}).get("verdict")' not in cls:
+        errors += fail("classify_exhibitors overwrites a reader's verdict with the name rule")
+    return errors
+
+
+def check_the_card_door_lands_only_what_it_saw() -> int:
+    """A research card lands when its evidence is on the company's own site,
+    a blind second reader agreed, and the researcher said high confidence;
+    everything else waits for a person, and nothing lands before the gate
+    has been read.
+
+    promote_cards.py is promote_profiles' shape for research cards (owner's
+    ruling 2026-09-09: the door is the gate, not his inbox). Driven here with
+    the crawler and the store stubbed, then by breaking each of its four
+    facts in turn.
+    """
+    import promote_cards as pcd
+    errors = 0
+    # THE ORIGINALS, CAPTURED BEFORE ANY PATCHING. The first version captured
+    # admin.read_companies after it had been replaced, restored the fixture
+    # lambda, and every later check read a two-company board.
+    orig_rc, orig_sd = pcd.admin.read_companies, pcd.admin.save_decisions
+    page = {"https://acme.example/": {"text": "Acme Software sells permit and licensing software to cities and counties across Ohio. Founded 2009."},
+            "https://dark.example/": {"unread": "network error: no answer"}}
+    fetch = lambda url: page.get(url, {"unread": "no such page"})
+    saves: list = []
+    saved_save, saved_read, saved_rule, saved_sd = pcd.agents.save, pcd.READ, pcd.proposal_rulings.rule, pcd.admin.save_decisions
+    pcd.agents.save = lambda store, action="", why="", by="", force=False: saves.append((action, by)) and None
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-cards-"))
+    try:
+        pcd.READ = tmp / ".cards_read"
+        def card(key, **kw):
+            base = {"kind": "card", "status": "pending", "name": key.split(":")[1].title(), "verdict": "govtech",
+                    "confidence": "high", "website": "https://acme.example/",
+                    "evidence": "sells permit and licensing software to cities and counties"}
+            base.update(kw); return base
+        store = {"card:verified": card("card:verified"),
+                 "card:missing": card("card:missing", evidence="turnkey cloud platform for enterprises everywhere"),
+                 "card:dark": card("card:dark", website="https://dark.example/"),
+                 "card:short": card("card:short", evidence="software"),
+                 "card:medium": card("card:medium", confidence="medium"),
+                 "card:lonely": card("card:lonely"),
+                 "card:refused": card("card:refused", status="refused", refused_why="say why, in a sentence"),
+                 "read:other": {"kind": "read", "status": "pending"}}
+        done = pcd.verify(store, fetch=fetch, by="agent:test")
+        if done != {"verified": 3, "not_on_page": 2, "unread": 1}:
+            errors += fail(f"verify counted {done}")
+        if store["card:verified"].get("evidence_verified") is not True:
+            errors += fail("a quote that is on the company's page was not verified")
+        for k in ("card:missing", "card:dark", "card:short"):
+            if store[k].get("evidence_verified") is not False:
+                errors += fail(f"{k}: evidence that is not on the page, or a page that did not read, was verified")
+        if "evidence_verified" in store["read:other"] or "evidence_verified" in store["card:refused"]:
+            errors += fail("verify touched a proposal that is not a pending card")
+        if not any(a == "card-evidence" and by == "agent:test" for a, by in saves):
+            errors += fail("verify did not write the store through the journal with its author")
+        pcd.second_read(store, [{"key": "card:verified", "verdict": "govtech", "why": "sells software to cities"},
+                               {"key": "card:medium", "verdict": "govtech", "why": "agreed, but medium confidence"},
+                               {"key": "card:missing", "verdict": "govtech", "why": "agreed, but the quote is not there"},
+                               {"key": "card:dark", "verdict": "supplier", "why": "a consultancy"}], by="agent:skeptic")
+        if (store["card:verified"].get("second_read") or {}).get("agree") is not True:
+            errors += fail("an agreeing second read was not recorded as agreement")
+        if (store["card:dark"].get("second_read") or {}).get("agree") is not False:
+            errors += fail("a split second read was recorded as agreement")
+        if not pcd.passes(store["card:verified"]):
+            errors += fail("a high-confidence, verified, agreed card does not pass the door")
+        # each of the four facts missing on its own keeps the door shut
+        for k, lacking in (("card:medium", "high confidence"), ("card:missing", "evidence on the site"),
+                           ("card:lonely", "a second reader"), ("card:dark", "a readable site"),
+                           ("card:refused", "the first door")):
+            if pcd.passes(store[k]):
+                errors += fail(f"{k} passes the door without {lacking}")
+        # the gate has not printed: nothing lands
+        try:
+            pcd.land(store, "agent:test")
+            errors += fail("cards landed before the gate was read")
+        except SystemExit:
+            pass
+        import io, contextlib
+        with contextlib.redirect_stdout(io.StringIO()) as buf:
+            g = pcd.gate(store, seed=1)
+        text = buf.getvalue()
+        if [k for k, _ in g["landing"]] != ["card:verified"] or len(g["unverified"]) < 2 or len(g["low"]) != 1 or len(g["split"]) != 1 \
+                or len(g["refused"]) != 1 or "Refused by the door" not in text or "NOT found on the site" not in text:
+            errors += fail(f"the gate did not sort the cards a person must read: landing {len(g['landing'])}, "
+                           f"unverified {len(g['unverified'])}, low {len(g['low'])}, refused {len(g['refused'])}")
+        if not pcd.READ.exists():
+            errors += fail("the gate did not record that it was read")
+            pcd.READ.write_text("{}")          # so the landing below is still exercised
+        ruled: list = []
+        pcd.proposal_rulings.rule = lambda store, k, accept, why="", by="", force=False: ruled.append((k, accept, by)) or {"ok": True}
+        pcd._supplier_only_match = lambda name: None
+        res = pcd.land(store, "agent:test")
+        if ruled != [("card:verified", True, "agent:test")] or res["landed"] != 1:
+            errors += fail(f"land ruled {ruled}, expected only the card that passed")
+        # a researched vendor sitting in the supplier file moves, an unresearched twin does not stay
+        moved: list = []
+        pcd.admin.save_decisions = lambda name, after, action, why="", by="", force=False: moved.append((action, by, len(after))) or None
+        pcd.DATA = tmp
+        (tmp / "suppliers.json").write_text(json.dumps([{"id": "verified", "name": "Verified", "website": None},
+                                                        {"id": "other-co", "name": "Other Co", "website": None}]))
+        pcd.admin.read_companies = lambda: [{"id": "zed", "name": "Zed Systems"}]
+        pcd._supplier_only_match = saved_som = pcd.__dict__.get("_supplier_only_match_real", None) or pcd._supplier_only_match
+    finally:
+        pass
+    # restore the real matcher and drive it against the fixture dir
+    import importlib
+    importlib.reload(pcd)
+    try:
+        pcd.DATA = tmp
+        pcd.admin.read_companies = lambda: [{"id": "zed", "name": "Zed Systems"}]
+        s = pcd._supplier_only_match("Verified")
+        if not s or s.get("id") != "verified":
+            errors += fail("a card whose only match is an unresearched supplier row is not recognised as a move")
+        (tmp / "suppliers.json").write_text(json.dumps([{"id": "verified", "name": "Verified", "website": None, "researched": True},
+                                                        {"id": "zed-systems", "name": "Zed Systems", "website": None}]))
+        if pcd._supplier_only_match("Verified") is not None:
+            errors += fail("a supplier row a research pass stamped would be moved aside by a card")
+        if pcd._supplier_only_match("Zed Systems") is not None:
+            errors += fail("a card matching a company on the board reads as a supplier move")
+    finally:
+        pcd.admin.read_companies, pcd.admin.save_decisions = orig_rc, orig_sd
+        pcd.agents.save, pcd.READ, pcd.proposal_rulings.rule = saved_save, saved_read, saved_rule
+        importlib.reload(pcd)
+        shutil.rmtree(tmp, ignore_errors=True)
+    if pcd.admin.read_companies is not orig_rc or pcd.admin.save_decisions is not orig_sd:
+        errors += fail("the card-door check left admin patched for every check after it")
+    return errors
+
+
+def check_a_date_read_is_confirmed_against_its_own_page() -> int:
+    """A date read off the organisation's events page is confirmed against
+    that page, an 'unannounced' read leaves the date alone and says who
+    looked, and a date without a source is never written.
+
+    The owner's ruling, 2026-10-09: readers may propose next-edition dates,
+    published only when the organisation's own page states them. Before this,
+    confirm() read only the event's front page and called a date stated one
+    click away "not found", and apply_conference_reads had no word for "the
+    site read fine and says nothing about a next edition yet".
+    """
+    import conference_dates as cd
+    import apply_conference_reads as acr
+    errors = 0
+    pages = {"https://org.test/annual": "<h1>Annual Meeting</h1> See you next year.",
+             "https://org.test/events": "<p>Annual Meeting: October 17-21, 2027, Long Beach</p>"}
+    class R:
+        def __init__(self, t): self.text = t
+    def fake_page(url):
+        if url not in pages:
+            raise OSError("no answer")
+        return R(pages[url])
+    saved = cd.ats._page
+    cd.ats._page = fake_page
+    try:
+        row = {"conference": "Annual", "dates": "October 17-21, 2027", "url": "https://org.test/annual",
+               "dates_source": "https://org.test/events"}
+        got = cd.confirm(row)
+        if got.get("state") != "confirmed":
+            errors += fail(f"a date stated on its own source page reads {got.get('state')!r}, not confirmed")
+        got = cd.confirm({**row, "dates_source": None})
+        if got.get("state") != "not found":
+            errors += fail("confirm() found a date the front page does not carry")
+        got = cd.confirm({**row, "url": "https://org.test/down", "dates_source": "https://org.test/gone"})
+        if got.get("state") != "unreadable":
+            errors += fail(f"two pages that did not answer read as {got.get('state')!r}, not unreadable")
+        got = cd.confirm({**row, "url": "https://org.test/events", "dates_source": "https://org.test/gone"})
+        if got.get("state") != "confirmed":
+            errors += fail("a source page that did not answer hid a date the front page states")
+    finally:
+        cd.ats._page = saved
+
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-reads-"))
+    saved_data = acr.DATA
+    try:
+        acr.DATA = tmp
+        rows = [{"event_tag": "Alpha 2026", "conference": "Alpha", "dates": "May 1-3, 2026", "dates_confidence": "high",
+                 "dates_source": "https://a.test/x", "url": "https://a.test/"},
+                {"event_tag": "Beta 2026", "conference": "Beta", "dates": "June 1-3, 2026", "dates_confidence": "high",
+                 "dates_source": "https://b.test/x", "url": "https://b.test/"},
+                {"event_tag": "Gamma 2026", "conference": "Gamma", "dates": "July 1-3, 2026", "dates_confidence": "high",
+                 "dates_source": "https://g.test/x", "url": "https://g.test/"}]
+        (tmp / "conferences.json").write_text(json.dumps({"conferences": rows}))
+        reads = tmp / "reads.json"
+        reads.write_text(json.dumps([
+            {"tag": "Alpha 2026", "dates": "May 2-4, 2027", "dates_confidence": "high", "dates_source": "https://a.test/events"},
+            {"tag": "Beta 2026", "dates_confidence": "unannounced", "note": "the events page lists only the 2026 edition"},
+            {"tag": "Gamma 2026", "dates": "July 5-7, 2027", "dates_confidence": "high"}]))
+        argv = sys.argv
+        sys.argv = ["apply_conference_reads.py", "--in", str(reads), "--write"]
+        import io, contextlib
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                acr.main()
+        finally:
+            sys.argv = argv
+        out = {c["event_tag"]: c for c in json.loads((tmp / "conferences.json").read_text())["conferences"]}
+        a, b, g = out["Alpha 2026"], out["Beta 2026"], out["Gamma 2026"]
+        if a.get("dates") != "May 2-4, 2027" or a.get("dates_source") != "https://a.test/events":
+            errors += fail("a sourced high-confidence date read was not written")
+        if b.get("dates") != "June 1-3, 2026" or "no next edition announced" not in (b.get("dates_note") or "") \
+                or not b.get("dates_checked_on"):
+            errors += fail("an unannounced read changed the date, or left no note of who looked")
+        if g.get("dates") != "July 1-3, 2026":
+            errors += fail("a date with no source url was written to the catalogue")
+    finally:
+        acr.DATA = saved_data
+        shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
 
@@ -27836,11 +28186,13 @@ def check_a_menu_cannot_be_classified_or_intaken() -> int:
     good = None
     for c in real:
         d = json.loads(c.read_text())
-        if d.get("quality") == "good" and len(d.get("exhibitors") or []) > 20:
+        # `read` is a floor a reader separated from its chrome (read_floor.py,
+        # 2026-10-10); every floor on disk carries it now, and it is as real
+        if d.get("quality") in ("good", "read") and len(d.get("exhibitors") or []) > 20:
             good = c
             break
     if not good:
-        return errors + fail("no capture on disk grades `good`, so this check "
+        return errors + fail("no capture on disk grades `good` or `read`, so this check "
                              "cannot show the gate lets a real floor past")
     r = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "conference_intake.py"),
@@ -32934,6 +33286,9 @@ def main() -> int:
     errors += check_every_link_on_a_page_leads_where_it_says()
     errors += check_every_css_variable_is_defined()
     errors += check_the_crawler_honours_robots_txt()
+    errors += check_a_floor_is_read_before_it_is_filed()
+    errors += check_the_card_door_lands_only_what_it_saw()
+    errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()

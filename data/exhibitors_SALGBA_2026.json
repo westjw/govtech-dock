@@ -11,7 +11,13 @@
    "tier": "Booth 131",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual cardiometabolic care provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual cardiometabolic care provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Abacus Health Solutions",
@@ -33,7 +39,13 @@
    "tier": "Booth 304",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health insurers trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "health insurers trade association",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Alight Solutions",
@@ -50,7 +62,13 @@
    "tier": "Booth 224",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: FSA/HSA/COBRA third-party administrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "FSA/HSA/COBRA third-party administrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Anthem BCBS",
@@ -59,7 +77,13 @@
    "sells": "Health benefits for 7M+ public sector members across 16 markets - commercial plans for government employees and Medicare Advantage for retirees; a subsidiary of Elevance Health.",
    "also_printed_as": "Anthem",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health insurer",
+   "read": {
+    "verdict": "supplier",
+    "why": "health insurer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aon",
@@ -67,7 +91,13 @@
    "tier": "Platinum Sponsor; no booth on the exhibit hall list",
    "sells": "Public Sector Health and Benefits consulting and actuarial services for states, cities, counties, towns, K-12 districts, benefits pools and federal agencies.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance brokerage/consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage/consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Aptia",
@@ -75,7 +105,13 @@
    "tier": "Booth 425",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: benefits administration outsourcing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "benefits administration outsourcing services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ArrayRX",
@@ -83,7 +119,13 @@
    "tier": "Booth 112",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state-sponsored pharmacy benefit program",
+   "read": {
+    "verdict": "supplier",
+    "why": "state-sponsored pharmacy benefit program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Benecard PBF",
@@ -91,23 +133,41 @@
    "tier": "Booth 225",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Benefitfocus",
    "website": null,
    "tier": "Platinum Sponsor; Booth 109",
    "sells": "Benefits administration technology; a Voya Financial business.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits administration SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits administration SaaS",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BenefitsMe",
    "website": null,
    "tier": "Booth 426",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; name suggests a benefits app",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bentek",
@@ -121,23 +181,41 @@
    "tier": "Booth 134",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: insurer association discount program",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurer association discount program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Businessolver",
    "website": null,
    "tier": "Booth 136",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits administration SaaS (Benefitsolver)",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits administration SaaS (Benefitsolver)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CancerNavigator",
    "website": null,
    "tier": "Booth 105",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown; cancer navigation service or app",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Candesa Pharmacy Solution",
@@ -153,7 +231,13 @@
    "tier": "Booth 135",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: employer onsite/near-site clinics",
+   "read": {
+    "verdict": "supplier",
+    "why": "employer onsite/near-site clinics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carrot",
@@ -161,7 +245,13 @@
    "tier": "Booth 130",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fertility and family-building benefits provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "fertility and family-building benefits provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Carrum Health",
@@ -169,7 +259,13 @@
    "tier": "Platinum Sponsor; Booth 206",
    "sells": "Value-based Centers of Excellence specialty care solution with bundled pricing and care navigation for self-insured employers and plan sponsors.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: centers-of-excellence surgical benefit",
+   "read": {
+    "verdict": "supplier",
+    "why": "centers-of-excellence surgical benefit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Color Health",
@@ -177,7 +273,13 @@
    "tier": "Platinum Sponsor; Booth 313",
    "sells": "Cancer care platform - oncologist-led risk identification, earlier detection, treatment management and survivorship.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: genetic testing and cancer screening",
+   "read": {
+    "verdict": "supplier",
+    "why": "genetic testing and cancer screening",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CTI Audit Solutions",
@@ -185,7 +287,13 @@
    "tier": "Booth 307",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: dependent eligibility audit services",
+   "read": {
+    "verdict": "supplier",
+    "why": "dependent eligibility audit services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CVS Caremark",
@@ -193,7 +301,13 @@
    "tier": "Premier Sponsor - Tuesday Evening Event Sponsor; no booth on the exhibit hall list",
    "sells": "Pharmacy benefit management for employer and health plan clients - real-time data to analyze trends and optimize pharmacy benefit spend.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CVS Health",
@@ -207,7 +321,13 @@
    "tier": "Platinum Sponsor; Booth 104",
    "sells": "Population health solutions that complement existing benefits - clinical program design and member engagement.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CVS health services division",
+   "read": {
+    "verdict": "supplier",
+    "why": "CVS health services division",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Eli Lilly and Company",
@@ -215,7 +335,13 @@
    "tier": "Diamond Sponsor; Booth 405",
    "sells": "Pharmaceuticals - medicines reaching more than 51 million people worldwide.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Employers Health",
@@ -223,15 +349,27 @@
    "tier": "Booth 127",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: employer purchasing coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "employer purchasing coalition",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Empyrean",
    "website": null,
    "tier": "Platinum Sponsor; Booth 208",
    "sells": "Benefits administration SaaS platform and services for employers, serving over 6.5 million people.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits administration technology platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits administration technology platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Evernoth Health Services",
@@ -240,7 +378,13 @@
    "sells": "Integrated prescription benefit offerings through Express Scripts Pharmacy Benefit Services for health plans, employers, labor unions and government agencies.",
    "also_printed_as": "Evernorth Health Services",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Cigna health services arm (Evernorth)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cigna health services arm (Evernorth)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "EyeMed",
@@ -248,15 +392,27 @@
    "tier": "Booth 114",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vision insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "vision insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "finHealth",
    "website": null,
    "tier": "Booth 230",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: healthcare claims analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "healthcare claims analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Form Health",
@@ -264,7 +420,13 @@
    "tier": "Platinum Sponsor; Booth 404",
    "sells": "Virtual obesity and cardiometabolic care led by board-certified obesity medicine physicians, sold to employers as a benefit.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual obesity medicine clinic",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual obesity medicine clinic",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Galileo",
@@ -272,7 +434,13 @@
    "tier": "Booth 116",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual primary care provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual primary care provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Galleri",
@@ -280,7 +448,13 @@
    "tier": "Platinum Sponsor; Booth 115",
    "sells": "Multi-cancer early detection screening using DNA sequencing (GRAIL).",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: GRAIL cancer screening blood test",
+   "read": {
+    "verdict": "supplier",
+    "why": "GRAIL cancer screening blood test",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Garner Health",
@@ -288,7 +462,13 @@
    "tier": "Booth 330",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: data-driven provider-steering health benefit",
+   "read": {
+    "verdict": "supplier",
+    "why": "data-driven provider-steering health benefit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Green Imaging",
@@ -296,7 +476,13 @@
    "tier": "Booth 412",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: medical imaging network",
+   "read": {
+    "verdict": "supplier",
+    "why": "medical imaging network",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Health Advocate",
@@ -304,15 +490,27 @@
    "tier": "Platinum Sponsor; Booth 212",
    "sells": "Healthcare navigation and advocacy - expert guidance plus AI-powered technology for personalized whole-person care.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare advocacy services",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare advocacy services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Healthee",
    "website": null,
    "tier": "Booth 435",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI benefits navigation software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI benefits navigation software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Hello Heart",
@@ -326,15 +524,27 @@
    "tier": "Premier Sponsor - Tuesday Breakfast Sponsor; Booth 401",
    "sells": "Unified musculoskeletal (MSK) solution for employers and health plans - AI-powered care model with a multidisciplinary care team.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: digital musculoskeletal care program",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital musculoskeletal care program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HMS",
    "website": null,
    "tier": "Booth 231",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; likely cost-containment services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Humana",
@@ -348,7 +558,13 @@
    "tier": "Booth 331",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Included Health",
@@ -356,7 +572,13 @@
    "tier": "Booth 430",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual care and navigation provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual care and navigation provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lantern",
@@ -364,7 +586,13 @@
    "tier": "Premier Sponsor - Wednesday Breakfast Sponsor; Booth 301",
    "sells": "Specialty care platform with a curated Network of Excellence for surgery, cancer care and infusions, plus dedicated care teams.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: specialty care network benefit",
+   "read": {
+    "verdict": "supplier",
+    "why": "specialty care network benefit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Linea Solutions",
@@ -380,7 +608,13 @@
    "tier": "Booth 128",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: diagnostic testing",
+   "read": {
+    "verdict": "supplier",
+    "why": "diagnostic testing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Lyra Health",
@@ -388,7 +622,13 @@
    "tier": "Booth 133",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: mental health care benefit",
+   "read": {
+    "verdict": "supplier",
+    "why": "mental health care benefit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Maven Clinic",
@@ -396,7 +636,13 @@
    "tier": "Booth 129",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual women's and family health clinic",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual women's and family health clinic",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "McGriff, A Marsh & McLennan Agency",
@@ -405,15 +651,27 @@
    "sells": "Employee health and benefit brokerage and consulting for public employers nationwide.",
    "also_printed_as": "McGriff a Marsh & McLennan Agency",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: insurance brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance brokerage",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Medefy",
    "website": null,
    "tier": "Booth 207",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits navigation app platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits navigation app platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MedImpact",
@@ -421,7 +679,13 @@
    "tier": "Platinum Sponsor; Booth 215",
    "sells": "Independent pharmacy benefit management for commercial health plans, government programs and self-insured/employer groups.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MetLife",
@@ -452,7 +716,13 @@
    "tier": "Platinum Sponsor; Booth 113",
    "sells": "Pharmaceuticals for diabetes, obesity, rare blood and endocrine disorders.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nox Health",
@@ -460,7 +730,13 @@
    "tier": "Booth 228",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: sleep health program",
+   "read": {
+    "verdict": "supplier",
+    "why": "sleep health program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Omada Health",
@@ -468,7 +744,13 @@
    "tier": "Platinum Sponsor; Booth 309",
    "sells": "Virtual care for cardiometabolic and musculoskeletal conditions - connected devices, app and human coaching; a HIPAA-covered healthcare provider.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: digital chronic-condition care program",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital chronic-condition care program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Opioid Free America",
@@ -476,7 +758,13 @@
    "tier": "Booth 229",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Optum Rx",
@@ -484,7 +772,13 @@
    "tier": "Booth 325",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Oshi Health",
@@ -492,7 +786,13 @@
    "tier": "Booth 328",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual GI care provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual GI care provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Partnership Health Centers",
@@ -500,7 +800,13 @@
    "tier": "Booth 430",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: health clinics",
+   "read": {
+    "verdict": "supplier",
+    "why": "health clinics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pelago",
@@ -508,15 +814,27 @@
    "tier": "Booth 234",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual substance-use care",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual substance-use care",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Personify Health",
    "website": null,
    "tier": "Silver Sponsor; Booth 107",
    "sells": "Third-party administration, wellbeing and care navigation combined in one personalized health platform.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: employee wellbeing SaaS platform (ex Virgin Pulse)",
+   "read": {
+    "verdict": "vendor",
+    "why": "employee wellbeing SaaS platform (ex Virgin Pulse)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Pomelo Care",
@@ -524,7 +842,13 @@
    "tier": "Platinum Sponsor; Booth 305",
    "sells": "Virtual care across women's health - preconception, pregnancy, pediatric care and hormonal health (peri/menopause) for 25M covered lives.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual maternity care provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual maternity care provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Progyny",
@@ -532,7 +856,13 @@
    "tier": "Booth 202",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: fertility benefits management",
+   "read": {
+    "verdict": "supplier",
+    "why": "fertility benefits management",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Quantum Health",
@@ -540,23 +870,41 @@
    "tier": "Premier Sponsor - Until Next Year Sponsor; Booth 400",
    "sells": "Healthcare navigation for 8M+ members - single point of contact, clinical expertise and predictive AI; acquired Embold Health in 2025.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: care coordination and navigation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "care coordination and navigation services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Quizzify",
    "website": null,
    "tier": "Booth 324",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: health-literacy e-learning software",
+   "read": {
+    "verdict": "vendor",
+    "why": "health-literacy e-learning software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "RazorMetrics",
    "website": null,
    "tier": "Booth 329",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: prescription cost-optimization analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "prescription cost-optimization analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Retiree First",
@@ -565,7 +913,13 @@
    "sells": "End-to-end retiree benefits management - designs, implements, manages and administers Medicare benefits for plan sponsors, brokers and consultants.",
    "also_printed_as": "RetireeFirst",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: retiree benefits consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "retiree benefits consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rightway",
@@ -573,7 +927,13 @@
    "tier": "Booth 428",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: care navigation and PBM services",
+   "read": {
+    "verdict": "supplier",
+    "why": "care navigation and PBM services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Segal",
@@ -581,15 +941,27 @@
    "tier": "Diamond Sponsor; Booth 200",
    "sells": "Consulting to plan sponsors on health care, retirement, compensation and human resources programs; founded 1939, focused on public sector plan sponsors.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: actuarial/benefits consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "actuarial/benefits consulting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sharecare",
    "website": null,
    "tier": "Booth 424",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: digital health engagement platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "digital health engagement platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SlateRx",
@@ -597,7 +969,13 @@
    "tier": "Booth 227",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmacy benefit manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy benefit manager",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "SmartLight Analytics",
@@ -613,7 +991,13 @@
    "tier": "Silver Sponsor; no booth on the exhibit hall list",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: unknown health firm; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "unknown health firm; no technology signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sourcewell",
@@ -627,7 +1011,13 @@
    "tier": "Booth 326",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: mental health care benefit",
+   "read": {
+    "verdict": "supplier",
+    "why": "mental health care benefit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sword Health",
@@ -635,23 +1025,41 @@
    "tier": "Booth 427",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: digital musculoskeletal care program",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital musculoskeletal care program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "TELUS Health",
    "website": null,
    "tier": "Platinum Sponsor; Booth 110",
    "sells": "Benefits and pension administration technology and outsourcing for public sector organizations; SaaS, co-sourcing or full outsourcing for 10M+ participants.",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: health/benefits technology and EAP platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "health/benefits technology and EAP platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Truven by Merative",
    "website": null,
    "tier": "Booth 431",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: health data analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "health data analytics software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Twin Health",
@@ -659,7 +1067,13 @@
    "tier": "Platinum Sponsor; Booth 232",
    "sells": "AI Digital Twin metabolic care with clinical support, sold to employers and health plans.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: AI metabolic care program with clinicians",
+   "read": {
+    "verdict": "supplier",
+    "why": "AI metabolic care program with clinicians",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "UnitedHealthCare Retiree Solutions",
@@ -676,7 +1090,13 @@
    "tier": "Booth 204",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: advanced primary care clinics",
+   "read": {
+    "verdict": "supplier",
+    "why": "advanced primary care clinics",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Via Benefits",
@@ -684,7 +1104,13 @@
    "tier": "Bronze Sponsor; Booth 410",
    "sells": "Individual marketplace health insurance and spending account administration for employers, plan sponsors, employees and retirees.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: retiree health exchange brokerage (WTW)",
+   "read": {
+    "verdict": "supplier",
+    "why": "retiree health exchange brokerage (WTW)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Virta Health",
@@ -692,7 +1118,13 @@
    "tier": "Diamond Sponsor; Booth 106",
    "sells": "AI-powered individualized nutrition therapy to reverse metabolic disease, sold to employers, payers and pharmacy benefit managers.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: virtual diabetes reversal clinic",
+   "read": {
+    "verdict": "supplier",
+    "why": "virtual diabetes reversal clinic",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WebMD Health Servies",
@@ -700,8 +1132,14 @@
    "tier": "Platinum Sponsor; Booth 213",
    "sells": "Employee wellbeing programs and engagement platform for 3,500+ organizations.",
    "also_printed_as": "WebMD Health Services",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: employee wellbeing software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "employee wellbeing software platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wellworks For You",
@@ -709,15 +1147,27 @@
    "tier": "Exhibit hall list prints \"Screen\" in place of a booth number",
    "sells": null,
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: wellness program administrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "wellness program administrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "WEX",
    "website": null,
    "tier": "Booth 226",
    "sells": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: benefits accounts and payments fintech platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "benefits accounts and payments fintech platform",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wondr Health",
@@ -725,10 +1175,17 @@
    "tier": "Silver Sponsor; no booth on the exhibit hall list",
    "sells": "Preventive weight and GLP-1 management - digital behavioral program with configurable GLP-1 coverage strategies, coaching and connected devices.",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: digital behavioral weight program",
+   "read": {
+    "verdict": "supplier",
+    "why": "digital behavioral weight program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "12% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with - worth a look before running intake",
  "restaged": "93 -> 91 names after re-filtering on 2026-09-02",
- "quality": "mixed"
+ "quality": "read",
+ "quality_was": "mixed"
 }

@@ -6,42 +6,6 @@
  "source_note": "Read from https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors by scripts/sweep_exhibitors.py. 105 name(s), 101 with a website the page itself linked. Quality: good (19% carry a corporate marker, 6% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "2026 CCM Convention",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-CCM-Convention",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "2026 Convention Exhibitor Information",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-CCM-Convention/2026-Convention-Exhibitor-Information",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "2026 Convention Exhibitors & Sponsors",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-CCM-Convention/2026-Convention-Exhibitors-Sponsors",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "2026 CT EMS Exhibitor Information",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitor-Information",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "2026 CT EMS Exhibitors & Sponsors",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "2026 Emergency Management Symposium",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "2026 Municipal Excellence Awards",
    "website": "https://www.ccm-ct.org/Member-Benefits/Events/2026-CCM-Convention/2026-Municipal-Excellence-Awards",
    "is_govtech": true,
@@ -54,286 +18,200 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Advocacy",
-   "website": "https://www.ccm-ct.org/Advocacy",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Aligned Elevator",
    "website": "https://alignedelevator.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: elevator installation and maintenance contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "elevator installation and maintenance contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "American Medical Response",
    "website": "https://www.amr.net",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "American Rescue Plan Act",
-   "website": "https://www.ccm-ct.org/Advocacy/Federal-Policy-and-Advocacy/American-Rescue-Plan-Act",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: ambulance and medical transport provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "ambulance and medical transport provider",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "AshBritt, Inc.",
    "website": "https://ashbritt.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: disaster recovery and debris removal contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster recovery and debris removal contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Asplundh Tree Expert, LLC",
    "website": "https://www.asplundh.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tree and vegetation management contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "tree and vegetation management contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BELFOR Property Restoration",
    "website": "https://www.belfor.com/us/en/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Board",
-   "website": "https://www.ccm-ct.org/About-CCM/Board",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Business Member Directory",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Business-Member-Directory",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Career Center",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Municipal-Career-Center/Career-Center",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Career Resources",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Municipal-Career-Center/Career-Resources",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: property restoration contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "property restoration contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CCi Voice",
    "website": "https://www.ccivoice.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CCM Directory of Products & Services - 2026",
-   "website": "https://www.ccm-ct.org/Programs/Municipal-Business-Associate-Program/CCM-Directory-of-Products-Services-2026",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CCM Salary Survey",
-   "website": "https://www.ccm-ct.org/Advocacy/Research/CCM-Salary-Survey",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CCM Staff List",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CCM's Women In Government",
-   "website": "https://www.ccm-ct.org/Programs/CCMs-Women-In-Government",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: voice/data communications systems integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "voice/data communications systems integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CEC",
    "website": "https://portal.ct.gov/DOC/Enterprise/Enterprise",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Correctional Enterprises of Connecticut; state agency program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Correctional Enterprises of Connecticut; state agency program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CEN",
    "website": "https://ctedunet.net/cen-connect/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Connecticut Education Network; state-run network, government entity",
+   "read": {
+    "verdict": "supplier",
+    "why": "Connecticut Education Network; state-run network, government entity",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Charter Oak State College",
    "website": "https://www.charteroak.edu",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: state college",
+   "read": {
+    "verdict": "supplier",
+    "why": "state college",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CIRMA",
    "website": "https://www.ccm-ct.org/Programs/CIRMA",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: CCM-affiliated municipal insurance risk pool",
+   "read": {
+    "verdict": "supplier",
+    "why": "CCM-affiliated municipal insurance risk pool",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Citylogix",
    "website": "https://www.ccm-ct.org/Programs/Citylogix"
   },
   {
-   "name": "Civically Engaged Organization",
-   "website": "https://www.ccm-ct.org/Programs/Civically-Engaged-Organization",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Civility Pledge",
-   "website": "https://www.ccm-ct.org/Programs/Civility-Pledge",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Connecticut Computer Service",
    "website": "https://www.ctcomp.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (IT and computer services firm); skeptic unsure ('Computer Service' suggests IT services/repair MSP, not a product company.)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Connecticut Interlocal Risk Management Agency (CIRMA)",
    "website": "https://cirma.ccm-ct.org",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Connecticut Municipal Leadership Academy",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Education/Connecticut-Municipal-Leadership-Academy",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Contact Us.",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CT Citizens' Assembly",
-   "website": "https://www.ccm-ct.org/Advocacy/CT-Citizens-Assembly",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: municipal insurance risk pool (CCM-affiliated)",
+   "read": {
+    "verdict": "supplier",
+    "why": "municipal insurance risk pool (CCM-affiliated)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CT Department of Public Health",
    "website": "https://portal.ct.gov/DPH",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "CT Division of Emergency Management and Homeland Security",
    "website": "https://portal.ct.gov/demhs",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CT Town Liaison Program",
-   "website": "https://www.ccm-ct.org/Member-Benefits/CT-Town-Liaison-Program",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "CT&C",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Publications-Media/CT-C",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Current Opportunities",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Municipal-Career-Center/Current-Opportunities",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Cybersecurity and Infrastructure Security Agency (CISA)",
    "website": "https://www.cisa.gov/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Do The Math",
-   "website": "https://www.ccm-ct.org/Advocacy/Do-The-Math",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Drug & Alcohol Consortium",
-   "website": "https://www.ccm-ct.org/Programs/Drug-Alcohol-Consortium",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "ECS Funding",
-   "website": "https://www.ccm-ct.org/Advocacy/ECS-Funding",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Education",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Education"
-  },
-  {
-   "name": "Education Calendar",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Education/Education-Calendar",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Education Funding",
-   "website": "https://www.ccm-ct.org/Advocacy/Reports-Data/Education-Funding",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Education Survey Results",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst/Education-Survey-Results",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Energy Programs",
-   "website": "https://www.ccm-ct.org/Programs/Energy-Programs",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ericsson",
    "website": "https://cradlepoint.com/"
   },
   {
-   "name": "Events Listings",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Events/Events-Listings",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Everbridge",
    "website": "https://www.EVERBRIDGE.com"
   },
   {
-   "name": "Facebook",
-   "website": "https://www.facebook.com/ccm.forct"
-  },
-  {
-   "name": "Federal Policy and Advocacy",
-   "website": "https://www.ccm-ct.org/Advocacy/Federal-Policy-and-Advocacy",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "FirstNet Built with AT&T",
    "website": "https://www.firstnet.com"
-  },
-  {
-   "name": "Flood Study",
-   "website": "https://www.ccm-ct.org/Advocacy/Reports-Data/Flood-Study",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Fortinet",
@@ -342,14 +220,16 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "Frequently Asked Questions",
-   "website": null
-  },
-  {
    "name": "Frontline Outfitters",
    "website": "https://www.shopfrontlineoutfitters.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: first-responder uniforms and gear retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "first-responder uniforms and gear retailer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Getac, Inc.",
@@ -361,37 +241,13 @@
    "name": "GZA GeoEnvironmental, Inc.",
    "website": "https://www.gza.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Infrastructure Investment and Jobs Act",
-   "website": "https://www.ccm-ct.org/Advocacy/Federal-Policy-and-Advocacy/Infrastructure-Investment-and-Jobs-Act",
-   "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
-  },
-  {
-   "name": "Instagram",
-   "website": "https://www.instagram.com/ccm_ct/"
-  },
-  {
-   "name": "Legislative Priorities",
-   "website": "https://www.ccm-ct.org/Advocacy/Legislative-Priorities"
-  },
-  {
-   "name": "Linkedin",
-   "website": "https://www.linkedin.com/company/connecticut-conference-of-municipalities"
-  },
-  {
-   "name": "Managed IT Services",
-   "website": "https://www.ccm-ct.org/Programs/Managed-IT-Services",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "March 10, 2026",
-   "website": "https://www.ccm-ct.org/Member-Benefits/News/View/ArticleId/12156/CCM-and-WTNH-News-8-to-Host-2026-Connecticut-Gubernatorial-Debate-at-Annual-Convention",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: geotechnical and environmental engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "geotechnical and environmental engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Municipal Business Associate Program",
@@ -426,14 +282,14 @@
   {
    "name": "Nationwide Security Corporation",
    "website": "https://www.nationwidesecuritycorp.com",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Newly Elected Officials Workshop",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Education/Newly-Elected-Officials-Workshop",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: electronic security systems integrator (video, access control, alarms)",
+   "read": {
+    "verdict": "vendor",
+    "why": "electronic security systems integrator (video, access control, alarms)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nexgen Public Safety Solutions",
@@ -442,58 +298,22 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "November 07, 2025",
-   "website": "https://www.ccm-ct.org/Member-Benefits/News/View/ArticleId/12136/CCM-Housing-Release",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Partners in Education",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Education/Partners-in-Education",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Programs",
-   "website": "https://www.ccm-ct.org/Programs",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Publications & Media",
-   "website": "https://www.ccm-ct.org/Member-Benefits/Publications-Media",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Reports & Data",
    "website": "https://www.ccm-ct.org/Advocacy/Reports-Data",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Representation Matters Two-Day Training",
-   "website": "https://www.ccm-ct.org/Programs/Representation-Matters-Two-Day-Training",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Research",
-   "website": "https://www.ccm-ct.org/Advocacy/Research",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Research Library",
-   "website": "https://www.ccm-ct.org/Advocacy/Research/Research-Library",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Resource Lighting & Energy Inc. (RLE)",
    "website": "https://resourcele.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: lighting and energy-efficiency contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "lighting and energy-efficiency contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Safeware",
@@ -502,46 +322,64 @@
    "is_govtech_why": "nothing in the name either way"
   },
   {
-   "name": "September 11, 2025",
-   "website": "https://www.ccm-ct.org/Member-Benefits/News/View/ArticleId/12126/Politics-Could-Use-More-Boating-Culture",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Service-to-Career Pathways Toolkit",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst/Service-to-Career-Pathways-Toolkit",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "ServiceMaster Restore",
    "website": "https://www.servicemasterrestore.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: property restoration contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "property restoration contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Southern Disaster Recovery",
    "website": "https://www.gosdr.com",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: disaster recovery and debris removal contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster recovery and debris removal contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Steamatic of Connecticut",
    "website": "https://www.steamaticct.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: restoration and cleaning contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "restoration and cleaning contractor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Sustainable CT",
    "website": "https://www.ccm-ct.org/Programs/Sustainable-CT",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: statewide municipal sustainability certification nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "statewide municipal sustainability certification nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Telrepco",
    "website": "https://www.telrepco.com/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-safety rugged computing hardware and IT services",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-safety rugged computing hardware and IT services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tetra Tech",
@@ -563,49 +401,17 @@
    "name": "Window Film Depot",
    "website": "https://www.windowfilmdepot.com/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "www.ccm-ct.org",
-   "website": "https://www.ccm-ct.org",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "X (Twitter)",
-   "website": "https://twitter.com/CCMAdvocacy",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Young People First Media",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst/Young-People-First-Media",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Young People First Report",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst/Young-People-First-Report",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "YoungPeopleFirst",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Youth FAQ",
-   "website": "https://www.ccm-ct.org/Advocacy/YoungPeopleFirst/Youth-FAQ",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "YouTube",
-   "website": "https://www.youtube.com/channel/UCjkAzQTiyYHKbBul87L2ygg/videos"
+   "is_govtech_why": "reader: window film installer",
+   "read": {
+    "verdict": "supplier",
+    "why": "window film installer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": "19% carry a corporate marker, 6% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 60,
+ "quality_was": "menu"
 }

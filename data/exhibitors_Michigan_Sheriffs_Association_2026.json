@@ -1,6 +1,6 @@
 {
  "event_tag": "Michigan Sheriffs Association 2026",
- "conference": "Michigan Sheriffs\u2019 Association",
+ "conference": "Michigan Sheriffs’ Association",
  "found": true,
  "source_url": "https://www.misheriff.org/vendors/",
  "source_note": "Read from https://www.misheriff.org/vendors/ by scripts/sweep_exhibitors.py. 117 name(s), 115 with a website the page itself linked. Quality: good (36% carry a corporate marker, 2% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
@@ -20,64 +20,100 @@
    "website": "https://www.misheriff.org/vendors/4sight-labs/"
   },
   {
-   "name": "620 S Capitol Ave, Suite 320A Lansing, MI 48933",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Abonmarche Byce/Securitecture",
    "website": "https://www.misheriff.org/vendors/abonmarche-byce/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture/engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture/engineering firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Advanced Satellite Communications",
    "website": "https://www.misheriff.org/vendors/advanced-satellite-communications/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (satellite communications technology provider); skeptic unsure (likely satellite/radio communications dealer-installer; reseller rather than product company)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
-   "name": "America\u2019s Mint",
+   "name": "America’s Mint",
    "website": "https://www.misheriff.org/vendors/american-mint/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: commemorative coins/collectibles; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "commemorative coins/collectibles; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Ascent Integrated Tech.",
    "website": "https://www.misheriff.org/vendors/ascent-integrated-tech/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: technology integrator",
+   "read": {
+    "verdict": "vendor",
+    "why": "technology integrator",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "ATC Healthcare MidMichigan",
    "website": "https://www.misheriff.org/vendors/atc-healthcare-midmichigan/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Awards & Citations Program",
-   "website": "https://www.misheriff.org/msas-awards-citations-program/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: healthcare staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare staffing",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Berger Chevrolet Inc.",
    "website": "https://www.misheriff.org/vendors/berger-chevrolet-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bicycle Health",
    "website": "https://www.misheriff.org/vendors/bicycle-health/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: telehealth addiction-treatment provider; clinical services",
+   "read": {
+    "verdict": "supplier",
+    "why": "telehealth addiction-treatment provider; clinical services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BIOCLEAN Team Inc.",
    "website": "https://www.misheriff.org/vendors/bioclean-team-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: biohazard cleaning services",
+   "read": {
+    "verdict": "supplier",
+    "why": "biohazard cleaning services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "BlueLogic Training",
@@ -87,7 +123,13 @@
    "name": "Braeburn Pharma",
    "website": "https://www.misheriff.org/vendors/braeburn-pharma/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Brite",
@@ -111,7 +153,13 @@
    "name": "CMP Distributors",
    "website": "https://www.misheriff.org/vendors/cmp-distributors/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: police equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "police equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Combined Public Communications",
@@ -121,7 +169,13 @@
    "name": "Command Sourcing, Inc.",
    "website": "https://www.misheriff.org/vendors/command-sourcing-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: procurement/sourcing of goods; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "procurement/sourcing of goods; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Consolidated Telecom",
@@ -130,50 +184,56 @@
    "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
-   "name": "Criminal Justice Scholarship",
-   "website": "https://www.misheriff.org/criminal-justice-scholarship/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "CVTowers",
    "website": "https://www.misheriff.org/vendors/cvtowers/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "possibly tower/infrastructure contractor; cannot tell",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Dee Pietila Photo Promotions LLC",
    "website": "https://www.misheriff.org/vendors/dee-pietila-photo-promotions-llc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: photography/promotional services",
+   "read": {
+    "verdict": "supplier",
+    "why": "photography/promotional services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Diamond Pharmacy Services",
    "website": "https://www.misheriff.org/vendors/diamond-pharmacy-services/"
   },
   {
-   "name": "Donate to the MSA",
-   "website": "https://www.misheriff.org/donate/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
    "name": "Elevatus Architecture",
    "website": "https://www.misheriff.org/vendors/elevatus-architecture-2/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Emergency Vehicles Plus",
    "website": "https://www.misheriff.org/vendors/emergency-vehicles-plus/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Employment",
-   "website": "https://www.misheriff.org/employment/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: emergency vehicle upfitting",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency vehicle upfitting",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Equifax Workforce Solutions",
@@ -185,13 +245,25 @@
    "name": "First Tactical",
    "website": "https://www.misheriff.org/vendors/first-tactical/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: tactical apparel and gear",
+   "read": {
+    "verdict": "supplier",
+    "why": "tactical apparel and gear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "FirstNet",
    "website": "https://www.misheriff.org/vendors/firstnet/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-safety broadband network (AT&T)",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-safety broadband network (AT&T)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Flying Cross",
@@ -201,7 +273,13 @@
    "name": "Frontline Strong Together 5",
    "website": "https://www.misheriff.org/vendors/frontline-strong-together/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: first-responder wellness program (university-run)",
+   "read": {
+    "verdict": "supplier",
+    "why": "first-responder wellness program (university-run)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Gloves by Web",
@@ -213,19 +291,37 @@
    "name": "GORNO FORD",
    "website": "https://www.misheriff.org/vendors/gorno-ford/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "GovHost",
    "website": "https://www.misheriff.org/vendors/govhost/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals government hosting/software",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals government hosting/software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Granger Construction",
    "website": "https://www.misheriff.org/vendors/granger-construction/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: construction",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Guard1 by TimeKeeping Systems",
@@ -244,8 +340,14 @@
   {
    "name": "Home Confinement Inc.",
    "website": "https://www.misheriff.org/vendors/home-confinement-inc/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: electronic monitoring devices/services for courts and jails",
+   "read": {
+    "verdict": "vendor",
+    "why": "electronic monitoring devices/services for courts and jails",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "HomeWAV",
@@ -259,7 +361,13 @@
    "name": "Huron Valley Guns",
    "website": "https://www.misheriff.org/vendors/huron-valley-guns/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: firearms retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "firearms retailer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "iTouch Biometrics LLC",
@@ -283,19 +391,37 @@
    "name": "Kiesler Police Supply",
    "website": "https://www.misheriff.org/vendors/kiesler-police-supply/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: police equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "police equipment distributor",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Kirtland Community College Criminal Justice",
    "website": "https://www.misheriff.org/vendors/kirtland-community-college-criminal-justice/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: college program",
+   "read": {
+    "verdict": "supplier",
+    "why": "college program",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Law Enforcement Services",
    "website": "https://www.misheriff.org/vendors/law-enforcement-services/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: generic services name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic services name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Leadsonline",
@@ -309,13 +435,25 @@
    "name": "Leo Defense of Michigan",
    "website": "https://www.misheriff.org/vendors/leo-defense-of-michigan-2/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: officer legal defense/insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "officer legal defense/insurance",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "LUNGHAMER FORD OF OWOSSO",
    "website": "https://www.misheriff.org/vendors/lunghamer-ford-of-owosso/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: vehicle dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "vehicle dealer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "MI Public Safety Communications System",
@@ -327,19 +465,37 @@
    "name": "Michigan Police Equipment Company",
    "website": "https://www.misheriff.org/vendors/michigan-police-equipment-company/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: police equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "police equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Michigan State Industries",
    "website": "https://www.misheriff.org/vendors/michigan-state-industries/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state prison-industries agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state prison-industries agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Michigan Veterans Affairs Agency",
    "website": "https://www.misheriff.org/vendors/michigan-veterans-affairs-agency/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: state government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Motorola Solutions",
@@ -349,10 +505,16 @@
    "name": "MSP/SRMS",
    "website": "https://www.misheriff.org/vendors/msp-srms/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: Michigan State Police records system; government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Michigan State Police records system; government agency",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
-   "name": "Municipal Employees\u2019 Retirement System of Michigan",
+   "name": "Municipal Employees’ Retirement System of Michigan",
    "website": "https://www.misheriff.org/vendors/municipal-employees-retirement-system-of-michigan/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
@@ -361,35 +523,73 @@
    "name": "NATIONAL CHILD SAFETY COUNCIL",
    "website": "https://www.misheriff.org/vendors/national-child-safety-council-2/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Nationwide Services",
    "website": "https://www.misheriff.org/vendors/nationwide-services/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic services name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic services name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northpointe dba Equivant Corrections",
    "website": "https://www.misheriff.org/vendors/northpointe-dba-equivant-corrections/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: corrections and court software",
+   "read": {
+    "verdict": "vendor",
+    "why": "corrections and court software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Northwood University",
    "website": "https://www.misheriff.org/vendors/northwood-university/",
    "is_govtech": false,
-   "is_govtech_why": "names a trade that is not a product vendor"
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Offender Watch",
-   "website": "https://www.misheriff.org/vendors/offender-watch/"
+   "website": "https://www.misheriff.org/vendors/offender-watch/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: sex-offender registry management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "sex-offender registry management software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "On Duty Gear, LLC",
    "website": "https://www.misheriff.org/vendors/on-duty-gear-llc-2/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: duty gear retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "duty gear retailer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "On The Run TV Network",
@@ -400,14 +600,26 @@
   {
    "name": "Overwatch Emergency",
    "website": "https://www.misheriff.org/vendors/overwatch-emergency/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous; equipment or software unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Paytel",
    "website": "https://www.misheriff.org/vendors/paytel/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: inmate telephone/communications systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "inmate telephone/communications systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Peplink",
@@ -417,55 +629,97 @@
    "name": "Polaris Correctional Pharmacy",
    "website": "https://www.misheriff.org/vendors/polaris-correctional-pharmacy/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional pharmacy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Prime Health Services/Prime Corrections",
    "website": "https://www.misheriff.org/vendors/prime-health-services-prime-corrections/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Programs",
-   "website": "https://www.misheriff.org/home-2-0/programs/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Quality Correctional Care",
    "website": "https://www.misheriff.org/vendors/quality-correctional-care/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional healthcare",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Radio North LLC",
    "website": "https://www.misheriff.org/vendors/radio-north-llc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: two-way radio dealer/installer; hardware reseller, not a technology product company",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: two-way radio dealer/installer; hardware reseller, not a technology product company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Reach the Forgotten Jail Ministry",
    "website": "https://www.misheriff.org/vendors/reach-the-forgotten-jail-ministry/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: nonprofit ministry",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit ministry",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Real Time Detention, LLC.",
    "website": "https://www.misheriff.org/vendors/real-time-detention-llc/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name suggests detention monitoring software; unverified",
+   "read": {
+    "verdict": "vendor",
+    "why": "name suggests detention monitoring software; unverified",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Rice.F.W Technologies",
    "website": "https://www.misheriff.org/vendors/rice-f-w-technologies/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals technology company",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals technology company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Robertson Research Institute",
    "website": "https://www.misheriff.org/vendors/robertson-research-institute-2/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: research institute/nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "research institute/nonprofit",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Safe Restraints, Inc.",
@@ -491,13 +745,13 @@
    "name": "Shat-R-Shield Lighting Inc.",
    "website": "https://www.misheriff.org/vendors/shat-r-shield-lighting-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Sheriff\u2019s Offices",
-   "website": "https://www.misheriff.org/sheriffs-offices/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: shatter-resistant lighting products",
+   "read": {
+    "verdict": "supplier",
+    "why": "shatter-resistant lighting products",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Smart Communications",
@@ -506,8 +760,14 @@
   {
    "name": "SolidCircle",
    "website": "https://www.misheriff.org/vendors/solidcircle-2/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "unfamiliar name; nature unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "StackBench",
@@ -517,13 +777,13 @@
    "name": "Stellar Services",
    "website": "https://www.misheriff.org/vendors/stellar-services/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Store",
-   "website": "https://www.misheriff.org/store/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: generic services name; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "generic services name; no tech signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Stryker",
@@ -539,7 +799,15 @@
   },
   {
    "name": "T-Mobile",
-   "website": "https://www.misheriff.org/vendors/t-mobile/"
+   "website": "https://www.misheriff.org/vendors/t-mobile/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: wireless carrier; government connectivity and IoT",
+   "read": {
+    "verdict": "vendor",
+    "why": "wireless carrier; government connectivity and IoT",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tek84, Inc.",
@@ -551,31 +819,31 @@
    "name": "Tele-Rad",
    "website": "https://www.misheriff.org/vendors/tele-rad/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Terms & Conditions",
-   "website": "https://www.misheriff.org/terms-conditions/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: skeptic: two-way radio and dispatch dealer; hardware reseller, not a technology product company",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: two-way radio and dispatch dealer; hardware reseller, not a technology product company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Thermakleen",
    "website": "https://www.misheriff.org/vendors/thermakleen/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: cleaning/sanitizing equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "cleaning/sanitizing equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Tidal Wave Telecom",
    "website": "https://www.misheriff.org/vendors/tidal-wave-telecom/",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "Training",
-   "website": "https://www.misheriff.org/training/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "TurnKey Corrections",
@@ -589,13 +857,25 @@
    "name": "VanBelkum",
    "website": "https://www.misheriff.org/vendors/vanbelkum/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: moving/installation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "moving/installation services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Vance Outdoors Inc",
    "website": "https://www.misheriff.org/vendors/vance-outdoors-inc/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: firearms/outdoor retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "firearms/outdoor retailer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Verizon Frontline",
@@ -603,13 +883,27 @@
   },
   {
    "name": "Via Path Technologies",
-   "website": "https://www.misheriff.org/vendors/via-path-technologies/"
+   "website": "https://www.misheriff.org/vendors/via-path-technologies/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: inmate communications and tablets (ViaPath, formerly GTL)",
+   "read": {
+    "verdict": "vendor",
+    "why": "inmate communications and tablets (ViaPath, formerly GTL)",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Victory Supply",
    "website": "https://www.misheriff.org/vendors/victory-supply/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: correctional supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional supplies",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "VitalCore Health Strategies",
@@ -621,7 +915,13 @@
    "name": "Wayne Bisard Investigations",
    "website": "https://www.misheriff.org/vendors/wayne-bisard-investigations-2/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: private investigations",
+   "read": {
+    "verdict": "supplier",
+    "why": "private investigations",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Wellpath",
@@ -630,16 +930,30 @@
   {
    "name": "WSI Technologies",
    "website": "https://www.misheriff.org/vendors/wsi-technologies/",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech": true,
+   "is_govtech_why": "reader: name signals technology company",
+   "read": {
+    "verdict": "vendor",
+    "why": "name signals technology company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Zschool",
    "website": "https://www.misheriff.org/vendors/zschool/",
    "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
+   "is_govtech_why": "reader: executive education programs",
+   "read": {
+    "verdict": "supplier",
+    "why": "executive education programs",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 10,
+ "quality_was": "good"
 }
