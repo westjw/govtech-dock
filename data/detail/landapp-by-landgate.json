@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "How to Rezone Your Property: A Step-by-Step Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.landapp.com/post/how-to-rezone-your-property-a-step-by-step-guide"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.landapp.com/post/solar-vs-battery-storage-leases"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Much Land Does the Government Own in the U.S.?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.landapp.com/post/how-much-land-does-the-government-own-in-the-us"
   }
  ],
  "profile": {

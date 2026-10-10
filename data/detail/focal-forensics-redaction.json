@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "time",
+   "first_seen": "2026-10-09",
+   "headline": "Interview Room Recording Quality and Downstream Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/interview-room-recording-quality"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "time",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/911-call-audio-redaction"
-  },
-  {
-   "date": "2026-07-18",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Redaction Fees for FOIA Requests: A Defensible Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/video-redaction-fees-foia-defensible"
   }
  ]
 }

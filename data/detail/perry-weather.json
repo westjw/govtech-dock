@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "What is the Sarah Marsh Heaven\u2019s 27 Camp Safety Act? Alabama HB381",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/sarah-marsh-heavens-27-camp-safety-act/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/tssaa-heat-policy-the-wbgt-playbook-for-tennessee-schools/"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "GHSA Heat Policy: The WBGT Playbook for Georgia Schools \u2013 Perry Weather",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/ghsa-heat-wbgt-playbook-2026/"
   }
  ],
  "profile": {

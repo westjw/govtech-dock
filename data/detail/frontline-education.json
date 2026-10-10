@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-05",
+   "headline": "Information and Support Regarding Recent Cybersecurity Notifications",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/news/information-and-support-regarding-recent-cybersecurity-notifications/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Frontline Education and AI for Education Win Two Tech & Learning Best for Back to School Awards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/news/frontline-education-and-ai-for-education-win-two-tech-learning-best-for-back-to-school-awards/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "index-text",
    "first_seen": "2026-10-07",
@@ -17,15 +35,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.frontlineeducation.com/blog/how-wauwatosas-cfo-turns-staffing-ratios-into-better-board-conversations/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Information and Support Regarding Recent Cybersecurity Notifications",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/news/information-and-support-regarding-recent-cybersecurity-notifications/"
   },
   {
    "date": "2026-08-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.frontlineeducation.com/blog/the-missing-piece-in-k-12-operational-strategy-why-master-scheduling-demands-a-purpose-built-approach/"
-  },
-  {
-   "date": "2026-04-22",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Frontline Education Accelerates AI Innovation Across K-12 with New Advisory Council and Strategic Partnership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/news/frontline-education-accelerates-ai-innovation-across-k-12-with-new-advisory-council-and-strategic-partnership/"
   }
  ],
  "profile": {

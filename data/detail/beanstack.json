@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Banned Books Week: Let Books & Comics Be Joyful Reading",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Starry Nights and Reading Lights: Beanstack\u2019s 2027 Winter Reading Challenge",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Build Year-Round Community Engagement With Reading Challenges",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Beyond Internet Access: How Public Libraries Strengthen Communities in a Digital World",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Beanstack Announces SOC 2 Compliance and Releases Public SOC 3 Security Report",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "How to Run a Back-to-School Reading Challenge: A Step-by-Step Playbook",
    "kind": "press",

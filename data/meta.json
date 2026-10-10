@@ -1,10 +1,10 @@
 {
-  "last_run": "2026-10-09",
-  "previous_run": "2026-10-08",
+  "last_run": "2026-10-10",
+  "previous_run": "2026-10-09",
   "counts": {
-    "None found": 170,
+    "None found": 173,
     "Unknown": 1476,
-    "Yes": 266,
+    "Yes": 263,
     "Sales (non-AE)": 128
   },
   "method": "ats-api refresh"

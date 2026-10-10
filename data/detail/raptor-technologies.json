@@ -1,10 +1,28 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "Why Traditional Hall Passes Aren\u2019t Suited for Students With IEPs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/hall-passes-for-ieps/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "Great Bend Public Schools USD 428 Improves Campus Security with Raptor VisitorSafe\u2122",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/news/usd-428-implements-raptor-visitorsafe/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
-   "headline": "A Defensible Framework for Responding to Bullying at Schools",
+   "headline": "A Defensible 6-Step Framework for Responding to Bullying at Schools",
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/blog/defensible-framework-for-responding-to-bullying/"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/k12-guide-bullying-awareness/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Digital Hall Passes for Safer, More Accountable Student Movements",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/digital-hall-pass-guide-for-better-student-movements/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Bell-to-Bell Cellphone Bans and the Rise of Hall Pass Requests",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/blog/bell-to-bell-cellphone-bans/"
   }
  ],
  "profile": {
