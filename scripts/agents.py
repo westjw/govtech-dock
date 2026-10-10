@@ -56,6 +56,7 @@ import unicodedata
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
+import privacy                                                  # noqa: E402
 import roles                                                    # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -1020,6 +1021,9 @@ def _pf_norm(s: str) -> str:
     leaves one variant behind."""
     if not isinstance(s, str):
         return ""
+    # the same redaction the store applies, so a stored quote still matches
+    # the page it was read from (scripts/privacy.py)
+    s = privacy.redact(s)
     s = _pf_demojibake(s)
     s = s.translate(_PF_TRANS)
     for mark in _PF_MARKS:
@@ -2269,6 +2273,11 @@ def ingest(kind: str, proposals: list[dict], model: str = "") -> dict:
     now = dt.datetime.now().astimezone().isoformat(timespec="seconds")
     kept, refused, already = 0, [], []
     for p in proposals:
+        # NOTHING THAT REACHES THE STORE CARRIES AN E-MAIL ADDRESS. Evidence
+        # quotes a company's contact line, "apply by e-mail to ..." names a
+        # mailbox: redacted here, before any door reads it, and the door
+        # normalises the page the same way (scripts/privacy.py).
+        p = privacy.redact_deep(p)
         key = p.get("key") or f"{kind}:{p.get('id')}"
         # A RULING IS NOT RE-OPENED BY THE NEXT SYNC. `store[key] = {...
         # "status": "pending"}` below is unconditional, and sync_claims reads

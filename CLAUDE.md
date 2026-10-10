@@ -359,6 +359,17 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   `agent:overnight-build` with a `why` that says they are not human rulings —
   so `admin_undo.py` can take any of them back. That recovery is the safety
   net working, not permission to use it.
+- **No e-mail address in a tracked file (2026-10-10).** `scripts/privacy.py`
+  says what an address is (not RFC 2606 placeholders, not our brand's, not a
+  machine's, not an `@2x` image name); proposal ingest and the news sweep
+  redact before writing; the write-up door normalises a page through the
+  same redaction so a stored quote still matches. `check_no_person_in_the_repo`
+  fails on any address in any tracked text file. It used to allow
+  "business-contact files" a counted number each, and 73 people's work
+  mailboxes sat in `data/suppliers.json` under that allowance - exhibitor
+  contacts off sheriffs'-association floors, filed as company names. They
+  are out of the files and still in git history; rewriting a public repo's
+  history is the owner's call.
 - **The crawler honours robots.txt, and says who it is (owner, 2026-10-09).**
   Every PAGE read asks first (`scripts/robots.py`), AT EVERY REDIRECT HOP:
   through `ats._page`, or `ats.follow(url, one)` where `one` makes a single
@@ -1174,6 +1185,58 @@ parent's event; those now require the body's own site or go to a person.
 **APWA and GMIS answer 403 to an identified crawler.** That is their policy and
 it was not evaded; a browser user-agent would have got the page. 33 events sit
 behind it, honestly.
+
+## Conference data quality, 2026-10-09: what the review found public
+
+The owner's ask: "review the conferences for data quality; make sure we are
+scrubbing the expo halls." His rulings are in memory and in
+`~/.claude/plans/conference-scrub-2026-10-09.md`: scope is the 138 live
+conferences AND the staged registry; scrubbing must produce staged lists, tags
+on companies on file, AND new companies through the card door; one pass now,
+the weekly cadence later; Claude reads the floors with a skeptic behind and the
+owner on a 5% sample; dates may be proposed by reader + skeptic and published
+only when the organisation's own page states them.
+
+**Stage 1 (landed): the defects visible on the live site.**
+
+- **A label with a year in it is not an event.** `_event_tags` counted
+  anything digit-bearing, so "research pass: HHS conference exhibitor research
+  2026-08-25" sat on ten company pages as a conference they exhibited at and
+  the tab offered it as an event nobody runs. It now reads only tags the
+  catalogue issued (`issued_tags(cat)`: event_tag and prior_tags), carried in
+  `run_context` as `issued_tags`, and both call sites pass it. A source label
+  outside the vocabulary is provenance, never an event.
+- **508 supplier rows were an association's navigation.** `conference_intake`
+  filed every name off a page as a supplier before the `menu` grade gated it,
+  so "Member Login", "Board of Trustees", "Keynote Speakers", people's names,
+  bare domains and 71 addresses or copyright lines were supplier records. The
+  purge used PROVENANCE, not word patterns (a pattern caught Driver Training
+  Solutions): rows with no website whose every source tag is a menu-graded
+  floor, judged by two readers and a skeptic (`purge-navigation` in the
+  journal, 2026-10-10). Real exhibitors among them stayed: Anvil Press, Reach
+  Alert, AM Quartex, Arcadia Publishing. The link profile ("sponsors link out,
+  menus link in") separates them on 3CMA and APPA and fails on NC League
+  (sponsors link to internal profile pages) and NCSEA (hundreds of .gov
+  members on the same page) - the reader is the tool, as the 2026-09-02 note
+  on that signal already said.
+- **The MESC "ended" ruling (2026-09-03) was recorded and never applied.**
+  `conference_dates --apply` wrote the catalogue with `\u` escapes against a
+  file committed as raw UTF-8, which made a one-line ruling a ten-line diff; it
+  writes `ensure_ascii=False` now, like `apply_conference_reads`.
+- **Three things about the staged floors, for stage 2.** `swept` is set by hand
+  on 12 rows and by no script; the admin's floor queue and the tab both count
+  from staged files and companies instead, so the flag is furniture. Every row
+  with an `exhibitor_url` already has a staged file and nearly every
+  names-bearing file is intaken: the gaps are the 58 rows with no directory
+  address, the 21 menu floors, 11 floor-plan apps that need a browser, and
+  4,023 names the classifier left unjudged. Three "good" or staged pages are
+  not floors at all on reading: ACCG's is a job board, APPA Public Power's and
+  Animal Care Expo's are navigation.
+- **`check_a_redraw_is_the_crawl_without_the_fetch` flaked once** during this
+  work: 21 organisations differed after its randomised edits (everbridge,
+  urban-sdk, placer-ai first), none with a source the tag change can touch,
+  and it passed on three reruns. Not understood; written down so the next
+  failure is read as the second, not the first.
 
 ## Capture: the bookmarklet and the extension
 

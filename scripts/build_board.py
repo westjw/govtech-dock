@@ -667,13 +667,21 @@ def phase(families: dict) -> str:
 
 
 
-def _event_tags(source: str | None) -> list:
+def _event_tags(source: str | None, issued: set | None = None) -> list:
     """The conference tags in a company's `source`, in order, deduped.
 
     Sweeps write "conference sweep: PLA 2026" and intake writes the tag
     itself; a company found at two shows carries both, separated by a
     semicolon. A tag has to contain a year, or "conference sweep" with no
     event behind it becomes an event.
+
+    AND IT HAS TO BE A TAG THE CATALOGUE ISSUED. "research pass: HHS
+    conference exhibitor research 2026-08-25" carries a year, so ten
+    companies' pages said they exhibited at a research pass, and the tab
+    offered it as an event nobody runs (found 2026-10-09). `issued` is the
+    catalogue's vocabulary - event_tag and prior_tags - and a label outside
+    it is provenance, not an event. None keeps the old reading for a caller
+    with no catalogue to hand.
     """
     src = (source or "").strip()
     if not src:
@@ -681,8 +689,21 @@ def _event_tags(source: str | None) -> list:
     out = []
     for tag in src.split(":")[-1].split(";"):
         tag = tag.strip()
-        if tag and any(ch.isdigit() for ch in tag) and tag not in out:
-            out.append(tag)
+        if not tag or not any(ch.isdigit() for ch in tag) or tag in out:
+            continue
+        if issued is not None and tag not in issued:
+            continue
+        out.append(tag)
+    return out
+
+
+def issued_tags(cat: list) -> set:
+    """Every tag the catalogue ever issued: current event_tag and prior_tags."""
+    out = set()
+    for c in cat or []:
+        if c.get("event_tag"):
+            out.add(c["event_tag"])
+        out.update(c.get("prior_tags") or [])
     return out
 
 NEWS_ON_BOARD = 12
@@ -957,6 +978,7 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
     """
     conf_rows = []
     if cat:
+        issued = issued_tags(cat)
         open_by_co = {o["id"]: o.get("open_roles", 0) for o in orgs}
         by_tag = collections.defaultdict(list)
         for c in companies:
@@ -972,7 +994,7 @@ def conference_rows(cat: list, orgs: list, companies: list) -> list:
             # SoundThinking among them - were missing from every conference
             # they exhibited at, and the Conferences tab understated itself
             # by that much while looking precise.
-            for tag in _event_tags(src):
+            for tag in _event_tags(src, issued):
                 by_tag[tag].append(c["id"])
         for row in cat:
             tag = (row.get("event_tag") or "").strip()
@@ -1148,6 +1170,9 @@ def run_context(companies: list, manual: dict | None) -> dict:
     owns, unowned = board_owners(companies)
     return {"vocab": _TAG_VOCAB, "claims": load_claims(), "news": _news_store(),
             "owns": owns, "unowned": unowned,
+            # the catalogue's tag vocabulary: a source label outside it is
+            # provenance, never an event on the company's page (_event_tags)
+            "issued_tags": issued_tags(load_catalogue()),
             "discovery": _read_discovery_log(),
             "checks": (manual or {}).get("checks", {}),
             "hidden_links": hidden_links()}
@@ -1254,8 +1279,8 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
         # nothing. `conferences` is the list; `conference` stays as the
         # first for every reader that expects one, so nothing that reads
         # it breaks while the list is adopted.
-        "conferences": _event_tags(c.get("source")),
-        "conference": (_event_tags(c.get("source")) or [None])[0],
+        "conferences": _event_tags(c.get("source"), ctx.get("issued_tags")),
+        "conference": (_event_tags(c.get("source"), ctx.get("issued_tags")) or [None])[0],
         # Filled in by count_openings() once every posting exists. Counting
         # here counted rows, missed the manual merge below, and rescanned
         # the whole posting list once per company.

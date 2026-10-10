@@ -344,7 +344,7 @@ def main() -> int:
         whole = json.loads((DATA / "conferences.json").read_text())
         whole["conferences"] = rep["rows"]
         tmp = DATA / "conferences.json.tmp"
-        tmp.write_text(json.dumps(whole, indent=1) + "\n")
+        tmp.write_text(json.dumps(whole, indent=1, ensure_ascii=False) + "\n")
         try:
             back = json.loads(tmp.read_text())
             assert len(back["conferences"]) == len(rows)

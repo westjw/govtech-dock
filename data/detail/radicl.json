@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Right Vendor, Right Sender, Wrong Keyboard",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/right-vendor-right-sender-wrong-keyboard"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -57,6 +66,15 @@
   {
    "date": "2026-09-25",
    "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "Credential Stuffing: Bulk Account Takeover Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/credential-stuffing-bulk-account-takeover-explained"
+  },
+  {
+   "date": "2026-09-25",
+   "date_source": "index-text",
    "first_seen": "2026-10-06",
    "headline": "Cloaking Gate Fronts a Certutil Stager Deploying ScreenConnect",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/nerc-cip-compliance-checklist-for-2026"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "That Voter Registration Website Might Want More Than Your Vote",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/that-voter-registration-website-might-want-more-than-your-vote"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "What Is FedRAMP? Cloud Authorization for Government Contractors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-is-fedramp-cloud-authorization-for-government-contractors"
   }
  ],
  "profile": {

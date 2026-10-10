@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "University Hospitals Expands ESO Service Arrangement to Deliver Prehospital Intelligence Across Northern Ohio",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "ESO Launches Logis Billing Intelligent Lockbox Assistant, the First AI-Powered Lockbox Solution for EMS Billing",
    "kind": "product",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-07-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "New Research Finds 3% of Patients Drive 16% of All 911 EMS Responses",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://www.eso.com/news/press-releases/new-research-finds-3-of-patients-drive-16-of-all-911-ems-responses/"
   },
   {
-   "date": "2026-06-24",
-   "date_source": "index-text",
+   "date": "2026-06-25",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "ESO Launches Prehospital Intelligence\u2122 to Reduce Length of Stay and Strengthen EMS-Hospital Collaboration",
    "kind": "product",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-06-03",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "ESO Closes NFIRS Era with 2026 Fire Service Index, Sets the Stage for Richer Data Under NERIS Reporting Standard",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-05-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "2026 ESO Trauma Index connects hospital and prehospital blood product data, revealing new patterns across the emergency care continuum",
    "kind": "press",

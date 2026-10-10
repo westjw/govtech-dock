@@ -2749,7 +2749,7 @@
   "sector": "General Gov",
   "category": "Libraries",
   "source_event": "PLA 2026",
-  "notes": "Could not confirm a company behind this. getqrprint.com is a single static page - four lines of copy, a demo.mp4 link and a mailto to kiosk@getqrprint.com - with no company name, legal entity, address, team, pricing or terms anywhere in the HTML, and the two call-to-action buttons are commented out in the page's own JavaScript so they do nothing. I fetched the raw HTML directly and there is no additional content behind JavaScript. Web search budget for this session was exhausted before I could search for a parent company, so this needs a manual look."
+  "notes": "Could not confirm a company behind this. getqrprint.com is a single static page - four lines of copy, a demo.mp4 link and a mailto to [address removed] - with no company name, legal entity, address, team, pricing or terms anywhere in the HTML, and the two call-to-action buttons are commented out in the page's own JavaScript so they do nothing. I fetched the raw HTML directly and there is no additional content behind JavaScript. Web search budget for this session was exhausted before I could search for a parent company, so this needs a manual look."
  },
  {
   "verdict": "govtech",

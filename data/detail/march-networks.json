@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-09",
+   "headline": "Behind the Lens \u2013 September 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/behind-the-lens-september-2026/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/es/news/behind-the-lens-august-2026/"
-  },
-  {
-   "date": "2026-09-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Behind the Lens \u2013 ao\u00fbt 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/fr/news/behind-the-lens-august-2026/"
   }
  ],
  "profile": {

@@ -44,6 +44,7 @@ DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import fetch_profiles as fp                                    # noqa: E402
+import privacy                                                  # noqa: E402
 
 STORE = DATA / "news.json"
 KEEP = 25                # items kept per company, newest first
@@ -513,7 +514,7 @@ def items_from_index(html: str, base: str) -> list[dict]:
             date, src = parse_date(tm.group(1)), "time"
         if not date:
             date, src = parse_date(_clean(block)), "index-text"
-        out.append({"url": u, "headline": cut_tail(head)[:MAX_HEAD], "date": date,
+        out.append({"url": u, "headline": privacy.redact(cut_tail(head))[:MAX_HEAD], "date": date,
                     "date_source": src if date else None})
     return out
 
@@ -593,7 +594,7 @@ def item_from_article(html: str, url: str) -> dict:
     # resolved above, before the date fallbacks, because the byline rule
     # anchors on it - see _headline_of for the h1/og:title/title order
     head = head_guess
-    return {"url": url, "headline": cut_tail(head)[:MAX_HEAD], "date": date,
+    return {"url": url, "headline": privacy.redact(cut_tail(head))[:MAX_HEAD], "date": date,
             "date_source": src if date else None}
 
 

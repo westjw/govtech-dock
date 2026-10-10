@@ -2036,26 +2036,24 @@ def check_no_person_in_the_repo() -> int:
       `by`: an @   refused outright. Authorship here is a handle; rule.js
                    stamping a signed-in email into a ruling is this exact write.
 
+    THE RULE IS NONE (2026-10-09). The first version allowed "business-contact
+    files" a counted number of addresses, and 73 people's work mailboxes sat
+    in data/suppliers.json under that allowance - exhibitor contacts harvested
+    as company names. scripts/privacy.py now says what an address is, the two
+    writers that quote web pages redact before writing, and every tracked text
+    file must carry none.
+
     Three things are not addresses and are not treated as such: reserved
     placeholder domains (RFC 2606 example.com, and .test/.invalid/.localhost),
     no-reply machine identities like the bot's users.noreply.github.com, and
     binary files, whose bytes match this pattern by coincidence - a logo PNG
     is not a contact list.
     """
-    import collections
-    import re
     import subprocess
+    import privacy
 
-    ADDR = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
-    IMAGE = re.compile(r"\.(png|jpe?g|webp|gif|svg|avif|ico)$", re.I)
     BINARY = (".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".pdf", ".zip",
               ".woff", ".woff2", ".ttf", ".xlsx", ".db", ".sqlite")
-    # Not anybody's mailbox: RFC 2606 placeholders, the invented domains this
-    # codebase's own fixtures use, and our own brand address.
-    RESERVED = {"example.com", "example.org", "example.net", "email.com",
-                "acme.com", "evil.com", "yourcompany.com", "nobody.com",
-                "nosite.com", "other.com", "britco.co.uk", "someoneelse.co.uk",
-                "sledjobs.com", "solesourcejobs.com"}
     FREEMAIL = {
         "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "ymail.com",
         "hotmail.com", "hotmail.co.uk", "outlook.com", "live.com", "msn.com",
@@ -2064,71 +2062,30 @@ def check_no_person_in_the_repo() -> int:
         "comcast.net", "verizon.net", "sbcglobal.net", "att.net", "cox.net",
     }
     # A TEST THAT PROVES GMAIL IS REFUSED HAS TO NAME GMAIL. These files hold
-    # invented addresses on purpose; every one is `jane@` or `you@`.
-    FIXTURES = {"scripts/claim_harness.mjs", "scripts/worker_harness.js"}
-    # Business-contact files with the count each held when this was written.
-    # Exhibitor directories and supplier rosters: the addresses are published
-    # by the organisation whose list it is. RAISE A NUMBER ONLY AFTER LOOKING.
-    ALLOWED = {
-        "data/suppliers.json": 67,
-        "data/exhibitors_North_Carolina_Sheriffs_Association_2026.json": 57,
-        "data/jd_cache.json": 14,
-        "data/proposed_websites.json": 7,
-        # 7th on 2026-09-13: a "buyersupport" role address on publicsurplus's
-        # own domain - NOT written out here, because this check reads its own
-        # source and a guard that has to quote what it forbids is a guard that
-        # raises its own number. Quoted verbatim off their contact page as the
-        # sentence. A role address already published by the company, which is
-        # the class this file is allowlisted for - not a person's mailbox.
-        # The SENTENCE is filler and a gate review should cut it: "the contact
-        # page lists separate buyer support and agency support addresses" is
-        # not what they sell, and a write-up quoting a support address as
-        # evidence is padding a paragraph rather than describing a company.
-        "data/agent_proposals.json": 7,
-        "data/proposed_locations.json": 4,
-        # not counted, only screened - see COUNT_EXEMPT below
-        "data/admin_journal.jsonl": None,
-        "data/exhibitors_NCSEA_2026.json": 2,
-        "data/exhibitors_NCSEA_Policy_Forum_2027.json": 2,
-        "data/exhibitors_Vermont_League_of_Cities_and_Towns_2027.json": 2,
-        "data/companies.json": 1,
-        "data/conference_intake/govtech_candidates.json": 1,
-        "data/conference_intake/pass1_govtech.json": 1,
-        "data/conference_intake/remaining_candidates.json": 1,
-        "data/conference_intake/researched/final.json": 1,
-        "data/exhibitors_APPA_Probation_2026.json": 1,
-        "data/exhibitors_Connecticut_Conference_of_Municipalities_2026.json": 1,
-        "data/exhibitors_Iowa_State_Association_of_Counties_2026.json": 1,
-        "data/exhibitors_Michigan_Sheriffs_Association_2026.json": 1,
-        "data/exhibitors_NASWA_2025.json": 1,
-        "data/exhibitors_PRIMA_2026.json": 1,
-        "data/news.json": 1,
-        "data/proposals_in/profile-batch-05.json": 1,
-        "data/proposed_hhs_cards.json": 1,
-        "data/suppliers_view.json": 1,
-        # A PRESS-RELEASE MEDIA CONTACT the news parser swept into a
-        # HEADLINE - "... Media contact: Sherry Howell | CenterEdge |
-        # showell@... | 336.598.5940". Published by the company on its
-        # own newsroom, so it is a business contact and allowed here,
-        # but the headline is wrong and it renders on the public page:
-        # news.py should cut a headline at "Media contact:".
-        "data/board.json": 1,
-        # an ATS forwarding address (Workable) in a fixture below, not
-        # a person - recorded here rather than exempting this whole file,
-        # which is where the guard itself lives
-        "scripts/selftest.py": 1,
-    }
+    # invented addresses on purpose; every one is `jane@` or `you@`, and the
+    # guard's own file names a Workable forwarding mailbox as a fixture.
+    FIXTURES = {"scripts/claim_harness.mjs", "scripts/worker_harness.js",
+                "scripts/privacy.py"}
 
-    def carried(addr: str) -> bool:
-        """Is this somebody's address, as opposed to a machine or a stand-in?"""
-        dom = addr.rsplit("@", 1)[-1]
-        if dom in RESERVED or dom.endswith((".test", ".invalid", ".localhost")):
-            return False
-        if any(dom.endswith("." + r) for r in RESERVED):   # mail.acme.com
-            return False
-        if "noreply" in addr or "no-reply" in addr:
-            return False
-        return True
+    # the helper itself: the rule has to hold in its own terms before it is
+    # applied to the tree
+    # the one real-looking address is assembled at run time, so this file
+    # carries no literal for its own screen to find
+    someone = "jane.doe" + "@" + "acme-corp.com"
+    other = "a" + "@" + "b.com"
+    for text, want in ((f"mail {someone} now", "mail [address removed] now"),
+                       ("Favicon@2x.png", "Favicon@2x.png"),
+                       ("alerts@sledjobs.com", "alerts@sledjobs.com"),
+                       ("x@example.com", "x@example.com"),
+                       ("noreply@notify.io", "noreply@notify.io"),
+                       ("jobs@jobs.workablemail.com", "jobs@jobs.workablemail.com"),
+                       (f"{other}; {someone}", "[address removed]; [address removed]")):
+        if privacy.redact(text) != want:
+            errors_here = fail(f"privacy.redact({text!r}) = {privacy.redact(text)!r}")
+            return errors_here
+    if privacy.redact_deep({"a": [other, {"b": someone}], "n": 1}) != \
+            {"a": ["[address removed]", {"b": "[address removed]"}], "n": 1}:
+        return fail("privacy.redact_deep does not reach every string")
 
     try:
         tracked = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
@@ -2138,19 +2095,13 @@ def check_no_person_in_the_repo() -> int:
         return fail(f"could not list tracked files, so this proved nothing: {exc}")
     # DEDUPED, BECAUSE `git ls-files` LISTS A CONFLICTED PATH ONCE PER STAGE.
     # During an unresolved merge or rebase it emits data/companies.json three
-    # times - base, ours, theirs - and this check counts the file's addresses
-    # once per listing. It reported "3 address(es), up from 1" against a file
-    # holding exactly one, which had been there for weeks. A guard that cries
-    # wolf whenever somebody runs selftest mid-rebase is a guard people learn
-    # to wave through, and this one exists to stop a personal mailbox reaching
-    # a public repository.
+    # times - base, ours, theirs - and a count per listing cried wolf.
     tracked = list(dict.fromkeys(tracked))
     if len(tracked) < 50:
         return fail(f"git ls-files returned {len(tracked)} paths; this check "
                     f"only means anything against the real tree")
 
     errors = 0
-    counts: collections.Counter = collections.Counter()
     for rel in tracked:
         if not rel or rel.endswith(BINARY) or rel.endswith((".md", ".lock")):
             continue
@@ -2164,66 +2115,43 @@ def check_no_person_in_the_repo() -> int:
         if b"\0" in blob[:8192] or b"@" not in blob:
             continue                       # binary, or nothing to look at
         text = blob.decode("utf-8", "ignore")
-        for raw in set(ADDR.findall(text)):
-            if IMAGE.search(raw):
-                continue
-            addr = raw.lower()
-            if not carried(addr):
-                continue
-            if rel in FIXTURES:
-                continue
-            counts[rel] += 1
-            if addr.split("@")[-1] in FREEMAIL:
-                errors += fail(
-                    f"{rel} carries {addr}, a personal mailbox, in a PUBLIC "
-                    f"repository - raw.githubusercontent serves that file to "
-                    f"anyone. Page text belongs in data/site_pages/, which is "
-                    f"gitignored for exactly this. Remove it, or move whatever "
-                    f"wrote it to the ignored side of the line")
+        if rel not in FIXTURES:
+            for addr in privacy.addresses(text):
+                if addr.split("@")[-1] in FREEMAIL:
+                    errors += fail(
+                        f"{rel} carries {addr}, a personal mailbox, in a PUBLIC "
+                        f"repository - raw.githubusercontent serves that file to "
+                        f"anyone. Page text belongs in data/site_pages/, which is "
+                        f"gitignored for exactly this")
+                else:
+                    errors += fail(
+                        f"{rel} carries the address {addr}. No tracked file holds "
+                        f"one: a name that is an address is not a company, and a "
+                        f"quote that carries one is redacted by privacy.redact "
+                        f"before it is written")
+                break                      # one line per file is enough to act on
         for m in re.finditer(
                 r'"(?:by|ruled_by|granted_by|submitted_by)"\s*:\s*"([^"]*@[^"]*)"',
                 text):
-            if carried(m.group(1).lower()) and rel not in FIXTURES:
+            if privacy.is_address(m.group(1)) and rel not in FIXTURES:
                 errors += fail(
                     f"{rel} attributes a write to {m.group(1)!r}. Authorship "
                     f"here is a handle: users.json holds email_sha256 and "
                     f"whoami.js resolves it. An address publishes who someone "
                     f"is, in a public repo, on every row they ever ruled")
-
-    # APPEND-ONLY RECORDS OF RULINGS. The journal keeps a before-image of
-    # every accepted proposal, so it gains a business address whenever a
-    # write-up is accepted whose evidence quotes a page that carries one -
-    # which is a person doing their job, not a leak. It grew by one within a
-    # day of this check landing (2026-09-08#141, a proposal-accept whose
-    # evidence quoted a vendor's contact page). A number raised every afternoon
-    # gets raised without looking, which is worse than not counting. The
-    # free-mail refusal above still applies here in full: what must never
-    # appear is somebody's private mailbox, and that is screened, not counted.
-    COUNT_EXEMPT = {"data/admin_journal.jsonl"}
-
-    for rel, n in sorted(counts.items()):
-        if rel in COUNT_EXEMPT:
-            continue
-        cap = ALLOWED.get(rel)
-        if cap is None:
-            errors += fail(
-                f"{rel} holds {n} address(es) and is not a known "
-                f"business-contact file. If they are published organisation "
-                f"contacts, add it to ALLOWED with its count and say so; if a "
-                f"scrape put them there, the scrape is writing to the tracked "
-                f"side of the line")
-        elif n > cap:
-            errors += fail(
-                f"{rel} now holds {n} address(es), up from {cap}. Something "
-                f"added {n - cap}: look at what before raising the number. "
-                f"This is how a personal address arrives inside a file that is "
-                f"allowed to hold business ones")
-    for rel, cap in ALLOWED.items():
-        if cap is None or rel in COUNT_EXEMPT:
-            continue
-        if rel not in counts:
-            note(f"{rel} is allowlisted for {cap} address(es) and now holds "
-                 f"none; drop the entry once that is deliberate")
+    # AND THE TWO WRITERS THAT QUOTE OTHER PEOPLE'S PAGES REDACT FIRST, or the
+    # next accepted write-up puts the next address back
+    ag = (ROOT / "scripts" / "agents.py").read_text()
+    nw = (ROOT / "scripts" / "news.py").read_text()
+    if "privacy.redact_deep(" not in ag:
+        errors += fail("agents.ingest stores a proposal's evidence and quotes without "
+                       "redacting addresses; a page's contact line lands in a tracked file")
+    if "privacy.redact(" not in nw:
+        errors += fail("news.py writes headlines without redacting addresses; a media "
+                       "contact in a press release lands in a tracked file")
+    if "privacy.redact(" not in ag.split("def _pf_norm", 1)[1][:1200]:
+        errors += fail("the write-up door normalises a quote and its page differently from "
+                       "the redaction, so a stored (redacted) quote no longer matches its page")
     return errors
 
 
@@ -4461,13 +4389,39 @@ def check_conference_counts_reach_both_events() -> int:
                        "shows matches neither")
     # and the builder must SHIP the list for the filter to have anything to read
     bb = (ROOT / "scripts" / "build_board.py").read_text()
-    if '"conferences": _event_tags(c.get("source")),' not in bb:
-        errors += fail("build_board no longer ships `conferences` on an org. "
-                       "The filter reads a field that is not there and every "
-                       "multi-event company falls out of both events")
+    if '"conferences": _event_tags(c.get("source"), ctx.get("issued_tags")),' not in bb:
+        errors += fail("build_board no longer ships `conferences` on an org, read "
+                       "against the catalogue's vocabulary. The filter reads a field "
+                       "that is not there and every multi-event company falls out")
     probe = {"conferences": build_board._event_tags("x: A 2026; B 2026")}
     if probe["conferences"] != ["A 2026", "B 2026"]:
         errors += fail(f"the shipped tag list is {probe['conferences']!r}")
+    # A LABEL WITH A YEAR IN IT IS NOT AN EVENT. "research pass: HHS conference
+    # exhibitor research 2026-08-25" put a research pass on ten company pages
+    # as a conference they exhibited at (2026-10-09). Only a tag the catalogue
+    # issued counts, and both places that read a source must say so.
+    issued = {"IACP 2026", "PLA 2026"}
+    for src, want in [("research pass: HHS conference exhibitor research 2026-08-25", []),
+                      ("conference sweep: IACP 2026; HHS research 2026-08-25", ["IACP 2026"]),
+                      ("IACP 2026; PLA 2026", ["IACP 2026", "PLA 2026"])]:
+        got = build_board._event_tags(src, issued)
+        if got != want:
+            errors += fail(f"_event_tags({src!r}, issued) = {got!r}, expected {want!r}")
+    if "for tag in _event_tags(src, issued):" not in bb \
+            or '"issued_tags": issued_tags(load_catalogue()),' not in bb:
+        errors += fail("a company's events are counted without the catalogue's "
+                       "vocabulary, so a research label with a year becomes an event")
+    cat = build_board.load_catalogue()
+    live = build_board.issued_tags(cat)
+    if cat and not ({"IACP 2026", "PLA 2026"} <= live):
+        errors += fail("issued_tags() does not read the catalogue's event_tag field")
+    if (ROOT / "data" / "board.json").exists():
+        for o in json.loads((ROOT / "data" / "board.json").read_text()).get("organizations", []):
+            stray = [t for t in (o.get("conferences") or []) if t not in live]
+            if stray:
+                errors += fail(f"{o.get('id')} shows {stray[0]!r} as a conference it exhibited "
+                               f"at; the catalogue never issued that tag")
+                break
     if "rows.filter(r=>r.swept).length" in html:
         errors += fail("the Conferences header counts events by the `swept` "
                        "flag (11) while 33 rows actually carry companies, so "

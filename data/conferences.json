@@ -1505,8 +1505,8 @@
     "https://www.nescso.org/mesc"
    ],
    "url": "https://mesconference.org/",
-   "dates_source": "supplied by the owner 2026-08-25",
-   "dates_confidence": "owner",
+   "dates_source": "ruled 2026-09-03 by owner",
+   "dates_confidence": "ended",
    "dates_note": "2027 dates not yet announced. MESC 2026 ran August 17-20, 2026 at the Oregon Convention Center, Portland, OR and finished five days ago. I queried the conference site's own WordPress events API (mesconference.org/wp-json/tribe/events/v1/events) for 2026-01-01 through 2029-12-31: 26 events come back and the last is 'Medicaid Enterprise Systems Conference - 2026', Aug 17-20, Oregon Convention Center. Nothing for 2027 exists on the official calendar, there is no future-conferences page, and the homepage is still running a 'MESC 2026 Starts In...' countdown for a conference that already ended, alongside an announcement that 2026 registration has closed. The site is live; NESCSO has just not posted 2027.",
    "dates": "August 17-20, 2026",
    "city": "Portland, OR",
