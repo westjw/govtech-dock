@@ -1,69 +1,97 @@
 {
-  "date": "2026-10-10",
-  "previous": "2026-10-09",
+  "date": "2026-10-13",
+  "previous": "2026-10-10",
   "changes": [
+    {
+      "company": "Euna Solutions",
+      "id": "euna-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive - Payments (United States)"
+    },
     {
       "company": "Paymentus",
       "id": "paymentus",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: robots.txt on www.payment"
-    },
-    {
-      "company": "GovWorx",
-      "id": "govworx",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "RTA Fleet Management",
-      "id": "rta-fleet-management",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Bruker Detection",
-      "id": "bruker-detection",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "robots.txt asks crawlers not to read wor"
-    },
-    {
-      "company": "BigBear.ai (Pangiam)",
-      "id": "bigbear-ai",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "robots.txt asks crawlers not to read int"
-    },
-    {
-      "company": "In-Situ",
-      "id": "in-situ",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Vanderlande",
-      "id": "vanderlande",
+      "company": "DebtBook",
+      "id": "debtbook",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://boards-api.greenhou"
+    },
+    {
+      "company": "Littlepay",
+      "id": "littlepay",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Senior Business Development Manage (London)"
+    },
+    {
+      "company": "GovWorx",
+      "id": "govworx",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
+    },
+    {
+      "company": "Ascento AG",
+      "id": "ascento-ag",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Business Development: French-Speak only"
+    },
+    {
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "EnergyHub",
-      "id": "energyhub",
-      "from": "Sales (non-AE)",
+      "company": "Transfinder",
+      "id": "transfinder",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Ridango",
+      "id": "ridango",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "EverestLabs",
-      "id": "everestlabs",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "company": "In-Situ",
+      "id": "in-situ",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://in-situ.com/careers"
+    },
+    {
+      "company": "Vanderlande",
+      "id": "vanderlande",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "2getthere",
+      "id": "2getthere",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Evisions",
+      "id": "evisions",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive (Houston, Texas, Un)"
     }
   ]
 }
