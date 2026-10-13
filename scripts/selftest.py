@@ -23080,25 +23080,51 @@ def check_the_gate_sees_an_unreadable_cliff() -> int:
     # baseline for it and correctly says nothing. A made-up id proves only that
     # the test was made up: the first version of this check used one and failed
     # against working code.
+    #
+    # AS MANY OF THE BIGGEST BOARDS AS IT TAKES TO CROSS THE LINE, not the
+    # single biggest. That was the fixture until 2026-10-11, and it held only
+    # while one company carried more than 5% of the board: the board passed
+    # 8,000 postings, Motorola's 394 became 4.9%, the gate rightly let one
+    # dark board through, and this check failed three nightly runs in a row -
+    # stopping the crawl and the Tuesday digest with it. The incident it
+    # guards was 33 boards at once, so several dark boards is the true shape.
     hist = sorted((ROOT / "data" / "history").glob("*.json"))
-    if len(hist) >= 2 and build_site.previous_snapshot():
+    prev_n = (build_site.previous_snapshot() or (None, 0))[1]
+    if len(hist) >= 2 and prev_n:
         counts: dict[str, int] = {}
         for pid in json.loads(hist[-2].read_text()).get("ids", []):
             cid = pid.split("::")[0]
             counts[cid] = counts.get(cid, 0) + 1
-        big = max(counts, key=counts.get) if counts else None
-        if big and counts[big] >= 10:
+        need = prev_n * build_site.MAX_UNREADABLE_LOSS * 1.5     # well past the line
+        dark, lost = [], 0
+        for cid, n in sorted(counts.items(), key=lambda kv: -kv[1]):
+            if lost > need:
+                break
+            dark.append(cid)
+            lost += n
+        if lost > need:
             cliff = {"postings": [{"company_id": "a"} for _ in range(3000)],
-                     "organizations": [{"id": "a", "open_roles": 3000},
-                                       {"id": big, "open_roles": 0,
-                                        "unreadable": "HTTP 404"}]}
+                     "organizations": [{"id": "a", "open_roles": 3000}]
+                                      + [{"id": cid, "open_roles": 0,
+                                          "unreadable": "HTTP 404"} for cid in dark]}
             if not any("would not read" in o
                        for o in build_site.sanity_check(cliff)):
                 errors += fail(f"the publish gate does not notice postings "
                                f"disappearing with boards that would not read: "
-                               f"{big!r} held {counts[big]} postings and its "
-                               f"board failing raised no objection. A 13% fall "
-                               f"of exactly that shape passed it once")
+                               f"{len(dark)} board(s) holding {lost} of {prev_n} "
+                               f"postings failed and raised no objection. A 13% "
+                               f"fall of exactly that shape passed it once")
+        # AND ONE DARK BOARD UNDER THE LINE IS NOT A CLIFF: a gate that refused
+        # every build with a single transient failure would be forced past
+        small = min((c for c, n in counts.items() if 10 <= n < prev_n * build_site.MAX_UNREADABLE_LOSS / 2),
+                    key=lambda c: -counts[c], default=None)
+        if small:
+            calm = {"postings": [{"company_id": "a"} for _ in range(prev_n)],
+                    "organizations": [{"id": "a", "open_roles": prev_n},
+                                      {"id": small, "open_roles": 0, "unreadable": "HTTP 404"}]}
+            if any("would not read" in o for o in build_site.sanity_check(calm)):
+                errors += fail(f"the publish gate refuses a build because one board "
+                               f"({small!r}, {counts[small]} postings) would not read")
     if build_site.MAX_UNREADABLE_LOSS > 0.15:
         errors += fail(f"MAX_UNREADABLE_LOSS is {build_site.MAX_UNREADABLE_LOSS:.0%}; "
                        f"the failure it exists to catch was 13% of the board")
