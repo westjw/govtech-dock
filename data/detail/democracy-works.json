@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "After A Million More Election Notifications: Voters Are Doing Their Homework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/after-a-million-more-election-notifications-voters-are-doing-their-homework"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Building Voter Confidence: Early Voting, Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.democracy.works/news/building-voter-confidence-early-voting-explained"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "near-h1",
    "first_seen": "2026-10-08",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.democracy.works/news/democracys-ai-fueled-information-challenge"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Making it Easier to Find Where to Vote in TurboVote",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.democracy.works/news/making-it-easier-to-find-where-to-vote-in-turbovote"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "OpenAI and Democracy Works Announce Partnership",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.democracy.works/news/democracy-works-partnering-with-openai"
   }
  ],
  "profile": {

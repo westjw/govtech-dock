@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-09",
+   "date": "2026-10-13",
    "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Acentra Health\u2019s Chief Health and Informatics Officer Ryan Bosch, MD, FACP Named Fellow of the American College of Health Data Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://acentra.com/news/ryan-bosch-named-american-college-of-health-data-management-fellow"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "The Best Partnerships Begin with Curiosity and Lead to Better Outcomes",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Preparing for the Next Phase of the Rural Health Transformation Program: From Application Success to Performance Success",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Modernizing Medicaid Systems Without Disrupting Care",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Key Takeaways from NAMPI 2026: Advancing Medicaid Program Integrity Through Collaboration, Data, and Action",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-27",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "MESC 2026 and the Next Phase of Medicaid Modernization",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Names",
    "url": "https://acentra.com/news/acentra-health-names-srini-surendranath-as-senior-vice-president-of-product-and-solutions-management"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Acentra Health Appoints Sreedevi Hegde as Senior Vice President \u2013 India Country Head",
-   "kind": "leadership",
-   "kind_rule": "Appoints",
-   "url": "https://acentra.com/news/acentra-health-appoints-sreedevi-hegde-as-senior-vice-president-india-country-head"
   }
  ],
  "profile": {

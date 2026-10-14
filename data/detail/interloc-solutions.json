@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "index-text",
+   "first_seen": "2026-10-13",
+   "headline": "AI Assisted Technical Documentation with BOB",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/ai-assisted-technical-documentation-with-bob"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "index-text",
+   "first_seen": "2026-10-13",
+   "headline": "Running IBM Maximo Application Suite on AWS SNO",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/running-ibm-maximo-application-suite-on-aws-sno"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "index-text",
    "first_seen": "2026-10-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-1-of-3-preparation-and-initial-installation"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Maximo Application Suite Security Bulletins-May 2026-2",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/maximo-application-suite-security-bulletins-may-2027"
-  },
-  {
-   "date": "2026-03-29",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Interloc Solutions Launches Informer EdgeSync for MAS to Deliver Upgrades on Your Timeline, with Zero Downtime",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.interlocsolutions.com/company/news/interloc-solutions-launches-informer-edgesync-for-mas-to-deliver-upgrades-on-your-timeline-with-zero-downtime"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Expanded Agents Ecosystem: Fleet Intelligence that Acts for Safety and Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.netradyne.com/blog/expanded-agents-ecosystem"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.netradyne.com/ca-fr/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "A Smarter Way to Act on Intelligence: The New Netradyne Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.netradyne.com/mx/blog/a-smarter-way-to-act-on-intelligence-the-new-netradyne-experience"
   }
  ],
  "profile": {

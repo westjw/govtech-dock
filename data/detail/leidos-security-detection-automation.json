@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Leidos participates at U.S. Army's Reveille Forge \u2018permanent hackathon\u2019",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/leidos-participates-us-armys-reveille-forge-permanent-hackathon"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Know, control, prove: Building trust in agentic AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/know-control-prove-building-trust-agentic-ai"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/leidos-support-extended-artemis-airborne-isr-mission-us-army"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Optimizing cloud portfolios for long-term value",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/optimizing-cloud-portfolios-long-term-value"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Preparing applications for continuous modernization",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/preparing-applications-continuous-modernization"
   }
  ]
 }

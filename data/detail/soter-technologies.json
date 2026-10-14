@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-02-09",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Bruce Dissects The Gap Between Federal Surveys and the Classroom Front Lines",
    "kind": "press",

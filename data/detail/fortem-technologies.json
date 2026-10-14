@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Fortem Technologies and MBDA Expand Partnership to Build Autonomous Counter-Drone Protection into European and Allied Air Defenses",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fortemtech.com/press-releases/2026-10-12-fortem-technologies-and-mbda-expand-partnership-to-build-autonomous-counter-drone-protection-into-european-and-allied-air-defenses/"
+  },
+  {
    "date": "2026-08-04",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://fortemtech.com/press-releases/2025-12-04-fortem-technologies-partners-with-southern-states-llc-to-protect-u-s-power-grid-from-drone-threats/"
-  },
-  {
-   "date": "2025-11-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fortem Technologies Among First Defense Companies Selected for U.S. Army\u2019s New G-TEAD Marketplace",
-   "kind": "contract",
-   "kind_rule": "Selected for",
-   "url": "https://fortemtech.com/press-releases/2025-11-21-fortem-technologies-among-first-defense-companies-selected-for-u-s-army-s-new-g-tead-marketplace/"
   }
  ],
  "profile": {

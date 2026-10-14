@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Matthew Portanova on Counter-UAS Deployment and Customer Success",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://d-fendsolutions.com/blog/matthew-portanova-on-counter-uas-deployment/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://d-fendsolutions.com/blog/h1-2026-drone-incident-trends/"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Drone Countermeasures: Detecting a Rogue Drone is Only Half the Battle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://d-fendsolutions.com/blog/drone-countermeasures/"
   }
  ],
  "profile": {

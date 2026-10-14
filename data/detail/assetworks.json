@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "The Next Pickleball Is Already Here (Actually, There Are Three)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.assetworks.com/eam/blog/the-next-pickleball-is-already-here-actually-there-are-three/"
+  },
+  {
    "date": "2026-09-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.assetworks.com/fleet/blog/why-operational-bottlenecks-are-slowing-down-your-entire-fleet/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Is Your Fleet Running Efficiently? 7 Signs It Might Not Be",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.assetworks.com/fleet/blog/is-your-fleet-running-efficiently-7-signs-it-might-not-be/"
   }
  ],
  "profile": {

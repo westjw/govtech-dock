@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "A Complete Guide to Overall Equipment Effectiveness (OEE)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/complete-guide-to-overall-equipment-effectiveness-oee"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -40,7 +49,7 @@
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Why the Cost of Downtime is Rising for Manufacturers and what Top Teams are Doing Differently",
+   "headline": "Why Downtime Costs Are Rising In Manufacturing And What To Do",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/downtime-costs-in-manufacturing"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/asset-criticality-assessment-template"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "FMEA Template and Instructions for Maintenance Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/fmea-template"
   }
  ],
  "profile": {

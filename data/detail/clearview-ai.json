@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "How We Approach Security at Clearview AI: Inside the Core Principles Shaping Our Security Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearview.ai/post/how-we-approach-security-at-clearview-ai-inside-the-core-principles-shaping-our-security-program"
+  },
+  {
    "date": "2026-04-09",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.clearview.ai/post/aclus-test-results-of-amazon-s-rekognition-ai-facial-recognition-technology-debunked"
-  },
-  {
-   "date": "2022-11-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Myth of Facial Recognition Bias",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.clearview.ai/post/the-myth-of-facial-recognition-bias"
   }
  ],
  "profile": {

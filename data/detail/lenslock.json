@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "What Dash Cams Do Police Use? Police In-Car Video Systems Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lenslock.com/post/what-dash-cams-do-police-use"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lenslock.com/post/digital-evidence-management-guide"
-  },
-  {
-   "date": "2026-02-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "open platform and closed platform considerations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lenslock.com/post/open-vs-closed-why-your-evidence-should-never-be-held-hostage"
   }
  ],
  "profile": {

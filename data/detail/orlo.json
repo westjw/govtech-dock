@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Media monitoring services vs software: which does your public sector team need?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://orlo.tech/blog/media-monitoring-services-vs-software/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://orlo.tech/blog/the-legal-archiving-mandate-what-us-state-city-and-county-governments-must-retain/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Protecting What Matters: What The Government\u2019s Cohesion Plan Means For Council Comms Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://orlo.tech/blog/protecting-what-matters-what-the-governments-cohesion-plan-means-for-council-comms-teams/"
   }
  ],
  "profile": {

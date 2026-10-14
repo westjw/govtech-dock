@@ -1,19 +1,37 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "FIDO Tech wins joint EMMA award for AI-powered water leak reduction project",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://fido.tech/news/fido-tech-northumbrian-water-win-joint-emma-award/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "What's new in the FIDO app version 3.5.0 Polly Oct 12, 2026 Read 3 min",
+   "kind": "product",
+   "kind_rule": "version 3",
+   "url": "https://fido.tech/news/whats-new-in-fidosmart-app-version-3-5-0/"
+  },
+  {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
-   "headline": "FIDO Tech appoints Jamie Stapleton as Chief Technology Officer",
+   "headline": "FIDO Tech appoints Jamie Stapleton as Chief Technology Officer Polly Oct 7, 2026 Read 2 min",
    "kind": "leadership",
    "kind_rule": "as Chief",
    "url": "https://fido.tech/news/fido-tech-appoints-jamie-stapleton-as-chief-technology-officer/"
   },
   {
    "date": "2026-09-08",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "David Archard takes key FIDO US business development role Lewis Sep 8, 2026 Read 1 min",
+   "headline": "David Archard takes key FIDO US business development role",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/david-archard-takes-key-fido-us-business-development-role/"
@@ -38,9 +56,9 @@
   },
   {
    "date": "2026-07-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
-   "headline": "Mobilize your non-leak staff and unlock hidden field resource Polly Jul 21, 2026 Read 2 min",
+   "headline": "Mobilize non-leak staff and unlock hidden field resource",
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/articles/blog/mobilize-non-leak-staff-and-unlock-hidden-field-resource/"
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-07-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "Alex Leyland joins FIDO Tech as Operations Director",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-07-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-10",
    "headline": "FIDO Tech appoints Dr Piers Clark to Board of Directors",
    "kind": "leadership",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://fido.tech/news/fido-tech-announces-uk-partnership-with-cig-ltd/"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "card-date",
-   "first_seen": "2026-09-10",
-   "headline": "FIDO Tech announces UK partnership with CIG Ltd",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://fido.tech/articles/news/fido-tech-announces-uk-partnership-with-cig-ltd/"
-  },
-  {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "FIDO Tech achieves Cyber Essentials Plus",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://fido.tech/news/fido-tech-achieves-cyber-essentials-plus/"
   }
  ],
  "profile": {

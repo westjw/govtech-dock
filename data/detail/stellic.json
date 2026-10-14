@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "here is how a degree map, a degree plan, and a degree audit differ",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.stellic.com/resources/degree-map-vs-degree-plan-vs-degree-audit"
+  },
+  {
    "date": "2026-09-11",
    "date_source": "json-ld",
    "first_seen": "2026-09-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.stellic.com/resources/how-is-sap-measured"
-  },
-  {
-   "date": "2026-07-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "What Is an Early Alert System in Higher Ed (and How Does It Actually Work)?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.stellic.com/resources/what-is-an-early-alert-system"
   }
  ],
  "profile": {

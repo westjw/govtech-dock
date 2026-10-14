@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Release: Faster Answers, Less Manual Work: Collective Data Launches Collective Intelligence Suite",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://collectivedata.com/news/collective-intelligence-suite/"
+  },
+  {
    "date": "2026-07-22",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://collectivedata.com/articles/how-procurement-contracts-simplify-buying-asset-management-software/"
-  },
-  {
-   "date": "2025-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Is Your Inventory Process Falling Behind?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://collectivedata.com/articles/is-your-asset-management-system-falling-behind/"
   }
  ],
  "profile": {

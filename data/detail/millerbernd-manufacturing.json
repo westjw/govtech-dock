@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Millerbernd Internships \u2013 Real Work Where You Make a Real Difference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.millerbernd.com/who-we-are/news/internships"
+  },
+  {
    "date": "2026-09-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.millerbernd.com/who-we-are/news/lasting-lessons"
-  },
-  {
-   "date": "2025-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "More Than a System, EOS Ensures We Always Do the Right Thing, for the Right Reason",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.millerbernd.com/who-we-are/news/running-on-eos"
   }
  ]
 }

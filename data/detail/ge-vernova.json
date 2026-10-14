@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "GE Vernova to announce third quarter 2026 financial results on October 28",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-announce-third-quarter-2026-financial-results-october-28"
+  },
+  {
    "date": "2026-10-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "GE Vernova to Double the Number of MIT Interns and Permanent Hires in 2027",
    "kind": "leadership",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "GE Vernova-powered projects receive 2026 POWER Magazine Awards for advancements in energy efficiency and decarbonization",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "GE Vernova and PROTEC Celebrate Next Engineers Engineering Academy Graduation",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gevernova.com/news/press-releases/ge-vernova-supply-294-mw-wind-capacity-eurus-energys-hiyamizutouge-project-japan"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "GE Vernova signs agreement to supply turbines for ESB\u2019s Chleansaid Wind Farm in Scotland",
-   "kind": "contract",
-   "kind_rule": "signs agreement",
-   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-signs-agreement-supply-turbines-esbs-chleansaid-wind-farm-scotland"
   }
  ]
 }

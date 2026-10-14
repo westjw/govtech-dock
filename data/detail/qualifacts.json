@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Qualifacts CEO Josh Schoeller Discusses AI, Access, and the Future of Behavioral Health on Straight Outta Health IT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qualifacts.com/resources/qualifacts-ceo-josh-schoeller-discusses-ai-access-and-the-future-of-behavioral-health-on-straight-outta-health-it/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qualifacts.com/resources/behavioral-health-intake-optimization-checklist/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Quality Measures: 5 VBC Dashboards for CCBHCs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qualifacts.com/resources/5-vbc-dashboards-for-ccbhcs-download/"
   }
  ],
  "profile": {

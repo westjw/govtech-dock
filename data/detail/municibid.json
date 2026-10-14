@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-17",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Mini Skid Steer vs. Full-Size, Tractor & Excavator",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-07-05",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Skid Steer Attachments: Types, Matching & Best Deals",
    "kind": "press",

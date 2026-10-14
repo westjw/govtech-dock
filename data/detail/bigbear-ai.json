@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "BigBear.ai Secures More Than $225 million in Contract Awards Across Homeland Security, Defense, Intelligence and Federal Civilian Agencies",
+   "kind": "contract",
+   "kind_rule": "Secures More Than $225 million in Contract",
+   "url": "https://bigbear.ai/newsroom/bigbear-ai-secures-more-than-225-million-in-contract-awards-across-homeland-security-defense-intelligence-and-federal-civilian-agencies/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "BigBear.ai to Report Third Quarter 2026 Results on October 27, 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://bigbear.ai/newsroom/bigbear-ai-to-report-third-quarter-2026-results-on-october-27-2026/"
+  },
+  {
    "date": "2026-08-20",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -89,24 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as Chief",
    "url": "https://bigbear.ai/newsroom/bigbear-ai-announces-appointments-of-jo-ann-bjornson-as-chief-human-resources-officer-and-alex-thompson-as-chief-corporate-affairs-officer/"
-  },
-  {
-   "date": "2026-03-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "BigBear.ai Announces Fourth Quarter 2025 Results; Releases 2026 Financial Outlook",
-   "kind": "product",
-   "kind_rule": "Releases",
-   "url": "https://bigbear.ai/newsroom/bigbear-ai-announces-fourth-quarter-2025-results-releases-2026-financial-outlook/"
-  },
-  {
-   "date": "2023-01-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "BigBear.ai Named a 2023 Best Place to Work by Built In",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://bigbear.ai/newsroom/bigbear-2023-best-place-to-work-built-in/"
   }
  ],
  "profile": {

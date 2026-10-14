@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "The Credentials Hiding in Your Student Records",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/credentials-hiding-your-student-records"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Bridging the Gap Between Course Sharing Policy and Student Enrollment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.instructure.com/resources/blog/bridging-gap-between-course-sharing-policy-and-student-enrollment"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "near-h1",
    "first_seen": "2026-10-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.instructure.com/resources/blog/say-hello-canvas-lite"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "Five Qualities to Look for in a K\u201312 Records Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/five-qualities-look-k-12-records-platform"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-09",
-   "headline": "Scaling Healthcare Training: Moving Beyond Completion Records Without Admin Burden",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.instructure.com/resources/blog/scaling-healthcare-training-moving-beyond-completion-records-without-admin-burden"
   }
  ]
 }

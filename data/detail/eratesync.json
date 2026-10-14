@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "E-Rate Changes 2026: The 17 Updates Service Providers Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eratesync.com/blog/e-rate-changes-service-providers-2026"
+  },
+  {
    "date": "2026-08-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -44,15 +53,6 @@
    "kind": "product",
    "kind_rule": "Update",
    "url": "https://www.eratesync.com/blog/e-rate-changes-schools-libraries"
-  },
-  {
-   "date": "2026-08-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "E-Rate Changes 2026: The 17 Updates Service Providers Need to Know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eratesync.com/blog/e-rate-changes-service-providers-2026"
   },
   {
    "date": "2026-08-06",

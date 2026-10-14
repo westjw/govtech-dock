@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "From accountable AI to accountable action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/infor-public-sector-2026-10-release"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Balancing freshness, yield, service, and profitability through integrated ERP planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/integrated-erp-planning-profitability"
+  },
+  {
+   "date": "2026-10-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Key healthcare innovations from Infor's October 2026 Release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/healthcare-innovations-infor-october-2026-release"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/ai-process-intelligence-business-impact"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "US businesses are scaling AI fast. Now comes the harder part.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/scaling-ai-governance"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Built to execute, not just advise: AI innovations in the Infor 2026.10 release",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/infor-industry-ai-2026-10-release"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Building the governance layer for AI: A product perspective on Infor GRC",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/ai-governance-infor-grc"
   }
  ],
  "profile": {

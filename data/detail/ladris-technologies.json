@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Ladris extends fire behavior modeling into the built environment with urban conflagration.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ladris.com/press/ladris-extends-fire-behavior-modeling-into-the-built-environment-with-urban-conflagration"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Sentinel by Ladris brings free wildfire readiness tools to Nevada County residents.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://ladris.com/press/sentinel-by-ladris-brings-free-wildfire-readiness-tools-to-nevada-county-residents"
+  },
+  {
    "date": "2026-07-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-03-03",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "San Jos\u00e9 selects Ladris Core platform in a nearly $4M, seven-year agreement; Ladris launches Impact module.",
    "kind": "contract",
@@ -47,7 +65,7 @@
   },
   {
    "date": "2026-02-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ladris presents on innovation in advanced evacuation planning at the Colorado Emergency Management Conference.",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-02-10",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ladris introduces Open Evacuation Zones (OEZ): a free, open platform for cross-jurisdictional emergency coordination.",
    "kind": "product",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-01-22",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ladris and Old Dominion University advance evacuation science with a research presentation at the TRB Annual Meeting.",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-01-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "City of Orinda launches OrindaReady.com, enhancing wildfire preparedness and public evacuation awareness.",
    "kind": "contract",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2025-10-30",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Ladris launches Sentry: automated detection and notification for fire ignitions and emergency events.",
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://ladris.com/press/ladris-launches-sentry-automated-detection-and-notification-for-fire-ignitions-and-emergency-events"
-  },
-  {
-   "date": "2025-08-13",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Ladris launches FuelsRx: next-generation wildfire risk data.",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://ladris.com/press/ladris-launches-fuelsrx-next-generation-wildfire-risk-data"
-  },
-  {
-   "date": "2025-06-24",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Ladris launches Flood: real-time, AI flood forecasting and impact assessment.",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://ladris.com/press/ladris-launches-flood-real-time-ai-flood-forecasting-and-impact-assessment"
   }
  ],
  "profile": {

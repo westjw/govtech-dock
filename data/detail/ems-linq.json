@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "National School Lunch Week 2026: The Magic Behind the Cafeteria Circus",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/national-school-lunch-week-2026-the-magic-behind-the-cafeteria-circus/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Back from NC ASBO: What North Carolina LEAs Teach Us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.linq.com/blog/back-from-nc-asbo-what-north-carolina-leas-teach-us/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.linq.com/blog/less-is-more-what-you-get-with-one-app-for-school-payments/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Imagine Finding a Million Dollars in Your Nutrition Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/imagine-finding-a-million-dollars-in-your-nutrition-program/"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Take a Dollar, Squeeze a Dollar: How School District CFOs Do More with Less",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.linq.com/blog/take-a-dollar-squeeze-a-dollar-how-school-district-cfos-do-more-with-less/"
   }
  ]
 }

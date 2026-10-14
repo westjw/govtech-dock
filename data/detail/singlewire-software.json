@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "48,000 Lockdown Messages. 32 Active Shooter Ones",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.singlewire.com/news/lockdown-messages-vs-active-shooter-ones"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.singlewire.com/news/how-edgewood-modernized-campus-preparedness"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Illinois Passes Alyssa\u2019s Law: What School Districts Need to Know About HB 5107",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.singlewire.com/blog/illinois-passes-alyssas-law-what-school-districts-need-to-know"
   }
  ],
  "profile": {

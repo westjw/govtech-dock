@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "index-text",
+   "first_seen": "2026-10-13",
+   "headline": "NIMS Resource Management: How Government Agencies Track Personnel, Equipment, and Other Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/nims-resource-management-government-agencies"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/san-francisco-international-sfo-digitized-safety-management-system-sms"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Asset Management For Airports: The Movers, Shakers, and Motivators",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/asset-management-airport"
   }
  ]
 }

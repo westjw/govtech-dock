@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Trondheim: How CITIX-AI Speed Data Allowed to Understand Usage Conflict and Take the Right Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eco-counter.com/blog/trondheim-how-speed-data-allowed-to-understand-usage-conflict-and-take-the-right-decisions"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eco-counter.com/blog/what-is-the-best-cyclist-counting-solution-depending-environment"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Anticipate peaks using visitor traffic prediction: now in Eco-Visio!",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eco-counter.com/blog/anticipate-peaks-using-traffic-prediction-now-available-eco-visio"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Aligning Mental Health RCM With Quality and Outcomes Goals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/aligning-mental-health-rcm-with-quality-and-outcomes-goals"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/the-hidden-complexity-of-idd-billing-and-why-most-ehrs-arent-built-for-it"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Navigating Medicaid Billing for IDD Services and Its Impact on RCM",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/navigating-medicaid-billing-for-idd-services-and-its-impact-on-rcm"
   }
  ],
  "profile": {

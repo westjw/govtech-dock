@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "A Carrot and Stick Fix for Mobile Ticketing Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.masabi.com/news/a-carrot-and-stick-fix-for-mobile-ticketing-security/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "time",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.masabi.com/resources/abt-vs-afc/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Open loop vs closed loop payments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.masabi.com/resources/open-loop-vs-closed-loop/"
   }
  ]
 }

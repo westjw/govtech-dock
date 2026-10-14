@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "TRM Labs Launches Ardence, the AI Investigation Platform, to Help Crimefighters Disrupt AI-Enabled Crime",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.trmlabs.com/resources/blog/trm-launches-ardence-ai-investigation-platform"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Introducing Ardence: The OS for fighting crime",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.trmlabs.com/resources/blog/introducing-ardence"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "index-text",
+   "first_seen": "2026-10-13",
+   "headline": "Why Joining TRM Is the Smartest Career Move in Tech Right Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/blog/why-joining-trm-is-the-smartest-career-move-in-tech-right-now"
+  },
+  {
+   "date": "2026-10-11",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Reports and White Papers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.trmlabs.com/resources/reports-and-whitepapers"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "index-text",
    "first_seen": "2026-10-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.trmlabs.com/resources/blog/treasury-sanctions-tren-de-aragua-atm-jackpotting-network-including-seven-tron-addresses"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How Terrorist Groups Use AI, and What It Means for Financing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/how-terrorist-groups-use-ai-and-what-it-means-for-financing"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "What\u2019s Driving the 117% Rise in CSAM Marketplace Payments \u2014 and Where AI Fits",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/whats-driving-the-117-rise-in-csam-marketplace-payments-and-where-ai-fits"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Bitget Loses USD 351.6 Million in Hot Wallet Breach in Likely North Korea Attack",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/bitget-loses-usd-3516-million-in-hot-wallet-breach-in-likely-north-korea-attack"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The State of Korean Digital Asset Compliance: While the Basic Act Waits",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.trmlabs.com/resources/blog/the-state-of-korean-digital-asset-compliance-while-the-basic-act-waits"
   }
  ],
  "profile": {

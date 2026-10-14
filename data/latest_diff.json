@@ -1,97 +1,69 @@
 {
-  "date": "2026-10-13",
-  "previous": "2026-10-10",
+  "date": "2026-10-14",
+  "previous": "2026-10-13",
   "changes": [
     {
-      "company": "Euna Solutions",
-      "id": "euna-solutions",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive - Payments (United States)"
-    },
-    {
-      "company": "Paymentus",
-      "id": "paymentus",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "DebtBook",
-      "id": "debtbook",
+      "company": "VODA.ai",
+      "id": "voda-ai",
       "from": "Yes",
       "to": "Unknown",
-      "note": "HTTP 404 for https://boards-api.greenhou"
+      "note": "page scan found no listings"
     },
     {
-      "company": "Littlepay",
-      "id": "littlepay",
+      "company": "IPS Group",
+      "id": "ips-group",
       "from": "None found",
       "to": "Yes",
-      "note": "Senior Business Development Manage (London)"
+      "note": "Regional Account Executive (San Diego, Califor)"
     },
     {
-      "company": "GovWorx",
-      "id": "govworx",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://api.ashbyhq.com/pos"
-    },
-    {
-      "company": "Ascento AG",
-      "id": "ascento-ag",
-      "from": "None found",
+      "company": "Eventeny",
+      "id": "eventeny",
+      "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Business Development: French-Speak only"
+      "note": "Account Strategist only"
+    },
+    {
+      "company": "Luminator Technology Group",
+      "id": "luminator-technology-group",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Area Sales Manager - Middle German"
+    },
+    {
+      "company": "Saltus Technologies",
+      "id": "saltus-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "network error: robots.txt on saltustechn"
+    },
+    {
+      "company": "Integrated Biometrics",
+      "id": "integrated-biometrics",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "OnSolve (CodeRED)",
       "id": "onsolve",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Transfinder",
-      "id": "transfinder",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Ridango",
-      "id": "ridango",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "In-Situ",
-      "id": "in-situ",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://in-situ.com/careers"
-    },
-    {
-      "company": "Vanderlande",
-      "id": "vanderlande",
       "from": "Sales (non-AE)",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "2getthere",
-      "id": "2getthere",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Attenti",
+      "id": "attenti",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Evisions",
-      "id": "evisions",
-      "from": "None found",
+      "company": "Survalent Technology",
+      "id": "survalent-technology",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive (Houston, Texas, Un)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }

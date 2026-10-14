@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "What changes when your software understands MS4 compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.swiftcomply.com/resources/what-changes-when-your-software-understands-ms4-compliance/"
+  },
+  {
    "date": "2026-09-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "acquires",
    "url": "https://www.swiftcomply.com/blog/swiftcomply-acquires-stormwater-software-compliancego/"
-  },
-  {
-   "date": "2025-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CCCPH Compliance with SwiftComply Backflow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.swiftcomply.com/blog/cccph-compliance-with-swiftcomply-backflow/"
   }
  ],
  "profile": {
