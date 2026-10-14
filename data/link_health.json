@@ -1,9 +1,9 @@
 {
- "checked_on": "2026-10-07",
+ "checked_on": "2026-10-14",
  "counts": {
-  "moved": 131,
-  "ok": 2493,
-  "unread": 271
+  "moved": 129,
+  "ok": 2507,
+  "unread": 248
  },
  "links": {
   "365labs": [
@@ -11,7 +11,7 @@
     "field": "website",
     "final": "https://www.365labs.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.365labs.com"
    },
@@ -19,7 +19,7 @@
     "field": "board",
     "final": "https://www.365labs.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.365labs.com/careers"
    }
@@ -39,7 +39,7 @@
     "field": "website",
     "final": "https://www.accuratecontrols.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.accuratecontrols.com"
    }
@@ -79,19 +79,9 @@
     "field": "website",
     "final": "https://www.adfsolutions.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.adfsolutions.com"
-   }
-  ],
-  "aequitas-solutions": [
-   {
-    "field": "website",
-    "final": "https://www.aequitas-solutions.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.aequitas-solutions.com"
    }
   ],
   "ai-rgus": [
@@ -99,7 +89,7 @@
     "field": "website",
     "final": "https://airgus.com/",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://airgus.com/"
    }
@@ -131,7 +121,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://alcherax.com"
+    "url": "https://alcherax.com",
+    "why": "secure connection failed"
    }
   ],
   "alertsense": [
@@ -141,7 +132,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.alertsense.com"
+    "url": "https://www.alertsense.com",
+    "why": "timed out"
    }
   ],
   "almaviva": [
@@ -192,24 +184,20 @@
     "url": "https://amplifund.com"
    }
   ],
-  "anterix": [
-   {
-    "field": "board",
-    "final": "https://www.anterix.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.anterix.com/careers"
-   }
-  ],
   "apex-officer": [
    {
     "field": "website",
     "final": "https://www.apexofficer.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://www.apexofficer.com/",
+     "kind": "ok",
+     "title": ""
+    },
     "status": null,
     "title": "",
-    "url": "https://www.apexofficer.com"
+    "url": "https://www.apexofficer.com",
+    "why": "certificate is for another address"
    }
   ],
   "apollo-video-technology": [
@@ -219,7 +207,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.apollovideo.com"
+    "url": "https://www.apollovideo.com",
+    "why": "timed out"
    }
   ],
   "apx-data": [
@@ -275,7 +264,7 @@
     "field": "website",
     "final": "https://astrophysicsinc.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://astrophysicsinc.com"
    }
@@ -335,7 +324,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.aurionpro.com/transit-smart-mobility/"
+    "url": "https://www.aurionpro.com/transit-smart-mobility/",
+    "why": "certificate not trusted"
    }
   ],
   "automotus": [
@@ -346,16 +336,6 @@
     "status": 200,
     "title": "Automated Curb Management | Smart Loading Zones | Automated Enforcement",
     "url": "https://www.automotus.co"
-   }
-  ],
-  "avail-technologies": [
-   {
-    "field": "board",
-    "final": "https://availtec.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://availtec.com/careers"
    }
   ],
   "avenu-insights-analytics": [
@@ -375,7 +355,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.avuetech.com"
+    "url": "https://www.avuetech.com",
+    "why": "secure connection failed"
    }
   ],
   "axiom-cemetery-management-solutions": [
@@ -383,9 +364,15 @@
     "field": "website",
     "final": "https://axiom-cms.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://jmtconsulting.com/",
+     "kind": "moved",
+     "title": "Management and Finance Solutions for Nonprofits Today - JMT Consulting"
+    },
     "status": null,
     "title": "",
-    "url": "https://axiom-cms.com"
+    "url": "https://axiom-cms.com",
+    "why": "certificate not trusted"
    }
   ],
   "axon": [
@@ -406,16 +393,6 @@
     "url": "https://www.axon.com/careers/all"
    }
   ],
-  "axon-vibe": [
-   {
-    "field": "board",
-    "final": "https://axonvibe.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://axonvibe.com/careers"
-   }
-  ],
   "badger-meter": [
    {
     "field": "website",
@@ -426,14 +403,22 @@
     "url": "https://www.badgermeter.com"
    }
   ],
-  "ballotready": [
+  "baseform": [
    {
     "field": "board",
-    "final": "https://about.ballotready.org",
+    "final": "https://baseform.com/np4/careers.html",
     "kind": "unread",
     "status": 404,
     "title": "",
-    "url": "https://about.ballotready.org"
+    "url": "https://baseform.com/np4/careers.html"
+   },
+   {
+    "field": "posts_at",
+    "final": "https://baseform.com/np4/careers.html",
+    "kind": "unread",
+    "status": 404,
+    "title": "",
+    "url": "https://baseform.com/np4/careers.html"
    }
   ],
   "bis-digital": [
@@ -441,7 +426,7 @@
     "field": "website",
     "final": "https://bisdigital.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://bisdigital.com"
    }
@@ -453,7 +438,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://blipsystems.com"
+    "url": "https://blipsystems.com",
+    "why": "no such domain"
    }
   ],
   "blitz": [
@@ -479,7 +465,7 @@
     "field": "website",
     "final": "https://www.blue-bird.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.blue-bird.com"
    }
@@ -577,7 +563,7 @@
     "field": "website",
     "final": "https://www.bulkhandlingsystems.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.bulkhandlingsystems.com"
    }
@@ -587,19 +573,9 @@
     "field": "website",
     "final": "https://caliberpublicsafety.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://caliberpublicsafety.com"
-   }
-  ],
-  "campdoc": [
-   {
-    "field": "board",
-    "final": "https://www.campdoc.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.campdoc.com/careers"
    }
   ],
   "carasolva": [
@@ -607,7 +583,7 @@
     "field": "website",
     "final": "https://www.carasolva.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.carasolva.com"
    }
@@ -622,14 +598,15 @@
     "url": "https://www.carbyne.com/careers"
    }
   ],
-  "cardinality-ai": [
+  "careloop-health": [
    {
     "field": "website",
-    "final": "https://cardinality.ai",
+    "final": "https://www.careloop.health",
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://cardinality.ai"
+    "url": "https://www.careloop.health",
+    "why": "network error"
    }
   ],
   "cartegraph": [
@@ -640,6 +617,16 @@
     "status": 200,
     "title": "Asset Management Software for Government & Public Works | OpenGov",
     "url": "https://www.cartegraph.com"
+   }
+  ],
+  "caseguard": [
+   {
+    "field": "website",
+    "final": "https://caseguard.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://caseguard.com"
    }
   ],
   "caselle": [
@@ -657,7 +644,7 @@
     "field": "website",
     "final": "https://castus.tv",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://castus.tv"
    }
@@ -672,22 +659,12 @@
     "url": "https://one.network/careers"
    }
   ],
-  "cellebrite": [
-   {
-    "field": "board",
-    "final": "https://cellebrite.com/en/careers/",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://cellebrite.com/en/careers/"
-   }
-  ],
   "chronicle": [
    {
     "field": "website",
     "final": "https://www.chronicle.rip",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.chronicle.rip"
    }
@@ -697,19 +674,15 @@
     "field": "website",
     "final": "https://thecitybase.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://eunasolutions.com/solutions/payments/?utm_source=redirect&utm_medium=referral&utm_content=citybase",
+     "kind": "moved",
+     "title": "Government Payment Processing Software | Euna Payments"
+    },
     "status": null,
     "title": "",
-    "url": "https://thecitybase.com"
-   }
-  ],
-  "citylogix": [
-   {
-    "field": "board",
-    "final": "https://citylogix.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://citylogix.com/careers"
+    "url": "https://thecitybase.com",
+    "why": "certificate expired"
    }
   ],
   "cityreporter": [
@@ -749,7 +722,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.civixusa.com"
+    "url": "https://www.civixusa.com",
+    "why": "no such domain"
    }
   ],
   "clarity-solutions-group": [
@@ -757,7 +731,7 @@
     "field": "website",
     "final": "https://claritysolutionsgroup.net",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://claritysolutionsgroup.net"
    }
@@ -769,7 +743,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://cleanrobotics.com"
+    "url": "https://cleanrobotics.com",
+    "why": "secure connection failed"
    }
   ],
   "clever-devices": [
@@ -855,17 +830,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.complusdata.com"
-   }
-  ],
-  "compumed": [
-   {
-    "field": "board",
-    "final": "https://compumedinc.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://compumedinc.com/careers"
+    "url": "https://www.complusdata.com",
+    "why": "no such domain"
    }
   ],
   "comsof": [
@@ -933,9 +899,15 @@
     "field": "website",
     "final": "https://www.ctsoftware.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://www.ctsoftware.com/",
+     "kind": "ok",
+     "title": "Web Page Under Construction"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.ctsoftware.com"
+    "url": "https://www.ctsoftware.com",
+    "why": "connection refused"
    }
   ],
   "cyracom-international": [
@@ -945,7 +917,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.cyracom.com"
+    "url": "https://www.cyracom.com",
+    "why": "secure connection failed"
    }
   ],
   "daifuku-airport-technologies": [
@@ -986,6 +959,27 @@
     "url": "https://www.daysmart.com/recreation"
    }
   ],
+  "debristech": [
+   {
+    "field": "website",
+    "final": "https://debristech.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://debristech.com",
+    "why": "timed out"
+   }
+  ],
+  "debtbook": [
+   {
+    "field": "website",
+    "final": "https://monetaryhq.com/?from=debtbook",
+    "kind": "moved",
+    "status": 200,
+    "title": "Treasury Software for Government and Nonprofits | Monetary",
+    "url": "https://www.debtbook.com"
+   }
+  ],
   "dedrone-by-axon": [
    {
     "field": "board",
@@ -1024,6 +1018,27 @@
     "status": 403,
     "title": "",
     "url": "https://www.diehl.com/metering/"
+   }
+  ],
+  "digital-ally": [
+   {
+    "field": "website",
+    "final": "https://www.digitalally.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Digital Ally | Body Cameras, In-Car & Fleet Video Solutions",
+    "url": "https://www.digitalallyinc.com"
+   }
+  ],
+  "digital-assurance-certification-llc": [
+   {
+    "field": "website",
+    "final": "https://www.dacbond.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.dacbond.com",
+    "why": "timed out"
    }
   ],
   "disaster-tech": [
@@ -1071,7 +1086,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.durhamschoolservices.com/careers"
+    "url": "https://www.durhamschoolservices.com/careers",
+    "why": "network error"
    }
   ],
   "dynamic-infrastructure": [
@@ -1079,7 +1095,7 @@
     "field": "website",
     "final": "https://diglobal.tech",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://diglobal.tech"
    }
@@ -1139,7 +1155,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://ebidsystems.com"
+    "url": "https://ebidsystems.com",
+    "why": "timed out"
    }
   ],
   "eccovia": [
@@ -1170,6 +1187,16 @@
     "url": "https://ecivis.com"
    }
   ],
+  "edmunds-govtech": [
+   {
+    "field": "website",
+    "final": "https://www.edmundsgovtech.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.edmundsgovtech.com"
+   }
+  ],
   "edovo": [
    {
     "field": "website",
@@ -1178,16 +1205,6 @@
     "status": 200,
     "title": "Edovo - Learning platform for every incarcerated American",
     "url": "https://www.edovo.com"
-   }
-  ],
-  "ekin-smart-city-technologies": [
-   {
-    "field": "board",
-    "final": "https://www.ekin.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.ekin.com/careers"
    }
   ],
   "emergency-reporting": [
@@ -1205,7 +1222,7 @@
     "field": "board",
     "final": "https://www.enghouse.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.enghouse.com/careers"
    }
@@ -1215,9 +1232,15 @@
     "field": "website",
     "final": "https://www.escapetech.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://www.frontlineeducation.com/escape",
+     "kind": "moved",
+     "title": "Escape Technology, now part of Frontline Education"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.escapetech.com"
+    "url": "https://www.escapetech.com",
+    "why": "certificate expired"
    }
   ],
   "etix": [
@@ -1268,16 +1291,6 @@
     "url": "https://www.evolvtechnology.com/careers"
    }
   ],
-  "extra-duty-solutions": [
-   {
-    "field": "board",
-    "final": "https://www.extradutysolutions.com/careers/",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.extradutysolutions.com/careers/"
-   }
-  ],
   "faster": [
    {
     "field": "board",
@@ -1318,16 +1331,6 @@
     "url": "https://www.firstwatch.net"
    }
   ],
-  "fleetio": [
-   {
-    "field": "website",
-    "final": "https://www.fleetio.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.fleetio.com"
-   }
-  ],
   "flowbird": [
    {
     "field": "website",
@@ -1343,7 +1346,7 @@
     "field": "website",
     "final": "https://frogparking.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://frogparking.com"
    }
@@ -1406,16 +1409,6 @@
     "url": "https://www.generalcode.com"
    }
   ],
-  "geocomm": [
-   {
-    "field": "website",
-    "final": "https://www.geo-comm.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.geo-comm.com"
-   }
-  ],
   "getac-video-solutions": [
    {
     "field": "website",
@@ -1456,6 +1449,16 @@
     "url": "https://www.gmv.com/en/careers"
    }
   ],
+  "gogov": [
+   {
+    "field": "posts_at",
+    "final": "https://www.linkedin.com/company/gogovapps/jobs/",
+    "kind": "unread",
+    "status": 999,
+    "title": "",
+    "url": "https://www.linkedin.com/company/gogovapps/jobs/"
+   }
+  ],
   "gordian": [
    {
     "field": "board",
@@ -1471,7 +1474,7 @@
     "field": "website",
     "final": "https://home.gotsport.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://home.gotsport.com"
    }
@@ -1484,16 +1487,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.govdeals.com"
-   }
-  ],
-  "government-window": [
-   {
-    "field": "board",
-    "final": "https://www.governmentwindow.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.governmentwindow.com/careers"
    }
   ],
   "govos": [
@@ -1514,6 +1507,16 @@
     "url": "https://govos.com/about/careers"
    }
   ],
+  "grab": [
+   {
+    "field": "website",
+    "final": "https://www.grab.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.grab.com"
+   }
+  ],
   "griffeye": [
    {
     "field": "website",
@@ -1521,7 +1524,30 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.griffeye.com"
+    "url": "https://www.griffeye.com",
+    "why": "no such domain"
+   }
+  ],
+  "guard1": [
+   {
+    "field": "website",
+    "final": "https://www.guard1.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.guard1.com",
+    "why": "timed out"
+   }
+  ],
+  "guard1-by-timekeeping-systems": [
+   {
+    "field": "website",
+    "final": "https://www.guard1.com/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.guard1.com/",
+    "why": "timed out"
    }
   ],
   "gutermann": [
@@ -1529,7 +1555,7 @@
     "field": "website",
     "final": "https://www.gutermann-water.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.gutermann-water.com"
    }
@@ -1539,7 +1565,7 @@
     "field": "website",
     "final": "https://www.hanoverdisplays.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.hanoverdisplays.com"
    },
@@ -1547,7 +1573,7 @@
     "field": "board",
     "final": "https://www.hanoverdisplays.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.hanoverdisplays.com/careers"
    }
@@ -1577,7 +1603,7 @@
     "field": "website",
     "final": "https://www.harrisschoolsolutions.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.harrisschoolsolutions.com"
    }
@@ -1629,7 +1655,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://holon-mobility.com"
+    "url": "https://holon-mobility.com",
+    "why": "no such domain"
    }
   ],
   "hunter-industries": [
@@ -1672,16 +1699,6 @@
     "url": "https://www.ifs.com"
    }
   ],
-  "ikegps": [
-   {
-    "field": "board",
-    "final": "https://ikegps.com/open-positions",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://ikegps.com/open-positions"
-   }
-  ],
   "imagesoft": [
    {
     "field": "website",
@@ -1692,24 +1709,48 @@
     "url": "https://imagesoftinc.com"
    }
   ],
-  "imagesource-inc": [
+  "imagry": [
    {
     "field": "website",
-    "final": "https://imagesource.com",
+    "final": "https://imagry.co",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://imagry.co/",
+     "kind": "ok",
+     "title": "AI-Based Autonomous Driving Solution for Public Transit | Imagry"
+    },
     "status": null,
     "title": "",
-    "url": "https://imagesource.com"
+    "url": "https://imagry.co",
+    "why": "timed out"
    }
   ],
   "impero-software": [
    {
     "field": "website",
-    "final": "https://www.ativion.com",
+    "final": "https://www.ativion.com/",
     "kind": "moved",
     "status": 200,
     "title": "Home - Ativion",
     "url": "https://imperosoftware.com"
+   }
+  ],
+  "in-situ": [
+   {
+    "field": "website",
+    "final": "https://in-situ.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://in-situ.com"
+   },
+   {
+    "field": "board",
+    "final": "https://in-situ.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://in-situ.com/careers"
    }
   ],
   "incident-iq": [
@@ -1717,7 +1758,7 @@
     "field": "website",
     "final": "https://www.incidentiq.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.incidentiq.com"
    }
@@ -1759,7 +1800,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://ink.aero"
+    "url": "https://ink.aero",
+    "why": "no such domain"
    }
   ],
   "innovative": [
@@ -1792,32 +1834,12 @@
     "url": "https://inrix.com"
    }
   ],
-  "interloc-solutions": [
-   {
-    "field": "board",
-    "final": "https://www.interlocsolutions.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.interlocsolutions.com/careers"
-   }
-  ],
-  "intterra": [
-   {
-    "field": "website",
-    "final": "https://intterragroup.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://intterragroup.com"
-   }
-  ],
   "invita-healthcare-technologies": [
    {
     "field": "website",
     "final": "https://www.invitahealth.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.invitahealth.com"
    }
@@ -1847,7 +1869,7 @@
     "field": "website",
     "final": "https://www.ipsgroup.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.ipsgroup.com"
    }
@@ -1872,34 +1894,20 @@
     "url": "https://itcurves.net"
    }
   ],
-  "itron": [
-   {
-    "field": "board",
-    "final": "https://www.itron.com/company/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.itron.com/company/careers"
-   }
-  ],
-  "ivu-traffic-technologies": [
-   {
-    "field": "board",
-    "final": "https://www.ivu.com/career",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.ivu.com/career"
-   }
-  ],
   "jackrabbit-systems": [
    {
     "field": "website",
     "final": "https://www.jackrabbitsystems.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://www.simpleviewinc.com/products/simpleview-cms/online-booking-referral-engine/",
+     "kind": "moved",
+     "title": "Simpleview Book \u203a Direct | The Ultimate Booking Referral Engine"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.jackrabbitsystems.com"
+    "url": "https://www.jackrabbitsystems.com",
+    "why": "certificate is for another address"
    }
   ],
   "jacobs": [
@@ -1922,16 +1930,6 @@
     "url": "https://jailgeek.com"
    }
   ],
-  "junar": [
-   {
-    "field": "website",
-    "final": "https://junar.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://junar.com"
-   }
-  ],
   "justice-systems-by-long": [
    {
     "field": "board",
@@ -1947,7 +1945,7 @@
     "field": "website",
     "final": "https://www.justicesystems.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.justicesystems.com"
    }
@@ -1969,25 +1967,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.kango.com"
-   }
-  ],
-  "keefe-group": [
-   {
-    "field": "website",
-    "final": "https://www.keefegroup.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.keefegroup.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.keefegroup.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.keefegroup.com/careers"
+    "url": "https://www.kango.com",
+    "why": "timed out"
    }
   ],
   "knowink": [
@@ -2005,19 +1986,9 @@
     "field": "website",
     "final": "https://lambentspaces.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://lambentspaces.com"
-   }
-  ],
-  "leagueapps": [
-   {
-    "field": "board",
-    "final": "https://leagueapps.com/careers/",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://leagueapps.com/careers/"
    }
   ],
   "legacy-inmate-communications": [
@@ -2027,7 +1998,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.legacyinmate.com"
+    "url": "https://www.legacyinmate.com",
+    "why": "no such domain"
    }
   ],
   "lexisnexis-risk-solutions": [
@@ -2063,7 +2035,7 @@
     "field": "website",
     "final": "https://linemobility.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://linemobility.com"
    }
@@ -2103,19 +2075,9 @@
     "field": "website",
     "final": "https://lote4kids.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://lote4kids.com"
-   }
-  ],
-  "marquis-software-solutions": [
-   {
-    "field": "website",
-    "final": "https://www.marquissoftware.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.marquissoftware.com"
    }
   ],
   "matterhorn": [
@@ -2131,19 +2093,21 @@
   "maxar-intelligence": [
    {
     "field": "website",
-    "final": "https://vantor.com",
-    "kind": "moved",
-    "status": 200,
-    "title": "Vantor: Forging the new frontier of spatial intelligence",
-    "url": "https://www.maxar.com"
+    "final": "https://www.maxar.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.maxar.com",
+    "why": "certificate expired"
    },
    {
     "field": "board",
-    "final": "https://vantor.com/careers/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Careers at Vantor \u2013 Join Innovators in Spatial Intelligence",
-    "url": "https://www.maxar.com/careers"
+    "final": "https://www.maxar.com/careers",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.maxar.com/careers",
+    "why": "certificate expired"
    }
   ],
   "maximum-solutions": [
@@ -2153,7 +2117,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.maxgalaxy.net"
+    "url": "https://www.maxgalaxy.net",
+    "why": "timed out"
    }
   ],
   "maximus": [
@@ -2174,16 +2139,6 @@
     "status": 200,
     "title": "SOVRA | Government procurement software for public sector",
     "url": "https://mdfcommerce.com"
-   }
-  ],
-  "menulogic-k12": [
-   {
-    "field": "website",
-    "final": "https://menulogic.io",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://menulogic.io"
    }
   ],
   "metrasens": [
@@ -2222,6 +2177,16 @@
     "url": "https://www.missionsq.org/careers"
    }
   ],
+  "miyo-health": [
+   {
+    "field": "website",
+    "final": "https://miyohealth.com",
+    "kind": "unread",
+    "status": 502,
+    "title": "",
+    "url": "https://miyohealth.com"
+   }
+  ],
   "ml-schedules": [
    {
     "field": "website",
@@ -2237,7 +2202,7 @@
     "field": "website",
     "final": "https://modaxo.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://modaxo.com"
    }
@@ -2247,7 +2212,7 @@
     "field": "website",
     "final": "https://www.modeshift.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.modeshift.com"
    },
@@ -2255,7 +2220,7 @@
     "field": "board",
     "final": "https://www.modeshift.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.modeshift.com/careers"
    }
@@ -2267,7 +2232,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "http://www.monstergov.com/"
+    "url": "http://www.monstergov.com/",
+    "why": "certificate is for another address"
    }
   ],
   "moodle-us": [
@@ -2286,16 +2252,6 @@
     "status": 403,
     "title": "",
     "url": "https://moodle.com/us/careers/"
-   }
-  ],
-  "municibid": [
-   {
-    "field": "board",
-    "final": "https://municibid.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://municibid.com/careers"
    }
   ],
   "mutualink": [
@@ -2346,14 +2302,6 @@
     "status": 200,
     "title": "NDI Recognition Systems \u2013 Your LPR. Your data. Your choice.",
     "url": "https://www.ndi-rs.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.ndi-rs.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.ndi-rs.com/careers"
    }
   ],
   "nec-corporation-of-america": [
@@ -2399,7 +2347,7 @@
     "field": "website",
     "final": "https://www.neuralguard.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.neuralguard.com"
    }
@@ -2429,7 +2377,7 @@
     "field": "website",
     "final": "https://nimble-energy.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://nimble-energy.com"
    }
@@ -2449,7 +2397,7 @@
     "field": "website",
     "final": "https://www.numetric.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.numetric.com"
    }
@@ -2461,7 +2409,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://numina.co"
+    "url": "https://numina.co",
+    "why": "timed out"
    }
   ],
   "nwave-technologies": [
@@ -2469,7 +2418,7 @@
     "field": "website",
     "final": "https://www.nwave.io",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.nwave.io"
    }
@@ -2507,7 +2456,7 @@
     "field": "website",
     "final": "https://openmeetingtech.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://openmeetingtech.com"
    }
@@ -2577,19 +2526,9 @@
     "field": "website",
     "final": "https://bookflowgo.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://bookflowgo.com"
-   }
-  ],
-  "partage": [
-   {
-    "field": "board",
-    "final": "https://www.partage.club/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.partage.club/careers"
    }
   ],
   "passport-workforce": [
@@ -2597,7 +2536,7 @@
     "field": "website",
     "final": "https://passportworkforce.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://passportworkforce.com"
    },
@@ -2605,37 +2544,9 @@
     "field": "board",
     "final": "https://passportworkforce.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://passportworkforce.com/careers"
-   }
-  ],
-  "peachjar": [
-   {
-    "field": "board",
-    "final": "https://app.trinethire.com/companies/peachjar",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://app.trinethire.com/companies/peachjar"
-   }
-  ],
-  "pelco-structural": [
-   {
-    "field": "website",
-    "final": "https://www.pelcostructural.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.pelcostructural.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.pelcostructural.com/careers",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.pelcostructural.com/careers"
    }
   ],
   "permitify": [
@@ -2646,16 +2557,6 @@
     "status": 200,
     "title": "Pangea \u2014 AI meeting notes for the built world",
     "url": "https://permitify.com"
-   }
-  ],
-  "placer-ai": [
-   {
-    "field": "board",
-    "final": "https://www.placer.ai/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.placer.ai/careers"
    }
   ],
   "planetbids": [
@@ -2685,7 +2586,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.platinumtr.com"
+    "url": "https://www.platinumtr.com",
+    "why": "connection refused"
    }
   ],
   "point": [
@@ -2693,7 +2595,7 @@
     "field": "website",
     "final": "https://pointapp.org",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://pointapp.org"
    }
@@ -2703,17 +2605,29 @@
     "field": "website",
     "final": "https://www.pom.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://www.pom.com/",
+     "kind": "ok",
+     "title": "POM Parking Meters"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.pom.com"
+    "url": "https://www.pom.com",
+    "why": "certificate expired"
    },
    {
     "field": "board",
     "final": "https://www.pom.com/contact-us/careers",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://www.pom.com/contact-us/careers",
+     "kind": "ok",
+     "title": "Careers | POM Parking Meters"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.pom.com/contact-us/careers"
+    "url": "https://www.pom.com/contact-us/careers",
+    "why": "certificate expired"
    }
   ],
   "pondera-solutions": [
@@ -2721,9 +2635,15 @@
     "field": "website",
     "final": "https://www.ponderasolutions.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://legal.thomsonreuters.com/en/products/fraud-detect",
+     "kind": "moved",
+     "title": "Fraud Detect - Comprehensive Fraud Detection Software | Thomson Reuters"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.ponderasolutions.com"
+    "url": "https://www.ponderasolutions.com",
+    "why": "certificate is for another address"
    }
   ],
   "powerfleet": [
@@ -2743,7 +2663,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://precisionkiosktech.com"
+    "url": "https://precisionkiosktech.com",
+    "why": "timed out"
    }
   ],
   "prepared": [
@@ -2754,16 +2675,6 @@
     "status": 200,
     "title": "Jobs at Axon",
     "url": "https://www.prepared911.com/careers"
-   }
-  ],
-  "prg-insight": [
-   {
-    "field": "website",
-    "final": "https://www.prginsight.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.prginsight.com"
    }
   ],
   "proactis": [
@@ -2783,7 +2694,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.prodigysolutionsinc.com"
+    "url": "https://www.prodigysolutionsinc.com",
+    "why": "no such domain"
    }
   ],
   "projectmates": [
@@ -2809,7 +2721,7 @@
     "field": "website",
     "final": "https://propeller.cloud",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://propeller.cloud"
    }
@@ -2837,7 +2749,7 @@
     "field": "website",
     "final": "https://qryde.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://qryde.com"
    },
@@ -2845,7 +2757,7 @@
     "field": "board",
     "final": "https://qryde.com/employment",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://qryde.com/employment"
    }
@@ -2897,7 +2809,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.rec1.com"
+    "url": "https://www.rec1.com",
+    "why": "no such domain"
    }
   ],
   "recdesk": [
@@ -2917,17 +2830,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.redmane.com"
-   }
-  ],
-  "rehrig-pacific": [
-   {
-    "field": "website",
-    "final": "https://www.rehrig.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.rehrig.com"
+    "url": "https://www.redmane.com",
+    "why": "connection dropped"
    }
   ],
   "resourcex": [
@@ -2956,16 +2860,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.revize.com/careers/index.php"
-   }
-  ],
-  "rhizome": [
-   {
-    "field": "website",
-    "final": "https://www.rhizome.energy",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.rhizome.energy"
    }
   ],
   "rideshark": [
@@ -3016,12 +2910,22 @@
     "url": "https://runbeck.net/careers"
    }
   ],
+  "sacs-software": [
+   {
+    "field": "website",
+    "final": "https://www.sacssoftware.com",
+    "kind": "unread",
+    "status": 500,
+    "title": "",
+    "url": "https://www.sacssoftware.com"
+   }
+  ],
   "saferwatch": [
    {
     "field": "website",
     "final": "https://saferwatchapp.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://saferwatchapp.com"
    }
@@ -3073,7 +2977,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.seachangeprint.com"
+    "url": "https://www.seachangeprint.com",
+    "why": "no such domain"
    }
   ],
   "seats-one": [
@@ -3081,7 +2986,7 @@
     "field": "website",
     "final": "https://seatsone.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://seatsone.com"
    }
@@ -3106,6 +3011,22 @@
     "url": "https://securustech.net"
    }
   ],
+  "sedaru": [
+   {
+    "field": "website",
+    "final": "https://sedaru.com",
+    "kind": "unread",
+    "plain_http": {
+     "final": "http://sedaru.com/",
+     "kind": "ok",
+     "title": ""
+    },
+    "status": null,
+    "title": "",
+    "url": "https://sedaru.com",
+    "why": "certificate not trusted"
+   }
+  ],
   "sedc": [
    {
     "field": "website",
@@ -3117,11 +3038,17 @@
    },
    {
     "field": "board",
-    "final": "https://www.nisc.coop/careers/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Careers - National Information Solutions Cooperative (NISC)",
-    "url": "https://www.sedata.com/careers"
+    "final": "https://www.sedata.com/careers",
+    "kind": "unread",
+    "plain_http": {
+     "final": "https://www.nisc.coop/careers/",
+     "kind": "moved",
+     "title": "Careers - National Information Solutions Cooperative (NISC)"
+    },
+    "status": null,
+    "title": "",
+    "url": "https://www.sedata.com/careers",
+    "why": "timed out"
    }
   ],
   "selc-ireland": [
@@ -3131,7 +3058,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.selc.ie"
+    "url": "https://www.selc.ie",
+    "why": "no such domain"
    }
   ],
   "selux": [
@@ -3149,7 +3077,7 @@
     "field": "website",
     "final": "https://sensysnetworks.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://sensysnetworks.com"
    }
@@ -3159,9 +3087,15 @@
     "field": "website",
     "final": "https://www.sentient-energy.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://sentientenergy.com/",
+     "kind": "moved",
+     "title": "Sentient Energy | Distribution Grid Products & Solutions"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.sentient-energy.com"
+    "url": "https://www.sentient-energy.com",
+    "why": "certificate is for another address"
    }
   ],
   "sergeant-laboratories": [
@@ -3172,16 +3106,6 @@
     "status": 200,
     "title": "AristotleK12, Classroom Management Software for K-12 Educators",
     "url": "https://www.aristotlek12.com"
-   }
-  ],
-  "shakespeare-composite-structures": [
-   {
-    "field": "website",
-    "final": "https://www.shakespeare-cs.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.shakespeare-cs.com"
    }
   ],
   "sifi-networks": [
@@ -3222,16 +3146,6 @@
     "url": "https://www.smartcommunications.us/careers"
    }
   ],
-  "smartdocs": [
-   {
-    "field": "board",
-    "final": "https://www.smartdocs.ai/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.smartdocs.ai/careers"
-   }
-  ],
   "smartmatic": [
    {
     "field": "website",
@@ -3247,27 +3161,9 @@
     "field": "website",
     "final": "https://smowl.net",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://smowl.net"
-   }
-  ],
-  "social-pinpoint": [
-   {
-    "field": "website",
-    "final": "https://www.openpoint.com/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Open Point | Digital Community Engagement & Stakeholder Management",
-    "url": "https://www.socialpinpoint.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.socialpinpoint.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.socialpinpoint.com/careers"
    }
   ],
   "soilflo": [
@@ -3275,7 +3171,7 @@
     "field": "website",
     "final": "https://soilflo.com/",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://soilflo.com/"
    }
@@ -3285,9 +3181,15 @@
     "field": "website",
     "final": "https://sonraisystems.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://home.sonraisystems.com",
+     "kind": "ok",
+     "title": "Home"
+    },
     "status": null,
     "title": "",
-    "url": "https://sonraisystems.com"
+    "url": "https://sonraisystems.com",
+    "why": "secure connection failed"
    }
   ],
   "spatial-data-logic": [
@@ -3323,7 +3225,7 @@
     "field": "website",
     "final": "https://sportskey.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://sportskey.com"
    }
@@ -3355,7 +3257,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.ssci2000.com"
+    "url": "https://www.ssci2000.com",
+    "why": "certificate is for another address"
    }
   ],
   "st-engineering-telematics-wireless": [
@@ -3391,9 +3294,15 @@
     "field": "website",
     "final": "https://www.streetscan.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://citylogix.com/",
+     "kind": "moved",
+     "title": "AI-Powered Enterprise Asset Management Software for Smart Cities | Citylogix"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.streetscan.com"
+    "url": "https://www.streetscan.com",
+    "why": "timed out"
    }
   ],
   "stresscrete-group": [
@@ -3401,9 +3310,15 @@
     "field": "website",
     "final": "https://www.stresscretegroup.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "https://scgrp.com/",
+     "kind": "moved",
+     "title": "StressCrete Group"
+    },
     "status": null,
     "title": "",
-    "url": "https://www.stresscretegroup.com"
+    "url": "https://www.stresscretegroup.com",
+    "why": "secure connection failed"
    }
   ],
   "structural-steel-products": [
@@ -3413,7 +3328,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.sspco.com"
+    "url": "https://www.sspco.com",
+    "why": "no such domain"
    }
   ],
   "sun-ridge-systems": [
@@ -3454,16 +3370,6 @@
     "url": "https://www.swimtopia.com/careers"
    }
   ],
-  "synect": [
-   {
-    "field": "website",
-    "final": "https://www.synect.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.synect.com"
-   }
-  ],
   "syrinix": [
    {
     "field": "website",
@@ -3487,9 +3393,15 @@
     "field": "website",
     "final": "https://getall.com",
     "kind": "unread",
+    "plain_http": {
+     "final": "http://getall.com/",
+     "kind": "ok",
+     "title": "Getall"
+    },
     "status": null,
     "title": "",
-    "url": "https://getall.com"
+    "url": "https://getall.com",
+    "why": "certificate is for another address"
    }
   ],
   "system-automation": [
@@ -3520,16 +3432,6 @@
     "status": 403,
     "title": "",
     "url": "https://flir.com"
-   }
-  ],
-  "therap-services": [
-   {
-    "field": "board",
-    "final": "https://www.therapservices.net/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.therapservices.net/careers"
    }
   ],
   "thoroughtec-simulation-usa-inc": [
@@ -3580,14 +3482,26 @@
     "url": "https://www.touchnet.com"
    }
   ],
-  "transify": [
+  "trailhead-labs": [
    {
     "field": "website",
-    "final": "https://transify.city",
+    "final": "https://www.outerspatial.com",
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://transify.city"
+    "url": "https://www.outerspatial.com",
+    "why": "timed out"
+   }
+  ],
+  "trapeze-group": [
+   {
+    "field": "website",
+    "final": "https://trapezegroup.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://trapezegroup.com",
+    "why": "timed out"
    }
   ],
   "tss-paratransit": [
@@ -3595,7 +3509,7 @@
     "field": "website",
     "final": "https://tssparatransit.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://tssparatransit.com"
    }
@@ -3607,7 +3521,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://twiagemed.com"
+    "url": "https://twiagemed.com",
+    "why": "secure connection failed"
    }
   ],
   "uavionix": [
@@ -3630,22 +3545,12 @@
     "url": "https://www.uber.com/"
    }
   ],
-  "union-supply-group": [
-   {
-    "field": "website",
-    "final": "https://www.unionsupplygroup.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.unionsupplygroup.com"
-   }
-  ],
   "unit4": [
    {
     "field": "website",
     "final": "https://www.unit4.com",
     "kind": "unread",
-    "status": 403,
+    "status": 429,
     "title": "",
     "url": "https://www.unit4.com"
    }
@@ -3658,16 +3563,6 @@
     "status": 200,
     "title": "FieldWare | Software Solutions for Public Safety Operations",
     "url": "https://uptrust.co"
-   }
-  ],
-  "urban-sdk": [
-   {
-    "field": "board",
-    "final": "https://www.urbansdk.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.urbansdk.com/careers"
    }
   ],
   "urbint": [
@@ -3725,7 +3620,8 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://www.vendengine.com"
+    "url": "https://www.vendengine.com",
+    "why": "timed out"
    }
   ],
   "vermont-systems": [
@@ -3773,7 +3669,7 @@
     "field": "website",
     "final": "https://viqsolutions.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://viqsolutions.com"
    }
@@ -3803,7 +3699,19 @@
     "kind": "unread",
     "status": null,
     "title": "",
-    "url": "https://vision-box.com"
+    "url": "https://vision-box.com",
+    "why": "no such domain"
+   }
+  ],
+  "vitalsense-technologies": [
+   {
+    "field": "website",
+    "final": "https://vitalsensetechnologies.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://vitalsensetechnologies.com",
+    "why": "timed out"
    }
   ],
   "vitech-systems-group": [
@@ -3860,16 +3768,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.way.com/careers"
-   }
-  ],
-  "wps-parking-solutions": [
-   {
-    "field": "website",
-    "final": "https://www.wps-parkingsolutions.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.wps-parkingsolutions.com"
    }
   ],
   "yunex-traffic": [
@@ -3931,5 +3829,5 @@
    }
   ]
  },
- "note": "What every link the board publishes led to when last checked (scripts/link_check.py). build_board does not publish a link flagged spam or for_sale. Only links that are not ok are listed."
+ "note": "What every link the board publishes led to when last checked (scripts/link_check.py). build_board does not publish a link flagged spam or for_sale. Only links that are not ok are listed. 'why' says why a link gave no answer; 'plain_http' is where the same address went over http, as evidence only."
 }
