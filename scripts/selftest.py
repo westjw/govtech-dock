@@ -10644,6 +10644,7 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
     # lambda, and every later check read a two-company board.
     orig_rc, orig_sd = pcd.admin.read_companies, pcd.admin.save_decisions
     page = {"https://acme.example/": {"text": "Acme Software sells permit and licensing software to cities and counties across Ohio. Founded 2009."},
+            "https://acme.example/government": {"text": "Built for state and local agencies that issue permits."},
             "https://dark.example/": {"unread": "network error: no answer"}}
     fetch = lambda url: page.get(url, {"unread": "no such page"})
     saves: list = []
@@ -10663,13 +10664,22 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
                  "card:short": card("card:short", evidence="software"),
                  "card:medium": card("card:medium", confidence="medium"),
                  "card:lonely": card("card:lonely"),
+                 "card:subpage": card("card:subpage", evidence="Built for state and local agencies that issue permits",
+                                      evidence_url="https://acme.example/government"),
+                 # the store keeps the page a researcher read as saw.url, not evidence_url
+                 "card:sawpage": card("card:sawpage", evidence="Built for state and local agencies that issue permits",
+                                      saw={"source_event": "GFOA 2026", "url": "https://acme.example/government"}),
                  "card:refused": card("card:refused", status="refused", refused_why="say why, in a sentence"),
                  "read:other": {"kind": "read", "status": "pending"}}
         done = pcd.verify(store, fetch=fetch, by="agent:test")
-        if done != {"verified": 3, "not_on_page": 2, "unread": 1}:
+        if done != {"verified": 5, "not_on_page": 2, "unread": 1}:
             errors += fail(f"verify counted {done}")
         if store["card:verified"].get("evidence_verified") is not True:
             errors += fail("a quote that is on the company's page was not verified")
+        if store["card:subpage"].get("evidence_verified") is not True:
+            errors += fail("a quote on the page the researcher cited (not the homepage) was not verified")
+        if store["card:sawpage"].get("evidence_verified") is not True:
+            errors += fail("a quote on the page the store records the researcher read (saw.url) was not verified")
         for k in ("card:missing", "card:dark", "card:short"):
             if store[k].get("evidence_verified") is not False:
                 errors += fail(f"{k}: evidence that is not on the page, or a page that did not read, was verified")
@@ -10703,7 +10713,7 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
         with contextlib.redirect_stdout(io.StringIO()) as buf:
             g = pcd.gate(store, seed=1)
         text = buf.getvalue()
-        if [k for k, _ in g["landing"]] != ["card:verified"] or len(g["unverified"]) < 2 or len(g["low"]) != 1 or len(g["split"]) != 1 \
+        if [k for k, _ in g["landing"]] != ["card:verified"] or len(g["unverified"]) < 2 or len(g["low"]) != 1 or len(g["split"]) != 3 \
                 or len(g["refused"]) != 1 or "Refused by the door" not in text or "NOT found on the site" not in text:
             errors += fail(f"the gate did not sort the cards a person must read: landing {len(g['landing'])}, "
                            f"unverified {len(g['unverified'])}, low {len(g['low'])}, refused {len(g['refused'])}")

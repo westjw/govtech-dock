@@ -160973,5 +160973,341 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "researched": true
+ },
+ {
+  "id": "abnormal-ai",
+  "name": "Abnormal AI",
+  "website": "https://abnormal.ai/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells behavioral AI email security and account takeover protection software to state, local and federal government agencies - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "action1",
+  "name": "Action1",
+  "website": "https://www.action1.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells cloud-based patch management, vulnerability remediation and endpoint management software to government agencies, universities and companies - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "alteryx-inc",
+  "name": "Alteryx, Inc",
+  "website": "https://www.alteryx.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells the Alteryx One data preparation and analytics platform to state government agencies, K-12 institutions and higher education for reporting, auditing and data integration - exhibited at NACUBO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NACUBO 2026",
+  "researched": true
+ },
+ {
+  "id": "altumint-inc",
+  "name": "Altumint, Inc.",
+  "website": "https://altumint.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Public Safety",
+  "category": "Police",
+  "description": "Sells Pro ATE automated speed-camera enforcement systems, with AI violation processing and ticketing back-office services, to police departments, cities and counties - exhibited at Maryland Municipal League 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: Maryland Municipal League 2026",
+  "researched": true
+ },
+ {
+  "id": "am-quartex",
+  "name": "AM Quartex",
+  "website": "https://www.amdigital.co.uk/am-quartex",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Libraries",
+  "description": "Sells AM Quartex, a cloud-hosted digital collections and digital asset management platform, to libraries, archives, museums and university special collections - exhibited at PLA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PLA 2026",
+  "researched": true
+ },
+ {
+  "id": "amsimpkins-associates",
+  "name": "AMSimpkins & Associates",
+  "website": "https://amsa-highered.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Sells AMSA Connect, a real-time data integration platform, and S.A.F.E., an applicant identity and fraud detection product, as SaaS to colleges and universities - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "answerr-ai",
+  "name": "Answerr.ai",
+  "website": "https://answerr.ai/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Software that gives colleges and universities governed student and faculty access to AI models, with LMS integration, usage audit trails and AI-capability measurement - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "appian",
+  "name": "Appian",
+  "website": "https://appian.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Low-code process automation platform sold to state and local agencies for case management, eProcurement, grants management and application development - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "argyle",
+  "name": "Argyle",
+  "website": "https://www.argyle.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Benefits & Medicaid Systems",
+  "description": "Consent-based income, employment and asset verification data for state and local benefits agencies to check eligibility for SNAP, Medicaid, TANF and other programs - exhibited at APHSA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: APHSA 2026",
+  "researched": true
+ },
+ {
+  "id": "aristotlek12",
+  "name": "AristotleK12",
+  "website": "https://www.sgtlabs.com/aristotlek12/",
+  "location": null,
+  "year_founded": null,
+  "sector": "K-12 Schools",
+  "category": "School Safety",
+  "description": "Student web filtering, device asset tracking, behavior alerts and classroom management software sold to K-12 school districts for school-issued devices - exhibited at CoSN 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: CoSN 2026",
+  "researched": true
+ },
+ {
+  "id": "armis",
+  "name": "ARMIS",
+  "website": "https://www.armis.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Agentless cybersecurity platform that gives state and local agencies, universities and school districts visibility into connected IT, OT and IoT assets and their vulnerabilities - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "atlassian",
+  "name": "Atlassian",
+  "website": "https://www.atlassian.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Jira, Confluence and Jira Service Management work-tracking and collaboration software, including a FedRAMP Moderate Atlassian Government Cloud, sold to federal, state and local government agencies - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "blackbaud",
+  "name": "Blackbaud",
+  "website": "https://www.blackbaud.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "Business & Finance",
+  "description": "Fundraising CRM, fund accounting, scholarship and award management, and K-12 school management software sold to colleges, universities, K-12 schools and nonprofits - exhibited at NACUBO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NACUBO 2026",
+  "researched": true
+ },
+ {
+  "id": "blr",
+  "name": "BLR",
+  "website": "https://blr.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "description": "HR and EHS compliance software, online training courses and a learning management system sold to employers including government agencies and municipalities - exhibited at PRIMA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PRIMA 2026",
+  "researched": true
  }
 ]

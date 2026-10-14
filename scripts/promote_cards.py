@@ -104,20 +104,34 @@ def verify(store: dict, limit: int | None = None, fetch=None, by: str = "agent:c
     done = {"verified": 0, "not_on_page": 0, "unread": 0}
     todo = [(k, p) for k, p in pending(store) if "evidence_verified" not in p]
     for k, p in todo[:limit] if limit else todo:
-        text, why = page_text(p.get("website"), fetch)
-        if text is None:
+        # THE PAGE THE RESEARCHER CITED FIRST, then the website. A state-and-
+        # local page two clicks in is where a vendor says who it sells to;
+        # looking only at the homepage called verbatim quotes "not on the page"
+        # (batch 003 of the 2026-10-10 research, Argyle and Armis).
+        pages = [u for u in (p.get("evidence_url"), (p.get("saw") or {}).get("url"), p.get("website")) if u]
+        pages = list(dict.fromkeys(pages))
+        text, why, found, where = None, "the card names no page", False, None
+        for u in pages:
+            text, why = page_text(u, fetch)
+            if text is not None and evidence_on_page(p.get("evidence") or "", text):
+                found, where = True, u
+                break
+        if found:
+            p["evidence_verified"], p["evidence_why"] = True, f"the quote is on {where}"
+            done["verified"] += 1
+        elif text is None:
             p["evidence_verified"], p["evidence_why"] = False, why
             done["unread"] += 1
-        elif evidence_on_page(p.get("evidence") or "", text):
-            p["evidence_verified"], p["evidence_why"] = True, "the quote is on the site"
-            done["verified"] += 1
         else:
             p["evidence_verified"] = False
-            p["evidence_why"] = "the quote is not on the page the crawler reads at the website"
+            p["evidence_why"] = "the quote is not on the page the crawler reads at the cited page or the website"
             done["not_on_page"] += 1
         p["evidence_checked_on"] = on
     if any(done.values()):
-        bad = agents.save(store, "card-evidence", why=json.dumps(done), by=by)
+        # the counts above are what journal.BLAST asks for before a write
+        # touching more than 25 records; they are printed by the caller
+        bad = agents.save(store, "card-evidence", why=json.dumps(done), by=by,
+                          force=sum(done.values()) > 25)
         if bad:
             raise SystemExit(f"refused: {bad}")
     return done
@@ -141,7 +155,8 @@ def second_read(store: dict, reads: list[dict], by: str) -> dict:
         p["second_read"] = {"verdict": r.get("verdict"), "why": (r.get("why") or "")[:200],
                             "by": by, "agree": agree}
         out["agree" if agree else "split"] += 1
-    bad = agents.save(store, "card-second-read", why=json.dumps(out), by=by)
+    bad = agents.save(store, "card-second-read", why=json.dumps(out), by=by,
+                      force=(out["agree"] + out["split"]) > 25)
     if bad:
         raise SystemExit(f"refused: {bad}")
     return out

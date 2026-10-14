@@ -45,7 +45,14 @@ def main() -> int:
     body = getattr(resp, "text", "") or ""
     final = getattr(resp, "url", "") or a.url
     text = fp.text_of(body)
-    print(f"URL: {final}\nCHARS: {len(text)}\n")
+    # THE TITLE, which text_of drops with the rest of <head>. It is often the
+    # one place a site spells its own name out ("AAAE - American Association
+    # of Airport Executives"), and the identity rule turns on that.
+    import html as html_lib
+    import re
+    m = re.search(r"<title[^>]*>(.*?)</title>", body, re.I | re.S)
+    title = re.sub(r"\s+", " ", html_lib.unescape(m.group(1))).strip()[:200] if m else ""
+    print(f"URL: {final}\nTITLE: {title}\nCHARS: {len(text)}\n")
     print(text[:a.max])
     if len(text) > a.max:
         print(f"\n[... {len(text) - a.max} more characters]")
