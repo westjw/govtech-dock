@@ -29,7 +29,7 @@
  * with only the frame headers it already had. A policy that fails closed
  * here is a blank site. */
 
-export const CSP_MODE = "report";
+export const CSP_MODE = "enforce";
 
 /* FRAME PROTECTION ON THE TOKEN PAGES AND THE ADMIN, set here and not only
  * in _headers. /alerts holds a subscriber's token and a one-click delete;

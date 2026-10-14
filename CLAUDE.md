@@ -1852,10 +1852,12 @@ fires.
   - Styles stay `'unsafe-inline'`: the pages carry thousands of style
     attributes, and a style cannot run anything. A hash or nonce in
     style-src would switch it off.
-  - **It ships reporting** (`CSP_MODE = "report"`, Report-Only header). The
-    gate's holding page is enforced from the start. Flip to `"enforce"`
-    after a console check on the live site (DEPLOY.md §3). selftest refuses
-    `GATED = false` while it still reports.
+  - **It shipped reporting** (`CSP_MODE = "report"`, Report-Only header) and
+    was flipped to `"enforce"` on 2026-10-14 after a live check of the
+    five pages (DEPLOY.md §3 says how it was checked). The gate's holding
+    page was enforced from the start. selftest refuses `GATED = false`
+    while it only reports. Cloudflare's Web Analytics beacon runs on the
+    nonce the edge copies onto it, not on a host entry.
   - **It never costs a page.** A missing, garbled or unreadable manifest
     sends the page untouched, keeping only the frame headers. Frame headers
     are on the token pages and, since this change, on `/admin` too, which

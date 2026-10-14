@@ -8806,11 +8806,21 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
     # after launch an unsigned visitor gets the page itself, under its policy
     elif hold.get("status") != 200 or "'nonce-" not in (hold.get(hdr) or ""):
         errors += fail(f"with the gate off, an unsigned visitor's page carries no policy: {hold}")
-    # A 304 CARRIES NO POLICY, or it replaces the stored page's full one
+    # A 304 CARRIES NO POLICY while it reports, or it replaces the stored
+    # page's full one. Once enforced it carries the WHOLE enforced policy (so
+    # a page cached under report-only does not stay report-only), never the
+    # frame line alone that the asset server put on it.
     for label, res in (C.get("r304") or {}).items():
-        if res.get("status") != 304 or res.get("enforce") or res.get("report"):
-            errors += fail(f"a 304 for {label} carries a policy header; the browser would copy it "
-                           f"over the stored page's policy: {res}")
+        e = res.get("enforce") or ""
+        if mode == "report":
+            if res.get("status") != 304 or e or res.get("report"):
+                errors += fail(f"a 304 for {label} carries a policy header; the browser would copy it "
+                               f"over the stored page's policy: {res}")
+        elif res.get("status") != 304 or res.get("report") or "'nonce-" not in e or "script-src" not in e:
+            errors += fail(f"in enforce mode a 304 for {label} carries less than the full enforced "
+                           f"policy; the browser would copy that over the stored page's: {res}")
+        elif label.startswith(("/alerts", "/claim", "/admin")) and "frame-ancestors 'none'" not in e:
+            errors += fail(f"in enforce mode a 304 for {label} dropped frame-ancestors")
     if not C.get("r304"):
         errors += fail("no 304 was asked about")
     for label, res in (C.get("r304_enforce") or {}).items():
