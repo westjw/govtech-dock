@@ -10812,13 +10812,17 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
                 {"event_tag": "Beta 2026", "conference": "Beta", "dates": "June 1-3, 2026", "dates_confidence": "high",
                  "dates_source": "https://b.test/x", "url": "https://b.test/"},
                 {"event_tag": "Gamma 2026", "conference": "Gamma", "dates": "July 1-3, 2026", "dates_confidence": "high",
-                 "dates_source": "https://g.test/x", "url": "https://g.test/"}]
+                 "dates_source": "https://g.test/x", "url": "https://g.test/"},
+                {"event_tag": "Delta 2026", "conference": "Delta", "dates": "November 9-11, 2026",
+                 "url": "https://d.test/"}]
         (tmp / "conferences.json").write_text(json.dumps({"conferences": rows}))
         reads = tmp / "reads.json"
         reads.write_text(json.dumps([
             {"tag": "Alpha 2026", "dates": "May 2-4, 2027", "dates_confidence": "high", "dates_source": "https://a.test/events"},
             {"tag": "Beta 2026", "dates_confidence": "unannounced", "note": "the events page lists only the 2026 edition"},
-            {"tag": "Gamma 2026", "dates": "July 5-7, 2027", "dates_confidence": "high"}]))
+            {"tag": "Gamma 2026", "dates": "July 5-7, 2027", "dates_confidence": "high"},
+            {"tag": "Delta 2026", "dates": "November 9-11, 2026", "dates_confidence": "high",
+             "dates_source": "https://d.test/events"}]))
         argv = sys.argv
         sys.argv = ["apply_conference_reads.py", "--in", str(reads), "--write"]
         import io, contextlib
@@ -10828,7 +10832,11 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
         finally:
             sys.argv = argv
         out = {c["event_tag"]: c for c in json.loads((tmp / "conferences.json").read_text())["conferences"]}
-        a, b, g = out["Alpha 2026"], out["Beta 2026"], out["Gamma 2026"]
+        a, b, g, d = out["Alpha 2026"], out["Beta 2026"], out["Gamma 2026"], out["Delta 2026"]
+        if d.get("dates") != "November 9-11, 2026" or not d.get("dates_checked_on") \
+                or d.get("dates_source") != "https://d.test/events":
+            errors += fail("a sourced read that confirms the dates on file left the row "
+                           "reading never checked, or without the page it was read off")
         if a.get("dates") != "May 2-4, 2027" or a.get("dates_source") != "https://a.test/events":
             errors += fail("a sourced high-confidence date read was not written")
         if b.get("dates") != "June 1-3, 2026" or "no next edition announced" not in (b.get("dates_note") or "") \

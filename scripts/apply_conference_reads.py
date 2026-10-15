@@ -75,6 +75,17 @@ def main() -> int:
                 c["dates_checked_on"] = today
                 dated += 1
                 what.append(f"dates={r['dates']!r}")
+            elif c.get("dates_checked_on") != today:
+                # A READ THAT CONFIRMS IS STILL A READ. The page states the
+                # dates already on file, so nothing changes but the fact that
+                # somebody looked and when - without this stamp a confirmed
+                # row kept reading "never checked" and the next pass paid to
+                # read it again (97 of 139 rows, 2026-10-15).
+                c["dates_checked_on"] = today
+                if not c.get("dates_source"):
+                    c["dates_source"] = r["dates_source"]
+                    c["dates_confidence"] = conf
+                what.append("dates confirmed as on file")
         elif r.get("dates") and not r.get("dates_source"):
             skipped += 1
             what.append("dates REFUSED - no source url")
