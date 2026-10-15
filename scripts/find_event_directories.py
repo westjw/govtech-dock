@@ -1246,7 +1246,11 @@ def _save(doc: dict, which: str) -> None:
             f"refusing to save to {path.name}: this doc is stamped "
             f"registry={stamp!r}. Saving it here would erase {which}.")
     tmp = path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(doc, indent=1) + "\n")
+    # RAW UTF-8, like every other writer of these files (register_national_events,
+    # resolve_org_sites, apply_conference_reads). Escaped here and raw there, each
+    # save rewrote 806 "Block 7 \u2014 ..." lines and a 42-row change read as a
+    # 1,940-line diff (2026-10-15) - the conference_dates trap again.
+    tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
     json.loads(tmp.read_text())
     tmp.replace(path)
     print(f"  saved {path.name}")

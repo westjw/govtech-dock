@@ -28055,6 +28055,42 @@ def check_an_acronym_cannot_confirm_itself() -> int:
                        "never be confirmed; the rule must ask for every word we "
                        "have, up to two, not a fixed two")
 
+    # A RESEARCHER'S PROPOSAL IS HELD TO THE SAME BAR. The address an agent
+    # found by searching is confirmed by the page naming the body, never by
+    # the agent saying so; a namesake's site and an unreadable one are dropped.
+    pages = {"https://www.camps.example/": "<title>American Camp Association</title>",
+             "https://www.aca.example/": "<title>ACA | American Correctional Association</title>"}
+    def fake(url):
+        if url not in pages:
+            raise ros.ats.AtsError("HTTP 403")
+        return pages[url]
+    orgs = [{"code": "ACA", "name": "American Correctional Association", "is_a_class": False},
+            {"code": "ACX", "name": "American Camp Association", "is_a_class": False},
+            {"code": "ZZZ", "name": "Assn of Nothing Readable", "is_a_class": False}]
+    orgs.append({"code": "ACA", "name": "American Counseling Association", "is_a_class": False})
+    ACA = ("ACA", "American Correctional Association")
+    got = ros.confirm_proposals([{"code": "ACA", "name": ACA[1], "url": "https://www.camps.example/"},
+                                 {"code": "ACA", "name": ACA[1], "url": "https://www.aca.example/"},
+                                 {"code": "ACX", "name": "American Camp Association", "url": "https://www.aca.example/"},
+                                 {"code": "ZZZ", "name": "Assn of Nothing Readable", "url": "https://nowhere.example/"},
+                                 {"code": "ACX", "name": "American Camp Association", "url": "javascript:alert(1)"}],
+                                orgs, fetch=fake, log=lambda *a: None)
+    if (got.get(ACA) or {}).get("url") != "https://www.aca.example/":
+        errors += fail(f"a proposed address naming the body was not confirmed, or a "
+                       f"namesake's was taken first: {got.get(ACA)}")
+    if set(got) != {ACA}:
+        errors += fail(f"a proposal was confirmed on another body's page, an unreadable "
+                       f"one, or for a different body sharing the code: {sorted(got)}")
+    if "researcher proposed" not in (got.get(ACA) or {}).get("why", ""):
+        errors += fail("a confirmed proposal does not say a researcher proposed it")
+
+    # A CODE IS NOT A BODY. Writing what was confirmed for one APPA onto every
+    # row coded APPA put appa.org on five different associations (2026-10-15).
+    src_w = (ROOT / "scripts" / "resolve_org_sites.py").read_text()
+    if 'found.get((r.get("org_code"), r.get("org_name")))' not in src_w:
+        errors += fail("resolve_org_sites writes a confirmed url by org_code alone; "
+                       "one body's site lands on every body sharing the acronym")
+
     # and nothing is written for an unconfirmed proposal
     src = (ROOT / "scripts" / "resolve_org_sites.py").read_text()
     if "if got and not r.get(\"org_url\")" not in src:

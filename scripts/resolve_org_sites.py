@@ -144,12 +144,49 @@ def resolve(code: str, name: str, log=print) -> dict:
     return {}
 
 
+def confirm_proposals(props: list, orgs: list, fetch=None, log=print) -> dict:
+    """{code: {url, why}} for proposed addresses whose page names the body.
+
+    A RESEARCHER'S ADDRESS IS A PROPOSAL, LIKE OUR OWN GUESSES. An agent may
+    find a body's site by searching, which none of candidates() reaches - 509
+    of 535 bodies had no answer at a guessed domain (2026-10-15). What it
+    finds is held to page_names_it(), the same bar, before anything is
+    written, so a search that lands on a namesake is discarded exactly as a
+    wrong guess is.
+    """
+    fetch = fetch or (lambda u: ats._page(u).text)
+    # BY CODE AND NAME. A code is not a body: APPA is seven entries here
+    # (public power, educational facilities, probation and parole...).
+    by_key = {(o["code"], o["name"]): o for o in orgs if not o.get("is_a_class")}
+    found: dict = {}
+    for prop in props:
+        key = (prop.get("code"), prop.get("name"))
+        url = (prop.get("url") or "").strip()
+        o = by_key.get(key)
+        if not o or key in found or not re.match(r"https?://[^\s/]+", url):
+            continue
+        code = o["code"]
+        try:
+            html = fetch(url)
+        except ats.AtsError as exc:
+            log(f"  {code:<16} {url:<40} {str(exc)[:44]}")
+            continue
+        ok, why = page_names_it(html, o["code"], o["name"])
+        log(f"  {code:<16} {url:<40} {'CONFIRMED' if ok else 'no'} - {why[:60]}")
+        if ok:
+            found[key] = {"url": url, "why": f"a researcher proposed it; {why}"}
+    return found
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--min-events", type=int, default=2,
                     help="only bodies running at least this many events")
     ap.add_argument("--limit", type=int, default=25)
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--proposals", metavar="FILE",
+                    help="a JSON list of {code, url} a researcher proposed; each "
+                         "is confirmed by the same rule before it is written")
     a = ap.parse_args()
 
     orgs = json.loads((DATA / "organisations.json").read_text())["organisations"]
@@ -161,16 +198,20 @@ def main() -> int:
     print(f"resolving {len(todo)} organisation(s), {a.min_events}+ events each\n")
 
     found = {}
-    for o in todo:
+    if a.proposals:
+        props = json.loads(pathlib.Path(a.proposals).read_text())
+        print(f"confirming {len(props)} proposed address(es)\n")
+        found = confirm_proposals(props, orgs)
+    for o in ([] if a.proposals else todo):
         print(f"  {o['code']:<16} {o['name'][:44]}")
         got = resolve(o["code"], o["name"])
         if got:
-            found[o["code"]] = got
+            found[(o["code"], o["name"])] = got
         print()
 
     print(f"confirmed {len(found)} of {len(todo)}")
-    for k, v in found.items():
-        print(f"  {k:<16} {v['url']}")
+    for (code, name), v in found.items():
+        print(f"  {code:<16} {name[:30]:30} {v['url']}")
     if not a.write:
         print("\ndry run. nothing written. pass --write")
         return 0
@@ -186,7 +227,10 @@ def main() -> int:
         return 1
     n = 0
     for r in payload["events"]:
-        got = found.get(r.get("org_code"))
+        # THE ROW'S OWN BODY, BY CODE AND NAME. Keyed by code alone, appa.org
+        # was written onto five different APPAs and csgsouth.org onto every
+        # CSG region (2026-10-15; check_a_shared_acronym_is_not_a_shared_organisation caught it).
+        got = found.get((r.get("org_code"), r.get("org_name")))
         if got and not r.get("org_url"):
             r["org_url"] = got["url"]
             r["org_url_why"] = got["why"][:200]
