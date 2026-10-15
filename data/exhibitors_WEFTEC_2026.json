@@ -3,519 +3,8 @@
  "conference": "WEFTEC",
  "found": true,
  "source_url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
- "source_note": "Read in a real browser on 2026-09-10. The page renders 43 featured exhibitors server-side and loads the rest behind a 'Load More Results' button - five presses exhausted it. 1,189 anchors resolve to 1,146 unique exhid values, A ('ACME Engineering Products Inc.') through Z ('ZwitterCo'), the whole alphabet with no gap. The catalogue's own estimate was ~950; the floor is larger. Websites are NOT on the list page - each sits behind its own exhibitor-details page - so the detail href is recorded rather than a guessed url.",
+ "source_note": "Read in a real browser on 2026-09-10. The page renders 43 featured exhibitors server-side and loads the rest behind a 'Load More Results' button - five presses exhausted it. 1,189 anchors resolve to 1,146 unique exhid values, A ('ACME Engineering Products Inc.') through Z ('ZwitterCo'), the whole alphabet with no gap. The catalogue's own estimate was ~950; the floor is larger. Websites are NOT on the list page - each sits behind its own exhibitor-details page - so the detail href is recorded rather than a guessed url. Added 22 name(s) read in a browser from https://weftec26.mapyourshow.com/8_0/exhview/index.cfm by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
-  {
-   "name": "ACME Engineering Products Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120662",
-   "is_govtech": false,
-   "is_govtech_why": "reader: engineered products maker; no software signal",
-   "read": {
-    "verdict": "supplier",
-    "why": "engineered products maker; no software signal",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "AqueoUS Vets",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600158825",
-   "is_govtech": false,
-   "is_govtech_why": "reader: treatment vessels; physical equipment",
-   "read": {
-    "verdict": "supplier",
-    "why": "treatment vessels; physical equipment",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Arcadis",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126649",
-   "is_govtech": false,
-   "is_govtech_why": "reader: engineering consultancy",
-   "read": {
-    "verdict": "supplier",
-    "why": "engineering consultancy",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "ARX Infrastructure",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600445499",
-   "is_govtech": false,
-   "is_govtech_why": "reader: infrastructure products/services; no software signal",
-   "read": {
-    "verdict": "supplier",
-    "why": "infrastructure products/services; no software signal",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Autodesk",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600137026",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Black & Veatch Corporation",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600127246",
-   "is_govtech": false,
-   "is_govtech_why": "reader: engineering consultancy",
-   "read": {
-    "verdict": "supplier",
-    "why": "engineering consultancy",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Blue Ribbon Corp",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126373",
-   "is_govtech": false,
-   "is_govtech_why": "reader: gauges and instrumentation accessories",
-   "read": {
-    "verdict": "supplier",
-    "why": "gauges and instrumentation accessories",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Blue-White",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600122592",
-   "is_govtech": false,
-   "is_govtech_why": "reader: metering pumps and flowmeters",
-   "read": {
-    "verdict": "supplier",
-    "why": "metering pumps and flowmeters",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Boerger, LLC",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600049167",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pumps",
-   "read": {
-    "verdict": "supplier",
-    "why": "pumps",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Brio Water Technology",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600485932",
-   "is_govtech": false,
-   "is_govtech_why": "reader: water treatment; no software signal",
-   "read": {
-    "verdict": "supplier",
-    "why": "water treatment; no software signal",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Chemical Injection Technologies, Inc",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120072",
-   "is_govtech": false,
-   "is_govtech_why": "reader: chemical feed equipment",
-   "read": {
-    "verdict": "supplier",
-    "why": "chemical feed equipment",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Esmil",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600083749",
-   "is_govtech": false,
-   "is_govtech_why": "reader: dewatering equipment",
-   "read": {
-    "verdict": "supplier",
-    "why": "dewatering equipment",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Gorman-Rupp Pumps",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121028",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pump manufacturer",
-   "read": {
-    "verdict": "supplier",
-    "why": "pump manufacturer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Grundfos",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600035844",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pump manufacturer",
-   "read": {
-    "verdict": "supplier",
-    "why": "pump manufacturer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Hydro Radar, LLC",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600249958",
-   "is_govtech": null,
-   "is_govtech_why": "nothing in the name either way",
-   "read": {
-    "verdict": "unsure",
-    "why": "radar water sensing; instrument or software platform unclear",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Industrial Test Systems, Inc",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121547",
-   "is_govtech": false,
-   "is_govtech_why": "reader: water test kits and photometers",
-   "read": {
-    "verdict": "supplier",
-    "why": "water test kits and photometers",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Ixom Watercare",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600059188",
-   "is_govtech": false,
-   "is_govtech_why": "reader: water treatment chemicals and reservoir mixers",
-   "read": {
-    "verdict": "supplier",
-    "why": "water treatment chemicals and reservoir mixers",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "J & S Valve, Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120409",
-   "is_govtech": false,
-   "is_govtech_why": "reader: valves",
-   "read": {
-    "verdict": "supplier",
-    "why": "valves",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Jacobs",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600144294",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "Kerry Actuator",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120474",
-   "is_govtech": false,
-   "is_govtech_why": "reader: valve actuators",
-   "read": {
-    "verdict": "supplier",
-    "why": "valve actuators",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Komline",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121119",
-   "is_govtech": false,
-   "is_govtech_why": "reader: process equipment (dewatering, filtration)",
-   "read": {
-    "verdict": "supplier",
-    "why": "process equipment (dewatering, filtration)",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "KSB, Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600123099",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pumps and valves",
-   "read": {
-    "verdict": "supplier",
-    "why": "pumps and valves",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "MentorAPM Asset Management",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600073872",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "MOBILTEX || FloPath | CorTalk",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600146615",
-   "is_govtech": true,
-   "is_govtech_why": "reader: remote-monitoring IoT devices with cloud software",
-   "read": {
-    "verdict": "vendor",
-    "why": "remote-monitoring IoT devices with cloud software",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "MSA Safety",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121051",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "Peabody Engineering, LLC",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120861",
-   "is_govtech": false,
-   "is_govtech_why": "reader: tanks and enclosures",
-   "read": {
-    "verdict": "supplier",
-    "why": "tanks and enclosures",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Poly Processing Company",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121109",
-   "is_govtech": false,
-   "is_govtech_why": "reader: polyethylene tanks",
-   "read": {
-    "verdict": "supplier",
-    "why": "polyethylene tanks",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Prime Solution Inc",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600115716",
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
-   "name": "RACO Manufacturing and Engineering Co., Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121120",
-   "is_govtech": true,
-   "is_govtech_why": "reader: alarm autodialers and remote monitoring with cloud",
-   "read": {
-    "verdict": "vendor",
-    "why": "alarm autodialers and remote monitoring with cloud",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Schneider Electric",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600043130",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "Smith & Loveless Inc",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600123684",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pump stations and treatment equipment",
-   "read": {
-    "verdict": "supplier",
-    "why": "pump stations and treatment equipment",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "SonicPure",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600008189",
-   "is_govtech": false,
-   "is_govtech_why": "reader: ultrasonic treatment device",
-   "read": {
-    "verdict": "supplier",
-    "why": "ultrasonic treatment device",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Trillium Flow Technologies",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600080576",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pumps and valves",
-   "read": {
-    "verdict": "supplier",
-    "why": "pumps and valves",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Tusk Industrial (Fybroc, Sethco, Dean)",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600459430",
-   "is_govtech": false,
-   "is_govtech_why": "reader: pumps",
-   "read": {
-    "verdict": "supplier",
-    "why": "pumps",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "UET WATER",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600157682",
-   "is_govtech": false,
-   "is_govtech_why": "reader: water treatment; no technology signal",
-   "read": {
-    "verdict": "supplier",
-    "why": "water treatment; no technology signal",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Vaughan Company",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121030",
-   "is_govtech": false,
-   "is_govtech_why": "reader: chopper pumps",
-   "read": {
-    "verdict": "supplier",
-    "why": "chopper pumps",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Velotic",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600253890",
-   "is_govtech": null,
-   "is_govtech_why": "nothing in the name either way",
-   "read": {
-    "verdict": "unsure",
-    "why": "opaque name; no signal",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "VVater",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600159033",
-   "is_govtech": false,
-   "is_govtech_why": "reader: modular water treatment",
-   "read": {
-    "verdict": "supplier",
-    "why": "modular water treatment",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "Watson-Marlow Fluid Technology Solutions",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600117585",
-   "is_govtech": false,
-   "is_govtech_why": "reader: peristaltic pumps and fluid-path hardware; physical goods",
-   "read": {
-    "verdict": "supplier",
-    "why": "peristaltic pumps and fluid-path hardware; physical goods",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "WesTech Engineering LLC",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121054",
-   "is_govtech": false,
-   "is_govtech_why": "reader: water treatment process equipment manufacturer",
-   "read": {
-    "verdict": "supplier",
-    "why": "water treatment process equipment manufacturer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "World Water Works, Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600119583",
-   "is_govtech": false,
-   "is_govtech_why": "reader: wastewater treatment process equipment; physical systems",
-   "read": {
-    "verdict": "supplier",
-    "why": "wastewater treatment process equipment; physical systems",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
-   "name": "WSP USA Inc.",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600040338",
-   "is_govtech": false,
-   "is_govtech_why": "nothing in the name either way"
-  },
-  {
-   "name": "Xylem",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600122375",
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
-  },
   {
    "name": "2S Water Incorporated",
    "website": null,
@@ -656,6 +145,19 @@
    "read": {
     "verdict": "supplier",
     "why": "chemical dosing equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "ACME Engineering Products Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120662",
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineered products maker; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineered products maker; no software signal",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -1426,6 +928,19 @@
    }
   },
   {
+   "name": "AqueoUS Vets",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600158825",
+   "is_govtech": false,
+   "is_govtech_why": "reader: treatment vessels; physical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "treatment vessels; physical equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Aquestia USA",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600049243",
@@ -1447,6 +962,19 @@
    "read": {
     "verdict": "supplier",
     "why": "UV-LED disinfection hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Arcadis",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126649",
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consultancy",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -1506,6 +1034,19 @@
    "read": {
     "verdict": "supplier",
     "why": "polymer concrete structures",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "ARX Infrastructure",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600445499",
+   "is_govtech": false,
+   "is_govtech_why": "reader: infrastructure products/services; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "infrastructure products/services; no software signal",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -1679,6 +1220,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Autodesk",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600137026",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "Automatic Filters, LLC - Tekleen",
@@ -2159,6 +1707,19 @@
    }
   },
   {
+   "name": "Black & Veatch Corporation",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600127246",
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consultancy",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Blackline Safety",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600134286",
@@ -2198,6 +1759,19 @@
    }
   },
   {
+   "name": "Blue Ribbon Corp",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126373",
+   "is_govtech": false,
+   "is_govtech_why": "reader: gauges and instrumentation accessories",
+   "read": {
+    "verdict": "supplier",
+    "why": "gauges and instrumentation accessories",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "BLUE SKIES DRONES",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600331156",
@@ -2206,6 +1780,19 @@
    "read": {
     "verdict": "supplier",
     "why": "drone dealer/services",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Blue-White",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600122592",
+   "is_govtech": false,
+   "is_govtech_why": "reader: metering pumps and flowmeters",
+   "read": {
+    "verdict": "supplier",
+    "why": "metering pumps and flowmeters",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -2268,6 +1855,19 @@
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600041358",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Boerger, LLC",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600049167",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Bohn Biofilter",
@@ -2356,6 +1956,19 @@
    "read": {
     "verdict": "unsure",
     "why": "could be software tools; unknown",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Brio Water Technology",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600485932",
+   "is_govtech": false,
+   "is_govtech_why": "reader: water treatment; no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "water treatment; no software signal",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -2742,6 +2355,19 @@
    "read": {
     "verdict": "supplier",
     "why": "treatment equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Chemical Injection Technologies, Inc",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120072",
+   "is_govtech": false,
+   "is_govtech_why": "reader: chemical feed equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "chemical feed equipment",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -4466,6 +4092,19 @@
    }
   },
   {
+   "name": "Esmil",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600083749",
+   "is_govtech": false,
+   "is_govtech_why": "reader: dewatering equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "dewatering equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Esri",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600035845",
@@ -5277,6 +4916,19 @@
    }
   },
   {
+   "name": "Gorman-Rupp Pumps",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121028",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pump manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "pump manufacturer",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Goulds Water Technology, Xylem",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126614",
@@ -5429,6 +5081,19 @@
    "read": {
     "verdict": "supplier",
     "why": "environmental services company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Grundfos",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600035844",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pump manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "pump manufacturer",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -5800,19 +5465,6 @@
    }
   },
   {
-   "name": "Hebei Zhaoyang Environmental Technology Co., Ltd",
-   "website": null,
-   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600522294",
-   "is_govtech": false,
-   "is_govtech_why": "reader: Chinese environmental equipment manufacturer",
-   "read": {
-    "verdict": "supplier",
-    "why": "Chinese environmental equipment manufacturer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
    "name": "HEBEI METALS & MINERALS CORP., LTD.",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600522290",
@@ -5821,6 +5473,19 @@
    "read": {
     "verdict": "supplier",
     "why": "metals and minerals trading company",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Hebei Zhaoyang Environmental Technology Co., Ltd",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600522294",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chinese environmental equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chinese environmental equipment manufacturer",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -6152,6 +5817,19 @@
    }
   },
   {
+   "name": "Hydro Radar, LLC",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600249958",
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "radar water sensing; instrument or software platform unclear",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Hydro-Dyne Engineering",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600115759",
@@ -6422,6 +6100,19 @@
    "read": {
     "verdict": "supplier",
     "why": "industrial products; no software signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Industrial Test Systems, Inc",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121547",
+   "is_govtech": false,
+   "is_govtech_why": "reader: water test kits and photometers",
+   "read": {
+    "verdict": "supplier",
+    "why": "water test kits and photometers",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -6800,6 +6491,32 @@
    }
   },
   {
+   "name": "Ixom Watercare",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600059188",
+   "is_govtech": false,
+   "is_govtech_why": "reader: water treatment chemicals and reservoir mixers",
+   "read": {
+    "verdict": "supplier",
+    "why": "water treatment chemicals and reservoir mixers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "J & S Valve, Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120409",
+   "is_govtech": false,
+   "is_govtech_why": "reader: valves",
+   "read": {
+    "verdict": "supplier",
+    "why": "valves",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Jacobi Carbons, Inc.",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600122741",
@@ -6811,6 +6528,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Jacobs",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600144294",
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
   },
   {
    "name": "Jain Technology Co., Ltd",
@@ -7113,6 +6837,19 @@
    }
   },
   {
+   "name": "Kerry Actuator",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120474",
+   "is_govtech": false,
+   "is_govtech_why": "reader: valve actuators",
+   "read": {
+    "verdict": "supplier",
+    "why": "valve actuators",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Kiewit",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600138063",
@@ -7213,6 +6950,19 @@
    "read": {
     "verdict": "supplier",
     "why": "static mixers",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Komline",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121119",
+   "is_govtech": false,
+   "is_govtech_why": "reader: process equipment (dewatering, filtration)",
+   "read": {
+    "verdict": "supplier",
+    "why": "process equipment (dewatering, filtration)",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -7377,6 +7127,19 @@
    "read": {
     "verdict": "supplier",
     "why": "flow instrumentation hardware",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "KSB, Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600123099",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pumps and valves",
+   "read": {
+    "verdict": "supplier",
+    "why": "pumps and valves",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -8106,6 +7869,13 @@
    }
   },
   {
+   "name": "MentorAPM Asset Management",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600073872",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
    "name": "Mercer Rubber Company",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121018",
@@ -8387,6 +8157,19 @@
    }
   },
   {
+   "name": "MOBILTEX || FloPath | CorTalk",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600146615",
+   "is_govtech": true,
+   "is_govtech_why": "reader: remote-monitoring IoT devices with cloud software",
+   "read": {
+    "verdict": "vendor",
+    "why": "remote-monitoring IoT devices with cloud software",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Modec USA Inc",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600008413",
@@ -8504,6 +8287,13 @@
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600111102",
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "MSA Safety",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121051",
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
   },
   {
    "name": "MTH Pumps",
@@ -9316,6 +9106,19 @@
    }
   },
   {
+   "name": "Peabody Engineering, LLC",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600120861",
+   "is_govtech": false,
+   "is_govtech_why": "reader: tanks and enclosures",
+   "read": {
+    "verdict": "supplier",
+    "why": "tanks and enclosures",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Peerless Pump Company - Indianapolis, IN",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121194",
@@ -9557,6 +9360,19 @@
    }
   },
   {
+   "name": "Poly Processing Company",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121109",
+   "is_govtech": false,
+   "is_govtech_why": "reader: polyethylene tanks",
+   "read": {
+    "verdict": "supplier",
+    "why": "polyethylene tanks",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "PolyGone Systems",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600158656",
@@ -9647,6 +9463,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Prime Solution Inc",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600115716",
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Primozone Inc.",
@@ -10017,6 +9840,19 @@
    "read": {
     "verdict": "supplier",
     "why": "control relays and electronic components",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "RACO Manufacturing and Engineering Co., Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121120",
+   "is_govtech": true,
+   "is_govtech_why": "reader: alarm autodialers and remote monitoring with cloud",
+   "read": {
+    "verdict": "vendor",
+    "why": "alarm autodialers and remote monitoring with cloud",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -10635,6 +10471,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Schneider Electric",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600043130",
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
   },
   {
    "name": "Schwing Bioset, Inc.",
@@ -11256,6 +11099,19 @@
    }
   },
   {
+   "name": "Smith & Loveless Inc",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600123684",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pump stations and treatment equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "pump stations and treatment equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Smith-Blair, Xylem",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600126973",
@@ -11342,6 +11198,19 @@
    "read": {
     "verdict": "unsure",
     "why": "opaque name; no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "SonicPure",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600008189",
+   "is_govtech": false,
+   "is_govtech_why": "reader: ultrasonic treatment device",
+   "read": {
+    "verdict": "supplier",
+    "why": "ultrasonic treatment device",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -12496,6 +12365,19 @@
    }
   },
   {
+   "name": "Trillium Flow Technologies",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600080576",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pumps and valves",
+   "read": {
+    "verdict": "supplier",
+    "why": "pumps and valves",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Trinnex",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600144324",
@@ -12620,6 +12502,19 @@
    }
   },
   {
+   "name": "Tusk Industrial (Fybroc, Sethco, Dean)",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600459430",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "TYLin",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600042862",
@@ -12674,6 +12569,19 @@
    "read": {
     "verdict": "supplier",
     "why": "conveying equipment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "UET WATER",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600157682",
+   "is_govtech": false,
+   "is_govtech_why": "reader: water treatment; no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "water treatment; no technology signal",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -12993,6 +12901,19 @@
    "is_govtech_why": "not judged yet - names only"
   },
   {
+   "name": "Vaughan Company",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121030",
+   "is_govtech": false,
+   "is_govtech_why": "reader: chopper pumps",
+   "read": {
+    "verdict": "supplier",
+    "why": "chopper pumps",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "VEGA Americas",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600002165",
@@ -13011,6 +12932,19 @@
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600038489",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Velotic",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600253890",
+   "is_govtech": null,
+   "is_govtech_why": "nothing in the name either way",
+   "read": {
+    "verdict": "unsure",
+    "why": "opaque name; no signal",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "Veolia",
@@ -13195,6 +13129,19 @@
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600130982",
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "VVater",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600159033",
+   "is_govtech": false,
+   "is_govtech_why": "reader: modular water treatment",
+   "read": {
+    "verdict": "supplier",
+    "why": "modular water treatment",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
   },
   {
    "name": "W&W Fiberglass Tank",
@@ -13438,6 +13385,19 @@
    }
   },
   {
+   "name": "Watson-Marlow Fluid Technology Solutions",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600117585",
+   "is_govtech": false,
+   "is_govtech_why": "reader: peristaltic pumps and fluid-path hardware; physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "peristaltic pumps and fluid-path hardware; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "Waukesha Cherry-Burrell",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600549360",
@@ -13563,6 +13523,19 @@
    "read": {
     "verdict": "supplier",
     "why": "hydropneumatic and expansion tanks; physical goods",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "WesTech Engineering LLC",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600121054",
+   "is_govtech": false,
+   "is_govtech_why": "reader: water treatment process equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "water treatment process equipment manufacturer",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
@@ -13705,6 +13678,19 @@
    }
   },
   {
+   "name": "World Water Works, Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600119583",
+   "is_govtech": false,
+   "is_govtech_why": "reader: wastewater treatment process equipment; physical systems",
+   "read": {
+    "verdict": "supplier",
+    "why": "wastewater treatment process equipment; physical systems",
+    "by": "agent:reader+skeptic",
+    "on": "2026-10-10"
+   }
+  },
+  {
    "name": "WorldWide Electric Corporation",
    "website": null,
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600060428",
@@ -13723,6 +13709,13 @@
    "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600118543",
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "WSP USA Inc.",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600040338",
+   "is_govtech": false,
+   "is_govtech_why": "nothing in the name either way"
   },
   {
    "name": "WSSC Water",
@@ -13775,6 +13768,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Xylem",
+   "website": null,
+   "detail_url": "https://weftec26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=600122375",
+   "is_govtech": null,
+   "is_govtech_why": "not judged yet - names only"
   },
   {
    "name": "Xylem Service Solutions",
@@ -13934,7 +13934,7 @@
    }
   }
  ],
- "read_dropped": 4,
+ "read_dropped": 26,
  "quality_was": null,
  "quality": "read"
 }

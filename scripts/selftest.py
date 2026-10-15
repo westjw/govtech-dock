@@ -26021,6 +26021,110 @@ def check_a_site_builders_credit_is_not_an_exhibitor() -> int:
     return errors
 
 
+def check_a_booth_number_is_not_part_of_a_name() -> int:
+    """'1035 PCTEL, Inc.' is booth 1035 and PCTEL.
+
+    APCO 2026's floor-plan app printed a booth number in front of 246 of 253
+    names, ICC's 112 of 119, NAPT's 76 of 87 (2026-10-15). No such name matches
+    a company on the board, so a known exhibitor was never tagged and every
+    name went to the reader as new. Taken off only where most of a floor
+    carries one: 3M, 2J Antennas and 360 Photo Booth are names.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    floor = ["1035 PCTEL, Inc.", "1022 2J Antennas USA, Corp.", "2617 Tait Communications",
+             "736 BK Technologies", "100 Expo Eatery", "1146 Telewave.io",
+             "209/211 Dick Buss & Associates", "Booth 3200 Aselsan", "829 Safran", "Zoom In"]
+    got = sw.strip_booths(floor)
+    want = ["PCTEL, Inc.", "2J Antennas USA, Corp.", "Tait Communications", "BK Technologies",
+            "Expo Eatery", "Telewave.io", "Dick Buss & Associates", "Aselsan", "Safran", "Zoom In"]
+    if got != want:
+        print(f"  FAIL: booth numbers not taken off a floor that prints them: {got[:4]}")
+        errors += 1
+    plain = ["3M", "2J Antennas", "360 Photo Booth", "Axon", "Zetron", "Carbyne",
+             "Intrado", "Esri", "Mark43", "RapidSOS"]
+    if sw.strip_booths(plain) != plain:
+        print("  FAIL: a name that starts with digits lost them on a floor that prints no booths")
+        errors += 1
+    page = "".join(f'<a href="https://x{i}.test/">{n}</a>' for i, n in enumerate(floor[:9]))
+    names = {n["name"] for n in sw.harvest(page, "APCO")}
+    if "PCTEL, Inc." not in names or any(n[0].isdigit() and n != "2J Antennas USA, Corp." for n in names):
+        print(f"  FAIL: harvest() does not take the floor's booth numbers off: {sorted(names)[:4]}")
+        errors += 1
+    return errors
+
+
+def check_a_browser_read_adds_to_a_floor() -> int:
+    """render_floor never replaces a floor already staged; it adds to it.
+
+    The first --all run (2026-10-15) put a 22-item menu over WEFTEC's 1,142
+    read names and IAFC FRI's 302 with 201: merge_into() stops a refusal from
+    overwriting a find, and a find replaced a find. Drives render_floor's own
+    write helper against a staged file in a temp directory.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import render_floor as rf
+    import tempfile
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-render-")) / "exhibitors_X_2026.json"
+    old = {"event_tag": "X 2026", "found": True, "quality": "read", "source_note": "swept",
+           "exhibitors": [{"name": "Real Exhibitor Inc", "website": "https://real.test/",
+                           "is_govtech": True, "read": "vendor"},
+                          {"name": "Second Real LLC", "website": None, "is_govtech": False}]}
+    tmp.write_text(json.dumps(old))
+    fresh = {"event_tag": "X 2026", "found": True, "quality": "menu", "source_url": "https://app.test/",
+             "exhibitors": [{"name": "Floor Plan", "website": None},
+                            {"name": "Real Exhibitor Inc", "website": None},
+                            {"name": "Second Real", "website": None}]}
+    got = rf.add_to(fresh, tmp)
+    names = {e["name"]: e for e in (got or {}).get("exhibitors", [])}
+    if "Second Real" in names:
+        print("  FAIL: a browser read added a staged company again under another "
+              "spelling ('Second Real' beside 'Second Real LLC')")
+        errors += 1
+    if not got or "Second Real LLC" not in names or "Floor Plan" not in names:
+        print(f"  FAIL: a browser read replaced a staged floor instead of adding to it - "
+              f"{sorted(names)}")
+        errors += 1
+    elif names["Real Exhibitor Inc"].get("is_govtech") is not True or got.get("quality") != "read":
+        print("  FAIL: adding to a floor lost a ruling or the floor's grade")
+        errors += 1
+    if rf.add_to({"found": True, "exhibitors": [{"name": "Real Exhibitor Inc"}]}, tmp) is not None:
+        print("  FAIL: a browser read with nothing new still rewrites the floor")
+        errors += 1
+    if rf.add_to(fresh, tmp.with_name("missing.json")) is not fresh:
+        print("  FAIL: a floor with nothing staged is not written as read")
+        errors += 1
+
+    # THE CALLER: main() --write over a stubbed browser, on a staged floor.
+    d = tmp.parent
+    (d / "conferences.json").write_text(json.dumps({"conferences": [
+        {"event_tag": "X 2026", "conference": "X", "fetchability": "js-walled",
+         "exhibitor_url": "https://app.test/x/2026/floor"}]}))
+    tmp.write_text(json.dumps(old))
+    menu = "".join(f'<a href="/{i}">{n}</a>' for i, n in enumerate(
+        ["Acme Signal Systems Inc", "Beacon Data LLC", "Cardinal Software Corp", "Delta Radio Co",
+         "Echo Analytics Inc", "Falcon Dispatch LLC", "Granite GIS Corp", "Harbor Networks Inc"]))
+
+    async def fake_render(url):
+        return menu, None
+    keep = (rf.DATA, rf.render, sys.argv)
+    try:
+        rf.DATA, rf.render = d, fake_render
+        sys.argv = ["render_floor.py", "--tag", "X 2026", "--write"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            rf.main()
+        after = {e["name"] for e in json.loads(tmp.read_text())["exhibitors"]}
+    finally:
+        rf.DATA, rf.render, sys.argv = keep
+    if "Second Real LLC" not in after or "Granite GIS Corp" not in after:
+        print(f"  FAIL: render_floor --write replaced the staged floor - {sorted(after)[:4]}")
+        errors += 1
+    shutil.rmtree(d, ignore_errors=True)
+    return errors
+
+
 def check_a_chapter_directory_is_not_its_parents() -> int:
     """A state chapter's exhibitor list must belong to that chapter.
 
@@ -33472,6 +33576,8 @@ def main() -> int:
     errors += check_a_menu_is_not_a_directory()
     errors += check_a_table_that_says_it_is_the_floor_is_read()
     errors += check_a_site_builders_credit_is_not_an_exhibitor()
+    errors += check_a_booth_number_is_not_part_of_a_name()
+    errors += check_a_browser_read_adds_to_a_floor()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()

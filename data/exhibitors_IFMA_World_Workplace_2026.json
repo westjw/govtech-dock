@@ -1,0 +1,171 @@
+{
+ "event_tag": "IFMA World Workplace 2026",
+ "conference": "IFMA World Workplace",
+ "found": true,
+ "source_url": "https://maps.goeshow.com/ifma/worldworkplace/2026/exhibitor_list",
+ "source_note": "Rendered in a browser from https://maps.goeshow.com/ifma/worldworkplace/2026/exhibitor_list by scripts/render_floor.py (robots.txt asked at every hop). 21 name(s), 0 with a website the page linked. Quality: good (29% carry a corporate marker, 0% name a site section, 0% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "4M Building Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Commercial cleaning/janitorial services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Commercial cleaning/janitorial services firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AABC Commissioning Group (ACG)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Commissioning certification association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Commissioning certification association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AAF International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air filtration manufacturer (hardware)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air filtration manufacturer (hardware)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ABM",
+   "website": null
+  },
+  {
+   "name": "ACC Premiere",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Contact-center outsourcing (BPO) services, per its site",
+   "read": {
+    "verdict": "supplier",
+    "why": "Contact-center outsourcing (BPO) services, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Accruent",
+   "website": null
+  },
+  {
+   "name": "Acre Security",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Access-control and security software platforms (Acre Access Control, intrusion)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Access-control and security software platforms (Acre Access Control, intrusion)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AFR Furniture Rental",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Furniture rental",
+   "read": {
+    "verdict": "supplier",
+    "why": "Furniture rental",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Engineered Corrosion Solutions, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire-sprinkler corrosion control equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire-sprinkler corrosion control equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Fortify Companies",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; site refused our crawler",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IBM",
+   "website": null
+  },
+  {
+   "name": "International Facility Management Association (IFMA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association (IFMA)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association (IFMA)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Kastle",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Kastle Systems: managed building-security service on its own platform; product vs service unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "LogiSon Acoustic Network",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sound-masking hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sound-masking hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MaintainX",
+   "website": null
+  },
+  {
+   "name": "PRIDE Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit social enterprise providing facility services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit social enterprise providing facility services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 5,
+ "quality_was": "good"
+}

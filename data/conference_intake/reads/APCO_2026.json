@@ -92,9 +92,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "APCO Exhibit Sales & Exhibit Managers Office",
   "verdict": "not_a_company",
-  "why": "booth logistics / show office",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Organiser's office, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -164,9 +164,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Blood Donation",
   "verdict": "not_a_company",
-  "why": "floor activity",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Conference programme item",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -189,9 +189,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Career Advancement Center",
   "verdict": "not_a_company",
-  "why": "floor feature",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Conference programme area",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -326,9 +326,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Education Row",
   "verdict": "not_a_company",
-  "why": "floor section",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -391,9 +391,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Expo Eatery",
   "verdict": "not_a_company",
-  "why": "floor feature",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Conference food area, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -521,9 +521,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Headshot Lounge",
   "verdict": "not_a_company",
-  "why": "floor feature",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Conference amenity, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -626,9 +626,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "K9 Dog Demo Area",
   "verdict": "not_a_company",
-  "why": "floor demo area",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -804,9 +804,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Presentation Theater",
   "verdict": "not_a_company",
-  "why": "floor feature",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -836,17 +836,17 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Public Safety Vehicles Area 1",
   "verdict": "not_a_company",
-  "why": "floor area",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
   "name": "Public Safety Vehicles Area 2",
   "verdict": "not_a_company",
-  "why": "floor area",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -876,9 +876,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Resume Review",
   "verdict": "not_a_company",
-  "why": "floor service",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Conference programme service",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -1152,9 +1152,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "TL Exhibitor Care Center",
   "verdict": "not_a_company",
-  "why": "booth logistics",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Organiser's service desk",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -1233,9 +1233,9 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Wellness Zone",
   "verdict": "not_a_company",
-  "why": "floor feature",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor area label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_APCO_2026.json",
@@ -1281,8 +1281,64 @@
   "file": "exhibitors_APCO_2026.json",
   "name": "Network & Recharge Lounge (1)",
   "verdict": "not_a_company",
-  "why": "Floor-plan lounge, not an exhibitor",
+  "why": "Floor area label",
   "by": "agent:reader",
-  "on": "2026-10-10"
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Back to Top",
+  "verdict": "not_a_company",
+  "why": "App navigation control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Event Info",
+  "verdict": "not_a_company",
+  "why": "App navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Give Feedback",
+  "verdict": "not_a_company",
+  "why": "App control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Print",
+  "verdict": "not_a_company",
+  "why": "App control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Technical Support",
+  "verdict": "not_a_company",
+  "why": "App link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Zoom In",
+  "verdict": "not_a_company",
+  "why": "Map control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_APCO_2026.json",
+  "name": "Zoom Out",
+  "verdict": "not_a_company",
+  "why": "Map control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

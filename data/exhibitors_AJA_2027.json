@@ -1,16 +1,10 @@
 {
  "event_tag": "AJA 2027",
- "conference": "AJA",
+ "conference": "AJA Annual",
  "found": false,
- "source_url": "https://aja2027.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
- "source_note": "Read in a real browser on 2026-09-10. The directory is live and readable and holds exactly ONE exhibitor - the show is in 2027 and the floor has not been sold yet. This is a real count, not a failed read: Show All was clicked and there was no Load More.",
- "exhibitors": [
-  {
-   "name": "National Commission on Correctional Health Care",
-   "website": null,
-   "is_govtech": null,
-   "is_govtech_why": "not judged yet - names only"
-  }
- ],
- "why": "the MapYourShow floor plan draws in JavaScript; the static read saw one name (reader, 2026-10-10)"
+ "source_url": "https://aja2027.mapyourshow.com/8_0/index.cfm",
+ "source_note": "Rendered in a browser from https://aja2027.mapyourshow.com/8_0/index.cfm by scripts/render_floor.py (robots.txt asked at every hop). 10 name(s), 0 with a website the page linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 10% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
+ "exhibitors": [],
+ "why": "reader: every one of the 10 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 10
 }

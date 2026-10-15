@@ -1,9 +1,17 @@
 {
  "event_tag": "ACA Congress 2026",
  "conference": "ACA Congress",
- "found": false,
+ "found": true,
  "source_url": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx",
- "source_note": "32KB read, 12 candidate name(s) after filtering. Not staged as exhibitors: this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)",
- "exhibitors": [],
- "why": "this url is the association's own site rather than a list of who exhibits at it (0% carry a corporate marker, 0% name a site section - this reads as the association's own pages)"
+ "source_note": "Rendered in a browser from https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx by scripts/render_floor.py (robots.txt asked at every hop). 12 name(s), 10 with a website the page linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 17% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
+ "exhibitors": [
+  {
+   "name": "Exhibitor Service Center",
+   "website": "http://s36.a2zinc.net/clients/ACA/acacongress2026/public/e_ExhibitorConsole.aspx?sortMenu=103007"
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 11,
+ "quality_was": "menu"
 }

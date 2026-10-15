@@ -67,9 +67,9 @@
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "Bus Gates, Inc.",
   "verdict": "supplier",
-  "why": "duplicate row; school bus crossing gates",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Bus Gates: school bus safety hardware",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
@@ -131,17 +131,17 @@
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "Exhibitor Help Area",
   "verdict": "not_a_company",
-  "why": "floor-plan logistics label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "Expo Company Area",
   "verdict": "not_a_company",
-  "why": "floor-plan logistics label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
@@ -155,17 +155,17 @@
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "Food & Beverage",
   "verdict": "not_a_company",
-  "why": "floor-plan catering label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "Food and Beverage",
   "verdict": "not_a_company",
-  "why": "floor-plan catering label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
@@ -210,10 +210,10 @@
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
   "name": "NAPT HQ",
-  "verdict": "not_a_company",
-  "why": "host association's own booth label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "verdict": "supplier",
+  "why": "NAPT, host association booth",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NAPT_Summit_2026.json",
@@ -319,5 +319,157 @@
   "why": "GPS fleet tracking for school buses (CalAmp)",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "10x10 Size: 10x10 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "10x20 Size: 10x20 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "20x20 Size: 20x20 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "20x40 Size: 20x40 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "30x50 Size: 30x50 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "- A BraunAbility",
+  "verdict": "supplier",
+  "why": "BraunAbility: wheelchair-accessible vehicles and lifts",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Bytecurve by Transit Technologies",
+  "verdict": "vendor",
+  "why": "Bytecurve: fleet maintenance software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Power Grid Energy Solutions LLC",
+  "verdict": "supplier",
+  "why": "energy solutions firm by name; not software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "PTSI",
+  "verdict": "supplier",
+  "why": "Pupil Transportation Safety Institute: training nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Bus Upfitters",
+  "verdict": "supplier",
+  "why": "bus upfitting services",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Fleetsoft",
+  "verdict": "vendor",
+  "why": "Fleetsoft: fleet maintenance software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Zenobe",
+  "verdict": "supplier",
+  "why": "Zenobe: EV batteries and charging as a service",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Michelin North America",
+  "verdict": "supplier",
+  "why": "Michelin: tyre maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "ECO FLAPS",
+  "verdict": "supplier",
+  "why": "Eco Flaps: mud flaps maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Advantage One Powered by Geotab",
+  "verdict": "supplier",
+  "why": "Geotab reseller",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Zūm Services Inc.",
+  "verdict": "unsure",
+  "why": "school bus contractor with own tech platform; contractor vs tech vendor unclear",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Downtime Subrogation, Inc.",
+  "verdict": "supplier",
+  "why": "insurance subrogation services",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Map D v5.6.2",
+  "verdict": "not_a_company",
+  "why": "floor-plan app version text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NAPT_Summit_2026.json",
+  "name": "Reserved Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

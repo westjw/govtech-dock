@@ -1,11 +1,1033 @@
 {
  "event_tag": "ICC 2026",
  "conference": "ICC Annual Conference",
- "found": false,
+ "found": true,
  "source_url": "https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=BJKYXLVZ",
- "source_note": "Read from https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=BJKYXLVZ by scripts/sweep_exhibitors.py. 11 name(s), 1 with a website the page itself linked. Quality: good (18% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 10 names was the site's own text, not an exhibitor; this page is not a floor",
- "restaged": "11 -> 10 names after re-filtering on 2026-09-02",
- "read_dropped": 10
+ "source_note": "Rendered in a browser from https://www.conferenceharvester.com/floorplan/v2/index.asp?EventKey=BJKYXLVZ by scripts/render_floor.py (robots.txt asked at every hop). 119 name(s), 1 with a website the page linked. Quality: good (39% carry a corporate marker, 0% name a site section, 4% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "4LEAF, Inc.",
+   "website": null
+  },
+  {
+   "name": "Accela, Inc.",
+   "website": null
+  },
+  {
+   "name": "Acta Solutions Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; guessed site unreadable",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "American Concrete Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Standards and technical association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Standards and technical association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Archistar",
+   "website": null
+  },
+  {
+   "name": "Association of State Floodplain Managers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ATIS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place the acronym; guessed site not found",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Avolve Software",
+   "website": null
+  },
+  {
+   "name": "B&F Construction Code Services, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Code consulting and plan review services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Code consulting and plan review services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Big Dog Promo, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Promotional products company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Promotional products company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Blitz AI",
+   "website": null
+  },
+  {
+   "name": "Blitzz, Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Remote video inspection software used by building departments",
+   "read": {
+    "verdict": "vendor",
+    "why": "Remote video inspection software used by building departments",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bonded Lightning Protection Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lightning protection products and installation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lightning protection products and installation",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Brain Co.",
+   "website": null
+  },
+  {
+   "name": "Building & Fire Code Academy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Code certification training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Code certification training provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bureau Veritas North America, Inc.",
+   "website": null
+  },
+  {
+   "name": "Cast Iron Soil Pipe Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Centrotherm Eco Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Maker of flue gas venting systems (building product)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Maker of flue gas venting systems (building product)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "City Detect",
+   "website": null
+  },
+  {
+   "name": "CityTech Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; site refused our crawler",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CityView, a division of Harris Computer Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Permitting, inspection and land management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Permitting, inspection and land management software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Civic Review",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Permitting and licensing software for governments (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Permitting and licensing software for governments (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CivicPlus",
+   "website": null
+  },
+  {
+   "name": "Clariti",
+   "website": null
+  },
+  {
+   "name": "Cloudpermit",
+   "website": null
+  },
+  {
+   "name": "CodeComply Summit 2026",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Event name; CodeComply (AI plan review for cities) may run it, summit not on its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Comcate Inc",
+   "website": null
+  },
+  {
+   "name": "Computronix",
+   "website": null
+  },
+  {
+   "name": "Copperweld",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bimetallic wire and conductor manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bimetallic wire and conductor manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Deckard Technologies",
+   "website": null
+  },
+  {
+   "name": "Denlar Fire Protection",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire protection products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire protection products maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "E-Plan Exam",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Building code plan review services firm (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Building code plan review services firm (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "e-PlanSoft",
+   "website": null
+  },
+  {
+   "name": "ECS Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering, geotechnical and materials testing consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering, geotechnical and materials testing consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Educode",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Appears to be a code-education training event, not clearly a company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Fire Safety Consultants Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire safety consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire safety consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "FireAvert",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Stove auto shut-off device maker (hardware)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Stove auto shut-off device maker (hardware)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Firestop Contractors International Association (FCIA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Floodproofing.com",
+   "website": null
+  },
+  {
+   "name": "Forerunner",
+   "website": null
+  },
+  {
+   "name": "Gastite",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Flexible gas piping (CSST) maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Flexible gas piping (CSST) maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "GeoCivix",
+   "website": null
+  },
+  {
+   "name": "Global Fireproof Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fireproofing products company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fireproofing products company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "GovPath",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Permitting, inspection and billing software for state and local government (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Permitting, inspection and billing software for state and local government (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "GovPilot, formerly SDL",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Local government management, permitting and code enforcement software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Local government management, permitting and code enforcement software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "GovWell",
+   "website": null
+  },
+  {
+   "name": "Granicus",
+   "website": null
+  },
+  {
+   "name": "HealthBridge Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; guessed domain led to a care-coordination software firm, link unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Hoover Treated Wood Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire-retardant treated wood manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire-retardant treated wood manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Infor",
+   "website": null
+  },
+  {
+   "name": "InsulClip",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Building product maker (insulation fastening)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Building product maker (insulation fastening)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "International Association of Electrical Inspectors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "International Code Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Host association that publishes the codes; not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Host association that publishes the codes; not a tech vendor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "International Firestop Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Intertek",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Testing, inspection and certification body",
+   "read": {
+    "verdict": "supplier",
+    "why": "Testing, inspection and certification body",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Intuitive Municipal Solutions (iMS)",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; site refused our crawler",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IPEX USA LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Thermoplastic piping manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Thermoplastic piping manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "iPlanTables",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hardware maker: wide-format touchscreen monitor workstations (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hardware maker: wide-format touchscreen monitor workstations (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "JHW Plan Review Services LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plan review services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plan review services firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Johnson Controls",
+   "website": null
+  },
+  {
+   "name": "Lakeside Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm by name; no technology product evident",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm by name; no technology product evident",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Lightning Protection Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "LINTELLIFT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Booth exhibitor; name points to a lintel/construction product; site refused crawler",
+   "read": {
+    "verdict": "supplier",
+    "why": "Booth exhibitor; name points to a lintel/construction product; site refused crawler",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Lowe's Home Centers LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Home improvement retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Home improvement retailer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Maxitrol",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gas pressure regulator manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gas pressure regulator manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "McWane Plumbing Group",
+   "website": null
+  },
+  {
+   "name": "MeltPlan",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "AI preconstruction software for contractors (site read); government sales not shown",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Mitchell Humphrey & Co.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Land management, permitting and financial software for local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "Land management, permitting and financial software for local government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Municipal Inspection Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Inspection services firm by name",
+   "read": {
+    "verdict": "supplier",
+    "why": "Inspection services firm by name",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "National Fire Sprinkler Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "National Gypsum Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Gypsum wallboard manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Gypsum wallboard manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "National Lightning Protection",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lightning protection products manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lightning protection products manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "National Ready Mixed Concrete Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Omega Flex, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Flexible gas piping (CSST) manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Flexible gas piping (CSST) manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "OpenGov",
+   "website": null
+  },
+  {
+   "name": "Oracle",
+   "website": null
+  },
+  {
+   "name": "PFS TECO, An NFPA Global Solutions Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Testing, inspection and certification agency for building products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Testing, inspection and certification agency for building products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Pickleball Court",
+   "website": null
+  },
+  {
+   "name": "Pin Foundations, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foundation products manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foundation products manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "RESNET",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Home energy rating standards nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Home energy rating standards nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Revcord",
+   "website": null
+  },
+  {
+   "name": "SAFEbuilt",
+   "website": null
+  },
+  {
+   "name": "Sages Networks Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: SagesGov e-plan review, permitting and inspection software (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "SagesGov e-plan review, permitting and inspection software (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Schluter Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tile installation systems manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tile installation systems manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SCPDC-MyGovernmentOnline (MGO)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: MyGovernmentOnline permitting/inspection software sold to jurisdictions (run by SCPDC)",
+   "read": {
+    "verdict": "vendor",
+    "why": "MyGovernmentOnline permitting/inspection software sold to jurisdictions (run by SCPDC)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Selectron Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IVR and mobile inspection software for local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "IVR and mobile inspection software for local government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Shums Coda Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Building code consulting, plan review and inspection services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Building code consulting, plan review and inspection services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Simpson Strong-Tie",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Structural connectors and building products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Structural connectors and building products maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Spears Manufacturing Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: PVC/CPVC pipe fittings manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "PVC/CPVC pipe fittings manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SPRI, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Single-ply roofing industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Single-ply roofing industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Structural Building Components Association (SBCA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SymbolArts",
+   "website": null
+  },
+  {
+   "name": "Tenmat Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire and acoustic protection products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire and acoustic protection products maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Tennessee Building Officials Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Tolemi",
+   "website": null
+  },
+  {
+   "name": "True North Compliance Services, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Third-party plan review and inspection services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Third-party plan review and inspection services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "UL Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Testing, inspection and certification body",
+   "read": {
+    "verdict": "supplier",
+    "why": "Testing, inspection and certification body",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "United Lightning Protection Association (ULPA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lightning protection trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lightning protection trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Verisk Analytics, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance data firm (ISO BCEGS ratings); not a product sold to departments",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance data firm (ISO BCEGS ratings); not a product sold to departments",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Visionary Integration Professionals, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT consulting and systems integrator for state and local government (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT consulting and systems integrator for state and local government (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "VuSpex",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Remote virtual inspection software for building departments",
+   "read": {
+    "verdict": "vendor",
+    "why": "Remote virtual inspection software for building departments",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Wellness Consultants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm by name; no technology product evident",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm by name; no technology product evident",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "WICED Women in Code Enforcement and Development",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Willdan",
+   "website": null
+  },
+  {
+   "name": "Women Leaders in Code Enforcement",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ZEDai",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; guessed sites parked or empty",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "restaged": "119 -> 119 names after re-filtering on 2026-10-15",
+ "read_dropped": 12,
+ "quality_was": "good"
 }

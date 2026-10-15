@@ -1,0 +1,558 @@
+{
+ "event_tag": "AB Show 2026",
+ "conference": "Athletic Business Show",
+ "found": true,
+ "source_url": "https://abshow.expocad.com/Events/abc26/index.html",
+ "source_note": "Rendered in a browser from https://abshow.expocad.com/Events/abc26/index.html by scripts/render_floor.py (robots.txt asked at every hop). 229 name(s), 3 with a website the page linked. Quality: good (27% carry a corporate marker, 1% name a site section, 6% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "Aquafinity",
+   "website": null
+  },
+  {
+   "name": "AquaRevival",
+   "website": null
+  },
+  {
+   "name": "Aquatic Design Group",
+   "website": null
+  },
+  {
+   "name": "Association of Aquatic Professionals",
+   "website": null
+  },
+  {
+   "name": "Athletic Business",
+   "website": null
+  },
+  {
+   "name": "Athletica Sport Systems",
+   "website": null
+  },
+  {
+   "name": "Avant-Garde",
+   "website": null
+  },
+  {
+   "name": "BackHug",
+   "website": null
+  },
+  {
+   "name": "BAND",
+   "website": null
+  },
+  {
+   "name": "BeaverFit",
+   "website": null
+  },
+  {
+   "name": "BECS Technology Inc.",
+   "website": null
+  },
+  {
+   "name": "Best Lights Inc.",
+   "website": null
+  },
+  {
+   "name": "Bison Inc.",
+   "website": null
+  },
+  {
+   "name": "Black Diamond Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Climbing and outdoor gear maker; equipment, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Climbing and outdoor gear maker; equipment, not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Brandstetter Carroll Inc.",
+   "website": null
+  },
+  {
+   "name": "Brinkley Sargent Wiginton Architects",
+   "website": null
+  },
+  {
+   "name": "BSN Sports",
+   "website": null
+  },
+  {
+   "name": "Butler Heavy Structures",
+   "website": null
+  },
+  {
+   "name": "CC Creations Ltd.",
+   "website": null
+  },
+  {
+   "name": "Clear-Flow",
+   "website": null
+  },
+  {
+   "name": "Colorado Time Systems",
+   "website": null
+  },
+  {
+   "name": "Counsilman-Hunsaker",
+   "website": null
+  },
+  {
+   "name": "Court Reserve",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Court booking software for tennis/pickleball clubs; site shows no public-sector customers",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Courtclean",
+   "website": null
+  },
+  {
+   "name": "Covermaster Inc.",
+   "website": null
+  },
+  {
+   "name": "Daldorado LLC",
+   "website": null
+  },
+  {
+   "name": "Daxko",
+   "website": null
+  },
+  {
+   "name": "DynaDome Retractable Structures",
+   "website": null
+  },
+  {
+   "name": "Echelon Commercial Fitness",
+   "website": null
+  },
+  {
+   "name": "ECORE Athletic",
+   "website": null
+  },
+  {
+   "name": "EGYM",
+   "website": null
+  },
+  {
+   "name": "Eleiko",
+   "website": null
+  },
+  {
+   "name": "EP Climbing",
+   "website": null
+  },
+  {
+   "name": "ERC Wiping Products Inc.",
+   "website": null
+  },
+  {
+   "name": "FITBENCH",
+   "website": null
+  },
+  {
+   "name": "Full Circle Padding.com",
+   "website": null
+  },
+  {
+   "name": "Fusion",
+   "website": null
+  },
+  {
+   "name": "GARED Performance Sports Systems",
+   "website": null
+  },
+  {
+   "name": "Gopher",
+   "website": null
+  },
+  {
+   "name": "Grabo USA",
+   "website": null
+  },
+  {
+   "name": "Grace Design Studios",
+   "website": null
+  },
+  {
+   "name": "Greenzie",
+   "website": null
+  },
+  {
+   "name": "Haptrex",
+   "website": null
+  },
+  {
+   "name": "Hayward Commercial Pool Products",
+   "website": null
+  },
+  {
+   "name": "Health & Fitness Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fitness industry trade association (formerly IHRSA)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fitness industry trade association (formerly IHRSA)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Human Touch",
+   "website": null
+  },
+  {
+   "name": "Hussey Seating Company",
+   "website": null
+  },
+  {
+   "name": "InBody",
+   "website": null
+  },
+  {
+   "name": "InCord Play",
+   "website": null
+  },
+  {
+   "name": "Interkal",
+   "website": null
+  },
+  {
+   "name": "Jaypro Sports",
+   "website": null
+  },
+  {
+   "name": "Jonas Fitness Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Club management software for gyms and hospital wellness; no government customers seen",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Junckers Hardwood Inc.",
+   "website": null
+  },
+  {
+   "name": "Keiser Corp.",
+   "website": null
+  },
+  {
+   "name": "Kinotek, Inc.",
+   "website": null
+  },
+  {
+   "name": "Landscape Structures Inc.",
+   "website": null
+  },
+  {
+   "name": "List Industries Lockers",
+   "website": null
+  },
+  {
+   "name": "LiteMirror - Glassless Mirror Mfrs. Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Glassless mirror manufacturer; physical product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Glassless mirror manufacturer; physical product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Little Diversified Architectural Consulting",
+   "website": null
+  },
+  {
+   "name": "LPA Design Studios",
+   "website": null
+  },
+  {
+   "name": "Matrix Fitness",
+   "website": null
+  },
+  {
+   "name": "Matrix Mirrors",
+   "website": null
+  },
+  {
+   "name": "Metalu Plast - Alcor",
+   "website": null
+  },
+  {
+   "name": "Mondo",
+   "website": null
+  },
+  {
+   "name": "Moody Nolan Inc.",
+   "website": null
+  },
+  {
+   "name": "Musco Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "Neptune Benson Inc.",
+   "website": null
+  },
+  {
+   "name": "NinjaCross Systems",
+   "website": null
+  },
+  {
+   "name": "OnSight",
+   "website": null
+  },
+  {
+   "name": "OpenAire Inc.",
+   "website": null
+  },
+  {
+   "name": "Original Watermen, Inc.",
+   "website": null
+  },
+  {
+   "name": "Outdoor Aluminum Inc.",
+   "website": null
+  },
+  {
+   "name": "Paddock Pool Equipment Company",
+   "website": null
+  },
+  {
+   "name": "Patch Retention",
+   "website": null
+  },
+  {
+   "name": "Peake Media",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Media company publishing Athletic Business (show organiser)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Media company publishing Athletic Business (show organiser)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Pebble Technology Inc.",
+   "website": null
+  },
+  {
+   "name": "Perform Better",
+   "website": null
+  },
+  {
+   "name": "Perkins&Will",
+   "website": null
+  },
+  {
+   "name": "Pickleball Bella",
+   "website": null
+  },
+  {
+   "name": "Pickletile",
+   "website": null
+  },
+  {
+   "name": "PlayerU Software Solutions LLC",
+   "website": null
+  },
+  {
+   "name": "POOLCORP Commercial Aquatics",
+   "website": null
+  },
+  {
+   "name": "Power Plate",
+   "website": null
+  },
+  {
+   "name": "Premier Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "Pronesis",
+   "website": null
+  },
+  {
+   "name": "Pulse Fitness",
+   "website": null
+  },
+  {
+   "name": "Ramaker & Associates Inc.",
+   "website": null
+  },
+  {
+   "name": "RDG Planning & Design",
+   "website": null
+  },
+  {
+   "name": "Recreation Management Magazine",
+   "website": null
+  },
+  {
+   "name": "Recreonics",
+   "website": null
+  },
+  {
+   "name": "REGUPOL",
+   "website": null
+  },
+  {
+   "name": "RenoSys",
+   "website": null
+  },
+  {
+   "name": "Roppe Holding Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Rubber flooring and wall base manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Rubber flooring and wall base manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Rubberlogix",
+   "website": null
+  },
+  {
+   "name": "Salute our Soldiers",
+   "website": null
+  },
+  {
+   "name": "Schelde Sports",
+   "website": null
+  },
+  {
+   "name": "Selkirk Sport",
+   "website": null
+  },
+  {
+   "name": "Shanghai Brisafe Technology Co., Ltd.",
+   "website": null
+  },
+  {
+   "name": "Slagle Design",
+   "website": null
+  },
+  {
+   "name": "SLG Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "SMG Machines Corporation",
+   "website": null
+  },
+  {
+   "name": "Specialized Fitness Resources",
+   "website": null
+  },
+  {
+   "name": "SportReach",
+   "website": null
+  },
+  {
+   "name": "Stormblade",
+   "website": null
+  },
+  {
+   "name": "Summit Lockers Inc.",
+   "website": null
+  },
+  {
+   "name": "TAG Fitness",
+   "website": null
+  },
+  {
+   "name": "Tailor Made Grass",
+   "website": null
+  },
+  {
+   "name": "Tanita Corp. of America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Body composition scale maker; hardware, not a software vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Body composition scale maker; hardware, not a software vendor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Texon Athletic Towel and Supply",
+   "website": null
+  },
+  {
+   "name": "TinyMobileRobots",
+   "website": null
+  },
+  {
+   "name": "TMP Architecture Inc.",
+   "website": null
+  },
+  {
+   "name": "True Pitch Inc.",
+   "website": null
+  },
+  {
+   "name": "Walltopia Climbing Walls",
+   "website": null
+  },
+  {
+   "name": "Water Technology Inc.",
+   "website": null
+  },
+  {
+   "name": "WellnessMats",
+   "website": null
+  },
+  {
+   "name": "WellnessSpace Brands",
+   "website": null
+  },
+  {
+   "name": "Williams Architects",
+   "website": null
+  },
+  {
+   "name": "Woodway",
+   "website": null
+  },
+  {
+   "name": "Zephyr Secure",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; site refused by robots.txt check",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 110,
+ "quality_was": "good"
+}

@@ -1,0 +1,507 @@
+{
+ "event_tag": "NASFAA 2026",
+ "conference": "NASFAA",
+ "found": true,
+ "source_url": "https://www.nasfaa.org/meet_exhibitors_sponsors27",
+ "source_note": "Rendered in a browser from https://www.nasfaa.org/meet_exhibitors_sponsors27 by scripts/render_floor.py (robots.txt asked at every hop). 98 name(s), 0 with a website the page linked. Quality: menu (17% carry a corporate marker, 0% name a site section, 50% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
+ "exhibitors": [
+  {
+   "name": "Ascendium - The Most Trusted Source for Student Loan Repayment Support",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Ascendium: nonprofit student-loan guarantor/repayment support, not a product vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Ascendium: nonprofit student-loan guarantor/repayment support, not a product vendor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Ascent Funding",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Best Practice Solutions LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Enrollment and financial-aid consulting and interim staffing (own site)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Enrollment and financial-aid consulting and interim staffing (own site)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Blue Icon Advisors, NASFAA Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Citizens®/College Raptor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Citizens bank student lending with College Raptor college-search site; a lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Citizens bank student lending with College Raptor college-search site; a lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CMD Outsourcing Solutions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Outsourced financial-aid processing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Outsourced financial-aid processing services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "College Aid Services, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Outsourced financial-aid administration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Outsourced financial-aid administration services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "College Ave",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "College Board",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Nonprofit testing body; CSS Profile is aid software but core is assessments",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Drivestream",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Oracle/Workday implementation consultancy (integrator)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Oracle/Workday implementation consultancy (integrator)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Earnest",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ECMC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit student-loan guarantor and servicer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit student-loan guarantor and servicer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ECSI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Campus loan servicer (institutional/Perkins loans) and billing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Campus loan servicer (institutional/Perkins loans) and billing services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Edamerica",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student loan servicing and collections",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student loan servicing and collections",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Eide Bailly",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Accounting and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Accounting and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ELFI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender (Education Loan Finance)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender (Education Loan Finance)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Ellucian",
+   "website": null
+  },
+  {
+   "name": "ELM Resources",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Platform schools use to compare, certify and disburse private loans (ELMSelect/ELMOne)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Platform schools use to compare, certify and disburse private loans (ELMSelect/ELMOne)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Financial Aid Services",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Generic phrase; could be a firm or page text, cannot place it",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Funding U",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "GradBridge Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student loan lender (own site: second-look student loans)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student loan lender (own site: second-look student loans)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "HighPoint Technology Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "PeopleSoft Campus Solutions consultancy with add-on products; product vs services unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Huron",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Inceptia",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit financial-aid and default-prevention services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit financial-aid and default-prevention services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "LendKey",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student lending marketplace for credit unions; a lender channel",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student lending marketplace for credit unions; a lender channel",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Massachusetts Educational Financing Authority",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: State education financing authority (lender)",
+   "read": {
+    "verdict": "supplier",
+    "why": "State education financing authority (lender)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "McClintock & Associates, P.C.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CPA firm (financial-aid compliance audits)",
+   "read": {
+    "verdict": "supplier",
+    "why": "CPA firm (financial-aid compliance audits)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Meadow, Inc.",
+   "website": null
+  },
+  {
+   "name": "MOHELA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federal student loan servicer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federal student loan servicer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Monogram",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student-loan program services for lenders and schools; lending, not gov software",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student-loan program services for lenders and schools; lending, not gov software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "NASFAA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Host association (NASFAA)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Host association (NASFAA)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "National Student Clearinghouse",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Nonprofit selling enrollment, degree verification and data services to colleges",
+   "read": {
+    "verdict": "vendor",
+    "why": "Nonprofit selling enrollment, degree verification and data services to colleges",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Navy Federal Credit Union",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Credit union (lender)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Credit union (lender)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Nelnet Bank",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bank (lender)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bank (lender)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Portico",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place which Portico this is",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ProEducation Solutions, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Financial-aid compliance consulting and training",
+   "read": {
+    "verdict": "supplier",
+    "why": "Financial-aid compliance consulting and training",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Regent Education",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Financial-aid automation software (Regent Award)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Financial-aid automation software (Regent Award)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Sallie",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sallie Mae, private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sallie Mae, private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ScholarNet",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot place; site returned no text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Sigma Systems, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Student aid management software (ProSAM Suite) per own site",
+   "read": {
+    "verdict": "vendor",
+    "why": "Student aid management software (ProSAM Suite) per own site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SoFi",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private student lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private student lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "South Carolina Student Loan Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: State student loan lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "State student loan lender",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Student Connections",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Likely a nonprofit aid outreach programme; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 55,
+ "quality_was": "menu"
+}

@@ -3,9 +3,8 @@
  "conference": "NAFA I&E",
  "found": false,
  "source_url": "https://www.nafainstitute.org/exhibitors-sponsors/",
- "source_note": "Read from https://www.nafainstitute.org/exhibitors-sponsors/ by scripts/sweep_exhibitors.py. 20 name(s), 20 with a website the page itself linked. Quality: good (20% carry a corporate marker, 0% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Rendered in a browser from https://www.nafainstitute.org/exhibitors-sponsors/ by scripts/render_floor.py (robots.txt asked at every hop). 22 name(s), 22 with a website the page linked. Quality: menu (23% carry a corporate marker, 0% name a site section, 36% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
  "exhibitors": [],
- "why": "reader: every one of the 19 names was the site's own text, not an exhibitor; this page is not a floor",
- "restaged": "20 -> 19 names after re-filtering on 2026-09-02",
- "read_dropped": 19
+ "why": "reader: every one of the 22 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 22
 }

@@ -1537,7 +1537,7 @@
   "year_founded": 2017,
   "sector": "Public Safety",
   "category": "Police",
-  "description": "License plate readers, gunshot detection, and drone-as-first-responder (Aerodome)",
+  "description": "License plate readers, gunshot detection, and drone-as-first-responder (Aerodome) - exhibited at ITS America 2026",
   "ats": {
    "type": "ashby",
    "ref": "flock safety"
@@ -1550,7 +1550,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "IACP 2026",
+  "source": "IACP 2026; ITS America 2026",
   "researched": true,
   "competitors": [
    {
@@ -6323,7 +6323,7 @@
   "year_founded": 2017,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "School bus stop-arm cameras with violator-funded safety programs",
+  "description": "School bus stop-arm cameras with violator-funded safety programs - exhibited at ITS America 2026",
   "ats": {
    "type": "ashby",
    "ref": "buspatrol"
@@ -6336,7 +6336,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "NSA 2026",
+  "source": "NSA 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -8273,7 +8273,7 @@
   "year_founded": 2000,
   "sector": "Public Works",
   "category": "Fleet & Asset Mgmt",
-  "description": "Fleet telematics with one of the largest municipal footprints - exhibited at NAFA I&E 2026",
+  "description": "Fleet telematics with one of the largest municipal footprints - exhibited at NAFA I&E 2026, ITS America 2026",
   "ats": {
    "type": "greenhouse",
    "ref": "geotab"
@@ -8307,7 +8307,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "PWX 2026; NAFA I&E 2026",
+  "source": "PWX 2026; NAFA I&E 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -8673,7 +8673,7 @@
   "year_founded": 1999,
   "sector": "General Gov",
   "category": "Citizen Services",
-  "description": "Resident communications (govDelivery), meeting and agenda management, digital services; destination marketing as Simpleview, now Granicus Destinations - exhibited at 3CMA 2026, GMIS International 2026, APHSA 2026",
+  "description": "Resident communications (govDelivery), meeting and agenda management, digital services; destination marketing as Simpleview, now Granicus Destinations - exhibited at 3CMA 2026, GMIS International 2026, APHSA 2026, ICC 2026",
   "ats": {
    "type": "icims",
    "ref": "careers-granicus"
@@ -8757,7 +8757,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NACo 2026; NSA 2026; 3CMA 2026; GMIS International 2026; APHSA 2026",
+  "source": "ICMA 2025; NACo 2026; NSA 2026; 3CMA 2026; GMIS International 2026; APHSA 2026; ICC 2026",
   "researched": true,
   "also": [
    {
@@ -8940,7 +8940,7 @@
   "year_founded": 1994,
   "sector": "General Gov",
   "category": "Citizen Services",
-  "description": "Municipal websites, 311/CRM, mass notification, and agenda software - exhibited at NLC City Summit 2026, AWWA ACE 2026, 3CMA 2026, WEFTEC 2026, StormCon 2026, APTA 2026, NIGP 2026, NRPA 2026",
+  "description": "Municipal websites, 311/CRM, mass notification, and agenda software - exhibited at NLC City Summit 2026, AWWA ACE 2026, 3CMA 2026, WEFTEC 2026, StormCon 2026, APTA 2026, NIGP 2026, NRPA 2026, ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://jobs.jobvite.com/civicplus/search"
@@ -8960,7 +8960,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; ICMA 2025; NACo 2026; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; NLC City Summit 2026; AWWA ACE 2026; 3CMA 2026; WEFTEC 2026; StormCon 2026",
+  "source": "APTA 2026; ICMA 2025; NACo 2026; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; NLC City Summit 2026; AWWA ACE 2026; 3CMA 2026; WEFTEC 2026; StormCon 2026; ICC 2026",
   "researched": true,
   "buyer": "General government (clerks, communications, IT), with public works, parks/recreation, utilities and special districts as department buyers; public sector only. No stormwater-specific product found \u2014 Public Works page offers 311 CRM and general asset management.",
   "buyer_source": "StormCon Expo run 2026-09-10",
@@ -9233,7 +9233,7 @@
   "year_founded": 1999,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Permitting, licensing, and code enforcement platform for state and local government - exhibited at NLC City Summit 2026, ICMA 2026, NRPA 2026",
+  "description": "Permitting, licensing, and code enforcement platform for state and local government - exhibited at NLC City Summit 2026, ICMA 2026, NRPA 2026, ICC 2026",
   "ats": {
    "type": "greenhouse",
    "ref": "accela"
@@ -9246,7 +9246,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NRPA 2026; ICMA 2026; NLC City Summit 2026",
+  "source": "ICMA 2025; NRPA 2026; ICMA 2026; NLC City Summit 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -9357,7 +9357,7 @@
   "year_founded": 2012,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2026, NRPA 2026",
+  "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2026, NRPA 2026, ICC 2026",
   "ats": {
    "type": "ashby",
    "ref": "opengov"
@@ -9411,7 +9411,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; NACE 2026; AWWA ACE 2026; GMIS International 2026; Maryland Municipal League 2026; WEFTEC 2026",
+  "source": "ICMA 2025; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; NACE 2026; AWWA ACE 2026; GMIS International 2026; Maryland Municipal League 2026; WEFTEC 2026; ICC 2026",
   "researched": true,
   "buyer": "General government, led by finance (ERP, budgeting, procurement); also public works (asset management), community development (permitting), utilities (utility billing), and some school districts and transit agencies. Public sector only.",
   "sells_to_gov": "yes",
@@ -9518,7 +9518,7 @@
   "year_founded": 2008,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Community development permitting and licensing software (founded as BasicGov)",
+  "description": "Community development permitting and licensing software (founded as BasicGov) - exhibited at ICC 2026",
   "ats": {
    "type": "greenhouse",
    "ref": "clariticloudinc"
@@ -9531,7 +9531,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "direct add",
+  "source": "direct add; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -9666,7 +9666,7 @@
   "year_founded": 2023,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "AI permitting and licensing platform: 24/7 resident assistant, AI code-compliance review - exhibited at NLC City Summit 2026, Maryland Municipal League 2026",
+  "description": "AI permitting and licensing platform: 24/7 resident assistant, AI code-compliance review - exhibited at NLC City Summit 2026, Maryland Municipal League 2026, ICC 2026",
   "ats": {
    "type": "ashby",
    "ref": "govwell"
@@ -9690,7 +9690,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NACo 2026; ICMA 2026; NLC City Summit 2026; Maryland Municipal League 2026",
+  "source": "ICMA 2025; NACo 2026; ICMA 2026; NLC City Summit 2026; Maryland Municipal League 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -9791,7 +9791,7 @@
   "year_founded": 2021,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "AI cameras on city fleet vehicles detect blight, graffiti, dumping for code enforcement - exhibited at NLC City Summit 2026, Smart Cities Connect 2026",
+  "description": "AI cameras on city fleet vehicles detect blight, graffiti, dumping for code enforcement - exhibited at NLC City Summit 2026, Smart Cities Connect 2026, ICC 2026",
   "ats": {
    "type": "gem",
    "ref": "citydetect"
@@ -9810,7 +9810,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; PWX 2026; ICMA 2026; NLC City Summit 2026; Smart Cities Connect 2026",
+  "source": "ICMA 2025; PWX 2026; ICMA 2026; NLC City Summit 2026; Smart Cities Connect 2026; ICC 2026",
   "researched": true,
   "posts_at": {
    "where": "own",
@@ -9928,7 +9928,7 @@
   "year_founded": 1966,
   "sector": "General Gov",
   "category": "Finance & ERP",
-  "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026",
+  "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.tylertech.com/careers/job-listings"
@@ -9948,7 +9948,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026",
+  "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026",
   "researched": true,
   "also": [
    {
@@ -11434,7 +11434,7 @@
   "year_founded": 1998,
   "sector": "Parks & Rec",
   "category": "Recreation Management",
-  "description": "Membership and operations software for YMCAs, JCCs, and community rec centers",
+  "description": "Membership and operations software for YMCAs, JCCs, and community rec centers - exhibited at AB Show 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.daxko.com/company/job-listings"
@@ -12897,7 +12897,7 @@
   "year_founded": 1997,
   "sector": "K-12 Schools",
   "category": "Operations & SIS",
-  "description": "Student information system giant plus enrollment, comms, and analytics - exhibited at CoSN 2026",
+  "description": "Student information system giant plus enrollment, comms, and analytics - exhibited at CoSN 2026, AASA 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.powerschool.com/company/careers/"
@@ -12910,7 +12910,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "direct add; CoSN 2026",
+  "source": "direct add; CoSN 2026; AASA 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -13376,7 +13376,7 @@
   "year_founded": 1951,
   "sector": "Transit & Parking",
   "category": "Fare & Payments",
-  "description": "Fare collection giant behind OMNY, Opal, and Oyster; ITS systems - exhibited at CTAA EXPO 2026, APTA 2026",
+  "description": "Fare collection giant behind OMNY, Opal, and Oyster; ITS systems - exhibited at CTAA EXPO 2026, APTA 2026, ITS America 2026",
   "ats": {
    "type": "workday",
    "ref": [
@@ -13404,7 +13404,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; CTAA EXPO 2026",
+  "source": "APTA 2026; CTAA EXPO 2026; ITS America 2026",
   "researched": true,
   "buyer": "Transit agencies (fare collection / intelligent transportation division); Cubic's separate Defense unit sells mission systems to defense and intelligence agencies",
   "sells_to_gov": "yes",
@@ -15117,7 +15117,7 @@
   "year_founded": 2019,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "iPhone-lidar sidewalk and curb-ramp inspection for ADA transition plans, ArcGIS-integrated; 120+ munis",
+  "description": "iPhone-lidar sidewalk and curb-ramp inspection for ADA transition plans, ArcGIS-integrated; 120+ munis - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -15130,7 +15130,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "PWX 2026; TechConnect 2026",
+  "source": "PWX 2026; TechConnect 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -19101,7 +19101,7 @@
   "year_founded": 2010,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Cloud e-permitting and community development software for ~500 local governments (Finnish-born)",
+  "description": "Cloud e-permitting and community development software for ~500 local governments (Finnish-born) - exhibited at ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://cloudpermit.com/open-positions"
@@ -19121,7 +19121,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NIGP 2026; PWX 2026",
+  "source": "ICMA 2025; NIGP 2026; PWX 2026; ICC 2026",
   "researched": true,
   "posts_at": {
    "where": "own",
@@ -19257,7 +19257,7 @@
   "year_founded": 2000,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Code enforcement, citizen request, and licensing software for small and mid-size agencies - exhibited at Maryland Municipal League 2026",
+  "description": "Code enforcement, citizen request, and licensing software for small and mid-size agencies - exhibited at Maryland Municipal League 2026, ICC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -19270,7 +19270,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; Maryland Municipal League 2026",
+  "source": "ICMA 2025; Maryland Municipal League 2026; ICC 2026",
   "researched": true
  },
  {
@@ -19416,7 +19416,7 @@
   "year_founded": 2018,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Rentalscape: AI parcel data for short-term rental compliance and tax recovery in 400+ jurisdictions - exhibited at NLC City Summit 2026",
+  "description": "Rentalscape: AI parcel data for short-term rental compliance and tax recovery in 400+ jurisdictions - exhibited at NLC City Summit 2026, ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://deckard.bamboohr.com"
@@ -19429,7 +19429,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NACo 2026; ICMA 2026; NLC City Summit 2026",
+  "source": "ICMA 2025; NACo 2026; ICMA 2026; NLC City Summit 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -19558,7 +19558,7 @@
   "year_founded": 2014,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "BuildingBlocks property data platform: vacancy, blight, and code insights for cities",
+  "description": "BuildingBlocks property data platform: vacancy, blight, and code insights for cities - exhibited at ICC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -19571,7 +19571,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025",
+  "source": "ICMA 2025; ICC 2026",
   "researched": true
  },
  {
@@ -23422,7 +23422,7 @@
   "year_founded": 2014,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Cloud permitting, licensing, code enforcement, and GIS workflows for local governments - exhibited at GFOA 2026",
+  "description": "Cloud permitting, licensing, code enforcement, and GIS workflows for local governments - exhibited at GFOA 2026, ICC 2026",
   "ats": {
    "type": "rippling",
    "ref": "sdl"
@@ -23441,7 +23441,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "NACo 2026; GFOA 2026",
+  "source": "NACo 2026; GFOA 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -23542,7 +23542,7 @@
   "year_founded": 2011,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Permitting and code enforcement platform licensed to local govs by quasi-governmental SCPDC (commission est. 1968)",
+  "description": "Permitting and code enforcement platform licensed to local govs by quasi-governmental SCPDC (commission est. 1968) - exhibited at ICC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -23555,7 +23555,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "direct add",
+  "source": "direct add; ICC 2026",
   "researched": true
  },
  {
@@ -26394,7 +26394,7 @@
   "year_founded": 2013,
   "sector": "Public Works",
   "category": "Fleet & Asset Mgmt",
-  "description": "AI fleet platform: telematics, dashcams, spend - with a dedicated public-sector offering - exhibited at NAFA I&E 2026, SWANA WASTECON 2025, APTA 2026",
+  "description": "AI fleet platform: telematics, dashcams, spend - with a dedicated public-sector offering - exhibited at NAFA I&E 2026, SWANA WASTECON 2025, APTA 2026, NAPT Summit 2026",
   "ats": {
    "type": "greenhouse",
    "ref": "gomotive"
@@ -26518,7 +26518,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; PWX 2026; NAFA I&E 2026; SWANA WASTECON 2025",
+  "source": "APTA 2026; PWX 2026; NAFA I&E 2026; SWANA WASTECON 2025; NAPT Summit 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -27152,7 +27152,7 @@
   "year_founded": 2018,
   "sector": "Public Works",
   "category": "Fleet & Asset Mgmt",
-  "description": "Mobile-first CMMS unicorn for maintenance ops, with a growing government vertical - exhibited at NRPA 2026",
+  "description": "Mobile-first CMMS unicorn for maintenance ops, with a growing government vertical - exhibited at NRPA 2026, IFMA World Workplace 2026",
   "ats": {
    "type": "ashby",
    "ref": "maintainx"
@@ -27251,7 +27251,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "NRPA 2026; PWX 2026",
+  "source": "NRPA 2026; PWX 2026; IFMA World Workplace 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -27956,7 +27956,7 @@
   "year_founded": 2014,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "AI detection of pavement markings and road defects from crowdsourced dashcams (Bentley Systems)",
+  "description": "AI detection of pavement markings and road defects from crowdsourced dashcams (Bentley Systems) - exhibited at ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://jobs.bentley.com"
@@ -27969,7 +27969,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "PWX 2026",
+  "source": "PWX 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -28512,7 +28512,7 @@
   "year_founded": 2019,
   "sector": "Public Works",
   "category": "Water",
-  "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026",
+  "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026, ICC 2026",
   "ats": {
    "type": "ashby",
    "ref": "forerunner"
@@ -28531,7 +28531,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "PWX 2026; StormCon 2026",
+  "source": "PWX 2026; StormCon 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -29303,7 +29303,7 @@
   "year_founded": 2001,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Cloud permitting, plan review, inspections, and code enforcement for local gov and fire districts",
+  "description": "Cloud permitting, plan review, inspections, and code enforcement for local gov and fire districts - exhibited at ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.geocivix.com/careers"
@@ -29316,7 +29316,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; PWX 2026",
+  "source": "ICMA 2025; PWX 2026; ICC 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -29417,7 +29417,7 @@
   "year_founded": 2006,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "ProjectDox electronic plan review for building, fire, planning, and public works agencies - exhibited at ICMA 2026",
+  "description": "ProjectDox electronic plan review for building, fire, planning, and public works agencies - exhibited at ICMA 2026, ICC 2026",
   "ats": {
    "type": "jazzhr",
    "ref": "avolvesoftwaregroup"
@@ -29436,7 +29436,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "direct add; ICMA 2026",
+  "source": "direct add; ICMA 2026; ICC 2026",
   "researched": true,
   "also_known_as": [
    "Avolve"
@@ -37345,7 +37345,7 @@
   "year_founded": 2018,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "AI cameras detecting phone use, seatbelt, and speed violations for road authorities",
+  "description": "AI cameras detecting phone use, seatbelt, and speed violations for road authorities - exhibited at ITS America 2026",
   "ats": {
    "type": "workable",
    "ref": "acusensus-united-states"
@@ -37358,7 +37358,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "IACP 2026",
+  "source": "IACP 2026; ITS America 2026",
   "researched": true,
   "board_owner": "Acusensus United States",
   "profile": {
@@ -40165,7 +40165,7 @@
   "year_founded": 2025,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Agent-native AI 'GovOS' for local gov permitting, licensing, and procurement (~$55M Series A, ex-DeepMind) - exhibited at ICMA 2026, NIGP 2026",
+  "description": "Agent-native AI 'GovOS' for local gov permitting, licensing, and procurement (~$55M Series A, ex-DeepMind) - exhibited at ICMA 2026, NIGP 2026, ICC 2026",
   "ats": {
    "type": "ashby",
    "ref": "brainco"
@@ -40178,7 +40178,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "NIGP 2026; ICMA 2026",
+  "source": "NIGP 2026; ICMA 2026; ICC 2026",
   "researched": true
  },
  {
@@ -44493,7 +44493,7 @@
   "year_founded": 2025,
   "sector": "Parks & Rec",
   "category": "Suppliers & Services",
-  "description": "Sensor-based equipment intelligence: machine usage, occupancy, and preventative maintenance for fitness facilities",
+  "description": "Sensor-based equipment intelligence: machine usage, occupancy, and preventative maintenance for fitness facilities - exhibited at AB Show 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -44517,7 +44517,7 @@
   "year_founded": 2018,
   "sector": "Parks & Rec",
   "category": "Grounds, Irrigation & Turf",
-  "description": "Autonomous mowing software retrofitting commercial mowers, sold via OEMs to grounds and parks crews",
+  "description": "Autonomous mowing software retrofitting commercial mowers, sold via OEMs to grounds and parks crews - exhibited at AB Show 2026",
   "ats": {
    "type": "jazzhr",
    "ref": "greenzie"
@@ -44636,7 +44636,7 @@
   "year_founded": 1991,
   "sector": "Parks & Rec",
   "category": "Aquatics",
-  "description": "BECSys pool chemistry automation controllers with cloud remote monitoring for municipal aquatic centers",
+  "description": "BECSys pool chemistry automation controllers with cloud remote monitoring for municipal aquatic centers - exhibited at AB Show 2026",
   "ats": {
    "type": "paylocity",
    "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/6eb7eeec-a57c-496e-a69d-bc4237f8f773/BECS-TECHNOLOGY-INC"
@@ -44761,7 +44761,7 @@
   "year_founded": 1972,
   "sector": "Parks & Rec",
   "category": "Aquatics",
-  "description": "Aquatic timing systems, touchpads, scoreboards, and meet management software for municipal pools (PlayCore)",
+  "description": "Aquatic timing systems, touchpads, scoreboards, and meet management software for municipal pools (PlayCore) - exhibited at AB Show 2026",
   "ats": {
    "type": "html",
    "ref": "https://coloradotime.com/employment"
@@ -44912,7 +44912,7 @@
   "year_founded": 2015,
   "sector": "Parks & Rec",
   "category": "Grounds, Irrigation & Turf",
-  "description": "GPS-guided autonomous field line-marking robots with cloud field design for parks, schools, and municipalities - exhibited at NRPA 2026",
+  "description": "GPS-guided autonomous field line-marking robots with cloud field design for parks, schools, and municipalities - exhibited at NRPA 2026, AB Show 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -44925,7 +44925,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "NIGP 2026; NRPA 2026",
+  "source": "NIGP 2026; NRPA 2026; AB Show 2026",
   "researched": true
  },
  {
@@ -44936,7 +44936,7 @@
   "year_founded": 2011,
   "sector": "Parks & Rec",
   "category": "Youth Sports & Leagues",
-  "description": "Sports registration and event management SaaS for state games associations, campus rec, and leagues (ex-RaceReach)",
+  "description": "Sports registration and event management SaaS for state games associations, campus rec, and leagues (ex-RaceReach) - exhibited at AB Show 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -52606,7 +52606,7 @@
   "year_founded": 2019,
   "sector": "Transit & Parking",
   "category": "Demand-Response & AV",
-  "description": "Turnkey autonomous shuttle operations for transit agencies, airports, and communities - exhibited at APTA 2026",
+  "description": "Turnkey autonomous shuttle operations for transit agencies, airports, and communities - exhibited at APTA 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://ridebeep.com/careers"
@@ -52619,7 +52619,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
+  "source": "APTA 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -52747,7 +52747,7 @@
   "year_founded": 2018,
   "sector": "Transit & Parking",
   "category": "Demand-Response & AV",
-  "description": "flowride.ai SAE Level-4 automated driving software retrofitted onto full-size electric transit buses - exhibited at APTA 2026",
+  "description": "flowride.ai SAE Level-4 automated driving software retrofitted onto full-size electric transit buses - exhibited at APTA 2026, ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -52760,7 +52760,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
+  "source": "APTA 2026; ITS America 2026",
   "researched": true,
   "buyer": "Bus OEMs (e.g. Karsan) are the direct buyer; transit agencies and mobility operators are the end deployer of the automated buses",
   "sells_to_gov": "yes",
@@ -53135,7 +53135,7 @@
   "year_founded": 2011,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Connected-vehicle ITS and the Glance smart-city platform: signal monitoring, preemption, school beacons - exhibited at IAFC FRI 2026, APTA 2026",
+  "description": "Connected-vehicle ITS and the Glance smart-city platform: signal monitoring, preemption, school beacons - exhibited at IAFC FRI 2026, APTA 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://appinfoinc.com/careers"
@@ -53148,7 +53148,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; IAFC FRI 2026",
+  "source": "APTA 2026; IAFC FRI 2026; ITS America 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -54232,7 +54232,7 @@
   "year_founded": 2003,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
-  "description": "Text-to-speech voice software - exhibited at APTA 2026",
+  "description": "Text-to-speech voice software - exhibited at APTA 2026, ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -54245,7 +54245,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
+  "source": "APTA 2026; ITS America 2026",
   "researched": false,
   "profile": {
    "paragraphs": [
@@ -54347,7 +54347,7 @@
   "year_founded": 1983,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
-  "description": "Control room video wall visualization software - exhibited at APTA 2026",
+  "description": "Control room video wall visualization software - exhibited at APTA 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.activu.com/careers"
@@ -54360,7 +54360,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026",
+  "source": "APTA 2026; ITS America 2026",
   "researched": false,
   "buyer": "mixed \u2014 utilities, transportation/transit, public safety, and federal government/defense agencies are named alongside corporate enterprise and sports/entertainment control rooms; government/public-mission sectors appear to be the larger part of the customer list",
   "sells_to_gov": "yes",
@@ -54589,7 +54589,7 @@
   "year_founded": 2006,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025",
+  "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025, ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -54602,7 +54602,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025",
+  "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025; ITS America 2026",
   "researched": false,
   "notes": [
    {
@@ -58771,7 +58771,7 @@
   "year_founded": null,
   "sector": "Transit & Parking",
   "category": "Suppliers & Services",
-  "description": "Enterprise software and IT for agencies - exhibited at APTA 2026, GFOA 2026, NASWA 2025, APHSA 2026, AIRA 2026, MESC 2026, NAMPI 2026",
+  "description": "Enterprise software and IT for agencies - exhibited at APTA 2026, GFOA 2026, NASWA 2025, APHSA 2026, AIRA 2026, MESC 2026, NAMPI 2026, IFMA World Workplace 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.ibm.com/us-en/careers"
@@ -58784,7 +58784,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "APTA 2026; GFOA 2026; NASWA 2025; APHSA 2026; AIRA 2026; MESC 2026; NAMPI 2026",
+  "source": "APTA 2026; GFOA 2026; NASWA 2025; APHSA 2026; AIRA 2026; MESC 2026; NAMPI 2026; IFMA World Workplace 2026",
   "researched": false,
   "buyer": "General government (IBM maintains a dedicated government-industry practice covering cloud, AI, cybersecurity, and citizen-experience tools); government is one of many industry verticals IBM sells into, alongside a much larger private-enterprise business \u2014 not stated as primary",
   "sells_to_gov": "yes",
@@ -59137,7 +59137,7 @@
   "year_founded": 2002,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "ERP and asset management software - exhibited at ICMA 2025, GFOA 2026, Healthcare IT Connect 2026",
+  "description": "ERP and asset management software - exhibited at ICMA 2025, GFOA 2026, Healthcare IT Connect 2026, ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.infor.com/about/careers"
@@ -59150,7 +59150,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2025; GFOA 2026; Healthcare IT Connect 2026",
+  "source": "ICMA 2025; GFOA 2026; Healthcare IT Connect 2026; ICC 2026",
   "researched": false,
   "also_known_as": [
    "Infor Public Sector"
@@ -62222,7 +62222,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Enterprise database, cloud and ERP software - exhibited at IACP 2026, NSA 2026, GFOA 2026, PSHRA 2026, NatCon 2026, APTA 2026",
+  "description": "Enterprise database, cloud and ERP software - exhibited at IACP 2026, NSA 2026, GFOA 2026, PSHRA 2026, NatCon 2026, APTA 2026, ICC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -62235,7 +62235,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "IACP 2026; NSA 2026; GFOA 2026; PSHRA 2026; NatCon 2026; APTA 2026",
+  "source": "IACP 2026; NSA 2026; GFOA 2026; PSHRA 2026; NatCon 2026; APTA 2026; ICC 2026",
   "researched": false,
   "also_known_as": [
    "Oracle Corporation"
@@ -62279,7 +62279,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "IT & AI Platforms",
-  "description": "Cybersecurity software and network security platforms - exhibited at IACP 2026, NASCIO 2026, CoSN 2026, EDUCAUSE 2026",
+  "description": "Cybersecurity software and network security platforms - exhibited at IACP 2026, NASCIO 2026, CoSN 2026, EDUCAUSE 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.paloaltonetworks.com/careers"
@@ -62299,7 +62299,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "IACP 2026; NASCIO 2026; CoSN 2026; EDUCAUSE 2026",
+  "source": "IACP 2026; NASCIO 2026; CoSN 2026; EDUCAUSE 2026; ITS America 2026",
   "researched": false,
   "posts_at": {
    "where": "own",
@@ -68451,7 +68451,7 @@
   "year_founded": 1969,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Vantage detection sensors and ClearMobility traffic software for DOTs, counties, cities (Almaviva-owned) - exhibited at NLC City Summit 2026",
+  "description": "Vantage detection sensors and ClearMobility traffic software for DOTs, counties, cities (Almaviva-owned) - exhibited at NLC City Summit 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.iteris.com/careers"
@@ -68465,7 +68465,7 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "ICMA 2026; NLC City Summit 2026",
+  "source": "ICMA 2026; NLC City Summit 2026; ITS America 2026",
   "profile": {
    "paragraphs": [
     "Iteris sells cloud-enabled solutions delivered through its ClearMobility Platform, which monitor, visualize and optimize mobility infrastructure and help bridge legacy technology silos. The company also supplies advanced detection sensors and traffic signal design, timing and synchronization services to transportation agencies. On its ESG page Iteris says it has completed more than 3,000 traffic signal timing, coordination or synchronization projects covering over 27,000 intersections across 20 states.",
@@ -69575,7 +69575,7 @@
   "year_founded": 1998,
   "sector": "Airports & Aviation",
   "category": "Security & Screening",
-  "description": "Electronic key-centric access control: programmable CyberKey smart keys, retrofit electronic lock cylinders and CyberAudit management software for auditing and scheduling access to gates, cabinets and remote assets. - exhibited at AWWA ACE 2026",
+  "description": "Electronic key-centric access control: programmable CyberKey smart keys, retrofit electronic lock cylinders and CyberAudit management software for auditing and scheduling access to gates, cabinets and remote assets. - exhibited at AWWA ACE 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://cyberlock.com/contact-us/careers/"
@@ -69589,7 +69589,7 @@
   "govtech": true,
   "researched": true,
   "vendor_type": "GovTech Product",
-  "source": "AAAE 2026; AWWA ACE 2026"
+  "source": "AAAE 2026; AWWA ACE 2026; ITS America 2026"
  },
  {
   "id": "designa",
@@ -86234,7 +86234,7 @@
   "year_founded": 2002,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Tolling, enforcement and traffic management systems for state and city agencies",
+  "description": "Tolling, enforcement and traffic management systems for state and city agencies - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -86248,7 +86248,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep; ITS America 2026"
  },
  {
   "id": "yunex-traffic",
@@ -86632,7 +86632,7 @@
   "year_founded": 2016,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "AI intersection safety and V2X analytics for DOTs and cities",
+  "description": "AI intersection safety and V2X analytics for DOTs and cities - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -86646,7 +86646,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep; ITS America 2026"
  },
  {
   "id": "flow-labs",
@@ -86656,7 +86656,7 @@
   "year_founded": null,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Probe-data traffic signal performance and safety software for DOTs",
+  "description": "Probe-data traffic signal performance and safety software for DOTs - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -86670,7 +86670,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep; ITS America 2026"
  },
  {
   "id": "inrix",
@@ -86680,7 +86680,7 @@
   "year_founded": 2004,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Roadway speed, congestion and safety analytics for DOTs and MPOs",
+  "description": "Roadway speed, congestion and safety analytics for DOTs and MPOs - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -86694,7 +86694,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep"
+  "source": "competitor sweep; ITS America 2026"
  },
  {
   "id": "streetlight-data",
@@ -87177,7 +87177,7 @@
   "year_founded": 2015,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Safety Cloud digital alerting for DOT, fire and public works fleets - exhibited at IAFC FRI 2026",
+  "description": "Safety Cloud digital alerting for DOT, fire and public works fleets - exhibited at IAFC FRI 2026, ITS America 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.haasalert.com/careers"
@@ -87191,7 +87191,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; IAFC FRI 2026",
+  "source": "competitor sweep; IAFC FRI 2026; ITS America 2026",
   "profile": {
    "paragraphs": [
     "HAAS Alert sells a collision prevention service that sends real-time digital alerts warning drivers about nearby emergency vehicles and roadway hazards. Its customers are fleets that work at the roadside, including tow trucks, utility vehicles, waste management trucks, school buses and snowplows.",
@@ -87521,7 +87521,7 @@
   "year_founded": 2018,
   "sector": "Public Works",
   "category": "Streets",
-  "description": "Connected-vehicle road safety and network analytics for road authorities",
+  "description": "Connected-vehicle road safety and network analytics for road authorities - exhibited at ITS America 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -87535,7 +87535,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
+  "source": "competitor sweep; ITS America 2026",
   "profile": {
    "paragraphs": [
     "Compass IoT sells connected vehicle data for road networks, taken from the cars themselves rather than roadside equipment or phones. The company says more than 3,000 users globally use its connected vehicle data to understand traffic across their road networks. Its Road Intelligence platform presents that network-wide vehicle data in a browser.",
@@ -93884,7 +93884,7 @@
   "year_founded": 1995,
   "sector": "Public Works",
   "category": "Fleet & Asset Mgmt",
-  "description": "Facilities, EAM and CMMS software for public agencies and schools - exhibited at EDUCAUSE 2026",
+  "description": "Facilities, EAM and CMMS software for public agencies and schools - exhibited at EDUCAUSE 2026, IFMA World Workplace 2026",
   "ats": {
    "type": "html",
    "ref": "https://careers.fortive.com/accruent/"
@@ -93898,7 +93898,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; EDUCAUSE 2026"
+  "source": "competitor sweep; EDUCAUSE 2026; IFMA World Workplace 2026"
  },
  {
   "id": "ifs",
@@ -109981,7 +109981,7 @@
   "year_founded": 2014,
   "sector": "K-12 Schools",
   "category": "Transportation",
-  "description": "School bus operations, driver pay and dispatch software for districts",
+  "description": "School bus operations, driver pay and dispatch software for districts - exhibited at NAPT Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -109995,7 +109995,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
+  "source": "competitor sweep; NAPT Summit 2026",
   "profile": {
    "paragraphs": [
     "Bytecurve sells operations software for school bus fleets, tying routing and GPS data into driver management, dispatching and payroll. The company pitches its payroll application as one that catches pay inconsistencies, and says it was built by people who worked in K12 transportation. Private student transportation contractors are one audience for it, and school districts are the other.",
@@ -118402,7 +118402,7 @@
   "year_founded": 1979,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "POSSE permitting, licensing and regulatory platform for state and local agencies",
+  "description": "POSSE permitting, licensing and regulatory platform for state and local agencies - exhibited at ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.computronix.com/careers"
@@ -118416,7 +118416,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
+  "source": "competitor sweep; ICC 2026",
   "profile": {
    "paragraphs": [
     "Computronix sells off-the-shelf software solutions for permitting, licensing, alcoholic beverage control, and gaming control. Those products run on POSSE, a web-based platform for automating permitting, licensing, enforcement and compliance workflows.",
@@ -119209,7 +119209,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "Electronic plan review software for building and public works departments",
+  "description": "Electronic plan review software for building and public works departments - exhibited at ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.eplansoft.com/careers"
@@ -119230,7 +119230,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep",
+  "source": "competitor sweep; ICC 2026",
   "posts_at": {
    "where": "own",
    "label": "their own careers page",
@@ -120034,7 +120034,7 @@
   "year_founded": 2018,
   "sector": "General Gov",
   "category": "Permitting & Licensing",
-  "description": "AI planning and building code assessment tools sold to councils and cities - exhibited at ICMA 2026, Smart Cities Connect 2026",
+  "description": "AI planning and building code assessment tools sold to councils and cities - exhibited at ICMA 2026, Smart Cities Connect 2026, ICC 2026",
   "ats": {
    "type": "html",
    "ref": "https://www.archistar.ai/careers/"
@@ -120048,7 +120048,7 @@
   "govtech": true,
   "researched": false,
   "vendor_type": "GovTech Product",
-  "source": "competitor sweep; ICMA 2026; Smart Cities Connect 2026",
+  "source": "competitor sweep; ICMA 2026; Smart Cities Connect 2026; ICC 2026",
   "profile": {
    "paragraphs": [
     "Archistar sells AI plan review software to local governments, with a product called AI PreCheck that speeds building code and zoning compliance checks so permits can be issued faster. The same platform is offered to developers, architects and certifiers, who can check compliance before submitting to a municipality or council.",
@@ -134651,7 +134651,7 @@
   "year_founded": 1968,
   "sector": "Higher Education",
   "category": "IT & Administration",
-  "description": "Student information, finance, and HCM systems for colleges and universities - exhibited at NACUBO 2026",
+  "description": "Student information, finance, and HCM systems for colleges and universities - exhibited at NACUBO 2026, NASFAA 2026",
   "ats": {
    "type": "html",
    "ref": "https://careers.ellucian.com/careers-home"
@@ -134664,7 +134664,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "conference sweep: NACUBO 2026",
+  "source": "conference sweep: NACUBO 2026; NASFAA 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -134774,7 +134774,7 @@
   "year_founded": 2021,
   "sector": "Higher Education",
   "category": "Business & Finance",
-  "description": "Student billing, payments, net price calculator, and pre-collections software for colleges and universities - exhibited at NACUBO 2026",
+  "description": "Student billing, payments, net price calculator, and pre-collections software for colleges and universities - exhibited at NACUBO 2026, NASFAA 2026",
   "ats": {
    "type": "ashby",
    "ref": "Meadow"
@@ -134787,7 +134787,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "conference sweep: NACUBO 2026",
+  "source": "conference sweep: NACUBO 2026; NASFAA 2026",
   "researched": true,
   "profile": {
    "paragraphs": [
@@ -165208,7 +165208,7 @@
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Emergency Mgmt",
-  "description": "Revcord sells call recording, voice logging and AI transcription software for 911 centers and public safety agencies, sold through certified dealers - exhibited at APCO 2026",
+  "description": "Revcord sells call recording, voice logging and AI transcription software for 911 centers and public safety agencies, sold through certified dealers - exhibited at APCO 2026, ICC 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -165221,7 +165221,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "conference sweep: APCO 2026",
+  "source": "conference sweep: APCO 2026; ICC 2026",
   "researched": true
  },
  {
@@ -165774,6 +165774,78 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: Illinois Chapter of APCO 2026",
+  "researched": true
+ },
+ {
+  "id": "blitzz-inc",
+  "name": "Blitzz, Inc",
+  "website": "https://blitzz.co/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
+  "description": "Sells Blitzz Inspect remote video inspection and BlitzzCam jobsite photo software to building departments, insurers and contractors - exhibited at ICC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: ICC 2026",
+  "researched": true
+ },
+ {
+  "id": "mitchell-humphrey-co",
+  "name": "Mitchell Humphrey & Co.",
+  "website": "https://mitchellhumphrey.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
+  "description": "Sells FastTrackGov permitting, licensing and code enforcement software and Financial Management Software to municipalities - exhibited at ICC 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: ICC 2026",
+  "researched": true
+ },
+ {
+  "id": "aiwaysion",
+  "name": "AIWaysion",
+  "website": "https://www.aiwaysion.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Public Works",
+  "category": "Streets",
+  "description": "Sells edge AI roadside devices and software for traffic data collection, road safety alerts, signal and V2X integration and parking monitoring to state and local DOTs - exhibited at ITS America 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: ITS America 2026",
   "researched": true
  }
 ]

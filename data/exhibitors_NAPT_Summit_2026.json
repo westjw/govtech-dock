@@ -3,7 +3,7 @@
  "conference": "NAPT Summit",
  "found": true,
  "source_url": "https://homebase.map-dynamics.com/napt2026/floorplan",
- "source_note": "Read in a real browser on 2026-09-10. map-dynamics draws the plan in JS and lists booth number then company name; the numbers are stripped and kept as booth. This event has no Categories tab, unlike CTAA on the same platform.",
+ "source_note": "Read in a real browser on 2026-09-10. map-dynamics draws the plan in JS and lists booth number then company name; the numbers are stripped and kept as booth. This event has no Categories tab, unlike CTAA on the same platform. Added 27 name(s) read in a browser from https://homebase.map-dynamics.com/napt2026/floorplan by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
   {
    "name": "247Security Inc.",
@@ -18,6 +18,18 @@
    "detail_url": null,
    "is_govtech": true,
    "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
+   "name": "Advantage One Powered by Geotab",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Geotab reseller",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geotab reseller",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "AlphaRoute",
@@ -122,12 +134,12 @@
    "website": null,
    "detail_url": null,
    "is_govtech": false,
-   "is_govtech_why": "reader: duplicate row; school bus crossing gates",
+   "is_govtech_why": "reader: Bus Gates: school bus safety hardware",
    "read": {
     "verdict": "supplier",
-    "why": "duplicate row; school bus crossing gates",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "why": "Bus Gates: school bus safety hardware",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -141,6 +153,18 @@
     "why": "IQ-branded bus telematics/software name",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Bus Upfitters",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bus upfitting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus upfitting services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -196,6 +220,18 @@
    }
   },
   {
+   "name": "Downtime Subrogation, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: insurance subrogation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance subrogation services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
    "name": "Easy Way Safety Services Inc",
    "website": null,
    "detail_url": null,
@@ -206,6 +242,18 @@
     "why": "child safety restraints for buses",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "ECO FLAPS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Eco Flaps: mud flaps maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Eco Flaps: mud flaps maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -229,6 +277,10 @@
    "is_govtech_why": "not judged yet - names only"
   },
   {
+   "name": "Federal Motor Carrier Safety Administration",
+   "website": null
+  },
+  {
    "name": "First Light Safety Products",
    "website": null,
    "detail_url": null,
@@ -247,6 +299,18 @@
    "detail_url": null,
    "is_govtech": false,
    "is_govtech_why": "nothing in the name either way"
+  },
+  {
+   "name": "Fleetsoft",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Fleetsoft: fleet maintenance software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Fleetsoft: fleet maintenance software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Gatekeeper Systems",
@@ -336,6 +400,18 @@
    }
   },
   {
+   "name": "Michelin North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Michelin: tyre maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Michelin: tyre maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
    "name": "Model 1 Commercial Vehicles",
    "website": null,
    "detail_url": null,
@@ -346,6 +422,22 @@
     "why": "commercial vehicle dealer",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "Motive",
+   "website": null
+  },
+  {
+   "name": "NAPT HQ",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: NAPT, host association booth",
+   "read": {
+    "verdict": "supplier",
+    "why": "NAPT, host association booth",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -382,6 +474,18 @@
    "is_govtech_why": "not judged yet - names only"
   },
   {
+   "name": "Power Grid Energy Solutions LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: energy solutions firm by name; not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "energy solutions firm by name; not software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
    "name": "Pro-Vision",
    "website": null,
    "detail_url": null,
@@ -392,6 +496,18 @@
     "why": "bus video and body camera systems",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "PTSI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pupil Transportation Safety Institute: training nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pupil Transportation Safety Institute: training nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -649,9 +765,32 @@
    "detail_url": null,
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
+  },
+  {
+   "name": "Zenobe",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Zenobe: EV batteries and charging as a service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Zenobe: EV batteries and charging as a service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Z\u016bm Services Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "school bus contractor with own tech platform; contractor vs tech vendor unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   }
  ],
- "read_dropped": 6,
+ "read_dropped": 17,
  "quality_was": null,
  "quality": "read"
 }

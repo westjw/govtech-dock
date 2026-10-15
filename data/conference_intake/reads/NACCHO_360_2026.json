@@ -211,9 +211,9 @@
   "file": "exhibitors_NACCHO_360_2026.json",
   "name": "Exhibit Hall Activity",
   "verdict": "not_a_company",
-  "why": "programme item in exhibit hall",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Programme label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NACCHO_360_2026.json",
@@ -371,9 +371,9 @@
   "file": "exhibitors_NACCHO_360_2026.json",
   "name": "NACCHO Membership Booth",
   "verdict": "not_a_company",
-  "why": "host association membership booth",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Host's own membership booth, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NACCHO_360_2026.json",
@@ -460,9 +460,9 @@
   "file": "exhibitors_NACCHO_360_2026.json",
   "name": "Pet Therapy",
   "verdict": "not_a_company",
-  "why": "conference wellness activity, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Exhibit hall activity",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NACCHO_360_2026.json",
@@ -523,10 +523,10 @@
  {
   "file": "exhibitors_NACCHO_360_2026.json",
   "name": "QA",
-  "verdict": "not_a_company",
-  "why": "two-letter fragment, likely Q&A",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "verdict": "unsure",
+  "why": "Bare two letters; may be app text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_NACCHO_360_2026.json",
@@ -671,5 +671,37 @@
   "why": "pharmaceutical company",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_NACCHO_360_2026.json",
+  "name": "DOWNLOAD",
+  "verdict": "not_a_company",
+  "why": "App control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NACCHO_360_2026.json",
+  "name": "Venue Map",
+  "verdict": "not_a_company",
+  "why": "Site link to venue brochure",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NACCHO_360_2026.json",
+  "name": "XML Sitemap",
+  "verdict": "not_a_company",
+  "why": "Site footer link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_NACCHO_360_2026.json",
+  "name": "↑ Back to Top",
+  "verdict": "not_a_company",
+  "why": "Site control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

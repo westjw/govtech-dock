@@ -1,12 +1,1056 @@
 {
  "event_tag": "ITS America 2026",
  "conference": "ITS America",
- "found": false,
+ "found": true,
  "source_url": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list.html",
- "source_note": "Read from https://www.itsamericaevents.com/expo/en-us/exhibitor-list.html by scripts/sweep_exhibitors.py. 37 name(s), 10 with a website the page itself linked. Quality: good (24% carry a corporate marker, 3% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 1 names was the site's own text, not an exhibitor; this page is not a floor",
- "restaged": "37 -> 33 names after re-filtering on 2026-09-02",
- "read_dropped": 33,
- "quality_was": "menu"
+ "source_note": "Rendered in a browser from https://www.itsamericaevents.com/expo/en-us/exhibitor-list.html by scripts/render_floor.py (robots.txt asked at every hop). 186 name(s), 160 with a website the page linked. Quality: good (35% carry a corporate marker, 1% name a site section, 6% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "2M Transformation Services",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.2m%20transformation%20services.org-2e9a5a4e-6ab7-4677-b185-65a063e8555b.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreadable; name suggests a services firm but not confirmed",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "360 Network Solutions, LLC",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.org-1bd33101-10f5-408b-8fe1-4ae74b7b4420.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreadable; name suggests network services/integrator but not confirmed",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "AAEON",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.aaeon.org-d0761a06-9950-4a51-a8cf-4fca882ad8e8.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial embedded computer hardware maker (ASUS group)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial embedded computer hardware maker (ASUS group)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Acapela",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.acapela%20group.org-7b84e908-d06c-4e0c-b706-7d646a690284.html"
+  },
+  {
+   "name": "Acapela Group",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.acapela%20group.org-7b84e908-d06c-4e0c-b706-7d646a690284.html"
+  },
+  {
+   "name": "Accenture",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.accenture.org-15874e00-52b9-46b9-99bf-acf9dcfaa500.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting and systems-integration firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting and systems-integration firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Activu",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.activu.org-d5db5ced-8142-4315-a633-bb6ff529e6d2.html"
+  },
+  {
+   "name": "Acusensus",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.acusensus.org-805ad22a-6158-4e9b-9f42-949bd8f73e6b.html"
+  },
+  {
+   "name": "ADASTEC Corp.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.adastec%20corp.org-07cf928c-7610-48c3-8c8d-0f4b85607cf8.html"
+  },
+  {
+   "name": "Aeva",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.aeva.org-a324d9d8-d61f-4d72-8c75-e1fa3fd986e7.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "4D lidar sensor maker, mainly automotive; ITS offer bundles partner software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Aeye",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.aeye.org-a268132d-cac7-40c0-8f06-c61b4c4ff399.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Lidar maker (auto/defense/space); OPTIS traffic system has software, core market not government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "AFL",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.afl.org-7f98b9da-bc40-45bf-868c-26a185f3944e.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fiber-optic cable and connectivity hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiber-optic cable and connectivity hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AIWaysion",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.aiwaysion.org-81b228e5-314d-4c6e-97e7-c1a1de0aa8be.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Edge-AI traffic data and hazard-warning systems deployed with state and local DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Edge-AI traffic data and hazard-warning systems deployed with state and local DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ALCEA",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.alcea.org-a9d2c036-43bd-429e-b3f7-515c55151bb4.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "ASSA ABLOY critical-infrastructure locking/access brand; mostly locks, some software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Altitude by Geotab",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.altitude%20by%20geotab.org-b394ba38-2984-4fdf-9212-0ef4677ec495.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Geotab transportation analytics platform for public agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Geotab transportation analytics platform for public agencies",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Amazon Web Services",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.gridmatrix.org-ec18a0a6-6594-4a58-87cd-87038bffe12c.html"
+  },
+  {
+   "name": "AMG Systems",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.amg%20systems.org-91053a65-79f0-4ca6-91ac-6ebfe2e19b75.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fiber/Ethernet transmission hardware maker for CCTV/ITS",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiber/Ethernet transmission hardware maker for CCTV/ITS",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "aNewVia",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.anewvia.org-fc7cf9b0-775c-483c-b90e-b3ffc91117a5.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Small crowdsourced roadway-data firm; product vs service unclear from its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Antaira Technologies",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.antaira%20technologies.org-81ec6fa6-93eb-4615-a1b0-f9a3d0659801.html"
+  },
+  {
+   "name": "Applied Concepts Inc",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.applied%20concepts%20inc.org-f355cdac-d982-4440-90bb-fa597042a41f.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: Stalker radar guns, lidar and speed signs maker; hardware first, software only analyses its own devices' data",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Stalker radar guns, lidar and speed signs maker; hardware first, software only analyses its own devices' data",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Applied Information",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.applied%20information.org-ea837b2e-43d5-4775-ae1c-9eb9dbad032e.html"
+  },
+  {
+   "name": "Arcadis",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.arcadis.org-d09d253a-cd45-43ea-b763-d7e504fb02c1.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering and design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and design consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Assa Abloy Opening Solutions",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.assa%20abloy%20opening%20solutions.org-a5728eac-a148-48d3-9d66-f5053982c713.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Door hardware and locks maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Door hardware and locks maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ASX",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.asx.org-c6deb5c3-5a6d-40c7-82b9-7f861a849415.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify ASX; no readable site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "AT&T Connected Solutions",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.att%20connected%20solutions.org-9dbe87f5-da24-4f79-a775-fe8ad35d6328.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Carrier selling connectivity/IoT service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Carrier selling connectivity/IoT service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AutoCrypt",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.autocrypt%20co%20ltd.org-caf79fca-e4bc-4964-b8c8-36e6f5d268e2.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: V2X and mobility security software",
+   "read": {
+    "verdict": "vendor",
+    "why": "V2X and mobility security software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Autocrypt Co., Ltd.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.autocrypt%20co%20ltd.org-caf79fca-e4bc-4964-b8c8-36e6f5d268e2.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: V2X and mobility security software",
+   "read": {
+    "verdict": "vendor",
+    "why": "V2X and mobility security software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AV",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.av.org-bb23cb39-ac99-4472-88ee-e9afd541c3a6.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Ambiguous two-letter name; possibly AeroVironment, site blocked",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Axis Communications Inc",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.axis%20communications%20inc.org-3c3b68ab-80bf-4acc-a555-71710ed8d790.html"
+  },
+  {
+   "name": "B&B Roadway",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.bb%20roadway.org-88ec7bfd-2e2a-4cd1-af0c-379b1e7b7c20.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Road closure gates and barrier hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Road closure gates and barrier hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "B&B Roadway & Security Solutions",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.bb%20roadway.org-88ec7bfd-2e2a-4cd1-af0c-379b1e7b7c20.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Road closure gates and barrier hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Road closure gates and barrier hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Beep, Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.beep%20inc.org-3f1f715b-30b5-4ba6-8b02-db029bba3fac.html"
+  },
+  {
+   "name": "Blyncsy",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.blyncsy%20a%20bentley%20systems%20company.org-297ea976-8cb3-4021-a012-16960215fc49.html"
+  },
+  {
+   "name": "Blyncsy, a Bentley Systems Company",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.blyncsy%20a%20bentley%20systems%20company.org-297ea976-8cb3-4021-a012-16960215fc49.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI roadway-condition analytics for transportation agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI roadway-condition analytics for transportation agencies",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Brainboxes",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.brainboxes.org-c49f6278-3112-4f19-a89c-06831caaa980.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial I/O and Ethernet hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial I/O and Ethernet hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Brandmotion",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.brandmotion.org-30ddcce8-49a0-4032-9834-64f6b69655fe.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Aftermarket vehicle camera/sensor hardware maker, per its site",
+   "read": {
+    "verdict": "supplier",
+    "why": "Aftermarket vehicle camera/sensor hardware maker, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "BusPatrol",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.buspatrol.org-c9388f24-2ab4-4a38-99ff-fcc5cfa748e8.html"
+  },
+  {
+   "name": "CARTO",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.carto.org-12737db8-a27c-4965-93ae-bfe6c2bc66cf.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Location-intelligence/GIS analytics platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Location-intelligence/GIS analytics platform",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Cavnue",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.cavnue.org-b33fc458-9cd9-4217-8629-8635514faa7c.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Smart-road intelligence platform deployed with state DOTs (now part of Consor)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Smart-road intelligence platform deployed with state DOTs (now part of Consor)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Chainzone Technology (Foshan) Co., Ltd.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.chainzone%20technology%20foshan%20co%20ltd.org-aa5824b3-b515-4a1e-a3ab-7dc06a5d6c8e.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: LED variable-message sign hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "LED variable-message sign hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Cisco Systems Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.cisco%20systems%20inc.org-ab858270-3c7f-4094-b00d-56f93f52a0f9.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Networking, security and collaboration technology widely sold to government",
+   "read": {
+    "verdict": "vendor",
+    "why": "Networking, security and collaboration technology widely sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Claro",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.claro.org-819a8a38-94a1-418d-8c28-9d2c08903390.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Telecom carrier / managed IT services provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Telecom carrier / managed IT services provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Clary Corp",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.clary%20corp.org-53aa057b-be42-48b9-91f2-a96832c992db.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: UPS/backup power hardware for traffic signals",
+   "read": {
+    "verdict": "supplier",
+    "why": "UPS/backup power hardware for traffic signals",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Clary Corporation",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.clary%20corp.org-53aa057b-be42-48b9-91f2-a96832c992db.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: UPS/backup power hardware for traffic signals",
+   "read": {
+    "verdict": "supplier",
+    "why": "UPS/backup power hardware for traffic signals",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CODEL International",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.codel%20international%20ltd.org-73118aa8-22d6-4408-aab6-25731531086d.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tunnel air-quality/visibility instrument maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tunnel air-quality/visibility instrument maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CODEL International Ltd",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.codel%20international%20ltd.org-73118aa8-22d6-4408-aab6-25731531086d.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tunnel air-quality/visibility instrument maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tunnel air-quality/visibility instrument maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Commsignia",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.commsignia.org-dde71111-d82b-4b6b-bc37-b4ab16c2a894.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: V2X roadside/onboard units with software stack, sold to road operators",
+   "read": {
+    "verdict": "vendor",
+    "why": "V2X roadside/onboard units with software stack, sold to road operators",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Comnet",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.comnet.org-ca534c17-1da3-4edf-b577-757c9e2acc2b.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fiber/Ethernet transmission hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiber/Ethernet transmission hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Compass IoT",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.ghd.org-624e6689-4cf7-45d4-b593-1e75c356f832.html"
+  },
+  {
+   "name": "Connected Signals",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.connected%20signals.org-be69f1c5-630f-4a65-8166-1c5cc3ad3ab8.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Cloud traffic-signal platform for transit priority and emergency preemption, per its site",
+   "read": {
+    "verdict": "vendor",
+    "why": "Cloud traffic-signal platform for transit priority and emergency preemption, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Cubic Transportation Systems",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.cubic%20transportation%20systems.org-a2454710-3475-464e-afe1-ad4a6dc49347.html"
+  },
+  {
+   "name": "Cyberlock",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.cyberlock.org-106764b3-93da-4224-85c6-a1b7190437ea.html"
+  },
+  {
+   "name": "cynapse.ai",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.cynapseai.org-bbc57af7-f6c1-4f13-8026-8768e00e70fd.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI video analytics for traffic and public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI video analytics for traffic and public safety",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Daktronics",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.daktronics.org-f592f67c-4e34-47c7-b284-bfb214c57068.html"
+  },
+  {
+   "name": "DeepWalk",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.deepwalk.org-c0ffb44e-c270-4818-a6c5-7c5cf28d10f1.html"
+  },
+  {
+   "name": "Deloitte",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.deloitte.org-c94c99b0-f5bc-4c5c-b077-66af38f1afaf.html"
+  },
+  {
+   "name": "DENSO Products and Services Americas Inc",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.denso%20products%20and%20services%20americas%20inc.org-4148a62a-0ae3-429a-b54c-2771bb7c7d0a.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: DENSO aftermarket/automotive parts arm; component maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "DENSO aftermarket/automotive parts arm; component maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Derq",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.derq.org-e4e426e3-7818-4704-a798-e27f393d3af7.html"
+  },
+  {
+   "name": "Dynamic Map Platform North America, Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.dynamic%20map%20platform%20north%20america%20inc.org-b0274e7c-114f-4092-8008-b3f8354a9b42.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: HD map and road data products",
+   "read": {
+    "verdict": "vendor",
+    "why": "HD map and road data products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "e-con Systems Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.e-con%20systems%20inc.org-cb8b6516-fbac-432f-b81d-93151db99e02.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Embedded camera module OEM maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Embedded camera module OEM maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "EdgeDX Co.,Ltd.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.edgedx%20coltd.org-3c72b316-2e72-4864-b7a6-00a89465a65a.html"
+  },
+  {
+   "name": "Encom Wireless",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.encom%20wireless%20data%20solutions%20inc.org-e9d3097a-da09-4b6b-87e7-002dcc4ae464.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wireless communications hardware maker for ITS, per its site",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wireless communications hardware maker for ITS, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Encom Wireless Data Solutions, Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.encom%20wireless%20data%20solutions%20inc.org-e9d3097a-da09-4b6b-87e7-002dcc4ae464.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Wireless communications hardware maker for ITS, per its site",
+   "read": {
+    "verdict": "supplier",
+    "why": "Wireless communications hardware maker for ITS, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "EnerSys",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.enersys.org-2fb8ad1e-7f68-4727-b144-d66ab98c1647.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Batteries and power systems maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Batteries and power systems maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "EtherWAN Systems",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.etherwan%20systems.org-b884d12b-5fed-4983-a655-3a3b05d4c4ec.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial Ethernet switch hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial Ethernet switch hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Ettifos",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.ettifos.org-13534dad-1259-4fa3-8981-f98136b24e1e.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: C-V2X roadside/onboard units and platform for DOTs and road operators, per its site",
+   "read": {
+    "verdict": "vendor",
+    "why": "C-V2X roadside/onboard units and platform for DOTs and road operators, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Fischer Consulting Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.fischer%20consulting%20inc.org-74ab5196-dbe5-414a-ab31-95f057c2fa1a.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Fleetworthy",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.fleetworthy.org-a6592c1d-fc28-4a6d-96fe-62ce5095a963.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Drivewyze/PrePass roadway safety and weigh-station bypass platforms used by state DOTs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Drivewyze/PrePass roadway safety and weigh-station bypass platforms used by state DOTs",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "FLIR",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.flir.org-3510ed5d-8611-4111-9d89-38607e558886.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Thermal traffic detection systems with analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Thermal traffic detection systems with analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Flock",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.flock.org-631f5cb3-489c-4eae-90a9-c150697170e9.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: ALPR cameras and public-safety software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ALPR cameras and public-safety software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Flow Labs",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.flow%20labs.org-4d1cfb94-4a12-4176-acfb-f3340cced2be.html"
+  },
+  {
+   "name": "Fortinet",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.fortinet.org-89b67c55-e17c-49ef-8845-5ccffcbb8654.html"
+  },
+  {
+   "name": "Frey Manufacturing",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.frey%20manufacturing.org-b64da871-cc39-41f2-b870-e09076c31357.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; guessed site was an unrelated farm-equipment firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "GHD",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.ghd.org-624e6689-4cf7-45d4-b593-1e75c356f832.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Google",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.google.org-bcb53dd0-d2e7-4529-b706-b7d9312839bc.html"
+  },
+  {
+   "name": "GridMatrix",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.gridmatrix.org-ec18a0a6-6594-4a58-87cd-87038bffe12c.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI traffic analytics platform for cities",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI traffic analytics platform for cities",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Haas Alert",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.haas%20alert.org-1ed07eac-ecdc-4067-b0ca-84374d03dd29.html"
+  },
+  {
+   "name": "Hanwha Vision America",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.hanwha%20vision%20america.org-8bf18e71-93e2-4e1e-8a9f-cda1b7dd71d2.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Video cameras with VMS and AI analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Video cameras with VMS and AI analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Houston Radar LLC",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.houston%20radar%20llc.org-15cc8b8f-522e-40d7-b802-dfd045522356.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: Site: designs and manufactures K-band radars, largest OEM Doppler radar supplier; StatsAnalyzer is device config software",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Site: designs and manufactures K-band radars, largest OEM Doppler radar supplier; StatsAnalyzer is device config software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "HS Connect",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.hs%20connect.org-90fe696a-8f81-4fa3-84d9-e038c6252f03.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; no readable site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Hunan Nanoradar Science &Technology Co., Ltd.,",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.hunan%20nanoradar%20science%20technology%20co%20ltd.org-2e20172b-1b5c-4e7c-a3f5-b030f2248058.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: mmWave radar sensor OEM maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "mmWave radar sensor OEM maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IBM Consulting State and Local Government",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.ibm%20consulting%20state%20and%20local%20government.org-5aae5919-aba2-47af-8e1d-09f70c60e989.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT consulting arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT consulting arm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "INEX.net",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.inexnet.org-f5cc0f99-d1d7-42ba-87bb-9fc4eee3a889.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Portable changeable message sign hardware maker, per its site",
+   "read": {
+    "verdict": "supplier",
+    "why": "Portable changeable message sign hardware maker, per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Innoviz Technologies",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.innoviz%20technologies.org-a1ce1902-8b08-4bf0-90ee-2ca5836f000e.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Lidar sensor maker, mainly automotive; ITS software role unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "INRIX",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.inrix.org-c680045d-5a25-4759-a4ac-9c5c6676ec5b.html"
+  },
+  {
+   "name": "Integral Blue",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.integral%20blue.org-c31bd6be-84c2-4d6d-8885-57f61fef968c.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; guessed site was unrelated",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Intel",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.intelligent%20security%20systems%20iss.org-6d430f31-982c-4073-9747-cfe07e87baf4.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Intel appears only as a brand on ISS's exhibitor page, not as its own exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Intelligent Security Systems (ISS)",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.intelligent%20security%20systems%20iss.org-6d430f31-982c-4073-9747-cfe07e87baf4.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Video analytics and license-plate recognition software (SecurOS)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Video analytics and license-plate recognition software (SecurOS)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "International Road Federation",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.international%20road%20federation.org-7f3d4bd9-c518-4a50-9088-5d90b26d1624.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "INTREELLIGENT",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.intreelligent.org-30f28a6a-27c7-4c5f-9019-5c4dc9b22dcd.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IonDynamics Energy",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.iondynamics%20energy%20autonomous%20mobile%20energy%20robot.org-dfddec67-c5ef-40fa-a25e-748b9b351b1a.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Mobile EV-charging robot maker; government tech-product fit unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IonDynamics Energy Autonomous Mobile Energy Robot",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.iondynamics%20energy%20autonomous%20mobile%20energy%20robot.org-dfddec67-c5ef-40fa-a25e-748b9b351b1a.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Mobile EV-charging robot maker; government tech-product fit unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IQSIGHT, LLC",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.iqsight%20llc.org-2601c18b-ac77-46cf-9fb9-4da0e564f281.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Video cameras with intelligent analytics (formerly Bosch Video Systems), per its site",
+   "read": {
+    "verdict": "vendor",
+    "why": "Video cameras with intelligent analytics (formerly Bosch Video Systems), per its site",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Iteris Inc",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.iteris%20inc.org-68d6c26c-fa6e-434e-9e32-39bbda0bbd6a.html"
+  },
+  {
+   "name": "ITS America",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.its%20america.org-dc0f51e3-520b-47ea-813d-7c6eefbbac21.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association (ITS America)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association (ITS America)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ITS Canada",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.its%20canada.org-2b141e40-3b53-4e48-8f14-c43cf5316c2b.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry association (ITS Canada)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry association (ITS Canada)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ITS Plus",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.its%20plus.org-d92de87e-15cb-4304-966b-cc81df6b7fe6.html",
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not identify; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Kapsch TrafficCom",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kapsch%20trafficcom.org-5160b117-f15b-4354-9330-4fe45012dda3.html"
+  },
+  {
+   "name": "Kimley-Horn and Associates, Inc",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kimley-horn%20and%20associates%20inc.org-d2868f40-afa5-4c50-bbd7-7b9be6fd4248.html"
+  },
+  {
+   "name": "Kipp & Zonen - Lufft",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kipp%20%20zonen%20-%20lufft.org-c70d3744-e266-465d-82ce-25910c66f724.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Weather and road-weather instrument maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Weather and road-weather instrument maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Kistler Instrument Corp.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kistler%20instrument%20corp.org-5b1fe25e-40d9-4521-b919-328303c0d8c4.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Measurement instrument / WIM sensor maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Measurement instrument / WIM sensor maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Lantech Communications Global, Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.lantech%20communications%20global%20inc.org-2ef0e80c-53ca-4fe4-a4fc-7c7cb16550f9.html"
+  },
+  {
+   "name": "MaxCell",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.maxcell.org-739d6eda-99ff-4a66-a1f4-fd6df1402e9c.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fabric innerduct (cable-management materials) maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fabric innerduct (cable-management materials) maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MG Squared, Inc.",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.mg%20squared%20inc.org-7381d297-0909-4210-b905-c7b23c40a700.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Camera lowering-device hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Camera lowering-device hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MH Corbin",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.mh%20corbin.org-521ed569-bd92-4885-819d-921bd0b1cda2.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: Site: roadside equipment (weather sensors, highway advisory radio, beacons, controllers) via a consultative process; integrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Site: roadside equipment (weather sensors, highway advisory radio, beacons, controllers) via a consultative process; integrator",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Michael Baker International",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.michael%20baker%20international.org-1351592c-9774-42be-89b9-a00ece9e5c1a.html"
+  },
+  {
+   "name": "Michelin Mobility Intelligence",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.michelin%20mobility%20intelligence.org-e4c9e339-0f04-42c6-a4e3-8b282533d263.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Road-safety analytics from connected-vehicle data for agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Road-safety analytics from connected-vehicle data for agencies",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Palo Alto Networks",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.palo%20alto%20networks.org-92255a3a-b05c-41d7-bb2e-a68493ec2a76.html"
+  },
+  {
+   "name": "SafePath",
+   "website": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.safepath.org-b2edfa8e-74a1-4853-8d21-fd22c48bf11a.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lists other makers' traffic brands (Applied Information, FLIR, Pelco); reseller/integrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lists other makers' traffic brands (Applied Information, FLIR, Pelco); reseller/integrator",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 77,
+ "quality_was": "good"
 }

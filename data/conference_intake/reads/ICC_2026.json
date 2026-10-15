@@ -3,17 +3,17 @@
   "file": "exhibitors_ICC_2026.json",
   "name": "Event Info",
   "verdict": "not_a_company",
-  "why": "site navigation label",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
   "name": "EXPO HALL HOURS",
   "verdict": "not_a_company",
-  "why": "expo logistics heading",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
@@ -43,40 +43,680 @@
   "file": "exhibitors_ICC_2026.json",
   "name": "Print",
   "verdict": "not_a_company",
-  "why": "floor-map UI control",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
   "name": "RENT BOOTH NOW",
   "verdict": "not_a_company",
-  "why": "booth-sales call to action",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
   "name": "Show/Hide",
   "verdict": "not_a_company",
-  "why": "floor-map UI control",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
   "name": "Zoom In",
   "verdict": "not_a_company",
-  "why": "floor-map UI control",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_ICC_2026.json",
   "name": "Zoom Out",
   "verdict": "not_a_company",
-  "why": "floor-map UI control",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Floor plan app control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "United Lightning Protection Association (ULPA)",
+  "verdict": "supplier",
+  "why": "Lightning protection trade association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Centrotherm Eco Systems",
+  "verdict": "supplier",
+  "why": "Maker of flue gas venting systems (building product)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Visionary Integration Professionals, LLC",
+  "verdict": "supplier",
+  "why": "IT consulting and systems integrator for state and local government (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Bonded Lightning Protection Systems",
+  "verdict": "supplier",
+  "why": "Lightning protection products and installation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "InsulClip",
+  "verdict": "supplier",
+  "why": "Building product maker (insulation fastening)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Association of State Floodplain Managers",
+  "verdict": "supplier",
+  "why": "Professional association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Copperweld",
+  "verdict": "supplier",
+  "why": "Bimetallic wire and conductor manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "ECS Limited",
+  "verdict": "supplier",
+  "why": "Engineering, geotechnical and materials testing consultancy",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Wellness Consultants",
+  "verdict": "supplier",
+  "why": "Consulting firm by name; no technology product evident",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "HealthBridge Solutions",
+  "verdict": "unsure",
+  "why": "Cannot place; guessed domain led to a care-coordination software firm, link unconfirmed",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Mitchell Humphrey & Co.",
+  "verdict": "vendor",
+  "why": "Land management, permitting and financial software for local government",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "GovPilot, formerly SDL",
+  "verdict": "vendor",
+  "why": "Local government management, permitting and code enforcement software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "National Fire Sprinkler Association",
+  "verdict": "supplier",
+  "why": "Trade association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Building & Fire Code Academy",
+  "verdict": "supplier",
+  "why": "Code certification training provider",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Cast Iron Soil Pipe Institute",
+  "verdict": "supplier",
+  "why": "Industry association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "B&F Construction Code Services, Inc.",
+  "verdict": "supplier",
+  "why": "Code consulting and plan review services",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "CityView, a division of Harris Computer Systems",
+  "verdict": "vendor",
+  "why": "Permitting, inspection and land management software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Spears Manufacturing Company",
+  "verdict": "supplier",
+  "why": "PVC/CPVC pipe fittings manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "iPlanTables",
+  "verdict": "supplier",
+  "why": "Hardware maker: wide-format touchscreen monitor workstations (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Maxitrol",
+  "verdict": "supplier",
+  "why": "Gas pressure regulator manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "International Firestop Council",
+  "verdict": "supplier",
+  "why": "Industry association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Big Dog Promo, Inc.",
+  "verdict": "supplier",
+  "why": "Promotional products company",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Schluter Systems",
+  "verdict": "supplier",
+  "why": "Tile installation systems manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "National Lightning Protection",
+  "verdict": "supplier",
+  "why": "Lightning protection products manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Exhibitor Lounge",
+  "verdict": "not_a_company",
+  "why": "Floor plan feature, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "American Concrete Institute",
+  "verdict": "supplier",
+  "why": "Standards and technical association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "National Ready Mixed Concrete Association",
+  "verdict": "supplier",
+  "why": "Industry association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Lowe's Home Centers LLC",
+  "verdict": "supplier",
+  "why": "Home improvement retailer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Intertek",
+  "verdict": "supplier",
+  "why": "Testing, inspection and certification body",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "PFS TECO, An NFPA Global Solutions Company",
+  "verdict": "supplier",
+  "why": "Testing, inspection and certification agency for building products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Hoover Treated Wood Products",
+  "verdict": "supplier",
+  "why": "Fire-retardant treated wood manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Shums Coda Associates, Inc.",
+  "verdict": "supplier",
+  "why": "Building code consulting, plan review and inspection services",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "SPRI, Inc.",
+  "verdict": "supplier",
+  "why": "Single-ply roofing industry association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Denlar Fire Protection",
+  "verdict": "supplier",
+  "why": "Fire protection products maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Omega Flex, Inc.",
+  "verdict": "supplier",
+  "why": "Flexible gas piping (CSST) manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Civic Review",
+  "verdict": "vendor",
+  "why": "Permitting and licensing software for governments (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "VuSpex",
+  "verdict": "vendor",
+  "why": "Remote virtual inspection software for building departments",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Municipal Inspection Partners",
+  "verdict": "supplier",
+  "why": "Inspection services firm by name",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Expo Talks",
+  "verdict": "not_a_company",
+  "why": "Programme item on the expo floor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Educode",
+  "verdict": "unsure",
+  "why": "Appears to be a code-education training event, not clearly a company",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Simpson Strong-Tie",
+  "verdict": "supplier",
+  "why": "Structural connectors and building products maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "International Code Council",
+  "verdict": "supplier",
+  "why": "Host association that publishes the codes; not a tech vendor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "IPEX USA LLC",
+  "verdict": "supplier",
+  "why": "Thermoplastic piping manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Tenmat Inc",
+  "verdict": "supplier",
+  "why": "Fire and acoustic protection products maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "JHW Plan Review Services LLC",
+  "verdict": "supplier",
+  "why": "Plan review services firm",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Intuitive Municipal Solutions (iMS)",
+  "verdict": "unsure",
+  "why": "Cannot place; site refused our crawler",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "MeltPlan",
+  "verdict": "unsure",
+  "why": "AI preconstruction software for contractors (site read); government sales not shown",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "SCPDC-MyGovernmentOnline (MGO)",
+  "verdict": "vendor",
+  "why": "MyGovernmentOnline permitting/inspection software sold to jurisdictions (run by SCPDC)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Career Zone",
+  "verdict": "not_a_company",
+  "why": "Floor plan feature, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Acta Solutions Inc.",
+  "verdict": "unsure",
+  "why": "Cannot place; guessed site unreadable",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Selectron Technologies",
+  "verdict": "vendor",
+  "why": "IVR and mobile inspection software for local government",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Firestop Contractors International Association (FCIA)",
+  "verdict": "supplier",
+  "why": "Trade association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "ATIS",
+  "verdict": "unsure",
+  "why": "Cannot place the acronym; guessed site not found",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "National Gypsum Company",
+  "verdict": "supplier",
+  "why": "Gypsum wallboard manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Fire Safety Consultants Inc.",
+  "verdict": "supplier",
+  "why": "Fire safety consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "CityTech Solutions",
+  "verdict": "unsure",
+  "why": "Cannot place; site refused our crawler",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "UL Solutions",
+  "verdict": "supplier",
+  "why": "Testing, inspection and certification body",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Women Leaders in Code Enforcement",
+  "verdict": "supplier",
+  "why": "Professional nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "True North Compliance Services, Inc",
+  "verdict": "supplier",
+  "why": "Third-party plan review and inspection services",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Gastite",
+  "verdict": "supplier",
+  "why": "Flexible gas piping (CSST) maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Lakeside Consultants",
+  "verdict": "supplier",
+  "why": "Consulting firm by name; no technology product evident",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Verisk Analytics, Inc.",
+  "verdict": "supplier",
+  "why": "Insurance data firm (ISO BCEGS ratings); not a product sold to departments",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Structural Building Components Association (SBCA)",
+  "verdict": "supplier",
+  "why": "Trade association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "GovPath",
+  "verdict": "vendor",
+  "why": "Permitting, inspection and billing software for state and local government (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Technicolor Transport Challenge",
+  "verdict": "not_a_company",
+  "why": "Expo floor activity, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Global Fireproof Solutions",
+  "verdict": "supplier",
+  "why": "Fireproofing products company",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Tennessee Building Officials Association",
+  "verdict": "supplier",
+  "why": "Professional association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "ICC Membership",
+  "verdict": "not_a_company",
+  "why": "Host's membership booth, not a separate organisation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "LINTELLIFT",
+  "verdict": "supplier",
+  "why": "Booth exhibitor; name points to a lintel/construction product; site refused crawler",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Blitzz, Inc",
+  "verdict": "vendor",
+  "why": "Remote video inspection software used by building departments",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "CodeComply Summit 2026",
+  "verdict": "unsure",
+  "why": "Event name; CodeComply (AI plan review for cities) may run it, summit not on its site",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "FireAvert",
+  "verdict": "supplier",
+  "why": "Stove auto shut-off device maker (hardware)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "ZEDai",
+  "verdict": "unsure",
+  "why": "Cannot place; guessed sites parked or empty",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "WICED Women in Code Enforcement and Development",
+  "verdict": "supplier",
+  "why": "Professional nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "International Association of Electrical Inspectors",
+  "verdict": "supplier",
+  "why": "Professional association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Sages Networks Inc",
+  "verdict": "vendor",
+  "why": "SagesGov e-plan review, permitting and inspection software (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "E-Plan Exam",
+  "verdict": "supplier",
+  "why": "Building code plan review services firm (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Lightning Protection Institute",
+  "verdict": "supplier",
+  "why": "Industry association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "RESNET",
+  "verdict": "supplier",
+  "why": "Home energy rating standards nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICC_2026.json",
+  "name": "Pin Foundations, Inc.",
+  "verdict": "supplier",
+  "why": "Foundation products manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

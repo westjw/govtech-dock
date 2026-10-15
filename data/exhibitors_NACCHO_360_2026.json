@@ -3,7 +3,7 @@
  "conference": "NACCHO 360",
  "found": true,
  "source_url": "https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
- "source_note": "Read in a real browser on 2026-09-10; the alpha list renders behind JS. 109 unique exhid values, A ('AchieveIt') through V ('ViiV Healthcare'). Note this is a public-health floor: much of it is universities, foundations and pharma rather than vendors, and 'Exhibit Hall Activity', 'NACCHO Membership Booth', 'QA' and 'Pet Therapy' are the show's own stands, kept verbatim rather than dropped.",
+ "source_note": "Read in a real browser on 2026-09-10; the alpha list renders behind JS. 109 unique exhid values, A ('AchieveIt') through V ('ViiV Healthcare'). Note this is a public-health floor: much of it is universities, foundations and pharma rather than vendors, and 'Exhibit Hall Activity', 'NACCHO Membership Booth', 'QA' and 'Pet Therapy' are the show's own stands, kept verbatim rather than dropped. Added 8 name(s) read in a browser from https://naccho2026.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
   {
    "name": "AchieveIt",
@@ -870,6 +870,17 @@
    }
   },
   {
+   "name": "QA",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare two letters; may be app text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
    "name": "Remedy Healthcare Consulting LLC",
    "website": null,
    "is_govtech": false,
@@ -1116,7 +1127,7 @@
    }
   }
  ],
- "read_dropped": 4,
+ "read_dropped": 11,
  "quality_was": null,
  "quality": "read"
 }

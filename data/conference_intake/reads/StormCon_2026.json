@@ -73,11 +73,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Best Management Products, Inc.",
+  "name": "Best Management Products",
   "verdict": "supplier",
-  "why": "Stormwater hardware manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Stormwater treatment products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -137,11 +137,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Fabco Industries, Inc.",
+  "name": "Fabco Industries",
   "verdict": "supplier",
-  "why": "Inlet filter hardware manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Stormwater filter products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -161,11 +161,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Frog Creek Partners, LLC",
+  "name": "Frog Creek Partners",
   "verdict": "supplier",
-  "why": "Stormwater filtration device plus cleaning service",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Stormwater inlet filter products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -185,11 +185,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Headwater Technologies LLC",
+  "name": "Headwater Technologies",
   "verdict": "supplier",
-  "why": "Filtration media manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Stormwater metals treatment media (own site)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -201,11 +201,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "HUBER Technology, LLC (US subsidiary of HUBER SE)",
+  "name": "HUBER Technology",
   "verdict": "supplier",
-  "why": "Wastewater process equipment",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Water and wastewater screening equipment",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -225,11 +225,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "MKB Company LLC",
+  "name": "MKB Company",
   "verdict": "supplier",
-  "why": "Erosion control distributor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Erosion and sediment control products (own site)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -265,19 +265,19 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Prinsco, Inc.",
+  "name": "Prinsco",
   "verdict": "supplier",
-  "why": "Drainage pipe manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Pipe manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Red Valve Company, Inc.",
+  "name": "Red Valve Company",
   "verdict": "supplier",
   "why": "Valve manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -305,35 +305,35 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Sioux Chief Manufacturing Co., Inc.",
+  "name": "Sioux Chief Manufacturing",
   "verdict": "supplier",
   "why": "Plumbing products manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Soleno",
+  "name": "Soleno LLC",
   "verdict": "supplier",
-  "why": "Drainage pipe manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Pipe and stormwater products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Stalker Radar (Applied Concepts, Inc.)",
-  "verdict": "vendor",
-  "why": "Speed radar, lidar and radar signs sold to law enforcement",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
- },
- {
-  "file": "exhibitors_StormCon_2026.json",
-  "name": "StormTek (product of SWIMS, an Apex company)",
+  "name": "Stalker Radar",
   "verdict": "supplier",
-  "why": "Brand of SWIMS, a stormwater maintenance services firm",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Radar speed and water velocity sensors (hardware)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "StormTek",
+  "verdict": "unsure",
+  "why": "Cannot place; stormtek.com is an unrelated placeholder site",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -393,11 +393,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Wapro",
+  "name": "Wapro Inc.",
   "verdict": "supplier",
-  "why": "Backflow valve manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Check valves and flap gates",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -417,11 +417,11 @@
  },
  {
   "file": "exhibitors_StormCon_2026.json",
-  "name": "Xerxes Corporation",
+  "name": "Xerxes",
   "verdict": "supplier",
-  "why": "Fiberglass tank manufacturer",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "Tanks manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_StormCon_2026.json",
@@ -430,5 +430,125 @@
   "why": "Plumbing and drainage products manufacturer",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Bedrock Environmental Seed & Supply",
+  "verdict": "supplier",
+  "why": "Seed and erosion supply",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "BioBase Maps",
+  "verdict": "vendor",
+  "why": "Cloud aquatic habitat mapping software sold by plan to water managers (own site)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Blocksom & Co. and Fiber Bond Operating LLC",
+  "verdict": "supplier",
+  "why": "Erosion control products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "DuraTrench - The Drain Brains",
+  "verdict": "supplier",
+  "why": "Trench drain products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Ecoraster",
+  "verdict": "supplier",
+  "why": "Permeable paving grids",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Environmental Protection Agency",
+  "verdict": "supplier",
+  "why": "Federal government agency",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Exhibitor List",
+  "verdict": "not_a_company",
+  "why": "Site heading",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Foley Products Company a CMC Company",
+  "verdict": "supplier",
+  "why": "Concrete pipe and precast products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Gator Guard Environmental Products Inc.",
+  "verdict": "supplier",
+  "why": "Stormwater filter products",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "NMSA",
+  "verdict": "supplier",
+  "why": "National Municipal Stormwater Alliance (association)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Stone Strong, LLC",
+  "verdict": "supplier",
+  "why": "Retaining wall blocks",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "StormTank",
+  "verdict": "supplier",
+  "why": "Underground stormwater storage modules",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "XML Sitemap",
+  "verdict": "not_a_company",
+  "why": "Site footer link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "Zurn Industries, LLC",
+  "verdict": "supplier",
+  "why": "Plumbing and drainage manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_StormCon_2026.json",
+  "name": "↑ Back to Top",
+  "verdict": "not_a_company",
+  "why": "Site control",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

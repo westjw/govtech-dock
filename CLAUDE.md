@@ -1294,6 +1294,20 @@ only when the organisation's own page states them.
   one stamp from being filed "not a floor at all"). With both forms, 16 of the
   live floors carry such a table; four held 20 names nobody had staged
   (Smart Cities Connect's 12 among them).
+- **A booth number is not part of a name** (`strip_booths`): floor apps print
+  "1035 PCTEL, Inc." in one cell. APCO's browser read carried one on 246 of
+  253 names, ICC's 112 of 119, NAPT's 76 of 87, and no such name matches a
+  company on file, so known exhibitors went untagged and every name went to
+  the reader as new. Taken off only where 70% of a floor carries one (3M,
+  2J Antennas and 360 Photo Booth are names); `--restage` applies it offline.
+- **A browser read ADDS to a staged floor, never replaces it**
+  (`render_floor.add_to`). `merge_into` only stops a refusal overwriting a
+  find, so the first `render_floor --all --write` put a 22-item menu over
+  WEFTEC's 1,142 read names and IAFC FRI's 302 with 201 (restored the same
+  day, before anything was intaken from them).
+- **render_floor on ExpoCAD reads the category tree, not the exhibitors**
+  (AB Show: "Bleachers/Seating Athletic Business"); the reader deletes them.
+  A click into ExpoCAD's exhibitor view is not built.
 - **A site builder's credit is not an exhibitor** (`credited()`): an anchor
   after "powered by", "websites by", "site by", "designed by" is cut. Illinois
   APCO's footer tagged CivicPlus with a 911 conference, unread, because the

@@ -3,7 +3,7 @@
  "conference": "CTAA EXPO",
  "found": true,
  "source_url": "https://homebase.map-dynamics.com/ctaaexpo2026/floorplan",
- "source_note": "Read in a real browser on 2026-09-10. map-dynamics draws the floor plan in JS; the A-Z exhibitor list renders as page text beside it. The map's own controls (Map Legend, Purchase booth here, Click to edit) were dropped by name.",
+ "source_note": "Read in a real browser on 2026-09-10. map-dynamics draws the floor plan in JS; the A-Z exhibitor list renders as page text beside it. The map's own controls (Map Legend, Purchase booth here, Click to edit) were dropped by name. Added 93 name(s) read in a browser from https://homebase.map-dynamics.com/ctaaexpo2026/floorplan by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
   {
    "name": "A-1 Alternative Fuel Systems",
@@ -170,6 +170,18 @@
     "why": "federal technical-assistance center (CCAM)",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "CTAA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Community Transportation Association of America, host association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Community Transportation Association of America, host association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -973,7 +985,7 @@
    "is_govtech_why": "nothing in the name either way"
   }
  ],
- "read_dropped": 115,
+ "read_dropped": 207,
  "quality_was": null,
  "quality": "read"
 }

@@ -310,6 +310,25 @@ def credited(page: str, at: int) -> bool:
     return bool(CREDIT_LINE.search(re.sub(r"\s+", " ", before)))
 
 
+# A BOOTH NUMBER IS NOT PART OF A NAME. Floor apps print "1035 PCTEL, Inc."
+# in one cell: APCO 2026's browser read carried a booth on 246 of 253 names,
+# ICC's 112 of 119, NAPT's 76 of 87 (2026-10-15), and "1035 PCTEL, Inc."
+# matches no company on the board, so a known exhibitor was never tagged.
+# A real name can start with digits (3M, 2J Antennas, 360 Photo Booth), so
+# the prefix is taken off only on a floor where most names carry one.
+BOOTH_PREFIX = re.compile(r"^(?:booth\s*#?\s*)?\d{1,5}[A-Za-z]?"
+                          r"(?:\s*[-/&,]\s*\d{1,5}[A-Za-z]?)*\s+(?=\S)", re.I)
+BOOTH_SHARE = 0.7
+
+
+def strip_booths(names: list[str]) -> list[str]:
+    """The names without their booth numbers, when the floor prints them."""
+    hits = sum(1 for n in names if BOOTH_PREFIX.match(n or ""))
+    if hits < MIN_NAMES or hits < BOOTH_SHARE * len(names):
+        return list(names)
+    return [BOOTH_PREFIX.sub("", n or "", count=1) for n in names]
+
+
 def harvest(page: str, host: str | None = None) -> list[dict]:
     """Names off an exhibitor directory, with a website where the page gave one.
 
@@ -356,7 +375,18 @@ def harvest(page: str, host: str | None = None) -> list[dict]:
         if key not in out or (e["website"] and not out[key]["website"]):
             out[key] = e
 
-    return list(out.values())
+    rows = list(out.values())
+    bare = strip_booths([r["name"] for r in rows])
+    if bare != [r["name"] for r in rows]:
+        kept: dict[str, dict] = {}
+        for r, nm in zip(rows, bare):
+            nm = clean(nm)
+            if not looks_like_a_name(nm, host):
+                continue
+            if nm.lower() not in kept or (r["website"] and not kept[nm.lower()]["website"]):
+                kept[nm.lower()] = dict(r, name=nm)
+        rows = list(kept.values())
+    return rows
 
 
 def suspicious(names: list[dict]) -> str | None:
@@ -506,8 +536,9 @@ def restage(files: list) -> int:
         kept: dict[str, dict] = {}
         dropped = []
         host = host_of(d.get("event_tag"))
-        for e in before:
-            name = clean(e.get("name"))
+        bare = strip_booths([e.get("name") or "" for e in before])
+        for e, raw in zip(before, bare):
+            name = clean(raw)
             if not looks_like_a_name(name, host):
                 dropped.append(e.get("name"))
                 continue
@@ -524,7 +555,8 @@ def restage(files: list) -> int:
                 continue
             kept[key] = row
         after = sorted(kept.values(), key=lambda r: r["name"].lower())
-        if len(after) == len(before) and not dropped:
+        if ([e.get("name") for e in after] == [e.get("name") for e in before]
+                and not dropped):
             continue
         d["exhibitors"] = after
         d["restaged"] = (f"{len(before)} -> {len(after)} names after re-filtering "

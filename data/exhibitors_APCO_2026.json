@@ -3,7 +3,7 @@
  "conference": "APCO",
  "found": true,
  "source_url": "https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp",
- "source_note": "Read in a real browser on 2026-09-10. eventscribe renders the floor plan in JS; each booth is an anchor whose text is the booth number followed by the company name, so the number is kept as `booth` rather than being parsed off and thrown away. Names are unique by company, so a company holding two booths appears once. Dropped the page's own controls where they matched the booth-plus-name shape: 'to Top' and the like.",
+ "source_note": "Read in a real browser on 2026-09-10. eventscribe renders the floor plan in JS; each booth is an anchor whose text is the booth number followed by the company name, so the number is kept as `booth` rather than being parsed off and thrown away. Names are unique by company, so a company holding two booths appears once. Dropped the page's own controls where they matched the booth-plus-name shape: 'to Top' and the like. Added 21 name(s) read in a browser from https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
   {
    "name": "10-8 Systems",
@@ -834,6 +834,13 @@
    }
   },
   {
+   "name": "G-Way Solutions, LLC",
+   "booth": "2708",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
+  },
+  {
    "name": "Garmin International, Inc.",
    "booth": "3049",
    "website": null,
@@ -976,13 +983,6 @@
    "website": null,
    "is_govtech": null,
    "is_govtech_why": "not judged yet - names only"
-  },
-  {
-   "name": "G-Way Solutions, LLC",
-   "booth": "2708",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Hascall-Denke",
@@ -2302,13 +2302,6 @@
    }
   },
   {
-   "name": "Valor Systems, Inc.",
-   "booth": "3025",
-   "website": null,
-   "is_govtech": true,
-   "is_govtech_why": "names software, a platform or a govtech function"
-  },
-  {
    "name": "V-COMM, L.L.C.",
    "booth": "2652",
    "website": null,
@@ -2320,6 +2313,13 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Valor Systems, Inc.",
+   "booth": "3025",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "names software, a platform or a govtech function"
   },
   {
    "name": "Vector Solutions",
@@ -2508,7 +2508,7 @@
    "is_govtech_why": "not judged yet - names only"
   }
  ],
- "read_dropped": 15,
+ "read_dropped": 36,
  "quality_was": null,
  "quality": "read"
 }

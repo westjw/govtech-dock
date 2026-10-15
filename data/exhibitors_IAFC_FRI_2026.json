@@ -3,7 +3,7 @@
  "conference": "IAFC FRI",
  "found": true,
  "source_url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
- "source_note": "Read in a real browser on 2026-09-10. Show All, then Load More exhausted; 316 unique exhid values off the alpha list.",
+ "source_note": "Read in a real browser on 2026-09-10. Show All, then Load More exhausted; 316 unique exhid values off the alpha list. Added 16 name(s) read in a browser from https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm by scripts/render_floor.py on 2026-10-15.",
  "exhibitors": [
   {
    "name": "1-800BOARDUP",
@@ -987,6 +987,18 @@
    }
   },
   {
+   "name": "Fire, Life & Safety Section (FLSS)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
    "name": "Fire-Dex/Gear Wash",
    "website": null,
    "detail_url": "https://fri26.mapyourshow.com/8_0/exhibitor/exhibitor-details.cfm?exhid=23840809335",
@@ -1420,6 +1432,114 @@
     "why": "insurance and financial services",
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
+   }
+  },
+  {
+   "name": "IAFC Company Officers Section (COS)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Eastern Division",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC division; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC division; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Emergency Medical Services (EMS) Section",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Executive Fire Officers Section (EFO)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Great Lakes Division",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC division; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC division; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Industrial Fire and Safety Section",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Missouri Valley Division",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC division; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC division; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFC Volunteer & Combination Officers Section (VCOS)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IAFC section; association",
+   "read": {
+    "verdict": "supplier",
+    "why": "IAFC section; association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "IAFF/ IAFC Joint Labor/ Management Wellness Fitness Initiative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Joint association wellness initiative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Joint association wellness initiative",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -2085,6 +2205,17 @@
     "by": "agent:reader+skeptic",
     "on": "2026-10-10"
    }
+  },
+  {
+   "name": "Operational Readiness for First Responders: OUD",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Reads like a programme or project title; owner unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Operative IQ",
@@ -3362,7 +3493,7 @@
    }
   }
  ],
- "read_dropped": 14,
+ "read_dropped": 19,
  "quality_was": null,
  "quality": "read"
 }

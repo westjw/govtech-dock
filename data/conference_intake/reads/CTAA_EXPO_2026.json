@@ -890,34 +890,34 @@
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA",
-  "verdict": "not_a_company",
-  "why": "host association's own booth",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "verdict": "supplier",
+  "why": "Community Transportation Association of America, host association",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA Leadership Academy",
   "verdict": "not_a_company",
-  "why": "host association's own programme",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA Membership",
   "verdict": "not_a_company",
-  "why": "host association membership desk",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA Membership Lounge",
   "verdict": "not_a_company",
-  "why": "booth logistics or attraction, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
@@ -939,17 +939,17 @@
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA Tech",
   "verdict": "not_a_company",
-  "why": "host association's own programme",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "CTAA Training",
   "verdict": "not_a_company",
-  "why": "host association's own programme",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
@@ -995,9 +995,9 @@
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "Golf Simulator",
   "verdict": "not_a_company",
-  "why": "booth logistics or attraction, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
@@ -1068,9 +1068,9 @@
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "Leadership Academy Lounge",
   "verdict": "not_a_company",
-  "why": "booth logistics or attraction, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
@@ -1164,17 +1164,17 @@
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "Puppy Park (Tues Only)",
   "verdict": "not_a_company",
-  "why": "booth logistics or attraction, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
   "name": "Refreshment Lounge",
   "verdict": "not_a_company",
-  "why": "booth logistics or attraction, not an exhibitor",
-  "by": "agent:reader+skeptic",
-  "on": "2026-10-10"
+  "why": "show area or programme item, not an exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  },
  {
   "file": "exhibitors_CTAA_EXPO_2026.json",
@@ -1303,5 +1303,669 @@
   "why": "HSM bus seating/securement product line; physical goods",
   "by": "agent:reader+skeptic",
   "on": "2026-10-10"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "10x20 click for more info 10x20 booth Size: 10x20 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "40x40 click for more info Island Booth Size: 40x40 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Accessible Buses",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Accessible Vans",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Account-Based Ticketing",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "ADA Compliance Equipment",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "ADA Paratransit",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Alternative Fuels",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Ambulatory Transportation",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Anti-theft",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Association",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Automatic Passenger Counting (APC) System",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Autonomous Vehicles",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Equipment",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Flooring",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus HVAC",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Manufacturer",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Parts",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Service",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Bus Washing Systems",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Categories",
+  "verdict": "not_a_company",
+  "why": "floor-plan control/heading",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Child Care Solutions",
+  "verdict": "not_a_company",
+  "why": "category label among the floor-plan categories",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Climate Control",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Commercial Bus Manufacturer",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Compliance",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Consulting Services",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "CTAA Resources - 0 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Customer Service",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Cybersecurity",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Data Management",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Drug Testing",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Education",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "EV Charging",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Fare Collection",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "First Aid & Safety",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Flooring",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Fuel",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Idle Mitigation",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Inground Wireless Charging",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Insurance",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Interlocks",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Leadership Development Training",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "LED Signs",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Lighting and Signs",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Local/Regional Agency",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Map D v5.6.2",
+  "verdict": "not_a_company",
+  "why": "floor-plan app version text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Marketing",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Medical Transportation",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Mobility Platform",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "NEMT",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Non-Dedicated Service Provider",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Non-Profit - 2 Size: 10x10 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "On-board Passenger Information Systems",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Payment Solutions",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Performance Optimization Products",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Procurement Solutions",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Publication 2 Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Publishing",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Purchase booth here!!",
+  "verdict": "not_a_company",
+  "why": "booth sales link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Rail",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Risk Management",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Routing & Dispatching",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Saas Based Solutions",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Safety Products & Training",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Seating",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Service & Lifting Equipment",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Snow Chains/Weather-Related Products & Services",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Software",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Specialty Areas Occupied Unoccupied",
+  "verdict": "not_a_company",
+  "why": "floor-plan booth size/status text",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Suspension Systems",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Technology",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Training",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Transit Industry News & Information",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Transit Management",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Transit Shelters",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Transit Vehicles",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Transportation",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Vehicle Maintenance",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Vehicle Supplier",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Video Surveillance",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Website Design",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Wheelchair Securement",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_CTAA_EXPO_2026.json",
+  "name": "Zero Emission Transportation",
+  "verdict": "not_a_company",
+  "why": "floor-plan category label",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]
