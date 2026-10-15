@@ -161309,5 +161309,750 @@
   "vendor_type": "GovTech Product",
   "source": "conference sweep: PRIMA 2026",
   "researched": true
+ },
+ {
+  "id": "canva",
+  "name": "Canva",
+  "website": "https://www.canva.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "description": "Sells Canva Enterprise, a visual design and communication platform with brand controls, SSO and approval workflows, to government communications, public affairs and other agency teams - exhibited at 3CMA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: 3CMA 2026",
+  "researched": true
+ },
+ {
+  "id": "clearspeed",
+  "name": "Clearspeed",
+  "website": "https://www.clearspeed.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Benefits & Medicaid Systems",
+  "description": "Sells voice-analysis risk screening software that flags potential fraud in benefit applications and claims to state human services agencies, insurers, banks and defense buyers - exhibited at APHSA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: APHSA 2026",
+  "researched": true
+ },
+ {
+  "id": "cloudera",
+  "name": "Cloudera",
+  "website": "https://www.cloudera.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells a hybrid data and AI platform for storing, governing and analyzing data to government agencies at the federal, state and local level and to large enterprises - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "cloudflare",
+  "name": "Cloudflare",
+  "website": "https://www.cloudflare.com/cloudflare-for-government/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells a cloud network security and performance platform (DDoS protection, zero trust access, CDN, DNS, serverless compute) to state and local governments, universities and businesses - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "cloudlabs-by-spektra-systems",
+  "name": "CloudLabs by Spektra Systems",
+  "website": "https://spektrasystems.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Sells CloudLabs, a hosted hands-on cloud lab platform for IT courses, to universities, colleges and training providers, and marketplace and billing software to software vendors - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "commvault",
+  "name": "Commvault",
+  "website": "https://www.commvault.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells backup, data protection and cyber recovery software, as SaaS or on premises, to federal, state and local governments, schools and universities, and large enterprises - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "confidentialmind",
+  "name": "ConfidentialMind",
+  "website": "https://confidentialmind.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Self-hosted AI platform (LLM serving, RAG, agents) for universities and government agencies to run in their own data centers or private clouds - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "coreview",
+  "name": "CoreView",
+  "website": "https://www.coreview.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Microsoft 365 tenant management and security software for state and local government IT departments, universities and enterprises - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "cornerstone-ondemand",
+  "name": "Cornerstone OnDemand",
+  "website": "https://www.cornerstoneondemand.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "description": "Learning management, talent management and recruiting software for government agencies and higher education institutions as well as corporate employers - exhibited at PSHRA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PSHRA 2026",
+  "researched": true
+ },
+ {
+  "id": "crashplan",
+  "name": "CrashPlan",
+  "website": "https://www.crashplan.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells cloud backup and data recovery software for endpoints, servers, Microsoft 365 and Google Workspace to state and local governments and universities - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "cribl-inc",
+  "name": "Cribl, Inc",
+  "website": "https://cribl.io/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells telemetry pipeline and log management software (Cribl Stream, Edge, Search and Lake) to state and local government and higher education IT and security teams - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "crowdstrike",
+  "name": "CrowdStrike",
+  "website": "https://www.crowdstrike.com/en-us/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells the Falcon cybersecurity platform (endpoint, identity and cloud security, SIEM) to state and local government agencies, K-12 and higher education - exhibited at NASCIO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "cvent-inc",
+  "name": "Cvent Inc",
+  "website": "https://www.cvent.com/en/event-marketing-management/education-solutions",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Sells event management software (registration, event apps, check-in, venue sourcing) to colleges and universities as well as corporate and association event teams - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "cyberfox",
+  "name": "CyberFOX",
+  "website": "https://www.cyberfox.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells privileged access management, password management, DNS filtering and SASE software to local government, K-12 and higher education IT teams and to MSPs - exhibited at GMIS International 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: GMIS International 2026",
+  "researched": true
+ },
+ {
+  "id": "data-axle-reference-solutions",
+  "name": "Data Axle, Reference Solutions",
+  "website": "https://www.data-axle.com/platforms-products/reference-solutions/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Libraries",
+  "description": "Data Axle's Reference Solutions is a business and consumer reference database sold to public and academic libraries for patron research, job search and staff training - exhibited at PLA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: PLA 2026",
+  "researched": true
+ },
+ {
+  "id": "datadog",
+  "name": "Datadog",
+  "website": "https://www.datadoghq.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Datadog sells a cloud monitoring and security platform, Datadog for Government, to state, local and higher-education IT teams under FedRAMP High and GovRAMP authorizations - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "delinea",
+  "name": "Delinea",
+  "website": "https://delinea.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Delinea sells privileged access management and identity security software, including Secret Server and Privilege Manager, to universities and public sector agencies - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "docusign-inc",
+  "name": "Docusign Inc.",
+  "website": "https://www.docusign.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Electronic signature, agreement management and contract lifecycle software sold to federal, state and local government agencies - exhibited at NACUBO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NACUBO 2026",
+  "researched": true
+ },
+ {
+  "id": "doxy-me",
+  "name": "Doxy.me",
+  "website": "http://doxy.me",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Public Health",
+  "description": "Browser-based HIPAA-compliant telehealth video platform sold to clinicians, health systems and public health programs run by government agencies - exhibited at NatCon 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NatCon 2026",
+  "researched": true
+ },
+ {
+  "id": "druid-ai",
+  "name": "Druid AI",
+  "website": "https://www.druidai.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Conversational AI agent platform sold to universities for admissions, financial aid and student support, and to banks, insurers, retailers and healthcare organizations - exhibited at NACUBO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NACUBO 2026",
+  "researched": true
+ },
+ {
+  "id": "dun-bradstreet-inc",
+  "name": "Dun & Bradstreet, Inc.",
+  "website": "https://www.dnb.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "description": "Business identity, firmographic and supplier-risk data and web-based due-diligence tools sold to federal, state and local agencies for vendor vetting and procurement",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: HHS conference exhibitor research 2026-08-25",
+  "researched": true,
+  "sled_only": true
+ },
+ {
+  "id": "efficientip",
+  "name": "EfficientIP",
+  "website": "https://efficientip.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "EfficientIP sells SOLIDserver DDI appliances and software for DNS, DHCP and IP address management, plus DNS security products, to colleges and universities and other large networks - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "elastic",
+  "name": "Elastic",
+  "website": "https://www.elastic.co/industries/public-sector/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Elastic sells search, observability and security software (Elasticsearch, Kibana, Elastic Security) to state and local government agencies and to K-12 and higher education institutions - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "entrinsik-inc",
+  "name": "Entrinsik, Inc.",
+  "website": "https://entrinsik.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Higher Education",
+  "category": "IT & Administration",
+  "description": "Entrinsik sells Informer business intelligence, reporting and app-building software and Enrole non-credit enrollment software to colleges and universities and to government agencies - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "finquery",
+  "name": "FinQuery",
+  "website": "https://finquery.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "Sells lease and subscription accounting software, including GASB 87 and GASB 96 compliance tools, to local governments, public colleges and companies - exhibited at GFOA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: GFOA 2026",
+  "researched": true
+ },
+ {
+  "id": "firstech",
+  "name": "FirsTech",
+  "website": "https://firstechpayments.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "description": "Sells electronic payment processing, lockbox processing and integrated receivables to government agencies, utilities and other billers - exhibited at GFOA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: GFOA 2026",
+  "researched": true
+ },
+ {
+  "id": "fiserv",
+  "name": "Fiserv",
+  "website": "https://www.fiserv.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "description": "Sells payment, bill pay, tax payment and benefits disbursement systems to government agencies, schools and utilities, alongside banking technology - exhibited at NASWA 2025",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NASWA 2025",
+  "researched": true
+ },
+ {
+  "id": "gigamon",
+  "name": "Gigamon",
+  "website": "https://www.gigamon.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "Sells network visibility software and appliances that feed traffic to security tools, for state and local governments and universities - exhibited at EDUCAUSE 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: EDUCAUSE 2026",
+  "researched": true
+ },
+ {
+  "id": "businessolver",
+  "name": "Businessolver",
+  "website": "https://businessolver.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "HR & Workforce",
+  "description": "Benefits administration software and services for public sector employers, including municipalities, state agencies and universities - exhibited at SALGBA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: SALGBA 2026",
+  "researched": true
+ },
+ {
+  "id": "busplanner",
+  "name": "BusPlanner",
+  "website": "https://busplanner.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "K-12 Schools",
+  "category": "Transportation",
+  "description": "Student transportation software for school districts, covering bus route planning, GPS tracking, fleet management and parent portals - exhibited at NAPT Summit 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NAPT Summit 2026",
+  "researched": true
+ },
+ {
+  "id": "busright",
+  "name": "BusRight",
+  "website": "https://www.busright.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "K-12 Schools",
+  "category": "Transportation",
+  "description": "School bus routing and transportation management software for school districts, with driver tablet navigation and a parent tracking app - exhibited at NAPT Summit 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NAPT Summit 2026",
+  "researched": true
  }
 ]

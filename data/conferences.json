@@ -530,7 +530,7 @@
    "conference": "NIGP Forum",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://nigp26.myexpoonline.com/exhibitors",
    "fetchability": null,
    "event_tag": "NIGP 2026",
    "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
@@ -539,7 +539,8 @@
    "city": "Kansas City, MO",
    "next_edition": "2027",
    "dates_source": "https://www.nigp.org/forum",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 60 company names visible"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -791,7 +792,8 @@
    "next_edition": "2026",
    "dates_source": "https://www.apwa.org/events/pwx-conference/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-10: could not read a next-edition date - apwa.org returned HTTP 403 to the crawler on the PWX conference page, www.apwa.org/ and pwx.apwa.org/. Nothing could be read."
+   "dates_note": "read 2026-10-10: could not read a next-edition date - apwa.org returned HTTP 403 to the crawler on the PWX conference page, www.apwa.org/ and pwx.apwa.org/. Nothing could be read.",
+   "discovery_notes": "directory read 2026-10-14: unreadable - apwa.org/events/pwx-conference/, apwa.org/pwx and pwx.apwa.org all answered HTTP 403 to the identified crawler, so no link to an exhibitor host could be seen. A"
   },
   {
    "block": "Public works and infrastructure",
@@ -962,7 +964,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "StormCon 2026",
    "url": "https://www.stormcon.com/",
    "dates": "August 24-26, 2027",
@@ -970,7 +972,9 @@
    "next_edition": "2026",
    "dates_source": "https://www.stormcon.com/2027",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://scon26.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm?featured=false",
+   "exhibitor_url_candidate_note": "js-walled: MapYourShow; stormcon.com/2026 '2026 Exhibitor List' links this MYS gallery; it answered but its text is only template placeholders. The /2026/sponsors p (read 2026-10-14)"
   },
   {
    "block": "Public works and infrastructure",
@@ -1279,14 +1283,16 @@
    "flagship": true,
    "swept": true,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "NSA 2026",
    "url": "https://www.sheriffs.org/conferences/",
    "dates": "June 21-24, 2027",
    "city": "Charlotte, NC",
    "next_edition": "2027",
    "dates_source": "https://www.sheriffs.org/conferences/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://s2.goeshow.com/nsha/annual/2027/exhibit_map.cfm",
+   "exhibitor_url_candidate_note": "js-walled: goeshow; nsaconference.org Exhibit page links this goeshow 2027 floor plan; it returned no text. maps.goeshow 2026 exhibitor_list empty, s2 2026 list (read 2026-10-14)"
   },
   {
    "block": "Public safety",
@@ -1925,7 +1931,7 @@
    "conference": "NRPA Annual",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
    "fetchability": null,
    "event_tag": "NRPA 2026",
    "url": "https://conference.nrpa.org/",
@@ -1934,7 +1940,8 @@
    "next_edition": "2026",
    "dates_source": "https://conference.nrpa.org/about/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 539 company names visible"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -2403,7 +2410,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "pdf",
    "event_tag": "SALGBA 2026",
    "dates": "April 26-29, 2027",
    "city": "Madison, WI",
@@ -2411,7 +2418,9 @@
    "dates_source": "https://salgba.org/events/",
    "note": "added 2026-08-25 at the owner's request. Run by State and Local Government Benefits Association. Exhibitors on file were mined from the May 4-7, 2026 edition in Providence, RI; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
    "url": "https://salgba.org/events/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://salgba.org/events/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://salgba.org/events/",
+   "exhibitor_url_candidate": "https://s3.amazonaws.com/amo_hub_content/Association119/files/SALGBA2026%20Program-9%28Red2%29.pdf",
+   "exhibitor_url_candidate_note": "pdf: PDF; 2026 program PDF in SALGBA's own S3 file store; answered as a PDF the reader cannot extract. On-file note puts the exhibit list on p.57; no  (read 2026-10-14)"
   },
   {
    "block": "Health and human services",
@@ -2476,7 +2485,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "NHCAA 2025",
    "dates": "November 3-6, 2026",
    "city": "San Diego, CA",
@@ -2484,7 +2493,9 @@
    "dates_source": "https://www.nhcaa.org/learn/annual-training-conference-2026/",
    "note": "added 2026-08-25 at the owner's request. Run by National Health Care Anti-Fraud Association. Exhibitors on file were mined from the November 18-21, 2025 edition in Nashville, TN; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
    "url": "https://www.nhcaa.org/learn/annual-training-conference-2026/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nhcaa.org/learn/annual-training-conference-2026/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nhcaa.org/learn/annual-training-conference-2026/",
+   "exhibitor_url_candidate": "https://atc2026.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm",
+   "exhibitor_url_candidate_note": "js-walled: MapYourShow; MYS site titled 'NHCAA Annual Training Conference 2026' (links back to nhcaa.org); gallery prints no names. No nhcaa.org page read links it; (read 2026-10-14)"
   },
   {
    "block": "Health and human services",
