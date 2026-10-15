@@ -270,10 +270,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.aacc.nche.edu/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names AACC and ['colleges', 'community']"
   },
   {
    "key": "AACE::annual-conference",
@@ -909,10 +910,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://airportscouncil.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ACI NA and ['aci']"
   },
   {
    "key": "ACI-NA::business-of-airports",
@@ -930,10 +932,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://airportscouncil.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ACI NA and ['aci']"
   },
   {
    "key": "ACPA::annual-meeting",
@@ -1018,10 +1021,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.actweb.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ACT and ['commuter', 'transportation']"
   },
   {
    "key": "ACTE::careertech-vision",
@@ -1060,10 +1064,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.acwa-us.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ACWA and ['clean', 'water']"
   },
   {
    "key": "ACWA_ENV::acwa-annual-meeting",
@@ -1081,10 +1086,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.acwa-us.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ['administrators', 'clean', 'water']"
   },
   {
    "key": "ADVANCECTE::meetings",
@@ -1282,10 +1288,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.housingfinance.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'affordable housing finance'"
   },
   {
    "key": "AFWA::annual-meeting",
@@ -1434,10 +1441,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.airweb.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names AIR and ['institutional', 'research']"
   },
   {
    "key": "AIRA::national-meeting",
@@ -1689,10 +1697,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.amjudges.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american judges association'"
   },
   {
    "key": "AMERICANPUBLICGA::annual-conference",
@@ -1731,10 +1740,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://asaging.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american society on aging'"
   },
   {
    "key": "AMI::docks-expo",
@@ -1945,10 +1955,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::chapter-conferences-47",
@@ -1966,10 +1977,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::division-events",
@@ -1987,10 +1999,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::national-planning-conference",
@@ -2008,10 +2021,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::npc-online",
@@ -2029,10 +2043,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::planning-webcast-series",
@@ -2050,10 +2065,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APA::policy-advocacy-conference",
@@ -2071,10 +2087,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.planning.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'american planning association'"
   },
   {
    "key": "APAI::annual-training-conference",
@@ -2092,10 +2109,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.apaintl.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names APAI and ['authorities', 'paroling']"
   },
   {
    "key": "APBP::professional-development-seminar",
@@ -2955,10 +2973,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://arma.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'arma international'"
   },
   {
    "key": "ARRA::annual-meeting",
@@ -3085,10 +3104,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.asbointl.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'asbo international'"
   },
   {
    "key": "ASCA::annual-conference",
@@ -3733,10 +3753,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://bestfriends.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'best friends animal society'"
   },
   {
    "key": "BIGCITIESHEALTHC::meetings",
@@ -3754,10 +3775,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.bigcitieshealth.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'big cities health coalition'"
   },
   {
    "key": "BLDGOPERATINGMGM::nfmt-natl-facilities-mgmt-technology",
@@ -3817,10 +3839,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://boatx.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names BOAT and ['texas']"
   },
   {
    "key": "BOBIT::fleet-forward-expo",
@@ -4304,10 +4327,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://communityprogress.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'center for community progress'"
   },
   {
    "key": "CENTERFORCOMMUNI::reclaiming-vacant-properties-summit",
@@ -4325,10 +4349,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://communityprogress.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'center for community progress'"
   },
   {
    "key": "CFSI::national-fire-emergency-services-dinner",
@@ -4388,10 +4413,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.childcareaware.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'child care aware of america'"
   },
   {
    "key": "CHILDRENSBUREAU::national-child-welfare-evaluation-summit",
@@ -4474,10 +4500,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://civitasforhealth.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ['civitas', 'health', 'networks']"
   },
   {
    "key": "CJJ::annual-conference",
@@ -4793,10 +4820,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.foodprotect.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'conference for food protection'"
   },
   {
    "key": "CONFERENCEOFCHIE::meetings",
@@ -4814,10 +4842,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://ccj.ncsc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'conference of chief justices'"
   },
   {
    "key": "CORRECTIONSTECHN::annual-technology-summit",
@@ -4856,10 +4885,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://statearchivists.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names COSA and ['archivists']"
   },
   {
    "key": "COSCA::annual-meeting",
@@ -5006,10 +5036,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.cgcs.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'council of the great city schools'"
   },
   {
    "key": "CPPA::annual-conference",
@@ -5336,10 +5367,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://csgsouth.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names CSG SOUTH and ['csg', 'legislative', 'southern']"
   },
   {
    "key": "CSG_WEST::csg-west-annual-meeting",
@@ -5357,10 +5389,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://csgwest.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names CSG WEST and ['csg', 'west']"
   },
   {
    "key": "CSTE::annual-conference",
@@ -5530,10 +5563,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://drj.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'disaster recovery journal'"
   },
   {
    "key": "DIVERSIFIED::geoweek",
@@ -5638,10 +5672,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ed-fi.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'ed fi alliance'"
   },
   {
    "key": "EDUCAUSE::annual-conference-expo",
@@ -6185,10 +6220,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.flapta.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names FPTA and ['florida', 'parking', 'transportation']"
   },
   {
    "key": "FTA::annual-meeting",
@@ -6416,10 +6452,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.gioa.us/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names GIOA and ['gov', 'investment', 'officers']"
   },
   {
    "key": "GMIS::annual-conference",
@@ -6795,10 +6832,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::division-and-section-meetings",
@@ -6816,10 +6854,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::drug-recognition-expert-conference",
@@ -6837,10 +6876,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::impaired-driving-traffic-safety-conference",
@@ -6858,10 +6898,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::leim-conference-law-enf-info-mgmt",
@@ -6879,10 +6920,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::officer-safety-wellness-symposium",
@@ -6900,10 +6942,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IACP::technology-conference",
@@ -6921,10 +6964,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiacp.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of chiefs of police'"
   },
   {
    "key": "IADLEST::annual-conference",
@@ -6988,10 +7032,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::fire-rescue-international-fri",
@@ -7009,10 +7054,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::fire-rescue-med",
@@ -7030,10 +7076,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::hazmat-conference-ihmrt",
@@ -7051,10 +7098,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::intl-hazardous-materials-response-teams-conf",
@@ -7093,10 +7141,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::technology-summit",
@@ -7114,10 +7163,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::vcos-symposium-in-the-sun",
@@ -7135,10 +7185,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFC::wildland-urban-interface-conference",
@@ -7177,10 +7228,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iafc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international association of fire chiefs'"
   },
   {
    "key": "IAFF::alts-affiliate-leadership-training",
@@ -7261,10 +7313,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.theiai.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names IAI and ['identification']"
   },
   {
    "key": "IAIABC::annual-convention",
@@ -7451,10 +7504,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICC::chapter-meetings",
@@ -7472,10 +7526,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICC::code-development-hearings",
@@ -7493,10 +7548,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICC::committee-action-hearings",
@@ -7514,10 +7570,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICC::public-comment-hearings",
@@ -7535,10 +7592,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICC::training-certification-courses",
@@ -7556,10 +7614,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.iccsafe.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'international code council'"
   },
   {
    "key": "ICCFA::annual-convention-expo",
@@ -8228,10 +8287,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.infotoday.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'information today'"
   },
   {
    "key": "INFORMATIONTODAY::internet-librarian",
@@ -8249,10 +8309,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.infotoday.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'information today'"
   },
   {
    "key": "IPMA-HR::chapter-state-conferences",
@@ -8543,10 +8604,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.k12six.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'k12 security information exchange'"
   },
   {
    "key": "LEADINGAGE::annual-meeting-expo",
@@ -8585,10 +8647,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://bikeleague.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'league of american bicyclists'"
   },
   {
    "key": "LEARNINGFORWARD::annual-conference",
@@ -8627,10 +8690,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncsl.org/legislative-staff/lrl",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'legislative research librarians'"
   },
   {
    "key": "LIB_STATE::state-library-assn-conferences",
@@ -8690,10 +8754,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://mcsheriffs.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'major county sheriffs of america'"
   },
   {
    "key": "MAPA::annual-conference",
@@ -8711,10 +8776,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://midatlanticparkingassociation.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ['atlantic', 'mid', 'parking']"
   },
   {
    "key": "MEDICAIDENTERPRI::mesc",
@@ -8732,10 +8798,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://mesconference.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'medicaid enterprise systems conf'"
   },
   {
    "key": "MENTALHEALTHAMER::annual-conference",
@@ -8753,10 +8820,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://mhanational.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'mental health america'"
   },
   {
    "key": "METROFIRECHIEFS::annual-meeting",
@@ -8795,10 +8863,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.cisecurity.org/ms-isac",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names MS ISAC and ['cis', 'isac']"
   },
   {
    "key": "MSHDA::michigan-housing-conference",
@@ -9033,10 +9102,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.nacaa.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ['agents', 'agricultural', 'county']"
   },
   {
    "key": "NACAS::c3x",
@@ -9902,10 +9972,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::e-g-connecticut-nahro",
@@ -9923,10 +9994,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::mid-atlantic-rc-marc",
@@ -9944,10 +10016,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::mountain-plains-rc",
@@ -9965,10 +10038,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::virtual-classrooms",
@@ -9986,10 +10060,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::national-conference-exhibition",
@@ -10007,10 +10082,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::nerc-new-england",
@@ -10028,10 +10104,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::north-central-rc",
@@ -10049,10 +10126,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::pacific-northwest-rc-pnrc",
@@ -10070,10 +10148,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::professional-development-schools",
@@ -10091,10 +10170,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::serc-southeastern-10-states",
@@ -10112,10 +10192,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::southwest-rc-swnahro",
@@ -10133,10 +10214,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::state-chapters-40",
@@ -10154,10 +10236,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::summer-conference",
@@ -10175,10 +10258,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAHRO::washington-conference",
@@ -10196,10 +10280,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nahro.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAHRO and ['housing', 'officials', 'redevelopment']"
   },
   {
    "key": "NAIC::insurance-summit",
@@ -10346,11 +10431,12 @@
     "CONFERENCE_BLOCKS.md",
     "sources_national2.csv"
    ],
-   "org_url": null,
+   "org_url": "https://www.ncsl.org/legislative-staff/nalit",
    "directory_url": null,
-   "status": "needs_url",
+   "status": "org_found",
    "promoted": false,
-   "registry_status_alt": "TABLETOP"
+   "registry_status_alt": "TABLETOP",
+   "org_url_why": "a researcher proposed it; names NALIT and ['information', 'legislative', 'technology']"
   },
   {
    "key": "NAMD::fall-conference",
@@ -10431,10 +10517,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://nampi.net/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NAMPI and ['integrity', 'program']"
   },
   {
    "key": "NANMCKAYASSOC::training-seminars",
@@ -10863,10 +10950,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nasaa-arts.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NASAA and ['agencies', 'arts']"
   },
   {
    "key": "NASAA_ARTS::nasaa-assembly",
@@ -11527,10 +11615,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.firemarshals.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NASFM and ['fire', 'marshals']"
   },
   {
    "key": "NASHP::annual-conference",
@@ -12220,10 +12309,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.thenationalcouncil.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council for mental wellbeing'"
   },
   {
    "key": "NATIONALCOUNCILO::annual-conference",
@@ -12241,10 +12331,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://ncil.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council on independent living'"
   },
   {
    "key": "NATIONALCOUNCILO::annual-meeting",
@@ -12262,10 +12353,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.facilitiescouncil.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council on school facilities'"
   },
   {
    "key": "NATIONALFUSIONCE::annual-training-event",
@@ -12325,10 +12417,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://nicic.gov/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national institute of corrections'"
   },
   {
    "key": "NATIONALRURALEDU::annual-convention",
@@ -12409,10 +12502,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nwica.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national wic association'"
   },
   {
    "key": "NATLASSNOFPOLICE::annual-conference",
@@ -13528,10 +13622,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.neptc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names ['england', 'new', 'parking']"
   },
   {
    "key": "NEWPORTBOARDGROU::state-healthcare-it-connect-summit",
@@ -13570,10 +13665,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://nfcausa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NFCA and ['fusion']"
   },
   {
    "key": "NFPA::conference-expo-c-e",
@@ -13970,10 +14066,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://trynova.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names NOVA and ['assistance', 'victim']"
   },
   {
    "key": "NOVOGRADAC::lihtc-nmtc-oz-conferences",
@@ -14138,10 +14235,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::certification-cprp-cpre-afo-cpsi",
@@ -14159,10 +14257,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::directors-school",
@@ -14180,10 +14279,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::green-school",
@@ -14201,10 +14301,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::innovation-labs",
@@ -14222,10 +14323,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::legislative-forum-advocacy-day",
@@ -14243,10 +14345,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::revenue-development-management-school",
@@ -14264,10 +14367,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRPA::supervisors-management-school",
@@ -14285,10 +14389,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.nrpa.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'national recreation and park association'"
   },
   {
    "key": "NRWA::ruralwater-rally",
@@ -14814,10 +14919,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ofn.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'opportunity finance network'"
   },
   {
    "key": "P2F2::annual-conference",
@@ -15172,10 +15278,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ala.org/pla",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'public library association'"
   },
   {
    "key": "RAILVOLUTION::rail-volution",
@@ -15235,10 +15342,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://resource-recycling.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'resource recycling'"
   },
   {
    "key": "RESOURCERECYCLIN::resource-recycling-conference",
@@ -15256,10 +15364,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://resource-recycling.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'resource recycling'"
   },
   {
    "key": "RSSI/AREMA/RSI::railway-interchange",
@@ -15340,10 +15449,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://salgba.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names SALGBA and ['benefits', 'gov', 'local']"
   },
   {
    "key": "SCHOOLTRANSPORTA::stn-expo",
@@ -16539,10 +16649,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://s4prc.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'states for passenger rail coalition'"
   },
   {
    "key": "STRIMA::annual-conference",
@@ -16648,10 +16759,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.southwestparking.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names SWPTA and ['parking', 'southwest', 'transp']"
   },
   {
    "key": "SWTA::annual-conference-expo",
@@ -16921,10 +17033,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.texasparking.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names TPTA and ['parking', 'transportation']"
   },
   {
    "key": "TRANSPORTATIONAL::vision-zero-cities-conference",
@@ -16942,10 +17055,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://transalt.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'transportation alternatives'"
   },
   {
    "key": "TRB::annual-meeting",
@@ -17047,10 +17161,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://www.urbanlibraries.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'urban libraries council'"
   },
   {
    "key": "ULI::district-council-events",
@@ -17278,10 +17393,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.urbanlibraries.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'urban libraries council'"
   },
   {
    "key": "URISA::gis-pro",
@@ -17572,10 +17688,11 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.virginiahousing.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'virginia housing'"
   },
   {
    "key": "WAHOUSINGALLIANC::washington-housing-conference",
@@ -17635,10 +17752,11 @@
    "harvest": true,
    "verified": false,
    "origin": "sources_national2.csv",
-   "org_url": null,
+   "org_url": "https://wci360.com/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; names WCI and ['compensation', 'workers']"
   },
   {
    "key": "WEF::collection-systems-conference",
@@ -17803,10 +17921,11 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.zerotothree.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_url_why": "a researcher proposed it; its own heading reads 'zero to three'"
   }
  ]
 }

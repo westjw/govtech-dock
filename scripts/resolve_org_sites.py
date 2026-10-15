@@ -130,6 +130,35 @@ def page_names_it(html: str, code: str, name: str) -> tuple:
                    f"{' plus the acronym' if has_ac else ''} - not enough to be sure")
 
 
+SMALL = {"of", "and", "the", "for", "on", "in", "to", "a", "an", "at", "&"}
+
+
+def name_spelling(html: str, code: str) -> str | None:
+    """The body's name as its page writes it, when its initials spell the code.
+
+    THE REGISTRY OFTEN HOLDS ONLY THE ACRONYM. 92 of 283 researcher-found
+    pages that page_names_it() refused title themselves in full - "Fire
+    Department Safety Officers Association (FDSOA)" - but the recorded name is
+    "FDSOA", so there were no distinctive words to check against. A full name
+    whose initials spell the code is strong evidence of the body, and it is
+    still not enough alone: "American Correctional Association" and "American
+    Camp Association" both spell ACA. So this only PROPOSES; a second reader
+    who saw the registry's events decides which body it is
+    (confirm_proposals, second_read).
+    """
+    ac = re.sub(r"[^A-Z0-9]", "", (code or "").upper())
+    if len(ac) < 3:
+        return None
+    heads = [re.sub(r"<[^>]+>", " ", h) for h in
+             (TITLE.findall(html or "")[:1] + H1.findall(html or "")[:2] + META.findall(html or "")[:2])]
+    for h in heads:
+        for seg in re.split(r"\s+[|\u2013\u2014-]\s+|[(:\u2122\u00ae]", h):
+            ws = [w for w in re.findall(r"[A-Za-z][A-Za-z'&]*", seg) if w.lower() not in SMALL]
+            if len(ws) >= 2 and "".join(w[0] for w in ws).upper() == ac:
+                return re.sub(r"\s+", " ", seg).strip()
+    return None
+
+
 def resolve(code: str, name: str, log=print) -> dict:
     for url in candidates(code, name):
         try:
@@ -144,7 +173,8 @@ def resolve(code: str, name: str, log=print) -> dict:
     return {}
 
 
-def confirm_proposals(props: list, orgs: list, fetch=None, log=print) -> dict:
+def confirm_proposals(props: list, orgs: list, fetch=None, log=print,
+                      pending: list | None = None) -> dict:
     """{code: {url, why}} for proposed addresses whose page names the body.
 
     A RESEARCHER'S ADDRESS IS A PROPOSAL, LIKE OUR OWN GUESSES. An agent may
@@ -172,9 +202,17 @@ def confirm_proposals(props: list, orgs: list, fetch=None, log=print) -> dict:
             log(f"  {code:<16} {url:<40} {str(exc)[:44]}")
             continue
         ok, why = page_names_it(html, o["code"], o["name"])
+        spelled = None if ok else name_spelling(html, o["code"])
+        if spelled and prop.get("second_read") == "same_body":
+            ok, why = True, (f"its own name {spelled!r} spells {o['code']}, and a "
+                             f"second reader matched it to this body's events")
+        elif spelled and pending is not None:
+            pending.append({"code": o["code"], "name": o["name"], "url": url,
+                            "spelled": spelled})
         log(f"  {code:<16} {url:<40} {'CONFIRMED' if ok else 'no'} - {why[:60]}")
         if ok:
-            found[key] = {"url": url, "why": f"a researcher proposed it; {why}"}
+            found[key] = {"url": url, "why": f"a researcher proposed it; {why}",
+                          "observed": spelled}
     return found
 
 
@@ -201,7 +239,13 @@ def main() -> int:
     if a.proposals:
         props = json.loads(pathlib.Path(a.proposals).read_text())
         print(f"confirming {len(props)} proposed address(es)\n")
-        found = confirm_proposals(props, orgs)
+        pending: list = []
+        found = confirm_proposals(props, orgs, pending=pending)
+        if pending:
+            out = pathlib.Path(a.proposals).with_name("needs_second_read.json")
+            out.write_text(json.dumps(pending, indent=1, ensure_ascii=False) + "\n")
+            print(f"\n{len(pending)} page(s) spell the acronym in full and wait for "
+                  f"a second reader: {out}")
     for o in ([] if a.proposals else todo):
         print(f"  {o['code']:<16} {o['name'][:44]}")
         got = resolve(o["code"], o["name"])
@@ -234,6 +278,8 @@ def main() -> int:
         if got and not r.get("org_url"):
             r["org_url"] = got["url"]
             r["org_url_why"] = got["why"][:200]
+            if got.get("observed"):
+                r["org_name_observed"] = got["observed"]
             r["status"] = "org_found"
             n += 1
     tmp = p.with_suffix(".tmp")

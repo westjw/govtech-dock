@@ -28084,6 +28084,27 @@ def check_an_acronym_cannot_confirm_itself() -> int:
     if "researcher proposed" not in (got.get(ACA) or {}).get("why", ""):
         errors += fail("a confirmed proposal does not say a researcher proposed it")
 
+    # A FULL NAME THAT SPELLS THE ACRONYM IS A PROPOSAL, NOT A CONFIRMATION.
+    # Both ACAs spell ACA; only a second reader who saw the events decides.
+    page = "<title>ACA - American Correctional Association</title>"
+    if ros.name_spelling(page, "ACA") != "American Correctional Association":
+        errors += fail(f"a title spelling the acronym in full was not read: {ros.name_spelling(page, 'ACA')!r}")
+    if ros.name_spelling("<title>Home - ACA</title>", "ACA") is not None:
+        errors += fail("the bare acronym was read as a spelled-out name")
+    orgs2 = [{"code": "ACA", "name": "ACA", "is_a_class": False}]
+    pend: list = []
+    got2 = ros.confirm_proposals([{"code": "ACA", "name": "ACA", "url": "https://www.aca.example/"}],
+                                 orgs2, fetch=lambda u: page, log=lambda *a: None, pending=pend)
+    if got2 or not pend:
+        errors += fail("a spelled-out name confirmed a body with no second reader, or was "
+                       "not queued for one - and the American Camp Association spells ACA too")
+    got3 = ros.confirm_proposals([{"code": "ACA", "name": "ACA", "url": "https://www.aca.example/",
+                                   "second_read": "same_body"}],
+                                 orgs2, fetch=lambda u: page, log=lambda *a: None)
+    if (got3.get(("ACA", "ACA")) or {}).get("observed") != "American Correctional Association":
+        errors += fail("a spelled-out name a second reader matched was not confirmed with "
+                       "the name its own page states")
+
     # A CODE IS NOT A BODY. Writing what was confirmed for one APPA onto every
     # row coded APPA put appa.org on five different associations (2026-10-15).
     src_w = (ROOT / "scripts" / "resolve_org_sites.py").read_text()
