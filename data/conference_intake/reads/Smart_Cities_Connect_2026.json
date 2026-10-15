@@ -110,5 +110,37 @@
   "why": "Event logistics navigation item",
   "by": "agent:reader",
   "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Smart_Cities_Connect_2026.json",
+  "name": "CloudWave",
+  "verdict": "unsure",
+  "why": "gocloudwave.com is healthcare managed IT; same exhibitor at a smart-city expo unconfirmed",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Smart_Cities_Connect_2026.json",
+  "name": "Corvalent Corporation",
+  "verdict": "supplier",
+  "why": "Industrial computer hardware maker",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Smart_Cities_Connect_2026.json",
+  "name": "Digital Global Systems (DGS)",
+  "verdict": "vendor",
+  "why": "Own site: AI spectrum-monitoring/RF awareness platform for smart cities and public safety",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Smart_Cities_Connect_2026.json",
+  "name": "eBodyGuard",
+  "verdict": "unsure",
+  "why": "Site did not answer; cannot tell what it sells or to whom",
+  "by": "agent:reader",
+  "on": "2026-10-15"
  }
 ]

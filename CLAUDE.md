@@ -1274,6 +1274,43 @@ only when the organisation's own page states them.
   twin. **Dates:** `conference_dates.confirm` also reads `dates_source`;
   `apply_conference_reads` takes an `unannounced` read as a dated note.
 
+**Stage 3 (2026-10-15): the registry's promotion door, tightened from use.**
+
+- **A matcher fix does not reach the rows it already wrote.** Stage 1 resolves
+  only rows with no `org_url`, so Kansas kept the Arkansas Municipal League and
+  the Association of Arkansas Counties, and West Virginia the Virginia
+  Municipal League, six weeks after both matcher bugs were fixed. Re-resolved
+  (lkm.org and kansascounties.org answer 403 to an identified crawler, so
+  `org_unreachable`). `check_chapter_listings_are_looked_up` now refuses any
+  row whose observed organisation names another state.
+- **A table that says it is the floor is read** (`table_of_exhibitors`): a
+  header naming a company column AND a booth column. Illinois APCO's 80 vendors
+  were invisible because 23 menu anchors passed MIN_NAMES and the cell
+  fallback never ran. It is ADDED to the harvest, never instead: measured on
+  the 75 live floors, 8 carry such a table, and replacing the harvest dropped
+  four sponsors linked outside it on CCM's page (Tyler among them). A table
+  with NO header counts when 80% of its rows carry a "Booth #N" cell, and only
+  those rows are read (NACE's 48-row list was read as 56 menu items and was
+  one stamp from being filed "not a floor at all"). With both forms, 16 of the
+  live floors carry such a table; four held 20 names nobody had staged
+  (Smart Cities Connect's 12 among them).
+- **A site builder's credit is not an exhibitor** (`credited()`): an anchor
+  after "powered by", "websites by", "site by", "designed by" is cut. Illinois
+  APCO's footer tagged CivicPlus with a 911 conference, unread, because the
+  floor reader skips names already on the board. Measured on the live floors
+  it cuts only credits: A2Z Events on seven, GrowthZone, Visual Composer and
+  two web agencies. "Sponsored by" names a sponsor and is kept.
+- **Promotion re-judges the directory page** with `judge()` before it writes.
+  The status alone was trusted, and a reader's attribution set Indiana Parks'
+  page to `directory_found`: its sponsors are logo images, its text is the
+  menu, and it was promoted and withdrawn the same day. A reader's lead is
+  judged like any candidate, never landed as a verdict.
+- **The name that goes public is read, and cleaned only of what is not the
+  name**: a bare state ("Illinois", APCO's link text) is not an organisation;
+  CivicPlus's "Official Website of the" is the platform's; `event_name_from`
+  decodes entities and takes a list's caption off ("IPSTA Conference Vendors-
+  as of 10/12/2026" is "IPSTA Conference"). Five stored names corrected.
+
 - **`check_a_redraw_is_the_crawl_without_the_fetch` flaked once** during this
   work: 21 organisations differed after its randomised edits (everbridge,
   urban-sdk, placer-ai first), none with a source the tag change can touch,

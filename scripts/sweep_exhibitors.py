@@ -216,12 +216,116 @@ def host_of(tag: str | None) -> str | None:
     return m.group(1) if m else None
 
 
+EXHIBITOR_COLUMN = re.compile(r"\b(company|companies|exhibitor|vendor|firm|organi[sz]ation|name)s?\b", re.I)
+BOOTH_COLUMN = re.compile(r"\bbooth", re.I)
+_CELL = re.compile(r"<t([dh])\b[^>]*>(.*?)</t\1>", re.S | re.I)
+
+
+BOOTH_CELL = re.compile(r"^booth\s*(#|no\.?|number)?\s*[\w]*\d[\w]*(\s*[,/&-]\s*\w*\d\w*)*$", re.I)
+
+
+def booth_column_pair(rows: list[str]) -> tuple[int | None, int | None]:
+    """(name column, first row) for a table with no header whose every row
+    says "Booth #N" in one cell - NACE's 2026 list, 57 rows of "Vaisala Inc |
+    Booth #229" (2026-10-15). The page states the floor in each row instead of
+    once at the top. The name is the cell beside the booth, to its left."""
+    pairs = []
+    for r in rows:
+        cells = [clean(re.sub(r"<[^>]+>", " ", c)) for _k, c in _CELL.findall(r)]
+        j = next((k for k, c in enumerate(cells) if BOOTH_CELL.match(c)), None)
+        if j is not None and len(cells) >= 2:
+            pairs.append(j)
+    if len(pairs) < MIN_NAMES or len(pairs) < 0.8 * max(1, len(rows)):
+        return None, None
+    j = Counter(pairs).most_common(1)[0][0]
+    return (j - 1 if j > 0 else 1), j
+
+
+def table_of_exhibitors(page: str, host: str | None = None) -> list[dict]:
+    """The company column of a table whose header says it is the floor.
+
+    THE MENU CROWDED OUT THE LIST. The Illinois APCO chapter's "2026 Vendors"
+    page is a table of 80 vendors under a header row "Company/Firm | Booth
+    Number" - and harvest() read the site's 23 menu anchors first, found more
+    than MIN_NAMES, and never looked at a cell. The page graded `menu` and a
+    real floor read as nothing (2026-10-15).
+
+    Narrow on purpose: a header row naming BOTH a company column and a booth
+    column, in the first three rows, is the page saying what the table is. A
+    sponsor table ("Company | Level") or a schedule is not taken by this
+    rule. Every cell still passes looks_like_a_name, and the result still
+    goes through suspicious(), quality() and reads_as_a_menu() downstream.
+    """
+    best: list[dict] = []
+    for t in re.finditer(r"<table\b.*?</table>", page, re.S | re.I):
+        rows = re.findall(r"<tr\b[^>]*>(.*?)</tr>", t.group(0), re.S | re.I)
+        col = start = booth = None
+        for i, r in enumerate(rows[:3]):
+            heads = [clean(re.sub(r"<[^>]+>", " ", c)) for _k, c in _CELL.findall(r)]
+            hit = next((j for j, h in enumerate(heads)
+                        if EXHIBITOR_COLUMN.search(h) and not BOOTH_COLUMN.search(h)), None)
+            if hit is not None and any(BOOTH_COLUMN.search(h) for h in heads):
+                col, start = hit, i + 1
+                break
+        if col is None:
+            # Only the rows that carry a booth: the header row ("Name |
+            # Booth") and any stray row are not exhibitors.
+            col, booth = booth_column_pair(rows)
+            start = 0
+        if col is None:
+            continue
+        got: dict[str, dict] = {}
+        for r in rows[start:]:
+            cells = _CELL.findall(r)
+            if len(cells) <= max(col, booth or 0):
+                continue
+            if booth is not None and not BOOTH_CELL.match(
+                    clean(re.sub(r"<[^>]+>", " ", cells[booth][1]))):
+                continue
+            raw = cells[col][1]
+            name = clean(re.sub(r"<[^>]+>", " ", raw))
+            if not looks_like_a_name(name, host):
+                continue
+            a = re.search(r'href="(https?://[^"]+)"', raw, re.I)
+            site = a.group(1) if a else None
+            if name.lower() not in got or (site and not got[name.lower()]["website"]):
+                got[name.lower()] = {"name": name, "website": site}
+        if len(got) > len(best):
+            best = list(got.values())
+    return best
+
+
+# THE SITE'S BUILDER IS NOT ON ITS FLOOR. Illinois APCO's vendor page ends
+# "Government Websites by <a>CivicPlus&reg;</a>", and CivicPlus - a company
+# on the board - was tagged as exhibiting at a 911 conference (2026-10-15).
+# The floor reader never saw it: a name already on the board is settled and
+# skips the reader. "Sponsored by" is NOT here; that one names a sponsor.
+CREDIT_LINE = re.compile(r"\b(powered|websites?|site|designed|developed|built|hosted|"
+                         r"created|crafted|made|platform)\s+by\s*[:\-\u2013]?\s*$", re.I)
+
+
+def credited(page: str, at: int) -> bool:
+    """Does the text just before position `at` read as a credit line?"""
+    before = html_lib.unescape(re.sub(r"<[^>]+>", " ", page[max(0, at - 160):at]))
+    return bool(CREDIT_LINE.search(re.sub(r"\s+", " ", before)))
+
+
 def harvest(page: str, host: str | None = None) -> list[dict]:
     """Names off an exhibitor directory, with a website where the page gave one.
 
     Reads anchors first - a directory almost always links each exhibitor to
     its own site or to a detail page - then falls back to repeated block
-    elements for the directories that are plain text in a table.
+    elements for the directories that are plain text in a table. A table
+    whose header says it is the floor (table_of_exhibitors) is read on top
+    of both, whatever they found.
+
+    ADDED, NEVER INSTEAD. Returning the table alone was tried first and
+    measured on the 75 live floors (2026-10-15): 8 carry such a table, and on
+    the Connecticut Conference of Municipalities' page the table holds the
+    exhibitors while four sponsors - Tyler Technologies Digital Services
+    among them - are linked logos outside it. Replacing the harvest would
+    have dropped them. The menu anchors that ride along are what the floor
+    reader deletes; a company dropped here is never seen again.
     """
     out: dict[str, dict] = {}
 
@@ -229,6 +333,8 @@ def harvest(page: str, host: str | None = None) -> list[dict]:
         href, inner = m.group(1), re.sub(r"<[^>]+>", " ", m.group(2))
         name = clean(inner)
         if not looks_like_a_name(name, host):
+            continue
+        if credited(page, m.start()):
             continue
         site = href if href.startswith("http") else None
         # An anchor pointing back into the conference's own site is a detail
@@ -244,6 +350,11 @@ def harvest(page: str, host: str | None = None) -> list[dict]:
             name = clean(re.sub(r"<[^>]+>", " ", m.group(2)))
             if looks_like_a_name(name, host) and name.lower() not in out:
                 out[name.lower()] = {"name": name, "website": None}
+
+    for e in table_of_exhibitors(page, host):
+        key = e["name"].lower()
+        if key not in out or (e["website"] and not out[key]["website"]):
+            out[key] = e
 
     return list(out.values())
 

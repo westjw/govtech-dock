@@ -485,8 +485,11 @@ def state_in(geo: str | None) -> str | None:
     confirm "virginia" in the title, and every company on that floor would
     gain a West Virginia conference it never attended.
 
-    Neither state is in the registry today, which is what makes this worth
-    fixing now rather than after somebody adds one.
+    This said neither state was in the registry. West Virginia was, and stage
+    1 had already filed the Virginia Municipal League as its organisation;
+    a fix to the matcher does not reach rows it wrote before the fix
+    (corrected 2026-10-15, with Kansas's two Arkansas bodies, and now held
+    by check_chapter_listings_are_looked_up).
     """
     g = (geo or "").lower()
     return max((s for s in STATES if re.search(rf"\b{s}\b", g)),
@@ -1041,7 +1044,13 @@ def confirmed_name(e: dict) -> str | None:
     not confirmed by it.
     """
     seen = (e.get("org_name_observed") or "").strip()
-    if seen and not seen.startswith("(the link following"):
+    # A STATE IS NOT AN ORGANISATION. APCO and the public-health listing
+    # label every chapter link with the state alone, so 16 rows carried
+    # "Illinois", "Texas" or "Ohio" here, and the first of them to find a
+    # directory would have been promoted under the public tag "Illinois
+    # 2026" (2026-10-15). The link text confirms which state, not who.
+    bare = seen.lower() in STATES or seen.lower() in {a.lower() for a in STATES.values()}
+    if seen and not bare and not seen.startswith("(the link following"):
         return seen
     if e.get("name_confidence") == "named":
         return (e.get("org_name") or "").strip() or None
@@ -1049,6 +1058,10 @@ def confirmed_name(e: dict) -> str | None:
 
 
 GENERIC_TITLE = re.compile(r"^(home|welcome|index|main|default|untitled)\b", re.I)
+# THE PLATFORM'S WORDS ARE NOT THE NAME. CivicPlus titles every page
+# "Official Website of the Illinois Chapter of APCO", and that whole string
+# was about to become a public tag (2026-10-15).
+OFFICIAL_SITE = re.compile(r"^(the\s+)?official\s+(web\s*site|home\s*page|site)\s+(of|for)\s+(the\s+)?", re.I)
 
 
 def name_from_own_site(e: dict) -> str | None:
@@ -1073,11 +1086,44 @@ def name_from_own_site(e: dict) -> str | None:
     for m in re.finditer(r"<(?:title|h1)[^>]*>(.*?)</(?:title|h1)>", page[:200000],
                          re.S | re.I):
         cand = re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))).strip()
-        cand = re.split(r"\s+[|\u2013\u2014-]\s+", cand)[0].strip()
+        parts = [OFFICIAL_SITE.sub("", x).strip()
+                 for x in re.split(r"\s+[|\u2013\u2014-]\s+", cand)]
+        cand = next((x for x in parts if x and not GENERIC_TITLE.match(x)), parts[0])
         if (3 < len(cand) <= 80 and not GENERIC_TITLE.match(cand)
                 and re.search(rf"\b{state}\b", cand, re.I)):
             return cand
     return None
+
+
+LIST_CAPTION = re.compile(r"\b(vendors?|exhibitors?|sponsors?|participating|"
+                          r"opportunities|as of)\b", re.I)
+
+
+def event_name_from(heading: str) -> str:
+    """The event's name out of a heading, without the list's caption.
+
+    The heading a directory page carries is often about the LIST: "IPSTA
+    Conference Vendors- as of 10/12/2026", "2026 CT EMERGENCY MANAGEMENT
+    SYMPOSIUM - PARTICIPATING EXHIBITORS AND SPONSORS", "Vendor
+    Opportunities - New York Conference of Mayors". Each was about to be, or
+    is, the conference's public name. The event's words are on the page;
+    this only takes the caption off, so nothing is written that the page did
+    not say. Entities are decoded first: "KLC Conference &amp; Expo" sat in
+    the catalogue as five characters of markup.
+    """
+    h = re.sub(r"\s+", " ", html_lib.unescape(heading or "").replace("\xa0", " ")).strip()
+    if not LIST_CAPTION.search(h):
+        return h
+    parts = [x.strip() for x in re.split(r"\s*[|\u2013\u2014]\s*|\s*-\s+|\s+-\s*", h) if x.strip()]
+    clean = [x for x in parts if EVENT_WORD.search(x) and not LIST_CAPTION.search(x)]
+    if clean:
+        return clean[0]
+    for x in parts:
+        if EVENT_WORD.search(x):
+            cut = re.split(r"\s+(?:vendors?|exhibitors?|sponsors?)\b", x, flags=re.I)[0].strip()
+            if EVENT_WORD.search(cut):
+                return cut
+    return h
 
 
 def event_name_and_year(page: str, url: str) -> tuple[str | None, str | None]:
@@ -1086,10 +1132,11 @@ def event_name_and_year(page: str, url: str) -> tuple[str | None, str | None]:
     Read, never built. A tag is permanent - it lands inside company
     descriptions - so an event this cannot name does not get promoted.
     """
-    heads = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", m.group(1))).strip()
+    heads = [re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", m.group(1)))).strip()
              for m in re.finditer(r"<(?:title|h1|h2)[^>]*>(.*?)</(?:title|h1|h2)>",
                                   page[:200000], re.S | re.I)]
     name = next((h for h in heads if EVENT_WORD.search(h) and len(h) <= 90), None)
+    name = event_name_from(name) if name else None
     years = re.findall(r"\b(20[2-3]\d)\b", " ".join(heads[:4]) + " " + url)
     if not years:
         years = re.findall(r"\b(20[2-3]\d)\b", page[:60000])
@@ -1149,6 +1196,13 @@ def stage_promote(write: bool, which: str = "state") -> int:
 
     ready = [e for e in doc["events"]
              if e.get("status") == "directory_found" and not e.get("promoted")]
+
+    def _norm(u):
+        return (u or "").strip().rstrip("/").lower()
+    kin: dict = {}
+    for e in doc["events"]:
+        if e.get("org_url"):
+            kin.setdefault(_norm(e["org_url"]), []).append(e.get("event_name") or "")
     print(f"{len(ready)} event(s) with a directory and not yet promoted\n")
     added, refused = [], []
     for e in ready:
@@ -1178,6 +1232,24 @@ def stage_promote(write: bool, which: str = "state") -> int:
         page = fetch(e["directory_url"])
         if not page:
             refused.append((e["org_code"], "the directory stopped answering"))
+            continue
+        # FACT ONE IS RE-READ HERE, NOT TRUSTED FROM THE STATUS. The status
+        # says judge() once called this page a directory, and anything that
+        # can write a status can say so: on 2026-10-15 a reader's
+        # attribution set Indiana Parks' page to directory_found, and this
+        # stage promoted it - a page whose sponsors are logo images and
+        # whose every harvested name was the site's own menu. The page is
+        # judged again, by the same judge, before it becomes public.
+        hint = e.get("parent_national")
+        sibs = [n for n in kin.get(_norm(e.get("org_url")), [])
+                if n and n != e.get("event_name")]
+        verdict, why, _names = judge(page, e["directory_url"], hint, e.get("geo"),
+                                     e.get("org_url"), PARENT_SITES.get(hint or ""),
+                                     e.get("event_name") or "", sibs,
+                                     e.get("org_name") or "", e.get("org_code") or "")
+        if verdict != "directory":
+            refused.append((e["org_code"], f"the directory does not read as a list "
+                                           f"of companies today ({verdict}: {why[:60]})"))
             continue
         name, year = event_name_and_year(page, e["directory_url"])
         if not year:

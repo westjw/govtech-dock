@@ -2630,7 +2630,7 @@
   {
    "block": "Executive / administration",
    "department": "Cities (elected)",
-   "conference": "Vendor Opportunities - New York Conference of Mayors",
+   "conference": "New York Conference of Mayors",
    "flagship": false,
    "swept": false,
    "exhibitor_url": "http://www.nycom.org/training/exhibiting-sponsorship",
@@ -2675,7 +2675,7 @@
   {
    "block": "Executive / administration",
    "department": "Cities (elected)",
-   "conference": "KLC Conference &amp; Expo",
+   "conference": "KLC Conference & Expo",
    "flagship": false,
    "swept": false,
    "exhibitor_url": "http://www.klc.org/EventView/13331/klc-conference-expo",
@@ -2698,7 +2698,7 @@
   {
    "block": "Executive / administration",
    "department": "Cities (elected)",
-   "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM&nbsp;- PARTICIPATING EXHIBITORS AND SPONSORS",
+   "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM",
    "flagship": false,
    "swept": false,
    "exhibitor_url": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
@@ -2903,6 +2903,27 @@
     "parent_national": "ASBO"
    },
    "dates_checked_on": "2026-09-11"
+  },
+  {
+   "block": "Public safety",
+   "department": "911 / dispatch",
+   "conference": "IPSTA Conference",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://911conference.org/176/2026-Vendors",
+   "fetchability": "readable",
+   "event_tag": "Illinois Chapter of APCO 2026",
+   "url": "http://www.ilapco.org",
+   "dates": null,
+   "city": null,
+   "dates_source": "https://911conference.org/176/2026-Vendors",
+   "dates_confidence": "unannounced",
+   "discovery_notes": "State chapter event promoted from data/state_events.json on 2026-10-15. Organisation name confirmed as 'Illinois Chapter of APCO' by http://www.ilapco.org. Directory: judged 2026-10-15 from a reader's lead (https://911conference.org/176/2026-Vendors): 100 names, good (41% carry a corporate marker, 1% name a site section, 5% use the words a site names itself with). Event name read from the page as 'IPSTA Conference Vendors- as of 10/12/2026'.",
+   "state_event": {
+    "org_code": "APCOCH_IL",
+    "geo": "Illinois",
+    "parent_national": "APCO"
+   }
   }
  ]
 }

@@ -10,18 +10,6 @@
    "website": null
   },
   {
-   "name": "A2Z Events",
-   "website": "https://mya2zevents.com",
-   "is_govtech": false,
-   "is_govtech_why": "reader: event-platform footer branding, not a government tech vendor",
-   "read": {
-    "verdict": "supplier",
-    "why": "event-platform footer branding, not a government tech vendor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
    "name": "AA Thread",
    "website": null,
    "is_govtech": false,
@@ -310,6 +298,6 @@
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 7,
+ "read_dropped": 8,
  "quality_was": "good"
 }

@@ -6699,6 +6699,7 @@ def check_every_pipeline_script_has_a_caller() -> int:
         "promote_cards.py": "the card door: a person reads the gate before it lands",
         "read_floor.py": "the reader's applier; a person or agent runs it per floor",
         "discover_js.py": "needs Playwright; kept out of the run path on purpose",
+        "render_floor.py": "needs Playwright; a person reads a floor-plan app with it",
     }
     MUST_RUN = {
         "sync_claims.py": "the claim flow is dark without it",
@@ -10462,7 +10463,8 @@ def check_the_crawler_honours_robots_txt() -> int:
     # readers walk the redirects first, abort refused navigations, and keep
     # nothing from a page they may not read
     for name, after in (("render_fetch", "robots.check(page.url)"),
-                        ("discover_js", "robots.allowed, page.url")):
+                        ("discover_js", "robots.allowed, page.url"),
+                        ("render_floor", "robots.allowed, page.url")):
         src = (ROOT / "scripts" / f"{name}.py").read_text()
         if ("ats.resolve" not in src or 'page.route("**/*", only_allowed)' not in src
                 or 'route.abort("blockedbyclient")' not in src or after not in src):
@@ -10481,6 +10483,9 @@ def check_the_crawler_honours_robots_txt() -> int:
     dj = (ROOT / "scripts" / "discover_js.py").read_text()
     if "user_agent=" not in dj or f"{robots.TOKEN}/" not in dj:
         errors += fail("the discovery browser passes as plain Chrome")
+    rf = (ROOT / "scripts" / "render_floor.py").read_text()
+    if "user_agent=UA" not in rf or f"{robots.TOKEN}/" not in rf:
+        errors += fail("the floor-plan browser passes as plain Chrome")
     return errors
 
 
@@ -25891,6 +25896,131 @@ def check_a_menu_is_not_a_directory() -> int:
     return errors
 
 
+def check_a_table_that_says_it_is_the_floor_is_read() -> int:
+    """A header naming a company column and a booth column is the list.
+
+    The Illinois APCO chapter's 2026 vendor page is a table of 80 vendors
+    under "Company/Firm | Booth Number". harvest() read the site's 23 menu
+    anchors first, counted past MIN_NAMES, and never opened a cell: the page
+    graded `menu` and a real floor read as nothing (2026-10-15). Driven three
+    ways - the table wins over a menu, a table with no booth column is not
+    taken by this rule, and the name filter still runs on every cell - and
+    through judge(), the caller that decides whether a page is a directory.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    import find_event_directories as fed
+    menu = ["Registration", "Program", "For Exhibitors", "Volunteers", "IPSTA Info",
+            "2026 Floor Plan (PDF)", "2026 Sponsors", "2026 Vendors",
+            "Exhibitor / Sponsorship Registration", "General Information",
+            "Sponsorship Opportunities", "Vendor Hours & Details", "Programs"]
+    vendors = ["Axon911", "CentralSquare Technologies", "Datamark Technologies",
+               "GeoComm", "GovHost", "Motorola Solutions", "Zetron",
+               "Xybix", "Carbyne", "Intrado"]
+    # The real page is 77 vendors to 23 menu items, and judge() grades the
+    # whole harvest: a fixture with the menu outnumbering the table grades
+    # `menu` exactly as it should, and would test nothing.
+    vendors += [f"{a} {b}{(' Inc.', ' LLC', '', ' Corp.', ', LLC')[i % 5]}"
+                for i, (a, b) in enumerate(
+                    (a, b) for a in ("Beacon", "Cardinal", "Granite", "Harbor",
+                                     "Keystone", "Meridian", "Summit", "Vector")
+                    for b in ("Communications", "Networks", "Systems",
+                              "Technologies", "Wireless"))]
+    nav = "".join(f'<a href="/p{i}">{n}</a>' for i, n in enumerate(menu))
+    rows = "".join(f"<tr><td>{v}</td><td>{100 + i}</td></tr>" for i, v in enumerate(vendors))
+    rows += '<tr><td><a href="https://www.zetron.com/">Zetron</a></td><td>150</td></tr>'
+    rows += "<tr><td>Contact Us</td><td>200</td></tr>"
+    page = ("<title>2026 Vendors | Official Website of the Illinois Chapter of APCO</title>"
+            + nav + '<table><tr><td>Vendors - as of 10/12/2026</td></tr>'
+            '<tr><td>Company/Firm</td><td>Booth Number</td></tr>' + rows + "</table>")
+    got = sw.harvest(page, "APCO")
+    names = [n["name"] for n in got]
+    missing = sorted(set(vendors) - set(names))
+    if missing:
+        print(f"  FAIL: a Company/Booth table beside a menu was not read - "
+              f"{missing[:4]} missing of {len(vendors)}; the menu crowds out the floor")
+        errors += 1
+    # ADDED, NEVER INSTEAD: a sponsor linked outside the table stays.
+    page2 = page + '<a href="https://www.tylertech.com/">Tyler Technologies Digital Services</a>'
+    if "Tyler Technologies Digital Services" not in [n["name"] for n in sw.harvest(page2, "APCO")]:
+        print("  FAIL: reading the booth table dropped a sponsor linked outside it "
+              "- the table must be added to the harvest, never replace it")
+        errors += 1
+    for who, rows_read in (("harvest()", got), ("table_of_exhibitors()", sw.table_of_exhibitors(page, "APCO"))):
+        if not any(n["name"] == "Zetron" and n["website"] == "https://www.zetron.com/" for n in rows_read):
+            print(f"  FAIL: {who} lost the website linked in a company cell "
+                  f"(Zetron is listed twice, once with its link)")
+            errors += 1
+    if fed.judge(page, "https://911conference.org/176/2026-Vendors", "APCO",
+                 "Illinois", "http://www.ilapco.org", None,
+                 "APCO Illinois Chapter Conference", (), "Illinois Chapter of APCO",
+                 "APCOCH_IL")[0] != "directory":
+        print("  FAIL: judge() does not read a Company/Booth table as a directory")
+        errors += 1
+    # NO HEADER, A BOOTH IN EVERY ROW: NACE's 2026 list is 48 rows of
+    # "Vaisala Inc | Booth #229" and nothing above them. It read as 56 menu
+    # items and was nearly filed as "not a floor at all".
+    bare = nav + "<table><tr><th>Exhibitor Name</th><th>Booth</th></tr>" + "".join(
+        f"<tr><td>{v}</td><td>Booth #{200 + i}{', ' + str(300 + i) if i % 4 == 0 else ''}</td></tr>"
+        for i, v in enumerate(vendors[:12])) + "</table>"
+    stray = bare.replace("<tr><th>Exhibitor Name</th><th>Booth</th></tr>",
+                         "<tr><td>Coffee Service</td><td>Main Lobby</td></tr>")
+    got_stray = {n["name"] for n in sw.table_of_exhibitors(stray, "NACE")}
+    if "Coffee Service" in got_stray or not set(vendors[:12]) <= got_stray:
+        print(f"  FAIL: in a headerless booth table only the rows carrying a booth "
+              f"are exhibitors - got {sorted(got_stray)[:3]}...")
+        errors += 1
+    missing = sorted(set(vendors[:12]) - {n["name"] for n in sw.harvest(bare, "NACE")})
+    if missing:
+        print(f"  FAIL: a headerless table with 'Booth #N' in every row was not read - "
+              f"{missing[:3]} missing")
+        errors += 1
+    schedule = nav + "<table>" + "".join(
+        f"<tr><td>{v}</td><td>9:00 am</td></tr>" for v in vendors[:12]) + "</table>"
+    if sw.table_of_exhibitors(schedule, "NACE"):
+        print("  FAIL: a two-column table with no booth in it was taken as a floor")
+        errors += 1
+    sponsor = (nav + "<table><tr><td>Company</td><td>Level</td></tr>"
+               + "".join(f"<tr><td>{v}</td><td>Gold</td></tr>" for v in vendors) + "</table>")
+    if sw.table_of_exhibitors(sponsor, "APCO"):
+        print("  FAIL: a table with no booth column was taken as the floor - the "
+              "rule is anchored on the page saying what the table is")
+        errors += 1
+    return errors
+
+
+def check_a_site_builders_credit_is_not_an_exhibitor() -> int:
+    """'Government Websites by CivicPlus' is the page's footer, not its floor.
+
+    Illinois APCO's 2026 vendor page is a CivicPlus site, and the harvest
+    took the footer's credit link as an exhibitor. CivicPlus is on the board,
+    so the floor reader - which skips settled names - never saw it, and intake
+    tagged CivicPlus with a 911 conference (2026-10-15). A credit line is cut
+    at the harvest; "Sponsored by" names a sponsor and is kept.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    floor = "".join(f'<a href="https://{n.lower().replace(" ", "")}.test/">{n}</a>'
+                    for n in ("Axon Enterprise", "Zetron", "GeoComm", "Datamark",
+                              "Priority Dispatch Corp.", "RapidSOS", "Carbyne", "Intrado"))
+    page = (floor
+            + '<span class="cpBylineTextTS">Government Websites by '
+              '<a href="https://connect.civicplus.com/referral">CivicPlus&reg;</a></span>'
+            + '<p>Powered by <a href="https://a2z.test/">A2Z Events</a></p>'
+            + '<p>Lunch sponsored by <a href="https://tyler.test/">Tyler Technologies</a></p>')
+    names = {n["name"] for n in sw.harvest(page, "APCO")}
+    for credit in ("CivicPlus\u00ae", "A2Z Events"):
+        if credit in names:
+            print(f"  FAIL: the site's credit line put {credit!r} on the floor")
+            errors += 1
+    if "Tyler Technologies" not in names or "Zetron" not in names:
+        print("  FAIL: the credit rule cut a real exhibitor - 'sponsored by' names a sponsor")
+        errors += 1
+    return errors
+
+
 def check_a_chapter_directory_is_not_its_parents() -> int:
     """A state chapter's exhibitor list must belong to that chapter.
 
@@ -26159,6 +26289,22 @@ def check_chapter_listings_are_looked_up() -> int:
               f"having none")
         errors += 1
 
+    # A CHAPTER'S ORGANISATION NEVER NAMES ANOTHER STATE. Fixing the matcher
+    # did not reach the rows it had already written: stage 1 only resolves a
+    # row with no org_url, so Kansas kept the Arkansas Municipal League and
+    # the Association of Arkansas Counties, and West Virginia the Virginia
+    # Municipal League, for six weeks after "kansas" inside "arkansas" and
+    # the first-match "virginia" were both fixed (found 2026-10-15). A row
+    # carrying another state's body walks that body's site for its floor.
+    for e in ev:
+        own = fed.state_in(e.get("geo"))
+        named = fed.state_in(e.get("org_name_observed"))
+        if own and named and named != own:
+            print(f"  FAIL: {e['org_code']} ({e.get('geo')}) carries "
+                  f"{e.get('org_name_observed')!r} at {e.get('org_url')} - "
+                  f"another state's organisation")
+            errors += 1
+
     # THE HREF IS UNESCAPED BEFORE THE FRAGMENT IS CUT. NLC writes its 49
     # chapter links entity-encoded - href="http&#x3A;&#x2F;&#x2F;www.akml.org"
     # - and a pattern that excluded "#" to skip fragments matched "http&" and
@@ -26223,6 +26369,12 @@ def check_promotion_refuses_a_generated_name() -> int:
          "a template with a state filled in is not a confirmed organisation"),
         ({"org_name": "Real Association", "name_confidence": "named"},
          "Real Association", "observed when the catalogue was built"),
+        ({"org_name_observed": "Illinois", "org_name": "APCO Illinois Chapter",
+          "name_confidence": "pattern"}, None,
+         "APCO labels its chapter links with the state alone; promoting on it "
+         "publishes the tag 'Illinois 2026'"),
+        ({"org_name_observed": "NC", "name_confidence": "pattern"}, None,
+         "a state's abbreviation is not an organisation either"),
     ]:
         got = fed.confirmed_name(row)
         if got != want:
@@ -26239,6 +26391,7 @@ def check_promotion_refuses_a_generated_name() -> int:
         "https://generic.test/": "<title>Home</title><h1>Welcome</h1>",
         "https://other.test/": "<title>Association of Somewhere Else</title>",
         "https://suffix.test/": "<title>Michigan Sheriffs Association | Home</title>",
+        "https://civicplus.test/": "<title>Home | Official Website of the Illinois Chapter of APCO</title>",
     }
     keep_fetch = fed.fetch
     try:
@@ -26246,6 +26399,7 @@ def check_promotion_refuses_a_generated_name() -> int:
         for url, geo, want in [
             ("https://ncsheriffs.org/", "North Carolina", "North Carolina Sheriffs' Association"),
             ("https://suffix.test/", "Michigan", "Michigan Sheriffs Association"),
+            ("https://civicplus.test/", "Illinois", "Illinois Chapter of APCO"),
             ("https://generic.test/", "Florida", None),
             ("https://other.test/", "Florida", None),
         ]:
@@ -26269,6 +26423,26 @@ def check_promotion_refuses_a_generated_name() -> int:
             print(f"  FAIL: _tag({base!r}) = {tag!r}, which conferences.json's own "
                   f"tag rule would refuse")
             errors += 1
+    # THE EVENT'S NAME, NOT THE LIST'S CAPTION, and never markup. Each of
+    # these was a public conference name or about to be one (2026-10-15).
+    for heading, want in [
+        ("IPSTA Conference Vendors- as of 10/12/2026", "IPSTA Conference"),
+        ("2026 CT EMERGENCY MANAGEMENT SYMPOSIUM&nbsp;- PARTICIPATING EXHIBITORS "
+         "AND SPONSORS", "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM"),
+        ("Vendor Opportunities - New York Conference of Mayors",
+         "New York Conference of Mayors"),
+        ("KLC Conference &amp; Expo", "KLC Conference & Expo"),
+        ("Michigan Sheriffs\u2019 Association", "Michigan Sheriffs\u2019 Association"),
+    ]:
+        got = fed.event_name_from(heading)
+        if got != want:
+            print(f"  FAIL: event_name_from({heading!r}) = {got!r}, expected {want!r}")
+            errors += 1
+    name, _y = fed.event_name_and_year(
+        "<h1>IPSTA Conference Vendors- as of 10/12/2026</h1>", "https://x/2026-Vendors")
+    if name != "IPSTA Conference":
+        print(f"  FAIL: event_name_and_year no longer takes the caption off - {name!r}")
+        errors += 1
     a = fed._tag("Same Name", "2026", set(), "Texas")
     b = fed._tag("Same Name", "2026", {a}, "Ohio")
     c = fed._tag("Same Name", "2026", {a, b}, None)
@@ -26321,10 +26495,33 @@ def check_promotion_refuses_a_generated_name() -> int:
          "name_confidence": "named", "org_name": "Utah League",
          "org_url": "https://ut.test/", "directory_url": "https://taken.test/list",
          "status": "directory_found", "promoted": False},
+        # A status anything can write: Indiana Parks' page was set
+        # directory_found by a reader's attribution and its every name was
+        # the site's menu (2026-10-15).
+        {"org_code": "MENUPAGE", "geo": "Indiana", "department": "Parks & Recreation",
+         "name_confidence": "named", "org_name": "Indiana Park and Recreation Association",
+         "org_url": "https://in.test/", "directory_url": "https://in.test/conference-expo",
+         "status": "directory_found", "promoted": False},
     ]}
     (tmp / "state_events.json").write_text(json.dumps(events))
     pages = {
-        "https://tml.test/exhibitors": "<title>2026 TML Annual Conference Exhibitors</title>",
+        "https://tml.test/exhibitors": (
+            "<title>2026 TML Annual Conference Exhibitors | Texas Municipal League</title>"
+            + "".join(f'<a href="https://{n.lower().replace(" ", "")}.test/">{n}</a>'
+                      for n in ("Axon Enterprise", "Tyler Technologies Inc.", "OpenGov",
+                                "Granicus LLC", "CivicPlus", "Mark43", "Flock Safety",
+                                "Esri", "Accela Inc.", "Cartegraph Systems",
+                                "Brightly Software", "Motorola Solutions"))),
+        "https://in.test/conference-expo": (
+            "<title>2026 Conference + Expo \u2014 Indiana Parks & Recreation Association</title>"
+            + "".join(f'<a href="/{i}">{n}</a>' for i, n in enumerate((
+                "Registration", "Agenda", "Off-Site Tours", "Education Sessions",
+                "Exhibitors", "Hotel & Parking", "Conference Committee",
+                "Conference T-Shirts", "Community Service Project", "Events",
+                "Professional Development", "Event Calendar", "Golf Outings",
+                "Scholarships", "Membership", "Advertising", "Leadership",
+                "Corporate Members", "Foundation", "Contact Us"))))
+            + '<img src="https://cdn.test/RCXSports_hor.png" alt="">',
         "https://oh.test/exhibitors": "<title>2026 Annual Conference Sponsors</title>",
         "https://ia.test/exhibitors": "<title>Exhibitors</title><p>no year anywhere</p>",
         "https://taken.test/list": "<title>2026 Annual Conference</title>",
@@ -26343,15 +26540,18 @@ def check_promotion_refuses_a_generated_name() -> int:
     promoted = {c.get("state_event", {}).get("org_code") for c in got if c.get("state_event")}
     if promoted != {"GOOD"}:
         print(f"  FAIL: promoted {sorted(promoted)}; only GOOD is confirmed. "
-              f"GUESS carries a generated name, NOYEAR states no year, and DUPE "
-              f"points at a url already in the catalog")
+              f"GUESS carries a generated name, NOYEAR states no year, DUPE "
+              f"points at a url already in the catalog, and MENUPAGE's page "
+              f"reads as the site's menu whatever its status says")
         errors += 1
     if rows["GUESS"].get("promoted") or rows["NOYEAR"].get("promoted"):
         print("  FAIL: a refused row was marked promoted")
         errors += 1
     good = next((c for c in got if c.get("state_event", {}).get("org_code") == "GOOD"), None)
     if good:
-        if good["conference"] != "2026 TML Annual Conference Exhibitors":
+        # Read off the page's heading, less the list's caption ("Exhibitors"),
+        # which event_name_from takes off since 2026-10-15.
+        if good["conference"] != "2026 TML Annual Conference":
             print(f"  FAIL: the conference name is {good['conference']!r}; the page "
                   f"states one and it must be read, not built")
             errors += 1
@@ -26381,7 +26581,14 @@ def check_promotion_refuses_a_generated_name() -> int:
         {"key": "N3", "org_code": "NNAME", "org_name": "NNAME", "catalog_place": ["Public safety", "Fire"],
          "org_url": "https://n3.test/", "directory_url": "https://n3.test/exhibitors",
          "status": "directory_found", "promoted": False}]}))
-    pages2 = {u: "<title>2026 Annual Conference Exhibitors</title>" for u in
+    # A real floor on each, so the re-judge passes and what is refused is
+    # refused for its name or its place, the facts this half tests.
+    floor = "".join(f'<a href="https://{n.lower().replace(" ", "")}.test/">{n}</a>'
+                    for n in ("Axon Enterprise", "Tyler Technologies Inc.", "First Due",
+                              "ESO Solutions", "Pierce Manufacturing", "MSA Safety",
+                              "Zoll Medical Corp.", "Motorola Solutions", "Hexagon AB",
+                              "Central Square LLC", "ImageTrend", "Rosenbauer America"))
+    pages2 = {u: "<title>2026 Annual Conference Exhibitors</title>" + floor for u in
               ("https://n1.test/exhibitors", "https://n2.test/exhibitors", "https://n3.test/exhibitors")}
     keep = (fed.REGISTRIES["national"], fed.DATA, fed.fetch)
     try:
@@ -28846,7 +29053,10 @@ def check_two_rows_cannot_promote_the_same_exhibitor_url() -> int:
 
     import find_event_directories as fed
 
-    page = ("<title>2026 Annual Conference Exhibitors</title>"
+    # The page names Texas: promotion re-judges the directory (2026-10-15),
+    # and a list off the chapters' own hosts that names no state is refused
+    # as the parent's event before the duplicate rule is ever reached.
+    page = ("<title>2026 Texas Annual Conference Exhibitors</title>"
             + "".join(f'<a href="/x{i}">{n}</a>' for i, n in enumerate(
                 ["Acme Technologies Inc", "Beta Solutions LLC",
                  "Gamma Systems Inc", "Delta Consulting Group",
@@ -33260,6 +33470,8 @@ def main() -> int:
     errors += check_extension_holds_and_refuses()
     errors += check_intake_writes_only_issued_tags()
     errors += check_a_menu_is_not_a_directory()
+    errors += check_a_table_that_says_it_is_the_floor_is_read()
+    errors += check_a_site_builders_credit_is_not_an_exhibitor()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()

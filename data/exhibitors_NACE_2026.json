@@ -3,18 +3,357 @@
  "conference": "NACE Annual",
  "found": true,
  "source_url": "https://www.countyengineers.org/2025/12/22/2026-exhibitor-list/",
- "source_note": "Read from https://www.countyengineers.org/2025/12/22/2026-exhibitor-list/ by scripts/sweep_exhibitors.py. 57 name(s), 50 with a website the page itself linked. Quality: menu (25% carry a corporate marker, 11% name a site section, 58% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://www.countyengineers.org/2025/12/22/2026-exhibitor-list/ by scripts/sweep_exhibitors.py. 102 name(s), 49 with a website the page itself linked. Quality: menu (29% carry a corporate marker, 6% name a site section, 32% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
-   "name": "GrowthZone",
-   "website": "http://www.growthzone.com/",
+   "name": "Acrow Bridge",
+   "website": null,
    "is_govtech": false,
-   "is_govtech_why": "reader: website-platform footer credit; association software, not govtech",
+   "is_govtech_why": "reader: Modular steel bridge manufacturer",
    "read": {
     "verdict": "supplier",
-    "why": "website-platform footer credit; association software, not govtech",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "why": "Modular steel bridge manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Aerix Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cellular concrete foam and equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cellular concrete foam and equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "American Concrete Pavement Association",
+   "website": null
+  },
+  {
+   "name": "American Iron and Steel Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Steel industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Steel industry trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Asphalt Zipper, Inc.",
+   "website": null
+  },
+  {
+   "name": "Aurigo",
+   "website": null
+  },
+  {
+   "name": "Builterra",
+   "website": null
+  },
+  {
+   "name": "Cargill",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Road salt and deicing materials (Cargill Deicing)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Road salt and deicing materials (Cargill Deicing)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Centerline Supply",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pavement marking and traffic safety supply distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pavement marking and traffic safety supply distributor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CMC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Commercial Metals Co. (rebar, Tensar geogrids) at a roads show; materials maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Commercial Metals Co. (rebar, Tensar geogrids) at a roads show; materials maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Contech Engineered Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Culverts, pipe, bridges and stormwater products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Culverts, pipe, bridges and stormwater products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Dareesoft Inc.",
+   "website": null
+  },
+  {
+   "name": "Diversified Computer Service, LLC",
+   "website": null
+  },
+  {
+   "name": "Dynamic IoT Data Inc.",
+   "website": null
+  },
+  {
+   "name": "Ergon Asphalt & Emulsions",
+   "website": null
+  },
+  {
+   "name": "ExeVision",
+   "website": null
+  },
+  {
+   "name": "FirstStep Pavement Management",
+   "website": null
+  },
+  {
+   "name": "FPT Infrastructure",
+   "website": null
+  },
+  {
+   "name": "Gallagher Asphalt",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Asphalt paving contractor and producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Asphalt paving contractor and producer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Good Earth Tools",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tools and equipment for road and concrete work",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tools and equipment for road and concrete work",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ICC Distribution Group LLC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Distributor of others' products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Distributor of others' products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Infrasteel by precision pipe and products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Steel pipe and drainage products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Steel pipe and drainage products maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Intermountain Slurry Steel",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pavement preservation contractor (slurry seal)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pavement preservation contractor (slurry seal)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Lane Enterprises, LLC",
+   "website": null
+  },
+  {
+   "name": "M-B Companies - Pavement Marking Equipment Division",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pavement marking equipment manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pavement marking equipment manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MasterMind LLC",
+   "website": null
+  },
+  {
+   "name": "Michigan Technological University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University (road-agency training centre); not a product company",
+   "read": {
+    "verdict": "supplier",
+    "why": "University (road-agency training centre); not a product company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Omega Liner Company",
+   "website": null
+  },
+  {
+   "name": "OpenGov",
+   "website": null
+  },
+  {
+   "name": "Oxcart Permit Systems, LLC",
+   "website": null
+  },
+  {
+   "name": "Pape-Dawson",
+   "website": null
+  },
+  {
+   "name": "Pexco LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Traffic safety hardware (delineators, channelizers) maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Traffic safety hardware (delineators, channelizers) maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Purple Wave Auction",
+   "website": null
+  },
+  {
+   "name": "RockAsphalt™",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Asphalt paving material product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Asphalt paving material product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "RTVision",
+   "website": null
+  },
+  {
+   "name": "Safeware Inc.",
+   "website": null
+  },
+  {
+   "name": "SealMaster",
+   "website": null
+  },
+  {
+   "name": "SEH, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Substrata",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "substrata.com is an LA construction firm; same exhibitor unconfirmed, name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Terracon",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Geotechnical and environmental engineering consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Geotechnical and environmental engineering consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Texas Asphalt Pavement Association",
+   "website": null
+  },
+  {
+   "name": "Texas Concrete Products Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industry trade association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Tricor Refining",
+   "website": null
+  },
+  {
+   "name": "Vaisala Inc",
+   "website": null
+  },
+  {
+   "name": "vialytics",
+   "website": null
+  },
+  {
+   "name": "Wheeler",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely Wheeler timber bridges; materials/construction, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely Wheeler timber bridges; materials/construction, not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   }
  ],

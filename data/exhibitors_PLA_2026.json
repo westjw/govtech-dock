@@ -28,18 +28,6 @@
    }
   },
   {
-   "name": "A2Z Events",
-   "website": "https://mya2zevents.com",
-   "is_govtech": false,
-   "is_govtech_why": "reader: directory software's footer credit, not a PLA exhibitor",
-   "read": {
-    "verdict": "supplier",
-    "why": "directory software's footer credit, not a PLA exhibitor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
    "name": "ABDO",
    "website": null,
    "is_govtech": false,
@@ -394,6 +382,6 @@
  ],
  "why": "23% carry a corporate marker, 0% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
  "quality": "read",
- "read_dropped": 4,
+ "read_dropped": 5,
  "quality_was": "menu"
 }

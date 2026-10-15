@@ -3,7 +3,7 @@
  "conference": "WasteExpo",
  "found": true,
  "source_url": "https://wasteexpo2027.smallworldlabs.com/exhibitors",
- "source_note": "Read from https://wasteexpo2027.smallworldlabs.com/exhibitors by scripts/sweep_exhibitors.py. 40 name(s), 1 with a website the page itself linked. Quality: good (40% carry a corporate marker, 0% name a site section, 5% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://wasteexpo2027.smallworldlabs.com/exhibitors by scripts/sweep_exhibitors.py. 39 name(s), 0 with a website the page itself linked. Quality: good (38% carry a corporate marker, 0% name a site section, 3% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
    "name": "3rd Eye",
@@ -44,6 +44,17 @@
     "by": "agent:reader",
     "on": "2026-10-15"
    }
+  },
+  {
+   "name": "ACEDES",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "acedes.org is a Colombian consulting association; link to a WasteExpo exhibitor unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Acrisure Insurance",
@@ -352,13 +363,13 @@
   {
    "name": "Basestation",
    "website": null,
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "Name hints communications tech; cannot tell offering",
     "by": "agent:reader",
     "on": "2026-10-15"
-   },
-   "is_govtech": null
+   }
   },
   {
    "name": "BATTLE MOTORS",
@@ -399,22 +410,10 @@
     "by": "agent:reader",
     "on": "2026-10-15"
    }
-  },
-  {
-   "name": "Binder + Co USA, Inc.",
-   "website": null,
-   "is_govtech": false,
-   "is_govtech_why": "reader: Sorting and screening machinery maker",
-   "read": {
-    "verdict": "supplier",
-    "why": "Sorting and screening machinery maker",
-    "by": "agent:reader",
-    "on": "2026-10-15"
-   }
   }
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 2,
+ "read_dropped": 1,
  "quality_was": "good"
 }

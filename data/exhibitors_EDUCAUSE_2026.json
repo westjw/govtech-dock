@@ -24,18 +24,6 @@
    }
   },
   {
-   "name": "A2Z Events",
-   "website": "https://mya2zevents.com",
-   "is_govtech": null,
-   "is_govtech_why": "nothing in the name either way",
-   "read": {
-    "verdict": "unsure",
-    "why": "split: reader vendor (event-management software; page's platform credit, not an exhibitor); skeptic not_a_company (Conference website platform credit, not an exhibitor; event software, not govtech.)",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
-   }
-  },
-  {
    "name": "ABCloudz Inc.",
    "website": null,
    "is_govtech": null,
@@ -306,6 +294,6 @@
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 13,
+ "read_dropped": 14,
  "quality_was": "good"
 }

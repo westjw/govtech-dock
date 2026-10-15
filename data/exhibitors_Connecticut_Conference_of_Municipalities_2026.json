@@ -1,9 +1,9 @@
 {
  "event_tag": "Connecticut Conference of Municipalities 2026",
- "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM&nbsp;- PARTICIPATING EXHIBITORS AND SPONSORS",
+ "conference": "2026 CT EMERGENCY MANAGEMENT SYMPOSIUM",
  "found": true,
  "source_url": "https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors",
- "source_note": "Read from https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors by scripts/sweep_exhibitors.py. 105 name(s), 101 with a website the page itself linked. Quality: good (19% carry a corporate marker, 6% name a site section). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://www.ccm-ct.org/Member-Benefits/Events/2026-Emergency-Management-Symposium/2026-CT-EMS-Exhibitors-Sponsors by scripts/sweep_exhibitors.py. 108 name(s), 102 with a website the page itself linked. Quality: menu (19% carry a corporate marker, 6% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
    "name": "Aligned Elevator",
@@ -13,8 +13,8 @@
    "read": {
     "verdict": "supplier",
     "why": "elevator installation and maintenance contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -25,8 +25,8 @@
    "read": {
     "verdict": "supplier",
     "why": "ambulance and medical transport provider",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -37,8 +37,8 @@
    "read": {
     "verdict": "supplier",
     "why": "disaster recovery and debris removal contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -49,8 +49,8 @@
    "read": {
     "verdict": "supplier",
     "why": "tree and vegetation management contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -61,8 +61,8 @@
    "read": {
     "verdict": "supplier",
     "why": "property restoration contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -73,8 +73,8 @@
    "read": {
     "verdict": "vendor",
     "why": "voice/data communications systems integrator",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -85,8 +85,8 @@
    "read": {
     "verdict": "supplier",
     "why": "Correctional Enterprises of Connecticut; state agency program",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -97,8 +97,8 @@
    "read": {
     "verdict": "supplier",
     "why": "Connecticut Education Network; state-run network, government entity",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -109,8 +109,8 @@
    "read": {
     "verdict": "supplier",
     "why": "state college",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -121,8 +121,8 @@
    "read": {
     "verdict": "supplier",
     "why": "CCM-affiliated municipal insurance risk pool",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -137,8 +137,8 @@
    "read": {
     "verdict": "unsure",
     "why": "split: reader vendor (IT and computer services firm); skeptic unsure ('Computer Service' suggests IT services/repair MSP, not a product company.)",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -149,8 +149,8 @@
    "read": {
     "verdict": "supplier",
     "why": "municipal insurance risk pool (CCM-affiliated)",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -161,8 +161,8 @@
    "read": {
     "verdict": "supplier",
     "why": "state government agency",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -173,8 +173,8 @@
    "read": {
     "verdict": "supplier",
     "why": "state government agency",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -185,8 +185,8 @@
    "read": {
     "verdict": "supplier",
     "why": "federal government agency",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -196,6 +196,30 @@
   {
    "name": "Everbridge",
    "website": "https://www.EVERBRIDGE.com"
+  },
+  {
+   "name": "Eversource Energy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electric and gas utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electric and gas utility",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Falcon Public Safety",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: consulting and training firm for 911 dispatch and emergency preparedness",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: consulting and training firm for 911 dispatch and emergency preparedness",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "FirstNet Built with AT&T",
@@ -215,8 +239,8 @@
    "read": {
     "verdict": "supplier",
     "why": "first-responder uniforms and gear retailer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -233,8 +257,8 @@
    "read": {
     "verdict": "supplier",
     "why": "geotechnical and environmental engineering consultancy",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -251,9 +275,20 @@
    "read": {
     "verdict": "vendor",
     "why": "electronic security systems integrator (video, access control, alarms)",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
+  },
+  {
+   "name": "NETS MECTRON",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot tell from the name; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Nexgen Public Safety Solutions",
@@ -269,8 +304,8 @@
    "read": {
     "verdict": "supplier",
     "why": "lighting and energy-efficiency contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -287,8 +322,8 @@
    "read": {
     "verdict": "supplier",
     "why": "property restoration contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -299,8 +334,8 @@
    "read": {
     "verdict": "supplier",
     "why": "disaster recovery and debris removal contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -311,8 +346,8 @@
    "read": {
     "verdict": "supplier",
     "why": "restoration and cleaning contractor",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -323,8 +358,8 @@
    "read": {
     "verdict": "supplier",
     "why": "statewide municipal sustainability certification nonprofit",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -335,8 +370,8 @@
    "read": {
     "verdict": "vendor",
     "why": "public-safety rugged computing hardware and IT services",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   },
   {
@@ -363,13 +398,13 @@
    "read": {
     "verdict": "supplier",
     "why": "window film installer",
-    "by": "agent:reader+skeptic",
-    "on": "2026-10-10"
+    "by": "agent:reader",
+    "on": "2026-10-15"
    }
   }
  ],
- "why": "19% carry a corporate marker, 6% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor",
+ "why": null,
  "quality": "read",
- "read_dropped": 67,
+ "read_dropped": 68,
  "quality_was": "menu"
 }

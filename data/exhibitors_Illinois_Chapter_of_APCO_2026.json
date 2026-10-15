@@ -1,0 +1,729 @@
+{
+ "event_tag": "Illinois Chapter of APCO 2026",
+ "conference": "IPSTA Conference",
+ "found": true,
+ "source_url": "https://911conference.org/176/2026-Vendors",
+ "source_note": "Read from https://911conference.org/176/2026-Vendors by scripts/sweep_exhibitors.py. 100 name(s), 4 with a website the page itself linked. Quality: good (41% carry a corporate marker, 1% name a site section, 5% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "1-800-BOARDUP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Board-up and property restoration services franchise; on the vendor table, booth 118",
+   "read": {
+    "verdict": "supplier",
+    "why": "Board-up and property restoration services franchise; on the vendor table, booth 118",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "911NURD LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: 911 center IT consulting, NG911 transition planning, project management",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: 911 center IT consulting, NG911 transition planning, project management",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "APCO INTERNATIONAL",
+   "website": null
+  },
+  {
+   "name": "APCO International - Leaders in Public Safety Communications",
+   "website": "https://www.apcointl.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: APCO International, the association; quick-link text, but it exhibits at booth 107",
+   "read": {
+    "verdict": "supplier",
+    "why": "APCO International, the association; quick-link text, but it exhibits at booth 107",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "APOGEE INDUSTRIES, INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "apogeeindustries.com is a Pennsylvania label printer; cannot confirm it is this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "APPLICATIONS DATA SYSTEMS INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "AT&T",
+   "website": null
+  },
+  {
+   "name": "AURELIAN",
+   "website": null
+  },
+  {
+   "name": "AXON911",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Axon's 911 call-handling and dispatch platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Axon's 911 call-handling and dispatch platform",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "BODYBILT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: BodyBilt makes ergonomic seating for dispatch centers",
+   "read": {
+    "verdict": "supplier",
+    "why": "BodyBilt makes ergonomic seating for dispatch centers",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CALIBER PUBLIC SAFETY",
+   "website": null
+  },
+  {
+   "name": "CARFAX FOR POLICE",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Vehicle-history data product sold to law enforcement agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Vehicle-history data product sold to law enforcement agencies",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CCS - COMMUNICATION CENTER SPECIALISTS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could be consoles, consulting or tech; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CENTRALSQUARE TECHNOLOGIES",
+   "website": null
+  },
+  {
+   "name": "CHICAGO COMMUNICATIONS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chicago-area two-way radio dealer and service shop (Motorola channel partner)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chicago-area two-way radio dealer and service shop (Motorola channel partner)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CIS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare initials; cannot tell which company or what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CLOUDPOINT GEOSPATIAL",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: managed GIS services and Esri partner; services, not its own product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: managed GIS services and Esri partner; services, not its own product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CONCEPT SEATING LLC",
+   "website": null
+  },
+  {
+   "name": "CORDOGAN CLARK & ASSOCIATES, INC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Architecture and construction firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Architecture and construction firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "CRITICAL RESPONSE GROUP",
+   "website": null
+  },
+  {
+   "name": "CRITICALL 3D",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Own site (redirects to criticall911.com): dispatcher pre-employment testing software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Own site (redirects to criticall911.com): dispatcher pre-employment testing software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "DATAMARK TECHNOLOGIES",
+   "website": null
+  },
+  {
+   "name": "DENISE AMBER LEE FOUNDATION",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit foundation focused on 911 training and standards",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit foundation focused on 911 training and standards",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "DICK BUSS & ASSOCIATES LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "E/M WAVE, INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; site unreadable (SSL error)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "EVANS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Evans Consoles, dispatch console furniture",
+   "read": {
+    "verdict": "supplier",
+    "why": "Evans Consoles, dispatch console furniture",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "FACTOR TECHNOLOGY SOLUTIONS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could be IT services or a product; site unreadable (SSL error)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "FGM ARCHITECTS",
+   "website": null
+  },
+  {
+   "name": "GEOCOMM",
+   "website": null
+  },
+  {
+   "name": "GLOBAL TECHNICAL SYSTEMS, INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; not looked up",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "GOVHOST",
+   "website": null
+  },
+  {
+   "name": "GOVWORX",
+   "website": null
+  },
+  {
+   "name": "HIEBA SYSTEM SOLUTIONS",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Own site: mutual aid resource management software for fire and dispatch",
+   "read": {
+    "verdict": "vendor",
+    "why": "Own site: mutual aid resource management software for fire and dispatch",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ID NETWORKS, INC.",
+   "website": null
+  },
+  {
+   "name": "ILLUMINATIVE STRATEGIES, INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name suggests a consultancy, but site unreadable (SSL error)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "INDIGITAL",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Own site: NG911 core services, Texty text-to-911, MEVO and NG analytics for ECCs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Own site: NG911 core services, Texty text-to-911, MEVO and NG analytics for ECCs",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "INTRADO",
+   "website": null
+  },
+  {
+   "name": "ISPFCU",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Illinois State Police Federal Credit Union, a financial institution",
+   "read": {
+    "verdict": "supplier",
+    "why": "Illinois State Police Federal Credit Union, a financial institution",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "LAWMAN",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare brand name; cannot tell what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "LIVE911 - POWERED BY HIGHERGROUND",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Live911 software streams live 911 calls to field responders",
+   "read": {
+    "verdict": "vendor",
+    "why": "Live911 software streams live 911 calls to field responders",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MERCURY SYSTEMS CORPORATION",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Not clearly the defense-electronics Mercury Systems; cannot tell what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "MILLER AT WORK LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: ergonomic and heavy-duty office seating",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: ergonomic and heavy-duty office seating",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MISSION CRITICAL PARTNERS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public-safety communications consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public-safety communications consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MOBILE COMMUNICATIONS AMERICA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Radio communications integrator and Motorola channel partner (reseller)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Radio communications integrator and Motorola channel partner (reseller)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "MOTOROLA SOLUTIONS",
+   "website": null
+  },
+  {
+   "name": "NELSON SYSTEMS INC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; robots.txt kept the crawler out",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "NEXTGEN HERO PROJECT",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Sounds like a nonprofit or initiative; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "NORTHLAND & COMPANIES",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; guessed site answered 403",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "OCTAVE",
+   "website": null
+  },
+  {
+   "name": "OPTIMUM TECHNOLOGY",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; guessed site timed out",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "OSF LIFE FLIGHT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air medical transport service of OSF HealthCare",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air medical transport service of OSF HealthCare",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "OTTOSEN DINOLFO HASENBALG & CASTALDO, LTD.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Law firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "PACE SCHEDULER",
+   "website": null
+  },
+  {
+   "name": "PRESCIENT SOLUTIONS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: managed IT services provider in Chicago",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: managed IT services provider in Chicago",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "PRIORITY DISPATCH CORP.",
+   "website": null
+  },
+  {
+   "name": "PROMOS 911, INC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Promotional products for 911 centers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Promotional products for 911 centers",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "PROPHOENIX PUBLIC SAFETY",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ProPhoenix CAD, RMS and public-safety software",
+   "read": {
+    "verdict": "vendor",
+    "why": "ProPhoenix CAD, RMS and public-safety software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "RAPIDSOS",
+   "website": null
+  },
+  {
+   "name": "RUSS BASSETT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dispatch console and workstation furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dispatch console and workstation furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "RWK IT SERVICES",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT services firm by its name; site rendered no text",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT services firm by its name; site rendered no text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SEATWORKS LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: 24/7 dispatch seating",
+   "read": {
+    "verdict": "supplier",
+    "why": "24/7 dispatch seating",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SECURE HEADSET GROUP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: headsets for police and comm centers, sold via web store; accessory hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: headsets for police and comm centers, sold via web store; accessory hardware",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "SIENTO",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot tell what it sells; site rendered no text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "TAIT COMMUNICATIONS",
+   "website": null
+  },
+  {
+   "name": "THISGEN",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Cannot tell what it sells; site answered 429",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "THOMAS SHELBY & COMPANY, INC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Own site: dispatch chairs, Winsted consoles and towers dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Own site: dispatch chairs, Winsted consoles and towers dealer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "TYLER TECHNOLOGIES",
+   "website": null
+  },
+  {
+   "name": "US SIGNAL",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Data center, cloud and network services provider (carrier/IT services)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Data center, cloud and network services provider (carrier/IT services)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "VECTOR SOLUTIONS",
+   "website": null
+  },
+  {
+   "name": "VIRTUAL ACADEMY",
+   "website": null
+  },
+  {
+   "name": "WE NEVER WALK ALONE",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Sounds like a nonprofit; site rendered no text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "WINSOR CONSULTING GROUP LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "WINSTED CONSOLES",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Control room console furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Control room console furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "WOLD ARCHITECTS & ENGINEERS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Architecture and engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Architecture and engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "WSI TECHNOLOGIES",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name does not say what it sells; site unreadable (SSL error)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "WTH TECHNOLOGY, INC.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreadable; wthtech.com is a differently named electrical contractor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "XYBIX",
+   "website": null
+  },
+  {
+   "name": "ZETRON",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 22,
+ "quality_was": "good"
+}

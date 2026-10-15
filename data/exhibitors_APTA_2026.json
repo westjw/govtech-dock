@@ -1631,7 +1631,15 @@
   },
   {
    "name": "Metro Magazine",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: METRO Magazine is a transit trade publication, not a technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "METRO Magazine is a transit trade publication, not a technology product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Michael Baker International, Inc.",
