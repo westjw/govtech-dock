@@ -1,0 +1,2357 @@
+{
+ "event_tag": "NRPA 2026",
+ "conference": "NRPA Annual",
+ "found": true,
+ "source_url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
+ "source_note": "Read from https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E by scripts/sweep_exhibitors.py. 539 name(s), 5 with a website the page itself linked. Quality: good (36% carry a corporate marker, 0% name a site section, 2% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "10-S Tennis Supply & Fast-Dry Courts",
+   "website": null
+  },
+  {
+   "name": "2by2 Industries",
+   "website": null
+  },
+  {
+   "name": "Accela",
+   "website": null
+  },
+  {
+   "name": "Action Play Systems, LLC",
+   "website": null
+  },
+  {
+   "name": "ACTION Sports Design, llc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sports facility design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sports facility design firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ACTIVE",
+   "website": null
+  },
+  {
+   "name": "Acuity",
+   "website": null
+  },
+  {
+   "name": "Adventure Forest LLC, t/a Go Ape",
+   "website": null
+  },
+  {
+   "name": "Adventure Golf & Sports",
+   "website": null
+  },
+  {
+   "name": "AED Team",
+   "website": null
+  },
+  {
+   "name": "Allied Powers LLC",
+   "website": null
+  },
+  {
+   "name": "Alumi Games",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Recreation games physical products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Recreation games physical products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "American Athletic Track and Turf",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Athletic track and turf construction",
+   "read": {
+    "verdict": "supplier",
+    "why": "Athletic track and turf construction",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "American Baseball and Softball",
+   "website": null
+  },
+  {
+   "name": "American Carnival Mart",
+   "website": null
+  },
+  {
+   "name": "American Golf Corporation",
+   "website": null
+  },
+  {
+   "name": "American Ramp Company",
+   "website": null
+  },
+  {
+   "name": "American Red Cross Training Services",
+   "website": null
+  },
+  {
+   "name": "American Sports Builders Association",
+   "website": null
+  },
+  {
+   "name": "Amilia",
+   "website": null
+  },
+  {
+   "name": "Andrews Technology",
+   "website": null
+  },
+  {
+   "name": "Animal Care Equipment and Services, LLC",
+   "website": null
+  },
+  {
+   "name": "Ankored",
+   "website": null
+  },
+  {
+   "name": "Anova",
+   "website": null
+  },
+  {
+   "name": "Aqua Tile",
+   "website": null
+  },
+  {
+   "name": "Aquafinity",
+   "website": null
+  },
+  {
+   "name": "AquaPlanet",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Aquatic play equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Aquatic play equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Ariens & Gravely",
+   "website": null
+  },
+  {
+   "name": "Arly",
+   "website": null
+  },
+  {
+   "name": "Army Family and MWR",
+   "website": null
+  },
+  {
+   "name": "ARS Landscaping",
+   "website": null
+  },
+  {
+   "name": "Artificial Ice Events",
+   "website": null
+  },
+  {
+   "name": "AssetWorks",
+   "website": null
+  },
+  {
+   "name": "AstroTurf",
+   "website": null
+  },
+  {
+   "name": "AT Sports",
+   "website": null
+  },
+  {
+   "name": "Athletic Business",
+   "website": null
+  },
+  {
+   "name": "Athletify",
+   "website": null
+  },
+  {
+   "name": "ATTENDEE LUNCH AND FOOD COURT",
+   "website": null
+  },
+  {
+   "name": "Avaden LLC (Splash2o)",
+   "website": null
+  },
+  {
+   "name": "Avive Solutions",
+   "website": null
+  },
+  {
+   "name": "Azimuth",
+   "website": null
+  },
+  {
+   "name": "Babe Ruth League, Inc.",
+   "website": null
+  },
+  {
+   "name": "Baden Sports Inc.",
+   "website": null
+  },
+  {
+   "name": "Ballboards",
+   "website": null
+  },
+  {
+   "name": "BarkPark",
+   "website": null
+  },
+  {
+   "name": "BarkPass LLC",
+   "website": null
+  },
+  {
+   "name": "Battle Company",
+   "website": null
+  },
+  {
+   "name": "Bchex",
+   "website": null
+  },
+  {
+   "name": "BCI Burke Playgrounds",
+   "website": null
+  },
+  {
+   "name": "Bedford Reinforced Plastics",
+   "website": null
+  },
+  {
+   "name": "Berliner",
+   "website": null
+  },
+  {
+   "name": "BerryDunn",
+   "website": null
+  },
+  {
+   "name": "Better Life Technology",
+   "website": null
+  },
+  {
+   "name": "Bigbelly",
+   "website": null
+  },
+  {
+   "name": "Bison Inc.",
+   "website": null
+  },
+  {
+   "name": "Blick Art Materials",
+   "website": null
+  },
+  {
+   "name": "BoardSafe Docks",
+   "website": null
+  },
+  {
+   "name": "Bobcat Company",
+   "website": null
+  },
+  {
+   "name": "BoMar Soft Playgrounds, International",
+   "website": null
+  },
+  {
+   "name": "Botton + Gardiner",
+   "website": null
+  },
+  {
+   "name": "Bounce Back Surfaces USA",
+   "website": null
+  },
+  {
+   "name": "Bownet Awards & Promotions",
+   "website": null
+  },
+  {
+   "name": "Brailsford & Dunlavey",
+   "website": null
+  },
+  {
+   "name": "Brandstetter Carroll, Inc.",
+   "website": null
+  },
+  {
+   "name": "Bridge Brothers",
+   "website": null
+  },
+  {
+   "name": "Brinkley Sargent Wiginton Architects",
+   "website": null
+  },
+  {
+   "name": "Brock USA",
+   "website": null
+  },
+  {
+   "name": "BSN Sports",
+   "website": null
+  },
+  {
+   "name": "BucketGolf",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Lawn game physical products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Lawn game physical products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "BUYBOARD",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Purchasing cooperative, not a technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Purchasing cooperative, not a technology product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "C&D Nets",
+   "website": null
+  },
+  {
+   "name": "Cadron Creek Play",
+   "website": null
+  },
+  {
+   "name": "California Canopy",
+   "website": null
+  },
+  {
+   "name": "CampDoc",
+   "website": null
+  },
+  {
+   "name": "Can Play",
+   "website": null
+  },
+  {
+   "name": "CCP Direct",
+   "website": null
+  },
+  {
+   "name": "Cedar Forest Products Co.",
+   "website": null
+  },
+  {
+   "name": "Cemer Kent Ekipmanlari",
+   "website": null
+  },
+  {
+   "name": "Century Industries, LLC.",
+   "website": null
+  },
+  {
+   "name": "CHA",
+   "website": null
+  },
+  {
+   "name": "Chameleon Ways",
+   "website": null
+  },
+  {
+   "name": "Chance Rides, LLC",
+   "website": null
+  },
+  {
+   "name": "Chemtrol",
+   "website": null
+  },
+  {
+   "name": "Chervon/EGO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Power tools and outdoor equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Power tools and outdoor equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Childforms",
+   "website": null
+  },
+  {
+   "name": "CIMS Cemetery Software",
+   "website": null
+  },
+  {
+   "name": "Cintas Corporation",
+   "website": null
+  },
+  {
+   "name": "Citibin, Inc",
+   "website": null
+  },
+  {
+   "name": "CityParkOn",
+   "website": null
+  },
+  {
+   "name": "CivicPlus",
+   "website": null
+  },
+  {
+   "name": "Classic Recreation Systems, Inc.",
+   "website": null
+  },
+  {
+   "name": "Clear-Flow",
+   "website": null
+  },
+  {
+   "name": "CMC Neptune-Neptune Radio",
+   "website": null
+  },
+  {
+   "name": "Comcast Business",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Telecom connectivity provider, no govtech product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Telecom connectivity provider, no govtech product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Commercial Recreation Specialists",
+   "website": null
+  },
+  {
+   "name": "CommunityPass",
+   "website": null
+  },
+  {
+   "name": "Complete Streets USA",
+   "website": null
+  },
+  {
+   "name": "Conestoga Log Cabins & Homes",
+   "website": null
+  },
+  {
+   "name": "Corkeen US",
+   "website": null
+  },
+  {
+   "name": "Corworth/Restroom Facilities Ltd",
+   "website": null
+  },
+  {
+   "name": "Counsilman Hunsaker",
+   "website": null
+  },
+  {
+   "name": "Coverworx- Recreational Architecture",
+   "website": null
+  },
+  {
+   "name": "Cre8Play",
+   "website": null
+  },
+  {
+   "name": "Creative Composites Group",
+   "website": null
+  },
+  {
+   "name": "Creative West",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Regional arts nonprofit organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Regional arts nonprofit organisation",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Criterion Pictures",
+   "website": null
+  },
+  {
+   "name": "Custom Ice Inc.",
+   "website": null
+  },
+  {
+   "name": "CXT Precast Concrete Products",
+   "website": null
+  },
+  {
+   "name": "Daktronics",
+   "website": null
+  },
+  {
+   "name": "Degy Entertainment & Big Bounce America",
+   "website": null
+  },
+  {
+   "name": "DESCHAMPS MATS SYSTEMS INC",
+   "website": null
+  },
+  {
+   "name": "DiscGolfPark",
+   "website": null
+  },
+  {
+   "name": "DIY Court",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sport court kits, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sport court kits, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Dog Wash Systems, USA",
+   "website": null
+  },
+  {
+   "name": "Dog-ON-It-Parks",
+   "website": null
+  },
+  {
+   "name": "Douglas Sports Equipment",
+   "website": null
+  },
+  {
+   "name": "DrillPickle",
+   "website": null
+  },
+  {
+   "name": "DuMor, Inc.",
+   "website": null
+  },
+  {
+   "name": "Dynaflex Sports Surfacing",
+   "website": null
+  },
+  {
+   "name": "Earthscape",
+   "website": null
+  },
+  {
+   "name": "Easi-Set Buildings",
+   "website": null
+  },
+  {
+   "name": "Eco Paving",
+   "website": null
+  },
+  {
+   "name": "Eco Sport",
+   "website": null
+  },
+  {
+   "name": "Eco-Counter",
+   "website": null
+  },
+  {
+   "name": "ecoPoste North",
+   "website": null
+  },
+  {
+   "name": "Ecore Outdoor Surfacing",
+   "website": null
+  },
+  {
+   "name": "Efficient Air Systems Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air systems equipment, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air systems equipment, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "eGym",
+   "website": null
+  },
+  {
+   "name": "Eldorado Climbing",
+   "website": null
+  },
+  {
+   "name": "Entreprises Urben Blu inc",
+   "website": null
+  },
+  {
+   "name": "Enwood Structures",
+   "website": null
+  },
+  {
+   "name": "EP Climbing",
+   "website": null
+  },
+  {
+   "name": "EPIC iO",
+   "website": null
+  },
+  {
+   "name": "Epic Outdoor Cinema",
+   "website": null
+  },
+  {
+   "name": "Eproval",
+   "website": null
+  },
+  {
+   "name": "EquipKo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Equipment company, no tech-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment company, no tech-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Esri",
+   "website": null
+  },
+  {
+   "name": "etrak Recreation Software",
+   "website": null
+  },
+  {
+   "name": "Eventeny",
+   "website": null
+  },
+  {
+   "name": "Eventhelper.com",
+   "website": null
+  },
+  {
+   "name": "EventHub",
+   "website": null
+  },
+  {
+   "name": "EX-CELL KAISER LLC",
+   "website": null
+  },
+  {
+   "name": "Exeloo Public Restrooms",
+   "website": null
+  },
+  {
+   "name": "Exhibitor Service Center",
+   "website": null
+  },
+  {
+   "name": "Experiential Systems, Inc",
+   "website": null
+  },
+  {
+   "name": "Extreme Motus",
+   "website": null
+  },
+  {
+   "name": "EZ Dock",
+   "website": null
+  },
+  {
+   "name": "Fahr Industries Ltd",
+   "website": null
+  },
+  {
+   "name": "Fair-Play Scoreboards",
+   "website": null
+  },
+  {
+   "name": "Fantasy Drone Shows",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Drone light show service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Drone light show service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "FenceTrac",
+   "website": null
+  },
+  {
+   "name": "Fibar Systems",
+   "website": null
+  },
+  {
+   "name": "Field Lining and Painting Services LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Field painting services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Field painting services company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Flecks Systems, Inc.",
+   "website": null
+  },
+  {
+   "name": "FlexGround, LLC",
+   "website": null
+  },
+  {
+   "name": "Flexirocks",
+   "website": null
+  },
+  {
+   "name": "FlowRider",
+   "website": null
+  },
+  {
+   "name": "FLT (First Light Technologies Inc.)",
+   "website": null
+  },
+  {
+   "name": "FMX",
+   "website": null
+  },
+  {
+   "name": "Fountain People/Water Odyssey",
+   "website": null
+  },
+  {
+   "name": "Fox 40 International",
+   "website": null
+  },
+  {
+   "name": "Freenotes Harmony Park",
+   "website": null
+  },
+  {
+   "name": "Frog Furnishings",
+   "website": null
+  },
+  {
+   "name": "Fun Express, a subsidiary of Oriental Trading Company",
+   "website": null
+  },
+  {
+   "name": "GagaXP",
+   "website": null
+  },
+  {
+   "name": "GameChanger",
+   "website": null
+  },
+  {
+   "name": "GameTime",
+   "website": null
+  },
+  {
+   "name": "Gared Performance Sports Systems",
+   "website": null
+  },
+  {
+   "name": "Genan Inc",
+   "website": null
+  },
+  {
+   "name": "Girls on the Run International",
+   "website": null
+  },
+  {
+   "name": "Global Special Effects",
+   "website": null
+  },
+  {
+   "name": "Global Syn Turf",
+   "website": null
+  },
+  {
+   "name": "Goal Taxi",
+   "website": null
+  },
+  {
+   "name": "Gopher",
+   "website": null
+  },
+  {
+   "name": "GovDeals",
+   "website": null
+  },
+  {
+   "name": "Grace Design Studios",
+   "website": null
+  },
+  {
+   "name": "Graco, Inc.",
+   "website": null
+  },
+  {
+   "name": "Graffiti Solutions Inc",
+   "website": null
+  },
+  {
+   "name": "Grand Slam Safety",
+   "website": null
+  },
+  {
+   "name": "Green Flush Restrooms",
+   "website": null
+  },
+  {
+   "name": "Green Frog Systems, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Real-sounding company, no tech-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Real-sounding company, no tech-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Greenfields Outdoor Fitness",
+   "website": null
+  },
+  {
+   "name": "Gripstrip Products ltd",
+   "website": null
+  },
+  {
+   "name": "Guardian Sports",
+   "website": null
+  },
+  {
+   "name": "GYMS FOR DOGS - NATURAL DOG PARK PRODUCTS",
+   "website": null
+  },
+  {
+   "name": "H2I Group",
+   "website": null
+  },
+  {
+   "name": "Harris Miniature Golf Courses, Inc.",
+   "website": null
+  },
+  {
+   "name": "Heffco Elastomers Inc",
+   "website": null
+  },
+  {
+   "name": "Henderson Recreation Equipment",
+   "website": null
+  },
+  {
+   "name": "HENKA LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Company name, no tech-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Company name, no tech-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "HGACBuy",
+   "website": null
+  },
+  {
+   "name": "High Roller USA",
+   "website": null
+  },
+  {
+   "name": "Holtzman Group Hospitality Experts",
+   "website": null
+  },
+  {
+   "name": "Htracks USA",
+   "website": null
+  },
+  {
+   "name": "HUSSEY SEATING COMPANY",
+   "website": null
+  },
+  {
+   "name": "Hydraway Drainage System",
+   "website": null
+  },
+  {
+   "name": "HydroApps",
+   "website": null
+  },
+  {
+   "name": "iCast",
+   "website": null
+  },
+  {
+   "name": "ICON Shelter Systems Inc.",
+   "website": null
+  },
+  {
+   "name": "ID Sculpture",
+   "website": null
+  },
+  {
+   "name": "Imagination Playground",
+   "website": null
+  },
+  {
+   "name": "IMPACT CLIMBING",
+   "website": null
+  },
+  {
+   "name": "InBody",
+   "website": null
+  },
+  {
+   "name": "InCord",
+   "website": null
+  },
+  {
+   "name": "Industrial Frigo Ice USA Inc.",
+   "website": null
+  },
+  {
+   "name": "Infinity Pool Surface",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pool surfacing products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pool surfacing products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "INNOVA Disc Golf",
+   "website": null
+  },
+  {
+   "name": "INNOVA Disc Golf Sports Demo Zone",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Disc golf maker's demo area, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Disc golf maker's demo area, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "iStrike Alerts",
+   "website": null
+  },
+  {
+   "name": "iZone Imaging",
+   "website": null
+  },
+  {
+   "name": "Jambette Playground Equipment Inc.",
+   "website": null
+  },
+  {
+   "name": "Jaypro Sports",
+   "website": null
+  },
+  {
+   "name": "JEGO HONGKONG LIMITED",
+   "website": null
+  },
+  {
+   "name": "KABOOM!",
+   "website": null
+  },
+  {
+   "name": "Kafka Granite",
+   "website": null
+  },
+  {
+   "name": "Kassbohrer All Terrain Vehicles, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: All-terrain vehicles maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "All-terrain vehicles maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Kay Park Recreation Corp.",
+   "website": null
+  },
+  {
+   "name": "KDF - KATASKEVES DAPEDON LTD",
+   "website": null
+  },
+  {
+   "name": "KidsTale Playgrounds, Inc",
+   "website": null
+  },
+  {
+   "name": "KinderLatch LLC",
+   "website": null
+  },
+  {
+   "name": "Kinetica Corporation",
+   "website": null
+  },
+  {
+   "name": "King Steel Fasteners",
+   "website": null
+  },
+  {
+   "name": "KirbyBuilt",
+   "website": null
+  },
+  {
+   "name": "KOMPAN, Inc.",
+   "website": null
+  },
+  {
+   "name": "Kress",
+   "website": null
+  },
+  {
+   "name": "Kwik Goal",
+   "website": null
+  },
+  {
+   "name": "Kwik-Covers",
+   "website": null
+  },
+  {
+   "name": "Lake Country Corporation",
+   "website": null
+  },
+  {
+   "name": "Lancaster Cabins",
+   "website": null
+  },
+  {
+   "name": "Landmark Aquatic",
+   "website": null
+  },
+  {
+   "name": "Landmark Studio & Design",
+   "website": null
+  },
+  {
+   "name": "Landscape Architect Media Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade media publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade media publisher",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Landscape Forms",
+   "website": null
+  },
+  {
+   "name": "Landscape Structures",
+   "website": null
+  },
+  {
+   "name": "Legend Structures LLC",
+   "website": null
+  },
+  {
+   "name": "LIBEN GROUP WENZHOU INTERNATIONAL TRADE CORPORATION",
+   "website": null
+  },
+  {
+   "name": "Liberty Tire Recycling",
+   "website": null
+  },
+  {
+   "name": "Life Floor",
+   "website": null
+  },
+  {
+   "name": "Light Efficient Design",
+   "website": null
+  },
+  {
+   "name": "Lincoln Aquatics",
+   "website": null
+  },
+  {
+   "name": "LinguaLinx",
+   "website": null
+  },
+  {
+   "name": "Little League Baseball & Softball",
+   "website": null
+  },
+  {
+   "name": "Little Tikes Commercial",
+   "website": null
+  },
+  {
+   "name": "Lose Design",
+   "website": null
+  },
+  {
+   "name": "Madrax/ Thomas Steele",
+   "website": null
+  },
+  {
+   "name": "Magical Light Shows",
+   "website": null
+  },
+  {
+   "name": "Main Line Commercial Pools, Inc.",
+   "website": null
+  },
+  {
+   "name": "MaintainX",
+   "website": null
+  },
+  {
+   "name": "MAPEI",
+   "website": null
+  },
+  {
+   "name": "Mateflex",
+   "website": null
+  },
+  {
+   "name": "Matrix Fitness",
+   "website": null
+  },
+  {
+   "name": "Maytronics",
+   "website": null
+  },
+  {
+   "name": "McGill Associates, PA",
+   "website": null
+  },
+  {
+   "name": "MERTOGLU",
+   "website": null
+  },
+  {
+   "name": "Metalu Plast",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Playground equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Playground equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Midwest Elastomers Inc.",
+   "website": null
+  },
+  {
+   "name": "Milco MFG, LLC",
+   "website": null
+  },
+  {
+   "name": "Miracle Recreation",
+   "website": null
+  },
+  {
+   "name": "Mission Awards",
+   "website": null
+  },
+  {
+   "name": "MLSGo",
+   "website": null
+  },
+  {
+   "name": "Mobile-Score",
+   "website": null
+  },
+  {
+   "name": "Modern Shade LLC",
+   "website": null
+  },
+  {
+   "name": "Modular Pumptrack USA",
+   "website": null
+  },
+  {
+   "name": "modus studio",
+   "website": null
+  },
+  {
+   "name": "Mosca Design",
+   "website": null
+  },
+  {
+   "name": "Most Dependable Fountains Inc.",
+   "website": null
+  },
+  {
+   "name": "Move United",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Adaptive sports nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Adaptive sports nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Multimedia LED",
+   "website": null
+  },
+  {
+   "name": "Murdock/Super Secur Mfg. Company",
+   "website": null
+  },
+  {
+   "name": "Musco LED Videoboard Systems",
+   "website": null
+  },
+  {
+   "name": "Musco Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "MyRec.com Recreation Software",
+   "website": null
+  },
+  {
+   "name": "Myrtha Pools",
+   "website": null
+  },
+  {
+   "name": "MyTCoat Commercial Outdoor Furniture",
+   "website": null
+  },
+  {
+   "name": "MyVolunteer by CRC",
+   "website": null
+  },
+  {
+   "name": "NAF Aquatics LLC",
+   "website": null
+  },
+  {
+   "name": "National Association of Park Foundations",
+   "website": null
+  },
+  {
+   "name": "National Band and Tag Co.",
+   "website": null
+  },
+  {
+   "name": "National Playground Contractors Association Inc.",
+   "website": null
+  },
+  {
+   "name": "National Recreation and Park Association",
+   "website": null
+  },
+  {
+   "name": "National Recreation Systems",
+   "website": null
+  },
+  {
+   "name": "NCSI",
+   "website": null
+  },
+  {
+   "name": "NEOGOV & PowerDMS by NEOGOV",
+   "website": null
+  },
+  {
+   "name": "Net World Sports Ltd",
+   "website": null
+  },
+  {
+   "name": "Nets Unlimited, Inc.",
+   "website": null
+  },
+  {
+   "name": "Nevco Sports, LLC",
+   "website": null
+  },
+  {
+   "name": "New Line Skateparks, Inc.",
+   "website": null
+  },
+  {
+   "name": "NFL Flag",
+   "website": null
+  },
+  {
+   "name": "NINGBO BEST SWING IMPORT&EXPORT COMPANY LIMITED",
+   "website": null
+  },
+  {
+   "name": "NinjaCross™ Systems",
+   "website": null
+  },
+  {
+   "name": "Nirbo Aquatic Inc.",
+   "website": null
+  },
+  {
+   "name": "NLS Lighting LLC",
+   "website": null
+  },
+  {
+   "name": "No Fault® Surfaces",
+   "website": null
+  },
+  {
+   "name": "NORDOT® Adhesives",
+   "website": null
+  },
+  {
+   "name": "North West Rubber",
+   "website": null
+  },
+  {
+   "name": "NPPGov",
+   "website": null
+  },
+  {
+   "name": "NRPA Sales Office",
+   "website": null
+  },
+  {
+   "name": "ODBMed",
+   "website": null
+  },
+  {
+   "name": "Oglebay National Training Center",
+   "website": null
+  },
+  {
+   "name": "Omega II Fence Systems",
+   "website": null
+  },
+  {
+   "name": "OnePlan",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OnePlan event site-planning software, plausible parks vendor",
+   "read": {
+    "verdict": "vendor",
+    "why": "OnePlan event site-planning software, plausible parks vendor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Open Sky Drone Light Shows",
+   "website": null
+  },
+  {
+   "name": "Open Space Radio",
+   "website": null
+  },
+  {
+   "name": "OpenGov",
+   "website": null
+  },
+  {
+   "name": "Operate Fit",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fitness equipment maker, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fitness equipment maker, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Original Jumping Pillows",
+   "website": null
+  },
+  {
+   "name": "Original Watermen",
+   "website": null
+  },
+  {
+   "name": "OTTO PARKS",
+   "website": null
+  },
+  {
+   "name": "Otto Trading",
+   "website": null
+  },
+  {
+   "name": "Outdoor Aluminum Inc.",
+   "website": null
+  },
+  {
+   "name": "Outdoor-Fit Exercise Systems",
+   "website": null
+  },
+  {
+   "name": "Outdoorlink, Inc",
+   "website": null
+  },
+  {
+   "name": "Paddock Pool Equipment Company",
+   "website": null
+  },
+  {
+   "name": "Parkify",
+   "website": null
+  },
+  {
+   "name": "ParkInk",
+   "website": null
+  },
+  {
+   "name": "Peachjar, Inc.",
+   "website": null
+  },
+  {
+   "name": "Peak Software Systems",
+   "website": null
+  },
+  {
+   "name": "Pebble Technology International",
+   "website": null
+  },
+  {
+   "name": "Percussion Play",
+   "website": null
+  },
+  {
+   "name": "Perry Weather",
+   "website": null
+  },
+  {
+   "name": "Petersen Mfg Co Inc.",
+   "website": null
+  },
+  {
+   "name": "Philadelphia Union",
+   "website": null
+  },
+  {
+   "name": "Pickleball Mats LLC",
+   "website": null
+  },
+  {
+   "name": "PinSource",
+   "website": null
+  },
+  {
+   "name": "Play and Park Structures",
+   "website": null
+  },
+  {
+   "name": "Play Club ®",
+   "website": null
+  },
+  {
+   "name": "Play with a Purpose",
+   "website": null
+  },
+  {
+   "name": "PlayCore",
+   "website": null
+  },
+  {
+   "name": "Playcraft Systems",
+   "website": null
+  },
+  {
+   "name": "Playground Grass by ForeverLawn",
+   "website": null
+  },
+  {
+   "name": "Playground Guardian",
+   "website": null
+  },
+  {
+   "name": "Playground OS",
+   "website": null
+  },
+  {
+   "name": "PlaygroundEquipment.com",
+   "website": null
+  },
+  {
+   "name": "PlayIt Creations Inc.",
+   "website": null
+  },
+  {
+   "name": "Playpave",
+   "website": null
+  },
+  {
+   "name": "PlayVentures, Inc.",
+   "website": null
+  },
+  {
+   "name": "Playworld",
+   "website": null
+  },
+  {
+   "name": "PlotBox",
+   "website": null
+  },
+  {
+   "name": "Poligon",
+   "website": null
+  },
+  {
+   "name": "PolyScape ™ by Bedford",
+   "website": null
+  },
+  {
+   "name": "Poolside Adventures",
+   "website": null
+  },
+  {
+   "name": "Porous Pave inc.",
+   "website": null
+  },
+  {
+   "name": "Portolite Pitching Mounds",
+   "website": null
+  },
+  {
+   "name": "Post Guard",
+   "website": null
+  },
+  {
+   "name": "PracticePlan, LLC",
+   "website": null
+  },
+  {
+   "name": "Preferred Sands OptiFILL+",
+   "website": null
+  },
+  {
+   "name": "Premier Materials",
+   "website": null
+  },
+  {
+   "name": "Premier Polysteel Outdoor Furniture",
+   "website": null
+  },
+  {
+   "name": "Productive Parks Software",
+   "website": null
+  },
+  {
+   "name": "Progressive Trail Design, LLC",
+   "website": null
+  },
+  {
+   "name": "ProMinent Fluid Controls, Inc.",
+   "website": null
+  },
+  {
+   "name": "ProNine Sports",
+   "website": null
+  },
+  {
+   "name": "Psagot Playgrounds",
+   "website": null
+  },
+  {
+   "name": "Public Restroom Company",
+   "website": null
+  },
+  {
+   "name": "PumpTrax USA",
+   "website": null
+  },
+  {
+   "name": "QuickScores LLC",
+   "website": null
+  },
+  {
+   "name": "R+L Global Logistics",
+   "website": null
+  },
+  {
+   "name": "Rain Drop Products, LLC",
+   "website": null
+  },
+  {
+   "name": "Ramuc/Tuff Coat Paint div of MRT",
+   "website": null
+  },
+  {
+   "name": "Randolph Rose Collection",
+   "website": null
+  },
+  {
+   "name": "RAW Custom Coatings",
+   "website": null
+  },
+  {
+   "name": "Raypak Inc.",
+   "website": null
+  },
+  {
+   "name": "RCP Shelters, Inc.",
+   "website": null
+  },
+  {
+   "name": "RCX Sports",
+   "website": null
+  },
+  {
+   "name": "RDG Planning & Design",
+   "website": null
+  },
+  {
+   "name": "Re-Tek Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Products manufacturer, no technology signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Products manufacturer, no technology signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "REACH Media Network",
+   "website": null
+  },
+  {
+   "name": "Rec Technologies",
+   "website": null
+  },
+  {
+   "name": "Rec+",
+   "website": null
+  },
+  {
+   "name": "Recreonics",
+   "website": null
+  },
+  {
+   "name": "Rego Consulting",
+   "website": null
+  },
+  {
+   "name": "Renosys",
+   "website": null
+  },
+  {
+   "name": "Replay Surfacing Inc",
+   "website": null
+  },
+  {
+   "name": "Resto Athletic",
+   "website": null
+  },
+  {
+   "name": "Revolution Trucking, LLC",
+   "website": null
+  },
+  {
+   "name": "Riley Sports",
+   "website": null
+  },
+  {
+   "name": "Rock Team Sports, LLC",
+   "website": null
+  },
+  {
+   "name": "Romtec, Inc.",
+   "website": null
+  },
+  {
+   "name": "RVi Planning + Landscape Architecture",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Planning and landscape architecture design firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Planning and landscape architecture design firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "S&S Worldwide, Inc.",
+   "website": null
+  },
+  {
+   "name": "Safe Deck Coatings",
+   "website": null
+  },
+  {
+   "name": "Safe Sitter",
+   "website": null
+  },
+  {
+   "name": "Safe Slide Restoration",
+   "website": null
+  },
+  {
+   "name": "Safety Turf, Inc.",
+   "website": null
+  },
+  {
+   "name": "Scenic Shelters",
+   "website": null
+  },
+  {
+   "name": "Schiller Grounds Care",
+   "website": null
+  },
+  {
+   "name": "Schneider Geospatial",
+   "website": null
+  },
+  {
+   "name": "Scientific Sales",
+   "website": null
+  },
+  {
+   "name": "SCORE SPORTS",
+   "website": null
+  },
+  {
+   "name": "Seilfabrik Ullmann GmbH",
+   "website": null
+  },
+  {
+   "name": "SFM",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely SportsField Management publication; no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely SportsField Management publication; no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Shade 'N Net of Arizona",
+   "website": null
+  },
+  {
+   "name": "Shade Systems, Inc.",
+   "website": null
+  },
+  {
+   "name": "Shadrack Productions",
+   "website": null
+  },
+  {
+   "name": "ShanDong Qiangmeng Sports Development Co.,Ltd",
+   "website": null
+  },
+  {
+   "name": "Shaw Sports Turf",
+   "website": null
+  },
+  {
+   "name": "Shawgrass",
+   "website": null
+  },
+  {
+   "name": "She's Birdie",
+   "website": null
+  },
+  {
+   "name": "Shinetoo LIGHTING USA LLC",
+   "website": null
+  },
+  {
+   "name": "Simplex Wellness Inc",
+   "website": null
+  },
+  {
+   "name": "SiteOne Landscape Supply",
+   "website": null
+  },
+  {
+   "name": "Sky Elements Drones",
+   "website": null
+  },
+  {
+   "name": "SKYFITNESS",
+   "website": null
+  },
+  {
+   "name": "SLG Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "Slide Guys Restoration",
+   "website": null
+  },
+  {
+   "name": "Smartbox",
+   "website": null
+  },
+  {
+   "name": "Smartroots By Onpoint Insights",
+   "website": null
+  },
+  {
+   "name": "Snap Dock",
+   "website": null
+  },
+  {
+   "name": "SNAPSPORTS",
+   "website": null
+  },
+  {
+   "name": "Sof SURFACES",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Playground safety surfacing, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Playground safety surfacing, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Soft Play",
+   "website": null
+  },
+  {
+   "name": "Software Solutions, Inc.",
+   "website": null
+  },
+  {
+   "name": "SOL by Sunna Design",
+   "website": null
+  },
+  {
+   "name": "Sourcewell",
+   "website": null
+  },
+  {
+   "name": "Spartan Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "Speck Pumps - Pool Products, Inc.",
+   "website": null
+  },
+  {
+   "name": "Spectrum Aquatics",
+   "website": null
+  },
+  {
+   "name": "Speed Sessions by CORE (A)",
+   "website": null
+  },
+  {
+   "name": "Speed Sessions by CORE (B)",
+   "website": null
+  },
+  {
+   "name": "Splashtacular",
+   "website": null
+  },
+  {
+   "name": "Spohn Ranch",
+   "website": null
+  },
+  {
+   "name": "Sport Court",
+   "website": null
+  },
+  {
+   "name": "Sportaflex, LLC",
+   "website": null
+  },
+  {
+   "name": "Sportsbeams Lighting, Inc.",
+   "website": null
+  },
+  {
+   "name": "SportsPlay Equipment, Inc.",
+   "website": null
+  },
+  {
+   "name": "Sprintplay",
+   "website": null
+  },
+  {
+   "name": "Sprinturf",
+   "website": null
+  },
+  {
+   "name": "St Nick's Christmas Lighting & Decor",
+   "website": null
+  },
+  {
+   "name": "STABILIZER SOLUTIONS INC",
+   "website": null
+  },
+  {
+   "name": "Stageline Mobile Stage, Inc.",
+   "website": null
+  },
+  {
+   "name": "Stanley Black and Decker Outdoor",
+   "website": null
+  },
+  {
+   "name": "State Fair Mini Donuts",
+   "website": null
+  },
+  {
+   "name": "STEC Equipment, Inc.",
+   "website": null
+  },
+  {
+   "name": "Stern-Williams Co., Inc.",
+   "website": null
+  },
+  {
+   "name": "STOCKMEIER Urethanes USA, Inc.",
+   "website": null
+  },
+  {
+   "name": "Streetbond",
+   "website": null
+  },
+  {
+   "name": "Streetlife",
+   "website": null
+  },
+  {
+   "name": "SubItUp",
+   "website": null
+  },
+  {
+   "name": "Success Brands",
+   "website": null
+  },
+  {
+   "name": "Sundek",
+   "website": null
+  },
+  {
+   "name": "Superior Recreational Products",
+   "website": null
+  },
+  {
+   "name": "Superior Shade",
+   "website": null
+  },
+  {
+   "name": "Swank Motion Pictures, Inc.",
+   "website": null
+  },
+  {
+   "name": "SWOZI",
+   "website": null
+  },
+  {
+   "name": "Sybertech Waste Reduction Ltd",
+   "website": null
+  },
+  {
+   "name": "SYNLawn",
+   "website": null
+  },
+  {
+   "name": "Tactacam",
+   "website": null
+  },
+  {
+   "name": "Tailor Made Grass",
+   "website": null
+  },
+  {
+   "name": "Talurit, Inc.",
+   "website": null
+  },
+  {
+   "name": "Tarkett Sports",
+   "website": null
+  },
+  {
+   "name": "TBG Partners",
+   "website": null
+  },
+  {
+   "name": "Team Foster by BarkPark",
+   "website": null
+  },
+  {
+   "name": "TeamLinkt",
+   "website": null
+  },
+  {
+   "name": "TeamSnap",
+   "website": null
+  },
+  {
+   "name": "Techline Sports Lighting",
+   "website": null
+  },
+  {
+   "name": "TenCate Americas",
+   "website": null
+  },
+  {
+   "name": "Tenshon",
+   "website": null
+  },
+  {
+   "name": "Think Green Promos",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Promotional merchandise company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Promotional merchandise company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "TinyMobileRobots",
+   "website": null
+  },
+  {
+   "name": "Top-A-Court",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sport court surfacing, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sport court surfacing, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Toro Tents Banners and Displays",
+   "website": null
+  },
+  {
+   "name": "TOWELHUB.COM",
+   "website": null
+  },
+  {
+   "name": "Traction Rec",
+   "website": null
+  },
+  {
+   "name": "TransWorld's Christmas & Halloween Show",
+   "website": null
+  },
+  {
+   "name": "Tree Stake Solutions llc",
+   "website": null
+  },
+  {
+   "name": "TreeDiaper",
+   "website": null
+  },
+  {
+   "name": "TriActive USA Fitness Equipment Corp.",
+   "website": null
+  },
+  {
+   "name": "Trimax Mowing Systems",
+   "website": null
+  },
+  {
+   "name": "Trimble",
+   "website": null
+  },
+  {
+   "name": "Troon",
+   "website": null
+  },
+  {
+   "name": "Turf Producers Association",
+   "website": null
+  },
+  {
+   "name": "Turf Tank",
+   "website": null
+  },
+  {
+   "name": "UltraSite",
+   "website": null
+  },
+  {
+   "name": "United Rentals, (North America) Inc.",
+   "website": null
+  },
+  {
+   "name": "United States Tennis Association",
+   "website": null
+  },
+  {
+   "name": "Unity Surfacing Systems",
+   "website": null
+  },
+  {
+   "name": "Upace",
+   "website": null
+  },
+  {
+   "name": "Urban Fountains and Furniture",
+   "website": null
+  },
+  {
+   "name": "Urbanscape Self Watering Planters",
+   "website": null
+  },
+  {
+   "name": "US Playground Surfacing, LLC",
+   "website": null
+  },
+  {
+   "name": "USA BMX Foundation",
+   "website": null
+  },
+  {
+   "name": "USA Shade",
+   "website": null
+  },
+  {
+   "name": "Valmont Composite Structures - Carsonite Brand",
+   "website": null
+  },
+  {
+   "name": "Varsity Scoreboards",
+   "website": null
+  },
+  {
+   "name": "VenTek International",
+   "website": null
+  },
+  {
+   "name": "Versare Flooring",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Flooring and room-divider products, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Flooring and room-divider products, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Victor Stanley, LLC",
+   "website": null
+  },
+  {
+   "name": "Vision Fitness",
+   "website": null
+  },
+  {
+   "name": "Volo Sports & Volo Kids",
+   "website": null
+  },
+  {
+   "name": "VolunteerLocal",
+   "website": null
+  },
+  {
+   "name": "Vortex Aquatic Structures International",
+   "website": null
+  },
+  {
+   "name": "Wabash Valley Mfg., Inc",
+   "website": null
+  },
+  {
+   "name": "Wacky World Studios",
+   "website": null
+  },
+  {
+   "name": "Walltopia Climbing Walls",
+   "website": null
+  },
+  {
+   "name": "Watchfire",
+   "website": null
+  },
+  {
+   "name": "WATER SPLASH",
+   "website": null
+  },
+  {
+   "name": "Water Technology, Inc.",
+   "website": null
+  },
+  {
+   "name": "Waterplay",
+   "website": null
+  },
+  {
+   "name": "Waters Edge Aquatic Design",
+   "website": null
+  },
+  {
+   "name": "Wertz Werkz Manufacturing",
+   "website": null
+  },
+  {
+   "name": "WhiteWater",
+   "website": null
+  },
+  {
+   "name": "WholeTrees Structures",
+   "website": null
+  },
+  {
+   "name": "Wickcraft Boardwalks",
+   "website": null
+  },
+  {
+   "name": "Williams Architects",
+   "website": null
+  },
+  {
+   "name": "WILLOUGHBY STAINLESS FOUNTAINS-WSF",
+   "website": null
+  },
+  {
+   "name": "Winterland Inc",
+   "website": null
+  },
+  {
+   "name": "Wisdom Playgrounds, Inc.",
+   "website": null
+  },
+  {
+   "name": "World Klass Play",
+   "website": null
+  },
+  {
+   "name": "Wright",
+   "website": null
+  },
+  {
+   "name": "WT Controls",
+   "website": null
+  },
+  {
+   "name": "WT Group AEC, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Architecture/engineering services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Architecture/engineering services firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Wxline, LLC",
+   "website": null
+  },
+  {
+   "name": "XbotGo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: Consumer AI phone-mount tracking gadget; hardware accessory maker, not govtech software",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: Consumer AI phone-mount tracking gadget; hardware accessory maker, not govtech software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Xplor Recreation I Vermont Systems - RecDesk - NextRec – ePACT",
+   "website": null
+  },
+  {
+   "name": "Xtraice Rinks",
+   "website": null
+  },
+  {
+   "name": "Yodel Pass",
+   "website": null
+  },
+  {
+   "name": "YONGLANG GROUP CO.,LTD",
+   "website": null
+  },
+  {
+   "name": "Zeager Bros., Inc.",
+   "website": null
+  },
+  {
+   "name": "Zhejiang Feiyou Kangti Facilities Co., Ltd",
+   "website": null
+  },
+  {
+   "name": "ZOLL Medical Corporation",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 19,
+ "quality_was": "good"
+}

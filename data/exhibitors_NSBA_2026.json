@@ -11,11 +11,27 @@
   },
   {
    "name": "Acellus",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Online K-12 curriculum learning platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Online K-12 curriculum learning platform",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Aircraft Owners and Pilots Association Foundation",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit aviation education foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit aviation education foundation",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Alleviate LLC",
@@ -23,27 +39,63 @@
   },
   {
    "name": "American Fidelity Assurance Co",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance and benefits company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance and benefits company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "American Heart Association",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Americans United for Separation of Church and State",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Anatomage Inc.",
-   "website": null
-  },
-  {
-   "name": "Apple Safari",
-   "website": "http://support.apple.com/downloads/#safari"
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Virtual anatomy dissection table with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Virtual anatomy dissection table with software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Army ROTC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Government military recruiting program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Government military recruiting program",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Association of Secular Elected Officials",
@@ -51,7 +103,15 @@
   },
   {
    "name": "ASVAB Career Exploration Program",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Department of Defense career program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Department of Defense career program",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Axis Communications Inc",
@@ -63,15 +123,39 @@
   },
   {
    "name": "BoardBook",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School board meeting management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "School board meeting management software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "BoardDocs a Diligent Brand",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Board meeting software, Diligent brand",
+   "read": {
+    "verdict": "vendor",
+    "why": "Board meeting software, Diligent brand",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Botvin LifeSkills Training",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Prevention curriculum and training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Prevention curriculum and training provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Brock USA",
@@ -79,55 +163,123 @@
   },
   {
    "name": "Bus Gates, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Physical school bus safety product maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Physical school bus safety product maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "BuyBoard",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cooperative purchasing program, not a product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cooperative purchasing program, not a product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Carpenters International Training Fund",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Union training fund, education provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Union training fund, education provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Carthage Bridge Builders",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Construction/education program organisation, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Construction/education program organisation, no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
-   "name": "Champions\u00ae Before- and After-School Programs",
-   "website": null
-  },
-  {
-   "name": "Change Password",
-   "website": null
+   "name": "Champions® Before- and After-School Programs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Before/after-school childcare services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Before/after-school childcare services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Chartwells K12",
-   "website": null
-  },
-  {
-   "name": "Check My Calendar",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "School food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Church &amp; Dwight",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consumer goods manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consumer goods manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Clinic to Classroom Consulting, LLC.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm, no product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm, no product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Cora Alert by Codepoint Technologies",
-   "website": null
-  },
-  {
-   "name": "Data Usage and Privacy Policy",
-   "website": "https://a2zevents.zendesk.com/hc/en-us/articles/14736239343373-Data-Usage-and-Privacy-Policy"
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School emergency alert system by Codepoint Technologies",
+   "read": {
+    "verdict": "vendor",
+    "why": "School emergency alert system by Codepoint Technologies",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "DEA - Drug Enforcement Administration",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federal government agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federal government agency",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Durham School Services",
@@ -135,11 +287,27 @@
   },
   {
    "name": "eKadence learning foundation",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Learning foundation, nonprofit; no clear product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Learning foundation, nonprofit; no clear product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Elior School Dining",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School dining food service",
+   "read": {
+    "verdict": "supplier",
+    "why": "School dining food service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Erlab, Inc.",
@@ -147,7 +315,15 @@
   },
   {
    "name": "ESS",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: K-12 staffing services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "K-12 staffing services firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "EverDriven",
@@ -158,72 +334,144 @@
    "website": null
   },
   {
-   "name": "Exhibitor List",
-   "website": null
-  },
-  {
    "name": "Facilitron",
    "website": null
   },
   {
    "name": "Farmer's Fridge",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fresh food vending, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fresh food vending, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Federal Motor Carrier Safety Administration",
    "website": null
   },
   {
-   "name": "FieldTurf \u2013 Beynon Sports \u2013 Tarkett Sports",
-   "website": null
+   "name": "FieldTurf – Beynon Sports – Tarkett Sports",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sports surfaces and turf, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sports surfaces and turf, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "First Student, Inc. - Cincinnati, OH",
-   "website": null
-  },
-  {
-   "name": "Forgot Password",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student transportation services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student transportation services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Freedom From Religion Foundation",
-   "website": null
-  },
-  {
-   "name": "Fri Apr, 10",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Geneva Jones & Associates, PLLC",
-   "website": null
-  },
-  {
-   "name": "Google Chrome",
-   "website": "https://www.google.com/chrome/browser/"
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Law/consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Law/consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Graduate Surveys by LifeTrack",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Graduate survey and outcomes data product",
+   "read": {
+    "verdict": "vendor",
+    "why": "Graduate survey and outcomes data product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Greenheart International",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: International exchange nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "International exchange nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Growth Mindset Collaborative",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Education training/consulting collaborative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Education training/consulting collaborative",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Guardian by Campus Kaizen",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School safety software from Campus Kaizen",
+   "read": {
+    "verdict": "vendor",
+    "why": "School safety software from Campus Kaizen",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "HES Facilities Management",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Facilities management services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Facilities management services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "HeyTutor",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tutoring services provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tutoring services provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "HID",
@@ -239,15 +487,38 @@
   },
   {
    "name": "HQIQ",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Opaque acronym, cannot tell offering",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "HYA",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Superintendent search consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Superintendent search consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Ignite Reading",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Virtual tutoring service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Virtual tutoring service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Interkal, LLC",
@@ -255,15 +526,27 @@
   },
   {
    "name": "International Training Institute",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade training institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade training institute",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Kiddom",
-   "website": null
-  },
-  {
-   "name": "Legend",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: K-12 curriculum platform software",
+   "read": {
+    "verdict": "vendor",
+    "why": "K-12 curriculum platform software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Linebarger Attorneys at Law",
@@ -271,151 +554,330 @@
   },
   {
    "name": "Local 142 Plumbers & Pipefitters union",
-   "website": null
-  },
-  {
-   "name": "Login using Email and Password",
-   "website": null
-  },
-  {
-   "name": "Logout",
-   "website": null
-  },
-  {
-   "name": "Main Map",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Trade union",
+   "read": {
+    "verdict": "supplier",
+    "why": "Trade union",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "MASBA-School Board Members for Latino Equity",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School board members association",
+   "read": {
+    "verdict": "supplier",
+    "why": "School board members association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "McPherson & Jacobson LLC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Superintendent search consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Superintendent search consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Mind Sync",
-   "website": null
-  },
-  {
-   "name": "Mozilla Firefox",
-   "website": "https://www.mozilla.org/en-US/firefox/new/"
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Ambiguous name, could be wellness service or software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "National Education Association",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Teachers union / association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Teachers union / association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "National Recreation Systems",
    "website": null
   },
   {
-   "name": "National School Boards Association",
-   "website": null
-  },
-  {
    "name": "National School Public Relations Association",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association for school PR staff",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association for school PR staff",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Navajo Jewelry and Crafts",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Jewelry and crafts seller, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Jewelry and crafts seller, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Naylor Wentworth Lund Architects",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "NECA IBEW Powering America",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical union and contractors' labor-management partnership",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical union and contractors' labor-management partnership",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "New Profile",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Plausible company; no clear product signal from name",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Nook Wellness Pods",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Physical wellness pods, furniture-like goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Physical wellness pods, furniture-like goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "OMNI",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare ambiguous brand name; cannot tell offering",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Operation Parent",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Parent-education nonprofit program",
+   "read": {
+    "verdict": "supplier",
+    "why": "Parent-education nonprofit program",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Palmer Hamilton LLC",
-   "website": null
-  },
-  {
-   "name": "Personalized Planner Please login to download Show Guide",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School furniture maker or firm, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "School furniture maker or firm, no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "PerVista",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Plausible company; name gives no clear offering",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Philips Heartstream",
    "website": null
   },
   {
-   "name": "Print",
-   "website": null
-  },
-  {
    "name": "Proximity Learning",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Virtual teacher staffing service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Virtual teacher staffing service",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "PTMA Financial Solutions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Financial advisory services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Financial advisory services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Reportwell",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Report-writing software for school staff",
+   "read": {
+    "verdict": "vendor",
+    "why": "Report-writing software for school staff",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Rexel USA",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electrical supplies distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electrical supplies distributor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Right At School",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Before and after school care provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Before and after school care provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "RTI International",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit research institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit research institute",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Safe Haven Defense US",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School security physical products",
+   "read": {
+    "verdict": "supplier",
+    "why": "School security physical products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "SafeEvac",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Plausible safety company; product type unclear",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "Safety-Care by QBS",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Crisis prevention training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crisis prevention training provider",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Sandy Hook Promise",
-   "website": null
-  },
-  {
-   "name": "Sat Apr, 11",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit school safety advocacy organization",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit school safety advocacy organization",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "School Safety Solution",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Generic safety firm name, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Generic safety firm name, no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "School Social Work Association of America (SSWAA)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Social News Desk",
@@ -423,19 +885,51 @@
   },
   {
    "name": "Society for Public Health Education",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Sodexo",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food and facilities services company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food and facilities services company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Sparq Data Solutions, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: K-12 data integration and analytics solutions",
+   "read": {
+    "verdict": "vendor",
+    "why": "K-12 data integration and analytics solutions",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Spectraturf",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Synthetic flooring and turf surfaces",
+   "read": {
+    "verdict": "supplier",
+    "why": "Synthetic flooring and turf surfaces",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Sprinturf LLC",
@@ -443,15 +937,27 @@
   },
   {
    "name": "Strong Mind Performance INC",
-   "website": null
-  },
-  {
-   "name": "Sun Apr, 12",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Coaching or performance training services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Coaching or performance training services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Televic Conference US",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Conference and voting systems for council chambers",
+   "read": {
+    "verdict": "vendor",
+    "why": "Conference and voting systems for council chambers",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "TenCate Americas",
@@ -463,29 +969,55 @@
   },
   {
    "name": "UltraFill",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely physical product, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely physical product, no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "UnitedHealthcare",
-   "website": null
-  },
-  {
-   "name": "Upgrade Internet Explorer",
-   "website": "http://windows.microsoft.com/en-us/internet-explorer/download-ie"
-  },
-  {
-   "name": "Welcome,",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Health insurance carrier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Health insurance carrier",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Win Elements LLC",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plausible company; no tech product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plausible company; no tech product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Yondr Phone-Free Schools",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Phone-locking pouches, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Phone-locking pouches, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   }
  ],
  "why": null,
- "quality": "menu"
+ "quality": "read",
+ "read_dropped": 20,
+ "quality_was": "menu"
 }

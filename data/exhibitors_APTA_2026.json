@@ -14,16 +14,27 @@
    "website": null
   },
   {
-   "name": "2029 Updates",
-   "website": "https://www.surveymonkey.com/r/D9C38GZ"
-  },
-  {
    "name": "360 Photo Booth by Transit Technologies",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (Sponsored activation; Transit Technologies is transit software); skeptic not_a_company (Sponsorship activation string; the company itself is Transit Technologies)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "42Gears Mobility Systems",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Mobile device management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Mobile device management software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "A Customer's Point of View, Inc.",
@@ -40,10 +51,6 @@
   {
    "name": "Acapela Group",
    "website": null
-  },
-  {
-   "name": "Accessibility Features",
-   "website": "https://www.aptaexpo.com/accessibility.cfm"
   },
   {
    "name": "Acorn Wire & Iron Works LLC",
@@ -67,7 +74,15 @@
   },
   {
    "name": "Adako USA",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transit vehicle components manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transit vehicle components manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Adams & Westlake, Ltd.",
@@ -114,12 +129,16 @@
    "website": null
   },
   {
-   "name": "Affiliate Meetings & Events",
-   "website": "https://www.aptaexpo.com/icw.cfm"
-  },
-  {
    "name": "Airvac, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Vacuum sewer systems, physical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Vacuum sewer systems, physical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "ALESIG Consulting LLC",
@@ -159,7 +178,15 @@
   },
   {
    "name": "American Traction Solutions",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Rail traction and propulsion equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Rail traction and propulsion equipment",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "AMF- Bruns of America LP",
@@ -210,10 +237,6 @@
    "website": null
   },
   {
-   "name": "APTA Hot Topics Learning Zone",
-   "website": null
-  },
-  {
    "name": "APTA Innovation Learning Zone",
    "website": null
   },
@@ -231,11 +254,26 @@
   },
   {
    "name": "Aptiv",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Automotive components and electrical systems maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Automotive components and electrical systems maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "ARGO",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Ambiguous brand name, no context",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "ARI-hetra",
@@ -260,14 +298,6 @@
   {
    "name": "Atkore",
    "website": null
-  },
-  {
-   "name": "Attend",
-   "website": null
-  },
-  {
-   "name": "Attendee Resources",
-   "website": "https://www.aptaexpo.com/attendee resources.cfm"
   },
   {
    "name": "Aurionpro",
@@ -303,10 +333,6 @@
   },
   {
    "name": "Axon Vibe Inc",
-   "website": null
-  },
-  {
-   "name": "Back to Top",
    "website": null
   },
   {
@@ -360,10 +386,6 @@
   {
    "name": "Benteler/ioki",
    "website": null
-  },
-  {
-   "name": "Beware of Scams",
-   "website": "https://www.aptaexpo.com/beware_scams.cfm"
   },
   {
    "name": "Bitimec Wash-Bots Inc.",
@@ -442,10 +464,6 @@
    "website": null
   },
   {
-   "name": "Business to Business Networking Breakfast",
-   "website": "https://www.apta.com/breakfast"
-  },
-  {
    "name": "Busline.",
    "website": null
   },
@@ -519,7 +537,15 @@
   },
   {
    "name": "Certarus",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Natural gas fuel delivery, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Natural gas fuel delivery, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Cetest",
@@ -543,7 +569,15 @@
   },
   {
    "name": "Chicago Transit Authority",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public transit agency, government entity",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public transit agency, government entity",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Citiri, Inc.",
@@ -598,20 +632,8 @@
    "website": null
   },
   {
-   "name": "Code of Conduct for APTA Events",
-   "website": "https://www.aptaexpo.com/code.cfm"
-  },
-  {
    "name": "Cojali USA",
    "website": null
-  },
-  {
-   "name": "College & Early Career Professionals",
-   "website": "https://www.aptaexpo.com/earlycareerprofessionals.cfm"
-  },
-  {
-   "name": "Committee Meetings",
-   "website": "https://www.aptaexpo.com/committeemeetingsredirect.cfm"
   },
   {
    "name": "Common Pixels",
@@ -628,14 +650,6 @@
   {
    "name": "Compliant Technologies",
    "website": null
-  },
-  {
-   "name": "Conference Program",
-   "website": "https://www.aptaexpo.com/fullprogram.cfm"
-  },
-  {
-   "name": "Connect with Our Media Partners",
-   "website": "https://www.aptaexpo.com/mediapartners.cfm"
   },
   {
    "name": "Connectpoint, Inc.",
@@ -767,7 +781,14 @@
   },
   {
    "name": "E-Trac Solutions, LLC",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name gives no clear offering signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "EAO Corporation",
@@ -815,7 +836,15 @@
   },
   {
    "name": "Enertech International Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Name suggests energy or equipment, no tech signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Name suggests energy or equipment, no tech signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Enfasco, Inc.",
@@ -859,31 +888,15 @@
   },
   {
    "name": "Executive Coach Builders, Inc.",
-   "website": null
-  },
-  {
-   "name": "Exhibit & Sponsor",
-   "website": null
-  },
-  {
-   "name": "Exhibit Floor Plan",
-   "website": "https://www.aptaexpo.com/exhibitor_exhibit_map.cfm"
-  },
-  {
-   "name": "Exhibit in 2029",
-   "website": "https://aptaexpo.com/documents/APTAEXPO29_ExhibitSalesSheet9_9.pdf"
-  },
-  {
-   "name": "Exhibitor List",
-   "website": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm"
-  },
-  {
-   "name": "EXPO Floor Features",
-   "website": "https://www.aptaexpo.com/EXPOfloorfeatures.cfm"
-  },
-  {
-   "name": "EXPO Program",
-   "website": "https://www.aptaexpo.com/expo_fullprogram.cfm"
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Shuttle bus and vehicle builder",
+   "read": {
+    "verdict": "supplier",
+    "why": "Shuttle bus and vehicle builder",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Express Systems & Peripherals",
@@ -892,10 +905,6 @@
   {
    "name": "FAAC Incorporated",
    "website": null
-  },
-  {
-   "name": "Featured Speakers",
-   "website": "https://www.aptaexpo.com/speakers.cfm"
   },
   {
    "name": "Feig Electronic GmbH",
@@ -923,7 +932,15 @@
   },
   {
    "name": "Flairsoft",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Software firm name; transit software offerings",
+   "read": {
+    "verdict": "vendor",
+    "why": "Software firm name; transit software offerings",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Flatiron Dragados",
@@ -960,10 +977,6 @@
   {
    "name": "Fuji SEMEC Inc.",
    "website": null
-  },
-  {
-   "name": "Future Meetings",
-   "website": "https://www.apta.com/events/future-events/"
   },
   {
    "name": "Future Systems Inc.",
@@ -1035,7 +1048,15 @@
   },
   {
    "name": "Good Tool",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plausible tool maker; no technology product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plausible tool maker; no technology product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Graffiti Shield, Inc.",
@@ -1099,7 +1120,15 @@
   },
   {
    "name": "Highness Microelectronics Limited",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electronic component maker, not a govtech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electronic component maker, not a govtech product",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Hill International, Inc.",
@@ -1107,7 +1136,15 @@
   },
   {
    "name": "Hitachi",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Conglomerate; at APTA mainly rail vehicles and signalling",
+   "read": {
+    "verdict": "supplier",
+    "why": "Conglomerate; at APTA mainly rail vehicles and signalling",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Hitachi Rail",
@@ -1115,15 +1152,19 @@
   },
   {
    "name": "Holland",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely Holland LP, rail track services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely Holland LP, rail track services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Hoppecke Batteries, Inc.",
    "website": null
-  },
-  {
-   "name": "Host Tours",
-   "website": "https://www.aptaexpo.com/tours.cfm"
   },
   {
    "name": "HSM Transportation",
@@ -1210,10 +1251,6 @@
    "website": null
   },
   {
-   "name": "Innovation Summit",
-   "website": "https://www.aptaexpo.com/innovation_summit.cfm"
-  },
-  {
    "name": "Insperial",
    "website": null
   },
@@ -1239,7 +1276,14 @@
   },
   {
    "name": "IP Displays, LLC",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "split: reader vendor (Transit passenger information displays with software); skeptic unsure (Mainly makes transit display signs; software may be secondary)",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "IRIS Inc. NA",
@@ -1287,7 +1331,15 @@
   },
   {
    "name": "Jericho Palm Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Real company name; no technology product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Real company name; no technology product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Jewell Instruments",
@@ -1311,7 +1363,15 @@
   },
   {
    "name": "Kept Companies",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Transit products company; no technology product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Transit products company; no technology product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Khrome",
@@ -1384,10 +1444,6 @@
   {
    "name": "Lea + Elliott Inc.",
    "website": null
-  },
-  {
-   "name": "Learning Zones",
-   "website": "https://www.aptaexpo.com/learning zones.cfm"
   },
   {
    "name": "LECIP Inc.",
@@ -1546,10 +1602,6 @@
    "website": null
   },
   {
-   "name": "Media Resources",
-   "website": "https://www.aptaexpo.com/mediaresources.cfm"
-  },
-  {
    "name": "Merak",
    "website": null
   },
@@ -1567,7 +1619,15 @@
   },
   {
    "name": "Metra",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chicago commuter rail agency, government",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chicago commuter rail agency, government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Metro Magazine",
@@ -1707,7 +1767,15 @@
   },
   {
    "name": "NaviLens",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Accessible wayfinding codes and smartphone app",
+   "read": {
+    "verdict": "vendor",
+    "why": "Accessible wayfinding codes and smartphone app",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Neopart Transit LLC",
@@ -1734,12 +1802,20 @@
    "website": null
   },
   {
-   "name": "No-Spill\u2122 Systems",
+   "name": "No-Spill™ Systems",
    "website": null
   },
   {
    "name": "Nomad Digital Ltd.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Onboard rail connectivity and digital systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "Onboard rail connectivity and digital systems",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Nord-Lock",
@@ -1755,7 +1831,15 @@
   },
   {
    "name": "Northern Illinois Transit Authority (NITA)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Government transit authority",
+   "read": {
+    "verdict": "supplier",
+    "why": "Government transit authority",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Nova Bus",
@@ -1791,7 +1875,15 @@
   },
   {
    "name": "ONE (Our next energy)",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Battery maker, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Battery maker, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "OnRails",
@@ -1839,7 +1931,15 @@
   },
   {
    "name": "Pace Suburban Bus",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Suburban transit agency, government",
+   "read": {
+    "verdict": "supplier",
+    "why": "Suburban transit agency, government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Papercast",
@@ -1859,7 +1959,15 @@
   },
   {
    "name": "Payment in Motion Inc",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Transit fare payment technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "Transit fare payment technology",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "PCTEL, Inc.",
@@ -1891,7 +1999,15 @@
   },
   {
    "name": "Pioneer eMobility-e-Boost",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mobile EV charging equipment, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mobile EV charging equipment, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Piper Networks",
@@ -1907,7 +2023,15 @@
   },
   {
    "name": "Plastitel Group",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plastic interior parts manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plastic interior parts manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Polymer Technologies",
@@ -1946,20 +2070,8 @@
    "website": null
   },
   {
-   "name": "Press Releases",
-   "website": "https://www.aptaexpo.com/press_releases.cfm"
-  },
-  {
-   "name": "Print",
-   "website": null
-  },
-  {
    "name": "Pro-Flex Inc.",
    "website": null
-  },
-  {
-   "name": "Procurement Summit",
-   "website": "https://www.aptaexpo.com/procurement_summit.cfm"
   },
   {
    "name": "Prodata PTexcellence LLC",
@@ -2035,7 +2147,15 @@
   },
   {
    "name": "RailPod, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Robotic rail inspection devices with data software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Robotic rail inspection devices with data software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "RAM Mounts",
@@ -2047,15 +2167,19 @@
   },
   {
    "name": "Red Fox Resources",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting or staffing name; no product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting or staffing name; no product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Redstone Technologies LLC",
    "website": null
-  },
-  {
-   "name": "Reg Service Center",
-   "website": "https://www.aptaexpo.com/login.cfm"
   },
   {
    "name": "REI",
@@ -2067,7 +2191,14 @@
   },
   {
    "name": "Ride",
-   "website": null
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Single word; could be company or nav text",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
   },
   {
    "name": "RideCo Inc.",
@@ -2119,7 +2250,15 @@
   },
   {
    "name": "Routeward & Novvan",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Transit planning and analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Transit planning and analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Roxtec",
@@ -2191,7 +2330,15 @@
   },
   {
    "name": "Scout Robotics",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Robotics devices with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Robotics devices with software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Seal & Design",
@@ -2215,7 +2362,15 @@
   },
   {
    "name": "SENER Engineering and Systems, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Engineering firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Engineering firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "SENOPLAST USA",
@@ -2306,20 +2461,32 @@
    "website": null
   },
   {
-   "name": "Social Media Toolkit",
-   "website": "https://socialpresskit.com/apta"
-  },
-  {
    "name": "SOGECLAIR SIMULATION - OKTAL SYDAC",
    "website": null
   },
   {
    "name": "SONDA USA Inc",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IT firm selling transit fare collection systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "IT firm selling transit fare collection systems",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Sovereign Hydroseal",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Waterproofing and sealing products",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waterproofing and sealing products",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "SpaceAge Synthetics, Ltd.",
@@ -2455,7 +2622,15 @@
   },
   {
    "name": "Throughput Inc",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI supply-chain analytics software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI supply-chain analytics software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Tmoney",
@@ -2490,10 +2665,6 @@
    "website": null
   },
   {
-   "name": "TRANSform",
-   "website": null
-  },
-  {
    "name": "Transify",
    "website": null
   },
@@ -2506,12 +2677,16 @@
    "website": null
   },
   {
-   "name": "Transit Board Administrators Development Day",
-   "website": "https://www.aptaexpo.com/TBAday.cfm"
-  },
-  {
    "name": "Transit Marketing Group",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Marketing agency services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Marketing agency services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Transit RE",
@@ -2531,7 +2706,15 @@
   },
   {
    "name": "TransitCheck",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely commuter benefits program; no product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely commuter benefits program; no product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "TransLoc Inc",
@@ -2547,7 +2730,15 @@
   },
   {
    "name": "Trapeze Software Group Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Transit scheduling and operations software maker",
+   "read": {
+    "verdict": "vendor",
+    "why": "Transit scheduling and operations software maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Treelight BV",
@@ -2723,15 +2914,19 @@
   },
   {
    "name": "Waynova Group",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plausible company; name gives no technology-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plausible company; name gives no technology-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "WaySine LLC",
    "website": null
-  },
-  {
-   "name": "We All Belong",
-   "website": "https://www.aptaexpo.com/weallbelong.cfm"
   },
   {
    "name": "Webb Wheel Products",
@@ -2794,10 +2989,6 @@
    "website": null
   },
   {
-   "name": "www.apta.com",
-   "website": "https://www.apta.com/"
-  },
-  {
    "name": "Xcalliber",
    "website": null
   },
@@ -2811,7 +3002,15 @@
   },
   {
    "name": "Xos, Inc",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electric commercial vehicle manufacturer, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electric commercial vehicle manufacturer, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Xovis Germany GmbH",
@@ -2823,11 +3022,27 @@
   },
   {
    "name": "ZED Digital",
-   "website": null
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Transit digital signage and passenger information displays",
+   "read": {
+    "verdict": "vendor",
+    "why": "Transit digital signage and passenger information displays",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "Zenobe Americas, Inc.",
-   "website": null
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Battery storage and fleet electrification financing, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "Battery storage and fleet electrification financing, not software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
   },
   {
    "name": "ZF CV Systems North America LLC",
@@ -2847,5 +3062,7 @@
   }
  ],
  "why": null,
- "quality": "good"
+ "quality": "read",
+ "read_dropped": 35,
+ "quality_was": "good"
 }

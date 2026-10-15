@@ -1,0 +1,257 @@
+{
+ "event_tag": "ICMA 2026",
+ "conference": "ICMA Annual",
+ "found": true,
+ "source_url": "https://icma2026.smallworldlabs.com/exhibitors",
+ "source_note": "Read from https://icma2026.smallworldlabs.com/exhibitors by scripts/sweep_exhibitors.py. 43 name(s), 1 with a website the page itself linked. Quality: good (35% carry a corporate marker, 0% name a site section, 5% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "3CMA",
+   "website": null
+  },
+  {
+   "name": "65th North Group, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: LLC with no technology-product signal in name",
+   "read": {
+    "verdict": "supplier",
+    "why": "LLC with no technology-product signal in name",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Accela, Inc",
+   "website": null
+  },
+  {
+   "name": "AchieveIt",
+   "website": null
+  },
+  {
+   "name": "ACTIVE",
+   "website": null
+  },
+  {
+   "name": "Affion Public",
+   "website": null
+  },
+  {
+   "name": "Airbnb",
+   "website": null
+  },
+  {
+   "name": "Alta Grid",
+   "website": null
+  },
+  {
+   "name": "Ameresco, Inc.",
+   "website": null
+  },
+  {
+   "name": "American Association of Insurance Services (AAIS)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance advisory organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance advisory organisation",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "American Golf Corporation",
+   "website": null
+  },
+  {
+   "name": "Apptegy",
+   "website": null
+  },
+  {
+   "name": "Archistar",
+   "website": null
+  },
+  {
+   "name": "Architects Design Group",
+   "website": null
+  },
+  {
+   "name": "Aurigo Software",
+   "website": null
+  },
+  {
+   "name": "Avive Solutions",
+   "website": null
+  },
+  {
+   "name": "Avolve",
+   "website": null
+  },
+  {
+   "name": "Avèro Advisors",
+   "website": null
+  },
+  {
+   "name": "Baker Tilly",
+   "website": null
+  },
+  {
+   "name": "Beacon Bid",
+   "website": null
+  },
+  {
+   "name": "BerryDunn",
+   "website": null
+  },
+  {
+   "name": "BeWith - Community Calendar",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Community calendar software for local governments",
+   "read": {
+    "verdict": "vendor",
+    "why": "Community calendar software for local governments",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Blitz AI",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI software product exhibiting to local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI software product exhibiting to local government",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bloom Housing",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Affordable housing listing and application platform for cities",
+   "read": {
+    "verdict": "vendor",
+    "why": "Affordable housing listing and application platform for cities",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bolton",
+   "website": null
+  },
+  {
+   "name": "Bolton & Menk, Inc.",
+   "website": null
+  },
+  {
+   "name": "Brain Co.",
+   "website": null
+  },
+  {
+   "name": "BS&A Software",
+   "website": null
+  },
+  {
+   "name": "Budderfly",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Energy-efficiency services company, not government software",
+   "read": {
+    "verdict": "supplier",
+    "why": "Energy-efficiency services company, not government software",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "BYU-Romney Institute",
+   "website": null
+  },
+  {
+   "name": "CALEA",
+   "website": null
+  },
+  {
+   "name": "Canibuild",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Site-planning and permitting software used by councils",
+   "read": {
+    "verdict": "vendor",
+    "why": "Site-planning and permitting software used by councils",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Capital Strategic Solutions, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting LLC with no product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting LLC with no product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Carrot Fertility, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fertility benefits provider for employers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fertility benefits provider for employers",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Caselle Inc",
+   "website": null
+  },
+  {
+   "name": "Catalis",
+   "website": null
+  },
+  {
+   "name": "Center for Advanced Preparedness & Threat Response Simulation (CAPTRS)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Preparedness simulation and training center",
+   "read": {
+    "verdict": "supplier",
+    "why": "Preparedness simulation and training center",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Center for Public Safety Management",
+   "website": null
+  },
+  {
+   "name": "CGI Digital/HelloNation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Community video and media publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Community video and media publisher",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 4,
+ "quality_was": "good"
+}

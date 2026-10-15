@@ -1,0 +1,10 @@
+{
+ "event_tag": "Government Fleet Expo 2027",
+ "conference": "Government Fleet Expo",
+ "found": false,
+ "source_url": "https://www.governmentfleetexpo.com/exhibitors",
+ "source_note": "Read from https://www.governmentfleetexpo.com/exhibitors by scripts/sweep_exhibitors.py. 21 name(s), 9 with a website the page itself linked. Quality: menu (14% carry a corporate marker, 0% name a site section, 14% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [],
+ "why": "reader: every one of the 21 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 21
+}

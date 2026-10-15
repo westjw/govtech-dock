@@ -1,0 +1,420 @@
+{
+ "event_tag": "WasteExpo 2027",
+ "conference": "WasteExpo",
+ "found": true,
+ "source_url": "https://wasteexpo2027.smallworldlabs.com/exhibitors",
+ "source_note": "Read from https://wasteexpo2027.smallworldlabs.com/exhibitors by scripts/sweep_exhibitors.py. 40 name(s), 1 with a website the page itself linked. Quality: good (40% carry a corporate marker, 0% name a site section, 5% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "3rd Eye",
+   "website": null
+  },
+  {
+   "name": "AaquaTools, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Waste-site equipment maker, no software signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Waste-site equipment maker, no software signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Accent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Name gives no tech signal; likely baling wire supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Name gives no tech signal; likely baling wire supplier",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Ace Equipment Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment dealer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Acrisure Insurance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance brokerage",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance brokerage",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Action Vibratory Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial vibratory equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial vibratory equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Advance Tire Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tire distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tire distributor",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Advantage Construction Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Construction equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Construction equipment dealer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AEI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Acronym company, no technology-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Acronym company, no technology-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Air and Water Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air and water equipment, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air and water equipment, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AIR-WEIGH",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Onboard truck scales, vehicle component maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Onboard truck scales, vehicle component maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Aljon by C&C Manufacturing LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Compactor and baler manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Compactor and baler manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Alpine Shredding Trucks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Shredding truck maker, physical vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "Shredding truck maker, physical vehicles",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Always on Top Marketing Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Marketing services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Marketing services firm",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Amandus Kahl",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial pelleting machinery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial pelleting machinery maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AMCS Group",
+   "website": null
+  },
+  {
+   "name": "Amerex Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fire extinguisher and suppression manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fire extinguisher and suppression manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "American Scale Co Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Industrial scale company, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Industrial scale company, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AMP",
+   "website": null
+  },
+  {
+   "name": "Ampliroll Hooklifts - Marrel Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hooklift truck equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hooklift truck equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AP Equipment Financing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Equipment financing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment financing services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "APERIA TECHNOLOGIES, INC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Truck tire inflation hardware for commercial fleets",
+   "read": {
+    "verdict": "supplier",
+    "why": "Truck tire inflation hardware for commercial fleets",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Archaea Energy, a bp Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Renewable natural gas energy company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Renewable natural gas energy company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ARI-HETRA",
+   "website": null
+  },
+  {
+   "name": "Arkon Mounts",
+   "website": null
+  },
+  {
+   "name": "Ascentium Capital",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Equipment financing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment financing services",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Atmos Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Odor control systems, physical equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "Odor control systems, physical equipment",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "ATRO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Short name, plausibly an equipment company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Short name, plausibly an equipment company",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "AUTOCAR Trucks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Refuse truck manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Refuse truck manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "B-TEK Scales",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Scale manufacturer, physical goods",
+   "read": {
+    "verdict": "supplier",
+    "why": "Scale manufacturer, physical goods",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Balemaster",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Baler manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Baler manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bandit Industries, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chipper and grinder machinery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chipper and grinder machinery maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Basestation",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Name hints communications tech; cannot tell offering",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "BATTLE MOTORS",
+   "website": null
+  },
+  {
+   "name": "Bayne",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Refuse cart lift systems maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Refuse cart lift systems maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Bektra Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Name gives no technology-product signal",
+   "read": {
+    "verdict": "supplier",
+    "why": "Name gives no technology-product signal",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "BENLEE",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Roll-off trailer and container maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Roll-off trailer and container maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  },
+  {
+   "name": "Binder + Co USA, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sorting and screening machinery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sorting and screening machinery maker",
+    "by": "agent:reader",
+    "on": "2026-10-15"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 2,
+ "quality_was": "good"
+}

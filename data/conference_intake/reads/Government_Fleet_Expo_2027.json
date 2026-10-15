@@ -1,0 +1,141 @@
+[
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Advisory Board",
+  "verdict": "not_a_company",
+  "why": "Host's advisory board page, navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Attend",
+  "verdict": "not_a_company",
+  "why": "Site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Block Party & Experience",
+  "verdict": "not_a_company",
+  "why": "Programme item, social event",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Contact Sales",
+  "verdict": "not_a_company",
+  "why": "Host sales contact link, navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Do Not Sell or Share My Personal Information",
+  "verdict": "not_a_company",
+  "why": "Privacy footer link, site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Exhibit & Sponsor",
+  "verdict": "not_a_company",
+  "why": "Exhibit and sponsor menu heading",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Exhibit at GFX",
+  "verdict": "not_a_company",
+  "why": "Exhibitor sales page link, navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "First Timers",
+  "verdict": "not_a_company",
+  "why": "Attendee guidance page, site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Gallery",
+  "verdict": "not_a_company",
+  "why": "Photo gallery link, site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Government Fleet ↗",
+  "verdict": "not_a_company",
+  "why": "override: the organiser's own publication, linked in the site header - not an exhibitor (reader: Trade publication brand, host's own media, not vendor)",
+  "disputed": "supplier",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Hotel & Travel",
+  "verdict": "not_a_company",
+  "why": "Attendee logistics page, site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Opportunities",
+  "verdict": "not_a_company",
+  "why": "Site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Police Magazine ↗",
+  "verdict": "not_a_company",
+  "why": "override: the organiser's own publication, linked in the site header - not an exhibitor (reader: Trade magazine; host publisher's sister media brand)",
+  "disputed": "supplier",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Recap Videos",
+  "verdict": "not_a_company",
+  "why": "Site navigation link to event videos",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Registration Opening Soon",
+  "verdict": "not_a_company",
+  "why": "Registration status notice, not an organisation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Work Truck Magazine ↗",
+  "verdict": "not_a_company",
+  "why": "override: the organiser's own publication, linked in the site header - not an exhibitor (reader: Trade magazine; host publisher's sister media brand)",
+  "disputed": "supplier",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_Government_Fleet_Expo_2027.json",
+  "name": "Metro Magazine ↗",
+  "verdict": "not_a_company",
+  "why": "override: the organiser's own publication, linked in the site header - not an exhibitor (left out of the brief as a name already on file)",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ }
+]

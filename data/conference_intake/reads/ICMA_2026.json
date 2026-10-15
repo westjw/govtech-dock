@@ -1,0 +1,123 @@
+[
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "65th North Group, LLC",
+  "verdict": "supplier",
+  "why": "LLC with no technology-product signal in name",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "A2Z Events",
+  "verdict": "not_a_company",
+  "why": "override: the floor-plan platform's own credit line - not an exhibitor (reader: Event-management platform, likely floor-plan credit; not govtech)",
+  "disputed": "supplier",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "American Association of Insurance Services (AAIS)",
+  "verdict": "supplier",
+  "why": "Insurance advisory organisation",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "BeWith - Community Calendar",
+  "verdict": "vendor",
+  "why": "Community calendar software for local governments",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Blitz AI",
+  "verdict": "vendor",
+  "why": "AI software product exhibiting to local government",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Bloom Housing",
+  "verdict": "vendor",
+  "why": "Affordable housing listing and application platform for cities",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Booth Reservation",
+  "verdict": "not_a_company",
+  "why": "Booth logistics link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Budderfly",
+  "verdict": "supplier",
+  "why": "Energy-efficiency services company, not government software",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Canibuild",
+  "verdict": "vendor",
+  "why": "Site-planning and permitting software used by councils",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Capital Strategic Solutions, LLC",
+  "verdict": "supplier",
+  "why": "Consulting LLC with no product signal",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Carrot Fertility, Inc.",
+  "verdict": "supplier",
+  "why": "Fertility benefits provider for employers",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Center for Advanced Preparedness & Threat Response Simulation (CAPTRS)",
+  "verdict": "supplier",
+  "why": "Preparedness simulation and training center",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "CGI Digital/HelloNation",
+  "verdict": "supplier",
+  "why": "Community video and media publisher",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "EXHIBIT INFO",
+  "verdict": "not_a_company",
+  "why": "Exhibit information page link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ICMA_2026.json",
+  "name": "Exhibitor Hub",
+  "verdict": "not_a_company",
+  "why": "Exhibitor portal navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-15"
+ }
+]
