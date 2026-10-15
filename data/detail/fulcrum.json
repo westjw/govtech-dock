@@ -28,8 +28,8 @@
    "url": "https://www.fulcrumapp.com/blog/fulcrum-and-overstory-partnership/"
   },
   {
-   "date": "2026-09-15",
-   "date_source": "index-text",
+   "date": "2026-09-29",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Overstory and Fulcrum Partner to Deliver Closed-Loop Risk Reduction for Utilities",
    "kind": "press",
@@ -46,8 +46,8 @@
    "url": "https://www.fulcrumapp.com/blog/fulcrum-mcp-connector-ai-toolkit/"
   },
   {
-   "date": "2026-09-02",
-   "date_source": "index-text",
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fulcrum Announces MCP & AI Toolkit That Let Field Teams Create Fully-Featured, End-to-End Digital Workflows Through AI",
    "kind": "press",
@@ -62,6 +62,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/woolpert-and-fulcrum-partnership-for-vegetation-risk-management/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fulcrum and Woolpert Connect Utility Vegetation Risk Data Straight to the Crews Who Act on It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-woolpert-partnership/"
   },
   {
    "date": "2026-08-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/lead-service-line-inventory-and-lcrr-compliance/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Wildnote teams: Your field data shouldn\u2019t wait for a handoff",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/fulcrum-workflow-automations-the-handoff-that-runs-itself/"
   }
  ],
  "profile": {

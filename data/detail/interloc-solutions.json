@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "MAS Deployment Series: How to Better Load Balance OpenShift Nodes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/mas-deployment-series-automating-a-workaround-for-fips-140-2-sunset-on-mas-installations"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "index-text",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-2-of-3-installing-and-populating-registries"
-  },
-  {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Pre-requisites to mirroring the RedHat OCP Images",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-1-of-3-preparation-and-initial-installation"
   }
  ],
  "profile": {

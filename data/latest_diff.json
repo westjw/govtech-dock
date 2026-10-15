@@ -1,69 +1,69 @@
 {
-  "date": "2026-10-14",
-  "previous": "2026-10-13",
+  "date": "2026-10-15",
+  "previous": "2026-10-14",
   "changes": [
     {
-      "company": "VODA.ai",
-      "id": "voda-ai",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "IPS Group",
-      "id": "ips-group",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Regional Account Executive (San Diego, Califor)"
-    },
-    {
-      "company": "Eventeny",
-      "id": "eventeny",
+      "company": "SewerAI",
+      "id": "sewerai",
       "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Account Strategist only"
+      "note": "Revenue Operations Analyst only"
     },
     {
-      "company": "Luminator Technology Group",
-      "id": "luminator-technology-group",
+      "company": "Powerfleet",
+      "id": "powerfleet",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Spare",
+      "id": "spare",
       "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Area Sales Manager - Middle German"
+      "to": "None found",
+      "note": ""
     },
     {
-      "company": "Saltus Technologies",
-      "id": "saltus-technologies",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "network error: robots.txt on saltustechn"
-    },
-    {
-      "company": "Integrated Biometrics",
-      "id": "integrated-biometrics",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "OnSolve (CodeRED)",
-      "id": "onsolve",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Attenti",
-      "id": "attenti",
+      "company": "FLEETWATCH by S & A Systems, Inc.",
+      "id": "fleetwatch-by-s-a-systems-inc",
       "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Survalent Technology",
-      "id": "survalent-technology",
+      "company": "Saltus Technologies",
+      "id": "saltus-technologies",
       "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Regroup Mass Notification",
+      "id": "regroup-mass-notification",
+      "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "note": "Saas Account Executive"
+    },
+    {
+      "company": "Clear Ballot Group",
+      "id": "clear-ballot-group",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "FLASH",
+      "id": "flash",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "CyberNut",
+      "id": "cybernut",
+      "from": "None found",
+      "to": "Yes",
+      "note": "Account Executive - West (United States (Rem)"
     }
   ]
 }

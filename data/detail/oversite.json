@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "AI Quick Entry for Daily Inspections",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.addoversite.com/blog/ai-quick-entry-daily-inspections"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.addoversite.com/blog/custom-forms-export-dot-formatting"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Geo-Located Weather Tracking Weather days tied to the project's exact coordinates, pulled automatically \u2014 so the record reflects conditions at the site, not a city 20 miles away, when a change-order q",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.addoversite.com/blog/geo-located-weather-tracking"
   }
  ],
  "profile": {

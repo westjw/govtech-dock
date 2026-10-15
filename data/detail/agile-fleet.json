@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "How to Prioritize Fleet Software Integrations: A Decision Framework for Shared Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-prioritize-fleet-software-integrations-a-decision-framework-for-shared-fleets"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "How to Build an Audit-Ready Shared Fleet Process for Government Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-to-build-an-audit-ready-shared-fleet-process-for-government-agencies"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/assigned-vehicle-or-shared-motor-pool-how-to-calculate-the-break-even-point"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How Utility Fleets Can Protect Mission-Critical Capacity Without Overbuilding the Fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-utility-fleets-can-protect-mission-critical-capacity-without-overbuilding-the-fleet"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When Should a Shared Fleet Rent Vehicles Instead of Owning More? A Peak-Demand Decision Framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/when-should-a-shared-fleet-rent-vehicles-instead-of-owning-more-a-peak-demand-decision-framework"
   }
  ],
  "profile": {

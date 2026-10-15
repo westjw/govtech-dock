@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "ESO Data Collaborative Powers 12 Abstracts at EMS World Expo and ACEP26 Scientific Assembly",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eso.com/news/press-releases/eso-data-collaborative-powers-12-abstracts-at-ems-world-expo-and-acep26-scientific-assembly/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.eso.com/news/press-releases/eso-acquires-d2i-accelerating-emergency-intelligence-to-drive-performance-and-improve-outcomes-across-fire-ems-and-health-systems/"
-  },
-  {
-   "date": "2025-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 ITDX Data Dictionary",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eso.com/resources/2026-itdx-data-dictionary/"
   }
  ]
 }

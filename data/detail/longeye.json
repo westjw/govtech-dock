@@ -1,12 +1,21 @@
 {
  "news": [
   {
-   "date": "2026-09-14",
+   "date": "2026-10-08",
    "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The September product update \u2192",
+   "first_seen": "2026-10-14",
+   "headline": "The October product update \u2192",
    "kind": "product",
    "kind_rule": "update",
+   "url": "https://www.longeye.com/blog/product-update-oct-2026"
+  },
+  {
+   "date": "2026-09-14",
+   "date_source": "time",
+   "first_seen": "2026-09-28",
+   "headline": "Product Update September Product Update",
+   "kind": "product",
+   "kind_rule": "Update",
    "url": "https://www.longeye.com/blog/product-update-sep-2026"
   },
   {
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.longeye.com/blog/abc7-news-longeye-ai-law-enforcement"
-  },
-  {
-   "date": "2026-03-01",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Product Update Danielle Man \u00b7 March 1, 2026 March Product Update New month, new features. March brings Longeye's biggest update yet - call timelines, massive PDF support, saved chats, thematic search,",
-   "kind": "product",
-   "kind_rule": "Update",
-   "url": "https://www.longeye.com/blog/product-update-mar-2026"
   }
  ],
  "profile": {

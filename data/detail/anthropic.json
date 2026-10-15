@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Anthropic opens Singapore office and signs MOU with the Government of Singapore",
+   "kind": "contract",
+   "kind_rule": "signs MOU",
+   "url": "https://www.anthropic.com/news/singapore-office-opening"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/improving-alignment-security-efforts"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Previewing the Model Hardware Standard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview"
   }
  ],
  "profile": {

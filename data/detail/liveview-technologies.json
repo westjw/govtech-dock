@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Protecting Community Gardens in Provo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/protecting-community-gardens"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/is-this-thing-on-why-the-most-reliable-security-cameras-uptime-all-the-time"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Data Center Security: Why Physical Protection Is Just as Critical as Cybersecurity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/data-center-security-why-physical-protection-is-just-as-critical-as-cybersecurity"
   }
  ],
  "profile": {

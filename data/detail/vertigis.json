@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-09",
    "headline": "Future-Ready Geospatial Data for Berlin: BIM and VertiGIS Lay the Foundation for the Next Generation of Digital Real Estate Management",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-04-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Cloud-first strategy for government: Mainz implements fully cloud-based GDI with VertiGIS and Esri",
    "kind": "contract",

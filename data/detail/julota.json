@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Lift Assist Calls: Two Patients Hiding in One Number",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/lift-assist-calls-two-patients-hiding-in-one-number/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/are-mih-cp-conferences-worth-the-trip/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Starter Guide: First Responder Basic Counseling Skills",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/starter-guide-first-responder-basic-counseling-skills/"
   }
  ],
  "profile": {

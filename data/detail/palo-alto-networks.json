@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "The Blind Spot in Orbit: Why Space Could Be the Next Infrastructure Crisis",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/10/the-blind-spot-in-orbit-why-space-could-be-the-next-infrastructure-crisis/"
+  },
+  {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "NHS England evolves its cybersecurity strategy with Palo Alto Networks and ...",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Driven by Innovation: Our Latest Analyst Wins and Product Momentum in Netwo...",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "The Mango Strategy: A CEO\u2019s Guide to AI Cybersecurity",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "\u201cSASE Gateway\u201d provided by KDDI : How SP Interconnect Simplifies Closed Net...",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Introducing CLARA Agent: Instant Cloud & AI Risk Insights Available on...",
    "kind": "product",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Why OT Resilience Is Now a Boardroom Imperative",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Securing AI Agents at Scale with NVIDIA",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Introducing Unit 42 Continuous Frontier AI Defense",
    "kind": "product",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Defining the Standard for AI Security",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/09/fedramp-moderate-authorization-for-palo-alto-networks-quantum-safe-security/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Secure AI Coding: Governing every agent, artifact, and identity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/09/secure-ai-coding-governing-every-agent-artifact-and-identity/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "MOD extends Leidos LCST contract, continuing critical logistics support to UK defence",
+   "kind": "contract",
+   "kind_rule": "extends Leidos LCST contract",
+   "url": "https://leidos.com/insights/mod-extends-leidos-lcst-contract-continuing-critical-logistics-support-uk-defence"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/zero-trust-first-ai-second"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Leidos to support extended ARTEMIS airborne ISR mission for U.S. Army",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/leidos-support-extended-artemis-airborne-isr-mission-us-army"
   }
  ]
 }
