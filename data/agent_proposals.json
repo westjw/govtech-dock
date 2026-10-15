@@ -250949,7 +250949,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://candid.org/resources/candid-near-you/community-resources/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "not_this_board",
+   "why": "Nonprofit data/search provider serving nonprofits, funders, businesses; partner page sells access to libraries, community foundations as nonprofit resource centers; no government named.",
+   "by": "agent:card-second-reader",
+   "agree": false
+  }
  },
  "card:canonical": {
   "kind": "card",
@@ -250999,7 +251005,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://canonical.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Sells Ubuntu Pro, OpenStack, Kubernetes software; 'FIPS for Ubuntu - Secure Linux for government'; public sector menu lists Government and Education.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:canva": {
   "kind": "card",
@@ -251049,7 +251061,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.canva.com/solutions/government/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Canva for Government visual communication platform; government-only Enterprise pricing; quotes Virginia Department of Health and City of Syracuse customers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:canva pty ltd": {
   "kind": "card",
@@ -251099,7 +251117,13 @@
   "status": "pending",
   "evidence_verified": false,
   "evidence_why": "the quote is not on the page the crawler reads at the cited page or the website",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Canva for Higher Education: campus-wide design platform with SSO/SCIM, FERPA compliance, LMS integrations; 'Trusted by 5,000+ institutions'.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cardiac solutions": {
   "kind": "card",
@@ -251199,7 +251223,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.carouselsignage.com/solutions/higher-education",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Digital signage content management software for colleges and universities; solutions also list K12 and Government; priced per player per month.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cci voice": {
   "kind": "card",
@@ -251249,7 +251279,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.ccivoice.com/industries/municipalities",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Cloud-based VoIP phone systems, video surveillance and access control for cities, towns, schools, libraries; Connecticut state contract via CRCOG.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cgi": {
   "kind": "card",
@@ -251299,7 +251335,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cgi.com/us/en-us/state-local-government",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State and local government page sells CGI Advantage ERP, CGI Transcend case management, CGI OverCite licensing/permitting platform; GovRAMP-authorized cloud.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:chandler asset management": {
   "kind": "card",
@@ -251349,7 +251391,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.chandlerasset.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "supplier",
+   "why": "Fixed income investment management for public agencies and public finance professionals ('LGIP Education'); financial services, not a technology product.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:check point software": {
   "kind": "card",
@@ -251399,7 +251447,13 @@
   "status": "pending",
   "evidence_verified": false,
   "evidence_why": "the site did not read: robots.txt on www.checkpoint.com answered HTTP 202; kept out until it answers",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State/local page: Check Point provides local governments consolidated cyber security (firewalls, cloud, endpoint) to secure citizen data and infrastructure.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:check point software technologies ltd": {
   "kind": "card",
@@ -251449,7 +251503,13 @@
   "status": "pending",
   "evidence_verified": false,
   "evidence_why": "the site did not read: robots.txt on www.checkpoint.com answered HTTP 202; kept out until it answers",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Same Check Point state/local page: cyber security products (firewalls, cloud, workspace security) sold to local governments and public services.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:checkr": {
   "kind": "card",
@@ -251549,7 +251609,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.circlehealth.co/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "not_this_board",
+   "why": "Behavioral health AI platform for addiction treatment facilities; customers are private providers (Pyramid Healthcare, Monument Recovery); no government buyers mentioned.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:clearspeed": {
   "kind": "card",
@@ -251599,7 +251665,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.clearspeed.com/benefits-payments",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Voice-analytics risk-indicator technology for government benefits program integrity (SNAP, Medicaid); says states face error-rate pressure; agencies are buyers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:clinicmind": {
   "kind": "card",
@@ -251649,7 +251721,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.clinicmind.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "not_this_board",
+   "why": "EHR and practice management software for chiropractic, mental health, personal-injury clinics; no government, school or university buyers stated.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cloudera": {
   "kind": "card",
@@ -251699,7 +251777,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cloudera.com/solutions/public-sector.html",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Public sector page sells hybrid data/AI platform to government agencies; cites a state government (Goias) and City of Milan; Education industry listed.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cloudflare": {
   "kind": "card",
@@ -251749,7 +251833,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cloudflare.com/state-local/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Cloudflare for State and Local Government: FedRAMP High, GovRAMP Moderate connectivity cloud for security, network and app performance.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cloudlabs by spektra systems": {
   "kind": "card",
@@ -251799,7 +251889,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://spektrasystems.com/education",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "CloudLabs hands-on cloud lab software for universities and colleges; cites Seneca Polytechnic and Wayne Community College as users.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:commence": {
   "kind": "card",
@@ -251849,7 +251945,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://commence.ai/who-we-serve/state-local-government/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State & Local page: Commence's platform helps state and local agencies, with AI-powered fraud detection, analytics and data transformation, alongside review services.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:commvault": {
   "kind": "card",
@@ -251899,7 +252001,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.commvault.com/use-cases/government",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Government page: SaaS cyber resilience and backup for federal, state, local and educational entities; GovRAMP High authorized.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:concentric ai": {
   "kind": "card",
@@ -251949,7 +252057,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://concentric.ai/case-study/securing-sensitive-public-health-data-for-southern-nevada-health-district/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Case study: Southern Nevada Health District, a local public health agency, deployed Concentric AI data security and classification software.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:confidentialmind": {
   "kind": "card",
@@ -251999,7 +252113,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://confidentialmind.com/solutions/universities",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Universities page sells a self-hosted secure GenAI platform with OpenAI-compatible APIs to universities; Centria University case study; footer also lists Public Sector.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:connectwell": {
   "kind": "card",
@@ -252049,7 +252169,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.connectwell.health/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Licenses a digital health content suite via platform/API; customers listed include Public Libraries (dedicated Public Library Initiative) and rural organizations using RHTP funding.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:consolidated telecom": {
   "kind": "card",
@@ -252149,7 +252275,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://cusi.com/about/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Sells utility billing software, customer information system, web portal and mobile meter reading to 1,150+ water/sewer utilities; pages say utilities, not municipalities explicitly.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:core": {
   "kind": "card",
@@ -252199,7 +252331,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.corebt.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Digital payment platform for government: 1,000+ government agencies served; case studies Washington County UT, City of Davenport IA; online payments, kiosks, revenue management.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:coreview": {
   "kind": "card",
@@ -252249,7 +252387,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.coreview.com/industries/state-and-local-government",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State and local government page sells CoreView ONE Microsoft 365 security/management SaaS; GovRAMP Ready; used by 81% of North American states and provinces.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cornerstone ondemand": {
   "kind": "card",
@@ -252299,7 +252443,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cornerstoneondemand.com/industries/public-sector/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Public sector page sells LMS and talent management software for government organizations, FedRAMP authorized; testimonial from State of Alaska Department of Administration.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:costar real estate manager + visual lease": {
   "kind": "card",
@@ -252399,7 +252549,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.crashplan.com/industries/state-and-local/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State and local page sells a cloud-based data resilience and backup platform to state and local governments for ransomware recovery.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:creativebug": {
   "kind": "card",
@@ -252449,7 +252605,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.creativebug.com/libraries",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Libraries page sells an online craft-class platform with admin portal, usage dashboards and API authentication to 1,200+ libraries; named public library customers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cribl, inc": {
   "kind": "card",
@@ -252499,7 +252661,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://cribl.io/solutions/industries/state-local-government-education/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "SLED page: Cribl Stream telemetry/data pipeline software for state, local government and education; City and County of San Francisco, University of Pittsburgh cases.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:crowdstrike": {
   "kind": "card",
@@ -252549,7 +252717,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.crowdstrike.com/en-us/solutions/state-local-government/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State & Local Government page: Falcon security platform; '43 of the 50 U.S. states choose CrowdStrike'; Falcon for XIoT for government infrastructure.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:csg": {
   "kind": "card",
@@ -252599,7 +252773,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.csgi.com/industries/government",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Government page: payment processing, IVR/SMS self-service and billing/notice software for agencies; 'thousands of agencies using CSG'; Kinston city case.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:csg government solutions": {
   "kind": "card",
@@ -252649,7 +252829,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://csgdelivers.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "supplier",
+   "why": "Consulting firm: project management, IV&V, QA, organizational change management and strategy for state agency IT modernization; no own product.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cvent inc": {
   "kind": "card",
@@ -252699,7 +252885,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cvent.com/en/event-marketing-management/education-solutions",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Cvent for Education page: event management/registration software platform for higher education; USC, UT Austin, University of Portland customers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:cyberfox": {
   "kind": "card",
@@ -252749,7 +252941,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.cyberfox.com/it-departments/state-and-local-government/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State & local government page: privileged access, password management, DNS filtering, SASE platforms for agencies; also lists K-12, higher education.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dac bond": {
   "kind": "card",
@@ -252849,7 +253047,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.data-axle.com/marketing-solutions/library-academia/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Reference Solutions: business/consumer research database and My Jobs Library sold to libraries and academia, accessed through library websites.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:data-axle": {
   "kind": "card",
@@ -252899,7 +253103,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.data-axle.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Mainly B2B marketing data, but site lists Reference Solutions 'data access for libraries & academia' and a Library & Academia vertical.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:datacognyx": {
   "kind": "card",
@@ -252999,7 +253209,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.datadoghq.com/solutions/government/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Government page: Datadog for Government observability/security platform, GovRAMP-authorized for state, local and education IT teams; federal, state, local, higher ed.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dayforce": {
   "kind": "card",
@@ -253049,7 +253265,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.dayforce.com/who-we-serve/public-sector",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Public sector page: payroll, HR and workforce management software for the public sector and government organizations.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dazos": {
   "kind": "card",
@@ -253149,7 +253371,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://delinea.com/solutions/privileged-access-management-for-educational-institutions",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Education page: privileged access management software for educational institutions; customers University of San Diego, Duquesne, UCF; FERPA compliance.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:digital accessibility by weco": {
   "kind": "card",
@@ -253249,7 +253477,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://dimsservices.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Homepage: cloud case management software for treatment courts, probation and pretrial; trusted by courts in 46 states.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dlt solutions": {
   "kind": "card",
@@ -253299,7 +253533,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.dlt.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Now TD SYNNEX Public Sector: resells software, cloud and cybersecurity products to agencies via State & Local and Education contracts.",
+   "by": "agent:card-second-reader",
+   "agree": false
+  }
  },
  "card:docusign inc": {
   "kind": "card",
@@ -253349,7 +253589,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.docusign.com/solutions/industries/government",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Government page: eSignature and contract management used by 5,500+ government agencies across all 50 states; GovRAMP authorized; county customers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:doxy.me": {
   "kind": "card",
@@ -253399,7 +253645,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://doxy.me/site/solutions/public-programs",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Public Programs page: telehealth platform for public health programs and government initiatives, supports public procurement and contracts.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:drchrono": {
   "kind": "card",
@@ -253449,7 +253701,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.drchrono.com/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "not_this_board",
+   "why": "Homepage: cloud EHR and billing platform for independent medical practices; no government, public sector or education buyers mentioned.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:druid ai": {
   "kind": "card",
@@ -253499,7 +253757,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.druidai.com/solutions/higher-education-ai-agents",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Higher-education page sells AI agent platform for enrollment, financial aid and retention; Georgia Southern University case study, integrates with SIS, Banner, Slate.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dun & bradstreet, inc": {
   "kind": "card",
@@ -253549,7 +253813,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.dnb.com/en-us/public-sector.html",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Public-sector page sells data and analytics platforms to agencies, with a dedicated State and Local sector; supplier-vetting, monitoring and risk data tools.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:dynatrace": {
   "kind": "card",
@@ -253699,7 +253969,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://efficientip.com/industry/higher-education/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Higher-education page sells SOLIDserver DDI (DNS, DHCP, IPAM) and DNS security software to colleges and universities; De Montfort, Worcester Polytechnic customers.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:eightfold ai": {
   "kind": "card",
@@ -253749,7 +254025,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://eightfold.ai/products/workforce-exchange/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Workforce Exchange is an AI job-marketplace product for workforce agencies; quotes New York Governor Hochul on the state's job-finding tool; FedRAMP noted.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:elastic": {
   "kind": "card",
@@ -253799,7 +254081,13 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.elastic.co/industries/public-sector/state-and-local",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "State and Local Government page: agencies use Elastic search, observability and security software to protect against threats and monitor IT.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  },
  "card:ellipse solutions": {
   "kind": "card",
@@ -253949,6 +254237,12 @@
   "status": "pending",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://entrinsik.com/solutions/higher-education/",
-  "evidence_checked_on": "2026-10-10"
+  "evidence_checked_on": "2026-10-10",
+  "second_read": {
+   "verdict": "govtech",
+   "why": "Higher-education page sells Informer BI/analytics and Enrole enrollment software to colleges; IPEDS reporting, Banner/Colleague integration; also lists Government analytics.",
+   "by": "agent:card-second-reader",
+   "agree": true
+  }
  }
 }

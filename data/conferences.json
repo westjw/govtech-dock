@@ -7,8 +7,7 @@
    "conference": "ICMA Annual",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "readable",
    "event_tag": "ICMA 2025",
    "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
    "prior_tags": [
@@ -19,7 +18,9 @@
    "city": "Long Beach/Los Angeles County, CA",
    "next_edition": "2026",
    "dates_source": "https://conference.icma.org/about-the-show/future-past-icma-conferences/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://icma2026.smallworldlabs.com/exhibitors",
+   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2026 edition's and this row's tag is 'ICMA 2025'; tagging its companies with 'ICMA 2025' would say they exhibited at an edition they did not. Held until the row moves to the 2026 edition (owner's call: a tag change moves the /e/ address)."
   },
   {
    "block": "Executive / administration",
@@ -27,7 +28,7 @@
    "conference": "NACo Annual",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
    "fetchability": null,
    "event_tag": "NACo 2026",
    "url": "https://www.naco.org/page/naco-events",
@@ -35,7 +36,8 @@
    "city": "Savannah, GA",
    "next_edition": "2027",
    "dates_source": "https://www.naco.org/page/naco-events",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 67 company names visible"
   },
   {
    "block": "Executive / administration",
@@ -51,7 +53,8 @@
    "city": "Washington, DC",
    "next_edition": "2027",
    "dates_source": "https://www.naco.org/page/events-feed?_page=1&type=event_type_conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - 2026 and 2027 Legislative Conference pages carry schedule and registration only (a Federal Agency Expo, no vendor or sponsor list). naco.org/page/corporate-prog"
   },
   {
    "block": "Executive / administration",
@@ -87,7 +90,8 @@
    "city": "Washington, DC",
    "next_edition": "95th Winter Meeting (2027)",
    "dates_source": "https://www.usmayors.org/meetings/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - Meetings page lists the 95th Winter Meeting (Jan 20-22, 2027) with no page. Sponsorship page sells 2026 Annual Meeting tiers and names no sponsor; 94th winter a"
   },
   {
    "block": "Executive / administration",
@@ -102,7 +106,8 @@
    "dates_source": null,
    "dates_confidence": "unreachable",
    "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - natat.org answers again (no 500s). Home, Member Resources and Federal Advocacy pages carry no events section; the newest event material is a 2023 Town Hall and ",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "discovery_notes": "directory read 2026-10-14: not_found - natat.org has no conference or exhibitor pages: nav is Member Resources, Federal Advocacy, Membership, History, Weekly Updates, Contact. Only event trace is a 2"
   },
   {
    "block": "Executive / administration",
@@ -118,7 +123,8 @@
    "dates_confidence": "high",
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nga.org/news/press-releases/highlights-from-the-2026-nga-summer-meeting/",
    "dates": "February 18-20, 2027",
-   "city": "Washington, DC"
+   "city": "Washington, DC",
+   "discovery_notes": "directory read 2026-10-14: a list was seen at https://www.nga.org/about/ngapartners/ but refused - NGA meetings have no exhibitors; the page is the programme-wide partner list"
   },
   {
    "block": "Executive / administration",
@@ -126,7 +132,7 @@
    "conference": "NCSL Legislative Summit",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.ncsl.org/summit/learning-hub",
    "fetchability": null,
    "event_tag": "NCSL Legislative Summit 2026",
    "url": "https://www.ncsl.org/summit",
@@ -134,7 +140,8 @@
    "city": "Atlanta, GA",
    "next_edition": "2027",
    "dates_source": "https://www.ncsl.org/summit/exhibit-hall",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 23 company names visible"
   },
   {
    "block": "Executive / administration",
@@ -142,7 +149,7 @@
    "conference": "NALIT",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.ncsl.org/events/details/2026-nalit-professional-development-seminar",
    "fetchability": null,
    "event_tag": "NALIT 2026",
    "url": "https://www.ncsl.org/events/details/2026-nalit-professional-development-seminar",
@@ -152,7 +159,8 @@
    "dates_source": "https://www.ncsl.org/events/details/2026-nalit-professional-development-seminar",
    "dates_confidence": "high",
    "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - NCSL's 2026 seminar page (Sept 30-Oct 3, Raleigh) is the only NALIT event linked from the NALIT staff page; NCSL's events listing runs to January 2027 with no N",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 15 company names visible"
   },
   {
    "block": "Executive / administration",
@@ -160,7 +168,7 @@
    "conference": "Smart Cities Connect",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://fall.smartcitiesconnect.org/expo/",
    "fetchability": null,
    "event_tag": "Smart Cities Connect 2026",
    "url": "https://smartcitiesconnect.org/",
@@ -169,7 +177,8 @@
    "next_edition": "2026",
    "dates_source": "https://fall.smartcitiesconnect.org/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 14 company names visible"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -200,14 +209,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "NAGARA 2026",
    "url": "https://nagara.org/annualconference",
    "dates": "July 13 - 16, 2027",
    "city": "Denver, CO",
    "next_edition": "2027",
    "dates_source": "https://nagara.org/annualconference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://nagara.org/sponsors",
+   "exhibitor_url_candidate_note": "image: custom HTML; 'Thank you to our 2026 Corporate Sponsors' (2026 Annual Conference) in three tiers as logos only; 13 logo links to nagara.org/sponsor/<slug> (read 2026-10-14)"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -216,14 +227,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "ARMA InfoCon 2026",
    "url": "https://infocon.arma.org",
    "dates": "October 25-28, 2026",
    "city": "Savannah, GA",
    "next_edition": "2026",
    "dates_source": "https://infocon.arma.org",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://infocon.arma.org/businesspartners",
+   "exhibitor_url_candidate_note": "image: custom HTML; Business Partners page prints only tier headings (Platinum, Gold, Silver, Bronze, Supporting); names are logos. Logo links reach vitalrecord (read 2026-10-14)"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -236,7 +249,7 @@
    "platform": "iMIS portal (portal.electioncenter.org) for registration only",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electioncenter.org both return 403 to the fetcher; only login-walled iMIS exhibitor-registration pages (EventKey BOOTH825) surface. Vendor names likely only in the printed program or behind member login.",
+   "discovery_notes": "41st Annual, Aug 19-21, 2026, Kansas City MO. No public exhibitor/sponsor directory found. Tried: 'Election Center national conference exhibitors/sponsors 2025 and 2026', site:electioncenter.org search, and direct fetches - electioncenter.org and portal.electioncenter.org both return 403 to the fetcher; only login-walled iMIS exhibitor-registration pages (EventKey BOOTH825) surface. Vendor names likely only in the printed program or behind member login. | directory read 2026-10-14: not_found - electioncenter.org read fine this time; manual annual-conference.html URL 404. Press release confirms 41st Annual National Conference, Aug 2026, Kansas City, bu",
    "event_tag": "Election Center 2026",
    "manual_start_urls": [
     "https://www.electioncenter.org/annual-conference.html",
@@ -256,14 +269,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "NASS Winter/Summer 2026",
    "url": "https://www.nass.org/events",
    "dates": "February 10-13, 2027",
    "city": "Washington, DC",
    "next_edition": "2027 Winter Conference",
    "dates_source": "https://www.nass.org/events/nass-2027-winter-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.nass.org/events/nass-2026-summer-conference",
+   "exhibitor_url_candidate_note": "image: custom HTML; Summer 2026 'Event Sponsors' block (Gold to Fairburn Agate, In-Kind) is mostly logos: 20 logo links to company domains (bdo, gocivix, micros (read 2026-10-14)"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -279,7 +294,8 @@
    "city": "Washington, DC",
    "next_edition": "2027",
    "dates_source": "https://www.nased.org/-conferences",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - Conference pages (Feb and Jul 2026) list speakers only. /corporate-affiliates names 31 '2026 NASED Corporate Affiliates' (Gold/Silver/Bronze; tiers include exhi"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -316,7 +332,8 @@
    "city": "Miami Beach, FL",
    "next_edition": "2026",
    "dates_source": "https://www.naag.org/events/",
-   "dates_confidence": "medium"
+   "dates_confidence": "medium",
+   "discovery_notes": "directory read 2026-10-14: unreadable - naag.org/events/ and the naag.org home page both answered HTTP 403 to the crawler; no page on the site could be read."
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -360,7 +377,8 @@
    "city": "Austin, TX",
    "next_edition": "2027",
    "dates_source": "https://nagc.com/page/2027communicationsschool",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - Start page and nagc.com both answer HTTP 403 to the identified crawler; www.nagc.com's robots.txt did not answer (connection error). Nothing on the site could b"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -398,7 +416,8 @@
    "dates_source": "https://www.nasbo.org/meetings-trainings/fall-meeting",
    "dates_confidence": "high",
    "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The Fall Meeting page still shows only the 2026 meeting (Sept 30-Oct 2, Chicago; registration closed). The meetings overview and home page list no dates; fall.e",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "discovery_notes": "directory read 2026-10-14: a list was seen at https://www.nasbo.org/directories/corporate-sponsors but refused - the association-wide corporate sponsors roster, not the Fall Meeting's; the meeting page shows logos only"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -415,7 +434,8 @@
    "next_edition": "2026",
    "dates_source": "https://nast.org/conference-overview/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "discovery_notes": "directory read 2026-10-14: a list was seen at https://nast.org/sponsorships/ but refused - one sponsorship page across NAST's three 2026 conferences; the Annual's own names are two"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -431,7 +451,8 @@
    "city": "Denver, CO",
    "next_edition": "2027",
    "dates_source": "https://cdn.ymaws.com/algaonline.org/resource/resmgr/training/annual_conference/2026/2026_sponsorship_program-3.pdf",
-   "dates_confidence": "medium"
+   "dates_confidence": "medium",
+   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for the ALGA home page and for /conference/; algaonline.org blocks the crawler."
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -447,7 +468,8 @@
    "dates_confidence": "high",
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.nasact.org/nsaa",
    "dates": "June 14-17, 2027",
-   "city": "Greenville, SC"
+   "city": "Greenville, SC",
+   "discovery_notes": "directory read 2026-10-14: not_found - nasact.org/nsaa is a placeholder ('watch for more details'); events calendar lists no NSAA Annual; Corporate Associates directory (nasact.membershipsoftware.org"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -463,7 +485,8 @@
    "dates_confidence": "high",
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://pdt.agacgfm.org/about/future-events/",
    "dates": "July 18-21, 2027",
-   "city": "Chicago, IL"
+   "city": "Chicago, IL",
+   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for pdt.agacgfm.org and for the www.agacgfm.org root; the AGA hosts block the crawler."
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -529,7 +552,7 @@
    "platform": "Cvent (events.naspo.org) for event pages; naspo.org behind Cloudflare",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); naspo.org pages (naspo-annual, get-involved/partnerships) blocked by Cloudflare challenge to both WebFetch and curl. NASPO Annual (Sept 27-30 2026, Phoenix) is a member-focused event with a Strategic Partner program (20+ partners) rather than a public expo directory - nearest page is https://www.naspo.org/get-involved/partnerships/ (walled). NASPO Exchange is the trade-show-format sibling event.",
+   "discovery_notes": "No public exhibitor or sponsor roster found. Tried: web searches for 2025 and 2026 annual conference sponsor/exhibitor lists; Cvent pages events.naspo.org/event/2025NASPOAnnualConference/summary and the Exchange 2026 page (fetchable, but name no companies); naspo.org pages (naspo-annual, get-involved/partnerships) blocked by Cloudflare challenge to both WebFetch and curl. NASPO Annual (Sept 27-30 2026, Phoenix) is a member-focused event with a Strategic Partner program (20+ partners) rather than a public expo directory - nearest page is https://www.naspo.org/get-involved/partnerships/ (walled). NASPO Exchange is the trade-show-format sibling event. | directory read 2026-10-14: not_found - Cvent site for the 2025 Annual (events.naspo.org) has Summary/Agenda/Awards/Hotel/NASPO CARES/Registration pages, no sponsors page, and names no companies; 2026",
    "event_tag": "NASPO 2026",
    "manual_start_urls": [
     "https://www.naspo.org/get-involved/partnerships/",
@@ -580,7 +603,8 @@
    "city": "Fort Worth, TX",
    "next_edition": "2027",
    "dates_source": "https://www.npelra.org/1419/2027---Fort-Worth-TX",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: a list was seen at https://www.npelra.org/1356/Sponsorship-Opportunities but refused - an undated 'past sponsors include' line in a prospectus; no edition stated"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -596,7 +620,8 @@
    "city": "New York, NY",
    "next_edition": "2027",
    "dates_source": "https://www.ncpers.org/annual-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - /annual-conference redirects to the ACE 2027 page whose 'Exhibitors & Sponsors' section is prose only; /exhibit-hall-opportunities and /sponsorship are prospect"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -681,14 +706,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "PTI 2026",
    "url": "https://www.pti.org/",
    "dates": "November 8-10, 2026",
    "city": "Bloomington, MN",
    "next_edition": "2026",
    "dates_source": "https://www.pti.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://fusionlp.org/2026-govit-leadership-summit-symposium/",
+   "exhibitor_url_candidate_note": "image: custom HTML; pti.org redirects to fusionlp.org. Summit page's 'GovIT Sponsors' and 'Education Partners' are logos only (link targets: Cloudflare, LinkedI (read 2026-10-14)"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -701,7 +728,7 @@
    "platform": "Esri event portal (JS app) - directory currently offline",
    "event_year": "",
    "approx_count": null,
-   "discovery_notes": "No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overview (site rolled over post-event); a Wayback snapshot of the same path is only the portal shell with no names. Also tried: uc/agenda/expo page (no names, live and archived), coolmaps.esri.com/UC/UCMap26 (404), site:esri.com searches, 10times.com (403). Re-check the /uc/agenda/sponsors-exhibitors URL when the 2027 portal populates; 2026 roster otherwise lived in the Esri Events mobile app.",
+   "discovery_notes": "No public exhibitor list is live right now. The 2026 UC (July 13-17 2026, San Diego) had a 'Sponsors and Exhibitors' section at esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors inside a JS event portal, but that URL now redirects to the 2027 UC overview (site rolled over post-event); a Wayback snapshot of the same path is only the portal shell with no names. Also tried: uc/agenda/expo page (no names, live and archived), coolmaps.esri.com/UC/UCMap26 (404), site:esri.com searches, 10times.com (403). Re-check the /uc/agenda/sponsors-exhibitors URL when the 2027 portal populates; 2026 roster otherwise lived in the Esri Events mobile app. | directory read 2026-10-14: not_found - /uc/agenda/sponsors-exhibitors redirects to the 2027 overview (Jul 12-16, 2027); become-sponsor-exhibitor is a prospectus. The 2026 RainFocus portal (registrati",
    "event_tag": "Esri UC 2026",
    "manual_start_urls": [
     "https://www.esri.com/en-us/about/events/uc/agenda/sponsors-exhibitors",
@@ -728,7 +755,8 @@
    "city": "Milwaukee, WI",
    "next_edition": "2026",
    "dates_source": "https://thegpn.org",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - thegpn.org, www.thegpn.org and www.urisa.org answer HTTP 403 to the identified crawler; www.gis-pro.org's robots.txt failed (SSLError). Nothing read."
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -744,7 +772,8 @@
    "city": "Bozeman, MT",
    "next_edition": "2026",
    "dates_source": "https://nsgic.org/events/2026-nsgic-annual-conference/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - Conference page covers registration, agenda, awards, hotel; no sponsor or exhibitor section (only 'EagleView sponsored this webpage'). 'Current Business Partner"
   },
   {
    "block": "Public works and infrastructure",
@@ -791,14 +820,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "AASHTO 2026",
    "url": "https://www.transportation.org/meetings/events/",
    "dates": "November 15-18, 2026",
    "city": "Louisville, KY",
    "next_edition": "2026",
    "dates_source": "https://www.transportation.org/meetings/events/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://transportation.org/meetings/sponsors/",
+   "exhibitor_url_candidate_note": "js-walled: custom HTML; Sponsors page: Premier/Capitol sponsor logos linked to 16 company sites, no names in text (images, not JS). Cvent 2026 Annual Meeting 'View  (read 2026-10-14)"
   },
   {
    "block": "Public works and infrastructure",
@@ -814,7 +845,8 @@
    "city": "Washington, DC",
    "next_edition": "2027",
    "dates_source": "https://www.trb.org/AnnualMeeting/AnnualMeeting.aspx",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - trb.org/AnnualMeeting redirects to trb-annual-meeting.nationalacademies.org, whose robots.txt did not answer (ConnectionError) on four attempts, host root inclu"
   },
   {
    "block": "Public works and infrastructure",
@@ -823,14 +855,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "pdf",
    "event_tag": "ITE 2026",
    "url": "https://www.ite.org/navigation/events-meetings/eventsandmeetings2/ite-annual-meeting-and-exhibit/",
    "dates": "July 25-28, 2027",
    "city": "Calgary, AB, Canada",
    "next_edition": "2027",
    "dates_source": "https://www.ite.org/navigation/events-meetings/eventsandmeetings2/ite-annual-meeting-and-exhibit/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.ite.org/ITEORG/assets/File/Annual%20Meeting/2026/ITE_2026_OnsiteProgram_FINAL.pdf",
+   "exhibitor_url_candidate_note": "pdf: PDF; iteannualmeeting.org/exhibitors (2027 list, Wix) prints no names yet; the 2026 'Exhibitors' recap link is 404; Salesforce floor plan and Who (read 2026-10-14)"
   },
   {
    "block": "Public works and infrastructure",
@@ -888,15 +922,16 @@
    "conference": "Government Fleet Expo",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "readable",
    "event_tag": "Government Fleet Expo 2026",
    "url": "https://www.governmentfleetexpo.com/",
    "dates": "June 15-18, 2027",
    "city": "Atlanta, GA",
    "next_edition": "2027",
    "dates_source": "https://www.governmentfleetexpo.com/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.governmentfleetexpo.com/exhibitors",
+   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'Government Fleet Expo 2026'; tagging its companies with 'Government Fleet Expo 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
   },
   {
    "block": "Public works and infrastructure",
@@ -905,14 +940,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "IFMA World Workplace 2026",
    "url": "https://worldworkplace.ifma.org/",
    "dates": "November 18-20, 2026",
    "city": "Anaheim, CA",
    "next_edition": "2026",
    "dates_source": "https://worldworkplace.ifma.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://maps.goeshow.com/ifma/worldworkplace/2026/exhibitor_list",
+   "exhibitor_url_candidate_note": "js-walled: goeshow; The Expo page links 'See who's exhibiting' to maps.goeshow.com, which returned zero readable text (JS app). The eShow form at events.ifma.or (read 2026-10-14)"
   },
   {
    "block": "Public works and infrastructure",
@@ -999,15 +1036,16 @@
    "conference": "WasteExpo",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "readable",
    "event_tag": "WasteExpo 2026",
    "url": "https://www.wasteexpo.com/",
    "dates": "May 3-6, 2027",
    "city": "Las Vegas, NV",
    "next_edition": "2027",
    "dates_source": "https://www.wasteexpo.com/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://wasteexpo2027.smallworldlabs.com/exhibitors",
+   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'WasteExpo 2026'; tagging its companies with 'WasteExpo 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
   },
   {
    "block": "Public works and infrastructure",
@@ -1037,14 +1075,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "DISTRIBUTECH 2026",
    "url": "https://www.distributech.com/",
    "dates": "March 1-4, 2027",
    "city": "Atlanta, GA",
    "next_edition": "2027",
    "dates_source": "https://www.distributech.com/event-information/hotel-travel",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://dt2027.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm?featured=false",
+   "exhibitor_url_candidate_note": "js-walled: MapYourShow; MapYourShow floor plan and exhibitor gallery are Vue templates printing no names. distributech.com/exhibit-sponsor/eventsponsors shows spons (read 2026-10-14)"
   },
   {
    "block": "Public works and infrastructure",
@@ -1062,7 +1102,8 @@
    "city": "New Orleans, LA",
    "next_edition": "2026",
    "dates_source": "https://www.broadbandnationexpo.com/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - Nav's '2026 Partners' page (usbroadbandsummitcom/broadband-nation-expo-partners) prints only a 'Let's work together / Contact Us' call-to-action: no company nam"
   },
   {
    "block": "Public works and infrastructure",
@@ -1070,7 +1111,7 @@
    "conference": "NATOA",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.natoa.org/2026-conference-exhibitors",
    "fetchability": null,
    "event_tag": "NATOA 2026",
    "url": "https://www.natoa.org/events/2026-annual-conference",
@@ -1080,7 +1121,8 @@
    "dates_source": "https://www.natoa.org/events/2026-annual-conference",
    "dates_confidence": "high",
    "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - The 2026 conference page, the events calendar and the homepage show only the 2026 Kansas City conference ('Save the Date for the 2026 NATOA Annual Conference');",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 40 company names visible"
   },
   {
    "block": "Transportation",
@@ -1088,7 +1130,7 @@
    "conference": "APTA TRANSform",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.aptaexpo.com/exhibitor_exhibitor_list.cfm",
    "fetchability": null,
    "event_tag": "APTA 2026",
    "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
@@ -1098,7 +1140,8 @@
    "next_edition": "2026",
    "dates_source": "https://www.aptaexpo.com/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-10: could not read a next-edition date - apta.com returned HTTP 403 on the event page and root. APTA's expo site aptaexpo.com was readable but states only 'Interested in attending in 2029?' with no dat"
+   "dates_note": "read 2026-10-10: could not read a next-edition date - apta.com returned HTTP 403 on the event page and root. APTA's expo site aptaexpo.com was readable but states only 'Interested in attending in 2029?' with no dat",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 710 company names visible"
   },
   {
    "block": "Transportation",
@@ -1126,15 +1169,16 @@
    "conference": "AAAE Annual",
    "flagship": true,
    "swept": true,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "readable",
    "event_tag": "AAAE 2026",
    "url": "https://aaae.org/annual",
    "dates": "May 16-18, 2027",
    "city": "Phoenix, AZ",
    "next_edition": "2027",
    "dates_source": "https://aaae.org/annual",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'AAAE 2026'; tagging its companies with 'AAAE 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
   },
   {
    "block": "Transportation",
@@ -1143,7 +1187,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "ACI-NA 2026",
    "url": "https://airportscouncil.org/conference/2026-annual-conference-and-exhibition/",
    "dates": "October 4-7, 2027",
@@ -1151,7 +1195,9 @@
    "next_edition": "2026",
    "dates_source": "https://airportscouncil.org/education/conferences/future-aci-na-events/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://maps.goeshow.com/acina/annual/2026/exhibitor_list",
+   "exhibitor_url_candidate_note": "js-walled: goeshow; Conference page's 'LIVE FLOOR PLAN AND EXHIBITOR LIST' goes to goeshow; the goeshow event root links 'Exhibitor List' to maps.goeshow.com, w (read 2026-10-14)"
   },
   {
    "block": "Transportation",
@@ -1160,7 +1206,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "AAPA 2026",
    "url": "https://www.ports.org",
    "dates": "September 27-29, 2027",
@@ -1168,7 +1214,9 @@
    "next_edition": "2026",
    "dates_source": "https://www.ports.org/browsebytopic.aspx?ItemNumber=21533&navItemNumber=20810",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://aapa.getregistered.net/2026-annual-convention/sponsors",
+   "exhibitor_url_candidate_note": "js-walled: custom HTML; getregistered.net sponsors page: tier headings plus 47 sponsor logos linked to company sites; no names in text (images, not JS). Exhibit hal (read 2026-10-14)"
   },
   {
    "block": "Transportation",
@@ -1181,7 +1229,7 @@
    "platform": "",
    "event_year": "2026",
    "approx_count": 90,
-   "discovery_notes": "No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth numbers/program PDF, the 2026 AIC main page (no sponsor logos in HTML), and third-party ExpoGage (HTTP 403/paywalled). Exhibitor names appear to be attendee-only (conference app). Closest page: https://www.aamva.org/events-education/conferences-meetings/conferences/2026-annual-international-conference/exhibit-sponsor",
+   "discovery_notes": "No public exhibitor directory for AIC 2025 (Phoenix) or 2026 (Providence, Sep 29-Oct 1). Tried: AAMVA 2026 and 2025 exhibit-sponsor pages (prospectus/pricing only; 2026 hall sold out with waiting list, typical ~90 exhibitors), searches for exhibitor list/booth numbers/program PDF, the 2026 AIC main page (no sponsor logos in HTML), and third-party ExpoGage (HTTP 403/paywalled). Exhibitor names appear to be attendee-only (conference app). Closest page: https://www.aamva.org/events-education/conferences-meetings/conferences/2026-annual-international-conference/exhibit-sponsor | directory read 2026-10-14: not_found - Manual URL and the 2026 AIC page (2027/2028 URL pattern) both 404; AIC, 2027 AIC, Marketing-at-AAMVA-Events and 2026 AIC presentations pages show no exhibitor o",
    "event_tag": "AAMVA 2026",
    "manual_start_urls": [
     "https://www.aamva.org/events-education/aamva-conferences/2026-annual-international-conference",
@@ -1209,7 +1257,8 @@
    "city": "Orlando, FL",
    "next_edition": "2026",
    "dates_source": "https://theiacpconference.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - theiacpconference.org answers the crawler with an Imperva Incapsula block ('Request unsuccessful. Incapsula incident ID') on /, www and /exhibit-hall/. Guessed "
   },
   {
    "block": "Public safety",
@@ -1261,7 +1310,8 @@
    "city": "Nashville, TN",
    "next_edition": "2027",
    "dates_source": "https://www.nena.org/events/EventDetails.aspx?id=1963341",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - UNREAD: HTTP 403 for the EventDetails URL and for the www.nena.org home page; the whole host blocks the crawler. No alternate conference host is discoverable wi"
   },
   {
    "block": "Public safety",
@@ -1290,14 +1340,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "FDIC International 2026",
    "url": "https://www.fdic.com/",
    "dates": "April 12-17, 2027",
    "city": "Indianapolis, IN",
    "next_edition": "2027",
    "dates_source": "https://www.fdic.com/event-information/about",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://fdic2027.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm?featured=false",
+   "exhibitor_url_candidate_note": "js-walled: MapYourShow; fdic.com nav '2027 Exhibitors' and '2027 Floorplan' point to fdic2027.mapyourshow.com. The gallery, sitemap.cfm and exhibitor-alphalist.cfm  (read 2026-10-14)"
   },
   {
    "block": "Public safety",
@@ -1306,7 +1358,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "EMS World Expo 2026",
    "url": "https://www.hmpglobalevents.com/emsworldexpo",
    "dates": "September 28 - October 2, 2026",
@@ -1314,7 +1366,9 @@
    "next_edition": "2026",
    "dates_source": "https://www.hmpglobalevents.com/emsworldexpo",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-10: could not read a next-edition date - hmpglobalevents.com/emsworldexpo is a JavaScript app; the crawler receives only 'A required part of this site couldn't load' (209 chars). emsworldexpo.com redir"
+   "dates_note": "read 2026-10-10: could not read a next-edition date - hmpglobalevents.com/emsworldexpo is a JavaScript app; the crawler receives only 'A required part of this site couldn't load' (209 chars). emsworldexpo.com redir",
+   "exhibitor_url_candidate": "https://www.hmpglobalevents.com/emsworldexpo",
+   "exhibitor_url_candidate_note": "js-walled: unknown; hmpglobalevents.com returns a 209-char JS app shell at every path tried (home, /exhibitors, /exhibitor-list, /sitemap.xml); emsworldexpo.com (read 2026-10-14)"
   },
   {
    "block": "Public safety",
@@ -1399,7 +1453,8 @@
    "city": "Fort Lauderdale, FL",
    "next_edition": "2027",
    "dates_source": "https://ecourts.ncsc.org/ctc-2027",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: a list was seen at https://ecourts.ncsc.org/exhibit-sponsor/2026-sponsors but refused - the list is eCourts 2026's, a sibling NCSC event; no CTC list yet"
   },
   {
    "block": "Courts, corrections, justice",
@@ -1478,7 +1533,8 @@
    "city": "Pittsburgh, PA",
    "next_edition": "2026",
    "dates_source": "https://juvjustice.org/events/conferences/2026-youth-justice-in-action-conference/",
-   "dates_confidence": "medium"
+   "dates_confidence": "medium",
+   "discovery_notes": "directory read 2026-10-14: not_found - 2026 Annual Conference (May 27-30, DC) and 2026 Youth Justice in Action (Oct 13-15, Pittsburgh) pages carry only 'Become a Sponsor or Exhibitor' forms and one s"
   },
   {
    "block": "Health and human services",
@@ -1513,7 +1569,8 @@
    "dates_source": null,
    "dates_confidence": "unannounced",
    "dates_note": "read 2026-10-10: no next edition announced on the organisation's site - Read astho.org upcoming-events, education hub, past-events and account.astho.org calendar: only webinars through Dec 10, 2026. The Annual Meeting and Policy Sum",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "discovery_notes": "directory read 2026-10-14: not_found - No Annual Meeting page on astho.org; upcoming and past event pages list only webinars. Only vendor page is the virtual Performance Management Solutions Showcase"
   },
   {
    "block": "Health and human services",
@@ -1526,7 +1583,7 @@
    "platform": "custom (WordPress/WooCommerce booth-sales site)",
    "event_year": "2026",
    "approx_count": null,
-   "discovery_notes": "MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no names), and the booth-selection chart at mesconference.org/tc_seat_charts/mesc-2026-exhibit-hall-c/ (JS seat-picker, no names in HTML and unclear it ever shows company names). Site claims 'well over 100 exhibitors' (~100+). Third-party gated list exists at vendelux.com/insights/mesc-2026-attendee-list. Known 2026 sponsors from vendor pages: Conduent, Gainwell, Maximus, Acentra Health, PCG, Catalyst Solutions.",
+   "discovery_notes": "MESC 2026 (Aug 17-20, Portland OR, run by NESCSO) publishes no public exhibitor/sponsor roster. Tried: 'MESC 2026 exhibitor list' searches, mesconference.org homepage, /sponsorships-2026/ (404), /sponsorships-2026/exhibit-hall/ (static floor-plan image, no names), and the booth-selection chart at mesconference.org/tc_seat_charts/mesc-2026-exhibit-hall-c/ (JS seat-picker, no names in HTML and unclear it ever shows company names). Site claims 'well over 100 exhibitors' (~100+). Third-party gated list exists at vendelux.com/insights/mesc-2026-attendee-list. Known 2026 sponsors from vendor pages: Conduent, Gainwell, Maximus, Acentra Health, PCG, Catalyst Solutions. | directory read 2026-10-14: not_found - mesconference.org has flipped to MESC 2027 (Pittsburgh); its sponsorship page says information will be available January-February 2027; announcements carry no s",
    "event_tag": "MESC 2026",
    "manual_start_urls": [
     "https://www.mesconference.org/",
@@ -1575,14 +1632,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "CWLA 2026",
    "url": "https://www.cwla.org/conferences/",
    "dates": "April 5-7, 2027",
    "city": "Arlington, VA",
    "next_edition": "2027",
    "dates_source": "https://www.cwla.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.cwla.org/cwla2026/",
+   "exhibitor_url_candidate_note": "image: custom HTML; 'Join us in thanking our conference sponsors' block is logos only; 27 logo links point at sponsor domains (casey.org, centene.com, aecf.org, (read 2026-10-14)"
   },
   {
    "block": "Health and human services",
@@ -1667,14 +1726,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "NACVSO 2026",
    "url": "https://www.nacvso.org/annual-conference",
    "dates": "June 13-18, 2027",
    "city": "Greensboro, NC",
    "next_edition": "2027",
    "dates_source": "https://www.nacvso.org/annual-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.nacvso.org/sponsors2",
+   "exhibitor_url_candidate_note": "image: custom HTML; Conferences > Sponsors page shows '2026 Strategic Partnerships' in Premier to Bronze tiers as logos only; 14 logo links point at company dom (read 2026-10-14)"
   },
   {
    "block": "Health and human services",
@@ -1753,7 +1814,8 @@
    "dates_confidence": "high",
    "dates_note": "read 2026-10-10: could not read a next-edition date - aace1.org answered HTTP 403 to the identified crawler on both the 2026 conference page and the home page; nothing could be read.",
    "dates": "September 28 - October 1, 2026",
-   "city": "Orlando, FL"
+   "city": "Orlando, FL",
+   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for the 2026 conference page and for the site root; www.aace1.org blocks the crawler."
   },
   {
    "block": "Community development",
@@ -1816,7 +1878,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "NCSHA 2026",
    "url": "https://www.ncsha.org/events/",
    "dates": "September 18-21, 2027",
@@ -1824,7 +1886,9 @@
    "next_edition": "2026",
    "dates_source": "https://www.ncsha.org/events/future-events/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://web.cvent.com/event/c32ddca0-258d-4a00-8adf-c58d845cc8fd/summary",
+   "exhibitor_url_candidate_note": "image: Cvent; ncsha.org/event/2026-annual-conference-showplace and cvent.me/q2MY2N both resolve here; Diamond to Bronze sponsor tiers are logos only, 20 l (read 2026-10-14)"
   },
   {
    "block": "Community development",
@@ -1840,7 +1904,8 @@
    "city": "Miami, FL",
    "next_edition": "2026",
    "dates_source": "https://fall.uli.org/future-meetings/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - fall.uli.org, fall.uli.org/sponsors/ and uli.org all answer HTTP 403 to the identified crawler. Nothing read."
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1867,14 +1932,16 @@
    "swept": true,
    "note": "landed as AB Show 2026",
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "AB Show 2026",
    "url": "https://abshow.com/",
    "dates": "Conference: November 17-19, 2026; Expo: November 18-19, 2026",
    "city": "Orlando, FL",
    "next_edition": "2026",
    "dates_source": "https://abshow.com/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://abshow.expocad.com/Events/abc26/index.html",
+   "exhibitor_url_candidate_note": "js-walled: ExpoCad; Site's '2026 Expo Floor' link opens an ExpoCad FX shell (title '3e - Floorplan') that prints no exhibitor names; its exfx.html list URL retu (read 2026-10-14)"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1890,7 +1957,8 @@
    "city": "Orlando, FL",
    "next_edition": "2026",
    "dates_source": "https://www.nays.org/annual-youth-sports-congress",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - REFUSED: robots.txt on www.nays.org and on nays.org both answered HTTP 202; the crawler is kept out until robots.txt answers. Nothing was read."
   },
   {
    "block": "Parks, recreation, libraries",
@@ -1933,7 +2001,8 @@
    "city": "New Orleans, LA",
    "next_edition": "2027",
    "dates_source": "https://www.ala.org/conferencesevents/past",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - ala.org links the 2026 Chicago and 2027 editions to 2026.alaannual.org, which returns HTTP 403; 2025.alaannual.org and the 2024 eventScribe site also 403; a Map"
   },
   {
    "block": "K-12 education",
@@ -1963,7 +2032,7 @@
    "conference": "NSBA Annual",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://s36.a2zinc.net/clients/NSBA/ac2026/Public/EventMap.aspx?sortMenu=104002",
    "fetchability": null,
    "event_tag": "NSBA 2026",
    "url": "https://www.nsba.org/events/2027-annual-conference",
@@ -1971,7 +2040,8 @@
    "city": "Washington, DC",
    "next_edition": "2027",
    "dates_source": "https://www.nsba.org/events/2027-annual-conference",
-   "dates_confidence": "medium"
+   "dates_confidence": "medium",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 120 company names visible"
   },
   {
    "block": "K-12 education",
@@ -2030,14 +2100,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "ISTELive 2026",
    "url": "https://conference.iste.org/2027/",
    "dates": "June 27-30, 2027",
    "city": "Boston, MA",
    "next_edition": "2027",
    "dates_source": "https://conference.iste.org/2027/exhibitors/logistics.php",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://conference.iste.org/2026/about/sponsors.php",
+   "exhibitor_url_candidate_note": "image: custom HTML; Sponsor tiers (Mission, Gold, Silver, Bronze, partners) are logos only; about 55 logo links to company domains (microsoft.com, edu.google.co (read 2026-10-14)"
   },
   {
    "block": "K-12 education",
@@ -2053,7 +2125,8 @@
    "city": "Denver, CO",
    "next_edition": "2027",
    "dates_source": "https://www.naesp.org/event/2027-national-school-leaders-conference-powered-by-naesp/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: unreadable - The 2027 conference event page and the naesp.org home page both answered HTTP 403 to the crawler; no page on the site could be read."
   },
   {
    "block": "K-12 education",
@@ -2120,15 +2193,16 @@
    "conference": "CEC Convention",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "readable",
    "event_tag": "CEC Convention 2026",
    "url": "https://cecconvention.org/",
    "dates": "March 10-13, 2027",
    "city": "Columbus, OH",
    "next_edition": "2027",
    "dates_source": "https://cecconvention.org/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://cecconvention.org/partner",
+   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'CEC Convention 2026'; tagging its companies with 'CEC Convention 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
   },
   {
    "block": "Higher education",
@@ -2186,14 +2260,16 @@
    "swept": false,
    "note": "educational facilities APPA - third of the three APPAs",
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "APPA Educational Facilities 2026",
    "url": "https://www.appa.org/events/appa-2027-annual-conference",
    "dates": "July 12-15, 2027",
    "city": "Salt Lake City, UT",
    "next_edition": "2027",
    "dates_source": "https://www.appa.org/events/appa-2027-annual-conference",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.appa.org/events/appa-2026-annual-conference",
+   "exhibitor_url_candidate_note": "js-walled: custom HTML; Most recent edition page: 'Thank you to our Sponsors!' and 'Thank you to our Exhibitors!' sections are unlinked logo images, no names in tex (read 2026-10-14)"
   },
   {
    "block": "Higher education",
@@ -2209,7 +2285,8 @@
    "city": "Long Beach, CA",
    "next_edition": "2027",
    "dates_source": "https://www.aacrao.org/annual-meeting/",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "discovery_notes": "directory read 2026-10-14: not_found - Annual-meeting pages for the April 2027 meeting show no sponsor or exhibitor names: sponsorship page empty, corporate page is pricing only, archive lists past m"
   },
   {
    "block": "Higher education",
@@ -2218,14 +2295,16 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "NASFAA 2026",
    "url": "https://www.nasfaa.org/National_Conference_1",
    "dates": "June 20-23, 2027",
    "city": "San Diego, CA",
    "next_edition": "2027",
    "dates_source": "https://www.nasfaa.org/National_Conference_1",
-   "dates_confidence": "high"
+   "dates_confidence": "high",
+   "exhibitor_url_candidate": "https://www.nasfaa.org/meet_exhibitors_sponsors27",
+   "exhibitor_url_candidate_note": "js-walled: custom HTML; 2027 exhibitor list is a search shell printing no names (template link exhibitor_sponsor_details27?id={{ConferenceExhibitorId}}); detail pag (read 2026-10-14)"
   },
   {
    "block": "Higher education",
@@ -2269,7 +2348,7 @@
    "conference": "Broadband Communities Summit",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.terrapinn.com/conference/broadband-communities/2026-Sponsors-Exhibitors.stm",
    "fetchability": null,
    "event_tag": "Broadband Communities Summit 2026",
    "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these.",
@@ -2278,7 +2357,8 @@
    "url": "https://www.terrapinn.com/conference/broadband-communities-summit/",
    "dates_confidence": "high",
    "dates_source": "https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/",
+   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 24 company names visible"
   },
   {
    "block": "Health and human services",
@@ -2287,7 +2367,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "image",
    "event_tag": "NAMPI 2026",
    "dates": "August 22-25, 2027",
    "city": "Portland, OR",
@@ -2296,7 +2376,9 @@
    "note": "added 2026-08-25 at the owner's request. Run by National Association for Medicaid Program Integrity. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
    "url": "https://nampi.net/",
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://nampi2026.vfairs.com/",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://nampi2026.vfairs.com/en/nampi-2026-annual-conference-sponsors",
+   "exhibitor_url_candidate_note": "image: vFairs; vFairs event site's '2026 Sponsors' page prints headings 'NAMPI 2026 Annual Conference Sponsors' but no names; sponsors are logos with 30 'W (read 2026-10-14)"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -2330,7 +2412,8 @@
    "dates_source": "https://www.immregistries.org/national-meeting",
    "note": "added 2026-08-25 at the owner's request. Run by American Immunization Registry Association. Exhibitors on file were mined from the April 28-30, 2026 edition in Pittsburgh, PA; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
    "url": "https://www.immregistries.org/national-meeting",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.immregistries.org/national-meeting"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://www.immregistries.org/national-meeting",
+   "discovery_notes": "directory read 2026-10-14: not_found - National Meeting page (national-meeting1) lists only agenda PDFs per year, 2026 included; no exhibitor or sponsor page for the 2026 or 2027 meeting. Corporate P"
   },
   {
    "block": "Health and human services",
@@ -2339,7 +2422,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": null,
-   "fetchability": null,
+   "fetchability": "js-walled",
    "event_tag": "Healthcare IT Connect 2026",
    "dates": "March 29 - April 1, 2027",
    "city": "New Orleans, LA",
@@ -2348,7 +2431,9 @@
    "note": "added 2026-08-25 at the owner's request. These dates are PAST as of the date added - they are the edition being mined for exhibitors, not the next one. The next edition still needs finding.",
    "url": "https://healthcareitconnect.com/",
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://healthcareitconnect.com/",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-10",
+   "exhibitor_url_candidate": "https://app.healthcareitconnect.com/event/2026-state-healthcare-it-connect-summit-or-event-portal/exhibitors/RXZlbnRWaWV3XzEyMDk5MDE=",
+   "exhibitor_url_candidate_note": "js-walled: Swapcard; 'Community Sponsors' link goes to the 2026 Summit event portal's exhibitors page on app.healthcareitconnect.com, a white-labelled Swapcard s (read 2026-10-14)"
   },
   {
    "block": "Health and human services",
@@ -2365,7 +2450,8 @@
    "dates_source": "https://medicaiddirectors.org/events/",
    "note": "added 2026-08-25 at the owner's request. Run by National Association of Medicaid Directors. Exhibitors on file were mined from the November 19-21, 2025 edition in National Harbor, MD; the dates and city above now describe the NEXT edition, verified 2026-08-25. event_tag still names the mined edition, which is what ties a company to where it was found.",
    "url": "https://medicaiddirectors.org/events/",
-   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://medicaiddirectors.org/events/"
+   "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://medicaiddirectors.org/events/",
+   "discovery_notes": "directory read 2026-10-14: unreadable - medicaiddirectors.org fall-conference page names no sponsors and points to events.medicaiddirectors.org, whose robots.txt answered HTTP 202, so the crawler keep"
   },
   {
    "block": "Health and human services",
