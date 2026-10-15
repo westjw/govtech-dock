@@ -1142,6 +1142,10 @@ def stage_promote(write: bool, which: str = "state") -> int:
     cat = json.loads(cat_p.read_text())
     taken = {c.get("event_tag") for c in cat["conferences"] if c.get("event_tag")}
     known_urls = {c.get("exhibitor_url") for c in cat["conferences"] if c.get("exhibitor_url")}
+    # A PLACE THE CATALOGUE ALREADY USES, and no other. National rows carry no
+    # department (760 of 837), so a reader proposes `catalog_place`; it lands
+    # only as a pair conferences.json already files events under.
+    pairs = {(c.get("block"), c.get("department")) for c in cat["conferences"]}
 
     ready = [e for e in doc["events"]
              if e.get("status") == "directory_found" and not e.get("promoted")]
@@ -1159,9 +1163,13 @@ def stage_promote(write: bool, which: str = "state") -> int:
                             "the site's own title confirms it"))
             continue
         place = CATALOG_PLACE.get(e.get("department") or "")
+        cp = e.get("catalog_place")
+        if not place and isinstance(cp, list) and len(cp) == 2 and tuple(cp) in pairs:
+            place = tuple(cp)
         if not place:
             refused.append((e["org_code"], f"no catalog place for department "
-                                           f"{e.get('department')!r}"))
+                                           f"{e.get('department')!r}"
+                                           + (f" or {cp!r}" if cp else "")))
             continue
         if e["directory_url"] in known_urls:
             refused.append((e["org_code"], "that exhibitor url is already in the "
@@ -1203,13 +1211,15 @@ def stage_promote(write: bool, which: str = "state") -> int:
             "dates_source": e["directory_url"],
             "dates_confidence": "unannounced",
             "discovery_notes": (
-                f"State chapter event promoted from data/state_events.json on "
+                f"{'State chapter' if which == 'state' else 'National'} event "
+                f"promoted from data/{REGISTRIES[which].name} on "
                 f"{dt.date.today().isoformat()}. Organisation name confirmed as "
                 f"{org!r} by {name_source}. Directory: "
                 f"{e.get('directory_note')}. Event name "
                 + (f"read from the page as {name!r}." if name else
                    "not stated on the page; the organisation's name stands in.")),
-            "state_event": {"org_code": e["org_code"], "geo": e.get("geo"),
+            ("state_event" if which == "state" else "national_event"):
+                {"org_code": e["org_code"], "geo": e.get("geo"),
                             "parent_national": e.get("parent_national")},
         }
         cat["conferences"].append(row)
@@ -1227,7 +1237,10 @@ def stage_promote(write: bool, which: str = "state") -> int:
         return 0
     if added:
         tmp = cat_p.with_suffix(".tmp")
-        tmp.write_text(json.dumps(cat, indent=1) + "\n")
+        # RAW UTF-8: conferences.json is committed that way, and an escaped
+        # write turns one promotion into a rewrite of every "\u2014" in the
+        # catalogue (the conference_dates trap, 2026-10-09).
+        tmp.write_text(json.dumps(cat, indent=1, ensure_ascii=False) + "\n")
         json.loads(tmp.read_text())
         tmp.replace(cat_p)
         _save(doc, which)

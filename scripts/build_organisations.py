@@ -279,7 +279,7 @@ def build() -> dict:
     #    because there is no other field carrying it.
     for c in _read("conferences.json", "conferences"):
         tag = c.get("event_tag") or ""
-        se = c.get("state_event") or {}
+        se = c.get("state_event") or c.get("national_event") or {}
         code = (se.get("org_code") or _lead(tag)).upper()
         o = slot(code, c.get("conference") or "")
         if c.get("url") and not o["url"]:

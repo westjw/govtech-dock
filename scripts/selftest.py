@@ -26364,6 +26364,45 @@ def check_promotion_refuses_a_generated_name() -> int:
         if good.get("swept") is not False or good.get("flagship") is not False:
             print("  FAIL: a freshly promoted event is neither swept nor flagship")
             errors += 1
+
+    # NATIONAL ROWS: a body has no state and its row no department. The name
+    # is the one its own site states (org_name_observed), and the place is a
+    # reader's catalog_place, landing ONLY as a pair the catalogue already uses.
+    tmp2 = pathlib.Path(tempfile.mkdtemp(prefix="gtd-promote-nat-"))
+    (tmp2 / "conferences.json").write_text(json.dumps({"note": "", "conferences": [
+        {"block": "Public safety", "department": "Fire", "conference": "X", "event_tag": "X 2026"}]}))
+    (tmp2 / "national_events.json").write_text(json.dumps({"registry": "national", "note": "", "events": [
+        {"key": "N1", "org_code": "NGOOD", "org_name": "NGOOD", "org_name_observed": "Good Fire Chiefs Association",
+         "catalog_place": ["Public safety", "Fire"], "org_url": "https://n1.test/",
+         "directory_url": "https://n1.test/exhibitors", "status": "directory_found", "promoted": False},
+        {"key": "N2", "org_code": "NPLACE", "org_name": "NPLACE", "org_name_observed": "Placeless Association",
+         "catalog_place": ["Public safety", "Wildland arson"], "org_url": "https://n2.test/",
+         "directory_url": "https://n2.test/exhibitors", "status": "directory_found", "promoted": False},
+        {"key": "N3", "org_code": "NNAME", "org_name": "NNAME", "catalog_place": ["Public safety", "Fire"],
+         "org_url": "https://n3.test/", "directory_url": "https://n3.test/exhibitors",
+         "status": "directory_found", "promoted": False}]}))
+    pages2 = {u: "<title>2026 Annual Conference Exhibitors</title>" for u in
+              ("https://n1.test/exhibitors", "https://n2.test/exhibitors", "https://n3.test/exhibitors")}
+    keep = (fed.REGISTRIES["national"], fed.DATA, fed.fetch)
+    try:
+        fed.REGISTRIES["national"], fed.DATA = tmp2 / "national_events.json", tmp2
+        fed.fetch = lambda u: pages2.get(u)
+        with contextlib.redirect_stdout(io.StringIO()):
+            fed.stage_promote(True, "national")
+        got2 = json.loads((tmp2 / "conferences.json").read_text())["conferences"]
+    finally:
+        fed.REGISTRIES["national"], fed.DATA, fed.fetch = keep
+    nat = {c.get("national_event", {}).get("org_code"): c for c in got2 if c.get("national_event")}
+    if set(nat) != {"NGOOD"}:
+        print(f"  FAIL: national promotion took {sorted(nat)}; only NGOOD has a name its "
+              f"own site states and a place the catalogue uses")
+        errors += 1
+    elif (nat["NGOOD"]["block"], nat["NGOOD"]["department"]) != ("Public safety", "Fire") \
+            or "Good Fire Chiefs Association" not in nat["NGOOD"]["event_tag"]:
+        print(f"  FAIL: NGOOD was filed at {nat['NGOOD']['block']}/{nat['NGOOD']['department']} "
+              f"as {nat['NGOOD']['event_tag']!r}")
+        errors += 1
+
     return errors
 
 
