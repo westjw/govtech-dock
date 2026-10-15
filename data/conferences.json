@@ -8,10 +8,10 @@
    "flagship": true,
    "swept": true,
    "fetchability": "readable",
-   "event_tag": "ICMA 2025",
-   "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
+   "event_tag": "ICMA 2026",
+   "tag_note": "rolled 2026-10-14 from 'ICMA 2025' to 'ICMA 2026' (owner's ruling): the organiser's live exhibitor list is the 2026 edition's. Companies already tagged 'ICMA 2025' keep it - it stays issued as a prior tag.",
    "prior_tags": [
-    "ICMA 2026"
+    "ICMA 2025"
    ],
    "url": "https://conference.icma.org/",
    "dates": "October 17-21, 2026",
@@ -19,8 +19,8 @@
    "next_edition": "2026",
    "dates_source": "https://conference.icma.org/about-the-show/future-past-icma-conferences/",
    "dates_confidence": "high",
-   "exhibitor_url_candidate": "https://icma2026.smallworldlabs.com/exhibitors",
-   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2026 edition's and this row's tag is 'ICMA 2025'; tagging its companies with 'ICMA 2025' would say they exhibited at an edition they did not. Held until the row moves to the 2026 edition (owner's call: a tag change moves the /e/ address)."
+   "exhibitor_url": "https://icma2026.smallworldlabs.com/exhibitors",
+   "exhibitor_url_source": "directory read 2026-10-10, re-read by the crawler 2026-10-14"
   },
   {
    "block": "Executive / administration",
@@ -923,15 +923,19 @@
    "flagship": false,
    "swept": false,
    "fetchability": "readable",
-   "event_tag": "Government Fleet Expo 2026",
+   "event_tag": "Government Fleet Expo 2027",
    "url": "https://www.governmentfleetexpo.com/",
    "dates": "June 15-18, 2027",
    "city": "Atlanta, GA",
    "next_edition": "2027",
    "dates_source": "https://www.governmentfleetexpo.com/",
    "dates_confidence": "high",
-   "exhibitor_url_candidate": "https://www.governmentfleetexpo.com/exhibitors",
-   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'Government Fleet Expo 2026'; tagging its companies with 'Government Fleet Expo 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
+   "prior_tags": [
+    "Government Fleet Expo 2026"
+   ],
+   "exhibitor_url": "https://www.governmentfleetexpo.com/exhibitors",
+   "exhibitor_url_source": "directory read 2026-10-10, re-read by the crawler 2026-10-14",
+   "tag_note": "rolled 2026-10-14 from 'Government Fleet Expo 2026' to 'Government Fleet Expo 2027' (owner's ruling): the organiser's live exhibitor list is the 2027 edition's. Companies already tagged 'Government Fleet Expo 2026' keep it - it stays issued as a prior tag."
   },
   {
    "block": "Public works and infrastructure",
@@ -1037,15 +1041,19 @@
    "flagship": false,
    "swept": false,
    "fetchability": "readable",
-   "event_tag": "WasteExpo 2026",
+   "event_tag": "WasteExpo 2027",
    "url": "https://www.wasteexpo.com/",
    "dates": "May 3-6, 2027",
    "city": "Las Vegas, NV",
    "next_edition": "2027",
    "dates_source": "https://www.wasteexpo.com/",
    "dates_confidence": "high",
-   "exhibitor_url_candidate": "https://wasteexpo2027.smallworldlabs.com/exhibitors",
-   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'WasteExpo 2026'; tagging its companies with 'WasteExpo 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
+   "prior_tags": [
+    "WasteExpo 2026"
+   ],
+   "exhibitor_url": "https://wasteexpo2027.smallworldlabs.com/exhibitors",
+   "exhibitor_url_source": "directory read 2026-10-10, re-read by the crawler 2026-10-14",
+   "tag_note": "rolled 2026-10-14 from 'WasteExpo 2026' to 'WasteExpo 2027' (owner's ruling): the organiser's live exhibitor list is the 2027 edition's. Companies already tagged 'WasteExpo 2026' keep it - it stays issued as a prior tag."
   },
   {
    "block": "Public works and infrastructure",
@@ -1170,15 +1178,19 @@
    "flagship": true,
    "swept": true,
    "fetchability": "readable",
-   "event_tag": "AAAE 2026",
+   "event_tag": "AAAE 2027",
    "url": "https://aaae.org/annual",
    "dates": "May 16-18, 2027",
    "city": "Phoenix, AZ",
    "next_edition": "2027",
    "dates_source": "https://aaae.org/annual",
    "dates_confidence": "high",
-   "exhibitor_url_candidate": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
-   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'AAAE 2026'; tagging its companies with 'AAAE 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
+   "prior_tags": [
+    "AAAE 2026"
+   ],
+   "exhibitor_url": "https://s2.goeshow.com/aaae/annual/2027/exhibit_list.cfm",
+   "exhibitor_url_source": "directory read 2026-10-10, re-read by the crawler 2026-10-14",
+   "tag_note": "rolled 2026-10-14 from 'AAAE 2026' to 'AAAE 2027' (owner's ruling): the organiser's live exhibitor list is the 2027 edition's. Companies already tagged 'AAAE 2026' keep it - it stays issued as a prior tag."
   },
   {
    "block": "Transportation",
@@ -2194,15 +2206,19 @@
    "flagship": false,
    "swept": false,
    "fetchability": "readable",
-   "event_tag": "CEC Convention 2026",
+   "event_tag": "CEC Convention 2027",
    "url": "https://cecconvention.org/",
    "dates": "March 10-13, 2027",
    "city": "Columbus, OH",
    "next_edition": "2027",
    "dates_source": "https://cecconvention.org/",
    "dates_confidence": "high",
-   "exhibitor_url_candidate": "https://cecconvention.org/partner",
-   "exhibitor_url_candidate_note": "read 2026-10-14: a real list, but it is the 2027 edition's and this row's tag is 'CEC Convention 2026'; tagging its companies with 'CEC Convention 2026' would say they exhibited at an edition they did not. Held until the row moves to the 2027 edition (owner's call: a tag change moves the /e/ address)."
+   "prior_tags": [
+    "CEC Convention 2026"
+   ],
+   "exhibitor_url": "https://cecconvention.org/partner",
+   "exhibitor_url_source": "directory read 2026-10-10, re-read by the crawler 2026-10-14",
+   "tag_note": "rolled 2026-10-14 from 'CEC Convention 2026' to 'CEC Convention 2027' (owner's ruling): the organiser's live exhibitor list is the 2027 edition's. Companies already tagged 'CEC Convention 2026' keep it - it stays issued as a prior tag."
   },
   {
    "block": "Higher education",
