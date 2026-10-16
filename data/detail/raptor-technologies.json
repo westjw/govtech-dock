@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "Bullying Prevention in Schools: Challenges and Opportunities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://raptortech.com/resources/blog/bullying-prevention-in-schools-challenges-and-opportunities/"
+  },
+  {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-14",
    "headline": "18 Proven Strategies for Combatting School Vandalism on Halloween (and Year-Round)",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-13",
    "headline": "Are Your Substitute Teachers Prepared for Campus Emergencies?",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "Why Traditional Hall Passes Aren\u2019t Suited for Students With IEPs",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "Great Bend Public Schools USD 428 Improves Campus Security with Raptor VisitorSafe\u2122",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "A Defensible 6-Step Framework for Responding to Bullying at Schools",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "8 Safety and Planning Steps to Take Before a School Field Trip",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "4 Strategies to Prevent Student Vaping",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://raptortech.com/resources/campus-administrator-bullying-prevention-guide/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Case for Wearable Silent Panic Alerts: Helping Schools Choose and Adopt the Right One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://raptortech.com/resources/wearable-silent-panic-alerts-guide/"
   }
  ],
  "profile": {

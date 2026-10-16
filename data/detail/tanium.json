@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-15",
+   "headline": "Tanium Selected as Testing Partner for Microsoft's Codename MDASH",
+   "kind": "contract",
+   "kind_rule": "Selected as",
+   "url": "https://www.tanium.com/press-releases/tanium-selected-as-testing-partner-for-microsofts-codename-mdash"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-15",
+   "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
+   "kind": "product",
+   "kind_rule": "introducing",
+   "url": "https://www.tanium.com/blog/introducing-endpoint-drift"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "card-date",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/runmru-credential-exposure-huntiq"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Tanium Joins Anthropic's Project Glasswing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/press-releases/tanium-joins-anthropics-project-glasswing"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "card-date",
-   "first_seen": "2026-09-12",
-   "headline": "Hunt or be Hunted: FalconFlank Zero-Day",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/falconflank-zero-day-privilege-escalation-huntiq"
   }
  ],
  "profile": {

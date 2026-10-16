@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Financial Model in Higher Education: How Universities Can Plan Hiring, Budgets, and Financial Stability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/financial-model-in-higher-education/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/degree-audit/"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "WhatsApp for University Admissions Team: A Complete Guide to Student Recruitment, Engagement & Enrollment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/whatsapp-for-university-admissions-team/"
   }
  ]
 }

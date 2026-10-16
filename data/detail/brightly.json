@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Three key considerations for choosing an asset management software partner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.brightlysoftware.com/blog/three-key-considerations-for-choosing-an-asset-management-software-partner"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -64,19 +73,19 @@
    "url": "https://www.brightlysoftware.com/blog/beyond-the-map-why-your-gis-should-be-at-the-center-of-asset-management"
   },
   {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date": "2026-09-16",
+   "date_source": "time",
    "first_seen": "2026-09-28",
-   "headline": "When experience leaves the plant floor: Protecting institutional knowledge for the next generation",
+   "headline": "From aging infrastructure to strategic investment: How Guideline 43 can transform healthcare HVAC management",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/when-experience-leaves-the-plant-floor-protecting-institutional-knowledge-for-the-next"
   },
   {
-   "date": "2026-09-15",
-   "date_source": "time",
+   "date": "2026-09-16",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
-   "headline": "Your 90-day framework to accelerate maintenance technician onboarding in food and beverage manufacturing",
+   "headline": "From aging infrastructure to strategic investment: How Guideline 43 can transform healthcare HVAC management",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/from-aging-infrastructure-to-strategic-investment-how-guideline-43-can-transform-healthcare"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.brightlysoftware.com/blog/the-reliability-leaders-guide-to-building-a-learning-culture"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "The reliability leader\u2019s guide to building a learning culture",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.brightlysoftware.com/en-gb/blog/the-reliability-leaders-guide-to-building-a-learning-culture"
   }
  ],
  "profile": {

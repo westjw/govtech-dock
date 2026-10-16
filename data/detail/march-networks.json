@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "VIVOTEK and March Networks Bring AI Video Intelligence to Security Canada Central",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/vivotek-and-march-networks-bring-ai-video-intelligence-to-security-canada-central/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/it/news/march-networks-achieves-bis-er-01-certification-in-india/"
-  },
-  {
-   "date": "2026-09-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Behind the Lens \u2013 August 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/news/behind-the-lens-august-2026/"
   }
  ],
  "profile": {

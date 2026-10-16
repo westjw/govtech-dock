@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Avolve DigEplan vs Bluebeam vs e-PlanSoft: Which is Best for Plan Review?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eplansoft.com/resources/avolve-digeplan-vs-bluebeam-vs-eplansoft"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-08-24",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI Didn\u2019t Replace Radiologists. It Won\u2019t Replace Plan Reviewers Either.",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eplansoft.com/resources/8-signs-its-time-to-stop-reviewing-plans-on-paper-and-email"
-  },
-  {
-   "date": "2026-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Chicago Changed How It Reports on Permit Timelines",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eplansoft.com/resources/chicagopermits"
   }
  ],
  "profile": {

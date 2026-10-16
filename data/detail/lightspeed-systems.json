@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "How Schools Should Monitor Devices for Cyberbullying",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/how-schools-should-monitor-devices-for-cyberbullying/"
+  },
+  {
    "date": "2026-10-11",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/blog/florida-rule-6a-1-0957-what-k-12-districts-need-to-know-about-the-proposed-ai-requirements/"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Technology Magazine: How One CTO Manages AI and Cyber Risks for 12,700 Students",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/news/technology-magazine-how-one-cto-manages-ai-and-cyber-risks-for-12700-students/"
   }
  ],
  "profile": {

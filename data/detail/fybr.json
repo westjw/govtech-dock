@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Smart Parking for Smaller Cities: Where to Start and What to Expect",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/post/smart-parking-for-smaller-cities"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Enforcing Parking Time Limits Without Manual Patrols",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/post/parking-time-limit-enforcement"
+  },
+  {
    "date": "2025-07-08",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -13,7 +31,7 @@
    "date": "2025-06-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Modern Parking Best Practices for Cities: Continuous Measurement and Management",
+   "headline": "Smart Parking Best Practices for Cities: Continuous Measurement and Management",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fybr.com/post/modernparkingbestpractices"
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fybr.com/news/gatz-retires-stephens-named-successor"
+  },
+  {
+   "date": "2025-06-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Fybr CEO Bob Glatz Announces Retirement; Patrick Stephens Named Successor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fybr.com/post/fybr-names-patrick-stephens-ceo"
   },
   {
    "date": "2025-05-21",

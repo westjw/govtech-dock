@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-07",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-15",
    "headline": "Ontra Selected for the 2026 BE100",
    "kind": "contract",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-05-10",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Building the Ontra Planning Platform",
    "kind": "press",
@@ -73,17 +73,8 @@
    "url": "https://www.ontramobility.com/press/ontra-fresno-partnership"
   },
   {
-   "date": "2025-11-05",
-   "date_source": "og:published",
-   "first_seen": "2026-09-05",
-   "headline": "Ontra Mobility and Longwood Collective Launch Commuter App",
-   "kind": "product",
-   "kind_rule": "Launch",
-   "url": "https://www.ontramobility.com/press/longwood-commutes"
-  },
-  {
-   "date": "2025-10-27",
-   "date_source": "og:published",
+   "date": "2025-11-11",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Introducing Ridership Predictions Ontra Mobility unveils AI-powered ridership predictions to help agencies plan better service with confidence. Read More",
    "kind": "product",
@@ -91,8 +82,17 @@
    "url": "https://www.ontramobility.com/blog/ridership-predictions"
   },
   {
+   "date": "2025-11-05",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "Ontra Mobility and Longwood Collective Launch Commuter App",
+   "kind": "product",
+   "kind_rule": "Launch",
+   "url": "https://www.ontramobility.com/press/longwood-commutes"
+  },
+  {
    "date": "2025-10-14",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Unveiling the AI Platform for Transit Planning",
    "kind": "press",

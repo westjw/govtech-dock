@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "IQGeo Announces 2026 Americas Innovation Award Winners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.iqgeo.com/news/iqgeo-announces-2026-americas-innovation-award-winners"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.iqgeo.com/blog/fiber-system-of-record-for-utilities"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Utility Field Workers of the Future",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.iqgeo.com/blog/future-of-utility-field-work-ai"
   }
  ],
  "profile": {

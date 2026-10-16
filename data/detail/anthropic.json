@@ -10,6 +10,15 @@
    "url": "https://www.anthropic.com/news/singapore-office-opening"
   },
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Preparing for the 2026 US midterms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/2026-us-midterms"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Improving our alignment and security efforts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/improving-alignment-security-efforts"
   }
  ],
  "profile": {

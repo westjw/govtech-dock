@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "og:published",
+   "first_seen": "2026-10-15",
+   "headline": "Proofpoint to Acquire Varonis in a $6.3 Billion Transaction",
+   "kind": "funding",
+   "kind_rule": "to Acquire",
+   "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-acquire-varonis-creating-global-leader-data-and-ai-security"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "og:published",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.proofpoint.com/es/newsroom/press-releases/proofpoint-detiene-los-ataques-que-las-defensas-tradicionales-pasan-por-alto"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "og:published",
-   "first_seen": "2026-09-28",
-   "headline": "Proofpoint reconoce a los ganadores de los Global Partner Awards de 2026 en su evento insignia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.proofpoint.com/es/newsroom/press-releases/proofpoint-reconoce-los-ganadores-de-los-global-partner-awards-de-2026-en-su"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "MAS Deployment Series: Creating a ReadWriteMany (RWX) NFS Dynamic Provisioner & Related Storage Class",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/mas-deployment-series-creating-a-readwritemany-rwx-nfs-dynamic-provisioner-related-storage-class"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "MAS Deployment Series: Automating a Workaround for FIPS 140-2 Sunset on MAS Installations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.interlocsolutions.com/blog/mas-deployment-series-automating-a-workaround-for-fips-140-2-sunset-on-mas-installations-1"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.interlocsolutions.com/blog/introducing-interloc-informer-part-i"
-  },
-  {
-   "date": "2026-06-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "OpenShift installation and post-install steps and considerations plus annexes. Part 3 of 3",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/openshift-installation-and-post-install-steps-and-considerations-plus-annexes.-part-3-of-3"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Installing an offline OpenShift Cluster and Mirroring the required Image Registries. Part 2 of 3, installing and populating registries.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.interlocsolutions.com/blog/installing-an-offline-openshift-cluster-and-mirroring-the-required-image-registries.-part-2-of-3-installing-and-populating-registries"
   }
  ],
  "profile": {

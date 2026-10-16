@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Jail implements technology aimed at improving inmate health monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/jail-implements-technology-aimed-at-improving-inmate-health-monitoring"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "15 Minute Checks in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/15-minute-checks-in-jail"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/battery-life-vs-transmission-power-in-wearable-monitoring-systems-engineering-trade-offs-in-jail-monitoring-technology"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "Layered Monitoring in Detention Facilities: The Evolution of the Unified Correctional Biometric Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/layered-monitoring-in-detention-facilities-the-evolution-of-the-unified-correctional-biometric-platform"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "State Jail Observation Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/state-jail-observation-compliance"
   }
  ],
  "profile": {

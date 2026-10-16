@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Crisis Center Software: What 988 and Mobile Crisis Teams Actually Need",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/crisis-center-software-what-988-and-mobile-crisis-teams-need/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/dont-overlook-these-resources-and-crisis-response-partners/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Are MIH-CP Conferences Worth the Trip?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/are-mih-cp-conferences-worth-the-trip/"
   }
  ],
  "profile": {

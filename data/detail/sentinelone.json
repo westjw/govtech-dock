@@ -28,6 +28,15 @@
    "url": "https://www.sentinelone.com/blog/5-years-of-sentinelone-threatops-defense-from-the-ground-up-to-global-threat-championships/"
   },
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "SentinelOne Wins SIEM Solution of the Year in CyberSecurity Breakthrough Awards 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-wins-siem-solution-of-the-year-in-cybersecurity-breakthrough-awards-2026/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "index-text",
    "first_seen": "2026-10-06",
@@ -35,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-how-edr-killing-became-an-industry/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "SentinelOne Named a Leader in the IDC MarketScape for Worldwide Modern Endpoint Security for Enterprises",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-named-a-leader-in-the-idc-marketscape-for-worldwide-modern-endpoint-security-for-enterprises/"
   },
   {
    "date": "2026-09-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/press/sentinelone-extends-wayfinder-threat-huntings-continuous-coverage-to-aws-azure-and-google-cloud/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "New Study From SentinelOne & S&P Global\u2019s 451 Research Uncovers Widely Divergent Enterprise Readiness for Autonomous SOC Adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/new-study-from-sentinelone-sp-globals-451-research-uncovers-widely-divergent-enterprise-readiness-for-autonomous-soc-adoption/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Why the SOC Can't Run on Vibes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/why-the-soc-cant-run-on-vibes/"
   }
  ],
  "profile": {

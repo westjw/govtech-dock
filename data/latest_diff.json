@@ -1,69 +1,69 @@
 {
-  "date": "2026-10-15",
-  "previous": "2026-10-14",
+  "date": "2026-10-16",
+  "previous": "2026-10-15",
   "changes": [
     {
-      "company": "SewerAI",
-      "id": "sewerai",
-      "from": "Yes",
+      "company": "BusPatrol",
+      "id": "buspatrol",
+      "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Revenue Operations Analyst only"
+      "note": "Vice President, Revenue Operations only"
     },
     {
-      "company": "Powerfleet",
-      "id": "powerfleet",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Spare",
-      "id": "spare",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "FLEETWATCH by S & A Systems, Inc.",
-      "id": "fleetwatch-by-s-a-systems-inc",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Saltus Technologies",
-      "id": "saltus-technologies",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Regroup Mass Notification",
-      "id": "regroup-mass-notification",
+      "company": "Eventeny",
+      "id": "eventeny",
       "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Saas Account Executive"
+      "note": "Sales & Business Development Manag"
     },
     {
-      "company": "Clear Ballot Group",
-      "id": "clear-ballot-group",
-      "from": "None found",
+      "company": "Off Duty Management",
+      "id": "off-duty-management",
+      "from": "Yes",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Sentrycs",
+      "id": "sentrycs",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Ekin Smart City Technologies",
+      "id": "ekin-smart-city-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.ekin.com/about/"
+    },
+    {
+      "company": "Hapco",
+      "id": "hapco",
+      "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
-      "company": "FLASH",
-      "id": "flash",
-      "from": "Sales (non-AE)",
+      "company": "Singlewire Software",
+      "id": "singlewire-software",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Overstory",
+      "id": "overstory",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "CyberNut",
-      "id": "cybernut",
-      "from": "None found",
+      "company": "Heron Power",
+      "id": "heron-power",
+      "from": "Sales (non-AE)",
       "to": "Yes",
-      "note": "Account Executive - West (United States (Rem)"
+      "note": "Senior Technical Account Manager (Scotts Valley)"
     }
   ]
 }
