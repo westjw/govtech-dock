@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Does Your Delivery Fleet Actually Need a USDOT Number?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/does-your-delivery-fleet-need-a-usdot-number/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "IFTA Fuel Tax Reporting for Trucking Fleets: What Actually Has to Be Tracked",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/ifta-fuel-tax-reporting-trucking-fleets/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "What Happens During a Level I vs. Level II Roadside Inspection?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/level-i-vs-level-ii-roadside-inspection/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "DOT Annual Inspection Requirements for Dump Trucks, Water Trucks, and Other Construction Vehicles",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/dot-annual-inspection-construction-vehicles/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Managing a Mixed CDL and Non-CDL Construction Fleet: What Compliance Actually Requires",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/cdl-non-cdl-construction-fleet-compliance/"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/fleet-management-kpis/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "AI Workflow Automation for Maintenance Defects: From \"Reported\" to \"Resolved\" Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/ai-workflow-automation-maintenance-defects/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Box Truck Inspection Checklist: Daily Pre-Trip Guide + Free PDF",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/box-truck-inspection-checklist/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "6 Mistakes Fleets Make When Implementing New Maintenance Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/fleet-maintenance-software-implementation-mistakes/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Skid Steer Inspection Checklist: Daily Checks and Free PDF Download",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/skid-steer-inspection-checklist/"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How to Turn Fleet Maintenance Due Dates Into an Actionable Schedule",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/fleet-maintenance-due-dates-actionable-schedule/"
   }
  ],
  "profile": {

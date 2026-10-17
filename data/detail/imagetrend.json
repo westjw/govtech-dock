@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "How to Build Quality Into the EMS Documentation Workflow",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/ems-documentation-quality-cqi-workflow/"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "From Scheduled Reports to Unified Analytics for Fire and EMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/connecting-fire-ems-data-insights/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -64,6 +82,15 @@
    "url": "https://www.imagetrend.com/blog/ems-world-expo-2026-recap/"
   },
   {
+   "date": "2026-08-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "The Hidden Cost of Compliance Gaps in Ontario EMS",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imagetrend.com/blog/compliance-gaps-ontario-ems/"
+  },
+  {
    "date": "2026-07-24",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imagetrend.com/blog/reducing-ems-documentation-burden/"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ImageTrend CFO John Wolfenden Accepted Into Forbes Finance Council",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/press-releases/cfo-forbes-finance-council/"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ImageTrend Supports State of Iowa with Addition of Community Health Module to EMS and Trauma Registry",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/press-releases/iowa-community-health-support/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Connect26 Conversations: How to Apply National EMS Benchmarking Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imagetrend.com/blog/apply-national-ems-data/"
   }
  ],
  "profile": {

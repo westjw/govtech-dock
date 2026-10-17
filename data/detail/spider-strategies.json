@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Enterprise Strategy Execution: What Breaks at Scale and How to Fix It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/enterprise-strategy-execution/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Strategic Performance Measurement: A Practical Framework",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/strategic-performance-measurement/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Real-Time Business Intelligence: How Live Data Changes Strategic Decisions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.spiderstrategies.com/blog/realtime-business-intelligence/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.spiderstrategies.com/blog/retirement-strategy-management/"
-  },
-  {
-   "date": "2026-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Great Strategy Reporting Looks Like \u2014 and Why Most of It Falls Short",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/strategy-reporting/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Utility Organizations Should Measure \u2014 Beyond Reliability and Cost",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/utility-performance-metrics/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Strategic Performance Metrics: Measuring What Actually Matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.spiderstrategies.com/blog/strategic-performance-metrics/"
   }
  ],
  "profile": {

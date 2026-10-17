@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "An update on independent evaluators",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Anthropic opens Singapore office and signs MOU with the Government of Singapore",
+   "kind": "contract",
+   "kind_rule": "signs MOU",
+   "url": "https://www.anthropic.com/news/singapore-office-opening"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Preparing for the 2026 US midterms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/2026-us-midterms"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -80,33 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.anthropic.com/news/life-sciences-verification-program"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Developing Enterprise Frontier Safeguards with our customers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Improving our alignment and security efforts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/improving-alignment-security-efforts"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Previewing the Model Hardware Standard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview"
   }
  ],
  "profile": {

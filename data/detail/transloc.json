@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "TransL\u014dc to Exhibit at CPTA Annual Conference & Trade Show 2026, Highlighting Connected Campus Mobility Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/press/cpta-2026/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "TransL\u014dc Congratulates Longtime Partner Senior Resource Association / GoLine on APTA\u2019s 2026 Outstanding Public Transportation System Achievement Award",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/press/senior-resource-association-goline-apta-2026-award/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "time",
    "first_seen": "2026-10-08",
@@ -11,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "TransL\u014dc to Exhibit at APTA TRANSform & EXPO 2026, Highlighting Connected Fixed Route and OnDemand Solutions",
    "kind": "press",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "TransLoc to Exhibit at NACAS C3X 2026, Highlighting Connected Mobility for Safer, Smarter Campuses",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "TransL\u014dc Delivers Phase 2 Enhancements to Reporting Platform: Faster, More Responsive Fixed Route Reports",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "TransL\u014dc\u2019s Troy Morris Reflects on His First Months as General Manager, Grounded in Direct Customer Conversations",
    "kind": "leadership",
    "kind_rule": "as General Manager",
    "url": "https://transloc.com/press/translocs-troy-morris-reflects-on-his-first-months-as-general-manager-grounded-in-direct-customer-conversations/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "What a 40 Percent Fare Increase Actually Buys a Transit Agency",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/what-a-40-fare-increase-actually-buys-a-transit-agency/"
-  },
-  {
-   "date": "2026-07-22",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Fixed Route or OnDemand Microtransit? A Decision Framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/fixed-route-or-ondemand-microtransit-a-decision-framework/"
   }
  ]
 }

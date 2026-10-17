@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "How to Run a Background Check on Someone Else",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-to-run-a-background-check-on-someone-else"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Do Arrests Show Up on a Background Check?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/do-arrests-show-up-on-a-background-check"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "How to Run a Background Check on Yourself",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-to-run-a-background-check-on-yourself"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/continuous-employee-monitoring-how-real-time-arrest-alerts-work"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Background Check Best Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/background-check-best-practices"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Background Checks for Small Businesses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/background-checks-for-small-businesses"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Hiring Leaders Actually Think About Their Background Screening Providers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/what-hiring-leaders-actually-think-about-their-background-screening-providers"
   }
  ],
  "profile": {

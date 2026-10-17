@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Phishing Incident Response for K\u201312 Schools: What to Do After You Detect an Account Takeover",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://managedmethods.com/blog/phishing-incident-response-for-k-12-schools/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "8 Signs Your School District Has Outgrown Its Web Content Filtering Solution",
    "kind": "press",
    "kind_rule": null,
    "url": "https://managedmethods.com/blog/your-school-district-has-outgrown-its-web-content-filtering-solution/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Choosing the Right Web Content Filtering Solution for Your School District",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://managedmethods.com/blog/right-web-content-filtering-solution-for-your-school-district/"
   }
  ],
  "profile": {

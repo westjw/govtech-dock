@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Crisis Center Software: What 988 and Mobile Crisis Teams Actually Need",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/crisis-center-software-what-988-and-mobile-crisis-teams-need/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Lift Assist Calls: Two Patients Hiding in One Number",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/lift-assist-calls-two-patients-hiding-in-one-number/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "How Pre-Arrest Behavioral Health Diversion Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.julota.com/news/how-pre-arrest-behavioral-health-diversion-works/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.julota.com/news/dont-overlook-these-resources-and-crisis-response-partners/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Are MIH-CP Conferences Worth the Trip?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/are-mih-cp-conferences-worth-the-trip/"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Starter Guide: First Responder Basic Counseling Skills",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/starter-guide-first-responder-basic-counseling-skills/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Police Response to Mental Health Crisis: Navigating Firearms Use",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.julota.com/news/police-response-to-mental-health-crisis-navigating-firearms-use/"
   }
  ],
  "profile": {

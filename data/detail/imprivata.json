@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-15",
+   "headline": "When risk rises, security should get smarter, not harder",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/when-risk-rises-security-should-get-smarter-not-harder"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "card-date",
+   "first_seen": "2026-10-14",
+   "headline": "Beyond compliance: Improving workforce efficiency in aged care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/beyond-compliance-improving-workforce-efficiency-aged-care"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "Imprivata and Verosint merge branding, websites and other marketing materials in support of the recent Imprivata acquisition of Verosint",
+   "kind": "funding",
+   "kind_rule": "acquisition of",
+   "url": "https://www.imprivata.com/company/press/imprivata-and-verosint-websites-merge-2026"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "Imprivata\u2019s Access Intelligence Platform Wins Cybersecurity Breakthrough Award for Second Consecutive Year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/company/press/imprivata-access-intelligence-platform-wins-cybersecurity-breakthrough-award-second"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "card-date",
    "first_seen": "2026-10-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/company/press/new-imprivata-research-finds-72-healthcare-organizations-have-ai-tools-or-agents"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "card-date",
-   "first_seen": "2026-09-28",
-   "headline": "Agentic AI in healthcare means governing action, not just access",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/agentic-ai-healthcare-means-governing-action-not-just-access"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "card-date",
-   "first_seen": "2026-09-11",
-   "headline": "When remote access reaches the physical world: Vulnerabilities and consequences",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/when-remote-access-reaches-physical-world-vulnerabilities-and-consequences"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "card-date",
-   "first_seen": "2026-09-10",
-   "headline": "Identity Security Signals: AI tests security boundaries, digital trust faces new pressures, critical infrastructure risks grow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/blog/identity-security-signals-ai-tests-security-boundaries-digital-trust-faces-new-pressures"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Authentication and the role of identity: Today, tomorrow and the future",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/uk/blog/authentication-and-role-identity-today-tomorrow-and-future"
   }
  ],
  "profile": {

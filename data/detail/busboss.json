@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Everything to Know About School Bus Dispatch Governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/everything-to-know-about-school-bus-dispatch-governance"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "What to Know About School Bus Routing Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-to-know-about-school-bus-routing-software"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "How to Audit Student Ridership Verification",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/how-to-audit-student-ridership-verification"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Best School Bus Dispatch Software for SIS-Connected Fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/best-school-bus-dispatch-software-for-sis-connected-fleets"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Key Stakeholders in School Bus Dispatch Rollouts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/key-stakeholders-in-school-bus-dispatch-rollouts"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/the-true-cost-of-manual-consortium-billing"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why School Transportation Systems Become Disconnected",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/why-school-transportation-systems-become-disconnected"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What to Do When a School Bus Driver Calls Off",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/what-to-do-when-a-school-bus-driver-calls-off"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "School Bus Dispatch Scaling Warning Signs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/school-bus-dispatch-scaling-warning-signs"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Everything to Know About School Bus Dispatch Scaling",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/everything-to-know-about-school-bus-dispatch-scaling"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Understanding Dispatch Data Failures in Large Fleets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/understanding-dispatch-data-failures-in-large-fleets"
   }
  ],
  "profile": {

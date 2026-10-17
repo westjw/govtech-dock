@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "When demand spikes, retailers can\u2019t afford payment failures",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/fashion-payment-failures-peak-season"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/resources/multi-standard-payment-messaging-guide"
-  },
-  {
-   "date": "2026-07-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Payments optimization in 2026: 6 stats every retailer should know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/payments-optimization-in-2026-6-stats-every-retailer-should-know"
   }
  ],
  "profile": {

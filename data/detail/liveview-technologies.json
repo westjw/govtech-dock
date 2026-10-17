@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Mobile Surveillance Trailers Compared: LVT vs. RAD Security",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/mobile-surveillance-trailers-compared-lvt-vs-rad-security"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Protecting Community Gardens in Provo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/resources/protecting-community-gardens"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Detroit Community Survey Finds Broad Support for LVT Units, Cites Crime Deterrence as Top Reason",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/press/detroit-community-survey-finds-broad-support-for-lvt-units"
+  },
+  {
+   "date": "2026-10-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Live Video Monitoring: What Does It Actually Cost?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/live-video-monitoring-what-does-it-actually-cost"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/resources/access-point-control"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Is This Thing On?: Why The Most Reliable Security Cameras \u201cUptime\u201d All The Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/is-this-thing-on-why-the-most-reliable-security-cameras-uptime-all-the-time"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Data Center Security: Why Physical Protection Is Just as Critical as Cybersecurity",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/data-center-security-why-physical-protection-is-just-as-critical-as-cybersecurity"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is Situational Awareness and Why Does It Matter for Security?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/what-is-situational-awareness-and-why-does-it-matter-for-security"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "Snipes: Throwing Brick Story",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/resources/snipes-ad-throwing-brick"
   }
  ],
  "profile": {

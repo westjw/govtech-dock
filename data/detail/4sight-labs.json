@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Correctional Facility Monitoring Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/correctional-facility-monitoring-technology"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Jail implements technology aimed at improving inmate health monitoring",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/jail-implements-technology-aimed-at-improving-inmate-health-monitoring"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "15 Minute Checks in Jail",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/15-minute-checks-in-jail"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-09",
+   "headline": "Allegheny County Jail integrates OverWatch",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/allegheny-county-jail-launches-biometric-tracking-for-medically-vulnerable-people"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Managing Intake Risk: The First 24 Hours in Detention",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/managing-intake-risk-the-first-24-hours-in-detention"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/texas-jail-standards-compliance"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Battery Life vs Transmission Power in Wearable Monitoring Systems: Engineering Trade-Offs in Jail Monitoring Technology",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/battery-life-vs-transmission-power-in-wearable-monitoring-systems-engineering-trade-offs-in-jail-monitoring-technology"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "State Jail Observation Compliance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/state-jail-observation-compliance"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is Liveness Detection in Corrections?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/what-is-liveness-detection-in-corrections"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Budgeting for a Jail Monitoring System",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/budgeting-for-a-jail-monitoring-system"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Change Management for New Monitoring Technology",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/change-management-for-new-monitoring-technology"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "AI is Transforming how Intelligence Agencies Identify and Assess Risks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/ai-is-transforming-how-intelligence-agencies-identify-and-assess-risks"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Epoch Times: Is America Winning the AI Race? We Asked 10 Experts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.babelstreet.com/about-us/newsroom/epoch-times-is-america-winning-the-ai-race-we-asked-10-experts"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.babelstreet.com/resources/success-stories"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Climate Migration and Natural Disaster Response: Securing Borders without Closing Doors",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.babelstreet.com/about-us/newsroom/securing-borders-without-closing-doors"
-  },
-  {
-   "date": "2026-06-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Webinars | Babel Street",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.babelstreet.com/resources/webinars"
   }
  ],
  "profile": {

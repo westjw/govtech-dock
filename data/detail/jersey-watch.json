@@ -1,8 +1,44 @@
 {
  "news": [
   {
-   "date": "2026-10-01",
+   "date": "2026-10-15",
    "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Google Forms, Jotform, or Registration Software: What's Best for Your Sports League?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/google-forms-jotform-or-registration-software"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Youth Sports Registration Checklist: A Week-by-Week Timeline",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/youth-sports-registration-checklist"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "How to Design a Comprehensive Volunteer Sign-Up Form Template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/volunteer-signup-form-template"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "index-text",
+   "first_seen": "2026-10-09",
+   "headline": "How to Build a Youth Basketball Registration Form: Key Steps + Template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jerseywatch.com/blog/youth-basketball-sign-up-forms"
+  },
+  {
+   "date": "2026-10-02",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "6 Challenges Every Youth Sports Organizer Will Face",
    "kind": "press",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jerseywatch.com/blog/youth-soccer-defensive-drills"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "How To Make a Youth Soccer Website in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/make-a-soccer-website"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "6 Best Volleyball Club Management Software Options for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/best-volleyball-club-management-software"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What Is the Best Football Team Management App for Your League?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/best-football-team-management-apps"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Your Youth Sports Organization Needs a Website",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jerseywatch.com/blog/why-youth-sports-organizations-need-a-website"
   }
  ],
  "profile": {

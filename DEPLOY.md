@@ -235,6 +235,17 @@ policy would break. If there are none, set `CSP_MODE = "enforce"` in
 `functions/_csp.js` and push. selftest refuses `GATED = false` while the
 policy only reports. In the Cloudflare dashboard, Rocket Loader must stay
 off: it rewrites the page's scripts and their hashes stop matching.
+**Done 2026-10-14: enforced.** The five pages were checked live while signed
+in, and the console was not the instrument: the console readers available
+to an agent do not see the browser's own policy messages. Each page's
+loaded resources, inline-script hashes, handlers, `javascript:` urls and
+images were checked against its own header, with a planted off-policy image
+as the positive control. A `securitypolicyviolation` listener ran while the
+board's seven tabs and a role were opened. Nothing would have been blocked.
+Cloudflare's Web Analytics beacon (`static.cloudflareinsights.com`) is not
+on the host list. It runs because the edge copies the response's nonce
+onto it: a script carrying that nonce raised nothing, and a wrong one was
+caught.
 
 **Going private again, if launch shows a problem (about two minutes):**
 1. Set `GATED = true` in `functions/_gate.js` and push. Every page, data file

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "HR 1 Changes the Ground Under Survivors. Here\u2019s What DV Programs Can Do Now.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/articles/hr-1-changes-the-ground-under-survivors-heres-what-dv-programs-can-do-now/"
+  },
+  {
    "date": "2026-09-10",
    "date_source": "json-ld",
    "first_seen": "2026-09-11",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://caseworthy.com/news/caseworthy-acquires-leading-health-and-humans-services-software-company-medisked/"
-  },
-  {
-   "date": "2022-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Enterprise SaaS Veterans Join Health and Human Services Technology Innovator",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://caseworthy.com/news/caseworthy-acts-on-commitment-to-expand-tech-framework-and-market-presence-by-appointing-key-executives-to-leadership-team/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "How to Set Volunteer Requirements and Expectations (Without Creating Barriers)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/how-to-set-volunteer-requirements-and-expectations-without-creating-barriers/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Preview What Volunteers See in VicNet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/preview-what-volunteers-see-in-vicnet/"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/use-date-fields-to-track-changes/"
-  },
-  {
-   "date": "2026-08-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Continue Reading \u201cVolgistics Feature Review\u201d \u2192",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/volgistics-features-review/"
-  },
-  {
-   "date": "2026-08-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Identify Service Entries\u2019 Source",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/identify-service-entries-source/"
   }
  ]
 }

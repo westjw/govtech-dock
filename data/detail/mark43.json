@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Better Together Series: Mi-Case",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://mark43.com/resources/blog/better-together-series-mi-case/"
+  },
+  {
    "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://mark43.com/press/edge-expands-edgemarket-with-mark43/"
-  },
-  {
-   "date": "2026-03-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Making Your Mark: A Conversation with Mary McCulloch and Tim Haynes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://mark43.com/resources/blog/making-your-mark-a-conversation-with-mary-mcculloch-and-tim-haynes/"
   }
  ],
  "profile": {

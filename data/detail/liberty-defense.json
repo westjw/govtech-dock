@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Liberty Defense Announces New Chairman to its Board of Directors",
+   "kind": "leadership",
+   "kind_rule": "Board of Directors",
+   "url": "https://libertydefense.com/news/liberty-defense-announces-new-board-member/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Liberty Defense Announces New Chairman to its Board of Directors",
+   "kind": "leadership",
+   "kind_rule": "Board of Directors",
+   "url": "https://libertydefense.com/news/liberty-defense-announces-new-chairman-to-its-board-of-directors/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://libertydefense.com/news/cybersecurity-predictions-2026-quantum-threats-nation-state-attacks-and-the-rise-of-dark-ai/"
-  },
-  {
-   "date": "2026-01-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Safer Schools, Stronger Societies: Rethinking Student Security for 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://libertydefense.com/news/safer-schools-stronger-societies-rethinking-student-security-for-2026/"
-  },
-  {
-   "date": "2025-12-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "No More Failures of Imagination: Future Proofing Airport Employee Screening",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://libertydefense.com/news/no-more-failures-of-imagination-future-proofing-airport-employee-screening/"
   }
  ],
  "profile": {

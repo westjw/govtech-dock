@@ -1,13 +1,58 @@
 {
  "news": [
   {
-   "date": "2026-10-02",
+   "date": "2026-10-13",
    "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "What changes are included in the fiscal year 2027 hospice final rule?",
+   "first_seen": "2026-10-13",
+   "headline": "What is the CJR-X Model and how hospitals can prepare",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://wellsky.com/blog/what-changes-are-included-in-the-fiscal-year-2027-hospice-final-rule/"
+   "url": "https://wellsky.com/blog/what-is-the-cjr-x-model-and-how-hospitals-can-prepare/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Why reducing hospital readmissions requires more than discharge planning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/why-reducing-hospital-readmissions-requires-more-than-discharge-planning/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "5 things DME providers need to know about the CY 2027 proposed rule",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/tip-sheets/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "The FY 2027 hospice final rule: Navigating compliance and payment changes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/on-demand-webinars/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "time",
+   "first_seen": "2026-10-13",
+   "headline": "Hospice fraud: What the headlines mean for your agency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/resources/hospice/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "What\u2019s changing in the fiscal year FY2027 ICD-10-CM code update?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
   },
   {
    "date": "2026-09-29",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/wellsky-recognizes-2023-analytics-innovator-award-winners/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Nine best practices for managing RBC antigen-negative blood products in hospital-based and community blood centers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/nine-best-practices-for-managing-rbc-antigen-negative-blood-products-in-hospital-based-and-community-blood-centers/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Why home-based providers are a vital part of the U.S. response to COVID-19",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/why-home-based-providers-are-a-vital-part-of-the-u-s-response-to-covid-19/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Administration proposes $400 billion increase in funding for home and community-based care: Your COVID-19 Briefing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/administration-proposes-400-billion-increase-in-funding-for-home-and-community-based-care-your-covid-19-briefing/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "New employment guidelines every employer must know: Your WellSky COVID-19 Briefing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/new-employment-guidelines-every-employer-must-know-your-wellsky-covid-19-weekly-briefing/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Five ways long-term care administrators can foster healthy stress management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/five-ways-long-term-care-administrators-can-foster-healthy-stress-management/"
   }
  ]
 }

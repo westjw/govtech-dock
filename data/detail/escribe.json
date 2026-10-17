@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-14",
+   "headline": "AI Meeting Minutes vs. AI Notetakers for Public Meetings",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.escribemeetings.com/blog/ai-meeting-mintes-vs-ai-notetakers/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "near-h1",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.escribemeetings.com/resources/2026-clerk-survey/"
-  },
-  {
-   "date": "2025-11-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "What are Meeting Minutes? (Overview, Definition, and Examples)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.escribemeetings.com/blog/meeting-minutes/"
   }
  ]
 }

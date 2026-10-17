@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "How Should Agencies Phase Evacuations to Prevent Traffic Gridlock?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.genasys.com/resources/how-should-agencies-phase-evacuations-to-prevent-traffic-gridlock"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "near-h1",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.genasys.com/resources/genasys-and-pulsepoint-team-to-provide-more-situational-awareness-and-build-more-informed-communities"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Genasys Evertel Pocket Demo",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.genasys.com/resources/genasys-evertel-demo"
   }
  ]
 }

@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "The EV Supply Chain Reset, Part 3: The Role of AI in Automotive Supplier Risk Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-ai-supplier-risk-management"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "The EV Supply Chain Reset, Part 2: Procurement Challenges in the EV Automotive Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-procurement-challenges"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "The EV Supply Chain Reset, Part 1: Why Procurement Is Central to the EV Era",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-procurement-central"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jaggaer.com/blog/oracle-procurement-cloud-vs-tipalti"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "GEP SMART vs Tipalti (2026): Which Is Right for Your Business?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/gep-smart-vs-tipalti"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "JAGGAER vs GEP SMART (2026): Which Procurement Platform Is Right for You?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/jaggaer-vs-gep-smart"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "JAGGAER vs. Basware: Comparing Procurement, AP Automation and Source-to-Pay",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/jaggaer-vs-basware"
   }
  ],
  "profile": {

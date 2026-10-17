@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Read the press release",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/news/relay-and-celona-partner"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Partner Spotlight: Celona + Relay",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/relay-pro-integration"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Celona x Relay: Highlights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/celona-x-relay-highlights"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-13",
+   "headline": "Celona x Relay: Announcement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://celona.io/resources/celona-x-relay-announcement"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "near-h1",
    "first_seen": "2026-10-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://celona.io/resources/unified-security-across-private-5g-and-public-cellular"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Self-Healing Private 5G Demo",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/resources/self-healing-private-5g-demo"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Industrial OT Demo Live demo: real-time OT sensor monitoring and safety alerts over industrial 5G. Videos",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/resources/industrial-ot-demo"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Always On Demo Live demo: upgrading the core with zero major downtime, thanks to active-active failover. Videos",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/resources/always-on-demo"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Always Connected Demo See Celona Airflex deliver seamless, lossless mobility, even over Starlink backhaul at remote sites. Videos",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://celona.io/resources/always-connected-demo"
   }
  ],
  "profile": {

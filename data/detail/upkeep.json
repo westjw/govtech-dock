@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "CMMS vs. EAM: How to Choose the Right System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/cmms-vs-eam/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "What Is CMMS in Manufacturing? How It Works on the Plant Floor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/cmms-in-manufacturing/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "8 IIoT Applications That Turn Industrial Data Into Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/iiot-applications/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Reduce Downtime in Manufacturing: A Line-Level Playbook",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.upkeep.com/blog/reduce-downtime-in-manufacturing/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.upkeep.com/blog/nova-marketplace/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to Create a Maintenance Request Form Template (+ Free Download)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/maintenance-request-form-template/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Top-Ranked Property Management Work Order Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/property-management-work-order-software/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Facility Maintenance for Semiconductor Manufacturing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/facility-maintenance-for-semiconductor-manufacturing/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Buyer's Guide to Plastics Manufacturing Maintenance Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.upkeep.com/blog/plastics-manufacturing-maintenance-software/"
   }
  ]
 }

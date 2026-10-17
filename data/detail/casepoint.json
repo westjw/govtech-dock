@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "Demystifying Security Claims: Military-Grade Security for Corporate Legal Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.casepoint.com/blog/demystifying-security-claims-military-grade-security-corporate-legal-teams/"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.casepoint.com/blog/why-federal-agencies-are-moving-beyond-legacy-ediscovery-tools/"
-  },
-  {
-   "date": "2025-12-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "As Relativity Retires Server, Federal Agencies Enter a Cloud-First, Security-First Era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/relativity-retires-server-federal-agencies-enter-cloud-first-security-first-era/"
   }
  ],
  "profile": {

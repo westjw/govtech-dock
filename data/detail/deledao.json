@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Amid the AI Panic, Which AI Tools Should We Let Access Student Data?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.deledao.com/post/amid-ai-panic-ai-tools-we-let-access-student-data"
+  },
+  {
    "date": "2026-09-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.deledao.com/post/hidden-costs-generative-ai-environment"
-  },
-  {
-   "date": "2025-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "Is Your Classroom Management Software Stuck in the Past?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.deledao.com/post/classroom-management-software-stuck-in-the-past"
   }
  ],
  "profile": {

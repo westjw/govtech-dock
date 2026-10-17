@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "What is a PSIM platform, and how does it integrate access control and video surveillance systems?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/what-is-a-psim-platform-and-how-does-it-integrate-access-control-and-video-surveillance-systems/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "The security gap most mid-size companies don\u2019t see coming",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/the-security-gap-most-mid-size-companies-dont-see-coming/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -26,6 +44,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/asis-asked-security-leaders-if-82-have-an-active-assailant-plan-why-do-only-39-feel-ready/"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Everbridge Security Operations team earns a perfect +100 Net Promoter Score",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/everbridge-security-operations-team-earns-a-perfect-100-net-promoter-score/"
   },
   {
    "date": "2026-09-16",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/dynamically-adaptive-resilience-autonomous-when-you-want-it-to-be-human-guided-when-you-need-it-to-be/"
-  },
-  {
-   "date": "2025-05-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Myth vs. reality: 10 Myths about AI in critical event management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/myth-vs-reality-10-myths-about-ai-in-critical-event-management/"
-  },
-  {
-   "date": "2025-03-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Security leadership in a complex world",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/impact-tolerance-in-operational-resilience/"
-  },
-  {
-   "date": "2025-03-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Myth vs. reality: 10 Myths about AI in critical event management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/security-leadership-in-a-complex-world-2/"
   }
  ],
  "profile": {

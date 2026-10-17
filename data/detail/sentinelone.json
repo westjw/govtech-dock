@@ -1,13 +1,49 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity - Week 42 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-42-8/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Bring Your Own Vulnerable Driver: The Trust Gap Attackers Operate Inside",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-the-trust-gap-attackers-operate-inside/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Bring Your Own Vulnerable Driver: How EDR Killing Became an Industry",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-how-edr-killing-became-an-industry/"
+  },
+  {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "5 Years of SentinelOne ThreatOps: Defense from the Ground Up to Global Threat Championships",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/5-years-of-sentinelone-threatops-defense-from-the-ground-up-to-global-threat-championships/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "SentinelOne Wins SIEM Solution of the Year in CyberSecurity Breakthrough Awards 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-wins-siem-solution-of-the-year-in-cybersecurity-breakthrough-awards-2026/"
   },
   {
    "date": "2026-10-05",
@@ -19,8 +55,17 @@
    "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-how-edr-killing-became-an-industry/"
   },
   {
-   "date": "2026-09-29",
+   "date": "2026-10-01",
    "date_source": "index-text",
+   "first_seen": "2026-10-15",
+   "headline": "SentinelOne Named a Leader in the IDC MarketScape for Worldwide Modern Endpoint Security for Enterprises",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-named-a-leader-in-the-idc-marketscape-for-worldwide-modern-endpoint-security-for-enterprises/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Building Agents Backwards from Evaluation",
    "kind": "press",
@@ -29,7 +74,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "SentinelOne and NVIDIA: Governing AI From Silicon to Runtime",
    "kind": "press",
@@ -46,6 +91,15 @@
    "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-the-edr-killer-economy/"
   },
   {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-13",
+   "headline": "Bring Your Own Vulnerable Driver: The EDR Killer Economy",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-the-edr-killer-economy/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "near-h1",
    "first_seen": "2026-09-28",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-39-8/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "SentinelOne Extends Wayfinder Threat Hunting's Continuous Coverage to AWS, Azure, and Google Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-extends-wayfinder-threat-huntings-continuous-coverage-to-aws-azure-and-google-cloud/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "New Study From SentinelOne & S&P Global\u2019s 451 Research Uncovers Widely Divergent Enterprise Readiness for Autonomous SOC Adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/new-study-from-sentinelone-sp-globals-451-research-uncovers-widely-divergent-enterprise-readiness-for-autonomous-soc-adoption/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Why the SOC Can't Run on Vibes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/why-the-soc-cant-run-on-vibes/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "SentinelOne Named an AI Security Platform Leader in Latio 2026 AI Security Market Report",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-named-an-ai-security-platform-leader-in-latio-2026-ai-security-market-report/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "The SOC Just Gained a Capability It Never Had",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-soc-just-gained-a-capability-it-never-had/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-11",
-   "headline": "The Good, the Bad and the Ugly in Cybersecurity \u2013 Week 37 (2026)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-37-8/"
   }
  ],
  "profile": {

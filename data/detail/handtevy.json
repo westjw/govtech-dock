@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-15",
+   "headline": "Handtevy Completes SOC 2 Type 2 Examination, Reinforcing Its Commitment to Security and Trust in Emergency Care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/handtevy-soc-2-compliant/"
+  },
+  {
    "date": "2025-09-03",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -64,8 +73,8 @@
    "url": "https://www.handtevy.com/news/virginia-state-outfit-ems-agengies-with-handtev/"
   },
   {
-   "date": "2021-04-14",
-   "date_source": "json-ld",
+   "date": "2019-11-21",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "More Children\u2019s Lives Will Be Saved as Utah Partners with Handtevy for All EMS Agencies in the State",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2019-11-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Child\u2019s Play: Scoop-and-Run May Not Be Best for Kids in Cardiac Arrest",
    "kind": "press",

@@ -1,6 +1,60 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Playbook October 16, 2026 Where to Find K\u201312 and Higher Education RFPs See where K\u201312 and higher education RFPs get posted, from state portals and district sites to cooperatives, and how to spot buyin",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/where-to-find-k-12-higher-education-rfps"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Playbook October 16, 2026 How to Spot a Government RFP Written for Another Vendor Learn the red flags that show a government RFP was written for another vendor, how to score them, and when walking awa",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/spot-government-rfp-written-for-another-vendor"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Playbook October 15, 2026 MCP for Sales Prospecting Connect Claude or ChatGPT to verified buyer data with MCP, then run five copy-ready prompts to build lists, research accounts, and write outreach.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/mcp-for-sales-prospecting"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Playbook October 14, 2026 Government Sales Are Won Before SAM.gov Public postings on SAM.gov mark the end of the buying process. Learn how to spot buying indicators and shape requirements before a dea",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/before-sam-gov-government-sales"
+  },
+  {
+   "date": "2026-10-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-10",
+   "headline": "Playbook October 10, 2026 How to Respond to a Government RFP Learn how to respond to a government RFP, from the bid/no-bid call to evaluation criteria and compliance, with a scorecard your team can us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/how-to-respond-to-government-rfp"
+  },
+  {
+   "date": "2026-10-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-10",
+   "headline": "Playbook October 10, 2026 MCP for Government and Education Sales The Model Context Protocol brings live buyer data into Claude and ChatGPT. Learn why it matters more for teams selling to government an",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/model-context-protocol-government-education-sales"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -38,7 +92,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 6, 2026 Starbridge MCP: Buyer Intelligence in Claude and ChatGPT The Starbridge MCP connects Claude and ChatGPT to your live Starbridge data. What it exposes, how to connect it, and w",
    "kind": "press",
@@ -47,66 +101,12 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-06",
    "headline": "Playbook October 2, 2026 Starbridge HubSpot Integration: What Syncs and How to Set It Up What the Starbridge HubSpot integration syncs, which HubSpot object each data type belongs on, and how to set i",
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/starbridge-hubspot-integration"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook October 2, 2026 Starbridge Salesforce Integration: Setup, Sync, and Matching What the Starbridge Salesforce integration syncs, the admin setup it needs, how account matching works, and how re",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-salesforce-integration"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook September 29, 2026 Starbridge Zapier Integration: Setup, Triggers, Workflows How to connect Starbridge to Zapier, which Bridge events trigger a Zap, and how to route only high-scoring buying ",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-zapier"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook September 29, 2026 Q4 Government Spending The year-end spending rush works differently for local government and schools. See what Q4 government spending really means and when budgets free up.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/q4-government-spending"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook September 28, 2026 AI Workflows for B2G Sales Generic AI tools miss how government and education buy. See how B2G sales automation maps AI workflows to the buying cycle and runs inside your C",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/ai-workflows-b2g-sales-automation"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "time",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook September 28, 2026 B2G Sales Terms A practical glossary of B2G sales terms for government and education, from procurement and budget cycles to compliance and buying signals.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/b2g-sales-terms"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "time",
-   "first_seen": "2026-09-28",
-   "headline": "Playbook September 25, 2026 How to Build a Government Sales Pipeline Relying on RFPs in government sales isn\u2019t optimal. Learn how to source, qualify, and stage a government sales pipeline months befor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/government-sales-pipeline"
   }
  ],
  "profile": {

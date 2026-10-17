@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-15",
+   "headline": "Tanium Selected as Testing Partner for Microsoft's Codename MDASH",
+   "kind": "contract",
+   "kind_rule": "Selected as",
+   "url": "https://www.tanium.com/press-releases/tanium-selected-as-testing-partner-for-microsofts-codename-mdash"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-15",
+   "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
+   "kind": "product",
+   "kind_rule": "introducing",
+   "url": "https://www.tanium.com/blog/introducing-endpoint-drift"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "card-date",
+   "first_seen": "2026-10-14",
+   "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/stack-ranking-high-cardinality"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "card-date",
    "first_seen": "2026-10-09",
@@ -29,7 +56,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-06",
    "headline": "Tanium Redefines Security Operations for the AI Era",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/runmru-credential-exposure-huntiq"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "og:published",
-   "first_seen": "2026-10-05",
-   "headline": "Tanium Joins Anthropic's Project Glasswing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/press-releases/tanium-joins-anthropics-project-glasswing"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "card-date",
-   "first_seen": "2026-09-12",
-   "headline": "Hunt or be Hunted: FalconFlank Zero-Day",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/falconflank-zero-day-privilege-escalation-huntiq"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "card-date",
-   "first_seen": "2026-09-09",
-   "headline": "Hunt or be Hunted: ShieldBreak Zero-Day",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/shieldbreak-windows-defender-zero-day-huntiq"
   }
  ],
  "profile": {

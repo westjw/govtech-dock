@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-14",
+   "headline": "Cognyte Investigative Analytics and Operational Intelligence Solutions for Law Enforcement Highlight IACP 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/news/cognyte-investigative-analytics-and-operational-intelligence-solutions-for-law-enforcement-highlight-iacp-2026/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "index-text",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/news/cognyte-joins-global-anti-scam-alliance-to-fight-financial-fraud-threats/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What is Geospatial Intelligence? A Complete Guide to GEOINT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/blog/geospatial-intelligence/"
   }
  ],
  "profile": {
