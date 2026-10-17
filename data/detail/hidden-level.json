@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Hidden Level Opens Washington, D.C. Office as Sensor Network Expands",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://hiddenlevel.com/press/hidden-level-opens-washington-dc-office-as-sensor-network-expands"
+  },
+  {
    "date": "2026-07-30",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -88,7 +97,7 @@
    "headline": "Hidden Level Named a Top Performer in DIU\u2019s C-sUAS Low-Cost Sensing Challenge",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.hiddenlevel.com/press/hidden-level-named-a-top-performer-in-dius-c-suas-low-cost-sensing-challenge"
+   "url": "https://hiddenlevel.com/press/hidden-level-named-a-top-performer-in-dius-c-suas-low-cost-sensing-challenge"
   },
   {
    "date": "2025-03-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://hiddenlevel.com/press/hidden-levels-co-founder-and-ceo-to-speak-at-manifest-demo-day-americas-premier-showcase-for-early-stage-cutting-edge-defense-technology"
-  },
-  {
-   "date": "2025-02-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Hidden Level's Drone Tech Gets $100M Funding",
-   "kind": "funding",
-   "kind_rule": "$100M Funding",
-   "url": "https://hiddenlevel.com/press/hidden-levels-drone-tech-gets-100m-funding"
   }
  ],
  "profile": {

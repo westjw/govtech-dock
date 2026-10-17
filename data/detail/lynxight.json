@@ -1,7 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-09-24",
+   "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What a day at Freeflow taught me about where UK swimming is heading",
@@ -10,7 +10,7 @@
    "url": "https://www.lynxight.com/blog/what-a-day-at-freeflow-taught-me-about-where-uk-swimming-is-heading"
   },
   {
-   "date": "2026-09-22",
+   "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The 5 Hidden Complexities of Outdoor Pool Camera Design",
@@ -19,7 +19,7 @@
    "url": "https://www.lynxight.com/blog/outdoor-pool-camera-design-complexities"
   },
   {
-   "date": "2026-09-22",
+   "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Silent Drowning: Why It's So Easy to Miss",
@@ -28,13 +28,40 @@
    "url": "https://www.lynxight.com/blog/silent-drowning-why-its-so-easy-to-miss"
   },
   {
-   "date": "2026-08-03",
+   "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "The AI Backbone for Aquatic Operations: Lynxight\u2019s Breakthrough Platform",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lynxight.com/blog/the-ai-backbone-for-aquatic-operations-lynxights-breakthrough-platform"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Embracing Technology to Improve Aquatic Safety",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lynxight.com/blog/embracing-technology-to-improve-aquatic-safety"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "The Importance of Predictive Analytics in Pool Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lynxight.com/blog/the-importance-of-predictive-analytics-in-pool-operations"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Prevention Over Detection: How Machine Learning Saves Lives",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lynxight.com/blog/prevention-over-detection-how-machine-learning-saves-lives"
   },
   {
    "date": "2026-08-03",
@@ -58,15 +85,6 @@
    "date": "2026-06-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
-   "headline": "Embracing Technology to Improve Aquatic Safety",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lynxight.com/blog/embracing-technology-to-improve-aquatic-safety"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
    "headline": "Shallow Water Blackouts Shallow water blackouts are silent and fast. Here's what pool operators and swimmers need to know, and how to reduce the risk.",
    "kind": "press",
    "kind_rule": null,
@@ -80,24 +98,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lynxight.com/blog/cameras-vs-wearables-what-can-keep-us-safe-in-pools"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Importance of Predictive Analytics in Pool Operations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lynxight.com/blog/the-importance-of-predictive-analytics-in-pool-operations"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Prevention Over Detection: How Machine Learning Saves Lives",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lynxight.com/blog/prevention-over-detection-how-machine-learning-saves-lives"
   }
  ]
 }

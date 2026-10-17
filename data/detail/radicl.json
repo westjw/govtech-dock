@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Security Software or Security Risk?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/security-software-or-security-risk"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launched",
    "url": "https://radicl.com/resources/aevex-manan-patel-modular-drone-strategy"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is CUI? Controlled Unclassified Information Explained",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/what-is-cui-controlled-unclassified-information-explained"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "TransL\u014dc to Exhibit at CPTA Annual Conference & Trade Show 2026, Highlighting Connected Campus Mobility Solutions",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transloc.com/press/cpta-2026/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as General Manager",
    "url": "https://transloc.com/press/translocs-troy-morris-reflects-on-his-first-months-as-general-manager-grounded-in-direct-customer-conversations/"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "What a 40 Percent Fare Increase Actually Buys a Transit Agency",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/what-a-40-fare-increase-actually-buys-a-transit-agency/"
   }
  ]
 }

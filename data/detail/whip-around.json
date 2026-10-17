@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "Does Your Delivery Fleet Actually Need a USDOT Number?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/does-your-delivery-fleet-need-a-usdot-number/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/fleet-management-kpis/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "AI Workflow Automation for Maintenance Defects: From \"Reported\" to \"Resolved\" Faster",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/ai-workflow-automation-maintenance-defects/"
   }
  ],
  "profile": {

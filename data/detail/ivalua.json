@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Businesses waste $1.5 million a year on manual work AI could do",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/businesses-waste-1-5-million-a-year-on-manual-work-ai-could-do/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://it.ivalua.com/blog/materiali-diretti-negli-acquisti-la-guida-definitiva/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Ivalua Achieves EcoVadis Gold Medal for Second Consecutive Year",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/press-releases/ivalua-achieves-ecovadis-gold-medal-for-second-consecutive-year/"
   }
  ]
 }

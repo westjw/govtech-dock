@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Research Partnership Could Spur Breakthrough in Addiction Treatment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sigmundsoftware.com/blog/research-partnership-could-spur-breakthrough-in-addiction-treatment/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sigmundsoftware.com/blog/ai-streamlines-provider-documentation-expediting-payment/"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Power of AURA\u2019s Billing and Revenue Cycle Management Suite",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sigmundsoftware.com/blog/the-power-of-auras-billing-and-revenue-cycle-management-suite/"
   }
  ],
  "profile": {

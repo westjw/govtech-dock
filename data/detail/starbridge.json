@@ -1,8 +1,44 @@
 {
  "news": [
   {
+   "date": "2026-10-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "Playbook October 17, 2026 What You Can Legally Say to a Government Buyer Pre-RFP What you can discuss with a government or education buyer before a solicitation posts, what changes the day it does, an",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/talking-to-government-buyers-before-rfp"
+  },
+  {
+   "date": "2026-10-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "Playbook October 17, 2026 How School Districts and Local Governments Score RFPs See how school districts and local governments score RFPs, step by step, from the compliance check and rubric to the pri",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/how-school-districts-score-rfps"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "Playbook October 16, 2026 Where to Find K\u201312 and Higher Education RFPs See where K\u201312 and higher education RFPs get posted, from state portals and district sites to cooperatives, and how to spot buyin",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/where-to-find-k-12-higher-education-rfps"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "Playbook October 16, 2026 How to Spot a Government RFP Written for Another Vendor Learn the red flags that show a government RFP was written for another vendor, how to score them, and when walking awa",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://starbridge.ai/blog/spot-government-rfp-written-for-another-vendor"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-16",
    "headline": "Playbook October 15, 2026 MCP for Sales Prospecting Connect Claude or ChatGPT to verified buyer data with MCP, then run five copy-ready prompts to build lists, research accounts, and write outreach.",
    "kind": "press",
@@ -11,7 +47,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-14",
    "headline": "Playbook October 14, 2026 Government Sales Are Won Before SAM.gov Public postings on SAM.gov mark the end of the buying process. Learn how to spot buying indicators and shape requirements before a dea",
    "kind": "press",
@@ -20,7 +56,7 @@
   },
   {
    "date": "2026-10-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-10",
    "headline": "Playbook October 10, 2026 How to Respond to a Government RFP Learn how to respond to a government RFP, from the bid/no-bid call to evaluation criteria and compliance, with a scorecard your team can us",
    "kind": "press",
@@ -29,7 +65,7 @@
   },
   {
    "date": "2026-10-10",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-10",
    "headline": "Playbook October 10, 2026 MCP for Government and Education Sales The Model Context Protocol brings live buyer data into Claude and ChatGPT. Learn why it matters more for teams selling to government an",
    "kind": "press",
@@ -38,7 +74,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "Playbook October 9, 2026 Government Fiscal Year Calendars for Sales Timing See when state and local government, K\u201312, and higher education fiscal years start, and how to time outreach around fresh bud",
    "kind": "press",
@@ -47,7 +83,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "Playbook October 9, 2026 Starbridge vs. e.Republic Industry Navigator Compare Starbridge and e.Republic across buying signals, contact data, spend intelligence, RFPs, and contract vehicles for K\u201312 GT",
    "kind": "press",
@@ -56,7 +92,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 7, 2026 Starbridge vs. Citylitics. Which platform wins more deals? Compare Starbridge and Citylitics across buying signals, contact data, spend intelligence, RFPs, and contract vehicl",
    "kind": "press",
@@ -65,48 +101,12 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Playbook October 7, 2026 How CROs Should Use AI in Their GTM Motion: A Playbook (So Far) How Starbridge's CRO is using AI across go-to-market. The one metric that matters, what to automate first, and ",
    "kind": "press",
    "kind_rule": null,
    "url": "https://starbridge.ai/blog/how-cros-should-use-ai-in-gtm"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Playbook October 6, 2026 Starbridge MCP: Buyer Intelligence in Claude and ChatGPT The Starbridge MCP connects Claude and ChatGPT to your live Starbridge data. What it exposes, how to connect it, and w",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-mcp"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook October 2, 2026 Starbridge HubSpot Integration: What Syncs and How to Set It Up What the Starbridge HubSpot integration syncs, which HubSpot object each data type belongs on, and how to set i",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-hubspot-integration"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "Playbook October 2, 2026 Starbridge Salesforce Integration: Setup, Sync, and Matching What the Starbridge Salesforce integration syncs, the admin setup it needs, how account matching works, and how re",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-salesforce-integration"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "Playbook October 2, 2026 Starbridge Alternatives Compare GovSpend, ZoomInfo, GovWin, Burbio, Agile, and BidNet Direct with Starbridge on buying signals, contact data, spend, RFPs, and contract vehicle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://starbridge.ai/blog/starbridge-alternatives"
   }
  ],
  "profile": {

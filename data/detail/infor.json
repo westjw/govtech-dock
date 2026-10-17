@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "From AI ambition to real business outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/ai-ambition-to-real-business-outcomes"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/augmented-automation-modern-distribution"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "The new demands on healthcare workforce management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/apac/resources/healthcare-leaders-rethinking-workforce-management"
   }
  ],
  "profile": {

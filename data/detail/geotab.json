@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "4 signals you could have captured before the crash",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/accident-risk-signals/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "index-text",
    "first_seen": "2026-10-13",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "7 benefits of the Geotab Fleet Card",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Snow plow safety: focus on the moments that matter",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How to stop fuel fraud at the pump",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Top seven best fleet fuel cards: How to choose the right one for your business?",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Four ways to transform garbage fleet efficiency with data and video tools",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Measuring the supply chain in motion",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "6 benefits of an open, AI-powered fleet data platform",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/6-benefits-of-open-platform/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "EV fleet transition plan: Step-by-step guide for U.S. fleets 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/ev-fleet-transition-plan/"
   }
  ],
  "profile": {

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "The Real Cost of Running Three Separate School Systems for Behavior, Hall Passes, and Tardy Management",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "Why Teachers Abandon Behavior Tracking Systems",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "How to Recognize a Student Without Losing the Room",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Minga Earns 1EdTech Data Privacy Certification for Student Safety",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-08-31",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "What Your Tardy Dashboard Should Show You Every Morning",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Introducing Minga Insights, Because You Deserve to See the Whole Picture",
    "kind": "product",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Keeping Every Parent in the Loop, Without Lifting a Finger",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-08-21",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Flex Periods Only Work If Every Student Actually Shows Up Somewhere Meaningful",
    "kind": "press",

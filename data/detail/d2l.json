@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "From First Touch to Lifelong Value: Connecting Learning to the Member Lifecycle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/connecting-learning-to-the-member-lifecycle/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/learning-and-development-strategy/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Aligning Learning With Business Strategy: Guide for L&D Leaders",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/3-reasons-to-align-learning-strategy-with-business-goals/"
   }
  ],
  "profile": {

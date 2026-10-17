@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-16",
+   "headline": "Incident Management in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/higher-education-emergency-management-incident"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/mobile-incident-management-software-field-response"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "What Is DisasterLAN (DLAN) Incident Management Software?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/disasterlan-incident-management-software-uses"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Do You Need More Space? Signs You've Outgrown Your Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skedda.com/blog/signs-youve-outgrown-office-space"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skedda.com/blog/office-occupancy-tracking-methods"
-  },
-  {
-   "date": "2026-07-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "June 2026 Product Roundup",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skedda.com/blog/june-2026-product-roundup"
   }
  ],
  "profile": {

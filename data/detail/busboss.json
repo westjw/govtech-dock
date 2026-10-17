@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Everything to Know About School Bus Dispatch Governance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/everything-to-know-about-school-bus-dispatch-governance"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/the-true-cost-of-manual-consortium-billing"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why School Transportation Systems Become Disconnected",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/why-school-transportation-systems-become-disconnected"
   }
  ],
  "profile": {

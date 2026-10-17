@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "2027 Medicare Star Ratings: Why a Small Shift in Scores Signals Bigger Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/2027-medicare-star-ratings-why-a-small-shift-in-scores-signals-bigger-change"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.merative.com/blog/a-guide-to-cloud-solutions-for-cardiology-imaging"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Merge Community Snapshot: Your 5-minute recap for August 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/newsroom/merge-community-snapshot-august-2026"
   }
  ]
 }

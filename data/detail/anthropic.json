@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "An update on independent evaluators",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.anthropic.com/news/life-sciences-verification-program"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Developing Enterprise Frontier Safeguards with our customers",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards"
   }
  ],
  "profile": {

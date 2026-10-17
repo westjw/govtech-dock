@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "AI Texting in Higher Education: A Guide for Admissions and Enrollment Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/ai-texting-in-higher-education/"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Marketing to Non-Traditional Students: How Universities Can Reach and Enroll Adult Learners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://goedmo.com/blog/https-goedmo-com-blog-marketing-to-non-traditional-students/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Transfer Evaluation System: How Colleges Can Streamline Credit Evaluation and Increase Enrollment",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Recruitment Ecosystem in Higher Education: A Guide for Enrollment Teams",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://goedmo.com/blog/articulation-agreement/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "15 Best Student Engagement Platforms & Tools for Higher Education",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/top-10-student-engagement-tools-for-higher-education/"
-  },
-  {
-   "date": "2026-09-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Degree Audit: What It Is, How It Works, and How Universities Can Automate It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://goedmo.com/blog/degree-audit/"
   }
  ]
 }

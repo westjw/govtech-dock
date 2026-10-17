@@ -1,69 +1,62 @@
 {
-  "date": "2026-10-16",
-  "previous": "2026-10-15",
+  "date": "2026-10-17",
+  "previous": "2026-10-16",
   "changes": [
     {
-      "company": "BusPatrol",
-      "id": "buspatrol",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Vice President, Revenue Operations only"
-    },
-    {
-      "company": "Eventeny",
-      "id": "eventeny",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Sales & Business Development Manag"
-    },
-    {
-      "company": "Off Duty Management",
-      "id": "off-duty-management",
+      "company": "Paymentus",
+      "id": "paymentus",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Unknown",
+      "note": "network error: robots.txt on www.payment"
     },
     {
-      "company": "Sentrycs",
-      "id": "sentrycs",
+      "company": "EagleView",
+      "id": "eagleview",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Unite Us",
+      "id": "unite-us",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Executive - Flori only"
+    },
+    {
+      "company": "Vector Solutions",
+      "id": "vector-solutions",
+      "from": "Sales (non-AE)",
+      "to": "Unknown",
+      "note": "page scan found no listings"
+    },
+    {
+      "company": "Netchex",
+      "id": "netchex",
       "from": "Yes",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Ekin Smart City Technologies",
-      "id": "ekin-smart-city-technologies",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.ekin.com/about/"
-    },
-    {
-      "company": "Hapco",
-      "id": "hapco",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "company": "Momentus Technologies",
+      "id": "momentus-technologies",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Senior Account Manager (Germany)"
     },
     {
       "company": "Singlewire Software",
       "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Overstory",
-      "id": "overstory",
-      "from": "Yes",
+      "company": "MagicSchool",
+      "id": "magicschool",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
-    },
-    {
-      "company": "Heron Power",
-      "id": "heron-power",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Senior Technical Account Manager (Scotts Valley)"
     }
   ]
 }

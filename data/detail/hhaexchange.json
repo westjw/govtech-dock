@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "RCM at Every Agency Size: What Is Your Billing Method Costing You?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hhaexchange.com/blog/rcm-at-every-agency-size-what-is-your-billing-method-costing-you"
+  },
+  {
    "date": "2026-08-28",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hhaexchange.com/blog/the-real-cost-of-running-your-homecare-agency-on-disconnected-systems"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "HHAeXchange Clinical: Care Documentation Done Right",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hhaexchange.com/blog/hhaexchange-clinical-care-documentation-done-right"
   }
  ],
  "profile": {

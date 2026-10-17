@@ -1,7 +1,16 @@
 {
  "news": [
   {
-   "date": "2026-10-08",
+   "date": "2026-10-15",
+   "date_source": "card-date",
+   "first_seen": "2026-10-16",
+   "headline": "Outsight selected for French Tech 2030",
+   "kind": "contract",
+   "kind_rule": "selected for",
+   "url": "https://www.outsight.ai/insights/outsight-joins-the-french-tech-2030-programme/"
+  },
+  {
+   "date": "2026-10-15",
    "date_source": "time",
    "first_seen": "2026-10-08",
    "headline": "Outsight and Enchanted Tools bring Beyond Line-of-Sight awareness to Service Robots",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsight.ai/insights/outsight-joins-eona-x-to-develop-collaboration-and-data-innovation-in-european-airports/"
-  },
-  {
-   "date": "2026-02-19",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "What's a Motional Digital Twin?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsight.ai/insights/whats-a-motional-digital-twin/"
   }
  ],
  "profile": {

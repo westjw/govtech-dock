@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "How cognitive security can protect judgment in AI use",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://leidos.com/insights/how-cognitive-security-can-protect-judgment-ai-use"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://leidos.com/insights/how-can-defence-programmes-unlock-more-value-smes"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Zero trust first, AI second",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/zero-trust-first-ai-second"
   }
  ]
 }

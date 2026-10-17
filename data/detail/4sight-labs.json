@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Correctional Facility Monitoring Technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://4sightlabs.com/resources/correctional-facility-monitoring-technology"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://4sightlabs.com/resources/texas-jail-standards-compliance"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Battery Life vs Transmission Power in Wearable Monitoring Systems: Engineering Trade-Offs in Jail Monitoring Technology",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://4sightlabs.com/resources/battery-life-vs-transmission-power-in-wearable-monitoring-systems-engineering-trade-offs-in-jail-monitoring-technology"
   }
  ],
  "profile": {

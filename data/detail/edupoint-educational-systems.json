@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "Fountain Hills Unified School District (AZ) Selects Synergy Student Information System",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.edupoint.com/Company/News/fountain-hills-unified-school-district-az-selects-synergy-student-information-system"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-06-11",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Big Beaver Falls Area School District Selects Synergy Education Platform",
    "kind": "contract",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.edupoint.com/Company/News/edupoint-synergy-education-platform-named-next-gen-school-solution-of-the-year-in-2026-edtech-breakthrough-awards"
-  },
-  {
-   "date": "2026-06-03",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "White County Schools (TN) Selects Synergy Education Platform to Replace Skyward SIS",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.edupoint.com/Company/News/white-county-schools-tn-selects-synergy-education-platform-to-replace-skyward-sis"
   }
  ],
  "profile": {

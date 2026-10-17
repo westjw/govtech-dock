@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-16",
+   "headline": "The Good, the Bad and the Ugly in Cybersecurity - Week 42 (2026)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-42-8/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "index-text",
    "first_seen": "2026-10-13",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-15",
    "headline": "SentinelOne Wins SIEM Solution of the Year in CyberSecurity Breakthrough Awards 2026",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-15",
    "headline": "SentinelOne Named a Leader in the IDC MarketScape for Worldwide Modern Endpoint Security for Enterprises",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/the-good-the-bad-and-the-ugly-in-cybersecurity-week-39-8/"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "SentinelOne Extends Wayfinder Threat Hunting's Continuous Coverage to AWS, Azure, and Google Cloud",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-extends-wayfinder-threat-huntings-continuous-coverage-to-aws-azure-and-google-cloud/"
   }
  ],
  "profile": {
