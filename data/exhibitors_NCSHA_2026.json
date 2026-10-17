@@ -1,0 +1,244 @@
+{
+ "event_tag": "NCSHA 2026",
+ "conference": "NCSHA Annual",
+ "found": true,
+ "source_url": "https://web.cvent.com/event/c32ddca0-258d-4a00-8adf-c58d845cc8fd/summary",
+ "source_note": "Read from https://web.cvent.com/event/c32ddca0-258d-4a00-8adf-c58d845cc8fd/summary by scripts/sweep_exhibitors.py. 32 name(s), 26 with a website the page itself linked. Quality: menu (28% carry a corporate marker, 3% name a site section, 22% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Council of Federal Home Loan Banks",
+   "website": "https://fhlbanks.com/council-of-fhlbanks/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Association of the Federal Home Loan Banks",
+   "read": {
+    "verdict": "supplier",
+    "why": "Association of the Federal Home Loan Banks",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CSG Advisors",
+   "website": "https://csgadvisors.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Financial advisory firm for housing finance agencies",
+   "read": {
+    "verdict": "supplier",
+    "why": "Financial advisory firm for housing finance agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CSH",
+   "website": "http://www.csh.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Corporation for Supportive Housing, a nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Corporation for Supportive Housing, a nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cvent",
+   "website": "https://www.cvent.com/"
+  },
+  {
+   "name": "Emphasys Housing Software",
+   "website": "https://emphasys-software.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Housing software for public housing and housing finance agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Housing software for public housing and housing finance agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Essent",
+   "website": "https://www.essent.us/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mortgage insurance company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mortgage insurance company",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "EverDwell",
+   "website": "https://itseverdwell.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Lead platform used by HFAs (TDHCA, CalHFA, MassHousing) for homebuyer programs",
+   "read": {
+    "verdict": "vendor",
+    "why": "Lead platform used by HFAs (TDHCA, CalHFA, MassHousing) for homebuyer programs",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "HDS Companies",
+   "website": "https://www.hdsoftware.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Housing and Development Software: platform built for housing finance agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Housing and Development Software: platform built for housing finance agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "HOTB Software Solutions",
+   "website": "https://hotbsoftware.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: SaaS grant, DPA and compliance platforms for government programs",
+   "read": {
+    "verdict": "vendor",
+    "why": "SaaS grant, DPA and compliance platforms for government programs",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lakeview Loan Servicing",
+   "website": "https://lakeview.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mortgage loan servicer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mortgage loan servicer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MSHDA",
+   "website": "https://www.michigan.gov/mshda",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Michigan State Housing Development Authority, a state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Michigan State Housing Development Authority, a state agency",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Neighborly",
+   "website": "https://www.neighborlysoftware.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Neighborly Software: grants and community development software for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "Neighborly Software: grants and community development software for government",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Neighborworks America",
+   "website": "https://www.neighborworks.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: National nonprofit for community development",
+   "read": {
+    "verdict": "supplier",
+    "why": "National nonprofit for community development",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Optimal Blue",
+   "website": "https://www2.optimalblue.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "Mortgage pricing tech sold to lenders; no sign it sells to HFAs",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Prolink Solutions",
+   "website": "https://www.prolinksolutions.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: ProLinkHFA software platform for state and local housing finance agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "ProLinkHFA software platform for state and local housing finance agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Raymond James",
+   "website": "https://www.raymondjames.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Investment bank and financial services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Investment bank and financial services firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TD Bank",
+   "website": "https://www.tdsecurities.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bank",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "US Bank",
+   "website": "https://www.usbank.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bank",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Winthrop & Weinstine",
+   "website": "https://winthrop.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Law firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Zeffert & Associates",
+   "website": "https://zeffert.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Financial advisory firm for housing finance agencies",
+   "read": {
+    "verdict": "supplier",
+    "why": "Financial advisory firm for housing finance agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 12,
+ "quality_was": "menu"
+}

@@ -3840,9 +3840,9 @@
    "swept": false,
    "url": "http://www.ilapco.org",
    "exhibitor_url": "https://911conference.org/176/2026-Vendors",
-   "dates": null,
-   "dates_confidence": "unannounced",
-   "city": null,
+   "dates": "October 18-21, 2026",
+   "dates_confidence": "high",
+   "city": "Springfield, IL",
    "state": "Illinois",
    "approx_count": null,
    "companies": 22,
@@ -4109,15 +4109,15 @@
    "flagship": true,
    "swept": false,
    "url": "https://network.asbointl.org/annualconference2026/about",
-   "exhibitor_url": "https://s6.goeshow.com/asbo/annual/2026/exhibitor_hall_map.cfm",
+   "exhibitor_url": "https://s6.goeshow.com/asbo/annual/2026/exhibitor_list.cfm",
    "dates": "October 14-16, 2026",
    "dates_confidence": "high",
    "city": "Pittsburgh, PA",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 35,
+   "hiring": 14,
+   "open_roles": 363
   },
   {
    "tag": "Ohio ASBO 2026",
@@ -4295,9 +4295,9 @@
    "city": "Nashville, TN",
    "state": null,
    "approx_count": 129,
-   "companies": 41,
-   "hiring": 13,
-   "open_roles": 404
+   "companies": 53,
+   "hiring": 20,
+   "open_roles": 547
   },
   {
    "tag": "North Carolina League of Municipalities 2027",
@@ -4673,7 +4673,7 @@
    "city": "Washington, DC",
    "state": null,
    "approx_count": null,
-   "companies": 0,
+   "companies": 5,
    "hiring": 0,
    "open_roles": 0
   },
@@ -5105,9 +5105,9 @@
    "city": "Bloomington, MN",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 2,
+   "hiring": 1,
+   "open_roles": 2
   },
   {
    "tag": "NASCIO 2026",
@@ -5321,7 +5321,7 @@
    "city": "National Harbor, MD",
    "state": null,
    "approx_count": null,
-   "companies": 3,
+   "companies": 4,
    "hiring": 2,
    "open_roles": 6
   },
@@ -5675,7 +5675,7 @@
    "flagship": false,
    "swept": false,
    "url": "https://www.ncpers.org/annual-conference",
-   "exhibitor_url": null,
+   "exhibitor_url": "https://www.ncpers.org/events/ncpers-annual-conference-and-exhibition-ace",
    "dates": "May 16-19, 2027",
    "dates_confidence": "high",
    "city": "New York, NY",
@@ -5873,13 +5873,13 @@
    "flagship": false,
    "swept": false,
    "url": "https://cecconvention.org/",
-   "exhibitor_url": "https://cecconvention.org/partner",
+   "exhibitor_url": "https://s36.a2zinc.net/clients/CEC/cecc2027/Public/EventMap.aspx?shMode=E&ID=318",
    "dates": "March 10-13, 2027",
    "dates_confidence": "high",
    "city": "Columbus, OH",
    "state": null,
    "approx_count": null,
-   "companies": 0,
+   "companies": 1,
    "hiring": 0,
    "open_roles": 0
   },
@@ -5951,7 +5951,7 @@
    "city": "Detroit, MI",
    "state": null,
    "approx_count": null,
-   "companies": 0,
+   "companies": 1,
    "hiring": 0,
    "open_roles": 0
   },
@@ -11334,7 +11334,7 @@
    ],
    "location": "Denver, CO",
    "year_founded": 1999,
-   "description": "Resident communications (govDelivery), meeting and agenda management, digital services; destination marketing as Simpleview, now Granicus Destinations - exhibited at 3CMA 2026, GMIS International 2026, APHSA 2026, ICC 2026",
+   "description": "Resident communications (govDelivery), meeting and agenda management, digital services; destination marketing as Simpleview, now Granicus Destinations - exhibited at 3CMA 2026, GMIS International 2026, APHSA 2026, ICC 2026, NLC City Summit 2026",
    "website": "https://www.granicus.com",
    "board_url": "https://careers-granicus.icims.com/jobs/search?ss=1",
    "linkedin": null,
@@ -11406,7 +11406,8 @@
     "3CMA 2026",
     "GMIS International 2026",
     "APHSA 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 43,
@@ -11440,7 +11441,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; NACo 2026; NSA 2026; 3CMA 2026; GMIS International 2026; APHSA 2026; ICC 2026",
+   "source": "ICMA 2025; NACo 2026; NSA 2026; 3CMA 2026; GMIS International 2026; APHSA 2026; ICC 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -11743,7 +11744,7 @@
    "also": null,
    "location": "San Jose, CA",
    "year_founded": 2012,
-   "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2026, NRPA 2026, ICC 2026",
+   "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2026, NRPA 2026, ICC 2026, ASBO School Business 2026",
    "website": "https://www.opengov.com",
    "board_url": "https://jobs.ashbyhq.com/opengov",
    "linkedin": null,
@@ -11779,7 +11780,8 @@
     "GMIS International 2026",
     "Maryland Municipal League 2026",
     "WEFTEC 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 60,
@@ -11810,7 +11812,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; NACE 2026; AWWA ACE 2026; GMIS International 2026; Maryland Municipal League 2026; WEFTEC 2026; ICC 2026",
+   "source": "ICMA 2025; NIGP 2026; NRPA 2026; PWX 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; NACE 2026; AWWA ACE 2026; GMIS International 2026; Maryland Municipal League 2026; WEFTEC 2026; ICC 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -11822,7 +11824,7 @@
    "also": null,
    "location": "Vancouver, BC, Canada",
    "year_founded": 2008,
-   "description": "Community development permitting and licensing software (founded as BasicGov) - exhibited at ICC 2026",
+   "description": "Community development permitting and licensing software (founded as BasicGov) - exhibited at ICC 2026, NLC City Summit 2026",
    "website": "https://www.claritisoftware.com",
    "board_url": "https://job-boards.greenhouse.io/clariticloudinc",
    "linkedin": null,
@@ -11846,7 +11848,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "ICC 2026"
+    "ICC 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "ICC 2026",
    "open_roles": 11,
@@ -11875,7 +11878,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; ICC 2026",
+   "source": "direct add; ICC 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -12037,7 +12040,7 @@
    ],
    "location": "Plano, TX",
    "year_founded": 1966,
-   "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026",
+   "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026",
    "website": "https://www.tylertech.com",
    "board_url": "https://www.tylertech.com/careers/job-listings",
    "linkedin": null,
@@ -12092,7 +12095,8 @@
     "NAPT Summit 2026",
     "Connecticut Conference of Municipalities 2026",
     "Illinois Chapter of APCO 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 85,
@@ -12126,7 +12130,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026",
+   "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -12209,7 +12213,7 @@
    "also": null,
    "location": "Maynard, MA",
    "year_founded": 2015,
-   "description": "Budget building and transparency software for local governments and schools - exhibited at GFOA 2026",
+   "description": "Budget building and transparency software for local governments and schools - exhibited at GFOA 2026, ASBO School Business 2026",
    "website": "https://www.cleargov.com",
    "board_url": "https://cleargov.applytojob.com/apply",
    "linkedin": null,
@@ -12244,7 +12248,8 @@
     "ICMA 2025",
     "NACo 2026",
     "NIGP 2026",
-    "GFOA 2026"
+    "GFOA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -12267,7 +12272,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; NACo 2026; NIGP 2026; GFOA 2026",
+   "source": "ICMA 2025; NACo 2026; NIGP 2026; GFOA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -12719,7 +12724,7 @@
    "also": null,
    "location": "Lowell, MA",
    "year_founded": 2020,
-   "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base - exhibited at GFOA 2026, APTA 2026",
+   "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base - exhibited at GFOA 2026, APTA 2026, NLC City Summit 2026",
    "website": "https://www.ukg.com",
    "board_url": "https://apply.ukg.com/careers",
    "linkedin": null,
@@ -12744,7 +12749,8 @@
    "conferences": [
     "APTA 2026",
     "ICMA 2025",
-    "GFOA 2026"
+    "GFOA 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -12767,7 +12773,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; ICMA 2025; GFOA 2026",
+   "source": "APTA 2026; ICMA 2025; GFOA 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -14155,7 +14161,7 @@
    "also": null,
    "location": "Redwood City, CA",
    "year_founded": 2015,
-   "description": "Tech-first school transportation operator: EV buses, parent app, routing",
+   "description": "Tech-first school transportation operator: EV buses, parent app, routing - exhibited at ASBO School Business 2026",
    "website": "https://www.ridezum.com",
    "board_url": "https://www.ridezum.com/company/careers/",
    "linkedin": null,
@@ -14177,8 +14183,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -14199,7 +14207,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -14211,7 +14219,7 @@
    "also": null,
    "location": "Los Angeles, CA",
    "year_founded": 2014,
-   "description": "Vetted small-vehicle student rides supplementing district bus fleets - exhibited at NAPT Summit 2026, NSBA 2026",
+   "description": "Vetted small-vehicle student rides supplementing district bus fleets - exhibited at NAPT Summit 2026, NSBA 2026, ASBO School Business 2026",
    "website": "https://www.hopskipdrive.com",
    "board_url": "https://job-boards.greenhouse.io/hopskipdrive",
    "linkedin": null,
@@ -14236,7 +14244,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NAPT Summit 2026",
-    "NSBA 2026"
+    "NSBA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NAPT Summit 2026",
    "open_roles": 8,
@@ -14264,7 +14273,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; NAPT Summit 2026; NSBA 2026",
+   "source": "direct add; NAPT Summit 2026; NSBA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -14402,7 +14411,7 @@
    "also": null,
    "location": "Folsom, CA",
    "year_founded": 1997,
-   "description": "Student information system giant plus enrollment, comms, and analytics - exhibited at CoSN 2026, AASA 2026",
+   "description": "Student information system giant plus enrollment, comms, and analytics - exhibited at CoSN 2026, AASA 2026, ASBO School Business 2026",
    "website": "https://www.powerschool.com",
    "board_url": "https://www.powerschool.com/company/careers/",
    "linkedin": null,
@@ -14427,7 +14436,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "CoSN 2026",
-    "AASA 2026"
+    "AASA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "CoSN 2026",
    "open_roles": 0,
@@ -14450,7 +14460,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; CoSN 2026; AASA 2026",
+   "source": "direct add; CoSN 2026; AASA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -14518,7 +14528,7 @@
    "also": null,
    "location": "Malvern, PA",
    "year_founded": 1998,
-   "description": "K-12 HR, absence and substitute management, and operations software",
+   "description": "K-12 HR, absence and substitute management, and operations software - exhibited at ASBO School Business 2026",
    "website": "https://www.frontlineeducation.com",
    "board_url": "https://careers.frontlineeducation.com/search/sales/jobs",
    "linkedin": null,
@@ -14540,8 +14550,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -14562,7 +14574,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -14574,7 +14586,7 @@
    "also": null,
    "location": "Santa Barbara, CA",
    "year_founded": 2011,
-   "description": "Unified school-home communication platform - exhibited at CoSN 2026",
+   "description": "Unified school-home communication platform - exhibited at CoSN 2026, ASBO School Business 2026",
    "website": "https://www.parentsquare.com",
    "board_url": "https://www.parentsquare.com/careers/",
    "linkedin": null,
@@ -14597,7 +14609,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "CoSN 2026"
+    "CoSN 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "CoSN 2026",
    "open_roles": 0,
@@ -14620,7 +14633,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add; CoSN 2026",
+   "source": "direct add; CoSN 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -15988,7 +16001,7 @@
    "also": null,
    "location": "San Diego, CA",
    "year_founded": 2025,
-   "description": "AI street-imagery analysis: pavement condition, sign inventory, and blight for public works and code enforcement",
+   "description": "AI street-imagery analysis: pavement condition, sign inventory, and blight for public works and code enforcement - exhibited at Smart Cities Connect 2026",
    "website": "https://www.placemetry.com",
    "board_url": "https://www.placemetry.com",
    "linkedin": null,
@@ -16011,7 +16024,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "TechConnect 2026"
+    "TechConnect 2026",
+    "Smart Cities Connect 2026"
    ],
    "conference": "TechConnect 2026",
    "open_roles": 0,
@@ -16034,7 +16048,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "TechConnect 2026",
+   "source": "TechConnect 2026; Smart Cities Connect 2026",
    "researched": true,
    "claimed": null
   },
@@ -16106,7 +16120,7 @@
    "also": null,
    "location": "Waterloo, ON, Canada",
    "year_founded": 2023,
-   "description": "Secure AI assistant platform for state and local government staff; 120+ agency deployments - exhibited at NLC City Summit 2026, GMIS International 2026",
+   "description": "Secure AI assistant platform for state and local government staff; 120+ agency deployments - exhibited at NLC City Summit 2026, GMIS International 2026, PTI 2026",
    "website": "https://govai.com",
    "board_url": "https://govai.com/careers",
    "linkedin": null,
@@ -16135,7 +16149,8 @@
     "TechConnect 2026",
     "ICMA 2026",
     "NLC City Summit 2026",
-    "GMIS International 2026"
+    "GMIS International 2026",
+    "PTI 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -16158,7 +16173,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; NACo 2026; TechConnect 2026; ICMA 2026; NLC City Summit 2026; GMIS International 2026",
+   "source": "ICMA 2025; NACo 2026; TechConnect 2026; ICMA 2026; NLC City Summit 2026; GMIS International 2026; PTI 2026",
    "researched": true,
    "claimed": null
   },
@@ -16537,7 +16552,7 @@
    ],
    "location": "Ridgewood, NJ",
    "year_founded": 2002,
-   "description": "Online registration, membership, and payments for parks & rec departments and community schools - exhibited at NRPA 2026",
+   "description": "Online registration, membership, and payments for parks & rec departments and community schools - exhibited at NRPA 2026, ASBO School Business 2026",
    "website": "https://www.communitypass.net",
    "board_url": "https://www.communitypass.net",
    "linkedin": null,
@@ -16560,7 +16575,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NRPA 2026"
+    "NRPA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NRPA 2026",
    "open_roles": 0,
@@ -16583,7 +16599,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NRPA 2026",
+   "source": "NRPA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -17774,7 +17790,7 @@
    "also": null,
    "location": "Columbus, OH",
    "year_founded": 2012,
-   "description": "Cloud CMMS: work orders and preventive maintenance for K-12, local gov, and park & rec facilities - exhibited at NACUBO 2026, GFOA 2026, GMIS International 2026, NRPA 2026",
+   "description": "Cloud CMMS: work orders and preventive maintenance for K-12, local gov, and park & rec facilities - exhibited at NACUBO 2026, GFOA 2026, GMIS International 2026, NRPA 2026, ASBO School Business 2026",
    "website": "https://www.gofmx.com",
    "board_url": "https://www.gofmx.com/careers",
    "linkedin": null,
@@ -17803,7 +17819,8 @@
     "PWX 2026",
     "NACUBO 2026",
     "GFOA 2026",
-    "GMIS International 2026"
+    "GMIS International 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -17826,7 +17843,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; NRPA 2026; PWX 2026; NACUBO 2026; GFOA 2026; GMIS International 2026",
+   "source": "ICMA 2025; NRPA 2026; PWX 2026; NACUBO 2026; GFOA 2026; GMIS International 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -18975,7 +18992,7 @@
    "also": null,
    "location": "Boston, MA",
    "year_founded": 2014,
-   "description": "BuildingBlocks property data platform: vacancy, blight, and code insights for cities - exhibited at ICC 2026",
+   "description": "BuildingBlocks property data platform: vacancy, blight, and code insights for cities - exhibited at ICC 2026, NLC City Summit 2026",
    "website": "https://www.tolemi.com",
    "board_url": "https://www.tolemi.com",
    "linkedin": null,
@@ -18999,7 +19016,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "ICMA 2025",
-    "ICC 2026"
+    "ICC 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -19022,7 +19040,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "ICMA 2025; ICC 2026",
+   "source": "ICMA 2025; ICC 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -20635,7 +20653,7 @@
    "also": null,
    "location": "Houston, TX",
    "year_founded": 2020,
-   "description": "E-procurement: solicitation posting, evaluation, and supplier bid discovery - exhibited at GFOA 2026, NAHRO 2026, ICMA 2026, NIGP 2026",
+   "description": "E-procurement: solicitation posting, evaluation, and supplier bid discovery - exhibited at GFOA 2026, NAHRO 2026, ICMA 2026, NIGP 2026, ASBO School Business 2026",
    "website": "https://beaconbid.com",
    "board_url": "https://beaconbid.com",
    "linkedin": null,
@@ -20663,7 +20681,8 @@
     "PWX 2026",
     "GFOA 2026",
     "NAHRO 2026",
-    "ICMA 2026"
+    "ICMA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -20686,7 +20705,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "ICMA 2025; NIGP 2026; PWX 2026; GFOA 2026; NAHRO 2026; ICMA 2026",
+   "source": "ICMA 2025; NIGP 2026; PWX 2026; GFOA 2026; NAHRO 2026; ICMA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -21017,7 +21036,7 @@
    "also": null,
    "location": "Palm Beach Gardens, FL",
    "year_founded": 2006,
-   "description": "Benefits administration and enrollment built exclusively for public-sector employers - exhibited at SALGBA 2026",
+   "description": "Benefits administration and enrollment built exclusively for public-sector employers - exhibited at SALGBA 2026, ASBO School Business 2026",
    "website": "https://www.mybentek.com",
    "board_url": "https://www.mybentek.com/about/careers",
    "linkedin": null,
@@ -21041,7 +21060,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "ICMA 2025",
-    "SALGBA 2026"
+    "SALGBA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -21064,7 +21084,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "ICMA 2025; SALGBA 2026",
+   "source": "ICMA 2025; SALGBA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -21945,7 +21965,7 @@
    "also": null,
    "location": "Washington, DC",
    "year_founded": 2026,
-   "description": "AI-native land-use permit management: reads applications, flags issues, drafts review reports (YC S26)",
+   "description": "AI-native land-use permit management: reads applications, flags issues, drafts review reports (YC S26) - exhibited at NLC City Summit 2026",
    "website": "https://www.verdantapp.com",
    "board_url": "https://www.verdantapp.com",
    "linkedin": null,
@@ -21968,7 +21988,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NACo 2026"
+    "NACo 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 0,
@@ -21991,7 +22012,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NACo 2026",
+   "source": "NACo 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -22363,7 +22384,7 @@
    "also": null,
    "location": "Gatineau, QC, Canada",
    "year_founded": 2021,
-   "description": "Citizen identity and digital service portals (CitizenOne) plus digital trust/signatures (Notarius)",
+   "description": "Citizen identity and digital service portals (CitizenOne) plus digital trust/signatures (Notarius) - exhibited at NLC City Summit 2026",
    "website": "https://www.portagecybertech.com",
    "board_url": "https://portagecybertech.bamboohr.com/careers",
    "linkedin": null,
@@ -22387,7 +22408,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NACo 2026"
+    "NACo 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 10,
@@ -22414,7 +22436,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NACo 2026",
+   "source": "NACo 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -23215,7 +23237,7 @@
    "also": null,
    "location": "St. Louis, MO",
    "year_founded": 2011,
-   "description": "Poll Pad electronic poll books - the market leader - plus election-day management tools",
+   "description": "Poll Pad electronic poll books - the market leader - plus election-day management tools - exhibited at NASS Winter/Summer 2026",
    "website": "https://knowink.com",
    "board_url": "https://knowink.com/careers",
    "linkedin": null,
@@ -23237,8 +23259,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NASS Winter/Summer 2026"
+   ],
+   "conference": "NASS Winter/Summer 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -23259,7 +23283,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; NASS Winter/Summer 2026",
    "researched": true,
    "claimed": null
   },
@@ -23271,7 +23295,7 @@
    "also": null,
    "location": "Phoenix, AZ",
    "year_founded": 1972,
-   "description": "Mail ballot printing, sorting, and signature verification equipment for election offices",
+   "description": "Mail ballot printing, sorting, and signature verification equipment for election offices - exhibited at NASS Winter/Summer 2026",
    "website": "https://runbeck.net",
    "board_url": "https://runbeck.net/careers",
    "linkedin": null,
@@ -23293,8 +23317,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NASS Winter/Summer 2026"
+   ],
+   "conference": "NASS Winter/Summer 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -23315,7 +23341,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; NASS Winter/Summer 2026",
    "researched": true,
    "claimed": null
   },
@@ -25094,7 +25120,7 @@
    "also": null,
    "location": "Stuttgart, Germany",
    "year_founded": 2018,
-   "description": "Smartphone-mounted AI road condition assessment and management for municipalities (US: Edison, NJ) - exhibited at NACE 2026, Maryland Municipal League 2026",
+   "description": "Smartphone-mounted AI road condition assessment and management for municipalities (US: Edison, NJ) - exhibited at NACE 2026, Maryland Municipal League 2026, NLC City Summit 2026",
    "website": "https://www.vialytics.com",
    "board_url": "https://www.vialytics.com/careers",
    "linkedin": null,
@@ -25119,7 +25145,8 @@
    "conferences": [
     "PWX 2026",
     "NACE 2026",
-    "Maryland Municipal League 2026"
+    "Maryland Municipal League 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "PWX 2026",
    "open_roles": 0,
@@ -25142,7 +25169,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "PWX 2026; NACE 2026; Maryland Municipal League 2026",
+   "source": "PWX 2026; NACE 2026; Maryland Municipal League 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -25462,7 +25489,7 @@
    "also": null,
    "location": "Chicago, IL",
    "year_founded": 2016,
-   "description": "Solar road-weather stations and AI forecasting for municipal winter operations",
+   "description": "Solar road-weather stations and AI forecasting for municipal winter operations - exhibited at ASBO School Business 2026",
    "website": "https://frostsolutions.io",
    "board_url": "https://frostsolutions.io",
    "linkedin": null,
@@ -25485,7 +25512,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "PWX 2026"
+    "PWX 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "PWX 2026",
    "open_roles": 0,
@@ -25508,7 +25536,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "PWX 2026",
+   "source": "PWX 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -25634,7 +25662,7 @@
    "also": null,
    "location": "Brooklyn, NY",
    "year_founded": 2019,
-   "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026, ICC 2026",
+   "description": "Floodplain management software: NFIP/CRS compliance, elevation certificates; $26.3M Series B - exhibited at StormCon 2026, ICC 2026, NLC City Summit 2026",
    "website": "https://withforerunner.com",
    "board_url": "https://jobs.ashbyhq.com/forerunner",
    "linkedin": null,
@@ -25660,7 +25688,8 @@
    "conferences": [
     "PWX 2026",
     "StormCon 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "PWX 2026",
    "open_roles": 10,
@@ -25690,7 +25719,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "PWX 2026; StormCon 2026; ICC 2026",
+   "source": "PWX 2026; StormCon 2026; ICC 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -32243,7 +32272,7 @@
    "also": null,
    "location": "Waltham, MA",
    "year_founded": 2013,
-   "description": "Supplier onboarding and payee identity verification preventing payments fraud for gov and higher-ed - exhibited at GFOA 2026",
+   "description": "Supplier onboarding and payee identity verification preventing payments fraud for gov and higher-ed - exhibited at GFOA 2026, ASBO School Business 2026",
    "website": "https://www.paymentworks.com",
    "board_url": "https://www.paymentworks.com/careers",
    "linkedin": null,
@@ -32268,7 +32297,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NIGP 2026",
-    "GFOA 2026"
+    "GFOA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NIGP 2026",
    "open_roles": 8,
@@ -32295,7 +32325,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NIGP 2026; GFOA 2026",
+   "source": "NIGP 2026; GFOA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -32606,7 +32636,7 @@
    "also": null,
    "location": "Abilene, TX",
    "year_founded": 2023,
-   "description": "AI cooperative-purchasing marketplace for compliant co-op contract access ($3M seed) - exhibited at NIGP 2026",
+   "description": "AI cooperative-purchasing marketplace for compliant co-op contract access ($3M seed) - exhibited at NIGP 2026, PTI 2026",
    "website": "https://civicmarketplace.com",
    "board_url": "https://jobs.ashbyhq.com/civicmarketplace",
    "linkedin": null,
@@ -32629,7 +32659,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NIGP 2026"
+    "NIGP 2026",
+    "PTI 2026"
    ],
    "conference": "NIGP 2026",
    "open_roles": 2,
@@ -32655,7 +32686,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "NIGP 2026",
+   "source": "NIGP 2026; PTI 2026",
    "researched": true,
    "claimed": null
   },
@@ -33028,7 +33059,7 @@
    "also": null,
    "location": "San Francisco Bay Area, CA",
    "year_founded": 2025,
-   "description": "Agent-native AI 'GovOS' for local gov permitting, licensing, and procurement (~$55M Series A, ex-DeepMind) - exhibited at ICMA 2026, NIGP 2026, ICC 2026",
+   "description": "Agent-native AI 'GovOS' for local gov permitting, licensing, and procurement (~$55M Series A, ex-DeepMind) - exhibited at ICMA 2026, NIGP 2026, ICC 2026, NLC City Summit 2026",
    "website": "https://brain.co",
    "board_url": "https://jobs.ashbyhq.com/brainco",
    "linkedin": null,
@@ -33053,7 +33084,8 @@
    "conferences": [
     "NIGP 2026",
     "ICMA 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "NIGP 2026",
    "open_roles": 32,
@@ -33085,7 +33117,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NIGP 2026; ICMA 2026; ICC 2026",
+   "source": "NIGP 2026; ICMA 2026; ICC 2026; NLC City Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -36419,7 +36451,7 @@
    "also": null,
    "location": "Malling, Denmark",
    "year_founded": 2015,
-   "description": "GPS-guided autonomous field line-marking robots with cloud field design for parks, schools, and municipalities - exhibited at NRPA 2026, AB Show 2026",
+   "description": "GPS-guided autonomous field line-marking robots with cloud field design for parks, schools, and municipalities - exhibited at NRPA 2026, AB Show 2026, ASBO School Business 2026",
    "website": "https://tinymobilerobots.us",
    "board_url": "https://tinymobilerobots.us",
    "linkedin": null,
@@ -36444,7 +36476,8 @@
    "conferences": [
     "NIGP 2026",
     "NRPA 2026",
-    "AB Show 2026"
+    "AB Show 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NIGP 2026",
    "open_roles": 0,
@@ -36467,7 +36500,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NIGP 2026; NRPA 2026; AB Show 2026",
+   "source": "NIGP 2026; NRPA 2026; AB Show 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -44255,7 +44288,7 @@
    "also": null,
    "location": "Wilmington, NC",
    "year_founded": null,
-   "description": "UKG Ready and NOVAtime time-and-attendance reseller and implementation partner for local government - exhibited at NACo 2026, NRPA 2026, GFOA 2026, WEFTEC 2026",
+   "description": "UKG Ready and NOVAtime time-and-attendance reseller and implementation partner for local government - exhibited at NACo 2026, NRPA 2026, GFOA 2026, WEFTEC 2026, ASBO School Business 2026",
    "website": "https://andrewstechnology.com",
    "board_url": "https://andrewstechnology.com",
    "linkedin": null,
@@ -44281,7 +44314,8 @@
     "NACo 2026",
     "NRPA 2026",
     "GFOA 2026",
-    "WEFTEC 2026"
+    "WEFTEC 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 0,
@@ -44304,7 +44338,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NACo 2026; NRPA 2026; GFOA 2026; WEFTEC 2026",
+   "source": "NACo 2026; NRPA 2026; GFOA 2026; WEFTEC 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -47447,7 +47481,7 @@
    "also": null,
    "location": "Menlo Park, CA",
    "year_founded": 2013,
-   "description": "Digital heart health app and monitoring - exhibited at NACo 2026, PSHRA 2026, SALGBA 2026",
+   "description": "Digital heart health app and monitoring - exhibited at NACo 2026, PSHRA 2026, SALGBA 2026, NLC City Summit 2026",
    "website": "https://www.helloheart.com",
    "board_url": "https://job-boards.greenhouse.io/helloheart",
    "linkedin": null,
@@ -47473,7 +47507,8 @@
    "conferences": [
     "NACo 2026",
     "PSHRA 2026",
-    "SALGBA 2026"
+    "SALGBA 2026",
+    "NLC City Summit 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 19,
@@ -47506,7 +47541,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "NACo 2026; PSHRA 2026; SALGBA 2026",
+   "source": "NACo 2026; PSHRA 2026; SALGBA 2026; NLC City Summit 2026",
    "researched": null,
    "claimed": null,
    "read_since": "2026-08-19"
@@ -47519,7 +47554,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Enterprise software and IT for agencies - exhibited at APTA 2026, GFOA 2026, NASWA 2025, APHSA 2026, AIRA 2026, MESC 2026, NAMPI 2026, IFMA World Workplace 2026",
+   "description": "Enterprise software and IT for agencies - exhibited at APTA 2026, GFOA 2026, NASWA 2025, APHSA 2026, AIRA 2026, MESC 2026, NAMPI 2026, IFMA World Workplace 2026, ASBO School Business 2026",
    "website": "https://www.ibm.com/us-en",
    "board_url": "https://www.ibm.com/us-en/careers",
    "linkedin": null,
@@ -47550,7 +47585,8 @@
     "AIRA 2026",
     "MESC 2026",
     "NAMPI 2026",
-    "IFMA World Workplace 2026"
+    "IFMA World Workplace 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -47573,7 +47609,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "APTA 2026; GFOA 2026; NASWA 2025; APHSA 2026; AIRA 2026; MESC 2026; NAMPI 2026; IFMA World Workplace 2026",
+   "source": "APTA 2026; GFOA 2026; NASWA 2025; APHSA 2026; AIRA 2026; MESC 2026; NAMPI 2026; IFMA World Workplace 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -50544,7 +50580,7 @@
    ],
    "location": null,
    "year_founded": null,
-   "description": "Enterprise database, cloud and ERP software - exhibited at IACP 2026, NSA 2026, GFOA 2026, PSHRA 2026, NatCon 2026, APTA 2026, ICC 2026",
+   "description": "Enterprise database, cloud and ERP software - exhibited at IACP 2026, NSA 2026, GFOA 2026, PSHRA 2026, NatCon 2026, APTA 2026, ICC 2026, ASBO School Business 2026",
    "website": null,
    "board_url": null,
    "linkedin": null,
@@ -50575,7 +50611,8 @@
     "PSHRA 2026",
     "NatCon 2026",
     "APTA 2026",
-    "ICC 2026"
+    "ICC 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -50598,7 +50635,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "IACP 2026; NSA 2026; GFOA 2026; PSHRA 2026; NatCon 2026; APTA 2026; ICC 2026",
+   "source": "IACP 2026; NSA 2026; GFOA 2026; PSHRA 2026; NatCon 2026; APTA 2026; ICC 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -50795,7 +50832,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Digital community engagement platform for cities - exhibited at ICMA 2025",
+   "description": "Digital community engagement platform for cities - exhibited at ICMA 2025, NLC City Summit 2026",
    "website": "https://www.we-partake.com",
    "board_url": "https://www.we-partake.com",
    "linkedin": null,
@@ -50818,7 +50855,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "ICMA 2025"
+    "ICMA 2025",
+    "NLC City Summit 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -50841,7 +50879,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-26",
    "posts_at": null,
-   "source": "ICMA 2025",
+   "source": "ICMA 2025; NLC City Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -51028,7 +51066,7 @@
    "also": null,
    "location": "London, United Kingdom",
    "year_founded": 2016,
-   "description": "AI video redaction and privacy software - exhibited at IACP 2026",
+   "description": "AI video redaction and privacy software - exhibited at IACP 2026, ASBO School Business 2026",
    "website": "https://www.pimloc.com",
    "board_url": "https://careers.pimloc.com/",
    "linkedin": null,
@@ -51060,7 +51098,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "IACP 2026"
+    "IACP 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 2,
@@ -51086,7 +51125,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "IACP 2026",
+   "source": "IACP 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -52162,7 +52201,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Travel, expense and invoice software - exhibited at NACo 2026, NIGP 2026, NACUBO 2026, GFOA 2026",
+   "description": "Travel, expense and invoice software - exhibited at NACo 2026, NIGP 2026, NACUBO 2026, GFOA 2026, ASBO School Business 2026",
    "website": "https://www.concur.com",
    "board_url": "https://www.concur.com",
    "linkedin": null,
@@ -52188,7 +52227,8 @@
     "NACo 2026",
     "NIGP 2026",
     "NACUBO 2026",
-    "GFOA 2026"
+    "GFOA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 2,
@@ -52222,7 +52262,7 @@
     "by": "owner",
     "board_owner": "SAP"
    },
-   "source": "NACo 2026; NIGP 2026; NACUBO 2026; GFOA 2026",
+   "source": "NACo 2026; NIGP 2026; NACUBO 2026; GFOA 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null,
    "checked_by_hand": "2026-09-02"
@@ -54613,7 +54653,7 @@
    "also": null,
    "location": "Pleasanton, CA",
    "year_founded": 2005,
-   "description": "HR, finance and ERP software - exhibited at APTA 2026, ICMA 2025, NACo 2026, NACUBO 2026, GFOA 2026, PSHRA 2026, NASCIO 2026, EDUCAUSE 2026",
+   "description": "HR, finance and ERP software - exhibited at APTA 2026, ICMA 2025, NACo 2026, NACUBO 2026, GFOA 2026, PSHRA 2026, NASCIO 2026, EDUCAUSE 2026, ASBO School Business 2026",
    "website": "https://www.workday.com",
    "board_url": "https://www.workday.com",
    "linkedin": null,
@@ -54644,7 +54684,8 @@
     "GFOA 2026",
     "PSHRA 2026",
     "NASCIO 2026",
-    "EDUCAUSE 2026"
+    "EDUCAUSE 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 152,
@@ -54678,7 +54719,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "APTA 2026; ICMA 2025; NACo 2026; NACUBO 2026; GFOA 2026; PSHRA 2026; NASCIO 2026; EDUCAUSE 2026",
+   "source": "APTA 2026; ICMA 2025; NACo 2026; NACUBO 2026; GFOA 2026; PSHRA 2026; NASCIO 2026; EDUCAUSE 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -67278,7 +67319,7 @@
    "also": null,
    "location": "Tallahassee, FL",
    "year_founded": null,
-   "description": "Public records request intake and fulfillment portal for agencies",
+   "description": "Public records request intake and fulfillment portal for agencies - exhibited at ASBO School Business 2026",
    "website": "https://justfoia.com",
    "board_url": "https://www.justfoia.com/careers/",
    "linkedin": null,
@@ -67300,8 +67341,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -67322,7 +67365,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -67628,7 +67671,7 @@
    "also": null,
    "location": "Oklahoma City, OK",
    "year_founded": 1960,
-   "description": "Employee benefits, enrollment and HR services for public sector employers",
+   "description": "Employee benefits, enrollment and HR services for public sector employers - exhibited at ASBO School Business 2026",
    "website": "https://americanfidelity.com",
    "board_url": "https://americanfidelity.com",
    "linkedin": null,
@@ -67650,8 +67693,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 20,
    "open_postings": 58,
    "quota_roles": 11,
@@ -67677,7 +67722,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-13",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -67689,7 +67734,7 @@
    "also": null,
    "location": "Plano, TX",
    "year_founded": 1988,
-   "description": "Time, attendance and scheduling for government, education and public safety - exhibited at GFOA 2026",
+   "description": "Time, attendance and scheduling for government, education and public safety - exhibited at GFOA 2026, ASBO School Business 2026",
    "website": "https://www.tcpsoftware.com",
    "board_url": "https://www.tcpsoftware.com/careers",
    "linkedin": null,
@@ -67712,7 +67757,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "GFOA 2026"
+    "GFOA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "GFOA 2026",
    "open_roles": 0,
@@ -67742,7 +67788,7 @@
     "on": "2026-09-08",
     "by": "owner"
    },
-   "source": "competitor sweep; GFOA 2026",
+   "source": "competitor sweep; GFOA 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -69129,7 +69175,7 @@
    "also": null,
    "location": "Tallahassee, FL",
    "year_founded": 2020,
-   "description": "Election management, results reporting and campaign finance filing for states",
+   "description": "Election management, results reporting and campaign finance filing for states - exhibited at NASS Winter/Summer 2026",
    "website": "https://www.civixusa.com",
    "board_url": "https://www.civixusa.com",
    "linkedin": null,
@@ -69151,8 +69197,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NASS Winter/Summer 2026"
+   ],
+   "conference": "NASS Winter/Summer 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -69173,7 +69221,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NASS Winter/Summer 2026",
    "researched": null,
    "claimed": null
   },
@@ -69185,7 +69233,7 @@
    "also": null,
    "location": "Seattle, WA",
    "year_founded": 2007,
-   "description": "OmniBallot electronic ballot delivery and accessible voting for jurisdictions",
+   "description": "OmniBallot electronic ballot delivery and accessible voting for jurisdictions - exhibited at NASS Winter/Summer 2026",
    "website": "https://democracylive.com",
    "board_url": "https://democracylive.com",
    "linkedin": null,
@@ -69207,8 +69255,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NASS Winter/Summer 2026"
+   ],
+   "conference": "NASS Winter/Summer 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -69229,7 +69279,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NASS Winter/Summer 2026",
    "researched": null,
    "claimed": null
   },
@@ -69241,7 +69291,7 @@
    "also": null,
    "location": "Tampa, FL",
    "year_founded": 2011,
-   "description": "Precinct Central e-pollbooks and election management for county offices",
+   "description": "Precinct Central e-pollbooks and election management for county offices - exhibited at NASS Winter/Summer 2026",
    "website": "https://www.tenexsolutions.com",
    "board_url": "https://www.tenexsolutions.com/tenex-careers.html",
    "linkedin": null,
@@ -69263,8 +69313,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NASS Winter/Summer 2026"
+   ],
+   "conference": "NASS Winter/Summer 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -69285,7 +69337,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NASS Winter/Summer 2026",
    "researched": null,
    "claimed": null
   },
@@ -73246,7 +73298,7 @@
    "also": null,
    "location": "Stevens Point, WI",
    "year_founded": 1980,
-   "description": "Student information system and school business/ERP suite for K-12 districts - exhibited at CoSN 2026",
+   "description": "Student information system and school business/ERP suite for K-12 districts - exhibited at CoSN 2026, ASBO School Business 2026",
    "website": "https://www.skyward.com",
    "board_url": "https://careers.smartrecruiters.com/Skyward1",
    "linkedin": null,
@@ -73269,7 +73321,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "CoSN 2026"
+    "CoSN 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "CoSN 2026",
    "open_roles": 2,
@@ -73295,7 +73348,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; CoSN 2026",
+   "source": "competitor sweep; CoSN 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -73652,7 +73705,7 @@
    "also": null,
    "location": "Wilmington, NC",
    "year_founded": 2018,
-   "description": "K-12 ERP, nutrition, payments and forms platform for districts - exhibited at SNA ANC 2027",
+   "description": "K-12 ERP, nutrition, payments and forms platform for districts - exhibited at SNA ANC 2027, ASBO School Business 2026",
    "website": "https://www.linq.com",
    "board_url": "https://job-boards.greenhouse.io/emslinqinc",
    "linkedin": null,
@@ -73678,7 +73731,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "SNA ANC 2027"
+    "SNA ANC 2027",
+    "ASBO School Business 2026"
    ],
    "conference": "SNA ANC 2027",
    "open_roles": 5,
@@ -73705,7 +73759,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; SNA ANC 2027",
+   "source": "competitor sweep; SNA ANC 2027; ASBO School Business 2026",
    "researched": null,
    "claimed": null,
    "read_since": "2026-08-19"
@@ -73774,7 +73828,7 @@
    "also": null,
    "location": "Toronto, Canada",
    "year_founded": 2003,
-   "description": "ERP, HR and finance on Microsoft for school boards and districts",
+   "description": "ERP, HR and finance on Microsoft for school boards and districts - exhibited at ASBO School Business 2026",
    "website": "https://www.sparkrock.com",
    "board_url": "https://jobs.lever.co/Ionicpartners",
    "linkedin": null,
@@ -73796,8 +73850,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 4,
    "open_postings": 8,
    "quota_roles": 0,
@@ -73821,7 +73877,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -73951,7 +74007,7 @@
    "also": null,
    "location": "Schenectady, NY",
    "year_founded": 1988,
-   "description": "School bus routing, fleet and student transportation software for districts",
+   "description": "School bus routing, fleet and student transportation software for districts - exhibited at ASBO School Business 2026",
    "website": "https://www.transfinder.com",
    "board_url": "https://www.transfinder.com/careers",
    "linkedin": null,
@@ -73973,8 +74029,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -74002,7 +74060,7 @@
     "on": "2026-09-08",
     "by": "owner"
    },
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -74276,7 +74334,7 @@
    "also": null,
    "location": "Los Angeles, CA",
    "year_founded": 1999,
-   "description": "School and district websites, apps and communications for public schools",
+   "description": "School and district websites, apps and communications for public schools - exhibited at ASBO School Business 2026",
    "website": "https://www.edlio.com",
    "board_url": "https://recruiting.paylocity.com/recruiting/jobs/All/69f44fb2-1a57-4506-9b55-579f368d0272/Edlio-LLC",
    "linkedin": null,
@@ -74298,8 +74356,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 3,
    "open_postings": 3,
    "quota_roles": 2,
@@ -74323,7 +74383,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -74447,7 +74507,7 @@
    "also": null,
    "location": "Newton, MA",
    "year_founded": 2018,
-   "description": "Absence, substitute placement and time tracking for school districts",
+   "description": "Absence, substitute placement and time tracking for school districts - exhibited at ASBO School Business 2026",
    "website": "https://www.redroverk12.com",
    "board_url": "https://recruiting.paylocity.com/recruiting/jobs/All/a3fbac0b-3201-4394-94af-0e56c9cf36d3/Red-Rover-Technologies",
    "linkedin": null,
@@ -74469,8 +74529,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ASBO School Business 2026"
+   ],
+   "conference": "ASBO School Business 2026",
    "open_roles": 1,
    "open_postings": 1,
    "quota_roles": 0,
@@ -74493,7 +74555,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ASBO School Business 2026",
    "researched": null,
    "claimed": null,
    "read_since": "2026-09-02"
@@ -90104,7 +90166,7 @@
    "also": null,
    "location": "Cincinnati, Ohio",
    "year_founded": 1991,
-   "description": "Contracted school bus transportation services for K-12 districts - exhibited at NAPT Summit 2026",
+   "description": "Contracted school bus transportation services for K-12 districts - exhibited at NAPT Summit 2026, CEC Convention 2027",
    "website": "https://firststudentinc.com",
    "board_url": "https://firststudentinc.com/careers",
    "linkedin": null,
@@ -90127,7 +90189,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NAPT Summit 2026"
+    "NAPT Summit 2026",
+    "CEC Convention 2027"
    ],
    "conference": "NAPT Summit 2026",
    "open_roles": 0,
@@ -90150,7 +90213,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; NAPT Summit 2026",
+   "source": "competitor sweep; NAPT Summit 2026; CEC Convention 2027",
    "researched": null,
    "claimed": null
   },
@@ -90218,7 +90281,7 @@
    "also": null,
    "location": "Warrenville, Illinois",
    "year_founded": 1917,
-   "description": "Contracted school bus transportation for K-12 districts nationwide - exhibited at NSBA 2026",
+   "description": "Contracted school bus transportation for K-12 districts nationwide - exhibited at NSBA 2026, ASBO School Business 2026",
    "website": "https://www.durhamschoolservices.com",
    "board_url": "https://www.durhamschoolservices.com/careers",
    "linkedin": null,
@@ -90241,7 +90304,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSBA 2026"
+    "NSBA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NSBA 2026",
    "open_roles": 0,
@@ -90264,7 +90328,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; NSBA 2026",
+   "source": "competitor sweep; NSBA 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -90674,7 +90738,7 @@
    "also": null,
    "location": "Beverly, Massachusetts",
    "year_founded": 2019,
-   "description": "Electric school bus fleet-as-a-service subscriptions for districts - exhibited at NSBA 2026",
+   "description": "Electric school bus fleet-as-a-service subscriptions for districts - exhibited at NSBA 2026, ASBO School Business 2026",
    "website": "https://highlandfleets.com",
    "board_url": "https://jobs.lever.co/highlandfleets-2",
    "linkedin": null,
@@ -90698,7 +90762,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSBA 2026"
+    "NSBA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NSBA 2026",
    "open_roles": 11,
@@ -90727,7 +90792,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; NSBA 2026",
+   "source": "competitor sweep; NSBA 2026; ASBO School Business 2026",
    "researched": null,
    "claimed": null
   },
@@ -106950,7 +107015,7 @@
    "also": null,
    "location": "San Francisco, CA",
    "year_founded": 2015,
-   "description": "ChatGPT and the API, sold to public sector including named state and local government roles",
+   "description": "ChatGPT and the API, sold to public sector including named state and local government roles - exhibited at NLC City Summit 2026",
    "website": "https://openai.com",
    "board_url": "https://jobs.ashbyhq.com/openai",
    "linkedin": null,
@@ -106972,8 +107037,10 @@
    "news_checked_on": "2026-10-16",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NLC City Summit 2026"
+   ],
+   "conference": "NLC City Summit 2026",
    "open_roles": 18,
    "open_postings": 18,
    "quota_roles": 0,
@@ -107002,7 +107069,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": null,
+   "source": "conference sweep: NLC City Summit 2026",
    "researched": null,
    "claimed": null,
    "read_since": "2026-08-21"
@@ -131521,7 +131588,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Sells event management software (registration, event apps, check-in, venue sourcing) to colleges and universities as well as corporate and association event teams - exhibited at EDUCAUSE 2026",
+   "description": "Sells event management software (registration, event apps, check-in, venue sourcing) to colleges and universities as well as corporate and association event teams - exhibited at EDUCAUSE 2026, NCSHA 2026",
    "website": "https://www.cvent.com/en/event-marketing-management/education-solutions",
    "board_url": "https://www.cvent.com/en/event-marketing-management/education-solutions",
    "linkedin": null,
@@ -131544,7 +131611,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "EDUCAUSE 2026"
+    "EDUCAUSE 2026",
+    "NCSHA 2026"
    ],
    "conference": "EDUCAUSE 2026",
    "open_roles": 0,
@@ -131567,7 +131635,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "conference sweep: EDUCAUSE 2026",
+   "source": "conference sweep: EDUCAUSE 2026; NCSHA 2026",
    "researched": true,
    "claimed": null
   },
@@ -137504,7 +137572,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "AlphaRoute sells school bus routing and transportation management software, with analytics and consulting, to school districts and transit agencies - exhibited at NAPT Summit 2026",
+   "description": "AlphaRoute sells school bus routing and transportation management software, with analytics and consulting, to school districts and transit agencies - exhibited at NAPT Summit 2026, ASBO School Business 2026",
    "website": "https://alpharoute.com/",
    "board_url": "https://alpharoute.com/",
    "linkedin": null,
@@ -137527,7 +137595,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NAPT Summit 2026"
+    "NAPT Summit 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "NAPT Summit 2026",
    "open_roles": 0,
@@ -137550,7 +137619,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "conference sweep: NAPT Summit 2026",
+   "source": "conference sweep: NAPT Summit 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -138258,7 +138327,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026",
+   "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026, ASBO School Business 2026",
    "website": "https://www.diligent.com/",
    "board_url": "https://www.diligent.com/",
    "linkedin": null,
@@ -138281,7 +138350,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "Maryland Municipal League 2026"
+    "Maryland Municipal League 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "Maryland Municipal League 2026",
    "open_roles": 0,
@@ -138304,7 +138374,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "conference sweep: Maryland Municipal League 2026",
+   "source": "conference sweep: Maryland Municipal League 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -140756,7 +140826,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "WEX sells a benefits administration platform covering CDH, COBRA, VEBA and compliance, plus fleet fuel cards, to public sector employers - exhibited at PSHRA 2026, SALGBA 2026",
+   "description": "WEX sells a benefits administration platform covering CDH, COBRA, VEBA and compliance, plus fleet fuel cards, to public sector employers - exhibited at PSHRA 2026, SALGBA 2026, ASBO School Business 2026",
    "website": "https://www.wexinc.com/",
    "board_url": "https://www.wexinc.com/",
    "linkedin": null,
@@ -140780,7 +140850,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "PSHRA 2026",
-    "SALGBA 2026"
+    "SALGBA 2026",
+    "ASBO School Business 2026"
    ],
    "conference": "PSHRA 2026",
    "open_roles": 0,
@@ -140803,7 +140874,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "conference sweep: PSHRA 2026; SALGBA 2026",
+   "source": "conference sweep: PSHRA 2026; SALGBA 2026; ASBO School Business 2026",
    "researched": true,
    "claimed": null
   },
@@ -426431,7 +426502,7 @@
   "blocked": 179
  },
  "redrawn": {
-  "at": "2026-10-17T03:07:28Z",
-  "inputs": "2fa4db846170fa541bed72374738b77af91207e66e54473a4c4b053992743432"
+  "at": "2026-10-17T03:55:13Z",
+  "inputs": "63a9d331e05e109ed536ef5c23b5795e7313f45814d9c9d36aaf128f48d5550c"
  }
 }

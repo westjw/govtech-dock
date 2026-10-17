@@ -1,0 +1,206 @@
+{
+ "event_tag": "PTI 2026",
+ "conference": "PTI",
+ "found": true,
+ "source_url": "https://fusionlp.org/2026-govit-leadership-summit-symposium/",
+ "source_note": "Read from https://fusionlp.org/2026-govit-leadership-summit-symposium/ by scripts/sweep_exhibitors.py. 59 name(s), 46 with a website the page itself linked. Quality: menu (14% carry a corporate marker, 5% name a site section, 36% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "BOTCOPY",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: button text for sponsor Botcopy, AI chat front-end built for government",
+   "read": {
+    "verdict": "vendor",
+    "why": "button text for sponsor Botcopy, AI chat front-end built for government",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CAI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: button text for sponsor CAI (Computer Aid), IT services and staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "button text for sponsor CAI (Computer Aid), IT services and staffing",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CARAHSOFT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: button text for sponsor Carahsoft, public-sector IT reseller",
+   "read": {
+    "verdict": "supplier",
+    "why": "button text for sponsor Carahsoft, public-sector IT reseller",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Catalyst Solutions Group",
+   "website": "https://fusionlp.org/catalyst/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: host Fusion LP's conference and association-management services arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "host Fusion LP's conference and association-management services arm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CIVIC MARKETPLACE",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: button text for sponsor Civic Marketplace, gov procurement platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "button text for sponsor Civic Marketplace, gov procurement platform",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CLARO",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "button text for sponsor Claro; could not confirm which Claro",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Clockwork",
+   "website": "https://www.clockwork.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Clockwork, digital agency building custom software; consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Clockwork, digital agency building custom software; consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Fusion",
+   "website": "https://fusionlp.org/about-us/"
+  },
+  {
+   "name": "GOOGLE",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: button text for sponsor Google, cloud and workspace software",
+   "read": {
+    "verdict": "vendor",
+    "why": "button text for sponsor Google, cloud and workspace software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "GOVAI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "button text for sponsor GovAI; vendor or gov coalition unclear",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "INSIGHT",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: button text for sponsor Insight, IT reseller and integrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "button text for sponsor Insight, IT reseller and integrator",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MAVERICK",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "button text for sponsor Maverick; could not identify",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "PLANTE MORAN",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: button text for sponsor Plante Moran, accounting and consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "button text for sponsor Plante Moran, accounting and consulting",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Public Technology Institute",
+   "website": "https://fusionlp.org/public-technology-institute/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: PTI, nonprofit association and event host",
+   "read": {
+    "verdict": "supplier",
+    "why": "PTI, nonprofit association and event host",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "RTI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "button text for sponsor RTI; could not identify which RTI",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Starkey",
+   "website": "https://www.starkey.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Starkey, hearing aid maker; not sold to state or local agencies",
+   "read": {
+    "verdict": "supplier",
+    "why": "Starkey, hearing aid maker; not sold to state or local agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TTEC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: button text for sponsor TTEC, CX outsourcing and consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "button text for sponsor TTEC, CX outsourcing and consulting",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "restaged": "59 -> 59 names after re-filtering on 2026-10-16",
+ "read_dropped": 42,
+ "quality_was": "menu"
+}

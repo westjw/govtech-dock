@@ -3113,9 +3113,11 @@
    "est_exhibitors": 80,
    "parent_national": "NIGP",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.txppa.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "Texas Public Purchasing Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PRC_CAGP",
@@ -3162,9 +3164,13 @@
    "est_exhibitors": 50,
    "parent_national": "NIGP",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.mppoa.net/",
+   "status": "list_is_an_image",
+   "promoted": false,
+   "org_name_observed": "Michigan Public Purchasing Officers Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading",
+   "candidate_url": "https://www.mppoa.net/content.aspx?page_id=22&club_id=368811&module_id=558658",
+   "directory_note": "the sponsor list on this page is a picture (//images.clubexpress.com/368811/graphics/Gold_Sponsor_599012985.jpg) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PRC_IL",
@@ -3230,9 +3236,11 @@
    "est_exhibitors": 50,
    "parent_national": "NIGP",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.wanigp.org/",
+   "status": "no_directory_link",
+   "promoted": false,
+   "org_name_observed": "Washington State Chapter of NIGP",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "IT_MISAC",
@@ -3275,9 +3283,11 @@
    "est_exhibitors": 80,
    "parent_national": "GMIS",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.flgisa.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "Florida Local Government Information Systems Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "IT_NCLGISA",
@@ -3290,9 +3300,11 @@
    "est_exhibitors": 70,
    "parent_national": "GMIS",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.nclgisa.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "North Carolina Local Government Information Systems Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "IT_VALGITE",
@@ -3305,9 +3317,11 @@
    "est_exhibitors": 50,
    "parent_national": "GMIS",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.valgite.org/",
+   "status": "no_directory_link",
+   "promoted": false,
+   "org_name_observed": "Virginia Local Government Information Technology Executives (VaLGITE)",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "IT_MIGMIS",
@@ -3665,10 +3679,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.californiapolicechiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "California Police Chiefs Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_TX",
@@ -3697,10 +3713,14 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://fpca.com/",
+   "status": "list_is_an_image",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Florida Police Chiefs Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading",
+   "candidate_url": "https://fpca.com/2027-midwinter-exhibitor-information-2-2/",
+   "directory_note": "the sponsor list on this page is a picture (https://fpca.com/media/2026/10/MW27-Exhibitor-Floor-Plan-10152026-1-300x232.jpg) - a person can read it, a fetcher cannot. One for the capture extension."
   },
   {
    "org_code": "PCA_NY",
@@ -3713,10 +3733,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.nychiefs.org/",
+   "status": "no_directory_link",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "New York State Association of Chiefs of Police Inc.",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_PA",
@@ -3729,10 +3751,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.pachiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Pennsylvania Chiefs of Police Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_IL",
@@ -3761,10 +3785,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://oacp.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Ohio Association of Chiefs of Police",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_GA",
@@ -3842,10 +3868,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.vachiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Virginia Association of Chiefs of Police & Foundation",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_WA",
@@ -3874,10 +3902,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.azchiefsofpolice.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Welcome to The Arizona Association of Chiefs of Police",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_MA",
@@ -3906,10 +3936,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.tacp.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Tennessee Association of Chiefs of Police",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_IN",
@@ -3954,10 +3986,12 @@
    "est_exhibitors": 70,
    "parent_national": "IACP",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.marylandchiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state"
+   "status_why": "IACP definitely HAS state bodies — its Division of State Associations of Chiefs of Police (SACOP, https://www.theiacp.org/working-group/division/state",
+   "org_name_observed": "Maryland Chiefs of Police Association, Inc.",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "PCA_CO",
@@ -4072,9 +4106,11 @@
    "est_exhibitors": 70,
    "parent_national": "NSA",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.ilsheriff.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "Illinois Sheriffs' Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SHF_OH",
@@ -4175,10 +4211,12 @@
    "est_exhibitors": 90,
    "parent_national": "IAFC",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.txfirechiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f"
+   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f",
+   "org_name_observed": "Texas Fire Chiefs Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "FCA_FL",
@@ -4207,10 +4245,12 @@
    "est_exhibitors": 90,
    "parent_national": "IAFC",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.nysfirechiefs.com/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f"
+   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f",
+   "org_name_observed": "New York State Association of Fire Chiefs",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "FCA_PA",
@@ -4287,10 +4327,12 @@
    "est_exhibitors": 90,
    "parent_national": "IAFC",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.ncafc.com/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f"
+   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f",
+   "org_name_observed": "NC Association of Fire Chiefs | North Carolina | United States",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "FCA_MI",
@@ -4303,10 +4345,12 @@
    "est_exhibitors": 90,
    "parent_national": "IAFC",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.michiefs.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f"
+   "status_why": "IAFC's own site publishes no list of state fire chiefs associations. I pulled the raw HTML of the home page and extracted every internal link in its f",
+   "org_name_observed": "Michigan Association of Fire Chiefs",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "FIRE_FRE",
@@ -4746,9 +4790,11 @@
    "est_exhibitors": 50,
    "parent_national": "IIMC",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://municlerks.unt.edu/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "Texas Municipal Clerks",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "CLK_FL",
@@ -4761,9 +4807,11 @@
    "est_exhibitors": 40,
    "parent_national": "IIMC",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.floridaclerks.org/",
+   "status": "no_directory_link",
+   "promoted": false,
+   "org_name_observed": "Florida Association of City Clerks",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "CLK_NJ",
@@ -4776,9 +4824,11 @@
    "est_exhibitors": 40,
    "parent_national": "IIMC",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.njclerks.org/",
+   "status": "no_directory_link",
+   "promoted": false,
+   "org_name_observed": "The Municipal Clerks’ Association of New Jersey",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "ASR_CA",
@@ -4791,9 +4841,11 @@
    "est_exhibitors": 50,
    "parent_national": "IAAO",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.calassessor.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "The California Assessors' Association (CAA) is a statewide non-profit professional association for County Assessors form",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "ASR_TX",
@@ -4821,9 +4873,11 @@
    "est_exhibitors": 70,
    "parent_national": "ICC",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.calbo.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "California Building Officials",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "CODE_BOAF",
@@ -4851,9 +4905,11 @@
    "est_exhibitors": 60,
    "parent_national": "ICC",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://boatx.org/",
+   "status": "org_unreachable",
+   "promoted": false,
+   "org_name_observed": "Building Officials Association of Texas",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "APACH_CA",
@@ -5381,10 +5437,12 @@
    "est_exhibitors": 400,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.tasb.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "Texas Association of School Boards (TASB)",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_CSBA",
@@ -5397,10 +5455,12 @@
    "est_exhibitors": 250,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.csba.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "California School Boards Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_IASB",
@@ -5413,10 +5473,12 @@
    "est_exhibitors": 300,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.iasb.com/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "Illinois Association of School Boards",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_NYSSBA",
@@ -5429,10 +5491,12 @@
    "est_exhibitors": 200,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.nyssba.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "New York State School Boards Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_PSBA",
@@ -5461,10 +5525,12 @@
    "est_exhibitors": 300,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.ohioschoolboards.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "Ohio School Boards Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_FSBA",
@@ -5477,10 +5543,12 @@
    "est_exhibitors": 120,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://fsba.org/",
+   "status": "no_directory_link",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "Florida School Boards Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "SBD_MASB",
@@ -5525,10 +5593,12 @@
    "est_exhibitors": 100,
    "parent_national": "NSBA",
    "directory_url": null,
-   "org_url": null,
-   "status": "no_chapter_listing",
+   "org_url": "https://www.ncsba.org/",
+   "status": "not_a_directory",
    "promoted": false,
-   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V"
+   "status_why": "NSBA definitely has state chapters - its own 'Our Members' page says 'Our members are state school boards associations and the U.S. territory of the V",
+   "org_name_observed": "North Carolina School Boards Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "EDT_TCEA",
@@ -5831,9 +5901,11 @@
    "est_exhibitors": 40,
    "parent_national": "APHSA",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.cwda.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "County Welfare Directors Association of California",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "HSA_TX",
@@ -5876,9 +5948,11 @@
    "est_exhibitors": 40,
    "parent_national": "APHSA",
    "directory_url": null,
-   "org_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.nypwa.org/",
+   "status": "not_a_directory",
+   "promoted": false,
+   "org_name_observed": "NYPWA- New York Public Welfare Association",
+   "org_url_source": "researched 2026-10-16; confirmed by the site's own title or heading"
   },
   {
    "org_code": "HSA_PA",

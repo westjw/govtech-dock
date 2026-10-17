@@ -1,9 +1,1300 @@
 {
  "event_tag": "ASBO School Business 2026",
  "conference": "ASBO International",
- "found": false,
- "source_url": "https://s6.goeshow.com/asbo/annual/2026/exhibitor_hall_map.cfm",
- "source_note": "rendered in a browser by scripts/render_floor.py; 5 candidate name(s) after filtering. Not staged: only 5 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it",
- "exhibitors": [],
- "why": "only 5 name(s) survived the filter, which is a page about an event rather than a list of who is standing at it"
+ "found": true,
+ "source_url": "https://s6.goeshow.com/asbo/annual/2026/exhibitor_list.cfm",
+ "source_note": "Read from https://s6.goeshow.com/asbo/annual/2026/exhibitor_list.cfm by scripts/sweep_exhibitors.py. 152 name(s), 0 with a website the page itself linked. Quality: good (30% carry a corporate marker, 0% name a site section, 3% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "1GPA",
+   "website": null
+  },
+  {
+   "name": "Account Tree",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Student activity fund management software for K-12 districts (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Student activity fund management software for K-12 districts (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "alliant",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Alliant Insurance Services, insurance broker; not a technology product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Alliant Insurance Services, insurance broker; not a technology product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AlphaRoute",
+   "website": null
+  },
+  {
+   "name": "Amazon Business",
+   "website": null
+  },
+  {
+   "name": "Amergis Staffing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Staffing firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Staffing firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "American Century",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Investment management firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Investment management firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "American Fidelity",
+   "website": null
+  },
+  {
+   "name": "AmTab",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cafeteria tables and school furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cafeteria tables and school furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Andrews Technology",
+   "website": null
+  },
+  {
+   "name": "Appzen",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AppZen, AI software for accounts payable and expense audit",
+   "read": {
+    "verdict": "vendor",
+    "why": "AppZen, AI software for accounts payable and expense audit",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Aramark Student Nutrition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Arizona ASBO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: State association of school business officials",
+   "read": {
+    "verdict": "supplier",
+    "why": "State association of school business officials",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Arthur J. Gallagher Services UK Ltd.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance broker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance broker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ASBO International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association (conference host)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association (conference host)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Aspire Financial Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: 403(b) retirement plan recordkeeping and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "403(b) retirement plan recordkeeping and financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Asset Systems",
+   "website": null
+  },
+  {
+   "name": "Association of Educational Purchasing Agencies (AEPA)",
+   "website": null
+  },
+  {
+   "name": "Aviben",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site refused our reader (403); cannot tell what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Axis Communications",
+   "website": null
+  },
+  {
+   "name": "Aztec Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Propane and battery floor cleaning machines maker (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Propane and battery floor cleaning machines maker (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Beacon Bid",
+   "website": null
+  },
+  {
+   "name": "Bentek",
+   "website": null
+  },
+  {
+   "name": "BIC Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pens and stationery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pens and stationery maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BMO",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bank",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BoosterHub",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Booster club and PTO management software, with a district product (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Booster club and PTO management software, with a district product (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Bradley Payne",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School finance advisory and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "School finance advisory and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BrightBee",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site returned no readable content; cannot tell",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Bus IQ",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreachable; name suggests bus tech but unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "BuyBoard National Purchasing Cooperative",
+   "website": null
+  },
+  {
+   "name": "Camcode",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Durable asset tag and barcode label maker; physical labels",
+   "read": {
+    "verdict": "supplier",
+    "why": "Durable asset tag and barcode label maker; physical labels",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Center for Effective School Operations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit centre for school operations",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit centre for school operations",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Chartwells K12",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ClearGov, Inc.",
+   "website": null
+  },
+  {
+   "name": "COLBI",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Capital building program accounting and contractor prequalification software (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Capital building program accounting and contractor prequalification software (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Collaborative Student Transportation (CST)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Student transportation services provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Student transportation services provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CommunityPass",
+   "website": null
+  },
+  {
+   "name": "Corebridge Financial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Retirement and insurance financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Retirement and insurance financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Daikin Applied America's",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: HVAC equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "HVAC equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Daybright Financial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Retirement plan administration and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Retirement plan administration and financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Diligent Corporation",
+   "website": null
+  },
+  {
+   "name": "District First",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Independent K-12 student transportation advisory, consulting (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Independent K-12 student transportation advisory, consulting (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Divot Assets",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: K-12 fixed asset tracking software plus inventory services (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "K-12 fixed asset tracking software plus inventory services (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Durham School Services",
+   "website": null
+  },
+  {
+   "name": "E&I Cooperative Services",
+   "website": null
+  },
+  {
+   "name": "E-Rate Online, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: E-rate consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "E-rate consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ECHO Incorporated",
+   "website": null
+  },
+  {
+   "name": "Eddi",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; guessed domain is an unrelated design studio",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Edlio",
+   "website": null
+  },
+  {
+   "name": "EFUNDS for Schools",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Online school payment and fee platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "Online school payment and fee platform",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Elior School Dining",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "School food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Energy Efficient Investments Inc (EEI)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Energy efficiency retrofit and lighting services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Energy efficiency retrofit and lighting services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Energy Systems Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Energy services company (ESCO)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Energy services company (ESCO)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Equalis Group",
+   "website": null
+  },
+  {
+   "name": "Equitable",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance and retirement financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance and retirement financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "FFGA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: First Financial Group of America, educator retirement plans",
+   "read": {
+    "verdict": "supplier",
+    "why": "First Financial Group of America, educator retirement plans",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Flowlyst",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site blocks our crawler via robots.txt; cannot tell",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "FMX",
+   "website": null
+  },
+  {
+   "name": "Fork Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hydroponic growing systems for schools; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hydroponic growing systems for schools; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Foster & Foster",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Actuarial and benefits consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Actuarial and benefits consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Franklin Templeton",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Investment management firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Investment management firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Frontline Education",
+   "website": null
+  },
+  {
+   "name": "Frost Solutions",
+   "website": null
+  },
+  {
+   "name": "Givebacks",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School fundraising and payments software platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "School fundraising and payments software platform",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Helios Ed",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: K-12 HR and business paperless workflow software (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "K-12 HR and business paperless workflow software (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Highland Electric Fleets, Inc.",
+   "website": null
+  },
+  {
+   "name": "HopSkipDrive",
+   "website": null
+  },
+  {
+   "name": "Horace Mann",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance and financial services for educators",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance and financial services for educators",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Hylant Administrative Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance third-party administrator",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance third-party administrator",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "i3Education/PaySchools",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School payment processing software",
+   "read": {
+    "verdict": "vendor",
+    "why": "School payment processing software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "IBM",
+   "website": null
+  },
+  {
+   "name": "Intellinetics",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Document management and workflow software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Document management and workflow software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "JustFOIA",
+   "website": null
+  },
+  {
+   "name": "Keenan Pharmacy Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pharmacy benefit services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pharmacy benefit services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "KEV Group",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: SchoolCash activity fund and payment software for schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "SchoolCash activity fund and payment software for schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Keystone Purchasing Network",
+   "website": null
+  },
+  {
+   "name": "KRM TRADE CORPORATION",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; guessed domain is an unrelated HK company setup firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Landau Defensive Works LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreachable; cannot tell what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Lincoln Investment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Investment and financial services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Investment and financial services firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LINQ",
+   "website": null
+  },
+  {
+   "name": "McClure Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mechanical engineering and energy services contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mechanical engineering and energy services contractor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MGT Impact Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Miracle Method Surface Refinishing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Surface refinishing service franchise",
+   "read": {
+    "verdict": "supplier",
+    "why": "Surface refinishing service franchise",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MySchoolBucks - Heartland School Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School meal and fee payment software",
+   "read": {
+    "verdict": "vendor",
+    "why": "School meal and fee payment software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Association for Pupil Transportation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Insurance Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Insurance services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Insurance services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Life Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Life insurance and retirement firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Life insurance and retirement firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Purchasing Partners (NPPGov)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Purchasing cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Purchasing cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National School Public Relations Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Noah System",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; guessed domain is parked for sale",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "NTSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tax-deferred savings trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tax-deferred savings trade association",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Ohio Schools Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School purchasing cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "School purchasing cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "OneZ Software Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OneDistrict education ERP and HR software (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "OneDistrict education ERP and HR software (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "OpenGov Inc.",
+   "website": null
+  },
+  {
+   "name": "OperationsHERO",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Facilities work order and maintenance software for schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "Facilities work order and maintenance software for schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Oracle",
+   "website": null
+  },
+  {
+   "name": "Parent Booster USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit umbrella services for booster clubs",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit umbrella services for booster clubs",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ParentSquare",
+   "website": null
+  },
+  {
+   "name": "PaymentWorks",
+   "website": null
+  },
+  {
+   "name": "PenServ Plan Services, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Retirement plan administration services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Retirement plan administration services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PensionPortal.Com",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Online pension education portal sold to public employers (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Online pension education portal sold to public employers (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PEPPM",
+   "website": null
+  },
+  {
+   "name": "PFM Asset Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Investment and asset management firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Investment and asset management firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Pimloc",
+   "website": null
+  },
+  {
+   "name": "Playon",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: PlayOn, school ticketing (GoFan) and streaming platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "PlayOn, school ticketing (GoFan) and streaming platform",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PowerSchool",
+   "website": null
+  },
+  {
+   "name": "PracticePlan",
+   "website": null
+  },
+  {
+   "name": "PTMA Financial Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Municipal financial advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Municipal financial advisory firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Records Consultants, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Records management consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Records management consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Red Rover",
+   "website": null
+  },
+  {
+   "name": "RevTrak (Finalsite)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: School payment software, part of Finalsite",
+   "read": {
+    "verdict": "vendor",
+    "why": "School payment software, part of Finalsite",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "S&P Global Ratings",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Credit ratings agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Credit ratings agency",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SAP Concur",
+   "website": null
+  },
+  {
+   "name": "SC Strategic Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Records management software (SCView) and scanning services for schools (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Records management software (SCView) and scanning services for schools (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SchoolFirm",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School capital planning and owner advocate consultancy (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "School capital planning and owner advocate consultancy (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Security Benefit",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Retirement financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Retirement financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Selerix",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Benefits enrollment and administration software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Benefits enrollment and administration software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SFE- Southwest Foodservice Excellence",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "School food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Shutterfly Lifetouch, LLS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School photography",
+   "read": {
+    "verdict": "supplier",
+    "why": "School photography",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Siemens Smart Infrastructure",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Building systems and energy services; not judged a software vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Building systems and energy services; not judged a software vendor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SitelogIQ",
+   "website": null
+  },
+  {
+   "name": "Skyward, Inc.",
+   "website": null
+  },
+  {
+   "name": "Sodexo North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food service provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sparkrock, Inc.",
+   "website": null
+  },
+  {
+   "name": "Staples Business",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Office supplies distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Office supplies distributor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Streetbond",
+   "website": null
+  },
+  {
+   "name": "TCP Software",
+   "website": null
+  },
+  {
+   "name": "TinyMobileRobots",
+   "website": null
+  },
+  {
+   "name": "TIPS - The Interlocal Purchasing System",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Purchasing cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Purchasing cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Trane Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: HVAC equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "HVAC equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Transfinder",
+   "website": null
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "Unified Protective Services, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Security guard services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Security guard services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "UnitedHealthcare",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Health insurer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Health insurer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Virco, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "School furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "VISA",
+   "website": null
+  },
+  {
+   "name": "Voya Financial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Retirement and financial services",
+   "read": {
+    "verdict": "supplier",
+    "why": "Retirement and financial services",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Walmart Business",
+   "website": null
+  },
+  {
+   "name": "WEX",
+   "website": null
+  },
+  {
+   "name": "Workday",
+   "website": null
+  },
+  {
+   "name": "XYCOM",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; xycom.com is a domain for sale",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Zum",
+   "website": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 10,
+ "quality_was": "good"
 }

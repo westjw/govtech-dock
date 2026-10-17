@@ -1,0 +1,634 @@
+[
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "ACR",
+  "verdict": "supplier",
+  "why": "Administrative Codes and Registers, an association section of NASS",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "ACR Section",
+  "verdict": "supplier",
+  "why": "Administrative Codes and Registers, an association section of NASS",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Acronyms List",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Apollo Information Systems",
+  "verdict": "supplier",
+  "why": "Cybersecurity consulting and managed services firm; services-led, not a product vendor",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Apostilles/Document Authentication Services",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Awards",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "BallotDA",
+  "verdict": "vendor",
+  "why": "Election management SaaS for county, municipal and state election offices (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "BDO",
+  "verdict": "supplier",
+  "why": "Accounting and consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Business Names and Trademarks",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Business Services",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Business Services Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Coca-Cola",
+  "verdict": "supplier",
+  "why": "Beverage bottler",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Committees",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Company Ownership",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Constitution",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Corporate Affiliates",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Corporate Registration",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Admin Letters & Resources",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Admin Reports",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Administration & Security",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Administration Reports",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Security Exchange",
+  "verdict": "supplier",
+  "why": "Nonprofit giving election officials security training and resources (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Election Systems & Software",
+  "verdict": "vendor",
+  "why": "Voting systems and election software maker (ES&S)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Elections Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Executive Board",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Experian",
+  "verdict": "vendor",
+  "why": "Data, analytics and identity verification products sold to government agencies",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Georgia Financial Literacy Programs",
+  "verdict": "not_a_company",
+  "why": "Programme or award item on the NASS site",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Google Translate Disclaimer",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. David Scanlan, New Hampshire Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Frank LaRose, Ohio Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Michael Howe, North Dakota Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Paul Pate, Iowa Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Sarah Copeland Hanzas, Vermont Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Stephanie Thomas, Connecticut Secretary of the State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Steve Hobbs, Washington Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Hon. Steve Simon, Minnesota Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Initiatives",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Internat'l Relations Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Issue Briefings",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Issue Papers",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Job Listings",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Liberty Vote",
+  "verdict": "vendor",
+  "why": "Voting system and election technology maker",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Making Business Thrive: Efforts to Get Government Out of the Way",
+  "verdict": "not_a_company",
+  "why": "Programme or award item on the NASS site",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "MarketForce",
+  "verdict": "supplier",
+  "why": "Sells new-business lead data to B2B marketers, not a product sold to government (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Member Resources",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Memberships",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Mr. Andy Bennett, CTO and CISO, Apollo Information Systems",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Mr. Dylan Lynch, Election Security Manager, Iowa Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Ms. Christy Johnson, Chief of Staff, Iowa Secretary of State",
+  "verdict": "not_a_company",
+  "why": "A person (speaker or official), not a company",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NASS Bylaws",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NASS Constitution",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NASS History",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NASS Member Office Profiles",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NASS Privacy Policy",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Nominations Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Notary Services",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NPA",
+  "verdict": "supplier",
+  "why": "Notary Public Administrators, an association section of NASS",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "NPA Section",
+  "verdict": "supplier",
+  "why": "Notary Public Administrators, an association section of NASS",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Proof",
+  "verdict": "vendor",
+  "why": "Online notarization and identity verification platform; offers FAFSA fraud tools (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "RaySecur",
+  "verdict": "unsure",
+  "why": "T-ray mail screening scanners for agencies; unclear if hardware-only or software product",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "ReFrame",
+  "verdict": "vendor",
+  "why": "Government SaaS: business filings, elections, campaign finance, Safe at Home (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Remote Electronic Notarization",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Resolutions",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Secretaries of State/Lieutenant Governors",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Shared Practices - IDEAS Award Finalists",
+  "verdict": "not_a_company",
+  "why": "Programme or award item on the NASS site",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "State Archives & Records Management",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "State Records & Archives Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "svg {fill: white;}",
+  "verdict": "not_a_company",
+  "why": "CSS snippet scraped from the page",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Technology & Security",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Technology & Security Committee",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Technology & Security Letters",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Technology & Security Resources/Briefings",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Tecuity",
+  "verdict": "unsure",
+  "why": "Site refused our reader (403); cannot confirm what it sells",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "UCC Filings",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Vermont - Statewide Online Vermont Voter Guide",
+  "verdict": "not_a_company",
+  "why": "Programme or award item on the NASS site",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "VoteIdaho.gov",
+  "verdict": "not_a_company",
+  "why": "Bare domain of a state election website",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "VoteShield",
+  "verdict": "supplier",
+  "why": "Free nonprofit voter-roll analysis for election officials, not sold as a product (site read)",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "Webinars",
+  "verdict": "not_a_company",
+  "why": "Site menu, policy or navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ },
+ {
+  "file": "exhibitors_NASS_Winter_Summer_2026.json",
+  "name": "West Virginia - WV Centurion Chamber of Commerce Program",
+  "verdict": "not_a_company",
+  "why": "Programme or award item on the NASS site",
+  "by": "agent:reader",
+  "on": "2026-10-16"
+ }
+]

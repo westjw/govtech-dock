@@ -1305,6 +1305,22 @@ only when the organisation's own page states them.
   find, so the first `render_floor --all --write` put a 22-item menu over
   WEFTEC's 1,142 read names and IAFC FRI's 302 with 201 (restored the same
   day, before anything was intaken from them).
+- **The platform names its own field** (`named_fields`, 2026-10-16): a2z
+  prints `<a class="exhibitorName">AccuTemp Products</a>` with no href, so
+  SNA's 2027 floor of 289 read as its 20 menu links; CEC's as 25 of 94. A
+  class naming the exhibitor's or company's name is read on top of the rest
+  (not a bare `class="name"`). It added 278 names to SNA, 48 to NLC City
+  Summit, 10 to Smart Cities Connect.
+- **A logo wall is read by its alt text, and only where a reader said
+  "image"** (`logo_names`, `sweep_exhibitors --images`). Linked logos off the
+  page's own host, alt text filtered of file names and social icons. On any
+  other page a logo strip is as often the association's year-round partners,
+  which is not this event's list. NASS, NCSHA, PTI, NACVSO staged this way.
+- **A directory reader's "found" is confirmed only when the crawler reads at
+  least half the names the reader saw**; below that the list draws in a
+  browser and the row is marked js-walled for render_floor.
+- **`clean()` decodes until stable** (`&amp;amp;` off an alt text) **and takes
+  a leading call to action off** ("CONTACT BOTCOPY"), never "Contact Us".
 - **render_floor on ExpoCAD reads the category tree, not the exhibitors**
   (AB Show: "Bleachers/Seating Athletic Business"); the reader deletes them.
   A click into ExpoCAD's exhibitor view is not built.

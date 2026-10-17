@@ -1,0 +1,252 @@
+{
+ "event_tag": "NASS Winter/Summer 2026",
+ "conference": "NASS Winter/Summer",
+ "found": true,
+ "source_url": "https://www.nass.org/events/nass-2026-summer-conference",
+ "source_note": "Read from https://www.nass.org/events/nass-2026-summer-conference by scripts/sweep_exhibitors.py. 85 name(s), 29 with a website the page itself linked. Quality: menu (21% carry a corporate marker, 4% name a site section, 21% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "ACR",
+   "website": "http://www.administrativerules.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Administrative Codes and Registers, an association section of NASS",
+   "read": {
+    "verdict": "supplier",
+    "why": "Administrative Codes and Registers, an association section of NASS",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ACR Section",
+   "website": "http://www.administrativerules.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Administrative Codes and Registers, an association section of NASS",
+   "read": {
+    "verdict": "supplier",
+    "why": "Administrative Codes and Registers, an association section of NASS",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Apollo Information Systems",
+   "website": "https://www.apollo-is.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cybersecurity consulting and managed services firm; services-led, not a product vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cybersecurity consulting and managed services firm; services-led, not a product vendor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BallotDA",
+   "website": "https://www.ballotda.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Election management SaaS for county, municipal and state election offices (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Election management SaaS for county, municipal and state election offices (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BDO",
+   "website": "https://www.bdo.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Accounting and consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Accounting and consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Civix",
+   "website": "https://gocivix.com/"
+  },
+  {
+   "name": "Coca-Cola",
+   "website": "https://coca-colahighcountry.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Beverage bottler",
+   "read": {
+    "verdict": "supplier",
+    "why": "Beverage bottler",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Democracy Live",
+   "website": "https://democracylive.com/"
+  },
+  {
+   "name": "Election Security Exchange",
+   "website": "https://securingelections.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit giving election officials security training and resources (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit giving election officials security training and resources (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Election Systems & Software",
+   "website": "https://www.essvote.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Voting systems and election software maker (ES&S)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Voting systems and election software maker (ES&S)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Experian",
+   "website": "https://www.experian.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Data, analytics and identity verification products sold to government agencies",
+   "read": {
+    "verdict": "vendor",
+    "why": "Data, analytics and identity verification products sold to government agencies",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "KNOWiNK",
+   "website": "https://knowink.com/"
+  },
+  {
+   "name": "Liberty Vote",
+   "website": "https://libertyvote.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Voting system and election technology maker",
+   "read": {
+    "verdict": "vendor",
+    "why": "Voting system and election technology maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MarketForce",
+   "website": "https://marketforcecorp.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sells new-business lead data to B2B marketers, not a product sold to government (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sells new-business lead data to B2B marketers, not a product sold to government (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Microsoft",
+   "website": "https://www.microsoft.com/en-us/"
+  },
+  {
+   "name": "NPA",
+   "website": "http://www.npa-section.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Notary Public Administrators, an association section of NASS",
+   "read": {
+    "verdict": "supplier",
+    "why": "Notary Public Administrators, an association section of NASS",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "NPA Section",
+   "website": "http://www.npa-section.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Notary Public Administrators, an association section of NASS",
+   "read": {
+    "verdict": "supplier",
+    "why": "Notary Public Administrators, an association section of NASS",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Proof",
+   "website": "https://www.proof.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Online notarization and identity verification platform; offers FAFSA fraud tools (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Online notarization and identity verification platform; offers FAFSA fraud tools (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "RaySecur",
+   "website": "https://www.raysecur.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "T-ray mail screening scanners for agencies; unclear if hardware-only or software product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ReFrame",
+   "website": "https://reframesolutions.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Government SaaS: business filings, elections, campaign finance, Safe at Home (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Government SaaS: business filings, elections, campaign finance, Safe at Home (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Runbeck Election Services",
+   "website": "https://runbeck.net/"
+  },
+  {
+   "name": "Tecuity",
+   "website": "https://tecuity.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "Site refused our reader (403); cannot confirm what it sells",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Tenex Software Solutions",
+   "website": "https://www.tenexsolutions.com/"
+  },
+  {
+   "name": "VoteShield",
+   "website": "https://www.voteshield.us/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Free nonprofit voter-roll analysis for election officials, not sold as a product (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Free nonprofit voter-roll analysis for election officials, not sold as a product (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "restaged": "85 -> 85 names after re-filtering on 2026-10-16",
+ "read_dropped": 61,
+ "quality_was": "menu"
+}

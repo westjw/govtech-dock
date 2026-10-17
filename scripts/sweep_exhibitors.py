@@ -150,9 +150,25 @@ CTA_TAIL = re.compile(r"[\s\-\u2013\u2014|:]*\b(learn more|read more|more info(r
                       r"click here)\s*$", re.I)
 
 
+# A CALL TO ACTION IN FRONT OF A NAME. PTI's sponsor buttons read "CONTACT
+# BOTCOPY", "CONTACT GOOGLE" (2026-10-16). "Contact Us" and its kin stay as
+# they are, for the nav filter to drop whole.
+CTA_HEAD = re.compile(r"^(contact|visit|meet)\s+(?!(us|me|sales|support|info|information|the team|"
+                      r"our team|staff|form|page|details|now)\b)(?=\S)", re.I)
+
+
 def clean(s: str) -> str:
-    s = re.sub(r"\s+", " ", html_lib.unescape(s or "")).strip()
+    s = s or ""
+    # DECODED UNTIL IT STOPS CHANGING: alt="Election Systems &amp;amp; Software"
+    # survived one pass as "&amp;" on NASS's sponsor wall (2026-10-16).
+    for _ in range(3):
+        u = html_lib.unescape(s)
+        if u == s:
+            break
+        s = u
+    s = re.sub(r"\s+", " ", s).strip()
     s = CTA_TAIL.sub("", s).strip()
+    s = CTA_HEAD.sub("", s).strip()
     return s.strip(_ARROWS + " ")
 
 
@@ -329,7 +345,57 @@ def strip_booths(names: list[str]) -> list[str]:
     return [BOOTH_PREFIX.sub("", n or "", count=1) for n in names]
 
 
-def harvest(page: str, host: str | None = None) -> list[dict]:
+# THE PLATFORM NAMES ITS OWN FIELD. a2z prints each exhibitor as
+# <a class="exhibitorName">AccuTemp Products</a> - an anchor with no href, so
+# the anchor pass skipped all 289 on SNA's 2027 floor and kept its 20 menu
+# links (2026-10-16). An element whose class says it holds the exhibitor's or
+# company's name is read, on top of the rest.
+NAME_FIELD = re.compile(
+    r'<(a|span|div|td|h[2-6]|strong|p|li)\b[^>]*class="[^"]*\b(?:exhibitor[-_]?name|company[-_]?name|'
+    r'exh[-_]?name|exhibitorname|companyname)\b[^"]*"[^>]*>(.*?)</\1>', re.S | re.I)
+
+
+def named_fields(page: str, host: str | None = None) -> list[dict]:
+    """Names out of elements the platform marks as an exhibitor's name."""
+    out: dict[str, dict] = {}
+    for m in NAME_FIELD.finditer(page):
+        inner = m.group(2)
+        name = clean(re.sub(r"<[^>]+>", " ", inner))
+        if not looks_like_a_name(name, host) or name.lower() in out:
+            continue
+        a = re.search(r'href="(https?://[^"]+)"', m.group(0), re.I)
+        out[name.lower()] = {"name": name, "website": a.group(1) if a else None}
+    return list(out.values())
+
+
+# A LOGO WALL STATES ITS NAMES IN ALT TEXT. ISTELive's, NCSHA's and NASS's
+# sponsor pages print no company name in text, and each logo is a link to the
+# sponsor's own site carrying alt="Dell Technologies" (2026-10-16). Read ONLY
+# for a row a reader marked "image": elsewhere a strip of linked logos is as
+# often the association's year-round partners, which is not this event's list.
+LOGO_ALT_JUNK = re.compile(r"logo|icon|image|banner|sponsor|exhibitor|facebook|twitter|linkedin|"
+                           r"instagram|youtube|tiktok|placeholder|photo|graphic|button|arrow|"
+                           r"opens in a new|\.(png|jpe?g|svg|gif|webp)$|[a-z]+[-_][a-z0-9]+[-_]", re.I)
+
+
+def logo_names(page: str, base: str, host: str | None = None) -> list[dict]:
+    """Linked logos off the page's own host, named by their alt text."""
+    import urllib.parse as up
+    own = up.urlsplit(base or "").netloc.lower().replace("www.", "")
+    out: dict[str, dict] = {}
+    for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]+)"[^>]*>(.*?)</a>', page, re.S | re.I):
+        href, inner = m.group(1), m.group(2)
+        if not own or up.urlsplit(href).netloc.lower().replace("www.", "") == own:
+            continue
+        for alt in re.findall(r'<img\b[^>]*\balt="([^"]{2,80})"', inner, re.I):
+            name = clean(alt)
+            if LOGO_ALT_JUNK.search(name) or not looks_like_a_name(name, host):
+                continue
+            out.setdefault(name.lower(), {"name": name, "website": href})
+    return list(out.values())
+
+
+def harvest(page: str, host: str | None = None, logos_from: str | None = None) -> list[dict]:
     """Names off an exhibitor directory, with a website where the page gave one.
 
     Reads anchors first - a directory almost always links each exhibitor to
@@ -370,7 +436,8 @@ def harvest(page: str, host: str | None = None) -> list[dict]:
             if looks_like_a_name(name, host) and name.lower() not in out:
                 out[name.lower()] = {"name": name, "website": None}
 
-    for e in table_of_exhibitors(page, host):
+    extra = logo_names(page, logos_from, host) if logos_from else []
+    for e in table_of_exhibitors(page, host) + named_fields(page, host) + extra:
         key = e["name"].lower()
         if key not in out or (e["website"] and not out[key]["website"]):
             out[key] = e
@@ -639,8 +706,9 @@ def reads_as_a_menu(names: list[dict]) -> str | None:
     return None
 
 
-def ready(conferences: list, tag: str | None) -> list:
-    out = [c for c in conferences if c.get("exhibitor_url")]
+def ready(conferences: list, tag: str | None, images: bool = False) -> list:
+    out = [c for c in conferences if c.get("exhibitor_url")
+           or (images and c.get("fetchability") == "image" and c.get("exhibitor_url_candidate"))]
     if tag:
         out = [c for c in out if (c.get("event_tag") or "") == tag]
     return out
@@ -648,7 +716,8 @@ def ready(conferences: list, tag: str | None) -> list:
 
 def sweep(conf: dict) -> dict:
     """One conference, one page, one staged result - found or honestly not."""
-    url = conf["exhibitor_url"]
+    image = conf.get("fetchability") == "image"
+    url = conf.get("exhibitor_url") or (conf.get("exhibitor_url_candidate") if image else None)
     staged = {
         "event_tag": conf.get("event_tag"),
         "conference": conf.get("conference"),
@@ -664,7 +733,7 @@ def sweep(conf: dict) -> dict:
         staged["why"] = f"{type(exc).__name__}: {str(exc)[:90]}"
         return staged
 
-    names = harvest(page, host_of(conf.get("event_tag")))
+    names = harvest(page, host_of(conf.get("event_tag")), logos_from=url if image else None)
     doubt = suspicious(names)
     grade, note = quality(names)
     if not doubt and grade == "doubtful":
@@ -698,13 +767,16 @@ def main() -> int:
     ap.add_argument("--limit", type=int)
     ap.add_argument("--restage", action="store_true",
                     help="re-filter the staged files on disk; no network")
+    ap.add_argument("--images", action="store_true",
+                    help="also read rows a reader marked as a logo wall (fetchability image), "
+                         "from their candidate address, naming each linked logo by its alt text")
     ap.add_argument("--write", action="store_true")
     a = ap.parse_args()
     if a.restage:
         return restage(sorted(DATA.glob("exhibitors_*.json")))
 
     conf = json.loads((DATA / "conferences.json").read_text())["conferences"]
-    todo = ready(conf, a.tag)
+    todo = ready(conf, a.tag, images=a.images)
 
     if a.list or not (a.all or a.tag):
         by = Counter(str(c.get("fetchability")) for c in todo)

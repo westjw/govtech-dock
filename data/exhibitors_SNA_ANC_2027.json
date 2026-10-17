@@ -1,10 +1,3185 @@
 {
  "event_tag": "SNA ANC 2027",
  "conference": "SNA ANC",
- "found": false,
+ "found": true,
  "source_url": "https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E",
- "source_note": "Read from https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E by scripts/sweep_exhibitors.py. 20 name(s), 5 with a website the page itself linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 25% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 20 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 20
+ "source_note": "Read from https://fp37.a2zinc.net/clients/fpSNA10/ANC2027/Public/EventMap.aspx?shMode=E by scripts/sweep_exhibitors.py. 298 name(s), 5 with a website the page itself linked. Quality: good (43% carry a corporate marker, 0% name a site section, 2% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "AccuTemp Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (steamers, griddles)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (steamers, griddles)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Ace Packaging",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: packaging maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "packaging maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AeriTek",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown firm; site unreadable to our crawler",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Affinity Group",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name; cannot place this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Albie's Food Products, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AlphaTechs USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cafeteria pin pads and scanners; hardware only (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "cafeteria pin pads and scanners; hardware only (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Alto Shaam Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (ovens, holding cabinets)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (ovens, holding cabinets)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Amazing Fruit Products - US",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AmeriPak",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: packaging maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "packaging maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AmTab",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cafeteria tables and furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cafeteria tables and furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Apollo Education Systems",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name suggests school systems but site rendered empty; cannot confirm product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Apple & Eve",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: juice maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "juice maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Arctic Apples",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fresh-cut apple producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "fresh-cut apple producer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Arctic Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: walk-in coolers and freezers maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "walk-in coolers and freezers maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Arlington Valley Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Aspire Bakeries – Otis Spunkmeyer",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bakery products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "bakery products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Atlas Metal Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (serving counters)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (serving counters)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Atosa USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: commercial refrigeration and kitchen equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "commercial refrigeration and kitchen equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Barcel USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: snack food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "snack food maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Barfresh Food Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: smoothie and beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "smoothie and beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Basic American Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Blendology",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a guessed domain was an event badge firm; likely not this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Blodgett Ovens",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: commercial oven maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "commercial oven maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Bongards Premium Cheese",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cheese maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cheese maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "BOSS by Integra",
+   "website": null
+  },
+  {
+   "name": "Brakebush Brothers, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: poultry processor",
+   "read": {
+    "verdict": "supplier",
+    "why": "poultry processor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Bridgford Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Brookwood Farms, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meat products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "meat products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Buddy Fruits",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fruit snack maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "fruit snack maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Buena Vista Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Burry Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Bush's Best Beans",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bean products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "bean products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Butter Buds Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: flavoring ingredients maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "flavoring ingredients maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Butterball Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: turkey products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "turkey products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cahoon Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: frozen fruit producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "frozen fruit producer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "California Dried Fruit Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association / commodity group",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association / commodity group",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cambro Manufacturing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food storage and transport products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food storage and transport products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Campbell Soup Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cargill",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food and agriculture company",
+   "read": {
+    "verdict": "supplier",
+    "why": "food and agriculture company",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cavendish Farms Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: potato products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "potato products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cebev, LLC /Juicebowl",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: juice maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "juice maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Champion Foodservice, LLC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Chef's Corner Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cherry Central Cooperative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fruit cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "fruit cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Chobani",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: yogurt maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "yogurt maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CJ Schwan's Food Service, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Classic Delight, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ConAgra Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Consolidated Catfish, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: catfish producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "catfish producer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cook's Direct",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment dealer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cool School Cafe",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: manufacturer points and marketing program for meal programs (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "manufacturer points and marketing program for meal programs (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cres Cor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (holding and transport cabinets)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (holding and transport cabinets)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Culinary Depot",
+   "website": null
+  },
+  {
+   "name": "Dairy Farmers of America (DFA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: dairy cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "dairy cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Daiya Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: plant-based food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "plant-based food maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Danone North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: dairy and beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "dairy and beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Darlington Snacks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: snack maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "snack maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Dave's Baking Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bakery",
+   "read": {
+    "verdict": "supplier",
+    "why": "bakery",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "David's Cookies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cookie and bakery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cookie and bakery maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Del Real Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Descon Signage Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "signage firm; physical vs digital signage unknown, site not found",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "DeWafelBakkers, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: waffle and bakery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "waffle and bakery maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Diversified Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Dole Packaged Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: packaged fruit maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "packaged fruit maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Domino's Pizza",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pizza for school meal programs",
+   "read": {
+    "verdict": "supplier",
+    "why": "pizza for school meal programs",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Don Lee Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Douglas Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: equipment firm by name",
+   "read": {
+    "verdict": "supplier",
+    "why": "equipment firm by name",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Dr. Praeger's Sensible Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Drinksy, Inc (dba Fermenta)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Duke Manufacturing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (serving lines)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (serving lines)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "E S Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "E-Control Systems, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: wireless temperature monitoring: sensors plus cloud software and app (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "wireless temperature monitoring: sensors plus cloud software and app (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Eagle Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (stainless steel)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (stainless steel)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Edlund Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: can opener and kitchen tool maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "can opener and kitchen tool maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Educational Biometric Technology",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "biometric ID for schools by name; site unreadable, maker vs reseller unknown",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "EduTrak, LLC",
+   "website": null
+  },
+  {
+   "name": "Ekon-O-Pac, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: packaging maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "packaging maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Elysium Food Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Envy Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Equalis Group",
+   "website": null
+  },
+  {
+   "name": "FatCat Bakery",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bakery",
+   "read": {
+    "verdict": "supplier",
+    "why": "bakery",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Fermod, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cold room hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cold room hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Flowers Bakeries Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bakery products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "bakery products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Food For Good - PepsiCo Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: corporate foundation / nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "corporate foundation / nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Foodservice Design Professionals, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice design consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice design consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Foodservice Sustainability Solutions, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cannot place; a guessed domain redirected to another firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Fork Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: hydroponic growing units; hardware with curriculum",
+   "read": {
+    "verdict": "supplier",
+    "why": "hydroponic growing units; hardware with curriculum",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Form Plastics Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: plastic carts and products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "plastic carts and products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Foster Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: poultry producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "poultry producer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Frazil",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: frozen beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "frozen beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Fresh Start Healthy Meals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: prepared meals provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "prepared meals provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "FWE, a Hatco Co.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker (heated cabinets)",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker (heated cabinets)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "G.A. Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meal packaging and tray sealing equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "meal packaging and tray sealing equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gardyn for Schools",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "indoor smart garden device with app; unclear if a technology product vendor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "General Mills Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Genovation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: keypads and input devices; hardware only (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "keypads and input devices; hardware only (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Global Food Solutions - Right Start Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gold Creek Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gordon Food Service",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice distributor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gossner Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cheese and dairy maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cheese and dairy maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "GoVerden US",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: guacamole and avocado products maker (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "guacamole and avocado products maker (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gregory Packaging, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: juice and beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "juice and beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Hadley Farms, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Harris School Solutions",
+   "website": null
+  },
+  {
+   "name": "Harvest Hill Beverages",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Health-e Pro",
+   "website": null
+  },
+  {
+   "name": "Healthy Crunch",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: snack maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "snack maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Heartland School Solutions",
+   "website": null
+  },
+  {
+   "name": "Hershey Creamery Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ice cream and dairy maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "ice cream and dairy maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "High Liner Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: seafood processor",
+   "read": {
+    "verdict": "supplier",
+    "why": "seafood processor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Highland Beef Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: beef producer",
+   "read": {
+    "verdict": "supplier",
+    "why": "beef producer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Hormel - Jennie-O Turkey Store",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meat and turkey products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "meat and turkey products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "HPS - Purchasing Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: group purchasing organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "group purchasing organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Hubert Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice supplies distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice supplies distributor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Huhtamaki, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: packaging maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "packaging maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "i3 Education - PaySchools",
+   "website": null
+  },
+  {
+   "name": "Idahoan Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: potato products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "potato products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Imaginate Your Space",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cafeteria design and branding firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "cafeteria design and branding firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Immersion Systems, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: produce washing and thawing equipment maker (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "produce washing and thawing equipment maker (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Impossible Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: plant-based food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "plant-based food maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Innoseal Systems, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cup sealing equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cup sealing equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Integrated Food Service",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "International Food Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "IPS Rebates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rebate and rewards program for school meal programs (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "rebate and rewards program for school meal programs (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Irinox North America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: blast chiller maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "blast chiller maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ITW-FEG: Vulcan, Hobart, Baxter & Traulsen",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "J & J Snack Foods Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: snack food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "snack food maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "J.M. Smucker Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "JA Foodservice Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: foodservice products firm by name",
+   "read": {
+    "verdict": "supplier",
+    "why": "foodservice products firm by name",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Jack Link's Protein Snacks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meat snack maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "meat snack maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Jackson Warewashing Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: dishwasher maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "dishwasher maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Java House Cold Brew Coffee",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: coffee maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "coffee maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Jones Dairy Farm",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meat products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "meat products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "JonnyPops, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: frozen treats maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "frozen treats maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Kayfoods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food or beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food or beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Kellanova",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: snack and cereal maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "snack and cereal maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Ken's Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: dressings and sauces maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "dressings and sauces maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Kikkoman Sales USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: soy sauce and condiment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "soy sauce and condiment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LaCroix Sparkling Water",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sparkling water beverage brand",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sparkling water beverage brand",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lactalis - Yoplait",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dairy foods maker (Yoplait yogurt)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dairy foods maker (Yoplait yogurt)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lakeside Manufacturing Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice carts and serving equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice carts and serving equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lamb Weston",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen potato products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen potato products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Land O' Lakes Dairy Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dairy foods cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dairy foods cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lesaffre Yeast Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Yeast and baking ingredients maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Yeast and baking ingredients maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LINQ",
+   "website": null
+  },
+  {
+   "name": "Lotus Lifestyle, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site shows Lotus Plant Power energy drinks; beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site shows Lotus Plant Power energy drinks; beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LTI, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice serving line equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice serving line equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lunch Bunch",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: K-12 meal products and culinary programs; food company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: K-12 meal products and culinary programs; food company",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LunchBox Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreachable; name could be food packaging or meal software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "M & B Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "School food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MadeGood Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Magic Seasoning Blends",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Seasoning blends maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Seasoning blends maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Maid-Rite Specialty Foods, LLC.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Prepared meat foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Prepared meat foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Mars Air Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Air curtain equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Air curtain equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Master Grade",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site returned no text; cannot place the business",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "MBC Companies - BakeCrafters/Nardone/Alpha",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bakery and pizza food makers",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bakery and pizza food makers",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "McCain Foods, USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen potato and appetizer foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen potato and appetizer foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MCI Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen Mexican foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen Mexican foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Meal Manage Inc.",
+   "website": null
+  },
+  {
+   "name": "Meiko",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Commercial dishwasher maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Commercial dishwasher maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MenuLogic-K12",
+   "website": null
+  },
+  {
+   "name": "Merco Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food holding equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food holding equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Metro (Intermetro Industries)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Shelving, carts and storage equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Shelving, carts and storage equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MIC Food",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker (plantains)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker (plantains)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Michael Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Egg and potato foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Egg and potato foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Mission Nutrition",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site unreadable; name unclear between food, consulting or software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "MJM Marketing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice sales and marketing agency (broker)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice sales and marketing agency (broker)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Mondelez International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Monsoon Kitchens",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Prepared Indian foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Prepared Indian foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MTW Solutions, LLC",
+   "website": null
+  },
+  {
+   "name": "MuffinTown",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bakery foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bakery foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Dairy Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dairy industry nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dairy industry nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Food Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food distributor and supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food distributor and supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Pork Board",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pork industry checkoff board",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pork industry checkoff board",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Public Seating",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Seating and furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Seating and furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Purchasing Partners (NPPGov)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cooperative purchasing organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cooperative purchasing organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "New Age Industrial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Aluminum shelving and racks maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Aluminum shelving and racks maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Next Robot",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site: AI cooking robots for kitchens; equipment maker or tech vendor unclear",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Nippon Shokken USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sauces and condiments maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sauces and condiments maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Norlake",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Walk-in coolers and refrigeration maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Walk-in coolers and refrigeration maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Novolex",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Packaging and foodservice disposables maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Packaging and foodservice disposables maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Nutri-Link Technologies, Inc.",
+   "website": null
+  },
+  {
+   "name": "Nutrislice, Inc",
+   "website": null
+  },
+  {
+   "name": "Ocean Spray Cranberries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Juice and cranberry foods cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Juice and cranberry foods cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Oliver Packaging & Equipment Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Meal packaging and sealing equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Meal packaging and sealing equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "OMNIA, formerly Premier, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Group purchasing organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Group purchasing organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Optimum Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Pacific Coast Producers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Canned fruit cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Canned fruit cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Pacific Northwest Canned Pears",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Canned pear industry marketing board",
+   "read": {
+    "verdict": "supplier",
+    "why": "Canned pear industry marketing board",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Palmer Hamilton, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cafeteria tables and furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cafeteria tables and furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PanSaver",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pan liners and kitchen disposables maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pan liners and kitchen disposables maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PCS Revenue Control Systems, Inc.",
+   "website": null
+  },
+  {
+   "name": "PepsiCo Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Beverage and snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Beverage and snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Peterson Farms Fresh, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fresh fruit products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fresh fruit products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Piper Products, a CFS Brands Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Serving line equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Serving line equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Pizza Hut, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Pizza restaurant chain and food supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Pizza restaurant chain and food supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Plant Powered Meals Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Advocacy coalition (nonprofit)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Advocacy coalition (nonprofit)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Playr1 LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: functional drink brand; beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: functional drink brand; beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Polar King International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Outdoor walk-in coolers maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Outdoor walk-in coolers maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Post Consumer Brands",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cereal foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cereal foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Preferred Packaging",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food packaging supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food packaging supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Primo Brands",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bottled water company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bottled water company",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Pro-Team Foodservice Advisors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Promotion In Motion Companies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fruit snacks and confection maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fruit snacks and confection maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Push Beverages",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Quantum Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Meat foods processor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Meat foods processor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Raisels - National Raisin",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Raisin and snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Raisin and snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "RATIONAL USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Combi oven cooking equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Combi oven cooking equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Rebellyous Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Plant-based meat foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Plant-based meat foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Red Gold, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Tomato products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Tomato products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Refrigeration Design Technologies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Refrigerated display equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Refrigerated display equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Reser's Fine Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Prepared foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Prepared foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Retigo USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Combi oven equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Combi oven equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Revolution Consumer Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Likely Revolution plastics maker (bags, food prep film); not tech",
+   "read": {
+    "verdict": "supplier",
+    "why": "Likely Revolution plastics maker (bags, food prep film); not tech",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Rich Chicks, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Poultry foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Poultry foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Rich Products Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Rico's Products Co.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nacho cheese and snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nacho cheese and snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Robot Coupe",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food processor equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food processor equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Rosina Food Products, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Meatballs and pasta foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Meatballs and pasta foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Saavor Inc.",
+   "website": null
+  },
+  {
+   "name": "Sagitec Solutions",
+   "website": null
+  },
+  {
+   "name": "San-Aire, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Equipment maker, not a technology product firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Equipment maker, not a technology product firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "San-J International, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Soy sauce and condiments maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Soy sauce and condiments maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Savannah Food Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SchoolCafe + PrimeroEdge",
+   "website": null
+  },
+  {
+   "name": "SEA Level Social",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: marketing services for school nutrition programs; agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: marketing services for school nutrition programs; agency",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SFSPac Food Service Sanitation Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice sanitation products supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice sanitation products supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Shoes For Crews",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Slip-resistant footwear maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Slip-resistant footwear maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SICO America, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mobile folding tables maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mobile folding tables maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Simplot Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen potato and foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen potato and foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Singer Equipment",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice equipment dealer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice equipment dealer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Skechers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Footwear maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Footwear maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sky Blue Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Smart Mouth Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SmartSense by Digi",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IoT temperature monitoring sensors with SaaS platform for food safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "IoT temperature monitoring sensors with SaaS platform for food safety",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SNAP Gourmet Foods - Miss Olive’s Meals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Prepared meals maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Prepared meals maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Solely, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fruit snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fruit snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sonicu",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wireless temperature monitoring sensors with cloud software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wireless temperature monitoring sensors with cloud software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sourcewell",
+   "website": null
+  },
+  {
+   "name": "SR Max Slip Resistant Shoes",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Slip-resistant footwear maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Slip-resistant footwear maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sterno",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Chafing fuel and food warming products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Chafing fuel and food warming products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sun-Maid Growers of California",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Raisin and dried fruit cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Raisin and dried fruit cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SunButter LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Sunflower seed butter maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Sunflower seed butter maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sunkist-Hamilton Beach",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Juicer equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Juicer equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Super Bakery, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Bakery foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Bakery foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Swift Sensors",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Wireless sensor monitoring platform with cloud software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Wireless sensor monitoring platform with cloud software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sysco",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice distributor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tabasco, a McIlhenny Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hot sauce maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hot sauce maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tabatchnick Fine Foods Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Soups and foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Soups and foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TabletKiosk",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: POS tablets and kiosk hardware; hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: POS tablets and kiosk hardware; hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tajin International Corp. (Mexilink)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Seasoning maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Seasoning maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TalkingRain Beverage",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tarrier Foods Corporation (Rockin'ola)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Granola and snack foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Granola and snack foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tasty Brands & ProView Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Snack and food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Snack and food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Taylor Farms Schoolservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fresh produce foods supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fresh produce foods supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TekVisions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: touchscreen POS hardware working with others' software; hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: touchscreen POS hardware working with others' software; hardware",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Texas Pete Hot Sauce",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Hot sauce maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Hot sauce maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TH Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Snack crackers maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Snack crackers maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "That's It Nutrition, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fruit bar snack maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fruit bar snack maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Thermo-Kool/Mid-South Industries, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Walk-in coolers maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Walk-in coolers maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Thunderbird Food Machinery",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Mixers and food machinery maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Mixers and food machinery maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tidewater Grain Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Grain and rice foods supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Grain and rice foods supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tree Top, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Apple juice and fruit cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Apple juice and fruit cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Trident Seafoods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Seafood processor",
+   "read": {
+    "verdict": "supplier",
+    "why": "Seafood processor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tyson Foods, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Meat and poultry foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Meat and poultry foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Udderly Cold Milk Systems",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Milk dispensing and cooler equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Milk dispensing and cooler equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "UNOX, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Combi oven equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Combi oven equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Upstate Farms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dairy cooperative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dairy cooperative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Vend-ucation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Site: school meal vending machines integrating POS; equipment supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "Site: school meal vending machines integrating POS; equipment supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Ventura Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Dressings and oils maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Dressings and oils maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Vollrath Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Foodservice equipment and smallwares maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Foodservice equipment and smallwares maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Wawona Frozen Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Frozen fruit foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Frozen fruit foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Welbilt",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Commercial kitchen equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Commercial kitchen equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Winston Foodservice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food holding equipment maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food holding equipment maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "WK Kellogg Co.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Cereal foods maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Cereal foods maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Woodles - Palmetto Gourmet Food",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Wow Bao",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Asian food brand and restaurant company",
+   "read": {
+    "verdict": "supplier",
+    "why": "Asian food brand and restaurant company",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Yangs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Food brand (Yang's); food products maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "Food brand (Yang's); food products maker",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 20,
+ "quality_was": "good"
 }

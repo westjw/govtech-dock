@@ -1,0 +1,10 @@
+{
+ "event_tag": "ARMA InfoCon 2026",
+ "conference": "ARMA InfoCon",
+ "found": false,
+ "source_url": "https://infocon.arma.org/businesspartners",
+ "source_note": "Read from https://infocon.arma.org/businesspartners by scripts/sweep_exhibitors.py. 20 name(s), 20 with a website the page itself linked. Quality: menu (10% carry a corporate marker, 5% name a site section, 20% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [],
+ "why": "reader: every one of the 20 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 20
+}

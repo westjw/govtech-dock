@@ -3,7 +3,7 @@
  "conference": "Smart Cities Connect",
  "found": true,
  "source_url": "https://fall.smartcitiesconnect.org/expo/",
- "source_note": "Read from https://fall.smartcitiesconnect.org/expo/ by scripts/sweep_exhibitors.py. 26 name(s), 3 with a website the page itself linked. Quality: menu (38% carry a corporate marker, 0% name a site section, 15% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "source_note": "Read from https://fall.smartcitiesconnect.org/expo/ by scripts/sweep_exhibitors.py. 36 name(s), 3 with a website the page itself linked. Quality: menu (31% carry a corporate marker, 0% name a site section, 11% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
  "exhibitors": [
   {
    "name": "Archistar",
@@ -28,13 +28,13 @@
   {
    "name": "CloudWave",
    "website": null,
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "gocloudwave.com is healthcare managed IT; same exhibitor at a smart-city expo unconfirmed",
     "by": "agent:reader",
-    "on": "2026-10-15"
-   },
-   "is_govtech": null
+    "on": "2026-10-16"
+   }
   },
   {
    "name": "Corvalent Corporation",
@@ -45,7 +45,7 @@
     "verdict": "supplier",
     "why": "Industrial computer hardware maker",
     "by": "agent:reader",
-    "on": "2026-10-15"
+    "on": "2026-10-16"
    }
   },
   {
@@ -61,7 +61,7 @@
     "verdict": "vendor",
     "why": "Own site: AI spectrum-monitoring/RF awareness platform for smart cities and public safety",
     "by": "agent:reader",
-    "on": "2026-10-15"
+    "on": "2026-10-16"
    }
   },
   {
@@ -71,17 +71,120 @@
   {
    "name": "eBodyGuard",
    "website": null,
+   "is_govtech": null,
    "read": {
     "verdict": "unsure",
     "why": "Site did not answer; cannot tell what it sells or to whom",
     "by": "agent:reader",
-    "on": "2026-10-15"
-   },
-   "is_govtech": null
+    "on": "2026-10-16"
+   }
   },
   {
    "name": "Ericsson Enterprise Wireless Solutions, Inc.",
    "website": null
+  },
+  {
+   "name": "Incubly HUB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT consulting and team augmentation firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT consulting and team augmentation firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LEOTEK",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: LED street lighting maker, mainly hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "LED street lighting maker, mainly hardware",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Laboratory of the Rockies (NLR)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federal national laboratory (formerly NREL)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federal national laboratory (formerly NREL)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Placemetry",
+   "website": null
+  },
+  {
+   "name": "Portqage Cybertech",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place it; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Quarterhorse Technology",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Managed IT services provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Managed IT services provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SonicWall",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Network security firewalls with their own software, sold to government",
+   "read": {
+    "verdict": "vendor",
+    "why": "Network security firewalls with their own software, sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sourcewell",
+   "website": null
+  },
+  {
+   "name": "Throne Bathrooms",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public restroom units provider, not a software product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public restroom units provider, not a software product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Zayo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Fiber network and telecom infrastructure provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Fiber network and telecom infrastructure provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
   }
  ],
  "why": null,

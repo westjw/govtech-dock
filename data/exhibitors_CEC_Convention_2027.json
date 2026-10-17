@@ -1,10 +1,986 @@
 {
  "event_tag": "CEC Convention 2027",
  "conference": "CEC Convention",
- "found": false,
- "source_url": "https://cecconvention.org/partner",
- "source_note": "Read from https://cecconvention.org/partner by scripts/sweep_exhibitors.py. 46 name(s), 11 with a website the page itself linked. Quality: menu (9% carry a corporate marker, 4% name a site section, 28% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 46 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 46
+ "found": true,
+ "source_url": "https://s36.a2zinc.net/clients/CEC/cecc2027/Public/EventMap.aspx?shMode=E&ID=318",
+ "source_note": "Read from https://s36.a2zinc.net/clients/CEC/cecc2027/Public/EventMap.aspx?shMode=E&ID=318 by scripts/sweep_exhibitors.py. 109 name(s), 5 with a website the page itself linked. Quality: good (18% carry a corporate marker, 0% name a site section, 6% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "A Rifkin Co-Fitness on the job division",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: A. Rifkin Co. makes bags and pouches; job-skills division sells physical training kits",
+   "read": {
+    "verdict": "supplier",
+    "why": "A. Rifkin Co. makes bags and pouches; job-skills division sells physical training kits",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "AbleSpace",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IEP goal and data-tracking app sold to special educators and districts",
+   "read": {
+    "verdict": "vendor",
+    "why": "IEP goal and data-tracking app sold to special educators and districts",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Albion Center for Professional Development",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional development / training provider by its name; not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional development / training provider by its name; not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "American Institutes for Research",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit research and technical assistance organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit research and technical assistance organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "ANTON",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: ANTON learning app/platform used by schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "ANTON learning app/platform used by schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Attain Therapies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Therapy services provider for schools",
+   "read": {
+    "verdict": "supplier",
+    "why": "Therapy services provider for schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Attainment Company, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Special-ed curriculum publisher and simple AAC hardware; mainly print materials",
+   "read": {
+    "verdict": "supplier",
+    "why": "Special-ed curriculum publisher and simple AAC hardware; mainly print materials",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Aya Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Education staffing arm of Aya Healthcare",
+   "read": {
+    "verdict": "supplier",
+    "why": "Education staffing arm of Aya Healthcare",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Brighter Balance",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; site returned no text",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Brookes Publishing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Book and assessment publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Book and assessment publisher",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CareStaff Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Staffing firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Staffing firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "CEEDAR Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federally funded technical assistance centre (University of Florida)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federally funded technical assistance centre (University of Florida)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Central Institute for the Deaf",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit school and institute for deaf children",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit school and institute for deaf children",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Cerebrate",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "cerebrate.ai is a generic AI beta; cannot confirm it is this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Clark County School District",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public school district (government agency)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public school district (government agency)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Clix Therapy",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "clixtherapy.com sells heat packs; cannot confirm it is this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Columbia Southern University",
+   "website": null
+  },
+  {
+   "name": "Council of Administrators of Special Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Professional association (CASE)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Professional association (CASE)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Crisis Prevention Institute (CPI)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Crisis-prevention training organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crisis-prevention training organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Curriculum Associates, LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: i-Ready digital assessment and instruction platform sold to districts",
+   "read": {
+    "verdict": "vendor",
+    "why": "i-Ready digital assessment and instruction platform sold to districts",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "DADD Division On Autism And Developmental Disabilities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CEC division (professional association)",
+   "read": {
+    "verdict": "supplier",
+    "why": "CEC division (professional association)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Davidson Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit for profoundly gifted students",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit for profoundly gifted students",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "DCDT/LCE",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CEC division (DCDT) and its Life Centered Education curriculum",
+   "read": {
+    "verdict": "supplier",
+    "why": "CEC division (DCDT) and its Life Centered Education curriculum",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Diffit for Teachers",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI tool for differentiated instructional materials, sold to teachers and schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI tool for differentiated instructional materials, sold to teachers and schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "eLuma",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Online therapy services provider for schools",
+   "read": {
+    "verdict": "supplier",
+    "why": "Online therapy services provider for schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Everway (formerly n2y and Texthelp)",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Read&Write and n2y software platforms sold to districts",
+   "read": {
+    "verdict": "vendor",
+    "why": "Read&Write and n2y software platforms sold to districts",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Fairbanks North Star Borough School District",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public school district (government agency)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public school district (government agency)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "First Student, Inc.",
+   "website": null
+  },
+  {
+   "name": "Florida Tech",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University",
+   "read": {
+    "verdict": "supplier",
+    "why": "University",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Friends on the Block",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Structured literacy curriculum and books publisher (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Structured literacy curriculum and books publisher (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gillem Staffing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Staffing firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Staffing firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Goalbook",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Goalbook Toolkit software for IEP goals and instruction, sold to districts",
+   "read": {
+    "verdict": "vendor",
+    "why": "Goalbook Toolkit software for IEP goals and instruction, sold to districts",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Guided Hands® by ImaginAble Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Guided Hands assistive writing device; hardware only",
+   "read": {
+    "verdict": "supplier",
+    "why": "Guided Hands assistive writing device; hardware only",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Gyre & Gimble Gidgets",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Handle With Care",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Crisis intervention / behaviour management training",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crisis intervention / behaviour management training",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Hands-on English with Linking Blocks",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Physical manipulatives for English instruction",
+   "read": {
+    "verdict": "supplier",
+    "why": "Physical manipulatives for English instruction",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "IEP Assure Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IEP management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IEP management software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "IMSE-Institute for Multi-Sensory Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Orton-Gillingham teacher training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Orton-Gillingham teacher training provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "IRIS Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federally funded centre at Vanderbilt University",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federally funded centre at Vanderbilt University",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "JKM Training, Inc. - Safe Crisis Management Training Programs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Crisis management training programmes",
+   "read": {
+    "verdict": "supplier",
+    "why": "Crisis management training programmes",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Journify Learning Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI platform for special-education teams used by districts (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI platform for special-education teams used by districts (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Judge Educational Services",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Kid Spark Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: STEM building kits and curriculum; physical products",
+   "read": {
+    "verdict": "supplier",
+    "why": "STEM building kits and curriculum; physical products",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Lakeshore Learning Materials",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Classroom materials and furniture maker/retailer",
+   "read": {
+    "verdict": "supplier",
+    "why": "Classroom materials and furniture maker/retailer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Learning Ally",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Nonprofit selling its audiobook reading platform to schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "Nonprofit selling its audiobook reading platform to schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "LessonPix",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Web-based visual-supports creation tool sold to educators and schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "Web-based visual-supports creation tool sold to educators and schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Let's Go Learn",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Online diagnostic assessment and instruction software for schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "Online diagnostic assessment and instruction software for schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Letterland",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Phonics programme publisher; mainly print materials",
+   "read": {
+    "verdict": "supplier",
+    "why": "Phonics programme publisher; mainly print materials",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Math Teachers Press, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Math curriculum publisher (print)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Math curriculum publisher (print)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Maxim Healthcare Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Healthcare staffing firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Healthcare staffing firm",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Montana School Recruitment Project",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: State educator recruitment initiative",
+   "read": {
+    "verdict": "supplier",
+    "why": "State educator recruitment initiative",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Center on Academic Interventions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federally funded technical assistance centre",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federally funded technical assistance centre",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "National Down Syndrome Society",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Nonprofit advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "Nonprofit advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "New Story",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Private special-education schools operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "Private special-education schools operator",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Next Level Speech Therapy, P.C.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Speech therapy services practice",
+   "read": {
+    "verdict": "supplier",
+    "why": "Speech therapy services practice",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "NextUp Transition Curriculum",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Transition curriculum; format unknown, site returned nothing",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Nova Southeastern University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University",
+   "read": {
+    "verdict": "supplier",
+    "why": "University",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Novel Ideas, Inc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Could not place; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "OATECA",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Oklahoma AT and educational consulting firm; curriculum system, unclear if software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Ohana Student Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Special-education related services and staffing (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Special-education related services and staffing (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Ozzystory",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Site title says AI social narratives for kids; no body text, buyer unclear",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Plural Publishing",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Book publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "Book publisher",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PRC-Saltillo",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AAC devices sold with their own language software",
+   "read": {
+    "verdict": "vendor",
+    "why": "AAC devices sold with their own language software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "PSI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Bare acronym; cannot tell which PSI",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Purpose Driven Educator Entrepreneurs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Educator entrepreneur community/coaching by its name; not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "Educator entrepreneur community/coaching by its name; not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Real OT Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Occupational therapy resources/services by its name",
+   "read": {
+    "verdict": "supplier",
+    "why": "Occupational therapy resources/services by its name",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Salt Creek Learning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Special-ed compliance consulting and teletherapy services (site read)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Special-ed compliance consulting and teletherapy services (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SameGoal Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: IEP and special-education management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "IEP and special-education management software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Scanning Pens Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: cpen.com/resellers: Scanning Pens is C-Pen AB's exclusive distributor and reseller; C-Pen (Lund, Sweden) makes the pens and their software",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: cpen.com/resellers: Scanning Pens is C-Pen AB's exclusive distributor and reseller; C-Pen (Lund, Sweden) makes the pens and their software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "School Outfitters",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: School furniture supplier",
+   "read": {
+    "verdict": "supplier",
+    "why": "School furniture supplier",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Slippery Rock University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public university",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public university",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Sora",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: OverDrive's Sora student reading app sold to schools",
+   "read": {
+    "verdict": "vendor",
+    "why": "OverDrive's Sora student reading app sold to schools",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "SpedSync",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Special-education management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Special-education management software",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Speech Kingdom",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Social-communication software with district licensing and IEP reporting (site read)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Social-communication software with district licensing and IEP reporting (site read)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "STAR Autism Support",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Autism curriculum and training provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "Autism curriculum and training provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Tandem",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "Ambiguous single word; cannot place",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Teach Love Autism",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Teacher-author autism resources",
+   "read": {
+    "verdict": "supplier",
+    "why": "Teacher-author autism resources",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "TouchMath",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Multisensory math curriculum publisher; mainly print",
+   "read": {
+    "verdict": "supplier",
+    "why": "Multisensory math curriculum publisher; mainly print",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "University of Florida Literacy Institute (UFLI)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University literacy institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "University literacy institute",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "University of Oregon, Center on Teaching and Learning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University research centre",
+   "read": {
+    "verdict": "supplier",
+    "why": "University research centre",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "University of Wyoming",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Public university",
+   "read": {
+    "verdict": "supplier",
+    "why": "Public university",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Vasco Electronics LLC",
+   "website": null
+  },
+  {
+   "name": "Wilson Language Training Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Literacy curriculum publisher and teacher training",
+   "read": {
+    "verdict": "supplier",
+    "why": "Literacy curriculum publisher and teacher training",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Zen Educate",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Teacher staffing marketplace (staffing)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Teacher staffing marketplace (staffing)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 25,
+ "quality_was": "good"
 }

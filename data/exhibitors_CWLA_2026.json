@@ -1,0 +1,10 @@
+{
+ "event_tag": "CWLA 2026",
+ "conference": "CWLA",
+ "found": false,
+ "source_url": "https://www.cwla.org/cwla2026/",
+ "source_note": "Read from https://www.cwla.org/cwla2026/ by scripts/sweep_exhibitors.py. 35 name(s), 11 with a website the page itself linked. Quality: menu (17% carry a corporate marker, 9% name a site section, 23% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [],
+ "why": "reader: every one of the 35 names was the site's own text, not an exhibitor; this page is not a floor",
+ "read_dropped": 35
+}

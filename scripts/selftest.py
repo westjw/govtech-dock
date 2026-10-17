@@ -10562,7 +10562,10 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
         # button text is not part of a name (sweep_exhibitors.clean)
         import sweep_exhibitors as sw
         for raw, want in (("CavMac Learn More", "CavMac"), ("VC3 - Learn More", "VC3"), ("GovDeals Learn More", "GovDeals"),
-                          ("Website Solutions Inc", "Website Solutions Inc"), ("Delta Dental", "Delta Dental")):
+                          ("Website Solutions Inc", "Website Solutions Inc"), ("Delta Dental", "Delta Dental"),
+                          ("CONTACT BOTCOPY", "BOTCOPY"), ("Contact Us", "Contact Us"), ("Contact Sales", "Contact Sales"),
+                          ("Visit Design Studio", "Design Studio"),
+                          ("Election Systems &amp;amp; Software", "Election Systems & Software")):
             if sw.clean(raw) != want:
                 errors += fail(f"sweep_exhibitors.clean({raw!r}) = {sw.clean(raw)!r}, expected {want!r}")
         if one.get("quality") != "menu":
@@ -26161,6 +26164,87 @@ def check_a_browser_read_adds_to_a_floor() -> int:
     return errors
 
 
+def check_a_platforms_name_field_is_read() -> int:
+    """<a class="exhibitorName">AccuTemp Products</a> is an exhibitor.
+
+    a2z prints each exhibitor as an anchor with no href; the anchor pass
+    needs one, the cell fallback ran only under MIN_NAMES, and the booth
+    column holds bare numbers. SNA's 2027 floor of 289 read as its 20 menu
+    links (2026-10-16). A class naming the exhibitor's or company's name is
+    read on top of the rest; a class that merely contains "name" is not.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    vendors = ["AccuTemp Products", "Cambro Manufacturing", "Hobart Corp.", "Lunchbox LLC",
+               "Nutrislice Inc.", "PrimeroEdge", "Rational USA", "Vulcan Equipment", "Yangs 5th Taste"]
+    # SNA's own surviving menu, so the anchor pass counts past MIN_NAMES and
+    # the cell fallback stays off, exactly as on the real page.
+    nav = "".join(f'<a href="/p{i}">{n}</a>' for i, n in enumerate(
+        ["Upgrade Internet Explorer", "Google Chrome", "Mozilla Firefox", "Apple Safari", "Legend",
+         "Change Password", "Main Map", "New Profile", "Forgot Password", "Exhibitor List",
+         "Check My Calendar", "Data Usage and Privacy Policy"]))
+    rows = "".join(f'<tr><td class="companyName"><a class="exhibitorName">{v}</a></td>'
+                   f'<td class="boothLabel"><a href="#">{500 + i}</a></td></tr>' for i, v in enumerate(vendors))
+    page = nav + "<table><tbody>" + rows + "</tbody></table>"
+    got = {n["name"] for n in sw.harvest(page, "SNA")}
+    if not set(vendors) <= got:
+        print(f"  FAIL: a2z's exhibitorName anchors were not read - {sorted(set(vendors) - got)[:3]} missing")
+        errors += 1
+    noise = ('<span class="username">Guest</span><div class="filename">map.png</div>'
+             '<span class="name">Keynote Speaker Panel</span>')
+    if sw.named_fields(noise):
+        print("  FAIL: a class that only contains 'name' was read as an exhibitor's name field")
+        errors += 1
+    return errors
+
+
+def check_a_logo_wall_is_read_only_where_a_reader_said_so() -> int:
+    """Linked logos' alt text is a floor only on a row marked "image".
+
+    ISTELive, NCSHA and NASS print no sponsor name in text; each logo links
+    the sponsor's site with alt="Dell Technologies". Read for those rows
+    (fetchability image, from the candidate address); never on any other
+    page, where a logo strip is as often the association's year-round
+    partners - not this event's list (2026-10-16). Drives sweep() itself.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sweep_exhibitors as sw
+    import ats
+    names = ["Dell Technologies", "Microsoft", "Lenovo", "Instructure", "PowerSchool",
+             "Clever", "Securly", "GoGuardian", "Kajeet"]
+    wall = ("<h1>ISTELive 26 Sponsors</h1>"
+            + "".join(f'<a href="https://{n.split()[0].lower()}.test/"><img src="/l/{i}.png" alt="{n}"></a>'
+                      for i, n in enumerate(names))
+            + '<a href="https://social.test/"><img alt="Facebook logo"></a>'
+            + '<a href="https://x.test/"><img alt="Stacked_S_Dark_Mode"></a>'
+            + '<a href="https://conference.iste.test/partners"><img alt="Learning Partners Network"></a>')
+    keep = ats._page
+
+    class _R:
+        text = wall
+    try:
+        ats._page = lambda u, *a, **k: _R()
+        img = sw.sweep({"event_tag": "ISTELive 2026", "fetchability": "image",
+                        "exhibitor_url_candidate": "https://conference.iste.test/2026/sponsors"})
+        txt = sw.sweep({"event_tag": "ISTELive 2026", "fetchability": "readable",
+                        "exhibitor_url": "https://conference.iste.test/2026/sponsors"})
+    finally:
+        ats._page = keep
+    got = {e["name"] for e in img.get("exhibitors") or []}
+    if not set(names) <= got:
+        print(f"  FAIL: a logo wall marked image was not read by its alt text - {sorted(set(names) - got)[:3]}")
+        errors += 1
+    if got & {"Facebook logo", "Stacked_S_Dark_Mode", "Learning Partners Network"}:
+        print(f"  FAIL: a social icon, a file name or an on-site logo was read as a sponsor: {sorted(got)[:4]}")
+        errors += 1
+    if {e["name"] for e in txt.get("exhibitors") or []} & set(names):
+        print("  FAIL: linked logos were read on a row nobody marked as a logo wall")
+        errors += 1
+    return errors
+
+
 def check_a_chapter_directory_is_not_its_parents() -> int:
     """A state chapter's exhibitor list must belong to that chapter.
 
@@ -33614,6 +33698,8 @@ def main() -> int:
     errors += check_a_site_builders_credit_is_not_an_exhibitor()
     errors += check_a_booth_number_is_not_part_of_a_name()
     errors += check_a_browser_read_adds_to_a_floor()
+    errors += check_a_platforms_name_field_is_read()
+    errors += check_a_logo_wall_is_read_only_where_a_reader_said_so()
     errors += check_a_chapter_directory_is_not_its_parents()
     errors += check_chapter_listings_are_looked_up()
     errors += check_promotion_refuses_a_generated_name()

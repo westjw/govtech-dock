@@ -1,0 +1,89 @@
+{
+ "event_tag": "NACVSO 2026",
+ "conference": "NACVSO",
+ "found": true,
+ "source_url": "https://www.nacvso.org/sponsors2",
+ "source_note": "Read from https://www.nacvso.org/sponsors2 by scripts/sweep_exhibitors.py. 37 name(s), 16 with a website the page itself linked. Quality: menu (11% carry a corporate marker, 14% name a site section, 16% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Columbia Southern University",
+   "website": null
+  },
+  {
+   "name": "Columbia Southern University/NACVSO",
+   "website": "https://www.columbiasouthern.edu/nacvso",
+   "is_govtech": false,
+   "is_govtech_why": "reader: private university; NACVSO education partner",
+   "read": {
+    "verdict": "supplier",
+    "why": "private university; NACVSO education partner",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Delta Dental Insurance home",
+   "website": "https://www1.deltadentalins.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Delta Dental, a dental insurer (logo alt text)",
+   "read": {
+    "verdict": "supplier",
+    "why": "Delta Dental, a dental insurer (logo alt text)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Home - Heroes With Hearing Loss",
+   "website": "https://heroeswithhearingloss.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Heroes With Hearing Loss, veterans hearing programme (page title); not gov tech",
+   "read": {
+    "verdict": "supplier",
+    "why": "Heroes With Hearing Loss, veterans hearing programme (page title); not gov tech",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "MemberDeals",
+   "website": "https://memberdeals.com/nacvso/?login=1",
+   "is_govtech": false,
+   "is_govtech_why": "reader: MemberDeals, member discount-ticket benefits provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "MemberDeals, member discount-ticket benefits provider",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "Novi AMS",
+   "website": "https://www.noviams.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: association management SaaS for associations, not agencies; site platform credit",
+   "read": {
+    "verdict": "supplier",
+    "why": "association management SaaS for associations, not agencies; site platform credit",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  },
+  {
+   "name": "tylertech",
+   "website": "https://www.tylertech.com/",
+   "is_govtech": true,
+   "is_govtech_why": "reader: Tyler Technologies, public-sector software (logo alt text)",
+   "read": {
+    "verdict": "vendor",
+    "why": "Tyler Technologies, public-sector software (logo alt text)",
+    "by": "agent:reader",
+    "on": "2026-10-16"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 30,
+ "quality_was": "menu"
+}
