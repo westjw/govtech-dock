@@ -18107,7 +18107,7 @@
    },
    {
     "date": "2023-11-28",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "Why OEMs are Increasingly Relying on Industrial IoT",
     "kind": "press",
@@ -18125,7 +18125,7 @@
    },
    {
     "date": "2023-10-23",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "OBD2 Codes Explained: A Complete Guide",
     "kind": "press",
@@ -18143,7 +18143,7 @@
    },
    {
     "date": "2023-09-30",
-    "date_source": "json-ld",
+    "date_source": "card-date",
     "first_seen": "2026-09-05",
     "headline": "The J1939 Protocol, Explained",
     "kind": "press",
@@ -20355,15 +20355,6 @@
     "url": "https://cellebrite.com/en/resources/press-releases/"
    },
    {
-    "date": "2026-10-01",
-    "date_source": "index-text",
-    "first_seen": "2026-10-18",
-    "headline": "\u2018He\u2019ll Never Be Able to Do This to Another Girl Again:\u2019 How Phone Evidence Led to a Predator\u2019s 174 Year Sentence in Maricopa County",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://cellebrite.com/en/newsroom/in-the-news/"
-   },
-   {
     "date": "2026-09-30",
     "date_source": "json-ld",
     "first_seen": "2026-10-05",
@@ -20551,6 +20542,15 @@
     "kind": "leadership",
     "kind_rule": "Appoints",
     "url": "https://cellebrite.com/en/resources/press-releases/cellebrite-appoints-shiven-ramji-chief-executive-officer-succeeding-thomas-e-hogan/"
+   },
+   {
+    "date": "2026-03-20",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-18",
+    "headline": "Future of Mobile Security Testing Tools: The Latest New Corellium Products",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://cellebrite.com/en/blog/future-of-mobile-security-testingtools-the-latest-new-corellium-products/"
    }
   ],
   "state": "items"
@@ -49099,6 +49099,15 @@
     "url": "https://www.gofmx.com/blog/business-case-facilities-management-software/"
    },
    {
+    "date": "2026-04-21",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "How to Select the Best Facilities Management Software",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
+   },
+   {
     "date": "2026-02-10",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
@@ -49106,15 +49115,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.gofmx.com/blog/fleet-management-metrics/"
-   },
-   {
-    "date": "2025-09-07",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "How to Select the Best Facilities Management Software",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.gofmx.com/blog/how-to-select-the-best-facilities-management-software/"
    },
    {
     "date": "2025-09-07",
@@ -49163,7 +49163,7 @@
    },
    {
     "date": "2025-03-04",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Facility Use Agreement 101: What to Know",
     "kind": "press",
@@ -49181,7 +49181,7 @@
    },
    {
     "date": "2024-10-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "What You Need to Know About Capital Improvement",
     "kind": "press",
@@ -51796,7 +51796,7 @@
  "gatekeeper-systems": {
   "checked_on": "2026-10-18",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "ge-vernova": {
   "checked_on": "2026-10-18",
@@ -52666,7 +52666,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-07",
     "headline": "7 benefits of the Geotab Fleet Card",
     "kind": "press",
@@ -52675,7 +52675,7 @@
    },
    {
     "date": "2026-10-06",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-06",
     "headline": "Snow plow safety: focus on the moments that matter",
     "kind": "press",
@@ -52684,7 +52684,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "How to stop fuel fraud at the pump",
     "kind": "press",
@@ -52693,7 +52693,7 @@
    },
    {
     "date": "2026-10-01",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-10-05",
     "headline": "Top seven best fleet fuel cards: How to choose the right one for your business?",
     "kind": "press",
@@ -52711,7 +52711,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Four ways to transform garbage fleet efficiency with data and video tools",
     "kind": "press",
@@ -52720,7 +52720,7 @@
    },
    {
     "date": "2026-09-25",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Why the OEM versus device-level telematics debate misses the point for mixed-fleet operators",
     "kind": "press",
@@ -52747,7 +52747,7 @@
    },
    {
     "date": "2026-09-17",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "6 benefits of an open, AI-powered fleet data platform",
     "kind": "press",
@@ -52756,7 +52756,7 @@
    },
    {
     "date": "2026-09-17",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "EV fleet transition plan: Step-by-step guide for U.S. fleets 2026",
     "kind": "press",
@@ -52765,7 +52765,7 @@
    },
    {
     "date": "2026-09-15",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-28",
     "headline": "Field service GPS fleet tracking: what mid-market fleet managers need to know",
     "kind": "press",
@@ -52774,7 +52774,7 @@
    },
    {
     "date": "2026-09-11",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-11",
     "headline": "EV fleet transition: How to plan a successful fleet electrification strategy",
     "kind": "press",
@@ -52783,7 +52783,7 @@
    },
    {
     "date": "2026-09-11",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-11",
     "headline": "Fleet electrification ROI: How to calculate and maximize savings",
     "kind": "press",
@@ -52792,7 +52792,7 @@
    },
    {
     "date": "2026-09-09",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-09",
     "headline": "European data sovereignty: the next step we've been building toward",
     "kind": "press",
@@ -52819,7 +52819,7 @@
    },
    {
     "date": "2026-09-04",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Fleet accident management: How to improve safety and reduce costs",
     "kind": "press",
@@ -52837,7 +52837,7 @@
    },
    {
     "date": "2026-09-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "What roadside breakdowns really cost truck lessors",
     "kind": "press",
@@ -52846,7 +52846,7 @@
    },
    {
     "date": "2026-09-02",
-    "date_source": "json-ld",
+    "date_source": "index-text",
     "first_seen": "2026-09-05",
     "headline": "Driver risk management: How public fleet managers save time with smarter video tools",
     "kind": "press",
@@ -55250,6 +55250,60 @@
   "checked_on": "2026-10-18",
   "items": [
    {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "Announcing Our $25M Series A",
+    "kind": "funding",
+    "kind_rule": "$25M Series",
+    "url": "https://www.govwell.com/resources/govwell-series-a"
+   },
+   {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/special-district-software"
+   },
+   {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "The Government Software Request for Proposal (RFP) Guide for Community Development Departments",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
+   },
+   {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "How Florida HB 803 Changes Building Permits",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
+   },
+   {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "Indiana's New Permit Clock Is Ticking \u2014 What HB 1005 Means for Local Building Departments",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/indiana-hb-1005"
+   },
+   {
+    "date": "2026-10-18",
+    "date_source": "json-ld",
+    "first_seen": "2026-10-18",
+    "headline": "What Is Community Development Software?",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/what-is-community-development-software"
+   },
+   {
     "date": "2026-09-28",
     "date_source": "json-ld",
     "first_seen": "2026-09-28",
@@ -55260,7 +55314,7 @@
    },
    {
     "date": "2026-09-22",
-    "date_source": "index-text",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "What Is a Certificate of Occupancy?",
     "kind": "press",
@@ -55349,13 +55403,22 @@
     "url": "https://www.govwell.com/resources/macon-county-case-study"
    },
    {
-    "date": "2026-08-27",
+    "date": "2026-09-04",
     "date_source": "json-ld",
     "first_seen": "2026-09-05",
-    "headline": "Announcing Our $25M Series A",
-    "kind": "funding",
-    "kind_rule": "$25M Series",
-    "url": "https://www.govwell.com/resources/govwell-series-a"
+    "headline": "The Permitting and Community Development Software RFP Toolkit",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
+   },
+   {
+    "date": "2026-09-04",
+    "date_source": "json-ld",
+    "first_seen": "2026-09-05",
+    "headline": "The Next Era of Community Development: 10 Trends to Watch",
+    "kind": "press",
+    "kind_rule": null,
+    "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
    },
    {
     "date": "2026-08-25",
@@ -55367,33 +55430,6 @@
     "url": "https://www.govwell.com/resources/the-road-to-housing-starts-with-local-government"
    },
    {
-    "date": "2026-08-20",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/special-district-software"
-   },
-   {
-    "date": "2026-08-19",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "The Permitting and Community Development Software RFP Toolkit",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/the-permitting-and-community-development-software-rfp-toolkit"
-   },
-   {
-    "date": "2026-07-08",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "The Next Era of Community Development: 10 Trends to Watch",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/the-next-era-of-community-development"
-   },
-   {
     "date": "2026-07-02",
     "date_source": "json-ld",
     "first_seen": "2026-09-10",
@@ -55401,33 +55437,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://govwell.com/resources/community-development-departments-need-dedicated-software-not-an-erp-module"
-   },
-   {
-    "date": "2026-06-26",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "The Government Software Request for Proposal (RFP) Guide for Community Development Departments",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
-   },
-   {
-    "date": "2026-05-29",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "How Florida HB 803 Changes Building Permits",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
-   },
-   {
-    "date": "2026-05-22",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "Indiana's New Permit Clock Is Ticking \u2014 What HB 1005 Means for Local Building Departments",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/indiana-hb-1005"
    },
    {
     "date": "2026-04-23",
@@ -55464,15 +55473,6 @@
     "kind": "press",
     "kind_rule": null,
     "url": "https://www.govwell.com/resources/how-ai-plan-review-software-is-reshaping-community-development"
-   },
-   {
-    "date": "2026-02-19",
-    "date_source": "index-text",
-    "first_seen": "2026-09-05",
-    "headline": "How City Building Permitting Software Can Bring Your Paper Processes Online",
-    "kind": "press",
-    "kind_rule": null,
-    "url": "https://www.govwell.com/resources/how-city-building-permitting-software-can-bring-your-paper-processes-online"
    }
   ],
   "state": "items"
@@ -82941,7 +82941,7 @@
    },
    {
     "date": "2026-09-21",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-28",
     "headline": "Why AI for the physical world is a harder problem \u2014 and a bigger one.",
     "kind": "press",
@@ -87828,7 +87828,7 @@
     "url": "https://www.nice.com/resources/everest-group-european-ccaas-peak-matrix-2026"
    }
   ],
-  "state": "items"
+  "state": "none_found"
  },
  "niche": {
   "checked_on": "2026-10-18",
@@ -92038,7 +92038,7 @@
   "items": [
    {
     "date": "2026-10-15",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-16",
     "headline": "Outsight selected for French Tech 2030",
     "kind": "contract",
@@ -92046,8 +92046,8 @@
     "url": "https://www.outsight.ai/insights/outsight-joins-the-french-tech-2030-programme/"
    },
    {
-    "date": "2026-10-15",
-    "date_source": "time",
+    "date": "2026-10-08",
+    "date_source": "json-ld",
     "first_seen": "2026-10-08",
     "headline": "Outsight and Enchanted Tools bring Beyond Line-of-Sight awareness to Service Robots",
     "kind": "press",
@@ -92056,7 +92056,7 @@
    },
    {
     "date": "2026-10-07",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-07",
     "headline": "Outsight acquires GRASP Aviation Innovation",
     "kind": "funding",
@@ -92065,7 +92065,7 @@
    },
    {
     "date": "2026-09-28",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Costa Rica's SJO airport expands Outsight's Spatial Intelligence to new terminal areas",
     "kind": "press",
@@ -92074,7 +92074,7 @@
    },
    {
     "date": "2026-09-23",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Outsight accelerates in Asia-Pacific: new Singapore hub",
     "kind": "press",
@@ -92083,7 +92083,7 @@
    },
    {
     "date": "2026-09-20",
-    "date_source": "card-date",
+    "date_source": "json-ld",
     "first_seen": "2026-10-05",
     "headline": "Outsight crosses 280 million passengers under real-time measurement, from the busiest US hubs to Singapore Changi",
     "kind": "press",
@@ -92110,7 +92110,7 @@
    },
    {
     "date": "2026-04-23",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Aeroporti di Roma to deploy Outsight's Physical AI solution at scale across Rome Fiumicino Airport",
     "kind": "press",
@@ -92119,7 +92119,7 @@
    },
    {
     "date": "2026-04-21",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "Intel and Outsight Announce Strategic Collaboration to Bring Physical AI\u2013Powered Spatial Intelligence to the Enterprise Edge",
     "kind": "press",
@@ -92146,7 +92146,7 @@
    },
    {
     "date": "2026-02-19",
-    "date_source": "time",
+    "date_source": "json-ld",
     "first_seen": "2026-09-05",
     "headline": "What's a Motional Digital Twin?",
     "kind": "press",
@@ -117493,7 +117493,7 @@
  "tip411": {
   "checked_on": "2026-10-18",
   "items": [],
-  "state": "unread"
+  "state": "none_found"
  },
  "titan-hst": {
   "checked_on": "2026-10-18",
