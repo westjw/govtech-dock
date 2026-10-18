@@ -2449,8 +2449,8 @@
    "department": "IT / innovation",
    "conference": "TechConnect",
    "flagship": false,
-   "swept": true,
-   "event_tag": "TechConnect 2026",
+   "swept": false,
+   "event_tag": "TechConnect 2027",
    "exhibitor_url": null,
    "fetchability": null,
    "note": "out of scope 2026-08-25, owner has attended: TechConnect World is a federal defence R&D and SBIR show, not a state and local event. Kept in the catalogue marked non-SLED rather than deleted, so a later sweep does not rediscover it and propose it back as a fresh idea. The 26 companies mined from it STAY: they sell streetlight control, pothole detection, ADA sidewalk inspection, municipal metering and resident-request tooling - city buyers, whatever room they were found in. Where a company was found is not what a company sells.",
@@ -2461,8 +2461,13 @@
    "dates_source": "https://www.techconnectworld.com/World2027/",
    "dates_confidence": "medium",
    "sled": false,
-   "discovery_notes": "directory read 2026-10-16: a list for the 2027 edition was found at https://s3.goeshow.com/techconnect/annual/2027/exhibitor_list.cfm (9 names); the tag is 2026's - roll the row to read it",
-   "dates_checked_on": "2026-10-16"
+   "dates_checked_on": "2026-10-16",
+   "prior_tags": [
+    "TechConnect 2026"
+   ],
+   "tag_note": "rolled 2026-10-18 from 'TechConnect 2026' to 'TechConnect 2027' (owner's ruling): the organiser's live exhibitor list is the 2027 edition's. Companies already tagged 'TechConnect 2026' keep it - it stays issued as a prior tag.",
+   "exhibitor_url_candidate": "https://s3.goeshow.com/techconnect/annual/2027/exhibitor_list.cfm",
+   "exhibitor_url_candidate_note": "read 2026-10-16: the 2027 edition's list (9 names). Recorded, not swept: this row is out of SLED scope (2026-08-25), and non-SLED rows are listed, never swept (owner's ruling 2026-09-09)."
   },
   {
    "block": "Public works and infrastructure",
