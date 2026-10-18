@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Kahua Launches Schedule Manager to Connect Project Schedules With Real-Time Project Execution",
    "kind": "product",
@@ -35,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/2026-construction-industry-trends/"
+  },
+  {
+   "date": "2026-10-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-17",
+   "headline": "2026 Construction Industry Trends: 8 Problems Owners and GCs Can Solve Now",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://resources.kahua.com/blog/2026-construction-industry-trends"
   },
   {
    "date": "2026-10-08",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Kahua Secures Strategic Growth Investment from Bain Capital at a Valuation Above $1 Billion",
    "kind": "funding",
    "kind_rule": "Secures Strategic Growth Investment from",
    "url": "https://kahua.com/news/kahua-secures-strategic-growth-investment-from-bain-capital-at-a-valuation-above-1-billion/"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Kahua Earns BSI Kitemark\u2122 Certification for ISO 19650 Information Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/news/kahua-earns-bsi-kitemark-certification-for-iso-19650-information-management/"
   }
  ],
  "profile": {

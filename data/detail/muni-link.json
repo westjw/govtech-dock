@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-17",
+   "headline": "Unlocking Seamless Communication: Local Government Utility Notification Strategies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://muni-link.com/blog/municipal-utility-notification-strategies/"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Best Practices for Streamlining Utility Billing System Implementation in Municipal Operations",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://muni-link.com/blog/what-to-look-for-in-utility-billing-software/"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Data Integrity Fails in Utility Billing and How Automated Workflows Fix It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://muni-link.com/blog/why-data-integrity-fails-in-utility-billing/"
   }
  ],
  "profile": {
