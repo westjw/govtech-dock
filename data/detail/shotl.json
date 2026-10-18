@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-06-29",
+   "date": "2026-10-16",
    "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "When your next rider has no app",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shotl.com/blog/when-your-next-rider-has-no-app"
+  },
+  {
+   "date": "2026-06-29",
+   "date_source": "time",
    "first_seen": "2026-10-13",
    "headline": "Designing Subzones: Smarter Coverage Through Operational Partitioning",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://shotl.com/it/blog/treno-sentiero-mybuxi-il-progetto-kimm-che-ridefinisce-la-mobilita-alpina"
-  },
-  {
-   "date": "2026-06-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Dise\u00f1ar subzonas: una cobertura m\u00e1s inteligente mediante la partici\u00f3n operativa",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://shotl.com/es/blog/disenar-subzonas-una-cobertura-mas-inteligente-mediante-la-particion-operativa"
   }
  ],
  "profile": {

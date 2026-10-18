@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-16",
    "headline": "Businesses waste $1.5 million a year on manual work AI could do",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Ivalua Recognized for Employee Happiness, Perks, and Work-Life Balance",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Ivalua Named a Leader in the IDC MarketScape: Worldwide AI-Enabled Direct Spend",
    "kind": "press",

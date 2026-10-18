@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "Buy Low, Use High: Energy Arbitrage Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://virtual-peaker.com/blog/buy-low-use-high-energy-arbitrage-explained/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://virtual-peaker.com/blog/bess-the-duck-curve-leveraging-ders-to-manage-peaks/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "What Are Distributed Energy Resource Management Systems (DERMS)?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://virtual-peaker.com/blog/distributed-energy-resource-management-systems-derms/"
   }
  ],
  "profile": {

@@ -144,40 +144,40 @@
    "type": "ashby",
    "ref": "instructure"
   },
-  "note": "ashby:instructure reads (45 posting(s)), but does not match 'Scribbles Software'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "ashby:instructure reads (58 posting(s)), but does not match 'Scribbles Software'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "ml-schedules": {
   "ats": {
    "type": "greenhouse",
    "ref": "follettsoftware"
   },
-  "note": "greenhouse:follettsoftware reads (9 posting(s)), but does not match 'ML Schedules (Master Library Software)'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "greenhouse:follettsoftware reads (5 posting(s)), but does not match 'ML Schedules (Master Library Software)'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "comsof": {
   "ats": {
    "type": "bamboohr",
    "ref": "iqgeo"
   },
-  "note": "bamboohr:iqgeo reads (9 posting(s)), but does not match 'Comsof'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:iqgeo reads (6 posting(s)), but does not match 'Comsof'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "vitruvi-software": {
   "ats": {
    "type": "bamboohr",
    "ref": "fresnelsoftware"
   },
-  "note": "bamboohr:fresnelsoftware reads (0 posting(s)), but does not match 'Vitruvi Software'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:fresnelsoftware reads (3 posting(s)), but does not match 'Vitruvi Software'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "ospinsight": {
   "ats": {
    "type": "bamboohr",
    "ref": "iqgeo"
   },
-  "note": "bamboohr:iqgeo reads (9 posting(s)), but does not match 'OSPInsight'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "bamboohr:iqgeo reads (6 posting(s)), but does not match 'OSPInsight'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "veovo": {
   "ats": {
@@ -316,8 +316,8 @@
    "type": "greenhouse",
    "ref": "lightspeedsystems"
   },
-  "note": "greenhouse:lightspeedsystems reads (13 posting(s)), but does not match 'STOPit Solutions'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "greenhouse:lightspeedsystems reads (11 posting(s)), but does not match 'STOPit Solutions'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "boldyn-networks": {
   "ats": {
@@ -328,8 +328,8 @@
     "External"
    ]
   },
-  "note": "workday:baicommunications reads (5 posting(s)), but does not match 'Boldyn Networks'; likely a parent or another company",
-  "on": "2026-08-20"
+  "note": "workday:baicommunications reads (6 posting(s)), but does not match 'Boldyn Networks'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "gcr": {
   "ats": {
@@ -349,7 +349,7 @@
    ]
   },
   "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cogsdale Corporation'; likely a parent or another company",
-  "on": "2026-08-23"
+  "on": "2026-10-18"
  },
  "govstack": {
   "ats": {
@@ -357,7 +357,7 @@
    "ref": "https://ejov.fa.ca2.oraclecloud.com"
   },
   "note": "oracle:ejov reads (0 posting(s)), but does not match 'Govstack'; likely a parent or another company",
-  "on": "2026-08-23"
+  "on": "2026-10-18"
  },
  "sirsidynix": {
   "ats": {
@@ -400,8 +400,8 @@
     "EnvisionWare"
    ]
   },
-  "note": "workday:volarisgroup reads (0 posting(s)), but does not match 'EnvisionWare'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:volarisgroup reads (1 posting(s)), but does not match 'EnvisionWare'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "system-innovators": {
   "ats": {
@@ -412,8 +412,8 @@
     "1"
    ]
   },
-  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'System Innovators'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:harriscomputer reads (112 posting(s)), but does not match 'System Innovators'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "bibliocommons": {
   "ats": {
@@ -424,8 +424,8 @@
     "BiblioCommons"
    ]
   },
-  "note": "workday:volarisgroup reads (2 posting(s)), but does not match 'BiblioCommons'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:volarisgroup reads (3 posting(s)), but does not match 'BiblioCommons'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "muni-link": {
   "ats": {
@@ -456,8 +456,8 @@
    "type": "paylocity",
    "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/646acf7b-3795-46d1-8ec6-8ec7238debd9/CEV-MULTIMEDIA-LTD"
   },
-  "note": "paylocity:CEV-MULTIMEDIA-LTD reads (2 posting(s)), but does not match 'iCEV'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "paylocity:CEV-MULTIMEDIA-LTD reads (0 posting(s)), but does not match 'iCEV'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "cayenta": {
   "ats": {
@@ -468,8 +468,8 @@
     "Cayenta"
    ]
   },
-  "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Cayenta'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:harriscomputer reads (2 posting(s)), but does not match 'Cayenta'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "silverblaze": {
   "ats": {
@@ -481,7 +481,7 @@
    ]
   },
   "note": "workday:harriscomputer reads (0 posting(s)), but does not match 'Silverblaze'; likely a parent or another company",
-  "on": "2026-08-23"
+  "on": "2026-10-18"
  },
  "inhance-utilities-solutions": {
   "ats": {
@@ -492,8 +492,8 @@
     "1"
    ]
   },
-  "note": "workday:harriscomputer reads (34 posting(s)), but does not match 'inHANCE Utilities Solutions'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:harriscomputer reads (112 posting(s)), but does not match 'inHANCE Utilities Solutions'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "hansen-technologies": {
   "ats": {
@@ -512,8 +512,8 @@
     "S_and_S"
    ]
   },
-  "note": "workday:harriscomputer reads (1 posting(s)), but does not match 'Systems & Software'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:harriscomputer reads (2 posting(s)), but does not match 'Systems & Software'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "pha-web": {
   "ats": {
@@ -521,7 +521,7 @@
    "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/e388d7be-324c-4613-864a-476a02d101e4/Management-Computer-Support-Inc"
   },
   "note": "paylocity:Management-Computer-Support-Inc reads (1 posting(s)), but does not match 'PHA-Web'; likely a parent or another company",
-  "on": "2026-08-23"
+  "on": "2026-10-18"
  },
  "honorlock": {
   "ats": {
@@ -540,16 +540,16 @@
     "External"
    ]
   },
-  "note": "workday:wgu reads (27 posting(s)), but does not match 'Craft Education'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "workday:wgu reads (26 posting(s)), but does not match 'Craft Education'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "courseleaf": {
   "ats": {
    "type": "paylocity",
    "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/17713721-eeb1-49c8-a8fe-8a7ec37f0088/Leepfrog-Technologies-Inc"
   },
-  "note": "paylocity:Leepfrog-Technologies-Inc reads (2 posting(s)), but does not match 'CourseLeaf'; likely a parent or another company",
-  "on": "2026-08-23"
+  "note": "paylocity:Leepfrog-Technologies-Inc reads (1 posting(s)), but does not match 'CourseLeaf'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "johnson-controls-openblue": {
   "ats": {
@@ -560,8 +560,8 @@
     "JCI"
    ]
   },
-  "note": "workday:jci reads (37 posting(s)), but does not match 'Johnson Controls OpenBlue'; likely a parent or another company",
-  "on": "2026-08-26"
+  "note": "workday:jci reads (945 posting(s)), but does not match 'Johnson Controls OpenBlue'; likely a parent or another company",
+  "on": "2026-10-18"
  },
  "copperleaf-technologies": {
   "ats": {
@@ -570,5 +570,29 @@
   },
   "note": "smartrecruiters:IFS1 reads (275 posting(s)) and matches the acquirer named in 'Copperleaf Technologies (IFS)'; confirm it is scoped to this product line before wiring it up",
   "on": "2026-09-27"
+ },
+ "telensa": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "lighting",
+    "wd3",
+    "jobs-and-careers"
+   ]
+  },
+  "note": "workday:lighting reads (113 posting(s)), but does not match 'Telensa'; likely a parent or another company",
+  "on": "2026-10-18"
+ },
+ "signify": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "lighting",
+    "wd3",
+    "jobs-and-careers"
+   ]
+  },
+  "note": "workday:lighting reads (113 posting(s)), but does not match 'Signify'; likely a parent or another company",
+  "on": "2026-10-18"
  }
 }

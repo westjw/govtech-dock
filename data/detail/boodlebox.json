@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "Your compliance checkbox just became someone else's water bill.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://boodlebox.ai/blog/your-compliance-checkbox-just-became-someone-elses-water-bill"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "near-h1",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://boodlebox.ai/blog/developing-ai-literacy-a-new-approach-to-human-ai-interactiondeveloping-ai-literacy-a-new-approach-to-human-ai-interaction"
-  },
-  {
-   "date": "2025-03-26",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Empowering Connections: How One Student Used BoodleBox to Create Life-Changing AI Companions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://boodlebox.ai/blog/empowering-connections"
   }
  ],
  "profile": {

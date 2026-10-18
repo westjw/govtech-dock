@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-18",
+   "headline": "How AI in Higher Education Is Reshaping Teaching and Learning",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/ai-in-higher-education/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/student-teacher-and-parent-roles-in-learning-communities/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Learning and Development Strategy: Key Elements for Success",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/learning-and-development-strategy/"
   }
  ],
  "profile": {

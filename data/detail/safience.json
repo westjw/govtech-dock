@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Identity intelligence starts with a record, not a face",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Known-offender identification at the bank branch: what it is and what it is not",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Biometrica Systems now operates as Safience",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-13",
    "headline": "Clearview AI alternatives: what to ask before you buy face search",
    "kind": "press",
@@ -38,21 +38,12 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-10-13",
    "headline": "What residents are rejecting when a city cancels its plate readers",
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2026/10/why-cities-are-cancelling-license-plate-reader-contracts/"
-  },
-  {
-   "date": "2026-10-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What goes into UMbRA",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://safience.io/2026/10/where-umbra-records-come-from/"
   },
   {
    "date": "2026-10-01",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://safience.io/2021/12/bjs-survey-finds-violent-victimization-rate-dropped-22-between-2019-and-2020/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "index-text",
+   "first_seen": "2026-10-14",
+   "headline": "Biometrica Systems now operates as Safience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://safience.io/2019/09/thirty-four-individuals-including-medical-professionals-charged-for-alleged-medicare-and-medicaid-fraud/"
   }
  ],
  "profile": {

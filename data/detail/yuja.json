@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-17",
+   "headline": "St. Mary\u2019s College of Maryland Adopts YuJa EqualGround to Upgrade Web Content Accessibility October 16, 2026 | < 1 min read",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.yuja.com/blog/news/st-marys-college-of-maryland-yuja-equalground/"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-16",
    "headline": "Making a Difference with Website Remediation in Public and Regulated Sectors",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-13",
    "headline": "The Snowballing Cost of Filler Words in Video Lectures",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-13",
    "headline": "The Importance of Scratch-Paper in Online Assessments",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Why the Future of Digital Accessibility in Higher Education is Proactive",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "YuJa Lumina v26.7.0 Release \u2013 Automation That Does the Heavy Lifting for Relinking and Video Editing",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.yuja.com/blog/yuja-lumina-v26-7-0-release-automation-that-does-the-heavy-lifting-for-relinking-and-video-editing/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Washington and Lee University Selects YuJa EqualGround to Enhance Web Content Accessibility September 30, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.yuja.com/blog/news/washington-and-lee-university-yuja-equalground/"
   }
  ],
  "profile": {

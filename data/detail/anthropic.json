@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-15",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-16",
    "headline": "An update on independent evaluators",
    "kind": "product",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-14",
    "headline": "Anthropic opens Singapore office and signs MOU with the Government of Singapore",
    "kind": "contract",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-15",
    "headline": "Preparing for the 2026 US midterms",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-09",
    "headline": "2026 Usage Policy update",
    "kind": "product",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-09",
    "headline": "Building on our commitment to American scientific discovery",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-09",
    "headline": "Introducing the Anthropic Cyber Mission",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-07",
    "headline": "Expanding the Cyber Verification Program",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-02",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Anthropic invests $100 million to train 10,000 engineers and tackle the enterprise AI talent gap",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Barclays scales Claude to upgrade operations and improve client experience",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Claude discovers a novel enzyme system with CRISPR-like repeats",
    "kind": "press",

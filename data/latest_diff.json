@@ -1,69 +1,27 @@
 {
-  "date": "2026-10-16",
-  "previous": "2026-10-15",
+  "date": "2026-10-18",
+  "previous": "2026-10-17",
   "changes": [
     {
-      "company": "BusPatrol",
-      "id": "buspatrol",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Vice President, Revenue Operations only"
-    },
-    {
-      "company": "Eventeny",
-      "id": "eventeny",
-      "from": "Sales (non-AE)",
+      "company": "Paymentus",
+      "id": "paymentus",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Sales & Business Development Manag"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Off Duty Management",
-      "id": "off-duty-management",
-      "from": "Yes",
+      "company": "WellSky",
+      "id": "wellsky",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "Account Executive I - Personal Car (Overland Park, KS)"
+    },
+    {
+      "company": "Shelterluv",
+      "id": "shelterluv",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
-    },
-    {
-      "company": "Sentrycs",
-      "id": "sentrycs",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Ekin Smart City Technologies",
-      "id": "ekin-smart-city-technologies",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.ekin.com/about/"
-    },
-    {
-      "company": "Hapco",
-      "id": "hapco",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Singlewire Software",
-      "id": "singlewire-software",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Overstory",
-      "id": "overstory",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Heron Power",
-      "id": "heron-power",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Senior Technical Account Manager (Scotts Valley)"
     }
   ]
 }
