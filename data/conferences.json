@@ -718,12 +718,12 @@
     "notes": "File: staged/gmis-international-2026.json. gmis.org sits behind a Cloudflare managed JS challenge - curl with the Chrome UA still got HTTP 403 ('Just a moment...' interstitial), so I loaded the page in a real browser where the interstitial cleared on its own (no CAPTCHA was solved). Captured the full alphabetical booth list: booths 1-36 present with no gaps, matching the 36-booth count in the discovery notes. Cross-checked the Platinum/Gold/Silver sponsor logo blocks (rendered as images, so names came from alt text + link hrefs): every sponsor maps to a company already in the booth list, so there are no exhibitors outside the 36. Websites came from each booth's outbound link; only GMIS Accreditation Program (booth 36) has no external link since it is the association's own program (set to gmis.org). Judgment calls: marked FALSE for managed-service and services firms (ControlAltProtect, ThinkGard, OTM Cyber, TraceSecurity), resellers/integrators (Howard Technology Solutions, MCCi as a Laserfiche VAR, MRA International, Global Solutions Group, StarNet), hardware (Nfina, Top Ten USA), telecom (T-Mobile, Brightspeed), and the ITML Institute training body. Verified the ambiguous ones by fetching their sites: Sectri is a genuine cyber program-management PLATFORM (true), GovAI is a real AI platform not a training shop (true). Borderline TRUE calls worth knowing: Scale Computing (HCI software sold with appliances), Wasabi (cloud storage), Tricentis (generic enterprise test automation,"
    },
    "url": "https://www.gmis.org/page/2026homepage",
-   "dates": "August 23-26, 2026",
-   "city": "Williamsburg, VA",
-   "next_edition": "2026",
-   "dates_source": "https://www.gmis.org/page/2026homepage",
+   "dates": "August 15-18, 2027",
+   "city": "San Antonio, TX",
+   "next_edition": "2027",
+   "dates_source": "https://www.gmis.org/events/EventDetails.aspx?id=1667129",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: HTTP 403 on gmis.org/page/2026homepage and on the gmis.org home page. The site turns away this identified crawler with a 403, not robots.txt. No nex"
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -785,7 +785,8 @@
    "dates_source": "https://thegpn.org",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - thegpn.org, www.thegpn.org and www.urisa.org answer HTTP 403 to the identified crawler; www.gis-pro.org's robots.txt failed (SSLError). Nothing read. | directory read 2026-10-16: unreadable - Every door closed: www.gis-pro.org and gis-pro.org robots.txt SSLError; http://www.gis-pro.org redirects to urisa.org/page/GIS-Pro (403); urisa.org, thegpn.org/",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: Every organisation page answered HTTP 403 to the crawler: thegpn.org, www.thegpn.org, www.urisa.org/gis-pro, www.thegpn.org/page/gis-pro. No next-ed"
+   "dates_note": "read 2026-10-19: no next edition announced on the organisation's site - read in a browser 2026-10-19: the GIS-Pro page still shows 2026 and the GPN calendar runs to February 2027 with no GIS-Pro 2027; confirmed by a blind second rea",
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -816,13 +817,13 @@
    "event_tag": "PWX 2026",
    "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
    "url": "https://www.apwa.org/events/pwx-conference/",
-   "dates": "August 30 - September 2, 2026",
-   "city": "Houston, TX",
-   "next_edition": "2026",
+   "dates": "August 22-25, 2027",
+   "city": "Phoenix, AZ",
+   "next_edition": "2027",
    "dates_source": "https://www.apwa.org/events/pwx-conference/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: HTTP 403 on every address tried: apwa.org/events/pwx-conference/, pwx.apwa.org, apwa.org homepage. This is a 403, not a robots.txt refusal. No next-",
-   "discovery_notes": "directory read 2026-10-14: unreadable - apwa.org/events/pwx-conference/, apwa.org/pwx and pwx.apwa.org all answered HTTP 403 to the identified crawler, so no link to an exhibitor host could be seen. A | directory read 2026-10-16: unreadable - apwa.org/events/pwx-conference/ and pwx.apwa.org/exhibit/ HTTP 403 to the identified crawler; www.pwxexpo.org robots.txt no answer. Guessed MapYourShow hosts pw"
+   "discovery_notes": "directory read 2026-10-14: unreadable - apwa.org/events/pwx-conference/, apwa.org/pwx and pwx.apwa.org all answered HTTP 403 to the identified crawler, so no link to an exhibitor host could be seen. A | directory read 2026-10-16: unreadable - apwa.org/events/pwx-conference/ and pwx.apwa.org/exhibit/ HTTP 403 to the identified crawler; www.pwxexpo.org robots.txt no answer. Guessed MapYourShow hosts pw",
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Public works and infrastructure",
@@ -1190,14 +1191,13 @@
    "event_tag": "APTA 2026",
    "tag_note": "tag fixed by the sweep that already ran; kept as-is so existing descriptions stay true",
    "url": "https://www.apta.com/event/apta-2026-transform-expo/",
-   "dates": "October 4-7, 2026",
-   "city": "Chicago, IL",
-   "next_edition": "2026",
-   "dates_source": "https://www.aptaexpo.com/",
+   "dates": "September 26-29, 2027",
+   "city": "Los Angeles, CA",
+   "next_edition": "2027",
+   "dates_source": "https://www.apta.com/events/future-events/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - apta.com answers HTTP 403 to the crawler, so no TRANSform 2027 date could be read; aptaexpo.com states October 22-24, 2029, which is the triennial APTA EXPO, a ",
    "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 710 company names visible",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Transportation",
@@ -1435,15 +1435,15 @@
    "fetchability": "js-walled",
    "event_tag": "EMS World Expo 2026",
    "url": "https://www.hmpglobalevents.com/emsworldexpo",
-   "dates": "September 28 - October 2, 2026",
-   "city": "Orlando, FL",
-   "next_edition": "2026",
+   "dates": "September 27 - October 1, 2027",
+   "city": "New Orleans, LA",
+   "next_edition": "2027",
    "dates_source": "https://www.hmpglobalevents.com/emsworldexpo",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: Expo page, emsworldexpo.com (redirects there) and /emsworldexpo/future-dates all serve a 'Client Challenge' bot wall. HMP Global Events home reads b",
    "exhibitor_url_candidate": "https://www.hmpglobalevents.com/emsworldexpo",
    "exhibitor_url_candidate_note": "js-walled: unknown; hmpglobalevents.com returns a 209-char JS app shell at every path tried (home, /exhibitors, /exhibitor-list, /sitemap.xml); emsworldexpo.com (read 2026-10-14)",
-   "discovery_notes": "directory read 2026-10-16: unreadable - emsworldexpo.com and emsworld.com both redirect to HMP hosts that serve a 'Client Challenge' bot wall (209 chars), and so does /emsworldexpo/exhibitor-list. The"
+   "discovery_notes": "directory read 2026-10-16: unreadable - emsworldexpo.com and emsworld.com both redirect to HMP hosts that serve a 'Client Challenge' bot wall (209 chars), and so does /emsworldexpo/exhibitor-list. The",
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Public safety",
@@ -1904,10 +1904,11 @@
    "url": "https://www.aace1.org/page/2026AACEconference",
    "dates_source": "https://www.aace1.org/events/EventDetails.aspx?id=2046604&group=",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: HTTP 403 on page/2026AACEconference, on the EventDetails page on file, and on the aace1.org home page. No page on the organisation's site could be r",
+   "dates_note": "read 2026-10-19: no next edition announced on the organisation's site - read in a browser 2026-10-19: home page, the 2026 conference page and the event calendar; no 2027 conference date posted; confirmed by a blind second reader in ",
    "dates": "September 28 - October 1, 2026",
    "city": "Orlando, FL",
-   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for the 2026 conference page and for the site root; www.aace1.org blocks the crawler. | directory read 2026-10-16: unreadable - HTTP 403 on www.aace1.org/page/2026AACEconference, on aace1.org/page/2026AACEconference, on the aace1.org root and on /page/Exhibitors. The site blocks the iden"
+   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for the 2026 conference page and for the site root; www.aace1.org blocks the crawler. | directory read 2026-10-16: unreadable - HTTP 403 on www.aace1.org/page/2026AACEconference, on aace1.org/page/2026AACEconference, on the aace1.org root and on /page/Exhibitors. The site blocks the iden",
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Community development",
@@ -2340,12 +2341,12 @@
     "notes": "File: staged/educause-2026.json. The smallworldlabs page only renders the first 40 exhibitors; the rest come from an AJAX paginator (module organizations_organization_list, POST /index.php) whose init call declares a hard total of 321. Replaying that endpoint with curl returned empty bodies (needs session/form-token context), so I drove the real browser through all 9 pager pages and harvested each card's name, booth, and outbound website. VERIFICATION: collected exactly 321 unique item ids, matching the paginator's declared total, and I SHA-256'd the sorted name list in the browser against my transcribed file - the digests match (a644cc5a..., 4312 chars), so all 321 names are character-identical to the source with nothing dropped or mistyped. 6 exhibitors have no website link on their card (1Kosmos, Box, Catchbox, Equinix, TeamDynamix, Xfinity Communities) - left empty rather than guessed. Sector is 'Higher Education' for all rows since every buyer at this show is a higher-ed institution. I checked ~35 unfamiliar vendors against their own sites before judging. Consistent lines I drew, so you can re-cut them if you disagree: FALSE for hardware/AV/display/furniture makers (Dell, HP, HPE, Lenovo, Crestron, Extron, Epson, Planar, ViewSonic, Logitech, Jabra, Neat, Owl Labs, Axis, Verkada, ASSA ABLOY, etc.), networking equipment (Cisco, Arista, Extreme, RUCKUS, NETGEAR, A10) and network-as-a-service (Meter, Nile, Boldyn), resellers/distributors (CDW, SHI, Carahsoft, Connection, Ins"
    },
    "url": "https://events.educause.edu/annual-conference",
-   "dates": "September 29 - October 2, 2026",
-   "city": "Denver, CO",
-   "next_edition": "2026",
+   "dates": "October 18-21, 2027",
+   "city": "Orlando, FL",
+   "next_edition": "2027",
    "dates_source": "https://events.educause.edu/annual-conference",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-18: could not read a next-edition date - unreadable: UNREAD: every page returned HTTP 403: events.educause.edu/annual-conference, events.educause.edu/, www.educause.edu/events and events.educause.edu/a"
+   "dates_checked_on": "2026-10-19"
   },
   {
    "block": "Higher education",
