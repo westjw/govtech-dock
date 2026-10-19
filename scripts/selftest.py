@@ -10779,6 +10779,45 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
     return errors
 
 
+def check_a_passed_edition_is_asked_about() -> int:
+    """An edition whose date has passed reaches the admin's Conference dates
+    queue unless a LATER edition is on file.
+
+    next_edition holds the year of the edition the row's dates describe, so
+    "2026" on a row whose 2026 edition ended is not a next edition. On
+    2026-10-18 16 of the 20 conferences whose 2026 edition had ended carried
+    exactly that, q_calendar read any value as "next edition on file", and
+    none of the 16 was ever asked about.
+    """
+    import conference_dates as cd
+    errors = 0
+    rows = [{"event_tag": "Ended 2020", "conference": "Ended", "dates": "May 1-3, 2020", "next_edition": "2020"},
+            {"event_tag": "Named 2020", "conference": "Named", "dates": "May 1-3, 2020",
+             "next_edition": "2020 Fall Meeting"},
+            {"event_tag": "Bare 2020", "conference": "Bare", "dates": "May 1-3, 2020"},
+            {"event_tag": "Rolled 2020", "conference": "Rolled", "dates": "May 1-3, 2020", "next_edition": "2021"},
+            {"event_tag": "Ahead 2099", "conference": "Ahead", "dates": "May 1-3, 2099", "next_edition": "2099"}]
+    saved = cd.load, cd.rulings
+    cd.load, cd.rulings = (lambda: [dict(r) for r in rows]), (lambda: {})
+    try:
+        got = {r["id"]: r["kind"] for r in cd.q_calendar()}
+    finally:
+        cd.load, cd.rulings = saved
+    for tag in ("Ended 2020", "Named 2020", "Bare 2020"):
+        if got.get(tag) != "passed":
+            errors += fail(f"{tag!r} ended in 2020 and reads {got.get(tag)!r} in the calendar queue, not "
+                           f"passed: a next_edition naming the same year hid it")
+    for tag in ("Rolled 2020", "Ahead 2099"):
+        if tag in got:
+            errors += fail(f"{tag!r} is in the calendar queue as {got[tag]!r}; a later edition is on "
+                           f"file or the date is ahead")
+    st = {r["tag"]: r for r in cd.stale([dict(r) for r in rows], dt.date(2026, 10, 18))}
+    if st.get("Ended 2020", {}).get("next_on_file") or not st.get("Rolled 2020", {}).get("next_on_file"):
+        errors += fail("the stale report says a next edition is on file for the edition that ended, "
+                       "or not for the one that rolled")
+    return errors
+
+
 def check_a_date_read_is_confirmed_against_its_own_page() -> int:
     """A date read off the organisation's events page is confirmed against
     that page, an 'unannounced' read leaves the date alone and says who
@@ -10794,7 +10833,8 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
     import apply_conference_reads as acr
     errors = 0
     pages = {"https://org.test/annual": "<h1>Annual Meeting</h1> See you next year.",
-             "https://org.test/events": "<p>Annual Meeting: October 17-21, 2027, Long Beach</p>"}
+             "https://org.test/events": "<p>Annual Meeting: October 17-21, 2027, Long Beach</p>",
+             "https://org.test/future": "<h2>Future Conferences</h2><p>2027 – Aug. 30-Sept. 2</p><p>Charlotte</p>"}
     class R:
         def __init__(self, t): self.text = t
     def fake_page(url):
@@ -10818,6 +10858,11 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
         got = cd.confirm({**row, "url": "https://org.test/events", "dates_source": "https://org.test/gone"})
         if got.get("state") != "confirmed":
             errors += fail("a source page that did not answer hid a date the front page states")
+        short = {"conference": "Annual", "url": "https://org.test/future", "dates": "August 30 - September 2, 2027"}
+        if cd.confirm(short).get("state") != "confirmed":
+            errors += fail("a page writing the month short ('Aug. 30') read as not carrying the date it states")
+        if cd.confirm({**short, "dates": "August 3 - September 2, 2027"}).get("state") != "not found":
+            errors += fail("'Aug. 30' on a page confirmed a held date of August 3")
     finally:
         cd.ats._page = saved
 
@@ -10826,7 +10871,12 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
     try:
         acr.DATA = tmp
         rows = [{"event_tag": "Alpha 2026", "conference": "Alpha", "dates": "May 1-3, 2026", "dates_confidence": "high",
-                 "dates_source": "https://a.test/x", "url": "https://a.test/"},
+                 "dates_source": "https://a.test/x", "url": "https://a.test/", "next_edition": "2026 Fall Meeting",
+                 "city": "Pittsburgh, PA", "dates_note": "read 2026-10-15: no next edition announced"},
+                {"event_tag": "Eps 2026", "conference": "Eps", "dates": "May 1-3, 2026", "dates_confidence": "high",
+                 "dates_source": "https://e.test/x", "url": "https://e.test/", "city": "Denver, CO"},
+                {"event_tag": "Zeta 2026", "conference": "Zeta", "dates": "May 1-3, 2026", "dates_confidence": "high",
+                 "dates_source": "https://z.test/x", "url": "https://z.test/", "city": "Boston, MA"},
                 {"event_tag": "Beta 2026", "conference": "Beta", "dates": "June 1-3, 2026", "dates_confidence": "high",
                  "dates_source": "https://b.test/x", "url": "https://b.test/"},
                 {"event_tag": "Gamma 2026", "conference": "Gamma", "dates": "July 1-3, 2026", "dates_confidence": "high",
@@ -10836,7 +10886,10 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
         (tmp / "conferences.json").write_text(json.dumps({"conferences": rows}))
         reads = tmp / "reads.json"
         reads.write_text(json.dumps([
-            {"tag": "Alpha 2026", "dates": "May 2-4, 2027", "dates_confidence": "high", "dates_source": "https://a.test/events"},
+            {"tag": "Alpha 2026", "dates": "May 2-4, 2027", "dates_confidence": "high", "dates_source": "https://a.test/events",
+             "city": "Phoenix, AZ"},
+            {"tag": "Eps 2026", "dates": "May 9-11, 2027", "dates_confidence": "high", "dates_source": "https://e.test/events"},
+            {"tag": "Zeta 2026", "dates": "May 2-4, 2026", "dates_confidence": "high", "dates_source": "https://z.test/events"},
             {"tag": "Beta 2026", "dates_confidence": "unannounced", "note": "the events page lists only the 2026 edition"},
             {"tag": "Gamma 2026", "dates": "July 5-7, 2027", "dates_confidence": "high"},
             {"tag": "Delta 2026", "dates": "November 9-11, 2026", "dates_confidence": "high",
@@ -10857,6 +10910,22 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
                            "reading never checked, or without the page it was read off")
         if a.get("dates") != "May 2-4, 2027" or a.get("dates_source") != "https://a.test/events":
             errors += fail("a sourced high-confidence date read was not written")
+        if a.get("next_edition") != "2027 Fall Meeting":
+            errors += fail(f"a 2027 date landed under next_edition {a.get('next_edition')!r}: the row "
+                           f"names one edition and dates another")
+        if b.get("next_edition") is not None or d.get("next_edition") is not None:
+            errors += fail("a read that landed no new date wrote a next_edition")
+        if "dates_note" in a:
+            errors += fail("a landed date kept the note saying no next edition was announced")
+        e = out["Eps 2026"]
+        if a.get("city") != "Phoenix, AZ" or e.get("city") is not None:
+            errors += fail(f"a new edition kept the last edition's city ({a.get('city')!r}, {e.get('city')!r}): "
+                           f"next year's dates beside the city that hosted this year's")
+        z = out["Zeta 2026"]
+        if z.get("dates") != "May 2-4, 2026" or z.get("city") != "Boston, MA":
+            errors += fail(f"a corrected date for the same edition lost its city ({z.get('city')!r})")
+        if d.get("city") is not None or b.get("dates") != "June 1-3, 2026":
+            errors += fail("a read that confirmed or noted the dates on file moved the row")
         if b.get("dates") != "June 1-3, 2026" or "no next edition announced" not in (b.get("dates_note") or "") \
                 or not b.get("dates_checked_on"):
             errors += fail("an unannounced read changed the date, or left no note of who looked")
@@ -33843,6 +33912,7 @@ def main() -> int:
     errors += check_a_floor_is_read_before_it_is_filed()
     errors += check_the_card_door_lands_only_what_it_saw()
     errors += check_a_date_read_is_confirmed_against_its_own_page()
+    errors += check_a_passed_edition_is_asked_about()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()

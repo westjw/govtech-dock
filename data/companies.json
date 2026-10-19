@@ -3512,7 +3512,7 @@
     "year_founded": 1980,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "Defibrillators, monitors, and EMS software (ePCR, dispatch, billing)",
+    "description": "Defibrillators, monitors, and EMS software (ePCR, dispatch, billing) - exhibited at IACP 2026, IAFC FRI 2026, NRPA 2026, NSA 2026, North Carolina Sheriffs' Association 2026",
     "ats": {
       "type": "workday",
       "ref": [
@@ -3900,7 +3900,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add",
+    "source": "direct add; IACP 2026; IAFC FRI 2026; NRPA 2026; NSA 2026; North Carolina Sheriffs' Association 2026",
     "researched": true,
     "also_known_as": [
       "ZOLL Data Systems"
@@ -21932,7 +21932,7 @@
     "year_founded": 2024,
     "sector": "General Gov",
     "category": "Procurement & Payments",
-    "description": "AI grants platform: finds eligible grants, drafts applications, manages compliance",
+    "description": "AI grants platform: finds eligible grants, drafts applications, manages compliance - exhibited at GFOA 2026, NACo 2026, NLC City Summit 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -21945,7 +21945,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "ICMA 2026",
+    "source": "ICMA 2026; GFOA 2026; NACo 2026; NLC City Summit 2026",
     "researched": true,
     "also_known_as": [
       "Avila Technologies Inc."
@@ -48949,7 +48949,7 @@
     "year_founded": 1983,
     "sector": "Transit & Parking",
     "category": "Fleet & Operations",
-    "description": "Trainwise onboard train control/monitoring and Fleetwise wayside fleet management for transit",
+    "description": "Trainwise onboard train control/monitoring and Fleetwise wayside fleet management for transit - exhibited at APTA 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.questertangent.com/careers"
@@ -48962,7 +48962,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add",
+    "source": "direct add; APTA 2026",
     "researched": true,
     "buyer": "Train manufacturers (new-build and fleet-renewal projects) and transit authorities/operators (fleet management and operations) are both named as customer segments",
     "sells_to_gov": "yes",
@@ -55439,7 +55439,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Online police training and certification platform - exhibited at IACP 2026",
+    "description": "Online police training and certification platform - exhibited at IACP 2026, NSA 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -55452,7 +55452,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026",
+    "source": "IACP 2026; NSA 2026",
     "researched": false,
     "notes": [
       {
@@ -57892,7 +57892,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026",
+    "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -57905,7 +57905,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026; Michigan Sheriffs Association 2026",
+    "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026",
     "researched": false,
     "notes": [
       {
@@ -95600,7 +95600,7 @@
     "year_founded": 1979,
     "sector": "Public Safety",
     "category": "EMS",
-    "description": "911 call routing, Viper call handling and NG911 for PSAPs - exhibited at APCO 2026",
+    "description": "911 call routing, Viper call handling and NG911 for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026",
     "ats": {
       "type": "html",
       "ref": "https://careers.intrado.com"
@@ -95621,7 +95621,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; APCO 2026",
+    "source": "competitor sweep; APCO 2026; Illinois Chapter of APCO 2026",
     "profile": {
       "paragraphs": [
         "Intrado sells call handling and management systems for emergency response. It describes itself as the connective tissue that gets the right help to the right location as quickly as possible.",
@@ -104408,7 +104408,7 @@
     "year_founded": 1960,
     "sector": "Airports & Aviation",
     "category": "Security & Screening",
-    "description": "Explosive and chemical trace detection instruments for aviation security",
+    "description": "Explosive and chemical trace detection instruments for aviation security - exhibited at AAAE 2026",
     "ats": {
       "type": "icims",
       "ref": "worldwidecareers-bruker"
@@ -104422,7 +104422,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; AAAE 2026",
     "buyer": "For the CBRNE detection line specifically: military commanders and armed forces, and emergency/first responders (fire and hazmat), plus explosives trace detection deployed at airports, ports, cargo facilities, critical-infrastructure access control and VIP protection.",
     "sells_to_gov": "yes",
     "buyer_source": "https://www.bruker.com/en/applications/detection-and-environmental/safety-security/cbrne-detection.html",
@@ -143647,7 +143647,7 @@
     "year_founded": 2014,
     "sector": "Courts & Justice",
     "category": "Courts & Case Management",
-    "description": "GovLink agency workflow software and PeachCourt eFiling for child support agencies, regulators, and civil, criminal, and appellate courts - exhibited at NCSEA 2026",
+    "description": "GovLink agency workflow software and PeachCourt eFiling for child support agencies, regulators, and civil, criminal, and appellate courts - exhibited at NCSEA 2026, NCSEA Policy Forum 2027",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -143660,7 +143660,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: NCSEA 2026",
+    "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027",
     "researched": true,
     "also_known_as": [
       "GreenCourt"

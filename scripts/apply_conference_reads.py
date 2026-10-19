@@ -32,12 +32,14 @@ import argparse
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 import admin                                                    # noqa: E402
+import conference_dates                                         # noqa: E402
 
 GOOD_DATE = ("high", "medium")
 
@@ -67,12 +69,30 @@ def main() -> int:
         what = []
         conf = str(r.get("dates_confidence") or "").lower()
 
+        new_edition = False
         if r.get("dates") and conf in GOOD_DATE and r.get("dates_source"):
             if c.get("dates") != r["dates"]:
+                was = conference_dates.parsed(c.get("dates") or "")
+                now = conference_dates.parsed(r["dates"])
+                new_edition = bool(was and now and was.year != now.year)
                 c["dates"] = r["dates"]
+                # A DATE READ OFF THEIR PAGE ANSWERS THE NOTE. "No next edition
+                # announced" left beside the date it was waiting for says both.
+                c.pop("dates_note", None)
                 c["dates_source"] = r["dates_source"]
                 c["dates_confidence"] = conf
                 c["dates_checked_on"] = today
+                # THE EDITION THE DATES NOW DESCRIBE. next_edition holds its
+                # year ("2026", "2026 Fall Meeting"); left alone, a 2027 date
+                # sat under "2026" and the row read as one edition while
+                # saying another. The year follows the date it was read with.
+                held = conference_dates.parsed(r["dates"])
+                ne = str(c.get("next_edition") or "")
+                m = re.search(r"20\d\d", ne)
+                if held and not m:
+                    c["next_edition"] = str(held.year)
+                elif held and int(m.group(0)) != held.year:
+                    c["next_edition"] = ne.replace(m.group(0), str(held.year), 1)
                 dated += 1
                 what.append(f"dates={r['dates']!r}")
             elif c.get("dates_checked_on") != today:
@@ -105,7 +125,17 @@ def main() -> int:
             c["dates_checked_on"] = today
             what.append("unannounced, noted")
 
-        if r.get("city") and not c.get("city"):
+        if new_edition:
+            # A NEW EDITION IS SOMEWHERE ELSE. The city on file is where the
+            # edition that ended was held; kept beside next year's dates it
+            # says ASBO 2027 is in Pittsburgh when its own page says Phoenix.
+            # The read's city is the new edition's, and a read that names none
+            # leaves the row with none rather than with last year's.
+            if c.get("city") != (r.get("city") or None):
+                c["city"] = r.get("city") or None
+                placed += 1
+                what.append(f"city={c['city']!r} (the new edition's)")
+        elif r.get("city") and not c.get("city"):
             c["city"] = r["city"]
             placed += 1
             what.append(f"city={r['city']!r}")

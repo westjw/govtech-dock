@@ -91,6 +91,20 @@ def parsed(text: str) -> dt.date | None:
         return None
 
 
+def next_on_file(c: dict, held: dt.date | None) -> bool:
+    """Is an edition LATER than the one these dates describe recorded?
+
+    `next_edition` holds the year of the edition the row's dates are for
+    ("2026", "2027", "2026 Fall Meeting"), so a non-empty value is not a next
+    edition. On 2026-10-18, 16 of the 20 conferences whose 2026 edition had
+    ended carried "2026" there, and q_calendar read that as "next edition on
+    file" and never asked about them. Only a year after the held date's
+    counts.
+    """
+    m = re.search(r"20\d\d", str(c.get("next_edition") or ""))
+    return bool(m and held and int(m.group(0)) > held.year)
+
+
 def stale(rows: list, today: dt.date) -> list:
     """Events whose date has passed. Arithmetic, no network, no false positives.
 
@@ -105,6 +119,7 @@ def stale(rows: list, today: dt.date) -> list:
                         "dates": c["dates"], "was": d.isoformat(),
                         "days_ago": (today - d).days,
                         "next_edition": c.get("next_edition"),
+                        "next_on_file": next_on_file(c, d),
                         "url": c.get("url")})
     out.sort(key=lambda r: -r["days_ago"])
     return out
@@ -162,8 +177,15 @@ def confirm(c: dict) -> dict:
     # So the fallback is month-and-start-day together, WITH the held year
     # present somewhere on the page. Weaker than a full match and stated as
     # such: it says the page still carries this date, not that it parsed one.
+    #
+    # AND THE MONTH IS OFTEN SHORT. IAAO lists "2027 – Aug. 30-Sept. 2" under
+    # Future IAAO Conferences; a full month name only called that page "not
+    # found" for a date it states. "Aug", "Aug." and September's "Sept" count.
+    mon = held.strftime("%B")
+    names = sorted({mon, mon[:3]} | ({"Sept"} if held.month == 9 else set()),
+                   key=len, reverse=True)
     loose = re.compile(
-        rf"\b{held.strftime('%B')}\.?\s+0?{held.day}\b", re.I)
+        rf"\b(?:{'|'.join(names)})\.?\s+0?{held.day}\b", re.I)
     if loose.search(text) and str(held.year) in text:
         return {"conference": c["conference"], "state": "confirmed",
                 "held": held.isoformat(),
@@ -228,7 +250,7 @@ def q_calendar(companies=None, board=None) -> list:
             continue
         held = parsed(c.get("dates") or "")
         seen = report.get(c["conference"]) or {}
-        if held and held < today and not c.get("next_edition"):
+        if held and held < today and not next_on_file(c, held):
             out.append({"kind": "passed", "rank": 0,
                         "says": f"ran {(today - held).days} days ago and no "
                                 f"next edition is on file"})
@@ -378,7 +400,7 @@ def main() -> int:
     print(f"{len(rows)} conferences on file\n")
     print(f"  {len(st)} whose date has already passed:")
     for r in st[:25]:
-        nxt = f"  next edition on file: {r['next_edition']}" if r.get("next_edition") else \
+        nxt = f"  next edition on file: {r['next_edition']}" if r.get("next_on_file") else \
               "  no next edition recorded"
         print(f"    {r['conference'][:30]:32} {r['dates'][:24]:26} "
               f"{r['days_ago']:4}d ago{nxt}")
