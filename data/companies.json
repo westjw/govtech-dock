@@ -84174,13 +84174,13 @@
   },
   {
     "id": "dominion-voting-systems",
-    "name": "Dominion Voting Systems",
-    "website": "https://www.dominionvoting.com",
+    "name": "Liberty Vote",
+    "website": "https://libertyvote.com/",
     "location": "Denver, CO",
     "year_founded": 2002,
     "sector": "General Gov",
     "category": "Elections",
-    "description": "Voting systems, tabulators and election management software for jurisdictions",
+    "description": "Voting systems, tabulators and election management software for jurisdictions - exhibited at NASS Winter/Summer 2026",
     "ats": {
       "type": "paylocity",
       "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/d26bc2af-65c9-44bc-8038-5ec10cc05f98/Liberty-Vote-USA-Inc"
@@ -84194,7 +84194,7 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; NASS Winter/Summer 2026",
     "ats_note": "unwired 2026-09-02: the Paylocity tenant is 'Liberty-Vote-USA-Inc', which is not this company's name - a parent's board or a former name. Queued in Boards we found for a person to rule.",
     "profile": {
       "paragraphs": [
@@ -84291,7 +84291,10 @@
       "by": "agent:descriptions-06",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Dominion Voting Systems"
+    ]
   },
   {
     "id": "clear-ballot-group",
@@ -158685,7 +158688,7 @@
     "year_founded": 1976,
     "sector": "Housing & Community Dev",
     "category": "Housing & Assistance",
-    "description": "Housing Choice Voucher, public housing and grants management software for public housing authorities - exhibited at NAHRO 2026",
+    "description": "Housing Choice Voucher, public housing and grants management software for public housing authorities - exhibited at NAHRO 2026, NCSHA 2026",
     "ats": {
       "type": "html",
       "ref": "https://emphasys-software.com/careers/"
@@ -158698,8 +158701,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: NAHRO 2026",
-    "researched": true
+    "source": "conference sweep: NAHRO 2026; NCSHA 2026",
+    "researched": true,
+    "also_known_as": [
+      "Emphasys Housing Software"
+    ]
   },
   {
     "id": "care-predictor",
@@ -166279,6 +166285,270 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: PTI 2026",
+    "researched": true
+  },
+  {
+    "id": "account-tree",
+    "name": "Account Tree",
+    "website": "https://www.accounttree.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Student activity fund software for K-12 school districts that routes requests, approvals and backup documents and keeps an audit trail - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "divot-assets",
+    "name": "Divot Assets",
+    "website": "https://divotassets.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Fixed asset tracking software for K-12 school districts, plus physical inventory audits, barcode asset tags and consulting - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "efunds-for-schools",
+    "name": "EFUNDS for Schools",
+    "website": "https://efundsforschools.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Payment processing software for K-12 schools and districts, covering online, point-of-sale, fee and recurring payments across departments - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "hds-companies",
+    "name": "HDS Companies",
+    "website": "https://www.hdsoftware.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Housing & Community Dev",
+    "category": "Housing & Assistance",
+    "description": "Housing finance software for housing finance agencies: multifamily and Section 8 contract administration, single-family programs, loan servicing, grants and compliance - exhibited at NCSHA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NCSHA 2026",
+    "researched": true
+  },
+  {
+    "id": "helios-ed",
+    "name": "Helios Ed",
+    "website": "https://heliosed.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "K-12 HR and workforce management software for school districts, covering hiring, onboarding, absences, timesheets and form approvals - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "journify-learning-inc",
+    "name": "Journify Learning Inc",
+    "website": "https://www.journify-learning.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "AI platform for special education teams that builds IEP-aligned assessments and tracks student progress and reports for schools and districts - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "learning-ally",
+    "name": "Learning Ally",
+    "website": "https://learningally.org/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Human-read audiobook library and reading app for students with dyslexia, low vision or reading difficulties, sold to schools and districts and to families - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "let-s-go-learn",
+    "name": "Let's Go Learn",
+    "website": "https://www.letsgolearn.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Online diagnostic assessments and personalized math and reading instruction for K-12 special education and intervention, sold to schools and districts - exhibited at CEC Convention 2027",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: CEC Convention 2027",
+    "researched": true
+  },
+  {
+    "id": "oculus-rail",
+    "name": "Oculus Rail",
+    "website": "https://oculusrail.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Works",
+    "category": "Streets",
+    "description": "Blocked railroad crossing sensors and data: a municipal dashboard, app and API giving municipalities, transportation agencies and first responders real-time crossing status - exhibited at NLC City Summit 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NLC City Summit 2026",
+    "researched": true
+  },
+  {
+    "id": "hotb-software-solutions",
+    "name": "HOTB Software Solutions",
+    "website": "https://hotbsoftware.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Housing & Community Dev",
+    "category": "Housing & Assistance",
+    "description": "Cloud software for government assistance programs: grant management, loan reservation and down payment assistance, and LIHEAP energy program administration - exhibited at NCSHA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NCSHA 2026",
+    "researched": true
+  },
+  {
+    "id": "sc-strategic-solutions",
+    "name": "SC Strategic Solutions",
+    "website": "https://www.scstrategicsolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "Operations & SIS",
+    "description": "Records management software with document archiving, e-forms, workflows and scanning services for school districts and municipalities - exhibited at ASBO School Business 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ASBO School Business 2026",
     "researched": true
   }
 ]
