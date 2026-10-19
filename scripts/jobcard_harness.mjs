@@ -452,4 +452,37 @@ try {
 } catch (e) {
   errors.push(`driving coPaySentence(): ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence }));
+/* THE COMPANIES TAB'S CARD, on every real company (2026-10-19: the list
+   became cards). coCard builds an <a> and sets its innerHTML, so
+   createElement hands back a recorder and everything else stays the
+   absorbing stub. selftest holds each card's count corner to the honesty
+   order the list row kept. */
+let coCards = null;
+try {
+  const made = [];
+  const rec = () => {
+    const t = { innerHTML: "", className: "", href: "" };
+    made.push(t);
+    return new Proxy(t, { get(o, k) { return k in o ? o[k] : S; },
+                          set(o, k, v) { o[k] = v; return true; } });
+  };
+  ctx.document = new Proxy(S, { get(_t, k) {
+    if (k === "createElement") return () => rec();
+    return S[k];
+  } });
+  ctx.__real2 = JSON.parse(readFileSync(new URL("../data/board.json", import.meta.url), "utf8"));
+  coCards = vm.runInContext(`(() => { D = __real2; const r = {};
+      for (const o of D.organizations) {
+        const a = coCard(o, "", "", true);
+        r[o.id] = { html: String(a.innerHTML), cls: String(a.className), href: String(a.href) };
+      }
+      // a record carrying only the legacy single \`conference\` field
+      const l = coCard({ id: "legacy-co", name: "Legacy Co", sector: "General Gov",
+        category: "Finance & ERP", conference: "GFOA 2026", open_roles: 0, quota_roles: 0,
+        no_board_on_file: true, probe: "none-found" }, "", "", true);
+      r.__legacy = { html: String(l.innerHTML) };
+      return r; })()`, ctx);
+} catch (e) {
+  errors.push(`running coCard(): ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards }));

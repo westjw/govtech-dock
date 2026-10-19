@@ -1081,6 +1081,176 @@
     cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:var(--space-1)}
   .fclear:hover{color:var(--ink)}
 
+  /* ── OPTION A (owner, 2026-10-19: "build option A with the company
+     cards"). The Jobs and Companies search is the Conferences bar: one
+     rounded bar of labelled fields (.cfsearch, above), the rarer filters one
+     quiet row under it. The round corners are the conferences design's
+     exception to --radius and stay inside the bar, its popover and the
+     company cards; the toggles, selects and chips outside them stay square.
+     Scoped to .jbar, never .search or .filters, which Saved still uses and
+     whose rules would win on equal specificity. */
+  .jbar{margin-top:var(--space-4);margin-bottom:0;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 10px 30px rgba(31,37,54,.06)}
+  .jbar .cfs-field{padding:10px 18px;flex:0 1 auto}
+  .jbar .cfs-grow{flex:1 1 34%}
+  .jbar .cfs-field input,.jbar .cfs-field select{font-size:15px}
+  .jbar .cfs-field select{cursor:pointer;max-width:210px}
+  /* one height for every control in the bar, so the labels above them sit on
+     one line (an input and a select are not the same height by default), and
+     the Where button's arrow sits where a select's does */
+  .jbar .cfs-field input,.jbar .cfs-field select,.jbar .cfs-btn{height:24px}
+  .jbar .cfs-btn{font-size:15px;display:inline-flex;align-items:center;gap:6px;
+    white-space:nowrap;width:100%;justify-content:space-between}
+  .jbar .cfs-btn .v{color:inherit}
+  /* a long Where value ("Onsite, near Colorado Springs, CO") is cut short
+     with an ellipsis inside its own field instead of printing over the next */
+  .jbar .cfs-btn{overflow:hidden;min-width:0}
+  #j-where-v{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+  .jbar .cfs-pop{min-width:160px;flex:0 1 220px}
+  .cfs-seg{display:inline-flex;border:1px solid var(--line);align-self:flex-start}
+  .jbar .cfs-field:has(.cfs-seg){flex:none}
+  .cfs-seg button{font:inherit;font-size:13px;padding:3px 10px;border:0;
+    background:transparent;color:var(--ink);cursor:pointer;min-height:26px;
+    white-space:nowrap}
+  .cfs-seg button+button{border-left:1px solid var(--line)}
+  .cfs-seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);font-weight:700}
+  .cfs-seg button[aria-pressed=true] .v{color:inherit}
+  .cfs-seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .jbar .cfs-btn[aria-pressed=true] .v,.jbar .cfs-btn.on{font-weight:700;
+    color:var(--accent-text)}
+  .cfs-chev{width:14px;height:14px;fill:none;stroke:var(--dim);stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;flex:none}
+  button.cfs-go{border:0;cursor:pointer;width:46px;height:46px;padding:0}
+  button.cfs-go svg{width:20px;height:20px;fill:none;stroke:currentColor;
+    stroke-width:2.4;stroke-linecap:round}
+  button.cfs-go:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .jbar .cfs-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  /* the Where popover: work mode as a 2x2, then Near a city */
+  .jpop{min-width:min(360px,88vw)}
+  .jpop .seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;
+    border:0;background:none;width:100%}
+  .jpop .seg button,.jpop .seg button+button{border:1px solid var(--line);
+    background:var(--bg);color:var(--ink);padding:10px 12px;text-align:left;
+    font-size:14px;min-height:44px}
+  .jpop .seg button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);
+    color:var(--bg);font-weight:700}
+  .jbar .jpop .near{display:flex;flex-direction:column;align-items:stretch;gap:6px;
+    margin-top:var(--space-4)}
+  .jbar .jpop .near.off{display:none}
+  .near-lab{font-size:12px;font-weight:700;color:var(--ink)}
+  .near-row{display:flex;gap:6px}
+  .jbar .jpop .near input,.jbar .jpop .near select{font:inherit;font-size:14px;
+    border:1px solid var(--line);background:var(--bg);color:var(--ink);
+    padding:9px 10px;min-height:44px}
+  .jbar .jpop .near input{flex:1;width:auto;min-width:0}
+  .jbar .jpop .near select{width:auto;max-width:none}
+  .jpop-hint{margin:var(--space-3) 0 0;line-height:1.45}
+  /* the quiet row under the bar */
+  .jrow{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);
+    margin-top:var(--space-3)}
+  .jtog{font:inherit;font-size:13px;padding:7px 12px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);cursor:pointer;display:inline-flex;
+    align-items:center;gap:6px;min-height:36px}
+  .jtog .v{color:var(--ink)}
+  .jtog .v.on{color:var(--accent-text);font-weight:600}
+  .jtog[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .jtog[aria-pressed=true] .v{color:var(--bg);font-weight:700}
+  .jtog-ck{display:none;width:13px;height:13px;fill:none;stroke:currentColor;
+    stroke-width:3;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .jtog[aria-pressed=true] .jtog-ck{display:inline-block}
+  .jtog[aria-expanded=true]{border-color:var(--ink)}
+  .jtog:focus-visible,.jsel select:focus-visible,.jcopy:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px}
+  .jsel{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--dim)}
+  .jsel select{font:inherit;font-size:13px;font-weight:600;color:var(--ink);
+    background:var(--panel);border:1px solid var(--line);padding:6px 8px;
+    cursor:pointer;min-height:36px;max-width:190px}
+  .jrow-r{margin-left:auto;display:inline-flex;align-items:center;
+    gap:var(--space-4);flex-wrap:wrap}
+  .jcopy{font:inherit;font-size:13px;font-weight:600;background:none;border:0;
+    color:var(--accent-text);cursor:pointer;display:inline-flex;align-items:center;
+    gap:6px;padding:6px 0;min-height:36px}
+  .jcopy:hover .jcopy-t{text-decoration:underline;text-underline-offset:2px}
+  .jcopy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;
+    stroke-linecap:round}
+  /* five fields do not fit a tablet row: the bar stacks a breakpoint earlier
+     than the conferences bar, which has four */
+  @media (max-width:900px){
+    .jbar{flex-direction:column;border-radius:14px}
+    .jbar .cfs-field{border-left:0;border-top:1px solid var(--line)}
+    .jbar .cfs-field:first-child{border-top:0;border-radius:14px 14px 0 0}
+    .jbar .cfs-field select{max-width:none}
+    button.cfs-go{margin:var(--space-2) 0 0;width:100%;border-radius:999px}
+    .jrow-r{margin-left:0}
+  }
+
+  /* ── COMPANY CARDS, the conference cards' shape (.cfcardx) with the
+     Companies row's facts. The lead card uses the conference lead tokens,
+     and every text tone on it is overridden: --accent-text, --warn-text and
+     --dim all fall under 3:1 on --cf-lead in the light theme. */
+  .cospot-wrap{margin:var(--space-6) 0 0}
+  .cospot-wrap h3{margin:0;font-family:inherit}
+  .cospot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:var(--space-4);margin-top:var(--space-4)}
+  .cogroup{margin-top:var(--space-8)}
+  .cogroup-h{font-family:var(--font-heading);font-weight:800;font-size:16px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin:0;
+    padding-bottom:var(--space-2);border-bottom:1px solid var(--line);display:flex;
+    justify-content:space-between;align-items:baseline;gap:var(--space-3)}
+  .cogroup-h .n{font-weight:600;letter-spacing:0;text-transform:none;font-size:13px}
+  .cogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr));
+    gap:var(--space-4);margin-top:var(--space-4)}
+  .cocard{display:flex;flex-direction:column;gap:var(--space-3);border-radius:16px;
+    padding:18px 20px;background:var(--panel);color:var(--ink);text-decoration:none;
+    min-height:176px;border:1px solid transparent;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.05)}
+  .cocard:hover{border-color:var(--accent)}
+  .cocard:hover .cocard-name{color:var(--accent-text)}
+  .cocard:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .cocard-top{display:flex;align-items:flex-start;gap:var(--space-3)}
+  .cocard .tile{width:40px;height:40px;border-radius:10px;display:flex;
+    align-items:center;justify-content:center;font-size:14px;font-weight:800;flex:none}
+  .cocard-id{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+  .cocard-name{font-size:18px;font-weight:700;line-height:1.2;letter-spacing:-.01em;
+    overflow-wrap:anywhere}
+  .cocard-m{font-size:12.5px;color:var(--dim);line-height:1.35}
+  .cocard-n{flex:none;display:flex;flex-direction:column;align-items:flex-end;
+    text-align:right;max-width:120px}
+  .cocard-k{font-size:22px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .cocard-k.q{color:var(--accent-text)}
+  .cocard-u{font-size:11px;color:var(--dim);margin-top:3px}
+  .cocard-st{font-size:12px;font-weight:600;color:var(--dim);line-height:1.3}
+  .cocard-st.warn{color:var(--warn-text)}
+  .cocard-d{font-size:14px;color:var(--dim);line-height:1.45;display:-webkit-box;
+    -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cocard-f{margin-top:auto;font-size:12.5px;color:var(--dim);line-height:1.4}
+  .cocard.spot{min-height:206px;padding:22px 24px 20px;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 10px 30px rgba(31,37,54,.06)}
+  .cocard.spot .cocard-name{font-size:24px;letter-spacing:-.025em;line-height:1.08}
+  .cocard.lead{background:var(--cf-lead);color:var(--cf-lead-ink);box-shadow:none}
+  .cocard.lead .cocard-m,.cocard.lead .cocard-d,.cocard.lead .cocard-f,
+  .cocard.lead .cocard-u,.cocard.lead .cocard-st{color:var(--cf-lead-dim)}
+  .cocard.lead .cocard-k,.cocard.lead .cocard-k.q,.cocard.lead .cocard-st.warn,
+  .cocard.lead .brandhit{color:var(--cf-lead-ink)}
+  .cocard.lead:hover{border-color:var(--beak)}
+  .cocard.lead .tile{box-shadow:0 0 0 1px var(--cf-lead-dim)}
+  .cocard.lead:hover .cocard-name{color:var(--cf-lead-ink);text-decoration:underline;
+    text-underline-offset:3px;text-decoration-color:var(--beak)}
+  .comore{border:1px solid var(--ink);margin:var(--space-6) auto 0;max-width:340px;
+    color:var(--ink)}
+  @media (max-width:900px){.cospot{grid-template-columns:1fr}}
+  /* ON A PHONE the bar is two fields a row (What, and the search button, take
+     the whole row), so the first result is not pushed off the first screen
+     by five stacked fields */
+  @media (max-width:640px){
+    .jbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+    .jbar .cfs-grow,.jbar button.cfs-go{grid-column:1/-1}
+    .jbar .cfs-field{border-left:0}
+    .jbar .cfs-field:nth-child(odd):not(:first-child){border-left:1px solid var(--line)}
+    .jbar .cfs-pop{min-width:0}
+    .jbar .jpop{left:-4px}
+  }
+
   /* -------------------------------------------------------- the list itself
      THE LIST IS THE PRODUCT. Dense rows, newest first, and the count says
      what the filter did to the board rather than only what survived it. */
@@ -2456,7 +2626,9 @@ function noBoardNote(o){
    company would be decoration pretending to be data. Instead: three tints from
    the existing token set, picked by a hash, so a company always looks the same
    without implying the colour means anything. */
-const TILE=[["var(--chip)","var(--dim)"],["var(--chip)","var(--accent)"],["var(--chip)","var(--warn)"]];
+/* Text tokens, not the raw ones: --dim was 4.26:1 on --chip in the light
+   theme, --accent 3.58:1 and --warn 3.55:1 in the dark (review, 2026-10-19). */
+const TILE=[["var(--chip)","var(--dim-chip)"],["var(--chip)","var(--accent-text)"],["var(--chip)","var(--warn-text)"]];
 /* A logo where we have one, initials where we do not. The <img> sits ON the
    initials tile rather than replacing it, so a logo that 404s or is slow
    leaves the tile it was covering - there is no empty square at any point,
@@ -3122,12 +3294,13 @@ function jobs(){
       &middot; <strong>${D.organizations.length.toLocaleString()}</strong> companies tracked
       &middot; ${esc(freshness(D.generated))}</p>
 
-    <div class="search">
-      <input type="search" id="j-q" placeholder="Role, skill, or company"
-        aria-label="Search by role, skill or company">
-      <button type="button" data-click="drawJobs">Search</button>
-    </div>
-
+    <!-- ONE BAR, in the Conferences tab's shape (owner, 2026-10-19: "build
+         option A"). The questions a seller asks first are labelled fields in
+         it; Remote/Hybrid/Onsite and Near a city fold into the Where field's
+         popover; the rest is one quiet row underneath. Every control keeps its
+         id and its action, so the address, the chips and every outside caller
+         (home's sector buttons, the alerts preview, a digest link) reach the
+         same filters they always did. -->
     <!-- Two filters the deck asked for are NOT here, and their absence is the
          decision rather than an oversight.
 
@@ -3140,47 +3313,69 @@ function jobs(){
          mentioning TS/SCI. A dropdown whose only useful setting returns one
          row is a promise the data cannot keep; the search box finds that
          posting by typing the word, which is the honest route to it. -->
-    <div class="filters">
-      <button class="pill" type="button" id="j-quota-pill" aria-pressed="true"
-        data-click="toggleQuota"
-        title="only roles that carry a sales number"><span class="v on"
-        id="j-quota-v">Quota-carrying</span></button>
-      <!-- Remote / Hybrid / Onsite are DISJOINT here. "In person" used to
-           include hybrid, which was fine while hybrid had no button of its
-           own; with one, two overlapping segments would report different
-           counts for the same roles. Onsite now means the job demonstrably
-           sits somewhere and is neither remote nor hybrid. -->
-      <div class="seg" id="j-where">
-        <button type="button" data-v="" aria-pressed="true" data-click="setWhere">Anywhere</button>
-        <button type="button" data-v="remote" aria-pressed="false" data-click="setWhere">Remote</button>
-        <button type="button" data-v="hybrid" aria-pressed="false" data-click="setWhere">Hybrid</button>
-        <button type="button" data-v="onsite" aria-pressed="false" data-click="setWhere">Onsite</button>
-      </div>
-      <!-- NEAR A CITY. Only meaningful for a job that has a place, so it hides
-           itself when Remote is selected - a remote role is not near anything
-           and is not far from anything either, and it has its own button.
+    <div class="cfsearch jbar" role="search" aria-label="Search jobs">
+      <label class="cfs-field cfs-grow">
+        <span class="cfs-label">What</span>
+        <input type="search" id="j-q" placeholder="Role, skill, or company"
+          aria-label="What: role, skill or company">
+      </label>
+      <div class="cfs-field cfs-pop">
+        <span class="cfs-label" id="j-where-lab">Where</span>
+        <button type="button" id="j-where-btn" class="cfs-btn" aria-haspopup="dialog"
+          aria-expanded="false" aria-labelledby="j-where-lab j-where-v"><span
+          id="j-where-v">Anywhere</span><svg class="cfs-chev" viewBox="0 0 24 24"
+          aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="cfpop jpop" id="j-where-pop" hidden role="dialog" aria-label="Where the job is">
+          <!-- Remote / Hybrid / Onsite are DISJOINT here. "In person" used to
+               include hybrid, which was fine while hybrid had no button of its
+               own; with one, two overlapping segments would report different
+               counts for the same roles. Onsite now means the job demonstrably
+               sits somewhere and is neither remote nor hybrid. -->
+          <div class="seg" id="j-where" role="group" aria-label="Work mode">
+            <button type="button" data-v="" aria-pressed="true" data-click="setWhere">Anywhere</button>
+            <button type="button" data-v="remote" aria-pressed="false" data-click="setWhere">Remote</button>
+            <button type="button" data-v="hybrid" aria-pressed="false" data-click="setWhere">Hybrid</button>
+            <button type="button" data-v="onsite" aria-pressed="false" data-click="setWhere">Onsite</button>
+          </div>
+          <!-- NEAR A CITY. Only meaningful for a job that has a place, so it hides
+               itself when Remote is selected - a remote role is not near anything
+               and is not far from anything either, and it has its own button.
 
-           Deliberately NOT gated on work_mode being literally hybrid/onsite:
-           that is stated on 139 postings out of 4,353, because most boards
-           never say it, while 917 more name a real city anyway. Those are
-           desks. Gating on the word would have made this filter reach 44
-           postings instead of 1,445. -->
-      <span class="near" id="j-near-wrap">
-        <input id="j-near" list="j-cities" placeholder="Near a city"
-               autocomplete="off" aria-label="Near a city"
-               data-input="nearChanged">
-        <select id="j-miles" aria-label="How far" data-change="milesChanged">
-          <option value="25">25 miles</option>
-          <option value="50" selected>50 miles</option>
-          <option value="100">100 miles</option>
-          <option value="250">250 miles</option>
+               Deliberately NOT gated on work_mode being literally hybrid/onsite:
+               that is stated on 139 postings out of 4,353, because most boards
+               never say it, while 917 more name a real city anyway. Those are
+               desks. Gating on the word would have made this filter reach 44
+               postings instead of 1,445. -->
+          <span class="near" id="j-near-wrap">
+            <span class="near-lab">Near a city</span>
+            <span class="near-row">
+              <input id="j-near" list="j-cities" placeholder="Denver, CO"
+                     autocomplete="off" aria-label="Near a city"
+                     data-input="nearChanged">
+              <select id="j-miles" aria-label="How far" data-change="milesChanged">
+                <option value="25">25 miles</option>
+                <option value="50" selected>50 miles</option>
+                <option value="100">100 miles</option>
+                <option value="250">250 miles</option>
+              </select>
+            </span>
+            <datalist id="j-cities"></datalist>
+          </span>
+          <p class="cfpop-hint jpop-hint">Near a city reads the office a posting names.
+            A remote role is near nowhere, so choosing Remote puts this away.</p>
+          <div class="cfpop-foot">
+            <button type="button" class="cfpop-clear" id="j-where-clear">Clear</button>
+            <button type="button" class="cfpop-done" id="j-where-done">Done</button>
+          </div>
+        </div>
+      </div>
+      <label class="cfs-field">
+        <span class="cfs-label">Role</span>
+        <select id="j-fam-pill" data-change="famPill" aria-label="Role: kind of role">
+          <option value="">Any kind of role</option>
+          ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
         </select>
-        <datalist id="j-cities"></datalist>
-      </span>
-      <select id="j-fam-pill" data-change="famPill" aria-label="Kind of role">
-        <option value="">Any kind of role</option>
-        ${fams.map(f=>`<option value="${esc(f)}">${esc(FAM[f]||f)}</option>`).join("")}
-      </select>
+      </label>
       <!-- Which government function they sell into, promoted out of More
            filters into the primary row. Every other job board can tell you
            "SaaS, sales, remote"; only this one can tell you they sell to
@@ -3190,10 +3385,13 @@ function jobs(){
            Higher Ed. It mirrors #j-sec rather than replacing it, the same way
            the role-family pill mirrors #j-fam, so an incoming shared link
            still works whichever one it names. -->
-      <select id="j-sec-pill" data-change="secPill" aria-label="Industry they sell into">
-        <option value="">Any industry</option>
-        ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
-      </select>
+      <label class="cfs-field">
+        <span class="cfs-label">Sells to</span>
+        <select id="j-sec-pill" data-change="secPill" aria-label="Sells to: industry they sell into">
+          <option value="">Any industry</option>
+          ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}
+        </select>
+      </label>
       ${payOn?`
       <!-- Pay is in the primary row, not More filters, because it is the
            second question a seller asks after "what is it". The three
@@ -3201,30 +3399,62 @@ function jobs(){
            SELECT, so it can never be only a thing that happens to you, and a
            posting we never read gets its own option rather than being filed
            under "stated nothing". -->
-      <select id="j-pay" data-change="payPill" aria-label="Pay">
-        <option value="">Any pay</option>
-        <option value="stated">Shows a salary</option>
-        <option value="80000">$80k+ a year</option>
-        <option value="100000">$100k+ a year</option>
-        <option value="120000">$120k+ a year</option>
-        <option value="140000">$140k+ a year</option>
-        <option value="150000">$150k+ a year</option>
-        <option value="200000">$200k+ a year</option>
-        <option value="none">No salary stated</option>
-        <option value="unread">Postings we could not read</option>
-      </select>`:""}
+      <label class="cfs-field">
+        <span class="cfs-label">Pay</span>
+        <select id="j-pay" data-change="payPill" aria-label="Pay">
+          <option value="">Any pay</option>
+          <option value="stated">Shows a salary</option>
+          <option value="80000">$80k+ a year</option>
+          <option value="100000">$100k+ a year</option>
+          <option value="120000">$120k+ a year</option>
+          <option value="140000">$140k+ a year</option>
+          <option value="150000">$150k+ a year</option>
+          <option value="200000">$200k+ a year</option>
+          <option value="none">No salary stated</option>
+          <option value="unread">Postings we could not read</option>
+        </select>
+      </label>`:""}
+      <button type="button" class="cfs-go" data-click="drawJobs" aria-label="Search"><svg
+        viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path
+        d="M20 20l-4-4"/></svg></button>
+    </div>
+    <!-- THE QUIET ROW: the one toggle, the rarer filters, the order, and the
+         address. "First seen", not "Posted": the age select counts from the
+         night this board first saw a role, and both dates keep their labels. -->
+    <div class="jrow">
+      <button class="jtog" type="button" id="j-quota-pill" aria-pressed="true"
+        data-click="toggleQuota"
+        title="only roles that carry a sales number"><svg class="jtog-ck" viewBox="0 0 24 24"
+        aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="v on"
+        id="j-quota-v">Quota-carrying only</span></button>
       ${ages.length?`
-      <select id="j-since" aria-label="How recently this board first saw the role">
+      <label class="jsel">First seen
+      <select id="j-since" aria-label="First seen: how recently this board first saw the role">
         <option value="">Any age</option>
         ${ages.map(o=>`<option value="${esc(o.v)}">${esc(o.label)}</option>`).join("")}
-      </select>`:""}
-      <select id="j-sort" aria-label="Sort order">
-        <option value="">Newest first</option>
-        <option value="old">Oldest first</option>
-        <option value="co">Company A&ndash;Z</option>
-      </select>
-      <button class="pill" type="button" aria-expanded="false"
+      </select></label>`:""}
+      <button class="jtog" type="button" aria-expanded="false"
         data-click="toggleMore">More filters <span class="v" id="j-more-v"></span></button>
+      <span class="jrow-r">
+        <label class="jsel">Sort
+        <select id="j-sort" aria-label="Sort order">
+          <option value="">Newest first</option>
+          <option value="old">Oldest first</option>
+          <option value="co">Company A&ndash;Z</option>
+        </select>
+        </label>
+        <!-- THE ADDRESS IS STILL THE PRODUCT, it is just not a box any more.
+             The button copies the LIVE address, read back off location, so
+             what a person shares is what they are looking at. #j-url stays,
+             out of sight, for the no-clipboard fallback to select. -->
+        <button type="button" class="jcopy" id="j-copy" data-click="copyUrl"
+          title="every filter and the page number are in the address"><svg
+          viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path
+          d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><span
+          class="jcopy-t">Copy link to this view</span></button>
+        <code id="j-url" class="vh" aria-hidden="true"></code>
+        <span class="vh" role="status" id="j-copy-said"></span>
+      </span>
     </div>
 
     <!-- Every filter is kept. Territory, state, region, sector, seniority and
@@ -3280,17 +3510,6 @@ function jobs(){
       </select>`:""}
     </div>
 
-    <!-- The query string is on screen on purpose. A filtered view is a
-         shareable object, and that is the cheapest distribution this board
-         has. It is the LIVE address, read back off location, because a
-         decorative query string that does not actually work would be a lie in
-         the shape of a feature. -->
-    <div class="urlbar">
-      <span class="lead" title="every filter and the page number are in the address">
-        this view is a link</span>
-      <div class="urlwrap"><code id="j-url"></code></div>
-      <button type="button" id="j-copy" data-click="copyUrl">Copy link</button>
-    </div>
   </div>
 
   ${/* "New this run" used to be a grey strip here. It is the freshest thing
@@ -3338,6 +3557,7 @@ function jobs(){
       });});
   const hw=$("#j-how");
   if(hw)hw.onclick=e=>{e.preventDefault();goTab("how");window.scrollTo(0,0)};
+  jWireWhere();
   applyUrl(PENDING_URL); PENDING_URL=null;
   drawJobs();
 }
@@ -3350,7 +3570,13 @@ function paintUrl(){
   el.textContent=location.host+location.pathname+location.search;
 }
 function copyUrl(btn){
-  const say=t=>{btn.textContent=t;setTimeout(()=>{btn.textContent="Copy link"},1600)};
+  // the words live in their own span so the link icon survives the swap, and
+  // they go back to whatever they were rather than to a string typed here
+  const t=btn.querySelector(".jcopy-t")||btn;
+  const was=btn.dataset.label||(btn.dataset.label=t.textContent);
+  const said=$("#j-copy-said");
+  const say=s=>{t.textContent=s; if(said)said.textContent=s;
+    setTimeout(()=>{t.textContent=was; if(said)said.textContent="";},1600)};
   const url=location.href;
   if(navigator.clipboard&&navigator.clipboard.writeText){
     navigator.clipboard.writeText(url).then(()=>say("Copied"),()=>selectUrl(say));
@@ -3402,7 +3628,9 @@ function toggleQuota(btn){
   const on=btn.getAttribute("aria-pressed")!=="true";
   btn.setAttribute("aria-pressed",on);
   const v=$("#j-quota-v");
-  v.textContent=on?"Quota-carrying":"Any role";
+  // one label in both states: the toggle's pressed state says which, and a
+  // button reading "Any role" while switched off described the other state
+  v.textContent="Quota-carrying only";
   v.className="v"+(on?" on":"");
   refilter();
 }
@@ -3420,7 +3648,7 @@ function secPill(){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
   const v=$("#j-sec-pill").value;
   if($("#j-sec")) $("#j-sec").value=v;
-  SHOWN=60; drawJobs();
+  refilter();
 }
 function famPill(){
   PUSH_NEXT=true;   // a deliberate choice, so Back should undo it
@@ -3583,7 +3811,7 @@ function tabFromUrl(u,fallback){
   if(u.get("e"))return "conferences";
   if(Object.keys(COKEYS).some(k=>u.has(k))||u.has("call"))return "companies";
   if(Object.keys(URLKEYS).some(k=>u.has(k))
-     ||["any","where","paynone","p"].some(k=>u.has(k)))return "jobs";
+     ||["any","where","paynone","p","near","mi"].some(k=>u.has(k)))return "jobs";
   return fallback;
 }
 let URL_LOADING=false;
@@ -3631,7 +3859,7 @@ function writeUrl(push){
   if(URL_LOADING||ROLE||CO)return;
   const u=new URLSearchParams(location.search);
   Object.keys(URLKEYS).forEach(k=>u.delete(k));
-  ["tab","any","where","paynone","p","co","role","e","call",...Object.keys(COKEYS)]
+  ["tab","any","where","paynone","p","co","role","e","call","near","mi",...Object.keys(COKEYS)]
     .forEach(k=>u.delete(k));
   if(tab!=="jobs")u.set("tab",tab);
   if(tab==="companies"){
@@ -3647,10 +3875,24 @@ function writeUrl(push){
   Object.entries(URLKEYS).forEach(([k,id])=>{
     const el=$("#"+id); if(el&&el.value)u.set(k,el.value);
   });
+  // "Anywhere in the world" is the one filter whose value is empty. Unwritten,
+  // it had no address: the first redraw erased a digest's us= and a copied
+  // link reopened on the United States.
+  if($("#j-us")?.value==="")u.set("us","");
   const quota=$("#j-quota-pill");
   if(quota&&quota.getAttribute("aria-pressed")!=="true")u.set("any","1");
   const where=$("#j-where")?.querySelector('[aria-pressed="true"]');
   if(where&&where.dataset.v)u.set("where",where.dataset.v);
+  /* NEAR A CITY IS A FILTER, so the address carries it and "Copy link to this
+     view" means what it says. Not beside Remote, which ignores it; the
+     miles only when they are not the default, or every link would carry a
+     word that changes nothing. */
+  const nr=($("#j-near")?.value||"").trim();
+  if(nr&&!(where&&where.dataset.v==="remote")){
+    u.set("near",nr);
+    const mi=$("#j-miles")?.value;
+    if(mi&&mi!=="50")u.set("mi",mi);
+  }
   // only while a floor is actually set, or the url would carry a word that
   // changes nothing about what the link shows
   if(PAY_KEEP&&/^\d+$/.test($("#j-pay")?.value||""))u.set("paynone","1");
@@ -3705,26 +3947,37 @@ function applyUrl(u){
        DROPPED_FILTERS exists. */
     if(!el){if(want!=="")DROPPED_FILTERS.push({key:k,want});return;}
     el.value=want;
-    if(el.tagName==="SELECT"&&el.value!==want&&want!=="")
+    if(el.tagName==="SELECT"&&el.value!==want&&want!==""){
+      // no option took it: back to the default (the first option), which for
+      // the country is "us", not the empty "Anywhere in the world"
+      el.selectedIndex=0;
       DROPPED_FILTERS.push({key:k,want});
+    }
   });
   if(u.has("any")){
     const pill=$("#j-quota-pill");
     if(pill){pill.setAttribute("aria-pressed","false");
-      const v=$("#j-quota-v"); if(v){v.textContent="Any role";v.className="v";}}
+      const v=$("#j-quota-v"); if(v){v.textContent="Quota-carrying only";v.className="v";}}
   }
   if(u.has("where")){
     const seg=$("#j-where");
     if(seg)[...seg.children].forEach(b=>
       b.setAttribute("aria-pressed",b.dataset.v===u.get("where")));
   }
+  if(u.has("near")){const n=$("#j-near"); if(n)n.value=u.get("near");}
+  if(u.has("mi")){const m=$("#j-miles");
+    if(m){m.value=u.get("mi"); if(m.value!==u.get("mi"))m.value="50";}}
   // an incoming link with overflow filters set should show them, not hide them.
   // us=us is the board's DEFAULT, written into every address on the first
   // draw, so it is not a filter somebody set: counting it reopened the bar on
   // every Back, and the list jumped 458px down a phone screen.
-  const extras=["fam","sec","st","off","reg","sen","us","mode","src"];
+  // Role (fam) and Sells to (sec) are fields in the bar now, so they no
+  // longer open it. The button is found by its action: the old
+  // [onclick*="toggleMore"] matched nothing once handlers left the markup,
+  // so the bar opened while its button still said it was closed.
+  const extras=["st","off","reg","sen","us","mode","src"];
   if(extras.some(k=>u.has(k)&&!(k==="us"&&u.get(k)==="us")))
-    setBarOpen($("#j-bar"),document.querySelector('[onclick*="toggleMore"]'),true);
+    setBarOpen($("#j-bar"),document.querySelector('[data-click="toggleMore"]'),true);
   const fp=$("#j-fam-pill"), f=$("#j-fam");
   if(fp&&f)fp.value=f.value;
   const sp=$("#j-sec-pill"), sc=$("#j-sec");
@@ -4193,7 +4446,9 @@ function drawJobs(){
     return /^\d{4}-\d{2}-\d{2}$/.test(v)?v:"";};
   const fromDay=day("from"), toDay=day("to");
 
-  const NEAR=nearState();
+  /* Remote is near nowhere: the field says so and the filter now agrees.
+     A city typed before choosing Remote used to empty the list in silence. */
+  const NEAR=where==="remote"?null:nearState();
   const WANT=parseQuery(q);
   /* A search can contradict a filter, and when it does the words the person
      just typed win over a toggle they may not have noticed. "customer
@@ -4208,7 +4463,7 @@ function drawJobs(){
     if(pill){
       pill.setAttribute("aria-pressed","false");
       const vv=$("#j-quota-v");
-      if(vv){vv.textContent="Any role";vv.className="v"}
+      if(vv){vv.textContent="Quota-carrying only";vv.className="v"}
     }
     quotaOnly=false;
     relaxed=FAM[WANT.family]||WANT.family;
@@ -4389,11 +4644,17 @@ function drawJobs(){
   else rows=rows.slice().sort(byNew);
   const setAside=aside.length?paySetAside(aside):null;
 
-  // family has its own control now, so it does not also count as an overflow filter
-  const extra=["j-sec","j-state","j-region","j-office","j-sen","j-us","j-mode","j-src"]
-    .filter(i=>g(i)).length;
+  // Role and Sells to are fields in the bar, so neither counts as an overflow
+  // filter. Nor does the country's DEFAULT: "us" is truthy, and every plain
+  // board read "More filters 1 on".
+  const extra=["j-state","j-region","j-office","j-sen","j-mode","j-src"]
+    .filter(i=>g(i)).length+(g("j-us")!=="us"?1:0);
   if($("#j-fam-pill") && $("#j-fam") && $("#j-fam-pill").value!==$("#j-fam").value)
     $("#j-fam-pill").value=$("#j-fam").value;
+  // the same for Sells to: clearing its chip cleared #j-sec and left the
+  // field in the bar naming the old sector
+  if($("#j-sec-pill") && $("#j-sec") && $("#j-sec-pill").value!==$("#j-sec").value)
+    $("#j-sec-pill").value=$("#j-sec").value;
   const mv=$("#j-more-v");if(mv)mv.textContent=extra?`${extra} on`:"";
   if(mv)mv.className="v"+(extra?" on":"");
 
@@ -4442,6 +4703,7 @@ function drawJobs(){
   drawChips();
   fillCities();
   paintNear();
+  paintWhere();
   $("#j-h").textContent=quotaOnly?"All quota-carrying roles":"All roles";
   /* The count says what the filter did to the board, not just what survived
      it. Same idiom as the quota release one line up: the number, then a plain
@@ -4453,6 +4715,10 @@ function drawJobs(){
       ? ` &middot; ${rows.length.toLocaleString()} postings, because some are
           advertised in more than one place`:"")
     +(relaxed?` · showing all roles: ${esc(relaxed)} work does not carry a quota`:"")
+    /* The country's default said once, here, instead of a chip nobody set.
+       Not "in the United States": the default keeps the roles we could not
+       place anywhere, which is most of what a remote seller is shown. */
+    +(g("j-us")==="us"?" · not placed outside the US":"")
     +(setAside?(PAY_KEEP
       ? ` · including ${setAside.total.toLocaleString()} with no comparable salary
           (${paySetAsideText(setAside)}) · <span class="payoff" tabindex="0" role="button">set them aside</span>`
@@ -4959,12 +5225,25 @@ function chipDefs(){
   Object.entries(URLKEYS).forEach(([k,id])=>{
     if(id==="j-q")return;
     const el=$("#"+id);
+    /* THE COUNTRY IS THE ONE FILTER WITH A DEFAULT. "us" is what every board
+       opens on, so it is not something a person set and gets no chip (the
+       count line says it instead). Its empty value is "Anywhere in the
+       world", which IS a choice, and a chip that cleared the country used to
+       land there rather than back on the default. */
+    if(id==="j-us"){
+      if(!el||el.value==="us")return;
+      const o=el.options[el.selectedIndex];
+      out.push({label:esc(o?o.textContent.trim():"Anywhere in the world"),
+        clear:()=>{el.value="us"}});
+      return;
+    }
     if(!el||!el.value)return;
     const opt=el.options[el.selectedIndex];
     out.push({label:esc(opt?opt.textContent.trim():el.value),clear:()=>{
       el.value="";
       // the family select and the family pill are one filter in two places
       if(id==="j-fam"&&$("#j-fam-pill"))$("#j-fam-pill").value="";
+      if(id==="j-sec"&&$("#j-sec-pill"))$("#j-sec-pill").value="";
     }});
   });
   const pill=$("#j-quota-pill");
@@ -4980,6 +5259,11 @@ function chipDefs(){
   const seg=$("#j-where"), on=seg&&seg.querySelector('[aria-pressed="true"]');
   if(on&&on.dataset.v)
     out.push({label:esc(on.textContent.trim()),clear:()=>setWhere(seg.children[0])});
+  // the city, as long as it is filtering: Remote ignores it
+  const nr=$("#j-near"), mi=$("#j-miles")?.value||"50";
+  if(nr&&nr.value.trim()&&!(on&&on.dataset.v==="remote"))
+    out.push({label:"near "+esc(nr.value.trim())+(mi!=="50"?` (${esc(mi)} miles)`:""),
+      clear:()=>{nr.value="";}});
   /* The alerts preview's state filter, shown like any other so it is never
      silent state. Without a chip a reader arriving from the signup screen
      would be filtered by something with no control and no label. */
@@ -5051,23 +5335,45 @@ function companies(){
       merged into another record under a different name, or renamed. Searching
       the old name below usually finds it, because a dropped name is kept as an
       alias.</div>`:""}
-    <div class="search">
-      <input type="search" id="c-q"
-        placeholder="A company name, or what they sell &mdash; &ldquo;recreation software&rdquo;, &ldquo;911 dispatch&rdquo;"
-        aria-label="Search companies by name or by what they sell">
-      <button type="button" data-click="drawCos">Search</button>
+    <!-- THE SAME BAR AS JOBS AND CONFERENCES (owner, 2026-10-19). Sells to and
+         Sub-sector came out of More filters into it; phase and board stay one
+         click away. #c-hire-pill is still the aria-pressed toggle writeUrl
+         reads for call=1. -->
+    <div class="cfsearch jbar cobar" role="search" aria-label="Search companies">
+      <label class="cfs-field cfs-grow">
+        <span class="cfs-label">Find a company</span>
+        <input type="search" id="c-q"
+          placeholder="A name, or what they sell: &ldquo;911 dispatch&rdquo;, &ldquo;school buses&rdquo;"
+          aria-label="Find a company by name or by what they sell">
+      </label>
+      <label class="cfs-field">
+        <span class="cfs-label">Sells to</span>
+        <select id="c-sec" aria-label="Sells to: sector"><option value="">Any industry</option>
+          ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
+      </label>
+      <label class="cfs-field">
+        <span class="cfs-label">Sub-sector</span>
+        <select id="c-cat" aria-label="Sub-sector"><option value="">Any sub-sector</option>
+          ${coCatOptions(D.organizations,"").map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
+      </label>
+      <div class="cfs-field">
+        <span class="cfs-label" id="c-hire-lab">Showing</span>
+        <span class="cfs-seg" role="group" aria-labelledby="c-hire-lab">
+          <button type="button" id="c-hire-pill" aria-pressed="true"
+            data-click="toggleHiring"><span class="v on" id="c-hire-v">Hiring now</span></button>
+          <button type="button" id="c-hire-all" aria-pressed="false"
+            data-click="toggleHiring">Everyone</button>
+        </span>
+      </div>
+      <button type="button" class="cfs-go" data-click="drawCos" aria-label="Search companies"><svg
+        viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path
+        d="M20 20l-4-4"/></svg></button>
     </div>
-    <div class="filters">
-      <button class="pill" type="button" id="c-hire-pill" aria-pressed="true"
-        data-click="toggleHiring">Showing <span class="v on" id="c-hire-v">Hiring now</span></button>
-      <button class="pill" type="button" aria-expanded="false"
+    <div class="jrow">
+      <button class="jtog" type="button" aria-expanded="false"
         data-click="toggleMoreCo">More filters <span class="v" id="c-more-v"></span></button>
     </div>
     <div class="bar" id="c-bar" style="display:none">
-      <select id="c-sec" aria-label="Sector"><option value="">All sectors</option>
-        ${secs.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
-      <select id="c-cat" aria-label="Sub-sector"><option value="">All sub-sectors</option>
-        ${coCatOptions(D.organizations,"").map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("")}</select>
       <select id="c-phase" aria-label="Hiring phase"><option value="">Any phase</option>
         <option value="selling">Selling</option><option value="building">Building</option>
         <option value="absorbing">Absorbing</option><option value="mixed">Mixed</option></select>
@@ -5083,7 +5389,7 @@ function companies(){
        feature: a bounded concept map is only better than substring matching
        if a person can see which bucket it chose and disagree with it. */""}
   <div id="c-why"></div>
-  <div class="list" id="c-list"></div>
+  <div id="c-list"></div>
   <p class="foot"><strong>The search reads for meaning, not for characters.</strong>
     Typing what a company sells &mdash; &ldquo;recreation software&rdquo;, &ldquo;911
     dispatch&rdquo;, &ldquo;school buses&rdquo; &mdash; resolves to the sector and
@@ -5104,17 +5410,22 @@ function companies(){
     a field audit of a random sample put roughly 55-63% of them as genuinely boardless,
     which leaves the rest as boards we have not found yet. Open any one of them to read
     what we actually checked.</p>`;
+  /* The sub-sector list follows the sector BEFORE the list draws. Bound
+     after drawCos, the list drew with the new sector and the old sub-sector
+     (Police under Parks & Rec: "No companies match"), then the field reset
+     to "Any sub-sector" without a redraw. */
+  $("#c-sec")?.addEventListener("input",syncCoCats);
   ["c-q","c-sec","c-cat","c-phase","c-reads"].forEach(i=>{
     const el=$("#"+i);if(el)el.addEventListener("input",drawCos);});
   /* The sub-sector list follows the sector: pick Public Safety and the list
      narrows to its categories; a sub-sector that no longer belongs is dropped
-     rather than silently filtering to nothing. */
-  $("#c-sec")?.addEventListener("input",syncCoCats);
+     rather than silently filtering to nothing. (Bound above, before drawCos.) */
   applyCoUrl(PENDING_URL);
   drawCos();
 }
-/* An incoming list address, or a link that named a sector or sub-sector. The
-   filters live under More filters, so the bar opens to show what is set. */
+/* An incoming list address, or a link that named a sector or sub-sector.
+   Both are fields in the bar now (2026-10-19), so nothing has to open to
+   show them. */
 function applyCoUrl(u){
   /* the pill companies() just drew is fresh: an automatic release from an
      earlier query (a conference's exhibitors) must not hand it back "on"
@@ -5125,8 +5436,6 @@ function applyCoUrl(u){
   if(sec&&u.get("csec")){ sec.value=u.get("csec"); syncCoCats(); }
   if(cat&&u.get("ccat"))cat.value=u.get("ccat");
   if(u.get("call")==="1")setHiringPill(false);
-  if((sec&&sec.value)||(cat&&cat.value))
-    setBarOpen($("#c-bar"),$("#c-bar")?.parentElement?.querySelector('[data-click="toggleMoreCo"]'),true);
 }
 /* EVERY WAY ONTO A TAB WRITES THE ADDRESS - the tab strip, the home page's
    links and banner, the brand. Each set `tab` and redrew, so the bar stayed on
@@ -5168,11 +5477,13 @@ function syncCoCats(){
   const sel=$("#c-cat");if(!sel)return;
   const sec=$("#c-sec")?.value||"",keep=sel.value;
   const cats=coCatOptions(D.organizations,sec);
-  sel.innerHTML=`<option value="">All sub-sectors</option>`+cats.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
+  sel.innerHTML=`<option value="">Any sub-sector</option>`+cats.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");
   sel.value=cats.includes(keep)?keep:"";
 }
 
 let CSHOWN=60;
+/* Sectors whose group was opened past its first six cards, while browsing. */
+let CO_OPEN_SECS=new Set();
 /* Two set-aside toggles, both answers to the CURRENT query - see coWhy(). They
    reset when the query changes, because carrying "yes also show me the ones
    that only mention it" onto a different question is a silent widening. */
@@ -5191,14 +5502,24 @@ function coText(on){CO_TEXT=on;CSHOWN=60;drawCos();}
 function setHiringPill(on){
   const btn=$("#c-hire-pill");
   if(btn)btn.setAttribute("aria-pressed",on?"true":"false");
+  /* The label stays "Hiring now" in both states and aria-pressed says which;
+     its partner "Everyone" is pressed when it is not. A toggle whose name
+     swapped to "Everyone we track" read as "Everyone we track, not
+     pressed" while the list showed everyone. */
+  const all=$("#c-hire-all");
+  if(all)all.setAttribute("aria-pressed",on?"false":"true");
   const v=$("#c-hire-v");
-  if(v){v.textContent=on?"Hiring now":"Everyone we track";v.className="v"+(on?" on":"");}
+  if(v){v.textContent="Hiring now";v.className="v"+(on?" on":"");}
 }
 function toggleHiring(btn){
-  setHiringPill(btn.getAttribute("aria-pressed")!=="true");
+  /* Two buttons now, Hiring now and Everyone: each SETS its value, so a
+     click on the one already pressed changes nothing. */
+  const want=btn.id==="c-hire-pill";
+  if(($("#c-hire-pill")?.getAttribute("aria-pressed")==="true")===want)return;
+  setHiringPill(want);
   // a deliberate click owns the pill from here: never overrule the person
   CO_AUTO_OFF=false;
-  CSHOWN=60;drawCos();
+  CSHOWN=60;CO_OPEN_SECS=new Set();drawCos();
 }
 function toggleMoreCo(btn){setBarOpen($("#c-bar"),btn,$("#c-bar").style.display==="none")}
 function showMoreCo(){CSHOWN+=60;drawCos();}
@@ -5504,7 +5825,8 @@ function drawCos(){
              namedIdle:namedIdle,shown:rows.length,says:says,
              bucket:D.organizations.filter(o=>coInGo(o,W.go)).length});
 
-  const extra=["c-sec","c-cat","c-phase","c-reads"].filter(i=>g(i)).length;
+  // sector and sub-sector are fields in the bar now
+  const extra=["c-phase","c-reads"].filter(i=>g(i)).length;
   const mv=$("#c-more-v");
   if(mv){mv.textContent=extra?`${extra} on`:"";mv.className="v"+(extra?" on":"");}
   $("#c-h").textContent=hiringOnly?"Hiring now":"Everyone we track";
@@ -5519,63 +5841,151 @@ function drawCos(){
        ${D.organizations.length.toLocaleString()} companies checked and none of them
        matching &mdash; not a claim that no such company exists.`
     :"No companies match."}</div>`;
-  rows.slice(0,CSHOWN).forEach(o=>{
-    /* The count is the point of this row, so it gets the position and the
-       weight. A company with quota seats reads as accent; one that is hiring
-       but not selling reads plain; one we cannot read says so instead of
-       showing a zero, because a zero here would be a claim we cannot make. */
-    const unreadable=o.enumerable===false||o.unreadable;
-    /* And the ROW says why too. The line above names the company; in a list of
-       forty it does not tell you which row it was talking about, and a row
-       carrying a name the reader did not type has to account for itself where
-       the reader's eye already is. */
-    const asName=q?(coBrandsNamed(o,q)[0]||{}).name||coAkaNamed(o,q)[0]||"":"";
-    const row=document.createElement("div");
-    row.className="row clk"; reachable(row);
-    // same reason as the job row: the id stays a value, so encodeURIComponent
-    // (which leaves ' alone) is not being asked to be an escaping function
-    row.onclick=()=>co(o.id);
-    row.innerHTML=`${tileHTML(o.name,o.id,"tile")}
-      <div class="main">
-        <div class="t">${esc(o.name)}${hotChip(o.id)}</div>
-        <div class="m">${esc(o.sector)} / ${esc(o.category)}${
-          (o.also||[]).map(a=>" &middot; "+esc(a.sector)+" / "+esc(a.category)).join("")}${
-          o.location?" &middot; "+esc(o.location):""}
-          <span style="color:var(--dim)">${o.phase&&boardState(o)==="read"?" &middot; "+esc(o.phase):""}</span>${
-          asName?` &middot; <span class="brandhit">found as ${esc(asName)}</span>`:""}</div>
-      </div>
-      ${/* "nothing open" on a company whose board we never found is a claim
-            we cannot make, and it is the claim that quietly deletes a warm
-            door. The row says which of the three states it is in. */""}
-      ${o.no_board_on_file
-        ?`<div class="when">${o.posts_at
-            ?`posts on ${esc((o.posts_at.label)||POSTS_AT_LABEL[o.posts_at.where]||"another site")}`
-            :noBoardShort(o)}</div>`
-        :unreadable
-        ?`<div class="when" style="color:var(--warn-text)">board not readable</div>`
-        :o.quota_roles
-          ?`<div style="text-align:right;white-space:nowrap">
-              <div style="font-size:17px;font-weight:700;color:var(--accent-text);
-                font-variant-numeric:tabular-nums">${o.quota_roles}</div>
-              <div style="font-size:11px;color:var(--dim)">carrying a number</div></div>`
-          :o.open_roles
-            ?`<div style="text-align:right;white-space:nowrap">
-                <div style="font-size:17px;font-weight:700;
-                  font-variant-numeric:tabular-nums">${o.open_roles}</div>
-                <div style="font-size:11px;color:var(--dim)">open</div></div>`
-            :`<div class="when">nothing open</div>`}
-      <span style="color:var(--line);font-size:15px">&rsaquo;</span>`;
-    clist.appendChild(row);
-  });
-  if(rows.length>CSHOWN){
+  /* CARDS, in the Conferences tab's shape (owner, 2026-10-19: "build option
+     A with the company cards"). Three things a row never had to decide:
+
+     THE SPOTLIGHT. With nothing typed, the three hiring the most sellers
+     among what the filters kept, the first one dark like the conference lead
+     card. Ranked by quota_roles, the field the home banner's "Hiring hardest"
+     uses. Fewer than two is not a strip, so there is none, and the three are
+     not repeated in the grid below.
+
+     GROUPS. Browsing (no search, no sector chosen), cards sit under their
+     PRIMARY sector, in the order the ranking first reaches each sector. A
+     company filed under two sectors appears once, so the groups add up to
+     the count. A search keeps one grid in rank order: grouping would bury the
+     company the reader named under somebody else's sector.
+
+     THE COUNT CORNER keeps the row's honesty order exactly (coCard). */
+  const browsing=!q&&!g("c-sec")&&!g("c-cat");
+  const spot=q?[]:rows.filter(o=>o.quota_roles>0&&boardState(o)==="read").slice()
+    .sort((a,b)=>b.quota_roles-a.quota_roles||b.open_roles-a.open_roles||a.name.localeCompare(b.name))
+    .slice(0,3);
+  const spotIds=new Set(spot.length>=2?spot.map(o=>o.id):[]);
+  if(spotIds.size){
+    const sp=document.createElement("section");
+    sp.className="cfspot cospot-wrap";
+    sp.setAttribute("aria-labelledby","c-spot-h");
+    const sellers=rows.filter(o=>o.quota_roles>0&&boardState(o)==="read").length;
+    sp.innerHTML=`<div class="cfspot-head"><h3 class="lab" id="c-spot-h">Hiring the most sellers</h3>
+      <span class="rule" aria-hidden="true"></span>
+      <span class="of">${spot.length} of ${sellers.toLocaleString()} hiring sellers on a board we read</span></div>
+      <div class="cospot"></div>`;
+    clist.appendChild(sp);
+    const sg=sp.querySelector(".cospot");
+    spot.forEach((o,i)=>sg.appendChild(coCard(o,q,"spot"+(i===0?" lead":""),true)));
+  }
+  const grid=rows.filter(o=>!spotIds.has(o.id));
+  if(browsing){
+    /* EVERY SECTOR, six cards each, in the order the ranking reaches them,
+       and "Show all N in X" opens one. Paging the whole board 60 at a time
+       spread each page across every group, above the button, and left the
+       smallest sector with no heading until the last page. */
+    const bySec=new Map();
+    grid.forEach(o=>{if(!bySec.has(o.sector))bySec.set(o.sector,[]);bySec.get(o.sector).push(o);});
+    bySec.forEach((list,sector)=>{
+      const lim=CO_OPEN_SECS.has(sector)?list.length:6;
+      const sec=document.createElement("section");
+      sec.className="cogroup";
+      sec.dataset.sector=sector;
+      sec.innerHTML=`<h3 class="cogroup-h">${esc(sector)}<span class="n">${
+        list.length.toLocaleString()} ${list.length===1?"company":"companies"}</span></h3>
+        <div class="cogrid"></div>`;
+      clist.appendChild(sec);
+      const cg=sec.querySelector(".cogrid");
+      list.slice(0,lim).forEach(o=>cg.appendChild(coCard(o,q,"",false)));
+      if(list.length>lim){
+        const b=document.createElement("button");
+        b.type="button"; b.className="comore";
+        b.textContent=`Show all ${list.length.toLocaleString()} in ${sector}`;
+        b.onclick=()=>{
+          CO_OPEN_SECS.add(sector); drawCos();
+          // focus lands on the first card that was not there before
+          const again=[...document.querySelectorAll(".cogroup")].find(x=>x.dataset.sector===sector);
+          again?.querySelectorAll(".cocard")[lim]?.focus();
+        };
+        sec.appendChild(b);
+      }
+    });
+    return;
+  }
+  const shown=grid.slice(0,CSHOWN);
+  if(shown.length){
+    const cg=document.createElement("div");
+    cg.className="cogrid";
+    clist.appendChild(cg);
+    shown.forEach(o=>cg.appendChild(coCard(o,q,"",true)));
+  }
+  if(grid.length>CSHOWN){
     const more=document.createElement("div");
-    more.className="more";
-    more.textContent=`Show ${Math.min(60,rows.length-CSHOWN)} more of ${
-      (rows.length-CSHOWN).toLocaleString()}`;
+    more.className="more comore";
+    more.textContent=`Show ${Math.min(60,grid.length-CSHOWN)} more of ${
+      (grid.length-CSHOWN).toLocaleString()}`;
     reachable(more,"button");
     more.onclick=showMoreCo;
     clist.appendChild(more);
   }
+}
+/* ONE COMPANY CARD. A real link, so the card opens in place and a
+   middle-click or a modified click opens the company in a new tab; the
+   address is the one co() pushes.
+
+   THE COUNT CORNER says exactly what the row did, in the row's order:
+   no board on file (where they post, or why there is no board), then a
+   board we cannot read, then sellers ("hiring a seller" is a quota-carrying
+   role), then open roles, and "nothing open" ONLY for a board we read.
+   A zero here would be a claim we cannot make about the other two.
+
+   ITS NAME is the company and the count corner (aria-labelledby); the rest
+   describes it. The logo's initials are decoration once the name is said. */
+function coCard(o,q,cls,withSector){
+  const unreadable=o.enumerable===false||o.unreadable;
+  /* A card carrying a name the reader did not type says why, on the card. */
+  const asName=q?(coBrandsNamed(o,q)[0]||{}).name||coAkaNamed(o,q)[0]||"":"";
+  const a=document.createElement("a");
+  a.className="cocard"+(cls?" "+cls:"");
+  a.href="?co="+encodeURIComponent(o.id);
+  a.onclick=e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault(); co(o.id);
+  };
+  // the conference tags already have their own figure in the foot
+  const desc=(o.description||"").split(" - exhibited at ")[0];
+  const nconf=(o.conferences||[o.conference]).filter(Boolean).length;
+  const ph=o.phase&&boardState(o)==="read"?" &middot; "+esc(o.phase):"";
+  const parts=[];
+  if(o.quota_roles&&o.open_roles&&!o.no_board_on_file&&!unreadable)
+    parts.push(`${o.open_roles.toLocaleString()} open role${o.open_roles===1?"":"s"}`);
+  // a place on an exhibitor list, which is what we hold - not "seen at":
+  // some lists are published months before the event
+  if(nconf)parts.push(`on ${nconf} exhibitor list${nconf===1?"":"s"}`);
+  if(asName)parts.push(`<span class="brandhit">found as ${esc(asName)}</span>`);
+  const foot=parts.join(" &middot; ")+(parts.length?ph:ph.replace(/^ &middot; /,""));
+  a.setAttribute("aria-labelledby",`cn-${o.id} cx-${o.id}`);
+  if(desc)a.setAttribute("aria-describedby",`cd-${o.id}`);
+  a.innerHTML=`<span class="cocard-top">${tileHTML(o.name,o.id,"tile")}
+      <span class="cocard-id"><span class="cocard-name" id="cn-${esc(o.id)}">${esc(o.name)}${hotChip(o.id)}</span>
+        <span class="cocard-m">${withSector?esc(o.sector)+" &middot; ":""}${esc(o.category)}${
+          (o.also||[]).filter(x=>!(x.sector===o.sector&&x.category===o.category))
+            .map(x=>" &middot; "+(x.sector!==o.sector?esc(x.sector)+" / ":"")+esc(x.category)).join("")}${
+          o.location?" &middot; "+esc(o.location):""}</span></span>
+      <span class="cocard-n" id="cx-${esc(o.id)}">${o.no_board_on_file
+        ?`<span class="cocard-st">${o.posts_at
+            ?`posts on ${esc((o.posts_at.label)||POSTS_AT_LABEL[o.posts_at.where]||"another site")}`
+            :noBoardShort(o)}</span>`
+        :unreadable
+        ?`<span class="cocard-st warn">board not readable</span>`
+        :o.quota_roles
+          ?`<span class="cocard-k q">${o.quota_roles.toLocaleString()}</span>
+            <span class="cocard-u">${o.quota_roles===1?"seller":"sellers"}</span>`
+          :o.open_roles
+            ?`<span class="cocard-k">${o.open_roles.toLocaleString()}</span>
+              <span class="cocard-u">open</span>`
+            :`<span class="cocard-st">nothing open</span>`}</span></span>
+    ${desc?`<span class="cocard-d" id="cd-${esc(o.id)}">${esc(desc)}</span>`:""}
+    ${foot?`<span class="cocard-f">${foot}</span>`:""}`;
+  a.querySelector(".tile")?.setAttribute("aria-hidden","true");
+  return a;
 }
 
 // --------------------------------------------------------------- company card
@@ -6888,6 +7298,67 @@ function nearChanged(){
 function milesChanged(){ PUSH_NEXT=true; refilter(); }
 /* The control is meaningless for a remote role and says so by not being
    there. */
+/* The Where field's popover: Remote/Hybrid/Onsite and Near a city. Same
+   wiring as the conference pickers (cfWireNear): the button toggles it, a
+   click inside stays inside, a click outside or Escape closes it. Unlike
+   those, Escape and Done hand focus back to the button, so it never falls to
+   <body>. Document listeners are bound once; the view redraws, so they look
+   the nodes up again each time. */
+function jWireWhere(){
+  const b=$("#j-where-btn"), pop=$("#j-where-pop");
+  if(!b||!pop)return;
+  const shut=back=>{pop.hidden=true;b.setAttribute("aria-expanded","false");if(back)b.focus();};
+  b.onclick=e=>{
+    e.stopPropagation();
+    const open=pop.hidden;
+    pop.hidden=!open; b.setAttribute("aria-expanded",String(open));
+    if(open)(pop.querySelector('#j-where [aria-pressed="true"]')||pop.querySelector("button"))?.focus();
+  };
+  pop.onclick=e=>e.stopPropagation();
+  /* Tabbing out closes it: left open, the controls after it took focus
+     underneath it. Focus leaving the window (no relatedTarget) does not. */
+  const leave=e=>{
+    const t=e.relatedTarget;
+    if(!pop.hidden&&t&&!pop.contains(t)&&t!==b&&!b.contains(t))shut(false);
+  };
+  pop.addEventListener("focusout",leave);
+  b.addEventListener("focusout",leave);
+  const done=$("#j-where-done"); if(done)done.onclick=()=>shut(true);
+  const clr=$("#j-where-clear");
+  if(clr)clr.onclick=()=>{
+    const n=$("#j-near"); if(n)n.value="";
+    const seg=$("#j-where"); if(seg)setWhere(seg.children[0]);
+  };
+  if(jWireWhere._bound)return;
+  jWireWhere._bound=true;
+  document.addEventListener("click",ev=>{
+    const p=$("#j-where-pop"), bb=$("#j-where-btn");
+    if(p&&!p.hidden&&bb&&!p.contains(ev.target)&&!bb.contains(ev.target)){
+      p.hidden=true; bb.setAttribute("aria-expanded","false");
+    }
+  });
+  document.addEventListener("keydown",ev=>{
+    if(ev.key!=="Escape")return;
+    const p=$("#j-where-pop"), bb=$("#j-where-btn");
+    if(p&&!p.hidden&&bb){p.hidden=true;bb.setAttribute("aria-expanded","false");bb.focus();}
+  });
+}
+/* What the Where field says when closed: the work mode and the city, or
+   "Anywhere". Painted from the controls on every draw, because the chips,
+   an incoming address and Clear all change them without passing through
+   setWhere. A city is not mentioned beside Remote, which ignores it. */
+function paintWhere(){
+  const v=$("#j-where-v"), b=$("#j-where-btn"); if(!v||!b)return;
+  const on=$("#j-where")?.querySelector('[aria-pressed="true"]');
+  const mode=on&&on.dataset.v?on.textContent.trim():"";
+  const city=($("#j-near")?.value||"").trim();
+  const bits=[];
+  if(mode)bits.push(mode);
+  if(city&&!(on&&on.dataset.v==="remote"))bits.push("near "+city);
+  v.textContent=bits.length?bits.join(", "):"Anywhere";
+  b.title=v.textContent;   // the whole value, when the field has to cut it short
+  b.classList.toggle("on",bits.length>0);
+}
 function paintNear(){
   const wrap=$("#j-near-wrap");
   if(!wrap)return;

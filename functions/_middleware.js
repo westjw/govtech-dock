@@ -74,7 +74,7 @@ const JOB_MARKUP = false;
  * pill, the where segment, the pay set-aside and the page). An address
  * carrying any of them is the jobs tab, as tabFromUrl reads it. */
 const BOARD_KEYS = ["q", "fam", "sec", "st", "off", "reg", "sen", "us", "mode",
-  "src", "pay", "since", "sort", "any", "where", "paynone", "p"];
+  "src", "pay", "since", "sort", "any", "where", "paynone", "p", "near", "mi"];
 
 export async function describe(request, env) {
   const u = new URL(request.url);

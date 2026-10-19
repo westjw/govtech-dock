@@ -9052,7 +9052,11 @@ def check_every_control_answers_the_keyboard() -> int:
             errors += fail(f"the keyboard listener answers {k}, not {want}")
     # every element built with an onclick that is not itself a button or a link
     for pat, n, what in (
-            (r'row\.className="row clk"; reachable\(row\);', 4, "a row that opens a company or role"),
+            # 3, not 4, since 2026-10-19: the Companies list is cards, and a
+            # card is a real link (coCard), which the keyboard reaches without
+            # reachable(). Saved companies, Saved roles and "also open here"
+            # are still rows.
+            (r'row\.className="row clk"; reachable\(row\);', 3, "a row that opens a company or role"),
             (r'reachable\(more(,"button")?\);', 2, "a Show more / See all control"),
             (r'd\.className="kv clk"; reachable\(d\);', 1, "a Market intel row"),
             (r'el\.style\.cursor="pointer"; reachable\(el,"button"\);', 1, "a conference calendar row"),
@@ -31260,6 +31264,136 @@ def check_the_front_page_counts_what_its_links_open() -> int:
     return errors
 
 
+def check_a_company_card_keeps_the_rows_honesty() -> int:
+    """The Companies tab's card says what its list row said, in the same order.
+
+    The list became cards on 2026-10-19 (owner: "build option A with the
+    company cards"). The row's right-hand cell was the honest part of it: no
+    board on file says where they post or why there is none, a board we
+    cannot read says so, then sellers (quota-carrying roles), then open
+    roles, and "nothing open" only for a board we read. A card that printed a
+    figure for a board nobody read would say a company has no jobs on a
+    board we never opened. jobcard_harness.mjs runs the page's own coCard()
+    over every company on the committed board.
+    """
+    import urllib.parse
+    h = _harness()
+    cards = h.get("coCards") or {}
+    if h.get("errors") or not cards:
+        return fail(f"the company cards could not be built: {h.get('errors')}")
+    errors = 0
+    orgs = json.loads((DATA / "board.json").read_text())["organizations"]
+    corner = re.compile(r'class="cocard-n"[^>]*>(.*?)</span></span>\s*(?:<span class="cocard-[df]"|$)', re.S)
+    no_board = ("site turned our reader away", "not looked for yet", "no public board found")
+    bad = []
+    for o in orgs:
+        c = cards.get(o["id"])
+        if not c:
+            bad.append(f"{o['id']}: no card"); continue
+        m = corner.search(c["html"])
+        import html as _html
+        cell = _html.unescape(re.sub(r"<[^>]+>", " ", m.group(1))) if m else ""
+        cell = " ".join(cell.split())
+        state = ("none" if o.get("no_board_on_file") else
+                 "unread" if o.get("enumerable") is False or o.get("unreadable") else "read")
+        q, n = o.get("quota_roles") or 0, o.get("open_roles") or 0
+        if state == "none":
+            ok = not re.search(r"\d", cell) and (cell.startswith("posts on") if o.get("posts_at")
+                                                  else cell in no_board)
+        elif state == "unread":
+            ok = cell == "board not readable"
+        elif q:
+            ok = cell == f"{q:,} {'seller' if q == 1 else 'sellers'}"
+        elif n:
+            ok = cell == f"{n:,} open"
+        else:
+            ok = cell == "nothing open"
+        if not ok:
+            bad.append(f"{o['id']} ({state}, {q} sellers, {n} open): {cell!r}")
+        confs = [x for x in (o.get("conferences") or [o.get("conference")]) if x]
+        # "on N exhibitor lists", never "seen at": a list can come out months
+        # before its event, and a 2027 list is not a sighting in 2026
+        seen = re.search(r"on (\d+) exhibitor list", c["html"])
+        if (int(seen.group(1)) if seen else 0) != len(confs) or "seen at" in c["html"]:
+            bad.append(f"{o['id']}: says {seen.group(0) if seen else 'no list'}, has {len(confs)}")
+        if " - exhibited at " in c["html"]:
+            bad.append(f"{o['id']}: the description still carries its exhibited-at tail")
+        if c["href"] != "?co=" + urllib.parse.quote(o["id"], safe="-_.!~*'()"):
+            bad.append(f"{o['id']}: links to {c['href']!r}")
+    if "on 1 exhibitor list" not in (cards.get("__legacy") or {}).get("html", ""):
+        bad.append("a record with only the legacy `conference` field is not counted on one list")
+    # the strip ranks sellers only where a board was read: a card saying
+    # "board not readable" cannot head "Hiring the most sellers"
+    src = (ROOT / "index.html").read_text()
+    draw = src[src.index("function drawCos("):src.index("function coCard(")]
+    if draw.count('o.quota_roles>0&&boardState(o)==="read"') < 2:
+        bad.append("the spotlight (or its count) ranks sellers on boards we could not read")
+    if bad:
+        errors += fail(f"{len(bad)} company card(s) say something their row would not: {bad[:4]}")
+    return errors
+
+
+def check_the_jobs_bar_says_the_default_once() -> int:
+    """The country's default is said once, and a chip, the More count and a
+    copied link treat it as a default (2026-10-19, option A).
+
+    #j-us opens on "us", which is truthy, so the old chip row showed an
+    "United States x" nobody had set, "More filters" read "1 on" on every
+    plain board, the x and Clear all landed on "Anywhere in the world" rather
+    than back on the default, and that world view - the select's empty value
+    - was never written to the address, so a copied link reopened on the US.
+    Source needles, because no harness draws the jobs tab: each was broken on
+    purpose to prove it fires.
+    """
+    raw = (ROOT / "index.html").read_text()
+    # comments stripped: several explain what the old code got wrong, in its words
+    src = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
+    src = re.sub(r"(?m)^\s*//.*$", "", src)
+    flat = re.sub(r"\s+", "", src)
+    errors = 0
+    chips = src[src.index("function chipDefs("):src.index("function chipFocus(")]
+    if not re.search(r'if\(id==="j-us"\)\{\s*if\(!el\|\|el\.value==="us"\)return;', chips):
+        errors += fail("chipDefs gives the country's default a chip again")
+    if 'clear:()=>{el.value="us"}' not in chips:
+        errors += fail("clearing the country chip no longer goes back to the default")
+    draw = src[src.index("function drawJobs("):src.index("\nfunction locCell(")]
+    if 'extra=["j-state","j-region","j-office","j-sen","j-mode","j-src"]' not in draw \
+            or '+(g("j-us")!=="us"?1:0)' not in draw:
+        errors += fail("More filters counts the bar's fields or the country's default again")
+    if '$("#j-sec-pill").value=$("#j-sec").value' not in draw:
+        errors += fail("Sells to is no longer put back in step with #j-sec on a redraw")
+    if 'g("j-us")==="us"?" &middot; not placed outside the US":""' not in draw \
+            and '(g("j-us")==="us"?" · not placed outside the US":"")' not in draw:
+        errors += fail("the count line no longer says the country's default")
+    if "in the United States" in draw:
+        errors += fail("drawJobs says 'in the United States', but the default keeps unplaced roles")
+    if '$("#j-us")?.value==="")u.set("us","")' not in flat:
+        errors += fail("the world view (#j-us empty) is not written to the address")
+    if "paintWhere();" not in draw:
+        errors += fail("drawJobs no longer repaints the Where field, so a chip or a link leaves it stale")
+    if "[onclick*=" in src:
+        errors += fail("a selector still looks for an onclick attribute, which the markup no longer has")
+    # NEAR A CITY: in the address, in a chip, and ignored beside Remote, as
+    # the Where field says (review, 2026-10-19)
+    if 'const NEAR=where==="remote"?null:nearState();' not in draw:
+        errors += fail("Remote no longer ignores a typed city, so the list can empty in silence")
+    wu = src[src.index("function writeUrl(push){"):src.index("\nfunction readUrl(")]
+    if 'u.set("near",nr)' not in wu or '"near","mi"' not in wu:
+        errors += fail("writeUrl no longer writes (or clears) the near-a-city filter")
+    ai = src.index("function applyUrl(")
+    ap = src[ai:src.index("\nfunction ", ai + 10)]
+    if 'if(u.has("near"))' not in ap:
+        errors += fail("applyUrl no longer reads the near-a-city filter from an address")
+    if 'label:"near "+' not in chips:
+        errors += fail("the near-a-city filter has no chip, so Clear all leaves it set")
+    if '"near","mi"].some(k=>u.has(k))' not in src[src.index("function tabFromUrl("):]:
+        errors += fail("an address carrying only near= no longer opens the jobs tab")
+    mw = (ROOT / "functions" / "_middleware.js").read_text()
+    if '"near", "mi"' not in mw[mw.index("const BOARD_KEYS"):mw.index("const BOARD_KEYS") + 300]:
+        errors += fail("the middleware's BOARD_KEYS does not know near/mi, so a shared link is titled as home")
+    return errors
+
+
 def check_a_zero_is_only_printed_when_a_board_was_read() -> int:
     """'0 open roles' is a measurement, so only a board we read may print it.
 
@@ -34078,6 +34212,8 @@ def main() -> int:
     errors += check_the_publisher_publishes_the_desk_and_only_the_desk()
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
+    errors += check_a_company_card_keeps_the_rows_honesty()
+    errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()
     errors += check_no_control_characters_in_source()

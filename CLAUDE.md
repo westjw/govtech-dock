@@ -135,6 +135,51 @@ several states, and desks we could not place. A distance search that quietly
 drops what it cannot map is a false "nothing near you", which is the same
 failure as a page scan reporting "no listings" when it could not read.
 
+## One search bar, and companies as cards (owner, 2026-10-19)
+
+The owner found the jobs filters "too messy", liked the Conferences tab, and
+picked option A from a design canvas plus company cards ("build option A
+with the company cards").
+- **Jobs and Companies search is the Conferences bar** (`.cfsearch`, scoped
+  `.jbar`): labelled fields in one rounded bar, then a quiet row (`.jrow`).
+  - Jobs: What / Where / Role / Sells to / Pay.
+  - Where is a popover holding Remote/Hybrid/Onsite and Near a city
+    (`jWireWhere`, `paintWhere`).
+  - Quota-carrying, First seen, More filters, Sort and "Copy link to this
+    view" sit in the quiet row.
+- **Every control kept its id and its action.** The address, the chips and
+  the outside callers reach the same filters: home's sector buttons, the
+  alerts preview and digest links.
+- **The country's default is said once**, as "not placed outside the US" in
+  the count line, never as a chip. Never "in the United States": the default
+  keeps unplaced roles.
+  - Clearing the country goes back to the default.
+  - "Anywhere in the world" (`#j-us` empty) is written to the address as
+    `us=`.
+  - `check_the_jobs_bar_says_the_default_once` holds this.
+- **Near a city is a filter like the rest:** `near=`/`mi=` in the address,
+  a chip, and Clear all. Remote ignores a typed city, as the Where field says.
+- **The Companies list is cards** (`coCard`, a real link). The spotlight
+  shows the three hiring the most sellers among what the filters kept, on
+  boards we read only (a card saying "board not readable" cannot head it).
+  The first card is dark, and none of them is repeated below.
+  - Browsing (no search, sector or sub-sector): every PRIMARY sector, six
+    cards each, "Show all N in X" to open one. The groups and the strip add
+    up to the count.
+  - Searching or filtering: one grid in rank order, 60 at a time.
+  - "Showing" is two buttons, Hiring now and Everyone, each with
+    aria-pressed. #c-hire-pill is still what writeUrl reads for call=1.
+  - A card says "on N exhibitor lists", never "seen at": some lists come
+    out months before their event.
+- **The card's count corner keeps the list row's honesty order:** no board
+  on file, then board not readable, then sellers, then open, then "nothing
+  open" (only for a board we read).
+  - `check_a_company_card_keeps_the_rows_honesty` runs `coCard` over every
+    company through jobcard_harness.mjs.
+- **Round corners are the conferences design's exception to --radius.** They
+  stay inside the bar, its popover and the cards; toggles, selects and chips
+  outside them stay square.
+
 ## The job list is cards (owner, 2026-09-27)
 
 The jobs tab was a dense table from 2026-08-23. The owner looked at a federal
