@@ -5160,30 +5160,6 @@
   "researched": false
  },
  {
-  "id": "avila-technologies",
-  "name": "Avila Technologies",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Custom software development and IT consulting - exhibited at NACo 2026, GFOA 2026, NLC City Summit 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "NACo 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026",
-  "researched": false
- },
- {
   "id": "avive",
   "name": "Avive",
   "website": null,
@@ -9525,30 +9501,6 @@
   "govtech": false,
   "vendor_type": "Distributor / Reseller / Co-op",
   "source": "NIGP 2026",
-  "researched": false
- },
- {
-  "id": "cops-training-portal-2",
-  "name": "COPS Training Portal (powered by NCPI)",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Online law enforcement training courses - exhibited at NSA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Engineering / Consulting",
-  "source": "NSA 2026",
   "researched": false
  },
  {
@@ -19869,30 +19821,6 @@
   "govtech": false,
   "vendor_type": "Equipment / Components",
   "source": "IACP 2026",
-  "researched": false
- },
- {
-  "id": "firstnet-built-with-at-t-2",
-  "name": "FirstNet-Built with AT&T",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "Dedicated public safety broadband network service - exhibited at ICMA 2025, Connecticut Conference of Municipalities 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Services (non-tech)",
-  "source": "ICMA 2025; IAFC FRI 2026; APCO 2026; Connecticut Conference of Municipalities 2026; Maryland Municipal League 2026",
   "researched": false
  },
  {
@@ -43080,30 +43008,6 @@
   "researched": false
  },
  {
-  "id": "quester-tangent-corporation",
-  "name": "Quester Tangent Corporation",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Transit & Parking",
-  "category": "Suppliers & Services",
-  "description": "Onboard train monitoring and diagnostics electronics - exhibited at APTA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "APTA 2026",
-  "researched": false
- },
- {
   "id": "quick-dam",
   "name": "Quick Dam",
   "website": null,
@@ -61008,30 +60912,6 @@
   "researched": false
  },
  {
-  "id": "zoll-medical-corporation",
-  "name": "ZOLL Medical Corporation",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Public Safety",
-  "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at IACP 2026, NSA 2026, North Carolina Sheriffs' Association 2026, IAFC FRI 2026, NRPA 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "vendor_type": "Equipment / Components",
-  "source": "IACP 2026; NSA 2026; IAFC FRI 2026; North Carolina Sheriffs' Association 2026; NRPA 2026",
-  "researched": false
- },
- {
   "id": "zpro-solutions",
   "name": "ZPro Solutions",
   "website": null,
@@ -63526,30 +63406,6 @@
   "researched": false,
   "vendor_type": "Engineering / Consulting",
   "source": "AAAE 2026; AAAE 2027"
- },
- {
-  "id": "bruker-detection-corporation",
-  "name": "Bruker Detection Corporation",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "Airports & Aviation",
-  "category": "Security & Screening",
-  "description": "Chemical, biological and explosives detection instruments - exhibited at AAAE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "govtech": false,
-  "researched": false,
-  "vendor_type": "Equipment / Components",
-  "source": "AAAE 2026"
  },
  {
   "id": "burke-gibson-llc",
@@ -95358,27 +95214,6 @@
   "source": "conference sweep: APCO 2026; Illinois Chapter of APCO 2026"
  },
  {
-  "id": "systems-methods-inc-smi",
-  "name": "Systems & Methods, Inc. (SMI)",
-  "website": "https://smi-inc.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "Health & Human Services",
-  "category": "Suppliers & Services",
-  "description": "Child support SDU operations and prepaid cards - exhibited at NCSEA 2026, NCSEA Policy Forum 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027"
- },
- {
   "id": "courtland-consulting",
   "name": "Courtland Consulting",
   "website": "https://courtlandconsulting.com/",
@@ -107017,27 +106852,6 @@
   "source": "conference sweep: EDUCAUSE 2026"
  },
  {
-  "id": "ad-astra",
-  "name": "Ad Astra",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at EDUCAUSE 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: EDUCAUSE 2026"
- },
- {
   "id": "airia",
   "name": "Airia",
   "website": null,
@@ -107335,27 +107149,6 @@
   "id": "progress",
   "name": "Progress",
   "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Healthcare IT Connect 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: Healthcare IT Connect 2026"
- },
- {
-  "id": "gainwell",
-  "name": "gainwell",
-  "website": "http://gainwelltechnologies.com",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -107878,27 +107671,6 @@
   "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027"
  },
  {
-  "id": "greencourt",
-  "name": "GreenCourt",
-  "website": "https://greencourt.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NCSEA 2026, NCSEA Policy Forum 2027",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NCSEA 2026; NCSEA Policy Forum 2027"
- },
- {
   "id": "visit-kpmg-us-hhs",
   "name": "visit.kpmg.us/hhs",
   "website": "https://kpmg.com/us/en/industries/health-and-human-services.html?utm_source=vanity&amp;utm_medium=ref",
@@ -108256,27 +108028,6 @@
   "source": "conference sweep: NatCon 2026"
  },
  {
-  "id": "ito-health-pbc",
-  "name": "ITO Health PBC",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NatCon 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NatCon 2026"
- },
- {
   "id": "kipu-health",
   "name": "Kipu Health",
   "website": null,
@@ -108384,27 +108135,6 @@
  {
   "id": "nirvana",
   "name": "Nirvana",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at NatCon 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: NatCon 2026"
- },
- {
-  "id": "notenetic-ehr",
-  "name": "Notenetic EHR",
   "website": null,
   "location": null,
   "year_founded": null,
@@ -114556,27 +114286,6 @@
   "source": "conference sweep: Michigan Sheriffs Association 2026"
  },
  {
-  "id": "firstnet",
-  "name": "FirstNet",
-  "website": "https://www.misheriff.org/vendors/firstnet/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at Michigan Sheriffs Association 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: Michigan Sheriffs Association 2026"
- },
- {
   "id": "frontline-strong-together-5",
   "name": "Frontline Strong Together 5",
   "website": "https://www.misheriff.org/vendors/frontline-strong-together/",
@@ -115987,27 +115696,6 @@
   "id": "oasis-commissary-services",
   "name": "Oasis Commissary Services",
   "website": "http://www.oasiscommissary.com/",
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at North Carolina Sheriffs' Association 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: North Carolina Sheriffs' Association 2026"
- },
- {
-  "id": "peregrine-technologies",
-  "name": "Peregrine Technologies",
-  "website": "https://www.peregrine.io/",
   "location": null,
   "year_founded": null,
   "sector": "General Gov",
@@ -130617,27 +130305,6 @@
   "source": "conference sweep: WEFTEC 2026"
  },
  {
-  "id": "smartcover",
-  "name": "SmartCover",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at WEFTEC 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: WEFTEC 2026"
- },
- {
   "id": "smartd-technologies",
   "name": "SmartD Technologies",
   "website": null,
@@ -136371,27 +136038,6 @@
   "source": "conference sweep: IAFC FRI 2026"
  },
  {
-  "id": "miovision-technologies-incorporated",
-  "name": "Miovision Technologies Incorporated",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at IAFC FRI 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: IAFC FRI 2026"
- },
- {
   "id": "morgan-olson",
   "name": "Morgan Olson",
   "website": null,
@@ -140739,27 +140385,6 @@
   "source": "conference sweep: APCO 2026"
  },
  {
-  "id": "intrado",
-  "name": "Intrado",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at APCO 2026, Illinois Chapter of APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: APCO 2026; Illinois Chapter of APCO 2026"
- },
- {
   "id": "iron-horse-seating",
   "name": "IRON HORSE Seating",
   "website": null,
@@ -141182,27 +140807,6 @@
  {
   "id": "radio-club-of-america",
   "name": "Radio Club of America",
-  "website": null,
-  "location": null,
-  "year_founded": null,
-  "sector": "General Gov",
-  "category": "Suppliers & Services",
-  "description": "exhibited at APCO 2026",
-  "ats": {
-   "type": "unknown",
-   "ref": null
-  },
-  "hiring": {
-   "status": "Unknown",
-   "note": "not researched",
-   "roles": [],
-   "checked": null
-  },
-  "source": "conference sweep: APCO 2026"
- },
- {
-  "id": "regroup",
-  "name": "Regroup",
   "website": null,
   "location": null,
   "year_founded": null,

@@ -15628,6 +15628,87 @@ def _sandbox_admin(files: dict):
     return swap()
 
 
+def check_a_supplier_twin_merges_into_its_company() -> int:
+    """A supplier row that is a board company already folds into it.
+
+    On 2026-10-18 18 supplier rows were board companies under a suffix
+    ("ZOLL Medical Corporation") or an alias added later, eight companies
+    lacked 18 exhibited-at tags only the twins carried, and three twins were
+    live suppliers in the SLED HQ export. merge_supplier_twins.py moves the
+    tags, takes the row out through the journal and marks the export
+    `merged_into`; a researched row, one on another website and one matching
+    two companies wait for a person. Driven through merge() in a sandbox.
+    """
+    import merge_supplier_twins as mst
+    errors = 0
+    real = {c["id"]: c for c in json.loads((DATA / "companies.json").read_text())}
+    z, r, pg = (json.loads(json.dumps(real[k])) for k in ("zoll-medical", "regroup-mass-notification", "peregrine"))
+    z.update(source="direct add", description="Defibrillators and EMS software", also_known_as=["Twinname"])
+    r["also_known_as"] = ["Regroup", "Twinname"]
+    pg.update(website="https://www.peregrine.io", also_known_as=["Peregrine Technologies"])
+    cat = {"conferences": [{"event_tag": "IACP 2026", "conference": "IACP"},
+                           {"event_tag": "NSA 2026", "conference": "NSA", "prior_tags": ["NSA 2025"]}]}
+    sup = [{"id": "zoll-medical-corporation", "name": "ZOLL Medical Corporation", "website": None,
+            "source": "IACP 2026", "description": "Equipment - exhibited at IACP 2026, NSA 2025"},
+           {"id": "regroup", "name": "Regroup", "researched": True, "source": "NSA 2026"},
+           {"id": "peregrine-technologies", "name": "Peregrine Technologies",
+            "website": "https://peregrine-pumps.test/", "source": "NSA 2026"},
+           {"id": "twinname", "name": "Twinname"},
+           {"id": "acme-pumps", "name": "Acme Pumps", "source": "NSA 2026"}]
+    exp = {"suppliers": [{"supplier_id": x["id"], "name": x["name"], "status": "publish", "website": "https://x.test"}
+                         for x in sup],
+           "assignments": [{"supplier_id": "zoll-medical-corporation", "industry": "public-safety/ems"},
+                           {"supplier_id": "acme-pumps", "industry": "public-works/water"}]}
+    files = {"companies.json": [z, r, pg], "suppliers.json": sup, "conferences.json": cat,
+             "supplier_categories.json": exp,
+             "schema.json": json.loads((DATA / "schema.json").read_text())}
+    import admin
+    with _sandbox_admin(files) as tmp:
+        plan = mst.twins(admin.read_companies(), sup)
+        why = {p["supplier"]["id"]: p["refused"] for p in plan}
+        if "acme-pumps" in why:
+            errors += fail("a supplier sharing no name with the board was taken for a twin")
+        if why.get("zoll-medical-corporation") is not None:
+            errors += fail(f"ZOLL Medical Corporation was not merged into ZOLL Medical: {why.get('zoll-medical-corporation')}")
+        for sid, word in (("regroup", "researched"), ("peregrine-technologies", "website"), ("twinname", "matches")):
+            if not why.get(sid) or word not in why[sid]:
+                errors += fail(f"{sid} merged on the name alone ({why.get(sid)!r}); it needs a person")
+        rep = mst.merge(plan, "agent:selftest", True)
+        if rep.get("error"):
+            errors += fail(f"the merge refused: {rep['error']}")
+        co = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+        zz = co["zoll-medical"]
+        if build_board_tags(zz) != ["IACP 2026", "NSA 2025"] or "exhibited at IACP 2026, NSA 2025" not in zz["description"]:
+            errors += fail(f"the twin's floors did not reach the company: {zz['source']!r} / {zz['description']!r}")
+        left = {x["id"] for x in json.loads((tmp / "suppliers.json").read_text())}
+        if left != {"regroup", "peregrine-technologies", "twinname", "acme-pumps"}:
+            errors += fail(f"suppliers.json after the merge holds {sorted(left)}")
+        out = json.loads((tmp / "supplier_categories.json").read_text())
+        row = next(x for x in out["suppliers"] if x["supplier_id"] == "zoll-medical-corporation")
+        if row != {"supplier_id": "zoll-medical-corporation", "name": "ZOLL Medical Corporation",
+                   "status": {"merged_into": {"kind": "company", "id": "zoll-medical"}}}:
+            errors += fail(f"the HQ export still offers the twin as a supplier: {row}")
+        if [a["supplier_id"] for a in out["assignments"]] != ["acme-pumps"]:
+            errors += fail("the twin kept its placement in the HQ export, or another supplier lost one")
+        if any(x["status"] != "publish" for x in out["suppliers"] if x["supplier_id"] != "zoll-medical-corporation"):
+            errors += fail("the merge changed a supplier it did not merge")
+        ents = [json.loads(x) for x in (tmp / "admin_journal.jsonl").read_text().splitlines() if x.strip()]
+        wrote = {(e.get("file"), e.get("by")) for e in ents if e.get("action") == "merge-supplier-twin"}
+        if wrote != {("companies.json", "agent:selftest"), ("suppliers.json", "agent:selftest")}:
+            errors += fail(f"the merge did not journal both writes under its author: {sorted(wrote)}")
+        plan = mst.twins(admin.read_companies(), json.loads((tmp / "suppliers.json").read_text()),
+                         {"peregrine-technologies": "peregrine"})
+        if next(p["refused"] for p in plan if p["supplier"]["id"] == "peregrine-technologies") is not None:
+            errors += fail("a pair somebody looked at (--pair) still waits for a person")
+    return errors
+
+
+def build_board_tags(row: dict) -> list:
+    import build_board
+    cat = [{"event_tag": "IACP 2026"}, {"event_tag": "NSA 2026", "prior_tags": ["NSA 2025"]}]
+    return build_board._event_tags(row.get("source"), build_board.issued_tags(cat))
+
+
 def check_admin_gates() -> int:
     """The gates that decide when a reward opens and when a keystroke commits.
 
@@ -33913,6 +33994,7 @@ def main() -> int:
     errors += check_the_card_door_lands_only_what_it_saw()
     errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_a_passed_edition_is_asked_about()
+    errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()
@@ -34009,6 +34091,11 @@ def main() -> int:
     if thin:
         print(f"note: {thin} companies are missing optional research "
               f"(location or founding year)")
+    import merge_supplier_twins
+    twins = merge_supplier_twins.twins(companies, json.loads((DATA / "suppliers.json").read_text()))
+    if twins:
+        print(f"note: {len(twins)} supplier row(s) are a board company already "
+              f"(python3 scripts/merge_supplier_twins.py)")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "

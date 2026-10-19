@@ -1741,8 +1741,12 @@
   {
    "supplier_id": "avila-technologies",
    "name": "Avila Technologies",
-   "status": "held",
-   "held": "no website"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "avila"
+    }
+   }
   },
   {
    "supplier_id": "avive",
@@ -30098,8 +30102,12 @@
   {
    "supplier_id": "ad-astra",
    "name": "Ad Astra",
-   "status": "held",
-   "held": "website unread (homepage: only 81 chars of text)"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "ad-astra-information-systems"
+    }
+   }
   },
   {
    "supplier_id": "adaptive-security",
@@ -31762,8 +31770,12 @@
   {
    "supplier_id": "ito-health-pbc",
    "name": "ITO Health PBC",
-   "status": "held",
-   "held": "no website"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "ito-health"
+    }
+   }
   },
   {
    "supplier_id": "kipu-health",
@@ -31804,8 +31816,12 @@
   {
    "supplier_id": "notenetic-ehr",
    "name": "Notenetic EHR",
-   "status": "publish",
-   "website": "https://notenetic.com"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "notenetic"
+    }
+   }
   },
   {
    "supplier_id": "ntracts",
@@ -35126,7 +35142,12 @@
   {
    "supplier_id": "firstnet",
    "name": "FirstNet",
-   "status": "not_a_company"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "firstnet-built-with-at-t"
+    }
+   }
   },
   {
    "supplier_id": "frontline-strong-together-5",
@@ -42060,8 +42081,12 @@
   {
    "supplier_id": "smartcover",
    "name": "SmartCover",
-   "status": "held",
-   "held": "website unread (homepage: only 147 chars of text)"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "smartcover-systems"
+    }
+   }
   },
   {
    "supplier_id": "smartd-technologies",
@@ -43796,8 +43821,12 @@
   {
    "supplier_id": "miovision-technologies-incorporated",
    "name": "Miovision Technologies Incorporated",
-   "status": "held",
-   "held": "no website"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "miovision"
+    }
+   }
   },
   {
    "supplier_id": "morgan-olson",
@@ -45248,8 +45277,12 @@
   {
    "supplier_id": "intrado",
    "name": "Intrado",
-   "status": "publish",
-   "website": "https://www.intrado.com"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "intrado-life-safety"
+    }
+   }
   },
   {
    "supplier_id": "iron-horse-seating",
@@ -45440,8 +45473,12 @@
   {
    "supplier_id": "regroup",
    "name": "Regroup",
-   "status": "publish",
-   "website": "https://www.regroup.com"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "regroup-mass-notification"
+    }
+   }
   },
   {
    "supplier_id": "resume-review",
@@ -49948,15 +49985,6 @@
    "source": {
     "url": "https://avantgarde.com",
     "quote": "This week, on the heels of its Webby Award win for best experimental film, Bot & Dolly's Box received a Silver Lion for Film Craft at Cannes Lions International Festival of Creativity ."
-   }
-  },
-  {
-   "supplier_id": "avila-technologies",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/page/naco-events",
-    "quote": "Avila Technologies"
    }
   },
   {
@@ -91684,15 +91712,6 @@
    }
   },
   {
-   "supplier_id": "ad-astra",
-   "industry": "higher-education/it-and-administration",
-   "basis": "conference",
-   "source": {
-    "url": "https://educause26.smallworldlabs.com/exhibitors",
-    "quote": "Ad Astra"
-   }
-  },
-  {
    "supplier_id": "adaptive-security",
    "industry": "higher-education/it-and-administration",
    "basis": "conference",
@@ -93430,15 +93449,6 @@
    }
   },
   {
-   "supplier_id": "ito-health-pbc",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
-    "quote": "ITO Health PBC"
-   }
-  },
-  {
    "supplier_id": "kipu-health",
    "industry": "health-human-services/behavioral-health",
    "basis": "conference",
@@ -93490,15 +93500,6 @@
    "source": {
     "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
     "quote": "Nirvana"
-   }
-  },
-  {
-   "supplier_id": "notenetic-ehr",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "own_site",
-   "source": {
-    "url": "https://notenetic.com",
-    "quote": "Finally, an EHR built for Behavioral Health that actually works with you."
    }
   },
   {
@@ -106579,15 +106580,6 @@
    }
   },
   {
-   "supplier_id": "smartcover",
-   "industry": "public-works/water",
-   "basis": "conference",
-   "source": {
-    "url": "https://weftec26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "SmartCover"
-   }
-  },
-  {
    "supplier_id": "smartd-technologies",
    "industry": "public-works/water",
    "basis": "conference",
@@ -109153,15 +109145,6 @@
    }
   },
   {
-   "supplier_id": "miovision-technologies-incorporated",
-   "industry": "public-safety/fire",
-   "basis": "conference",
-   "source": {
-    "url": "https://fri26.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm",
-    "quote": "Miovision Technologies Incorporated"
-   }
-  },
-  {
    "supplier_id": "morgan-olson",
    "industry": "public-safety/fire",
    "basis": "conference",
@@ -111331,15 +111314,6 @@
    }
   },
   {
-   "supplier_id": "intrado",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.intrado.com",
-    "quote": "Intrado OneAlert\u2122 for mass notification and crisis communications"
-   }
-  },
-  {
    "supplier_id": "iron-horse-seating",
    "industry": "public-safety/suppliers-and-services",
    "basis": "conference",
@@ -111616,15 +111590,6 @@
    "source": {
     "url": "https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp",
     "quote": "Radio Club of America"
-   }
-  },
-  {
-   "supplier_id": "regroup",
-   "industry": "public-safety/emergency-mgmt",
-   "basis": "own_site",
-   "source": {
-    "url": "https://www.regroup.com",
-    "quote": "Regroup\u2019s mass notification platform unifies emergency communication and daily operations in one simple system."
    }
   },
   {

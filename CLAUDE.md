@@ -2545,6 +2545,13 @@ wait above, the takeover and the companies left off, across two redraws.
 - **Read a floor before filing it:** `python3 scripts/read_floor.py brief --out brief.json`
   → agents judge (vendor / supplier / not_a_company / unsure) → `python3
   scripts/read_floor.py apply verdicts.json --write` → `conference_intake.py`.
+- **Fold supplier rows that are board companies:** `python3 scripts/merge_supplier_twins.py`
+  lists twins (a supplier whose name or alias, by intake's norm(), is a board
+  company's) and `--write` moves their exhibited-at tags onto the company,
+  takes the row out through the journal and marks the HQ export
+  `merged_into`. A researched row, one on another website or one matching two
+  companies waits for a person; `--pair SUPPLIER_ID=COMPANY_ID` once somebody
+  has looked. Selftest prints a note while any twin is on file.
 - **Research cards through the door:** `agents.py brief --kind card` → research
   (fetch with `python3 scripts/read_page.py URL`) → `agents.py ingest --kind card`
   → `promote_cards.py --verify`, `--second-read reads.json`, `--gate`, `--land --by owner`.
