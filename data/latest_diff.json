@@ -1,27 +1,20 @@
 {
-  "date": "2026-10-18",
-  "previous": "2026-10-17",
+  "date": "2026-10-19",
+  "previous": "2026-10-18",
   "changes": [
     {
-      "company": "Paymentus",
-      "id": "paymentus",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "company": "Schreder",
+      "id": "schreder",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://www.schreder.com/en"
     },
     {
-      "company": "WellSky",
-      "id": "wellsky",
+      "company": "Vanderlande",
+      "id": "vanderlande",
       "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive I - Personal Car (Overland Park, KS)"
-    },
-    {
-      "company": "Shelterluv",
-      "id": "shelterluv",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
     }
   ]
 }

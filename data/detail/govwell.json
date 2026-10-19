@@ -12,42 +12,6 @@
   {
    "date": "2026-10-18",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Four Things Municipal Permitting Software Gets Wrong About Special Districts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/special-district-software"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Government Software Request for Proposal (RFP) Guide for Community Development Departments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/the-government-software-request-for-proposal-rfp-guide"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Florida HB 803 Changes Building Permits",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/how-florida-hb-803-changes-building-permits"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Indiana's New Permit Clock Is Ticking \u2014 What HB 1005 Means for Local Building Departments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.govwell.com/resources/indiana-hb-1005"
-  },
-  {
-   "date": "2026-10-18",
-   "date_source": "json-ld",
    "first_seen": "2026-10-18",
    "headline": "What Is Community Development Software?",
    "kind": "press",
@@ -65,7 +29,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-28",
    "headline": "What Is a Certificate of Occupancy?",
    "kind": "press",
@@ -107,6 +71,42 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.govwell.com/resources/case-study-planning-and-zoning"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "80% fewer walk-ins, with zero drop in service quality",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/case-study-community-assistant"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "65% more capacity with the same code enforcement team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govwell.com/resources/case-study-code-enforcement"
+  },
+  {
+   "date": "2026-09-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-10",
+   "headline": "Issuing permits twice as fast, with more volume than ever",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govwell.com/resources/case-study-building-permitting"
+  },
+  {
+   "date": "2026-09-04",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Rethinking permitting for a rural community",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.govwell.com/resources/macon-county-case-study"
   }
  ],
  "profile": {
