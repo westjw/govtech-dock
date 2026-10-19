@@ -1235,8 +1235,23 @@
   .cocard.lead .tile{box-shadow:0 0 0 1px var(--cf-lead-dim)}
   .cocard.lead:hover .cocard-name{color:var(--cf-lead-ink);text-decoration:underline;
     text-underline-offset:3px;text-decoration-color:var(--beak)}
-  .comore{border:1px solid var(--ink);margin:var(--space-6) auto 0;max-width:340px;
-    color:var(--ink)}
+  /* "Show all N in X" and "Show N more" under a company grid: a rounded
+     button in the cards' family, centred under its grid. It was a browser-
+     default grey box in the system font (owner, 2026-10-19: "make it look
+     better and make it rounded"). Its own class: .comore belongs to the
+     company page's role groups. .more.coshow outranks the list's .more. */
+  .coshow,.more.coshow{display:flex;align-items:center;justify-content:center;
+    gap:var(--space-2);width:fit-content;max-width:100%;margin:var(--space-6) auto 0;
+    font:inherit;font-size:14px;font-weight:600;line-height:1.2;color:var(--ink);
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;
+    padding:11px 22px;cursor:pointer;text-align:center;
+    box-shadow:0 1px 2px rgba(31,37,54,.05),0 6px 18px rgba(31,37,54,.05)}
+  .coshow::after{content:"";flex:none;width:7px;height:7px;
+    border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+    transform:translateY(-2px) rotate(45deg)}
+  .coshow:hover,.more.coshow:hover{border-color:var(--accent);color:var(--accent-text);
+    background:var(--panel)}
+  .coshow:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   @media (max-width:900px){.cospot{grid-template-columns:1fr}}
   /* ON A PHONE the bar is two fields a row (What, and the search button, take
      the whole row), so the first result is not pushed off the first screen
@@ -5895,7 +5910,7 @@ function drawCos(){
       list.slice(0,lim).forEach(o=>cg.appendChild(coCard(o,q,"",false)));
       if(list.length>lim){
         const b=document.createElement("button");
-        b.type="button"; b.className="comore";
+        b.type="button"; b.className="coshow";
         b.textContent=`Show all ${list.length.toLocaleString()} in ${sector}`;
         b.onclick=()=>{
           CO_OPEN_SECS.add(sector); drawCos();
@@ -5917,9 +5932,10 @@ function drawCos(){
   }
   if(grid.length>CSHOWN){
     const more=document.createElement("div");
-    more.className="more comore";
-    more.textContent=`Show ${Math.min(60,grid.length-CSHOWN)} more of ${
-      (grid.length-CSHOWN).toLocaleString()}`;
+    more.className="more coshow";
+    const left=grid.length-CSHOWN;
+    more.textContent=left>60?`Show 60 more of ${left.toLocaleString()}`
+      :`Show ${left} more`;
     reachable(more,"button");
     more.onclick=showMoreCo;
     clist.appendChild(more);
