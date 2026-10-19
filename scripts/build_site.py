@@ -868,12 +868,8 @@ def _page(title: str, desc: str, canonical: str, body: str, brand: dict,
 # group, push history - becomes a plain link into the app or is left out.
 #
 # EVERYTHING HERE IS COMPUTED FROM THE RECORD AND THE POSTINGS, never typed
-# in. The phase cell in particular: the app reads it from this company's
-# postings against today's date, and the honest answer for every company on
-# a board whose history began 2026-08-18 is "not enough history to read".
-# That is what this prints, by running the same arithmetic against the
-# board's own generated date, and not by hard-coding the sentence - the day
-# the record is 60 days deep the page starts saying something else on its own.
+# in. (The hiring-phase cell that this paragraph used to explain was removed
+# on 2026-10-19, owner: "kill this"; the strip is three cells, as in co().)
 
 FAM = {"gtm": "GTM", "cs": "Customer Success", "ops": "Ops / RevOps",
        "engineering": "Engineering", "product": "Product & Design",
@@ -1117,7 +1113,6 @@ COPAGE_CSS = """
  .costrip{display:flex;border-top:2px solid var(--c-rule);border-bottom:2px solid var(--c-rule);margin:0 0 30px}
  .costrip>dl{padding:18px 0 16px;padding-right:22px;margin:0;flex:1 1 0}
  .costrip>dl+dl{border-left:1.5px solid var(--c-rule);padding-left:22px}
- .costrip>dl.wide{flex:1.3 1 0}
  .costrip>dl.src{flex:1.1 1 0}
  .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
  .costrip .v.txt{font-size:17px;line-height:1.2;letter-spacing:-.01em}
@@ -1354,59 +1349,6 @@ def _co_open_note(mine: list, open_: int, readable: bool, now: dt.date,
         if lt is None or (now - lt).days > 30:
             return f"not re-checked since {last}" if last else "not re-checked in 30 days"
     return "none added in 30 days"
-
-
-def _co_phase(mine: list, readable: bool, now: dt.date,
-              since: "str | None" = None) -> dict:
-    """{value, tone, note} for the hiring-phase cell - coPhase, ported.
-
-    A board nobody could read has no phase, not a quiet one. And the record
-    has to span the window before a trend read over it means anything: 60
-    days of postings out of 15 days of watching is our start date wearing
-    their hiring's name."""
-    if not readable:
-        return {"value": "Not measured", "tone": "dim",
-                "note": "their board could not be read, so there is nothing "
-                        "here to read a phase from"}
-    d60 = now - dt.timedelta(days=60)
-    fresh = []
-    for p in mine:
-        t = _co_date(p.get("first_seen"))
-        if t and t >= d60:
-            fresh.append(p)
-    roles = len(_co_roles(fresh))
-    span = _co_record_days(mine, now, since)
-    if span is not None and span < 60:
-        return {"value": "Not enough history to read", "tone": "dim",
-                "note": f"we have only been reading this board for {span} "
-                        f"day{'' if span == 1 else 's'}, and a 60-day phase "
-                        f"needs 60"}
-    if roles < 3:
-        return {"value": "Too few openings to read", "tone": "dim",
-                "note": "we need 3+ roles over 60 days to call it"}
-    q = len(_co_roles([p for p in fresh if p.get("quota_carrying")]))
-    places = set()
-    for p in fresh:
-        off = p.get("office")
-        if isinstance(off, dict) and off.get("state"):
-            places.add(off["state"])
-            continue
-        ter = p.get("territory")
-        if isinstance(ter, dict) and ter.get("stated"):
-            if ter.get("states"):
-                places.update(ter["states"])
-            elif ter.get("region"):
-                places.add(ter["region"])
-            continue
-        if p.get("location"):
-            places.add(p["location"])
-    ev = (f"{roles} role{'' if roles == 1 else 's'} opened in 60 days"
-          + (f" · {len(places)} regions" if len(places) > 1 else ""))
-    if q >= 3 and q / roles >= .5:
-        return {"value": "Building a sales floor", "tone": "acc", "note": ev}
-    if len(places) >= 3:
-        return {"value": "Regional push", "tone": "acc", "note": ev}
-    return {"value": "Steady backfill", "tone": "acc", "note": ev}
 
 
 def _co_age(iso, now: dt.date) -> str:
@@ -1919,11 +1861,6 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     quota = o.get("quota_roles") or 0
     state = board_state(o)
     readable = state == "read"
-    phase = _co_phase(mine, readable, now, o.get("read_since"))
-    if state == "none":
-        phase = {"value": "Not measured", "tone": "dim",
-                 "note": "no job board on file, so there is nothing here to "
-                         "read a phase from"}
     dom = re.sub(r"/.*$", "", re.sub(r"^https?://", "", o.get("website") or ""))
     q_id = urllib.parse.quote(cid, safe="")
 
@@ -1990,8 +1927,6 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
              f'<dd>{esc(open_note)}</dd></dl>'
              f'<dl><div class="v{"" if quota else " dim"}">{quota or "&mdash;"}</div><dt>quota-carrying</dt>'
              f'<dd>{pct}</dd></dl>'
-             f'<dl class="wide"><div class="v txt {phase["tone"]}">{esc(phase["value"])}</div>'
-             f'<dt>hiring phase</dt><dd>{esc(phase["note"])}</dd></dl>'
              f'<dl class="src"><div class="v txt{"" if readable else " acc"}">{esc(src_val)}</div>'
              f'<dt>source</dt><dd>{src_note}</dd></dl>'
              f'</div>')

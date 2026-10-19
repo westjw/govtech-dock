@@ -176,6 +176,11 @@ with the company cards").
   open" (only for a board we read).
   - `check_a_company_card_keeps_the_rows_honesty` runs `coCard` over every
     company through jobcard_harness.mjs.
+- **The company page's hiring-phase cell is gone** (owner, 2026-10-19: "kill
+  this", over "Regional push · 73 roles opened in 60 days · 22 regions"). The
+  stat strip is three cells, in co() and on the static /c/ page; selftest
+  fails if either draws one again. The board-level phase (o.phase, "selling:
+  a go-to-market push") is a different measurement and stays.
 - **Round corners are the conferences design's exception to --radius.** They
   stay inside the bar, its popover and the cards; toggles, selects and chips
   outside them stay square.

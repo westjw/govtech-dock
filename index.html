@@ -160,7 +160,6 @@
      silently, which is why it survived a desktop screenshot. */
   .costrip>dl{padding:18px 0 16px;padding-right:22px;margin:0;flex:1 1 0}
   .costrip>dl+dl{border-left:1.5px solid var(--c-rule);padding-left:22px}
-  .costrip>dl.wide{flex:1.3 1 0}
   .costrip>dl.src{flex:1.1 1 0}
   .costrip .v{font:800 34px/1 var(--font-heading);letter-spacing:-.02em;
     font-variant-numeric:tabular-nums}
@@ -6223,9 +6222,6 @@ function brandSection(o){
 const NEWS_KINDS=["contract","funding","leadership","product","press"];
 let CO_NEWS_FILTER="all", CO_OPEN_GROUPS=null, CO_DRAWN=null;
 
-/* The hiring phase is an ENUM and it needs evidence to speak. Three roles
-   opened inside 60 days, or it says so and prints the threshold - the same
-   refusal to guess that keeps a page scan from becoming "None found". */
 /* A ROLE IS NOT A POSTING, AND THE PAGE MUST NOT MIX THE TWO IN ONE SENTENCE.
    One opening advertised in six cities is six postings and one job. The strip
    headline is o.open_roles, which is deduped that way, so anything printed
@@ -6290,54 +6286,6 @@ function coOpenNote(mine,open,readable,state,since,last){
       return last?`not re-checked since ${last}`:"not re-checked in 30 days";
   }
   return "none added in 30 days";
-}
-
-function coPhase(mine,readable,since){
-  /* A BOARD NOBODY COULD READ HAS NO PHASE, NOT A QUIET ONE. Indigov's board
-     has failed to fetch since 2026-08-19, and this cell said "Too few
-     openings to read", which asserts that openings were counted. The Source
-     cell one column over already said the board was unreadable, so the strip
-     was contradicting itself in the space of four inches. */
-  if(readable===false)
-    return {value:"Not measured",tone:"dim",
-            note:"their board could not be read, so there is nothing here to "
-                 +"read a phase from"};
-  const now=Date.now(), d60=now-60*864e5;
-  const fresh=mine.filter(p=>{const t=Date.parse(p.first_seen||"");return t&&t>=d60});
-  const roles=coRoles(fresh).size;
-  /* the record has to span the window before a trend read over it means
-     anything. 60 days of postings out of 15 days of watching is our start
-     date wearing their hiring's name. */
-  const span=coRecordDays(mine,since);
-  if(span!==null&&span<60)
-    return {value:"Not enough history to read",tone:"dim",
-            note:`we have only been reading this board for ${span} day`
-                 +`${span===1?"":"s"}, and a 60-day phase needs 60`};
-  if(roles<3)
-    return {value:"Too few openings to read",tone:"dim",
-            note:"we need 3+ roles over 60 days to call it"};
-  /* quota share is measured over roles too, or a quota job posted in ten
-     cities would carry the ratio past the half on its own */
-  const q=coRoles(fresh.filter(p=>p.quota_carrying)).size;
-  /* WHERE A ROLE IS, in the board's own vocabulary. p.location is empty on
-     most postings here - place lives in office and territory - so counting it
-     alone reported "1 region" for a company hiring across nine states. */
-  const places=new Set();
-  for(const p of fresh){
-    if(p.office&&p.office.state){ places.add(p.office.state); continue; }
-    const ter=p.territory;
-    if(ter&&ter.stated){
-      if(ter.states&&ter.states.length) ter.states.forEach(s=>places.add(s));
-      else if(ter.region) places.add(ter.region);
-      continue;
-    }
-    if(p.location) places.add(p.location);
-  }
-  const ev=`${roles} role${roles===1?"":"s"} opened in 60 days`
-    +(places.size>1?` · ${places.size} regions`:"");
-  if(q>=3&&q/roles>=.5) return {value:"Building a sales floor",tone:"acc",note:ev};
-  if(places.size>=3) return {value:"Regional push",tone:"acc",note:ev};
-  return {value:"Steady backfill",tone:"acc",note:ev};
 }
 
 function coAge(iso){
@@ -6587,10 +6535,6 @@ function co(id,fromUrl){
   const open=o.open_roles||0, quota=o.quota_roles||0;
   const state=boardState(o);
   const readable=state==="read";
-  const phase=state==="none"
-    ?{value:"Not measured",tone:"dim",
-      note:"no job board on file, so there is nothing here to read a phase from"}
-    :coPhase(mine,readable,o.read_since);
   const saved=isSaved("co:"+id);
 
   /* --- 03 identity ---------------------------------------------------- */
@@ -6603,7 +6547,8 @@ function co(id,fromUrl){
               o.parent?coParentHTML(o.parent):""
              ].filter(Boolean);
 
-  /* --- 04 stat strip, four cells, always ------------------------------ */
+  /* --- 04 stat strip, three cells, always. The hiring-phase cell (Regional
+     push, Hiring wave...) is gone: owner, 2026-10-19, "kill this". ------ */
   const srcTone=readable?"":"acc";
   const srcVal=state==="none"?"No board on file"
               :readable?(o.ats?o.ats.charAt(0).toUpperCase()+o.ats.slice(1):"Not on file")
@@ -6623,8 +6568,6 @@ function co(id,fromUrl){
     <dl><div class="v${quota?"":" dim"}">${quota||"&mdash;"}</div>
       <dt>quota-carrying</dt>
       <dd>${quota?`${Math.round(quota/open*100)}% of open roles`:"nothing to count"}</dd></dl>
-    <dl class="wide"><div class="v txt ${phase.tone}">${esc(phase.value)}</div>
-      <dt>hiring phase</dt><dd>${esc(phase.note)}</dd></dl>
     <dl class="src"><div class="v txt ${srcTone}">${esc(srcVal)}</div>
       <dt>source</dt><dd>${srcNote}</dd></dl>
   </div>`;
