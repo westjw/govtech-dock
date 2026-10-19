@@ -32883,6 +32883,78 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
             errors += fail("an address is in data/supplier_categories.json")
     return errors
 
+def check_the_hq_export_never_loses_a_supplier_to_a_missing_cache() -> int:
+    """supplier_categories --write refuses to unpublish a supplier because its
+    page is missing from this checkout's data/supplier_pages.
+
+    The cache is gitignored and 102 MB. Without it own_text() reads "not
+    read" for everyone, and on 2026-10-19 a rebuild from a checkout lacking it
+    would have moved all 3,038 published suppliers to held and written the
+    export SLED HQ reads. Driven through main() against a sandbox.
+    """
+    import tempfile
+    import supplier_categories as SC
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-hqx-"))
+    data = tmp / "data"
+    data.mkdir()
+    (data / "schema.json").write_text((DATA / "schema.json").read_text())
+    (data / "conferences.json").write_text(json.dumps({"conferences": [
+        {"event_tag": "WEF 2026", "block": "Public works and infrastructure", "department": "Wastewater",
+         "url": "https://weftec.example.com/"}]}))
+    (data / "suppliers.json").write_text(json.dumps([
+        {"id": "pumpco", "name": "Pumpco", "description": "Pumps - exhibited at WEF 2026"},
+        {"id": "quietco", "name": "Quietco", "description": "Valves - exhibited at WEF 2026"}]))
+    (data / "supplier_identity.json").write_text(json.dumps({"rows": {
+        "pumpco": {"verdict": "theirs", "url": "https://pumpco.example.com"},
+        "quietco": {"verdict": "theirs", "url": "https://quietco.example.com"}}}))
+    prev = {"suppliers": [{"supplier_id": "pumpco", "name": "Pumpco", "status": "publish"},
+                          {"supplier_id": "quietco", "name": "Quietco", "status": "held"}]}
+    out = data / "supplier_categories.json"
+    out.write_text(json.dumps(prev))
+    pages = data / "supplier_pages"
+    keep = SC.ROOT, SC.DATA, SC.OUT, SC.PAGES
+    SC.ROOT, SC.DATA, SC.OUT, SC.PAGES = tmp, data, out, pages
+    argv = sys.argv
+    import io, contextlib
+
+    def run(*flags):
+        sys.argv = ["supplier_categories.py", "--write", *flags]
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return SC.main()
+    held = {"suppliers": [{"supplier_id": "pumpco", "name": "Pumpco", "status": "held"}]}
+    out.write_text(json.dumps(held))
+    try:
+        if run() != 1 or json.loads(out.read_text()) != held:
+            errors += fail("a rebuild with no page cache in the checkout wrote the HQ export")
+        out.write_text(json.dumps(prev))
+        pages.mkdir()
+        if run() != 1 or json.loads(out.read_text()) != prev:
+            errors += fail("a rebuild that could not read a published supplier's page unpublished it")
+        if run("--allow-uncached") != 0:
+            errors += fail("--allow-uncached did not write")
+        else:
+            got = {r["supplier_id"]: r for r in json.loads(out.read_text())["suppliers"]}
+            if got["pumpco"].get("held") != SC.NOT_READ:
+                errors += fail(f"an uncached supplier was written as {got['pumpco']}")
+        out.write_text(json.dumps(prev))
+        (pages / "pumpco.json").write_text(json.dumps({"id": "pumpco", "pages": [
+            {"url": "https://pumpco.example.com/", "text": "Pumpco builds pumps for wastewater treatment plants and municipal lift stations."},
+            {"url": "https://pumpco.example.com/a", "text": "Our valves and pump stations serve every water utility we work with, worldwide."}]}))
+        if run() != 0:
+            errors += fail("a rebuild that reads every published supplier's page was refused; "
+                           "a supplier the last export held is not a loss")
+        else:
+            got = {r["supplier_id"]: r for r in json.loads(out.read_text())["suppliers"]}
+            if got["pumpco"].get("status") != "publish":
+                errors += fail(f"a supplier whose page reads was not published: {got['pumpco']}")
+    finally:
+        SC.ROOT, SC.DATA, SC.OUT, SC.PAGES = keep
+        sys.argv = argv
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_a_person_can_release_a_held_supplier() -> int:
     """The "Supplier websites" queue (admin, 2026-10-05).
 
@@ -33995,6 +34067,7 @@ def main() -> int:
     errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
+    errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()
     errors += check_the_digest_counts_openings_and_keeps_to_the_boards_default()
     errors += check_a_stranger_cannot_mail_somebody_without_end()
     errors += check_claim_links_open_pages_that_exist()
@@ -34096,6 +34169,19 @@ def main() -> int:
     if twins:
         print(f"note: {len(twins)} supplier row(s) are a board company already "
               f"(python3 scripts/merge_supplier_twins.py)")
+    # THE EXPORT SLED HQ READS IS BUILT BY HAND, from a checkout holding the
+    # gitignored page cache, so it falls behind every floor intake. It sat
+    # two weeks behind (1,248 gone, 502 never placed) before anybody looked.
+    try:
+        hq = json.loads((DATA / "supplier_categories.json").read_text())
+        sids = {x["id"] for x in json.loads((DATA / "suppliers.json").read_text())}
+        xids = {x["supplier_id"] for x in hq.get("suppliers") or []}
+        if xids != sids:
+            print(f"note: the SLED HQ export is behind suppliers.json ({len(xids - sids)} gone, "
+                  f"{len(sids - xids)} not placed): python3 scripts/supplier_categories.py --write, "
+                  f"from a checkout holding data/supplier_pages")
+    except (OSError, ValueError, KeyError):
+        print("note: the SLED HQ export could not be read")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "

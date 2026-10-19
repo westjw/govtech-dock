@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-03T16:39:14-04:00",
+ "generated": "2026-10-19T11:02:59-04:00",
  "verdicts": {
   "theirs": "the website on file names them",
   "unconfirmed": "the website on file answers but does not state their full name - usually an acronym, brand or parent; likely theirs, not confirmed",
@@ -9229,13 +9229,14 @@
    "website_was": null
   },
   "forta": {
-   "url": "https://forta.com",
    "says": "Ben Forta Ben Forta \u2014 Author, Educator, Technologist Ben Forta Ben Forta \nTurning curiosity into skills, and skills into",
    "tried": 1,
-   "verdict": "found_review",
+   "verdict": "not_found",
    "why": "the name is too short to be sure",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "checked_on": "2026-10-19",
+   "website_was": null,
+   "audit": "blind audit 2026-10-19 (two readers): forta.com is Ben Forta's personal author and educator site, not the FORTA (fiber reinforcement) that exhibited at PWX and the Maryland Municipal League",
+   "rejected_url": "https://forta.com"
   },
   "fpt-infrastructure": {
    "url": "https://www.fptinfrastructure.com",
@@ -17359,12 +17360,13 @@
    "website_was": null
   },
   "ride-care": {
-   "url": "https://ridecare.net",
    "says": "Ride Care On - Demand \nWheelChair Accessible.",
    "tried": 3,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "verdict": "not_found",
+   "checked_on": "2026-10-19",
+   "website_was": null,
+   "audit": "blind audit 2026-10-19 (two readers): ridecare.net is a New Jersey wheelchair and medical-appointment ride service, not the Ride Care that exhibited at a law-enforcement show",
+   "rejected_url": "https://ridecare.net"
   },
   "retem-steel": {
    "verdict": "not_found",
@@ -19689,12 +19691,13 @@
    "website_was": null
   },
   "syntech-systems": {
-   "url": "https://www.syntechsystems.net",
    "says": "Home | syntechsystems Home | syntechsystems syntechsystems  Business Services",
    "tried": 3,
-   "verdict": "found",
-   "checked_on": "2026-10-03",
-   "website_was": null
+   "verdict": "not_found",
+   "checked_on": "2026-10-19",
+   "website_was": null,
+   "audit": "blind audit 2026-10-19 (two readers): syntechsystems.net is a small Florida managed-IT and web-hosting shop with nothing about transit, not the Syntech Systems that exhibited at APTA",
+   "rejected_url": "https://www.syntechsystems.net"
   },
   "surface-systems-and-instruments-inc": {
    "verdict": "not_found",
@@ -73045,6 +73048,4213 @@
    "tried": 36,
    "why": "no guessed domain named them",
    "checked_on": "2026-10-03",
+   "website_was": null
+  },
+  "crane-pumps-systems": {
+   "url": "https://www.cranepumps.com/",
+   "final": "https://www.cranepumps.com",
+   "says": "Home - Crane Pumps & Systems Home - Crane Pumps & Systems Crane Pumps & Systems Leader in  Wastewater Innovation",
+   "present": [
+    "crane",
+    "pumps"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.cranepumps.com/"
+  },
+  "sound-strategies": {
+   "url": "https://soundst.com/",
+   "final": "https://soundst.com",
+   "says": "AI & Web Presence Development | Sound Strategies AI and web presence experts creating intelligent digital solutions, mod",
+   "present": [
+    "sound",
+    "strategies"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://soundst.com/"
+  },
+  "engineered-tower-solutions-pllc": {
+   "url": "https://ets-pllc.com/",
+   "final": "https://ets-pllc.com",
+   "says": "Engineered Tower Solutions - Home ETS is a full-service engineering company servicing the telecommunications needs of to",
+   "present": [
+    "engineered",
+    "tower"
+   ],
+   "missing": [
+    "pllc"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Engineered Tower Solutions"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://ets-pllc.com/"
+  },
+  "cavmac": {
+   "url": "https://cavmac.com",
+   "says": "Home - Cavmac Industrial Hose Manufacturer Home - Cavmac Cavmac Welcome Industry Segments Our Work",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bioair-solutions-llc": {
+   "url": "https://www.bioairsolutions.com",
+   "final": "https://www.bioairsolutions.com",
+   "says": "BioAir Home BioAir Eliminate your air pollution or odor problems with a guaranteed solution",
+   "present": [
+    "bioair"
+   ],
+   "missing": [
+    "solutions"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "BioAir"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.bioairsolutions.com"
+  },
+  "greener-day-solutions": {
+   "url": "https://greenerdaysolutions.com/",
+   "final": "https://greenerdaysolutions.com",
+   "says": "Home - Greener Day Solutions Industrial and Municipal Wastewater Equipment that dramatically reduces sludge transport & ",
+   "present": [
+    "greener",
+    "day"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://greenerdaysolutions.com/"
+  },
+  "ecs-environmental-solutions": {
+   "url": "https://ecs-env.com/",
+   "final": "https://ecs-env.com",
+   "says": "ECS Environmental Solutions: Advanced Air Pollution Control Systems Close Close Discover ECS Environmental Solutions' cu",
+   "present": [
+    "ecs",
+    "environmental"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://ecs-env.com/"
+  },
+  "first-responders-resilience-network": {
+   "url": "https://www.fr-rn.com/",
+   "final": "https://www.fr-rn.com",
+   "says": "First Responders Resilience Network | Build Resilience Today First Responders Resilience Network First Responders Resili",
+   "present": [
+    "first",
+    "responders",
+    "resilience",
+    "network"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.fr-rn.com/"
+  },
+  "adroit-alternative-transportation-solutions": {
+   "url": "https://www.goadroit.com",
+   "final": "https://www.goadroit.com",
+   "says": "Adroit - Alternative Student Transportation Solutions - Adroit Adroit - Alternative Student Transportation Solutions - A",
+   "present": [
+    "adroit",
+    "alternative",
+    "transportation"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.goadroit.com"
+  },
+  "municipal-voluntary-benefits-alliance": {
+   "url": "https://www.mvbenefitsalliance.com/",
+   "final": "https://www.mvbenefitsalliance.com",
+   "says": "Municipal Employee Benefits Get municipal employee benefits to reduce employee benefits costs as well as attract and ret",
+   "present": [
+    "municipal",
+    "benefits",
+    "alliance"
+   ],
+   "missing": [
+    "voluntary",
+    "mvba"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "MV Benefits Alliance",
+    "Hilb Group"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.mvbenefitsalliance.com/"
+  },
+  "front-line-mobile-health": {
+   "url": "https://frontlinemobilehealth.com/",
+   "final": "https://frontlinemobilehealth.com",
+   "says": "Front Line Mobile Health - Public Safety Health and Wellness Front Line Mobile Health is the platform of choice for publ",
+   "present": [
+    "front",
+    "line",
+    "mobile",
+    "health"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://frontlinemobilehealth.com/"
+  },
+  "horizontal-water-well-solutions": {
+   "url": "https://horizontalwaterwellsolutions.com/",
+   "final": "https://horizontalwaterwellsolutions.com",
+   "says": "Horizontal Water Well Solutions Horizontal Water Well Solutions Horizontal Water Well Solutions horizontal water\nwell so",
+   "present": [
+    "horizontal",
+    "water",
+    "well"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://horizontalwaterwellsolutions.com/"
+  },
+  "industrial-flow-solutions": {
+   "url": "https://flowsolutions.com/",
+   "final": "https://flowsolutions.com",
+   "says": "Industrial Wastewater Pump Manufacturer | Industrial Flow Solutions Get high-performance industrial pump solutions, wast",
+   "present": [
+    "industrial",
+    "flow"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://flowsolutions.com/"
+  },
+  "mann-hummel-water-fluid-solutions-inc": {
+   "url": "https://water-membrane-solutions.mann-hummel.com/en.html",
+   "final": "https://water-membrane-solutions.mann-hummel.com/en.html",
+   "says": "MANN+HUMMEL Water & Membrane Solutions for cleaner water At MANN+HUMMEL Water & Membrane Solutions (previously MICRODYN-",
+   "present": [
+    "mann",
+    "hummel",
+    "water"
+   ],
+   "missing": [
+    "fluid"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "MANN+HUMMEL",
+    "MANN+HUMMEL Water & Fluid Solutions GmbH"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://water-membrane-solutions.mann-hummel.com/en.html"
+  },
+  "neutratek-odour-solutions-lp": {
+   "url": "https://neutratek.com",
+   "final": "https://neutratek.com",
+   "says": "NeutraTek Odour Solutions | Partner in Environmental Compliance NeutraTek Odour Solutions - Partner with Us for Environm",
+   "present": [
+    "neutratek",
+    "odour"
+   ],
+   "missing": [
+    "lp"
+   ],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://neutratek.com"
+  },
+  "national-network-of-public-health-institutes": {
+   "url": "https://nnphi.org/",
+   "final": "https://nnphi.org",
+   "says": "NNPHI - National Network of Public Health Institutes National Network of Public Health Institutes (NNPHI) toggle The Nat",
+   "present": [
+    "national",
+    "network",
+    "of",
+    "public",
+    "health",
+    "institutes"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://nnphi.org/"
+  },
+  "hardy-pro-air-systems-service": {
+   "url": "https://hardyproair.com/",
+   "final": "https://hardyproair.com",
+   "says": "Hardy Pro-Air - Hardy Pro Air Hardy Pro-Air is the dynamic result of the merger and integration of the independently suc",
+   "present": [
+    "hardy",
+    "pro",
+    "air",
+    "service"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://hardyproair.com/"
+  },
+  "rapicure-solutions": {
+   "url": "https://www.rapicuresolutions.com/",
+   "final": "https://www.rapicuresolutions.com",
+   "says": "Faster tougher resin | RapiCure Solutions We\u2019ve \u201creimagined resin\u201d and developed the fastest, toughest rapid-curing resi",
+   "present": [
+    "rapicure",
+    "solutions"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.rapicuresolutions.com/"
+  },
+  "ppg-traffic-solutions": {
+   "url": "https://www.ppg.com/en-US/traffic",
+   "final": "https://www.ppg.com/en-US/traffic",
+   "says": "PPG PPG Traffic and Pavement Marking Solutions | PPG At the Intersection of Innovation & Expertise",
+   "present": [
+    "ppg",
+    "traffic"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.ppg.com/en-US/traffic"
+  },
+  "ultraaqua-uv-ozone-systems": {
+   "url": "https://ultraaqua.com/",
+   "final": "https://ultraaqua.com",
+   "says": "ULTRAAQUA - UV & Ozone Systems ULTRAAQUA is an international UV and Ozone system manufacturer for a wide range of water ",
+   "present": [
+    "ultraaqua",
+    "uv",
+    "ozone"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://ultraaqua.com/"
+  },
+  "vls-environmental-solutions": {
+   "url": "https://www.vlses.com/",
+   "final": "https://www.vlses.com",
+   "says": "VLS | Sustainable Waste Management, Marine & Railcar Solutions VLS Environmental Solutions is your partner for cleaner i",
+   "present": [
+    "vls",
+    "environmental"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.vlses.com/"
+  },
+  "xybix-systems-inc": {
+   "url": "https://www.xybix.com/",
+   "final": "https://www.xybix.com",
+   "says": "911 Dispatch, Radiology, & Command Center Desks and Consoles | Xybix Xybix leads in height-adjustable Ergonomic desks an",
+   "present": [
+    "xybix"
+   ],
+   "missing": [
+    "systems"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Xybix",
+    "Xybix Logo with White Text"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.xybix.com/"
+  },
+  "cleantek-water-solutions": {
+   "url": "https://cleantekwater.com/",
+   "final": "https://cleantekwater.com",
+   "says": "Rotary Drum Screen, Fine, MBR & Wastewater Screens CleanTek Water Solutions is a offers high quality Rotary Drum Screen,",
+   "present": [
+    "cleantek",
+    "water"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://cleantekwater.com/"
+  },
+  "sundt-construction": {
+   "url": "https://www.sundt.com",
+   "says": "Sundt Construction Company & General Contractor | Sundt As a diverse and innovative builder, Sundt excels at solving the",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nashville-international-airport": {
+   "url": "https://www.nashville-airport.com",
+   "says": "Nashville Airport (BNA) Informational guide of Nashville Airport (BNA). Find information about Arrivals, departures, fli",
+   "tried": 5,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "adako-usa": {
+   "url": "https://www.adakousa.com",
+   "says": "Percussion Massager Gun, Zero-Gravity Massage Chairs, Foot Massagers \u2013 adakousamassagers\n   Adako USA has the most advan",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "syneco-systems-inc": {
+   "url": "https://synecosystems.com/",
+   "final": "https://synecosystems.com",
+   "says": "Hydrogen Sulfide Odor Control | Syneco Systems Hydrogen Sulfide odor control for municipalities, industries, wastewater ",
+   "present": [
+    "syneco",
+    "systems"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://synecosystems.com/"
+  },
+  "belanger-inc": {
+   "url": "https://www.belanger.com",
+   "says": "Belanger Ford | Ford Dealership in Chelmsford, Greater city of Sudbury Belanger Ford | Ford Dealership in Chelmsford, Gr",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aptiv": {
+   "url": "https://www.aptiv.com",
+   "says": "Aptiv | Home - Global Technology Company Aptiv |  Global Technology Company Aptiv is a global technology company that de",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "certarus": {
+   "url": "https://certarus.com",
+   "says": "Virtual Pipeline Services for Natural Gas - Pipeless Natural Gas Delivery | Certarus Certarus provides compressed natura",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-traction-solutions": {
+   "url": "https://americantractionsolutions.com",
+   "says": "American Traction Solutions Inc. - Electric Propulsion Controls & Accessories American Traction Solutions Inc. (ATS) des",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "parabit-systems": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aero-snow-removal-llc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "enertech-international-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "good-tool": {
+   "url": "https://goodtool.org",
+   "says": "Fast English Calculators and Tools | Good Tool Good Tool is an English calculator and utility site for practical plannin",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "jericho-palm-inc": {
+   "url": "https://www.jerichopalm.com",
+   "says": "Custom Outdoor and  Municipal Furniture | Jericho Palm | United States Outdoor furniture for everyday life.  Jericho Pal",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "highness-microelectronics-limited": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "kept-companies": {
+   "url": "https://www.keptcompanies.com",
+   "says": "National Cleaning & Maintenance Experts - Kept Companies Award icon Kept Companies offers the market National Cleaning &",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "metra": {
+   "url": "https://metra.com",
+   "says": "Home | Metra  Stay up to date with the latest news and    My Metra    magazine",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "holland": {
+   "verdict": "not_found",
+   "tried": 9,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "one-our-next-energy": {
+   "url": "https://one.ai",
+   "says": "Our Next Energy | Our Next Energy Our Next Energy ONE is a Michigan-based energy storage company focused on engineering ",
+   "tried": 9,
+   "verdict": "found_review",
+   "matched_on": "Our next energy",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "psm-squared-inc": {
+   "url": "https://www.psm-2.com",
+   "says": "PSM Squared, Inc. - Creating the Ultimate Guest Experience [et_pb_text _builder_version=\"4.19.2\" PSM-2 - The Ultimate Gu",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "plastitel-group": {
+   "url": "https://plastitelgroup.com",
+   "says": "Home - Plastitel Group Home - Plastitel Group Plastitel Group Ongoing Investment \nin Sustainability A Detailed Approach ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "red-fox-resources": {
+   "url": "https://redfoxresources.com",
+   "says": "DPF and DOC Recycling - Industrial Precious Metal Recycling Since 2013, we have recycled DPFs, DOCs and three-way cataly",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "northern-illinois-transit-authority-nita": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "executive-coach-builders-inc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "pace-suburban-bus": {
+   "url": "https://pacebus.com",
+   "says": "Homepage | Pace Suburban Bus _Icons / Arrows / Right _Icons / Arrows / Right \n             We're Driven For You",
+   "tried": 13,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "transit-marketing-group": {
+   "url": "https://transitmarketing.com",
+   "says": "Transit Marketing Home",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hitachi": {
+   "url": "https://www.hitachi.com/en",
+   "says": "Home : Hitachi Global Official website of Hitachi, Ltd. Hitachi drives Social Innovation Business, creating a sustainabl",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "chicago-transit-authority": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "xos-inc": {
+   "url": "https://www.xos.com",
+   "says": "Elemental Analysis and X-ray Optics | XOS XOS offers precise, reliable elemental analysis and X-ray optics solutions wit",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sovereign-hydroseal": {
+   "url": "https://www.sovereignhydroseal.com",
+   "says": "Mining, Civil & Energy Sector Waterproofing | Sovereign Hydroseal Sovereign Hydroseal, a global leader in waterproofing ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "transitcheck": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "65th-north-group-llc": {
+   "url": "https://www.65thnorth.com",
+   "says": "65th North Group | Local Government Management Consultants 65th North Group provides public sector management consulting",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "pioneer-emobility-e-boost": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "budderfly": {
+   "url": "https://www.budderfly.com",
+   "says": "Budderfly | Energy Efficiency Company & Management Services At Budderfly, we provide a variety of energy management serv",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "carrot-fertility-inc": {
+   "url": "https://www.get-carrot.com",
+   "says": "Carrot | Global fertility benefits for employers Unlock support for life\u2019s major moments Unlock support for life\u2019s major",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sener-engineering-and-systems-inc": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "zenobe-americas-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "waynova-group": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "alumi-games": {
+   "url": "https://alumigames.com",
+   "says": "Alumi Games \u2014 Premium portable LED mini golf for events & venues Alumi Games designs and manufactures premium portable m",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cgi-digital-hellonation": {
+   "url": "https://cgidigital.com",
+   "says": "Digital Marketing Agency in Rochester, NY | CGI Digital CGI Digital partners with businesses & municipalities nationwide",
+   "tried": 13,
+   "verdict": "found_review",
+   "matched_on": "CGI Digital",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nationwide": {
+   "url": "https://edge.naco.org/naco-retirement-solutions/",
+   "final": "https://edge.naco.org/naco-retirement-solutions",
+   "says": "NACo Retirement Solutions - NACo EDGE Help county employees prepare for retirement with NACo\u2019s deferred compensation pro",
+   "present": [
+    "nationwide"
+   ],
+   "missing": [],
+   "verdict": "listing_site",
+   "checked_on": "2026-10-19",
+   "website_was": "https://edge.naco.org/naco-retirement-solutions/",
+   "audit": "blind audit 2026-10-19 (two readers): the website on file is NACo EDGE's page for the NACo Deferred Compensation Program administered by Nationwide, an association page, not Nationwide's own site",
+   "rejected_url": "https://edge.naco.org/naco-retirement-solutions/"
+  },
+  "aquaplanet": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-association-of-insurance-services-aais": {
+   "verdict": "not_found",
+   "tried": 29,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "buyboard": {
+   "url": "https://www.buyboard.com",
+   "says": "BuyBoard Purchasing Cooperative\r\n | BuyBoard\r\n     BuyBoard Purchasing Cooperative has a long history as a trusted, expe",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "creative-west": {
+   "url": "https://creativewest.com",
+   "says": "Creative West Creative West Creative West",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "diy-court": {
+   "url": "https://www.diycourt.com",
+   "says": "#1 Supplier Of DIY Acrylic Surfacing, Sport Tiles, & Court Equipment \u2013 DIY Court USA Inc. American Express Apple Pay The",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "action-sports-design-llc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-athletic-track-and-turf": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "fantasy-drone-shows": {
+   "url": "https://www.fantasydroneshows.com",
+   "says": "Fantasy Drone Shows - Dazzling Drone Displays Trust Fantasy Drone Shows to deliver dazzling displays perfect for celebra",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "capital-strategic-solutions-llc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "henka-llc": {
+   "verdict": "not_found",
+   "tried": 8,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bucketgolf": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "efficient-air-systems-inc": {
+   "url": "https://efficient-air.com",
+   "says": "Efficient Air  Efficient-Air",
+   "tried": 5,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "kassbohrer-all-terrain-vehicles-inc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "center-for-advanced-preparedness-threat-response-simulation-captrs": {
+   "url": "https://www.captrs.org",
+   "says": "Serious Games for Emergency Preparedness and Threat Response | CAPTRS CAPTRS designs research-driven serious games and s",
+   "tried": 9,
+   "verdict": "found_review",
+   "matched_on": "CAPTRS",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "chervon-ego": {
+   "url": "https://ego.com",
+   "says": "Ego VM \u00b7 Run Windows and Linux on your Mac, with its real GPU Ego VM Ego VM \u00b7 Run Windows and Linux on your Mac, with it",
+   "tried": 13,
+   "verdict": "found_review",
+   "matched_on": "EGO",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "metalu-plast": {
+   "url": "https://www.metalu-plast.com",
+   "says": "Fabricant d'\u00e9quipements sportifs, de terrains multisports et de cl\u00f4tures Metalu Plast est le premier fabricant fran\u00e7ais ",
+   "tried": 5,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "operate-fit": {
+   "url": "https://operate.fit",
+   "says": "Operate Fit: Facility & Risk Management for Community Centers All-in-one facility and risk management software for commu",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "field-lining-and-painting-services-llc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "innova-disc-golf-sports-demo-zone": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sfm": {
+   "url": "https://www.sfm.com",
+   "says": "Company Formation & Registration - Corporate Services | SFM Need help setting up a business or starting a company anywhe",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sof-surfaces": {
+   "url": "https://www.sofsurfaces.com",
+   "says": "SofSurfaces Inc - Rubber Playground Tiles | Gym Floor Tiles & Acoustic Tiles For over three decades Welcome to sofSURFAC",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "think-green-promos": {
+   "url": "https://www.thinkgreenpromos.com",
+   "says": "Think Green Promos | Promotional Products & Apparel | Corona, CA - HOME Think Green Promos. Best selection of promotiona",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "top-a-court": {
+   "url": "https://www.topcourt.com:443",
+   "says": "TopCourt | Learn From The Best TopCourt offers online instruction, drills, stories, and more for players of all skill le",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "versare-flooring": {
+   "url": "https://versareflooring.com",
+   "says": "Versare Flooring | Modular Flooring & Sectional Flooring Solutions Versare Flooring installs 2x faster than the competit",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "rvi-planning-landscape-architecture": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "xbotgo": {
+   "url": "https://xbotgo.com",
+   "says": "XbotGo | 4K AI Sports Camera Amazon Amazon XbotGo builds AI sports cameras that make every game easy to capture. Meet Fa",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "infinity-pool-surface": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wt-group-aec-llc": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "move-united": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "airvac-inc": {
+   "url": "https://www.airvac.com/en",
+   "says": "Airvac is the world leader in vacuum sewer system technolo | Airvac We create solutions that utilize a vacuum sewer syst",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "americans-united-for-separation-of-church-and-state": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "landscape-architect-media-group": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "asvab-career-exploration-program": {
+   "url": "https://asvabprogram.com",
+   "says": "What career is right for me? | ASVAB Career Exploration Program What career is right for me? | ASVAB Career Exploration ",
+   "tried": 14,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "carthage-bridge-builders": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "re-tek-products": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "army-rotc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aircraft-owners-and-pilots-association-foundation": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "champions-before-and-after-school-programs": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "chartwells-k12": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ekadence-learning-foundation": {
+   "url": "https://ekadence.org",
+   "says": "eKadence Learning Foundation eKadence Learning Foundation eKadence Learning Foundation",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "elior-school-dining": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ess": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "dea-drug-enforcement-administration": {
+   "verdict": "not_found",
+   "tried": 30,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "farmer-s-fridge": {
+   "url": "https://www.farmersfridge.com",
+   "says": "Healthier Meals, On the Go | Farmer\u2019s Fridge Farmers Fridge Show Menu Enjoy chef-crafted, fruit and veggie-packed meals ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "green-frog-systems-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "fieldturf-beynon-sports-tarkett-sports": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-heart-association": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "geneva-jones-associates-pllc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "greenheart-international": {
+   "url": "https://greenheart.org",
+   "says": "Greenheart International - Greenheart International Greenheart International - Greenheart International Greenheart Inter",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "heytutor": {
+   "url": "https://heytutor.com",
+   "says": "Expert In-Person High-Dosage Tutoring for K-12 School Districts HeyTutor is an industry leader in trackable, customizabl",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "clinic-to-classroom-consulting-llc": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "botvin-lifeskills-training": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hya": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ignite-reading": {
+   "url": "https://ignite-reading.com",
+   "says": "Ignite Reading | Early Literacy Intervention Rooted in the Science of Reading Ignite Reading delivers early literacy int",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "carpenters-international-training-fund": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "masba-school-board-members-for-latino-equity": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "first-student-inc-cincinnati-oh": {
+   "verdict": "not_found",
+   "tried": 29,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "mcpherson-jacobson-llc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "church-amp-dwight": {
+   "url": "https://churchdwight.com",
+   "says": "Church and Dwight | Consumer Goods | Home and Personal Care Products\r\n Church and Dwight has brought you many products f",
+   "tried": 13,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-education-association": {
+   "url": "https://www.nea.org",
+   "says": "National Education Association | NEA The National Education Association (NEA) is more than 3 million people\u2014educators, s",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "growth-mindset-collaborative": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-school-public-relations-association": {
+   "url": "https://www.nspra.org",
+   "says": "Home\r\n National School Public Relations Association | The Leader in School Communication",
+   "tried": 4,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "operation-parent": {
+   "url": "https://www.operationparent.org",
+   "says": "Operation Parent\u00a0\u2013 Helping caregivers have casual, courageous conversations. helping parents have casual courageous conv",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "freedom-from-religion-foundation": {
+   "url": "https://ffrf.org",
+   "says": "Freedom From Religion Foundation \u2014 Freedom From Religion Foundation The Freedom From Religion Foundation supports the se",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "proximity-learning": {
+   "url": "https://www.proxlearn.com",
+   "says": "Live, Certified Virtual Teachers for K-12 Districts | Proximity Learning Fill K-12 teacher vacancies in days with live, ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "local-142-plumbers-pipefitters-union": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "right-at-school": {
+   "url": "https://www.rightatschool.com",
+   "says": "Before and After School Enrichment | Right At School Right At School provides before and after school enrichment in elem",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "safe-haven-defense-us": {
+   "url": "https://www.safehavendefense.com",
+   "says": "Safe Haven Defense | UL & NIJ-rated for schools, offices & more. We Protect the Glass\u2014You Buy Their  Tomorrow",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sandy-hook-promise": {
+   "url": "https://www.sandyhookpromise.org",
+   "says": "Sandy Hook Promise \u2014 Preventing Gun Violence Sandy Hook Promise educates and empowers youth and adults to know the signs",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "rti-international": {
+   "verdict": "not_found",
+   "tried": 18,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "rexel-usa": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "school-safety-solution": {
+   "url": "https://www.schoolsafetysolution.com",
+   "says": "School Safety Solution | Lockdown Shades, Locks & Kits American Express Discover Lockdown shades, classroom door locks, ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sodexo": {
+   "url": "https://www.sodexo.com",
+   "says": "Sodexo Group \u2013 Food Services & Facilities Management Food Services, perfected over 60 years.",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-training-institute": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "safety-care-by-qbs": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "school-social-work-association-of-america-sswaa": {
+   "url": "https://www.sswaa.org",
+   "says": "School Social Work Association of America | Home Explore the School Social Work Association of America (SSWAA), the only",
+   "tried": 10,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "spectraturf": {
+   "url": "https://www.spectraturf.com",
+   "says": "SpectraTurf - Playground Mulch, Turf, & Pour-in-Place Rubber Surfacing SpectraTurf makes outdoor playgrounds safe with d",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ultrafill": {
+   "url": "https://ultrafill.com",
+   "says": "UltraFill | Advanced Turf Infill Technology UltraFill provides cutting-edge turf infill for sports and landscaping appli",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "win-elements-llc": {
+   "url": "https://winelements.com",
+   "says": "Win Elements LLC Decentralized Phone Bans, LMS, and Hall Pass Win Elements Win Elements LLC  Win Elements  Phone-free cl",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "unitedhealthcare": {
+   "url": "https://www.uhc.com",
+   "says": "Health insurance plans | UnitedHealthcare Health insurance plans Explore health insurance options including Medicare, Me",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aaquatools-inc": {
+   "url": "https://aaquatools.com",
+   "says": "AaquaTools - Industrial Water-Driven Cleaning Products & Solutions Expand Expand Distributor and service provider of ind",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "accent": {
+   "url": "http://www.accent.com",
+   "says": "accent.com \n accent.com \n \n \n \n (noun) \n \u00a0 \n \n  1. \n A distinctive way of speaking; emphasis, prominence, or a distingui",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "acrisure-insurance": {
+   "url": "https://www.acrisure.com",
+   "says": "Insurance & Business Solutions from Acrisure  Acrisure connects ambitious people and entrepreneurs with the insurance an",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "yondr-phone-free-schools": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "advance-tire-inc": {
+   "url": "https://advancetire.com",
+   "says": "Global Commercial Tire Manufacturer | Advance Tyre Advance Tyre as a manufacturer, we are convinced that only through co",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "neca-ibew-powering-america": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "navajo-jewelry-and-crafts": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "air-and-water-systems": {
+   "url": "https://www.airwater.com",
+   "says": "AirWater - Waupun | Air Purifier & Water Filter Systems Madison WI Non-Chemical Air and Water Purification Systems and T",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "air-weigh": {
+   "verdict": "not_found",
+   "tried": 17,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aljon-by-c-c-manufacturing-llc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "alpine-shredding-trucks": {
+   "url": "https://alpineshreddingtrucks.com",
+   "says": "Shredding trucks that are easy to operate and simple to maintain. Shredding trucks that are easy to operate and simple t",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aei": {
+   "verdict": "not_found",
+   "tried": 9,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "naylor-wentworth-lund-architects": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ace-equipment-company": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-scale-co-inc": {
+   "url": "https://americanscale.com",
+   "says": "American Scale Company Inc. - Truck Scales, Scale Calibration We offer the best products in the scale industry.From Turn",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "amerex-corporation": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ap-equipment-financing": {
+   "url": "https://apfinancing.com",
+   "says": "Equipment Leasing, Financing Solutions & Dealership Partner AP Equipment Financing provides financing and business growt",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "action-vibratory-equipment": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ampliroll-hooklifts-marrel-corp": {
+   "url": "https://www.marrel.com",
+   "says": "Marrel Marrel : Leader historique dans la conception et la fabrication de solutions hydrauliques (bras de levage, multib",
+   "tried": 17,
+   "verdict": "found_review",
+   "matched_on": "Marrel Corp.",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ascentium-capital": {
+   "url": "https://ascentiumcapital.com",
+   "says": "Ascentium Capital Equipment Financing, Leasing & Working Capital Loans\r\n Ascentium Capital Equipment Financing, Leasing ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "archaea-energy-a-bp-company": {
+   "url": "https://www.bp.com/en-US/about-us/what-we-do/lower-carbon-energy/archaea-energy",
+   "says": "Archaea Energy bp logo Archaea Energy",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "strong-mind-performance-inc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aperia-technologies-inc": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "always-on-top-marketing-solutions": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "autocar-trucks": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bektra-corp": {
+   "url": "https://bektra.com",
+   "says": "Nuisance odours affecting your business? With over 25 years' experience, Bektra can help Bektra is a leading manufacture",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "b-tek-scales": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bayne": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "atro": {
+   "url": "https://www.atro.com",
+   "says": "Atro \u2014 Cybersecurity for Small Business Real security for teams that move fast. Expert-led cybersecurity and a modular p",
+   "tried": 7,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "911nurd-llc": {
+   "url": "https://911nurd.com",
+   "says": "911 Center IT Consulting & NG911 Solutions | 911 Nurd 911 Nurd helps public safety enhance NG911, CAD, data, and operati",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "benlee": {
+   "url": "https://www.benlee.com",
+   "says": "Roll-Off Trailer & Truck Manufacturer | BENLEE | Romulus, MI BENLEE manufactures the lightest heavy duty roll off traile",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "society-for-public-health-education": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "apco-international-leaders-in-public-safety-communications": {
+   "url": "https://www.apcointl.org/",
+   "final": "https://www.apcointl.org",
+   "says": "APCO International - Leaders in Public Safety Communications APCO International APCO International RESPOND & SAVE LIVES",
+   "present": [
+    "apco",
+    "leaders",
+    "in",
+    "public",
+    "safety",
+    "communications"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.apcointl.org/"
+  },
+  "bodybilt": {
+   "url": "https://bodybilt.com",
+   "says": "Ergonomic Chairs, Desks & Workplace Furniture | BodyBilt Enhance comfort and style with our Ergonomic Home & Office Furn",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "binder-co-usa-inc": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "amandus-kahl": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "chicago-communications": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ispfcu": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cordogan-clark-associates-inc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cloudpoint-geospatial": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "prescient-solutions": {
+   "url": "https://www.prescientsolutions.com",
+   "says": "Managed IT Services Provider Chicago | Prescient Solutions Prescient Solutions is a managed IT services Chicago provider",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "promos-911-inc": {
+   "url": "https://www.promos911.com",
+   "says": "Promos 911\u00ae Inc. - Halloween Promos 911\u00ae ,Inc. specializes in promotional products for the Fire, EMS and Police industri",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ottosen-dinolfo-hasenbalg-castaldo-ltd": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "rwk-it-services": {
+   "url": "https://rwkit.io",
+   "says": "RWKIT Consulting \u2014 Exceptional Engineering for the AI era RWKIT Consulting: senior, hands-on help across strategy, data,",
+   "tried": 2,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "seatworks-llc": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "thomas-shelby-company-inc": {
+   "url": "https://www.thomasshelby.com",
+   "says": "Thomas Shelby  | Explore Public Safety Solutions Thomas Shelby  Thomas Shelby  | Explore Public Safety Solutions Thomas ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "us-signal": {
+   "url": "https://ussignal.com",
+   "says": "Enterprise Cloud, Data Center & IT Services | US Signal Discover secure, scalable enterprise cloud solutions from US Sig",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "winsor-consulting-group-llc": {
+   "url": "https://www.winsorconsulting.com",
+   "says": "Managed IT Services & Cybersecurity | Winsor Consulting Follow us on LinkedIn Follow us on Facebook Managed IT services ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "evans": {
+   "url": "https://evansd.net",
+   "says": "Dave Evans \u2014 Software Consultancy Dave .  Evans",
+   "tried": 2,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "winsted-consoles": {
+   "url": "https://www.winsted.com",
+   "says": "Control Room Consoles & Mission Critical Furniture | Global Leader Since 1963 | Winsted Winsted Control Room Consoles & ",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "falcon-public-safety": {
+   "url": "https://falconpublicsafety.com",
+   "says": "Falcon Public Safety Solutions Falcon Public Safety Solutions Falcon Public Safety Solutions Welcome",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "corvalent-corporation": {
+   "url": "https://corvalent.com",
+   "says": "Industrial Computing and IoT Solutions | Corvalent Explore Corvalent\u2019s USA-designed industrial computing solutions: long",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "eversource-energy": {
+   "url": "https://www.eversource.com/residential",
+   "says": "Residential Energy Provider | Eversource \r\n Eversource 52165A8B-94D0-4047-B3E7-28612F9584DA Residential Energy Provider ",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "deloitte-consulting-llp": {
+   "url": "https://www.deloitte.com/us/en.html",
+   "says": "Deloitte US | Together Makes Progress Discover industry insights and audit, tax, and consulting services that drive impa",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "black-diamond-equipment": {
+   "url": "https://blackdiamondequipment.com",
+   "says": "Black Diamond\u00ae Equipment | Climb. Ski. Run. Hike.\n wamlogo Untitled-2 Black Diamond Equipment is engineered for the moun",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "advantage-construction-equipment": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "balemaster": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "peake-media": {
+   "url": "https://peakemedia.com",
+   "says": "Peake Media \u2014 We Help Leaders Build Better Organizations Peake Media helps leaders build better organizations through tr",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "litemirror-glassless-mirror-mfrs-inc": {
+   "url": "https://litemirror.com",
+   "says": "LiteMirror \u2013 Premium glass-free mirrors American Express Apple Pay Shatterproof glassless mirrors for any space. Handmad",
+   "tried": 7,
+   "verdict": "found_review",
+   "matched_on": "LiteMirror",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wold-architects-engineers": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "health-fitness-association": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "roppe-holding-company": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "tanita-corp-of-america": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "big-dog-promo-inc": {
+   "url": "https://bigdogpromo.com",
+   "says": "Home - Big Dog Promo, Inc Home - Big Dog Promo, Inc Big Dog Promo, Inc  Thousands of products at your fingertips.   Thou",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "osf-life-flight": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "mobile-communications-america": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aramark-student-nutrition": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-concrete-institute": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "copperweld": {
+   "url": "https://www.copperweld.com",
+   "says": "Discover Copperweld Bimetallic Building Wire Solutions Upgrade Your  Building Wire Why Hi Power\u2019s CEO Chose Copperweld B",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bonded-lightning-protection-systems": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cast-iron-soil-pipe-institute": {
+   "url": "https://www.cispi.org",
+   "says": "Cast Iron Soil Pipe Institute \n\t\t\t\t \n\t\t\t\t\tTHE IRON-CLAD TRUTH:\t\t\t\t \n\t\t\t Not all soil pipe is created equal.",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "denlar-fire-protection": {
+   "url": "https://denlarhoods.com",
+   "says": "Denlar Fire Protection | UL300A Range Hood Safety Solutions Denlar Fire Prevention Denlar Fire Protection has been engin",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ecs-limited": {
+   "url": "https://www.ecslimited.com",
+   "says": "Engineering Consulting Services | ECS  We are a leader in geotechnical, construction materials, environmental and facili",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "1-800-boardup": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "centrotherm-eco-systems": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "association-of-state-floodplain-managers": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "firestop-contractors-international-association-fcia": {
+   "url": "https://www.fcia.org",
+   "says": "FCIA Home\r\n \u00a0 Who is FCIA?",
+   "tried": 11,
+   "verdict": "found_review",
+   "matched_on": "FCIA",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "insulclip": {
+   "url": "https://insulclip.com",
+   "says": "InsulClip \u2014 Thermally Pre-Insulated Pipe Clamp | ICC Recognized InsulClip CozyClip is the only ICC-recognized thermally ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "b-f-construction-code-services-inc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "gastite": {
+   "url": "https://www.gastite.com/us/index.html",
+   "says": "Gastite Flexible Gas Piping System Gastite provides corrugated stainless steel gas piping for propane and natural gas in",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "building-fire-code-academy": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "intertek": {
+   "url": "https://www.intertek.com",
+   "says": "Intertek Intertek Flag for Argentina Intertek Total Quality. Assured.",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "global-fireproof-solutions": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ipex-usa-llc": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "iplantables": {
+   "url": "https://www.iplantables.com",
+   "says": "Led Touch Screen Monitor Workstations | Boost Work Efficiency Toggle Menu Unlock the full potential of your workstation ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lakeside-consultants": {
+   "url": "https://lakesideconsultants.net",
+   "says": "Lakeside Consultants - Modern Regulation Solutions for Communities and companies. Lakeside Consultants delivers modern r",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "jhw-plan-review-services-llc": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lintellift": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hoover-treated-wood-products": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lowe-s-home-centers-llc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "maxitrol": {
+   "url": "https://www.maxitrol.com",
+   "says": "Maxitrol \u2013 Efficient technology for the gas industry",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "e-plan-exam": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-gypsum-company": {
+   "url": "https://www.nationalgypsum.com:443",
+   "says": "National Gypsum\u00ae Company | Gypsum Board Suppliers National Gypsum\u00ae is a leading supplier of gypsum board and drywall pro",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-fire-sprinkler-association": {
+   "url": "https://nfsa.org",
+   "says": "Home - National Fire Sprinkler Association Example Code for Informz Tracking For over a century, the National Fire Sprin",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "municipal-inspection-partners": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "omega-flex-inc": {
+   "url": "https://omegaflex.com",
+   "says": "Omega Flex, Inc. - Flexible Metal Hose & Braid Products and Stainless Steel Tubing",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-ready-mixed-concrete-association": {
+   "url": "https://www.nrmca.org",
+   "says": "Home | NRMCA Home National Ready Mixed Concrete Association, NRMCA, leading concrete industry association, providing lea",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "pin-foundations-inc": {
+   "verdict": "not_found",
+   "tried": 17,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "pfs-teco-an-nfpa-global-solutions-company": {
+   "url": "https://www.nfpaglobalsolutions.com",
+   "says": "Global Safety Solutions: Fire, Life, and Electrical Safety Simplified | NFPA Global Solutions\u2122 Your Partner for  NFPA 25",
+   "tried": 15,
+   "verdict": "found_review",
+   "matched_on": "NFPA Global Solutions Company",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "resnet": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "schluter-systems": {
+   "url": "https://www.schluter.com/schluter-us/en_US",
+   "says": "Schluter | Homepage\r\n        \r\n               \r\n    \r\n For the installer, by the installer. Schluter\u00ae- Systems is dedica",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-firestop-council": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lightning-protection-institute": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "spri-inc": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "structural-building-components-association-sbca": {
+   "url": "https://www.sbca.org/pages/Home.cfm",
+   "says": "SBCA Satellite Broadcasting & Communications Association The SBCA Satellite Broadcasting & Communications Association of",
+   "tried": 3,
+   "verdict": "found_review",
+   "matched_on": "SBCA",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "tenmat-inc": {
+   "url": "https://www.tenmat.com",
+   "says": "Leading Manufacturer of Passive Fire Protection Materials - Tenmat Advanced passive fire protection materials for reside",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "shums-coda-associates-inc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "tennessee-building-officials-association": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "united-lightning-protection-association-ulpa": {
+   "url": "https://ulpa.org",
+   "says": "HOME - ULPA HOME - ULPA ULPA Lightning \r\nPROTECTION.\r\nSAFETY.\r\nEDUCATION. LEARN MORE    \r\nPromoting Lightning Protection",
+   "tried": 3,
+   "verdict": "found_review",
+   "matched_on": "ULPA",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-code-council": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-association-of-electrical-inspectors": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "true-north-compliance-services-inc": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wiced-women-in-code-enforcement-and-development": {
+   "verdict": "not_found",
+   "tried": 18,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aabc-commissioning-group-acg": {
+   "url": "https://aabc.com",
+   "says": "Home - AABC - Associated Air Balance Council The AABC Commissioning Group is dedicated to the advancement of independent",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "4m-building-solutions": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "acc-premiere": {
+   "url": "https://accpremiere.com",
+   "says": "Home - ACC Premiere Boost Customer Experience with ACC Premiere. Outsourced customer service solutions tailored to your ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "women-leaders-in-code-enforcement": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "afr-furniture-rental": {
+   "url": "https://www.afrfurniturerental.com",
+   "says": "About AFR Furniture Rental \u2013 AFR Furniture Rental AFR Furniture Rental makes it easy to rent furniture for your home, ap",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aaf-international": {
+   "verdict": "not_found",
+   "tried": 18,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "simpson-strong-tie": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "visionary-integration-professionals-llc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aaeon": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.aaeon.org-d0761a06-9950-4a51-a8cf-4fca882ad8e8.html"
+  },
+  "afl": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.afl.org-7f98b9da-bc40-45bf-868c-26a185f3944e.html"
+  },
+  "international-facility-management-association-ifma": {
+   "url": "https://www.ifma.org",
+   "says": "IFMA - International Facility Management Association Join the International Facility Management Association (IFMA) for c",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "pride-industries": {
+   "url": "https://www.prideindustries.com",
+   "says": "PRIDE Industries Business Services and Sustainable Employment PRIDE Industries provides competitive business services to",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "amg-systems": {
+   "url": "https://amgsystems.com",
+   "says": "AMG Systems | Industrial Network Transmission Solutions Industrial IP/Ethernet, Fibre Optic, PoE & Wireless network tran",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.amg%20systems.org-91053a65-79f0-4ca6-91ac-6ebfe2e19b75.html"
+  },
+  "verisk-analytics-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "b-b-roadway": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.bb%20roadway.org-88ec7bfd-2e2a-4cd1-af0c-379b1e7b7c20.html"
+  },
+  "at-t-connected-solutions": {
+   "verdict": "listing_site",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.att%20connected%20solutions.org-9dbe87f5-da24-4f79-a775-fe8ad35d6328.html"
+  },
+  "brainboxes": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.brainboxes.org-c49f6278-3112-4f19-a89c-06831caaa980.html"
+  },
+  "brandmotion": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.brandmotion.org-30ddcce8-49a0-4032-9834-64f6b69655fe.html"
+  },
+  "assa-abloy-opening-solutions": {
+   "verdict": "listing_site",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.assa%20abloy%20opening%20solutions.org-a5728eac-a148-48d3-9d66-f5053982c713.html"
+  },
+  "claro": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.claro.org-819a8a38-94a1-418d-8c28-9d2c08903390.html"
+  },
+  "clary-corp": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.clary%20corp.org-53aa057b-be42-48b9-91f2-a96832c992db.html"
+  },
+  "chainzone-technology-foshan-co-ltd": {
+   "url": "https://www.chainzone.com",
+   "says": "25+ Years | Intelligent Traffic & Digital Display Solutions | CHAINZONE With 25+ years, 10,000+ installations, and reach",
+   "tried": 7,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.chainzone%20technology%20foshan%20co%20ltd.org-aa5824b3-b515-4a1e-a3ab-7dc06a5d6c8e.html"
+  },
+  "comnet": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.comnet.org-ca534c17-1da3-4edf-b577-757c9e2acc2b.html"
+  },
+  "national-lightning-protection": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "fire-safety-consultants-inc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "encom-wireless": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.encom%20wireless%20data%20solutions%20inc.org-e9d3097a-da09-4b6b-87e7-002dcc4ae464.html"
+  },
+  "e-con-systems-inc": {
+   "url": "https://con-systems.com",
+   "says": "\u30b3\u30f3\u30b7\u30a7\u30eb\u30b8\u30e5\u30fb\u30b7\u30b9\u30c6\u30e0\u30ba CONCIERGE SYSTEMS - \u30b3\u30f3\u30b7\u30e5\u30eb\u30b8\u30e5\u30fb\u30b7\u30b9\u30c6\u30e0\u30ba CONCIERGE SYSTEMS\uff08\u30b3\u30f3\u30b7\u30a7\u30eb\u30b8\u30e5\u30fb\u30b7\u30b9\u30c6\u30e0\u30ba\uff09\uff5c\u5404\u7a2e\u30b7\u30b9\u30c6\u30e0\u69cb\u7bc9\u3001\u904b\u7528\uff5c\u30b7\u30a7\u30a2\u30ea\u30f3\u30b0\u30a8\u30b3\u30ce\u30df\u30fc\u3001\u6b21\u4e16\u4ee3\u30a8\u30cd\u30eb\u30ae\u30fc\u4fc3\u9032\u4e8b\u696d\uff08\u53d6\u6750",
+   "tried": 5,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.e-con%20systems%20inc.org-cb8b6516-fbac-432f-b81d-93151db99e02.html"
+  },
+  "enersys": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.enersys.org-2fb8ad1e-7f68-4727-b144-d66ab98c1647.html"
+  },
+  "codel-international": {
+   "verdict": "listing_site",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.codel%20international%20ltd.org-73118aa8-22d6-4408-aab6-25731531086d.html"
+  },
+  "applied-concepts-inc": {
+   "url": "https://www.appliedconcepts.com",
+   "says": "Applied Concepts | Automotive Sales & Phone Skills Training Applied Concepts is North America Applied Concepts Applied C",
+   "tried": 12,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.applied%20concepts%20inc.org-f355cdac-d982-4440-90bb-fa597042a41f.html"
+  },
+  "fischer-consulting-inc": {
+   "url": "https://fischerconsulting.co",
+   "says": "Fischer Consulting | Personalized AI Coaching in the South Bay, Los Angeles One-on-one AI coaching built around the work",
+   "tried": 4,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.fischer%20consulting%20inc.org-74ab5196-dbe5-414a-ab31-95f057c2fa1a.html"
+  },
+  "logison-acoustic-network": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "houston-radar-llc": {
+   "url": "https://houston-radar.com",
+   "says": "Houston Radar Traffic and Data Radars - Home - Houston Radar We design and manufacture 24Ghz K-Band radars for speed mea",
+   "tried": 5,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.houston%20radar%20llc.org-15cc8b8f-522e-40d7-b802-dfd045522356.html"
+  },
+  "inex-net": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.inexnet.org-f5cc0f99-d1d7-42ba-87bb-9fc4eee3a889.html"
+  },
+  "etherwan-systems": {
+   "verdict": "listing_site",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.etherwan%20systems.org-b884d12b-5fed-4983-a655-3a3b05d4c4ec.html"
+  },
+  "its-america": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.its%20america.org-dc0f51e3-520b-47ea-813d-7c6eefbbac21.html"
+  },
+  "its-canada": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.its%20canada.org-2b141e40-3b53-4e48-8f14-c43cf5316c2b.html"
+  },
+  "kipp-zonen-lufft": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kipp%20%20zonen%20-%20lufft.org-c70d3744-e266-465d-82ce-25910c66f724.html"
+  },
+  "ibm-consulting-state-and-local-government": {
+   "verdict": "listing_site",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.ibm%20consulting%20state%20and%20local%20government.org-5aae5919-aba2-47af-8e1d-09f70c60e989.html"
+  },
+  "maxcell": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.maxcell.org-739d6eda-99ff-4a66-a1f4-fd6df1402e9c.html"
+  },
+  "mg-squared-inc": {
+   "url": "https://www.mgsquared.com",
+   "says": "MG Squared, Inc. - MG Squared - Innovative Technology MG Squared, Inc. MG Squared - Innovative Technology Headquartered ",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name came off an association site that also yielded menu items",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.mg%20squared%20inc.org-7381d297-0909-4210-b905-c7b23c40a700.html"
+  },
+  "mh-corbin": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.mh%20corbin.org-521ed569-bd92-4885-819d-921bd0b1cda2.html"
+  },
+  "safepath": {
+   "verdict": "listing_menu",
+   "tried": 0,
+   "why": "off an association's own site and does not read like a company",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.safepath.org-b2edfa8e-74a1-4853-8d21-fd22c48bf11a.html"
+  },
+  "b-b-roadway-security-solutions": {
+   "verdict": "listing_site",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.bb%20roadway.org-88ec7bfd-2e2a-4cd1-af0c-379b1e7b7c20.html"
+  },
+  "engineered-corrosion-solutions-llc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ascent-funding": {
+   "url": "https://www.ascentfunding.com",
+   "says": "Student Loans for Undergrad and Grad School | Ascent Funding Student loans for undergrad and grad school, with or withou",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "encom-wireless-data-solutions-inc": {
+   "verdict": "listing_site",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.encom%20wireless%20data%20solutions%20inc.org-e9d3097a-da09-4b6b-87e7-002dcc4ae464.html"
+  },
+  "ascendium-the-most-trusted-source-for-student-loan-repayment-support": {
+   "url": "https://www.ascendiumeducation.org",
+   "says": "Home | Ascendium Education Group Ascendium is a nonprofit organization on a mission to make education and training beyon",
+   "tried": 7,
+   "verdict": "found_review",
+   "matched_on": "Ascendium",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hunan-nanoradar-science-technology-co-ltd": {
+   "verdict": "listing_site",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.hunan%20nanoradar%20science%20technology%20co%20ltd.org-2e20172b-1b5c-4e7c-a3f5-b030f2248058.html"
+  },
+  "kistler-instrument-corp": {
+   "verdict": "listing_site",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.kistler%20instrument%20corp.org-5b1fe25e-40d9-4521-b919-328303c0d8c4.html"
+  },
+  "college-ave": {
+   "url": "https://www.collegeave.com",
+   "says": "Education Loans & College Planning Resources | College Ave College Ave was built to take the stress out of paying for co",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "earnest": {
+   "url": "https://www.earnest.com:443",
+   "says": "Award-winning loans with competitive rates, designed for you | Earnest Facebook icon LinkedIn icon Earnest Earnest, Nerd",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "blue-icon-advisors-nasfaa-consulting": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-road-federation": {
+   "verdict": "listing_site",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.international%20road%20federation.org-7f3d4bd9-c518-4a50-9088-5d90b26d1624.html"
+  },
+  "citizens-college-raptor": {
+   "url": "https://citizens.org",
+   "says": "Citizens for Health - Citizens for Health Citizens for Health - Citizens for Health Citizens for Health",
+   "tried": 16,
+   "verdict": "found_review",
+   "matched_on": "Citizens\u00ae",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "funding-u": {
+   "url": "https://funding.com",
+   "says": "Funding.com | Financing for premium domains and IPv4 addresses Financing for premium domain names and IPv4 address block",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "elfi": {
+   "url": "https://www.elfi.com",
+   "says": "ELFI | Student Loan Refinance & Private Student Loans Refinance student loans or apply for private loans with competitiv",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "gradbridge-inc": {
+   "url": "https://gradbridge.com",
+   "says": "Second-Look Student Loans | GradBridge Denied by a traditional lender? GradBridge offers second-look student loans that ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cmd-outsourcing-solutions-inc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ecmc": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lendkey": {
+   "url": "https://www.lendkey.com",
+   "says": "Student Loans, Student Loan Refinancing & Home Improvement Loans Get loans for college, refinance your federal and priva",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "inceptia": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "mcclintock-associates-p-c": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "massachusetts-educational-financing-authority": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "edamerica": {
+   "url": "https://edamerica.net",
+   "says": "Edamerica Partner with Edamerica to provide outstanding customer service to current and prospective students. Our outsou",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nelnet-bank": {
+   "url": "https://www.nelnetbank.com",
+   "says": "Nelnet Bank | Supporting Your Financial Journey Nelnet Bank rewards success along your financial journey with support fr",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sallie": {
+   "url": "https://www.sallie.com",
+   "says": "Sallie - Higher Education Solutions Tailored to You Sallie is your go-to for higher education needs. From free money for",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "proeducation-solutions-llc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "monogram": {
+   "url": "https://monogram.io",
+   "says": "Applied AI Studio | Monogram Monogram logo Monogram helps companies design, build, and deploy AI systems that connect wi",
+   "tried": 2,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sofi": {
+   "url": "https://www.sofi.com",
+   "says": "SoFi: Banking, Loans, Invest, Credit Card, & Mortgages Why do 15.8M members trust SoFi? Financial solutions for school, ",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bus-upfitters": {
+   "url": "https://busupfitters.com",
+   "says": "BusUpfitters | School Bus Aftermarket Installation Services School Bus Aftermarket Installation Services Conway Arkansas",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "best-practice-solutions-llc": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "downtime-subrogation-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "eco-flaps": {
+   "url": "https://ecoflaps.com",
+   "says": "Home | Eco Flaps \n                Aerodynamic Splash Guards Built to Improve   Safety   and   Fuel Economy",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "south-carolina-student-loan-corporation": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ptsi": {
+   "url": "https://www.ptsi.com",
+   "says": "Home | Ptsi Copy Home | Ptsi Copy Ptsi Copy",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nasfaa": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "zenobe": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "blocksom-co-and-fiber-bond-operating-llc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "duratrench-the-drain-brains": {
+   "url": "https://www.duratrench.com",
+   "says": "Trench Drain Systems Manufacturer | United States | Eric'sons Dura Trench Eric'sons manufacturers quality, easy to insta",
+   "tried": 7,
+   "verdict": "found_review",
+   "matched_on": "DuraTrench",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "environmental-protection-agency": {
+   "url": "https://environmentalprotectionagency.net",
+   "says": "Environmental Protection Agency (EPA) Government Relief Environmental Protection Agency - Stay updated on environmental ",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nmsa": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "denso-products-and-services-americas-inc": {
+   "verdict": "listing_site",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "listing_host": "itsamericaevents.com",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.itsamericaevents.com/expo/en-us/exhibitor-list/exhibitor-details.denso%20products%20and%20services%20americas%20inc.org-4148a62a-0ae3-429a-b54c-2771bb7c7d0a.html"
+  },
+  "stormtank": {
+   "url": "https://www.brentwoodindustries.com/products/stormwater",
+   "says": "Stormwater Management Products | Brentwood Industries Go Beyond Stormwater Management with Stormtank. Our Module, Pack, ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-century": {
+   "url": "https://www.americancentury.com/home",
+   "says": "American Century Investments\u00ae | Redefining Healthy Returns Supporting your financial world and the health of the whole w",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "college-aid-services-llc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "amergis-staffing": {
+   "url": "https://www.amergis.com",
+   "says": "Amergis Healthcare Staffing: Staffing and Workforce Solutions Perform search. We are a healthcare staffing agency dedica",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "navy-federal-credit-union": {
+   "url": "https://www.navyfederal.org",
+   "says": "Navy Federal Credit Union | Banking, Loans, Mortgages & Credit Cards | Navy Federal Credit Union NFCU Desktop Logo Navy ",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "zurn-industries-llc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aztec-products": {
+   "url": "https://aztecproducts.com",
+   "says": "Aztec Products Propane Floor Machines Aztec Products manufactures concrete floor grinders, automatic scrubbers, floor bu",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "advantage-one-powered-by-geotab": {
+   "verdict": "not_found",
+   "tried": 28,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aspire-financial-services": {
+   "url": "https://aspirebanks.com",
+   "says": "Banking Services | Aspire Bank | Fargo ND Discover top-notch banking services at Aspire Bank in Fargo, ND, offering pers",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "michelin-north-america": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "camcode": {
+   "url": "https://camcode.com",
+   "says": "Durable Barcode Labels for Asset Tracking - Camcode Camcode durable barcode labels are ideal for warehouse & industrial ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "arizona-asbo": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "asbo-international": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bic-corporation": {
+   "verdict": "not_found",
+   "tried": 9,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "corebridge-financial": {
+   "url": "https://www.corebridgefinancial.com",
+   "says": "Corebridge Financial Take action today to build a bridge for tomorrow\u2014from planning to outcomes, from meeting today\u2019s fi",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "daybright-financial": {
+   "url": "https://www.daybright.com",
+   "says": "Daybright - Daybright Financial Continue Continue Helping employers across industry sectors address their talent, recrui",
+   "tried": 7,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "arthur-j-gallagher-services-uk-ltd": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "center-for-effective-school-operations": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "collaborative-student-transportation-cst": {
+   "url": "https://www.3ds.com/products/simulia/cst-studio-suite",
+   "says": "CST Studio Suite | SIMULIA - Dassault Syst\u00e8mes Home Dassault Syst\u00e8mes CST Studio Suite\u00ae is a high-performance 3D EM anal",
+   "tried": 7,
+   "verdict": "found_review",
+   "matched_on": "CST",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "energy-systems-group": {
+   "url": "https://energysystemsgroup.com",
+   "says": "Infrastructure Solutions, Simplified | ESG Empowering your vision to transform the built world as a leading engineering ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "daikin-applied-america-s": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bmo": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "foster-foster": {
+   "url": "https://www.fosterfoster.com",
+   "says": "Foster   Foster Foster",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ffga": {
+   "url": "https://www.ffga.com",
+   "says": "Home | FFGA At FFGA we believe there is value in face-to-face communication, which is why we provide each group with its",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "energy-efficient-investments-inc-eei": {
+   "url": "https://www.eei.org",
+   "says": "Home  search EEI Home",
+   "tried": 12,
+   "verdict": "found_review",
+   "matched_on": "EEI",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "horace-mann": {
+   "url": "https://horacemann.com",
+   "says": "Horace Mann Corporation | Auto, Property, Supplemental, Life Insurance and Retirement Annuities Horace Mann Horace Mann ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "franklin-templeton": {
+   "url": "https://www.franklintempleton.com",
+   "says": "Franklin Templeton",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "power-grid-energy-solutions-llc": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "district-first": {
+   "url": "https://districtfirst.org",
+   "says": "Independent K\u201312 Student Transportation Advisory | District First District First helps school districts uncover hidden s",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lincoln-investment": {
+   "url": "https://www.lincolninvestment.com",
+   "says": "Lincoln Investment - Home Full-service broker-dealer and registered investment adviser, serving over 315,000 investors, ",
+   "tried": 12,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hylant-administrative-services": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-life-group": {
+   "url": "https://www.nationallife.com",
+   "says": "Life Insurance | Financial Services | Retirement Planning | National Life Group National Life Group offers life insuranc",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "bradley-payne": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "e-rate-online-llc": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-association-for-pupil-transportation": {
+   "verdict": "not_found",
+   "tried": 10,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ntsa": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "parent-booster-usa": {
+   "url": "https://parentbooster.org",
+   "says": "We Know Booster Clubs | Parent Booster USA Parent Booster USA makes it easy to start and run a booster club.  We provide",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "schoolfirm": {
+   "url": "https://schoolfirm.org",
+   "says": "School FIRM",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "penserv-plan-services-inc": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "mcclure-company": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "security-benefit": {
+   "url": "https://www.securitybenefit.com/splash-page",
+   "says": "Security Benefit: To and Through Retirement\u00ae Security Benefit is a leading retirement solutions provider in Topeka, KS. ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "records-consultants-inc": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ohio-schools-council": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "staples-business": {
+   "url": "https://www.staplesadvantage.com",
+   "says": "Staples Business | Solutions for Business Staples Business (formerly Staples Advantage) experts are dedicated to moving ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "mgt-impact-solutions": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sfe-southwest-foodservice-excellence": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "trane-technologies": {
+   "url": "https://www.tranetechnologies.com/en/index.html",
+   "says": "Trane Technologies | A Leader in Climate and Sustainability Welcome to Trane Technologies. As a world leader in creating",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "siemens-smart-infrastructure": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "shutterfly-lifetouch-lls": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-insurance-services": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "attainment-company-inc": {
+   "url": "https://www.attainmentcompany.com",
+   "says": "Attainment Company Home Founded in 1979, Attainment Company is an independent, family-owned business based in Verona, Wi",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "attain-therapies": {
+   "verdict": "not_found",
+   "tried": 20,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "brookes-publishing": {
+   "url": "https://brookespublishing.com",
+   "says": "Professional resources and assessments for early childhood, K-12, special education, and higher education | Brookes Publ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "aya-education": {
+   "url": "https://www.ayaeducation.com",
+   "says": "School-Based Healthcare & Education Jobs | Aya Education Find school healthcare and education jobs for special education",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-institutes-for-research": {
+   "url": "https://www.air.org",
+   "says": "Home | American Institutes for Research Home | American Institutes for Research American Institutes for Research \u00ae",
+   "tried": 12,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "sodexo-north-america": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "central-institute-for-the-deaf": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "carestaff-partners": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "clark-county-school-district": {
+   "url": "https://www.ccsd.edu",
+   "says": "Home - Clarkstown Central School District The virtual home of the Clarkstown Central School District, located in Rocklan",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "albion-center-for-professional-development": {
+   "verdict": "not_found",
+   "tried": 17,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "dcdt-lce": {
+   "url": "https://forsale.dynadot.com/dcdt.com?drefid=2071",
+   "says": "For Sale Domain: dcdt.com",
+   "tried": 7,
+   "verdict": "found_review",
+   "matched_on": "DCDT",
+   "why": "the page names part of their listed name",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "eluma": {
+   "url": "https://eluma.com",
+   "says": "Special Education Services & Therapy for K-12 School Districts eLuma provides K-12 districts with speech therapy, school",
+   "tried": 1,
+   "verdict": "found_review",
+   "why": "the name is too short to be sure",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "council-of-administrators-of-special-education": {
+   "verdict": "not_found",
+   "tried": 8,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "dadd-division-on-autism-and-developmental-disabilities": {
+   "verdict": "not_found",
+   "tried": 11,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "davidson-institute": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "miracle-method-surface-refinishing": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "gillem-staffing": {
+   "url": "https://gillemstaffing.com",
+   "says": "Gillem Staffing \u2013 School Special Education Staffing    Gillem Staffing",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "handle-with-care": {
+   "url": "https://handlewithcare.com",
+   "says": "Handle With Care Handle With Care - Everyone Deserves to be Safe - We offer highly specialized training that teaches the",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "florida-tech": {
+   "url": "https://www.fit.edu",
+   "says": "www.fit.edu | Florida Tech Florida Tech is a tier 1 ranked university with programs in science, engineering, aeronautics",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "imse-institute-for-multi-sensory-education": {
+   "url": "https://imse.com",
+   "says": "IMSE | Institute for Multi-Sensory Education Orton-Gillingham is a sequential, multi-sensory approach to teach literacy.",
+   "tried": 5,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "fairbanks-north-star-borough-school-district": {
+   "verdict": "not_found",
+   "tried": 18,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "iris-center": {
+   "url": "https://iris.peabody.vanderbilt.edu",
+   "says": "IRIS Welcome to the IRIS Center! IRIS",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "friends-on-the-block": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "hands-on-english-with-linking-blocks": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "letterland": {
+   "url": "https://letterland.com",
+   "says": "Letterland Phonics \u2013 Letterland UK Whether you're a teacher in class or a parent at home, we publish everything you need",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "jkm-training-inc-safe-crisis-management-training-programs": {
+   "verdict": "not_found",
+   "tried": 15,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "guided-hands-by-imaginable-solutions": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "maxim-healthcare-services": {
+   "url": "https://www.maximhealthcare.com",
+   "says": "Maxim Healthcare | Elevating Care to Empower Lives Maxim Healthcare provides skilled, in-home care tailored to each pati",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "kid-spark-education": {
+   "verdict": "not_found",
+   "tried": 23,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-down-syndrome-society": {
+   "url": "https://ndss.org",
+   "says": "National Down Syndrome Society (NDSS) Creating a world where individuals with Down syndrome thrive National Down Syndrom",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "new-story": {
+   "url": "https://newstory.com",
+   "says": "Welcome to New Story Our passionate teams foster continuous learning to ensure all children and young adults we support ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "next-level-speech-therapy-p-c": {
+   "url": "https://nextlevelspeech.com",
+   "says": "Next Level Speech Therapy \u2013 In-person & online speech therapy for school districts Discover how school-based SLPs are us",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "unified-protective-services-inc": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-center-on-academic-interventions": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "plural-publishing": {
+   "url": "https://www.pluralpublishing.com",
+   "says": "Textbook Publishers | Academic Publishing | Plural Publishing Plural Publishing is a leader in academic publishing among",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "math-teachers-press-inc": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "salt-creek-learning": {
+   "url": "https://saltcreeklearning.com",
+   "says": "Home - Salt Creek Learning Salt Creek Learning \u2013 PD Homepage Section Salt Creek Learning \u2013 Virtual SPED Services Homepag",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "scanning-pens-inc": {
+   "url": "https://www.scanningpens.com",
+   "says": "Scanning Pens | Discover a love of reading with reading pens Welcome to Scanning Pens, an award-winning portable assisti",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "school-outfitters": {
+   "url": "https://www.schooloutfitters.com",
+   "says": "School Furniture | School Outfitters Great School Furniture. Superior Service.",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "purpose-driven-educator-entrepreneurs": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "star-autism-support": {
+   "url": "https://starautismsupport.com",
+   "says": "STAR Autism Support | Home Evidence-based practices.",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "teach-love-autism": {
+   "url": "https://teachloveautism.com",
+   "says": "Teach Love Autism | Special Education Teaching Resources Round Button Teach Love Autism Website Teach Love Autism Get th",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "touchmath": {
+   "url": "https://touchmath.com",
+   "says": "Home TouchMath is a multisensory math program that makes critical math concepts appealing and accessible for students wh",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "a-rifkin-co-fitness-on-the-job-division": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ceedar-center": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "university-of-florida-literacy-institute-ufli": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "university-of-oregon-center-on-teaching-and-learning": {
+   "verdict": "not_found",
+   "tried": 9,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "zen-educate": {
+   "url": "https://www.zeneducate.com",
+   "says": "Teaching Jobs, Supply Teaching & TA Jobs Across the UK | Zen Educate Find teaching jobs, supply teaching work and teachi",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wilson-language-training-corp": {
+   "url": "https://www.wilsonlanguage.com",
+   "says": "Homepage - Wilson Language Training Wilson's evidence-backed, multi-tiered reading system empowers students to become fl",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "columbia-southern-university-nacvso": {
+   "url": "https://www.columbiasouthern.edu/nacvso",
+   "final": "https://www.columbiasouthern.edu",
+   "deep_link_dead": true,
+   "says": "An Online University with Unlimited Possibilities | Columbia Southern University Columbia Southern University Home Page ",
+   "present": [
+    "columbia",
+    "southern",
+    "university"
+   ],
+   "missing": [
+    "nacvso"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Columbia Southern University",
+    "Academics"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.columbiasouthern.edu/nacvso"
+  },
+  "university-of-wyoming": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "delta-dental-insurance-home": {
+   "url": "https://www1.deltadentalins.com/",
+   "final": "https://www1.deltadentalins.com",
+   "says": "Plans for individuals and groups | Delta Dental Discover affordable dental insurance plans at Delta Dental. Get coverage",
+   "present": [
+    "delta",
+    "dental",
+    "insurance"
+   ],
+   "missing": [
+    "home"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Delta Dental Insurance home",
+    "Plans for individuals and groups"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www1.deltadentalins.com/"
+  },
+  "memberdeals": {
+   "verdict": "unreadable",
+   "url": "https://memberdeals.com/nacvso/?login=1",
+   "why": "AtsError: HTTP 403 for https://memberdeals.com/nacvso/?login=1",
+   "home_tried": true,
+   "checked_on": "2026-10-19",
+   "website_was": "https://memberdeals.com/nacvso/?login=1"
+  },
+  "novi-ams": {
+   "url": "https://www.noviams.com",
+   "final": "https://www.noviams.com",
+   "says": "Association Management Software | Novi AMS  Association Management Software for Associations Using QuickBooks. Built by ",
+   "present": [
+    "novi",
+    "ams"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.noviams.com"
+  },
+  "home-heroes-with-hearing-loss": {
+   "url": "https://heroeswithhearingloss.org/",
+   "final": "https://heroeswithhearingloss.org",
+   "says": "Home - Heroes With Hearing Loss Heroes With Hearing Loss\u00ae is a program that connects veterans with solutions and communi",
+   "present": [
+    "home",
+    "heroes",
+    "with",
+    "hearing",
+    "loss"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://heroeswithhearingloss.org/"
+  },
+  "slippery-rock-university": {
+   "url": "https://www.sru.edu",
+   "says": "SRU | Slippery Rock University Slippery Rock University of Pennsylvania is your first choice for a rock solid education.",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "apollo-information-systems": {
+   "url": "https://www.apollo-is.com/",
+   "final": "https://www.apollo-is.com",
+   "says": "Apollo - Cybersecurity as a service We defend the mission, so you can advance it",
+   "present": [
+    "apollo"
+   ],
+   "missing": [
+    "information"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Apollo",
+    "Cybersecurity as a service"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.apollo-is.com/"
+  },
+  "acr": {
+   "verdict": "unreadable",
+   "url": "http://www.administrativerules.org/",
+   "why": "AtsError: HTTP 403 for http://www.administrativerules.org/",
+   "home_tried": true,
+   "checked_on": "2026-10-19",
+   "website_was": "http://www.administrativerules.org/"
+  },
+  "acr-section": {
+   "verdict": "unreadable",
+   "url": "http://www.administrativerules.org/",
+   "why": "AtsError: HTTP 403 for http://www.administrativerules.org/",
+   "home_tried": true,
+   "checked_on": "2026-10-19",
+   "website_was": "http://www.administrativerules.org/"
+  },
+  "npa": {
+   "url": "http://www.npa-section.com",
+   "final": "http://www.npa-section.com",
+   "says": "Notary Public Administrators The Notary Public Administrators (NPA) Section, a staff section of the National Association",
+   "present": [
+    "npa"
+   ],
+   "missing": [],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Notary Public Administrators"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "http://www.npa-section.com"
+  },
+  "coca-cola": {
+   "url": "https://coca-colahighcountry.com/",
+   "final": "https://coca-colahighcountry.com",
+   "says": "Coca-Cola High Country - Coca-Cola High Country - Coca-Cola High Country -",
+   "present": [
+    "coca",
+    "cola"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://coca-colahighcountry.com/"
+  },
+  "marketforce": {
+   "url": "https://marketforcecorp.com/",
+   "final": "https://marketforcecorp.com",
+   "says": "MarketForce \u2014 The B2B industry's most trusted supplier of New Business data Find New Business customers first and beat y",
+   "present": [
+    "marketforce"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://marketforcecorp.com/"
+  },
+  "council-of-federal-home-loan-banks": {
+   "url": "https://fhlbanks.com/council-of-fhlbanks/",
+   "final": "https://fhlbanks.com/council-of-fhlbanks",
+   "says": "Council of FHLBanks | Federal Home Loan Bank Advocacy Discover the role of the Council of FHLBanks in advocating for the",
+   "present": [
+    "council",
+    "of",
+    "federal",
+    "home",
+    "loan",
+    "banks"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://fhlbanks.com/council-of-fhlbanks/"
+  },
+  "npa-section": {
+   "url": "http://www.npa-section.com",
+   "final": "http://www.npa-section.com",
+   "says": "Notary Public Administrators The Notary Public Administrators (NPA) Section, a staff section of the National Association",
+   "present": [
+    "npa",
+    "section"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "http://www.npa-section.com"
+  },
+  "election-security-exchange": {
+   "url": "https://securingelections.org/",
+   "final": "https://securingelections.org",
+   "says": "Home - Election Security Exchange Home - Election Security Exchange Election Security Exchange Chain of Custody and Secu",
+   "present": [
+    "election",
+    "security",
+    "exchange"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://securingelections.org/"
+  },
+  "montana-school-recruitment-project": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "voteshield": {
+   "url": "https://www.voteshield.us/",
+   "final": "https://voteshield.us",
+   "says": "VoteShield Alaska Wisconsin VoteShield helps election officials in the United States keep voter data safe from interfere",
+   "present": [
+    "voteshield"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.voteshield.us/"
+  },
+  "essent": {
+   "url": "https://www.essent.us/",
+   "final": "https://www.essent.us",
+   "says": "Mortgage Insurance & Title Insurance Company | Essent Your trusted partner for mortgage and title insurance. Explore our",
+   "present": [
+    "essent"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.essent.us/"
+  },
+  "csg-advisors": {
+   "url": "https://csgadvisors.com/",
+   "final": "https://csgadvisors.com",
+   "says": "CSG Advisors | WBE Municipal Advisory Firm Row rect Shape Row rect Shape CSG Advisors is a WBE municipal advisory firm h",
+   "present": [
+    "csg",
+    "advisors"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://csgadvisors.com/"
+  },
+  "lakeview-loan-servicing": {
+   "url": "https://lakeview.com/",
+   "final": "https://lakeview.com",
+   "says": "Lakeview: The Second Largest Mortgage Loan Servicer in the U.S. Lakeview helps more than 2.6 million customers per year ",
+   "present": [
+    "lakeview",
+    "loan"
+   ],
+   "missing": [
+    "servicing"
+   ],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "Lakeview",
+    "Lakeview Loan Servicing, LLC"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://lakeview.com/"
+  },
+  "neighborworks-america": {
+   "url": "https://www.neighborworks.org/",
+   "final": "https://www.neighborworks.org",
+   "says": "Home | NeighborWorks America NeighborWorks America creates opportunities for people to live in affordable homes, improve",
+   "present": [
+    "neighborworks",
+    "america"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.neighborworks.org/"
+  },
+  "winthrop-weinstine": {
+   "url": "https://winthrop.com/",
+   "final": "https://winthrop.com",
+   "says": "Winthrop & Weinstine arrow-double-right arrow-noline-right Experience the difference of a law firm that disrupts convent",
+   "present": [
+    "winthrop",
+    "weinstine"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://winthrop.com/"
+  },
+  "td-bank": {
+   "url": "https://www.tdsecurities.com/",
+   "final": "https://www.tdsecurities.com/ca/en",
+   "says": "Home | TD Securities TD Securities is a leading investment bank that provides corporate and investment banking and capit",
+   "present": [
+    "td",
+    "bank"
+   ],
+   "missing": [],
+   "verdict": "unconfirmed",
+   "page_names": [
+    "TD Securities"
+   ],
+   "why": "the page does not state their full name",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.tdsecurities.com/"
+  },
+  "mshda": {
+   "verdict": "unreadable",
+   "url": "https://www.michigan.gov/mshda",
+   "why": "AtsError: HTTP 403 for https://www.michigan.gov/mshda",
+   "home_tried": true,
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.michigan.gov/mshda"
+  },
+  "csh": {
+   "url": "http://www.csh.org/",
+   "final": "https://www.csh.org",
+   "says": "Corporation for Supportive Housing | CSH CSH is a national nonprofit advancing supportive housing through training, educ",
+   "present": [
+    "csh"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "http://www.csh.org/"
+  },
+  "zeffert-associates": {
+   "url": "https://zeffert.com/",
+   "final": "https://zeffert.com",
+   "says": "Zeffert & Associates The nation's leader in multifamily compliance products and affordable housing training at Zeffert U",
+   "present": [
+    "zeffert",
+    "associates"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://zeffert.com/"
+  },
+  "raymond-james": {
+   "verdict": "unreadable",
+   "url": "https://www.raymondjames.com/",
+   "why": "AtsError: HTTP 403 for https://www.raymondjames.com/",
+   "home_tried": true,
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.raymondjames.com/"
+  },
+  "real-ot-solutions": {
+   "verdict": "not_found",
+   "tried": 25,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "council-on-foreign-relations": {
+   "url": "https://www.cfr.org",
+   "says": "Council on Foreign Relations The Council on Foreign Relations (CFR) is an independent, nonpartisan member organization, ",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "enzo-s-cleaning-solutions": {
+   "url": "https://enzocleaning.com",
+   "says": "Enzo Cleaning | schoonmaak Ieper en omstreken Dampkap en keuken na sluitingstijd, ook bar, zaal en kantoor. Enzo Cleanin",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "american-forests": {
+   "url": "https://www.americanforests.org",
+   "says": "Homepage - American Forests Healthy forests are our pathway to slowing climate change and advancing social equity. Homep",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "enbridge-gas": {
+   "url": "https://www.enbridgegas.com",
+   "says": "Home | Enbridge Gas Enbridge Gas has been delivering safe and reliable natural gas to millions across Canada and the U.S",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "arizona-state-university-school-of-public-affairs": {
+   "verdict": "not_found",
+   "tried": 19,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "climate-accountability-action-fund": {
+   "verdict": "not_found",
+   "tried": 24,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "image-access": {
+   "url": "https://www.imageaccess.com",
+   "says": "Image Access, Inc. | Home Welcome to Image Access Official Website. Image Access, Inc. Image Access, Inc. Image Access, ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "in-telecom": {
+   "url": "https://intelecom.io",
+   "says": "Intelecom | Telecom Physical Security Intelligence Physical security intelligence for telecommunications infrastructure.",
+   "tried": 2,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "neighborhood-bridges": {
+   "url": "https://www.neighborhoodbridges.net",
+   "says": "Neighborhood Bridges Neighborhood Bridges Neighborhood Bridges",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "unicef-usa": {
+   "url": "https://www.unicefusa.org",
+   "says": "Humanitarian Aid for Children in Crisis | UNICEF USA UNICEF USA helps UNICEF deliver humanitarian aid, education, health",
+   "tried": 3,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "union-pacific-railroad": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "catalyst-solutions-group": {
+   "url": "https://fusionlp.org/catalyst/",
+   "final": "https://fusionlp.org/catalyst",
+   "says": "Catalyst Catalyst Solutions Group \u2022 Fusion Learning Partners We help organizations amplify their impact with expert even",
+   "present": [
+    "catalyst",
+    "solutions",
+    "group"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://fusionlp.org/catalyst/"
+  },
+  "govsourcing": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "clockwork": {
+   "url": "https://www.clockwork.com/",
+   "final": "https://www.clockwork.com",
+   "says": "Experience Design & Custom Software Solutions     :    Clockwork   Experience design & technology consultancy. We build ",
+   "present": [
+    "clockwork"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.clockwork.com/"
+  },
+  "public-technology-institute": {
+   "url": "https://fusionlp.org/public-technology-institute/",
+   "final": "https://fusionlp.org/public-technology-institute",
+   "says": "Public Technology Institute (PTI) \u2022 Fusion Learning Partners Actively supporting local government officials through rese",
+   "present": [
+    "public",
+    "institute"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://fusionlp.org/public-technology-institute/"
+  },
+  "starkey": {
+   "url": "https://www.starkey.com/",
+   "final": "https://www.starkey.com",
+   "says": "Find the Best Hearing Aids for You | Starkey BBB Accredited Business. BBB Rating: A+ Starkey is dedicated to delivering ",
+   "present": [
+    "starkey"
+   ],
+   "missing": [],
+   "verdict": "theirs",
+   "checked_on": "2026-10-19",
+   "website_was": "https://www.starkey.com/"
+  },
+  "insight": {
+   "url": "https://www.elastic.co/blog/welcome-insight-io-to-the-elastic-team",
+   "says": "Welcome Insight.io to the Elastic Team | Elastic Blog Elastic logo We've joined forces with Insight.io to add semantic c",
+   "tried": 2,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ace-packaging": {
+   "url": "https://acepackaging.org",
+   "says": "PP Woven Bag Manufacturer in Delhi | Ace Packaging Find durable packaging solutions with Ace Packaging, the trusted PP W",
+   "tried": 9,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "barcel-usa": {
+   "url": "https://barcel-usa.com",
+   "says": "Corn Snacks, Chips, Popcorn, Candy & Syrups | Barcel Icons / Line Arrow Right Icons / Line Arrow Right At Barcel USA, we",
+   "tried": 5,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "cahoon-farms": {
+   "url": "https://cahoonfarms.com",
+   "says": "Cahoon Farms | Wolcott, NY | Fresh Apples and Cherries | Family-owned | Juices | Sauce | Dryhouse Here at Cahoon Farms, ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "international-town-gown-association": {
+   "url": "https://itga.org",
+   "says": "The International Town and Gown Association itga.org",
+   "tried": 11,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "nippon-shokken-usa": {
+   "url": "https://www.nipponshokken.com",
+   "says": "Nippon Shokken U.S.A. - Delicious, High-Quality Sauces & Seasonings Across America Since 1988, Nippon Shokken U.S.A. has",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wow-bao": {
+   "url": "https://www.wowbao.com",
+   "says": "Wow Bao delivered hot to your door or from your local grocery store Craving delicious bao, soup dumplings, and potsticke",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "houseal-lavigne": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "leotek": {
+   "url": "https://leotek.com",
+   "says": "LED Lighting, Traffic Signals & Smart Infrastructure | LEOTEK Explore LEOTEK LED roadway lighting, traffic and pedestria",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "incubly-hub": {
+   "verdict": "not_found",
+   "tried": 21,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "quarterhorse-technology": {
+   "url": "https://www.iqti.com",
+   "says": "Quarterhorse Technology  Quarterhorse Technology  Quarterhorse Technology  IQTI (Quarterhorse Technology Inc.) delivers ",
+   "tried": 1,
+   "verdict": "found",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "throne-bathrooms": {
+   "verdict": "not_found",
+   "tried": 22,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "national-laboratory-of-the-rockies-nlr": {
+   "verdict": "not_found",
+   "tried": 30,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "wm": {
+   "verdict": "not_found",
+   "tried": 4,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "lakeshore-learning-materials": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ttec": {
+   "verdict": "not_found",
+   "tried": 12,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "ohana-student-services": {
+   "verdict": "not_found",
+   "tried": 26,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "automotive-international-valugard": {
+   "verdict": "not_found",
+   "tried": 32,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
+   "website_was": null
+  },
+  "california-dried-fruit-coalition": {
+   "verdict": "not_found",
+   "tried": 27,
+   "why": "no guessed domain named them",
+   "checked_on": "2026-10-19",
    "website_was": null
   }
  }

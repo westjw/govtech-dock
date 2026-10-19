@@ -2315,7 +2315,24 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   - 40 of 87 HELD suppliers had a real website, so the held pile is partly
     a review queue.
 - The export is what SLED HQ reads. It has fixed sector keys, sector-qualified
-  category slugs, and a status per supplier. It carries no addresses:
+  category slugs, and a status per supplier.
+- **The export is rebuilt by hand, and it goes stale.** Built 10-05, it was
+  still listing 1,248 removed suppliers on 10-19, including 163 published
+  ones, 72 of which had since become board companies. It was also missing
+  the 502 suppliers filed since. To rebuild:
+  1. Run `supplier_identity.py --ids` for the new suppliers.
+  2. Run `supplier_pages.py --ids` for the same suppliers.
+  3. Run `supplier_categories.py --write` from a checkout holding the
+     gitignored `data/supplier_pages/` (the 10-05 cache is in
+     ~/govtech-dock-suppliers).
+  Before trusting the output, check that the old code and data with that
+  cache reproduce the committed export exactly; they did on 10-19.
+  `--write` refuses when the cache is missing, or when a supplier the last
+  export published has no page here: without the cache, every published
+  supplier would read as "website unread" and leave HQ.
+  `check_the_hq_export_never_loses_a_supplier_to_a_missing_cache` holds the
+  refusal, and selftest prints a note while the export and suppliers.json
+  disagree. It carries no addresses:
   67 supplier "names" are email addresses, and `clean_name` plus a scrub keep
   them out.
 

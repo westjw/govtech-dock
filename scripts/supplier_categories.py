@@ -553,10 +553,30 @@ def build(suppliers: list, ident_rows: dict) -> dict:
             "suppliers": suppliers_out, "assignments": assignments}
 
 
+NOT_READ = "website unread (not read)"
+
+
+def cache_losses(out: dict, previous: dict) -> list[str]:
+    """Suppliers the last export published that this build holds only because
+    their page is not in data/supplier_pages here.
+
+    THE CACHE IS GITIGNORED AND 102 MB, so a checkout can lack it, and then
+    own_text() says "not read" for every supplier: all 3,038 published ones
+    would leave SLED HQ with "website unread", a fact about this checkout
+    reported as a fact about them. A page the last export read and this one
+    could not is our absence, never theirs."""
+    was = {r.get("supplier_id"): r.get("status") for r in previous.get("suppliers") or []}
+    return [r["supplier_id"] for r in out.get("suppliers") or []
+            if r.get("held") == NOT_READ and was.get(r["supplier_id"]) == "publish"]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--id", default="")
+    ap.add_argument("--allow-uncached", action="store_true",
+                    help="write even though suppliers the last export published have no page "
+                         "here (only after re-reading them with supplier_pages.py)")
     a = ap.parse_args()
     suppliers = json.loads((DATA / "suppliers.json").read_text())
     ident = json.loads((DATA / "supplier_identity.json").read_text())["rows"]
@@ -577,6 +597,19 @@ def main() -> int:
     for k, n in top:
         print(f"  {n:5}  {k}")
     if a.write:
+        if not PAGES.is_dir():
+            print(f"refused: {PAGES.relative_to(ROOT)} is not in this checkout, so every "
+                  f"published supplier would read as unread. Run from the checkout that "
+                  f"holds the cache, or rebuild it with supplier_pages.py.", file=sys.stderr)
+            return 1
+        previous = json.loads(OUT.read_text()) if OUT.exists() else {}
+        lost = cache_losses(out, previous)
+        if lost and not a.allow_uncached:
+            print(f"refused: {len(lost)} supplier(s) the last export published have no page "
+                  f"in {PAGES.relative_to(ROOT)} ({', '.join(lost[:6])}"
+                  f"{' ...' if len(lost) > 6 else ''}). Read them with supplier_pages.py "
+                  f"--ids, or --allow-uncached once you have.", file=sys.stderr)
+            return 1
         OUT.write_text(json.dumps(out, indent=1) + "\n")
         print(f"wrote {OUT.relative_to(ROOT)}")
     return 0
