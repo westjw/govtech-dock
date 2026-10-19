@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Screen Time at School: 10 Things Schools Wish Parents Knew",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lightspeedsystems.com/blog/screen-time-at-school-10-things-schools-wish-parents-knew/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lightspeedsystems.com/blog/screen-time-roi-lightspeed-insight/"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When children turn to AI before adults",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lightspeedsystems.com/blog/ai-chatbots-child-safeguarding-kcsie-disclosures-when-children-turn-to-ai/"
   }
  ],
  "profile": {

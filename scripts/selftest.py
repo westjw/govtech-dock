@@ -30366,6 +30366,53 @@ def check_a_page_that_reads_nothing_is_offered_to_a_person() -> int:
     return errors
 
 
+def check_a_careers_page_cannot_stall_discovery() -> int:
+    """Every ATS marker pattern is linear in the page it reads, and still
+    finds the tenant on a real address.
+
+    Patterns opening on a bare class before a literal
+    (`([a-z0-9-]+)\\.recruitee\\.com`) backtracked every run of letters from
+    every position in it. On 2026-10-19 a careers page carrying an embedded
+    font held one search for over half an hour, and since a regex search keeps
+    the GIL, all six discovery workers stopped. Run in a child process with a
+    deadline, because a regressed pattern hangs rather than fails.
+    """
+    import subprocess
+    code = (
+        "import re,sys,time\n"
+        "sys.path.insert(0,'scripts')\n"
+        "import discover_ats as d\n"
+        "page='a'*300000+'.'+'b'*300000+'-'*1000\n"
+        "t=time.time()\n"
+        "for k,p in d.MARKERS: re.search(p,page,re.I)\n"
+        "print(round(time.time()-t,2))\n"
+        "hits={k:(re.search(p,s,re.I) or [None]).__class__.__name__ for k,p in d.MARKERS for s in []}\n"
+        "real={'bamboohr':'href=\"https://acmegov.bamboohr.com/careers\"',"
+        "'recruitee':'//civic-co.recruitee.com/o/ae','workday':'x.wd5.myworkdayjobs.com/en-US/Careers',"
+        "'oracle':'ecqb.fa.us2.oraclecloud.com/hcmUI'}\n"
+        "for k,v in real.items():\n"
+        "  m=next((re.search(p,v,re.I) for kk,p in d.MARKERS if kk==k and re.search(p,v,re.I)),None)\n"
+        "  print(k, m.group(1) if m else None)\n")
+    try:
+        r = subprocess.run([sys.executable, "-c", code], cwd=str(ROOT), capture_output=True,
+                           text=True, timeout=30)
+    except subprocess.TimeoutExpired:
+        return fail("the ATS marker patterns did not finish on a page with 300,000 letters in a "
+                    "row within 30s: one opens on an unpinned character class again")
+    lines = r.stdout.split("\n")
+    if r.returncode != 0 or not lines[0]:
+        return fail(f"the marker timing run failed: {r.stderr[-300:]}")
+    errors = 0
+    if float(lines[0]) > 5:
+        errors += fail(f"the ATS marker patterns took {lines[0]}s on 600,000 letters; they must be linear")
+    want = {"bamboohr": "acmegov", "recruitee": "civic-co", "workday": "x", "oracle": "ecqb.fa.us2.oraclecloud.com"}
+    got = dict(x.split(" ", 1) for x in lines[1:] if x.strip())
+    for k, v in want.items():
+        if got.get(k) != v:
+            errors += fail(f"the {k} marker no longer reads its tenant off a real address: {got.get(k)!r}")
+    return errors
+
+
 def check_discovery_stages_every_file_it_writes() -> int:
     """discovery.yml must `git add` every file discover_ats.py writes.
 
@@ -34036,6 +34083,7 @@ def main() -> int:
     errors += check_no_control_characters_in_source()
     errors += check_a_page_that_reads_nothing_is_offered_to_a_person()
     errors += check_discovery_stages_every_file_it_writes()
+    errors += check_a_careers_page_cannot_stall_discovery()
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_sled_hq_jobs_reach_the_board()

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "One year on: Rethinking the future of service information",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idoxgroup.com/news/directory-connect-service-information/"
+  },
+  {
    "date": "2026-10-02",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "as Chief",
    "url": "https://www.idoxgroup.com/news/jonathan-legdon-ceo-appointment/"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Flexible voting in action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idoxgroup.com/news/flexible-voting-cambridge-pilot/"
   }
  ]
 }

@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-09-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "First Student and Con Edison Advance Electric School Bus Infrastructure in New York City",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-08-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "First Student Named to Inc. 5000 for Second Consecutive Year, Reflecting Leadership in Modernizing and Transforming the Home-to-School Transportation Experience",
    "kind": "press",

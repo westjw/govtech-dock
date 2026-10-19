@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "The best team collaboration tools for every team",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/team-collaboration-tools/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://docs.wooclap.com/en/articles/14623843-how-to-use-wooclap-in-brightspace"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How to improve learning effectiveness for better engagement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wooclap.com/en/blog/instructional-design/"
   }
  ]
 }

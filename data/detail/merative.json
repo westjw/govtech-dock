@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Expanding life sciences research with linked real-world data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/blog/expanding-life-sciences-research-with-linked-real-world-data"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.merative.com/blog/how-healthcare-analytics-helps-health-plans-and-employers-measure-value-based-care"
-  },
-  {
-   "date": "2026-09-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A guide to cloud solutions for cardiology imaging",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/a-guide-to-cloud-solutions-for-cardiology-imaging"
   }
  ]
 }

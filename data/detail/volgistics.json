@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Access the Store from Setup",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.volgistics.com/blog/access-the-store-from-setup/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.volgistics.com/blog/how-to-list-volunteer-work-on-your-resume-complete-guide-with-7-examples/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Use Date Fields to Track Changes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.volgistics.com/blog/use-date-fields-to-track-changes/"
   }
  ]
 }

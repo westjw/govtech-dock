@@ -61,6 +61,16 @@ CAREER_PATHS = ["/careers", "/careers/", "/jobs", "/company/careers",
 # because WordPress.com stamps "x-hacker: ... visit join.a8c.com" on every
 # response it serves, which makes a bare join.com test hit a company with no
 # board at all.
+# A HOST LABEL IS PINNED AT BOTH ENDS. Every pattern that opens on a bare
+# character class before a literal (`([a-z0-9-]+)\.recruitee\.com`) tried
+# every position in a run of letters and backtracked the whole run each time:
+# quadratic in the run's length. A careers page carrying a base64 font or
+# image is one such run, a megabyte long. On 2026-10-19 one page held a search
+# for over half an hour, and because a regex search never lets go of the GIL,
+# all six workers stopped with it. `L` starts a label only where no label
+# character precedes it and caps it at DNS's 63, which finds exactly what the
+# old patterns found on any real address and is linear on everything else.
+L = r"(?<![a-z0-9-])[a-z0-9-]{1,63}"
 MARKERS: list[tuple[str, str]] = [
     ("ashby", r"jobs\.ashbyhq\.com/(?:embed\?org=)?([a-zA-Z0-9._-]+)"),
     ("greenhouse", r"(?:job-boards|boards)\.greenhouse\.io/"
@@ -68,33 +78,34 @@ MARKERS: list[tuple[str, str]] = [
     ("lever", r"jobs\.lever\.co/([a-zA-Z0-9_-]+)"),
     ("smartrecruiters", r"careers\.smartrecruiters\.com/([A-Za-z0-9_-]+)"),
     ("workable", r"apply\.workable\.com/([a-zA-Z0-9-]+)"),
-    ("recruitee", r"([a-zA-Z0-9-]+)\.recruitee\.com"),
-    ("breezy", r"([a-zA-Z0-9-]+)\.breezy\.hr"),
-    ("bamboohr", r"([a-zA-Z0-9-]+)\.bamboohr\.com"),
-    ("jazzhr", r"([a-zA-Z0-9-]+)\.applytojob\.com"),
+    ("recruitee", rf"({L})\.recruitee\.com"),
+    ("breezy", rf"({L})\.breezy\.hr"),
+    ("bamboohr", rf"({L})\.bamboohr\.com"),
+    ("jazzhr", rf"({L})\.applytojob\.com"),
     ("rippling", r"ats\.rippling\.com/([a-zA-Z0-9-]+)"),
-    ("icims", r"([a-zA-Z0-9-]+)\.icims\.com"),
+    ("icims", rf"({L})\.icims\.com"),
     # Families a field audit found on real govtech careers pages, in plain HTML,
     # that the script simply had no pattern for. This was the single highest
     # recovery-per-line change available.
-    ("workday", r"([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com/(?:en-US/)?([A-Za-z0-9_-]+)"),
+    ("workday", rf"({L})\.(wd\d+)\.myworkdayjobs\.com/(?:en-US/)?([A-Za-z0-9_-]+)"),
     ("workday", r"(wd\d+)\.myworkdaysite\.com/(?:en-US/)?recruiting/"
                 r"([a-z0-9-]+)/([A-Za-z0-9_-]+)"),
     ("paylocity", r"(recruiting\.paylocity\.com/recruiting/jobs/All/[0-9a-f-]{36}/[^\s\"'<>]*)"),
-    ("oracle", r"([a-z0-9]+\.fa\.[a-z0-9]+\.oraclecloud\.com)"),
+    ("oracle", r"((?<![a-z0-9])[a-z0-9]{1,63}\.fa\.[a-z0-9]{1,63}\.oraclecloud\.com)"),
     ("html", r"(workforcenow\.adp\.com/mascsr/default/mdf/recruitment/"
              r"recruitment\.html\?cid=[0-9a-f-]{36}[^\s\"'<>]*)"),
-    ("html", r"([a-z0-9-]+\.paycomonline\.net/v4/ats/web\.php/jobs\?clientkey=[0-9A-F]{32})"),
+    ("html", rf"({L}\.paycomonline\.net/v4/ats/web\.php/jobs\?clientkey=[0-9A-F]{{32}})"),
     ("html", r"(jobs\.jobvite\.com/[a-z0-9-]+)"),
-    ("html", r"([a-z0-9-]+\.teamtailor\.com)"),
-    ("html", r"([a-z0-9-]+\.applicantpro\.com|[a-z0-9-]+\.clearcompany\.com|"
-             r"[a-z0-9-]+\.isolvedhire\.com|[a-z0-9-]+\.dayforcehcm\.com|"
-             r"recruiting\d*\.ultipro\.com/[A-Z0-9_]+|[a-z0-9-]+\.pinpointhq\.com|"
-             r"[a-z0-9-]+\.taleo\.net|[a-z0-9-]+\.avature\.net|[a-z0-9-]+\.csod\.com)"),
+    ("html", rf"({L}\.teamtailor\.com)"),
+    ("html", rf"({L}\.applicantpro\.com|{L}\.clearcompany\.com|"
+             rf"{L}\.isolvedhire\.com|{L}\.dayforcehcm\.com|"
+             r"recruiting\d*\.ultipro\.com/[A-Z0-9_]+|"
+             rf"{L}\.pinpointhq\.com|"
+             rf"{L}\.taleo\.net|{L}\.avature\.net|{L}\.csod\.com)"),
     # HiBob is deliberately last and deliberately never slug-probed: every
     # subdomain returns a byte-identical 1342-byte shell, so a probe proves
     # nothing. It only counts when the company's own site links to it.
-    ("html", r"([a-z0-9-]+\.careers\.hibob\.com)"),
+    ("html", rf"({L}\.careers\.hibob\.com)"),
 ]
 
 # Marker types whose captured group is a full URL rather than a slug. These skip

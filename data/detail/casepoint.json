@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Casepoint Launches Casepoint Public Records for State, Local, and Education Organizations",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.casepoint.com/press/casepoint-launches-casepoint-public-records-for-state-local-education-organizations/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.casepoint.com/blog/legal-hold-challenges-state-agencies/"
-  },
-  {
-   "date": "2026-01-21",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "Why Federal Agencies Are Moving Beyond Legacy eDiscovery Tools",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.casepoint.com/blog/why-federal-agencies-are-moving-beyond-legacy-ediscovery-tools/"
   }
  ],
  "profile": {

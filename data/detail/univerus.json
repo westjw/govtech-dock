@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Connecting Communities with Sport & Recreation Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.univerus.com/post/connecting-communities-with-sport-recreation-software"
+  },
+  {
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "funding",
    "kind_rule": "Acquires",
    "url": "https://www.univerus.com/post/univerus-acquires-capital-networks-limited-to-strengthen-growing-media-portfolio"
-  },
-  {
-   "date": "2026-01-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Proudly Supporting Team British Columbia at the 2025 Canadian Club Curling Championship",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.univerus.com/post/proudly-supporting-team-british-columbia-at-the-2025-canadian-club-curling-championship"
   }
  ]
 }
