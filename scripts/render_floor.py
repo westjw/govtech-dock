@@ -56,6 +56,24 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(compatible; govtech-dock/1.0; +https://github.com/westjw/govtech-dock)")
 MORE = re.compile(r"^\s*(show|view|see|load)\s+(all|more)\b", re.I)
 MAX_CLICKS = 8
+# AN INFINITE-SCROLL LIST LOADS AS IT IS SCROLLED, and one scroll is not
+# the list. NCSL's EXPOCAD directory rendered exactly 100 exhibitors and
+# stopped at "Distilled Spirits Council" - the letter D - because this
+# scrolled once and quit unless a "show more" button had been clicked
+# (2026-10-20; IACLEA's floor stopped at "KeyTrak" the same way). So it
+# keeps scrolling - the window and every scrollable box on the page - while
+# the page keeps growing, and stops when a round adds nothing or at the bound.
+MAX_SCROLLS = 40
+SIZE_JS = ("() => document.querySelectorAll('a, li, tr, [role=row]').length"
+           " + document.documentElement.scrollHeight")
+SCROLL_ALL_JS = ("() => { window.scrollTo(0, document.documentElement.scrollHeight);"
+                 " for (const el of document.querySelectorAll('*')) {"
+                 " if (el.scrollHeight > el.clientHeight + 40) el.scrollTop = el.scrollHeight; } }")
+
+
+def keep_scrolling(clicked: bool, grew: bool, rounds: int) -> bool:
+    """Another round: a "show more" was clicked or the list grew, within the bound."""
+    return rounds < MAX_SCROLLS and (clicked or grew)
 
 
 def address(c: dict) -> str | None:
@@ -111,9 +129,11 @@ async def render(url: str) -> tuple[str, str | None]:
             await page.wait_for_timeout(2500)
             if not await asyncio.to_thread(robots.allowed, page.url):
                 return "", "robots.txt asks crawlers not to read the page it landed on"
-            for _ in range(MAX_CLICKS):
+            seen = await page.evaluate(SIZE_JS)
+            for rounds in range(1, MAX_SCROLLS + 1):
                 clicked = False
-                for el in await page.query_selector_all("button, a, [role=button]"):
+                for el in (await page.query_selector_all("button, a, [role=button]")
+                           if rounds <= MAX_CLICKS else []):
                     try:
                         txt = (await el.inner_text()).strip()
                     except Exception:                          # noqa: BLE001
@@ -126,9 +146,13 @@ async def render(url: str) -> tuple[str, str | None]:
                             break
                         except Exception:                      # noqa: BLE001
                             continue
+                await page.mouse.move(640, 500)
                 await page.mouse.wheel(0, 20000)
+                await page.evaluate(SCROLL_ALL_JS)
                 await page.wait_for_timeout(1200)
-                if not clicked:
+                now = await page.evaluate(SIZE_JS)
+                grew, seen = now > seen, max(seen, now)
+                if not keep_scrolling(clicked, grew, rounds):
                     break
             parts = [await page.content()]
             for fr in page.frames[1:]:

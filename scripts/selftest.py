@@ -10503,6 +10503,32 @@ def check_the_crawler_honours_robots_txt() -> int:
     return errors
 
 
+def check_an_infinite_scroll_floor_is_scrolled_to_its_end() -> int:
+    """A floor-plan list that loads as it scrolls is scrolled until it stops
+    growing, within a bound - not once.
+
+    NCSL's EXPOCAD directory rendered exactly 100 exhibitors and stopped at
+    the letter D, because render() scrolled once and quit unless a "show
+    more" button had been clicked; scrolled to its end it holds 273, A to Y
+    (2026-10-20). IACLEA's floor once stopped at "KeyTrak" the same way.
+    """
+    errors = 0
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import render_floor as rf
+    if not rf.keep_scrolling(False, True, 1):
+        errors += fail("a list that grew after a scroll was not scrolled again")
+    if rf.keep_scrolling(False, False, 1):
+        errors += fail("a list that stopped growing was scrolled for ever")
+    if not rf.keep_scrolling(True, False, 1):
+        errors += fail("a 'show more' click was not followed by another round")
+    if rf.keep_scrolling(True, True, rf.MAX_SCROLLS):
+        errors += fail("the scroll loop has no bound")
+    src = (ROOT / "scripts" / "render_floor.py").read_text()
+    if "keep_scrolling(clicked, grew, rounds)" not in src or "SCROLL_ALL_JS" not in src.split("async def render")[1]:
+        errors += fail("render() does not decide its scrolling by keep_scrolling, or does not scroll inner lists")
+    return errors
+
+
 def check_a_floor_is_read_before_it_is_filed() -> int:
     """A name nobody judged is not a supplier, a page that was never a floor
     is not a swept floor, and a reader's verdict outranks the name rule.
@@ -26328,6 +26354,32 @@ def check_a_logo_wall_is_read_only_where_a_reader_said_so() -> int:
     if {e["name"] for e in txt.get("exhibitors") or []} & set(names):
         print("  FAIL: linked logos were read on a row nobody marked as a logo wall")
         errors += 1
+    # TERRAPINN WRITES "<sponsor> at <event>" IN EVERY ALT. host_chrome refuses
+    # "at <host>" in a name, so a whole wall of real sponsors read as the
+    # host's own pages (Broadband Communities Summit, 2026-10-20). The suffix
+    # comes off a linked logo's alt; "Careers at Broadband" as on-site anchor
+    # text is still the host's page.
+    tp = ['Calix', 'Corning', 'AT&amp;T Connected Communities', 'Aerwave', 'AirWorks',
+          'Cambium Networks', 'Blue Stream Fiber', 'CHR Solutions', 'Benton Technical Services']
+    wall2 = ("<h1>2026 Sponsors &amp; Exhibitors</h1>"
+             + "".join(f'<a href="https://s{i}.test/"><img alt="{n} at Broadband Communities Summit 2027"></a>'
+                       for i, n in enumerate(tp))
+             + '<a href="https://www.terrapinn.test/careers">Careers at Broadband</a>')
+    class _R2:
+        text = wall2
+    try:
+        ats._page = lambda u, *a, **k: _R2()
+        tw = sw.sweep({"event_tag": "Broadband Communities Summit 2026", "fetchability": "image",
+                       "exhibitor_url": "https://www.terrapinn.test/conference/bbc/2026-Sponsors-Exhibitors.stm"})
+    finally:
+        ats._page = keep
+    tgot = {e["name"] for e in tw.get("exhibitors") or []}
+    if not {"Calix", "Corning", "AT&T Connected Communities"} <= tgot:
+        print(f"  FAIL: '<sponsor> at <event>' logo alts were refused as the host's own pages - got {sorted(tgot)[:5]}")
+        errors += 1
+    if any(" at " in n for n in tgot) or "Careers at Broadband" in tgot:
+        print(f"  FAIL: an 'at <event>' suffix or the host's own page survived as a name: {sorted(tgot)[:5]}")
+        errors += 1
     return errors
 
 
@@ -34182,6 +34234,7 @@ def main() -> int:
     errors += check_the_card_door_lands_only_what_it_saw()
     errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_a_list_replaces_only_a_url_ruled_not_a_floor()
+    errors += check_an_infinite_scroll_floor_is_scrolled_to_its_end()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()

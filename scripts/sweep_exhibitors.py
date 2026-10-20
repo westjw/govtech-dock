@@ -378,6 +378,11 @@ LOGO_ALT_JUNK = re.compile(r"logo|icon|image|banner|sponsor|exhibitor|facebook|t
                            r"opens in a new|\.(png|jpe?g|svg|gif|webp)$|[a-z]+[-_][a-z0-9]+[-_]", re.I)
 
 
+LOGO_AT_EVENT = re.compile(
+    r"\s+(?:at|@)\s+(?=[^\n]{3,90}$)[^\n]*\b(?:20\d\d|summit|conference|expo|show|"
+    r"congress|convention|forum|meeting)\b[^\n]*$", re.I)
+
+
 def logo_names(page: str, base: str, host: str | None = None) -> list[dict]:
     """Linked logos off the page's own host, named by their alt text."""
     import urllib.parse as up
@@ -387,8 +392,15 @@ def logo_names(page: str, base: str, host: str | None = None) -> list[dict]:
         href, inner = m.group(1), m.group(2)
         if not own or up.urlsplit(href).netloc.lower().replace("www.", "") == own:
             continue
-        for alt in re.findall(r'<img\b[^>]*\balt="([^"]{2,80})"', inner, re.I):
-            name = clean(alt)
+        for alt in re.findall(r'<img\b[^>]*\balt="([^"]{2,120})"', inner, re.I):
+            # "Calix at Broadband Communities Summit 2027": an organiser that
+            # writes each sponsor's logo alt as "<sponsor> at <the event>".
+            # host_chrome rightly refuses "at <host>" in a NAME ("Careers at
+            # GFOA" is the host's own page) and so refused every sponsor on
+            # Terrapinn's walls (2026-10-20). The logo links off the host's
+            # site, to the sponsor's own, so the suffix is the event and the
+            # name is what stands before it.
+            name = clean(LOGO_AT_EVENT.sub("", alt))
             if LOGO_ALT_JUNK.search(name) or not looks_like_a_name(name, host):
                 continue
             out.setdefault(name.lower(), {"name": name, "website": href})
