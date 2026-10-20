@@ -1,0 +1,748 @@
+{
+ "event_tag": "Housing Washington 2026",
+ "conference": "Housing Washington",
+ "found": true,
+ "source_url": "https://www.housingwa.org/2026-sponsors",
+ "source_note": "Read from https://www.housingwa.org/2026-sponsors by scripts/sweep_exhibitors.py. 69 name(s), 68 with a website the page itself linked. Quality: good (28% carry a corporate marker, 0% name a site section, 6% use the words a site names itself with). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "1DROP",
+   "website": "https://www.1drop.co/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: nonprofit collective of developers of color",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: nonprofit collective of developers of color",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Absher Construction",
+   "website": "https://www.absherco.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Allied Residential",
+   "website": "https://www.alliedresidential.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: property management firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "property management firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Association of Washington Housing Authorities",
+   "website": "http://www.awha.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Banner Bank",
+   "website": "https://www.bannerbank.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Beneficial State Bank",
+   "website": "https://www.beneficialstatebank.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Black Home Initiative",
+   "website": "https://blackhomeinitiative.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit homeownership initiative",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit homeownership initiative",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Blue Ridge Cascade",
+   "website": "https://www.blueridgecascade.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: affordable housing developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: affordable housing developer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Brawner & Company",
+   "website": "https://jhbrawner.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: housing development consultant for housing authorities",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: housing development consultant for housing authorities",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Bremerton Housing Authority/CMS",
+   "website": "https://bremertonhousing.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: public housing authority (agency)",
+   "read": {
+    "verdict": "supplier",
+    "why": "public housing authority (agency)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Butler Human Services Furniture",
+   "website": "https://butlerhumanservices.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: furniture maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "furniture maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "cfX Incorporated",
+   "website": "https://www.cfx.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "site: HFA financial advisor built on its own data/software platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Churchill Stateside Group",
+   "website": "https://csgfirst.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: LIHTC syndicator / investment",
+   "read": {
+    "verdict": "supplier",
+    "why": "LIHTC syndicator / investment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Citi Community Capital",
+   "website": "https://www.citibank.com/icg/sa/citicommunitycapital/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank lending arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank lending arm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Coin Meter Multi-Family Laundry Service Provider",
+   "website": "https://coinmeter.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: vended laundry equipment and service",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: vended laundry equipment and service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Community Frameworks",
+   "website": "https://www.communityframeworks.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing developer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Compass Construction",
+   "website": "https://www.compass-gc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: general contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "general contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Corporation for Supportive Housing",
+   "website": "https://www.csh.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing intermediary",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing intermediary",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Deacon Construction LLC",
+   "website": "https://deacon.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DESC",
+   "website": "https://www.desc.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Seattle homeless services nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "Seattle homeless services nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "E&A Team, Inc",
+   "website": "https://eandateam.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: training, inspections, needs assessments",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: training, inspections, needs assessments",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Eastern WA Realtist - Black Homeownership Spokane",
+   "website": "https://www.visionpropertieswa.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate brokerage / association",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate brokerage / association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Environmental Works Community Design Center",
+   "website": "https://www.eworks.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Federal Home Loan Bank of Des Moines",
+   "website": "https://www.fhlbdm.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Foster Garvey, PC",
+   "website": "https://www.foster.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "GGLO",
+   "website": "https://www.gglo.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Guild Mortgage",
+   "website": "https://www.guildmortgage.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: mortgage lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "mortgage lender",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "HAI Group",
+   "website": "https://www.haigroup.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing authority insurance",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing authority insurance",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Hainsworth Laundry",
+   "website": "https://hainsworthlaundry.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: laundry service (site blocked by robots)",
+   "read": {
+    "verdict": "supplier",
+    "why": "laundry service (site blocked by robots)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Heritage Bank",
+   "website": "https://www.heritagebanknw.com/home/home",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "HomeSight",
+   "website": "https://homesightwa.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing/lending org",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing/lending org",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "HOTB Software Solutions, LLC",
+   "website": "https://hotbsoftware.com/"
+  },
+  {
+   "name": "Housing Development Consortium of Seattle-King County",
+   "website": "https://www.housingconsortium.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing association",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Hunt Capital Partners",
+   "website": "https://huntcapitalpartners.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: tax credit investment firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "tax credit investment firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Imagine Housing",
+   "website": "https://imaginehousing.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing provider",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Impact Capital",
+   "website": "http://impactcapital.org",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit lender (CDFI)",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit lender (CDFI)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Ink Built Architecture",
+   "website": "https://www.inkbuilt.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Kantor Taylor, PC",
+   "website": "https://kantortaylor.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Kutak Rock LLP",
+   "website": "https://www.kutakrock.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "LISC Puget Sound",
+   "website": "https://www.lisc.org/puget-sound/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: community development nonprofit/lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "community development nonprofit/lender",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Lotus Development Partners",
+   "website": "https://www.lotusdevpartners.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: real estate developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "real estate developer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Merritt Community Capital",
+   "website": "https://merrittcap.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: tax credit investment nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "tax credit investment nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Multifamily Affordable Properties/AptFinder.org",
+   "website": "http://www.aptfinder.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: free nonprofit apartment listing site, not sold to govt",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: free nonprofit apartment listing site, not sold to govt",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Non Profit Insurance Program (NPIP)",
+   "website": "https://npip.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: insurance pool",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance pool",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Novogradac & Company",
+   "website": "https://www.novoco.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: accounting/consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting/consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Office of Rural and Farmworker Housing",
+   "website": "https://www.orfh.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing developer",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing developer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pacific Northwest Women’s Affordable Housing Network",
+   "website": "https://wahnetwork.org/chapters/pacific-northwest/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association chapter",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association chapter",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pacifica Law Group LLP",
+   "website": "https://www.pacificalawgroup.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Parkview Services",
+   "website": "https://www.parkviewservices.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit housing/disability services",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit housing/disability services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PNC",
+   "website": "https://www.pnc.com/en/personal-banking.html",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Project Based Compliance Assistance LLC",
+   "website": "https://www.pbcassistance.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: HUD compliance consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: HUD compliance consulting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "R4Capital Funding",
+   "website": "https://r4cap.com/services/affordable-housing-debt/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: affordable housing lender",
+   "read": {
+    "verdict": "supplier",
+    "why": "affordable housing lender",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rafn Company",
+   "website": "https://www.rafn.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Raymond James",
+   "website": "https://www.raymondjames.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "RBC Capital Markets",
+   "website": "https://www.rbccm.com/en/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Stewart & Hall Insurance Agency",
+   "website": "https://www.stewartandhall.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: insurance agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Walsh Construction Co.",
+   "website": "https://www.walshconstruction.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Washington Alliance for Quality Recovery Residences (WAQRR)",
+   "website": "https://www.waqrr.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Washington Homeownership Resource Center",
+   "website": "https://www.homeownership-wa.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit resource center",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit resource center",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Washington Starter Home Plan",
+   "website": "https://www.civic-commons.org/starterhomeplanwa",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Civic Commons policy initiative, not tech",
+   "read": {
+    "verdict": "supplier",
+    "why": "Civic Commons policy initiative, not tech",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Wells Fargo",
+   "website": "https://www.wellsfargo.com/cib/commercial-real-estate/community-lending-investment/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "YWCA Seattle, King & Snohomish",
+   "website": "https://www.ywcaworks.org/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit social services",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit social services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 7,
+ "quality_was": "good"
+}

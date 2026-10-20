@@ -1054,6 +1054,20 @@ def confirmed_name(e: dict) -> str | None:
         return seen
     if e.get("name_confidence") == "named":
         return (e.get("org_name") or "").strip() or None
+    # A NATIONAL BODY HAS NO PARENT'S LISTING, so nothing above can ever
+    # confirm one: no national row had been promoted (2026-10-20), and the
+    # first two with a real list, AHF Live (148 sponsors) and Housing
+    # Washington (62), were refused as "a generated guess". What confirms a
+    # national body is its own site, and resolve_org_sites already reads it:
+    # page_names_it records "its own heading reads '<name>'" when the page's
+    # heading IS the full name. That is accepted only while the heading
+    # equals the name the row carries now, so a rename after the site was
+    # read is refused again. Weaker readings ("names NAHRO and [...]", an
+    # acronym and a few words) still wait for a person.
+    m = re.search(r"its own heading reads '([^']+)'", e.get("org_url_why") or "")
+    name = (e.get("org_name") or "").strip()
+    if e.get("org_url") and m and name and m.group(1) == name.lower():
+        return name
     return None
 
 
@@ -1157,7 +1171,17 @@ def _tag(base: str, year: str, taken: set, geo: str | None = None) -> str:
     def clean(s):
         return re.sub(r"\s+", " ", re.sub(r"[^\w &.'/-]+", " ", s or "")).strip(" -")
 
-    base = clean(base)[:44].strip()
+    # A WORD IS NEVER CUT IN HALF. "[:44]" alone published "County
+    # Commissioners Association of Pennsylv 2026", "New York State Conference
+    # of Mayors and Muni 2027" and nearly "Washington Housing Alliance
+    # Education Networ 2026" (2026-10-20). Past 44 the name is cut back to
+    # the last whole word.
+    base = clean(base)
+    if len(base) > 44:
+        base = base[:45].rsplit(" ", 1)[0]
+        # nor left hanging on a connector: "Association of 2026"
+        base = re.sub(r"(?:\s+(?:of|and|the|for|in|on|at|to|&))+$", "", base, flags=re.I)
+    base = base.strip(" -&/")
     tag = f"{base} {year}"
     if tag not in taken:
         return tag

@@ -76335,7 +76335,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "Government banking and treasury services - exhibited at GFOA 2026, USAging 2026",
+  "description": "Government banking and treasury services - exhibited at GFOA 2026, USAging 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -76346,7 +76346,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: GFOA 2026"
+  "source": "conference sweep: GFOA 2026; Housing Washington 2026"
  },
  {
   "id": "zions-bank",
@@ -96814,7 +96814,7 @@
   "year_founded": null,
   "sector": "Housing & Community Dev",
   "category": "Suppliers & Services",
-  "description": "Public housing insurance provider - exhibited at NAHRO 2026",
+  "description": "Public housing insurance provider - exhibited at NAHRO 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -96825,7 +96825,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NAHRO 2026"
+  "source": "conference sweep: NAHRO 2026; Housing Washington 2026"
  },
  {
   "id": "housing-agency-retirement-trust",
@@ -97638,7 +97638,7 @@
   "year_founded": null,
   "sector": "Health & Human Services",
   "category": "Suppliers & Services",
-  "description": "Human services furniture supplier - exhibited at NatCon 2026",
+  "description": "Human services furniture supplier - exhibited at NatCon 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -97649,7 +97649,7 @@
    "roles": [],
    "checked": null
   },
-  "source": "conference sweep: NatCon 2026"
+  "source": "conference sweep: NatCon 2026; Housing Washington 2026"
  },
  {
   "id": "california-correctional-health-care-services",
@@ -156614,7 +156614,7 @@
   "year_founded": null,
   "sector": "General Gov",
   "category": "Suppliers & Services",
-  "description": "exhibited at NCSHA 2026",
+  "description": "exhibited at NCSHA 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -156624,7 +156624,8 @@
    "note": "not researched",
    "roles": [],
    "checked": null
-  }
+  },
+  "source": "conference sweep: Housing Washington 2026"
  },
  {
   "id": "td-bank",
@@ -166437,6 +166438,1126 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "exhibited at Washington Recreation and Park Association 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "1drop",
+  "name": "1DROP",
+  "website": "https://www.1drop.co/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "absher-construction",
+  "name": "Absher Construction",
+  "website": "https://www.absherco.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "allied-residential",
+  "name": "Allied Residential",
+  "website": "https://www.alliedresidential.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "association-of-washington-housing-authorities",
+  "name": "Association of Washington Housing Authorities",
+  "website": "http://www.awha.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "banner-bank",
+  "name": "Banner Bank",
+  "website": "https://www.bannerbank.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "beneficial-state-bank",
+  "name": "Beneficial State Bank",
+  "website": "https://www.beneficialstatebank.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "black-home-initiative",
+  "name": "Black Home Initiative",
+  "website": "https://blackhomeinitiative.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "blue-ridge-cascade",
+  "name": "Blue Ridge Cascade",
+  "website": "https://www.blueridgecascade.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "brawner-company",
+  "name": "Brawner & Company",
+  "website": "https://jhbrawner.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "bremerton-housing-authority-cms",
+  "name": "Bremerton Housing Authority/CMS",
+  "website": "https://bremertonhousing.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "churchill-stateside-group",
+  "name": "Churchill Stateside Group",
+  "website": "https://csgfirst.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "citi-community-capital",
+  "name": "Citi Community Capital",
+  "website": "https://www.citibank.com/icg/sa/citicommunitycapital/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "coin-meter-multi-family-laundry-service-provider",
+  "name": "Coin Meter Multi-Family Laundry Service Provider",
+  "website": "https://coinmeter.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "community-frameworks",
+  "name": "Community Frameworks",
+  "website": "https://www.communityframeworks.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "compass-construction",
+  "name": "Compass Construction",
+  "website": "https://www.compass-gc.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "corporation-for-supportive-housing",
+  "name": "Corporation for Supportive Housing",
+  "website": "https://www.csh.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "deacon-construction-llc",
+  "name": "Deacon Construction LLC",
+  "website": "https://deacon.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "desc",
+  "name": "DESC",
+  "website": "https://www.desc.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "e-a-team-inc",
+  "name": "E&A Team, Inc",
+  "website": "https://eandateam.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "eastern-wa-realtist-black-homeownership-spokane",
+  "name": "Eastern WA Realtist - Black Homeownership Spokane",
+  "website": "https://www.visionpropertieswa.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "environmental-works-community-design-center",
+  "name": "Environmental Works Community Design Center",
+  "website": "https://www.eworks.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "federal-home-loan-bank-of-des-moines",
+  "name": "Federal Home Loan Bank of Des Moines",
+  "website": "https://www.fhlbdm.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "foster-garvey-pc",
+  "name": "Foster Garvey, PC",
+  "website": "https://www.foster.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "gglo",
+  "name": "GGLO",
+  "website": "https://www.gglo.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "guild-mortgage",
+  "name": "Guild Mortgage",
+  "website": "https://www.guildmortgage.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "hainsworth-laundry",
+  "name": "Hainsworth Laundry",
+  "website": "https://hainsworthlaundry.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "heritage-bank",
+  "name": "Heritage Bank",
+  "website": "https://www.heritagebanknw.com/home/home",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "homesight",
+  "name": "HomeSight",
+  "website": "https://homesightwa.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "housing-development-consortium-of-seattle-king-county",
+  "name": "Housing Development Consortium of Seattle-King County",
+  "website": "https://www.housingconsortium.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "hunt-capital-partners",
+  "name": "Hunt Capital Partners",
+  "website": "https://huntcapitalpartners.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "imagine-housing",
+  "name": "Imagine Housing",
+  "website": "https://imaginehousing.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "impact-capital",
+  "name": "Impact Capital",
+  "website": "http://impactcapital.org",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "ink-built-architecture",
+  "name": "Ink Built Architecture",
+  "website": "https://www.inkbuilt.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "kantor-taylor-pc",
+  "name": "Kantor Taylor, PC",
+  "website": "https://kantortaylor.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "kutak-rock-llp",
+  "name": "Kutak Rock LLP",
+  "website": "https://www.kutakrock.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "lisc-puget-sound",
+  "name": "LISC Puget Sound",
+  "website": "https://www.lisc.org/puget-sound/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "lotus-development-partners",
+  "name": "Lotus Development Partners",
+  "website": "https://www.lotusdevpartners.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "merritt-community-capital",
+  "name": "Merritt Community Capital",
+  "website": "https://merrittcap.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "multifamily-affordable-properties-aptfinder-org",
+  "name": "Multifamily Affordable Properties/AptFinder.org",
+  "website": "http://www.aptfinder.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "non-profit-insurance-program-npip",
+  "name": "Non Profit Insurance Program (NPIP)",
+  "website": "https://npip.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "novogradac-company",
+  "name": "Novogradac & Company",
+  "website": "https://www.novoco.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "office-of-rural-and-farmworker-housing",
+  "name": "Office of Rural and Farmworker Housing",
+  "website": "https://www.orfh.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pacific-northwest-women-s-affordable-housing-network",
+  "name": "Pacific Northwest Women\u2019s Affordable Housing Network",
+  "website": "https://wahnetwork.org/chapters/pacific-northwest/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pacifica-law-group-llp",
+  "name": "Pacifica Law Group LLP",
+  "website": "https://www.pacificalawgroup.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "parkview-services",
+  "name": "Parkview Services",
+  "website": "https://www.parkviewservices.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "pnc",
+  "name": "PNC",
+  "website": "https://www.pnc.com/en/personal-banking.html",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "project-based-compliance-assistance-llc",
+  "name": "Project Based Compliance Assistance LLC",
+  "website": "https://www.pbcassistance.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "r4capital-funding",
+  "name": "R4Capital Funding",
+  "website": "https://r4cap.com/services/affordable-housing-debt/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "rafn-company",
+  "name": "Rafn Company",
+  "website": "https://www.rafn.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "rbc-capital-markets",
+  "name": "RBC Capital Markets",
+  "website": "https://www.rbccm.com/en/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "stewart-hall-insurance-agency",
+  "name": "Stewart & Hall Insurance Agency",
+  "website": "https://www.stewartandhall.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "walsh-construction-co",
+  "name": "Walsh Construction Co.",
+  "website": "https://www.walshconstruction.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "washington-alliance-for-quality-recovery-residences-waqrr",
+  "name": "Washington Alliance for Quality Recovery Residences (WAQRR)",
+  "website": "https://www.waqrr.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "washington-homeownership-resource-center",
+  "name": "Washington Homeownership Resource Center",
+  "website": "https://www.homeownership-wa.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "washington-starter-home-plan",
+  "name": "Washington Starter Home Plan",
+  "website": "https://www.civic-commons.org/starterhomeplanwa",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "ywca-seattle-king-snohomish",
+  "name": "YWCA Seattle, King & Snohomish",
+  "website": "https://www.ywcaworks.org/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "exhibited at Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null

@@ -2963,6 +2963,29 @@
    },
    "dates_checked_on": "2026-10-20",
    "dates_note": "read 2026-10-20: no next edition announced on the organisation's site - read by two readers in a browser and through read_page.py (ilapco.org, 911conference.org, the calendar): only the 42nd IPSTA, October 18-21, 2026"
+  },
+  {
+   "block": "Community development",
+   "department": "State housing finance",
+   "conference": "Housing Washington",
+   "flagship": false,
+   "swept": false,
+   "exhibitor_url": "https://www.housingwa.org/2026-sponsors",
+   "fetchability": "readable",
+   "event_tag": "Housing Washington 2026",
+   "url": "https://www.housingwa.org/",
+   "dates": "October 20-22, 2026",
+   "city": "Spokane, WA",
+   "dates_source": "https://www.housingwa.org/",
+   "dates_confidence": "high",
+   "discovery_notes": "National event promoted from data/national_events.json on 2026-10-20. The organisation row (WAHOUSINGALLIANC) was confirmed by its own site's heading, 'Washington Housing Alliance Education Network' (whaen.org); a reader and a skeptic found Housing Washington is led by the Washington State Housing Finance Commission with WA Commerce and WHAEN as a presenting partner, so the row names the event and links its own site. Name and tag read off the list page's own title, 'Housing Washington | Seattle | 2026 Sponsors' (the promotion's event-name reader looks for a word like 'conference' and found none; its tag was cut mid-word at 44 characters, 'Washington Housing Alliance Education Networ 2026', and was replaced before anything was tagged). Directory: housingwa.org/2026-sponsors, 62 company names, reader + blind skeptic (wf_506304cf-27b), re-judged a directory by --promote.",
+   "national_event": {
+    "org_code": "WAHOUSINGALLIANC",
+    "geo": null,
+    "parent_national": null
+   },
+   "dates_checked_on": "2026-10-20",
+   "next_edition": "2026"
   }
  ]
 }

@@ -1341,12 +1341,11 @@
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
    "org_url": "https://www.housingfinance.com/",
-   "directory_url": null,
    "status": "off_site_and_unnamed",
    "promoted": false,
    "org_url_why": "a researcher proposed it; its own heading reads 'affordable housing finance'",
-   "candidate_url": "https://www.mfeconference.com/mfeconferencecom/2026-sponsors",
-   "directory_note": "this list is on a different host from www.housingfinance.com and names the organisation nowhere a reader would see whose page it is. Either it belongs to another body, or the organisation's url on file is out of date"
+   "candidate_url": "https://www.ahflive.com/ahflivecom/ahf-live-2026-sponsors",
+   "directory_note": "AHF Live 2026 sponsors (148 names) found 2026-10-20 on ahflive.com, a host that does not name Affordable Housing Finance. Scope PROVIDER: the owner's 2026-09-09 ruling puts such events on the site but never sweeps their floors"
   },
   {
    "key": "AFWA::annual-meeting",
@@ -10714,7 +10713,7 @@
   {
    "key": "NALHFA::annual-conference",
    "org_code": "NALHFA",
-   "org_name": "NALHFA",
+   "org_name": "National Association of Local Housing Finance Agencies",
    "event_name": "Annual Conference",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -10730,12 +10729,14 @@
    "org_url": null,
    "directory_url": null,
    "status": "needs_url",
-   "promoted": false
+   "promoted": false,
+   "org_name_was": "NALHFA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)"
   },
   {
    "key": "NALHFA::legislative-conference",
    "org_code": "NALHFA",
-   "org_name": "NALHFA",
+   "org_name": "National Association of Local Housing Finance Agencies",
    "event_name": "Legislative Conference",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -10751,7 +10752,9 @@
    "org_url": null,
    "directory_url": null,
    "status": "needs_url",
-   "promoted": false
+   "promoted": false,
+   "org_name_was": "NALHFA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)"
   },
   {
    "key": "NALIT::professional-development-seminar",
@@ -13503,7 +13506,7 @@
   {
    "key": "NCSHA::annual-conference-showplace",
    "org_code": "NCSHA",
-   "org_name": "NCSHA",
+   "org_name": "National Council of State Housing Agencies",
    "event_name": "Annual Conference & Showplace",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -13516,15 +13519,18 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncsha.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_name_was": "NCSHA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)",
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council of state housing agencies'"
   },
   {
    "key": "NCSHA::hfa-institute",
    "org_code": "NCSHA",
-   "org_name": "NCSHA",
+   "org_name": "National Council of State Housing Agencies",
    "event_name": "HFA Institute",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -13537,15 +13543,18 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncsha.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_name_was": "NCSHA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)",
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council of state housing agencies'"
   },
   {
    "key": "NCSHA::housing-credit-connect",
    "org_code": "NCSHA",
-   "org_name": "NCSHA",
+   "org_name": "National Council of State Housing Agencies",
    "event_name": "Housing Credit Connect",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -13558,15 +13567,18 @@
    "harvest": true,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncsha.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_name_was": "NCSHA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)",
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council of state housing agencies'"
   },
   {
    "key": "NCSHA::legislative-conference",
    "org_code": "NCSHA",
-   "org_name": "NCSHA",
+   "org_name": "National Council of State Housing Agencies",
    "event_name": "Legislative Conference",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -13579,10 +13591,13 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
+   "org_url": "https://www.ncsha.org/",
    "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "status": "org_found",
+   "promoted": false,
+   "org_name_was": "NCSHA",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)",
+   "org_url_why": "a researcher proposed it; its own heading reads 'national council of state housing agencies'"
   },
   {
    "key": "NCSHPO::annual-meeting",
@@ -18239,7 +18254,7 @@
   {
    "key": "WAHOUSINGALLIANC::washington-housing-conference",
    "org_code": "WAHOUSINGALLIANC",
-   "org_name": "WA Housing Alliance",
+   "org_name": "Washington Housing Alliance Education Network",
    "event_name": "Washington Housing Conference",
    "vertical": "",
    "block": "Block 1 — Housing & Community Development",
@@ -18252,10 +18267,19 @@
    "harvest": false,
    "verified": false,
    "origin": "CONFERENCE_BLOCKS.md",
-   "org_url": null,
-   "directory_url": null,
-   "status": "needs_url",
-   "promoted": false
+   "org_url": "https://www.whaen.org/",
+   "directory_url": "https://www.housingwa.org/2026-sponsors",
+   "status": "directory_found",
+   "promoted": true,
+   "org_name_was": "WA Housing Alliance",
+   "org_name_source": "read off the organisation's own site by a reader and a skeptic, 2026-10-20 (wf_506304cf-27b)",
+   "org_url_why": "a researcher proposed it; its own heading reads 'washington housing alliance education network'",
+   "directory_note": "Housing Washington 2026 sponsors: 62 company names in the sweeper's harvest; found by a reader and confirmed by a blind skeptic who ran the same harvest (2026-10-20, wf_506304cf-27b). A lead: --promote judges the page again before it publishes",
+   "catalog_place": [
+    "Community development",
+    "State housing finance"
+   ],
+   "promoted_tag": "Housing Washington 2026"
   },
   {
    "key": "WATEREUSE::annual-symposium",

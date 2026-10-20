@@ -26977,6 +26977,19 @@ def check_promotion_refuses_a_generated_name() -> int:
          "publishes the tag 'Illinois 2026'"),
         ({"org_name_observed": "NC", "name_confidence": "pattern"}, None,
          "a state's abbreviation is not an organisation either"),
+        ({"org_name": "Affordable Housing Finance", "org_url": "https://www.housingfinance.com/",
+          "org_url_why": "a researcher proposed it; its own heading reads 'affordable housing finance'"},
+         "Affordable Housing Finance",
+         "a national body's own heading spelling its full name confirms it"),
+        ({"org_name": "Affordable Housing Finance Live", "org_url": "https://www.housingfinance.com/",
+          "org_url_why": "a researcher proposed it; its own heading reads 'affordable housing finance'"},
+         None, "renamed after its site was read: the heading no longer confirms the name"),
+        ({"org_name": "Affordable Housing Finance",
+          "org_url_why": "its own heading reads 'affordable housing finance'"},
+         None, "no organisation site on the row, so nothing was read"),
+        ({"org_name": "NAHRO", "org_url": "https://www.nahro.org/",
+          "org_url_why": "names NAHRO and ['housing', 'officials']"},
+         None, "an acronym and a few words is the weaker reading; a person rules on it"),
     ]:
         got = fed.confirmed_name(row)
         if got != want:
@@ -27045,6 +27058,19 @@ def check_promotion_refuses_a_generated_name() -> int:
     if name != "IPSTA Conference":
         print(f"  FAIL: event_name_and_year no longer takes the caption off - {name!r}")
         errors += 1
+    for base, want in [
+        ("County Commissioners Association of Pennsylvania",
+         "County Commissioners Association 2026"),
+        ("Washington Housing Alliance Education Network",
+         "Washington Housing Alliance Education 2026"),
+        ("New York State Conference of Mayors and Municipal Officials",
+         "New York State Conference of Mayors 2026"),
+        ("Texas Municipal League", "Texas Municipal League 2026")]:
+        got = fed._tag(base, "2026", set())
+        if got != want:
+            print(f"  FAIL: _tag({base!r}) = {got!r}, expected {want!r} - a public "
+                  f"tag never ends in half a word or on a connector")
+            errors += 1
     a = fed._tag("Same Name", "2026", set(), "Texas")
     b = fed._tag("Same Name", "2026", {a}, "Ohio")
     c = fed._tag("Same Name", "2026", {a, b}, None)
@@ -28712,9 +28738,20 @@ def check_staging_a_catalogue_never_costs_an_observed_fact() -> int:
             errors += fail("a staged row claims `verified` - the source "
                            "registry says five of ~840 events are verified and "
                            "the rest are recalled")
-        if any(r.get("promoted") for r in ev):
-            errors += fail("a staged row is marked promoted before any "
-                           "directory was ever read")
+        # PROMOTED ONLY THROUGH THE DOOR. This said no row may be promoted at
+        # all, which was true while staging was all there was; the door
+        # promoted its first national row on 2026-10-20 (Housing Washington).
+        # What it still holds: a promoted row carries the directory that was
+        # read and a tag the public catalogue actually has.
+        cat = _json.loads((ROOT / "data" / "conferences.json").read_text())["conferences"]
+        issued = {c.get("event_tag") for c in cat} | {
+            t for c in cat for t in (c.get("prior_tags") or [])}
+        for r in ev:
+            if r.get("promoted") and not (r.get("directory_url")
+                                          and r.get("promoted_tag") in issued):
+                errors += fail(f"{r['key']} is marked promoted without a directory "
+                               f"read or a tag the catalogue holds "
+                               f"({r.get('promoted_tag')!r})")
         if len({r["key"] for r in ev}) != len(ev):
             errors += fail("duplicate keys in national_events.json")
     return errors

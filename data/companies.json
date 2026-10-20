@@ -166827,7 +166827,7 @@
   "year_founded": null,
   "sector": "Housing & Community Dev",
   "category": "Housing & Assistance",
-  "description": "Cloud software for government assistance programs: grant management, loan reservation and down payment assistance, and LIHEAP energy program administration - exhibited at NCSHA 2026",
+  "description": "Cloud software for government assistance programs: grant management, loan reservation and down payment assistance, and LIHEAP energy program administration - exhibited at NCSHA 2026, Housing Washington 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -166840,7 +166840,7 @@
   },
   "govtech": true,
   "vendor_type": "GovTech Product",
-  "source": "conference sweep: NCSHA 2026",
+  "source": "conference sweep: NCSHA 2026; Housing Washington 2026",
   "researched": true
  },
  {
@@ -167553,6 +167553,174 @@
   "govtech": true,
   "vendor_type": "GovTech Product",
   "source": "conference sweep: NASCIO 2026",
+  "researched": true
+ },
+ {
+  "id": "the-mitas-group",
+  "name": "The Mitas Group",
+  "website": "https://www.mitas.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Enterprise loan servicing, homeownership, multifamily and financial management software for state and local housing finance agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "executivepulse",
+  "name": "ExecutivePulse",
+  "website": "https://www.executivepulse.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Cloud CRM for economic development organizations covering business retention visits, business attraction pipelines, workforce development and impact reporting",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "padmission",
+  "name": "Padmission",
+  "website": "https://www.padmission.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Landlord engagement, housing search, rental assistance program administration and HQS/NSPIRE inspection software for Continuums of Care and housing authorities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "city-data-services",
+  "name": "City Data Services",
+  "website": "https://www.citydataservices.net",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Cloud-based grant and loan management software for city and county public services, economic development and housing programs, integrated with HUD IDIS",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "dulles-technology-partners",
+  "name": "Dulles Technology Partners",
+  "website": "https://dullestech.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "WebGrants full-life-cycle grants management software for federal, state and local government agencies, universities and nonprofits",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "exygy",
+  "name": "Exygy",
+  "website": "https://exygy.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Bloom Housing affordable housing listings and application platform, plus CiviForm government services application tool, for cities and counties",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "remi",
+  "name": "REMI",
+  "website": "https://www.remi.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Dynamic economic and demographic modeling software (PI+, Tax-PI, TranSight, PROSERIS) and consulting for federal, state and regional policy analysis",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
   "researched": true
  }
 ]

@@ -2099,7 +2099,7 @@
   },
   {
    "code": "NCSHA",
-   "name": "NCSHA",
+   "name": "National Council of State Housing Agencies",
    "url": "https://www.ncsha.org/events/",
    "is_a_class": false,
    "scopes": [
@@ -8645,9 +8645,9 @@
   },
   {
    "code": "NALHFA",
-   "name": "NALHFA",
+   "name": "National Association of Local Housing Finance Agencies",
    "url": null,
-   "is_a_class": false,
+   "is_a_class": true,
    "scopes": [
     "SLED"
    ],
@@ -30965,7 +30965,7 @@
   },
   {
    "code": "WAHOUSINGALLIANC",
-   "name": "WA Housing Alliance",
+   "name": "Washington Housing Alliance Education Network",
    "url": null,
    "is_a_class": false,
    "scopes": [
