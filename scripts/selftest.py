@@ -31589,6 +31589,25 @@ def check_a_second_listing_sits_on_its_shelf() -> int:
     return errors
 
 
+def check_the_companies_tab_offers_add_a_company() -> int:
+    """The Companies tab carries a worded Add a company button (owner,
+    2026-10-20: "we need the add company button on the companies page"), and
+    a search that finds nothing offers it too. The header's round + was the
+    only way in. Each needle was broken on purpose to prove it fires."""
+    src = (ROOT / "index.html").read_text()
+    flat = re.sub(r"\s+", "", src)
+    errors = 0
+    tab = flat[flat.index('<divclass="cfsearchjbarcobar"'):flat.index('<divclass="sechead"><h2id="c-h">')]
+    if 'data-click="openAdd"' not in tab or "Addacompany</button>" not in tab:
+        errors += fail("the Companies tab has no worded Add a company button")
+    draw = flat[flat.index("functiondrawCos("):flat.index("functioncoCard(")]
+    empty = draw[draw.index("NothingonthisboardmatchesMARK".replace("MARK", "")):][:900]
+    if 'data-click="openAdd"' not in empty:
+        errors += fail("a company search that finds nothing no longer offers Add a company")
+    if "openAdd:(el,e)=>openAdd(e)," not in flat:
+        errors += fail("ACTS has no openAdd, so the button does nothing")
+    return errors
+
 def check_the_jobs_bar_says_the_default_once() -> int:
     """The country's default is said once, and a chip, the More count and a
     copied link treat it as a default (2026-10-19, option A).
@@ -34470,6 +34489,7 @@ def main() -> int:
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
     errors += check_a_company_card_keeps_the_rows_honesty()
     errors += check_a_second_listing_sits_on_its_shelf()
+    errors += check_the_companies_tab_offers_add_a_company()
     errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()

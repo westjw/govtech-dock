@@ -1172,6 +1172,13 @@
   .jcopy:hover .jcopy-t{text-decoration:underline;text-underline-offset:2px}
   .jcopy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;
     stroke-linecap:round}
+  /* ADD A COMPANY, on the tab that lists them (owner, 2026-10-20: "we need
+     the add company button on the companies page"). The header's round + was
+     the only way in, an icon with no word beside it. Square, like the row. */
+  .coadd{border-color:var(--accent-text);color:var(--accent-text);font-weight:600}
+  .coadd:hover{background:var(--accent-text);color:var(--bg)}
+  .coadd svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;
+    stroke-linecap:round;flex:none}
   /* five fields do not fit a tablet row: the bar stacks a breakpoint earlier
      than the conferences bar, which has four */
   @media (max-width:900px){
@@ -1890,6 +1897,7 @@ let D=null, tab="home", PENDING_URL=null, ROLE=null;
    An action takes an id or a name, never a url and never HTML. The lookup
    is an own-key test, so an action named "constructor" does nothing. */
 const ACTS=Object.freeze({
+  openAdd:(el,e)=>openAdd(e),
   closeAdd:()=>document.getElementById("add-dlg").close(),
   sendAdd:()=>sendAdd(),
   drawJobs:()=>drawJobs(), drawCos:()=>drawCos(), saveSearch:()=>saveSearch(),
@@ -5388,6 +5396,10 @@ function companies(){
     <div class="jrow">
       <button class="jtog" type="button" aria-expanded="false"
         data-click="toggleMoreCo">More filters <span class="v" id="c-more-v"></span></button>
+      <span class="jrow-r">
+        <button class="jtog coadd" type="button" data-click="openAdd"><svg
+          viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a company</button>
+      </span>
     </div>
     <div class="bar" id="c-bar" style="display:none">
       <select id="c-phase" aria-label="Hiring phase"><option value="">Any phase</option>
@@ -5860,7 +5872,10 @@ function drawCos(){
   if(!rows.length)clist.innerHTML=`<div class="empty">${q
     ?`Nothing on this board matches &ldquo;${esc(q)}&rdquo;. That is
        ${D.organizations.length.toLocaleString()} companies checked and none of them
-       matching &mdash; not a claim that no such company exists.`
+       matching &mdash; not a claim that no such company exists.
+       <div class="jrow"><button class="jtog coadd" type="button" data-click="openAdd"><svg
+         viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a
+         company we are missing</button></div>`
     :"No companies match."}</div>`;
   /* CARDS, in the Conferences tab's shape (owner, 2026-10-19: "build option
      A with the company cards"). Three things a row never had to decide:
