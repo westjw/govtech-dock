@@ -167722,5 +167722,293 @@
   "vendor_type": "GovTech Product",
   "source": "research pass: housing research 2026-10-20",
   "researched": true
+ },
+ {
+  "id": "quicket-solutions",
+  "name": "Quicket Solutions",
+  "website": "https://www.quicketsolutions.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Courts & Justice",
+  "category": "Courts & Case Management",
+  "description": "Cloud case management, eCitation, parking, code enforcement and payment software for courts and local agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "thirdline",
+  "name": "ThirdLine",
+  "website": "https://www.thirdline.io",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "ERP audit, fraud monitoring, internal controls and reporting software for cities, counties and school districts",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "trueroll",
+  "name": "TrueRoll",
+  "website": "https://www.trueroll.io",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "AI workflow software for county assessor offices: homestead exemption monitoring, application vetting and property transfer automation",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "citydata-ai",
+  "name": "CITYDATA.ai",
+  "website": "https://www.citydata.ai",
+  "location": null,
+  "year_founded": null,
+  "sector": "Parks & Rec",
+  "category": "Park Assets, Forestry & Visitor Data",
+  "description": "Mobility and visitation data analytics, people-counting sensors and AI tools for parks, economic development and transportation planning",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "darwin-ai",
+  "name": "Darwin AI",
+  "website": "https://www.darwingov.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "AI governance platform that discovers AI tool use, enforces AI policy and runs governed AI workflows for state and local agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "aclima",
+  "name": "Aclima",
+  "website": "https://aclima.earth",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Public Health",
+  "description": "Roving and stationary air pollution and greenhouse gas sensor network with Aclima Pro analytics software for governments, companies and communities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "bludot",
+  "name": "Bludot",
+  "website": "https://www.bludot.io",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Economic development CRM, local business database and public business directory for cities, counties and economic development organizations",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "hdata",
+  "name": "HData",
+  "website": "https://www.hdata.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Utilities & Energy",
+  "category": "Grid & Energy",
+  "description": "AI regulatory data platform for energy filings and dockets, used by utilities and state public utility commissions",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "opexus",
+  "name": "OPEXUS",
+  "website": "https://www.opexustech.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Citizen Services",
+  "description": "FOIA and public records request, audit, investigations and case management software built for government agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "urbanlogiq",
+  "name": "UrbanLogiq",
+  "website": "https://urbanlogiq.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "IT & AI Platforms",
+  "description": "AI data platform that integrates government data for transportation, planning, public safety and economic development decisions",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "brandt-information-services",
+  "name": "Brandt Information Services",
+  "website": "https://www.brandtinfo.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Parks & Rec",
+  "category": "Outdoor Rec & Reservations",
+  "description": "Hunting and fishing licensing, vessel registration and park reservation software for state wildlife and parks agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
+ },
+ {
+  "id": "plum-identity",
+  "name": "Plum Identity",
+  "website": "https://www.plumidentity.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Benefits & Medicaid Systems",
+  "description": "Behavioral-analytics identity validation that scores applicants to government programs for fraud risk without collecting PII",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true
  }
 ]
