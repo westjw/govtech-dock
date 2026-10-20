@@ -27,3 +27,6 @@ export const SITE = "https://sledjobs.com";
 export const DOMAIN = "sledjobs.com";
 export const NAME = "SLED JOBS";
 export const FROM = "SLED JOBS <alerts@sledjobs.com>";
+// Where an email loads its images while the site is signed-in only; see
+// data/brand.json _public_assets_comment.
+export const PUBLIC_ASSETS = "https://raw.githubusercontent.com/westjw/govtech-dock/main";

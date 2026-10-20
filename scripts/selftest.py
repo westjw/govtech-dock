@@ -15583,7 +15583,8 @@ def check_brand() -> int:
     text = js.read_text()
     bad = 0
     for const, want in (("SITE", brand.SITE), ("DOMAIN", brand.DOMAIN),
-                        ("NAME", brand.NAME), ("FROM", brand.FROM)):
+                        ("NAME", brand.NAME), ("FROM", brand.FROM),
+                        ("PUBLIC_ASSETS", brand.PUBLIC_ASSETS)):
         m = re.search(rf'export const {const} = "([^"]*)"', text)
         if not m:
             bad += fail(f"_brand.js: no {const}")
@@ -25658,6 +25659,118 @@ def check_the_gate_is_where_the_requests_are() -> int:
     return errors
 
 
+def check_mail_images_load_without_a_sign_in() -> int:
+    """While the site is gated, an email's images come from the public
+    repository; the day it launches, from the site - in both languages.
+
+    A mail client fetches images with no sign-in. With functions/_gate.js
+    GATED, every image under sledjobs.com answered the sign-in redirect, so
+    the digest's and the confirmation email's mascot reached every inbox as a
+    broken box (found 2026-10-20 building the owner's AE email). One switch
+    decides both: digest.py reads GATED off _gate.js, _mail.js imports it.
+    """
+    import brand
+    import digest
+    errors = 0
+    m = re.search(r"export const GATED\s*=\s*(true|false)\s*;",
+                  (ROOT / "functions" / "_gate.js").read_text())
+    gated = bool(m) and m.group(1) == "true"
+    want = brand.PUBLIC_ASSETS if gated else brand.SITE
+    if digest.site_is_gated() != gated:
+        errors += fail("digest.py reads the gate differently from functions/_gate.js")
+    if not digest.MASCOT.startswith(want + "/"):
+        errors += fail(f"the digest's mascot loads from {digest.MASCOT.split('/assets')[0]!r}; "
+                       f"with GATED {gated} a mail client can only load {want!r}")
+    if not brand.PUBLIC_ASSETS.startswith("https://raw.githubusercontent.com/"):
+        errors += fail("brand.json public_assets is not the public repository's raw files")
+    js = (ROOT / "functions" / "_mail.js").read_text()
+    if ("GATED ? PUBLIC_ASSETS : SITE" not in js or 'import { GATED } from "./_gate.js"' not in js
+            or "${MAIL_ASSETS}/assets/mascot/" not in js):
+        errors += fail("functions/_mail.js does not pick its mail images by the gate")
+    if shutil.which("node"):
+        import subprocess
+        r = subprocess.run(["node", "-e", "import('./functions/_mail.js').then(m=>console.log(m.MASCOT))"],
+                           cwd=ROOT, capture_output=True, text=True, timeout=60)
+        if not (r.stdout or "").strip().startswith(want + "/"):
+            errors += fail(f"the Worker's mascot is {(r.stdout or r.stderr).strip()[:90]!r}, "
+                           f"not under {want!r}")
+    return errors
+
+
+def check_the_owner_alert_is_one_branded_email() -> int:
+    """The owner's AE alert is one email built on the shell, whole, under
+    Gmail's clipping limit, with logos a mail client can draw - and no issue
+    is assigned (an assignment is GitHub's second email).
+
+    It went out as a GitHub issue assigned to the owner: two emails a night in
+    GitHub's plain layout (owner, 2026-10-20: "why 2 emails? logos and
+    color?").
+    """
+    import alert
+    import digest
+    errors = 0
+    comps, hits = [], []
+    logos = sorted(p.stem for p in (ROOT / "assets" / "logos").glob("*.png"))[:3]
+    for i in range(250):
+        cid = logos[i] if i < len(logos) else f"co-{i}"
+        comps.append({"id": cid, "name": f"Company {i}", "location": "Austin, TX",
+                      "sector": "General Gov", "category": "Finance & ERP",
+                      "hiring": {"roles": [{"title": f"Account Executive {j}", "url": f"https://x.test/{i}/{j}",
+                                            "location": "Remote"} for j in range(5)]}})
+        hits.append({"id": cid, "company": f"Company {i}", "from": "None found", "to": "Yes"})
+    subject, text, html = alert.render_email(hits, comps, "2026-10-20", "2026-10-19")
+    for name, mark in MAIL_MARKS:
+        if mark not in html:
+            errors += fail(f"the AE email carries no {name} ({mark!r}) - it is not built on the shell")
+            break
+    if len(html.encode()) > alert.MAIL_LIMIT:
+        errors += fail(f"the AE email is {len(html.encode()):,} bytes; Gmail clips it behind "
+                       f"'[Message clipped]' past about 102KB")
+    # and the shrink on its own: with no cap on full cards, it still fits
+    saved_full = alert.FULL_CARDS
+    try:
+        alert.FULL_CARDS = 10 ** 6
+        _, _, big = alert.render_email(hits, comps, "2026-10-20", "2026-10-19")
+    finally:
+        alert.FULL_CARDS = saved_full
+    if len(big.encode()) > alert.MAIL_LIMIT:
+        errors += fail("a long list overflows the clipping limit: the email does not shrink its "
+                       "full cards to fit")
+    if any(f"Company {i}" not in html or f"Company {i}" not in text for i in (0, 59, 249)):
+        errors += fail("a company fell out of the AE email or its plain text")
+    srcs = re.findall(r'<img src="([^"]+)"', html)
+    if not any("/assets/logos/" in s for s in srcs):
+        errors += fail("the AE email drew no company logo")
+    if any(s.rsplit(".", 1)[-1].lower() not in alert.LOGO_EXTS for s in srcs if "/assets/logos/" in s):
+        errors += fail("the AE email points at a logo a mail client cannot draw (svg/ico)")
+    if any(not s.startswith(digest.MAIL_ASSETS + "/") for s in srcs):
+        errors += fail("the AE email loads an image from where a mail client cannot reach it")
+    if "{{" in html or "undefined" in html or "None" in subject:
+        errors += fail("a template brace or an empty value reached the AE email")
+    # a logo published white gets the dark plate; "light" and "white-bg" do not
+    saved_log = alert._LOGO_LOG
+    try:
+        alert._LOGO_LOG = {
+            "cs": {"url": "https://x.test/logos/CrowdStrike-logo-primary-white.png?v=2"},
+            "rev": {"url": "https://x.test/img/logo_reversed.png"},
+            "fav": {"url": "https://x.test/favicons/favicon-light.png"},
+            "bg": {"url": "https://x.test/uploads/cropped-icon-white-bg-300x300.png"},
+            "dirw": {"url": "https://x.test/white/logo.png"}}
+        got = {k: alert.light_logo(k) for k in ("cs", "rev", "fav", "bg", "dirw")}
+    finally:
+        alert._LOGO_LOG = saved_log
+    if got != {"cs": True, "rev": True, "fav": False, "bg": False, "dirw": False}:
+        errors += fail(f"the white-logo reading is wrong: {got} - a white mark on the white "
+                       f"plate is an empty box, a dark mark on the dark plate is too")
+    wf = (ROOT / ".github" / "workflows" / "refresh.yml").read_text()
+    if "--assignee" in wf:
+        errors += fail("refresh.yml still assigns an issue: GitHub mails the owner twice for that")
+    if "python scripts/alert.py --email" not in wf or "ALERT_TO: ${{ secrets.ALERT_TO }}" not in wf:
+        errors += fail("refresh.yml does not mail the AE alert, or takes the address from somewhere "
+                       "other than a secret")
+    return errors
+
+
 def check_mail_is_built_from_the_shell() -> int:
     """check_mail_shell holds two source files against each other. This sends.
 
@@ -34356,6 +34469,8 @@ def main() -> int:
     errors += check_an_infinite_scroll_floor_is_scrolled_to_its_end()
     errors += check_a_candidate_on_the_board_by_domain_is_not_researched()
     errors += check_a_card_moves_only_its_own_supplier_row_and_gives_it_back()
+    errors += check_mail_images_load_without_a_sign_in()
+    errors += check_the_owner_alert_is_one_branded_email()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()

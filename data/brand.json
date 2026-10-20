@@ -8,6 +8,8 @@
   "domain": "sledjobs.com",
   "site": "https://sledjobs.com",
   "from_email": "alerts@sledjobs.com",
+  "_public_assets_comment": "Where an EMAIL loads its images from while the site is signed-in only. Gmail and every other client fetch images with no sign-in, so a logo on sledjobs.com reaches the inbox as a broken box until launch. The repository is public and raw.githubusercontent.com serves its tracked files to anyone; scripts/digest.py and functions/_mail.js pick this base while functions/_gate.js says GATED, and sledjobs.com the day it does not.",
+  "public_assets": "https://raw.githubusercontent.com/westjw/govtech-dock/main",
   "palette": {
     "ice": {
       "hex": "#E8F1F7",

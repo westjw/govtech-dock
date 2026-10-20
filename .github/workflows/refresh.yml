@@ -222,23 +222,40 @@ jobs:
             git push
           fi
 
-      - name: Open an issue for new AE openings
+      - name: Tell the owner about new AE openings
+        # ONE EMAIL, IN THE BRAND (owner, 2026-10-20: "why 2 emails? logos
+        # and color?"). This opened an issue assigned to the owner, and GitHub
+        # mails twice for that - the issue, then the assignment - in its own
+        # plain layout. Now it mails the owner from SLED JOBS through Resend,
+        # built on the digest's shell, with logos. ALERT_TO is a secret, never
+        # a tracked file: the repository is public.
+        #
+        # Not set up, or a send that fails, and it falls back to the issue -
+        # UNASSIGNED, so that is one email too. An alert is never simply lost,
+        # and the list is always in this run's summary.
         env:
           GH_TOKEN: ${{ github.token }}
+          RESEND_KEY: ${{ secrets.RESEND_KEY }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
         run: |
           if [ "$(python scripts/alert.py "$RUNNER_TEMP/alert.md")" = "alert" ]; then
+            cat "$RUNNER_TEMP/alert.md" >> "$GITHUB_STEP_SUMMARY"
             # ONE OPEN AT A TIME. The repository is public and every night's
             # list was left open: 40 of them by 2026-10-09 (owner: keep them,
-            # close the old ones). Tonight's supersedes the last.
+            # close the old ones). Tonight's supersedes the last - or the
+            # email does, and then none stays open.
             for n in $(gh issue list --state open --limit 200 --json number,title \
                          --jq '.[] | select(.title | contains("new AE opening(s) —")) | .number'); do
               gh issue close "$n" --reason completed || true
             done
-            COUNT=$(grep -c '^### ' "$RUNNER_TEMP/alert.md")
-            gh issue create \
-              --title "$COUNT new AE opening(s) — $(date +%F)" \
-              --body-file "$RUNNER_TEMP/alert.md" \
-              --assignee "${{ github.repository_owner }}"
+            if python scripts/alert.py --email; then
+              echo "Emailed the owner."
+            else
+              COUNT=$(grep -c '^### ' "$RUNNER_TEMP/alert.md")
+              gh issue create \
+                --title "$COUNT new AE opening(s) — $(date +%F)" \
+                --body-file "$RUNNER_TEMP/alert.md"
+            fi
           else
             echo "No new AE openings this run."
           fi
@@ -267,10 +284,10 @@ jobs:
           if [ "$(python scripts/claim_alert.py "$RUNNER_TEMP/claims.md")" = "alert" ]; then
             OPEN=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number --jq 'length')
             if [ "$OPEN" = "0" ]; then
+              # unassigned: an assignment is a second email for the same news
               gh issue create \
                 --title "$TITLE" \
-                --body-file "$RUNNER_TEMP/claims.md" \
-                --assignee "${{ github.repository_owner }}"
+                --body-file "$RUNNER_TEMP/claims.md"
             else
               echo "Claims are waiting and an issue is already open."
             fi

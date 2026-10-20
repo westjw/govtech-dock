@@ -11,9 +11,14 @@
  * check_mail_is_built_from_the_shell asserts both endpoints import from here
  * rather than hand-rolling their own.
  */
-import { FROM, SITE, NAME, DOMAIN } from "./_brand.js";
+import { FROM, SITE, NAME, DOMAIN, PUBLIC_ASSETS } from "./_brand.js";
+import { GATED } from "./_gate.js";
 
-const MASCOT = `${SITE}/assets/mascot/png/head-on-the-hunt.png`;
+// A MAIL CLIENT FETCHES IMAGES WITH NO SIGN-IN. While the site is gated every
+// image under sledjobs.com answers the sign-in redirect, so the mascot came
+// through as a broken box; the public repository serves the same file.
+const MAIL_ASSETS = GATED ? PUBLIC_ASSETS : SITE;
+const MASCOT = `${MAIL_ASSETS}/assets/mascot/png/head-on-the-hunt.png`;
 const FONT = "Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif";
 
 const json = (obj, status = 200) =>
@@ -240,4 +245,4 @@ function shell(preheader, body, links) {
 }
 
 export { json, mintToken, emailKey, callerKey, callerNet, underDailyCap, validEmail, cleanToken, send, button, shell,
-         FONT, MASCOT, FROM, SITE, NAME, DOMAIN };
+         FONT, MASCOT, MAIL_ASSETS, FROM, SITE, NAME, DOMAIN };

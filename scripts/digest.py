@@ -31,6 +31,7 @@ import argparse
 import datetime as dt
 import json
 import pathlib
+import re
 import sys
 import urllib.parse
 
@@ -277,7 +278,19 @@ def board_link(sub: dict, since: str, board: dict) -> str:
 # takes the first family, fails to find Archivo, and renders the whole email
 # in Times New Roman. The selector list must include div and p.
 MAIL_FONT = "Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif"
-MASCOT = f"{SITE}/assets/mascot/png/head-on-the-hunt.png"
+def site_is_gated() -> bool:
+    """functions/_gate.js's GATED, read off the file: one switch for both
+    languages, so launch flips the mail images with the site."""
+    m = re.search(r"export const GATED\s*=\s*(true|false)\s*;",
+                  (ROOT / "functions" / "_gate.js").read_text())
+    return bool(m) and m.group(1) == "true"
+
+
+# A MAIL CLIENT FETCHES IMAGES WITH NO SIGN-IN. While the site is gated every
+# image under sledjobs.com answers the sign-in redirect, so the mascot reached
+# every inbox as a broken box; the public repository serves the same file.
+MAIL_ASSETS = brand.PUBLIC_ASSETS if site_is_gated() else SITE
+MASCOT = f"{MAIL_ASSETS}/assets/mascot/png/head-on-the-hunt.png"
 
 
 def button(href: str, label: str) -> str:

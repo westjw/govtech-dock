@@ -14,6 +14,7 @@ LINE = _DATA["line"]
 SITE = _DATA["site"]
 DOMAIN = _DATA["domain"]
 FROM = f'{NAME} <{_DATA["from_email"]}>'
+PUBLIC_ASSETS = _DATA["public_assets"]
 PALETTE = {k: v["hex"] for k, v in _DATA["palette"].items()}
 
 
