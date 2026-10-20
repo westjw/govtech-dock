@@ -58,6 +58,9 @@ def _hunter_page(brand: dict) -> str:
     """The closed-beta holding page under /admin/hunter/. Access signs the
     person in; whoami says whether the owner granted them the beta."""
     name = html.escape(brand.get("name") or "SLED JOBS")
+    # JOB HUNTER IS LIVE (2026-10-14) at hunter.<domain>, behind its own
+    # Access application, so a beta user is sent there, not told to wait.
+    app = html.escape(f"https://hunter.{brand.get('domain') or ''}/app")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Job Hunter beta</title>
@@ -78,7 +81,7 @@ a{{color:#0B57C4}}</style></head><body>
   const roles = me.roles || [];
   who.textContent = me.handle ? "Signed in as " + me.handle + "." : "Signed in, but not on the list yet.";
   if (roles.includes("hunter") || roles.includes("owner")) {{
-    body.innerHTML = '<div class="in"><b>You are in the beta.</b> Job Hunter reads the roles on this board, scores them against what you have told it about yourself, and drafts nothing on its own: every application is yours to send. The tool runs on the desk today; this page is where the browser version will live, and you will hear from the owner when it does.</div>';
+    body.innerHTML = '<div class="in"><b>You are in the beta.</b> Job Hunter reads the roles on this board, scores them against what you have told it about yourself, and drafts nothing on its own: every application is yours to send. <a href="{app}">Open Job Hunter</a>. On this board, the Flag beside any role puts it on your Job Hunter board.</div>';
     return;
   }}
   /* A CODE, FOR SOMEBODY THE OWNER HAS MET. Access plus the Users board is

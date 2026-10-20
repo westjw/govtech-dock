@@ -2447,7 +2447,8 @@ def check_login_endpoint_names_a_handle_never_an_address() -> int:
     if got["none"] != {"signed_in": False}:
         errors += fail(f"no token must be signed out, nothing more: {got['none']}")
     for k in ("jane", "jane_cookie"):
-        if got[k] != {"signed_in": True, "handle": "jane", "roles": ["hunter"]}:
+        if got[k] != {"signed_in": True, "handle": "jane", "roles": ["hunter"],
+                      "hunter_app": "https://hunter.sledjobs.com/app"}:
             errors += fail(f"a verified address on file ({k}) must answer handle and roles, "
                            f"matched after trimming and lower-casing: {got[k]}")
     if got["old"] != {"signed_in": True, "handle": None, "roles": []}:
@@ -31645,6 +31646,60 @@ def check_the_companies_tab_offers_add_a_company() -> int:
         errors += fail("ACTS has no openAdd, so the button does nothing")
     return errors
 
+def check_a_role_can_be_flagged_for_job_hunter() -> int:
+    """A Flag on every role opens Job Hunter with that posting (owner,
+    2026-10-20: "I want to be able to connect wyeth to the job board to flag
+    jobs"). Job Hunter (a private repo) reads `flag` off /app's address as
+    base64url JSON of {i, c, t, u, l} and matches the role by address, then
+    company and title. This runs the page's own jhFlagHref through
+    jobcard_harness and decodes what it would send, and holds the rest by
+    source: the link is shown only to an owner or a Job Hunter beta user,
+    keeps the referrer (Job Hunter flags at once only when the board sent
+    the person), and sits on the card, the role page and the Saved tab.
+    """
+    import base64
+    errors = 0
+    got = (_harness().get("flags") or {})
+    def payload(href):
+        if not href.startswith("https://hunter.") or "/app?flag=" not in href:
+            return None
+        raw = href.split("?flag=", 1)[1]
+        return json.loads(base64.urlsafe_b64decode(raw + "=" * (-len(raw) % 4)).decode("utf-8"))
+    try:
+        full, office = payload(got.get("full") or ""), payload(got.get("office") or "")
+    except (ValueError, UnicodeDecodeError) as e:
+        full = office = None
+        errors += fail(f"the flag link's payload does not decode: {e}")
+    want = {"i": "zed::D\u00e9veloppement d'affaires \"AE\"::9",
+            "c": "Zed Civic", "t": "D\u00e9veloppement d'affaires \"AE\"",
+            "u": "https://zed.example/jobs/9?src=x", "l": "Austin, TX"}
+    if full != want:
+        errors += fail(f"the flag link does not carry the posting as shown: {full}")
+    if not office or office.get("l") != "Denver, CO":
+        errors += fail(f"a posting with only an office sends no place: {office}")
+    src = (ROOT / "index.html").read_text()
+    flat = re.sub(r"\s+", "", src)
+    if ".jhflag{display:none}" not in flat or ":root.jh.jhflag{display:inline-flex" not in flat:
+        errors += fail("the flag link is not hidden from everyone but an owner or beta user")
+    who = flat[flat.index("asyncfunctionwhoAmI("):flat.index("functionwireHeader(")]
+    if ('if((roles.includes("owner")||roles.includes("hunter"))&&/^https:\\/\\/hunter\\.[a-z0-9.-]+\\/app$/.test(me.hunter_app||"")){JH_APP=me.hunter_app;' not in who
+            or 'door(JH_APP,"JobHunter");document.documentElement.classList.add("jh");}' not in who):
+        errors += fail("whoAmI shows the flag, or the Job Hunter door, to somebody without the role, "
+                       "or builds Job Hunter's address from the address bar instead of whoami's")
+    if 'document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});' not in who:
+        errors += fail("flag links drawn before whoami answered keep the address-bar host")
+    link = flat[flat.index("functionjhFlagLink("):flat.index("functionsaveButton(")]
+    if 'a.rel="noopenernoreferrer";' not in link:
+        errors += fail("the flag link opens Job Hunter with a handle back to this page")
+    if "a.onclick=e=>e.stopPropagation();" not in link:
+        errors += fail("a click on Flag also opens the role underneath it")
+    for where, needle in (("the job card", 'li.querySelector(".jc-flag").appendChild(jhFlagLink(p,'),
+                          ("the role page", "host.replaceWith(jhFlagLink(p),saveButton(p))"),
+                          ("the Saved tab", "row.append(jhFlagLink(p),saveButton(p))")):
+        if needle not in flat:
+            errors += fail(f"{where} has no Flag for Job Hunter")
+    return errors
+
 def check_the_jobs_bar_says_the_default_once() -> int:
     """The country's default is said once, and a chip, the More count and a
     copied link treat it as a default (2026-10-19, option A).
@@ -34527,6 +34582,7 @@ def main() -> int:
     errors += check_a_company_card_keeps_the_rows_honesty()
     errors += check_a_second_listing_sits_on_its_shelf()
     errors += check_the_companies_tab_offers_add_a_company()
+    errors += check_a_role_can_be_flagged_for_job_hunter()
     errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()

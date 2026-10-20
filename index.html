@@ -1333,6 +1333,19 @@
   .jc-tag.q{color:var(--accent-text)}
   /* the bookmark rides in the corner on every width */
   .jc-save{position:absolute;top:var(--space-2);right:var(--space-2)}
+  /* FLAG FOR JOB HUNTER: drawn on every role and shown only to a signed-in
+     owner or Job Hunter beta user (whoAmI puts "jh" on the root). */
+  .jhflag{display:none}
+  :root.jh .jhflag{display:inline-flex;align-items:center;min-height:32px;
+    padding:0 var(--space-2);border:1px solid var(--accent-text);
+    color:var(--accent-text);font-size:12.5px;font-weight:600;text-decoration:none;
+    white-space:nowrap}
+  :root.jh .jhflag:hover{background:var(--accent-text);color:var(--bg)}
+  :root.jh .jhflag:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* on a card the flag sits under the dates, never in the bookmark's corner,
+     so a title keeps its width on a 320px phone */
+  .jc-flag{display:none}
+  :root.jh .jc-flag{display:flex}
   .jc .savebtn{display:inline-flex;align-items:center;justify-content:center;
     min-width:36px;min-height:36px;color:var(--dim)}
   .jc .savebtn[aria-pressed=true]{color:var(--accent-text)}
@@ -1676,6 +1689,7 @@
     /* thumbs, not cursors: 44px for the bookmark, 40px for the rest */
     .jc-save{top:var(--space-1);right:var(--space-1)}
     .jc .savebtn{min-width:44px;min-height:44px}
+    :root.jh .jhflag{min-height:40px}
     .locmore{min-height:40px}
     .jc-locs li{min-height:44px;grid-template-columns:minmax(0,1fr) auto;
       grid-template-areas:"place save" "pay save"}
@@ -2891,7 +2905,7 @@ function roleView(id){
   };
   const link=$("#r-co");
   if(link)link.onclick=e=>{e.preventDefault();ROLE=null;co(p.company_id)};
-  const host=$(".savehost"); if(host)host.replaceWith(saveButton(p));
+  const host=$(".savehost"); if(host)host.replaceWith(jhFlagLink(p),saveButton(p));
   if(siblings.length){
     const h=$("#r-sibs");
     siblings.slice(0,12).forEach(x=>{
@@ -4283,6 +4297,42 @@ function paintSave(btn,on){
    lead posting's button in its corner AND in its expanded list, and
    repainting only the clicked one left the other saying the opposite, so
    the next click undid the save it appeared to make. */
+/* FLAG FOR JOB HUNTER (owner, 2026-10-20: "I want to be able to connect
+   wyeth to the job board to flag jobs"). A link, not a fetch: it opens Job
+   Hunter's own page, hunter.<this host>/app?flag=<payload>, behind the same
+   Access door, and Job Hunter files the role on the signed-in person's own
+   board by the posting's address, company and title. The payload is the
+   posting as this board shows it, base64url JSON, and nothing else. Job
+   Hunter asks the person to confirm every flag, so nothing here needs the
+   referrer. Only an owner or a Job Hunter beta user sees the link: whoAmI
+   puts "jh" on the root when /admin/api/whoami answers with `hunter_app`,
+   Job Hunter's address built from the brand domain, and repoints every link
+   already drawn - the hostname default below is only what a link carries
+   before that answer, and on solesourcejobs.com it would be wrong. */
+let JH_APP="https://hunter."+location.hostname.replace(/^www\./,"")+"/app";
+function jhApp(){ return JH_APP; }
+function b64url(s){
+  let bin="";
+  for(const x of new TextEncoder().encode(s))bin+=String.fromCharCode(x);
+  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function jhPayload(p){
+  const where=typeof p.location==="string"&&p.location?p.location:officeText(p.office);
+  return b64url(JSON.stringify({i:p.id,c:p.company||"",t:p.title||"",u:p.url||"",l:where||""}));
+}
+function jhFlagHref(p){ return jhApp()+"?flag="+jhPayload(p); }
+function jhFlagLink(p,label){
+  const a=document.createElement("a");
+  a.className="jhflag";
+  a.dataset.flag=jhPayload(p);
+  a.href=jhApp()+"?flag="+a.dataset.flag;
+  a.target="_blank";
+  a.rel="noopener noreferrer";
+  a.textContent="Flag";
+  a.setAttribute("aria-label","Flag "+(label||p.title||"this role")+" for Job Hunter");
+  a.onclick=e=>e.stopPropagation();
+  return a;
+}
 function saveButton(p,label){
   const b=document.createElement("button");
   b.className="savebtn";
@@ -4437,7 +4487,7 @@ function savedView(){
           aria-pressed="${ap[p.id]?"true":"false"}"
           title="${ap[p.id]?"Mark as not applied":"Mark that you applied"}"
           >${ap[p.id]?"undo":"applied"}</button></div>`;
-    row.appendChild(saveButton(p));
+    row.append(jhFlagLink(p),saveButton(p));
     const ab=row.querySelector(".applybtn");
     if(ab)ab.onclick=e=>{e.stopPropagation();markApplied(p.id,!appliedOn(p.id));savedView()};
     host.appendChild(row);
@@ -4877,6 +4927,8 @@ function drawJobs(){
          earliest this board saw - so its label says which. */
       li.querySelector(".jc-save").appendChild(saveButton(p,
         g.rows.length>1?`${p.title}, ${rowPlace(p)}`:p.title));
+      li.querySelector(".jc-flag").appendChild(jhFlagLink(p,
+        g.rows.length>1?`${p.title}, ${rowPlace(p)}`:p.title));
       const more=li.querySelector(".locmore");
       if(more)more.onclick=e=>{e.stopPropagation();expandOpening(li,g,more)};
       list.appendChild(li);
@@ -5136,6 +5188,7 @@ function jobCardHTML(g){
         ?`<div class="postedon" title="captured by hand; no fetcher re-reads it each night">${esc(byHandText(p,
           (D.organizations||[]).find(x=>x.id===p.company_id),true))}</div>`:""}
       </div>
+      <div class="jc-flag"></div>
     </div>`;
 }
 /* Open one advertisement into the places it was posted to.
@@ -9604,7 +9657,15 @@ async function whoAmI(){
   doors.textContent="";
   const door=(href,label)=>{const a=document.createElement("a");a.className="row";a.href=href;a.textContent=label+" \u2192";doors.appendChild(a);};
   if(roles.includes("owner")||roles.includes("admin")) door("/admin/","Admin");
-  if(roles.includes("owner")||roles.includes("hunter")) door("/admin/hunter/","Job Hunter beta");
+  /* JOB HUNTER IS LIVE at hunter.<this host> (2026-10-14), so the door goes
+     there, and an owner or beta user gets a Flag on every role. */
+  if((roles.includes("owner")||roles.includes("hunter"))
+     &&/^https:\/\/hunter\.[a-z0-9.-]+\/app$/.test(me.hunter_app||"")){
+    JH_APP=me.hunter_app;
+    document.querySelectorAll(".jhflag").forEach(a=>{a.href=JH_APP+"?flag="+a.dataset.flag;});
+    door(JH_APP,"Job Hunter");
+    document.documentElement.classList.add("jh");
+  }
 }
 function wireHeader(){
   whoAmI();

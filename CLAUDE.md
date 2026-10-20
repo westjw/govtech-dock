@@ -189,6 +189,33 @@ with the company cards").
   stay inside the bar, its popover and the cards; toggles, selects and chips
   outside them stay square.
 
+## Flag for Job Hunter (owner, 2026-10-20)
+
+"I want to be able to connect wyeth to the job board to flag jobs." Job
+Hunter (the private repo, live at hunter.<domain> behind its own Access
+application) is the other end.
+- **A link, never a fetch.** `jhFlagLink(p)` opens
+  `https://hunter.<host>/app?flag=<base64url JSON {i, c, t, u, l}>` in a new
+  tab: the posting's id, company, title, address and place as this board
+  shows them, nothing else. Job Hunter matches the role by address, then
+  company and title, and files it on the signed-in person's own board.
+- **Only an owner or a Job Hunter beta user sees it.** whoAmI puts `jh` on
+  the root when /admin/api/whoami answers with `hunter_app`, which whoami.js
+  returns only for those roles and builds from `_brand.js` DOMAIN - never
+  from the address bar, which on solesourcejobs.com named a host Job Hunter
+  does not answer. Links drawn before that answer are repointed. `.jhflag`
+  is `display:none` otherwise. The account menu's Job Hunter door goes to
+  the same address, and /admin/hunter/ links it.
+- **Job Hunter confirms every flag**, so the link needs no referrer
+  (`rel="noopener noreferrer"`): a company's careers link on the board could
+  redirect into a flag carrying this board's referrer, so arriving is never
+  consent (review, 2026-10-20).
+- On a card it sits under the dates (`.jc-flag`), never in the bookmark's
+  corner, so a title keeps its width on a 320px phone; the role page and
+  the Saved tab put it beside the bookmark.
+- `check_a_role_can_be_flagged_for_job_hunter` decodes what the page's own
+  jhFlagHref sends (jobcard_harness) and holds the rest by source.
+
 ## The job list is cards (owner, 2026-09-27)
 
 The jobs tab was a dense table from 2026-08-23. The owner looked at a federal

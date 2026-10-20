@@ -1,4 +1,5 @@
 import { verify, tokenOf } from "../../_access.js";
+import { DOMAIN } from "../../_brand.js";
 
 /* WHO IS SIGNED IN, and what may they reach.
  *
@@ -28,7 +29,15 @@ export async function onRequestGet({ request, env }) {
   } catch (e) { users = {}; }
   for (const [handle, u] of Object.entries(users || {})) {
     if (u && u.email_sha256 === key && !u.revoked_on) {
-      return json({ signed_in: true, handle, roles: Array.isArray(u.roles) ? u.roles : [] });
+      const roles = Array.isArray(u.roles) ? u.roles : [];
+      const out = { signed_in: true, handle, roles };
+      /* JOB HUNTER'S ADDRESS COMES FROM THE BRAND, NEVER THE ADDRESS BAR. On
+       * the legacy solesourcejobs.com host a page building it from its own
+       * hostname sent every Flag to hunter.solesourcejobs.com, which Job
+       * Hunter does not answer (review, 2026-10-20). Only for the people the
+       * Flag and the Job Hunter door are drawn for. */
+      if (roles.includes("hunter") || roles.includes("owner")) out.hunter_app = `https://hunter.${DOMAIN}/app`;
+      return json(out);
     }
   }
   return json({ signed_in: true, handle: null, roles: [] });

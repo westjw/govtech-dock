@@ -59,6 +59,7 @@ const ctx = {
   addEventListener() {}, removeEventListener() {}, getComputedStyle: () => S,
   IntersectionObserver: function () { return S; }, ResizeObserver: function () { return S; },
   MutationObserver: function () { return S; }, CustomEvent: function () { return S; },
+  TextEncoder, TextDecoder, btoa, atob,
   URL, URLSearchParams, Intl, Date, Math, JSON, Promise, Map, Set, WeakMap, Symbol, Array, Object, String, Number, RegExp, Error, encodeURIComponent, decodeURIComponent, parseInt, parseFloat, isNaN,
 };
 ctx.window = ctx; ctx.self = ctx; ctx.globalThis = ctx;
@@ -485,4 +486,17 @@ try {
 } catch (e) {
   errors.push(`running coCard(): ${e && e.message}`);
 }
-console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards }));
+/* FLAG FOR JOB HUNTER: what the board puts in the link, decoded by
+   selftest. A title with an accent, a quote and an apostrophe, because the
+   payload is UTF-8 JSON inside base64url and must come back exactly. */
+let flags = null;
+try {
+  ctx.__fp = post({ id: "zed::D\u00e9veloppement d'affaires \"AE\"::9", title: "D\u00e9veloppement d'affaires \"AE\"",
+                    company: "Zed Civic", url: "https://zed.example/jobs/9?src=x", location: "Austin, TX" });
+  ctx.__fo = post({ id: "o::1", title: "AE", company: "Office Co", url: "", location: "",
+                    office: { city: "Denver", state: "CO" } });
+  flags = vm.runInContext(`({ full: jhFlagHref(__fp), office: jhFlagHref(__fo) })`, ctx);
+} catch (e) {
+  errors.push(`running jhFlagHref(): ${e && e.message}`);
+}
+console.log(JSON.stringify({ errors, cards: out, boards, views, front, ratings, fresh, staleNews, acts, paySentence, coCards, flags }));
