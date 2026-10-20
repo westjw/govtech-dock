@@ -168010,5 +168010,104 @@
   "vendor_type": "GovTech Product",
   "source": "research pass: GovTech 100 2026",
   "researched": true
+ },
+ {
+  "id": "merit",
+  "name": "Merit",
+  "website": "https://www.aspiretech.us",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Permitting & Licensing",
+  "description": "License portability platform that helps state licensing boards process out-of-state credentials for military families and veterans",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026",
+  "researched": true,
+  "also_known_as": [
+   "Aspire Technologies"
+  ]
+ },
+ {
+  "id": "bell-data-systems",
+  "name": "Bell Data Systems",
+  "website": "https://belldatasystems.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Case Management & Social Care",
+  "description": "Cloud HMIS, case management, veteran services, domestic violence and food bank software for public sector agencies and nonprofit social service organizations",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "forward",
+  "name": "FORWARD",
+  "website": "https://www.forwardplatform.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Benefits & Medicaid Systems",
+  "description": "Program administration platform (intake, eligibility, case management, payments, reporting) for government rent, utility and income assistance programs",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "hdl-companies",
+  "name": "HdL Companies",
+  "website": "https://www.hdlcompanies.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "Auditing, operations and revenue solutions for public agencies - exhibited at ICMA 2025, GFOA 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: GovTech 100 2026; ICMA 2025; GFOA 2026",
+  "researched": true
  }
 ]

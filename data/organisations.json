@@ -2128,8 +2128,8 @@
      "source": "staged",
      "key": "NCSHA::annual-conference-showplace",
      "name": "Annual Conference & Showplace",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncsha.org/",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -2138,8 +2138,8 @@
      "source": "staged",
      "key": "NCSHA::hfa-institute",
      "name": "HFA Institute",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncsha.org/",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "SPONSOR",
      "published": false
@@ -2148,8 +2148,8 @@
      "source": "staged",
      "key": "NCSHA::housing-credit-connect",
      "name": "Housing Credit Connect",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncsha.org/",
+     "status": "org_found",
      "harvest": true,
      "registry_status": "LIKELY",
      "published": false
@@ -2158,8 +2158,8 @@
      "source": "staged",
      "key": "NCSHA::legislative-conference",
      "name": "Legislative Conference",
-     "url": null,
-     "status": "needs_url",
+     "url": "https://www.ncsha.org/",
+     "status": "org_found",
      "harvest": false,
      "registry_status": "TRAINING",
      "published": false
@@ -7255,7 +7255,7 @@
    "events": [
     {
      "source": "catalogue",
-     "tag": "County Commissioners Association of Pennsylv 2026",
+     "tag": "County Commissioners Association of Pennsylvania 2026",
      "name": "County Commissioners Association of Pennsylvania",
      "url": "http://www.pacounties.org/",
      "dates": "August 1-4, 2027",
@@ -8118,7 +8118,7 @@
    "events": [
     {
      "source": "catalogue",
-     "tag": "New York State Conference of Mayors and Muni 2027",
+     "tag": "New York Conference of Mayors 2027",
      "name": "New York Conference of Mayors",
      "url": "http://www.nycom.org",
      "dates": "September 13-17, 2027",
@@ -10207,6 +10207,49 @@
    "published_count": 1,
    "swept_count": 0,
    "harvest_count": 1
+  },
+  {
+   "code": "WAHOUSINGALLIANC",
+   "name": "Washington Housing Alliance Education Network",
+   "url": "https://www.housingwa.org/",
+   "is_a_class": false,
+   "scopes": [
+    "SLED"
+   ],
+   "blocks": [
+    "Block 1 — Housing & Community Development",
+    "Community development"
+   ],
+   "departments": [
+    "State housing finance"
+   ],
+   "events": [
+    {
+     "source": "catalogue",
+     "tag": "Housing Washington 2026",
+     "name": "Housing Washington",
+     "url": "https://www.housingwa.org/",
+     "dates": "October 20-22, 2026",
+     "city": "Spokane, WA",
+     "swept": false,
+     "exhibitor_url": "https://www.housingwa.org/2026-sponsors",
+     "published": true
+    },
+    {
+     "source": "staged",
+     "key": "WAHOUSINGALLIANC::washington-housing-conference",
+     "name": "Washington Housing Conference",
+     "url": "https://www.whaen.org/",
+     "status": "directory_found",
+     "harvest": false,
+     "registry_status": "UNKNOWN",
+     "published": true
+    }
+   ],
+   "event_count": 2,
+   "published_count": 2,
+   "swept_count": 0,
+   "harvest_count": 0
   },
   {
    "code": "1EDTECHIMSGLOBAL",
@@ -30962,35 +31005,6 @@
    "published_count": 0,
    "swept_count": 0,
    "harvest_count": 1
-  },
-  {
-   "code": "WAHOUSINGALLIANC",
-   "name": "Washington Housing Alliance Education Network",
-   "url": null,
-   "is_a_class": false,
-   "scopes": [
-    "SLED"
-   ],
-   "blocks": [
-    "Block 1 — Housing & Community Development"
-   ],
-   "departments": [],
-   "events": [
-    {
-     "source": "staged",
-     "key": "WAHOUSINGALLIANC::washington-housing-conference",
-     "name": "Washington Housing Conference",
-     "url": null,
-     "status": "needs_url",
-     "harvest": false,
-     "registry_status": "UNKNOWN",
-     "published": false
-    }
-   ],
-   "event_count": 1,
-   "published_count": 0,
-   "swept_count": 0,
-   "harvest_count": 0
   },
   {
    "code": "WASTEEXPO",

@@ -305584,7 +305584,7 @@
   "edit": null,
   "by": "claude: housing card round wf_39a77707-b29",
   "at": "2026-10-20T18:02:09-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://belldatasystems.com/who-we-serve/",
   "evidence_checked_on": "2026-10-20",
@@ -305593,7 +305593,10 @@
    "why": "It sells HMIS, case management, veteran services and domestic violence software to public sector agencies, county programs and nonprofits for homeless and social services.",
    "by": "agent:card-door",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'yes to all 5' - Bell Data Systems (belldatasystems.com, HMIS) is not Bell and Howell; the shared word is the only match"
  },
  "card:padmission": {
   "kind": "card",
@@ -306041,7 +306044,7 @@
   "edit": null,
   "by": "claude: housing card round wf_39a77707-b29 (description reworded at the door)",
   "at": "2026-10-20T18:03:10-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.forwardplatform.com",
   "evidence_checked_on": "2026-10-20",
@@ -306050,7 +306053,10 @@
    "why": "FORWARD is an AI-powered program administration platform (intake, eligibility, payments, reporting) built for governments running rent, housing, basic-income and workforce programs.",
    "by": "agent:card-door",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'yes to all 5' - FORWARD (forwardplatform.com, assistance-program software) is not Forward Thinking Systems"
  },
  "card:green river": {
   "kind": "card",
@@ -306973,11 +306979,11 @@
   "kind": "card",
   "id": null,
   "name": "HdL Companies",
-  "sector": null,
-  "category": null,
-  "confidence": "unsure",
-  "why": "The crawler could not read the site. Over https, robots.txt on www.hdlcompanies.com and hdlcompanies.com did not answer (SSLError, exit 2). Over http, robots.txt answered HTTP 202 and the crawler stayed out (exit 3). Nothing on the site was read, so what HdL sells could not be checked.",
-  "evidence": "",
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "confidence": "low",
+  "why": "The crawler could not read the site. Over https, robots.txt on www.hdlcompanies.com and hdlcompanies.com did not answer (SSLError, exit 2). Over http, robots.txt answered HTTP 202 and the crawler stayed out (exit 3). Nothing on the site was read, so what HdL sells could not be checked. Added on the owner's word; the description is the 2026 GovTech 100 list's own line, because our crawler cannot read hdlcompanies.com.",
+  "evidence": "HdL Companies provides auditing, operations and revenue solutions for public agencies.",
   "postings": null,
   "ats_type": null,
   "ats_ref": null,
@@ -306995,8 +307001,8 @@
   },
   "title": null,
   "family": null,
-  "verdict": null,
-  "description": null,
+  "verdict": "govtech",
+  "description": "Auditing, operations and revenue solutions for public agencies",
   "website": "https://www.hdlcompanies.com",
   "field": null,
   "value": null,
@@ -307014,7 +307020,7 @@
   "edit": null,
   "by": "claude: GovTech 100 card round wf_829778d4-9ba",
   "at": "2026-10-20T18:18:46-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": false,
   "evidence_why": "the site did not read: network error: robots.txt on www.hdlcompanies.com did not answer (SSLError)",
   "evidence_checked_on": "2026-10-20",
@@ -307023,7 +307029,10 @@
    "why": "Unread: over https the script could not get robots.txt (SSLError, exit 2, same with and without www), and over http robots.txt answered HTTP 202, so the script stayed out.",
    "by": "agent:card-door",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'yes to all 5' - add HdL Companies as a govtech company though its site turns our crawler away (GovTech 100 2026)"
  },
  "card:aclima": {
   "kind": "card",
@@ -307424,7 +307433,7 @@
   "edit": null,
   "by": "claude: GovTech 100 card round wf_829778d4-9ba",
   "at": "2026-10-20T18:18:46-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.aspiretech.us/about",
   "evidence_checked_on": "2026-10-20",
@@ -307433,7 +307442,10 @@
    "why": "Merit's old site merits.com now redirects to aspiretech.us, and Aspire Technologies, whose leaders include former Merit International executives, sells a military license-portability software platform",
    "by": "agent:card-door",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'yes to all 5' - list Merit under Aspire Technologies' site: merits.com now redirects to aspiretech.us (GovTech 100 2026)"
  },
  "card:opexus": {
   "kind": "card",
