@@ -5883,7 +5883,7 @@ function drawCos(){
     const sellers=rows.filter(o=>o.quota_roles>0&&boardState(o)==="read").length;
     sp.innerHTML=`<div class="cfspot-head"><h3 class="lab" id="c-spot-h">Hiring the most sellers</h3>
       <span class="rule" aria-hidden="true"></span>
-      <span class="of">${spot.length} of ${sellers.toLocaleString()} hiring sellers on a board we read</span></div>
+      <span class="of">The top ${spot.length} of ${sellers.toLocaleString()} companies hiring sellers on a board we read</span></div>
       <div class="cospot"></div>`;
     clist.appendChild(sp);
     const sg=sp.querySelector(".cospot");
