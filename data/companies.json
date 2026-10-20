@@ -168109,5 +168109,461 @@
   "vendor_type": "GovTech Product",
   "source": "research pass: GovTech 100 2026; ICMA 2025; GFOA 2026",
   "researched": true
+ },
+ {
+  "id": "property-inspect",
+  "name": "Property Inspect",
+  "website": "https://propertyinspect.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Mobile property inspection, reporting and audit-trail software with housing compliance templates (HHSRS, NSPIRE, HQS) for housing providers and local authorities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "encodeplus",
+  "name": "enCodePlus",
+  "website": "https://www.encodeplus.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Online municipal code management, zoning and comprehensive plan publishing and GIS tools for city and county planners, clerks and zoning administrators",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "agate-software",
+  "name": "Agate Software",
+  "website": "https://agatesoftware.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Finance & ERP",
+  "description": "IntelliGrants IGX grants management software plus crime victim compensation (Core CVC) and Randolph-Sheppard vendor (BEPro) systems for state, county, city and tribal agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "urbansim",
+  "name": "UrbanSim",
+  "website": "https://www.urbansim.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Cloud land-use and transportation scenario modeling, simulation and 3D visualization for urban planners, metropolitan planning organizations and real estate teams",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "crowdbrite-solutions",
+  "name": "Crowdbrite Solutions",
+  "website": "https://www.crowdbrite.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Online and mobile public engagement platform for comprehensive plans, master plans and capital improvement projects",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "hancock-software",
+  "name": "Hancock Software",
+  "website": "https://www.hancocksoftware.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Cloud program management and mobile energy audit software for weatherization assistance (WAP), LIHEAP and utility energy efficiency programs",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "haven-connect",
+  "name": "Haven Connect",
+  "website": "https://www.havenconnect.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Affordable-housing waitlist management, online document collection and automated list update software for property managers and public housing authorities",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "courbanize",
+  "name": "coUrbanize",
+  "website": "https://www.courbanize.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Community engagement software with AI-powered feedback reports for planning and development projects, used by municipalities, housing authorities and real estate developers",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "sizeup",
+  "name": "SizeUp",
+  "website": "https://www.sizeup.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Small business market intelligence software (Local Business Intelligence, Small Business Advisor, Shop Local) that economic development organizations place on their own websites",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "chmura-economics-analytics",
+  "name": "Chmura Economics & Analytics",
+  "website": "https://www.chmura.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "JobsEQ labor market data and analytics platform, including a Housing Demand tool, for economic development, workforce development, education and corporate users",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "green-river",
+  "name": "Green River",
+  "website": "https://greenriver.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Open Path open-source HMIS, coordinated entry, data warehouse and analytics platform for homeless services, provided as SaaS to cities, counties and CoCs",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "adsystech",
+  "name": "Adsystech",
+  "website": "https://www.adsystech.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Case Management & Social Care",
+  "description": "Enterprise Case Management suite with HMIS, coordinated entry, Section 8, housing counseling, CSBG, LIHEAP and weatherization modules for human services agencies and organizations",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "the-mortgage-office",
+  "name": "The Mortgage Office",
+  "website": "https://www.themortgageoffice.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Loan origination and servicing software for private lenders, CDFIs, nonprofits and government affordable housing lending programs (CDBG, HOME, Section 108)",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "maptionnaire",
+  "name": "Maptionnaire",
+  "website": "https://www.maptionnaire.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Map-based community engagement and survey platform for comprehensive plans, transportation and parks planning, used by cities, planners and consultancies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "implan",
+  "name": "IMPLAN",
+  "website": "https://implan.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Economic impact modeling software and data used by governments, economic development organizations and other industries",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "smartsimple",
+  "name": "SmartSimple",
+  "website": "https://www.smartsimple.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Procurement & Payments",
+  "description": "Grants management software, including a Government Funding edition for federal, state, local and tribal grant programs",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "locationone",
+  "name": "LocationOne",
+  "website": "https://locationone.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Planning & Economic Development",
+  "description": "Sites and buildings property marketplace where economic development organizations, utilities and railroads market properties to site selectors",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "simtech-solutions",
+  "name": "Simtech Solutions",
+  "website": "https://www.simtechsolutions.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Case Management & Social Care",
+  "description": "Point-in-time count app, HMIS data warehouse and reporting tools for Continuums of Care and homeless services agencies",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
+ },
+ {
+  "id": "helpseeker-technologies",
+  "name": "HelpSeeker Technologies",
+  "website": "https://www.helpseeker.org",
+  "location": null,
+  "year_founded": null,
+  "sector": "Health & Human Services",
+  "category": "Case Management & Social Care",
+  "description": "Mareto social-services case management, Karto community data platform and Navigi services search for Canadian municipalities, nonprofits and social-service organizations",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "research pass: housing research 2026-10-20",
+  "researched": true
  }
 ]
