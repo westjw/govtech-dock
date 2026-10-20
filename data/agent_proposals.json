@@ -299005,7 +299005,7 @@
  "card:linkedin + carahsoft": {
   "kind": "card",
   "id": null,
-  "name": "LinkedIn + Carahsoft",
+  "name": "LinkedIn",
   "sector": "General Gov",
   "category": "HR & Workforce",
   "confidence": "medium",
@@ -299047,7 +299047,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://business.linkedin.com/talent-solutions/government",
   "evidence_checked_on": "2026-10-20",
@@ -299056,7 +299056,11 @@
    "why": "www.linkedin.com refused us by robots.txt (exit 3), but LinkedIn's own business.linkedin.com/hire/government page sells its hiring software to government agencies (it cites the City and County of Denv",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "floor_name": "LinkedIn + Carahsoft",
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:govstack by ghd digital": {
   "kind": "card",
@@ -299162,7 +299166,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.island.io/industries/k-12-education",
   "evidence_checked_on": "2026-10-20",
@@ -299171,7 +299175,10 @@
    "why": "Island's main product is software (the Island Enterprise Browser, plus enterprise AI and SASE networking), and its site has its own Government, Higher Education and K-12 pages (the K-12 page targets s",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12'; 'island' inside two Rhode Island names is not this company: Island (island.io) makes an enterprise security browser, the matches are a Rhode Island nonprofit and Rhode Island Novelty (rinovelty.com)"
  },
  "card:greencourt": {
   "kind": "card",
@@ -302860,7 +302867,7 @@
  "card:tecore networks": {
   "kind": "card",
   "id": null,
-  "name": "Tecore Networks",
+  "name": "Tecore",
   "sector": "Public Safety",
   "category": "Corrections",
   "confidence": "medium",
@@ -302902,7 +302909,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://tecore.com/managed-access/",
   "evidence_checked_on": "2026-10-20",
@@ -302911,7 +302918,11 @@
    "why": "Tecore builds software-defined wireless core and RAN products, including the iNAC managed-access system for stopping contraband cell phones in prisons and IOPS Network-in-a-Box for public safety; publ",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "floor_name": "Tecore Networks",
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:timeguard solutions": {
   "kind": "card",
@@ -302958,7 +302969,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.timeguardsolutions.com/about-us",
   "evidence_checked_on": "2026-10-20",
@@ -302967,7 +302978,10 @@
    "why": "Timeguard is a public safety technology company selling cloud SaaS for staff scheduling, rosters and time management to corrections agencies; it is deployed in 120+ facilities in 40 states and territo",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:tlc - the library corporation": {
   "kind": "card",
@@ -303090,7 +303104,7 @@
  "card:via science": {
   "kind": "card",
   "id": null,
-  "name": "VIA SCIENCE",
+  "name": "VIA Science",
   "sector": "Public Safety",
   "category": "Corrections",
   "confidence": "medium",
@@ -303132,7 +303146,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.solvewithvia.com/ghost/",
   "evidence_checked_on": "2026-10-20",
@@ -303141,7 +303155,11 @@
    "why": "VIA sells secure data and AI software; it has a dedicated page for U.S. state law enforcement and corrections and a product, GHOST, an AI intelligence engine for correctional agencies (contraband phon",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "floor_name": "VIA SCIENCE",
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12'; the name rule's match is a different company: VIA Science (solvewithvia.com) is not Via the on-demand transit software company (ridewithvia.com)"
  },
  "card:aidfinder": {
   "kind": "card",
@@ -303188,7 +303206,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://aidfinder.com/for-states",
   "evidence_checked_on": "2026-10-20",
@@ -303197,12 +303215,15 @@
    "why": "Its For States page sells a software 'State's New Recovery Portal' to state emergency management agencies, with guided FEMA aid intake, case tracking, checks for duplicated benefits and dashboards.",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:blackberry": {
   "kind": "card",
   "id": null,
-  "name": "Blackberry",
+  "name": "BlackBerry",
   "sector": "Public Safety",
   "category": "Emergency Mgmt",
   "confidence": "medium",
@@ -303244,7 +303265,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.blackberry.com/en/secure-communications/state-local",
   "evidence_checked_on": "2026-10-20",
@@ -303253,7 +303274,11 @@
    "why": "BlackBerry Secure Communications sells encrypted comms and AtHoc critical event management, which the site calls 'the trusted choice' of 'the world's largest governments and public safety organization",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "floor_name": "Blackberry",
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:bluescape": {
   "kind": "card",
@@ -303415,7 +303440,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.deaflink.com/services/accessible-hazard-alert-system",
   "evidence_checked_on": "2026-10-20",
@@ -303424,7 +303449,10 @@
    "why": "Its core offering is AHAS, which the site calls 'proprietary, sole-source technology' that emergency managers in local, state and federal agencies use to send accessible ASL, voice and Braille alerts;",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12'; the name rule's match is a different company: Deaf Link (deaflink.com) sells accessible emergency alerting; the match is a school for deaf children"
  },
  "card:den systems": {
   "kind": "card",
@@ -303530,7 +303558,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://www.duress.com/en-us/industries/government/",
   "evidence_checked_on": "2026-10-20",
@@ -303539,7 +303567,10 @@
    "why": "It sells lone-worker safety devices, an app and monitoring, and its government page says 80% of Australian state-government departments and 30+ local councils use it, including court and corrections s",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:firstnet, built by at&t": {
   "kind": "card",
@@ -303822,7 +303853,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://teleira.com/resilient911/",
   "evidence_checked_on": "2026-10-20",
@@ -303831,7 +303862,10 @@
    "why": "Its Resilient 911 product keeps voice running at PSAPs and emergency operations centers, and it also sells into education; caveat: it is one of four products, and the site mainly targets enterprise, h",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:weatherfront": {
   "kind": "card",
@@ -304919,7 +304953,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_6c02d5c1-917 second pass (2026-10-20)",
   "at": "2026-10-20T10:44:56-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://vanishid.com/public-sector-protection/",
   "evidence_checked_on": "2026-10-20",
@@ -304928,7 +304962,10 @@
    "why": "VanishID's product is an AI platform that removes people's exposed personal data, and it has a dedicated Public Sector Protection offering for judges, elected officials and state employees; borderline",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  },
  "card:vulcan technologies": {
   "kind": "card",
@@ -305034,7 +305071,7 @@
   "edit": null,
   "by": "claude-opus-5-5 workflow wf_e8dbfb58-b3a (2026-10-20)",
   "at": "2026-10-20T10:55:57-04:00",
-  "status": "pending",
+  "status": "accepted",
   "evidence_verified": true,
   "evidence_why": "the quote is on https://blog.doublespot.com/2025/02/02/2025-iapd-ipra-annual-conference-shaping-the-future-of-parks-and-recreation/",
   "evidence_checked_on": "2026-10-20",
@@ -305043,6 +305080,9 @@
    "why": "DoubleSpot sells an AI-powered SaaS platform for recreation and facility management (memberships, programs, facility rentals, AI chatbot); its blog shows it targeting park districts (IAPD/IPRA confere",
    "by": "agent:card-second-reader",
    "agree": true
-  }
+  },
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20: 'land the 12' - govtech, medium confidence, quote verified on the company's own site, blind second reader agreed"
  }
 }

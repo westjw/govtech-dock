@@ -167087,5 +167087,305 @@
     "vendor_type": "GovTech Product",
     "source": "conference sweep: IAEM 2026",
     "researched": true
+  },
+  {
+    "id": "linkedin",
+    "name": "LinkedIn",
+    "website": "https://www.linkedin.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Professional network whose Recruiter, job posting and career page hiring products are sold to government agencies - exhibited at NASWA 2025",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASWA 2025",
+    "researched": true,
+    "also_known_as": [
+      "LinkedIn + Carahsoft"
+    ]
+  },
+  {
+    "id": "tecore",
+    "name": "Tecore",
+    "website": "https://tecore.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "Mobile core and radio network products, including the iNAC managed access system that blocks contraband cellphones in correctional facilities - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "Tecore Networks"
+    ]
+  },
+  {
+    "id": "timeguard-solutions",
+    "name": "Timeguard Solutions",
+    "website": "https://www.timeguardsolutions.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "ShiftWatch scheduling, TimeWatch timekeeping and VisitWatch visitor management SaaS for correctional and law enforcement agencies - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true
+  },
+  {
+    "id": "aidfinder",
+    "name": "AidFinder",
+    "website": "https://aidfinder.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Disaster recovery platform that guides survivors through aid applications and gives state emergency management agencies a case and reporting dashboard - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true
+  },
+  {
+    "id": "blackberry",
+    "name": "BlackBerry",
+    "website": "https://www.blackberry.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "BlackBerry AtHoc critical event management and mass notification platform for state and local government and public safety agencies - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true,
+    "also_known_as": [
+      "Blackberry"
+    ]
+  },
+  {
+    "id": "duress",
+    "name": "Duress",
+    "website": "https://www.duress.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "HR & Workforce",
+    "description": "Lone worker safety wearables, smartphone app and 24/7 monitored emergency response for frontline staff, including council and state government workers - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true
+  },
+  {
+    "id": "teleira",
+    "name": "Teleira",
+    "website": "https://teleira.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Communications continuity platform with Resilient911 voice failover for 911 centers (PSAPs) and emergency operations centers, plus satellite voice and mass notification - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true
+  },
+  {
+    "id": "vanishid",
+    "name": "VanishID",
+    "website": "https://vanishid.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "External identity security that finds and removes exposed personal data, with a public sector package for judges, elected officials and state employees - exhibited at NCSL Legislative Summit 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NCSL Legislative Summit 2026",
+    "researched": true
+  },
+  {
+    "id": "doublespot",
+    "name": "DoubleSpot",
+    "website": "https://doublespot.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Parks & Rec",
+    "category": "Recreation Management",
+    "description": "AI-powered recreation operations platform for memberships, programs and facility rentals, used by park districts and college campuses - exhibited at Washington Recreation and Park Association 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: Washington Recreation and Park Association 2026",
+    "researched": true
+  },
+  {
+    "id": "via-science",
+    "name": "VIA Science",
+    "website": "https://www.solvewithvia.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "Secure AI, identity and data software, including GHOST, an intelligence engine correctional agencies use to find and terminate contraband cellphones - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "VIA SCIENCE"
+    ]
+  },
+  {
+    "id": "deaf-link",
+    "name": "Deaf Link",
+    "website": "https://www.deaflink.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Accessible Hazard Alert System (AHAS) that lets emergency managers send ASL video, voice, text and Braille-ready alerts, plus remote interpreting services - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true
+  },
+  {
+    "id": "island",
+    "name": "Island",
+    "website": "https://www.island.io",
+    "location": null,
+    "year_founded": null,
+    "sector": "K-12 Schools",
+    "category": "School Safety",
+    "description": "Enterprise browser with built-in security, data protection and CIPA content filtering, sold to K-12 districts among other industries - exhibited at NASCIO 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NASCIO 2026",
+    "researched": true
   }
 ]
