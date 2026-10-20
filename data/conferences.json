@@ -138,8 +138,8 @@
    "conference": "NCSL Legislative Summit",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": "https://www.ncsl.org/summit/learning-hub",
-   "fetchability": null,
+   "exhibitor_url": "https://ncsl.expocad.com/ncsl26/directory",
+   "fetchability": "js-walled",
    "event_tag": "NCSL Legislative Summit 2026",
    "url": "https://www.ncsl.org/summit",
    "dates": "August 9-11, 2027",
@@ -147,8 +147,11 @@
    "next_edition": "2027",
    "dates_source": "https://www.ncsl.org/summit/exhibit-hall",
    "dates_confidence": "high",
-   "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 23 company names visible",
-   "dates_checked_on": "2026-10-15"
+   "exhibitor_url_source": "read 2026-10-20, confirmed by a second reader: 260 company names visible; replaces https://www.ncsl.org/summit/learning-hub, which a reader ruled not a floor",
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_was": "https://www.ncsl.org/summit/learning-hub",
+   "fetchability_was": null,
+   "fetchability_note": "2026-10-20: the EXPOCAD directory draws its rows in the browser and loads them as it scrolls"
   },
   {
    "block": "Executive / administration",
@@ -1451,7 +1454,7 @@
    "conference": "IAEM Annual",
    "flagship": true,
    "swept": false,
-   "exhibitor_url": "https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm",
+   "exhibitor_url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
    "fetchability": "js-walled",
    "platform": "MapYourShow",
    "event_year": "2026",
@@ -1466,7 +1469,9 @@
    "dates_confidence": "high",
    "sweep_blocked": "iaem2026.mapyourshow.com now redirects to iaemconference.org; the mapyourshow instance is gone. Needs a fresh url.",
    "sweep_blocked_on": "2026-09-10",
-   "dates_checked_on": "2026-10-20"
+   "dates_checked_on": "2026-10-20",
+   "exhibitor_url_was": "https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm",
+   "exhibitor_url_source": "read 2026-10-20, confirmed by a second reader: 140 company names visible; replaces https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm, which a reader ruled not a floor"
   },
   {
    "block": "Public safety",
@@ -1556,7 +1561,9 @@
    "dates_confidence": "high",
    "sweep_blocked": "The a2z exhibitor page renders nothing without a cookie choice, and eventmap.aspx?shMode=E has no readable booth links. One for a person.",
    "sweep_blocked_on": "2026-09-10",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-15",
+   "exhibitor_url_candidate": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/EventMap.aspx?shMode=E",
+   "exhibitor_url_candidate_note": "read 2026-10-20: a second reader confirmed 231 company names here. The url on file is https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx - rule which."
   },
   {
    "block": "Courts, corrections, justice",
@@ -2476,7 +2483,7 @@
    "flagship": false,
    "swept": false,
    "exhibitor_url": "https://www.terrapinn.com/conference/broadband-communities/2026-Sponsors-Exhibitors.stm",
-   "fetchability": "js-walled",
+   "fetchability": "image",
    "event_tag": "Broadband Communities Summit 2026",
    "note": "split out of the Broadband Nation row 2026-08-25. Terrapinn's event, Houston, George R. Brown - not Questex's New Orleans show. Never mined; the exhibitors on the other row are not these.",
    "dates": "July 20-22, 2027",
@@ -2487,7 +2494,9 @@
    "dates_note": "re-researched 2026-08-25 and independently refuted-tested; the verifier confirmed against https://bbcmag.com/total-telecom-unites-2-events-for-powerhouse-2027-co-location/",
    "exhibitor_url_source": "read 2026-10-14, confirmed by a second reader: 24 company names visible",
    "dates_checked_on": "2026-10-15",
-   "discovery_notes": "reader saw 51 names (custom HTML, 2026); the crawler reads 24 - drawn in a browser; for render_floor (read 2026-10-16)"
+   "discovery_notes": "reader saw 51 names (custom HTML, 2026); the crawler reads 24 - drawn in a browser; for render_floor (read 2026-10-16)",
+   "fetchability_was": "js-walled",
+   "fetchability_note": "2026-10-20: a reader and a skeptic read the 2026 Sponsors & Exhibitors page as a logo wall: 50 real companies are named only by their logos' alt text (peek --images); the page is the organiser's own and is headed '2026 Sponsors & Exhibitors'"
   },
   {
    "block": "Health and human services",

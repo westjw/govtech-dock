@@ -11,9 +11,9 @@
   "file": "exhibitors_ACA_Congress_2026.json",
   "name": "Apple Safari",
   "verdict": "not_a_company",
-  "why": "Browser-upgrade link in the site footer, not an exhibitor",
+  "why": "browser-download link (support.apple.com), page chrome",
   "by": "agent:reader",
-  "on": "2026-10-15"
+  "on": "2026-10-20"
  },
  {
   "file": "exhibitors_ACA_Congress_2026.json",
@@ -43,9 +43,9 @@
   "file": "exhibitors_ACA_Congress_2026.json",
   "name": "Google Chrome",
   "verdict": "not_a_company",
-  "why": "Browser-upgrade link in the site footer, not an exhibitor",
+  "why": "browser-download link, page chrome",
   "by": "agent:reader",
-  "on": "2026-10-15"
+  "on": "2026-10-20"
  },
  {
   "file": "exhibitors_ACA_Congress_2026.json",
@@ -59,9 +59,9 @@
   "file": "exhibitors_ACA_Congress_2026.json",
   "name": "Mozilla Firefox",
   "verdict": "not_a_company",
-  "why": "Browser-upgrade link in the site footer, not an exhibitor",
+  "why": "browser-upgrade link on the page",
   "by": "agent:reader",
-  "on": "2026-10-15"
+  "on": "2026-10-20"
  },
  {
   "file": "exhibitors_ACA_Congress_2026.json",
@@ -75,9 +75,9 @@
   "file": "exhibitors_ACA_Congress_2026.json",
   "name": "Upgrade Internet Explorer",
   "verdict": "not_a_company",
-  "why": "Browser-upgrade link in the site footer, not an exhibitor",
+  "why": "browser-upgrade link on the page",
   "by": "agent:reader",
-  "on": "2026-10-15"
+  "on": "2026-10-20"
  },
  {
   "file": "exhibitors_ACA_Congress_2026.json",
@@ -86,5 +86,1360 @@
   "why": "Placeholder bare domain",
   "by": "agent:reader",
   "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "1687 Foundation, The",
+  "verdict": "supplier",
+  "why": "a foundation (nonprofit), not a tech product",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Acorn Engineering/AcornVac",
+  "verdict": "supplier",
+  "why": "stainless plumbing fixtures / vacuum plumbing hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "AHL- New Oʻahu Jail Project, Hawaii",
+  "verdict": "supplier",
+  "why": "architecture firm's jail-construction project booth",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Alpharus Health",
+  "verdict": "supplier",
+  "why": "correctional healthcare provider (services)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "American Correctional Association",
+  "verdict": "not_a_company",
+  "why": "the host of ACA Congress itself",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "American Correctional Chaplains Association (ACCA)",
+  "verdict": "supplier",
+  "why": "professional association",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Anarchy Outdoors",
+  "verdict": "supplier",
+  "why": "outdoor/tactical gear seller",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Aramark",
+  "verdict": "supplier",
+  "why": "food service contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Arms Unlimited, Inc.",
+  "verdict": "supplier",
+  "why": "law-enforcement weapons/equipment distributor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Arrow Chemical Products",
+  "verdict": "supplier",
+  "why": "cleaning chemicals",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Atkore Security",
+  "verdict": "supplier",
+  "why": "security mesh/barrier hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "AWEC",
+  "verdict": "supplier",
+  "why": "Association of Women Executives in Corrections",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Bicycle Health",
+  "verdict": "supplier",
+  "why": "telehealth opioid-treatment provider (care service)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Buford Satellite Systems, LP",
+  "verdict": "supplier",
+  "why": "institutional satellite TV installation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CEIA USA",
+  "verdict": "supplier",
+  "why": "metal detector / screening hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Centurion Health",
+  "verdict": "supplier",
+  "why": "correctional healthcare provider",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Change Password",
+  "verdict": "not_a_company",
+  "why": "site account navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Check My Calendar",
+  "verdict": "not_a_company",
+  "why": "site navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Community Health and Wellbeing Limited",
+  "verdict": "supplier",
+  "why": "name reads as health/wellbeing services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Compudopt",
+  "verdict": "supplier",
+  "why": "nonprofit giving computers / digital literacy",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Cook's Direct",
+  "verdict": "supplier",
+  "why": "food service equipment and supplies",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CORE DC, LLC",
+  "verdict": "unsure",
+  "why": "name gives no line of business, no site linked",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CoreCivic of Tennessee, LLC",
+  "verdict": "supplier",
+  "why": "private prison operator",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Cornerstone Detention Products, Inc.",
+  "verdict": "supplier",
+  "why": "detention equipment contractor/hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Correct Rx Pharmacy Services, Inc.",
+  "verdict": "supplier",
+  "why": "correctional pharmacy",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CorrecTek, Inc",
+  "verdict": "vendor",
+  "why": "correctional electronic health record software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Correctional Health Partners, LLC",
+  "verdict": "supplier",
+  "why": "correctional healthcare services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Correctional Healthcare Partners",
+  "verdict": "supplier",
+  "why": "correctional healthcare services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Correctional Peace Officers Foundation, Inc.",
+  "verdict": "supplier",
+  "why": "nonprofit foundation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CorrectPac®",
+  "verdict": "supplier",
+  "why": "correctional food packaging/trays",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CortechUSA",
+  "verdict": "supplier",
+  "why": "cortechusa.com: molded furniture for corrections",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "CPE Production",
+  "verdict": "unsure",
+  "why": "name unclear; guessed site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Data Usage and Privacy Policy",
+  "verdict": "not_a_company",
+  "why": "policy link (a2zevents zendesk)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Deep Heart - Entertainment that Drives Transformation",
+  "verdict": "supplier",
+  "why": "entertainment/media programming, not software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Diamond Pharmacy Services & Medical Supply",
+  "verdict": "supplier",
+  "why": "pharmacy and medical supply",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Direct Workforce Care LLC",
+  "verdict": "supplier",
+  "why": "workforce/care staffing services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "DISH Business",
+  "verdict": "supplier",
+  "why": "satellite TV service",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Drone Sky Defender",
+  "verdict": "vendor",
+  "why": "droneskydefender.com: drone detection with AI dashboards for prisons",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Drugloo International USA",
+  "verdict": "supplier",
+  "why": "contraband-recovery toilet hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Ecotensil",
+  "verdict": "supplier",
+  "why": "disposable utensils",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Edovo Foundation",
+  "verdict": "vendor",
+  "why": "education software platform on jail tablets",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Electronics4All Inc.",
+  "verdict": "unsure",
+  "why": "likely inmate electronics retail; site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Endur ID, Inc.",
+  "verdict": "supplier",
+  "why": "ID wristbands and badges",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "EPIC Metals",
+  "verdict": "supplier",
+  "why": "steel deck/ceiling building products",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Everlast Epoxy Systems Inc.",
+  "verdict": "supplier",
+  "why": "epoxy flooring",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Exhibitor List",
+  "verdict": "not_a_company",
+  "why": "page navigation label",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Falcon, Inc.",
+  "verdict": "supplier",
+  "why": "falconinc.com: corrections consulting and management firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "First Call Pharmacy",
+  "verdict": "supplier",
+  "why": "pharmacy",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "First Tactical",
+  "verdict": "supplier",
+  "why": "tactical apparel",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Forgot Password",
+  "verdict": "not_a_company",
+  "why": "site account navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "FranklinCovey",
+  "verdict": "supplier",
+  "why": "training and consulting",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Freedom Behavioral Health",
+  "verdict": "supplier",
+  "why": "behavioral health services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Fri Jul, 31",
+  "verdict": "not_a_company",
+  "why": "a date / programme item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Fusion Health",
+  "verdict": "unsure",
+  "why": "could be care provider or software; site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Genstar Clinical",
+  "verdict": "supplier",
+  "why": "genstarclinical.com: mobile gastroenterology care teams",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "GEO Group, Inc., The",
+  "verdict": "supplier",
+  "why": "private prison operator",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Geospace Technology",
+  "verdict": "vendor",
+  "why": "geospace.com: prison perimeter detection, remote water management",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Gilead Sciences",
+  "verdict": "supplier",
+  "why": "pharmaceutical company",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Global Public Safety/ Jail Tracker",
+  "verdict": "vendor",
+  "why": "JailTracker jail management software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Harding Instruments",
+  "verdict": "vendor",
+  "why": "detention intercom and control systems (connected platform)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Health Plan Freedom",
+  "verdict": "unsure",
+  "why": "name unclear; site refused (HTTP 523)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Home Builders Institute (HBI)",
+  "verdict": "supplier",
+  "why": "trades-training nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "I-CON Systems",
+  "verdict": "unsure",
+  "why": "electronic plumbing controls; software side unconfirmed, site timed out",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Institutional Eye Care, LLC",
+  "verdict": "supplier",
+  "why": "eye care services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Intelligent Conservation Systems (ICS)",
+  "verdict": "unsure",
+  "why": "water conservation controls? site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "ISG",
+  "verdict": "unsure",
+  "why": "bare initials, no site linked",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "iTouch Biometric LLC",
+  "verdict": "vendor",
+  "why": "biometric identification systems for inmates",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Kane Innovations",
+  "verdict": "supplier",
+  "why": "detention furniture/fixtures",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Kenall Lighting",
+  "verdict": "supplier",
+  "why": "security lighting fixtures",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Key Systems, Inc.",
+  "verdict": "vendor",
+  "why": "keystorage.com: smart key cabinets plus GFMS cloud software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "KTL",
+  "verdict": "unsure",
+  "why": "bare initials, no site linked",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Laundry Loops",
+  "verdict": "supplier",
+  "why": "laundry bags/loops",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Legend",
+  "verdict": "not_a_company",
+  "why": "floor-map legend control, beside 'Main Map'",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Leo Technologies",
+  "verdict": "vendor",
+  "why": "AI inmate-call monitoring software (Verus)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Listening Is Key LLC",
+  "verdict": "unsure",
+  "why": "name gives no line of business",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Login using Email and Password",
+  "verdict": "not_a_company",
+  "why": "site login link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Logout",
+  "verdict": "not_a_company",
+  "why": "site navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Main Map",
+  "verdict": "not_a_company",
+  "why": "floor-map navigation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Management & Training Corporation",
+  "verdict": "supplier",
+  "why": "private prison operator",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "MaxxContent",
+  "verdict": "vendor",
+  "why": "maxxcontent.com: learning management system for justice-involved students",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "McGrory Glass",
+  "verdict": "supplier",
+  "why": "security glass/glazing",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Med Health",
+  "verdict": "unsure",
+  "why": "generic name, no site linked",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Medicalistics, LLC & Healthworks Analytics",
+  "verdict": "vendor",
+  "why": "medicalistics.com: healthcare software (eZmar, Healthworks Analytics) for corrections",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Metcraft Industries",
+  "verdict": "supplier",
+  "why": "stainless detention fixtures maker",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Millennium Access Control Technologies, Inc.",
+  "verdict": "unsure",
+  "why": "site did not answer; integrator or product unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Millennium Satellite and Video",
+  "verdict": "supplier",
+  "why": "satellite TV service for facilities",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "MinXray, Inc.",
+  "verdict": "supplier",
+  "why": "portable X-ray equipment",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "ModCorr, LLC",
+  "verdict": "supplier",
+  "why": "modular correctional buildings",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Morse Watchmans, Inc.",
+  "verdict": "vendor",
+  "why": "KeyWatcher key control systems with software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "MyWoundDoctor",
+  "verdict": "supplier",
+  "why": "wound care medical service",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "NA Vipassana Prison Trust",
+  "verdict": "supplier",
+  "why": "meditation nonprofit",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Nadler Modular",
+  "verdict": "supplier",
+  "why": "modular buildings",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "NaphCare for Healthcare & TechCare for Technology",
+  "verdict": "vendor",
+  "why": "TechCare correctional EHR software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "National Alliance of Faith and Justice",
+  "verdict": "supplier",
+  "why": "nonprofit organisation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "National Correctional Industries Association",
+  "verdict": "supplier",
+  "why": "trade association",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "NCIC Correctional Services",
+  "verdict": "vendor",
+  "why": "inmate calling/communications technology",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "New Flyer and MCI",
+  "verdict": "supplier",
+  "why": "bus/coach manufacturers",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "New Profile",
+  "verdict": "unsure",
+  "why": "name alone unclear; guessed site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "NMS Labs",
+  "verdict": "supplier",
+  "why": "forensic toxicology lab services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "NoteActive",
+  "verdict": "vendor",
+  "why": "noteactive.com: digital logbook platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Numi Financial",
+  "verdict": "supplier",
+  "why": "skeptic: numifinancial.com: prepaid release-card disbursement (Stored Value Cards Inc.), a financial service",
+  "disputed": "vendor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Oasis Commissary Services",
+  "verdict": "supplier",
+  "why": "commissary services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Ohio Penal Industries & Indiana Correctional Industries",
+  "verdict": "supplier",
+  "why": "state prison industries agencies",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Optamo",
+  "verdict": "unsure",
+  "why": "optamo.com shows only a maintenance page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Orijin PBC",
+  "verdict": "vendor",
+  "why": "orijin.works: correctional education and workforce platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "PA HOST",
+  "verdict": "not_a_company",
+  "why": "host-state booth label, not a company",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Persevere",
+  "verdict": "supplier",
+  "why": "nonprofit coding/reentry programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Personalized Planner Please login to download Show Guide",
+  "verdict": "not_a_company",
+  "why": "page navigation text",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Pine Health",
+  "verdict": "unsure",
+  "why": "pinehealth.com returned no text",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Pitney Bowes",
+  "verdict": "vendor",
+  "why": "mailing systems with SendPro software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "PJ Dick",
+  "verdict": "supplier",
+  "why": "construction contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "PowerDMS by NEO GOV",
+  "verdict": "vendor",
+  "why": "policy management SaaS (NEOGOV)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "PPSS Group",
+  "verdict": "supplier",
+  "why": "slash/stab-resistant clothing",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "PrimeCare Medical",
+  "verdict": "supplier",
+  "why": "correctional healthcare provider",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Print",
+  "verdict": "not_a_company",
+  "why": "page control label",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "R1 Learning",
+  "verdict": "supplier",
+  "why": "skeptic: r1learning.com: curriculum, group kits and trainer training; app is a side item",
+  "disputed": "vendor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "RaySecur, Inc.",
+  "verdict": "supplier",
+  "why": "skeptic: raysecur.com: MailSecur desktop T-ray scanner hardware plus expert support, no software platform",
+  "disputed": "vendor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Real Time Detention, LLC",
+  "verdict": "supplier",
+  "why": "realtimedetention.com: detention design rep for hardware brands",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Rendevor Dialysis",
+  "verdict": "supplier",
+  "why": "dialysis medical services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Renegade Brands",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Roads2Work, Inc.",
+  "verdict": "supplier",
+  "why": "reentry workforce programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "RoofConnect",
+  "verdict": "supplier",
+  "why": "roofing contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Saadian Technologies",
+  "verdict": "vendor",
+  "why": "saadian.com: PINS jail intelligence software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sam Houston State University- College of Criminal Justice",
+  "verdict": "supplier",
+  "why": "university",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sapphire Health",
+  "verdict": "unsure",
+  "why": "sapphirehealth.ca is Canadian health records; match unconfirmed",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sat Aug, 01",
+  "verdict": "not_a_company",
+  "why": "programme date",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "SDF Inc.",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Secure Technology Value Solutions",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Securitas Technology",
+  "verdict": "vendor",
+  "why": "electronic security systems and monitoring platforms",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Shat-R-Shield Lighting",
+  "verdict": "supplier",
+  "why": "shatter-resistant lighting",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "ShawnTech Communications",
+  "verdict": "vendor",
+  "why": "inmate communications technology",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sherwood Windows Limited",
+  "verdict": "supplier",
+  "why": "security windows",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sloan Valve Company",
+  "verdict": "supplier",
+  "why": "plumbing fixtures",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "SnapCab",
+  "verdict": "supplier",
+  "why": "elevator interiors / pods",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "SOC, LLC",
+  "verdict": "supplier",
+  "why": "security services contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Solid Security LLC",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sound Matrix Corp.",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Spartan Chemical Company",
+  "verdict": "supplier",
+  "why": "cleaning chemicals",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Spin-Guard LLC",
+  "verdict": "supplier",
+  "why": "anti-climb barriers",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Steinbach & Vollmann GmbH",
+  "verdict": "supplier",
+  "why": "German lock manufacturer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Stokes Robotics",
+  "verdict": "unsure",
+  "why": "stokesrobotics.com shows only WordPress errors",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Strategic Communications",
+  "verdict": "unsure",
+  "why": "generic name; possibly an IT reseller",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Sun Aug, 02",
+  "verdict": "not_a_company",
+  "why": "programme date",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Tanner",
+  "verdict": "unsure",
+  "why": "single word, company unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "TBN 2nd Chance",
+  "verdict": "supplier",
+  "why": "broadcaster's prison ministry",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Tecore Networks",
+  "verdict": "vendor",
+  "why": "contraband phone managed-access systems",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "TESCO Specialty Vehicles",
+  "verdict": "supplier",
+  "why": "specialty vehicles",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Thu Jul, 30",
+  "verdict": "not_a_company",
+  "why": "programme date",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Timeguard Solutions",
+  "verdict": "vendor",
+  "why": "timeguardsolutions.com: ShiftWatch scheduling software for public safety",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Tindall Corp",
+  "verdict": "supplier",
+  "why": "precast concrete",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "TLC - The Library Corporation",
+  "verdict": "vendor",
+  "why": "library automation software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Touch2Play",
+  "verdict": "supplier",
+  "why": "touch2play.com: interactive game tables for many markets",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "TridentCare",
+  "verdict": "supplier",
+  "why": "mobile diagnostic imaging services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "TYRO Support Services",
+  "verdict": "supplier",
+  "why": "reentry/fatherhood programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "UCS, Inc",
+  "verdict": "unsure",
+  "why": "name alone unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "UNICOR",
+  "verdict": "supplier",
+  "why": "Federal Prison Industries agency",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "University of Tx Medical Branch - Correctional Mngd. Care",
+  "verdict": "supplier",
+  "why": "university health system",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Vant4ge",
+  "verdict": "vendor",
+  "why": "case management software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "VIA SCIENCE",
+  "verdict": "vendor",
+  "why": "AI/data analytics software company",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "VISTAR Corrections",
+  "verdict": "supplier",
+  "why": "food distribution",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Walkenhorst's",
+  "verdict": "supplier",
+  "why": "inmate care packages",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Webster's Fitness Products, Inc",
+  "verdict": "supplier",
+  "why": "fitness equipment",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Welcome,",
+  "verdict": "not_a_company",
+  "why": "page greeting text",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Willo Products Company",
+  "verdict": "supplier",
+  "why": "detention plumbing fixtures",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Willoughby Industries",
+  "verdict": "supplier",
+  "why": "stainless detention plumbing fixtures, hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "WMH/Correctional News",
+  "verdict": "supplier",
+  "why": "corrections trade publication / media",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Workbay",
+  "verdict": "unsure",
+  "why": "no website; workbay.com is warehouse rentals, may not be this exhibitor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "Zenova",
+  "verdict": "unsure",
+  "why": "no website given; zenova.com answers 404",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_ACA_Congress_2026.json",
+  "name": "ZP Connect",
+  "verdict": "unsure",
+  "why": "zpconnect.com: video relay and interpreting for deaf users; service vs product unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
  }
 ]

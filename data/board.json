@@ -4043,9 +4043,9 @@
    "city": "Houston, TX",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 3,
+   "hiring": 1,
+   "open_roles": 1
   },
   {
    "tag": "Broadband Nation 2026",
@@ -4439,9 +4439,9 @@
    "city": "Columbus, OH",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 41,
+   "hiring": 8,
+   "open_roles": 247
   },
   {
    "tag": "ACCG Advancing Georgia's Counties 2026",
@@ -4685,15 +4685,15 @@
    "flagship": true,
    "swept": false,
    "url": "https://www.iaemconference.org/",
-   "exhibitor_url": "https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm",
+   "exhibitor_url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
    "dates": "November 9-11, 2026",
    "dates_confidence": "high",
    "city": "Long Beach, CA",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 15,
+   "hiring": 6,
+   "open_roles": 451
   },
   {
    "tag": "SALGBA 2026",
@@ -5981,15 +5981,15 @@
    "flagship": false,
    "swept": false,
    "url": "https://www.ncsl.org/summit",
-   "exhibitor_url": "https://www.ncsl.org/summit/learning-hub",
+   "exhibitor_url": "https://ncsl.expocad.com/ncsl26/directory",
    "dates": "August 9-11, 2027",
    "dates_confidence": "high",
    "city": "Atlanta, GA",
    "state": null,
    "approx_count": null,
-   "companies": 0,
-   "hiring": 0,
-   "open_roles": 0
+   "companies": 8,
+   "hiring": 1,
+   "open_roles": 346
   },
   {
    "tag": "ASTHO 2026",
@@ -6844,7 +6844,7 @@
    "also": null,
    "location": "San Francisco, CA",
    "year_founded": 2019,
-   "description": "Evacuation management and real-time incident mapping for fire and emergency agencies - exhibited at IAFC FRI 2026",
+   "description": "Evacuation management and real-time incident mapping for fire and emergency agencies - exhibited at IAFC FRI 2026, IAEM 2026",
    "website": "https://perimeterplatform.com",
    "board_url": "https://perimeterplatform.com/careers/customer-success-lead",
    "linkedin": null,
@@ -6867,7 +6867,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "IAFC FRI 2026"
+    "IAFC FRI 2026",
+    "IAEM 2026"
    ],
    "conference": "IAFC FRI 2026",
    "open_roles": 0,
@@ -6890,7 +6891,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "direct add; IAFC FRI 2026",
+   "source": "direct add; IAFC FRI 2026; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -6958,7 +6959,7 @@
    "also": null,
    "location": "Scottsdale, AZ",
    "year_founded": 1993,
-   "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026",
+   "description": "Body cameras, TASER energy weapons, digital evidence cloud, and real-time operations - exhibited at APTA 2026, Illinois Chapter of APCO 2026, NCSL Legislative Summit 2026",
    "website": "https://www.axon.com",
    "board_url": "https://www.axon.com/careers/all",
    "linkedin": null,
@@ -7016,7 +7017,8 @@
    "conferences": [
     "APTA 2026",
     "IACP 2026",
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -7039,7 +7041,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026",
+   "source": "APTA 2026; IACP 2026; Illinois Chapter of APCO 2026; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -7051,7 +7053,7 @@
    "also": null,
    "location": "Chicago, IL",
    "year_founded": 1928,
-   "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026",
+   "description": "Radios, 911 call handling, CAD, and video security (Avigilon) for public safety - exhibited at Michigan Sheriffs Association 2026, IAFC FRI 2026, APCO 2026, Illinois Chapter of APCO 2026, IAEM 2026, NCSL Legislative Summit 2026",
    "website": "https://www.motorolasolutions.com",
    "board_url": "https://www.motorolasolutions.com",
    "linkedin": null,
@@ -7104,7 +7106,9 @@
     "Michigan Sheriffs Association 2026",
     "IAFC FRI 2026",
     "APCO 2026",
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "IAEM 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 346,
@@ -7137,7 +7141,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026",
+   "source": "IACP 2026; Michigan Sheriffs Association 2026; IAFC FRI 2026; APCO 2026; Illinois Chapter of APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -7249,7 +7253,7 @@
    "also": null,
    "location": "San Mateo, CA",
    "year_founded": 2014,
-   "description": "Autonomous drones for police DFR programs and public-sector inspection - exhibited at NLC City Summit 2026, IAFC FRI 2026, APTA 2026",
+   "description": "Autonomous drones for police DFR programs and public-sector inspection - exhibited at NLC City Summit 2026, IAFC FRI 2026, APTA 2026, ACA Congress 2026, NCSL Legislative Summit 2026",
    "website": "https://www.skydio.com",
    "board_url": "https://www.skydio.com/careers",
    "linkedin": null,
@@ -7298,7 +7302,9 @@
     "ICMA 2026",
     "NLC City Summit 2026",
     "IAFC FRI 2026",
-    "APTA 2026"
+    "APTA 2026",
+    "ACA Congress 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -7328,7 +7334,7 @@
     "on": "2026-09-08",
     "by": "owner"
    },
-   "source": "IACP 2026; ICMA 2025; ICMA 2026; NLC City Summit 2026; IAFC FRI 2026; APTA 2026",
+   "source": "IACP 2026; ICMA 2025; ICMA 2026; NLC City Summit 2026; IAFC FRI 2026; APTA 2026; ACA Congress 2026; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -7519,7 +7525,7 @@
    "also": null,
    "location": "San Francisco, CA",
    "year_founded": 2017,
-   "description": "Data integration and real-time intelligence platform for police and city agencies - exhibited at IAFC FRI 2026, North Carolina Sheriffs' Association 2026",
+   "description": "Data integration and real-time intelligence platform for police and city agencies - exhibited at IAFC FRI 2026, North Carolina Sheriffs' Association 2026, ACA Congress 2026, IAEM 2026",
    "website": "https://www.peregrine.io",
    "board_url": "https://job-boards.greenhouse.io/peregrinetechnologies",
    "linkedin": null,
@@ -7568,7 +7574,9 @@
    "conferences": [
     "IACP 2026",
     "IAFC FRI 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026",
+    "IAEM 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 52,
@@ -7601,7 +7609,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; IAFC FRI 2026; North Carolina Sheriffs' Association 2026",
+   "source": "IACP 2026; IAFC FRI 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026; IAEM 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -8550,7 +8558,7 @@
    "also": null,
    "location": "Burlington, MA",
    "year_founded": 2002,
-   "description": "Mass notification and critical event management platform - exhibited at Connecticut Conference of Municipalities 2026",
+   "description": "Mass notification and critical event management platform - exhibited at Connecticut Conference of Municipalities 2026, IAEM 2026",
    "website": "https://www.everbridge.com",
    "board_url": "https://jobs.lever.co/everbridge",
    "linkedin": null,
@@ -8575,7 +8583,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "AAAE 2026",
-    "Connecticut Conference of Municipalities 2026"
+    "Connecticut Conference of Municipalities 2026",
+    "IAEM 2026"
    ],
    "conference": "AAAE 2026",
    "open_roles": 29,
@@ -8605,7 +8614,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "AAAE 2026; Connecticut Conference of Municipalities 2026",
+   "source": "AAAE 2026; Connecticut Conference of Municipalities 2026; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -8673,7 +8682,7 @@
    "also": null,
    "location": "Atlanta, GA",
    "year_founded": 2018,
-   "description": "WebEOC emergency operations center and incident management software",
+   "description": "WebEOC emergency operations center and incident management software - exhibited at IAEM 2026",
    "website": "https://www.juvare.com",
    "board_url": "https://job-boards.greenhouse.io/juvare",
    "linkedin": null,
@@ -8695,8 +8704,10 @@
    "news_checked_on": "2026-10-20",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
    "open_roles": 3,
    "open_postings": 3,
    "quota_roles": 0,
@@ -8721,7 +8732,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; IAEM 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -8734,7 +8745,7 @@
    "also": null,
    "location": "New Haven, CT",
    "year_founded": 2011,
-   "description": "Virtual EOC, continuity, and incident management platform - exhibited at Connecticut Conference of Municipalities 2026, AAAE 2027",
+   "description": "Virtual EOC, continuity, and incident management platform - exhibited at Connecticut Conference of Municipalities 2026, AAAE 2027, IAEM 2026",
    "website": "https://www.veoci.com",
    "board_url": "https://www.veoci.com/careers",
    "linkedin": null,
@@ -8759,7 +8770,8 @@
    "conferences": [
     "AAAE 2026",
     "Connecticut Conference of Municipalities 2026",
-    "AAAE 2027"
+    "AAAE 2027",
+    "IAEM 2026"
    ],
    "conference": "AAAE 2026",
    "open_roles": 0,
@@ -8782,7 +8794,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "AAAE 2026; Connecticut Conference of Municipalities 2026; AAAE 2027",
+   "source": "AAAE 2026; Connecticut Conference of Municipalities 2026; AAAE 2027; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -10935,7 +10947,7 @@
    "also": null,
    "location": "Redlands, CA",
    "year_founded": 1969,
-   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026",
+   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026",
    "website": "https://www.esri.com",
    "board_url": "https://www.esri.com/en-us/about/careers/job-search",
    "linkedin": null,
@@ -10972,7 +10984,8 @@
     "NASCIO 2026",
     "WEFTEC 2026",
     "IAFC FRI 2026",
-    "APCO 2026"
+    "APCO 2026",
+    "IAEM 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -10995,7 +11008,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026",
+   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -12047,7 +12060,7 @@
    ],
    "location": "Plano, TX",
    "year_founded": 1966,
-   "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026, NACVSO 2026",
+   "description": "The govtech giant: ERP, courts, public safety, permitting, and payments - exhibited at GFOA 2026, NLC City Summit 2026, PSHRA 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, GMIS International 2026, NACM 2026, APPA Probation 2026, Iowa State Association of Counties 2026, Maryland Municipal League 2026, IAFC FRI 2026, APCO 2026, NAPT Summit 2026, Connecticut Conference of Municipalities 2026, Illinois Chapter of APCO 2026, ICC 2026, ASBO School Business 2026, NACVSO 2026, ACA Congress 2026",
    "website": "https://www.tylertech.com",
    "board_url": "https://www.tylertech.com/careers/job-listings",
    "linkedin": null,
@@ -12104,7 +12117,8 @@
     "Illinois Chapter of APCO 2026",
     "ICC 2026",
     "ASBO School Business 2026",
-    "NACVSO 2026"
+    "NACVSO 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 90,
@@ -12138,7 +12152,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026; ASBO School Business 2026; NACVSO 2026",
+   "source": "IACP 2026; ICMA 2025; NACo 2026; NIGP 2026; NSA 2026; ICMA 2026; GFOA 2026; NLC City Summit 2026; PSHRA 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; GMIS International 2026; NACM 2026; APPA Probation 2026; Iowa State Association of Counties 2026; Maryland Municipal League 2026; IAFC FRI 2026; APCO 2026; NAPT Summit 2026; Connecticut Conference of Municipalities 2026; Illinois Chapter of APCO 2026; ICC 2026; ASBO School Business 2026; NACVSO 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -12732,7 +12746,7 @@
    "also": null,
    "location": "Lowell, MA",
    "year_founded": 2020,
-   "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base - exhibited at GFOA 2026, APTA 2026, NLC City Summit 2026",
+   "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base - exhibited at GFOA 2026, APTA 2026, NLC City Summit 2026, ACA Congress 2026",
    "website": "https://www.ukg.com",
    "board_url": "https://apply.ukg.com/careers",
    "linkedin": null,
@@ -12758,7 +12772,8 @@
     "APTA 2026",
     "ICMA 2025",
     "GFOA 2026",
-    "NLC City Summit 2026"
+    "NLC City Summit 2026",
+    "ACA Congress 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -12781,7 +12796,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; ICMA 2025; GFOA 2026; NLC City Summit 2026",
+   "source": "APTA 2026; ICMA 2025; GFOA 2026; NLC City Summit 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -22881,7 +22896,7 @@
    "also": null,
    "location": "Overland Park, KS",
    "year_founded": 1968,
-   "description": "EHR and care coordination for behavioral health and human services, incl. county agencies - exhibited at NatCon 2026, NACCHO 360 2026",
+   "description": "EHR and care coordination for behavioral health and human services, incl. county agencies - exhibited at NatCon 2026, NACCHO 360 2026, ACA Congress 2026",
    "website": "https://www.ntst.com",
    "board_url": "https://www.ntst.com/careers",
    "linkedin": null,
@@ -22906,7 +22921,8 @@
    "conferences": [
     "NACo 2026",
     "NatCon 2026",
-    "NACCHO 360 2026"
+    "NACCHO 360 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 0,
@@ -22929,7 +22945,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NACo 2026; NatCon 2026; NACCHO 360 2026",
+   "source": "NACo 2026; NatCon 2026; NACCHO 360 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -23666,7 +23682,7 @@
    "also": null,
    "location": "Falls Church, VA",
    "year_founded": 1989,
-   "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link)",
+   "description": "Corrections communications, tablets, and reentry services (formerly GTL/Global Tel Link) - exhibited at ACA Congress 2026",
    "website": "https://www.viapath.com",
    "board_url": "https://careers-viapath.icims.com/jobs/search?ss=1",
    "linkedin": null,
@@ -23690,7 +23706,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 20,
@@ -23719,7 +23736,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -23787,7 +23804,7 @@
    "also": null,
    "location": "Picayune, MS",
    "year_founded": 2012,
-   "description": "Disaster debris monitoring tech: GIS load ticketing and FEMA-compliant documentation",
+   "description": "Disaster debris monitoring tech: GIS load ticketing and FEMA-compliant documentation - exhibited at IAEM 2026",
    "website": "https://debristech.com",
    "board_url": "https://debristech.com",
    "linkedin": null,
@@ -23810,7 +23827,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NACo 2026"
+    "NACo 2026",
+    "IAEM 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 0,
@@ -23833,7 +23851,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NACo 2026",
+   "source": "NACo 2026; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -27713,7 +27731,7 @@
    "also": null,
    "location": "Lincoln, NE",
    "year_founded": 1986,
-   "description": "Lawful intercept, comms analytics, and OSINT (PLX + Cobwebs) for LE and federal",
+   "description": "Lawful intercept, comms analytics, and OSINT (PLX + Cobwebs) for LE and federal - exhibited at ACA Congress 2026",
    "website": "https://penlink.com",
    "board_url": "https://penlink.com/careers",
    "linkedin": null,
@@ -27761,7 +27779,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "IACP 2026"
+    "IACP 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -27784,7 +27803,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026",
+   "source": "IACP 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -29176,7 +29195,7 @@
    "also": null,
    "location": "Sydney, Australia",
    "year_founded": 2014,
-   "description": "Counter-UAS detection and defeat systems for military, LE, and infrastructure (ASX: DRO)",
+   "description": "Counter-UAS detection and defeat systems for military, LE, and infrastructure (ASX: DRO) - exhibited at ACA Congress 2026",
    "website": "https://www.droneshield.com",
    "board_url": "https://job-boards.greenhouse.io/droneshield",
    "linkedin": null,
@@ -29230,7 +29249,8 @@
    "competitors_checked_on": "2026-09-02",
    "conferences": [
     "IACP 2026",
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 29,
@@ -29262,7 +29282,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026; NSA 2026",
+   "source": "IACP 2026; NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -29274,7 +29294,7 @@
    "also": null,
    "location": "Kirkland, WA",
    "year_founded": 2014,
-   "description": "MESA electronically-scanned radars for counter-UAS and site security",
+   "description": "MESA electronically-scanned radars for counter-UAS and site security - exhibited at ACA Congress 2026",
    "website": "https://www.echodyne.com",
    "board_url": "https://job-boards.greenhouse.io/echodynecorp",
    "linkedin": null,
@@ -29314,7 +29334,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "IACP 2026"
+    "IACP 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 49,
@@ -29345,7 +29366,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026",
+   "source": "IACP 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -29658,7 +29679,7 @@
    "also": null,
    "location": "Chandler, AZ",
    "year_founded": 1993,
-   "description": "Judgmental use-of-force and de-escalation simulators (Nasdaq: VTSI)",
+   "description": "Judgmental use-of-force and de-escalation simulators (Nasdaq: VTSI) - exhibited at ACA Congress 2026",
    "website": "https://www.virtra.com",
    "board_url": "https://www.virtra.com/careers",
    "linkedin": null,
@@ -29699,7 +29720,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "IACP 2026"
+    "IACP 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -29722,7 +29744,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "IACP 2026",
+   "source": "IACP 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33255,7 +33277,7 @@
    "also": null,
    "location": "Irondale, AL",
    "year_founded": 1978,
-   "description": "Detention security electronics, jail management software, and inmate RFID tracking for county jails",
+   "description": "Detention security electronics, jail management software, and inmate RFID tracking for county jails - exhibited at ACA Congress 2026",
    "website": "https://www.blackcreekisc.com",
    "board_url": "https://www.blackcreekisc.com/careers",
    "linkedin": null,
@@ -33278,7 +33300,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33301,7 +33324,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33313,7 +33336,7 @@
    "also": null,
    "location": "Maple Grove, MN",
    "year_founded": 2001,
-   "description": "RFID wristbands and Command Cloud software for inmate tracking, well-being checks, and compliance - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026",
+   "description": "RFID wristbands and Command Cloud software for inmate tracking, well-being checks, and compliance - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026, ACA Congress 2026",
    "website": "https://guardianrfid.com",
    "board_url": "https://guardianrfid.com",
    "linkedin": null,
@@ -33338,7 +33361,8 @@
    "conferences": [
     "NSA 2026",
     "Michigan Sheriffs Association 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33361,7 +33385,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33373,7 +33397,7 @@
    "also": null,
    "location": "Carrollton, TX",
    "year_founded": 1986,
-   "description": "Inmate phone, video calling, tablets, and investigative analytics for jails and DOCs (Aventiv) - exhibited at Michigan Sheriffs Association 2026",
+   "description": "Inmate phone, video calling, tablets, and investigative analytics for jails and DOCs (Aventiv) - exhibited at Michigan Sheriffs Association 2026, ACA Congress 2026",
    "website": "https://securustech.net",
    "board_url": "https://www.aventiv.com/careers",
    "linkedin": null,
@@ -33397,7 +33421,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NSA 2026",
-    "Michigan Sheriffs Association 2026"
+    "Michigan Sheriffs Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33420,7 +33445,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33432,7 +33457,7 @@
    "also": null,
    "location": "Seminole, FL",
    "year_founded": 2009,
-   "description": "MailGuard postal mail digitization, inmate phone, tablets, and kiosks for jails and prisons - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026",
+   "description": "MailGuard postal mail digitization, inmate phone, tablets, and kiosks for jails and prisons - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026, ACA Congress 2026",
    "website": "https://www.smartcommunications.us",
    "board_url": "https://www.smartcommunications.us/careers",
    "linkedin": null,
@@ -33457,7 +33482,8 @@
    "conferences": [
     "NSA 2026",
     "Michigan Sheriffs Association 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33480,7 +33506,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33727,7 +33753,7 @@
    "also": null,
    "location": "Highland Heights, KY",
    "year_founded": 1994,
-   "description": "Inmate phone systems and video visitation plus commissary operations for adult and juvenile facilities - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026",
+   "description": "Inmate phone systems and video visitation plus commissary operations for adult and juvenile facilities - exhibited at Michigan Sheriffs Association 2026, North Carolina Sheriffs' Association 2026, ACA Congress 2026",
    "website": "https://www.cpcjail.com",
    "board_url": "https://www.cpcjail.com/careers",
    "linkedin": null,
@@ -33752,7 +33778,8 @@
    "conferences": [
     "NSA 2026",
     "Michigan Sheriffs Association 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33775,7 +33802,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -33901,7 +33928,7 @@
    "also": null,
    "location": "Auburn, WA",
    "year_founded": 1994,
-   "description": "Design-build electronic security integration for jails and courts: surveillance, access, detention controls",
+   "description": "Design-build electronic security integration for jails and courts: surveillance, access, detention controls - exhibited at ACA Congress 2026",
    "website": "https://www.long.com/public-safety/",
    "board_url": "https://longbuildingtechcareers.ttcportals.com",
    "linkedin": null,
@@ -33924,7 +33951,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33947,7 +33975,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34017,7 +34045,7 @@
    "also": null,
    "location": "Littleton, CO",
    "year_founded": 1997,
-   "description": "Continuous alcohol monitoring, GPS house arrest, and remote breath testing for courts and pretrial",
+   "description": "Continuous alcohol monitoring, GPS house arrest, and remote breath testing for courts and pretrial - exhibited at ACA Congress 2026",
    "website": "https://www.scramsystems.com",
    "board_url": "https://scramsystems.dejobs.org",
    "linkedin": null,
@@ -34040,7 +34068,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -34063,7 +34092,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34311,7 +34340,7 @@
    "also": null,
    "location": "St. Louis, MO",
    "year_founded": 1975,
-   "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026",
+   "description": "Commissary and inmate services with tech arms ICSolutions (inmate phone/investigations) and Access Corrections - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026",
    "website": "https://www.keefegroup.com",
    "board_url": "https://www.keefegroup.com/careers",
    "linkedin": null,
@@ -34335,7 +34364,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NSA 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -34358,7 +34388,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34431,7 +34461,7 @@
    "also": null,
    "location": "San Francisco, CA",
    "year_founded": 2016,
-   "description": "OverWatch continuous biometric wearables monitoring detainee vitals for overdose and suicide early warning - exhibited at Michigan Sheriffs Association 2026",
+   "description": "OverWatch continuous biometric wearables monitoring detainee vitals for overdose and suicide early warning - exhibited at Michigan Sheriffs Association 2026, ACA Congress 2026",
    "website": "https://4sightlabs.com",
    "board_url": "https://4sightlabs.com",
    "linkedin": null,
@@ -34455,7 +34485,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NSA 2026",
-    "Michigan Sheriffs Association 2026"
+    "Michigan Sheriffs Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -34478,7 +34509,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34548,7 +34579,7 @@
    "also": null,
    "location": "Poway, CA",
    "year_founded": 2005,
-   "description": "Intercept and Defender full-body transmission X-ray scanners for jails, courthouses, and borders - exhibited at Michigan Sheriffs Association 2026",
+   "description": "Intercept and Defender full-body transmission X-ray scanners for jails, courthouses, and borders - exhibited at Michigan Sheriffs Association 2026, ACA Congress 2026",
    "website": "https://www.tek84.com",
    "board_url": "https://www.tek84.com/careers",
    "linkedin": null,
@@ -34572,7 +34603,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NSA 2026",
-    "Michigan Sheriffs Association 2026"
+    "Michigan Sheriffs Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 2,
@@ -34598,7 +34630,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -34611,7 +34643,7 @@
    "also": null,
    "location": "Conroe, TX",
    "year_founded": 2006,
-   "description": "Full-body transmission X-ray scanners with auto contraband detection; 98% of clients are corrections",
+   "description": "Full-body transmission X-ray scanners with auto contraband detection; 98% of clients are corrections - exhibited at ACA Congress 2026",
    "website": "https://linevsystems.us",
    "board_url": "https://linevsystems.us/careers",
    "linkedin": null,
@@ -34634,7 +34666,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -34657,7 +34690,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34786,7 +34819,7 @@
    "also": null,
    "location": "New Hyde Park, NY",
    "year_founded": 2017,
-   "description": "Tele-optometry platform for remote comprehensive eye exams with a dedicated corrections vertical",
+   "description": "Tele-optometry platform for remote comprehensive eye exams with a dedicated corrections vertical - exhibited at ACA Congress 2026",
    "website": "https://digitaloptometrics.com",
    "board_url": "https://digitaloptometrics.applicantpro.com",
    "linkedin": null,
@@ -34809,7 +34842,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 2,
@@ -34835,7 +34869,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-18"
@@ -35632,7 +35666,7 @@
    "also": null,
    "location": "Richardson, TX",
    "year_founded": 2003,
-   "description": "AirGuard drone detection software locating drones and their pilots for prisons, airports, and LE",
+   "description": "AirGuard drone detection software locating drones and their pilots for prisons, airports, and LE - exhibited at ACA Congress 2026",
    "website": "https://www.airsight.com",
    "board_url": "https://www.airsight.com",
    "linkedin": null,
@@ -35684,7 +35718,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -35707,7 +35742,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -37408,7 +37443,7 @@
    "also": null,
    "location": "College Station, TX",
    "year_founded": null,
-   "description": "SOTER RS low-dose transmission X-ray body scanners for jails and state prisons",
+   "description": "SOTER RS low-dose transmission X-ray body scanners for jails and state prisons - exhibited at ACA Congress 2026",
    "website": "https://odsecurityna.com",
    "board_url": "https://odsecurityna.com",
    "linkedin": null,
@@ -37431,7 +37466,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -37454,7 +37490,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -37645,7 +37681,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Investigative intelligence: evidence analysis, inmate call monitoring, and CJIS-compliant AI chat",
+   "description": "Investigative intelligence: evidence analysis, inmate call monitoring, and CJIS-compliant AI chat - exhibited at ACA Congress 2026",
    "website": "https://www.flashai.us",
    "board_url": "https://www.flashai.us",
    "linkedin": null,
@@ -37681,7 +37717,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -37704,7 +37741,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -37721,7 +37758,7 @@
    ],
    "location": null,
    "year_founded": 2024,
-   "description": "AI narrative report writing and report management for police and first responders",
+   "description": "AI narrative report writing and report management for police and first responders - exhibited at ACA Congress 2026",
    "website": "https://peachsafety.com",
    "board_url": "https://peachsafety.com",
    "linkedin": null,
@@ -37756,7 +37793,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": "2026-09-02",
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -37779,7 +37817,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -43040,7 +43078,7 @@
    "also": null,
    "location": "Huntsville, AL",
    "year_founded": 2026,
-   "description": "Hexagon spin-off: geospatial, EAM, project controls, physical security, and public-safety CAD (~7,200 staff) - exhibited at APCO 2026, APTA 2026, Illinois Chapter of APCO 2026",
+   "description": "Hexagon spin-off: geospatial, EAM, project controls, physical security, and public-safety CAD (~7,200 staff) - exhibited at APCO 2026, APTA 2026, Illinois Chapter of APCO 2026, ACA Congress 2026",
    "website": "https://www.octave.com",
    "board_url": "https://www.octave.com/careers",
    "linkedin": null,
@@ -43066,7 +43104,8 @@
     "APTA 2026",
     "IACP 2026",
     "APCO 2026",
-    "Illinois Chapter of APCO 2026"
+    "Illinois Chapter of APCO 2026",
+    "ACA Congress 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -43089,7 +43128,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; APCO 2026; Illinois Chapter of APCO 2026",
+   "source": "APTA 2026; IACP 2026; APCO 2026; Illinois Chapter of APCO 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -45575,7 +45614,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Public safety CAD/RMS and dispatch software - exhibited at IACP 2026, NSA 2026",
+   "description": "Public safety CAD/RMS and dispatch software - exhibited at IACP 2026, NSA 2026, ACA Congress 2026",
    "website": "https://www.coreforce.com",
    "board_url": "https://www.coreforce.com",
    "linkedin": null,
@@ -45599,7 +45638,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "IACP 2026",
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -45622,7 +45662,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "IACP 2026; NSA 2026",
+   "source": "IACP 2026; NSA 2026; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -45996,7 +46036,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Personal data removal subscription service - exhibited at NSA 2026",
+   "description": "Personal data removal subscription service - exhibited at NSA 2026, NCSL Legislative Summit 2026",
    "website": "https://deleteme.com",
    "board_url": "https://deleteme.com/careers",
    "linkedin": null,
@@ -46019,7 +46059,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -46042,7 +46083,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -46950,7 +46991,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026",
+   "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026, ACA Congress 2026",
    "website": "https://www.firstnet.com",
    "board_url": "https://www.firstnet.com",
    "linkedin": null,
@@ -46981,7 +47022,8 @@
     "Connecticut Conference of Municipalities 2026",
     "IAFC FRI 2026",
     "ICMA 2025",
-    "Maryland Municipal League 2026"
+    "Maryland Municipal League 2026",
+    "ACA Congress 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -47004,7 +47046,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-26",
    "posts_at": null,
-   "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026",
+   "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -47441,7 +47483,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Inmate check and officer accountability tracking system - exhibited at NSA 2026, NatCon 2026, Michigan Sheriffs Association 2026",
+   "description": "Inmate check and officer accountability tracking system - exhibited at NSA 2026, NatCon 2026, Michigan Sheriffs Association 2026, ACA Congress 2026",
    "website": "https://www.guard1.com/",
    "board_url": "https://www.guard1.com/about/careers/",
    "linkedin": null,
@@ -47468,7 +47510,8 @@
    "conferences": [
     "NSA 2026",
     "NatCon 2026",
-    "Michigan Sheriffs Association 2026"
+    "Michigan Sheriffs Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -47491,7 +47534,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "NSA 2026; NatCon 2026; Michigan Sheriffs Association 2026",
+   "source": "NSA 2026; NatCon 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -48968,7 +49011,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025",
+   "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025, ACA Congress 2026",
    "website": "https://www.lexisnexis.com/en-us/gateway.page",
    "board_url": "https://www.lexisnexis.com/en-us/gateway.page",
    "linkedin": null,
@@ -48997,7 +49040,8 @@
     "NSA 2026",
     "IMLA 2026",
     "MESC 2026",
-    "NHCAA 2025"
+    "NHCAA 2025",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -49020,7 +49064,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025",
+   "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -57118,7 +57162,7 @@
    "also": null,
    "location": "Wilmington, MA",
    "year_founded": 2012,
-   "description": "HEXWAVE walk-through concealed weapons detection plus body and shoe scanners for aviation checkpoints and public venues.",
+   "description": "HEXWAVE walk-through concealed weapons detection plus body and shoe scanners for aviation checkpoints and public venues. - exhibited at ACA Congress 2026",
    "website": "https://libertydefense.com",
    "board_url": "https://libertydefense.com/company/careers/",
    "linkedin": null,
@@ -57141,7 +57185,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "AAAE 2026"
+    "AAAE 2026",
+    "ACA Congress 2026"
    ],
    "conference": "AAAE 2026",
    "open_roles": 3,
@@ -57166,7 +57211,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "AAAE 2026",
+   "source": "AAAE 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -58685,7 +58730,7 @@
    "also": null,
    "location": "Boston, MA",
    "year_founded": 2017,
-   "description": "AI converting aerial and lidar data into CAD basemaps and site plans; on SEWP V, NCPA, OMNIA contracts",
+   "description": "AI converting aerial and lidar data into CAD basemaps and site plans; on SEWP V, NCPA, OMNIA contracts - exhibited at Broadband Communities Summit 2026",
    "website": "https://www.airworks.io",
    "board_url": "https://www.airworks.io",
    "linkedin": null,
@@ -58708,7 +58753,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "Broadband Nation 2026"
+    "Broadband Nation 2026",
+    "Broadband Communities Summit 2026"
    ],
    "conference": "Broadband Nation 2026",
    "open_roles": 0,
@@ -58731,7 +58777,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "Broadband Nation 2026",
+   "source": "Broadband Nation 2026; Broadband Communities Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -58743,7 +58789,7 @@
    "also": null,
    "location": "San Jose, CA",
    "year_founded": 1999,
-   "description": "Broadband access platform and cloud software with a dedicated municipal and public-power utility segment",
+   "description": "Broadband access platform and cloud software with a dedicated municipal and public-power utility segment - exhibited at Broadband Communities Summit 2026",
    "website": "https://www.calix.com",
    "board_url": "https://www.calix.com/careers/china.html",
    "linkedin": null,
@@ -58766,7 +58812,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "Broadband Nation 2026"
+    "Broadband Nation 2026",
+    "Broadband Communities Summit 2026"
    ],
    "conference": "Broadband Nation 2026",
    "open_roles": 0,
@@ -58789,7 +58836,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "Broadband Nation 2026",
+   "source": "Broadband Nation 2026; Broadband Communities Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -66883,7 +66930,7 @@
    "also": null,
    "location": "San Francisco, CA",
    "year_founded": 2006,
-   "description": "Emergency and routine mass notification for cities, counties and schools - exhibited at APCO 2026",
+   "description": "Emergency and routine mass notification for cities, counties and schools - exhibited at APCO 2026, IAEM 2026",
    "website": "https://www.regroup.com",
    "board_url": "https://regroup.bamboohr.com/careers",
    "linkedin": null,
@@ -66908,7 +66955,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "APCO 2026"
+    "APCO 2026",
+    "IAEM 2026"
    ],
    "conference": "APCO 2026",
    "open_roles": 4,
@@ -66934,7 +66982,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; APCO 2026",
+   "source": "competitor sweep; APCO 2026; IAEM 2026",
    "researched": null,
    "claimed": null,
    "read_since": "2026-08-19"
@@ -67460,7 +67508,7 @@
    "also": null,
    "location": "Palm Harbor, FL",
    "year_founded": 1993,
-   "description": "Workforce case management and job-matching systems for state workforce agencies - exhibited at NASWA 2025",
+   "description": "Workforce case management and job-matching systems for state workforce agencies - exhibited at NASWA 2025, ACA Congress 2026",
    "website": "https://www.geographicsolutions.com",
    "board_url": "https://www.geographicsolutions.com/careers",
    "linkedin": null,
@@ -67483,7 +67531,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NASWA 2025"
+    "NASWA 2025",
+    "ACA Congress 2026"
    ],
    "conference": "NASWA 2025",
    "open_roles": 0,
@@ -67506,7 +67555,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; NASWA 2025",
+   "source": "competitor sweep; NASWA 2025; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -67761,7 +67810,7 @@
    "also": null,
    "location": "Plano, TX",
    "year_founded": 1988,
-   "description": "Time, attendance and scheduling for government, education and public safety - exhibited at GFOA 2026, ASBO School Business 2026",
+   "description": "Time, attendance and scheduling for government, education and public safety - exhibited at GFOA 2026, ASBO School Business 2026, ACA Congress 2026",
    "website": "https://www.tcpsoftware.com",
    "board_url": "https://www.tcpsoftware.com/careers",
    "linkedin": null,
@@ -67785,7 +67834,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "GFOA 2026",
-    "ASBO School Business 2026"
+    "ASBO School Business 2026",
+    "ACA Congress 2026"
    ],
    "conference": "GFOA 2026",
    "open_roles": 0,
@@ -67815,7 +67865,7 @@
     "on": "2026-09-08",
     "by": "owner"
    },
-   "source": "competitor sweep; GFOA 2026; ASBO School Business 2026",
+   "source": "competitor sweep; GFOA 2026; ASBO School Business 2026; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -72784,7 +72834,7 @@
    "also": null,
    "location": "Huntsville, AL",
    "year_founded": 1989,
-   "description": "Weather data, alerting and decision tools for government agencies",
+   "description": "Weather data, alerting and decision tools for government agencies - exhibited at IAEM 2026",
    "website": "https://baronweather.com",
    "board_url": "https://baronweather.com/careers",
    "linkedin": null,
@@ -72806,8 +72856,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -72828,7 +72880,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -79620,7 +79672,7 @@
    "also": null,
    "location": "Tysons, Virginia",
    "year_founded": 1975,
-   "description": "Eligibility, enrollment and program administration for state HHS agencies - exhibited at GFOA 2026, NCSEA 2026, NACUBO 2026",
+   "description": "Eligibility, enrollment and program administration for state HHS agencies - exhibited at GFOA 2026, NCSEA 2026, NACUBO 2026, NCSL Legislative Summit 2026",
    "website": "https://www.maximus.com",
    "board_url": "https://www.maximus.com/careers",
    "linkedin": null,
@@ -79645,7 +79697,8 @@
    "conferences": [
     "GFOA 2026",
     "NCSEA 2026",
-    "NACUBO 2026"
+    "NACUBO 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "GFOA 2026",
    "open_roles": 0,
@@ -79668,7 +79721,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; GFOA 2026; NCSEA 2026; NACUBO 2026",
+   "source": "competitor sweep; GFOA 2026; NCSEA 2026; NACUBO 2026; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -83998,7 +84051,7 @@
    "also": null,
    "location": "Newport Beach, CA",
    "year_founded": null,
-   "description": "Mass notification and emergency response app for schools and campuses",
+   "description": "Mass notification and emergency response app for schools and campuses - exhibited at IAEM 2026",
    "website": "https://titanhst.com",
    "board_url": "https://titanhst.com",
    "linkedin": null,
@@ -84020,8 +84073,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -84042,7 +84097,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -84798,7 +84853,7 @@
    "also": null,
    "location": "Beltsville, MD",
    "year_founded": 2002,
-   "description": "Emergency mass notification hardware and software for schools and agencies - exhibited at EDUCAUSE 2026",
+   "description": "Emergency mass notification hardware and software for schools and agencies - exhibited at EDUCAUSE 2026, IAEM 2026",
    "website": "https://alertus.com",
    "board_url": "https://jobs.lever.co/alertus",
    "linkedin": null,
@@ -84822,7 +84877,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "EDUCAUSE 2026"
+    "EDUCAUSE 2026",
+    "IAEM 2026"
    ],
    "conference": "EDUCAUSE 2026",
    "open_roles": 17,
@@ -84852,7 +84908,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep; EDUCAUSE 2026",
+   "source": "competitor sweep; EDUCAUSE 2026; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -85144,7 +85200,7 @@
    "also": null,
    "location": "City of Industry, CA",
    "year_founded": 2002,
-   "description": "X-ray inspection systems for airports, borders and government sites",
+   "description": "X-ray inspection systems for airports, borders and government sites - exhibited at ACA Congress 2026",
    "website": "https://astrophysicsinc.com",
    "board_url": "https://astrophysicsinc.com",
    "linkedin": null,
@@ -85166,8 +85222,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -85188,7 +85246,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -86097,7 +86155,7 @@
    "also": null,
    "location": "Malvern, United Kingdom",
    "year_founded": 2006,
-   "description": "Ferromagnetic detection systems for airports, courts and secure facilities",
+   "description": "Ferromagnetic detection systems for airports, courts and secure facilities - exhibited at ACA Congress 2026",
    "website": "https://metrasens.com",
    "board_url": "https://metrasens.com/careers",
    "linkedin": null,
@@ -86119,8 +86177,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -86141,7 +86201,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -86499,7 +86559,7 @@
    "also": null,
    "location": "Yucaipa, California",
    "year_founded": 1981,
-   "description": "Jail management and CAD/RMS software for sheriffs and police",
+   "description": "Jail management and CAD/RMS software for sheriffs and police - exhibited at ACA Congress 2026",
    "website": "https://www.goeis.net",
    "board_url": "https://www.goeis.net/companycareers",
    "linkedin": null,
@@ -86521,8 +86581,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -86543,7 +86605,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -87813,7 +87875,7 @@
    "also": null,
    "location": "West Chicago, Illinois",
    "year_founded": 1982,
-   "description": "Behavioral-health and correctional furniture for jails and facilities",
+   "description": "Behavioral-health and correctional furniture for jails and facilities - exhibited at ACA Congress 2026",
    "website": "https://norix.com",
    "board_url": "https://norix.com/about-us/careers/",
    "linkedin": null,
@@ -87835,8 +87897,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -87857,7 +87921,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -87983,7 +88047,7 @@
    "also": null,
    "location": "Rancho Dominguez, California",
    "year_founded": 1991,
-   "description": "Commissary programs and inmate packages for state and county corrections",
+   "description": "Commissary programs and inmate packages for state and county corrections - exhibited at ACA Congress 2026",
    "website": "https://www.unionsupply.com",
    "board_url": "https://www.unionsupply.com",
    "linkedin": null,
@@ -88005,8 +88069,10 @@
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -88027,7 +88093,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -88383,7 +88449,7 @@
    "also": null,
    "location": "Fresno, California",
    "year_founded": 2021,
-   "description": "AI evacuation modeling and simulation for fire and emergency managers",
+   "description": "AI evacuation modeling and simulation for fire and emergency managers - exhibited at IAEM 2026",
    "website": "https://ladris.com",
    "board_url": "https://ladris.com/careers",
    "linkedin": null,
@@ -88405,8 +88471,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -88427,7 +88495,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -103429,7 +103497,7 @@
    "also": null,
    "location": "Louisville, KY",
    "year_founded": 1981,
-   "description": "Courtroom audio-video recording and evidence presentation systems for courts",
+   "description": "Courtroom audio-video recording and evidence presentation systems for courts - exhibited at NCSL Legislative Summit 2026",
    "website": "https://www.javs.com",
    "board_url": "https://www.javs.com/careers/",
    "linkedin": null,
@@ -103451,8 +103519,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "NCSL Legislative Summit 2026"
+   ],
+   "conference": "NCSL Legislative Summit 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -103473,7 +103543,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -105550,7 +105620,7 @@
    "also": null,
    "location": "Blasdell, New York",
    "year_founded": 1979,
-   "description": "DisasterLAN emergency operations center and incident management software",
+   "description": "DisasterLAN emergency operations center and incident management software - exhibited at IAEM 2026",
    "website": "https://www.bcgeng.com",
    "board_url": "https://www.buffalocomputergraphics.com/careers",
    "linkedin": null,
@@ -105572,8 +105642,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -105594,7 +105666,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -106203,7 +106275,7 @@
    "also": null,
    "location": "Rolling Meadows, Illinois",
    "year_founded": 2011,
-   "description": "Fixed wireless and Wi-Fi networks for cities, schools and public agencies",
+   "description": "Fixed wireless and Wi-Fi networks for cities, schools and public agencies - exhibited at Broadband Communities Summit 2026",
    "website": "https://www.cambiumnetworks.com",
    "board_url": "https://jobs.lever.co/cambiumnetworks",
    "linkedin": null,
@@ -106225,8 +106297,10 @@
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "Broadband Communities Summit 2026"
+   ],
+   "conference": "Broadband Communities Summit 2026",
    "open_roles": 1,
    "open_postings": 1,
    "quota_roles": 0,
@@ -106249,7 +106323,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; Broadband Communities Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -107775,7 +107849,7 @@
    "also": null,
    "location": "Portland, ME",
    "year_founded": 2009,
-   "description": "Virtual supervision case management, client mobile app, and remote testing for pretrial, probation, parole, and specialty courts - exhibited at APPA Probation 2026",
+   "description": "Virtual supervision case management, client mobile app, and remote testing for pretrial, probation, parole, and specialty courts - exhibited at APPA Probation 2026, ACA Congress 2026",
    "website": "https://reconnect.io",
    "board_url": "https://reconnect.io",
    "linkedin": null,
@@ -107798,7 +107872,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "APPA Probation 2026"
+    "APPA Probation 2026",
+    "ACA Congress 2026"
    ],
    "conference": "APPA Probation 2026",
    "open_roles": 0,
@@ -107821,7 +107896,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "conference sweep: APPA Probation 2026",
+   "source": "conference sweep: APPA Probation 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -112120,7 +112195,7 @@
    "also": null,
    "location": "Boca Raton, FL",
    "year_founded": 1997,
-   "description": "Learning management system plus accessibility and analytics tools for higher education, K-12, government, and corporate training - exhibited at EDUCAUSE 2026",
+   "description": "Learning management system plus accessibility and analytics tools for higher education, K-12, government, and corporate training - exhibited at EDUCAUSE 2026, IAEM 2026",
    "website": "https://www.blackboard.com",
    "board_url": "https://www.blackboard.com/company/careers",
    "linkedin": null,
@@ -112143,7 +112218,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "EDUCAUSE 2026"
+    "EDUCAUSE 2026",
+    "IAEM 2026"
    ],
    "conference": "EDUCAUSE 2026",
    "open_roles": 0,
@@ -112166,7 +112242,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-23",
    "posts_at": null,
-   "source": "conference sweep: EDUCAUSE 2026",
+   "source": "conference sweep: EDUCAUSE 2026; IAEM 2026",
    "researched": true,
    "claimed": null
   },
@@ -112837,7 +112913,7 @@
    "also": null,
    "location": "Modesto, CA",
    "year_founded": 2015,
-   "description": "AI report writing and field supervision assistant for probation, parole, and pretrial agencies - exhibited at APPA Probation 2026",
+   "description": "AI report writing and field supervision assistant for probation, parole, and pretrial agencies - exhibited at APPA Probation 2026, ACA Congress 2026",
    "website": "https://cognisen.com",
    "board_url": "https://cognisen.com",
    "linkedin": null,
@@ -112860,7 +112936,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "APPA Probation 2026"
+    "APPA Probation 2026",
+    "ACA Congress 2026"
    ],
    "conference": "APPA Probation 2026",
    "open_roles": 0,
@@ -112883,7 +112960,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "conference sweep: APPA Probation 2026",
+   "source": "conference sweep: APPA Probation 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -129123,7 +129200,7 @@
    "also": null,
    "location": null,
    "year_founded": 2023,
-   "description": "AI classroom assistant giving teachers configurable student learning Spaces with a live progress dashboard for K-12 districts - exhibited at EDUCAUSE 2026",
+   "description": "AI classroom assistant giving teachers configurable student learning Spaces with a live progress dashboard for K-12 districts - exhibited at EDUCAUSE 2026, NCSL Legislative Summit 2026",
    "website": "https://schoolai.com",
    "board_url": "https://ats.rippling.com/schoolai/jobs",
    "linkedin": null,
@@ -129146,7 +129223,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "EDUCAUSE 2026"
+    "EDUCAUSE 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "EDUCAUSE 2026",
    "open_roles": 0,
@@ -129169,7 +129247,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-23",
    "posts_at": null,
-   "source": "conference sweep: EDUCAUSE 2026",
+   "source": "conference sweep: EDUCAUSE 2026; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -143225,7 +143303,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Human-read audiobook library and reading app for students with dyslexia, low vision or reading difficulties, sold to schools and districts and to families - exhibited at CEC Convention 2027",
+   "description": "Human-read audiobook library and reading app for students with dyslexia, low vision or reading difficulties, sold to schools and districts and to families - exhibited at CEC Convention 2027, NCSL Legislative Summit 2026",
    "website": "https://learningally.org/",
    "board_url": "https://learningally.org/",
    "linkedin": null,
@@ -143248,7 +143326,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "CEC Convention 2027"
+    "CEC Convention 2027",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "CEC Convention 2027",
    "open_roles": 0,
@@ -143271,7 +143350,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "conference sweep: CEC Convention 2027",
+   "source": "conference sweep: CEC Convention 2027; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -467660,5 +467739,9 @@
   "absent": 605,
   "blocked": 232,
   "unchecked": 66
+ },
+ "redrawn": {
+  "at": "2026-10-20T13:05:24Z",
+  "inputs": "b0acc1bf935436b8c170005bf0c3fd347532417044714f3f14df0332c076e6a2"
  }
 }

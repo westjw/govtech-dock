@@ -1,0 +1,277 @@
+{
+ "event_tag": "NCPERS 2026",
+ "conference": "NCPERS",
+ "found": true,
+ "source_url": "https://www.ncpers.org/events/ncpers-annual-conference-and-exhibition-ace",
+ "source_note": "Read from https://www.ncpers.org/events/ncpers-annual-conference-and-exhibition-ace by scripts/sweep_exhibitors.py. 91 name(s), 41 with a website the page itself linked. Quality: menu (20% carry a corporate marker, 5% name a site section, 29% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Abacus Intel",
+   "website": "https://abacusgm.com/intel/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Abacus Global Management financial services arm",
+   "read": {
+    "verdict": "supplier",
+    "why": "Abacus Global Management financial services arm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Alliance for Prosperity and a Secure Retirement",
+   "website": "https://www.prosperityretirementalliance.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: retirement advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "retirement advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Amova Asset Management",
+   "website": "https://us.amova-am.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "BenefitsIQ™ by Deloitte",
+   "website": "https://www.deloitte.com/us/en/industries/government-public/about/benefitsiq-employee-benefits-management.html",
+   "is_govtech": true,
+   "is_govtech_why": "reader: site: AI-driven SaaS platform for pension/benefits admin, government",
+   "read": {
+    "verdict": "vendor",
+    "why": "site: AI-driven SaaS platform for pension/benefits admin, government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Bernstein Litowitz Berger & Grossmann (BLB&G)",
+   "website": "https://www.blbglaw.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: securities litigation law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "securities litigation law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Calamos Investments",
+   "website": "https://www.calamos.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dividex Management LLC",
+   "website": "https://dividexmanagement.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: securities litigation recovery service for pension funds",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: securities litigation recovery service for pension funds",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Gallagher Benefit Services, Inc.",
+   "website": "https://www.ajg.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: insurance/benefits consulting (ajg.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "insurance/benefits consulting (ajg.com)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "GoldenTree Asset Management",
+   "website": "https://www.goldentree.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Investment Performance Services (IPS)",
+   "website": "https://www.ips-net.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: independent investment consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: independent investment consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "J.P. Morgan Asset Management",
+   "website": "https://am.jpmorgan.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Long Arc Capital",
+   "website": "https://www.longarc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: private equity investment firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "private equity investment firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Mesirow Investments",
+   "website": "https://www.mesirow.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NEPC",
+   "website": "https://www.nepc.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NISA Investment Advisors",
+   "website": "https://www.nisa.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Northern Trust",
+   "website": "https://www.northerntrust.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank/custodian, asset manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank/custodian, asset manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Nuveen",
+   "website": "https://www.nuveen.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Robbins Geller Rudman & Dowd",
+   "website": "https://www.rgrdlaw.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: securities litigation law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "securities litigation law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Segal",
+   "website": "https://www.segalco.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: actuarial/benefits consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "actuarial/benefits consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State Street",
+   "website": "https://www.statestreet.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: bank/custodian, asset manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "bank/custodian, asset manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "William Blair",
+   "website": "https://www.williamblair.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: investment bank/asset manager",
+   "read": {
+    "verdict": "supplier",
+    "why": "investment bank/asset manager",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Wolf Popper",
+   "website": "https://www.wolfpopper.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: securities litigation law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "securities litigation law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 69,
+ "quality_was": "menu"
+}

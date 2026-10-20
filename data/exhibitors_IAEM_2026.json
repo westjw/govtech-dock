@@ -1,10 +1,1431 @@
 {
  "event_tag": "IAEM 2026",
  "conference": "IAEM Annual",
- "found": false,
- "source_url": "https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm",
- "source_note": "Rendered in a browser from https://iaem2026.mapyourshow.com/8_0/exhview/index.cfm by scripts/render_floor.py (robots.txt asked at every hop). 13 name(s), 0 with a website the page linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 31% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
- "exhibitors": [],
- "why": "reader: every one of the 13 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 13
+ "found": true,
+ "source_url": "https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany",
+ "source_note": "Rendered in a browser from https://www.iaemconference.org/SearchByExpoCompany.asp?pfp=BrowseByCompany by scripts/render_floor.py (robots.txt asked at every hop). 197 name(s), 37 with a website the page linked. Quality: menu (23% carry a corporate marker, 2% name a site section, 10% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
+ "exhibitors": [
+  {
+   "name": "Advanced Security Technologies",
+   "website": null
+  },
+  {
+   "name": "AidFinder",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: aidfinder.com: disaster-aid platform sold to states",
+   "read": {
+    "verdict": "vendor",
+    "why": "aidfinder.com: disaster-aid platform sold to states",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Alertus Technologies",
+   "website": null
+  },
+  {
+   "name": "Amazon Business",
+   "website": null
+  },
+  {
+   "name": "Amtrak Emergency Management",
+   "website": null
+  },
+  {
+   "name": "Ascenttra Training and Exercises",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: training and exercise services",
+   "read": {
+    "verdict": "supplier",
+    "why": "training and exercise services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AshBritt, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disaster debris/recovery services contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster debris/recovery services contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ASPCA",
+   "website": null
+  },
+  {
+   "name": "Avive",
+   "website": null
+  },
+  {
+   "name": "Baron Weather",
+   "website": null
+  },
+  {
+   "name": "Beacon Emergency Dispatch",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no site; product or dispatch service unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Bent Ear Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bentearsolutions.com: GIS consulting, training, data services",
+   "read": {
+    "verdict": "supplier",
+    "why": "bentearsolutions.com: GIS consulting, training, data services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Blackberry",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: BlackBerry AtHoc crisis comms software",
+   "read": {
+    "verdict": "vendor",
+    "why": "BlackBerry AtHoc crisis comms software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Blackboard",
+   "website": null
+  },
+  {
+   "name": "Bluescape",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: visual collaboration SaaS used by EOCs",
+   "read": {
+    "verdict": "vendor",
+    "why": "visual collaboration SaaS used by EOCs",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Bridgford Foods",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "food maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "BSI Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting firm by name",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm by name",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Buffalo Computer Graphics",
+   "website": null
+  },
+  {
+   "name": "Building Safety Solutions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: name reads as building inspection/code services",
+   "read": {
+    "verdict": "supplier",
+    "why": "name reads as building inspection/code services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Buxus",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "buxus.com blank page; unknown",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CAPTRS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "captrs.com empty, captrs.org no answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Center for Domestic Preparedness",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: FEMA training center (agency)",
+   "read": {
+    "verdict": "supplier",
+    "why": "FEMA training center (agency)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Chemonics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: international development consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "international development consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Clarity Movement",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: air-quality sensors with cloud data platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "air-quality sensors with cloud data platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Clark",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare name, many companies called Clark",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CohnReznick",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: accounting/advisory firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting/advisory firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Columbia Southern University",
+   "website": null
+  },
+  {
+   "name": "Commercial Vehicle Safety Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Connecta Satellite Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: satellite connectivity hardware/service",
+   "read": {
+    "verdict": "supplier",
+    "why": "satellite connectivity hardware/service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Constant and Associates, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: emergency management consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency management consulting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Crawford & Associates, LLC/Crisis Systems",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "consultancy; 'Crisis Systems' may be product, site empty",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Cybersecurity and Infrastructure Security Agency (CISA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Deaf Link",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: accessible ASL emergency alerting software",
+   "read": {
+    "verdict": "vendor",
+    "why": "accessible ASL emergency alerting software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DebrisTech, LLC",
+   "website": null
+  },
+  {
+   "name": "Deloitte",
+   "website": null
+  },
+  {
+   "name": "DEN Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: densystems.com: software+hardware platform for public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "densystems.com: software+hardware platform for public safety",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Deployed Logix",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "site refused by robots.txt; unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "DRC Emergency Services, LLChttps://www.drcusa.com/",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disaster recovery/debris contractor (drcusa.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster recovery/debris contractor (drcusa.com)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Duress",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: duress.com: lone-worker devices, app, monitoring; gov sector",
+   "read": {
+    "verdict": "vendor",
+    "why": "duress.com: lone-worker devices, app, monitoring; gov sector",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dynamis, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: homeland security consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "homeland security consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EM1",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Embry-Riddle Aeronautical University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Emergency Dermal Solutions, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: medical/dermal product, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "medical/dermal product, not software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Emergency Management Network (EMN)",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name could be network, staffing or media",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Emergency Management Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: EM consulting by name",
+   "read": {
+    "verdict": "supplier",
+    "why": "EM consulting by name",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Employees Club of CA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: member-benefits club, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "member-benefits club, not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Engine",
+   "website": null
+  },
+  {
+   "name": "ES Tech Lab",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: estechlab.com: Legionella testing lab",
+   "read": {
+    "verdict": "supplier",
+    "why": "estechlab.com: Legionella testing lab",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Esri",
+   "website": null
+  },
+  {
+   "name": "Eutelsat Network Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: satellite connectivity provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "satellite connectivity provider",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Everbridge",
+   "website": null
+  },
+  {
+   "name": "Extron",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AV switching/control hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "AV switching/control hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EZ STAK",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: storage/shelving equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "storage/shelving equipment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Favorite",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: likely Favorite Healthcare Staffing",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely Favorite Healthcare Staffing",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FEMA IPAWS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "First Line Technology",
+   "website": null
+  },
+  {
+   "name": "FirstNet Authority",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal authority",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal authority",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FirstNet, Built by AT&T",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: public-safety broadband platform and apps",
+   "read": {
+    "verdict": "vendor",
+    "why": "public-safety broadband platform and apps",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Flowstop",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: flood barrier products",
+   "read": {
+    "verdict": "supplier",
+    "why": "flood barrier products",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Fluor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering/construction firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering/construction firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Forts USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: shelters/structures",
+   "read": {
+    "verdict": "supplier",
+    "why": "shelters/structures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Frontline Communications",
+   "website": null
+  },
+  {
+   "name": "Garmin International Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: inReach devices with Garmin Response platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "inReach devices with Garmin Response platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "GETZ Transport Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: transport services",
+   "read": {
+    "verdict": "supplier",
+    "why": "transport services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Heli-Hydrant Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: firefighting water equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "firefighting water equipment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Hot Meals USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food",
+   "read": {
+    "verdict": "supplier",
+    "why": "food",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "HQE Systems",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: hqesystems.com: govtech life-safety, ML/AI alerting platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "hqesystems.com: govtech life-safety, ML/AI alerting platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Humane World For Animals",
+   "website": null
+  },
+  {
+   "name": "Journal of Emergency Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade journal publication",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade journal publication",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Juvare",
+   "website": null
+  },
+  {
+   "name": "King Saud University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "KLD Associates, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: engineering consultancy, evacuation studies",
+   "read": {
+    "verdict": "supplier",
+    "why": "engineering consultancy, evacuation studies",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Ladris Technologies",
+   "website": null
+  },
+  {
+   "name": "Looks Great Services of MS",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: debris removal contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "debris removal contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "LTA Projects",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ltaprojects.com: inflatable LED light towers",
+   "read": {
+    "verdict": "supplier",
+    "why": "ltaprojects.com: inflatable LED light towers",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Mallory Safety and Supply",
+   "website": null
+  },
+  {
+   "name": "Massachusetts Maritime Academy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: college",
+   "read": {
+    "verdict": "supplier",
+    "why": "college",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Midland Radio Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: radio hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "radio hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Mobile Concepts Specialty Vehicles",
+   "website": null
+  },
+  {
+   "name": "Motorola Solutions",
+   "website": null
+  },
+  {
+   "name": "NASA Disasters Program",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Mass Violence Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: research/resource center, not tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "research/resource center, not tech vendor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "New Use Energy Solutions, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: portable solar power generators, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "portable solar power generators, hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NOAA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "North American Rescue",
+   "website": null
+  },
+  {
+   "name": "Nova Software",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "novasoftware.com is a China outsourcing shop; match unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Nutwell",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no site given; nutwell.com did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "OASIS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous acronym, no website",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ORAU",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Oak Ridge Associated Universities, consortium/training",
+   "read": {
+    "verdict": "supplier",
+    "why": "Oak Ridge Associated Universities, consortium/training",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Paradigm",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name, no website",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Partnership for Elections and Emergency Response (PEER)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit partnership, not a product",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit partnership, not a product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Peregrine",
+   "website": null
+  },
+  {
+   "name": "Perimeter",
+   "website": null
+  },
+  {
+   "name": "Perses Consulting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pierce College Emergency Management",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: college program",
+   "read": {
+    "verdict": "supplier",
+    "why": "college program",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Planar",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: display/video wall hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "display/video wall hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PrepareSmart",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: preparesmart.com sells first aid/preparedness kits",
+   "read": {
+    "verdict": "supplier",
+    "why": "preparesmart.com sells first aid/preparedness kits",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ProPac, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: emergency kits and supplies maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency kits and supplies maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Public Safety UAS",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "drone name; product vs training unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "RDPC - Rural Domestic Preparedness Consortium",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: FEMA training consortium",
+   "read": {
+    "verdict": "supplier",
+    "why": "FEMA training consortium",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Ready America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: emergency kits / preparedness campaign",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency kits / preparedness campaign",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Recovery Logistics",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; services vs product unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Red Guide To Recovery",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disaster recovery guidebook publisher",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster recovery guidebook publisher",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Redundant Satellite Communications since 2000",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "a tagline, real exhibitor name missing",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Regroup Mass Notification",
+   "website": null
+  },
+  {
+   "name": "Relief Compass",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: reliefcompass.com: mass care case mgmt platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "reliefcompass.com: mass care case mgmt platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rescue42",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rescue stabilization equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "rescue stabilization equipment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Risk and Resilience Hub",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; could be resource site or tool",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Rologard",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rologard.com: portable vehicle barrier hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "rologard.com: portable vehicle barrier hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rule One Consulting LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Safeware",
+   "website": null
+  },
+  {
+   "name": "SDR",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare acronym, no website",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Sikich",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: accounting/consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "accounting/consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Skymira",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: satellite IoT tracking/comms with platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "satellite IoT tracking/comms with platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "SOS Survival Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: emergency survival supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "emergency survival supplies",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "SummitET",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: summitet.com: Summit Exercises and Training",
+   "read": {
+    "verdict": "supplier",
+    "why": "summitet.com: Summit Exercises and Training",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "T-Mobile",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: wireless/T-Priority for public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "wireless/T-Priority for public safety",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Teleira",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: teleira.com: critical comms voice failover product",
+   "read": {
+    "verdict": "vendor",
+    "why": "teleira.com: critical comms voice failover product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tetra Tech",
+   "website": null
+  },
+  {
+   "name": "Tidal Basin Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disaster recovery consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "disaster recovery consulting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Titan HST",
+   "website": null
+  },
+  {
+   "name": "Tulane University Disaster Resilience Leadership",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university program",
+   "read": {
+    "verdict": "supplier",
+    "why": "university program",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tyler Junior College",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: college",
+   "read": {
+    "verdict": "supplier",
+    "why": "college",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UAB",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: University of Alabama at Birmingham",
+   "read": {
+    "verdict": "supplier",
+    "why": "University of Alabama at Birmingham",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Unitas Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: unitas.solutions: IT managed services/hosting",
+   "read": {
+    "verdict": "supplier",
+    "why": "unitas.solutions: IT managed services/hosting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "University of Utah",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "US Flood Control",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: flood barrier hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "flood barrier hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Veoci",
+   "website": null
+  },
+  {
+   "name": "Vertical Revenue LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; business unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "VidlSourcing LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; business unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ViewSonic Corporation",
+   "website": null
+  },
+  {
+   "name": "WeatherFront",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: weatherfront.com: weather data app/SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "weatherfront.com: weather data app/SaaS",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Weatherville (BlueBird Weather)",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "weatherville.com returned no text",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Western Kentucky University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Western Shelter",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: deployable shelter hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "deployable shelter hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Wet Dog Weather, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: weather data visualization software",
+   "read": {
+    "verdict": "vendor",
+    "why": "weather data visualization software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Whelen Engineering Co Inc",
+   "website": null
+  },
+  {
+   "name": "Wildfire Technology Integration",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; product vs integrator unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "WOTA Corp.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: portable water recycling hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "portable water recycling hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ZOLEO",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: satellite messenger device with app",
+   "read": {
+    "verdict": "vendor",
+    "why": "satellite messenger device with app",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "zPods",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "zpods.com returned no text",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Zumro Air Shelters",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: inflatable shelter hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "inflatable shelter hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 55,
+ "quality_was": "menu"
 }

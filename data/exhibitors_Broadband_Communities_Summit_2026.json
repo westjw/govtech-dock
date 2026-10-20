@@ -1,10 +1,581 @@
 {
  "event_tag": "Broadband Communities Summit 2026",
  "conference": "Broadband Communities Summit",
- "found": false,
+ "found": true,
  "source_url": "https://www.terrapinn.com/conference/broadband-communities/2026-Sponsors-Exhibitors.stm",
- "source_note": "Read from https://www.terrapinn.com/conference/broadband-communities/2026-Sponsors-Exhibitors.stm by scripts/sweep_exhibitors.py. 24 name(s), 14 with a website the page itself linked. Quality: menu (21% carry a corporate marker, 0% name a site section, 38% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 24 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 24
+ "source_note": "Read from https://www.terrapinn.com/conference/broadband-communities/2026-Sponsors-Exhibitors.stm by scripts/sweep_exhibitors.py. 77 name(s), 67 with a website the page itself linked. Quality: menu (31% carry a corporate marker, 0% name a site section, 12% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
+ "exhibitors": [
+  {
+   "name": "Aerwave",
+   "website": "https://www.aerwave.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: managed Wi-Fi service for multifamily apartments",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: managed Wi-Fi service for multifamily apartments",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AirWorks",
+   "website": "https://airworks.io"
+  },
+  {
+   "name": "Astound Broadband",
+   "website": "https://www.astound.com/astound-multifamily/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: ISP / cable operator, multifamily service",
+   "read": {
+    "verdict": "supplier",
+    "why": "ISP / cable operator, multifamily service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AT&T Connected Communities",
+   "website": "https://att.com/att/multifamily-property",
+   "is_govtech": false,
+   "is_govtech_why": "reader: telecom carrier multifamily internet service",
+   "read": {
+    "verdict": "supplier",
+    "why": "telecom carrier multifamily internet service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Benton Technical Services",
+   "website": "https://www.bentontechnical.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: broadband engineering/design services",
+   "read": {
+    "verdict": "supplier",
+    "why": "broadband engineering/design services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Blue Stream Fiber",
+   "website": "https://www.bluestreamfiber.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Florida fiber ISP",
+   "read": {
+    "verdict": "supplier",
+    "why": "Florida fiber ISP",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Calix",
+   "website": "https://calix.com"
+  },
+  {
+   "name": "Cambium Networks",
+   "website": "https://cambiumnetworks.com"
+  },
+  {
+   "name": "Camozzi Automation, Inc.",
+   "website": "https://camozzi-usa.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: pneumatic/fiber-blowing equipment maker, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "pneumatic/fiber-blowing equipment maker, hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Choice IT Global LLC",
+   "website": "https://choiceitglobal.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "site refused the crawler; IT services firm by name only",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CHR Solutions",
+   "website": "https://CHRSolutions.com"
+  },
+  {
+   "name": "Coax Fiber Solutions, LLC",
+   "website": "https://cfssouth.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: cable/fiber installation contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "cable/fiber installation contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Comcast Cable Communications",
+   "website": "https://www.xfinity.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: ISP / cable operator (xfinity.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "ISP / cable operator (xfinity.com)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Congruex",
+   "website": "https://www.congruex.com"
+  },
+  {
+   "name": "DCCM Infrastructure",
+   "website": "https://dccm.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: telecom engineering/construction services",
+   "read": {
+    "verdict": "supplier",
+    "why": "telecom engineering/construction services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DIRECTV",
+   "website": "https://directv-multifamily.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: TV service provider, multifamily",
+   "read": {
+    "verdict": "supplier",
+    "why": "TV service provider, multifamily",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Discernity",
+   "website": "https://discernity.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: MDU internet/managed WiFi service for apartments",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: MDU internet/managed WiFi service for apartments",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "dish",
+   "website": "http://www.dish.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: satellite TV service provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "satellite TV service provider",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dojo Networks",
+   "website": "https://dojonetworks.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: managed WiFi/ISP for apartments and MDUs",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: managed WiFi/ISP for apartments and MDUs",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dycom Industries Inc",
+   "website": "https://www.dycominc.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: telecom infrastructure contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "telecom infrastructure contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Eagle-one Technology",
+   "website": "https://eagle-onetech.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: fiber optical products portfolio, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: fiber optical products portfolio, hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EnGenius Technologies, Inc",
+   "website": "https://www.engeniustech.com",
+   "read": {
+    "verdict": "unsure",
+    "why": "networking hardware with cloud mgmt; mostly SMB, gov/school share unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "gaiia",
+   "website": "https://gaiia.com",
+   "is_govtech": true,
+   "is_govtech_why": "reader: ISP billing/OSS SaaS; buyers include municipal and co-op broadband utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "ISP billing/OSS SaaS; buyers include municipal and co-op broadband utilities",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Granite International Group",
+   "website": "https://graniteinternationalgroup.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: telecommunications contractor, FTTH installs",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: telecommunications contractor, FTTH installs",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Harry Marketing",
+   "website": "https://www.harry.marketing/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: marketing agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "marketing agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Internet Subway",
+   "website": "https://ismultifamily.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: multifamily ISP (ismultifamily.com)",
+   "read": {
+    "verdict": "supplier",
+    "why": "multifamily ISP (ismultifamily.com)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "isla",
+   "website": "https://weareisla.co.uk/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: UK sustainable-events body for events industry, not gov",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: UK sustainable-events body for events industry, not gov",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Kansys",
+   "website": "https://hubs.la/Q04pLg9m0",
+   "is_govtech": true,
+   "is_govtech_why": "reader: telecom billing/OSS software for municipal utilities and co-ops",
+   "read": {
+    "verdict": "vendor",
+    "why": "telecom billing/OSS software for municipal utilities and co-ops",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Kinetic Communities",
+   "website": "https://www.gokinetic.com/communities",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Windstream Kinetic ISP, multifamily",
+   "read": {
+    "verdict": "supplier",
+    "why": "Windstream Kinetic ISP, multifamily",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Lightera",
+   "website": "https://lightera.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: fiber optic cable maker (ex-OFS), hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "fiber optic cable maker (ex-OFS), hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "netElastic",
+   "website": "https://netelastic.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "virtual router/BNG software for ISPs; municipal share unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Oldcastle Infrastructure",
+   "website": "https://oldcastleinfrastructure.com"
+  },
+  {
+   "name": "Omada Networks by TP-Link",
+   "website": "https://www.omadanetworks.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "SMB networking hardware + controller; gov/school sales unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Optimum",
+   "website": "https://www.optimum.com/optimumcommunities/managedwifi",
+   "is_govtech": false,
+   "is_govtech_why": "reader: ISP / cable operator managed WiFi",
+   "read": {
+    "verdict": "supplier",
+    "why": "ISP / cable operator managed WiFi",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "OSP Technologies",
+   "website": "https://osptech.net/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: site nav: services, capability statement; OSP services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "site nav: services, capability statement; OSP services firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pavlov Media",
+   "website": "https://pavlovmedia.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: ISP for student housing/multifamily",
+   "read": {
+    "verdict": "supplier",
+    "why": "ISP for student housing/multifamily",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Positron Access Solutions",
+   "website": "https://www.positronaccess.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: G.hn access hardware for MDUs",
+   "read": {
+    "verdict": "supplier",
+    "why": "G.hn access hardware for MDUs",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Preseem",
+   "website": "https://preseem.com",
+   "read": {
+    "verdict": "unsure",
+    "why": "QoE software for ISPs, mostly private WISPs; gov share unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "R&M USA Inc",
+   "website": "https://rdm.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: cabling/connectivity hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "cabling/connectivity hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "RealPage",
+   "website": "https://realpage.com",
+   "read": {
+    "verdict": "unsure",
+    "why": "property mgmt software, mainly private landlords; some housing authorities",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "RUCKUS Networks",
+   "website": "https://www.ruckusnetworks.com",
+   "is_govtech": true,
+   "is_govtech_why": "reader: WiFi/network platform sold heavily to K-12, higher ed, government",
+   "read": {
+    "verdict": "vendor",
+    "why": "WiFi/network platform sold heavily to K-12, higher ed, government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Sonar Software",
+   "website": "https://sonar.software",
+   "is_govtech": true,
+   "is_govtech_why": "reader: ISP billing/OSS SaaS; buyers include municipal broadband utilities",
+   "read": {
+    "verdict": "vendor",
+    "why": "ISP billing/OSS SaaS; buyers include municipal broadband utilities",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Specialist Network Operations (SNO)",
+   "website": "https://www.sno-us.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: network operations services",
+   "read": {
+    "verdict": "supplier",
+    "why": "network operations services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Spectrum Community Solutions",
+   "website": "https://spectrumcommunitysolutions.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: Charter ISP multifamily service",
+   "read": {
+    "verdict": "supplier",
+    "why": "Charter ISP multifamily service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Techwave Consulting Inc",
+   "website": "https://www.techwave.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: IT consulting/services firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "IT consulting/services firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UCL SWIFT",
+   "website": "https://uclswiftamericas.com/",
+   "is_govtech": false,
+   "is_govtech_why": "reader: fiber cleaving/splicing tools, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "fiber cleaving/splicing tools, hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UniTek Global Services",
+   "website": "https://unitekglobalservices.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: telecom installation/engineering services",
+   "read": {
+    "verdict": "supplier",
+    "why": "telecom installation/engineering services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Verizon Enhanced Communities",
+   "website": "https://verizon.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: telecom carrier multifamily service",
+   "read": {
+    "verdict": "supplier",
+    "why": "telecom carrier multifamily service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "WAV, LLC",
+   "website": "https://www.wavonline.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: wireless equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "wireless equipment distributor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "WireStar Networks",
+   "website": "https://wirestar.net/",
+   "read": {
+    "verdict": "unsure",
+    "why": "site refused the crawler; network provider by name only",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Wirewerks",
+   "website": "https://wirewerks.com",
+   "is_govtech": false,
+   "is_govtech_why": "reader: fiber connectivity hardware maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "fiber connectivity hardware maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Zyxel Communications, Inc.",
+   "website": "https://www.zyxel.com/",
+   "read": {
+    "verdict": "unsure",
+    "why": "networking hardware + cloud mgmt; mostly ISP/SMB, school share unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 25,
+ "quality_was": "menu"
 }

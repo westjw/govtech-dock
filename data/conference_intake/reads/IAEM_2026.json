@@ -102,5 +102,1293 @@
   "why": "Floor-plan app control or legend label",
   "by": "agent:reader",
   "on": "2026-10-15"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Events",
+  "verdict": "not_a_company",
+  "why": "site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Exhibitors",
+  "verdict": "not_a_company",
+  "why": "site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Hotel and Travel",
+  "verdict": "not_a_company",
+  "why": "host travel page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Poster Showcase",
+  "verdict": "not_a_company",
+  "why": "conference programme item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Program",
+  "verdict": "not_a_company",
+  "why": "site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Registration",
+  "verdict": "not_a_company",
+  "why": "registration page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Speakers",
+  "verdict": "not_a_company",
+  "why": "site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Sponsors",
+  "verdict": "not_a_company",
+  "why": "site navigation menu item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "+ Why Attend",
+  "verdict": "not_a_company",
+  "why": "conference site navigation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "2026 Poster Showcase Guidance",
+  "verdict": "not_a_company",
+  "why": "programme PDF link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Affiliate Membership",
+  "verdict": "not_a_company",
+  "why": "host membership page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "AidFinder",
+  "verdict": "vendor",
+  "why": "aidfinder.com: disaster-aid platform sold to states",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Ambassador Program",
+  "verdict": "not_a_company",
+  "why": "host programme page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Ascenttra Training and Exercises",
+  "verdict": "supplier",
+  "why": "training and exercise services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "AshBritt, Inc.",
+  "verdict": "supplier",
+  "why": "disaster debris/recovery services contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Attendee List Scam Alert",
+  "verdict": "not_a_company",
+  "why": "host notice page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Awards Certification Banquet",
+  "verdict": "not_a_company",
+  "why": "programme event",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Back to Top",
+  "verdict": "not_a_company",
+  "why": "page navigation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Beacon Emergency Dispatch",
+  "verdict": "unsure",
+  "why": "no site; product or dispatch service unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Bent Ear Solutions",
+  "verdict": "supplier",
+  "why": "bentearsolutions.com: GIS consulting, training, data services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Blackberry",
+  "verdict": "vendor",
+  "why": "BlackBerry AtHoc crisis comms software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Bluescape",
+  "verdict": "vendor",
+  "why": "visual collaboration SaaS used by EOCs",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Bridgford Foods",
+  "verdict": "supplier",
+  "why": "food maker",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "BSI Consulting",
+  "verdict": "supplier",
+  "why": "consulting firm by name",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Building Safety Solutions, Inc.",
+  "verdict": "supplier",
+  "why": "name reads as building inspection/code services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Buxus",
+  "verdict": "unsure",
+  "why": "buxus.com blank page; unknown",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "CAPTRS",
+  "verdict": "unsure",
+  "why": "captrs.com empty, captrs.org no answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Center for Domestic Preparedness",
+  "verdict": "supplier",
+  "why": "FEMA training center (agency)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Chemonics",
+  "verdict": "supplier",
+  "why": "international development consultancy",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Clarity Movement",
+  "verdict": "vendor",
+  "why": "air-quality sensors with cloud data platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Clark",
+  "verdict": "unsure",
+  "why": "bare name, many companies called Clark",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "CohnReznick",
+  "verdict": "supplier",
+  "why": "accounting/advisory firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Commercial Vehicle Safety Alliance",
+  "verdict": "supplier",
+  "why": "association",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Connecta Satellite Solutions",
+  "verdict": "supplier",
+  "why": "satellite connectivity hardware/service",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Constant and Associates, Inc.",
+  "verdict": "supplier",
+  "why": "emergency management consulting",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Crawford & Associates, LLC/Crisis Systems",
+  "verdict": "unsure",
+  "why": "consultancy; 'Crisis Systems' may be product, site empty",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Cybersecurity and Infrastructure Security Agency (CISA)",
+  "verdict": "supplier",
+  "why": "federal agency",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Deaf Link",
+  "verdict": "vendor",
+  "why": "accessible ASL emergency alerting software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "DEN Systems",
+  "verdict": "vendor",
+  "why": "densystems.com: software+hardware platform for public safety",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Deployed Logix",
+  "verdict": "unsure",
+  "why": "site refused by robots.txt; unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "DRC Emergency Services, LLChttps://www.drcusa.com/",
+  "verdict": "supplier",
+  "why": "disaster recovery/debris contractor (drcusa.com)",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Duress",
+  "verdict": "vendor",
+  "why": "duress.com: lone-worker devices, app, monitoring; gov sector",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Dynamis, Inc.",
+  "verdict": "supplier",
+  "why": "homeland security consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Early Edition Speaker Series",
+  "verdict": "not_a_company",
+  "why": "programme item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "EM1",
+  "verdict": "unsure",
+  "why": "bare acronym; site did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Embry-Riddle Aeronautical University",
+  "verdict": "supplier",
+  "why": "university",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Emergency Dermal Solutions, LLC",
+  "verdict": "supplier",
+  "why": "medical/dermal product, not software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Emergency Management Network (EMN)",
+  "verdict": "unsure",
+  "why": "name could be network, staffing or media",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Emergency Management Partners",
+  "verdict": "supplier",
+  "why": "EM consulting by name",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "EMEX Terms and Conditions",
+  "verdict": "not_a_company",
+  "why": "policy PDF link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Employees Club of CA",
+  "verdict": "supplier",
+  "why": "member-benefits club, not a tech product",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "EMvision TalksÂ®",
+  "verdict": "not_a_company",
+  "why": "programme item on host site",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "ES Tech Lab",
+  "verdict": "supplier",
+  "why": "estechlab.com: Legionella testing lab",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Eutelsat Network Solutions",
+  "verdict": "supplier",
+  "why": "satellite connectivity provider",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Extron",
+  "verdict": "supplier",
+  "why": "AV switching/control hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "EZ STAK",
+  "verdict": "supplier",
+  "why": "storage/shelving equipment",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Favorite",
+  "verdict": "supplier",
+  "why": "likely Favorite Healthcare Staffing",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "FEMA IPAWS",
+  "verdict": "supplier",
+  "why": "federal agency programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "First Step Mixer",
+  "verdict": "not_a_company",
+  "why": "programme event",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "FirstNet Authority",
+  "verdict": "supplier",
+  "why": "federal authority",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "FirstNet, Built by AT&T",
+  "verdict": "vendor",
+  "why": "public-safety broadband platform and apps",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Flowstop",
+  "verdict": "supplier",
+  "why": "flood barrier products",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Fluor",
+  "verdict": "supplier",
+  "why": "engineering/construction firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Forts USA",
+  "verdict": "supplier",
+  "why": "shelters/structures",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Full Conference Program",
+  "verdict": "not_a_company",
+  "why": "agenda link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Gain Approval to Attend",
+  "verdict": "not_a_company",
+  "why": "host page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Garmin International Inc.",
+  "verdict": "vendor",
+  "why": "inReach devices with Garmin Response platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Getting Around",
+  "verdict": "not_a_company",
+  "why": "host travel page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Getting There",
+  "verdict": "not_a_company",
+  "why": "host travel page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "GETZ Transport Solutions",
+  "verdict": "supplier",
+  "why": "transport services",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Give Feedback",
+  "verdict": "not_a_company",
+  "why": "page navigation",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Heli-Hydrant Inc.",
+  "verdict": "supplier",
+  "why": "firefighting water equipment",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Hot Meals USA",
+  "verdict": "supplier",
+  "why": "food",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Housing Scam Alert",
+  "verdict": "not_a_company",
+  "why": "host notice page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "HQE Systems",
+  "verdict": "vendor",
+  "why": "hqesystems.com: govtech life-safety, ML/AI alerting platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "IAEM Certification Program (AEM/CEM)",
+  "verdict": "not_a_company",
+  "why": "the host's own programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "IAEM Global Lounge",
+  "verdict": "not_a_company",
+  "why": "the host's own booth",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "IAEM Scholarship Program",
+  "verdict": "not_a_company",
+  "why": "the host's own programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Journal of Emergency Management",
+  "verdict": "supplier",
+  "why": "trade journal publication",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Katie GL Test",
+  "verdict": "not_a_company",
+  "why": "test entry",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "King Saud University",
+  "verdict": "supplier",
+  "why": "university",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "KLD Associates, Inc",
+  "verdict": "supplier",
+  "why": "engineering consultancy, evacuation studies",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "List of Exhibitors",
+  "verdict": "not_a_company",
+  "why": "host navigation link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Lodging",
+  "verdict": "not_a_company",
+  "why": "host travel page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Looks Great Services of MS",
+  "verdict": "supplier",
+  "why": "debris removal contractor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "LTA Projects",
+  "verdict": "supplier",
+  "why": "ltaprojects.com: inflatable LED light towers",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Massachusetts Maritime Academy",
+  "verdict": "supplier",
+  "why": "college",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Meals Provided with a Full Reg",
+  "verdict": "not_a_company",
+  "why": "host registration page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Midland Radio Corporation",
+  "verdict": "supplier",
+  "why": "radio hardware maker",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "NASA Disasters Program",
+  "verdict": "supplier",
+  "why": "federal agency programme",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "National Mass Violence Center",
+  "verdict": "supplier",
+  "why": "research/resource center, not tech vendor",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Networking Directory",
+  "verdict": "not_a_company",
+  "why": "IAEM site's attendee directory page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "New Use Energy Solutions, Inc.",
+  "verdict": "supplier",
+  "why": "portable solar power generators, hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "NOAA",
+  "verdict": "supplier",
+  "why": "federal agency",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Nova Software",
+  "verdict": "unsure",
+  "why": "novasoftware.com is a China outsourcing shop; match unconfirmed",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Nutwell",
+  "verdict": "unsure",
+  "why": "no site given; nutwell.com did not answer",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "OASIS",
+  "verdict": "unsure",
+  "why": "ambiguous acronym, no website",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "ORAU",
+  "verdict": "supplier",
+  "why": "Oak Ridge Associated Universities, consortium/training",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Paradigm",
+  "verdict": "unsure",
+  "why": "generic name, no website",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Partnership for Elections and Emergency Response (PEER)",
+  "verdict": "supplier",
+  "why": "nonprofit partnership, not a product",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Perses Consulting",
+  "verdict": "supplier",
+  "why": "consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Pierce College Emergency Management",
+  "verdict": "supplier",
+  "why": "college program",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Planar",
+  "verdict": "supplier",
+  "why": "display/video wall hardware maker",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Plenary Speakers",
+  "verdict": "not_a_company",
+  "why": "conference programme page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Poster Showcase Info",
+  "verdict": "not_a_company",
+  "why": "conference info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Pre-/Post-Conference Training",
+  "verdict": "not_a_company",
+  "why": "agenda page link",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "PrepareSmart",
+  "verdict": "supplier",
+  "why": "preparesmart.com sells first aid/preparedness kits",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Professional Development",
+  "verdict": "not_a_company",
+  "why": "conference info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "ProPac, Inc",
+  "verdict": "supplier",
+  "why": "emergency kits and supplies maker",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Prospectus",
+  "verdict": "not_a_company",
+  "why": "exhibitor prospectus PDF",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Public Safety UAS",
+  "verdict": "unsure",
+  "why": "drone name; product vs training unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Quick Facts",
+  "verdict": "not_a_company",
+  "why": "conference info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "RDPC - Rural Domestic Preparedness Consortium",
+  "verdict": "supplier",
+  "why": "FEMA training consortium",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Ready America",
+  "verdict": "supplier",
+  "why": "emergency kits / preparedness campaign",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Receptions in EMEX 2026",
+  "verdict": "not_a_company",
+  "why": "conference events page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Recovery Logistics",
+  "verdict": "unsure",
+  "why": "no website; services vs product unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Red Guide To Recovery",
+  "verdict": "supplier",
+  "why": "disaster recovery guidebook publisher",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Redundant Satellite Communications since 2000",
+  "verdict": "unsure",
+  "why": "a tagline, real exhibitor name missing",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Register Now Pay Later",
+  "verdict": "not_a_company",
+  "why": "registration info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Relief Compass",
+  "verdict": "vendor",
+  "why": "reliefcompass.com: mass care case mgmt platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Rescue42",
+  "verdict": "supplier",
+  "why": "rescue stabilization equipment",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Risk and Resilience Hub",
+  "verdict": "unsure",
+  "why": "no website; could be resource site or tool",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Rologard",
+  "verdict": "supplier",
+  "why": "rologard.com: portable vehicle barrier hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Rule One Consulting LLC",
+  "verdict": "supplier",
+  "why": "consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Scholarship Events",
+  "verdict": "not_a_company",
+  "why": "conference events page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "SDR",
+  "verdict": "unsure",
+  "why": "bare acronym, no website",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Sikich",
+  "verdict": "supplier",
+  "why": "accounting/consulting firm",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Skymira",
+  "verdict": "vendor",
+  "why": "satellite IoT tracking/comms with platform",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "SOS Survival Products, Inc.",
+  "verdict": "supplier",
+  "why": "emergency survival supplies",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Speaker Listing",
+  "verdict": "not_a_company",
+  "why": "speaker list page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Special Events",
+  "verdict": "not_a_company",
+  "why": "conference events page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Student/New Emergency Manager",
+  "verdict": "not_a_company",
+  "why": "conference programme page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "SummitET",
+  "verdict": "supplier",
+  "why": "summitet.com: Summit Exercises and Training",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Sunday Federal Updates Series",
+  "verdict": "not_a_company",
+  "why": "conference programme page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Sunday Welcome Party",
+  "verdict": "not_a_company",
+  "why": "conference event page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "T-Mobile",
+  "verdict": "vendor",
+  "why": "wireless/T-Priority for public safety",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Technical Support",
+  "verdict": "not_a_company",
+  "why": "site navigation item",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Teleira",
+  "verdict": "vendor",
+  "why": "teleira.com: critical comms voice failover product",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Testimonials",
+  "verdict": "not_a_company",
+  "why": "conference info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Things to Do in Long Beach, CA",
+  "verdict": "not_a_company",
+  "why": "travel info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Tidal Basin Group",
+  "verdict": "supplier",
+  "why": "disaster recovery consulting",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Tulane University Disaster Resilience Leadership",
+  "verdict": "supplier",
+  "why": "university program",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Tyler Junior College",
+  "verdict": "supplier",
+  "why": "college",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "UAB",
+  "verdict": "supplier",
+  "why": "University of Alabama at Birmingham",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Unitas Solutions",
+  "verdict": "supplier",
+  "why": "unitas.solutions: IT managed services/hosting",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "University of Utah",
+  "verdict": "supplier",
+  "why": "university",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "US Flood Control",
+  "verdict": "supplier",
+  "why": "flood barrier hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Vertical Revenue LLC",
+  "verdict": "unsure",
+  "why": "no website; business unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "VidlSourcing LLC",
+  "verdict": "unsure",
+  "why": "no website; business unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Visa Letters",
+  "verdict": "not_a_company",
+  "why": "conference info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "WeatherFront",
+  "verdict": "vendor",
+  "why": "weatherfront.com: weather data app/SaaS",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Weatherville (BlueBird Weather)",
+  "verdict": "unsure",
+  "why": "weatherville.com returned no text",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Western Kentucky University",
+  "verdict": "supplier",
+  "why": "university",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Western Shelter",
+  "verdict": "supplier",
+  "why": "deployable shelter hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Wet Dog Weather, Inc.",
+  "verdict": "vendor",
+  "why": "weather data visualization software",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Wildfire Technology Integration",
+  "verdict": "unsure",
+  "why": "no website; product vs integrator unclear",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Work Off Your Registration Fee",
+  "verdict": "not_a_company",
+  "why": "volunteer info page",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "WOTA Corp.",
+  "verdict": "supplier",
+  "why": "portable water recycling hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "ZOLEO",
+  "verdict": "vendor",
+  "why": "satellite messenger device with app",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "zPods",
+  "verdict": "unsure",
+  "why": "zpods.com returned no text",
+  "by": "agent:reader",
+  "on": "2026-10-20"
+ },
+ {
+  "file": "exhibitors_IAEM_2026.json",
+  "name": "Zumro Air Shelters",
+  "verdict": "supplier",
+  "why": "inflatable shelter hardware",
+  "by": "agent:reader",
+  "on": "2026-10-20"
  }
 ]

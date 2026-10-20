@@ -3,15 +3,2119 @@
  "conference": "ACA Congress",
  "found": true,
  "source_url": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx",
- "source_note": "Rendered in a browser from https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx by scripts/render_floor.py (robots.txt asked at every hop). 12 name(s), 10 with a website the page linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 17% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only.",
+ "source_note": "Rendered in a browser from https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx by scripts/render_floor.py (robots.txt asked at every hop). 12 name(s), 10 with a website the page linked. Quality: menu (0% carry a corporate marker, 0% name a site section, 17% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only. Added 253 name(s) read in a browser from https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/EventMap.aspx?shMode=E by scripts/render_floor.py on 2026-10-20.",
  "exhibitors": [
+  {
+   "name": "1687 Foundation, The",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: a foundation (nonprofit), not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "a foundation (nonprofit), not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "4Sight Labs",
+   "website": null
+  },
+  {
+   "name": "908 Devices",
+   "website": null
+  },
+  {
+   "name": "AB Staffing Solutions",
+   "website": null
+  },
+  {
+   "name": "Acorn Engineering/AcornVac",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: stainless plumbing fixtures / vacuum plumbing hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "stainless plumbing fixtures / vacuum plumbing hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AHL- New Oʻahu Jail Project, Hawaii",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: architecture firm's jail-construction project booth",
+   "read": {
+    "verdict": "supplier",
+    "why": "architecture firm's jail-construction project booth",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AirSight",
+   "website": null
+  },
+  {
+   "name": "Allied Universal® Electronic Monitoring",
+   "website": null
+  },
+  {
+   "name": "Alpharus Health",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional healthcare provider (services)",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider (services)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Correctional Chaplains Association (ACCA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AMP Global Strategies",
+   "website": null
+  },
+  {
+   "name": "Anarchy Outdoors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: outdoor/tactical gear seller",
+   "read": {
+    "verdict": "supplier",
+    "why": "outdoor/tactical gear seller",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Aramark",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food service contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "food service contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Armor Health",
+   "website": null
+  },
+  {
+   "name": "Arms Unlimited, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law-enforcement weapons/equipment distributor",
+   "read": {
+    "verdict": "supplier",
+    "why": "law-enforcement weapons/equipment distributor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Arrow Chemical Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cleaning chemicals",
+   "read": {
+    "verdict": "supplier",
+    "why": "cleaning chemicals",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Astrophysics, Inc.",
+   "website": null
+  },
+  {
+   "name": "Atkore Security",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security mesh/barrier hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "security mesh/barrier hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AWEC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Association of Women Executives in Corrections",
+   "read": {
+    "verdict": "supplier",
+    "why": "Association of Women Executives in Corrections",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Axis Communications",
+   "website": null
+  },
+  {
+   "name": "Axon Enterprise, Inc.",
+   "website": null
+  },
+  {
+   "name": "Bicycle Health",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: telehealth opioid-treatment provider (care service)",
+   "read": {
+    "verdict": "supplier",
+    "why": "telehealth opioid-treatment provider (care service)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Black Creek Integrated Systems, Corp.",
+   "website": null
+  },
+  {
+   "name": "Bob Barker Company",
+   "website": null
+  },
+  {
+   "name": "Boswell Pharmacy Services, LLC",
+   "website": null
+  },
+  {
+   "name": "Braeburn",
+   "website": null
+  },
+  {
+   "name": "Brother International",
+   "website": null
+  },
+  {
+   "name": "Buford Satellite Systems, LP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: institutional satellite TV installation",
+   "read": {
+    "verdict": "supplier",
+    "why": "institutional satellite TV installation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CEIA USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: metal detector / screening hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "metal detector / screening hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Centurion Health",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional healthcare provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Chestnut Ridge Foam, Inc.",
+   "website": null
+  },
+  {
+   "name": "Clinical Solutions Pharmacy",
+   "website": null
+  },
+  {
+   "name": "CML Security",
+   "website": null
+  },
+  {
+   "name": "Cognisen",
+   "website": null
+  },
+  {
+   "name": "Combined Public Communications",
+   "website": null
+  },
+  {
+   "name": "Community Health and Wellbeing Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: name reads as health/wellbeing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "name reads as health/wellbeing services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Compliant Technologies",
+   "website": null
+  },
+  {
+   "name": "Compudopt",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit giving computers / digital literacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit giving computers / digital literacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Cook's Direct",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food service equipment and supplies",
+   "read": {
+    "verdict": "supplier",
+    "why": "food service equipment and supplies",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CORE DC, LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name gives no line of business, no site linked",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "CoreCivic of Tennessee, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: private prison operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "private prison operator",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CoreForce",
+   "website": null
+  },
+  {
+   "name": "Cornerstone Detention Products, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: detention equipment contractor/hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "detention equipment contractor/hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Correct Rx Pharmacy Services, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional pharmacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CorrecTek, Inc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: correctional electronic health record software",
+   "read": {
+    "verdict": "vendor",
+    "why": "correctional electronic health record software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Correctional Health Partners, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional healthcare services",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Correctional Healthcare Partners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional healthcare services",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Correctional Peace Officers Foundation, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit foundation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CorrectPac®",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional food packaging/trays",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional food packaging/trays",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CortechUSA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cortechusa.com: molded furniture for corrections",
+   "read": {
+    "verdict": "supplier",
+    "why": "cortechusa.com: molded furniture for corrections",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CPE Production",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name unclear; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Deep Heart - Entertainment that Drives Transformation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: entertainment/media programming, not software",
+   "read": {
+    "verdict": "supplier",
+    "why": "entertainment/media programming, not software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Diamond Pharmacy Services & Medical Supply",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharmacy and medical supply",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy and medical supply",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DigitalOptometrics",
+   "website": null
+  },
+  {
+   "name": "Direct Workforce Care LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: workforce/care staffing services",
+   "read": {
+    "verdict": "supplier",
+    "why": "workforce/care staffing services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DISH Business",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: satellite TV service",
+   "read": {
+    "verdict": "supplier",
+    "why": "satellite TV service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Drone Sky Defender",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: droneskydefender.com: drone detection with AI dashboards for prisons",
+   "read": {
+    "verdict": "vendor",
+    "why": "droneskydefender.com: drone detection with AI dashboards for prisons",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DroneShield",
+   "website": null
+  },
+  {
+   "name": "Drugloo International USA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: contraband-recovery toilet hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "contraband-recovery toilet hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ECC-IMPERIUM",
+   "website": null
+  },
+  {
+   "name": "Echodyne",
+   "website": null
+  },
+  {
+   "name": "Ecotensil",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disposable utensils",
+   "read": {
+    "verdict": "supplier",
+    "why": "disposable utensils",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Edovo Foundation",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: education software platform on jail tablets",
+   "read": {
+    "verdict": "vendor",
+    "why": "education software platform on jail tablets",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Electronics4All Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "likely inmate electronics retail; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Endur ID, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ID wristbands and badges",
+   "read": {
+    "verdict": "supplier",
+    "why": "ID wristbands and badges",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EPIC Metals",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: steel deck/ceiling building products",
+   "read": {
+    "verdict": "supplier",
+    "why": "steel deck/ceiling building products",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Everlast Epoxy Systems Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: epoxy flooring",
+   "read": {
+    "verdict": "supplier",
+    "why": "epoxy flooring",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Executive Information Services, Inc.",
+   "website": null
+  },
   {
    "name": "Exhibitor Service Center",
    "website": "http://s36.a2zinc.net/clients/ACA/acacongress2026/public/e_ExhibitorConsole.aspx?sortMenu=103007"
+  },
+  {
+   "name": "Falcon, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: falconinc.com: corrections consulting and management firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "falconinc.com: corrections consulting and management firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FBI/CJIS Division",
+   "website": null
+  },
+  {
+   "name": "First Call Pharmacy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharmacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "First Tactical",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: tactical apparel",
+   "read": {
+    "verdict": "supplier",
+    "why": "tactical apparel",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FirstNet, Built with AT&T",
+   "website": null
+  },
+  {
+   "name": "Flash AI",
+   "website": null
+  },
+  {
+   "name": "FR Conversions, LLC",
+   "website": null
+  },
+  {
+   "name": "FranklinCovey",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: training and consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "training and consulting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Freedom Behavioral Health",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: behavioral health services",
+   "read": {
+    "verdict": "supplier",
+    "why": "behavioral health services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Fusion Health",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "could be care provider or software; site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Genstar Clinical",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: genstarclinical.com: mobile gastroenterology care teams",
+   "read": {
+    "verdict": "supplier",
+    "why": "genstarclinical.com: mobile gastroenterology care teams",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "GEO Group, Inc., The",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: private prison operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "private prison operator",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Geographic Solutions",
+   "website": null
+  },
+  {
+   "name": "Geospace Technology",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: geospace.com: prison perimeter detection, remote water management",
+   "read": {
+    "verdict": "vendor",
+    "why": "geospace.com: prison perimeter detection, remote water management",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "GFT",
+   "website": null
+  },
+  {
+   "name": "Gilead Sciences",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical company",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Global Public Safety/ Jail Tracker",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: JailTracker jail management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "JailTracker jail management software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Guard1 by TimeKeeping Systems",
+   "website": null
+  },
+  {
+   "name": "GUARDIAN RFID",
+   "website": null
+  },
+  {
+   "name": "Hanwha Vision",
+   "website": null
+  },
+  {
+   "name": "Harding Instruments",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: detention intercom and control systems (connected platform)",
+   "read": {
+    "verdict": "vendor",
+    "why": "detention intercom and control systems (connected platform)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Health Plan Freedom",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name unclear; site refused (HTTP 523)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Home Builders Institute (HBI)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trades-training nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "trades-training nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "I-CON Systems",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "electronic plumbing controls; software side unconfirmed, site timed out",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Institutional Eye Care, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: eye care services",
+   "read": {
+    "verdict": "supplier",
+    "why": "eye care services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Intelligent Conservation Systems (ICS)",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "water conservation controls? site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "IQSIGHT",
+   "website": null
+  },
+  {
+   "name": "ISG",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare initials, no site linked",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "iTouch Biometric LLC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: biometric identification systems for inmates",
+   "read": {
+    "verdict": "vendor",
+    "why": "biometric identification systems for inmates",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Johnson Controls",
+   "website": null
+  },
+  {
+   "name": "Justice Systems by LONG",
+   "website": null
+  },
+  {
+   "name": "Kane Innovations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: detention furniture/fixtures",
+   "read": {
+    "verdict": "supplier",
+    "why": "detention furniture/fixtures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Keefe Group",
+   "website": null
+  },
+  {
+   "name": "Kenall Lighting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security lighting fixtures",
+   "read": {
+    "verdict": "supplier",
+    "why": "security lighting fixtures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Key Systems, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: keystorage.com: smart key cabinets plus GFMS cloud software",
+   "read": {
+    "verdict": "vendor",
+    "why": "keystorage.com: smart key cabinets plus GFMS cloud software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "KeyTrak",
+   "website": null
+  },
+  {
+   "name": "KTL",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "bare initials, no site linked",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Laundry Loops",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: laundry bags/loops",
+   "read": {
+    "verdict": "supplier",
+    "why": "laundry bags/loops",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Leo Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI inmate-call monitoring software (Verus)",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI inmate-call monitoring software (Verus)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "LexisNexis",
+   "website": null
+  },
+  {
+   "name": "Liberty Defense",
+   "website": null
+  },
+  {
+   "name": "LINEV Systems US, Inc.",
+   "website": null
+  },
+  {
+   "name": "Listening Is Key LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name gives no line of business",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Management & Training Corporation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: private prison operator",
+   "read": {
+    "verdict": "supplier",
+    "why": "private prison operator",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "MaxxContent",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: maxxcontent.com: learning management system for justice-involved students",
+   "read": {
+    "verdict": "vendor",
+    "why": "maxxcontent.com: learning management system for justice-involved students",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "McGrory Glass",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security glass/glazing",
+   "read": {
+    "verdict": "supplier",
+    "why": "security glass/glazing",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Med Health",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name, no site linked",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Medicalistics, LLC & Healthworks Analytics",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: medicalistics.com: healthcare software (eZmar, Healthworks Analytics) for corrections",
+   "read": {
+    "verdict": "vendor",
+    "why": "medicalistics.com: healthcare software (eZmar, Healthworks Analytics) for corrections",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Metcraft Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: stainless detention fixtures maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "stainless detention fixtures maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Metrasens",
+   "website": null
+  },
+  {
+   "name": "Millennium Access Control Technologies, Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "site did not answer; integrator or product unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Millennium Satellite and Video",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: satellite TV service for facilities",
+   "read": {
+    "verdict": "supplier",
+    "why": "satellite TV service for facilities",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "MinXray, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: portable X-ray equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "portable X-ray equipment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ModCorr, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: modular correctional buildings",
+   "read": {
+    "verdict": "supplier",
+    "why": "modular correctional buildings",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Morse Watchmans, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: KeyWatcher key control systems with software",
+   "read": {
+    "verdict": "vendor",
+    "why": "KeyWatcher key control systems with software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "MyWoundDoctor",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: wound care medical service",
+   "read": {
+    "verdict": "supplier",
+    "why": "wound care medical service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NA Vipassana Prison Trust",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: meditation nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "meditation nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Nadler Modular",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: modular buildings",
+   "read": {
+    "verdict": "supplier",
+    "why": "modular buildings",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NaphCare for Healthcare & TechCare for Technology",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: TechCare correctional EHR software",
+   "read": {
+    "verdict": "vendor",
+    "why": "TechCare correctional EHR software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Alliance of Faith and Justice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Correctional Industries Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Public Safety Innovation Academy",
+   "website": null
+  },
+  {
+   "name": "NCIC Correctional Services",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: inmate calling/communications technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "inmate calling/communications technology",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Netsmart",
+   "website": null
+  },
+  {
+   "name": "New Flyer and MCI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: bus/coach manufacturers",
+   "read": {
+    "verdict": "supplier",
+    "why": "bus/coach manufacturers",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "New Profile",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear; guessed site did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "NMS Labs",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: forensic toxicology lab services",
+   "read": {
+    "verdict": "supplier",
+    "why": "forensic toxicology lab services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Norix Group, Inc.",
+   "website": null
+  },
+  {
+   "name": "NoteActive",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: noteactive.com: digital logbook platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "noteactive.com: digital logbook platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Numi Financial",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: numifinancial.com: prepaid release-card disbursement (Stored Value Cards Inc.), a financial service",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: numifinancial.com: prepaid release-card disbursement (Stored Value Cards Inc.), a financial service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Oasis Commissary Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: commissary services",
+   "read": {
+    "verdict": "supplier",
+    "why": "commissary services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Octave",
+   "website": null
+  },
+  {
+   "name": "OD Security North America, LLC",
+   "website": null
+  },
+  {
+   "name": "Ohio Penal Industries & Indiana Correctional Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state prison industries agencies",
+   "read": {
+    "verdict": "supplier",
+    "why": "state prison industries agencies",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Optamo",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "optamo.com shows only a maintenance page",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Orijin PBC",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: orijin.works: correctional education and workforce platform",
+   "read": {
+    "verdict": "vendor",
+    "why": "orijin.works: correctional education and workforce platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Outdoor-Fit Exercise Systems",
+   "website": null
+  },
+  {
+   "name": "Peach Safety",
+   "website": null
+  },
+  {
+   "name": "Penlink",
+   "website": null
+  },
+  {
+   "name": "Peregrine",
+   "website": null
+  },
+  {
+   "name": "Persevere",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit coding/reentry programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit coding/reentry programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pine Health",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "pinehealth.com returned no text",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Pitney Bowes",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: mailing systems with SendPro software",
+   "read": {
+    "verdict": "vendor",
+    "why": "mailing systems with SendPro software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PJ Dick",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: construction contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "construction contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PowerDMS by NEO GOV",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: policy management SaaS (NEOGOV)",
+   "read": {
+    "verdict": "vendor",
+    "why": "policy management SaaS (NEOGOV)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PPSS Group",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: slash/stab-resistant clothing",
+   "read": {
+    "verdict": "supplier",
+    "why": "slash/stab-resistant clothing",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PrimeCare Medical",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: correctional healthcare provider",
+   "read": {
+    "verdict": "supplier",
+    "why": "correctional healthcare provider",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "R1 Learning",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: r1learning.com: curriculum, group kits and trainer training; app is a side item",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: r1learning.com: curriculum, group kits and trainer training; app is a side item",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "RaySecur, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: skeptic: raysecur.com: MailSecur desktop T-ray scanner hardware plus expert support, no software platform",
+   "read": {
+    "verdict": "supplier",
+    "why": "skeptic: raysecur.com: MailSecur desktop T-ray scanner hardware plus expert support, no software platform",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Real Time Detention, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: realtimedetention.com: detention design rep for hardware brands",
+   "read": {
+    "verdict": "supplier",
+    "why": "realtimedetention.com: detention design rep for hardware brands",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Reconnect, Inc",
+   "website": null
+  },
+  {
+   "name": "Rendevor Dialysis",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: dialysis medical services",
+   "read": {
+    "verdict": "supplier",
+    "why": "dialysis medical services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Renegade Brands",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Roads2Work, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: reentry workforce programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "reentry workforce programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rohde & Schwarz USA, Inc.",
+   "website": null
+  },
+  {
+   "name": "RoofConnect",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: roofing contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "roofing contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Saadian Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: saadian.com: PINS jail intelligence software",
+   "read": {
+    "verdict": "vendor",
+    "why": "saadian.com: PINS jail intelligence software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Safeware, Inc.",
+   "website": null
+  },
+  {
+   "name": "Sam Houston State University- College of Criminal Justice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Sapphire Health",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "sapphirehealth.ca is Canadian health records; match unconfirmed",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "SCRAM Systems",
+   "website": null
+  },
+  {
+   "name": "SDF Inc.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Secure Technology Value Solutions",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Securitas Technology",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: electronic security systems and monitoring platforms",
+   "read": {
+    "verdict": "vendor",
+    "why": "electronic security systems and monitoring platforms",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Securus Technologies",
+   "website": null
+  },
+  {
+   "name": "Shat-R-Shield Lighting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: shatter-resistant lighting",
+   "read": {
+    "verdict": "supplier",
+    "why": "shatter-resistant lighting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ShawnTech Communications",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: inmate communications technology",
+   "read": {
+    "verdict": "vendor",
+    "why": "inmate communications technology",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Sherwood Windows Limited",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security windows",
+   "read": {
+    "verdict": "supplier",
+    "why": "security windows",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Skydio",
+   "website": null
+  },
+  {
+   "name": "Sloan Valve Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: plumbing fixtures",
+   "read": {
+    "verdict": "supplier",
+    "why": "plumbing fixtures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Smart Communications",
+   "website": null
+  },
+  {
+   "name": "SnapCab",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: elevator interiors / pods",
+   "read": {
+    "verdict": "supplier",
+    "why": "elevator interiors / pods",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "SOC, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: security services contractor",
+   "read": {
+    "verdict": "supplier",
+    "why": "security services contractor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Solid Security LLC",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Sound Matrix Corp.",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Spartan Chemical Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: cleaning chemicals",
+   "read": {
+    "verdict": "supplier",
+    "why": "cleaning chemicals",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Spin-Guard LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: anti-climb barriers",
+   "read": {
+    "verdict": "supplier",
+    "why": "anti-climb barriers",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Steinbach & Vollmann GmbH",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: German lock manufacturer",
+   "read": {
+    "verdict": "supplier",
+    "why": "German lock manufacturer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Stokes Robotics",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "stokesrobotics.com shows only WordPress errors",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Strategic Communications",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "generic name; possibly an IT reseller",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Summit Correctional Services",
+   "website": null
+  },
+  {
+   "name": "Tactical Source LLC",
+   "website": null
+  },
+  {
+   "name": "Tanner",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "single word, company unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "TBN 2nd Chance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: broadcaster's prison ministry",
+   "read": {
+    "verdict": "supplier",
+    "why": "broadcaster's prison ministry",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "TCP Software",
+   "website": null
+  },
+  {
+   "name": "Tecore Networks",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: contraband phone managed-access systems",
+   "read": {
+    "verdict": "vendor",
+    "why": "contraband phone managed-access systems",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tek84, Inc.",
+   "website": null
+  },
+  {
+   "name": "TESCO Specialty Vehicles",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: specialty vehicles",
+   "read": {
+    "verdict": "supplier",
+    "why": "specialty vehicles",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tidal Wave Telecom",
+   "website": null
+  },
+  {
+   "name": "Timeguard Solutions",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: timeguardsolutions.com: ShiftWatch scheduling software for public safety",
+   "read": {
+    "verdict": "vendor",
+    "why": "timeguardsolutions.com: ShiftWatch scheduling software for public safety",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tindall Corp",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: precast concrete",
+   "read": {
+    "verdict": "supplier",
+    "why": "precast concrete",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "TLC - The Library Corporation",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: library automation software",
+   "read": {
+    "verdict": "vendor",
+    "why": "library automation software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Touch2Play",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: touch2play.com: interactive game tables for many markets",
+   "read": {
+    "verdict": "supplier",
+    "why": "touch2play.com: interactive game tables for many markets",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "TriActive USA Fitness Equipment",
+   "website": null
+  },
+  {
+   "name": "TridentCare",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: mobile diagnostic imaging services",
+   "read": {
+    "verdict": "supplier",
+    "why": "mobile diagnostic imaging services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Trinity Services Group",
+   "website": null
+  },
+  {
+   "name": "Tyler Technologies",
+   "website": null
+  },
+  {
+   "name": "TYRO Support Services",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: reentry/fatherhood programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "reentry/fatherhood programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UCS, Inc",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "name alone unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "UKG",
+   "website": null
+  },
+  {
+   "name": "UNICOR",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Federal Prison Industries agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "Federal Prison Industries agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Union Supply",
+   "website": null
+  },
+  {
+   "name": "University of Tx Medical Branch - Correctional Mngd. Care",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university health system",
+   "read": {
+    "verdict": "supplier",
+    "why": "university health system",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Vant4ge",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: case management software",
+   "read": {
+    "verdict": "vendor",
+    "why": "case management software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "VIA SCIENCE",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AI/data analytics software company",
+   "read": {
+    "verdict": "vendor",
+    "why": "AI/data analytics software company",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ViaPath Technologies",
+   "website": null
+  },
+  {
+   "name": "Viken Detection",
+   "website": null
+  },
+  {
+   "name": "VirTra",
+   "website": null
+  },
+  {
+   "name": "VISTAR Corrections",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: food distribution",
+   "read": {
+    "verdict": "supplier",
+    "why": "food distribution",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "VitalCore Health Strategies, LLC",
+   "website": null
+  },
+  {
+   "name": "VMI Systems Corp",
+   "website": null
+  },
+  {
+   "name": "Walkenhorst's",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: inmate care packages",
+   "read": {
+    "verdict": "supplier",
+    "why": "inmate care packages",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Webster's Fitness Products, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: fitness equipment",
+   "read": {
+    "verdict": "supplier",
+    "why": "fitness equipment",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Wellpath",
+   "website": null
+  },
+  {
+   "name": "West Pond Enterprises",
+   "website": null
+  },
+  {
+   "name": "Wexford Health Sources, Inc.",
+   "website": null
+  },
+  {
+   "name": "Whalls Group",
+   "website": null
+  },
+  {
+   "name": "Willo Products Company",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: detention plumbing fixtures",
+   "read": {
+    "verdict": "supplier",
+    "why": "detention plumbing fixtures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Willoughby Industries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: stainless detention plumbing fixtures, hardware",
+   "read": {
+    "verdict": "supplier",
+    "why": "stainless detention plumbing fixtures, hardware",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "WMH/Correctional News",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: corrections trade publication / media",
+   "read": {
+    "verdict": "supplier",
+    "why": "corrections trade publication / media",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Workbay",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website; workbay.com is warehouse rentals, may not be this exhibitor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Zenova",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "no website given; zenova.com answers 404",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "ZP Connect",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "zpconnect.com: video relay and interpreting for deaf users; service vs product unclear",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
   }
  ],
  "why": null,
  "quality": "read",
- "read_dropped": 11,
+ "read_dropped": 33,
  "quality_was": "menu"
 }

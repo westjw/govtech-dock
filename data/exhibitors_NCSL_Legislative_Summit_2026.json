@@ -1,10 +1,2954 @@
 {
  "event_tag": "NCSL Legislative Summit 2026",
  "conference": "NCSL Legislative Summit",
- "found": false,
- "source_url": "https://www.ncsl.org/summit/learning-hub",
- "source_note": "Read from https://www.ncsl.org/summit/learning-hub by scripts/sweep_exhibitors.py. 23 name(s), 8 with a website the page itself linked. Quality: menu (0% carry a corporate marker, 4% name a site section, 13% use the words a site names itself with - this reads as the association's own navigation rather than a floor). Names only - nothing here decides whether a company is govtech, and no website was inferred where the page did not give one.",
- "exhibitors": [],
- "why": "reader: every one of the 23 names was the site's own text, not an exhibitor; this page is not a floor",
- "read_dropped": 23
+ "found": true,
+ "source_url": "https://ncsl.expocad.com/ncsl26/directory",
+ "source_note": "Rendered in a browser from https://ncsl.expocad.com/ncsl26/directory by scripts/render_floor.py (robots.txt asked at every hop). 273 name(s), 1 with a website the page linked. Quality: good (16% carry a corporate marker, 0% name a site section, 3% use the words a site names itself with). Names only.",
+ "exhibitors": [
+  {
+   "name": "100% Democracy: An Initiative for Universal Voting",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: voting-advocacy initiative, not a tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "voting-advocacy initiative, not a tech product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "617MediaGroup",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: advertising, direct mail, government affairs agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: advertising, direct mail, government affairs agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "A2LA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lab accreditation association",
+   "read": {
+    "verdict": "supplier",
+    "why": "lab accreditation association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AAA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: motor club association",
+   "read": {
+    "verdict": "supplier",
+    "why": "motor club association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "AARP",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: membership advocacy association",
+   "read": {
+    "verdict": "supplier",
+    "why": "membership advocacy association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Academy of General Dentistry",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Academy of Nutrition and Dietetics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Accessibility Policy Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: policy institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "policy institute",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ACET",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: likely ACET Inc. (acetinc.com), evaluation consulting",
+   "read": {
+    "verdict": "supplier",
+    "why": "likely ACET Inc. (acetinc.com), evaluation consulting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ACLU of Illinois",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil liberties nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil liberties nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Advanced Energy United",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: clean energy trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "clean energy trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Advocacy Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy training/consulting firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy training/consulting firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Amazon",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: AWS sells cloud to state and local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "AWS sells cloud to state and local government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "America's Blood Centers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: blood center association",
+   "read": {
+    "verdict": "supplier",
+    "why": "blood center association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "America's Credit Unions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: credit union trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "credit union trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Academy of Anesthesiologist Assistants",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Academy of Pediatric Dentistry",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Academy of Physician Associates (AAPA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Apparel & Footwear Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Assoc of Motor Vehicle Administrators",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AAMVA, association of DMV administrators",
+   "read": {
+    "verdict": "supplier",
+    "why": "AAMVA, association of DMV administrators",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Association for Nude Recreation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: recreation association",
+   "read": {
+    "verdict": "supplier",
+    "why": "recreation association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Association of Birth Centers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: healthcare association",
+   "read": {
+    "verdict": "supplier",
+    "why": "healthcare association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Association Of Nurse Anesthesiology",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Association of Nurse Practitioners",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Association of People with Disabilities",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: disability advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "disability advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Camp Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: camp industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "camp industry association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Cancer Society Cancer Action Network",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Coatings Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Council of Trustees and Alumni",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: higher-ed advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "higher-ed advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Craft Spirits Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Diabetes Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Foundation for Suicide Prevention",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Geosciences Consortium",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: geoscience association",
+   "read": {
+    "verdict": "supplier",
+    "why": "geoscience association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Institutes for Research",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: research and evaluation nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "research and evaluation nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Kennel Club, Inc.",
+   "website": null
+  },
+  {
+   "name": "American Kidney Fund",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Kratom Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry advocacy association",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry advocacy association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Legislative Exchange Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ALEC, legislator membership association",
+   "read": {
+    "verdict": "supplier",
+    "why": "ALEC, legislator membership association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Massage Therapy Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Medical Society for Sports Medicine",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Motorcyclist Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rider association",
+   "read": {
+    "verdict": "supplier",
+    "why": "rider association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Nurses Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Physical Therapy Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Society of Civil Engineers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Society of Landscape Architects",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "American Speech-Language-Hearing Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Americans for Prosperity",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: political advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "political advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Americans United for Separation of Church & State",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Amtrak",
+   "website": null
+  },
+  {
+   "name": "Animal Legal Defense Fund",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legal advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "legal advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Assoc. of State & Territorial Dental Directors",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public health association",
+   "read": {
+    "verdict": "supplier",
+    "why": "public health association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Asthma and Allergy Foundation of America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Axon",
+   "website": null
+  },
+  {
+   "name": "BARR Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: school improvement model nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "school improvement model nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Beer Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: brewing trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "brewing trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Bloomberg American Health Initiative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Johns Hopkins university public health initiative",
+   "read": {
+    "verdict": "supplier",
+    "why": "Johns Hopkins university public health initiative",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Bloomberg Government",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "policy news/data subscription; buyers mostly gov-affairs teams, not clearly SLG",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Brady",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: gun violence prevention nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "gun violence prevention nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Brennan Center for Justice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law and policy institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "law and policy institute",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Brewers Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: brewing trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "brewing trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "BrownWinick Law Firm",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Campaign Deputy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: political campaign staffing/job platform, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "political campaign staffing/job platform, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Campaign for the Fair Sentencing of Youth",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: justice advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "justice advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Campaign Legal Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legal advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "legal advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Center for Climate Integrity",
+   "website": null
+  },
+  {
+   "name": "Center for Democracy and Technology",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: tech policy nonprofit, no product",
+   "read": {
+    "verdict": "supplier",
+    "why": "tech policy nonprofit, no product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Center for Effective Lawmaking",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university research center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university research center",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Certification Board for Music Therapists",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: credentialing board",
+   "read": {
+    "verdict": "supplier",
+    "why": "credentialing board",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Changent",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: changent.org: Nurse-Family Partnership nonprofit, renamed",
+   "read": {
+    "verdict": "supplier",
+    "why": "changent.org: Nurse-Family Partnership nonprofit, renamed",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Chick-fil-A",
+   "website": null
+  },
+  {
+   "name": "Cicero Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: policy think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "policy think tank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "City Colleges of Chicago",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: community college system",
+   "read": {
+    "verdict": "supplier",
+    "why": "community college system",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CiviClick",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: site: advocacy software sold to agencies/nonprofits/companies, not governments",
+   "read": {
+    "verdict": "supplier",
+    "why": "site: advocacy software sold to agencies/nonprofits/companies, not governments",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Coffee Charging Lounge -- Recycled Materials",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lounge sponsor label; Recycled Materials Association, trade group",
+   "read": {
+    "verdict": "supplier",
+    "why": "lounge sponsor label; Recycled Materials Association, trade group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Coffee Charging Lounge -- Sony",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lounge sponsor label; Sony, electronics/entertainment policy presence",
+   "read": {
+    "verdict": "supplier",
+    "why": "lounge sponsor label; Sony, electronics/entertainment policy presence",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Coffee Charging Lounge -- State Affairs",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "lounge sponsor label; State Affairs policy-intel SaaS for gov-affairs teams",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Coffee Charging Lounge -- TikTok",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lounge sponsor label; TikTok, consumer app, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "lounge sponsor label; TikTok, consumer app, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Coffee Charging Lounge--American Heart Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lounge sponsor label; American Heart Association nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "lounge sponsor label; American Heart Association nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CoinFlip",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer crypto ATM operator, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer crypto ATM operator, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Commercial Vehicle Safety Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: enforcement/industry safety association",
+   "read": {
+    "verdict": "supplier",
+    "why": "enforcement/industry safety association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Community Associations Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: HOA industry association",
+   "read": {
+    "verdict": "supplier",
+    "why": "HOA industry association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Compassion & Choices",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: end-of-life advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "end-of-life advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Consumer Reports",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "COPD Action Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Cosmetology & Esthetics Compacts",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: interstate licensure compact, not a tech vendor",
+   "read": {
+    "verdict": "supplier",
+    "why": "interstate licensure compact, not a tech vendor",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Council on Foreign Relations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "think tank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "CVS Health",
+   "website": null
+  },
+  {
+   "name": "Damage Prevention Action Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: excavation-safety advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "excavation-safety advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Data & Society",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit research institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit research institute",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Decriminalize Sex Work",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DeleteMe",
+   "website": null
+  },
+  {
+   "name": "Dell Technologies",
+   "website": null
+  },
+  {
+   "name": "Democrats for the Electoral College",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dental Assisting National Board, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: certification board",
+   "read": {
+    "verdict": "supplier",
+    "why": "certification board",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Design-Build Institute of America",
+   "website": null
+  },
+  {
+   "name": "Diageo",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: spirits/beverage maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "spirits/beverage maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dialysis Patient Citizens",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Distilled Spirits Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DNA Justice Project",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Document Security Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry association for secure ID documents",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry association for secure ID documents",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Dominion Energy, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electric/gas utility",
+   "read": {
+    "verdict": "supplier",
+    "why": "electric/gas utility",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "DONA International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: doula professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "doula professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EdChoice",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: school-choice advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "school-choice advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Eleanor Joseph & Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consulting/associates firm, no tech product",
+   "read": {
+    "verdict": "supplier",
+    "why": "consulting/associates firm, no tech product",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EMS Advocates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Epilepsy Foundation of America",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Esri (Environmental Systems Research Institute, In",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: GIS software sold to state/local government",
+   "read": {
+    "verdict": "vendor",
+    "why": "GIS software sold to state/local government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "European Union",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: government body exhibiting",
+   "read": {
+    "verdict": "supplier",
+    "why": "government body exhibiting",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "EveryLife Foundation for Rare Diseases",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Everytown for Gun Safety Action Fund",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "ExcelinEd",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: education policy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "education policy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FairVote",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: electoral reform advocacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "electoral reform advocacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FanDuel",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer sports betting, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer sports betting, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FastDemocracy",
+   "website": null
+  },
+  {
+   "name": "Federal Communications Commission (FCC)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FFRF Action Fund",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy organisation",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy organisation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FiscalNote",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: policy/legislative tracking SaaS with government customers",
+   "read": {
+    "verdict": "vendor",
+    "why": "policy/legislative tracking SaaS with government customers",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Flexible Packaging Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "FOCUS, a Leonine business",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public affairs/lobbying firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public affairs/lobbying firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Food Ingredient Safety Coalition (FISC)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Foundation for Advancing Alcohol Responsibility",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry-funded nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry-funded nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Foundation For Individual Rights & Expression",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civil liberties nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "civil liberties nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Future Caucus",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonpartisan legislator network nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonpartisan legislator network nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Future of Privacy Forum",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: privacy think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "privacy think tank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Georgetown Public Affairs, LLC",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public affairs/lobbying firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public affairs/lobbying firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Global Medical Response",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: ambulance/medical transport services",
+   "read": {
+    "verdict": "supplier",
+    "why": "ambulance/medical transport services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Google",
+   "website": null
+  },
+  {
+   "name": "GoRail",
+   "website": null
+  },
+  {
+   "name": "Harvard Kennedy School",
+   "website": null
+  },
+  {
+   "name": "Harvard Kennedy School Executive Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university programme",
+   "read": {
+    "verdict": "supplier",
+    "why": "university programme",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Healthcare Regulatory Research Institute (HRRI)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: research institute",
+   "read": {
+    "verdict": "supplier",
+    "why": "research institute",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Human Rights for Kids",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Humana",
+   "website": null
+  },
+  {
+   "name": "Humane World for Animals",
+   "website": null
+  },
+  {
+   "name": "iCivics",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civics education nonprofit, free resources",
+   "read": {
+    "verdict": "supplier",
+    "why": "civics education nonprofit, free resources",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "IHA & The Alliance of State Hospital Associations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: hospital associations",
+   "read": {
+    "verdict": "supplier",
+    "why": "hospital associations",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "IMpact: Interstate Massage Compact",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: interstate licensure compact",
+   "read": {
+    "verdict": "supplier",
+    "why": "interstate licensure compact",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "INDA, the Association of the Nonwoven Fabrics Indu",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Institute for Justice",
+   "website": null
+  },
+  {
+   "name": "Interstate Medical Licensure Compact Commission",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: interstate compact commission",
+   "read": {
+    "verdict": "supplier",
+    "why": "interstate compact commission",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Intl Assoc of Plumbing & Mechanical Officials",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: codes association (IAPMO)",
+   "read": {
+    "verdict": "supplier",
+    "why": "codes association (IAPMO)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "IRC & SLIQ",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "acronyms unclear, no website given",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "James Hardie Building Products",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: building materials maker",
+   "read": {
+    "verdict": "supplier",
+    "why": "building materials maker",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Johns Hopkins Center for Gun Violence Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university research center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university research center",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Justice AV Solutions (JAVS)",
+   "website": null
+  },
+  {
+   "name": "Kids Code Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Learning Ally",
+   "website": null
+  },
+  {
+   "name": "Legible AI",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "likely AI startup; guessed sites unreadable",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Leidos",
+   "website": null
+  },
+  {
+   "name": "LexisNexis State Net",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: legislative tracking software/data service",
+   "read": {
+    "verdict": "vendor",
+    "why": "legislative tracking software/data service",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Lilly",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharmaceutical company",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharmaceutical company",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Maximus",
+   "website": null
+  },
+  {
+   "name": "McDonald's",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: restaurant chain",
+   "read": {
+    "verdict": "supplier",
+    "why": "restaurant chain",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "McKesson",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: pharma/medical distribution",
+   "read": {
+    "verdict": "supplier",
+    "why": "pharma/medical distribution",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Medicaid Health Plans of America, Inc",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Mercatus Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university-based think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "university-based think tank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Meta",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer social media, exhibiting for policy",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer social media, exhibiting for policy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Metrc",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: cannabis seed-to-sale tracking software for state regulators",
+   "read": {
+    "verdict": "vendor",
+    "why": "cannabis seed-to-sale tracking software for state regulators",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Milbank Memorial Fund",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health policy foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "health policy foundation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Motorola Solutions",
+   "website": null
+  },
+  {
+   "name": "MultiState",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state government relations firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government relations firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NAMI",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: mental health advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "mental health advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "NASA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: federal agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "federal agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Anti-Vivisection Society",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Assoc of State Procurement Officials",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: association (NASPO)",
+   "read": {
+    "verdict": "supplier",
+    "why": "association (NASPO)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Assoc. of Certified Professional Midwives",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Association of Community Health Centers",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: association",
+   "read": {
+    "verdict": "supplier",
+    "why": "association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Association of Counsel for Children",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Athletic Trainers' Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Automatic Merchandising Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: vending trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "vending trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Beer Wholesalers Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Blood Clot Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Caucus of Environmental Legislators",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legislator network nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "legislator network nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Center for Interstate Compacts",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: CSG compact resource center",
+   "read": {
+    "verdict": "supplier",
+    "why": "CSG compact resource center",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Center on Sexual Exploitation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Federalism Initiative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: policy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "policy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Foundation for Women Legislators",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legislator association",
+   "read": {
+    "verdict": "supplier",
+    "why": "legislator association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Health Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health advocacy association",
+   "read": {
+    "verdict": "supplier",
+    "why": "health advocacy association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Inventors Hall of Fame",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit, education programs",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit, education programs",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Life Without Parole Leadership Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Marrow Donor Program",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Oncology State Network",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy network",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy network",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Organization for Rare Disorders",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Partnership for Dental Therapy",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Popular Vote",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Propane Gas Association",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Right to Life Committee",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Shooting Sports Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: firearms trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "firearms trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Waste & Recycling Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: industry foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "industry foundation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "National Women's Law Center",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legal advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "legal advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Natl Native American Boarding School Healing Coa",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy coalition (name truncated)",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy coalition (name truncated)",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Nava",
+   "website": null
+  },
+  {
+   "name": "NCQA",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health-care accreditation nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health-care accreditation nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Neuroimmune Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "health foundation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "North American Transit Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: association of transit contractors",
+   "read": {
+    "verdict": "supplier",
+    "why": "association of transit contractors",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Nuclear Energy Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Nurse Licensure Compact",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: interstate licensing compact body",
+   "read": {
+    "verdict": "supplier",
+    "why": "interstate licensing compact body",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "OneGov",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "ambiguous name; onegov.com page was blank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Open Primaries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: election-reform advocacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "election-reform advocacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Orion Strategies",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: PR/government affairs consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "PR/government affairs consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Pacific Legal Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: public-interest law firm",
+   "read": {
+    "verdict": "supplier",
+    "why": "public-interest law firm",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "PadSplit",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: housing marketplace for renters, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "housing marketplace for renters, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Performa Software USA",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "site is a lorem-ipsum template; product unknown",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Physicians Advocating for Patients",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Plumbing Manufacturers International",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Plural, an SAI360 Company",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Plural policy/legislative tracking software",
+   "read": {
+    "verdict": "vendor",
+    "why": "Plural policy/legislative tracking software",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "POPVOX Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: civic nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "civic nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Powerlines",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: utility-policy advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "utility-policy advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Prevent Opioid Abuse",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy campaign",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy campaign",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Propylon Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: legislative drafting/enactment software for legislatures",
+   "read": {
+    "verdict": "vendor",
+    "why": "legislative drafting/enactment software for legislatures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Psychology Interjurisdictional Compact (PSYPACT)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: interstate licensing compact body",
+   "read": {
+    "verdict": "supplier",
+    "why": "interstate licensing compact body",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Public Leadership Institute",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: policy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "policy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Public Revenue Education Council",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: tax-policy education group",
+   "read": {
+    "verdict": "supplier",
+    "why": "tax-policy education group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Quorum Analytics, Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: legislative tracking/public affairs SaaS",
+   "read": {
+    "verdict": "vendor",
+    "why": "legislative tracking/public affairs SaaS",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "RAINN",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: anti-sexual-violence nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "anti-sexual-violence nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rape Kit Reform",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy campaign",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy campaign",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rare Access Action Project",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: patient advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "patient advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rebuild Local News",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: journalism-policy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "journalism-policy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Recycled Materials Association (ReMA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "RepresentWomen",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Responsive Gov Action (RGA)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Retail Energy Advancement League",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: trade association",
+   "read": {
+    "verdict": "supplier",
+    "why": "trade association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Rethink Learning, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: rethinklearning.com: education research nonprofit, takes donations",
+   "read": {
+    "verdict": "supplier",
+    "why": "rethinklearning.com: education research nonprofit, takes donations",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Right to Know",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy campaign",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy campaign",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Ross Video Inc.",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: broadcast production systems/software used by legislatures",
+   "read": {
+    "verdict": "vendor",
+    "why": "broadcast production systems/software used by legislatures",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "SAFE Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Samaritan Ministries",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health-care sharing ministry",
+   "read": {
+    "verdict": "supplier",
+    "why": "health-care sharing ministry",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Save Our States",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: Electoral College advocacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "Electoral College advocacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "SchoolAI",
+   "website": null
+  },
+  {
+   "name": "Secure Families Initiative",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: military-family advocacy",
+   "read": {
+    "verdict": "supplier",
+    "why": "military-family advocacy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Skydio",
+   "website": null
+  },
+  {
+   "name": "Social Current",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: social-sector nonprofit network",
+   "read": {
+    "verdict": "supplier",
+    "why": "social-sector nonprofit network",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Society of Trauma Nurses",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State and Federal Communications, Inc.",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: lobbying/campaign-finance compliance research service for companies",
+   "read": {
+    "verdict": "supplier",
+    "why": "lobbying/campaign-finance compliance research service for companies",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State Innovation Exchange (SiX)",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: legislator-network nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "legislator-network nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State of Illinois Executive Ethics Commission",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state agency",
+   "read": {
+    "verdict": "supplier",
+    "why": "state agency",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State S&T Policy Fellowship",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: science policy fellowship program",
+   "read": {
+    "verdict": "supplier",
+    "why": "science policy fellowship program",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "State Zebra Network",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: statezebranetwork.org: rare-disease state coalition alliance",
+   "read": {
+    "verdict": "supplier",
+    "why": "statezebranetwork.org: rare-disease state coalition alliance",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "States Newsroom",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: nonprofit news network",
+   "read": {
+    "verdict": "supplier",
+    "why": "nonprofit news network",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Stateside Associates",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: state government relations consultancy",
+   "read": {
+    "verdict": "supplier",
+    "why": "state government relations consultancy",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "StatsUSA",
+   "website": null
+  },
+  {
+   "name": "SteerSafe Partnership",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: safety advocacy partnership",
+   "read": {
+    "verdict": "supplier",
+    "why": "safety advocacy partnership",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Stride Learning",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: Stride/K12 online learning platforms sold to schools/districts",
+   "read": {
+    "verdict": "vendor",
+    "why": "Stride/K12 online learning platforms sold to schools/districts",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Tax Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: think tank",
+   "read": {
+    "verdict": "supplier",
+    "why": "think tank",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "TechCongress",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: tech fellowship program",
+   "read": {
+    "verdict": "supplier",
+    "why": "tech fellowship program",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Texas Association for Bilingual Education",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "TikTok",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer social platform, policy booth, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer social platform, policy booth, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Transparency Coalition",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: AI-policy advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "AI-policy advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "U.S. Census Bureau",
+   "website": null
+  },
+  {
+   "name": "U.S. Term Limits",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy group",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy group",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UC Berkeley Center for Long-Term Cybersecurity",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university research center",
+   "read": {
+    "verdict": "supplier",
+    "why": "university research center",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "UL Solutions",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: testing, inspection, certification services",
+   "read": {
+    "verdict": "supplier",
+    "why": "testing, inspection, certification services",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Unchained At Last",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "United to Stop Online Scams",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: advocacy coalition",
+   "read": {
+    "verdict": "supplier",
+    "why": "advocacy coalition",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "USLege",
+   "website": null,
+   "read": {
+    "verdict": "unsure",
+    "why": "unknown product; uslege.com did not answer",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   },
+   "is_govtech": null
+  },
+  {
+   "name": "Vaccinate Your Family",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: health advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "health advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "VanishID",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: vanishid.com: identity-security SaaS with Public Sector Protection",
+   "read": {
+    "verdict": "vendor",
+    "why": "vanishid.com: identity-security SaaS with Public Sector Protection",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Vivint",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: consumer smart-home security, not sold to government",
+   "read": {
+    "verdict": "supplier",
+    "why": "consumer smart-home security, not sold to government",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Vote Mama Foundation",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: political advocacy foundation",
+   "read": {
+    "verdict": "supplier",
+    "why": "political advocacy foundation",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Vulcan Technologies",
+   "website": null,
+   "is_govtech": true,
+   "is_govtech_why": "reader: vulcan.ai: AI agents for government, deployed in states",
+   "read": {
+    "verdict": "vendor",
+    "why": "vulcan.ai: AI agents for government, deployed in states",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Western Governors University",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: university",
+   "read": {
+    "verdict": "supplier",
+    "why": "university",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Women in Government Relations",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: professional association",
+   "read": {
+    "verdict": "supplier",
+    "why": "professional association",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  },
+  {
+   "name": "Young People's Alliance",
+   "website": null,
+   "is_govtech": false,
+   "is_govtech_why": "reader: youth advocacy nonprofit",
+   "read": {
+    "verdict": "supplier",
+    "why": "youth advocacy nonprofit",
+    "by": "agent:reader",
+    "on": "2026-10-20"
+   }
+  }
+ ],
+ "why": null,
+ "quality": "read",
+ "read_dropped": 10,
+ "quality_was": "good"
 }
