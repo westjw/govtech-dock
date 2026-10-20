@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "How Flock License Plate Reader Cameras Work: What They Capture, What They Don\u2019t, and the Guardrails Around Their Use",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/how-flock-license-plate-reader-cameras-work-what-they-capture-what-they-dont-and-the-guardrails-around-their-use"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-07",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Flock Security Testing 2026: What the Bishop Fox Penetration Test Found \u2014 Critical and High Findings Fixed and Independently Verified",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/independent-grand-jury-report-highlights-flocks-commitment-to-responsible-alpr-technology-through-product-design-and-safeguards"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Flock LPR vs. Fixed Video: Same Camera Body, Two Different Jobs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/flock-lpr-vs-fixed-video-same-camera-body-two-different-jobs"
   }
  ],
  "profile": {

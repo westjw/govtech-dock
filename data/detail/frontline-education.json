@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-16",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Prepare for Flu Season: How School Nurses Can Stay Ahead",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/blog/flu-season-school-nurse-tips-stay-ahead-2/"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "index-text",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.frontlineeducation.com/blog/when-504-questions-arent-really-about-504-forms/"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How K-12 CFOs Can Maximize Medicaid Reimbursement Through Special Education Collaboration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/blog/how-k-12-cfos-can-maximize-medicaid-reimbursement-through-special-education-collaboration/"
   }
  ],
  "profile": {

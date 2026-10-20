@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Peak Season Cargo Theft: How to Protect Freight in Q4",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.lvt.com/blog/peak-season-cargo-theft-q4"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.lvt.com/blog/what-affects-license-plate-recognition-accuracy-a-practical-guide-for-businesses"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How AI Reduces the Burden on Understaffed Security Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.lvt.com/blog/how-ai-reduces-the-burden-on-understaffed-security-teams"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Authentication Issues Cost Frontline Organizations Thousands of Working Hours Each Year According to Research from Imprivata and FIDO Alliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/company/press/authentication-issues-cost-frontline-organizations-thousands-working-hours-each-year"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "card-date",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/uk/company/press/imprivata-enterprise-access-management-wins-2026-best-klas-award-access-management"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Read the press release",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.imprivata.com/company/press/new-imprivata-research-finds-72-healthcare-organizations-have-ai-tools-or-agents"
   }
  ],
  "profile": {

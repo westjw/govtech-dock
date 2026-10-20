@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Low Fleet Utilization: How to Tell Whether Demand or Operations Are the Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/low-fleet-utilization-how-to-tell-whether-demand-or-operations-are-the-problem"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/how-government-fleets-should-set-vehicle-utilization-thresholds-without-relying-on-mileage-alone"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Assigned Vehicle or Shared Motor Pool? How to Calculate the Break-Even Point",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/assigned-vehicle-or-shared-motor-pool-how-to-calculate-the-break-even-point"
   }
  ],
  "profile": {

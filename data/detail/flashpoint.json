@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Inside Joint Disruption Week: 28 Arrests and 3.7 Million Scam Accounts Removed",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/inside-joint-disruption-week-28-arrests-and-37-million-scam-accounts-removed/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/cybercrime-machine-speed-key-takeaways-flashpoints-2026-midyear-threat-intelligence/"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Evolution of Hacktivism in Hybrid Warfare: Modern Tactics and Real-World Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/evolution-hacktivism-hybrid-warfare-modern-tactics-real-world-impact/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Gartner IT Symposium/Xpo 2026: Day 1 Highlights with Infor: Industry intelligence is the new AI foundation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/gartner-2026-day-1-industry-ai-foundation"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/ai-ambition-to-real-business-outcomes"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Secure workforce modernization for government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/secure-government-workforce-modernization"
   },
   {
    "date": "2026-10-15",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/healthcare-leaders-rethinking-workforce-management"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "index-text",
-   "first_seen": "2026-10-08",
-   "headline": "How a distributor competes on speed and accuracy by scaling AI across its business",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/state-electric-supply-velocity-suite"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Augmented automation in modern distribution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/augmented-automation-modern-distribution"
   }
  ],
  "profile": {

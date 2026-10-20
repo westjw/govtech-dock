@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Staying Ahead of Hate \u2013 Part X: The Intelligence Challenge Behind Europe\u2019s Urban Unrest",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/staying-ahead-of-hate-part-x-the-intelligence-challenge-behind-europes-urban-unrest"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "Bringing Decades of Cold Case Work into One Location",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/amy-mihaljevic-cold-case-investigation-kaseware"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -40,7 +58,7 @@
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Staying Ahead of Hate, Part IX: The Vanishing Warning Window",
+   "headline": "Staying Ahead of Hate \u2013 Part IX: The Vanishing Warning Window",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/staying-ahead-of-hate-part-ix-the-vanishing-warning-window"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/next-stage-of-public-safety-technology-modernization"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What\u2019s New in Kaseware 6.4: Improving Investigation Management, Data Quality, and Platform Performance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/kaseware-6-4-investigation-management"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Connected Investigations: How Linking People, Events, and Data Reveals Hidden Threats and Suspects",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/connected-investigations-link-analysis"
   }
  ],
  "profile": {

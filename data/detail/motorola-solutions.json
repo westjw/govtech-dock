@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "How failsafe communications protect manufacturing uptime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.motorolasolutions.com/en_us/blog/why-manufacturers-need-private-radio-networks"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.motorolasolutions.com/it/blog/physical-security-guide"
-  },
-  {
-   "date": "2026-09-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Seguridad f\u00edsica: planificaci\u00f3n y mejores pr\u00e1cticas para empresas",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.motorolasolutions.com/es/blog/physical-security-guide"
   }
  ],
  "profile": {

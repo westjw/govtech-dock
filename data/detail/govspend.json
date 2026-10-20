@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-19",
+   "headline": "FAR Part 12 vs. FAR Part 15: Definitions and Differences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/far-part-12-vs-far-part-15-definitions-and-differences/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/what-is-a-gwac-how-vendors-find-task-order-opportunities/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Market Report: The Data Behind Public Sector Digital Transformation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/the-data-behind-public-sector-digital-transformation/"
   }
  ]
 }

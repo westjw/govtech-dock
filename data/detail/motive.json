@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "time",
+   "first_seen": "2026-10-19",
+   "headline": "Motive launches Agents: Tell Agents the goal. They handle the rest.",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://gomotive.com/blog/motive-launches-ai-agents/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "time",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://helpcenter.gomotive.com/hc/en-us/articles/6189953443101-Webhooks-in-Fleet-Dashboard"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Enable Trucker Path NavPro integration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/39394841294749-Enable-Trucker-Path-NavPro-integration"
   }
  ],
  "profile": {

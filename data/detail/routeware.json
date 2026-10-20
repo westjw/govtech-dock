@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "How Roll-Off Dispatch Software Streamlines a Site Services Operation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/how-roll-off-dispatch-software-streamlines-a-site-services-operation/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Waste Management Billing: How Can Haulers Bill Customers Better?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/waste-management-billing-how-can-haulers-bill-customers-better/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "How Municipal Fleets Handle Disaster Debris Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/how-municipal-fleets-handle-disaster-debris-management/"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-08",
@@ -8,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/ai-waste-management-helpful-or-hype/"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Garden Waste Management: How UK Councils Can Run a Service That Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://routeware.com/blog/garden-waste-management-how-uk-councils-can-run-a-service-that-works/"
   },
   {
    "date": "2026-10-05",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://routeware.com/blog/waste-hauler-crm/"
-  },
-  {
-   "date": "2026-09-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "How Routeware\u2019s Waste Wizard Makes Recycling Easier",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/how-routeware-waste-wizard-makes-recycling-easier/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "What Modern Snow Management Looks Like for Cities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/what-modern-snow-management-looks-like-for-cities/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Routeware Appoints Calum Forsyth as Managing Director, Routeware UK",
-   "kind": "leadership",
-   "kind_rule": "as Managing Director",
-   "url": "https://routeware.com/resources/news/routeware-appoints-calum-forsyth-as-managing-director-routeware-uk/"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "How Roll-Off Haulers Run a Profitable Construction Waste Operation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://routeware.com/blog/construction-waste-management/"
   }
  ],
  "profile": {

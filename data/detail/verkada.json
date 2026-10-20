@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-19",
+   "headline": "Verkada Completes IRAP Assessment for Data Classified up to PROTECTED in Australia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/verkada-completes-irap-assessment-for-data-classified-up-to-protected-in-australia/"
+  },
+  {
    "date": "2026-09-16",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verkada.com/blog/introducing-fire-alarm-monitoring/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-07",
-   "headline": "Introducing New Alerting Capabilities: Concealment, Grab and Run, Door Blocked, and Wrong-Way Driving",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.verkada.com/blog/new-camera-alerts-september-2026/"
   }
  ],
  "profile": {
