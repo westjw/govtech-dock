@@ -10941,6 +10941,84 @@ def check_a_date_read_is_confirmed_against_its_own_page() -> int:
     return errors
 
 
+def check_a_list_replaces_only_a_url_ruled_not_a_floor() -> int:
+    """A confirmed exhibitor list replaces the url on file only when a reader
+    already ruled that url's floor "not a floor"; anywhere else it waits
+    beside it for a person. And a read that confirms the dates on file
+    clears a "could not read" note, and only that note.
+
+    2026-10-20: twenty-one rows held an exhibitor_url that the floor reader
+    had ruled navigation (Vermont League's 121 "names" were its menu) while
+    the real list sat one click away. The second-answer rule queued every
+    correction for a person, including corrections of a url already ruled
+    wrong; and fourteen rows confirmed in a browser kept saying their page
+    could not be read.
+    """
+    import apply_conference_reads as acr
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-floorurl-"))
+    saved = acr.DATA
+    try:
+        acr.DATA = tmp
+        def staged(tag, d):
+            safe = re.sub(r"[^A-Za-z0-9]+", "_", tag).strip("_")
+            (tmp / f"exhibitors_{safe}.json").write_text(json.dumps(d))
+        staged("Menu 2026", {"found": False, "why": "reader: every one of the 12 names was the "
+                             "site's own text, not an exhibitor; this page is not a floor"})
+        staged("Real 2026", {"found": True, "exhibitors": [{"name": "Acme"}]})
+        staged("Swept 2026", {"found": False, "why": "only 0 name(s) survived the filter"})
+        rows = [{"event_tag": t, "conference": t, "exhibitor_url": f"https://{t[0].lower()}.test/old",
+                 "dates": "May 1-3, 2027", "dates_source": "https://x.test/d", "dates_confidence": "high"}
+                for t in ("Menu 2026", "Real 2026", "Swept 2026", "Unchecked 2026")]
+        rows.append({"event_tag": "Noted 2026", "conference": "Noted", "dates": "May 1-3, 2027",
+                     "dates_source": "https://n.test/d", "dates_confidence": "high",
+                     "dates_note": "read 2026-10-16: could not read a next-edition date - HTTP 403"})
+        rows.append({"event_tag": "Other 2026", "conference": "Other", "dates": "May 1-3, 2027",
+                     "dates_source": "https://o.test/d", "dates_confidence": "high",
+                     "dates_note": "read 2026-10-16: no next edition announced on the organisation's site"})
+        (tmp / "conferences.json").write_text(json.dumps({"conferences": rows}))
+        ok = {"verdict": "confirmed", "names_seen": 30}
+        reads = tmp / "reads.json"
+        reads.write_text(json.dumps([
+            {"tag": "Menu 2026", "directory_url": "https://m.test/members", "check": ok},
+            {"tag": "Real 2026", "directory_url": "https://r.test/members", "check": ok},
+            {"tag": "Swept 2026", "directory_url": "https://s.test/members", "check": ok},
+            {"tag": "Unchecked 2026", "directory_url": "https://u.test/members",
+             "check": {"verdict": "refuted", "names_seen": 0}},
+            {"tag": "Noted 2026", "dates": "May 1-3, 2027", "dates_confidence": "high",
+             "dates_source": "https://n.test/d"},
+            {"tag": "Other 2026", "dates": "May 1-3, 2027", "dates_confidence": "high",
+             "dates_source": "https://o.test/d"}]))
+        argv = sys.argv
+        sys.argv = ["apply_conference_reads.py", "--in", str(reads), "--write"]
+        import io, contextlib
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                acr.main()
+        finally:
+            sys.argv = argv
+        out = {c["event_tag"]: c for c in json.loads((tmp / "conferences.json").read_text())["conferences"]}
+        m, r, w, u = out["Menu 2026"], out["Real 2026"], out["Swept 2026"], out["Unchecked 2026"]
+        if m.get("exhibitor_url") != "https://m.test/members" or m.get("exhibitor_url_was") != "https://m.test/old":
+            errors += fail("a confirmed list did not replace a url a reader ruled not a floor, "
+                           "or the old address was not kept")
+        if r.get("exhibitor_url") != "https://r.test/old" or r.get("exhibitor_url_candidate") != "https://r.test/members":
+            errors += fail("a second list replaced a real find on a machine's say-so instead of "
+                           "waiting beside it for a person")
+        if w.get("exhibitor_url") != "https://s.test/old":
+            errors += fail("a sweeper's refusal (not a reader's ruling) let a new url replace the one on file")
+        if u.get("exhibitor_url") != "https://u.test/old" or u.get("exhibitor_url_candidate"):
+            errors += fail("a list the second reader did not confirm was recorded")
+        if "dates_note" in out["Noted 2026"]:
+            errors += fail("a read confirming the dates on file left the note saying the page could not be read")
+        if "no next edition announced" not in (out["Other 2026"].get("dates_note") or ""):
+            errors += fail("a confirming read cleared a note that was about something else")
+    finally:
+        acr.DATA = saved
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
 def check_every_css_variable_is_defined() -> int:
     """No rule reads a colour token nobody defined, and the theme switch
     reaches every token the system theme does.
@@ -34103,6 +34181,7 @@ def main() -> int:
     errors += check_a_floor_is_read_before_it_is_filed()
     errors += check_the_card_door_lands_only_what_it_saw()
     errors += check_a_date_read_is_confirmed_against_its_own_page()
+    errors += check_a_list_replaces_only_a_url_ruled_not_a_floor()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()

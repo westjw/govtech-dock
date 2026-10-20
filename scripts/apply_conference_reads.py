@@ -44,6 +44,29 @@ import conference_dates                                         # noqa: E402
 GOOD_DATE = ("high", "medium")
 
 
+def _unread_note(c: dict) -> bool:
+    """The row's note says its page could not be read."""
+    return "could not read" in (c.get("dates_note") or "")
+
+
+def _ruled_not_a_floor(tag: str | None) -> bool:
+    """A reader read the floor staged for `tag` and found nothing real on it.
+
+    read_floor.apply writes found: false with a "reader: every one of the N
+    names was the site's own text" why. The sweeper's own refusals (a page it
+    could not read, too few names) are NOT this: they say nothing about
+    whether the address is right, so they never let a new one in.
+    """
+    if not tag:
+        return False
+    safe = re.sub(r"[^A-Za-z0-9]+", "_", tag).strip("_")
+    try:
+        d = json.loads((DATA / f"exhibitors_{safe}.json").read_text())
+    except (OSError, json.JSONDecodeError):
+        return False
+    return d.get("found") is False and str(d.get("why") or "").startswith("reader:")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="src", required=True)
@@ -95,7 +118,7 @@ def main() -> int:
                     c["next_edition"] = ne.replace(m.group(0), str(held.year), 1)
                 dated += 1
                 what.append(f"dates={r['dates']!r}")
-            elif c.get("dates_checked_on") != today:
+            elif c.get("dates_checked_on") != today or _unread_note(c):
                 # A READ THAT CONFIRMS IS STILL A READ. The page states the
                 # dates already on file, so nothing changes but the fact that
                 # somebody looked and when - without this stamp a confirmed
@@ -105,6 +128,12 @@ def main() -> int:
                 if not c.get("dates_source"):
                     c["dates_source"] = r["dates_source"]
                     c["dates_confidence"] = conf
+                # AND IT ANSWERS "COULD NOT READ". Fourteen rows kept a note
+                # saying their page turned the crawler away after a reader in
+                # a browser had read the same dates off it (2026-10-20); the
+                # row said both. A note about some other thing stays.
+                if _unread_note(c):
+                    c.pop("dates_note", None)
                 what.append("dates confirmed as on file")
         elif r.get("dates") and not r.get("dates_source"):
             skipped += 1
@@ -151,6 +180,25 @@ def main() -> int:
                     f"{n} company names visible")
                 floors += 1
                 what.append(f"FLOOR FOUND ({n} names)")
+            elif held.rstrip("/") != r["directory_url"].rstrip("/") \
+                    and _ruled_not_a_floor(c.get("event_tag")):
+                # THE URL ON FILE IS NOT A FIND. A reader already read the
+                # floor staged from it and ruled every name the site's own
+                # navigation ("this page is not a floor"), so there is no real
+                # find for a second answer to replace - only a menu, and a
+                # confirmed list one click away from it. Vermont League's row
+                # pointed at a page whose 121 names were "Advocacy Chat" and
+                # "Dental Insurance" while its Business Alliance members sat
+                # behind a link (2026-10-20). The old address is kept.
+                c["exhibitor_url_was"] = held
+                c["exhibitor_url"] = r["directory_url"]
+                c["exhibitor_url_source"] = (
+                    f"read {today}, confirmed by a second reader: {n} company "
+                    f"names visible; replaces {held}, which a reader ruled not a floor")
+                c.pop("exhibitor_url_candidate", None)
+                c.pop("exhibitor_url_candidate_note", None)
+                floors += 1
+                what.append(f"FLOOR REPLACED ({n} names; the old one was ruled not a floor)")
             elif held.rstrip("/") != r["directory_url"].rstrip("/"):
                 # A SECOND ANSWER IS NOT A CORRECTION. The url on file may be
                 # one of the twenty the admin queue already flags as pointing

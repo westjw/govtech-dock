@@ -347,7 +347,7 @@
    "dates_source": "https://www.naag.org/events/",
    "dates_confidence": "medium",
    "discovery_notes": "directory read 2026-10-14: unreadable - naag.org/events/ and the naag.org home page both answered HTTP 403 to the crawler; no page on the site could be read. | directory read 2026-10-16: unreadable - naag.org/events/, naag.org home and sitemap_index.xml all answer HTTP 403 to the identified crawler, although robots.txt (readable) allows them. Nothing on the ",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - HTTP 403 on the events page and the homepage. On-file December 8-10, 2026 (Miami Beach) could not be re-confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Clerk, records, elections, legal",
@@ -393,7 +393,7 @@
    "dates_source": "https://nagc.com/page/2027communicationsschool",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - Start page and nagc.com both answer HTTP 403 to the identified crawler; www.nagc.com's robots.txt did not answer (connection error). Nothing on the site could b | directory read 2026-10-16: unreadable - nagc.com start page and nagc.com/robots.txt answer HTTP 403; www.nagc.com robots.txt did not answer (ConnectionError) on two tries. Nothing on the site could be",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - HTTP 403 on the 2027 Communications School page and the homepage. On-file May 12-14, 2027 (Austin) could not be re-confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -470,7 +470,7 @@
    "dates_source": "https://cdn.ymaws.com/algaonline.org/resource/resmgr/training/annual_conference/2026/2026_sponsorship_program-3.pdf",
    "dates_confidence": "medium",
    "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for the ALGA home page and for /conference/; algaonline.org blocks the crawler. | directory read 2026-10-16: unreadable - algaonline.org, www.algaonline.org and algaonline.org/robots.txt all answer HTTP 403 to the identified crawler. Nothing on the site could be read.",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - HTTP 403 on the homepage; the on-file sponsorship PDF returned raw PDF bytes with no readable text. On-file May 2-5, 2027 (Denver) not confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -502,10 +502,10 @@
    "url": "https://pdt.agacgfm.org/",
    "dates_source": "https://pdt.agacgfm.org/about/future-events/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - HTTP 403 on the PDT microsite, its future-events page, and agacgfm.org. On-file July 18-21, 2027 (Chicago) could not be re-confirmed.",
    "dates": "July 18-21, 2027",
    "city": "Chicago, IL",
-   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for pdt.agacgfm.org and for the www.agacgfm.org root; the AGA hosts block the crawler. | directory read 2026-10-16: unreadable - pdt.agacgfm.org home, sitemaps.xml and /exhibitors/ answer HTTP 403, as do www.agacgfm.org and agacgfm.org, although pdt's robots.txt (readable) allows them. No"
+   "discovery_notes": "directory read 2026-10-14: unreadable - HTTP 403 for pdt.agacgfm.org and for the www.agacgfm.org root; the AGA hosts block the crawler. | directory read 2026-10-16: unreadable - pdt.agacgfm.org home, sitemaps.xml and /exhibitors/ answer HTTP 403, as do www.agacgfm.org and agacgfm.org, although pdt's robots.txt (readable) allows them. No",
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Finance, procurement, HR, IT",
@@ -1323,9 +1323,9 @@
    "dates_source": "https://theiacpconference.org/",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - theiacpconference.org answers the crawler with an Imperva Incapsula block ('Request unsuccessful. Incapsula incident ID') on /, www and /exhibit-hall/. Guessed ",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - Conference microsite returned an empty page, then an Incapsula block. theiacp.org reads and names IACP2026 as upcoming but states no dates. On-file Oct 24-27 un",
    "exhibitor_url_candidate": "https://iacp2026.mapyourshow.com/8_0/explore/exhibitor-gallery.cfm",
-   "exhibitor_url_candidate_note": "js-walled: MapYourShow; iacp2026.mapyourshow.com links back to theiacpconference.org (empty page to the crawler). Its alphalist, gallery, featured and scheduled-eve (read 2026-10-16)"
+   "exhibitor_url_candidate_note": "js-walled: MapYourShow; iacp2026.mapyourshow.com links back to theiacpconference.org (empty page to the crawler). Its alphalist, gallery, featured and scheduled-eve (read 2026-10-16)",
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Public safety",
@@ -1383,7 +1383,7 @@
    "dates_source": "https://www.nena.org/events/EventDetails.aspx?id=1963341",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - UNREAD: HTTP 403 for the EventDetails URL and for the www.nena.org home page; the whole host blocks the crawler. No alternate conference host is discoverable wi | directory read 2026-10-16: unreadable - HTTP 403 for both the EventDetails URL and the bare nena.org home page. The nena2026 and nena2027 MapYourShow hosts don't exist (410 no_showid). No other confer",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - nena.org answers HTTP 403 to the identified crawler on the event page, the homepage and the conference page. On-file June 26 - July 1, 2027 could not be confirm"
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Public safety",
@@ -1459,14 +1459,14 @@
    "discovery_notes": "IAEM 74th Annual Conference & EMEX 2026, Long Beach CA, Nov 2026. The 2026 MapYourShow floor plan is live but JS-rendered (no names in HTML); the exhibitor alphalist page (iaem2026.mapyourshow.com/8_0/explore/exhibitor-alphalist.cfm) currently 302-redirects to iaem.org/usconf, suggesting the named exhibitor list is not published yet this far ahead of the show. The 2025 edition's directory (iaem2025.mapyourshow.com) has been taken down (also redirects). Exhibit info hub: https://www.iaem.org/usconf/exhibit/Quick-Facts",
    "event_tag": "IAEM 2026",
    "url": "https://www.iaemconference.org/",
-   "dates": "November 6-12, 2026",
+   "dates": "November 9-11, 2026",
    "city": "Long Beach, CA",
    "next_edition": "2026",
-   "dates_source": "https://www.iaem.org/",
+   "dates_source": "https://www.iaemconference.org/aaStatic.asp?SFP=TFBOWVNBVk5AMjY4OThAUXVpY2sgRmFjdHM",
    "dates_confidence": "high",
    "sweep_blocked": "iaem2026.mapyourshow.com now redirects to iaemconference.org; the mapyourshow instance is gone. Needs a fresh url.",
    "sweep_blocked_on": "2026-09-10",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - iaemconference.org answers 403 (www) or its robots.txt does not answer (bare). iaem.org reads, but its home, upcoming events and news releases give no Annual Co"
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Public safety",
@@ -1482,12 +1482,12 @@
    "discovery_notes": "2026 Annual Conference & Expo, Nashville Oct 18-21, 2026. Interactive exhibitor floor plan renders via JS only; ~251 exhibitors per third-party listing (Vendelux). A readable SPONSOR list exists at https://www.iccsafe.org/events/conference/sponsors-ac/ (~13 names actually extracted: 4LEAF Inc, Acta Solutions, AHRI, AGA, CISPI, Computronix, Denlar Hoods, IPEX, Lowe's, Mitchell Humphrey, OpenGov, SAFEbuilt, TENMAT). 2025 Cleveland edition floor plan: same platform, EventKey=GFOCKUAP.",
    "event_tag": "ICC 2026",
    "url": "https://www.iccsafe.org/about/news-and-events/annual-conferences-hearings/future-annual-meetings/",
-   "dates": "October 18-21, 2026",
-   "city": "Nashville, TN",
-   "next_edition": "2026",
+   "dates": "September 12-15, 2027",
+   "city": "Reno, NV",
+   "next_edition": "2027",
    "dates_source": "https://www.iccsafe.org/about/news-and-events/annual-conferences-hearings/future-annual-meetings/",
    "dates_confidence": "high",
-   "dates_checked_on": "2026-10-15"
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Courts, corrections, justice",
@@ -1709,7 +1709,7 @@
    "next_edition": "2027",
    "dates_source": "https://aphsa.org/national-summit/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - aphsa.org answers HTTP 403 to the identified crawler on the summit page and on both homepage spellings. On-file June 27-30, 2027 (Kansas City) could not be conf"
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Health and human services",
@@ -1890,7 +1890,7 @@
    "dates_confidence": "high",
    "sweep_blocked": "maps.goeshow.com/planning/national/2026/exhibitor_list.cfm returns an empty body (1 byte) in a real browser. The url is stale or needs a session.",
    "sweep_blocked_on": "2026-09-10",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - REFUSED: robots.txt disallows our crawler on www.planning.org (conference/ and conference/2027/). Dates on file (May 15-18, 2027) not confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Community development",
@@ -2001,7 +2001,7 @@
    "dates_source": "https://fall.uli.org/future-meetings/",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - fall.uli.org, fall.uli.org/sponsors/ and uli.org all answer HTTP 403 to the identified crawler. Nothing read. | directory read 2026-10-16: unreadable - HTTP 403 on fall.uli.org, on fall.uli.org/sponsors-and-exhibitors/, on americas.uli.org and on www.uli.org. Every ULI host blocks the identified crawler; nothin",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - UNREAD: HTTP 403 on fall.uli.org, fall.uli.org/future-meetings/, uli.org and americas.uli.org. Dates on file (October 26-28, 2026) not confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -2057,7 +2057,7 @@
    "dates_source": "https://www.nays.org/annual-youth-sports-congress",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - REFUSED: robots.txt on www.nays.org and on nays.org both answered HTTP 202; the crawler is kept out until robots.txt answers. Nothing was read. | directory read 2026-10-16: unreadable - robots.txt now answers, but the pages give HTTP 403: www.nays.org/annual-youth-sports-congress, the same path on nays.org, the www.nays.org home page and the co",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - UNREAD: HTTP 403 on the congress page and the nays.org home page. Dates on file (November 17-19, 2026) not confirmed."
+   "dates_note": "read 2026-10-20: could not read a next-edition date - two readers in a browser 2026-10-20 hit a captcha (a robot-challenge screen) on the congress page and the home page; the crawler gets a 403. The date on file wa"
   },
   {
    "block": "Parks, recreation, libraries",
@@ -2235,7 +2235,7 @@
    "dates_source": "https://www.naesp.org/event/2027-national-school-leaders-conference-powered-by-naesp/",
    "dates_confidence": "high",
    "discovery_notes": "directory read 2026-10-14: unreadable - The 2027 conference event page and the naesp.org home page both answered HTTP 403 to the crawler; no page on the site could be read. | directory read 2026-10-16: unreadable - HTTP 403 on the 2027 National School Leaders Conference event page (www and bare naesp.org, which redirects to www) and on www.naesp.org/nslc/. Nothing on naesp",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - UNREAD: HTTP 403 on the 2027 conference event page and the naesp.org home page. Dates on file (July 22-24, 2027) not confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "K-12 education",
@@ -2291,11 +2291,10 @@
    "url": "https://www.nasro.org/conference/future-nasro-conferences/",
    "dates_source": "https://nasro.org/2027-national-conference/",
    "dates_confidence": "high",
-   "dates_note": "read 2026-09-11: could not read a next-edition date - DATES ARE UNREADABLE, NOT UNANNOUNCED. NASRO's 36th annual National School Safety Conference ran June 28 - July 2, 2026 at the Peppermill Casino and Resort, Ren",
    "city": "Nashville, TN",
    "exhibitor_url_source": "read 2026-09-11, confirmed by a second reader: 8 company names visible",
    "dates": "July 4-9, 2027",
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "K-12 education",
@@ -2367,7 +2366,7 @@
    "next_edition": "2027",
    "dates_source": "https://www.nacubo.org/events/2026/nacubo-2026-annual-meeting",
    "dates_confidence": "high",
-   "dates_note": "read 2026-10-16: could not read a next-edition date - REFUSED: robots.txt disallows our crawler on www.nacubo.org (2026 meeting page and /events). Dates on file (July 10-13, 2027) not confirmed."
+   "dates_checked_on": "2026-10-20"
   },
   {
    "block": "Higher education",
@@ -2903,7 +2902,8 @@
     "geo": "Michigan",
     "parent_national": "NSA"
    },
-   "dates_checked_on": "2026-10-10"
+   "dates_checked_on": "2026-10-20",
+   "dates_note": "read 2026-10-20: no next edition announced on the organisation's site - read by two readers in a browser and through read_page.py (home, training, vendors, programs): only the October 18-20, 2026 fall conference is listed"
   },
   {
    "block": "K-12 education",
@@ -2947,7 +2947,8 @@
     "geo": "Illinois",
     "parent_national": "APCO"
    },
-   "dates_checked_on": "2026-10-16"
+   "dates_checked_on": "2026-10-20",
+   "dates_note": "read 2026-10-20: no next edition announced on the organisation's site - read by two readers in a browser and through read_page.py (ilapco.org, 911conference.org, the calendar): only the 42nd IPSTA, October 18-21, 2026"
   }
  ]
 }
