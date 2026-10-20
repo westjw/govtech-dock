@@ -594,5 +594,17 @@
   },
   "note": "workday:lighting reads (107 posting(s)), but does not match 'Signify'; likely a parent or another company",
   "on": "2026-10-19"
+ },
+ "lexisnexis-risk-solutions-government": {
+  "ats": {
+   "type": "workday",
+   "ref": [
+    "relx",
+    "wd3",
+    "RiskSolutions"
+   ]
+  },
+  "note": "workday:relx reads (127 posting(s)), but does not match 'LexisNexis Risk Solutions Government'; likely a parent or another company",
+  "on": "2026-10-20"
  }
 }

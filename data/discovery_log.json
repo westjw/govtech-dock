@@ -65,9 +65,9 @@
   "note": "careers page at /jobs, no ATS marker"
  },
  "concourse": {
-  "on": "2026-10-04",
+  "on": "2026-10-20",
   "found": true,
-  "note": "ashby:concourse, 7 posting(s) readable"
+  "note": "ashby:concoursetech, 8 posting(s) readable"
  },
  "dailypay": {
   "on": "2026-08-19",
@@ -10346,5 +10346,39 @@
   "on": "2026-10-19",
   "found": false,
   "note": "no board found"
+ },
+ "tootris-child-care-solutions": {
+  "on": "2026-10-20",
+  "found": false,
+  "note": "blocked at the door (HTTP 403)",
+  "retry_soon": true
+ },
+ "vueworks-an-atkinsr-alis-technology": {
+  "on": "2026-10-20",
+  "found": false,
+  "note": "no board found; host answers 200 to any path, so a negative here is weak"
+ },
+ "ukg-telestaff": {
+  "on": "2026-10-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers)",
+  "weak": true
+ },
+ "oracle-netsuite-for-government": {
+  "on": "2026-10-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
+ },
+ "lexisnexis-risk-solutions-government": {
+  "on": "2026-10-20",
+  "found": false,
+  "note": "workday:relx reads (127 posting(s)), but does not match 'LexisNexis Risk Solutions Government'; likely a parent or another company"
+ },
+ "vcs-hr-jobs4blue": {
+  "on": "2026-10-20",
+  "found": true,
+  "note": "careers page, no ATS behind it (/careers/)",
+  "weak": true
  }
 }

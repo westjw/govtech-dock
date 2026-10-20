@@ -45408,7 +45408,16 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
-    }
+    },
+    "also_known_as": [
+      "OfferioAI by Blu AI Technologies"
+    ],
+    "also": [
+      {
+        "sector": "General Gov",
+        "category": "Suppliers & Services"
+      }
+    ]
   },
   {
     "id": "etrak-recreation-software",
@@ -55806,141 +55815,6 @@
     ]
   },
   {
-    "id": "concourse",
-    "name": "Concourse",
-    "website": "https://www.concourse.ai",
-    "location": null,
-    "year_founded": 2023,
-    "sector": "General Gov",
-    "category": "Suppliers & Services",
-    "description": "Government contract and procurement software - exhibited at NIGP 2026",
-    "ats": {
-      "type": "ashby",
-      "ref": "concourse"
-    },
-    "hiring": {
-      "status": "Unknown",
-      "roles": [],
-      "note": "ruled out of scope by owner on 2026-08-24",
-      "checked": "2026-10-20"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "NIGP 2026",
-    "researched": false,
-    "out_of_scope": {
-      "on": "2026-08-24",
-      "by": "owner",
-      "why": "concourse.ai is 'Concourse | AI transformation for finance' - 0 mentions of government, 77 of finance. Not govtech. The NIGP 2026 exhibitor of this name is concoursetech.com, now recorded on concourse-tech. This record was an exhibitor name matched to the wrong company's website and job board."
-    },
-    "profile": {
-      "paragraphs": [
-        "Concourse sells an AI platform to enterprise finance departments. It connects directly to the ERP, data warehouse, billing system and CRM a company already runs.",
-        "Agents are adapted to a company's own data, logic and workflows, and can run autonomously or on triggers. They work through natural language against the financial stack. The company says every number traces back to its source and every workflow runs against evals built for that business. Results arrive in email, Slack, Teams, Excel and PowerPoint rather than a separate application. One named agent surfaces what changed, quantifies the impact and drafts commentary.",
-        "Finance teams use it across FP&A, accounting, treasury and audit. Concourse says it works with more than 100 finance departments. It describes building for every finance team, from two-person startups to Fortune 500 enterprises. On security it points to compliance with security and AI governance standards. It states there is no training on customer data."
-      ],
-      "quote": {
-        "text": "Concourse is the AI execution layer for enterprise finance.",
-        "url": "https://www.concourse.ai"
-      },
-      "provenance": [
-        {
-          "p": 0,
-          "s": 0,
-          "url": "https://www.concourse.ai",
-          "quote": "Concourse is the AI execution layer for enterprise finance."
-        },
-        {
-          "p": 0,
-          "s": 1,
-          "url": "https://www.concourse.ai/customers",
-          "quote": "It connects directly to your ERP, data warehouse, billing, CRM, and other data sources"
-        },
-        {
-          "p": 1,
-          "s": 0,
-          "url": "https://www.concourse.ai",
-          "quote": "Agents that adapt to your data, logic, and workflows. Run autonomously or on triggers."
-        },
-        {
-          "p": 1,
-          "s": 1,
-          "url": "https://www.concourse.ai/about-us",
-          "quote": "Our agents connect directly to your financial stack (ERPs, data warehouses, billing systems, CRMs) and work through natural language."
-        },
-        {
-          "p": 1,
-          "s": 2,
-          "url": "https://www.concourse.ai",
-          "quote": "Trace every number back to its source. Every workflow runs against evals built for your business."
-        },
-        {
-          "p": 1,
-          "s": 3,
-          "url": "https://www.concourse.ai",
-          "quote": "Work with Concourse in email, Slack, Teams, Excel, PowerPoint"
-        },
-        {
-          "p": 1,
-          "s": 4,
-          "url": "https://www.concourse.ai",
-          "quote": "Surfaces what changed, quantifies the impact, and drafts commentary"
-        },
-        {
-          "p": 2,
-          "s": 0,
-          "url": "https://www.concourse.ai/customers",
-          "quote": "Finance teams use it across FP&A, Accounting, Treasury, and Audit"
-        },
-        {
-          "p": 2,
-          "s": 1,
-          "url": "https://www.concourse.ai",
-          "quote": "Working with 100+ finance departments"
-        },
-        {
-          "p": 2,
-          "s": 2,
-          "url": "https://www.concourse.ai/about-us",
-          "quote": "We're building Concourse for every finance team, from 2-person startups to Fortune 500 enterprises."
-        },
-        {
-          "p": 2,
-          "s": 3,
-          "url": "https://www.concourse.ai",
-          "quote": "Concourse is compliant with the most rigorous security and AI governance standards."
-        },
-        {
-          "p": 2,
-          "s": 4,
-          "url": "https://www.concourse.ai",
-          "quote": "Zero training on your data and a governance layer"
-        }
-      ],
-      "sources": [
-        {
-          "url": "https://www.concourse.ai",
-          "sha": "2d75564ebe53538d",
-          "fetched_on": "2026-09-03"
-        },
-        {
-          "url": "https://www.concourse.ai/customers",
-          "sha": "0fde15bcfcc1212a",
-          "fetched_on": "2026-09-03"
-        },
-        {
-          "url": "https://www.concourse.ai/about-us",
-          "sha": "5c83a6ddef17a312",
-          "fetched_on": "2026-09-03"
-        }
-      ],
-      "written_on": "2026-09-08",
-      "by": "agent:descriptions-05",
-      "ruled_by": "owner",
-      "ruled_on": "2026-09-08"
-    }
-  },
-  {
     "id": "coreforce",
     "name": "Coreforce",
     "website": "https://www.coreforce.com",
@@ -60681,7 +60555,7 @@
   {
     "id": "lexisnexis-risk-solutions-government",
     "name": "LexisNexis Risk Solutions Government",
-    "website": null,
+    "website": "https://risk.lexisnexis.com/government",
     "location": null,
     "year_founded": null,
     "sector": "Public Safety",
@@ -61918,30 +61792,6 @@
     "researched": false
   },
   {
-    "id": "offerioai-by-blu-ai-technologies",
-    "name": "OfferioAI by Blu AI Technologies",
-    "website": null,
-    "location": null,
-    "year_founded": null,
-    "sector": "General Gov",
-    "category": "Suppliers & Services",
-    "description": "AI-driven procurement and bid software - exhibited at NIGP 2026",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-10-20"
-    },
-    "govtech": true,
-    "vendor_type": "GovTech Product",
-    "source": "NIGP 2026",
-    "researched": false
-  },
-  {
     "id": "ohpynez",
     "name": "Ohpynez",
     "website": "https://ohpynez.com",
@@ -61973,7 +61823,7 @@
   {
     "id": "omen-ai",
     "name": "Omen AI",
-    "website": null,
+    "website": "https://www.omen.ai",
     "location": null,
     "year_founded": null,
     "sector": "Public Works",
@@ -62174,7 +62024,7 @@
   {
     "id": "oracle",
     "name": "Oracle",
-    "website": null,
+    "website": "https://www.oracle.com/government/state-local/",
     "location": null,
     "year_founded": null,
     "sector": "Public Safety",
@@ -62208,15 +62058,15 @@
   {
     "id": "oracle-netsuite-for-government",
     "name": "Oracle NetSuite for Government",
-    "website": null,
+    "website": "https://www.oracle.com/government/state-local/netsuite-for-government/",
     "location": null,
     "year_founded": null,
     "sector": "General Gov",
     "category": "Suppliers & Services",
     "description": "Cloud ERP software for government - exhibited at ICMA 2025",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://www.oracle.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -65396,7 +65246,7 @@
   {
     "id": "tootris-child-care-solutions",
     "name": "TOOTRiS Child Care Solutions",
-    "website": null,
+    "website": "https://tootris.com/",
     "location": null,
     "year_founded": null,
     "sector": "General Gov",
@@ -65808,15 +65658,15 @@
   {
     "id": "ukg-telestaff",
     "name": "UKG Telestaff",
-    "website": null,
+    "website": "https://www.ukg.com/products/ukg-telestaff",
     "location": null,
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
     "description": "Public safety scheduling and workforce software - exhibited at IACP 2026, IAFC FRI 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://apply.ukg.com/careers"
     },
     "hiring": {
       "status": "Unknown",
@@ -65913,15 +65763,15 @@
   {
     "id": "vcs-hr-jobs4blue",
     "name": "VCS HR & Jobs4Blue",
-    "website": null,
+    "website": "https://vcshr.com/",
     "location": null,
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Public safety HR and job board platform - exhibited at IACP 2026",
+    "description": "Police scheduling (POSS) and off-duty detail management (Jobs4Blue) software for public safety agencies - exhibited at IACP 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "html",
+      "ref": "https://vcshr.com/careers/"
     },
     "hiring": {
       "status": "Unknown",
@@ -65966,7 +65816,7 @@
   {
     "id": "vueworks-an-atkinsr-alis-technology",
     "name": "VUEWorks\u00ae, An AtkinsR\u00e9alis Technology",
-    "website": null,
+    "website": "https://www.vueworks.com/",
     "location": null,
     "year_founded": null,
     "sector": "Public Works",
@@ -69990,7 +69840,8 @@
     "vendor_type": "GovTech Product",
     "source": "AAAE 2026; AAAE 2027",
     "also_known_as": [
-      "SITA"
+      "SITA",
+      "Materna IPS"
     ],
     "also": [
       {
@@ -70078,6 +69929,13 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
+    },
+    "website_note": {
+      "was": "https://www.materna-ips.com",
+      "why": "materna-ips.com 302s to efabre.net serving \"BETBERRY Link Daftar Games Digital\" - an Indonesian gambling page. HTTP 200 at the end of the redirect.",
+      "on": "2026-09-09",
+      "by": "agent:hijack-check",
+      "restore_if": "the company recovers the domain"
     }
   },
   {
@@ -83512,7 +83370,7 @@
   {
     "id": "civix",
     "name": "Civix",
-    "website": "https://www.civixusa.com",
+    "website": "https://gocivix.com/",
     "location": "Tallahassee, FL",
     "year_founded": 2020,
     "sector": "General Gov",
@@ -83531,7 +83389,10 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep; NASS Winter/Summer 2026"
+    "source": "competitor sweep; NASS Winter/Summer 2026",
+    "also_known_as": [
+      "PCC Technology Group"
+    ]
   },
   {
     "id": "democracy-live",
@@ -83614,30 +83475,6 @@
     "sector": "General Gov",
     "category": "Elections",
     "description": "EIMS election information management system for county election offices",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-10-20"
-    },
-    "govtech": true,
-    "researched": false,
-    "vendor_type": "GovTech Product",
-    "source": "competitor sweep"
-  },
-  {
-    "id": "pcc-technology-group",
-    "name": "PCC Technology Group",
-    "website": null,
-    "location": "Bloomfield, CT",
-    "year_founded": 1980,
-    "sector": "General Gov",
-    "category": "Elections",
-    "description": "Statewide voter registration and business registry systems for states",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -87075,6 +86912,11 @@
       "on": "2026-09-09",
       "by": "agent:hijack-check",
       "restore_if": "the company recovers the domain"
+    },
+    "out_of_scope": {
+      "on": "2026-10-20",
+      "by": "owner's rule: nothing publishes without a confirmed website (2026-10-04)",
+      "why": "no working website: sightbit.com and www.sightbit.com serve a developer-server error (2026-10-20); re-check before publishing"
     }
   },
   {
@@ -111409,7 +111251,12 @@
       "title_served": "VPN Friendly BTC Crypto Casinos USA - Best Options",
       "why": "the domain serves gambling spam and the board linked it publicly"
     },
-    "ats_note": "careers page on file was https://www.gwfathom.com/our-story/careers/ - that domain now serves a crypto-casino page; FATHOM Water Management closed in November 2019 (research 2026-10-05). Unwired so the public page stops linking there."
+    "ats_note": "careers page on file was https://www.gwfathom.com/our-story/careers/ - that domain now serves a crypto-casino page; FATHOM Water Management closed in November 2019 (research 2026-10-05). Unwired so the public page stops linking there.",
+    "out_of_scope": {
+      "on": "2026-10-20",
+      "by": "owner's rule: nothing publishes without a confirmed website (2026-10-04)",
+      "why": "closed: FATHOM Global Water Management told its utility clients on 2019-11-12 it could not keep operating and shut down 2019-12-17; its domain now serves a crypto-casino page"
+    }
   },
   {
     "id": "watersmart-software",
@@ -112813,6 +112660,11 @@
       "on": "2026-09-13",
       "title_served": "LANGIT99: Situs Slot Gacor Terupdate Mahjong Ways 2 Gampang Jackpot",
       "why": "the domain serves gambling spam and the board linked it publicly"
+    },
+    "out_of_scope": {
+      "on": "2026-10-20",
+      "by": "owner's rule: nothing publishes without a confirmed website (2026-10-04)",
+      "why": "likely defunct: wtrco.com is a parked for-sale page and watchtowerrobotics.com serves gambling spam; no company news after about 2020"
     }
   },
   {
@@ -113745,37 +113597,6 @@
     "researched": false,
     "vendor_type": "GovTech Product",
     "source": "competitor sweep"
-  },
-  {
-    "id": "materna-ips",
-    "name": "Materna IPS",
-    "website": null,
-    "location": "Dortmund, Germany",
-    "year_founded": 2016,
-    "sector": "Airports & Aviation",
-    "category": "Terminal & Passenger Experience",
-    "description": "Self-service check-in, bag drop and kiosk software for airports",
-    "ats": {
-      "type": "unknown",
-      "ref": null
-    },
-    "hiring": {
-      "status": "Unknown",
-      "note": "no ATS on file",
-      "roles": [],
-      "checked": "2026-10-20"
-    },
-    "govtech": true,
-    "researched": false,
-    "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
-    "website_note": {
-      "was": "https://www.materna-ips.com",
-      "why": "materna-ips.com 302s to efabre.net serving \"BETBERRY Link Daftar Games Digital\" - an Indonesian gambling page. HTTP 200 at the end of the redirect.",
-      "on": "2026-09-09",
-      "by": "agent:hijack-check",
-      "restore_if": "the company recovers the domain"
-    }
   },
   {
     "id": "embross",
@@ -119536,7 +119357,12 @@
     "buyer": "not found",
     "sells_to_gov": "unclear",
     "acquisitions_checked_on": "2026-09-10",
-    "acquisitions_none_found": true
+    "acquisitions_none_found": true,
+    "out_of_scope": {
+      "on": "2026-10-20",
+      "by": "owner's rule: nothing publishes without a confirmed website (2026-10-04)",
+      "why": "likely defunct: libertymobilitynow.com is a for-sale page; no company news after about 2018"
+    }
   },
   {
     "id": "circuit",
