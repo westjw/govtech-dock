@@ -11745,7 +11745,12 @@
    "name": "Accela",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "San Ramon, CA",
    "year_founded": 1999,
    "description": "Permitting, licensing, and code enforcement platform for state and local government - exhibited at NLC City Summit 2026, ICMA 2026, NRPA 2026, ICC 2026",
@@ -11825,7 +11830,12 @@
    "name": "OpenGov",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "San Jose, CA",
    "year_founded": 2012,
    "description": "Permitting, budgeting, procurement, and asset management cloud suite (Cox-owned) - exhibited at GFOA 2026, NLC City Summit 2026, NACE 2026, AWWA ACE 2026, GMIS International 2026, Maryland Municipal League 2026, WEFTEC 2026, NRPA 2026, ICC 2026, ASBO School Business 2026",
@@ -11905,7 +11915,12 @@
    "name": "Clariti",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Vancouver, BC, Canada",
    "year_founded": 2008,
    "description": "Community development permitting and licensing software (founded as BasicGov) - exhibited at ICC 2026, NLC City Summit 2026",
@@ -11972,7 +11987,12 @@
    "name": "GovWell",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "New York, NY",
    "year_founded": 2023,
    "description": "AI permitting and licensing platform: 24/7 resident assistant, AI code-compliance review - exhibited at NLC City Summit 2026, Maryland Municipal League 2026, ICC 2026",
@@ -12042,7 +12062,12 @@
    "name": "City Detect",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Tuscaloosa, AL",
    "year_founded": 2021,
    "description": "AI cameras on city fleet vehicles detect blight, graffiti, dumping for code enforcement - exhibited at NLC City Summit 2026, Smart Cities Connect 2026, ICC 2026",
@@ -16092,7 +16117,12 @@
    "name": "Placemetry",
    "sector": "Public Works",
    "category": "Streets",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "San Diego, CA",
    "year_founded": 2025,
    "description": "AI street-imagery analysis: pavement condition, sign inventory, and blight for public works and code enforcement - exhibited at Smart Cities Connect 2026",
@@ -18769,7 +18799,12 @@
    "name": "Cloudpermit",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Reston, VA",
    "year_founded": 2010,
    "description": "Cloud e-permitting and community development software for ~500 local governments (Finnish-born) - exhibited at ICC 2026",
@@ -18837,7 +18872,12 @@
    "name": "Comcate",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Concord, CA",
    "year_founded": 2000,
    "description": "Code enforcement, citizen request, and licensing software for small and mid-size agencies - exhibited at Maryland Municipal League 2026, ICC 2026",
@@ -18897,7 +18937,12 @@
    "name": "SDL (Spatial Data Logic)",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Brick, NJ",
    "year_founded": 1997,
    "description": "Municipal operations software: permitting, licensing, code enforcement; NJ-rooted, going national - exhibited at NLC City Summit 2026",
@@ -19085,7 +19130,12 @@
    "name": "Tolemi",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Boston, MA",
    "year_founded": 2014,
    "description": "BuildingBlocks property data platform: vacancy, blight, and code insights for cities - exhibited at ICC 2026, NLC City Summit 2026",
@@ -20628,7 +20678,12 @@
    "name": "Placer.ai",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Los Altos, CA",
    "year_founded": 2016,
    "description": "Location and foot-traffic analytics with an active city/county economic development vertical",
@@ -20875,7 +20930,12 @@
    "name": "ZoomGrants",
    "sector": "General Gov",
    "category": "Procurement & Payments",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Denver, CO",
    "year_founded": 2002,
    "description": "Online grant, scholarship, and application management for agencies and foundations",
@@ -21888,7 +21948,12 @@
    "name": "GovPilot",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Hoboken, NJ",
    "year_founded": 2014,
    "description": "Cloud permitting, licensing, code enforcement, and GIS workflows for local governments - exhibited at GFOA 2026, ICC 2026",
@@ -21948,7 +22013,12 @@
    "name": "MyGovernmentOnline",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Houma, LA",
    "year_founded": 2011,
    "description": "Permitting and code enforcement platform licensed to local govs by quasi-governmental SCPDC (commission est. 1968) - exhibited at ICC 2026",
@@ -22006,7 +22076,12 @@
    "name": "SwiftGov (Swiftbuild.ai)",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Florida (remote-first)",
    "year_founded": 2024,
    "description": "AI permitting and plan review: automated GIS/code compliance checks (Hernando County cut reviews 30 days to 2)",
@@ -22064,7 +22139,12 @@
    "name": "Verdant",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Washington, DC",
    "year_founded": 2026,
    "description": "AI-native land-use permit management: reads applications, flags issues, drafts review reports (YC S26) - exhibited at NLC City Summit 2026",
@@ -22416,7 +22496,12 @@
    "name": "GOGov",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Pleasanton, CA",
    "year_founded": 2004,
    "description": "311/citizen requests, code enforcement, and notifications for ~600 small and mid-size govs - exhibited at 3CMA 2026",
@@ -22670,7 +22755,12 @@
    "name": "Social Explorer",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "New York, NY",
    "year_founded": 1999,
    "description": "Demographic data, mapping, and visualization with 500K+ variables for gov, academia, and planning",
@@ -26310,7 +26400,12 @@
    "name": "GeoCivix",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Tucson, AZ",
    "year_founded": 2001,
    "description": "Cloud permitting, plan review, inspections, and code enforcement for local gov and fire districts - exhibited at ICC 2026",
@@ -36769,7 +36864,12 @@
    "name": "Azora Software",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Texas",
    "year_founded": null,
    "description": "Short-term rental compliance: finds unpermitted rentals, automates permitting and tax enforcement - exhibited at NLC City Summit 2026",
@@ -43235,7 +43335,12 @@
    "name": "GovStream.AI",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Seattle, WA",
    "year_founded": 2024,
    "description": "AI permitting and land-use copilot: research assistant, guided applications, staff permit center ($3.6M seed; Bellevue, Louisville Metro)",
@@ -45106,7 +45211,12 @@
    "name": "Blitz",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "AI permit pre-check and plan review - exhibited at ICMA 2025",
@@ -46605,7 +46715,12 @@
    "name": "Economic Impact Catalyst",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": 2018,
    "description": "Economic development ecosystem software platform - exhibited at ICMA 2025",
@@ -47787,7 +47902,12 @@
    "name": "ICC Innovation",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": 1994,
    "description": "Code Council digital permitting/code solutions - exhibited at ICMA 2025, IMLA 2026, Maryland Municipal League 2026",
@@ -49795,7 +49915,12 @@
    "name": "MyGovernmentOnline(MGO)-SCPDC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Permitting, licensing and inspections software - exhibited at NACo 2026",
@@ -67231,7 +67356,12 @@
    "name": "iWorQ Systems",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Logan, UT",
    "year_founded": 2000,
    "description": "Cloud apps for permits, code enforcement and citizen requests in small cities",
@@ -67462,7 +67592,12 @@
    "name": "Camino Technologies",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Oakland, CA",
    "year_founded": 2018,
    "description": "Resident-facing permitting and application workflows for city government",
@@ -75565,7 +75700,12 @@
    "name": "OpenCounter",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "San Francisco, CA",
    "year_founded": 2013,
    "description": "Special event, business and permit application portals for cities",
@@ -75685,7 +75825,12 @@
    "name": "CityGrows",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Los Angeles, CA",
    "year_founded": 2015,
    "description": "No-code government workflow and permit software including event permits",
@@ -80372,7 +80517,12 @@
    "name": "Eccovia",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": "Salt Lake City, Utah",
    "year_founded": 1998,
    "description": "ClientTrack HMIS and care coordination for state and local agencies",
@@ -80428,7 +80578,12 @@
    "name": "Bitfocus",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": "Las Vegas, Nevada",
    "year_founded": 2007,
    "description": "Clarity HMIS and homelessness response systems for counties and CoCs",
@@ -80487,7 +80642,12 @@
    "name": "CaseWorthy",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": "Salt Lake City, Utah",
    "year_founded": 2008,
    "description": "Case management and HMIS for government-funded human services programs",
@@ -82386,7 +82546,12 @@
    "name": "eCivis",
    "sector": "General Gov",
    "category": "Procurement & Payments",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Pasadena, CA",
    "year_founded": 2000,
    "description": "Grants management and subrecipient monitoring for state and local government",
@@ -82442,7 +82607,12 @@
    "name": "AmpliFund (StreamLink Software)",
    "sector": "General Gov",
    "category": "Procurement & Payments",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Cleveland, OH",
    "year_founded": 2008,
    "description": "Grant lifecycle management for state agencies, cities and school districts",
@@ -97325,7 +97495,12 @@
    "name": "Computronix",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Edmonton, Alberta, Canada",
    "year_founded": 1979,
    "description": "POSSE permitting, licensing and regulatory platform for state and local agencies - exhibited at ICC 2026",
@@ -97383,7 +97558,12 @@
    "name": "Citizenserve",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Tempe, AZ",
    "year_founded": null,
    "description": "Cloud permitting, licensing and code enforcement software for small and mid-size municipalities",
@@ -97439,7 +97619,12 @@
    "name": "MuniLogic",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Philadelphia, PA",
    "year_founded": null,
    "description": "Modular municipal management software including permits, licenses and code enforcement",
@@ -97495,7 +97680,12 @@
    "name": "Bitco Software",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Arlington, WA",
    "year_founded": null,
    "description": "PermitTrax permit tracking and inspection suite for small government agencies",
@@ -97551,7 +97741,12 @@
    "name": "Symbium",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "San Francisco, CA",
    "year_founded": 2017,
    "description": "Instant automated permitting and zoning compliance checks for building departments",
@@ -97903,7 +98098,12 @@
    "name": "ePermitHub",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Miami, FL",
    "year_founded": null,
    "description": "Digital plan review automation layered on agency permitting systems",
@@ -97959,7 +98159,12 @@
    "name": "GovBuilt",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Configurable permitting, licensing and workflow platform for local government",
@@ -98015,7 +98220,12 @@
    "name": "Gridics",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Miami, FL",
    "year_founded": 2014,
    "description": "Zoning code automation and development capacity analysis for cities",
@@ -98071,7 +98281,12 @@
    "name": "CityView",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Vancouver, British Columbia, Canada",
    "year_founded": 1982,
    "description": "Community development, permitting and inspections software for municipalities",
@@ -98183,7 +98398,12 @@
    "name": "Objective Corporation",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Sydney, Australia",
    "year_founded": 1987,
    "description": "Objective Build planning and building consent software for government regulators",
@@ -98246,7 +98466,12 @@
    "name": "Archistar",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Sydney, Australia",
    "year_founded": 2018,
    "description": "AI planning and building code assessment tools sold to councils and cities - exhibited at ICMA 2026, Smart Cities Connect 2026, ICC 2026",
@@ -98306,7 +98531,12 @@
    "name": "Idox Group",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "London, United Kingdom",
    "year_founded": 2000,
    "description": "Planning, building control and land charges software for government planning authorities",
@@ -98362,7 +98592,12 @@
    "name": "Civica",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": "London, United Kingdom",
    "year_founded": 2001,
    "description": "Regulatory, licensing and planning software for public sector authorities - exhibited at PLA 2026",
@@ -101926,7 +102161,12 @@
    "name": "UrbanFootprint",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Berkeley, CA",
    "year_founded": 2014,
    "description": "Urban intelligence and resilience analytics for government planning agencies",
@@ -113869,7 +114109,12 @@
    "name": "PlanStreet",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": "Lexington, KY",
    "year_founded": 2017,
    "description": "Case management, intake, referral, and grant tracking software for public and nonprofit human services programs - exhibited at NatCon 2026, NACCHO 360 2026",
@@ -120849,7 +121094,12 @@
    "name": "GovSense",
    "sector": "General Gov",
    "category": "Finance & ERP",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Alpharetta, GA",
    "year_founded": 2014,
    "description": "Cloud ERP for cities and counties covering finance, budgeting, utility billing, payroll, permitting, licensing and code enforcement, built on Oracle NetSuite - exhibited at GFOA 2026",
@@ -121504,7 +121754,12 @@
    "name": "FutureFit AI",
    "sector": "Health & Human Services",
    "category": "Workforce & Labor",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": "Toronto, Canada",
    "year_founded": 2018,
    "description": "AI career navigation and labor exchange platform for state workforce agencies, workforce boards and economic development organizations - exhibited at NASWA 2025",
@@ -132578,7 +132833,12 @@
    "name": "EQUIFAX",
    "sector": "Health & Human Services",
    "category": "Benefits & Medicaid Systems",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Equifax sells employment and income verification data through The Work Number to government agencies that decide eligibility for SNAP, Medicaid, TANF and public housing - exhibited at Healthcare IT Connect 2026, MESC 2026, APHSA 2026",
@@ -134094,7 +134354,12 @@
    "name": "Lightcast",
    "sector": "Health & Human Services",
    "category": "Workforce & Labor",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Labor market data, analytics software and APIs used by public-sector workforce and economic development agencies, colleges and employers - exhibited at NASWA 2025",
@@ -137019,7 +137284,12 @@
    "name": "Tikler",
    "sector": "General Gov",
    "category": "IT & AI Platforms",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Sells a document workflow and archiving platform to government authorities and agencies, including public housing authorities - exhibited at NAHRO 2026",
@@ -141205,7 +141475,12 @@
    "name": "Canibuild",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Sells AI site-feasibility software to home builders and AI permit intake and plan review software to local government planning and permitting departments - exhibited at ICMA 2026",
@@ -141736,7 +142011,12 @@
    "name": "Mitchell Humphrey & Co.",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "location": null,
    "year_founded": null,
    "description": "Sells FastTrackGov permitting, licensing and code enforcement software and Financial Management Software to municipalities - exhibited at ICC 2026",
@@ -202048,7 +202328,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8289751",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -202089,7 +202374,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8093187",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -202130,7 +202420,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8180326",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-05",
    "source": "ats",
    "opening_postings": 1,
@@ -202162,7 +202457,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8209850",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202203,7 +202503,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8238640",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -202244,7 +202549,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8177581",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -202285,7 +202595,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8255407",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202326,7 +202641,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8112646",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -202367,7 +202687,12 @@
    "url": "https://job-boards.greenhouse.io/accela/jobs/8205337",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202411,7 +202736,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/88b6eaa9-a6fb-4345-a3dd-211d5ab64166",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202446,7 +202776,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ca7a795a-f93b-4ee1-a444-1124df4af3fa",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 3,
@@ -202481,7 +202816,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/872e4856-bbdf-4b52-ae9f-5bd503adcf87",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 3,
@@ -202525,7 +202865,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/5ec9dcce-31aa-45bd-85f2-85e0b68dbc55",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202569,7 +202914,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/53da8201-1d9b-4da7-8927-6f33475ba568",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -202613,7 +202963,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/a9ff6d43-093a-497f-a706-779a6f732b07",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -202657,7 +203012,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/124b314b-8e75-494c-a11d-bcd2ab799a79",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202701,7 +203061,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/e5208e44-f32c-439b-a511-b83a0f0c739e",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -202745,7 +203110,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/78ca35d7-1a0b-46aa-8a33-599270c98f51",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -202789,7 +203159,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b96ff4df-2a78-4747-b360-de24aad06cf8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 2,
@@ -202833,7 +203208,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/11c89841-8e5d-4d9a-aec3-a7403a81f620",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202877,7 +203257,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/2022aa44-1b09-4dcc-b10c-8aa6140b4c8e",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -202925,7 +203310,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/317e3fd5-167a-4be6-83a8-619f2e6241ff",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -202973,7 +203363,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/73de0638-1d3d-4cf3-a017-eb027e6e8b1c",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203017,7 +203412,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/f6a01aa0-4ab9-4646-b2c4-611e46547370",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-14",
    "source": "ats",
    "opening_postings": 1,
@@ -203061,7 +203461,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ca9f04b1-dd1f-4fdf-a432-e2a9be33dd6d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203105,7 +203510,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/e1f1e849-4bc1-4c58-a4f7-6dd4d9e25cb7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203140,7 +203550,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/9920db0a-109d-453f-a77a-cc39479f2d0d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203184,7 +203599,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/d3c2b22b-1127-4c62-836e-1b1033057f1b",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203232,7 +203652,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/d9a34b41-3bce-46e2-9967-5b3ed005af46",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203280,7 +203705,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/0147719d-5b5c-4f0f-8993-dfa2ab6ecca1",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203315,7 +203745,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/e9fe9f34-4a1e-4583-a89c-a912a8b28788",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 2,
@@ -203350,7 +203785,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/d9dc621c-2ae9-4d7c-9479-920f47d10a67",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 2,
@@ -203385,7 +203825,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/7a5389e6-c83d-4f85-b132-51ce4142d018",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203429,7 +203874,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/c23bd38a-b09e-4df3-8486-e7ba7f285a8d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203477,7 +203927,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b585885c-4bb1-43ae-8aa5-ce414c480522",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203521,7 +203976,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/394106bf-722e-43d6-b883-04d24cbdd78b",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203556,7 +204016,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/6f32b1c9-5ed5-48e9-8f35-8c2165db1baa",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203600,7 +204065,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/1c75bde3-7c63-494e-9bb1-cfaa9fd8d2c3",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -203635,7 +204105,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/a024bbb2-e99f-41f3-b569-067cee54e5af",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -203679,7 +204154,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/0396a565-17a6-465e-bac7-675185882bc2",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203723,7 +204203,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b7684207-3609-4b98-879e-9f8ea1aca49e",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -203767,7 +204252,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/e861af40-4ba6-4222-8513-32d2feb041f6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -203811,7 +204301,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ea1be740-14e6-4dd3-866d-a68de3e60688",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203855,7 +204350,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/add3f88b-3ee1-4c82-978b-3d4a6f06c13f",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -203890,7 +204390,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/688ed2fd-0f5a-46a7-a092-4c9b742183df",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 3,
@@ -203934,7 +204439,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b1fb46e0-36f4-49e4-bb9e-0340a4624d9d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -203978,7 +204488,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/f2ce2634-e393-424a-94e3-7b87745aad51",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204022,7 +204537,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/2c69ab44-e097-4804-b2b4-da926271b15c",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204066,7 +204586,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/a0f98e9a-b8a4-40e5-a9ef-c7ac5aa4f5df",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204101,7 +204626,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/8d4285da-b501-4b17-ad3f-e373a3e3b2da",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -204145,7 +204675,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/2d776c55-9705-41b9-a1f1-89b99e0fc1c0",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204189,7 +204724,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/f97a8a22-2970-44ae-9932-7f2a64fd7759",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204233,7 +204773,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/7295ef8a-e016-4046-b1a6-7b72c10081fa",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204277,7 +204822,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/eff2e1de-05e0-4c9b-8f07-0ea0caa77e28",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204321,7 +204871,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/239313fc-975d-42ef-a222-6d5fe13cac28",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204365,7 +204920,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/328b0b3d-f5be-42a6-b2e2-b3c67ff1c24b",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -204409,7 +204969,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/09b57acb-4ddf-436e-889b-614478ef3e07",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -204444,7 +205009,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/014e94e9-6d67-47f4-aa89-5661cab5ee56",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -204488,7 +205058,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/a31eee49-cd9d-4cf1-bf8d-dafd421b6cf6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -204532,7 +205107,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/df3962e2-5fe4-45ce-9151-755c01bf2378",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -204576,7 +205156,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/fa176130-f73c-4477-9239-a7f2ea557524",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -204620,7 +205205,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ecd5ffea-1e1e-4509-b5c5-1d9521aaa429",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -204664,7 +205254,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/2dc2d67c-33f4-4bcb-9319-3b7abb3ebbae",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -204708,7 +205303,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/4b5d98ec-a26b-4b65-b86d-c9e51f4a4ae4",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204752,7 +205352,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/a0783823-26c2-4ecd-bab4-d854fd917291",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204796,7 +205401,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/1276099c-651b-412c-bd0c-8386e2d63833",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204831,7 +205441,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ad380653-e5ae-4e71-9ca8-71cf9b5ae1f6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -204875,7 +205490,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/cfb65f0d-bcf5-4b36-977f-f917f76cf72f",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 4,
@@ -204910,7 +205530,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/5f1e8745-a49d-4f0d-9973-876c8253b8fa",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204945,7 +205570,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b3a64e77-a9e2-406f-a44c-0c1308eed3fd",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -204989,7 +205619,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/139f6524-4737-4e06-a58f-2e419bc6426a",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -205033,7 +205668,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/50d60bb7-9403-4923-8a74-28539b802ca4",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -205077,7 +205717,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/5b96e415-30e2-41cb-9ceb-48e7dc6274d1",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-14",
    "source": "ats",
    "opening_postings": 1,
@@ -205112,7 +205757,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/fffdfe9a-14f2-41af-86c9-5fce9e272537",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -205147,7 +205797,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/550dc758-73c8-45ab-b361-a6cbec48dfa9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -205191,7 +205846,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/aa9fb7f0-336c-48ae-891e-1503b107417a",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -205235,7 +205895,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/88420e06-7026-45d8-abb2-7ff6a5268944",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 2,
@@ -205279,7 +205944,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/4889ede1-05e3-4453-b0db-e465c5b0a14c",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 2,
@@ -205314,7 +205984,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/db57b6d3-4c9d-48f1-a065-4cf9939e65c9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 2,
@@ -205349,7 +206024,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/58b91e1d-fd64-4b37-a02b-a1b732f8fb56",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -205393,7 +206073,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/b77f33cd-2d84-4cd9-bb27-42e3b91f9709",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-10",
    "source": "ats",
    "opening_postings": 1,
@@ -205428,7 +206113,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/6bf81f49-bbe6-4699-a070-c77f9412efc4",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -205472,7 +206162,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/c4121547-2745-4758-824a-9f6f93688186",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 2,
@@ -205516,7 +206211,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/9d27924f-b62c-4ffb-bb90-85a399ba5f85",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -205551,7 +206251,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/57dc31aa-15a4-4ccf-8b02-56026b5f3279",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 2,
@@ -205586,7 +206291,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/ebbdc75d-5395-402d-99f4-e062637c3fd1",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -205630,7 +206340,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/406e3d19-5686-4a2d-abe4-111f28234be3",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -205674,7 +206389,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/89de892d-e7e8-433d-aa80-6275ca602439",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -205718,7 +206438,12 @@
    "url": "https://jobs.ashbyhq.com/opengov/4a8f7d6d-3ab4-406e-af8c-fbc1052c64bf",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 2,
@@ -205759,7 +206484,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/7999877003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -205800,7 +206530,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8031852003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-14",
    "source": "ats",
    "opening_postings": 1,
@@ -205832,7 +206567,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8013659003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-10",
    "source": "ats",
    "opening_postings": 1,
@@ -205864,7 +206604,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/7864713003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -205905,7 +206650,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/7808630003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -205946,7 +206696,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8034493003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -205987,7 +206742,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8034469003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -206028,7 +206788,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8013634003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -206069,7 +206834,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/7712559003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206101,7 +206871,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8034472003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -206142,7 +206917,12 @@
    "url": "https://job-boards.greenhouse.io/clariticloudinc/jobs/8017307003",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -206186,7 +206966,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/7c4cff34-bd8d-41d7-a54b-8f9ee0d96ac3",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206230,7 +207015,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/325daa36-efe4-4f79-a398-7d50cc38626d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206274,7 +207064,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/e85c2f79-41a4-434a-af88-8b0b5391fae6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206318,7 +207113,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/47c365fb-09e8-40c2-9a7f-5a2ff687154a",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206362,7 +207162,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/76c30e6f-37f3-4c67-b2a4-05853ca957a9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206406,7 +207211,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/5d6a3d2d-065b-48ae-942b-fbcfd83d4bdd",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206450,7 +207260,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/fcd29040-ef3b-454a-b4ef-25c4a8e27fa0",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -206494,7 +207309,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/4d5a429f-5d8c-42b4-a39a-6f1c7868b648",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206538,7 +207358,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/81a23971-e007-44db-9812-6d6903ab7688",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206582,7 +207407,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/3bee822e-1401-47dc-bd0c-35e3151eaef6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206626,7 +207456,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/aaedfff4-c080-4ecc-bd34-2e18d78ee41a",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206670,7 +207505,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/743018f7-6752-4570-92ee-b1e80c1813ef",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206714,7 +207554,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/fa9ac301-0588-49a5-b2c2-e99cec0aeb81",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206758,7 +207603,12 @@
    "url": "https://jobs.ashbyhq.com/govwell/297c474d-280a-4ac1-abfc-dcd74c224d2d",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -206789,7 +207639,12 @@
    "url": "https://jobs.gem.com/citydetect/am9icG9zdDoT4gObrj5VsujSxGA64UDx",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -206820,7 +207675,12 @@
    "url": "https://jobs.gem.com/citydetect/am9icG9zdDpOZpI_lxrxECRrVAwaPiyy",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -206851,7 +207711,12 @@
    "url": "https://jobs.gem.com/citydetect/am9icG9zdDr5AWjF1AZ1UgSdc0I0OllI",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -206885,7 +207750,12 @@
    "url": "https://jobs.gem.com/citydetect/am9icG9zdDp1lmvnA47IlItFbh4VjYZB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-10",
    "source": "ats",
    "opening_postings": 1,
@@ -231512,7 +232382,12 @@
    "url": "https://ats.rippling.com/sdl/jobs",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-23",
    "source": "ats",
    "opening_postings": 1,
@@ -231543,7 +232418,12 @@
    "url": "https://ats.rippling.com/sdl/jobs",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-23",
    "source": "ats",
    "opening_postings": 1,
@@ -231574,7 +232454,12 @@
    "url": "https://ats.rippling.com/sdl/jobs",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 1,
@@ -231605,7 +232490,12 @@
    "url": "https://ats.rippling.com/sdl/jobs",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-18",
    "source": "ats",
    "opening_postings": 1,
@@ -231880,7 +232770,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7612606003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -231921,7 +232816,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=8035483003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -231962,7 +232862,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7768278003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -231994,7 +232899,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7814538003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232026,7 +232936,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7853136003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232058,7 +232973,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7958129003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232099,7 +233019,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7999244003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232143,7 +233068,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=8009817003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232178,7 +233108,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=6501448003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232219,7 +233154,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7994141003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232251,7 +233191,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7993942003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232283,7 +233228,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7893702003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232327,7 +233277,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7660276003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232359,7 +233314,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=8011369003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-10",
    "source": "ats",
    "opening_postings": 1,
@@ -232400,7 +233360,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=8009196003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232432,7 +233397,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7597819003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -232464,7 +233434,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7330632003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 2,
@@ -232496,7 +233471,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=7330970003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 2,
@@ -232537,7 +233517,12 @@
    "url": "https://placer.ai/company/we-are-hiring/?gh_jid=8004413003",
    "sector": "General Gov",
    "category": "Strategy & Performance",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -296642,7 +297627,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-02",
    "source": "ats",
    "opening_postings": 1,
@@ -296673,7 +297663,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -296704,7 +297699,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -296735,7 +297735,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -296766,7 +297771,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-07",
    "source": "ats",
    "opening_postings": 1,
@@ -296797,7 +297807,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 1,
@@ -296828,7 +297843,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 1,
@@ -296862,7 +297882,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-02",
    "source": "ats",
    "opening_postings": 1,
@@ -296896,7 +297921,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-02",
    "source": "ats",
    "opening_postings": 1,
@@ -296930,7 +297960,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-02",
    "source": "ats",
    "opening_postings": 1,
@@ -296964,7 +297999,12 @@
    "url": "https://recruiting.paylocity.com/Recruiting/Jobs/All/1a12da52-a185-495d-9e82-83e9eb874c54/INTERNATIONAL-CODE-COUNCIL-INC",
    "sector": "General Gov",
    "category": "Suppliers & Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-09-02",
    "source": "ats",
    "opening_postings": 1,
@@ -329125,7 +330165,12 @@
    "url": "https://iworq.bamboohr.com/careers/99",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -329156,7 +330201,12 @@
    "url": "https://iworq.bamboohr.com/careers/101",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -329187,7 +330237,12 @@
    "url": "https://iworq.bamboohr.com/careers/102",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -329218,7 +330273,12 @@
    "url": "https://iworq.bamboohr.com/careers/103",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -329249,7 +330309,12 @@
    "url": "https://iworq.bamboohr.com/careers/104",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -329280,7 +330345,12 @@
    "url": "https://iworq.bamboohr.com/careers/105",
    "sector": "General Gov",
    "category": "Citizen Services",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -349399,7 +350469,12 @@
    "url": "https://job-boards.greenhouse.io/bitfocus/jobs/5225567007",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-07",
    "source": "ats",
    "opening_postings": 1,
@@ -349434,7 +350509,12 @@
    "url": "https://job-boards.greenhouse.io/bitfocus/jobs/5225538007",
    "sector": "Health & Human Services",
    "category": "Case Management & Social Care",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-04",
    "source": "ats",
    "opening_postings": 1,
@@ -379926,7 +381006,12 @@
    "url": "https://symbium.com/careers/senior-software-engineer",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-20",
    "source": "ats",
    "opening_postings": 1,
@@ -379957,7 +381042,12 @@
    "url": "https://symbium.com/careers/product-manager",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-20",
    "source": "ats",
    "opening_postings": 1,
@@ -380082,7 +381172,12 @@
    "url": "https://jobs.lever.co/objective/21d3b66a-af8d-4ec8-b98c-b60b8e0d9f01",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 3,
@@ -380114,7 +381209,12 @@
    "url": "https://jobs.lever.co/objective/c648fbcd-ebfa-4511-8232-566f9121dadc",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 3,
@@ -380146,7 +381246,12 @@
    "url": "https://jobs.lever.co/objective/ec91cce4-a9b0-4386-9495-4400f1a72a49",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 3,
@@ -380178,7 +381283,12 @@
    "url": "https://jobs.lever.co/objective/6c7dda47-fe65-4368-af44-4acb394185c5",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 1,
@@ -380210,7 +381320,12 @@
    "url": "https://jobs.lever.co/objective/bc3aeea3-4e1c-47aa-a7ce-13443d41add1",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -380242,7 +381357,12 @@
    "url": "https://jobs.lever.co/objective/67d34fb3-39b8-4b6b-ad99-2ead6ae19cd5",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-08-19",
    "source": "ats",
    "opening_postings": 1,
@@ -380274,7 +381394,12 @@
    "url": "https://jobs.lever.co/objective/101480fe-2381-4843-85e8-f93cb915d894",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -380306,7 +381431,12 @@
    "url": "https://jobs.lever.co/objective/bc6ba271-6f4f-47aa-8a0e-bf89c36344f2",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -380338,7 +381468,12 @@
    "url": "https://jobs.lever.co/objective/c7568f5f-dc2b-412f-bee0-9b8182f2efb8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -380370,7 +381505,12 @@
    "url": "https://jobs.lever.co/objective/1271fa98-e7c3-4d05-841e-231cfc25d392",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-14",
    "source": "ats",
    "opening_postings": 1,
@@ -380402,7 +381542,12 @@
    "url": "https://jobs.lever.co/objective/0ae31271-c49b-4819-bd59-0373287366a6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-01",
    "source": "ats",
    "opening_postings": 1,
@@ -380434,7 +381579,12 @@
    "url": "https://jobs.lever.co/objective/9ed336ae-b71d-4253-a769-f2e090113242",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Planning & Economic Development"
+    }
+   ],
    "first_seen": "2026-10-01",
    "source": "ats",
    "opening_postings": 1,
@@ -380478,7 +381628,12 @@
    "url": "https://apply.workable.com/j/4A7874E492",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-28",
    "source": "ats",
    "opening_postings": 1,
@@ -380513,7 +381668,12 @@
    "url": "https://apply.workable.com/j/2999CF1DAC",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -380557,7 +381717,12 @@
    "url": "https://apply.workable.com/j/FED51B86C8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 9,
@@ -380601,7 +381766,12 @@
    "url": "https://apply.workable.com/j/FED51B86C8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 9,
@@ -380645,7 +381815,12 @@
    "url": "https://apply.workable.com/j/FED51B86C8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 9,
@@ -380689,7 +381864,12 @@
    "url": "https://apply.workable.com/j/FED51B86C8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 9,
@@ -380733,7 +381913,12 @@
    "url": "https://apply.workable.com/j/FED51B86C8",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 9,
@@ -380768,7 +381953,12 @@
    "url": "https://apply.workable.com/j/32E6DB8A85",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 9,
@@ -380803,7 +381993,12 @@
    "url": "https://apply.workable.com/j/B54B7E1FDA",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 9,
@@ -380838,7 +382033,12 @@
    "url": "https://apply.workable.com/j/B54B7E1FDA",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 9,
@@ -380873,7 +382073,12 @@
    "url": "https://apply.workable.com/j/706E1E1833",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-24",
    "source": "ats",
    "opening_postings": 9,
@@ -380917,7 +382122,12 @@
    "url": "https://apply.workable.com/j/5169FD42DE",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-10",
    "source": "ats",
    "opening_postings": 1,
@@ -380961,7 +382171,12 @@
    "url": "https://apply.workable.com/j/A0AEABDD19",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 1,
@@ -380996,7 +382211,12 @@
    "url": "https://apply.workable.com/j/9ED540ABD0",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -381040,7 +382260,12 @@
    "url": "https://apply.workable.com/j/09C99DFAB7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381084,7 +382309,12 @@
    "url": "https://apply.workable.com/j/09C99DFAB7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381128,7 +382358,12 @@
    "url": "https://apply.workable.com/j/09C99DFAB7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381172,7 +382407,12 @@
    "url": "https://apply.workable.com/j/09C99DFAB7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381216,7 +382456,12 @@
    "url": "https://apply.workable.com/j/09C99DFAB7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381260,7 +382505,12 @@
    "url": "https://apply.workable.com/j/1837DD714F",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 5,
@@ -381304,7 +382554,12 @@
    "url": "https://apply.workable.com/j/1837DD714F",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 5,
@@ -381348,7 +382603,12 @@
    "url": "https://apply.workable.com/j/1837DD714F",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 5,
@@ -381392,7 +382652,12 @@
    "url": "https://apply.workable.com/j/1837DD714F",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 5,
@@ -381436,7 +382701,12 @@
    "url": "https://apply.workable.com/j/1837DD714F",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 5,
@@ -381471,7 +382741,12 @@
    "url": "https://apply.workable.com/j/56610574CF",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -381506,7 +382781,12 @@
    "url": "https://apply.workable.com/j/FCBF71D6E6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-10",
    "source": "ats",
    "opening_postings": 1,
@@ -381541,7 +382821,12 @@
    "url": "https://apply.workable.com/j/E3306B9F86",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-10",
    "source": "ats",
    "opening_postings": 1,
@@ -381576,7 +382861,12 @@
    "url": "https://apply.workable.com/j/D241ADA85D",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-01",
    "source": "ats",
    "opening_postings": 1,
@@ -381611,7 +382901,12 @@
    "url": "https://apply.workable.com/j/A407FEAC03",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 3,
@@ -381646,7 +382941,12 @@
    "url": "https://apply.workable.com/j/A407FEAC03",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 3,
@@ -381681,7 +382981,12 @@
    "url": "https://apply.workable.com/j/A407FEAC03",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 3,
@@ -381716,7 +383021,12 @@
    "url": "https://apply.workable.com/j/1978E5BBEB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381751,7 +383061,12 @@
    "url": "https://apply.workable.com/j/1978E5BBEB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381786,7 +383101,12 @@
    "url": "https://apply.workable.com/j/1978E5BBEB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381821,7 +383141,12 @@
    "url": "https://apply.workable.com/j/1978E5BBEB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381856,7 +383181,12 @@
    "url": "https://apply.workable.com/j/1978E5BBEB",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -381891,7 +383221,12 @@
    "url": "https://apply.workable.com/j/308F4B7C95",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-21",
    "source": "ats",
    "opening_postings": 1,
@@ -381935,7 +383270,12 @@
    "url": "https://apply.workable.com/j/A8670DFE56",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 1,
@@ -381979,7 +383319,12 @@
    "url": "https://apply.workable.com/j/0553BBD21C",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-19",
    "source": "ats",
    "opening_postings": 4,
@@ -382023,7 +383368,12 @@
    "url": "https://apply.workable.com/j/0553BBD21C",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-20",
    "source": "ats",
    "opening_postings": 4,
@@ -382067,7 +383417,12 @@
    "url": "https://apply.workable.com/j/0553BBD21C",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-20",
    "source": "ats",
    "opening_postings": 4,
@@ -382111,7 +383466,12 @@
    "url": "https://apply.workable.com/j/0553BBD21C",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-20",
    "source": "ats",
    "opening_postings": 4,
@@ -382146,7 +383506,12 @@
    "url": "https://apply.workable.com/j/278F61E73D",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -382187,7 +383552,12 @@
    "url": "https://apply.workable.com/j/BEA51C6359",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 1,
@@ -382222,7 +383592,12 @@
    "url": "https://apply.workable.com/j/E371850556",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -382257,7 +383632,12 @@
    "url": "https://apply.workable.com/j/EC22D7CB00",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-17",
    "source": "ats",
    "opening_postings": 1,
@@ -382301,7 +383681,12 @@
    "url": "https://apply.workable.com/j/8388C40E80",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-28",
    "source": "ats",
    "opening_postings": 1,
@@ -382345,7 +383730,12 @@
    "url": "https://apply.workable.com/j/B42589A62B",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 5,
@@ -382389,7 +383779,12 @@
    "url": "https://apply.workable.com/j/B42589A62B",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 5,
@@ -382433,7 +383828,12 @@
    "url": "https://apply.workable.com/j/B42589A62B",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 5,
@@ -382477,7 +383877,12 @@
    "url": "https://apply.workable.com/j/B42589A62B",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 5,
@@ -382521,7 +383926,12 @@
    "url": "https://apply.workable.com/j/B42589A62B",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-16",
    "source": "ats",
    "opening_postings": 5,
@@ -382565,7 +383975,12 @@
    "url": "https://apply.workable.com/j/2DE13AAA35",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-21",
    "source": "ats",
    "opening_postings": 1,
@@ -382609,7 +384024,12 @@
    "url": "https://apply.workable.com/j/EB8D48E6A6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 5,
@@ -382653,7 +384073,12 @@
    "url": "https://apply.workable.com/j/EB8D48E6A6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 5,
@@ -382697,7 +384122,12 @@
    "url": "https://apply.workable.com/j/EB8D48E6A6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 5,
@@ -382741,7 +384171,12 @@
    "url": "https://apply.workable.com/j/EB8D48E6A6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 5,
@@ -382785,7 +384220,12 @@
    "url": "https://apply.workable.com/j/EB8D48E6A6",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 5,
@@ -382820,7 +384260,12 @@
    "url": "https://apply.workable.com/j/350287627D",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 2,
@@ -382855,7 +384300,12 @@
    "url": "https://apply.workable.com/j/350287627D",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-29",
    "source": "ats",
    "opening_postings": 2,
@@ -382890,7 +384340,12 @@
    "url": "https://apply.workable.com/j/4E0E09D894",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-06",
    "source": "ats",
    "opening_postings": 1,
@@ -382934,7 +384389,12 @@
    "url": "https://apply.workable.com/j/BB33ECA309",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 4,
@@ -382978,7 +384438,12 @@
    "url": "https://apply.workable.com/j/BB33ECA309",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 4,
@@ -383022,7 +384487,12 @@
    "url": "https://apply.workable.com/j/BB33ECA309",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 4,
@@ -383066,7 +384536,12 @@
    "url": "https://apply.workable.com/j/BB33ECA309",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 4,
@@ -383107,7 +384582,12 @@
    "url": "https://apply.workable.com/j/54347991B9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -383142,7 +384622,12 @@
    "url": "https://apply.workable.com/j/F7368B6D99",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -383177,7 +384662,12 @@
    "url": "https://apply.workable.com/j/483076B164",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 1,
@@ -383212,7 +384702,12 @@
    "url": "https://apply.workable.com/j/7AC1A27E31",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -383256,7 +384751,12 @@
    "url": "https://apply.workable.com/j/2D85F6E850",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-03",
    "source": "ats",
    "opening_postings": 1,
@@ -383291,7 +384791,12 @@
    "url": "https://apply.workable.com/j/71BC9FF9D9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-18",
    "source": "ats",
    "opening_postings": 2,
@@ -383326,7 +384831,12 @@
    "url": "https://apply.workable.com/j/71BC9FF9D9",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-18",
    "source": "ats",
    "opening_postings": 2,
@@ -383370,7 +384880,12 @@
    "url": "https://apply.workable.com/j/3D1B4479A4",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -383405,7 +384920,12 @@
    "url": "https://apply.workable.com/j/6B1098968A",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -383440,7 +384960,12 @@
    "url": "https://apply.workable.com/j/6B1098968A",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -383481,7 +385006,12 @@
    "url": "https://apply.workable.com/j/38CC9B0DD7",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 3,
@@ -383516,7 +385046,12 @@
    "url": "https://apply.workable.com/j/62923994BA",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-01",
    "source": "ats",
    "opening_postings": 3,
@@ -383551,7 +385086,12 @@
    "url": "https://apply.workable.com/j/62923994BA",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-06",
    "source": "ats",
    "opening_postings": 3,
@@ -383586,7 +385126,12 @@
    "url": "https://apply.workable.com/j/1F02D0F6DE",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -383630,7 +385175,12 @@
    "url": "https://apply.workable.com/j/523E920213",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -383674,7 +385224,12 @@
    "url": "https://apply.workable.com/j/523E920213",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -383718,7 +385273,12 @@
    "url": "https://apply.workable.com/j/523E920213",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -383762,7 +385322,12 @@
    "url": "https://apply.workable.com/j/523E920213",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -383806,7 +385371,12 @@
    "url": "https://apply.workable.com/j/523E920213",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 5,
@@ -383847,7 +385417,12 @@
    "url": "https://apply.workable.com/j/AAFBFB89DD",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-10-02",
    "source": "ats",
    "opening_postings": 1,
@@ -383882,7 +385457,12 @@
    "url": "https://apply.workable.com/j/846EF44A0D",
    "sector": "General Gov",
    "category": "Permitting & Licensing",
-   "also": null,
+   "also": [
+    {
+     "sector": "Housing & Community Dev",
+     "category": "Housing & Assistance"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 1,
@@ -469045,7 +470625,7 @@
   "unchecked": 87
  },
  "redrawn": {
-  "at": "2026-10-20T20:59:14Z",
-  "inputs": "5f951181f0ecef877f58d794ac665743f23c889c3d5bf1f109775537a63da09e"
+  "at": "2026-10-20T21:48:02Z",
+  "inputs": "0accf55c1f7ca138cf4cbb425343ed4f933c2d0b3524bbd063d969117d9e6819"
  }
 }
