@@ -61842,7 +61842,12 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "PWX 2026",
-    "researched": false
+    "researched": false,
+    "out_of_scope": {
+      "on": "2026-10-20",
+      "by": "owner",
+      "why": "owner 2026-10-20 'remove omen': omen.ai sells continuous coolant analysis for liquid-cooled data centers, not a product for state and local government"
+    }
   },
   {
     "id": "onward-health",

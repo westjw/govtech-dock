@@ -231,7 +231,7 @@ export async function describe(request, env) {
   }
   if (!role && !co && !tab) {
     const has = (ks) => ks.some((k) => u.searchParams.has(k));
-    if (has(["csec", "ccat", "call"])) tab = "companies";
+    if (has(["csec", "ccat", "call", "chire"])) tab = "companies";
     else if (has(BOARD_KEYS)) tab = "jobs";
   }
   if (tab && TABS[tab]) {

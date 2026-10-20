@@ -9162,8 +9162,16 @@ console.log(JSON.stringify(pairs.map(([s, c]) =>
         errors += fail("applyCoUrl leaves an earlier query's automatic release "
                        "standing, which turns call=1 back into 'Hiring now'")
     wu = js[js.find("function writeUrl("):][:3000]
-    if not re.search(r'aria-pressed"\)==="false"&&!CO_AUTO_OFF\)u\.set\("call"', wu):
-        errors += fail("writeUrl records a release the search caused as call=1")
+    if not re.search(r'aria-pressed"\)==="true"\|\|CO_AUTO_OFF\)u\.set\("chire"', wu):
+        errors += fail("writeUrl does not keep a person's 'Hiring now' (chire=1) through a "
+                       "release the search caused")
+    # THE LIST OPENS ON EVERYONE (owner, 2026-10-20): the bar is drawn with
+    # Everyone pressed, and only chire=1 turns Hiring now on
+    if ('id="c-hire-all" aria-pressed="true"' not in src
+            or 'id="c-hire-pill" aria-pressed="false"' not in src):
+        errors += fail("the Companies list no longer opens on Everyone")
+    if 'if(u.get("chire")==="1")setHiringPill(true);' not in js[js.find("function applyCoUrl("):][:700]:
+        errors += fail("applyCoUrl does not read chire=1, so a 'Hiring now' link opens on everyone")
     bb_ = js[js.find("function backToBoard("):][:900]
     if 'CO=PENDING_URL?PENDING_URL.get("co")' not in bb_ or "co(CO,true)" not in bb_:
         errors += fail("Back from a role opened on a company card draws the list "
