@@ -1546,7 +1546,7 @@
    "conference": "ACA Congress",
    "flagship": true,
    "swept": false,
-   "exhibitor_url": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx",
+   "exhibitor_url": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/EventMap.aspx?shMode=E",
    "fetchability": "js-walled",
    "platform": "a2z (Personify, s36.a2zinc.net)",
    "event_year": "2026",
@@ -1562,8 +1562,8 @@
    "sweep_blocked": "The a2z exhibitor page renders nothing without a cookie choice, and eventmap.aspx?shMode=E has no readable booth links. One for a person.",
    "sweep_blocked_on": "2026-09-10",
    "dates_checked_on": "2026-10-15",
-   "exhibitor_url_candidate": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/EventMap.aspx?shMode=E",
-   "exhibitor_url_candidate_note": "read 2026-10-20: a second reader confirmed 231 company names here. The url on file is https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx - rule which."
+   "exhibitor_url_was": "https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx",
+   "exhibitor_url_source": "owner 2026-10-20 chose this over https://s36.a2zinc.net/clients/ACA/acacongress2026/Public/Exhibitors.aspx: the floor-plan view of the same 2026 a2zinc event lists 231 exhibitors (reader + skeptic, wf_580610d0-11c) where Exhibitors.aspx renders an error shell"
   },
   {
    "block": "Courts, corrections, justice",
@@ -2850,9 +2850,9 @@
    "conference": "Washington Recreation and Park Association",
    "flagship": false,
    "swept": false,
-   "exhibitor_url": "http://www.wrpatoday.org/sponsors",
-   "fetchability": "readable",
-   "event_tag": "Washington Recreation and Park Association 2027",
+   "exhibitor_url": "https://homebase.map-dynamics.com/wrpa2026/exhibitors",
+   "fetchability": "js-walled",
+   "event_tag": "Washington Recreation and Park Association 2026",
    "url": "http://www.wrpatoday.org/",
    "dates": "May 11-14, 2027",
    "city": "Spokane, WA",
@@ -2865,8 +2865,13 @@
     "parent_national": "NRPA"
    },
    "dates_checked_on": "2026-09-11",
-   "exhibitor_url_candidate": "https://wrpaconf.memberclicks.net/",
-   "exhibitor_url_candidate_note": "read 2026-09-11: a second reader confirmed 7 company names here. The url on file is http://www.wrpatoday.org/sponsors - rule which."
+   "exhibitor_url_was": "http://www.wrpatoday.org/sponsors",
+   "exhibitor_url_source": "read 2026-10-20, confirmed by a second reader: 76 company names visible; replaces http://www.wrpatoday.org/sponsors, which a reader ruled not a floor",
+   "prior_tags": [
+    "Washington Recreation and Park Association 2027"
+   ],
+   "tag_note": "rolled 2026-10-20 from 'Washington Recreation and Park Association 2027' to 'Washington Recreation and Park Association 2026' (owner's ruling): the only exhibitor list WRPA publishes is the 2026 Conference & Tradeshow's (Tacoma, April 21-24, 2026); the 2027 Spokane show has no floor yet. The dates on file stay the next edition's. 'Washington Recreation and Park Association 2027' stays issued as a prior tag.",
+   "fetchability_was": "readable"
   },
   {
    "block": "Public safety",

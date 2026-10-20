@@ -2031,8 +2031,12 @@
   {
    "supplier_id": "bewith",
    "name": "BeWith",
-   "status": "held",
-   "held": "website unread (not read)"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "with"
+    }
+   }
   },
   {
    "supplier_id": "beacon-design",
@@ -29671,8 +29675,12 @@
   {
    "supplier_id": "powerdms",
    "name": "PowerDMS",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "power-dms-by-neogov"
+    }
+   }
   },
   {
    "supplier_id": "psychology-tools",
@@ -46381,15 +46389,6 @@
    "source": {
     "url": "https://s23.a2zinc.net/clients/NRPA/NRPA2026/Public/eventmap.aspx?shMode=E",
     "quote": "Battle Company"
-   }
-  },
-  {
-   "supplier_id": "bewith",
-   "industry": "general-gov/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://www.naco.org/event/2026-naco-annual-conference-exposition",
-    "quote": "BeWith"
    }
   },
   {
@@ -88294,24 +88293,6 @@
    "source": {
     "url": "https://www.observsmart.com",
     "quote": "Designed for acute care, ED\u2019s, behavioral health, recovery, residential, skilled nursing, and long-term care settings over 500+ organizations use ObservSMART to promote, validate, and document compliance while reducing the risks and costs related to adverse events."
-   }
-  },
-  {
-   "supplier_id": "powerdms",
-   "industry": "health-human-services/behavioral-health",
-   "basis": "conference",
-   "source": {
-    "url": "https://natcon26.eventscribe.net/SearchByExpoCompany.asp?pfp=BrowsebyCompany",
-    "quote": "PowerDMS"
-   }
-  },
-  {
-   "supplier_id": "powerdms",
-   "industry": "public-safety/suppliers-and-services",
-   "basis": "conference",
-   "source": {
-    "url": "https://apco2026.eventscribe.net/exhibitors/floorplan/floorplan.asp",
-    "quote": "PowerDMS"
    }
   },
   {

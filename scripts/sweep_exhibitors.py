@@ -338,9 +338,21 @@ BOOTH_SHARE = 0.7
 
 
 def strip_booths(names: list[str]) -> list[str]:
-    """The names without their booth numbers, when the floor prints them."""
-    hits = sum(1 for n in names if BOOTH_PREFIX.match(n or ""))
-    if hits < MIN_NAMES or hits < BOOTH_SHARE * len(names):
+    """The names without their booth numbers, when the floor prints them.
+
+    Two ways a floor shows it prints booths: most of its names carry a
+    number, or the numbered names are ALSO on the page without one. WRPA's
+    map-dynamics floor lists "102 Allplay Systems" in its A-Z block and
+    "Allplay Systems" again under its category, so only 76 of 165 names were
+    numbered and none was stripped - every exhibitor would have been filed
+    twice (2026-10-20). A numbered name whose bare form stands beside it is a
+    booth, not a name like "3M".
+    """
+    hits = [n for n in names if BOOTH_PREFIX.match(n or "")]
+    bare = {(n or "").strip().lower() for n in names if not BOOTH_PREFIX.match(n or "")}
+    twins = sum(1 for n in hits if BOOTH_PREFIX.sub("", n, count=1).strip().lower() in bare)
+    if len(hits) < MIN_NAMES or (len(hits) < BOOTH_SHARE * len(names)
+                                 and twins < max(MIN_NAMES, len(hits) // 2)):
         return list(names)
     return [BOOTH_PREFIX.sub("", n or "", count=1) for n in names]
 

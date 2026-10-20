@@ -223,15 +223,35 @@ def gate(store: dict, seed: int = 0) -> dict:
 
 # ---------------------------------------------------------------- land --
 
-def _supplier_only_match(name: str) -> dict | None:
-    """The one supplier row `name` is already on file as, when nothing on the
-    board matches and nobody researched that row. None otherwise."""
+def _site(url) -> str:
+    """A website as the company it names: host, lower case, no www."""
+    import urllib.parse as up
+    u = str(url or "").strip()
+    if not u:
+        return ""
+    h = (up.urlsplit(u if "//" in u else "//" + u).hostname or "").lower()
+    return h[4:] if h.startswith("www.") else h
+
+
+def _supplier_only_match(name: str, website: str | None = None) -> dict | None:
+    """The one supplier row this card already is, when nothing on the board
+    matches and nobody researched that row. None otherwise.
+
+    THE SAME COMPANY, NOT A NAME INSIDE A NAME. This used same_company, the
+    candidate door's containment match, which strips "Group, Inc." and finds
+    "clarity" inside "Clarity Movement": moving a row DELETES it, and on
+    2026-10-20 it deleted the unrelated suppliers "Clarity Group, Inc." and
+    "Public Safety Group" to make way for two cards. A row is moved only when
+    its normalised name is the card's, or its website is the card's.
+    """
     companies = admin.read_companies()
     key = pc.norm(name)
     if pc.same_company(key, {pc.norm(c["name"]): c["name"] for c in companies}):
         return None
+    site = _site(website)
     suppliers = json.loads((DATA / "suppliers.json").read_text())
-    hits = [s for s in suppliers if pc.same_company(key, {pc.norm(s["name"]): s["name"]})]
+    hits = [s for s in suppliers
+            if pc.norm(s["name"]) == key or (site and _site(s.get("website")) == site)]
     if len(hits) != 1:
         return None
     s = hits[0]
@@ -247,11 +267,12 @@ def land(store: dict, by: str, limit: int | None = None) -> dict:
     out = {"landed": 0, "suppliers_moved": 0, "refused": []}
     todo = [(k, p) for k, p in pending(store) if passes(p)]
     for k, p in todo[:limit] if limit else todo:
+        moved, before = None, None
         if p.get("verdict") == "govtech":
-            s = _supplier_only_match(p.get("name") or "")
+            s = _supplier_only_match(p.get("name") or "", p.get("website"))
             if s:
-                suppliers = json.loads((DATA / "suppliers.json").read_text())
-                keep = [r for r in suppliers if r["id"] != s["id"]]
+                before = json.loads((DATA / "suppliers.json").read_text())
+                keep = [r for r in before if r["id"] != s["id"]]
                 bad = admin.save_decisions("suppliers.json", keep, "promote-supplier-to-card",
                                            why=f"{s['name']}: researched as a govtech vendor; "
                                                f"the card replaces the unresearched supplier row",
@@ -259,13 +280,25 @@ def land(store: dict, by: str, limit: int | None = None) -> dict:
                 if bad:
                     out["refused"].append((k, bad))
                     continue
-                out["suppliers_moved"] += 1
+                moved = s
         res = proposal_rulings.rule(store, k, True, why="passed the card door: high confidence, "
                                     "evidence on the site, second reader agreed", by=by)
         if res.get("error"):
+            # A REFUSED CARD GIVES THE ROW BACK. The row was taken out so the
+            # card could land in its place; when the card does not land, the
+            # supplier is put back as it was, through the journal - or a
+            # refusal deletes a company (2026-10-20, two suppliers lost).
+            if moved:
+                bad = admin.save_decisions("suppliers.json", before, "restore-supplier",
+                                           why=f"{moved['name']}: the card meant to replace it was "
+                                               f"refused ({str(res['error'])[:120]})", by=by)
+                if bad:
+                    res = {"error": f"{res['error']}; AND the supplier row could not be put back: {bad}"}
             out["refused"].append((k, res["error"]))
         else:
             out["landed"] += 1
+            if moved:
+                out["suppliers_moved"] += 1
     return out
 
 

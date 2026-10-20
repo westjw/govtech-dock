@@ -10805,7 +10805,7 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
             pcd.READ.write_text("{}")          # so the landing below is still exercised
         ruled: list = []
         pcd.proposal_rulings.rule = lambda store, k, accept, why="", by="", force=False: ruled.append((k, accept, by)) or {"ok": True}
-        pcd._supplier_only_match = lambda name: None
+        pcd._supplier_only_match = lambda name, website=None: None
         res = pcd.land(store, "agent:test")
         if ruled != [("card:verified", True, "agent:test")] or res["landed"] != 1:
             errors += fail(f"land ruled {ruled}, expected only the card that passed")
@@ -10841,6 +10841,70 @@ def check_the_card_door_lands_only_what_it_saw() -> int:
         shutil.rmtree(tmp, ignore_errors=True)
     if pcd.admin.read_companies is not orig_rc or pcd.admin.save_decisions is not orig_sd:
         errors += fail("the card-door check left admin patched for every check after it")
+    return errors
+
+
+def check_a_card_moves_only_its_own_supplier_row_and_gives_it_back() -> int:
+    """promote_cards.land moves a supplier row aside only when it is the
+    card's own company (same normalised name or same website), and puts it
+    back when the card is then refused.
+
+    2026-10-20: the move used the candidate door's containment match, so
+    "Clarity Group, Inc." (normalised "clarity") read as "Clarity Movement"
+    and "Public Safety Group" as "Global Public Safety"; both rows were
+    deleted, then both cards were refused by the shared-word rule, and two
+    unrelated suppliers were simply gone.
+    """
+    import importlib
+    import promote_cards as pcd
+    importlib.reload(pcd)
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-cardmove-"))
+    orig = (pcd.DATA, pcd.READ, pcd.admin.read_companies, pcd.admin.save_decisions,
+            pcd.proposal_rulings.rule)
+    try:
+        pcd.DATA, pcd.READ = tmp, tmp / ".cards_read"
+        pcd.READ.write_text("{}")
+        pcd.admin.read_companies = lambda: [{"id": "flock", "name": "Flock Safety"}]
+        files = {"suppliers.json": [
+            {"id": "clarity-group-inc", "name": "Clarity Group, Inc.", "website": None},
+            {"id": "public-safety-group", "name": "Public Safety Group", "website": None},
+            {"id": "vexo", "name": "Vexo", "website": None},
+            {"id": "acme-old", "name": "ACME Holdings", "website": "https://www.acme.test/"},
+            {"id": "lone", "name": "Lone Star Tech", "website": None}]}
+        (tmp / "suppliers.json").write_text(json.dumps(files["suppliers.json"]))
+        def save(name, after, action, why="", by="", force=False):
+            (tmp / name).write_text(json.dumps(after)); return None
+        pcd.admin.save_decisions = save
+        refuse = {"card:lone"}
+        pcd.proposal_rulings.rule = (lambda store, k, accept, why="", by="", force=False:
+                                     {"error": "shares a distinctive word"} if k in refuse else {"ok": True})
+        def card(name, site=None):
+            return {"kind": "card", "status": "pending", "name": name, "verdict": "govtech",
+                    "confidence": "high", "website": site, "evidence_verified": True,
+                    "second_read": {"agree": True}}
+        store = {"card:clarity": card("Clarity Movement", "https://clarity.io/"),
+                 "card:gps": card("Global Public Safety", "https://jailtracker.com/"),
+                 "card:vexo": card("Vexo"),
+                 "card:acme": card("Acme Software", "https://acme.test/products"),
+                 "card:lone": card("Lone Star Tech")}
+        res = pcd.land(store, "agent:test")
+        left = {s["id"] for s in json.loads((tmp / "suppliers.json").read_text())}
+        if not {"clarity-group-inc", "public-safety-group"} <= left:
+            errors += fail(f"a card moved aside a supplier that only shares a word with it: {sorted(left)}")
+        if "vexo" in left:
+            errors += fail("a card did not replace its own supplier row (same name)")
+        if "acme-old" in left:
+            errors += fail("a card did not replace its own supplier row (same website)")
+        if "lone" not in left:
+            errors += fail("a supplier row taken out for a card that was then refused was not put back")
+        if res["suppliers_moved"] != 2:
+            errors += fail(f"suppliers_moved counted {res['suppliers_moved']}, expected the 2 that landed")
+    finally:
+        (pcd.DATA, pcd.READ, pcd.admin.read_companies, pcd.admin.save_decisions,
+         pcd.proposal_rulings.rule) = orig
+        importlib.reload(pcd)
+        shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
 
@@ -26233,6 +26297,26 @@ def check_a_booth_number_is_not_part_of_a_name() -> int:
     if sw.strip_booths(plain) != plain:
         print("  FAIL: a name that starts with digits lost them on a floor that prints no booths")
         errors += 1
+    # A FLOOR THAT PRINTS EACH NAME TWICE, numbered in an A-Z block and bare
+    # under its category (WRPA's map-dynamics floor, 2026-10-20): under half
+    # the names carry a number, and every one has its bare twin beside it.
+    az = [f"{100 + i} {n}" for i, n in enumerate(["Allplay Systems", "Park N Play", "Cintas", "CivicPlus",
+                                                    "Musco Lighting", "AstroTurf", "STIHL", "Xplor Recreation",
+                                                    "Agents of Discovery", "PlayCreation"])]
+    cats = ["Playgrounds", "Software & Data", "Allplay Systems", "Park N Play", "Cintas", "CivicPlus",
+            "Musco Lighting", "AstroTurf", "STIHL", "Xplor Recreation", "Agents of Discovery", "PlayCreation",
+            "DOG PARK", "Aquatics", "Lighting"]
+    got2 = sw.strip_booths(az + cats)
+    if any(n[0].isdigit() for n in got2[:10]):
+        print(f"  FAIL: a floor printing each name numbered and bare kept its booth numbers: {got2[:3]}")
+        errors += 1
+    digits = ["24 Hour Fitness", "3D Systems Corp", "4 Rivers Equipment", "5 Star Seating",
+              "7 Lakes Alliance", "360 Photo Booth", "2J Antennas", "911 Datamaster"]
+    mixed = digits + ["Axon", "Zetron", "Carbyne", "Intrado", "Esri", "Mark43", "RapidSOS", "Motorola",
+                      "Hexagon", "Tyler", "CentralSquare", "Versaterm"]
+    if sw.strip_booths(mixed) != mixed:
+        print("  FAIL: names that start with digits, with no bare twin on the page, lost their digits")
+        errors += 1
     page = "".join(f'<a href="https://x{i}.test/">{n}</a>' for i, n in enumerate(floor[:9]))
     names = {n["name"] for n in sw.harvest(page, "APCO")}
     if "PCTEL, Inc." not in names or any(n[0].isdigit() and n != "2J Antennas USA, Corp." for n in names):
@@ -34271,6 +34355,7 @@ def main() -> int:
     errors += check_a_list_replaces_only_a_url_ruled_not_a_floor()
     errors += check_an_infinite_scroll_floor_is_scrolled_to_its_end()
     errors += check_a_candidate_on_the_board_by_domain_is_not_researched()
+    errors += check_a_card_moves_only_its_own_supplier_row_and_gives_it_back()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()
