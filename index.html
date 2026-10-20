@@ -5871,10 +5871,13 @@ function drawCos(){
      uses. Fewer than two is not a strip, so there is none, and the three are
      not repeated in the grid below.
 
-     GROUPS. Browsing (no search, no sector chosen), cards sit under their
-     PRIMARY sector, in the order the ranking first reaches each sector. A
-     company filed under two sectors appears once, so the groups add up to
-     the count. A search keeps one grid in rank order: grouping would bury the
+     GROUPS. Browsing (no search, no sector chosen), cards sit under every
+     sector they are filed under, in the order the ranking first reaches each
+     sector (owner, 2026-10-20: a grants or homeless-services platform belongs
+     on the Housing shelf as well as its own). A second listing names its
+     primary sector on the card, and the group's count says how many are
+     second listings, so the groups add up to more than the count and say
+     so. A search keeps one grid in rank order: grouping would bury the
      company the reader named under somebody else's sector.
 
      THE COUNT CORNER keeps the row's honesty order exactly (coCard). */
@@ -5903,18 +5906,21 @@ function drawCos(){
        spread each page across every group, above the button, and left the
        smallest sector with no heading until the last page. */
     const bySec=new Map();
-    grid.forEach(o=>{if(!bySec.has(o.sector))bySec.set(o.sector,[]);bySec.get(o.sector).push(o);});
+    grid.forEach(o=>new Set(coFilings(o).map(f=>f.sector)).forEach(s=>{
+      if(!bySec.has(s))bySec.set(s,[]);bySec.get(s).push(o);}));
     bySec.forEach((list,sector)=>{
       const lim=CO_OPEN_SECS.has(sector)?list.length:6;
+      const second=list.filter(o=>o.sector!==sector).length;
       const sec=document.createElement("section");
       sec.className="cogroup";
       sec.dataset.sector=sector;
       sec.innerHTML=`<h3 class="cogroup-h">${esc(sector)}<span class="n">${
-        list.length.toLocaleString()} ${list.length===1?"company":"companies"}</span></h3>
+        list.length.toLocaleString()} ${list.length===1?"company":"companies"}${
+        second?` &middot; ${second.toLocaleString()} also listed here`:""}</span></h3>
         <div class="cogrid"></div>`;
       clist.appendChild(sec);
       const cg=sec.querySelector(".cogrid");
-      list.slice(0,lim).forEach(o=>cg.appendChild(coCard(o,q,"",false)));
+      list.slice(0,lim).forEach(o=>cg.appendChild(coCard(o,q,"",o.sector!==sector)));
       if(list.length>lim){
         const b=document.createElement("button");
         b.type="button"; b.className="coshow";

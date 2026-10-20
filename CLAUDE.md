@@ -163,12 +163,16 @@ with the company cards").
   shows the three hiring the most sellers among what the filters kept, on
   boards we read only (a card saying "board not readable" cannot head it).
   The first card is dark, and none of them is repeated below.
-  - Browsing (no search, sector or sub-sector): every PRIMARY sector, six
-    cards each, "Show all N in X" to open one. The groups and the strip add
-    up to the count.
+  - Browsing (no search, sector or sub-sector): every sector, six cards
+    each, "Show all N in X" to open one. A company sits on every shelf it
+    is filed under (owner, 2026-10-20, for the Housing shelf): a second
+    listing's card names its primary sector, and the shelf says "N also
+    listed here", so the groups add up to more than the count.
+    `check_a_second_listing_sits_on_its_shelf`.
   - Searching or filtering: one grid in rank order, 60 at a time.
   - "Showing" is two buttons, Hiring now and Everyone, each with
-    aria-pressed. #c-hire-pill is still what writeUrl reads for call=1.
+    aria-pressed. The tab opens on Everyone (owner, 2026-10-20); Hiring now
+    is `chire=1` in the address, and an old `call=1` link means Everyone.
   - A card says "on N exhibitor lists", never "seen at": some lists come
     out months before their event.
 - **The card's count corner keeps the list row's honesty order:** no board

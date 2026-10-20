@@ -31557,6 +31557,38 @@ def check_a_company_card_keeps_the_rows_honesty() -> int:
     return errors
 
 
+def check_a_second_listing_sits_on_its_shelf() -> int:
+    """Browsing, a company sits on every shelf it is filed under, and says so.
+
+    Owner, 2026-10-20: grants, homeless-services and community-development
+    companies get a second listing on the Housing shelf. `also` already made
+    a sector FILTER find them (inSector), but the browse groups were keyed on
+    the primary sector alone, so Housing still showed its 22 and a second
+    listing was invisible to anybody browsing. On another shelf a card names
+    its primary sector, and the shelf's count says how many are second
+    listings, because the groups no longer add up to the count. Source
+    needles, as the jobs bar's check: no harness draws the browse groups.
+    Each was broken on purpose to prove it fires.
+    """
+    raw = (ROOT / "index.html").read_text()
+    src = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
+    src = re.sub(r"(?m)^\s*//.*$", "", src)
+    flat = re.sub(r"\s+", "", src)
+    errors = 0
+    draw = flat[flat.index("functiondrawCos("):flat.index("functioncoCard(")]
+    browse = draw[draw.index("if(browsing){"):]
+    if "newSet(coFilings(o).map(f=>f.sector))" not in browse:
+        errors += fail("the browse groups are keyed on the primary sector again, so a second listing shows on no shelf")
+    if "coCard(o,q,\"\",o.sector!==sector)" not in browse:
+        errors += fail("a second listing's card no longer names its primary sector")
+    if "constsecond=list.filter(o=>o.sector!==sector).length;" not in browse \
+            or "alsolistedhere" not in browse:
+        errors += fail("a shelf no longer says how many of its cards are second listings")
+    if "constcoFilings=o=>[{sector:o.sector,category:o.category},...(o.also||[])];" not in flat:
+        errors += fail("coFilings no longer lists the primary filing and every `also`")
+    return errors
+
+
 def check_the_jobs_bar_says_the_default_once() -> int:
     """The country's default is said once, and a chip, the More count and a
     copied link treat it as a default (2026-10-19, option A).
@@ -34437,6 +34469,7 @@ def main() -> int:
     errors += check_the_job_card_says_what_the_posting_says()
     errors += check_a_zero_is_only_printed_when_a_board_was_read()
     errors += check_a_company_card_keeps_the_rows_honesty()
+    errors += check_a_second_listing_sits_on_its_shelf()
     errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()
