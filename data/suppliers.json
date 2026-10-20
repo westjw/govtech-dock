@@ -29858,12 +29858,12 @@
  {
   "id": "levine-security-solutions-llc",
   "name": "Levine Security Solutions LLC",
-  "website": null,
+  "website": "https://www.levinesecuritysolutions.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Equipment / Components - exhibited at IACP 2026",
+  "description": "Equipment / Components - exhibited at IACP 2026, NAPT Summit 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -29876,7 +29876,7 @@
   },
   "govtech": false,
   "vendor_type": "Equipment / Components",
-  "source": "IACP 2026",
+  "source": "IACP 2026; NAPT Summit 2026",
   "researched": false
  },
  {
@@ -35474,12 +35474,12 @@
  {
   "id": "naphcare",
   "name": "NaphCare",
-  "website": null,
+  "website": "https://www.naphcare.com/",
   "location": null,
   "year_founded": null,
   "sector": "Public Safety",
   "category": "Suppliers & Services",
-  "description": "Correctional healthcare provider for jails - exhibited at NSA 2026",
+  "description": "Correctional healthcare provider for jails - exhibited at NSA 2026, ACA Congress 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -35492,7 +35492,7 @@
   },
   "govtech": false,
   "vendor_type": "Services (non-tech)",
-  "source": "NSA 2026",
+  "source": "NSA 2026; ACA Congress 2026",
   "researched": false
  },
  {
@@ -61999,7 +61999,7 @@
   "year_founded": 2018,
   "sector": "General Gov",
   "category": "Elections",
-  "description": "Nonprofit developing and open-sourcing secure mobile voting technology for elections - exhibited at ICMA 2026, NLC City Summit 2026",
+  "description": "Nonprofit developing and open-sourcing secure mobile voting technology for elections - exhibited at ICMA 2026, NLC City Summit 2026, Maryland Municipal League 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -62013,7 +62013,7 @@
   "govtech": false,
   "researched": false,
   "vendor_type": "Association / Gov / Media",
-  "source": "ICMA 2026"
+  "source": "ICMA 2026; Maryland Municipal League 2026"
  },
  {
   "id": "u-s-green-building-council",
@@ -87472,7 +87472,7 @@
   "year_founded": null,
   "sector": "Utilities & Energy",
   "category": "Suppliers & Services",
-  "description": "Seismic and acoustic sensors - exhibited at AWWA ACE 2026",
+  "description": "Seismic and acoustic sensors - exhibited at AWWA ACE 2026, ACA Congress 2026",
   "ats": {
    "type": "unknown",
    "ref": null
@@ -165664,6 +165664,26 @@
   "sector": "General Gov",
   "category": "Suppliers & Services",
   "description": "exhibited at NCSL Legislative Summit 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "not researched",
+   "roles": [],
+   "checked": null
+  }
+ },
+ {
+  "id": "precision-systems",
+  "name": "Precision Systems",
+  "website": "https://precision-systems.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "General Gov",
+  "category": "Suppliers & Services",
+  "description": "",
   "ats": {
    "type": "unknown",
    "ref": null

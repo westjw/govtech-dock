@@ -166,8 +166,13 @@ def brief_card(limit: int | None = None) -> list[dict]:
     if isinstance(rows, dict):
         rows = list(rows.values())
     done = load()
-    known = {(c.get("website") or "").lower() for c in
-             json.loads((DATA / "companies.json").read_text())}
+    # ON THE BOARD BY ITS DOMAIN, not by its exact spelling. This compared
+    # whole url strings, so "https://www.envisio.com/" beside a board record's
+    # "https://envisio.com" read as a new company: 59 of the 115 candidates
+    # researched on 2026-10-20 were companies already on file (Esri, AWS,
+    # PowerDMS, Envisio...), and each cost a researcher and a second reader.
+    known = {_site_key(c.get("website")) for c in
+             json.loads((DATA / "companies.json").read_text())} - {""}
     out = []
     for r in rows:
         if not isinstance(r, dict) or not (r.get("name") or "").strip():
@@ -176,7 +181,7 @@ def brief_card(limit: int | None = None) -> list[dict]:
         if key in done:
             continue
         # ALREADY ON THE BOARD IS NOT A QUESTION, and asking it wastes a row.
-        if (r.get("website") or "").lower() in known and r.get("website"):
+        if _site_key(r.get("website")) in known:
             continue
         out.append({
             "kind": "card", "key": key, "id": r["name"], "name": r["name"],
@@ -2117,6 +2122,18 @@ def check_rival(p: dict) -> str | None:
 #   is bypassed by keeping seven and adding seven.
 LINKEDIN = ("linkedin.com", "www.linkedin.com")
 SOURCE_QUOTE_MIN = 20
+
+
+def _site_key(url) -> str:
+    """A website as the company it names: host, lower case, no www, no scheme
+    or path. "" for nothing usable."""
+    u = str(url or "").strip()
+    if not u:
+        return ""
+    if "//" not in u:
+        u = "//" + u
+    h = _host(u)
+    return h[4:] if h.startswith("www.") else h
 
 
 def _host(url: str) -> str:

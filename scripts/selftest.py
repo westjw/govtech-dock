@@ -10674,6 +10674,41 @@ def check_a_floor_is_read_before_it_is_filed() -> int:
     return errors
 
 
+def check_a_candidate_on_the_board_by_domain_is_not_researched() -> int:
+    """A conference candidate whose website is a board company's, however it
+    is spelled, gets no research brief.
+
+    brief_card compared whole url strings, so "https://www.envisio.com/"
+    beside the board's "https://envisio.com" read as a new company: 59 of the
+    115 candidates researched on 2026-10-20 were already on file (Esri, AWS,
+    PowerDMS, Envisio...), each costing a researcher and a second reader.
+    """
+    import agents
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-cardbrief-"))
+    saved = (agents.DATA, agents.STORE)
+    try:
+        (tmp / "conference_intake").mkdir()
+        (tmp / "companies.json").write_text(json.dumps([
+            {"id": "envisio", "name": "Envisio", "website": "https://envisio.com"},
+            {"id": "acme", "name": "Acme", "website": None}]))
+        (tmp / agents.CANDIDATES).write_text(json.dumps([
+            {"name": "Envisio Solutions", "website": "https://www.Envisio.com/", "source_event": "GFOA 2026"},
+            {"name": "Envisio Bare", "website": "envisio.com", "source_event": "GFOA 2026"},
+            {"name": "NewCo", "website": "https://newco.test/", "source_event": "GFOA 2026"},
+            {"name": "No Site Inc", "website": None, "source_event": "GFOA 2026"}]))
+        agents.DATA, agents.STORE = tmp, tmp / "agent_proposals.json"
+        got = {b["name"] for b in agents.brief_card()}
+    finally:
+        agents.DATA, agents.STORE = saved
+        shutil.rmtree(tmp, ignore_errors=True)
+    if got & {"Envisio Solutions", "Envisio Bare"}:
+        errors += fail(f"a candidate on the board by its domain was briefed for research: {sorted(got)}")
+    if got != {"NewCo", "No Site Inc"}:
+        errors += fail(f"the card brief lost a genuinely new candidate, or one with no website: {sorted(got)}")
+    return errors
+
+
 def check_the_card_door_lands_only_what_it_saw() -> int:
     """A research card lands when its evidence is on the company's own site,
     a blind second reader agreed, and the researcher said high confidence;
@@ -34235,6 +34270,7 @@ def main() -> int:
     errors += check_a_date_read_is_confirmed_against_its_own_page()
     errors += check_a_list_replaces_only_a_url_ruled_not_a_floor()
     errors += check_an_infinite_scroll_floor_is_scrolled_to_its_end()
+    errors += check_a_candidate_on_the_board_by_domain_is_not_researched()
     errors += check_a_passed_edition_is_asked_about()
     errors += check_a_supplier_twin_merges_into_its_company()
     errors += check_the_hq_export_never_loses_a_supplier_to_a_missing_cache()

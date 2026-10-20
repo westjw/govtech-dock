@@ -1497,7 +1497,10 @@
     "sells_to_gov": "yes",
     "buyer_source": "https://www.motorolasolutions.com",
     "buyer_checked_on": "2026-09-11",
-    "scope_note": "The homepage industry menu lists public-safety and public-sector verticals (Law Enforcement, Fire & EMS, Corrections, Education) side by side with plainly commercial ones (Manufacturing, Mining, Retail, Hospitality, Oil & Gas, Stadiums, Transportation & Logistics), and separately U.S. Federal Government and Military. Our 'Police' category is well supported by their own site, but it captures only part of the business: this is a dual public-safety/enterprise vendor, not a police-only one."
+    "scope_note": "The homepage industry menu lists public-safety and public-sector verticals (Law Enforcement, Fire & EMS, Corrections, Education) side by side with plainly commercial ones (Manufacturing, Mining, Retail, Hospitality, Oil & Gas, Stadiums, Transportation & Logistics), and separately U.S. Federal Government and Military. Our 'Police' category is well supported by their own site, but it captures only part of the business: this is a dual public-safety/enterprise vendor, not a police-only one.",
+    "also_known_as": [
+      "Motorola Solutions: Assist - Public Safety AI"
+    ]
   },
   {
     "id": "flock-safety",
@@ -8027,7 +8030,7 @@
     "year_founded": 1969,
     "sector": "Public Works",
     "category": "Fleet & Asset Mgmt",
-    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026",
+    "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.esri.com/en-us/about/careers/job-search"
@@ -8040,7 +8043,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026",
+    "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
     "researched": true,
     "profile": {
       "paragraphs": [
@@ -8133,7 +8136,10 @@
       "by": "agent:descriptions-07",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Esri (Environmental Systems Research Institute, In"
+    ]
   },
   {
     "id": "samsara",
@@ -12420,7 +12426,10 @@
     "buyer_checked_on": "2026-09-11",
     "scope_note": "The site is single-market and says so: 'The #1 choice for K-12 web filtering on any OS', 'Supporting 50% of US K-12 students', '2M+ educators'. Named districts include Clark County School District, Chicago Public Schools, NYC Public Schools, Camdenton, Neosho, Chagrin Falls and Lee County Schools \u2014 all public districts. No commercial, higher-ed or consumer buyer is named anywhere on the homepage; a /customers page does not exist (404). One framing caveat for the board: our category is 'School Safety' and GoGuardian does sell student-safety monitoring, but the homepage leads with web filtering ",
     "sled_only": false,
-    "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts \u2014 district administrators, IT staff and teachers."
+    "sled_only_why": "scope pass 2026-09-11: their own site names no non-government buyer. K-12 school districts \u2014 district administrators, IT staff and teachers.",
+    "also_known_as": [
+      "GoGuardian and Pear Deck Learning"
+    ]
   },
   {
     "id": "securly",
@@ -20462,7 +20471,7 @@
     "year_founded": 2023,
     "sector": "General Gov",
     "category": "Citizen Services",
-    "description": "AI community events calendar: aggregation, conflict detection, auto-publishing for 100+ govs",
+    "description": "AI community events calendar: aggregation, conflict detection, auto-publishing for 100+ govs - exhibited at ICMA 2026",
     "ats": {
       "type": "html",
       "ref": "https://bewith.io/careers"
@@ -20475,10 +20484,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "direct add",
+    "source": "direct add; ICMA 2026",
     "researched": true,
     "also_known_as": [
-      "'with' Community Calendar"
+      "'with' Community Calendar",
+      "BeWith - Community Calendar"
     ],
     "also": [
       {
@@ -40692,7 +40702,7 @@
     "year_founded": 1995,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Inmate telephone, video visitation, messaging, and tablets for jails in the US and 55 countries - exhibited at North Carolina Sheriffs' Association 2026",
+    "description": "Inmate telephone, video visitation, messaging, and tablets for jails in the US and 55 countries - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -40705,8 +40715,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; North Carolina Sheriffs' Association 2026",
-    "researched": true
+    "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "NCIC Correctional Services"
+    ]
   },
   {
     "id": "encartele",
@@ -41301,7 +41314,7 @@
     "year_founded": 2012,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Secure tablet-based education, workforce training, and reentry platform in 300+ facilities (ex-APDS)",
+    "description": "Secure tablet-based education, workforce training, and reentry platform in 300+ facilities (ex-APDS) - exhibited at ACA Congress 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -41314,8 +41327,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026",
-    "researched": true
+    "source": "NSA 2026; ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "Orijin PBC"
+    ]
   },
   {
     "id": "turnkey-corrections",
@@ -41503,7 +41519,7 @@
     "year_founded": 2018,
     "sector": "Public Safety",
     "category": "Corrections",
-    "description": "Verus AI platform transcribing and analyzing inmate calls for threat and contraband investigations",
+    "description": "Verus AI platform transcribing and analyzing inmate calls for threat and contraband investigations - exhibited at ACA Congress 2026",
     "ats": {
       "type": "html",
       "ref": "https://leotechnologies.com/careers"
@@ -41516,8 +41532,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026",
-    "researched": true
+    "source": "NSA 2026; ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "Leo Technologies"
+    ]
   },
   {
     "id": "4sight-labs",
@@ -42592,7 +42611,7 @@
     "year_founded": 2007,
     "sector": "Public Safety",
     "category": "Police",
-    "description": "Livescan fingerprint and palm capture systems and AFIS identification for law enforcement - exhibited at Michigan Sheriffs Association 2026",
+    "description": "Livescan fingerprint and palm capture systems and AFIS identification for law enforcement - exhibited at Michigan Sheriffs Association 2026, ACA Congress 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -42605,7 +42624,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; Michigan Sheriffs Association 2026",
+    "source": "NSA 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
     "researched": true,
     "competitors": [
       {
@@ -42622,7 +42641,10 @@
       }
     ],
     "competitors_checked_on": "2026-09-02",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "also_known_as": [
+      "iTouch Biometric LLC"
+    ]
   },
   {
     "id": "surepassid",
@@ -54515,7 +54537,7 @@
     "year_founded": 2006,
     "sector": "General Gov",
     "category": "Suppliers & Services",
-    "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025, ITS America 2026",
+    "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025, ITS America 2026, NCSL Legislative Summit 2026",
     "ats": {
       "type": "html",
       "ref": "https://aws.amazon.com/careers/"
@@ -54528,12 +54550,15 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025; ITS America 2026",
+    "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025; ITS America 2026; NCSL Legislative Summit 2026",
     "researched": false,
     "notes": [
       {
         "text": "Website verified 2026-08-25 by an independent check that was asked to reject it. Page says: \"AWS is the world's most comprehensive cloud, enabling organizations to accelerate innovation, reduce costs, and scale more efficiently\" The URL is factually correct and does NOT violate the parent-domain rule: aws.amazon.com is AWS's own canonical property (its own brand, console, pricing, docs and its own careers page at https://aws.amazon.com/careers/, HTTP 200), not Amazon's corporate site at amazon.com. The govtech tie is on-domain too: https://aws.amazon.com/government-education/ (HTTP 200) is AWS's public sector page, and the homepage names 'AWS GovCloud (US-East)' and 'AWS GovCloud (US-West)'. MY JUDGMENT ON WHETHER THE BOARD SHOULD CARRY THIS AT ALL - the URL passes but the record is still risky, for a reason the URL check cannot fix: aws.amazon.com/careers/ does not host jobs, it hands off to https://www.amazon.jobs/en/business_categories/amazon-web-services. That feed is tens of thousands of global AWS engineering/PM/ops roles, of which SLED account executive roles are a tiny fraction. Any homepage- or careers-page-level scrape of this record will flood SLED JOBS with irrelevant listings - the same practical damage the parent-domain rule exists to prevent, arriving by a different route. Recommendation: keep the URL if AWS is wanted on the board, but the record must be wired to"
       }
+    ],
+    "also_known_as": [
+      "Amazon"
     ]
   },
   {
@@ -57880,7 +57905,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026, ACA Congress 2026",
+    "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026, ACA Congress 2026, IAEM 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -57893,7 +57918,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026; ACA Congress 2026",
+    "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026; ACA Congress 2026; IAEM 2026",
     "researched": false,
     "notes": [
       {
@@ -57901,7 +57926,8 @@
       }
     ],
     "also_known_as": [
-      "FirstNet"
+      "FirstNet",
+      "FirstNet, Built by AT&T"
     ]
   },
   {
@@ -60524,7 +60550,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025, ACA Congress 2026",
+    "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025, ACA Congress 2026, NCSL Legislative Summit 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -60537,11 +60563,12 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025; ACA Congress 2026",
+    "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025; ACA Congress 2026; NCSL Legislative Summit 2026",
     "researched": false,
     "also_known_as": [
       "LexisNexis Coplogic Solutions",
-      "LexisNexis"
+      "LexisNexis",
+      "LexisNexis State Net"
     ]
   },
   {
@@ -63041,7 +63068,7 @@
     "year_founded": null,
     "sector": "Public Safety",
     "category": "Suppliers & Services",
-    "description": "Policy management and accreditation software - exhibited at NSA 2026",
+    "description": "Policy management and accreditation software - exhibited at NSA 2026, NatCon 2026, ACA Congress 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.powerdms.com/careers"
@@ -63054,7 +63081,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NSA 2026",
+    "source": "NSA 2026; NatCon 2026; ACA Congress 2026",
     "researched": false,
     "notes": [
       {
@@ -63065,7 +63092,9 @@
       }
     ],
     "also_known_as": [
-      "PowerDMS by NEOGOV"
+      "PowerDMS by NEOGOV",
+      "PowerDMS",
+      "PowerDMS by NEO GOV"
     ],
     "profile": {
       "paragraphs": [
@@ -63289,7 +63318,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Suppliers & Services",
-    "description": "Construction project management software - exhibited at ICMA 2025, PWX 2026",
+    "description": "Construction project management software - exhibited at ICMA 2025, PWX 2026, AAAE 2027",
     "ats": {
       "type": "html",
       "ref": "https://careers.procore.com/"
@@ -63302,7 +63331,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "ICMA 2025; PWX 2026; AAAE 2026",
+    "source": "ICMA 2025; PWX 2026; AAAE 2026; AAAE 2027",
     "researched": false,
     "profile": {
       "paragraphs": [
@@ -63390,7 +63419,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
-    }
+    },
+    "also_known_as": [
+      "Procore Technologies, Inc."
+    ]
   },
   {
     "id": "pronesis",
@@ -63683,7 +63715,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Strategy & Performance",
-    "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026",
+    "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026, NCSL Legislative Summit 2026",
     "ats": {
       "type": "ashby",
       "ref": "quorum"
@@ -63702,7 +63734,7 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "NACo 2026; ICMA 2026; NLC City Summit 2026",
+    "source": "NACo 2026; ICMA 2026; NLC City Summit 2026; NCSL Legislative Summit 2026",
     "researched": false,
     "ats_note": "cleared on audit: quorum.com sells disaster recovery, not government affairs software",
     "notes": [
@@ -63714,7 +63746,10 @@
     "sells_to_gov": "yes",
     "buyer_source": "https://www.quorum.us/solutions/",
     "buyer_checked_on": "2026-09-11",
-    "scope_note": "This is the one where our filing deserves a second look. The homepage customer wall is overwhelmingly private: Toyota, Uber, Walmart, Chipotle, General Mills, DoorDash, Expedia, Mastercard, Stripe, plus Greenpeace, Sierra Club, Human Rights Watch, ALS Association, YMCA and trade groups like NAB and the American Bar Association. Government appears too - USDA, the SEC and a US Air Force case study on institutional knowledge - but those are federal, not SLED. The genuine state-and-local hook is on the solutions page, which lists State Legislatures as a buyer segment ('Track and triage legislation"
+    "scope_note": "This is the one where our filing deserves a second look. The homepage customer wall is overwhelmingly private: Toyota, Uber, Walmart, Chipotle, General Mills, DoorDash, Expedia, Mastercard, Stripe, plus Greenpeace, Sierra Club, Human Rights Watch, ALS Association, YMCA and trade groups like NAB and the American Bar Association. Government appears too - USDA, the SEC and a US Air Force case study on institutional knowledge - but those are federal, not SLED. The genuine state-and-local hook is on the solutions page, which lists State Legislatures as a buyer segment ('Track and triage legislation",
+    "also_known_as": [
+      "Quorum Analytics, Inc."
+    ]
   },
   {
     "id": "radicl",
@@ -68317,7 +68352,7 @@
     "year_founded": 1987,
     "sector": "Airports & Aviation",
     "category": "Terminal & Passenger Experience",
-    "description": "Airport passenger processing and operations software: common-use (Amadeus Flow/ACUS), self-service kiosks and bag drop, airport management systems (AODB/RMS) and biometric passenger flow for airport authorities.",
+    "description": "Airport passenger processing and operations software: common-use (Amadeus Flow/ACUS), self-service kiosks and bag drop, airport management systems (AODB/RMS) and biometric passenger flow for airport authorities. - exhibited at AAAE 2027",
     "ats": {
       "type": "html",
       "ref": "https://amadeus.com/en/careers/life-at-amadeus"
@@ -68331,9 +68366,10 @@
     "govtech": true,
     "researched": true,
     "vendor_type": "GovTech Product",
-    "source": "AAAE 2026",
+    "source": "AAAE 2026; AAAE 2027",
     "also_known_as": [
-      "Amadeus IT Group"
+      "Amadeus IT Group",
+      "Amadeus"
     ],
     "also": [
       {
@@ -68374,7 +68410,7 @@
     "year_founded": 2010,
     "sector": "Airports & Aviation",
     "category": "Terminal & Passenger Experience",
-    "description": "Cloud lost-and-found management SaaS for airports, airlines and hotels: passenger self-service claim reporting, item matching, prepaid shipping and returns logistics with reporting for the authority.",
+    "description": "Cloud lost-and-found management SaaS for airports, airlines and hotels: passenger self-service claim reporting, item matching, prepaid shipping and returns logistics with reporting for the authority. - exhibited at AAAE 2027",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -68388,7 +68424,10 @@
     "govtech": true,
     "researched": true,
     "vendor_type": "GovTech Product",
-    "source": "AAAE 2026"
+    "source": "AAAE 2026; AAAE 2027",
+    "also_known_as": [
+      "Chargerback Lost and Found Solutions"
+    ]
   },
   {
     "id": "collins-aerospace-an-rtx-business",
@@ -68446,7 +68485,7 @@
     "year_founded": 1951,
     "sector": "Airports & Aviation",
     "category": "Parking & Ground Transport",
-    "description": "Parking access and revenue control systems (PARCS) for airports: entry/exit terminals, pay stations, LPR/ticketless access, reservations and cloud parking management software.",
+    "description": "Parking access and revenue control systems (PARCS) for airports: entry/exit terminals, pay stations, LPR/ticketless access, reservations and cloud parking management software. - exhibited at AAAE 2027",
     "ats": {
       "type": "html",
       "ref": "https://designa.com/careers"
@@ -68460,7 +68499,10 @@
     "govtech": true,
     "researched": true,
     "vendor_type": "GovTech Product",
-    "source": "AAAE 2026"
+    "source": "AAAE 2026; AAAE 2027",
+    "also_known_as": [
+      "DESIGNA Access Corporation"
+    ]
   },
   {
     "id": "ensight-technologies",
@@ -88785,7 +88827,8 @@
     "vendor_type": "GovTech Product",
     "source": "competitor sweep; SNA ANC 2027",
     "also_known_as": [
-      "PrimeroEdge"
+      "PrimeroEdge",
+      "SchoolCafe + PrimeroEdge"
     ]
   },
   {
@@ -100499,7 +100542,7 @@
     "year_founded": 1988,
     "sector": "Transit & Parking",
     "category": "Fare & Payments",
-    "description": "Transit scheduling, fare and paratransit software for public operators",
+    "description": "Transit scheduling, fare and paratransit software for public operators - exhibited at APTA 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -100513,13 +100556,16 @@
     "govtech": true,
     "researched": false,
     "vendor_type": "GovTech Product",
-    "source": "competitor sweep",
+    "source": "competitor sweep; APTA 2026",
     "buyer": "Transit agencies in North America, paratransit operators, and government transportation organizations",
     "sells_to_gov": "yes",
     "sled_only": false,
     "sled_only_why": "transit run 2026-09-10: buyer stated as Transit agencies in North America, paratransit operators, and government transportation organizations",
     "acquisition_note": "Trapeze Group operates as a subsidiary of Modaxo Inc. (\"a Modaxo company\"); footer copyright reads \"\u00a9 2026 Modaxo Inc., its subsidiaries and affiliates\"",
-    "acquisitions_checked_on": "2026-09-10"
+    "acquisitions_checked_on": "2026-09-10",
+    "also_known_as": [
+      "Trapeze Software Group Inc."
+    ]
   },
   {
     "id": "easypark-group",
@@ -129728,7 +129774,10 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: NACUBO 2026; EDUCAUSE 2026",
-    "researched": true
+    "researched": true,
+    "also_known_as": [
+      "Lambent Spaces"
+    ]
   },
   {
     "id": "doobert",
@@ -131181,7 +131230,7 @@
     "year_founded": 2007,
     "sector": "General Gov",
     "category": "Citizen Services",
-    "description": "Video playout servers, scheduling, live streaming, captioning, and audio description for government access channels, legislatures, and school districts - exhibited at 3CMA 2026",
+    "description": "Video playout servers, scheduling, live streaming, captioning, and audio description for government access channels, legislatures, and school districts - exhibited at 3CMA 2026, NATOA 2026",
     "ats": {
       "type": "unknown",
       "ref": null
@@ -131194,8 +131243,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: 3CMA 2026",
-    "researched": true
+    "source": "conference sweep: 3CMA 2026; NATOA 2026",
+    "researched": true,
+    "also_known_as": [
+      "castus.tv"
+    ]
   },
   {
     "id": "brainfreeze",
@@ -131219,7 +131271,10 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: CoSN 2026",
-    "researched": true
+    "researched": true,
+    "also_known_as": [
+      "BrainFreeze by Airia"
+    ]
   },
   {
     "id": "instinctive",
@@ -134860,7 +134915,10 @@
       "by": "agent:descriptions-04",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Ativion - ContentKeeper"
+    ]
   },
   {
     "id": "droplet",
@@ -135413,7 +135471,10 @@
       "by": "agent:descriptions-07",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "EnSoftek Inc./DrCloudEHR"
+    ]
   },
   {
     "id": "miyo-health",
@@ -135963,7 +136024,7 @@
     "year_founded": 1974,
     "sector": "General Gov",
     "category": "Libraries",
-    "description": "Integrated library system, cataloging, and patron discovery software for public, school, and academic libraries - exhibited at PLA 2026",
+    "description": "Integrated library system, cataloging, and patron discovery software for public, school, and academic libraries - exhibited at PLA 2026, ACA Congress 2026",
     "ats": {
       "type": "html",
       "ref": "https://tlcdelivers.com/career-opportunities/"
@@ -135976,8 +136037,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: PLA 2026",
-    "researched": true
+    "source": "conference sweep: PLA 2026; ACA Congress 2026",
+    "researched": true,
+    "also_known_as": [
+      "TLC - The Library Corporation"
+    ]
   },
   {
     "id": "apporto",
@@ -142329,7 +142393,10 @@
     "sells_to_gov": "yes",
     "buyer_source": "https://careerteam.com/services",
     "buyer_checked_on": "2026-09-11",
-    "scope_note": "Their services page describes operating 50+ American Job Centers, running WIOA Title I, TANF Choices and SNAP E&T programs, and managing over $300 million in public workforce contracts - the money comes from workforce boards, states and counties, which is squarely SLED and fits our Workforce & Labor category. They do name 'Employer & Business Services' as a service line, but that is standard WIOA-funded recruitment support provided to employers at no charge under the public contract, so I read employers as beneficiaries rather than buyers and answered sells_outside_government 'no'. If the boar"
+    "scope_note": "Their services page describes operating 50+ American Job Centers, running WIOA Title I, TANF Choices and SNAP E&T programs, and managing over $300 million in public workforce contracts - the money comes from workforce boards, states and counties, which is squarely SLED and fits our Workforce & Labor category. They do name 'Employer & Business Services' as a service line, but that is standard WIOA-funded recruitment support provided to employers at no charge under the public contract, so I read employers as beneficiaries rather than buyers and answered sells_outside_government 'no'. If the boar",
+    "also_known_as": [
+      "Career TEAM / Career EDGE"
+    ]
   },
   {
     "id": "govstack",
@@ -142431,7 +142498,10 @@
       "by": "claude-opus-5:profile-batch-08",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Govstack by GHD Digital"
+    ]
   },
   {
     "id": "greencourt-legal-technologies-inc",
@@ -142629,7 +142699,10 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: CoSN 2026",
-    "researched": true
+    "researched": true,
+    "also_known_as": [
+      "Veracity Verification Solutions"
+    ]
   },
   {
     "id": "secure-schools",
@@ -146246,7 +146319,10 @@
       "by": "agent:descriptions-06",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Cybernut K12 Phishing Training"
+    ]
   },
   {
     "id": "incident-iq",
@@ -146809,7 +146885,10 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:claude",
       "ruled_on": "2026-09-13"
-    }
+    },
+    "also_known_as": [
+      "Innovative - ProQuest, Part of Clarivate"
+    ]
   },
   {
     "id": "localhop",
@@ -149753,7 +149832,10 @@
       "by": "agent:descriptions-04",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "CITIZ3N Government Solutions"
+    ]
   },
   {
     "id": "blue-flame-group",
@@ -154102,7 +154184,10 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: PLA 2026",
-    "researched": true
+    "researched": true,
+    "also_known_as": [
+      "MakeMake Digital Library en Espa\u00f1ol"
+    ]
   },
   {
     "id": "newsbank",
@@ -156893,7 +156978,10 @@
       "by": "claude-opus-5:profile-batch-08",
       "ruled_by": "owner",
       "ruled_on": "2026-09-08"
-    }
+    },
+    "also_known_as": [
+      "Identity Automation, a Jamf Company"
+    ]
   },
   {
     "id": "eratesync",
@@ -164533,7 +164621,7 @@
     "year_founded": null,
     "sector": "General Gov",
     "category": "Citizen Services",
-    "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026, ASBO School Business 2026",
+    "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026, ASBO School Business 2026, NSBA 2026",
     "ats": {
       "type": "html",
       "ref": "https://www.diligent.com/company/careers"
@@ -164546,8 +164634,11 @@
     },
     "govtech": true,
     "vendor_type": "GovTech Product",
-    "source": "conference sweep: Maryland Municipal League 2026; ASBO School Business 2026",
-    "researched": true
+    "source": "conference sweep: Maryland Municipal League 2026; ASBO School Business 2026; NSBA 2026",
+    "researched": true,
+    "also_known_as": [
+      "BoardDocs a Diligent Brand"
+    ]
   },
   {
     "id": "empyrean",
@@ -166617,6 +166708,198 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: ASBO School Business 2026",
+    "researched": true
+  },
+  {
+    "id": "correctek-inc",
+    "name": "CorrecTek, Inc",
+    "website": "https://correctek.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "Electronic health record software for jails, prisons and juvenile detention facilities - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true
+  },
+  {
+    "id": "maxxcontent",
+    "name": "MaxxContent",
+    "website": "https://www.maxxcontent.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "MaxxLMS learning management system and digital courses for incarcerated and justice-involved learners in jails, prisons, probation and re-entry - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true
+  },
+  {
+    "id": "saadian-technologies",
+    "name": "Saadian Technologies",
+    "website": "https://www.saadian.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "Jail intelligence software (PINS) that links jail, probation and parole data for sheriffs' offices, corrections and police investigators - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true
+  },
+  {
+    "id": "vant4ge",
+    "name": "Vant4ge",
+    "website": "https://vant4ge.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Corrections",
+    "description": "Case management, risk and needs assessment and reentry software for state corrections, jails, probation and parole agencies - exhibited at ACA Congress 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: ACA Congress 2026",
+    "researched": true
+  },
+  {
+    "id": "den-systems",
+    "name": "DEN Systems",
+    "website": "https://www.densystems.com/",
+    "location": null,
+    "year_founded": null,
+    "sector": "Public Safety",
+    "category": "Emergency Mgmt",
+    "description": "Portable managed server and network kit hosting offline mapping, chat and file-sharing apps for public safety incident response - exhibited at IAEM 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: IAEM 2026",
+    "researched": true
+  },
+  {
+    "id": "metrc",
+    "name": "Metrc",
+    "website": "https://www.metrc.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "Permitting & Licensing",
+    "description": "Cannabis track-and-trace software with RFID tags that state regulators use to monitor and inspect licensed cannabis markets - exhibited at NCSL Legislative Summit 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NCSL Legislative Summit 2026",
+    "researched": true
+  },
+  {
+    "id": "payment-in-motion-inc",
+    "name": "Payment in Motion Inc",
+    "website": "https://paymentinmotion.com",
+    "location": null,
+    "year_founded": null,
+    "sector": "Transit & Parking",
+    "category": "Fare & Payments",
+    "description": "Electronic fareboxes, validators and automated fare collection systems for transit agencies - exhibited at APTA 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: APTA 2026",
+    "researched": true
+  },
+  {
+    "id": "vulcan-technologies",
+    "name": "Vulcan Technologies",
+    "website": "https://vulcan.ai",
+    "location": null,
+    "year_founded": null,
+    "sector": "General Gov",
+    "category": "IT & AI Platforms",
+    "description": "AI agents for state government staff and public-facing AI concierges that help residents complete permits and licenses - exhibited at NCSL Legislative Summit 2026",
+    "ats": {
+      "type": "unknown",
+      "ref": null
+    },
+    "hiring": {
+      "status": "Unknown",
+      "note": "board not discovered yet",
+      "roles": [],
+      "checked": null
+    },
+    "govtech": true,
+    "vendor_type": "GovTech Product",
+    "source": "conference sweep: NCSL Legislative Summit 2026",
     "researched": true
   }
 ]

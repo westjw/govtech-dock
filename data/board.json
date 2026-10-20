@@ -3899,7 +3899,7 @@
    "city": "Phoenix, AZ",
    "state": null,
    "approx_count": null,
-   "companies": 29,
+   "companies": 33,
    "hiring": 5,
    "open_roles": 84
   },
@@ -4025,7 +4025,7 @@
    "city": "New Orleans, LA",
    "state": null,
    "approx_count": null,
-   "companies": 52,
+   "companies": 53,
    "hiring": 8,
    "open_roles": 39
   },
@@ -4079,7 +4079,7 @@
    "city": "Kansas City, MO",
    "state": null,
    "approx_count": null,
-   "companies": 0,
+   "companies": 1,
    "hiring": 0,
    "open_roles": 0
   },
@@ -4367,7 +4367,7 @@
    "city": "Philadelphia, PA",
    "state": null,
    "approx_count": null,
-   "companies": 50,
+   "companies": 51,
    "hiring": 17,
    "open_roles": 464
   },
@@ -4439,9 +4439,9 @@
    "city": "Columbus, OH",
    "state": null,
    "approx_count": null,
-   "companies": 41,
-   "hiring": 8,
-   "open_roles": 247
+   "companies": 51,
+   "hiring": 9,
+   "open_roles": 251
   },
   {
    "tag": "ACCG Advancing Georgia's Counties 2026",
@@ -4691,7 +4691,7 @@
    "city": "Long Beach, CA",
    "state": null,
    "approx_count": null,
-   "companies": 15,
+   "companies": 17,
    "hiring": 6,
    "open_roles": 451
   },
@@ -5735,7 +5735,7 @@
    "city": "Washington, DC",
    "state": null,
    "approx_count": null,
-   "companies": 12,
+   "companies": 13,
    "hiring": 5,
    "open_roles": 40
   },
@@ -5987,9 +5987,9 @@
    "city": "Atlanta, GA",
    "state": null,
    "approx_count": null,
-   "companies": 8,
-   "hiring": 1,
-   "open_roles": 346
+   "companies": 14,
+   "hiring": 2,
+   "open_roles": 351
   },
   {
    "tag": "ASTHO 2026",
@@ -6203,7 +6203,7 @@
    "city": "Los Angeles, CA",
    "state": null,
    "approx_count": null,
-   "companies": 131,
+   "companies": 133,
    "hiring": 24,
    "open_roles": 898
   },
@@ -6319,7 +6319,7 @@
  "boards_read": 492,
  "unreadable": 8,
  "rendered": 8,
- "no_board_on_file": 903,
+ "no_board_on_file": 911,
  "manual_postings": 244,
  "manual_already_fetched": 0,
  "totals": {
@@ -7070,7 +7070,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Motorola Solutions: Assist - Public Safety AI"
+   ],
    "competitors": [
     {
      "id": "centralsquare-technologies",
@@ -10947,7 +10949,7 @@
    "also": null,
    "location": "Redlands, CA",
    "year_founded": 1969,
-   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026",
+   "description": "ArcGIS - the mapping and asset data backbone of most public works departments - exhibited at NLC City Summit 2026, AWWA ACE 2026, IAAO 2026, NASCIO 2026, WEFTEC 2026, IAFC FRI 2026, APCO 2026, APTA 2026, NRPA 2026, IAEM 2026, NCSL Legislative Summit 2026",
    "website": "https://www.esri.com",
    "board_url": "https://www.esri.com/en-us/about/careers/job-search",
    "linkedin": null,
@@ -10963,7 +10965,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Esri (Environmental Systems Research Institute, In"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-20",
@@ -10985,7 +10989,8 @@
     "WEFTEC 2026",
     "IAFC FRI 2026",
     "APCO 2026",
-    "IAEM 2026"
+    "IAEM 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "APTA 2026",
    "open_roles": 0,
@@ -11008,7 +11013,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026",
+   "source": "APTA 2026; IACP 2026; ICMA 2025; NACo 2026; NRPA 2026; PWX 2026; ICMA 2026; AAAE 2026; NLC City Summit 2026; AWWA ACE 2026; IAAO 2026; NASCIO 2026; WEFTEC 2026; IAFC FRI 2026; APCO 2026; IAEM 2026; NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   },
@@ -14074,7 +14079,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "GoGuardian and Pear Deck Learning"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-20",
@@ -19697,7 +19704,7 @@
    ],
    "location": "Tel Aviv, Israel",
    "year_founded": 2023,
-   "description": "AI community events calendar: aggregation, conflict detection, auto-publishing for 100+ govs",
+   "description": "AI community events calendar: aggregation, conflict detection, auto-publishing for 100+ govs - exhibited at ICMA 2026",
    "website": "https://bewith.io",
    "board_url": "https://bewith.io/careers",
    "linkedin": null,
@@ -19714,15 +19721,18 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "'with' Community Calendar"
+    "'with' Community Calendar",
+    "BeWith - Community Calendar"
    ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-20",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "ICMA 2026"
+   ],
+   "conference": "ICMA 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -19743,7 +19753,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "direct add",
+   "source": "direct add; ICMA 2026",
    "researched": true,
    "claimed": null
   },
@@ -33577,7 +33587,7 @@
    "also": null,
    "location": "Longview, TX",
    "year_founded": 1995,
-   "description": "Inmate telephone, video visitation, messaging, and tablets for jails in the US and 55 countries - exhibited at North Carolina Sheriffs' Association 2026",
+   "description": "Inmate telephone, video visitation, messaging, and tablets for jails in the US and 55 countries - exhibited at North Carolina Sheriffs' Association 2026, ACA Congress 2026",
    "website": "https://www.ncic.com",
    "board_url": "https://www.ncic.com",
    "linkedin": null,
@@ -33593,7 +33603,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "NCIC Correctional Services"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -33601,7 +33613,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "NSA 2026",
-    "North Carolina Sheriffs' Association 2026"
+    "North Carolina Sheriffs' Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -33624,7 +33637,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026; North Carolina Sheriffs' Association 2026",
+   "source": "NSA 2026; North Carolina Sheriffs' Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34104,7 +34117,7 @@
    "also": null,
    "location": "New York, NY",
    "year_founded": 2012,
-   "description": "Secure tablet-based education, workforce training, and reentry platform in 300+ facilities (ex-APDS)",
+   "description": "Secure tablet-based education, workforce training, and reentry platform in 300+ facilities (ex-APDS) - exhibited at ACA Congress 2026",
    "website": "https://orijin.works",
    "board_url": "https://orijin.works",
    "linkedin": null,
@@ -34120,14 +34133,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Orijin PBC"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -34150,7 +34166,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -34400,7 +34416,7 @@
    "also": null,
    "location": "Austin, TX",
    "year_founded": 2018,
-   "description": "Verus AI platform transcribing and analyzing inmate calls for threat and contraband investigations",
+   "description": "Verus AI platform transcribing and analyzing inmate calls for threat and contraband investigations - exhibited at ACA Congress 2026",
    "website": "https://leotechnologies.com",
    "board_url": "https://leotechnologies.com/careers",
    "linkedin": null,
@@ -34416,14 +34432,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Leo Technologies"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 4,
@@ -34448,7 +34467,7 @@
    "scan_lead": null,
    "board_checked_on": null,
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null,
    "read_since": "2026-08-28"
@@ -35160,7 +35179,7 @@
    "also": null,
    "location": "Chicago, IL",
    "year_founded": 2007,
-   "description": "Livescan fingerprint and palm capture systems and AFIS identification for law enforcement - exhibited at Michigan Sheriffs Association 2026",
+   "description": "Livescan fingerprint and palm capture systems and AFIS identification for law enforcement - exhibited at Michigan Sheriffs Association 2026, ACA Congress 2026",
    "website": "https://itouchbiometrics.com",
    "board_url": "https://itouchbiometrics.com",
    "linkedin": null,
@@ -35176,7 +35195,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "iTouch Biometric LLC"
+   ],
    "competitors": [
     {
      "id": "integrated-biometrics",
@@ -35197,7 +35218,8 @@
    "competitors_checked_on": "2026-09-02",
    "conferences": [
     "NSA 2026",
-    "Michigan Sheriffs Association 2026"
+    "Michigan Sheriffs Association 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -35220,7 +35242,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026; Michigan Sheriffs Association 2026",
+   "source": "NSA 2026; Michigan Sheriffs Association 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -44155,7 +44177,7 @@
    "also": null,
    "location": null,
    "year_founded": 2006,
-   "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025, ITS America 2026",
+   "description": "Cloud computing platform - exhibited at ICMA 2025, NACM 2026, AIRA 2026, EDUCAUSE 2026, NASWA 2025, ITS America 2026, NCSL Legislative Summit 2026",
    "website": "https://aws.amazon.com",
    "board_url": "https://aws.amazon.com/careers/",
    "linkedin": null,
@@ -44171,7 +44193,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Amazon"
+   ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-20",
@@ -44183,7 +44207,8 @@
     "AIRA 2026",
     "EDUCAUSE 2026",
     "NASWA 2025",
-    "ITS America 2026"
+    "ITS America 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -44206,7 +44231,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025; ITS America 2026",
+   "source": "ICMA 2025; NACM 2026; AIRA 2026; EDUCAUSE 2026; NASWA 2025; ITS America 2026; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -46991,7 +47016,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026, ACA Congress 2026",
+   "description": "Dedicated public safety broadband network - exhibited at IACP 2026, Michigan Sheriffs Association 2026, APCO 2026, Connecticut Conference of Municipalities 2026, IAFC FRI 2026, ICMA 2025, Maryland Municipal League 2026, ACA Congress 2026, IAEM 2026",
    "website": "https://www.firstnet.com",
    "board_url": "https://www.firstnet.com",
    "linkedin": null,
@@ -47008,7 +47033,8 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "FirstNet"
+    "FirstNet",
+    "FirstNet, Built by AT&T"
    ],
    "competitors": null,
    "news_state": "items",
@@ -47023,7 +47049,8 @@
     "IAFC FRI 2026",
     "ICMA 2025",
     "Maryland Municipal League 2026",
-    "ACA Congress 2026"
+    "ACA Congress 2026",
+    "IAEM 2026"
    ],
    "conference": "IACP 2026",
    "open_roles": 0,
@@ -47046,7 +47073,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-26",
    "posts_at": null,
-   "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026; ACA Congress 2026",
+   "source": "IACP 2026; Michigan Sheriffs Association 2026; APCO 2026; Connecticut Conference of Municipalities 2026; IAFC FRI 2026; ICMA 2025; Maryland Municipal League 2026; ACA Congress 2026; IAEM 2026",
    "researched": null,
    "claimed": null
   },
@@ -49011,7 +49038,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025, ACA Congress 2026",
+   "description": "Legal research and information platform - exhibited at NSA 2026, IMLA 2026, MESC 2026, NHCAA 2025, ACA Congress 2026, NCSL Legislative Summit 2026",
    "website": "https://www.lexisnexis.com/en-us/gateway.page",
    "board_url": "https://www.lexisnexis.com/en-us/gateway.page",
    "linkedin": null,
@@ -49029,7 +49056,8 @@
    "acquired": null,
    "also_known_as": [
     "LexisNexis Coplogic Solutions",
-    "LexisNexis"
+    "LexisNexis",
+    "LexisNexis State Net"
    ],
    "competitors": null,
    "news_state": null,
@@ -49041,7 +49069,8 @@
     "IMLA 2026",
     "MESC 2026",
     "NHCAA 2025",
-    "ACA Congress 2026"
+    "ACA Congress 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -49064,7 +49093,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-04",
    "posts_at": null,
-   "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025; ACA Congress 2026",
+   "source": "NSA 2026; IMLA 2026; MESC 2026; NHCAA 2025; ACA Congress 2026; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -51323,7 +51352,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Policy management and accreditation software - exhibited at NSA 2026",
+   "description": "Policy management and accreditation software - exhibited at NSA 2026, NatCon 2026, ACA Congress 2026",
    "website": "https://www.powerdms.com",
    "board_url": "https://www.powerdms.com/careers",
    "linkedin": null,
@@ -51340,7 +51369,9 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "PowerDMS by NEOGOV"
+    "PowerDMS by NEOGOV",
+    "PowerDMS",
+    "PowerDMS by NEO GOV"
    ],
    "competitors": null,
    "news_state": "none_found",
@@ -51348,7 +51379,9 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "NSA 2026"
+    "NSA 2026",
+    "NatCon 2026",
+    "ACA Congress 2026"
    ],
    "conference": "NSA 2026",
    "open_roles": 0,
@@ -51371,7 +51404,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "NSA 2026",
+   "source": "NSA 2026; NatCon 2026; ACA Congress 2026",
    "researched": null,
    "claimed": null
   },
@@ -51500,7 +51533,7 @@
    "also": null,
    "location": "Carpinteria, CA",
    "year_founded": null,
-   "description": "Construction project management software - exhibited at ICMA 2025, PWX 2026",
+   "description": "Construction project management software - exhibited at ICMA 2025, PWX 2026, AAAE 2027",
    "website": "https://www.procore.com",
    "board_url": "https://careers.procore.com/",
    "linkedin": null,
@@ -51516,7 +51549,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Procore Technologies, Inc."
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-20",
@@ -51525,7 +51560,8 @@
    "conferences": [
     "ICMA 2025",
     "PWX 2026",
-    "AAAE 2026"
+    "AAAE 2026",
+    "AAAE 2027"
    ],
    "conference": "ICMA 2025",
    "open_roles": 0,
@@ -51548,7 +51584,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-20",
    "posts_at": null,
-   "source": "ICMA 2025; PWX 2026; AAAE 2026",
+   "source": "ICMA 2025; PWX 2026; AAAE 2026; AAAE 2027",
    "researched": null,
    "claimed": null
   },
@@ -51852,7 +51888,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026",
+   "description": "Public affairs and legislative tracking software - exhibited at NACo 2026, NLC City Summit 2026, NCSL Legislative Summit 2026",
    "website": "https://www.quorum.us",
    "board_url": "https://jobs.ashbyhq.com/quorum",
    "linkedin": null,
@@ -51869,7 +51905,9 @@
    "ats_note": "cleared on audit: quorum.com sells disaster recovery, not government affairs software",
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Quorum Analytics, Inc."
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-20",
@@ -51878,7 +51916,8 @@
    "conferences": [
     "NACo 2026",
     "ICMA 2026",
-    "NLC City Summit 2026"
+    "NLC City Summit 2026",
+    "NCSL Legislative Summit 2026"
    ],
    "conference": "NACo 2026",
    "open_roles": 5,
@@ -51905,7 +51944,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-26",
    "posts_at": null,
-   "source": "NACo 2026; ICMA 2026; NLC City Summit 2026",
+   "source": "NACo 2026; ICMA 2026; NLC City Summit 2026; NCSL Legislative Summit 2026",
    "researched": null,
    "claimed": null
   },
@@ -56396,7 +56435,7 @@
    ],
    "location": "Madrid, Spain (Americas airport IT hub in Orlando/Miami, FL)",
    "year_founded": 1987,
-   "description": "Airport passenger processing and operations software: common-use (Amadeus Flow/ACUS), self-service kiosks and bag drop, airport management systems (AODB/RMS) and biometric passenger flow for airport authorities.",
+   "description": "Airport passenger processing and operations software: common-use (Amadeus Flow/ACUS), self-service kiosks and bag drop, airport management systems (AODB/RMS) and biometric passenger flow for airport authorities. - exhibited at AAAE 2027",
    "website": "https://amadeus.com/en/industries/airports",
    "board_url": "https://amadeus.com/en/careers/life-at-amadeus",
    "linkedin": null,
@@ -56413,7 +56452,8 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "Amadeus IT Group"
+    "Amadeus IT Group",
+    "Amadeus"
    ],
    "competitors": null,
    "news_state": null,
@@ -56421,7 +56461,8 @@
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "AAAE 2026"
+    "AAAE 2026",
+    "AAAE 2027"
    ],
    "conference": "AAAE 2026",
    "open_roles": 0,
@@ -56444,7 +56485,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "AAAE 2026",
+   "source": "AAAE 2026; AAAE 2027",
    "researched": true,
    "claimed": null
   },
@@ -56517,7 +56558,7 @@
    "also": null,
    "location": "Carson City, NV",
    "year_founded": 2010,
-   "description": "Cloud lost-and-found management SaaS for airports, airlines and hotels: passenger self-service claim reporting, item matching, prepaid shipping and returns logistics with reporting for the authority.",
+   "description": "Cloud lost-and-found management SaaS for airports, airlines and hotels: passenger self-service claim reporting, item matching, prepaid shipping and returns logistics with reporting for the authority. - exhibited at AAAE 2027",
    "website": "https://www.chargerback.com/",
    "board_url": "https://www.chargerback.com/",
    "linkedin": null,
@@ -56533,14 +56574,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Chargerback Lost and Found Solutions"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "AAAE 2026"
+    "AAAE 2026",
+    "AAAE 2027"
    ],
    "conference": "AAAE 2026",
    "open_roles": 0,
@@ -56563,7 +56607,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
    "posts_at": null,
-   "source": "AAAE 2026",
+   "source": "AAAE 2026; AAAE 2027",
    "researched": true,
    "claimed": null
   },
@@ -56693,7 +56737,7 @@
    "also": null,
    "location": "Kiel, Germany (US office Houston, TX)",
    "year_founded": 1951,
-   "description": "Parking access and revenue control systems (PARCS) for airports: entry/exit terminals, pay stations, LPR/ticketless access, reservations and cloud parking management software.",
+   "description": "Parking access and revenue control systems (PARCS) for airports: entry/exit terminals, pay stations, LPR/ticketless access, reservations and cloud parking management software. - exhibited at AAAE 2027",
    "website": "https://designa.com/",
    "board_url": "https://designa.com/careers",
    "linkedin": null,
@@ -56709,14 +56753,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "DESIGNA Access Corporation"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-20",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "AAAE 2026"
+    "AAAE 2026",
+    "AAAE 2027"
    ],
    "conference": "AAAE 2026",
    "open_roles": 0,
@@ -56739,7 +56786,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-19",
    "posts_at": null,
-   "source": "AAAE 2026",
+   "source": "AAAE 2026; AAAE 2027",
    "researched": true,
    "claimed": null
   },
@@ -73992,7 +74039,8 @@
    "brands": null,
    "acquired": null,
    "also_known_as": [
-    "PrimeroEdge"
+    "PrimeroEdge",
+    "SchoolCafe + PrimeroEdge"
    ],
    "competitors": null,
    "news_state": "items",
@@ -83239,7 +83287,7 @@
    "also": null,
    "location": "Mississauga, ON, Canada",
    "year_founded": 1988,
-   "description": "Transit scheduling, fare and paratransit software for public operators",
+   "description": "Transit scheduling, fare and paratransit software for public operators - exhibited at APTA 2026",
    "website": "https://trapezegroup.com",
    "board_url": "https://trapezegroup.com",
    "linkedin": null,
@@ -83256,14 +83304,18 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Trapeze Software Group Inc."
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
+   "conferences": [
+    "APTA 2026"
+   ],
+   "conference": "APTA 2026",
    "open_roles": 0,
    "open_postings": 0,
    "quota_roles": 0,
@@ -83284,7 +83336,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
    "posts_at": null,
-   "source": "competitor sweep",
+   "source": "competitor sweep; APTA 2026",
    "researched": null,
    "claimed": null
   },
@@ -107273,7 +107325,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Lambent Spaces"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -108373,7 +108427,7 @@
    "also": null,
    "location": "Issaquah, WA",
    "year_founded": 2007,
-   "description": "Video playout servers, scheduling, live streaming, captioning, and audio description for government access channels, legislatures, and school districts - exhibited at 3CMA 2026",
+   "description": "Video playout servers, scheduling, live streaming, captioning, and audio description for government access channels, legislatures, and school districts - exhibited at 3CMA 2026, NATOA 2026",
    "website": "https://castus.tv",
    "board_url": "https://castus.tv",
    "linkedin": null,
@@ -108389,14 +108443,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "castus.tv"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "3CMA 2026"
+    "3CMA 2026",
+    "NATOA 2026"
    ],
    "conference": "3CMA 2026",
    "open_roles": 0,
@@ -108419,7 +108476,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
    "posts_at": null,
-   "source": "conference sweep: 3CMA 2026",
+   "source": "conference sweep: 3CMA 2026; NATOA 2026",
    "researched": true,
    "claimed": null
   },
@@ -108447,7 +108504,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "BrainFreeze by Airia"
+   ],
    "competitors": null,
    "news_state": "unread",
    "news_checked_on": "2026-10-19",
@@ -111162,7 +111221,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Ativion - ContentKeeper"
+   ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-19",
@@ -111573,7 +111634,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "EnSoftek Inc./DrCloudEHR"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -112079,7 +112142,7 @@
    "also": null,
    "location": "Inwood, WV",
    "year_founded": 1974,
-   "description": "Integrated library system, cataloging, and patron discovery software for public, school, and academic libraries - exhibited at PLA 2026",
+   "description": "Integrated library system, cataloging, and patron discovery software for public, school, and academic libraries - exhibited at PLA 2026, ACA Congress 2026",
    "website": "https://www.tlcdelivers.com",
    "board_url": "https://tlcdelivers.com/career-opportunities/",
    "linkedin": null,
@@ -112095,14 +112158,17 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "TLC - The Library Corporation"
+   ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-19",
    "competitors_none_found": null,
    "competitors_checked_on": null,
    "conferences": [
-    "PLA 2026"
+    "PLA 2026",
+    "ACA Congress 2026"
    ],
    "conference": "PLA 2026",
    "open_roles": 0,
@@ -112125,7 +112191,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-08-23",
    "posts_at": null,
-   "source": "conference sweep: PLA 2026",
+   "source": "conference sweep: PLA 2026; ACA Congress 2026",
    "researched": true,
    "claimed": null
   },
@@ -116617,7 +116683,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Career TEAM / Career EDGE"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -116685,7 +116753,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Govstack by GHD Digital"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-19",
@@ -116864,7 +116934,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Veracity Verification Solutions"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-19",
@@ -119569,7 +119641,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Cybernut K12 Phishing Training"
+   ],
    "competitors": null,
    "news_state": "items",
    "news_checked_on": "2026-10-19",
@@ -120274,7 +120348,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Innovative - ProQuest, Part of Clarivate"
+   ],
    "competitors": null,
    "news_state": "unread",
    "news_checked_on": "2026-10-19",
@@ -122283,7 +122359,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "CITIZ3N Government Solutions"
+   ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-19",
@@ -125750,7 +125828,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "MakeMake Digital Library en Espa\u00f1ol"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -127682,7 +127762,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "Identity Automation, a Jamf Company"
+   ],
    "competitors": null,
    "news_state": "none_found",
    "news_checked_on": "2026-10-19",
@@ -138749,7 +138831,7 @@
    "also": null,
    "location": null,
    "year_founded": null,
-   "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026, ASBO School Business 2026",
+   "description": "Diligent sells board and meeting management software, including agendas, minutes and public transparency sites, to school boards, municipal councils and special districts - exhibited at Maryland Municipal League 2026, ASBO School Business 2026, NSBA 2026",
    "website": "https://www.diligent.com/",
    "board_url": "https://www.diligent.com/company/careers",
    "linkedin": null,
@@ -138765,7 +138847,9 @@
    "ats_note": null,
    "brands": null,
    "acquired": null,
-   "also_known_as": null,
+   "also_known_as": [
+    "BoardDocs a Diligent Brand"
+   ],
    "competitors": null,
    "news_state": null,
    "news_checked_on": null,
@@ -138773,7 +138857,8 @@
    "competitors_checked_on": null,
    "conferences": [
     "Maryland Municipal League 2026",
-    "ASBO School Business 2026"
+    "ASBO School Business 2026",
+    "NSBA 2026"
    ],
    "conference": "Maryland Municipal League 2026",
    "open_roles": 0,
@@ -138796,7 +138881,7 @@
    "scan_lead": null,
    "board_checked_on": "2026-10-19",
    "posts_at": null,
-   "source": "conference sweep: Maryland Municipal League 2026; ASBO School Business 2026",
+   "source": "conference sweep: Maryland Municipal League 2026; ASBO School Business 2026; NSBA 2026",
    "researched": true,
    "claimed": null
   },
@@ -143583,6 +143668,470 @@
    "board_checked_on": null,
    "posts_at": null,
    "source": "conference sweep: ASBO School Business 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "correctek-inc",
+   "name": "CorrecTek, Inc",
+   "sector": "Public Safety",
+   "category": "Corrections",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Electronic health record software for jails, prisons and juvenile detention facilities - exhibited at ACA Congress 2026",
+   "website": "https://correctek.com",
+   "board_url": "https://correctek.com",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: ACA Congress 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "maxxcontent",
+   "name": "MaxxContent",
+   "sector": "Public Safety",
+   "category": "Corrections",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "MaxxLMS learning management system and digital courses for incarcerated and justice-involved learners in jails, prisons, probation and re-entry - exhibited at ACA Congress 2026",
+   "website": "https://www.maxxcontent.com/",
+   "board_url": "https://www.maxxcontent.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: ACA Congress 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "saadian-technologies",
+   "name": "Saadian Technologies",
+   "sector": "Public Safety",
+   "category": "Corrections",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Jail intelligence software (PINS) that links jail, probation and parole data for sheriffs' offices, corrections and police investigators - exhibited at ACA Congress 2026",
+   "website": "https://www.saadian.com/",
+   "board_url": "https://www.saadian.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: ACA Congress 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "vant4ge",
+   "name": "Vant4ge",
+   "sector": "Public Safety",
+   "category": "Corrections",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Case management, risk and needs assessment and reentry software for state corrections, jails, probation and parole agencies - exhibited at ACA Congress 2026",
+   "website": "https://vant4ge.com/",
+   "board_url": "https://vant4ge.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "ACA Congress 2026"
+   ],
+   "conference": "ACA Congress 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: ACA Congress 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "den-systems",
+   "name": "DEN Systems",
+   "sector": "Public Safety",
+   "category": "Emergency Mgmt",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Portable managed server and network kit hosting offline mapping, chat and file-sharing apps for public safety incident response - exhibited at IAEM 2026",
+   "website": "https://www.densystems.com/",
+   "board_url": "https://www.densystems.com/",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "IAEM 2026"
+   ],
+   "conference": "IAEM 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: IAEM 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "metrc",
+   "name": "Metrc",
+   "sector": "General Gov",
+   "category": "Permitting & Licensing",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Cannabis track-and-trace software with RFID tags that state regulators use to monitor and inspect licensed cannabis markets - exhibited at NCSL Legislative Summit 2026",
+   "website": "https://www.metrc.com",
+   "board_url": "https://www.metrc.com",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "NCSL Legislative Summit 2026"
+   ],
+   "conference": "NCSL Legislative Summit 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: NCSL Legislative Summit 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "payment-in-motion-inc",
+   "name": "Payment in Motion Inc",
+   "sector": "Transit & Parking",
+   "category": "Fare & Payments",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "Electronic fareboxes, validators and automated fare collection systems for transit agencies - exhibited at APTA 2026",
+   "website": "https://paymentinmotion.com",
+   "board_url": "https://paymentinmotion.com",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 2,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "APTA 2026"
+   ],
+   "conference": "APTA 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: APTA 2026",
+   "researched": true,
+   "claimed": null
+  },
+  {
+   "id": "vulcan-technologies",
+   "name": "Vulcan Technologies",
+   "sector": "General Gov",
+   "category": "IT & AI Platforms",
+   "also": null,
+   "location": null,
+   "year_founded": null,
+   "description": "AI agents for state government staff and public-facing AI concierges that help residents complete permits and licenses - exhibited at NCSL Legislative Summit 2026",
+   "website": "https://vulcan.ai",
+   "board_url": "https://vulcan.ai",
+   "linkedin": null,
+   "ats": "unknown",
+   "ats_ranks": "none",
+   "tier": 1,
+   "vendor_type": "GovTech Product",
+   "govtech": true,
+   "tags": [
+    "govtech-product"
+   ],
+   "parent": null,
+   "ats_note": null,
+   "brands": null,
+   "acquired": null,
+   "also_known_as": null,
+   "competitors": null,
+   "news_state": null,
+   "news_checked_on": null,
+   "competitors_none_found": null,
+   "competitors_checked_on": null,
+   "conferences": [
+    "NCSL Legislative Summit 2026"
+   ],
+   "conference": "NCSL Legislative Summit 2026",
+   "open_roles": 0,
+   "open_postings": 0,
+   "quota_roles": 0,
+   "quota_postings": 0,
+   "families": {},
+   "phase": "too few openings to read",
+   "unreadable": null,
+   "roles_from_storage": null,
+   "sled_only": null,
+   "offtopic_dropped": null,
+   "federal_dropped": null,
+   "shares_board_with": null,
+   "board_owner_unverified": null,
+   "board_owner": null,
+   "no_board_on_file": true,
+   "probe": null,
+   "enumerable": null,
+   "scan_lead": null,
+   "board_checked_on": null,
+   "posts_at": null,
+   "source": "conference sweep: NCSL Legislative Summit 2026",
    "researched": true,
    "claimed": null
   }
@@ -467738,10 +468287,10 @@
   "page only": 939,
   "absent": 605,
   "blocked": 232,
-  "unchecked": 66
+  "unchecked": 74
  },
  "redrawn": {
-  "at": "2026-10-20T13:05:24Z",
-  "inputs": "b0acc1bf935436b8c170005bf0c3fd347532417044714f3f14df0332c076e6a2"
+  "at": "2026-10-20T13:46:34Z",
+  "inputs": "016137c8ee279fe2860c4d6e9e17a5aa6bd9dd1ce574f2660f24901e6b14e2fc"
  }
 }
