@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://schoolai.com/blog/new-features-2026-2027"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "SchoolAI sells an AI platform that teachers use to connect with every student in a class. It is free for individual teachers and sold to districts.",
+   "The building block is a Space, an activity the teacher sets up, where what students see reflects the experience the teacher designed. Teachers can build one from scratch, start from templates, or curate collections shared across schools. While students work, a view called Mission Control shows what they are asking, how they are reasoning, and where they are stuck. After a session it summarizes each student's strengths and gaps, then groups the class by what students actually demonstrated.",
+   "The same view is pitched to school and district teams watching engagement across classrooms. The company points to a two-year study and reports that students who learned in Spaces showed 28% stronger critical thinking. It also lists an ESSA Level III validation behind that evidence."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://schoolai.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://schoolai.com/solutions/personalize-learning",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://schoolai.com/products/spaces",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://schoolai.com/products/mission-control",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://schoolai.com",
+    "https://schoolai.com/products/spaces"
+   ],
+   [
+    "https://schoolai.com",
+    "https://schoolai.com/products/spaces",
+    "https://schoolai.com/products/mission-control"
+   ],
+   [
+    "https://schoolai.com/products/mission-control",
+    "https://schoolai.com/products/spaces",
+    "https://schoolai.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

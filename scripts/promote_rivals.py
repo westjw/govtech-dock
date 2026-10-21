@@ -352,14 +352,30 @@ def write_accepted(store: dict, ids: list[str], by: str, why: str,
         # journal is what admin_undo reads, and CLAUDE.md records 86 agent
         # writes that had to be re-attributed by hand because a caller let
         # `by` default to the owner.
+        # FORCED ON THE JOURNAL'S OWN LIMIT. This said `wrote > 50`, so a
+        # category of 26 to 50 shortlists - read and accepted - was refused by
+        # the journal's 25-record blast guard and printed "wrote 0"
+        # (Waste & Recycling's 44, 2026-10-20). The count forced on is the
+        # count this call writes, which is what the guard asks a caller for.
+        import journal
         refused = admin.save_companies(
             companies, "promote-rivals",
             why=why or f"accepted {wrote} competitor shortlist(s)", by=by,
-            force=wrote > 50)
+            force=wrote > journal.BLAST)
         if refused:
             print(f"  REFUSED by the journal: {refused}")
             return 0
-        agents.save(store)
+        # THE PROPOSALS' SIDE OF THE SAME RULING. agents.save goes through the
+        # same 25-record guard and returns its refusal; ignored, a category
+        # over 25 landed on companies.json while every proposal stayed
+        # "pending" and the queue went on offering it (2026-10-20).
+        refused = agents.save(store, "promote-rivals",
+                              why=why or f"accepted {wrote} competitor shortlist(s)",
+                              by=by, force=wrote > journal.BLAST)
+        if refused:
+            print(f"  REFUSED by the journal on agent_proposals.json: {refused}. "
+                  f"companies.json was written; re-run to mark the proposals.")
+            return 0
     if missed:
         print(f"  NOT written ({len(missed)}), each named:", file=sys.stderr)
         for m in missed:
@@ -477,7 +493,12 @@ def main() -> int:
             p["ruled_by"] = a.by
             p["ruled_on"] = dt.date.today().isoformat()
             p["ruled_why"] = a.why or "rejected"
-        agents.save(store)
+        import journal
+        refused = agents.save(store, "promote-rivals", why=a.why or "rejected",
+                              by=a.by, force=len(a.reject) > journal.BLAST)
+        if refused:
+            print(f"  REFUSED by the journal: {refused}. Nothing was rejected.")
+            return 1
         print(f"  rejected {len(a.reject)}. The company stays researchable; "
               f"nothing was deleted.")
 

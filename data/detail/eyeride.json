@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://eyeride.io/blog/the-officer-safety-paradox/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "EYERIDE sells a fleet management system that pulls vehicle and driver data into one place for the organizations that run vehicles. The company pitches the result as an IoT solution for any industry.",
+   "Cameras anchor the system, with live views and the ability to go back months to retrieve recorded footage. Driver assistance features track following distance, lane departure and the distance to other vehicles, pedestrians or objects. A driver-facing camera reads behavior in the cab, including fatigue, smoking, phone use and an unfastened seatbelt. Warnings for harsh braking, harsh cornering, speeding and traffic violations reach both the cab and the office. Geofencing lets a manager draw areas and get alerts whenever a vehicle enters or leaves one.",
+   "For hours-of-service compliance there is a logging app kept to a handful of sections. In-vehicle cellular routers add connectivity, and the 5G model is offered with SASE options including zero trust security. Operators carrying passengers can add a counter that records how many people enter and exit at any given moment. One described use is school transport, where the tools can let educators and parents know the vehicle location. The site claims thousands of users of the platform for fleet operations."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://eyeride.io",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://eyeride.io/solutions/eyenet-5g/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://eyeride.io/solutions/eyeride-ai/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://eyeride.io/solutions/eyenet/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://eyeride.io"
+   ],
+   [
+    "https://eyeride.io",
+    "https://eyeride.io/solutions/eyeride-ai/"
+   ],
+   [
+    "https://eyeride.io",
+    "https://eyeride.io/solutions/eyenet-5g/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,52 @@
    "kind_rule": null,
    "url": "https://www.linq.com/blog/proven-ways-to-boost-your-average-daily-participation-adp-and-diversify-cafeteria-revenue/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "LINQ sells operations software to K-12 school districts across nutrition, the business office, family communication, and payments. Its ERP product manages budgets and payroll with tools built for the way districts actually work. The nutrition line is sold to state agencies as well as school districts.",
+   "In the cafeteria, the point of service system is meant to deliver meals under any condition, even without internet. Behind the line, staff get a real-time view of inventory across all district sites from a single location. Menu planning automatically flags plans that do not meet USDA requirements. Integrated modules generate a comprehensive administrative review report in seconds. Districts can submit claims to the state agency system without leaving the district nutrition platform. Families pay school fees, fund meal accounts, view menus, and submit meal applications from one portal.",
+   "The nutrition platform is branded TITAN by LINQ. The company positions these products around compliance with federal rules and regulations. Testimonials on the site come from a nutrition director at St. Vrain Valley School District in Colorado. Another comes from Willard Public Schools in Missouri."
+  ],
+  "quote": {
+   "text": "When K-12 operations run the way they should, every child thrives.",
+   "url": "https://www.linq.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.linq.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.linq.com/solutions/nutrition/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.linq.com/solutions/nutrition/district-nutrition/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.linq.com/solutions/nutrition/district-nutrition/front-of-house/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.linq.com",
+    "https://www.linq.com/solutions/nutrition/"
+   ],
+   [
+    "https://www.linq.com/solutions/nutrition/district-nutrition/front-of-house/",
+    "https://www.linq.com/solutions/nutrition/district-nutrition/",
+    "https://www.linq.com/solutions/nutrition/"
+   ],
+   [
+    "https://www.linq.com/solutions/nutrition/district-nutrition/",
+    "https://www.linq.com/solutions/nutrition/",
+    "https://www.linq.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

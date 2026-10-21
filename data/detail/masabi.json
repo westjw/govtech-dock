@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.masabi.com/resources/what-is-software-as-a-service/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Masabi sells fare payment technology to public transport agencies through a platform called Justride. Its account-based approach lets a passenger travel with a mobile phone, a contactless bank card or a smartcard.",
+   "The platform covers smart card, open payment, mobile ticketing, barcode and mobility-as-a-service through a suite of APIs and SDKs. A ready-to-go version arrives pre-integrated with validators, apps, payment gateways and acquiring banks. An open architecture with APIs, SDKs and pre-integrations is meant to make the system easier to implement and operate. The company says the platform is cloud-native and designed to scale for large cities and complex transit systems.",
+   "Masabi traces its start to launching the first UK mobile ticketing application with Chiltern Railways in 2007. It says it launched the first mobile ticketing deployment for a United States transit agency in 2012. The about page lists a London office address. It also lists addresses in Denver, Colorado, and in Cluj-Napoca, Romania."
+  ],
+  "quote": {
+   "text": "Quicker to launch, lower total cost of ownership, reduced risk, and continuous updates.",
+   "url": "https://www.masabi.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.masabi.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.masabi.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.masabi.com",
+    "https://www.masabi.com/about/"
+   ],
+   [
+    "https://www.masabi.com"
+   ],
+   [
+    "https://www.masabi.com/about/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

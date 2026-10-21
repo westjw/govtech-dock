@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://www.meetsummer.com/post/student-debt-reality-check-its-not-the-employees-you-think"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Summer offers student loan guidance to the people who carry the debt, paid for by the employers, cities and unions that sponsor it rather than by the borrowers. The company states plainly that it is not a lender, servicer or credit company, and that it neither collects payments nor reports to credit bureaus.",
+   "Members are matched to the federal and state programs they qualify for and given planning tools alongside that match. Help arrives through in-app support and one-to-one consultations with student loan experts. The service also covers saving for college, with a database of more than thirty thousand scholarships to browse. Summer says the federal government offers more than 150 programs to help people manage, reduce or forgive student loans.",
+   "The company pitches partnerships to HR leaders and to government officials alike. It claims an average of forty-five thousand dollars in savings per person, and millions for local economies. Its founders are described as former federal policymakers and consumer finance leaders who spent years inside that system. Summer lists itself as a Certified B Corporation."
+  ],
+  "quote": {
+   "text": "We're not a lender, servicer, or credit company. We don't collect payments or report to credit bureaus.",
+   "url": "https://www.meetsummer.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.meetsummer.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.meetsummer.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.meetsummer.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.meetsummer.com/about",
+    "https://www.meetsummer.com"
+   ],
+   [
+    "https://www.meetsummer.com/solutions",
+    "https://www.meetsummer.com/about"
+   ],
+   [
+    "https://www.meetsummer.com/solutions",
+    "https://www.meetsummer.com/about"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

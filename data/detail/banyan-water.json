@@ -81,5 +81,49 @@
    "kind_rule": null,
    "url": "https://banyanwater.com/blog/five-benefits-of-smart-water-management/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Banyan Water sells water management software to commercial customers who want control over what their properties consume. Irrigation is the piece the company points to first, claiming reductions of 40 to 60 percent while the landscape stays healthy.",
+   "Watering schedules are set from local weather, property size, plant life, and the type of irrigation system installed. A patented leak detection feature monitors irrigation water and can shut the system off automatically when a problem appears. Indoors, real-time monitoring is meant to catch leaks before damage occurs or an unexpected bill arrives. Submeters on individual tenants let property managers bill back by actual volume rather than by an even split.",
+   "The company says its systems are installed at over 1,000 properties in the United States, across multifamily, office, retail, hospitality, and mixed use buildings. Reported savings are checked against the customer's utility bills. A mobile app lets clients see information about water use from a phone."
+  ],
+  "quote": {
+   "text": "Our methods are transparent, effective, and measurable.",
+   "url": "https://banyanwater.com/solutions/"
+  },
+  "sources": [
+   {
+    "url": "https://banyanwater.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://banyanwater.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://banyanwater.com/solutions/irrigation-insight/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://banyanwater.com/solutions/indoor-insight/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://banyanwater.com/solutions/"
+   ],
+   [
+    "https://banyanwater.com/solutions/irrigation-insight/",
+    "https://banyanwater.com/solutions/indoor-insight/"
+   ],
+   [
+    "https://banyanwater.com",
+    "https://banyanwater.com/solutions/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

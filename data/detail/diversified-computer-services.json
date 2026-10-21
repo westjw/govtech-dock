@@ -45,5 +45,50 @@
    "kind_rule": null,
    "url": "https://dcs-dcs.com/blog/arpa-funds-guidelines/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Diversified Computer Services sells information management software used by local governments to run daily operations. Its main product for that market is CIMS, which offers more than 25 functional modules for local government departments. The company says it has been helping local governments capture and manage information for more than 30 years.",
+   "CIMS centralizes and automates the creation, assignment, and tracking of tasks, projects, and work orders. Every functional module is made available to all customers, so enhancements reach the whole user community. Integrated mapping generates interactive maps based on Google Maps without specialist operators. More than 500 dynamic reports let departments measure performance and study trends. In the field, problems can be reported and converted into work orders, with GPS coordinates captured and photos uploaded.",
+   "Alongside CIMS the company sells TracSpot, GPS tracking software used by businesses and local governments for situational awareness. A facilities management system tracks work orders start to finish and shows where funds go through budget and purchase tracking. Ongoing training and support come with the standard subscription. Customers also get an invitation to an annual user conference."
+  ],
+  "quote": {
+   "text": "Be better stewards of taxpayers dollars",
+   "url": "https://dcs-dcs.com/products/local-government-software/"
+  },
+  "sources": [
+   {
+    "url": "https://dcs-dcs.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dcs-dcs.com/products/local-government-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dcs-dcs.com/products/gps-tracking-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dcs-dcs.com/products/facilities-management-system/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://dcs-dcs.com",
+    "https://dcs-dcs.com/products/local-government-software/"
+   ],
+   [
+    "https://dcs-dcs.com/products/local-government-software/"
+   ],
+   [
+    "https://dcs-dcs.com/products/gps-tracking-software/",
+    "https://dcs-dcs.com/products/facilities-management-system/",
+    "https://dcs-dcs.com/products/local-government-software/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

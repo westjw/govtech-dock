@@ -27,5 +27,51 @@
    "kind_rule": null,
    "url": "https://www.obvio.ai/post/7-surprising-facts-about-traffic-safety"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Obvio sells automated traffic safety cameras to towns and cities. The company describes context-aware technology that helps cities track reckless behavior, educate drivers and enforce traffic laws. School zone violations are among the behaviors the cameras target.",
+   "Installation is described as taking about a week, with no power or utility permissions needed. The hardware is said to hold up through winter storms and snow. Processing happens on the device, which the company says lets a single camera detect a wide variety of reckless behavior. Alongside enforcement, the site lists community dashboards and yard signs. Warning letters carry video proof of what happened. Real-time detection is presented as a way to increase transparency and awareness.",
+   "Testimonials come from police chiefs and town officials in Maryland, including the chief in the Town of Colmar Manor. The company states that it is funded by venture capital firms. A banner on the site points to a Virginia stop sign and crosswalk enforcement law taking effect July 1, 2026."
+  ],
+  "quote": {
+   "text": "Our mission is to curb reckless driving and save lives on our roadways",
+   "url": "https://www.obvio.ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.obvio.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.obvio.ai/mission",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.obvio.ai/product",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.obvio.ai/solutions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.obvio.ai/solutions",
+    "https://www.obvio.ai"
+   ],
+   [
+    "https://www.obvio.ai/product",
+    "https://www.obvio.ai/solutions",
+    "https://www.obvio.ai/mission"
+   ],
+   [
+    "https://www.obvio.ai",
+    "https://www.obvio.ai/mission"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

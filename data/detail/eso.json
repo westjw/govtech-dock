@@ -108,5 +108,40 @@
    "kind_rule": "Acquires",
    "url": "https://www.eso.com/news/press-releases/eso-acquires-d2i-accelerating-emergency-intelligence-to-drive-performance-and-improve-outcomes-across-fire-ems-and-health-systems/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ESO makes documentation and records software for the people who respond to emergencies, starting with paramedics writing up a call. Fire departments are a second audience, where the pitch is management insight into performance and readiness.",
+   "The products are framed as one ecosystem, with patient records shared securely with prehospital partners in real time. Hospitals get a version aimed past compliance reporting, toward spotting risk and emerging trends. Product news on the home page includes Agency Forms for the company's EHR.",
+   "A fire and emergency services analyst is among the customers quoted on the home page. ESO says the data at the center of that ecosystem fuels research that shapes clinical protocols and public policy. The about page points to published research papers that feature ESO data. It also publishes indices, among them a 2026 ESO Fire Service Index."
+  ],
+  "quote": {
+   "text": "Data clarity is decision clarity.",
+   "url": "https://www.eso.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.eso.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.eso.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.eso.com"
+   ],
+   [
+    "https://www.eso.com"
+   ],
+   [
+    "https://www.eso.com",
+    "https://www.eso.com/about/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

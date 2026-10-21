@@ -108,5 +108,48 @@
    "kind_rule": null,
    "url": "https://www.bonterratech.com/resources/how-bonterra-que-transforms-case-management-workflows"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Bonterra sells software for fundraising, corporate giving, grantmaking and case management to nonprofits, foundations, companies and government programs. For the government audience the offer is case management tooling for agencies delivering services and chasing funding.",
+   "Case management runs under the Apricot name, where staff get participant summaries and can ask plain-language questions of their own data. The fundraising side is EveryAction, which keeps a single contact record spanning email, mobile, giving and engagement history. An assistant called Bonterra Que sits inside those products and is built around discrete skills such as drafting donor emails or summarizing grant applications.",
+   "The company was formed in 2021 out of several existing businesses, including EveryAction, Social Solutions and Cybergrants. It states that its ecosystem serves more than 20,000 social good organizations and helps power over $28 billion in annual giving."
+  ],
+  "quote": {
+   "text": "Powering fundraising, CSR, and case management",
+   "url": "https://www.bonterratech.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.bonterratech.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bonterratech.com/product/nonprofit-hub",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bonterratech.com/solutions/bonterra-que",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.bonterratech.com/product/everyaction",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.bonterratech.com"
+   ],
+   [
+    "https://www.bonterratech.com/solutions/bonterra-que",
+    "https://www.bonterratech.com/product/everyaction"
+   ],
+   [
+    "https://www.bonterratech.com/product/everyaction"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

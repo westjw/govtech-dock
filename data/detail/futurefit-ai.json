@@ -45,5 +45,50 @@
    "kind_rule": "Update",
    "url": "https://www.futurefit.ai/resources/new-investment-same-mission----an-update-from-futurefit-ai"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "FutureFit AI sells workforce technology that connects people to careers, employers to talent, and workforce partners to tools. Its Pathways Platform pulls separate portals into one experience for job seekers, employers, and program administrators.",
+   "A career coaching product works through a conversational interface that meets job seekers in their own language and on their own time. Self-serve tools are meant to route job seekers to the right program and take pressure off staff. The company says the underlying data covers 350 million talent profiles, 80,000 job titles, and 30,000 skills. It states that its algorithms are designed not to perpetuate existing biases in the labor market.",
+   "FutureFit AI positions the platform as connective tissue between workforce systems that would otherwise stay siloed. The company describes its mission as building better pathways between people, skills, and opportunities. It traces its origins to personal experience navigating career transitions in unfamiliar environments."
+  ],
+  "quote": {
+   "text": "Our journey began with personal experiences navigating complex career transitions in unfamiliar environments.",
+   "url": "https://www.futurefit.ai/about-us"
+  },
+  "sources": [
+   {
+    "url": "https://www.futurefit.ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.futurefit.ai/product/pathways-platform",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.futurefit.ai/product/career-copilot",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.futurefit.ai/about-us",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.futurefit.ai",
+    "https://www.futurefit.ai/product/pathways-platform"
+   ],
+   [
+    "https://www.futurefit.ai/product/career-copilot",
+    "https://www.futurefit.ai"
+   ],
+   [
+    "https://www.futurefit.ai/product/pathways-platform",
+    "https://www.futurefit.ai/about-us"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,47 @@
+{
+ "profile": {
+  "paragraphs": [
+   "GMV builds software for transit agencies that keeps information clear and connected, from dispatch to drivers to riders. Two dispatch products split that market, with GMV Sync as the fully integrated option for small and mid-sized agencies and ITS Suite adding capabilities and customizations for large ones.",
+   "The computer-aided dispatch and automatic vehicle location technology tracks a fleet in real time. Dispatchers can filter and search for vehicles meeting criteria such as being on specific routes or running off schedule. Other tools improve the spacing between vehicles from a single screen. Reports export in PDF, Excel, and CSV format, or arrive as scheduled automated emails. Riders get arrival predictions and service alerts through websites, phone-based interactive voice response systems, SMS text messages, and digital signs. Auto-generated GTFS and GTFS-RT feeds share the same information with applications like Google Maps, Apple Maps, and Transit. A white-labeled app carries real-time arrival predictions and live bus maps under an agency's own branding.",
+   "The products are pitched as built for transit agencies of all sizes. The company describes its job as helping agencies provide mobility for transit riders in big cities and small towns across the United States. A headline on the site points to keeping LADOT moving through 2030. Visitors are invited to get to know the US-based team behind the products."
+  ],
+  "quote": {
+   "text": "We create powerful, intuitive tools for the people who make transit work.",
+   "url": "https://gmvtransit.com"
+  },
+  "sources": [
+   {
+    "url": "https://gmvtransit.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gmvtransit.com/solutions/dispatch-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gmvtransit.com/solutions/analytics-reporting/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://gmvtransit.com/solutions/passenger-information/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://gmvtransit.com",
+    "https://gmvtransit.com/solutions/dispatch-software/"
+   ],
+   [
+    "https://gmvtransit.com/solutions/dispatch-software/",
+    "https://gmvtransit.com/solutions/analytics-reporting/",
+    "https://gmvtransit.com/solutions/passenger-information/"
+   ],
+   [
+    "https://gmvtransit.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

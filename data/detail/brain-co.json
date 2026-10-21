@@ -108,5 +108,32 @@
    "kind_rule": null,
    "url": "https://brain.co/blog/llm-generated-rules-engines-executable-if-then-logic-for-llm-explainability-in-regulated-industries"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Brain Co. builds what it calls agent-native operating systems for institutions across the public and private sectors. In local government, the target is the everyday work of permitting, licensing and procurement.",
+   "Each system is meant to be fit to a customer's own data, workflows and outcomes. Underneath sits a platform called Atlas, described as having sovereign-grade security and no model lock-in. The stated method is to start with proven components, fit them to existing workflows and deploy in weeks.",
+   "The same approach is offered to insurers for underwriting, claims and authorization. In health it covers prior authorization, denials and intake, the work between a patient and their care. In finance it covers reporting, reconciliation and compliance, with every number traced back to its source. The company says it was built by engineers from Google, DeepMind, NVIDIA, Palantir and Tesla."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://brain.co",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://brain.co"
+   ],
+   [
+    "https://brain.co"
+   ],
+   [
+    "https://brain.co"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -99,5 +99,38 @@
    "kind_rule": null,
    "url": "https://www.gogovapps.com/blog/public-works-software-for-local-government"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "GOGov sells citizen-facing software to local governments of every size, covering service requests, code enforcement, notifications, online permitting and licensing, and mobile apps. The request side doubles as a CRM, a 311 line and a helpdesk for residents.",
+   "The notification product pushes a government's content out across its channels. Buyers can begin with a handful of users and add departments over time, or bring them all on at once. Support and training are described as part of every subscription. The company says the products are meant to be tailored to how each customer already works.",
+   "The company is based on Long Island, New York. It states that it ranked No. 2807 on the 2026 Inc. 5000 list and in the top 100 among government services companies nationally. Its news page describes the City of Calera, Alabama, earning a 2025 GMIS International award for a resident app."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.gogovapps.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.gogovapps.com/about",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.gogovapps.com"
+   ],
+   [
+    "https://www.gogovapps.com",
+    "https://www.gogovapps.com/about"
+   ],
+   [
+    "https://www.gogovapps.com/about",
+    "https://www.gogovapps.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

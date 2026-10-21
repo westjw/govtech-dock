@@ -108,5 +108,47 @@
    "kind_rule": null,
    "url": "https://it.ivalua.com/blog/materiali-diretti-negli-acquisti-la-guida-definitiva/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ivalua sells a procurement platform built for supplier and spend management. It is meant to cover indirect goods, services, direct materials and complex categories in one place.",
+   "The source-to-pay product unifies intake, source-to-contract, supplier management and procure-to-pay on one data model. Intake management gives employees a central hub for requests, which are routed automatically to the right workflow, owner and system. Source-to-contract carries a purchase from intake and supplier evaluation through contract execution and spend visibility in one connected system. At the far end, accounts payable automation covers invoice capture, global compliance and supplier visibility. The platform offers low-code and no-code configuration and integrates with existing ERP systems.",
+   "The company says hundreds of well-known brands use the platform. It also claims a customer retention record spanning more than twenty years. Ivalua cites its placement as a Leader in a 2026 Gartner Magic Quadrant report on source-to-pay suites."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://ivalua.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ivalua.com/solutions/process/source-to-pay-platform/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ivalua.com/solutions/process/intake-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.ivalua.com/solutions/process/source-to-contract/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://ivalua.com"
+   ],
+   [
+    "https://www.ivalua.com/solutions/process/source-to-pay-platform/",
+    "https://www.ivalua.com/solutions/process/intake-management/",
+    "https://www.ivalua.com/solutions/process/source-to-contract/"
+   ],
+   [
+    "https://ivalua.com",
+    "https://www.ivalua.com/solutions/process/source-to-pay-platform/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

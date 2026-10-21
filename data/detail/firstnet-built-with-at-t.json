@@ -81,5 +81,39 @@
    "kind_rule": null,
    "url": "https://www.firstnet.com/community/news/firstnet-helps-save-lives.html"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "FirstNet is a wireless network built with and for the public safety community. Agencies can buy service for their teams. Individual public service professionals who pay for their own service can sign up too.",
+   "Traffic rides Band 14, described as a separate lane for time on duty or on call. Calls, texts and data always receive First Priority on the network. Phones, tablets and other hardware are certified for FirstNet before they are sold on it. Cell boosters, routers and repeaters sit alongside those handsets. So do deployables and satellite options for places where coverage falls short.",
+   "Eligibility runs across healthcare, public works, the justice system, the National Guard and more. Fire and rescue crews are offered mission-critical push-to-talk, coverage enhancements and secure apps. A dedicated team supports planned events and emergencies. The company also announced a 5G standalone core."
+  ],
+  "quote": {
+   "text": "The only network built with and for the public safety community",
+   "url": "https://www.firstnet.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.firstnet.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.firstnet.com/content/dam/firstnet/case-studies/customer-story-town-of-duck.pdf",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.firstnet.com"
+   ],
+   [
+    "https://www.firstnet.com"
+   ],
+   [
+    "https://www.firstnet.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

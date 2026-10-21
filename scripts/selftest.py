@@ -534,6 +534,53 @@ SALARY_RAW_CASES = [
 
 
 
+def check_a_rival_category_over_the_blast_limit_lands_whole() -> int:
+    """A read and accepted category of 26 to 50 shortlists lands, on both files.
+
+    write_accepted forced the journal only past 50, so Waste & Recycling's 44
+    were refused by the 25-record guard after the owner accepted them; and the
+    proposals' own save ignored its refusal, so Water's 67 landed on
+    companies.json while all 67 proposals stayed "pending" (2026-10-20). Both
+    writers are stubbed to behave like the journal: refuse past BLAST unless
+    forced.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import admin, agents, journal, promote_rivals as pr
+    errors = 0
+    n = journal.BLAST + 5
+    cos = [{"id": f"c{i}", "name": f"C{i}", "sector": "Public Works",
+            "category": "Waste & Recycling"} for i in range(n)]
+    def store():
+        return {f"rival:c{i}": {"kind": "rival", "id": f"c{i}", "name": f"C{i}",
+                                "status": "pending", "rivals": [{"id": "c0", "why": "x"}]}
+                for i in range(n)}
+    calls = []
+    def like_the_journal(kind):
+        def save(*a, **k):
+            calls.append((kind, k.get("force")))
+            return None if k.get("force") else f"over the limit of {journal.BLAST}"
+        return save
+    real = (admin.read_companies, admin.save_companies, agents.save)
+    try:
+        admin.read_companies = lambda: [dict(c) for c in cos]
+        admin.save_companies = like_the_journal("companies")
+        agents.save = like_the_journal("proposals")
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            got = pr.write_accepted(store(), [c["id"] for c in cos], "selftest", "fixture")
+        if got != n or ("companies", True) not in calls or ("proposals", True) not in calls:
+            errors += fail(f"an accepted category of {n} did not land on both files "
+                           f"(wrote {got}, saves {calls})")
+        agents.save = lambda *a, **k: "refused"
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            got = pr.write_accepted(store(), [c["id"] for c in cos], "selftest", "fixture")
+        if got != 0:
+            errors += fail("a refused save of the proposals was ignored and reported as written")
+    finally:
+        admin.read_companies, admin.save_companies, agents.save = real
+    return errors
+
+
 def check_rival_door_refuses_a_category() -> int:
     """The competitor door must refuse a category wearing a better word.
 
@@ -12640,6 +12687,32 @@ def check_landing_refuses_a_category_nobody_gated() -> int:
             elif admin.read_companies()[0].get("sells_to_gov") != "yes":
                 errors += fail("--land-buyer reported success and wrote "
                                "nothing to companies.json")
+
+            # --dry-run MEANS NOTHING IS WRITTEN (2026-10-20: --land-all
+            # ignored it and published 218 write-ups). land() is stubbed to
+            # record calls; the real run must call it, or this proves nothing.
+            st = agents.load()
+            st["profile:acme"] = {"kind": "profile", "id": "acme", "name": "Acme",
+                                  "status": "pending", "confidence": "high",
+                                  "at": "2026-01-01T00:00:00-04:00",
+                                  "paragraphs": [[{"text": "t", "url": "u", "quote": "q"}]]}
+            agents.STORE.write_text(_json.dumps(st))
+            calls, real_land = [], promote_profiles.land
+            promote_profiles.land = lambda *a, **k: calls.append(a) or 0
+            try:
+                run("--gate", "Police")
+                for argv in (("--land-all", "--dry-run"), ("--land", "Police", "--dry-run")):
+                    rc, out = run(*argv, "--by", "selftest")
+                    if calls or "DRY RUN" not in out:
+                        errors += fail(f"{' '.join(argv)} published, or did not say it "
+                                       f"was a dry run: {out[-160:]!r}")
+                    calls.clear()
+                run("--land-all", "--by", "selftest")
+                if not calls:
+                    errors += fail("--land-all no longer lands a reviewed category, "
+                                   "so the dry-run check above proves nothing")
+            finally:
+                promote_profiles.land = real_land
         finally:
             (agents.STORE, promote_profiles.READ,
              promote_profiles.BUYER_READ, sys.argv) = keeps
@@ -34575,6 +34648,7 @@ def main() -> int:
     errors += check_an_ats_change_waits_for_the_crawl()
     errors += check_board()
     errors += check_rival_door_refuses_a_category()
+    errors += check_a_rival_category_over_the_blast_limit_lands_whole()
     errors += check_jobposting_never_invents_a_country()
     errors += check_the_company_detail_ships()
     errors += check_news_reads_a_date_only_where_a_reader_would()

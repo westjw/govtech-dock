@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://easehealth.com/resources/credentialing-checklist"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Ease Health sells behavioral health providers a single system for referrals, clinical notes and billing in place of separate CRM, EHR and revenue cycle tools. The company says the product was built from the ground up for behavioral health practices, with AI at the core.",
+   "Admissions begin in a CRM that manages referrals, tracks conversion, sends forms and checks eligibility before handing off to other teams. When a lead converts, the patient chart is created in the EHR with no duplicate work. Eligibility checks run in real time, with AI-summarized verifications of benefits and data extracted by OCR. Reporting comes through embedded Power BI dashboards that run from lead activity to clinical and financial outcomes. Billing sits on a native revenue cycle engine that supports billing services with real-time visibility and follow-up.",
+   "The company says the platform was built alongside clinicians and practice leaders who understand modern behavioral health care. Press coverage listed on its own about page reports that the company emerged from stealth with $41M from Andreessen Horowitz. Its case studies page currently lists none."
+  ],
+  "quote": {
+   "text": "give clinicians and operators their time back so they can focus on care, not paperwork.",
+   "url": "https://easehealth.com/about"
+  },
+  "sources": [
+   {
+    "url": "https://easehealth.com",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://easehealth.com/about",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://easehealth.com/case-studies",
+    "fetched_on": "2026-09-02"
+   },
+   {
+    "url": "https://easehealth.com/products/crm",
+    "fetched_on": "2026-09-02"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://easehealth.com"
+   ],
+   [
+    "https://easehealth.com",
+    "https://easehealth.com/products/crm"
+   ],
+   [
+    "https://easehealth.com",
+    "https://easehealth.com/about",
+    "https://easehealth.com/case-studies"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

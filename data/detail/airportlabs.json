@@ -90,5 +90,35 @@
    "kind_rule": null,
    "url": "https://www.airportlabs.com/post/the-architecture-of-a-connected-airport-what-real-time-data-integration-looks-like-in-practice-7a811"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "AirportLabs sells hosted software that airports run their operations on, offered as one platform meant to address every facet of airport operations. The company describes its portfolio as a composable suite of operational products developed entirely in-house.",
+   "At the core is an airport operational database that unifies data streams so routine operations can be automated. Underneath it sits a data integration and API platform for aviation, built to be scalable and fault tolerant. Other products cover queue management, which the company says is built to optimise airport passenger flow. Aeronautical and commercial billing is handled by a product intended to automate core financial operations. A mobile community app gives airport teams a place to stay connected, resolve issues and keep operations running around the clock.",
+   "The site says more than 100 airports worldwide use its products. A customer success team is described as providing round-the-clock technical expertise and proactive health monitoring. Announcements on the site include a partnership with Cologne Bonn Airport to connect staff and centralise operations."
+  ],
+  "quote": {
+   "text": "The operational backbone of the world's most efficient airports.",
+   "url": "https://www.airportlabs.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.airportlabs.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.airportlabs.com"
+   ],
+   [
+    "https://www.airportlabs.com"
+   ],
+   [
+    "https://www.airportlabs.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

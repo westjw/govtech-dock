@@ -108,5 +108,46 @@
    "kind_rule": null,
    "url": "https://identiv.com/blog/the-rise-of-ble-what-it-means-for-the-future-of-supply-chain-visibility-2/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Identiv designs and manufactures specialized IoT inlays, tags and labels for organizations that need physical objects to carry a digital identity. The markets it names run from smart home devices and healthcare to cold chain logistics, smart packaging, specialty retail and luxury goods.",
+   "The products are used to authenticate goods and consumables, engage consumers and support patient care. They also track items and environmental conditions across a supply chain for control, compliance and decision making. Sensing options cover temperature, humidity, shock, strain and capacitive sensors. For cold chain work the company describes real-time monitoring and alerts on conditions such as temperature and humidity. Manufacturing is described as running from concept to deployment under one roof.",
+   "Libraries are one of the applications shown, with RFID gates and inventory that manages itself. The company says its global network includes semiconductor manufacturers, software platform providers and industry associations. Its case studies page groups use cases, white papers and customer stories across healthcare, retail and logistics."
+  ],
+  "quote": {
+   "text": "Standard IoT gives you data. Identiv gives you intelligence.",
+   "url": "https://identiv.com"
+  },
+  "sources": [
+   {
+    "url": "https://identiv.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://identiv.com/about-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://identiv.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://identiv.com/about-us/"
+   ],
+   [
+    "https://identiv.com/about-us/",
+    "https://identiv.com"
+   ],
+   [
+    "https://identiv.com",
+    "https://identiv.com/about-us/",
+    "https://identiv.com/case-studies/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

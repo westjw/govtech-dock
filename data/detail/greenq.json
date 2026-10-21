@@ -1,0 +1,31 @@
+{
+ "profile": {
+  "paragraphs": [
+   "GreenQ sells equipment and software that turn an ordinary garbage truck into an instrumented one. The company says it designs the technology for municipalities, collection vendors, and system integrators.",
+   "A tracking device is installed on the truck, where it weighs incoming garbage and tracks route and mileage. Because the hardware sits on the truck, no sensors need to be added to the bins. A recommendations engine then suggests logistical improvements and route optimization from the aggregated data. Results reach users through a dashboard of reports and analytics. The same approach extends to grapple trucks, where mounting the system measures bulk waste and monitors collection.",
+   "The company was established in 2015 with a stated goal of bringing efficient technology to waste management. Its stated aim is that municipalities can reduce expenses, reduce emissions, and provide better services to their citizens. One case study reports a city of 120,000 residents cutting costs and emissions by over 50 percent. Another describes launching the real-time monitoring and analytics platform in an IBM Bluemix environment on serverless IBM Cloud Functions."
+  ],
+  "quote": {
+   "text": "Stop Guessing - Start Measuring",
+   "url": "https://greenq.co.il"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://greenq.co.il",
+    "https://greenq.co.il/about-us/"
+   ],
+   [
+    "https://greenq.co.il",
+    "https://greenq.co.il/about-us/",
+    "https://greenq.co.il/products/"
+   ],
+   [
+    "https://greenq.co.il/about-us/",
+    "https://greenq.co.il/case-studies/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

@@ -108,5 +108,44 @@
    "kind_rule": null,
    "url": "https://www.nexgenam.com/blog/what-is-proactive-maintenance/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "NEXGEN sells enterprise asset management software aimed at municipal and industrial organizations that run large physical estates. The company was established in 2004 in response to demand for a comprehensive asset management software solution.",
+   "The product joins asset management, lifecycle planning, funding forecasts and capital improvement prioritization in one system. The stated point of that is to assess, diagnose and capital plan for deterioration hiding inside facilities. An embedded AI layer called NAMI is described as processing all data internally with no external access. The company also states that FedRAMP Moderate is in progress.",
+   "Published case studies include the City of Berkeley, California, whose goal of eliminating paper for field personnel is being met with the CMMS and asset management planning tools. Sacramento County Department of Water Resources is described as deploying a single asset management system spanning 1,000 square miles and serving over 1.6 million people. Private sector clients appear as well, with Amazon named as building an enterprise-wide program across more than 170 buildings."
+  ],
+  "quote": {
+   "text": "REAL DATA. REAL PEOPLE. REAL SOLUTIONS.",
+   "url": "https://nexgenam.com"
+  },
+  "sources": [
+   {
+    "url": "https://nexgenam.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.nexgenam.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.nexgenam.com/about/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://nexgenam.com",
+    "https://www.nexgenam.com/about/"
+   ],
+   [
+    "https://nexgenam.com"
+   ],
+   [
+    "https://www.nexgenam.com/case-studies/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

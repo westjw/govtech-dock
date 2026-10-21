@@ -849,12 +849,22 @@ def main() -> int:
         # forces on the count the journal sees, and it is what the rule asks
         # for anyway - "a bulk action recorded as ONE entry so undoing restores
         # all of it or none".
-        total = land(store, seq, batch, a.by,
-                     a.why or "landed after gate review") if batch else 0
+        # --dry-run MEANS NOTHING IS WRITTEN. This path ignored it until
+        # 2026-10-20: a "dry run" published 218 write-ups and the run meant to
+        # publish them then printed "0 write-up(s) on the map".
+        if a.dry_run:
+            total = 0
+        else:
+            total = land(store, seq, batch, a.by,
+                         a.why or "landed after gate review") if batch else 0
         for cat, n in done:
             print(f"  {cat}: {n}")
-        print(f"\n  {total} write-up(s) on the map, across {len(done)} "
-              f"categor(y/ies)")
+        if a.dry_run:
+            print(f"\n  DRY RUN: {len(batch)} write-up(s) would land, across "
+                  f"{len(done)} categor(y/ies). Nothing was written.")
+        else:
+            print(f"\n  {total} write-up(s) on the map, across {len(done)} "
+                  f"categor(y/ies)")
         if skipped:
             print(f"\n  REFUSED, never gated - {sum(n for _, n in skipped)} "
                   f"write-up(s) in {len(skipped)} categor(y/ies):")
@@ -1005,6 +1015,9 @@ def main() -> int:
             if len(fresh) > 8:
                 print(f"     ... and {len(fresh) - 8} more")
             print(f"  Re-run --gate {a.land!r} to read them, then land again.")
+        if a.dry_run:
+            print(f"  DRY RUN: {len(keys)} write-up(s) would land. Nothing was written.")
+            return 0
         n = land(store, seq, keys, a.by, a.why or f"landed {a.land} after gate review")
         print(f"  {n} write-up(s) on the map. Undo a batch: python3 scripts/admin_undo.py")
         return 0

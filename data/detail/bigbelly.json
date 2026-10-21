@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://bigbelly.com/news/summer-together-hoboken-invests-in-cleaner-streets-smarter-infrastructure"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Bigbelly sells enclosed trash and recycling bins to towns, business improvement districts, and large cities. The bins are fully enclosed, which the company says leaves no visible waste and no windblown litter. Compacting models are stated to hold five times the capacity of traditional bins, meaning fewer collections.",
+   "Fullness-indicating and smart bins are meant to eliminate overflows and tell crews when and where to collect. Connected Smart and Smart Max bins communicate ready-to-collect status. An LED on the bin shows local staff when it needs collection. The company offers real-time data and long-term insights on recycling diversion, waste volume, and collection activities. Bins can also carry customizable graphic wraps and message panels for community messaging.",
+   "The municipal page describes the City of Philadelphia decreasing collection frequency from 17 times to just 3 times per week. The airports page describes Copenhagen Airport introducing 64 Bigbelly bins and CLEAN cloud-based software. Amusement parks and zoos are another stated market."
+  ],
+  "quote": {
+   "text": "Once waste goes in, it can\u2019t come out.",
+   "url": "https://bigbelly.com"
+  },
+  "sources": [
+   {
+    "url": "https://bigbelly.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://bigbelly.com/solutions/municipal",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://bigbelly.com/solutions/airports",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://bigbelly.com/solutions/amusement-parks-zoos",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://bigbelly.com"
+   ],
+   [
+    "https://bigbelly.com",
+    "https://bigbelly.com/solutions/municipal",
+    "https://bigbelly.com/solutions/airports"
+   ],
+   [
+    "https://bigbelly.com/solutions/municipal",
+    "https://bigbelly.com/solutions/airports",
+    "https://bigbelly.com/solutions/amusement-parks-zoos"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

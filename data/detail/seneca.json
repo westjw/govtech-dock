@@ -27,5 +27,48 @@
    "kind_rule": "launches",
    "url": "https://www.seneca.com/news/seneca-launches/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Seneca describes itself as a resilience technology and infrastructure company. Its first product is an autonomous, rapid response fire suppression drone system. The systems are built to fit how fire agencies, utilities and property owners work.",
+   "One pilot can control multiple suppression craft. Those craft carry hundreds of pounds of Class A foam and use autonomous targeting with infrared and video to verify and knock down hot spots. A full system of four to six drones is said to deliver 500 to 1000 pounds of suppression per trip, refillable without fixed infrastructure. Launch is meant to happen from a mobile tablet the moment a fire is spotted, even without a precise location. The copters are built to be carried, with no helipads, mechanics or refueling stations required.",
+   "Listed uses run from early response and structure protection to spot fires, mop up, hazmat, utility safety and night operations. The company also says the systems improve the safety and efficiency of prescribed burns. A headline on the site announces that Aspen Fire acquired a Seneca strike team. The founding team is described as fire professionals who teach and fight wildland fire, together with technology entrepreneurs."
+  ],
+  "quote": {
+   "text": "Seneca is a resilience technology and infrastructure company",
+   "url": "https://www.seneca.com/about/"
+  },
+  "sources": [
+   {
+    "url": "https://www.seneca.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.seneca.com/about/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.seneca.com/product/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.seneca.com/about/",
+    "https://www.seneca.com",
+    "https://www.seneca.com/product/"
+   ],
+   [
+    "https://www.seneca.com",
+    "https://www.seneca.com/product/"
+   ],
+   [
+    "https://www.seneca.com/product/",
+    "https://www.seneca.com",
+    "https://www.seneca.com/about/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

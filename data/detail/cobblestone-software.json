@@ -9,5 +9,48 @@
    "kind_rule": null,
    "url": "https://www.cobblestonesoftware.com/blog/automated-contract-request-management-with-contract-insight"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "CobbleStone Software sells Contract Insight, contract lifecycle management software with agentic features, flexible processes, and AI. Enterprise Edition is built for large organizations seeking full-spectrum contract lifecycle control. Express Edition is a modular, entry-level platform for growing organizations. WorkGroup Edition is deployed locally for midsize teams that want more data control and security.",
+   "Contracts sit in a central repository designed for speed and simplicity. Users can add fields, configure workflows without coding, and adapt modules as the business changes. Version history, redlines, and amendments are tracked throughout the lifecycle. An AI layer called VISDOM parses static documents into structured, queryable entities. An organization defines its playbook once, and VISDOM enforces it across drafts, versions, and revisions, flagging deviations before signature. The system unifies data across ERP, CRM, and HR systems.",
+   "The company says client documents are processed rather than used to train models. It says clause libraries are configured in hours from existing CLM metadata. Enterprise-wide deployment is usually completed within 60 days, according to the site. The site claims over 30 years of contract lifecycle management work. It addresses legal and procurement teams. The product is presented as fitting a wide range of industries."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://www.cobblestonesoftware.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cobblestonesoftware.com/products/enterprise-contract-management-software",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cobblestonesoftware.com/solutions/contract-management-ai",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.cobblestonesoftware.com/solutions/contract-management-software",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.cobblestonesoftware.com",
+    "https://www.cobblestonesoftware.com/solutions/contract-management-software"
+   ],
+   [
+    "https://www.cobblestonesoftware.com/products/enterprise-contract-management-software",
+    "https://www.cobblestonesoftware.com",
+    "https://www.cobblestonesoftware.com/solutions/contract-management-ai"
+   ],
+   [
+    "https://www.cobblestonesoftware.com/solutions/contract-management-ai",
+    "https://www.cobblestonesoftware.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

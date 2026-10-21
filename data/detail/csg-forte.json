@@ -54,5 +54,35 @@
    "kind_rule": null,
    "url": "https://csgforte.com/resources/experience-government-payments-platform"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "CSG Forte sells payment acceptance and processing to organizations that bill customers across the entire customer lifecycle. Government agencies sit on its list of served industries alongside healthcare, insurance, utilities, telecommunications, retail and property management.",
+   "The platform accepts payments through any channel, whether the payer is online, in person or on the phone. Supported methods include ACH, credit and debit cards, and digital wallets. Beyond acceptance, it validates accounts, fights fraud with AI, and automatically recovers declined transactions. Software companies can embed the payments in their own stack using RESTful APIs and developer-first SDKs.",
+   "For public agencies, the company says it covers everything from taxes to permits to parking tickets across government departments. It states that its global payments infrastructure processes more than $175 billion each year for high-volume, highly regulated organizations. A banner on the site announces that NEC and Netcracker completed an acquisition of CSG Systems."
+  ],
+  "quote": {
+   "text": "From taxes to permits to parking tickets, accept payments securely from all government agencies and departments.",
+   "url": "https://csgforte.com"
+  },
+  "sources": [
+   {
+    "url": "https://csgforte.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://csgforte.com"
+   ],
+   [
+    "https://csgforte.com"
+   ],
+   [
+    "https://csgforte.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

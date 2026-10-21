@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Imagry sells autonomous driving software for public transportation, aimed at the operators who run buses and fleets. It draws a line between itself and robotaxi companies, pointing instead at the commercial transit market.",
+   "The approach does without high-definition maps and without LiDAR. Cameras placed around the vehicle gather what the system needs in real time. Neural networks trained by imitating skilled human driving handle the decisions. Nothing depends on the cloud, since everything needed to drive autonomously sits inside the vehicle.",
+   "The company says it is running a public bus pilot on an 8 km route in the city of Nahariya, and that it has deployed an autonomous shuttle at a large medical facility. It claims the first autonomous bus to achieve an NCAP safety rating and to comply with the UN-R155 cybersecurity regulation. It also describes partnerships with several international vehicle makers to supply autonomous-driving ready vehicles."
+  ],
+  "quote": {
+   "text": "Billions have been spent chasing driverless cars. Most still rely on HD maps, expensive sensors, and rigid logic, and fail in the real world.",
+   "url": "https://imagry.co"
+  },
+  "sources": [
+   {
+    "url": "https://imagry.co",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://imagry.co"
+   ],
+   [
+    "https://imagry.co"
+   ],
+   [
+    "https://imagry.co"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

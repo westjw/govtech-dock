@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "GET Group North America sells identity systems for capturing, adjudicating and managing identities, ending in the issuance of secure credentials. The credentials it names run from driver's licenses and ID cards to mobile IDs, passports, and corporate and governmental IDs.",
+   "Its CoreID platform pairs biometric capture and facial recognition with back-end database functions, issuing and tracking physical or digital credentials through their lifecycle. It can run in the cloud or on a customer's own premises. Hardware sold alongside the software includes printers for identification cards, security credentials, and access management. A compact enrollment camera is built for high-volume settings and captures ICAO compliant images.",
+   "The camera software adjusts automatically for variations in a person's height and distance from the lens. The company says its mobile ID and verification apps for iOS and Android pass a UL conformity assessment against ISO 18013-5 interoperability standards. A news headline on the home page states that the mobile ID is accepted at TSA PreCheck. The digital product is described as putting a high assurance identity on a user's own device."
+  ],
+  "quote": {
+   "text": "Identification is going mobile, and we\u2019ve got the technology to support the transition of driver\u2019s licenses and other forms of ID to a digital format to increase convenience and help combat fraud.",
+   "url": "https://www.getgroupna.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.getgroupna.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://getgroupna.com/solutions/physical-id/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://getgroupna.com/solutions/physical-id/identity-management-software/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://getgroupna.com/solutions/physical-id/camera/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://getgroupna.com/solutions/physical-id/",
+    "https://getgroupna.com/solutions/physical-id/identity-management-software/"
+   ],
+   [
+    "https://getgroupna.com/solutions/physical-id/identity-management-software/",
+    "https://getgroupna.com/solutions/physical-id/",
+    "https://getgroupna.com/solutions/physical-id/camera/"
+   ],
+   [
+    "https://getgroupna.com/solutions/physical-id/camera/",
+    "https://www.getgroupna.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

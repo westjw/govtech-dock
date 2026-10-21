@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.instructure.com/resources/blog/ai-nearing-escape-velocity-unesco-digital-learning-week-closer-catching"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Instructure makes Canvas, a learning management system that schools and colleges adopt as a common digital classroom. Assessment is the job of its Mastery products, where teachers create and score student work. Parchment, another part of the family, handles enrollment, records management, and credentialing. Business and government training sit alongside schools as an audience.",
+   "A state can standardize on one system across every grade level, from kindergarten through college. Inside a district, teachers build standards-aligned content once and reuse it across classes through blueprint courses. Adding Mastery Connect puts assessment inside the same environment as the courses.",
+   "The company counts more than eight thousand institutions among its partners. It says those customers span over 100 countries. One statewide adoption followed 2017 legislation requiring a state education department to give districts a learning management system."
+  ],
+  "quote": {
+   "text": "Over 8,000 institutions partner with Instructure for all things teaching and learning.",
+   "url": "https://www.instructure.com/why-instructure/customers"
+  },
+  "sources": [
+   {
+    "url": "https://www.instructure.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.instructure.com/resources/case-studies/it-together-road-career-college-readiness-canvas-mastery",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.instructure.com/resources/case-studies/wyoming-providing-equitable-access-statewide-canvas",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.instructure.com/why-instructure/customers",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.instructure.com/resources/case-studies/wyoming-providing-equitable-access-statewide-canvas",
+    "https://www.instructure.com"
+   ],
+   [
+    "https://www.instructure.com/resources/case-studies/wyoming-providing-equitable-access-statewide-canvas",
+    "https://www.instructure.com/resources/case-studies/it-together-road-career-college-readiness-canvas-mastery"
+   ],
+   [
+    "https://www.instructure.com/why-instructure/customers",
+    "https://www.instructure.com",
+    "https://www.instructure.com/resources/case-studies/wyoming-providing-equitable-access-statewide-canvas"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

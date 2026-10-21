@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://www.bidgely.com/insights/customer-churn-commoditisation-how-european-energy-retailers-can-win-on-value-not-price"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Bidgely builds energy analytics software for electric utilities, working from the data their smart meters already collect. The core claim is that a utility can identify what is running inside every home and business from meter data alone, with no surveys or smart plugs.",
+   "The platform, called UtilityAI, breaks that meter signal down to appliance level for every customer, grid asset and hour of the year. Utilities use it on the customer side to resolve high bill questions before people call in. On the grid side it is pitched for capacity planning that accounts for distributed energy resources. Program teams are offered targeting for EV and electrification enrollment. There is also a module for discovering and remedying energy theft. The company offers the software as SaaS or deployed inside a utility's own cloud.",
+   "Buyers span the utility enterprise, covering customer experience, grid operations and efficiency and electrification programs. Case studies on the site report results such as 238% of contracted savings in the first year of a deployment. Bidgely also runs an annual conference, registration for which is advertised on the home page."
+  ],
+  "quote": {
+   "text": "Every smart meter is a window. Few utilities ever look through it.",
+   "url": "https://www.bidgely.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.bidgely.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.bidgely.com"
+   ],
+   [
+    "https://www.bidgely.com"
+   ],
+   [
+    "https://www.bidgely.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,49 @@
+{
+ "profile": {
+  "paragraphs": [
+   "VETRO sells cloud software for mapping fiber networks, built to plan, design, build and operate them. The buyers it addresses are network operators building connectivity. A separate package lets engineering firms share network plans on one platform for client feedback.",
+   "Design work happens at strand level, with precise equipment connections for accuracy. Automation identifies routes between A and Z points, estimates costs, handles splicing and validates paths. Field crews capture data in any location through an offline mode. Map layers can include ESRI map services or the Ordnance Survey basemap.",
+   "Case studies name CCI Systems designing a fiber network in rural Oregon after a wildfire. Another names Ascend Broadband using the platform as a central operational hub. A customer quote on the products page is attributed to Greenlight Networks in New York. One customer says an ARPA grant application was put together in nine days."
+  ],
+  "quote": {
+   "text": "cloud-native fiber management platform built to plan, design, build and operate your network",
+   "url": "https://vetrofibermap.com/products/"
+  },
+  "sources": [
+   {
+    "url": "https://vetrofibermap.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vetrofibermap.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vetrofibermap.com/products/fibermap/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://vetrofibermap.com/products/fibermap-engineering/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://vetrofibermap.com/products/",
+    "https://vetrofibermap.com",
+    "https://vetrofibermap.com/products/fibermap-engineering/"
+   ],
+   [
+    "https://vetrofibermap.com/products/fibermap/",
+    "https://vetrofibermap.com"
+   ],
+   [
+    "https://vetrofibermap.com/products/fibermap-engineering/",
+    "https://vetrofibermap.com/products/",
+    "https://vetrofibermap.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

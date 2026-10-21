@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://www.goguardian.com/blog/essential-checklists-for-a-secure-and-successful-school-year"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "GoGuardian sells software to K-12 schools, starting with web filtering that works on whatever operating systems a district has. It also sells a classroom management tool that teachers use to keep students on task and answer questions in a private one-to-one chat.",
+   "Filtering pairs AI threat detection with granular policy control across every operating system. A safety product watches for warning signs of self-harm or violence so staff can assess the risk and act quickly. Another manages hall pass policies site-wide or for specific groups. A newer product called GoGuardian Discover covers compliance and risk management. The products run on ChromeOS, Windows, macOS and iPadOS devices.",
+   "The company says it helps over 70% of top districts. It describes the classroom tool as used by more than two million teachers. It also counts more than 2.4 billion browsing events processed. The footer identifies the business as Liminex, Inc. doing business as GoGuardian."
+  ],
+  "quote": {
+   "text": "Schools shouldn\u2019t have to compromise on student safety based on their device ecosystem.",
+   "url": "https://www.goguardian.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.goguardian.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.goguardian.com"
+   ],
+   [
+    "https://www.goguardian.com"
+   ],
+   [
+    "https://www.goguardian.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

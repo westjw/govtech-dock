@@ -1,0 +1,48 @@
+{
+ "profile": {
+  "paragraphs": [
+   "DZS sells broadband network equipment and software to network operators, with the portfolio presented on the site under the Zhone name and spanning broadband access, mobile, optical and home edge products. The site also pitches electric cooperatives and utilities on bringing broadband to the communities they serve.",
+   "On the access side, the company describes an evolution from XGS-PON toward 50G PON and beyond. Its Xtreme Access software manages the access service chain from customer premise equipment through optical network elements to the edge of the internet. That software is meant to run third-party gear as well, including gateways, OLTs, switches and BNGs. A separate fiber extension line uses Gfast over copper already in place to deliver fiber-like speeds where the last hop is hard to build. Those distribution point units can be reverse powered from a network termination device inside the home.",
+   "Buyers are addressed as operators capitalizing on government and private investor funded multi-gigabit broadband rollouts. Company news on the home page includes the opening of a research and development center in Hanoi, Vietnam. Its blog index writes about middle-mile networks for utilities and electric cooperatives."
+  ],
+  "quote": {
+   "text": "Deliver open and AI-automated broadband networks",
+   "url": "https://www.dzsi.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.dzsi.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.dzsi.com/company/resources/blogs/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.dzsi.com/product/dzs-xtreme-access/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://dzsi.com/product/fiber-extension/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.dzsi.com/company/resources/blogs/",
+    "https://www.dzsi.com"
+   ],
+   [
+    "https://www.dzsi.com",
+    "https://www.dzsi.com/product/dzs-xtreme-access/",
+    "https://dzsi.com/product/fiber-extension/"
+   ],
+   [
+    "https://www.dzsi.com",
+    "https://www.dzsi.com/company/resources/blogs/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.clearpointstrategy.com/blog/public-dashboard-best-practices"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ClearPoint Strategy sells software for running a strategic plan, turning objectives, measures, and initiatives into monthly and quarterly work. The company markets it as strategic planning software for government, healthcare, and higher education.",
+   "Teams track objectives, measures, and initiatives in real time in one place. The company offers to move a customer's existing strategy and KPI data out of spreadsheets. It also connects to sources such as Power BI, Snowflake, and SQL Server. Reporting frameworks are migrated with a stated target of being fully operational in three weeks. Dashboards can alert departments when data is not refreshed or milestones go unlogged.",
+   "ClearPoint reports 410 active organizations and 15,902 live plans on its platform as of August 2026. The company says it analyzed 20,582 strategic plans drawn from its own platform. From that it reports objectives with an owner are 2.2 times more likely to be on track. Only 29 of those 410 organizations, about 7.1%, publish an embedded public dashboard. In local government the adoption rate rises to 9.5%."
+  ],
+  "quote": {
+   "text": "Only 29 of the 410 active organizations on ClearPoint (7.1%) publish an embedded public dashboard",
+   "url": "https://www.clearpointstrategy.com/solutions/dashboards"
+  },
+  "sources": [
+   {
+    "url": "https://www.clearpointstrategy.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.clearpointstrategy.com/solutions/strategic-planning",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.clearpointstrategy.com/solutions/reporting",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.clearpointstrategy.com/solutions/dashboards",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.clearpointstrategy.com",
+    "https://www.clearpointstrategy.com/solutions/strategic-planning"
+   ],
+   [
+    "https://www.clearpointstrategy.com",
+    "https://www.clearpointstrategy.com/solutions/reporting",
+    "https://www.clearpointstrategy.com/solutions/dashboards"
+   ],
+   [
+    "https://www.clearpointstrategy.com/solutions/strategic-planning",
+    "https://www.clearpointstrategy.com/solutions/dashboards"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

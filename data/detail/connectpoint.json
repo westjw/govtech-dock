@@ -1,0 +1,49 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Connectpoint makes digital signage for transit, placed indoors and outdoors at bus stops, shelters, stations, and transit hubs. Its core product is a solar and battery-powered ePaper display showing real-time passenger information. The company describes itself as a provider of solar-powered ePaper signage across the U.S.",
+   "The signs connect over 4G or an existing WiFi network and run around the clock on solar or battery power. They show real-time data such as GTFS real-time or any API feed format, or scheduled times instead. Several sizes and styles are offered. No electrical infrastructure is required at the stop. For stations and transit centers there is SmartStop, a kiosk whose 55 inch touch screen carries easy-to-read information and customized route planning. It includes citywide turn-by-turn directions for driving, biking, and walking. An LED line is customized in size and shape for each deployment.",
+   "All of it is run from the Connectpoint Asset Management system, which manages and monitors the signage remotely. An agency can start with one sign and expand the network later. The ePaper sign, called the Falcon, is solar-powered, ADA compliant, and carries a five-year warranty. Location-based advertising on the kiosks is offered as a way for an agency to generate revenue."
+  ],
+  "quote": {
+   "text": "The Falcon\u2122: Solar-powered and ADA compliant with 5-year warranty",
+   "url": "https://connectpoint.com"
+  },
+  "sources": [
+   {
+    "url": "https://connectpoint.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://connectpoint.com/product/digital-bus-stop/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://connectpoint.com/product/smartstop/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://connectpoint.com/product/led-signage/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://connectpoint.com",
+    "https://connectpoint.com/product/digital-bus-stop/"
+   ],
+   [
+    "https://connectpoint.com/product/digital-bus-stop/",
+    "https://connectpoint.com/product/smartstop/",
+    "https://connectpoint.com/product/led-signage/"
+   ],
+   [
+    "https://connectpoint.com",
+    "https://connectpoint.com/product/digital-bus-stop/",
+    "https://connectpoint.com/product/smartstop/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

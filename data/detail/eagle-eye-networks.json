@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.een.com/blog/eagle-eye-networks-and-brivo-integration-at-every-level/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Eagle Eye Networks sells AI-powered surveillance video for security and business operations. Its main product is the Eagle Eye Cloud Video Management System. The system works with more than 7,500 cameras, so customers do not have to rip out and replace what they already own.",
+   "Video can be stored in the cloud, on-premise, or both. AI detects and classifies objects and people. Users search for people, vehicles, and objects by typing what they are looking for. Alerts can give immediate warnings for restricted area breaches. One option connects cameras to the video service without an on-site appliance. That setup suits locations requiring between 1 and 6 cameras per site.",
+   "An API platform handles interfacing with cameras, recording video, transmitting and storing it, and making it available to other applications. The company provides integrations with applications such as point-of-sale, access control, and analytics. Video data is stored on its own data centers and encrypted both in transmission and at rest. It cites end-to-end encryption, triple-redundant storage, and SOC 2 compliance. Cameras can also be shared automatically with emergency services."
+  ],
+  "quote": {
+   "text": "AI-powered surveillance video. Proactive security. Smarter business operations.",
+   "url": "https://een.com"
+  },
+  "sources": [
+   {
+    "url": "https://een.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.een.com/product/vms-video-management-system/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.een.com/product/api-categories/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.een.com/product/camera-direct/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://een.com"
+   ],
+   [
+    "https://www.een.com/product/vms-video-management-system/",
+    "https://www.een.com/product/camera-direct/"
+   ],
+   [
+    "https://www.een.com/product/api-categories/",
+    "https://een.com",
+    "https://www.een.com/product/vms-video-management-system/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

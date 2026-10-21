@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.genasys.com/resources/genasys-and-pulsepoint-team-to-provide-more-situational-awareness-and-build-more-informed-communities"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Genasys sells a full suite of Protective Communications tools for all hazards. The range covers targeted communication, data-driven decision making, secure inter-agency collaboration, zone-based planning, and outdoor speakers.",
+   "Genasys Protect is zone-based communication software with multi-channel alerting for targeted, fast, and clear updates. Genasys Acoustics covers clear voice messaging devices with software connectivity, solar power backup, and satellite backup. Genasys Evertel is secure, compliant real-time communication and collaboration software for law enforcement and public officials.",
+   "Cities, counties, states, federal government, military operations, law enforcement, and fire safety agencies use Genasys Protect and LRAD. On the commercial side the company names health care, financial services, stadiums, event operations, utilities, and multinational enterprises. Centers of higher learning are a third audience, for campus safety and event updates. The company says it protects over 155 Million people globally. It states that it operates in all 50 USA states, DC and multiple territories. Its case study listing includes the City of Tacoma, WA and Yavapai County, AZ."
+  ],
+  "quote": {
+   "text": "Deliver targeted alerts and map-based updates to the public, keep teams connected with secure and compliant messaging, and project clear voice communications over long distances.",
+   "url": "https://www.genasys.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.genasys.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.genasys.com/category/case-studies?product_equal=LRAD",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.genasys.com"
+   ],
+   [
+    "https://www.genasys.com"
+   ],
+   [
+    "https://www.genasys.com",
+    "https://www.genasys.com/category/case-studies?product_equal=LRAD"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

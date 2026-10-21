@@ -108,5 +108,52 @@
    "kind_rule": null,
    "url": "https://www.boldyn.com/news/boldyn-networks-delivers-indoor-5g-infrastructure-at-two-leading-hospitals-in-rome-and-milan"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Boldyn Networks designs, builds and runs shared wireless and fibre infrastructure that other operators and property owners use. Its named customer sectors are transit, venues, government, military, real estate and enterprise.",
+   "The portfolio covers private 5G networks, distributed antenna systems, small cell deployment and high-capacity fibre. Under the neutral host model the company funds and builds the network, so carriers get coverage with zero upfront capital costs and speedier rollouts. Siting moves faster because of existing right-of-way agreements in many cities. Distributed antenna systems are pitched as the answer to poor indoor cellular coverage and spotty connectivity in dense urban locations. The fibre business can run lit and dark fibre over river crossings and through tunnels.",
+   "The company works with mobile carriers to design a DAS layout that suits every party involved. Support is offered from initial planning to post-deployment operations. It describes operations across North America, Europe and Asia. Its crews appear in Threads of Connectivity, a documentary series on National Geographic's digital platforms."
+  ],
+  "quote": {
+   "text": "DAS networks are the answer to poor indoor cellular coverage and spotty connectivity in dense urban locations",
+   "url": "https://www.boldyn.com/solutions/network/das"
+  },
+  "sources": [
+   {
+    "url": "https://www.boldyn.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.boldyn.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.boldyn.com/solutions/network/small-cells-and-towers",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.boldyn.com/solutions/network/das",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.boldyn.com"
+   ],
+   [
+    "https://www.boldyn.com",
+    "https://www.boldyn.com/solutions/network/small-cells-and-towers",
+    "https://www.boldyn.com/solutions/network/das",
+    "https://www.boldyn.com/solutions"
+   ],
+   [
+    "https://www.boldyn.com/solutions/network/das",
+    "https://www.boldyn.com/solutions/network/small-cells-and-towers",
+    "https://www.boldyn.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

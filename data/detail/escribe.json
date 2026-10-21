@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.escribemeetings.com/resources/2026-clerk-survey/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "eScribe sells meeting software to local government, running the whole public meeting cycle in one place from first draft to final minutes. The company frames the problem it solves as drafting, routing and storage scattered across separate places.",
+   "AI-drafted minutes come into the agenda platform, which captures motions, votes and public comment. The company says the official record arrives ready for review minutes after adjournment. Buyers get a dedicated team that sets up the system, migrates records and stays through go-live.",
+   "eScribe says hundreds of city clerks run their councils and commissions on it across the US and Canada. It was founded in 2007 in Markham, Ontario, serving Canadian municipalities and school boards. The about page describes empowering government agencies, school districts and special districts across Canada. That page identifies the team as OnBoard. It names partnerships with Carahsoft, ICMA and CAMA."
+  ],
+  "quote": {
+   "text": "Run the whole meeting cycle in one place, from first draft to final minutes.",
+   "url": "https://www.escribemeetings.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.escribemeetings.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.escribemeetings.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.escribemeetings.com"
+   ],
+   [
+    "https://www.escribemeetings.com"
+   ],
+   [
+    "https://www.escribemeetings.com",
+    "https://www.escribemeetings.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

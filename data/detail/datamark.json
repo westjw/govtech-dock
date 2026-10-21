@@ -108,5 +108,35 @@
    "kind_rule": null,
    "url": "https://datamarkgis.com/insights/whats-next-fcc-takes-steps-to-advance-ng911-capabilities/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "DATAMARK Technologies sells geospatial data services and location software for public safety, spanning the whole GIS life cycle from data creation through updates and maintenance. The company took its current shape when DATAMARK and DDTI combined, a union its chief executive calls a significant milestone for both.",
+   "On the services side, project managers and analysts prepare GIS data for NG9-1-1 or raise its accuracy for call routing. One named service is the Address Comparison Evaluation, shortened to ACE. The company states that its Location Information Server is the only NENA i3 standards-compliant option, supporting carriers through Phase 1 and Phase 2 deployments. A separate product called INSIDE applies indoor geospatial data so public safety, facility and school stakeholders can keep remote oversight of a campus.",
+   "The staff are described as former 9-1-1 directors, public safety subject matter experts and GIS professionals. The site points to work with the state of Idaho on its journey to GIS data readiness. It also cites an indoor mapping partnership with Allegany County, Maryland. An announcement on the page notes that Michael Baker International was selected by the U.S. Army to develop NG9-1-1 GIS and addressing data at 54 Army installations."
+  ],
+  "quote": {
+   "text": "This strategic union represents a significant milestone for both DATAMARK and DDTI.",
+   "url": "https://www.datamarkgis.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.datamarkgis.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.datamarkgis.com"
+   ],
+   [
+    "https://www.datamarkgis.com"
+   ],
+   [
+    "https://www.datamarkgis.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,37 @@
    "kind_rule": null,
    "url": "https://goedmo.com/blog/articulation-agreement/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "EDMO sells artificial intelligence software that helps colleges and universities automate admissions workflows and engage students across channels. It is pitched as a way to automate admissions and enrollment work without replacing an institution's existing technology stack.",
+   "On the document side, it standardizes and calculates GPAs across global grading systems. It assesses transcripts automatically for transferable credits. Identity checks are meant to verify student identity and reduce fraud. An omnichannel bot supports students across the enrollment journey. Connectors sync data and automate workflows across CRM, SIS, and LMS platforms.",
+   "The about page says the company today serves more than 150 universities. Its own timeline starts with the incorporation of iSchoolConnect Inc. The company says it launched an AI-based student admissions platform under that name. It states that its AI proctoring intellectual property was acquired by Turnitin. The company says it is SOC 2 Type II certified with end-to-end encryption for student data. It reports over 100,000 applications processed."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://goedmo.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://goedmo.com/about-us/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://goedmo.com"
+   ],
+   [
+    "https://goedmo.com"
+   ],
+   [
+    "https://goedmo.com/about-us/",
+    "https://goedmo.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

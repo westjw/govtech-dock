@@ -1,0 +1,32 @@
+{
+ "profile": {
+  "paragraphs": [
+   "SAND builds Symmetri, which it describes as a control layer for the infrastructure systems a society depends on. The company presents it as a single operating system for managing and controlling complex infrastructure, meant to be deployed at scale in weeks. The sectors it names are government, water, energy, telecom, and healthcare.",
+   "SAND says the platform is running in more than 18 countries across those sectors with no mission-critical failures. Three groups are meant to work in a deployment at once. Data engineers and MLOps teams tune models, build pipelines, and ship applications on top of Symmetri. Front-line staff such as grid controllers and water utility operators act on its outputs in real time. Program directors and policy leaders use its consequence models to set strategy and allocate resources.",
+   "The site lists production programs it attributes to operators around the world. One connects rural clinics into a single network serving millions of patients. Another reports roughly 19,000 structures assessed and about $0.8B in losses prioritized across affected wards."
+  ],
+  "quote": {
+   "text": "Physical AI for Critical Infrastructure",
+   "url": "https://sandtech.com"
+  },
+  "sources": [
+   {
+    "url": "https://sandtech.com",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://sandtech.com"
+   ],
+   [
+    "https://sandtech.com"
+   ],
+   [
+    "https://sandtech.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

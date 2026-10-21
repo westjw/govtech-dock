@@ -9,5 +9,51 @@
    "kind_rule": null,
    "url": "https://www.goconvey.com/resources/faq-section/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Convey sells customer communication software to utilities, tying communications, journey orchestration, analytics, and integrations into one system. The company says it helps utilities of every size modernize customer engagement and integrate critical systems. Municipalities and mid-sized utilities are named as one group of buyers. Another version is designed for cooperatives to engage members, improve service, and support community.",
+   "During an outage, organizations can send automatic, tailored communications to affected users. On the billing side the platform uses personalized reminders, flexible payment plans, and real-time communication to reduce delinquency rates. Automated workflows route complex cases to human teams. The platform supports Rich Communication Services, which brings verified branding, rich media, and one-tap actions to messages. Convey says it integrates with existing systems to deploy solutions in weeks.",
+   "Beyond utilities, the site invites visitors to explore solutions for other industries and organizations. Its processes are described as supporting industry-specific regulatory frameworks so that every message is secure and auditable. Client testimonials on the site refer to the company as formerly Message Broadcast. The homepage cites Inc. 5000 recognition."
+  ],
+  "quote": {
+   "text": "Convey helps utilities of every size modernize customer engagement, integrate critical systems, and improve operational efficiency",
+   "url": "https://www.goconvey.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.goconvey.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goconvey.com/solutions/workflow/outage-management/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goconvey.com/solutions/workflow/billing-payment/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.goconvey.com/solutions/workflow/service-automation/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.goconvey.com"
+   ],
+   [
+    "https://www.goconvey.com/solutions/workflow/outage-management/",
+    "https://www.goconvey.com/solutions/workflow/billing-payment/",
+    "https://www.goconvey.com/solutions/workflow/service-automation/",
+    "https://www.goconvey.com"
+   ],
+   [
+    "https://www.goconvey.com",
+    "https://www.goconvey.com/solutions/workflow/service-automation/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

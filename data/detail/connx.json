@@ -108,5 +108,36 @@
    "kind_rule": null,
    "url": "https://connxai.com/news/connx-and-nectar-partner-to-bring-next-level-quality-of-experience-assurance-to-enterprises-with-extreme-intelligence-at-the-edge"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "ConnX delivers AI-driven managed services across contact center, unified communications, and OT and IoT security. It says its work is designed for mission-critical environments. Transit and transportation is among the industries it names.",
+   "Its unified communications as a service supports hybrid office and work from anywhere. Cloud contact center offerings are digital-first, with AI, analytics and journey orchestration. The security side combines AI-powered visibility, unified IT and OT security, zero-trust access, and managed SOC and NOC services around the clock. MaestroIQ is an API and cloud federation orchestration platform providing end to end observability. Underneath sits a global, software defined network platform with built-in service and security assurance.",
+   "Public-sector and other eligible organizations may purchase qualifying ConnX solutions and services through cooperative and state contract vehicles. The company announced a State of Wisconsin statewide enterprise voice services contract. It also lists a cyber security solutions and services contract. A PBX and on-premises VoIP contract is listed as a COSTARS participating contract."
+  ],
+  "quote": null,
+  "sources": [
+   {
+    "url": "https://connxai.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://connxai.com/solutions",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://connxai.com"
+   ],
+   [
+    "https://connxai.com/solutions"
+   ],
+   [
+    "https://connxai.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

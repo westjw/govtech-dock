@@ -90,5 +90,39 @@
    "kind_rule": null,
    "url": "http://www.muellerwaterproducts.com/news/condition-assessment-how-much-detail-needed-and-where"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Mueller Water Products supplies flow control and monitoring equipment for water systems. Its buyers are utilities alongside industrial and commercial operators of water and gas infrastructure. It also sells a water intelligence platform meant to show a utility the condition of its distribution network.",
+   "Its case studies center on acoustics used to locate underground leaks on water mains without digging. The same acoustic work is described as helping a city decide which repairs and replacements come first. Other accounts cover advanced metering deployments and cuts in non-revenue water.",
+   "For public buyers, the company points to certification under Build America Buy America. It publishes a sustainability report covering its 2025 results. It also puts out a handbook on aging infrastructure for utilities working on water loss."
+  ],
+  "quote": {
+   "text": "To make intelligent decisions on your water infrastructure, you need data intelligence.",
+   "url": "https://www.muellerwaterproducts.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.muellerwaterproducts.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "http://www.muellerwaterproducts.com/case-studies",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.muellerwaterproducts.com"
+   ],
+   [
+    "http://www.muellerwaterproducts.com/case-studies"
+   ],
+   [
+    "https://www.muellerwaterproducts.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

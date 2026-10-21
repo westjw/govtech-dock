@@ -108,5 +108,40 @@
    "kind_rule": null,
    "url": "https://www.corebt.com/blog/true-ratio-usability/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "CORE Business Technologies sells payment software to government agencies, with the aim of putting every department on one platform. The company's argument is that residents want government systems that work as well as their banking apps.",
+   "The digital side handles online billing and checkout across services. It integrates in real time with an agency's ERP system. For counter service there are cashiering stations for walk-up payments. Self-service kiosks are offered with the same functionality for residents who prefer to serve themselves. CORE puts the path from contract to launch at ninety days.",
+   "Published case studies cover county governments, including Juab County and its tax prepayments. Another reports Washington County increasing online payments by 45%. A further case study covers Grand Valley State University adding efficiency with online payments. On compliance the site lists PCI DSS Level 1 and SOC 2 Type II. It claims stable infrastructure with 99.98% uptime and zero data breaches. CORE states that it is a registered ISO/MSP of Merrick Bank, South Jordan, UT."
+  ],
+  "quote": {
+   "text": "Every payment. Every department. One integrated platform.",
+   "url": "https://corebt.com"
+  },
+  "sources": [
+   {
+    "url": "https://corebt.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.corebt.com/case-studies/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://corebt.com"
+   ],
+   [
+    "https://corebt.com"
+   ],
+   [
+    "https://www.corebt.com/case-studies/",
+    "https://corebt.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

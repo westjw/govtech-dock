@@ -27,5 +27,40 @@
    "kind_rule": null,
    "url": "https://cognisen.com/blog/community-supervision-software-what-it-is-what-to-look-for-and-why-ai-changes-everything"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Cognisen builds AI tools for probation, parole, and pretrial agencies, helping staff draft reports faster, capture case notes in the moment, and find answers across case files. The work it covers runs from pre-sentence investigations to field contacts.",
+   "Report writing software turns pre-sentence investigations, court reports, and case documentation into structured workflows built for the agency. A mobile app gives officers and agents what they need before, during, and after every visit, from the field. An assistant opens up case data, policies, and agency insights through secure conversation. The company says that assistant surfaces information and never creates decisions. Officers and agents review and approve every action before it becomes part of the record. The platform connects to an agency's existing system of record.",
+   "The company says agencies and departments use the software across their core workflows. The assistant is described as CJIS-compliant. Cognisen states that most agencies launch within 120 days. Rollout starts with a pilot group before expanding. It says the platform runs in a secure AWS GovCloud environment. The company also states that agency records are not used to train AI."
+  ],
+  "quote": {
+   "text": "Officers and agents review and approve every action before it becomes part of the record.",
+   "url": "https://cognisen.com/platform"
+  },
+  "sources": [
+   {
+    "url": "https://cognisen.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://cognisen.com/platform",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://cognisen.com"
+   ],
+   [
+    "https://cognisen.com/platform"
+   ],
+   [
+    "https://cognisen.com",
+    "https://cognisen.com/platform"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

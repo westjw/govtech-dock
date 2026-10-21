@@ -63,5 +63,35 @@
    "kind_rule": null,
    "url": "https://trekmedics.org/resources/how-to-develop-and-implement-a-prehospital-emergency-care-system-in-resource-limited-settings/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Beacon is dispatch software from Trek Medics International that lets a responder organization alert, track and coordinate its people using ordinary mobile phones.",
+   "A dispatcher creates an agency account on the web, adds responders, and invites them to install the mobile app. Incidents then go out to those responders by web, mobile and text message. It carries GPS tracking and reporting, and can either connect to an existing computer-aided dispatch system or stand in where a call center has to be built from nothing. The app needs iOS 16 or Android 7 to run the current version.",
+   "Ambulance services, fire departments, disaster response teams and search and rescue teams use it in more than 20 countries. Alternative response networks also use it to send community responders to mental health emergencies, overdoses and domestic violence calls. The organization offers a 90-day free trial."
+  ],
+  "quote": {
+   "text": "Every crisis deserves a custom response.",
+   "url": "https://www.trekmedics.org/beacon"
+  },
+  "sources": [
+   {
+    "url": "https://www.trekmedics.org/beacon",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.trekmedics.org/beacon"
+   ],
+   [
+    "https://www.trekmedics.org/beacon"
+   ],
+   [
+    "https://www.trekmedics.org/beacon"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

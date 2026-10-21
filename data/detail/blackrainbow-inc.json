@@ -18,5 +18,49 @@
    "kind_rule": null,
    "url": "https://blackrainbow.com/blog/customer-engagement-vital-to-blackrainbow/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "BlackRainbow sells the NIMBUS product suite, software for managing a whole digital forensics, intelligence and investigation lifecycle. The ecosystem has three elements, NIMBUS Intelligence, NIMBUS Investigator and NIMBUS Forensics, each tailored to an organisation's requirements. The company says it was founded by time-served subject matter experts who had identified significant problems in the investigation industry and the technology built to serve it.",
+   "NIMBUS tracks evidence from the moment it is entered into the system to disclosure. It records the date and time, where evidence was seized from, and its movement across internal and external experts, keeping an auditable chain of custody. Action management tracks tasks with service level agreements attached to them. Everything stored is indexed into an Elasticsearch index and searchable immediately, subject to user access permissions. Intelligence can be submitted, sanitised, risk assessed, permissioned and disseminated within the cycle.",
+   "The intelligence product is aimed at frontline staff in law enforcement or corporate investigation organizations. Investigator is used by investigation officers, crime scene managers, SOC analysts, case managers, corporate investigators, cybersecurity analysts and auditors. The company says the intelligence product adheres to The College of Policing and FVEY intelligence framework."
+  ],
+  "quote": {
+   "text": "Investigator has been designed by Investigators for Investigators",
+   "url": "https://blackrainbow.com/products/nimbus-investigator/"
+  },
+  "sources": [
+   {
+    "url": "https://blackrainbow.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blackrainbow.com/products/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blackrainbow.com/products/nimbus-intelligence/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://blackrainbow.com/products/nimbus-investigator/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://blackrainbow.com"
+   ],
+   [
+    "https://blackrainbow.com/products/",
+    "https://blackrainbow.com/products/nimbus-intelligence/"
+   ],
+   [
+    "https://blackrainbow.com/products/nimbus-intelligence/",
+    "https://blackrainbow.com/products/nimbus-investigator/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,34 @@
    "kind_rule": null,
    "url": "https://research.ibm.com/quantum/blog/qec-continuum"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "IBM sells enterprise software and cloud services, offered as subscriptions with free trials. It also runs a consulting business staffed by more than 150,000 experts. Its own news covers hardware as well, including a processor for the IBM Z and LinuxONE lines.",
+   "One current product is a control plane for building and managing AI agents in one place. It discovers and orchestrates agents across an organization, governs how they operate, and measures their performance. It can run on several public clouds or on premises. A separate product is a data streaming platform designed by the original co-creators of Apache Kafka.",
+   "The agent platform pages address the people responsible for running AI at scale inside an organization. Its pricing is published openly, starting at $530.00 per month for the entry plan. Recent announcements include a partnership with OpenAI aimed at enterprise deployment. One catalog listing automates DNS synchronization across Amazon Route 53 and IBM NS1 Connect."
+  ],
+  "quote": {
+   "text": "A comprehensive agent management platform to build and manage all your AI agents in one control plane.",
+   "url": "https://www.ibm.com/products/watsonx-orchestrate?lnk=hpfp3us"
+  },
+  "sources": [],
+  "paragraph_sources": [
+   [
+    "https://www.ibm.com/products/offers-and-discounts?lnk=hpfp11us",
+    "https://www.ibm.com/us-en"
+   ],
+   [
+    "https://www.ibm.com/products/watsonx-orchestrate?lnk=hpfp3us",
+    "https://www.ibm.com/products/confluent?lnk=hpfp4us"
+   ],
+   [
+    "https://www.ibm.com/products/watsonx-orchestrate?lnk=hpfp3us",
+    "https://www.ibm.com/us-en",
+    "https://www.ibm.com/products/offers-and-discounts?lnk=hpfp11us"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -1,0 +1,38 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Zensors sells AI meant to automate processes in the physical world, between people, buildings and machines. It describes itself as an AI company building multimodal physical AI that learns to perceive the world with human level accuracy.",
+   "The system ingests data from sensors, cameras and other devices and merges it with text and metadata from data warehouses into one aligned format. Models then run across video, time-series and text to build an understanding of a space and the activity inside it. On top of that sit agents intended to automate operational decisions rather than only report them. The company says its models arrive pre-trained on billions of images, videos and text specific to each vertical, so no extensive retraining is required. It also says output is written for IT, operations and business stakeholders while individual customers stay anonymous.",
+   "The models are sold as industry-specific and pre-trained for particular kinds of large, complex spaces. Airports are one of the settings its published guidance addresses. The company was spun out of Carnegie Mellon University. Its stated mission is to let anyone create and manage AI without a doctorate in machine learning. Its leadership page describes a head of product and technology steering the system toward suggesting actions that optimize operations."
+  ],
+  "quote": {
+   "text": "Our mission is to let anyone create and manage AI without a Ph.D. in ML.",
+   "url": "https://www.zensors.com/company/about-zensors-vision-ai"
+  },
+  "sources": [
+   {
+    "url": "https://www.zensors.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.zensors.com/company/about-zensors-vision-ai",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.zensors.com",
+    "https://www.zensors.com/company/about-zensors-vision-ai"
+   ],
+   [
+    "https://www.zensors.com"
+   ],
+   [
+    "https://www.zensors.com",
+    "https://www.zensors.com/company/about-zensors-vision-ai"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

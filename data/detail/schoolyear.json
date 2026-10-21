@@ -1,0 +1,38 @@
+{
+ "profile": {
+  "paragraphs": [
+   "Schoolyear sells exam security software that turns a student's own laptop into a controlled workspace for a digital exam. The workspace lets desktop applications run in an isolated environment on the student device, with nothing to install.",
+   "During an exam the workspace takes over the full screen, closes other applications, and limits students to content the institution approved. Staff decide what is allowed, whitelisting websites, files, or desktop applications by hand. A detection layer sits on top, alerting the proctor when the lock is broken or when virtual machines, remote access, or screen capture appear. The company says this happens without screen recording or monitoring.",
+   "The pitch is aimed at institutions that want to scale exams on student owned devices instead of buying more lab seats. Institutions quoted on the site include Wageningen University & Research, which says it wanted flexible fraud prevention for exams on students' own laptops. Another page says TU Delft implemented the software in two weeks and ran an exam for 800 students."
+  ],
+  "quote": {
+   "text": "Stop AI cheating in digital exams",
+   "url": "https://schoolyear.com"
+  },
+  "sources": [
+   {
+    "url": "https://schoolyear.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://schoolyear.com/solutions/prevent-cheating",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://schoolyear.com"
+   ],
+   [
+    "https://schoolyear.com/solutions/prevent-cheating",
+    "https://schoolyear.com"
+   ],
+   [
+    "https://schoolyear.com",
+    "https://schoolyear.com/solutions/prevent-cheating"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
+}

@@ -108,5 +108,49 @@
    "kind_rule": null,
    "url": "https://blog.wasterobotic.com/en/blog/construction_and_demolition_waste_management_revolution?hsLang=en"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Waste Robotics builds AI-powered sorting robots for the waste stream. Its customers are recycling facilities, and the company frames the goal as safer and more efficient operations.",
+   "One line of robots is aimed at construction and demolition waste, picking out and separating materials such as wood, concrete and stone. Those machines are specified to run around the clock, destack materials, lift up to 20 kg, and carry an intelligent gripper. A hyperspectral camera lets the system tell one type of wood from another. A second configuration works on pre-sorting lines, pulling bulky items off the belt before they can damage equipment. The company says those bag-sorting robots are running in many cities across France on co-collection programs.",
+   "The site lists a Montreal address among its locations. Its chief executive is described as bringing deployment experience across audio-digital software, renewable energy and waste management. Another executive is credited with over 30 years of business development and waste management project execution. A third brings over 20 years of experience in electrical and mechanical automation. The company states its goal as helping the waste management industry overcome challenges while improving sustainability and profitability."
+  ],
+  "quote": {
+   "text": "Our mission is to change the world, one robot at a time",
+   "url": "https://wasterobotic.com/about-us/"
+  },
+  "sources": [
+   {
+    "url": "https://wasterobotic.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://wasterobotic.com/about-us/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://wasterobotic.com/product/construction-demolition/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://wasterobotic.com/product/presort-bags/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://wasterobotic.com"
+   ],
+   [
+    "https://wasterobotic.com/product/construction-demolition/",
+    "https://wasterobotic.com/product/presort-bags/"
+   ],
+   [
+    "https://wasterobotic.com",
+    "https://wasterobotic.com/about-us/"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

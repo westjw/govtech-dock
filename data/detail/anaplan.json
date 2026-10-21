@@ -108,5 +108,50 @@
    "kind_rule": null,
    "url": "https://www.anaplan.com/news/anaplan-announces-latest-ai-driven-innovations-applications-to-advance-enterprise-decision-making/"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Anaplan sells a planning platform that large organizations use to model scenarios, build budgets and forecast, tying data and workflows together in one place. Its solutions are grouped by function, beginning with financial planning and analysis alongside consolidation and reporting.",
+   "A deterministic calculation engine sits underneath, and the company states that every result is auditable and traceable back to its source. Source systems connect directly to planning models, with data and structural changes managed and automated. Role-based AI agents are offered for finance, sales, supply chain and workforce teams. People reach those agents by asking questions in ordinary language. Models move through development, testing and production environments under governance and audit.",
+   "The company states that more than 2,800 brands use the platform. Customer stories on the site include The Coca-Cola Company. Another describes LinkedIn and its go-to-market planning. Anaplan also says it was named a Leader in the 2026 Gartner Magic Quadrant for Sales Performance Management."
+  ],
+  "quote": {
+   "text": "Over 2,800 of the world\u2019s best brands trust Anaplan\u2019s AI-driven platform",
+   "url": "https://www.anaplan.com/platform/"
+  },
+  "sources": [
+   {
+    "url": "https://www.anaplan.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.anaplan.com/solutions/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.anaplan.com/platform/intelligent-role-based-agents/",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.anaplan.com/platform/",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.anaplan.com/platform/",
+    "https://www.anaplan.com/solutions/"
+   ],
+   [
+    "https://www.anaplan.com/platform/",
+    "https://www.anaplan.com/platform/intelligent-role-based-agents/"
+   ],
+   [
+    "https://www.anaplan.com/platform/",
+    "https://www.anaplan.com"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }

@@ -108,5 +108,51 @@
    "kind_rule": null,
    "url": "https://www.accruent.com/resources/press-releases/accruent-sets-new-benchmark-regulatory-compliance-manufacturing-innovative"
   }
- ]
+ ],
+ "profile": {
+  "paragraphs": [
+   "Accruent sells software for managing buildings, spaces and physical assets across every stage of real estate, facilities and asset management. The stated aim is to run the full lifecycle of assets and facilities with connected workflows and reporting behind it.",
+   "One product, EMS, schedules meeting rooms, events, shared spaces, desks and exams. In higher education it supports self-service booking for classrooms, labs and campus events. A second product, FAMIS 360, centralizes maintenance, space planning and energy management for facility operations. Its modules track properties and locations down to floors, spaces and subspaces, along with occupancy and the work orders attached to them.",
+   "The home page claims more than 5,000 organizations worldwide as customers. Customer stories on the site lean toward higher education, including one on how the University of Missouri handled facility operations. For public agencies, the lease accounting product is presented as a way to stay in line with ASC 842, IFRS and GASB."
+  ],
+  "quote": {
+   "text": "CMMS software reduces downtime, predicts maintenance needs and manages asset and equipment inventory.",
+   "url": "https://www.accruent.com"
+  },
+  "sources": [
+   {
+    "url": "https://www.accruent.com",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accruent.com/solutions",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accruent.com/products/ems",
+    "fetched_on": "2026-09-03"
+   },
+   {
+    "url": "https://www.accruent.com/products/famis-360",
+    "fetched_on": "2026-09-03"
+   }
+  ],
+  "paragraph_sources": [
+   [
+    "https://www.accruent.com/solutions",
+    "https://www.accruent.com"
+   ],
+   [
+    "https://www.accruent.com/products/ems",
+    "https://www.accruent.com/products/famis-360"
+   ],
+   [
+    "https://www.accruent.com",
+    "https://www.accruent.com/products/ems",
+    "https://www.accruent.com/solutions"
+   ]
+  ],
+  "written_on": "2026-10-20",
+  "by_kind": "site"
+ }
 }
