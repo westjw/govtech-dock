@@ -1,9 +1,9 @@
 {
- "checked_on": "2026-10-14",
+ "checked_on": "2026-10-21",
  "counts": {
-  "moved": 129,
-  "ok": 2507,
-  "unread": 248
+  "moved": 133,
+  "ok": 2927,
+  "unread": 258
  },
  "links": {
   "365labs": [
@@ -72,6 +72,16 @@
     "status": 403,
     "title": "",
     "url": "https://jobs.globalpayments.com/en/jobs/?search=account+executive"
+   }
+  ],
+  "actuate-ai": [
+   {
+    "field": "board",
+    "final": "https://actuate.ai/careers",
+    "kind": "unread",
+    "status": 410,
+    "title": "",
+    "url": "https://actuate.ai/careers"
    }
   ],
   "adf-solutions": [
@@ -156,13 +166,23 @@
     "url": "https://www.amdigital.co.uk"
    }
   ],
+  "am-quartex": [
+   {
+    "field": "website",
+    "final": "https://www.amdigital.co.uk/am-quartex",
+    "kind": "unread",
+    "status": 405,
+    "title": "",
+    "url": "https://www.amdigital.co.uk/am-quartex"
+   }
+  ],
   "american-legal-publishing": [
    {
     "field": "website",
     "final": "https://www.icccodesolutions.org/",
     "kind": "moved",
     "status": 200,
-    "title": "ICC Code Solutions | Forward-thinking municipal code solutions",
+    "title": "ICC Code Solutions | Forward-thinking municipal innovation",
     "url": "https://www.amlegal.com"
    },
    {
@@ -317,17 +337,6 @@
     "url": "https://www.aurigo.com/careers"
    }
   ],
-  "aurionpro": [
-   {
-    "field": "website",
-    "final": "https://www.aurionpro.com/transit-smart-mobility/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.aurionpro.com/transit-smart-mobility/",
-    "why": "certificate not trusted"
-   }
-  ],
   "automotus": [
    {
     "field": "website",
@@ -401,6 +410,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.badgermeter.com"
+   }
+  ],
+  "barkpass": [
+   {
+    "field": "posts_at",
+    "final": "https://www.linkedin.com/company/barkpass/jobs/",
+    "kind": "unread",
+    "status": 999,
+    "title": "",
+    "url": "https://www.linkedin.com/company/barkpass/jobs/"
    }
   ],
   "baseform": [
@@ -598,17 +617,6 @@
     "url": "https://www.carbyne.com/careers"
    }
   ],
-  "careloop-health": [
-   {
-    "field": "website",
-    "final": "https://www.careloop.health",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.careloop.health",
-    "why": "network error"
-   }
-  ],
   "cartegraph": [
    {
     "field": "website",
@@ -715,17 +723,6 @@
     "url": "https://www.civicplus.com"
    }
   ],
-  "civix": [
-   {
-    "field": "website",
-    "final": "https://www.civixusa.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.civixusa.com",
-    "why": "no such domain"
-   }
-  ],
   "clarity-solutions-group": [
    {
     "field": "website",
@@ -763,16 +760,6 @@
     "status": 200,
     "title": "Careers \u2013 Hitachi Mobility Multimodal Solutions",
     "url": "https://www.cleverdevices.com/careers"
-   }
-  ],
-  "clinically-ai": [
-   {
-    "field": "website",
-    "final": "https://www.clinicalnotes.ai/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Clinically AI | The AI Platform for Behavioral Health",
-    "url": "https://clinicallyai.com"
    }
   ],
   "cody-systems": [
@@ -864,16 +851,6 @@
     "url": "https://contentactive.com/careers"
    }
   ],
-  "contentkeeper": [
-   {
-    "field": "website",
-    "final": "https://www.ativion.com/contentkeeper/",
-    "kind": "moved",
-    "status": 200,
-    "title": "ContentKeeper - Ativion",
-    "url": "https://contentkeeper.com"
-   }
-  ],
   "coprocure": [
    {
     "field": "website",
@@ -959,17 +936,6 @@
     "url": "https://www.daysmart.com/recreation"
    }
   ],
-  "debristech": [
-   {
-    "field": "website",
-    "final": "https://debristech.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://debristech.com",
-    "why": "timed out"
-   }
-  ],
   "debtbook": [
    {
     "field": "website",
@@ -1030,17 +996,6 @@
     "url": "https://www.digitalallyinc.com"
    }
   ],
-  "digital-assurance-certification-llc": [
-   {
-    "field": "website",
-    "final": "https://www.dacbond.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.dacbond.com",
-    "why": "timed out"
-   }
-  ],
   "disaster-tech": [
    {
     "field": "board",
@@ -1049,16 +1004,6 @@
     "status": 404,
     "title": "",
     "url": "https://pratus.disastertech.com/careers-hiring"
-   }
-  ],
-  "dominion-voting-systems": [
-   {
-    "field": "website",
-    "final": "https://libertyvote.com/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Home - Liberty Vote",
-    "url": "https://www.dominionvoting.com"
    }
   ],
   "dossier-systems": [
@@ -1118,6 +1063,24 @@
     "url": "https://www.dzsi.com/company/careers"
    }
   ],
+  "e-j-ward": [
+   {
+    "field": "website",
+    "final": "https://www.wardfuel.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Ward | Fuel Management Systems for Fleets",
+    "url": "https://www.ejward.com"
+   },
+   {
+    "field": "board",
+    "final": "https://www.ejward.com/assets/careers.png",
+    "kind": "unread",
+    "status": 404,
+    "title": "",
+    "url": "https://www.ejward.com/assets/careers.png"
+   }
+  ],
   "eagle-eye-networks": [
    {
     "field": "board",
@@ -1126,16 +1089,6 @@
     "status": 200,
     "title": "Jobs at Brivo | Brivo Careers",
     "url": "https://een.com/careers"
-   }
-  ],
-  "easypark-group": [
-   {
-    "field": "website",
-    "final": "https://easyparkgroup.com",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://easyparkgroup.com"
    }
   ],
   "easyvote-solutions": [
@@ -1187,16 +1140,6 @@
     "url": "https://ecivis.com"
    }
   ],
-  "edmunds-govtech": [
-   {
-    "field": "website",
-    "final": "https://www.edmundsgovtech.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.edmundsgovtech.com"
-   }
-  ],
   "edovo": [
    {
     "field": "website",
@@ -1225,6 +1168,16 @@
     "status": 202,
     "title": "",
     "url": "https://www.enghouse.com/careers"
+   }
+  ],
+  "envision-technology-partners-inc": [
+   {
+    "field": "website",
+    "final": "https://www.inductivehealth.com/webiz/",
+    "kind": "unread",
+    "status": 401,
+    "title": "",
+    "url": "https://www.inductivehealth.com/webiz/"
    }
   ],
   "escape-technologies": [
@@ -1271,6 +1224,14 @@
     "status": 403,
     "title": "",
     "url": "https://www.evluma.com"
+   },
+   {
+    "field": "board",
+    "final": "https://evluma.com/about/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://evluma.com/about/careers"
    }
   ],
   "evolv-technology": [
@@ -1329,16 +1290,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.firstwatch.net"
-   }
-  ],
-  "flowbird": [
-   {
-    "field": "website",
-    "final": "https://www.flowbird.com",
-    "kind": "moved",
-    "status": 200,
-    "title": "Flowbird - Effortless Movement From City to City",
-    "url": "https://www.flowbird.group"
    }
   ],
   "frogparking": [
@@ -1405,7 +1356,7 @@
     "final": "https://www.icccodesolutions.org/",
     "kind": "moved",
     "status": 200,
-    "title": "ICC Code Solutions | Forward-thinking municipal code solutions",
+    "title": "ICC Code Solutions | Forward-thinking municipal innovation",
     "url": "https://www.generalcode.com"
    }
   ],
@@ -1417,6 +1368,24 @@
     "status": 404,
     "title": "",
     "url": "https://www.getac.com/us/video-solutions"
+   }
+  ],
+  "getinsured": [
+   {
+    "field": "website",
+    "final": "https://www.vimo.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Vimo | Technology solutions built for government & designed for people",
+    "url": "https://www.getinsured.com"
+   },
+   {
+    "field": "board",
+    "final": "https://www.vimo.com/about/careers",
+    "kind": "moved",
+    "status": 200,
+    "title": "Vimo | Technology solutions built for government & designed for people",
+    "url": "https://company.getinsured.com/about/working-at-get-insured"
    }
   ],
   "givepulse": [
@@ -1507,47 +1476,32 @@
     "url": "https://govos.com/about/careers"
    }
   ],
-  "grab": [
+  "greenspace-health": [
    {
     "field": "website",
-    "final": "https://www.grab.com",
+    "final": "https://greenspacehealth.com",
     "kind": "unread",
     "status": 403,
     "title": "",
-    "url": "https://www.grab.com"
+    "url": "https://greenspacehealth.com"
+   },
+   {
+    "field": "board",
+    "final": "https://greenspacehealth.com/en-us/company/careers/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://greenspacehealth.com/en-us/company/careers/"
    }
   ],
   "griffeye": [
    {
     "field": "website",
-    "final": "https://www.griffeye.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.griffeye.com",
-    "why": "no such domain"
-   }
-  ],
-  "guard1": [
-   {
-    "field": "website",
-    "final": "https://www.guard1.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com",
-    "why": "timed out"
-   }
-  ],
-  "guard1-by-timekeeping-systems": [
-   {
-    "field": "website",
-    "final": "https://www.guard1.com/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.guard1.com/",
-    "why": "timed out"
+    "final": "https://www.magnetforensics.com/products/magnet-griffeye/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Magnet Griffeye: Digital Media Analysis | Magnet Forensics",
+    "url": "https://www.griffeye.com"
    }
   ],
   "gutermann": [
@@ -1608,6 +1562,17 @@
     "url": "https://www.harrisschoolsolutions.com"
    }
   ],
+  "hdl-companies": [
+   {
+    "field": "website",
+    "final": "https://www.hdlcompanies.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.hdlcompanies.com",
+    "why": "certificate not trusted"
+   }
+  ],
   "healthy-together": [
    {
     "field": "website",
@@ -1659,6 +1624,16 @@
     "why": "no such domain"
    }
   ],
+  "hotb-software-solutions": [
+   {
+    "field": "website",
+    "final": "https://hotbsoftware.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://hotbsoftware.com/"
+   }
+  ],
   "hunter-industries": [
    {
     "field": "website",
@@ -1707,22 +1682,6 @@
     "status": 200,
     "title": "i3 Verticals Partners",
     "url": "https://imagesoftinc.com"
-   }
-  ],
-  "imagry": [
-   {
-    "field": "website",
-    "final": "https://imagry.co",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://imagry.co/",
-     "kind": "ok",
-     "title": "AI-Based Autonomous Driving Solution for Public Transit | Imagry"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://imagry.co",
-    "why": "timed out"
    }
   ],
   "impero-software": [
@@ -1925,7 +1884,7 @@
     "field": "website",
     "final": "https://jailgeek.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://jailgeek.com"
    }
@@ -1948,6 +1907,24 @@
     "status": 202,
     "title": "",
     "url": "https://www.justicesystems.com"
+   }
+  ],
+  "kaltura-inc": [
+   {
+    "field": "website",
+    "final": "https://corp.kaltura.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://corp.kaltura.com/"
+   },
+   {
+    "field": "board",
+    "final": "https://corp.kaltura.com/company/careers/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://corp.kaltura.com/company/careers/"
    }
   ],
   "kamstrup": [
@@ -2020,6 +1997,16 @@
     "url": "https://risk.lexisnexis.com/contact-us#career"
    }
   ],
+  "lexisnexis-risk-solutions-government": [
+   {
+    "field": "website",
+    "final": "https://risk.lexisnexis.com/government",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://risk.lexisnexis.com/government"
+   }
+  ],
   "limble": [
    {
     "field": "website",
@@ -2078,6 +2065,24 @@
     "status": 202,
     "title": "",
     "url": "https://lote4kids.com"
+   }
+  ],
+  "lumu-technologies": [
+   {
+    "field": "website",
+    "final": "https://lumu.io/cybersecurity-for-schools/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://lumu.io/cybersecurity-for-schools/"
+   },
+   {
+    "field": "board",
+    "final": "https://lumu.io/careers/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://lumu.io/careers/"
    }
   ],
   "matterhorn": [
@@ -2175,16 +2180,6 @@
     "status": 200,
     "title": "Career Opportunities at MissionSquare",
     "url": "https://www.missionsq.org/careers"
-   }
-  ],
-  "miyo-health": [
-   {
-    "field": "website",
-    "final": "https://miyohealth.com",
-    "kind": "unread",
-    "status": 502,
-    "title": "",
-    "url": "https://miyohealth.com"
    }
   ],
   "ml-schedules": [
@@ -2352,6 +2347,17 @@
     "url": "https://www.neuralguard.com"
    }
   ],
+  "neutralaiz-inc": [
+   {
+    "field": "website",
+    "final": "https://neutralaiz.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://neutralaiz.com",
+    "why": "timed out"
+   }
+  ],
   "nexsos": [
    {
     "field": "website",
@@ -2410,7 +2416,7 @@
     "status": null,
     "title": "",
     "url": "https://numina.co",
-    "why": "timed out"
+    "why": "certificate is for another address"
    }
   ],
   "nwave-technologies": [
@@ -2504,10 +2510,10 @@
   "park-assist": [
    {
     "field": "website",
-    "final": "https://www.parkassist.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://tkhsecurity.com/us/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Security Management & Parking Guidance Solutions | PARK ASSIST",
     "url": "https://www.parkassist.com"
    }
   ],
@@ -2549,6 +2555,17 @@
     "url": "https://passportworkforce.com/careers"
    }
   ],
+  "payment-service-network": [
+   {
+    "field": "website",
+    "final": "https://paymentservicenetwork.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://paymentservicenetwork.com",
+    "why": "secure connection failed"
+   }
+  ],
   "permitify": [
    {
     "field": "website",
@@ -2587,7 +2604,7 @@
     "status": null,
     "title": "",
     "url": "https://www.platinumtr.com",
-    "why": "connection refused"
+    "why": "timed out"
    }
   ],
   "point": [
@@ -2595,7 +2612,7 @@
     "field": "website",
     "final": "https://pointapp.org",
     "kind": "unread",
-    "status": 202,
+    "status": 403,
     "title": "",
     "url": "https://pointapp.org"
    }
@@ -2703,7 +2720,7 @@
     "field": "website",
     "final": "https://www.projectmates.com",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.projectmates.com"
    },
@@ -2711,7 +2728,7 @@
     "field": "board",
     "final": "https://www.projectmates.com/careers",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://www.projectmates.com/careers"
    }
@@ -2742,6 +2759,34 @@
     "status": 403,
     "title": "",
     "url": "https://proudcity.com/careers"
+   }
+  ],
+  "pulse-transit-software": [
+   {
+    "field": "website",
+    "final": "https://www.transitpulse.io/",
+    "kind": "unread",
+    "status": 503,
+    "title": "",
+    "url": "https://www.transitpulse.io/"
+   }
+  ],
+  "q-free": [
+   {
+    "field": "website",
+    "final": "https://www.q-free.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.q-free.com"
+   },
+   {
+    "field": "board",
+    "final": "https://www.q-free.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.q-free.com/careers"
    }
   ],
   "qryde-by-hbss": [
@@ -2823,15 +2868,14 @@
     "url": "https://www.recdesk.com"
    }
   ],
-  "redmane-technology": [
+  "repay": [
    {
     "field": "website",
-    "final": "https://www.redmane.com",
+    "final": "https://repay.com/",
     "kind": "unread",
-    "status": null,
+    "status": 403,
     "title": "",
-    "url": "https://www.redmane.com",
-    "why": "connection dropped"
+    "url": "https://repay.com/"
    }
   ],
   "resourcex": [
@@ -2910,16 +2954,6 @@
     "url": "https://runbeck.net/careers"
    }
   ],
-  "sacs-software": [
-   {
-    "field": "website",
-    "final": "https://www.sacssoftware.com",
-    "kind": "unread",
-    "status": 500,
-    "title": "",
-    "url": "https://www.sacssoftware.com"
-   }
-  ],
   "saferwatch": [
    {
     "field": "website",
@@ -2948,6 +2982,24 @@
     "status": 404,
     "title": "",
     "url": "https://www.scheidt-bachmann-usa.com/careers"
+   }
+  ],
+  "schreder": [
+   {
+    "field": "website",
+    "final": "https://www.schreder.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.schreder.com"
+   },
+   {
+    "field": "board",
+    "final": "https://www.schreder.com/en/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.schreder.com/en/careers"
    }
   ],
   "scram-systems": [
@@ -3024,7 +3076,7 @@
     "status": null,
     "title": "",
     "url": "https://sedaru.com",
-    "why": "certificate not trusted"
+    "why": "secure connection failed"
    }
   ],
   "sedc": [
@@ -3038,17 +3090,11 @@
    },
    {
     "field": "board",
-    "final": "https://www.sedata.com/careers",
-    "kind": "unread",
-    "plain_http": {
-     "final": "https://www.nisc.coop/careers/",
-     "kind": "moved",
-     "title": "Careers - National Information Solutions Cooperative (NISC)"
-    },
-    "status": null,
-    "title": "",
-    "url": "https://www.sedata.com/careers",
-    "why": "timed out"
+    "final": "https://www.nisc.coop/careers/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Careers - National Information Solutions Cooperative (NISC)",
+    "url": "https://www.sedata.com/careers"
    }
   ],
   "selc-ireland": [
@@ -3243,7 +3289,7 @@
   "srs-computing": [
    {
     "field": "website",
-    "final": "https://www.tributetech.com/srs",
+    "final": "https://www.tributetech.com/srs-by-tribute",
     "kind": "moved",
     "status": 200,
     "title": "SRS Computing | Tribute Technology",
@@ -3258,7 +3304,7 @@
     "status": null,
     "title": "",
     "url": "https://www.ssci2000.com",
-    "why": "certificate is for another address"
+    "why": "no such domain"
    }
   ],
   "st-engineering-telematics-wireless": [
@@ -3287,6 +3333,44 @@
     "status": 403,
     "title": "",
     "url": "https://stackbench.com"
+   }
+  ],
+  "stopit-solutions": [
+   {
+    "field": "website",
+    "final": "https://www.lightspeedsystems.com/products/lightspeed-stopit/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Lightspeed StopIt Anonymous Reporting System for Schools - Lightspeed Systems",
+    "url": "https://stopitsolutions.com"
+   }
+  ],
+  "streametric": [
+   {
+    "field": "website",
+    "final": "https://streametric.io",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://streametric.io"
+   },
+   {
+    "field": "board",
+    "final": "https://streametric.io/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://streametric.io/careers"
+   }
+  ],
+  "streamline": [
+   {
+    "field": "board",
+    "final": "https://www.getstreamline.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.getstreamline.com/careers"
    }
   ],
   "streetscan": [
@@ -3368,6 +3452,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.swimtopia.com/careers"
+   }
+  ],
+  "syniverse": [
+   {
+    "field": "website",
+    "final": "https://www.syniverse.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.syniverse.com/"
    }
   ],
   "syrinix": [
@@ -3472,6 +3566,16 @@
     "url": "https://tootris.com/careers"
    }
   ],
+  "tootris-child-care-solutions": [
+   {
+    "field": "website",
+    "final": "https://tootris.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://tootris.com/"
+   }
+  ],
   "touchnet-a-global-payments-company": [
    {
     "field": "website",
@@ -3487,21 +3591,9 @@
     "field": "website",
     "final": "https://www.outerspatial.com",
     "kind": "unread",
-    "status": null,
+    "status": 429,
     "title": "",
-    "url": "https://www.outerspatial.com",
-    "why": "timed out"
-   }
-  ],
-  "trapeze-group": [
-   {
-    "field": "website",
-    "final": "https://trapezegroup.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://trapezegroup.com",
-    "why": "timed out"
+    "url": "https://www.outerspatial.com"
    }
   ],
   "tss-paratransit": [
@@ -3567,11 +3659,19 @@
   ],
   "urbint": [
    {
-    "field": "board",
-    "final": "https://na.itron.com/careers",
+    "field": "website",
+    "final": "https://na.itron.com/what-we-offer/resiliency-solutions-overview",
     "kind": "moved",
     "status": 200,
-    "title": "Careers - Itron",
+    "title": "Resiliency Solutions Overview - Itron",
+    "url": "https://www.urbint.com"
+   },
+   {
+    "field": "board",
+    "final": "https://na.itron.com/what-we-offer/resiliency-solutions-overview",
+    "kind": "moved",
+    "status": 200,
+    "title": "Resiliency Solutions Overview - Itron",
     "url": "https://www.urbint.com/careers"
    }
   ],
@@ -3703,17 +3803,6 @@
     "why": "no such domain"
    }
   ],
-  "vitalsense-technologies": [
-   {
-    "field": "website",
-    "final": "https://vitalsensetechnologies.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://vitalsensetechnologies.com",
-    "why": "timed out"
-   }
-  ],
   "vitech-systems-group": [
    {
     "field": "website",
@@ -3747,7 +3836,7 @@
     "field": "website",
     "final": "https://wavepointsolution.com/",
     "kind": "unread",
-    "status": 403,
+    "status": 202,
     "title": "",
     "url": "https://wavepointsolution.com/"
    }
@@ -3768,6 +3857,16 @@
     "status": 403,
     "title": "",
     "url": "https://www.way.com/careers"
+   }
+  ],
+  "yardi-systems": [
+   {
+    "field": "website",
+    "final": "https://www.yardi.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.yardi.com"
    }
   ],
   "yunex-traffic": [
