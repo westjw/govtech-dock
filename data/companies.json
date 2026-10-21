@@ -108441,7 +108441,12 @@
   "buyer": "not found",
   "sells_to_gov": "unclear",
   "acquisitions_checked_on": "2026-09-10",
-  "acquisitions_none_found": true
+  "acquisitions_none_found": true,
+  "out_of_scope": {
+   "on": "2026-10-20",
+   "by": "owner",
+   "why": "owner 2026-10-20 'yes take whoosh off': the website on file, whoosh.com, is a glass screen-cleaner company, and the parking-payments Whoosh this record describes (Ottawa, 2021) could not be identified; held until someone can"
+  }
  },
  {
   "id": "data-ticket",
