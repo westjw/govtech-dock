@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Gartner IT Symposium/Xpo 2026: Day 2 Highlights with Infor: Build your AI roadmap, then let value compound",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/gartner-2026-day-2-ai-roadmap-compounding-value"
+  },
+  {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Gartner IT Symposium/Xpo 2026: Day 1 Highlights with Infor: Industry intelligence is the new AI foundation",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "From accountable AI to accountable action",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Balancing freshness, yield, service, and profitability through integrated ERP planning",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Early Talent launching their careers at Infor",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Inside Infor's Early Talent onboarding experience",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Key healthcare innovations from Infor's October 2026 Release",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/resources/manufacturers-turn-market-pressure-competitive-advantage"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "The new demands on healthcare workforce management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/healthcare-leaders-rethinking-workforce-management"
   }
  ],
  "profile": {

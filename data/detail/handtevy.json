@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Handtevy Completes SOC 2 Type 2 Examination, Reinforcing Its Commitment to Security and Trust in Emergency Care",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/handtevy-completes-soc-2-type-2-examination-reinforcing-its-commitment-to-security-and-trust-in-emergency-care/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.handtevy.com/news/handtevy-soc-2-compliant/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Florida Funds Handtevy Mobile for Hospital Emergency Departments and EMS Statewide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.handtevy.com/news/florida-funds-handtevy-mobile-statewide/"
   },
   {
    "date": "2025-09-03",
@@ -89,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.handtevy.com/news/childs-play-scoop-and-run-may-not-be-best-for-kids-in-cardiac-arrest/"
-  },
-  {
-   "date": "2019-11-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "\u2018Stop the Bleed\u2019 Kits\u2013Preparing Everyone for Mass Casualties",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.handtevy.com/news/stop-the-bleed-kits-preparing-everyone-for-mass-casualties/"
   }
  ],
  "profile": {

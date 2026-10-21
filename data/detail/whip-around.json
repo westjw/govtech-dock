@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-20",
+   "headline": "Predictive Fleet Maintenance: How to Maximize Fleet Uptime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/predictive-fleet-maintenance/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "index-text",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/reduce-fuel-waste-connected-fleet-data/"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "The Labor Reporting Metrics Fleet Managers Can't Afford to Ignore",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/fleet-labor-reporting-metrics/"
   }
  ],
  "profile": {

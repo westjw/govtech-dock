@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "GE Vernova secures order aimed to strengthen regional energy capacity in C\u00f4te d\u2019Ivoire",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gevernova.com/news/press-releases/ge-vernova-secures-order-aimed-strengthen-regional-energy-capacity-cote-divoire"
+  },
+  {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Net Zero Without Compromising Reliability: GE Vernova Shows How Spain Can Design a Power System That Achieves Both",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "GE Vernova to announce third quarter 2026 financial results on October 28",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "GE Vernova to Double the Number of MIT Interns and Permanent Hires in 2027",
    "kind": "leadership",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gevernova.com/news/press-releases/vineyard-wind-ge-vernova-announce-resolution-commercial-litigation"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Blue Energy moves Texas gas-plus-nuclear project into NRC construction review, marking a major regulatory milestone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gevernova.com/news/press-releases/blue-energy-texas-gas-plus-nuclear-project-nrc-review"
   }
  ]
 }

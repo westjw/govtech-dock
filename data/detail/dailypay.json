@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "What Is Pay Frequency? Types & How to Choose",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/what-is-pay-frequency/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Celebrating small businesses: the heart of our communities and workforces",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.dailypay.com/resource-center/blog/small-business-saturday-2026/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.dailypay.com/resource-center/blog/the-real-cost-of-on-demand-pay/"
-  },
-  {
-   "date": "2026-05-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Employee Financial Wellness is Good Business",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/employee-financial-wellness-is-good-business/"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Restaurant Turnover Rate: Statistics, Causes, and How To Reduce It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.dailypay.com/resource-center/blog/qsr-and-restaurant-turnover-rates/"
   }
  ],
  "profile": {

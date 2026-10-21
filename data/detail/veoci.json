@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-20",
+   "headline": "NIMS and the EOC: How Emergency Operations Centers Support Incident Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/nims-eoc-incident-management"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "index-text",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/healthcare-cybersecurity-clinical-operations-crisis"
-  },
-  {
-   "date": "2026-05-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "How San Francisco International Digitized Safety Management System (SMS)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/san-francisco-international-sfo-digitized-safety-management-system-sms"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "index-text",
+   "first_seen": "2026-10-20",
+   "headline": "Teacher Retention and Leadership Development Aren\u2019t Two Problems. They\u2019re One.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/blog/teacher-retention-and-leadership-development-arent-two-problems-theyre-one/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "index-text",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.frontlineeducation.com/blog/texas-special-education-funding-is-changing-what-districts-need-to-know-about-tiers-of-intensity/"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When 504 Questions Aren\u2019t Really About 504 Forms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/blog/when-504-questions-arent-really-about-504-forms/"
   }
  ],
  "profile": {

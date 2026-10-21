@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Maximus to acquire Agile Defense, advancing defense and national security growth strategy",
+   "kind": "funding",
+   "kind_rule": "to acquire",
+   "url": "https://maximus.com/news/maximus-to-acquire-agile-defense"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://maximus.com/news/david-crowson-human-services-accuracy-policy-practice"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SOCOM\u2019s secret weapon isn\u2019t technology \u2014 it\u2019s human performance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://maximus.com/news/socom-human-performance"
   }
  ],
  "profile": {

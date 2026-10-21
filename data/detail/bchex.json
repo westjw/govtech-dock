@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Far Back Does a Background Check Go?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-far-back-does-a-background-check-go"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/what-is-a-global-watchlist-search-in-a-background-check"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Real-Time Arrest Alerts Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/continuous-employee-monitoring-how-real-time-arrest-alerts-work"
   }
  ],
  "profile": {

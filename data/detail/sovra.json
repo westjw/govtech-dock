@@ -1,4 +1,114 @@
 {
+ "news": [
+  {
+   "date": "2026-09-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "SOVRA Public Procurement Platform Awarded Kinetic GPO National Agreement Across Canada",
+   "kind": "contract",
+   "kind_rule": "Awarded Kinetic GPO National Agreement",
+   "url": "https://www.sovra.com/press-releases/sovra-public-procurement-platform-awarded-kinetic-gpo-national-agreement-across-canada/"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Can AI Find Government Contracts Before They Go to Bid?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/can-ai-find-government-contracts/"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Bid Alerts or Pre-RFP Intelligence? How to Build Your SLED Procurement Tech Stack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/sled-procurement-tech-stack/"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "What is the SLED Market? How to Find Government Opportunities Before the RFP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/sled-market-government-opportunities-before-rfp/"
+  },
+  {
+   "date": "2026-08-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "The Public Sector RFP Process: A Step-by-Step Guide for Government Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/the-public-sector-rfp-process-a-step-by-step-guide-for-government-agencies/"
+  },
+  {
+   "date": "2026-08-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "SOVRA Welcomes Akhilesh Agarwal to Board of Directors",
+   "kind": "leadership",
+   "kind_rule": "Welcomes",
+   "url": "https://www.sovra.com/press-releases/sovra-welcomes-akhilesh-agarwal-to-board-of-directors/"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How to Find Government Contracts Before the RFP is Issued",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/how-to-find-government-contracts-before-the-rfp-is-issued/"
+  },
+  {
+   "date": "2026-08-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Can AI Help Identify Early Procurement Signals Before the RFP?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/how-ai-finds-early-procurement-signals-before-the-rfp/"
+  },
+  {
+   "date": "2026-07-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "SOVRA Strengthens Leadership Team to Accelerate Next Generation of AI-Powered Public Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/press-releases/sovra-strengthens-leadership-team-to-accelerate-next-generation-of-ai-powered-public-procurement/"
+  },
+  {
+   "date": "2026-07-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Naugatuck Valley Council of Governments Selects Plan-to-Program to Make Their TIP Process More Efficient",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.sovra.com/press-releases/naugatuck-valley-council-of-governments-selects-ecointeractives-projecttracker-to-make-their-tip-process-more-efficient/"
+  },
+  {
+   "date": "2026-04-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "SOVRA Launches First Unified Supplier Platform Combining Pre-RFP Intelligence and Active Opportunities",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.sovra.com/press-releases/sovra-launches-first-unified-supplier-platform-combining-pre-rfp-intelligence-and-active-opportunities/"
+  },
+  {
+   "date": "2026-03-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "SOVRA Acquires Edilex, Marking Key Milestone in Next-Generation AI-Powered Public Sector CLM Platform",
+   "kind": "funding",
+   "kind_rule": "Acquires",
+   "url": "https://www.sovra.com/press-releases/sovra-acquires-edilex-marking-key-milestone-in-next-generation-ai-powered-public-sector-clm-platform/"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "SOVRA sells procurement software to public agencies, covering the process from an identified need through the contract lifecycle. The other side of the business serves suppliers looking for government work.",

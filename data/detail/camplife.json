@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-20",
+   "headline": "What Happens When Your Campground Grows?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://software.camplife.com/blog/what-happens-when-your-campground-grows"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "index-text",
    "first_seen": "2026-09-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://software.camplife.com/blog/north-shore-rv-park-from-family-vacation-to-family-business"
-  },
-  {
-   "date": "2026-02-19",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Birches Lakeside Campground: Rebuilding a Park Around Families and the Future",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://software.camplife.com/blog/birches-lakeside-campground-rebuilding-a-park-around-families-and-the-future"
   }
  ]
 }

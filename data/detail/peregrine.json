@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Boynton Beach Police Department: Unlocking access to 3 CAD/RMS systems in 90 days",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.peregrine.io/resources/boynton-beach-police-department-unlocking-access-to-3-cadrms-systems-in-90-days"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.peregrine.io/resources/fox-13-tampa-bay-manatee-county-tracks-heat-emergencies-in-peregrine"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "Working across jurisdictions to create a safer Arizona",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.peregrine.io/resources/working-across-jurisdictions-to-create-a-safer-arizona"
   }
  ],
  "profile": {

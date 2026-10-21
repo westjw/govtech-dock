@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-09-22",
+   "date": "2026-10-20",
    "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "OSINT Live 2026 Recapped",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.skopenow.com/news/osint-live-2026-recap"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "card-date",
    "first_seen": "2026-10-05",
    "headline": "Safeguarding Financial Crime Investigations: Why Governed OSINT Is a Control Imperative",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.skopenow.com/news/kitkats-osint-cargo-theft"
-  },
-  {
-   "date": "2026-03-02",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Unlock the Power of Skopenow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.skopenow.com/news/osint-tool-consolidation"
   }
  ],
  "profile": {

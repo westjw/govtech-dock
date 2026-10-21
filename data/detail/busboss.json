@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "What FLEETpatrol Does for District Fleet Maintenance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-fleetpatrol-does-for-district-fleet-maintenance"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/real-time-dispatch-data-sync-for-school-districts"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Best School Bus Dispatch Software Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/best-school-bus-dispatch-software-compared"
   }
  ],
  "profile": {

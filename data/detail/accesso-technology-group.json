@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Weekly Webinar: accesso Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/accesso-intelligence-agentic-forecasting/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://accesso.com/news/weekly-webinar-accesso-intelligence/"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-09-05",
+   "headline": "Mountain Technology Symposium 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://accesso.com/news/mountain-technology-symposium-2026/"
   },
   {
    "date": "2026-09-26",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://accesso.com/news/msaa-annual-conference-trade-show-2026/"
-  },
-  {
-   "date": "2026-08-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "IAVM 2026 Aug 9, 2026 Past",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/iavm-2026/"
-  },
-  {
-   "date": "2026-07-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "IAAPA Theme Park Summit: Paris and Region",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://accesso.com/news/iaapa-theme-park-summit-paris-and-region-2/"
   }
  ]
 }

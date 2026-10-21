@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Payments should feel like Amazon shipping. Here\u2019s why they don\u2019t.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/payments-should-work-like-shipping"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -26,6 +35,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/blog/debit-is-gaining-ground-in-bill-pay"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "The most expensive mistake in payments right now is doing nothing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/cost-of-moving-slowly-payments-innovation"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "AI in payments: Why it won\u2019t transform the industry, but it will reveal who\u2019s ready",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/ai-in-payments-modernization-first"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Payments sovereignty is just the beginning: Why banks must prepare for a more complex payments future",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.aciworldwide.com/blog/payments-sovereignty-operational-control"
   },
   {
    "date": "2026-09-15",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.aciworldwide.com/blog/financial-stress-and-the-future-of-bill-pay"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When seconds cost millions: Building true payments resilience for enterprise merchants",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/payment-resilience-enterprise-merchants"
-  },
-  {
-   "date": "2026-07-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ACI Payments Optimization: Program Boost approvals. Recover lost revenue.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/resources/payments-optimization-program"
-  },
-  {
-   "date": "2026-07-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The women behind Bre-B How collaboration, consensus, and leadership helped transform payments in Colombia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/blog/how-collaboration-consensus-and-leadership-helped-transform-payments-in-colombia"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "A bank\u2019s guide for orchestrating every payment message, across every standard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.aciworldwide.com/resources/multi-standard-payment-messaging-guide"
   }
  ],
  "profile": {

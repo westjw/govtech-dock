@@ -1,755 +1,132 @@
 {
-  "date": "2026-10-20",
-  "previous": "2026-10-19",
+  "date": "2026-10-21",
+  "previous": "2026-10-20",
   "changes": [
     {
-      "company": "Technosylva",
-      "id": "technosylva",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "company": "Beam Global",
+      "id": "beam-global",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
     },
     {
-      "company": "Perimeter",
-      "id": "perimeter",
+      "company": "Cellebrite",
+      "id": "cellebrite",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Kodex",
+      "id": "kodex",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Oracle NetSuite for Government",
+      "id": "oracle-netsuite-for-government",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "Miovision",
-      "id": "miovision",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Enterprise Account Executive, Opti (California)"
-    },
-    {
-      "company": "Badger Meter",
-      "id": "badger-meter",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Enablement Analyst Intern only"
-    },
-    {
-      "company": "Klir",
-      "id": "klir",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Envisio",
-      "id": "envisio",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Powerfleet",
-      "id": "powerfleet",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "AtlasView",
-      "id": "atlasview",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "CivilGrid",
-      "id": "civilgrid",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Business Development Representativ only"
-    },
-    {
-      "company": "Hazel (hazelai.com)",
-      "id": "hazel",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Spare",
-      "id": "spare",
-      "from": "None found",
-      "to": "Yes",
-      "note": "Account Executive (Remote - Canada or)"
-    },
-    {
-      "company": "Bentley Systems",
-      "id": "bentley-systems",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Technical Account Manager (United Kingdom - R)"
-    },
-    {
-      "company": "Computer Information Systems, Inc.",
-      "id": "computer-information-systems-inc",
+      "company": "VCS HR & Jobs4Blue",
+      "id": "vcs-hr-jobs4blue",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "EYERIDE",
-      "id": "eyeride",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "JusticeONE",
-      "id": "justiceone",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Partake",
-      "id": "partake",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "PeerConnect",
-      "id": "peerconnect",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Roadway Management Technologies",
-      "id": "roadway-management-technologies",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
     },
     {
       "company": "Xplor Recreation",
       "id": "xplor-recreation",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative only"
-    },
-    {
-      "company": "eBridge Procurement",
-      "id": "ebridge-procurement",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "TeamGenius",
-      "id": "teamgenius",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "AccessE11",
-      "id": "accesse11",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Limble",
-      "id": "limble",
       "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "Account Executive - Direct Sales (Birmingham, AL)"
     },
     {
       "company": "Smart Parking",
       "id": "smart-parking",
+      "from": "Unknown",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Highland Electric Fleets",
+      "id": "highland-electric-fleets",
       "from": "None found",
-      "to": "Unknown",
-      "note": "network error: robots.txt on www.smartpa"
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager (CA) only"
     },
     {
       "company": "Vanderlande",
       "id": "vanderlande",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Propel",
-      "id": "propel",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Action1",
-      "id": "action1",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive - SLED, Texas an"
-    },
-    {
-      "company": "Alteryx, Inc",
-      "id": "alteryx-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (United Kingdom - R)"
-    },
-    {
-      "company": "Altumint, Inc.",
-      "id": "altumint-inc",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Argyle",
-      "id": "argyle",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "AristotleK12",
-      "id": "aristotlek12",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "ARMIS",
-      "id": "armis",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Atlassian",
-      "id": "atlassian",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Clearspeed",
-      "id": "clearspeed",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Cloudera",
-      "id": "cloudera",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Executive (Canada > Ontario >)"
-    },
-    {
-      "company": "Commvault",
-      "id": "commvault",
+      "company": "GE Vernova",
+      "id": "ge-vernova",
       "from": "Unknown",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
     },
     {
-      "company": "CoreView",
-      "id": "coreview",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Executive - Ita (Italy)"
+      "company": "EnergyHub",
+      "id": "energyhub",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Client Success Manager only"
     },
     {
-      "company": "CrashPlan",
-      "id": "crashplan",
-      "from": "Unknown",
+      "company": "Objective Corporation",
+      "id": "objective-corporation",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Strategic Account Executive (New Zealand)"
+    },
+    {
+      "company": "Measures for Justice",
+      "id": "measures-for-justice",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "CrowdStrike",
-      "id": "crowdstrike",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Corporate Account Executive, Kolka (India - Remote)"
+      "company": "Health-e Pro",
+      "id": "health-e-pro",
+      "from": "None found",
+      "to": "Unknown",
+      "note": "HTTP 404 for https://www.healthepro.com/"
     },
     {
-      "company": "CyberFOX",
-      "id": "cyberfox",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Delinea",
-      "id": "delinea",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Manager (Home Office (Italy)"
-    },
-    {
-      "company": "Doxy.me",
-      "id": "doxy-me",
-      "from": "Unknown",
+      "company": "Intelligent Video Solutions",
+      "id": "intelligent-video-solutions",
+      "from": "Sales (non-AE)",
       "to": "None found",
       "note": ""
+    },
+    {
+      "company": "StarRez",
+      "id": "starrez",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Director, Customer Success only"
     },
     {
       "company": "Druid AI",
       "id": "druid-ai",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Dun & Bradstreet, Inc.",
-      "id": "dun-bradstreet-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive III, Tier 2 Bank (Remote - United St)"
-    },
-    {
-      "company": "FinQuery",
-      "id": "finquery",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Director of Sales Enablement only"
-    },
-    {
-      "company": "Gigamon",
-      "id": "gigamon",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Businessolver",
-      "id": "businessolver",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Manager, Finance GTM (Remote) only"
-    },
-    {
-      "company": "BusRight",
-      "id": "busright",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "ESET LLC",
-      "id": "eset-llc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "GOVEASE",
-      "id": "govease",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "smarty",
-      "id": "smarty",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (SMB)"
-    },
-    {
-      "company": "Zagaran Software",
-      "id": "zagaran-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "HackerOne",
-      "id": "hackerone",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Vice President, Partnership Sales only"
-    },
-    {
-      "company": "Huntress",
-      "id": "huntress",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive II, Mid-Market (United States of A)"
-    },
-    {
-      "company": "Hyland",
-      "id": "hyland",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive - Strategic"
-    },
-    {
-      "company": "Incode Technologies",
-      "id": "incode-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Technical Account Manager (United States)"
-    },
-    {
-      "company": "innovaccer",
-      "id": "innovaccer",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "4426-Senior Account Executive- Sal (Noida)"
-    },
-    {
-      "company": "KYND",
-      "id": "kynd",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "KYRIBA",
-      "id": "kyriba",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Strategic Account Executive (New York)"
-    },
-    {
-      "company": "Locus Technologies",
-      "id": "locus-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "LogicMonitor",
-      "id": "logicmonitor",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Mentimeter",
-      "id": "mentimeter",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Okta",
-      "id": "okta",
-      "from": "Unknown",
+      "from": "None found",
       "to": "Sales (non-AE)",
       "note": "sales roles, none AE"
-    },
-    {
-      "company": "Orchestry",
-      "id": "orchestry",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Account Executive - US"
-    },
-    {
-      "company": "Panopto",
-      "id": "panopto",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Manager, Americas (Remote - US)"
-    },
-    {
-      "company": "Pluralsight",
-      "id": "pluralsight",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Executive (2 Locations)"
-    },
-    {
-      "company": "Sage",
-      "id": "sage",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "SailPoint",
-      "id": "sailpoint",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Commercial Account Executive (Remote (New York, )"
-    },
-    {
-      "company": "ScreenComply",
-      "id": "screencomply",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "simpldiscipline",
-      "id": "simpldiscipline",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Socure",
-      "id": "socure",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive Director, Gaming (New Jersey - Remot)"
-    },
-    {
-      "company": "SOFTRAX",
-      "id": "softrax",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Sophos, Inc.",
-      "id": "sophos-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (via third party (Morocco)"
-    },
-    {
-      "company": "Talkdesk",
-      "id": "talkdesk",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Enterprise Account Executive - Mix (Phoenix)"
-    },
-    {
-      "company": "ThreatLocker",
-      "id": "threatlocker",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Totara",
-      "id": "totara",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Tricentis",
-      "id": "tricentis",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sr. Account Executive (US - Austin)"
-    },
-    {
-      "company": "Truv",
-      "id": "truv",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Solutions Architect only"
-    },
-    {
-      "company": "verato",
-      "id": "verato",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager, Growth P only"
-    },
-    {
-      "company": "Wasabi Technologies",
-      "id": "wasabi-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Workiva",
-      "id": "workiva",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Senior Account Executive (London)"
-    },
-    {
-      "company": "Absolute Software",
-      "id": "absolute-software",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "BK Technologies",
-      "id": "bk-technologies",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Regional Sales Manager (Remote Worker - N/)"
-    },
-    {
-      "company": "Cotiviti",
-      "id": "cotiviti",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Team Lead, Revenue Cycle only"
-    },
-    {
-      "company": "Deccan International",
-      "id": "deccan-international",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Filevine",
-      "id": "filevine",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "HigherGround, Inc.",
-      "id": "higherground-inc",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "iLOQ",
-      "id": "iloq",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "InterSystems",
-      "id": "intersystems",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Jamf",
-      "id": "jamf",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive | SMB | New Logo (Minneapolis, MN)"
-    },
-    {
-      "company": "LawVu",
-      "id": "lawvu",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Business Development Representativ only"
-    },
-    {
-      "company": "LocusUSA",
-      "id": "locususa",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "NetDocuments",
-      "id": "netdocuments",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive, Public Sector (Remote - US)"
     },
     {
       "company": "Onit",
       "id": "onit",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Patagonia Health",
-      "id": "patagonia-health",
-      "from": "Unknown",
+      "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Pear Suite",
-      "id": "pear-suite",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Community Partnership Manager (Acc only"
-    },
-    {
-      "company": "Sharecare",
-      "id": "sharecare",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "StackAI",
-      "id": "stackai",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative only"
-    },
-    {
-      "company": "Syniverse",
-      "id": "syniverse",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Sales Director (Hong Kong)"
-    },
-    {
-      "company": "Kiddom",
-      "id": "kiddom",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Field Account Executive, Los Angel (Los Angeles, CA)"
-    },
-    {
-      "company": "OnePlan",
-      "id": "oneplan",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "ZED Digital",
-      "id": "zed-digital",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Givebacks",
-      "id": "givebacks",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "KEV Group",
-      "id": "kev-group",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Playon",
-      "id": "playon",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Account Executive (New York, NY)"
-    },
-    {
-      "company": "Goalbook",
-      "id": "goalbook",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success, Southern Califor only"
-    },
-    {
-      "company": "SameGoal Inc",
-      "id": "samegoal-inc",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "note": "Customer Success Manager - LegalFi only"
     }
   ]
 }

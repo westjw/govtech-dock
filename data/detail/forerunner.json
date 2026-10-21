@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Maine taps Forerunner to power its $15M home resilience program",
+   "kind": "contract",
+   "kind_rule": "taps",
+   "url": "https://withforerunner.com/post/maine-taps-forerunner-to-power-its-15m-home-resilience-program"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Three Technology Shifts Helping Public Works Teams Do More With Existing Resources",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/three-technology-shifts-helping-public-works-teams-do-more-with-less"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Closing the Loop Between the Field and the Office",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/closing-the-loop-between-the-field-and-the-office"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Recognizing the Teams Making a Difference: The 2026 Forerunner Partner Awards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/recognizing-the-teams-making-a-difference-the-2026-forerunner-partner-awards"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Forerunner Approaches Responsible AI in Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/how-forerunner-approaches-responsible-ai-in-government"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -17,6 +62,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/how-to-keep-inspection-records-complete-across-multiple-sites"
+  },
+  {
+   "date": "2026-09-23",
+   "date_source": "index-text",
+   "first_seen": "2026-10-20",
+   "headline": "A Conversation with Derrick Hiebert: Building Resilience Beyond the Federal Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/modernizing-code-enforcement-in-denham-springs-la"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "card-date",
+   "first_seen": "2026-10-20",
+   "headline": "A Conversation with Doa Ross on Innovation and Trust in Public Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://withforerunner.com/post/doing-more-with-less-in-the-desert-doa-ross-on-innovation-trust-and-public-works"
   },
   {
    "date": "2026-09-02",
@@ -37,15 +100,6 @@
    "url": "https://withforerunner.com/post/ai-assistant"
   },
   {
-   "date": "2026-08-12",
-   "date_source": "card-date",
-   "first_seen": "2026-10-15",
-   "headline": "How AI Can Help Government Teams Do Their Best Work",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/how-ai-can-help-government-teams-do-their-best-work"
-  },
-  {
    "date": "2026-07-31",
    "date_source": "card-date",
    "first_seen": "2026-09-05",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://withforerunner.com/post/automations"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Before the Next Storm: What Floodplain Programs Need to Document Before a Disaster Declaration",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/before-the-next-storm-what-floodplain-programs-need-to-document-before-a-disaster-declaration"
-  },
-  {
-   "date": "2026-06-30",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "What Your Crew Saw (That Never Made It to the Report)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/after-the-inspector-leaves-building-legally-defensible-inspection-record"
-  },
-  {
-   "date": "2026-06-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Recap: A Conversation with Albert Glee: Balancing Innovation and Oversight in Government AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/recap-a-conversation-with-albert-glee-balancing-innovation-and-oversight-in-government-ai"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Recap: Preparing for Hurricane Season",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/recap-preparing-for-hurricane-season-2"
-  },
-  {
-   "date": "2026-06-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Maine taps Forerunner to power its $15M home resilience program",
-   "kind": "contract",
-   "kind_rule": "taps",
-   "url": "https://withforerunner.com/post/maine-taps-forerunner-to-power-its-15m-home-resilience-program"
-  },
-  {
-   "date": "2026-05-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How AI Is Reducing Friction for Public Works Teams in the Field",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://withforerunner.com/post/how-ai-is-reducing-friction-for-public-works-teams-in-the-field"
   }
  ],
  "profile": {

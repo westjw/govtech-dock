@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Fleet, Finance, and IT Can Evaluate Shared Fleet Management Software Together",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.agilefleet.com/blog/how-fleet-finance-and-it-can-evaluate-shared-fleet-management-software-together"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.agilefleet.com/blog/what-should-government-fleets-do-with-underutilized-vehicles-a-6-option-decision-framework"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Government Fleets Should Set Vehicle Utilization Thresholds Without Relying on Mileage Alone",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.agilefleet.com/blog/how-government-fleets-should-set-vehicle-utilization-thresholds-without-relying-on-mileage-alone"
   }
  ],
  "profile": {

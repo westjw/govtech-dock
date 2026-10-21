@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Preventative Maintenance Supports CSA Compliance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.gpsinsight.com/blog/how-preventative-maintenance-supports-csa-compliance/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.gpsinsight.com/resources/become-a-partner/"
-  },
-  {
-   "date": "2024-09-23",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "Field Service Management Software",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.gpsinsight.com/blog/field-service-management-software/"
   }
  ]
 }

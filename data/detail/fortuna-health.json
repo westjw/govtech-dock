@@ -1,7 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-10-09",
+   "date": "2026-10-15",
    "date_source": "card-date",
    "first_seen": "2026-10-08",
    "headline": "Highmark Wholecare and Fortuna Health Introduce State's First AI-Enabled Medicaid Renewal Support",
@@ -10,7 +10,7 @@
    "url": "https://www.fortunahealth.com/resources/highmark-wholecare-and-fortuna-health-introduce-states-first-ai-enabled-medicaid-renewal-support"
   },
   {
-   "date": "2026-10-09",
+   "date": "2026-10-15",
    "date_source": "card-date",
    "first_seen": "2026-10-07",
    "headline": "Fortuna Enters West Virginia Market with Highmark Health Options",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-09-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Understanding CMS's New Implementation Guidance for Medical Frailty",
    "kind": "press",
@@ -55,33 +55,6 @@
    "url": "https://www.fortunahealth.com/resources/what-you-need-to-know-about-medicaid-work-requirements"
   },
   {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Voice AI vs Human Calls for Medicaid Renewals",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
-  },
-  {
-   "date": "2026-07-30",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "What Consumers Taught Us in Our First Two Years of Building",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fortunahealth.com/resources/what-consumers-taught-us-in-our-first-two-years-of-building"
-  },
-  {
    "date": "2026-06-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -107,6 +80,33 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fortunahealth.com/resources/what-does-a-medicaid-notice-actually-look-like"
+  },
+  {
+   "date": "2026-05-26",
+   "date_source": "card-date",
+   "first_seen": "2026-09-05",
+   "headline": "The Quiet Eligibility Crisis Coming for Medicare Dual-Eligible Members",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/the-quiet-eligibility-crisis-coming-for-medicare-dual-eligible-members"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "What Stands Out in Nebraska's Medicaid Work Requirements Paperwork",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/what-stands-out-in-nebraskas-medicaid-work-requirements-paperwork"
+  },
+  {
+   "date": "2026-04-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Voice AI vs Human Calls for Medicaid Renewals",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fortunahealth.com/resources/voice-ai-vs-human-calls-for-medicaid-renewals"
   }
  ],
  "profile": {

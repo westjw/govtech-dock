@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "7 Questions That Reveal Whether Your Reading Program Is Working",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.beanstack.com/blog/7-questions-to-ask-about-your-reading-program-beanstack"
+  },
+  {
    "date": "2026-10-16",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Reading Challenges to Build Schoolwide Reading Culture",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Why Independent Reading Practice Matters",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Banned Books Week: Let Books & Comics Be Joyful Reading",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Starry Nights and Reading Lights: Beanstack\u2019s 2027 Winter Reading Challenge",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Build Year-Round Community Engagement With Reading Challenges",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.beanstack.com/blog/how-to-plan-a-reading-fundraiser"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "6 Lessons for Building Stronger Reading Habits at School",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.beanstack.com/blog/6-lessons-for-building-stronger-reading-habits-at-school"
   }
  ],
  "profile": {

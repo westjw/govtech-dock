@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "time",
+   "first_seen": "2026-10-20",
+   "headline": "Landscaping dispatch software: How to keep crews moving with GPS visibility.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/landscaping-dispatch-software/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "time",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://helpcenter.gomotive.com/hc/en-us/articles/38779274214173-Custom-Safety-Event-Tags"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-28",
-   "headline": "Webhooks in Fleet Dashboard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://helpcenter.gomotive.com/hc/en-us/articles/6189953443101-Webhooks-in-Fleet-Dashboard"
   }
  ],
  "profile": {

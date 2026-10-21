@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How the PGA Jr. League Plans for Unexpected Weather",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/how-the-pga-jr-league-plans-for-unexpected-weather/"
+  },
+  {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "What is California Assembly Bill 2503?",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/vhsl-heat-policy-the-wbgt-playbook-for-virginia-schools/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "NATA: The Science Behind Heat and Weather Safety Policies",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/nata-the-science-behind-heat-and-weather-safety-policies/"
   }
  ],
  "profile": {

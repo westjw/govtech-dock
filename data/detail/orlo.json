@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "What is media monitoring? A guide for public sector comms teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://orlo.tech/blog/what-is-media-monitoring/"
+  },
+  {
    "date": "2026-10-12",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://orlo.tech/blog/stairs-and-the-tia-standard-your-comms-countdown-to-october-2026/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Legal Archiving Mandate: What US State, City And County Governments Must Retain",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://orlo.tech/blog/the-legal-archiving-mandate-what-us-state-city-and-county-governments-must-retain/"
   }
  ],
  "profile": {

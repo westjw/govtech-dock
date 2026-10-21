@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Trilliant Selected to Shape Next-Gen Smart Metering.",
+   "kind": "contract",
+   "kind_rule": "Selected to",
+   "url": "https://trilliant.com/press-releases/trilliant-selected-by-dutch-dsos-to-help-shape-the-next-generation-of-smart-metering-in-the-netherlands/"
+  },
+  {
    "date": "2026-09-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Trilliant Returns to Enlit Asia 2026 with a Focus on Flexible, Future-Ready Grid Modernization",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-09-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Trilliant Congratulates Tenaga Nasional Berhad on Multiple Wins at the PIKOM Digital Excellence Awards",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-03-04",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Discover What\u2019s Next in Grid Modernization at TechAdvantage 2026",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-02-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Powering Grid Intelligence at Trilliant Video",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-01-28",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Trilliant is Powering Grid Intelligence at DISTRIBUTECH 2026",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2025-11-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-11",
    "headline": "Energy Transition Solutions at Enlit Europe 2025",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://trilliant.com/press-releases/trilliant-leader-joins-industry-experts-at-enlit-asia-discussion-on-smart-grid-innovation/"
-  },
-  {
-   "date": "2025-05-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-11",
-   "headline": "Trilliant and OZZ Electric Expand Next-Generation Utility Services in British Columbia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://trilliant.com/press-releases/trilliant-and-ozz-electric-expand-next-generation-utility-services-in-british-columbia/"
   }
  ]
 }

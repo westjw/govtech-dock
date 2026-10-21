@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "HIPAA Business Associates: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/hipaa-business-associates/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.saltycloud.com/blog/what-is-cjis/"
-  },
-  {
-   "date": "2026-07-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "CMMC: Complete Guide [2026]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/everything-about-the-cmmc-complete-cmmc-guide/"
   }
  ],
  "profile": {

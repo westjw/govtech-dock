@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "FEMA's $250M Counter-UAS Grant: Key Details for States and Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.airsight.com/blog/femas-250m-counter-uas-grant-key-details-for-states-and-agencies"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.airsight.com/blog/airsight-x-skydio-drone-detection-response"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How AirGuard + ADS-B Brings Manned Aircraft and Drone Insights into One View",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.airsight.com/blog/airguard-ads-b-manned-aircraft-drone-one-view"
   }
  ],
  "profile": {

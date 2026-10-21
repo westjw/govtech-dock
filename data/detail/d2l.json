@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "D2L Signs First Strategic Vietnam Customer as Van Lang Education Group Adopts D2L Brightspace",
+   "kind": "contract",
+   "kind_rule": "Adopts",
+   "url": "https://www.d2l.com/newsroom/d2l-signs-first-strategic-vietnam-customer-as-van-lang-education-group-adopts-d2l-brightspace/"
+  },
+  {
    "date": "2026-10-17",
    "date_source": "json-ld",
    "first_seen": "2026-10-18",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/tms-vs-lms/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Student, Teacher and Parental Roles in Learning Communities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/student-teacher-and-parent-roles-in-learning-communities/"
   }
  ],
  "profile": {

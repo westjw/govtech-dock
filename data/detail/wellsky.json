@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Which diagnoses support M1028 responses for PVD, PAD, and diabetes?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/which-diagnoses-support-m1028-responses-for-pvd-pad-and-diabetes/"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -46,13 +55,13 @@
    "url": "https://wellsky.com/resources/hospice/"
   },
   {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-14",
-   "headline": "What\u2019s changing in the fiscal year FY2027 ICD-10-CM code update?",
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "What changes are included in the fiscal year 2027 hospice final rule?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
+   "url": "https://wellsky.com/blog/what-changes-are-included-in-the-fiscal-year-2027-hospice-final-rule/"
   },
   {
    "date": "2026-09-29",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/new-telehealth-regulations-for-behavioral-health-3-opportunities-for-providers-in-2025/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "WellSky recognizes 2023 Analytics Innovator Award winners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/wellsky-recognizes-2023-analytics-innovator-award-winners/"
   }
  ]
 }

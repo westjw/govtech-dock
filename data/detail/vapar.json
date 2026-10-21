@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "card-date",
+   "first_seen": "2026-10-20",
+   "headline": "Meet the newest addition to our team: Fiona Wu",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vapar.co/blog/meet-the-newest-addition-to-our-team-fiona-wu"
+  },
+  {
    "date": "2026-05-06",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://vapar.co/blog/cctv-pipe-inspection-sydney"
-  },
-  {
-   "date": "2025-03-14",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Sewage Definition: Meaning, Types, and Environmental Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vapar.co/blog/sewage-definition-environmental-impact"
   }
  ]
 }

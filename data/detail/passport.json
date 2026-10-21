@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "How Front-Line Enforcement Is Changing: What We Heard at Our Pacific Northwest Regional Webinar",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.passportinc.com/blog/how-front-line-enforcement-is-changing-what-we-heard-at-our-pacific-northwest-regional-webinar/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://www.passportinc.com/blog/ogden-ut-launches-passports-unified-platform-to-manage-parking-compliance-and-payments/"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Parking Enforcement Built for Cities of Every Size",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.passportinc.com/blog/parking-enforcement-built-for-cities-of-every-size/"
   }
  ],
  "profile": {

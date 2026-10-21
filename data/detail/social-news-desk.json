@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Building a Year End News Recap Without Pulling Your Team Off Live Coverage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.socialnewsdesk.com/blog/building-a-year-end-news-recap-without-pulling-your-team-off-live-coverage/"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "json-ld",
    "first_seen": "2026-10-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.socialnewsdesk.com/blog/webinar-replay-stop-the-scramble/"
-  },
-  {
-   "date": "2026-08-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Two New Places to Listen: Bluesky and Threads Keyword Search",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.socialnewsdesk.com/blog/two-new-places-to-listen-bluesky-and-threads-keyword-search/"
   }
  ],
  "profile": {

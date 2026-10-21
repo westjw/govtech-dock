@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Why Behavioral Health Data Creates a Different Kind of Cybersecurity Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cantatahealth.com/resource/blog/why-behavioral-health-data-creates-a-different-kind-of-cybersecurity-risk/"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cantatahealth.com/resource/blog/qa-exploring-how-social-work-principles-shape-product-leadership/"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How CN Guidance is Extending Crisis Care Beyond the Emergency Room",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cantatahealth.com/resource/blog/how-cn-guidance-is-extending-crisis-care-beyond-the-emergency-room/"
   }
  ],
  "profile": {

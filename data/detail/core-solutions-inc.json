@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Safe AI in Behavioral Health Starts With Controls You Own",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.coresolutionsinc.com/blog/safe-ai-in-behavioral-health-starts-with-controls-you-own"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coresolutionsinc.com/blog/clinical-documentation-improvement-a-key-to-mental-health-funding"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Hidden Complexity of IDD Billing (And Why Most EHRs Aren't Built for It)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coresolutionsinc.com/blog/the-hidden-complexity-of-idd-billing-and-why-most-ehrs-arent-built-for-it"
   }
  ],
  "profile": {
