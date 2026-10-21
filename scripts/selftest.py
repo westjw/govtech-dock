@@ -31700,6 +31700,61 @@ def check_a_role_can_be_flagged_for_job_hunter() -> int:
             errors += fail(f"{where} has no Flag for Job Hunter")
     return errors
 
+def check_a_family_fold_keeps_a_landed_write_up() -> int:
+    """merge_families.write_brands gives the survivor the family's research
+    write-up only where it has none (2026-10-20).
+
+    The Arrive fold replaced Arrive's landed write-up - paragraphs, through
+    the profile door, ruled on by the owner - with research notes in a shape
+    profile_for_board never publishes, so the company page lost its write-up
+    while the fold reported success. Driven on a throwaway data folder, the
+    journal and its archive moved with it.
+    """
+    import shutil, tempfile
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import merge_families as mf, admin as _admin, journal as _journal
+    errors = 0
+    keep = (_admin.DATA, _journal.DATA, _journal.LOG, getattr(_journal, "ARCHIVE", None))
+    tmp = pathlib.Path(tempfile.mkdtemp())
+    try:
+        shutil.copy(ROOT / "data" / "schema.json", tmp / "schema.json")
+        base = {"location": None, "year_founded": None, "sector": "Transit & Parking",
+                "category": "Parking & Curb", "ats": {"type": "unknown", "ref": None},
+                "hiring": {"status": "Unknown", "note": "", "roles": [], "checked": None}}
+        landed = {"paragraphs": ["A write-up the owner ruled on."], "by": "agent:x",
+                  "ruled_by": "owner"}
+        cos = [dict(base, id="has-one", name="Has One", website="https://a.example",
+                    description="x", profile=landed),
+               dict(base, id="has-none", name="Has None", website="https://b.example",
+                    description="y")]
+        (tmp / "companies.json").write_text(json.dumps(cos, indent=2) + "\n")
+        research = {k: {"name": k, "website": "https://r.example", "description": "notes " * 260,
+                        "words": 260, "sources": [], "unread": [], "confidence": "high"}
+                    for k in ("has-one", "has-none")}
+        (tmp / "research.json").write_text(json.dumps(research))
+        mf.use_data_dir(str(tmp))
+        if hasattr(_journal, "ARCHIVE"):
+            _journal.ARCHIVE = tmp / "admin_journal.archive.jsonl"
+        for sid in ("has-one", "has-none"):
+            fam = {"key": sid, "survivor": sid, "research": "research.json", "members": []}
+            mf.write_brands(fam, [], {}, apply=True)
+            # nothing to roster, so write_brands returns early: give it a brand
+        for sid in ("has-one", "has-none"):
+            fam = {"key": sid, "survivor": sid, "research": "research.json",
+                   "members": [{"id": "gone-" + sid, "brand": "Brand", "research": sid}]}
+            mf.write_brands(fam, [], {}, apply=True)
+        got = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+        if (got["has-one"].get("profile") or {}).get("paragraphs") != landed["paragraphs"]:
+            errors += fail("a family fold wrote over the survivor's landed write-up")
+        if (got["has-none"].get("profile") or {}).get("words") != 260:
+            errors += fail("a family fold no longer gives a survivor with no write-up the research one")
+    finally:
+        _admin.DATA, _journal.DATA, _journal.LOG = keep[0], keep[1], keep[2]
+        if keep[3] is not None:
+            _journal.ARCHIVE = keep[3]
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
 def check_the_jobs_bar_says_the_default_once() -> int:
     """The country's default is said once, and a chip, the More count and a
     copied link treat it as a default (2026-10-19, option A).
@@ -34583,6 +34638,7 @@ def main() -> int:
     errors += check_a_second_listing_sits_on_its_shelf()
     errors += check_the_companies_tab_offers_add_a_company()
     errors += check_a_role_can_be_flagged_for_job_hunter()
+    errors += check_a_family_fold_keeps_a_landed_write_up()
     errors += check_the_jobs_bar_says_the_default_once()
     errors += check_the_front_page_counts_what_its_links_open()
     errors += check_a_public_sector_title_is_recognised()

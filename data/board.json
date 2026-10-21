@@ -6395,7 +6395,7 @@
  "boards_read": 492,
  "unreadable": 8,
  "rendered": 8,
- "no_board_on_file": 968,
+ "no_board_on_file": 967,
  "manual_postings": 244,
  "manual_already_fetched": 0,
  "totals": {
@@ -15278,63 +15278,6 @@
    "enumerable": true,
    "scan_lead": null,
    "board_checked_on": "2026-09-27",
-   "posts_at": null,
-   "source": "direct add",
-   "researched": true,
-   "claimed": null
-  },
-  {
-   "id": "parkmobile",
-   "name": "ParkMobile",
-   "sector": "Transit & Parking",
-   "category": "Parking & Curb",
-   "also": null,
-   "location": "Atlanta, GA",
-   "year_founded": 2008,
-   "description": "Leading mobile parking payments app (EasyPark Group)",
-   "website": "https://www.parkmobile.io",
-   "board_url": "https://careers.arrive.com/?utm_source=pm_tld",
-   "linkedin": null,
-   "ats": "html",
-   "ats_ranks": "none",
-   "tier": 2,
-   "vendor_type": "GovTech Product",
-   "govtech": true,
-   "tags": [
-    "govtech-product",
-    "sled"
-   ],
-   "parent": null,
-   "ats_note": null,
-   "brands": null,
-   "acquired": null,
-   "also_known_as": null,
-   "competitors": null,
-   "news_state": "items",
-   "news_checked_on": "2026-10-20",
-   "competitors_none_found": null,
-   "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
-   "open_roles": 0,
-   "open_postings": 0,
-   "quota_roles": 0,
-   "quota_postings": 0,
-   "families": {},
-   "phase": "too few openings to read",
-   "unreadable": null,
-   "roles_from_storage": null,
-   "sled_only": null,
-   "offtopic_dropped": null,
-   "federal_dropped": null,
-   "shares_board_with": null,
-   "board_owner_unverified": null,
-   "board_owner": null,
-   "no_board_on_file": false,
-   "probe": null,
-   "enumerable": false,
-   "scan_lead": null,
-   "board_checked_on": "2026-08-20",
    "posts_at": null,
    "source": "direct add",
    "researched": true,
@@ -44620,10 +44563,15 @@
    "name": "Arrive",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "location": "Stockholm, Sweden",
    "year_founded": 2001,
-   "description": "Mobility and curb/parking technology platform - exhibited at APTA 2026",
+   "description": "Parking apps, pay stations, transit ticketing and fare payment for cities, parking authorities and transit agencies; brands EasyPark, Flowbird and ParkMobile - exhibited at APTA 2026",
    "website": "https://arrive.com/en",
    "board_url": "https://jobs.ashbyhq.com/arrive",
    "linkedin": null,
@@ -44638,14 +44586,164 @@
    ],
    "parent": null,
    "ats_note": null,
-   "brands": null,
+   "brands": [
+    {
+     "name": "EasyPark (formerly EasyPark Group)",
+     "website": "https://easypark.com/en-se",
+     "description": "EasyPark Group is the old corporate name of the company now called Arrive. Arrive's June 12, 2025 release says EasyPark Group \"unveiled a new name and identity\" and that Arrive \"will replace EasyPark Group and Flowbird Group\". The old corporate site no longer works on its own. easyparkgroup.com forwards to www.easypark.com/en, which returned HTTP 404 when read. easyparkgroup.com/news/ forwards to the Arrive newsroom. One leftover is still live: careers.easyparkgroup.com loads under the title \"Together, we make cities more livable! - EasyPark Group\".\n\nHistory from Arrive's about-page timeline: EasyPark was founded in Norway and Denmark in 2000-2001. \"Mint acquires Payway and merges with EasyPark\" in 2004-2005. EasyPark bought Telepark in Italy in 2014. In 2021 it acquired \"Park Now Group, including RingGo and ParkMobile brands, and Parkimeter\". It bought MPLA (Czech Republic) and Handyparken (Austria) in 2024, then Flowbird and Parkopedia in 2025. Flowbird's November 2023 release says EasyPark Group \"owns and develops the apps EasyPark, ParkMobile, RingGo and Park-line\" and operates \"in over 4,000 cities across more than 20 countries\".\n\nThe EasyPark brand still runs its own site at easypark.com. From here it served a Dutch page (/nl) and an English page for Sweden (/en-se). It sells a consumer parking app (\"the No.1 parking app in Europe\") with pay-by-minute parking, EV charging and in-car parking. For public buyers, its \"Cities and operators\" page describes \"a digital ecosystem where municipal authorities, private garage operators, and drivers, play a part in optimizing the available parking inventory\". The services it lists are EasyPark Insights, The Parking Dashboard, EasyPark SmartHUB, Express pay, Digital Permits and EV charging. The page claims \"4,400 +\" cities and \"7,700 +\" parking operators. The site footer links \"About Arrive\" to arrive.com. Arrive's about page calls EasyPark \"the leading provider of smart parking and mobility solutions in Europe\".\n\nFor the board: the corporate body is now Arrive, and EasyPark is its European parking-app brand. No US public buyers appeared on the EasyPark pages read. Arrive's North American app is ParkMobile.\n\nNot read: easyparkgroup.com itself (redirect ends in a 404), easypark.com/en and /en-gb (both 404), and the English \"About EasyPark\" page beyond a skim.",
+     "status": "folded",
+     "was_id": "easypark-group",
+     "words": 353,
+     "confidence": "partial",
+     "sources": [
+      "https://arrive.com/en/newsroom/news/easypark-group-unifies-under-arrive-to-build-the-world-s-leading-global-mobility-platform",
+      "https://arrive.com/en/about/about-us",
+      "https://easypark.com/en-se",
+      "https://easypark.com/en-se/cities-and-operators",
+      "https://easypark.com/nl",
+      "https://careers.easyparkgroup.com/",
+      "https://easyparkgroup.com/news/ (forwards to https://arrive.com/en/newsroom)",
+      "https://www.flowbird.com/flowbird-group-takes-a-step-forward-in-reshaping-mobility-through-a-strategic-acquisition-by-easypark-group/"
+     ],
+     "unread": [
+      "https://easyparkgroup.com (forwards to https://www.easypark.com/en, HTTP 404, exit 2)",
+      "https://www.easyparkgroup.com/ (same 404, exit 2)",
+      "https://easypark.com/en (HTTP 404, exit 2)",
+      "https://easypark.com/en-gb (HTTP 404, exit 2)"
+     ],
+     "was": {
+      "year_founded": 2001,
+      "location": "Stockholm, Sweden",
+      "sector": "Transit & Parking",
+      "category": "Fare & Payments",
+      "source": "competitor sweep",
+      "website": "https://easyparkgroup.com",
+      "vendor_type": "GovTech Product"
+     },
+     "does": "EasyPark Group is the old corporate name of the company now called Arrive. Arrive's June 12, 2025 release says EasyPark Group \"unveiled a new name and identity\" and that Arrive \"will replace EasyPark Group and Flowbird Group\". The old corporate site no longer works on its own. easyparkgroup.com forwards to www.easypark.com/en, which returned HTTP 404 when read. easyparkgroup.com/news/ forwards to the Arrive newsroom. One leftover is still live: careers.easyparkgroup.com loads under the title \"Together, we make cities more livable! - EasyPark Group\".\n\nHistory from Arrive's about-page timeline: EasyPark was founded in Norway and Denmark in 2000-2001. \"Mint acquires Payway and merges with EasyPark\" in 2004-2005. EasyPark bought Telepark in Italy in 2014. In 2021 it acquired \"Park Now Group, including RingGo and ParkMobile brands, and Parkimeter\". It bought MPLA (Czech Republic) and Handyparken (Austria) in 2024, then Flowbird and Parkopedia in 2025. Flowbird's November 2023 release says EasyPark Group \"owns and develops the apps EasyPark, ParkMobile, RingGo and Park-line\" and operates \"in over 4,000 cities across more than 20 countries\".\n\nThe EasyPark brand still runs its own site at easypark.com. From here it served a Dutch page (/nl) and an English page for Sweden (/en-se). It sells a consumer parking app (\"the No.1 parking app in Europe\") with pay-by-minute parking, EV charging and in-car parking. For public buyers, its \"Cities and operators\" page describes \"a digital ecosystem where municipal authorities, private garage operators, and drivers, play a part in optimizing the available parking inventory\". The services it lists are EasyPark Insights, The Parking Dashboard, EasyPark SmartHUB, Express pay, Digital Permits and EV charging. The page claims \"4,400 +\" cities and \"7,700 +\" parking operators. The site footer links \"About Arrive\" to arrive.com. Arrive's about page calls EasyPark \"the leading provider of smart parking and mobility solutions in Europe\".\n\nFor the board: the corporate body is now Arrive, and EasyPark is its European parking-app brand. No US public buyers appeared on the EasyPark pages read. Arrive's North American app is ParkMobile.\n\nNot read: easyparkgroup.com itself (redirect ends in a 404), easypark.com/en and /en-gb (both 404), and the English \"About EasyPark\" page beyond a skim."
+    },
+    {
+     "name": "Flowbird",
+     "website": "https://www.flowbird.com/",
+     "description": "Flowbird makes parking and public-transport payment hardware and software. flowbird.group now forwards to www.flowbird.com. Its home page carries the banner \"EasyPark Group and Flowbird are now Arrive\", which links to arrive.com.\n\nParking: the on-street page lists pay-and-display terminals and kiosks, including the Strada EVOL GEN 3, Strada TPAL GEN 3, Strada S5 GEN 3, StreetSmart S5 GEN 3, Compact S5 and Access S5. Across the range they take coins, cards, banknotes or city cards depending on the model (the Access S5 is cashless), on solar or mains power. The menu also lists off-street, EV charging, mobile and \"Parking business services\". Transport: the menu lists Equipment, Open Payment, MaaS and a \"Transport Fare Collection Platform\". The transport page says Flowbird aims to \"optimize investment value for transport authorities and operators\". It also lists account-based ticketing, Open Payment and back-office systems. Energy services are sold as Park&Gaz.\n\nThe about page claims \"6000 Cities\" and \"Over 80 Countries\", and says \"84% of the 50 biggest cities in the world rely on Flowbird\". Its history starts in 1968 with \"The first parking meter is installed on the Paris streets\". In 2003 Parkeon was created from Schlumberger's parking and ticketing division. In 2018 \"Parkeon and Cale merge to become Flowbird\". Since 2020 it has bought Yellowbrick (NL), YourParkingSpace (UK) and Piconet (RO).\n\nUS public buyers in its news list include \"SEPTA Partners with Flowbird to Launch Advanced Commuter Parking System\" (Sept 2024) and \"Dallas Area Rapid Transit (DART) Partners with Flowbird to Modernize Transit System\" (Sept 2024). Others are Pittsburgh Regional Transit (Aug 2024), \"Flowbird Pay-by-Plate Pay Stations Launch in the City of New York\" (June 2024), and Beverly Hills, Charleston SC, Clearwater FL, Rochester and Leavenworth.\n\nPlace in Arrive: Flowbird Group announced on November 9, 2023 its decision to be acquired by EasyPark Group, and EasyPark Group closed the purchase on January 15, 2025. Flowbird CEO Fr\u00e9d\u00e9ric Beylier then left, and Cameron Clayton became CEO of the joint company. Arrive's about page describes Flowbird as delivering \"mobility solutions in over 6,000 cities across 80 countries\". Arrive's public-transport page sells open payment, validators and bus consoles but does not name Flowbird on that page.\n\nNot read: the Equipment, Open Payment, MaaS and Fare Collection sub-pages. Also unread are Flowbird's own releases on the Yellowbrick, YourParkingSpace and Piconet purchases. The flowbird.com footer still reads \"\u00a9 Flowbird Group 2024\", and the newest news item seen is dated May 19, 2025.",
+     "status": "folded",
+     "was_id": "flowbird",
+     "words": 403,
+     "confidence": "high",
+     "sources": [
+      "https://www.flowbird.com/",
+      "https://flowbird.group (forwards to https://www.flowbird.com)",
+      "https://www.flowbird.com/company/about-us/",
+      "https://www.flowbird.com/our-solutions/parking-solutions/on-street/",
+      "https://www.flowbird.com/our-solutions/transport-solutions/",
+      "https://www.flowbird.com/easypark-group-closes-acquisition-of-flowbird-group-to-become-a-leading-global-mobility-platform-provider/",
+      "https://www.flowbird.com/flowbird-group-takes-a-step-forward-in-reshaping-mobility-through-a-strategic-acquisition-by-easypark-group/",
+      "https://www.flowbird.com/sunny-mehta-appointed-as-ceo-of-yourparkingspace-yps/",
+      "https://arrive.com/en/about/about-us"
+     ],
+     "unread": [
+      "https://www.flowbird.com/our-solutions/transport-solutions/equipment/ (not read)",
+      "https://www.flowbird.com/our-solutions/transport-solutions/open-payment/ (not read)",
+      "Flowbird transport fare collection platform and MaaS pages (not read)",
+      "Flowbird releases on the Yellowbrick, YourParkingSpace and Piconet acquisitions (not found on the site; a search snippet showed a Piconet majority-stake headline dated 23/02/2022 that was not read, so that date is unverified)"
+     ],
+     "was": {
+      "year_founded": 2018,
+      "location": "Moorestown, NJ",
+      "sector": "Transit & Parking",
+      "category": "Fare & Payments",
+      "source": "competitor sweep",
+      "website": "https://www.flowbird.group",
+      "vendor_type": "GovTech Product",
+      "ats": {
+       "type": "html",
+       "ref": "https://careers.arrive.com/"
+      }
+     },
+     "does": "Flowbird makes parking and public-transport payment hardware and software. flowbird.group now forwards to www.flowbird.com. Its home page carries the banner \"EasyPark Group and Flowbird are now Arrive\", which links to arrive.com.\n\nParking: the on-street page lists pay-and-display terminals and kiosks, including the Strada EVOL GEN 3, Strada TPAL GEN 3, Strada S5 GEN 3, StreetSmart S5 GEN 3, Compact S5 and Access S5. Across the range they take coins, cards, banknotes or city cards depending on the model (the Access S5 is cashless), on solar or mains power. The menu also lists off-street, EV charging, mobile and \"Parking business services\". Transport: the menu lists Equipment, Open Payment, MaaS and a \"Transport Fare Collection Platform\". The transport page says Flowbird aims to \"optimize investment value for transport authorities and operators\". It also lists account-based ticketing, Open Payment and back-office systems. Energy services are sold as Park&Gaz.\n\nThe about page claims \"6000 Cities\" and \"Over 80 Countries\", and says \"84% of the 50 biggest cities in the world rely on Flowbird\". Its history starts in 1968 with \"The first parking meter is installed on the Paris streets\". In 2003 Parkeon was created from Schlumberger's parking and ticketing division. In 2018 \"Parkeon and Cale merge to become Flowbird\". Since 2020 it has bought Yellowbrick (NL), YourParkingSpace (UK) and Piconet (RO).\n\nUS public buyers in its news list include \"SEPTA Partners with Flowbird to Launch Advanced Commuter Parking System\" (Sept 2024) and \"Dallas Area Rapid Transit (DART) Partners with Flowbird to Modernize Transit System\" (Sept 2024). Others are Pittsburgh Regional Transit (Aug 2024), \"Flowbird Pay-by-Plate Pay Stations Launch in the City of New York\" (June 2024), and Beverly Hills, Charleston SC, Clearwater FL, Rochester and Leavenworth.\n\nPlace in Arrive: Flowbird Group announced on November 9, 2023 its decision to be acquired by EasyPark Group, and EasyPark Group closed the purchase on January 15, 2025. Flowbird CEO Fr\u00e9d\u00e9ric Beylier then left, and Cameron Clayton became CEO of the joint company. Arrive's about page describes Flowbird as delivering \"mobility solutions in over 6,000 cities across 80 countries\". Arrive's public-transport page sells open payment, validators and bus consoles but does not name Flowbird on that page.\n\nNot read: the Equipment, Open Payment, MaaS and Fare Collection sub-pages. Also unread are Flowbird's own releases on the Yellowbrick, YourParkingSpace and Piconet purchases. The flowbird.com footer still reads \"\u00a9 Flowbird Group 2024\", and the newest news item seen is dated May 19, 2025."
+    },
+    {
+     "name": "ParkMobile",
+     "website": "https://parkmobile.io/",
+     "description": "ParkMobile, LLC runs a US parking app and the parking-management tools behind it. Its about page says \"in 2008, ParkMobile launched\" and that drivers can \"pay for street and garage parking without having to use a meter or kiosk\". It also sells reservations for events, airports and campuses. The footer reads \"\u00a9 2026 ParkMobile, LLC\", and some of its releases carry Atlanta, GA datelines.\n\nPublic buyers: the provider menu has \"ParkMobile for\" pages for Municipalities, Event venues, Private operators, College campuses, and Transit and airports. The municipalities page says \"Serving over 600 municipalities\". It promises congestion control, flexible payment, links to existing parking hardware and software, analytics and more revenue, and offers a Dashboard product. The transit and airports page sells reservations and multi-location management to \"transit operators\". City customers named in its own news include:\n- the San Francisco Municipal Transportation Agency (Nov 5, 2025), for \"the city's 26,000 on-street parking spaces\"\n- Buffalo, NY (July 2025), including ParkMobile Insights analytics for the city\n- the City of Tacoma (Aug 2026)\n- Royal Oak, MI (Jan 2026)\n- the Miami Parking Authority\n- Durham, NC\n\nPlace in Arrive: its 2021 release says it \"has been part of BMW and Daimler's mobility joint venture PARK NOW Group since March 2019\". On June 1, 2021, EasyPark Group \"announced today the completed acquisition of PARK NOW Group, including North American-based ParkMobile\". At that point ParkMobile had \"25 million users and a presence in over 450 cities\". Its current releases call it part of Arrive. The Tacoma release opens \"Part of the larger leading global mobility platform Arrive, ParkMobile offers drivers...\" and the SFMTA release calls it \"part of the global mobility company Arrive\". Arrive staff speak for it: Scott Booker, \"General Manager of Parking at Arrive\", and Benoit Reliquet, Arrive's Head of Parking for North America. Its Careers link goes to careers.arrive.com. Arrive's about page lists it as \"the leading provider of smart parking and mobility solutions in North America\", \"available in over 700 cities\".\n\nNot read: the later pages of the newsroom (only page 1 of 30 was listed) and the provider solution pages (Payments, Management, Insights).",
+     "status": "folded",
+     "was_id": "parkmobile",
+     "words": 356,
+     "confidence": "high",
+     "sources": [
+      "https://parkmobile.io/",
+      "https://parkmobile.io/about-us/explore-parkmobile",
+      "https://parkmobile.io/parking-providers/parkmobile-for/municipalities",
+      "https://parkmobile.io/parking-providers/parkmobile-for/transit-airports",
+      "https://parkmobile.io/about-us/newsroom",
+      "https://parkmobile.io/about-us/newsroom/articles/easypark-group-completes-acquisition-of-parkmobile",
+      "https://parkmobile.io/about-us/newsroom/articles/parkmobile-partners-with-the-sfmta-on-smart-city-parking-program",
+      "https://parkmobile.io/about-us/newsroom/articles/city-of-tacoma-launches-parkmobile-as-new-digital-parking-payment-option",
+      "https://parkmobile.io/about-us/newsroom/articles/mayor-christopher-p-scanlon-announces-launch-of-parkmobile-in-buffalo-ny-bringing-smart-parking-and-",
+      "https://parkmobile.io/about-us/newsroom/articles/the-future-of-parking-starts-now-parkmobile-unveils-enhanced-app-experience",
+      "https://arrive.com/en/about/about-us"
+     ],
+     "unread": [
+      "ParkMobile newsroom pages 2-30 (not read)",
+      "https://parkmobile.io/parking-providers/solutions/payments, /management, /insights (not read)"
+     ],
+     "was": {
+      "year_founded": 2008,
+      "location": "Atlanta, GA",
+      "sector": "Transit & Parking",
+      "category": "Parking & Curb",
+      "source": "direct add",
+      "website": "https://www.parkmobile.io",
+      "vendor_type": "GovTech Product",
+      "ats": {
+       "type": "html",
+       "ref": "https://careers.arrive.com/?utm_source=pm_tld"
+      }
+     },
+     "does": "ParkMobile, LLC runs a US parking app and the parking-management tools behind it. Its about page says \"in 2008, ParkMobile launched\" and that drivers can \"pay for street and garage parking without having to use a meter or kiosk\". It also sells reservations for events, airports and campuses. The footer reads \"\u00a9 2026 ParkMobile, LLC\", and some of its releases carry Atlanta, GA datelines.\n\nPublic buyers: the provider menu has \"ParkMobile for\" pages for Municipalities, Event venues, Private operators, College campuses, and Transit and airports. The municipalities page says \"Serving over 600 municipalities\". It promises congestion control, flexible payment, links to existing parking hardware and software, analytics and more revenue, and offers a Dashboard product. The transit and airports page sells reservations and multi-location management to \"transit operators\". City customers named in its own news include:\n- the San Francisco Municipal Transportation Agency (Nov 5, 2025), for \"the city's 26,000 on-street parking spaces\"\n- Buffalo, NY (July 2025), including ParkMobile Insights analytics for the city\n- the City of Tacoma (Aug 2026)\n- Royal Oak, MI (Jan 2026)\n- the Miami Parking Authority\n- Durham, NC\n\nPlace in Arrive: its 2021 release says it \"has been part of BMW and Daimler's mobility joint venture PARK NOW Group since March 2019\". On June 1, 2021, EasyPark Group \"announced today the completed acquisition of PARK NOW Group, including North American-based ParkMobile\". At that point ParkMobile had \"25 million users and a presence in over 450 cities\". Its current releases call it part of Arrive. The Tacoma release opens \"Part of the larger leading global mobility platform Arrive, ParkMobile offers drivers...\" and the SFMTA release calls it \"part of the global mobility company Arrive\". Arrive staff speak for it: Scott Booker, \"General Manager of Parking at Arrive\", and Benoit Reliquet, Arrive's Head of Parking for North America. Its Careers link goes to careers.arrive.com. Arrive's about page lists it as \"the leading provider of smart parking and mobility solutions in North America\", \"available in over 700 cities\".\n\nNot read: the later pages of the newsroom (only page 1 of 30 was listed) and the provider solution pages (Payments, Management, Insights)."
+    }
+   ],
    "acquired": null,
-   "also_known_as": null,
-   "competitors": null,
+   "also_known_as": [
+    "EasyPark Group",
+    "Flowbird",
+    "ParkMobile",
+    "EasyPark (formerly EasyPark Group)"
+   ],
+   "competitors": [
+    {
+     "id": "passport",
+     "why": "City parking authorities pick between Passport and ParkMobile for mobile parking payments and digital permits"
+    },
+    {
+     "id": "paybyphone",
+     "why": "Goes head to head with ParkMobile and EasyPark on city and municipal mobile parking payment contracts"
+    },
+    {
+     "id": "ips-group",
+     "why": "Cities buying on-street smart meters weigh IPS Group meters against Flowbird meters and pay stations"
+    },
+    {
+     "id": "civicsmart",
+     "why": "Bids against Flowbird when municipalities replace smart parking meters"
+    },
+    {
+     "id": "t2-systems",
+     "why": "Universities and cities weigh T2 against Arrive for parking permits, enforcement and pay stations"
+    },
+    {
+     "id": "municipal-parking-services",
+     "why": "Its solar kiosks and enforcement compete with Flowbird pay stations for city on-street parking"
+    },
+    {
+     "id": "masabi",
+     "why": "Transit agencies choosing mobile fare ticketing weigh Masabi Justride against Flowbird's transit ticketing"
+    }
+   ],
    "news_state": "none_found",
    "news_checked_on": "2026-10-20",
    "competitors_none_found": null,
-   "competitors_checked_on": null,
+   "competitors_checked_on": "2026-10-20",
    "conferences": [
     "APTA 2026"
    ],
@@ -44681,7 +44779,7 @@
    "board_checked_on": "2026-08-19",
    "posts_at": null,
    "source": "APTA 2026",
-   "researched": null,
+   "researched": true,
    "claimed": null,
    "read_since": "2026-08-19"
   },
@@ -62454,63 +62552,6 @@
    "enumerable": true,
    "scan_lead": null,
    "board_checked_on": "2026-10-18",
-   "posts_at": null,
-   "source": "competitor sweep",
-   "researched": null,
-   "claimed": null
-  },
-  {
-   "id": "flowbird",
-   "name": "Flowbird",
-   "sector": "Transit & Parking",
-   "category": "Fleet & Operations",
-   "also": null,
-   "location": "Moorestown, NJ",
-   "year_founded": 2018,
-   "description": "Parking meters, kiosks and transit fare systems for cities",
-   "website": "https://www.flowbird.group",
-   "board_url": "https://careers.arrive.com/",
-   "linkedin": null,
-   "ats": "html",
-   "ats_ranks": "none",
-   "tier": 2,
-   "vendor_type": "GovTech Product",
-   "govtech": true,
-   "tags": [
-    "govtech-product",
-    "sled"
-   ],
-   "parent": null,
-   "ats_note": null,
-   "brands": null,
-   "acquired": null,
-   "also_known_as": null,
-   "competitors": null,
-   "news_state": null,
-   "news_checked_on": null,
-   "competitors_none_found": null,
-   "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
-   "open_roles": 0,
-   "open_postings": 0,
-   "quota_roles": 0,
-   "quota_postings": 0,
-   "families": {},
-   "phase": "too few openings to read",
-   "unreadable": null,
-   "roles_from_storage": null,
-   "sled_only": null,
-   "offtopic_dropped": null,
-   "federal_dropped": null,
-   "shares_board_with": null,
-   "board_owner_unverified": null,
-   "board_owner": null,
-   "no_board_on_file": false,
-   "probe": null,
-   "enumerable": false,
-   "scan_lead": null,
-   "board_checked_on": "2026-08-20",
    "posts_at": null,
    "source": "competitor sweep",
    "researched": null,
@@ -83383,63 +83424,6 @@
    "board_checked_on": "2026-09-27",
    "posts_at": null,
    "source": "competitor sweep; APTA 2026",
-   "researched": null,
-   "claimed": null
-  },
-  {
-   "id": "easypark-group",
-   "name": "EasyPark Group",
-   "sector": "Transit & Parking",
-   "category": "Fare & Payments",
-   "also": null,
-   "location": "Stockholm, Sweden",
-   "year_founded": 2001,
-   "description": "Digital parking payment and management platform sold to city authorities",
-   "website": "https://easyparkgroup.com",
-   "board_url": "https://easyparkgroup.com",
-   "linkedin": null,
-   "ats": "unknown",
-   "ats_ranks": "none",
-   "tier": 2,
-   "vendor_type": "GovTech Product",
-   "govtech": true,
-   "tags": [
-    "govtech-product",
-    "sled"
-   ],
-   "parent": null,
-   "ats_note": null,
-   "brands": null,
-   "acquired": null,
-   "also_known_as": null,
-   "competitors": null,
-   "news_state": null,
-   "news_checked_on": null,
-   "competitors_none_found": null,
-   "competitors_checked_on": null,
-   "conferences": [],
-   "conference": null,
-   "open_roles": 0,
-   "open_postings": 0,
-   "quota_roles": 0,
-   "quota_postings": 0,
-   "families": {},
-   "phase": "too few openings to read",
-   "unreadable": null,
-   "roles_from_storage": null,
-   "sled_only": null,
-   "offtopic_dropped": null,
-   "federal_dropped": null,
-   "shares_board_with": null,
-   "board_owner_unverified": null,
-   "board_owner": null,
-   "no_board_on_file": true,
-   "probe": "blocked",
-   "enumerable": true,
-   "scan_lead": null,
-   "board_checked_on": "2026-09-27",
-   "posts_at": null,
-   "source": "competitor sweep",
    "researched": null,
    "claimed": null
   },
@@ -293128,7 +293112,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/7a352b19-e6fd-416a-8bfd-278ea9542451",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293163,7 +293152,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/e3738a98-d22b-4e6d-aeb7-916c7de646f2",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-15",
    "source": "ats",
    "opening_postings": 1,
@@ -293198,7 +293192,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/e63f6fb0-d804-41a1-8395-408dab470827",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293233,7 +293232,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/6c1b176a-a47a-4458-a62a-e04018dd6505",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293268,7 +293272,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/3c70a744-ad59-4c6e-be0b-bb3364a1a5ae",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293303,7 +293312,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/14d0dbda-0fc2-47b5-9840-47a6787c4dbb",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293338,7 +293352,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/9953bc24-2038-4649-a4d4-bfd0acf9b0cc",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293373,7 +293392,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/8beb8281-4740-45dd-8076-ef4e47a2dc17",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293408,7 +293432,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/67274e0d-73de-4fc5-8659-ebee5264b716",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293443,7 +293472,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/d4e400fd-dd0e-4517-bc50-57bff23894bd",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293478,7 +293512,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/ef9f2625-07f3-4349-9238-153e9c132596",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293513,7 +293552,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/17c82da4-c4d5-487e-869c-e89b5561bdbe",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293548,7 +293592,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/0ed85a7a-4931-4fd3-a15c-495313801cfd",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293583,7 +293632,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/3e4eb119-ba88-4f1a-ac6e-3d4201fffa7e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -293618,7 +293672,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/1825c185-67d0-4a79-8dfc-d04ad0b53a2d",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293653,7 +293712,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/323cf599-bc36-45d7-93ea-29b8668f4d3c",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293688,7 +293752,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/62ef9f8d-a5ed-4bef-b21e-354490b2638e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293723,7 +293792,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/20f37374-6c69-4704-897f-2c9e151321a3",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293758,7 +293832,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/bb2e7a9c-ca68-483a-be9b-971202b19317",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293793,7 +293872,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/a9de68c9-912f-40ac-b5a2-6f587174bf7e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -293828,7 +293912,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/4e3913eb-311f-4747-9de8-ce0887391e6e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-24",
    "source": "ats",
    "opening_postings": 1,
@@ -293863,7 +293952,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/0840e90e-704d-4997-9417-ad8318cf9a5d",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293898,7 +293992,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/21ceff42-58d0-4d80-9f3c-f3d114592863",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-23",
    "source": "ats",
    "opening_postings": 1,
@@ -293933,7 +294032,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/a4fa8403-c38d-4d26-b585-230b3fcda10b",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-24",
    "source": "ats",
    "opening_postings": 1,
@@ -293968,7 +294072,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/c07108f0-22bb-489e-8d1d-3a9594f35802",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -294003,7 +294112,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/4806aa77-e04a-46e0-aea3-a7bab94f7443",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-09-01",
    "source": "ats",
    "opening_postings": 1,
@@ -294038,7 +294152,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/3944c1d5-b0a5-4d91-bbb1-2c2b80dfb40e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-27",
    "source": "ats",
    "opening_postings": 1,
@@ -294073,7 +294192,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/7318f80c-e860-477f-896c-bcebebf6ae51",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-08-31",
    "source": "ats",
    "opening_postings": 1,
@@ -294108,7 +294232,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/52be8d48-25dd-4acc-b4e3-e998ebfb2409",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294143,7 +294272,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/87e09f8c-6ee3-4247-bc6f-a9d2b2b876f6",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-09-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294178,7 +294312,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/53e9018d-b3f4-4783-8669-9ee778a1161c",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294213,7 +294352,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/650022b1-e258-4775-befc-92aacf5eb234",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294248,7 +294392,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/f84329fb-f98a-4ba8-8a44-8ce322c3d7b2",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294283,7 +294432,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/a780045e-b89d-49c4-aa9e-cd00d50329ba",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-09-09",
    "source": "ats",
    "opening_postings": 1,
@@ -294318,7 +294472,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/ef45871e-7eff-428f-90f9-5b7ea3d83963",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294353,7 +294512,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/5cac6d0d-c0e6-4b58-99bc-9c20e24a4ca1",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294388,7 +294552,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/b49f26a0-93f5-4f95-aa4a-0b90a676d551",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294423,7 +294592,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/42c6afeb-143a-4c76-aaeb-07395b685db3",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294458,7 +294632,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/ab9b43fe-011c-41a4-be22-0b0e65321968",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294493,7 +294672,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/49bedaac-2c39-48de-9c62-5b822eba0037",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -294528,7 +294712,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/75ac786d-e9a4-4635-8e22-a2541040b71e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-16",
    "source": "ats",
    "opening_postings": 1,
@@ -294563,7 +294752,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/89c2162c-19e3-45e0-bca8-cc201ded7b67",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294598,7 +294792,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/eccca705-6cc6-4b2d-a0fc-aaec14afa679",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294633,7 +294832,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/c28f1d52-1438-4ae6-9e1c-a7b1f59bcae0",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -294668,7 +294872,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/923e2dab-52c9-4467-9361-df0cdb32541d",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294703,7 +294912,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/365ebf4d-c3eb-47f4-a571-2678a2e52f80",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294738,7 +294952,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/5a7e6085-045e-463b-8291-a8dd19faa84f",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294773,7 +294992,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/34b2e677-a130-4832-b879-ca6b4ce65516",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294808,7 +295032,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/a38081a2-87cd-42df-94e0-8b14e71e9421",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294843,7 +295072,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/e2ce9bf0-b57f-4e85-b282-17fff7b8fa0b",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294878,7 +295112,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/324e84fd-a4e3-4024-b057-7c5f32c5cd19",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294913,7 +295152,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/0d606f92-bc8e-4cc7-9bf4-a5cc2ddfa433",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294948,7 +295192,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/152a4f22-fd0f-4729-90a5-4b7fb41bbf14",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -294983,7 +295232,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/4530bd9c-a510-4b8b-95d8-d2788f2a52eb",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295018,7 +295272,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/522622c3-853e-4ec6-9a90-a30da07497a6",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295053,7 +295312,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/fb902096-bd83-4f65-a232-769ca10f681e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295088,7 +295352,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/8fa61724-049f-4d4c-8ee2-4b0ea630b8fe",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295123,7 +295392,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/4b34462d-fbfe-4eea-8526-1101e12192d4",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295158,7 +295432,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/d3cdac05-5931-4272-ab30-584012bd8b8c",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295190,7 +295469,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/5d9313c2-2908-437a-ab20-08cabda3fde5",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295225,7 +295509,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/e4c117d3-1ea9-4b93-ba37-da97a1218e8c",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -295260,7 +295549,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/0792ae9a-af58-4be2-a375-228e03a40837",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295295,7 +295589,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/2af24aee-4c4a-43bf-b704-0fd9abed047e",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-09",
    "source": "ats",
    "opening_postings": 1,
@@ -295330,7 +295629,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/28e9ee77-bd22-4852-a2f5-4851eed27dc1",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -295365,7 +295669,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/dd438829-972e-4b0b-b1ff-5d5b15373e4f",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 1,
@@ -295400,7 +295709,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/097af5c9-c2fe-42c9-9182-021dcd11e915",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-08",
    "source": "ats",
    "opening_postings": 2,
@@ -295435,7 +295749,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/89798b81-a4db-46f0-99cc-54200fc5522d",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-10",
    "source": "ats",
    "opening_postings": 1,
@@ -295470,7 +295789,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/4d574386-838f-4673-8222-cd2e13534bbd",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -295505,7 +295829,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/1490f3c0-9405-4171-a549-2184fcd2a9ab",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 1,
@@ -295540,7 +295869,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/76e4b05b-6f30-4d48-952a-3420978232ff",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -295575,7 +295909,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/69442ef2-daf2-45ae-9940-e8072e335182",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-13",
    "source": "ats",
    "opening_postings": 2,
@@ -295610,7 +295949,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/b04787a7-dc44-4508-9105-6ce63c6a450c",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-17",
    "source": "ats",
    "opening_postings": 1,
@@ -295645,7 +295989,12 @@
    "url": "https://jobs.ashbyhq.com/arrive/b5915f22-98ac-4259-9eab-b6f535bbd253",
    "sector": "Transit & Parking",
    "category": "Parking & Curb",
-   "also": null,
+   "also": [
+    {
+     "sector": "Transit & Parking",
+     "category": "Fare & Payments"
+    }
+   ],
    "first_seen": "2026-10-20",
    "source": "ats",
    "opening_postings": 1,
@@ -473169,13 +473518,13 @@
  ],
  "coverage": {
   "structured": 421,
-  "page only": 941,
+  "page only": 939,
   "absent": 601,
-  "blocked": 232,
+  "blocked": 231,
   "unchecked": 132
  },
  "redrawn": {
-  "at": "2026-10-21T01:36:32Z",
-  "inputs": "84976f7905a8f170f021fa1074ee72f6591bda9049057bb0a9bb98b4a03314ed"
+  "at": "2026-10-21T02:11:16Z",
+  "inputs": "764a1801af3e47aac52479df4ad39cccfd8275e7e0f97e632c7ad335c51e5ab2"
  }
 }

@@ -307571,5 +307571,81 @@
   "ruled_by": "owner",
   "ruled_on": "2026-10-20",
   "ruled_why": "owner 2026-10-20: 'please make sure all of these companies are on the site' (Government Technology's 2026 GovTech 100); a blind second reader agreed it is govtech; its quote was found on its own site"
+ },
+ "rival:arrive": {
+  "kind": "rival",
+  "id": "arrive",
+  "name": null,
+  "sector": "Transit & Parking",
+  "category": "Parking & Curb",
+  "confidence": "high",
+  "why": "Arrive (EasyPark, Flowbird, ParkMobile) sells parking payments, pay stations and transit fare collection, so its shortlist is the other vendors a city parking or transit buyer weighs for the same purchase.",
+  "evidence": "Picked from the 195 board companies on the Transit & Parking shelf by what each sells (parking payment apps, meters and pay stations, permits and enforcement, fare collection); a blind skeptic read each and dropped POM (meter parts only), gtechna (enforcement only) and Whoosh (website is a screen-cleaner company).",
+  "postings": null,
+  "ats_type": null,
+  "ats_ref": null,
+  "rows": null,
+  "quota": null,
+  "sample": null,
+  "none_found": false,
+  "rivals": [
+   {
+    "id": "passport",
+    "why": "City parking authorities pick between Passport and ParkMobile for mobile parking payments and digital permits"
+   },
+   {
+    "id": "paybyphone",
+    "why": "Goes head to head with ParkMobile and EasyPark on city and municipal mobile parking payment contracts"
+   },
+   {
+    "id": "ips-group",
+    "why": "Cities buying on-street smart meters weigh IPS Group meters against Flowbird meters and pay stations"
+   },
+   {
+    "id": "civicsmart",
+    "why": "Bids against Flowbird when municipalities replace smart parking meters"
+   },
+   {
+    "id": "t2-systems",
+    "why": "Universities and cities weigh T2 against Arrive for parking permits, enforcement and pay stations"
+   },
+   {
+    "id": "municipal-parking-services",
+    "why": "Its solar kiosks and enforcement compete with Flowbird pay stations for city on-street parking"
+   },
+   {
+    "id": "masabi",
+    "why": "Transit agencies choosing mobile fare ticketing weigh Masabi Justride against Flowbird's transit ticketing"
+   }
+  ],
+  "roster_size": 195,
+  "paragraphs": null,
+  "quote": null,
+  "saw": {},
+  "title": null,
+  "family": null,
+  "verdict": null,
+  "description": null,
+  "website": null,
+  "field": null,
+  "value": null,
+  "url": null,
+  "where": null,
+  "board_owner": null,
+  "buyer": null,
+  "sells_to_gov": null,
+  "names_other_buyers": null,
+  "buyer_quote": null,
+  "buyer_url": null,
+  "other_quote": null,
+  "other_url": null,
+  "sled_eligible": null,
+  "edit": null,
+  "by": "claude: Arrive family wf_e81b0f19-d10",
+  "at": "2026-10-20T22:05:48-04:00",
+  "status": "accepted",
+  "ruled_by": "owner",
+  "ruled_on": "2026-10-20",
+  "ruled_why": "owner 2026-10-20 'descriptions, competitors, sites?': Arrive's shortlist after the family fold, every rival checked by a blind skeptic"
  }
 }

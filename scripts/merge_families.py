@@ -178,6 +178,44 @@ FAMILIES = [
                     "own website here.",
         },
     },
+    {
+        "key": "arrive",
+        "survivor": "arrive",
+        # rule: the record that carries the working board. arrive holds
+        # ashby/arrive and its roles; Flowbird's and ParkMobile's careers
+        # links already go to careers.arrive.com and read nothing on their
+        # own, and EasyPark Group has no board.
+        "why_survivor": "holds ashby/arrive and its live postings; Flowbird's and "
+                        "ParkMobile's careers links already go to careers.arrive.com",
+        "research": "brand_research_arrive.json",
+        "members": [
+            {"id": "easypark-group", "brand": "EasyPark (formerly EasyPark Group)",
+             "research": "easypark-group"},
+            {"id": "flowbird", "brand": "Flowbird", "research": "flowbird"},
+            {"id": "parkmobile", "brand": "ParkMobile", "research": "parkmobile"},
+        ],
+        "prep": {
+            "description": "Parking apps, pay stations, transit ticketing and fare "
+                           "payment for cities, parking authorities and transit "
+                           "agencies; brands EasyPark, Flowbird and ParkMobile - "
+                           "exhibited at APTA 2026",
+            "researched": True,
+            # Flowbird's fare collection and EasyPark's payments sit under
+            # Fare & Payments; Arrive's own shelf is Parking & Curb.
+            "also": [{"sector": "Transit & Parking", "category": "Fare & Payments"}],
+            "note": "Merged brand family (owner, 2026-10-20). Arrive's release of "
+                    "June 12, 2025: \"Arrive, the new company name, will replace "
+                    "EasyPark Group and Flowbird Group, and will be the overarching "
+                    "parent company for the consumer brands EasyPark, Flowbird, "
+                    "ParkMobile, Parkopedia, RingGo, Yellowbrick, Your Parking Space "
+                    "and other brands\". EasyPark Group completed its acquisition of "
+                    "Flowbird Group on January 15, 2025 (flowbird.com release) and of "
+                    "PARK NOW Group, including ParkMobile, on June 1, 2021 "
+                    "(parkmobile.io release). Arrive's leadership page: \"Arrive is "
+                    "backed by three investment firms: Verdane, Vitruvian Partners, "
+                    "and Searchlight Capital.\" The brands keep their own sites.",
+        },
+    },
 ]
 
 PREP_ACTION, BRANDS_ACTION = "merge-prep", "merge-brands"
@@ -516,9 +554,14 @@ def write_brands(fam: dict, refused: list, before: dict, apply: bool) -> list:
         return brands
 
     s["brands"] = brands
-    # the parent's own long-form profile, from the same research
+    # the parent's own long-form profile, from the same research - ONLY
+    # where it has none. A landed write-up (`paragraphs`, through the profile
+    # door and ruled on) is what the page prints; research notes in this
+    # shape never reach the page, so writing over one deleted Arrive's public
+    # write-up on 2026-10-20 and the fold reported success.
     own = research.get(fam["survivor"])
-    if own and own.get("description"):
+    landed = isinstance(s.get("profile"), dict) and s["profile"].get("paragraphs")
+    if own and own.get("description") and not landed:
         s["profile"] = {"description": own["description"],
                         "sources": own.get("sources") or [],
                         "unread": own.get("unread") or [],

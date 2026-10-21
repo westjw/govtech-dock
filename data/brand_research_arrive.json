@@ -1,0 +1,95 @@
+{
+ "arrive": {
+  "name": "Arrive",
+  "website": "https://arrive.com/en",
+  "description": "Arrive is the Stockholm-based parent company of a group of parking, payment and public-transport brands. Its site footer gives the address \"Birger Jarlsgatan 57B, 113 56 Stockholm\". Its own release of June 12, 2025 says the name Arrive \"will replace EasyPark Group and Flowbird Group\" and that it \"will be the overarching parent company\" for EasyPark, Flowbird, ParkMobile, Parkopedia, RingGo, Yellowbrick, Your Parking Space and other brands. The same release says the consumer brands and apps \"will remain unaffected for the foreseeable future\". The release boilerplate describes the company as \"Present in over 90 countries and 20,000 cities\".\n\nThe home page sorts the offer into five groups: parking (\"digital payments for parking and EV charging\"), city planning (mobility data), public transport (\"our open payment solution and smart ticketing devices\"), fleets and businesses, and in-car services for automakers. Public buyers appear on the solution pages. The public-transport page says \"We help operators and local governments simplify ticketing\" and lists Open Payment, railway-certified ticket validators, bus driver consoles and vending machines. The city-planner page offers dashboards \"for decision-makers\" with \"policy-grade insights\". The parking-operators page lists payment stations, mobile paid parking and in-car payment. Case studies on the home page cover Las Vegas pay stations, a parking app in downtown Detroit, Monaco's MaaS app and Lerici, Italy.\n\nThe about page lists the family: EasyPark, Flowbird, RingGo, ParkMobile, Yellowbrick, Parkopedia, YourParkingSpace and Parkimeter. It also has a timeline that starts with Cale's first parking meters in Sweden in 1955 and ends with \"2025 Arrive is launched\". The leadership page names Cameron Clayton as chief executive and Niklas Savander as board chair. It also says \"Arrive is backed by three investment firms: Verdane, Vitruvian Partners, and Searchlight Capital.\"\n\nThe footer Careers link goes to careers.arrive.com and the header Career link to jobs.ashbyhq.com/arrive. Press inquiries go to a media relations desk, with a named contact for North America.\n\nNot read: the newsroom index printed no article list as text, so only releases found by search were read. The Arrive Magazine PDF was not read. arrive.com/about returns 404; the real about page is /en/about/about-us. The headline counters on the home and about pages printed as \"0\", so no figures were taken from them.",
+  "words": 366,
+  "sources": [
+   "https://arrive.com/en",
+   "https://arrive.com/en/about/about-us",
+   "https://arrive.com/en/about/leaders-and-governance",
+   "https://arrive.com/en/newsroom/news/easypark-group-unifies-under-arrive-to-build-the-world-s-leading-global-mobility-platform",
+   "https://arrive.com/en/solutions/public-transport",
+   "https://arrive.com/en/solutions/city-planner",
+   "https://arrive.com/en/solutions/parking-operators",
+   "https://arrive.com/en/newsroom"
+  ],
+  "unread": [
+   "https://arrive.com/about (HTTP 404, exit 2; the real page is /en/about/about-us)",
+   "https://arrive.com/en/newsroom article list (rendered by script; no articles in the text)",
+   "https://a.storyblok.com/f/333594/x/c838d06a94/arrive_magazine_25.pdf (not read)"
+  ],
+  "confidence": "high"
+ },
+ "easypark-group": {
+  "name": "EasyPark (formerly EasyPark Group)",
+  "website": "https://easypark.com/en-se",
+  "description": "EasyPark Group is the old corporate name of the company now called Arrive. Arrive's June 12, 2025 release says EasyPark Group \"unveiled a new name and identity\" and that Arrive \"will replace EasyPark Group and Flowbird Group\". The old corporate site no longer works on its own. easyparkgroup.com forwards to www.easypark.com/en, which returned HTTP 404 when read. easyparkgroup.com/news/ forwards to the Arrive newsroom. One leftover is still live: careers.easyparkgroup.com loads under the title \"Together, we make cities more livable! - EasyPark Group\".\n\nHistory from Arrive's about-page timeline: EasyPark was founded in Norway and Denmark in 2000-2001. \"Mint acquires Payway and merges with EasyPark\" in 2004-2005. EasyPark bought Telepark in Italy in 2014. In 2021 it acquired \"Park Now Group, including RingGo and ParkMobile brands, and Parkimeter\". It bought MPLA (Czech Republic) and Handyparken (Austria) in 2024, then Flowbird and Parkopedia in 2025. Flowbird's November 2023 release says EasyPark Group \"owns and develops the apps EasyPark, ParkMobile, RingGo and Park-line\" and operates \"in over 4,000 cities across more than 20 countries\".\n\nThe EasyPark brand still runs its own site at easypark.com. From here it served a Dutch page (/nl) and an English page for Sweden (/en-se). It sells a consumer parking app (\"the No.1 parking app in Europe\") with pay-by-minute parking, EV charging and in-car parking. For public buyers, its \"Cities and operators\" page describes \"a digital ecosystem where municipal authorities, private garage operators, and drivers, play a part in optimizing the available parking inventory\". The services it lists are EasyPark Insights, The Parking Dashboard, EasyPark SmartHUB, Express pay, Digital Permits and EV charging. The page claims \"4,400 +\" cities and \"7,700 +\" parking operators. The site footer links \"About Arrive\" to arrive.com. Arrive's about page calls EasyPark \"the leading provider of smart parking and mobility solutions in Europe\".\n\nFor the board: the corporate body is now Arrive, and EasyPark is its European parking-app brand. No US public buyers appeared on the EasyPark pages read. Arrive's North American app is ParkMobile.\n\nNot read: easyparkgroup.com itself (redirect ends in a 404), easypark.com/en and /en-gb (both 404), and the English \"About EasyPark\" page beyond a skim.",
+  "words": 353,
+  "sources": [
+   "https://arrive.com/en/newsroom/news/easypark-group-unifies-under-arrive-to-build-the-world-s-leading-global-mobility-platform",
+   "https://arrive.com/en/about/about-us",
+   "https://easypark.com/en-se",
+   "https://easypark.com/en-se/cities-and-operators",
+   "https://easypark.com/nl",
+   "https://careers.easyparkgroup.com/",
+   "https://easyparkgroup.com/news/ (forwards to https://arrive.com/en/newsroom)",
+   "https://www.flowbird.com/flowbird-group-takes-a-step-forward-in-reshaping-mobility-through-a-strategic-acquisition-by-easypark-group/"
+  ],
+  "unread": [
+   "https://easyparkgroup.com (forwards to https://www.easypark.com/en, HTTP 404, exit 2)",
+   "https://www.easyparkgroup.com/ (same 404, exit 2)",
+   "https://easypark.com/en (HTTP 404, exit 2)",
+   "https://easypark.com/en-gb (HTTP 404, exit 2)"
+  ],
+  "confidence": "partial"
+ },
+ "flowbird": {
+  "name": "Flowbird",
+  "website": "https://www.flowbird.com/",
+  "description": "Flowbird makes parking and public-transport payment hardware and software. flowbird.group now forwards to www.flowbird.com. Its home page carries the banner \"EasyPark Group and Flowbird are now Arrive\", which links to arrive.com.\n\nParking: the on-street page lists pay-and-display terminals and kiosks, including the Strada EVOL GEN 3, Strada TPAL GEN 3, Strada S5 GEN 3, StreetSmart S5 GEN 3, Compact S5 and Access S5. Across the range they take coins, cards, banknotes or city cards depending on the model (the Access S5 is cashless), on solar or mains power. The menu also lists off-street, EV charging, mobile and \"Parking business services\". Transport: the menu lists Equipment, Open Payment, MaaS and a \"Transport Fare Collection Platform\". The transport page says Flowbird aims to \"optimize investment value for transport authorities and operators\". It also lists account-based ticketing, Open Payment and back-office systems. Energy services are sold as Park&Gaz.\n\nThe about page claims \"6000 Cities\" and \"Over 80 Countries\", and says \"84% of the 50 biggest cities in the world rely on Flowbird\". Its history starts in 1968 with \"The first parking meter is installed on the Paris streets\". In 2003 Parkeon was created from Schlumberger's parking and ticketing division. In 2018 \"Parkeon and Cale merge to become Flowbird\". Since 2020 it has bought Yellowbrick (NL), YourParkingSpace (UK) and Piconet (RO).\n\nUS public buyers in its news list include \"SEPTA Partners with Flowbird to Launch Advanced Commuter Parking System\" (Sept 2024) and \"Dallas Area Rapid Transit (DART) Partners with Flowbird to Modernize Transit System\" (Sept 2024). Others are Pittsburgh Regional Transit (Aug 2024), \"Flowbird Pay-by-Plate Pay Stations Launch in the City of New York\" (June 2024), and Beverly Hills, Charleston SC, Clearwater FL, Rochester and Leavenworth.\n\nPlace in Arrive: Flowbird Group announced on November 9, 2023 its decision to be acquired by EasyPark Group, and EasyPark Group closed the purchase on January 15, 2025. Flowbird CEO Frédéric Beylier then left, and Cameron Clayton became CEO of the joint company. Arrive's about page describes Flowbird as delivering \"mobility solutions in over 6,000 cities across 80 countries\". Arrive's public-transport page sells open payment, validators and bus consoles but does not name Flowbird on that page.\n\nNot read: the Equipment, Open Payment, MaaS and Fare Collection sub-pages. Also unread are Flowbird's own releases on the Yellowbrick, YourParkingSpace and Piconet purchases. The flowbird.com footer still reads \"© Flowbird Group 2024\", and the newest news item seen is dated May 19, 2025.",
+  "words": 403,
+  "sources": [
+   "https://www.flowbird.com/",
+   "https://flowbird.group (forwards to https://www.flowbird.com)",
+   "https://www.flowbird.com/company/about-us/",
+   "https://www.flowbird.com/our-solutions/parking-solutions/on-street/",
+   "https://www.flowbird.com/our-solutions/transport-solutions/",
+   "https://www.flowbird.com/easypark-group-closes-acquisition-of-flowbird-group-to-become-a-leading-global-mobility-platform-provider/",
+   "https://www.flowbird.com/flowbird-group-takes-a-step-forward-in-reshaping-mobility-through-a-strategic-acquisition-by-easypark-group/",
+   "https://www.flowbird.com/sunny-mehta-appointed-as-ceo-of-yourparkingspace-yps/",
+   "https://arrive.com/en/about/about-us"
+  ],
+  "unread": [
+   "https://www.flowbird.com/our-solutions/transport-solutions/equipment/ (not read)",
+   "https://www.flowbird.com/our-solutions/transport-solutions/open-payment/ (not read)",
+   "Flowbird transport fare collection platform and MaaS pages (not read)",
+   "Flowbird releases on the Yellowbrick, YourParkingSpace and Piconet acquisitions (not found on the site; a search snippet showed a Piconet majority-stake headline dated 23/02/2022 that was not read, so that date is unverified)"
+  ],
+  "confidence": "high"
+ },
+ "parkmobile": {
+  "name": "ParkMobile",
+  "website": "https://parkmobile.io/",
+  "description": "ParkMobile, LLC runs a US parking app and the parking-management tools behind it. Its about page says \"in 2008, ParkMobile launched\" and that drivers can \"pay for street and garage parking without having to use a meter or kiosk\". It also sells reservations for events, airports and campuses. The footer reads \"© 2026 ParkMobile, LLC\", and some of its releases carry Atlanta, GA datelines.\n\nPublic buyers: the provider menu has \"ParkMobile for\" pages for Municipalities, Event venues, Private operators, College campuses, and Transit and airports. The municipalities page says \"Serving over 600 municipalities\". It promises congestion control, flexible payment, links to existing parking hardware and software, analytics and more revenue, and offers a Dashboard product. The transit and airports page sells reservations and multi-location management to \"transit operators\". City customers named in its own news include:\n- the San Francisco Municipal Transportation Agency (Nov 5, 2025), for \"the city's 26,000 on-street parking spaces\"\n- Buffalo, NY (July 2025), including ParkMobile Insights analytics for the city\n- the City of Tacoma (Aug 2026)\n- Royal Oak, MI (Jan 2026)\n- the Miami Parking Authority\n- Durham, NC\n\nPlace in Arrive: its 2021 release says it \"has been part of BMW and Daimler's mobility joint venture PARK NOW Group since March 2019\". On June 1, 2021, EasyPark Group \"announced today the completed acquisition of PARK NOW Group, including North American-based ParkMobile\". At that point ParkMobile had \"25 million users and a presence in over 450 cities\". Its current releases call it part of Arrive. The Tacoma release opens \"Part of the larger leading global mobility platform Arrive, ParkMobile offers drivers...\" and the SFMTA release calls it \"part of the global mobility company Arrive\". Arrive staff speak for it: Scott Booker, \"General Manager of Parking at Arrive\", and Benoit Reliquet, Arrive's Head of Parking for North America. Its Careers link goes to careers.arrive.com. Arrive's about page lists it as \"the leading provider of smart parking and mobility solutions in North America\", \"available in over 700 cities\".\n\nNot read: the later pages of the newsroom (only page 1 of 30 was listed) and the provider solution pages (Payments, Management, Insights).",
+  "words": 356,
+  "sources": [
+   "https://parkmobile.io/",
+   "https://parkmobile.io/about-us/explore-parkmobile",
+   "https://parkmobile.io/parking-providers/parkmobile-for/municipalities",
+   "https://parkmobile.io/parking-providers/parkmobile-for/transit-airports",
+   "https://parkmobile.io/about-us/newsroom",
+   "https://parkmobile.io/about-us/newsroom/articles/easypark-group-completes-acquisition-of-parkmobile",
+   "https://parkmobile.io/about-us/newsroom/articles/parkmobile-partners-with-the-sfmta-on-smart-city-parking-program",
+   "https://parkmobile.io/about-us/newsroom/articles/city-of-tacoma-launches-parkmobile-as-new-digital-parking-payment-option",
+   "https://parkmobile.io/about-us/newsroom/articles/mayor-christopher-p-scanlon-announces-launch-of-parkmobile-in-buffalo-ny-bringing-smart-parking-and-",
+   "https://parkmobile.io/about-us/newsroom/articles/the-future-of-parking-starts-now-parkmobile-unveils-enhanced-app-experience",
+   "https://arrive.com/en/about/about-us"
+  ],
+  "unread": [
+   "ParkMobile newsroom pages 2-30 (not read)",
+   "https://parkmobile.io/parking-providers/solutions/payments, /management, /insights (not read)"
+  ],
+  "confidence": "high"
+ }
+}
