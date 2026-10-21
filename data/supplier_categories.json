@@ -29745,8 +29745,12 @@
   {
    "supplier_id": "oracle-america-inc",
    "name": "Oracle America, Inc.",
-   "status": "held",
-   "held": "website not confirmed by what it sells"
+   "status": {
+    "merged_into": {
+     "kind": "company",
+     "id": "oracle"
+    }
+   }
   },
   {
    "supplier_id": "9amhealth",
@@ -88392,15 +88396,6 @@
    "source": {
     "url": "https://www.expressevaluations.com",
     "quote": "As an HR professional, you have a lot on your plate."
-   }
-  },
-  {
-   "supplier_id": "oracle-america-inc",
-   "industry": "general-gov/hr-and-workforce",
-   "basis": "conference",
-   "source": {
-    "url": "https://s2.goeshow.com/pshra/annual/2026/sponsor_list.cfm",
-    "quote": "Oracle America, Inc."
    }
   },
   {

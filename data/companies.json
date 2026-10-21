@@ -168565,5 +168565,77 @@
   "vendor_type": "GovTech Product",
   "source": "research pass: housing research 2026-10-20",
   "researched": true
+ },
+ {
+  "id": "mri-software",
+  "name": "MRI Software",
+  "website": "https://www.mrisoftware.com/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "MRI Software sells public housing software for HUD compliance reporting, voucher management, waitlists and resident portals to public housing agencies - exhibited at NAHRO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NAHRO 2026",
+  "researched": true
+ },
+ {
+  "id": "yardi-systems",
+  "name": "Yardi Systems",
+  "website": "https://www.yardi.com",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "Rent Relief rental assistance program software (applicant and landlord portals, case management, payments) for states, counties and cities - exhibited at NAHRO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NAHRO 2026",
+  "researched": true
+ },
+ {
+  "id": "bob-ai",
+  "name": "Bob.ai",
+  "website": "https://bob.ai/",
+  "location": null,
+  "year_founded": null,
+  "sector": "Housing & Community Dev",
+  "category": "Housing & Assistance",
+  "description": "AI software for housing programs at public housing agencies - exhibited at NAHRO 2026",
+  "ats": {
+   "type": "unknown",
+   "ref": null
+  },
+  "hiring": {
+   "status": "Unknown",
+   "note": "board not discovered yet",
+   "roles": [],
+   "checked": null
+  },
+  "govtech": true,
+  "vendor_type": "GovTech Product",
+  "source": "conference sweep: NAHRO 2026",
+  "researched": true
  }
 ]
