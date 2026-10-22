@@ -48,10 +48,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 import fetch_profiles as fp  # noqa: E402
+import supplier_pages as SP  # noqa: E402
 from supplier_identity import clean_name  # noqa: E402
 
 OUT = DATA / "supplier_categories.json"
-PAGES = DATA / "supplier_pages"
+PAGES = SP.cache_dir()            # one per machine (supplier_pages.cache_dir)
 GENERIC = "Suppliers & Services"
 
 # THE KEYS ARE FIXED FOREVER. SLED HQ joins on them; a sector renamed in
@@ -556,6 +557,21 @@ def build(suppliers: list, ident_rows: dict) -> dict:
 NOT_READ = "website unread (not read)"
 
 
+def drift(export: dict, suppliers: list) -> dict:
+    """How far the export is behind suppliers.json: {"new": ids never placed,
+    "gone": ids it still lists that suppliers.json no longer holds}.
+
+    A row marked merged_into is not gone: it is the export saying where the
+    supplier went (merge_supplier_twins), and it stays until HQ has read it.
+    Counting those made the selftest note fire on an export rebuilt minutes
+    earlier."""
+    sids = {s["id"] for s in suppliers}
+    rows = export.get("suppliers") or []
+    xids = {r["supplier_id"] for r in rows}
+    merged = {r["supplier_id"] for r in rows if isinstance(r.get("status"), dict)}
+    return {"new": sorted(sids - xids), "gone": sorted(xids - sids - merged)}
+
+
 def cache_losses(out: dict, previous: dict) -> list[str]:
     """Suppliers the last export published that this build holds only because
     their page is not in data/supplier_pages here.
@@ -568,6 +584,27 @@ def cache_losses(out: dict, previous: dict) -> list[str]:
     was = {r.get("supplier_id"): r.get("status") for r in previous.get("suppliers") or []}
     return [r["supplier_id"] for r in out.get("suppliers") or []
             if r.get("held") == NOT_READ and was.get(r["supplier_id"]) == "publish"]
+
+
+def carry_merges(out: dict, previous: dict) -> int:
+    """Keep the record of where a supplier went after it has left the file.
+
+    merge_supplier_twins takes a twin out of suppliers.json and marks its row
+    here merged_into a board company; a build reads suppliers.json, so the
+    next one dropped the row and HQ lost the only word on where it went. The
+    10-22 refresh dropped five (Oracle America, PowerDMS...). A merged row
+    whose supplier is not in this build is carried forward as it was, with
+    no assignments; a supplier back in the file is placed afresh. Returns
+    how many were carried."""
+    have = {r["supplier_id"] for r in out.get("suppliers") or []}
+    carried = 0
+    for r in previous.get("suppliers") or []:
+        if isinstance(r.get("status"), dict) and r.get("supplier_id") not in have:
+            out["suppliers"].append({"supplier_id": r["supplier_id"], "name": r.get("name"),
+                                     "status": r["status"]})
+            have.add(r["supplier_id"])
+            carried += 1
+    return carried
 
 
 def main() -> int:
@@ -598,15 +635,18 @@ def main() -> int:
         print(f"  {n:5}  {k}")
     if a.write:
         if not PAGES.is_dir():
-            print(f"refused: {PAGES.relative_to(ROOT)} is not in this checkout, so every "
-                  f"published supplier would read as unread. Run from the checkout that "
-                  f"holds the cache, or rebuild it with supplier_pages.py.", file=sys.stderr)
+            print(f"refused: the page cache {PAGES} is not on this machine, so every "
+                  f"published supplier would read as unread. Copy it to {SP.SHARED}, "
+                  f"or rebuild it with supplier_pages.py --write.", file=sys.stderr)
             return 1
         previous = json.loads(OUT.read_text()) if OUT.exists() else {}
+        carried = carry_merges(out, previous)
+        if carried:
+            print(f"kept {carried} merged supplier(s) that have left suppliers.json")
         lost = cache_losses(out, previous)
         if lost and not a.allow_uncached:
             print(f"refused: {len(lost)} supplier(s) the last export published have no page "
-                  f"in {PAGES.relative_to(ROOT)} ({', '.join(lost[:6])}"
+                  f"in {PAGES} ({', '.join(lost[:6])}"
                   f"{' ...' if len(lost) > 6 else ''}). Read them with supplier_pages.py "
                   f"--ids, or --allow-uncached once you have.", file=sys.stderr)
             return 1

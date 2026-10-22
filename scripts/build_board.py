@@ -49,6 +49,7 @@ import roles          # noqa: E402
 import news           # noqa: E402
 import salary         # noqa: E402
 import tags           # noqa: E402
+import hq_employers   # noqa: E402
 
 # READ ONCE, not per company. 2,044 records would otherwise re-parse
 # schema.json 2,044 times to answer the same question.
@@ -1175,7 +1176,10 @@ def run_context(companies: list, manual: dict | None) -> dict:
             "issued_tags": issued_tags(load_catalogue()),
             "discovery": _read_discovery_log(),
             "checks": (manual or {}).get("checks", {}),
-            "hidden_links": hidden_links()}
+            "hidden_links": hidden_links(),
+            # who has a verified recruiter on SLED HQ, from a list read this
+            # week (hq_employers.verified: an older one speaks for nobody)
+            "hq_verified": hq_verified_now()}
 
 
 def hidden_links() -> set:
@@ -1372,6 +1376,12 @@ def org_record(c: dict, companies: list, ctx: dict, crawl: dict) -> dict:
     # 2,040 organizations would be 37 KB of null on every first visit
     if _news_state == "hosts_news":
         o["news_by"] = newsroom_owner(c)
+    # A VERIFIED RECRUITER ON SLED HQ, only where there is one, for the same
+    # reason: the date their current verification began (hq_employers.py).
+    # Re-checked here like an HQ job (merge_hq): a company that lost its
+    # website since the read publishes nothing, the mark included.
+    if (ctx.get("hq_verified") or {}).get(c["id"]) and (c.get("website") or "").strip():
+        o["hq_verified"] = ctx["hq_verified"][c["id"]]
     return o
 
 
@@ -1502,6 +1512,24 @@ def merge_manual(postings: list[dict], man: dict | None,
         print(f"  {retired} captured posting(s) left off: their company's own feed "
               f"was read in full and does not list them")
     return manual_count, manual_dupes
+
+
+def load_hq_employers() -> dict | None:
+    """data/hq_employers.json (scripts/hq_employers.py), or None before HQ has ever answered."""
+    p = DATA / "hq_employers.json"
+    return json.loads(p.read_text()) if p.exists() else None
+
+
+def hq_verified_now() -> dict:
+    """{company_id: verified_since} to mark, saying so when a list on file
+    is too old to mark anybody (the feed's log line only says "kept")."""
+    doc = load_hq_employers()
+    marks = hq_employers.verified(doc)
+    if doc and doc.get("employers") and not marks:
+        print(f"  SLED HQ verified employers: the list on file was read "
+              f"{doc.get('read_at') or 'at an unknown time'}, more than "
+              f"{hq_employers.STALE_DAYS} days ago - no company is marked until a read succeeds")
+    return marks
 
 
 def load_hq() -> dict | None:
@@ -1927,6 +1955,10 @@ def board_payload(generated: str, orgs: list[dict], postings: list[dict],
         "manual_postings": manual_count,
         "manual_already_fetched": manual_dupes,
         "totals": board_totals(postings, groups),
+        # Where "Claim this page" starts: SLED HQ's claim page once it is
+        # live, or null for this site's own /claim (hq_employers.CLAIMS_ON_HQ).
+        "claim_at": hq_employers.claim_at(),
+        "hq_post_at": hq_employers.POST_AT,
         "organizations": orgs,
         "postings": postings,
     }

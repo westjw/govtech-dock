@@ -150,6 +150,14 @@ jobs:
           SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
         run: python scripts/hq_jobs.py --write
 
+      - name: Read which companies have a verified recruiter on SLED HQ
+        # The same token and the same rule: any answer but 200 keeps the list
+        # on file, and build_board shows no mark from a list older than a week
+        # (scripts/hq_employers.py). Counts only in the log.
+        env:
+          SLEDJOBS_FEED_TOKEN: ${{ secrets.SLEDJOBS_FEED_TOKEN }}
+        run: python scripts/hq_employers.py --write
+
       - name: Build the job board and market intel
         # Keeps every posting, not only AE reqs: the board and the intel both
         # depend on knowing what KIND of hiring a company is doing.

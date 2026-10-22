@@ -33,6 +33,32 @@ import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
+def claim_href(company_id: str) -> str:
+    """Where "Claim this page" goes: SLED HQ's claim page once the switch is
+    on (hq_employers.CLAIMS_ON_HQ), this site's own /claim until then. The
+    app reads the same answer off board.json's claim_at."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import hq_employers
+    base = hq_employers.claim_at()
+    return (base + urllib.parse.quote(company_id, safe="") if base
+            else f"/claim?co={urllib.parse.quote(company_id)}")
+
+
+def stamp_claims(board: dict) -> None:
+    """Write the claim switch into the board.json this build ships.
+
+    The static pages read the switch from the code when they are built
+    (claim_href), and the app read it off board.json, which only the nightly
+    board build writes: flipped on a push, the /c/ pages went to HQ at once
+    and the app stayed on /claim for up to a day, and flipped back the day HQ
+    was down, the app kept sending people to it (review, 2026-10-22). One
+    build, one read, both renderers."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import hq_employers
+    board["claim_at"] = hq_employers.claim_at()
+    board["hq_post_at"] = hq_employers.POST_AT
+
+
 # Everything the public site is allowed to serve. Adding a file here is a
 # deliberate act; nothing is included by walking a directory.
 SHIP = ["index.html", "alerts.html", "claim.html"]
@@ -2000,7 +2026,28 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
     # the address: we know somebody could read mail at that domain, not that
     # they speak for the company.
     claimed = o.get("claimed") if isinstance(o.get("claimed"), dict) else None
-    if claimed:
+    # A VERIFIED RECRUITER ON SLED HQ (hq_employers.py) outranks both: it is
+    # the claim, made where the recruiter side lives. The mark says what HQ's
+    # feed says and no more (its contract: an address at the company's
+    # domain, checked by a person here, allowed to post and hire). It does
+    # not say they ARE hiring - the feed does not know - and it never says
+    # the company vouches for the page. Verification is per person (HQ
+    # allows three), so a colleague still gets a way to claim once the
+    # claim lives on HQ. index.html's coClaim says the same words.
+    import hq_employers
+    since = o.get("hq_verified")
+    if since:
+        too = (f'<p class="note">Work there too? <a href="{esc(claim_href(o["id"]))}">'
+               'Claim this page</a> with an address of your own.</p>'
+               if hq_employers.claim_at() else "")
+        rail += ('<section class="coclaim"><h3>A verified recruiter on SLED HQ</h3>'
+                 f'<p>Somebody at {esc(dom or o["name"])} proved an address on that '
+                 f'domain and a person here checked it, in {esc(str(since)[:7])}, so '
+                 f'they can post jobs and hire for {esc(o["name"])} on SLED HQ. The '
+                 f'mark says nothing more than that.</p>'
+                 f'<a class="cobtn" href="{esc(hq_employers.POST_AT)}">Post a job</a>'
+                 f'{too}</section>')
+    elif claimed:
         when = esc(str(claimed.get("on") or ""))
         rail += ('<section class="coclaim"><h3>Claimed by the company</h3>'
                  f'<p>Somebody at {esc(dom or o["name"])} confirmed an address on '
@@ -2013,7 +2060,7 @@ def company_page_html(o: dict, mine: list, board: dict, brand: dict,
                  '<p>Claim this page and you can correct what it says, post your '
                  'open roles, and tell us if we have filed you in the wrong place. '
                  'It takes an email at your own domain, and no password.</p>'
-                 f'<a class="cobtn" href="/claim?co={urllib.parse.quote(o["id"])}">'
+                 f'<a class="cobtn" href="{esc(claim_href(o["id"]))}">'
                  'Claim this page</a></section>')
     # "Roles read from unknown nightly" is what the app prints for a readable
     # board whose ATS is recorded as "unknown". That is a sentence about a
@@ -3455,6 +3502,7 @@ def main() -> int:
     build_admin_bundle(out)
 
     board, stripped = sanitize(board_src)
+    stamp_claims(board)
 
     attach_active(board)
     print(f"  active: {len(board['active'])} company(ies) hiring harder "

@@ -138,6 +138,9 @@ def main() -> int:
                          "set from the conference's buyer block, so a courts "
                          "vendor's stenography firm files under Courts & "
                          "Justice rather than the generic bucket")
+    ap.add_argument("--no-hq-export", action="store_true",
+                    help="leave the supplier export as it is (a batch of "
+                         "floors can run supplier_refresh.py once at the end)")
     a = ap.parse_args()
 
     staged = json.loads(pathlib.Path(a.file).read_text())
@@ -283,6 +286,23 @@ def main() -> int:
             existing.append(c)
     cand_path.write_text(json.dumps(existing, indent=1, ensure_ascii=False))
     print(f"candidates on file: {len(existing)}")
+    # THE SUPPLIER EXPORT FOLLOWS THE INTAKE (owner, 2026-10-22: "have the
+    # supplier export rebuild after each intake, so it stops going stale").
+    # It sat 1,248 rows wrong for two weeks, then 511 behind three days after
+    # a rebuild, because every floor filed suppliers and nothing followed.
+    # The intake has already landed: a failed rebuild is reported, never
+    # turned into a failed intake.
+    # Only for the real files: a test that points DATA at a sandbox must not
+    # start a crawl and rebuild the real export.
+    import supplier_refresh
+    if not a.no_hq_export and DATA == supplier_refresh.DATA:
+        try:
+            failed = supplier_refresh.main(["--write"])
+        except Exception as exc:                            # noqa: BLE001
+            failed = f"{type(exc).__name__}: {exc}"
+        if failed:
+            print(f"the supplier export was NOT rebuilt ({failed}); run "
+                  "python3 scripts/supplier_refresh.py --write", file=sys.stderr)
     return 0
 
 

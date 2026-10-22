@@ -283,6 +283,19 @@ try {
   // Back: popstate sets CO from the url BEFORE it calls co(CO, true)
   grab(`co("read-co", true); coShowAll("gtm");`);
   views.__more_back_button = grab(`CO = "quote-co"; co(CO, true);`);
+  /* WHERE "CLAIM THIS PAGE" GOES, and the SLED HQ mark (2026-10-22): the
+     same company with board.json's claim_at off and on, verified and not.
+     selftest holds each against build_site's static page for that company. */
+  const claimOrg = { ...base, id: "claim&co", name: "Claim Co", website: "https://claim.example" };
+  for (const [k, extra, verified] of [
+    ["off", { claim_at: null }, null],
+    ["on", { claim_at: "https://hq.sledjobs.com/claim?company=", hq_post_at: "https://hq.sledjobs.com/recruit" }, null],
+    ["verified_on", { claim_at: "https://hq.sledjobs.com/claim?company=", hq_post_at: "https://hq.sledjobs.com/recruit" }, "2026-10-02"],
+    ["verified_off", { claim_at: null, hq_post_at: "https://hq.sledjobs.com/recruit" }, "2026-10-02"]]) {
+    ctx.__claimFix = { ...ctx.__fix, ...extra, postings: [],
+                       organizations: [verified ? { ...claimOrg, hq_verified: verified } : claimOrg] };
+    views[`__claim_${k}`] = grab(`D = __claimFix; (typeof DETAIL === "object" && DETAIL) && (DETAIL["claim&co"] = {}); co("claim&co", true);`);
+  }
 } catch (e) {
   errors.push(`running co(): ${e && e.message}`);
 }

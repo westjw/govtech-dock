@@ -20,7 +20,7 @@ theirs to quote, and under the owner's rule they are not published anyway.
 
 WHAT IS KEPT, AND WHERE. The homepage plus up to three pages whose path says
 products, solutions, services, industries or about, as text, in
-data/supplier_pages/<id>.json - gitignored, because it is other people's
+<the page cache>/<id>.json (cache_dir(), below) - never committed, because it is other people's
 words and the repo is public (the same rule as data/site_pages/). Fetched
 through fetch_profiles.grab, so it is paced per host by ats._get and the
 crawler identifies itself; a 403 is recorded, never retried as a browser.
@@ -31,6 +31,7 @@ import argparse
 import concurrent.futures as cf
 import datetime as dt
 import json
+import os
 import pathlib
 import re
 import sys
@@ -41,7 +42,22 @@ DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 import fetch_profiles as fp  # noqa: E402
 
-DIR = DATA / "supplier_pages"
+# ONE CACHE PER MACHINE, NOT PER CHECKOUT (2026-10-22). It is gitignored and
+# about 100 MB, so a fresh worktree never has one, and the export could only
+# be rebuilt from the one checkout that did (~/govtech-dock-suppliers, then a
+# hand-made copy in ~/govtech-dock-launch). Every checkout on this machine
+# now reads and writes the same folder; SUPPLIER_PAGES names another, and a
+# machine without the shared folder (CI) falls back to the checkout's own.
+SHARED = pathlib.Path.home() / "Library" / "Application Support" / "sled-jobs" / "supplier_pages"
+
+
+def cache_dir() -> pathlib.Path:
+    if os.environ.get("SUPPLIER_PAGES"):
+        return pathlib.Path(os.environ["SUPPLIER_PAGES"])
+    return SHARED if SHARED.is_dir() else DATA / "supplier_pages"
+
+
+DIR = cache_dir()
 READ = {"theirs", "found", "unconfirmed", "found_review"}
 
 # A supplier's "what we sell" lives under different paths from a software
@@ -119,7 +135,7 @@ def main() -> int:
     print(f"{len(todo)} supplier site(s) to read")
     if not a.write:
         return 0
-    DIR.mkdir(exist_ok=True)
+    DIR.mkdir(parents=True, exist_ok=True)
     done = unread = 0
     with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
         futs = {ex.submit(visit, sid, site): sid for sid, site in todo}

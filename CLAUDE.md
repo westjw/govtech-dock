@@ -1958,6 +1958,44 @@ The rules follow the contract agreed with the HQ session on 2026-10-04:
 - Its pay is labelled "stated by the employer on SLED HQ".
 - `check_sled_hq_jobs_reach_the_board` covers this. Mutation-tested 15 of 15.
 
+### The claim moves to HQ on one switch (2026-10-22)
+
+Owner's list, item 29: "when HQ deploys, set `SLEDJOBS_FEED_TOKEN`, then move
+the claim link to HQ." Built ahead of the deploy and dormant until then.
+- `scripts/hq_employers.py` reads HQ's verified-employers feed (HQ's
+  `docs/feeds/sledjobs-employers.md`, v1) nightly into `data/hq_employers.json`,
+  through `hq_jobs.read_feed` and on the same rules: any answer but 200 keeps
+  the list on file, a 200 is the whole list, and no token asks nothing.
+  Refused one row at a time, each with its reason: a company the board lacks,
+  one with no website, a date that is not YYYY-MM-DD or is in the future, and
+  a repeat. Only `company_id` and `verified_since` are kept.
+- **A list read more than a week ago marks nobody** (`STALE_DAYS`): a
+  revocation reaches the board only on a good read, and HQ's contract asks
+  for this.
+- A verified company's org row carries `hq_verified` (the date) and only that
+  company's, and only while it has a website (re-checked at build, like an
+  HQ job). Its page and the app say "A verified recruiter on SLED HQ":
+  somebody at the domain proved an address and a person here checked it, so
+  they can post jobs and hire there, nothing more. Never "hiring": the feed
+  does not know that. They offer "Post a job" (`board.json` `hq_post_at`),
+  and once the claim lives on HQ, "Work there too? Claim this page" (HQ
+  verifies up to three people a company). The board build prints a line
+  when the list on file is too old to mark anybody.
+- **`hq_employers.CLAIMS_ON_HQ` is the switch**, False today. On, every "Claim
+  this page" opens `https://hq.<domain>/claim?company=<id>` (HQ's own
+  parameter): `build_site.claim_href` on the static pages and `board.json`
+  `claim_at` in the app. **build_site stamps `claim_at` into the board.json
+  it ships** (`stamp_claims`): the nightly board build alone left the app a
+  day behind the pages after a flip (review, 2026-10-22). No claim was ever made on this site's own form
+  (`data/claims.json` is empty), so nothing is stranded.
+- **The day HQ is live**, in order: the owner sets `SLEDJOBS_FEED_TOKEN` (the
+  same value on both sides), the nightly run reads both feeds, then
+  `CLAIMS_ON_HQ = True`. HQ's company-profiles feed (a company's own words,
+  logo and links) is a third feed, not read yet.
+- `check_the_claim_moves_to_hq_on_one_switch` runs the app's company view in
+  `jobcard_harness.mjs` in four states (switch off and on, verified or not)
+  and compares its words and links with the static page's.
+
 ## Launch fixes, 2026-10-06: what each guard holds
 
 A launch audit (the checklist lives in a claude.ai artifact, not the repo)
@@ -2395,27 +2433,41 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
     93% right website, 96% right sector and 76% exact category.
   - 40 of 87 HELD suppliers had a real website, so the held pile is partly
     a review queue.
-- The export is what SLED HQ reads. It has fixed sector keys, sector-qualified
-  category slugs, and a status per supplier.
-- **The export is rebuilt by hand, and it goes stale.** Built 10-05, it was
-  still listing 1,248 removed suppliers on 10-19, including 163 published
-  ones, 72 of which had since become board companies. It was also missing
-  the 502 suppliers filed since. To rebuild:
-  1. Run `supplier_identity.py --ids` for the new suppliers.
-  2. Run `supplier_pages.py --ids` for the same suppliers.
-  3. Run `supplier_categories.py --write` from a checkout holding the
-     gitignored `data/supplier_pages/` (the 10-05 cache is in
-     ~/govtech-dock-suppliers).
-  Before trusting the output, check that the old code and data with that
-  cache reproduce the committed export exactly; they did on 10-19.
-  `--write` refuses when the cache is missing, or when a supplier the last
-  export published has no page here: without the cache, every published
-  supplier would read as "website unread" and leave HQ.
-  `check_the_hq_export_never_loses_a_supplier_to_a_missing_cache` holds the
-  refusal, and selftest prints a note while the export and suppliers.json
-  disagree. It carries no addresses:
-  67 supplier "names" are email addresses, and `clean_name` plus a scrub keep
-  them out.
+- The export is written for SLED HQ, and **HQ does not read it yet** (checked
+  in HQ's tree on 2026-10-22, every branch). The contract, the 10-05 taxonomy
+  change and the 10-19 rebuild are in `docs/hq-supplier-export.md`. It has
+  fixed sector keys, sector-qualified category slugs, and a status per
+  supplier. It carries no addresses: 67 supplier "names" are email
+  addresses, and `clean_name` plus a scrub keep them out.
+- **The export follows every intake** (owner's list, 2026-10-22, item 28).
+  Built 10-05, it still listed 1,248 removed suppliers on 10-19 and had
+  never placed 502 new ones; rebuilt 10-19, it was 511 behind three days
+  later. `scripts/supplier_refresh.py --write` runs the three steps in order
+  and stops at the first failure: `supplier_identity.py --ids` for the
+  suppliers never judged, `supplier_pages.py --write` for trusted sites with
+  no page yet, then `supplier_categories.py --write`. **Steps 2 and 3 run on
+  every --write**, new ids or not: a floor whose exhibitors are all on file
+  only adds tags, and a tag is a sector assignment (14 of 54 intakes in the
+  journal filed no supplier and tagged up to 1,073). A rebuild keeps a
+  `merged_into` row whose supplier has left the file (`carry_merges`); the
+  first refresh dropped five and they were restored. First run 2026-10-22:
+  511 placed, 3,235 publish, 4,260 held, 110 merged, 77 not a company. `conference_intake.py`
+  runs it after every write (`--no-hq-export` skips it; a failed rebuild is
+  reported, never a failed intake). selftest prints a note while the export
+  is behind, counting a `merged_into` row as placed, not gone
+  (`supplier_categories.drift`).
+- **The page cache is one per machine**, not per checkout:
+  `~/Library/Application Support/sled-jobs/supplier_pages`
+  (`supplier_pages.cache_dir`; `SUPPLIER_PAGES` names another; a machine
+  without it, CI, uses the checkout's gitignored `data/supplier_pages/`).
+  A fresh worktree used to lack the 107 MB cache, and only one checkout
+  could rebuild. Copied there 2026-10-22 from both old caches; with it,
+  today's code reproduced 7,165 of the 10-19 export's 7,166 old rows exactly
+  (the other was released by a person since).
+  `--write` still refuses when the cache is missing, or when a supplier the
+  last export published has no page:
+  `check_the_hq_export_never_loses_a_supplier_to_a_missing_cache`.
+  `check_the_supplier_export_follows_every_intake` holds the rest.
 
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
 

@@ -31023,6 +31023,409 @@ def check_a_slow_site_cannot_outlast_the_sweep() -> int:
         errors += fail("news.yml buffers the sweep's output: a stalled run logs nothing")
     return errors
 
+def check_the_supplier_export_follows_every_intake() -> int:
+    """The supplier export is rebuilt after an intake, from any checkout here
+    (owner's list, 2026-10-22, item 28).
+
+    Built 10-05 it listed 1,248 removed suppliers two weeks later; rebuilt
+    10-19 it was 511 behind three days after, because only one checkout held
+    the page cache and nothing followed an intake. Held here:
+      - drift counts never-placed and gone suppliers, never a merged row;
+      - supplier_refresh --write runs identity --write (only the never-judged,
+        once each, skipped when there are none), then pages --write, then the
+        export --write, in that order, and stops at the first failure so a
+        half-made export is never written;
+      - it rebuilds even when no id is new: a tag-only intake moves the
+        export (review, 2026-10-22: 14 of 54 intakes filed no supplier);
+      - it refuses with no page cache, and only looks without --write;
+      - the cache is one per machine: SUPPLIER_PAGES names it, the shared
+        folder is used when it exists, a machine without it uses the
+        checkout's own, and both scripts read the same one;
+      - a rebuild keeps a merged_into row whose supplier has left the file
+        (merge_supplier_twins' record of where it went), run for real;
+      - conference_intake runs it only for the real files and not on
+        --no-hq-export, and a failed or crashing rebuild never fails the
+        intake that already landed.
+    """
+    import ast
+    import os
+    import tempfile
+    import types
+    import supplier_categories as SC
+    import supplier_pages as SP
+    import supplier_refresh as SR
+    errors = 0
+    sup = [{"id": "a"}, {"id": "b"}, {"id": "b"}, {"id": "c"}]
+    export = {"generated": "2026-10-19", "suppliers": [
+        {"supplier_id": "a", "status": "publish"},
+        {"supplier_id": "old", "status": "held"},
+        {"supplier_id": "twin", "status": {"merged_into": {"kind": "company", "id": "x"}}}]}
+    d = SC.drift(export, sup)
+    if d != {"new": ["b", "c"], "gone": ["old"]}:
+        errors += fail(f"drift counted wrong (a merged row is not gone): {d}")
+    if SR.unjudged(sup, {"a": {}}) != ["b", "c"]:
+        errors += fail(f"the never-judged list is wrong or repeats an id: {SR.unjudged(sup, {'a': {}})}")
+
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-suprefresh-"))
+    keep = (SR.DATA, SC.OUT, SC.PAGES, SR.step)
+    calls = []
+    plan = {}
+
+    def fake_step(args):
+        calls.append(list(args))
+        return plan.get(args[0], 0)
+    import io, contextlib
+
+    def run(*flags):
+        calls.clear()
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return SR.main(list(flags))
+    full = [["supplier_identity.py", "--ids", "b,c", "--write"],
+            ["supplier_pages.py", "--write"], ["supplier_categories.py", "--write"]]
+    try:
+        SR.DATA, SC.OUT, SC.PAGES, SR.step = tmp, tmp / "supplier_categories.json", tmp / "pages", fake_step
+        (tmp / "suppliers.json").write_text(json.dumps(sup))
+        (tmp / "supplier_identity.json").write_text(json.dumps({"rows": {"a": {}}}))
+        SC.OUT.write_text(json.dumps(export))
+        SC.PAGES.mkdir()
+        if run() != 0 or calls:
+            errors += fail(f"a look without --write ran a step: {calls}")
+        if run("--write") != 0 or calls != full:
+            errors += fail(f"the refresh ran the wrong steps, flags or order: {calls}")
+        plan["supplier_identity.py"] = 1
+        if run("--write") != 1 or calls != full[:1]:
+            errors += fail(f"a failed step 1 did not stop the refresh: {calls}")
+        plan.clear()
+        plan["supplier_pages.py"] = 1
+        if run("--write") != 1 or calls != full[:2]:
+            errors += fail(f"a failed step 2 still rebuilt the export: {calls}")
+        plan.clear()
+        SC.PAGES.rmdir()
+        if run("--write") != 1 or calls:
+            errors += fail(f"a refresh with no page cache ran: {calls}")
+        SC.PAGES.mkdir()
+        (tmp / "supplier_identity.json").write_text(json.dumps({"rows": {"a": {}, "b": {}, "c": {}}}))
+        SC.OUT.write_text(json.dumps({"suppliers": [{"supplier_id": i, "status": "held"} for i in "abc"]}))
+        if run("--write") != 0 or calls != full[1:]:
+            errors += fail(f"with no new id (a tag-only intake) the export was not rebuilt: {calls}")
+    finally:
+        SR.DATA, SC.OUT, SC.PAGES, SR.step = keep
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    if SC.PAGES != SP.DIR:
+        errors += fail(f"the export reads {SC.PAGES} and the page reader writes {SP.DIR}")
+    env = os.environ.get("SUPPLIER_PAGES")
+    shared = SP.SHARED
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-shared-"))
+    try:
+        os.environ["SUPPLIER_PAGES"] = "/somewhere/else"
+        if str(SP.cache_dir()) != "/somewhere/else":
+            errors += fail("SUPPLIER_PAGES does not name the page cache")
+        os.environ.pop("SUPPLIER_PAGES")
+        SP.SHARED = tmp
+        if SP.cache_dir() != tmp:
+            errors += fail("the machine's shared page cache is not used when it exists")
+        SP.SHARED = pathlib.Path("/no/such/shared/folder")
+        if SP.cache_dir() != SP.DATA / "supplier_pages":
+            errors += fail("with no shared folder the cache is not the checkout's own")
+    finally:
+        SP.SHARED = shared
+        shutil.rmtree(tmp, ignore_errors=True)
+        if env is None:
+            os.environ.pop("SUPPLIER_PAGES", None)
+        else:
+            os.environ["SUPPLIER_PAGES"] = env
+
+    # a merged supplier's row survives a real rebuild once it has left the file
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-merged-"))
+    data = tmp / "data"
+    data.mkdir()
+    (data / "schema.json").write_text((DATA / "schema.json").read_text())
+    (data / "conferences.json").write_text(json.dumps({"conferences": []}))
+    (data / "suppliers.json").write_text(json.dumps([{"id": "keepco", "name": "Keepco", "description": "Valves"}]))
+    (data / "supplier_identity.json").write_text(json.dumps({"rows": {"keepco": {"verdict": "not_found"}}}))
+    tomb = {"supplier_id": "oldtwin", "name": "Old Twin", "status": {"merged_into": {"kind": "company", "id": "twinco"}}}
+    back = {"supplier_id": "keepco", "name": "Keepco", "status": {"merged_into": {"kind": "company", "id": "x"}}}
+    out = data / "supplier_categories.json"
+    out.write_text(json.dumps({"suppliers": [tomb, back]}))
+    (data / "supplier_pages").mkdir()
+    keep = SC.ROOT, SC.DATA, SC.OUT, SC.PAGES
+    argv = sys.argv
+    try:
+        SC.ROOT, SC.DATA, SC.OUT, SC.PAGES = tmp, data, out, data / "supplier_pages"
+        sys.argv = ["supplier_categories.py", "--write"]
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = SC.main()
+        rows = json.loads(out.read_text()).get("suppliers") or [] if rc == 0 else []
+        got = {r["supplier_id"]: r for r in rows}
+        if rc != 0 or got.get("oldtwin", {}).get("status") != tomb["status"]:
+            errors += fail(f"a rebuild dropped the merged_into row of a supplier that left the file: {got.get('oldtwin')}")
+        if [r["supplier_id"] for r in rows].count("keepco") != 1 or isinstance(got.get("keepco", {}).get("status"), dict):
+            errors += fail("a supplier back in the file kept its old merged row instead of its new placement")
+    finally:
+        SC.ROOT, SC.DATA, SC.OUT, SC.PAGES = keep
+        sys.argv = argv
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # the intake's gate, evaluated rather than read: only the real files, and
+    # never on --no-hq-export; and nothing the rebuild does fails the intake
+    tree = ast.parse((ROOT / "scripts" / "conference_intake.py").read_text())
+    main_fn = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "main")
+
+    def calls_refresh(node):
+        return any(isinstance(c, ast.Call) and isinstance(c.func, ast.Attribute)
+                   and c.func.attr == "main" and isinstance(c.func.value, ast.Name)
+                   and c.func.value.id == "supplier_refresh" for c in ast.walk(node))
+    gates = [n for n in ast.walk(main_fn) if isinstance(n, ast.If) and calls_refresh(n)
+             and not any(isinstance(m, ast.If) and m is not n and calls_refresh(m) for m in ast.walk(n))]
+    if len(gates) != 1:
+        errors += fail(f"conference_intake does not call supplier_refresh under one gate ({len(gates)})")
+    else:
+        g = gates[0]
+        expr = compile(ast.Expression(g.test), "gate", "eval")
+        real, other = object(), object()
+        for no_export, data_is in ((False, real), (True, real), (False, other), (True, other)):
+            ns = {"a": types.SimpleNamespace(no_hq_export=no_export), "DATA": data_is,
+                  "supplier_refresh": types.SimpleNamespace(DATA=real)}
+            want = (not no_export) and data_is is real
+            if bool(eval(expr, ns)) != want:
+                errors += fail(f"the intake's export gate is {not want} for --no-hq-export={no_export}, "
+                               f"{'real' if data_is is real else 'sandboxed'} DATA")
+        tries = [t for t in ast.walk(g) if isinstance(t, ast.Try) and calls_refresh(ast.Module(body=t.body, type_ignores=[]))]
+        if not tries or not any(isinstance(h.type, ast.Name) and h.type.id == "Exception" for h in tries[0].handlers):
+            errors += fail("a crashing export rebuild would fail an intake that already landed")
+        if any(isinstance(r, ast.Return) for r in ast.walk(g)):
+            errors += fail("a failed export rebuild returns from the intake")
+        rets = [r for r in ast.walk(main_fn) if isinstance(r, ast.Return) and r.lineno > g.lineno]
+        if not rets or not all(isinstance(r.value, ast.Constant) and r.value.value == 0 for r in rets):
+            errors += fail("the intake does not return 0 after the export rebuild")
+        writes = [n.lineno for n in ast.walk(main_fn) if isinstance(n, ast.Call)
+                  and isinstance(n.func, ast.Attribute) and n.func.attr == "write_atomic"]
+        if not writes or g.lineno < max(writes):
+            errors += fail("the intake rebuilds the export before it has written suppliers.json")
+    return errors
+
+
+def check_the_claim_moves_to_hq_on_one_switch() -> int:
+    """SLED HQ's verified employers reach the board, and "Claim this page"
+    moves to HQ by one line (owner's list, 2026-10-22, item 29).
+
+    HQ's employers feed (its docs/feeds/sledjobs-employers.md, v1) lists the
+    companies with a verified recruiter. Held here:
+      - non-200 keeps the list on file, a 200 replaces it whole, no token
+        asks nothing, and the token reaches neither the log nor the file;
+      - each bad row is refused alone, for its own reason: a company the
+        board lacks, one with no website, a repeat, a non-string id, a date
+        that is not exactly YYYY-MM-DD (an ISO week, no dashes, words) and
+        one in the future;
+      - a list read more than STALE_DAYS ago marks nobody, and the board
+        build says so; a company that lost its website loses the mark;
+      - with CLAIMS_ON_HQ off every claim link is this site's /claim, with it
+        on every one is HQ's /claim?company=<id>, the id quoted; the build
+        that draws the static pages also stamps board.json for the app;
+      - the app's company view, RUN in the harness, and the static page say
+        the same words and link the same places, in all four states, and the
+        mark says what HQ's feed says (allowed to post and hire), never that
+        they are hiring.
+    """
+    import ast
+    import contextlib
+    import datetime as _dt
+    import html as _html
+    import io
+    import os
+    import tempfile
+    import build_board as bb
+    import build_site as bs
+    import hq_employers as HE
+    errors = 0
+    today = _dt.date(2026, 10, 22)
+    site = "https://x.example.com"
+    cos = {k: {"id": k, "name": k.title(), "website": site, "sector": "Public Safety", "category": "Police"}
+           for k in ("acme", "beta", "gamma", "delta", "eps")}
+    cos["nosite"] = {"id": "nosite", "name": "Nosite", "website": ""}
+    rows = [{"company_id": "acme", "verified_since": "2026-10-02", "extra": "ignored"},
+            {"company_id": "ghost", "verified_since": "2026-10-02"},
+            {"company_id": "nosite", "verified_since": "2026-10-02"},
+            {"company_id": "acme", "verified_since": "2026-10-03"},
+            {"company_id": "beta", "verified_since": "Oct 2"},
+            {"company_id": "gamma", "verified_since": "2026-W40-1"},
+            {"company_id": "delta", "verified_since": "20261002"},
+            {"company_id": ["eps"], "verified_since": "2026-10-02"},
+            {"company_id": "eps", "verified_since": "2026-12-01"},
+            "junk"]
+    want = {"ghost": "not on this board", "nosite": "no website", "acme": "listed twice",
+            "beta": "YYYY-MM-DD", "gamma": "YYYY-MM-DD", "delta": "YYYY-MM-DD",
+            "['eps']": "not a string", "eps": "in the future", "None": "not an object"}
+    took, refused = HE.sort_feed({"v": 1, "employers": rows}, cos, today)
+    if took != [{"company_id": "acme", "verified_since": "2026-10-02"}]:
+        errors += fail(f"the employers feed sorted wrong: {took}")
+    got = {str(r["company_id"]): r["why"] for r in refused}
+    for cid, why in want.items():
+        if why not in got.get(cid, ""):
+            errors += fail(f"the row for {cid} was not refused for '{why}': {got.get(cid)!r}")
+
+    now = _dt.datetime(2026, 10, 22, 12, tzinfo=_dt.timezone.utc)
+    doc = {"read_at": "2026-10-21T12:00:00+00:00", "employers": took}
+    if HE.verified(doc, now) != {"acme": "2026-10-02"}:
+        errors += fail(f"a list read yesterday marks nobody: {HE.verified(doc, now)}")
+    if HE.verified(dict(doc, read_at="2026-10-14T11:00:00+00:00"), now):
+        errors += fail("a list read eight days ago still marks companies")
+    if HE.verified({"employers": took}, now) or HE.verified(None, now):
+        errors += fail("a list never read marks companies")
+
+    class R:
+        def __init__(self, code, body=None):
+            self.status_code, self._body = code, body
+        def json(self):
+            if self._body is None:
+                raise ValueError("not json")
+            return self._body
+    feeds = {"404": R(404), "503": R(503), "junk": R(200), "v2": R(200, {"v": 2, "employers": []}),
+             "ok": R(200, {"v": 1, "generated_at": "x", "employers": rows[:1]})}
+    secret = "TOKEN-THAT-MUST-NOT-PRINT"
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-hqemp-"))
+    keep = (HE.OUT, HE.DATA, os.environ.get("SLEDJOBS_FEED_TOKEN"))
+    try:
+        HE.DATA, HE.OUT = tmp, tmp / "hq_employers.json"
+        (tmp / "companies.json").write_text(json.dumps(list(cos.values())))
+        before = {"employers": [{"company_id": "acme", "verified_since": "2026-09-01"}], "read_at": "x"}
+        HE.OUT.write_text(json.dumps(before))
+        os.environ["SLEDJOBS_FEED_TOKEN"] = secret
+        for name in ("404", "503", "junk", "v2"):
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                HE.main(["--write"], get=lambda *a, **k: feeds[name])
+            if json.loads(HE.OUT.read_text()) != before or "kept" not in out.getvalue():
+                errors += fail(f"an employers feed that answered {name} replaced the list on file")
+            if secret in out.getvalue():
+                errors += fail("the feed token reached the log")
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            HE.main(["--write"], get=lambda *a, **k: feeds["ok"])
+        written = HE.OUT.read_text()
+        got = json.loads(written)
+        if got.get("employers") != took or not got.get("read_at") or "extra" in written:
+            errors += fail(f"a 200 did not replace the list whole, or kept a field: {got}")
+        if secret in written or secret in out.getvalue():
+            errors += fail("the feed token reached the written list or the log on a 200")
+        os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        asked = []
+        with contextlib.redirect_stdout(io.StringIO()):
+            HE.main(["--write"], get=lambda *a, **k: asked.append(1) or feeds["ok"])
+        if asked:
+            errors += fail("with no token the employers feed was still asked")
+    finally:
+        HE.OUT, HE.DATA = keep[0], keep[1]
+        if keep[2] is None:
+            os.environ.pop("SLEDJOBS_FEED_TOKEN", None)
+        else:
+            os.environ["SLEDJOBS_FEED_TOKEN"] = keep[2]
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # the board build: the list on file, through verified(), onto the org row
+    c = dict(cos["acme"])
+    crawl = {"unreadable": None, "roles_from_storage": None, "enumerable": None,
+             "offtopic_dropped": None, "federal_dropped": None, "scan_lead": None}
+    load = bb.load_hq_employers
+    fresh = _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds")
+    stale = (_dt.datetime.now(_dt.timezone.utc) - _dt.timedelta(days=HE.STALE_DAYS + 1)).isoformat(timespec="seconds")
+    try:
+        bb.load_hq_employers = lambda: {"read_at": fresh, "employers": took}
+        ctx = bb.run_context([c], None)
+        if ctx.get("hq_verified") != {"acme": "2026-10-02"}:
+            errors += fail(f"the board build does not read the list on file: {ctx.get('hq_verified')}")
+        elif bb.org_record(c, [c], ctx, crawl).get("hq_verified") != "2026-10-02":
+            errors += fail("a verified employer's org row does not carry hq_verified")
+        elif "hq_verified" in bb.org_record(dict(c, website=""), [c], ctx, crawl):
+            errors += fail("a company that lost its website keeps the HQ mark")
+        bb.load_hq_employers = lambda: {"read_at": stale, "employers": took}
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            ctx = bb.run_context([c], None)
+        if ctx.get("hq_verified") or "no company is marked" not in out.getvalue():
+            errors += fail("a list older than STALE_DAYS still marks companies, or the build does not say so")
+        if "hq_verified" in bb.org_record(c, [c], ctx, crawl):
+            errors += fail("hq_verified is on an org row with no verified recruiter")
+    finally:
+        bb.load_hq_employers = load
+
+    brand = json.loads((DATA / "brand.json").read_text())
+    switch = HE.CLAIMS_ON_HQ
+    hq = f"https://hq.{brand['domain']}/claim?company="
+
+    def page(o):
+        return bs.company_page_html(o, [], {"organizations": [o], "logos": {}, "postings": [],
+                                            "generated": "2026-10-22"}, brand, {o["id"]: o}, {}, 1)
+
+    def claim_part(h):
+        m = re.search(r'<section class="coclaim">.*?</section>', h or "", re.S)
+        if not m:
+            return None, None
+        sec = m.group(0)
+        hrefs = [_html.unescape(x) for x in re.findall(r'href="([^"]*)"', sec)]
+        text = " ".join(_html.unescape(re.sub(r"<[^>]+>", " ", sec)).split())
+        return text, hrefs
+    o = {"id": "claim&co", "name": "Claim Co", "website": "https://claim.example", "sector": "Public Safety",
+         "category": "Police", "open_roles": 0, "news": None, "description": "x"}
+    pages = {}
+    try:
+        for state, on in (("off", False), ("on", True)):
+            HE.CLAIMS_ON_HQ = on
+            pay = bb.board_payload("2026-10-22", [], [], {}, [], {"unreadable": 0, "rendered": 0}, 0, 0)
+            shipped = {"claim_at": "stale"}
+            bs.stamp_claims(shipped)
+            if pay.get("claim_at") != (hq if on else None) or shipped.get("claim_at") != (hq if on else None):
+                errors += fail(f"with the switch {state}, board.json's claim_at is wrong "
+                               f"(built {pay.get('claim_at')!r}, shipped {shipped.get('claim_at')!r})")
+            pages[state] = page(o)
+            pages[f"verified_{state}"] = page(dict(o, hq_verified="2026-10-02"))
+    finally:
+        HE.CLAIMS_ON_HQ = switch
+    if claim_part(pages["off"])[1] != ["/claim?co=claim%26co"]:
+        errors += fail(f"with the switch off the static claim link is {claim_part(pages['off'])[1]}")
+    if claim_part(pages["on"])[1] != [hq + "claim%26co"]:
+        errors += fail(f"with the switch on the static claim link is {claim_part(pages['on'])[1]}")
+    for state in ("verified_on", "verified_off"):
+        text, hrefs = claim_part(pages[state])
+        if (not text or "A verified recruiter on SLED HQ" not in text or "post jobs and hire" not in text
+                or "2026-10" not in text or "Hiring on" in text or "They post jobs" in text):
+            errors += fail(f"the {state} mark does not say what HQ's feed says, and only that: {text}")
+        if (("Claim this page" in (text or "")) != (state == "verified_on")
+                or (hq + "claim%26co" in (hrefs or [])) != (state == "verified_on")):
+            errors += fail(f"the {state} mark offers a colleague's claim wrongly: {hrefs}")
+
+    # the build that draws the static pages stamps the board.json it ships
+    main_fn = next(n for n in ast.parse((ROOT / "scripts" / "build_site.py").read_text()).body
+                   if isinstance(n, ast.FunctionDef) and n.name == "main")
+    stamp = [n.lineno for n in ast.walk(main_fn) if isinstance(n, ast.Call)
+             and isinstance(n.func, ast.Name) and n.func.id == "stamp_claims"]
+    san = [n.lineno for n in ast.walk(main_fn) if isinstance(n, ast.Call)
+           and isinstance(n.func, ast.Name) and n.func.id == "sanitize"]
+    ship = [n.lineno for n in ast.walk(main_fn) if isinstance(n, ast.Call)
+            and isinstance(n.func, ast.Attribute) and n.func.attr == "write_text"
+            and any(isinstance(k, ast.Constant) and k.value == "board.json" for k in ast.walk(n.func.value))]
+    if len(ship) != 1 or not stamp or not san or not (min(san) <= min(stamp) < ship[0]):
+        errors += fail("build_site.main does not stamp the claim switch into the board.json it ships")
+
+    if not shutil.which("node"):
+        print("  note: node is not installed, so the app's claim view was not run")
+        return errors
+    # the app passes every href through safeUrl, which makes a relative
+    # link absolute against the page (the harness's page is http://x/)
+    import urllib.parse as _up
+    views = (_harness().get("views") or {})
+    for state in ("off", "on", "verified_on", "verified_off"):
+        app = claim_part(views.get(f"__claim_{state}"))
+        static = claim_part(pages[state])
+        static = (static[0], [_up.urljoin("http://x/", h) for h in static[1] or []])
+        if app[0] is None:
+            errors += fail(f"the app drew no claim section ({state}): {str(views.get(f'__claim_{state}'))[:200]}")
+        elif app != static:
+            errors += fail(f"the app and the static page disagree ({state}): {app} vs {static}")
+    return errors
+
+
 def check_sled_hq_jobs_reach_the_board() -> int:
     """Jobs posted on SLED HQ are listed on the board, on the agreed contract.
 
@@ -34723,6 +35126,8 @@ def main() -> int:
     errors += check_the_news_sweep_stops_before_the_job_does()
     errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_sled_hq_jobs_reach_the_board()
+    errors += check_the_supplier_export_follows_every_intake()
+    errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
@@ -34859,19 +35264,20 @@ def main() -> int:
     if twins:
         print(f"note: {len(twins)} supplier row(s) are a board company already "
               f"(python3 scripts/merge_supplier_twins.py)")
-    # THE EXPORT SLED HQ READS IS BUILT BY HAND, from a checkout holding the
-    # gitignored page cache, so it falls behind every floor intake. It sat
-    # two weeks behind (1,248 gone, 502 never placed) before anybody looked.
+    # THE SUPPLIER EXPORT FOLLOWS EVERY INTAKE since 2026-10-22, but a floor
+    # filed another way (or with --no-hq-export) still leaves it behind. It
+    # sat two weeks behind (1,248 gone, 502 never placed) before anybody
+    # looked. Merged rows are the export saying where a supplier went, not
+    # drift (supplier_categories.drift).
     try:
-        hq = json.loads((DATA / "supplier_categories.json").read_text())
-        sids = {x["id"] for x in json.loads((DATA / "suppliers.json").read_text())}
-        xids = {x["supplier_id"] for x in hq.get("suppliers") or []}
-        if xids != sids:
-            print(f"note: the SLED HQ export is behind suppliers.json ({len(xids - sids)} gone, "
-                  f"{len(sids - xids)} not placed): python3 scripts/supplier_categories.py --write, "
-                  f"from a checkout holding data/supplier_pages")
+        import supplier_categories
+        d = supplier_categories.drift(json.loads((DATA / "supplier_categories.json").read_text()),
+                                      json.loads((DATA / "suppliers.json").read_text()))
+        if d["new"] or d["gone"]:
+            print(f"note: the supplier export is behind suppliers.json ({len(d['gone'])} gone, "
+                  f"{len(d['new'])} not placed): python3 scripts/supplier_refresh.py --write")
     except (OSError, ValueError, KeyError):
-        print("note: the SLED HQ export could not be read")
+        print("note: the supplier export could not be read")
     print(f"{len(companies)} companies | {n_api} on structured ATS APIs | "
           f"{len(hist)} snapshot(s) | classifier cases: {len(CLASSIFIER_CASES)} title, "
           f"{len(PAGESCAN_CASES)} page-scan, {len(TITLE_TEXT_CASES)} title-text, "

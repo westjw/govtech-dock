@@ -129,14 +129,17 @@ def sort_feed(body: dict, companies: dict, today: dt.date) -> tuple[list, list]:
     return took, refused
 
 
-def read_feed(token: str, get=None) -> tuple[int | None, dict | None, str]:
-    """(status, parsed body or None, a note safe to print)."""
+def read_feed(token: str, get=None, url: str = FEED,
+              key: str = "jobs") -> tuple[int | None, dict | None, str]:
+    """(status, parsed body or None, a note safe to print). One reader for
+    every HQ feed: they share the token, the statuses and the envelope
+    ({"v": 1, "generated_at", <key>: [...]}) by contract."""
     if get is None:
         import requests
         get = requests.get
     try:
-        r = get(FEED, headers={"Authorization": f"Bearer {token}",
-                               "User-Agent": "SLED JOBS board (feed reader)"},
+        r = get(url, headers={"Authorization": f"Bearer {token}",
+                              "User-Agent": "SLED JOBS board (feed reader)"},
                 timeout=30)
     except Exception as exc:                                # noqa: BLE001
         return None, None, f"no answer ({type(exc).__name__})"
@@ -146,7 +149,7 @@ def read_feed(token: str, get=None) -> tuple[int | None, dict | None, str]:
         body = r.json()
     except ValueError:
         return 200, None, "answered 200 with a body that is not JSON"
-    if not isinstance(body, dict) or body.get("v") != 1 or not isinstance(body.get("jobs"), list):
+    if not isinstance(body, dict) or body.get("v") != 1 or not isinstance(body.get(key), list):
         return 200, None, f"answered a feed of version {body.get('v') if isinstance(body, dict) else '?'!r}, not 1"
     return 200, body, "answered 200"
 

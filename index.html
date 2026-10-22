@@ -6783,7 +6783,25 @@ function co(id,fromUrl){
      somebody could read mail at their domain; we do not know they speak for
      the company, and the wording stays inside what was actually checked. */
   const claimed=o.claimed;
-  const coClaim=(o)=>claimed
+  /* WHERE A CLAIM STARTS: SLED HQ's claim page once board.json says so
+     (claim_at, from scripts/hq_employers.py), this site's /claim until then.
+     A VERIFIED RECRUITER ON HQ outranks both, worded to what HQ's feed says:
+     an address at the company's domain, checked by a person here, allowed to
+     post and hire - never that they are hiring. build_site's rail says the
+     same words (selftest runs both and compares them). */
+  const claimHref=(id)=>D.claim_at?D.claim_at+encodeURIComponent(id)
+    :`/claim?co=${encodeURIComponent(id)}`;
+  const coClaim=(o)=>o.hq_verified
+    ? `<section class="coclaim"><h3>A verified recruiter on SLED HQ</h3>
+        <p>Somebody at ${esc(dom||o.name)} proved an address on that domain and
+          a person here checked it, in ${esc(String(o.hq_verified).slice(0,7))},
+          so they can post jobs and hire for ${esc(o.name)} on SLED HQ. The mark
+          says nothing more than that.</p>
+        <a class="cobtn" href="${esc(safeUrl(D.hq_post_at||""))}">Post a job</a>${
+        D.claim_at?`<p class="note">Work there too? <a href="${esc(safeUrl(claimHref(o.id)))}">Claim this page</a>
+          with an address of your own.</p>`:""}
+      </section>`
+    : claimed
     ? `<section class="coclaim"><h3>Claimed by the company</h3>
         <p>Somebody at ${esc(dom||o.name)} confirmed an address on that domain${
           claimed.on?` in ${esc(claimed.on)}`:""}. Corrections from them are
@@ -6793,7 +6811,7 @@ function co(id,fromUrl){
         <p>Claim this page and you can correct what it says, post your open
           roles, and tell us if we have filed you in the wrong place. It takes
           an email at your own domain, and no password.</p>
-        <a class="cobtn" href="/claim?co=${encodeURIComponent(o.id)}">Claim this page</a>
+        <a class="cobtn" href="${esc(safeUrl(claimHref(o.id)))}">Claim this page</a>
       </section>`;
   const rail=`<aside class="corail">
     <section><h2>Links</h2>
