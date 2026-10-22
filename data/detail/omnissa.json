@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "The link between device performance & employee productivity",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Driving EUC adoption: A step-by-step guide to success",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "The device fleet is a budget strategy, not a perk",
    "kind": "press",
@@ -62,15 +62,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/switching-from-citrix-to-horizon/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "One platform for virtual and physical desktop management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-extending-uem-to-virtual-desktops/"
   },
   {
    "date": "2026-10-08",
@@ -107,6 +98,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-trending-in-security-at-omnissa/"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "card-date",
+   "first_seen": "2026-10-21",
+   "headline": "One platform for virtual and physical desktop management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-amer-2026-extending-uem-to-virtual-desktops/"
   }
  ]
 }

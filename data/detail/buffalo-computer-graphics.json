@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Why Modern Emergency Preparedness Depends on Tabletop Exercise Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/tabletop-exercise-software-emergency-preparedness"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/emergency-management-software-dlan"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "What Is an Incident Management System?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/incident-management-system-capabilities"
   }
  ]
 }

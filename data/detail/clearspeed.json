@@ -1,22 +1,112 @@
 {
  "news": [
   {
-   "date": "2026-03-13",
+   "date": "2026-10-01",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Fox Business: Marine veteran turns Iraq War lessons into fraud-fighting tech",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed Named to CB Insights Insurtech 50",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.clearspeed.com/blog/clearspeed-fox-business"
+   "url": "https://www.clearspeed.com/news/cbinsights"
   },
   {
-   "date": "2025-06-26",
+   "date": "2026-09-18",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Axios Pro: Risk-assessment startup Clearspeed raises $60M Series D",
-   "kind": "funding",
-   "kind_rule": "raises $60M Series D",
-   "url": "https://www.clearspeed.com/blog/risk-assessment-startup-clearspeed-raises-60m"
+   "first_seen": "2026-10-22",
+   "headline": "Insurance Fraud Costs $45 Billion per Year, and Honest Policyholders Often Pick Up the Tab",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/insurify"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "New Research Examines Insurance's Verification Gap Amid Rapid AI Adoption",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/speedoftrust"
+  },
+  {
+   "date": "2026-09-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed Highlights AI-Driven Verification Concerns in Insurance",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/insurance-nerds-"
+  },
+  {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed's Alex Martin on Insurance Nerds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/insurance-nerds-profiles-in-risk"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "What I Wish I Knew While Leading Insurance Carriers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/carrier-management"
+  },
+  {
+   "date": "2026-08-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Could voice-based risk assessments be the answer?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/claims-media"
+  },
+  {
+   "date": "2026-08-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How Gadget Insurers Can Welcome Gen Z Without Welcoming Fraud",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/insuranceedge"
+  },
+  {
+   "date": "2026-08-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "New Analysis Estimates Lower Trust and Innacurate Information Cost U.S. Personal Lines Insurance $45 Billion Annually",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/execanalysis"
+  },
+  {
+   "date": "2026-07-09",
+   "date_source": "card-date",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed Appoints Laurie Babinski as General Counsel",
+   "kind": "leadership",
+   "kind_rule": "Appoints",
+   "url": "https://www.clearspeed.com/news/clearspeed-appoints-laurie-babinski-as-general-counsel"
+  },
+  {
+   "date": "2026-06-13",
+   "date_source": "card-date",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed's Alex Martin on NewsNation Morning in America",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/news-nation-clearspeed"
+  },
+  {
+   "date": "2026-06-13",
+   "date_source": "card-date",
+   "first_seen": "2026-10-22",
+   "headline": "Clearspeed advisor Don Blersch in The Hill",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/news/the-hill-fraud-prevention-clearspeed"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Beyond Electronic Signatures: Why Faster Laboratory Approvals Require More Than a Digital Signature",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/beyond-electronic-signatures"
+  },
+  {
    "date": "2026-10-11",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -19,13 +28,76 @@
    "url": "https://www.labware.com/blog/navigating-the-data-crossroads-building-the-connected-laboratory?hsLang=en"
   },
   {
-   "date": "2026-08-21",
-   "date_source": "index-text",
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "LabWare Launches LabWare WATER, a Modern Compliance Solution for Municipal Water Utilities",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.labware.com/blog/labware-launches-labware-water"
+  },
+  {
+   "date": "2026-09-05",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "LabWare 2026 Asia Pacific CEC: Where Labs, Technology & People Connect",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.labware.com/blog/apcec26"
+  },
+  {
+   "date": "2026-07-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How Does a LIMS Work?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/how-does-a-lims-work"
+  },
+  {
+   "date": "2026-07-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "LIS vs LIMS: What's the Difference and Which Does Your Lab Need?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/lis-vs-lims"
+  },
+  {
+   "date": "2026-05-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "LabWare\u2019s 2026 North America Customer Education Conference: Reconnecting in Palm Springs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/cec26na"
+  },
+  {
+   "date": "2026-04-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "LabWare and Phizzle Advance Connected Cleanroom Lab Integration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/labware-phizzle-cleanroom-instrument-data-integration"
+  },
+  {
+   "date": "2026-01-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Thank You for Making LabWare\u2019s 2025 Customer Education Conferences a Global Success!",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/cec-2025-around-the-world"
+  },
+  {
+   "date": "2025-12-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Practical eQMS + LIMS: CAPA, Investigations, Training, and Document Control in One System",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.labware.com/blog/practical-eqms"
   }
  ]
 }

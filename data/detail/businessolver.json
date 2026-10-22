@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Businessolver named the highest-ranked benefits administration provider in Sapient Insights Group\u2019s 2026 HR Systems Survey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://businessolver.com/news/businessolver-highest-ranked-benefits-administration-provider-sapient-insights-groups-2026-hr-systems-survey/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "The AI efficiency trap",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Benefits literacy isn\u2019t enough: Turning understanding into action",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Businessolver named a Leader in ISG Provider Lens 2026 for the third consecutive year",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "All in for annual enrollment: How we\u2019re preparing for the moment that matters most",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Employees don\u2019t fear AI. They\u2019re afraid of being left behind.",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-30",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "A C-suite divided: Does empathy really matter?",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-29",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "New Data Finds Executives Focused on Cutting Jobs for AI Efficiency Are Half as Likely to Invest in AI Upskilling",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "The best enrollment season is the one nobody talks about",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Less than half of employees say they\u2019re trained up on AI. Is workforce readiness the missing metric in AI adoption?",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-03",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Understanding the benefits risks facing frontline and non-desk employees",
    "kind": "press",
    "kind_rule": null,
    "url": "https://businessolver.com/blog/understanding-benefits-risks-facing-frontline-and-non-desk-employees/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Half of all employees say they\u2019ve been left to figure out AI on their own",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://businessolver.com/blog/half-of-all-employees-say-theyve-been-left-to-figure-out-ai-on-their-own/"
   }
  ]
 }

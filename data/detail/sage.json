@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why assisted living and skilled nursing need separate finance scorecards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/assisted-living-skilled-nursing-separate-finance-scorecards/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Dental group month-end close: replacing the consolidation spreadsheet",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/accounts-payable-reconciliation/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Deferred tax liability: A practical guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/what-is-a-deferred-tax-liability/"
   }
  ]
 }

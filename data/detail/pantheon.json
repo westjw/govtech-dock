@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How Pantheon\u2019s Layered Security Response Helps Reduce Risk During Critical PHP Vulnerabilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/pantheon-response-during-critical-php-vulnerabilities"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -46,6 +55,15 @@
    "url": "https://pantheon.io/blog/introducing-pantheon-mcp-server"
   },
   {
+   "date": "2026-10-09",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "The Hidden Costs of Neglect: Why an Outdated Website Is a Major Business Risk",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://pantheon.io/blog/hidden-costs-neglect-why-outdated-website-major-business-risk"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "time",
    "first_seen": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://pantheon.io/blog/why-scam-anxiety-makes-site-performance-trust-conversion-issue"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "The Way We Run Websites at Scale Is Broken. What Comes Next?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/introducing-agentic-fleet-management"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "The AI Exploitation Era: Why Legacy WordPress Hosting Is No Longer Enough",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://pantheon.io/blog/ai-exploitation-era-why-legacy-wordpress-hosting-no-longer-enough"
   }
  ]
 }

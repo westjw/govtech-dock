@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Top Business Intelligence Tools for Venue and Event Teams",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/top-business-intelligence-tools"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-20",
+   "headline": "Event Performance Tracking: How to Measure What Your Events Actually Deliver",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/event-performance-tracking"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The Event Lifecycle: A Stage-by-Stage Guide From Idea to Debrief",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/event-lifecycle"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -11,25 +38,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-20",
-   "headline": "Top Business Intelligence Tools for Venue and Event Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/top-business-intelligence-tools"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "near-h1",
-   "first_seen": "2026-10-20",
-   "headline": "Event Performance Tracking: How to Measure What Your Events Actually Deliver",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/event-performance-tracking"
-  },
-  {
-   "date": "2026-10-20",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Space Utilization Analytics: Managing Venue Space as Perishable Inventory",
    "kind": "press",
@@ -38,12 +47,30 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "near-h1",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Event Management Accounting Software: What It Does and How to Choose",
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/event-management-accounting-software"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Ready to Electrify Events at Your Venue?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/community-event-planning"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Event Revenue Tracking: How to See Every Dollar Your Events Earn",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/event-revenue-tracking"
   },
   {
    "date": "2026-10-05",
@@ -58,7 +85,7 @@
    "date": "2026-09-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
-   "headline": "Ready to Electrify Events at Your Venue?",
+   "headline": "Employee Engagement Events: A Practical Guide to Planning Those That Work",
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/employee-engagement-events"
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/ai-integrations-with-event-tools"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-10",
-   "headline": "AI-Based Event Analytics Tools: How AI Is Changing Event Reporting",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/ai-based-event-analytics-tools"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-10",
-   "headline": "event management software features",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/10-features-to-look-for-in-event-management-software"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-10",
-   "headline": "3: Consider Payment and Automation Requirements",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/everything-you-need-to-know-about-event-crm"
   }
  ]
 }

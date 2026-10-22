@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "U.S. Cyber Command selects Leidos for full-spectrum cyber operations",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://leidos.com/insights/us-cyber-command-selects-leidos-full-spectrum-cyber-operations"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "launches",
    "url": "https://leidos.com/insights/leidos-launches-agentic-ai-platform-speed-response-cyber-threats"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Why legacy pathology archives matter for rare-disease research",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://leidos.com/insights/why-legacy-pathology-archives-matter-rare-disease-research"
   }
  ]
 }

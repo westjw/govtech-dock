@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How Does a Visitor Check-In System Improve School Security?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bib.com/blog/how-does-a-visitor-check-in-system-improve-school-security"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bib.com/blog/pre-employment-drug-testing-what-employers-need-to-know"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "What Is a Global Watchlist Search in a Background Check?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bib.com/blog/what-is-a-global-watchlist-search-in-a-background-check"
   }
  ],
  "profile": {

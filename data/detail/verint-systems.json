@@ -1,13 +1,94 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Beyond Recording: Turning Compliance Data into Conduct Risk Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/compliance-data-conduct-risk-intelligence/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Data, Not Opinions: How WFM Leaders Earn a Seat at the Table",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/workforce-managers-seat-at-the-table/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "AI Is Making Contact Center Agents Better \u2014 Now Quality Programs Need to Catch Up",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/ai-call-center-coaching-agent-performance/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "5 Ways AI Agent Assist Tools Make Customer Service Reps\u2019 Jobs Easier",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/ai-agent-assist-tools-customer-service-reps/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The 5 Cs of a Successful Automated QA Program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/blog/automated-quality-assurance-5-cs/"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Verint Recognized as an Exemplary Provider in Four 2026 ISG Buyers Guides\u2122 for Contact Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/resources/isg-buyers-guide-for-contact-centers/"
+  },
+  {
+   "date": "2026-09-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Escaping Pilot Purgatory: A Use Case Road Map for Winning the AI ROI Battle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/resources/idc-ai-use-case-road-map/"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why Tomorrow\u2019s Risk Function Won\u2019t Look Like Today\u2019s: The Future of Non-Financial Risk & Controls Across the 3 Lines",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/resources/xlod-2026-post-event-report/"
+  },
+  {
    "date": "2026-09-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Why CX Operations and the Contact Center are the Place for Your Company\u2019s AI Investment",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verint.com/blog/why-ai-projects-fail-contact-center/"
+  },
+  {
+   "date": "2026-08-31",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "You\u2019ve Struck Data Oil \u2013 Tap into the Era of AI-Driven CX",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verint.com/resources/you-have-struck-data-oil/"
   },
   {
    "date": "2026-08-17",
@@ -20,30 +101,12 @@
   },
   {
    "date": "2026-08-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "Balancing Contact Center Chaos with Real-Time WFM",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verint.com/blog/balance-contact-center-cost-service-real-time-wfm/"
-  },
-  {
-   "date": "2026-04-14",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Introducing The State of Agent Experience 2026 Report",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.verint.com/blog/state-of-agent-experience-2026-ai-in-contact-centers/"
-  },
-  {
-   "date": "2025-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Improve Contact Center Agent Productivity Now",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.verint.com/resources/improving-agent-productivity/"
   }
  ]
 }

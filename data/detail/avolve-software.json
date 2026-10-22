@@ -1,6 +1,78 @@
 {
  "news": [
   {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Turning Plans Into Places",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/turning-plans-into-places-breaking-through-the-complexity-that-stands-between-plans-and-progress"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Turning Plans into Places: A Conversation with Avolve CEO Becky Tamashasky",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/turning-plans-into-places-a-conversation-with-avolve-ceo-becky-tamashasky"
+  },
+  {
+   "date": "2026-09-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "It\u2019s Our People Who Make Us: Josh Csapo",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/its-our-people-who-make-us-josh-csapo"
+  },
+  {
+   "date": "2026-09-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "What Actually Makes AI Useful in Government?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/what-actually-makes-ai-useful-in-government"
+  },
+  {
+   "date": "2026-06-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "It\u2019s Our People Who Make Us: From Customer to Customer Success Manager",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/its-our-people-who-make-us-from-customer-to-customer-success-manager"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Avolve Inspire 2026: Elevating Plan Review with AI and Collaboration",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/avolve-inspire-2026-elevating-plan-review-with-ai-and-collaboration"
+  },
+  {
+   "date": "2026-06-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Modernizing Permit Intake for the Accela Citizen Portal with GovPath\u2019s GWiz and Avolve\u2019s DigEplan",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/modernizing-permit-intake-for-the-accela-citizen-portal-with-govpaths-gwiz-and-avolves-digeplan"
+  },
+  {
+   "date": "2026-05-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How AI Reduces Plan Review Delays in Local Government",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://blog.avolvesoftware.com/blog/how-ai-reduces-plan-review-delays-in-local-government"
+  },
+  {
    "date": "2026-04-23",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -35,78 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://blog.avolvesoftware.com/blog/why-efficient-plan-review-is-the-secret-weapon-to-maximizing-your-citys-permitting-revenue"
-  },
-  {
-   "date": "2025-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "technology to improve service delivery, disaster response, and urban planning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/why-gis-integration-is-fundamental-to-modern-plan-review"
-  },
-  {
-   "date": "2025-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "plan review solves this",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/how-ai-powered-plan-review-helps-local-government-do-more-with-less"
-  },
-  {
-   "date": "2025-06-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "inefficient plan review processes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/avoid-the-negative-media-of-inefficient-permitting-processes"
-  },
-  {
-   "date": "2025-06-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "purpose-built electronic plan review solution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/four-new-ways-next-gen-plan-review-accelerates-community-development"
-  },
-  {
-   "date": "2025-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "How to Utilize Government Services that Impact How Citizens View You",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/how-to-utilize-government-services-that-impact-how-citizens-view-you"
-  },
-  {
-   "date": "2025-05-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "future of plan review",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/building-future-proof-seamless-permitting-integration"
-  },
-  {
-   "date": "2025-03-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Three Tips for Plan Review in 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/three-tips-for-plan-review-in-2025"
-  },
-  {
-   "date": "2025-02-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "streamlining the plan review process",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://blog.avolvesoftware.com/blog/modernizing-government-development-plan-reviews"
   }
  ],
  "profile": {

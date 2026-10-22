@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Wired to Know: 10 Highlights from the Explorance Europe Summit 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://explorance.com/blog/wired-to-know-10-highlights-from-the-explorance-europe-summit-2026"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -46,7 +55,7 @@
    "url": "https://explorance.com/news/transforming-manual-course-evaluations-at-prism-career-institute-with-explorance-blue"
   },
   {
-   "date": "2026-09-25",
+   "date": "2026-09-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Learning Measurement and Skills",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://explorance.com/blog/explorance-metrics-that-matter-98-built-for-simpler-more-flexible-workflows"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Training the University in Student Voice: Findings from the UK Sector Audit",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://explorance.com/blog/training-university-student-voice"
   }
  ],
  "profile": {

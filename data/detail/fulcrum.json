@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How the Fulcrum and Slalom partnership brings AI to utility field operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/blog/fulcrum-slalom-partnership/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Fulcrum and Slalom Bring AI Transformation to Utility Field Operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-slalom-partnership/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -37,8 +55,8 @@
    "url": "https://www.fulcrumapp.com/blog/fulcrum-and-overstory-partnership/"
   },
   {
-   "date": "2026-09-15",
-   "date_source": "index-text",
+   "date": "2026-09-29",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Overstory and Fulcrum Partner to Deliver Closed-Loop Risk Reduction for Utilities",
    "kind": "press",
@@ -55,8 +73,8 @@
    "url": "https://www.fulcrumapp.com/blog/fulcrum-mcp-connector-ai-toolkit/"
   },
   {
-   "date": "2026-09-02",
-   "date_source": "index-text",
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Fulcrum Announces MCP & AI Toolkit That Let Field Teams Create Fully-Featured, End-to-End Digital Workflows Through AI",
    "kind": "press",
@@ -73,6 +91,15 @@
    "url": "https://www.fulcrumapp.com/blog/woolpert-and-fulcrum-partnership-for-vegetation-risk-management/"
   },
   {
+   "date": "2026-09-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-09-05",
+   "headline": "Fulcrum and Woolpert Connect Utility Vegetation Risk Data Straight to the Crews Who Act on It",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.fulcrumapp.com/newsroom/fulcrum-woolpert-partnership/"
+  },
+  {
    "date": "2026-08-31",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.fulcrumapp.com/blog/wildnote-teams-build-the-tool-your-field-team-needs/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Stormwater compliance starts with better field data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/stormwater-compliance-starts-with-better-field-data/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What water utilities need to document storm damage for FEMA",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/what-water-utilities-need-to-document-storm-damage-for-fema/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Lead service line inventory and LCRR compliance: what utilities got right (and wrong) after the 2024 deadline",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.fulcrumapp.com/blog/lead-service-line-inventory-and-lcrr-compliance/"
   }
  ],
  "profile": {

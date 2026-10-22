@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Beyond Resume Builders: How AI Is Changing the Entire Student Career Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://writesea.com/blog/ai-student-career-journey/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://writesea.com/blog/the-future-of-ai-in-career-services-what-universities-should-prepare-for-in-2027/"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What High-Performing Career Centers Do Differently",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://writesea.com/blog/what-high-performing-career-centers-do-differently/"
   }
  ]
 }

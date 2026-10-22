@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "We\u2019re exhibiting: K-Geo Festa",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.vexcel-imaging.com/news/were-exhibiting-k-geo-festa/"
+  },
+  {
    "date": "2026-10-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.vexcel-imaging.com/news/tech-talk-ep-4-ultramap-ultracam-merlin/"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "SPASA advances aerial imaging capabilities with Osprey 4.2",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.vexcel-imaging.com/news/spasa-ultracam-osprey-4-2/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The 18 CIS Controls: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/18-cis-controls/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.saltycloud.com/blog/cis-controls/"
-  },
-  {
-   "date": "2026-08-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Criminal Justice Information Services (CJIS): Complete Guide [2026]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/what-is-cjis/"
   }
  ],
  "profile": {

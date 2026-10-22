@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "A Survivor Shouldn\u2019t Have to Tell Their Story Five Times",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://caseworthy.com/articles/survivors-shouldnt-tell-story-five-times/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://caseworthy.com/news/medisked-a-caseworthy-company-achieves-hitrust-implemented-1-year-i1-certification-to-manage-data-protection-and-mitigate-cybersecurity-threats/"
-  },
-  {
-   "date": "2023-01-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "CaseWorthy Acquires Leading Health and Humans Services Software Company MediSked",
-   "kind": "funding",
-   "kind_rule": "Acquires",
-   "url": "https://caseworthy.com/news/caseworthy-acquires-leading-health-and-humans-services-software-company-medisked/"
   }
  ],
  "profile": {

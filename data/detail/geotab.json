@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "A 95% location rate in 2026: what Geotab brings to rental, leasing and mobility fleets",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.geotab.com/blog/lrm-locationrate/"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "index-text",
    "first_seen": "2026-10-16",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Top seven best fleet fuel cards: How to choose the right one for your business?",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Why the OEM versus device-level telematics debate misses the point for mixed-fleet operators",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.geotab.com/blog/supply-chain-in-motion/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "6 benefits of an open, AI-powered fleet data platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.geotab.com/blog/6-benefits-of-open-platform/"
   }
  ],
  "profile": {

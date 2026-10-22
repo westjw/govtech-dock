@@ -2,12 +2,21 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Your Digital Footprint Isn\u2019t Just Yours",
    "kind": "press",
    "kind_rule": null,
    "url": "https://vanishid.com/resources/blog/your-digital-footprint-isnt-just-yours/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "What Is Digital Risk Protection? Definition, How It Works, and Why It\u2019s Expanding to Protect People",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://vanishid.com/resources/blog/what-is-digital-risk-protection/"
   },
   {
    "date": "2026-10-15",
@@ -29,16 +38,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What Is Digital Risk Protection? Definition, How It Works, and Why It\u2019s Expanding to Protect People",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://vanishid.com/resources/blog/what-is-digital-risk-protection/"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Family Office Security and External Identity Security: Protecting High-Net-Worth Households",
    "kind": "press",

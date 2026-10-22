@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Zero Trust for Operational Technology",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "When Cyberattacks Reach the Physical World: Protecting Legacy Infrastructure Without Replacing It",
    "kind": "press",
@@ -92,7 +92,7 @@
   },
   {
    "date": "2026-08-18",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Reboot, Reconnect, Resume: A Faster Path to Business Continuity Amidst an Incident",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2026-07-01",
-   "date_source": "og:published",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "A New Way to Deliver Windows Apps to IGEL OS with IMH Published Apps",
    "kind": "press",

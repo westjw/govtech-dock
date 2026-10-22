@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "GNSS disruption in power utilities: How resilient timing keeps the grid synchronized",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.oscilloquartz.com/en/newsroom/blog/20261022-gnss-disruption-in-power-utilities-how-resilient-timing-keeps-the-grid-synchronized"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "time",
    "first_seen": "2026-10-21",
@@ -55,6 +64,15 @@
    "url": "https://www.oscilloquartz.com/en/newsroom/press-releases/20260819-oscilloquartz-expands-us-aerospace-defense-and-government-presence-to-address-rising-demand"
   },
   {
+   "date": "2026-08-13",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "Where does official time come from?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.oscilloquartz.com/en/newsroom/blog/20260813-where-does-official-time-come-from"
+  },
+  {
    "date": "2026-08-10",
    "date_source": "time",
    "first_seen": "2026-10-21",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-07-30",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-10-21",
    "headline": "Oscilloquartz wins contract with quantum computing firm to provide optical cesium solutions",
    "kind": "contract",
    "kind_rule": "wins contract",
    "url": "https://www.oscilloquartz.com/en/newsroom/press-releases/20260730-oscilloquartz-wins-contract-with-quantum-computing-firm-to-provide-optical-cesium-solutions"
-  },
-  {
-   "date": "2026-07-23",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "When timing fails, networks fail: Why operators must treat timing as critical infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.oscilloquartz.com/en/newsroom/blog/20260723-when-timing-fails-networks-fail-why-operators-must-treat-timing-as-critical-infrastructure"
-  },
-  {
-   "date": "2026-06-01",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "How ruggedSync\u2122 brings precision timing to harsh environments",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.oscilloquartz.com/en/newsroom/blog/20260601-how-ruggedsync-brings-precision-timing-to-harsh-environments"
   }
  ]
 }

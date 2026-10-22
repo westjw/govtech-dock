@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "New donor onboarding kit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bonterratech.com/blog/new-donor-onboarding-kit"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "What enterprise CSR leaders are getting wrong when they evaluate platforms",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bonterratech.com/blog/how-ai-is-helping-csr-teams-cut-administrative-burden"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "What\u2019s holding your fundraising back?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bonterratech.com/blog/whats-holding-your-fundraising-back"
   }
  ],
  "profile": {

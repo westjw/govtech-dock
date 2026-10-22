@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Corti Advances Execution and Control Layer for Complex Agentic AI Systems in Healthcare",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Dedalus And Corti Usher In The Agentic EHR Era Across Europe",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.corti.ai/newsroom/dedalus-and-corti-usher-in-the-agentic-ehr-era-across-europe"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Corti and Diktamen Partner to Bring AI-Powered Ambient Voice Technology to NHS Trusts, Private Hospitals, and GP Practices",
    "kind": "press",
@@ -10,8 +28,17 @@
    "url": "https://www.corti.ai/newsroom/corti-and-diktamen-partner-to-bring-ai-powered-ambient-voice-technology-to-nhs-trusts-private-hospitals-and-gp-practices"
   },
   {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Symphony for Text Generation: Introducing a new evaluation benchmark for clinical note quality",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.corti.ai/blog/symphony-for-text-generation-benchmark-clinical-note-quality"
+  },
+  {
    "date": "2026-10-13",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Corti Introduces New Benchmark to Raise the Standard for Evaluating AI-Generated Clinical Notes",
    "kind": "product",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Redline Data and Corti Partner to Bring Clinical AI Across Germany",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-04-01",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Corti Ships Symphony for Medical Coding with up to 25% Accuracy Edge Over OpenAI and Anthropic",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.corti.ai/newsroom/corti-ships-symphony-for-medical-coding-accuracy-over-openai-anthropic"
-  },
-  {
-   "date": "2026-04-01",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Struck by a Duck: What Bizarre Billing Codes Reveal About How Countries Live - And Get Hurt",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/struck-by-a-duck-what-bizarre-billing-codes-reveal"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Corti Launches Agentic Infrastructure to Scale AI Deployment in Healthcare",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.corti.ai/newsroom/corti-launches-agentic-infrastructure-to-scale-ai-deployment-in-healthcare"
-  },
-  {
-   "date": "2025-12-09",
-   "date_source": "card-date",
-   "first_seen": "2026-09-05",
-   "headline": "Voice Technologies partners with Corti to deliver healthcare AI-enabled apps",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.corti.ai/newsroom/voice-technologies-partners-with-corti-to-deliver-healthcare-ai-enabled-apps"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2025-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Enhance Visibility and Control with Unified Asset Discovery See all your assets in one place",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/enhance-visibility-and-control-with-unified-asset-discovery/"
+  },
+  {
    "date": "2025-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -10,6 +19,24 @@
    "url": "https://efficientip.com/resources/2025-ema-radar-for-ddi-efficientip-named-value-leader/"
   },
   {
+   "date": "2025-07-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Forrester 2025 DNS Security Study Strengthen your network security with insights from the Forrester 2025 Study on DNS Security.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/forrester-2025-dns-security-report/"
+  },
+  {
+   "date": "2025-04-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "2025 EMA Hybrid Multi-cloud Report Make your cloud projects successful with insights from the 2025 EMA Hybrid Multi-cloud Report.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/2025-ema-hybrid-multi-cloud-report/"
+  },
+  {
    "date": "2024-04-25",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -17,6 +44,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/blog/ecosystem-for-boosting-netops-network-automation/"
+  },
+  {
+   "date": "2024-02-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "DDI Observability Center Overview Video This enterprise-grade cloud platform allows you to improve visibility, enhance operational efficiency, and optimize network performance effortlessly.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/efficientip-ddi-observability-center-overview/"
+  },
+  {
+   "date": "2023-10-03",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Gorilla Guide: 5 Steps for a Successful Network Automation Journey",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/gorilla-guide-5-steps-for-a-successful-network-automation-journey/"
   },
   {
    "date": "2023-06-23",
@@ -37,13 +82,31 @@
    "url": "https://efficientip.com/blog/idc-2023-network-automation-report-why-ddi-is-an-obvious-starting-point/"
   },
   {
-   "date": "2021-11-17",
+   "date": "2023-04-10",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "A Modern DDI Solution Enables Successful Partnerships Between NetOps and SecOps",
+   "first_seen": "2026-10-22",
+   "headline": "Network Source of Truth (NSOT) \u2013 Network Automation Insights Powered by Gartner",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://efficientip.com/blog/ddi-enables-netops-secops/"
+   "url": "https://efficientip.com/resources/network-source-of-truth-nsot-network-automation-insights-powered-by-gartner/"
+  },
+  {
+   "date": "2022-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "AmiViz inks a new partnership with EfficientIP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/amiviz-inks-a-new-partnership-with-efficientip/"
+  },
+  {
+   "date": "2022-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The strategic role of open APIs in Network Automation and Management ecosystems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/resources/tufin-integration/"
   }
  ]
 }

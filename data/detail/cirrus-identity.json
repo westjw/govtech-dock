@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "New Tenant Admins to Replace SP Admins",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cirrusidentity.com/blog/new-tenant-admins-to-replace-sp-admins"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cirrusidentity.com/blog/when-slate-credentials-arent-enough-the-hidden-iam-cost-of-applicant-access"
-  },
-  {
-   "date": "2024-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How to Register a Proxy SP as an R&S Entity with InCommon",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cirrusidentity.com/blog/how-to-register-a-proxy-sp-as-an-rs-entity-with-incommon"
   }
  ],
  "profile": {

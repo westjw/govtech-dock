@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Unboxing Phishing Kits: Huntress Examines 3 Real Kits",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/unboxing-phishing-kits"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "M365 Token Spray and Replay Campaign Compromises Business Email Accounts",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/token-replay-spray"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",

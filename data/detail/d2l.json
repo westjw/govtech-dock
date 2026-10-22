@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "D2L, WCET and Opened Culture Release Findings from Global Longitudinal Study on AI Governance in Higher Education",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/newsroom/d2l-wcet-and-opened-culture-release-findings-from-global-longitudinal-study-on-ai-governance-in-higher-education/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "D2L Signs First Strategic Vietnam Customer as Van Lang Education Group Adopts D2L Brightspace",
    "kind": "contract",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/importance-learning-communities-for-k-12-students/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "7 Tips for Increasing Student Engagement in Online Learning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/7-tips-for-increasing-student-engagement-in-online-courses/"
   }
  ],
  "profile": {

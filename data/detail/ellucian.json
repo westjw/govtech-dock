@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-16",
+   "date": "2026-10-22",
    "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "More Than a Portfolio: How Documenting My Journey Helped Me Find My Place",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/how-digital-portfolio-helped-me-see-my-growth"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "index-text",
    "first_seen": "2026-10-17",
    "headline": "Heroes of Higher Ed",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Shifting Mindsets: Turning Internal Roadblocks Into Academic Success",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/personalized-student-engagement-enrollment"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Enrollment, Recruiting and Admissions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/credit-mobility-turning-point"
   }
  ],
  "profile": {

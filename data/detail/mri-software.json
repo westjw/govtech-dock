@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "10 Best apartment management software platforms compared for 2026 (G2 shortlist)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/best-apartment-management-software-comparison/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "What is lease abstraction and why is it important?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-lease-abstraction/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/how-do-property-management-companies-operate-org-chart/"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The modern contract abstraction process: How AI turns leases into decision-ready data",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/what-is-the-contract-abstraction-process/"
   },
   {
    "date": "2026-10-14",
@@ -28,17 +55,44 @@
    "url": "https://www.mrisoftware.com/news/mri-software-named-a-leader-in-2026-idc-marketscape-for-worldwide-ai-enabled-lease-administration-applications/"
   },
   {
+   "date": "2026-10-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Where AI is actually making a difference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/where-ai-is-actually-making-a-difference/"
+  },
+  {
+   "date": "2026-10-12",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Artificial intelligence in contract lifecycle management: Why contract intelligence is becoming a business essential",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/integrating-ai-contract-lifecycle-management-contract-intelligence/"
+  },
+  {
+   "date": "2026-10-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Understanding AI contract review for lease-heavy real estate portfolios",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mrisoftware.com/blog/benefits-contract-review-automation-legal-efficiency/"
+  },
+  {
    "date": "2026-10-06",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
-   "headline": "Top Accounting Software for Real Estate Investors & Property Management in 2026",
+   "headline": "real estate accounting software",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/blog/best-accounting-software-for-real-estate-investors-property-management/"
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "JAR Adopts MRI Software\u2019s Agentic AI to Streamline Workflows and Support Resident Service",
    "kind": "contract",
@@ -53,60 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mrisoftware.com/resources/mri-onlocation-us-monthly-commentary-august-2026/"
-  },
-  {
-   "date": "2026-08-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "MRI Software Named to Inc. 5000 List of Fastest-Growing Private Companies for Fifth Time",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/news/mri-software-named-to-inc-5000-list-of-fastest-growing-private-companies-for-fifth-time/"
-  },
-  {
-   "date": "2026-08-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "MRI Software Appoints David Bowie as Chief Client Officer to Strengthen Global Client Experience",
-   "kind": "leadership",
-   "kind_rule": "as Chief",
-   "url": "https://www.mrisoftware.com/news/mri-software-appoints-david-bowie-as-chief-client-officer-to-strengthen-global-client-experience/"
-  },
-  {
-   "date": "2026-06-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "MRI Software Launches Agora Intelligence and Agora Orchestrator, Delivering AI-Powered Recommendations and Workflow Execution for Real Estate",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.mrisoftware.com/news/mri-software-launches-agora-intelligence-and-agora-orchestrator-delivering-ai-powered-recommendations-and-workflow-execution-for-real-estate/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What is centralization in property management and why it matters",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/blog/what-does-a-leasing-agent-do-duties-skills-responsibilities/"
-  },
-  {
-   "date": "2026-06-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "AI-powered real estate platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/resources/ai-for-real-estate/"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "MRI Software\u2019s MRI Agora Named Best Tech Innovation in Commercial Real Estate",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mrisoftware.com/news/mri-softwares-mri-agora-named-best-tech-innovation-in-commercial-real-estate/"
   }
  ]
 }

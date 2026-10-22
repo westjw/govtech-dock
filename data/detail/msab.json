@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Q3 2026 Release Now Available",
+   "kind": "product",
+   "kind_rule": "Now Available",
+   "url": "https://www.msab.com/updates/q3-2026-major-release-is-now-available-2/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.msab.com/de/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
-  },
-  {
-   "date": "2026-05-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Invitation to MSAB\u2019s Capital Markets Day on May 7th, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/ja/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
   }
  ],
  "profile": {

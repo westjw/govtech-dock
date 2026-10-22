@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "What does Gartner\u00ae Magic Quadrant\u2122 2026 reveal about CX?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/what-gartner-magic-quadrant-2026-reveal-about-cx/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -17,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/ai-customer-service/"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "Talkdesk unifies Villeroy & Boch\u2019s global customer service operations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/news-and-press/press-releases/villeroy-boch/"
   },
   {
    "date": "2026-10-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/blog/talkdesk-for-stores-connect-retail-customer-journey/"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "time",
-   "first_seen": "2026-10-21",
-   "headline": "Talkdesk brings commerce orchestration to the retail floor",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/news-and-press/press-releases/talkdesk-for-stores/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Customer experience management software: An evaluation guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/customer-experience-management-software/"
   }
  ]
 }

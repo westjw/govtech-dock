@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "When attackers can forge trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/attackers-forge-trust-targeting-the-foundations-of-identity-trust"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",

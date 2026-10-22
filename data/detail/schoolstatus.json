@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Reaching Non-English-Speaking Families Means More Than Translating a Letter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.schoolstatus.com/blog/reaching-non-english-speaking-families"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "SchoolStatus Attend Wins 2026 Tech & Learning Award of Excellence",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.schoolstatus.com/blog/new-book-for-improving-chronic-absenteeism"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "How Family Segmentation Turns Attendance Data Into Action",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.schoolstatus.com/blog/family-segmentation-attendance"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-06-23",
+   "date_source": "near-h1",
+   "first_seen": "2026-10-22",
+   "headline": "CoreView launches Control for SharePoint to address AI-driven access risks",
+   "kind": "product",
+   "kind_rule": "launches",
+   "url": "https://www.coreview.com/news/coreview-launches-control-for-sharepoint"
+  },
+  {
    "date": "2026-06-09",
    "date_source": "index-text",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.coreview.com/news/microsoft-365-sicherheit-kuppingercole-bescheinigt-coreview-herausragende-tiefe"
-  },
-  {
-   "date": "2025-11-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Microsoft-365-Sicherheit: Jeder zweite IT-Verantwortliche liegt falsch",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.coreview.com/news/microsoft-365-sicherheit-jeder-zweite-it-verantwortliche-liegt-falsch"
   }
  ]
 }

@@ -1,31 +1,112 @@
 {
  "news": [
   {
-   "date": "2024-11-07",
+   "date": "2026-10-14",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Automation in action: Key lessons from Minnesota on auto-renewal enhancements",
+   "first_seen": "2026-10-22",
+   "headline": "How C\u00faram is using AI to strengthen open-source software security analysis",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.curaminnovations.com/blog/automation-lessons-from-minnesota-autorenewal-enhancements"
+   "url": "https://www.curaminnovations.com/blog/oss-vulnerability-analysis-ai"
   },
   {
-   "date": "2024-09-23",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "Merative names Jeff Reid to lead C\u00faram",
-   "kind": "leadership",
-   "kind_rule": "names",
-   "url": "https://www.curaminnovations.com/blog/jeff-reid-to-lead-curam"
-  },
-  {
-   "date": "2024-04-08",
+   "date": "2026-10-07",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Exploring five ingredients for an award-winning benefits system",
+   "first_seen": "2026-10-22",
+   "headline": "Four lessons from co-creating with caseworkers: how to drive meaningful modernization in health and human services",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.curaminnovations.com/blog/award-winning-benefits-system-in-scotland"
+   "url": "https://www.curaminnovations.com/blog/4-lessons-from-co-creating-with-caseworkers"
+  },
+  {
+   "date": "2026-09-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Introducing C\u00faram Catalyst: purpose-built artificial intelligence for health and human services",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.curaminnovations.com/blog/introducing-curam-catalyst-ai"
+  },
+  {
+   "date": "2026-08-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Eight months after TB14: the real test is execution",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/eight-months-after-tb14"
+  },
+  {
+   "date": "2026-07-27",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Where to start with AI in health and human services",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/where-to-start-with-ai"
+  },
+  {
+   "date": "2026-06-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "CCWIS at an inflection point: what the latest ASPE findings mean for states",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/ccwis-at-an-inflection-point"
+  },
+  {
+   "date": "2026-05-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "A human-first vision for AI in child welfare",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/a-human-first-vision-for-ai-in-child-welfare"
+  },
+  {
+   "date": "2026-03-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Social Work Month: honoring the workforce at the heart of child welfare",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/social-work-month-honoring-the-workforce-at-the-heart-of-child-welfare"
+  },
+  {
+   "date": "2026-01-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why the lowest bid is often the highest risk in CCWIS procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/why-the-lowest-bid-is-often-the-highest-risk-in-ccwis-procurement"
+  },
+  {
+   "date": "2026-01-05",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Continuing 2025 momentum into the new year",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/continuing-2025-momentum-into-the-new-year"
+  },
+  {
+   "date": "2025-12-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Navigating the holidays in child welfare: building support and creating brighter outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/navigating-the-holidays-in-child-welfare-building-support-and-creating-brighter-outcomes"
+  },
+  {
+   "date": "2025-12-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Modernizing child welfare systems: policy, partnership, and technology",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.curaminnovations.com/blog/modernizing-child-welfare-systems-policy-partnership-and-technology"
   }
  ]
 }

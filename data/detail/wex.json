@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "4 considerations when choosing employee benefits for the first time",
    "kind": "press",
@@ -62,6 +62,24 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/dos-and-donts-of-open-enrollment-tips/"
+  },
+  {
+   "date": "2025-06-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Choose the right fuel card",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/how-to-choose-the-right-fuel-card-for-your-business/"
+  },
+  {
+   "date": "2024-04-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Visit our fintech resource hub which will provide all you need to know about business payments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/payments101/"
   }
  ]
 }

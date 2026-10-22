@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Cybersecurity Awareness Month: A good time to take stock of your security posture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/cybersecurity-awareness-month-a-good-time-to-take-stock-of-your-security-posture/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How can home health certification help you deepen your expertise?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://wellsky.com/blog/how-can-home-health-certification-help-you-deepen-your-expertise/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -55,13 +73,13 @@
    "url": "https://wellsky.com/resources/hospice/"
   },
   {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-21",
-   "headline": "What\u2019s changing in the fiscal year FY2027 ICD-10-CM code update?",
+   "date": "2026-10-02",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "What changes are included in the fiscal year 2027 hospice final rule?",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://wellsky.com/blog/whats-changing-in-the-fiscal-year-fy2027-icd-10-cm-code-update/"
+   "url": "https://wellsky.com/blog/what-changes-are-included-in-the-fiscal-year-2027-hospice-final-rule/"
   },
   {
    "date": "2026-09-29",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://wellsky.com/blog/working-better-together-lessons-from-the-health-evolution-summit/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "CMS's CY 2027 home health proposed rule: What DME and HME providers need to know",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/resources/webinars/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-09",
-   "headline": "New telehealth regulations for behavioral health: 3 opportunities for providers in 2025",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://wellsky.com/blog/new-telehealth-regulations-for-behavioral-health-3-opportunities-for-providers-in-2025/"
   }
  ]
 }

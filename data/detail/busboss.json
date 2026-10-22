@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Best School Bus Routing and Safety Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/best-school-bus-routing-and-safety-software"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/allocating-shared-aide-costs-defensibly"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What to Do When a School Bus Driver Calls Off",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/what-to-do-when-a-school-bus-driver-calls-off-1"
   }
  ],
  "profile": {

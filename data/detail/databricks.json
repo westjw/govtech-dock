@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Databricks AI Runtime and NVIDIA make it easier to customize open models with enterprise data",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "AI Runtime is Generally Available",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Deploy RFD4-Proteina on Databricks",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "MemCurrent: Designing Persistent Memory for Production Agents",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "Introducing Agent Memory on Databricks",
    "kind": "product",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "How Hamlet uses Databricks Lakebase Postgres to test changes against production data",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-21",
    "headline": "How HP Is Building an AI-Ready CDP with Databricks CustomerLake",
    "kind": "press",

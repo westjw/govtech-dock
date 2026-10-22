@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Critical PHP vulnerabilities: What government needs to know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://granicus.com/blog/critical-php-vulnerabilities-what-government-needs-to-know/"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://granicus.com/blog/ai-in-public-services-how-to-choose-the-right-ai-for-the-right-job/"
-  },
-  {
-   "date": "2026-08-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Belmont turned an AI launch into a community experience",
-   "kind": "product",
-   "kind_rule": "launch",
-   "url": "https://granicus.com/blog/belmont-turned-ai-launch-into-community-experience/"
   }
  ],
  "profile": {

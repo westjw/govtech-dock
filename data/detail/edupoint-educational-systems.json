@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Charlottesville City Schools (VA) Selects Synergy Education Platform to Replace PowerSchool SIS and Canvas LMS",
+   "kind": "contract",
+   "kind_rule": "Selects",
+   "url": "https://www.edupoint.com/Company/News/charlottesville-city-schools-va-selects-synergy-education-platform-to-replace-powerschool-sis-and-canvas-lms"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-07-17",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Gettysburg Area School District (PA) Selects Synergy Education Platform to Replace Skyward Qmlativ",
    "kind": "contract",
@@ -98,15 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.edupoint.com/Company/News/murfreesboro-city-schools-tn-selects-synergy-education-platform"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Big Beaver Falls Area School District Selects Synergy Education Platform",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.edupoint.com/Company/News/big-beaver-falls-area-school-district-selects-synergy-education-platform"
   }
  ],
  "profile": {

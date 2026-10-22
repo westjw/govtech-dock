@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why K-12 AP Teams Can\u2019t Catch Up on Invoices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.frontlineeducation.com/blog/why-k-12-ap-teams-cant-catch-up-on-invoices/"
+  },
+  {
    "date": "2026-10-21",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-21",
    "headline": "The Sub Shortage Got Better. So Why Doesn\u2019t It Feel Like It?",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Teacher Retention and Leadership Development Aren\u2019t Two Problems. They\u2019re One.",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Prepare for Flu Season: How School Nurses Can Stay Ahead",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "Your New Teachers Are Two Months In. Is Your Teacher Mentoring Program Working?",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "How Wauwatosa\u2019s CFO Turns Staffing Ratios Into Better Board Conversations",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "leadership",
    "kind_rule": "Hire",
    "url": "https://www.frontlineeducation.com/blog/the-hire-isnt-finished-when-the-candidate-says-yes/"
-  },
-  {
-   "date": "2026-07-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Frontline Tiers of Intensity Helps Districts Prepare for Texas\u2019s New Special Education Funding Model",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.frontlineeducation.com/blog/prepare-your-district-for-the-new-texas-special-education-funding-model/"
   }
  ],
  "profile": {

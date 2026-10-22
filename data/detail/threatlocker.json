@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "GoodPerson campaign aimed at users bypassing China\u2019s Great Firewall",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/goodperson-campaign-aimed-at-users-bypassing-chinas-great-firewall"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-21",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "ThreatLocker MDR team intercepts Chimera C2 ClickFix attack",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/senate-passes-healthcare-cybersecurity-bill-what-it-leaders-should-prepare"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "card-date",
-   "first_seen": "2026-10-21",
-   "headline": "Machine-speed attacks require machine-speed prevention and detection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/machine-speed-attacks-require-machine-speed-prevention-and-detection"
   }
  ]
 }
