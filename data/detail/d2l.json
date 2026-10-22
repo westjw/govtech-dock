@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-10-19",
+   "date": "2026-10-20",
    "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "10 Top Cornerstone OnDemand Competitors in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.d2l.com/blog/cornerstone-ondemand-competitors/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "index-text",
    "first_seen": "2026-10-20",
    "headline": "D2L Signs First Strategic Vietnam Customer as Van Lang Education Group Adopts D2L Brightspace",
    "kind": "contract",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-08",
    "headline": "D2L Named a Leader Across 11 G2 Fall 2026 Reports",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.d2l.com/blog/7-tips-for-increasing-student-engagement-in-online-courses/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "TMS vs LMS: How to Understand the Difference and Select the Right Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.d2l.com/blog/tms-vs-lms/"
   }
  ],
  "profile": {

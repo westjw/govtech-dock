@@ -1,0 +1,22 @@
+{
+ "news": [
+  {
+   "date": "2026-03-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Fox Business: Marine veteran turns Iraq War lessons into fraud-fighting tech",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.clearspeed.com/blog/clearspeed-fox-business"
+  },
+  {
+   "date": "2025-06-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Axios Pro: Risk-assessment startup Clearspeed raises $60M Series D",
+   "kind": "funding",
+   "kind_rule": "raises $60M Series D",
+   "url": "https://www.clearspeed.com/blog/risk-assessment-startup-clearspeed-raises-60m"
+  }
+ ]
+}

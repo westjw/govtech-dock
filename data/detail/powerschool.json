@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "PowerSchool MyPowerHub is Recognized with Tech & Learning\u2019s Award of Excellence: Back to School 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.powerschool.com/news/powerschool-mypowerhub-is-recognized-with-tech-learnings-award-of-excellence-back-to-school-2026/"
+  },
+  {
    "date": "2026-09-25",
    "date_source": "json-ld",
    "first_seen": "2026-09-28",
@@ -82,31 +91,22 @@
    "url": "https://www.powerschool.com/blog/naviance-product-news-summer-2026/"
   },
   {
-   "date": "2026-04-30",
+   "date": "2026-09-01",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "PowerSchool Honored as Gold Stevie\u00ae Award Winner in 2026 American Business Awards\u00ae",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.powerschool.com/news/powerschool-honored-as-gold-stevie-award-winner-in-2026-american-business-awards/"
-  },
-  {
-   "date": "2026-02-03",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "PowerSchool Releases 2026 K\u201312 EdTech Pulse",
+   "first_seen": "2026-10-22",
+   "headline": "PowerSchool Strengthens Global Privacy Posture with Independent Certifications, Validations, and Updated Global Privacy Statement",
    "kind": "product",
-   "kind_rule": "Releases",
-   "url": "https://www.powerschool.com/news/powerschool-releases-2026-k-12-edtech-pulse/"
+   "kind_rule": "Updated",
+   "url": "https://www.powerschool.com/news/powerschool-strengthens-global-privacy-posture-with-independent-certifications-validations-and-updated-global-privacy-statement/"
   },
   {
-   "date": "2025-11-12",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "PowerSchool Expands AI Capabilities with Multi-Language Support for Students and Teachers",
+   "date": "2026-07-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "PowerSchool CCLR (Naviance) is Recognized with Tech & Learning\u2019s Best of Show Award at ISTELive 2026",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.powerschool.com/news/powerschool-expands-ai-capabilities-with-multi-language-support-for-students-and-teachers/"
+   "url": "https://www.powerschool.com/news/powerschool-cclr-naviance-is-recognized-with-tech-learnings-best-of-show-award-at-istelive-2026/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "GeoViewer: The Complete Guide to Smarter Infrastructure Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.nobel-systems.com/post/geoviewer-the-complete-guide"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.nobel-systems.com/post/geoviewer-new-features"
-  },
-  {
-   "date": "2026-03-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-12",
-   "headline": "A Strategic Path Forward",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.nobel-systems.com/post/leak-registry-module"
   }
  ]
 }

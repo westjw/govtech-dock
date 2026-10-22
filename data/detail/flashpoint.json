@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "The Missing Layer in Vulnerability Prioritization: Full Visibility Into Your Attack Surface",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/the-missing-layer-in-vulnerability-prioritization-full-visibility-into-your-attack-surface/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/how-natural-language-search-powers-rapid-physical-security-intelligence/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Cybercrime at Machine Speed: Key Takeaways from Flashpoint\u2019s 2026 Midyear Threat Intelligence Briefing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/cybercrime-machine-speed-key-takeaways-flashpoints-2026-midyear-threat-intelligence/"
   }
  ],
  "profile": {

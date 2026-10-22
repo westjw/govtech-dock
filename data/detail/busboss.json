@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "What Makes Student Boarding Verification Hard to Sustain",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/what-makes-student-boarding-verification-hard-to-sustain"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/what-to-do-when-a-school-bus-driver-calls-off-1"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Real-Time Dispatch Data Sync for School Districts",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/real-time-dispatch-data-sync-for-school-districts"
   }
  ],
  "profile": {

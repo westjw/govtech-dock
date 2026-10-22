@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "PHP2Shell: two critical PHP flaws allow unauthenticated remote code execution.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/php2shell-responding-to-cve-2026-109618-and-cve-2026-109619"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "og:published",
+   "first_seen": "2026-10-22",
+   "headline": "Tanium Brings Enterprise-Grade Manageability to NVIDIA Local AI Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/press-releases/tanium-brings-enterprise-grade-manageability-to-nvidia-local-ai-infrastructure"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "AI Compute Just Became an Endpoint Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/blog/ai-compute-just-became-an-endpoint-problem"
+  },
+  {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "og:published",
    "first_seen": "2026-10-15",
    "headline": "Tanium Selected as Testing Partner for Microsoft's Codename MDASH",
    "kind": "contract",
@@ -11,7 +38,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Notice when a machine stops acting like itself: introducing Endpoint Drift",
    "kind": "product",
@@ -20,7 +47,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Hunt or be Hunted: Every service was unique, and that was the problem",
    "kind": "press",
@@ -38,7 +65,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "AI Is Accelerating Vulnerability Discovery. Tanium Helps You Keep Up.",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "card-date",
+   "date_source": "og:published",
    "first_seen": "2026-10-06",
    "headline": "Tanium Redefines Security Operations for the AI Era",
    "kind": "press",
@@ -65,7 +92,7 @@
   },
   {
    "date": "2026-09-25",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "AI is Accelerating Your Environment. Our Connector Keeps Up: The Next Evolution of the Service Graph Connector for Tanium & ServiceNow",
    "kind": "press",
@@ -74,39 +101,12 @@
   },
   {
    "date": "2026-09-21",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Hunter Wins: HuntIQ Tradecraft is your new hunt library",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/huntiq-tradecraft-hub-launch"
-  },
-  {
-   "date": "2026-09-21",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "The Mythos opportunity: Why AI-powered discovery is a welcome modernisation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/resources/mythos-opportunity-ebook"
-  },
-  {
-   "date": "2026-09-17",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Hunting Our Own Vulnerabilities First: Tanium\u2019s Frontier AI Security Commitment",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/frontier-ai"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Hunt or be Hunted: Hunting RunMRU for Credential Exposure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/runmru-credential-exposure-huntiq"
   }
  ],
  "profile": {

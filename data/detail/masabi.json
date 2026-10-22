@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "Saskatoon Transit Launches Account-Based Ticketing with New TGo Smart Cards, Powered by Masabi",
+   "kind": "contract",
+   "kind_rule": "Transit Launches",
+   "url": "https://www.masabi.com/news/saskatoon-transit-launches-account-based-ticketing-with-new-tgo-smart-cards-powered-by-masabi/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "time",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.masabi.com/resources/what-is-account-based-ticketing/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What is software as a service?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.masabi.com/resources/what-is-software-as-a-service/"
   }
  ],
  "profile": {

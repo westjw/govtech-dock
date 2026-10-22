@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "The Nurse Who Texted a Vital Sign to a Personal Phone",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.mitel.com/blog/the-nurse-who-texted-a-vital-sign-to-personal-phone"
+  },
+  {
    "date": "2026-09-30",
    "date_source": "time",
    "first_seen": "2026-10-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.mitel.com/blog/innovation-to-certification-building-ecosystem-integrations-mitel-unified-communications-accerator"
-  },
-  {
-   "date": "2026-07-10",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "The First Thing a Patient Experiences Is a Phone Call. Most Hospitals Aren't Ready for That.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.mitel.com/blog/better-patient-experiences-from-the-first-phone-call-are-hospitals-ready"
   }
  ],
  "profile": {

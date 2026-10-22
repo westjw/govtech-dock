@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The Ground-Truth Ceiling: Why Agricultural AI Cannot Scale Without Trusted Measurement Infrastructure",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/the-ground-truth-ceiling-why-agricultural-ai-cannot-scale-without-trusted-measurement-infrastructure"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/when-space-infrastructure-becomes-earth-infrastructure"
-  },
-  {
-   "date": "2026-08-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "July World in 10: Canadian Crops Defy the Heat as European Corn Deteriorates",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/world-in-10-july-2026-monthly-roundup"
   }
  ],
  "profile": {

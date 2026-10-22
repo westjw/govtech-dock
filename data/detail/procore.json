@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "card-date",
+   "first_seen": "2026-10-21",
+   "headline": "Procore Announces Collaboration with IBM Focused on Enhancing Asset Lifecycle Management for Capital Project Owners and Operators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/press/procore-announces-collaboration-with-ibm-focused-on-enhancing-asset-lifecycle-management-for-capital-project-owners-and-operators"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "card-date",
+   "first_seen": "2026-10-21",
+   "headline": "Procore Collaborates with NVIDIA to Deliver Advanced Digital Twin Capabilities to Predict and Minimize Risks for Megaprojects",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/press/procore-collaborates-with-nvidia-to-deliver-advanced-digital-twin-capabilities-to-predict-and-minimize-risks-for-megaprojects"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "card-date",
+   "first_seen": "2026-10-21",
+   "headline": "Procore Launches Voice-First AI Mobile App Built for the Jobsite",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.procore.com/press/procore-launches-voice-first-ai-mobile-app-built-for-the-jobsite"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "From Plan to Build to Operate: Connecting the Full Building Lifecycle",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/blog/from-plan-to-build-to-operate-connecting-the-full-building-lifecycle"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "time",
    "first_seen": "2026-10-16",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.procore.com/blog/how-procore-works-for-manufacturing-owners"
-  },
-  {
-   "date": "2026-08-28",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "FAQs for manufacturing owners evaluating Procore",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/faqs-manufacturing-owners"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Procore Introduces Asset Register Within Asset Management to Simplify Handover from Contractor to Owner",
-   "kind": "product",
-   "kind_rule": "Introduces",
-   "url": "https://www.procore.com/press/procore-introduces-asset-register-within-asset-management-to-simplify-handover-from-contractor-to-owner"
-  },
-  {
-   "date": "2026-08-05",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Stop inheriting chaos at handover: Procore Asset Management is now generally available",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/procore-asset-management-is-now-generally-available"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "From assistance to prediction: A practical roadmap for construction AI adoption",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/a-practical-roadmap-for-construction-ai-adoption"
   }
  ],
  "profile": {

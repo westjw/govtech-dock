@@ -1,0 +1,85 @@
+{
+ "news": [
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Can security controls keep up with fast-moving AI?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/can-security-controls-keep-up-with-fast-moving-ai"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Your AI agent doesn\u2019t need to go rogue; it just needs you to be over-privileged",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/ai-agents-wont-go-rogue-theyll-inherit-overprivileged-access"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "NVIDIA secures the agent's machine; we secure everything it reaches",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/nvidia-secures-the-agents-machine-delinea-secures-its-access"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "AI governance has an enforcement problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/ai-governance-enforcement"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "When AI agents become the attacker",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/when-ai-agents-become-the-attacker"
+  },
+  {
+   "date": "2026-09-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "AI agents are already running on your endpoints. What can they do?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/securing-ai-agents-already-running-on-your-endpoints"
+  },
+  {
+   "date": "2026-09-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Delinea joins Project Glasswing: What this means for your environment",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/delinea-joins-project-glasswing"
+  },
+  {
+   "date": "2026-09-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "ISO 27001 vs. SOC 2: understanding the difference",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/iso-27001-vs-soc-2"
+  },
+  {
+   "date": "2026-08-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Collective Cyber Defense Starts with Identity",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/collective-cyber-defense-starts-with-identity"
+  }
+ ]
+}

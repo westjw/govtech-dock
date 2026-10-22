@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "Forensic Metadata Analysis: What It Can and Cannot Prove",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://focalforensics.com/blog/forensic-metadata-analysis-courtroom-evidence"
+  },
+  {
    "date": "2026-10-09",
    "date_source": "time",
    "first_seen": "2026-10-09",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://focalforensics.com/blog/digital-evidence-authentication-ai"
-  },
-  {
-   "date": "2026-08-01",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "911 Call Audio Redaction: What Must Stay and What Must Go",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://focalforensics.com/blog/911-call-audio-redaction"
   }
  ]
 }

@@ -1,6 +1,42 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Human-Machine Teaming: Why the Analyst Still Asks the Next Question",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/human-machine-teaming/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Seguridad de centros de datos: por qu\u00e9 es ante todo un problema de inteligencia",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/seguridad-centros-datos/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Data Center Security: Why It\u2019s an Intelligence Problem First",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/data-center-security-intelligence-problem/"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Why Live Intercepts Still Matter in Fast-Moving Investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/live-intercepts-fast-moving-investigations/"
+  },
+  {
    "date": "2026-09-02",
    "date_source": "json-ld",
    "first_seen": "2026-09-09",
@@ -71,42 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.penlink.com/fr/blog/osint-new-playbook-sports-security/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "OSINT and the New Playbook for Sports Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/es/blog/osint-new-playbook-sports-security/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "OSINT and the New Playbook for Sports Security",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/de/blog/osint-new-playbook-sports-security/"
-  },
-  {
-   "date": "2026-08-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "CoAnalyst360 and the Shift From Generative to Agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/blog/coanalyst360-agentic-ai/"
-  },
-  {
-   "date": "2026-08-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "CoAnalyst360 and the Shift From Generative to Agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/pt/blog/coanalyst360-agentic-ai/"
   }
  ],
  "profile": {

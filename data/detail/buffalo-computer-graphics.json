@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Emergency Operations Plan: A Step-by-Step Overview",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bcgeng.com/blog/emergency-operations-plan-step-guide"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "index-text",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bcgeng.com/blog/incident-management-system-capabilities"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Why Mobile Incident Management Software Is Essential for Modern Field Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bcgeng.com/blog/mobile-incident-management-software-field-response"
   }
  ]
 }

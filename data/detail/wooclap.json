@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Data-informed teaching in practice at Ghent University and the University of Strasbourg",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wooclap.com/en/blog/data-informed-teaching/"
+  },
+  {
    "date": "2026-10-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wooclap.com/en/blog/whats-new/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "time",
-   "first_seen": "2026-09-10",
-   "headline": "How to use Wooclap in Brightspace",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://docs.wooclap.com/en/articles/14623843-how-to-use-wooclap-in-brightspace"
   }
  ]
 }

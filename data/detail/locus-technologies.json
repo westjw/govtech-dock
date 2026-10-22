@@ -1,0 +1,22 @@
+{
+ "news": [
+  {
+   "date": "2015-12-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Browse our library of product tours, recorded demos, and webinars.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/resources/videos/"
+  },
+  {
+   "date": "2015-10-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Peruse our library of analysis on the technical and scientific aspects of EHS.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.locustec.com/resources/white-papers/"
+  }
+ ]
+}

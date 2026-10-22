@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "How to Improve Fleet Efficiency: 10 Strategies to Reduce Costs and Downtime",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/improve-fleet-efficiency/"
+  },
+  {
    "date": "2026-10-20",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-20",
    "headline": "Predictive Fleet Maintenance: How to Maximize Fleet Uptime",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "How Enterprises Reduce Fuel Waste with Connected Fuel, Driver, and Maintenance Data",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Does Your Delivery Fleet Actually Need a USDOT Number?",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "IFTA Fuel Tax Reporting for Trucking Fleets: What Actually Has to Be Tracked",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "What Happens During a Level I vs. Level II Roadside Inspection?",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "DOT Annual Inspection Requirements for Dump Trucks, Water Trucks, and Other Construction Vehicles",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-14",
    "headline": "Managing a Mixed CDL and Non-CDL Construction Fleet: What Compliance Actually Requires",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-09",
    "headline": "Do Construction Crews Qualify for an FMCSA Hours-of-Service Exemption?",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "How to Choose AI Inspection Software for a Trucking Fleet: A Buyer's Guide",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-07",
    "headline": "AI Fleet Inspections vs. Manual DVIR Review: What's the Difference for Trucking Fleets?",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "Advanced Maintenance Is Here: Fleet Maintenance Software For One Connected Workflow",
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/introducing-advanced-maintenance/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "How Enterprises Reduce Fuel Waste With Connected Fuel, Driver, and Maintenance Data",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/reduce-fuel-waste-connected-fleet-data/"
   }
  ],
  "profile": {

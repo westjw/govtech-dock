@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Traces for Deleted photo/video Under Apple Photos app",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.msab.com/blog/traces-for-deleted-photo-video-under-apple-photos-app/"
+  },
+  {
    "date": "2026-09-29",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.msab.com/ja/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
-  },
-  {
-   "date": "2026-05-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-10",
-   "headline": "Invitation to MSAB\u2019s Capital Markets Day on May 7th, 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.msab.com/es/updates/invitation-to-msabs-capital-markets-day-on-may-7th-2026/"
   }
  ],
  "profile": {

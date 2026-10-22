@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "CVE-2026-109618 and CVE-2026-109619: Critical Unauthenticated Remote Code Execution in PHP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/etr-cve-2026-109618-and-cve-2026-109619-critical-unauthenticated-remote-code-execution-in-php/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Q3 2026 Threat Update: Attackers Are Exploiting Vulnerabilities Within 3 Days",
+   "kind": "product",
+   "kind_rule": "Update",
+   "url": "https://www.rapid7.com/blog/post/tr-q3-2026-threat-update-attackers-exploiting-vulnerabilities-within-3-days/"
+  },
+  {
+   "date": "2026-10-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Rapid7 Analysis: NetScaler intrusions chaining CVE-2026-88771 and CVE-2026-88779",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/ra-netscaler-intrusions-chaining-cve-2026-88771-and-cve-2026-88779/"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SMTP is the key: BPFDoor and AVERAT hitting the network edge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.rapid7.com/blog/post/tr-smtp-is-the-key-bpfdoor-averat-hitting-the-network-edge/"
+  }
+ ]
+}

@@ -1,4 +1,24 @@
 {
+ "news": [
+  {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Kilgore College Goes Live on QuickLaunch Student Provisioning",
+   "kind": "contract",
+   "kind_rule": "Goes Live on",
+   "url": "https://quicklaunch.io/newsroom/kilgore-college-goes-live-on-quicklaunch-student-provisioning/"
+  },
+  {
+   "date": "2026-10-13",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "The College of Science, Technology and Applied Arts of Trinidad and Tobago Goes Live on QuickLaunch IntegrationX",
+   "kind": "contract",
+   "kind_rule": "Goes Live on",
+   "url": "https://quicklaunch.io/newsroom/the-college-of-science-technology-and-applied-arts-of-trinidad-and-tobago-goes-live-on-quicklaunch-integrationx/"
+  }
+ ],
  "profile": {
   "paragraphs": [
    "QuickLaunch sells an identity and integration platform built only for higher education, covering students, faculty, staff, contractors and alumni. It gives institutions one place to secure those identities and to connect the systems a campus runs, from the SIS to the LMS to the cloud. Identity and access products include single sign-on, MFA options, passkey and facial-recognition passwordless access, first-time account claim and voice password reset.",

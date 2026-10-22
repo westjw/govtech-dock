@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "IDEMIA Aura Metal Art: Expanding Premium Metal Card Experiences to More Cardholders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.idemia.com/news/idemia-aura-metal-art-expanding-premium-metal-card-experiences-more-cardholders-2026-10-21"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "json-ld",
    "first_seen": "2026-10-07",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Launch",
    "url": "https://www.idemia.com/news/idemia-secure-transactions-and-commercial-bank-ceylon-launch-google-pay-sri-lanka-2026-02-17"
-  },
-  {
-   "date": "2026-01-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-10",
-   "headline": "HYPERFORM achieves its first milestone in quantum-safe data protection",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.idemia.com/news/hyperform-achieves-its-first-milestone-quantum-safe-data-protection-2026-01-29"
   }
  ]
 }

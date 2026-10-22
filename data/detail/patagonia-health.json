@@ -1,0 +1,31 @@
+{
+ "news": [
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "How Much Does an EHR Cost? A Guide to EHR Pricing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://patagoniahealth.com/blog/ehr-cost"
+  },
+  {
+   "date": "2026-10-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "The Complete EHR Implementation Guide for Public and Behavioral Health",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://patagoniahealth.com/blog/steps-to-a-successful-ehr-implementation"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Vaccine Schedule Changes: What Public Health Teams Are Telling Us",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://patagoniahealth.com/blog/vaccine-schedule-changes-survey-report"
+  }
+ ]
+}

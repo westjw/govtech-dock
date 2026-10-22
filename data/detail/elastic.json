@@ -1,0 +1,112 @@
+{
+ "news": [
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic looks to speed up Jina Model Inference by 8x using NVIDIA RTX GPUs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/jina-model-inference-nvidia-rtx-gpus"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Security integration with Google Distributed Cloud: Closing the velocity gap in air-gapped environments",
+   "kind": "product",
+   "kind_rule": "integration with",
+   "url": "https://www.elastic.co/blog/elastic-security-integration-with-google-distributed-cloud"
+  },
+  {
+   "date": "2026-10-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Making data work across boundaries: The next challenge for policing",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/making-data-work-across-boundaries-policing"
+  },
+  {
+   "date": "2026-10-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Enterprise AI Search",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-leader-gartner-magic-quadrant-enterprise-ai-search-2026"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Stack 8.19.23 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-8-19-23-released"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Stack 9.4.8 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-4-8-released"
+  },
+  {
+   "date": "2026-10-06",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Stack 9.5.5 released",
+   "kind": "product",
+   "kind_rule": "released",
+   "url": "https://www.elastic.co/blog/elastic-stack-9-5-5-released"
+  },
+  {
+   "date": "2026-10-01",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Bring your own key to existing Elastic Cloud deployments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/byok-existing-deployments-elastic-cloud-hosted"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Better together: Celebrating the 2026\u20132027 Elastic Partner Awards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-partner-awards-2026"
+  },
+  {
+   "date": "2026-09-30",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "When AI agents swarm, can banks keep up?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/banks-ai-agents-visibility"
+  },
+  {
+   "date": "2026-09-29",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Cloud Serverless: Another Azure region",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-cloud-serverless-now-available-azure-iowa"
+  },
+  {
+   "date": "2026-09-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Elastic Cloud on Azure gets a speed boost: Compute-optimized instances on Azure Cobalt ARM",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.elastic.co/blog/elastic-cloud-azure-cobalt-arm"
+  }
+ ]
+}

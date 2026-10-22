@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Simplify NTD reporting: Start with data you can trust",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.goswift.ly/blog/simplify-ntd-reporting"
+  },
+  {
    "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -10,7 +19,7 @@
    "url": "https://www.goswift.ly/blog/durham-region-transit-case-study"
   },
   {
-   "date": "2026-10-05",
+   "date": "2026-10-13",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Oulu Public Transport Authority improves on-time performance and delivers more efficient service with Swiftly",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.goswift.ly/blog/on-time-performance-measurement-best-practices"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Entered easily, communicated seamlessly, trusted everywhere: The new standard for managing disruptions",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.goswift.ly/blog/new-service-adjustments-enhancements"
   }
  ],
  "profile": {

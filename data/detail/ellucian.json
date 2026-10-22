@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "Heroes of Higher Ed",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Shifting Mindsets: Turning Internal Roadblocks Into Academic Success",
    "kind": "press",
@@ -28,8 +28,8 @@
    "url": "https://www.ellucian.com/blog/aligning-people-platforms-ai-change-higher-education"
   },
   {
-   "date": "2026-09-16",
-   "date_source": "index-text",
+   "date": "2026-09-15",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Artificial Intelligence, Student Information Systems",
    "kind": "press",

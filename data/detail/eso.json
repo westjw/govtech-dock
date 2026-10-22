@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Prehospital Care Is Part of the Acute Care Episode",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eso.com/resources/prehospital-care-is-part-of-the-acute-care-episode/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "From Ambulance as Mode of Arrival to Accurate Status",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eso.com/resources/from-ambulance-as-mode-of-arrival-to-accurate-status/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/resources/fire-index/"
-  },
-  {
-   "date": "2026-05-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2026 ESO Trauma Index",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eso.com/resources/trauma-index/"
-  },
-  {
-   "date": "2026-04-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "ESO Acquires d2i, Accelerating Emergency Intelligence to Drive Performance and Improve Outcomes across Fire, EMS and Health Systems",
-   "kind": "funding",
-   "kind_rule": "Acquires",
-   "url": "https://www.eso.com/news/press-releases/eso-acquires-d2i-accelerating-emergency-intelligence-to-drive-performance-and-improve-outcomes-across-fire-ems-and-health-systems/"
   }
  ],
  "profile": {

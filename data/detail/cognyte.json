@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Cognyte Expands Military Footprint with $20+ Million Framework Agreement with Tier-1 Ministry of Defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.cognyte.com/news/cognyte-expands-military-footprint-with-20-million-framework-agreement-with-tier-1-ministry-of-defense/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.cognyte.com/news/cognyte-secures-5-million-expansion-with-long-standing-emea-national-security-customer/"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Cognyte Joins Global Anti-Scam Alliance to Fight Financial Fraud Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.cognyte.com/news/cognyte-joins-global-anti-scam-alliance-to-fight-financial-fraud-threats/"
   }
  ],
  "profile": {

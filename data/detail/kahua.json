@@ -1,8 +1,35 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Capital Planning in Construction: A Complete Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/how-to-streamline-capital-planning-with-data-analytics/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Construction Project Planning: Steps and Methods",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/articles/construction-project-planning-software/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Only 8% of Capital Program Leaders Report Significant Value From AI Investments, New Kahua Research Finds",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kahua.com/news/kahua-launches-new-research-2026-capital-program-maturity-report/"
+  },
+  {
    "date": "2026-10-14",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "Kahua Launches Schedule Manager to Connect Project Schedules With Real-Time Project Execution",
    "kind": "product",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kahua.com/articles/the-5-stages-of-a-construction-projects-lifecycle/"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-08",
-   "headline": "Punch List: A Practical Guide for Owners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/your-checklist-for-construction-punch-lists/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Construction Submittals Guide: Process, Examples, and Tips",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kahua.com/articles/understanding-the-importance-of-construction-submittals/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Kahua Secures Strategic Growth Investment from Bain Capital at a Valuation Above $1 Billion",
-   "kind": "funding",
-   "kind_rule": "Secures Strategic Growth Investment from",
-   "url": "https://kahua.com/news/kahua-secures-strategic-growth-investment-from-bain-capital-at-a-valuation-above-1-billion/"
   }
  ],
  "profile": {

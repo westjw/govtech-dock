@@ -1,132 +1,125 @@
 {
-  "date": "2026-10-21",
-  "previous": "2026-10-20",
+  "date": "2026-10-22",
+  "previous": "2026-10-21",
   "changes": [
     {
-      "company": "Beam Global",
-      "id": "beam-global",
+      "company": "Rehrig Pacific",
+      "id": "rehrig-pacific",
       "from": "Yes",
       "to": "Unknown",
       "note": "page too small - likely JS-rendered"
+    },
+    {
+      "company": "Edwin",
+      "id": "edwin",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Eventeny",
+      "id": "eventeny",
+      "from": "Yes",
+      "to": "Sales (non-AE)",
+      "note": "Account Strategist only"
+    },
+    {
+      "company": "Beam Global",
+      "id": "beam-global",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
       "company": "Cellebrite",
       "id": "cellebrite",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
-    },
-    {
-      "company": "Kodex",
-      "id": "kodex",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
-    },
-    {
-      "company": "Oracle NetSuite for Government",
-      "id": "oracle-netsuite-for-government",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "VCS HR & Jobs4Blue",
-      "id": "vcs-hr-jobs4blue",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Xplor Recreation",
-      "id": "xplor-recreation",
-      "from": "Sales (non-AE)",
+      "company": "LeoTech",
+      "id": "leotech",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Account Executive - Direct Sales (Birmingham, AL)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Smart Parking",
-      "id": "smart-parking",
-      "from": "Unknown",
+      "company": "Willowglen Systems",
+      "id": "willowglen-systems",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Highland Electric Fleets",
-      "id": "highland-electric-fleets",
+      "company": "MCM Technology LLC",
+      "id": "mcm-technology-llc",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Customer Success Manager (CA) only"
+      "note": "Partner Channel Manager only"
+    },
+    {
+      "company": "OnSolve (CodeRED)",
+      "id": "onsolve",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "Edmunds GovTech",
+      "id": "edmunds-govtech",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "SpotHero",
+      "id": "spothero",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "Vanderlande",
       "id": "vanderlande",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "EnergyHub",
-      "id": "energyhub",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Client Success Manager only"
-    },
-    {
-      "company": "Objective Corporation",
-      "id": "objective-corporation",
       "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Strategic Account Executive (New Zealand)"
-    },
-    {
-      "company": "Measures for Justice",
-      "id": "measures-for-justice",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "Health-e Pro",
       "id": "health-e-pro",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "HTTP 404 for https://www.healthepro.com/"
-    },
-    {
-      "company": "Intelligent Video Solutions",
-      "id": "intelligent-video-solutions",
-      "from": "Sales (non-AE)",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "StarRez",
-      "id": "starrez",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Director, Customer Success only"
-    },
-    {
-      "company": "Druid AI",
-      "id": "druid-ai",
+      "company": "Intelligent Video Solutions",
+      "id": "intelligent-video-solutions",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
+      "note": "Regional Representative - Sales only"
     },
     {
-      "company": "Onit",
-      "id": "onit",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager - LegalFi only"
+      "company": "FinQuery",
+      "id": "finquery",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Account Executive (Remote, USA)"
+    },
+    {
+      "company": "Infilla",
+      "id": "infilla",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
     }
   ]
 }

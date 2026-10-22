@@ -19,6 +19,15 @@
    "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators"
   },
   {
+   "date": "2026-10-15",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "An update on independent evaluators",
+   "kind": "product",
+   "kind_rule": "update",
+   "url": "https://www.anthropic.com/news/policy"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "json-ld",
    "first_seen": "2026-10-14",
@@ -37,8 +46,26 @@
    "url": "https://www.anthropic.com/news/2026-us-midterms"
   },
   {
-   "date": "2026-10-08",
+   "date": "2026-10-14",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Preparing for the 2026 US midterms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/safeguards"
+  },
+  {
+   "date": "2026-10-12",
    "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Strengthening our defenses against distillation attacks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.anthropic.com/news/distillation-defenses"
+  },
+  {
+   "date": "2026-10-08",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "2026 Usage Policy update",
    "kind": "product",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-09",
    "headline": "Building on our commitment to American scientific discovery",
    "kind": "press",
@@ -64,49 +91,22 @@
    "url": "https://www.anthropic.com/news/anthropic-cyber-mission"
   },
   {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "Expanding the Cyber Verification Program",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/cyber-verification-program"
+   "date": "2026-10-08",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Introducing the Anthropic Cyber Mission",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.anthropic.com/news/security"
   },
   {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Anthropic invests $100 million to train 10,000 engineers and tackle the enterprise AI talent gap",
+   "date": "2026-10-08",
+   "date_source": "index-text",
+   "first_seen": "2026-10-21",
+   "headline": "Building on our commitment to American scientific discovery",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://www.anthropic.com/news/claude-frontier-academy"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Barclays scales Claude to upgrade operations and improve client experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/barclays-scales-claude"
-  },
-  {
-   "date": "2026-09-23",
-   "date_source": "card-date",
-   "first_seen": "2026-10-05",
-   "headline": "Claude discovers a novel enzyme system with CRISPR-like repeats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Partnering with Accenture on embedded evaluation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.anthropic.com/news/accenture-embedded-evaluation"
+   "url": "https://www.anthropic.com/news/partnerships"
   }
  ],
  "profile": {

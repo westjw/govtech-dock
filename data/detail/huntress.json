@@ -1,0 +1,31 @@
+{
+ "news": [
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Amazon-Themed ClickFix Campaign Serves Up Finger-Licking Malware",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/amazon-clickfix-finger"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Attack Reduction in Huntress Managed ESPM: Disrupting ClickFix",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/espm-attack-reduction-clickfix"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Rapid Response: php2shell, Leaked Critical PHP Vulnerabilities (CVE-2026-109618 & CVE-2026-109619)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.huntress.com/blog/php2shell-leaked-critical-php-vulnerabilities"
+  }
+ ]
+}

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "Element451 Introduces the First Agentic Platform Purpose-Built for Continuing Education and Workforce Development Teams",
+   "kind": "product",
+   "kind_rule": "Introduces",
+   "url": "https://www.element451.com/blog/element451-introduces-ce-and-workforce"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.element451.com/blog/what-15-years-of-manual-deduplication-taught-me"
-  },
-  {
-   "date": "2026-08-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Inquiry to Completion: How CCBC Redesigned the Student Experience",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.element451.com/blog/ccbc-student-experience-redesign"
   }
  ],
  "profile": {

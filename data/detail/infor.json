@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Gartner IT Symposium/Xpo 2026: Day 3 Highlights with Infor: Governed by design, ready to scale AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/gartner-2026-day-3-governed-ai-trust"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/healthcare-innovations-infor-october-2026-release"
-  },
-  {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-07",
-   "headline": "How industrial manufacturers turn market pressure into competitive advantage",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/manufacturers-turn-market-pressure-competitive-advantage"
   }
  ],
  "profile": {

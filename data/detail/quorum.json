@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-10-20",
-   "date_source": "index-text",
+   "date": "2026-10-21",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "Introducing Quincy Hub: The Command Center for AI Agents in Government Affairs",
    "kind": "product",
@@ -10,8 +10,17 @@
    "url": "https://www.quorum.us/blog/introducing-quincy-hub/"
   },
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Election Year Advocacy: Trends in Grassroots Mobilization Heading Into 2027",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.quorum.us/blog/election-year-advocacy-trends-in-grassroots-mobilization-heading-into-2027/"
+  },
+  {
    "date": "2026-10-08",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-08",
    "headline": "Why Corporate PAC Participation Keeps Sliding (and How to Increase It)",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-06",
    "headline": "How to Build a 2027 Grassroots Advocacy Plan: Goals, Calendar, and Cadence",
    "kind": "press",
@@ -31,7 +40,7 @@
    "date": "2026-09-30",
    "date_source": "json-ld",
    "first_seen": "2026-10-06",
-   "headline": "See what's new \u2192",
+   "headline": "2026 Election Prep Guide: What to Expect in Quorum",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/2026-election-prep-guide-what-to-expect-in-quorum/"
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Candidate Data + AI: Preparing Your Federal Team for the 120th Congress",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Why Federal Government Affairs Teams Need More Than an AI Research Tool",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "A Day in State Legislative Tracking: How AI Agents Help Teams Cover 50 States",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "How AI Agents Make Government Affairs Teams More Efficient",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "AI Meeting Prep That Keeps Government Affairs Teams Aligned",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-09-28",
    "headline": "Quorum Named a Leader in G2\u2019s Fall 2026 Grid\u00ae Report for Public Affairs Software.",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.quorum.us/blog/quorum-named-a-leader-in-g2s-fall-2026-grid-report-for-public-affairs-software/"
-  },
-  {
-   "date": "2026-09-18",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "What Happens When a Public Affairs Software Vendor Restructures?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.quorum.us/blog/what-happens-when-a-public-affairs-software-vendor-restructures/"
   }
  ]
 }

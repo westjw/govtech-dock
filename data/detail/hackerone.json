@@ -1,0 +1,40 @@
+{
+ "news": [
+  {
+   "date": "2026-10-21",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "Critical PHP Vulnerabilities: What Security Teams Need to Know",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hackerone.com/blog/critical-php-vulnerabilities-hackerone-response"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "The Exposure Debt Benchmark: What the 2026 Data Says About the Find-to-Fix Gap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hackerone.com/blog/exposure-management-find-to-fix-gap-2026"
+  },
+  {
+   "date": "2026-05-06",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "Finding Fast, Fixing Slow: The Rising Exposure Debt",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hackerone.com/blog/finding-fast-fixing-slow-rising-exposure-debt"
+  },
+  {
+   "date": "2026-04-17",
+   "date_source": "time",
+   "first_seen": "2026-10-21",
+   "headline": "Finding Fast, Fixing Slow: The Crisis of Asymmetric Remediation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hackerone.com/blog/ai-vulnerability-discovery-remediation-gap"
+  }
+ ]
+}

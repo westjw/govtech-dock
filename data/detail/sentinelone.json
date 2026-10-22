@@ -1,8 +1,80 @@
 {
  "news": [
   {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne and Lenovo Expand Partnership to Bring AI Security & Governance to the ThinkShield Security Portfolio",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-and-lenovo-expand-partnership-to-bring-ai-security-governance-to-the-thinkshield-security-portfolio/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne Names LevelBlue Global Delivery Partner for Wayfinder Services",
+   "kind": "leadership",
+   "kind_rule": "Names",
+   "url": "https://www.sentinelone.com/press/sentinelone-names-levelblue-global-delivery-partner-for-wayfinder-services/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne Brings Security Superintelligence to the SOC With Singularity ASOC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-brings-security-superintelligence-to-the-soc-with-singularity-asoc/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne Delivers AI Advantage to Defenders with Singularity ADR and Singularity ASOC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-delivers-ai-advantage-to-defenders-with-singularity-adr-and-singularity-asoc/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne Arms Partners to Build and Scale AI Security Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/sentinelone-arms-partners-to-build-and-scale-ai-security-practices/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-21",
+   "headline": "SentinelOne Launches Singularity Agentic Detection and Response to Stop Rogue and Malicious AI Agents at Machine Speed",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.sentinelone.com/press/sentinelone-launches-singularity-agentic-detection-and-response-to-stop-rogue-and-malicious-ai-agents-at-machine-speed/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Stopping PHP2SHELL: How SentinelOne Protects Customers From This Attack Technique",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/blog/stopping-php2shell-how-sentinelone-protects-customers-from-this-attack-technique/"
+  },
+  {
+   "date": "2026-10-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "As AI Accelerates Cyberattacks, N-able and SentinelOne Expand Their Strategic Partnership to Advance Resilience",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sentinelone.com/press/as-ai-accelerates-cyberattacks-n-able-and-sentinelone-expand-their-strategic-partnership-to-advance-resilience/"
+  },
+  {
    "date": "2026-10-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-19",
    "headline": "Bring Your Own Vulnerable Driver: What Detection Teams Should Actually Hunt",
    "kind": "press",
@@ -20,7 +92,7 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Bring Your Own Vulnerable Driver: The Trust Gap Attackers Operate Inside",
    "kind": "press",
@@ -29,84 +101,12 @@
   },
   {
    "date": "2026-10-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "Bring Your Own Vulnerable Driver: How EDR Killing Became an Industry",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-how-edr-killing-became-an-industry/"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "index-text",
-   "first_seen": "2026-10-09",
-   "headline": "5 Years of SentinelOne ThreatOps: Defense from the Ground Up to Global Threat Championships",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/5-years-of-sentinelone-threatops-defense-from-the-ground-up-to-global-threat-championships/"
-  },
-  {
-   "date": "2026-10-08",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "SentinelOne Wins SIEM Solution of the Year in CyberSecurity Breakthrough Awards 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-wins-siem-solution-of-the-year-in-cybersecurity-breakthrough-awards-2026/"
-  },
-  {
-   "date": "2026-10-05",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Bring Your Own Vulnerable Device: How EDR Killing Became an Industry",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-how-edr-killing-became-an-industry/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "index-text",
-   "first_seen": "2026-10-15",
-   "headline": "SentinelOne Named a Leader in the IDC MarketScape for Worldwide Modern Endpoint Security for Enterprises",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/press/sentinelone-named-a-leader-in-the-idc-marketscape-for-worldwide-modern-endpoint-security-for-enterprises/"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Building Agents Backwards from Evaluation",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/building-agents-backwards-from-evaluation/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "SentinelOne and NVIDIA: Governing AI From Silicon to Runtime",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/sentinelone-and-nvidia-governing-ai-from-silicon-to-runtime/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Bring Your Own Vulnerable Device: The EDR Killer Economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-device-the-edr-killer-economy/"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-13",
-   "headline": "Bring Your Own Vulnerable Driver: The EDR Killer Economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sentinelone.com/blog/bring-your-own-vulnerable-driver-the-edr-killer-economy/"
   }
  ],
  "profile": {
