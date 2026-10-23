@@ -34151,6 +34151,178 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
                                {"id": "t", "name": "T2", "description": "exhibited at COPS 2026"}])
         if len(twins) != 1 or "COPS 2026" not in twins[0]["description"]:
             errors += fail(f"two records sharing an id are not read as one with both shows: {twins}")
+
+        # WHAT SLED HQ'S DOOR REFUSED AT main 126d1cf (2026-10-23), each
+        # through build(), the function that writes the export.
+        PARKS = ("Parks, recreation, libraries", "Parks & recreation")
+        by_tag["PRA 2026"] = (PARKS, "https://pra.example.com/x")
+        old_index = SC.conference_index
+        SC.conference_index = lambda: (by_tag, {})
+        try:
+            def export(sup_rows, ident_rows):
+                doc = SC.build(sup_rows, ident_rows)
+                rows = {r["supplier_id"]: r for r in doc["suppliers"]}
+                placed = collections.defaultdict(list)
+                for x in doc["assignments"]:
+                    placed[x["supplier_id"]].append(x)
+                return rows, placed
+
+            # 76 park suppliers lost their only placement to a category name
+            # the schema does not hold
+            page("parkco", "Parkco builds playgrounds and site furnishings for city parks everywhere.",
+                 "Our picnic tables and park benches are made from recycled plastic lumber.")
+            rows, placed = export([sup("parkco", "PRA 2026")], {"parkco": ident("theirs", host="parkco")})
+            want = SC.category_key("Parks & Rec", "Park Assets, Forestry & Visitor Data")
+            if [(x["industry"], x["basis"]) for x in placed["parkco"]] != [(want, "own_site")]:
+                errors += fail(f"a playground maker is not filed under the schema's park assets "
+                               f"category: {placed['parkco']}")
+            pairs = SC.schema_pairs()
+            stale = [k for k in SC.VOCAB if k[1] not in pairs.get(k[0], [])] + \
+                    [v for v in SC.CROSSWALK.values() if v[0] not in pairs
+                     or (v[1] is not None and v[1] not in pairs[v[0]])]
+            if stale:
+                errors += fail(f"the sorter files under categories schema.json does not hold: {stale}")
+
+            # a link wrapper is the address it opens; the pages read through it
+            # are that address's
+            wrapped = ("https://eur02.safelinks.protection.outlook.com/?url=https%3A%2F%2F"
+                       "www.wrapco.example.com%2F&amp;data=02%7C01&amp;reserved=0")
+            (tmp / "wrapco.json").write_text(json.dumps({"id": "wrapco", "pages": [{"url": wrapped, "text":
+                "Wrapco runs child support case management for state agencies nationwide.\n"
+                "Our foster care and child welfare teams work beside every county office."}]}))
+            rows, placed = export([sup("wrapco", "LEAGUE 2026")],
+                                  {"wrapco": {"verdict": "theirs", "url": wrapped}})
+            if rows["wrapco"].get("website") != "https://www.wrapco.example.com/":
+                errors += fail(f"a safelinks wrapper was not opened to its address: {rows['wrapco']}")
+            if any("safelinks" in x["source"]["url"] for x in placed["wrapco"]) or not placed["wrapco"]:
+                errors += fail(f"a quote cites the wrapper, not the page it opened: {placed['wrapco']}")
+            if SC.unwrap("https://www.google.com/url?q=https://acme.example.com/&sa=D") \
+                    != "https://acme.example.com/" or SC.unwrap(wrapped.split("?")[0] + "?data=1"):
+                errors += fail("a wrapper is not read for the address it names, or one naming "
+                               "none is read as a website")
+
+            # a page on somebody else's host is no domain of their own, and a
+            # person's word on WHOSE it is does not make it one
+            for sid, url, ruling in (
+                    ("previewco", "https://previewco-preview.netlify.app", None),
+                    ("profileco", "https://github.com/profileco", None),
+                    ("emptywrap", "https://nam12.safelinks.protection.outlook.com/?data=1", None),
+                    ("ruledco", "https://ruledco.netlify.app", {"verdict": "theirs"}),
+                    ("otherco", "https://otherco.example.com",
+                     {"verdict": "other", "url": "https://otherco.wixsite.com/home"}),
+                    ("freemailco", "https://outlook.com/owa/freemailco", None),
+                    ("underco", "https://under_co.wixsite.com/home", {"verdict": "theirs"}),
+                    ("filterco", "https://urldefense.com/v3/__https://filterco.example.com__;!!x",
+                     None)):
+                page(sid, "We install wastewater treatment plants and municipal lift stations.",
+                     "Our valves and pump stations serve every water utility we work with.")
+                r = SC.place(sup(sid, "WEF 2026"), {"verdict": "theirs", "url": url}, by_tag, {}, ruling)
+                if r.get("status") != "held" or r.get("held") != SC.NOT_OWN or r.get("website"):
+                    errors += fail(f"{url} (ruling {ruling}) was published as a domain of their "
+                                   f"own: {r.get('status')} {r.get('held')} {r.get('website')}")
+            if SC.not_own("https://github.com") or SC.not_own("https://www.acme.example.com/about"):
+                errors += fail("a company's own homepage was read as a shared host")
+            # what HQ's URL check refuses is never published, and what is not
+            # a web address at all stays unread, in the admin's queue
+            for url, ruling in (("http://www.mistyped co.example.com/x", {"verdict": "theirs"}),
+                                ("https//www.typoco.example.com", {"verdict": "theirs"}),
+                                ("info@mailbox.example.com", {"verdict": "theirs"}),
+                                ("https://ok.example.com", {"verdict": "other",
+                                                            "url": "mailto:sales@ok.example.com"})):
+                r = SC.place(sup("webco", "WEF 2026"), {"verdict": "theirs", "url": url}, by_tag, {}, ruling)
+                if r.get("status") != "held" or not (r.get("held") or "").startswith("website unread"):
+                    errors += fail(f"{url} / {ruling} is not held as unread: {r.get('status')} "
+                                   f"{r.get('held')} {r.get('website')}")
+            r = SC.place(sup("bareco", "WEF 2026"), {"verdict": "theirs", "url": "www.bareco.example.com"},
+                         by_tag, {}, {"verdict": "theirs"})
+            if r.get("website") != "http://www.bareco.example.com":
+                errors += fail(f"a bare host a person released is not published as a web address: {r}")
+            nest = "https://acme.example.com/"
+            for host in ("https://www.google.com/url?q=", "https://a.safelinks.protection.outlook.com/?url=",
+                         "https://b.safelinks.protection.outlook.com/?url="):
+                nest = host + up.quote(nest, safe="")
+            for wrapped_url, opens in (
+                    (nest, "https://acme.example.com/"),
+                    ("https://www.google.co.uk/url?q=https://acme.example.com/&sa=D", "https://acme.example.com/"),
+                    ("https://gcc02.safelinks.protection.office365.us/?url=HTTPS%3A%2F%2Facme.example.com%2F",
+                     "https://acme.example.com/"),
+                    ("https://www.google.com/url?q=https://acme.example.com&region=us&sa=D",
+                     "https://acme.example.com")):
+                if SC.own_site(wrapped_url)[0] != opens:
+                    errors += fail(f"{wrapped_url} did not open to {opens}: {SC.own_site(wrapped_url)}")
+
+            # a contact line says how to reach them, not what they sell
+            page("crisisco", "BEHAVIORAL HEALTH CRISIS CENTERS: 833-356-2427 (TOLL FREE)",
+                 "Crisisco provides behavioral health and substance use treatment in every county.",
+                 "Our mental health clinics take walk-ins six days a week, all year round.")
+            rows, placed = export([sup("crisisco", "LEAGUE 2026"),
+                                   {"id": "callco", "name": "Callco Inc 512-555-0142",
+                                    "description": "exhibited at LEAGUE 2026"}],
+                                  {"crisisco": ident("theirs", host="crisisco")})
+            quotes = [x["source"]["quote"] for x in placed["crisisco"] + placed["callco"]]
+            if not placed["crisisco"] or any(SC.phone_spans(q) for q in quotes) \
+                    or SC.phone_spans(rows["callco"]["name"]):
+                errors += fail(f"a phone number reached the export: {quotes} {rows['callco']['name']}")
+            own = [x["source"]["quote"] for x in placed["crisisco"] if x["basis"] == "own_site"]
+            if not own or "CRISIS CENTERS" in own[0]:
+                errors += fail(f"the contact line was the quote, blanked or not: {own}")
+            # HQ's door reads any @ before a letter as an address, a brand's too
+            page("atco", "Sparks@Play is your trusted source for playground equipment in the region.",
+                 "We design and install playgrounds, shade structures and site furnishings.")
+            rows, placed = export([sup("atco", "PRA 2026")], {"atco": ident("theirs", host="atco")})
+            if not placed["atco"] or any("@" in x["source"]["quote"] for x in placed["atco"]):
+                errors += fail(f"a sentence with an @ in it was quoted: {placed['atco']}")
+            for sid, contact in (("shyco", "Call 512­555­0142 about park benches and picnic tables."),
+                                 ("spelledco", "Write sales [at] spelledco.example.com about picnic tables."),
+                                 ("wideco", "Order park benches from sales＠wideco.example.com today.")):
+                page(sid, contact, "We design and install playgrounds, shade structures and site furnishings.")
+                rows, placed = export([sup(sid, "PRA 2026")], {sid: ident("theirs", host=sid)})
+                quoted = [x["source"]["quote"] for x in placed[sid] if x["basis"] == "own_site"]
+                if not quoted or contact in quoted:
+                    errors += fail(f"a contact HQ's detector reads was quoted: {quoted}")
+            # the only short sentences carry a phone, so the quote is a cut one
+            # (a space at index 299 is where the old cut ran to 302 characters)
+            lead = "Longco designs and installs playgrounds and site furnishings "
+            page("longco", "Call 512-555-0142 about park benches and picnic tables.",
+                 lead + "a" * (299 - len(lead)) + " " + "b" * 60 + " for every town")
+            rows, placed = export([sup("longco", "PRA 2026")], {"longco": ident("theirs", host="longco")})
+            if any(len(x["source"]["quote"]) > SC.QUOTE_MAX for x in placed["longco"]) or not placed["longco"]:
+                errors += fail(f"a quote over {SC.QUOTE_MAX} characters: {placed['longco']}")
+            if SC.without_phones("Parenco Supply (Ph: 512-555-0142)") != "Parenco Supply (Ph: [phone])":
+                errors += fail(f"a blanked phone took a bracket that was not its own: "
+                               f"{SC.without_phones('Parenco Supply (Ph: 512-555-0142)')!r}")
+            # an animal shelter is not a park shelter
+            page("shelterco", "Petcademy texts training tips to adopters from animal shelters nationwide.",
+                 "Every shelter and rescue partner gets adopter support, free, for the first month.")
+            rows, placed = export([sup("shelterco", "PRA 2026")], {"shelterco": ident("theirs", host="shelterco")})
+            if any(x["industry"] == want for x in placed["shelterco"]):
+                errors += fail(f"an animal shelter was filed under park assets: {placed['shelterco']}")
+            page("dugoutco", "Dugoutco builds team shelters and aluminum benches for every field.",
+                 "Our custom soccer shelters are anchored, portable and built to last.")
+            rows, placed = export([sup("dugoutco", "PRA 2026")], {"dugoutco": ident("theirs", host="dugoutco")})
+            if not any(x["industry"] == want for x in placed["dugoutco"]):
+                errors += fail(f"a team-shelter maker is not filed under park assets: {placed['dugoutco']}")
+            # a category the schema lacks is said, never dropped in silence
+            by_tag["GHOST 2026"] = (("Ghost block", "Ghost dept"), "https://ghost.example.com/x")
+            SC.CROSSWALK[("Ghost block", "Ghost dept")] = ("Parks & Rec", "No Such Category")
+            try:
+                err = io.StringIO()
+                with contextlib.redirect_stderr(err):
+                    export([sup("ghostco", "GHOST 2026")], {})
+                if "No Such Category" not in err.getvalue():
+                    errors += fail("a placement under a category the schema lacks was dropped in silence")
+            finally:
+                SC.CROSSWALK.pop(("Ghost block", "Ghost dept"), None)
+            for t in ("since 2024-2025", "Form 226-2024", "2024-001-0042", "$4,100,000.00",
+                      "ISO 9001:2015", "Booth 1234", "1-800-SWEEPER"):
+                if SC.phone_spans(t):
+                    errors += fail(f"{t!r} was read as a phone number")
+            for t in ("(512) 555-0142", "512.555.0142", "+1 512 555 0142", "555-0142",
+                      "512–555–0142", "5125550142"):
+                if SC.without_phones(f"Call {t} today") != "Call [phone] today":
+                    errors += fail(f"{t!r} was not taken out whole: {SC.without_phones(f'Call {t} today')!r}")
+        finally:
+            SC.conference_index = old_index
     finally:
         SC.PAGES = old_pages
         shutil.rmtree(tmp, ignore_errors=True)
@@ -34181,6 +34353,17 @@ def check_suppliers_land_in_the_govtech_categories() -> int:
             errors += fail("a supplier is published with no website")
         if SC.ADDRESS.search(out.read_text()):
             errors += fail("an address is in data/supplier_categories.json")
+        shared = [x["supplier_id"] for x in doc.get("suppliers") or []
+                  if x.get("status") == "publish" and SC.not_own(SC.unwrap(x.get("website")) or "")
+                  or x.get("website") and SC.unwrap(x["website"]) != x["website"]]
+        if shared:
+            errors += fail(f"{len(shared)} supplier(s) published on a wrapper or a shared host: {shared[:5]}")
+        phoned = [x["supplier_id"] for x in doc.get("assignments") or []
+                  if SC.phone_spans(x["source"].get("quote") or "")
+                  or x["basis"] == "own_site" and "@" in (x["source"].get("quote") or "")] + \
+                 [x["supplier_id"] for x in doc.get("suppliers") or [] if SC.phone_spans(x.get("name") or "")]
+        if phoned:
+            errors += fail(f"a phone number is in data/supplier_categories.json: {phoned[:5]}")
     return errors
 
 def check_the_hq_export_never_loses_a_supplier_to_a_missing_cache() -> int:

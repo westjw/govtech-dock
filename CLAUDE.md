@@ -2516,6 +2516,32 @@ Two steps are done. Neither rewrites `suppliers.json`: each writes its own file.
   last export published has no page:
   `check_the_hq_export_never_loses_a_supplier_to_a_missing_cache`.
   `check_the_supplier_export_follows_every_intake` holds the rest.
+- **What HQ's door refused is fixed here, not there** (2026-10-23). HQ's
+  first read (main 126d1cf) refused three rows, and its count of 76
+  published suppliers with no placement was a bug of ours:
+  - A link wrapper is the address it opens (`unwrap`: Outlook safelinks,
+    Google's `/url`). A website on a shared host or someone else's site is
+    held: `the website on file is not a domain of their own` (`not_own`,
+    with HQ's `websiteDomain()` lists). A bare host with no scheme is still
+    a domain, and a mistyped one is unread, not someone else's.
+  - An own-site quote is never a sentence carrying a phone number (read the
+    way HQ's `contactSpans` reads one) or an `@`: HQ calls "Sparks@Play"
+    an address. `build()` writes any phone left in a quote or a name as
+    `[phone]`.
+  - A category the schema does not hold is now said on stderr, never
+    dropped in silence: VOCAB split "Park Assets, Forestry & Visitor Data"
+    into two names and lost 76 suppliers' only placement.
+  - After a change here, run HQ's own `parseSupplierExport` over the file
+    (read only, no database) before telling HQ it will pass.
+  - A published website is always a lower-case http(s) address (a bare
+    host gets `http://`, `&amp;` reads as `&`); one that is not a web
+    address at all is `website unread (the address on file is not a web
+    address)`, so it stays in the admin's Supplier websites queue.
+  - A shelter is a park's unless an animal's ("animal shelters",
+    "shelters and rescues").
+  - These are cases in `check_suppliers_land_in_the_govtech_categories`.
+    A blind review (3 lenses, a skeptic each) found 13 more ways to publish
+    a row HQ refuses, each now a case; mutation-tested 33 of 33.
 
 ## The supplier backlog is smaller than it looks (checked 2026-08-25)
 

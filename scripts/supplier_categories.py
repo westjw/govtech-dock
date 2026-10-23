@@ -39,17 +39,19 @@ from __future__ import annotations
 import argparse
 import collections
 import datetime as dt
+import html
 import json
 import pathlib
 import re
 import sys
+from urllib.parse import parse_qs, urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "scripts"))
 import fetch_profiles as fp  # noqa: E402
 import supplier_pages as SP  # noqa: E402
-from supplier_identity import clean_name  # noqa: E402
+from supplier_identity import clean_name, root  # noqa: E402
 
 OUT = DATA / "supplier_categories.json"
 PAGES = SP.cache_dir()            # one per machine (supplier_pages.cache_dir)
@@ -220,8 +222,13 @@ V = {
     ("Parks & Rec", "Facility Booking & Workforce"): r"facility (booking|scheduling|rental)|room booking|space reservation",
     ("Parks & Rec", "Aquatics"): r"aquatics?|swimming pools?|\bpools?\b|water parks?|splash pads?|lifeguards?|pool (equipment|chemicals|covers)|pool chemicals?|chlorine|flocculation|pool filtration|aquatic play|spray parks?",
     ("Parks & Rec", "Grounds, Irrigation & Turf"): r"\bturf\b|mowers?|mowing|irrigation|landscap\w+|grounds (maintenance|care|equipment)|athletic fields?|synthetic turf|sod|fertiliz\w+|weed control|turf care",
-    ("Parks & Rec", "Park Assets"): r"playgrounds?|play (equipment|structures?)|site furnishings|park benches|benches|picnic tables?|shade (structures?|sails?)|shelters?|skate ?parks?|bleachers|outdoor fitness|park (amenities|equipment)|restrooms?|bollards|trash receptacles|poured[- ]in[- ]place|rubber surfacing|safety surfacing|playground surfacing|disc golf|pickleball|climbing (structures?|nets?)|play structures?|outdoor musical|sports courts?|court surfacing|running tracks?",
-    ("Parks & Rec", "Forestry & Visitor Data"): r"urban forestry|tree (care|inventory|planting)|arborists?|visitor (counting|counters?|data)|trail counters?",
+    # ONE category in schema.json, and it was two keys here: build() files
+    # only under a name the schema holds, so 76 published suppliers -
+    # playground and site-furnishing makers off parks shows - reached SLED
+    # HQ with no placement at all (found 2026-10-23 from HQ's own count).
+    # A shelter is a park's (Enwood's pavilions, Kwik Goal's team shelters)
+    # unless an animal's: "animal shelters", "shelters and rescues".
+    ("Parks & Rec", "Park Assets, Forestry & Visitor Data"): r"playgrounds?|play (equipment|structures?)|site furnishings|park benches|benches|picnic tables?|shade (structures?|sails?)|(?<!animal )(?<!services )(?<!rescues & )(?<!rescues and )shelters?(?! (?:and|&) rescues?)|skate ?parks?|bleachers|outdoor fitness|park (amenities|equipment)|restrooms?|bollards|trash receptacles|poured[- ]in[- ]place|rubber surfacing|safety surfacing|playground surfacing|disc golf|pickleball|climbing (structures?|nets?)|play structures?|outdoor musical|sports courts?|court surfacing|running tracks?|urban forestry|tree (care|inventory|planting)|arborists?|visitor (counting|counters?|data)|trail counters?",
     ("Parks & Rec", "Weather & Outdoor Safety"): r"lightning (detection|prediction)|weather (alert|monitoring|stations?)|outdoor warning",
     ("Parks & Rec", "Screening, Safety & Compliance"): r"background (checks?|screening)|volunteer screening|safety compliance",
     ("Parks & Rec", "Destination Marketing & Tourism"): r"tourism|destination marketing|visitors? bureau|\bdmos?\b|convention (and|&) visitors",
@@ -308,6 +315,219 @@ def schema_pairs() -> dict:
 # list can carry one, and the export is committed to a public repository
 # (same rule as step 1's _scrub).
 ADDRESS = re.compile(r"[\w.+-]+@[\w-]+\.[A-Za-z]{2,}")
+
+
+# NOR A PHONE NUMBER, NOR AN @. SLED HQ refuses any placement whose quote
+# carries a contact, and refused Compass Health Network's at main 126d1cf
+# (2026-10-23): "BEHAVIORAL HEALTH CRISIS CENTERS: 833-356-2427 (TOLL FREE)",
+# picked as the sentence that says what the company sells. So what_it_sells
+# never quotes a sentence carrying a phone number or an @ (HQ reads an @
+# before a letter as an address, a brand's "Sparks@Play" too), and build()
+# blanks any phone that still reaches a quote or a name. Only a number shaped
+# like a phone is caught: "CRISIS LINE: 988" is not one, and is quoted.
+# Read the way HQ's detector reads (src/lib/bid-record-privacy.ts
+# contactSpans, with its contactNorm): digits in groups joined by a dash,
+# dot, slash, parenthesis or space, shaped like a phone - 3-3-4, 1-3-3-4, ten
+# digits, eleven starting with 1, 3-7, 6-4, or 3-4 joined by a dash that is
+# not a year - and not glued to a letter, a $ or a longer number
+# ("$4,100,000.00", "2024-001-0042").
+PHONE_RUN = re.compile(r"(?<![\w$#,./=?&])(?:\+\s*)?\(?\d+(?:(?:[ \t]*[-./][ \t]*|[ \t\n]+"
+                       r"|[ \t]*\)[ \t]*[-./]?[ \t]*|[ \t]*\([ \t]*)\d+)*\)?(?![.,]\d)")
+PHONE_SHAPES = {"3,3,4", "1,3,3,4", "10", "11", "3,7", "1,10", "6,4"}
+# HQ's contactNorm, one character for one so spans still fit
+CONTACT_NORM = str.maketrans(
+    {**{chr(c): "-" for c in [*range(0x2010, 0x2016), 0x2212, 0xFE58, 0xFE63, 0xFF0D, 0xAD]},
+     **{chr(c): " " for c in [0xA0, *range(0x2000, 0x200E), 0x202F, 0x205F, 0x2060, 0x3000, 0xFEFF]},
+     "＠": "@", "﹫": "@"})
+AT = re.compile(r"(?:@|\[\s*at\s*\]|\(\s*at\s*\)|\{\s*at\s*\}|<\s*at\s*>)\s*[^\W\d_]", re.I)
+
+
+def carries_at(s: str) -> bool:
+    return bool(AT.search((s or "").translate(CONTACT_NORM)))
+
+
+def phone_spans(s: str) -> list[tuple[int, int]]:
+    out = []
+    s = (s or "").translate(CONTACT_NORM)
+    for m in PHONE_RUN.finditer(s):
+        groups = [(d.group(0), m.start() + d.start(), m.start() + d.end())
+                  for d in re.finditer(r"\d+", m.group(0))]
+        i = 0
+        while i < len(groups):
+            before = s[groups[i - 1][2]:groups[i][1]] if i else " "
+            hit = None
+            if re.fullmatch(r"[ \t\n(]*", re.sub(r"\($", "", before)):
+                for j in range(i, min(len(groups), i + 4)):
+                    after = s[groups[j][2]:groups[j + 1][1]] if j + 1 < len(groups) else " "
+                    if not re.fullmatch(r"[ \t\n(]*", re.sub(r"^\)", "", after)):
+                        continue
+                    gs = [g for g, _, _ in groups[i:j + 1]]
+                    shape = ",".join(str(len(g)) for g in gs)
+                    ok = shape in PHONE_SHAPES
+                    if shape in ("11", "1,10", "1,3,3,4"):
+                        ok = gs[0][0] == "1"
+                    if shape == "3,4":
+                        ok = "-" in s[groups[i][2]:groups[j][1]] \
+                            and not re.fullmatch(r"(19|20)\d\d", gs[1])
+                    if shape == "10" and gs[0][0] == "0":
+                        ok = False
+                    if ok:
+                        hit = j
+                        break
+            if hit is not None:
+                a, b = groups[i][1], groups[hit][2]
+                # "(512) 555-0142" takes its "(", "+1 512..." its "+"; a ")"
+                # after the number is the sentence's ("(Ph: 512-555-0142)")
+                if re.search(r"\(\s*$", s[:a]) and re.match(r"\s*\)", s[groups[i][2]:]):
+                    a = re.search(r"\(\s*$", s[:a]).start()
+                plus = re.search(r"\+\s*$", s[:a])
+                out.append((plus.start() if plus else a, b))
+                i = hit + 1
+            else:
+                i += 1
+    return out
+
+
+def without_phones(s: str) -> str:
+    for _ in range(3):                     # a blank can join what is left into a new run
+        spans = phone_spans(s)
+        if not spans:
+            break
+        for a, b in reversed(spans):
+            s = s[:a] + "[phone]" + s[b:]
+    return s
+
+
+def clip(quote: str) -> str:
+    """At most QUOTE_MAX characters, as HQ counts them (code points)."""
+    if len(quote) <= QUOTE_MAX:
+        return quote
+    cut = quote[:QUOTE_MAX - 3]
+    return (cut.rsplit(" ", 1)[0] if " " in cut else cut) + "..."
+
+
+# A WEBSITE OF THEIR OWN. SLED HQ stores a published supplier only when its
+# website is a domain of its own (HQ's websiteDomain(), src/lib/auth/
+# domains.ts: the claim flow's one definition), and refused two at main
+# 126d1cf (HQ, 2026-10-23):
+#  - A LINK WRAPPER names the address it opens in its own query, and opens
+#    it: www-youngwilliams-com's "website" was an Outlook safelinks link, and
+#    the pages read through it are Young Williams' own (child support, SNAP,
+#    housing assistance). The address is taken out of the wrapper, never
+#    guessed. A wrapper that names none, or a link shortener or mail filter
+#    whose address cannot be read, is no website.
+#  - A SHARED HOST - a site builder's or a host's subdomain, a preview build
+#    (f1rst-preview.netlify.app), a cloud bucket - or a page on somebody
+#    else's site (github.com/acme, linktr.ee/acme: only the bare homepage is
+#    the host's own) is not a domain of the supplier's own, and holds it.
+#  - What HQ's URL check refuses is never published: a bare host gets
+#    "http://" (as an exhibitor list prints it, "playcraftsystems.com"), a
+#    scheme is lower-cased, and an address that is not a web address at all
+#    (a space in its host, a typo in its scheme) stays "website unread", in
+#    the admin's Supplier websites queue where a person can give the right one.
+# The lists are HQ's, copied so the two products agree on what a website is;
+# HQ's door still refuses, by name, anything these miss.
+WRAPPERS = (               # (host pattern, path prefix, query keys)
+    (re.compile(r"(^|\.)safelinks\.protection\.(outlook\.com|office365\.us)$"), "", ("url",)),
+    (re.compile(r"^(www\.)?google\.(com|[a-z]{2}|co\.[a-z]{2}|com\.[a-z]{2})$"), "/url", ("q", "url")),
+)
+# redirectors whose target is encoded or held on their side: never a website
+REDIRECTORS = {"urldefense.com", "urldefense.proofpoint.com", "protect-us.mimecast.com",
+               "linkprotect.cudasvc.com", "clicktime.symantec.com", "t.co", "bit.ly", "lnkd.in",
+               "tinyurl.com", "ow.ly", "goo.gl", "rebrand.ly", "buff.ly"}
+PLATFORM = re.compile(
+    r"(^|\.)(wixsite|squarespace|weebly|godaddysites|sites\.google|wordpress|blogspot|myshopify|"
+    r"webflow\.io|netlify\.app|vercel\.app|github\.io|linkedin|facebook|herokuapp|azurewebsites|"
+    r"appspot|firebaseapp|web\.app|pages\.dev|workers\.dev|notion\.site|carrd\.co|business\.site|"
+    r"square\.site|mystrikingly|jimdosite|webnode|yolasite|wpengine|hubspotpagebuilder|substack|"
+    r"crunchbase|twitter|instagram|youtube|gitlab\.io|bitbucket\.io|gitbook\.io|amazonaws|"
+    r"cloudfront\.net|azureedge\.net|windows\.net|googleapis|googleusercontent|onrender\.com|"
+    r"fly\.dev|glitch\.me|surge\.sh|replit\.app|framer\.website|framer\.app|tumblr\.com|ghost\.io|"
+    r"beehiiv\.com|canva\.site)\.")
+PROFILE_HOSTS = {
+    "github.com", "gitlab.com", "bitbucket.org", "medium.com", "notion.so",
+    "linktr.ee", "beacons.ai", "bio.link", "about.me",
+    "x.com", "tiktok.com", "threads.net", "reddit.com",
+    "google.com", "g.page", "apple.com",
+    "wellfound.com", "angel.co", "ycombinator.com", "producthunt.com",
+    "g2.com", "capterra.com", "glassdoor.com", "indeed.com", "zoominfo.com",
+    "bloomberg.com", "pitchbook.com", "yelp.com", "bbb.org", "dnb.com"}
+FREE_MAIL = {
+    "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
+    "yahoo.com", "ymail.com", "icloud.com", "me.com", "mac.com", "aol.com",
+    "proton.me", "protonmail.com", "pm.me", "gmx.com", "mail.com", "zoho.com",
+    "hey.com", "fastmail.com", "msn.com", "comcast.net", "verizon.net"}
+NOT_OWN = "the website on file is not a domain of their own"
+NOT_WEB = "website unread (the address on file is not a web address)"
+LABEL = r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?"
+HOST = re.compile(rf"(?:{LABEL}\.)+[a-z]{{2,}}")
+
+
+def web_address(url: str | None) -> str:
+    """The address as HQ's URL check takes it: a scheme, lower-cased, and an
+    entity-encoded "&amp;" read as "&". A bare host gets "http://"."""
+    u = (url or "").strip()
+    while "&amp;" in u:
+        u = u.replace("&amp;", "&")
+    m = re.match(r"([a-z][a-z0-9+.-]*)://", u, re.I)
+    if m:
+        return m.group(1).lower() + u[m.end(1):]
+    return f"http://{u}" if u else ""
+
+
+def unwrap(url: str | None) -> str | None:
+    """The address a link wrapper opens; any other address as given; None
+    for a wrapper that names no http(s) address."""
+    u = (url or "").strip()
+    for _ in range(5):                                   # a wrapper inside a wrapper
+        p = urlsplit(web_address(u))
+        h = (p.hostname or "").lower()
+        for host, path, keys in WRAPPERS:
+            if host.search(h) and p.path.startswith(path):
+                q = parse_qs(p.query)
+                target = next((q[k][0] for k in keys if q.get(k)), "")
+                if not re.match(r"https?://", target, re.I):
+                    return None
+                u = target
+                break
+        else:
+            return u
+    return None
+
+
+def site_problem(url: str) -> str | None:
+    """Why this address cannot be published as the supplier's website, or
+    None when it can: NOT_OWN for a page on someone else's host, NOT_WEB for
+    what is not a web address at all."""
+    p = urlsplit(web_address(url))
+    h = (p.hostname or "").lower().rstrip(".")
+    h = h[4:] if h.startswith("www.") else h
+    if PLATFORM.search(f".{h}.") or h in REDIRECTORS:     # before any other test:
+        return NOT_OWN                                    # "clean_harbors.wixsite.com"
+    if p.scheme not in ("http", "https") or not HOST.fullmatch(h) or "@" in p.netloc:
+        return NOT_WEB        # a space in the host, a typo in the scheme, an IP, an email
+    reg = root(h)
+    if reg in FREE_MAIL:
+        return NOT_OWN
+    rest = (p.path if p.path not in ("", "/") else "") + p.query + p.fragment
+    return NOT_OWN if reg in PROFILE_HOSTS and (h != reg or rest) else None
+
+
+def not_own(url: str) -> bool:
+    """True when this address cannot be published as their website."""
+    return site_problem(url) is not None
+
+
+def own_site(url: str | None) -> tuple[str | None, str | None]:
+    """(the address to publish, why there is none). Both None when nothing
+    is on file; the address is never one HQ's door refuses."""
+    if not url:
+        return None, None
+    u = unwrap(url)
+    if u is None:
+        return None, NOT_OWN
+    problem = site_problem(u)
+    return (None, problem) if problem else (web_address(u), None)
 
 
 # --- where each supplier exhibited ------------------------------------------
@@ -402,10 +622,15 @@ def what_it_sells(pages: list[dict]) -> list[dict]:
                 for m in rx.finditer(sent):
                     t = m.group(0).lower()
                     terms[t] += 1
+                    # a contact line is never the quote; nor is a sentence with an
+                    # @ in it, which HQ's door reads as an address before a letter
+                    # ("Sparks@Play is your trusted source...", refused 2026-10-23)
+                    if phone_spans(sent) or carries_at(sent):
+                        continue
                     if best is None or (len(sent) <= QUOTE_MAX and len(best[1]) > QUOTE_MAX):
                         best = (pg["url"], sent)
         if len(terms) >= MIN_TERMS and best:
-            quote = best[1] if len(best[1]) <= QUOTE_MAX else best[1][:QUOTE_MAX].rsplit(" ", 1)[0] + "..."
+            quote = clip(best[1])
             quote = ADDRESS.sub("[address]", quote)
             found.append({"sector": sector, "category": cat,
                           "terms": len(terms), "uses": sum(terms.values()),
@@ -459,9 +684,12 @@ def place(s: dict, ident: dict, by_tag: dict, by_stem: dict, ruling: dict | None
         covered.add(w["sector"])
     row["assignments"] = assignments
 
-    site = (ident or {}).get("url") or (ident or {}).get("website_was")
-    if site and FOR_SALE.search(site):
+    on_file = (ident or {}).get("url") or (ident or {}).get("website_was")
+    site, problem = own_site(on_file)
+    if on_file and FOR_SALE.search(on_file):
         row["status"], row["held"] = "held", "the website on file is a domain for sale"
+    elif problem:
+        row["status"], row["held"] = "held", problem
     elif verdict in ("theirs", "found", "unconfirmed", "found_review") and site and pages:
         # A WEBSITE IS CONFIRMED BY WHAT IT SELLS: its own text speaks the
         # language of a sector the conference says this supplier sells to
@@ -483,13 +711,18 @@ def place(s: dict, ident: dict, by_tag: dict, by_stem: dict, ruling: dict | None
     # A PERSON'S WORD BEATS THE TEXT TEST, both ways (admin "Supplier
     # websites", data/supplier_rulings.json). The placement is untouched: a
     # ruling is about whose website it is, not where the supplier sells.
+    # The address must still be a domain of their own: a person rules on
+    # WHOSE it is, and a page on a shared host is nobody's domain.
     v = (ruling or {}).get("verdict")
-    if v == "theirs" and site:
-        row["status"], row["website"], row["website_by"] = "publish", site, "person"
-        row.pop("held", None)
-    elif v == "other" and (ruling or {}).get("url"):
-        row["status"], row["website"], row["website_by"] = "publish", ruling["url"], "person"
-        row.pop("held", None)
+    given = on_file if v == "theirs" else (ruling or {}).get("url") if v == "other" else None
+    if given:
+        released, problem = own_site(given)
+        if released:
+            row["status"], row["website"], row["website_by"] = "publish", released, "person"
+            row.pop("held", None)
+        else:
+            row.pop("website", None)
+            row["status"], row["held"] = "held", problem
     elif v == "not_theirs":
         row.pop("website", None)
         row["status"], row["held"] = "held", "a person said the website on file is not theirs"
@@ -532,20 +765,31 @@ def build(suppliers: list, ident_rows: dict) -> dict:
         for c in cats:
             industries.append({"slug": category_key(n, c), "name": c, "sector": SECTOR_KEYS[n]})
     suppliers_out, assignments = [], []
+    unfiled = collections.Counter()
     for r in rows:
         out_row = {k: r[k] for k in ("supplier_id", "name", "status", "website", "website_by", "held")
                    if k in r}
         # A NAME OFF AN EXHIBITOR LIST CAN BE AN ADDRESS: 67 "names" are a
         # contact's email and a few carry one glued on. Step 1's cleaner
         # takes the glued part off; anything left is scrubbed.
-        out_row["name"] = ADDRESS.sub("[address]", clean_name(r.get("name") or ""))
+        out_row["name"] = without_phones(ADDRESS.sub("[address]", clean_name(r.get("name") or "")))
         suppliers_out.append(out_row)
         for a in r.get("assignments") or []:
             if a["category"] not in pairs.get(a["sector"], []):
+                unfiled[(a["sector"], a["category"])] += 1
                 continue                 # never file under a name the schema lacks
+            src = a["source"]
+            url = unwrap(src["url"]) or src["url"]
             assignments.append({"supplier_id": r["supplier_id"],
                                 "industry": category_key(a["sector"], a["category"]),
-                                "basis": a["basis"], "source": a["source"]})
+                                "basis": a["basis"],
+                                "source": {"url": web_address(url) if url else url,
+                                           "quote": clip(without_phones(src["quote"] or ""))}})
+    # Said, never silent: a category the schema renamed lost 76 published
+    # suppliers' only placement and nothing printed a word.
+    for (sec, cat), n in unfiled.items():
+        print(f"warning: {n} placement(s) under {sec} / {cat}, a category schema.json "
+              f"does not hold, were left out", file=sys.stderr)
     return {"v": 1, "generated": dt.date.today().isoformat(),
             "note": "Suppliers in the govtech sectors and categories (data/schema.json). "
                     "Every assignment quotes its source; status follows the owner's rule "
