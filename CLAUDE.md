@@ -697,7 +697,55 @@ are 503, and `whoami`/`login` stay open because they hold nothing. Team and
 AUD are constants with `ACCESS_TEAM_DOMAIN`/`ACCESS_AUD` overrides — a wrong
 value is a 403 naming the variable, never an open door.
 
-**Until launch the WHOLE site is signed-in only (owner, 2026-10-05).**
+**Since 2026-10-22 the FRONT PAGE is public and the boards are signed-in.**
+Owner: "we need a better landing page, accessing the job, company, and
+conference boards should be sign in", "we want people to log in and
+subscribe", and anyone may sign in, free (email and one-time code).
+- `landing.html` (option 3 of the "SLED JOBS landing page options" canvas,
+  no counts sold on it, no script) is what `_gate.js` serves at `/` to a
+  visitor with no verified sign-in, from `env.ASSETS` at `/landing`,
+  `no-store`, `Vary: Cookie`, indexable. `/` with only tracking params is the
+  front door; any other query (`?tab=`, `?role=`) is the board, deep-linked.
+  The files it loads are `PUBLIC` (mascot kit, `og/home.png`, robots,
+  sitemap), matched on the raw path with a closed character set. Company
+  logos stay gated. A missing landing file falls back to the sign-in page.
+- The sign-in page every other path gets is option 1 of that canvas: it names
+  nothing about the page asked for. Two actions on the landing: Sign in
+  (`to=/`) and Subscribe to job alerts (`to=/alerts`).
+- **The `/admin` door checks a ROLE** (`functions/_roles.js` `whoIs`, owner or
+  admin on the Users board). A verified sign-in no longer means the owner
+  listed you; before this, any signed-in person could read every queue, the
+  rulings with his reasons and the Users board.
+- **A subscriber's own link passes with no sign-in** (review, 2026-10-22):
+  `/alerts?t=<token>`, `GET /api/alerts?t=`, and a JSON POST to
+  `/api/alerts` whose body is confirm, update, sync or stop with a
+  well-formed token (read off a clone, so alerts.js still gets the body).
+  Gated, the stop link in every alert email led to a sign-in, which the law on
+  commercial email does not allow. A NEW subscription still needs a sign-in.
+  `/data/sectors.json` is public for the alerts page; company names are not.
+- `/admin/hunter/` (exactly) is open to any signed-in person: the account
+  menu sends every member there and it holds no data. Every other `/admin`
+  spelling needs the role.
+- **Revoking an admin is now the Users board plus a deploy**, not the Access
+  policy: with the policy at Everyone there is no line to take a person off.
+  A revoke reaches the door when the next build ships `users.json`.
+- While the boards are signed-in, `sitemap.xml` lists `/` alone and
+  `robots.txt` allows `/` and the art (`build_site.boards_signed_in` reads
+  `GATED` off `_gate.js`; `/?utm_` is allowed too, so a shared link unfurls).
+  `csp.py` has a `landing` kind with no script; the landing served at `/` gets
+  the holding policy, which allows no script.
+- Guards: `check_the_front_page_is_whole_and_public` (shipped, no script, no
+  counts, no placeholder, every file it loads in `PUBLIC`), the front-door and
+  subscriber cases in `check_the_site_is_signed_in_only_until_launch`, and the
+  role cases in `check_the_admin_door_is_verified_on_every_hostname`. Blind
+  review (3 lenses, a skeptic each): 4 confirmed and 9 smaller, all fixed;
+  22 of 22 breakages caught.
+- The owner's dashboard steps are DEPLOY.md §3a: Path `admin` back on the
+  Access application, policy Everyone with One-time PIN, Fail closed kept.
+  Until he does them, Access still covers the whole host and nothing changes
+  on sledjobs.com; the pages.dev alias shows the landing at once.
+
+**Until 2026-10-22 the WHOLE site was signed-in only (owner, 2026-10-05).**
 `functions/_gate.js` runs first in `functions/_middleware.js` on every page,
 data file and endpoint, on every hostname. It checks the same Access sign-in
 as the `/admin` door, and the verifier both doors share lives in

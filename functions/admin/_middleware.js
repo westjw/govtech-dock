@@ -31,6 +31,7 @@
  * this file exists to have - "nothing works", never "everyone can read".
  */
 import { verify, tokenOf } from "../_access.js";
+import { whoIs, ADMIN_ROLES } from "../_roles.js";
 
 export { verify };
 
@@ -58,6 +59,22 @@ export async function onRequest(context) {
   if (!claims) {
     return refuse(url, 403, "the sign-in could not be verified for this application "
       + "(ACCESS_AUD / ACCESS_TEAM_DOMAIN name which one)");
+  }
+  // A SIGN-IN IS NOT A ROLE (owner, 2026-10-22: anyone may sign in, free, to
+  // see the boards). Until then only the people Access listed could sign in,
+  // and a verified token was enough to read every queue, the owner's
+  // rulings with his reasons and the Users board. Now the Users board
+  // decides: owner or admin, or nothing under /admin. rule.js still checks
+  // the role for each write on its own (a grant needs the owner).
+  // ONE PAGE UNDER /admin IS FOR EVERY SIGNED-IN PERSON: /admin/hunter/, the
+  // Job Hunter beta page the account menu sends every member to (index.html
+  // whoAmI). It holds no data - it reads whoami and posts a beta code to
+  // /api/beta - so a sign-in is enough. Exactly that spelling; every other
+  // one stays behind the role (review, 2026-10-22).
+  const who = url.pathname === "/admin/hunter/" ? { roles: ADMIN_ROLES }
+    : await whoIs(request, env, claims.email);
+  if (!who || !who.roles.some((r) => ADMIN_ROLES.includes(r))) {
+    return refuse(url, 403, "signed in, but the Users board has not granted you the admin");
   }
   // THE VERIFIED IDENTITY TRAVELS WITH THE REQUEST. The handlers behind this
   // door read the person from here, never from Cf-Access-Authenticated-User-

@@ -1568,6 +1568,29 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
     c = out.get("certs_down") or {}
     if c.get("status") != 503 or c.get("reached"):
         errors += fail(f"with the Access keys unreachable the door must be 503, got {c}")
+    # A SIGN-IN IS NOT A ROLE (owner, 2026-10-22: anyone may sign in, free).
+    # Only the Users board's owner and admins get past the door; a stranger,
+    # a Job Hunter-only person, a revoked row, a token with no address and a
+    # Users board that cannot be read all stay out.
+    if (out.get("owner_in") or {}).get("status") != 200 or not (out.get("owner_in") or {}).get("reached"):
+        errors += fail(f"the owner (address in another case, with a space) was refused: {out.get('owner_in')}")
+    for k, what in (("stranger", "a signed-in stranger"), ("hunter_only", "a Job Hunter-only person"),
+                    ("revoked", "a revoked admin"), ("no_email", "a token naming no address"),
+                    ("stranger_api", "a signed-in stranger at the rule endpoint"),
+                    ("users_down", "anyone, with the Users board unreadable")):
+        c = out.get(k) or {}
+        if c.get("status") != 403 or c.get("reached"):
+            errors += fail(f"the admin door let in {what} ({c.get('status')}, reached={c.get('reached')})")
+    # THE JOB HUNTER BETA PAGE is every signed-in person's, at one spelling:
+    # the account menu sends every member there (review, 2026-10-22)
+    for k in ("hunter_page_member", "hunter_page_stranger"):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached") or not (c.get("identity") or {}).get("email"):
+            errors += fail(f"the beta page refused a signed-in member, or lost who they are ({k}: {c.get('status')})")
+    for k in ("hunter_page_noslash", "hunter_page_file", "hunter_page_anon"):
+        c = out.get(k) or {}
+        if c.get("status") != 403 or c.get("reached"):
+            errors += fail(f"{k} passed the admin door; only /admin/hunter/ is open to members")
     if not out.get("keys_cached"):
         errors += fail("the door refetches the Access keys on every request")
     api = out.get("api_no_token") or {}
@@ -1581,8 +1604,74 @@ def check_the_admin_door_is_verified_on_every_hostname() -> int:
     return errors
 
 
+def check_the_front_page_is_whole_and_public() -> int:
+    """landing.html ships, runs no script, sells no counts, and every file it
+    loads is one the gate serves to a visitor with no sign-in.
+
+    Owner, 2026-10-22: a public landing page, the boards behind a sign-in,
+    "you selling these numbers too hard", "we want people to log in and
+    subscribe". The page is the one public address, so an image or icon it
+    names that the gate refuses is a broken picture on the front door, and a
+    script on it would run under a policy that allows none.
+    """
+    import shutil
+    import subprocess
+    errors = 0
+    import build_site as bs
+    page = ROOT / "landing.html"
+    if "landing.html" not in bs.SHIP or not page.exists():
+        return fail("landing.html is not shipped, so / has nothing to show a visitor")
+    src = page.read_text()
+    if re.search(r"<script|\son[a-z]+\s*=|javascript:", src, re.I):
+        errors += fail("landing.html carries a script, an inline handler or a javascript: url")
+    if "/_blob/" in src or "support.js" in src or "<x-dc" in src or "<helmet" in src:
+        errors += fail("landing.html still carries the design canvas's own markup or image addresses")
+    text = re.sub(r"<[^>]+>", " ", src.split("<body>", 1)[-1])
+    if re.search(r"\[[A-Za-z][^\]]*\]", text):
+        errors += fail("landing.html shows a [placeholder] to the public")
+    if re.search(r"\b\d{1,3}(?:,\d{3})+\b", text):
+        errors += fail("landing.html sells a count again; the owner asked for none")
+    for want in ('href="https://sledjobs.com/admin/api/login?to=%2F"',
+                 'href="https://sledjobs.com/admin/api/login?to=%2Falerts"'):
+        if want not in src:
+            errors += fail(f"landing.html lost one of its two actions ({want})")
+    loads = re.findall(r'<img[^>]+src="(/[^"]+)"', src)
+    loads += re.findall(r'<link[^>]+rel="(?:icon|apple-touch-icon)"[^>]*href="(/[^"]+)"', src)
+    loads += [u.replace("https://sledjobs.com", "") for u in
+              re.findall(r'<meta property="og:image" content="(https://sledjobs.com/[^"]+)"', src)]
+    for u in loads:
+        if not (ROOT / u.lstrip("/")).exists():
+            errors += fail(f"landing.html names {u}, which is not in the repository")
+    if not shutil.which("node"):
+        print("  note: node is not installed; the landing page's files were not held to the gate")
+        return errors
+    js = ("import(" + json.dumps((ROOT / "functions" / "_gate.js").as_uri()) + ").then(m => "
+          "console.log(JSON.stringify(" + json.dumps(loads) + ".map(p => m.PUBLIC.some(rx => rx.test(p))))))")
+    r = subprocess.run(["node", "--input-type=module", "-e", js], capture_output=True, text=True, timeout=60)
+    try:
+        ok = json.loads(r.stdout.strip())
+    except ValueError:
+        return errors + fail(f"the gate's PUBLIC list could not be read: {r.stderr[-200:]}")
+    for u, good in zip(loads, ok):
+        if not good:
+            errors += fail(f"landing.html loads {u}, which the gate refuses a visitor: a broken "
+                           f"picture on the public front page")
+    if len(loads) < 4:
+        errors += fail(f"the check found only {len(loads)} file(s) the landing page loads; it is not looking")
+    return errors
+
+
 def check_the_site_is_signed_in_only_until_launch() -> int:
-    """Until launch, nothing on the site is served without a verified sign-in.
+    """The front door is public; nothing else is served without a sign-in.
+
+    Since 2026-10-22 (owner: "we need a better landing page, accessing the
+    job, company, and conference boards should be sign in") a visitor with
+    no sign-in gets the landing page at / and the files it loads, and every
+    board page, data file and endpoint stays as gated as it was. The rest of
+    this note is the history of the whole-site gate, still true of every
+    path but the front door.
+
+    Until launch, nothing on the site is served without a verified sign-in.
 
     The owner decided on 2026-10-05 that SLED JOBS stays private until it is
     ready to go live. Cloudflare Access is the main door, but Access never
@@ -1717,8 +1806,78 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
     if gated is not True:
         return errors + fail(f"functions/_gate.js exports no boolean GATED ({gated!r})")
 
+    # THE FRONT DOOR IS PUBLIC (owner, 2026-10-22: "we need a better landing
+    # page, accessing the job, company, and conference boards should be sign
+    # in"). / with no sign-in, with a shared link's tracking, on the alias,
+    # with a bad token or with the keys down, is the landing page: 200,
+    # indexable, never cached by anyone (the same address is the boards
+    # after a sign-in), and never the board itself. A HEAD is the same
+    # answer with no body. With the landing file missing it falls back to
+    # the sign-in page, never to the board.
+    for k in ("front_home", "front_utm", "front_alias", "front_bad_token", "certs_down_home"):
+        c = out.get(k) or {}
+        if (c.get("status") != 200 or c.get("reached") or "LANDING-PAGE-MARKER" not in c.get("body", "")
+                or "noindex" in c.get("robots", "") or "no-store" not in c.get("cache", "")
+                or "cookie" not in c.get("vary", "").lower()):
+            errors += fail(f"the front door ({k}) did not answer the landing page, uncached and "
+                           f"indexable: {({x: c.get(x) for x in ('status', 'reached', 'robots', 'cache', 'vary')})}")
+    head = out.get("front_head") or {}
+    if head.get("status") != 200 or head.get("reached") or head.get("body"):
+        errors += fail(f"a HEAD of the front door is not the landing page's headers alone: {head.get('status')}")
+    nol = out.get("front_no_landing") or {}
+    if nol.get("status") != 403 or nol.get("reached"):
+        errors += fail(f"with the landing file missing the front door answered {nol.get('status')}, "
+                       f"reached={nol.get('reached')}; it must fall back to the sign-in page")
+    # A SUBSCRIBER'S OWN LINK PASSES with no sign-in (review, 2026-10-22: the
+    # stop link in every alert email led to a sign-in, which the law on
+    # commercial email does not allow), and the body the gate peeked at is
+    # still there for alerts.js to read
+    for k in ("sub_page", "sub_page_html", "sub_api_get", "sub_stop", "sub_confirm"):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached"):
+            errors += fail(f"a subscriber's own link ({k}) was refused ({c.get('status')}); "
+                           f"stopping the emails must not need a sign-in")
+        if c.get("bodyUsed"):
+            errors += fail(f"the gate consumed the body of {k}; alerts.js would read nothing")
+    if (out.get("front_mailchimp") or {}).get("status") != 200:
+        errors += fail("a newsletter's tracking parameters turned the front door into the sign-in page")
+    if "We could not check your sign-in." not in (out.get("certs_down") or {}).get("body", ""):
+        errors += fail("with the keys down the page tells a signed-in person to sign in, "
+                       "rather than saying we could not check")
+    for k in ("public_mascot", "public_lockup", "public_favicon", "public_og",
+              "public_robots", "public_sitemap", "public_sectors"):
+        c = out.get(k) or {}
+        if c.get("status") != 200 or not c.get("reached"):
+            errors += fail(f"the landing page's own file {k} is not served to a visitor "
+                           f"({c.get('status')}); the public page would draw broken")
     shut = {
-        "anon_home": "the home page with no sign-in",
+        "anon_home": "the jobs board (/?tab=jobs) with no sign-in",
+        "anon_role": "a role, deep-linked, with tracking on it",
+        "anon_index": "/index.html, the board by its file name",
+        "anon_landing": "/landing asked for directly (it is served at / only)",
+        "anon_conference": "a conference page",
+        "anon_logo": "a company's logo (the board's, not the landing page's)",
+        "anon_og_other": "another tab's share card",
+        "trick_public_enc": "an encoded path out of the public art folder",
+        "trick_public_dot": "a dot-dot path out of the public art folder",
+        "trick_public_sub": "a dot-dot path through a folder under the art",
+        "trick_public_qs": "a page named like a public file",
+        "trick_public_post": "a POST to a public file",
+        "trick_front_post": "a POST to the front door",
+        "trick_front_path": "// (not the front door)",
+        "sub_page_none": "the alerts page with no token",
+        "sub_page_bad": "the alerts page with a malformed token",
+        "sub_api_get_bad": "the alerts endpoint read with a malformed token",
+        "sub_subscribe": "a NEW subscription with no sign-in (log in and subscribe)",
+        "sub_subscribe_t": "a new subscription carrying a token",
+        "sub_bad_token": "a stop with a malformed token",
+        "sub_odd_action": "an action the token links never send",
+        "sub_text_body": "a token action sent as text, not JSON",
+        "sub_array": "a token action wrapped in an array",
+        "sub_garbled": "a body that is not JSON",
+        "sub_elsewhere": "a token action aimed at another endpoint",
+        "sub_other_page": "another page carrying a token",
+        "anon_names": "the company names list (the board's)",
         "anon_alias_page": "a company page on the pages.dev alias",
         "anon_board_data": "the board's data file",
         "anon_meta": "a meta index",
@@ -1738,7 +1897,6 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         "oneclick_json": "a JSON POST to the alerts endpoint carrying a token",
         "oneclick_no_token": "a form POST to the alerts endpoint with no token",
         "oneclick_bad_token": "a form POST with a malformed token",
-        "oneclick_get": "a GET to the alerts endpoint carrying a token",
         "oneclick_elsewhere": "a form POST to another endpoint",
     }
     # A MAIL CLIENT'S ONE-CLICK UNSUBSCRIBE PASSES, in both RFC 8058 encodings:
@@ -1761,8 +1919,11 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
         if not ((out.get(k) or {}).get("json") or {}).get("error"):
             errors += fail(f"{k}: an endpoint refusal is not JSON with an error")
     home = (out.get("anon_home") or {}).get("body", "")
-    if 'href="https://sledjobs.com/admin/api/login?to=%2F"' not in home:
-        errors += fail("the holding page has no sign-in link back to the page asked for")
+    if 'href="https://sledjobs.com/admin/api/login?to=%2F%3Ftab%3Djobs"' not in home:
+        errors += fail("the sign-in page has no sign-in link back to the board page asked for")
+    if 'href="https://sledjobs.com/"' not in home or "free" not in home:
+        errors += fail("the sign-in page does not say signing in is free, or does not link "
+                       "to the front page for a visitor who does not know the site")
     alias = (out.get("anon_alias_page") or {}).get("body", "")
     if 'href="https://sledjobs.com/admin/api/login?to=' not in alias:
         errors += fail("on the alias the sign-in link does not go to sledjobs.com, "
@@ -1773,6 +1934,7 @@ def check_the_site_is_signed_in_only_until_launch() -> int:
     for k, what in (("login_open", "/admin/api/login"),
                     ("whoami_open", "/admin/api/whoami"),
                     ("valid_header", "a valid token in the Access header"),
+                    ("valid_tab", "a signed-in person on a board tab"),
                     ("valid_cookie", "a valid token in the cookie, on the alias"),
                     ("valid_api_post", "a signed-in POST to an endpoint")):
         c = out.get(k) or {}
@@ -8804,10 +8966,16 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
     if "https://www.sledjobs.com/cdn-cgi/challenge-platform/" not in (C["www"].get(hdr) or ""):
         errors += fail("the challenge path does not follow the host the page was asked on")
     hold = C.get("holding") or {}
+    land = C.get("landing") or {}
     if gated:
         if hold.get("status") != 403 or "'nonce-" not in (hold.get("enforce") or "") \
                 or "sha256" in (hold.get("enforce") or "") or hold.get("report"):
             errors += fail(f"the gate's holding page is not under an ENFORCED policy with no hashes: {hold}")
+        # THE PUBLIC FRONT PAGE runs no script either: it is served under the
+        # same enforced, hash-free policy (owner, 2026-10-22)
+        if land.get("status") != 200 or "'nonce-" not in (land.get("enforce") or "") \
+                or "sha256" in (land.get("enforce") or "") or land.get("report"):
+            errors += fail(f"the landing page at / is not under an ENFORCED policy with no hashes: {land}")
     # after launch an unsigned visitor gets the page itself, under its policy
     elif hold.get("status") != 200 or "'nonce-" not in (hold.get(hdr) or ""):
         errors += fail(f"with the gate off, an unsigned visitor's page carries no policy: {hold}")
@@ -10155,12 +10323,32 @@ def check_search_and_previews_see_what_is_there() -> int:
             ok = False
         if not ok or "<pubDate>" not in feed:
             errors += fail("feed.xml's dates are not RSS dates, or its items carry none")
-        bs.write_crawl_files(out, tiny, brand)
-        sm = (out / "sitemap.xml").read_text()
-        home = re.search(r"<url><loc>[^<]*/</loc>(.*?)</url>", sm)
-        role = re.search(r"<loc>[^<]*\?role=a%3A%3Ac%3A%3A2</loc><lastmod>([^<]+)</lastmod>", sm)
-        if (home and "<lastmod>" in home.group(1)) or not role or role.group(1) != "2026-08-20":
-            errors += fail("the sitemap's lastmod is the build day rather than a true date or none")
+        signed = bs.boards_signed_in
+        try:
+            bs.boards_signed_in = lambda: False          # the board as it will be, public
+            bs.write_crawl_files(out, tiny, brand)
+            sm = (out / "sitemap.xml").read_text()
+            home = re.search(r"<url><loc>[^<]*/</loc>(.*?)</url>", sm)
+            role = re.search(r"<loc>[^<]*\?role=a%3A%3Ac%3A%3A2</loc><lastmod>([^<]+)</lastmod>", sm)
+            if (home and "<lastmod>" in home.group(1)) or not role or role.group(1) != "2026-08-20":
+                errors += fail("the sitemap's lastmod is the build day rather than a true date or none")
+            # WHILE THE BOARDS ARE SIGNED-IN (owner, 2026-10-22) only the front
+            # door is offered to a crawler: one url, and robots.txt says so
+            bs.boards_signed_in = lambda: True
+            bs.write_crawl_files(out, tiny, brand)
+            sm = (out / "sitemap.xml").read_text()
+            rb = (out / "robots.txt").read_text()
+            if re.findall(r"<loc>([^<]+)</loc>", sm) != [brand["site"].rstrip("/") + "/"]:
+                errors += fail(f"with the boards signed-in the sitemap lists more than the front "
+                               f"door: {re.findall(r'<loc>([^<]+)</loc>', sm)[:4]}")
+            if ("Allow: /$" not in rb or "Disallow: /\n" not in rb
+                    or "Allow: /assets/mascot/" not in rb or not (out / "404.html").exists()):
+                errors += fail("with the boards signed-in robots.txt does not keep crawlers to the "
+                               "front page and its art, or the 404 page was not written")
+        finally:
+            bs.boards_signed_in = signed
+        if bs.boards_signed_in() != ("export const GATED = true;" in (ROOT / "functions" / "_gate.js").read_text()):
+            errors += fail("build_site reads the gate's switch differently from the gate")
     bsrc = (ROOT / "scripts" / "build_site.py").read_text()
     if "': who is hiring' if hiring else ''" not in bsrc or '"h": bool(hiring)}' not in bsrc:
         errors += fail("a conference page says 'who is hiring' over a floor where nobody is")
@@ -21530,7 +21718,15 @@ def check_sitemap_offers_the_job_pages() -> int:
                     f"({_BUILT.get('why')}), so the sitemap checks cannot "
                     f"run")
     sm = _b / "sitemap.xml"
-    if sm.exists():
+    import build_site as _bs
+    if sm.exists() and _bs.boards_signed_in():
+        # WHILE THE BOARDS ARE SIGNED-IN (owner, 2026-10-22) a role, company or
+        # conference url answers a crawler 403; the sitemap offers / alone
+        urls = re.findall(r"<loc>(.*?)</loc>", sm.read_text())
+        if urls != ["https://sledjobs.com/"]:
+            bad += fail(f"with the boards signed-in the built sitemap lists {urls[:3]}..., "
+                        f"not the front page alone")
+    elif sm.exists():
         urls = re.findall(r"<loc>(.*?)</loc>", sm.read_text())
         roles = sum(1 for u in urls if "?role=" in u)
         if not roles:
@@ -22793,8 +22989,13 @@ def check_crawl_files() -> int:
     brand = {**_json.loads((DATA / "brand.json").read_text()),
              "site": "https://example.test", "name": "SLED JOBS"}
     tmp = _pl.Path(tempfile.mkdtemp())
+    signed = build_site.boards_signed_in
     try:
+        # the board as it will be, public: while the boards are signed-in the
+        # sitemap is the front page alone (check_search_and_previews_see_what_is_there)
+        build_site.boards_signed_in = lambda: False
         build_site.write_crawl_files(tmp, board, brand)
+        build_site.boards_signed_in = signed
         # AND THE PAGES THEMSELVES, in the same temp tree. This harness used to
         # assert only that the two PREDICATES agreed, which is a weaker claim
         # than the one that matters: it could not have caught a sitemap entry
@@ -22886,6 +23087,7 @@ def check_crawl_files() -> int:
         if "noindex" not in four:
             errors += fail("404.html is missing noindex")
     finally:
+        build_site.boards_signed_in = signed
         shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
@@ -35127,6 +35329,7 @@ def main() -> int:
     errors += check_a_slow_site_cannot_outlast_the_sweep()
     errors += check_sled_hq_jobs_reach_the_board()
     errors += check_the_supplier_export_follows_every_intake()
+    errors += check_the_front_page_is_whole_and_public()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()

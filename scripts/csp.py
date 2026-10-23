@@ -49,6 +49,10 @@ ROUTES = [
     ("company", r"^/c/"),
     ("static", r"^/(s|e)/"),
     ("app", r"^/(index\.html)?$"),
+    # the public front page, which the gate also serves at / to a visitor
+    # with no sign-in (under the holding page's policy, which allows no
+    # script either)
+    ("landing", r"^/landing(\.html)?/?$"),
     ("none", r""),
 ]
 
@@ -92,6 +96,8 @@ def kind_of(rel: str) -> str | None:
         return rel[:-5]
     if rel == "404.html":
         return "none"
+    if rel == "landing.html":
+        return "landing"
     if rel in ("admin/index.html", "admin/hunter/index.html"):
         return "admin"
     if re.fullmatch(r"c/[^/]+\.html", rel):
@@ -234,7 +240,7 @@ def expected(root: pathlib.Path, brand: dict, hunter: str, lightmark: str) -> di
         "claim": of(src("claim.html")),
         "admin": of(src("admin-web.html")) + of(hunter),
         "company": of(lightmark),
-        "static": [], "none": [],
+        "static": [], "none": [], "landing": [],
     }
 
 

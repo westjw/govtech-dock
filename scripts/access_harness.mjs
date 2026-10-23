@@ -37,6 +37,23 @@ globalThis.fetch = async (url) => {
   return new Response("nope", { status: 404 });
 };
 
+// THE USERS BOARD, served the way the edge serves it (env.ASSETS), keyed by
+// the hash of each address. person@desk is an admin; the rest are not.
+const { createHash } = await import("node:crypto");
+const h = (e) => createHash("sha256").update(e).digest("hex");
+const USERS = {
+  wyeth: { email_sha256: h("owner@desk"), roles: ["owner"] },
+  ana: { email_sha256: h("person@desk"), roles: ["admin"] },
+  hal: { email_sha256: h("hunter@desk"), roles: ["hunter"] },
+  rex: { email_sha256: h("revoked@desk"), roles: ["admin"], revoked_on: "2026-10-01" },
+};
+let usersDown = false;
+const ENV = { ASSETS: { fetch: async (u) => {
+  if (usersDown) throw new Error("assets down");
+  return String(u).endsWith("/admin/users.json")
+    ? new Response(JSON.stringify(USERS), { status: 200 }) : new Response("no", { status: 404 });
+} } };
+
 async function ask(path, { header, cookie } = {}) {
   const headers = new Headers();
   if (header) headers.set("Cf-Access-Jwt-Assertion", header);
@@ -44,7 +61,7 @@ async function ask(path, { header, cookie } = {}) {
   const req = new Request(`https://solesource-c6g.pages.dev${path}`, { headers });
   let reached = false;
   const data = {};
-  const res = await onRequest({ request: req, env: {}, data, next: async () => { reached = true; return new Response("ok", { status: 200 }); } });
+  const res = await onRequest({ request: req, env: ENV, data, next: async () => { reached = true; return new Response("ok", { status: 200 }); } });
   let body = "";
   try { body = await res.text(); } catch { body = ""; }
   return { status: res.status, reached, json: body.startsWith("{") ? JSON.parse(body) : null, body,
@@ -63,6 +80,22 @@ out.forged_sig      = await ask("/admin/users.json", { header: mint({}, { key: o
 out.garbage         = await ask("/admin/users.json", { header: "a.b.c" });
 out.api_no_token    = await ask("/admin/api/rule");
 out.whoami_open     = await ask("/admin/api/whoami");
+// SIGNED IN IS NOT ENOUGH: only the Users board's owner and admins get in
+out.owner_in        = await ask("/admin/rulings.json", { cookie: mint({ email: "Owner@Desk " }) });
+out.stranger        = await ask("/admin/data.json", { cookie: mint({ email: "stranger@desk" }) });
+out.hunter_only     = await ask("/admin/data.json", { cookie: mint({ email: "hunter@desk" }) });
+out.revoked         = await ask("/admin/data.json", { cookie: mint({ email: "revoked@desk" }) });
+out.no_email        = await ask("/admin/data.json", { cookie: mint({ email: undefined }) });
+out.stranger_api    = await ask("/admin/api/rule", { cookie: mint({ email: "stranger@desk" }) });
+// the Job Hunter beta page is for every signed-in person, at exactly one spelling
+out.hunter_page_member   = await ask("/admin/hunter/", { cookie: mint({ email: "hunter@desk" }) });
+out.hunter_page_stranger = await ask("/admin/hunter/", { cookie: mint({ email: "stranger@desk" }) });
+out.hunter_page_noslash  = await ask("/admin/hunter", { cookie: mint({ email: "stranger@desk" }) });
+out.hunter_page_file     = await ask("/admin/hunter/index.html", { cookie: mint({ email: "stranger@desk" }) });
+out.hunter_page_anon     = await ask("/admin/hunter/");
+usersDown = true;
+out.users_down      = await ask("/admin/data.json", { cookie: mint({}) });
+usersDown = false;
 out.login_open      = await ask("/admin/api/login?to=/");
 const before = certsFetches;
 await ask("/admin/users.json", { header: mint({}) });

@@ -130,6 +130,47 @@ Two things to know:
 4. **Custom domains** tab → add the domain you bought. Cloudflare wires DNS
    itself since it is the registrar.
 
+## 3a. The front page is public; the boards are signed-in (decided 2026-10-22)
+
+The owner: "we need a better landing page, accessing the job, company, and
+conference boards should be sign in", "we want people to log in and
+subscribe", and **anyone may sign in, free** (an email and a one-time code).
+In code, as of this change:
+- A visitor with no sign-in at `/` gets `landing.html`, and the mascot art and
+  the front page's share card it loads (`functions/_gate.js` `PUBLIC`).
+  Everything else stays exactly as gated as §3 below says: a board page gets
+  the sign-in page (option 1 of the landing canvas), an endpoint gets JSON 403.
+- A signed-in person at `/` gets the boards, as before.
+- **The `/admin` door now checks a role** (`functions/_roles.js`): owner or
+  admin on the Users board, or nothing. Until today a sign-in meant you were
+  on the Access list; once anyone can sign in, a sign-in alone must not open
+  the queues, the rulings or the Users board.
+
+**Your steps in the dashboard, in this order (about 3 minutes):**
+1. Keep **Fail closed** (§3 step 1). Still required.
+2. Zero Trust → Access controls → Applications → the EXISTING application →
+   **Edit** → put the **Path** `admin` back on all three hostnames
+   (`sledjobs.com`, `www.sledjobs.com`, `solesourcejobs.com`). Access then
+   guards only `/admin`, and the code gate decides everything else. Still no
+   new application and no `*.sledjobs.com` wildcard.
+3. Same application → **Policies**: let anyone sign in. Allow, Include
+   **Everyone**, login method **One-time PIN**. Strangers who sign in see the
+   boards; the `/admin` door turns away anyone the Users board has not made an
+   owner or admin, you included only if your row says so (it does: owner,
+   admin, hunter).
+4. Same application → **Settings** → the Cookie **Path Attribute** stays OFF,
+   so the sign-in made at `/admin/api/login` counts on every page.
+
+**After step 3, taking someone's admin away is the Users board, not Access.**
+The policy admits everyone, so there is no line to remove. Revoke them on the
+Users board; it takes effect when the next build ships `users.json`.
+
+**Check it afterwards:**
+- `curl -sI https://sledjobs.com/` → `200`, no `location:` to cloudflareaccess.com
+- `curl -sI "https://sledjobs.com/?tab=jobs"` → `403` (the sign-in page)
+- `curl -sI https://sledjobs.com/data/board.json` → `403`
+- Sign in as a non-admin address and open `/admin/` → `403`
+
 ## 3. Signed-in only until launch (decided 2026-10-05)
 The whole site stays private until it is ready to go live. Two doors guard it,
 and both check a sign-in from the SAME Access application, the one that

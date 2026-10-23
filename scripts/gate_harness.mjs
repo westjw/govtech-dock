@@ -39,35 +39,77 @@ globalThis.fetch = async (url) => {
   return new Response("nope", { status: 404 });
 };
 
-async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie, ctype, nextStatus = 200 } = {}) {
+// The site's own files, the way the edge serves them to a Function: only the
+// landing page is ever asked for here (functions/_gate.js LANDING).
+let landingUp = true;
+const LANDING_HTML = "<!doctype html><title>landing</title><h1>LANDING-PAGE-MARKER</h1>";
+const ENV = { ASSETS: { fetch: async (u) => {
+  const path = new URL(String(u)).pathname;
+  if (path === "/landing" && landingUp) return new Response(LANDING_HTML, { status: 200, headers: { "content-type": "text/html" } });
+  return new Response("not found", { status: 404 });
+} } };
+
+async function ask(path, { host = "sledjobs.com", method = "GET", header, cookie, ctype, nextStatus = 200, body } = {}) {
   const headers = new Headers();
   if (ctype) headers.set("content-type", ctype);
   if (header) headers.set("Cf-Access-Jwt-Assertion", header);
   if (cookie) headers.set("Cookie", `other=1; CF_Authorization=${cookie}`);
-  const req = new Request(`https://${host}${path}`, { method, headers });
+  const req = new Request(`https://${host}${path}`, body === undefined ? { method, headers } : { method, headers, body });
   let reached = false;
-  const res = await onRequest({ request: req, env: {},
+  const res = await onRequest({ request: req, env: ENV,
     next: async () => { reached = true; return new Response("ok", { status: nextStatus, headers: { "content-type": "text/plain" } }); } });
-  let body = "";
-  try { body = await res.text(); } catch { body = ""; }
-  return { status: res.status, reached,
+  let text = "";
+  try { text = await res.text(); } catch { text = ""; }
+  return { status: res.status, reached, bodyUsed: req.bodyUsed,
            xfo: res.headers.get("x-frame-options") || "",
            fa: res.headers.get("content-security-policy") || "",
            type: res.headers.get("content-type") || "",
            robots: res.headers.get("x-robots-tag") || "",
            cache: res.headers.get("cache-control") || "",
-           json: body.startsWith("{") ? JSON.parse(body) : null,
-           body: body.slice(0, 4000) };
+           vary: res.headers.get("vary") || "",
+           json: text.startsWith("{") ? JSON.parse(text) : null,
+           body: text.slice(0, 4000) };
 }
 
 const ALIAS = "solesource-c6g.pages.dev";
 const out = { gated: GATED };
-// ways in that must be shut while the site is gated
-out.anon_home        = await ask("/");
+// THE FRONT DOOR, open to anyone (owner, 2026-10-22): the landing page at /,
+// with or without a shared link's tracking, on every hostname, and the
+// files that page loads
+out.front_home       = await ask("/");
+out.front_head       = await ask("/", { method: "HEAD" });
+out.front_utm        = await ask("/?utm_source=linkedin&utm_medium=post");
+out.front_alias      = await ask("/", { host: ALIAS });
+out.front_bad_token  = await ask("/", { cookie: "a.b.c" });
+out.public_mascot    = await ask("/assets/mascot/svg/mascot-slide.svg");
+out.public_lockup    = await ask("/assets/mascot/png/lockup-horizontal@2x.png");
+out.public_favicon   = await ask("/assets/mascot/favicon/favicon-32.png");
+out.public_og        = await ask("/assets/og/home.png");
+out.public_robots    = await ask("/robots.txt");
+out.public_sitemap   = await ask("/sitemap.xml");
+landingUp = false;
+out.front_no_landing = await ask("/");
+landingUp = true;
+// ways in that must be shut while the boards are signed-in
+out.anon_home        = await ask("/?tab=jobs");
+out.anon_role        = await ask("/?role=acme::ae&utm_source=x");
+out.anon_index       = await ask("/index.html");
+out.anon_landing     = await ask("/landing");
+out.anon_conference  = await ask("/e/gfoa-2026.html");
+out.anon_logo        = await ask("/assets/logos/axon.png");
+out.anon_og_other    = await ask("/assets/og/jobs.png");
 out.anon_alias_page  = await ask("/c/verkada.html", { host: ALIAS });
 out.anon_board_data  = await ask("/data/board.json");
 out.anon_meta        = await ask("/meta-roles.json");
-out.anon_head        = await ask("/", { method: "HEAD" });
+out.anon_head        = await ask("/c/verkada.html", { method: "HEAD" });
+out.trick_public_enc = await ask("/assets/mascot/svg/..%2F..%2F..%2Fdata%2Fboard.json");
+out.trick_public_dot = await ask("/assets/mascot/svg/../../../data/board.json");
+out.trick_public_sub = await ask("/assets/mascot/svg/x/../../../../data/board.json");
+out.trick_public_qs  = await ask("/assets/mascot/svg/mascot-slide.svg.html");
+out.trick_public_post = await ask("/assets/mascot/svg/mascot-slide.svg", { method: "POST" });
+out.trick_front_post = await ask("/", { method: "POST" });
+out.trick_front_path = await ask("//");
+out.front_mailchimp  = await ask("/?mc_cid=abc&mc_eid=def");
 out.anon_api_post    = await ask("/api/alerts", { method: "POST" });
 out.anon_api_get     = await ask("/api/claim?t=x");
 out.anon_admin_file  = await ask("/admin/users.json", { host: ALIAS });
@@ -82,28 +124,52 @@ out.oneclick_no_token  = await ask("/api/alerts", { method: "POST", ctype: FORM 
 out.oneclick_bad_token = await ask("/api/alerts?t=short", { method: "POST", ctype: FORM });
 out.oneclick_get       = await ask(`/api/alerts?t=${T43}`, { ctype: FORM });
 out.oneclick_elsewhere = await ask(`/api/claim?t=${T43}`, { method: "POST", ctype: FORM });
+// A SUBSCRIBER'S OWN LINK, with no sign-in: the token pages and the token
+// actions pass; a new subscription and every near miss stay shut
+const JSONT = "application/json";
+out.sub_page         = await ask(`/alerts?t=${T43}&stop=1`);
+out.sub_page_html    = await ask(`/alerts.html?t=${T43}`);
+out.sub_api_get      = await ask(`/api/alerts?t=${T43}`);
+out.sub_stop         = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "stop", token: T43 }) });
+out.sub_confirm      = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "confirm", token: T43 }) });
+out.sub_page_none    = await ask("/alerts");
+out.sub_page_bad     = await ask("/alerts?t=short");
+out.sub_api_get_bad  = await ask("/api/alerts?t=short");
+out.sub_subscribe    = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "subscribe", email: "x@desk" }) });
+out.sub_subscribe_t  = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "subscribe", token: T43 }) });
+out.sub_bad_token    = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "stop", token: "short" }) });
+out.sub_odd_action   = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "export", token: T43 }) });
+out.sub_text_body    = await ask("/api/alerts", { method: "POST", ctype: "text/plain", body: JSON.stringify({ action: "stop", token: T43 }) });
+out.sub_array        = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: JSON.stringify([{ action: "stop", token: T43 }]) });
+out.sub_garbled      = await ask("/api/alerts", { method: "POST", ctype: JSONT, body: "{not json" });
+out.sub_elsewhere    = await ask("/api/claim", { method: "POST", ctype: JSONT, body: JSON.stringify({ action: "stop", token: T43 }) });
+out.sub_other_page   = await ask(`/claim?t=${T43}`);
+out.public_sectors   = await ask("/data/sectors.json");
+out.anon_names       = await ask("/data/company-names.json");
 out.trick_slash      = await ask("/admin/api/login/");
 out.trick_case       = await ask("/admin/api/LOGIN");
 out.trick_encoded    = await ask("/%61dmin/api/login");
 out.trick_double     = await ask("//admin/api/login");
 out.trick_dotdot     = await ask("/admin/api/whoami/../../data/board.json");
-out.expired          = await ask("/", { header: mint({ exp: Math.floor(Date.now() / 1000) - 5 }) });
-out.wrong_aud        = await ask("/", { header: mint({ aud: ["someone-elses-app"] }) });
-out.wrong_iss        = await ask("/", { header: mint({ iss: "https://evil.example" }) });
-out.unknown_kid      = await ask("/", { header: mint({}, { kid: "g9" }) });
-out.forged_sig       = await ask("/", { header: mint({}, { key: other.privateKey }) });
-out.garbage          = await ask("/", { cookie: "a.b.c" });
+out.expired          = await ask("/?tab=jobs", { header: mint({ exp: Math.floor(Date.now() / 1000) - 5 }) });
+out.wrong_aud        = await ask("/?tab=jobs", { header: mint({ aud: ["someone-elses-app"] }) });
+out.wrong_iss        = await ask("/?tab=jobs", { header: mint({ iss: "https://evil.example" }) });
+out.unknown_kid      = await ask("/?tab=jobs", { header: mint({}, { kid: "g9" }) });
+out.forged_sig       = await ask("/?tab=jobs", { header: mint({}, { key: other.privateKey }) });
+out.garbage          = await ask("/?tab=jobs", { cookie: "a.b.c" });
 out.xss              = await ask('/"><script>alert(1)</script>?q="><img src=x onerror=alert(1)>');
 // the two paths that stay open, and signed-in people
 out.login_open       = await ask("/admin/api/login?to=/");
 out.whoami_open      = await ask("/admin/api/whoami", { host: ALIAS });
 out.valid_header     = await ask("/", { header: mint({}) });
+out.valid_tab        = await ask("/?tab=companies", { cookie: mint({}) });
 out.valid_cookie     = await ask("/c/verkada.html", { host: ALIAS, cookie: mint({}) });
 out.valid_api_post   = await ask("/api/alerts", { method: "POST", cookie: mint({}) });
 // keys down: a fresh kid forces a refetch, and the gate must not open
 certsDown = true;
-out.certs_down       = await ask("/", { header: mint({}, { kid: "g2" }) });
+out.certs_down       = await ask("/?tab=jobs", { header: mint({}, { kid: "g2" }) });
 out.certs_down_api   = await ask("/api/alerts", { method: "POST", header: mint({}, { kid: "g3" }) });
+out.certs_down_home  = await ask("/", { header: mint({}, { kid: "g4" }) });
 
 // The sign-in link every refused visitor is sent to must only ever send them
 // back to this site. Each `to` is resolved the way a browser resolves the
@@ -198,7 +264,8 @@ if (process.env.CSP_MANIFEST) {
   C.home_twice = [await askHtml("/"), await askHtml("/")].map((r) => r.report || r.enforce);
   C.www = await askHtml("/", { host: "www.sledjobs.com" });
   C.alias = await askHtml("/c/verkada", { host: "solesource-c6g.pages.dev" });
-  C.holding = await askHtml("/", { signed: false });
+  C.holding = await askHtml("/?tab=jobs", { signed: false });
+  C.landing = await askHtml("/", { signed: false });
   C.holding_alerts = await askHtml("/alerts", { signed: false });
   C.plain = await askHtml("/", { type: "text/plain" });
   C.alerts = await askHtml("/alerts");

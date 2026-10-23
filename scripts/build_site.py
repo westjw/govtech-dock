@@ -61,7 +61,9 @@ def stamp_claims(board: dict) -> None:
 
 # Everything the public site is allowed to serve. Adding a file here is a
 # deliberate act; nothing is included by walking a directory.
-SHIP = ["index.html", "alerts.html", "claim.html"]
+# landing.html is the public front page: functions/_gate.js serves it at / to a
+# visitor with no sign-in (owner, 2026-10-22).
+SHIP = ["index.html", "alerts.html", "claim.html", "landing.html"]
 
 
 # Queue-row fields the admin page never reads. "why" and "evidence" are the
@@ -3272,6 +3274,69 @@ def write_headers(out: pathlib.Path) -> None:
 _JS_SAFE = "!~*'()"
 
 
+def _write_sitemap(out: pathlib.Path, urls: list) -> None:
+    """sitemap.xml from (url, changefreq, priority[, first seen]) rows."""
+    # A DATE THAT IS TRUE OR NONE. Every one of 9,450 urls said it changed on
+    # the build day, every night, so a crawler learns to ignore the field
+    # (launch audit 3). A role's is the day it first appeared; the rest omit it.
+    def lastmod(row):
+        d = row[3] if len(row) > 3 else None
+        return f"<lastmod>{html.escape(str(d)[:10])}</lastmod>" if d else ""
+    body = "\n".join(
+        f'  <url><loc>{html.escape(row[0])}</loc>{lastmod(row)}'
+        f'<changefreq>{row[1]}</changefreq><priority>{row[2]}</priority></url>'
+        for row in urls)
+    (out / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + body + "\n</urlset>\n")
+
+
+
+def _write_404(out: pathlib.Path, brand: dict) -> None:
+    """The site's own 404 page."""
+    # A real 404 body. Cloudflare Pages serves /404.html for an unmatched path,
+    # which turns every soft-404 into an honest one.
+    (out / "404.html").write_text(f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Not found &middot; {html.escape(brand['name'])}</title>
+<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
+<style>
+ body{{margin:0;background:#E8F1F7;color:#1F2536;
+   font:16px/1.6 Archivo,system-ui,sans-serif;display:grid;place-items:center;
+   min-height:100vh;padding:24px}}
+ @media (prefers-color-scheme:dark){{body{{background:#161B29;color:#E8F1F7}}}}
+ .b{{max-width:52ch;text-align:center}}
+ img{{width:96px;height:auto;margin:0 0 18px}}
+ h1{{font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.02em}}
+ p{{margin:0 0 18px;color:#556F82}}
+ @media (prefers-color-scheme:dark){{p{{color:#93A9BA}}}}
+ a{{color:#0B57C4;font-weight:600}}
+ @media (prefers-color-scheme:dark){{a{{color:#478EF5}}}}
+</style></head>
+<body><div class="b">
+<img src="/assets/mascot/svg/head-ghosted.svg" alt="">
+<h1>Nothing at this address</h1>
+<p>The page you asked for is not here. A role that has come off the board, or a
+company record that was merged into another, both end up looking like this.</p>
+<p><a href="/">Go to the front page</a></p>
+</div></body></html>
+""")
+
+
+def boards_signed_in() -> bool:
+    """Whether the boards are for signed-in members only: functions/_gate.js
+    GATED, read off the source the Function runs, so the crawl files and
+    the gate cannot disagree."""
+    src = (ROOT / "functions" / "_gate.js").read_text()
+    m = re.search(r"^export const GATED = (true|false);", src, re.M)
+    if not m:
+        raise SystemExit("functions/_gate.js declares no GATED; refusing to guess what is public")
+    return m.group(1) == "true"
+
+
 # CLOUDFLARE SERVES THE EXTENSIONLESS FORM AND 308s THE OTHER.
 #
 # /c/verkada.html answers 308 to /c/verkada, and /c/verkada then declared its
@@ -3298,6 +3363,24 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
     """
     site = brand["site"].rstrip("/")
     urls = [(f"{site}/", "daily", "1.0")]
+    # WHILE THE BOARDS ARE SIGNED-IN (functions/_gate.js, owner 2026-10-22)
+    # only the front door is public: a sitemap listing 9,000 addresses that
+    # answer a crawler 403 is a list of broken links, and robots.txt says the
+    # same thing a crawler would find out the slow way.
+    if boards_signed_in():
+        _write_sitemap(out, urls)
+        (out / "robots.txt").write_text(
+            "# The front page is public. The job, company and conference boards\n"
+            "# are for signed-in members, so a crawler meets a sign-in page there.\n"
+            "User-agent: *\n"
+            "Allow: /$\n"
+            "Allow: /?utm_\n"
+            "Allow: /assets/mascot/\n"
+            "Allow: /assets/og/home.png\n"
+            "Disallow: /\n"
+            f"\nSitemap: {site}/sitemap.xml\n")
+        _write_404(out, brand)
+        return {"urls": len(urls), "companies": 0}
     # The app's own tabs (index.html TABS). "market" and "alerts" were listed
     # here and neither is a tab: both opened the job list (2026-10-06).
     for tab in ("jobs", "companies", "conferences", "map", "intel"):
@@ -3387,21 +3470,7 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         urls.append((u, "daily", "0.9", seen))
     for u, seen in unread:
         urls.append((u, "daily", "0.7", seen))
-    # A DATE THAT IS TRUE OR NONE. Every one of 9,450 urls said it changed on
-    # the build day, every night, so a crawler learns to ignore the field
-    # (launch audit 3). A role's is the day it first appeared; the rest omit it.
-    def lastmod(row):
-        d = row[3] if len(row) > 3 else None
-        return f"<lastmod>{html.escape(str(d)[:10])}</lastmod>" if d else ""
-    body = "\n".join(
-        f'  <url><loc>{html.escape(row[0])}</loc>{lastmod(row)}'
-        f'<changefreq>{row[1]}</changefreq><priority>{row[2]}</priority></url>'
-        for row in urls)
-    (out / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + body + "\n</urlset>\n")
-
+    _write_sitemap(out, urls)
     (out / "robots.txt").write_text(
         "# Every page here is public and meant to be found.\n"
         "User-agent: *\n"
@@ -3411,35 +3480,7 @@ def write_crawl_files(out: pathlib.Path, board: dict, brand: dict) -> dict:
         "# error message instead of the role.\n"
         f"\nSitemap: {site}/sitemap.xml\n")
 
-    # A real 404 body. Cloudflare Pages serves /404.html for an unmatched path,
-    # which turns every soft-404 into an honest one.
-    (out / "404.html").write_text(f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Not found &middot; {html.escape(brand['name'])}</title>
-<link rel="icon" href="/assets/mascot/svg/favicon.svg" type="image/svg+xml">
-<style>
- body{{margin:0;background:#E8F1F7;color:#1F2536;
-   font:16px/1.6 Archivo,system-ui,sans-serif;display:grid;place-items:center;
-   min-height:100vh;padding:24px}}
- @media (prefers-color-scheme:dark){{body{{background:#161B29;color:#E8F1F7}}}}
- .b{{max-width:52ch;text-align:center}}
- img{{width:96px;height:auto;margin:0 0 18px}}
- h1{{font-size:26px;font-weight:800;margin:0 0 8px;letter-spacing:-.02em}}
- p{{margin:0 0 18px;color:#556F82}}
- @media (prefers-color-scheme:dark){{p{{color:#93A9BA}}}}
- a{{color:#0B57C4;font-weight:600}}
- @media (prefers-color-scheme:dark){{a{{color:#478EF5}}}}
-</style></head>
-<body><div class="b">
-<img src="/assets/mascot/svg/head-ghosted.svg" alt="">
-<h1>Nothing at this address</h1>
-<p>The page you asked for is not here. A role that has come off the board, or a
-company record that was merged into another, both end up looking like this.</p>
-<p><a href="/">Go to the board</a></p>
-</div></body></html>
-""")
+    _write_404(out, brand)
     return {"urls": len(urls), "companies": len(hiring)}
 
 
