@@ -154,7 +154,12 @@ In code, as of this change:
    guards only `/admin`, and the code gate decides everything else. Still no
    new application and no `*.sledjobs.com` wildcard.
 3. Same application → **Policies**: let anyone sign in. Allow, Include
-   **Everyone**, login method **One-time PIN**. Strangers who sign in see the
+   **Everyone**. Then **Login methods**: tick **Google** and **One-time
+   PIN**. Google is already an identity provider on this account (added for
+   Job Hunter on 2026-10-14, job-hunter `deploy/README.md`), so there is
+   nothing to set up in Google Cloud. Leave the Auth0 email-and-password
+   provider unticked here: its sign-ups are off, so it could only admit
+   people created by hand. Strangers who sign in see the
    boards; the `/admin` door turns away anyone the Users board has not made an
    owner or admin, you included only if your row says so (it does: owner,
    admin, hunter).
