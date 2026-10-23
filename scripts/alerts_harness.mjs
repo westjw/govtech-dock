@@ -99,6 +99,22 @@ out.confirmedEmTtl = ttlOf(emKey());
 await post({ action: "update", token, prefs: { cadence: "weekly",
   companies: ["accela", "ACCELA", "Bad Id!", "x".repeat(90), "tyler-technologies", 7] } });
 out.companiesStored = (JSON.parse(KV.get("sub:" + token).v).prefs || {}).companies;
+/* ...and the settings read names THOSE companies and no others, from the
+   board's list read through ASSETS (the list itself is signed-in only), and
+   an unreadable list costs nothing but the names. */
+const getSettings = async () => {
+  const res = await mod.onRequestGet({ request: { url: `https://sledjobs.com/api/alerts?t=${token}`,
+    headers: new Headers({ accept: "application/json" }) }, env });
+  return res.json();
+};
+env.ASSETS = { fetch: async (u) => String(u).endsWith("/data/company-names.json")
+  ? new Response(JSON.stringify({ accela: "Accela", "tyler-technologies": "Tyler Technologies", axon: "Axon" }), { status: 200 })
+  : new Response("no", { status: 404 }) };
+out.settingsNames = (await getSettings()).company_names;
+env.ASSETS = { fetch: async () => { throw new Error("assets down"); } };
+const down = await getSettings();
+out.settingsNamesDown = { ok: down.ok, names: down.company_names };
+delete env.ASSETS;
 
 /* 5. An already-subscribed address: one settings mail, then a cooldown. */
 const before = sent.length;

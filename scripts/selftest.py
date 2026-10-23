@@ -2954,6 +2954,25 @@ def check_an_alert_signup_keeps_its_promises() -> int:
         errors += fail(f"one caller signed up {d.get('oneCallerAccepted')} addresses "
                        f"and sent {d.get('oneCallerMails')} mails in a day; the "
                        f"allowance is 10, and the free mail plan is 100 a day")
+    # A SUBSCRIBER'S SETTINGS NAME THEIR OWN COMPANIES (review, 2026-10-22):
+    # the board's list is signed-in only, so the page could show only ids
+    if d.get("settingsNames") != {"accela": "Accela", "tyler-technologies": "Tyler Technologies"}:
+        errors += fail(f"the settings read does not name exactly the subscription's companies: "
+                       f"{d.get('settingsNames')}")
+    if d.get("settingsNamesDown") != {"ok": True, "names": {}}:
+        errors += fail(f"an unreadable company list broke the settings read: {d.get('settingsNamesDown')}")
+    # THE PAGE keeps the token until it has what it needs, and a failed
+    # confirm says so and can be pressed again
+    page = (ROOT / "alerts.html").read_text()
+    top = page[page.index("const TOKEN="):page.index("const CADENCE=")]
+    if 'history.replaceState(null,"","/alerts");\n' in top.replace("const hideToken=()=>{ if(TOKEN)history.replaceState(null,\"\",\"/alerts\"); };", ""):
+        errors += fail("alerts.html takes the token out of the address before the page has loaded")
+    if page.count("hideToken();") < 3:
+        errors += fail("alerts.html no longer hides the token once the page has read it")
+    if 'c=await api({action:"confirm",token:TOKEN});' not in page or "your alerts are not on yet" not in page:
+        errors += fail("a failed confirm on alerts.html says nothing and cannot be pressed again")
+    if "d.company_names" not in page:
+        errors += fail("alerts.html ignores the company names its settings read brings")
     return errors
 
 

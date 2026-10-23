@@ -179,7 +179,11 @@ const q=new URLSearchParams(location.search);
 const TOKEN=q.get("t");
 const WANT_CONFIRM=q.get("confirm")==="1";
 const WANT_STOP=q.get("stop")==="1";
-if(TOKEN)history.replaceState(null,"","/alerts");
+/* ...but only once the page has what it needs (review, 2026-10-22). Taken
+   out at once, a reload after "Your settings did not load" asked for /alerts
+   with no token: the sign-up form, and since the boards went signed-in, the
+   sign-in page for a subscriber who is not signed in. */
+const hideToken=()=>{ if(TOKEN)history.replaceState(null,"","/alerts"); };
 
 const CADENCE=[
   ["daily","Every weekday morning","Most roles land on weekday mornings, so this is the fastest you can hear."],
@@ -201,7 +205,7 @@ let COMPANIES=ID_RE.test(ASKED)?[ASKED]:[];
 let NAMES=null;                       // null: loading, false: unreadable
 fetch("data/company-names.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()})
   .then(n=>{NAMES=n&&typeof n==="object"?n:false;paintCompanies()})
-  .catch(()=>{NAMES=false;paintCompanies()});
+  .catch(()=>{if(!NAMES)NAMES=false;paintCompanies()});   // keep names a settings read brought
 function paintCompanies(){
   const box=$("#co-only"); if(!box)return;
   box.textContent="";
@@ -542,6 +546,7 @@ function settingsView(data){
       await new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
       r=await api({action:"stop",token:TOKEN});
     }
+    hideToken();
     $("#view").innerHTML=`<div class="panel"><h2>${r.ok?"Unsubscribed":"Already gone"}</h2>
       <p class="note">${r.ok?"The subscription and everything stored with it is deleted."
         :"That link no longer matches a subscription, so there is nothing to delete."}</p></div>`;
@@ -563,10 +568,24 @@ function settingsView(data){
     await button("Confirm your alerts",
       "Press the button to start your alerts. If you did not ask for them, close this tab and nothing is sent.",
       "Confirm alerts");
-    const c=await api({action:"confirm",token:TOKEN});
-    if(c.ok){ d.confirmed=true; justConfirmed=true; }
+    let c=await api({action:"confirm",token:TOKEN});
+    // our failure: say so, and let them press again (review, 2026-10-22: it
+    // said nothing and showed "use the link in your confirmation email")
+    while(!c.ok&&!GONE(c)){
+      $("#linkmsg").textContent="That did not go through, so your alerts are not on yet. "
+        +"That is our end, not your link. Press the button again in a minute.";
+      $("#linkgo").disabled=false;
+      await new Promise(res=>{ $("#linkgo").onclick=()=>{ $("#linkgo").disabled=true; res(); }; });
+      c=await api({action:"confirm",token:TOKEN});
+    }
+    if(c.ok){ d.confirmed=true; justConfirmed=true; } else d=c;
   }
   if(d.ok){
+    hideToken();
+    // the names of this subscription's companies come with its settings: the
+    // board's full list is signed-in only, and a subscriber opening this from
+    // an email need not be signed in
+    if(!NAMES&&d.company_names&&typeof d.company_names==="object")NAMES=d.company_names;
     settingsView(d);
     // after the new view's live region is in the tree, or it is not heard
     if(justConfirmed)setTimeout(()=>say("ok","Confirmed. You will get your first digest on the next matching morning."),150);
@@ -578,6 +597,7 @@ function settingsView(data){
       +'<p class="note">That is our end, not your link, and nothing about your subscription '
       +'changed. Reload this page in a minute.</p></div>';
   }else{
+    hideToken();
     $("#view").innerHTML=`<div class="panel"><h2>That link did not work</h2>
       <p class="note">It may have already been used to unsubscribe, or it may be
         incomplete — mail clients sometimes break long links across lines.

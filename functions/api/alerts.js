@@ -281,8 +281,25 @@ export async function onRequestGet({ request, env }) {
   const raw = await env.ALERTS.get("sub:" + token);
   if (!raw) return json({ error: "unknown_token" }, 404);
   const sub = JSON.parse(raw);
+  // THE NAMES OF THIS SUBSCRIPTION'S COMPANIES, and only those. The board's
+  // full list (data/company-names.json) is signed-in only since 2026-10-22,
+  // and a subscriber opening their settings from an email need not be signed
+  // in; without this a company alert read "Only roles at tyler-technologies".
+  // Read through env.ASSETS, which does not pass back through the gate.
+  const company_names = {};
+  const ids = Array.isArray(sub.prefs && sub.prefs.companies) ? sub.prefs.companies.slice(0, 50) : [];
+  if (ids.length && env.ASSETS) {
+    try {
+      const r = await env.ASSETS.fetch(new URL("/data/company-names.json", request.url).toString());
+      const all = r.ok ? await r.json() : {};
+      for (const id of ids) {
+        if (typeof id === "string" && Object.prototype.hasOwnProperty.call(all, id)) company_names[id] = all[id];
+      }
+    } catch { /* the page shows the ids, as it did when the list could not be read */ }
+  }
   return json({
     ok: true,
+    company_names,
     // The address is echoed masked. The page only needs to show WHICH mailbox
     // this is, and a settings link that leaks a full address if forwarded is
     // worse than one that says j****@gmail.com.
