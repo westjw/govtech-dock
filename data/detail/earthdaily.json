@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "SynMax Expands EarthDaily Constellation Subscription to Support Energy Analytics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/synmax-expands-earthdaily-constellation-subscription-to-support-energy-analytics"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/august-world-in-10-european-crops-deteriorate-as-record-rainfall-hits-the-u.s.-corn-belt"
-  },
-  {
-   "date": "2026-08-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "When Space Infrastructure Becomes Earth Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/when-space-infrastructure-becomes-earth-infrastructure"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why Connected Community Development Software Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://cloudpermit.com/blog/why-connected-community-development-software-matters"
+  },
+  {
    "date": "2026-10-08",
    "date_source": "json-ld",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://cloudpermit.com/blog/supporting-public-works-with-better-digital-tools"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why Citizen Self-Service Portals Are Transforming Local Government",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://cloudpermit.com/blog/why-citizen-self-service-portals-are-transforming-local-government"
   }
  ],
  "profile": {

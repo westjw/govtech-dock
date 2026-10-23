@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Is Your Municipal Website Built on PHP? What the PHP Security Flaw Means for Local Governments",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.munibit.com/blog/php-vulnerability-municipal-website-security"
+  },
+  {
    "date": "2026-06-19",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.munibit.com/blog/affordable-government-web-design"
-  },
-  {
-   "date": "2026-01-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "6 Common Legal Notice Errors New Jersey Municipalities Must Fix",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.munibit.com/blog/common-legal-notice-errors-new-jersey"
   }
  ],
  "profile": {

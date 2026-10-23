@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-23",
+   "headline": "Gartner IT Symposium/Xpo 2026: Day 4 Highlights with Infor: Humans and AI agents, one coordinated system",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/gartner-2026-day-4-human-ai-collaboration"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-22",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/infor-early-talent-onboarding-experience"
-  },
-  {
-   "date": "2026-10-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Key healthcare innovations from Infor's October 2026 Release",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/blog/healthcare-innovations-infor-october-2026-release"
   }
  ],
  "profile": {

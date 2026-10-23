@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "AI That Understands the Job, Not Just the Document",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.procore.com/blog/ai-that-understands-the-job-not-just-the-document"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "time",
+   "first_seen": "2026-10-22",
+   "headline": "Introducing the Procore Agent Marketplace: An ecosystem for agentic AI in construction",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.procore.com/blog/introducing-ai-agent-marketplace"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "card-date",
    "first_seen": "2026-10-21",
@@ -89,24 +107,6 @@
    "kind": "funding",
    "kind_rule": "acquires",
    "url": "https://www.procore.com/blog/procore-acquires-dronedeploy-to-bring-visual-intelligence-to-every-jobsite"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Procore Explore: Test new features before they touch your jobsites",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/procore-explore"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "How Procore works for manufacturing owners",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.procore.com/blog/how-procore-works-for-manufacturing-owners"
   }
  ],
  "profile": {

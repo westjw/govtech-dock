@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Retour de Chine : \u00ab Le v\u00e9hicule autonome est pr\u00eat. L\u2019enjeu maintenant, c\u2019est de l\u2019orchestrer. \u00bb",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.padam-mobility.com/blog/retour-de-chine-le-vehicule-autonome-est-pret-lenjeu-maintenant-cest-de-lorchestrer"
+  },
+  {
    "date": "2026-10-05",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.padam-mobility.com/de/blog/padam-mobility-und-hacon-liefern-software-fur-die-neue-bast-app"
-  },
-  {
-   "date": "2025-12-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fil\u00e9o : Le Lancement R\u00e9ussi du Plus Grand Transport \u00e0 la Demande d'Europe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.padam-mobility.com/blog/fileo-le-lancement-reussi-du-plus-grand-transport-a-la-demande-deurope"
   }
  ]
 }

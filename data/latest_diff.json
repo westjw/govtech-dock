@@ -1,122 +1,45 @@
 {
-  "date": "2026-10-22",
-  "previous": "2026-10-21",
+  "date": "2026-10-23",
+  "previous": "2026-10-22",
   "changes": [
-    {
-      "company": "Rehrig Pacific",
-      "id": "rehrig-pacific",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page too small - likely JS-rendered"
-    },
-    {
-      "company": "Edwin",
-      "id": "edwin",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Eventeny",
-      "id": "eventeny",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Account Strategist only"
-    },
-    {
-      "company": "Beam Global",
-      "id": "beam-global",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Cellebrite",
-      "id": "cellebrite",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "LeoTech",
-      "id": "leotech",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Willowglen Systems",
-      "id": "willowglen-systems",
-      "from": "Yes",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "MCM Technology LLC",
-      "id": "mcm-technology-llc",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Partner Channel Manager only"
-    },
     {
       "company": "OnSolve (CodeRED)",
       "id": "onsolve",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "sales roles, none AE"
-    },
-    {
-      "company": "Edmunds GovTech",
-      "id": "edmunds-govtech",
       "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "SpotHero",
-      "id": "spothero",
-      "from": "Yes",
       "to": "Unknown",
       "note": "page scan found no listings"
     },
     {
       "company": "Vanderlande",
       "id": "vanderlande",
+      "from": "Unknown",
+      "to": "Sales (non-AE)",
+      "note": "sales roles, none AE"
+    },
+    {
+      "company": "CyberFOX",
+      "id": "cyberfox",
       "from": "Yes",
       "to": "Unknown",
-      "note": "page scan found no listings"
+      "note": "HTTP 504 for https://www.cyberfox.com/ca"
     },
     {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
+      "company": "Druid AI",
+      "id": "druid-ai",
       "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Health-e Pro",
-      "id": "health-e-pro",
-      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Intelligent Video Solutions",
-      "id": "intelligent-video-solutions",
-      "from": "None found",
+      "company": "Huntress",
+      "id": "huntress",
+      "from": "Yes",
       "to": "Sales (non-AE)",
-      "note": "Regional Representative - Sales only"
+      "note": "Director, Revenue Readiness only"
     },
     {
-      "company": "FinQuery",
-      "id": "finquery",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive (Remote, USA)"
-    },
-    {
-      "company": "Infilla",
-      "id": "infilla",
+      "company": "Myriota",
+      "id": "myriota",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"

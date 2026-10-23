@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Preparing for 2027: Five Trends Shaping Enterprise Threat Intelligence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://flashpoint.io/blog/preparing-for-2027-five-trends-shaping-enterprise-threat-intelligence/"
+  },
+  {
    "date": "2026-10-21",
    "date_source": "json-ld",
    "first_seen": "2026-10-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://flashpoint.io/blog/flashpoint-named-a-customer-favorite-in-the-forrester-wave/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-11",
-   "headline": "How Natural Language Search Powers Rapid Physical Security Intelligence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://flashpoint.io/blog/how-natural-language-search-powers-rapid-physical-security-intelligence/"
   }
  ],
  "profile": {

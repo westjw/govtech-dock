@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-10-20",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-21",
    "headline": "Transit Tech Lab Proof of Concept Results",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-17",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-20",
    "headline": "Ontra Wins BE100 Transport & Mobility",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-10-15",
    "headline": "2026 BE100 Finalist Ontra was one of 100 companies chosen from 1,414 applications to pitch at Blue Earth Summit in London. Read More",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-05-10",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Building the Ontra Planning Platform",
    "kind": "press",
@@ -101,7 +101,7 @@
   },
   {
    "date": "2025-11-05",
-   "date_source": "og:published",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Launching Longwood Commutes With the Longwood Collective, Ontra launched a trip planning app for Longwood Medical Area employees and students, with real-time arrivals for the LMA Shuttle, MBTA, and Bl",
    "kind": "product",

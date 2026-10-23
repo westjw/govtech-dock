@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "View OSINT for law enforcement: The complete guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shadowdragon.io/resources/osint-for-law-enforcement/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "View 10 top OSINT data sources and how to use them",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://shadowdragon.io/resources/osint-data-sources/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-14",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://shadowdragon.io/resources/osint-social-media-search/"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "View Automating OSINT: 7 Steps to an Intelligence Workflow",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://shadowdragon.io/resources/automating-osint/"
-  },
-  {
-   "date": "2026-07-07",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "View OSINT Email Search: 30 Best Tools (2026 Guide)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://shadowdragon.io/resources/osint-email-search-tools/"
   }
  ]
 }

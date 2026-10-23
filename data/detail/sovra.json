@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "The bids are in. Now the real work begins.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/the-bids-are-in-now-the-real-work-begins/"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -82,6 +91,15 @@
    "url": "https://www.sovra.com/press-releases/sovra-strengthens-leadership-team-to-accelerate-next-generation-of-ai-powered-public-procurement/"
   },
   {
+   "date": "2026-07-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Why Your Local Sponsors Struggle to Submit (And What You Can Do About It)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sovra.com/blog/why-your-local-sponsors-struggle-to-submit-and-what-you-can-do-about-it/"
+  },
+  {
    "date": "2026-07-19",
    "date_source": "json-ld",
    "first_seen": "2026-10-20",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Selects",
    "url": "https://www.sovra.com/press-releases/naugatuck-valley-council-of-governments-selects-ecointeractives-projecttracker-to-make-their-tip-process-more-efficient/"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "Pre-RFP vs RFP: Why Government Contractors Need Both to Win More Opportunities",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sovra.com/blog/pre-rfp-vs-rfp-government-procurement/"
-  },
-  {
-   "date": "2026-04-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "SOVRA Launches First Unified Supplier Platform Combining Pre-RFP Intelligence and Active Opportunities",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://www.sovra.com/press-releases/sovra-launches-first-unified-supplier-platform-combining-pre-rfp-intelligence-and-active-opportunities/"
   }
  ],
  "profile": {

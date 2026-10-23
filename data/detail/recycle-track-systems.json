@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Industrial Waste Management: A Guide to Compliance, Cost, and Diversion",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rts.com/blog/industrial-waste-management/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "Hotel Waste Management: A Guide for Multi-Property Hospitality Operators",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rts.com/blog/hotel-waste-management/"
+  },
+  {
    "date": "2026-09-01",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.rts.com/blog/plastic-pollution-solutions/"
-  },
-  {
-   "date": "2022-09-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Community Composting \u2013 Local Solution to Global Issues",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.rts.com/blog/community-composting-local-solution-to-a-global-issue/"
-  },
-  {
-   "date": "2022-07-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Where Does My Waste Go \u2014 A Guide to Measuring Diversion and Tracking Progress for Businesses",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.rts.com/blog/where-does-my-waste-go-a-guide-to-measuring-diversion-and-tracking-progress-for-businesses/"
   }
  ]
 }

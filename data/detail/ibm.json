@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Qiskit SDK v2.6 release summary",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/qiskit-2-6-release-summary"
+  },
+  {
    "date": "2026-10-07",
    "date_source": "index-text",
    "first_seen": "2026-10-08",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/qec-continuum"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "The continuous path from error mitigation to fault-tolerant quantum computing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://research.ibm.com/quantum/blog/qec-continuum"
   }
  ],
  "profile": {

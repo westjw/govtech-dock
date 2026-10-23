@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "EP 126 \u2014 Catalyx Space's Rifath Shaarook On Why Compliance And Picking The Right Licenses Are The Hardest Part Of Space And Defense",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/catalyx-space-rifath-shaarook-compliance-licenses-space-defense"
+  },
+  {
    "date": "2026-10-16",
    "date_source": "json-ld",
    "first_seen": "2026-10-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/cloaking-gate-fronts-a-certutil-stager-deploying-screenconnect"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "EP 122 \u2014 AEVEX's Manan Patel On The Modular Drone Strategy That Won Army Launched Effects-Short Range (LE-SR)",
-   "kind": "product",
-   "kind_rule": "Launched",
-   "url": "https://radicl.com/resources/aevex-manan-patel-modular-drone-strategy"
   }
  ],
  "profile": {

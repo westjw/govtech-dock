@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-22",
+   "headline": "PHP vulnerabilities CVE-2026-109618 and CVE-2026-109619",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.marchnetworks.com/news/php-vulnerabilities/"
+  },
+  {
    "date": "2026-10-15",
    "date_source": "json-ld",
    "first_seen": "2026-10-15",
@@ -71,15 +80,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.marchnetworks.com/it/news/march-networks-and-vivotek-showcase-integrations-across-combined-portfolio-at-gsx-2026/"
-  },
-  {
-   "date": "2026-09-08",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "March Networks Achieves BIS ER-01 Certification in India",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.marchnetworks.com/news/march-networks-achieves-bis-er-01-certification-in-india/"
   },
   {
    "date": "2026-09-08",

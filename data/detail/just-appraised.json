@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Latest letter To our trusted customers: a new name for Just Appraised We are changing our company name from Just Appraised to Alltus. Same company, same team, same ownership, and the same products you",
+   "kind": "leadership",
+   "kind_rule": "name",
+   "url": "https://www.justappraised.com/resources/articles/a-new-name-for-just-appraised/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Alltus Just Appraised rebrands as Alltus to reflect its growth across local government October 20, 2026 \u00b7 2 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justappraised.com/resources/articles/just-appraised-is-now-alltus/"
+  },
+  {
+   "date": "2026-10-20",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Imran Khoja Why building Alltus is the most meaningful work of my career December 17, 2025 \u00b7 5 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justappraised.com/resources/articles/building-alltus/"
+  },
+  {
    "date": "2025-12-17",
    "date_source": "near-h1",
    "first_seen": "2026-09-05",
@@ -8,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.justappraised.com/post/just-appraised-career"
+  },
+  {
+   "date": "2025-12-17",
+   "date_source": "index-text",
+   "first_seen": "2026-10-22",
+   "headline": "Travis Noll The future of the assessor\u2019s front desk isn\u2019t automation, it\u2019s augmentation December 4, 2025 \u00b7 5 min read",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.justappraised.com/resources/articles/assessors-front-desk-automation/"
   },
   {
    "date": "2025-12-04",
