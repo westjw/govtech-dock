@@ -70,6 +70,16 @@ RUNAWAY = 0.34
 RUNAWAY_FLOOR = 60
 KEEP = 500          # entries retained; older ones are pruned on write
 
+# THE IDS THIS PROCESS WROTE, so the desk admin can say which entries a
+# ruling made without re-reading a 30 MB file twice per request: do_POST
+# clears it before an action and hands what is here back with the reply, and
+# the shift's Undo sends those ids to act_undo (2026-10-23).
+WRITTEN: list[str] = []
+# True while the desk admin runs one request (do_POST). Every entry it writes
+# is marked `desk`, and every entry after the first carries the first's id as
+# `same_ruling_as`, so one click that writes two files counts as one ruling.
+DESK = False
+
 
 # --- WHAT COUNTS AS A RECORD, PER FILE ------------------------------------
 #
@@ -334,7 +344,8 @@ def check(name: str, before, after, force: bool = False) -> tuple[dict, str | No
 
 
 def record(name: str, before, after, action: str, by: str = "owner",
-           why: str = "", force: bool = False) -> tuple[str | None, str | None]:
+           why: str = "", force: bool = False,
+           extra: dict | None = None) -> tuple[str | None, str | None]:
     """Journal an about-to-happen write. Returns (entry_id, refusal).
 
     Call this BEFORE write_atomic and abort the write on a refusal. Writing
@@ -358,9 +369,15 @@ def record(name: str, before, after, action: str, by: str = "owner",
         "why": why or "",
         "n": len(changes),
         "changes": changes,
+        **({"desk": True} if DESK else {}),
+        **({"same_ruling_as": WRITTEN[0]} if DESK and WRITTEN else {}),
+        # an undo says which entry it reversed (undo_of): reversals() and the
+        # receipt read it, and journal.undone() refuses undoing one twice
+        **(extra or {}),
     }
     rows.append(entry)
     _write_entries(rows)
+    WRITTEN.append(entry["id"])
     return entry["id"], None
 
 

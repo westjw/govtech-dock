@@ -38,6 +38,7 @@ public/
 # public; this file is private by construction (page_belt.act_explain).
 /data/claude_inbox.jsonl
 /data/claude_inbox.state.json
+/data/admin_shifts.jsonl
 
 # The desk publisher's own state, and the lock it shares with the admin
 # (scripts/publish.py). Local to this machine.

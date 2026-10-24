@@ -515,7 +515,8 @@ rows all stay; only the counting changes.
 
 ## The admin backend
 
-`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. Twenty-three queues,
+`python3 scripts/admin.py`, then <http://127.0.0.1:8787>. It opens on the
+shift (below, "The shift"). Twenty-three queues,
 and `LABEL` in admin.py is the list (this paragraph said fourteen for a month,
 then twenty for another): Users, Write-ups to check, Agent proposals, Warm
 leads, Boards we found, Founding year, Wrong bucket, Vendor scope, Scope
@@ -1609,6 +1610,107 @@ recognition (#8 — sparingly, or it reads as spam).
   speed with accuracy. And the CSV export copies stored facts only, with
   anything a spreadsheet could read as a formula neutralised, because
   company names arrive here from outside submissions.
+
+## The shift: the desk admin's front door (owner, 2026-10-23)
+
+"build option 5 for the admin": the fifth option of the admin canvas, "free
+rein: a shift on the show floor". The admin opens on it (`showShiftHome`);
+Start here is a button on it and a tab, and every queue is one click away
+under "Or work one queue".
+- **A shift is a box the person picks** (10, 20 or 30 minutes) **and a hand
+  the server deals** (`admin.shift_hand`, `/api/shift`): people first
+  (Submissions), then the rows that move board health most, at most a
+  quarter of the hand from one queue, one card a minute. The deal is a deck
+  size, never a pace. Acquisitions is never dealt (`SHIFT_QUEUES`).
+- **A card's points are board_health's own step** (`per_item`: one settled
+  row's move of the score). A wrong-bucket row with no open posting moves
+  nothing, and a founding year moves only when the card showed a blank; a
+  card that moves nothing says why (`no_points`). Health moved during a
+  shift is the BOARD's, said "with anybody's write", and a department's
+  health says its Scope settled part is the whole board's.
+- **The deal ranks by points except Founding year**, whose unconfirmed
+  years (an agent's year on a public card nobody has stood behind) rank
+  with the blanks, in q_founded's own order (`_shift_rank`): by points
+  alone no unconfirmed year was ever dealt. "Waiting" is the queue's rows
+  in the department, and the hand counts the rows it never deals (nothing
+  for the guesser to go on).
+- **The keyed cards are the belt's card for a belt of one.** Wrong bucket
+  and Vendor scope are drawn by `beltCard()` and ruled by its own
+  choose/commit, so two acts, the LOW-confidence why and the per-band
+  agree-rate hold unchanged; `advance()` and `renderBelt()` hand the card
+  back to the shift. Every other queue is its own `RENDER[queue]` card,
+  untouched, with a Skip; the renderer removing its card after a write is
+  the "ruled" signal.
+- **Every card is re-asked of its queue before it is shown**
+  (`/api/shift-card`); one ruled elsewhere since the deal is not shown and
+  is counted as gone.
+- **Undo [U] takes back the last ruling: every journal entry its writes
+  made, all or none** (`act_undo`, `/api/undo`). `do_POST` hands back the
+  ids a request journalled (`journal.WRITTEN`). It refuses an entry that is
+  not a person's, an undo, one already undone, and the whole undo when any
+  record has changed since (`plan_undo`), before writing anything; a
+  multi-entry ruling counts as one undo (`undo_batch`). An undone ruling is
+  not a ruling: `_journal_rulings` leaves it out, as the decision files
+  already did by deleting it. `admin_undo.py` stays the tool for the rest.
+- **Every count is the server's.** The meters and the summary read
+  `shift_summary` (`/api/shift-progress?since=` the deal's own time): rulings
+  from `_ruling_stamps`, proposals taken as proposed, how many were "far
+  enough apart to count" (READ_SECONDS after the ruling before, of any
+  queue, walked record by record so a burst inside one second is not
+  credited), undos. The page counts only which card is on screen. The
+  timer counts down to a sentence and ends nothing.
+- **One desk request is one ruling.** While do_POST runs, `journal.DESK`
+  marks every entry `desk` and every entry after the first
+  `same_ruling_as` the first, and `_journal_rulings` counts a group once:
+  approving a submission (company + submission) or correcting a year
+  (set-founded + confirm-founded) counted two. A write-up landed at the desk
+  (`promote-profiles`, desk only: the CLI's gated landings never counted)
+  and a write-up rejected are Write-ups rulings (`_ruling_queue`). An undo
+  that was itself undone cancels nothing. A Boards-we-found ruling is
+  written through `save_decisions` (`_rule_board_proposal`), so undoing an
+  accepted board takes the ruling back with the wiring; a job approval's
+  capture is the person's, so its Undo is not refused. The receipt and the
+  Last rulings strip read the same way: one row and one reversal per
+  request, and a board an undo took away is not a door opened
+  (`_undone_ids`, shared).
+- **The page holds a card's writes to that card.** `api()` counts a run's
+  POSTs in flight with the seq of the card on screen when sent
+  (`shiftWatch`/`shiftHeard`); Skip and Undo wait while one is on its way,
+  and Undo also while a landed write's card has not moved on (Undo during a
+  write once undid the card before and credited the wrong one). A POST that
+  writes nothing (`READ_ONLY_POSTS`, sent with the queue counts: a Check, a
+  page read) holds nothing back. A write that lands after its card left goes
+  to that card, a Skip after a landed write is a ruling, and `shiftResolve`
+  resolves only the card the deal showed (`onScreen`, seq). A card the server cannot be asked
+  about stays in the hand with Try again; a deal that fails gives the tabs
+  back. A refused code is forgotten so the home draws a box for the new one;
+  the code bar no longer opens on load (the home has the box), a code typed
+  there goes with a person who leaves by another door, and a refusal with
+  no code stored asks for one rather than calling it stale.
+- **A mutation run once wrote a test ruling into the owner's
+  board_proposal_rulings.json**: its copy linked to the real data/, and
+  board_proposals fixes its paths at import, outside `_sandbox_admin`. The
+  sandbox now moves board_proposals too, mutation copies hold their own
+  data/, and the suite fails when a file it touched gained a value starting
+  "selftest". Restored from git before anything was committed.
+- **End shift** appends the server's record to `data/admin_shifts.jsonl`
+  (gitignored, a plain append like Claude's inbox: the desk's own sittings,
+  not rulings). The home lists the last six.
+- During a shift the tabs and the department picker are hidden and
+  `refreshCounts()` is skipped (`/api/queues` takes 2s on a single-threaded
+  server, between a ruling and the next card).
+- Built on this sheet's square system, not the canvas's rounded cards.
+- `check_a_shift_deals_rules_and_undoes_what_it_says` (the deal on real
+  data, the writes in a sandbox and through a real server),
+  `check_a_shift_counts_each_ruling_once` (the review's server findings),
+  `check_the_shift_screen_keeps_the_belts_rules` (source, the helpers under
+  node, and `node --check` over the whole admin script, which the suite
+  never had) and `check_the_shift_runs_right_under_its_own_script`:
+  `scripts/admin_shift_harness.mjs` runs admin.html's own script in a node
+  vm against a server that answers one request at a time, as admin.py does,
+  and presses keys through the page's listeners. Two blind reviews (3
+  lenses then 2, a skeptic each) confirmed 18 and 6 defects, all fixed; the
+  reviewers' reproductions became the harness.
 
 ## Alerts and saved-role sync
 

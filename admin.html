@@ -392,6 +392,95 @@ textarea.txt { resize: vertical; line-height: 1.5; }
     .beltend,.refusal{flex-direction:column;align-items:flex-start}
     .beltend img,.refusal img{width:72px}
   }
+  /* ── THE SHIFT (option 5 of the admin canvas; owner, 2026-10-23) ──────────
+     The canvas drew it on rounded cards; it is built on this sheet's own
+     system instead - square corners, the 4px scale, the tokens above - so it
+     reads as the same product as every other screen here. Beak marks the
+     armed call and the ruled cards, and is never text. */
+  main:has(#shift-host){max-width:1320px}
+  body.shiftmode nav#tabs, body.shiftrun #sectorPick{display:none!important}
+  .sh-kicker{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--faint)}
+  .sh-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:16px;
+    align-items:start}
+  .sh-col{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .sh-card{border:1px solid var(--line);background:var(--panel);padding:18px 20px;min-width:0}
+  .sh-card h2{font-size:25px;margin:6px 0 6px}
+  .sh-card h3{font-size:16px;margin:0 0 4px}
+  .sh-len{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 12px}
+  .sh-len button{text-align:left;padding:12px 14px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);font:inherit;cursor:pointer;min-height:64px}
+  .sh-len button[aria-pressed=true]{border-color:var(--beak);border-left:3px solid var(--beak)}
+  .sh-len b{display:block;font-size:20px;font-weight:800;font-family:var(--font-heading);
+    letter-spacing:-.015em}
+  .sh-go{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .sh-go input.txt{width:9em;letter-spacing:.2em;text-transform:uppercase}
+  .sh-pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);
+    padding:5px 10px;font-size:12.5px;color:var(--dim)}
+  .sh-gauge{display:flex;align-items:baseline;gap:8px;margin:4px 0 10px}
+  .sh-gauge strong{font-size:42px;font-weight:800;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;font-family:var(--font-heading)}
+  .sh-gauge span{color:var(--dim);font-size:13px}
+  .sh-hand{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
+  .sh-hand li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;
+    padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+  .sh-hand .no{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .sh-hand .what{font-weight:600}
+  .sh-hand .dealt{text-align:right;font-size:12.5px;color:var(--dim);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sh-total{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    border-top:2px solid var(--ink);padding-top:10px;margin-top:2px;font-weight:600}
+  .sh-host{display:flex;gap:14px;align-items:center}
+  .sh-host img{width:76px;flex:none}
+  .sh-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .sh-shifts{display:flex;flex-direction:column;margin-top:8px}
+  .sh-shift{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:8px;
+    padding:9px 0;border-top:1px solid var(--line);font-size:12.5px;align-items:baseline}
+  .sh-shift b{display:block;font-size:16px;font-variant-numeric:tabular-nums}
+  .sh-shift .kv{margin:0}
+  .sh-queues{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:10px}
+  .sh-queues h4{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 6px;font-weight:600}
+  .sh-queues button{display:flex;justify-content:space-between;gap:8px;width:100%;
+    background:none;border:0;border-top:1px solid var(--line);padding:7px 0;font:inherit;
+    font-size:13px;color:var(--ink);cursor:pointer;text-align:left}
+  .sh-queues button:hover{color:var(--accent)}
+  .sh-queues button .n{color:var(--dim);font-variant-numeric:tabular-nums}
+  /* the running shift */
+  .sh-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:0 0 14px;
+    border-bottom:1px solid var(--line)}
+  .sh-bar .grow{flex:1 1 auto}
+  .sh-meters{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1.2fr);
+    gap:12px;margin-top:16px}
+  .sh-big{font-size:34px;font-weight:800;line-height:1.05;font-family:var(--font-heading);
+    font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .sh-big small{font-size:16px;color:var(--dim);font-weight:600}
+  .sh-segs{display:grid;gap:3px;margin-top:10px}
+  .sh-segs span{height:9px;background:var(--chip)}
+  .sh-segs span.ruled{background:var(--beak)}
+  .sh-segs span.skipped,.sh-segs span.gone{background:var(--line)}
+  .sh-segs span.now{background:var(--ink)}
+  .sh-last{display:flex;gap:12px;align-items:center}
+  .sh-last img{width:54px;flex:none}
+  .sh-run{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;
+    margin-top:16px;align-items:start}
+  .sh-cardhead{margin-bottom:10px}
+  .sh-ask{font-size:20px;font-weight:800;font-family:var(--font-heading);letter-spacing:-.015em;
+    margin:4px 0 0}
+  .sh-side{display:flex;flex-direction:column;gap:12px;min-width:0}
+  .sh-side .rest div{display:flex;justify-content:space-between;font-size:12.5px;
+    padding:4px 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+  .sh-over{border-left:3px solid var(--beak);padding:8px 12px;margin-top:12px;font-size:13px;
+    background:var(--panel)}
+  .sh-sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+  .sh-col .what,.sh-side .what{font-weight:600}
+  .sh-line{font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .sh-list .item{margin-bottom:0}
+  @media (max-width:980px){
+    .sh-grid,.sh-run,.sh-meters,.sh-queues{grid-template-columns:1fr}
+    .sh-len{grid-template-columns:1fr}
+    .sh-sum{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
 </style>
 </head>
 <body>
@@ -453,6 +542,21 @@ function staleBanner() {
 }
 
 async function api(path, body) {
+  /* A WRITE MADE ON A SHIFT CARD belongs to that card, wherever the shift is
+     when it lands: the run counts it in flight (Skip and Undo wait for it)
+     and remembers which card was on screen when it was sent. */
+  const sr = shiftWatch(path, body), sseq = sr ? sr.seq : 0;
+  if (sr) sr.inflight++;
+  try {
+    const j = await apiCall(path, body);
+    if (sr && j && !j.error) shiftHeard(sr, sseq, j);
+    return j;
+  } finally {
+    if (sr) sr.inflight--;
+  }
+}
+
+async function apiCall(path, body) {
   /* Every failure becomes {error}, because half the callers await this inside
      a queue loader whose "loading…" placeholder is removed only on success: a
      server restart or a dropped socket left the queue saying loading… forever,
@@ -472,7 +576,10 @@ async function api(path, body) {
      serves and no page carries — that is what stops a script on this machine
      from ruling 86 companies overnight. If it is missing or stale, say so
      here rather than letting the queue report a bare 403. */
-  if (j && j.code_required) codeBar(true);
+  /* "from an earlier run" only when a code is stored: with none stored the
+     admin opened on the shift home, whose box is the only prompt, and a
+     ruling made from another door had never been asked for one */
+  if (j && j.code_required) codeBar(!!(window.gtdCode && window.gtdCode.get()));
   return j;
 }
 
@@ -635,6 +742,9 @@ async function boot() {
   $('#sub').textContent = `${META.companies.toLocaleString()} govtech companies · `
     + `${META.postings.toLocaleString()} postings · board built ${META.generated || '—'}`;
   const nav = $('#tabs'); nav.innerHTML = '';
+  const shiftBtn = el('button', null, 'Shift');
+  shiftBtn.dataset.key = '__shift'; shiftBtn.onclick = () => showShiftHome();
+  nav.appendChild(shiftBtn);
   const startBtn = el('button', null, 'Start here');
   startBtn.dataset.key = '__start'; startBtn.onclick = () => showStart();
   nav.appendChild(startBtn);
@@ -665,9 +775,13 @@ async function boot() {
     b.onclick = () => show(k);
     b.dataset.key = k; nav.appendChild(b);
   });
-  showStart();
-  // said up front rather than at the moment a ruling bounces
-  if (!window.gtdCode || !window.gtdCode.get()) codeBar(false);
+  /* The shift is the front door (option 5, owner 2026-10-23); Start here
+     is one click away on it and in the nav. */
+  showShiftHome();
+  /* No code bar up front any more: the shift home, where the admin opens,
+     has its own code box, and two boxes fought over focus while a person
+     typed (review, 2026-10-24). A refused ruling anywhere still opens the
+     bar (api()). */
 }
 
 function drawSectorPicker() {
@@ -700,6 +814,7 @@ function drawSectorPicker() {
     history.replaceState(null, '', u);
     await boot();
     const views = {__pagebelt: () => showPageBelt(SECTOR || undefined, ''),
+                   __start: showStart,
                    __capture: showCapture, __sort: showSort, __sweep: () => showSweep()};
     if (views[was]) views[was]();
     else if (was && !was.startsWith('__')) show(was);
@@ -713,6 +828,10 @@ function drawSectorPicker() {
 }
 
 async function refreshCounts() {
+  /* Not during a shift: the tabs are hidden, and /api/queues is the slowest
+     read here (2s), on a single-threaded server, between a ruling and the
+     next card. The shift's end refreshes them. */
+  if (TAB === '__shiftrun') return;
   META = await api(secQ('/api/queues'));
   staleBanner();
   document.querySelectorAll('nav button').forEach(b => {
@@ -1956,7 +2075,10 @@ function beltable(key, items) {
   return items;
 }
 
-function beltOff() { BELT.queue = null; BELT.host = null; BELT.armed = null; }
+function beltOff() {
+  BELT.queue = null; BELT.host = null; BELT.armed = null;
+  document.body.classList.remove('shiftmode', 'shiftrun');   // any view leaves the shift
+}
 
 function startBelt(key, items, body) {
   const rideable = beltable(key, items);
@@ -1981,6 +2103,7 @@ function startBelt(key, items, body) {
 function renderBelt() {
   const host = BELT.host;
   if (!host) return;
+  if (TAB === '__shiftrun' && host === SHIFT.slot) return shiftRedraw();
   // keep anything appended under the belt (the unbelted note)
   const first = host.firstChild;
   const fresh = BELT.i >= BELT.items.length
@@ -2345,6 +2468,7 @@ function refuse(message, card) {
    further down the belt, and being handed one of those again would ask a
    question that has an answer. */
 function advance() {
+  if (TAB === '__shiftrun' && BELT.host && BELT.host === SHIFT.slot) return shiftAfterBelt();
   BELT.i = nextIndex(BELT.i);
   renderBelt();
 }
@@ -2438,7 +2562,9 @@ function openEdit(it, why, card, idx) {
 /* One listener for the whole belt. Typing in the why box is typing, not
    ruling - the guard is focus, not a mode. */
 document.addEventListener('keydown', e => {
-  if (!BELT.queue || TAB !== BELT.queue || !BELT.host) return;
+  if (!BELT.queue || !BELT.host) return;
+  // a shift's keyed card is a belt of one on the shift's own screen
+  if (TAB !== BELT.queue && !(TAB === '__shiftrun' && BELT.host === SHIFT.slot)) return;
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const card = BELT.host.querySelector('.belt');
   const t = e.target;
@@ -2466,6 +2592,941 @@ document.addEventListener('keydown', e => {
   }
   const b = hit((e.key || '').toLowerCase());
   if (b && !b.disabled) { e.preventDefault(); b.click(); }
+});
+
+/* ── THE SHIFT (option 5 of the admin canvas; owner, 2026-10-23) ──────────
+   "Free rein: a shift on the show floor." A person picks a time box, the
+   server deals a hand from every queue (people first, then what moves board
+   health most, a few from each queue), and the cards come one at a time.
+
+   What it keeps from the belt, and why it can be fast without being a game:
+   - The keyed cards ARE the belt. Wrong bucket and Vendor scope are drawn by
+     beltCard() and ruled by its own choose/commit, so the two-act rule, the
+     LOW-confidence why and the per-band agree-rate all hold unchanged. Every
+     other queue is that queue's own card, ruled at the speed it needs.
+   - Every card is re-asked of its queue before it is shown (/api/shift-card),
+     so a row ruled in another tab or applied overnight is never written over.
+   - Every number is the server's: rulings come from the journal's ruling
+     stamps, "far enough apart to count" from the server's clock, the gauge is
+     board_health. The page counts nothing but which card is on screen.
+   - The timer is the box the person chose, counting down to a message. It
+     never ends a shift, never shows a pace, and nothing is scored against it. */
+const SHIFT_LENGTHS = [10, 20, 30];
+const SHIFT = {minutes: 20, hand: null, agree: null, past: [], seq: 0, run: null, slot: null};
+/* "Or work one queue": which of the board-health parts a queue moves. A queue
+   not named here moves none of them, and says so rather than borrowing one. */
+const SHIFT_GAUGE = {miscategorized: 'Right bucket, public rows', websites: 'Names reachable',
+                     vendors: 'Scope settled', boards: 'Boards found', blocked: 'Boards found',
+                     boardfound: 'Boards found', founded: 'Founding years'};
+const SHIFT_FROM_PEOPLE = ['leads', 'submissions', 'users'];
+
+function shiftLeave() {
+  // a code typed on the home and not yet used goes with the person
+  const box = document.querySelector('#shift-host input.txt');
+  if (box && box.value.trim() && !window.gtdCode.get()) window.gtdCode.set(box.value);
+  document.body.classList.remove('shiftmode', 'shiftrun');
+  if (TAB === '__shift') TAB = null;
+}
+
+const shiftPts = p => !p ? 'no points'
+  : '+' + (p < 0.01 ? '<0.01' : p.toFixed(2)) + ' points';
+const shiftSigned = d => (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(2);
+const shiftClock = s => {
+  s = Math.max(0, Math.round(s));
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+};
+function shiftName(c) {
+  const it = (c && c.item) || {};
+  return it.name || it.title || it.url || it.company || String(c && c.key || '');
+}
+function shiftKbd(k) { return el('span', 'kbd', k); }
+
+async function showShiftHome() {
+  TAB = '__shift';
+  beltOff();
+  document.body.classList.add('shiftmode');
+  document.querySelectorAll('nav button').forEach(b =>
+    b.setAttribute('aria-selected', b.dataset.key === '__shift'));
+  const v = $('#view'); v.innerHTML = '';
+  const home = el('div'); home.id = 'shift-host'; home.dataset.view = 'home';
+  v.appendChild(home);
+  home.appendChild(el('div', 'empty', 'dealing a hand…'));
+  const seq = ++SHIFT.seq;
+  const [hand, past, agree] = await Promise.all([
+    api(secQ('/api/shift?minutes=' + SHIFT.minutes)), api('/api/shifts'), api('/api/agree')]);
+  if (TAB !== '__shift' || seq !== SHIFT.seq) return;
+  if (hand.error) {
+    /* The front door must not become a wall: a deal that fails gives the
+       tabs back and says what failed. */
+    shiftLeave();
+    home.innerHTML = '';
+    home.appendChild(el('p', 'empty', 'The hand could not be dealt: ' + hand.error));
+    const row = el('div', 'row');
+    const again = el('button', 'act', 'Try again');
+    again.onclick = () => showShiftHome();
+    const classic = el('button', 'act', 'Start here');
+    classic.onclick = () => showStart();
+    row.append(again, classic);
+    home.appendChild(row);
+    return;
+  }
+  SHIFT.hand = hand; SHIFT.agree = agree.error ? null : agree;
+  SHIFT.past = past.shifts || [];
+  drawShiftHome(home, hand, SHIFT.past, SHIFT.agree);
+}
+
+function drawShiftHome(home, hand, past, agree) {
+  home.innerHTML = '';
+  const dept = SECTOR || 'Everything';
+  const grid = el('div', 'sh-grid');
+  const left = el('div', 'sh-col'), right = el('div', 'sh-col');
+  grid.append(left, right);
+  home.appendChild(grid);
+
+  /* Start a shift */
+  const start = el('div', 'sh-card');
+  start.appendChild(el('div', 'sh-kicker', 'Show floor · one card at a time'));
+  start.appendChild(el('h2', null, 'Start a shift'));
+  start.appendChild(el('p', 'kv', 'Pick a length. The shift deals the highest-impact '
+    + 'rulings across every queue, people first, one card at a time. The deal is one '
+    + 'card a minute: a deck size, never a pace.'));
+  const lens = el('div', 'sh-len');
+  lens.setAttribute('role', 'group');
+  lens.setAttribute('aria-label', 'shift length');
+  SHIFT_LENGTHS.forEach(m => {
+    const b = el('button');
+    b.setAttribute('aria-pressed', m === hand.minutes);
+    b.appendChild(el('b', null, m + ' minutes'));
+    b.appendChild(el('span', 'kv', m === hand.minutes
+      ? `${hand.cards.length} card${hand.cards.length === 1 ? '' : 's'} dealt · up to ${shiftPts(hand.points)}`
+      : `deals up to ${m} cards`));
+    b.onclick = () => { if (m !== SHIFT.minutes) { SHIFT.minutes = m; showShiftHome(); } };
+    lens.appendChild(b);
+  });
+  start.appendChild(lens);
+  const go = el('div', 'sh-go');
+  let codeIn = null;
+  if (window.gtdCode && window.gtdCode.get()) {
+    const pill = el('span', 'sh-pill', 'Ruling code set for this browser');
+    pill.title = 'checked against this run when the shift starts';
+    go.appendChild(pill);
+  } else {
+    codeIn = el('input', 'txt');
+    codeIn.placeholder = 'ruling code';
+    codeIn.maxLength = 6;
+    codeIn.setAttribute('aria-label', 'ruling code, printed in the terminal running admin.py');
+    go.appendChild(codeIn);
+  }
+  const btn = el('button', 'act go', `Start a ${hand.minutes}-minute shift `);
+  btn.appendChild(shiftKbd('⏎'));
+  btn.disabled = !hand.cards.length;
+  btn.onclick = () => shiftBegin(codeIn);
+  go.appendChild(btn);
+  start.appendChild(go);
+  const msg = el('div', 'kv'); msg.id = 'shift-msg';
+  start.appendChild(msg);
+  if (!hand.cards.length)
+    msg.textContent = 'Nothing in ' + dept + ' is waiting in the queues a shift deals from.';
+  const host = el('div', 'sh-host');
+  host.style.marginTop = '14px';
+  host.appendChild(penguin('hunt'));
+  const hl = el('div');
+  hl.appendChild(el('div', 'sh-line', 'It’s tough SLEDing out there.'));
+  const subs = (hand.groups || []).find(g => g.people);
+  hl.appendChild(el('div', 'kv', subs
+    ? `${subs.waiting} submission${subs.waiting === 1 ? ' is' : 's are'} waiting on a person, so they open the hand.`
+    : 'Nobody outside is waiting on a person right now.'));
+  host.appendChild(hl);
+  start.appendChild(host);
+  left.appendChild(start);
+
+  /* The hand */
+  const handCard = el('div', 'sh-card');
+  handCard.appendChild(el('h3', null, `Your ${hand.minutes}-minute hand`));
+  handCard.appendChild(el('div', 'kv', `Dealt from ${dept}, highest impact first. People always lead.`));
+  const ul = el('ul', 'sh-hand');
+  (hand.groups || []).forEach((g, i) => {
+    const li = el('li');
+    li.appendChild(el('span', 'no', String(i + 1)));
+    const w = el('div');
+    const t = el('div');
+    t.appendChild(el('span', 'what', g.label));
+    t.appendChild(el('span', 'kv', ` · ${g.waiting.toLocaleString()} waiting`
+      + (g.all_departments ? ' (every department)' : '')));
+    w.appendChild(t);
+    w.appendChild(el('div', 'kv', g.people ? 'A person is waiting. No gauge measure.'
+      : g.moves ? `Moves ${g.moves} · ${g.pct_now == null ? 'unknown' : g.pct_now + '%'} now`
+        + (g.queue === 'founded' ? ' (a blank filled; checking a year already shown moves none)' : '')
+      : 'No gauge measure: this queue checks work before it reaches the board.'));
+    if (g.held)
+      w.appendChild(el('div', 'kv', `${g.held.toLocaleString()} not dealt: nothing on the card `
+        + 'for the guesser to go on. They need the list, read slowly.'));
+    li.appendChild(w);
+    const d = el('div', 'dealt');
+    d.appendChild(el('div', null, 'Dealt ' + g.dealt));
+    d.appendChild(el('div', null, g.people ? 'no points' : 'up to ' + shiftPts(g.points)));
+    li.appendChild(d);
+    ul.appendChild(li);
+  });
+  handCard.appendChild(ul);
+  const tot = el('div', 'sh-total');
+  const ex = hand.health && hand.health.exact;
+  tot.appendChild(el('span', null, `This hand: ${hand.cards.length} card${hand.cards.length === 1 ? '' : 's'}`));
+  tot.appendChild(el('span', null, ex == null ? '' :
+    `Board health ${ex.toFixed(1)} → up to ${(ex + (hand.points || 0)).toFixed(1)}`));
+  handCard.appendChild(tot);
+  left.appendChild(handCard);
+
+  /* Board health */
+  const h = hand.health || {};
+  const hc = el('div', 'sh-card');
+  hc.appendChild(el('h3', null, 'Board health'));
+  hc.appendChild(el('div', 'kv', 'board built ' + ((META && META.generated) || '—')
+    + (SECTOR ? ' · ' + SECTOR + ' only' : '')));
+  const gauge = el('div', 'sh-gauge');
+  gauge.appendChild(el('strong', null, h.score == null ? '—' : String(h.score)));
+  gauge.appendChild(el('span', null, 'of 100'));
+  hc.appendChild(gauge);
+  if (hand.points_open != null)
+    hc.appendChild(el('div', 'kv', `${hand.points_open.toFixed(1)} points still open. `
+      + `This shift could add up to ${shiftPts(hand.points)}.`));
+  (h.parts || []).forEach(p => {
+    const row = el('div');
+    row.style.cssText = 'border-top:1px solid var(--line);padding:8px 0 0;margin-top:8px';
+    const top = el('div');
+    top.style.cssText = 'display:flex;justify-content:space-between;gap:8px;font-weight:600';
+    top.append(el('span', null, p.label), el('span', 'tabn', p.pct == null ? 'unknown' : p.pct + '%'));
+    row.appendChild(top);
+    row.appendChild(el('div', 'kv', p.note));
+    hc.appendChild(row);
+  });
+  const classic = el('button', 'act mute', 'Start here: the full breakdown');
+  classic.style.marginTop = '12px';
+  classic.onclick = () => { shiftLeave(); showStart(); };
+  hc.appendChild(classic);
+  right.appendChild(hc);
+
+  /* Last shifts, and the guesser before them */
+  const ls = el('div', 'sh-card');
+  ls.appendChild(el('h3', null, 'Last shifts'));
+  ls.appendChild(el('div', 'kv', 'Newest first. Every ruling in them is journalled; '
+    + 'scripts/admin_undo.py lists and undoes any of them.'));
+  const list = el('div', 'sh-shifts');
+  if (!past.length) list.appendChild(el('div', 'kv', 'No shift has been worked yet.'));
+  past.forEach(s => {
+    const row = el('div', 'sh-shift');
+    const when = el('div');
+    when.appendChild(el('b', null, (s.started_at || '').slice(0, 10)));
+    when.appendChild(el('span', 'kv', `${s.minutes}-minute shift · ${s.sector || 'Everything'}`));
+    const cell = (k, val) => { const c = el('div'); c.appendChild(el('span', 'kv', k)); c.appendChild(el('b', null, val)); return c; };
+    const pr = s.proposed || {};
+    row.append(when, cell('Rulings', String(s.ruled ?? 0)),
+      cell('As proposed', pr.ruled ? `${pr.agreed} of ${pr.ruled}` : '—'),
+      cell('Health moved', s.moved == null ? '—' : shiftSigned(s.moved)));
+    list.appendChild(row);
+  });
+  ls.appendChild(list);
+  if (agree && agree.ruled) {
+    const b = el('div');
+    b.style.cssText = 'border-top:1px solid var(--line);margin-top:10px;padding-top:10px';
+    b.appendChild(el('div', 'what', 'The guesser, across every ruling so far'));
+    b.appendChild(el('div', 'kv', `Wrong bucket proposals ruled on: ${agree.ruled}. `
+      + `Taken as proposed: ${agree.agreed} of ${agree.ruled}`
+      + (agree.measured ? ` (${agree.pct}%).` : '.')));
+    if (!agree.measured && agree.why_not)
+      b.appendChild(el('div', 'kv', 'Not a measurement yet: ' + agree.why_not + '.'));
+    ls.appendChild(b);
+  }
+  right.appendChild(ls);
+
+  /* Tools */
+  const tools = el('div', 'sh-card');
+  tools.appendChild(el('h3', null, 'Tools'));
+  const tw = el('div', 'sh-tools');
+  const tool = (label, fn) => { const b = el('button', 'act', label); b.onclick = () => { shiftLeave(); fn(); }; tw.appendChild(b); };
+  tool('Capture', showCapture);
+  tool('Sort board', showSort);
+  tool('Page sweep', () => showPageBelt());
+  tool('Scrub' + (META && META.counts && META.counts.scrub != null ? ` · ${META.counts.scrub} due` : ''), () => show('scrub'));
+  tools.appendChild(tw);
+  right.appendChild(tools);
+
+  /* Or work one queue */
+  const qc = el('div', 'sh-card');
+  qc.style.marginTop = '16px';
+  qc.appendChild(el('h3', null, 'Or work one queue'));
+  const labels = (META && META.labels) || {}, counts = (META && META.counts) || {};
+  const keys = Object.keys(labels);
+  qc.appendChild(el('div', 'kv', `${keys.length} queues, busiest first in each group, `
+    + `scoped to Department: ${dept}.`));
+  const byN = (a, b) => (counts[b] || 0) - (counts[a] || 0);
+  const canFilter = new Set((META && META.filterable) || []);
+  const people = SHIFT_FROM_PEOPLE.filter(k => k in labels);
+  const clear = keys.filter(k => !people.includes(k) && !(counts[k] > 0));
+  const gauge2 = keys.filter(k => SHIFT_GAUGE[k] && counts[k] > 0).sort(byN);
+  const rest = keys.filter(k => !people.includes(k) && !clear.includes(k) && !gauge2.includes(k)).sort(byN);
+  const pctOf = {};
+  (h.parts || []).forEach(p => { pctOf[p.label] = p.pct; });
+  const cols = el('div', 'sh-queues');
+  const col = (title, ks, note) => {
+    const c = el('div');
+    c.appendChild(el('h4', null, title));
+    ks.forEach(k => {
+      const b = el('button');
+      const nm = el('span', null, labels[k]);
+      if (SHIFT_GAUGE[k] && title === 'Moves the gauge') {
+        const p = pctOf[SHIFT_GAUGE[k]];
+        nm.appendChild(el('span', 'kv', ` · ${SHIFT_GAUGE[k]} ${p == null ? '' : p + '%'}`));
+      }
+      /* the nav's own mark, which shiftmode hides: a queue with no company
+         to filter by shows the whole board's count in any department */
+      if (SECTOR && !canFilter.has(k))
+        nm.appendChild(el('span', 'kv', ' · all departments'));
+      b.append(nm, el('span', 'n', (counts[k] ?? 0).toLocaleString()));
+      b.onclick = () => { shiftLeave(); show(k); };
+      c.appendChild(b);
+    });
+    if (note) c.appendChild(el('div', 'kv', note));
+    cols.appendChild(c);
+  };
+  col('From people', people);
+  col('Clear', clear, clear.length ? 'Nothing waiting in these.' : 'Every other queue has something waiting.');
+  col('Moves the gauge', gauge2);
+  col('Checks before the board', rest);
+  qc.appendChild(cols);
+  qc.appendChild(el('div', 'kv', 'Agents and scripts propose; a person rules. Every ruling is journalled and can be undone.'));
+  home.appendChild(qc);
+  const busy = document.activeElement;
+  if (codeIn && !(busy && busy.tagName === 'INPUT')) codeIn.focus();
+}
+
+/* The code first, then the hand. The shift asks the server whether this
+   page's code is this run's BEFORE dealing, so the first ruling of a shift
+   does not bounce after the card has been read. */
+async function shiftBegin(codeIn) {
+  const msg = $('#shift-msg');
+  const v = codeIn ? (codeIn.value || '').trim() : '';
+  if (codeIn && !v && !window.gtdCode.get()) {
+    if (msg) msg.textContent = 'The ruling code is printed in the terminal running admin.py.';
+    codeIn.focus();
+    return;
+  }
+  if (v) window.gtdCode.set(v);
+  const r = await api('/api/check-code', {});
+  if (TAB !== '__shift') return;
+  if (r.error) {
+    const bar = $('#codebar');
+    if (bar) { bar.remove(); document.body.classList.remove('has-codebar'); }
+    if (msg) { msg.textContent = r.code_required
+      ? 'That code is not this run’s: the code dies with the admin process. Paste the one printed in the terminal running admin.py.'
+      : r.error; msg.style.color = 'var(--warn)'; }
+    if (r.code_required) {
+      /* The stored code is not this run's: forget it, so the home draws a
+         box to paste the new one into (a stale code drew the pill and no
+         box, with the code bar just removed). */
+      window.gtdCode.set('');
+      const home = $('#shift-host');
+      if (home && SHIFT.hand) drawShiftHome(home, SHIFT.hand, SHIFT.past, SHIFT.agree);
+      const fresh = $('#shift-host input.txt');
+      if (fresh) fresh.focus();
+      const m2 = $('#shift-msg');
+      if (m2 && msg) { m2.textContent = msg.textContent; m2.style.color = 'var(--warn)'; }
+    }
+    return;
+  }
+  startShift(SHIFT.minutes);
+}
+
+/* A fresh deal at the moment the shift starts: the hand on the home page is a
+   preview, and dealt_at (the server's clock) is when this shift's rulings
+   start counting. */
+async function startShift(minutes) {
+  TAB = '__shiftrun';
+  beltOff();
+  document.body.classList.add('shiftmode', 'shiftrun');
+  const v = $('#view'); v.innerHTML = '';
+  const host = el('div'); host.id = 'shift-host'; host.dataset.view = 'run';
+  v.appendChild(host);
+  host.appendChild(el('div', 'empty', 'dealing the hand…'));
+  const [hand, agree] = await Promise.all([api(secQ('/api/shift?minutes=' + minutes)), api('/api/agree')]);
+  if (TAB !== '__shiftrun') return;
+  if (hand.error || !hand.cards || !hand.cards.length) {
+    host.innerHTML = '';
+    host.appendChild(el('p', 'empty', hand.error || 'Nothing is waiting in the queues a shift deals from.'));
+    const back = el('button', 'act', 'Back to the shift home');
+    back.onclick = () => showShiftHome();
+    host.appendChild(back);
+    document.body.classList.remove('shiftrun');
+    return;
+  }
+  if (!agree.error) SHIFT.agree = agree;
+  const waiting = {};
+  (hand.groups || []).forEach(g => { waiting[g.queue] = g; });
+  SHIFT.run = {minutes: hand.minutes, sector: SECTOR || '', started_at: hand.dealt_at,
+    t0: Date.now(), health_start: hand.health ? hand.health.exact : null,
+    cards: hand.cards.map((c, i) => Object.assign({}, c, {no: i + 1, status: 'pending', ids: []})),
+    todo: hand.cards.map((_c, i) => i), waiting, seq: 0, heard: [], heardMsg: '',
+    last: null, note: '', progress: null, ended: false, observer: null, timer: null,
+    undoing: false, inflight: 0, onScreen: null, seqCard: {}};
+  drawShiftRun(host);
+  SHIFT.run.timer = setInterval(shiftTick, 1000);
+  shiftProgress();
+  shiftDeal();
+}
+
+function drawShiftRun(host) {
+  const run = SHIFT.run;
+  host.innerHTML = '';
+  const bar = el('div', 'sh-bar');
+  const t = el('div', 'grow');
+  t.appendChild(el('h2', null, `Shift · ${run.minutes} minutes`));
+  t.appendChild(el('div', 'kv', `Department: ${run.sector || 'Everything'} · dealt from every queue`));
+  bar.appendChild(t);
+  bar.appendChild(el('span', 'sh-pill', 'Ruling code accepted · this run'));
+  const end = el('button', 'act', 'End shift');
+  end.onclick = () => shiftEnd();
+  bar.appendChild(end);
+  host.appendChild(bar);
+  const meters = el('div', 'sh-meters'); meters.id = 'sh-meters';
+  host.appendChild(meters);
+  const last = el('div', 'sh-card sh-last'); last.id = 'sh-last';
+  last.style.marginTop = '12px';
+  host.appendChild(last);
+  const runGrid = el('div', 'sh-run');
+  const main = el('div');
+  const head = el('div', 'sh-cardhead'); head.id = 'sh-head';
+  const slot = el('div'); slot.id = 'sh-slot';
+  main.append(head, slot);
+  const side = el('div', 'sh-side'); side.id = 'sh-side';
+  runGrid.append(main, side);
+  host.appendChild(runGrid);
+  SHIFT.slot = slot;
+}
+
+function shiftCurrent() {
+  const run = SHIFT.run;
+  return run && run.todo.length ? run.cards[run.todo[0]] : null;
+}
+
+function shiftPaint() {
+  shiftPaintMeters();
+  shiftPaintLast();
+  shiftPaintHead();
+  shiftPaintSide();
+}
+
+function shiftPaintMeters() {
+  const run = SHIFT.run, m = $('#sh-meters');
+  if (!run || !m) return;
+  m.innerHTML = '';
+  const N = run.cards.length;
+  const resolved = run.cards.filter(c => c.status !== 'pending').length;
+  const cur = shiftCurrent();
+  const prog = el('div', 'sh-card');
+  prog.appendChild(el('div', 'sh-kicker', 'Progress'));
+  const big = el('div', 'sh-big', cur ? `${Math.min(resolved + 1, N)} ` : `${resolved} `);
+  big.appendChild(el('small', null, 'of ' + N));
+  prog.appendChild(big);
+  const segs = el('div', 'sh-segs');
+  segs.style.gridTemplateColumns = `repeat(${N}, minmax(0, 1fr))`;
+  run.cards.forEach(c => {
+    const s = el('span', c === cur ? 'now' : c.status);
+    s.title = `card ${c.no}: ${c === cur ? 'on screen' : c.status}`;
+    segs.appendChild(s);
+  });
+  prog.appendChild(segs);
+  const p = run.progress, pr = p && p.proposed;
+  prog.appendChild(el('div', 'kv', pr && pr.ruled
+    ? `As proposed ${pr.agreed} of ${pr.ruled} · far enough apart to count ${pr.considered} of ${pr.ruled}`
+    : 'No proposal has been ruled on yet this shift.'));
+  m.appendChild(prog);
+  const time = el('div', 'sh-card');
+  time.appendChild(el('div', 'sh-kicker', 'Time left'));
+  const tb = el('div', 'sh-big'); tb.id = 'sh-time';
+  time.appendChild(tb);
+  const tn = el('div', 'kv'); tn.id = 'sh-timenote';
+  time.appendChild(tn);
+  m.appendChild(time);
+  shiftTick();
+  const hc = el('div', 'sh-card');
+  hc.appendChild(el('div', 'sh-kicker', 'Board health'));
+  const s0 = run.health_start, s1 = p && p.health ? p.health.exact : null;
+  const hb = el('div', 'sh-big', s0 == null ? '—' : s0.toFixed(1));
+  if (s1 != null) hb.appendChild(el('small', null, ' → ' + s1.toFixed(1)));
+  hc.appendChild(hb);
+  hc.appendChild(el('div', 'kv', s0 != null && s1 != null
+    ? `${shiftSigned(s1 - s0)} this shift, with anybody’s write: it is the board’s score, not yours`
+    : 'reading the board…'));
+  m.appendChild(hc);
+}
+
+function shiftTick() {
+  const run = SHIFT.run;
+  const t = $('#sh-time'), note = $('#sh-timenote');
+  if (!run || !t) return;
+  const left = run.minutes * 60 - (Date.now() - run.t0) / 1000;
+  t.textContent = '';
+  t.appendChild(document.createTextNode(shiftClock(left) + ' '));
+  t.appendChild(el('small', null, `of ${run.minutes}:00`));
+  if (note) note.textContent = left > 0
+    ? 'The box you chose. Nothing ends when it runs out.'
+    : 'Time is up. Finish the card in front of you, or end the shift; nothing is cut off.';
+}
+
+function shiftPaintLast() {
+  const run = SHIFT.run, box = $('#sh-last');
+  if (!run || !box) return;
+  box.innerHTML = '';
+  const L = run.last;
+  const c = L ? run.cards[L.k] : null;
+  box.appendChild(penguin(L && L.status === 'ruled' ? 'offer' : 'hunt'));
+  const t = el('div');
+  t.style.flex = '1 1 auto';
+  let line = 'Nothing ruled yet this shift.', sub = 'Every ruling is journalled as you make it.';
+  if (L && L.status === 'ruled') {
+    line = `Card ${c.no} (${shiftName(c)}): ${L.msg || 'ruled'}`;
+    sub = L.ids.length ? 'Journalled. Undo any time.'
+      : 'Nothing was journalled for it, so it cannot be undone from here.';
+  } else if (L && L.status === 'skipped') {
+    line = `Card ${c.no} (${shiftName(c)}) skipped.`;
+    sub = L.ids.length ? 'Something was written before the skip; it is journalled and can be undone.'
+      : 'It goes back to its queue, unruled.';
+  } else if (L && L.status === 'undone') {
+    line = `Card ${c.no} (${shiftName(c)}): the ruling was undone.`;
+    sub = 'It is back in front of you, as it was before.';
+  }
+  t.appendChild(el('div', 'sh-line', line));
+  t.appendChild(el('div', 'kv', sub));
+  if (run.note) t.appendChild(el('div', 'kv', run.note));
+  box.appendChild(t);
+  if (L && L.ids && L.ids.length) {
+    const u = el('button', 'act', `Undo card ${c.no} `);
+    u.appendChild(shiftKbd('U'));
+    u.disabled = run.undoing;
+    u.onclick = () => shiftUndo();
+    box.appendChild(u);
+  }
+}
+
+function shiftPaintHead() {
+  const run = SHIFT.run, h = $('#sh-head');
+  if (!run || !h) return;
+  h.innerHTML = '';
+  const c = shiftCurrent();
+  if (!c) return;
+  const g = run.waiting[c.queue] || {};
+  const k = el('div', 'sh-kicker');
+  k.textContent = `Card ${run.cards.filter(x => x.status !== 'pending').length + 1} of ${run.cards.length} · `
+    + `${c.label} · ${(g.waiting ?? 0).toLocaleString()} waiting · `
+    + (c.moves ? `Moves: ${c.moves}${g.pct_now == null ? '' : ' ' + g.pct_now + '%'}`
+               : 'No gauge measure' + (c.no_points ? ': ' + c.no_points : ''));
+  h.appendChild(k);
+  const it = c.item || {};
+  if (c.queue === 'miscategorized' && it.proposed_sector)
+    h.appendChild(el('div', 'sh-ask', `Is ${shiftName(c)} a ${it.proposed_sector} / ${it.proposed_category} vendor?`));
+  else if (c.queue === 'vendors')
+    h.appendChild(el('div', 'sh-ask', `Does ${shiftName(c)} belong on this board?`));
+}
+
+function shiftPaintSide() {
+  const run = SHIFT.run, s = $('#sh-side');
+  if (!run || !s) return;
+  s.innerHTML = '';
+  const nxt = run.todo.length > 1 ? run.cards[run.todo[1]] : null;
+  const n = el('div', 'sh-card');
+  n.appendChild(el('div', 'sh-kicker', 'Next up'));
+  if (nxt) {
+    n.appendChild(el('div', 'what', shiftName(nxt)));
+    n.appendChild(el('div', 'kv', `Card ${nxt.no} of ${run.cards.length} · ${nxt.label}`));
+  } else {
+    n.appendChild(el('div', 'kv', run.todo.length ? 'This is the last card in the hand.' : 'The hand is done.'));
+  }
+  s.appendChild(n);
+  const rest = el('div', 'sh-card rest');
+  rest.appendChild(el('div', 'sh-kicker', 'Rest of the hand'));
+  const by = {};
+  run.todo.slice(1).forEach(i => { const c = run.cards[i]; by[c.label] = (by[c.label] || 0) + 1; });
+  Object.keys(by).forEach(l => {
+    const d = el('div');
+    d.append(el('span', null, l), el('span', null, String(by[l])));
+    rest.appendChild(d);
+  });
+  if (!Object.keys(by).length) rest.appendChild(el('div', 'kv', 'Nothing after this card.'));
+  const skipped = run.cards.filter(c => c.status === 'skipped').length;
+  const gone = run.cards.filter(c => c.status === 'gone').length;
+  rest.appendChild(el('div', 'kv', `Skipped this shift: ${skipped}. They go back to their queues, unruled.`));
+  if (gone) rest.appendChild(el('div', 'kv', `${gone} left ${gone === 1 ? 'its queue' : 'their queues'} `
+    + 'after the deal and ' + (gone === 1 ? 'was' : 'were') + ' not shown.'));
+  s.appendChild(rest);
+  const keys = el('div', 'sh-card');
+  keys.appendChild(el('div', 'sh-kicker', 'Keys'));
+  const cur = shiftCurrent();
+  const kv = (k, what) => { const d = el('div', 'kv'); d.append(shiftKbd(k), document.createTextNode(' ' + what)); keys.appendChild(d); };
+  if (cur && cur.keyed) {
+    kv('⏎', 'commit the armed call');
+    kv('esc', 'disarm');
+    kv('W', 'write the why');
+  }
+  kv('J', 'skip, decide later');
+  kv('U', 'undo the last ruling');
+  keys.appendChild(el('div', 'kv', 'Every ruling is journalled; scripts/admin_undo.py lists every one.'));
+  s.appendChild(keys);
+}
+
+/* One card on screen at a time, re-asked of its queue first. The card a
+   deal shows is remembered by its index and by the deal's seq, so whatever
+   resolves a card resolves THAT card and nothing that has come up since. */
+async function shiftDeal() {
+  const run = SHIFT.run;
+  if (!run || run.ended || TAB !== '__shiftrun') return;
+  const seq = ++run.seq;
+  if (run.observer) { run.observer.disconnect(); run.observer = null; }
+  run.heard = []; run.heardMsg = ''; run.onScreen = null;
+  BELT.queue = null; BELT.host = null; BELT.armed = null;
+  const slot = SHIFT.slot;
+  slot.innerHTML = '';
+  shiftPaint();
+  const c = shiftCurrent();
+  if (!c) return shiftHandDone();
+  const k = run.todo[0];
+  slot.appendChild(el('div', 'empty', 'checking this card is still waiting…'));
+  const r = await api('/api/shift-card?queue=' + encodeURIComponent(c.queue)
+                      + '&key=' + encodeURIComponent(c.key));
+  if (seq !== run.seq || TAB !== '__shiftrun' || run.ended) return;
+  slot.innerHTML = '';
+  if (r.error) {
+    /* A failed read is not an answer: the card stays where it is and says
+       so. Setting it aside and dealing the next walked a whole hand off as
+       skipped in milliseconds while the server was down. */
+    const box = el('div', 'refusal');
+    box.appendChild(penguin('skeptic'));
+    const t = el('div');
+    t.appendChild(el('h3', null, `Card ${c.no} could not be checked`));
+    t.appendChild(el('div', 'kv', r.error + '. Nothing was written, and the card is still in the hand.'));
+    const row = el('div', 'row');
+    const again = el('button', 'act go', 'Try again');
+    again.onclick = () => shiftDeal();
+    const end = el('button', 'act', 'End shift');
+    end.onclick = () => shiftEnd();
+    row.append(again, end);
+    t.appendChild(row);
+    box.appendChild(t);
+    slot.appendChild(box);
+    return;
+  }
+  if (!r.pending) {
+    run.todo.shift();
+    c.status = 'gone';
+    run.note = `Card ${c.no} (${shiftName(c)}) left its queue after the deal, so it was not shown.`;
+    return shiftDeal();
+  }
+  run.note = '';
+  c.item = r.item;
+  run.onScreen = k;
+  run.seqCard[seq] = k;
+  shiftPaintHead();
+  if (c.keyed) shiftKeyed(c); else shiftListCard(c);
+}
+
+/* The keyed cards are the belt's own card for a belt of one. */
+function shiftBeltCard() {
+  const card = beltCard(0);
+  card.querySelectorAll('.beltpos, .beltnext, button[data-k="f"]').forEach(x => x.remove());
+  card.querySelectorAll('.beltkeys > span').forEach(s => {
+    const k = s.querySelector('.kbd');
+    if (k && k.textContent === 'F') s.remove();
+  });
+  freshen(card);
+  return card;
+}
+
+function shiftKeyed(c) {
+  QINFO = {agree: SHIFT.agree};
+  Object.assign(BELT, {queue: c.queue, items: [c.item], i: 0, armed: null, ruled: 0,
+                       skipped: 0, done: new Set(), next: null, nextFor: -1,
+                       host: SHIFT.slot, why: ''});
+  SHIFT.slot.appendChild(shiftBeltCard());
+}
+
+/* renderBelt() for a belt of one: "Back to the item" after a refusal. */
+function shiftRedraw() {
+  if (!SHIFT.slot) return;
+  SHIFT.slot.innerHTML = '';
+  SHIFT.slot.appendChild(shiftBeltCard());
+}
+
+/* advance() for a belt of one: commit() marks the card done before calling
+   it, the belt's own Skip does not. Only for the card this belt was drawn
+   for: anything else on screen now is not this belt's to resolve. */
+function shiftAfterBelt() {
+  const run = SHIFT.run;
+  if (QINFO && QINFO.agree) SHIFT.agree = QINFO.agree;
+  if (!run || run.onScreen == null || run.cards[run.onScreen].item !== BELT.items[0]) return;
+  if (!BELT.done.has(0) && run.inflight) return shiftBusy();
+  shiftResolve(BELT.done.has(0) ? 'ruled' : 'skipped', run.seq);
+}
+
+function shiftBusy() {
+  toast('A ruling on this card is still being written. Wait for it to land.', true);
+}
+
+/* Every other card is its queue's own renderer, untouched. Those renderers
+   remove their own card after a write lands and never before, so the card
+   leaving its wrapper is the signal that it was ruled. */
+function shiftListCard(c) {
+  const run = SHIFT.run, seq = run.seq, slot = SHIFT.slot;
+  const wrap = el('div', 'sh-list');
+  let row;
+  try { row = RENDER[c.queue](c.item); }
+  catch (e) { row = el('div', 'item', `This card could not be drawn (${e.message}). Skip it; it stays in ${c.label}.`); }
+  wrap.appendChild(row);
+  slot.appendChild(wrap);
+  const bar = el('div', 'beltacts');
+  const skip = el('button', 'act mute', 'Skip — decide later ');
+  skip.dataset.k = 'j';
+  skip.appendChild(shiftKbd('J'));
+  skip.onclick = () => {
+    if (seq !== run.seq) return;
+    if (run.inflight) return shiftBusy();      // a write from this card is on its way
+    shiftResolve('skipped', seq);
+  };
+  bar.appendChild(skip);
+  slot.appendChild(bar);
+  const mo = new MutationObserver(() => {
+    if (row.parentNode === wrap) return;
+    mo.disconnect();
+    if (seq !== run.seq || TAB !== '__shiftrun' || run.ended) return;
+    shiftResolve('ruled', seq);
+  });
+  mo.observe(wrap, {childList: true});
+  run.observer = mo;
+}
+
+/* Which run a request belongs to, if it is a card's write. The shift's own
+   bookkeeping calls are not a card's writes. */
+function shiftWatch(path, body) {
+  const run = SHIFT.run;
+  if (!body || !run || run.ended || TAB !== '__shiftrun') return null;
+  if (['/api/undo', '/api/check-code', '/api/shift-log'].includes(path)) return null;
+  // a Check or a page read writes nothing; it must not hold Skip or Undo
+  const act = path.replace(/^\/api\//, '').split('?')[0];
+  if (((META && META.read_only_posts) || []).includes(act)) return null;
+  return run;
+}
+
+/* What a card's write answered: the journal ids it made (do_POST hands them
+   back) and the server's own message. Called from api() with the seq of the
+   card on screen when the request was SENT: an answer that lands after its
+   card has gone belongs to that card, never to the one now on screen. */
+function shiftHeard(run, seq, j) {
+  const ids = Array.isArray(j.journal) ? j.journal : [];
+  if (seq === run.seq && !run.ended) {
+    run.heard.push(...ids);
+    if (j.message) run.heardMsg = j.message;
+    return;
+  }
+  const k = run.seqCard[seq];
+  if (k == null || !ids.length) return;
+  const c = run.cards[k];
+  c.ids = c.ids.concat(ids);
+  if (c.status === 'skipped') c.status = 'ruled';        // it was written: not unruled
+  if (run.last && run.last.k === k) {
+    run.last.ids = c.ids;
+    run.last.status = c.status;
+    if (j.message) run.last.msg = j.message;
+  }
+  if (!run.ended) { shiftPaintLast(); shiftPaintMeters(); }
+}
+
+function shiftResolve(status, seq) {
+  const run = SHIFT.run;
+  if (!run || run.ended || run.onScreen == null || seq !== run.seq) return;
+  if (run.observer) { run.observer.disconnect(); run.observer = null; }
+  const k = run.onScreen, at = run.todo.indexOf(k);
+  if (at < 0) return;
+  run.todo.splice(at, 1);
+  run.onScreen = null;
+  const c = run.cards[k];
+  // a card whose write landed was ruled, whatever pressed Skip after it
+  c.status = status === 'skipped' && run.heard.length ? 'ruled' : status;
+  c.ids = run.heard.slice();
+  run.last = {k, ids: c.ids, msg: run.heardMsg, status: c.status};
+  BELT.queue = null; BELT.host = null; BELT.armed = null;
+  shiftDeal();          // first: the server answers in order, and the card is what waits
+  shiftProgress();
+}
+
+async function shiftProgress() {
+  const run = SHIFT.run;
+  if (!run) return;
+  const p = await api(secQ('/api/shift-progress?since=' + encodeURIComponent(run.started_at)));
+  if (SHIFT.run !== run || run.ended) return;
+  if (!p.error) run.progress = p;
+  shiftPaintMeters();
+}
+
+/* Undo the last ruling: every journal entry its writes made, all or none.
+   The server refuses when anything has changed those records since, and
+   says which; the card then comes back in front of the person. Never while
+   a write from the card on screen is still on its way (it would land after
+   the undo and be credited to the card that came back), and the screen is
+   frozen for the length of it. */
+async function shiftUndo() {
+  const run = SHIFT.run, L = run && run.last;
+  if (!L || !L.ids || !L.ids.length || run.undoing || run.ended) return;
+  /* run.heard: a write that has landed on the card on screen before the
+     card moved on (a keyed card waits for the agree-rate, Missing websites
+     keeps its row up a moment). Undoing the card before it would leave
+     those ids with nobody. */
+  if (run.inflight || run.heard.length) {
+    toast('The card on screen is still being ruled. Undo once it has moved on.', true);
+    return;
+  }
+  run.undoing = true;
+  run.seq++;                                  // nothing on the old screen resolves now
+  run.onScreen = null;
+  if (run.observer) { run.observer.disconnect(); run.observer = null; }
+  BELT.queue = null; BELT.host = null; BELT.armed = null;
+  SHIFT.slot.innerHTML = '';
+  SHIFT.slot.appendChild(el('div', 'empty', 'undoing card ' + run.cards[L.k].no + '…'));
+  shiftPaintLast();
+  const r = await api('/api/undo', {entries: L.ids});
+  run.undoing = false;
+  if (SHIFT.run !== run || run.ended) return;
+  if (r.error) {
+    run.note = 'Undo refused: ' + r.error;
+    toast(r.error, true);
+    return shiftDeal();                       // the card that was on screen comes back
+  }
+  toast(r.message);
+  const c = run.cards[L.k];
+  c.status = 'pending'; c.ids = [];
+  run.todo.unshift(L.k);
+  run.last = {k: L.k, ids: [], msg: '', status: 'undone'};
+  run.note = '';
+  const a = await api('/api/agree');           // the undone ruling leaves the rate
+  if (!a.error) SHIFT.agree = a;
+  if (SHIFT.run !== run || run.ended) return;
+  shiftDeal();
+  shiftProgress();
+}
+
+function shiftHandDone() {
+  const slot = SHIFT.slot;
+  slot.innerHTML = '';
+  const n = el('div', 'beltend');
+  n.appendChild(penguin('offer'));
+  const t = el('div');
+  t.appendChild(el('h3', null, 'That is the whole hand'));
+  t.appendChild(el('div', 'kv', 'End the shift to log it, or undo the last ruling first.'));
+  const row = el('div', 'row');
+  const end = el('button', 'act go', 'End shift');
+  end.onclick = () => shiftEnd();
+  row.appendChild(end);
+  t.appendChild(row);
+  n.appendChild(t);
+  slot.appendChild(n);
+}
+
+async function shiftEnd() {
+  const run = SHIFT.run;
+  if (!run || run.ended) return;
+  run.ended = true;
+  run.seq++;
+  clearInterval(run.timer);
+  if (run.observer) { run.observer.disconnect(); run.observer = null; }
+  BELT.queue = null; BELT.host = null; BELT.armed = null;
+  TAB = '__shiftdone';
+  const v = $('#view'); v.innerHTML = '';
+  const host = el('div'); host.id = 'shift-host'; host.dataset.view = 'done';
+  v.appendChild(host);
+  host.appendChild(el('div', 'empty', 'logging the shift…'));
+  const skipped = run.cards.filter(c => c.status === 'skipped').length;
+  const gone = run.cards.filter(c => c.status === 'gone').length;
+  const r = await api('/api/shift-log', {started_at: run.started_at, minutes: run.minutes,
+    sector: run.sector, dealt: run.cards.length, skipped, health_start: run.health_start});
+  let rec = r.shift || null;
+  if (!rec) {
+    const p = await api(secQ('/api/shift-progress?since=' + encodeURIComponent(run.started_at)));
+    if (!p.error) rec = {ruled: p.ruled, by_queue: p.by_queue, proposed: p.proposed, undone: p.undone,
+      health_start: run.health_start, health_end: p.health.exact,
+      moved: run.health_start == null ? null : p.health.exact - run.health_start};
+  }
+  if (TAB !== '__shiftdone') return;
+  host.innerHTML = '';
+  const card = el('div', 'sh-card');
+  const top = el('div', 'sh-host');
+  top.appendChild(penguin(rec && rec.ruled ? 'offer' : 'ghosted'));
+  const tt = el('div');
+  tt.appendChild(el('h2', null, 'Shift over'));
+  tt.appendChild(el('div', 'kv', `${run.minutes}-minute shift · ${run.sector || 'Everything'} · `
+    + `${shiftClock((Date.now() - run.t0) / 1000)} at the desk`));
+  if (r.error) tt.appendChild(el('div', 'warn', 'This shift was not logged: ' + r.error));
+  top.appendChild(tt);
+  card.appendChild(top);
+  if (rec) {
+    const pr = rec.proposed || {};
+    const sum = el('div', 'sh-sum');
+    const cell = (k, big, note) => {
+      const c = el('div', 'sh-card');
+      c.appendChild(el('div', 'sh-kicker', k));
+      c.appendChild(el('div', 'sh-big', big));
+      if (note) c.appendChild(el('div', 'kv', note));
+      sum.appendChild(c);
+    };
+    cell('Rulings', String(rec.ruled ?? 0), 'on the record, counted by the server');
+    cell('As proposed', pr.ruled ? `${pr.agreed} of ${pr.ruled}` : '—',
+      pr.ruled ? `far enough apart to count: ${pr.considered} of ${pr.ruled}` : 'no proposal ruled on');
+    cell('Undone', String(rec.undone ?? 0), 'undos by a person since the deal');
+    cell('Board health', rec.health_end == null ? '—' : rec.health_end.toFixed(1),
+      rec.moved == null ? '' : `${shiftSigned(rec.moved)} since the deal, with anybody’s write`);
+    card.appendChild(sum);
+    const bq = rec.by_queue || {};
+    if (Object.keys(bq).length) {
+      card.appendChild(el('div', 'sh-kicker', 'Rulings by queue'));
+      Object.keys(bq).forEach(l => card.appendChild(el('div', 'kv', `${l}: ${bq[l]}`)));
+    }
+  }
+  card.appendChild(el('div', 'kv', `${skipped} skipped, back in their queues unruled`
+    + (gone ? ` · ${gone} left their queues before they were shown` : '') + '.'));
+  const row = el('div', 'row');
+  row.style.marginTop = '14px';
+  const again = el('button', 'act go', 'Start another shift');
+  again.onclick = () => startShift(run.minutes);
+  const home = el('button', 'act', 'Back to the shift home');
+  home.onclick = () => showShiftHome();
+  row.append(again, home);
+  card.appendChild(row);
+  host.appendChild(card);
+  SHIFT.run = null;
+  refreshCounts();
+}
+
+/* Enter starts a shift from its home; U and J during one. The belt's own
+   listener keeps every key on a keyed card (J included), so J here is only
+   for the queues' own cards. Typing is typing, as on the belt. */
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target;
+  const tag = t && t.tagName;
+  if (TAB === '__shift') {
+    const home = $('#shift-host');
+    if (!home || home.dataset.view !== 'home' || e.key !== 'Enter') return;
+    if (tag === 'BUTTON' || tag === 'A' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+    if (tag === 'INPUT' && !t.closest('#shift-host')) return;
+    const go = home.querySelector('.sh-go button.act.go');
+    if (go && !go.disabled) { e.preventDefault(); go.click(); }
+    return;
+  }
+  if (TAB !== '__shiftrun' || !SHIFT.run) return;
+  if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+  const k = (e.key || '').toLowerCase();
+  if (k === 'u') { e.preventDefault(); shiftUndo(); return; }
+  const cur = shiftCurrent();
+  if (k === 'j' && cur && !cur.keyed) {
+    const b = SHIFT.slot && SHIFT.slot.querySelector('.sh-list + .beltacts button[data-k="j"]');
+    if (b) { e.preventDefault(); b.click(); }
+  }
 });
 
 /* The reason sent is the BUTTON'S OWN WORDS, which is a real answer somebody

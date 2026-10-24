@@ -172,7 +172,8 @@ def read_companies() -> list:
 
 
 def save_companies(companies: list, action: str, why: str = "",
-                   by: str = "owner", force: bool = False) -> str | None:
+                   by: str = "owner", force: bool = False,
+                   extra: dict | None = None) -> str | None:
     """Journal, then write. Returns a refusal message, or None on success.
 
     PASS `by`. It defaults to "owner" because most writes are his, and that
@@ -202,7 +203,7 @@ def save_companies(companies: list, action: str, why: str = "",
                 "and modify what it returns.")
     before = _LAST_COMPANIES
     _eid, refusal = journal.record("companies.json", before, companies,
-                                   action, by, why, force)
+                                   action, by, why, force, extra)
     if refusal:
         return refusal
     write_atomic("companies.json", companies)
@@ -210,7 +211,8 @@ def save_companies(companies: list, action: str, why: str = "",
 
 
 def save_decisions(name: str, after, action: str, why: str = "",
-                   by: str = "owner", force: bool = False) -> str | None:
+                   by: str = "owner", force: bool = False,
+                   extra: dict | None = None) -> str | None:
     """Journal a decision-file write, then write. Refusal message, or None.
 
     THE RULE ONLY EVER COVERED companies.json. journal.py motivates itself
@@ -237,7 +239,7 @@ def save_decisions(name: str, after, action: str, why: str = "",
     # every write looked like 7,919 additions - BLAST refused them all, and
     # forcing it would have journalled the whole file as new.
     before = read(name, [] if isinstance(after, list) else {})
-    _eid, refusal = journal.record(name, before, after, action, by, why, force)
+    _eid, refusal = journal.record(name, before, after, action, by, why, force, extra)
     if refusal:
         return refusal
     write_atomic(name, after)
@@ -1684,13 +1686,19 @@ def board_health(companies, board) -> dict:
     score = sum((got / of) * w for _, got, of, w, _ in scored)
     return {
         "score": round(100 * score / total_w) if total_w else None,
+        # unrounded, for what a shift moved: a ruling moves the score by less
+        # than a whole point, and "+0" after twenty real rulings is false
+        "exact": round(100 * score / total_w, 3) if total_w else None,
         "visible": visible,
         "visible_wrong": visible_wrong,
         # pct is None, never 0, when the denominator is empty: no rows to be
-        # right about is not the same fact as being right about none of them
+        # right about is not the same fact as being right about none of them.
+        # per_item is how far ONE settled row moves the whole score: both
+        # sides are counts on file, never a picked number
         "parts": [{"label": l, "pct": round(100 * got / of) if of else None,
                    "weight": w, "note": note,
-                   "of": of}
+                   "of": of,
+                   "per_item": round(100 * w / total_w / of, 4) if of and total_w else None}
                   for l, got, of, w, note in parts],
     }
 
@@ -1770,8 +1778,14 @@ def reversals(limit: int = 8) -> list:
     """
     import journal
     rows = journal._entries()[-40:]
-    undone = {r.get("undo_of") for r in rows if r.get("undo_of")}
-    out = []
+    undone = _undone_ids(rows)
+    # ONE ROW PER DESK REQUEST: a placement journals the company and its
+    # ruling, and the shift's Undo takes both back, which read as two rulings
+    # and "2 taken back" (review, 2026-10-24)
+    members: dict = collections.defaultdict(list)
+    for r in rows:
+        members[r.get("same_ruling_as") or r.get("id")].append(r)
+    out, seen = [], set()
     for r in reversed(rows):
         if r.get("action") in ("undo", "reopen"):
             continue
@@ -1780,12 +1794,33 @@ def reversals(limit: int = 8) -> list:
         # heading, which is the same misattribution the sitting counter had.
         if not _is_person(r.get("by")):
             continue
-        out.append({"id": r["id"], "action": r["action"], "n": r.get("n", 0),
-                    "at": r.get("at"), "why": r.get("why", ""),
-                    "reversed": r["id"] in undone})
+        group = r.get("same_ruling_as") or r.get("id")
+        if group in seen:
+            continue
+        seen.add(group)
+        mine = [m for m in members[group] if m.get("action") not in ("undo", "reopen")]
+        first = mine[0] if mine else r
+        out.append({"id": first["id"], "action": first["action"],
+                    "n": sum(m.get("n", 0) for m in mine),
+                    "at": first.get("at"), "why": first.get("why", ""),
+                    "reversed": any(m["id"] in undone for m in mine)})
         if len(out) >= limit:
             break
     return out
+
+
+def _rule_board_proposal(cid: str, accept: bool, why: str, by: str) -> str | None:
+    """board_proposals.rule()'s record, written through the journal. rule()
+    writes the file directly, so undoing an accepted board took the ats back
+    and left the ruling standing: the queue skips a ruled id, and the found
+    board was never offered again (review, 2026-10-24). Journalled under the
+    same action as the wiring, so a ruling is one ruling either way."""
+    import board_proposals
+    ruled = read(board_proposals.RULED.name, {})
+    ruled[cid] = {"accept": bool(accept), "why": (why or "").strip(), "by": by,
+                  "on": dt.date.today().isoformat(), "at": now()}
+    return save_decisions(board_proposals.RULED.name, ruled, "board-proposal",
+                          why=why or "", by=by)
 
 
 def act_board_proposal(body: dict) -> dict:
@@ -1809,7 +1844,9 @@ def act_board_proposal(body: dict) -> dict:
         return {"error": "no such company"}
 
     if not accept:
-        board_proposals.rule(cid, False, why, body.get("by") or "owner")
+        bad = _rule_board_proposal(cid, False, why, body.get("by") or "owner")
+        if bad:
+            return {"error": bad}
         return {"ok": True, "message": f"noted: that board is not {c['name']}'s."}
 
     found = next((f for f in board_proposals._read(board_proposals.FOUND, [])
@@ -1838,7 +1875,9 @@ def act_board_proposal(body: dict) -> dict:
                          by=(body.get("by") or "owner"))
     if bad:
         return {"error": bad}
-    board_proposals.rule(cid, True, why, body.get("by") or "owner")
+    bad = _rule_board_proposal(cid, True, why, body.get("by") or "owner")
+    if bad:
+        return {"error": f"the board is wired, and the ruling was refused: {bad}"}
     return {"ok": True, "message": f"{c['name']} now reads from "
                                    f"{block['type']} \u2014 {detail}."}
 
@@ -2579,14 +2618,62 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
     return sorted(out)
 
 
+def _undone_ids(rows: list) -> set:
+    """The journal entries an undo has taken back and nothing has put back.
+    Walked newest first, so an undo that was itself undone (admin_undo.py
+    --undo on an undo) cancels nothing."""
+    undone: set = set()
+    for r in reversed(rows):
+        if r.get("undo_of") and r.get("id") not in undone:
+            undone.add(r["undo_of"])
+    return undone
+
+
+# Actions that are a ruling only when a person makes them at the desk: the
+# CLI lands write-ups in hundreds after a gate review, and those were never
+# counted as rulings; the desk lands one, read on the card (2026-10-24).
+DESK_RULINGS = {"promote-profiles": "profiles"}
+
+
+def _ruling_queue(r: dict) -> str | None:
+    """Which queue a journal entry is a ruling of, or None."""
+    action = r.get("action")
+    queue = JOURNAL_RULINGS.get(action) or (DESK_RULINGS.get(action) if r.get("desk") else None)
+    # a write-up accepted or rejected is a Write-ups ruling, not a generic
+    # agent proposal: the record keys say the kind
+    if queue == "proposals":
+        keys = list((r.get("changes") or {}).keys())
+        if keys and all(str(k).startswith("profile:") for k in keys):
+            return "profiles"
+    return queue
+
+
 def _journal_rulings(mine_only: bool = True) -> list[tuple[dt.datetime, str, str]]:
     """(when, queue, journal id) for the rulings only the journal remembers."""
     import journal
     out = []
-    for r in journal._entries():
-        queue = JOURNAL_RULINGS.get(r.get("action"))
-        if not queue:
+    rows = journal._entries()
+    # AN UNDONE RULING IS NOT A RULING. A decision-file ruling leaves its file
+    # when it is undone, so it drops out of _ruling_stamps by itself; one only
+    # the journal remembers would have gone on counting (the shift's Undo
+    # made this reachable in one keystroke, 2026-10-24). Walked newest first,
+    # so an undo that was itself undone (admin_undo.py --undo on an undo)
+    # cancels nothing: the ruling it reversed is in force again.
+    undone = _undone_ids(rows)
+    # ONE DESK REQUEST IS ONE RULING. Approving a submission journals the
+    # company and the submission, correcting a year journals set-founded and
+    # confirm-founded: two entries, one ruling. do_POST stamps every entry a
+    # request writes with the request's first (same_ruling_as), and a stamp
+    # is counted once.
+    counted: set = set()
+    for r in rows:
+        queue = _ruling_queue(r)
+        if not queue or r.get("id") in undone:
             continue
+        one = r.get("same_ruling_as") or r.get("id")
+        if one in counted:
+            continue
+        counted.add(one)
         if mine_only and not _is_person(r.get("by")):
             continue
         t = _ts(r.get("at"))
@@ -2638,14 +2725,19 @@ def receipt() -> dict:
     # write, as if the owner had sat.
     agent_only = not mine and not ruled
     by_queue = collections.Counter(q for _, q in ruled)
-    reversed_n = sum(1 for r in mine if r.get("action") in ("undo", "reopen"))
+    # one per undo, however many entries it reversed (undo_batch), as the
+    # shift counts it
+    reversed_n = len({r.get("undo_batch") or r.get("same_ruling_as") or r.get("id")
+                      for r in mine if r.get("action") in ("undo", "reopen")})
+    gone = _undone_ids(journal._entries())
 
     # Boards that went from "nothing we can read" to a real one, taken from
     # the journal's own before/after images rather than from a count of
     # button presses: a retry that found nothing is not a door.
     opened = []
     for r in mine:
-        if r.get("file") != "companies.json":
+        # a board an undo took away again is not a door this sitting opened
+        if r.get("file") != "companies.json" or r.get("id") in gone:
             continue
         for cid, ch in (r.get("changes") or {}).items():
             b4 = ((ch.get("before") or {}).get("ats") or {}).get("type")
@@ -2682,7 +2774,7 @@ def receipt() -> dict:
         # They are not two piles to be added.
         "stamped": len(ruled),
         "reversed": reversed_n,
-        "edits": len(mine) - reversed_n,
+        "edits": sum(1 for r in mine if r.get("action") not in ("undo", "reopen")),
         # not the owner's work, and never folded into it again
         "by_others": [{"by": who, "n": n} for who, n in theirs.most_common()],
         "states": lines,
@@ -4766,8 +4858,10 @@ def act_resolve_submission(body: dict) -> dict:
         return {"error": "action must be approve or reject"}
 
     if item["kind"] == "job":
+        # the person approving it is who captured it: without `by` the
+        # journal said "capture" and the desk's Undo refused the approval
         r = act_capture({"company_id": item.get("company_id"),
-                         "page_url": item.get("url"),
+                         "page_url": item.get("url"), "by": body.get("by") or "owner",
                          "jobs": [{"title": item["title"], "url": item.get("url"),
                                    "location": item.get("location")}]})
         if r.get("error"):
@@ -5703,12 +5797,375 @@ def act_page_review(body: dict) -> dict:
     return page_belt.act_submit({"id": cid, "by": by,
                                  "note": body.get("note") or ""})
 
+# --- THE SHIFT (option 5 of the admin canvas; owner, 2026-10-23: "build
+# option 5 for the admin") -------------------------------------------------
+#
+# A shift is a time box the owner picks (10, 20 or 30 minutes) and a HAND the
+# server deals from every queue: people waiting first, then the rows that
+# move board health most, a few from each queue. Every number on it is a
+# real board measure - the score, what one settled row moves it by
+# (board_health per_item), what moved while the shift ran - and none rewards
+# volume (check_admin_game). The rules the belt keeps hold here:
+#   - only the belt's queues are ruled with a key (BELT_QUEUES); every other
+#     card is the queue's own card, read and ruled at the speed it needs, and
+#     Acquisitions is never dealt;
+#   - a card is checked against its queue before it is shown, because a row
+#     ruled in another tab or applied overnight would otherwise be written
+#     over (shift_card);
+#   - the summary counts rulings from _ruling_stamps, the one definition of
+#     a ruling, never the page's clicks;
+#   - the size of the deal is one card a minute: a deck size, never a pace.
+SHIFT_MINUTES = (10, 20, 30)
+SHIFT_QUEUES = ("submissions", "miscategorized", "websites", "vendors",
+                "boardfound", "founded", "profiles")
+SHIFT_KEY = {"submissions": "id", "miscategorized": "id", "websites": "id",
+             "vendors": "key", "boardfound": "id", "founded": "id",
+             "profiles": "key"}
+SHIFT_BAR = {"miscategorized": "Right bucket, public rows",
+             "websites": "Names reachable", "vendors": "Scope settled",
+             "boardfound": "Boards found", "founded": "Founding years"}
+SHIFT_PEOPLE = ("submissions",)
+SHIFT_LOG = "admin_shifts.jsonl"
+
+
+def _shift_rows(q: str, companies, board) -> list:
+    """The rows of a queue a shift may deal: on the belt's queues only the
+    rows the belt itself would ride (beltable() in admin.html)."""
+    rows = QUEUES[q](companies, board)
+    if q == "miscategorized":
+        rows = [r for r in rows if r.get("proposed_sector") and r.get("confidence") != "none"]
+    if q == "vendors":
+        rows = [r for r in rows if (r.get("description") or "").strip()]
+    return rows
+
+
+def _shift_points(q: str, row: dict, per: dict) -> float:
+    """How far settling this row moves the score, at most. A wrong-bucket row
+    nobody can see moves nothing; confirming a year already shown moves
+    nothing (only a blank one counts)."""
+    bar = SHIFT_BAR.get(q)
+    if not bar:
+        return 0.0
+    if q == "miscategorized" and not row.get("open_roles"):
+        return 0.0
+    if q == "founded" and row.get("kind") != "blank":
+        return 0.0
+    return per.get(bar) or 0.0
+
+
+def _shift_rank(q: str, row: dict, per: dict) -> float:
+    """Where a row sits in the deal. Its points, except that a founding year
+    already on a public card ranks with the blanks: q_founded puts the
+    unconfirmed years first because an agent's year nobody has stood behind
+    reads as a fact, and ranking by points alone dealt every blank before
+    any of them (review, 2026-10-24). The card still says it moves nothing."""
+    if q == "founded":
+        return per.get(SHIFT_BAR[q]) or 0.0
+    return _shift_points(q, row, per)
+
+
+def _shift_no_points(q: str, row: dict) -> str | None:
+    """Why a card moves no points, in words, or None when it does."""
+    if q in SHIFT_PEOPLE:
+        return "a person is waiting"
+    if q == "miscategorized" and not row.get("open_roles"):
+        return "no open posting, so not a public row"
+    if q == "founded" and row.get("kind") != "blank":
+        return "it checks a year already shown"
+    if q not in SHIFT_BAR:
+        return "this queue checks work before it reaches the board"
+    return None
+
+
+def _health(companies, board, sector: str = "") -> dict:
+    """board_health for one department, saying which part it cannot scope: a
+    vendor waiting on an in/out call has no department, so Scope settled is
+    the whole board's in every department (review, 2026-10-24)."""
+    h = board_health(_scoped(companies, sector), board)
+    if sector:
+        for p in h["parts"]:
+            if p["label"] == "Scope settled":
+                p["note"] += " (the whole board: a vendor waiting on a call has no department)"
+    return h
+
+
+def _scoped(companies, sector: str):
+    return [c for c in companies if c.get("sector") == sector] if sector else companies
+
+
+def shift_hand(companies, board, minutes: int, sector: str = "") -> dict:
+    minutes = minutes if minutes in SHIFT_MINUTES else 20
+    n = minutes
+    cap = max(2, -(-n // 4))            # no queue takes more than a quarter
+    health = _health(companies, board, sector)
+    per = {p["label"]: p.get("per_item") or 0.0 for p in health["parts"]}
+    pct = {p["label"]: p.get("pct") for p in health["parts"]}
+    rows_of, waiting, held, everywhere = {}, {}, {}, {}
+    for q in SHIFT_QUEUES:
+        # ONE MEANING OF "WAITING": the queue's rows in this department, the
+        # same rows its tab lists. Rows the belt would not ride (nothing for
+        # the guesser to go on) are never dealt, and the hand says how many.
+        full, applies = in_sector(q, QUEUES[q](companies, board), sector, companies)
+        rows, _ = in_sector(q, _shift_rows(q, companies, board), sector, companies)
+        rows_of[q] = rows
+        waiting[q] = len(full)
+        held[q] = len(full) - len(rows)
+        everywhere[q] = bool(sector) and not applies
+    people = [(q, r) for q in SHIFT_PEOPLE for r in rows_of[q]][:n]
+    pool = [(-_shift_rank(q, r, per), SHIFT_QUEUES.index(q), i, q, r)
+            for q in SHIFT_QUEUES if q not in SHIFT_PEOPLE
+            for i, r in enumerate(rows_of[q])]
+    pool.sort(key=lambda x: x[:3])
+    taken, per_q = [], {}
+    for _p, _qi, _i, q, r in pool:
+        if len(people) + len(taken) >= n:
+            break
+        if per_q.get(q, 0) >= cap:
+            continue
+        per_q[q] = per_q.get(q, 0) + 1
+        taken.append((q, r))
+    order = {q: i for i, q in enumerate(SHIFT_QUEUES)}
+    taken.sort(key=lambda qr: order[qr[0]])          # one queue's cards together
+    cards = []
+    for q, r in people + taken:
+        pts = _shift_points(q, r, per)
+        cards.append({"queue": q, "label": LABEL[q], "key": r.get(SHIFT_KEY[q]),
+                      "keyed": q in BELT_QUEUES,
+                      "moves": SHIFT_BAR.get(q) if pts else None,
+                      "no_points": None if pts else _shift_no_points(q, r),
+                      "points": round(pts, 4), "item": r})
+    groups = []
+    for q in SHIFT_QUEUES:
+        mine = [c for c in cards if c["queue"] == q]
+        if not mine:
+            continue
+        bar = SHIFT_BAR.get(q)
+        groups.append({"queue": q, "label": LABEL[q], "waiting": waiting[q],
+                       "held": held[q],
+                       "dealt": len(mine), "all_departments": everywhere[q],
+                       "people": q in SHIFT_PEOPLE, "moves": bar,
+                       "pct_now": pct.get(bar) if bar else None,
+                       "points": round(sum(c["points"] for c in mine), 2)})
+    return {"minutes": minutes, "sector": sector or None, "dealt_at": now(),
+            "health": health,
+            "points_open": round(100 - health["exact"], 1) if health.get("exact") is not None else None,
+            "points": round(sum(c["points"] for c in cards), 2),
+            "people_waiting": sum(len(rows_of[q]) for q in SHIFT_PEOPLE),
+            "cards": cards, "groups": groups}
+
+
+def shift_card(companies, board, queue: str, key, sector: str = "") -> dict:
+    """Is this card still waiting? {pending, item}: the row as its queue holds
+    it NOW, or pending false when it has left the queue."""
+    if queue not in SHIFT_QUEUES:
+        return {"error": f"{queue!r} is not dealt in a shift"}
+    for r in _shift_rows(queue, companies, board):
+        if r.get(SHIFT_KEY[queue]) == key:
+            return {"pending": True, "item": r}
+    return {"pending": False, "item": None}
+
+
+def shift_summary(since: str, companies, board, sector: str = "") -> dict:
+    """What a shift did, from the records: rulings by a person since it
+    started (_ruling_stamps), the proposals among them taken as proposed, how
+    many of those were made far enough apart to count (READ_SECONDS after the
+    ruling before it, of ANY queue - a mixed hand must not make a fast click
+    look considered), the undos, and board health now. Other people's and
+    agents' writes are not counted as rulings; health is the board's, so it
+    moves with anybody's write and is labelled that way."""
+    t0 = _ts(since)
+    if not t0:
+        return {"error": "a shift summary needs the time it started"}
+    stamps = _ruling_stamps(True)
+    mine = [(t, q) for t, q in stamps if t >= t0]
+    by_queue: dict = {}
+    for _t, q in mine:
+        by_queue[LABEL.get(q, q)] = by_queue.get(LABEL.get(q, q), 0) + 1
+    # THE PROPOSALS, each ruled record with whether it took the proposal;
+    # a wrong-bucket ruling with no proposal on file is still a ruling, and
+    # still the one before the next
+    props, plain = [], []
+    for rec in read("placement_rulings.json", {}).values():
+        if not isinstance(rec, dict) or not _is_person(rec.get("by")):
+            continue
+        t, prop = _ts(rec.get("at")), _seen_proposal(rec)
+        if t and prop:
+            props.append((t, f"{rec.get('sector')} / {rec.get('category')}" == prop))
+        elif t:
+            plain.append((t, None))
+    for q, _k, rec in dismissal_records():
+        if q != "miscategorized" or not _is_person(rec.get("by")):
+            continue
+        t = _ts(rec.get("at"))
+        if t and _seen_proposal(rec):
+            props.append((t, False))
+        elif t:
+            plain.append((t, None))
+    # PACE, walked RECORD by record as agree_rate walks it, and across every
+    # queue: `at` has one-second grain, and measuring each ruling against the
+    # last earlier SECOND credited a burst in one second as considered, the
+    # defect agree_rate's own comment describes (review, 2026-10-24). The
+    # proposal rulings are a subset of the stamps, so they are walked as
+    # their own records among the rest.
+    others = [(t, None) for t, q in stamps if q != "miscategorized"]
+    walk = sorted(others + plain + [(t, i) for i, (t, _ok) in enumerate(props)],
+                  key=lambda x: x[0])
+    paced_at: dict = {}
+    prev = None
+    for t, i in walk:
+        if i is not None:
+            paced_at[i] = prev is None or (t - prev).total_seconds() >= READ_SECONDS
+        prev = t
+    ruled = agreed = paced = 0
+    for i, (t, ok) in enumerate(props):
+        if t < t0:
+            continue
+        ruled += 1
+        agreed += ok
+        paced += paced_at.get(i, False)
+    import journal
+    undone = len({r.get("undo_batch") or r.get("id") for r in journal._entries()
+                  if r.get("action") == "undo" and (_ts(r.get("at")) or t0) >= t0
+                  and _is_person(r.get("by"))})
+    h = _health(companies, board, sector)
+    return {"since": since, "ruled": len(mine), "by_queue": by_queue,
+            "proposed": {"ruled": ruled, "agreed": agreed, "considered": paced},
+            "undone": undone, "health": {"score": h["score"], "exact": h["exact"]}}
+
+
+def act_check_code(body: dict) -> dict:
+    """Writes nothing. It is a CODED action, so reaching it at all says the
+    code on this page is this run's: the shift asks before dealing a hand
+    rather than letting the first ruling bounce."""
+    return {"ok": True, "message": "ruling code accepted for this run"}
+
+
+def act_undo(body: dict) -> dict:
+    """Undo one ruling: the journal entries its write made (do_POST hands them
+    back as `journal`), newest first, ALL or nothing. Each is planned against
+    the files as they are now and the whole undo is refused when any record
+    has moved on since (journal.plan_undo), before anything is written - an
+    undo must never revert newer work. Only a person's own entries, never an
+    undo of an undo; scripts/admin_undo.py stays the tool for anything else.
+    Written through save_companies / save_decisions, journalled as `undo`
+    with undo_of, which reversals() and the receipt already read."""
+    import journal
+    ids = body.get("entries")
+    if (not isinstance(ids, list) or not ids or len(ids) > 10
+            or not all(isinstance(i, str) and i for i in ids)):
+        return {"error": "an undo needs the journal ids its ruling made, at most ten"}
+    rows = journal._entries()
+    pos = {r.get("id"): i for i, r in enumerate(rows)}
+    entries = []
+    for eid in dict.fromkeys(ids):
+        e = rows[pos[eid]] if eid in pos else None
+        if not e:
+            return {"error": f"no journal entry {eid}; nothing was undone"}
+        if e.get("action") in ("undo", "reopen") or e.get("undo_of"):
+            return {"error": f"{eid} is itself an undo; nothing was undone"}
+        if journal.undone(eid):
+            return {"error": f"{eid} was already undone; nothing was undone"}
+        if not _is_person(e.get("by")):
+            return {"error": f"{eid} was written by {e.get('by')}, not at this desk. "
+                             f"Undo it with scripts/admin_undo.py; nothing was undone"}
+        entries.append(e)
+    entries.sort(key=lambda e: pos[e["id"]], reverse=True)
+    state, plans = {}, []
+    for e in entries:
+        f = e.get("file") or ""
+        if f not in state:
+            p = DATA / f
+            if not f or not p.exists():
+                return {"error": f"{f or 'its file'} is not on disk; nothing was undone"}
+            state[f] = json.loads(p.read_text())
+        restored, conflicts = journal.plan_undo(e, state[f])
+        if conflicts:
+            return {"error": f"{len(conflicts)} record(s) in {f} changed after {e['id']} "
+                             f"({', '.join(conflicts[:4])}); undoing it would revert newer "
+                             f"work, so nothing was undone"}
+        payload = journal.as_payload(state[f], restored, f)
+        if f == "companies.json":
+            bad = validate(payload)
+            if bad:
+                return {"error": f"the restored companies.json would be invalid ({bad}); "
+                                 f"nothing was undone"}
+        state[f] = payload
+        plans.append((e, f, payload))
+    done = []
+    for e, f, payload in plans:
+        # one ruling can be several entries (a placement and its ruling
+        # record); undo_batch keeps them one undo when a shift counts undos
+        mark = {"undo_of": e["id"], "undo_batch": plans[0][0]["id"]}
+        if f == "companies.json":
+            read_companies()                 # the before-state save_companies journals
+            bad = save_companies(payload, "undo", why=f"undid {e['id']}", by="owner",
+                                 force=True, extra=mark)
+        else:
+            bad = save_decisions(f, payload, "undo", why=f"undid {e['id']}", by="owner",
+                                 force=True, extra=mark)
+        if bad:
+            return {"error": f"undid {', '.join(done) or 'nothing'}, then {e['id']} was "
+                             f"refused: {bad}"}
+        done.append(e["id"])
+    return {"ok": True, "message": f"undid {len(done)} journal entr"
+                                   f"{'y' if len(done) == 1 else 'ies'} ({', '.join(done)})",
+            "undone": done}
+
+
+def act_shift_log(body: dict) -> dict:
+    """End a shift: what it did, counted by the server, appended to
+    data/admin_shifts.jsonl - gitignored and appended like claude_inbox.jsonl,
+    because it is this desk's own record of its sittings, not a ruling and
+    not something the public repo should carry."""
+    started, minutes = body.get("started_at"), body.get("minutes")
+    if not isinstance(started, str) or minutes not in SHIFT_MINUTES:
+        return {"error": "a shift log needs the time it started and its length"}
+    sector = body.get("sector") or ""
+    if not isinstance(sector, str):
+        return {"error": "the department must be a name"}
+    companies, board = read_companies(), read("board.json", {})
+    s = shift_summary(started, companies, board, sector)
+    if s.get("error"):
+        return s
+    start_h = body.get("health_start")
+    rec = {"started_at": started, "ended_at": now(), "minutes": minutes,
+           "sector": sector or None,
+           "dealt": body.get("dealt") if isinstance(body.get("dealt"), int) else None,
+           "skipped": body.get("skipped") if isinstance(body.get("skipped"), int) else None,
+           "ruled": s["ruled"], "by_queue": s["by_queue"], "proposed": s["proposed"],
+           "undone": s["undone"],
+           "health_start": start_h if isinstance(start_h, (int, float)) else None,
+           "health_end": s["health"]["exact"]}
+    rec["moved"] = (round(rec["health_end"] - rec["health_start"], 2)
+                    if rec["health_start"] is not None and rec["health_end"] is not None else None)
+    with open(DATA / SHIFT_LOG, "a") as fh:
+        fh.write(json.dumps(rec) + "\n")
+    return {"ok": True, "message": f"shift logged: {s['ruled']} ruling(s)", "shift": rec}
+
+
+def shifts(limit: int = 6) -> list:
+    """The last shifts, newest first."""
+    p = DATA / SHIFT_LOG
+    if not p.exists():
+        return []
+    out = []
+    for line in p.read_text().splitlines():
+        try:
+            rec = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(rec, dict):
+            out.append(rec)
+    return out[::-1][:limit]
+
+
 ACTIONS = {"merge": act_merge, "patch": act_patch, "move": act_move,
            "verify-website": act_verify_website, "verify-board": act_verify_board,
            "set-board": act_set_board, "set-family": act_set_family,
            "capture": act_capture, "search-companies": act_search_companies,
            "worklist": act_worklist, "task-note": act_task_note,
            "identify": act_identify,
+           "check-code": act_check_code, "undo": act_undo, "shift-log": act_shift_log,
            "scope": act_scope, "scope-all": act_scope_all,
            "vendor-scope": act_vendor_scope,
            "vendor-scope-all": act_vendor_scope_all,
@@ -5787,6 +6244,13 @@ CODE_HEADER = "X-Admin-Code"
 #              applies in Python behind validate() - the same division of
 #              labour the web admin already uses for rulings
 # selftest::check_open_actions_never_write_the_map asserts this.
+# Coded or not, these write nothing: a card's Check or Read the page sends
+# them, and the shift must not hold Skip and Undo back for a remote read as
+# though a ruling were on its way (review, 2026-10-24). Sent with the queue
+# counts so the page has one list.
+READ_ONLY_POSTS = ("search-companies", "inspect-submission", "verify-website",
+                   "verify-board", "worklist")
+
 OPEN_ACTIONS = {"capture", "search-companies", "submit",
                 "inspect-submission", "verify-website", "verify-board",
                 "worklist", "task-note", "identify"}
@@ -6348,6 +6812,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
             # ruling, and rebuilding the whole queue to move one number
             # would make the honest counterweight the slow part of the loop
             return self._json(agree_rate())
+        if path in ("/api/health", "/api/shift", "/api/shift-card",
+                    "/api/shift-progress", "/api/shifts"):
+            # THE SHIFT's reads (option 5). Each reads the files fresh, so a
+            # number on the shift is never older than the request for it.
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            arg = lambda k: (qs.get(k) or [""])[0]
+            if path == "/api/shifts":
+                return self._json({"shifts": shifts()})
+            companies, board = read_companies(), read("board.json", {})
+            sector = arg("sector")
+            if path == "/api/health":
+                return self._json(_health(companies, board, sector))
+            if path == "/api/shift":
+                try:
+                    minutes = int(arg("minutes") or 20)
+                except ValueError:
+                    minutes = 20
+                return self._json(shift_hand(companies, board, minutes, sector))
+            if path == "/api/shift-card":
+                out = shift_card(companies, board, arg("queue"), arg("key"), sector)
+                return self._json(out, 400 if out.get("error") else 200)
+            out = shift_summary(arg("since"), companies, board, sector)
+            return self._json(out, 400 if out.get("error") else 200)
         if path == "/api/export.csv":
             # No gate. It used to open at a board-health threshold, and a
             # review took that threshold four different ways - the cheapest
@@ -6376,6 +6863,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                                   if c.get("sector")}),
                                # which tabs the number above actually reflects
                                "filterable": sorted(FILTERABLE),
+                               "read_only_posts": list(READ_ONLY_POSTS),
                                "sector": want,
                                "labels": LABEL,
                                # what this process was started from, and what
@@ -6592,6 +7080,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         # queue that cannot tell you what your last ruling opened is a queue
         # that feels like filing.
         before = _ledger_state(body.get("id"))
+        # WHICH JOURNAL ENTRIES THIS WRITE MADE, handed back so the page can
+        # undo exactly this ruling (act_undo) - journal.record notes every id
+        # it writes, and requests here run one at a time.
+        import journal
+        journal.WRITTEN.clear()
+        journal.DESK = True
         try:
             # Every action, not only the ones that obviously fetch: an action
             # that grows a fetch later inherits the guard instead of having to
@@ -6611,10 +7105,14 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                         f"{exc}); nothing was written"}, 400)
         except Exception as exc:
             return self._json({"error": f"{type(exc).__name__}: {exc}"}, 500)
+        finally:
+            journal.DESK = False
         if isinstance(out, dict) and not out.get("error") and before is not None:
             gained = _ledger_unlocked(before, body.get("id"))
             if gained:
                 out["unlocked"] = gained
+        if isinstance(out, dict) and not out.get("error") and journal.WRITTEN:
+            out["journal"] = list(journal.WRITTEN)
         return self._json(out, 400 if out.get("error") else 200)
 
 

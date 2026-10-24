@@ -15978,10 +15978,18 @@ def _sandbox_admin(files: dict):
         admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = (
             tmp, tmp, tmp / "admin_journal.jsonl",
             tmp / "admin_journal.archive.jsonl")
+        # AND board_proposals, whose paths are fixed at import: a mutation
+        # that put its direct writer back wrote a test ruling into the
+        # owner's board_proposal_rulings.json from inside this sandbox
+        # (2026-10-24)
+        import board_proposals as bp
+        keep_bp = (bp.DATA, bp.FOUND, bp.RULED)
+        bp.DATA, bp.FOUND, bp.RULED = tmp, tmp / bp.FOUND.name, tmp / bp.RULED.name
         try:
             yield tmp
         finally:
             admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = keep
+            bp.DATA, bp.FOUND, bp.RULED = keep_bp
     return swap()
 
 
@@ -35226,6 +35234,592 @@ def check_the_claude_inbox_lists_and_settles() -> int:
     return errors
 
 
+def check_a_shift_deals_rules_and_undoes_what_it_says() -> int:
+    """The shift (option 5 of the admin canvas, owner 2026-10-23).
+
+    A hand is dealt from every queue, people first, no queue taking more than
+    a quarter of it, and only the belt's queues keyed. Every number on the
+    shift is the server's: the points a card can move are board_health's own
+    per-item step (a wrong-bucket row nobody can see moves nothing), the
+    summary counts rulings from _ruling_stamps, and an undo is all of a
+    ruling's journal entries or none, refused when anything has changed
+    those records since. Driven on the real data for the deal (read only)
+    and in a sandbox for every write, including through a real server, so
+    the journal ids a POST hands back are the ones the undo takes.
+    """
+    import http.server
+    import math
+    import threading
+    import urllib.error
+    import urllib.request
+
+    import admin
+    import journal
+
+    bad = 0
+    companies = json.load(open(DATA / "companies.json"))
+    board = json.load(open(DATA / "board.json"))
+
+    # --- the vocabulary -------------------------------------------------------
+    if not set(admin.SHIFT_QUEUES) <= set(admin.QUEUES):
+        bad += fail(f"the shift deals from queues that do not exist: "
+                    f"{sorted(set(admin.SHIFT_QUEUES) - set(admin.QUEUES))}")
+    if "acquisitions" in admin.SHIFT_QUEUES:
+        bad += fail("Acquisitions is dealt in a shift; it is slow reading and never timed")
+    labels = {p["label"] for p in admin.board_health(companies, board)["parts"]}
+    if not set(admin.SHIFT_BAR.values()) <= labels:
+        bad += fail(f"a shift queue names a gauge board_health does not have: "
+                    f"{sorted(set(admin.SHIFT_BAR.values()) - labels)}")
+    for a in ("undo", "shift-log", "check-code"):
+        if a not in admin.ACTIONS or a in admin.OPEN_ACTIONS:
+            bad += fail(f"/api/{a} must be an action that needs the ruling code")
+
+    # --- the deal, on the real data ----------------------------------------
+    h = admin.shift_hand(companies, board, 20)
+    cards = h["cards"]
+    per = {p["label"]: p.get("per_item") or 0.0 for p in h["health"]["parts"]}
+    # the rows a shift may deal and what each can move, on fixtures, because
+    # the real deal takes the best rows first and never shows the edges
+    per1 = {"Right bucket, public rows": 0.08, "Founding years": 0.005}
+    if admin._shift_points("miscategorized", {"open_roles": 0}, per1) != 0 \
+            or admin._shift_points("miscategorized", {"open_roles": 3}, per1) != 0.08:
+        bad += fail("a wrong-bucket row nobody can see moves points, or a public one moves none")
+    if admin._shift_points("founded", {"kind": "unconfirmed"}, per1) != 0 \
+            or admin._shift_points("founded", {"kind": "blank"}, per1) != 0.005:
+        bad += fail("confirming a year already shown moves points, or filling a blank moves none")
+    if admin._shift_points("submissions", {}, per1) != 0:
+        bad += fail("a person's submission is scored in board points")
+    keep_q = dict(admin.QUEUES)
+    try:
+        admin.QUEUES["miscategorized"] = lambda c, b: [
+            {"id": "a", "proposed_sector": "X", "confidence": "high"},
+            {"id": "b", "proposed_sector": "X", "confidence": "none"},
+            {"id": "c", "proposed_sector": None, "confidence": "high"}]
+        admin.QUEUES["vendors"] = lambda c, b: [{"key": "v", "description": "sells"},
+                                                {"key": "w", "description": "  "}]
+        if [r["id"] for r in admin._shift_rows("miscategorized", [], {})] != ["a"] \
+                or [r["key"] for r in admin._shift_rows("vendors", [], {})] != ["v"]:
+            bad += fail("a row the belt would not ride can be dealt as a keyed card")
+    finally:
+        admin.QUEUES.clear()
+        admin.QUEUES.update(keep_q)
+    # a point is what one settled row really moves: give one company with
+    # no website a website and the score must move by Names reachable's step
+    bare = next((c for c in companies if not c.get("website")), None)
+    if bare:
+        step = next(p["per_item"] for p in h["health"]["parts"] if p["label"] == "Names reachable")
+        moved = [dict(c, website="https://example.com") if c is bare else c for c in companies]
+        delta = admin.board_health(moved, board)["exact"] - h["health"]["exact"]
+        if abs(delta - step) > 0.002:
+            bad += fail(f"one website moves the score {delta:.4f}, the shift says {step}")
+    if admin.shift_hand(companies, board, 7)["minutes"] != 20:
+        bad += fail("a shift of a length nobody offered was dealt as that length")
+    if len(cards) > 20:
+        bad += fail(f"a 20-minute shift dealt {len(cards)} cards")
+    seen_other = False
+    by_q: dict = {}
+    for c in cards:
+        q, it = c["queue"], c["item"]
+        by_q[q] = by_q.get(q, 0) + 1
+        if q in admin.SHIFT_PEOPLE and seen_other:
+            bad += fail("a submission was dealt after a queue card: people lead the hand")
+        seen_other = seen_other or q not in admin.SHIFT_PEOPLE
+        if c["keyed"] != (q in admin.BELT_QUEUES):
+            bad += fail(f"a {q} card is keyed={c['keyed']}; only the belt's queues are")
+        if not c["key"] or c["key"] != it.get(admin.SHIFT_KEY[q]):
+            bad += fail(f"a {q} card carries no key its queue can find it by")
+        if q == "miscategorized" and (not it.get("proposed_sector") or it.get("confidence") == "none"):
+            bad += fail("a wrong-bucket row the belt would not ride was dealt as a keyed card")
+        if q == "vendors" and not (it.get("description") or "").strip():
+            bad += fail("a vendor with no description was dealt as a keyed card")
+        want = 0.0
+        if q in admin.SHIFT_BAR and not (q == "miscategorized" and not it.get("open_roles")) \
+                and not (q == "founded" and it.get("kind") != "blank"):
+            want = per.get(admin.SHIFT_BAR[q]) or 0.0
+        if abs(c["points"] - round(want, 4)) > 1e-9:
+            bad += fail(f"a {q} card says it moves {c['points']} points, board_health says {want}")
+    cap = max(2, math.ceil(20 / 4))
+    for q, n in by_q.items():
+        if q not in admin.SHIFT_PEOPLE and n > cap:
+            bad += fail(f"{n} {q} cards in a 20-card hand; no queue takes more than {cap}")
+    if abs(h["points"] - round(sum(c["points"] for c in cards), 2)) > 0.011:
+        bad += fail(f"the hand says {h['points']} points, its cards add to "
+                    f"{sum(c['points'] for c in cards)}")
+    if h["points_open"] is not None and h["points"] > h["points_open"] + 1e-9:
+        bad += fail("a hand promises more points than the board has open")
+    if sum(g["dealt"] for g in h["groups"]) != len(cards):
+        bad += fail("the hand's groups do not add up to its cards")
+    if cards:
+        c = cards[-1]
+        if admin.shift_card(companies, board, c["queue"], c["key"]).get("pending") is not True:
+            bad += fail("a card just dealt is not found waiting in its queue")
+    if admin.shift_card(companies, board, "miscategorized", "no-such-company-x").get("pending") is not False:
+        bad += fail("a card that left its queue still reads as waiting")
+    if not admin.shift_card(companies, board, "acquisitions", "x").get("error"):
+        bad += fail("the shift checked an Acquisitions card it never deals")
+    sec = next((c["sector"] for c in companies if c.get("sector")), "")
+    hs = admin.shift_hand(companies, board, 10, sec)
+    ids = {c["id"]: c.get("sector") for c in companies}
+    for c in hs["cards"]:
+        cid = c["item"].get("id")
+        if c["queue"] in ("miscategorized", "websites", "founded") and cid in ids and ids[cid] != sec:
+            bad += fail(f"a {sec} shift dealt {cid}, filed under {ids[cid]}")
+            break
+
+    # --- rule, summarise, undo: in a sandbox ---------------------------------
+    mis = [r for r in admin.q_miscategorized(companies, board)
+           if r.get("proposed_sector") and r.get("confidence") == "high"]
+    if not mis:
+        return bad + fail("no high-confidence wrong-bucket row to drive the shift with")
+    row = mis[0]
+    cid = row["id"]
+    orig = next(c for c in companies if c["id"] == cid)
+    small = {"organizations": [o for o in board.get("organizations", []) if o["id"] == cid],
+             "generated": board.get("generated")}
+    shown = {"was": f"{row['sector']} / {row['category']}",
+             "proposed": f"{row['proposed_sector']} / {row['proposed_category']}",
+             "confidence": row.get("confidence"), "description": row.get("description")}
+    schema = json.load(open(DATA / "schema.json"))
+    other = next(x for s in schema["sectors"] if s["name"] == row["proposed_sector"]
+                 for x in s["categories"] if x != row["proposed_category"])
+    with _sandbox_admin({"companies.json": companies, "board.json": small,
+                         "schema.json": schema, "placement_rulings.json": {}}) as tmp:
+        since = admin.now()
+        time.sleep(1.05)                      # `at` has one-second grain
+        journal.WRITTEN.clear()
+        r = admin.act_place({"id": cid, "sector": row["proposed_sector"],
+                             "category": row["proposed_category"], "why": "", **shown})
+        ids_a = list(journal.WRITTEN)
+        if r.get("error") or len(ids_a) < 2:
+            return bad + fail(f"a placement in the sandbox did not journal a ruling: {r} {ids_a}")
+        s = admin.shift_summary(since, admin.read_companies(), small)
+        if s["ruled"] != 1 or s["proposed"] != {"ruled": 1, "agreed": 1, "considered": s["proposed"]["considered"]}:
+            bad += fail(f"one ruling taken as proposed summarised as {s['ruled']} / {s['proposed']}")
+        time.sleep(1.05)
+        journal.WRITTEN.clear()
+        r = admin.act_place({"id": cid, "sector": row["proposed_sector"], "category": other,
+                             "why": "selftest: a second ruling on the same row", **shown})
+        ids_b = list(journal.WRITTEN)
+        p2 = admin.shift_summary(since, admin.read_companies(), small)["proposed"]
+        if (p2["ruled"], p2["agreed"]) != (1, 0):
+            bad += fail(f"a placement elsewhere than proposed summarised as {p2}, want 1 ruled, 0 as proposed")
+        before = (tmp / "companies.json").read_bytes()
+        n_journal = len(journal._entries())
+        r = admin.act_undo({"entries": ids_a})
+        if not r.get("error") or "changed after" not in r["error"]:
+            bad += fail(f"undoing a ruling a later one built on was not refused: {r}")
+        if (tmp / "companies.json").read_bytes() != before or len(journal._entries()) != n_journal:
+            bad += fail("a refused undo wrote something")
+        for body, why in (({"entries": []}, "no entries"), ({"entries": ["x"] * 11}, "eleven"),
+                          ({"entries": ["2001-01-01#9"]}, "an unknown entry"), ({}, "nothing")):
+            if not admin.act_undo(body).get("error"):
+                bad += fail(f"an undo of {why} was not refused")
+        if admin.act_undo({"entries": ids_b}).get("error") or admin.act_undo({"entries": ids_a}).get("error"):
+            bad += fail("undoing the newer ruling, then the older, was refused")
+        back = next(c for c in admin.read_companies() if c["id"] == cid)
+        if (back["sector"], back["category"]) != (orig["sector"], orig["category"]):
+            bad += fail(f"two undos left {cid} at {back['sector']} / {back['category']}")
+        if cid in json.loads((tmp / "placement_rulings.json").read_text()):
+            bad += fail("an undone ruling is still in placement_rulings.json")
+        if "already undone" not in (admin.act_undo({"entries": ids_a}).get("error") or ""):
+            bad += fail("an entry already undone was not refused as already undone")
+        undo_ids = [e["id"] for e in journal._entries() if e.get("action") == "undo"]
+        if not admin.act_undo({"entries": undo_ids[:1]}).get("error"):
+            bad += fail("an undo was itself undone from the desk")
+        s = admin.shift_summary(since, admin.read_companies(), small)
+        if s["ruled"] != 0 or s["undone"] != 2:
+            bad += fail(f"two rulings both undone summarised as {s['ruled']} ruled, "
+                        f"{s['undone']} undone (want 0 and 2: one undo per ruling)")
+        # a ruling only the journal remembers stops counting once undone too
+        n0 = len(admin._ruling_stamps(True))
+        journal.WRITTEN.clear()
+        yr = admin.act_set_founded({"id": cid, "year": "1999"})
+        ids_f = list(journal.WRITTEN)
+        n1 = len(admin._ruling_stamps(True))
+        admin.act_undo({"entries": ids_f})
+        n2 = len(admin._ruling_stamps(True))
+        if yr.get("error") or n1 != n0 + 1 or n2 != n0:
+            bad += fail(f"a founding year undone still counts as a ruling ({n0} -> {n1} -> {n2})")
+        # an agent's write is not undone from the desk
+        cs = admin.read_companies()
+        next(c for c in cs if c["id"] == cid)["description"] = "selftest: an agent's edit"
+        journal.WRITTEN.clear()
+        admin.save_companies(cs, "patch", why="selftest", by="agent:selftest")
+        if "not at this desk" not in (admin.act_undo({"entries": list(journal.WRITTEN)}).get("error") or ""):
+            bad += fail("an agent's write was undone from the desk's undo")
+        # the log: the server's counts, appended, and refused without a length
+        if not admin.act_shift_log({"started_at": since, "minutes": 15}).get("error"):
+            bad += fail("a shift of a length nobody offered was logged")
+        n_journal = len(journal._entries())
+        lg = admin.act_shift_log({"started_at": since, "minutes": 20, "dealt": 20,
+                                  "skipped": 3, "health_start": 64.5, "ruled": 999})
+        if lg.get("error") or lg["shift"]["ruled"] == 999 or admin.shifts()[0]["started_at"] != since:
+            bad += fail(f"the shift log took the page's count or was not kept: {lg}")
+        if len(journal._entries()) != n_journal:
+            bad += fail("logging a shift wrote to the journal; it is not a ruling")
+        if admin.act_check_code({}) != {"ok": True, "message": "ruling code accepted for this run"}:
+            bad += fail("check-code does more than say the code is this run's")
+
+        # --- through a real server: a POST hands back its journal ids ------
+        class Quiet(admin.Handler):
+            def log_message(self, *a):
+                pass
+
+        srv = http.server.HTTPServer(("127.0.0.1", 0), Quiet)
+        base = f"http://127.0.0.1:{srv.server_address[1]}"
+        threading.Thread(target=srv.serve_forever, args=(0.005,), daemon=True).start()
+        hdr = {"X-Admin-Token": admin.TOKEN, "X-Admin-Code": admin.CONSOLE_CODE,
+               "Content-Type": "application/json"}
+
+        def ask(path, body=None):
+            req = urllib.request.Request(base + path, method="POST" if body is not None else "GET",
+                                         data=json.dumps(body).encode() if body is not None else None,
+                                         headers=hdr)
+            try:
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    return resp.status, json.loads(resp.read())
+            except urllib.error.HTTPError as e:
+                return e.code, json.loads(e.read() or b"{}")
+        try:
+            code, out = ask("/api/dismiss", {"queue": "websites", "key": cid, "why": "No site exists"})
+            if code != 200 or not out.get("journal"):
+                bad += fail(f"a ruling's answer carried no journal ids: {code} {out}")
+            elif not all(e.get("desk") for e in journal._entries() if e.get("id") in out["journal"]):
+                bad += fail("a desk request's journal entries are not marked as the desk's, so its "
+                            "entries cannot be counted as one ruling")
+            else:
+                code, u = ask("/api/undo", {"entries": out["journal"]})
+                if code != 200 or u.get("undone") != out["journal"]:
+                    bad += fail(f"the ids a ruling handed back could not undo it: {code} {u}")
+            code, out = ask("/api/check-code", {})
+            if out.get("journal"):
+                bad += fail("an action that writes nothing handed back journal ids")
+            code, out = ask("/api/shift-progress")
+            if code != 400:
+                bad += fail(f"a shift summary with no start answered {code}, not 400")
+            code, out = ask("/api/shift-card?queue=acquisitions&key=x")
+            if code != 400:
+                bad += fail(f"an Acquisitions card check answered {code}, not 400")
+        finally:
+            srv.shutdown()
+            srv.server_close()
+    return bad
+
+
+def check_the_shift_screen_keeps_the_belts_rules() -> int:
+    """admin.html's shift: the page is the belt's own card for the keyed
+    queues and the queue's own card for the rest, re-asked of its queue
+    before it is shown, with every count from the server and a timer that
+    ends nothing. Source checks on the code (comments stripped), the helpers
+    run under node, and node --check over the whole script, which the suite
+    never had: a syntax error anywhere in the admin page passed every check.
+    """
+    import shutil
+    import tempfile
+
+    bad = 0
+    page = (ROOT / "admin.html").read_text()
+    script = max(re.findall(r"<script>(.*?)</script>", page, flags=re.S), key=len)
+    node = shutil.which("node")
+    if node:
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as fh:
+            fh.write(script)
+        r = subprocess.run([node, "--check", fh.name], capture_output=True, text=True)
+        os.unlink(fh.name)
+        if r.returncode:
+            bad += fail("admin.html's script does not parse: " + (r.stderr.strip().splitlines() or ["?"])[-1])
+    start = script.find("const SHIFT_LENGTHS")
+    end = script.find("function dismissBtn(")
+    if start < 0 or end < start:
+        return bad + fail("the shift section of admin.html is not where this check looks for it")
+    code = _js_code_only(script[start:end])
+
+    def body(name: str) -> str:
+        i = code.find(f"function {name}(")
+        if i < 0:
+            return ""
+        j = min([k for k in (code.find("\nfunction ", i + 1), code.find("\nasync function ", i + 1),
+                             code.find("\ndocument.addEventListener", i + 1)) if k > 0] or [len(code)])
+        return code[i:j]
+
+    deal = body("shiftDeal")
+    if not deal or deal.find("/api/shift-card") < 0 or deal.find("/api/shift-card") > deal.find("shiftKeyed(c)"):
+        bad += fail("a shift card is shown without asking its queue first whether it is still waiting")
+    if "seq !== run.seq" not in deal or "TAB !== '__shiftrun'" not in deal:
+        bad += fail("a late answer about an earlier card can draw over the card on screen")
+    home = body("showShiftHome")
+    if "TAB !== '__shift'" not in home or "seq !== SHIFT.seq" not in home:
+        bad += fail("the shift home draws a hand that arrived after the person left it")
+    if "beltCard(0)" not in body("shiftBeltCard") or "freshen(card)" not in body("shiftBeltCard"):
+        bad += fail("a keyed shift card is not the belt's own card")
+    full = _js_code_only(script)
+    if "if (TAB === '__shiftrun' && BELT.host && BELT.host === SHIFT.slot) return shiftAfterBelt();" not in full \
+            or "if (TAB === '__shiftrun' && host === SHIFT.slot) return shiftRedraw();" not in full:
+        bad += fail("the belt's advance/renderBelt do not hand a shift's card back to the shift")
+    if "!(TAB === '__shiftrun' && BELT.host === SHIFT.slot)" not in full:
+        bad += fail("the belt's keys answer on a screen that is neither its queue nor a shift card")
+    if "if (sr && j && !j.error) shiftHeard(sr, sseq, j);" not in full:
+        bad += fail("api() does not hand a shift the journal ids its rulings wrote")
+    if "acquisitions" in code:
+        bad += fail("the shift's code names Acquisitions, which is never dealt")
+    if re.search(r"\b(ruled|rulings|agreed|undone)\s*(\+\+|\+=)", code):
+        bad += fail("the shift counts rulings on the page; the counts are the server's")
+    if "shiftEnd" in body("shiftTick") or "shiftResolve" in body("shiftTick"):
+        bad += fail("the shift's timer ends or moves a card; it is a box, never a clock on the person")
+    if "'/api/shift-log'" not in body("shiftEnd") or "r.shift" not in body("shiftEnd"):
+        bad += fail("the end of a shift does not show the server's own record of it")
+    for word in ("streak", "great job", "well done", "personal best", "level up", "earned"):
+        if word in code.lower():
+            bad += fail(f"the shift says {word!r}; no achievement language")
+    if "__start: showStart" not in full or "  showShiftHome();\n" not in script:
+        bad += fail("the admin no longer opens on the shift, or a department change drops Start here")
+    if node:
+        def cut(n: str) -> str:
+            i = code.find(f"const {n} =")
+            ends = [k for k in (code.find("\nconst ", i + 1), code.find("\nfunction ", i + 1)) if k > 0]
+            return code[i:min(ends)] if i >= 0 and ends else ""
+        helpers = "\n".join(cut(n) for n in ("shiftPts", "shiftSigned", "shiftClock"))
+        js = helpers + "\nconsole.log(JSON.stringify([shiftPts(0), shiftPts(0.004), shiftPts(0.41)," \
+                       " shiftSigned(-0.2), shiftClock(-5), shiftClock(125)]));"
+        r = subprocess.run([node, "-e", js], capture_output=True, text=True)
+        want = '["no points","+<0.01 points","+0.41 points","−0.20","0:00","2:05"]'
+        if r.stdout.strip() != want:
+            bad += fail(f"the shift's number helpers say {r.stdout.strip() or r.stderr.strip()[:120]}, want {want}")
+    return bad
+
+
+def check_a_shift_counts_each_ruling_once() -> int:
+    """What a blind review of the shift found the server counting wrong
+    (2026-10-24), each driven in a sandbox or on fixtures:
+    - one desk request is one ruling, however many files it journals
+      (approving a submission wrote two entries and counted two);
+    - a write-up accepted at the desk is a Write-ups ruling, and one rejected
+      is not filed under Agent proposals;
+    - "far enough apart to count" walks record by record, so a burst inside
+      one second is not credited as read (agree_rate's own old defect);
+    - an undo that was itself undone cancels nothing;
+    - a Boards-we-found ruling goes through the journal, so undoing an
+      accepted board takes the ruling back with the wiring;
+    - a founding year already on a public card is dealt with the blanks, not
+      after every one of them, and says it moves no points;
+    - "waiting" means the queue's rows, and what is never dealt is counted;
+    - a department's health says its vendor part is the whole board's.
+    """
+    import admin
+    import journal
+
+    bad = 0
+    companies = json.load(open(DATA / "companies.json"))
+    board = json.load(open(DATA / "board.json"))
+    cid = companies[0]["id"]
+
+    # --- which queue an entry rules on ---------------------------------------
+    rq = admin._ruling_queue
+    if rq({"action": "promote-profiles", "desk": True}) != "profiles" or rq({"action": "promote-profiles"}):
+        bad += fail("a write-up landed at the desk is not a ruling, or a CLI landing is")
+    if rq({"action": "proposal-reject", "changes": {"profile:x": {}}}) != "profiles" \
+            or rq({"action": "proposal-reject", "changes": {"card:x": {}}}) != "proposals":
+        bad += fail("a write-up rejected at the desk is filed under the wrong queue")
+
+    # --- pace: a burst inside one second is one considered ruling ------------
+    def rec(i, at):
+        return {"sector": "Public Safety", "category": "Records", "by": "owner", "at": at,
+                "on": at[:10], "saw": {"proposed": "Public Safety / Records", "confidence": "high",
+                                       "was": "General Gov / Suppliers & Services"}}
+    burst = {f"co-{i}": rec(i, at) for i, at in enumerate(
+        ["2026-10-01T10:00:00-04:00"] + ["2026-10-01T10:00:20-04:00"] * 5)}
+    with _sandbox_admin({"placement_rulings.json": burst, "companies.json": companies,
+                         "board.json": {"organizations": []}}):
+        s = admin.shift_summary("2026-10-01T09:00:00-04:00", companies, {"organizations": []})
+        a = admin.agree_rate()
+        if s["proposed"]["considered"] != 2 or s["proposed"]["considered"] != a["considered"]:
+            bad += fail(f"a burst of five rulings in one second counted {s['proposed']['considered']} "
+                        f"of 6 as read (agree_rate says {a['considered']})")
+
+    # --- one request, one ruling; an undo undone cancels nothing ----------------
+    schema = json.load(open(DATA / "schema.json"))
+    with _sandbox_admin({"companies.json": companies, "board.json": {"organizations": []},
+                         "schema.json": schema, "founded_confirmations.json": {}}) as tmp:
+        n0 = len(admin._ruling_stamps(True))
+        cs = admin.read_companies()
+        next(c for c in cs if c["id"] == cid)["year_founded"] = 1990
+        journal.WRITTEN.clear()
+        journal.DESK = True
+        try:
+            admin.save_companies(cs, "set-founded", why="selftest", by="owner")
+            admin.save_decisions("founded_confirmations.json", {cid: {"by": "owner"}},
+                                 "confirm-founded", by="owner")
+        finally:
+            journal.DESK = False
+        desk_ids = list(journal.WRITTEN)
+        n1 = len(admin._ruling_stamps(True))
+        if n1 != n0 + 1:
+            bad += fail(f"one desk request that journalled two entries counted {n1 - n0} rulings")
+        cs = admin.read_companies()
+        next(c for c in cs if c["id"] == cid)["year_founded"] = 1991
+        journal.WRITTEN.clear()
+        admin.save_companies(cs, "set-founded", why="selftest: a script, not the desk", by="owner")
+        script_ids = list(journal.WRITTEN)
+        if len(admin._ruling_stamps(True)) != n1 + 1:
+            bad += fail("a ruling written outside a desk request was folded into the one before it")
+        n2 = len(admin._ruling_stamps(True))
+        journal.WRITTEN.clear()
+        r = admin.act_undo({"entries": script_ids})
+        undo_id = journal.WRITTEN[0] if journal.WRITTEN else None
+        n3 = len(admin._ruling_stamps(True))
+        # admin_undo.py --undo on that undo: the ruling is in force again
+        cs = admin.read_companies()
+        next(c for c in cs if c["id"] == cid)["year_founded"] = 1991
+        admin.save_companies(cs, "undo", why="selftest re-do", by="owner", force=True,
+                             extra={"undo_of": undo_id})
+        n4 = len(admin._ruling_stamps(True))
+        if r.get("error") or not (n3 == n2 - 1 and n4 == n2):
+            bad += fail(f"undo then re-do counted {n2} -> {n3} -> {n4} rulings ({r})")
+
+    # --- a board ruling is journalled, and an undo takes it back ---------------
+    import board_proposals
+    rname = board_proposals.RULED.name
+    with _sandbox_admin({"companies.json": companies, "schema.json": schema, rname: {}}) as tmp:
+        journal.WRITTEN.clear()
+        r = admin.act_board_proposal({"id": cid, "accept": False, "why": "selftest: not theirs"})
+        ids = list(journal.WRITTEN)
+        on_file = json.loads((tmp / rname).read_text())
+        if r.get("error") or cid not in on_file or not ids:
+            bad += fail(f"a Boards-we-found ruling was not written through the journal: {r} {ids}")
+        else:
+            admin.act_undo({"entries": ids})
+            if cid in json.loads((tmp / rname).read_text()):
+                bad += fail("undoing a Boards-we-found ruling left the ruling standing")
+    # --- one desk Undo is one reversal, and the door it shut is not opened --
+    shut = next((c for c in companies if (c.get("ats") or {}).get("type") in (None, "unknown")), None)
+    if shut:
+        with _sandbox_admin({"companies.json": companies, "schema.json": schema, rname: {}}):
+            journal.WRITTEN.clear()
+            journal.DESK = True
+            try:
+                cs = admin.read_companies()
+                next(c for c in cs if c["id"] == shut["id"])["ats"] = {"type": "ashby", "ref": "selftest-x"}
+                admin.save_companies(cs, "board-proposal", why="selftest", by="owner")
+                admin._rule_board_proposal(shut["id"], True, "selftest", "owner")
+            finally:
+                journal.DESK = False
+            ids = list(journal.WRITTEN)
+            opened = admin.receipt()["doors"]
+            journal.WRITTEN.clear()
+            journal.DESK = True
+            try:
+                admin.act_undo({"entries": ids})
+            finally:
+                journal.DESK = False
+            rc, rv = admin.receipt(), admin.reversals()
+            if shut["id"] not in opened or shut["id"] in rc["doors"]:
+                bad += fail(f"the receipt's opened boards ignore an undo: {opened} then {rc['doors']}")
+            if rc["reversed"] != 1 or rc["edits"] != len(ids):
+                bad += fail(f"one Undo of a {len(ids)}-entry ruling reads as {rc['reversed']} reversals, "
+                            f"{rc['edits']} edits")
+            if len(rv) != 1 or not rv[0]["reversed"]:
+                bad += fail(f"one desk ruling undone shows as {len(rv)} rows in Last rulings: {rv}")
+    src = (ROOT / "scripts" / "admin.py").read_text()
+    body = src[src.find("def act_resolve_submission"):src.find("\ndef ", src.find("def act_resolve_submission") + 5)]
+    cap = body[body.find("act_capture({"):body.find("})", body.find("act_capture({"))]
+    if '"by"' not in cap:
+        bad += fail("a person's job approval is journalled as the capture tool's, so its undo is refused")
+
+    # --- the deal on fixtures: founded order, held rows, no-points words -------
+    keep_q = dict(admin.QUEUES)
+    try:
+        for q in admin.SHIFT_QUEUES:
+            admin.QUEUES[q] = lambda c, b: []
+        admin.QUEUES["founded"] = lambda c, b: [{"id": "u1", "name": "U", "kind": "unconfirmed"},
+                                                {"id": "b1", "name": "B", "kind": "blank"}]
+        admin.QUEUES["miscategorized"] = lambda c, b: [
+            {"id": "m1", "name": "M", "proposed_sector": "X", "confidence": "high", "open_roles": 0},
+            {"id": "m2", "name": "N", "proposed_sector": None, "confidence": "high"}]
+        h = admin.shift_hand(companies, board, 10)
+        f = [c for c in h["cards"] if c["queue"] == "founded"]
+        if [c["key"] for c in f] != ["u1", "b1"]:
+            bad += fail(f"an unconfirmed year was dealt after the blanks: {[c['key'] for c in f]}")
+        if f and (f[0]["points"] or f[0]["moves"] or "already shown" not in (f[0]["no_points"] or "")):
+            bad += fail(f"checking a shown year says it moves the gauge: {f[0]}")
+        m = [c for c in h["cards"] if c["queue"] == "miscategorized"]
+        if not m or m[0]["moves"] or "not a public row" not in (m[0]["no_points"] or ""):
+            bad += fail("a wrong-bucket row nobody can see says it moves Right bucket")
+        g = next((x for x in h["groups"] if x["queue"] == "miscategorized"), {})
+        if g.get("waiting") != 2 or g.get("held") != 1:
+            bad += fail(f"a queue of 2 with 1 never dealt says {g.get('waiting')} waiting, {g.get('held')} held")
+    finally:
+        admin.QUEUES.clear()
+        admin.QUEUES.update(keep_q)
+    sec = next((c["sector"] for c in companies if c.get("sector")), "")
+    part = next(p for p in admin._health(companies, board, sec)["parts"] if p["label"] == "Scope settled")
+    if "whole board" not in part["note"]:
+        bad += fail("a department's health shows the whole board's vendor part as its own")
+    return bad
+
+
+def check_the_shift_runs_right_under_its_own_script() -> int:
+    """scripts/admin_shift_harness.mjs runs admin.html's own script against a
+    server that answers one request at a time, as admin.py does, and presses
+    keys through the page's listeners. Each case is a defect a blind review
+    reproduced that way (2026-10-24)."""
+    import shutil
+
+    if not shutil.which("node"):
+        return fail("node is not installed; the shift's page cannot be run")
+    r = subprocess.run(["node", str(ROOT / "scripts" / "admin_shift_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        out = json.loads(r.stdout)
+    except json.JSONDecodeError:
+        return fail("the shift harness did not run: " + (r.stderr.strip().splitlines() or ["?"])[-1])
+    bad = 0
+    u = out["undo_waits_for_the_write"]
+    if u["sent_undo"] or u["state"]["cards"]["A"] != {"status": "ruled", "ids": ["J#1", "J#2"]} \
+            or u["state"]["cards"]["B"] != {"status": "ruled", "ids": ["J#3", "J#4"]} \
+            or u["state"]["last"]["key"] != "B":
+        bad += fail(f"Undo pressed while a card was being written was not held back: {u}")
+    b = out["undo_brings_the_card_back"]
+    if b["on_disk"] or b["state"]["todo"][:1] != ["A"] or b["state"]["last"]["status"] != "undone" \
+            or b["undo_sent"] != ['/api/undo {"entries":["J#1","J#2"]}']:
+        bad += fail(f"Undo did not take back the whole last ruling and bring its card back: {b}")
+    s = out["skip_waits_and_ids_stay_put"]
+    if s["afterRefusedSkip"]["todo"] != ["P1", "P2", "P3"]:
+        bad += fail("Skip was taken while the card's write was on its way")
+    if s["afterLandedSkip"]["cards"]["P1"] != {"status": "ruled", "ids": ["W#1"]}:
+        bad += fail(f"a card whose write landed was skipped as unruled: {s['afterLandedSkip']}")
+    if s["final"]["cards"]["P2"] != {"status": "ruled", "ids": ["W#2"]}:
+        bad += fail(f"one card's journal ids reached another: {s['final']}")
+    c = out["a_refused_code_gets_a_box"]
+    if c["boxes"] != 1 or c["stored"] or c["listed"] != 1:
+        bad += fail(f"a refused code left nowhere to paste a new one, or emptied the shifts: {c}")
+    k = out["a_failed_check_keeps_the_hand"]
+    if k["state"]["todo"] != ["B", "C"] or "Try again" not in k["says"]:
+        bad += fail(f"one failed card check set the hand aside: {k}")
+    d = out["a_failed_deal_leaves_the_doors_open"]
+    if "shiftmode" in d["body"] or "Start here" not in d["buttons"]:
+        bad += fail(f"a deal that failed left the admin with no way out: {d}")
+    g = out["a_card_ruled_elsewhere_is_not_shown"]
+    if g["state"]["cards"]["A"]["status"] != "gone" or g["state"]["todo"] != ["B"]:
+        bad += fail(f"a card ruled elsewhere was shown again: {g}")
+    w = out["two_writes_stay_with_their_card"]["state"]
+    if w["cards"]["Q1"] != {"status": "ruled", "ids": ["W#1", "W#2"]} or w["cards"]["Q2"]["ids"]:
+        bad += fail(f"a card's second write was credited to the next card: {w}")
+    v = out["undo_waits_for_the_card_to_move_on"]
+    if v["sent_undo"] or v["state"]["cards"]["B"] != {"status": "ruled", "ids": ["J#3", "J#4"]}:
+        bad += fail(f"Undo pressed after a write landed, before its card moved on, was sent: {v}")
+    if out["a_read_does_not_hold_skip"]["state"]["todo"] != ["R2"]:
+        bad += fail(f"a Check that writes nothing held Skip back: {out['a_read_does_not_hold_skip']}")
+    if out["no_code_is_not_a_stale_code"]["says"] != "Ruling code needed":
+        bad += fail(f"a refused ruling with no code stored called it stale: {out['no_code_is_not_a_stale_code']}")
+    if out["a_typed_code_is_kept"] != {"box": True, "stored": "NEW123"}:
+        bad += fail(f"a code typed on the shift home was lost leaving it: {out['a_typed_code_is_kept']}")
+    e = out["end_shift_logs_the_servers_count"]
+    if not e["sent"] or e["sent"]["skipped"] != 1 or "ruled" in e["sent"] \
+            or "on the record, counted by the server" not in e["says"]:
+        bad += fail(f"End shift sent the page's count or did not show the server's record: {e}")
+    return bad
+
+
 def main() -> int:
     errors = 0
     # THE SUITE MUST NOT WRITE TO WHAT IT CHECKS. Two checks stub write_atomic
@@ -35802,6 +36396,10 @@ def main() -> int:
     errors += check_brand()
     errors += check_admin_game()
     errors += check_admin_gates()
+    errors += check_a_shift_deals_rules_and_undoes_what_it_says()
+    errors += check_the_shift_screen_keeps_the_belts_rules()
+    errors += check_a_shift_counts_each_ruling_once()
+    errors += check_the_shift_runs_right_under_its_own_script()
     errors += check_admin_guards()
     errors += check_save_needs_read()
     errors += check_role_promotion()
@@ -36137,6 +36735,16 @@ def main() -> int:
         _touched.append(f)
         if was and now and was[1] > 0 and now[1] < was[1]:
             _shrank.append(f"{f} ({was[1]} -> {now[1]})")
+    # AND A FILE THAT GREW A TEST'S RULING. Shrinking is one failure; the
+    # other is a fixture landing as a real record: a mutation run on
+    # 2026-10-24 put a "selftest: not theirs" ruling into the owner's
+    # board_proposal_rulings.json through a module path the sandbox did not
+    # move, and nothing here noticed because the file got longer.
+    _planted = [f for f in _touched if f.endswith(".json")
+                and re.search(r'":\s*"selftest', (DATA / f).read_text(errors="replace"))]
+    if _planted:
+        errors += fail(f"a check wrote a test value into data/ while the suite ran: {_planted}. "
+                       f"Restore from git (`git checkout -- data/<file>`) and sandbox the writer.")
     if _shrank:
         errors += fail(
             f"{len(_shrank)} file(s) in data/ got SHORTER while the suite ran: "

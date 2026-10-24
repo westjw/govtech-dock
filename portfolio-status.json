@@ -1,13 +1,14 @@
 {
   "project_id": "govtech_dock",
   "repo": "westjw/govtech-dock",
-  "last_updated": "2026-10-08T19:00:00-04:00",
+  "last_updated": "2026-10-24T01:00:00-04:00",
   "status": "Active Build",
   "progress_pct": 57,
-  "progress_note": "~57% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-08 evening: second launch batch deployed (7c3fc9e); the un-hide confirmed by the nightly crawl",
+  "progress_note": "~57% (free board frame; the paid half has no pricing or billing, and the recruiter side lives in SLED HQ) - 2026-10-24: the desk admin opens on a timed shift (option 5 of the admin canvas)",
   "next_move": "Owner, in Cloudflare: fix the sign-in loop, confirm Fail closed, replace CF_API_TOKEN (KV write 401), decide Workers Paid. Then rule the 15 no-website companies, decide the claim link, and supply privacy/contact details. Claude: check the 10-09 nightly (15 rewired careers links, digest timing).",
-  "session_summary": "Second launch batch, deployed: no job-ad text left in the repo's current files (pay excerpts only, full text local), 26 non-listings off the board, news CONTRACT/FUNDING labels that the headline supports, Google job markup turned off by the owner, frame protection and browser caching in the middleware, visible white logos, one h1 per view and a skip link, a watchdog that notices a failed or missing Cloudflare deploy, honest labels on hand-captured roles, an earlier nightly for morning digests, and 15 dead careers links rewired. Five blind review rounds confirmed 31 findings, all fixed and mutation-tested. The 10-08 crawl confirmed the un-hide: OpenGov 0->69 roles, Granicus 0->51, Tyler 1->114.",
+  "session_summary": "The desk admin now opens on a shift: pick 10, 20 or 30 minutes and the server deals the highest-impact rulings across every queue, people first, one card at a time, with server-counted progress, board health and a one-key Undo that takes back a whole ruling or refuses when anything changed since. Wrong bucket and Vendor scope ride the belt's own card; the other queues show their own card. Blind-reviewed and mutation-tested.",
   "recent_work": [
+    "2026-10-24 Desk admin: the shift (option 5) - dealt hand, belt cards, re-check before showing, all-or-nothing Undo, one ruling per click, server-counted summary; two blind reviews (18 + 6 confirmed, all fixed), 65 of 66 mutations caught",
     "2026-10-08 Second launch batch deployed (main 7c3fc9e): job ads out of the repo, non-listings off, true news labels, job markup off (owner), watchdog deploy check",
     "2026-10-08 Five blind review rounds over the batch: 5, 6, 6, 9, 5 confirmed findings, all fixed and mutation-tested",
     "2026-10-08 Nightly crawl confirmed the un-hide: board 6,303 -> 7,523 postings (OpenGov 69, Granicus 51, Tyler 114, Mark43 27)",
@@ -20,8 +21,7 @@
     "2026-10-05 Suppliers step 2: data/supplier_categories.json, the export SLED HQ reads; 3,038 publish, 4,302 held; blind holdout measured",
     "2026-10-05 Admin: Supplier websites queue (1,732 held suppliers); Missing websites shows research suggestions and findings; belt says when the publisher is off",
     "2026-10-05 news.yml runs again: index keeps from_index, at most 6 newsrooms per company, a clock inside grab(); 600/600 newsrooms in 23 min",
-    "2026-10-05 SLED HQ jobs feed reader (hq_jobs.py, merge_hq), dormant until SLEDJOBS_FEED_TOKEN exists",
-    "2026-10-05 Weekly links.yml: every published link re-fetched; spam and for-sale pages never published (Fathom's casino careers link unwired)"
+    "2026-10-05 SLED HQ jobs feed reader (hq_jobs.py, merge_hq), dormant until SLEDJOBS_FEED_TOKEN exists"
   ],
   "blockers": [
     "Owner's sign-in loops (www.solesourcejobs.com redirects Access's callback); he cannot see the gated site until the Access application is fixed",
